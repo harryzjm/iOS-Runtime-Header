@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/RBAttributeTemplateConfiguring-Protocol.h>
-
 @class NSArray, NSDictionary, NSString, RBDomainRestriction, RBEntitlementPredicate;
 
 __attribute__((visibility("hidden")))
-@interface RBAttributeTemplateGroup : NSObject <RBAttributeTemplateConfiguring>
+@interface RBAttributeTemplateGroup : NSObject
 {
     NSArray *_attributes;
     NSDictionary *_targetBundleProperties;

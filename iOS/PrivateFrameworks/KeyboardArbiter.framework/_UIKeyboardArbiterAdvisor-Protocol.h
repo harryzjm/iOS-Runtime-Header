@@ -10,7 +10,7 @@
 
 @protocol _UIKeyboardArbiterAdvisor <NSObject>
 @property(readonly, nonatomic) int presentingKeyboardProcessIdentifier;
-- (void)reevaluateFocusedSceneIdentityForKeyboardFocusWithChangeInformation:(NSDictionary *)arg1;
+- (void)keyboardFocusDidChangeWithoutAdvisorInputToPid:(int)arg1 sceneIdentity:(FBSSceneIdentityToken *)arg2;
 - (FBSSceneIdentityToken *)preferredSceneIdentityForKeyboardFocusWithChangeInformation:(NSDictionary *)arg1;
 @end
 

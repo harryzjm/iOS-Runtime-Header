@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/_WKObservablePageState-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface WKObservablePageState : NSObject <_WKObservablePageState>
+@interface WKObservablePageState : NSObject
 {
     struct RefPtr<WebKit::WebPageProxy, WTF::RawPtrTraits<WebKit::WebPageProxy>, WTF::DefaultRefDerefTraits<WebKit::WebPageProxy>> _page;
     struct unique_ptr<WebKit::PageLoadStateObserver, std::default_delete<WebKit::PageLoadStateObserver>> _observer;

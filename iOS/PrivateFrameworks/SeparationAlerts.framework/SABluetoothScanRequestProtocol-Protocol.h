@@ -5,6 +5,7 @@
 //
 
 @protocol SABluetoothScanRequestProtocol
+- (void)stopLongAggressiveScan;
 - (void)stopBackgroundScanning;
 - (void)startBackgroundScanning;
 - (void)requestBluetoothScanForTypes:(unsigned long long)arg1;

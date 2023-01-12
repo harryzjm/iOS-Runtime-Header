@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KeynoteQuicklook/KNTransitionCAAnimator-Protocol.h>
-
 @class NSString;
 
-@interface KNTransitionNull <KNTransitionCAAnimator>
+@interface KNTransitionNull
 {
 }
 

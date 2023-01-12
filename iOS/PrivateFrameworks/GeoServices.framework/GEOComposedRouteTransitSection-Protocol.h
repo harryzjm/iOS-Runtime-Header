@@ -10,7 +10,7 @@
 @property(readonly, nonatomic) int toNodeSignificance;
 @property(readonly, nonatomic) _Bool isTransfer;
 @property(readonly, nonatomic) unsigned long long lineID;
-@property(readonly, nonatomic) CDStruct_79c5c966 toNodeID;
-@property(readonly, nonatomic) CDStruct_79c5c966 fromNodeID;
+@property(readonly, nonatomic) CDStruct_14f26992 toNodeID;
+@property(readonly, nonatomic) CDStruct_14f26992 fromNodeID;
 @end
 

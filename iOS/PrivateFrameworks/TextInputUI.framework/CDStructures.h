@@ -4,41 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
-struct CGAffineTransform {
+struct CGPoint {
+    double _field1;
+    double _field2;
+};
+
+struct CGRect {
+    struct CGPoint _field1;
+    struct CGSize _field2;
+};
+
+struct CGSize {
+    double _field1;
+    double _field2;
+};
+
+struct UIEdgeInsets {
     double _field1;
     double _field2;
     double _field3;
     double _field4;
-    double _field5;
-    double _field6;
-};
-
-struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
 };
 
 struct _NSRange {
@@ -49,19 +36,7 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    double _field1;
+    struct CGPoint _field1;
     double _field2;
-    double _field3;
-    double _field4;
-} CDStruct_d2b197d1;
-
-typedef struct {
-    double _field1;
-    int _field2;
-} CDStruct_cdff19b3;
-
-typedef struct {
-    struct CGPoint point;
-    double force;
-} CDStruct_23d8ee2f;
+} CDStruct_8e54cea8;
 

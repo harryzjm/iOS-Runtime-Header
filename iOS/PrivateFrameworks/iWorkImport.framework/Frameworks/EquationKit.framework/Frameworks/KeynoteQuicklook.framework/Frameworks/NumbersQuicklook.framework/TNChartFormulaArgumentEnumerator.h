@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NumbersQuicklook/NSFastEnumeration-Protocol.h>
-
 @class NSEnumerator;
 
-@interface TNChartFormulaArgumentEnumerator : NSObject <NSFastEnumeration>
+@interface TNChartFormulaArgumentEnumerator : NSObject
 {
     NSEnumerator *_underlyingEnumerator;
 }

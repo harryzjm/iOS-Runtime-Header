@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/NSCopying-Protocol.h>
-
 @class LPGlyphStyle, LPPadding, LPPointUnit, NSString, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface LPTextViewStyle : NSObject <NSCopying>
+@interface LPTextViewStyle : NSObject
 {
     _Bool _shouldScaleMaximumLinesWithDynamicType;
+    float _hyphenationFactor;
     unsigned int _maximumLines;
     unsigned int _maximumCharacters;
     UIColor *_color;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
     LPPointUnit *_firstLineLeading;
     LPPointUnit *_lastLineDescent;
     LPGlyphStyle *_leadingGlyph;
+    LPGlyphStyle *_trailingGlyph;
     LPPadding *_padding;
     LPPointUnit *_paragraphSpacing;
     double _fontScalingFactor;
@@ -33,12 +33,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldScaleMaximumLinesWithDynamicType; // @synthesize shouldScaleMaximumLinesWithDynamicType=_shouldScaleMaximumLinesWithDynamicType;
 @property(retain, nonatomic) LPPointUnit *paragraphSpacing; // @synthesize paragraphSpacing=_paragraphSpacing;
 @property(readonly, retain, nonatomic) LPPadding *padding; // @synthesize padding=_padding;
+@property(retain, nonatomic) LPGlyphStyle *trailingGlyph; // @synthesize trailingGlyph=_trailingGlyph;
 @property(retain, nonatomic) LPGlyphStyle *leadingGlyph; // @synthesize leadingGlyph=_leadingGlyph;
 @property(retain, nonatomic) LPPointUnit *lastLineDescent; // @synthesize lastLineDescent=_lastLineDescent;
 @property(retain, nonatomic) LPPointUnit *firstLineLeading; // @synthesize firstLineLeading=_firstLineLeading;
 @property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property(nonatomic) unsigned int maximumCharacters; // @synthesize maximumCharacters=_maximumCharacters;
 @property(nonatomic) unsigned int maximumLines; // @synthesize maximumLines=_maximumLines;
+@property(nonatomic) float hyphenationFactor; // @synthesize hyphenationFactor=_hyphenationFactor;
 @property(retain, nonatomic) NSString *compositingFilter; // @synthesize compositingFilter=_compositingFilter;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;

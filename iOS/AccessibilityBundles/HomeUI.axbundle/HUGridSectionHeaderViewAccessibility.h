@@ -11,10 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
-- (id)accessibilityElements;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)_accessibilityLoadAccessibilityInformation;
+- (_Bool)isAccessibilityElement;
+- (unsigned long long)accessibilityTraits;
 
 @end
 

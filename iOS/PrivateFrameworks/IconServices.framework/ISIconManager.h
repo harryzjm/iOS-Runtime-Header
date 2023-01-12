@@ -9,6 +9,7 @@
 @class ISIconCache, NSHashTable, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface ISIconManager : NSObject
 {
     struct os_unfair_lock_s _lock;

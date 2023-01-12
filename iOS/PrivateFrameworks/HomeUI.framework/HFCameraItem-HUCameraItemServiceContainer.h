@@ -6,8 +6,16 @@
 
 #import <Home/HFCameraItem.h>
 
+@class NSString;
+
 @interface HFCameraItem (HUCameraItemServiceContainer)
 - (id)hu_containedAccessories;
 - (id)hu_containedServices;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

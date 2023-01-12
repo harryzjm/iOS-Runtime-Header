@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHStyleActAlike-Protocol.h>
-
 @class NSString;
 
-@interface TSCHChartSeriesDefaultNonStyle : NSObject <TSCHStyleActAlike>
+@interface TSCHChartSeriesDefaultNonStyle : NSObject
 {
 }
 

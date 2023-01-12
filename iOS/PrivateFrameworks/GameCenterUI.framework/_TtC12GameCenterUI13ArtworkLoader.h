@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <GameCenterUI/GKImageRequestDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC12GameCenterUI13ArtworkLoader : _TtCs12_SwiftObject <GKImageRequestDelegate>
+@interface _TtC12GameCenterUI13ArtworkLoader : _TtCs12_SwiftObject
 {
     MISSING_TYPE *resourceLoader;
     MISSING_TYPE *accessQueue;

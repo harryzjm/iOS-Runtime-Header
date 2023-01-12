@@ -15,6 +15,7 @@
 @optional
 - (struct CGRect)_paperBoundsHint;
 - (struct CGSize)_paperSizeHint;
+- (void)_paperDidChangeLocally;
 - (void)_linkCanvasElementsDidChange;
 @property(nonatomic, readonly) NSURL *_nonEncryptedContentCRContextURL;
 @end

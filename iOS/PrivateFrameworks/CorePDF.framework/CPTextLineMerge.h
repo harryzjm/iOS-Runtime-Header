@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)eliminate:(id)arg1;
 - (void)mergeByColumn:(id)arg1;
 - (void)mergeLinesInInterval:(id)arg1 from:(id)arg2;
-- (void)mergeColumn:(id)arg1;
+- (void)mergeColumn:(id)arg1 overlapping:(id)arg2;
 - (void)addInterval:(id)arg1 to:(id)arg2;
 - (_Bool)fits:(id)arg1 into:(id)arg2;
 

@@ -8,5 +8,7 @@
 
 @interface UIView (BuddyPinAutoLayout)
 - (void)pinToEdges:(id)arg1;
+- (void)pinToVerticalEdges:(id)arg1;
+- (void)pinToHorizontalEdges:(id)arg1;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/AMSUIWebPageProvider-Protocol.h>
-
 @class ACAccount, AMSMetricsEvent, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebDynamicPageModel : NSObject <AMSUIWebPageProvider>
+@interface AMSUIWebDynamicPageModel : NSObject
 {
     NSString *_backgroundColor;
     AMSMetricsEvent *_impressionEvent;
@@ -34,13 +32,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property(readonly, nonatomic) AMSMetricsEvent *impressionEvent; // @synthesize impressionEvent=_impressionEvent;
 @property(readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(readonly, copy) NSString *description;
+- (id)loadPage;
 @property(readonly, nonatomic) _Bool disableReappearPlaceholder;
-- (id)createViewController;
+- (id)createViewControllerForContainer:(id)arg1;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSData.h>
 
-#import <SiriCore/SiriCoreSQLiteValue-Protocol.h>
-
 @class NSString;
 
-@interface NSData (SiriCoreSQLiteValue) <SiriCoreSQLiteValue>
+@interface NSData (SiriCoreSQLiteValue)
 - (const void *)siriCoreSQLiteValue_blobRepresentationWithLength:(unsigned long long *)arg1;
 - (long long)siriCoreSQLiteValue_type;
 - (id)siriCoreSQLiteValue_toData;

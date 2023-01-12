@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATDictionaryCodable-Protocol.h>
-
 @class CATIDSMessageMetadata, NSDictionary;
 @protocol CATIDSMessage;
 
 __attribute__((visibility("hidden")))
-@interface CATIDSMessagePayload : NSObject <CATDictionaryCodable>
+@interface CATIDSMessagePayload : NSObject
 {
     CATIDSMessageMetadata *_metadata;
     id <CATIDSMessage> _message;

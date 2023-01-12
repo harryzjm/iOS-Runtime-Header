@@ -6,11 +6,11 @@
 
 #import <PreviewsOSSupport/NSObject-Protocol.h>
 
-@class NSData, NSString, UVPropertyList;
+@class NSData, UVPropertyList;
 
 @protocol UVDaemonServiceProtocol <NSObject>
-- (oneway void)grantExecutePermissionToBundleID:(NSString *)arg1 usingData:(NSData *)arg2 replyHandler:(void (^)(NSNumber *, NSError *))arg3;
-- (oneway void)copyURLToBundleID:(NSString *)arg1 usingData:(NSData *)arg2 replyHandler:(void (^)(NSString *, NSError *))arg3;
+- (oneway void)grantExecutePermissionToAgentIdentifierPayload:(UVPropertyList *)arg1 usingData:(NSData *)arg2 replyHandler:(void (^)(NSError *))arg3;
+- (oneway void)copyURLToAgentIdentifierPayload:(UVPropertyList *)arg1 usingData:(NSData *)arg2 replyHandler:(void (^)(NSString *, NSError *))arg3;
 - (oneway void)sendPreviewServiceMessage:(UVPropertyList *)arg1 replyHandler:(void (^)(UVPropertyList *, NSError *))arg2;
 @end
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIDiffableDataSourceDiffer-Protocol.h>
-
 @class NSArray, NSHashTable, NSIndexSet, _UIIdentifierDiffer;
 @protocol _UIDiffableDataSourceState;
 
 __attribute__((visibility("hidden")))
-@interface _UIDiffableDataSourceDiffer : NSObject <_UIDiffableDataSourceDiffer>
+@interface _UIDiffableDataSourceDiffer : NSObject
 {
     id <_UIDiffableDataSourceState> _beforeDataSourceState;
     id <_UIDiffableDataSourceState> _afterDataSourceState;

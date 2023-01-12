@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary;
 
 @interface TSTCSEData : NSObject
 {
-    struct unordered_map<TSTExpressionNode *, TSTCSENodeData, std::hash<TSTExpressionNode *>, std::equal_to<TSTExpressionNode *>, std::allocator<std::pair<TSTExpressionNode *const, TSTCSENodeData>>> _nodesToData;
+    struct unordered_map<unsigned long, TSTCSENodeData, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<const unsigned long, TSTCSENodeData>>> _nodesToData;
     NSMutableDictionary *_hashesToNodeSets;
+    NSMutableArray *_retainedExpressions;
 }
 
 - (id).cxx_construct;
@@ -21,7 +22,6 @@
 - (id)expressionsIdenticalToExpression:(id)arg1;
 - (id)expressionsMatchingCSENodeData:(struct TSTCSENodeData)arg1 forNode:(id)arg2;
 - (void)recordExpression:(id)arg1 data:(struct TSTCSENodeData)arg2;
-- (void)dealloc;
 - (id)init;
 
 @end

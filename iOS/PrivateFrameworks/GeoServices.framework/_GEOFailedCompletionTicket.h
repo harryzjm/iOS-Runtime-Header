@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceCompletionTicket-Protocol.h>
-
-@class GEOMapServiceTraits, NSDictionary, NSString;
+@class GEOMapServiceTraits, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOFailedCompletionTicket <GEOMapServiceCompletionTicket>
+@interface _GEOFailedCompletionTicket
 {
     NSString *searchQuery;
     NSString *_searchQuery;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)applyToPlaceInfo:(id)arg1;
 - (void)applyToCorrectedSearch:(id)arg1;
 - (void)submitWithAutoCompletionHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
+- (_Bool)enableStructuredRAPAffordance;
 - (long long)highlightType;
 - (id)placeSummaryLayoutMetadata;
 - (_Bool)shouldUseDistanceFeatureServerResults;
@@ -32,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldDisplayNoResults;
 - (_Bool)hasShouldDisplayNoResults;
 - (double)retainSearchTime;
-- (_Bool)isRapEnabled;
 - (void)applyToSuggestionEntry:(id)arg1 withAutocompleteSearchResultIdentifier:(id)arg2;
 - (void)applyToSuggestionList:(id)arg1;
 - (_Bool)matchesFragment:(id)arg1;
@@ -44,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSDictionary *responseUserInfo;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) GEOMapServiceTraits *traits;
 

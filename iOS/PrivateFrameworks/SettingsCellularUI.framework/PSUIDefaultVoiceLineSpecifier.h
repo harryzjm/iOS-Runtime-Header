@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CTCellularPlanManager *planManager; // @synthesize planManager=_planManager;
 @property(retain, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
 @property(retain, nonatomic) NSArray *cachedPlanItems; // @synthesize cachedPlanItems=_cachedPlanItems;
+- (id)getLogger;
 - (id)subscriptionContextForListItem:(id)arg1;
 - (id)planItemForListItem:(id)arg1;
 - (void)setDefaultVoiceLine:(id)arg1 specifier:(id)arg2;

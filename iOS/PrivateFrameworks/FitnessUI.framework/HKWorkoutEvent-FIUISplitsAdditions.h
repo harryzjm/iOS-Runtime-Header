@@ -11,7 +11,10 @@
 @interface HKWorkoutEvent (FIUISplitsAdditions)
 @property(readonly, nonatomic) double fiui_splitPaceInMetersPerSecond;
 @property(readonly, nonatomic) double fiui_splitActiveDuration;
-@property(readonly, nonatomic) HKQuantity *fiui_splitDistance; // @dynamic fiui_splitDistance;
-@property(readonly, nonatomic) _Bool fiui_isSplitEvent; // @dynamic fiui_isSplitEvent;
+@property(readonly, nonatomic) HKQuantity *fiui_splitDistance;
+@property(readonly, nonatomic) _Bool fiui_isCustomSplitEvent;
+@property(readonly, nonatomic) _Bool fiui_isSplitEvent;
+@property(readonly, nonatomic) double fiui_distanceGoalCompletionTime;
+@property(readonly, nonatomic) _Bool fiui_isDistanceGoalCompleteEvent;
 @end
 

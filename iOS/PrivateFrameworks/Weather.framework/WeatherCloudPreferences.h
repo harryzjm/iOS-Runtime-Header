@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Weather/WeatherCloudPersistenceDelegate-Protocol.h>
-
 @class NSString, WeatherPreferences;
 @protocol SynchronizedDefaultsDelegate, WeatherPreferencesPersistence;
 
 __attribute__((visibility("hidden")))
-@interface WeatherCloudPreferences : NSObject <WeatherCloudPersistenceDelegate>
+@interface WeatherCloudPreferences : NSObject
 {
     id <WeatherPreferencesPersistence> _cloudStore;
     id <SynchronizedDefaultsDelegate> _syncDelegate;

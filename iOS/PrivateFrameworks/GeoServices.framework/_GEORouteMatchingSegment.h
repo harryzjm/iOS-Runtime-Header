@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 @interface _GEORouteMatchingSegment : NSObject
 {
     unsigned int _startPointIndex;
+    float _startRouteCoordinateOffset;
+    float _endRouteCoordinateOffset;
     CDStruct_2c43369c _startCoordinate;
     CDStruct_2c43369c _endCoordinate;
     GEOComposedRouteStep *_step;
@@ -21,6 +23,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) GEOComposedRouteStep *step; // @synthesize step=_step;
 @property(nonatomic) CDStruct_c3b9c2ee endCoordinate; // @synthesize endCoordinate=_endCoordinate;
 @property(nonatomic) CDStruct_c3b9c2ee startCoordinate; // @synthesize startCoordinate=_startCoordinate;
+@property(nonatomic) float endRouteCoordinateOffset; // @synthesize endRouteCoordinateOffset=_endRouteCoordinateOffset;
+@property(nonatomic) float startRouteCoordinateOffset; // @synthesize startRouteCoordinateOffset=_startRouteCoordinateOffset;
 @property(nonatomic) unsigned int startPointIndex; // @synthesize startPointIndex=_startPointIndex;
 - (id)description;
 - (double)distanceFromCoordinate:(CDStruct_c3b9c2ee)arg1 outCoordinateOnSegment:(CDStruct_c3b9c2ee *)arg2 outRouteCoordinate:(struct PolylineCoordinate *)arg3;

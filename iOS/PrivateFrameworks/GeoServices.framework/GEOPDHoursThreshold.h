@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDHoursThreshold : PBCodable <NSCopying>
+@interface GEOPDHoursThreshold : PBCodable
 {
     PBUnknownFields *_unknownFields;
     unsigned int _closingSoonMessageThresholdSecond;

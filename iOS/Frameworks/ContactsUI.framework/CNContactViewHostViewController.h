@@ -6,14 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <ContactsUI/CNContactContentViewController-Protocol.h>
-#import <ContactsUI/CNContactViewHostProtocol-Protocol.h>
-
 @class NSExtension, NSString;
 @protocol CNContactViewControllerPPTDelegate, CNContactViewHostProtocol, NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface CNContactViewHostViewController : _UIRemoteViewController <CNContactContentViewController, CNContactViewHostProtocol>
+@interface CNContactViewHostViewController : _UIRemoteViewController
 {
     id <CNContactViewHostProtocol> _delegate;
     id <CNContactViewControllerPPTDelegate> _pptDelegate;

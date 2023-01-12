@@ -11,23 +11,18 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
-};
-
-struct CGVector {
-    double dx;
-    double dy;
+    double _field1;
+    double _field2;
 };
 
 struct _CSTypeRef {
@@ -35,18 +30,22 @@ struct _CSTypeRef {
     unsigned long long _opaque_2;
 };
 
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
 struct atomic_flag {
     _Atomic _Bool _Value;
+};
+
+struct exception_ptr {
+    void *__ptr_;
 };
 
 struct time_value {
     int seconds;
     int microseconds;
+};
+
+struct type_info {
+    CDUnknownFunctionPointerType *_field1;
+    unsigned long long _field2;
 };
 
 #pragma mark Typedef'd Structures

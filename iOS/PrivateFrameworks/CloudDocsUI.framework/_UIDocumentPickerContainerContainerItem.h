@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIDocumentPickerContainerItem.h"
+
 @class BRContainer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerContainerContainerItem
+@interface _UIDocumentPickerContainerContainerItem : _UIDocumentPickerContainerItem
 {
     NSString *_cachedSubtitle;
     BRContainer *_container;

@@ -4,20 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUICollectionViewPullToRefreshDelegate-Protocol.h>
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUIIndexBarControlControllerDataSource-Protocol.h>
-#import <StoreKitUI/SKUIIndexBarControlControllerDelegate-Protocol.h>
-#import <StoreKitUI/SKUIIndexBarEntryListControllerDelegate-Protocol.h>
-#import <StoreKitUI/SKUIModalSourceViewProvider-Protocol.h>
-#import <StoreKitUI/SKUIResourceLoaderDelegate-Protocol.h>
-#import <StoreKitUI/SKUIStorePageSectionsDelegate-Protocol.h>
-#import <StoreKitUI/SKUIViewControllerTesting-Protocol.h>
+#import "SKUIViewController.h"
 
 @class IKAppDocument, NSArray, NSMapTable, NSString, SKUIIndexBarControlController, SKUIResourceLoader, SKUIStackTemplateElement, SKUIStorePageSectionsViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStackDocumentViewController <SKUIIndexBarControlControllerDataSource, SKUIIndexBarControlControllerDelegate, SKUIIndexBarEntryListControllerDelegate, SKUIModalSourceViewProvider, SKUIViewControllerTesting, SKUICollectionViewPullToRefreshDelegate, SKUIStorePageSectionsDelegate, SKUIResourceLoaderDelegate, SKUIDocumentViewController>
+@interface SKUIStackDocumentViewController : SKUIViewController
 {
     IKAppDocument *_document;
     NSArray *_entryListControllers;

@@ -8,6 +8,5 @@
 
 @interface AVURLAsset (RCAdditions)
 + (id)rc_preciseTimingAssetWithURL:(id)arg1;
-@property(readonly, nonatomic) double rc_durationInSeconds;
 @end
 

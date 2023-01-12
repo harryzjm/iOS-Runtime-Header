@@ -11,51 +11,22 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
-struct NSDirectionalEdgeInsets {
-    double top;
-    double leading;
-    double bottom;
-    double trailing;
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
-struct UIOffset {
-    double horizontal;
-    double vertical;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
-
-typedef struct {
-    unsigned int _hasManagedAccounts:1;
-    unsigned int _hasUnmanagedAccounts:1;
-} CDStruct_9a98c240;
 

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKDPRecordSaveRequestConflictLoserUpdate : PBCodable <NSCopying>
+@interface CKDPRecordSaveRequestConflictLoserUpdate : PBCodable
 {
     NSMutableArray *_conflictLoserEtags;
 }

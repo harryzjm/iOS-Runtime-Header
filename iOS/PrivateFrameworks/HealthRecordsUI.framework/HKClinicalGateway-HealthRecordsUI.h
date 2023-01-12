@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthKit/HKClinicalGateway.h>
+#import <HealthRecordServices/HKClinicalGateway.h>
 
 @interface HKClinicalGateway (HealthRecordsUI)
+@property(nonatomic, readonly) _Bool canEnableSharingToProvider;
 @property(nonatomic, readonly) _Bool supportsSharingToProvider;
 @property(nonatomic, readonly) _Bool hasLogo;
 @end

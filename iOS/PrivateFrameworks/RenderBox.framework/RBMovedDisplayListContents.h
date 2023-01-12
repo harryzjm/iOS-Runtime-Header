@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RenderBox/RBDisplayListContents-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface RBMovedDisplayListContents : NSObject <RBDisplayListContents>
+@interface RBMovedDisplayListContents : NSObject
 {
     struct unique_ptr<RB::DisplayList::Contents, RB::Destroy<RB::DisplayList::Contents>> _contents;
     struct unique_ptr<RB::XML::Document, std::default_delete<RB::XML::Document>> _xml_document;

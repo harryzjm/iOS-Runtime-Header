@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class MPMusicPlayerPlayParametersQueueDescriptor, MusicKit_SoftLinking_MPMusicPlayerPlayParameters;
+@class MPMusicPlayerPlayParametersQueueDescriptor, MusicKit_SoftLinking_MPMusicPlayerPlayParameters, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MusicKit_SoftLinking_MPMusicPlayerPlayParametersQueueDescriptor : NSObject
 {
     MPMusicPlayerPlayParametersQueueDescriptor *_underlyingQueueDescriptor;
+    NSString *_playActivityFeatureName;
     MusicKit_SoftLinking_MPMusicPlayerPlayParameters *_startItemPlayParameters;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MusicKit_SoftLinking_MPMusicPlayerPlayParameters *startItemPlayParameters; // @synthesize startItemPlayParameters=_startItemPlayParameters;
+@property(copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 - (void)setEndTime:(double)arg1 forItemWithPlayParameters:(id)arg2;
 - (void)setStartTime:(double)arg1 forItemWithPlayParameters:(id)arg2;
 @property(readonly, nonatomic) MPMusicPlayerPlayParametersQueueDescriptor *_underlyingQueueDescriptor;

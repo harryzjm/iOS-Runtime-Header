@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSLayoutConstraint;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyboardLayoutAlignmentView
+@interface _UIKeyboardLayoutAlignmentView : UIView
 {
     struct CGRect lastKnownKeyboardRect;
     NSLayoutConstraint *bottomConstraint;

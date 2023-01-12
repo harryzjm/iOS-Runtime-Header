@@ -6,23 +6,11 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOETAServiceResponseSummary;
-
 __attribute__((visibility("hidden")))
-@interface GEOETAResponseExtension : PBCodable <NSCopying>
+@interface GEOETAResponseExtension : PBCodable
 {
-    unsigned long long _debugServerLatencyMs;
-    GEOETAServiceResponseSummary *_etaServiceSummary;
-    CDStruct_8a83bcf8 _flags;
 }
 
-- (void).cxx_destruct;
-@property(nonatomic) _Bool hasDebugServerLatencyMs;
-@property(nonatomic) unsigned long long debugServerLatencyMs;
-@property(retain, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
-@property(readonly, nonatomic) _Bool hasEtaServiceSummary;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

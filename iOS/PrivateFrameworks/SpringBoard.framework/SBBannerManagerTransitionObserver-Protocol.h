@@ -6,13 +6,14 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBBannerManager;
+@class SBBannerManager, UIWindow;
 @protocol BNPresentable, UIViewControllerTransitionCoordinator;
 
 @protocol SBBannerManagerTransitionObserver <NSObject>
 
 @optional
 - (void)bannerManagerDidUpdateWindowLevel:(SBBannerManager *)arg1;
+- (void)bannerManager:(SBBannerManager *)arg1 didUpdateWindowLevelOfWindow:(UIWindow *)arg2;
 - (void)bannerManager:(SBBannerManager *)arg1 willDismissPresentable:(id <BNPresentable>)arg2 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg3;
 - (void)bannerManager:(SBBannerManager *)arg1 willPresentPresentable:(id <BNPresentable>)arg2 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg3;
 - (void)bannerManager:(SBBannerManager *)arg1 presentable:(id <BNPresentable>)arg2 willTransitionToSize:(struct CGSize)arg3 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg4;

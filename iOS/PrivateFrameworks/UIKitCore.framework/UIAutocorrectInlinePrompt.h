@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSString, UIView;
+#import "UIView.h"
+
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIAutocorrectInlinePrompt
+@interface UIAutocorrectInlinePrompt : UIView
 {
     struct CGRect m_originalTypedTextRect;
     NSString *m_typedText;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
     unsigned int m_usageTrackingMask;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int usageTrackingMask; // @synthesize usageTrackingMask=m_usageTrackingMask;
 - (_Bool)prepareForAnimation:(struct CGRect)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreFoundation/NSStreamDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _CFStreamDelegate : NSObject <NSStreamDelegate>
+@interface _CFStreamDelegate : NSObject
 {
     unsigned long long _flags;
     CDStruct_4210025a _client;

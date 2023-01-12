@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNNavigationServiceProxy-Protocol.h>
-
 @class MNStartNavigationDetails, MNUserOptions, NSArray, NSHashTable, NSMutableArray, NSString, NSXPCConnection, geo_isolater;
 @protocol MNNavigationServiceClientInterface, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MNNavigationServiceRemoteProxy : NSObject <MNNavigationServiceProxy>
+@interface MNNavigationServiceRemoteProxy : NSObject
 {
     _Bool _applicationActive;
     NSXPCConnection *_connection;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
     geo_isolater *_clientsLock;
     NSHashTable *_clients;
     MNStartNavigationDetails *_startNavigationDetails;
+    geo_isolater *_interruptionDatesLock;
     NSMutableArray *_interruptionDates;
     _Bool _isReconnecting;
     NSArray *_announcementsToIgnore;
@@ -37,6 +36,9 @@ __attribute__((visibility("hidden")))
 - (void)pauseRealtimeUpdatesForSubscriber:(id)arg1;
 - (void)checkinForNavigationService:(CDUnknownBlockType)arg1;
 - (void)interfaceHashesWithHandler:(CDUnknownBlockType)arg1;
+- (void)setSimulationPosition:(double)arg1;
+- (void)setSimulationSpeedMultiplier:(double)arg1;
+- (void)setSimulationSpeedOverride:(double)arg1;
 - (void)recordPedestrianTracePath:(id)arg1;
 - (void)recordTraceBookmarkAtCurrentPositionWthScreenshotData:(id)arg1;
 - (void)setTracePosition:(double)arg1;
@@ -61,6 +63,10 @@ __attribute__((visibility("hidden")))
 - (void)forceReroute;
 - (void)resumeOriginalDestination;
 - (void)updateDestination:(id)arg1;
+- (void)advanceToNextLeg;
+- (void)removeWaypointAtIndex:(unsigned long long)arg1;
+- (void)insertWaypoint:(id)arg1;
+- (void)rerouteWithWaypoints:(id)arg1;
 - (void)stopNavigationWithReason:(unsigned long long)arg1;
 - (void)startNavigationWithDetails:(id)arg1 activeBlock:(CDUnknownBlockType)arg2;
 - (void)setRoutesForPreview:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_xpcQueue;
 }
 
++ (id)copyProcessInfo;
 + (id)sharedManager;
 - (id)copyProcessInfo;
 - (void)deregisterBlocksForService;

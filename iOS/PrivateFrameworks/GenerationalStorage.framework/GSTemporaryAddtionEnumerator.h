@@ -6,12 +6,10 @@
 
 #import <Foundation/NSEnumerator.h>
 
-#import <GenerationalStorage/GSAdditionEnumerating-Protocol.h>
-
 @class GSTemporaryStorage, NSArray, NSDirectoryEnumerator, NSError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GSTemporaryAddtionEnumerator : NSEnumerator <GSAdditionEnumerating>
+@interface GSTemporaryAddtionEnumerator : NSEnumerator
 {
     GSTemporaryStorage *_storage;
     NSString *_nameSpace;

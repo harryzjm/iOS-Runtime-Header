@@ -15,9 +15,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)createAudioProcessorWithConfiguration:(id)arg1;
-- (id)audioProcessorWithConfiguration:(id)arg1;
-- (id)sharedProcessorWithConfiguration:(id)arg1;
 - (id)init;
 
 @end

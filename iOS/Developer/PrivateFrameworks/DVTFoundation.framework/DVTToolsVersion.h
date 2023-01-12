@@ -18,6 +18,15 @@
 }
 
 + (id)versionWithMajor:(unsigned long long)arg1 minor:(unsigned long long)arg2 update:(unsigned long long)arg3;
++ (id)version14_0_0;
++ (id)version13_4_2;
++ (id)version13_4_1;
++ (id)version13_4_0;
++ (id)version13_3_1;
++ (id)version13_3_0;
++ (id)version13_2_1;
++ (id)version13_2_0;
++ (id)version13_1_0;
 + (id)version13_0_0;
 + (id)version12_5_1;
 + (id)version12_5_0;
@@ -121,6 +130,8 @@
 - (unsigned long long)versionUpdateComponent;
 - (unsigned long long)versionMinorComponent;
 - (unsigned long long)versionMajorComponent;
+@property(readonly, copy) NSString *stringValueWithoutUpdate;
+@property(readonly, copy) NSString *stringValue;
 - (id)nameWithoutUpdate;
 - (id)name;
 - (unsigned long long)hash;

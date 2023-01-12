@@ -6,11 +6,14 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class UIViewController;
+@class UIViewController, UIWindow;
 @protocol PXAssetsSharingHelper;
 
 @protocol PXAssetsSharingHelperDelegate <NSObject>
 - (_Bool)assetsSharingHelper:(id <PXAssetsSharingHelper>)arg1 dismissViewController:(UIViewController *)arg2 completionHandler:(void (^)(void))arg3;
 - (_Bool)assetsSharingHelper:(id <PXAssetsSharingHelper>)arg1 presentViewController:(UIViewController *)arg2;
+
+@optional
+- (UIWindow *)windowForProgressPresentationInAssetsSharingHelper:(id <PXAssetsSharingHelper>)arg1;
 @end
 

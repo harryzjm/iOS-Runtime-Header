@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUICollectionDOMFeatureTargetting-Protocol.h>
-#import <StoreKitUI/SKUIGridViewElementPageSectionConfigurationDataSource-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class CPLRUDictionary, NSMutableDictionary, NSString, SKUIDynamicPageSectionIndexMapper, SKUIGridComponent, SKUIGridViewElementPageSectionConfiguration, SKUIMutableIntegerValue, SKUIViewElement, SKUIViewElementLayoutContext, SKUIViewElementTextLayoutCache, _SKUIDynamicGridSizeCacheKey;
 @protocol SKUIEntityProviding;
 
 __attribute__((visibility("hidden")))
-@interface SKUIDynamicGridViewElementPageSection <SKUIArtworkRequestDelegate, SKUIGridViewElementPageSectionConfigurationDataSource, SKUICollectionDOMFeatureTargetting>
+@interface SKUIDynamicGridViewElementPageSection : SKUIStorePageSection
 {
     SKUIViewElementLayoutContext *_cellLayoutContext;
     SKUIGridViewElementPageSectionConfiguration *_configuration;

@@ -6,9 +6,7 @@
 
 #import <TSDrawables/TSDMediaRep.h>
 
-#import <TSText/TSDMagicMoveMatching-Protocol.h>
-
-@interface TSWPEquationBaseRep : TSDMediaRep <TSDMagicMoveMatching>
+@interface TSWPEquationBaseRep : TSDMediaRep
 {
 }
 

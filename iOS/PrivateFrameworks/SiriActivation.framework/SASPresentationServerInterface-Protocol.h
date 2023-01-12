@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString, SASActivationRequest, SASButtonIdentifierTransport, SASRequestOptions, SASTimeIntervalTransport, SiriDismissalOptions, SiriPresentationActivationCancelReasonTransport, SiriPresentationOptions, SiriUILockStateTransport;
+@class NSNumber, NSString, SASActivationRequest, SASButtonIdentifierTransport, SASLockStateTransport, SASPresentationState, SASRequestOptions, SASTimeIntervalTransport, SiriDismissalOptions, SiriLongPressButtonContext, SiriPresentationActivationCancelReasonTransport, SiriPresentationIdentifierTransport, SiriPresentationOptions;
 
 @protocol SASPresentationServerInterface
 - (oneway void)ping;
 - (oneway void)activationDeterminedShouldDeferWake:(NSNumber *)arg1;
 - (oneway void)deviceWonMyriadElection;
 - (oneway void)bulletinManagerDidChangeBulletins;
-- (oneway void)updateCurrentLockState:(SiriUILockStateTransport *)arg1;
-- (oneway void)handleButtonLongPressFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3;
+- (oneway void)updateCurrentLockState:(SASLockStateTransport *)arg1;
+- (oneway void)handleButtonLongPressFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3 context:(SiriLongPressButtonContext *)arg4;
 - (oneway void)handleButtonTapFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1;
-- (oneway void)handleButtonUpFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3;
-- (oneway void)handleButtonDownFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2;
+- (oneway void)handleButtonUpFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3 context:(SiriLongPressButtonContext *)arg4;
+- (oneway void)handleButtonDownFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2 context:(SiriLongPressButtonContext *)arg3;
 - (_Bool)handleTestingActivation:(SASActivationRequest *)arg1;
+- (oneway void)presentationWithIdentifier:(SiriPresentationIdentifierTransport *)arg1 didUpdatePresentationState:(SASPresentationState *)arg2;
 - (oneway void)wakeScreenAfterActivationWithReason:(NSString *)arg1;
 - (oneway void)cancelPendingActivationEventWithReason:(SiriPresentationActivationCancelReasonTransport *)arg1;
 - (oneway void)cancelPreheat;

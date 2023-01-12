@@ -10,10 +10,13 @@
 
 @interface _TtC20SiriAppLaunchIntents31LaunchAppDisambiguationStrategy : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *appLaunchFeatureFlags;
     MISSING_TYPE *appsDisambiguationSnippetProvider;
     MISSING_TYPE *deviceState;
     MISSING_TYPE *dialogProvider;
+    MISSING_TYPE *appLaunchFeatureFlags;
+    MISSING_TYPE *responseGenerator;
+    MISSING_TYPE *dialogResponseUtil;
+    MISSING_TYPE *referenceResolver;
 }
 
 @end

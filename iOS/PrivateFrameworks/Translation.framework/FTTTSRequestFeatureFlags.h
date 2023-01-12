@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTTTSRequestFeatureFlags : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTTTSRequestFeatureFlags : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_668da1f4)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) long long phoneset_type;
 @property(readonly, nonatomic) _Bool cache_only;
 @property(readonly, nonatomic) _Bool disable_prompts;
 @property(readonly, nonatomic) _Bool fe_feature_only;

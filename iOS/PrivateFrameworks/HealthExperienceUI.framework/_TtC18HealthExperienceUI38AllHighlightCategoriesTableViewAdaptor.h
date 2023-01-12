@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI25SectionedTableViewAdaptorCN.h"
+
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI38AllHighlightCategoriesTableViewAdaptor
+@interface _TtC18HealthExperienceUI38AllHighlightCategoriesTableViewAdaptor : _$s18HealthExperienceUI25SectionedTableViewAdaptorCN
 {
 }
 

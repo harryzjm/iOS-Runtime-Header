@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/TVRowHosting_Collection-Protocol.h>
+#import "_TVShelfView.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TVMLShelfView <TVRowHosting_Collection>
+@interface _TVMLShelfView : _TVShelfView
 {
     double _showcaseFactor;
 }

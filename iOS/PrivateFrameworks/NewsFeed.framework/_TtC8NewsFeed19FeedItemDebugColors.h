@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed19FeedItemDebugColors : _TtCs12_SwiftObject
 {
     MISSING_TYPE *debugColors;
+    MISSING_TYPE *$__lazy_storage_$_availableColors;
 }
 
 @end

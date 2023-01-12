@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithConnection:(id)arg1 filter:(struct CalFilter *)arg2 replyID:(unsigned int)arg3;
+- (void)configureSearch:(id)arg1;
 
 @end
 

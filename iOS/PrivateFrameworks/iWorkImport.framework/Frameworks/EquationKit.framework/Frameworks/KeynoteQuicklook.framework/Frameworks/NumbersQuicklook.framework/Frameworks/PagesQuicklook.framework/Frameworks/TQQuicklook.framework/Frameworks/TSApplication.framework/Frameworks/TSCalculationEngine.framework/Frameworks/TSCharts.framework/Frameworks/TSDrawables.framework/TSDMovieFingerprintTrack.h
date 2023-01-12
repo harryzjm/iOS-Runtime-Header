@@ -6,11 +6,9 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <TSDrawables/NSCopying-Protocol.h>
-
 @class NSString, TSPDigest;
 
-@interface TSDMovieFingerprintTrack : TSKSosBase <NSCopying>
+@interface TSDMovieFingerprintTrack : TSKSosBase
 {
     NSString *_mediaType;
     _Bool _enabled;

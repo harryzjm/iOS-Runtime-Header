@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-#import <iTunesCloud/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
-@interface ICSQLiteConnectionOptions : NSObject <NSCopying, NSSecureCoding>
+__attribute__((visibility("hidden")))
+@interface ICSQLiteConnectionOptions : NSObject
 {
     _Bool _readOnly;
     NSString *_databasePath;

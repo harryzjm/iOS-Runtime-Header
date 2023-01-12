@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UISceneSnapshotPresentation-Protocol.h>
+#import "UIView.h"
 
 @class FBSceneSnapshot, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneSnapshotPresentationView <UISceneSnapshotPresentation>
+@interface _UISceneSnapshotPresentationView : UIView
 {
     FBSceneSnapshot *_snapshot;
 }

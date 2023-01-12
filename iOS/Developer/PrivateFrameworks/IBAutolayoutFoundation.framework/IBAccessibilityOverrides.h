@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSNumber, NSString;
 
-@interface IBAccessibilityOverrides : NSObject <IBBinaryArchiving>
+@interface IBAccessibilityOverrides : NSObject
 {
     _Bool _isEnabled;
     NSNumber *_boldText;
@@ -35,7 +33,6 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToAccessibilityOverrides:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isDefault;
 - (id)effectiveOverridesFromCapabilities:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;

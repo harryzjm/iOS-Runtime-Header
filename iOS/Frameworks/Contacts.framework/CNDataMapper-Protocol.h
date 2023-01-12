@@ -6,14 +6,17 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class CNAuthorizationContext, CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContactsEnvironment, CNContainer, CNManagedConfiguration, CNObservable, CNPolicy, CNResult, CNSaveRequest, NSArray, NSData, NSDictionary, NSNumber, NSPredicate, NSString;
+@class CNAuthorizationContext, CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContainer, CNDataMapperConfiguration, CNObservable, CNPolicy, CNPolicyDescription, CNResult, CNSaveRequest, NSArray, NSData, NSDictionary, NSNumber, NSPredicate, NSString;
 @protocol CNCancelable, CNKeyDescriptor;
 
 @protocol CNDataMapper <NSObject>
+@property(readonly) _Bool shouldLogContactsAccess;
+- (NSNumber *)contactCountForFetchRequest:(CNContactFetchRequest *)arg1 error:(id *)arg2;
 - (NSString *)defaultContainerIdentifier;
 - (NSArray *)subgroupsOfGroupWithIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (NSArray *)groupsMatchingPredicate:(NSPredicate *)arg1 error:(id *)arg2;
 - (NSArray *)accountsMatchingPredicate:(NSPredicate *)arg1 error:(id *)arg2;
+- (CNPolicy *)policyWithDescription:(CNPolicyDescription *)arg1 error:(id *)arg2;
 - (CNPolicy *)policyForContainerWithIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (NSArray *)serverSearchContainersMatchingPredicate:(NSPredicate *)arg1 error:(id *)arg2;
 - (NSArray *)containersMatchingPredicate:(NSPredicate *)arg1 error:(id *)arg2;
@@ -24,9 +27,10 @@
 - (NSArray *)authorizedKeysForContactKeys:(NSArray *)arg1 error:(id *)arg2;
 - (_Bool)requestAccessForEntityType:(long long)arg1 error:(id *)arg2;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
-- (id)initWithContactsEnvironment:(CNContactsEnvironment *)arg1 managedConfiguration:(CNManagedConfiguration *)arg2;
+- (id)initWithConfiguration:(CNDataMapperConfiguration *)arg1;
 
 @optional
+@property(readonly, nonatomic) _Bool shouldLogPrivacyAccountingAccessEvents;
 @property(retain, nonatomic) NSString *legacyTetheredSyncComputerAnchor;
 @property(retain, nonatomic) NSString *legacyTetheredSyncDeviceAnchor;
 - (_Bool)resetSortDataIfNeededWithError:(id *)arg1;
@@ -51,11 +55,11 @@
 - (_Bool)setMeContact:(CNContact *)arg1 forContainer:(CNContainer *)arg2 error:(id *)arg3;
 - (_Bool)setMeContact:(CNContact *)arg1 error:(id *)arg2;
 - (NSArray *)groupsWithIdentifiers:(NSArray *)arg1 error:(id *)arg2;
+- (_Bool)hasGroups;
 - (_Bool)hasMultipleGroupsOrAccounts;
 - (void)setNotificationSource:(id)arg1;
 - (_Bool)moveContacts:(NSArray *)arg1 fromContainer:(CNContainer *)arg2 toContainer:(CNContainer *)arg3 error:(id *)arg4;
 - (NSArray *)sectionListOffsetsForSortOrder:(long long)arg1 error:(id *)arg2;
-- (NSNumber *)contactCountForFetchRequest:(CNContactFetchRequest *)arg1 error:(id *)arg2;
 - (NSNumber *)unifiedContactCountWithError:(id *)arg1;
 - (int)saveSequenceCount;
 - (NSString *)identifierWithError:(id *)arg1;

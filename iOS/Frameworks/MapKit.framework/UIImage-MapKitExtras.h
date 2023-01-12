@@ -6,11 +6,9 @@
 
 #import <UIKit/UIImage.h>
 
-#import <MapKit/MKArtworkImageSource-Protocol.h>
-
 @class NSString;
 
-@interface UIImage (MapKitExtras) <MKArtworkImageSource>
+@interface UIImage (MapKitExtras)
 + (id)_mapkit_imageNamed:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)_mapkit_imageNamed:(id)arg1;
 + (id)_mapkit_liveTransitIndicatorImageUsingDarkMode:(_Bool)arg1;

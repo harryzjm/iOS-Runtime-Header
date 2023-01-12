@@ -7,19 +7,16 @@
 #import <TextInput/TIKeyboardOutput.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIInputViewKeyboardOutput : TIKeyboardOutput <NSCopying, NSSecureCoding>
+@interface _UIInputViewKeyboardOutput : TIKeyboardOutput <NSCopying>
 {
     _Bool _didBeginOutput;
-    long long _positionOffset;
 }
 
 + (id)outputWithKeyboardOutput:(id)arg1;
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool didBeginOutput; // @synthesize didBeginOutput=_didBeginOutput;
-@property(nonatomic) long long positionOffset; // @synthesize positionOffset=_positionOffset;
 - (void)setHandwritingStrokesToDelete:(id)arg1;
 - (void)setShortcutConversion:(id)arg1;
 - (void)setInsertionTextAfterSelection:(id)arg1;
@@ -28,8 +25,9 @@ __attribute__((visibility("hidden")))
 - (void)setAcceptedCandidate:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+
+// Remaining properties
+@property(nonatomic) long long positionOffset;
 
 @end
 

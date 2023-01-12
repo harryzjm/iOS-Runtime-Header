@@ -6,12 +6,10 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-#import <MediaPlaybackCore/MPMiddlewareOperation-Protocol.h>
-
 @class MPCFuture, MPCMediaRemoteMiddleware, NSArray, NSError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCMediaRemoteMiddlewarePlaybackStateOperation : MPAsyncOperation <MPMiddlewareOperation>
+@interface MPCMediaRemoteMiddlewarePlaybackStateOperation : MPAsyncOperation
 {
     CDUnknownBlockType _invalidationHandler;
     NSArray *_invalidationObservers;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Sleep/HKSPQueueBackedScheduler-Protocol.h>
-
 @class NSString;
 @protocol NAScheduler, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _HKSPQueueBackedScheduler : NSObject <HKSPQueueBackedScheduler>
+@interface _HKSPQueueBackedScheduler : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     id <NAScheduler> _scheduler;
@@ -21,6 +19,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <NAScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (void)resume;
+- (void)suspend;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;

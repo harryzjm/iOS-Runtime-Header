@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)savePlaybackHistoryWithUpdates:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)savePlaybackHistoryWithUpdates:(CDUnknownBlockType)arg1;
 - (long long)removeExplicitItems;
+- (void)removeAllItems;
 @property(readonly, copy, nonatomic) ICRadioPlaybackHistory *playbackHistory;
 @property(readonly, nonatomic) long long numberOfItems;
 - (_Bool)isExplicitItemAtIndex:(long long)arg1;

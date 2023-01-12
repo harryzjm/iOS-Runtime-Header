@@ -10,8 +10,12 @@
 
 @interface _TtC14NewsEngagement43EngagementInlineDialogViewControllerFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *debugPlacementFactory;
+    MISSING_TYPE *upsellDialogRequestFactory;
+    MISSING_TYPE *debugDialogRequestFactory;
+    MISSING_TYPE *featureSettings;
     MISSING_TYPE *newsServiceType;
+    MISSING_TYPE *$__lazy_storage_$_smarterMessagingEnabled;
+    MISSING_TYPE *isUpsellDialogRequestFactoryReady;
 }
 
 @end

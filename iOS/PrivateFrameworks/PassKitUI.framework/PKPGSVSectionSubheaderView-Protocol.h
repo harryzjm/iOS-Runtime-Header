@@ -9,9 +9,9 @@
 @protocol PKPGSVSectionSubheaderDelegate;
 
 @protocol PKPGSVSectionSubheaderView <NSObject>
-- (_Bool)needsUpdate;
-
-@optional
 - (void)setSubheaderDelegate:(id <PKPGSVSectionSubheaderDelegate>)arg1;
+- (long long)scrollType;
+- (void)setSectionsState:(CDStruct_e7027284)arg1;
+- (_Bool)needsRemoval;
 @end
 

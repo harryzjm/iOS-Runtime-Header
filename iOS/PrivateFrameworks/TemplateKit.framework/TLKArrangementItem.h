@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TemplateKit/NUIArrangementItem-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface TLKArrangementItem : NSObject <NUIArrangementItem>
+@interface TLKArrangementItem : NSObject
 {
     struct CGSize _size;
 }

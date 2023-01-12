@@ -10,11 +10,11 @@
 
 @interface __VKMapViewAccessibility : NSObject
 {
-    struct _retain_ptr<VKCamera *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+    struct _retain_ptr<VKCamera *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_vptr$_retain_ptr;
         VKCamera *_obj;
-        struct _retain_objc _retain;
-        struct _release_objc _release;
+        struct _retain_objc_arc _retain;
+        struct _release_objc_arc _release;
     } __geo_retain_ptr_vkcamera__;
     struct CGPoint __CGPoint__;
 }

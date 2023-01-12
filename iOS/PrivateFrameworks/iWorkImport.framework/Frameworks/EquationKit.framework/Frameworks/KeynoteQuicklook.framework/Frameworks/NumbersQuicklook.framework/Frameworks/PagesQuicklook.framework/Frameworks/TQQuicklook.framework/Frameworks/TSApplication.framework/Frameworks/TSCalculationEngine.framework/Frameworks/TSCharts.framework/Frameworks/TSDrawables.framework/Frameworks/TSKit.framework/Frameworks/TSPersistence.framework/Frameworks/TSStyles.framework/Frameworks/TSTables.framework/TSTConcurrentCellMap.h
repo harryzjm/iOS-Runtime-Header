@@ -6,16 +6,14 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-#import <TSTables/TSTCellMapChangeDescriptorDelivering-Protocol.h>
-
 @class NSMutableArray;
 
-@interface TSTConcurrentCellMap : TSPObject <NSCopying, TSTCellMapChangeDescriptorDelivering>
+@interface TSTConcurrentCellMap : TSPObject
 {
     _Bool _uidBased;
     _Bool _mayModifyFormulasInCells;
     _Bool _mayModifyValuesReferencedByFormulas;
+    _Bool _affectsCellBorders;
     _Bool _applyingToTable;
     NSMutableArray *_mergeActions;
     NSMutableArray *_cellLists;
@@ -24,6 +22,7 @@
     TSKUIDStructVectorTemplate_de88e035 _cachedColumnUIDs;
 }
 
++ (id)concurrentCellMapWithContext:(id)arg1 cellUIDRange:(struct TSKUIDStructTract)arg2 repeatCellVectorPattern:(const void *)arg3 patternDirection:(long long)arg4 uidBased:(_Bool)arg5 affectsCellBorders:(_Bool)arg6;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool applyingToTable; // @synthesize applyingToTable=_applyingToTable;
@@ -32,6 +31,7 @@
 @property(retain, nonatomic) NSMutableArray *inverseMergeActions; // @synthesize inverseMergeActions=_inverseMergeActions;
 @property(retain, nonatomic) NSMutableArray *cellLists; // @synthesize cellLists=_cellLists;
 @property(retain, nonatomic) NSMutableArray *mergeActions; // @synthesize mergeActions=_mergeActions;
+@property(readonly, nonatomic) _Bool affectsCellBorders; // @synthesize affectsCellBorders=_affectsCellBorders;
 @property(nonatomic) _Bool mayModifyValuesReferencedByFormulas; // @synthesize mayModifyValuesReferencedByFormulas=_mayModifyValuesReferencedByFormulas;
 @property(nonatomic) _Bool mayModifyFormulasInCells; // @synthesize mayModifyFormulasInCells=_mayModifyFormulasInCells;
 @property(nonatomic, getter=isUIDBased) _Bool uidBased; // @synthesize uidBased=_uidBased;
@@ -42,8 +42,10 @@
 - (_Bool)containsMergeChanges;
 - (void)pushInverseMergeAction:(id)arg1;
 - (void)addMergeActions:(id)arg1;
+- (void)addHeadMergeAction:(id)arg1;
 - (void)addMergeAction:(id)arg1;
 - (void)convertToInverseCellMap;
+- (void)willApplyToTableModel:(id)arg1;
 - (void)willApplyToTable:(id)arg1;
 - (void)enumerateCustomFormatsBeingAddedUsingReplacementBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRowCellCountDiffUsingBlock:(CDUnknownBlockType)arg1;
@@ -52,7 +54,8 @@
 - (void)enumerateRowsOfCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg1;
 - (void)gatherRowState:(CDUnknownBlockType)arg1;
 - (void)p_enumerateCellsAddedAndRemovedForFormatsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateCellsAddedAndRemovedOfType:(long long)arg1 withOptions:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateCellsAddedOfType:(unsigned long long)arg1 withOptions:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateCellsAddedAndRemovedOfType:(unsigned long long)arg1 withOptions:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)p_enumerateNewAndOldCellsSeriallyUsingPreBNCBlock:(CDUnknownBlockType)arg1;
 - (void)p_enumerateNewAndOldCellsSeriallyUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSeriallyUsingBlock:(CDUnknownBlockType)arg1;
@@ -63,7 +66,7 @@
 - (id)changeDescriptorsForTable:(id)arg1;
 - (void)appendCellLists:(id)arg1;
 - (void)appendCellList:(id)arg1;
-- (void)accumulateCurrentCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg1;
+- (void)accumulateBordersConcurrentlyUsingBlock:(CDUnknownBlockType)arg1 accumulateCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg2;
 - (const void *)columnUIDs;
 - (const void *)rowUIDs;
 - (void)p_cacheRowColumnUIDs;
@@ -72,11 +75,10 @@
 - (unsigned long long)cellCount;
 - (_Bool)hasMultipleCells;
 - (_Bool)hasCells;
-- (_Bool)containsCellBorderChanges;
 - (_Bool)containsCellChanges;
 - (void)convertToUuidBasedCellMapUsingTableInfo:(id)arg1 pruneCategorizedCells:(_Bool)arg2;
-- (id)initWithContext:(id)arg1;
-- (id)initWithContext:(id)arg1 uidBased:(_Bool)arg2;
+- (id)initWithContext:(id)arg1 affectsCellBorders:(_Bool)arg2;
+- (id)initWithContext:(id)arg1 uidBased:(_Bool)arg2 affectsCellBorders:(_Bool)arg3;
 
 @end
 

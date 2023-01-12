@@ -10,6 +10,7 @@
 
 @interface _TtC8VideosUI14SearchFragment : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *query;
     MISSING_TYPE *templateViewModel;
     MISSING_TYPE *categories;
     MISSING_TYPE *topResultsCollection;

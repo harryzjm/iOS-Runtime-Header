@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface BCSHoursPeriodMessage : PBCodable <NSCopying>
+@interface BCSHoursPeriodMessage : PBCodable
 {
     NSMutableArray *_hours;
 }

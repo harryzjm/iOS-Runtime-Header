@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOMapRequest.h"
+
 @class GEOMapAccess, GEOMapTileFinder;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapTransitPointFinder
+@interface GEOMapTransitPointFinder : GEOMapRequest
 {
     GEOMapTileFinder *_tileFinder;
     CDStruct_34734122 _centerPoint;
@@ -17,7 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)_validatePoint:(void *)arg1 rect:(CDStruct_90e2a262)arg2 localSearch:(Box_3fb92e00)arg3 validPointHandler:(CDUnknownBlockType)arg4;
+- (void)_validatePoint:(void *)arg1 rect:(CDStruct_02837cd9)arg2 localSearch:(Box_3fb92e00)arg3 validPointHandler:(CDUnknownBlockType)arg4;
 - (void)findTransitPointsOfType:(unsigned long long)arg1 nodeHandler:(CDUnknownBlockType)arg2 accessPointHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) GEOMapAccess *map;
 - (void)cancel;

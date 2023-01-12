@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
-
 @class AMSAuthenticateRequest, AMSFinanceDialogResponse, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceAuthenticateResponse : NSObject <AMSFinancePerformable>
+@interface AMSFinanceAuthenticateResponse : NSObject
 {
     AMSAuthenticateRequest *_authenticateRequest;
     NSDictionary *_dialogDictionary;
@@ -20,10 +18,11 @@ __attribute__((visibility("hidden")))
 
 + (void)_updateTaskWithLastCredentialSource:(id)arg1 taskInfo:(id)arg2;
 + (void)_updateTaskWithAuthedAccount:(id)arg1 taskInfo:(id)arg2;
++ (id)_serviceIdentifierForResponse:(id)arg1 taskInfo:(id)arg2;
 + (id)_presentAuthRequest:(id)arg1 taskInfo:(id)arg2;
 + (void)_handleDialogFromAuthError:(id)arg1 taskInfo:(id)arg2;
 + (id)_performAuthRequest:(id)arg1 actionResult:(id)arg2 redirectURL:(id)arg3 taskInfo:(id)arg4;
-+ (id)_authenticateRequestWithAuthType:(unsigned long long)arg1 taskInfo:(id)arg2 dialogResponse:(id)arg3;
++ (id)_authenticateRequestWithAuthType:(unsigned long long)arg1 taskInfo:(id)arg2 dialogResponse:(id)arg3 serviceIdentifier:(id)arg4;
 + (id)performAuthFromResponse:(id)arg1 taskInfo:(id)arg2;
 + (unsigned long long)authenticationTypeForResponse:(id)arg1 responseDictionary:(id)arg2;
 - (void).cxx_destruct;

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSTask.h"
+
 @class ACAccount, NSData;
 @protocol AMSBagProtocol;
 
 __attribute__((visibility("hidden")))
-@interface AMSAnisetteProvisionTask
+@interface AMSAnisetteProvisionTask : AMSTask
 {
     ACAccount *_account;
     id <AMSBagProtocol> _bag;

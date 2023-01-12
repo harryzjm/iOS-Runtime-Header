@@ -20,8 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
-- (id)initialSelectedContextForMode:(long long)arg1;
-- (id)contextSectionsForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
+- (id)contextSectionContainersForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
 - (id)createChartOverlayViewController;
 - (id)primaryDisplayTypeWithApplicationItems:(id)arg1;
 - (id)controllerTitleWithApplicationItems:(id)arg1;

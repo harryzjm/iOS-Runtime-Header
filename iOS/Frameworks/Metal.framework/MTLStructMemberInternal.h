@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLStructMember.h"
+
 @class MTLType, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MTLStructMemberInternal
+@interface MTLStructMemberInternal : MTLStructMember
 {
     NSString *_name;
     unsigned long long _offset;

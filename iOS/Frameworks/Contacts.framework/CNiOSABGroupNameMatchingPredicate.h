@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Contacts/CNiOSGroupPredicate-Protocol.h>
+#import "CNPredicate.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNiOSABGroupNameMatchingPredicate <CNiOSGroupPredicate>
+@interface CNiOSABGroupNameMatchingPredicate : CNPredicate
 {
     NSString *_name;
 }

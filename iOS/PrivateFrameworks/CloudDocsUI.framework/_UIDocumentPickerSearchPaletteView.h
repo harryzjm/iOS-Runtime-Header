@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <CloudDocsUI/UISearchBarDelegate-Protocol.h>
-
 @class NSLayoutConstraint, NSString, UISearchController, _UIDocumentSearchListController;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerSearchPaletteView : UIView <UISearchBarDelegate>
+@interface _UIDocumentPickerSearchPaletteView : UIView
 {
     UISearchController *_searchController;
     _UIDocumentSearchListController *_resultsController;

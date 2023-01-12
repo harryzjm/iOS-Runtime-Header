@@ -6,12 +6,10 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <HomeKit/HMUserManagementRemoteHost-Protocol.h>
-
 @protocol HMUserManagementRemoteHost;
 
 __attribute__((visibility("hidden")))
-@interface HMUserListRemoteViewController : _UIRemoteViewController <HMUserManagementRemoteHost>
+@interface HMUserListRemoteViewController : _UIRemoteViewController
 {
     id <HMUserManagementRemoteHost> _delegate;
 }

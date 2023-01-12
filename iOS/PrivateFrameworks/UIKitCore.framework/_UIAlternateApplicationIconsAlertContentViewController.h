@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewController.h"
+
 @class NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlternateApplicationIconsAlertContentViewController
+@interface _UIAlternateApplicationIconsAlertContentViewController : UIViewController
 {
     UILabel *_messageLabel;
 }

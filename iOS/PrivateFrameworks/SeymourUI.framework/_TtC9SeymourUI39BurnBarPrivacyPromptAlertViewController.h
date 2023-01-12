@@ -11,21 +11,24 @@
 __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI39BurnBarPrivacyPromptAlertViewController : UIViewController
 {
+    MISSING_TYPE *burnBarEnabledBlock;
+    MISSING_TYPE *platform;
     MISSING_TYPE *backgroundView;
+    MISSING_TYPE *burnBar;
     MISSING_TYPE *scrollView;
     MISSING_TYPE *contentView;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *messageLabel;
     MISSING_TYPE *burnbarOnButton;
     MISSING_TYPE *burnbarOffButton;
-    MISSING_TYPE *burnBar;
-    MISSING_TYPE *burnBarEnabledBlock;
+    MISSING_TYPE *styleProvider;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)burnbarOffButtonTapped;
 - (void)burnbarOnButtonTapped;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;

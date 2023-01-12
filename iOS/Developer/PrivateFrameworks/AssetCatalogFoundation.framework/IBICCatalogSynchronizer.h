@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTDelayedInvocation, DVTFilePath, DVTStackBacktrace, IBICAbstractCatalog, NSArray, NSMutableArray, NSString;
 @protocol DVTInvalidation, IBICCatalogSynchronizerDelegate, OS_dispatch_queue;
 
-@interface IBICCatalogSynchronizer : NSObject <DVTInvalidation>
+@interface IBICCatalogSynchronizer : NSObject
 {
     NSMutableArray *_pendingChanges;
     NSArray *_workaround11472482;

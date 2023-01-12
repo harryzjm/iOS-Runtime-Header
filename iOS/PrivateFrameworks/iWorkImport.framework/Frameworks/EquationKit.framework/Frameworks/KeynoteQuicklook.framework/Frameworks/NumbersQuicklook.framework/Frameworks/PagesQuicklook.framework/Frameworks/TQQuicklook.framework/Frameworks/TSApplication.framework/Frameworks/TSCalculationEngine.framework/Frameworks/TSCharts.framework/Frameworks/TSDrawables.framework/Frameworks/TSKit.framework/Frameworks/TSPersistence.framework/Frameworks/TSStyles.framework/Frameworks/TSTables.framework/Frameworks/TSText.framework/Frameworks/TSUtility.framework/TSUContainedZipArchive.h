@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSUZipArchive, TSUZipEntry;
+#import "TSUZipArchive.h"
 
-@interface TSUContainedZipArchive
+@class TSUZipEntry;
+
+@interface TSUContainedZipArchive : TSUZipArchive
 {
     TSUZipArchive *_zipArchive;
     TSUZipEntry *_entry;

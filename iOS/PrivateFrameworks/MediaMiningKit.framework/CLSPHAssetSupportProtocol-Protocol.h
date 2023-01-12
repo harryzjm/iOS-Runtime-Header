@@ -6,16 +6,16 @@
 
 #import <MediaMiningKit/CLSInvestigationItem-Protocol.h>
 
-@class CLSAssetFaceInformationSummary, NSSet, PHAssetAestheticProperties, PHAssetCurationProperties, PHAssetMediaAnalysisProperties;
-@protocol CLSAssetProcessedSignals;
+@class CLSAssetFaceInformationSummary, CLSAssetProcessedSignals, NSSet, PHAssetAestheticProperties, PHAssetCurationProperties, PHAssetMediaAnalysisProperties;
 
 @protocol CLSPHAssetSupportProtocol <CLSInvestigationItem>
-@property(readonly, nonatomic) id <CLSAssetProcessedSignals> clsProcessedSignals;
+@property(readonly, nonatomic) CLSAssetProcessedSignals *clsProcessedSignals;
 @property(readonly, nonatomic) CLSAssetFaceInformationSummary *clsFaceInformationSummary;
 - (short)clsInterestingAudioClassifications;
 - (_Bool)clsIsTragicFailure;
 - (_Bool)clsIsGuestAsset;
 - (NSSet *)clsSceneClassifications;
+- (double)clsWallpaperScore;
 - (unsigned long long)clsVideoFaceCount;
 - (double)clsActivityScore;
 - (double)clsVideoScore;
@@ -27,6 +27,7 @@
 - (unsigned long long)pixelHeight;
 - (unsigned long long)pixelWidth;
 - (double)duration;
+- (_Bool)isMonoskiMedia;
 - (_Bool)representsBurst;
 - (_Bool)isSubtype:(unsigned long long)arg1;
 - (_Bool)isIncludedInCloudFeeds;

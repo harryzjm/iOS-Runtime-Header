@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSWPReplaceAction-Protocol.h>
-
 @class NSString, TSWPChangeSession, TSWPSelection;
 
-@interface TSWPTrackedInsertion : NSObject <TSWPReplaceAction>
+@interface TSWPTrackedInsertion : NSObject
 {
     TSWPSelection *_selection;
     NSString *_string;

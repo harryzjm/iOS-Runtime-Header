@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
-#import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSource-Protocol.h>
-
 @class MPCPlaybackEngine, MPCPlayerPath, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _MPCPlaybackEngineSessionManager : NSObject <MPCPlaybackEngineEventObserving, MPNowPlayingPlaybackQueueDataSource>
+@interface _MPCPlaybackEngineSessionManager : NSObject
 {
     MPCPlaybackEngine *_playbackEngine;
     NSObject<OS_dispatch_queue> *_serialQueue;

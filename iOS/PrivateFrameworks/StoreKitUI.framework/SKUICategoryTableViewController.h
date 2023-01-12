@@ -6,14 +6,11 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <StoreKitUI/SKUICategoryArtworkLoaderObserver-Protocol.h>
-#import <StoreKitUI/SKUICategoryTableViewControllerDelegate-Protocol.h>
-
 @class NSArray, NSString, NSURL, SKUICategory, SKUICategoryArtworkLoader, SKUIClientContext;
 @protocol SKUICategoryTableViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUICategoryTableViewController : UITableViewController <SKUICategoryArtworkLoaderObserver, SKUICategoryTableViewControllerDelegate>
+@interface SKUICategoryTableViewController : UITableViewController
 {
     SKUICategoryArtworkLoader *_artworkLoader;
     SKUICategory *_category;

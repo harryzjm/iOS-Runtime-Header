@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AXMediaUtilities/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface iconclassificationOutput : NSObject <MLFeatureProvider>
+@interface iconclassificationOutput : NSObject
 {
     MLMultiArray *_leaf_leaf_predictions_probabilities;
 }

@@ -4,15 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIControlEventsGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIPageIndicatorFeedDelegate-Protocol.h>
-#import <UIKitCore/_UIPageIndicatorStoreDelegate-Protocol.h>
-
 @class CADisplayLink, CAMediaTimingFunction, NSString, UIDelayedAction, UIImpactFeedbackGenerator, UILongPressGestureRecognizer, UISelectionFeedbackGenerator, UITapGestureRecognizer, UIViewFloatAnimatableProperty, UIVisualEffectView, _UIPageControlContentView, _UIPageControlIndicatorContentView, _UIPageControlInteractor, _UIPageIndicatorFeed, _UIPageIndicatorStore;
 
 __attribute__((visibility("hidden")))
-@interface _UIInteractivePageControlVisualProvider <_UIPageIndicatorFeedDelegate, _UIPageIndicatorStoreDelegate, UIGestureRecognizerDelegate, _UIControlEventsGestureRecognizerDelegate>
+@interface _UIInteractivePageControlVisualProvider
 {
     struct {
         unsigned int scrubbing:1;
@@ -75,6 +70,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)controlEventsGestureRecognizer:(id)arg1 recognizedControlEvent:(unsigned long long)arg2 withEvent:(id)arg3;
+- (id)preferredActiveIndicatorImage;
+- (void)setPreferredActiveIndicatorImage:(id)arg1;
+- (void)setCustomActiveIndicatorImage:(id)arg1 forPage:(long long)arg2;
+- (id)customActiveIndicatorImageForPage:(long long)arg1;
 - (id)preferredIndicatorImage;
 - (void)setPreferredIndicatorImage:(id)arg1;
 - (void)setCustomIndicatorImage:(id)arg1 forPage:(long long)arg2;
@@ -83,9 +82,12 @@ __attribute__((visibility("hidden")))
 - (id)indicatorImageForPage:(long long)arg1;
 - (unsigned long long)maxVisibleIndicators;
 - (struct CGSize)indicatorSizeForImage:(id)arg1;
+- (struct CGRect)indicatorFrameForPage:(long long)arg1;
 - (struct CGSize)sizeForNumberOfPages:(long long)arg1;
 - (void)invalidateIndicators;
 - (void)layoutSubviews;
+- (void)setIndicatorOpacity:(double)arg1;
+- (double)indicatorOpacity;
 - (void)updateDisplayedPageToCurrentPage;
 - (void)didUpdateCurrentPageIndicatorTintColor;
 - (void)didUpdatePageIndicatorTintColor;

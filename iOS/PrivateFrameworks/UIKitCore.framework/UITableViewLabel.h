@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UILabel.h"
+
 @class NSAttributedString, UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewLabel
+@interface UITableViewLabel : UILabel
 {
     long long _savedNumberOfLines;
     double _firstParagraphFirstLineHeadIndent;

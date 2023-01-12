@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString, UIView;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface UIViewControllerBuiltinTransitionViewAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface UIViewControllerBuiltinTransitionViewAnimator : NSObject
 {
     id <UIViewControllerContextTransitioning> _transitionContext;
     _Bool _removeFromView;

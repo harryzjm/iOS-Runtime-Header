@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FMCoreLite/FMQueueingStrategy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _FMDefaultQueueingStrategy : NSObject <FMQueueingStrategy>
+@interface _FMDefaultQueueingStrategy : NSObject
 {
 }
 

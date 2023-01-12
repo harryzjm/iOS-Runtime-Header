@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlayer/MPSectionedIdentifierListEnumerationTrackingEntry-Protocol.h>
-
 @class MPSectionedIdentifierListHeadEntry, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPSectionedIdentifierListTailEntry <MPSectionedIdentifierListEnumerationTrackingEntry>
+@interface MPSectionedIdentifierListTailEntry
 {
     MPSectionedIdentifierListHeadEntry *_sectionHeadEntry;
 }

@@ -8,8 +8,6 @@
 @protocol SNRequest, SNResultsObserving;
 
 @protocol SNSystemAudioAnalyzerProtocol
-- (void)stop;
-- (void)start;
 - (void)removeAllRequests;
 - (void)removeRequest:(id <SNRequest>)arg1;
 - (_Bool)addRequest:(id <SNRequest>)arg1 withObserver:(id <SNResultsObserving>)arg2 error:(id *)arg3;

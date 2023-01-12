@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSProgressSubscriber-Protocol.h>
-
 @class NSLock, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSProgressSubscriber : NSObject <NSProgressSubscriber>
+@interface _NSProgressSubscriber : NSObject
 {
     CDUnknownBlockType _publishingHandler;
     NSString *_subscriberID;

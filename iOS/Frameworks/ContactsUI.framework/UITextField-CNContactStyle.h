@@ -6,11 +6,9 @@
 
 #import <UIKit/UITextField.h>
 
-#import <ContactsUI/ABText-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface UITextField (CNContactStyle) <ABText>
+@interface UITextField (CNContactStyle)
 - (void)_cnui_applyContactStyle;
 @property(copy, nonatomic) NSDictionary *ab_textAttributes;
 @property(copy, nonatomic) NSString *ab_text;

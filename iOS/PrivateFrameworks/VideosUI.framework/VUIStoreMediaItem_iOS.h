@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/TVPContentKeyLoading-Protocol.h>
-#import <VideosUI/TVPMediaItemReportingDelegate-Protocol.h>
-#import <VideosUI/VUIStoreFPSKeyLoaderDelegate-Protocol.h>
-
 @class NSDictionary, NSError, NSNumber, NSObject, NSString, NSURL, VUIStoreDownloadMonitor, VUIStoreFPSKeyLoader;
 
 __attribute__((visibility("hidden")))
-@interface VUIStoreMediaItem_iOS <TVPMediaItemReportingDelegate, TVPContentKeyLoading, VUIStoreFPSKeyLoaderDelegate>
+@interface VUIStoreMediaItem_iOS
 {
     _Bool _isBingeWatched;
     _Bool _needsRentalCheckin;

@@ -9,6 +9,7 @@
 @class ICSQLiteConnectionOptions, NSError, NSMapTable, NSMutableArray, NSNumber;
 @protocol ICSQLiteConnectionDelegate;
 
+__attribute__((visibility("hidden")))
 @interface ICSQLiteConnection : NSObject
 {
     NSMutableArray *_afterTransactionBlocks;

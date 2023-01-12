@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKStatistics.h>
 
-#import <HealthToolbox/WDDataListDataObjectSource-Protocol.h>
-
 @class NSString;
 
-@interface HKStatistics (WDDataListDataObjectSource) <WDDataListDataObjectSource>
+@interface HKStatistics (WDDataListDataObjectSource)
 - (id)device;
 - (id)source;
 

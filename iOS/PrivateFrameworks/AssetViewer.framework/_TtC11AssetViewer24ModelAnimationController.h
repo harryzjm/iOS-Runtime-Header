@@ -12,7 +12,19 @@
 {
     MISSING_TYPE *rootEntities;
     MISSING_TYPE *assetManager;
+    MISSING_TYPE *interactionService;
+    MISSING_TYPE *audioListener;
+    MISSING_TYPE *_duration;
+    MISSING_TYPE *animationState;
+    MISSING_TYPE *audioPlaybackStates;
     MISSING_TYPE *animationControllers;
+    MISSING_TYPE *_isPlaying;
+    MISSING_TYPE *_playbackTimePublished;
+    MISSING_TYPE *isMuted;
+    MISSING_TYPE *unmutedAudioListenerGain;
+    MISSING_TYPE *hasAudio;
+    MISSING_TYPE *isLooping;
+    MISSING_TYPE *playbackCompletedCancellable;
 }
 
 @end

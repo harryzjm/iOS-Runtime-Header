@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSUUID.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSConcreteUUID
+@interface __NSConcreteUUID : NSUUID
 {
     unsigned char _uuidBytes[16];
 }

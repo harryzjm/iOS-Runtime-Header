@@ -7,6 +7,8 @@
 @class CTXPCServiceSubscriptionContext, NSString;
 
 @protocol CTXPCServiceCallInterface
+- (void)setShouldShowBrandedCallingInfo:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)shouldShowBrandedCallingInfo:(void (^)(_Bool, NSError *))arg1;
 - (void)shouldShowUserWarningWhenDialingCallOnContext:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)getOperatorMultiPartyCallCountMaximum:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)getCallCapabilities:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTCallCapabilities *, NSError *))arg2;

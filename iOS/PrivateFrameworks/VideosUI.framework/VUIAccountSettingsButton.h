@@ -10,17 +10,26 @@ __attribute__((visibility("hidden")))
 @interface VUIAccountSettingsButton
 {
     AAUIProfilePictureStore *_profilePictureStore;
+    struct CGSize _preferedContentSize;
+    struct CGSize _contentSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(retain, nonatomic) AAUIProfilePictureStore *profilePictureStore; // @synthesize profilePictureStore=_profilePictureStore;
+@property(nonatomic) struct CGSize preferedContentSize; // @synthesize preferedContentSize=_preferedContentSize;
+- (double)accountSettingsButtonDimension;
 - (void)_accountStoreDidChange:(id)arg1;
+- (void)_updateImageViewFrame;
 - (void)_updateAccessibilityFrame;
 - (void)_updateAccountButtonVisibility:(_Bool)arg1;
 - (void)_updateAccountImage;
 - (void)_setupAccountImageView;
 - (void)_setup;
+- (void)vui_traitCollectionDidChange:(id)arg1;
+- (void)setTintColor:(id)arg1;
 - (void)layoutSubviews;
+- (struct CGSize)calculateContentSize;
 - (void)configureWithLayoutProperties;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setFrame:(struct CGRect)arg1;

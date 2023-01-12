@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSDServiceBrokerProtocol-Protocol.h>
-
 @class NSMutableArray, NSMutableSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AMSDaemonConnection : NSObject <AMSDServiceBrokerProtocol>
+@interface AMSDaemonConnection : NSObject
 {
     NSXPCConnection *_sharedConnection;
     NSObject<OS_dispatch_queue> *_sharedConnectionAccessQueue;
@@ -32,8 +30,10 @@ __attribute__((visibility("hidden")))
 - (id)_connectionProxyForAsync:(_Bool)arg1 accessBlock:(CDUnknownBlockType)arg2;
 - (id)securityServiceProxyWithDelegate:(id)arg1;
 - (id)pushNotificationService;
+- (id)purchaseServiceProxy;
 - (id)fraudReportServiceProxy;
 - (id)deviceMessengerProxyWithDelegate:(id)arg1;
+- (id)cookieServiceProxy;
 - (id)callService:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (void)addInterruptionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;

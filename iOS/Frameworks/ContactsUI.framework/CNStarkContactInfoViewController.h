@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/CNUIGeminiDataSourceDelegate-Protocol.h>
-
 @class CNContact, CNContactGeminiView, CNGeminiResult, CNUIGeminiDataSource, NSArray, NSLayoutYAxisAnchor, NSString, UILabel, UIStackView;
 
 __attribute__((visibility("hidden")))
-@interface CNStarkContactInfoViewController : UIViewController <CNUIGeminiDataSourceDelegate>
+@interface CNStarkContactInfoViewController : UIViewController
 {
     NSLayoutYAxisAnchor *_firstBaselineAnchor;
     UILabel *_primaryLabel;

@@ -6,11 +6,13 @@
 
 #import <SpotlightUIInternal/NSObject-Protocol.h>
 
-@class SFCardSection, UIViewController;
+@class CALayer, NSArray, SFCardSection, UIViewController;
 
 @protocol SearchUICardViewDelegate <NSObject>
 
 @optional
+- (CALayer *)customLayerForCardSection:(SFCardSection *)arg1;
+- (NSArray *)customInteractionsForCardSection:(SFCardSection *)arg1;
 - (void)cardViewController:(UIViewController *)arg1 preferredContentSizeDidChange:(struct CGSize)arg2 animated:(_Bool)arg3;
 - (void)presentViewController:(UIViewController *)arg1;
 - (UIViewController *)customViewControllerForCardSection:(SFCardSection *)arg1;

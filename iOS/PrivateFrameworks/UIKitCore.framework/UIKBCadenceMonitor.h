@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIKBRTRecognizerAveragingRuleProtocol-Protocol.h>
-
 @class UIDelayedAction;
 
 __attribute__((visibility("hidden")))
-@interface UIKBCadenceMonitor : NSObject <_UIKBRTRecognizerAveragingRuleProtocol>
+@interface UIKBCadenceMonitor : NSObject
 {
     _Bool _isUserTyping;
     float _cadence;

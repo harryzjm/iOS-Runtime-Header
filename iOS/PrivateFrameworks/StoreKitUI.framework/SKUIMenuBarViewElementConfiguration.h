@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/IKAppMenuBarDocumentDelegate-Protocol.h>
-
 @class IKAppMenuBarDocument, NSArray, NSString, SKUIMenuItemViewElement;
 @protocol SKUIMenuBarViewElementConfigurationDelegate, _SKUIMenuBarViewElementConfigurationReloadDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMenuBarViewElementConfiguration : NSObject <IKAppMenuBarDocumentDelegate>
+@interface SKUIMenuBarViewElementConfiguration : NSObject
 {
     IKAppMenuBarDocument *_menuBarDocument;
     long long _menuBarStyle;

@@ -11,6 +11,9 @@
 @protocol TabControllerDocumentObserving <NSObject>
 
 @optional
+- (void)tabControllerDidSwitchTabGroups:(TabController *)arg1;
+- (void)tabControllerDidEndUpdates:(TabController *)arg1;
+- (void)tabControllerWillBeginUpdates:(TabController *)arg1;
 - (void)tabControllerDidChangeCurrentTabDocuments:(TabController *)arg1;
 - (void)tabController:(TabController *)arg1 didMoveTabDocument:(TabDocument *)arg2 overTabDocument:(TabDocument *)arg3;
 - (void)tabController:(TabController *)arg1 didInsertTabDocument:(TabDocument *)arg2;

@@ -6,30 +6,23 @@
 
 #import <Sleep/HKSPPersistentStateMachineState.h>
 
-#import <SleepDaemon/HDSPSleepWidgetStateMachineEventHandler-Protocol.h>
-
-@class NSString;
+@class HDSPSleepWidgetStateMachine, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDSPSleepWidgetStateMachineState : HKSPPersistentStateMachineState <HDSPSleepWidgetStateMachineEventHandler>
+@interface HDSPSleepWidgetStateMachineState : HKSPPersistentStateMachineState
 {
 }
 
-- (void)greetingExpiredEventDue;
-- (void)bedtimeExpiredEventDue;
-- (void)upcomingChangeEventDue;
 - (void)significantTimeChangeOccurred;
 - (void)sleepScheduleModelDidChange:(id)arg1;
 - (void)sleepScheduleStateDidChange:(unsigned long long)arg1;
 - (void)sleepModeDidChange:(long long)arg1 isUserRequested:(_Bool)arg2;
-- (id)_determineNextState;
-- (void)updateState;
-- (void)didExitWithNextState:(id)arg1 context:(id)arg2;
+- (_Bool)shouldGoIntoUpcomingState;
+- (id)nextStateWithContext:(id *)arg1;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
 @property(readonly, nonatomic) _Bool widgetStateHasTimeComponent;
 @property(readonly, nonatomic) _Bool reloadsWidgetOnTimeChange;
 @property(readonly, nonatomic) _Bool reloadsWidgetOnModelChange;
-@property(readonly, nonatomic) _Bool schedulesWidgetStateChange;
 @property(readonly, nonatomic) long long widgetState;
 - (id)stateName;
 
@@ -37,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) __weak HDSPSleepWidgetStateMachine *stateMachine; // @dynamic stateMachine;
 @property(readonly) Class superclass;
 
 @end

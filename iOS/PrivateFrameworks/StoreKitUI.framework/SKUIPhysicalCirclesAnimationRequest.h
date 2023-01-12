@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SKUIPhysicalCirclesAnimationRequest : NSObject <NSCopying>
+@interface SKUIPhysicalCirclesAnimationRequest : NSObject
 {
     long long _animationType;
     CDUnknownBlockType _completionBlock;

@@ -16,9 +16,13 @@
 @property(copy, nonatomic) NSString *contentItemID;
 @property(copy, nonatomic) NSString *handoffCorrelationID;
 @property(copy, nonatomic) NSString *containerUniqueID;
+- (void)clearRadioIdentifiers;
 - (void)setRadioIdentifiersWithBlock:(void (^)(id <MPMutableRadioIdentifiers>))arg1;
+- (void)clearUniversalStoreIdentifiers;
 - (void)setUniversalStoreIdentifiersWithBlock:(void (^)(id <MPMutableUniversalStoreIdentifiers>))arg1;
+- (void)clearPersonalStoreIdentifiers;
 - (void)setPersonalStoreIdentifiersWithPersonID:(NSString *)arg1 block:(void (^)(id <MPMutablePersonalStoreIdentifiers>))arg2;
+- (void)clearLibraryIdentifiers;
 - (void)setLibraryIdentifiersWithDatabaseID:(NSString *)arg1 block:(void (^)(id <MPMutableLocalLibraryIdentifiers>))arg2;
 @end
 

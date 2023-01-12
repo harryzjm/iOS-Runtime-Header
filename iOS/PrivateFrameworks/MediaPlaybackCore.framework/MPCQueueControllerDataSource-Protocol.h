@@ -15,7 +15,7 @@
 - (MPAVItem *)itemForItem:(NSString *)arg1 inSection:(NSString *)arg2;
 - (MPIdentifierSet *)identifiersForItem:(NSString *)arg1 inSection:(NSString *)arg2;
 - (MPModelPlayEvent *)modelPlayEventForItem:(NSString *)arg1 inSection:(NSString *)arg2;
-- (void)loadPlaybackContext:(MPPlaybackContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (void)loadPlaybackContext:(MPPlaybackContext *)arg1 completion:(void (^)(NSString *, double, NSError *))arg2;
 
 @optional
 - (NSString *)firstItemIntersectingIdentifierSet:(MPIdentifierSet *)arg1;
@@ -24,7 +24,8 @@
 - (_Bool)shouldUsePlaceholderForItem:(NSString *)arg1 inSection:(NSString *)arg2;
 - (long long)prefetchThresholdForSection:(NSString *)arg1;
 - (_Bool)shouldRequestAdditionalItemsWhenReachingTailOfSection:(NSString *)arg1;
-- (_Bool)canSkipItem:(NSString *)arg1;
+- (_Bool)canSkipItem:(NSString *)arg1 reason:(id *)arg2;
+- (_Bool)canJumpToItem:(NSString *)arg1 reason:(id *)arg2;
 - (void)itemDidBeginPlayback:(MPAVItem *)arg1;
 @end
 

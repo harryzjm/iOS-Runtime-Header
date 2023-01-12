@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PairedUnlock/PUUnlockClient-Protocol.h>
-
 @class NSString, PUConnection;
 
 __attribute__((visibility("hidden")))
-@interface PUConnectionUnlockClient : NSObject <PUUnlockClient>
+@interface PUConnectionUnlockClient : NSObject
 {
     PUConnection *_connection;
 }

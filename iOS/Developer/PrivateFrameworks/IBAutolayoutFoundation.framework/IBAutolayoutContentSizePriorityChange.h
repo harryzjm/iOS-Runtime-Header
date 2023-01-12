@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 @protocol IBAutolayoutItem;
 
-@interface IBAutolayoutContentSizePriorityChange : NSObject <IBBinaryArchiving>
+@interface IBAutolayoutContentSizePriorityChange : NSObject
 {
     NSObject<IBAutolayoutItem> *_view;
     unsigned long long _type;

@@ -9,8 +9,8 @@
 @class UIView;
 
 @protocol UIInteraction <NSObject>
-@property(readonly, nonatomic) __weak UIView *view;
 - (void)didMoveToView:(UIView *)arg1;
 - (void)willMoveToView:(UIView *)arg1;
+@property(nonatomic, readonly) UIView *view;
 @end
 

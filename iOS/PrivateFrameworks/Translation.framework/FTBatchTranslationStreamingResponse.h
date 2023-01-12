@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTBatchTranslationResponse, FTFinalBlazarResponse, NSData, NSMutableDictionary;
+@protocol FLTBFBufferAccessor><NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface FTBatchTranslationStreamingResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTBatchTranslationStreamingResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
     const struct BatchTranslationStreamingResponse *_root;
 }
 
++ (long long)content_typeForImmutableObject:(id)arg1;
++ (Class)content_immutableClassForType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_149a05be)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) NSObject<FLTBFBufferAccessor><NSCopying> *content;
 @property(readonly, nonatomic) FTFinalBlazarResponse *contentAsFTFinalBlazarResponse;
 @property(readonly, nonatomic) FTBatchTranslationResponse *contentAsFTBatchTranslationResponse;
 @property(readonly, nonatomic) long long content_type;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSSQLAttributeExtension-Protocol.h>
-
 @class NSArray, NSAttributeDescription, NSSQLEntity, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSSQLLocationAttributeRTreeExtension : NSObject <NSSQLAttributeExtension>
+@interface NSSQLLocationAttributeRTreeExtension : NSObject
 {
     NSObject *_userInfoObject;
     NSArray *_components;

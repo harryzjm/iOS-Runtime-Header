@@ -11,6 +11,7 @@
 @protocol CRSUIClusterSettingsObserving <NSObject>
 
 @optional
+- (void)clusterWindow:(CRSUIClusterWindow *)arg1 didChangeLayoutJustification:(unsigned long long)arg2;
 - (void)clusterWindow:(CRSUIClusterWindow *)arg1 didChangeItemType:(unsigned long long)arg2;
 - (void)clusterWindow:(CRSUIClusterWindow *)arg1 didChangeSpeedLimitSetting:(unsigned long long)arg2;
 - (void)clusterWindow:(CRSUIClusterWindow *)arg1 didChangeETASetting:(unsigned long long)arg2;

@@ -19,6 +19,8 @@
 - (void)getSectionInfoForActiveSectionsWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getEffectiveSectionInfoWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getSectionInfoWithHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)setEffectiveGlobalNotificationListDisplayStyleSetting:(long long)arg1 withHandler:(void (^)(void))arg2;
+- (void)getEffectiveGlobalNotificationListDisplayStyleSettingWithHandler:(void (^)(long long, NSError *))arg1;
 - (void)setEffectiveGlobalScheduledDeliveryShowNextSummarySetting:(long long)arg1 withHandler:(void (^)(void))arg2;
 - (void)getEffectiveGlobalScheduledDeliveryShowNextSummarySettingWithHandler:(void (^)(long long, NSError *))arg1;
 - (void)setEffectiveGlobalScheduledDeliveryTimes:(NSArray *)arg1 withHandler:(void (^)(void))arg2;

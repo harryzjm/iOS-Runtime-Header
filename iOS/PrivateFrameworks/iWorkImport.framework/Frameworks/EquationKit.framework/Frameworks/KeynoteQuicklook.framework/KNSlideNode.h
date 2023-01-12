@@ -6,13 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/TSCEResolverContainer-Protocol.h>
-#import <KeynoteQuicklook/TSKDocumentObject-Protocol.h>
-#import <KeynoteQuicklook/TSKModel-Protocol.h>
+@class KNAbstractSlide, KNLiveVideoSourceUsage, KNSlideTree, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSUUID, TSPLazyReference;
 
-@class KNAbstractSlide, KNSlideTree, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSUUID, TSPLazyReference;
-
-@interface KNSlideNode : TSPObject <TSKDocumentObject, TSKModel, TSCEResolverContainer>
+@interface KNSlideNode : TSPObject
 {
     TSPLazyReference *_slideReference;
     NSMutableDictionary *_thumbnails;
@@ -31,7 +27,7 @@
     NSString *_previousIdentifier;
     unsigned int _tableNameCounter;
     NSArray *_children;
-    _Bool _hasBackgroundAlpha;
+    _Bool _backgroundIsNoFillOrColorFillWithAlpha;
     NSMutableDictionary *_slideSpecificHyperlinkMap;
     _Bool _hasExplicitBuilds;
     _Bool _hasExplicitBuildsIsUpToDate;
@@ -39,7 +35,7 @@
     _Bool _buildEventCountIsUpToDate;
     NSMutableSet *_remappedTableNames;
     NSUUID *_templateSlideUUID;
-    NSSet *_liveVideoSourceUUIDs;
+    KNLiveVideoSourceUsage *_liveVideoSourceUsage;
     KNSlideTree *_slideTree;
 }
 
@@ -49,10 +45,8 @@
 + (_Bool)needsObjectUUID;
 + (id)slideNodeUUIDForObsoleteUniqueIDString:(id)arg1 inSlideNodes:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSSet *liveVideoSourceUUIDs; // @synthesize liveVideoSourceUUIDs=_liveVideoSourceUUIDs;
 @property(readonly, nonatomic) NSUUID *templateSlideUUID; // @synthesize templateSlideUUID=_templateSlideUUID;
 @property(readonly, nonatomic) NSDictionary *slideSpecificHyperlinkMap; // @synthesize slideSpecificHyperlinkMap=_slideSpecificHyperlinkMap;
-@property(readonly, nonatomic) _Bool hasBackgroundAlpha; // @synthesize hasBackgroundAlpha=_hasBackgroundAlpha;
 @property(nonatomic) _Bool hasBodyInOutlineView; // @synthesize hasBodyInOutlineView=_hasBodyInOutlineView;
 @property(nonatomic, getter=isCollapsedInOutlineView) _Bool collapsedInOutlineView; // @synthesize collapsedInOutlineView=_collapsedInOutlineView;
 @property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
@@ -101,7 +95,9 @@
 - (void)p_addHyperlinkForObjectReferencedByMapping:(id)arg1 toSlideNode:(id)arg2;
 - (_Bool)hasSlideSpecificHyperlinkToNode:(id)arg1;
 - (_Bool)hasSlideSpecificHyperlinks;
-- (void)updateLiveVideoSourceUUIDs;
+@property(readonly, nonatomic) _Bool needsToUpdateLiveVideoSourceUsageAfterUnarchiving;
+- (void)updateLiveVideoSourceUsage;
+@property(readonly, nonatomic) KNLiveVideoSourceUsage *liveVideoSourceUsage;
 - (void)uniquifyTableNamesForUpgradeOrImport;
 @property(readonly, nonatomic) long long bodyParagraphCount;
 - (unsigned long long)p_buildEventCount;
@@ -112,7 +108,7 @@
 @property(readonly, nonatomic) _Bool hasBuildEvents;
 - (void)p_updateHasExplicitBuilds;
 @property(readonly, nonatomic) _Bool hasExplicitBuilds;
-- (void)updateHasBackgroundAlpha;
+- (void)updateBackgroundIsNoFillOrColorFillWithAlpha;
 - (void)updateTemplateSlideUUID;
 @property(readonly, nonatomic) NSArray *children;
 @property(readonly, nonatomic) _Bool hasChildren;

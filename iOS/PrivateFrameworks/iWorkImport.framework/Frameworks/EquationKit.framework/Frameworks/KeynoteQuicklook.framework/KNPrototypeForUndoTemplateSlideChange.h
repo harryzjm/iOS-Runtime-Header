@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/TSSPropertySource-Protocol.h>
-
 @class KNSlideStyle, KNTemplateSlide, NSArray, NSDictionary, NSString, NSUUID;
 
-@interface KNPrototypeForUndoTemplateSlideChange : TSPObject <TSSPropertySource>
+@interface KNPrototypeForUndoTemplateSlideChange : TSPObject
 {
     KNSlideStyle *_style;
     NSUUID *_templateSlideId;

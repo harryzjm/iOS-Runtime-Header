@@ -7,6 +7,6 @@
 #import <EventKit/NSObject-Protocol.h>
 
 @protocol CADNotificationCountInterface <NSObject>
-- (void)CADDatabaseGetNotificationCount:(void (^)(int, unsigned long long))arg1;
+- (void)CADDatabaseGetNotificationCountExcludingUncheckedCalendars:(_Bool)arg1 expanded:(_Bool)arg2 reply:(void (^)(int, unsigned long long))arg3;
 @end
 

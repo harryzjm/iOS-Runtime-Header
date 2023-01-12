@@ -6,16 +6,18 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDSearchFieldPlaceholderParameters : PBCodable <NSCopying>
+@interface GEOPDSearchFieldPlaceholderParameters : PBCodable
 {
     PBUnknownFields *_unknownFields;
     int _version;
-    CDStruct_a42fff2f _flags;
+    _Bool _isEditServerRecommendedStop;
+    struct {
+        unsigned int has_version:1;
+        unsigned int has_isEditServerRecommendedStop:1;
+    } _flags;
 }
 
 - (void).cxx_destruct;

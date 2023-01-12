@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/NDBackgroundSessionClient-Protocol.h>
-#import <CFNetwork/NSURLSessionSubclass-Protocol.h>
+#import "NSURLSession.h"
 
 @class NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSURL, NSXPCConnection;
 @protocol NDBackgroundSessionProtocol, OS_dispatch_queue;
 
-@interface __NSURLBackgroundSession <NDBackgroundSessionClient, NSURLSessionSubclass>
+@interface __NSURLBackgroundSession : NSURLSession
 {
     unsigned long long _identSeed;
     id <NDBackgroundSessionProtocol> _remoteSession;
@@ -57,7 +56,7 @@
 - (void)openFileAtPath:(id)arg1 mode:(int)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)backgroundDownloadTask:(unsigned long long)arg1 didResumeAtOffset:(long long)arg2 expectedTotalBytes:(long long)arg3;
 - (void)backgroundDownloadTask:(unsigned long long)arg1 didWriteData:(long long)arg2 totalBytesWritten:(long long)arg3 totalBytesExpectedToWrite:(long long)arg4;
-- (void)backgroundDownloadTask:(unsigned long long)arg1 didFinishDownloadingToURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)backgroundDownloadTask:(unsigned long long)arg1 didFinishDownloadingToURL:(id)arg2 response:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)willRetryBackgroundDataTask:(unsigned long long)arg1 withError:(id)arg2 transactionMetrics:(id)arg3;
 - (void)backgroundDataTaskDidBecomeDownloadTask:(unsigned long long)arg1;
 - (void)backgroundTask:(unsigned long long)arg1 getAuthHeadersForResponse:(id)arg2 reply:(CDUnknownBlockType)arg3;

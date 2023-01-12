@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/NSSecureCoding-Protocol.h>
-
 @class CKRecord, NSData;
 
 __attribute__((visibility("hidden")))
-@interface MSPCloudContainerCachedRecord : NSObject <NSSecureCoding>
+@interface MSPCloudContainerCachedRecord : NSObject
 {
     CKRecord *_record;
     NSData *_contentsHash;

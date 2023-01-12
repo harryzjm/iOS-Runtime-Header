@@ -6,10 +6,11 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDBulletinBoard;
+@class HMDBulletinBoard, NSData, NSNumber, NSString;
 
 @protocol HMDPersistentStore <NSObject>
 + (HMDBulletinBoard *)unarchiveBulletinBoard;
 + (void)archiveBulletinBoard:(HMDBulletinBoard *)arg1;
+- (NSNumber *)writeData:(NSData *)arg1 toStorePath:(NSString *)arg2 dataLabel:(NSString *)arg3;
 @end
 

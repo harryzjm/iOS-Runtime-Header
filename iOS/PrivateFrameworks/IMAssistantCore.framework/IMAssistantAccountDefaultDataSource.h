@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IMAssistantCore/IMAssistantAccountDataSource-Protocol.h>
-
 @class NSString;
 
-@interface IMAssistantAccountDefaultDataSource : NSObject <IMAssistantAccountDataSource>
+@interface IMAssistantAccountDefaultDataSource : NSObject
 {
 }
 

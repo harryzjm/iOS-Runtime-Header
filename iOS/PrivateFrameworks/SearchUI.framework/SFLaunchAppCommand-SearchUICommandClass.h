@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFLaunchAppCommand.h>
 
 @interface SFLaunchAppCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

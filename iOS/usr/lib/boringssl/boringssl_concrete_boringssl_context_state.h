@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <boringssl/OS_boringssl_context_state-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface boringssl_concrete_boringssl_context_state : NSObject <OS_boringssl_context_state>
+@interface boringssl_concrete_boringssl_context_state : NSObject
 {
     unsigned char cached_content_type;
     struct ssl_ctx_st *ssl_ctx;

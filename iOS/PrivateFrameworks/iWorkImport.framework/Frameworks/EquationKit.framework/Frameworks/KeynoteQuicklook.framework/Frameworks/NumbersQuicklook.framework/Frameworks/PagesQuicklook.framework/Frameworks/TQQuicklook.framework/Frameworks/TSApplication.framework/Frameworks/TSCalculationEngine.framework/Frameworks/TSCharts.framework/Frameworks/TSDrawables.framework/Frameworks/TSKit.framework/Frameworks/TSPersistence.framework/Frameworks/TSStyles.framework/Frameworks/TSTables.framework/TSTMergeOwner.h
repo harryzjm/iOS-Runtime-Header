@@ -6,17 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCEFormulaOwning-Protocol.h>
+@class NSString, TSCECalculationEngine, TSTCellRangeCache, TSTFormulaStore, TSTMergeChangeDistributor, TSTTableModel;
 
-@class NSString, TSCECalculationEngine, TSCellRangeCache, TSTFormulaStore, TSTMergeChangeDistributor, TSTTableModel;
-
-@interface TSTMergeOwner : NSObject <TSCEFormulaOwning>
+@interface TSTMergeOwner : NSObject
 {
     struct unordered_map<TSUModelCellCoord, TSUModelCellCoord, std::hash<TSUModelCellCoord>, std::equal_to<TSUModelCellCoord>, std::allocator<std::pair<const TSUModelCellCoord, TSUModelCellCoord>>> _mergeOriginsMap;
     struct unordered_map<TSUModelCellCoord, TSUModelCellCoord, std::hash<TSUModelCellCoord>, std::equal_to<TSUModelCellCoord>, std::allocator<std::pair<const TSUModelCellCoord, TSUModelCellCoord>>> _reverseOriginsMap;
     _Bool _mergeCacheLoaded;
     TSTFormulaStore *_formulaStore;
-    TSCellRangeCache *_mergeRangeCache;
+    TSTCellRangeCache *_mergeRangeCache;
     TSTTableModel *_tableModel;
     TSCECalculationEngine *_calculationEngine;
     TSTMergeChangeDistributor *_mergeChangeDistributor;
@@ -29,7 +27,7 @@
 @property(retain, nonatomic) TSTMergeChangeDistributor *mergeChangeDistributor; // @synthesize mergeChangeDistributor=_mergeChangeDistributor;
 @property(nonatomic) __weak TSCECalculationEngine *calculationEngine; // @synthesize calculationEngine=_calculationEngine;
 @property(readonly, nonatomic) __weak TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
-@property(retain, nonatomic) TSCellRangeCache *mergeRangeCache; // @synthesize mergeRangeCache=_mergeRangeCache;
+@property(retain, nonatomic) TSTCellRangeCache *mergeRangeCache; // @synthesize mergeRangeCache=_mergeRangeCache;
 @property(nonatomic) _Bool mergeCacheLoaded; // @synthesize mergeCacheLoaded=_mergeCacheLoaded;
 @property(readonly, nonatomic) const void *reverseOriginsMap; // @synthesize reverseOriginsMap=_reverseOriginsMap;
 @property(readonly, nonatomic) const void *mergeOriginsMap; // @synthesize mergeOriginsMap=_mergeOriginsMap;

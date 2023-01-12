@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
+#import "UIControl.h"
 
 @class NSArray, NSMutableDictionary, NSString, UIColor, UIImage, UIImageView, UITabBar, UITabBarButtonLabel, UITabBarSwappableImageView, UIVibrancyEffect, UIView, UIVisualEffectView, _UIBadgeView, _UITabBarItemData;
 
 __attribute__((visibility("hidden")))
-@interface UITabBarButton <UISpringLoadedInteractionSupporting>
+@interface UITabBarButton : UIControl
 {
     struct CGRect _hitRect;
     UITabBarSwappableImageView *_imageView;
@@ -29,6 +29,9 @@ __attribute__((visibility("hidden")))
     struct UIOffset _badgeOffset;
     UIView *_highContrastFocusIndicator;
     _Bool _selected;
+    _Bool _accessibilityButtonShapesEnabled;
+    _Bool _accessibilityHighContractFocusIndicatorEnabled;
+    _Bool _accessibilityGrayStatusEnabled;
     _Bool _showsHighlightedState;
     UIView *_focusView;
     Class _appearanceGuideClass;
@@ -123,6 +126,10 @@ __attribute__((visibility("hidden")))
 - (void)_updateSelectedIndicatorFrame;
 - (void)_updateSelectedIndicatorView;
 - (id)_selectedIndicatorImage;
+- (_Bool)_areTabBarButtonAccessibilityButtonShapesEnabled;
+- (void)_accessibilityButtonShapesDidChangeNotification:(id)arg1;
+- (void)_accessibilityHighContractFocusIndicatorDidChangeNotification:(id)arg1;
+- (void)_accessibilityGrayStatusDidChangeNotification:(id)arg1;
 - (struct CGRect)_tabBarHitRect;
 - (void)_setTabBarHitRect:(struct CGRect)arg1;
 - (void)setImage:(id)arg1;
@@ -132,6 +139,7 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (id)initWithImage:(id)arg1 selectedImage:(id)arg2 label:(id)arg3 withInsets:(struct UIEdgeInsets)arg4 tabBar:(id)arg5;
+- (void)dealloc;
 - (id)initWithImage:(id)arg1 landscapeImage:(id)arg2 selectedImage:(id)arg3 landscapeSelectedImage:(id)arg4 label:(id)arg5 withInsets:(struct UIEdgeInsets)arg6 landscapeInsets:(struct UIEdgeInsets)arg7 tabBar:(id)arg8;
 - (id)_selectedIndicatorView;
 @property(readonly, nonatomic, getter=isDefaultTVLayout) _Bool _defaultTVLayout;

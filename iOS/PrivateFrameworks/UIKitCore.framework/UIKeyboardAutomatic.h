@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKeyboard.h"
+
 @class _UIStringAndPositionPair;
 @protocol UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardAutomatic
+@interface UIKeyboardAutomatic : UIKeyboard
 {
     _Bool showsCandidateBar;
     _Bool showsCandidateInline;

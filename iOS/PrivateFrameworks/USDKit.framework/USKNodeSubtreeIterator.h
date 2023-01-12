@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <USDKit/USKIterator-Protocol.h>
-
-@interface USKNodeSubtreeIterator : NSObject <USKIterator>
+@interface USKNodeSubtreeIterator : NSObject
 {
     struct UsdPrimRange _range;
     struct iterator _it;

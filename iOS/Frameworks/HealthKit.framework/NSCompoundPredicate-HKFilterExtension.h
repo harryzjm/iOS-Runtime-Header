@@ -7,6 +7,6 @@
 #import <Foundation/NSCompoundPredicate.h>
 
 @interface NSCompoundPredicate (HKFilterExtension)
-- (id)hk_filterRepresentationForDataTypes:(id)arg1;
+- (id)hk_filterRepresentationForDataTypes:(id)arg1 isSubpredicate:(_Bool)arg2;
 @end
 

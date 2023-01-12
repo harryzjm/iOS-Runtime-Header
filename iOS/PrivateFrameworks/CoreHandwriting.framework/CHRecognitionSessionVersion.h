@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreHandwriting/NSSecureCoding-Protocol.h>
-
-@interface CHRecognitionSessionVersion : NSObject <NSSecureCoding>
+@interface CHRecognitionSessionVersion : NSObject
 {
     long long _sessionVersion;
     long long _sessionResultVersion;

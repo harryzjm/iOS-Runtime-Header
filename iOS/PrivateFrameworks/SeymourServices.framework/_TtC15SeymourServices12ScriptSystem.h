@@ -12,11 +12,12 @@
 {
     MISSING_TYPE *fileStore;
     MISSING_TYPE *bagConsumer;
+    MISSING_TYPE *scriptBundleLoader;
     MISSING_TYPE *eventHub;
-    MISSING_TYPE *scriptUnpacker;
     MISSING_TYPE *scriptUpdateJournal;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *platform;
+    MISSING_TYPE *_useSystemJetpack;
 }
 
 @end

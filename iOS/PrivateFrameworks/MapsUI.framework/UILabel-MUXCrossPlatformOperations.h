@@ -6,11 +6,9 @@
 
 #import <UIKit/UILabel.h>
 
-#import <MapsUI/MUWidthMeasurable-Protocol.h>
-
 @class NSAttributedString, NSString;
 
-@interface UILabel (MUXCrossPlatformOperations) <MUWidthMeasurable>
+@interface UILabel (MUXCrossPlatformOperations)
 + (id)_mapsui_defaultLabel;
 + (double)_mapsui_maximumHeightWithFont:(id)arg1 numberOfLines:(long long)arg2 displayScale:(double)arg3;
 @property(nonatomic) long long _mapsui_numberOfLines;

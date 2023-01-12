@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewImplicitlyAnimating-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewPropertyAnimatorTrackingGroup : NSObject <UIViewImplicitlyAnimating>
+@interface _UIViewPropertyAnimatorTrackingGroup : NSObject
 {
     NSArray *_trackingAnimators;
 }

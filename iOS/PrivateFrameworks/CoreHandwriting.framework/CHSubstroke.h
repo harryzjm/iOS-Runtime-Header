@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreHandwriting/NSSecureCoding-Protocol.h>
-
 @class CHEncodedStrokeIdentifier;
 
-@interface CHSubstroke : NSObject <NSSecureCoding>
+@interface CHSubstroke : NSObject
 {
-    vector_48b48a27 _convexHull;
+    struct vector<CGPoint, std::allocator<CGPoint>> _convexHull;
     CHEncodedStrokeIdentifier *_strokeIdentifier;
     double _startTimestamp;
     double _endTimestamp;
@@ -28,13 +26,12 @@
 @property(readonly, nonatomic) double endTimestamp; // @synthesize endTimestamp=_endTimestamp;
 @property(readonly, nonatomic) double startTimestamp; // @synthesize startTimestamp=_startTimestamp;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
-@property(readonly, retain, nonatomic) CHEncodedStrokeIdentifier *strokeIdentifier; // @synthesize strokeIdentifier=_strokeIdentifier;
+@property(readonly, nonatomic) CHEncodedStrokeIdentifier *strokeIdentifier; // @synthesize strokeIdentifier=_strokeIdentifier;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToSubstroke:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void *)convexHull;
-- (void)dealloc;
 - (id)initWithStrokeIdentifier:(id)arg1 bounds:(struct CGRect)arg2 startTimestamp:(double)arg3 endTimestamp:(double)arg4 convexHull:(const void *)arg5 curvature:(double)arg6;
 
 @end

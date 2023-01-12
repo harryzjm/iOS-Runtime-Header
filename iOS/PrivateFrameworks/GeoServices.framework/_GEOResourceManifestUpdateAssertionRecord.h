@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOResourceManifestUpdateAssertionRecord-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOResourceManifestUpdateAssertionRecord : NSObject <GEOResourceManifestUpdateAssertionRecord>
+@interface _GEOResourceManifestUpdateAssertionRecord : NSObject
 {
     NSString *_process;
     NSString *_reason;

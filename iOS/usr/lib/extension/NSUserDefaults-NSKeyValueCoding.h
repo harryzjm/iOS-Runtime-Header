@@ -14,7 +14,6 @@
 + (id)_web_preferredLanguageCode;
 + (void)_web_addDefaultsChangeObserver;
 + (void)_web_defaultsDidChange;
-+ (void)_ensureAndLockPreferredLanguageLock;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (id)valueForKey:(id)arg1;
 - (_Bool)objectIsForcedForKey:(id)arg1 inDomain:(id)arg2;

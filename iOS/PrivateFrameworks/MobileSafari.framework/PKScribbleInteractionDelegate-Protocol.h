@@ -12,6 +12,9 @@
 @protocol PKScribbleInteractionDelegate <NSObject>
 
 @optional
+- (_Bool)_scribbleInteraction:(PKScribbleInteraction *)arg1 isEditableElement:(id <NSObject><NSCopying>)arg2;
+- (void)_scribbleInteraction:(PKScribbleInteraction *)arg1 endSuppressingPlaceholderForElement:(id <NSObject><NSCopying>)arg2;
+- (void)_scribbleInteraction:(PKScribbleInteraction *)arg1 beginSuppressingPlaceholderForElement:(id <NSObject><NSCopying>)arg2;
 - (void)_scribbleInteraction:(PKScribbleInteraction *)arg1 didFinishWritingInElement:(id <NSObject><NSCopying>)arg2;
 - (void)_scribbleInteraction:(PKScribbleInteraction *)arg1 willBeginWritingInElement:(id <NSObject><NSCopying>)arg2;
 - (_Bool)_scribbleInteraction:(PKScribbleInteraction *)arg1 focusWillTransformElement:(id <NSObject><NSCopying>)arg2;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSURLSessionTask.h"
+
 @class CFNetworkTimer, NSData, NSMutableArray, NSObject, __NSCFURLLocalStreamTaskWorkRead, __NSCFURLLocalStreamTaskWorkWrite;
 @protocol OS_dispatch_queue;
 
-@interface __NSCFTCPIOStreamTask
+@interface __NSCFTCPIOStreamTask : NSURLSessionTask
 {
     CDUnknownBlockType _disavow;
     struct shared_ptr<TCPIO_EstablishBase> _establish;

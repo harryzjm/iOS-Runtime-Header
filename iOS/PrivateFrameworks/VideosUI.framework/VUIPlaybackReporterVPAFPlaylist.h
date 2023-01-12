@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/MTMediaPlaylist-Protocol.h>
-
 @class NSArray, NSString;
 @protocol TVPPlayback;
 
 __attribute__((visibility("hidden")))
-@interface VUIPlaybackReporterVPAFPlaylist : NSObject <MTMediaPlaylist>
+@interface VUIPlaybackReporterVPAFPlaylist : NSObject
 {
     _Bool _isLive;
     NSArray *_eventData;

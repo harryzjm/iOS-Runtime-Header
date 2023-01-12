@@ -13,6 +13,9 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)accessibilityElementsHidden;
 - (_Bool)_accessibilityIgnoresStatusBarFrame;
+- (void)dealloc;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (id)init;
 
 @end
 

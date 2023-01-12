@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-
 @class NSString, SKUINavigationBarContext, SKUIViewElementLayoutContext, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUINavigationBarSectionController : NSObject <SKUIArtworkRequestDelegate>
+@interface SKUINavigationBarSectionController : NSObject
 {
     SKUINavigationBarContext *_navigationBarContext;
     SKUIViewElementLayoutContext *_viewLayoutContext;

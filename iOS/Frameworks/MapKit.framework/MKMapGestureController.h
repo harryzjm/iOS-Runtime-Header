@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKVariableDelayTapRecognizerDelegate-Protocol.h>
-#import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <MapKit/_MKUserInteractionGestureRecognizerTouchObserver-Protocol.h>
-
 @class MKBasicMapView, MKCompassView, MKRotationFilter, MKScaleView, MKTiltGestureRecognizer, MKVariableDelayTapRecognizer, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, UITraitCollection, VKCompoundAnimation, VKDynamicAnimation, VKTimedAnimation, _MKConditionalPanRotationGestureRecognizer, _MKConditionalPanTiltGestureRecognizer, _MKConditionalPanZoomGestureRecognizer, _MKDirectionalArrowRecognizer, _MKOneHandedZoomGestureRecognizer, _MKUserInteractionGestureRecognizer, _MKZoomingGestureControlConfiguration, _UIInterruptScrollDecelerationGestureRecognizer;
 @protocol MKMapGestureControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKMapGestureController : NSObject <MKVariableDelayTapRecognizerDelegate, _MKUserInteractionGestureRecognizerTouchObserver, UIGestureRecognizerDelegate>
+@interface MKMapGestureController : NSObject
 {
     MKBasicMapView *_mapView;
     id <MKMapGestureControllerDelegate> _delegate;

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTCellRegionIterating-Protocol.h>
-#import <TSTables/TSTMutableCellIteratorDataUpdating-Protocol.h>
-
 @class NSMutableArray, NSString;
 
-@interface TSTContentComposingIterator : NSObject <TSTCellRegionIterating, TSTMutableCellIteratorDataUpdating>
+@interface TSTContentComposingIterator : NSObject
 {
     struct TSUCellCoord _minCursorCellID;
     NSMutableArray *_iterators;

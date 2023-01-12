@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/NSCopying-Protocol.h>
-
 @protocol TSWPAdornmentLineRenderingDelegate;
 
-@interface TSWPAdornmentLine : NSObject <NSCopying>
+@interface TSWPAdornmentLine : NSObject
 {
     _Bool _isWhitespace;
     _Bool _allowAntialiasing;

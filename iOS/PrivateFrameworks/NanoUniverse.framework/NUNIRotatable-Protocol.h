@@ -6,9 +6,12 @@
 
 #import <NanoUniverse/NSObject-Protocol.h>
 
+@class NUNIScene;
+
 @protocol NUNIRotatable <NSObject>
 @property(nonatomic) struct CLLocationCoordinate2D centerCoordinate;
 @property(nonatomic) struct CLLocationCoordinate2D homeCoordinate;
+@property(readonly, nonatomic) NUNIScene *scene;
 - (void)setCenterCoordinate:(struct CLLocationCoordinate2D)arg1 animated:(_Bool)arg2;
 @end
 

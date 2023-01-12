@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreRE/REMeshPayload-Protocol.h>
-
 @class IOSurface, NSArray, RESerializedPayload;
 
 __attribute__((visibility("hidden")))
-@interface REIOSurfaceMeshPayload <REMeshPayload>
+@interface REIOSurfaceMeshPayload
 {
     NSArray *_parts;
     NSArray *_models;

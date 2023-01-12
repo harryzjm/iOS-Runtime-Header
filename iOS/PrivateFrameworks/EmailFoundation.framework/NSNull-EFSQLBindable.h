@@ -6,12 +6,9 @@
 
 #import <Foundation/NSNull.h>
 
-#import <EmailFoundation/EFSQLBindable-Protocol.h>
-#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
-
 @class EFSQLBinding, NSString;
 
-@interface NSNull (EFSQLBindable) <EFSQLBindable, EFSQLValueExpressable>
+@interface NSNull (EFSQLBindable)
 @property(readonly, nonatomic) EFSQLBinding *ef_SQLBinding;
 - (id)ef_SQLIsolatedExpression;
 - (void)ef_renderSQLExpressionInto:(id)arg1;

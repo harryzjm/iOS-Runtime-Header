@@ -6,9 +6,10 @@
 
 #import <AuthKit/NSObject-Protocol.h>
 
-@class AKInheritanceContext;
+@class AKInheritanceCLIContext, AKInheritanceContext;
 
 @protocol AKInheritanceInterface <NSObject>
+- (void)_setupBeneficiaryAliasWithInheritanceContext:(AKInheritanceCLIContext *)arg1 completion:(void (^)(AKBeneficiaryAliasSetupResult *, NSError *))arg2;
 - (void)removeBeneficiaryWithInheritanceContext:(AKInheritanceContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateBeneficiaryWithInheritanceContext:(AKInheritanceContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setupBeneficiaryWithInheritanceContext:(AKInheritanceContext *)arg1 completion:(void (^)(NSError *))arg2;

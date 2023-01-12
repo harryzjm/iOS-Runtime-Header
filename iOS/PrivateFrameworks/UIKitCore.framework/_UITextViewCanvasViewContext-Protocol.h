@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UITextCanvasContext-Protocol.h>
+#import <UIKitCore/_UITextKit1CanvasContext-Protocol.h>
 
-@protocol _UITextViewCanvasViewContext <_UITextCanvasContext>
+@protocol _UITextViewCanvasViewContext <_UITextKit1CanvasContext>
 - (void)_ensureLayoutCompleteForRect:(struct CGRect)arg1;
 @end
 

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _isAutoPlayable;
     _Bool _isTrimmed;
+    _Bool _isSettlingOK;
     float _score;
     float _averageScore;
     float _junkScore;
@@ -22,6 +23,10 @@ __attribute__((visibility("hidden")))
     float _voiceScore;
     float _humanActionScore;
     float _humanPoseScore;
+    float _autoplayScore;
+    float _motionScore;
+    float _subjectScore;
+    float _exposureChangeScore;
     VCPImageDescriptor *_descriptor;
     VCPVideoKeyFrame *_keyFrame;
     NSData *_colorNormalization;
@@ -30,6 +35,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) float exposureChangeScore; // @synthesize exposureChangeScore=_exposureChangeScore;
+@property(nonatomic) float subjectScore; // @synthesize subjectScore=_subjectScore;
+@property(nonatomic) float motionScore; // @synthesize motionScore=_motionScore;
+@property(nonatomic) float autoplayScore; // @synthesize autoplayScore=_autoplayScore;
+@property(nonatomic) _Bool isSettlingOK; // @synthesize isSettlingOK=_isSettlingOK;
 @property(retain, nonatomic) NSData *colorNormalization; // @synthesize colorNormalization=_colorNormalization;
 @property(retain, nonatomic) VCPVideoKeyFrame *keyFrame; // @synthesize keyFrame=_keyFrame;
 @property(retain, nonatomic) VCPImageDescriptor *descriptor; // @synthesize descriptor=_descriptor;

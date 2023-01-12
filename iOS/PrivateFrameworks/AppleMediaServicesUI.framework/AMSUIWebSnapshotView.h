@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSUICommonView.h"
+
 @class UIView;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebSnapshotView
+@interface AMSUIWebSnapshotView : AMSUICommonView
 {
     UIView *_snapshot;
     double _originalRatio;
     long long _originalInterfaceStyle;
     unsigned long long _visibilityModifiers;
-    struct CGRect _originalSnapshotFrame;
 }
 
 + (void)_screenCapFromView:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -21,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long visibilityModifiers; // @synthesize visibilityModifiers=_visibilityModifiers;
 @property(nonatomic) long long originalInterfaceStyle; // @synthesize originalInterfaceStyle=_originalInterfaceStyle;
-@property(nonatomic) struct CGRect originalSnapshotFrame; // @synthesize originalSnapshotFrame=_originalSnapshotFrame;
 @property(nonatomic) double originalRatio; // @synthesize originalRatio=_originalRatio;
 @property(retain, nonatomic) UIView *snapshot; // @synthesize snapshot=_snapshot;
 - (_Bool)_visibilityUnmodified;

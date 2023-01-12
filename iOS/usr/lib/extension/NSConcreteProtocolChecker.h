@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSProtocolChecker.h"
+
 @class NSObject, Protocol;
 
 __attribute__((visibility("hidden")))
-@interface NSConcreteProtocolChecker
+@interface NSConcreteProtocolChecker : NSProtocolChecker
 {
     NSObject *_target;
     Protocol *_protocol;

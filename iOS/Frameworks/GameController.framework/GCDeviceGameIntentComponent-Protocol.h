@@ -7,6 +7,7 @@
 #import <GameController/GCControllerComponent-Protocol.h>
 
 @protocol GCDeviceGameIntentComponent <GCControllerComponent>
-- (void)triggerGestureGameIntent;
+- (void)triggerGestureGameIntentGameCenter;
+- (void)triggerGestureGameIntentAppLibrary;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKCDPTrustedTargetCryptoMetadata : PBCodable <NSCopying>
+@interface CKCDPTrustedTargetCryptoMetadata : PBCodable
 {
     long long _keyVersion;
     NSData *_encryptedInvocationKey;

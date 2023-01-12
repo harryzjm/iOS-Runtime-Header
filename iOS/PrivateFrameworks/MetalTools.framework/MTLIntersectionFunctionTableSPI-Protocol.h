@@ -9,6 +9,7 @@
 @protocol MTLBuffer;
 
 @protocol MTLIntersectionFunctionTableSPI <MTLIntersectionFunctionTable>
+@property(readonly) unsigned long long gpuHandle;
 
 @optional
 @property(nonatomic) unsigned long long globalBufferOffset;

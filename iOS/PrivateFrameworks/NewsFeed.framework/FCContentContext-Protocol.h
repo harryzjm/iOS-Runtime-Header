@@ -8,7 +8,7 @@
 #import <NewsFeed/NSObject-Protocol.h>
 
 @class FCArticleController, FCAssetManager, FCContentManifest, FCFlintResourceManager, FCInterestToken, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
-@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCFeedDatabaseProtocol, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
+@protocol FCAVAssetFactoryType, FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCFeedDatabaseProtocol, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id <FCCacheFlushing>)arg2;
@@ -27,6 +27,7 @@
 @property(nonatomic, readonly) FCFlintResourceManager *flintResourceManager;
 @property(nonatomic, readonly) FCTagController *tagController;
 @property(nonatomic, readonly) FCArticleController *articleController;
+@property(nonatomic, readonly) id <FCAVAssetFactoryType> avAssetFactory;
 @property(nonatomic, readonly) id <FCAVAssetPrewarming> avAssetPrewarmer;
 @property(nonatomic, readonly) FCAssetManager *assetManager;
 - (id <FCMagazinesConfigurationManager>)magazinesConfigurationManager;

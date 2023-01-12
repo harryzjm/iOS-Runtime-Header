@@ -14,6 +14,7 @@
     MISSING_TYPE *newFriendPlayerIds;
     MISSING_TYPE *friendType;
     MISSING_TYPE *requiredData;
+    MISSING_TYPE *showAddFriendButton;
     MISSING_TYPE *gameCenterDataUpdatePresenter;
     MISSING_TYPE *isUpdating;
     MISSING_TYPE *searchTerm;

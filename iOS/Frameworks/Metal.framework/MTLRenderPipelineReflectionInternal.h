@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTLArgument, NSArray, NSData, NSDictionary;
+#import "MTLRenderPipelineReflection.h"
+
+@class NSArray, NSData, NSDictionary;
+@protocol MTLBinding;
 
 __attribute__((visibility("hidden")))
-@interface MTLRenderPipelineReflectionInternal
+@interface MTLRenderPipelineReflectionInternal : MTLRenderPipelineReflection
 {
     CDStruct_7ce1aa5b _flags;
     NSArray *_vertexBuiltInArguments;
@@ -18,17 +21,40 @@ __attribute__((visibility("hidden")))
     NSArray *_fragmentArguments;
     NSArray *_tileArguments;
     NSArray *_tileBuiltInArguments;
-    MTLArgument *_imageBlockDataReturn;
+    id <MTLBinding> _imageBlockDataReturn;
     NSDictionary *_performanceStatistics;
     unsigned int _traceBufferIndex;
     NSData *_vertexPluginReturnData;
     NSData *_fragmentPluginReturnData;
     NSArray *_constantSamplerUniqueIdentifiers;
     NSArray *_constantSamplerDescriptors;
+    NSArray *_objectArguments;
+    NSArray *_meshArguments;
+    NSArray *_objectBuiltInArguments;
+    NSArray *_meshBuiltInArguments;
+    NSData *_objectPluginReturnData;
+    NSData *_meshPluginReturnData;
+    NSArray *_vertexBindings;
+    NSArray *_fragmentBindings;
+    NSArray *_tileBindings;
+    NSArray *_objectBindings;
+    NSArray *_meshBindings;
+    unsigned long long _printStyle;
 }
 
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (id)meshBindings;
+- (id)objectBindings;
+- (id)tileBindings;
+- (id)fragmentBindings;
+- (id)vertexBindings;
+- (id)meshPluginReturnData;
+- (id)objectPluginReturnData;
+- (id)meshBuiltInArguments;
+- (id)objectBuiltInArguments;
+- (id)meshArguments;
+- (id)objectArguments;
 - (id)imageBlockDataReturn;
 - (id)tileArguments;
 - (id)fragmentArguments;
@@ -48,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (id)performanceStatistics;
 - (void)setPerformanceStatistics:(id)arg1;
 - (void)dealloc;
+- (id)initWithObjectData:(id)arg1 meshData:(id)arg2 fragmentData:(id)arg3 device:(id)arg4 options:(unsigned long long)arg5 flags:(CDStruct_7ce1aa5b)arg6;
 - (id)initWithTileData:(id)arg1 functionType:(unsigned long long)arg2 device:(id)arg3 options:(unsigned long long)arg4 flags:(CDStruct_7ce1aa5b)arg5;
 - (id)initWithVertexData:(id)arg1 fragmentData:(id)arg2 serializedVertexDescriptor:(id)arg3 device:(id)arg4 options:(unsigned long long)arg5 flags:(CDStruct_7ce1aa5b)arg6;
 

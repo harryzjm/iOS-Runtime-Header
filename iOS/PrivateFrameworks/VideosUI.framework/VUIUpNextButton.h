@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIUpNextButtonProtocol-Protocol.h>
-
-@class NSLayoutConstraint, NSString, VUIUpNextButtonProperties;
+@class NSString, VUIUpNextButtonProperties;
 
 __attribute__((visibility("hidden")))
-@interface VUIUpNextButton <VUIUpNextButtonProtocol>
+@interface VUIUpNextButton
 {
     VUIUpNextButtonProperties *_properties;
-    NSLayoutConstraint *_stackViewWidthConstraint;
+    CDUnknownBlockType _stateDidChangeHandler;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSLayoutConstraint *stackViewWidthConstraint; // @synthesize stackViewWidthConstraint=_stackViewWidthConstraint;
+@property(copy, nonatomic) CDUnknownBlockType stateDidChangeHandler; // @synthesize stateDidChangeHandler=_stateDidChangeHandler;
 @property(retain, nonatomic) VUIUpNextButtonProperties *properties; // @synthesize properties=_properties;
 - (id)largeContentTitle;
 - (void)upNextStateChangedToRemoved;

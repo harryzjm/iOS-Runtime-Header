@@ -6,15 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <SafariServices/SFPrivacyReportGridItemDelegate-Protocol.h>
-#import <SafariServices/UICollectionViewDataSource-Protocol.h>
-#import <SafariServices/UICollectionViewDelegateFlowLayout-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, UICollectionView, UICollectionViewFlowLayout;
 @protocol SFPrivacyReportGridViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFPrivacyReportGridView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SFPrivacyReportGridItemDelegate>
+@interface SFPrivacyReportGridView : UIView
 {
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_collectionViewLayout;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBSceneUpdateRequest-Protocol.h>
-
 @class IBSceneUpdateProcessingRequestGroup, NSString;
 
-@interface IBIncrementalSceneUpdateRequest : NSObject <IBSceneUpdateRequest>
+@interface IBIncrementalSceneUpdateRequest : NSObject
 {
     NSString *_identifier;
     IBSceneUpdateProcessingRequestGroup *_processingRequestGroup;

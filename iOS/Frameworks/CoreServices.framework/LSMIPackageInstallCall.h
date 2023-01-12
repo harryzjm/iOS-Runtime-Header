@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/LSMIInstallCall-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface LSMIPackageInstallCall : NSObject <LSMIInstallCall>
+@interface LSMIPackageInstallCall : NSObject
 {
     NSString *_bundleID;
     NSURL *_packageURL;

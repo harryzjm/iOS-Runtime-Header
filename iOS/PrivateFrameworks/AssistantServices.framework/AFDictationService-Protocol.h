@@ -9,6 +9,8 @@
 @class AFDictationOptions, AFSpeechCorrectionInfo, AFSpeechRequestOptions, NSData, NSDictionary, NSError, NSString, NSURL;
 
 @protocol AFDictationService <NSObject>
+- (oneway void)resumeRecognitionWithPrefixText:(NSString *)arg1 postfixText:(NSString *)arg2 selectedText:(NSString *)arg3;
+- (oneway void)pauseRecognition;
 - (oneway void)sendUserSelectedAlternativeDictationLanguageCode:(NSString *)arg1;
 - (oneway void)reportIssueForError:(NSError *)arg1 eventType:(long long)arg2 subtype:(NSString *)arg3 context:(NSDictionary *)arg4;
 - (oneway void)reportIssueForError:(NSError *)arg1 eventType:(long long)arg2 context:(NSDictionary *)arg3;
@@ -22,6 +24,7 @@
 - (oneway void)endSession;
 - (oneway void)preheatWithRecordDeviceIdentifier:(NSString *)arg1;
 - (oneway void)preheatTestWithLanguage:(NSString *)arg1 options:(AFDictationOptions *)arg2;
+- (oneway void)preheatForLanguageCode:(NSString *)arg1;
 - (oneway void)preheat;
 - (oneway void)sendSpeechCorrectionInfo:(AFSpeechCorrectionInfo *)arg1 interactionIdentifier:(NSString *)arg2;
 - (oneway void)sendSpeechCorrectionInfo:(AFSpeechCorrectionInfo *)arg1 forCorrectionContext:(NSDictionary *)arg2;

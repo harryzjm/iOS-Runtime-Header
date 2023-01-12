@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPCMediaRemoteController.h"
+
 @class MPCFuture;
 
 __attribute__((visibility("hidden")))
-@interface _MPCMediaRemoteNullController
+@interface _MPCMediaRemoteNullController : MPCMediaRemoteController
 {
     MPCFuture *_playQueueIdentifiersFuture;
     MPCFuture *_contentItemForIdentifierFuture;

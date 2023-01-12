@@ -11,11 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setShowsNowPlayingHUD:(_Bool)arg1;
+- (void)updateHUDsForAVPlayerViewController:(id)arg1;
 - (void)dealloc;
 - (void)_accessibilityRescheduleExtendHUDVisibilityTimer;
 - (void)_accessibilityHandleElementFocusedNotification:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_accessibilitySetAVPlayerViewController:(id)arg1;
+- (id)_accessibilityAVPlayerViewController;
 - (void)_accessibilitySetExtendHUDVisibilityTimerStorage:(id)arg1;
 - (id)_accessibilityExtendHUDVisibilityTimerStorage;
 - (void)_accessibilitySetIsExtendingHUDVisibility:(_Bool)arg1;

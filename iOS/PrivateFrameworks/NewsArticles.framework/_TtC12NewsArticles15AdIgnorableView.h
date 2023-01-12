@@ -6,10 +6,8 @@
 
 #import <UIKit/UIView.h>
 
-#import <NewsArticles/APPCVisibilityIgnorable-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _TtC12NewsArticles15AdIgnorableView : UIView <APPCVisibilityIgnorable>
+@interface _TtC12NewsArticles15AdIgnorableView : UIView
 {
 }
 

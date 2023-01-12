@@ -6,12 +6,9 @@
 
 #import <UIKit/UIControl.h>
 
-#import <AnnotationKit/UICollectionViewDataSource-Protocol.h>
-#import <AnnotationKit/UICollectionViewDelegate-Protocol.h>
-
 @class NSArray, NSString, UICollectionView, UILabel, UISlider, UIStepper;
 
-@interface AKFontSizePicker : UIControl <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface AKFontSizePicker : UIControl
 {
     double _value;
     CDUnknownBlockType _willBeginTrackingUpdates;

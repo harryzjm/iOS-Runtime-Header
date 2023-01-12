@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/NSCopying-Protocol.h>
-
 @class UIColor, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface _UIToolbarConfiguration : NSObject <NSCopying>
+@interface _UIToolbarConfiguration : NSObject
 {
     _Bool _translucent;
     long long _barStyle;

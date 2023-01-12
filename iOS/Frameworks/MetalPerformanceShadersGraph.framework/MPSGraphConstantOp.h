@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPSGraphOperation.h"
+
 @class NSArray, NSData;
 
-@interface MPSGraphConstantOp
+@interface MPSGraphConstantOp : MPSGraphOperation
 {
     NSData *_data;
     _Bool _isSplat;

@@ -12,12 +12,8 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI21RootSideBarController : UIViewController
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *tvTitle;
-    MISSING_TYPE *libraryTitle;
     MISSING_TYPE *$__lazy_storage_$_collectionView;
     MISSING_TYPE *$__lazy_storage_$_dataSource;
-    MISSING_TYPE *$__lazy_storage_$_libraryHeaderItem;
-    MISSING_TYPE *libraryItems;
 }
 
 - (void).cxx_destruct;

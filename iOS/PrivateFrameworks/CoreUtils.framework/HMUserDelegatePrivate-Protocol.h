@@ -11,6 +11,7 @@
 @protocol HMUserDelegatePrivate <NSObject>
 
 @optional
+- (void)user:(HMUser *)arg1 didUpdateSupportsSharedHomeHH2AutoMigration:(_Bool)arg2;
 - (void)user:(HMUser *)arg1 didUpdateNeedsiTunesMultiUserRepair:(_Bool)arg2;
 - (void)user:(HMUser *)arg1 didUpdatePairingIdentity:(HMFPairingIdentity *)arg2;
 - (void)user:(HMUser *)arg1 didUpdatePersonManagerSettings:(HMPhotosPersonManagerSettings *)arg2;

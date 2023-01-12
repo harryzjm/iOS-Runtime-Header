@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI38OnboardingViewControllerWithNextButtonCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI46SummarySharingInvitationAcceptedViewController
+@interface _TtC18HealthExperienceUI46SummarySharingInvitationAcceptedViewController : _$s18HealthExperienceUI38OnboardingViewControllerWithNextButtonCN
 {
     MISSING_TYPE *selectedContactPhotoPublisher;
+    MISSING_TYPE *healthStore;
 }
 
 - (void).cxx_destruct;
+- (void)cancelButtonTapped:(id)arg1;
 
 @end
 

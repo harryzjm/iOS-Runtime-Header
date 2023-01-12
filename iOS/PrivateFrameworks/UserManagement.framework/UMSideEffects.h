@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UserManagement/UMSideEffectsProviding-Protocol.h>
-
 @class NSString;
 @protocol UMLibInfoProviding;
 
-__attribute__((visibility("hidden")))
-@interface UMSideEffects : NSObject <UMSideEffectsProviding>
+@interface UMSideEffects : NSObject
 {
     NSObject<UMLibInfoProviding> *_libInfo;
 }

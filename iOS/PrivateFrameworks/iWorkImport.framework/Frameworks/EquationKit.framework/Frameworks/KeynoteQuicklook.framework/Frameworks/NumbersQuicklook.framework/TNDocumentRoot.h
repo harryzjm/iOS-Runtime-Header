@@ -6,12 +6,9 @@
 
 #import <TSApplication/TSADocumentRoot.h>
 
-#import <NumbersQuicklook/TSTFormsSheetProvider-Protocol.h>
-#import <NumbersQuicklook/TSTResolverContainerNameProvider-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, TNDocumentViewController, TNHyperlinkController, TNTheme, TNUIState, TSKTreeNodeDeprecated, TSSStylesheet;
 
-@interface TNDocumentRoot : TSADocumentRoot <TSTResolverContainerNameProvider, TSTFormsSheetProvider>
+@interface TNDocumentRoot : TSADocumentRoot
 {
     NSString *_paperID;
     struct CGSize _pageSize;
@@ -35,12 +32,14 @@
 @property(retain, nonatomic) TNHyperlinkController *tn_hyperlinkController; // @synthesize tn_hyperlinkController=_tn_hyperlinkController;
 @property(nonatomic, getter=isPrintingAllSheets) _Bool printingAllSheets; // @synthesize printingAllSheets=_printingAllSheets;
 @property(readonly, nonatomic) TNTheme *theme; // @synthesize theme=_theme;
+- (unsigned long long)writingDirectionForStorage;
 - (int)verticalAlignmentForTextStorage:(id)arg1;
-- (int)naturalAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
+- (long long)naturalAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
 - (id)UIStateForChart:(id)arg1;
 - (_Bool)shouldAllowDrawableInGroups:(id)arg1;
 - (id)p_previewImageWithImageSize:(struct CGSize)arg1;
+- (id)p_previewImageForSheet:(id)arg1 withImageSize:(struct CGSize)arg2;
 - (struct CGSize)p_adjustCapturedContentSize:(struct CGSize)arg1 toAspectRatio:(struct CGSize)arg2;
 - (struct CGRect)p_contentFrameToCaptureForSheet:(id)arg1;
 - (id)previewImageForSize:(struct CGSize)arg1;

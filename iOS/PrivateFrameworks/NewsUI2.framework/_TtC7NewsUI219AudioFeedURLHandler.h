@@ -15,9 +15,7 @@
     MISSING_TYPE *headlineProviderFactory;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *featureAvailability;
-    MISSING_TYPE *tracker;
     MISSING_TYPE *commandCenter;
-    MISSING_TYPE *audioHeadlineConverter;
 }
 
 @end

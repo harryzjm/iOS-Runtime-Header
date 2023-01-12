@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class NSDate, NSString, SKUIImageViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUICounterViewElement
+@interface SKUICounterViewElement : SKUIViewElement
 {
     double _changeRatePerSecond;
     long long _counterType;

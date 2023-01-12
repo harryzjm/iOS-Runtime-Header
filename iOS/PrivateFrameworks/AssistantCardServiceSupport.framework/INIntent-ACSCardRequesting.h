@@ -6,9 +6,7 @@
 
 #import <Intents/INIntent.h>
 
-#import <AssistantCardServiceSupport/ACSCardRequesting-Protocol.h>
-
-@interface INIntent (ACSCardRequesting) <ACSCardRequesting>
+@interface INIntent (ACSCardRequesting)
 - (unsigned long long)servicePriorityForCardRequest:(id)arg1;
 - (void)requestCard:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)acs_needsTitleCardSection;

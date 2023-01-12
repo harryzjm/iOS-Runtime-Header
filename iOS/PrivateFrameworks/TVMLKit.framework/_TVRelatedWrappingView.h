@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_TVFocusRedirectView.h"
+
 @class UIView;
 
 __attribute__((visibility("hidden")))
-@interface _TVRelatedWrappingView
+@interface _TVRelatedWrappingView : _TVFocusRedirectView
 {
     UIView *_relatedView;
 }

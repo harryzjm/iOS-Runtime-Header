@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/AMSUIWebModelInterface-Protocol.h>
-
 @class AMSUIWebButtonModel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebConditionalButtonModel : NSObject <AMSUIWebModelInterface>
+@interface AMSUIWebConditionalButtonModel : NSObject
 {
     _Bool _hideOnModal;
     _Bool _hideOnPush;
@@ -22,11 +20,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hideOnPush; // @synthesize hideOnPush=_hideOnPush;
 @property(nonatomic) _Bool hideOnModal; // @synthesize hideOnModal=_hideOnModal;
 @property(retain, nonatomic) AMSUIWebButtonModel *button; // @synthesize button=_button;
+@property(readonly, copy) NSString *description;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -6,21 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class FPXPCAutomaticErrorProxy, NSDate;
+@class FPXPCAutomaticErrorProxy, NSDate, NSObservation, NSProgress;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface _FPDExtensionRequestRecord : NSObject
 {
-    FPXPCAutomaticErrorProxy *_proxy;
-    SEL _selector;
+    NSObject<OS_dispatch_source> *_timer;
+    NSObject<OS_dispatch_source> *_progressTimer;
     NSDate *_timeout;
+    SEL _selector;
+    NSProgress *_progress;
+    NSObject<OS_dispatch_queue> *_queue;
+    CDUnknownBlockType _handler;
+    NSDate *_lastEventDate;
+    NSObservation *_fractionCompletedObservation;
+    FPXPCAutomaticErrorProxy *_proxy;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) NSDate *timeout; // @synthesize timeout=_timeout;
-@property(nonatomic) SEL selector; // @synthesize selector=_selector;
-@property __weak FPXPCAutomaticErrorProxy *proxy; // @synthesize proxy=_proxy;
+@property(readonly) __weak FPXPCAutomaticErrorProxy *proxy; // @synthesize proxy=_proxy;
 - (id)description;
+- (const char *)_timeoutExpirationState;
+- (void)_setupProgressTimer;
+- (void)_setupTimer:(double)arg1;
+- (void)_handleTimeout;
+- (void)monitorProgress:(id)arg1;
+- (void)cancelTimeout;
+- (id)initWithSelector:(SEL)arg1 proxy:(id)arg2 timeout:(double)arg3 queue:(id)arg4 timeoutHandler:(CDUnknownBlockType)arg5;
 
 @end
 

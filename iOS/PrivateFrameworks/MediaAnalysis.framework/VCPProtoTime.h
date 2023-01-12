@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCPProtoTime : PBCodable <NSCopying>
+@interface VCPProtoTime : PBCodable
 {
     long long _epoch;
     long long _value;

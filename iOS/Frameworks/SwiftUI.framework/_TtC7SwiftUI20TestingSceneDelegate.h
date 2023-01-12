@@ -6,12 +6,10 @@
 
 #import <UIKit/UIResponder.h>
 
-#import <SwiftUI/UIWindowSceneDelegate-Protocol.h>
-
 @class MISSING_TYPE, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI20TestingSceneDelegate : UIResponder <UIWindowSceneDelegate>
+@interface _TtC7SwiftUI20TestingSceneDelegate : UIResponder
 {
     MISSING_TYPE *window;
 }

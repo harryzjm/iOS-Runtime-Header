@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/TVShelfViewLayoutDelegate-Protocol.h>
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-
 @class NSIndexPath, NSString, UICollectionView, UIView, VUIShelfView;
 
 __attribute__((visibility("hidden")))
-@interface VUIShelfViewController : UIViewController <UICollectionViewDelegate, TVShelfViewLayoutDelegate>
+@interface VUIShelfViewController : UIViewController
 {
     _Bool _shouldUpdateBeforeLayout;
     UICollectionView *_collectionView;

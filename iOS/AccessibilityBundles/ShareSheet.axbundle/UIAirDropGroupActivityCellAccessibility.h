@@ -14,9 +14,8 @@
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (unsigned int)_accessibilityTransportSlotID;
-- (unsigned int)_accessibilityBottomLabelSlotID;
-- (unsigned int)_accessibilityMainLabelSlotID;
-- (id)_accessibilityAirdropNode;
+- (unsigned int)_accessibilitySubtitleSlotID;
+- (unsigned int)_accessibilityTextSlotID;
 - (_Bool)isAccessibilityElement;
 - (unsigned long long)accessibilityTraits;
 

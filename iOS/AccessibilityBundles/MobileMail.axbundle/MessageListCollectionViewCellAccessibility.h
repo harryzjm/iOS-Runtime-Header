@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)layoutMarginsDidChange;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
 - (id)_accessibilityLabelWithoutAttributes;
@@ -26,6 +25,8 @@
 - (id)_accessibilityScrollStatus;
 - (id)_privateAccessibilityCustomActions;
 - (void)accessibilityElementDidBecomeFocused;
+- (_Bool)_accessibilityScreenAction:(id)arg1;
+- (_Bool)_accessibilityLaterAction:(id)arg1;
 - (_Bool)_accessibilityToggleThreadAction:(id)arg1;
 - (_Bool)_accessibilityArchiveAction:(id)arg1;
 - (_Bool)_accessibilityMoreAction:(id)arg1;

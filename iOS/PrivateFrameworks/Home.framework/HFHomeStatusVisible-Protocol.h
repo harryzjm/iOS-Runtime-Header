@@ -9,10 +9,10 @@
 @class NAFuture;
 
 @protocol HFHomeStatusVisible <NSObject>
-@property(readonly, nonatomic) _Bool hf_isForcedVisibleInHomeStatus;
-@property(readonly, nonatomic) _Bool hf_hasSetVisibleInHomeStatus;
-@property(readonly, nonatomic) _Bool hf_isVisibleInHomeStatus;
-@property(readonly, nonatomic) _Bool hf_supportsHomeStatus;
 - (NAFuture *)hf_updateIsVisibleInHomeStatus:(_Bool)arg1;
+@property(nonatomic, readonly) _Bool hf_isForcedVisibleInHomeStatus;
+@property(nonatomic, readonly) _Bool hf_hasSetVisibleInHomeStatus;
+@property(nonatomic, readonly) _Bool hf_isVisibleInHomeStatus;
+@property(nonatomic, readonly) _Bool hf_supportsHomeStatus;
 @end
 

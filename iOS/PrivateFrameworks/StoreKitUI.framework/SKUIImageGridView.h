@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSArray, NSString, SKUIImageGridViewReuseView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIImageGridView : UIView <SKUIViewElementView>
+@interface SKUIImageGridView : UIView
 {
     long long _columnCount;
     struct UIEdgeInsets _contentInset;

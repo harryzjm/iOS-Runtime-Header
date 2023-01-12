@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKTransitLineMarker-Protocol.h>
-
 @class NSString;
 @protocol GEOTransitLine;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitLineMarker : NSObject <MKTransitLineMarker>
+@interface _GEOTransitLineMarker : NSObject
 {
     id <GEOTransitLine> _line;
     struct CLLocationCoordinate2D _locationHint;

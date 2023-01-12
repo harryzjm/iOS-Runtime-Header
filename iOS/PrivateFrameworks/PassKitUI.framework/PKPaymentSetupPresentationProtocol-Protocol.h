@@ -6,13 +6,14 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSString, UINavigationController;
+@class UINavigationController;
 
 @protocol PKPaymentSetupPresentationProtocol <NSObject>
 
 @optional
-- (NSString *)paymentSetupMarker;
-- (NSString *)onPresentationRemoveViewControllersAfterMarker;
+- (unsigned long long)onPresentationRemoveViewControllersAfterMarker;
+- (_Bool)paymentSetupMarkerRemovalIsInclusive;
+- (unsigned long long)paymentSetupMarker;
 - (void)presentWithNavigationController:(UINavigationController *)arg1 animated:(_Bool)arg2 completion:(void (^)(void))arg3;
 @end
 

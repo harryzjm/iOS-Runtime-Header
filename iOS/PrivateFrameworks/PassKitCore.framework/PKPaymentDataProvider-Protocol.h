@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSSet, NSString, PKExpressPassInformation, PKMerchant, PKOSVersionRequirement, PKPass, PKPassUpgradeRequest, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentTransactionRequest, PKPaymentWebService, PKTransitCommutePlan;
+@class NSArray, NSCalendar, NSData, NSDate, NSSet, NSString, PKExpressPassInformation, PKMerchant, PKOSVersionRequirement, PKPass, PKPassUpgradeRequest, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentTransactionRequest, PKPaymentWebService, PKTransitCommutePlan;
 @protocol PKPaymentDataProviderDelegate;
 
 @protocol PKPaymentDataProvider <NSObject>
@@ -15,11 +15,15 @@
 @property(readonly, nonatomic) NSString *deviceClass;
 @property(readonly, nonatomic) NSString *deviceName;
 @property(nonatomic) __weak id <PKPaymentDataProviderDelegate> delegate;
+@property(readonly, nonatomic) _Bool isOrderManagementNotificationsDisabled;
+@property(readonly, nonatomic) _Bool isOrderManagementDisabled;
 @property(readonly, nonatomic) _Bool isPaymentHandoffDisabled;
 @property(retain, nonatomic) NSString *defaultPaymentPassIdentifier;
 @property(readonly, nonatomic) _Bool secureElementIsProductionSigned;
 @property(readonly, nonatomic) NSString *secureElementIdentifier;
 @property(readonly, nonatomic) _Bool isDeviceInRestrictedMode;
+- (void)setOrderManagementNotificationsDisabled:(_Bool)arg1;
+- (void)setOrderManagementDisabled:(_Bool)arg1;
 - (void)setPaymentHandoffDisabled:(_Bool)arg1;
 - (void)setDefaultPaymentApplication:(PKPaymentApplication *)arg1 forPassUniqueIdentifier:(NSString *)arg2 completion:(void (^)(PKPass *))arg3;
 - (PKPaymentApplication *)defaultPaymentApplicationForPassUniqueIdentifier:(NSString *)arg1;
@@ -27,8 +31,10 @@
 @optional
 - (void)removeDelegate:(id <PKPaymentDataProviderDelegate>)arg1;
 - (void)addDelegate:(id <PKPaymentDataProviderDelegate>)arg1;
+- (void)setHidePayLaterOptions:(_Bool)arg1;
+- (_Bool)hidePayLaterOptions;
+- (void)sharingCapabilitiesForPassIdentifier:(NSString *)arg1 outHasShares:(_Bool *)arg2 outHasShareableEntitlements:(_Bool *)arg3;
 - (void)tilesForPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
-- (void)dataElementsForCredentialIdentifier:(NSString *)arg1 partition:(NSString *)arg2 elementIdentifiers:(NSDictionary *)arg3 completion:(void (^)(PKISO18013DataElements *, NSError *))arg4;
 - (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withNotificationServiceData:(unsigned long long)arg3 limit:(long long)arg4 completion:(void (^)(NSSet *))arg5;
 - (_Bool)supportsAddingPaymentPasses;
@@ -58,8 +64,8 @@
 - (void)mapsMerchantsWithCompletion:(void (^)(NSSet *))arg1;
 - (void)submitTransactionAnswerForTransaction:(NSString *)arg1 questionType:(unsigned long long)arg2 answer:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)transactionsRequiringReviewForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
-- (void)cashbackByPeriodForTransactionSourceIdentifiers:(NSSet *)arg1 withStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3 calendar:(NSCalendar *)arg4 calendarUnit:(unsigned long long)arg5 type:(long long)arg6 completion:(void (^)(NSArray *))arg7;
-- (void)installmentPlanTransactionsForTransactionSourceIdentifiers:(NSSet *)arg1 accountIdentifier:(NSString *)arg2 withRedemptionType:(long long)arg3 startDate:(NSDate *)arg4 endDate:(NSDate *)arg5 completion:(void (^)(NSSet *))arg6;
+- (void)cashbackByPeriodForTransactionSourceIdentifiers:(NSSet *)arg1 withStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3 calendar:(NSCalendar *)arg4 calendarUnit:(unsigned long long)arg5 type:(unsigned long long)arg6 completion:(void (^)(NSArray *))arg7;
+- (void)installmentPlanTransactionsForTransactionSourceIdentifiers:(NSSet *)arg1 accountIdentifier:(NSString *)arg2 withRedemptionType:(unsigned long long)arg3 startDate:(NSDate *)arg4 endDate:(NSDate *)arg5 completion:(void (^)(NSSet *))arg6;
 - (void)installmentTransactionsForInstallmentPlanIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)transactionWithReferenceIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentTransaction *))arg2;
 - (void)transactionWithServiceIdentifier:(NSString *)arg1 transactionSourceIdentifier:(NSString *)arg2 completion:(void (^)(PKPaymentTransaction *))arg3;
@@ -76,6 +82,7 @@
 - (void)transactionsForTransactionSourceIdentifiers:(NSSet *)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(NSDate *)arg4 endDate:(NSDate *)arg5 limit:(long long)arg6 completion:(void (^)(NSSet *))arg7;
 - (void)transactionsForTransactionSourceIdentifiers:(NSSet *)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(void (^)(NSSet *))arg5;
 - (void)hasTransactionsForTransactionSourceIdentifiers:(NSSet *)arg1 completion:(void (^)(_Bool))arg2;
+- (void)peerPaymentCounterpartHandlesForTransactionSourceIdentifier:(NSString *)arg1 startDate:(NSDate *)arg2 endDate:(NSDate *)arg3 completion:(void (^)(NSArray *))arg4;
 - (NSString *)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(NSString *)arg1;
 - (void)passUpgradeWithRequest:(PKPassUpgradeRequest *)arg1 pass:(PKPaymentPass *)arg2 visibleViewController:(id)arg3 completion:(void (^)(NSError *, PKPaymentPass *))arg4;
 - (void)startServiceModeForPassWithUniqueIdentifier:(NSString *)arg1 visibleViewController:(id)arg2;

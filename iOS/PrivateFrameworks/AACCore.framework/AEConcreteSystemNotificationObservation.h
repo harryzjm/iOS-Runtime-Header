@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEObservation-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AEConcreteSystemNotificationObservation : NSObject <AEObservation>
+@interface AEConcreteSystemNotificationObservation : NSObject
 {
     NSString *_notificationName;
     NSObject<OS_dispatch_queue> *_queue;

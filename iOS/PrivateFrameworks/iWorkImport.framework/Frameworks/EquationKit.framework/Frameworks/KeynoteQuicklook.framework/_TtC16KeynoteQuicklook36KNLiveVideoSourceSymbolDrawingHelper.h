@@ -22,6 +22,7 @@
 }
 
 + (id)fontWithPointSize:(double)arg1;
++ (struct CGSize)maxRasterizedSymbolSize;
 - (void).cxx_destruct;
 - (id)init;
 @property(nonatomic, retain) UIFont *lastDrawnAbbreviationFont; // @synthesize lastDrawnAbbreviationFont;

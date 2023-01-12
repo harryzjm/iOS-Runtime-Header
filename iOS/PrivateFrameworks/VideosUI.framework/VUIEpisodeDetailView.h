@@ -6,13 +6,11 @@
 
 #import <UIKit/UIScrollView.h>
 
-#import <VideosUI/VUILibraryEpisodeFrameViewDelegate-Protocol.h>
-
 @class NSString, UIFont, VUIFocusableTextView, VUILabel, VUILibraryEpisodeFrameView, VUIMediaItem, VUIMediaTagsView;
 @protocol VUIEpisodeDetailViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIEpisodeDetailView : UIScrollView <VUILibraryEpisodeFrameViewDelegate>
+@interface VUIEpisodeDetailView : UIScrollView
 {
     id <VUIEpisodeDetailViewDelegate> _episodeViewDelegate;
     VUILibraryEpisodeFrameView *_imageFrameView;

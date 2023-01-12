@@ -6,12 +6,15 @@
 
 #import <TipsCore/TPSAnalyticsXPCServerInterface-Protocol.h>
 #import <TipsCore/TPSRecordXPCServerInterface-Protocol.h>
+#import <TipsCore/TPSSearchQueryXPCServerInterface-Protocol.h>
 
-@class NSString;
+@class NSString, TPSAssetsConfiguration;
 
-@protocol TPSXPCServerInterface <TPSAnalyticsXPCServerInterface, TPSRecordXPCServerInterface>
+@protocol TPSXPCServerInterface <TPSAnalyticsXPCServerInterface, TPSRecordXPCServerInterface, TPSSearchQueryXPCServerInterface>
+- (void)fetchAssetsWithAssetsConfiguration:(TPSAssetsConfiguration *)arg1 completionHandler:(void (^)(TPSAssetsInfo *, NSError *))arg2;
 - (void)contentWithCompletionHandler:(void (^)(TPSContentPackage *, NSError *))arg1;
 - (oneway void)removeNotificationForIdentifier:(NSString *)arg1;
+- (oneway void)toggleTipSavedForIdentifier:(NSString *)arg1;
 - (oneway void)contentViewedForIdentifier:(NSString *)arg1;
 - (oneway void)tipsAppActive;
 - (oneway void)tipNotificationInteractedByUser;

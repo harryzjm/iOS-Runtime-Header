@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool _hasEstimatedSizes;
     NSIndexSet *_pinnedSupplementaryIndexes;
     _UICollectionLayoutAuxillaryOffsets *_supplementariesThatCanAffectContentSize;
+    unsigned long long _containerSizeDependentAxes;
     id <_UICollectionLayoutAuxillaryHosting> _auxillaryHost;
     NSArray *_frames;
     NSArray *_unpinnedFrames;

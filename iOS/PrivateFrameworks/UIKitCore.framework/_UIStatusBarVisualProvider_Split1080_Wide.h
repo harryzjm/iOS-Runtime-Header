@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarVisualProvider_CustomSplit-Protocol.h>
+#import "_UIStatusBarVisualProvider_FixedSplit.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_Split1080_Wide <_UIStatusBarVisualProvider_CustomSplit>
+@interface _UIStatusBarVisualProvider_Split1080_Wide : _UIStatusBarVisualProvider_FixedSplit
 {
 }
 
@@ -20,7 +20,8 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)notchSize;
 + (double)nativeDisplayWidth;
 + (double)height;
-+ (double)referenceScaleForScreen:(id)arg1;
++ (double)referenceScreenScale;
+- (_Bool)supportsCondensedBatteryPercentage;
 - (double)expandedIconScale;
 - (double)bottomLeadingTopOffset;
 - (double)lowerExpandedBaselineOffset;

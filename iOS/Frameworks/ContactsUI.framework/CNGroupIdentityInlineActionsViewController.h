@@ -6,15 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/CNContactInlineActionsViewControllerDelegate_Internal-Protocol.h>
-#import <ContactsUI/CNGroupIdentityActionItemDelegate-Protocol.h>
-#import <ContactsUI/CNUIObjectViewControllerDelegate-Protocol.h>
-
 @class CNContactInlineActionsViewController, CNGroupIdentity, CNGroupIdentityInlineActionsViewConfiguration, NSString;
 @protocol CNGroupIdentityInlineActionsViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNGroupIdentityInlineActionsViewController : UIViewController <CNContactInlineActionsViewControllerDelegate_Internal, CNUIObjectViewControllerDelegate, CNGroupIdentityActionItemDelegate>
+@interface CNGroupIdentityInlineActionsViewController : UIViewController
 {
     CNGroupIdentity *_group;
     id <CNGroupIdentityInlineActionsViewControllerDelegate> _delegate;

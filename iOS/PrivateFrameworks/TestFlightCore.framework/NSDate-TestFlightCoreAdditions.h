@@ -8,6 +8,6 @@
 
 @interface NSDate (TestFlightCoreAdditions)
 - (unsigned long long)tf_posixTimestampInMilliseconds;
-- (long long)tf_numberOfDaysFromNow;
+- (id)tf_timeFromNow;
 @end
 

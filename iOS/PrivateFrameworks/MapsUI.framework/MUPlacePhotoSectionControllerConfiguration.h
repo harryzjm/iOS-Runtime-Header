@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 @interface MUPlacePhotoSectionControllerConfiguration : NSObject
 {
     _Bool _supportsARPCallToAction;
+    _Bool _showLookAround;
     UIViewController *_presentingViewController;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool showLookAround; // @synthesize showLookAround=_showLookAround;
 @property(nonatomic) _Bool supportsARPCallToAction; // @synthesize supportsARPCallToAction=_supportsARPCallToAction;
 @property(nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 

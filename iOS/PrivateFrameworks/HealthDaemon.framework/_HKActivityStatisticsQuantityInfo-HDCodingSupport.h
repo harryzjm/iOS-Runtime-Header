@@ -6,11 +6,9 @@
 
 #import <HealthKit/_HKActivityStatisticsQuantityInfo.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface _HKActivityStatisticsQuantityInfo (HDCodingSupport) <HDCoding>
+@interface _HKActivityStatisticsQuantityInfo (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

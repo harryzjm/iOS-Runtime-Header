@@ -26,6 +26,7 @@
 - (void)ic_storeAccountForStoreAccountID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)ic_primaryAppleAccountWithError:(id *)arg1;
 - (void)ic_primaryAppleAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)ic_disableActiveLockerAccount:(id)arg1 error:(id *)arg2;
 - (_Bool)ic_setActiveLockerAccount:(id)arg1 error:(id *)arg2;
 - (void)ic_setActiveLockerAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)ic_activeLockerAccountWithError:(id *)arg1;

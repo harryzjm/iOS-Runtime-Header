@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSObject-Protocol.h>
+#import <UIKitCore/_UIInvalidatable-Protocol.h>
 
 @class NSString;
 
-@protocol _UIAssertion <NSObject>
+@protocol _UIAssertion <_UIInvalidatable>
 @property(readonly, nonatomic) NSString *reason;
 @end
 

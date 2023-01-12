@@ -6,12 +6,9 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class CCUICAPackageDescription, MRUOutputDeviceAsset, MRUVolumeHUDRouteDescriptionProvider, NSString;
+@class MRUOutputDeviceAsset, MRUVolumeHUDRouteDescriptionProvider;
 
 @protocol MRUVolumeHUDRouteDescriptionProviderDelegate <NSObject>
-
-@optional
-- (void)volumeHUDRouteDescriptionProvider:(MRUVolumeHUDRouteDescriptionProvider *)arg1 didChangePackageDescription:(CCUICAPackageDescription *)arg2 localizedDisplayTitle:(NSString *)arg3;
 - (void)volumeHUDRouteDescriptionProvider:(MRUVolumeHUDRouteDescriptionProvider *)arg1 didChangeOutputDeviceAsset:(MRUOutputDeviceAsset *)arg2;
 @end
 

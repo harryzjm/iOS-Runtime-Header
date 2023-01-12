@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
     int _routePoint;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) int routePoint; // @synthesize routePoint=_routePoint;
 @property(readonly, retain, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
-- (void)dealloc;
 - (id)initWithRoadName:(id)arg1 point:(int)arg2;
 
 @end

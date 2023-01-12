@@ -7,6 +7,8 @@
 #import <QuartzCore/CALayer.h>
 
 @interface CALayer (Utilities)
+- (id)vk_autoFadeOutShapeRectLayer;
+- (id)vk_autoFadeOutShapePointLayer;
 - (id)vk_quadFromConvertingRect:(struct CGRect)arg1 toLayer:(id)arg2;
 - (id)vk_quadFromConvertingBoundsToLayer:(id)arg1;
 @end

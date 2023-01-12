@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)initWithManagedObjectModel:(id)arg1 configuration:(id)arg2 mirroringDelegateOptions:(id)arg3;
-- (id)init;
 
 @end
 

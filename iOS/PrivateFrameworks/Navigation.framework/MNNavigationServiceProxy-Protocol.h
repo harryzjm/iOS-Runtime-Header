@@ -13,6 +13,9 @@
 - (void)resumeRealtimeUpdatesForSubscriber:(NSUUID *)arg1;
 - (void)pauseRealtimeUpdatesForSubscriber:(NSUUID *)arg1;
 - (void)interfaceHashesWithHandler:(void (^)(unsigned long long, unsigned long long))arg1;
+- (void)setSimulationPosition:(double)arg1;
+- (void)setSimulationSpeedMultiplier:(double)arg1;
+- (void)setSimulationSpeedOverride:(double)arg1;
 - (void)recordPedestrianTracePath:(NSString *)arg1;
 - (void)recordTraceBookmarkAtCurrentPositionWthScreenshotData:(NSData *)arg1;
 - (void)setTracePosition:(double)arg1;
@@ -37,6 +40,10 @@
 - (void)forceReroute;
 - (void)resumeOriginalDestination;
 - (void)updateDestination:(GEOComposedWaypoint *)arg1;
+- (void)advanceToNextLeg;
+- (void)removeWaypointAtIndex:(unsigned long long)arg1;
+- (void)insertWaypoint:(GEOComposedWaypoint *)arg1;
+- (void)rerouteWithWaypoints:(NSArray *)arg1;
 - (void)stopNavigationWithReason:(unsigned long long)arg1;
 - (void)startNavigationWithDetails:(MNStartNavigationDetails *)arg1 activeBlock:(void (^)(void))arg2;
 - (void)setRoutesForPreview:(NSArray *)arg1 selectedRouteIndex:(unsigned long long)arg2;

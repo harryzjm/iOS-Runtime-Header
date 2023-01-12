@@ -13,18 +13,17 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *presenter;
     MISSING_TYPE *metricBuilder;
-    MISSING_TYPE *circle;
+    MISSING_TYPE *timerIconView;
     MISSING_TYPE *label;
     MISSING_TYPE *animator;
+    MISSING_TYPE *currentRotationAngle;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(nonatomic, readonly) struct CGSize intrinsicContentSize;
-- (void)layoutSubviews;
 - (void)updateDuration:(double)arg1;
 
 @end

@@ -6,15 +6,10 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSApplication/TSDChangeableInfo-Protocol.h>
-#import <TSApplication/TSDContainerInfo-Protocol.h>
-#import <TSApplication/TSKDocumentObject-Protocol.h>
-#import <TSApplication/TSWPStorageParent-Protocol.h>
-
 @class NSArray, NSObject, NSString, TSDImageAdjustments, TSDImageDataHelper, TSDInfoGeometry, TSPData, TSSPropertySetChangeDetails, TSWPStorage;
 @protocol OS_dispatch_queue, TSDInfo, TSDOwningAttachment;
 
-@interface TSAGalleryItem : TSPObject <TSDContainerInfo, TSWPStorageParent, TSDChangeableInfo, TSKDocumentObject>
+@interface TSAGalleryItem : TSPObject
 {
     TSPData *_imageData;
     TSWPStorage *_captionStorage;

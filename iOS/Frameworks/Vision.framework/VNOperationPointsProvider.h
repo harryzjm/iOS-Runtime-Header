@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNOperationPointsProviding-Protocol.h>
-
 @class VNOperationPoints;
 
 __attribute__((visibility("hidden")))
-@interface VNOperationPointsProvider : NSObject <VNOperationPointsProviding>
+@interface VNOperationPointsProvider : NSObject
 {
     VNOperationPoints *_operationPoints;
 }

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSKit/TSULogContext-Protocol.h>
-
 @class NSString, TSKDocumentRoot;
 
-@interface TSKDocumentRootLogContext : NSObject <TSULogContext>
+@interface TSKDocumentRootLogContext : NSObject
 {
     TSKDocumentRoot *_documentRoot;
 }

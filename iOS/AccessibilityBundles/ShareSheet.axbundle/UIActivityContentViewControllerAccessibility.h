@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)configureHeaderViewIfNeeded;
+- (void)_configureHeaderViewIfNeeded;
 - (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;
 

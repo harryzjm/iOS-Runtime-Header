@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/WebAllowDenyPolicyListener-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKWebAllowDenyPolicyListener : NSObject <WebAllowDenyPolicyListener>
+@interface WKWebAllowDenyPolicyListener : NSObject
 {
     struct Function<void (bool)> _completionHandler;
 }

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
 @class IBImageConfiguration, NSString;
 
-@interface IBAbstractImageInfo : NSObject <IBBinaryArchiving, NSCopying>
+@interface IBAbstractImageInfo : NSObject
 {
     IBImageConfiguration *_imageConfiguration;
 }

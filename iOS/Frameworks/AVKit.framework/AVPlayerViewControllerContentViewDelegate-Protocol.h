@@ -6,21 +6,11 @@
 
 #import <AVKit/NSObject-Protocol.h>
 
-@class AVPlaybackControlsView, AVPlayerViewControllerContentView, AVTurboModePlaybackControlsPlaceholderView, NSNumber;
+@class AVPlayerViewControllerContentView, UIWindow;
 
 @protocol AVPlayerViewControllerContentViewDelegate <NSObject>
-- (void)playerViewControllerContentViewDidUpdateScrollingStatus:(AVPlayerViewControllerContentView *)arg1;
-- (NSNumber *)playerViewControllerContentViewOverrideLayoutClass:(AVPlayerViewControllerContentView *)arg1;
-- (_Bool)playerViewControllerContentViewIsBeingTransitionedFromFullScreen:(AVPlayerViewControllerContentView *)arg1;
-- (_Bool)playerViewControllerContentViewHasActiveTransition:(AVPlayerViewControllerContentView *)arg1;
-- (void)playerViewControllerContentViewDidChangeVideoGravity:(AVPlayerViewControllerContentView *)arg1;
 - (struct UIEdgeInsets)playerViewControllerContentViewEdgeInsetsForLetterboxedVideo:(AVPlayerViewControllerContentView *)arg1;
-- (_Bool)playerViewControllerContentViewShouldApplyAutomaticVideoGravity:(AVPlayerViewControllerContentView *)arg1;
-- (void)playerViewControllerContentViewDidMoveToSuperviewOrWindow:(AVPlayerViewControllerContentView *)arg1;
-- (void)playerViewControllerContentViewDidLayoutSubviews:(AVPlayerViewControllerContentView *)arg1;
-- (void)playerViewControllerContentViewPlaybackContentContainerViewChanged:(AVPlayerViewControllerContentView *)arg1;
+- (void)playerViewControllerContentView:(AVPlayerViewControllerContentView *)arg1 didMoveToWindow:(UIWindow *)arg2;
 - (_Bool)playerViewControllerContentViewIsPlayingOnSecondScreen:(AVPlayerViewControllerContentView *)arg1;
-- (void)playerViewControllerContentView:(AVPlayerViewControllerContentView *)arg1 willLoadTurboModePlaceholderView:(AVTurboModePlaybackControlsPlaceholderView *)arg2;
-- (void)playerViewControllerContentView:(AVPlayerViewControllerContentView *)arg1 willLoadPlaybackControlsView:(AVPlaybackControlsView *)arg2;
 @end
 

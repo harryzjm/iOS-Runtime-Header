@@ -6,11 +6,9 @@
 
 #import <IconFoundation/IFImageBag.h>
 
-#import <IconServices/ISScalableCompositorResource-Protocol.h>
-
 @class NSString;
 
-@interface IFImageBag (ISScalableCompositorResource) <ISScalableCompositorResource>
+@interface IFImageBag (ISScalableCompositorResource)
 + (id)defaultAppClipAssetsBag;
 + (id)defaultAppIconAssetsBag;
 

@@ -6,11 +6,9 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSCEUIDSet;
 
-@interface TSTExpandCollapseState : TSKSosBase <NSCopying>
+@interface TSTExpandCollapseState : TSKSosBase
 {
     struct vector<TSU::UUIDData<TSP::UUIDData>, std::allocator<TSU::UUIDData<TSP::UUIDData>>> _collapsedGroupUIDs;
     struct vector<TSU::UUIDData<TSP::UUIDData>, std::allocator<TSU::UUIDData<TSP::UUIDData>>> _expandedGroupUIDs;

@@ -9,6 +9,7 @@
 @class STSResultDetailView;
 
 @protocol STSResultDetailViewDelegate <NSObject>
+- (void)detailViewDidTapReportConcern:(STSResultDetailView *)arg1;
 - (void)detailViewDidTapSend:(STSResultDetailView *)arg1;
 - (void)detailViewDidTapProvider:(STSResultDetailView *)arg1;
 @end

@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)dataRepresentation;
 - (id)initWithData:(id)arg1 accessibilityObject:(id)arg2;
 - (id)initWithData:(id)arg1 cache:(void *)arg2;
-- (id)initWithTextMarker:(struct TextMarkerData *)arg1 cache:(void *)arg2;
+- (id)initWithTextMarker:(void *)arg1 cache:(void *)arg2;
 
 @end
 

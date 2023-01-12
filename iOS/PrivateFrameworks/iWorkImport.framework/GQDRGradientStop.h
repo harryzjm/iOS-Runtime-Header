@@ -8,7 +8,6 @@
 
 @class GQDColor;
 
-__attribute__((visibility("hidden")))
 @interface GQDRGradientStop : NSObject
 {
     float mFraction;

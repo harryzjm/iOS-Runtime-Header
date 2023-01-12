@@ -6,20 +6,18 @@
 
 #import <Metal/_MTLRenderPipelineState.h>
 
-#import <MTLSimDriver/MTLRenderPipelineStateSPI-Protocol.h>
-#import <MTLSimDriver/MTLSerializerRenderPipelineState-Protocol.h>
-
 @class MTLDebugInstrumentationData, MTLSimDevice, NSString;
 @protocol MTLDevice;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimRenderPipelineState : _MTLRenderPipelineState <MTLRenderPipelineStateSPI, MTLSerializerRenderPipelineState>
+@interface MTLSimRenderPipelineState : _MTLRenderPipelineState
 {
     MTLSimDevice *_device;
     unsigned int _pipelineRef;
     unsigned long long _uniqueIdentifier;
 }
 
+- (id)pipelineBinaries;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_da2e99ad)arg1;
 @property(readonly) unsigned long long imageblockSampleLength;
 - (unsigned int)getVertexShaderTelemetryID;
@@ -36,11 +34,21 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) id <MTLDevice> device;
+@property(readonly, nonatomic) unsigned int explicitVisibilityGroupID;
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *fragmentDebugInstrumentationData;
 @property(readonly, nonatomic) unsigned long long gpuAddress;
+@property(readonly) unsigned long long gpuHandle;
+@property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly) unsigned long long hash;
 @property(readonly) NSString *label;
+@property(readonly) unsigned long long maxTotalThreadgroupsPerMeshGrid;
+@property(readonly) unsigned long long maxTotalThreadsPerMeshThreadgroup;
+@property(readonly) unsigned long long maxTotalThreadsPerObjectThreadgroup;
 @property(readonly) unsigned long long maxTotalThreadsPerThreadgroup;
+@property(readonly, retain, nonatomic) MTLDebugInstrumentationData *meshDebugInstrumentationData;
+@property(readonly) unsigned long long meshThreadExecutionWidth;
+@property(readonly, retain, nonatomic) MTLDebugInstrumentationData *objectDebugInstrumentationData;
+@property(readonly) unsigned long long objectThreadExecutionWidth;
 @property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) Class superclass;
 @property(readonly) _Bool supportIndirectCommandBuffers;

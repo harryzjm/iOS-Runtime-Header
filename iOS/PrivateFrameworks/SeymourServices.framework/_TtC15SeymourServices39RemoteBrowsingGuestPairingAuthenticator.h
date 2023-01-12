@@ -13,6 +13,7 @@
     MISSING_TYPE *state;
     MISSING_TYPE *connectionBrokerProvider;
     MISSING_TYPE *localDeviceProvider;
+    MISSING_TYPE *platform;
     MISSING_TYPE *timerProvider;
 }
 

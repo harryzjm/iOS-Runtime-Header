@@ -6,17 +6,17 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLErrorMessage : PBCodable <NSCopying>
+@interface _ICLLErrorMessage : PBCodable
 {
     int _code;
+    int _contentTypeCode;
     NSString *_message;
     struct {
         unsigned int code:1;
+        unsigned int contentTypeCode:1;
     } _has;
 }
 

@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
-#import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
-
 @class NSArray, NSDictionary, NSString, UIImage, VUIMediaTagsViewLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIMediaTagsView <VUIRentalExpirationLabelDelegate, VUILabelBaselineProtocol>
+@interface VUIMediaTagsView
 {
     VUIMediaTagsViewLayout *_tagsViewLayout;
     NSDictionary *_viewsMap;
@@ -28,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *groupedSubviews; // @synthesize groupedSubviews=_groupedSubviews;
 @property(copy, nonatomic) NSDictionary *viewsMap; // @synthesize viewsMap=_viewsMap;
 @property(readonly, nonatomic) VUIMediaTagsViewLayout *tagsViewLayout; // @synthesize tagsViewLayout=_tagsViewLayout;
+- (void)_addGenreLabelAndSeparator;
 - (void)_removeGenreLabelAndSeparator;
 - (double)_totalSubviewsWidth;
 - (void)_removeSeparatorsFromGroupsIfNeeded:(_Bool)arg1;
@@ -41,13 +39,16 @@ __attribute__((visibility("hidden")))
 - (id)_newLabelAsSubview:(id)arg1;
 - (id)_firstLabelSubview;
 - (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)vui_traitCollectionDidChange:(id)arg1;
 - (void)updateWithMetadata:(id)arg1;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (double)bottomMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)vui_baselineOffsetFromBottom;
+- (double)firstBaselineOffsetFromTop;
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)topMarginWithBaselineMargin:(double)arg1;
+- (void)_adjustViewsPositionFor:(id)arg1 preferredSize:(struct CGSize)arg2;
 - (struct CGSize)_layoutSubviewsForSize:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 layout:(id)arg2;

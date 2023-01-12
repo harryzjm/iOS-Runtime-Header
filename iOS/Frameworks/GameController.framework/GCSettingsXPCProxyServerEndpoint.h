@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCSettingsXPCProxyRemoteServerEndpointInterface-Protocol.h>
-#import <GameController/_GCIPCEndpointServer-Protocol.h>
-
-@class GCControllerSettings, NSString;
+@class GCSProfile, NSString;
 @protocol GCSettingsXPCProxyRemoteClientEndpointInterface, GCSettingsXPCProxyServerEndpointDelegate, NSObject><NSCopying><NSSecureCoding, _GCControllerComponentDescription, _GCIPCEndpointConnection;
 
 __attribute__((visibility("hidden")))
-@interface GCSettingsXPCProxyServerEndpoint : NSObject <_GCIPCEndpointServer, GCSettingsXPCProxyRemoteServerEndpointInterface>
+@interface GCSettingsXPCProxyServerEndpoint : NSObject
 {
     id <GCSettingsXPCProxyRemoteClientEndpointInterface> _clientEndpoint;
     id <_GCIPCEndpointConnection> _connection;
@@ -21,8 +18,7 @@ __attribute__((visibility("hidden")))
     id _connectionInvalidationRegistration;
     unsigned long long _pendingUpdates;
     id <NSObject><NSCopying><NSSecureCoding> _identifier;
-    GCControllerSettings *_settingsForBundleID;
-    GCControllerSettings *_settingsDefault;
+    GCSProfile *_settingsProfile;
     id <GCSettingsXPCProxyServerEndpointDelegate> _delegate;
     id _userInfo;
 }
@@ -30,17 +26,16 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 @property(nonatomic) __weak id <GCSettingsXPCProxyServerEndpointDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) GCControllerSettings *settingsDefault; // @synthesize settingsDefault=_settingsDefault;
-@property(retain, nonatomic) GCControllerSettings *settingsForBundleID; // @synthesize settingsForBundleID=_settingsForBundleID;
+@property(retain, nonatomic) GCSProfile *settingsProfile; // @synthesize settingsProfile=_settingsProfile;
 @property(readonly) id <NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
 - (void)fetchObjectIdentifierWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidateConnection;
-- (void)fetchSettingsWithReply:(CDUnknownBlockType)arg1;
+- (void)fetchProfileWithReply:(CDUnknownBlockType)arg1;
 - (_Bool)acceptClient:(id)arg1 onConnection:(id)arg2 error:(id *)arg3;
 - (void)invalidateClient;
 @property(readonly, nonatomic) id <_GCControllerComponentDescription> receiverDescription;
-- (id)initWithInitialValueForBundleID:(id)arg1 defaultSettings:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 initialValueForBundleID:(id)arg2 defaultSettings:(id)arg3;
+- (id)initWithInitialValueForProfile:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 initialValueForProfile:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

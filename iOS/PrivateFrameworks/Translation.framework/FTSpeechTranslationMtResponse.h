@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTTranslationLocalePair, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTSpeechTranslationMtResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTSpeechTranslationMtResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,7 +19,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_2d97ff7b)addObjectToBuffer:(void *)arg1;
-@property(readonly, nonatomic) _Bool is_final_result;
+@property(readonly, nonatomic) _Bool is_final;
+- (void)n_best_translated_phrases_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)n_best_translated_phrases_count;
+- (id)n_best_translated_phrases_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *n_best_translated_phrases;
 @property(readonly, nonatomic) FTTranslationLocalePair *translation_locale_pair;
 @property(readonly, nonatomic) NSString *return_str;

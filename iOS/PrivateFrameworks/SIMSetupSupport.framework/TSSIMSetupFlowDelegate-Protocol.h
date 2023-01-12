@@ -12,6 +12,10 @@
 - (void)viewControllerDidComplete:(UIViewController *)arg1;
 
 @optional
+- (void)maybeRegisterDismissHandler:(UIViewController *)arg1;
+- (void)cancelNextPane;
+- (void)installationFailed;
+- (void)receivedResponseWithVC:(UIViewController *)arg1;
 - (void)receivedResponse;
 - (void)waitForResponse:(UIViewController *)arg1;
 - (void)userDidTapCancel;

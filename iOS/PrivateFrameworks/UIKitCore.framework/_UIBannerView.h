@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CALayer, UIImageView, UILabel, UIView, _UIBannerContent;
+#import "UIView.h"
+
+@class CALayer, UIImageView, UILabel, _UIBannerContent;
 
 __attribute__((visibility("hidden")))
-@interface _UIBannerView
+@interface _UIBannerView : UIView
 {
     _Bool _highlighted;
     _UIBannerContent *_content;

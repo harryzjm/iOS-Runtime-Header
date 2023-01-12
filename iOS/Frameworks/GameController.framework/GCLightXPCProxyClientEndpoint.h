@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCDeviceLightComponent-Protocol.h>
-#import <GameController/GCLightXPCProxyRemoteClientEndpointInterface-Protocol.h>
-#import <GameController/_GCIPCEndpointClient-Protocol.h>
-
 @class GCController, GCDeviceLight, NSString;
 @protocol GCLightXPCProxyRemoteServerEndpointInterface, NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface GCLightXPCProxyClientEndpoint : NSObject <_GCIPCEndpointClient, GCDeviceLightComponent, GCLightXPCProxyRemoteClientEndpointInterface>
+@interface GCLightXPCProxyClientEndpoint : NSObject
 {
     GCController *_controller;
     id <GCLightXPCProxyRemoteServerEndpointInterface> _serverEndpoint;

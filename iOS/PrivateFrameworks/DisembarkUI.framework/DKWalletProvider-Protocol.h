@@ -6,10 +6,7 @@
 
 #import <DisembarkUI/NSObject-Protocol.h>
 
-@class NSArray;
-
 @protocol DKWalletProvider <NSObject>
-- (NSArray *)localPaymentCards;
-- (_Bool)hasCards;
+- (void)fetchAppleWalletCards:(void (^)(DKNotableUserDataWallet *))arg1;
 @end
 

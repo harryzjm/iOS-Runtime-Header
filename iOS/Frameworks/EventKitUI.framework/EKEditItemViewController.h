@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <EventKitUI/EKEditItemViewControllerProtocol-Protocol.h>
-
 @class EKUIRecurrenceAlertController;
 @protocol EKEditItemViewControllerDelegate, EKStyleProvider;
 
 __attribute__((visibility("hidden")))
-@interface EKEditItemViewController : UIViewController <EKEditItemViewControllerProtocol>
+@interface EKEditItemViewController : UIViewController
 {
     struct CGRect _initialFrame;
     unsigned long long _subitem;
@@ -46,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(_Bool)arg1;
+- (_Bool)hidesBottomBarWhenPushed;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2;
 

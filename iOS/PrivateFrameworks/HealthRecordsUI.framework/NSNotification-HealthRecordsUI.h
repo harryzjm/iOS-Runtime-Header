@@ -7,7 +7,9 @@
 #import <Foundation/NSNotification.h>
 
 @interface NSNotification (HealthRecordsUI)
++ (id)SignedClinicalDataAddedToWalletNotification;
 + (id)ClinicalAccountOnboardingCompletionNotification;
 + (id)OAuthCompletionNotification;
++ (id)WDMedicalRecordTimelineShouldReloadNotification;
 @end
 

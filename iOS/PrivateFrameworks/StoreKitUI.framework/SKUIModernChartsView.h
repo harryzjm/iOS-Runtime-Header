@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/UIScrollViewDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, UIScrollView, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIModernChartsView : UIView <UIScrollViewDelegate>
+@interface SKUIModernChartsView : UIView
 {
     _UIBackdropView *_backdropView;
     struct UIEdgeInsets _contentInset;

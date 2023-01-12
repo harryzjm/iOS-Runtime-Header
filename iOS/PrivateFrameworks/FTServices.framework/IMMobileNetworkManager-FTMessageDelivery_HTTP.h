@@ -6,12 +6,9 @@
 
 #import <IMFoundation/IMMobileNetworkManager.h>
 
-#import <FTServices/FTMessageDeliveryAPSMobileNetworkManager-Protocol.h>
-#import <FTServices/FTMessageDeliveryHTTPMobileNetworkManager-Protocol.h>
-
 @class NSString;
 
-@interface IMMobileNetworkManager (FTMessageDelivery_HTTP) <FTMessageDeliveryHTTPMobileNetworkManager, FTMessageDeliveryAPSMobileNetworkManager>
+@interface IMMobileNetworkManager (FTMessageDelivery_HTTP)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

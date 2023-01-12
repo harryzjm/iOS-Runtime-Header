@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/TSUURLWrapper-Protocol.h>
-
 @class NSData, NSString, NSURL, TSUSandboxedURL, TSUURLTrackerFilePresenter;
 @protocol TSULogContext;
 
-@interface TSUURLTracker : NSObject <TSUURLWrapper>
+@interface TSUURLTracker : NSObject
 {
     TSUURLTrackerFilePresenter *_filePresenter;
     id <TSULogContext> _logContext;
@@ -20,6 +18,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <TSULogContext> logContext; // @synthesize logContext=_logContext;
 @property(readonly, copy) NSString *description;
+@property(readonly) NSURL *URLIfAvailable;
 @property(readonly) NSURL *URL;
 - (id)p_filePresenterQueue;
 @property(readonly) NSURL *volumeURL;

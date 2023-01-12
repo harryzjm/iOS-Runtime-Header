@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKRatingStringProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKThirdPartyRatingStringBuilder : NSObject <MKRatingStringProvider>
+@interface MKThirdPartyRatingStringBuilder : NSObject
 {
 }
 

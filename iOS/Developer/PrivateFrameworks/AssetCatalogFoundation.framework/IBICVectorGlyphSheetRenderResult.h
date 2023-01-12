@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface IBICVectorGlyphSheetRenderResult : NSObject <IBBinaryArchiving>
+@interface IBICVectorGlyphSheetRenderResult : NSObject
 {
     NSDictionary *_glyphsByWeightAndSize;
 }

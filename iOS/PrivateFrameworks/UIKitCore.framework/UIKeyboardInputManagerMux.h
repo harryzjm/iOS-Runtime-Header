@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <TIKeyboardInputManager> systemInputManager; // @synthesize systemInputManager=_systemInputManager;
 @property(retain, nonatomic) id <_UIIVCResponseDelegateImpl> responseDelegate; // @synthesize responseDelegate=_responseDelegate;
 - (void)forwardInvocation:(id)arg1;
@@ -34,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)setSystemInputManagerFromTextInputTraits:(id)arg1 autofillMode:(long long)arg2;
 @property(readonly, nonatomic) _Bool hasSystemInputManager;
 - (_Bool)_systemHasKbd;
-- (void)dealloc;
 
 @end
 

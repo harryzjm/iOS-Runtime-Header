@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTRegistrable-Protocol.h>
-
 @class DVTVersion, NSArray, NSString;
 
-@interface DVTMacroNameRegistryRegistration : NSObject <DVTRegistrable>
+@interface DVTMacroNameRegistryRegistration : NSObject
 {
     _Bool _listType;
     NSString *_macroName;

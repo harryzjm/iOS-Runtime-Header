@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HDSPEventRecordMessage.h"
+
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface HDSPDismissGoodMorningIDSMessage
+@interface HDSPDismissGoodMorningIDSMessage : HDSPEventRecordMessage
 {
 }
 

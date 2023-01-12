@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *cancellables;
     MISSING_TYPE *client;
-    MISSING_TYPE *healthStore;
 }
 
 - (void).cxx_destruct;

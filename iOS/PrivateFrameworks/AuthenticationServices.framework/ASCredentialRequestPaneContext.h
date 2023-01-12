@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
-@property(readonly, nonatomic) ASCredentialRequestPaneViewController *paneViewController; // @synthesize paneViewController=_paneViewController;
+@property(readonly, nonatomic) __weak ASCredentialRequestPaneViewController *paneViewController; // @synthesize paneViewController=_paneViewController;
 - (void)addEmptyViewWithSpacing:(double)arg1;
 - (void)addSubPane:(id)arg1 withCustomSpacingAfter:(double)arg2;
 - (id)initWithPaneViewController:(id)arg1 stackView:(id)arg2;

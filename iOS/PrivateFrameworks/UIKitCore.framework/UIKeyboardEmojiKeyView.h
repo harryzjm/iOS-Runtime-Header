@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKeyboardEmojiCategoryUpdate-Protocol.h>
+#import "UIKBKeyView.h"
 
 @class NSString, UIKeyboardEmojiKeyDisplayController;
 @protocol UIKeyboardEmojiCategoryUpdateDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiKeyView <UIKeyboardEmojiCategoryUpdate>
+@interface UIKeyboardEmojiKeyView : UIKBKeyView
 {
     UIKeyboardEmojiKeyDisplayController<UIKeyboardEmojiCategoryUpdateDelegate> *emojiKeyManager;
 }
 
-@property(nonatomic) UIKeyboardEmojiKeyDisplayController<UIKeyboardEmojiCategoryUpdateDelegate> *emojiKeyManager; // @synthesize emojiKeyManager;
+- (void).cxx_destruct;
+@property(nonatomic) __weak UIKeyboardEmojiKeyDisplayController<UIKeyboardEmojiCategoryUpdateDelegate> *emojiKeyManager; // @synthesize emojiKeyManager;
 - (long long)updateToCategoryWithOffsetPercentage:(double)arg1;
 - (void)updateToCategory:(long long)arg1;
 

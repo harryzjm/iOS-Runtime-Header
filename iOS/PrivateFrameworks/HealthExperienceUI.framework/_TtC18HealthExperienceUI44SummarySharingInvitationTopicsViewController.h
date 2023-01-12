@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI42CompoundDataSourceCollectionViewControllerCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI44SummarySharingInvitationTopicsViewController
+@interface _TtC18HealthExperienceUI44SummarySharingInvitationTopicsViewController : _$s18HealthExperienceUI42CompoundDataSourceCollectionViewControllerCN
 {
     MISSING_TYPE *healthExperienceStore;
     MISSING_TYPE *sharedAlertsDataSource;
-    MISSING_TYPE *sharedTopicsDataSource;
+    MISSING_TYPE *sharedTopicsDataSources;
     MISSING_TYPE *selectedDataTypesContext;
     MISSING_TYPE *cancellables;
 }

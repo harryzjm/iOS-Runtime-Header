@@ -6,11 +6,9 @@
 
 #import <Foundation/NSOperationQueue.h>
 
-#import <AppStoreDaemon/ASDTaskScheduler-Protocol.h>
-
 @class NSString;
 
-@interface NSOperationQueue (ASDTaskScheduler) <ASDTaskScheduler>
+@interface NSOperationQueue (ASDTaskScheduler)
 - (void)scheduleBlock:(CDUnknownBlockType)arg1;
 
 // Remaining properties

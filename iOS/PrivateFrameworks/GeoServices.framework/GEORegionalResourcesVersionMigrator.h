@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOActiveTileGroupMigrator-Protocol.h>
-
 @class GEOResourceManifestConfiguration, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEORegionalResourcesVersionMigrator : NSObject <GEOActiveTileGroupMigrator>
+@interface GEORegionalResourcesVersionMigrator : NSObject
 {
     GEOResourceManifestConfiguration *_manifestConfiguration;
 }

@@ -12,10 +12,9 @@
 @property(readonly, nonatomic) double promotionScore;
 @property(readonly, nonatomic) _Bool isRecent;
 @property(readonly, nonatomic) unsigned short type;
-@property(readonly, nonatomic) _Bool isPromoted;
-@property(readonly, nonatomic) unsigned long long numberOfAssetsInExtended;
 @property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) NSDate *endDate;
 @property(readonly, nonatomic) NSDate *startDate;
+- (unsigned long long)numberOfAssetsInExtendedForSharingConsideration:(long long)arg1;
 @end
 

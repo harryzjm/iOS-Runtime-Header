@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString, OADBlip;
 
 __attribute__((visibility("hidden")))
-@interface OADBlipRef : NSObject <NSCopying>
+@interface OADBlipRef : NSObject
 {
     int mIndex;
     NSString *mName;

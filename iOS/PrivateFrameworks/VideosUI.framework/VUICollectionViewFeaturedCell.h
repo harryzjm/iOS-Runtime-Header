@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIBaseCollectionViewCell.h"
+
 @class VUICollectionViewFeaturedView;
 
 __attribute__((visibility("hidden")))
-@interface VUICollectionViewFeaturedCell
+@interface VUICollectionViewFeaturedCell : VUIBaseCollectionViewCell
 {
     VUICollectionViewFeaturedView *_featuredView;
 }

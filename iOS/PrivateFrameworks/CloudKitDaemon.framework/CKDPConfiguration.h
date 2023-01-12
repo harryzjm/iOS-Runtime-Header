@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKDPConfiguration : PBCodable <NSCopying>
+@interface CKDPConfiguration : PBCodable
 {
     unsigned long long _created;
     unsigned long long _expires;

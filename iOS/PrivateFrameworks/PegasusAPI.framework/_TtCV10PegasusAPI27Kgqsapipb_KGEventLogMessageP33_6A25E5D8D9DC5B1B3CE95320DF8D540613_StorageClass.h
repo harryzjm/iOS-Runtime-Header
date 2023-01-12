@@ -33,6 +33,9 @@
     MISSING_TYPE *_newsResults;
     MISSING_TYPE *_kgDebugList;
     MISSING_TYPE *_isDisputedResponse;
+    MISSING_TYPE *_nlgDialogInfo;
+    MISSING_TYPE *_catID;
+    MISSING_TYPE *_isWebExtractedFact;
     MISSING_TYPE *_eventVersion;
     MISSING_TYPE *_eventType;
 }

@@ -6,7 +6,12 @@
 
 #import <ClassKit/CLSClientCancelable-Protocol.h>
 
+@class NSArray, NSDate;
+
 @protocol CLSChangeNotifiable <CLSClientCancelable>
 - (oneway void)clientRemote_itemChanged:(unsigned long long)arg1;
+
+@optional
+- (oneway void)clientRemote_entitiesChangedSince:(NSDate *)arg1 added:(NSArray *)arg2 updated:(NSArray *)arg3 deleted:(NSArray *)arg4;
 @end
 

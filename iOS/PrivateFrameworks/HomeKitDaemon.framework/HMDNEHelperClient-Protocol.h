@@ -9,6 +9,7 @@
 @class NSArray, NSString, NSUUID;
 
 @protocol HMDNEHelperClient <NSObject>
+- (void)cacheClearUUIDs;
 - (NSString *)cacheCopySigningIdentifierForProcessIdentifier:(NSUUID *)arg1;
 - (NSArray *)cacheCopyAppUUIDForSigningIdentifier:(NSString *)arg1 executablePath:(NSString *)arg2;
 @end

@@ -6,9 +6,9 @@
 
 #import <TipsDaemon/NSObject-Protocol.h>
 
-@class NSDictionary, TPSTip, TPSWidgetController;
+@class NSDictionary, TPSDocument, TPSWidgetController;
 
 @protocol TPSWidgetControllerDelegate <NSObject>
-- (_Bool)widgetController:(TPSWidgetController *)arg1 validForTip:(TPSTip *)arg2 tipDeliveryInfoMap:(NSDictionary *)arg3 deliveryInfoMap:(NSDictionary *)arg4;
+- (_Bool)widgetController:(TPSWidgetController *)arg1 validForDocument:(TPSDocument *)arg2 documentDeliveryInfoMap:(NSDictionary *)arg3 deliveryInfoMap:(NSDictionary *)arg4;
 @end
 

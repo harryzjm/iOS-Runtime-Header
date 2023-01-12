@@ -4,17 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/TVShelfViewLayoutDelegate-Protocol.h>
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/VUIDialogInteractionControllerDelegate-Protocol.h>
-#import <VideosUI/VUIEpisodeDetailViewControllerDelegate-Protocol.h>
-#import <VideosUI/VUILibraryDownloadPopoverViewControllerDelegate-Protocol.h>
-
 @class NSArray, NSIndexPath, NSString, UICollectionViewDiffableDataSource, VUIDialogInteractionController, VUIEpisodeDetailViewController, VUILibraryEpisodeListCell;
 @protocol VUILibraryEpisodeShelfViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryEpisodeShelfViewController <UICollectionViewDelegate, TVShelfViewLayoutDelegate, VUIEpisodeDetailViewControllerDelegate, VUIDialogInteractionControllerDelegate, VUILibraryDownloadPopoverViewControllerDelegate>
+@interface VUILibraryEpisodeShelfViewController
 {
     VUILibraryEpisodeListCell *_sizingCell;
     VUIDialogInteractionController *_dialogInteractionController;

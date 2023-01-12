@@ -6,9 +6,7 @@
 
 #import <Foundation/NSURL.h>
 
-#import <CloudKit/CKXPCSuitableString-Protocol.h>
-
-@interface NSURL (CKUtilsAdditions) <CKXPCSuitableString>
+@interface NSURL (CKUtilsAdditions)
 - (id)CKSanitizedPath;
 - (id)CKPathAfterSlug;
 - (id)CKURLThroughSlug;

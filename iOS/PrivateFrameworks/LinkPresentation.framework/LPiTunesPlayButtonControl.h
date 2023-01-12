@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPMediaPlayable-Protocol.h>
-#import <LinkPresentation/LPMediaRemotePlaybackObserverClient-Protocol.h>
-
 @class LPInlineMediaPlaybackInformation, NSString;
 @protocol NSObject;
 
 __attribute__((visibility("hidden")))
-@interface LPiTunesPlayButtonControl <LPMediaPlayable, LPMediaRemotePlaybackObserverClient>
+@interface LPiTunesPlayButtonControl
 {
     LPInlineMediaPlaybackInformation *_playbackInformation;
     id <NSObject> _playbackDidEndNotificationToken;

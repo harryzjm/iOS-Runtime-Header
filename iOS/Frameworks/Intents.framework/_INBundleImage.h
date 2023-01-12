@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "INImage.h"
+
 @class INImageBundle, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _INBundleImage
+@interface _INBundleImage : INImage
 {
     NSString *_imageName;
     INImageBundle *_imageBundle;

@@ -12,7 +12,9 @@
 @protocol STDynamicActivityAttributionServerHandle <NSObject>
 - (void)unsubscribeFromUpdates:(id <STDynamicActivityAttributionClientHandle>)arg1;
 - (void)subscribeToUpdates:(id <STDynamicActivityAttributionClientHandle>)arg1;
-- (void)setAttributionStringWithFormat:(NSString *)arg1 maskingClientAuditToken:(CDStruct_4c969caf)arg2 forClient:(id <STDynamicActivityAttributionClientHandle>)arg3;
+- (void)setAttributionWebsiteString:(NSString *)arg1 maskingClientAuditToken:(CDStruct_6ad76789)arg2 forClient:(id <STDynamicActivityAttributionClientHandle>)arg3;
+- (void)setAttributionStringWithFormat:(NSString *)arg1 maskingClientAuditToken:(CDStruct_6ad76789)arg2 forClient:(id <STDynamicActivityAttributionClientHandle>)arg3;
+- (void)setAttributionLocalizableKey:(NSString *)arg1 maskingClientAuditToken:(CDStruct_6ad76789)arg2 forClient:(id <STDynamicActivityAttributionClientHandle>)arg3;
 - (void)setLocalizableAttributionKey:(NSString *)arg1 andApplication:(NSString *)arg2 forClient:(id <STDynamicActivityAttributionClientHandle>)arg3;
 @end
 

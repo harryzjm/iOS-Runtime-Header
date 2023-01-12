@@ -6,14 +6,17 @@
 
 #import <ClassKit/NSObject-Protocol.h>
 
-@class CLSAdminRequestor, CLSObject, CLSQuerySpecification, CLSSearchSpecification, CLSSurvey, NSArray, NSDate, NSDictionary, NSObject, NSPredicate, NSString, NSURL;
+@class CLSAdminRequestor, CLSObject, CLSQuerySpecification, CLSSearchSpecification, CLSSurvey, FPSandboxingURLWrapper, NSArray, NSData, NSDate, NSDictionary, NSFileHandle, NSObject, NSPredicate, NSString, NSURL;
 @protocol CLSChangeNotifiable, CLSQuery, CLSSaveResponse;
 
 @protocol CLSDataServerInterface <NSObject>
+- (oneway void)remote_saveInsightEvents:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)remote_relayRequestWithData:(NSData *)arg1 requestType:(unsigned long long)arg2 fileHandle:(NSFileHandle *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (oneway void)remote_fetchSurveyAnswer:(NSArray *)arg1 responderIDs:(NSArray *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (oneway void)remote_publishSurveyAnswers:(CLSSurvey *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)remote_deleteAdminRequestID:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)remote_publishAdminRequests:(NSArray *)arg1 withRequestor:(CLSAdminRequestor *)arg2 adminRequestAccounts:(NSArray *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
+- (oneway void)remote_triggerUserNotificationWithTitle:(NSString *)arg1 message:(NSString *)arg2 wrappedImageURL:(FPSandboxingURLWrapper *)arg3;
 - (oneway void)remote_triggerUserNotificationRevisedSubmissionWithAttachmentID:(NSString *)arg1 studentName:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)remote_triggerUserNotificationRevisionRequestedWithAttachmentID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)remote_triggerUserNotificationHandoutAssignedWithHandoutID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
@@ -28,10 +31,14 @@
 - (oneway void)remote_deleteCollectionRelatedObjectsWithCompletion:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)remote_fetchCollectionItemsWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (oneway void)remote_fetchCollectionsWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (oneway void)remote_fetchOrphanedAssetsWithCompletion:(void (^)(id, NSError *))arg1;
 - (oneway void)remote_fetchHandoutAttachmentForDocumentURL:(NSURL *)arg1 withCompletion:(void (^)(id, NSError *))arg2;
 - (oneway void)remote_validateAndCreateHandoutAssignedItem:(NSString *)arg1 withCompletion:(void (^)(id, NSError *))arg2;
 - (oneway void)remote_publishClass:(CLSObject *)arg1 membersToInsert:(NSArray *)arg2 membersToDelete:(NSArray *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (oneway void)remote_publishHandoutGraph:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)remote_fetchAppBasedAssignmentUsage:(NSString *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (oneway void)remote_startActivityFailed:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)remote_startAppActivity:(NSString *)arg1 bundleID:(NSString *)arg2 activityType:(unsigned long long)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (oneway void)remote_studentActivityForAttachmentsWithIDs:(NSArray *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (oneway void)remote_repairHandoutAttachments:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)remote_fetchAndCompleteActiveAssignedActivitiesForContextPath:(NSArray *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
@@ -57,9 +64,7 @@
 - (oneway void)remote_fetchThumbnailBlobForContextID:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (oneway void)remote_contextsMatchingIdentifierPath:(NSArray *)arg1 parentContextID:(NSString *)arg2 completion:(void (^)(id, NSError *))arg3;
 - (oneway void)remote_saveObjects:(NSArray *)arg1 saveResponse:(NSObject<CLSSaveResponse> *)arg2 completion:(void (^)(void))arg3;
-- (oneway void)remote_executeQuery:(NSObject<CLSQuery> *)arg1 forSpecification:(CLSSearchSpecification *)arg2 state:(unsigned long long)arg3 limit:(unsigned long long)arg4 completion:(void (^)(void))arg5;
-- (oneway void)remote_executeQuery:(NSObject<CLSQuery> *)arg1 forClassNamed:(NSString *)arg2 querySpecification:(CLSQuerySpecification *)arg3 issueServerRequest:(_Bool)arg4 completion:(void (^)(void))arg5;
-- (oneway void)remote_executeQuery:(NSObject<CLSQuery> *)arg1 forClassNamed:(NSString *)arg2 querySpecification:(CLSQuerySpecification *)arg3 completion:(void (^)(void))arg4;
+- (oneway void)remote_executeQuery:(NSObject<CLSQuery> *)arg1 querySpecification:(CLSQuerySpecification *)arg2 searchSpecification:(CLSSearchSpecification *)arg3 issueServerRequest:(_Bool)arg4 completion:(void (^)(void))arg5;
 - (oneway void)remote_mainAppContextWithCompletion:(void (^)(id, NSError *))arg1;
 @end
 

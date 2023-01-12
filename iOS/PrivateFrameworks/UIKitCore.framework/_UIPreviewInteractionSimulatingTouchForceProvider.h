@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIPreviewInteractionTouchForceProviding-Protocol.h>
-
 @class NSString;
 @protocol UICoordinateSpace;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionSimulatingTouchForceProvider : NSObject <_UIPreviewInteractionTouchForceProviding>
+@interface _UIPreviewInteractionSimulatingTouchForceProvider : NSObject
 {
     double _targetTouchForce;
     struct CGPoint _location;

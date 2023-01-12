@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudDocsUI/NSFilePresenter-Protocol.h>
-
 @class BRObservableFile, NSOperationQueue, NSSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _BRObservableFilePresenter : NSObject <NSFilePresenter>
+@interface _BRObservableFilePresenter : NSObject
 {
     NSURL *_presentedItemURL;
     NSOperationQueue *_presentedItemOperationQueue;

@@ -6,12 +6,15 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKConversation, CKConversationListCell, UITableViewCell;
+@class CKConversation, CKConversationListCell, CKDateLabel, UILabel, UITableViewCell;
 
 @protocol CKConversationListCellDelegate <NSObject>
 - (double)widthForDeterminingAvatarVisibility;
 
 @optional
+- (_Bool)shouldAppearAsRecoverableConversation;
+- (void)updateSummaryLabel:(UILabel *)arg1 conversation:(CKConversation *)arg2 fastPreview:(_Bool)arg3;
+- (void)updateDateLabel:(CKDateLabel *)arg1 conversation:(CKConversation *)arg2;
 - (void)selectedDeleteButtonForConversation:(CKConversation *)arg1 inCell:(UITableViewCell *)arg2;
 - (void)avatarHeaderWasTappedForConversation:(CKConversation *)arg1 inCell:(CKConversationListCell *)arg2;
 @end

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/ENGroupContextCacheMiddleware-Protocol.h>
-#import <IDS/ENGroupContextDataSource-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
-@interface IDSGroupContextDataSource : NSObject <ENGroupContextDataSource, ENGroupContextCacheMiddleware>
+@interface IDSGroupContextDataSource : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
 }

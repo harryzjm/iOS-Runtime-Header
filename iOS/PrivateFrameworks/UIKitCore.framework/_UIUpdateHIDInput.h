@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIUpdateHIDAbstractInput-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface _UIUpdateHIDInput : NSObject <_UIUpdateHIDAbstractInput>
+@interface _UIUpdateHIDInput : NSObject
 {
     struct _UIUpdateInputInternal _input;
     NSMutableArray *_events;

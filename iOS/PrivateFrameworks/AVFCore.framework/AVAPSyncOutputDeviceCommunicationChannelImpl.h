@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceCommunicationChannelImpl-Protocol.h>
-
 @class AVOutputDeviceCommunicationChannel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVAPSyncOutputDeviceCommunicationChannelImpl : NSObject <AVOutputDeviceCommunicationChannelImpl>
+@interface AVAPSyncOutputDeviceCommunicationChannelImpl : NSObject
 {
     NSString *_deviceID;
     struct __CFString *_commChannelUUID;

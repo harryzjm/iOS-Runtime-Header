@@ -7,7 +7,7 @@
 #import <Foundation/NSValue.h>
 
 @interface NSValue (TUIKBHandwritingPoint)
-+ (id)valueWithTUIKBHandwritingPoint:(CDStruct_23d8ee2f)arg1;
-@property(readonly) CDStruct_23d8ee2f TUIKBHandwritingPointValue;
++ (id)valueWithTUIKBHandwritingPoint:(CDStruct_8e54cea8)arg1;
+@property(readonly) CDStruct_8e54cea8 TUIKBHandwritingPointValue;
 @end
 

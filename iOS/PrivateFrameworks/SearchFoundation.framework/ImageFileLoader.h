@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <SearchFoundation/SFResourceLoader-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ImageFileLoader : NSObject <SFResourceLoader>
+@interface ImageFileLoader : NSObject
 {
 }
 
-- (_Bool)loadImage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)moreResultsLoader;
+- (id)cardLoader;
+- (id)imageLoader;
+- (id)urlForImage:(id)arg1 context:(id)arg2;
+- (void)loadImage:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)canLoadImage:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

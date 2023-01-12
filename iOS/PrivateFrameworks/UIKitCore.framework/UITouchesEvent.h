@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIEvent.h"
+
 @class NSMapTable, NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface UITouchesEvent
+@interface UITouchesEvent : UIEvent
 {
     NSMutableSet *_allTouchesMutable;
     NSSet *_allTouchesImmutableCached;
@@ -19,6 +21,7 @@ __attribute__((visibility("hidden")))
     struct __CFDictionary *_finalTouches;
     _Bool _isCallingEventObservers;
     NSMutableSet *_exclusiveTouchWindows;
+    _Bool _containsHIDPointerEvent;
     long long _singleAllowableExternalTouchPathIndex;
 }
 
@@ -62,11 +65,11 @@ __attribute__((visibility("hidden")))
 - (void)_removeTouch:(id)arg1;
 - (void)_clearViewForTouch:(id)arg1;
 - (void)_addTouch:(id)arg1 forDelayedDelivery:(_Bool)arg2;
-- (void)_addGestureRecognizersForView:(id)arg1 toTouch:(id)arg2 forContinuation:(_Bool)arg3;
-- (void)_addGestureRecognizersForTouchContinuationInView:(id)arg1 toTouch:(id)arg2;
-- (void)_addGestureRecognizersForView:(id)arg1 toTouch:(id)arg2;
+- (void)_addGestureRecognizersForGestureOwner:(id)arg1 toTouch:(id)arg2 forContinuation:(_Bool)arg3;
+- (void)_addGestureRecognizersForTouchContinuationInGestureOwner:(id)arg1 toTouch:(id)arg2;
+- (void)_addGestureRecognizersForGestureOwner:(id)arg1 toTouch:(id)arg2;
 - (_Bool)_anyInterestedGestureRecognizersForTouchInView:(id)arg1;
-- (void)_collectGestureRecognizersForView:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_collectGestureRecognizersForGestureOwner:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)touchesForGestureRecognizer:(id)arg1;
 - (id)_touchesForGestureRecognizer:(id)arg1;
 - (id)touchesForView:(id)arg1;

@@ -6,12 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-#import <CommunicationsSetupUI/IDSServiceDelegate-Protocol.h>
-
 @class IDSService, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKSettingSMSRelayController : PSListController <IDSServiceDelegate>
+@interface CKSettingSMSRelayController : PSListController
 {
     IDSService *_relayService;
 }

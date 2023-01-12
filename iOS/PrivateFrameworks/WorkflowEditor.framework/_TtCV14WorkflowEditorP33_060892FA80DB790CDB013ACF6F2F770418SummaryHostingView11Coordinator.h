@@ -6,25 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <WorkflowEditor/WFModuleSummaryViewDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtCV14WorkflowEditorP33_060892FA80DB790CDB013ACF6F2F770418SummaryHostingView11Coordinator : NSObject <WFModuleSummaryViewDelegate>
+@interface _TtCV14WorkflowEditorP33_060892FA80DB790CDB013ACF6F2F770418SummaryHostingView11Coordinator : NSObject
 {
     MISSING_TYPE *view;
-    MISSING_TYPE *lastComputedViewSize;
 }
 
 - (void).cxx_destruct;
 - (id)init;
 - (void)showParameterEditingHint:(id)arg1;
 - (void)showVariableEditorWithOptions:(id)arg1 fromSourceRect:(struct CGRect)arg2;
-- (void)revealAction:(id)arg1 fromSourceView:(id)arg2 preScrollHandler:(CDUnknownBlockType)arg3 goBackHandler:(CDUnknownBlockType)arg4 scrolledAwayHandler:(CDUnknownBlockType)arg5;
-- (void)showActionOutputPickerFromSourceResponder:(id)arg1 allowExtensionInput:(_Bool)arg2 variableProvider:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)summaryView:(id)arg1 disclosureArrowDidChange:(_Bool)arg2;
-- (void)summaryViewDidInvalidateSize:(id)arg1;
-- (id)viewControllerContainingSummaryView:(id)arg1;
+- (void)revealAction:(id)arg1 preScrollHandler:(CDUnknownBlockType)arg2 goBackHandler:(CDUnknownBlockType)arg3 scrolledAwayHandler:(CDUnknownBlockType)arg4;
+- (void)showActionOutputPickerAllowingShortcutInput:(_Bool)arg1 variableProvider:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)summaryCoordinator:(id)arg1 disclosureArrowDidChange:(_Bool)arg2;
+- (void)summaryCoordinatorDidInvalidateSize:(id)arg1;
+- (id)viewControllerForCoordinator:(id)arg1;
 
 @end
 

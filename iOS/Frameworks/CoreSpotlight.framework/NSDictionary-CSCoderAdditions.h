@@ -6,9 +6,7 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <CoreSpotlight/CSCoderEncoder-Protocol.h>
-
-@interface NSDictionary (CSCoderAdditions) <CSCoderEncoder>
+@interface NSDictionary (CSCoderAdditions)
 - (void)encodeWithCSCoder:(id)arg1;
 - (void)encodeKeysAndValuesWithCSCoder:(id)arg1 filterBlock:(CDUnknownBlockType)arg2;
 @end

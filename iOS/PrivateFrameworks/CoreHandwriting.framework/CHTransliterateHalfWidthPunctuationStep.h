@@ -15,14 +15,14 @@
     NSCharacterSet *_widthAlternativeCharacterSet;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSCharacterSet *widthAlternativeCharacterSet; // @synthesize widthAlternativeCharacterSet=_widthAlternativeCharacterSet;
 @property(retain, nonatomic) NSCharacterSet *backwardLookingCharacterSet; // @synthesize backwardLookingCharacterSet=_backwardLookingCharacterSet;
 @property(retain, nonatomic) NSCharacterSet *forwardLookingCharacterSet; // @synthesize forwardLookingCharacterSet=_forwardLookingCharacterSet;
 @property(retain, nonatomic) NSCharacterSet *contextInvariantCharacterSet; // @synthesize contextInvariantCharacterSet=_contextInvariantCharacterSet;
 @property(nonatomic) _Bool shouldAddAlternatives; // @synthesize shouldAddAlternatives=_shouldAddAlternatives;
-- (id)process:(id)arg1;
-- (void)dealloc;
-- (id)initShouldAddAlternatives:(_Bool)arg1;
+- (id)process:(id)arg1 options:(id)arg2;
+- (id)initWithShouldAddAlternatives:(_Bool)arg1;
 
 @end
 

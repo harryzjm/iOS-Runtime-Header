@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOAbstractMapServiceTicket.h"
+
 @class GEOPDPlaceRequest, GEOPDPlaceResponse;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceRequestTicket
+@interface _GEOPlaceRequestTicket : GEOAbstractMapServiceTicket
 {
     GEOPDPlaceRequest *_request;
     id _requestToken;

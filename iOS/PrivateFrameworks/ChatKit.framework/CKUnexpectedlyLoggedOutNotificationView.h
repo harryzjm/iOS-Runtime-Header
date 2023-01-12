@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <ChatKit/CKTwoButtonInlineNotificationViewDelegate-Protocol.h>
-
 @class CKTwoButtonInlineNotificationView, NSString;
 @protocol CKUnexpectedlyLoggedOutNotificationViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKUnexpectedlyLoggedOutNotificationView : UIView <CKTwoButtonInlineNotificationViewDelegate>
+@interface CKUnexpectedlyLoggedOutNotificationView : UIView
 {
     id <CKUnexpectedlyLoggedOutNotificationViewDelegate> _delegate;
     CKTwoButtonInlineNotificationView *_inlineNotificationView;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)pointIsOnButton:(struct CGPoint)arg1;
 - (_Bool)containsPoint:(struct CGPoint)arg1 onPageLayer:(id)arg2;
 - (_Bool)containsPoint:(struct CGPoint)arg1;
+- (double)displayScaleOnPageLayer:(id)arg1;
 - (void)setHighlightRef:(struct __DDHighlight *)arg1;
 - (struct __DDHighlight *)highlightRef;
 - (_Bool)hasActionsForResult;

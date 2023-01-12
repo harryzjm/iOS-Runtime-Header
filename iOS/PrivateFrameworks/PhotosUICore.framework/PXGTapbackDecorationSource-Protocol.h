@@ -9,7 +9,7 @@
 @class PXGLayout;
 
 @protocol PXGTapbackDecorationSource <PXGLayoutContentSource>
-- (CDStruct_d1ca95b4)tapbackConfigurationForProposedConfiguration:(CDStruct_d1ca95b4)arg1 spriteIndex:(unsigned int)arg2 inLayout:(PXGLayout *)arg3;
+- (CDStruct_71c15b3a)tapbackConfigurationForProposedConfiguration:(CDStruct_71c15b3a)arg1 spriteIndex:(unsigned int)arg2 inLayout:(PXGLayout *)arg3;
 - (_Bool)hasTapbacksForSpriteIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 - (_Bool)wantsTapbackDecorationInLayout:(PXGLayout *)arg1;
 @end

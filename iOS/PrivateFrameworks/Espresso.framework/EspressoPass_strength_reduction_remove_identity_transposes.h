@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EspressoCustomPass.h"
+
 __attribute__((visibility("hidden")))
-@interface EspressoPass_strength_reduction_remove_identity_transposes
+@interface EspressoPass_strength_reduction_remove_identity_transposes : EspressoCustomPass
 {
 }
 

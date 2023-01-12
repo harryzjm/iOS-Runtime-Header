@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIInterfaceActionVisualSectionSeparatorDisplaying-Protocol.h>
-#import <UIKitCore/UIInterfaceActionVisualSeparatorDisplaying-Protocol.h>
+#import "_UIBlendingHighlightView.h"
 
 @class NSString, _UIInterfaceActionSeparatorConstraintController;
 
 __attribute__((visibility("hidden")))
-@interface _UIInterfaceActionBlendingSeparatorView <UIInterfaceActionVisualSeparatorDisplaying, UIInterfaceActionVisualSectionSeparatorDisplaying>
+@interface _UIInterfaceActionBlendingSeparatorView : _UIBlendingHighlightView
 {
     double _horizontalLineLeadingInset;
     _UIInterfaceActionSeparatorConstraintController *_separatorViewConstraints;

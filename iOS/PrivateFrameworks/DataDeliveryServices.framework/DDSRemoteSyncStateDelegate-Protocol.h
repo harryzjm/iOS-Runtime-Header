@@ -7,6 +7,7 @@
 #import <DataDeliveryServices/NSObject-Protocol.h>
 
 @protocol DDSRemoteSyncStateDelegate <NSObject>
+- (void)remoteSyncStateRequestsReset;
 - (void)remoteSyncStateRequestsRetry;
 - (void)remoteSyncStateRequestsUpdate;
 @end

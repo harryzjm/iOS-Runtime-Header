@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNAPITriageLogger-Protocol.h>
-
 @class NSString;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
-@interface CNAPITriageLogger : NSObject <CNAPITriageLogger>
+@interface CNAPITriageLogger : NSObject
 {
     NSObject<OS_os_log> *_log;
 }
 
++ (id)os_log;
 + (id)threadEntryPoint;
 + (void)setThreadEntryPoint:(SEL)arg1;
 - (void).cxx_destruct;

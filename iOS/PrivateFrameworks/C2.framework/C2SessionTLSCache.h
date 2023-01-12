@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <C2/C2SessionDelegate-Protocol.h>
-
 @class C2Session, NSString;
 
 __attribute__((visibility("hidden")))
-@interface C2SessionTLSCache : NSObject <C2SessionDelegate>
+@interface C2SessionTLSCache : NSObject
 {
     C2Session *_pinnedSession;
     C2Session *_unpinnedSession;

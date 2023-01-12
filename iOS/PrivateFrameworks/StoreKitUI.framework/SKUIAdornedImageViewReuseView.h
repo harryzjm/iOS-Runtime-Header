@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIMediaPlayerObserver-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSMapTable, NSString, SKUIImageViewElement, SKUIPlayButton;
 
 __attribute__((visibility("hidden")))
-@interface SKUIAdornedImageViewReuseView <SKUIViewElementView, SKUIMediaPlayerObserver>
+@interface SKUIAdornedImageViewReuseView
 {
     NSMapTable *_imageViewToImageResourceCacheKey;
     SKUIImageViewElement *_imageViewElement;

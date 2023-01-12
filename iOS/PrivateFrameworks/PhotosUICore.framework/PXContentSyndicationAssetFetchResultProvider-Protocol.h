@@ -6,9 +6,11 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@protocol PXContentSyndicationAssetFetchResultProviderChangeObserver, PXDisplayAssetCollection, PXDisplayAssetFetchResult;
+@protocol NSFastEnumeration, PXContentSyndicationAssetFetchResultProviderChangeObserver, PXDisplayAssetCollection, PXDisplayAssetFetchResult;
 
 @protocol PXContentSyndicationAssetFetchResultProvider <NSObject>
+- (void)invalidateAssetFetchResultsInAssetCollections:(id <NSFastEnumeration>)arg1;
+- (void)invalidateAllAssetFetchResults;
 - (id <PXDisplayAssetFetchResult>)assetFetchResultForAssetCollection:(id <PXDisplayAssetCollection>)arg1;
 - (void)unregisterChangeObserver:(id <PXContentSyndicationAssetFetchResultProviderChangeObserver>)arg1 forAssetCollection:(id <PXDisplayAssetCollection>)arg2;
 - (void)registerChangeObserver:(id <PXContentSyndicationAssetFetchResultProviderChangeObserver>)arg1 forAssetCollection:(id <PXDisplayAssetCollection>)arg2;

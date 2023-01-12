@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <C2/NSCopying-Protocol.h>
-
 @class C2MPCloudKitInfo, C2MPDeviceInfo, C2MPGenericEvent, C2MPNetworkEvent, C2MPServerInfo, NSString;
 
 __attribute__((visibility("hidden")))
-@interface C2MPMetric : PBCodable <NSCopying>
+@interface C2MPMetric : PBCodable
 {
     unsigned long long _reportFrequency;
     unsigned long long _reportFrequencyBase;

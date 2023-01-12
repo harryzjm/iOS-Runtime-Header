@@ -7,9 +7,9 @@
 #import <CoreMaterial/MTMaterialStyleProviding-Protocol.h>
 #import <CoreMaterial/MTMaterialVersioning-Protocol.h>
 
-@protocol MTTinting><MTMaterialFiltering;
+@protocol MTTinting><MTMaterialFiltering><MTUserInfoProviding;
 
 @protocol MTRecipeMaterialSettingsProviding <MTMaterialVersioning, MTMaterialStyleProviding>
-@property(readonly, nonatomic) id <MTTinting><MTMaterialFiltering> baseMaterialSettings;
+@property(readonly, nonatomic) id <MTTinting><MTMaterialFiltering><MTUserInfoProviding> baseMaterialSettings;
 @end
 

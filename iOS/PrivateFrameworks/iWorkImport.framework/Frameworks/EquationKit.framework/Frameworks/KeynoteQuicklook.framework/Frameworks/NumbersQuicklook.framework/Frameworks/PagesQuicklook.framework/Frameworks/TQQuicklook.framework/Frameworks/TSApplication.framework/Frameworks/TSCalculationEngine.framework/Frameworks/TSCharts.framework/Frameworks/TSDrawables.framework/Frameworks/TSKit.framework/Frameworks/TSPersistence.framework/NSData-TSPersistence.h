@@ -6,9 +6,7 @@
 
 #import <Foundation/NSData.h>
 
-#import <TSPersistence/TSPSplitableData-Protocol.h>
-
-@interface NSData (TSPersistence) <TSPSplitableData>
+@interface NSData (TSPersistence)
 + (id)tsp_dataFromDispatchData:(id)arg1;
 + (id)tsp_dataWithContentsOfURL:(id)arg1 decryptionKey:(id)arg2;
 + (id)tsp_dataWithTranscoder:(id)arg1;

@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCAudioIODelegate-Protocol.h>
-#import <AVConference/VCAudioIOSink-Protocol.h>
-#import <AVConference/VCMediaStreamSyncSource-Protocol.h>
-
-@class AVCStatisticsCollector, AVTelephonyInterface, DTMFEventHandler, NSMutableArray, NSNumber, NSObject, NSString, VCAudioIO, VCAudioPayload, VCAudioPowerSpectrumSource, VCAudioTransmitter, WRMClient;
+@class AVCStatisticsCollector, DTMFEventHandler, NSMutableArray, NSNumber, NSObject, NSString, VCAudioIO, VCAudioPayload, VCAudioPowerSpectrumSource, VCAudioTransmitter, VCTelephonyInterface, WRMClient;
 @protocol OS_dispatch_source, VCMediaStreamSyncSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioStream <VCMediaStreamSyncSource, VCAudioIOSink, VCAudioIODelegate>
+@interface VCAudioStream
 {
     int _clientPid;
     int numBufferBytesAvailable;
@@ -34,7 +30,7 @@ __attribute__((visibility("hidden")))
     VCAudioPayload *currentDTXPayload;
     VCAudioTransmitter *_audioTransmitter;
     int _reportingModuleID;
-    AVTelephonyInterface *_telephonyInterface;
+    VCTelephonyInterface *_telephonyInterface;
     _Bool isValid;
     int deviceRole;
     id syncSourceDelegate;
@@ -56,15 +52,30 @@ __attribute__((visibility("hidden")))
     VCAudioPowerSpectrumSource *_outputAudioPowerSpectrumSource;
     unsigned int _abnormalOWRDCount;
     double _lastAbnormalOWRDVerificationTime;
+    double _lastNetworkHealthPrintTime;
+    double _packetLossRateAccum;
+    int _packetLossRateCount;
+    double _packetLossRate5Secs;
+    double _timeLastPLR5Secs;
+    _Bool _anbrEnabled;
+    _Bool _anbrActive;
+    struct ifnet_interface_advisory _lastNWConnectionNotification;
+    unsigned int _awdTimeTransmitter;
+    unsigned int _lastNoVoiceActivityPacketCount;
     unsigned int _preferredMediaBitrate;
     AVCStatisticsCollector *_statsCollector;
     _Bool _enableAudioPowerSpectrum;
 }
 
++ (_Bool)shouldUseRandomRTPTimestampForMode:(int)arg1;
 + (id)capabilities;
 + (id)supportedAudioPayloads;
++ (void)terminateProcess:(id)arg1 terminateSource:(id)arg2 agent:(struct opaqueRTCReporting *)arg3;
 + (unsigned char)audioIODirectionWithMediaStreamDirection:(long long)arg1;
 + (int)operatingModeForAudioStreamMode:(long long)arg1;
++ (id)newPayloadConfigForCodecConfig:(id)arg1 streamConfig:(id)arg2 inputSampleRate:(unsigned int)arg3;
++ (_Bool)shouldUseAACELDSBRForMode:(long long)arg1;
+@property(nonatomic) unsigned int lastNoVoiceActivityPacketCount; // @synthesize lastNoVoiceActivityPacketCount=_lastNoVoiceActivityPacketCount;
 @property(retain, nonatomic) NSNumber *targetStreamID; // @synthesize targetStreamID=_targetStreamID;
 @property(nonatomic, getter=isCurrentDTXEnabled) _Bool currentDTXEnable; // @synthesize currentDTXEnable=_currentDTXEnable;
 @property(retain) VCAudioIO *audioIO; // @synthesize audioIO=_audioIO;
@@ -72,14 +83,25 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int deviceRole; // @synthesize deviceRole;
 @property(nonatomic) _Bool isValid; // @synthesize isValid;
 @property(readonly) unsigned int conferenceID; // @synthesize conferenceID;
+- (void)telephonyInterface:(id)arg1 anbrRecommendation:(unsigned int)arg2 forDirection:(long long)arg3;
+- (void)telephonyInterface:(id)arg1 anbrActivationUpdate:(_Bool)arg2;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
 - (void)handleActiveConnectionChange:(id)arg1;
-- (void)collectTxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
+- (void)collectTxChannelMetrics:(CDStruct_b671a7c4 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_b671a7c4 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_b671a7c4 *)arg1 interval:(float)arg2;
+- (void)didServerDie;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
-- (void)handleCodecRateModeChange:(int)arg1 payload:(int)arg2;
+- (void)handleANBR:(unsigned int)arg1 forDirection:(long long)arg2;
+- (int)selectCodecBandwidthForCodecRateMode:(int)arg1;
+- (void)handleDownlinkANBR:(struct _VCAudioCodecModeChangeEvent)arg1;
+- (void)handleUplinkANBR:(struct _VCAudioCodecModeChangeEvent)arg1;
+- (void)handleCodecModeChangeEvent:(struct _VCAudioCodecModeChangeEvent)arg1;
+- (void)notifyCodecModeChangeEvent:(struct _VCAudioCodecModeChangeEvent)arg1 didUpdateBandwidth:(_Bool)arg2 didUpdateBitrate:(_Bool)arg3;
+- (void)queryAnbrBitrate:(unsigned int)arg1 forDirection:(long long)arg2;
+- (void)setRemoteCodecTypeAndSampleRate:(struct _VCAudioCodecModeChangeEvent)arg1;
+- (void)notifyCodecModeChangeToCT:(struct _VCAudioCodecModeChangeEvent)arg1;
 - (void)unregisterCodecRateModeChangeNotifications;
 - (void)registerActiveAudioStreamChangeNotifications;
 - (void)registerCodecRateModeChangeNotifications;
@@ -89,13 +111,18 @@ __attribute__((visibility("hidden")))
 - (_Bool)canProcessAudio;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
+- (int)getRatTypeForStreamMode:(long long)arg1;
 - (void)reportingAlgosAudioStreamEvent:(unsigned short)arg1;
+- (void)reportInputHostTimeJumpWithSize:(double)arg1;
 - (void)reportingAudioStreamEvent:(unsigned short)arg1;
+- (void)updateCodecPayloadAndBitrateForStartEvent:(int *)arg1 bitrate:(unsigned int *)arg2;
+- (void)gatherRealtimeStats:(struct __CFDictionary *)arg1;
 - (id)getReportingServiceID;
 - (struct __CFString *)getReportingClientName;
 - (int)getReportingClientType;
 - (struct __CFDictionary *)getClientSpecificUserInfo:(id)arg1;
 - (void)setupReportingAgent:(id)arg1;
+- (void)setupPeriodicReporting;
 - (void)setStreamIDs:(id)arg1 repairStreamIDs:(id)arg2;
 - (double)rtcpHeartbeatLeeway;
 - (void)onSendRTCPPacket;
@@ -106,7 +133,10 @@ __attribute__((visibility("hidden")))
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
 - (void)onStopWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)onStartWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)shouldReportNetworkInterfaceType;
+- (_Bool)shouldResetRTPTimestampOnStart;
 - (_Bool)onConfigureStreamWithConfiguration:(id)arg1 error:(id *)arg2;
+- (void)setPreferredMediaBitrateWithConfiguration:(id)arg1;
 - (id)streamIDsFromTransport;
 - (void)cleanupBeforeReconfigure:(id)arg1;
 - (void)createReportSSRCListWithStreamConfigs:(id)arg1;
@@ -115,9 +145,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)validateAudioStreamConfigurations:(id)arg1;
 - (void)onCallIDChanged;
 - (id)supportedPayloads;
+- (_Bool)shouldUseNWConnectionBackingSocket;
 @property(readonly, nonatomic) unsigned int actualAudioSendingBitrate;
 - (void)setTargetBitrate:(unsigned int)arg1 rateChangeCounter:(unsigned int)arg2;
-- (void)setVCStatistics:(CDStruct_c0785916)arg1;
+- (void)setVCStatistics:(CDStruct_7df19fcb)arg1;
 - (CDUnknownFunctionPointerType)pullSamplesCallback;
 @property(readonly, nonatomic) void *realtimeSourceContext;
 @property(nonatomic) float volume;
@@ -146,6 +177,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithClientPid:(int)arg1 ssrc:(unsigned int)arg2;
 - (id)initWithClientPid:(int)arg1;
 - (void)setupAudioPowerSpectrum;
+- (void)setDeviceRoleForAudioStreamMode:(long long)arg1 direction:(long long)arg2;
 - (void)didEnterState:(int)arg1 oldState:(int)arg2;
 - (void)willExitState:(int)arg1 newState:(int)arg2;
 - (double)lastReceivedRTCPPacketTime;
@@ -154,14 +186,14 @@ __attribute__((visibility("hidden")))
 - (void)setDTXPayload:(id)arg1;
 - (id)addAudioPayload:(int)arg1;
 - (id)configForPayloadType:(int)arg1;
-- (id)newPayloadConfigForCodecConfig:(id)arg1 streamConfig:(id)arg2;
 - (unsigned int)preferredAudioBitrateForPayload:(int)arg1;
 - (void)getCodecConfigForPayload:(int)arg1 block:(CDUnknownBlockType)arg2;
 - (_Bool)setupPayloads;
 - (id)getSupportedPayloads;
 - (void)stopAudioWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startAudioWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (unsigned int)codecTypeFromAudioPayload:(int)arg1;
+- (_Bool)generateRTCPXRVoIPMetricsReports:(struct tagVCRTCPXRVoIPMetricsReport *)arg1 reportCount:(char *)arg2;
+- (_Bool)generateRTCPXRSummaryReports:(struct tagVCRTCPXRSummaryReport *)arg1 reportCount:(char *)arg2;
 - (int)captureMeshMode:(struct opaqueVCAudioBufferList *)arg1;
 - (void)setInputTimestamp:(unsigned int)arg1 packetTimestamp:(int)arg2 hostTime:(double)arg3;
 - (void)_computeInternalFormatForStreamConfigurations:(id)arg1;

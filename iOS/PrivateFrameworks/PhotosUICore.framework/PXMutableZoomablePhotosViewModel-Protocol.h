@@ -9,13 +9,16 @@
 @class NSSet, PXAssetReference;
 
 @protocol PXMutableZoomablePhotosViewModel <NSObject>
+@property(nonatomic) _Bool alwaysShowTopBadges;
 @property(copy, nonatomic) CDUnknownBlockType effectProvider;
 @property(nonatomic) _Bool layoutExtendsContentBelowBounds;
 @property(nonatomic) _Bool wantsOverBackgroundFloatingHeaderAppearance;
 @property(nonatomic) _Bool isInteractiveZooming;
 @property(nonatomic) _Bool isPinching;
+@property(nonatomic) _Bool wantsFileSizeBadge;
 @property(nonatomic) _Bool wantsNumberedSelectionStyle;
 @property(nonatomic) _Bool wantsDimmedSelectionStyle;
+@property(nonatomic) _Bool allowsCaptionsInSquare;
 @property(nonatomic) _Bool captionsVisible;
 @property(nonatomic) _Bool aspectFit;
 @property(nonatomic) _Bool isInSelectMode;
@@ -28,6 +31,6 @@
 - (void)zoomInToIndividualItemsWithAnchorAssetReference:(PXAssetReference *)arg1 animated:(_Bool)arg2;
 - (void)zoomInToLastRememberedWithAnchorAssetReference:(PXAssetReference *)arg1 animated:(_Bool)arg2;
 - (void)zoomToColumnIndex:(long long)arg1 withAnchorAssetReference:(PXAssetReference *)arg2 animated:(_Bool)arg3;
-- (void)setPinchState:(CDStruct_7c4e768e)arg1 withAnchorAssetReference:(PXAssetReference *)arg2;
+- (void)setPinchState:(CDStruct_4fa2b253)arg1 withAnchorAssetReference:(PXAssetReference *)arg2;
 @end
 

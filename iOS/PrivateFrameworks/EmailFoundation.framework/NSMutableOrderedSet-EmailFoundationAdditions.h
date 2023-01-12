@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableOrderedSet.h>
 
 @interface NSMutableOrderedSet (EmailFoundationAdditions)
+- (void)ef_insertObject:(id)arg1 usingComparator:(CDUnknownBlockType)arg2;
 - (void)ef_insertObjects:(id)arg1 after:(id)arg2;
 - (void)ef_insertObjects:(id)arg1 before:(id)arg2;
 - (void)ef_removeObjectsInArray:(id)arg1;

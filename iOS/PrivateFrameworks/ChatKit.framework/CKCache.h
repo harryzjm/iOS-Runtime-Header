@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/CKCache-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKCache : NSObject <CKCache>
+@interface CKCache : NSObject
 {
     NSMutableDictionary *_dictionary;
 }

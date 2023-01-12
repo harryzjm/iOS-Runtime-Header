@@ -10,11 +10,9 @@
 
 @interface _TtC7NewsUI228AudioFeedGroupEmitterFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *audioDataManager;
-    MISSING_TYPE *headlineService;
-    MISSING_TYPE *appConfigurationManager;
-    MISSING_TYPE *feedPaywallConfigFactory;
-    MISSING_TYPE *bundlePurchasePrewarmer;
+    MISSING_TYPE *paywallFactory;
+    MISSING_TYPE *formatService;
+    MISSING_TYPE *offlineContentManager;
 }
 
 @end

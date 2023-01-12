@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCAudioIOSink-Protocol.h>
-#import <AVConference/VCConnectionChangedHandler-Protocol.h>
-
 @class AVCStatisticsCollector, NSArray, NSDictionary, NSMutableArray, NSString, VCAudioPayload, VCAudioPayloadConfig, VCAudioRedBuilder, VCAudioTier, VCAudioTierPicker, VCPacketBundler, VCRedundancyControllerAudio, VCTransportSession;
 @protocol VCAudioTransmitterDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioTransmitter : NSObject <VCAudioIOSink, VCConnectionChangedHandler>
+@interface VCAudioTransmitter : NSObject
 {
     VCPacketBundler *_audioBundler;
     VCAudioRedBuilder *_redBuilder;
@@ -91,7 +88,8 @@ __attribute__((visibility("hidden")))
     unsigned int _qualityIndex;
     double _lastReportingCallbackTime;
     double _lastReportingCallbackTimeShort;
-    CDStruct_a4f8a7cd _currentChannelMetrics;
+    CDStruct_b671a7c4 _currentChannelMetrics;
+    _Bool _periodicReportingEnabled;
     struct tagVCIDSChannelDataFormat _idsChannelDataFormat;
     unsigned int _maxIDSStreamIdCount;
     NSArray *_supportedNumRedundantPayload;
@@ -104,18 +102,23 @@ __attribute__((visibility("hidden")))
     unsigned long long _remoteIDSParticipantID;
     _Bool _useChannelDataFormat;
     _Bool _useWiFiTiers;
+    _Bool _supportsCodecBandwidthUpdate;
+    struct ifnet_interface_advisory _lastNWConnectionNotification;
     struct tagVCCryptor *_sframeCryptor;
+    struct tagVCAudioIssueDetector *_audioIssueDetector;
     unsigned int _rtpTimestampBase;
     _Bool _shouldApplyRedAsBoolean;
     unsigned int _sentAudioBytesShort;
+    unsigned int _packetExpirationTimeInMillisecond;
 }
 
 @property(nonatomic) unsigned char mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
+@property _Bool periodicReportingEnabled; // @synthesize periodicReportingEnabled=_periodicReportingEnabled;
 @property(retain, nonatomic) VCAudioTierPicker *audioTierPicker; // @synthesize audioTierPicker=_audioTierPicker;
 @property(nonatomic) _Bool useWiFiTiers; // @synthesize useWiFiTiers=_useWiFiTiers;
 @property(nonatomic, getter=isCurrentDTXEnabled) _Bool currentDTXEnable; // @synthesize currentDTXEnable=_currentDTXEnable;
 @property(nonatomic) _Bool sendActiveVoiceOnly; // @synthesize sendActiveVoiceOnly=_sendActiveVoiceOnly;
-@property(nonatomic) CDStruct_a4f8a7cd currentChannelMetrics; // @synthesize currentChannelMetrics=_currentChannelMetrics;
+@property(nonatomic) CDStruct_b671a7c4 currentChannelMetrics; // @synthesize currentChannelMetrics=_currentChannelMetrics;
 @property(retain, nonatomic) NSArray *supportedNumRedundantPayload; // @synthesize supportedNumRedundantPayload=_supportedNumRedundantPayload;
 @property(nonatomic) unsigned int maxIDSStreamIdCount; // @synthesize maxIDSStreamIdCount=_maxIDSStreamIdCount;
 @property(nonatomic) int qualityIndicator; // @synthesize qualityIndicator=_qualityIndicator;
@@ -132,6 +135,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VCAudioTier *currentAudioTier; // @synthesize currentAudioTier=_currentAudioTier;
 @property(readonly, nonatomic) VCPacketBundler *audioBundler; // @synthesize audioBundler=_audioBundler;
 - (void)handleActiveConnectionChange:(id)arg1;
+- (void)reportAWDMetrics;
+- (void)audioIssueDetectorStopAndFinalize;
+- (void)audioIssueDetectorProcessFrame:(struct opaqueVCAudioBufferList *)arg1 payloadType:(int)arg2 length:(unsigned short)arg3 bitRate:(unsigned short)arg4;
+- (void)audioIssueDetectorCreateAndConfigure;
+- (void)reportRTCPPacket;
+- (void)processNWConnectionNotification:(struct ifnet_interface_advisory *)arg1;
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
 - (void)setStreamIDs:(id)arg1;
 - (void)setRedNumPayloads:(int)arg1 withMaxDelay:(int)arg2;
@@ -175,7 +184,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)setupAudio:(id *)arg1;
 - (_Bool)setupEncoderBuffer;
 - (void)setCellTech:(int)arg1 remoteCellular:(int)arg2 isIPV6:(int)arg3 audioCap:(unsigned int)arg4;
-- (_Bool)handleCodecRateModeChange:(unsigned char)arg1 withBitrate:(unsigned int)arg2;
+- (_Bool)sendCodecModeChangeEvent:(struct _VCAudioCodecModeChangeEvent)arg1;
+- (void)handleCodecModeChangeEvent:(struct _VCAudioCodecModeChangeEvent)arg1 didUpdateBandwidth:(_Bool *)arg2 didUpdateBitrate:(_Bool *)arg3;
+- (_Bool)isCodecModeChangeRequestValid:(struct _VCAudioCodecModeChangeEvent)arg1;
+- (_Bool)shouldUpdateCodecBandwidth:(struct _VCAudioCodecModeChangeEvent)arg1;
+- (_Bool)shouldUpdateCodecBitrate:(struct _VCAudioCodecModeChangeEvent)arg1;
 @property id <VCAudioTransmitterDelegate> delegate;
 @property(readonly, nonatomic) VCAudioPayloadConfig *currentAudioPayloadConfig;
 - (void)dealloc;

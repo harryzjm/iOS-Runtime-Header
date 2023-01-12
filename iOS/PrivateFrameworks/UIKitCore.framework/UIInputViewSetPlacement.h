@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class NSArray;
 @protocol UIInputViewSetPlacementDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewSetPlacement : NSObject <NSSecureCoding>
+@interface UIInputViewSetPlacement : NSObject
 {
     _Bool _dirty;
     id <UIInputViewSetPlacementDelegate> delegate;
@@ -27,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *subPlacements; // @synthesize subPlacements=_subPlacements;
 @property(nonatomic) double extendedHeight; // @synthesize extendedHeight=_extendedHeight;
-@property(nonatomic) id <UIInputViewSetPlacementDelegate> delegate; // @synthesize delegate;
+@property(nonatomic) __weak id <UIInputViewSetPlacementDelegate> delegate; // @synthesize delegate;
 - (struct UIEdgeInsets)inputAccessoryViewPadding;
 - (unsigned long long)computeComparisonMask;
 - (void)setOtherPlacement:(id)arg1;
@@ -55,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isVisible;
 @property(readonly, nonatomic) _Bool isCompactAssistantView;
 @property(readonly, nonatomic) _Bool isFloatingAssistantView;
+@property(readonly, nonatomic) UIInputViewSetPlacement *assistantView;
 @property(readonly, nonatomic) _Bool isFloating;
 @property(readonly, nonatomic) _Bool isUndocked;
 - (_Bool)isEqual:(id)arg1;

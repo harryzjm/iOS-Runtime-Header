@@ -9,6 +9,8 @@
 @class CALNEventInvitationResponseNotificationInfo, NSArray, NSSet, NSString;
 
 @protocol CALNEventInvitationResponseNotificationDataSource <NSObject>
+- (void)declineEventInvitationResponseWithSourceClientIdentifier:(NSString *)arg1;
+- (void)acceptEventInvitationResponseWithSourceClientIdentifier:(NSString *)arg1;
 - (void)clearEventInvitationResponseWithSourceClientIdentifier:(NSString *)arg1;
 - (CALNEventInvitationResponseNotificationInfo *)fetchEventInvitationResponseNotificationWithSourceClientIdentifier:(NSString *)arg1;
 - (NSArray *)fetchEventInvitationResponseNotificationSourceClientIdentifiers:(NSSet *)arg1;

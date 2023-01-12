@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TextureIO/TXRBuffer-Protocol.h>
-
 @class NSMutableData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface TXRDefaultBuffer : NSObject <TXRBuffer>
+@interface TXRDefaultBuffer : NSObject
 {
     NSMutableData *_data;
 }

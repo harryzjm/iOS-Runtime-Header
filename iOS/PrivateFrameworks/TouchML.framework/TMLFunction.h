@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLModelSerialize-Protocol.h>
-
 @class NSString;
 
-@interface TMLFunction : NSObject <TMLModelSerialize>
+@interface TMLFunction : NSObject
 {
     NSString *_functionName;
     NSString *_functionBody;

@@ -8,6 +8,9 @@
 
 @protocol IDSXPCDaemon
 - (void)interalTestingCollaboratorWithCompletion:(void (^)(id <IDSXPCInternalTesting>, NSError *))arg1;
+- (void)groupSessionKeyValueDeliveryProviderCollaboratorWithCompletion:(void (^)(id <IDSXPCGroupSessionKeyValueDeliveryProvider>, NSError *))arg1;
+- (void)firewallCollaboratorWithCompletion:(void (^)(id <IDSXPCFirewall>, NSError *))arg1;
+- (void)keyTransparencyCollaboratorWithCompletion:(void (^)(id <IDSXPCKeyTransparency>, NSError *))arg1;
 - (void)serverMessagingCollaboratorWithCompletion:(void (^)(id <IDSXPCServerMessaging>, NSError *))arg1;
 - (void)activityMonitorCollaboratorWithCompletion:(void (^)(id <IDSXPCActivityMonitor>, NSError *))arg1;
 - (void)registrationCollaboratorWithCompletion:(void (^)(id <IDSXPCRegistration>, NSError *))arg1;

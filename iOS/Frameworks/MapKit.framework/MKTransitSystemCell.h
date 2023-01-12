@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MKCustomSeparatorCell.h"
+
 @class NSLayoutConstraint, NSString, UIImage, UIImageView, UIView, _MKUILabel;
 
 __attribute__((visibility("hidden")))
-@interface MKTransitSystemCell
+@interface MKTransitSystemCell : MKCustomSeparatorCell
 {
     UIImageView *_shieldImageView;
     _MKUILabel *_systemLabel;

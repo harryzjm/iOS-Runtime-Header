@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPShare, CKDPShareIdentifier;
 
-@interface CKDPRecordRetrieveChangesResponseShareChange : PBCodable <NSCopying>
+@interface CKDPRecordRetrieveChangesResponseShareChange : PBCodable
 {
     int _changeType;
     CKDPShare *_share;

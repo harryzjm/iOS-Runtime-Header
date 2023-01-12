@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-#import <UIKitCore/UIStepperVisualElement-Protocol.h>
+#import "UIView.h"
 
 @class NSMutableDictionary, NSString, NSTimer, UIButton, UIImageView, UIViewPropertyAnimator;
 @protocol UIStepperControl;
 
 __attribute__((visibility("hidden")))
-@interface UIStepperHorizontalVisualElement <UIPointerInteractionDelegate, UIStepperVisualElement>
+@interface UIStepperHorizontalVisualElement : UIView
 {
     _Bool _isRtoL;
     UIImageView *_leftBackground;

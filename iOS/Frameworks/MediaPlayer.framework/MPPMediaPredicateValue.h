@@ -6,11 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlayer/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface MPPMediaPredicateValue : PBCodable <NSCopying>
+__attribute__((visibility("hidden")))
+@interface MPPMediaPredicateValue : PBCodable
 {
     double _doublePredicateValue;
     long long _integerPredicateValue;

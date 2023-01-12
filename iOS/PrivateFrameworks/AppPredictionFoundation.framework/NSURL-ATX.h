@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (ATX)
+- (id)schemelessAbsoluteString;
 @property(readonly, nonatomic, getter=atx_isOpenableFaceTimeURL) _Bool isOpenableFaceTimeURL;
 @end
 

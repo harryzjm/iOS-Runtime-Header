@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDKeyedObject-Protocol.h>
-
 @class EDResources, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDRun : NSObject <EDKeyedObject>
+@interface EDRun : NSObject
 {
     EDResources *mResources;
     unsigned long long mCharIndex;

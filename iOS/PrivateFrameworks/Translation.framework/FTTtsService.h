@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)performTextToSpeechSpeechFeature:(id)arg1 requestBuilder:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)performTextToSpeechStreamingWithDelegate:(id)arg1 requestBuilder:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performTextToSpeech:(id)arg1 requestBuilder:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 

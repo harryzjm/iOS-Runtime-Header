@@ -6,30 +6,31 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <StatusKitAgentCore/NSCopying-Protocol.h>
-
 @class ChannelIdentity, NSData;
 
 __attribute__((visibility("hidden")))
-@interface ChannelPublishPayload : PBCodable <NSCopying>
+@interface ChannelPublishPayload : PBCodable
 {
     unsigned long long _publishInitiateTimestampMillis;
     unsigned long long _publishPayloadExpiryTtlMillis;
     ChannelIdentity *_channelIdentity;
     NSData *_publishPayload;
     int _pushPriority;
+    unsigned int _retryCount;
     _Bool _pendingPublishHint;
     _Bool _scheduledPublishHint;
     struct {
         unsigned int publishInitiateTimestampMillis:1;
         unsigned int publishPayloadExpiryTtlMillis:1;
         unsigned int pushPriority:1;
+        unsigned int retryCount:1;
         unsigned int pendingPublishHint:1;
         unsigned int scheduledPublishHint:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int retryCount; // @synthesize retryCount=_retryCount;
 @property(nonatomic) _Bool scheduledPublishHint; // @synthesize scheduledPublishHint=_scheduledPublishHint;
 @property(nonatomic) _Bool pendingPublishHint; // @synthesize pendingPublishHint=_pendingPublishHint;
 @property(nonatomic) unsigned long long publishPayloadExpiryTtlMillis; // @synthesize publishPayloadExpiryTtlMillis=_publishPayloadExpiryTtlMillis;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasRetryCount;
 @property(nonatomic) _Bool hasScheduledPublishHint;
 @property(nonatomic) _Bool hasPendingPublishHint;
 - (int)StringAsPushPriority:(id)arg1;

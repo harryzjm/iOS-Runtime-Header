@@ -11,6 +11,11 @@
 @interface _TtC7NewsUI210TipsModule : _TtCs12_SwiftObject
 {
     MISSING_TYPE *resolver;
+    MISSING_TYPE *appConfigurationManager;
+    MISSING_TYPE *notificationService;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *userInfo;
+    MISSING_TYPE *authorizationStatus;
 }
 
 @end

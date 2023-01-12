@@ -22,14 +22,15 @@ struct BindingEvaluator {
     struct LSVersionNumber _field7;
     id _field8;
     _Bool _field9;
-    unsigned long long _field10;
-    unsigned int _field11;
+    _Bool _field10;
+    unsigned long long _field11;
     unsigned int _field12;
-    struct vector<LSBundleClass, std::allocator<LSBundleClass>> _field13;
-    CDUnknownBlockType _field14;
-    id _field15;
-    CDUnknownBlockType _field16;
-    id _field17;
+    unsigned int _field13;
+    struct vector<LSBundleClass, std::allocator<LSBundleClass>> _field14;
+    CDUnknownBlockType _field15;
+    id _field16;
+    CDUnknownBlockType _field17;
+    id _field18;
 };
 
 struct CSMap {
@@ -111,6 +112,7 @@ struct LSBundleBaseData {
     unsigned int displayName;
     unsigned int localizedDisplayName;
     unsigned int localizedMicrophoneUsageDescription;
+    unsigned int localizedIdentityUsageDescription;
     unsigned int codeInfoIdentifier;
     unsigned int signerOrganization;
     unsigned int signerIdentity;
@@ -129,6 +131,7 @@ struct LSBundleBaseFlags {
     unsigned int appleInternal:1;
     unsigned int requiresObjCGarbageCollection:1;
     unsigned int builtWithTSan:1;
+    unsigned int isLinkEnabled:1;
     unsigned int _reserved:1;
 };
 
@@ -181,6 +184,7 @@ struct LSBundleData {
     unsigned int claims;
     unsigned int types;
     unsigned int plugins;
+    unsigned int driverExtensions;
     unsigned int extensionPoints;
     unsigned int activityTypes;
     unsigned int queriableSchemes;
@@ -193,6 +197,7 @@ struct LSBundleData {
     unsigned int sandboxEnvironmentVariables;
     unsigned int localizedNameWithContext[1];
     unsigned int managedPersonas;
+    unsigned int managedPersonaTypes;
     struct LSAppClipFields appClipFields;
     int recordModificationTime;
     unsigned int supportedGameControllers;
@@ -213,21 +218,13 @@ struct LSBundleMoreFlags {
     unsigned int applicationQueriesSchemesTooBig:1;
     unsigned int isUpdateAvailable:1;
     unsigned int isPlaygroundsApp:1;
+    unsigned int supportsAlwaysOnDisplay:1;
+    unsigned int defaultsToPrivateAlwaysOnDisplayTreatment:1;
     unsigned int _reserved:1;
 };
 
 struct LSContext {
     _LSDatabase *db;
-};
-
-struct LSExtensionPointData {
-    int _field1;
-    unsigned int _field2;
-    struct LSVersionNumber _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7;
 };
 
 struct LSPersistentIdentifierData {
@@ -249,6 +246,7 @@ struct LSPluginData {
     struct LSVersionNumber _field7;
     unsigned int _field8;
     unsigned int _field9;
+    unsigned int _field10;
 };
 
 struct LSSchema {
@@ -264,7 +262,7 @@ struct LSSchema {
         struct CSMap map;
         unsigned int bindingClass;
         unsigned char isCaseInsensitive;
-    } bindingMaps[13];
+    } bindingMaps[14];
     unsigned int handlerPrefTable;
     unsigned int containerTable;
     unsigned int aliasTable;
@@ -275,6 +273,11 @@ struct LSSchema {
     unsigned int localizedStringTable;
     unsigned int canonicalStringTable;
     struct _LSSchemaCache *_cache;
+};
+
+struct LSSessionKey {
+    unsigned int uid;
+    _Bool systemSession;
 };
 
 struct LSSliceData {
@@ -308,30 +311,9 @@ struct Rect {
     short _field4;
 };
 
-struct State {
-    id _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    _Bool _field5;
-    _Bool _field6;
-    _Bool _field7;
-};
-
 struct _CSMapHeader;
 
 struct _LSSchemaCache;
-
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
-struct atomic<bool> {
-    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
-        _Atomic _Bool __a_value;
-    } __a_;
-};
 
 struct atomic<int> {
     struct __cxx_atomic_impl<int, std::__cxx_atomic_base_impl<int>> {
@@ -347,12 +329,12 @@ struct optional<LSBinding> {
     _Bool _field2;
 };
 
-struct optional<LaunchServices::BindingEvaluator> {
+struct optional<NSError *> {
     union {
-        char _field1;
-        struct BindingEvaluator _field2;
-    } _field1;
-    _Bool _field2;
+        char __null_state_;
+        NSError *__val_;
+    } ;
+    _Bool __engaged_;
 };
 
 struct optional<audit_token_t> {
@@ -363,7 +345,19 @@ struct optional<audit_token_t> {
     _Bool __engaged_;
 };
 
+struct optional<unsigned int> {
+    union {
+        char __null_state_;
+        unsigned int __val_;
+    } ;
+    _Bool __engaged_;
+};
+
 struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+struct unfair_lock_mutex {
     unsigned int _os_unfair_lock_opaque;
 };
 
@@ -405,21 +399,6 @@ typedef struct {
 } CDStruct_3571af81;
 
 typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    short _field4;
-    unsigned short _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    unsigned int _field9[8];
-    unsigned int _field10;
-    unsigned int _field11;
-    unsigned int _field12;
-} CDStruct_25b44cd7;
-
-typedef struct {
     unsigned long long _field1;
     id *_field2;
     unsigned long long *_field3;
@@ -438,14 +417,6 @@ typedef struct optional<LSBinding> {
     } _field1;
     _Bool _field2;
 } optional_430a8fae;
-
-typedef struct optional<LaunchServices::BindingEvaluator> {
-    union {
-        char _field1;
-        struct BindingEvaluator _field2;
-    } _field1;
-    _Bool _field2;
-} optional_effd12a0;
 
 #pragma mark Typedef'd Unions
 

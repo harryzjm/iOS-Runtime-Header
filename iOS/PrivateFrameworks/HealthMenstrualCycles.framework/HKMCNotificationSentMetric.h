@@ -6,26 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface HKMCNotificationSentMetric : NSObject
 {
     NSDictionary *_eventPayload;
     NSString *_category;
-    long long _numberOfDaysShiftedForFertileWindow;
-    long long _numberOfDaysBeforePredictionEnd;
+    NSNumber *_areHealthNotificationsAuthorized;
+    NSNumber *_numberOfDaysShiftedForFertileWindow;
+    NSNumber *_numberOfDaysOffsetFromFertileWindowEnd;
+    NSNumber *_numberOfDaysWithWristTemp45DaysBeforeOvulationConfirmedNotification;
+    NSNumber *_internalLiveOnCycleFactorOverrideEnabled;
 }
 
 + (id)eventName;
 - (void).cxx_destruct;
-@property(nonatomic) long long numberOfDaysBeforePredictionEnd; // @synthesize numberOfDaysBeforePredictionEnd=_numberOfDaysBeforePredictionEnd;
-@property(nonatomic) long long numberOfDaysShiftedForFertileWindow; // @synthesize numberOfDaysShiftedForFertileWindow=_numberOfDaysShiftedForFertileWindow;
+@property(retain, nonatomic) NSNumber *internalLiveOnCycleFactorOverrideEnabled; // @synthesize internalLiveOnCycleFactorOverrideEnabled=_internalLiveOnCycleFactorOverrideEnabled;
+@property(retain, nonatomic) NSNumber *numberOfDaysWithWristTemp45DaysBeforeOvulationConfirmedNotification; // @synthesize numberOfDaysWithWristTemp45DaysBeforeOvulationConfirmedNotification=_numberOfDaysWithWristTemp45DaysBeforeOvulationConfirmedNotification;
+@property(retain, nonatomic) NSNumber *numberOfDaysOffsetFromFertileWindowEnd; // @synthesize numberOfDaysOffsetFromFertileWindowEnd=_numberOfDaysOffsetFromFertileWindowEnd;
+@property(retain, nonatomic) NSNumber *numberOfDaysShiftedForFertileWindow; // @synthesize numberOfDaysShiftedForFertileWindow=_numberOfDaysShiftedForFertileWindow;
+@property(retain, nonatomic) NSNumber *areHealthNotificationsAuthorized; // @synthesize areHealthNotificationsAuthorized=_areHealthNotificationsAuthorized;
 @property(retain, nonatomic) NSString *category; // @synthesize category=_category;
 @property(copy, nonatomic) NSDictionary *eventPayload; // @synthesize eventPayload=_eventPayload;
 - (id)description;
-- (id)initWithCategory:(id)arg1 numberOfDaysShiftedForFertileWindow:(long long)arg2 numberOfDaysBeforePredictionEnd:(long long)arg3;
-- (id)initWithCategory:(id)arg1;
+- (id)initWithCategory:(id)arg1 areHealthNotificationsAuthorized:(id)arg2;
 
 @end
 

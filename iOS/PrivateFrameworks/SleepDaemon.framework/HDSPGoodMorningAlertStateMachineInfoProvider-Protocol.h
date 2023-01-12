@@ -9,6 +9,8 @@
 @class HKSPSleepScheduleModel, NSDate;
 
 @protocol HDSPGoodMorningAlertStateMachineInfoProvider <HKSPStateMachineInfoProvider>
+@property(readonly, nonatomic) _Bool isOnCharger;
+@property(readonly, nonatomic) _Bool isAppleWatch;
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) _Bool goodMorningAlertEnabled;

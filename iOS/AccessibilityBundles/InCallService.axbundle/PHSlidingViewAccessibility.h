@@ -13,6 +13,8 @@
 + (id)safeCategoryTargetClassName;
 - (void)showSlidingViewModel:(id)arg1 animatedSliderCompletion:(CDUnknownBlockType)arg2 medicalIDSliderCompletion:(CDUnknownBlockType)arg3;
 - (void)repeatingUpdateAnimatedSliderForCountdownNumber:(unsigned long long)arg1 forModel:(id)arg2;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)createFindMyUI;
 
 @end
 

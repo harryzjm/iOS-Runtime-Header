@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUIApps/PUStoryAssetPickerHelperDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12PhotosUIApps19PUXStoryAssetPicker : NSObject <PUStoryAssetPickerHelperDelegate>
+@interface _TtC12PhotosUIApps19PUXStoryAssetPicker : NSObject
 {
     MISSING_TYPE *viewModel;
     MISSING_TYPE *pickerHelper;

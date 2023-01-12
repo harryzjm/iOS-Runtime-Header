@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADInternalInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CADInternalOperationGroup <CADInternalInterface>
+@interface CADInternalOperationGroup : CADOperationGroup
 {
 }
 
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
+- (void)CADInternalRemoveConferenceLinkRenewalDate:(CDUnknownBlockType)arg1;
+- (void)CADInternalSetNextConferenceLinkRenewalToNow:(CDUnknownBlockType)arg1;
 - (void)CADInternalForceStatCollection:(CDUnknownBlockType)arg1;
 - (_Bool)_internalAccessGranted;
-- (_Bool)accessGrantedToPerformSelector:(SEL)arg1;
+- (_Bool)accessGranted;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

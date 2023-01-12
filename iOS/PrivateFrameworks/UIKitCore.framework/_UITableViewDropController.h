@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDropInteractionDelegate_Private-Protocol.h>
-#import <UIKitCore/_UITableViewDropCoordinatorDelegate-Protocol.h>
-
 @class NSIndexPath, NSMapTable, NSString, UIDropInteraction, UITableView, UITableViewDropProposal;
 @protocol UIDropSession, _UITableViewDropControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewDropController : NSObject <UIDropInteractionDelegate_Private, _UITableViewDropCoordinatorDelegate>
+@interface _UITableViewDropController : NSObject
 {
     _Bool _canOnlyHandleReordering;
     UIDropInteraction *_dropInteraction;
@@ -58,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)resetTrackingState;
 @property(readonly, nonatomic) _Bool shouldIgnoreDrags;
 - (void)endIgnoringDrags;
-- (void)beginIgnoringDrags;
+- (id)beginIgnoringDrags;
 - (void)uninstallFromTableView;
 @property(readonly, nonatomic, getter=isTrackingDrag) _Bool trackingDrag;
 @property(readonly, nonatomic, getter=isActive) _Bool active;

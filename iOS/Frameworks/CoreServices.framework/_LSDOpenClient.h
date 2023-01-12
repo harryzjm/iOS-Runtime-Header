@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreServices/_LSDOpenProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _LSDOpenClient <_LSDOpenProtocol>
+@interface _LSDOpenClient
 {
 }
 

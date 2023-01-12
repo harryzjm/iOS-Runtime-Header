@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIFilter, CIImage, CIVector, NSArray, NSDictionary, NSNumber, NSObject, NSString;
+#import "CIFilter.h"
+
+@class CIImage, CIVector, NSArray, NSDictionary, NSNumber, NSObject, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CIRAWFilterImpl
+@interface CIRAWFilterImpl : CIFilter
 {
     struct CGImageSource *_inputImageSource;
     NSArray *_inputImageAndProperties;

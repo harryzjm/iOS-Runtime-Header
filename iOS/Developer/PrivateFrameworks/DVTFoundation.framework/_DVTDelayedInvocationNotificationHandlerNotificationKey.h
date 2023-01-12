@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface _DVTDelayedInvocationNotificationHandlerNotificationKey : NSObject <NSCopying>
+@interface _DVTDelayedInvocationNotificationHandlerNotificationKey : NSObject
 {
     NSString *_notificationName;
     id _object;

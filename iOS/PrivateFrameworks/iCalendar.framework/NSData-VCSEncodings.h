@@ -11,5 +11,6 @@
 - (id)VCSConvert8bitBufferToUTF8From:(unsigned int)arg1;
 - (id)VCSDecodeBase64;
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
+- (id)ical_digest;
 @end
 

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Home/HFTogglableControlItem-Protocol.h>
+#import <Home/HFToggleableControlItem-Protocol.h>
 #import <Home/NSObject-Protocol.h>
 
 @class NAFuture;
 
-@protocol HFPrimaryStateWriter <NSObject, HFTogglableControlItem>
+@protocol HFPrimaryStateWriter <NSObject, HFToggleableControlItem>
 - (NAFuture *)writePrimaryState:(long long)arg1;
 @end
 

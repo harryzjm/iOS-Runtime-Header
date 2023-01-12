@@ -26,6 +26,7 @@
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteWidgetIconStackChangedActiveWidget:(SBWidgetIcon *)arg2;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteWidgetIconRemoved:(SBWidgetIcon *)arg2;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteWidgetIconAdded:(SBWidgetIcon *)arg2;
+- (void)homeScreenUsageAggregatorDidNoteEditingModeEntered:(SBHHomeScreenUsageMonitor *)arg1;
 - (void)homeScreenUsageAggregatorDidNoteHomeScreenLayoutChanged:(SBHHomeScreenUsageMonitor *)arg1;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteRootControllerWillAppearWithPageIndex:(unsigned long long)arg2;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteCurrentPageIndexChanged:(unsigned long long)arg2;

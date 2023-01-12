@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_notifyDelegateOfUpdatedProtectionMode;
 - (void)previewAllowedHostsForAutoProtectionModeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reconfigureWiFiWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (_Bool)_mergeWithNewObject:(id)arg1;
 - (id)messageReceiveQueue;
 - (id)messageDestination;
 - (id)messageTargetUUID;

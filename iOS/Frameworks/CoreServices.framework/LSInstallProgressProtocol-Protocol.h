@@ -10,6 +10,7 @@
 
 @protocol LSInstallProgressProtocol <NSObject>
 - (void)_lsPing:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
+- (void)sendNotification:(int)arg1 forApplicationWithBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)sendNotification:(int)arg1 forApplications:(NSArray *)arg2 withPlugins:(_Bool)arg3;
 - (void)installationFailedForApplication:(NSString *)arg1 reply:(void (^)(_Bool))arg2;
 - (void)installationEndedForApplication:(NSString *)arg1 withState:(unsigned long long)arg2;

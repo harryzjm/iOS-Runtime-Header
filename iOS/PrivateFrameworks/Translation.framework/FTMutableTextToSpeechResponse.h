@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FTAudioDescription, FTTextToSpeechFeature, FTTextToSpeechMeta, NSArray, NSData, NSString;
+@class FTAudioDescription, FTTextToSpeechFeature, FTTextToSpeechMeta, FTTextToSpeechResponseDevData, NSArray, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FTMutableTextToSpeechResponse
 {
 }
 
+@property(copy, nonatomic) FTTextToSpeechResponseDevData *dev_data;
 @property(copy, nonatomic) FTTextToSpeechFeature *feature;
 @property(copy, nonatomic) FTTextToSpeechMeta *meta_info;
 @property(copy, nonatomic) NSArray *word_timing_info;

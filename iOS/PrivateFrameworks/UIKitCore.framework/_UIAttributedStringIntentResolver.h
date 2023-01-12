@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/_NSAttributedStringIntentResolver.h>
+#import "_NSAttributedStringIntentResolver.h"
 
 __attribute__((visibility("hidden")))
 @interface _UIAttributedStringIntentResolver : _NSAttributedStringIntentResolver

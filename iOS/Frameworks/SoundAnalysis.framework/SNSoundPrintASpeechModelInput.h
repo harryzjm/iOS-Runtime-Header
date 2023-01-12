@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface SNSoundPrintASpeechModelInput : NSObject <MLFeatureProvider>
+@interface SNSoundPrintASpeechModelInput : NSObject
 {
     MLMultiArray *_input1;
     MLMultiArray *_stateIn;

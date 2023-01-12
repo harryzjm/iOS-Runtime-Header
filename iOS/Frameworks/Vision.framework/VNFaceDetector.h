@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Vision/VNDetectorKeyProviding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VNFaceDetector <VNDetectorKeyProviding>
+@interface VNFaceDetector
 {
 }
 
++ (_Bool)calculateTilesForRegionOfInterest:(struct CGRect)arg1 imageWidth:(unsigned long long)arg2 imageHeight:(unsigned long long)arg3 tileSizeInPixels:(unsigned long long)arg4 overlapFraction:(float)arg5 aspectRatioThreshold:(float)arg6 columns:(unsigned long long *)arg7 rows:(unsigned long long *)arg8 tiles:(void *)arg9 error:(id *)arg10;
 + (void)printDebugInfo:(id)arg1 facesDataRaw:(void *)arg2 faceDetectorBGRAImage:(struct __CVBuffer *)arg3 tempImage:(struct vImage_Buffer)arg4;
 + (_Bool)shouldDumpDebugIntermediates;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
 + (id)configurationOptionKeysForDetectorKey;
 - (void)purgeIntermediates;
+- (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

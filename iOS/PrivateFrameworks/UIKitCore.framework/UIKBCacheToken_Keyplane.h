@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBCacheToken.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKBCacheToken_Keyplane
+@interface UIKBCacheToken_Keyplane : UIKBCacheToken
 {
     struct CGSize _size;
     CDUnion_bf7716c0 _style;
@@ -19,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)tokenForKeyplane:(id)arg1;
+- (void).cxx_destruct;
 - (_Bool)isUsableForCacheToken:(id)arg1 withRenderFlags:(long long)arg2;
 - (id)stringForSplitState:(_Bool)arg1 handBias:(long long)arg2;
 - (void)annotateWithInt:(int)arg1;
@@ -27,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (CDStruct_227bb23d)styling;
 - (void)setSize:(struct CGSize)arg1;
 - (struct CGSize)size;
-- (void)dealloc;
 - (id)_initWithKeyplane:(id)arg1 keylayout:(id)arg2;
 
 @end

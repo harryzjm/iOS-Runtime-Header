@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineInitializationParameters-Protocol.h>
-
 @class AVAudioSession, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCPlaybackEnginePlayerIDInitializationParameters : NSObject <MPCPlaybackEngineInitializationParameters>
+@interface _MPCPlaybackEnginePlayerIDInitializationParameters : NSObject
 {
     MPNowPlayingInfoCenter *_nowPlayingInfoCenter;
     MPRemoteCommandCenter *_remoteCommandCenter;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSLock, NSMutableDictionary, TSUSparseArray;
 
 __attribute__((visibility("hidden")))
-@interface TSUUUIDSetStore : NSObject <NSCopying>
+@interface TSUUUIDSetStore : NSObject
 {
     NSLock *_lock;
     TSUSparseArray *_uuidSetForIndex;

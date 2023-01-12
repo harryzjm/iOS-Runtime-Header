@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIInputSwitcherSplitMenu-Protocol.h>
-
 @class NSArray, NSMutableArray, UIInputSwitcherGestureState;
 
 __attribute__((visibility("hidden")))
-@interface UIInputSwitcherView <_UIInputSwitcherSplitMenu>
+@interface UIInputSwitcherView
 {
     NSMutableArray *m_inputModes;
     NSArray *m_inputSwitcherItems;
@@ -24,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)canShowKeyboardSettings;
 + (id)activeInstance;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool showsSwitches; // @synthesize showsSwitches=_showsSwitches;
 @property(nonatomic) _Bool fileReportFromSwitcher; // @synthesize fileReportFromSwitcher=_fileReportFromSwitcher;
 @property(nonatomic) _Bool messagesWriteboardFromSwitcher; // @synthesize messagesWriteboardFromSwitcher=_messagesWriteboardFromSwitcher;
@@ -63,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)setInputMode:(id)arg1;
 - (void)returnToKeyboardIfNeeded;
 - (void)fadeWithDelay:(double)arg1;
+- (void)removeFromSuperview;
 - (void)selectRowForInputMode:(id)arg1;
 - (long long)_indexOfFastSwitchToggleModeForIdentifier:(id)arg1;
 - (long long)_indexOfInputSwitcherItemWithIdentifier:(id)arg1;
@@ -73,7 +73,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canAddLaunchItem;
 - (void)reloadInputModes;
 - (void)didFinishSplitTransition;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVAssetResourceLoaderDelegate-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebCoreSharedBufferResourceLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
+@interface WebCoreSharedBufferResourceLoaderDelegate : NSObject
 {
     void *_parent;
     long long _expectedContentSize;
     struct RetainPtr<NSData> _data;
     _Bool _complete;
-    struct Vector<WTF::RetainPtr<AVAssetResourceLoadingRequest>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _requests;
+    struct Vector<WTF::RetainPtr<AVAssetResourceLoadingRequest>, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> _requests;
     struct Lock _dataLock;
 }
 

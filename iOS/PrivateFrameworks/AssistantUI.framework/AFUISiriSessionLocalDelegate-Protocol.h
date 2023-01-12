@@ -27,7 +27,7 @@
 - (void)siriSessionRecordingPreparationHasFinished:(AFUISiriSession *)arg1;
 - (void)siriSession:(AFUISiriSession *)arg1 didReceiveDeviceUnlockRequestWithCompletion:(void (^)(long long))arg2;
 - (void)siriSession:(AFUISiriSession *)arg1 didReceiveDeviceUnlockRequestAndCancelRequest:(_Bool)arg2 withCompletion:(void (^)(long long))arg3;
-- (void)siriSession:(AFUISiriSession *)arg1 didChangeToState:(long long)arg2;
+- (void)siriSession:(AFUISiriSession *)arg1 didChangeToState:(long long)arg2 event:(long long)arg3 machAbsoluteTransitionTime:(double)arg4;
 
 @optional
 - (void)handlePunchoutCommand:(SAUIAppPunchOut *)arg1 completion:(void (^)(_Bool))arg2;

@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <ChronoKit/NSCopying-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC9ChronoKit17PowerlogViewEntry : _TtCs12_SwiftObject <NSCopying>
+@interface _TtC9ChronoKit17PowerlogViewEntry : _TtCs12_SwiftObject
 {
     MISSING_TYPE *identity;
     MISSING_TYPE *_metrics;

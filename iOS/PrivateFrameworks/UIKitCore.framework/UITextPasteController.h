@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextPasteCoordinatorDelegate-Protocol.h>
-
 @class NSMapTable, NSString;
 @protocol UITextPasteConfigurationSupporting_Internal;
 
 __attribute__((visibility("hidden")))
-@interface UITextPasteController : NSObject <UITextPasteCoordinatorDelegate>
+@interface UITextPasteController : NSObject
 {
     NSMapTable *_sessions;
     id <UITextPasteConfigurationSupporting_Internal> _supportingView;

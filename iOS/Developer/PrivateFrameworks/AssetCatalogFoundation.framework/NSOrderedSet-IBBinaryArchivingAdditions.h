@@ -6,12 +6,9 @@
 
 #import <Foundation/NSOrderedSet.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/IBOrderedCollection-Protocol.h>
-
 @class NSString;
 
-@interface NSOrderedSet (IBBinaryArchivingAdditions) <IBBinaryArchiving, IBOrderedCollection>
+@interface NSOrderedSet (IBBinaryArchivingAdditions)
 + (id)ib_orderedCollectionWithOrderedCollection:(id)arg1;
 + (id)ib_collectionWithObject:(id)arg1;
 + (id)ib_emptyCollection;

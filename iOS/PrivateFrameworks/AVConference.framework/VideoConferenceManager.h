@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VideoConferenceDelegate-Protocol.h>
-
 @class ICEResultWaitQueue, NSMutableArray, VideoConference;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VideoConferenceManager : NSObject <VideoConferenceDelegate>
+@interface VideoConferenceManager : NSObject
 {
     unsigned char _clientUUID[16];
     struct _opaque_pthread_mutex_t stateLock;

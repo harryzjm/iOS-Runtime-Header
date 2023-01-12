@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOConfigKeyHelper : NSObject <NSCopying>
+@interface _GEOConfigKeyHelper : NSObject
 {
     id _lastValue;
     long long _keySource;

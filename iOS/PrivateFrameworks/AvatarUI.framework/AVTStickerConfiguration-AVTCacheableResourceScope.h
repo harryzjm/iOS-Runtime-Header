@@ -6,11 +6,9 @@
 
 #import <AvatarKit/AVTStickerConfiguration.h>
 
-#import <AvatarUI/AVTCacheableResourceScope-Protocol.h>
-
 @class NSString;
 
-@interface AVTStickerConfiguration (AVTCacheableResourceScope) <AVTCacheableResourceScope>
+@interface AVTStickerConfiguration (AVTCacheableResourceScope)
 - (unsigned long long)cacheableResourceAssociatedCost;
 - (id)cacheableResourceAssociatedIdentifier;
 

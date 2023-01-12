@@ -7,6 +7,6 @@
 #import <WebInspector/RWIProtocolCSSGrouping.h>
 
 @interface RWIProtocolCSSGrouping (IKJSDependency)
-+ (id)safe_initWithText:(id)arg1 type:(long long)arg2;
++ (id)safe_initWithType:(long long)arg1;
 @end
 

@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UIContentInsetsEnvironment-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIContentInsetsEnvironment : NSObject <_UIContentInsetsEnvironment, NSCopying>
+@interface _UIContentInsetsEnvironment : NSObject <NSCopying>
 {
     long long _insetReference;
     struct NSDirectionalEdgeInsets _safeAreaInsets;

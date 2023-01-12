@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <DVTFoundation/DVTPropertyListValue-Protocol.h>
-
 @class NSData, NSDate, NSDictionary, NSNumber, NSString;
 
-@interface NSArray (DVTInvalidationZombie_Private) <DVTPropertyListValue>
+@interface NSArray (DVTInvalidationZombie_Private)
 + (id)dvt_arrayWithObjectIfNonNil:(id)arg1;
 + (id)dvt_arrayWithRepetitions:(long long)arg1 ofObject:(id)arg2;
 - (void)_dvt_removeObserver:(id)arg1 fromObjectsAtIndexes:(id)arg2 forKeyPath:(id)arg3;
@@ -72,6 +70,7 @@
 - (id)dvt_unorderedArrayByGroupingObjectsUsingKeys:(CDUnknownBlockType)arg1;
 - (id)dvt_unorderedArrayByGroupingObjectsUsingKeyPaths:(id)arg1;
 - (id)dvt_arrayByGroupingAdjacentObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)dvt_setByFilteringUsingBlock:(CDUnknownBlockType)arg1;
 - (id)dvt_setByApplyingBlockStrictly:(CDUnknownBlockType)arg1;
 - (id)dvt_setByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)dvt_arrayByApplyingBlockStrictly:(CDUnknownBlockType)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSSQLiteEntity-Protocol.h>
-
 @class AMSSQLiteConnection, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSSQLiteEntity : NSObject <AMSSQLiteEntity>
+@interface AMSSQLiteEntity : NSObject
 {
     AMSSQLiteConnection *_connection;
     long long _persistentID;

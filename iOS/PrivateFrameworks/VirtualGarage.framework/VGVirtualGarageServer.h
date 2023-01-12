@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VirtualGarage/GEOConfigChangeListenerDelegate-Protocol.h>
-#import <VirtualGarage/NSXPCListenerDelegate-Protocol.h>
-#import <VirtualGarage/VGVirtualGarageActions-Protocol.h>
-#import <VirtualGarage/VGVirtualGarageDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, NSXPCListener, VGVirtualGarage;
 @protocol OS_dispatch_queue, VGVirtualGarageObserver, VGVirtualGaragePersisting;
 
 __attribute__((visibility("hidden")))
-@interface VGVirtualGarageServer : NSObject <NSXPCListenerDelegate, VGVirtualGarageDelegate, GEOConfigChangeListenerDelegate, VGVirtualGarageActions>
+@interface VGVirtualGarageServer : NSObject
 {
     NSObject<OS_dispatch_queue> *_isolationQueue;
     id <VGVirtualGaragePersisting> _persister;
@@ -47,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)virtualGarageSaveVehicle:(id)arg1;
 - (void)virtualGarageRemoveVehicle:(id)arg1;
 - (void)virtualGarageAddVehicle:(id)arg1;
-- (void)virtualGarage:(id)arg1 didUpdateCarPlayConnection:(_Bool)arg2 associatedVehicle:(id)arg3;
 - (void)virtualGarage:(id)arg1 didUpdateUnpairedVehicles:(id)arg2;
 - (void)virtualGarageDidUpdate:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

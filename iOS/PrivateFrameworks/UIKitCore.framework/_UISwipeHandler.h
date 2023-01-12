@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UISwipeDismissalGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UISwipeActionController, _UIStatesFeedbackGenerator, _UISwipeActionPanGestureRecognizer, _UISwipeDismissalGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface _UISwipeHandler : NSObject <UIGestureRecognizerDelegate, _UISwipeDismissalGestureRecognizerDelegate>
+@interface _UISwipeHandler : NSObject
 {
     struct {
         unsigned int didProcessBegan:1;
@@ -35,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIStatesFeedbackGenerator *swipeFeedbackGenerator; // @synthesize swipeFeedbackGenerator=_swipeFeedbackGenerator;
 @property(readonly, nonatomic) unsigned long long currentSwipeState; // @synthesize currentSwipeState=_currentSwipeState;
 - (void)_moveSwipedItemToOffset:(double)arg1 animated:(_Bool)arg2 usingSpringWithStiffness:(double)arg3 isTracking:(_Bool)arg4;
-- (CDStruct_9b6dff2a)_currentSwipeInfoWithTargetOffset:(double)arg1 animated:(_Bool)arg2 usingSpringWithStiffness:(double)arg3;
+- (CDStruct_b06b0113)_currentSwipeInfoWithTargetOffset:(double)arg1 animated:(_Bool)arg2 usingSpringWithStiffness:(double)arg3;
 @property(readonly, nonatomic) CDStruct_324b76a9 currentSwipeConfig;
 - (_Bool)_delegateWantsToDismissOnTouchDownForGestureRecognizer:(id)arg1;
 - (void)_cancelExistingSwipe;
@@ -53,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 @property(readonly, nonatomic, getter=isInteracting) _Bool interacting;
+- (void)dealloc;
 - (void)_setUp;
 - (id)initWithSwipeController:(id)arg1;
 

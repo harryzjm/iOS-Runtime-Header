@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <USDKit/USKIterator-Protocol.h>
-
-@interface USKNodeSiblingIterator : NSObject <USKIterator>
+@interface USKNodeSiblingIterator : NSObject
 {
-    struct iterator_range<pxrInternal_v0_20__pxrReserved__usdkit__::UsdPrimSiblingIterator> _range;
+    struct iterator_range<pxrInternal_v0_21__aapl__pxrReserved__::UsdPrimSiblingIterator> _range;
     struct UsdPrimSiblingIterator _it;
 }
 

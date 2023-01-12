@@ -17,6 +17,7 @@
     MISSING_TYPE *currentPartialSpec;
     MISSING_TYPE *currentPartialSpecVersion;
     MISSING_TYPE *graph;
+    MISSING_TYPE *persistentComponents;
     MISSING_TYPE *signals;
     MISSING_TYPE *plotWidthSignal;
     MISSING_TYPE *plotHeightSignal;
@@ -28,6 +29,9 @@
     MISSING_TYPE *safeMargin;
     MISSING_TYPE *topLevelGestureHandler;
     MISSING_TYPE *hasInteraction;
+    MISSING_TYPE *chartProxy;
+    MISSING_TYPE *xScaleSignal;
+    MISSING_TYPE *yScaleSignal;
     MISSING_TYPE *mutex;
 }
 

@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <MobileSafari/SFSiteRowModel-Protocol.h>
-
 @class NSString, UILabel, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface SFSiteRowCell : UICollectionViewCell <SFSiteRowModel>
+@interface SFSiteRowCell : UICollectionViewCell
 {
     UIVisualEffectView *_backgroundEffectView;
     UILabel *_label;

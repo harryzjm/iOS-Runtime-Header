@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFCore/AVAssetWriterFigAssetWriterNotificationHandlerDelegate-Protocol.h>
-
 @class AVAssetWriterFigAssetWriterNotificationHandler, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetWriterWritingHelper <AVAssetWriterFigAssetWriterNotificationHandlerDelegate>
+@interface AVAssetWriterWritingHelper
 {
     struct OpaqueFigAssetWriter *_figAssetWriter;
     NSObject<OS_dispatch_queue> *_figAssetWriterAccessQueue;
     _Bool _startSessionCalled;
     AVAssetWriterFigAssetWriterNotificationHandler *_notificationHandler;
-    void *_callbackContextToken;
+    void *_figAssetWriterCallbackContextToken;
 }
 
 + (id)finalStepWorkaroundOperationWithFigAssetWriter:(struct OpaqueFigAssetWriter *)arg1;
@@ -39,8 +37,8 @@ __attribute__((visibility("hidden")))
 - (id)figTrackReferences;
 - (_Bool)checkAVAssetWriterInputConfigurationToOutputSegmentDataForOutputFileTypeProfile:(id)arg1 preferredOutputSegmentInterval:(CDStruct_1b6d18a9)arg2 returningDebugDescription:(id *)arg3;
 - (_Bool)checkConfigurationToOutputSegmentDataReturningDebugDescription:(id *)arg1;
-- (id)initWithConfigurationState:(id)arg1 error:(id *)arg2;
-- (id)initWithConfigurationState:(id)arg1;
+- (id)initWithConfigurationState:(id)arg1 assetWriter:(id)arg2 error:(id *)arg3;
+- (id)initWithConfigurationState:(id)arg1 assetWriter:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

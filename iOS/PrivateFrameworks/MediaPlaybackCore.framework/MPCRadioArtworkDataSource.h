@@ -6,14 +6,15 @@
 
 #import <MediaPlayer/MPAbstractNetworkArtworkDataSource.h>
 
-@class CPLRUDictionary, NSObject;
+@class MSVLRUDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MPCRadioArtworkDataSource : MPAbstractNetworkArtworkDataSource
 {
     unsigned long long _backgroundCacheSize;
     unsigned long long _cacheSize;
-    CPLRUDictionary *_cachedArtworkRepresentations;
+    MSVLRUDictionary *_cachedArtworkRepresentations;
     NSObject<OS_dispatch_queue> *_cachedArtworkRepresentationsAccessQueue;
     long long _resumeToForegroundCacheSize;
 }

@@ -8,5 +8,8 @@
 
 @protocol SPUIRemoteSearchViewDelegate <NSObject>
 - (void)dismissSearchView;
+
+@optional
+- (void)searchViewKeyboardPresentationStateDidChange;
 @end
 

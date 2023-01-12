@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSSecureCoding-Protocol.h>
-
 @class NSURL;
 
 __attribute__((visibility("hidden")))
-@interface NSURLPromisePair : NSObject <NSSecureCoding>
+@interface NSURLPromisePair : NSObject
 {
     NSURL *_logicalURL;
     NSURL *_physicalURL;

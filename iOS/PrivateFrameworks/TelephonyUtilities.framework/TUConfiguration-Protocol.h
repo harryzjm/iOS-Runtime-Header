@@ -9,6 +9,7 @@
 @class NSString, NSURL;
 
 @protocol TUConfiguration <NSObject>
+@property(readonly, nonatomic) _Bool simulateInternationalCall;
 @property(readonly, nonatomic) _Bool simulateFatalPersistentStoreError;
 @property(readonly, nonatomic) NSURL *conversationLinkBaseURL;
 @property(readonly, nonatomic) NSString *conversationLinkBaseURLString;

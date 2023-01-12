@@ -5,11 +5,10 @@
 //
 
 #import <PhotosGraph/NSObject-Protocol.h>
-#import <PhotosGraph/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@protocol PGAssetFilter <NSObject, NSSecureCoding>
+@protocol PGAssetFilter <NSObject>
 + (NSString *)name;
 @end
 

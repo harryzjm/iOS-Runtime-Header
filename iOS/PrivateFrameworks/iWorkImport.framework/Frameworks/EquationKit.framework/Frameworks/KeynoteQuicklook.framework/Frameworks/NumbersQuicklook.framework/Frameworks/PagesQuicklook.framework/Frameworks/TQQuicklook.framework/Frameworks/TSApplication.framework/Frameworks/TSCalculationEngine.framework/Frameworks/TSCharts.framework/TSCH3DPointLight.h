@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCH3DLightPositionable-Protocol.h>
-
 @class TSCH3DVector;
 
-@interface TSCH3DPointLight <TSCH3DLightPositionable>
+@interface TSCH3DPointLight
 {
     TSCH3DVector *_position;
 }

@@ -15,7 +15,6 @@
     MISSING_TYPE *row;
     MISSING_TYPE *header;
     MISSING_TYPE *columns;
-    MISSING_TYPE *updatedWidths;
     MISSING_TYPE *$__lazy_storage_$_rowCells;
     MISSING_TYPE *$__lazy_storage_$_spacerIndex;
     MISSING_TYPE *$__lazy_storage_$_hasSpacer;

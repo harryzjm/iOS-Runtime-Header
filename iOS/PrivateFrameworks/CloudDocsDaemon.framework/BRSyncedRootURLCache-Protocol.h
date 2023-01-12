@@ -9,6 +9,7 @@
 @class NSArray, NSString;
 
 @protocol BRSyncedRootURLCache <NSObject>
+@property(readonly, nonatomic) _Bool cacheMightBePopulated;
 @property(readonly, nonatomic) NSArray *syncedRootURLs;
 - (id)initWithPersona:(NSString *)arg1;
 @end

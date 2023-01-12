@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccountUI/IKDOMFeature-Protocol.h>
-#import <VideoSubscriberAccountUI/VSJSMessagePortDelegate-Protocol.h>
-
 @class IKAppContext, NSString;
 @protocol VSMessagePortFeatureDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSMessagePortFeature : NSObject <VSJSMessagePortDelegate, IKDOMFeature>
+@interface VSMessagePortFeature : NSObject
 {
     NSString *_featureName;
     IKAppContext *_appContext;

@@ -7,21 +7,19 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary;
-@protocol MTLDevice;
+@protocol MTLCommandQueue, MTLDevice, MTLLibrary;
 
 __attribute__((visibility("hidden")))
 @interface VNMetalContext : NSObject
 {
-    _Bool _useGPU;
-    id <MTLDevice> _metalDevice;
+    struct os_unfair_lock_s _lock;
+    id <MTLCommandQueue> _commandQueue;
+    id <MTLLibrary> _library;
     NSDictionary *_wisdomParams;
+    id <MTLDevice> _device;
 }
 
 - (void).cxx_destruct;
-@property(readonly) _Bool useGPU; // @synthesize useGPU=_useGPU;
-@property(readonly) NSDictionary *wisdomParams; // @synthesize wisdomParams=_wisdomParams;
-@property(readonly) id <MTLDevice> metalDevice; // @synthesize metalDevice=_metalDevice;
-- (id)initWithMetalDevice:(id)arg1;
 
 @end
 

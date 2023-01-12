@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SIMToolkitUI/BSXPCCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface STKSessionBehavior : NSObject <BSXPCCoding>
+@interface STKSessionBehavior : NSObject
 {
     double _timeout;
     _Bool _shouldSendResponseUponDisplay;

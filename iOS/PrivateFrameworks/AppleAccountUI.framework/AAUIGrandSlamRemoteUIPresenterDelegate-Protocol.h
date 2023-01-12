@@ -6,12 +6,17 @@
 
 #import <AppleAccountUI/NSObject-Protocol.h>
 
-@class NSError, NSURLRequest, RemoteUIController;
+@class NSError, NSHTTPURLResponse, NSMutableURLRequest, NSURLRequest, RUIObjectModel, RemoteUIController;
 
 @protocol AAUIGrandSlamRemoteUIPresenterDelegate <NSObject>
 - (void)remoteUIRequestComplete:(NSURLRequest *)arg1 error:(NSError *)arg2;
 
 @optional
+- (void)remoteUIDidPresentObjectModel:(RUIObjectModel *)arg1 modally:(_Bool)arg2;
+- (void)remoteUIWillPresentObjectModel:(RUIObjectModel *)arg1 modally:(_Bool)arg2;
+- (void)remoteUIDidReceiveHTTPResponse:(NSHTTPURLResponse *)arg1;
+- (void)remoteUIDidEndFlow:(RemoteUIController *)arg1;
+- (void)remoteUIWillLoadRequest:(NSMutableURLRequest *)arg1;
 - (void)remoteUIDidDismiss:(RemoteUIController *)arg1;
 @end
 

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCBatteryXPCProxyRemoteServerEndpointInterface-Protocol.h>
-#import <GameController/_GCIPCEndpointServer-Protocol.h>
-
 @class GCDeviceBattery, NSString;
 @protocol GCBatteryXPCProxyRemoteClientEndpointInterface, GCBatteryXPCProxyServerEndpointDelegate, NSObject><NSCopying><NSSecureCoding, _GCControllerComponentDescription, _GCIPCEndpointConnection;
 
 __attribute__((visibility("hidden")))
-@interface GCBatteryXPCProxyServerEndpoint : NSObject <_GCIPCEndpointServer, GCBatteryXPCProxyRemoteServerEndpointInterface>
+@interface GCBatteryXPCProxyServerEndpoint : NSObject
 {
     id <GCBatteryXPCProxyRemoteClientEndpointInterface> _clientEndpoint;
     id <_GCIPCEndpointConnection> _connection;

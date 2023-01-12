@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
-#import <UIKitCore/UITableViewDataSource-Protocol.h>
-#import <UIKitCore/UITableViewDelegate-Protocol.h>
+#import "UIView.h"
 
-@class NSString, NSTimer, UIDimmingView, UIInputSwitcherSelectionExtraView, UIInputSwitcherShadowView, UIInputSwitcherTableView, UIKBKeyView, UIKBTree, UIKeyboardLayoutStar, UISelectionFeedbackGenerator, UIView;
+@class NSString, NSTimer, UIDimmingView, UIInputSwitcherSelectionExtraView, UIInputSwitcherShadowView, UIInputSwitcherTableView, UIKBKeyView, UIKBTree, UIKeyboardLayoutStar, UISelectionFeedbackGenerator;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardMenuView <UITableViewDataSource, UITableViewDelegate, UIDimmingViewDelegate>
+@interface UIKeyboardMenuView : UIView
 {
     UIInputSwitcherTableView *m_table;
     UIInputSwitcherShadowView *m_shadowView;

@@ -4,23 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/NSObject-Protocol.h>
+#import <AVConference/VCHardwareSettingsProtocol-Protocol.h>
 
-@class NSArray, NSString;
+@class NSString;
 
-@protocol VCHardwareSettingsMacProtocol <NSObject>
-@property(readonly, nonatomic) NSArray *supportedVideoPayloads;
-@property(readonly, nonatomic) _Bool isSpatialAudioSupported;
-@property(readonly, nonatomic) _Bool isPixelFormatAvailable;
-@property(readonly, nonatomic) _Bool supportsHEIFEncoding;
+@protocol VCHardwareSettingsMacProtocol <VCHardwareSettingsProtocol>
 @property(readonly, nonatomic) _Bool isDeviceLargeScreen;
 @property(readonly, nonatomic) _Bool supportsMultiway720pStream;
-@property(readonly, nonatomic) unsigned int maxActiveVideoDecoders;
-@property(readonly, nonatomic) unsigned int maxActiveVideoEncoders;
-@property(readonly, nonatomic) unsigned int maxDisplayRefreshRate;
 @property(readonly, nonatomic) unsigned int hwEncoderEnterBitrate;
 @property(readonly, nonatomic) unsigned int hwEncoderExitBitrate;
-@property(readonly, nonatomic) _Bool useSoftFramerateSwitching;
+@property(readonly, nonatomic) _Bool isMacmini;
 @property(readonly, nonatomic) _Bool isIMac;
 @property(readonly, nonatomic) _Bool isMacPro;
 @property(readonly, nonatomic) _Bool isMacBookWVGA;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/CBCentralManagerDelegate-Protocol.h>
-#import <GameController/CBPeripheralDelegate-Protocol.h>
-
 @class CBCentralManager, NSMutableArray, NSString;
 
-@interface GCControllerCBDelegate : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
+__attribute__((visibility("hidden")))
+@interface GCControllerCBDelegate : NSObject
 {
     NSMutableArray *_foundPeripherals;
     NSMutableArray *_connectedPeripherals;

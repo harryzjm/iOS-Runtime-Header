@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataSource;
+    MISSING_TYPE *shouldAutomaticallyDeselectItem;
     MISSING_TYPE *currentSnapshotBacking;
     MISSING_TYPE *previousSnapshotBacking;
     MISSING_TYPE *collectionView;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *pendingUpdatesCount;
     MISSING_TYPE *registrationProviderByShelfID;
     MISSING_TYPE *snapshotTimestamps;
+    MISSING_TYPE *shelfOffsetPerLayoutSection;
     MISSING_TYPE *storefrontRTLHandlingCellsFlag;
     MISSING_TYPE *viewFactory;
 }

@@ -4,24 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADDatabaseStorageManagementInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CADDatabaseStorageManagementOperationGroup <CADDatabaseStorageManagementInterface>
+@interface CADDatabaseStorageManagementOperationGroup : CADOperationGroup
 {
 }
 
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
-- (unsigned long long)sizeDirectoryAtPath:(id)arg1;
-- (unsigned long long)sizeAttachments;
-- (unsigned long long)sizeCalendarDirectory;
+- (unsigned long long)sizeDirectoryAtPath:(id)arg1 excludingDirectory:(id)arg2;
+- (unsigned long long)sizeAttachmentsForDatabase:(struct CalDatabase *)arg1;
+- (unsigned long long)sizeCalendarDirectoryForDatabase:(struct CalDatabase *)arg1;
 - (void)CADDatabaseGetStorageUsage:(CDUnknownBlockType)arg1;
 - (_Bool)storageManagementAccessGranted;
-- (_Bool)accessGrantedToPerformSelector:(SEL)arg1;
+- (_Bool)accessGranted;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

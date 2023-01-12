@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobCaptionsSettings : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobCaptionsSettings : PBCodable
 {
     unsigned int _senderLanguages;
     _Bool _canDisplayCaptions;

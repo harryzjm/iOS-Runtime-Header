@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsArticles/SXComponentSizerFactory-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12NewsArticles23AdComponentSizerFactory : NSObject <SXComponentSizerFactory>
+@interface _TtC12NewsArticles23AdComponentSizerFactory : NSObject
 {
     MISSING_TYPE *type;
     MISSING_TYPE *role;

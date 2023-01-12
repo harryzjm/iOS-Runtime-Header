@@ -14,7 +14,7 @@
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 requestsAddPassData:(NSData *)arg2 forSyncStateItem:(NPKPassSyncStateItem *)arg3 completion:(void (^)(_Bool))arg4;
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendReconciledStateAcceptedWithHash:(NSData *)arg2;
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendProposedReconciledState:(NPKPassSyncState *)arg2;
-- (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendReconciledStateUnrecognizedWithHash:(NSData *)arg2 currentPassSyncState:(NPKPassSyncState *)arg3;
+- (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendReconciledStateUnrecognizedWithHash:(NSData *)arg2 version:(unsigned long long)arg3 currentPassSyncState:(NPKPassSyncState *)arg4;
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendStateChangeProcessedWithUUID:(NSUUID *)arg2 changeAccepted:(_Bool)arg3 fullPassRequired:(_Bool)arg4;
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendStateChange:(NPKPassSyncChange *)arg2;
 

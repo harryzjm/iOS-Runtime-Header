@@ -10,40 +10,29 @@ __attribute__((visibility("hidden")))
 @interface _TtC12PhotosUIApps32PhotosDetailsEXIFWidgetViewModel
 {
     MISSING_TYPE *_isContentLoaded;
+    MISSING_TYPE *isLoadingData;
     MISSING_TYPE *_showRawEXIF;
-    MISSING_TYPE *lensDescriptionTextHeight;
+    MISSING_TYPE *_videoHDRBadgeTitle;
     MISSING_TYPE *makeAndModelDescription;
-    MISSING_TYPE *$__lazy_storage_$__makeAndModelDescription;
-    MISSING_TYPE *flash;
-    MISSING_TYPE *$__lazy_storage_$__flash;
-    MISSING_TYPE *$__lazy_storage_$__hardwareDisplayStrings;
     MISSING_TYPE *formattedLensDescription;
-    MISSING_TYPE *$__lazy_storage_$__formattedLensDescription;
     MISSING_TYPE *unformattedLensDescription;
-    MISSING_TYPE *$__lazy_storage_$__unformattedLensDescription;
     MISSING_TYPE *megaPixelsDescription;
-    MISSING_TYPE *$__lazy_storage_$__megaPixelsDescription;
+    MISSING_TYPE *ax_megaPixelsDescription;
     MISSING_TYPE *resolutionDescription;
-    MISSING_TYPE *$__lazy_storage_$__resolutionDescription;
+    MISSING_TYPE *ax_resolutionDescription;
     MISSING_TYPE *fileSizeDescription;
-    MISSING_TYPE *$__lazy_storage_$__fileSizeDescription;
     MISSING_TYPE *localizedFormatDescription;
-    MISSING_TYPE *$__lazy_storage_$__localizedFormatDescription;
     MISSING_TYPE *symbolNames;
-    MISSING_TYPE *$__lazy_storage_$__symbolNames;
     MISSING_TYPE *hasCameraSettings;
     MISSING_TYPE *cameraSettings;
-    MISSING_TYPE *$__lazy_storage_$__cameraSettings;
     MISSING_TYPE *isVideo;
-    MISSING_TYPE *$__lazy_storage_$__isVideo;
     MISSING_TYPE *isVideoHDR;
-    MISSING_TYPE *$__lazy_storage_$__isVideoHDR;
     MISSING_TYPE *localizedSemanticStyleDisplayString;
-    MISSING_TYPE *$__lazy_storage_$__localizedSemanticStyleDisplayString;
     MISSING_TYPE *metadataProcessingQueue;
 }
 
 - (void).cxx_destruct;
+- (void)photoLibraryDidChange:(id)arg1;
 
 @end
 

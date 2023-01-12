@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsArticles/SXComponentViewFactory-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12NewsArticles22AdComponentViewFactory : NSObject <SXComponentViewFactory>
+@interface _TtC12NewsArticles22AdComponentViewFactory : NSObject
 {
     MISSING_TYPE *type;
     MISSING_TYPE *role;

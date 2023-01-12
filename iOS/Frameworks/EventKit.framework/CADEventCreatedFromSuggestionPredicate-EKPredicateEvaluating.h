@@ -6,9 +6,7 @@
 
 #import <CalendarDaemon/CADEventCreatedFromSuggestionPredicate.h>
 
-#import <EventKit/EKPredicateEvaluating-Protocol.h>
-
-@interface CADEventCreatedFromSuggestionPredicate (EKPredicateEvaluating) <EKPredicateEvaluating>
+@interface CADEventCreatedFromSuggestionPredicate (EKPredicateEvaluating)
 - (_Bool)ekPredicateEvaluateWithObject:(id)arg1;
 @end
 

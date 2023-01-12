@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FindMyDevice/FMNSXPCConnecting-Protocol.h>
-
 @class FMNSXPCConnection, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface FMNSXPCCachedConnection : NSObject <FMNSXPCConnecting>
+@interface FMNSXPCCachedConnection : NSObject
 {
     FMNSXPCConnection *_connection;
     CDUnknownBlockType _didInvalidate;

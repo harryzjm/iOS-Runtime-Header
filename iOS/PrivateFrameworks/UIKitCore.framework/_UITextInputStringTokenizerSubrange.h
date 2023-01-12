@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)subrangeWithSubstring:(id)arg1 basePosition:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) struct _NSRange relevantRange; // @synthesize relevantRange=_relevantRange;
 @property(nonatomic) long long indexOfBase; // @synthesize indexOfBase=_indexOfBase;
 @property(readonly, nonatomic) UITextPosition *basePosition; // @synthesize basePosition=_basePosition;
 @property(readonly, nonatomic) NSString *substring; // @synthesize substring=_substring;
-- (void)dealloc;
 - (id)description;
 
 @end

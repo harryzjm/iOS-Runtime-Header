@@ -7,6 +7,6 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (ADCoreExtensions)
-- (id)dataStringForJSON;
+- (id)AD_dataStringForJSON;
 @end
 

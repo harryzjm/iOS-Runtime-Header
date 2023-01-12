@@ -19,7 +19,6 @@
 @property(copy, nonatomic) IBICCatalogContentReference *contentReference; // @synthesize contentReference=_contentReference;
 - (_Bool)isMinimallyFitForCompiling;
 - (_Bool)isImageDataSizedProperly;
-- (id)infoPlistReferenceName;
 - (void)setSlot:(id)arg1;
 - (id)structuredIdentifier;
 - (id)slot;

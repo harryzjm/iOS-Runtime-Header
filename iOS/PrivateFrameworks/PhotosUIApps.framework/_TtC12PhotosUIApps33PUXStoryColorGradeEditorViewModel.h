@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *layoutSpec;
     MISSING_TYPE *layoutManagerObservation;
     MISSING_TYPE *_tungstenView;
-    MISSING_TYPE *_canDragContentToResizeSheet;
-    MISSING_TYPE *sheetSize;
     MISSING_TYPE *selectedItem;
     MISSING_TYPE *$__lazy_storage_$_allItems;
 }

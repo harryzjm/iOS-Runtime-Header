@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <WorkflowEditor/UISearchBarDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtCVV14WorkflowEditor15DrawerSearchBarP33_E51C85E07E6B1A263BBD21DD7A09E88317RepresentableView11Coordinator : NSObject <UISearchBarDelegate>
+@interface _TtCVV14WorkflowEditor15DrawerSearchBarP33_E51C85E07E6B1A263BBD21DD7A09E88317RepresentableView11Coordinator : NSObject
 {
     MISSING_TYPE *owner;
 }

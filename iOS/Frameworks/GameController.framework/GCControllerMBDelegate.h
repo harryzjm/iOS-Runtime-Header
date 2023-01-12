@@ -8,6 +8,7 @@
 
 @class NSTimer;
 
+__attribute__((visibility("hidden")))
 @interface GCControllerMBDelegate : NSObject
 {
     struct BTSessionImpl *_session;

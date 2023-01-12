@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INGetCarPowerLevelStatusIntentResponseObserver-Protocol.h>
-#import <Intents/INGetRideStatusIntentResponseObserver-Protocol.h>
-
 @class NSMapTable, NSString;
 @protocol INIntentResponseObserver;
 
 __attribute__((visibility("hidden")))
-@interface INExtensionContextIntentResponseObserver : NSObject <INGetRideStatusIntentResponseObserver, INGetCarPowerLevelStatusIntentResponseObserver>
+@interface INExtensionContextIntentResponseObserver : NSObject
 {
     id <INIntentResponseObserver> _remoteObserver;
     NSMapTable *_remoteObservers;

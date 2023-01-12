@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class ICPBDGSRequest, ICPBDGSResponse;
 
 __attribute__((visibility("hidden")))
-@interface ICPBDGSMessage : PBCodable <NSCopying>
+@interface ICPBDGSMessage : PBCodable
 {
     ICPBDGSRequest *_request;
     ICPBDGSResponse *_response;

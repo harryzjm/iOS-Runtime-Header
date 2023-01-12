@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNEncodedFetchCursor-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNEmptyPeopleFetcher : NSObject <CNEncodedFetchCursor>
+@interface CNEmptyPeopleFetcher : NSObject
 {
 }
 

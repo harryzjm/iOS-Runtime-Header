@@ -5,6 +5,7 @@
 //
 
 @protocol AutomationModeReaderProtocol
+- (void)requestAutomationModeRequiresAuthenticationWithReply:(void (^)(_Bool))arg1;
 - (void)requestAutomationModeEnabledStateWithReply:(void (^)(_Bool))arg1;
 @end
 

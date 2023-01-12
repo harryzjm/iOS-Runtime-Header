@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CryptoTokenKit/NSXPCListenerDelegate-Protocol.h>
-#import <CryptoTokenKit/SBSRemoteAlertHandleObserver-Protocol.h>
-#import <CryptoTokenKit/TKTokenAccessUserPrompt-Protocol.h>
-#import <CryptoTokenKit/TKUIServerProtocol-Protocol.h>
-
 @class NSString, SBSRemoteAlertHandle, TKTokenAccessRequest;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface TKTokenAccessUserPromptRemoteAlert : NSObject <NSXPCListenerDelegate, SBSRemoteAlertHandleObserver, TKUIServerProtocol, TKTokenAccessUserPrompt>
+@interface TKTokenAccessUserPromptRemoteAlert : NSObject
 {
     TKTokenAccessRequest *_accessRequest;
     SBSRemoteAlertHandle *_remoteAlertHandle;

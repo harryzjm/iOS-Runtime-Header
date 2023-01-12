@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNContactActionsControllerDelegate-Protocol.h>
-#import <ContactsUI/CNPropertyContextMenuAction-Protocol.h>
-
 @class CNActionMenuHelper, CNContactActionsController, CNUIUserActionListDataSource, NSString, UIContextMenuInteraction;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertySendMessageAction <CNContactActionsControllerDelegate, CNPropertyContextMenuAction>
+@interface CNPropertySendMessageAction
 {
     CNContactActionsController *_actionsController;
     CNUIUserActionListDataSource *_actionsDataSource;

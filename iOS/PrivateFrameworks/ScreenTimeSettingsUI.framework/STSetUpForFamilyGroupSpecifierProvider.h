@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ScreenTimeSettingsUI/MCProfileConnectionObserver-Protocol.h>
-
 @class NSString, PSSpecifier, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface STSetUpForFamilyGroupSpecifierProvider <MCProfileConnectionObserver>
+@interface STSetUpForFamilyGroupSpecifierProvider
 {
     UIViewController *_presenter;
     PSSpecifier *_setupFamilySpecifier;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UserAlerts/URTPresenting-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface URTUserNotificationPresentation : NSObject <URTPresenting>
+@interface URTUserNotificationPresentation : NSObject
 {
     struct __CFUserNotification *_userNotification;
     int _error;

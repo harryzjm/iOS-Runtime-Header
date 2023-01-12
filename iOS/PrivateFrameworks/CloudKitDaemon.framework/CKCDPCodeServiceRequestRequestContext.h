@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKCDPCodeServiceRequestDatabaseOwner, CKCDPCodeServiceRequestOperationGroup, NSString;
 
-@interface CKCDPCodeServiceRequestRequestContext : PBCodable <NSCopying>
+@interface CKCDPCodeServiceRequestRequestContext : PBCodable
 {
     unsigned long long _dsid;
     NSString *_applicationBundleId;

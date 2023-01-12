@@ -7,5 +7,7 @@
 #import <Foundation/NSItemProvider.h>
 
 @interface NSItemProvider (SafariExtras)
++ (id)safari_itemProviderForTab:(id)arg1 browserController:(id)arg2;
++ (id)safari_itemProviderForTabDocument:(id)arg1;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCH3DResource, TSCH3DTextureResource;
 
-@interface TSCH3DTexture : NSObject <NSCopying>
+@interface TSCH3DTexture : NSObject
 {
     TSCH3DTextureResource *_textureResource;
 }

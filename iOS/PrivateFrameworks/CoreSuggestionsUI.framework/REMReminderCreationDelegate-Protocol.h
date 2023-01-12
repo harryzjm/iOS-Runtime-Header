@@ -9,18 +9,18 @@
 @class CLLocation, NSAttributedString, NSDateComponents, NSError, NSString, NSURL, NSUserActivity, REMReminderCreationViewController;
 
 @protocol REMReminderCreationDelegate <NSObject>
-@property(readonly, nonatomic) NSUserActivity *userActivity;
-@property(readonly, nonatomic) NSURL *url;
-@property(readonly, nonatomic) NSString *locationString;
-@property(readonly, nonatomic) CLLocation *location;
-@property(readonly, nonatomic) NSDateComponents *dueDateComponents;
-@property(readonly, nonatomic) NSAttributedString *notes;
-@property(readonly, nonatomic) NSAttributedString *title;
 - (void)reminderCreationViewController:(REMReminderCreationViewController *)arg1 didCreateReminder:(_Bool)arg2 error:(NSError *)arg3;
+@property(nonatomic, readonly) NSUserActivity *userActivity;
+@property(nonatomic, readonly) NSURL *url;
+@property(nonatomic, readonly) NSString *locationString;
+@property(nonatomic, readonly) CLLocation *location;
+@property(nonatomic, readonly) NSDateComponents *dueDateComponents;
+@property(nonatomic, readonly) NSAttributedString *notes;
+@property(nonatomic, readonly) NSAttributedString *title;
 
 @optional
-@property(readonly, nonatomic) long long locationProximity;
-@property(readonly, nonatomic) _Bool titleIsGeneratedSuggestion;
-@property(readonly, nonatomic) _Bool wantsExtendedDetailOnlyView;
+@property(nonatomic, readonly) long long locationProximity;
+@property(nonatomic, readonly) _Bool titleIsGeneratedSuggestion;
+@property(nonatomic, readonly) _Bool wantsExtendedDetailOnlyView;
 @end
 

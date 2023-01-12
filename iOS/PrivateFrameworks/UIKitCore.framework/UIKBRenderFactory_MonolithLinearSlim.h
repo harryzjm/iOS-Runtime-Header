@@ -9,30 +9,18 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)_activeTraitsForInternationalKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)_enabledTraitsForInternationalKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)_variantTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)_activeTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)_enabledTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
+- (id)_variantTraitsForControlKey:(id)arg1 onKeyplane:(id)arg2;
+- (id)_highlightedTraitsForControlKey:(id)arg1;
+- (id)_enabledTraitsForControlKey:(id)arg1;
+- (void)configureSymbolStyle:(id)arg1 forControlKey:(id)arg2;
+- (void)configureGeometry:(id)arg1 forControlKey:(id)arg2;
 - (void)configureCornersOnGeometry:(id)arg1 forKey:(id)arg2;
 - (struct CGPoint)_textOffsetForKey:(id)arg1;
-- (void)configureSymbolStyle:(id)arg1 forActiveKeyplaneSwitchKey:(id)arg2;
-- (void)configureSymbolStyle:(id)arg1 forEnabledKeyplaneSwitchKey:(id)arg2;
-- (struct CGRect)spaceDisplayFrameFromRect:(struct CGRect)arg1;
-- (struct CGRect)spaceSymbolFrameFromRect:(struct CGRect)arg1;
-- (struct CGRect)spacePaddedFrameFromRect:(struct CGRect)arg1;
-- (struct CGRect)internationalSymbolFrameFromRect:(struct CGRect)arg1;
-- (struct CGRect)switchSymbolFrameFromRect:(struct CGRect)arg1;
-- (struct CGRect)switchPaddedFrameFromRect:(struct CGRect)arg1;
-- (struct CGPoint)symbolTextOffset;
-- (double)keyRoundRectRadius;
-- (double)pillRoundRectRadius;
 - (id)highlightedVariantLayeredBackgroundColor;
 - (id)highlightedVariantPillBackgroundColor;
 - (id)variantPillBackgroundColor;
-- (id)variantBackgroundColor;
-- (id)variantKeyColor;
+- (id)variantTextColor;
+- (double)variantPlatterHeight;
 
 @end
 

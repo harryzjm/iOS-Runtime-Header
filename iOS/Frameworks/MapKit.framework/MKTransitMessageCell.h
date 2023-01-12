@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MKCustomSeparatorCell.h"
+
 @class NSLayoutConstraint, NSString, _MKUILabel;
 
 __attribute__((visibility("hidden")))
-@interface MKTransitMessageCell
+@interface MKTransitMessageCell : MKCustomSeparatorCell
 {
     _MKUILabel *_messageLabel;
     NSLayoutConstraint *_topConstraint;

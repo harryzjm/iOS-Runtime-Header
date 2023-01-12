@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @protocol MFDeviceDriver;
 
 __attribute__((visibility("hidden")))
-@interface MFTransform : NSObject <NSCopying>
+@interface MFTransform : NSObject
 {
     struct CGAffineTransform m_world;
     struct CGPoint m_windowOrg;

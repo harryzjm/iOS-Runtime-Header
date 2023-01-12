@@ -19,7 +19,11 @@
     MISSING_TYPE *_isSiriInternalRequest;
     MISSING_TYPE *_isDataOnlyRequest;
     MISSING_TYPE *_trialIdentifiers;
+    MISSING_TYPE *_clientConversationContextInfo;
     MISSING_TYPE *_conversationContextBytes;
+    MISSING_TYPE *_requestType;
+    MISSING_TYPE *_pommesRequestContext;
+    MISSING_TYPE *_visualSearchContext;
 }
 
 @end

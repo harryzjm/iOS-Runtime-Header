@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKAttachmentMessagePartChatItem.h"
+
 @class CKLocationMediaObject, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface CKTranscriptLocationChatItem
+@interface CKTranscriptLocationChatItem : CKAttachmentMessagePartChatItem
 {
     CKLocationMediaObject *_locationMediaObject;
     NSURL *_locationURL;

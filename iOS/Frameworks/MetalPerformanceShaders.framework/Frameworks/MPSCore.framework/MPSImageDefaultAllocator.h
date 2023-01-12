@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <MPSCore/MPSImageAllocator-Protocol.h>
-
 @class NSString;
 
-@interface MPSImageDefaultAllocator : NSObject <MPSImageAllocator>
+@interface MPSImageDefaultAllocator : NSObject
 {
     int _dealloc_ok;
 }

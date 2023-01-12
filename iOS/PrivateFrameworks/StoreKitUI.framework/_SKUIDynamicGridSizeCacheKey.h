@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class SKUIViewElement;
 
 __attribute__((visibility("hidden")))
-@interface _SKUIDynamicGridSizeCacheKey : NSObject <NSCopying>
+@interface _SKUIDynamicGridSizeCacheKey : NSObject
 {
     long long _position;
     SKUIViewElement *_viewElement;

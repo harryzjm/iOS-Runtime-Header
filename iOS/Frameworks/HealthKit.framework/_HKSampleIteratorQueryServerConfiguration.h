@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class HKSampleIteratorQueryCursor;
 
 __attribute__((visibility("hidden")))
-@interface _HKSampleIteratorQueryServerConfiguration
+@interface _HKSampleIteratorQueryServerConfiguration : HKQueryServerConfiguration
 {
     HKSampleIteratorQueryCursor *_queryCursor;
     unsigned long long _limit;

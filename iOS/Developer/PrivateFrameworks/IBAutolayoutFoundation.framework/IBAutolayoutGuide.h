@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBAutolayoutFoundation/NSCoding-Protocol.h>
-
 @class NSString;
 
-@interface IBAutolayoutGuide : NSObject <NSCoding, IBBinaryArchiving>
+@interface IBAutolayoutGuide : NSObject
 {
 }
 

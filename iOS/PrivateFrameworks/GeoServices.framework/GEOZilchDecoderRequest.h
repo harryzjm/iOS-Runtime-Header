@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOMapRequest.h"
+
 @class GEOZilchDecoder, NSError, NSObject;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface GEOZilchDecoderRequest
+@interface GEOZilchDecoderRequest : GEOMapRequest
 {
     struct unique_ptr<geo::ZilchMapModel, std::default_delete<geo::ZilchMapModel>> _mapModel;
     GEOZilchDecoder *_decoder;

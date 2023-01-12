@@ -6,13 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/SKUIContentRatingArtworkLoaderObserver-Protocol.h>
-#import <StoreKitUI/SKUIItemOfferButtonDelegate-Protocol.h>
-
 @class NSString, SKUIBadgeLabel, SKUIClientContext, SKUIColorScheme, SKUIContentRatingArtworkResourceLoader, SKUIItemContentRating, SKUIItemOffer, SKUIItemOfferButton, SKUIItemState, SKUIProductPageHeaderLabel, UIButton, UIControl, UIImage, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface SKUIProductPageHeaderView : UIView <SKUIItemOfferButtonDelegate, SKUIContentRatingArtworkLoaderObserver>
+@interface SKUIProductPageHeaderView : UIView
 {
     UILabel *_ageBandLabel;
     UIButton *_artistButton;

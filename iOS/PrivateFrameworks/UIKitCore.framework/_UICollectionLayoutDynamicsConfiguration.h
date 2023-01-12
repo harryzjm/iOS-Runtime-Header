@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionLayoutDynamicsConfiguration-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutDynamicsConfiguration : NSObject <_UICollectionLayoutDynamicsConfiguration>
+@interface _UICollectionLayoutDynamicsConfiguration : NSObject
 {
     NSMutableArray *_dirtyItems;
     NSArray *_items;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     UIKBRenderFactory *_overlayFactory;
 }
 
+- (void).cxx_destruct;
 - (_Bool)isTallPopup;
 - (double)popupFontSize;
 - (struct CGPoint)popupSymbolTextOffset;
@@ -21,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)variantPaddedFrameInsets;
 - (struct UIEdgeInsets)wideShadowPopupMenuInsets;
 - (struct UIEdgeInsets)wideShadowPaddleInsets;
-- (void)dealloc;
 - (id)initWithRenderingContext:(id)arg1 skipLayoutSegments:(_Bool)arg2;
 - (Class)_overlayFactoryClass;
 

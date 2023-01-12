@@ -6,10 +6,10 @@
 
 #import <GameController/NSObject-Protocol.h>
 
-@class NSString, _GCCControllerHIDServiceInfo;
+@class NSString, _GCHIDServiceInfo;
 
 @protocol _GCDeviceMatchingFilter <NSObject>
 - (NSString *)identifier;
-- (_Bool)match:(_GCCControllerHIDServiceInfo *)arg1;
+- (_Bool)match:(_GCHIDServiceInfo *)arg1;
 @end
 

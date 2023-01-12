@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDKeyedCollection, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDTableStyle : NSObject <NSCopying>
+@interface EDTableStyle : NSObject
 {
     NSString *mName;
     EDKeyedCollection *mTableStyleElements;

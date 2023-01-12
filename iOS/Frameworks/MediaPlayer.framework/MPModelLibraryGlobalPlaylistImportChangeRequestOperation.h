@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPMediaLibrary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibraryGlobalPlaylistImportChangeRequestOperation
+@interface MPModelLibraryGlobalPlaylistImportChangeRequestOperation : MPAsyncOperation
 {
     _Bool _shouldLibraryAdd;
     NSString *_globalPlaylistID;

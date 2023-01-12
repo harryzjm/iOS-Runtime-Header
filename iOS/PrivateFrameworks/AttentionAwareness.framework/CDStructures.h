@@ -23,6 +23,11 @@ struct AWRemoteMetadata {
     long long _field2;
 };
 
+struct mach_timebase_info {
+    unsigned int numer;
+    unsigned int denom;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIScrollView.h>
 
-#import <WebKit/WKContentControlled-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKChildScrollView : UIScrollView <WKContentControlled>
+@interface WKChildScrollView : UIScrollView
 {
 }
 

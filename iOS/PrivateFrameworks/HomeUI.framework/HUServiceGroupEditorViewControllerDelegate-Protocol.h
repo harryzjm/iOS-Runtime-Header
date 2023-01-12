@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/NSObject-Protocol.h>
-
 @class HMServiceGroup, HUServiceGroupEditorViewController;
 
-@protocol HUServiceGroupEditorViewControllerDelegate <NSObject>
+@protocol HUServiceGroupEditorViewControllerDelegate
 - (void)serviceGroupEditor:(HUServiceGroupEditorViewController *)arg1 didCreateServiceGroup:(HMServiceGroup *)arg2;
 @end
 

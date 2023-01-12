@@ -13,6 +13,7 @@
 }
 
 + (id)_messageForTest:(id)arg1 didMeasureValues:(id)arg2 forPerformanceMetricID:(id)arg3 name:(id)arg4 unitsOfMeasurement:(id)arg5 baselineName:(id)arg6 baselineAverage:(id)arg7 maxPercentRegression:(id)arg8 maxPercentRelativeStandardDeviation:(id)arg9 maxRegression:(id)arg10 maxStandardDeviation:(id)arg11 file:(id)arg12 line:(unsigned long long)arg13 polarity:(long long)arg14;
+- (id)iterationInfoStringForTestCase:(id)arg1;
 - (void)_context:(id)arg1 willStartActivity:(id)arg2;
 - (void)testCase:(id)arg1 didRecordExpectedFailure:(id)arg2;
 - (void)testCase:(id)arg1 didFailWithDescription:(id)arg2 inFile:(id)arg3 atLine:(unsigned long long)arg4;

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSObservation.h"
+
 @class NSObject;
 @protocol NSObservable;
 
 __attribute__((visibility("hidden")))
-@interface _NSConcreteBlockSinkObservation
+@interface _NSConcreteBlockSinkObservation : NSObservation
 {
     NSObject<NSObservable> *_LHSobservable;
     CDUnknownBlockType _block;

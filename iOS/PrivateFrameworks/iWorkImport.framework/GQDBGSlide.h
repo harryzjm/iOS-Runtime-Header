@@ -6,7 +6,6 @@
 
 @class GQDBGTemplateSlide, GQDWPLayoutFrame;
 
-__attribute__((visibility("hidden")))
 @interface GQDBGSlide
 {
     GQDBGTemplateSlide *mTemplate;

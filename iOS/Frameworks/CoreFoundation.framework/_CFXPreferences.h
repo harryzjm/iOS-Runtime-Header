@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     struct __CFDictionary *_sources;
     struct __CFDictionary *_namedVolatileSources;
     struct __CFDictionary *_searchLists;
-    NSObject<OS_xpc_object> *_agentConnection;
-    NSObject<OS_xpc_object> *_daemonConnection;
+    NSObject<OS_xpc_object> *_systemSessionDaemonConnection;
+    NSObject<OS_xpc_object> *_userSessionDaemonConnection;
     NSObject<OS_xpc_object> *_directConnection;
     unsigned int _launchdUID;
     unsigned int _euid;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _sourcesLock;
     struct os_unfair_lock_s _searchListsLock;
     struct os_unfair_lock_s _namedVolatileSourcesLock;
+    struct __CFSet *_groupContainersForCurrentUser;
 }
 
 + (id)copyDefaultPreferences;

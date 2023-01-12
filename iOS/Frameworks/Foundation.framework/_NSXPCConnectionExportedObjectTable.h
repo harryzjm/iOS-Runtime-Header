@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class _NSXPCConnectionExportInfo;
+@class NSXPCInterface;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface _NSXPCConnectionExportedObjectTable : NSObject
 {
-    struct _opaque_pthread_mutex_t _lock;
-    _NSXPCConnectionExportInfo *_proxy1;
+    id _proxy1Object;
+    NSXPCInterface *_proxy1Interface;
     struct __CFDictionary *_proxyNumberToObject;
+    struct __CFDictionary *_proxyNumberToInterface;
     struct __CFDictionary *_objectToProxyNumber;
-    unsigned long long _next;
-    _Bool _valid;
     NSObject<OS_dispatch_group> *_replyGroup;
+    unsigned long long _next;
+    struct os_unfair_lock_s _lock;
+    _Bool _valid;
 }
 
 - (id)description;

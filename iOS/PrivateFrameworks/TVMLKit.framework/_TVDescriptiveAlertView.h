@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <TVMLKit/UIScrollViewDelegate-Protocol.h>
-
 @class NSArray, NSString, UIImage, UIImageView, UIScrollView, _UIRepeatingPressGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface _TVDescriptiveAlertView : UIView <UIScrollViewDelegate>
+@interface _TVDescriptiveAlertView : UIView
 {
     UIScrollView *_scrollView;
     NSArray *_viewsAboveScrollView;

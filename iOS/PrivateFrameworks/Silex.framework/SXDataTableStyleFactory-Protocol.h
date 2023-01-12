@@ -9,10 +9,10 @@
 @class SXDataTableCellStyle, SXDataTableColumnStyle, SXDataTableRowStyle, SXDataTableStyle;
 
 @protocol SXDataTableStyleFactory <NSObject>
-- (SXDataTableCellStyle *)cellStyleForIndexPath:(CDStruct_2fea82da)arg1;
+- (SXDataTableCellStyle *)cellStyleForIndexPath:(CDStruct_4bcfbbae)arg1;
 - (SXDataTableColumnStyle *)columnStyleForColumnIndex:(unsigned long long)arg1;
 - (SXDataTableRowStyle *)rowStyleForRowIndex:(unsigned long long)arg1;
-- (SXDataTableCellStyle *)headerCellStyleForIndexPath:(CDStruct_2fea82da)arg1;
+- (SXDataTableCellStyle *)headerCellStyleForIndexPath:(CDStruct_4bcfbbae)arg1;
 - (SXDataTableColumnStyle *)headerColumnStyleForColumnIndex:(unsigned long long)arg1;
 - (SXDataTableRowStyle *)headerRowStyleForRowIndex:(unsigned long long)arg1;
 - (SXDataTableStyle *)dataTableStyle;

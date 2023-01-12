@@ -6,7 +6,7 @@
 
 #import <MediaPlaybackCore/MPCQueueControllerDataSource-Protocol.h>
 
-@class MPCSharedListeningContainerInfo, MPPlaybackContext, NSString;
+@class MPCSharedListeningContainerInfo, MPPlaybackContext, NSArray, NSString;
 @protocol MPCQueueControllerCommandInterposingHost;
 
 @protocol MPCQueueControllerCommandInterposing <MPCQueueControllerDataSource>
@@ -15,10 +15,17 @@
 @property(nonatomic) __weak id <MPCQueueControllerCommandInterposingHost> interposingHost;
 - (void)endSynchronizedPlayback;
 - (void)didJumpToItem:(NSString *)arg1;
-- (void)addPlaybackContext:(MPPlaybackContext *)arg1 afterItem:(NSString *)arg2 actions:(unsigned long long)arg3 completion:(void (^)(NSString *, NSError *))arg4;
+- (void)addPlaybackContext:(MPPlaybackContext *)arg1 atPosition:(long long)arg2 afterItem:(NSString *)arg3 actions:(unsigned long long)arg4 completion:(void (^)(NSString *, NSError *))arg5;
 - (void)moveItem:(NSString *)arg1 afterItem:(NSString *)arg2;
 - (void)moveItem:(NSString *)arg1 beforeItem:(NSString *)arg2;
+- (void)removeAllItemsAfterItem:(NSString *)arg1;
+- (void)removeItems:(NSArray *)arg1;
 - (void)removeItem:(NSString *)arg1;
+- (_Bool)isAutoPlayItem:(NSString *)arg1;
+- (void)setAutoPlayEnabled:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (_Bool)isAutoPlayAvailable;
+- (_Bool)isAutoPlayEnabled;
+- (_Bool)hasActiveRadioStation;
 - (MPCSharedListeningContainerInfo *)containerInfoForItem:(NSString *)arg1;
 - (_Bool)isValidContainerIdentifier:(NSString *)arg1;
 @end

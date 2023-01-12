@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/NSCopying-Protocol.h>
-#import <Contacts/NSSecureCoding-Protocol.h>
-
 @class NSString;
 @protocol _CNContactHandleStringEquivalenceStrategy;
 
 __attribute__((visibility("hidden")))
-@interface CNContactHandleIndexableString : NSObject <NSCopying, NSSecureCoding>
+@interface CNContactHandleIndexableString : NSObject
 {
     NSString *_indexKey;
     NSString *_stringValue;

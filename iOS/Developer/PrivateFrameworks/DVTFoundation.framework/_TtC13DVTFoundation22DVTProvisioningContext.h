@@ -17,14 +17,16 @@
     MISSING_TYPE *enableAppIdentifierPrefixedEntitlementsProcessor;
     MISSING_TYPE *enableXcodeCloudSigning;
     MISSING_TYPE *installCloudManagedCertificatesInKeychain;
+    MISSING_TYPE *isMultiPlatformEntitlementFilteringEnabled;
 }
 
 + (id)defaultContext;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithServiceExecutionContext:(long long)arg1 isRunningAsXcodeApp:(_Bool)arg2 enableInternalExceptions:(_Bool)arg3 usePortalDeveloperAPI:(_Bool)arg4 enableAppIdentifierPrefixedEntitlementsProcessor:(_Bool)arg5 enableXcodeCloudSigning:(_Bool)arg6 installCloudManagedCertificatesInKeychain:(_Bool)arg7;
+- (id)initWithServiceExecutionContext:(long long)arg1 isRunningAsXcodeApp:(_Bool)arg2 enableInternalExceptions:(_Bool)arg3 usePortalDeveloperAPI:(_Bool)arg4 enableAppIdentifierPrefixedEntitlementsProcessor:(_Bool)arg5 enableXcodeCloudSigning:(_Bool)arg6 installCloudManagedCertificatesInKeychain:(_Bool)arg7 isMultiPlatformEntitlementFilteringEnabled:(_Bool)arg8;
 @property(nonatomic, readonly) _Bool isXcodeServer;
 @property(nonatomic, readonly) _Bool isManaged;
+@property(nonatomic, readonly) _Bool isMultiPlatformEntitlementFilteringEnabled; // @synthesize isMultiPlatformEntitlementFilteringEnabled;
 @property(nonatomic, readonly) _Bool installCloudManagedCertificatesInKeychain; // @synthesize installCloudManagedCertificatesInKeychain;
 @property(nonatomic, readonly) _Bool enableXcodeCloudSigning; // @synthesize enableXcodeCloudSigning;
 @property(nonatomic, readonly) _Bool enableAppIdentifierPrefixedEntitlementsProcessor; // @synthesize enableAppIdentifierPrefixedEntitlementsProcessor;

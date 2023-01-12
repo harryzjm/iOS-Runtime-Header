@@ -9,8 +9,9 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreSharedBufferData : NSData
 {
-    struct RefPtr<const WebCore::SharedBuffer::DataSegment, WTF::RawPtrTraits<const WebCore::SharedBuffer::DataSegment>, WTF::DefaultRefDerefTraits<const WebCore::SharedBuffer::DataSegment>> _dataSegment;
+    struct RefPtr<const WebCore::DataSegment, WTF::RawPtrTraits<const WebCore::DataSegment>, WTF::DefaultRefDerefTraits<const WebCore::DataSegment>> _dataSegment;
     unsigned long long _position;
+    unsigned long long _size;
 }
 
 + (void)initialize;
@@ -18,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (const void *)bytes;
 - (unsigned long long)length;
-- (id)initWithDataSegment:(const void *)arg1 position:(unsigned long long)arg2;
+- (id)initWithDataSegment:(const void *)arg1 position:(unsigned long long)arg2 size:(unsigned long long)arg3;
 - (void)dealloc;
 
 @end

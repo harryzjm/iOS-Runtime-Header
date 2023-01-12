@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSObservation.h"
+
 @class NSObject;
 @protocol NSObservable, NSObserver;
 
 __attribute__((visibility("hidden")))
-@interface _NSConcreteObservation
+@interface _NSConcreteObservation : NSObservation
 {
     NSObject<NSObservable> *_LHSobservable;
     NSObject<NSObserver> *_RHSobserver;

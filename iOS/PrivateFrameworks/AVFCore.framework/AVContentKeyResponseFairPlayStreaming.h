@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVContentKeyResponse.h"
+
 @class NSData, NSDate;
 
 __attribute__((visibility("hidden")))
-@interface AVContentKeyResponseFairPlayStreaming
+@interface AVContentKeyResponseFairPlayStreaming : AVContentKeyResponse
 {
     NSData *_keyData;
     NSDate *_renewalDate;

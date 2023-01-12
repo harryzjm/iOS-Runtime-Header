@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <MediaPlayer/MPArtworkDataSourceVisualIdenticality-Protocol.h>
-
-@interface NSString (MPArtworkDataSourceVisualIdenticality) <MPArtworkDataSourceVisualIdenticality>
+@interface NSString (MPArtworkDataSourceVisualIdenticality)
 - (id)stringRepresentation;
 - (id)stringByLeftPaddingToLength:(unsigned long long)arg1 withString:(id)arg2 startingAtIndex:(unsigned long long)arg3;
 - (id)MPMediaLibraryDataProviderSystemML3CoercedString;

@@ -10,6 +10,7 @@
 
 @protocol HDSPIDSService <NSObject>
 @property(nonatomic) __weak id <HDSPIDSServiceDelegate> delegate;
+@property(readonly, nonatomic) _Bool isCloudService;
 - (void)sendMessage:(id <HDSPIDSMessage>)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 @end
 

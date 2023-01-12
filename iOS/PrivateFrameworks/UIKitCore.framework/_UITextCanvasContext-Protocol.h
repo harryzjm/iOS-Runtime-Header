@@ -6,20 +6,22 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSSet, NSTextContainer, UIColor, UIView, _UITextLayoutController;
+@class NSSet, NSTextContainer, UIColor, UIScrollView, UIView, _UITextLayoutControllerBase;
+@protocol _UITextLayoutController;
 
 @protocol _UITextCanvasContext <NSObject>
 @property(readonly, nonatomic) struct CGRect _clipRectForFadedEdges;
 @property(readonly, nonatomic) struct CGPoint drawingScale;
 @property(readonly, nonatomic, getter=isEditable) _Bool editable;
+@property(readonly, nonatomic) UIScrollView *enclosingScrollView;
 @property(readonly, nonatomic) UIColor *textColor;
 @property(readonly, nonatomic) struct CGPoint textContainerOrigin;
 @property(readonly, nonatomic) NSTextContainer *textContainer;
-@property(readonly, nonatomic) _UITextLayoutController *textLayoutController;
+@property(readonly, nonatomic) _UITextLayoutControllerBase<_UITextLayoutController> *textLayoutController;
 - (_Bool)drawTextInRectIfNeeded:(struct CGRect)arg1;
 - (void)didLayoutTextAttachmentView:(UIView *)arg1 inFragmentRect:(struct CGRect)arg2;
 - (void)didRemoveTextAttachmentViews:(NSSet *)arg1;
 - (void)didAddTextAttachmentViews:(NSSet *)arg1;
-- (void)textContainerUsageDidChangeToBounds:(struct CGRect)arg1;
+- (void)textContainerUsageDidChangeToSize:(struct CGSize)arg1;
 @end
 

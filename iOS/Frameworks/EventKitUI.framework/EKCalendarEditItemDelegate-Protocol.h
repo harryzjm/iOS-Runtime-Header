@@ -7,8 +7,10 @@
 #import <EventKitUI/NSObject-Protocol.h>
 
 @class EKCalendarEditItem, UINavigationController, UITableView;
+@protocol CUIKEditor;
 
 @protocol EKCalendarEditItemDelegate <NSObject>
+- (id <CUIKEditor>)editorForCalendarEditItem:(EKCalendarEditItem *)arg1;
 - (_Bool)isNewCalendar;
 - (UITableView *)tableView;
 - (UINavigationController *)owningNavigationController;

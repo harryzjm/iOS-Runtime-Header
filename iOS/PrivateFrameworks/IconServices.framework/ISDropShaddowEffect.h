@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IconServices/ISEffect-Protocol.h>
-
 @class IFColor, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ISDropShaddowEffect : NSObject <ISEffect>
+@interface ISDropShaddowEffect : NSObject
 {
     double _scale;
     double _blur;

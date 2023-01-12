@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <QuickLook/PHVideoScrubberViewInteractionDelegate-Protocol.h>
-
 @class NSString, PHVideoScrubberView, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface QLVideoScrubberView : UIView <PHVideoScrubberViewInteractionDelegate>
+@interface QLVideoScrubberView : UIView
 {
     _Bool _userInteractingWithScrubber;
     _Bool _touchGestureIsActive;

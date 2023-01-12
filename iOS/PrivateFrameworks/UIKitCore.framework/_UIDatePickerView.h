@@ -4,20 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegateInternal-Protocol.h>
-#import <UIKitCore/UIPickerViewDataSource-Protocol.h>
-#import <UIKitCore/UIPickerViewDelegate-Protocol.h>
-#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <UIKitCore/_UIControlEventsGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerCalendarTimeLabelDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerViewComponent-Protocol.h>
-#import <UIKitCore/_UIDatePickerWheelsTimeLabelDelegate-Protocol.h>
-#import <UIKitCore/_UIPassthroughScrollInteractionDelegate-Protocol.h>
+#import "UIPickerView.h"
 
 @class NSCalendar, NSLocale, NSString, UIColor, UIDatePicker, UIFont, UILabel, _UIControlEventsGestureRecognizer, _UIDatePickerDataModel, _UIDatePickerMode, _UIDatePickerNumericKeyboardViewController, _UIDatePickerWheelsTimeLabel, _UIPassthroughScrollInteraction;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerView <_UIDatePickerCalendarTimeLabelDelegate, _UIDatePickerWheelsTimeLabelDelegate, UIGestureRecognizerDelegateInternal, UIPopoverPresentationControllerDelegate, _UIPassthroughScrollInteractionDelegate, _UIControlEventsGestureRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, _UIDatePickerViewComponent>
+@interface _UIDatePickerView : UIPickerView
 {
     long long _loadingDate;
     _Bool _allowsZeroTimeInterval;
@@ -35,6 +27,7 @@ __attribute__((visibility("hidden")))
         unsigned int isPresentingManualKeyboard:1;
         unsigned int selectionBarTableHidden:1;
         unsigned int receivedTextInputUpdate:1;
+        unsigned int isPresentingOrDismissingKeyboard:1;
     } _datePickerFlags;
     _UIPassthroughScrollInteraction *_passthroughInteraction;
     UIDatePicker *_datePicker;
@@ -55,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)_hoursStringForHour:(long long)arg1;
 - (id)_minutesStringForHour:(long long)arg1 minutes:(long long)arg2;
 - (long long)_selectionBarRowInComponent:(long long)arg1;
-- (struct UIEdgeInsets)_appliedInsetsToEdgeOfContent;
+@property(readonly, nonatomic) struct UIEdgeInsets appliedInsetsToEdgeOfContent;
 - (_Bool)hasDefaultSize;
 - (_Bool)_updateDateOrTime;
 @property(readonly, nonatomic, getter=_amPmValue) long long amPmValue; // @dynamic amPmValue;
@@ -64,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)_selectedTextForCalendarUnit:(unsigned long long)arg1;
 @property(nonatomic) _Bool highlightsToday; // @dynamic highlightsToday;
 - (_Bool)staggerTimeIntervals;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)presentationControllerWillDismiss:(id)arg1;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
 - (void)_dismissManualKeyboard;
@@ -82,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (id)primaryFirstResponder;
 - (unsigned long long)_permittedArrowDirectionForKeyboardPopover;
 - (void)timeLabelWillBecomeFirstResponder:(id)arg1;
+- (_Bool)timeLabelCanBecomeFirstResponder:(id)arg1;
 - (_Bool)timeLabelShouldSuppressSoftwareKeyboard:(id)arg1;
 - (long long)keyboardTypeForTimeLabel:(id)arg1;
 - (void)timeLabel:(id)arg1 didUpdateText:(id)arg2;
@@ -146,6 +141,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateDateForNewDateRange;
 - (void)didChangeMaximumDate;
 - (void)didChangeMinimumDate;
+- (void)displaySelectedDateAnimated:(_Bool)arg1;
 - (void)didChangeDateFrom:(id)arg1 animated:(_Bool)arg2;
 - (void)_updateLocaleTimeZoneOrCalendar;
 - (void)didChangeCalendar;
@@ -156,8 +152,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
 - (_Bool)_showingDate;
 - (void)_doneLoadingDateOrTime;
-- (id)_orientationImageSuffix;
-- (id)pickerImageNamePrefix;
 - (double)_tableRowHeight;
 - (void)didReset;
 - (void)didChangeToday;

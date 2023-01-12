@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUICollectionViewCell.h"
+
 @class NSArray, NSMapTable, SKUIViewReusePool;
 
 __attribute__((visibility("hidden")))
-@interface SKUIViewReuseCollectionViewCell
+@interface SKUIViewReuseCollectionViewCell : SKUICollectionViewCell
 {
     NSMapTable *_allViewTextProperties;
     SKUIViewReusePool *_viewPool;

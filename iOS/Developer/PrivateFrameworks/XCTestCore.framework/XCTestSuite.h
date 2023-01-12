@@ -29,7 +29,7 @@
 @property(readonly) NSMutableDictionary *mutableActivityAggregateStatistics; // @synthesize mutableActivityAggregateStatistics=_mutableActivityAggregateStatistics;
 @property(retain) XCTestConfiguration *testConfiguration; // @synthesize testConfiguration=_testConfiguration;
 @property(copy) NSString *name; // @synthesize name=_name;
-- (id)_identifier;
+- (id)_xctTestIdentifier;
 - (void)removeTestsWithIdentifierInSet:(id)arg1;
 - (id)_initWithTestConfiguration:(id)arg1;
 - (void)_applyRandomExecutionOrderingWithGenerator:(CDUnknownBlockType)arg1;

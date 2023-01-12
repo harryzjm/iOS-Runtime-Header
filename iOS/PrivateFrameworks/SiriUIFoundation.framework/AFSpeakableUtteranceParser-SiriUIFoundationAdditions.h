@@ -10,6 +10,6 @@
 + (id)_domainsForStringWithFormat:(id)arg1;
 + (id)sruif_speakableUtteranceParserForCurrentLanguage;
 - (id)_builtInDomains;
-- (_Bool)sruif_hasExternalDomainsForStringWithFormat:(id)arg1;
+- (_Bool)sruif_hasExternalDomainsForStringWithFormat:(id)arg1 shouldRedactLog:(_Bool)arg2;
 @end
 

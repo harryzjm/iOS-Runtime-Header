@@ -5,20 +5,17 @@
 //
 
 #import <MDMClientLibrary/MDMClientProtocol-Protocol.h>
+#import <MDMClientLibrary/MDMSharedXPCProtocol-Protocol.h>
 #import <MDMClientLibrary/NSObject-Protocol.h>
 
 @class NSDictionary;
 
-@protocol MDMXPCProtocol <NSObject, MDMClientProtocol>
+@protocol MDMXPCProtocol <NSObject, MDMSharedXPCProtocol, MDMClientProtocol>
+- (void)unblockAppInstallsWithCompletion:(void (^)(NSError *))arg1;
+- (void)blockAppInstallsWithCompletion:(void (^)(NSError *))arg1;
+- (void)requestInstallOfAppsInRestoreWithCompletion:(void (^)(NSError *))arg1;
 - (void)processDeviceRequest:(NSDictionary *)arg1 encodeResponse:(_Bool)arg2 completion:(void (^)(NSError *, NSDictionary *, NSData *))arg3;
 - (void)uprootMDMWithCompletion:(void (^)(NSError *))arg1;
-- (void)reauthenticationCompleteWithCompletion:(void (^)(NSError *))arg1;
 - (void)migrateMDMWithContext:(int)arg1 completion:(void (^)(NSError *))arg2;
-- (void)retryNotNowWithCompletion:(void (^)(NSError *))arg1;
-- (void)simulatePushIfNetworkTetheredWithCompletion:(void (^)(NSError *))arg1;
-- (void)simulatePushWithCompletion:(void (^)(NSError *))arg1;
-- (void)scheduleTokenUpdateIfNecessaryWithCompletion:(void (^)(NSError *))arg1;
-- (void)scheduleTokenUpdateWithCompletion:(void (^)(NSError *))arg1;
-- (void)notifyNewConfigurationWithCompletion:(void (^)(NSError *))arg1;
 @end
 

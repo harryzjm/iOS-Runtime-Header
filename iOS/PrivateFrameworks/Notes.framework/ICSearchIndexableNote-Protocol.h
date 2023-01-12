@@ -7,10 +7,12 @@
 #import <Notes/ICSearchIndexable-Protocol.h>
 
 @class NSSet, NSString;
+@protocol ICFolderObject;
 
 @protocol ICSearchIndexableNote <ICSearchIndexable>
 @property(readonly, copy, nonatomic) NSString *identifier;
 @property(readonly, copy, nonatomic) NSString *accountName;
+@property(readonly, nonatomic) id <ICFolderObject> folder;
 @property(readonly, copy, nonatomic) NSString *folderNameForNoteList;
 @property(readonly, copy, nonatomic) NSString *folderName;
 @property(readonly, nonatomic) _Bool isUnsupported;
@@ -23,10 +25,12 @@
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, nonatomic) _Bool isPasswordProtected;
 @property(readonly, nonatomic) long long currentStatus;
+@property(readonly, nonatomic) _Bool isPinnable;
 @property(readonly, nonatomic) _Bool isPinned;
 @property(readonly, nonatomic) _Bool isDeletedOrInTrash;
 @property(readonly, nonatomic) _Bool hasUnreadChanges;
 @property(readonly, nonatomic) NSSet *noteCellKeyPaths;
 @property(readonly, nonatomic) _Bool isModernNote;
+@property(readonly, nonatomic) _Bool isSearchIndexableNote;
 @end
 

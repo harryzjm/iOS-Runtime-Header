@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPIdentifier, CKDPProtectionInfo, CKDPUserAlias, NSString;
 
-@interface CKDPUser : PBCodable <NSCopying>
+@interface CKDPUser : PBCodable
 {
     CKDPUserAlias *_alias;
     NSString *_firstName;

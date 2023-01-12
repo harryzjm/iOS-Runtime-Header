@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEPreferences-Protocol.h>
-
 @class NSString;
 @protocol AEPreferencePrimitives;
 
 __attribute__((visibility("hidden")))
-@interface AEConcretePreferences : NSObject <AEPreferences>
+@interface AEConcretePreferences : NSObject
 {
     id <AEPreferencePrimitives> _primitives;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=shouldDisableQuickNote) _Bool disableQuickNote;
+@property(nonatomic, getter=shouldDisableDictation) _Bool disableDictation;
 @property(nonatomic, getter=shouldElevateWindows) _Bool elevateWindows;
 @property(nonatomic, getter=shouldCaptureDisplays) _Bool captureDisplays;
 @property(nonatomic, getter=shouldDisableTrackpadLookup) _Bool disableTrackpadLookup;
@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=shouldScrubPasteboard) _Bool scrubPasteboard;
 @property(nonatomic, getter=shouldDisableContinuity) _Bool disableContinuity;
 @property(nonatomic, getter=shouldDisableSiri) _Bool disableSiri;
-@property(nonatomic, getter=shouldCreateAssessmentFile) _Bool createAssessmentFile;
 @property(nonatomic, getter=shouldPresentShields) _Bool presentShields;
 @property(nonatomic, getter=shouldEnterSandbox) _Bool enterSandbox;
 - (id)init;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSSecureCoding-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface REMeshBlendShapeBufferDescriptor : NSObject <NSSecureCoding>
+@interface REMeshBlendShapeBufferDescriptor : NSObject
 {
     unsigned int _blendShapesCount;
     unsigned int _float4sPerIndex;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/UISpringLoadedInteractionBehavior-Protocol.h>
-#import <MobileSafariUI/UISpringLoadedInteractionEffect-Protocol.h>
-
 @class NSString;
 @protocol UISpringLoadedInteractionBehavior, UISpringLoadedInteractionEffect;
 
 __attribute__((visibility("hidden")))
-@interface TabCollectionViewSpringLoadingBehavior : NSObject <UISpringLoadedInteractionBehavior, UISpringLoadedInteractionEffect>
+@interface TabCollectionViewSpringLoadingBehavior : NSObject
 {
     id <UISpringLoadedInteractionBehavior> _behavior;
     id <UISpringLoadedInteractionEffect> _effect;

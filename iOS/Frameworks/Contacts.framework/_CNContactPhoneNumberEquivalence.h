@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/_CNContactHandleStringEquivalenceStrategy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _CNContactPhoneNumberEquivalence : NSObject <_CNContactHandleStringEquivalenceStrategy>
+@interface _CNContactPhoneNumberEquivalence : NSObject
 {
     NSString *_rawString;
     struct {

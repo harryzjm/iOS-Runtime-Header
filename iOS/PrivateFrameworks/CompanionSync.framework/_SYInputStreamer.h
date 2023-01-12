@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CompanionSync/NSStreamDelegate-Protocol.h>
-#import <CompanionSync/_SYStreamPropertyProxying-Protocol.h>
-
 @class NSMutableArray, NSString, SYCompressedFileInputStream;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface _SYInputStreamer : NSObject <NSStreamDelegate, _SYStreamPropertyProxying>
+@interface _SYInputStreamer : NSObject
 {
     SYCompressedFileInputStream *_stream;
     NSMutableArray *_items;

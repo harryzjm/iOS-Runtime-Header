@@ -9,6 +9,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)primaryInferenceNetworkDescriptorForVNInferenceNetworkIdentifierFaceprint_3_1_0;
++ (id)availableVNInferenceNetworkIdentifierFaceprintVersions;
++ (id)inferenceNetworkIdentifiers;
 + (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 + (const void *)modelVersionForOptions:(id)arg1;
 - (_Bool)_isFaceprintJunk:(shared_ptr_0a6daad2)arg1;

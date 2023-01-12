@@ -7,8 +7,10 @@
 #import <XCTAutomationSupport/NSObject-Protocol.h>
 
 @class NSXPCConnection;
+@protocol XCTInternalEntitlementChecking;
 
 @protocol XCTConnectionAccepting <NSObject>
+@property __weak id <XCTInternalEntitlementChecking> internalEntitlementChecker;
 - (_Bool)acceptNewConnection:(NSXPCConnection *)arg1;
 @end
 

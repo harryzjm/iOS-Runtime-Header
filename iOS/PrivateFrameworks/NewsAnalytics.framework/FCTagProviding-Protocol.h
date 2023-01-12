@@ -7,10 +7,16 @@
 #import <NewsAnalytics/NFCopying-Protocol.h>
 #import <NewsAnalytics/NSObject-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCPaywallConfiguration, FCPurchaseOfferableConfiguration, NSArray, NSData, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
-@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagProviding, FCTagStocksFields, FCTopicProviding;
+@class FCAssetHandle, FCColor, FCPaywallConfiguration, FCPurchaseOfferableConfiguration, FCSportsRecommendationMappings, NSArray, NSData, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
+@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCSportsProviding, FCTagProviding, FCTagStocksFields, FCTopicProviding;
 
 @protocol FCTagProviding <NSObject, NFCopying>
+@property(nonatomic, readonly) FCSportsRecommendationMappings *sportsRecommendationMappings;
+@property(nonatomic, readonly) NSData *sportsRecommendationMappingsJSON;
+- (id <FCTagProviding>)setTitleDisplaySuffixOverride:(NSString *)arg1;
+- (id <FCTagProviding>)setTitleDisplayPrefixOverride:(NSString *)arg1;
+@property(nonatomic, copy) NSString *titleDisplaySuffix;
+@property(nonatomic, copy) NSString *titleDisplayPrefix;
 @property(nonatomic, readonly) FCPaywallConfiguration *paidBundlePaywallConfiguration;
 - (void)ppt_overrideFeedID:(NSString *)arg1;
 - (NSURL *)authorizationURL;
@@ -26,6 +32,7 @@
 @property(nonatomic, readonly) NSDate *publisherSpecifiedArticleIDsModifiedDate;
 @property(nonatomic, readonly) NSArray *publisherSpecifiedArticleIDs;
 @property(nonatomic, readonly) NSString *articleRecirculationConfigJSON;
+@property(nonatomic, readonly) _Bool isSports;
 @property(nonatomic, readonly) _Bool isMagazine;
 @property(nonatomic, readonly) _Bool isNewspaper;
 @property(nonatomic, readonly) _Bool isSensitiveTopic;
@@ -39,6 +46,8 @@
 @property(nonatomic, readonly) unsigned long long groupingEligibility;
 @property(nonatomic, readonly) NTPBPublisherPaidDescriptionStrings *publisherPaidDescriptionStrings;
 @property(nonatomic, readonly) _Bool isBlockedExplicitContent;
+@property(nonatomic, readonly) FCAssetHandle *nameImageLargeMaskAssetHandle;
+@property(nonatomic, readonly) FCAssetHandle *nameImageLargeAssetHandle;
 @property(nonatomic, readonly) FCAssetHandle *nameImageCompactAssetHandle;
 @property(nonatomic, readonly) FCAssetHandle *nameImageMaskWidgetHQAssetHandle;
 @property(nonatomic, readonly) FCAssetHandle *nameImageMaskWidgetLQAssetHandle;
@@ -50,6 +59,8 @@
 @property(nonatomic, readonly) NSString *publisherPaidWebAccessURL;
 @property(nonatomic, readonly) NSString *publisherPaidVerificationURL;
 @property(nonatomic, readonly) NSString *publisherPaidAuthorizationURL;
+@property(nonatomic, readonly) double subscriptionRate;
+@property(nonatomic, readonly) NSString *superfeedConfigResourceID;
 @property(nonatomic, readonly) NSString *magazineGenre;
 @property(nonatomic, readonly) NSString *subtitle;
 @property(nonatomic, readonly) _Bool isNotificationEnabled;
@@ -66,6 +77,7 @@
 @property(nonatomic, readonly) FCAssetHandle *coverImageAssetHandle;
 @property(nonatomic, readonly) _Bool isSubscribable;
 @property(nonatomic, readonly) NSString *primaryAudience;
+@property(nonatomic, readonly) NSString *highlightsArticleListID;
 @property(nonatomic, readonly) NSString *replacementID;
 @property(nonatomic, readonly) _Bool isExplicitContent;
 @property(nonatomic, readonly) _Bool isDeprecated;
@@ -74,9 +86,13 @@
 @property(nonatomic, readonly) NSString *language;
 @property(nonatomic, readonly) NSString *versionKey;
 @property(nonatomic, readonly) NSString *nameCompact;
+@property(nonatomic, readonly) NSString *groupName;
+@property(nonatomic, readonly) NSString *compactDisplayName;
+@property(nonatomic, readonly) NSString *displayName;
 @property(nonatomic, readonly) NSString *name;
 @property(nonatomic, readonly) NSString *identifier;
 @property(nonatomic, readonly) NSDate *loadDate;
+@property(nonatomic, readonly) id <FCSportsProviding> asSports;
 @property(nonatomic, readonly) id <FCTopicProviding> asTopic;
 @property(nonatomic, readonly) id <FCSectionProviding> asSection;
 @property(nonatomic, readonly) id <FCChannelProviding> asChannel;

@@ -13,15 +13,15 @@ __attribute__((visibility("hidden")))
 {
     NSDictionary *_state;
     NSDictionary *_observers;
-    _Bool _isWriting;
     _Bool _disconnected;
     NSString *_suite;
     NSSet *_clusters;
+    long long _outstandingWriteCount;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool disconnected; // @synthesize disconnected=_disconnected;
-@property(nonatomic) _Bool isWriting; // @synthesize isWriting=_isWriting;
+@property(nonatomic) long long outstandingWriteCount; // @synthesize outstandingWriteCount=_outstandingWriteCount;
 @property(readonly, copy, nonatomic) NSSet *clusters; // @synthesize clusters=_clusters;
 @property(readonly, copy, nonatomic) NSString *suite; // @synthesize suite=_suite;
 @property(readonly, copy, nonatomic) NSDictionary *state; // @dynamic state;

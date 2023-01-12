@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <WorkflowEditor/WFHomeManagerEventObserver-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC14WorkflowEditorP33_4CEE286D1DD9DB9F2AB826526613E6F211HomeManager : NSObject <WFHomeManagerEventObserver>
+@interface _TtC14WorkflowEditorP33_4CEE286D1DD9DB9F2AB826526613E6F211HomeManager : NSObject
 {
     MISSING_TYPE *manager;
 }

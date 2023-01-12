@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNModelFile-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VNModelFileImpl : NSObject <VNModelFile>
+@interface VNModelFileImpl : NSObject
 {
     const struct mapped_model_file *m_impl;
 }

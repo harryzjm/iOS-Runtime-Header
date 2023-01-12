@@ -49,6 +49,13 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+typedef struct {
     double _field1;
     double _field2;
     double _field3;
@@ -86,6 +93,11 @@ typedef struct {
         CDStruct_198678f7 _field1;
         CDStruct_198678f7 _field2;
         CDStruct_198678f7 _field3;
+        struct {
+            CDStruct_198678f7 _field1;
+            long long _field2;
+        } _field4;
+        char _field5;
     } _field5;
     long long _field6;
     struct {
@@ -110,25 +122,27 @@ typedef struct {
         char _field1;
         unsigned char _field2;
         CDStruct_198678f7 _field3;
+        char _field4;
         union {
             char _field1;
             char _field2;
             char _field3;
             char _field4;
-        } _field4;
+        } _field5;
         union {
             double _field1;
             double _field2;
             char _field3;
-        } _field5;
+        } _field6;
     } _field11;
     struct {
         long long _field1;
-        float _field2;
-        double _field3;
+        long long _field2;
+        float _field3;
         double _field4;
         double _field5;
         double _field6;
+        double _field7;
     } _field12;
-} CDStruct_c336d689;
+} CDStruct_60782414;
 

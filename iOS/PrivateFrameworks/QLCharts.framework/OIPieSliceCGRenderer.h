@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <QLCharts/OIPieSliceRenderer-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface OIPieSliceCGRenderer : NSObject <OIPieSliceRenderer>
+@interface OIPieSliceCGRenderer : NSObject
 {
     struct __OIChart *_chart;
 }

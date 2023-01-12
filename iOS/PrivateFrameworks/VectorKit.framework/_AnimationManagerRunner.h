@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKAnimationRunner-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _AnimationManagerRunner : NSObject <VKAnimationRunner>
+@interface _AnimationManagerRunner : NSObject
 {
     void *_animationManager;
 }

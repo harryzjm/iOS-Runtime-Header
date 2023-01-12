@@ -6,26 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventStreamDeferralAssertion-Protocol.h>
-
-@class MPCPlaybackEngineEventStream, NSString;
+@class MPCPlaybackEngineEventStream, MSVBlockGuard, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCPlaybackEngineEventStreamDeferralAssertion : NSObject <MPCPlaybackEngineEventStreamDeferralAssertion>
+@interface _MPCPlaybackEngineEventStreamDeferralAssertion : NSObject
 {
+    struct os_unfair_lock_s _lock;
     _Bool _invalidated;
+    NSString *_identifier;
     MPCPlaybackEngineEventStream *_eventStream;
     NSString *_reason;
+    MSVBlockGuard *_timeoutGuard;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) MSVBlockGuard *timeoutGuard; // @synthesize timeoutGuard=_timeoutGuard;
 @property(readonly, nonatomic) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) __weak MPCPlaybackEngineEventStream *eventStream; // @synthesize eventStream=_eventStream;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)invalidate;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithEventStream:(id)arg1 reason:(id)arg2;
+- (id)initWithEventStream:(id)arg1 reason:(id)arg2 timeout:(double)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

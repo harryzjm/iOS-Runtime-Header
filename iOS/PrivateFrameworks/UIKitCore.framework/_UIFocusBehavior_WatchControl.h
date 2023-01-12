@@ -6,45 +6,51 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFocusBehavior-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusBehavior_WatchControl : NSObject <_UIFocusBehavior>
+@interface _UIFocusBehavior_WatchControl : NSObject
 {
 }
 
 + (_Bool)watchControlIsEnabled;
 + (id)sharedInstance;
 - (_Bool)supportsLinearMovementDebugOverlay;
+- (_Bool)shouldCallAccessibilityOverrides;
 - (_Bool)tabBasedMovementLoops;
 - (long long)skipKeyCommandsForKeyEvents;
 - (long long)deliverKeyEventsToFocusEngine;
 - (_Bool)shouldSupressIndirectMovementOnSelect;
 - (_Bool)shouldEnableFocusOnSelect;
+- (long long)pageButtonScrollingStyle;
 - (_Bool)supportsArrowKeys;
 - (_Bool)supportsGameControllers;
 - (_Bool)shouldConvertIndirectTapsIntoArrowKeys;
+- (_Bool)supportsIndirectRotaryMovement;
 - (_Bool)supportsIndirectPanningMovement;
 - (_Bool)showsFocusRingForItem:(id)arg1;
 - (_Bool)supportsParentFocusRings;
 - (long long)focusRingVisibility;
 - (long long)buttonSelectionMode;
+- (_Bool)refinesIndexBarTargetContentOffset;
+- (_Bool)isContainerEligibleForFocusUpdateSearchRoot:(id)arg1;
+- (double)stabilizedLinearFocusMovementTimeout;
 - (_Bool)wantsTreeLocking;
 - (_Bool)throttlesProgrammaticFocusUpdates;
 - (long long)focusCastingMode;
 - (_Bool)supportsClipToBounds;
 - (_Bool)supportViewTransparencyAndMultipleWindows;
-- (_Bool)treatFocusableItemAsLeaf;
 - (_Bool)treatFirstAndLastHeadingsAsGlobal;
 - (_Bool)defaultValueForSelectionFollowsFocusInTableView:(id)arg1;
 - (_Bool)defaultValueForSelectionFollowsFocusInCollectionView:(id)arg1;
 - (_Bool)preventsCellFocusabilityWhileEditing;
 - (long long)cellFocusability;
 - (_Bool)shouldUseAccessibilityCompareForItemGeometry;
+- (long long)scrollingMode;
+- (_Bool)useDifferentialScrollTrigger;
 - (_Bool)enforcesStrictTargetContentOffsetAdjustmentBehavior;
-- (_Bool)supportsFocusGroups;
+- (unsigned long long)focusGroupContainmentBehavior;
+- (unsigned long long)focusGroupMovementBehavior;
 - (long long)indirectMovementPriority;
 - (_Bool)supportsTabKey;
 - (_Bool)includesContentScrollViewInPreferredFocusEnvironments;

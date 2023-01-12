@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *upsellView;
     MISSING_TYPE *scrollView;
     MISSING_TYPE *transactionView;
+    MISSING_TYPE *sessionDidEndNotification;
     MISSING_TYPE *debugUIOverlay;
 }
 

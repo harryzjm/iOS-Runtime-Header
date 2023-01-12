@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ReminderKit/TTMergeableStringIDTracker-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface TTMergeableStringSelection : NSObject <TTMergeableStringIDTracker>
+@interface TTMergeableStringSelection : NSObject
 {
     struct vector<std::pair<TopoID, TopoID>, std::allocator<std::pair<TopoID, TopoID>>> _selectionRanges;
     unsigned long long _selectionAffinity;

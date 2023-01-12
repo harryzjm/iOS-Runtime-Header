@@ -8,6 +8,7 @@
 {
 }
 
++ (id)mixableObjectClasses;
 - (void)acceptVisitor:(id)arg1;
 - (id)defaultBuildChunkTitle;
 - (id)typeName;

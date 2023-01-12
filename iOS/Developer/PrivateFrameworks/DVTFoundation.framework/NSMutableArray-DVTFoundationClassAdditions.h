@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (DVTFoundationClassAdditions)
+- (id)dvt_uniqueStringToAddToArray:(id)arg1;
 - (void)dvt_reverseObjects;
 - (void)dvt_recursivelyRemoveAllObjects;
 - (_Bool)dvt_uniqueSortedInsert:(id)arg1 withComparator:(CDUnknownBlockType)arg2;
@@ -21,7 +22,7 @@
 - (void)dvt_stablePartitionObjectsPassingIsSuffixTest:(CDUnknownBlockType)arg1;
 - (void)dvt_keepObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (void)dvt_removeObjectsIdenticalToObjectsInArray:(id)arg1;
-- (void)dvt_addObjectsFromCollection:(id)arg1;
+- (void)dvt_addObjectsFromSet:(id)arg1;
 - (void)dvt_addObjectsFromArrayIfAbsent:(id)arg1;
 - (void)dvt_addObjectIfNonNil:(id)arg1;
 - (void)dvt_insertObjects:(id)arg1 atIndex:(long long)arg2;

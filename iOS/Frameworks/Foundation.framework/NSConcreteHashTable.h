@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSSecureCoding-Protocol.h>
+#import "NSHashTable.h"
 
 __attribute__((visibility("hidden")))
-@interface NSConcreteHashTable <NSSecureCoding>
+@interface NSConcreteHashTable : NSHashTable
 {
     struct NSSlice slice;
     unsigned long long count;
     unsigned long long capacity;
-    unsigned long long options;
     unsigned long long mutations;
+    unsigned int options:63;
+    unsigned int hasDynamicSlice:1;
 }
 
 + (_Bool)supportsSecureCoding;

@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFCoreSpotlightCopyItem.h>
 
 @interface SFCoreSpotlightCopyItem (SearchUICopyCommand)
-- (void)searchUI_copyItem;
+- (void)searchUI_copyItemToPasteboard;
 @end
 

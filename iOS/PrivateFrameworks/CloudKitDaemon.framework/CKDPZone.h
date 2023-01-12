@@ -6,22 +6,22 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
+@class CKDPProtectionInfo, CKDPRecordStableUrl, CKDPRecordZoneIdentifier, CKDPShareIdentifier, CKDPStorageExpiration, NSMutableArray;
 
-@class CKDPProtectionInfo, CKDPRecordStableUrl, CKDPRecordZoneIdentifier, CKDPShareIdentifier, NSMutableArray;
-
-@interface CKDPZone : PBCodable <NSCopying>
+@interface CKDPZone : PBCodable
 {
     CKDPProtectionInfo *_protectionInfo;
     NSMutableArray *_protectionInfoKeysToRemoves;
     CKDPProtectionInfo *_recordProtectionInfo;
     CKDPShareIdentifier *_shareId;
     CKDPRecordStableUrl *_stableUrl;
+    CKDPStorageExpiration *_storageExpiration;
     CKDPRecordZoneIdentifier *_zoneIdentifier;
 }
 
 + (Class)protectionInfoKeysToRemoveType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDPStorageExpiration *storageExpiration; // @synthesize storageExpiration=_storageExpiration;
 @property(retain, nonatomic) NSMutableArray *protectionInfoKeysToRemoves; // @synthesize protectionInfoKeysToRemoves=_protectionInfoKeysToRemoves;
 @property(retain, nonatomic) CKDPShareIdentifier *shareId; // @synthesize shareId=_shareId;
 @property(retain, nonatomic) CKDPRecordStableUrl *stableUrl; // @synthesize stableUrl=_stableUrl;
@@ -37,6 +37,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasStorageExpiration;
 - (id)protectionInfoKeysToRemoveAtIndex:(unsigned long long)arg1;
 - (unsigned long long)protectionInfoKeysToRemovesCount;
 - (void)addProtectionInfoKeysToRemove:(id)arg1;

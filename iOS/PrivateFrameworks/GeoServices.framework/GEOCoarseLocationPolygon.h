@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOCoarseLocationRing, NSMutableArray, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOCoarseLocationPolygon : PBCodable <NSCopying>
+@interface GEOCoarseLocationPolygon : PBCodable
 {
     PBDataReader *_reader;
     NSMutableArray *_holes;

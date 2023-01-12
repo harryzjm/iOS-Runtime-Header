@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCGamepadEvent-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GCGamepadEventHID : NSObject <_GCGamepadEvent>
+@interface _GCGamepadEventHID : NSObject
 {
     struct __IOHIDEvent *_extendedEvent;
     struct __IOHIDEvent *_event;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct __IOHIDEvent *event; // @synthesize event=_event;
 - (float)floatValueForElement:(long long)arg1;
 - (_Bool)hasValidValueForElement:(long long)arg1;
+@property(readonly) unsigned long long timestamp;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithHIDEvent:(struct __IOHIDEvent *)arg1;

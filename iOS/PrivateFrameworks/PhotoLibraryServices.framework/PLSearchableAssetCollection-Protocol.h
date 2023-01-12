@@ -6,18 +6,20 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class NSDate, NSString, PSICollection;
 
 @protocol PLSearchableAssetCollection <NSObject>
-@property(readonly, nonatomic) unsigned long long numberOfAssets;
+@property(readonly, nonatomic) NSDate *keyAssetCreationDateShared;
+@property(readonly, nonatomic) NSString *keyAssetUUIDShared;
+@property(readonly, nonatomic) NSDate *keyAssetCreationDatePrivate;
+@property(readonly, nonatomic) NSString *keyAssetUUIDPrivate;
+@property(readonly, nonatomic) unsigned long long assetsCountShared;
+@property(readonly, nonatomic) unsigned long long assetsCountPrivate;
 @property(readonly, nonatomic) NSDate *searchableEndDate;
 @property(readonly, nonatomic) NSDate *searchableStartDate;
-@property(readonly, nonatomic) NSDate *keyAssetCreationDate;
-@property(readonly, nonatomic) NSString *keyAssetUUID;
 @property(readonly, nonatomic) NSString *subtitle;
 @property(readonly, nonatomic) NSString *title;
-- (NSArray *)assetUUIDsForPreviewWithCount:(unsigned long long)arg1;
-- (unsigned long long)searchIndexCategory;
+- (void)addSearchIndexContentsToCollection:(PSICollection *)arg1;
 - (NSString *)searchIndexContents;
 - (NSString *)uuid;
 @end

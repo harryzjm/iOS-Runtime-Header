@@ -6,12 +6,9 @@
 
 #import <CoreRoutine/RTHint.h>
 
-#import <coreroutine/RTCoreDataReadable-Protocol.h>
-#import <coreroutine/RTCoreDataWritable-Protocol.h>
-
 @class NSString;
 
-@interface RTHint (RTCoreDataTransformable) <RTCoreDataReadable, RTCoreDataWritable>
+@interface RTHint (RTCoreDataTransformable)
 + (id)createWithHintMO:(id)arg1;
 + (id)createWithManagedObject:(id)arg1;
 + (long long)convertHintSource:(int)arg1;

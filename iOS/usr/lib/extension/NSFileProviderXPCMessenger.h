@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSFileProviderXPCInterface-Protocol.h>
-
 @class NSFileProviderProxy, NSString;
 @protocol NSFileProvider, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface NSFileProviderXPCMessenger : NSObject <NSFileProviderXPCInterface>
+@interface NSFileProviderXPCMessenger : NSObject
 {
     id <NSFileProvider> _fileProvider;
     NSObject<OS_dispatch_queue> *_queue;
@@ -22,11 +20,11 @@ __attribute__((visibility("hidden")))
 - (void)collectDebuggingInformationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)movingItemAtURL:(id)arg1 requiresProvidingWithDestinationURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (oneway void)observeEndOfWriteAtURL:(id)arg1 forClaimWithID:(id)arg2 fromProcessWithIdentifier:(int)arg3;
-- (oneway void)observePresentationChangeOfKind:(id)arg1 forPresenterWithID:(id)arg2 fromProcessWithIdentifier:(int)arg3 observedUbiquityAttributes:(id)arg4 url:(id)arg5 newURL:(id)arg6;
+- (oneway void)observePresentationChangeOfKind:(id)arg1 forPresenterOfURL:(id)arg2 withInfo:(id)arg3;
 - (void)providePhysicalItemForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)cancelProvidingItemAtURL:(id)arg1 forClaimWithID:(id)arg2;
-- (void)provideItemAtURL:(id)arg1 forClaimWithID:(id)arg2 madeByClientWithProcessIdentifier:(int)arg3 options:(unsigned long long)arg4 kernelInfo:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)_makeProvider:(id)arg1 provideItemAtURL:(id)arg2 options:(unsigned long long)arg3 forAccessClaimWithID:(id)arg4 processIdentifier:(int)arg5 kernelInfo:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)provideItemAtURL:(id)arg1 withInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_makeProvider:(id)arg1 provideItemAtURL:(id)arg2 withInfo:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)checkInProviderWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (void)dealloc;

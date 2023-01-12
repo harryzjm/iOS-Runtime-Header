@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIActionSheetPresentationControllerDismissActionView-Protocol.h>
-
 @class NSString, UIButton;
 
 __attribute__((visibility("hidden")))
-@interface UIActionSheetiOSDismissActionView <UIActionSheetPresentationControllerDismissActionView>
+@interface UIActionSheetiOSDismissActionView
 {
     _Bool _usesShortCompactVerticalLayout;
     UIButton *_dismissButton;

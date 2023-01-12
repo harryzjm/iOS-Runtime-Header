@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSUserActivityDelegate-Protocol.h>
-
 @class NSProgress, NSString;
 @protocol UIActivityContinuationManagerApplicationContext;
 
 __attribute__((visibility("hidden")))
-@interface UIActivityContinuationManager : NSObject <NSUserActivityDelegate>
+@interface UIActivityContinuationManager : NSObject
 {
     id <UIActivityContinuationManagerApplicationContext> _context;
     NSString *_currentActivityContinuationType;
@@ -30,8 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)userActivityWillSave:(id)arg1;
 - (void)_userActivityWillSave:(id)arg1;
 - (_Bool)activityContinuationsAreBeingTracked;
-- (id)activityContinuationDictionaryWithAction:(id)arg1;
-- (id)activityContinuationDictionaryWithAction:(id)arg1 sourceApplication:(id)arg2;
+- (id)activityContinuationDictionaryWithAction:(id)arg1 sourceApplication:(id)arg2 originatingProcess:(id)arg3;
 - (void)handleActivityContinuation:(id)arg1 isSuspended:(_Bool)arg2;
 - (void)_clearCurrentActivityContinuationCancelingProgress:(_Bool)arg1;
 - (id)_fetchUserActivityWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

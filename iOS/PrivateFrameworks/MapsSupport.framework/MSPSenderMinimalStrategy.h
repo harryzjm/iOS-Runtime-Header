@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
     _Bool _needToSendInit;
 }
 
-- (void)destinationUpdated:(id)arg1;
+- (void)waypointsUpdated:(id)arg1;
 - (void)etaUpdated:(id)arg1;
 - (void)addParticipants:(id)arg1;
 - (void)_sendDestinationIfNeeded;

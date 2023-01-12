@@ -6,12 +6,12 @@
 
 #import <WorkflowEditor/NSObject-Protocol.h>
 
-@class NSString, UIResponder, UIView, WFAction, WFVariableEditingOptions;
+@class NSString, WFAction, WFVariableEditingOptions;
 @protocol WFVariableProvider;
 
 @protocol WFVariableUIDelegate <NSObject>
-- (void)revealAction:(WFAction *)arg1 fromSourceView:(UIView *)arg2 preScrollHandler:(void (^)(void))arg3 goBackHandler:(void (^)(void))arg4 scrolledAwayHandler:(void (^)(void))arg5;
-- (void)showActionOutputPickerFromSourceResponder:(UIResponder *)arg1 allowExtensionInput:(_Bool)arg2 variableProvider:(id <WFVariableProvider>)arg3 completionHandler:(void (^)(WFVariable *))arg4;
+- (void)revealAction:(WFAction *)arg1 preScrollHandler:(void (^)(void))arg2 goBackHandler:(void (^)(void))arg3 scrolledAwayHandler:(void (^)(void))arg4;
+- (void)showActionOutputPickerAllowingShortcutInput:(_Bool)arg1 variableProvider:(id <WFVariableProvider>)arg2 completionHandler:(void (^)(WFVariable *))arg3;
 
 @optional
 - (void)showVariableEditorWithOptions:(WFVariableEditingOptions *)arg1 fromSourceRect:(struct CGRect)arg2;

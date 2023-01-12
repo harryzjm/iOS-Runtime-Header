@@ -6,7 +6,10 @@
 
 #import <Foundation/NSDictionary.h>
 
+@class NSString;
+
 @interface NSDictionary (MRAdditions)
 - (_Bool)MR_isEqualToNowPlayingInfo:(id)arg1;
+@property(readonly, nonatomic) NSString *mr_formattedDebugDescription;
 @end
 

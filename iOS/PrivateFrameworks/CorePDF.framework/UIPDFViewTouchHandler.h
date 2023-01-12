@@ -6,12 +6,10 @@
 
 #import <UIKit/UIResponder.h>
 
-#import <CorePDF/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UILongPressGestureRecognizer, UIMenuController, UIPDFMagnifierController, UIPDFPageView, UIPDFSelectionController, UITapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface UIPDFViewTouchHandler : UIResponder <UIGestureRecognizerDelegate>
+@interface UIPDFViewTouchHandler : UIResponder
 {
     UIPDFPageView *_pdfPageView;
     UITapGestureRecognizer *_doubleTapRecognizer;

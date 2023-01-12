@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPContentInsettable-Protocol.h>
-#import <LinkPresentation/LPTextStyleable-Protocol.h>
-
-@class LPTextViewStyle, NSAttributedString, NSRegularExpression, UILabel, UIVisualEffectView;
+@class LPTextViewStyle, NSAttributedString, NSRegularExpression, NSString, UILabel, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface LPTextView <LPTextStyleable, LPContentInsettable>
+@interface LPTextView
 {
     UILabel *_textView;
     UILabel *_coloredGlyphsView;
@@ -29,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSRegularExpression *emphasizedTextExpression; // @synthesize emphasizedTextExpression=_emphasizedTextExpression;
 @property(nonatomic) long long overrideMaximumNumberOfLines; // @synthesize overrideMaximumNumberOfLines=_overrideMaximumNumberOfLines;
+- (id)subtitleButton;
 - (id)lastBaselineAnchor;
 - (id)firstBaselineAnchor;
 - (void)applyAttributedString:(id)arg1;
@@ -38,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutComponentView;
 - (long long)effectiveMaximumNumberOfLines;
+- (struct CGRect)textRect;
 - (struct UIEdgeInsets)effectiveInsets;
 - (long long)computedNumberOfLines;
 - (double)descender;
@@ -52,6 +51,12 @@ __attribute__((visibility("hidden")))
 - (void)_buildSubviewsIfNeeded;
 - (id)initWithHost:(id)arg1 text:(id)arg2 style:(id)arg3;
 - (id)initWithHost:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

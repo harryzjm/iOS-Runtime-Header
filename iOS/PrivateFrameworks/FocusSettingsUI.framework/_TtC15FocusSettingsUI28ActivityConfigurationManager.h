@@ -16,6 +16,7 @@
     MISSING_TYPE *$__lazy_storage_$_configurationService;
     MISSING_TYPE *$__lazy_storage_$_globalConfigurationService;
     MISSING_TYPE *$__lazy_storage_$_meDeviceService;
+    MISSING_TYPE *modeConfigurationUpdateHandler;
     MISSING_TYPE *$__lazy_storage_$_modeConfiguration;
     MISSING_TYPE *_sortedAppsCache;
 }

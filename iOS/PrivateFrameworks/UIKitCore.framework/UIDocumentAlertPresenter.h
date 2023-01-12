@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIAlertViewDelegate-Protocol.h>
-
 @class NSError, NSString, UIAlertView;
 
 __attribute__((visibility("hidden")))
-@interface UIDocumentAlertPresenter : NSObject <UIAlertViewDelegate>
+@interface UIDocumentAlertPresenter : NSObject
 {
     CDUnknownBlockType _completionHandler;
     NSError *_error;

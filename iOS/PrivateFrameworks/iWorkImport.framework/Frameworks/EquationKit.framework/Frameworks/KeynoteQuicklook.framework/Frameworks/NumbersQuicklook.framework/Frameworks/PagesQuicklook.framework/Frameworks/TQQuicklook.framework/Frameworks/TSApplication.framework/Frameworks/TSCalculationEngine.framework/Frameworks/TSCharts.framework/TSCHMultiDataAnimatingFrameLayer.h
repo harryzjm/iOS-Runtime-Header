@@ -6,9 +6,7 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <TSCharts/TSCHMultiDataAnimatingFrameLayerProtocol-Protocol.h>
-
-@interface TSCHMultiDataAnimatingFrameLayer : CALayer <TSCHMultiDataAnimatingFrameLayerProtocol>
+@interface TSCHMultiDataAnimatingFrameLayer : CALayer
 {
     struct CGRect _presentationBounds;
     struct CGPoint _presentationPosition;

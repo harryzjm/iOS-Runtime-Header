@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CompanionSync/SYChange-Protocol.h>
-
 @class NSString;
 @protocol SYObject;
 
 __attribute__((visibility("hidden")))
-@interface SYObjectWrapper : NSObject <SYChange>
+@interface SYObjectWrapper : NSObject
 {
     long long _type;
     id <SYObject> _wrappedObject;

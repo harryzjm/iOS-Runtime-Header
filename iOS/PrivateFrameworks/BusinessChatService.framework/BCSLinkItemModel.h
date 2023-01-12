@@ -6,16 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSItemIdentifying-Protocol.h>
-#import <BusinessChatService/BCSLinkItemDescribing-Protocol.h>
-#import <BusinessChatService/BSDescriptionProviding-Protocol.h>
-#import <BusinessChatService/NSCopying-Protocol.h>
-#import <BusinessChatService/NSSecureCoding-Protocol.h>
-
 @class BCSLinkItemIdentifier, NSArray, NSDictionary, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface BCSLinkItemModel : NSObject <BSDescriptionProviding, BCSLinkItemDescribing, BCSItemIdentifying, NSCopying, NSSecureCoding>
+@interface BCSLinkItemModel : NSObject
 {
     NSURL *_linkURL;
     NSString *_bundleID;

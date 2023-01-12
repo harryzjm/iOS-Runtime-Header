@@ -6,11 +6,9 @@
 
 #import <CFNetwork/NSURLSession.h>
 
-#import <MobileSafariUI/ReadingListMetadataProvider-Protocol.h>
-
 @class NSString;
 
-@interface NSURLSession (ReadingListMetadataFetcherAdditions) <ReadingListMetadataProvider>
+@interface NSURLSession (ReadingListMetadataFetcherAdditions)
 - (void)fetchThumbnailForBookmark:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 // Remaining properties

@@ -7,9 +7,10 @@
 #import <RunningBoard/NSObject-Protocol.h>
 
 @class NSObject, RBProcess;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, RBTimeProvidingEvent;
 
 @protocol RBTimeProviding <NSObject>
+- (id <RBTimeProvidingEvent>)executeWithCancellingAfter:(double)arg1 onQueue:(NSObject<OS_dispatch_queue> *)arg2 block:(void (^)(void))arg3;
 - (void)executeAfter:(double)arg1 onQueue:(NSObject<OS_dispatch_queue> *)arg2 block:(void (^)(void))arg3;
 - (double)startTimeForProcess:(RBProcess *)arg1;
 - (double)currentTime;

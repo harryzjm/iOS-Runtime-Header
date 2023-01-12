@@ -102,6 +102,7 @@
 - (_Bool)_uikit_variesByTraitCollections;
 - (void)_applyTraitStorageRecordsForTraitCollection:(id)arg1;
 @property(retain, getter=_traitStorageList, setter=_setTraitStorageList:) _UITraitStorageList *traitStorageList;
+- (_Bool)__isKindOfUIResponder;
 - (id)_shortMethodDescription;
 - (id)_methodDescription;
 - (id)__methodDescriptionForClass:(Class)arg1;
@@ -111,6 +112,7 @@
 - (id)__ivarDescriptionForClass:(Class)arg1;
 @property(readonly, nonatomic) UIDescriptionBuilder *_ui_descriptionBuilder;
 - (id)className;
+- (_Bool)__isKindOfUIScrollView;
 - (_Bool)__isKindOfUIView;
 @end
 

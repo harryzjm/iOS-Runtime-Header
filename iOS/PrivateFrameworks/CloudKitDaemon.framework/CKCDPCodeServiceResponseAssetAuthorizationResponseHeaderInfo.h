@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKCDPCodeServiceResponseAssetAuthorizationResponseHeaderInfo : PBCodable <NSCopying>
+@interface CKCDPCodeServiceResponseAssetAuthorizationResponseHeaderInfo : PBCodable
 {
     NSString *_headerKey;
     NSString *_headerValue;

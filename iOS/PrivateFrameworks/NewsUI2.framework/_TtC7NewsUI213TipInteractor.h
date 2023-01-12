@@ -10,7 +10,9 @@
 
 @interface _TtC7NewsUI213TipInteractor : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *setting;
+    MISSING_TYPE *tip;
+    MISSING_TYPE *contentType;
+    MISSING_TYPE *urlHandler;
 }
 
 @end

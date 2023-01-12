@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIEventObserver-Protocol.h>
+#import "UIView.h"
 
 @class NSArray, NSMutableSet, NSString, UIBarButtonItem, UIColor, UIEvent, UIImageView, UITapGestureRecognizer;
 @protocol UIDimmingViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIDimmingView <_UIEventObserver, UIGestureRecognizerDelegate>
+@interface UIDimmingView : UIView
 {
     UIBarButtonItem *_highlightedBarButtonItem;
     UIImageView *_highlightedImageView;

@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSString, QLPageNumberView, QLThumbnailView;
 @protocol QLScrubViewDataSource, QLScrubViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface QLScrubView : UIView <UIGestureRecognizerDelegate>
+@interface QLScrubView : UIView
 {
     _Bool _needsThumbLayout;
     double _thumbOrigin;

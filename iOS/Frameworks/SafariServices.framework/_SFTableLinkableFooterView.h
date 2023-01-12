@@ -6,13 +6,11 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <SafariServices/UITextViewDelegate-Protocol.h>
-
 @class NSLayoutConstraint, NSString, UITextView;
 @protocol _SFTableLinkableFooterViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _SFTableLinkableFooterView : UITableViewHeaderFooterView <UITextViewDelegate>
+@interface _SFTableLinkableFooterView : UITableViewHeaderFooterView
 {
     UITextView *_textView;
     NSLayoutConstraint *_textViewLeadingConstraint;

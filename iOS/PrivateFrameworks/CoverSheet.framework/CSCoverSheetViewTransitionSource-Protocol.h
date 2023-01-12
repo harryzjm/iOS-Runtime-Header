@@ -7,7 +7,7 @@
 #import <CoverSheet/CSCoverSheetParticipating-Protocol.h>
 
 @protocol CSCoverSheetViewTransitionSource <CSCoverSheetParticipating>
-@property(readonly, nonatomic) CDStruct_7238a68f transitionContext;
+@property(readonly, nonatomic) CDStruct_e8e6f28d transitionContext;
 @property(readonly, nonatomic, getter=isTransitioning) _Bool transitioning;
 - (void)cancelTransition;
 @end

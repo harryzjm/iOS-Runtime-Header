@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Navigation/NSObject-Protocol.h>
+
 @class MNLocation, MNTunnelLocationProjector;
 
-@protocol MNTunnelLocationProjectorDelegate
+@protocol MNTunnelLocationProjectorDelegate <NSObject>
 - (void)tunnelLocationProjector:(MNTunnelLocationProjector *)arg1 didUpdateLocation:(MNLocation *)arg2;
 @end
 

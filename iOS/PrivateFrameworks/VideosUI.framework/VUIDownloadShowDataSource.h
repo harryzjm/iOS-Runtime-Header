@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
-
 @class NSString, VUIMediaEntitiesFetchController, VUIMediaEntity;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadShowDataSource <VUIMediaEntitiesFetchControllerDelegate>
+@interface VUIDownloadShowDataSource
 {
     VUIMediaEntity *_showEntity;
     VUIMediaEntitiesFetchController *_fetchController;

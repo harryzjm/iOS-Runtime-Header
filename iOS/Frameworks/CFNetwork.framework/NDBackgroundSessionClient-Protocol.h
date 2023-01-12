@@ -26,7 +26,7 @@
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didReceiveDownloadToken:(unsigned long long)arg2;
 - (void)backgroundAVAssetDownloadTaskDidUpdateProgress:(unsigned long long)arg1 totalBytesWritten:(unsigned long long)arg2 totalBytesExpectedToWrite:(unsigned long long)arg3;
 - (void)openFileAtPath:(NSString *)arg1 mode:(int)arg2 withReply:(void (^)(NSFileHandle *))arg3;
-- (void)backgroundDownloadTask:(unsigned long long)arg1 didFinishDownloadingToURL:(NSURL *)arg2 reply:(void (^)(void))arg3;
+- (void)backgroundDownloadTask:(unsigned long long)arg1 didFinishDownloadingToURL:(NSURL *)arg2 response:(NSURLResponse *)arg3 reply:(void (^)(void))arg4;
 - (void)backgroundDownloadTask:(unsigned long long)arg1 didResumeAtOffset:(long long)arg2 expectedTotalBytes:(long long)arg3;
 - (void)backgroundDownloadTask:(unsigned long long)arg1 didWriteData:(long long)arg2 totalBytesWritten:(long long)arg3 totalBytesExpectedToWrite:(long long)arg4;
 - (void)willRetryBackgroundDataTask:(unsigned long long)arg1 withError:(NSError *)arg2 transactionMetrics:(__CFN_TransactionMetrics *)arg3;
@@ -44,7 +44,7 @@
 - (void)backgroundTask:(unsigned long long)arg1 _willSendRequestForEstablishedConnection:(NSURLRequest *)arg2 reply:(void (^)(NSURLRequest *, NSFileHandle *))arg3;
 - (void)backgroundTask:(unsigned long long)arg1 willPerformHTTPRedirection:(NSHTTPURLResponse *)arg2 withNewRequest:(NSURLRequest *)arg3 reply:(void (^)(NSURLRequest *))arg4;
 - (void)backgroundTask:(unsigned long long)arg1 willBeginDelayedRequest:(NSURLRequest *)arg2 reply:(void (^)(long long, NSURLRequest *))arg3;
-- (void)backgroundTask:(unsigned long long)arg1 didReceiveChallenge:(NSURLAuthenticationChallenge *)arg2 reply:(void (^)(long long, NSURLCredential *))arg3;
+- (void)backgroundTask:(unsigned long long)arg1 didReceiveChallenge:(NSURLAuthenticationChallenge *)arg2 reply:(void (^)(long long, NSURLCredential *, NSXPCListenerEndpoint *))arg3;
 - (void)backgroundTaskDidSuspend:(unsigned long long)arg1;
 - (void)backgroundTaskDidResume:(unsigned long long)arg1;
 @end

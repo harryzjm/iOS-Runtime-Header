@@ -34,6 +34,10 @@
 - (_Bool)canShowFromField;
 - (MFMailAccountProxy *)sendingAccountProxy;
 - (void)updateSignature;
+- (_Bool)isHideMyEmailMessage;
+- (_Bool)isAddressHideMyEmail:(NSString *)arg1;
+- (void)setHideMyEmailAddressForMailToURLAddressString:(NSString *)arg1;
+- (void)setSendingEmailAddressAsHME:(NSString *)arg1 isComposeTypeReply:(_Bool)arg2;
 - (void)setSendingEmailAddress:(NSString *)arg1;
 - (NSString *)sendingEmailAddress;
 - (NSString *)sendingEmailAddressIfExists;

@@ -12,11 +12,8 @@
 {
     MISSING_TYPE *searchQueue;
     MISSING_TYPE *tasksByIdentifier;
-    MISSING_TYPE *_networkEvent;
     MISSING_TYPE *requestTimeoutSeconds;
-    MISSING_TYPE *contextVendor;
     MISSING_TYPE *searchClient;
-    MISSING_TYPE *contextFetches;
     MISSING_TYPE *searchFetches;
     MISSING_TYPE *completions;
 }

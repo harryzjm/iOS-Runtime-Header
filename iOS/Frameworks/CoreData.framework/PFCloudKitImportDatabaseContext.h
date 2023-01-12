@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_changedRecordZoneIDs;
     NSMutableSet *_deletedRecordZoneIDs;
     NSMutableSet *_purgedRecordZoneIDs;
+    NSMutableSet *_userResetEncryptedDataZoneIDs;
     CKServerChangeToken *_updatedChangeToken;
 }
 

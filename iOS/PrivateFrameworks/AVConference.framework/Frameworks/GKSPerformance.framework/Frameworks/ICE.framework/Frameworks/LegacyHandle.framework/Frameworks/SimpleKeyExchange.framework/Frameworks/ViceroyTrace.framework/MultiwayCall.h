@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _isAudioEnabled;
     _Bool _isVideoEnabled;
     _Bool _isScreenEnabled;
+    _Bool _isExpanseEnabled;
     _Bool _live;
     _Bool _isFullSize;
     _Bool _hasWebParticipant;
@@ -40,13 +41,35 @@ __attribute__((visibility("hidden")))
     double _videoDegradedStartTime;
     NSMutableDictionary *_streamGroupStats;
     unsigned int _decryptionTimeoutCount;
+    double _handshakeStartTime;
+    double _handshakeDuration;
+    _Bool _isRTXTelemetryAvailable;
+    unsigned long long _nacksSent;
+    unsigned long long _nacksFulfilled;
+    unsigned long long _nacksFulfilledOnTime;
+    unsigned long long _lateFramesScheduledWithRTXCount;
+    unsigned long long _assembledFramesWithRTXPacketsCount;
+    unsigned long long _failedToAssembleFramesWithRTXPacketsCount;
+    _Bool _reportRateControlExperimentRemote;
+    unsigned char _rateControlExperimentVersionRemote;
+    unsigned char _rateControlExperimentGroupIndexRemote;
     int _mkmRecoveryAttemptCount;
     int _startDate;
 }
 
+@property unsigned char rateControlExperimentGroupIndexRemote; // @synthesize rateControlExperimentGroupIndexRemote=_rateControlExperimentGroupIndexRemote;
+@property unsigned char rateControlExperimentVersionRemote; // @synthesize rateControlExperimentVersionRemote=_rateControlExperimentVersionRemote;
+@property _Bool reportRateControlExperimentRemote; // @synthesize reportRateControlExperimentRemote=_reportRateControlExperimentRemote;
 @property int startDate; // @synthesize startDate=_startDate;
 @property int mkmRecoveryAttemptCount; // @synthesize mkmRecoveryAttemptCount=_mkmRecoveryAttemptCount;
 @property(readonly) NSMutableDictionary *streamGroups; // @synthesize streamGroups=_streamGroups;
+@property unsigned long long failedToAssembleFramesWithRTXPacketsCount; // @synthesize failedToAssembleFramesWithRTXPacketsCount=_failedToAssembleFramesWithRTXPacketsCount;
+@property unsigned long long assembledFramesWithRTXPacketsCount; // @synthesize assembledFramesWithRTXPacketsCount=_assembledFramesWithRTXPacketsCount;
+@property unsigned long long lateFramesScheduledWithRTXCount; // @synthesize lateFramesScheduledWithRTXCount=_lateFramesScheduledWithRTXCount;
+@property unsigned long long nacksFulfilledOnTime; // @synthesize nacksFulfilledOnTime=_nacksFulfilledOnTime;
+@property unsigned long long nacksFulfilled; // @synthesize nacksFulfilled=_nacksFulfilled;
+@property unsigned long long nacksSent; // @synthesize nacksSent=_nacksSent;
+@property _Bool isRTXTelemetryAvailable; // @synthesize isRTXTelemetryAvailable=_isRTXTelemetryAvailable;
 @property unsigned int decryptionTimeoutCount; // @synthesize decryptionTimeoutCount=_decryptionTimeoutCount;
 @property(readonly) NSMutableDictionary *streamGroupStats; // @synthesize streamGroupStats=_streamGroupStats;
 @property double connectionTime; // @synthesize connectionTime=_connectionTime;
@@ -58,16 +81,19 @@ __attribute__((visibility("hidden")))
 @property _Bool hasWebParticipant; // @synthesize hasWebParticipant=_hasWebParticipant;
 @property _Bool isFullSize; // @synthesize isFullSize=_isFullSize;
 @property _Bool isAudioEnabled; // @synthesize isAudioEnabled=_isAudioEnabled;
+@property _Bool isExpanseEnabled; // @synthesize isExpanseEnabled=_isExpanseEnabled;
 @property _Bool isScreenEnabled; // @synthesize isScreenEnabled=_isScreenEnabled;
 @property _Bool isVideoEnabled; // @synthesize isVideoEnabled=_isVideoEnabled;
 @property(readonly, getter=isLive) _Bool live; // @synthesize live=_live;
 @property(readonly) NSString *remoteParticipantID; // @synthesize remoteParticipantID=_remoteParticipantID;
+- (void)addControlChannelTelemetry:(id)arg1 timestamp:(double)arg2;
 - (void)addStreamGroupTelemetry:(id)arg1;
+- (void)addRTXStreamGroupTelemetry:(id)arg1 streamGroupID:(id)arg2;
 - (void)addAudioStreamGroupTelemetry:(id)arg1 streamGroupID:(id)arg2;
 - (void)addVideoStreamGroupTelemetry:(id)arg1 streamGroupID:(id)arg2;
-- (void)processVideoDegraded:(_Bool)arg1 streamGroup:(id)arg2;
-- (void)processVideoDegraded:(_Bool)arg1;
-- (void)updatePerfTimingWithFirstVideoFrameDecodedDelta:(unsigned int)arg1 mkiDelta:(unsigned int)arg2 streamGroupID:(id)arg3;
+- (void)processVideoDegraded:(_Bool)arg1 streamGroup:(id)arg2 timestamp:(double)arg3;
+- (void)processVideoDegraded:(_Bool)arg1 timestamp:(double)arg2;
+- (void)updatePerfTimingWithFirstVideoFrameProcessingDelta:(double)arg1 firstMediaReceivedDelta:(double)arg2 firstMKIDelta:(double)arg3 streamGroupID:(id)arg4;
 - (double)audioErasureTotalTime:(id)arg1;
 - (unsigned short)minVideoFrameRate:(id)arg1;
 - (unsigned short)maxJBTargetSizeChanges:(id)arg1;
@@ -89,6 +115,9 @@ __attribute__((visibility("hidden")))
 - (void)processDownlinkRateChange:(unsigned int)arg1;
 - (unsigned int)RTPeriod;
 - (_Bool)isVideoDegraded;
+- (double)markHandshakeCompletion:(double)arg1;
+- (void)markHandshakeStart:(double)arg1;
+- (void)finalizeCall:(double)arg1;
 - (void)dealloc;
 - (id)initCallWithRemoteParticipantID:(id)arg1;
 

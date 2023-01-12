@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIMediaEntityAssetControllerDelegate-Protocol.h>
-
 @class NSArray, NSDate, NSString, VUIMediaEntity, VUIVideosPlayable;
 @protocol VUIMediaEntityAssetController;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadButtonViewModel : NSObject <VUIMediaEntityAssetControllerDelegate>
+@interface VUIDownloadButtonViewModel : NSObject
 {
     _Bool _renewsOfflineKeysAutomatically;
     VUIVideosPlayable *_videosPlayable;

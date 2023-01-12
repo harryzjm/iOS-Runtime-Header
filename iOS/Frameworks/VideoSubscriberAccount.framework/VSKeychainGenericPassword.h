@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *account;
 @property(nonatomic, getter=isNegative) _Bool negative;
 @property(nonatomic, getter=isInvisible) _Bool invisible;
+@property(copy, nonatomic) NSString *viewHint;
 @property(nonatomic, getter=isSynchronizable) _Bool synchronizable;
 @property(copy, nonatomic) NSString *label;
 @property(copy, nonatomic) NSNumber *typeCode;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)addTilingWarningRecorder:(id)arg1;
 - (id)init;
 
 @end

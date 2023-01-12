@@ -7,6 +7,6 @@
 #import <UIKitServices/UISApplicationInitializationContext.h>
 
 @interface UISApplicationInitializationContext (SpringBoard)
-+ (id)sb_defaultContext;
++ (id)sb_embeddedDisplayDefaultContext;
 @end
 

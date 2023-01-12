@@ -6,12 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <HomeUI/HULayoutAnchorProviding-Protocol.h>
-
 @class NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString;
 
-@interface UIView (HUAdditions) <HULayoutAnchorProviding>
+@interface UIView (HUAdditions)
 + (void)hu_enableAnimations:(_Bool)arg1 forBlock:(CDUnknownBlockType)arg2;
+- (id)hu_contentModeString;
 - (_Bool)hu_isDescendantOfPickerView;
 - (_Bool)hu_isHomeAffordancePresent;
 - (void)hu_autoSizeByConstrainingWidth:(double)arg1;

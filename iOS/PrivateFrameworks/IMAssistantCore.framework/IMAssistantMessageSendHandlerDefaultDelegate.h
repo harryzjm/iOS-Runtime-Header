@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IMAssistantCore/IMAssistantMessageSendHandlerDelegate-Protocol.h>
-
 @class NSString;
 
-@interface IMAssistantMessageSendHandlerDefaultDelegate : NSObject <IMAssistantMessageSendHandlerDelegate>
+@interface IMAssistantMessageSendHandlerDefaultDelegate : NSObject
 {
 }
 

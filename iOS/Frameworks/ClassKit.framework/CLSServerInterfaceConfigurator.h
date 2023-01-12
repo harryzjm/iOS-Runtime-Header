@@ -8,7 +8,6 @@
 
 @class NSSet, NSXPCInterface;
 
-__attribute__((visibility("hidden")))
 @interface CLSServerInterfaceConfigurator : NSObject
 {
     NSXPCInterface *_interface;
@@ -18,6 +17,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)configureInsightEventsAPI;
+- (void)configureRelayRequestAPI;
 - (void)configureSurveyAnswerAPI;
 - (void)configureAdminRequestAPI;
 - (void)configureAssetSupportAPI;

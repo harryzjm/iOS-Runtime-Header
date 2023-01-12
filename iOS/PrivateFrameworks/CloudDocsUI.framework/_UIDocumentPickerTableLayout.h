@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewTableLayout.h>
 
-#import <CloudDocsUI/_UICollectionViewLayoutCellStyle-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerTableLayout : UICollectionViewTableLayout <_UICollectionViewLayoutCellStyle>
+@interface _UIDocumentPickerTableLayout : UICollectionViewTableLayout
 {
     long long cellStyle;
 }

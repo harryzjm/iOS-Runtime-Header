@@ -6,11 +6,9 @@
 
 #import <Foundation/NSUUID.h>
 
-#import <ProactiveSupport/_PASDistilledString-Protocol.h>
-
 @class NSString;
 
-@interface NSUUID (_PASDistilledString) <_PASDistilledString>
+@interface NSUUID (_PASDistilledString)
 - (id)_pas_revivedString;
 
 // Remaining properties

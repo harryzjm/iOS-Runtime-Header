@@ -6,29 +6,27 @@
 
 #import <Preferences/PSSpecifier.h>
 
-#import <SettingsCellularUI/Loggable-Protocol.h>
-
-@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, Logger, NSString, PSListController;
+@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSString, PSListController;
 
 __attribute__((visibility("hidden")))
-@interface PSUIDataModeSpecifier : PSSpecifier <Loggable>
+@interface PSUIDataModeSpecifier : PSSpecifier
 {
     CTXPCServiceSubscriptionContext *_subscriptionContext;
     CTServiceDescriptor *_serviceDescriptor;
     CoreTelephonyClient *_ctClient;
     PSListController *_hostController;
-    Logger *_logger;
     _Bool _showDrillDown;
 }
 
 - (void).cxx_destruct;
 @property _Bool showDrillDown; // @synthesize showDrillDown=_showDrillDown;
+- (id)getLogger;
 - (id)interfaceCostFromBool:(_Bool)arg1;
 - (id)lowDataModeFromBool:(_Bool)arg1;
 - (id)dataModeFromNumber:(id)arg1;
-- (id)getLogger;
 - (void)setInterfaceCostExpensive:(id)arg1 specifier:(id)arg2;
 - (id)isInterfaceCostExpensive:(id)arg1;
+- (id)lowDataModeGroupSpecifier;
 - (void)setLowDataMode:(id)arg1 specifier:(id)arg2;
 - (id)isLowDataModeEnabled:(id)arg1;
 - (void)setDataMode:(id)arg1 specifier:(id)arg2;

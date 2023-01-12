@@ -6,14 +6,11 @@
 
 #import <Preferences/PSSpecifier.h>
 
-#import <SettingsCellularUI/TSSIMSetupDelegate-Protocol.h>
-
-@class Logger, NSString, PSListController, TSSIMSetupFlow;
+@class NSString, PSListController, TSSIMSetupFlow;
 
 __attribute__((visibility("hidden")))
-@interface PSUIConvertToESIMSpecifier : PSSpecifier <TSSIMSetupDelegate>
+@interface PSUIConvertToESIMSpecifier : PSSpecifier
 {
-    Logger *_logger;
     TSSIMSetupFlow *_flow;
     NSString *_phoneNumber;
     NSString *_carrierName;

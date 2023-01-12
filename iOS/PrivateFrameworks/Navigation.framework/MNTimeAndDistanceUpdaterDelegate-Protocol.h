@@ -6,10 +6,10 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class MNDisplayETAInfo, MNRouteDistanceInfo, MNTimeAndDistanceUpdater;
+@class MNBatteryChargeInfo, MNDisplayETAInfo, MNRouteDistanceInfo, MNTimeAndDistanceUpdater;
 
 @protocol MNTimeAndDistanceUpdaterDelegate <NSObject>
-- (void)timeAndDistanceUpdater:(MNTimeAndDistanceUpdater *)arg1 didUpdateDisplayETA:(MNDisplayETAInfo *)arg2 remainingDistance:(MNRouteDistanceInfo *)arg3;
+- (void)timeAndDistanceUpdater:(MNTimeAndDistanceUpdater *)arg1 didUpdateDisplayETA:(MNDisplayETAInfo *)arg2 remainingDistance:(MNRouteDistanceInfo *)arg3 batteryChargeInfo:(MNBatteryChargeInfo *)arg4;
 - (void)timeAndDistanceUpdater:(MNTimeAndDistanceUpdater *)arg1 currentStepIndex:(unsigned long long)arg2 didUpdateDistanceUntilManeuver:(double)arg3 timeUntilManeuver:(double)arg4;
 @end
 

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPFileCoordinatorDelegate-Protocol.h>
-#import <TSPersistence/TSPPackageDataWriter-Protocol.h>
-
 @class NSError, NSProgress, NSString, NSURL, SFUCryptoKey, TSPDocumentMetadata, TSPDocumentSaveValidationPolicy, TSPPackage, TSUZipFileWriter;
 @protocol OS_dispatch_queue, TSPComponentWriteChannel, TSPFileCoordinatorDelegate;
 
-@interface TSPPackageWriter : NSObject <TSPFileCoordinatorDelegate, TSPPackageDataWriter>
+@interface TSPPackageWriter : NSObject
 {
     TSPDocumentMetadata *_documentMetadata;
     TSPPackage *_originalDocumentPackage;

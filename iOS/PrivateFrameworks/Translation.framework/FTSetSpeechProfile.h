@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTUserAcousticProfile, FTUserLanguageProfile, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTSetSpeechProfile : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTSetSpeechProfile : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;

@@ -15,6 +15,11 @@
     MISSING_TYPE *headlineService;
     MISSING_TYPE *feedContextFactory;
     MISSING_TYPE *inflaterFactory;
+    MISSING_TYPE *tagFactory;
+    MISSING_TYPE *articleFactory;
+    MISSING_TYPE *cloudContext;
+    MISSING_TYPE *headlineModelFactory;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBContact, _INPBCurrencyAmountValue, _INPBDataString, _INPBDateTime, _INPBInteger, _INPBMessage, _INPBMessageLinkMetadata;
+@class NSArray, NSString, _INPBContact, _INPBCurrencyAmountValue, _INPBDataString, _INPBDateTime, _INPBFile, _INPBInteger, _INPBMessage, _INPBMessageLinkMetadata;
 
 @protocol _INPBMessage <NSObject>
 + (Class)recipientType;
@@ -46,6 +46,8 @@
 @property(copy, nonatomic) NSString *conversationIdentifier;
 @property(readonly, nonatomic) _Bool hasContent;
 @property(copy, nonatomic) NSString *content;
+@property(readonly, nonatomic) _Bool hasAudioMessageFile;
+@property(retain, nonatomic) _INPBFile *audioMessageFile;
 @property(readonly, nonatomic) unsigned long long attributesCount;
 @property(readonly, nonatomic) int *attributes;
 - (int)StringAsType:(NSString *)arg1;

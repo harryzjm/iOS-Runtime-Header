@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIViewServiceDeputyXPCInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceTextEffectsOperator_XPCInterface : NSObject <_UIViewServiceDeputyXPCInterface>
+@interface _UIViewServiceTextEffectsOperator_XPCInterface : NSObject
 {
 }
 

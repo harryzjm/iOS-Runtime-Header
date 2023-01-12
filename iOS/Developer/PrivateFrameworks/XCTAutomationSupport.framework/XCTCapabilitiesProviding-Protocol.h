@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <XCTAutomationSupport/NSObject-Protocol.h>
-
 @class XCTCapabilitiesBuilder;
 
-@protocol XCTCapabilitiesProviding <NSObject>
+@protocol XCTCapabilitiesProviding
 + (void)provideCapabilitiesToBuilder:(XCTCapabilitiesBuilder *)arg1;
 @end
 

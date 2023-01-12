@@ -4,20 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-

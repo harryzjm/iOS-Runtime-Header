@@ -7,7 +7,7 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @class NSArray, NSString;
-@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMagSafeAccessoryStatusProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPlatterHomeGestureManaging, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
+@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMagSafeAccessoryStatusProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPlatterHomeGestureManaging, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperProviding, CSWallpaperSnapshotUpdating, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
 
 @protocol CSCoverSheetContextProviding <NSObject>
 @property(readonly, nonatomic) id <CSDeviceOrientationProviding> deviceOrientationProvider;
@@ -31,7 +31,8 @@
 @property(readonly, nonatomic) id <CSHomeAffordanceControlling> homeAffordanceController;
 @property(readonly, nonatomic) id <CSAuthenticationManaging> authenticationManager;
 @property(readonly, nonatomic) id <CSTelephonyStatusProviding> telephonyStatusProvider;
-@property(readonly, nonatomic) id <CSWallpaperViewProviding> wallpaperViewProvider;
+@property(readonly, nonatomic) id <CSWallpaperSnapshotUpdating> wallpaperSnapshotUpdater;
+@property(readonly, nonatomic) id <CSWallpaperProviding> wallpaperProvider;
 @property(readonly, nonatomic) id <SBFScreenWakeAnimationControlling> screenWakeAnimationController;
 @property(readonly, nonatomic) id <CSScreenStateProviding> screenStateProvider;
 @property(readonly, copy, nonatomic) NSArray *dismissableOverlays;

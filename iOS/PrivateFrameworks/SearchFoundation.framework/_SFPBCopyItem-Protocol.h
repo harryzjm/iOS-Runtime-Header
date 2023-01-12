@@ -6,11 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _SFPBCoreSpotlightCopyItem, _SFPBImageCopyItem, _SFPBTextCopyItem;
+@class NSData, NSDictionary, _SFPBContactCopyItem, _SFPBCoreSpotlightCopyItem, _SFPBImageCopyItem, _SFPBTextCopyItem;
 
 @protocol _SFPBCopyItem <NSObject>
 @property(readonly, nonatomic) unsigned long long whichValue;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBContactCopyItem *contactCopyItem;
 @property(retain, nonatomic) _SFPBImageCopyItem *imageCopyItem;
 @property(retain, nonatomic) _SFPBCoreSpotlightCopyItem *spotlightCopyItem;
 @property(retain, nonatomic) _SFPBTextCopyItem *textCopyItem;

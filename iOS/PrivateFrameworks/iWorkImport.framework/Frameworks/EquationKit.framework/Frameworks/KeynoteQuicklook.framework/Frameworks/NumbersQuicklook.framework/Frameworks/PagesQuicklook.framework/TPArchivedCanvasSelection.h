@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <PagesQuicklook/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TPCanvasSelection, TSKSelection;
 
-@interface TPArchivedCanvasSelection : TSPObject <TSKArchivedSelection>
+@interface TPArchivedCanvasSelection : TSPObject
 {
     TPCanvasSelection *_selection;
 }

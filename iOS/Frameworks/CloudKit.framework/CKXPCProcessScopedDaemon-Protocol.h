@@ -7,7 +7,7 @@
 @class NSArray, NSFileHandle, NSString;
 
 @protocol CKXPCProcessScopedDaemon
-- (void)flushOperationMetricsToPowerLog;
+- (void)maxInlineMergeableDeltaSizeWithCompletionHandler:(void (^)(unsigned long long))arg1;
 - (void)updatePushTokens;
 - (void)wipeServerConfigurationsAndDie;
 - (void)wipeAllCachesAndDie;

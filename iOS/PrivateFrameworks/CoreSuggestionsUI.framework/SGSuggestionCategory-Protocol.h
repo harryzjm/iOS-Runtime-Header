@@ -6,7 +6,7 @@
 
 #import <CoreSuggestionsUI/NSObject-Protocol.h>
 
-@class NSArray, NSString, UIImage;
+@class NSArray, NSString, SGBannerDividerParameter, UIColor, UIImage, UIView, UIVisualEffectView;
 
 @protocol SGSuggestionCategory <NSObject>
 - (NSString *)suggestionCategoryLocalizedCountOfItems:(NSArray *)arg1;
@@ -17,6 +17,12 @@
 - (NSString *)suggestionCategoryId;
 
 @optional
+- (_Bool)suggestionCategorySupportsBatchDismissal;
+- (SGBannerDividerParameter *)suggestionCategoryDivider;
+- (UIVisualEffectView *)suggestionCategoryBackgroundVisualEffectView;
+- (UIColor *)suggestionCategoryBackgroundColor;
+- (UIView *)suggestionCategoryImageSGView;
+- (long long)suggestionCategoryActionButtonType;
 - (long long (^)(id, id))suggestionComparator;
 @end
 

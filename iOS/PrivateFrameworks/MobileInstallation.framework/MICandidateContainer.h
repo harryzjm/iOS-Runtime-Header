@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileInstallation/NSCopying-Protocol.h>
-
 @class NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface MICandidateContainer : NSObject <NSCopying>
+@interface MICandidateContainer : NSObject
 {
     NSURL *_rootURL;
     NSString *_identifier;

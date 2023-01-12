@@ -6,17 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSBagDataSourceProtocol-Protocol.h>
-
-@class AMSBagKeySet, AMSProcessInfo, NSDate, NSError, NSString;
+@class AMSProcessInfo, NSDate, NSError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSBagFailingDataSource : NSObject <AMSBagDataSourceProtocol>
+@interface AMSBagFailingDataSource : NSObject
 {
     NSDate *_expirationDate;
     NSString *_profile;
     NSString *_profileVersion;
-    AMSBagKeySet *_bagKeySet;
+    AMSProcessInfo *processInfo;
     double _delay;
     NSError *_error;
 }
@@ -24,15 +22,16 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) double delay; // @synthesize delay=_delay;
-@property(retain, nonatomic) AMSBagKeySet *bagKeySet; // @synthesize bagKeySet=_bagKeySet;
+@property(readonly, copy, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo;
 @property(copy, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property(copy, nonatomic) NSString *profile; // @synthesize profile=_profile;
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+- (void)setDefaultValue:(id)arg1 forKey:(id)arg2;
+- (id)defaultValueForKey:(id)arg1;
 - (id)valueForURLVariable:(id)arg1 account:(id)arg2;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
-- (id)bagKeyInfoForKey:(id)arg1;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
-- (id)initWithProfile:(id)arg1 profileVersion:(id)arg2 error:(id)arg3 delay:(double)arg4 bagKeySet:(id)arg5;
+- (id)initWithProfile:(id)arg1 profileVersion:(id)arg2 error:(id)arg3 delay:(double)arg4;
 
 // Remaining properties
 @property(copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler;
@@ -41,7 +40,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSString *descriptionExtended;
 @property(readonly) unsigned long long hash;
-@property(readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property(readonly) Class superclass;
 
 @end

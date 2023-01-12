@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/NSCopying-Protocol.h>
-
 @class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSKeychainItemKind : NSObject <NSCopying>
+@interface VSKeychainItemKind : NSObject
 {
     NSString *_itemClassName;
     const struct __CFString *_secItemClass;
@@ -23,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) const struct __CFString *secItemClass; // @synthesize secItemClass=_secItemClass;
 @property(copy, nonatomic) NSString *itemClassName; // @synthesize itemClassName=_itemClassName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy, nonatomic) NSDictionary *attributesBySecItemAttributeKey;
 @property(readonly, copy, nonatomic) NSDictionary *attributesByName;
 - (void)dealloc;
 - (id)init;

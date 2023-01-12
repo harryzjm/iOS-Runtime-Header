@@ -20,6 +20,7 @@
     MISSING_TYPE *filter;
     MISSING_TYPE *title;
     MISSING_TYPE *row;
+    MISSING_TYPE *filterResult;
 }
 
 @end

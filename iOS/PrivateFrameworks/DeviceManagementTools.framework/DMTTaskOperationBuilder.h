@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <DeviceManagementTools/DMTTaskOperationProviding-Protocol.h>
-
 @class NSString;
 @protocol DMTDeviceInformationPrimitives, DMTEnrollmentInitiating, DMTEnrollmentPrerequisiteReceiving, DMTEnrollmentStateProviding;
 
 __attribute__((visibility("hidden")))
-@interface DMTTaskOperationBuilder : NSObject <DMTTaskOperationProviding>
+@interface DMTTaskOperationBuilder : NSObject
 {
     id <DMTDeviceInformationPrimitives> _deviceInfoPrimitives;
     id <DMTEnrollmentPrerequisiteReceiving> _enrollmentPrerequisiteReceiver;

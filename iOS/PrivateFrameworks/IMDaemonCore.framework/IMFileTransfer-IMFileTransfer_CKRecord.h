@@ -21,7 +21,10 @@
 - (id)_fileManager;
 - (id)initWithCKRecord:(id)arg1 writeAssetToDisk:(_Bool)arg2;
 - (void)moveAssetFromRecord:(id)arg1;
+- (_Bool)hasPreferredAssetOverRecord:(id)arg1;
+- (_Bool)wantsAssetFromRecord:(id)arg1;
 - (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2;
+- (id)recordIDWithZoneID:(id)arg1 salt:(id)arg2;
 - (void)_setRecordPropertiesBasedOnExistingRecord:(id)arg1;
 - (id)md5HashForTransfer;
 - (id)md5HashForURL:(id)arg1;

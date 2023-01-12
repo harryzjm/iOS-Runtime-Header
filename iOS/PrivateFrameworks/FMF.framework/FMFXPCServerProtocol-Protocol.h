@@ -44,6 +44,7 @@
 - (oneway void)includeDeviceInAutomations:(void (^)(_Bool, NSError *))arg1;
 - (oneway void)nearbyLocationsWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 - (oneway void)favoritesForMaxCount:(NSNumber *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (oneway void)forceRefreshWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)getMaxLocatingInterval:(void (^)(double, NSError *))arg1;
 - (oneway void)setExpiredInitTimestamp;
 - (oneway void)sessionWasCreatedRefresh;
@@ -85,6 +86,7 @@
 - (oneway void)getHandlesSharingLocationsWithMe:(void (^)(NSSet *, NSError *))arg1;
 - (oneway void)locationForHandle:(FMFHandle *)arg1 completion:(void (^)(FMFLocation *, NSString *, NSError *))arg2;
 - (oneway void)getCurrentTrackedHandles:(void (^)(NSSet *, NSError *))arg1;
+- (oneway void)setDebugContext:(NSString *)arg1;
 - (oneway void)removeFriendHandles:(NSSet *)arg1;
 - (oneway void)addFriendHandles:(NSSet *)arg1;
 - (oneway void)fetchLocationForHandles:(NSSet *)arg1 callerId:(FMFHandle *)arg2 priority:(long long)arg3 completion:(void (^)(NSError *, NSString *))arg4;

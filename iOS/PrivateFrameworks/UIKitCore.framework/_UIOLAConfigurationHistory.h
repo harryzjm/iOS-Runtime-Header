@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIOLAPropertySource-Protocol.h>
-
 @class NSMapTable, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIOLAConfigurationHistory <_UIOLAPropertySource>
+@interface _UIOLAConfigurationHistory
 {
     _Bool _baselineRelativeArrangement;
     _Bool _itemOrderingChanged;

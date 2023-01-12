@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SCNGeometrySource.h"
+
 @class NSMutableData;
 
 __attribute__((visibility("hidden")))
-@interface SCNMutableGeometrySource
+@interface SCNMutableGeometrySource : SCNGeometrySource
 {
 }
 

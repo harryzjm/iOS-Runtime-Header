@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCoding-Protocol.h>
-
 @class NSManagedObjectID, NSMutableDictionary, NSPersistentStoreMap, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSStoreMapNode : NSObject <NSCoding>
+@interface NSStoreMapNode : NSObject
 {
     NSPersistentStoreMap *_map;
     NSManagedObjectID *_objectID;

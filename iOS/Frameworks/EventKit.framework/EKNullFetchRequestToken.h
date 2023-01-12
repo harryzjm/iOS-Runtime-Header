@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <EventKit/EKFetchRequestToken-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface EKNullFetchRequestToken : NSObject <EKFetchRequestToken>
+@interface EKNullFetchRequestToken : NSObject
 {
 }
 

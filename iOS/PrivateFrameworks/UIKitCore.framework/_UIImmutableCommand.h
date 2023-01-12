@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICommand.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIImmutableCommand
+@interface _UIImmutableCommand : UICommand
 {
 }
 
 - (id)_immutableCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)_setPreferredDisplayMode:(unsigned long long)arg1;
 - (void)setAccessibilityIdentifier:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)setAttributes:(unsigned long long)arg1;
 - (void)setDiscoverabilityTitle:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setSubtitle:(id)arg1;
+- (void)setAttributedTitle:(id)arg1;
 - (void)setTitle:(id)arg1;
 
 @end

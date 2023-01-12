@@ -6,13 +6,11 @@
 
 #import <Foundation/NSProxy.h>
 
-#import <GenerationalStorage/GSProtocol-Protocol.h>
-
 @class NSError, NSObject;
 @protocol GSProtocol;
 
 __attribute__((visibility("hidden")))
-@interface GSDaemonProxySync : NSProxy <GSProtocol>
+@interface GSDaemonProxySync : NSProxy
 {
     NSObject<GSProtocol> *_target;
     NSError *_error;

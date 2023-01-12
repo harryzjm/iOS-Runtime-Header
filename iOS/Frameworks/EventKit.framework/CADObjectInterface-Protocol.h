@@ -16,6 +16,7 @@
 - (void)CADObject:(CADObjectID *)arg1 getNumberPropertyWithName:(NSString *)arg2 reply:(void (^)(int, NSNumber *))arg3;
 - (void)CADObject:(CADObjectID *)arg1 getStringPropertyWithName:(NSString *)arg2 reply:(void (^)(int, NSString *))arg3;
 - (void)CADObject:(CADObjectID *)arg1 getPropertyWithName:(NSString *)arg2 reply:(void (^)(int, NSObject<NSSecureCoding> *))arg3;
+- (void)CADObjects:(NSArray *)arg1 getPropertiesWithNames:(NSArray *)arg2 reply:(void (^)(int, NSArray *))arg3;
 - (void)CADObject:(CADObjectID *)arg1 getPropertiesWithNames:(NSArray *)arg2 reply:(void (^)(int, NSArray *))arg3;
 - (void)CADObjectsExist:(NSArray *)arg1 reply:(void (^)(int, NSArray *))arg2;
 - (void)CADObjectExists:(CADObjectID *)arg1 reply:(void (^)(int, _Bool))arg2;

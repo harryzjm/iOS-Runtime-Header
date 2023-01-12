@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSKSelection, TSTStrokeSelection;
 
-@interface TSTArchivedStrokeSelection : TSPObject <TSKArchivedSelection>
+@interface TSTArchivedStrokeSelection : TSPObject
 {
     TSTStrokeSelection *mStrokeSelection;
 }

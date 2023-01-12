@@ -56,9 +56,15 @@ __attribute__((visibility("hidden")))
     unsigned long long _remoteIDSParticipantID;
     _Bool _useWifiTiers;
     struct tagVCCryptor *_sframeCryptor;
+    _Bool _audioIssueDetectorEnabled;
+    unsigned int _packetExpirationTime;
     _Bool _shouldApplyRedAsBoolean;
+    _Bool _supportsCodecBandwidthUpdate;
 }
 
+@property(nonatomic) _Bool audioIssueDetectorEnabled; // @synthesize audioIssueDetectorEnabled=_audioIssueDetectorEnabled;
+@property(nonatomic) _Bool supportsCodecBandwidthUpdate; // @synthesize supportsCodecBandwidthUpdate=_supportsCodecBandwidthUpdate;
+@property(nonatomic) unsigned int packetExpirationTime; // @synthesize packetExpirationTime=_packetExpirationTime;
 @property(nonatomic) struct tagVCCryptor *sframeCryptor; // @synthesize sframeCryptor=_sframeCryptor;
 @property(nonatomic) _Bool useWifiTiers; // @synthesize useWifiTiers=_useWifiTiers;
 @property(nonatomic) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;

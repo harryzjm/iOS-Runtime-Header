@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class OADBackdrop, OADCamera, OADLightRig;
 
 __attribute__((visibility("hidden")))
-@interface OADScene3D : NSObject <NSCopying>
+@interface OADScene3D : NSObject
 {
     OADCamera *mCamera;
     OADLightRig *mLightRig;

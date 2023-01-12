@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKAcknowledgmentGlyphView.h"
+
 @class CKAcknowledgmentGlyphImageView;
 
 __attribute__((visibility("hidden")))
-@interface CKExclamationAcknowledgmentGlyphView
+@interface CKExclamationAcknowledgmentGlyphView : CKAcknowledgmentGlyphView
 {
     CKAcknowledgmentGlyphImageView *_leftExclamationGlyph;
     CKAcknowledgmentGlyphImageView *_rightExclamationGlyph;

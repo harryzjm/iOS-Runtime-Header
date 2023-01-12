@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EquationKit/EQKitLayoutNode-Protocol.h>
-
 @class NSString;
 @protocol EQKitLayoutNode;
 
-@interface EQKitMathMLNode : NSObject <EQKitLayoutNode>
+@interface EQKitMathMLNode : NSObject
 {
     id <EQKitLayoutNode> mParent;
 }

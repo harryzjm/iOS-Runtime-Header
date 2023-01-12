@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface CKDPNotificationSyncRequest : PBRequest <NSCopying>
+@interface CKDPNotificationSyncRequest : PBRequest
 {
     unsigned int _maxChanges;
     NSData *_serverChangeToken;

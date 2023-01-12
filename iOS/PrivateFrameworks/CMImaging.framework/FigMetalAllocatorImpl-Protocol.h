@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FigMetalAllocatorDescriptor, FigMetalBufferDescriptor, FigMetalTextureDescriptor, FigMetalUtils, NSString;
+@class FigMetalAllocatorBackendDescriptor, FigMetalBufferDescriptor, FigMetalTextureDescriptor, FigMetalUtils, NSString;
 @protocol MTLBuffer, MTLTexture;
 
 @protocol FigMetalAllocatorImpl
 @property(readonly, nonatomic) FigMetalUtils *utils;
 @property(readonly, nonatomic) unsigned long long memSize;
 @property(readonly, nonatomic) unsigned long long alignment;
+- (_Bool)hasCreatedBuffer:(id <MTLBuffer>)arg1;
 - (_Bool)hasCreatedTexture:(id <MTLTexture>)arg1;
 - (void)purgeResources;
 - (NSString *)description;
@@ -20,7 +21,7 @@
 - (id <MTLBuffer>)newBufferWithDescriptor:(FigMetalBufferDescriptor *)arg1 offset:(unsigned long long)arg2;
 - (CDStruct_4bcfbbae)getSizeAndAlignForBufferDescriptor:(FigMetalBufferDescriptor *)arg1;
 - (CDStruct_4bcfbbae)getSizeAndAlignForDescriptor:(FigMetalTextureDescriptor *)arg1;
-- (int)setupWithDescriptor:(FigMetalAllocatorDescriptor *)arg1;
+- (int)setupWithDescriptor:(FigMetalAllocatorBackendDescriptor *)arg1;
 - (id)initWithMetalUtils:(FigMetalUtils *)arg1;
 @end
 

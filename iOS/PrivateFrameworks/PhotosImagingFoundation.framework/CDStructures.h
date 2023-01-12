@@ -4,55 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
-struct CGAffineTransform {
+struct CGPoint {
     double _field1;
     double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-};
-
-struct CGPoint {
-    double x;
-    double y;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct Matrix4d {
     double m[16];
 };
 
-struct PFIntSize_st {
-    unsigned long long width;
-    unsigned long long height;
-};
-
 struct Quad2d {
-    struct Vector2d V0;
-    struct Vector2d V1;
-    struct Vector2d V2;
-    struct Vector2d V3;
+    struct Vector2d _field1;
+    struct Vector2d _field2;
+    struct Vector2d _field3;
+    struct Vector2d _field4;
 };
 
 struct Vector2d {
-    double X;
-    double Y;
+    double _field1;
+    double _field2;
 };
 
 #pragma mark Typedef'd Structures
@@ -63,16 +45,4 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
-
-typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
-
-typedef struct {
-    CDStruct_1b6d18a9 start;
-    CDStruct_1b6d18a9 duration;
-} CDStruct_e83c9415;
 

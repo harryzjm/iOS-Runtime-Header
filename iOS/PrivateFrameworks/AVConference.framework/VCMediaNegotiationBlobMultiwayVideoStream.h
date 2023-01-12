@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobMultiwayVideoStream : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobMultiwayVideoStream : PBCodable
 {
     unsigned int _frameRate;
     unsigned int _keyFrameInterval;

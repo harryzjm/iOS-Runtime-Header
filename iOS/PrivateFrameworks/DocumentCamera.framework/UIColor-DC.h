@@ -10,10 +10,6 @@
 + (id)dc_labelBackgroundColor;
 + (id)dc_editBackgroundColor;
 + (id)dc_barColor;
-+ (id)dc_lightPaperTexture;
-+ (id)dc_paperTexture;
-+ (id)dc_lightPaperImage;
-+ (id)dc_paperImage;
 + (id)DCExtractedDocumentViewControllerBackgroundColor;
 + (id)colorInBundleWithName:(id)arg1;
 + (id)dc_darkerAccessibilityColorForColor:(id)arg1;

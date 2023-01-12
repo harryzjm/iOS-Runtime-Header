@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPRemoteCommandCenter.h"
+
 __attribute__((visibility("hidden")))
-@interface _MPRemoteLaunchCommandCenter
+@interface _MPRemoteLaunchCommandCenter : MPRemoteCommandCenter
 {
 }
 
 - (void)_stopMediaRemoteSync;
 - (void)_startMediaRemoteSync;
-- (void)_scheduleSupportedCommandsChanged;
+- (void)_scheduleSupportedCommandsChanged:(_Bool)arg1;
+- (void)dealloc;
 
 @end
 

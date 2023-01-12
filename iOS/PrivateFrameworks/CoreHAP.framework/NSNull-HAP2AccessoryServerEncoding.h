@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNull.h>
 
-#import <CoreHAP/HAP2AccessoryCharacteristicEncodableBodyValue-Protocol.h>
-
 @class NSString;
 
-@interface NSNull (HAP2AccessoryServerEncoding) <HAP2AccessoryCharacteristicEncodableBodyValue>
+@interface NSNull (HAP2AccessoryServerEncoding)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

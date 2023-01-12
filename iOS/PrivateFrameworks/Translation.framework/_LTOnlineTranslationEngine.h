@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/_LTTranslationEngine-Protocol.h>
-
 @class AFSettingsConnection, FTBlazarService, FTMtService, NSDate, NSOperationQueue, NSString, _LTBatchTranslationResponseHandler, _LTOspreySpeechTranslationSession, _LTTextToSpeechCache;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface _LTOnlineTranslationEngine : NSObject <_LTTranslationEngine>
+@interface _LTOnlineTranslationEngine : NSObject
 {
     NSOperationQueue *_sendQueue;
     FTMtService *_service;

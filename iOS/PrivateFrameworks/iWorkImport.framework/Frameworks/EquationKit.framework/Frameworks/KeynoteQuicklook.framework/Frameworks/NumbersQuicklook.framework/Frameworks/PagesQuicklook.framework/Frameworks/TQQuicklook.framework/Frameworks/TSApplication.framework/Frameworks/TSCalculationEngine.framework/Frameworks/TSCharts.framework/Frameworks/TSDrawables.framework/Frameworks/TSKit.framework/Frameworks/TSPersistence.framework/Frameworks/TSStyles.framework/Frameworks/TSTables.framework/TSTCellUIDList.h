@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSTCellUIDLookupListWrapper;
 @protocol OS_dispatch_queue;
 
-@interface TSTCellUIDList : NSObject <NSCopying>
+@interface TSTCellUIDList : NSObject
 {
     TSKUIDStructVectorTemplate_de88e035 _rowIdList;
     TSKUIDStructVectorTemplate_de88e035 _columnIdList;

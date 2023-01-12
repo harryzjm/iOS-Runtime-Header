@@ -30,6 +30,9 @@ __attribute__((visibility("hidden")))
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)_startObservingCoordinator;
+- (void)_stopObservingCoordinator;
+- (void)setSpecifier:(id)arg1;
 - (void)dealloc;
 - (id)initWithRootViewModelCoordinator:(id)arg1 presentedAsModal:(_Bool)arg2;
 - (id)initWithRootViewModelCoordinator:(id)arg1;

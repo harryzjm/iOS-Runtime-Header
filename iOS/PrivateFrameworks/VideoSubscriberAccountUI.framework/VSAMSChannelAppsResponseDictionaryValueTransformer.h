@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)allowsReverseTransformation;
 + (Class)transformedValueClass;
+- (id)parseAppData:(id)arg1;
 - (id)transformedValue:(id)arg1;
 
 @end

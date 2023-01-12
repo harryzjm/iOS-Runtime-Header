@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSDirectoryEnumerator.h"
+
 __attribute__((visibility("hidden")))
-@interface NSURLDirectoryEnumerator
+@interface NSURLDirectoryEnumerator : NSDirectoryEnumerator
 {
     struct __CFURLEnumerator *_enumerator;
     CDUnknownBlockType _errorHandler;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDImmutableObject-Protocol.h>
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDAlignmentInfo, EDBorders, EDContentFormat, EDFill, EDFont, EDProtection, EDResources, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDStyle : NSObject <NSCopying, EDImmutableObject>
+@interface EDStyle : NSObject
 {
     EDResources *mResources;
     unsigned long long mParentIndex;

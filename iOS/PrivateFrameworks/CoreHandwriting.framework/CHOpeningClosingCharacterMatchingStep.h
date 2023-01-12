@@ -15,13 +15,13 @@
     NSCharacterSet *_symmetricQuoteCharacters;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSCharacterSet *symmetricQuoteCharacters; // @synthesize symmetricQuoteCharacters=_symmetricQuoteCharacters;
 @property(retain, nonatomic) NSCharacterSet *closingQuoteCharacters; // @synthesize closingQuoteCharacters=_closingQuoteCharacters;
 @property(retain, nonatomic) NSCharacterSet *openingQuoteCharacters; // @synthesize openingQuoteCharacters=_openingQuoteCharacters;
 @property(retain, nonatomic) NSCharacterSet *closingBracketCharacters; // @synthesize closingBracketCharacters=_closingBracketCharacters;
 @property(retain, nonatomic) NSCharacterSet *openingBracketCharacters; // @synthesize openingBracketCharacters=_openingBracketCharacters;
-- (id)process:(id)arg1;
-- (void)dealloc;
+- (id)process:(id)arg1 options:(id)arg2;
 - (id)init;
 
 @end

@@ -12,7 +12,7 @@
 @protocol CHStrokeProvider <NSObject>
 @property(readonly) long long groupingPriority;
 @property(readonly, copy) NSArray *orderedStrokes;
-@property(readonly, retain) id <CHStrokeProviderVersion> strokeProviderVersion;
+@property(readonly) id <CHStrokeProviderVersion> strokeProviderVersion;
 - (id <CHStrokeIdentifier>)strokeIdentifierFromData:(CHEncodedStrokeIdentifier *)arg1;
 - (CHEncodedStrokeIdentifier *)encodedStrokeIdentifier:(id <CHStrokeIdentifier>)arg1;
 - (unsigned long long)compareStyleOfStrokeWithIdentifier:(id <CHStrokeIdentifier>)arg1 toStrokeWithIdentifier:(id <CHStrokeIdentifier>)arg2;

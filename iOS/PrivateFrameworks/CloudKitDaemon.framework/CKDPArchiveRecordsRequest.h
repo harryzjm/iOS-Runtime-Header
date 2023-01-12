@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKDPArchiveRecordsRequest : PBRequest <NSCopying>
+@interface CKDPArchiveRecordsRequest : PBRequest
 {
     NSMutableArray *_idsToArchives;
 }

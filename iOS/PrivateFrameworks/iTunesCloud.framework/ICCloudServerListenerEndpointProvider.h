@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/ICCloudServerListenerEndpointProviding-Protocol.h>
-
 @class NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface ICCloudServerListenerEndpointProvider : NSObject <ICCloudServerListenerEndpointProviding>
+@interface ICCloudServerListenerEndpointProvider : NSObject
 {
     NSXPCConnection *_listenerEndpointProviderConnection;
     struct os_unfair_lock_s _lock;
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_listenerEndpointProviderConnection;
+- (void)notifyDeviceSetupFinishedWithCompletion:(CDUnknownBlockType)arg1;
 - (id)listenerEndpointForService:(long long)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)init;

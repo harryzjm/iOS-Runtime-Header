@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CADisplayPersistedPreferredMode : NSObject <NSSecureCoding>
+@interface CADisplayPersistedPreferredMode : NSObject
 {
     NSString *_uuid;
     NSDictionary *_mode;

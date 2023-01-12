@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OfficeImport/OABPropertiesManager-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OABShapeManager <OABPropertiesManager>
+@interface OABShapeManager
 {
     void *mShape;
 }

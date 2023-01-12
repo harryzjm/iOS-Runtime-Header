@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/WKFormPeripheral-Protocol.h>
-
 @class WKContentView;
 @protocol WKFormControl;
 
 __attribute__((visibility("hidden")))
-@interface WKFormPeripheralBase : NSObject <WKFormPeripheral>
+@interface WKFormPeripheralBase : NSObject
 {
     struct RetainPtr<NSObject<WKFormControl>> _control;
     _Bool _editing;

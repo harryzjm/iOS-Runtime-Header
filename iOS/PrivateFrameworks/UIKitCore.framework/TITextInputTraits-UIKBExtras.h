@@ -14,6 +14,7 @@
 + (unsigned long long)translateToTextScriptType:(long long)arg1;
 + (unsigned long long)translateToTextInputReturnKeyType:(long long)arg1;
 + (unsigned long long)translateToTextInputKeyboardAppearance:(long long)arg1;
++ (long long)translateToPublicKeyboardType:(unsigned long long)arg1;
 + (unsigned long long)translateToTextInputKeyboardType:(long long)arg1;
 + (unsigned long long)translateToTextInputSpellCheckingType:(long long)arg1;
 + (unsigned long long)translateToTextInputAutocorrectionType:(long long)arg1;

@@ -6,14 +6,13 @@
 
 #import <KnowledgeGraphKit/KGMutableGraphImplementation-Protocol.h>
 
-@class NSString, NSURL, NSUUID;
+@class NSString, NSURL;
 
 @protocol KGGraphStore <KGMutableGraphImplementation>
 + (NSString *)persistentStoreFileExtension;
 + (_Bool)destroyAtURL:(NSURL *)arg1 error:(id *)arg2;
 + (_Bool)migrateFromURL:(NSURL *)arg1 toURL:(NSURL *)arg2 error:(id *)arg3;
 + (_Bool)copyFromURL:(NSURL *)arg1 toURL:(NSURL *)arg2 error:(id *)arg3;
-@property(readonly, nonatomic) NSUUID *graphIdentifier;
 @property(nonatomic) unsigned long long graphVersion;
 @property(readonly, nonatomic) NSURL *url;
 - (_Bool)copyToURL:(NSURL *)arg1 error:(id *)arg2;

@@ -6,29 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSBagDataSourceProtocol-Protocol.h>
-#import <AppleMediaServices/NSCopying-Protocol.h>
-#import <AppleMediaServices/NSSecureCoding-Protocol.h>
-
-@class AMSBagKeySet, AMSProcessInfo, NSArray, NSDate, NSDictionary, NSString;
+@class ACAccount, AMSProcessInfo, NSDate, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSBagFrozenDataSource : NSObject <AMSBagDataSourceProtocol, NSCopying, NSSecureCoding>
+@interface AMSBagFrozenDataSource : NSObject
 {
     NSDate *_expirationDate;
     AMSProcessInfo *_processInfo;
     NSString *_profile;
     NSString *_profileVersion;
-    AMSBagKeySet *_bagKeySet;
-    NSArray *_cookies;
+    ACAccount *_account;
     NSDictionary *_data;
+    NSDictionary *_defaultValues;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *defaultValues; // @synthesize defaultValues=_defaultValues;
 @property(readonly, nonatomic) NSDictionary *data; // @synthesize data=_data;
-@property(readonly, nonatomic) NSArray *cookies; // @synthesize cookies=_cookies;
-@property(readonly, nonatomic) AMSBagKeySet *bagKeySet; // @synthesize bagKeySet=_bagKeySet;
+@property(readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property(readonly, copy, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property(readonly, copy, nonatomic) NSString *profile; // @synthesize profile=_profile;
 @property(readonly, copy, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
@@ -36,12 +32,13 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setDefaultValue:(id)arg1 forKey:(id)arg2;
 - (id)valueForURLVariable:(id)arg1 account:(id)arg2;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
-- (id)bagKeyInfoForKey:(id)arg1;
+- (id)defaultValueForKey:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
-- (id)_initWithProfile:(id)arg1 profileVersion:(id)arg2 data:(id)arg3 expirationDate:(id)arg4 bagKeySet:(id)arg5 cookies:(id)arg6 processInfo:(id)arg7;
+- (id)_initWithProfile:(id)arg1 profileVersion:(id)arg2 data:(id)arg3 expirationDate:(id)arg4 account:(id)arg5 processInfo:(id)arg6 defaultValues:(id)arg7;
 
 // Remaining properties
 @property(copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler;

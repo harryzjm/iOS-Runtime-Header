@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADCalendarToolInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CADCalendarToolOperationGroup <CADCalendarToolInterface>
+@interface CADCalendarToolOperationGroup : CADOperationGroup
 {
 }
 
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
 - (void)CADPostSyntheticRouteHypothesis:(id)arg1 forEventWithExternalURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADPurgeChangeTrackingReply:(CDUnknownBlockType)arg1;
-- (_Bool)accessGrantedToPerformSelector:(SEL)arg1;
+- (_Bool)accessGranted;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

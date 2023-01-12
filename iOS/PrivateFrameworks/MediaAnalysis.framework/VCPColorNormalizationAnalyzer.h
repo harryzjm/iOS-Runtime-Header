@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)analyzeCGImage:(struct CGImage *)arg1 results:(id *)arg2;
 - (id)init;
-- (void)_configureRequest:(id)arg1 withRevision:(unsigned long long)arg2;
 
 @end
 

@@ -9,6 +9,11 @@
 @class UIFont;
 
 @protocol MKFontManager <NSObject>
+@property(readonly, nonatomic) UIFont *lookAroundAttributionButtonFont;
+@property(readonly, nonatomic) UIFont *lookAroundTertiaryLabelFont;
+@property(readonly, nonatomic) UIFont *lookAroundSecondaryLabelFont;
+@property(readonly, nonatomic) UIFont *lookAroundLabelFont;
+@property(readonly, nonatomic) UIFont *lookAroundButtonFont;
 @property(readonly, nonatomic) UIFont *largeTitleHeaderFont;
 @property(readonly, nonatomic) UIFont *semiboldButtonCellFont;
 @property(readonly, nonatomic) UIFont *textBlurbFont;

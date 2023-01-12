@@ -30,9 +30,10 @@ __attribute__((visibility("hidden")))
     UIKBKeyViewAnimator *_keyViewAnimator;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIKBKeyViewAnimator *keyViewAnimator; // @synthesize keyViewAnimator=_keyViewAnimator;
 @property(nonatomic) _Bool initiallyAtEnd; // @synthesize initiallyAtEnd=_initiallyAtEnd;
-@property(nonatomic) id <UIKeyboardKeyplaneTransitionDelegate> transitionDelegate; // @synthesize transitionDelegate=_transitionDelegate;
+@property(nonatomic) __weak id <UIKeyboardKeyplaneTransitionDelegate> transitionDelegate; // @synthesize transitionDelegate=_transitionDelegate;
 @property(copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(retain, nonatomic) UIKBTree *keyboard; // @synthesize keyboard=_keyboard;
 - (_Bool)canDisplayTransitionFromKeyplane:(id)arg1 toKeyplane:(id)arg2;

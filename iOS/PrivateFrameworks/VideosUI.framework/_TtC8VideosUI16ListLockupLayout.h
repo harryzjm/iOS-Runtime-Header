@@ -12,7 +12,7 @@
     MISSING_TYPE *$__lazy_storage_$_titleLayout;
     MISSING_TYPE *$__lazy_storage_$_subtitleLayout;
     MISSING_TYPE *$__lazy_storage_$_bodyTextLayout;
-    MISSING_TYPE *hasBlurBackground;
+    MISSING_TYPE *hasBottomSeparator;
 }
 
 @end

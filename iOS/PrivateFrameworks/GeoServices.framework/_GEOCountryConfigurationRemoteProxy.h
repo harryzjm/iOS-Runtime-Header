@@ -6,23 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/_GEOCountryConfigurationServerProxy-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue, _GEOCountryConfigurationServerProxyDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _GEOCountryConfigurationRemoteProxy : NSObject <_GEOCountryConfigurationServerProxy>
+@interface _GEOCountryConfigurationRemoteProxy : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     id <_GEOCountryConfigurationServerProxyDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    int _countryCodeChangedToken;
     int _providersChangedToken;
-    id _countryCodeChangeListener;
 }
 
 - (void).cxx_destruct;
 - (void)updateCountryCodeWithCallbackQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)valueChangedForGEOConfigKey:(CDStruct_065526f1)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2;
 

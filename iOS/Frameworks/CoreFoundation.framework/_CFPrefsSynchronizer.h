@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_synchTimer;
     NSObject<OS_dispatch_queue> *_synchQueue;
     struct __CFSet *_dirtySources;
-    struct _opaque_pthread_mutex_t _CFPrefsDirtySourcesLock;
+    struct os_unfair_lock_s _CFPrefsDirtySourcesLock;
     _Bool _active;
 }
 

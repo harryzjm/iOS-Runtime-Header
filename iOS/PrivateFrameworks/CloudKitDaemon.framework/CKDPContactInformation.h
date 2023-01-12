@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKDPContactInformation : PBCodable <NSCopying>
+@interface CKDPContactInformation : PBCodable
 {
     NSString *_containerScopedUserId;
     NSString *_emailAddress;

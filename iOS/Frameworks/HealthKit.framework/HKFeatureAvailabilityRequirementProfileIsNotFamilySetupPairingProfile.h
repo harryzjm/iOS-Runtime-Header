@@ -4,14 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <HealthKit/HKFeatureAvailabilityRequirement-Protocol.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface HKFeatureAvailabilityRequirementProfileIsNotFamilySetupPairingProfile : NSObject <HKFeatureAvailabilityRequirement>
+@interface HKFeatureAvailabilityRequirementProfileIsNotFamilySetupPairingProfile
 {
 }
 
@@ -20,15 +14,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)isSatisfiedWithDataSource:(id)arg1 error:(id *)arg2;
-@property(readonly, nonatomic) NSString *requirementDescription;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
+- (id)requirementDescription;
 
 @end
 

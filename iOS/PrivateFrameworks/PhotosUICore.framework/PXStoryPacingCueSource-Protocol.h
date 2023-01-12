@@ -10,7 +10,7 @@
 @protocol PXStoryPacingCueSource
 @property(readonly, nonatomic) long long cuesVersion;
 @property(readonly, nonatomic) id <PXAudioCueSource> audioCueSource;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 currentTime;
-- (NSString *)diagnosticCueStringForSize:(struct CGSize)arg1 withIndicatorTime:(CDStruct_1b6d18a9)arg2 rangeIndicatorTimeRange:(CDStruct_e83c9415)arg3;
+@property(readonly, nonatomic) CDStruct_198678f7 currentTime;
+- (NSString *)diagnosticCueStringForSize:(struct CGSize)arg1 withIndicatorTime:(CDStruct_198678f7)arg2 rangeIndicatorTimeRange:(CDStruct_3c1748cc)arg3;
 @end
 

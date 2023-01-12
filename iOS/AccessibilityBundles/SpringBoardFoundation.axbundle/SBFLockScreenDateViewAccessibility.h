@@ -11,7 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axWidgetFromController:(id)arg1;
+- (_Bool)_axIsComplicationViewVisible;
+- (_Bool)_axIsInlineWidgetVisible;
+- (id)_axComplicationContainerViewController;
+- (_Bool)_axIsDateViewVisible;
+- (id)_axInlineComplicationViewController;
 - (void)layoutSubviews;
+- (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
 - (long long)_accessibilitySortPriority;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (_Bool)_accessibilityAllowOutOfBoundsHitTestAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -21,6 +28,9 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateLabels;
 - (struct CGRect)accessibilityFrame;
+- (_Bool)_accessibilityServesAsFirstElement;
+- (id)_axElements:(_Bool)arg1;
+- (id)_accessibilityUserTestingChildren;
 - (id)accessibilityElements;
 
 @end

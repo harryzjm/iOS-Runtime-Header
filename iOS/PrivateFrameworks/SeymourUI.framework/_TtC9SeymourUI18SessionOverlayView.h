@@ -26,10 +26,17 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *trackView;
     MISSING_TYPE *highlightPlatter;
     MISSING_TYPE *highlightLabel;
+    MISSING_TYPE *inclineView;
+    MISSING_TYPE *intensityView;
+    MISSING_TYPE *rpmView;
+    MISSING_TYPE *spmView;
+    MISSING_TYPE *separatorView;
     MISSING_TYPE *activeConstraints;
     MISSING_TYPE *trackViewRightConstraint;
     MISSING_TYPE *multiUserCelebrationViewRightConstraint;
     MISSING_TYPE *overlayLayoutGuide;
+    MISSING_TYPE *notchInset;
+    MISSING_TYPE *oldOrientation;
     MISSING_TYPE *onNotchSide;
     MISSING_TYPE *elementViewMap;
     MISSING_TYPE *overlayLayoutGuideTop;
@@ -41,7 +48,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)didMoveToWindow;
+- (void)safeAreaInsetsDidChange;
+- (void)layoutSubviews;
 - (void)willMoveToSuperview:(id)arg1;
 
 @end

@@ -6,13 +6,10 @@
 
 #import <HomeKit/HMCameraRecordingReachabilityEvent.h>
 
-#import <Home/HFCameraRecordingEvent-Protocol.h>
-
 @class NSDate, NSString, NSUUID;
 
-@interface HMCameraRecordingReachabilityEvent (HFAdditions) <HFCameraRecordingEvent>
+@interface HMCameraRecordingReachabilityEvent (HFAdditions)
 - (unsigned long long)containerType;
-- (id)posterFrames;
 - (id)videoAssetRequiredHTTPHeaders;
 - (id)encryptionKey;
 - (double)targetFragmentDuration;

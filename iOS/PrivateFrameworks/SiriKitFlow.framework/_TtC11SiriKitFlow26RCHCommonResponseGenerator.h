@@ -13,7 +13,6 @@
     MISSING_TYPE *viewFactory;
     MISSING_TYPE *aceServiceInvoker;
     MISSING_TYPE *deviceState;
-    MISSING_TYPE *metricsState;
     MISSING_TYPE *eventSender;
 }
 

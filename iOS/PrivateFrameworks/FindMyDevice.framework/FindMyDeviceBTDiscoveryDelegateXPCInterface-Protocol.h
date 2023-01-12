@@ -6,12 +6,11 @@
 
 #import <FindMyDevice/NSObject-Protocol.h>
 
-@class NSError, NSObject;
-@protocol FMDBluetoothDiscoveryDevice;
+@class FMDBluetoothDiscoveryXPCAdapterDevice, NSError;
 
 @protocol FindMyDeviceBTDiscoveryDelegateXPCInterface <NSObject>
-- (oneway void)didLoseDevice:(NSObject<FMDBluetoothDiscoveryDevice> *)arg1;
-- (oneway void)didDiscoverDevice:(NSObject<FMDBluetoothDiscoveryDevice> *)arg1;
+- (oneway void)didLoseDevice:(FMDBluetoothDiscoveryXPCAdapterDevice *)arg1;
+- (oneway void)didDiscoverDevice:(FMDBluetoothDiscoveryXPCAdapterDevice *)arg1;
 - (oneway void)didEndDiscoveryWithError:(NSError *)arg1;
 @end
 

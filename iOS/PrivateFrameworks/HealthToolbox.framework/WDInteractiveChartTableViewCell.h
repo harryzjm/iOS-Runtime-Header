@@ -6,12 +6,10 @@
 
 #import <HealthUI/HKViewTableViewCell.h>
 
-#import <HealthToolbox/WDDisplayTypeDetailViewControllerChartCellType-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WDInteractiveChartTableViewCell : HKViewTableViewCell <WDDisplayTypeDetailViewControllerChartCellType>
+@interface WDInteractiveChartTableViewCell : HKViewTableViewCell
 {
     unsigned long long _displayMode;
     unsigned long long _marginMode;

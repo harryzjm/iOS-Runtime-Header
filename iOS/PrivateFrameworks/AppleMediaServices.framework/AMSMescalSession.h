@@ -12,15 +12,18 @@
 __attribute__((visibility("hidden")))
 @interface AMSMescalSession : NSObject
 {
-    NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSData *_certificateData;
     AMSURLSession *_urlSession;
     AMSMescalFairPlay *_fairPlayContext;
     long long _mescalType;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
 }
 
 + (id)sessionWithType:(long long)arg1;
++ (id)primeSession;
++ (id)defaultSession;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 - (_Bool)_verifyEntitlements;
 - (_Bool)_shouldRetryFairPlayForError:(id)arg1;
 - (void)_resetSession;

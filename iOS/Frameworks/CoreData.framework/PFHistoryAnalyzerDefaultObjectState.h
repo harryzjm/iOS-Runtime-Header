@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/PFHistoryAnalyzerObjectState-Protocol.h>
-
 @class NSDictionary, NSManagedObjectID, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PFHistoryAnalyzerDefaultObjectState : NSObject <PFHistoryAnalyzerObjectState>
+@interface PFHistoryAnalyzerDefaultObjectState : NSObject
 {
     NSManagedObjectID *_analyzedObjectID;
     NSNumber *_originalTransactionNumber;

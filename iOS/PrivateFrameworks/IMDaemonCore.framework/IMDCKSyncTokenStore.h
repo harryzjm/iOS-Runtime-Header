@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IMDaemonCore/IMDCKSyncTokenStore-Protocol.h>
-
 @class NSString;
 
-@interface IMDCKSyncTokenStore : NSObject <IMDCKSyncTokenStore>
+@interface IMDCKSyncTokenStore : NSObject
 {
 }
 

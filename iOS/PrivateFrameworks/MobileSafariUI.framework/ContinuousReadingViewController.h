@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/UIScrollViewDelegate-Protocol.h>
-
 @class ContinuousReadingBannerView, ContinuousReadingItem, ContinuousReadingPreviewView, NSString, SFBannerTheme, UIScrollView, UIView, _SFWebView;
 @protocol ContinuousReadingViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface ContinuousReadingViewController : NSObject <UIScrollViewDelegate>
+@interface ContinuousReadingViewController : NSObject
 {
     SFBannerTheme *_bannerTheme;
     _Bool _suppressingAutoScroll;

@@ -6,11 +6,9 @@
 
 #import <IBAutolayoutFoundation/IBLayoutSymbolicConstant.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface IBLayoutSymbolicConstant (IBUILayoutSymbolicConstantIntegration) <IBBinaryArchiving>
+@interface IBLayoutSymbolicConstant (IBUILayoutSymbolicConstantIntegration)
 - (id)initWithBinaryUnarchiver:(id)arg1;
 
 // Remaining properties

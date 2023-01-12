@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDURLRequest.h"
+
 @class CKDTrustedTargetWrappedKey, NSArray, NSData, NSString;
 
-@interface CKDCodeFunctionInvokeURLRequest
+@interface CKDCodeFunctionInvokeURLRequest : CKDURLRequest
 {
     CDUnknownBlockType _serializedResultsCallback;
     NSString *_serviceName;

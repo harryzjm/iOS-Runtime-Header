@@ -12,21 +12,28 @@ __attribute__((visibility("hidden")))
 @interface _UIPageIndicatorStoreObject : NSObject
 {
     UIImage *_customImage;
+    UIImage *_activeImage;
     long long _startIndex;
     long long _endIndex;
     struct CGSize _indicatorSize;
+    struct CGSize _activeIndicatorSize;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) long long endIndex; // @synthesize endIndex=_endIndex;
 @property(nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
+@property(nonatomic) struct CGSize activeIndicatorSize; // @synthesize activeIndicatorSize=_activeIndicatorSize;
+@property(retain, nonatomic) UIImage *activeImage; // @synthesize activeImage=_activeImage;
 @property(nonatomic) struct CGSize indicatorSize; // @synthesize indicatorSize=_indicatorSize;
 @property(retain, nonatomic) UIImage *customImage; // @synthesize customImage=_customImage;
 - (id)description;
-- (id)splitAtIndex:(long long)arg1 withImage:(id)arg2;
+- (id)splitAtIndex:(long long)arg1 withImage:(id)arg2 active:(_Bool)arg3;
 - (_Bool)validPageWithinBound:(long long)arg1;
-- (void)invalidateIndicatorSize;
-- (id)initWithImage:(id)arg1 startIndex:(long long)arg2 endIndex:(long long)arg3;
+- (void)invalidateLayoutInfo;
+- (void)_copyImagesFromObject:(id)arg1;
+@property(readonly, nonatomic) _Bool hasImage;
+@property(readonly, nonatomic) struct CGSize resolvedSize;
+- (id)initWithStartIndex:(long long)arg1 endIndex:(long long)arg2;
 
 @end
 

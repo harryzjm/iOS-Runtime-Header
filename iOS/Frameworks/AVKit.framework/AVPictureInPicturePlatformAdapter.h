@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVPictureInPictureControlsStyleAppearance-Protocol.h>
-#import <AVKit/AVPictureInPictureViewControllerDelegate-Protocol.h>
-#import <AVKit/PGPictureInPictureProxyDelegate-Protocol.h>
-
-@class AVObservationController, AVPictureInPicturePrerollAttributes, AVPictureInPictureViewController, AVPlayerController, AVSecondScreenConnection, NSString, NSTimer, PGPictureInPictureProxy, UIWindow;
+@class AVObservationController, AVPictureInPicturePrerollAttributes, AVPictureInPictureViewController, AVPlayerController, AVPlayerControllerTimeResolver, AVSecondScreenConnection, NSString, NSTimer, PGPictureInPictureProxy, UIWindow;
 @protocol AVPictureInPictureContentSource, AVPictureInPicturePlatformAdapterDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVPictureInPicturePlatformAdapter : NSObject <AVPictureInPictureViewControllerDelegate, PGPictureInPictureProxyDelegate, AVPictureInPictureControlsStyleAppearance>
+@interface AVPictureInPicturePlatformAdapter : NSObject
 {
+    AVPlayerControllerTimeResolver *_timeResolver;
     _Bool _allowsPictureInPicturePlayback;
     _Bool _alwaysStartsAutomaticallyWhenEnteringBackground;
     _Bool _canStartAutomaticallyWhenEnteringBackground;
+    _Bool _canPausePlaybackWhenExitingPictureInPicture;
     _Bool _requiresLinearPlayback;
     _Bool _microphoneEnabled;
     _Bool _managesWiredSecondScreenPlayback;
@@ -82,12 +80,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isMicrophoneEnabled) _Bool microphoneEnabled; // @synthesize microphoneEnabled=_microphoneEnabled;
 @property(nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
 @property(nonatomic) _Bool requiresLinearPlayback; // @synthesize requiresLinearPlayback=_requiresLinearPlayback;
+@property(nonatomic) _Bool canPausePlaybackWhenExitingPictureInPicture; // @synthesize canPausePlaybackWhenExitingPictureInPicture=_canPausePlaybackWhenExitingPictureInPicture;
 @property(nonatomic) _Bool canStartAutomaticallyWhenEnteringBackground; // @synthesize canStartAutomaticallyWhenEnteringBackground=_canStartAutomaticallyWhenEnteringBackground;
 @property(nonatomic) _Bool alwaysStartsAutomaticallyWhenEnteringBackground; // @synthesize alwaysStartsAutomaticallyWhenEnteringBackground=_alwaysStartsAutomaticallyWhenEnteringBackground;
 @property(nonatomic) _Bool allowsPictureInPicturePlayback; // @synthesize allowsPictureInPicturePlayback=_allowsPictureInPicturePlayback;
 @property(retain, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
 @property(nonatomic) __weak id <AVPictureInPicturePlatformAdapterDelegate> delegate; // @synthesize delegate=_delegate;
-- (long long)_sceneActivationState;
+- (void)_setupPipAdapter;
 - (void)_removeSecondScreenConnection;
 - (void)pictureInPictureViewControllerViewWillDisappear:(id)arg1;
 - (void)pictureInPictureViewControllerViewDidAppear:(id)arg1;
@@ -112,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateProxyPlaybackState;
 - (long long)_proxyControlsStyle;
 - (void)_updatePictureInPictureShouldStartWhenEnteringBackground;
+- (_Bool)_isFullScreen;
 - (void)updateLayoutDependentBehaviors;
 @property(readonly, nonatomic, getter=isSystemPictureInPicturePossible) _Bool systemPictureInPicturePossible;
 @property(readonly, nonatomic) _Bool canAnimatePictureInPictureTransition;

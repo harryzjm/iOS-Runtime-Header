@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EKObject.h"
+
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface EKExceptionDate
+@interface EKExceptionDate : EKObject
 {
 }
 

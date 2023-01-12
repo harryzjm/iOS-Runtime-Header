@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapFeatureAccess, NSCache, NSMutableDictionary;
+@class GEOMapFeatureAccess, NSCache;
 
 __attribute__((visibility("hidden")))
 @interface GEOPathMatcherRoadLookup : NSObject
 {
     GEOMapFeatureAccess *_mapFeatureAccess;
     NSCache *_roadsCache;
-    NSMutableDictionary *_roadsByMuid;
     unsigned long long _cacheMissCount;
     unsigned long long _mapFeatureRoadsCount;
 }
 
 - (void).cxx_destruct;
 - (id)description;
+- (void)_cacheRoad:(id)arg1;
+- (id)_roadForKey:(struct GEOPathMatcherRoadKey)arg1;
 - (id)findOutgoingRoadsFrom:(struct GEOPathMatcherRoadKey)arg1;
 - (id)findRoadsNearCoordinate:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2;
 - (id)findRoadWithMuid:(long long)arg1 nearCoordinate:(CDStruct_c3b9c2ee)arg2;

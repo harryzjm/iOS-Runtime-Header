@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <VisionKitCore/UIPointerInteractionDelegate-Protocol.h>
-
 @class NSString, VKQuad;
 
 __attribute__((visibility("hidden")))
-@interface VKCTextPointerTrackingView : UIView <UIPointerInteractionDelegate>
+@interface VKCTextPointerTrackingView : UIView
 {
     VKQuad *_quad;
 }

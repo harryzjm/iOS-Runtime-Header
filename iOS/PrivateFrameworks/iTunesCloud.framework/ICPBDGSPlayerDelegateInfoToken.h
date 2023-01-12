@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICPBDGSPlayerDelegateInfoToken : PBCodable <NSCopying>
+@interface ICPBDGSPlayerDelegateInfoToken : PBCodable
 {
     double _expirationTimeInterval;
     unsigned long long _sessionID;

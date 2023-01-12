@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIControl.h"
+
 @class UIButton, UIColor, UIImageView, UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewCellDetailDisclosureView
+@interface UITableViewCellDetailDisclosureView : UIControl
 {
     UIButton *_accessoryButton;
     UIImageView *_disclosureView;

@@ -23,7 +23,7 @@
 - (unsigned long long)pageNumberForAttachment:(TSWPAttachment *)arg1;
 - (unsigned long long)pageCountForAttachment:(TSWPAttachment *)arg1;
 - (struct CGSize)initialTextSize;
-- (int)naturalAlignmentForTextLayout:(TSWPLayout *)arg1;
+- (long long)naturalAlignmentForTextLayout:(TSWPLayout *)arg1;
 - (struct CGRect)maskRectForTextLayout:(TSWPLayout *)arg1;
 - (_Bool)textLayoutShouldLayoutVertically:(TSWPLayout *)arg1;
 - (_Bool)textLayoutShouldWrapAroundExternalDrawables:(TSWPLayout *)arg1;
@@ -32,6 +32,7 @@
 - (double)maxAutoGrowLineWidthForTextLayout:(TSWPLayout *)arg1;
 - (NSSet *)reliedOnLayoutsForTextLayout:(TSWPLayout *)arg1;
 - (void)invalidateForAutosizingTextLayout:(TSWPLayout *)arg1;
+- (_Bool)forceParentAutosizedFrameForTextLayout:(TSWPLayout *)arg1;
 - (_Bool)forceParentAutosizeFlagsForTextLayout:(TSWPLayout *)arg1;
 @end
 

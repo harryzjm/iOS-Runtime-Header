@@ -6,7 +6,15 @@
 
 #import <DisembarkUI/NSObject-Protocol.h>
 
+@class NSString, UIViewController;
+@protocol DKFindMyProvider;
+
 @protocol DKAccountProvider <NSObject>
+@property(retain, nonatomic) id <DKFindMyProvider> findMyProvider;
+- (void)cacheLocalDevicePasscode:(NSString *)arg1 passcodeType:(int)arg2;
+- (void)signOutPrimaryAppleAccountWithPresentingViewController:(UIViewController *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)preparePrimaryAppleAccountForSignOutWithPresentingViewController:(UIViewController *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)preparationRequiredForPrimaryAppleAccountWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)fetchAccounts:(void (^)(NSArray *))arg1;
 @end
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-
 @class CAMediaTimingFunction, NSDictionary, NSMapTable, NSMutableArray, NSString, NSUUID, UIView, UIViewPropertyAnimator;
 @protocol _UIBasicAnimationFactory;
 
 __attribute__((visibility("hidden")))
-@interface UIViewAnimationState : NSObject <CAAnimationDelegate>
+@interface UIViewAnimationState : NSObject
 {
     UIViewAnimationState *_nextState;
     NSString *_animationID;

@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/TSDChangeableInfo-Protocol.h>
-#import <KeynoteQuicklook/TSKDocumentObject-Protocol.h>
-#import <KeynoteQuicklook/TSKTransformableObject-Protocol.h>
-
-@class KNAbstractSlide, NSString, TSDFill, TSDInfoGeometry, TSPObject, TSSPropertySetChangeDetails;
+@class KNAbstractSlide, KNMotionBackground, NSString, TSDFill, TSDInfoGeometry, TSPObject, TSSPropertySetChangeDetails;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface KNSlideBackgroundInfo : NSObject <TSDChangeableInfo, TSKDocumentObject, TSKTransformableObject>
+@interface KNSlideBackgroundInfo : NSObject
 {
     NSObject<TSDInfo> *_parentInfo;
     TSSPropertySetChangeDetails *_changes;
@@ -38,6 +34,7 @@
 - (void)willChangeProperty:(int)arg1;
 - (void)beginCollectingChanges;
 - (id)originalPDFDataForCopy;
+@property(readonly, nonatomic) KNMotionBackground *motionBackground;
 @property(readonly, nonatomic) TSDFill *fill;
 - (Class)layoutClass;
 - (_Bool)isSelectable;

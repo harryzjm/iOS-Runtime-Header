@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, PSAppCellularUsageSpecifier, UIAlertController;
+#import <SettingsCellularUI/NSObject-Protocol.h>
 
-@protocol PSAppCellularUsageSpecifierDelegate
-- (void)didFailToSetPolicy:(NSNumber *)arg1 forSpecifier:(PSAppCellularUsageSpecifier *)arg2;
+@class PSAppCellularUsageSpecifier;
 
-@optional
-- (void)presentAlert:(UIAlertController *)arg1;
+@protocol PSAppCellularUsageSpecifierDelegate <NSObject>
+- (void)didFailToSetPolicyForSpecifier:(PSAppCellularUsageSpecifier *)arg1;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <QuickLook/ARQLInlineTouch.h>
 
-#import <AssetViewer/ASVTouch-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
-@interface ARQLInlineTouch (ARQLInlineTouch_ASVTouch) <ASVTouch>
+@interface ARQLInlineTouch (ARQLInlineTouch_ASVTouch)
 @property(readonly, nonatomic) MISSING_TYPE *previousLocation;
 @property(readonly, nonatomic) MISSING_TYPE *location;
 

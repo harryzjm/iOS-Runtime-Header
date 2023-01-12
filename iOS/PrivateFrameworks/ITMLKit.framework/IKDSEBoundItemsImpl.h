@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ITMLKit/IKDataSourceElementImplementing-Protocol.h>
-
 @class IKAppDataSet, IKChangeSet, IKDataSourceElement, NSArray, NSDictionary, NSMutableDictionary, NSMutableIndexSet, NSString, _IKDSEPrototypeBundle;
 
 __attribute__((visibility("hidden")))
-@interface IKDSEBoundItemsImpl : NSObject <IKDataSourceElementImplementing>
+@interface IKDSEBoundItemsImpl : NSObject
 {
     _Bool _visibleIndexRangeIsDirty;
     IKDataSourceElement *_dataSourceElement;

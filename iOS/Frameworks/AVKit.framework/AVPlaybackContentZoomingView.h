@@ -6,13 +6,10 @@
 
 #import <UIKit/UIScrollView.h>
 
-#import <AVKit/AVPlaybackContentContainer-Protocol.h>
-#import <AVKit/UIScrollViewDelegate-Protocol.h>
-
 @class AVPlaybackContentContainerView, NSString, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface AVPlaybackContentZoomingView : UIScrollView <UIScrollViewDelegate, AVPlaybackContentContainer>
+@interface AVPlaybackContentZoomingView : UIScrollView
 {
     _Bool _playingOnSecondScreen;
     _Bool _zoomingEnabled;
@@ -48,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (id)viewForZoomingInScrollView:(id)arg1;
 - (void)zoomToPoint:(struct CGPoint)arg1;
-- (void)setVideoGravity:(long long)arg1 removingAllSubayerTransformAnimations:(_Bool)arg2;
+- (void)setVideoGravity:(long long)arg1 removingAllSublayerTransformAnimations:(_Bool)arg2;
 @property(nonatomic) _Bool canShowStatusBarBackgroundGradientWhenStatusBarVisible;
 - (id)initWithFrame:(struct CGRect)arg1 activeContentView:(id)arg2;
 

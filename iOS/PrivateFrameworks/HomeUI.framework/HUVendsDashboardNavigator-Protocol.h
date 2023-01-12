@@ -7,6 +7,6 @@
 @protocol HUDashboardNavigator;
 
 @protocol HUVendsDashboardNavigator
-@property(retain, nonatomic) id <HUDashboardNavigator> dashboardNavigator;
+@property(nonatomic, readonly) id <HUDashboardNavigator> dashboardNavigator;
 @end
 

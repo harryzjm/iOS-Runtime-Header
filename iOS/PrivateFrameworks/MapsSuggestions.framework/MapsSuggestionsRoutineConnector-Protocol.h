@@ -15,6 +15,7 @@
 - (void)startMonitoringVehicleEventsWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchPredictedExitDatesFromLocation:(CLLocation *)arg1 onDate:(NSDate *)arg2 withHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchRoutineModeFromLocation:(CLLocation *)arg1 withHandler:(void (^)(long long, NSError *))arg2;
+- (void)fetchLocationsOfInterestWithinDistance:(double)arg1 ofLocation:(CLLocation *)arg2 withHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchLocationOfInterestAtLocation:(CLLocation *)arg1 withHandler:(void (^)(RTLocationOfInterest *, NSError *))arg2;
 - (void)fetchLocationOfInterestWithIdentifier:(NSUUID *)arg1 withHandler:(void (^)(RTLocationOfInterest *, NSError *))arg2;
 - (void)fetchLocationsOfInterestVisitedSinceDate:(NSDate *)arg1 withHandler:(void (^)(NSArray *, NSError *))arg2;

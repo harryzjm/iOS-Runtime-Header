@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSKeyedArchiverDelegate-Protocol.h>
-
 @class NSString, UIKBAutoFillTestArchive, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface UIKBAutoFillTestArchiveMaker : NSObject <NSKeyedArchiverDelegate>
+@interface UIKBAutoFillTestArchiveMaker : NSObject
 {
     UIKBAutoFillTestArchive *_testArchive;
     UIViewController *_viewControllerToSnapshot;

@@ -7,7 +7,7 @@
 #import <OnBoardingKit/OBPrivacyPresenter.h>
 
 @interface OBPrivacyPresenter (PKPrivacy)
-+ (id)pk_presenterForContext:(unsigned long long)arg1;
++ (CDUnknownBlockType)pk_defaultPresentationActionForContext:(unsigned long long)arg1;
 + (id)pk_presenterForContext:(unsigned long long)arg1;
 @end
 

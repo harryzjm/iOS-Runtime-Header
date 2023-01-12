@@ -6,25 +6,25 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
+@class CKCDPCodeServiceRequestAccountConfig, CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions, CKCDPCodeServiceRequestAttestationRequest, CKCDPCodeServiceRequestAuthInformation, CKCDPCodeServiceRequestProtectedCloudComputeMetadata, CKCDPCodeServiceRequestRequestContext, CKCDPTrustedTargetCryptoMetadata, NSData, NSMutableArray, NSString;
 
-@class CKCDPCodeServiceRequestAccountConfig, CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions, CKCDPCodeServiceRequestAttestationRequest, CKCDPCodeServiceRequestProtectedCloudComputeMetadata, CKCDPCodeServiceRequestRequestContext, CKCDPTrustedTargetCryptoMetadata, NSData, NSMutableArray, NSString;
-
-@interface CKCDPCodeServiceRequest : PBRequest <NSCopying>
+@interface CKCDPCodeServiceRequest : PBRequest
 {
     CKCDPCodeServiceRequestAccountConfig *_accountConfig;
     CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions *_assetAuthorizeGetRequestOptions;
     CKCDPCodeServiceRequestAttestationRequest *_attestationRequest;
+    CKCDPCodeServiceRequestAuthInformation *_authInformation;
     NSMutableArray *_clientConfigs;
+    int _dataProtection;
     NSString *_functionName;
     CKCDPCodeServiceRequestProtectedCloudComputeMetadata *_protectedCloudComputeMetadata;
     CKCDPCodeServiceRequestRequestContext *_requestContext;
-    NSData *_routingToken;
     int _serializationFormat;
     NSData *_serializedParameters;
     NSString *_serviceName;
     CKCDPTrustedTargetCryptoMetadata *_trustedTargetCryptoMetadata;
     struct {
+        unsigned int dataProtection:1;
         unsigned int serializationFormat:1;
     } _has;
 }
@@ -33,8 +33,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKCDPTrustedTargetCryptoMetadata *trustedTargetCryptoMetadata; // @synthesize trustedTargetCryptoMetadata=_trustedTargetCryptoMetadata;
 @property(retain, nonatomic) CKCDPCodeServiceRequestProtectedCloudComputeMetadata *protectedCloudComputeMetadata; // @synthesize protectedCloudComputeMetadata=_protectedCloudComputeMetadata;
+@property(retain, nonatomic) CKCDPCodeServiceRequestAuthInformation *authInformation; // @synthesize authInformation=_authInformation;
 @property(retain, nonatomic) CKCDPCodeServiceRequestAttestationRequest *attestationRequest; // @synthesize attestationRequest=_attestationRequest;
-@property(retain, nonatomic) NSData *routingToken; // @synthesize routingToken=_routingToken;
 @property(retain, nonatomic) CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions *assetAuthorizeGetRequestOptions; // @synthesize assetAuthorizeGetRequestOptions=_assetAuthorizeGetRequestOptions;
 @property(retain, nonatomic) CKCDPCodeServiceRequestRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property(retain, nonatomic) CKCDPCodeServiceRequestAccountConfig *accountConfig; // @synthesize accountConfig=_accountConfig;
@@ -51,10 +51,15 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (void)clearOneofValuesForDataProtection;
+- (int)StringAsDataProtection:(id)arg1;
+- (id)dataProtectionAsString:(int)arg1;
+@property(nonatomic) _Bool hasDataProtection;
+@property(nonatomic) int dataProtection; // @synthesize dataProtection=_dataProtection;
 @property(readonly, nonatomic) _Bool hasTrustedTargetCryptoMetadata;
 @property(readonly, nonatomic) _Bool hasProtectedCloudComputeMetadata;
+@property(readonly, nonatomic) _Bool hasAuthInformation;
 @property(readonly, nonatomic) _Bool hasAttestationRequest;
-@property(readonly, nonatomic) _Bool hasRoutingToken;
 @property(readonly, nonatomic) _Bool hasAssetAuthorizeGetRequestOptions;
 @property(readonly, nonatomic) _Bool hasRequestContext;
 @property(readonly, nonatomic) _Bool hasAccountConfig;

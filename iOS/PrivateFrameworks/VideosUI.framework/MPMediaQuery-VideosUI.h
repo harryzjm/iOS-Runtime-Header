@@ -13,5 +13,6 @@
 + (id)vui_episodesQueryWithMediaLibrary:(id)arg1;
 + (id)vui_moviesQueryWithMediaLibrary:(id)arg1;
 - (void)_vui_configureMediaQueryWithMediaLibrary:(id)arg1;
+- (void)vui_excludePreorderContent;
 @end
 

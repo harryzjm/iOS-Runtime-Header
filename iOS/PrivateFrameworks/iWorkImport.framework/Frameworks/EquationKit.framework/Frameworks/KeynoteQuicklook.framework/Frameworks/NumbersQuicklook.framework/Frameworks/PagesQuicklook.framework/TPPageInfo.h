@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSDContainerInfo-Protocol.h>
-
 @class NSArray, NSString, TPBodyInfo, TPDocumentRoot, TPPageController, TSDInfoGeometry, TSPObject;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface TPPageInfo : NSObject <TSDContainerInfo>
+@interface TPPageInfo : NSObject
 {
     unsigned long long _pageIndex;
     TPBodyInfo *_bodyInfo;
@@ -51,7 +49,7 @@
 @property(copy, nonatomic) TSDInfoGeometry *geometry;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 @property(nonatomic) NSObject<TSDInfo> *parentInfo;
-@property(readonly, nonatomic) TPPageController *pageController;
+@property(readonly, nonatomic) __weak TPPageController *pageController;
 - (id)copyWithContext:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

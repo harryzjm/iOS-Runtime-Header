@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ScreenTimeSettingsUI/STAllowanceDetailListControllerDelegate-Protocol.h>
-
 @class NSArray, NSDictionary, NSObject, NSString, PSSpecifier;
 @protocol STRootViewModelCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface STAllowanceListController <STAllowanceDetailListControllerDelegate>
+@interface STAllowanceListController
 {
     _Bool _shouldShowConfirmDeletionAlert;
     NSObject<STRootViewModelCoordinator> *_coordinator;

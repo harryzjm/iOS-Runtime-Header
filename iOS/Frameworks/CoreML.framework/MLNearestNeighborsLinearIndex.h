@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLNearestNeighborsIndex-Protocol.h>
-#import <CoreML/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface MLNearestNeighborsLinearIndex : NSObject <MLNearestNeighborsIndex, NSSecureCoding>
+@interface MLNearestNeighborsLinearIndex : NSObject
 {
     vector_8ca568ff vData;
     vector_8ca568ff vDataL2Squared;
@@ -27,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)dataPointCount;
 - (_Bool)updateWithData:(const void *)arg1 error:(id *)arg2;
+- (vector_7105b4ee)findNearestNeighbors:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (vector_7105b4ee)findNearestNeighbors:(unsigned long long)arg1 toQueryPoint:(const void *)arg2;
 - (id)initWithDataset:(vector_8ca568ff)arg1 numberOfDimensions:(unsigned long long)arg2;
 

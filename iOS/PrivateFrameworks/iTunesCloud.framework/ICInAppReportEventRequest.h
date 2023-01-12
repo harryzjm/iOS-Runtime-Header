@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ICRequestOperation.h"
+
 @class ICStoreRequestContext, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICInAppReportEventRequest
+@interface ICInAppReportEventRequest : ICRequestOperation
 {
     ICStoreRequestContext *_storeRequestContext;
     NSString *_messageIdentifier;

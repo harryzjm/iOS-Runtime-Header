@@ -6,7 +6,7 @@
 
 #import <Foundation/NSError.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface NSError (AppleMediaServices)
 - (id)ams_errorByAddingUnderlyingError:(id)arg1;
@@ -20,13 +20,20 @@
 - (id)ams_errorByAddingUserInfo:(id)arg1;
 - (id)ams_errorByAddingToMultipleUnderlyingErrors:(id)arg1;
 - (id)ams_sanitizedForSecureCoding;
-- (id)ams_errorByCombiningWithUnderlyingError:(id)arg1;
 - (id)_ams_firstUnderlyingErrorPassingTest:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSError *ams_underlyingError;
-- (id)ams_multipleUnderlyingErrors;
 @property(readonly, nonatomic) NSString *ams_title;
 @property(readonly, nonatomic) NSString *ams_message;
-@property(readonly, nonatomic, getter=ams_isTimeoutError) _Bool ams_timeoutError;
 @property(readonly, nonatomic, getter=ams_isUserCancelledError) _Bool ams_userCancelledError;
+@property(readonly, nonatomic, getter=ams_isTimeoutError) _Bool ams_timeoutError;
+@property(readonly, nonatomic) NSArray *ams_multipleUnderlyingErrors;
+- (id)ams_errorByCombiningWithUnderlyingError:(id)arg1;
+@property(readonly, nonatomic, getter=ams_isBagValueMissingError) _Bool ams_bagValueMissingError;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQUOutputBundle-Protocol.h>
-
 @class GQUProgressiveHelper, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQUProgressiveOutputBundle : NSObject <GQUOutputBundle>
+@interface GQUProgressiveOutputBundle : NSObject
 {
     GQUProgressiveHelper *mHelper;
     struct __CFDictionary *mQuickLookProperties;

@@ -13,12 +13,16 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *presenter;
     MISSING_TYPE *stackView;
+    MISSING_TYPE *landscapeConstraints;
+    MISSING_TYPE *portraitConstraints;
+    MISSING_TYPE *previousBounds;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *descriptionLabel;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

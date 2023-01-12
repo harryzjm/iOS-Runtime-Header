@@ -6,7 +6,7 @@
 
 #import <BiomeStorage/NSObject-Protocol.h>
 
-@class NSData;
+@class NSData, NSDictionary;
 
 @protocol BMStoreData <NSObject>
 + (id)eventWithData:(NSData *)arg1 dataVersion:(unsigned int)arg2;
@@ -14,6 +14,7 @@
 - (NSData *)serialize;
 
 @optional
+- (NSDictionary *)jsonDict;
 - (NSData *)json;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaServices/MSVSQLDatabaseTransactionSavepoint-Protocol.h>
-
 @class MSVSQLDatabaseTransaction, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MSVSQLDatabaseTransactionSavepoint : NSObject <MSVSQLDatabaseTransactionSavepoint>
+@interface _MSVSQLDatabaseTransactionSavepoint : NSObject
 {
     NSString *_name;
     MSVSQLDatabaseTransaction *_transaction;

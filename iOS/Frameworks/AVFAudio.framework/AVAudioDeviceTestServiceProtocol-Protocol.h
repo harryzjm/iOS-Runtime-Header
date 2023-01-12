@@ -8,6 +8,9 @@
 
 @protocol AVAudioDeviceTestServiceProtocol
 - (void)cancel;
+- (void)stopRecording:(void (^)(NSError *))arg1;
+- (void)startRecording:(AVAudioDeviceTestSequence *)arg1 filePath:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)playback:(AVAudioDeviceTestSequence *)arg1 filePath:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)startWithSequence:(AVAudioDeviceTestSequence *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)passExtensionToken:(NSString *)arg1;
 @end

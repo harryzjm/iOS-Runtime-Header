@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _TtC15ConversationKit30SystemBannerHostViewController;
+#import <ConversationKit/NSObject-Protocol.h>
 
-@protocol _TtP15ConversationKit38SystemBannerHostViewControllerDelegate_
-- (void)didDismiss:(_TtC15ConversationKit30SystemBannerHostViewController *)arg1;
+@class CNKSystemBannerHostViewController;
+
+@protocol _TtP15ConversationKit38SystemBannerHostViewControllerDelegate_ <NSObject>
+- (void)deepLinkToFullScreenCallDetailsView;
+- (void)deepLinkToFullScreenCallUI;
+- (void)didDismiss:(CNKSystemBannerHostViewController *)arg1;
+@property(nonatomic, readonly) _Bool hasPresentedFullScreenCallUI;
 @end
 

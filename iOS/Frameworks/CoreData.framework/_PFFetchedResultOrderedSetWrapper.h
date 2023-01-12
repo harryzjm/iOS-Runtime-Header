@@ -6,12 +6,10 @@
 
 #import <Foundation/NSOrderedSet.h>
 
-#import <CoreData/PFObjectIDCollection-Protocol.h>
-
 @class NSArray, NSString, _PFWeakReference;
 
 __attribute__((visibility("hidden")))
-@interface _PFFetchedResultOrderedSetWrapper : NSOrderedSet <PFObjectIDCollection>
+@interface _PFFetchedResultOrderedSetWrapper : NSOrderedSet
 {
     int _cd_rc;
     NSArray *_underlyingArray;

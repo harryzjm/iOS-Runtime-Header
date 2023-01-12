@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKit/PKPushRegistryDelegate-Protocol.h>
-
 @class NSHashTable, NSString, PKPushRegistry;
 
-@interface CKPKPushRegistry : NSObject <PKPushRegistryDelegate>
+@interface CKPKPushRegistry : NSObject
 {
     NSHashTable *_delegates;
     PKPushRegistry *_pushRegistry;

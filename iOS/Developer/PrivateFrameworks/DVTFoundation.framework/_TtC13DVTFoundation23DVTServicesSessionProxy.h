@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <DVTFoundation/DVTServicesSession-Protocol.h>
-
 @class DVTLogAspect, MISSING_TYPE, NSNumber, NSString;
 
-@interface _TtC13DVTFoundation23DVTServicesSessionProxy : _TtCs12_SwiftObject <DVTServicesSession>
+@interface _TtC13DVTFoundation23DVTServicesSessionProxy : _TtCs12_SwiftObject
 {
     MISSING_TYPE *executionContext;
     MISSING_TYPE *portalServiceEndpoint;

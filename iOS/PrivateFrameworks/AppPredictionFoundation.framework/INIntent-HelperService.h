@@ -7,6 +7,7 @@
 #import <Intents/INIntent.h>
 
 @interface INIntent (HelperService)
++ (id)atx_createEventIntentWithStartDate:(id)arg1 endDate:(id)arg2;
 + (id)atx_createIntentWithIntentType:(id)arg1 intentData:(id)arg2;
 + (_Bool)shouldDenyConnectionForCurrentProcess;
 - (_Bool)atx_supportsBackgroundExecution;

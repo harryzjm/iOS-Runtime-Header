@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/TSDBrushStrokeStorage-Protocol.h>
-
 @class NSDictionary, NSMutableDictionary, NSString, TSUImage;
 
-@interface TSDMutableBrushStrokeStorage : NSObject <TSDBrushStrokeStorage>
+@interface TSDMutableBrushStrokeStorage : NSObject
 {
     NSMutableDictionary *_paths;
     NSMutableDictionary *_bounds;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UserActivity/UABestAppSuggestionManagerResponseProtocol-Protocol.h>
-
 @class NSString, UABestAppSuggestionManager;
 
 __attribute__((visibility("hidden")))
-@interface UABestAppSuggestionManagerProxy : NSObject <UABestAppSuggestionManagerResponseProtocol>
+@interface UABestAppSuggestionManagerProxy : NSObject
 {
     UABestAppSuggestionManager *_weakManager;
 }

@@ -7,6 +7,10 @@
 #import <HealthKit/HKMedicalRecord.h>
 
 @interface HKMedicalRecord (HealthUI)
+- (id)statusItem;
+- (id)recordItem;
+- (id)displayItems;
+- (_Bool)isDateLess;
 - (id)localizedStatusDisplayString;
 - (id)displayName;
 @end

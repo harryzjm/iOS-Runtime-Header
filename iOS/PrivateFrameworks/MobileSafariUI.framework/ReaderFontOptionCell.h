@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewListCell.h>
 
-#import <MobileSafariUI/_SFSettingsAlertOptionsGroupItemConfiguration-Protocol.h>
-
 @class NSAttributedString, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface ReaderFontOptionCell : UICollectionViewListCell <_SFSettingsAlertOptionsGroupItemConfiguration>
+@interface ReaderFontOptionCell : UICollectionViewListCell
 {
     _Bool _enabled;
     UIView *_accessoryView;

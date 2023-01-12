@@ -6,24 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/GGLLayerDelegate-Protocol.h>
-#import <VectorKit/MDRenderTarget-Protocol.h>
-
 @class CALayer, NSString, VKSharedResources;
 @protocol GGLLayer, GGLRenderQueueSource;
 
 __attribute__((visibility("hidden")))
-@interface MDDisplayLayer : NSObject <GGLLayerDelegate, MDRenderTarget>
+@interface MDDisplayLayer : NSObject
 {
     CALayer<GGLLayer> *_layer;
     id <GGLRenderQueueSource> _renderSource;
     shared_ptr_e963992e _taskContext;
     void *_activeRenderQueue;
-    struct _retain_ptr<VKSharedResources *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+    struct _retain_ptr<VKSharedResources *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_vptr$_retain_ptr;
         VKSharedResources *_obj;
-        struct _retain_objc _retain;
-        struct _release_objc _release;
+        struct _retain_objc_arc _retain;
+        struct _release_objc_arc _release;
     } _sharedResources;
     struct deque<std::function<void ()>, std::allocator<std::function<void ()>>> _completionHandlers;
     struct RenderTargetFormat _sRGBFormat;
@@ -48,9 +45,13 @@ __attribute__((visibility("hidden")))
     struct CGContext *_snapshotContext;
     _Bool _readPixels;
     _Bool _shouldRasterize;
+    _Bool _allowBlitToDrawable;
     struct CGRect _bounds;
     double _contentsScale;
     unsigned long long _signpostId;
+    id _enableEnhancedCommandBufferErrorsConfigListener;
+    id _enableCommandQueueResetOnErrorConfigListener;
+    id _commandQueueResetMaxAttemptsCountConfigListener;
 }
 
 - (id).cxx_construct;
@@ -58,7 +59,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldRasterize; // @synthesize shouldRasterize=_shouldRasterize;
 @property(readonly, nonatomic) _Bool supportsFramebufferFetch; // @synthesize supportsFramebufferFetch=_supportsFramebufferFetch;
 @property(readonly, nonatomic) _Bool multiSample; // @synthesize multiSample=_useMultisampling;
-@property(nonatomic) id <GGLRenderQueueSource> renderSource; // @synthesize renderSource=_renderSource;
+@property(nonatomic) __weak id <GGLRenderQueueSource> renderSource; // @synthesize renderSource=_renderSource;
 @property(readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
 - (struct __IOSurface *)flipImage;
 - (void *)debugConsoleForId:(int)arg1;
@@ -100,11 +101,12 @@ __attribute__((visibility("hidden")))
 - (void *)_renderQueueForTimestamp:(double)arg1 prepareHandler:(CDUnknownBlockType)arg2;
 - (void *)renderQueueForTimestamp:(double)arg1;
 - (_Bool)isDelayedRenderQueueConsumptionSupported;
-- (void)prepareTargetsForPlatormsWithoutFramebufferFetch:(const void *)arg1;
+- (void)prepareTargetsForPlatormsWithoutFramebufferFetch:(const void *)arg1 isDrawable:(_Bool)arg2;
 - (void)prepareTargetsForPlatormsWithFramebufferFetch:(const void *)arg1;
+- (void)_prepareTexture:(const void *)arg1 isDrawable:(_Bool)arg2;
 - (void)prepareTexture:(const void *)arg1;
 - (void)dealloc;
-- (id)initWithContentScale:(double)arg1 useMultisampling:(_Bool)arg2 extraColorFormats:(const void *)arg3 shouldRasterize:(_Bool)arg4 taskContext:(const void *)arg5 device:(void *)arg6 sharedResources:(id)arg7 signpostId:(unsigned long long)arg8;
+- (id)initWithContentScale:(double)arg1 useMultisampling:(_Bool)arg2 extraColorFormats:(const void *)arg3 shouldRasterize:(_Bool)arg4 allowBlitToDrawable:(_Bool)arg5 taskContext:(const void *)arg6 device:(void *)arg7 sharedResources:(id)arg8 signpostId:(unsigned long long)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

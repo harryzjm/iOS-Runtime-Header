@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKAnimationTimerObserver-Protocol.h>
+#import "CKAssociatedMessageTranscriptCell.h"
 
 @class CKAnimatedImage, CKBalloonImageView, NSArray, NSString, UIImage, UILongPressGestureRecognizer, UITapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface CKAssociatedStickerTranscriptCell <CKAnimationTimerObserver>
+@interface CKAssociatedStickerTranscriptCell : CKAssociatedMessageTranscriptCell
 {
     CKBalloonImageView *_imageView;
     UIImage *_image;

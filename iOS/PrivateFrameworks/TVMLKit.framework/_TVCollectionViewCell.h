@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/TVAuxiliaryViewSelecting-Protocol.h>
+#import "TVContainerCollectionViewCell.h"
 
 @class NSString, UIView;
 @protocol TVAuxiliaryViewSelecting;
 
 __attribute__((visibility("hidden")))
-@interface _TVCollectionViewCell <TVAuxiliaryViewSelecting>
+@interface _TVCollectionViewCell : TVContainerCollectionViewCell
 {
     UIView<TVAuxiliaryViewSelecting> *_selectingView;
 }

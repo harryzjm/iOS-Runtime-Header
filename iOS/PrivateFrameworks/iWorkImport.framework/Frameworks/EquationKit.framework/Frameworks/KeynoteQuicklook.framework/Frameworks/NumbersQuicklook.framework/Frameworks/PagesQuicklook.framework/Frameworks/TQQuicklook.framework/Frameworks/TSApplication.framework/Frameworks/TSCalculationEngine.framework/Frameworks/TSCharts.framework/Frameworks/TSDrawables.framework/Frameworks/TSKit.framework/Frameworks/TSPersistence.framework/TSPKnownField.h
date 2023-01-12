@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPForwardsCompatibleField-Protocol.h>
-
-@interface TSPKnownField : NSObject <TSPForwardsCompatibleField>
+@interface TSPKnownField : NSObject
 {
     int _type;
     int _number;

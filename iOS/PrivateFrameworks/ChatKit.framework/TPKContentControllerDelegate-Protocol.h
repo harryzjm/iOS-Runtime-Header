@@ -13,6 +13,7 @@
 - (void)contentController:(TPKContentController *)arg1 contentDidBecomeAvailable:(TPKContent *)arg2 animated:(_Bool)arg3;
 
 @optional
+- (UIImage *)contentController:(TPKContentController *)arg1 content:(TPKContent *)arg2 iconForCustomizationID:(long long)arg3;
 - (UIImage *)contentController:(TPKContentController *)arg1 contentView:(TPKContentView *)arg2 iconForCustomizationID:(long long)arg3;
 - (NSString *)contentController:(TPKContentController *)arg1 personalizedStringForID:(long long)arg2 content:(TPKContent *)arg3;
 - (NSDictionary *)contentController:(TPKContentController *)arg1 clientContextMapForKeys:(NSArray *)arg2;

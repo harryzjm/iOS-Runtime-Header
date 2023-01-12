@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class OITSUColor;
 
 __attribute__((visibility("hidden")))
-@interface WDBorder : NSObject <NSCopying>
+@interface WDBorder : NSObject
 {
     int mStyle;
     OITSUColor *mColor;

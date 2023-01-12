@@ -6,15 +6,11 @@
 
 #import <UIKit/UISlider.h>
 
-#import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
-#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
-#import <AVKit/UIScrollViewDelegate-Protocol.h>
-
 @class AVLayoutItemAttributes, NSArray, NSMutableArray, NSString, NSTimer, UIImageView, UIScrollView, UISelectionFeedbackGenerator, UIView;
 @protocol AVScrubberDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVScrubber : UISlider <UIScrollViewDelegate, AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
+@interface AVScrubber : UISlider
 {
     double _trackingStartTime;
     float _previousValue;
@@ -26,6 +22,7 @@ __attribute__((visibility("hidden")))
     _Bool _removed;
     _Bool _hasAlternateAppearance;
     _Bool _hasFullScreenAppearance;
+    _Bool _showsTimelineMarkers;
     _Bool _scrollScrubbing;
     _Bool _slowKnobMovementDetected;
     _Bool _shouldRecoverFromPrecisionScrubbingIfNeeded;
@@ -41,6 +38,7 @@ __attribute__((visibility("hidden")))
     AVLayoutItemAttributes *_layoutAttributes;
     id <AVScrubberDelegate> _delegate;
     NSArray *_loadedTimeRanges;
+    NSArray *_interstitialDisplayTimes;
     long long _scrubbingSpeed;
     double _resolution;
     double _scrubberParentHeight;
@@ -48,6 +46,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_currentThumbView;
     NSTimer *_updateSlowKnobMovementDetectedTimer;
     double _timestampWhenTrackingEnded;
+    NSMutableArray *_interstitialOverlayViews;
     double _currentScrubberParentHeight;
     double _newScrubberParentHeight;
     struct CGSize _extrinsicContentSize;
@@ -58,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) double newScrubberParentHeight; // @synthesize newScrubberParentHeight=_newScrubberParentHeight;
 @property(nonatomic) double currentScrubberParentHeight; // @synthesize currentScrubberParentHeight=_currentScrubberParentHeight;
+@property(retain, nonatomic) NSMutableArray *interstitialOverlayViews; // @synthesize interstitialOverlayViews=_interstitialOverlayViews;
 @property(nonatomic) _Bool scrubberEnabledStatus; // @synthesize scrubberEnabledStatus=_scrubberEnabledStatus;
 @property(nonatomic) _Bool hasChangedLocationAtLeastOnce; // @synthesize hasChangedLocationAtLeastOnce=_hasChangedLocationAtLeastOnce;
 @property(nonatomic) _Bool canChangeScrubbingSpeed; // @synthesize canChangeScrubbingSpeed=_canChangeScrubbingSpeed;
@@ -75,6 +75,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double resolution; // @synthesize resolution=_resolution;
 @property(nonatomic) float estimatedFrameRate; // @synthesize estimatedFrameRate=_estimatedFrameRate;
 @property(nonatomic) long long scrubbingSpeed; // @synthesize scrubbingSpeed=_scrubbingSpeed;
+@property(nonatomic) _Bool showsTimelineMarkers; // @synthesize showsTimelineMarkers=_showsTimelineMarkers;
+@property(copy, nonatomic) NSArray *interstitialDisplayTimes; // @synthesize interstitialDisplayTimes=_interstitialDisplayTimes;
 @property(copy, nonatomic) NSArray *loadedTimeRanges; // @synthesize loadedTimeRanges=_loadedTimeRanges;
 @property(nonatomic) __weak id <AVScrubberDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
@@ -85,6 +87,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
 @property(readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property(retain, nonatomic) NSMutableArray *previousScrubberVelocities; // @synthesize previousScrubberVelocities=_previousScrubberVelocities;
+- (void)_layoutTimeLineMarkerViews:(float)arg1;
 - (void)_updateLayoutItem;
 - (void)_updateSlowKnobMovementDetectedForTargetValue:(float)arg1;
 - (void)_updateSlowKnobMovementDetected;
@@ -121,8 +124,6 @@ __attribute__((visibility("hidden")))
 - (float)clampedEstimatedFrameRate;
 @property(readonly, nonatomic) UIView *loadedTrackOverlayView; // @synthesize loadedTrackOverlayView=_loadedTrackOverlayView;
 @property(readonly, nonatomic) UISelectionFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
-- (id)createScrubberTicTacImage;
-- (void)setScrubberThumbImage:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

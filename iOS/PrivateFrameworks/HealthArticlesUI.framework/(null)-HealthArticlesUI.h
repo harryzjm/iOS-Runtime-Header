@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthArticlesUI/UINavigationControllerDelegate-Protocol.h>
-
-@interface (null) (HealthArticlesUI) <UINavigationControllerDelegate>
+@interface (null) (HealthArticlesUI)
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 @end
 

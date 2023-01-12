@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSSQLAttributeExtension-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableString, NSPredicate, NSSQLAttribute, NSSQLEntity, NSSQLRelationship, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSSQLAttributeTrigger : NSObject <NSSQLAttributeExtension>
+@interface NSSQLAttributeTrigger : NSObject
 {
     NSPredicate *_predicate;
     NSString *_predicateString;

@@ -4,12 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface VKTrafficSignalFeature
+#import "VKTrafficFeature.h"
+
+__attribute__((visibility("hidden")))
+@interface VKTrafficSignalFeature : VKTrafficFeature
 {
     long long _type;
+    unsigned int _countryCode;
+    _Bool _hasCountryCode;
 }
 
 + (id)stringForTrafficSignalType:(long long)arg1;
+@property(readonly, nonatomic) _Bool hasCountryCode; // @synthesize hasCountryCode=_hasCountryCode;
+@property(readonly, nonatomic) unsigned int countryCode; // @synthesize countryCode=_countryCode;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 - (void)populateDebugNode:(void *)arg1;
 - (id)initWithTrafficSignal:(id)arg1 onRoute:(id)arg2;

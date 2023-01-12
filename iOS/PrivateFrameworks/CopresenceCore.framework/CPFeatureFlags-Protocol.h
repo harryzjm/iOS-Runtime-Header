@@ -7,10 +7,14 @@
 #import <CopresenceCore/NSObject-Protocol.h>
 
 @protocol CPFeatureFlags <NSObject>
+@property(nonatomic, readonly) _Bool newApplicationLauncherEnabled;
+@property(nonatomic, readonly) _Bool autoGameCenterEnabled;
+@property(nonatomic, readonly) _Bool sharePlayLiteEnabled;
+@property(nonatomic, readonly) _Bool unreliableMessengerEnabled;
+@property(nonatomic, readonly) _Bool mochiEnabled;
 @property(nonatomic, readonly) _Bool expanseTopicStateEnabled;
 @property(nonatomic, readonly) _Bool expanseEnabled;
 @property(nonatomic, readonly) _Bool expanseParticipantIDHashed;
 @property(nonatomic, readonly) _Bool qrPluginEncryptionEnabled;
-@property(nonatomic, readonly) _Bool qrPluginEnabled;
 @end
 

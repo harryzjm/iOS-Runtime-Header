@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSPObject.h"
+
 @class NSArray, NSObject, NSString, TSPLazyReferenceArray;
 @protocol OS_dispatch_data;
 
-@interface TSPUnknownObject
+@interface TSPUnknownObject : TSPObject
 {
     shared_ptr_bafc106c _archiveInfo;
     NSObject<OS_dispatch_data> *_messagesData;

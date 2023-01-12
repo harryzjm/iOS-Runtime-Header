@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <RunningBoardServices/RBSProcessIdentifier-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (RBSProcessIdentifier) <RBSProcessIdentifier>
+@interface NSNumber (RBSProcessIdentifier)
 - (id)processPredicate;
 - (_Bool)matchesProcess:(id)arg1;
 - (int)rbs_pid;

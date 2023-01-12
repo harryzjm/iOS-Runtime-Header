@@ -6,11 +6,9 @@
 
 #import <Contacts/CNContactStore.h>
 
-#import <IMAssistantCore/IMAssistantContactsDataSource-Protocol.h>
-
 @class NSString;
 
-@interface CNContactStore (IMAssistantContactsDataSource) <IMAssistantContactsDataSource>
+@interface CNContactStore (IMAssistantContactsDataSource)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

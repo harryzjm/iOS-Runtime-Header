@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSBundleIdPatterns : PBCodable <NSCopying>
+@interface BCSBundleIdPatterns : PBCodable
 {
     NSString *_bundleId;
     NSMutableArray *_urlPatterns;

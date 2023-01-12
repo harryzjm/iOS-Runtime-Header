@@ -13,8 +13,9 @@
 @property(readonly, nonatomic) _Bool wantsToDriveRender;
 @property(readonly, nonatomic) id <PXGTextureConverter> textureConverter;
 @property(readonly, nonatomic) int presentationType;
-@property(nonatomic) PXGCameraConfiguration_474424ad cameraConfiguration;
-@property(nonatomic) CDStruct_da8e67cd interactionState;
+@property(nonatomic) _Bool lowMemoryMode;
+@property(nonatomic) struct PXGCameraConfiguration cameraConfiguration;
+@property(nonatomic) CDStruct_b6841b77 interactionState;
 @property(nonatomic) struct CGRect visibleRect;
 @property(retain, nonatomic) PXGEntityManager *entityManager;
 @property(nonatomic) __weak id <PXGRendererDelegate> delegate;

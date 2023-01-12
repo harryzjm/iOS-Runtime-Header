@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPContainedObject.h>
 
-#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
-
 @class NSIndexSet, NSMutableIndexSet, TSTTableTileGroup;
 
-@interface TSTTableTileStorage : TSPContainedObject <TSTCompatibilityVersionProviding>
+@interface TSTTableTileStorage : TSPContainedObject
 {
     NSMutableIndexSet *_tileIDSet;
     TSTTableTileGroup *_tileGroups[16];

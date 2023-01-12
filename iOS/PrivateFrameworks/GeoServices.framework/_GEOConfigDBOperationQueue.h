@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)flushOnDBQueue;
 - (void)flush;
 - (void)cancelTimer;
 - (void)scheduleTimer;

@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)presenceIdentifierKeyPath;
 + (id)statusTypeIdentifierKeyPath;
 + (id)handleKeyPath;
 + (id)dateRemovedKeyPath;
++ (id)predicateForPresenceIdentifier:(id)arg1;
 + (id)predicateForStatusTypeIdentifier:(id)arg1;
 + (id)predicateForHandleString:(id)arg1;
 + (id)predicateForHandle:(id)arg1;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(copy, nonatomic) NSDate *dateRemoved; // @dynamic dateRemoved;
+@property(copy, nonatomic) NSString *presenceIdentifier; // @dynamic presenceIdentifier;
 @property(copy, nonatomic) NSString *removedHandle; // @dynamic removedHandle;
 @property(copy, nonatomic) NSString *statusTypeIdentifier; // @dynamic statusTypeIdentifier;
 

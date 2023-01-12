@@ -6,17 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/VUIDownloadDataSourceDelegate-Protocol.h>
-#import <VideosUI/VUILegacyCollectionViewDelegate-Protocol.h>
-
 @class NSDictionary, NSMutableArray, NSString, UIAlertController, UIBarButtonItem, UICollectionViewDiffableDataSource, VUIDownloadCollectionViewCell, VUIDownloadDataSource, VUILegacyCollectionView, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadCollectionViewController : UIViewController <UICollectionViewDelegate, VUIDownloadDataSourceDelegate, VUILegacyCollectionViewDelegate>
+@interface VUIDownloadCollectionViewController : UIViewController
 {
-    double _lastAppearWidth;
-    _Bool _requiresRelayout;
     _Bool _isEditing;
     _Bool _isSelectingAll;
     VUIDownloadDataSource *_downloadDataSource;
@@ -35,14 +29,15 @@ __attribute__((visibility("hidden")))
     double _cellWidth;
     long long _gridStyle;
     long long _gridType;
+    double _lastViewWidth;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double lastViewWidth; // @synthesize lastViewWidth=_lastViewWidth;
 @property(nonatomic) long long gridType; // @synthesize gridType=_gridType;
 @property(nonatomic) long long gridStyle; // @synthesize gridStyle=_gridStyle;
 @property(nonatomic) _Bool isSelectingAll; // @synthesize isSelectingAll=_isSelectingAll;
 @property(nonatomic) _Bool isEditing; // @synthesize isEditing=_isEditing;
-@property(nonatomic) _Bool requiresRelayout; // @synthesize requiresRelayout=_requiresRelayout;
 @property(nonatomic) double cellWidth; // @synthesize cellWidth=_cellWidth;
 @property(retain, nonatomic) NSMutableArray *assetControllersToRemove; // @synthesize assetControllersToRemove=_assetControllersToRemove;
 @property(retain, nonatomic) NSDictionary *identifierToDownloadEntityDictionary; // @synthesize identifierToDownloadEntityDictionary=_identifierToDownloadEntityDictionary;
@@ -91,7 +86,6 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLayoutSubviews;
-- (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)loadView;

@@ -11,5 +11,6 @@
 @protocol ACHEarnedInstanceAwarding <NSObject>
 @property(readonly, nonatomic) NSString *uniqueName;
 - (NSSet *)earnedInstancesForHistoricalInterval:(NSDateInterval *)arg1 databaseContext:(HDDatabaseTransactionContext *)arg2;
+- (NSSet *)earnedInstancesForHistoricalInterval:(NSDateInterval *)arg1;
 @end
 

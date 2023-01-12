@@ -4,10 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct Data {
@@ -21,27 +17,6 @@ struct Data {
     struct Table _field8;
 };
 
-struct FileportMessage {
-    struct {
-        unsigned int _field1;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        int _field6;
-    } _field1;
-    struct {
-        unsigned int _field1;
-    } _field2;
-    struct {
-        unsigned int _field1;
-        unsigned int _field2;
-        unsigned int :16;
-        unsigned int :8;
-        unsigned int :8;
-    } _field3;
-};
-
 struct Pedigree {
     unsigned long long family;
     struct optional<unsigned int> generationAtCopyTime;
@@ -49,7 +24,7 @@ struct Pedigree {
 
 struct Store {
     id dataContainer;
-    struct array<unsigned int, 64> tableOffsets;
+    struct array<unsigned int, 64UL> tableOffsets;
     struct Table *arrayTable;
     struct Table *stringTable;
     struct Table *dictionaryTable;
@@ -72,18 +47,6 @@ struct Unit {
     unsigned int :2;
     unsigned int _field1;
     char _field2[0];
-};
-
-struct _CSWriteUnitState {
-    id _field1;
-    CDUnknownBlockType _field2;
-    CDUnknownBlockType _field3;
-    id _field4;
-};
-
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
 };
 
 struct __sFILE {
@@ -114,14 +77,8 @@ struct __sbuf {
     int _field2;
 };
 
-struct array<unsigned int, 64> {
+struct array<unsigned int, 64UL> {
     unsigned int __elems_[64];
-};
-
-struct atomic<bool> {
-    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
-        _Atomic _Bool __a_value;
-    } __a_;
 };
 
 struct atomic<long long> {
@@ -137,22 +94,4 @@ struct optional<unsigned int> {
     } ;
     _Bool __engaged_;
 };
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    struct {
-        unsigned int _field1[2];
-    } _field4;
-    struct {
-        unsigned int _field1[8];
-    } _field5;
-} CDStruct_3d4d02d4;
 

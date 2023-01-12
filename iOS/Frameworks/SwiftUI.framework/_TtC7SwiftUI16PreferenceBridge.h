@@ -11,6 +11,7 @@
 @interface _TtC7SwiftUI16PreferenceBridge : _TtCs12_SwiftObject
 {
     MISSING_TYPE *viewGraph;
+    MISSING_TYPE *isValid;
     MISSING_TYPE *children;
     MISSING_TYPE *requestedPreferences;
     MISSING_TYPE *bridgedViewInputs;

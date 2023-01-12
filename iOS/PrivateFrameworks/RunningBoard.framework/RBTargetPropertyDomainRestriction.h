@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "RBDomainRestriction.h"
+
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface RBTargetPropertyDomainRestriction
+@interface RBTargetPropertyDomainRestriction : RBDomainRestriction
 {
     NSString *_property;
     NSNumber *_numberValue;

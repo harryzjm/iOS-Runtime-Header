@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOVectorTileRequest : PBCodable <NSCopying>
+@interface GEOVectorTileRequest : PBCodable
 {
     PBDataReader *_reader;
     NSString *_accessKey;

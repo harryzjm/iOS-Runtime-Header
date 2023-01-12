@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIItemOfferButtonDelegate-Protocol.h>
-
 @class NSMapTable, NSString, SKUINavigationBarViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUINavigationBarButtonsController <SKUIItemOfferButtonDelegate>
+@interface SKUINavigationBarButtonsController
 {
     NSMapTable *_buttonItemElements;
     NSMapTable *_buttonItemToImageResourceCacheKey;

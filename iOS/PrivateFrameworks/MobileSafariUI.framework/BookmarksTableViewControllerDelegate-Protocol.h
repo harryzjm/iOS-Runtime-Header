@@ -6,14 +6,19 @@
 
 #import <MobileSafariUI/BookmarksPanelViewControllerDelegate-Protocol.h>
 
-@class BookmarksTableViewController;
+@class BookmarksTableViewController, WebBookmark;
 @protocol TabGroupProvider;
 
 @protocol BookmarksTableViewControllerDelegate <BookmarksPanelViewControllerDelegate>
-@property(readonly, nonatomic) id <TabGroupProvider> tabGroupProvider;
+- (_Bool)bookmarksTableViewIsReadOnly:(BookmarksTableViewController *)arg1;
+- (_Bool)bookmarksTableViewShouldDispatchNavigationIntent:(BookmarksTableViewController *)arg1 forSelectedBookmark:(WebBookmark *)arg2;
 - (void)bookmarksTableViewControllerDidEndEditing:(BookmarksTableViewController *)arg1;
 - (void)bookmarksTableViewControllerDidBeginEditing:(BookmarksTableViewController *)arg1;
 - (struct UIEdgeInsets)separatorInsetForBookmarksTableViewController:(BookmarksTableViewController *)arg1;
 - (struct UIEdgeInsets)contentInsetForBookmarksTableViewController:(BookmarksTableViewController *)arg1;
+
+@optional
+@property(readonly, nonatomic) id <TabGroupProvider> tabGroupProvider;
+- (void)bookmarksTableViewControllerWillDisappear:(BookmarksTableViewController *)arg1;
 @end
 

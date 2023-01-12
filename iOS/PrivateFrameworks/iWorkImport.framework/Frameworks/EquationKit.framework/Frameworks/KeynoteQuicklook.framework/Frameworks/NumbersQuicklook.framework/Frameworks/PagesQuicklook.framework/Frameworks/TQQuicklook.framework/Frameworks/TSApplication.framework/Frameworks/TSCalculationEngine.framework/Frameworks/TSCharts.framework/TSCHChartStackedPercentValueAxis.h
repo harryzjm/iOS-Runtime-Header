@@ -34,6 +34,7 @@
 - (double)totalForGroupIndex:(unsigned long long)arg1 series:(id)arg2;
 - (id)userMin;
 - (id)userMax;
+- (_Bool)supportsNegativeStyle;
 - (_Bool)supportsReferenceLines;
 
 @end

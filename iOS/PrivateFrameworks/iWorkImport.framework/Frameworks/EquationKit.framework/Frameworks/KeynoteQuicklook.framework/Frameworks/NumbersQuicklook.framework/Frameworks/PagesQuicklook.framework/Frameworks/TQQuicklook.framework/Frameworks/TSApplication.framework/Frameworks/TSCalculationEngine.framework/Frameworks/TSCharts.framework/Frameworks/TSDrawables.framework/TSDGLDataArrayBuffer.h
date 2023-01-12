@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/TSDGLDataBufferAccessor-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString;
 
-@interface TSDGLDataArrayBuffer : NSObject <TSDGLDataBufferAccessor>
+@interface TSDGLDataArrayBuffer : NSObject
 {
     NSMutableArray *_vertexAttributes;
     unsigned long long _vertexCount;

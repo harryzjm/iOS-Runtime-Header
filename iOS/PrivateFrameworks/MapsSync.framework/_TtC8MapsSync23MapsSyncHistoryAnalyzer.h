@@ -11,8 +11,10 @@
 @interface _TtC8MapsSync23MapsSyncHistoryAnalyzer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *_context;
+    MISSING_TYPE *_contextsToMerge;
     MISSING_TYPE *_historyStartDate;
     MISSING_TYPE *_historyToken;
+    MISSING_TYPE *_notificationContextDidSaveToken;
     MISSING_TYPE *_callbackData;
     MISSING_TYPE *kMaxHistoryDatabaseSizeMegabytes;
     MISSING_TYPE *kHistoryChangesPurgeChunk;
@@ -22,6 +24,8 @@
     MISSING_TYPE *kHistoryExpirationSeconds;
     MISSING_TYPE *kMaxHistoryDatabaseSizeBytes;
 }
+
+- (void)notificationPersistentStoreRemoteChange:(id)arg1;
 
 @end
 

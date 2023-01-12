@@ -6,16 +6,15 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPDMapsIdentifier, GEOPDScorecardLayout, NSMutableArray, PBDataReader;
+@class GEOPDMapsIdentifier, GEOPDPhotoConstraints, GEOPDScorecardLayout, NSMutableArray, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDPlaceQuestionnaireResult : PBCodable <NSCopying>
+@interface GEOPDPlaceQuestionnaireResult : PBCodable
 {
     PBDataReader *_reader;
     NSMutableArray *_historicalMapsIds;
     GEOPDMapsIdentifier *_mapsId;
+    GEOPDPhotoConstraints *_photoConstraints;
     GEOPDScorecardLayout *_scorecardLayout;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -33,6 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_suppressOnExistingRichData:1;
         unsigned int read_historicalMapsIds:1;
         unsigned int read_mapsId:1;
+        unsigned int read_photoConstraints:1;
         unsigned int read_scorecardLayout:1;
         unsigned int wrote_anyField:1;
     } _flags;

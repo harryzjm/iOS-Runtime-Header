@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     id <MTLDevice> mainCIContextMetalDevice;
     CIContext *lowPriorityCIContext;
     id <MTLDevice> lowPriorityCIContextMetalDevice;
+    NSLock *ciContextLock;
     NSHashTable *activeImageBuffers;
     NSLock *bufferTableLock;
 }

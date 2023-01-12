@@ -6,16 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/NSSecureCoding-Protocol.h>
-
-@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEONavigationGuidanceState, MNActiveRouteInfo, MNDisplayETAInfo, MNGuidanceLaneInfo, MNLocation, MNRouteDistanceInfo, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, geo_isolater;
+@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEONavigationGuidanceState, MNActiveRouteInfo, MNBatteryChargeInfo, MNDisplayETAInfo, MNGuidanceLaneInfo, MNLocation, MNRouteDistanceInfo, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, geo_isolater;
 
 __attribute__((visibility("hidden")))
-@interface MNNavigationDetails : NSObject <NSSecureCoding>
+@interface MNNavigationDetails : NSObject
 {
     unsigned long long _state;
-    int _navigationType;
-    int _desiredNavigationType;
+    long long _navigationType;
+    long long _desiredNavigationType;
     int _desiredTransportType;
     MNLocation *_location;
     unsigned long long _routeIndex;
@@ -31,6 +29,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_trafficIncidentAlerts;
     NSMutableArray *_spokenAnnouncements;
     geo_isolater *_routeLookupLock;
+    _Bool _isResumingMultipointRoute;
     _Bool _guidancePromptsEnabled;
     _Bool _isInPreArrivalState;
     _Bool _traceIsPlaying;
@@ -54,11 +53,13 @@ __attribute__((visibility("hidden")))
     double _traceDuration;
     double _tracePosition;
     NSArray *_traceBookmarks;
+    long long _simulationType;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *routeLookup; // @synthesize routeLookup=_routeLookup;
+@property(nonatomic) long long simulationType; // @synthesize simulationType=_simulationType;
 @property(retain, nonatomic) NSArray *traceBookmarks; // @synthesize traceBookmarks=_traceBookmarks;
 @property(nonatomic) double tracePosition; // @synthesize tracePosition=_tracePosition;
 @property(nonatomic) double traceDuration; // @synthesize traceDuration=_traceDuration;
@@ -89,9 +90,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MNLocation *location; // @synthesize location=_location;
 @property(retain, nonatomic) GEODirectionsResponse *directionsResponse; // @synthesize directionsResponse=_directionsResponse;
 @property(retain, nonatomic) GEODirectionsRequest *directionsRequest; // @synthesize directionsRequest=_directionsRequest;
+@property(nonatomic) _Bool isResumingMultipointRoute; // @synthesize isResumingMultipointRoute=_isResumingMultipointRoute;
 @property(nonatomic) int desiredTransportType; // @synthesize desiredTransportType=_desiredTransportType;
-@property(nonatomic) int desiredNavigationType; // @synthesize desiredNavigationType=_desiredNavigationType;
-@property(nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
+@property(nonatomic) long long desiredNavigationType; // @synthesize desiredNavigationType=_desiredNavigationType;
+@property(nonatomic) long long navigationType; // @synthesize navigationType=_navigationType;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 - (id)description;
 @property(readonly, nonatomic) NSMapTable *routeIDLookup;
@@ -110,6 +112,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long stepIndex;
 @property(readonly, nonatomic) NSArray *alternateRoutes;
 @property(readonly, nonatomic) NSArray *previewRoutes;
+@property(readonly, nonatomic) MNBatteryChargeInfo *batteryChargeInfo;
 @property(readonly, nonatomic) MNRouteDistanceInfo *remainingDistanceInfo;
 @property(readonly, nonatomic) MNDisplayETAInfo *displayETAInfo;
 @property(readonly, nonatomic) GEOComposedRoute *currentRoute;

@@ -6,12 +6,10 @@
 
 #import <PhotosUICore/PXObservable.h>
 
-#import <AssetExplorer/PXAssetsDataSourceManagerObserver-Protocol.h>
-
 @class AEProgressViewModelSnapshot, NSDictionary, NSString, PXAssetsDataSourceManager;
 
 __attribute__((visibility("hidden")))
-@interface AEProgressViewModel : PXObservable <PXAssetsDataSourceManagerObserver>
+@interface AEProgressViewModel : PXObservable
 {
     AEProgressViewModelSnapshot *_currentSnapshot;
     PXAssetsDataSourceManager *__dataSourceManager;
@@ -28,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)setProgress:(id)arg1 forAssetReference:(id)arg2;
 - (id)_createSnapshot;
 @property(readonly, nonatomic) AEProgressViewModelSnapshot *progressSnapshot;
-- (void)dealloc;
 - (id)initWithDataSourceManager:(id)arg1;
 
 // Remaining properties

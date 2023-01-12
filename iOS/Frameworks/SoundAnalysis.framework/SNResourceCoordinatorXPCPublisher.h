@@ -6,20 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNResourceCoordinatorProtocol-Protocol.h>
-
 @class NSString;
 @protocol SNResourceCoordinatorXPCProtocol><NSXPCProxyCreating;
 
 __attribute__((visibility("hidden")))
-@interface SNResourceCoordinatorXPCPublisher : NSObject <SNResourceCoordinatorProtocol>
+@interface SNResourceCoordinatorXPCPublisher : NSObject
 {
     id <SNResourceCoordinatorXPCProtocol><NSXPCProxyCreating> _subscriber;
 }
 
 - (void).cxx_destruct;
 - (id)createSystemAudioAnalyzer;
-- (id)initWithSubscriber:(id)arg1;
 - (id)init;
 
 // Remaining properties

@@ -6,22 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/NSCopying-Protocol.h>
-#import <AppStoreComponents/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ASCLockupBatchRequest : NSObject <NSSecureCoding, NSCopying>
+@interface ASCLockupBatchRequest : NSObject
 {
     NSSet *_ids;
     NSString *_kind;
     NSString *_context;
+    NSString *_clientID;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)lockupBatchRequestsFromRequests:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
 @property(readonly, copy, nonatomic) NSString *context; // @synthesize context=_context;
 @property(readonly, copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property(readonly, copy, nonatomic) NSSet *ids; // @synthesize ids=_ids;
@@ -33,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)_initWithIDs:(id)arg1 kind:(id)arg2 context:(id)arg3 clientID:(id)arg4;
 - (id)initWithIDs:(id)arg1 kind:(id)arg2 context:(id)arg3;
 
 @end

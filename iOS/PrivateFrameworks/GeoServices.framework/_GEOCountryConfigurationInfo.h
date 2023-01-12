@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)initWithDictionary:(id)arg1;
 

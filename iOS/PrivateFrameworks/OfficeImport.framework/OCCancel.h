@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/TCCancelDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OCCancel : NSObject <TCCancelDelegate>
+@interface OCCancel : NSObject
 {
     _Bool mIsCancelled;
     _Bool mIsQuit;

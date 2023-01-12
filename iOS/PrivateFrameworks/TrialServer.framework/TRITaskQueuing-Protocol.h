@@ -15,6 +15,6 @@
 - (void)registerFinalizeBlock:(void (^)(id <TRITask>, int, TRITaskRunResult *, NSDate *))arg1;
 - (CDStruct_6b48f683)addTask:(id <TRITask>)arg1 options:(TRITaskQueuingOptions *)arg2 taskId:(id *)arg3;
 - (CDStruct_6b48f683)addTask:(id <TRITask>)arg1 options:(TRITaskQueuingOptions *)arg2;
-- (_Bool)resumeWithXPCActivityDescriptor:(TRIRunningXPCActivityDescriptor *)arg1 executeWhenSuspended:(void (^)(void))arg2;
+- (void)resumeWithXPCActivityDescriptor:(TRIRunningXPCActivityDescriptor *)arg1 executeWhenSuspended:(void (^)(void))arg2;
 @end
 

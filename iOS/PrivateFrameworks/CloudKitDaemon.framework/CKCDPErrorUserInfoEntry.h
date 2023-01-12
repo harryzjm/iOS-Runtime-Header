@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKCDPErrorUserInfoValue, NSString;
 
-@interface CKCDPErrorUserInfoEntry : PBCodable <NSCopying>
+@interface CKCDPErrorUserInfoEntry : PBCodable
 {
     NSString *_key;
     CKCDPErrorUserInfoValue *_value;

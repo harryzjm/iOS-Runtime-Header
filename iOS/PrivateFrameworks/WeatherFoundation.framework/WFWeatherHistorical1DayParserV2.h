@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WeatherFoundation/WFForecastDataParser-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFWeatherHistorical1DayParserV2 : NSObject <WFForecastDataParser>
+@interface WFWeatherHistorical1DayParserV2 : NSObject
 {
 }
 

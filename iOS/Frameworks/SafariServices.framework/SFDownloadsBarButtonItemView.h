@@ -6,13 +6,10 @@
 
 #import <UIKit/UIButton.h>
 
-#import <SafariServices/SFDeferrableUpdateView-Protocol.h>
-#import <SafariServices/UIPointerInteractionDelegate-Protocol.h>
-
 @class NSString, UIBarButtonItem, UIProgressView, _SFDownloadsIconView;
 
 __attribute__((visibility("hidden")))
-@interface SFDownloadsBarButtonItemView : UIButton <UIPointerInteractionDelegate, SFDeferrableUpdateView>
+@interface SFDownloadsBarButtonItemView : UIButton
 {
     UIProgressView *_progressView;
     CDStruct_4e0a34f2 deferrableUpdateViewState;

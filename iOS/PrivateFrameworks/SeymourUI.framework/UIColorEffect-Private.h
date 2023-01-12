@@ -7,6 +7,7 @@
 #import <UIKit/UIColorEffect.h>
 
 @interface UIColorEffect (Private)
-+ (id)smu_sessionColorEffect;
++ (id)sessionColorEffectLight;
++ (id)sessionColorEffectDark;
 @end
 

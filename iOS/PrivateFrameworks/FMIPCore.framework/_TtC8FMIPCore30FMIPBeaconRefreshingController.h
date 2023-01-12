@@ -10,24 +10,25 @@
 
 @interface _TtC8FMIPCore30FMIPBeaconRefreshingController : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *delegate;
     MISSING_TYPE *identifier;
+    MISSING_TYPE *refreshQueue;
+    MISSING_TYPE *filterQueue;
     MISSING_TYPE *beacons;
     MISSING_TYPE *unknownBeacons;
     MISSING_TYPE *itemGroups;
     MISSING_TYPE *ownerSession;
-    MISSING_TYPE *refreshQueue;
-    MISSING_TYPE *filterQueue;
+    MISSING_TYPE *currentlyRefreshing;
+    MISSING_TYPE *nextRefreshQueued;
+    MISSING_TYPE *lastRefreshTime;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *lastActiveTimestamp;
     MISSING_TYPE *callbackInterval;
     MISSING_TYPE *defaultCallbackInterval;
     MISSING_TYPE *initialCallbackInterval;
     MISSING_TYPE *refreshTimer;
-    MISSING_TYPE *lastActiveTimestamp;
     MISSING_TYPE *utAlertState;
     MISSING_TYPE *separationMonitoringState;
-    MISSING_TYPE *currentlyRefreshing;
-    MISSING_TYPE *nextRefreshQueued;
-    MISSING_TYPE *lastRefreshTime;
+    MISSING_TYPE *clientConfiguration;
     MISSING_TYPE *refreshingPolicy;
     MISSING_TYPE *isThrottled;
     MISSING_TYPE *isRefreshing;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSXPCProxyCreating-Protocol.h>
-
 @class NSFileAccessProcessManager;
 @protocol NSFilePresenterXPCInterface><NSXPCProxyCreating;
 
 __attribute__((visibility("hidden")))
-@interface NSFilePresenterManagedProxy : NSObject <NSXPCProxyCreating>
+@interface NSFilePresenterManagedProxy : NSObject
 {
     unsigned long long _filePresenterResponses;
     NSObject<NSFilePresenterXPCInterface><NSXPCProxyCreating> *_xpcProxy;

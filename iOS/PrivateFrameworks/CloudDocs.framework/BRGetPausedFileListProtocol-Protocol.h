@@ -7,6 +7,6 @@
 @class NSURL;
 
 @protocol BRGetPausedFileListProtocol
-- (void)updatePausedFileURL:(NSURL *)arg1;
+- (void)updatePausedFileURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
 @end
 

@@ -7,7 +7,7 @@
 #import <CoverSheet/CSCoverSheetViewTransitioning-Protocol.h>
 
 @protocol CSCoverSheetViewDelegate <CSCoverSheetViewTransitioning>
-- (_Bool)shouldModifyDateViewScrolling;
+- (_Bool)interpretsTouchLocationAsContentInListRestrictedRect:(struct CGPoint)arg1;
 - (_Bool)shouldModifyPageScrolling;
 @end
 

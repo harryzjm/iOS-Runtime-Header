@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCoding-Protocol.h>
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSMutableDictionary, NSString, PFUbiquityKnowledgeVector, PFUbiquityLocation;
 
 __attribute__((visibility("hidden")))
-@interface PFUbiquityBaselineMetadata : NSObject <NSCoding, NSSecureCoding>
+@interface PFUbiquityBaselineMetadata : NSObject
 {
     NSString *_storeName;
     NSString *_authorPeerID;

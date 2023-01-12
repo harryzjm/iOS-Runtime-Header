@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/VTKDrawItem-Protocol.h>
-
 @class NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface VTKLineDrawItem : NSObject <VTKDrawItem>
+@interface VTKLineDrawItem : NSObject
 {
     UIColor *_color;
     long long _orientation;

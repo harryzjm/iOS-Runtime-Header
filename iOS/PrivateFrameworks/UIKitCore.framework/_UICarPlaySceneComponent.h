@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneComponentProviding-Protocol.h>
-
 @class NSString, UICarPlayApplicationSceneSettings, UIScene;
 
 __attribute__((visibility("hidden")))
-@interface _UICarPlaySceneComponent : NSObject <_UISceneComponentProviding>
+@interface _UICarPlaySceneComponent : NSObject
 {
     UIScene *_scene;
     UICarPlayApplicationSceneSettings *_carPlaySceneSettings;

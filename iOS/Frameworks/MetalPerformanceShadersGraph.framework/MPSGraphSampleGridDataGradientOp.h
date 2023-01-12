@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSGraphSampleGridDataGradientOp
+#import "MPSGraphOperation.h"
+
+@interface MPSGraphSampleGridDataGradientOp : MPSGraphOperation
 {
     _Bool _normalizeCoordinates;
     _Bool _relativeCoordinates;

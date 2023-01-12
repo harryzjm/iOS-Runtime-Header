@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPDate, CKDPZone, CKDPZoneCapabilities, NSData, NSString;
 
-@interface CKDPZoneRetrieveResponseZoneSummary : PBCodable <NSCopying>
+@interface CKDPZoneRetrieveResponseZoneSummary : PBCodable
 {
     long long _assetQuotaUsage;
     long long _metadataQuotaUsage;
@@ -18,21 +16,26 @@
     NSData *_clientChangeToken;
     NSData *_currentServerContinuationToken;
     int _deviceCount;
+    CKDPDate *_expirationTime;
     CKDPZone *_targetZone;
     NSString *_zonePcsModificationDevice;
     CKDPDate *_zonePcsModificationTime;
+    _Bool _expired;
     _Bool _zoneKeyRollAllowed;
     _Bool _zoneishPcsNeedsRolled;
     struct {
         unsigned int assetQuotaUsage:1;
         unsigned int metadataQuotaUsage:1;
         unsigned int deviceCount:1;
+        unsigned int expired:1;
         unsigned int zoneKeyRollAllowed:1;
         unsigned int zoneishPcsNeedsRolled:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDPDate *expirationTime; // @synthesize expirationTime=_expirationTime;
+@property(nonatomic) _Bool expired; // @synthesize expired=_expired;
 @property(retain, nonatomic) NSString *zonePcsModificationDevice; // @synthesize zonePcsModificationDevice=_zonePcsModificationDevice;
 @property(retain, nonatomic) CKDPDate *zonePcsModificationTime; // @synthesize zonePcsModificationTime=_zonePcsModificationTime;
 @property(nonatomic) _Bool zoneKeyRollAllowed; // @synthesize zoneKeyRollAllowed=_zoneKeyRollAllowed;
@@ -53,6 +56,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasExpirationTime;
+@property(nonatomic) _Bool hasExpired;
 @property(readonly, nonatomic) _Bool hasZonePcsModificationDevice;
 @property(readonly, nonatomic) _Bool hasZonePcsModificationTime;
 @property(nonatomic) _Bool hasZoneKeyRollAllowed;

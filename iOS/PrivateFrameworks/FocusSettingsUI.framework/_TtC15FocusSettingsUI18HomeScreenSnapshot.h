@@ -12,8 +12,11 @@
 {
     MISSING_TYPE *listIdentifier;
     MISSING_TYPE *focusModeIdentifier;
+    MISSING_TYPE *isSuggestedPage;
     MISSING_TYPE *wantedByFocusMode;
-    MISSING_TYPE *image;
+    MISSING_TYPE *proactivePage;
+    MISSING_TYPE *_selected;
+    MISSING_TYPE *_image;
 }
 
 @end

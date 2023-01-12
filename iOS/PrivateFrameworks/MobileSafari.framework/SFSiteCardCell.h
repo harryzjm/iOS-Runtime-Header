@@ -6,16 +6,15 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <MobileSafari/SFSiteCardModel-Protocol.h>
-
 @class NSString, SFSiteCardSourceView, UIImage, UIImageView, UILabel, UILayoutGuide, UIVisualEffectView, _SFSiteIconView;
 
 __attribute__((visibility("hidden")))
-@interface SFSiteCardCell : UICollectionViewCell <SFSiteCardModel>
+@interface SFSiteCardCell : UICollectionViewCell
 {
     UIImageView *_badgeView;
     SFSiteCardSourceView *_captionLabel;
     _SFSiteIconView *_imageView;
+    UIVisualEffectView *_subtitleEffectView;
     UILabel *_subtitleLabel;
     UILayoutGuide *_textLayoutGuide;
     UILabel *_titleLabel;

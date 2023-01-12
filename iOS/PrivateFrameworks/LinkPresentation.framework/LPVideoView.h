@@ -4,15 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/CALayerDelegate-Protocol.h>
-#import <LinkPresentation/LPComponentMediaPlayable-Protocol.h>
-#import <LinkPresentation/LPInProcessMediaPlayable-Protocol.h>
-#import <LinkPresentation/UIGestureRecognizerDelegate-Protocol.h>
-
 @class CATextLayer, LPFullScreenVideoController, LPImage, LPImageViewStyle, LPVideo, LPVideoViewConfiguration, LPVideoViewStyle, NSString, UIGestureRecognizer, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface LPVideoView <CALayerDelegate, UIGestureRecognizerDelegate, LPInProcessMediaPlayable, LPComponentMediaPlayable>
+@interface LPVideoView
 {
     LPVideo *_video;
     LPVideoViewStyle *_style;

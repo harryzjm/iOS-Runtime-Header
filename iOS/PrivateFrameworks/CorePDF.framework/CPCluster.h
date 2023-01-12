@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPDisposable-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CPCluster : NSObject <CPDisposable>
+@interface CPCluster : NSObject
 {
     const CDStruct_1ec70fb1 *profile;
     unsigned int xCount;

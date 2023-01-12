@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNOperationPointsProviding-Protocol.h>
-
 @class VNRequestSpecifier, _VNImageAnalyzerMultiDetectorSceneOperationPointsCache;
 
 __attribute__((visibility("hidden")))
-@interface _VNImageAnalyzerMultiDetectorSceneOperationPointsProvider : NSObject <VNOperationPointsProviding>
+@interface _VNImageAnalyzerMultiDetectorSceneOperationPointsProvider : NSObject
 {
     _VNImageAnalyzerMultiDetectorSceneOperationPointsCache *_operationPointsCache;
     VNRequestSpecifier *_originatingRequestSpecifier;

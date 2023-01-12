@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 {
     struct CGSize _originalSize;
     struct CGSize _fittingSize;
-    struct CGSize _preferredSize;
     NSCollectionLayoutSize *_layoutSize;
+    _Bool _preferredSizeDirty;
     id _additionalData;
 }
 

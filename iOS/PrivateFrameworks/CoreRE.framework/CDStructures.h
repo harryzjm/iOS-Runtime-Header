@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVAudioFormat, MISSING_TYPE, NSData, NSObject;
+@class AVAudioFormat, MISSING_TYPE;
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -17,10 +15,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 struct AABB {
     struct Vector3<float> _field1;
     struct Vector3<float> _field2;
-};
-
-struct Address {
-    struct DynamicString _field1;
 };
 
 struct Allocator {
@@ -36,8 +30,15 @@ struct AttributeTable {
     unsigned long long _field1;
     struct FixedArray<re::BufferSlice> _field2;
     struct FixedArray<re::VertexBufferFormat> _field3;
-    struct FixedArray<re::StringID> _field4;
-    struct HashBrown<re::WeakStringID, unsigned char, re::Hash<re::WeakStringID>, re::EqualTo<re::WeakStringID>, re::Hash<uint8_t>, false> _field5;
+    struct HashBrown<re::WeakStringID, unsigned char, re::Hash<re::WeakStringID>, re::EqualTo<re::WeakStringID>, re::Hash<uint8_t>, false> _field4;
+};
+
+struct AudioAssetConfiguration {
+    _Bool _field1;
+    id _field2;
+    int _field3;
+    int _field4;
+    double _field5;
 };
 
 struct AudioBuffer {
@@ -60,9 +61,9 @@ struct AudioComponentDescription {
 };
 
 struct AudioFileAssetReader {
-    char *data;
-    unsigned long long size;
-    NSData *backing;
+    struct SeekableInputStream *seekableStream;
+    _Bool ownedStream;
+    struct SeekableInputStreamBufferedReader *backingData;
     struct OpaqueAudioFileID *audioFile;
     struct OpaqueExtAudioFile *audioFileRef;
     long long fileLength;
@@ -85,12 +86,6 @@ struct CGSize {
     double _field2;
 };
 
-struct Config {
-    struct ServiceLocator *serviceLocator;
-    struct queue dispatchQueue;
-    struct DynamicString serviceID;
-};
-
 struct Connection {
     id _field1;
 };
@@ -102,86 +97,11 @@ struct DataArrayHandle<re::MeshModel> {
 };
 
 struct DeformationModelData {
-    struct unique_ptr<void, std::function<void (void *)>> _field1[17];
+    struct unique_ptr<void, std::function<void (void *)>> _field1[18];
 };
 
 struct Device {
     id _field1;
-};
-
-struct DiscoveryInvite;
-
-struct DiscoveryView;
-
-struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::Subscription> {
-    struct Allocator *m_allocator;
-    unsigned long long m_capacity;
-    unsigned long long m_size;
-    unsigned int m_version;
-    struct Subscription *m_data;
-};
-
-struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::SubscriptionLegacy> {
-    struct Allocator *m_allocator;
-    unsigned long long m_capacity;
-    unsigned long long m_size;
-    unsigned int m_version;
-    struct SubscriptionLegacy *m_data;
-};
-
-struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::Subscription> {
-    struct Allocator *m_allocator;
-    unsigned long long m_capacity;
-    unsigned long long m_size;
-    unsigned int m_version;
-    struct Subscription *m_data;
-};
-
-struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::SubscriptionLegacy> {
-    struct Allocator *m_allocator;
-    unsigned long long m_capacity;
-    unsigned long long m_size;
-    unsigned int m_version;
-    struct SubscriptionLegacy *m_data;
-};
-
-struct DynamicArray<re::IDSDiscoveryView *> {
-    struct Allocator *m_allocator;
-    unsigned long long m_capacity;
-    unsigned long long m_size;
-    unsigned int m_version;
-    struct IDSDiscoveryView **m_data;
-};
-
-struct DynamicArray<re::IDSInvite *> {
-    struct Allocator *m_allocator;
-    unsigned long long m_capacity;
-    unsigned long long m_size;
-    unsigned int m_version;
-    struct IDSInvite **m_data;
-};
-
-struct DynamicArray<re::SharedPtr<(anonymous namespace)::MCProtocolHandle>> {
-    struct Allocator *m_allocator;
-    unsigned long long m_capacity;
-    unsigned long long m_size;
-    unsigned int m_version;
-    void *m_data;
-};
-
-struct DynamicArray<unsigned char> {
-    struct Allocator *m_allocator;
-    unsigned long long m_capacity;
-    unsigned long long m_size;
-    unsigned int m_version;
-    char *m_data;
-};
-
-struct DynamicString {
-    struct Allocator *m_allocator;
-    char *m_buffer;
-    unsigned long long m_capacity;
-    unsigned long long m_length;
 };
 
 struct ElementPointer {
@@ -189,15 +109,9 @@ struct ElementPointer {
     unsigned short _field2;
 };
 
-struct Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>> {
-    struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::Subscription> m_subscriptions;
-    struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>, re::SharedPtr<re::DiscoveryIdentity>>::SubscriptionLegacy> m_subscriptionsLegacy;
-};
+struct EntryWithHash;
 
-struct Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>> {
-    struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::Subscription> m_subscriptions;
-    struct DynamicArray<re::Event<re::IDSSessionService, re::SharedPtr<re::DiscoveryInvite>>::SubscriptionLegacy> m_subscriptionsLegacy;
-};
+struct EntryWithoutHash;
 
 struct FadeState {
     unsigned int uniqueID;
@@ -228,6 +142,12 @@ struct FixedArray<re::MeshPart> {
     struct MeshPart *_field3;
 };
 
+struct FixedArray<re::SharedPtr<re::MaterialParameterBlock>> {
+    struct Allocator *_field1;
+    unsigned long long _field2;
+    void *_field3;
+};
+
 struct FixedArray<re::StringID> {
     struct Allocator *_field1;
     unsigned long long _field2;
@@ -240,7 +160,7 @@ struct FixedArray<re::VertexBufferFormat> {
     struct VertexBufferFormat *_field3;
 };
 
-struct FixedInlineArray<unsigned char, 24> {
+struct FixedInlineArray<unsigned char, 24UL> {
     unsigned char _field1[24];
 };
 
@@ -255,14 +175,15 @@ struct HashBrown<re::WeakStringID, unsigned char, re::Hash<re::WeakStringID>, re
     struct Allocator *_field8;
 };
 
-struct IDSDiscoveryIdentity;
-
-struct IDSDiscoveryView;
-
-struct IDSInvite;
-
-struct IDSSessionService {
-    CDUnknownFunctionPointerType *_field1;
+struct HashTable<unsigned long long, PHASESource *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false> {
+    struct Allocator *m_allocator;
+    unsigned int *m_buckets;
+    union Entry m_entries;
+    unsigned int m_capacity;
+    unsigned int m_count;
+    unsigned int m_touchedEntries;
+    unsigned int m_freeList;
+    unsigned int m_version;
 };
 
 struct Matrix4x4<float> {
@@ -304,6 +225,7 @@ struct MeshInstance {
     struct MeshLodSelectOptions _field3;
     struct Matrix4x4<float> _field4;
     struct FixedArray<int> _field5;
+    struct FixedArray<re::SharedPtr<re::MaterialParameterBlock>> _field6;
 };
 
 struct MeshLodLevelInfo {
@@ -335,61 +257,63 @@ struct MeshModelContext {
 
 struct MeshPart {
     struct AttributeTable _field1;
-    struct Matrix4x4<float> _field2;
-    struct AABB _field3;
-    unsigned int _field4;
+    struct FixedArray<re::StringID> _field2;
+    struct Matrix4x4<float> _field3;
+    struct AABB _field4;
     unsigned int _field5;
-    unsigned char _field6;
-    unsigned short _field7;
-    struct FixedInlineArray<unsigned char, 24> _field8;
-    struct StringID _field9;
-    unsigned int _field10;
+    unsigned int _field6;
+    unsigned char _field7;
+    unsigned short _field8;
+    struct FixedInlineArray<unsigned char, 24UL> _field9;
+    struct StringID _field10;
     unsigned int _field11;
-    unsigned char _field12;
-    int _field13;
-    struct RenderFlags _field14;
+    unsigned int _field12;
+    unsigned char _field13;
+    int _field14;
+    struct RenderFlags _field15;
 };
 
 struct OpaqueAudioFileID;
 
 struct OpaqueExtAudioFile;
 
+struct PendingListener;
+
 struct REMeshLodSelectOptions {
     struct MeshLodSelectOptions options;
 };
 
+struct REPHASESoundEventCommandState;
+
+struct RERotatingShapedWhiteNoiseState;
+
 struct RenderFlags {
-    unsigned char _field1;
+    unsigned short _field1;
 };
 
-struct ServiceLocator;
-
-struct SharedPtr<re::DiscoveryInvite> {
-    struct DiscoveryInvite *_field1;
+struct RenderPipelineDescriptorData {
+    unsigned int _field1;
+    int _field2[8];
+    int _field3;
 };
 
-struct SharedPtr<re::DiscoveryView> {
-    struct DiscoveryView *_field1;
+struct RenderTargetInfo {
+    struct RenderPipelineDescriptorData _field1;
+    _Bool _field2;
+    unsigned int _field3;
 };
 
-struct SharedPtr<re::IDSDiscoveryIdentity> {
-    struct IDSDiscoveryIdentity *_field1;
+struct SeekableInputStream {
+    CDUnknownFunctionPointerType *_field1;
 };
 
-struct SharedPtr<re::IDSDiscoveryView> {
-    struct IDSDiscoveryView *_field1;
-};
+struct SeekableInputStreamBufferedReader;
 
 struct SkinningModelBuilder {
     struct Device *_field1;
     struct DeformationModelData *_field2;
     unsigned long long _field3;
     _Bool _field4;
-};
-
-struct Slice<re::DynamicString> {
-    struct DynamicString *_field1;
-    unsigned long long _field2;
 };
 
 struct StreamWriter;
@@ -402,9 +326,9 @@ struct StringID {
     char *_field2;
 };
 
-struct Subscription;
-
-struct SubscriptionLegacy;
+struct UnfairLock {
+    struct os_unfair_lock_s m_lock;
+};
 
 struct Vector3<float> {
     union {
@@ -433,11 +357,19 @@ struct VertexAttributeDescriptor {
     char *_field1;
     unsigned char _field2;
     unsigned char _field3;
+    int _field4;
 };
 
 struct VertexBufferFormat;
 
-struct array<std::vector<float>, 2> {
+struct __shared_weak_count;
+
+struct _opaque_pthread_mutex_t {
+    long long __sig;
+    char __opaque[56];
+};
+
+struct array<std::vector<float>, 2UL> {
     struct vector<float, std::allocator<float>> __elems_[2];
 };
 
@@ -477,8 +409,85 @@ struct atomic<unsigned int> {
     } __a_;
 };
 
+struct atomic<unsigned long long> {
+    struct __cxx_atomic_impl<unsigned long long, std::__cxx_atomic_base_impl<unsigned long long>> {
+        _Atomic unsigned long long __a_value;
+    } __a_;
+};
+
+struct deque<REPHASESoundEventCommandState, std::allocator<REPHASESoundEventCommandState>> {
+    struct __split_buffer<REPHASESoundEventCommandState *, std::allocator<REPHASESoundEventCommandState *>> {
+        struct REPHASESoundEventCommandState **__first_;
+        struct REPHASESoundEventCommandState **__begin_;
+        struct REPHASESoundEventCommandState **__end_;
+        struct __compressed_pair<REPHASESoundEventCommandState **, std::allocator<REPHASESoundEventCommandState *>> {
+            struct REPHASESoundEventCommandState **__value_;
+        } __end_cap_;
+    } __map_;
+    unsigned long long __start_;
+    struct __compressed_pair<unsigned long, std::allocator<REPHASESoundEventCommandState>> {
+        unsigned long long __value_;
+    } __size_;
+};
+
 struct float4x4 {
     MISSING_TYPE *_field1[4];
+};
+
+struct function<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
+};
+
+struct function<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
+};
+
+struct function<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
+};
+
+struct function<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
+};
+
+struct function<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
+};
+
+struct function<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
+};
+
+struct function<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
+};
+
+struct function<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+    struct __value_func<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
 };
 
 struct function<void (void *)> {
@@ -489,22 +498,27 @@ struct function<void (void *)> {
 };
 
 struct mutex {
-    struct _opaque_pthread_mutex_t {
-        long long __sig;
-        char __opaque[56];
-    } __m_;
+    struct _opaque_pthread_mutex_t __m_;
 };
 
-struct object {
-    NSObject *fObj;
+struct optional<double> {
+    union {
+        char __null_state_;
+        double __val_;
+    } ;
+    _Bool __engaged_;
 };
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct queue {
-    struct object fObj;
+struct queue<REPHASESoundEventCommandState, std::deque<REPHASESoundEventCommandState>> {
+    struct deque<REPHASESoundEventCommandState, std::allocator<REPHASESoundEventCommandState>> c;
+};
+
+struct recursive_mutex {
+    struct _opaque_pthread_mutex_t __m_;
 };
 
 struct shared_ptr<AudioStreamRecordingManager::StreamWriter> {
@@ -512,8 +526,69 @@ struct shared_ptr<AudioStreamRecordingManager::StreamWriter> {
     struct __shared_weak_count *__cntrl_;
 };
 
+struct shared_ptr<RERotatingShapedWhiteNoiseState> {
+    struct RERotatingShapedWhiteNoiseState *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
 struct type {
-    unsigned char _field1[24];
+    unsigned char __lx[24];
+};
+
+struct unique_ptr<re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+        void *__value_;
+        struct function<void (re::HashTable<unsigned long long, PHASEListener *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+        void *__value_;
+        struct function<void (re::HashTable<unsigned long long, PHASEObject *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+        void *__value_;
+        struct function<void (re::HashTable<unsigned long long, PHASEShape *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+        void *__value_;
+        struct function<void (re::HashTable<unsigned long long, REPHASEAudioScene *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+        void *__value_;
+        struct function<void (re::HashTable<unsigned long long, REPHASEEntity *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+        void *__value_;
+        struct function<void (re::HashTable<unsigned long long, REPHASESoundAsset, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+        void *__value_;
+        struct function<void (re::HashTable<unsigned long long, REPHASESoundEvent *, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>, std::function<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+    struct __compressed_pair<re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*, std::function<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)>> {
+        void *__value_;
+        struct function<void (re::HashTable<unsigned long long, bool, re::Hash<uint64_t>, re::EqualTo<uint64_t>, true, false>*)> __value_;
+    } __ptr_;
 };
 
 struct unique_ptr<re::audio::FixedSpscAudioQueue<GainRampCommand>, std::default_delete<re::audio::FixedSpscAudioQueue<GainRampCommand>>> {
@@ -529,6 +604,14 @@ struct unique_ptr<void, std::function<void (void *)>> {
     } _field1;
 };
 
+struct vector<PendingListener, std::allocator<PendingListener>> {
+    struct PendingListener *__begin_;
+    struct PendingListener *__end_;
+    struct __compressed_pair<PendingListener *, std::allocator<PendingListener>> {
+        struct PendingListener *__value_;
+    } __end_cap_;
+};
+
 struct vector<float, std::allocator<float>> {
     float *__begin_;
     float *__end_;
@@ -542,6 +625,14 @@ struct vector<int, std::allocator<int>> {
     int *__end_;
     struct __compressed_pair<int *, std::allocator<int>> {
         int *__value_;
+    } __end_cap_;
+};
+
+struct vector<unsigned long long, std::allocator<unsigned long long>> {
+    unsigned long long *__begin_;
+    unsigned long long *__end_;
+    struct __compressed_pair<unsigned long long *, std::allocator<unsigned long long>> {
+        unsigned long long *__value_;
     } __end_cap_;
 };
 
@@ -566,32 +657,18 @@ typedef struct {
 } CDStruct_1b6d18a9;
 
 // Template types
-typedef struct DynamicArray<unsigned char> {
-    struct Allocator *m_allocator;
-    unsigned long long m_capacity;
-    unsigned long long m_size;
-    unsigned int m_version;
-    char *m_data;
-} DynamicArray_8f05e591;
+typedef struct vector<unsigned long long, std::allocator<unsigned long long>> {
+    unsigned long long *__begin_;
+    unsigned long long *__end_;
+    struct __compressed_pair<unsigned long long *, std::allocator<unsigned long long>> {
+        unsigned long long *__value_;
+    } __end_cap_;
+} vector_b42bd36b;
 
-typedef struct SharedPtr<re::DiscoveryInvite> {
-    struct DiscoveryInvite *_field1;
-} SharedPtr_d68dfbcb;
+#pragma mark Named Unions
 
-typedef struct SharedPtr<re::DiscoveryView> {
-    struct DiscoveryView *_field1;
-} SharedPtr_c2d37bbb;
-
-typedef struct SharedPtr<re::IDSDiscoveryIdentity> {
-    struct IDSDiscoveryIdentity *_field1;
-} SharedPtr_601ce9e9;
-
-typedef struct SharedPtr<re::IDSDiscoveryView> {
-    struct IDSDiscoveryView *_field1;
-} SharedPtr_24b37889;
-
-typedef struct Slice<re::DynamicString> {
-    struct DynamicString *_field1;
-    unsigned long long _field2;
-} Slice_554aef03;
+union Entry {
+    struct EntryWithoutHash *withoutHash;
+    struct EntryWithHash *withHash;
+};
 

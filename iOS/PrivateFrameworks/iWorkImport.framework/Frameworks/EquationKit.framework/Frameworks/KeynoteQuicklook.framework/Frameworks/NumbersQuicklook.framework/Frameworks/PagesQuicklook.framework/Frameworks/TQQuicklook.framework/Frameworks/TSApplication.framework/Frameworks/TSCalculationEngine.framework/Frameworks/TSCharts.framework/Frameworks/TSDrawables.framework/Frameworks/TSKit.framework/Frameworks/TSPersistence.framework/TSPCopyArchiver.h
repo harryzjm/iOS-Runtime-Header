@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSPersistence/TSPProxyObjectMappingProvider-Protocol.h>
-
 @protocol TSPProxyObjectMapping;
 
-@interface TSPCopyArchiver <TSPProxyObjectMappingProvider>
+@interface TSPCopyArchiver
 {
     id <TSPProxyObjectMapping> _proxyObjectMapping;
 }

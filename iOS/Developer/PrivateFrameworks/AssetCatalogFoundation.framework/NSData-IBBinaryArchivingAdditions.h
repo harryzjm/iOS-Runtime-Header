@@ -6,11 +6,9 @@
 
 #import <Foundation/NSData.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface NSData (IBBinaryArchivingAdditions) <IBBinaryArchiving>
+@interface NSData (IBBinaryArchivingAdditions)
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (unsigned char)ib_lastByte;

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
-
 @class CKEncryptedData;
 
-@interface CKDChainPCSData <NSSecureCoding>
+@interface CKDChainPCSData
 {
     CKEncryptedData *_encryptedChainPCSPrivateKey;
 }

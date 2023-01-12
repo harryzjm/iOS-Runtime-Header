@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSFormatter, NSString;
+#import "NSString.h"
+
+@class NSFormatter;
 @protocol NSCopying><NSSecureCoding><NSObject;
 
 __attribute__((visibility("hidden")))
-@interface _NSStringProxyForContext
+@interface _NSStringProxyForContext : NSString
 {
     NSString *_string;
     NSFormatter *_formatter;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIStatusBarPrioritized-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableSet, _UIStatusBar, _UIStatusBarAnimation, _UIStatusBarDisplayItem, _UIStatusBarDisplayItemPlacementState, _UIStatusBarIdentifier, _UIStatusBarItem, _UIStatusBarStyleAttributes;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarDisplayItemState : NSObject <_UIStatusBarPrioritized>
+@interface _UIStatusBarDisplayItemState : NSObject
 {
     _Bool _wasEnabled;
     _Bool _wasVisible;
@@ -76,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_resolveDependentItemStatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_updateStatuses;
 - (void)prepareForDataUpdate;
+- (void)prepareForOverflowDataUpdate;
 - (id)placementStateForPlacement:(id)arg1;
 - (void)addPlacement:(id)arg1 inRegion:(id)arg2;
 - (_Bool)_updateToNextPlacementStateIfNeeded;

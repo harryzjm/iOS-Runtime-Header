@@ -6,12 +6,10 @@
 
 #import <StoreServices/SSMetricsBaseEvent.h>
 
-#import <StoreKitUI/SKUIInspectableObject-Protocol.h>
-
 @class NSArray, NSDictionary, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMetricsPageRenderEvent : SSMetricsBaseEvent <SKUIInspectableObject>
+@interface SKUIMetricsPageRenderEvent : SSMetricsBaseEvent
 {
     NSMutableArray *_domChanges;
     NSMutableArray *_requests;

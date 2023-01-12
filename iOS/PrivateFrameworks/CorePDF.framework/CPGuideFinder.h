@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPDisposable-Protocol.h>
-
 @class CPCluster, CPZone, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface CPGuideFinder : NSObject <CPDisposable>
+@interface CPGuideFinder : NSObject
 {
     CPZone *contentZone;
     unsigned int countOfWordsInZone;

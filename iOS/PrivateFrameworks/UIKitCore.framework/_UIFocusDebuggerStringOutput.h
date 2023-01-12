@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIFocusDebuggerOutput-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusDebuggerStringOutput : NSObject <UIFocusDebuggerOutput>
+@interface _UIFocusDebuggerStringOutput : NSObject
 {
     NSString *_outputString;
 }

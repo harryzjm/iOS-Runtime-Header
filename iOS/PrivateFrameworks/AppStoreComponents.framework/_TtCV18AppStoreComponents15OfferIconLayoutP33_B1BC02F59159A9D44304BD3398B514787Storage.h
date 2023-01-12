@@ -14,6 +14,7 @@
     MISSING_TYPE *imageView;
     MISSING_TYPE *titleView;
     MISSING_TYPE *subtitleView;
+    MISSING_TYPE *shouldTopAlign;
 }
 
 @end

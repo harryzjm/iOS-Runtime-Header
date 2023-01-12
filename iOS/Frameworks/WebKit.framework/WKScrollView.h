@@ -14,6 +14,9 @@ __attribute__((visibility("hidden")))
 {
     struct WeakObjCPtr<id<UIScrollViewDelegate>> _externalDelegate;
     struct RetainPtr<WKScrollViewDelegateForwarder> _delegateForwarder;
+    _Bool _backgroundColorSetByClient;
+    _Bool _indicatorStyleSetByClient;
+    _Bool _decelerationRateSetByClient;
     _Bool _contentInsetAdjustmentBehaviorWasExternallyOverridden;
     _Bool _contentInsetWasExternallyOverridden;
     double _keyboardBottomInsetAdjustment;
@@ -48,6 +51,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool _contentInsetAdjustmentBehaviorWasExternallyOverridden;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (double)_rubberBandOffsetForOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4 outside:(_Bool *)arg5;
+- (void)_setDecelerationRateInternal:(double)arg1;
+- (void)setDecelerationRate:(double)arg1;
+- (void)_setIndicatorStyleInternal:(long long)arg1;
+- (void)setIndicatorStyle:(long long)arg1;
+- (void)_setBackgroundColorInternal:(id)arg1;
+- (void)setBackgroundColor:(id)arg1;
 - (void)_updateDelegate;
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;

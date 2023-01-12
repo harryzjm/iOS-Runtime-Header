@@ -6,11 +6,9 @@
 
 #import <Foundation/NSExtensionItem.h>
 
-#import <ContentKit/WFNaming-Protocol.h>
-
 @class NSString;
 
-@interface NSExtensionItem (WFNaming) <WFNaming>
+@interface NSExtensionItem (WFNaming)
 @property(readonly, copy, nonatomic) NSString *wfName;
 @end
 

@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MusicLibrary/MLMediaLibraryAccountChangeObserver-Protocol.h>
-
 @class NSObject, NSString;
 @protocol MLMediaLibraryResourcesServiceProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _ML3MultiUserMusicLibraryResourcesManager <MLMediaLibraryAccountChangeObserver>
+@interface _ML3MultiUserMusicLibraryResourcesManager
 {
     NSString *_cachedLibraryContainerPath;
     NSObject<OS_dispatch_queue> *_serialQueue;

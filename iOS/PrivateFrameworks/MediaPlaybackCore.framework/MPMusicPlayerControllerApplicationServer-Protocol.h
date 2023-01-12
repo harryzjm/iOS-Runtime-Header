@@ -10,10 +10,10 @@
 
 @protocol MPMusicPlayerControllerApplicationServer <MPMusicPlayerControllerServer>
 - (void)getNowPlayingsForContentItemIDs:(NSArray *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
-- (void)setDisableAutomaticCanBeNowPlaying:(_Bool)arg1;
-- (void)setRelativeVolume:(float)arg1;
 - (void)beginPlaybackAtHostTime:(NSDictionary *)arg1;
 - (void)prerollWithCompletion:(void (^)(_Bool))arg1;
+- (void)setRelativeVolume:(float)arg1;
+- (void)setDisableAutomaticCanBeNowPlaying:(_Bool)arg1;
 - (void)performQueueModifications:(MPMusicPlayerControllerApplicationQueueModifications *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

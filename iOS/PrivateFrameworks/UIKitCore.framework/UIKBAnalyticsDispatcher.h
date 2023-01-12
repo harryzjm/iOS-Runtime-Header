@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (void)emojiInsertedByMethod:(id)arg1 inputType:(id)arg2;
 + (void)emojiPopoverSummoned:(id)arg1 appendsEmoji:(_Bool)arg2;
 + (void)editingSessionEnded:(unsigned long long)arg1;
++ (void)sessionEfficacyAnalyticsEnded:(id)arg1;
 + (void)sessionAnalyticsEnded:(id)arg1;
 + (void)handwritingResized:(id)arg1;
 + (void)globeKeySelected;

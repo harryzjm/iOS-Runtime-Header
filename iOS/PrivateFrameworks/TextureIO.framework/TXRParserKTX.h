@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TextureIO/TXRParser-Protocol.h>
-
 @class NSDictionary, NSString, TXRDeferredTextureInfo, TXRTextureInfo;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface TXRParserKTX : NSObject <TXRParser>
+@interface TXRParserKTX : NSObject
 {
     TXRTextureInfo *_textureInfo;
     unsigned int _bytesOfKeyValueData;

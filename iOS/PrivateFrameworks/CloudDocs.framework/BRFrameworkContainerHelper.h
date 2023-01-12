@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudDocs/BRContainerHelper-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BRFrameworkContainerHelper : NSObject <BRContainerHelper>
+@interface BRFrameworkContainerHelper : NSObject
 {
 }
 
+- (id)queryPathsForPersona:(id)arg1 withError:(id *)arg2;
 - (id)itemIDForURL:(id)arg1 error:(id *)arg2;
 - (unsigned short)br_capabilityToMoveFromURL:(id)arg1 toNewParent:(id)arg2 error:(id *)arg3;
-- (id)fetchContainerForURL:(id)arg1;
+- (void)_resolveItemIdentifierAtURL:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (id)fetchContainerForMangledID:(id)arg1 personaID:(id)arg2;
 - (id)fetchAllContainersByIDWithError:(id *)arg1;
 - (_Bool)canFetchAllContainersByID;
 

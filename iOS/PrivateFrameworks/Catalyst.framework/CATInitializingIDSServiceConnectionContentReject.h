@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATInitializingIDSServiceConnectionMessageContent-Protocol.h>
-
 @class NSDictionary, NSError, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface CATInitializingIDSServiceConnectionContentReject : NSObject <CATInitializingIDSServiceConnectionMessageContent>
+@interface CATInitializingIDSServiceConnectionContentReject : NSObject
 {
     NSUUID *_connectionIdentifier;
     NSError *_error;

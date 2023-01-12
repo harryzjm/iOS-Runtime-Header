@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EventKit/NSCopying-Protocol.h>
-
 @class NSDate, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface EKInviteeTimeSpan : NSObject <NSCopying>
+@interface EKInviteeTimeSpan : NSObject
 {
     NSDate *_startDate;
     NSDate *_endDate;

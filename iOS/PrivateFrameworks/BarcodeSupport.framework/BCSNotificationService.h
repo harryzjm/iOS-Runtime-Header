@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSNotificationServiceProtocol-Protocol.h>
-
 @class NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface BCSNotificationService : NSObject <BCSNotificationServiceProtocol>
+@interface BCSNotificationService : NSObject
 {
     NSXPCConnection *_connection;
 }

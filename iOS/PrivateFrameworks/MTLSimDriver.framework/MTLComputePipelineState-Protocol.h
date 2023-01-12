@@ -10,6 +10,7 @@
 @protocol MTLComputePipelineState, MTLDevice, MTLFunction, MTLFunctionHandle, MTLIntersectionFunctionTable, MTLVisibleFunctionTable;
 
 @protocol MTLComputePipelineState <NSObject>
+@property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly) _Bool supportIndirectCommandBuffers;
 @property(readonly) unsigned long long staticThreadgroupMemoryLength;
 @property(readonly) unsigned long long threadExecutionWidth;

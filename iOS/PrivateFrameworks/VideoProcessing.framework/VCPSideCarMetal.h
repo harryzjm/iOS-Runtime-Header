@@ -7,19 +7,28 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary;
-@protocol MTLCommandQueue, MTLComputePipelineState, MTLDevice, OS_dispatch_queue;
+@protocol MTLCommandQueue, MTLComputePipelineState, MTLDevice, MTLLibrary, OS_dispatch_queue;
 
 @interface VCPSideCarMetal : NSObject
 {
     id <MTLDevice> _device;
     id <MTLCommandQueue> _commandQueue;
+    id <MTLLibrary> _library;
+    _Bool _supportsSIMDPermute;
+    _Bool _supportsQuadPermute;
     id <MTLComputePipelineState> _transitionDetection;
+    id <MTLComputePipelineState> _transitionDetectionUnorm;
+    id <MTLComputePipelineState> _blitKernel;
+    id <MTLComputePipelineState> _deblockLumaH;
+    id <MTLComputePipelineState> _deblockChromaH;
+    int _deblockBitdepth;
     struct CF<__CVMetalTextureCache *> _textureCacheLuma;
     struct CF<__CVMetalTextureCache *> _textureCacheChroma;
     struct CF<__CVMetalTextureCache *> _textureCacheRGBALuma;
     struct CF<__CVMetalTextureCache *> _textureCacheRGBAChroma;
     NSDictionary *_readAttributes;
     NSDictionary *_writeAttributes;
+    NSDictionary *_readWriteAttributes;
     struct MetalBufferPool _packetPool;
     struct MetalBufferPool _blockDist;
     NSObject<OS_dispatch_queue> *_submissionQueue;
@@ -31,15 +40,21 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (future_5546453e)createEncodePacket:(struct __CVBuffer *)arg1 forRegion:(CDStruct_4c83c94d)arg2 instance:(unsigned int)arg3 sequenceNumber:(unsigned int)arg4 frameIndex:(unsigned int)arg5 pts:(CDStruct_198678f7)arg6 duration:(CDStruct_198678f7)arg7 frameProperties:(struct __CFDictionary *)arg8;
+- (int)copySubframe:(struct __CVBuffer *)arg1 toFrame:(struct __CVBuffer *)arg2 atOffset:(CDStruct_14f26992)arg3;
 - (int)copyFromFrame:(struct __CVBuffer *)arg1 toTile:(struct __CVBuffer *)arg2 origin:(CDStruct_14f26992)arg3 size:(CDStruct_14f26992)arg4 withFence:(void *)arg5;
+- (int)subframeDeblock:(struct __CVBuffer *)arg1 withOffsetsY:(unsigned int *)arg2 numEdges:(int)arg3;
 - (future_1676b93f)temporalTransitionScore:(struct __CVBuffer *)arg1 previousFrame:(struct __CVBuffer *)arg2 forRegion:(CDStruct_4c83c94d)arg3;
 - (id)rgbaUintTextureForChroma:(struct __CVBuffer *)arg1 withAttributes:(id)arg2;
 - (id)rgbaUintTextureForLuma:(struct __CVBuffer *)arg1 withAttributes:(id)arg2;
 - (id)rgbaUnormTextureForLuma:(struct __CVBuffer *)arg1 withAttributes:(id)arg2;
-- (id)cachedTexture:(struct __CVBuffer *)arg1 forPlane:(int)arg2 withAttributes:(id)arg3;
+- (id)uintTexture:(struct __CVBuffer *)arg1 forPlane:(int)arg2 withAttributes:(id)arg3;
+- (id)unormTexture:(struct __CVBuffer *)arg1 forPlane:(int)arg2 withAttributes:(id)arg3;
+- (void)compileDeblockForFrame:(struct __CVBuffer *)arg1;
+- (void)compileTransitionDetection;
+- (id)compileFunction:(id)arg1;
+- (id)compileFunction:(id)arg1 constantValues:(id)arg2;
 - (int)selectGPUForFrame:(struct __CVBuffer *)arg1;
 - (void)setPacketLayout:(id)arg1;
-- (id)init;
 
 @end
 

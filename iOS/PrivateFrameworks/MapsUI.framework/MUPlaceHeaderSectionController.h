@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceHeaderViewDelegate-Protocol.h>
+#import "MUPlaceSectionController.h"
 
 @class MUPlaceHeaderSectionControllerConfiguration, MUPlaceHeaderView, NSString;
 @protocol MUPlaceHeaderSectionControllerDelegate, _MKPlaceItem;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceHeaderSectionController <MUPlaceHeaderViewDelegate>
+@interface MUPlaceHeaderSectionController : MUPlaceSectionController
 {
     MUPlaceHeaderView *_headerView;
     id <_MKPlaceItem> _placeItem;
@@ -21,11 +21,18 @@ __attribute__((visibility("hidden")))
 + (double)minimalModeHeight;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MUPlaceHeaderSectionControllerDelegate> headerDelegate; // @synthesize headerDelegate=_headerDelegate;
+@property(readonly, nonatomic) _Bool shouldBlurChromeHeaderButtons;
+- (void)_populateRevealedAnalyticsModule:(id)arg1;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (id)draggableContent;
 - (void)_notifyDidTapParentMapItem:(id)arg1;
+- (void)headerView:(id)arg1 didSelectShareWithPresentationOptions:(id)arg2;
 - (void)headerView:(id)arg1 didSelectEnclosingMapItemIdentifier:(id)arg2;
 - (void)headerView:(id)arg1 didSelectEnclosingMapItem:(id)arg2;
+- (void)setCardExpansionProgress:(double)arg1;
+- (void)verifiedBusinessHeaderScrollPositionChanged:(double)arg1;
+- (double)verifiedBusinessHeaderHeight;
 - (void)hideTitle:(_Bool)arg1;
 - (id)sectionView;
 - (void)_setupHeaderView;

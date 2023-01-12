@@ -15,7 +15,7 @@
 - (void)nowPlayingAudioFormatController:(MRNowPlayingAudioFormatController *)arg1 didChangeBestAvailableAudioFormat:(long long)arg2;
 - (void)nowPlayingAudioFormatController:(MRNowPlayingAudioFormatController *)arg1 didChangeMultichannel:(_Bool)arg2;
 - (void)nowPlayingAudioFormatController:(MRNowPlayingAudioFormatController *)arg1 didChangeAudioFormatDescription:(NSString *)arg2;
-- (void)nowPlayingAudioFormatController:(MRNowPlayingAudioFormatController *)arg1 didChangeAudioFormatContentInfo:(MRNowPlayingAudioFormatContentInfo *)arg2;
 - (void)nowPlayingAudioFormatController:(MRNowPlayingAudioFormatController *)arg1 didChangeBundleID:(NSString *)arg2 displayName:(NSString *)arg3;
+- (void)nowPlayingAudioFormatController:(MRNowPlayingAudioFormatController *)arg1 didChangeAudioFormatContentInfo:(MRNowPlayingAudioFormatContentInfo *)arg2;
 @end
 

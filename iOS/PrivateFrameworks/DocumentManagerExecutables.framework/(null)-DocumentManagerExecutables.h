@@ -4,18 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DocumentManagerExecutables/FPItemCollectionIndexPathBasedDelegate-Protocol.h>
-
-@interface (null) (DocumentManagerExecutables) <FPItemCollectionIndexPathBasedDelegate>
-- (void)removeSubscriber:(id)arg1;
-- (id)addSubscriber:(CDUnknownBlockType)arg1;
-- (void)collection:(id)arg1 didUpdateObservedItem:(id)arg2;
-- (void)collection:(id)arg1 didPerformBatchUpdateWithReplayBlock:(CDUnknownBlockType)arg2;
-- (void)collection:(id)arg1 didEncounterError:(id)arg2;
-- (void)dataForCollectionShouldBeReloaded:(id)arg1;
-- (void)collection:(id)arg1 didUpdateItemsAtIndexPaths:(id)arg2 changes:(id)arg3;
-- (void)collection:(id)arg1 didMoveItemsFromIndexPaths:(id)arg2 toIndexPaths:(id)arg3;
-- (void)collection:(id)arg1 didDeleteItemsAtIndexPaths:(id)arg2;
-- (void)collection:(id)arg1 didInsertItemsAtIndexPaths:(id)arg2;
+@interface (null) (DocumentManagerExecutables)
+- (id)previewController:(id)arg1 previewItemAtIndex:(long long)arg2;
+- (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
 @end
 

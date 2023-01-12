@@ -6,13 +6,10 @@
 
 #import <UIKit/UIControl.h>
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-#import <StoreKitUI/UIKeyInput-Protocol.h>
-
 @class NSMutableArray, NSMutableString, NSString, SKUIViewElement, UIColor, UIFont, UITextInputPasswordRules;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPINInputControl : UIControl <SKUIViewElementView, UIKeyInput>
+@interface SKUIPINInputControl : UIControl
 {
     UIColor *_boxBackgroundColor;
     UIColor *_boxBorderColor;

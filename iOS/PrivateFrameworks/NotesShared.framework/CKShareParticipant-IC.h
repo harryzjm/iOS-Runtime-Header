@@ -10,6 +10,7 @@
 
 @interface CKShareParticipant (IC)
 + (id)ic_participantForUserRecordName:(id)arg1 inNote:(id)arg2;
++ (id)ic_mentionableNamesCache;
 + (unsigned long long)ic_mentionTokensPerParticipant;
 + (id)ic_nonCurrentUserParticipants:(id)arg1;
 + (id)ic_participantsWithDisplayableNames:(id)arg1 maximumNamesCount:(unsigned long long)arg2;
@@ -18,6 +19,11 @@
 + (id)ic_participantNameOrFallbackForUserRecordName:(id)arg1 note:(id)arg2;
 + (id)ic_participantFallbackNameForUserRecordName:(id)arg1 note:(id)arg2;
 - (id)ic_userRecordNameInNote:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *ic_activityStreamDisplayName;
+- (id)ic_participantNameMatchingString:(id)arg1 returnFullName:(_Bool)arg2;
+@property(readonly, copy, nonatomic) NSString *ic_cachedDisplayNameFromContacts;
+@property(readonly, copy, nonatomic) NSSet *ic_mentionableNamesFromContacts;
+@property(readonly, copy, nonatomic) NSSet *ic_mentionTokensFromContacts;
 @property(readonly, copy, nonatomic) NSSet *ic_mentionTokens;
 @property(readonly, nonatomic) NSString *ic_phoneNumber;
 @property(readonly, nonatomic) NSString *ic_emailAddress;

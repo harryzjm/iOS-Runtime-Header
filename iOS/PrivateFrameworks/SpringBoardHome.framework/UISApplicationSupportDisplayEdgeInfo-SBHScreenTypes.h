@@ -7,6 +7,7 @@
 #import <UIKitServices/UISApplicationSupportDisplayEdgeInfo.h>
 
 @interface UISApplicationSupportDisplayEdgeInfo (SBHScreenTypes)
++ (id)_sbh_displayEdgeInfoForScreenType:(unsigned long long)arg1;
 + (id)sbh_displayEdgeInfoForScreenType:(unsigned long long)arg1;
 @end
 

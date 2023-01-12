@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HDJournalEntry.h"
+
 @class NSArray, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface _HDLocationInsertionJournalEntry
+@interface _HDLocationInsertionJournalEntry : HDJournalEntry
 {
     NSUUID *_seriesIdentifier;
     NSArray *_data;

@@ -7,6 +7,7 @@
 #import <UIKit/UITextView.h>
 
 @interface UITextView (IBCocoaTouchToolIntegration)
+- (void)setIbFindInteractionEnabled:(_Bool)arg1;
 - (void)ibSwizzled_populateArchivedSubviews:(id)arg1;
 - (double)ibAdditionalBaselineOffsetFromBottom;
 - (double)ibAdditionalBaselineOffsetFromTop;
@@ -25,5 +26,6 @@
 - (void)setIbEnablesReturnKeyAutomatically:(_Bool)arg1;
 - (void)setIbAutocorrectionType:(long long)arg1;
 - (void)setIbAutocapitalizationType:(long long)arg1;
+- (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

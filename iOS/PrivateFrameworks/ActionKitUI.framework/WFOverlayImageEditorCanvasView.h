@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <ActionKitUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UIImageView, UIRotationGestureRecognizer, WFOverlayImageTransform;
 
 __attribute__((visibility("hidden")))
-@interface WFOverlayImageEditorCanvasView : UIView <UIGestureRecognizerDelegate>
+@interface WFOverlayImageEditorCanvasView : UIView
 {
     WFOverlayImageTransform *_imageTransform;
     UIRotationGestureRecognizer *_rotateRecognizer;

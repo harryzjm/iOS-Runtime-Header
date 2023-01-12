@@ -7,6 +7,8 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (HomeKit)
+- (_Bool)hm_containsAnyTextCheckingTypeInTypes:(unsigned long long)arg1;
+@property(readonly, copy) NSString *hm_truncatedNameString;
 @property(readonly, copy) NSString *stringByCapitalizingFirstWord;
 - (id)stringByTransformingFirstWordUsingBlock:(CDUnknownBlockType)arg1;
 - (id)hm_generateSHA1;

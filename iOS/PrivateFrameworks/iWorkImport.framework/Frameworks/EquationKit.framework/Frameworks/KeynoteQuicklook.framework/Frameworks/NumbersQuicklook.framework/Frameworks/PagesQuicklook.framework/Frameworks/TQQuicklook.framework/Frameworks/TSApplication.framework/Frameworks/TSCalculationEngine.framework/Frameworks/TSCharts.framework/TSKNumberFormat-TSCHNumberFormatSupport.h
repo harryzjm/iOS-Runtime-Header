@@ -6,11 +6,9 @@
 
 #import <TSKit/TSKNumberFormat.h>
 
-#import <TSCharts/TSCHNumericFormat-Protocol.h>
-
 @class NSString;
 
-@interface TSKNumberFormat (TSCHNumberFormatSupport) <TSCHNumericFormat>
+@interface TSKNumberFormat (TSCHNumberFormatSupport)
 - (id)chartNumericFormatByApplyingTSCHNumericFormatProperties:(struct TSCHNumericFormatProperties)arg1;
 @property(readonly, nonatomic) struct TSCHNumericFormatProperties chartNumericFormatProperties;
 

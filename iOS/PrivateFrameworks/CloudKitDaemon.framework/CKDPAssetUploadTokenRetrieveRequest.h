@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecordFieldIdentifier, CKDPRecordType, NSData, NSMutableArray;
 
-@interface CKDPAssetUploadTokenRetrieveRequest : PBRequest <NSCopying>
+@interface CKDPAssetUploadTokenRetrieveRequest : PBRequest
 {
     NSMutableArray *_assets;
     NSData *_authPutRequest;

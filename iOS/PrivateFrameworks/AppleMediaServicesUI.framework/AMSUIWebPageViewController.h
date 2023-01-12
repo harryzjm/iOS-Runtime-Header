@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebPagePresenter-Protocol.h>
+#import "AMSUICommonViewController.h"
 
-@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebPageModel, AMSUIWebView, NSString, NSURL;
+@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebPageModel, AMSUIWebView, NSString, NSURL, UIToolbar;
 @protocol AMSUIWebPageViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebPageViewController <AMSUIWebPagePresenter>
+@interface AMSUIWebPageViewController : AMSUICommonViewController
 {
     id <AMSUIWebPageViewControllerDelegate> _delegate;
     AMSUIWebView *_webView;
@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     AMSUIWebAppearance *_appearance;
     AMSUIWebClientContext *_context;
     AMSUIWebPageModel *_model;
+    UIToolbar *_toolbar;
     struct CGSize _contentSize;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property(retain, nonatomic) AMSUIWebPageModel *model; // @synthesize model=_model;
 @property(nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(readonly, nonatomic) __weak AMSUIWebClientContext *context; // @synthesize context=_context;
@@ -30,6 +32,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AMSUIWebView *webView; // @synthesize webView=_webView;
 @property(nonatomic) __weak id <AMSUIWebPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_willEncodeRequest:(id)arg1;
+- (void)_didTapRightToolbarButton:(id)arg1;
+- (void)_didTapLeftToolbarButton:(id)arg1;
 - (void)_updateLayout;
 - (void)_downloadHTMLForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_didEncodeRequest:(id)arg1;

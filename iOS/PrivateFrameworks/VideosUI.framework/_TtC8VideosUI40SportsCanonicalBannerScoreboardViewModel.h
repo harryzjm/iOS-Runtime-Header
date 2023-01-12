@@ -4,8 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _TtC8VideosUI40SportsCanonicalBannerScoreboardViewModel
+#import "_$s8VideosUI9ViewModelCN.h"
+
+@class MISSING_TYPE;
+
+@interface _TtC8VideosUI40SportsCanonicalBannerScoreboardViewModel : _$s8VideosUI9ViewModelCN
 {
+    MISSING_TYPE *onBannerUpdated;
+    MISSING_TYPE *badgeViewModel;
+    MISSING_TYPE *gameStartViewModel;
+    MISSING_TYPE *logos;
+    MISSING_TYPE *abbreviations;
+    MISSING_TYPE *voiceOverViewModel;
+    MISSING_TYPE *_scoresPublisher;
+    MISSING_TYPE *_clockPublisher;
+    MISSING_TYPE *_winnerPublisher;
+    MISSING_TYPE *_displayErrors;
+    MISSING_TYPE *isLiveUpdatesSupported;
+    MISSING_TYPE *cancellables;
+    MISSING_TYPE *subscribeToEventTask;
 }
 
 @end

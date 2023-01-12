@@ -7,6 +7,6 @@
 @protocol PXStoryPacingTimeSource;
 
 @protocol PXStoryPacingTimeSourceDelegate
-- (void)timeSource:(id <PXStoryPacingTimeSource>)arg1 didIncrementByTime:(CDStruct_1b6d18a9)arg2;
+- (void)timeSource:(id <PXStoryPacingTimeSource>)arg1 didIncrementByTime:(CDStruct_198678f7)arg2;
 @end
 

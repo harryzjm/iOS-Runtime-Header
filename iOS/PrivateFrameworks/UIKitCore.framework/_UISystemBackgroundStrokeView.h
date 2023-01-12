@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UISystemBackgroundStrokeView
+@interface _UISystemBackgroundStrokeView : UIView
 {
     _Bool _useContinuousCurve;
     double _strokeWidth;

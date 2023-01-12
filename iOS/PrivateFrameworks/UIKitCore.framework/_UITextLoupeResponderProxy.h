@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIResponder;
+#import "UIResponder.h"
+
 @protocol _UITextLoupeResponderProxyDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UITextLoupeResponderProxy
+@interface _UITextLoupeResponderProxy : UIResponder
 {
     UIResponder *_responder;
     id <_UITextLoupeResponderProxyDelegate> _delegate;

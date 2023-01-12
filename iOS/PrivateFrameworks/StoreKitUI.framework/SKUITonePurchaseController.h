@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/CNContactPickerDelegate-Protocol.h>
-
 @class CNContactPickerViewController, NSString, SKUIClientContext, SKUIItem, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUITonePurchaseController : NSObject <CNContactPickerDelegate>
+@interface SKUITonePurchaseController : NSObject
 {
     SKUIClientContext *_clientContext;
     CNContactPickerViewController *_contactPickerController;

@@ -6,29 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreNFC/NFCNDEFTag-Protocol.h>
-
-@class NSNumber, NSString;
+@class NFCHardwareManager, NSNumber, NSString;
 @protocol NFTag, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface NFCNDEFTag : NSObject <NFCNDEFTag>
+@interface NFCNDEFTag : NSObject
 {
     id <NFTag> _tag;
     NSNumber *_sessionKey;
     _Bool _writeLocked;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    NFCHardwareManager *_hardwareManager;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NFCHardwareManager *hardwareManager; // @synthesize hardwareManager=_hardwareManager;
 - (void)dispatchBlockOnDelegateQueueAsync:(CDUnknownBlockType)arg1;
 - (_Bool)isMatchingSession:(id)arg1 outError:(id *)arg2;
 - (_Bool)_disconnectWithError:(id *)arg1;
 - (void)_connectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_connectWithError:(id *)arg1;
 - (id)_getInternalReaderSession;
-- (void)_updateNdefStatusWithSession:(id)arg1;
+- (id)_updateNdefStatusWithSession:(id)arg1;
 - (void)_setDelegateQueue:(id)arg1;
 - (void)_setSession:(id)arg1;
 - (void)_setTag:(id)arg1;

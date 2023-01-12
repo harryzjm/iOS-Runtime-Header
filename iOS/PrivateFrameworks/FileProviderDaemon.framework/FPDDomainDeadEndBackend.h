@@ -6,24 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDDomainBackend-Protocol.h>
-
-@class FPDDomain, NSArray, NSData, NSFileProviderDomainVersion, NSString, NSURL;
+@class FPDDomain, NSArray, NSData, NSFileProviderDomainVersion, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPDDomainDeadEndBackend : NSObject <FPDDomainBackend>
+@interface FPDDomainDeadEndBackend : NSObject
 {
     FPDDomain *_domain;
 }
 
 - (void).cxx_destruct;
+- (void)hasNonUploadedFilesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)resolveConflictAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)wakeForPushWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)stateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)workingSetDidChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)movingItemAtURL:(id)arg1 requiresProvidingWithDestinationURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)trashItemAtURL:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)bulkItemChanges:(id)arg1 changedFields:(unsigned long long)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)isAllowedToProvideItemID:(id)arg1 toConsumerWithIdentifier:(id)arg2;
 - (void)fetchVendorEndpointWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchServicesForItemID:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchServicesForItemID:(id)arg1 allowRestrictedSources:(_Bool)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)fetchOperationServiceOrEndpointWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)needsRootsCreation;
 - (id)createRootByImportingURL:(id)arg1 error:(id *)arg2;
@@ -31,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)reimportItemsBelowItemWithID:(id)arg1 removeCachedItems:(_Bool)arg2 markItemDataless:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)valuesForAttributes:(id)arg1 forURL:(id)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)enumerateWithSettings:(id)arg1 lifetimeExtender:(id)arg2 observer:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)checkForPendingSetChanges;
 - (void)currentPendingSetSyncAnchorWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enumeratePendingSetFromSyncAnchor:(id)arg1 suggestedBatchSize:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)currentMaterializedSetSyncAnchorWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)updateRootAfterDomainChangeWithError:(id *)arg1;
 - (void)itemChangedAtURL:(id)arg1 request:(id)arg2;
 - (void)createItemBasedOnTemplate:(id)arg1 fields:(unsigned long long)arg2 urlWrapper:(id)arg3 options:(unsigned long long)arg4 bounceOnCollision:(_Bool)arg5 request:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)materializeItemWithID:(id)arg1 requestedRange:(struct _NSRange)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)evictItemWithID:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)evictItemAtURL:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)startProvidingItemAtURL:(id)arg1 readerID:(id)arg2 readingOptions:(unsigned long long)arg3 request:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -59,11 +61,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithDomain:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool backgroundActivityIsPaused;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) long long errorGenerationCount;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(readonly, copy) NSURL *temporaryDirectoryURL;
 
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSSecureCoding-Protocol.h>
-
 @class NSArray;
 
-@interface DVTStackBacktrace : NSObject <NSSecureCoding>
+@interface DVTStackBacktrace : NSObject
 {
     NSArray *_symbolicatedStackBacktraceFrames;
     unsigned long long *_returnAddresses;
@@ -30,6 +28,7 @@
 + (id)currentStackBacktrace;
 + (id)stackBacktraceWithCallStackReturnAddresses:(id)arg1;
 + (_Bool)supportsSecureCoding;
++ (_Bool)symbolicationEnabled;
 - (void).cxx_destruct;
 - (id)symbolicatedFramesFromXPCServiceForReturnAddresses:(unsigned long long *)arg1 returnAddressesCount:(unsigned long long)arg2 dyldImageSuffix:(id)arg3 allowDsymData:(_Bool)arg4;
 - (id)callStackReturnAddresses;

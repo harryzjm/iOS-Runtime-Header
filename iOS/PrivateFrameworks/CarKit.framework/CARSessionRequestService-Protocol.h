@@ -11,6 +11,7 @@
 - (void)service_prepareForRemovingWiFiUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)service_startAdvertisingCarPlayControlForWiFiUUID:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)service_startAdvertisingCarPlayControlForUSBWithReply:(void (^)(_Bool, NSError *))arg1;
+- (void)service_stoppedSessionWithHostIdentifier:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)service_startSessionWithHost:(CARSessionRequestHost *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 @end
 

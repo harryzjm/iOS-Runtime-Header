@@ -4,9 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int visible:1;
-} CDStruct_85c94b2d;
-

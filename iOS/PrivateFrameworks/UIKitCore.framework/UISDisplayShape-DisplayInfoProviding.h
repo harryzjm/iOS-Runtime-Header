@@ -6,11 +6,9 @@
 
 #import <UIKitServices/UISDisplayShape.h>
 
-#import <UIKitCore/_UIDisplayInfoShape-Protocol.h>
-
 @class NSString;
 
-@interface UISDisplayShape (DisplayInfoProviding) <_UIDisplayInfoShape>
+@interface UISDisplayShape (DisplayInfoProviding)
 @property(readonly, nonatomic) NSString *displayShapeName;
 
 // Remaining properties

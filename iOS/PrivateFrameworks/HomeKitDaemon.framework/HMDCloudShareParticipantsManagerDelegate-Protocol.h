@@ -6,9 +6,10 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMBShareInvitation, HMDCloudShareParticipantsManager, HMDUser;
+@class HMBShareInvitation, HMDCloudShareParticipantsManager, HMDDevice, HMDUser;
 
 @protocol HMDCloudShareParticipantsManagerDelegate <NSObject>
+- (void)manager:(HMDCloudShareParticipantsManager *)arg1 didRequestSendForInvitation:(HMBShareInvitation *)arg2 toDevice:(HMDDevice *)arg3;
 - (void)manager:(HMDCloudShareParticipantsManager *)arg1 didRequestSendForInvitation:(HMBShareInvitation *)arg2 toUser:(HMDUser *)arg3;
 @end
 

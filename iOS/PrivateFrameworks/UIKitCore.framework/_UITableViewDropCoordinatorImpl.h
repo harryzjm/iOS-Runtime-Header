@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITableViewDropCoordinator-Protocol.h>
-
 @class NSArray, NSIndexPath, NSString, UITableViewDropProposal;
 @protocol UIDropSession, _UITableViewDropCoordinatorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewDropCoordinatorImpl : NSObject <_UITableViewDropCoordinator>
+@interface _UITableViewDropCoordinatorImpl : NSObject
 {
     id <_UITableViewDropCoordinatorDelegate> _delegate;
     NSArray *_items;

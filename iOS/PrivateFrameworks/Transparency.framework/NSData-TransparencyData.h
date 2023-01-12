@@ -7,10 +7,11 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (TransparencyData)
-+ (id)dataWithUint64:(unsigned long long)arg1 length:(unsigned long long)arg2;
-+ (id)random;
-+ (id)dataWithHexString:(const char *)arg1;
-- (id)sha256;
-- (id)hexString;
++ (id)kt_dataWithUint64:(unsigned long long)arg1 length:(unsigned long long)arg2;
++ (id)kt_random;
++ (id)kt_dataWithHexString:(const char *)arg1;
+- (id)kt_sha256WithSalt:(id)arg1;
+- (id)kt_sha256;
+- (id)kt_hexString;
 @end
 

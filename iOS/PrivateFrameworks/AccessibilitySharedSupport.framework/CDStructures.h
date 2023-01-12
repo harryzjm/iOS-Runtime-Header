@@ -8,17 +8,3 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
-#pragma mark Named Structures
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    int _field1;
-    float _field2;
-} CDStruct_3a8d9e70;
-

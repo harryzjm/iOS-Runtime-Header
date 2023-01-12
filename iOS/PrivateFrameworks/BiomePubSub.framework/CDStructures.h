@@ -4,22 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct hll_state {
-    unsigned char _field1[32];
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-struct os_unfair_recursive_lock_s {
-    struct os_unfair_lock_s ourl_lock;
-    unsigned int ourl_count;
-};
-

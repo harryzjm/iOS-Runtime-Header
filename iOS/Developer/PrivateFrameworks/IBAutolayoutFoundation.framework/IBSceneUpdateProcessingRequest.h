@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface IBSceneUpdateProcessingRequest : NSObject <IBBinaryArchiving>
+@interface IBSceneUpdateProcessingRequest : NSObject
 {
     CDUnknownBlockType _postProcessingBlock;
     long long _requestPhase;

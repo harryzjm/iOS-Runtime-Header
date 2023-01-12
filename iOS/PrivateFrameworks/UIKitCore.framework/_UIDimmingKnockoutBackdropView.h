@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
-#import <UIKitCore/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
+#import "UIView.h"
 
-@class NSString, UIView, UIVisualEffectView;
+@class NSString, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface _UIDimmingKnockoutBackdropView <UIInterfaceActionVisualBackgroundDisplaying, UIInterfaceActionVisualGroupBackgroundDisplaying>
+@interface _UIDimmingKnockoutBackdropView : UIView
 {
     UIView *dimmingKnockoutView;
     UIVisualEffectView *backdropView;

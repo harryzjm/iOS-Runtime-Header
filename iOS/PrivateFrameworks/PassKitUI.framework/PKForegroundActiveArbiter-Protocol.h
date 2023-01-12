@@ -10,6 +10,6 @@
 
 @protocol PKForegroundActiveArbiter <NSObject>
 - (void)unregisterObserver:(id <PKForegroundActiveArbiterObserver>)arg1;
-- (CDStruct_973bafd3)registerObserver:(id <PKForegroundActiveArbiterObserver>)arg1;
+- (CDStruct_3d581f42)registerObserver:(id <PKForegroundActiveArbiterObserver>)arg1;
 @end
 

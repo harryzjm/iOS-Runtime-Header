@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKDayPreviewController, EKEvent, EKUITableViewCell, NSDate;
+@class CalendarModel, EKDayPreviewController, EKEvent, EKUITableViewCell, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface EKEventShowInCalendarDetailItem
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     EKUITableViewCell *_cell;
     EKDayPreviewController *_containedDayViewController;
     EKEvent *_eventCopy;
+    CalendarModel *_model;
     NSDate *_proposedTime;
 }
 
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)setEvent:(id)arg1 store:(id)arg2;
 - (void)reset;
 - (void)refreshCopiedEvents;
+- (id)initWithModel:(id)arg1;
 
 @end
 

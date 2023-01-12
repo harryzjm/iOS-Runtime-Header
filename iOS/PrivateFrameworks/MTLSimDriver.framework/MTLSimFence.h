@@ -6,14 +6,11 @@
 
 #import <Metal/_MTLObjectWithLabel.h>
 
-#import <MTLSimDriver/MTLFence-Protocol.h>
-#import <MTLSimDriver/MTLSerializerFence-Protocol.h>
-
 @class MTLSimDevice, NSString;
 @protocol MTLDevice;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimFence : _MTLObjectWithLabel <MTLFence, MTLSerializerFence>
+@interface MTLSimFence : _MTLObjectWithLabel
 {
     MTLSimDevice *_device;
     unsigned int _fenceRef;

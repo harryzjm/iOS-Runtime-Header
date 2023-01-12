@@ -6,13 +6,10 @@
 
 #import <WebCore/WAKView.h>
 
-#import <WebKitLegacy/WebDocumentElement-Protocol.h>
-#import <WebKitLegacy/WebDocumentView-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebPlainWhiteView : WAKView <WebDocumentView, WebDocumentElement>
+@interface WebPlainWhiteView : WAKView
 {
 }
 

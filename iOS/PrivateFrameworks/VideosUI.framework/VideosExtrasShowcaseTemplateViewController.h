@@ -4,17 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VideosExtrasCarouselViewControllerDataSource-Protocol.h>
-#import <VideosUI/VideosExtrasCarouselViewControllerDelegate-Protocol.h>
-#import <VideosUI/VideosExtrasImageBrowserViewControllerDataSource-Protocol.h>
-#import <VideosUI/VideosExtrasNavigationAnimationControllerProvider-Protocol.h>
-#import <VideosUI/VideosExtrasZoomingImageInteractiveTransitionSource-Protocol.h>
-#import <VideosUI/VideosExtrasZoomingImageTransitionParticipant-Protocol.h>
-
 @class IKShowcaseTemplate, NSArray, NSDictionary, NSString, VideosExtrasCarouselViewController, VideosExtrasImageBrowserViewController, VideosExtrasZoomingImageTransitionController;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasShowcaseTemplateViewController <VideosExtrasCarouselViewControllerDataSource, VideosExtrasCarouselViewControllerDelegate, VideosExtrasImageBrowserViewControllerDataSource, VideosExtrasNavigationAnimationControllerProvider, VideosExtrasZoomingImageInteractiveTransitionSource, VideosExtrasZoomingImageTransitionParticipant>
+@interface VideosExtrasShowcaseTemplateViewController
 {
     _Bool _supportsOneupMode;
     VideosExtrasZoomingImageTransitionController *_activeZoomingImageInteractiveTransitionController;

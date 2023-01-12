@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, UIView;
+#import "UIView.h"
+
+@class NSLayoutConstraint;
 
 __attribute__((visibility("hidden")))
-@interface UISearchDisplayControllerContainerView
+@interface UISearchDisplayControllerContainerView : UIView
 {
     _Bool _collapsedTopView;
     NSLayoutConstraint *_topViewHeightConstraint;

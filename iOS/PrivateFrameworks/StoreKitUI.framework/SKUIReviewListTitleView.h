@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSString, SKUIAttributedStringView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIReviewListTitleView <SKUIViewElementView>
+@interface SKUIReviewListTitleView
 {
     SKUIAttributedStringView *_titleView;
     SKUIAttributedStringView *_dateView;

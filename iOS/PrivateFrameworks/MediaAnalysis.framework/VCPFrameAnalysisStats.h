@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _subMbMotionAvailable;
     _Bool _frameProcessedByHumanAnalyzer;
     _Bool _frameProcessedByFaceDetector;
+    _Bool _frameProcessedByPetsActionAnalyzer;
     float _cameraMotionScore;
     float _subjectActionScore;
     float _interestingnessScore;
@@ -25,17 +26,26 @@ __attribute__((visibility("hidden")))
     float _faceArea;
     float _humanPoseScore;
     float _humanActionScore;
+    float _petsActionScore;
     NSMutableArray *_detectedFaces;
+    NSMutableArray *_petsDetections;
     VCPVideoActivityDescriptor *_videoActivityDescriptor;
+    array_bb4fff4b _motionParam;
+    array_bb4fff4b _motionParamDiff;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) VCPVideoActivityDescriptor *videoActivityDescriptor; // @synthesize videoActivityDescriptor=_videoActivityDescriptor;
+@property(nonatomic) float petsActionScore; // @synthesize petsActionScore=_petsActionScore;
+@property(nonatomic) _Bool frameProcessedByPetsActionAnalyzer; // @synthesize frameProcessedByPetsActionAnalyzer=_frameProcessedByPetsActionAnalyzer;
+@property(retain, nonatomic) NSMutableArray *petsDetections; // @synthesize petsDetections=_petsDetections;
 @property(retain, nonatomic) NSMutableArray *detectedFaces; // @synthesize detectedFaces=_detectedFaces;
 @property(nonatomic) _Bool frameProcessedByFaceDetector; // @synthesize frameProcessedByFaceDetector=_frameProcessedByFaceDetector;
 @property(nonatomic) float humanActionScore; // @synthesize humanActionScore=_humanActionScore;
 @property(nonatomic) float humanPoseScore; // @synthesize humanPoseScore=_humanPoseScore;
 @property(nonatomic) _Bool frameProcessedByHumanAnalyzer; // @synthesize frameProcessedByHumanAnalyzer=_frameProcessedByHumanAnalyzer;
+@property(nonatomic) array_bb4fff4b motionParamDiff; // @synthesize motionParamDiff=_motionParamDiff;
+@property(nonatomic) array_bb4fff4b motionParam; // @synthesize motionParam=_motionParam;
 @property(nonatomic) float faceArea; // @synthesize faceArea=_faceArea;
 @property(nonatomic) float frameExpressionScore; // @synthesize frameExpressionScore=_frameExpressionScore;
 @property(nonatomic) _Bool subMbMotionAvailable; // @synthesize subMbMotionAvailable=_subMbMotionAvailable;

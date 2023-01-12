@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSPersistence/TSPDataStorageDownloadable-Protocol.h>
-
 @class NSDate, NSIndexSet, NSMutableIndexSet, NSObject, NSURL, SFUCryptoKey, TSPTemporaryDataStorage;
 @protocol OS_dispatch_queue, TSPDataStorage, TSPRemoteDataStorageDelegate;
 
-@interface TSPRemoteDataStorage <TSPDataStorageDownloadable>
+@interface TSPRemoteDataStorage
 {
     SFUCryptoKey *_encryptionKey;
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -21,6 +19,7 @@
     NSDate *_modificationDate;
     _Bool _canDownload;
     _Atomic _Bool _isUnmaterializedDueToPartiallyDownloadedDocument;
+    _Atomic unsigned long long _materializedLength;
     id <TSPRemoteDataStorageDelegate> _delegate;
     NSURL *_remoteURL;
     long long _downloadPriority;
@@ -40,7 +39,7 @@
 - (_Bool)needsDownload;
 - (_Bool)linkOrCopyToURL:(id)arg1 encryptionInfo:(id)arg2 canLink:(_Bool)arg3;
 - (id)decryptionInfo;
-@property(readonly, nonatomic) unsigned long long materializedLength;
+- (unsigned long long)materializedLength;
 - (unsigned long long)p_materializedLength;
 - (unsigned long long)reservedLength;
 - (unsigned long long)encodedLength;
@@ -74,7 +73,7 @@
 - (id)dataStorageToUse;
 - (void)didInitializeFromDocumentURL:(id)arg1;
 - (id)initWithRemoteURL:(id)arg1 length:(unsigned long long)arg2 encryptionKey:(id)arg3 canDownload:(_Bool)arg4 downloadPriority:(long long)arg5 uploadStatus:(long long)arg6 modificationDate:(id)arg7;
-- (id)initWithRemoteURL:(id)arg1 unmaterializedRanges:(id)arg2 encryptionKey:(id)arg3 canDownload:(_Bool)arg4 downloadPriority:(long long)arg5 uploadStatus:(long long)arg6 modificationDate:(id)arg7 packageDataStorage:(id)arg8;
+- (id)initWithRemoteURL:(id)arg1 unmaterializedRanges:(id)arg2 encryptionKey:(id)arg3 canDownload:(_Bool)arg4 downloadPriority:(long long)arg5 uploadStatus:(long long)arg6 modificationDate:(id)arg7 materializedLength:(unsigned long long)arg8 packageDataStorage:(id)arg9;
 
 @end
 

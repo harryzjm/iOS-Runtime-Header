@@ -6,12 +6,15 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class UIViewController;
+@class SXComponentView, UIViewController;
 @protocol SXComponentInteractionPreviewContext;
 
 @protocol SXComponentInteractionManager <NSObject>
 - (void)commitViewController:(UIViewController *)arg1;
 - (id <SXComponentInteractionPreviewContext>)previewViewControllerForLocation:(struct CGPoint)arg1;
 - (_Bool)hasInteractionForLocation:(struct CGPoint)arg1;
+
+@optional
+- (_Bool)accessibilityShouldHandleInteractionForComponentView:(SXComponentView *)arg1;
 @end
 

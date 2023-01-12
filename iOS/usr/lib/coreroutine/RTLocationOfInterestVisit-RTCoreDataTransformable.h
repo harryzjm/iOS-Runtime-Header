@@ -6,11 +6,9 @@
 
 #import <CoreRoutine/RTLocationOfInterestVisit.h>
 
-#import <coreroutine/RTCoreDataReadable-Protocol.h>
-
 @class NSString;
 
-@interface RTLocationOfInterestVisit (RTCoreDataTransformable) <RTCoreDataReadable>
+@interface RTLocationOfInterestVisit (RTCoreDataTransformable)
 + (id)createWithLearnedLocationOfInterestVisitMO:(id)arg1;
 + (id)createWithManagedObject:(id)arg1;
 - (id)initWithLearnedVisit:(id)arg1;

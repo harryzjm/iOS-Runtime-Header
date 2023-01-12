@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPLocationBound, CKDPRecordFieldIdentifier, CKDPRecordFieldValue;
 
-@interface CKDPQueryFilter : PBCodable <NSCopying>
+@interface CKDPQueryFilter : PBCodable
 {
     CKDPLocationBound *_bounds;
     CKDPRecordFieldIdentifier *_fieldName;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDStyle;
 
 __attribute__((visibility("hidden")))
-@interface EMCellStyle <NSCopying>
+@interface EMCellStyle
 {
     EDStyle *_edStyle;
     int _edCellType;

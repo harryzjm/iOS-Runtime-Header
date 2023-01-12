@@ -6,12 +6,10 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitBackingStore/HMFLogging-Protocol.h>
-
 @class HMBLocalSQLContext, HMFActivity, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMBLocalSQLContextOutputBlock : HMFObject <HMFLogging>
+@interface HMBLocalSQLContextOutputBlock : HMFObject
 {
     NSString *_identifier;
     unsigned long long _blockRow;

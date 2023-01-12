@@ -9,12 +9,13 @@
 @class NSArray, NSDictionary, NSURL;
 
 @protocol NUVideoProperties <NSObject>
-@property(readonly) CDStruct_1b6d18a9 duration;
-@property(readonly) CDStruct_1b6d18a9 livePhotoKeyFrameTime;
+@property(readonly) CDStruct_198678f7 duration;
+@property(readonly) CDStruct_198678f7 livePhotoKeyFrameTime;
+@property(readonly) _Bool isHDR;
 @property(readonly) NSDictionary *colorProperties;
 @property(readonly) long long orientation;
-@property(readonly) CDStruct_996ac03c originalCleanAperture;
-@property(readonly) CDStruct_996ac03c cleanAperture;
+@property(readonly) CDStruct_0973877e originalCleanAperture;
+@property(readonly) CDStruct_0973877e cleanAperture;
 @property(readonly) CDStruct_912cb5d2 originalSize;
 @property(readonly) CDStruct_912cb5d2 size;
 @property(readonly) NSArray *metadata;

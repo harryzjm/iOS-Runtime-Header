@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-#import <StoreKitUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSArray, NSMapTable, NSString, SKUIImageDeckViewElement, UIDynamicAnimator, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIImageDeckView <UIGestureRecognizerDelegate, SKUIViewElementView>
+@interface SKUIImageDeckView
 {
     UIDynamicAnimator *_animator;
     double _fitWidth;

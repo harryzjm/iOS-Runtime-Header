@@ -15,8 +15,9 @@
 @optional
 - (id)summaryItemReferenceForTransitionWithSummaryEndPoint:(id <PXStoryViewControllerTransitionEndPoint>)arg1;
 - (id)detailItemReferenceForTransitionWithSummaryEndPoint:(id <PXStoryViewControllerTransitionEndPoint>)arg1;
+- (void)willDismissWithoutTransitionToEndPoint:(id <PXStoryViewControllerTransitionEndPoint>)arg1;
 - (void)didEndTransition:(PXStoryViewControllerTransition *)arg1 withEndPoint:(id <PXStoryViewControllerTransitionEndPoint>)arg2 finished:(_Bool)arg3;
-- (void)willBeginTransition:(PXStoryViewControllerTransition *)arg1 withEndPoint:(id <PXStoryViewControllerTransitionEndPoint>)arg2;
+- (void)willBeginTransition:(PXStoryViewControllerTransition *)arg1 withEndPoint:(id <PXStoryViewControllerTransitionEndPoint>)arg2 anchorItemReference:(id)arg3;
 - (_Bool)allowsTransition:(PXStoryViewControllerTransition *)arg1 withEndPoint:(id <PXStoryViewControllerTransitionEndPoint>)arg2;
 @end
 

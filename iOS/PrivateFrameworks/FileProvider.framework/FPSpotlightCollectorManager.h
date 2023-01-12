@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/FPSpotlightCollectorDelegate-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface FPSpotlightCollectorManager : NSObject <FPSpotlightCollectorDelegate>
+@interface FPSpotlightCollectorManager : NSObject
 {
     _Bool _areMountQueriesEnabled;
     id _providerDomainChangesToken;

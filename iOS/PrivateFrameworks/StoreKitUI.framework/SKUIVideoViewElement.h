@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class NSArray, SKUIImageViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUIVideoViewElement
+@interface SKUIVideoViewElement : SKUIViewElement
 {
     BOOL _enabled;
     long long _itemIdentifier;

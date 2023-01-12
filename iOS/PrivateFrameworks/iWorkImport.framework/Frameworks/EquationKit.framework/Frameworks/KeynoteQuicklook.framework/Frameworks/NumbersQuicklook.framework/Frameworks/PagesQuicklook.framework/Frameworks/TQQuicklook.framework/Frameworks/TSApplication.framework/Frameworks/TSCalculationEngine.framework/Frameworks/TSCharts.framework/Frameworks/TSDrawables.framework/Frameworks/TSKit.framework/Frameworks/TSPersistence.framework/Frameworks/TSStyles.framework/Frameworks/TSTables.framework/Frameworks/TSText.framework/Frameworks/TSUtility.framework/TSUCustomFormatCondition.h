@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/NSCopying-Protocol.h>
-
 @class TSUCustomFormatData;
 
-@interface TSUCustomFormatCondition : NSObject <NSCopying>
+@interface TSUCustomFormatCondition : NSObject
 {
     int _conditionType;
     double _conditionValue;

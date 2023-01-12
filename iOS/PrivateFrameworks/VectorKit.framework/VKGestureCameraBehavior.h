@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKGesturingCameraController-Protocol.h>
-
 @class NSString, VKCameraController;
 
 __attribute__((visibility("hidden")))
-@interface VKGestureCameraBehavior : NSObject <VKGesturingCameraController>
+@interface VKGestureCameraBehavior : NSObject
 {
     _Bool _pinching;
     struct CGPoint _pinchStartFocusPoint;
@@ -30,6 +28,7 @@ __attribute__((visibility("hidden")))
     VKCameraController *_cameraController;
 }
 
+- (void).cxx_destruct;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (_Bool)isRotating;
 - (_Bool)isPanning;
@@ -66,7 +65,6 @@ __attribute__((visibility("hidden")))
 - (void)tapZoom:(struct CGPoint)arg1 levels:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)transferGestureState:(id)arg1;
-- (void)dealloc;
 - (id)initWithCameraController:(id)arg1;
 
 // Remaining properties

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "QLDetailItemViewController.h"
+
 @class QLDetailItemViewControllerState, QLItem, QLRoundProgressView, UIImage, UIImageView;
 @protocol QLDownloadingItemViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface QLDownloadingItemViewController
+@interface QLDownloadingItemViewController : QLDetailItemViewController
 {
     _Bool _downloading;
     _Bool _downloaded;

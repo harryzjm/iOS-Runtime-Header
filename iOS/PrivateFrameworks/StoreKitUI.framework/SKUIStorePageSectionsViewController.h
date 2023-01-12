@@ -4,21 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIItemStateCenterObserver-Protocol.h>
-#import <StoreKitUI/SKUILayoutCacheDelegate-Protocol.h>
-#import <StoreKitUI/SKUIProductPageOverlayDelegate-Protocol.h>
-#import <StoreKitUI/SKUIStorePageCollectionViewDelegate-Protocol.h>
-#import <StoreKitUI/SKUIViewControllerTesting-Protocol.h>
-#import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
-#import <StoreKitUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <StoreKitUI/UIViewControllerPreviewingDelegate-Protocol.h>
-#import <StoreKitUI/UIViewControllerPreviewingDelegate_Private-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSMutableIndexSet, NSNumber, NSString, SKUICollectionView, SKUIColorScheme, SKUIIndexBarControl, SKUILayoutCache, SKUIMetricsController, SKUIMetricsImpressionSession, SKUIProductPageOverlayController, SKUIResourceLoader, SKUIStackedBar, SKUIStorePageSplitsDescription, UICollectionView, UIRefreshControl, UITapGestureRecognizer, UIView;
 @protocol SKUICollectionViewPullToRefreshDelegate, SKUIStorePageSectionsDelegate, UIViewControllerPreviewing;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStorePageSectionsViewController <UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, SKUIItemStateCenterObserver, SKUILayoutCacheDelegate, SKUIProductPageOverlayDelegate, SKUIStorePageCollectionViewDelegate, SKUIViewControllerTesting, UICollectionViewDataSource, UIGestureRecognizerDelegate>
+@interface SKUIStorePageSectionsViewController : SKUIViewController
 {
     SKUIProductPageOverlayController *_activeOverlayController;
     SKUIMetricsImpressionSession *_activeMetricsImpressionSession;

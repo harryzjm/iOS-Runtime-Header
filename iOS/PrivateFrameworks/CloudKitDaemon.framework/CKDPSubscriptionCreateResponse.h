@@ -6,9 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
-@interface CKDPSubscriptionCreateResponse : PBCodable <NSCopying>
+@interface CKDPSubscriptionCreateResponse : PBCodable
 {
 }
 

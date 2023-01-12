@@ -6,13 +6,9 @@
 
 #import <Foundation/NSUUID.h>
 
-#import <ReminderKit/CRCoding-Protocol.h>
-#import <ReminderKit/CRDataType-Protocol.h>
-#import <ReminderKit/CREquatable-Protocol.h>
-
 @class NSString;
 
-@interface NSUUID (CRDT_Additions) <CRDataType, CREquatable, CRCoding>
+@interface NSUUID (CRDT_Additions)
 + (id)CR_zero;
 + (id)CR_repeatedCharUUID:(unsigned char)arg1;
 + (id)CR_UUIDFromStdString:(const void *)arg1;

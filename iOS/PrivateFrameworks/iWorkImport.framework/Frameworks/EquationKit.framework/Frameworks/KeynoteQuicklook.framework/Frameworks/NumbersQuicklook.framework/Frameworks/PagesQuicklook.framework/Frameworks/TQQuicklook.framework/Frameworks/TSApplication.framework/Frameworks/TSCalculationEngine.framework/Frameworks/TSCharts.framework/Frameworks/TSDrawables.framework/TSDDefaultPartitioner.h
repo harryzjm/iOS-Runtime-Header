@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSDrawables/TSDCanvasDelegate-Protocol.h>
-#import <TSDrawables/TSDPartitioner-Protocol.h>
-
 @class NSString, TSDCanvas, TSDDefaultPartitionerPrintingSettings, TSDDrawableInfo, TSDLayout, TSUPointerKeyDictionary;
 @protocol TSDCanvasProxyDelegate;
 
-@interface TSDDefaultPartitioner <TSDPartitioner, TSDCanvasDelegate>
+@interface TSDDefaultPartitioner
 {
     TSDDrawableInfo *_info;
     TSDCanvas *_canvas;
@@ -66,6 +63,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool verticalTextAllowed;
 
 @end
 

@@ -8,7 +8,6 @@
 
 @class GQDTTable;
 
-__attribute__((visibility("hidden")))
 @interface GQHTableState : NSObject
 {
     int mPrevRowIndex;

@@ -6,9 +6,10 @@
 
 #import <CarPlay/NSObject-Protocol.h>
 
-@class NSString;
+@class NSArray;
 
 @protocol CPInstrumentClusterProviding <NSObject>
-- (void)hostSetStreetName:(NSString *)arg1 completion:(void (^)(NSNumber *))arg2;
+- (void)hostSetAttributedInactiveVariants:(NSArray *)arg1;
+- (void)hostSetInactiveVariants:(NSArray *)arg1;
 @end
 

@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
-#import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
-
 @class NSArray, NSString, SKUIClientContext, UICollectionView, _UIContentUnavailableView;
 @protocol SKUIDownloadsChildViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIIPadDownloadsViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface SKUIIPadDownloadsViewController : UIViewController
 {
     UICollectionView *_collectionView;
     NSArray *_downloads;

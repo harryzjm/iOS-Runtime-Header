@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOReferenceTimeData : NSObject <NSSecureCoding>
+@interface GEOReferenceTimeData : NSObject
 {
     double _refTime;
     double _refError;

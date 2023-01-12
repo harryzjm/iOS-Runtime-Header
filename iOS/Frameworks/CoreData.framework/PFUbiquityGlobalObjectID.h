@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-
 @class NSManagedObjectID, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PFUbiquityGlobalObjectID : NSObject <NSCopying>
+@interface PFUbiquityGlobalObjectID : NSObject
 {
     NSString *_storeName;
     NSString *_entityName;

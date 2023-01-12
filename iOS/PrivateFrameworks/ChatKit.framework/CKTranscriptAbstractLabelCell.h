@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKTranscriptCell.h"
+
 @class NSAttributedString;
 
 __attribute__((visibility("hidden")))
-@interface CKTranscriptAbstractLabelCell
+@interface CKTranscriptAbstractLabelCell : CKTranscriptCell
 {
     _Bool _wantsContactImageLayout;
     _Bool _wantsOffsetForReplyLine;

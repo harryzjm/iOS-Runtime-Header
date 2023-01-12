@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @protocol UserFontManagerProtocol
 - (void)_removeAllUserFonts;
+- (void)ping:(void (^)(void))arg1;
 - (void)reset;
 - (void)synchronizeProfileFonts:(void (^)(_Bool))arg1;
 - (void)synchronizeFontAssets:(void (^)(_Bool))arg1;
+- (void)updateAppInfo:(NSDictionary *)arg1 forIdentifier:(NSString *)arg2;
 - (void)suspendedFontProviders:(void (^)(NSArray *))arg1;
 - (void)suspendFontProvider:(NSString *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)resumeSuspendedFontFiles:(void (^)(NSDictionary *))arg1;
@@ -26,8 +28,8 @@
 - (void)unregisterAndRemoveFontFilesForIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)registeredFamiliesForIdentifier:(NSString *)arg1 enabled:(_Bool)arg2 completionHandler:(void (^)(NSArray *))arg3;
 - (void)registeredFontsForIdentifier:(NSString *)arg1 enabled:(_Bool)arg2 completionHandler:(void (^)(NSArray *))arg3;
-- (void)registeredFontsInfoForIdentifier:(NSString *)arg1 enabled:(_Bool)arg2 completionHandler:(void (^)(NSArray *))arg3;
-- (void)uninstallFonts:(NSArray *)arg1 forIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSArray *, NSDictionary *))arg3;
-- (void)installFonts:(NSArray *)arg1 forIdentifier:(NSString *)arg2 enabled:(_Bool)arg3 completionHandler:(void (^)(NSArray *, NSDictionary *))arg4;
+- (void)registeredFontsInfoForIdentifier:(NSString *)arg1 enabled:(_Bool)arg2 appInfo:(NSDictionary *)arg3 completionHandler:(void (^)(NSArray *))arg4;
+- (void)uninstallFonts:(NSArray *)arg1 forIdentifier:(NSString *)arg2 appInfo:(NSDictionary *)arg3 completionHandler:(void (^)(NSArray *, NSDictionary *))arg4;
+- (void)installFonts:(NSArray *)arg1 forIdentifier:(NSString *)arg2 enabled:(_Bool)arg3 appInfo:(NSDictionary *)arg4 completionHandler:(void (^)(NSArray *, NSDictionary *))arg5;
 @end
 

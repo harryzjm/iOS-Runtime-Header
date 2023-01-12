@@ -10,8 +10,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedResource;
-- (double)inactiveCost;
-- (double)activeCost;
+- (long long)inactiveCost;
+- (long long)activeCost;
 
 @end
 

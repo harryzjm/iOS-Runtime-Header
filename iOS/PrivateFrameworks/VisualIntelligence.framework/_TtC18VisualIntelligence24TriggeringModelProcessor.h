@@ -11,9 +11,10 @@
 @interface _TtC18VisualIntelligence24TriggeringModelProcessor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *objectDetector;
-    MISSING_TYPE *coarseClassifier;
+    MISSING_TYPE *boxScorer;
     MISSING_TYPE *ontologyGraph;
-    MISSING_TYPE *domainParserRegistry;
+    MISSING_TYPE *domainPredictionNet;
+    MISSING_TYPE *domainPredictionNetHandler;
 }
 
 @end

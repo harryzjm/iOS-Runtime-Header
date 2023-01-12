@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)setSelectionWithFirstPoint:(struct CGPoint)arg1 secondPoint:(struct CGPoint)arg2;
 - (_Bool)setRangedSelectionExtentPoint:(struct CGPoint)arg1 baseIsStart:(_Bool)arg2;
 - (_Bool)setRangedSelectionExtentPoint:(struct CGPoint)arg1 baseIsStart:(_Bool)arg2 allowFlipping:(_Bool)arg3;
+- (id)_boundedOrInvertedSelectionRangeForExtent:(id)arg1 forPoint:(struct CGPoint)arg2 fromPosition:(id)arg3 inDirection:(long long)arg4;
+- (_Bool)_allowsSelectionInversion;
 - (struct CGPoint)clipPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2;
 - (void)setRangedSelectionInitialExtentToCurrentSelectionEnd;
 - (void)setRangedSelectionInitialExtentToCurrentSelectionStart;

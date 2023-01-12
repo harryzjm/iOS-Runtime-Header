@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthToolbox/HKSampleTypeUpdateControllerObserver-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSString, WDProfile;
 @protocol OS_dispatch_queue, WDElectrocardiogramFilterDataProviderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WDElectrocardiogramFilterDataProvider : NSObject <HKSampleTypeUpdateControllerObserver>
+@interface WDElectrocardiogramFilterDataProvider : NSObject
 {
     WDProfile *_profile;
     id <WDElectrocardiogramFilterDataProviderDelegate> _delegate;

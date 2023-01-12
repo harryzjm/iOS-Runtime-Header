@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UILabel.h"
+
 @class UIColor, UITabBarButton, _UITabBarItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
-@interface UITabBarButtonLabel
+@interface UITabBarButtonLabel : UILabel
 {
     double _boundsWidth;
     _UITabBarItemAppearanceStorage *_appearanceStorage;

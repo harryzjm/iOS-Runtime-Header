@@ -11,6 +11,7 @@
 @interface UIScreen (VideosUICore)
 + (id)vui_main;
 @property(readonly, nonatomic) UITraitCollection *vuiTraitCollection;
+- (_Bool)vui_canRepresentDisplayGamutP3;
 - (struct CGRect)vui_bounds;
 - (double)vui_scale;
 - (double)vui_nativeScale;

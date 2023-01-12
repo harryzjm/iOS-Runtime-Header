@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <WorkflowEditor/WFSlotTemplateContent-Protocol.h>
-
-@interface NSString (WFSlotTemplateContent) <WFSlotTemplateContent>
+@interface NSString (WFSlotTemplateContent)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

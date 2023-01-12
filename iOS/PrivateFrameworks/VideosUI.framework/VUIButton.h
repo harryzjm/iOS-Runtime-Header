@@ -6,19 +6,16 @@
 
 #import <UIKit/UIControl.h>
 
-#import <VideosUI/UIPointerInteractionDelegate-Protocol.h>
-#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
-
-@class NSShadow, NSString, UIColor, UIView, VUIImageView, VUILabel;
+@class NSShadow, NSString, UIColor, UIView, UIVisualEffectView, VUIImageView, VUILabel;
 
 __attribute__((visibility("hidden")))
-@interface VUIButton : UIControl <UIPointerInteractionDelegate, VUILabelBaselineProtocol>
+@interface VUIButton : UIControl
 {
     _Bool _hasDisclaimerText;
     _Bool _imageTrailsTextContent;
     _Bool _isTintColorAndBackgroundColorSaturated;
     UIView *_backgroundImageView;
-    UIView *_backdropView;
+    UIVisualEffectView *_backdropView;
     NSString *_backdropGroupName;
     NSString *_groupName;
     double _width;
@@ -79,7 +76,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasDisclaimerText; // @synthesize hasDisclaimerText=_hasDisclaimerText;
 @property(copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property(copy, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
-@property(retain, nonatomic) UIView *backdropView; // @synthesize backdropView=_backdropView;
+@property(retain, nonatomic) UIVisualEffectView *backdropView; // @synthesize backdropView=_backdropView;
 @property(retain, nonatomic) UIView *backgroundImageView; // @synthesize backgroundImageView=_backgroundImageView;
 - (void)setScrolledNonUberPercentage:(double)arg1;
 - (void)_setupBarButtonItem;

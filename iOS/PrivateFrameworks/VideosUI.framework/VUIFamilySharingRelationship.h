@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, _TVContentRating;
+@class NSDate, NSString, VUIContentRating;
 
 __attribute__((visibility("hidden")))
 @interface VUIFamilySharingRelationship : NSObject
 {
     NSString *_identifier;
-    _TVContentRating *_contentRating;
+    VUIContentRating *_contentRating;
     NSString *_standardDescription;
     NSString *_artworkURL;
     NSDate *_releaseDate;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property(retain, nonatomic) NSString *artworkURL; // @synthesize artworkURL=_artworkURL;
 @property(retain, nonatomic) NSString *standardDescription; // @synthesize standardDescription=_standardDescription;
-@property(retain, nonatomic) _TVContentRating *contentRating; // @synthesize contentRating=_contentRating;
+@property(retain, nonatomic) VUIContentRating *contentRating; // @synthesize contentRating=_contentRating;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
 @end

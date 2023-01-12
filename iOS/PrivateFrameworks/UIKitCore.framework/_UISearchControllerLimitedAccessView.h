@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIButton, UILabel, UIView;
+#import "UIView.h"
+
+@class UIButton, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchControllerLimitedAccessView
+@interface _UISearchControllerLimitedAccessView : UIView
 {
     UIView *_backgroundView;
     UILabel *_keyboardLimitedLabel;

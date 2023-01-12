@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudDocsDaemon/BRItemNotificationSending-Protocol.h>
-
-@class BRCDataOrDocsScopeGatherer, BRCItemGlobalID, BRCNotificationManager, BRCXPCClient, BRFileObjectID, BRNotificationQueue, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class BRCDataOrDocsScopeGatherer, BRCItemGlobalID, BRCListDirectoryContentsOperation, BRCNotificationManager, BRCXPCClient, BRFileObjectID, BRNotificationQueue, NSHashTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol BRCNotificationPipeDelegate, BRItemNotificationReceiving, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface BRCNotificationPipe : NSObject <BRItemNotificationSending>
+@interface BRCNotificationPipe : NSObject
 {
     id <BRItemNotificationReceiving> _receiver;
     BRNotificationQueue *_notifs;
@@ -28,18 +26,20 @@ __attribute__((visibility("hidden")))
     _Bool _volumeIsCaseSensitive;
     NSMutableDictionary *_pendingProgressUpdatesByID;
     _Bool _hasProgressUpdatesInFlight;
-    unsigned short _watchItemOptions;
-    int _watchKind;
-    NSString *_watchNamePrefix;
-    NSString *_watchForBundleID;
-    NSMutableSet *_externalAppLibraries;
-    NSSet *_watchedAppLibraries;
-    NSSet *_watchedAppLibraryIDs;
-    unsigned long long _watchedAppLibrariesFlags;
     unsigned long long _initialGatherMaxRank;
     unsigned long long _secondaryGatherMaxRank;
     BRCNotificationManager *_manager;
     NSObject<OS_dispatch_queue> *_queue;
+    BRCListDirectoryContentsOperation *_listOp;
+    int _watchKind;
+    unsigned short _watchItemOptions;
+    NSString *_watchNamePrefix;
+    NSString *_watchForBundleID;
+    NSMutableSet *_externalAppLibraries;
+    NSSet *_watchedAppLibraries;
+    NSHashTable *_recursiveScopeListOps;
+    NSSet *_watchedAppLibraryIDs;
+    unsigned long long _watchedAppLibrariesFlags;
     id <BRCNotificationPipeDelegate> _delegate;
 }
 
@@ -51,12 +51,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <BRCNotificationPipeDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) BRCNotificationManager *manager; // @synthesize manager=_manager;
+- (_Bool)isWatchingGlobalItemID:(id)arg1;
 - (void)invalidateReceiverIfWatchingAppLibraryIDs:(id)arg1;
 - (void)invalidateIfWatchingAppLibraryIDs:(id)arg1;
-- (void)watchItemInProcessAtURL:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;
-- (void)watchItemAtURL:(id)arg1 lookup:(id)arg2 options:(unsigned short)arg3 gatherReply:(CDUnknownBlockType)arg4;
+- (void)_watchItem:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;
 - (void)watchScopes:(unsigned short)arg1 trustedAppLibraryIDs:(id)arg2 gatherReply:(CDUnknownBlockType)arg3;
 - (void)close;
+- (void)listOperation:(id)arg1 wasReplacedByOperation:(id)arg2;
 - (void)_stopWatchingItems;
 - (void)_gatherIfNeededAndFlushAsync;
 - (void)__flush;
@@ -77,10 +78,13 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (oneway void)invalidate;
 - (void)_triggerImmediateReadOfDocumentIfNeeded;
+- (void)watchItemWithFileObjectID:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;
 - (void)boostPriority:(CDUnknownBlockType)arg1;
 - (void)watchScopes:(unsigned short)arg1 gatherReply:(CDUnknownBlockType)arg2;
 - (void)watchScopes:(unsigned short)arg1 appLibraryIDs:(id)arg2 gatherReply:(CDUnknownBlockType)arg3;
 - (void)watchItemsNamesPrefixedBy:(id)arg1 inScopes:(unsigned short)arg2 appLibraryIDs:(id)arg3 gatherReply:(CDUnknownBlockType)arg4;
+- (void)watchItemInProcessAtURL:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;
+- (void)watchItemAtURL:(id)arg1 lookup:(id)arg2 options:(unsigned short)arg3 gatherReply:(CDUnknownBlockType)arg4;
 - (void)watchItemAtURL:(id)arg1 options:(unsigned short)arg2 gatherReply:(CDUnknownBlockType)arg3;
 
 // Remaining properties

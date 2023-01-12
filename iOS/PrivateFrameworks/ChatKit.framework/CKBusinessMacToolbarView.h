@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showingInStandAloneWindow; // @synthesize showingInStandAloneWindow=_showingInStandAloneWindow;
 @property(nonatomic) double preferredHeight; // @synthesize preferredHeight=_preferredHeight;
 @property(retain, nonatomic) NSData *bannerImageData; // @synthesize bannerImageData=_bannerImageData;
+- (struct CGSize)_maxSizeForImage:(id)arg1;
 - (void)_updateBannerImage:(id)arg1;
 - (id)_generateScaledImageFromBannerData;
 - (void)traitCollectionDidChange:(id)arg1;

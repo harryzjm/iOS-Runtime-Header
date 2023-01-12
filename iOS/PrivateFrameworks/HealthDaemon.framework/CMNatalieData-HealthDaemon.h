@@ -6,11 +6,9 @@
 
 #import <CoreMotion/CMNatalieData.h>
 
-#import <HealthDaemon/HDCoreMotionDatum-Protocol.h>
-
 @class NSString;
 
-@interface CMNatalieData (HealthDaemon) <HDCoreMotionDatum>
+@interface CMNatalieData (HealthDaemon)
 - (id)hd_unitForType:(id)arg1;
 - (id)hd_epochDatestamp;
 - (id)hd_datestamp;

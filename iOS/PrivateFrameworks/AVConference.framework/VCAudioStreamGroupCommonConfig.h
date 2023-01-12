@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
     void *_didProcessSamplesCallbackContext;
     long long _powerSpectrumStreamToken;
     unsigned int _audioChannelIndex;
+    unsigned long long _spatialAudioSourceID;
 }
 
+@property(nonatomic) unsigned long long spatialAudioSourceID; // @synthesize spatialAudioSourceID=_spatialAudioSourceID;
 @property(nonatomic) unsigned int audioChannelIndex; // @synthesize audioChannelIndex=_audioChannelIndex;
 @property(nonatomic) long long powerSpectrumStreamToken; // @synthesize powerSpectrumStreamToken=_powerSpectrumStreamToken;
 @property(nonatomic) void *didProcessSamplesCallbackContext; // @synthesize didProcessSamplesCallbackContext=_didProcessSamplesCallbackContext;

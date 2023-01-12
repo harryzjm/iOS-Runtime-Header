@@ -8,7 +8,22 @@
 
 @protocol PXStoryViewLayoutSpec
 @property(readonly, nonatomic) unsigned long long hash;
+@property(readonly, nonatomic) double infoPanelMetadataToMetadataBaselines;
+@property(readonly, nonatomic) double infoPanelTitleToMetadataBaselines;
+@property(readonly, nonatomic) double infoPanelFooterLabelBaselineFromBottom;
+@property(readonly, nonatomic) double infoPanelTitleLabelBaselineFromTop;
+@property(readonly, nonatomic) double infoPanelAssetToMetadataLabel;
+@property(readonly, nonatomic) double infoPanelAssetToSymbolCenter;
+@property(readonly, nonatomic) double infoPanelDistanceBetweenAssetAndTitleLabel;
+@property(readonly, nonatomic) double infoPanelButtonHeight;
+@property(readonly, nonatomic) struct CGSize infoPanelButtonOffset;
+@property(readonly, nonatomic) double infoPanelAssetAspectRatio;
+@property(readonly, nonatomic) double infoPanelHeight;
+@property(readonly, nonatomic) double infoPanelAnimationDistance;
+@property(readonly, nonatomic) struct UIEdgeInsets infoPanelPadding;
+@property(readonly, nonatomic) struct UIEdgeInsets infoPanelMargins;
 @property(readonly, nonatomic) double predictedBrowseChromeTextHeight;
+@property(readonly, nonatomic) _Bool bufferingIndicatorWantsBackground;
 @property(readonly, nonatomic) double bufferingIndicatorCornerRadius;
 @property(readonly, nonatomic) UIImage *styleSwitcherColorGradeNameGlyphImage;
 @property(readonly, nonatomic) double styleSwitcherDistanceBetweenEditButtons;
@@ -20,6 +35,8 @@
 @property(readonly, nonatomic) double styleSwitcherDetailsTitleAccessoryPadding;
 @property(readonly, nonatomic) NSDictionary *styleSwitcherDetailsLabelAttributesAAccessory;
 @property(readonly, nonatomic) NSDictionary *styleSwitcherDetailsLabelAttributesA;
+@property(readonly, nonatomic) long long upNextCountdownPlacement;
+@property(readonly, nonatomic) long long upNextAnimationStyle;
 @property(readonly, nonatomic) unsigned long long upNextTargetMemoryCount;
 @property(readonly, nonatomic) double upNextCountDownInitialVisibleValue;
 @property(readonly, nonatomic) double upNextCountDownAppearDelay;
@@ -30,12 +47,19 @@
 @property(readonly, nonatomic) NSDictionary *upNextCountDownAttributes;
 @property(readonly, nonatomic) NSNumberFormatter *upNextCountDownFormatter;
 @property(readonly, nonatomic) struct CGSize upNextCountDownSize;
+@property(readonly, nonatomic) struct CGSize relatedNavigationButtonSize;
+@property(readonly, nonatomic) double relatedNavigationButtonSystemImagePointSize;
+@property(readonly, nonatomic) double relatedNavigationButtonFadeDuration;
+@property(readonly, nonatomic) PXStoryChromeButtonSpec *relatedNavigationChromeButtonSpec;
+@property(readonly, nonatomic) double spacingBetweenRelatedNavigationButtonAndRelated;
+@property(readonly, nonatomic) double canShowRelatedNavigationButton;
 @property(readonly, nonatomic) double spacingBetweenRelatedTitleAndMainRelated;
 @property(readonly, nonatomic) NSAttributedString *relatedAttributedTitle;
 @property(readonly, nonatomic) struct CGSize relatedTitleSize;
 @property(readonly, nonatomic) _Bool shouldHideChromeItemsWhenRelatedOverlayIsScrolledIntoView;
 @property(readonly, nonatomic) PXStoryRelatedLayoutMetrics *relatedLayoutMetrics;
 @property(readonly, nonatomic) struct UIEdgeInsets scrubberFadeAreaInsets;
+@property(readonly, nonatomic) double scrubberHorizontalLayoutMargin;
 @property(readonly, nonatomic) double scrubberAssetCornerRadius;
 @property(readonly, nonatomic) double scrubberRegularAssetPadding;
 @property(readonly, nonatomic) double scrubberCurrentAssetPadding;
@@ -49,6 +73,7 @@
 @property(readonly, nonatomic) unsigned short rightEdgeHighlightImageVersion;
 @property(readonly, nonatomic) struct CGSize rightEdgeHighlightImageSize;
 @property(readonly, nonatomic) PXExtendedImageConfiguration *rightEdgeHighlightImageConfiguration;
+@property(readonly, nonatomic) struct UIEdgeInsets browseGridLayoutMargins;
 @property(readonly, nonatomic) double minimumWidthRequiredForChromeText;
 @property(readonly, nonatomic) double distanceFromBottomChromeTextToGrid;
 @property(readonly, nonatomic) long long generalChromeSubtitleNumberOfLines;
@@ -57,16 +82,23 @@
 @property(readonly, nonatomic) long long browseChromeTitleNumberOfLines;
 @property(readonly, nonatomic) long long playbackEndChromeSubtitleNumberOfLines;
 @property(readonly, nonatomic) long long playbackEndChromeTitleNumberOfLines;
+@property(readonly, nonatomic) _Bool shouldUseAssetCollectionForTitleAndSubtitle;
 @property(readonly, nonatomic) NSDictionary *chromeSubtitleAttributes;
 @property(readonly, nonatomic) NSDictionary *chromeTitleAttributes;
 @property(readonly, nonatomic) NSDictionary *playbackEndSubtitleAttributes;
 @property(readonly, nonatomic) NSDictionary *playbackEndTitleAttributes;
+@property(readonly, nonatomic) double maximumWidthForRelatedTitleAndSubtitle;
+@property(readonly, nonatomic) double spacingBetweenPlaybackEndTitleAndSubtitle;
 @property(readonly, nonatomic) double spacingBetweenPlaybackEndButtonAndTitles;
+@property(readonly, nonatomic) double playbackEndButtonSystemImageWeight;
 @property(readonly, nonatomic) PXStoryChromeButtonSpec *playbackEndButtonSpec;
 @property(readonly, nonatomic) struct CGSize playbackEndButtonPadding;
+@property(readonly, nonatomic) _Bool onlyShowReplayEndButtonAtTopOfTitle;
 @property(readonly, nonatomic) _Bool shouldHorizontallyCenterPlaybackEndButtons;
 @property(readonly, nonatomic) double interPlaybackEndButtonSpacing;
+@property(readonly, nonatomic) double playbackEndButtonSystemImagePointSize;
 @property(readonly, nonatomic) struct CGSize playbackEndButtonSize;
+@property(readonly, nonatomic) NSString *replayButtonImageName;
 @property(readonly, nonatomic) PXStoryPlayButtonSpec *playButtonSpec;
 @property(readonly, nonatomic) PXStoryChromeButtonSpec *chromeButtonSpec;
 @property(readonly, nonatomic) struct CGSize chromeButtonPadding;
@@ -76,9 +108,13 @@
 @property(readonly, nonatomic) struct CGSize chromeButtonSize;
 @property(readonly, nonatomic) double tapNavigationAreaWidth;
 @property(readonly, nonatomic) struct UIEdgeInsets tapNavigationAreaInsets;
-@property(readonly, nonatomic) _Bool canShowStyleSwitcherButton;
+@property(readonly, nonatomic) unsigned long long fullsizePlayerDefaultChromeItems;
+@property(readonly, nonatomic) _Bool canShowFullscreenToggleButton;
+@property(readonly, nonatomic) _Bool canShowMuteToggleButton;
 @property(readonly, nonatomic) _Bool canShowCloseButton;
-@property(readonly, nonatomic) UIColor *backgroundColor;
+@property(readonly, nonatomic) _Bool shouldUseUnifiedButtonLayout;
+@property(readonly, nonatomic) UIColor *browseGridBackgroundColor;
+@property(readonly, nonatomic) UIColor *playerBackgroundColor;
 - (NSAttributedString *)chromeSongAttributedStringWithTitle:(NSString *)arg1 artist:(NSString *)arg2;
 @end
 

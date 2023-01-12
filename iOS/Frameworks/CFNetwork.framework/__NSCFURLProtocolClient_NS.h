@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSURLProtocolClient-Protocol.h>
-
 @class NSString, NSURLAuthenticationChallenge;
 
-@interface __NSCFURLProtocolClient_NS : NSObject <NSURLProtocolClient>
+@interface __NSCFURLProtocolClient_NS : NSObject
 {
     struct URLProtocolClient *_cf;
     void *_prot;

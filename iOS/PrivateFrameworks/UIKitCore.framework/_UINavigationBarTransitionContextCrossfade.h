@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
-
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTransitionContextCrossfade
 {
-    UIView *_fromCanvasView;
-    UIView *_toCanvasView;
 }
 
-- (void).cxx_destruct;
 - (void)complete;
 - (void)cancel;
 - (void)_finishWithFinalLayout:(id)arg1 invalidLayout:(id)arg2;
@@ -22,13 +17,11 @@ __attribute__((visibility("hidden")))
 - (void)_animateSearchBar;
 - (void)_animateLargeTitleView;
 - (void)_animateContentView;
-- (void)_animateCanvasViews;
 - (double)contentViewMaxY;
 - (void)prepare;
 - (void)_prepareSearchBar;
 - (void)_prepareLargeTitleView;
 - (void)_prepareContentView;
-- (void)_prepareCanvasViews;
 - (int)transition;
 
 @end

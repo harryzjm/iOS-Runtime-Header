@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/ICDelegateAccountStoreServiceClient-Protocol.h>
-#import <iTunesCloud/ICDelegateAccountStoreWriter-Protocol.h>
-
 @class ICDelegateAccountStoreOptions, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface ICDelegateAccountStoreXPCWriter : NSObject <ICDelegateAccountStoreServiceClient, ICDelegateAccountStoreWriter>
+@interface ICDelegateAccountStoreXPCWriter : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     ICDelegateAccountStoreOptions *_accountStoreOptions;

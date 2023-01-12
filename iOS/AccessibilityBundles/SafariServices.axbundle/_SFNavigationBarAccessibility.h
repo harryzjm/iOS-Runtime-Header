@@ -24,7 +24,7 @@
 - (_Bool)_accessibilityAutoReaderAction:(id)arg1;
 - (void)setExpanded:(_Bool)arg1 textFieldSelectionRange:(struct _NSRange)arg2;
 - (void)fluidProgressViewDidShowProgress:(id)arg1;
-- (void)_updateNotSecureWarningsVisibility;
+- (void)_updateSecurityWarningsVisibility;
 - (void)_formatToggleButtonTapped:(id)arg1;
 - (long long)_accessibilitySortPriority;
 - (_Bool)shouldGroupAccessibilityChildren;

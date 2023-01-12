@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsArticles/SXLayoutProcessor-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12NewsArticles24ArticleAdLayoutProcessor : NSObject <SXLayoutProcessor>
+@interface _TtC12NewsArticles24ArticleAdLayoutProcessor : NSObject
 {
     MISSING_TYPE *layoutEnvironmentProvider;
     MISSING_TYPE *bannerAdRequesterFactory;

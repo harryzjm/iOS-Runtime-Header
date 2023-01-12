@@ -17,11 +17,16 @@ __attribute__((visibility("hidden")))
     NSArray *_routes;
     NSTimer *_minuteTimer;
     MNActiveRouteInfo *_mainRoute;
+    unsigned long long _currentLogType;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MNTimeAndDistanceUpdaterDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_logDisplayETAInfo:(id)arg1 logType:(unsigned long long)arg2;
 - (void)_startTimerToNextMinute;
+- (id)_batteryChargeInfoForRoute:(id)arg1 routeCoordinate:(CDStruct_3f2a7a20)arg2;
+- (id)_routeDistanceInfoForRoute:(id)arg1 routeCoordinate:(CDStruct_3f2a7a20)arg2;
+- (id)_displayETAInfoForRoute:(id)arg1 routeCoordinate:(CDStruct_3f2a7a20)arg2;
 - (void)updateDisplayETAForRoute:(id)arg1 notificationType:(unsigned long long)arg2;
 - (void)setRoutes:(id)arg1 mainRoute:(id)arg2 location:(id)arg3 notificationType:(unsigned long long)arg4;
 - (void)setLocation:(id)arg1 notificationType:(unsigned long long)arg2;

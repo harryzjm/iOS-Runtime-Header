@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EquationKit/EQKitLayoutSchemataLongDivision-Protocol.h>
-#import <EquationKit/EQKitMathMLNode-Protocol.h>
-
 @class EQKitMathMLMStack, EQKitMathMLNode, NSString;
 
-@interface EQKitMathMLMLongDivision <EQKitMathMLNode, EQKitLayoutSchemataLongDivision>
+@interface EQKitMathMLMLongDivision
 {
     EQKitMathMLNode *mDivisor;
     EQKitMathMLMStack *mStack;

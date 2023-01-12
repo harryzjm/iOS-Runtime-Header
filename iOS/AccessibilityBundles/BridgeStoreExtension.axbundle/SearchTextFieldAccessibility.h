@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityAutomationType;
+- (unsigned long long)accessibilityTraits;
 
 @end
 

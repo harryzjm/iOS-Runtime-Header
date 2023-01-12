@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSLocking-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _PFLock : NSObject <NSLocking>
+@interface _PFLock : NSObject
 {
     struct _opaque_pthread_mutex_t _lock;
     struct _opaque_pthread_t {

@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EKEventEditItem.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAvailabilityEditItem
+@interface EKEventAvailabilityEditItem : EKEventEditItem
 {
     long long _availability;
-    unsigned long long _supportedAvailabilities;
     NSArray *_choices;
-    unsigned long long _availabilityIndexInChoices;
 }
 
 - (void).cxx_destruct;
-- (_Bool)editItemViewControllerSave:(id)arg1;
-- (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
+- (_Bool)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (_Bool)saveAndDismissWithForce:(_Bool)arg1;
+- (id)_choices;
 - (void)refreshFromCalendarItemAndStore;
 - (_Bool)canBeConfiguredForCalendarConstraints:(id)arg1;
 

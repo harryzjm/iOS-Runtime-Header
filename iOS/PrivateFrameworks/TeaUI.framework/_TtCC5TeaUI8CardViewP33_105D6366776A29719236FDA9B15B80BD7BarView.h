@@ -6,10 +6,14 @@
 
 #import <UIKit/UIView.h>
 
+@class NSString;
+
 @interface _TtCC5TeaUI8CardViewP33_105D6366776A29719236FDA9B15B80BD7BarView : UIView
 {
 }
 
+@property(nonatomic, copy) NSString *accessibilityHint;
+@property(nonatomic, copy) NSString *accessibilityLabel;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

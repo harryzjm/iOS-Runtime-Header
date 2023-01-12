@@ -6,11 +6,9 @@
 
 #import <SAObjects/SABaseCommand.h>
 
-#import <SiriCore/SiriCoreSessionObject-Protocol.h>
-
 @class NSString;
 
-@interface SABaseCommand (SiriCoreSessionObject) <SiriCoreSessionObject>
+@interface SABaseCommand (SiriCoreSessionObject)
 - (_Bool)siriCore_supportedByRemoteLimitedSession;
 - (_Bool)siriCore_supportedByLocalSession;
 - (void)siriCore_setSessionRequestId:(id)arg1;

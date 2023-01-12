@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSTextAttachmentCell-Protocol.h>
+#import "UIView.h"
 
 @class NSString, NSTextAttachment;
 
 __attribute__((visibility("hidden")))
-@interface UITextAttachmentView <NSTextAttachmentCell>
+@interface UITextAttachmentView : UIView
 {
     NSTextAttachment *_attachment;
 }

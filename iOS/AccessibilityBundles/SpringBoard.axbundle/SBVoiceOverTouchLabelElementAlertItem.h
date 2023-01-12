@@ -6,13 +6,10 @@
 
 #import <SpringBoardUI/SBAlertItem.h>
 
-#import "UIAlertViewDelegate-Protocol.h"
-#import "UITextFieldDelegate-Protocol.h"
-
 @class NSString;
 @protocol SBVoiceOverTouchLabelElementAlertItemDelegate;
 
-@interface SBVoiceOverTouchLabelElementAlertItem : SBAlertItem <UITextFieldDelegate, UIAlertViewDelegate>
+@interface SBVoiceOverTouchLabelElementAlertItem : SBAlertItem
 {
     NSString *_initialValue;
     id <SBVoiceOverTouchLabelElementAlertItemDelegate> _voiceOverAlertItemDelegate;

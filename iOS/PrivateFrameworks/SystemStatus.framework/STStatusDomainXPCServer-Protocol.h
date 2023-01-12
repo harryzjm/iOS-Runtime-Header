@@ -10,6 +10,7 @@
 @protocol STStatusDomainUserInteraction;
 
 @protocol STStatusDomainXPCServer <NSObject>
+- (void)serverDataForDomains:(NSSet *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)reportUserInteraction:(id <STStatusDomainUserInteraction>)arg1 forDomain:(unsigned long long)arg2;
 - (void)stopObservingDomains:(NSSet *)arg1;
 - (void)observeDomains:(NSSet *)arg1;

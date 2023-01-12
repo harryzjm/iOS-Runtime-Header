@@ -4,16 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUIOnboardingAffiliationCirclesDelegate-Protocol.h>
-#import <StoreKitUI/SKUIPhysicalCirclesTemplateDelegate-Protocol.h>
-#import <StoreKitUI/UIGestureRecognizerDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSMapTable, NSString, SKUIOnboardingAffiliationCirclesViewController, SKUIOnboardingFooterView, SKUIOnboardingProgressView, SKUIPhysicalCirclesTemplateViewElement, SKUIResourceLoader, UIGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPhysicalCirclesDocumentViewController <SKUIArtworkRequestDelegate, SKUIOnboardingAffiliationCirclesDelegate, SKUIPhysicalCirclesTemplateDelegate, UIGestureRecognizerDelegate, SKUIDocumentViewController>
+@interface SKUIPhysicalCirclesDocumentViewController : SKUIViewController
 {
     SKUIOnboardingAffiliationCirclesViewController *_circlesViewController;
     SKUIOnboardingFooterView *_footerView;

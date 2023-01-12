@@ -6,7 +6,7 @@
 
 #import <IDS/NSObject-Protocol.h>
 
-@class ENGroupID, IDSMessagingCapabilities, IDSPseudonym, IDSPseudonymProperties, IDSPseudonymRequestProperties, IDSURI, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSSet, NSString, NSURL;
+@class ENGroupID, IDSMessagingCapabilities, IDSPseudonym, IDSPseudonymProperties, IDSPseudonymRequestProperties, IDSSigningOptions, IDSURI, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSSet, NSString, NSURL;
 @protocol OS_xpc_object;
 
 @protocol IDSDaemonProtocol <NSObject>
@@ -26,6 +26,7 @@
 - (void)homeKitGetConsentTokensWithServiceUserID:(NSString *)arg1 accessoryIDs:(NSArray *)arg2 adminID:(NSString *)arg3;
 - (void)homeKitGetAdminAccessTokensWithServiceUserID:(NSString *)arg1 accessoryID:(NSString *)arg2 pairingToken:(NSData *)arg3;
 - (void)homeKitGetServiceUserIDs;
+- (void)reportSpamMessage:(NSDictionary *)arg1 serviceIdentifier:(NSString *)arg2;
 - (void)reportAction:(long long)arg1 ofTempURI:(IDSURI *)arg2 fromURI:(IDSURI *)arg3 onAccount:(NSString *)arg4 requestUUID:(NSString *)arg5;
 - (void)reportiMessageSpamCheckUnknown:(NSString *)arg1 count:(NSNumber *)arg2 requestID:(NSString *)arg3;
 - (void)reportiMessageUnknownSender:(NSString *)arg1 messageID:(NSString *)arg2 isBlackholed:(_Bool)arg3 messageServerTimestamp:(NSNumber *)arg4 toURI:(NSString *)arg5;
@@ -58,10 +59,11 @@
 - (void)requestActiveParticipantsForGroupSession:(NSString *)arg1;
 - (void)leaveGroupSession:(NSString *)arg1 participantInfo:(NSDictionary *)arg2;
 - (void)joinGroupSession:(NSString *)arg1 withOptions:(NSDictionary *)arg2;
+- (void)updateParticipantType:(unsigned short)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 members:(NSArray *)arg4 triggeredLocally:(_Bool)arg5 withContext:(NSData *)arg6 lightweightStatusDict:(NSDictionary *)arg7;
 - (void)updateParticipantData:(NSData *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withContext:(NSData *)arg4;
 - (void)removeParticipantIDs:(NSSet *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3;
 - (void)manageDesignatedMembers:(NSArray *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withType:(unsigned short)arg4;
-- (void)updateMembers:(NSArray *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withContext:(NSData *)arg4 messagingCapabilities:(IDSMessagingCapabilities *)arg5 triggeredLocally:(_Bool)arg6;
+- (void)updateMembers:(NSArray *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withContext:(NSData *)arg4 messagingCapabilities:(IDSMessagingCapabilities *)arg5 triggeredLocally:(_Bool)arg6 lightweightStatusDict:(NSDictionary *)arg7;
 - (void)sendAllocationRequest:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (void)acknowledgeSessionID:(NSString *)arg1 clientID:(NSString *)arg2;
 - (void)setInviteTimetout:(long long)arg1 forSessionWithUniqueID:(NSString *)arg2;
@@ -88,6 +90,7 @@
 - (void)closeSocketWithOptions:(NSDictionary *)arg1;
 - (void)openSocketWithOptions:(NSDictionary *)arg1;
 - (void)xpcObject:(NSObject<OS_xpc_object> *)arg1 objectContext:(NSDictionary *)arg2;
+- (void)setWakingPushPriority:(long long)arg1 forTopic:(NSString *)arg2;
 - (void)registerForNotificationsOnServices:(NSSet *)arg1;
 - (void)setListenerServices:(NSSet *)arg1 commands:(NSSet *)arg2 capabilities:(unsigned int)arg3;
 - (void)sendAppAckWithGUID:(NSString *)arg1 toDestination:(NSString *)arg2 forAccountWithUniqueID:(NSString *)arg3 connectionType:(long long)arg4;
@@ -138,6 +141,9 @@
 - (void)reRegisterWithUserID:(NSString *)arg1 action:(NSNumber *)arg2 service:(NSString *)arg3;
 - (void)kickGetDependentForAccount:(NSString *)arg1;
 - (void)updateUserWithOldUserName:(NSString *)arg1 newUserName:(NSString *)arg2;
+- (void)gameCenterModifyForUserName:(NSString *)arg1;
+- (void)gameCenterSignOut;
+- (void)gameCenterSignInWithUserName:(NSString *)arg1 authToken:(NSString *)arg2 password:(NSString *)arg3 accountInfo:(NSDictionary *)arg4 accountStatus:(NSNumber *)arg5 handles:(NSArray *)arg6;
 - (void)iTunesSignOut;
 - (void)iTunesSignInWithUserName:(NSString *)arg1 authToken:(NSString *)arg2 password:(NSString *)arg3 accountInfo:(NSDictionary *)arg4 accountStatus:(NSNumber *)arg5 handles:(NSArray *)arg6;
 - (void)iCloudSignOut;
@@ -153,6 +159,8 @@
 - (void)forceRemoveAccount:(NSString *)arg1;
 - (void)unregisterAccount:(NSString *)arg1;
 - (void)registerAccount:(NSString *)arg1;
+- (void)verifySignedData:(NSData *)arg1 matchesData:(NSData *)arg2 forAlgorithm:(long long)arg3 onService:(NSString *)arg4 tokenUri:(IDSURI *)arg5 options:(IDSSigningOptions *)arg6 requestUUID:(NSString *)arg7;
+- (void)signData:(NSData *)arg1 withAlgorithm:(long long)arg2 onService:(NSString *)arg3 options:(IDSSigningOptions *)arg4 requestUUID:(NSString *)arg5;
 - (void)revokePseudonym:(IDSPseudonym *)arg1 onAccount:(NSString *)arg2 requestProperties:(IDSPseudonymRequestProperties *)arg3 requestUUID:(NSString *)arg4;
 - (void)renewPseudonym:(IDSPseudonym *)arg1 onAccount:(NSString *)arg2 forUpdatedExpiryEpoch:(double)arg3 requestProperties:(IDSPseudonymRequestProperties *)arg4 requestUUID:(NSString *)arg5;
 - (void)provisionPseudonymForURI:(IDSURI *)arg1 onAccount:(NSString *)arg2 withProperties:(IDSPseudonymProperties *)arg3 requestProperties:(IDSPseudonymRequestProperties *)arg4 requestUUID:(NSString *)arg5;

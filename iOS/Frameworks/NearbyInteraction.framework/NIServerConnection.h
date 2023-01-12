@@ -36,15 +36,13 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 @property(copy) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
-- (void)stopAllowingTasksToFinishWhileInBackground;
-- (id)allowTasksToFinishWhileInBackground;
 - (double)simulateErrorWithMaximum:(double)arg1 sigma:(double)arg2 maximum:(double)arg3;
 - (double)randomUnivariateGaussian:(double)arg1 sigma:(double)arg2;
 - (double)simulateAngleError;
 - (double)simulateRangeError;
 - (void)setRangingPriorityPolicy:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getRangingPriorityPolicy:(CDUnknownBlockType)arg1;
-- (void)processBluetoothEventWithType:(long long)arg1 btcClockTicks:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)processBluetoothEventWithType:(long long)arg1 btcClockTicks:(unsigned long long)arg2 eventCounter:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)processDCKMessage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_removeObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_addObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -55,8 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_createAndActivateXPCConnectionToSimulatorIfNeededWithReply:(CDUnknownBlockType)arg1;
 - (id)generateDiscoveryTokenData;
 - (void)queryDeviceCapabilities:(CDUnknownBlockType)arg1;
-- (_Bool)_internalIsAllowedToSimulateDirection;
-- (_Bool)_internalIsSupported;
+- (id)_internalDeviceCapabilities;
 - (void)handleMessageFromSimulator:(id)arg1;
 - (void)handleErrorMessageFromSimulator:(id)arg1;
 - (void)handleEventFromSimulatorOnQueue:(id)arg1;

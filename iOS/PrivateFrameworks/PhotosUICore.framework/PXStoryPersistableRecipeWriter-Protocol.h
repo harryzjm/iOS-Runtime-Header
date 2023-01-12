@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSProgress, PXStoryRecipeAssetEdits;
+@class NSProgress, NSUndoManager, PXStoryRecipeAssetEdits;
 @protocol PFStoryRecipe;
 
 @protocol PXStoryPersistableRecipeWriter
-- (NSProgress *)writePersistableRecipe:(id <PFStoryRecipe>)arg1 assetEdits:(PXStoryRecipeAssetEdits *)arg2 resultHandler:(void (^)(_Bool, id <PXDisplayAssetCollection>, NSError *))arg3;
+- (NSProgress *)writePersistableRecipe:(id <PFStoryRecipe>)arg1 assetEdits:(PXStoryRecipeAssetEdits *)arg2 undoManager:(NSUndoManager *)arg3 resultHandler:(void (^)(_Bool, id <PXDisplayAssetCollection>, NSError *))arg4;
 @end
 

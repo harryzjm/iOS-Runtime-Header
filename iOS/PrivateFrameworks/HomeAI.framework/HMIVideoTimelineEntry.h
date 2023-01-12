@@ -6,12 +6,10 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeAI/HMIVideoEvent-Protocol.h>
-
 @class NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMIVideoTimelineEntry : HMFObject <HMIVideoEvent>
+@interface HMIVideoTimelineEntry : HMFObject
 {
     NSDate *_date;
     CDStruct_1b6d18a9 _time;

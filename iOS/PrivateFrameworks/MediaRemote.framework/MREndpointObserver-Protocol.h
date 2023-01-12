@@ -6,11 +6,12 @@
 
 #import <MediaRemote/NSObject-Protocol.h>
 
-@class MRAVEndpoint;
+@class MRAVEndpoint, NSError;
 
 @protocol MREndpointObserver <NSObject>
 
 @optional
+- (void)endpointDidDisconnect:(MRAVEndpoint *)arg1 withError:(NSError *)arg2;
 - (void)endpointDidDisconnect:(MRAVEndpoint *)arg1;
 - (void)endpointDidConnect:(MRAVEndpoint *)arg1;
 @end

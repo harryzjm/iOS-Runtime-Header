@@ -10,6 +10,7 @@
 @class NSArray, NSString;
 
 @protocol SLWebClient <NSObject, NSSecureCoding>
+@property(readonly, nonatomic) NSArray *emailScope;
 @property(readonly, nonatomic) NSArray *youTubeScope;
 @property(readonly, nonatomic) NSArray *defaultScope;
 @property(readonly, nonatomic) NSString *source;

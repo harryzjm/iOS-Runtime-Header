@@ -8,8 +8,9 @@
 
 @interface WFContactFieldParameter (WorkflowEditor)
 + (Class)moduleSummaryEditorClass;
+- (id)defaultStateForNewArrayElement;
 - (_Bool)moduleSummaryShowsAddButtonForState:(id)arg1;
-- (id)moduleSummarySlotsForState:(id)arg1;
+- (id)moduleSummarySlotForState:(id)arg1;
 - (id)labelForState:(id)arg1;
 @end
 

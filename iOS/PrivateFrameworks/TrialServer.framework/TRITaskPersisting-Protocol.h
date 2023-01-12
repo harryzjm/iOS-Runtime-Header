@@ -12,9 +12,13 @@
 - (NSArray *)tasksDependentOnTask:(NSNumber *)arg1;
 - (NSArray *)directDependenciesOfTaskWithId:(NSNumber *)arg1;
 - (NSArray *)taskIdsWithTag:(NSString *)arg1;
+- (_Bool)updateTaskWithTaskId:(NSNumber *)arg1 capabilities:(unsigned long long)arg2 task:(id <TRITask>)arg3;
 - (_Bool)updateTaskWithTaskId:(NSNumber *)arg1 startDate:(NSDate *)arg2 task:(id <TRITask>)arg3;
 - (_Bool)enumerateTasksWithTagsIntersectingTagSet:(NSSet *)arg1 block:(void (^)(TRITaskRecord *, _Bool *))arg2;
-- (NSDictionary *)tasks;
+- (unsigned long long)count;
+- (NSDictionary *)dependencyFreeTasksForAllowedCapabilities:(unsigned long long)arg1 dateForRunnability:(NSDate *)arg2 taskType:(int)arg3;
+- (NSDictionary *)dependencyFreeTasksForAllowedCapabilities:(unsigned long long)arg1 dateForRunnability:(NSDate *)arg2;
+- (NSDictionary *)allTasks;
 - (_Bool)removeTaskWithId:(NSNumber *)arg1 cleanupBlock:(void (^)(id <TRITask>))arg2;
 - (NSNumber *)addTask:(id <TRITask>)arg1 startTime:(NSDate *)arg2 tags:(NSArray *)arg3 dependencies:(NSArray *)arg4 error:(id *)arg5;
 @end

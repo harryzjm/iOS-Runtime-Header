@@ -7,6 +7,8 @@
 @class CTXPCServiceSubscriptionContext;
 
 @protocol CTXPCServicePostponementInterface
+- (void)fetchBasebandTicket:(_Bool)arg1 withCompletion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)isFactoryDebugEnabled:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getActivationPolicyState:(void (^)(CTActivationPolicyState *, NSError *))arg1;
 - (void)copyPriVersion:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTPriVersion *, NSError *))arg2;
 @end

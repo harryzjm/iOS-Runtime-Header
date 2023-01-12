@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFRequestAppClipInstallCommand.h>
 
 @interface SFRequestAppClipInstallCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

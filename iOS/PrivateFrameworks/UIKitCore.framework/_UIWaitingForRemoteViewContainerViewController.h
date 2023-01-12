@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewController.h"
+
 @class UIActivityIndicatorView;
 
 __attribute__((visibility("hidden")))
-@interface _UIWaitingForRemoteViewContainerViewController
+@interface _UIWaitingForRemoteViewContainerViewController : UIViewController
 {
     UIActivityIndicatorView *_loadingSpinner;
 }
@@ -16,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIActivityIndicatorView *loadingSpinner; // @synthesize loadingSpinner=_loadingSpinner;
 - (_Bool)_canShowWhileLocked;
 - (void)stopSpinner;
+- (void)viewWillLayoutSubviews;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 @end

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSProgress, _UICircleProgressView;
 
 __attribute__((visibility("hidden")))
-@interface _UIProgressView
+@interface _UIProgressView : UIView
 {
     _UICircleProgressView *_progressView;
     NSProgress *_trackedProgress;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKBAlertControllerDelegate-Protocol.h>
-
 @class NSArray, NSString, UIAlertController, UIKBTree, UILabel, UILexicon, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardLayoutCursor <UIKBAlertControllerDelegate>
+@interface UIKeyboardLayoutCursor
 {
     UIKBTree *_indirectKeyboard;
     UIView *_selectionView;
@@ -18,32 +16,41 @@ __attribute__((visibility("hidden")))
     _Bool _ignoreEventsUntilPressEnds;
     UILexicon *_recentInputs;
     _Bool _disableTouchInput;
-    _Bool _suppressOperations;
     UIKBTree *_cachedMultitapKeyplane;
     _Bool _cachedCanMultitap;
     UILabel *_dictationHelpLabel;
     _Bool _didVariantDelete;
     _Bool _isForwardingEvent;
-    _Bool _overrideInitialKey;
     int _overridenSelectedKeyType;
-    _Bool _shouldConfigureFloatingContentView;
-    _Bool _shouldToggleLetterCaseNext;
     struct CGPoint _keyplaneSwitchSelectedKeyFrameCenter;
     _Bool _selectInitialKey;
-    unsigned long long _lastSelectedKeyIndex;
+    _Bool _suppressOperations;
+    _Bool _overrideInitialKey;
+    _Bool _shouldConfigureFloatingContentView;
+    _Bool _shouldToggleLetterCaseNext;
     UIAlertController *_recentInputsAlert;
     NSString *_keyplaneBeforeDictation;
     long long _selectedKeyBeforeDictation;
+    unsigned long long _lastSelectedKeyIndex;
     UIWindow *_focusWindow;
 }
 
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 + (id)carKeyboardNameForKeyboard:(id)arg1 screenTraits:(id)arg2;
-@property(retain, nonatomic) UIWindow *focusWindow; // @synthesize focusWindow=_focusWindow;
+- (void).cxx_destruct;
+@property(nonatomic) __weak UIWindow *focusWindow; // @synthesize focusWindow=_focusWindow;
+@property(nonatomic) _Bool shouldToggleLetterCaseNext; // @synthesize shouldToggleLetterCaseNext=_shouldToggleLetterCaseNext;
+@property(nonatomic) _Bool shouldConfigureFloatingContentView; // @synthesize shouldConfigureFloatingContentView=_shouldConfigureFloatingContentView;
+@property(nonatomic) unsigned long long lastSelectedKeyIndex; // @synthesize lastSelectedKeyIndex=_lastSelectedKeyIndex;
+@property(nonatomic) _Bool overrideInitialKey; // @synthesize overrideInitialKey=_overrideInitialKey;
+@property(nonatomic) _Bool suppressOperations; // @synthesize suppressOperations=_suppressOperations;
 @property(nonatomic) long long selectedKeyBeforeDictation; // @synthesize selectedKeyBeforeDictation=_selectedKeyBeforeDictation;
 @property(retain, nonatomic) NSString *keyplaneBeforeDictation; // @synthesize keyplaneBeforeDictation=_keyplaneBeforeDictation;
 @property(retain, nonatomic) UIAlertController *recentInputsAlert; // @synthesize recentInputsAlert=_recentInputsAlert;
+- (_Bool)isKeyboardRightToLeft;
+- (_Bool)isAppRightToLeft;
 @property(readonly, nonatomic, getter=isSlimLinearKeyboardTV) _Bool slimLinearKeyboardTV;
+- (double)defaultCursorAdjustDistance;
 - (id)getRomanAccentVariantsForString:(id)arg1 inputMode:(id)arg2 keyboardVariantIndludes:(int)arg3;
 - (_Bool)_isKeyboardReverseOfAppLayoutDirection;
 - (unsigned long long)_indexOfFirstKeyPassingTest:(CDUnknownBlockType)arg1;
@@ -74,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (long long)targetKeyIndexFromPoint:(struct CGPoint)arg1 inKeys:(id)arg2;
 - (long long)targetKeyIndexFromPoint:(struct CGPoint)arg1;
 - (void)setHighlightedVariantIndex:(long long)arg1 key:(id)arg2;
+- (_Bool)refreshSelectedCellIfNecessaryForKey:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)refreshSelectedCellIfNecessaryForKey:(id)arg1;
 - (void)setSelectedKeyIndex:(long long)arg1;
 - (void)deactivateKey:(id)arg1;
@@ -85,7 +93,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)downActionFlagsForKey:(id)arg1;
 - (int)enabledStateForKey:(id)arg1;
 - (int)activeStateForKey:(id)arg1;
-- (void)updateStatesForGridSelection;
 - (void)showPopupKeyplaneSwitcher;
 - (void)longPressAction;
 - (void)endMultitapForKey:(id)arg1;
@@ -131,12 +138,8 @@ __attribute__((visibility("hidden")))
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
 - (Class)keyViewAnimatorClassForCurrentKeyboardLayout;
 - (id)keyViewAnimator;
-- (void)_reducedTransparencyDidChange:(id)arg1;
-- (void)_accessibilityBoldTextChanged:(id)arg1;
-- (void)_configureFloatingContentViewsForTV;
 - (void)configureFloatingContentViewsIfNeeded;
 - (unsigned long long)variantCountForKey:(id)arg1;
-@property(readonly, nonatomic) struct CGRect globalFrameForCurrentKey;
 @property(readonly, nonatomic) UIKBTree *currentKey;
 - (void)runWithSuppressedActions:(CDUnknownBlockType)arg1;
 - (void)willMoveToWindow:(id)arg1;

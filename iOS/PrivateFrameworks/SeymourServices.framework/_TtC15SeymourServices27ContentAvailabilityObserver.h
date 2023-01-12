@@ -10,12 +10,13 @@
 
 @interface _TtC15SeymourServices27ContentAvailabilityObserver : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *$defaultActor;
     MISSING_TYPE *eventHub;
-    MISSING_TYPE *lock;
     MISSING_TYPE *serviceSubscriptionObserver;
     MISSING_TYPE *storefrontObserver;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *supportedDeviceAvailability;
+    MISSING_TYPE *healthStore;
     MISSING_TYPE *platform;
     MISSING_TYPE *previousContentAvailability;
 }

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 + (long long)typeOfSpacerBetweenLayout:(id)arg1 andLayout:(id)arg2;
 + (id)spacerForLayoutMetrics:(id)arg1 betweenLayout:(id)arg2 andLayout:(id)arg3;
++ (id)_updateSpacer:(id)arg1 layoutMetrics:(id)arg2 spacerType:(long long)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long spacerType; // @synthesize spacerType=_spacerType;
 - (id)description;

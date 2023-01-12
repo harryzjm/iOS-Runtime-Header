@@ -10,10 +10,10 @@
 
 @interface _TtC20SiriAppLaunchIntents21LaunchAppFlowStrategy : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *appLaunchFeatureFlags;
     MISSING_TYPE *deviceState;
-    MISSING_TYPE *aceServiceHelper;
+    MISSING_TYPE *aceService;
     MISSING_TYPE *deviceResolutionAnalytics;
+    MISSING_TYPE *referenceResolver;
     MISSING_TYPE *remoteDevice;
 }
 

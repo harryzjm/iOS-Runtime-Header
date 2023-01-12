@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     } _rebuildFlags;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=isShowingFrontFace) _Bool showingFrontFace; // @synthesize showingFrontFace=_showingFrontFace;
 - (_Bool)transitionIsVisible;
 - (void)rebuildControlKeys:(unsigned long long)arg1;
@@ -45,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)defaultKeyboardImage;
 - (void)_flipToFront:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

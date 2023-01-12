@@ -6,14 +6,15 @@
 
 #import <ActivityAchievementsDaemon/NSObject-Protocol.h>
 
-@class ACHAchievementStore, NSSet;
+@class NSSet;
+@protocol ACHAchievementStoring;
 
 @protocol ACHAchievementStoreObserving <NSObject>
-- (void)achievementStore:(ACHAchievementStore *)arg1 didRemoveAchievements:(NSSet *)arg2;
-- (void)achievementStore:(ACHAchievementStore *)arg1 didUpdateAchievements:(NSSet *)arg2;
-- (void)achievementStore:(ACHAchievementStore *)arg1 didAddAchievements:(NSSet *)arg2;
+- (void)achievementStore:(id <ACHAchievementStoring>)arg1 didRemoveAchievements:(NSSet *)arg2;
+- (void)achievementStore:(id <ACHAchievementStoring>)arg1 didUpdateAchievements:(NSSet *)arg2;
+- (void)achievementStore:(id <ACHAchievementStoring>)arg1 didAddAchievements:(NSSet *)arg2;
 
 @optional
-- (void)achievementStoreDidFinishInitialFetch:(ACHAchievementStore *)arg1;
+- (void)achievementStoreDidFinishInitialFetch:(id <ACHAchievementStoring>)arg1;
 @end
 

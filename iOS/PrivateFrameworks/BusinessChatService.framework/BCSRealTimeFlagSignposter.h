@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BusinessChatService/BCSRealTimeFlagMeasurementHandler-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSRealTimeFlagSignposter <BCSRealTimeFlagMeasurementHandler>
+@interface BCSRealTimeFlagSignposter
 {
     long long _signposterType;
 }

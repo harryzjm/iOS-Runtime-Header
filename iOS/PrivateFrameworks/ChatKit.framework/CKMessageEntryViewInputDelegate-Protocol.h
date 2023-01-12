@@ -22,6 +22,7 @@
 - (void)messageEntryViewDidCollapse:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewDidExpand:(CKMessageEntryView *)arg1;
 - (void)messageEntryView:(CKMessageEntryView *)arg1 didSelectPluginAtIndex:(NSIndexPath *)arg2;
+- (void)messageEntryViewPhotoButtonTouchCancel:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewPhotoButtonTouchUpOutside:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewPhotoButtonTouchDown:(CKMessageEntryView *)arg1;
 @end

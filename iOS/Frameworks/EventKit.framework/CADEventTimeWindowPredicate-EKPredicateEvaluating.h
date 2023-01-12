@@ -6,9 +6,7 @@
 
 #import <CalendarDaemon/CADEventTimeWindowPredicate.h>
 
-#import <EventKit/EKPredicateEvaluating-Protocol.h>
-
-@interface CADEventTimeWindowPredicate (EKPredicateEvaluating) <EKPredicateEvaluating>
+@interface CADEventTimeWindowPredicate (EKPredicateEvaluating)
 - (_Bool)ekPredicateEvaluateWithObject:(id)arg1;
 @end
 

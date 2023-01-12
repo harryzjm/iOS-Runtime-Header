@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-#import <KeynoteQuicklook/NSMutableCopying-Protocol.h>
-
-@interface KNMacUILayout : NSObject <NSCopying, NSMutableCopying>
+@interface KNMacUILayout : NSObject
 {
     _Bool _showingInspectorPane;
     _Bool _inspectorPaneAutoHidden;
@@ -19,10 +16,12 @@
     _Bool _showingLightTable;
     _Bool _showingTemplateSlides;
     _Bool _showingElementList;
+    _Bool _showingActivityStream;
     long long _inspectorPaneViewMode;
 }
 
 + (id)uiLayoutFromArchive:(const void *)arg1 unarchiver:(id)arg2 context:(id)arg3;
+@property(readonly, nonatomic, getter=isShowingActivityStream) _Bool showingActivityStream; // @synthesize showingActivityStream=_showingActivityStream;
 @property(readonly, nonatomic, getter=isShowingElementList) _Bool showingElementList; // @synthesize showingElementList=_showingElementList;
 @property(readonly, nonatomic, getter=isShowingTemplateSlides) _Bool showingTemplateSlides; // @synthesize showingTemplateSlides=_showingTemplateSlides;
 @property(readonly, nonatomic) long long inspectorPaneViewMode; // @synthesize inspectorPaneViewMode=_inspectorPaneViewMode;

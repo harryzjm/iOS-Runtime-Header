@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CVMLObservation_LegacySupportDoNotChange : NSObject <NSSecureCoding>
+@interface CVMLObservation_LegacySupportDoNotChange : NSObject
 {
     float _confidence;
 }

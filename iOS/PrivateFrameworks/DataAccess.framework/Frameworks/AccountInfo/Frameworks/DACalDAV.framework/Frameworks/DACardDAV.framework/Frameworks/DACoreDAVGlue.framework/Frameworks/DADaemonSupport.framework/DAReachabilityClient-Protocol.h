@@ -6,7 +6,12 @@
 
 #import <DADaemonSupport/NSObject-Protocol.h>
 
+@class DAReachability, NSString;
+
 @protocol DAReachabilityClient <NSObject>
 - (void)networkReachable;
+
+@optional
+- (NSString *)hostToObserveForDAReachability:(DAReachability *)arg1;
 @end
 

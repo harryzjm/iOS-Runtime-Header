@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TextureIO/TXRBufferMap-Protocol.h>
-
 @class NSString, TXRDefaultBuffer;
 
 __attribute__((visibility("hidden")))
-@interface TXRDefaultBufferMap : NSObject <TXRBufferMap>
+@interface TXRDefaultBufferMap : NSObject
 {
     void *_bytes;
     TXRDefaultBuffer *_buffer;

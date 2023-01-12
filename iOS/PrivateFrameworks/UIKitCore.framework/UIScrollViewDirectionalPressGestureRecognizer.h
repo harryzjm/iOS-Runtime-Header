@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIRepeatingPressGestureRecognizer.h"
+
 @class UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIScrollViewDirectionalPressGestureRecognizer
+@interface UIScrollViewDirectionalPressGestureRecognizer : _UIRepeatingPressGestureRecognizer
 {
     _Bool _hasBeenModified;
     UIView *_originalView;

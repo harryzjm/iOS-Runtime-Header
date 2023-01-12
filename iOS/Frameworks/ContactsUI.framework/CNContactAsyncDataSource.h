@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNContactDataSource-Protocol.h>
-
 @class CNContactDataSourceSafeDelegate, CNContactFilter, CNContactFormatter, CNContactStore, CNContactStoreFilter, CNPublishingSubject, NSArray, NSDictionary, NSMutableArray, NSString;
 @protocol CNCancelable, CNContactDataSourceDelegate, CNSchedulerProvider;
 
 __attribute__((visibility("hidden")))
-@interface CNContactAsyncDataSource : NSObject <CNContactDataSource>
+@interface CNContactAsyncDataSource : NSObject
 {
     CNContactDataSourceSafeDelegate *_delegate;
     CNContactFormatter *_contactFormatter;

@@ -7,6 +7,7 @@
 #import <UIKit/UIVisualEffect.h>
 
 @interface UIVisualEffect (Private)
-+ (id)smu_sessionColorEffect;
++ (id)sessionColorLight;
++ (id)sessionColorDark;
 @end
 

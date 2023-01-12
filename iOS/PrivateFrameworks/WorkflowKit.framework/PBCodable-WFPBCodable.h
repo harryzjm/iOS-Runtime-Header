@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <WorkflowKit/WFPBCodable-Protocol.h>
-
 @class NSString;
 
-@interface PBCodable (WFPBCodable) <WFPBCodable>
+@interface PBCodable (WFPBCodable)
 - (_Bool)readFrom:(id)arg1 error:(id *)arg2;
 - (_Bool)writeTo:(id)arg1 error:(id *)arg2;
 

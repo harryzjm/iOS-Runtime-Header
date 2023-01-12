@@ -34,6 +34,7 @@
 - (void)replayAndAddTombstones:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)convertTombstoneWithGenerationToSecureFormat:(long long)arg1 lastSyncedGeneration:(long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)pruneTombstonesWithEndDatePriorToDate:(NSDate *)arg1 completionHandler:(void (^)(unsigned long long, NSError *))arg2;
+- (void)getItemCountBeforeDate:(NSDate *)arg1 completionHandler:(void (^)(long long, NSError *))arg2;
 - (void)getHighLevelHTTPFamilyDomainsVisitedAfterDate:(NSDate *)arg1 beforeDate:(NSDate *)arg2 onlyFromThisDevice:(_Bool)arg3 completionHandler:(void (^)(NSSet *, NSError *))arg4;
 - (void)checkIfLocalVisitExistsForDatabaseIDs:(NSArray *)arg1 withCompletion:(void (^)(_Bool))arg2;
 - (void)flushWithCompletionHandler:(void (^)(void))arg1;

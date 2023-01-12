@@ -13,6 +13,7 @@
     MISSING_TYPE *patterns;
     MISSING_TYPE *navigator;
     MISSING_TYPE *newsletterManager;
+    MISSING_TYPE *emailSignupModelFactory;
 }
 
 @end

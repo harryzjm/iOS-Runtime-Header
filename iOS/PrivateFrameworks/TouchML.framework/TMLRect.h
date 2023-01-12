@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLRectJSExports-Protocol.h>
-
 @class TMLPoint, TMLSize;
 
-@interface TMLRect : NSObject <TMLRectJSExports, NSCopying>
+@interface TMLRect : NSObject
 {
     struct CGRect _rect;
 }

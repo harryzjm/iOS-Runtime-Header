@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIItemListTableDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSString, SKUIItemListTableViewController, SKUISyncWishlistOperation, SKUIWishlist, UIBarButtonItem, _UIBackdropView, _UIContentUnavailableView;
 @protocol SKUIWishlistDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIWishlistViewController <SKUIItemListTableDelegate>
+@interface SKUIWishlistViewController : SKUIViewController
 {
     _UIBackdropView *_backdropView;
     id <SKUIWishlistDelegate> _delegate;

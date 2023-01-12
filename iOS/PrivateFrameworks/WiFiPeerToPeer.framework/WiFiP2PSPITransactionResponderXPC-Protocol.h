@@ -7,7 +7,7 @@
 #import <WiFiPeerToPeer/NSObject-Protocol.h>
 
 @protocol WiFiP2PSPITransactionResponderXPC <NSObject>
-- (void)endTransaction:(long long)arg1;
+- (void)endTransaction:(long long)arg1 completionHandler:(void (^)(long long))arg2;
 - (void)beginTransaction:(long long)arg1 completionHandler:(void (^)(long long))arg2;
 @end
 

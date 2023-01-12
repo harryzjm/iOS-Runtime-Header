@@ -12,15 +12,11 @@
     NSArray *_segmentsForCurrentPage;
     unsigned long long _pageIndex;
     _Bool _isDrawingNote;
-    _Bool _printingNotes;
-    _Bool _printingRuledLines;
     _Bool _printingDivider;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isPrintingDivider) _Bool printingDivider; // @synthesize printingDivider=_printingDivider;
-@property(nonatomic, getter=isPrintingRuledLines) _Bool printingRuledLines; // @synthesize printingRuledLines=_printingRuledLines;
-@property(nonatomic, getter=isPrintingNotes) _Bool printingNotes; // @synthesize printingNotes=_printingNotes;
 - (void)p_drawNotesForNode:(id)arg1 index:(unsigned long long)arg2 forRect:(struct CGRect)arg3 notesIndex:(unsigned long long)arg4 scaledClipRect:(struct CGRect)arg5 context:(struct CGContext *)arg6;
 - (void)p_drawRuledLinesForRect:(struct CGRect)arg1 pageRect:(struct CGRect)arg2 numberOfLines:(unsigned long long)arg3 context:(struct CGContext *)arg4;
 - (void)p_drawDividerLineForRect:(struct CGRect)arg1 pageRect:(struct CGRect)arg2 context:(struct CGContext *)arg3;
@@ -29,6 +25,8 @@
 - (void)p_segmentSlideNodesWithUnscaledClipRect:(struct CGRect)arg1 viewScale:(double)arg2;
 - (id)p_segmentsForPage:(unsigned long long)arg1;
 - (_Bool)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(_Bool)arg4;
+- (struct CGRect)rectBySubtractingPageMarginsFromRect:(struct CGRect)arg1;
+- (void)createPage:(_Bool)arg1 inContext:(struct CGContext *)arg2 withRect:(struct CGRect)arg3;
 - (void)p_segmentSlidesIfNecessary;
 - (_Bool)incrementPage;
 - (unsigned long long)pageCount;

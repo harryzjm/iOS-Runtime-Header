@@ -10,14 +10,14 @@ __attribute__((visibility("hidden")))
 @interface CUFileServerSession : NSObject
 {
     char _dirPath[1024];
-    CDStruct_56034278 *_dirStream;
+    CDStruct_84ed1706 *_dirStream;
     unsigned long long _lastRequestTicks;
     unsigned long long _sessionID;
 }
 
 @property(nonatomic) unsigned long long sessionID; // @synthesize sessionID=_sessionID;
 @property(nonatomic) unsigned long long lastRequestTicks; // @synthesize lastRequestTicks=_lastRequestTicks;
-@property(nonatomic) CDStruct_56034278 *dirStream; // @synthesize dirStream=_dirStream;
+@property(nonatomic) CDStruct_84ed1706 *dirStream; // @synthesize dirStream=_dirStream;
 
 @end
 

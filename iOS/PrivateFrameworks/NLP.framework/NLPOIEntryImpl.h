@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NLP/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface NLPOIEntryImpl : PBCodable <NSCopying>
+@interface NLPOIEntryImpl : PBCodable
 {
     NSString *_category;
     NSString *_domain;

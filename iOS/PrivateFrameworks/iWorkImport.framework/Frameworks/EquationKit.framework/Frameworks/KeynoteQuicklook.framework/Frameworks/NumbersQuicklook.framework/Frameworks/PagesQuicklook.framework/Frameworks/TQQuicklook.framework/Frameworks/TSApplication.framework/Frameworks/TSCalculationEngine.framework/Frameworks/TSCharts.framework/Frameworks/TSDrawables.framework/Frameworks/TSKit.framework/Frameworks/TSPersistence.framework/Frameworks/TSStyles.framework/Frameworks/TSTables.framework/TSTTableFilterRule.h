@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSTFormulaPredicate;
 
-@interface TSTTableFilterRule : NSObject <NSCopying>
+@interface TSTTableFilterRule : NSObject
 {
     _Bool _doesNotNeedFormulaRewriteForImport;
     TSTFormulaPredicate *_predicate;
@@ -37,6 +35,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)formula;
 - (id)description;
+- (id)copyByRewritingFromTableModel:(id)arg1 toTableModel:(id)arg2;
 - (id)copyByRewritingToGeometricFormWithTableInfo:(id)arg1 containsBadRef:(_Bool *)arg2;
 - (id)copyByRewritingToUidFormWithTableInfo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

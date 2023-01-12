@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSData, NSString;
+
 @protocol _TtP10PegasusKit12PGSDaemonXPC_
+- (void)reportPegasusFeedbackWithPayloadData:(NSData *)arg1 forUseragent:(NSString *)arg2;
+- (void)getIsDeviceSetupCompleteWithReply:(void (^)(long long, NSError *))arg1;
 - (void)getBagDataWithReply:(void (^)(NSData *, NSError *))arg1;
 - (void)getQueryContextDataWithReply:(void (^)(NSData *, NSError *))arg1;
 @end

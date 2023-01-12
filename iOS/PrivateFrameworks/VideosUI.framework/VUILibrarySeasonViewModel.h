@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
 @class NSString;
 @protocol VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface VUILibrarySeasonViewModel : NSObject <NSCopying>
+@interface VUILibrarySeasonViewModel : NSObject
 {
     NSObject<VUIMediaEntityIdentifier> *_seasonIdentifier;
     unsigned long long _type;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSOperationQueue *_opQueue;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_clientBundleIdentifier;
+    NSString *_clientPersonaIdentifier;
     struct OpaqueFigCFWeakReferenceHolder *_weakAssertion;
     long long _doomTime;
     _Bool _doomCheckScheduled;
@@ -27,13 +28,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int assertionCount; // @synthesize assertionCount=_assertionCount;
 @property(nonatomic) _Bool doomCheckScheduled; // @synthesize doomCheckScheduled=_doomCheckScheduled;
 @property(nonatomic) long long doomTime; // @synthesize doomTime=_doomTime;
+@property(readonly, nonatomic) NSString *clientPersonaIdentifier; // @synthesize clientPersonaIdentifier=_clientPersonaIdentifier;
 @property(readonly, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(readonly, nonatomic) NSOperationQueue *opQueue; // @synthesize opQueue=_opQueue;
 @property(readonly, nonatomic) id <NSURLSessionDataDelegate> dataDelegate; // @synthesize dataDelegate=_dataDelegate;
 @property(readonly, nonatomic) NSURLSession *session; // @synthesize session=_session;
 - (void)dealloc;
-- (id)initWithClientBundleIdentifier:(id)arg1 dispatchQueue:(id)arg2;
+- (id)initWithClientBundleIdentifier:(id)arg1 clientPersonaIdentifier:(id)arg2 dispatchQueue:(id)arg3;
 - (void)debug;
 - (struct FigOpaqueAssertion *)acquireAssertion;
 

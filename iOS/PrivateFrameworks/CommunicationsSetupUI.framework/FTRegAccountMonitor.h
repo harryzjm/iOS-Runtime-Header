@@ -15,7 +15,9 @@ __attribute__((visibility("hidden")))
     IMServiceImpl *_service;
     NSArray *_accounts;
     FTRegConnectionHandler *_connectionHandler;
-    CDStruct_34e8bc21 _monitorFlags;
+    struct {
+        unsigned int listeningForNotifications:1;
+    } _monitorFlags;
 }
 
 - (void).cxx_destruct;

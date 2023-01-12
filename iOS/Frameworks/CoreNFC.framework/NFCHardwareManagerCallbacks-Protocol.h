@@ -7,6 +7,6 @@
 #import <CoreNFC/NSObject-Protocol.h>
 
 @protocol NFCHardwareManagerCallbacks <NSObject>
-- (void)hardwareFailedToLoad;
+- (void)hwStateDidChange:(unsigned int)arg1;
 @end
 

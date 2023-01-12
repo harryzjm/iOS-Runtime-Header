@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIStatusBarItem.h"
+
 @class _UIStatusBarSensorActivityView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarSensorActivityItem
+@interface _UIStatusBarSensorActivityItem : _UIStatusBarItem
 {
     _UIStatusBarSensorActivityView *_sensorActivityIndicator;
 }

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+@class NSArray, NSData;
 
 __attribute__((visibility("hidden")))
 @interface _LTAudioData : NSObject
@@ -16,16 +16,18 @@ __attribute__((visibility("hidden")))
     long long _packetCount;
     NSData *_packetDescriptions;
     NSData *_rawData;
+    NSArray *_wordTimingInfo;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *wordTimingInfo; // @synthesize wordTimingInfo=_wordTimingInfo;
 @property(readonly, nonatomic) NSData *packetDescriptions; // @synthesize packetDescriptions=_packetDescriptions;
 @property(readonly, nonatomic) long long packetCount; // @synthesize packetCount=_packetCount;
 @property(readonly, nonatomic) NSData *rawData; // @synthesize rawData=_rawData;
 @property(readonly, nonatomic) struct AudioStreamBasicDescription asbd; // @synthesize asbd=_asbd;
 - (void)writeToURL:(id)arg1;
 - (_Bool)_populateWithOpusData:(id)arg1;
-- (id)initWithASBD:(struct AudioStreamBasicDescription)arg1 rawData:(id)arg2;
+- (id)initWithASBD:(struct AudioStreamBasicDescription)arg1 rawData:(id)arg2 wordTimingInfo:(id)arg3;
 
 @end
 

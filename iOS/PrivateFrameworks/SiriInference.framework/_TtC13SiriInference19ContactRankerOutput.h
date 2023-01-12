@@ -11,12 +11,6 @@
 @interface _TtC13SiriInference19ContactRankerOutput : _TtCs12_SwiftObject
 {
     MISSING_TYPE *provider;
-    MISSING_TYPE *$__lazy_storage_$_scores;
-    MISSING_TYPE *$__lazy_storage_$_scoresShapedArray;
-    MISSING_TYPE *$__lazy_storage_$_showToUser;
-    MISSING_TYPE *$__lazy_storage_$_showToUserShapedArray;
-    MISSING_TYPE *$__lazy_storage_$_topMatchIsConfident;
-    MISSING_TYPE *$__lazy_storage_$_topMatchIsConfidentShapedArray;
 }
 
 - (id)featureValueForName:(id)arg1;

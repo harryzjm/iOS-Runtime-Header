@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDKeyedObject-Protocol.h>
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDCollection, EDDifferentialStyle, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDTableStyleElement : NSObject <EDKeyedObject, NSCopying>
+@interface EDTableStyleElement : NSObject
 {
     EDCollection *mDifferentialStyles;
     int mType;

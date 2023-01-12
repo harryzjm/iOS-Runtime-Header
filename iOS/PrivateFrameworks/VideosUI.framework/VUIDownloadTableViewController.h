@@ -6,14 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UITableViewDelegate-Protocol.h>
-#import <VideosUI/VUIDownloadDataSourceDelegate-Protocol.h>
-#import <VideosUI/VUIDownloadEntityTableViewCellDelegate-Protocol.h>
-
 @class NSDictionary, NSMutableArray, NSString, UIAlertController, UIBarButtonItem, UITableView, UITableViewDiffableDataSource, VUIDownloadDataSource, VUIDownloadEntityTableViewCell, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadTableViewController : UIViewController <UITableViewDelegate, VUIDownloadDataSourceDelegate, VUIDownloadEntityTableViewCellDelegate>
+@interface VUIDownloadTableViewController : UIViewController
 {
     UITableView *_downloadEntitiesTableView;
     VUIDownloadDataSource *_downloadDataSource;

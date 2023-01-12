@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/TSKCompatibilityDelegate-Protocol.h>
-
 @class NSString;
 
-@interface KNBaseCompatibilityDelegate : NSObject <TSKCompatibilityDelegate>
+@interface KNBaseCompatibilityDelegate : NSObject
 {
 }
 

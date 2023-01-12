@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIMissingItemDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSMapTable, NSString, SKUIGridComponent, SKUIMissingItemLoader, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SKUIBrickGridPageSection <SKUIArtworkRequestDelegate, SKUIMissingItemDelegate>
+@interface SKUIBrickGridPageSection : SKUIStorePageSection
 {
     NSMapTable *_artworkRequests;
     double _baseHeight;

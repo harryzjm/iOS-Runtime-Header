@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UISelectionBandVisualProviding-Protocol.h>
-
 @class NSString, UIPointerInteraction, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UISelectionBandVisualProvider_iOS : NSObject <UIPointerInteractionDelegate, _UISelectionBandVisualProviding>
+@interface _UISelectionBandVisualProvider_iOS : NSObject
 {
     UIView *_view;
     UIPointerInteraction *_ptrInteraction;

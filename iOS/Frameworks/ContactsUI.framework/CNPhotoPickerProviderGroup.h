@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNPhotoPickerProviderItemDelegate-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSString;
 @protocol CNPhotoPickerProviderGroupDelegate, CNScheduler;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerProviderGroup : NSObject <CNPhotoPickerProviderItemDelegate>
+@interface CNPhotoPickerProviderGroup : NSObject
 {
     _Bool _allowAddItem;
     _Bool _showCircleMask;

@@ -11,11 +11,12 @@ __attribute__((visibility("hidden")))
 {
     VKNavCameraController *_navCameraController;
     double _startZoomScale;
-    Unit_3d259e8a _startPitch;
+    Unit_5669e52e _startPitch;
     VKTimedAnimation *_tapZoomAnimation;
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)updatePitch:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitch:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)beginPitch:(struct CGPoint)arg1;

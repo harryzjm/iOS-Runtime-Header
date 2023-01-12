@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UITableViewDelegate-Protocol.h>
-
 @class NSString, SKUIReportAConcernConfiguration, SKUIReportAConcernDetailsDataSource, SKUIReportAConcernMetadata, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIReportAConcernDetailsViewController : UIViewController <UITableViewDelegate>
+@interface SKUIReportAConcernDetailsViewController : UIViewController
 {
     CDUnknownBlockType _completion;
     SKUIReportAConcernMetadata *_metadata;

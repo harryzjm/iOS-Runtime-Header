@@ -6,12 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-#import <ScreenTimeSettingsUI/CNUIFamilyMemberContactsPresentation-Protocol.h>
-
 @class CNUIFamilyMemberWhitelistedContactsController, NSMutableArray, NSString, PSSpecifier, STCommunicationLimits;
 
 __attribute__((visibility("hidden")))
-@interface STCommunicationLimitsDowntimeDetailListController : PSListController <CNUIFamilyMemberContactsPresentation>
+@interface STCommunicationLimitsDowntimeDetailListController : PSListController
 {
     _Bool _syncingWhitelistedContacts;
     PSSpecifier *_allowedCommunicationGroupSpecifier;

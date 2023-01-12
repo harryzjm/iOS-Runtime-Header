@@ -9,6 +9,7 @@
 @class NSDictionary, NSError, NSURL, SOAuthorizationCredential;
 
 @protocol SOHostExtensionContextProtocol <SOExtensionContextProtocol>
+- (void)requestReauthenticationWithCompletion:(void (^)(unsigned long long))arg1;
 - (void)canOpenURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)openURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)authorizationDidCompleteWithCredential:(SOAuthorizationCredential *)arg1 error:(NSError *)arg2;

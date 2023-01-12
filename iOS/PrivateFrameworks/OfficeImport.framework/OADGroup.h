@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OfficeImport/OADDrawableContainer-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface OADGroup <OADDrawableContainer>
+@interface OADGroup
 {
     struct CGRect mLogicalBounds;
     NSMutableArray *mChildren;

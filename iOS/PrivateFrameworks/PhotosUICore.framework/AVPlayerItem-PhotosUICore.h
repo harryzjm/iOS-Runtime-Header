@@ -7,6 +7,6 @@
 #import <AVFoundation/AVPlayerItem.h>
 
 @interface AVPlayerItem (PhotosUICore)
-- (_Bool)px_loadedTimeRangesContainTime:(CDStruct_1b6d18a9)arg1;
+- (_Bool)px_loadedTimeRangesContainTime:(CDStruct_198678f7)arg1;
 @end
 

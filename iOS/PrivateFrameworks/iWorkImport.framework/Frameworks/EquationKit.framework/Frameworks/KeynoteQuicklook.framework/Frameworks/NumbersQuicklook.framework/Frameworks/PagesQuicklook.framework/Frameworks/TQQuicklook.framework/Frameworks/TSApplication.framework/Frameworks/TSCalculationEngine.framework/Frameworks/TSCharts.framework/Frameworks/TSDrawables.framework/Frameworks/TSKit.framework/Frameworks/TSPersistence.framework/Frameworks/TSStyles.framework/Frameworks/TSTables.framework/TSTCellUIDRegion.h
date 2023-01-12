@@ -17,7 +17,9 @@
 - (void).cxx_destruct;
 - (void)saveToMessage:(void *)arg1;
 - (id)initFromMessage:(const void *)arg1;
-- (vector_87ea8040)subRangesOfCellCount:(unsigned long long)arg1;
+- (vector_87ea8040)rowBasedSubRangesOfCellCount:(unsigned long long)arg1;
+- (void)enumerateColumnUIDUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateRowUIDUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateCellUIDUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateCellUIDRangesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isEmpty;
@@ -25,6 +27,7 @@
 - (id)pruneAgainstTable:(id)arg1;
 - (id)cellRegionFromTable:(id)arg1;
 - (id)initWithCellUIDRangeVector:(const void *)arg1;
+- (id)initWithCellUIDRange:(void *)arg1;
 
 @end
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSFileCoordinationRetainedAccess-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface NSFileCoordinatorReacquisitionBlockCompletion : NSObject <NSFileCoordinationRetainedAccess>
+@interface NSFileCoordinatorReacquisitionBlockCompletion : NSObject
 {
     NSObject<OS_dispatch_group> *group;
 }

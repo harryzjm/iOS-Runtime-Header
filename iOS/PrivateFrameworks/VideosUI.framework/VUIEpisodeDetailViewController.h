@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <VideosUI/VUIEpisodeDetailViewDelegate-Protocol.h>
-
 @class NSString, UITapGestureRecognizer, VUIEpisodeDetailView, VUIMediaItem, VUIViewControllerContentPresenter;
 @protocol VUIEpisodeDetailViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIEpisodeDetailViewController : UIViewController <UIGestureRecognizerDelegate, VUIEpisodeDetailViewDelegate>
+@interface VUIEpisodeDetailViewController : UIViewController
 {
     VUIMediaItem *_mediaItem;
     VUIViewControllerContentPresenter *_contentPresenter;

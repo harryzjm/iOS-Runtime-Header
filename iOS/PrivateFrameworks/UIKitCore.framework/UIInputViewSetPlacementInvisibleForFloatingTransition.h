@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface UIInputViewSetPlacementInvisibleForFloatingTransition <NSSecureCoding>
+@interface UIInputViewSetPlacementInvisibleForFloatingTransition
 {
     _Bool _isFloatingAssistantView;
 }
@@ -15,6 +13,7 @@ __attribute__((visibility("hidden")))
 + (id)placementWithPlacement:(id)arg1 forFloatingAssistantViewTransition:(_Bool)arg2;
 + (id)placementWithPlacement:(id)arg1;
 - (_Bool)isFloatingAssistantView;
+- (id)assistantView;
 - (_Bool)showsEditItems;
 - (_Bool)isHiddenForFloatingTransition;
 

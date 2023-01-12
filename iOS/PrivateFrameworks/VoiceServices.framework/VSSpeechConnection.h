@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface VSSpeechConnection : NSObject
 {
+    _Bool _keepActive;
     NSXPCConnection *_xpcConnection;
     NSString *_identifier;
     id <VSSpeechConnectionDelegate> _delegate;
@@ -23,10 +24,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *threadSafeQueue; // @synthesize threadSafeQueue=_threadSafeQueue;
 @property(retain, nonatomic) VSSpeechConnectionDelegateWrapper *delegateWrapper; // @synthesize delegateWrapper=_delegateWrapper;
 @property(nonatomic) __weak id <VSSpeechConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool keepActive; // @synthesize keepActive=_keepActive;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)killDaemon;
 - (void)invokeDaemon:(CDUnknownBlockType)arg1;
-- (void)cancelDownloads:(CDUnknownBlockType)arg1;
 - (void)forwardStreamObject:(id)arg1;
 - (void)getVoiceInfoForLanguageCode:(id)arg1 name:(id)arg2 footprint:(long long)arg3 gender:(long long)arg4 type:(long long)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)getVoiceResourceForLanguage:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -47,8 +48,9 @@ __attribute__((visibility("hidden")))
 - (void)startSpeechRequest:(id)arg1;
 - (void)endAudioPowerUpdate;
 - (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
+- (void)startPhonemesRequest:(id)arg1 phonemeSystem:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)stopVoicePreview;
-- (void)startVoicePreviewForLanguageCode:(id)arg1 voiceName:(id)arg2 previewType:(long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)startVoicePreviewRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)isSystemSpeakingOnBehalfOfCurrentConnection;
 - (_Bool)isSystemSpeaking;
 - (id)availableFootprintsForVoice:(id)arg1 languageCode:(id)arg2;
@@ -56,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)estimateDurationWithRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)queryPhaticCapabilityWithRequest:(id)arg1;
 - (void)prewarmIfNeededWithRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)updateWithConnectionIdentifier:(id)arg1;
+- (void)updateWithConnectionIdentifier:(id)arg1 keepActive:(_Bool)arg2;
 - (id)currentAudioRequest;
 - (id)currentRequest;
 - (void)_connectionInvalidated;

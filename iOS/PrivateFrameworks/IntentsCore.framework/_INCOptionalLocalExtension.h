@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IntentsCore/INCLocalExtending-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _INCOptionalLocalExtension : NSObject <INCLocalExtending>
+@interface _INCOptionalLocalExtension : NSObject
 {
 }
 

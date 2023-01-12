@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AnnotationKit/AKColorChooserUserInterfaceItem-Protocol.h>
-
 @class NSString, UIColor;
 
-@interface AKMinimalColorChooserUserInterfaceItem <AKColorChooserUserInterfaceItem>
+@interface AKMinimalColorChooserUserInterfaceItem
 {
     UIColor *_color;
 }

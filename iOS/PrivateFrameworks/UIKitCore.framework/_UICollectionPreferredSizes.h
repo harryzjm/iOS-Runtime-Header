@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UICollectionPreferredSizes-Protocol.h>
 
 @class NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSSet, NSString;
 @protocol _UICollectionLayoutAuxillaryOffsets;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionPreferredSizes : NSObject <_UICollectionPreferredSizes, NSCopying>
+@interface _UICollectionPreferredSizes : NSObject <NSCopying>
 {
     NSMutableDictionary *_sizes;
     NSMutableIndexSet *_indexes;
@@ -25,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <_UICollectionLayoutAuxillaryOffsets> supplementaryBaseOffsets; // @synthesize supplementaryBaseOffsets=_supplementaryBaseOffsets;
 @property(nonatomic) long long frameOffset; // @synthesize frameOffset=_frameOffset;
+- (id)copyByDirtyingPreferredSizes;
 - (id)preferredSizesApplyingFrameOffset:(long long)arg1 supplementaryBaseOffsets:(id)arg2;
 - (_Bool)containsSupplementaryOffsets:(id)arg1;
 - (void)addPreferredSize:(id)arg1 forSupplementaryWithElementKind:(id)arg2 atIndex:(long long)arg3;

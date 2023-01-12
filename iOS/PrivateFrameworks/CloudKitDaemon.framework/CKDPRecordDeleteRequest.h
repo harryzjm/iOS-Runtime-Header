@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecordIdentifier, NSMutableArray, NSString;
 
-@interface CKDPRecordDeleteRequest : PBRequest <NSCopying>
+@interface CKDPRecordDeleteRequest : PBRequest
 {
     NSString *_etag;
     NSMutableArray *_pluginFields;

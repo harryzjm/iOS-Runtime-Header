@@ -6,24 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-#import <HealthExperienceUI/CNAvatarViewControllerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI19MeContactAvatarView : UIView <CNAvatarViewControllerDelegate>
+@interface _TtC18HealthExperienceUI19MeContactAvatarView : UIView
 {
     MISSING_TYPE *defaultAvatarImageSymbolConfiguration;
-    MISSING_TYPE *contactsAvatarViewController;
-    MISSING_TYPE *defaultAvatarImageView;
     MISSING_TYPE *avatarSize;
+    MISSING_TYPE *publisherImageView;
+    MISSING_TYPE *screenScale;
+    MISSING_TYPE *monogramRightToLeft;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)didUpdateContentForAvatarViewController:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)meContactCacheDidUpdateWithNotification:(id)arg1;
 
 @end
 

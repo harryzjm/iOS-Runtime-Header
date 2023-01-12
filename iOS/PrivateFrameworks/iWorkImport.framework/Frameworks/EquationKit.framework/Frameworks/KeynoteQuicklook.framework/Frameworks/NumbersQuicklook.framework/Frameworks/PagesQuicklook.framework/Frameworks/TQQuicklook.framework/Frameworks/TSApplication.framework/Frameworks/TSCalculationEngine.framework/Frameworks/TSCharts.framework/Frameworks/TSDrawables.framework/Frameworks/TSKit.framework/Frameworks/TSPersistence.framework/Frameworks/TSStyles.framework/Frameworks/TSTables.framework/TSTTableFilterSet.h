@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSPCopying-Protocol.h>
-
 @class NSArray;
 
-@interface TSTTableFilterSet : TSPObject <TSPCopying>
+@interface TSTTableFilterSet : TSPObject
 {
     int _type;
     _Bool _isEnabled;
@@ -64,6 +62,7 @@
 - (_Bool)containsFilterRulesInUIDForm;
 - (id)downgradeFilterSetForBackwardCompatWithLocale:(id)arg1;
 - (id)p_downgradedFilterRuleForListItem:(id)arg1 fromPredicate:(id)arg2;
+- (id)copyByRewritingFilterRulesWithContext:(id)arg1 fromTableModel:(id)arg2 toTableModel:(id)arg3;
 - (id)copyByRewritingFilterRulesToGeometricFormWithContext:(id)arg1 withTableInfo:(id)arg2;
 - (id)copyByRewritingFilterRulesToUidFormWithContext:(id)arg1 withTableInfo:(id)arg2;
 - (id)copyWithContext:(id)arg1;

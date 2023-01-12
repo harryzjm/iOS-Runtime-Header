@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MetalKit/MDLMeshBufferZone-Protocol.h>
-
 @class MTKMeshBufferAllocator, NSMutableOrderedSet, NSString;
 @protocol MDLMeshBufferAllocator, MTLBuffer;
 
 __attribute__((visibility("hidden")))
-@interface MTKMeshBufferZone : NSObject <MDLMeshBufferZone>
+@interface MTKMeshBufferZone : NSObject
 {
     NSMutableOrderedSet *_buffers;
     _Bool _destroyInvoked;

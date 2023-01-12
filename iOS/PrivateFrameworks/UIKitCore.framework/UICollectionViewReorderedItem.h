@@ -14,7 +14,9 @@ __attribute__((visibility("hidden")))
     UICollectionViewCell *_cell;
     NSIndexPath *_originalIndexPath;
     NSIndexPath *_targetIndexPath;
+    _Bool _isUncommitted;
     _Bool _pinned;
+    NSIndexPath *_lastCommittedIndexPath;
     CDUnknownBlockType _pinningTest;
     struct CGPoint _pinnedPreviousContentOffset;
 }
@@ -23,11 +25,15 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType pinningTest; // @synthesize pinningTest=_pinningTest;
 @property(nonatomic) struct CGPoint pinnedPreviousContentOffset; // @synthesize pinnedPreviousContentOffset=_pinnedPreviousContentOffset;
 @property(nonatomic) _Bool pinned; // @synthesize pinned=_pinned;
+@property(readonly, nonatomic) _Bool isUncommitted; // @synthesize isUncommitted=_isUncommitted;
+@property(readonly, nonatomic) NSIndexPath *lastCommittedIndexPath; // @synthesize lastCommittedIndexPath=_lastCommittedIndexPath;
 @property(retain, nonatomic) NSIndexPath *targetIndexPath; // @synthesize targetIndexPath=_targetIndexPath;
 @property(retain, nonatomic) NSIndexPath *originalIndexPath; // @synthesize originalIndexPath=_originalIndexPath;
 @property(readonly, nonatomic) UICollectionViewCell *cell; // @synthesize cell=_cell;
 - (_Bool)isNOOP;
 - (id)description;
+- (void)commitTargetIndexPath;
+- (id)expectedCellIndexPath;
 - (id)initWithCell:(id)arg1 indexPath:(id)arg2;
 
 @end

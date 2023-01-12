@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSPointerArray;
+@class NSNumber, NSPointerArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VUIInAppMessagingRegistry : NSObject
 {
+    NSString *activeButtonDidChangeNotificationName;
+    NSString *hasFavoriteTeamsDidChangeNotificationName;
     NSNumber *_hasFavoriteTeams;
     NSPointerArray *_buttonViews;
 }
@@ -19,7 +21,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSPointerArray *buttonViews; // @synthesize buttonViews=_buttonViews;
 @property(readonly, nonatomic) NSNumber *hasFavoriteTeams; // @synthesize hasFavoriteTeams=_hasFavoriteTeams;
-- (void)registerHasFavorites:(_Bool)arg1;
+- (void)postNotificationFavoriteTeamsDidChange;
+- (void)register:(long long)arg1;
 - (void)_notifyButtonsChangedAction;
 - (void)_notifyButtonsChanged;
 - (void)unRegisterDownloadButton:(id)arg1;

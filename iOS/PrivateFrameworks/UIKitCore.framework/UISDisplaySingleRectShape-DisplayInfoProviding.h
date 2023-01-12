@@ -6,11 +6,9 @@
 
 #import <UIKitServices/UISDisplaySingleRectShape.h>
 
-#import <UIKitCore/_UIDisplayInfoRectShape-Protocol.h>
-
 @class NSString;
 
-@interface UISDisplaySingleRectShape (DisplayInfoProviding) <_UIDisplayInfoRectShape>
+@interface UISDisplaySingleRectShape (DisplayInfoProviding)
 @property(readonly, nonatomic) NSString *displayShapeName;
 
 // Remaining properties

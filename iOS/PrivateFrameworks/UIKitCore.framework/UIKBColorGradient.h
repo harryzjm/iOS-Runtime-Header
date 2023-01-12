@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)gradientWithUIColor:(id)arg1;
+- (void).cxx_destruct;
 - (struct CGGradient *)CGGradient;
-- (void)dealloc;
 - (id)initWithUIColor:(id)arg1;
 
 @end

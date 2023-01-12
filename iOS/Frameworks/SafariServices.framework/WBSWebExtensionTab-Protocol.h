@@ -10,7 +10,7 @@
 @protocol WBSWebExtensionWindow;
 
 @protocol WBSWebExtensionTab <NSObject>
-@property(retain, nonatomic) NSDictionary *extensionIdentifierToDynamicallyInjectedStyleSheets;
+@property(copy, nonatomic) NSDictionary *extensionIdentifierToDynamicallyInjectedStyleSheets;
 @property(readonly, nonatomic) WBSTranslationContext *translationContext;
 @property(nonatomic) double zoomFactor;
 @property(readonly, nonatomic) unsigned long long changedPropertiesForOnUpdatedWebExtensionEvent;

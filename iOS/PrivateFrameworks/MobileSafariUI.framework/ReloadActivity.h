@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)performActivityWithTabDocument:(id)arg1;
+- (long long)actionType;
 - (id)activityType;
 - (id)systemImageNameWithTabDocument:(id)arg1;
 - (id)activityTitleWithTabDocument:(id)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-
 @class NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface _UILabelMarqueeAnimationDelegate : NSObject <CAAnimationDelegate>
+@interface _UILabelMarqueeAnimationDelegate : NSObject
 {
     _Bool _started;
     _Bool _updated;

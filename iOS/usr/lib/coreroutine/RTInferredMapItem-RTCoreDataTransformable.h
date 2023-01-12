@@ -6,11 +6,9 @@
 
 #import <CoreRoutine/RTInferredMapItem.h>
 
-#import <coreroutine/RTCoreDataReadable-Protocol.h>
-
 @class NSString;
 
-@interface RTInferredMapItem (RTCoreDataTransformable) <RTCoreDataReadable>
+@interface RTInferredMapItem (RTCoreDataTransformable)
 + (id)createWithLearnedVisitMO:(id)arg1;
 + (id)createWithManagedObject:(id)arg1;
 

@@ -7,7 +7,7 @@
 #import <UIKitCore/UIEditable-Protocol.h>
 #import <UIKitCore/UITableConstantsTableProviding-Protocol.h>
 
-@class UIColor, UIScrollView;
+@class UIColor, UIScrollView, UITableViewHeaderFooterView;
 
 @protocol UITable <UIEditable, UITableConstantsTableProviding>
 @property(readonly, nonatomic, getter=_multiselectCheckmarkColor) UIColor *multiselectCheckmarkColor;
@@ -38,6 +38,7 @@
 @property(readonly, nonatomic) _Bool allowsMultipleSelection;
 @property(readonly, nonatomic, getter=_numberOfSections) long long numberOfSections;
 @property(readonly, nonatomic, getter=_scrollView) UIScrollView *scrollView;
+- (void)_headerFooterDidInvalidateIntrinsicContentSize:(UITableViewHeaderFooterView *)arg1;
 - (_Bool)_shouldHaveFooterViewForSection:(long long)arg1;
 - (_Bool)_shouldHaveHeaderViewForSection:(long long)arg1;
 - (long long)_numberOfRowsInSection:(long long)arg1;

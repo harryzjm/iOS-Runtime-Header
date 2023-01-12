@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/NSObject-Protocol.h>
+@class HMAccessory, HMMediaSystem, HUMediaSystemEditorViewController;
 
-@class HMAccessory, HMMediaSystem, HUItemTableViewController;
-@protocol HUPresentationDelegateHost;
-
-@protocol HUMediaSystemEditorViewControllerDelegate <NSObject>
-- (void)mediaSystemEditor:(HUItemTableViewController<HUPresentationDelegateHost> *)arg1 didAbortMediaSystemCreationDueToAccessoryNeedingUpdate:(HMAccessory *)arg2;
-- (void)mediaSystemEditor:(HUItemTableViewController<HUPresentationDelegateHost> *)arg1 didCreateMediaSystem:(HMMediaSystem *)arg2;
+@protocol HUMediaSystemEditorViewControllerDelegate
+- (void)mediaSystemEditor:(HUMediaSystemEditorViewController *)arg1 didAbortDueTo:(HMAccessory *)arg2;
+- (void)mediaSystemEditor:(HUMediaSystemEditorViewController *)arg1 didCreate:(HMMediaSystem *)arg2;
 @end
 

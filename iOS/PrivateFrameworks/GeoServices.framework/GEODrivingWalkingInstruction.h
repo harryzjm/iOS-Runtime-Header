@@ -6,28 +6,30 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOFormattedString, NSMutableArray, PBDataReader, PBUnknownFields;
+@class GEOFormattedString, GEOPBTransitArtwork, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEODrivingWalkingInstruction : PBCodable <NSCopying>
+@interface GEODrivingWalkingInstruction : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOPBTransitArtwork *_artwork;
     NSMutableArray *_continueCommands;
-    GEOFormattedString *_distance;
     NSMutableArray *_mergeCommands;
     NSMutableArray *_normalCommands;
+    GEOFormattedString *_title;
+    GEOFormattedString *_waypointInfo;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
+        unsigned int read_artwork:1;
         unsigned int read_continueCommands:1;
-        unsigned int read_distance:1;
         unsigned int read_mergeCommands:1;
         unsigned int read_normalCommands:1;
+        unsigned int read_title:1;
+        unsigned int read_waypointInfo:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }

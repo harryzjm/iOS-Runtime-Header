@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FMCoreLite/FMQueueingStrategy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _FMBoundedQueueingStrategy : NSObject <FMQueueingStrategy>
+@interface _FMBoundedQueueingStrategy : NSObject
 {
     unsigned long long _capacity;
     CDUnknownBlockType _overflowHandler;

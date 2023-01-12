@@ -9,6 +9,8 @@
 @class NSString;
 
 @protocol MURatingPercentageViewModel <NSObject>
+@property(readonly, nonatomic) _Bool hasPercentage;
+@property(readonly, nonatomic) _Bool hasSubtitle;
 @property(readonly, nonatomic) unsigned long long numberOfRatingsUsedForScore;
 @property(readonly, nonatomic) double maxScore;
 @property(readonly, nonatomic) double score;

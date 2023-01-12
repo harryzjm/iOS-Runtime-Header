@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LocationSupport/CLSettingsManagerProtocol-Protocol.h>
+#import "CLSettingsManagerInternal.h"
 
 @class NSString;
 
-@interface CLSettingsManager <CLSettingsManagerProtocol>
+@interface CLSettingsManager : CLSettingsManagerInternal
 {
     id _notificationObserver;
 }

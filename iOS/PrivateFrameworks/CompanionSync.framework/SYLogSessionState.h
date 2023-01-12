@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CompanionSync/NSCopying-Protocol.h>
-
 @class NSDictionary, NSMutableArray, NSString, SYLogErrorInfo;
 
 __attribute__((visibility("hidden")))
-@interface SYLogSessionState : PBCodable <NSCopying>
+@interface SYLogSessionState : PBCodable
 {
     double _fullSessionTimeout;
     unsigned long long _maxConcurrentMessages;

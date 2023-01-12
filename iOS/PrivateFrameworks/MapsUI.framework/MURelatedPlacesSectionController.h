@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-#import <MapsUI/MUPlaceTilesListViewDelegate-Protocol.h>
-#import <MapsUI/MUPlaceTilesViewDelegate-Protocol.h>
+#import "MUPlaceSectionController.h"
 
 @class GEORelatedPlaceList, GEORelatedPlaceModuleConfiguration, MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceTilesListView, MUPlaceTilesView, MURelatedPlaceSectionControllerConfiguration, NSArray, NSString, UIView, UIViewController;
 @protocol MKMapServiceTicket, MUInfoCardAnalyticsDelegate, MURelatedPlacesSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MURelatedPlacesSectionController <MUPlaceTilesViewDelegate, MUPlaceTilesListViewDelegate, MUPlaceSectionControlling>
+@interface MURelatedPlacesSectionController : MUPlaceSectionController
 {
     id <MKMapServiceTicket> _ticket;
     NSArray *_mapItemList;
@@ -28,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MURelatedPlacesSectionControllerDelegate> relatedPlacesDelegate; // @synthesize relatedPlacesDelegate=_relatedPlacesDelegate;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (id)_moduleTitle;
 - (void)_populateAnalyticsModule:(id)arg1;
@@ -62,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

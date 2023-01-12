@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <TSKit/TSKSosBase.h>
 
 @class NSArray, TNChartVectorWrapper, TSCEFormulaObject, TSCEValueGrid;
 
-@interface TNChartFormulaWrapper : NSObject
+@interface TNChartFormulaWrapper : TSKSosBase
 {
     TSCEFormulaObject *_formulaObject;
     long long _cachedNumberOfValues;
@@ -47,6 +47,7 @@
 - (id)plotwiseLabelValuesWithEvaluationContext:(void *)arg1 byRow:(_Bool)arg2 shouldSkipHiddenData:(_Bool)arg3;
 - (vector_85027ebd)outputVectorValuesWithChromeCoords:(void *)arg1 shouldSkipHiddenData:(_Bool)arg2;
 - (unsigned long long)numberOfGridValuesWithCalcEngine:(id)arg1 inChart:(const struct TSKUIDStruct *)arg2 byRow:(_Bool)arg3 shouldSkipHiddenData:(_Bool)arg4;
+- (void)enumerateOutputGridForSeries:(unsigned long long)arg1 withContext:(void *)arg2 byRow:(_Bool)arg3 shouldSkipHiddenData:(_Bool)arg4 withBlock:(CDUnknownBlockType)arg5;
 - (id)outputGridVectorForSeries:(unsigned long long)arg1 withContext:(void *)arg2 byRow:(_Bool)arg3 shouldSkipHiddenData:(_Bool)arg4;
 - (id)gridLabelValueAtIndex:(unsigned long long)arg1 withEvaluationContext:(void *)arg2 byRow:(_Bool)arg3 shouldSkipHiddenData:(_Bool)arg4;
 - (id)outputGrid:(void *)arg1 shouldSkipHiddenData:(_Bool)arg2;

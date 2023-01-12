@@ -27,6 +27,7 @@
 - (_Bool)invalidateAssertionsDueToCPUUsageViolationForProcessIdentifier:(RBSProcessIdentifier *)arg1;
 - (_Bool)invalidateAssertionWithIdentifier:(RBSAssertionIdentifier *)arg1;
 - (_Bool)invalidateAssertion:(RBAssertion *)arg1;
+- (_Bool)invalidateAssertionFromOriginator:(RBSProcessIdentifier *)arg1 sync:(_Bool)arg2 withIdentifier:(RBSAssertionIdentifier *)arg3;
 - (_Bool)invalidateAssertionFromOriginator:(RBSProcessIdentifier *)arg1 withIdentifier:(RBSAssertionIdentifier *)arg2;
 - (void)acquireAssertionWithContext:(RBAssertionAcquisitionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)commitBatchWithContext:(RBAssertionBatchContext *)arg1 completion:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg2;

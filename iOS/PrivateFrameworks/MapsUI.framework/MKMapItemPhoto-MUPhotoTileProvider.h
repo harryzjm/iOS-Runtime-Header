@@ -6,11 +6,9 @@
 
 #import <MapKit/MKMapItemPhoto.h>
 
-#import <MapsUI/MUPhotoTileViewModel-Protocol.h>
-
 @class NSString;
 
-@interface MKMapItemPhoto (MUPhotoTileProvider) <MUPhotoTileViewModel>
+@interface MKMapItemPhoto (MUPhotoTileProvider)
 - (void)configureWithSize:(struct CGSize)arg1 imageProvider:(CDUnknownBlockType)arg2;
 
 // Remaining properties

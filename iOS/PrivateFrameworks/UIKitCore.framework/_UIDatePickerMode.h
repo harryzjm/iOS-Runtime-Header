@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (id)dateComponentsByRestrictingSelectedComponents:(id)arg1 withLastManipulatedColumn:(long long)arg2;
 - (_Bool)_monthExists:(long long)arg1 inYear:(long long)arg2;
 - (long long)_numberOfDaysInDateComponents:(id)arg1;
+@property(readonly, nonatomic) _Bool hasSelectedDateComponents;
 - (void)_updateSelectedDateComponentsWithNewValueInComponent:(long long)arg1 usingSelectionBarValue:(_Bool)arg2;
 - (void)resetSelectedDateComponentsWithValuesUnderSelectionBars;
 - (void)updateSelectedDateComponentsWithNewValueInComponent:(long long)arg1;

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSError.h>
 
-#import <EmailFoundation/EFPubliclyDescribable-Protocol.h>
-
 @class NSString;
 
-@interface NSError (EmailFoundationAdditions) <EFPubliclyDescribable>
+@interface NSError (EmailFoundationAdditions)
 + (id)ef_temporarilyUnavailableError;
 + (id)ef_connectionInterruptedError;
 + (id)ef_notSupportedError;

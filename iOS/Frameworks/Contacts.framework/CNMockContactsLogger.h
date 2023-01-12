@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNContactsLogger-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNMockContactsLogger : NSObject <CNContactsLogger>
+@interface CNMockContactsLogger : NSObject
 {
 }
 
@@ -41,8 +39,8 @@ __attribute__((visibility("hidden")))
 - (void)fetchEncodedContactsMatchingPredicate:(id)arg1 unifyResults:(_Bool)arg2 keysToFetch:(id)arg3;
 - (void)fetchContactsProgressivelyMatchingPredicate:(id)arg1 unifyResults:(_Bool)arg2 keysToFetch:(id)arg3;
 - (void)fetchContactsMatchingPredicate:(id)arg1 unifyResults:(_Bool)arg2 keysToFetch:(id)arg3;
-- (void)noAccessToContactsWithError:(id)arg1;
-- (void)contactsAccessWasGranted:(_Bool)arg1;
+- (void)contactsAccessWasDeniedWithError:(id)arg1;
+- (void)contactsAccessWasGranted;
 - (void)requestAuthorizationWasDenied;
 - (void)accessAuthorizationStatusWasDenied;
 - (void)postingNotification:(CDUnknownBlockType)arg1;

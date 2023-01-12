@@ -9,7 +9,6 @@
 @class _TtC14WorkflowEditor34ParameterValuePickerViewController;
 
 @protocol _TtP14WorkflowEditor42ParameterValuePickerViewControllerDelegate_ <NSObject>
-- (void)parameterValuePickerDidClearWithViewController:(_TtC14WorkflowEditor34ParameterValuePickerViewController *)arg1;
 - (void)parameterValuePickerDidCancelWithViewController:(_TtC14WorkflowEditor34ParameterValuePickerViewController *)arg1;
 - (void)parameterValuePickerDidStartSelectingMagicVariableWithViewController:(_TtC14WorkflowEditor34ParameterValuePickerViewController *)arg1;
 - (void)parameterValuePickerWithViewController:(_TtC14WorkflowEditor34ParameterValuePickerViewController *)arg1 didFinishWithParameterState:(id)arg2;

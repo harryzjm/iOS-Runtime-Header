@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EventKit/CADPredicateValidator-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface EKPredicateEvaluator : NSObject <CADPredicateValidator>
+@interface EKPredicateEvaluator : NSObject
 {
 }
 

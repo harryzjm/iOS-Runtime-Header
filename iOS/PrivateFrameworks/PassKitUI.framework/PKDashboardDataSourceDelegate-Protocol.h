@@ -10,6 +10,7 @@
 @protocol PKDashboardItem;
 
 @protocol PKDashboardDataSourceDelegate <NSObject>
+- (void)reloadNavigationBarAnimated:(_Bool)arg1;
 - (void)updateContent;
 - (void)reloadSections:(NSIndexSet *)arg1;
 - (void)deleteSections:(NSIndexSet *)arg1;

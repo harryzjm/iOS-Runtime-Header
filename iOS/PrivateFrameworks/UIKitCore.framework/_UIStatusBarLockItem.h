@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
+#import "_UIStatusBarItem.h"
 
 @class NSString, NSTimer, _UIExpandingGlyphsView, _UIStatusBarLockView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarLockItem <_UIBasicAnimationFactory>
+@interface _UIStatusBarLockItem : _UIStatusBarItem
 {
     _Bool _showsLock;
     _UIStatusBarLockView *_lockView;

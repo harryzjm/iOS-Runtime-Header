@@ -11,12 +11,14 @@
 @interface _TtC16SiriAudioSupport21MediaPlaybackProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *account;
+    MISSING_TYPE *subscription;
     MISSING_TYPE *availability;
     MISSING_TYPE *encoding;
     MISSING_TYPE *assistantDiscovery;
     MISSING_TYPE *executor;
     MISSING_TYPE *watchSupport;
     MISSING_TYPE *featureFlags;
+    MISSING_TYPE *sharedContextProvider;
 }
 
 @end

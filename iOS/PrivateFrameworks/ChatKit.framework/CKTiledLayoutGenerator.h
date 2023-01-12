@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool scannedBatchHasCaption; // @synthesize scannedBatchHasCaption=_scannedBatchHasCaption;
 @property(retain, nonatomic) id scannedBatchID; // @synthesize scannedBatchID=_scannedBatchID;
 @property(nonatomic) long long scanLocation; // @synthesize scanLocation=_scanLocation;
-@property(nonatomic) CDUnknownBlockType parsedFrameBlock; // @synthesize parsedFrameBlock=_parsedFrameBlock;
+@property(copy, nonatomic) CDUnknownBlockType parsedFrameBlock; // @synthesize parsedFrameBlock=_parsedFrameBlock;
 @property(nonatomic) double roundingScale; // @synthesize roundingScale=_roundingScale;
 @property(nonatomic) long long numberOfMagneticGuidelines; // @synthesize numberOfMagneticGuidelines=_numberOfMagneticGuidelines;
 @property(copy, nonatomic) CDUnknownBlockType tileBatchIDBlock; // @synthesize tileBatchIDBlock=_tileBatchIDBlock;
@@ -64,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)scanAnyTile:(CDStruct_1417b155 *)arg1;
 - (_Bool)scanTile:(CDStruct_1417b155 *)arg1 passingTest:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _Bool isAtEnd;
-@property(nonatomic) CKTiledLayoutGeneratorScanState *scanState;
+@property(retain, nonatomic) CKTiledLayoutGeneratorScanState *scanState;
 - (void)didParseTiles;
 - (_Bool)parseNextTiles;
 - (void)willParseTiles;

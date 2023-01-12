@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreImage/_CIFilterProperties-Protocol.h>
+#import "CIFilter.h"
 
 @class CIImage, CIVector;
 
 __attribute__((visibility("hidden")))
-@interface CIToneCurve <_CIFilterProperties>
+@interface CIToneCurve : CIFilter
 {
     CIImage *inputImage;
     CIVector *inputPoint0;

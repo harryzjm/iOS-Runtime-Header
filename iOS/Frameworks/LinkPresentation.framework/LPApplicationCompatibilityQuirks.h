@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)supportsLPLinkViewAutolayout;
 + (_Bool)needsFreshWKUserContentController;
 
 @end

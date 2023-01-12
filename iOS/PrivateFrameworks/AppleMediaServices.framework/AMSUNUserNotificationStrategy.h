@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSUserNotificationStrategy-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AMSUNUserNotificationStrategy : NSObject <AMSUserNotificationStrategy>
+@interface AMSUNUserNotificationStrategy : NSObject
 {
 }
 

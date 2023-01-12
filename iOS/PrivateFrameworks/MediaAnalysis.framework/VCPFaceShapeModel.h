@@ -25,11 +25,11 @@ __attribute__((visibility("hidden")))
     int *_boundaryVertices;
     _Bool *_boundaryLandmarkValidity;
     struct {
-        float x;
-        float y;
-        int index;
-    } _chPts[200];
-    _Bool _chPtSelected[200];
+        float _field1;
+        float _field2;
+        int _field3;
+    } *_chPts;
+    _Bool *_chPtSelected;
     _Bool _boundaryLmUpdated;
     int _chCount;
     float *_curBlendshapes;
@@ -76,7 +76,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_14d5dc5e)getPose;
 - (void)calculatePosePnpSolver:(int)arg1;
 - (_Bool)optimizeProjectionMatrix:(int)arg1 tracking:(_Bool)arg2 firstPass:(_Bool)arg3;
-- (matrix_3c21c366)getPoseParam;
+- (matrix_116be4a2)getPoseParam;
 - (void)calculateIdentityCoefficients:(float *)arg1 extrinsicMatrix:(float *)arg2 pts2D:(float *)arg3 exprWeights:(float *)arg4 lm3DMeanBlendshapes:(float *)arg5 lm3DComponents:(float *)arg6 maxIter:(int)arg7;
 - (void)calculateBlendshapeWeights:(float *)arg1 prevWeights:(float *)arg2 lmBlendshapes:(float *)arg3 maxIter:(int)arg4;
 - (_Bool)fitOneImage:(float *)arg1;

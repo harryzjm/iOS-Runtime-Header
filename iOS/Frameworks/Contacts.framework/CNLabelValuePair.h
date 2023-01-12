@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNLabelValuePair : NSObject <NSCopying>
+@interface CNLabelValuePair : NSObject
 {
     NSString *_label;
     id _value;

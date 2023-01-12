@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TVFocusableTextView.h"
+
 @class IKViewElement;
 
 __attribute__((visibility("hidden")))
-@interface _TVZoomableTextView
+@interface _TVZoomableTextView : TVFocusableTextView
 {
     double _maxHeight;
     double _maxWidth;

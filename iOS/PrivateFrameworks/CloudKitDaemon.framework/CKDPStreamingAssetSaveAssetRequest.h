@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKDPStreamingAssetSaveAssetRequest : PBRequest <NSCopying>
+@interface CKDPStreamingAssetSaveAssetRequest : PBRequest
 {
     long long _requestedSize;
     long long _uploadedSize;

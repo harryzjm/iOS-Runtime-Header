@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafari/SFTransitionCoordinatorAnimation-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SFTransitionCoordinatorKeyframeAnimation : NSObject <SFTransitionCoordinatorAnimation>
+@interface SFTransitionCoordinatorKeyframeAnimation : NSObject
 {
     CDUnknownBlockType _animations;
     double _duration;

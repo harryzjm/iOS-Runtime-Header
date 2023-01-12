@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface TSUOnce : NSObject <NSCopying>
+@interface TSUOnce : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _didPerformOnce;

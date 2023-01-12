@@ -8,16 +8,10 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
-#pragma mark Named Structures
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    long long start;
-    long long duration;
-} CDStruct_ef5fcbe6;
+    long long _field1;
+    long long _field2;
+} CDStruct_912cb5d2;
 

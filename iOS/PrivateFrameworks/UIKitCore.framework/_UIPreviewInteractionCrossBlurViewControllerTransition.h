@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIPreviewInteractionViewControllerTransition-Protocol.h>
-
 @class NSString, UITargetedPreview;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionCrossBlurViewControllerTransition : NSObject <_UIPreviewInteractionViewControllerTransition>
+@interface _UIPreviewInteractionCrossBlurViewControllerTransition : NSObject
 {
     struct CGRect _initialPlatterRect;
     struct CGRect _finalPlatterRect;

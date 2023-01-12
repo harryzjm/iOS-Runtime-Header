@@ -8,5 +8,6 @@
 
 @interface HKCountrySet (GlucoseEnhancedCharting)
 + (id)localAvailabilityForGlucoseEnhancedCharting;
++ (id)localAvailabilityForWristTemperatureMeasurements;
 @end
 

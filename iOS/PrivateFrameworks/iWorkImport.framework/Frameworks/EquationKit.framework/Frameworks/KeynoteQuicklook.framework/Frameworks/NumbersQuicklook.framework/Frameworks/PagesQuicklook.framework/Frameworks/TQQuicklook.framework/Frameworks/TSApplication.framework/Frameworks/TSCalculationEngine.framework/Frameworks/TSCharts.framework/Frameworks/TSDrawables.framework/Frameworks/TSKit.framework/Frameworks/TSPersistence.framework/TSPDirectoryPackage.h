@@ -19,7 +19,7 @@
 - (id)newRawDataReadChannelAtRelativePath:(id)arg1;
 - (id)dataAtRelativePath:(id)arg1 allowDecryption:(_Bool)arg2 error:(id *)arg3;
 - (id)packageEntryInfoAtRelativePath:(id)arg1 error:(id *)arg2;
-- (id)newDataStorageAtRelativePath:(id)arg1 decryptionInfo:(id)arg2 packageURL:(id)arg3 lastModificationDate:(out id *)arg4;
+- (id)newDataStorageAtRelativePath:(id)arg1 decryptionInfo:(id)arg2 materializedLength:(unsigned long long)arg3 packageURL:(id)arg4 lastModificationDate:(out id *)arg5;
 - (void)copyComponent:(id)arg1 toPackageURL:(id)arg2 packageLocator:(id)arg3 zipFileWriter:(id)arg4 encryptionKey:(id)arg5 canLink:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)newRawReadChannelForComponentLocator:(id)arg1 isStoredOutsideObjectArchive:(_Bool)arg2 error:(id *)arg3;
 - (id)packageEntryInfoForComponentLocator:(id)arg1 isStoredOutsideObjectArchive:(_Bool)arg2;

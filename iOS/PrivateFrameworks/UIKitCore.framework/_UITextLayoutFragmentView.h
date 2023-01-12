@@ -4,30 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSTextLayoutFragment;
+#import "UIView.h"
+
+@class NSString, NSTextLayoutFragment;
 
 __attribute__((visibility("hidden")))
-@interface _UITextLayoutFragmentView
+@interface _UITextLayoutFragmentView : UIView
 {
     NSTextLayoutFragment *_layoutFragment;
     struct CGPoint _containerOrigin;
     struct CGSize _containerSize;
-    struct CGSize _layoutSize;
     struct CGRect _clipRect;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) struct CGRect clipRect; // @synthesize clipRect=_clipRect;
-@property(nonatomic) struct CGSize layoutSize; // @synthesize layoutSize=_layoutSize;
 @property(nonatomic) struct CGSize containerSize; // @synthesize containerSize=_containerSize;
 @property(nonatomic) struct CGPoint containerOrigin; // @synthesize containerOrigin=_containerOrigin;
 @property(readonly, nonatomic) NSTextLayoutFragment *layoutFragment; // @synthesize layoutFragment=_layoutFragment;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)enumerateTextAttachmentViewsUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) struct CGRect clipFrame;
+- (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)_updateGeometry;
-- (id)initWithLayoutFragment:(id)arg1 containerOrigin:(struct CGPoint)arg2 containerSize:(struct CGSize)arg3;
+- (id)initWithLayoutFragment:(id)arg1 containerOrigin:(struct CGPoint)arg2 containerSize:(struct CGSize)arg3 clipRect:(struct CGRect)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

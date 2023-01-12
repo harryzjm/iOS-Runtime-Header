@@ -6,14 +6,14 @@
 
 #import <Foundation/NSArray.h>
 
-#import <Home/HFPropertyListConvertible-Protocol.h>
-#import <Home/InnerContentHash-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (HFUtilities) <HFPropertyListConvertible, InnerContentHash>
+@interface NSArray (HFUtilities)
 + (id)hf_arrayWithNumbersInRange:(struct _NSRange)arg1 stride:(unsigned long long)arg2;
+- (id)hf_prettyFullDescription;
+- (id)hf_prettyExpensiveDescription;
 - (id)hf_prettyDescription;
+- (id)hf_firstMostCommonObject;
 - (unsigned long long)computeHashFromContents;
 
 // Remaining properties

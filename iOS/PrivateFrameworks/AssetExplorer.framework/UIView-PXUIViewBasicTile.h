@@ -6,12 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <AssetExplorer/PXReusableObject-Protocol.h>
-#import <AssetExplorer/PXUIViewBasicTile-Protocol.h>
-
 @class NSString;
 
-@interface UIView (PXUIViewBasicTile) <PXUIViewBasicTile, PXReusableObject>
+@interface UIView (PXUIViewBasicTile)
 - (void)prepareForReuse;
 - (void)becomeReusable;
 - (void)didApplyGeometry:(struct PXTileGeometry)arg1 withUserData:(id)arg2;

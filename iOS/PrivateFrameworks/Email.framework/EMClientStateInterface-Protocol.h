@@ -9,9 +9,10 @@
 @class NSArray, NSProgress;
 
 @protocol EMClientStateInterface <NSObject>
-- (void)setClientIsRunningTests:(_Bool)arg1;
+@property(copy) NSArray *visibleMailboxObjectIDs;
+@property _Bool isRunningTests;
+@property _Bool isForeground;
+- (void)setStateForDemoMode:(void (^)(_Bool, NSError *))arg1;
 - (NSProgress *)giveBoostWithCompletionBlock:(void (^)(void))arg1;
-- (void)setClientIsInForeground:(_Bool)arg1;
-- (void)setCurrentlyVisibleMailboxObjectIDs:(NSArray *)arg1;
 @end
 

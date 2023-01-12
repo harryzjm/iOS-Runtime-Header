@@ -6,13 +6,16 @@
 
 #import <WorkflowKit/WFDatabaseProxyHost-Protocol.h>
 
-@class NSSet, WFDialogAttributions, WFWorkflowReference;
+@class NSSet, NSString, WFDialogAttribution, WFDialogRequest, WFWorkflowReference, WFWorkflowRunningContext;
 
 @protocol WFOutOfProcessWorkflowControllerHost <WFDatabaseProxyHost>
+- (void)presenterRequestedWorkflowPauseForContext:(WFWorkflowRunningContext *)arg1 dialogRequest:(WFDialogRequest *)arg2;
 - (void)runnerWillExit;
 - (void)getVaultItemsAccessWithCompletion:(void (^)(NSSet *))arg1;
 - (void)requestSandboxExtensionForAccessResources:(NSSet *)arg1 completion:(void (^)(NSSet *, NSSet *, NSError *))arg2;
 - (void)quarantineWorkflowWithReference:(WFWorkflowReference *)arg1;
-- (void)workflowDidStartFromWorkflowReference:(WFWorkflowReference *)arg1 attributions:(WFDialogAttributions *)arg2;
+- (void)workflowWantsToToastSessionKitSessionWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool))arg2;
+- (void)workflowDidDecideRunningProgressIsAllowed:(_Bool)arg1 dialogAttribution:(WFDialogAttribution *)arg2;
+- (void)workflowDidStartRunning;
 @end
 

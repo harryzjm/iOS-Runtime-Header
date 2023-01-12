@@ -7,7 +7,7 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (TransparencyDate)
-+ (double)currentTimeMs;
-- (_Bool)isEqualWithinOneMillisecond:(id)arg1;
++ (double)kt_currentTimeMs;
+- (_Bool)kt_isEqualWithinOneMillisecond:(id)arg1;
 @end
 

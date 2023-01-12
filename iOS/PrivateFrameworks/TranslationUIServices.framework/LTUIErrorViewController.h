@@ -11,7 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)_canShowWhileLocked;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)drawCloseButton;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_updateBackground;
 - (id)initWithError:(id)arg1;

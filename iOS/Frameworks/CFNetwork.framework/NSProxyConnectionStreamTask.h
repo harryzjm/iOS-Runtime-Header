@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/NSStreamDelegate-Protocol.h>
-#import <CFNetwork/NSURLSessionStreamDelegate-Protocol.h>
-
 @class NSInputStream, NSObject, NSOutputStream, NSString, NSURLSessionStreamTask;
 @protocol OS_dispatch_queue;
 
-@interface NSProxyConnectionStreamTask <NSStreamDelegate, NSURLSessionStreamDelegate>
+@interface NSProxyConnectionStreamTask
 {
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _isConnected;

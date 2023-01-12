@@ -6,14 +6,17 @@
 
 #import <PencilKit/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, PKToolConfiguration;
 @protocol PKPaletteErasingTool, PKPaletteHandwritingTool, PKPaletteInkingTool;
 
 @protocol PKPaletteTool <NSObject>
 @property(readonly, nonatomic) id <PKPaletteHandwritingTool> handwritingTool;
 @property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;
 @property(readonly, nonatomic) id <PKPaletteInkingTool> inkingTool;
+@property(readonly, nonatomic) PKToolConfiguration *configuration;
+@property(readonly, nonatomic) NSString *toolVariant;
 @property(readonly, nonatomic) NSString *toolIdentifier;
+- (_Bool)isCustomTool;
 - (_Bool)isHandwritingTool;
 - (_Bool)isLassoTool;
 - (_Bool)isRulerTool;

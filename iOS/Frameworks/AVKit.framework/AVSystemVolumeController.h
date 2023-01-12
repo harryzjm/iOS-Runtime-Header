@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVVolumeController-Protocol.h>
-#import <AVKit/AVVolumeHUDAssertionDelegate-Protocol.h>
-
 @class AVSystemController, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVSystemVolumeController : NSObject <AVVolumeHUDAssertionDelegate, AVVolumeController>
+@interface AVSystemVolumeController : NSObject
 {
     NSObject<OS_dispatch_queue> *_systemControllerQueue;
     _Bool _observingSystemController;

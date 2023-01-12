@@ -10,6 +10,6 @@
 @protocol SXTextSourceDataSource;
 
 @protocol SXDataTableTextSourceFactory <NSObject>
-- (SXDataTableTextSource *)textSourceWithFormattedText:(SXFormattedText *)arg1 indexPath:(CDStruct_2fea82da)arg2 dataSource:(id <SXTextSourceDataSource>)arg3;
+- (SXDataTableTextSource *)textSourceWithFormattedText:(SXFormattedText *)arg1 indexPath:(CDStruct_4bcfbbae)arg2 dataSource:(id <SXTextSourceDataSource>)arg3;
 @end
 

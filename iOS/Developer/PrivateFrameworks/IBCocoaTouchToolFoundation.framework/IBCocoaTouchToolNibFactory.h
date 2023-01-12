@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBNibDataArchivingDelegate-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSKeyedArchiverDelegate-Protocol.h>
-
 @class NSArray, NSDictionary, NSString;
 
-@interface IBCocoaTouchToolNibFactory : NSObject <IBNibDataArchivingDelegate, NSKeyedArchiverDelegate>
+@interface IBCocoaTouchToolNibFactory : NSObject
 {
     NSDictionary *customClassMap;
     NSArray *objects;

@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDatabase/NSObject-Protocol.h>
+#import <CalendarDatabase/CalMigrationReadOnlyAccount-Protocol.h>
 
 @class NSString;
 
-@protocol CalMigrationAccount <NSObject>
+@protocol CalMigrationAccount <CalMigrationReadOnlyAccount>
+@property(retain, nonatomic) NSString *username;
+@property(nonatomic) _Bool authenticated;
 @property(nonatomic) _Bool visible;
+@property(nonatomic) _Bool provisionedForCalendarsDataClass;
 @property(nonatomic) _Bool enabledForCalendarsDataClass;
 @property(retain, nonatomic) NSString *accountDescription;
 @property(readonly, nonatomic) _Bool dirty;
+- (void)setPassword:(NSString *)arg1;
 - (void)setAuthenticationTypeNone;
 - (void)setAuthenticationTypeParent;
 - (void)setAccountProperty:(id)arg1 forKey:(NSString *)arg2;
 - (id)accountPropertyForKey:(NSString *)arg1;
-- (NSString *)accountTypeIdentifier;
-- (NSString *)parentAccountIdentifier;
-- (NSString *)identifier;
 @end
 

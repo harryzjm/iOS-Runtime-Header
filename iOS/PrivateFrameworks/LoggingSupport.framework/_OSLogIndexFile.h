@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LoggingSupport/_OSLogIndexTimeRangable-Protocol.h>
-
 @class NSString, _OSLogChunkFileReference, _OSLogChunkStore;
 
 __attribute__((visibility("hidden")))
-@interface _OSLogIndexFile : NSObject <_OSLogIndexTimeRangable>
+@interface _OSLogIndexFile : NSObject
 {
     _OSLogChunkFileReference *_cfr;
     _OSLogChunkStore *_cs;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NLDataProvider, NSArray, NSDictionary;
+#import "NLDataProvider.h"
+
+@class NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface NLConstrainedDataProvider
+@interface NLConstrainedDataProvider : NLDataProvider
 {
     NLDataProvider *_dataProvider;
     struct _NLConstraintParameters _parameters;

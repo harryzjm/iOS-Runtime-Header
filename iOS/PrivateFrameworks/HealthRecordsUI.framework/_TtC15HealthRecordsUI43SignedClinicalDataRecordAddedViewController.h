@@ -6,11 +6,15 @@
 
 #import <OnBoardingKit/OBWelcomeController.h>
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface _TtC15HealthRecordsUI43SignedClinicalDataRecordAddedViewController : OBWelcomeController
 {
+    MISSING_TYPE *appLaunchURL;
 }
 
+- (void).cxx_destruct;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4;
 - (void)doneButtonTapped;
 - (void)viewDidLoad;

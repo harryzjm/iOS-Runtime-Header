@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UINavigationController.h"
+
 @class OBPrivacyPresenter;
 @protocol _UIDictationPrivacySheetControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIDictationPrivacySheetController
+@interface _UIDictationPrivacySheetController : UINavigationController
 {
     id <_UIDictationPrivacySheetControllerDelegate> _privacyDelegate;
     OBPrivacyPresenter *_privacyPresenter;

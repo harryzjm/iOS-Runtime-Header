@@ -11,6 +11,7 @@
 
 @protocol PXGAssetBadgeDecorationSource <PXGLayoutContentSource>
 - (struct PXAssetBadgeInfo)assetBadgeInfoForAsset:(id <PXDisplayAsset>)arg1 atSpriteIndex:(unsigned int)arg2 inLayout:(PXGLayout *)arg3;
+- (_Bool)wantsFileSizeBadgesInLayout:(PXGLayout *)arg1;
 - (_Bool)wantsInteractiveFavoriteBadgesInLayout:(PXGLayout *)arg1;
 - (_Bool)wantsAssetBadgeDecorationsInLayout:(PXGLayout *)arg1;
 

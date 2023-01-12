@@ -19,5 +19,7 @@
 - (void)switcherViewController:(CKBrowserSwitcherViewController *)arg1 didSelectPluginAtIndexPath:(NSIndexPath *)arg2;
 - (void)switcherViewControllerDidSelectAppManager:(CKBrowserSwitcherViewController *)arg1 shouldRestoreAppSwitcher:(_Bool)arg2;
 - (void)switcherViewControllerDidSelectAppStore:(CKBrowserSwitcherViewController *)arg1 shouldRestoreAppSwitcher:(_Bool)arg2;
+- (void)switcherViewControllerWillDisappear:(CKBrowserSwitcherViewController *)arg1;
+- (void)switcherViewControllerWillAppear:(CKBrowserSwitcherViewController *)arg1;
 @end
 

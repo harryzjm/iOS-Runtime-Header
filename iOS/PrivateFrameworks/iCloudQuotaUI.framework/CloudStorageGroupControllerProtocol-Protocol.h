@@ -6,9 +6,10 @@
 
 #import <iCloudQuotaUI/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class ACAccount, NSDictionary;
 
 @protocol CloudStorageGroupControllerProtocol <NSObject>
++ (NSDictionary *)backupInfoHeadersForAccount:(ACAccount *)arg1;
 + (NSDictionary *)backupInfoHeaders;
 @end
 

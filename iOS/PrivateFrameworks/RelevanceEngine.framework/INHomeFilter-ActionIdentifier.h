@@ -6,11 +6,9 @@
 
 #import <Intents/INHomeFilter.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface INHomeFilter (ActionIdentifier) <REDonatedActionIdentifierProviding>
+@interface INHomeFilter (ActionIdentifier)
 - (unsigned long long)re_actionIdentifierHashValue;
 
 // Remaining properties

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CMImaging/MTLCommandBufferSPI-Protocol.h>
-
 @class CMMTLCommandQueue, InterceptConfig, NSDictionary, NSError, NSMutableDictionary, NSMutableString, NSString;
-@protocol MTLCommandBuffer, MTLCommandQueue, MTLDevice, MTLLogContainer;
+@protocol MTLCommandBuffer, MTLCommandQueue, MTLDeadlineProfile, MTLDevice, MTLLogContainer;
 
 __attribute__((visibility("hidden")))
-@interface CMMTLCommandBuffer : NSObject <MTLCommandBufferSPI>
+@interface CMMTLCommandBuffer : NSObject
 {
     NSMutableString *_cmLabel;
     CMMTLCommandQueue *_cmCommandQueue;
@@ -35,6 +33,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly) double GPUEndTime;
 @property(readonly) double GPUStartTime;
+@property(readonly, retain) id <MTLDeadlineProfile> deadlineProfile;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) id <MTLDevice> device;

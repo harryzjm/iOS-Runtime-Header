@@ -45,14 +45,7 @@ struct Message {
     struct InternalMetadata _field2;
 };
 
-struct TSWPAttributeArray {
-    CDUnknownFunctionPointerType *_field1;
-    struct TSWPAttributeRecord *_field2;
-    id _field3;
-    unsigned int :32;
-    unsigned int :8;
-    unsigned int :1;
-};
+struct TSWPAttributeArray;
 
 struct TSWPAttributeEnumerator {
     CDUnknownFunctionPointerType *_field1;
@@ -72,15 +65,6 @@ struct TSWPAttributeRecord {
         id _field1;
         struct TSWPParagraphData _field2;
     } _field2;
-};
-
-struct TSWPChangeAttributeArray {
-    CDUnknownFunctionPointerType *_field1;
-    struct TSWPAttributeRecord *_field2;
-    id _field3;
-    unsigned int :32;
-    unsigned int :8;
-    unsigned int :1;
 };
 
 struct TSWPDrawingState {
@@ -128,8 +112,6 @@ struct TSWPFontHeightInfo {
     double underlineThickness;
 };
 
-struct TSWPLineFragmentArray;
-
 struct TSWPLineRef {
     struct __CTLine *_field1;
     struct CGPoint _field2;
@@ -137,15 +119,6 @@ struct TSWPLineRef {
     unsigned long long _field4;
     struct CGAffineTransform _field5;
     unsigned long long _field6;
-};
-
-struct TSWPParagraphAttributeArray {
-    CDUnknownFunctionPointerType *_field1;
-    struct TSWPAttributeRecord *_field2;
-    id _field3;
-    unsigned int :32;
-    unsigned int :8;
-    unsigned int :1;
 };
 
 struct TSWPParagraphData {
@@ -174,17 +147,6 @@ struct TSWPParagraphData {
     } ;
 };
 
-struct TSWPParagraphEnumerator {
-    id _field1;
-    id _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-    _Bool _field7;
-    struct _NSRange _field8;
-};
-
 struct TSWPParagraphMetrics {
     _Bool _field1;
     struct CGSize _field2;
@@ -208,24 +170,8 @@ struct _NSRange {
 
 struct _TSWPCharIndexAndAffinity;
 
-struct _TSWPCharIndexAndPosition {
-    unsigned long long _field1;
-    int _field2;
-    double _field3;
-    int _field4;
-    double _field5;
-};
-
-struct __shared_weak_count;
-
 struct __tree_end_node<std::__tree_node_base<void *>*> {
     void *__left_;
-};
-
-struct atomic<unsigned long> {
-    struct __cxx_atomic_impl<unsigned long, std::__cxx_atomic_base_impl<unsigned long>> {
-        _Atomic unsigned long long __a_value;
-    } __a_;
 };
 
 struct list<unsigned long, std::allocator<unsigned long>> {
@@ -262,11 +208,6 @@ struct map<unsigned long, std::shared_ptr<TSWPParagraphTypesetter>, std::less<un
     } __tree_;
 };
 
-struct shared_ptr<TSWPLineFragmentArray> {
-    struct TSWPLineFragmentArray *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
 struct shared_ptr<TSWPParagraphTypesetter> {
     struct TSWPParagraphTypesetter *_field1;
     struct __shared_weak_count *_field2;
@@ -296,27 +237,11 @@ struct vector<TSWPAttachmentPosition, std::allocator<TSWPAttachmentPosition>> {
     } __end_cap_;
 };
 
-struct vector<TSWPDirtyRange, std::allocator<TSWPDirtyRange>> {
-    CDStruct_183601bc *__begin_;
-    CDStruct_183601bc *__end_;
-    struct __compressed_pair<TSWPDirtyRange *, std::allocator<TSWPDirtyRange>> {
-        CDStruct_183601bc *__value_;
-    } __end_cap_;
-};
-
 struct vector<TSWPParagraphMetrics, std::allocator<TSWPParagraphMetrics>> {
     struct TSWPParagraphMetrics *__begin_;
     struct TSWPParagraphMetrics *__end_;
     struct __compressed_pair<TSWPParagraphMetrics *, std::allocator<TSWPParagraphMetrics>> {
         struct TSWPParagraphMetrics *__value_;
-    } __end_cap_;
-};
-
-struct vector<_NSRange, std::allocator<_NSRange>> {
-    struct _NSRange *__begin_;
-    struct _NSRange *__end_;
-    struct __compressed_pair<_NSRange *, std::allocator<_NSRange>> {
-        struct _NSRange *__value_;
     } __end_cap_;
 };
 
@@ -353,12 +278,6 @@ struct vector<unsigned short, std::allocator<unsigned short>> {
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    _Bool _field3;
-} CDStruct_f03de906;
 
 typedef struct {
     unsigned long long _field1;
@@ -404,27 +323,6 @@ typedef struct {
     long long _field2;
 } CDStruct_9ae92562;
 
-typedef struct {
-    struct CGRect _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    _Bool _field6;
-    struct CGAffineTransform _field7;
-} CDStruct_249a8bf0;
-
-typedef struct {
-    struct CGRect _field1;
-    double _field2;
-    struct TSWPFontHeightInfo _field3;
-    double _field4;
-    struct CGRect _field5;
-    double _field6;
-    struct TSWPFontHeightInfo _field7;
-    struct CGAffineTransform _field8;
-} CDStruct_f9ea3fe9;
-
 // Template types
 typedef struct shared_ptr<TSWPParagraphTypesetter> {
     struct TSWPParagraphTypesetter *_field1;
@@ -438,12 +336,4 @@ typedef struct vector<_TSWPCharIndexAndAffinity, std::allocator<_TSWPCharIndexAn
         struct _TSWPCharIndexAndAffinity *__value_;
     } __end_cap_;
 } vector_c03e297f;
-
-typedef struct vector<unsigned long, std::allocator<unsigned long>> {
-    unsigned long long *__begin_;
-    unsigned long long *__end_;
-    struct __compressed_pair<unsigned long *, std::allocator<unsigned long>> {
-        unsigned long long *__value_;
-    } __end_cap_;
-} vector_2056c7c2;
 

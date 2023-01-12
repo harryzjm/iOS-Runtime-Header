@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TestFlightCore/TFFeedbackDataSource-Protocol.h>
-#import <TestFlightCore/TFFeedbackDataWritable-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, TFFeedbackDataContainerObserver;
 
 __attribute__((visibility("hidden")))
-@interface TFFeedbackDataContainer : NSObject <TFFeedbackDataWritable, TFFeedbackDataSource>
+@interface TFFeedbackDataContainer : NSObject
 {
     id <TFFeedbackDataContainerObserver> _observer;
     NSString *_name;

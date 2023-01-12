@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBNavigationBarTitleTransistor-Protocol.h>
-#import <OnBoardingKit/UITableViewDataSource-Protocol.h>
-#import <OnBoardingKit/UITableViewDelegate-Protocol.h>
+#import "OBPrivacyCombinedController.h"
 
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface OBPrivacyCombinedController_iOS <OBNavigationBarTitleTransistor, UITableViewDelegate, UITableViewDataSource>
+@interface OBPrivacyCombinedController_iOS : OBPrivacyCombinedController
 {
     _Bool _isUnifiedAbout;
     NSArray *_identifiers;

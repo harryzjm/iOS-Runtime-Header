@@ -6,19 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/CoreTelephonyClientCarrierBundleDelegate-Protocol.h>
-#import <SettingsCellularUI/CoreTelephonyClientDataDelegate-Protocol.h>
-#import <SettingsCellularUI/CoreTelephonyClientRegistrationDelegate-Protocol.h>
-
-@class CoreTelephonyClient, Logger, NSMutableDictionary, NSString, PSSimStatusCache;
+@class CoreTelephonyClient, NSMutableDictionary, NSString, PSSimStatusCache;
 
 __attribute__((visibility("hidden")))
-@interface PSUI5GStandaloneCache : NSObject <CoreTelephonyClientCarrierBundleDelegate, CoreTelephonyClientRegistrationDelegate, CoreTelephonyClientDataDelegate>
+@interface PSUI5GStandaloneCache : NSObject
 {
     CoreTelephonyClient *_client;
     PSSimStatusCache *_simStatusCache;
     _Bool _cacheNeedsRefresh;
-    Logger *_logger;
     NSMutableDictionary *_SACapabilityDict;
     NSMutableDictionary *_SAEnabledDict;
     NSMutableDictionary *_SAStatusDict;

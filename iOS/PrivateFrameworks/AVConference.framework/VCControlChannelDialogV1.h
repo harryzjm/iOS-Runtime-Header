@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)newDataFromMessage:(id)arg1 topic:(id)arg2 transactionID:(unsigned long long)arg3 isReliable:(_Bool)arg4 transactionDelegate:(id)arg5;
 - (_Bool)processMessageFromParticipant:(id)arg1 transactionID:(id)arg2 messageType:(unsigned int)arg3 transactionDelegate:(id)arg4;
 - (void)dealloc;
-- (id)initWithSessionID:(unsigned int)arg1 participantID:(id)arg2 optionalTopics:(id)arg3 participantConfig:(CDStruct_c24deb19 *)arg4 transactionDelegate:(id)arg5;
+- (id)initWithSessionID:(unsigned int)arg1 participantID:(id)arg2 participantUUID:(id)arg3 optionalTopics:(id)arg4 participantConfig:(CDStruct_c24deb19 *)arg5 transactionDelegate:(id)arg6;
 
 @end
 

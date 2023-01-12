@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WeatherFoundation/WFForecastRequestFormatter-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFWeatherUndergroundRequestFormatter : NSObject <WFForecastRequestFormatter>
+@interface WFWeatherUndergroundRequestFormatter : NSObject
 {
 }
 

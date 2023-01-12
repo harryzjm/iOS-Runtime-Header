@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumberFormatter.h>
 
-#import <HealthUI/HKNumberFormatter-Protocol.h>
-
 @class NSString;
 
-@interface NSNumberFormatter (HKNumberFormatter) <HKNumberFormatter>
+@interface NSNumberFormatter (HKNumberFormatter)
 - (id)stringFromNumber:(id)arg1 displayType:(id)arg2 unitController:(id)arg3;
 - (_Bool)returnsUnitWithValueForDisplay;
 

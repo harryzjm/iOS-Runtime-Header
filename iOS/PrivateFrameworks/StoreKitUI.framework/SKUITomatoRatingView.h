@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSString, SKUIAttributedStringView, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface SKUITomatoRatingView : UIView <SKUIViewElementView>
+@interface SKUITomatoRatingView : UIView
 {
     UIImageView *_imageView;
     SKUIAttributedStringView *_labelView;

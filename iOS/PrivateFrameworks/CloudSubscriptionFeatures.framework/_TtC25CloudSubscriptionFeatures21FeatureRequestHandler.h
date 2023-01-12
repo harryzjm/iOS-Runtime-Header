@@ -4,16 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC25CloudSubscriptionFeatures21FeatureRequestHandler : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC25CloudSubscriptionFeatures21FeatureRequestHandler : NSObject
 {
-    MISSING_TYPE *network;
-    MISSING_TYPE *ignoreCache;
-    MISSING_TYPE *$__lazy_storage_$_coordinator;
+    MISSING_TYPE *taskLimiters;
+    MISSING_TYPE *geoCache;
+    MISSING_TYPE *accountStore;
 }
+
+- (void).cxx_destruct;
+- (id)init;
+- (void)requestGeoClassificationFor:(id)arg1 bundleID:(id)arg2 altDSID:(id)arg3 ignoreCache:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)getFeatureEligibilityFor:(id)arg1 bundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)clearCacheAndNotify;
+- (void)requestFeatureWithId:(id)arg1 ignoreCache:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

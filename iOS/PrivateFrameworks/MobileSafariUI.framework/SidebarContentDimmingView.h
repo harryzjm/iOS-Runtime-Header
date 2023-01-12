@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <MobileSafariUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UITapGestureRecognizer;
 @protocol SidebarContentDimmingViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SidebarContentDimmingView : UIView <UIGestureRecognizerDelegate>
+@interface SidebarContentDimmingView : UIView
 {
     UITapGestureRecognizer *_dismissRecognizer;
     UIView *_dimmingView;

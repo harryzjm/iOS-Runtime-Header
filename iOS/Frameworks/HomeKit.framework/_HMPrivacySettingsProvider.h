@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/_HMPrivacySettingsProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HMPrivacySettingsProvider : NSObject <_HMPrivacySettingsProvider>
+@interface _HMPrivacySettingsProvider : NSObject
 {
     unsigned long long _cachedAuthorizationStatus;
 }

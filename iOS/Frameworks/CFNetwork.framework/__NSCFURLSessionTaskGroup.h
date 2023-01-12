@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/__NSURLSessionTaskGroupForConfiguration-Protocol.h>
-
 @class NSString, NSURLSession, NSURLSessionConfiguration;
 
-@interface __NSCFURLSessionTaskGroup : NSObject <__NSURLSessionTaskGroupForConfiguration>
+@interface __NSCFURLSessionTaskGroup : NSObject
 {
     NSURLSessionConfiguration *_groupConfiguration_ivar;
     NSURLSession *_groupSession_ivar;

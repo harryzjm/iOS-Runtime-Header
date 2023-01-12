@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WatchKit/PKServiceDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SPPluginDelegate : NSObject <PKServiceDelegate>
+@interface SPPluginDelegate : NSObject
 {
 }
 

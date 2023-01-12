@@ -8,7 +8,7 @@
 
 @interface _TtC7SwiftUIP33_87E15EBB5C00F49DEF8C638A73559D9211Coordinator
 {
-    MISSING_TYPE *configuration;
+    MISSING_TYPE *state;
     MISSING_TYPE *isViewUpdating;
 }
 

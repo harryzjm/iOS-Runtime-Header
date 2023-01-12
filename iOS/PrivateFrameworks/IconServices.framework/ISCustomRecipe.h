@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <IconServices/ISCompositorResourceProvider-Protocol.h>
-
 @class IFBundle, NSDictionary, NSString;
 @protocol ISCompositorRecipe;
 
 __attribute__((visibility("hidden")))
-@interface ISCustomRecipe : NSObject <ISCompositorResourceProvider>
+@interface ISCustomRecipe : NSObject
 {
     id <ISCompositorRecipe> _recipe;
     IFBundle *_bundle;

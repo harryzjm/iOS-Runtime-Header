@@ -10,6 +10,7 @@
 @class INPerson, INSpeakableString, NSArray, NSString;
 
 @protocol INSendMessageIntentExport <NSObject, JSExport>
+@property(nonatomic, copy) NSString *alternativeConversationIdentifier;
 @property(nonatomic, copy) NSString *notificationThreadIdentifier;
 @property(nonatomic, copy) NSArray *attachments;
 @property(nonatomic) long long effect;

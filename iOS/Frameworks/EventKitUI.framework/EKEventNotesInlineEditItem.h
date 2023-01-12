@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKCalendarItemInlineEditItem-Protocol.h>
-#import <EventKitUI/UITextViewDelegate-Protocol.h>
+#import "EKEventEditItem.h"
 
 @class CalendarNotesCell, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EKEventNotesInlineEditItem <UITextViewDelegate, EKCalendarItemInlineEditItem>
+@interface EKEventNotesInlineEditItem : EKEventEditItem
 {
     CalendarNotesCell *_cell;
     NSString *_lastTextChange;
@@ -19,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (_Bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (_Bool)textViewShouldReturn:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;

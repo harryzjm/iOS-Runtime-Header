@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/AKFormFeatureDetectorDelegate-Protocol.h>
-
 @class AKController, NSString;
 
-@interface AKFormFeatureDetectorController : NSObject <AKFormFeatureDetectorDelegate>
+@interface AKFormFeatureDetectorController : NSObject
 {
     AKController *_controller;
 }

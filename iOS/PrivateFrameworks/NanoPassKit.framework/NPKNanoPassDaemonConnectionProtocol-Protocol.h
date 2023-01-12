@@ -6,14 +6,15 @@
 
 #import <NanoPassKit/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSSet, PKAppletSubcredentialSharingInvitation, PKBarcodeEventMetadataRequest, PKPaymentPass, PKPaymentTransaction;
+@class NSSet, NSString, PKAppletSubcredentialSharingInvitation, PKBarcodeEventMetadataRequest, PKPaymentPass, PKPaymentTransaction;
 
 @protocol NPKNanoPassDaemonConnectionProtocol <PDXPCServiceExportedInterface>
+- (void)canNotifyAboutExpressModeWithCompletion:(void (^)(_Bool))arg1;
+- (void)addUserNotificationOfType:(unsigned long long)arg1 passUniqueID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)noteWillDeleteAccountsWithCompletion:(void (^)(void))arg1;
 - (void)identityPassPrearmStatusWithCompletion:(void (^)(long long))arg1;
-- (void)statusForReceivedInvitation:(PKAppletSubcredentialSharingInvitation *)arg1 completion:(void (^)(unsigned long long))arg2;
-- (void)statusForSentInvitation:(PKAppletSubcredentialSharingInvitation *)arg1 completion:(void (^)(unsigned long long))arg2;
 - (void)startSubcredentialProvisioningOnLocalDeviceMatchingInvitation:(PKAppletSubcredentialSharingInvitation *)arg1 shouldFetchAnonymizationSaltFromRemoteDevice:(_Bool)arg2 completion:(void (^)(PKPaymentPass *, NSError *))arg3;
+- (void)startSubcredentialProvisioningOnRemoteDeviceForMailboxAddress:(NSString *)arg1 activationCode:(NSString *)arg2;
 - (void)startSubcredentialProvisioningOnRemoteDeviceForInvitation:(PKAppletSubcredentialSharingInvitation *)arg1;
 - (void)canAcceptInvitationOnRemoteDeviceForInvitation:(PKAppletSubcredentialSharingInvitation *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)handleApplicationRedirectRequestOnPairedDeviceForPaymentPass:(PKPaymentPass *)arg1 transaction:(PKPaymentTransaction *)arg2;

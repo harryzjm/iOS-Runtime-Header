@@ -6,16 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/CNAvatarCardActionsViewDelegate-Protocol.h>
-#import <ContactsUI/CNCardTransitioning-Protocol.h>
-#import <ContactsUI/CNContactActionsControllerDelegate-Protocol.h>
-#import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class CNAvatarCardActionsView, CNAvatarCardController, CNContactActionsController, NSArray, NSLayoutConstraint, NSString, UIImage, UIView;
 @protocol CNAvatarCardActionListController, CNAvatarCardActionListOrbSupport, CNAvatarCardViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNAvatarCardViewController : UIViewController <CNAvatarCardActionsViewDelegate, CNContactActionsControllerDelegate, CNCardTransitioning, UIGestureRecognizerDelegate>
+@interface CNAvatarCardViewController : UIViewController
 {
     _Bool _visible;
     _Bool _hasHeader;
@@ -48,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic) __weak id <CNAvatarCardViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak CNAvatarCardController *cardController; // @synthesize cardController=_cardController;
+- (void)contactActionsController:(id)arg1 didUpdateWithMenu:(id)arg2;
 - (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;
 @property _Bool transitioningImageVisible;
 @property(readonly, nonatomic) struct CGRect transitioningImageFrame;

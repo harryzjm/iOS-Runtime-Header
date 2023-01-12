@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTRepeatedSpan : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTRepeatedSpan : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_ff130143)addObjectToBuffer:(void *)arg1;
+- (void)span_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)span_count;
+- (id)span_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *span;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct RepeatedSpan *)arg2 verify:(_Bool)arg3;

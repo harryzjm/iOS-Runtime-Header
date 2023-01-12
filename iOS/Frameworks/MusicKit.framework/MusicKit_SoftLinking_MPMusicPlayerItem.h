@@ -6,27 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class MusicKit_SoftLinking_MPArtworkCatalog, NSDate, NSDictionary, NSNumber, NSString;
+@class MusicKit_SoftLinking_CatalogID, NSDate, NSDictionary, NSNumber, NSString;
+@protocol MusicKit_SoftLinking_MPArtworkCatalog;
 
 __attribute__((visibility("hidden")))
 @interface MusicKit_SoftLinking_MPMusicPlayerItem : NSObject
 {
-    _Bool _isBackedByLibraryItem;
     _Bool _isMusicVideo;
     NSString *_identifier;
     NSString *_title;
     NSString *_subtitle;
-    NSDictionary *_artworkTokenParameters;
-    NSString *_artworkDataSourceShortDescription;
-    NSString *_artworkDataSourceIdentifier;
-    NSDictionary *_artworkDictionary;
-    NSString *_artworkVisualIdenticalityIdentifier;
-    MusicKit_SoftLinking_MPArtworkCatalog *_artworkCatalog;
-    NSString *_underlyingItemIdentifier;
+    id <MusicKit_SoftLinking_MPArtworkCatalog> _artworkCatalog;
+    MusicKit_SoftLinking_CatalogID *_underlyingItemCatalogID;
+    NSString *_underlyingItemLibraryID;
     NSString *_albumTitle;
     NSString *_artistName;
     NSString *_genreIdentifier;
     NSString *_genreName;
+    NSNumber *_duration;
     NSNumber *_trackNumber;
     NSNumber *_discNumber;
     NSDate *_releaseDate;
@@ -44,24 +41,20 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property(readonly, copy, nonatomic) NSNumber *discNumber; // @synthesize discNumber=_discNumber;
 @property(readonly, copy, nonatomic) NSNumber *trackNumber; // @synthesize trackNumber=_trackNumber;
+@property(readonly, copy, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
 @property(readonly, copy, nonatomic) NSString *genreName; // @synthesize genreName=_genreName;
 @property(readonly, copy, nonatomic) NSString *genreIdentifier; // @synthesize genreIdentifier=_genreIdentifier;
 @property(readonly, copy, nonatomic) NSString *artistName; // @synthesize artistName=_artistName;
 @property(readonly, copy, nonatomic) NSString *albumTitle; // @synthesize albumTitle=_albumTitle;
-@property(readonly, nonatomic) _Bool isBackedByLibraryItem; // @synthesize isBackedByLibraryItem=_isBackedByLibraryItem;
-@property(readonly, copy, nonatomic) NSString *underlyingItemIdentifier; // @synthesize underlyingItemIdentifier=_underlyingItemIdentifier;
-@property(readonly, nonatomic) MusicKit_SoftLinking_MPArtworkCatalog *artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
-@property(readonly, copy, nonatomic) NSString *artworkVisualIdenticalityIdentifier; // @synthesize artworkVisualIdenticalityIdentifier=_artworkVisualIdenticalityIdentifier;
-@property(readonly, copy, nonatomic) NSDictionary *artworkDictionary; // @synthesize artworkDictionary=_artworkDictionary;
-@property(readonly, copy, nonatomic) NSString *artworkDataSourceIdentifier; // @synthesize artworkDataSourceIdentifier=_artworkDataSourceIdentifier;
-@property(readonly, copy, nonatomic) NSString *artworkDataSourceShortDescription; // @synthesize artworkDataSourceShortDescription=_artworkDataSourceShortDescription;
-@property(readonly, copy, nonatomic) NSDictionary *artworkTokenParameters; // @synthesize artworkTokenParameters=_artworkTokenParameters;
+@property(readonly, nonatomic) NSString *underlyingItemLibraryID; // @synthesize underlyingItemLibraryID=_underlyingItemLibraryID;
+@property(readonly, nonatomic) MusicKit_SoftLinking_CatalogID *underlyingItemCatalogID; // @synthesize underlyingItemCatalogID=_underlyingItemCatalogID;
+@property(readonly, nonatomic) id <MusicKit_SoftLinking_MPArtworkCatalog> artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
 - (void)_initializeAdditionalAttributesWithMediaItem:(id)arg1;
-- (void)_initializeArtworkPropertiesWithMediaItem:(id)arg1;
+- (void)_initializeArtworkCatalogWithMediaItem:(id)arg1;
 - (void)_initializeBasicPropertiesWithMediaItem:(id)arg1;
 - (id)_initWithMediaItem:(id)arg1;
 

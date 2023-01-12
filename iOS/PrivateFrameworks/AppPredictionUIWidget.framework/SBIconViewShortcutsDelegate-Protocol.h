@@ -14,7 +14,7 @@
 - (_Bool)iconViewShouldIncludeUninstallShortcutItem:(SBIconView *)arg1;
 - (void)iconView:(SBIconView *)arg1 willUseContextMenuStyle:(_UIContextMenuStyle *)arg2;
 - (UIView *)containerViewForPresentingContextMenuForIconView:(SBIconView *)arg1;
-- (unsigned long long)supportedMedusaShortcutActionsForIconView:(SBIconView *)arg1;
+- (unsigned long long)supportedMultitaskingShortcutActionsForIconView:(SBIconView *)arg1;
 - (SBHRecentsDocumentExtensionProvider *)recentDocumentExtensionProviderForIconView:(SBIconView *)arg1;
 - (_Bool)iconView:(SBIconView *)arg1 shouldActivateApplicationShortcutItem:(SBSApplicationShortcutItem *)arg2 atIndex:(unsigned long long)arg3;
 - (NSURL *)applicationBundleURLForShortcutsWithIconView:(SBIconView *)arg1;

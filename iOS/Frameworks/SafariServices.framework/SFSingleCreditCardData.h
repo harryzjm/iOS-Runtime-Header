@@ -15,9 +15,12 @@ __attribute__((visibility("hidden")))
     NSString *_displayText;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *displayText; // @synthesize displayText=_displayText;
 @property(readonly, copy, nonatomic) NSString *headerText; // @synthesize headerText=_headerText;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithHeaderText:(id)arg1 displayText:(id)arg2 type:(long long)arg3 value:(id)arg4;
 
 @end

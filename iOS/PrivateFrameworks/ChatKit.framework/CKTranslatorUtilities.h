@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)chatItemIsFromSomeoneElse:(id)arg1;
 + (_Bool)shouldShowTranslateMenuOption:(id)arg1;
-- (_Bool)__im_ff_translationEnabled;
 
 @end
 

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSString, UIView, UIViewController;
+@class MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUPlaceCallToActionSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUCallToActionSectionController <MUPlaceSectionControlling>
+@interface MUCallToActionSectionController : MUPlaceSectionController
 {
     id <MUPlaceCallToActionSectionControllerDelegate> _callToActionDelegate;
 }
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 @property(readonly, nonatomic) UIView *sectionView;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

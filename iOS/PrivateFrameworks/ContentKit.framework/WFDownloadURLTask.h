@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContentKit/NSURLSessionDownloadDelegate-Protocol.h>
-
 @class NSString, NSURLRequest;
 
 __attribute__((visibility("hidden")))
-@interface WFDownloadURLTask : NSObject <NSURLSessionDownloadDelegate>
+@interface WFDownloadURLTask : NSObject
 {
     NSURLRequest *_request;
     CDUnknownBlockType _expectedByteCountHandler;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNContactViewControllerDelegate-Protocol.h>
+#import "CNContactAction.h"
 
 @class CNContact, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactUpdateExistingContactAction <CNContactViewControllerDelegate>
+@interface CNContactUpdateExistingContactAction : CNContactAction
 {
     CNContact *_existingContact;
 }

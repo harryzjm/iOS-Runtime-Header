@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIForceInteractionController-Protocol.h>
-#import <UIKitCore/UIInteractionProgressObserver-Protocol.h>
+#import "UIPercentDrivenInteractiveTransition.h"
 
 @class NSString, UIAlertController;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerInteractionController <UIForceInteractionController, UIInteractionProgressObserver>
+@interface _UIAlertControllerInteractionController : UIPercentDrivenInteractiveTransition
 {
     UIAlertController *_alertController;
     id <UIViewControllerContextTransitioning> _context;

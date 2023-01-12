@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ProxCardKit/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PRXCrossDissolveTransition : NSObject <UIViewControllerAnimatedTransitioning>
+@interface PRXCrossDissolveTransition : NSObject
 {
     CDUnknownBlockType _additionalAnimations;
     long long _cardStyle;

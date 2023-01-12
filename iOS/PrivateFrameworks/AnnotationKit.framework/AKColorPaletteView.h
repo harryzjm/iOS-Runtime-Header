@@ -6,15 +6,9 @@
 
 #import <UIKit/UIControl.h>
 
-#import <AnnotationKit/AKColorChooserUserInterfaceItem-Protocol.h>
-#import <AnnotationKit/AKInkIsUpdatable-Protocol.h>
-#import <AnnotationKit/AKUserInterfaceItem-Protocol.h>
-#import <AnnotationKit/UICollectionViewDataSource-Protocol.h>
-#import <AnnotationKit/UICollectionViewDelegate-Protocol.h>
-
 @class NSArray, NSString, UICollectionView, UIColor;
 
-@interface AKColorPaletteView : UIControl <UICollectionViewDataSource, UICollectionViewDelegate, AKInkIsUpdatable, AKUserInterfaceItem, AKColorChooserUserInterfaceItem>
+@interface AKColorPaletteView : UIControl
 {
     UIColor *_color;
     long long _scrollDirection;

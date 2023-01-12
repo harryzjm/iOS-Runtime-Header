@@ -11,13 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface ASCSkeletonLabel : UILabel
 {
-    _Bool _wantsAncesterFocusMarqueeAfterClearingSkeleton;
+    _Bool _wantsAncestorFocusMarqueeAfterClearingSkeleton;
     UIColor *_skeletonColor;
     ASCContentSkeleton *_skeleton;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool wantsAncesterFocusMarqueeAfterClearingSkeleton; // @synthesize wantsAncesterFocusMarqueeAfterClearingSkeleton=_wantsAncesterFocusMarqueeAfterClearingSkeleton;
+@property(nonatomic) _Bool wantsAncestorFocusMarqueeAfterClearingSkeleton; // @synthesize wantsAncestorFocusMarqueeAfterClearingSkeleton=_wantsAncestorFocusMarqueeAfterClearingSkeleton;
 @property(copy, nonatomic) ASCContentSkeleton *skeleton; // @synthesize skeleton=_skeleton;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawSkeletonInRect:(struct CGRect)arg1;

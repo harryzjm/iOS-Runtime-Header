@@ -6,9 +6,7 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <LinkPresentation/LPCSSText-Protocol.h>
-
-@interface NSNumber (LPExtras) <LPCSSText>
+@interface NSNumber (LPExtras)
 - (id)_lp_CSSText;
 @end
 

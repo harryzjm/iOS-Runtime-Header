@@ -6,11 +6,9 @@
 
 #import <CameraEditKit/CEKApertureButton.h>
 
-#import <CameraUI/CAMAccessibilityHUDImageProvider-Protocol.h>
-
 @class NSString;
 
-@interface CEKApertureButton (Camera) <CAMAccessibilityHUDImageProvider>
+@interface CEKApertureButton (Camera)
 - (id)imageForAccessibilityHUD;
 
 // Remaining properties

@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (id)_glyphLayerForButtonAnimationWithImage:(id)arg1;
 - (id)_invertedCircularFillGlyph:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 hasDarkVibrancy:(_Bool)arg2 isInDarkMode:(_Bool)arg3 color:(id)arg4 sendColor:(BOOL)arg5;
-- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 @end
 

@@ -6,12 +6,9 @@
 
 #import <TeaSnappy/NSObject-Protocol.h>
 
-@protocol TFContainerRegistry, TFResolver;
+@protocol TFContainerRegistry;
 
 @protocol TFAssembly <NSObject>
 - (void)loadInRegistry:(id <TFContainerRegistry>)arg1;
-
-@optional
-- (void)loadedContainer:(id <TFResolver>)arg1;
 @end
 

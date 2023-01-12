@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @protocol UIDebuggingZoomDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingZoomLoupeView
+@interface UIDebuggingZoomLoupeView : UIView
 {
     id <UIDebuggingZoomDelegate> _delegate;
     struct CGPoint _currentlyInspectedPoint;

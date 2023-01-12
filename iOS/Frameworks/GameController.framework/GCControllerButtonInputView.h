@@ -14,9 +14,8 @@ __attribute__((visibility("hidden")))
     struct CGRect _innerFrame;
     UIVisualEffectView *_background;
     UIVisualEffectView *_saturationVibrancyEffectView;
-    UIVisualEffectView *_additivevibrancyEffectView;
+    UIVisualEffectView *_additiveVibrancyEffectView;
     UIButton *_button;
-    NSString *_systemImageName;
     NSString *_text;
     GCControllerButtonInput *_buttonInput;
     UIBezierPath *_customImage;
@@ -25,14 +24,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIBezierPath *customImage; // @synthesize customImage=_customImage;
 @property(retain) GCControllerButtonInput *buttonInput; // @synthesize buttonInput=_buttonInput;
-- (void)setSystemImage;
 - (void)setText;
 - (void)triggerButtonWithValue:(float)arg1;
 - (void)setupActions;
 - (void)initUI;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSystemImageName:(id)arg1;
 - (id)initWithText:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

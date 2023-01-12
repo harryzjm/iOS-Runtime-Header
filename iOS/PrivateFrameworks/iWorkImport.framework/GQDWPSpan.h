@@ -6,7 +6,6 @@
 
 @class GQDSStyle;
 
-__attribute__((visibility("hidden")))
 @interface GQDWPSpan
 {
     GQDSStyle *mCharStyle;

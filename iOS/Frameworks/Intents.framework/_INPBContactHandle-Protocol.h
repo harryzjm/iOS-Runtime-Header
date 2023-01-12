@@ -17,10 +17,14 @@
 @property(nonatomic) _Bool suggested;
 @property(readonly, nonatomic) _Bool hasLabel;
 @property(copy, nonatomic) NSString *label;
+@property(nonatomic) _Bool hasFaceTimeType;
+@property(nonatomic) int faceTimeType;
 @property(nonatomic) _Bool hasEmergencyType;
 @property(nonatomic) int emergencyType;
 - (int)StringAsType:(NSString *)arg1;
 - (NSString *)typeAsString:(int)arg1;
+- (int)StringAsFaceTimeType:(NSString *)arg1;
+- (NSString *)faceTimeTypeAsString:(int)arg1;
 - (int)StringAsEmergencyType:(NSString *)arg1;
 - (NSString *)emergencyTypeAsString:(int)arg1;
 @end

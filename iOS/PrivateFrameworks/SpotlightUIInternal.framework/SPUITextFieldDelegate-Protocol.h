@@ -9,6 +9,7 @@
 @class UITextField;
 
 @protocol SPUITextFieldDelegate <UITextFieldDelegate>
+- (void)updateDictationButtonEnabledStatus;
 - (_Bool)currentlyPresentingWebEntity;
 - (void)highlightResultAfterUnmarkingText;
 - (void)enableDictationIfRequired;

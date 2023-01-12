@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVMessageTransformerProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVAirMessageResponse : NSObject <AVMessageTransformerProtocol>
+@interface AVAirMessageResponse : NSObject
 {
     long long _status;
     NSString *_localizedDescription;

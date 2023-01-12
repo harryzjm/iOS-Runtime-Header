@@ -11,6 +11,7 @@
 @protocol CAMStillImageCaptureDelegate <NSObject>
 
 @optional
+- (void)stillImageRequestDidUnblockResponsiveCapture:(CAMStillImageCaptureRequest *)arg1;
 - (void)stillImageRequestDidCompleteCapture:(CAMStillImageCaptureRequest *)arg1 error:(NSError *)arg2;
 - (void)stillImageRequest:(CAMStillImageCaptureRequest *)arg1 didCompleteVideoCaptureWithResult:(CAMVideoCaptureResult *)arg2;
 - (void)stillImageRequest:(CAMStillImageCaptureRequest *)arg1 didStopCapturingCTMVideoForCoordinationInfo:(CAMCaptureCoordinationInfo *)arg2;

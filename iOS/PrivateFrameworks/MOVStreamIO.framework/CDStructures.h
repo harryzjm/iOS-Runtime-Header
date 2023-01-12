@@ -7,49 +7,13 @@
 #pragma mark Named Structures
 
 struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
-};
-
-struct CGSize {
     double _field1;
     double _field2;
-};
-
-struct EncoderConfig {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    double _field5;
-    _Bool _field6;
-    _Bool _field7;
-    _Bool _field8;
-    _Bool _field9;
-    _Bool _field10;
-    int _field11;
-};
-
-struct HEVCLosslessEncoder {
-    id _field1;
-    int _field2;
-    int _field3;
+    double _field3;
     double _field4;
-    struct OpaqueVTCompressionSession *_field5;
-    struct EncoderConfig _field6;
-    CDStruct_1b6d18a9 _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    unsigned int _field10;
-    _Bool _field11;
-    _Bool _field12;
+    double _field5;
+    double _field6;
 };
-
-struct OpaqueVTCompressionSession;
 
 struct StreamRecordingData {
     struct opaqueCMFormatDescription *_field1;
@@ -67,137 +31,25 @@ struct StreamRecordingData {
     id _field13;
     id _field14;
     id _field15;
-    CDStruct_1b6d18a9 _field16;
+    CDStruct_198678f7 _field16;
     unsigned long long _field17;
     id _field18;
     long long _field19;
 };
 
-struct __tree_end_node<std::__tree_node_base<void *>*> {
-    void *__left_;
-};
-
-struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
-    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    char *_field1;
-                    unsigned long long _field2;
-                    unsigned long long _field3;
-                } _field1;
-                struct __short {
-                    char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
-                } _field2;
-                struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
-};
-
-struct map<std::string, (anonymous namespace)::MetadataRecordingData, std::less<std::string>, std::allocator<std::pair<const std::string, (anonymous namespace)::MetadataRecordingData>>> {
-    struct __tree<std::__value_type<std::string, (anonymous namespace)::MetadataRecordingData>, std::__map_value_compare<std::string, std::__value_type<std::string, (anonymous namespace)::MetadataRecordingData>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, (anonymous namespace)::MetadataRecordingData>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, (anonymous namespace)::MetadataRecordingData>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, (anonymous namespace)::MetadataRecordingData>, std::less<std::string>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
-struct map<std::string, (anonymous namespace)::StreamRecordingData, std::less<std::string>, std::allocator<std::pair<const std::string, (anonymous namespace)::StreamRecordingData>>> {
-    struct __tree<std::__value_type<std::string, (anonymous namespace)::StreamRecordingData>, std::__map_value_compare<std::string, std::__value_type<std::string, (anonymous namespace)::StreamRecordingData>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, (anonymous namespace)::StreamRecordingData>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, (anonymous namespace)::StreamRecordingData>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, (anonymous namespace)::StreamRecordingData>, std::less<std::string>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
-struct map<std::string, CMTime, std::less<std::string>, std::allocator<std::pair<const std::string, CMTime>>> {
-    struct __tree<std::__value_type<std::string, CMTime>, std::__map_value_compare<std::string, std::__value_type<std::string, CMTime>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, CMTime>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, CMTime>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, CMTime>, std::less<std::string>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
-struct map<std::string, std::map<std::string, (anonymous namespace)::MetadataRecordingData>, std::less<std::string>, std::allocator<std::pair<const std::string, std::map<std::string, (anonymous namespace)::MetadataRecordingData>>>> {
-    struct __tree<std::__value_type<std::string, std::map<std::string, (anonymous namespace)::MetadataRecordingData>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::map<std::string, (anonymous namespace)::MetadataRecordingData>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::map<std::string, (anonymous namespace)::MetadataRecordingData>>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::map<std::string, (anonymous namespace)::MetadataRecordingData>>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::map<std::string, (anonymous namespace)::MetadataRecordingData>>, std::less<std::string>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
 struct opaqueCMFormatDescription;
-
-struct vector<std::string, std::allocator<std::string>> {
-    void *__begin_;
-    void *__end_;
-    struct __compressed_pair<std::string *, std::allocator<std::string>> {
-        void *__value_;
-    } __end_cap_;
-};
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    int _field1;
+    long long _field1;
     int _field2;
-} CDStruct_1ef3fb1f;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
 
 typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
-
-typedef struct {
-    CDStruct_1b6d18a9 _field1;
-    CDStruct_1b6d18a9 _field2;
-} CDStruct_5c5366e1;
-
-// Template types
-typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
-    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    char *_field1;
-                    unsigned long long _field2;
-                    unsigned long long _field3;
-                } _field1;
-                struct __short {
-                    char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
-                } _field2;
-                struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
-} basic_string_05660eb3;
+    CDStruct_198678f7 _field1;
+    CDStruct_198678f7 _field2;
+} CDStruct_3c1748cc;
 

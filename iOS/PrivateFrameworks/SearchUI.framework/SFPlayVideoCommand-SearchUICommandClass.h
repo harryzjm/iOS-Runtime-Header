@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFPlayVideoCommand.h>
 
 @interface SFPlayVideoCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

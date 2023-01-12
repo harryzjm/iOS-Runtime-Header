@@ -6,11 +6,9 @@
 
 #import <SearchFoundation/SFCardViewDisappearFeedback.h>
 
-#import <Cards/CRCardViewDisappearanceFeedback-Protocol.h>
-
 @class NSString;
 
-@interface SFCardViewDisappearFeedback (CRFeedback) <CRCardViewDisappearanceFeedback>
+@interface SFCardViewDisappearFeedback (CRFeedback)
 @property(readonly, nonatomic) SFCardViewDisappearFeedback *backingFeedback;
 
 // Remaining properties

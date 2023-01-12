@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/UITextViewDelegate-Protocol.h>
+#import "MKTableViewCell.h"
 
 @class NSDate, NSLayoutConstraint, NSString, UIImage, UIImageView, UITextView, _MKUILabel;
 
 __attribute__((visibility("hidden")))
-@interface MKIncidentDetailCell <UITextViewDelegate>
+@interface MKIncidentDetailCell : MKTableViewCell
 {
     _MKUILabel *_titleLabel;
     UIImageView *_iconImageView;

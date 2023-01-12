@@ -6,12 +6,10 @@
 
 #import <UIKit/UILongPressGestureRecognizer.h>
 
-#import <SafariServices/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UIBarButtonItem;
 
 __attribute__((visibility("hidden")))
-@interface SFBarButtonItemLongPressGestureRecognizer : UILongPressGestureRecognizer <UIGestureRecognizerDelegate>
+@interface SFBarButtonItemLongPressGestureRecognizer : UILongPressGestureRecognizer
 {
     UIBarButtonItem *_barButtonItem;
     id _target;

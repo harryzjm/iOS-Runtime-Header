@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCH3DSharegroupDelayCheckerParent-Protocol.h>
-
 @class TSCH3DGPUSharegroup, TSCH3DSharegroupDelayChecker;
 
-@interface TSCH3DCachedSharegroupToken <TSCH3DSharegroupDelayCheckerParent>
+@interface TSCH3DCachedSharegroupToken
 {
     TSCH3DSharegroupDelayChecker *_checker;
     TSCH3DGPUSharegroup *_sharegroup;

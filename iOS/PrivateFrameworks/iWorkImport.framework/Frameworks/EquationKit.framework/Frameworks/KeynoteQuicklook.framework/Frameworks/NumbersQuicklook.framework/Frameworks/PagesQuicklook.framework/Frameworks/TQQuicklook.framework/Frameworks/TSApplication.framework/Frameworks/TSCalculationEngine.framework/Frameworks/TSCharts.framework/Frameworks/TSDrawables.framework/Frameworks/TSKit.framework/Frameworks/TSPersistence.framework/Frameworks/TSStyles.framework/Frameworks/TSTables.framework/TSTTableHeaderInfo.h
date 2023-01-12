@@ -18,15 +18,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned int numberOfCells; // @synthesize numberOfCells=_numberOfCells;
-@property(nonatomic) unsigned char hidingState; // @synthesize hidingState=_hidingState;
-@property(nonatomic) double size; // @synthesize size=_size;
-@property(retain, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=_textStyle;
-@property(retain, nonatomic) TSTCellStyle *cellStyle; // @synthesize cellStyle=_cellStyle;
-- (void)updateFromMetadata:(id)arg1;
-- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2 index:(unsigned int)arg3;
-- (id)initFromArchive:(const void *)arg1 unarchiver:(id)arg2 outIndex:(unsigned int *)arg3;
-@property(readonly, nonatomic) _Bool hasContent;
 - (id)description;
 
 @end

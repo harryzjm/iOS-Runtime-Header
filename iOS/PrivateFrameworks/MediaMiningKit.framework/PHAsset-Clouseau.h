@@ -6,18 +6,13 @@
 
 #import <Photos/PHAsset.h>
 
-#import <MediaMiningKit/CLSInvestigationItem-Protocol.h>
-#import <MediaMiningKit/CLSPHAssetSupportProtocol-Protocol.h>
-#import <MediaMiningKit/CLSPHAssetUserBehaviorProtocol-Protocol.h>
+@class CLLocation, CLSAssetFaceInformationSummary, CLSAssetProcessedSignals, CLSCurationModel, NSArray, NSDate, NSDateComponents, NSSet, NSString, VNSceneprint;
 
-@class CLLocation, CLSAssetFaceInformationSummary, NSArray, NSDate, NSDateComponents, NSSet, NSString, VNSceneprint;
-@protocol CLSAssetProcessedSignals, CLSCurationModel;
-
-@interface PHAsset (Clouseau) <CLSInvestigationItem, CLSPHAssetSupportProtocol, CLSPHAssetUserBehaviorProtocol>
+@interface PHAsset (Clouseau)
 + (void)prefetchOnAssets:(id)arg1 options:(unsigned long long)arg2 curationContext:(id)arg3;
++ (void)prefetchScenesOnAssets:(id)arg1;
 + (id)clsAllAssetsFromFetchResult:(id)arg1 prefetchOptions:(unsigned long long)arg2 curationContext:(id)arg3;
-+ (id)clsAllAssetsFromFetchResult:(id)arg1 prefetchOptions:(unsigned long long)arg2;
-+ (void)_populateAsset:(id)arg1 withPersonUUIDs:(id)arg2 consolidatedPersonUUIDs:(id)arg3 andPetUUIDs:(id)arg4;
++ (void)_populateAsset:(id)arg1 withPersonUUIDs:(id)arg2 consolidatedPersonUUIDs:(id)arg3 petUUIDs:(id)arg4;
 + (id)_filterPersonUUIDs:(id)arg1 fromPersonUUIDsByAssetUUID:(id)arg2 personUUIDByMergeCandidateUUID:(id)arg3;
 + (id)verifiedPersonLocalIdentifiersByAssetUUIDWithAssets:(id)arg1;
 + (id)_petUUIDsByAssetUUIDWithAssetUUIDs:(id)arg1 photoLibrary:(id)arg2;
@@ -51,11 +46,12 @@
 @property(readonly, nonatomic) double clsSquareCropScore;
 @property(readonly) _Bool clsHasInterestingScenes;
 @property(readonly) _Bool clsHasPoorResolution;
+- (_Bool)clsAvoidIfPossibleAsKeyItemForMemories:(_Bool)arg1 allowGuestAsset:(_Bool)arg2 reason:(id *)arg3;
 - (_Bool)clsAvoidIfPossibleAsKeyItemForMemories:(_Bool)arg1 allowGuestAsset:(_Bool)arg2;
 @property(readonly) _Bool clsIsInhabited;
 @property(readonly, nonatomic) _Bool clsIsBlurry;
+@property(readonly) unsigned long long clsBaseSceneprintVersion;
 @property(readonly, nonatomic) VNSceneprint *clsSceneprint;
-- (id)clsUnprefetchedSceneClassifications;
 - (void)clsSetSceneClassifications:(id)arg1;
 @property(readonly, copy, nonatomic) NSSet *clsSceneClassifications;
 @property(readonly, nonatomic) double clsFaceScore;
@@ -64,8 +60,9 @@
 - (double)clsVideoScore;
 @property(readonly, nonatomic) double clsAestheticScore;
 @property(readonly, nonatomic) double clsSharpnessScore;
+- (double)clsWallpaperScore;
 @property(readonly, nonatomic) double clsExposureScore;
-@property(readonly, nonatomic) id <CLSAssetProcessedSignals> clsProcessedSignals;
+@property(readonly, nonatomic) CLSAssetProcessedSignals *clsProcessedSignals;
 - (void)clsSetProcessedSignals:(id)arg1;
 @property(readonly, nonatomic) CLSAssetFaceInformationSummary *clsFaceInformationSummary;
 - (void)clsSetFaceInformationSummary:(id)arg1;
@@ -83,6 +80,9 @@
 @property(readonly, nonatomic) NSString *pl_uuid;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D pl_coordinate;
 @property(readonly, nonatomic) NSDate *pl_date;
+- (void)clsCacheIconicSceneScore:(double)arg1;
+- (double)clsIconicSceneScoreWithSceneGeography:(id)arg1;
+@property(readonly, nonatomic) _Bool clsIsInSharedLibrary;
 - (_Bool)clsIsGuestAsset;
 - (_Bool)clsIsFaceProcessed;
 - (_Bool)clsIsSceneProcessed;
@@ -106,7 +106,8 @@
 @property(readonly, nonatomic) NSDateComponents *cls_localDateComponents;
 @property(readonly, nonatomic) CLLocation *clsLocation;
 @property(readonly, nonatomic) NSString *clsIdentifier;
-@property(retain) id <CLSCurationModel> curationModel;
+@property(readonly) _Bool hasCurationModel;
+@property(retain) CLSCurationModel *curationModel;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

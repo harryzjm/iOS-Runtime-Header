@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSKChangeSourceObserver-Protocol.h>
-#import <PagesQuicklook/TSWPLayoutOwner-Protocol.h>
-
 @class NSMapTable, NSString, TPPaginatedPageController;
 
-@interface TPTextFlowLayoutController : NSObject <TSWPLayoutOwner, TSKChangeSourceObserver>
+@interface TPTextFlowLayoutController : NSObject
 {
     TPPaginatedPageController *_pageController;
     NSMapTable *_layoutMgrs;

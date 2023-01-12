@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSSecureCoding-Protocol.h>
-
 @class MISSING_TYPE, NSArray, NSString, REMeshBlendShapeModelDescriptor, REMeshSkinningModelDescriptor;
 
 __attribute__((visibility("hidden")))
-@interface REMeshModelDescriptor : NSObject <NSSecureCoding>
+@interface REMeshModelDescriptor : NSObject
 {
     unsigned int _skeletonCount;
     NSString *_name;
@@ -38,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 partIndices:(id)arg2 skeletonCount:(unsigned int)arg3 skinningModel:(id)arg4 blendShapeModel:(id)arg5 lods:(id)arg6 boundingBoxMin:boundingBoxMax: /* Error: Ran out of types for this method. */;
 - (struct MeshModel)meshModelWithMeshModelContext:(struct MeshModelContext *)arg1 inverseBindPoseBuffers:(const void *)arg2 allocator:(struct Allocator *)arg3;
-- (id)initWithResourceDefinitionModel:(const void *)arg1 payloadBuilder:(void *)arg2;
+- (id)initWithResourceDefinitionModel:(const void *)arg1 inverseBindPoseAttributes:(id)arg2 payloadBuilder:(void *)arg3;
 - (id)initWithMeshAssetModel:(const void *)arg1 inverseBindPoseAttributes:(id)arg2 payloadBuilder:(void *)arg3 deformationModelData:(void *)arg4;
 
 @end

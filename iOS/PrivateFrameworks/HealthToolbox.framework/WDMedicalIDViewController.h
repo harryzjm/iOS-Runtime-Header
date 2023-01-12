@@ -6,13 +6,10 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <HealthToolbox/HKMedicalIDViewControllerDelegate-Protocol.h>
-#import <HealthToolbox/WDUserActivityResponder-Protocol.h>
-
 @class HKMedicalIDViewController, HKNavigationController, NSString, SOSContactsManager, UIAlertController, UIScrollView, UIStackView, WDProfile, _HKMedicalIDData;
 
 __attribute__((visibility("hidden")))
-@interface WDMedicalIDViewController : UITableViewController <HKMedicalIDViewControllerDelegate, WDUserActivityResponder>
+@interface WDMedicalIDViewController : UITableViewController
 {
     _HKMedicalIDData *_medicalIDData;
     _Bool _medicalIDIsNew;

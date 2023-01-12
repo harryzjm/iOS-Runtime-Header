@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class C2MetricOptions, CKContainerID, CKOperationMMCSRequestOptions, NSArray, NSData, NSDictionary, NSNumber, NSString;
+@protocol C2NetworkingDelegate;
 
 @interface CKDMMCSRequestOptions : NSObject
 {
@@ -32,6 +33,7 @@
     unsigned long long _duetPreClearedMode;
     C2MetricOptions *_metricOptions;
     NSNumber *_cacheDeleteAvailableSpaceClass;
+    NSObject<C2NetworkingDelegate> *_networkingDelegate;
     unsigned long long _networkServiceType;
     CKOperationMMCSRequestOptions *_MMCSRequestOptions;
 }
@@ -39,6 +41,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKOperationMMCSRequestOptions *MMCSRequestOptions; // @synthesize MMCSRequestOptions=_MMCSRequestOptions;
 @property(nonatomic) unsigned long long networkServiceType; // @synthesize networkServiceType=_networkServiceType;
+@property(retain, nonatomic) NSObject<C2NetworkingDelegate> *networkingDelegate; // @synthesize networkingDelegate=_networkingDelegate;
 @property(retain, nonatomic) NSNumber *cacheDeleteAvailableSpaceClass; // @synthesize cacheDeleteAvailableSpaceClass=_cacheDeleteAvailableSpaceClass;
 @property(nonatomic) _Bool isCrossOwner; // @synthesize isCrossOwner=_isCrossOwner;
 @property(retain, nonatomic) C2MetricOptions *metricOptions; // @synthesize metricOptions=_metricOptions;

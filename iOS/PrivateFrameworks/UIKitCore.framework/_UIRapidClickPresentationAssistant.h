@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <UIKitCore/_UIClickPresentationAssisting-Protocol.h>
-
-@class NSString, NSValue, UITargetedPreview, UIView, UIViewController, _UIClickPresentation;
+@class NSString, UITargetedPreview, UIView, UIViewController, _UIClickPresentation;
 
 __attribute__((visibility("hidden")))
-@interface _UIRapidClickPresentationAssistant : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning, _UIClickPresentationAssisting>
+@interface _UIRapidClickPresentationAssistant : NSObject
 {
     int _animationCount;
     _Bool _isInteractionInitiatedDismiss;
@@ -22,11 +18,11 @@ __attribute__((visibility("hidden")))
     UITargetedPreview *_sourcePreview;
     UIViewController *_stashedParentViewController;
     UIView *_stashedSuperView;
-    NSValue *_preservedInputViewId;
+    id _keyboardSuppressionAssertion;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSValue *preservedInputViewId; // @synthesize preservedInputViewId=_preservedInputViewId;
+@property(retain, nonatomic) id keyboardSuppressionAssertion; // @synthesize keyboardSuppressionAssertion=_keyboardSuppressionAssertion;
 @property(retain, nonatomic) UIView *stashedSuperView; // @synthesize stashedSuperView=_stashedSuperView;
 @property(retain, nonatomic) UIViewController *stashedParentViewController; // @synthesize stashedParentViewController=_stashedParentViewController;
 @property(retain, nonatomic) UITargetedPreview *sourcePreview; // @synthesize sourcePreview=_sourcePreview;
@@ -41,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (void)_stashParentViewControllerIfNecessary;
 - (void)_nonAnimatedDismissalWithReason:(unsigned long long)arg1 actions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_animateDismissalWithReason:(unsigned long long)arg1 actions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_restoreInputViewWithReason:(unsigned long long)arg1 forPresentation:(id)arg2;
 - (void)dismissWithReason:(unsigned long long)arg1 alongsideActions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performPresentationAnimationsFromViewController:(id)arg1;
 - (void)presentFromSourcePreview:(id)arg1 lifecycleCompletion:(CDUnknownBlockType)arg2;

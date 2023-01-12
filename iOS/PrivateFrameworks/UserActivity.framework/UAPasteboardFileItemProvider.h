@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UserActivity/UAPasteboardFileItemProviding-Protocol.h>
-
 @class NSData, NSString, NSURL, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface UAPasteboardFileItemProvider : NSObject <UAPasteboardFileItemProviding>
+@interface UAPasteboardFileItemProvider : NSObject
 {
     _Bool _preferFileRep;
     _Bool _isDir;

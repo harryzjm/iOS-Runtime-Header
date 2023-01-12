@@ -6,26 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIVectorOperatable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIInterpolatedColorMatrix : NSObject <UIVectorOperatable>
+@interface UIInterpolatedColorMatrix : NSObject
 {
     struct CAColorMatrix _colorMatrix;
-    double _epsilon;
 }
 
-+ (id)zero;
-+ (id)epsilon;
++ (id)zeroCompatibleWithVector:(id)arg1;
++ (id)epsilonCompatibleWithVector:(id)arg1;
 + (id)valueWithColorMatrix:(struct CAColorMatrix)arg1;
 @property(readonly, copy) NSString *debugDescription;
 - (id)getValue;
-- (id)getNSValue;
 - (_Bool)isUndefined;
+- (_Bool)isCompatibleWith:(id)arg1;
 - (_Bool)isApproximatelyEqualTo:(id)arg1 withinEpsilon:(id)arg2;
-- (_Bool)isApproximatelyEqualTo:(id)arg1;
 - (id)multiplyByVector:(id)arg1;
 - (id)multiplyByScalar:(double)arg1;
 - (id)addVector:(id)arg1;
@@ -33,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (id)interpolateTo:(id)arg1 progress:(double)arg2;
 - (void)reinitWithVector:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithColorMatrix:(struct CAColorMatrix)arg1 epsilon:(double)arg2;
 - (id)initWithColorMatrix:(struct CAColorMatrix)arg1;
 
 // Remaining properties

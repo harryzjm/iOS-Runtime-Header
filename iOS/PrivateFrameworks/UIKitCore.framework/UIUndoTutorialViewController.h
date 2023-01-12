@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewController.h"
+
 @class UIUndoTutorialView;
 
 __attribute__((visibility("hidden")))
-@interface UIUndoTutorialViewController
+@interface UIUndoTutorialViewController : UIViewController
 {
     CDUnknownBlockType _completionHandler;
     UIUndoTutorialView *_tutorialView;

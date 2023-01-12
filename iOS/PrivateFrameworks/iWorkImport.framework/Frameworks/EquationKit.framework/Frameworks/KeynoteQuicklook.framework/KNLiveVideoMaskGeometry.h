@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
-@interface KNLiveVideoMaskGeometry : NSObject <NSCopying>
+@interface KNLiveVideoMaskGeometry : NSObject
 {
     double _scale;
     struct CGPoint _normalizedOffset;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <PaperKit/PKDrawingVersion-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface PKDrawingCoherenceVersion : NSObject <PKDrawingVersion>
+@interface PKDrawingCoherenceVersion : NSObject
 {
-    MISSING_TYPE *version;
-    MISSING_TYPE *context;
+    MISSING_TYPE *versionUUID;
 }
 
 + (_Bool)supportsSecureCoding;

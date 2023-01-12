@@ -6,14 +6,17 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class DNDSRemoteServiceProvider, NSString;
+@class DNDAccountFeatureSupport, DNDSRemoteServiceProvider, NSString;
 
 @protocol DNDSRemoteServiceProviderGlobalConfigurationDelegate <NSObject>
 - (void)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 didChangeFocusStatusSharingSettingForApplicationIdentifier:(NSString *)arg2;
+- (DNDAccountFeatureSupport *)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 getAccountFeatureSupportWithError:(id *)arg2;
 - (_Bool)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 setPairSyncPreferenceEnabled:(_Bool)arg2 withError:(id *)arg3;
 - (unsigned long long)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 getPairSyncStateReturningError:(id *)arg2;
 - (_Bool)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 setCloudSyncPreferenceEnabled:(_Bool)arg2 withError:(id *)arg3;
 - (unsigned long long)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 getCloudSyncStateReturningError:(id *)arg2;
+- (_Bool)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 setModesCanImpactAvailability:(_Bool)arg2 withError:(id *)arg3;
+- (_Bool)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 getModesCanImpactAvailabilityReturningError:(id *)arg2;
 - (_Bool)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 setPreventAutoReply:(_Bool)arg2 withError:(id *)arg3;
 - (_Bool)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 getPreventAutoReplyReturningError:(id *)arg2;
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIAppUserDefaultsStoring-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIAppUserDefaults : NSObject <VUIAppUserDefaultsStoring>
+@interface VUIAppUserDefaults : NSObject
 {
 }
 

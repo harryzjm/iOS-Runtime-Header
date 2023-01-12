@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMHomeInvitation.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString;
 
-@interface HMHomeInvitation (HFDebugging) <HFStateDumpBuildable>
+@interface HMHomeInvitation (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties

@@ -11,6 +11,6 @@
 @protocol PKSessionDelegate;
 
 @protocol PKSubcredentialInvitationProvisioningFlowControllerOperation <PKSubcredentialInvitationFlowControllerOperation, PKSubcredentialProvisioningControllerDelegate>
-- (PKAppletSubcredentialSharingSession *)sharingSessionWithDelegate:(id <PKSessionDelegate>)arg1;
+- (PKAppletSubcredentialSharingSession *)sharingSessionWithDelegate:(id <PKSessionDelegate>)arg1 startSession:(_Bool)arg2;
 @end
 

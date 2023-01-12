@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AMPCoreUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface AMPPrivacyAnimatedTransitioning : NSObject <UIViewControllerAnimatedTransitioning>
+@interface AMPPrivacyAnimatedTransitioning : NSObject
 {
     _Bool _presentation;
     UIViewController *_viewController;

@@ -8,6 +8,6 @@
 
 @interface MPMusicPlayerStoreQueueDescriptor (MPCModelPlaybackAdditions)
 - (_Bool)matchesStartItem:(id)arg1;
-- (id)playbackContext;
+- (id)playbackContexts;
 @end
 

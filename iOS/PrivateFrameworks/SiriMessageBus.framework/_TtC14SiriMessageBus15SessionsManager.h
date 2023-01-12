@@ -11,8 +11,12 @@
 @interface _TtC14SiriMessageBus15SessionsManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *expirationInSeconds;
+    MISSING_TYPE *sessionEndDelayInSeconds;
     MISSING_TYPE *queue;
     MISSING_TYPE *assistantIdToSession;
+    MISSING_TYPE *sessions;
+    MISSING_TYPE *nextExpirationTaskTimeCheck;
+    MISSING_TYPE *expirationScheduleTask;
     MISSING_TYPE *broker;
 }
 

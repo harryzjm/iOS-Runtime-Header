@@ -8,6 +8,6 @@
 
 @protocol GEOPlaceDataRequester
 - (void)cancelRequest:(GEOPDPlaceRequest *)arg1;
-- (void)startWithRequest:(GEOPDPlaceRequest *)arg1 traits:(GEOMapServiceTraits *)arg2 timeout:(double)arg3 auditToken:(GEOApplicationAuditToken *)arg4 throttleToken:(GEODataRequestThrottlerToken *)arg5 completionHandler:(void (^)(GEOPDPlaceResponse *, NSError *, NSDictionary *))arg6;
+- (void)startWithRequest:(GEOPDPlaceRequest *)arg1 traits:(GEOMapServiceTraits *)arg2 timeout:(double)arg3 auditToken:(GEOApplicationAuditToken *)arg4 throttleToken:(GEODataRequestThrottlerToken *)arg5 completionHandler:(void (^)(GEOPDPlaceResponse *, NSError *))arg6;
 @end
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CHSynchronizedLoggable.h"
+
 @class CallHistoryDBClientHandle;
 
 __attribute__((visibility("hidden")))
-@interface CHDatabaseClientHandleManager
+@interface CHDatabaseClientHandleManager : CHSynchronizedLoggable
 {
     CallHistoryDBClientHandle *_databaseClientHandle;
 }

@@ -11,6 +11,7 @@
 + (_Bool)hasUserSeenAnnounceNotificationsOptOutScreen;
 + (_Bool)isAnnounceSupported;
 + (_Bool)isAnnounceEnabledForHeadphones;
++ (_Bool)isCurrentLocaleSupported;
 + (_Bool)isSiriAllowedWhileLocked;
 + (_Bool)isHeySiriEnabled;
 + (_Bool)isSiriEnabled;

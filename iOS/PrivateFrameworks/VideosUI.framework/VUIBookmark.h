@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-#import <VideosUI/NSMutableCopying-Protocol.h>
-#import <VideosUI/NSSecureCoding-Protocol.h>
-
 @class NSDate, VUIBookmarkKey;
 
 __attribute__((visibility("hidden")))
-@interface VUIBookmark : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@interface VUIBookmark : NSObject
 {
     _Bool _hasBeenPlayed;
     _Bool _hasBeenRented;

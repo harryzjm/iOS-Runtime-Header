@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _secureInput;
     _Bool _useAutomaticEndpointing;
     _Bool _acceptsDictationSearchResults;
+    _Bool _autoPunctuation;
     unsigned long long _version;
     unsigned long long _activationType;
     NSString *_languageCode;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool autoPunctuation; // @synthesize autoPunctuation=_autoPunctuation;
 @property(copy, nonatomic) id turnIdentifier; // @synthesize turnIdentifier=_turnIdentifier;
 @property(copy, nonatomic) NSString *postfixText; // @synthesize postfixText=_postfixText;
 @property(copy, nonatomic) NSString *selectedText; // @synthesize selectedText=_selectedText;

@@ -9,6 +9,7 @@
 @interface NSString (_EARHash)
 + (id)ear_stringWithStringView:(basic_string_view_1993c9b6)arg1;
 - (id)_ear_sha256;
+- (optional_bb4384b7)ear_toStringOrNothing;
 - (basic_string_0ec669f3)ear_toString;
 @end
 

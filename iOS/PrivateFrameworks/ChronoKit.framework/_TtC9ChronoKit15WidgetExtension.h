@@ -15,8 +15,6 @@
     MISSING_TYPE *isInternal;
     MISSING_TYPE *isDevelopmentExtension;
     MISSING_TYPE *pluginUUID;
-    MISSING_TYPE *cacheGUID;
-    MISSING_TYPE *sequenceNumber;
     MISSING_TYPE *lastModifiedDate;
     MISSING_TYPE *bundleURL;
     MISSING_TYPE *containerBundleURL;
@@ -24,11 +22,10 @@
     MISSING_TYPE *containerBundleIdentifier;
     MISSING_TYPE *dataContainerURL;
     MISSING_TYPE *systemDataContainerURL;
-    MISSING_TYPE *descriptorDiscoveryIsRestricted;
     MISSING_TYPE *wantsLocation;
     MISSING_TYPE *availableLocalizations;
     MISSING_TYPE *allowsMixedLocalizations;
-    MISSING_TYPE *entitlements;
+    MISSING_TYPE *hasEventServiceEntitlement;
     MISSING_TYPE *requestedDataProtection;
     MISSING_TYPE *nominatedContainingBundleIdentifiers;
     MISSING_TYPE *nsExtension;

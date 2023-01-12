@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSFilterShardItemIdentifying-Protocol.h>
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSShardIdentifier : NSObject <BCSFilterShardItemIdentifying, NSCopying>
+@interface BCSShardIdentifier : NSObject
 {
     long long _type;
     long long _startIndex;

@@ -6,7 +6,10 @@
 
 #import <UIKit/UIResponder.h>
 
+@protocol CUIKEditor;
+
 @interface UIResponder (EventKitUI)
+@property(readonly, nonatomic) id <CUIKEditor> EKUI_editor;
 - (void)EKUI_setDataOwnersFromEvent:(id)arg1;
 @end
 

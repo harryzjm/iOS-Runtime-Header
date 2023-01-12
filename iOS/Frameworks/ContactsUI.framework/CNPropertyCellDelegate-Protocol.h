@@ -6,7 +6,7 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class CNCardPropertyGroup, CNContactViewCache, CNPropertyCell, CNPropertyGroupItem, NSString;
+@class CNCardPropertyGroup, CNContactViewCache, CNPropertyCell, CNPropertyGroupItem, CNUIGeminiDataSource, NSString;
 @protocol CNUIUserActionListDataSource;
 
 @protocol CNPropertyCellDelegate <NSObject>
@@ -18,6 +18,7 @@
 - (void)propertyCell:(CNPropertyCell *)arg1 didUpdateItem:(CNPropertyGroupItem *)arg2 withNewLabel:(NSString *)arg3;
 
 @optional
+- (CNUIGeminiDataSource *)geminiDataSource;
 - (id <CNUIUserActionListDataSource>)sharedActionsDataSource;
 @end
 

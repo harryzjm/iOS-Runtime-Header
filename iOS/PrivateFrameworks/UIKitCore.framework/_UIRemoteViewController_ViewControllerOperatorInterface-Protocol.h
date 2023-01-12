@@ -10,6 +10,7 @@
 - (void)__handleFocusMovementAction:(UIFocusMovementAction *)arg1;
 - (void)__showEditAlertViewWithToken:(long long)arg1 canUndo:(_Bool)arg2 canRedo:(_Bool)arg3;
 - (void)__trampolineButtonPressData:(NSData *)arg1 canceled:(_Bool)arg2;
+- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__viewServiceDidUpdateMultitaskingDragExclusionRects:(NSArray *)arg1;
 - (void)__viewServiceDidUpdatePrefersPointerLocked:(_Bool)arg1;
 - (void)__viewServiceDidUpdatePreferredUserInterfaceStyle:(long long)arg1;
@@ -34,6 +35,6 @@
 - (void)__viewServiceDidChangeHasScrollToTopView:(_Bool)arg1;
 - (void)__viewServiceDidChangeKeyWindow:(_Bool)arg1;
 - (void)__viewServiceDidPromoteFirstResponderWithCompletionHandler:(void (^)(void))arg1;
-- (void)__viewServiceWantsKeyboardEventEnvironmentDeferringWithoutFirstResponderAndCompletionHandler:(void (^)(void))arg1;
+- (void)__viewServiceWantsKeyboardEventsWithoutFirstResponderAndCompletionHandler:(void (^)(void))arg1;
 @end
 

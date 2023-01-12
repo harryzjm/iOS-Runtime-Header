@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)contactSuggestionsNameFont;
++ (id)contactSuggestionsHeaderTitleFont;
 + (id)carPlayFontWithBoldWeightStyle:(id)arg1;
 + (id)carPlayFontWithMediumWeightStyle:(id)arg1;
 + (id)carPlayFontWithStyle:(id)arg1;
@@ -43,6 +45,8 @@ __attribute__((visibility("hidden")))
 + (id)contactStyleDefaultBoldTextFont;
 + (id)contactStyleDefaultItalicTextFont;
 + (id)contactStyleDefaultTextFont;
++ (id)contactListDuplicateCountFont;
++ (id)contactListContactCountFont;
 + (id)contactListBannerFootnoteFontSecondary;
 + (id)contactListBannerFootnoteFontPrimary;
 + (id)contactListBannerTitleFontPrimary;

@@ -12,18 +12,29 @@ __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI22ListCollectionViewCell : UICollectionViewListCell
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *style;
+    MISSING_TYPE *isHeader;
+    MISSING_TYPE *isTableRowOrHeader;
+    MISSING_TYPE *headerLeadingMargin;
+    MISSING_TYPE *wasEditing;
+    MISSING_TYPE *lastConfiguration;
     MISSING_TYPE *host;
+    MISSING_TYPE *isDisplaying;
     MISSING_TYPE *selectionBehavior;
     MISSING_TYPE *hasItemProviderTrait;
+    MISSING_TYPE *popUpButtonSeed;
     MISSING_TYPE *viewListID;
 }
 
 - (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)_bridgedUpdateConfigurationUsingState:(id)arg1;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)removeFromSuperview;
 @property(nonatomic) _Bool isAccessibilityElement;
+@property(nonatomic, readonly) _Bool canBecomeFocused;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

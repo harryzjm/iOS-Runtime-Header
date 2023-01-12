@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UISettings.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIScreenEdgePanRecognizerEdgeSettings
+@interface _UIScreenEdgePanRecognizerEdgeSettings : _UISettings
 {
     double _hysteresis;
     double _edgeRegionSize;

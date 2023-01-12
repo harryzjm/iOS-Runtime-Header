@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _lastReceivedTimestamp;
     CDStruct_1b6d18a9 _lastSentTimestamp;
     int _consecutiveDroppedFrameCount;
-    int _cameraFrameCount;
     int _sentFrameCount;
     int _receivedFrameCount;
     int _droppedFrameCount;
@@ -48,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) id <VCEffectsManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)releaseAllocators;
 - (_Bool)createAllocators;
+- (_Bool)initializeReceiveQueue:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)init;
 

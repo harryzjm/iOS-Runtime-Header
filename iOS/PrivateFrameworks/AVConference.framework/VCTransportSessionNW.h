@@ -10,8 +10,11 @@
 __attribute__((visibility("hidden")))
 @interface VCTransportSessionNW
 {
-    NSString *_connectionID;
-    NSObject<OS_nw_connection> *_connection;
+    NSObject<OS_nw_connection> *_rtpConnection;
+    NSObject<OS_nw_connection> *_rtcpConnection;
+    NSString *_rtpConnectionID;
+    NSString *_rtcpConnectionID;
+    _Bool _isSharedConnection;
     struct tagVCNWConnectionMonitor *_monitor;
     CDUnknownFunctionPointerType _notificationHandler;
     CDUnknownFunctionPointerType _packetEventHandler;
@@ -19,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_handlerQueue;
     _Bool _didScheduleReceive;
     int _networkInterfaceType;
+    struct os_unfair_lock_s _nwMonitorLock;
     _Bool _isIPv6;
     unsigned int _networkMTU;
 }
@@ -26,22 +30,23 @@ __attribute__((visibility("hidden")))
 - (_Bool)isIPv6;
 - (unsigned int)networkMTU;
 - (int)networkInterfaceType;
-@property(readonly) NSObject<OS_nw_connection> *nwConnection; // @synthesize nwConnection=_connection;
 - (_Bool)initializeIsIPv6;
 - (_Bool)initializeNetworkMTU;
 - (void)initializeInterfaceType;
-- (int)dupNWConnectionBackingSocket;
-- (void)destroyNWMonitorInternal;
+- (int)dupRTPNWConnectionBackingSocketForNWConnection:(id)arg1;
+- (int)dupRTCPNWConnectionBackingSocket;
+- (int)dupRTPNWConnectionBackingSocket;
 - (void)destroyNWMonitor;
 - (void)createNWMonitor;
 - (void)stop;
 - (void)start;
 - (int)createVFD:(int *)arg1 forStreamType:(unsigned int)arg2;
-- (_Bool)setupNWConnection;
-- (_Bool)setStateChangeHandlerWithResult:(_Bool *)arg1 semaphore:(id)arg2;
+- (_Bool)setupNWConnection:(id)arg1;
+- (_Bool)setStateChangeHandlerForConnection:(id)arg1 result:(_Bool *)arg2 semaphore:(id)arg3;
 - (void)handleStateChanges:(int)arg1 error:(id)arg2 semaphore:(id)arg3 operationResult:(_Bool *)arg4;
 - (void)dealloc;
-- (id)initWithNWConnectionID:(id)arg1 handlerQueue:(id)arg2 context:(void *)arg3 notificationHandler:(CDUnknownFunctionPointerType)arg4 eventHandler:(CDUnknownFunctionPointerType)arg5;
+- (void)createNWConnection:(id *)arg1 forConnectionID:(id)arg2;
+- (id)initWithRTPNWConnectionID:(id)arg1 RTCPNWConnectionID:(id)arg2 handlerQueue:(id)arg3 context:(void *)arg4 notificationHandler:(CDUnknownFunctionPointerType)arg5 eventHandler:(CDUnknownFunctionPointerType)arg6;
 
 @end
 

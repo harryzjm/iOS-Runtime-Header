@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaRemote/MRExternalDeviceControllerDelegate-Protocol.h>
-
 @class NSString, _MRTelevisionControllerBlockCallback;
 
 __attribute__((visibility("hidden")))
-@interface MRTelevisionController <MRExternalDeviceControllerDelegate>
+@interface MRTelevisionController
 {
     _MRTelevisionControllerBlockCallback *_discoveryCallback;
     _MRTelevisionControllerBlockCallback *_removalCallback;

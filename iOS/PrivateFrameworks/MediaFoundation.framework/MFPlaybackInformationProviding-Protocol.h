@@ -8,6 +8,7 @@
 @protocol MFQueuePlayerItem;
 
 @protocol MFPlaybackInformationProviding
+@property(nonatomic, readonly) long long timeControlStatus;
 @property(nonatomic, readonly) AVPlayerViewController *videoViewController;
 @property(nonatomic, readonly) NSArray *nextItems;
 @property(nonatomic, readonly) id <MFQueuePlayerItem> currentItem;

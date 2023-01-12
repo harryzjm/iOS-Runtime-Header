@@ -10,9 +10,12 @@
 + (id)smu_floatingContentViewWithFrame:(struct CGRect)arg1;
 + (id)smu_tvCarouselView;
 + (void)smu_animateUsingSpringWithTension:(double)arg1 friction:(double)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)smu_animateUsingSpringWithDuration:(double)arg1 delay:(double)arg2 options:(unsigned long long)arg3 mass:(double)arg4 stiffness:(double)arg5 damping:(double)arg6 initialVelocity:(double)arg7 animations:(CDUnknownBlockType)arg8 completion:(CDUnknownBlockType)arg9;
++ (void)smu_animateUsingSpringWithDuration:(double)arg1 delay:(double)arg2 options:(unsigned long long)arg3 mass:(double)arg4 stiffness:(double)arg5 damping:(double)arg6 initialVelocity:(double)arg7 animations:(CDUnknownBlockType)arg8;
 + (unsigned long long)smu_coreAnimationDefaultCurve;
 + (id)smu_tvFocusableTextView;
 + (id)smu_animationConfigurationForStyle:(long long)arg1;
++ (id)smu_contentUnavailableView;
 - (_Bool)smu_applyKeyPathsAndRelativeValues:(id)arg1 forMotionEffect:(id)arg2;
 @property(nonatomic, setter=smu_setSpeedBumpEdges:) unsigned long long smu_speedBumpEdges;
 @property(nonatomic) struct UIEdgeInsets smu_touchInsets;

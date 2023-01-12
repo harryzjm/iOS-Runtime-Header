@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
-
 @class NSIndexSet, NSPointerArray;
 
-@interface TSTTableTile : TSPObject <TSTCompatibilityVersionProviding>
+@interface TSTTableTile : TSPObject
 {
     unsigned char _storageVersion;
     _Bool _lastSavedInBNC;

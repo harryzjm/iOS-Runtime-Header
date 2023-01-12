@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly) id value; // @synthesize value=_value;
 @property(readonly) NSError *error; // @synthesize error=_error;
-- (id)_initWithValue:(id)arg1 error:(id)arg2;
 - (id)init;
 
 @end

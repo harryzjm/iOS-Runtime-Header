@@ -30,8 +30,10 @@
 - (id)nextAuthorColor;
 - (id)authorInStorageAddingAuthorIfNecessary:(id)arg1;
 - (id)authorInStorageMatchingAuthor:(id)arg1;
+- (id)authorInStorageMatchingAuthor:(id)arg1 name:(id)arg2;
+- (id)preferredAuthorMatchingPrivateIDs:(id)arg1 name:(id)arg2;
 - (id)preferredAuthorMatchingPrivateID:(id)arg1 name:(id)arg2;
-- (id)authorsMatchingPrivateID:(id)arg1;
+- (id)authorsMatchingPrivateIDs:(id)arg1;
 @property(readonly) NSSet *authors;
 - (void)removeAuthor:(id)arg1;
 - (void)addAuthor:(id)arg1;

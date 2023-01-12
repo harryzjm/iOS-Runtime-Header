@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-
 @class NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
-@interface _IDSIDQueryController : NSObject <IDSDaemonListenerProtocol>
+@interface _IDSIDQueryController : NSObject
 {
     NSMutableDictionary *_listeners;
     NSMutableDictionary *_idStatusCache;
@@ -34,6 +32,7 @@
 - (_Bool)_warmupQueryCacheForService:(id)arg1;
 - (long long)_currentCachedIDStatusForDestination:(id)arg1 service:(id)arg2 listenerID:(id)arg3;
 - (_Bool)_hasCacheForService:(id)arg1;
+- (_Bool)idInfoForDestinations:(id)arg1 service:(id)arg2 infoTypes:(unsigned long long)arg3 options:(id)arg4 listenerID:(id)arg5 queue:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (_Bool)currentRemoteDevicesForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (_Bool)_currentRemoteDevicesForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 waitForReply:(_Bool)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (_Bool)currentIDStatusForDestination:(id)arg1 service:(id)arg2 respectExpiry:(_Bool)arg3 listenerID:(id)arg4 queue:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
@@ -69,6 +68,7 @@
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)___oldDealloc;
 - (id)__sendMessage:(id)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3 failBlock:(CDUnknownBlockType)arg4 waitForReply:(_Bool)arg5;
+- (void)_requestIDInfoForDestinations:(id)arg1 service:(id)arg2 infoTypes:(unsigned long long)arg3 options:(id)arg4 listenerID:(id)arg5 queue:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)_requestRemoteDevicesForDestination:(id)arg1 service:(id)arg2 listenerID:(id)arg3 waitForReply:(_Bool)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)_requestStatusForDestinations:(id)arg1 service:(id)arg2 waitForReply:(_Bool)arg3 forceRefresh:(_Bool)arg4 bypassLimit:(_Bool)arg5 listenerID:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)_requestCachedStatusForDestinations:(id)arg1 service:(id)arg2 waitForReply:(_Bool)arg3 respectExpiry:(_Bool)arg4 listenerID:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;

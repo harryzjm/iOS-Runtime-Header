@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSUiOSMemoryWarningFlushable-Protocol.h>
-
 @class NSMutableSet, NSString, NSThread, TSCH3DResourceCache, TSCH3DShaderCache, TSCH3DSharegroupToken;
 @protocol TSCH3DSharegroupDelegate;
 
-@interface TSCH3DSharegroup : NSObject <TSUiOSMemoryWarningFlushable>
+@interface TSCH3DSharegroup : NSObject
 {
     NSThread *_owningThread;
     TSCH3DResourceCache *_resourceCache;

@@ -9,6 +9,11 @@
 @class NSArray, NSData, NSDate, NSString;
 
 @protocol PLAssetsdNotificationServiceProtocol <NSObject>
+- (void)noteSharedLibrarySuggestionsWithNotificationDeliveryDate:(NSDate *)arg1;
+- (void)notifyEndOfInterestForUnrenderedCinematicVideoItems;
+- (void)notifyStartOfInterestForUnrenderedCinematicVideoItems;
+- (void)notePhotosChallengeNewQuestionsWithNotificationDeliveryDate:(NSDate *)arg1;
+- (void)notePhotosChallengeSubmissionWithNotificationDeliveryDate:(NSDate *)arg1;
 - (void)noteGoingToExpireCMMsAlertWithCMMUUIDs:(NSArray *)arg1 thumbnailImageData:(NSData *)arg2 notificationTitle:(NSString *)arg3 notificationSubtitle:(NSString *)arg4;
 - (void)noteSuggestedCMMAlertViewedWithCMMUUID:(NSString *)arg1;
 - (void)noteSuggestedCMMAlertWithCMMUUID:(NSString *)arg1 notificationDeliveryDate:(NSDate *)arg2;

@@ -10,25 +10,26 @@
 
 @interface DVTBuildVersion : NSObject
 {
-    NSString *_buildVersion;
     unsigned long long _buildVersionMajorNumber;
     NSString *_buildVersionMajorLetter;
     unsigned long long _buildVersionMinorNumber;
     NSString *_buildVersionMinorLetter;
+    NSString *_stringValue;
 }
 
 + (id)buildVersionWithString:(id)arg1;
 + (id)currentSystemVersion;
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *buildVersionMinorLetter; // @synthesize buildVersionMinorLetter=_buildVersionMinorLetter;
+@property(readonly) unsigned long long buildVersionMinorNumber; // @synthesize buildVersionMinorNumber=_buildVersionMinorNumber;
+@property(readonly, copy) NSString *buildVersionMajorLetter; // @synthesize buildVersionMajorLetter=_buildVersionMajorLetter;
+@property(readonly) unsigned long long buildVersionMajorNumber; // @synthesize buildVersionMajorNumber=_buildVersionMajorNumber;
+@property(readonly, copy) NSString *stringValue; // @synthesize stringValue=_stringValue;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (long long)compare:(id)arg1;
-@property(readonly) NSString *buildVersionMinorLetter;
-@property(readonly) unsigned long long buildVersionMinorNumber;
-@property(readonly) NSString *buildVersionMajorLetter;
-@property(readonly) unsigned long long buildVersionMajorNumber;
-- (void)_parseBuildVersionIfNecessary;
 - (id)name;
 - (id)initWithString:(id)arg1;
 

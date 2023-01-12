@@ -8,6 +8,7 @@
 
 @protocol PXRadarConfigurationProvider
 @property(readonly, nonatomic) PXRadarConfiguration *radarConfiguration;
+@property(readonly, nonatomic) _Bool includeAssetThumbnails;
 @property(readonly, nonatomic) _Bool includeAssetImages;
 @end
 

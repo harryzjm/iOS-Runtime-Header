@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/TSKArchivedSelection-Protocol.h>
-
 @class KNActionGhostSelection, NSString, TSKSelection;
 
-@interface KNArchivedActionGhostSelection : TSPObject <TSKArchivedSelection>
+@interface KNArchivedActionGhostSelection : TSPObject
 {
     KNActionGhostSelection *_selection;
 }

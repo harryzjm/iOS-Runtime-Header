@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitLineItem-Protocol.h>
-
 @class GEOMapItemIdentifier, GEOMapRegion, NSArray, NSString;
 @protocol GEOEncyclopedicInfo, GEOMapItemTransitInfo, GEOTransitArtworkDataSource, GEOTransitAttribution, GEOTransitLine, GEOTransitSystem;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceDataTransitLineItem : NSObject <GEOTransitLineItem>
+@interface _GEOPlaceDataTransitLineItem : NSObject
 {
     id <GEOTransitAttribution> _attribution;
     id <GEOTransitLine> _line;

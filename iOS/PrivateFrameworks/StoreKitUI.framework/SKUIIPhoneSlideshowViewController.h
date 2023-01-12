@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
-#import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, SKUIClientContext, SKUIGiftThemeCollectionView, UIPageControl;
 @protocol SKUISlideshowViewControllerDataSource, SKUISlideshowViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIIPhoneSlideshowViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SKUIIPhoneSlideshowViewController : UIViewController
 {
     SKUIClientContext *_clientContext;
     SKUIGiftThemeCollectionView *_collectionView;

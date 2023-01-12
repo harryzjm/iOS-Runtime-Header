@@ -9,6 +9,7 @@
 @class HMFMessage;
 
 @protocol HMDMessageRouter <NSObject>
+- (void)routeMessage:(HMFMessage *)arg1 allowRemoteRelayFromPrimary:(_Bool)arg2 localHandler:(void (^)(HMFMessage *))arg3;
 - (void)routeMessage:(HMFMessage *)arg1 localHandler:(void (^)(HMFMessage *))arg2;
 @end
 

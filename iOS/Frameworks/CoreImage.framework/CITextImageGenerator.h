@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CITextImageGenerator
+@interface CITextImageGenerator : CIFilter
 {
     NSString *inputText;
     NSString *inputFontName;
     NSNumber *inputFontSize;
     NSNumber *inputScaleFactor;
+    NSNumber *inputPadding;
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) NSNumber *inputPadding; // @synthesize inputPadding;
 @property(retain, nonatomic) NSNumber *inputScaleFactor; // @synthesize inputScaleFactor;
 @property(retain, nonatomic) NSNumber *inputFontSize; // @synthesize inputFontSize;
 @property(retain, nonatomic) NSString *inputFontName; // @synthesize inputFontName;

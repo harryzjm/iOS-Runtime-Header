@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVAssetWriterDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebAVAssetWriterDelegate : NSObject <AVAssetWriterDelegate>
+@interface WebAVAssetWriterDelegate : NSObject
 {
     void *m_writer;
 }

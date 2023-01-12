@@ -32,7 +32,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSDate *domainLookupEndDate; // @dynamic domainLookupEndDate;
 @property(readonly, copy) NSDate *domainLookupStartDate; // @dynamic domainLookupStartDate;
 @property(readonly, copy) NSDate *fetchStartDate; // @dynamic fetchStartDate;
-- (id)_initWithMetrics:(const void *)arg1;
+- (void)dealloc;
+- (id)_initWithMetrics:(void *)arg1;
 
 // Remaining properties
 @property(readonly, getter=isCellular) _Bool cellular; // @dynamic cellular;

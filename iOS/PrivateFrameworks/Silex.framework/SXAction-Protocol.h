@@ -6,9 +6,10 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, SXJSONDictionary;
 
 @protocol SXAction <NSObject>
+@property(readonly, nonatomic) SXJSONDictionary *analytics;
 @property(readonly, nonatomic) NSString *type;
 @end
 

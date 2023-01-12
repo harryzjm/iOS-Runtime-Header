@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIInputViewAnimationController-Protocol.h>
-
 @class NSString, UIInputViewSetPlacement;
 @protocol UIViewControllerAnimatedTransitioning_Keyboard, UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewAnimationControllerViewController : NSObject <UIInputViewAnimationController>
+@interface UIInputViewAnimationControllerViewController : NSObject
 {
     id <UIViewControllerContextTransitioning> _context;
     id <UIViewControllerAnimatedTransitioning_Keyboard> _animator;
@@ -20,10 +18,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)controllerWithContext:(id)arg1;
+- (void).cxx_destruct;
 - (void)completeAnimationWithHost:(id)arg1 context:(id)arg2;
 - (void)performAnimationWithHost:(id)arg1 context:(id)arg2;
 - (id)prepareAnimationWithHost:(id)arg1 startPlacement:(id)arg2 endPlacement:(id)arg3;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1;
 
 // Remaining properties

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)performStreamingTranslationWithDelegate:(id)arg1 requestBuilder:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performTranslation:(id)arg1 requestBuilder:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

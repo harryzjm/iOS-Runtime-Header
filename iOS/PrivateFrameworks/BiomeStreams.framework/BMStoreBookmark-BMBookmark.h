@@ -6,11 +6,9 @@
 
 #import <BiomeStorage/BMStoreBookmark.h>
 
-#import <BiomeStreams/BMBookmark-Protocol.h>
-
 @class NSString;
 
-@interface BMStoreBookmark (BMBookmark) <BMBookmark>
+@interface BMStoreBookmark (BMBookmark)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

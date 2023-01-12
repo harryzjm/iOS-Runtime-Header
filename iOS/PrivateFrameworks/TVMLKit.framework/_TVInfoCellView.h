@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TVInfoCellView : UIView <TVAppTemplateImpressionable>
+@interface _TVInfoCellView : UIView
 {
     _Bool _headerOnLeading;
     UIView *_headerContentView;

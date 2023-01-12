@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIViewServiceDeputyXPCInterface-Protocol.h>
-
 @class NSString, NSXPCInterface;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceViewControllerDeputyXPCInterface : NSObject <_UIViewServiceDeputyXPCInterface>
+@interface _UIViewServiceViewControllerDeputyXPCInterface : NSObject
 {
     NSXPCInterface *_exportedInterface;
     NSXPCInterface *_remoteViewControllerInterface;

@@ -10,5 +10,6 @@
 
 @protocol AVTSplashScreenViewControllerDelegate <NSObject>
 - (void)splashScreenViewControllerDidFinish:(AVTSplashScreenViewController *)arg1;
+- (void)splashScreenViewControllerDidCancel:(AVTSplashScreenViewController *)arg1;
 @end
 

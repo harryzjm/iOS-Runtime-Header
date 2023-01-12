@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DGLBindable-Protocol.h>
-
 @class NSString;
 
-@interface TSCH3DGLRenderBuffer : NSObject <TSCH3DGLBindable>
+@interface TSCH3DGLRenderBuffer : NSObject
 {
     unsigned int _buffer;
 }

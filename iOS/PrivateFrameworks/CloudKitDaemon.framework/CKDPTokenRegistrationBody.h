@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKDPTokenRegistrationBody : PBCodable <NSCopying>
+@interface CKDPTokenRegistrationBody : PBCodable
 {
     int _apnsEnv;
     NSString *_bundleIdentifier;

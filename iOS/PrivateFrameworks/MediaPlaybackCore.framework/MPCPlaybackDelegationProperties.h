@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-#import <MediaPlaybackCore/NSMutableCopying-Protocol.h>
-#import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
-
 @class MPCPrivateListeningStateSource, NSString, NSTimeZone;
 
 __attribute__((visibility("hidden")))
-@interface MPCPlaybackDelegationProperties : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@interface MPCPlaybackDelegationProperties : NSObject
 {
     NSString *_deviceGUID;
     NSString *_deviceName;

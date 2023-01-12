@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/AMSUIWebJSAppQueryManagerDelegate-Protocol.h>
-#import <AppleMediaServicesUI/AMSUIWebJSPropertiesDelegate-Protocol.h>
-
-@class AMSUIWebClientContext, AMSUIWebJSAppQueryManager, AMSUIWebJSProperties, AMSUIWebView, NSString;
+@class AMSUIWebClientContext, AMSUIWebJSAppQueryManager, AMSUIWebJSProperties, AMSUIWebJSTelephony, AMSUIWebView, NSString;
+@protocol AMSUIWebJSTelephonyProtocol;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebJSDataProvider : NSObject <AMSUIWebJSAppQueryManagerDelegate, AMSUIWebJSPropertiesDelegate>
+@interface AMSUIWebJSDataProvider : NSObject
 {
     AMSUIWebJSAppQueryManager *_appQueryManager;
+    AMSUIWebJSTelephony *_telephony;
     AMSUIWebView *_webView;
     AMSUIWebClientContext *_context;
     AMSUIWebJSProperties *_properties;
@@ -29,10 +28,12 @@ __attribute__((visibility("hidden")))
 - (id)_syncPropertiesScriptWithProperties:(id)arg1;
 - (void)_safariDataUpdate:(id)arg1;
 - (void)_purchaseDidSucceed:(id)arg1;
+- (void)_postTelephonyDidChangeEvent;
 - (void)_postSubscriptionChangedWithType:(long long)arg1;
 - (void)_postMediaQueryResultsChangeEventWithApps:(id)arg1;
 - (void)_observeNotifications;
 - (_Bool)_canInteractWithJS;
+- (void)telephonyDidChange:(id)arg1;
 - (void)propertiesDidChange:(id)arg1;
 - (void)appQueryManager:(id)arg1 didReceiveApps:(id)arg2;
 - (void)_subscriptionStatusChangeiCloud:(id)arg1;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)createWebView;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1;
+@property(readonly, nonatomic) id <AMSUIWebJSTelephonyProtocol> telephony;
 @property(readonly, nonatomic) AMSUIWebJSAppQueryManager *appQueryManager;
 
 // Remaining properties

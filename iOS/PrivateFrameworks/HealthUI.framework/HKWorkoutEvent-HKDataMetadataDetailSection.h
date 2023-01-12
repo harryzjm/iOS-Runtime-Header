@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKWorkoutEvent.h>
 
-#import <HealthUI/HKDataMetadataObject-Protocol.h>
-
 @class NSDictionary;
 
-@interface HKWorkoutEvent (HKDataMetadataDetailSection) <HKDataMetadataObject>
+@interface HKWorkoutEvent (HKDataMetadataDetailSection)
 - (id)startDate;
 - (void)addDetailValuesToSection:(id)arg1;
 

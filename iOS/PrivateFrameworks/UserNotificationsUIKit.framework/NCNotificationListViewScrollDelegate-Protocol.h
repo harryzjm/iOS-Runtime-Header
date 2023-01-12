@@ -9,6 +9,8 @@
 @class NCNotificationListView;
 
 @protocol NCNotificationListViewScrollDelegate <NSObject>
+- (void)notificationListViewDidEndDecelerating:(NCNotificationListView *)arg1;
+- (void)notificationListViewDidEndDragging:(NCNotificationListView *)arg1 willDecelerate:(_Bool)arg2;
 - (void)notificationListViewWillEndDragging:(NCNotificationListView *)arg1 withTargetContentOffset:(inout struct CGPoint *)arg2;
 - (void)notificationListDidScroll:(NCNotificationListView *)arg1;
 - (void)notificationListWillBeginDragging:(NCNotificationListView *)arg1;

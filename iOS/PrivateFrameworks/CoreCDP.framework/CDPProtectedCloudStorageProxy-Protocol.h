@@ -11,7 +11,6 @@
 @protocol CDPProtectedCloudStorageProxy <NSObject>
 - (_Bool)pcsRestoreLocalBackup:(NSDictionary *)arg1 error:(id *)arg2;
 - (_Bool)pcsSynchronizeKeysWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
-- (_Bool)pcsIdentityMigrateToStingrayWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (_Bool)pcsIdentityMigrateToiCDPWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (_Bool)pcsIdentitySetCompanionInCircle:(struct _PCSIdentitySetData *)arg1 error:(id *)arg2;
 - (_Bool)pcsIdentitySetIsInICDPLocal:(struct _PCSIdentitySetData *)arg1 error:(id *)arg2;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <BiomeStreams/NSObject-Protocol.h>
 
-@protocol BMComputePublishing
-- (void)receiveInputForIdentifier:(NSString *)arg1;
+@class BMStoreEvent, NSString;
+
+@protocol BMComputePublishing <NSObject>
+- (void)receiveInputForIdentifier:(NSString *)arg1 streamIdentifier:(NSString *)arg2 storeEvent:(BMStoreEvent *)arg3;
 @end
 

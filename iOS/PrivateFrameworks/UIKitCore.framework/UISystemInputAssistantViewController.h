@@ -4,20 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/TUIEmojiSearchInputViewControllerDelegate-Protocol.h>
-#import <UIKitCore/TUISystemInputAssistantViewDelegate-Protocol.h>
-#import <UIKitCore/UIKeyboardAutocorrectionObserver-Protocol.h>
-#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import "UIInputViewController.h"
 
-@class NSMutableDictionary, NSString, NSTimer, NSValue, TUIEmojiSearchInputViewController, TUISystemInputAssistantLayout, TUISystemInputAssistantLayoutSplit, TUISystemInputAssistantLayoutStandard, TUISystemInputAssistantStyleCompact, TUISystemInputAssistantStyleFloat, TUISystemInputAssistantStyleStandard, TUISystemInputAssistantView, UITextInputAssistantItem, UIView, UIViewController;
+@class NSMutableDictionary, NSString, NSTimer, NSValue, TUIEmojiSearchInputViewController, TUISystemInputAssistantLayout, TUISystemInputAssistantLayoutSplit, TUISystemInputAssistantLayoutStandard, TUISystemInputAssistantStyleCompact, TUISystemInputAssistantStyleFloat, TUISystemInputAssistantStyleStandard, TUISystemInputAssistantView, UIRemoteInputViewInfo, UITextInputAssistantItem, UIView, UIViewController, _UILayerHostView;
 @protocol UIKeyInput, UIPredictiveViewController;
 
 __attribute__((visibility("hidden")))
-@interface UISystemInputAssistantViewController <UIPopoverPresentationControllerDelegate, UIKeyboardAutocorrectionObserver, TUISystemInputAssistantViewDelegate, TUIEmojiSearchInputViewControllerDelegate>
+@interface UISystemInputAssistantViewController : UIInputViewController
 {
     id <UIKeyInput> _pendingResponderForChangedNotification;
     NSTimer *_pendingResponderChangedTimer;
     _Bool _postedSwitchFromEmojiNotification;
+    _Bool _isInputAssistantItemEmpty;
+    _Bool _showsRemoteInputDashViewController;
     _Bool _assistantEnabledPreference;
     _Bool _assistantOniPhonePreference;
     _Bool _hasCheckedPreferences;
@@ -34,15 +33,23 @@ __attribute__((visibility("hidden")))
     TUISystemInputAssistantStyleStandard *_standardStyle;
     TUISystemInputAssistantStyleFloat *_floatStyle;
     TUISystemInputAssistantStyleCompact *_compactStyle;
+    UITextInputAssistantItem *_remoteAssistantItem;
+    double _remoteCenterViewPreferredWidth;
     TUIEmojiSearchInputViewController *_emojiSearchViewController;
     UIViewController<UIPredictiveViewController> *_predictiveViewController;
     UIViewController *_expandedItemsController;
     NSValue *_currentInputDelegatePointerValue;
+    _UILayerHostView *_remoteAssistantView;
+    UIView *_remoteAssistantContainerView;
+    UIRemoteInputViewInfo *_remoteAssistantViewInfo;
 }
 
 + (double)_defaultPreferredHeightForTraitCollection:(id)arg1;
 + (_Bool)_requiresProxyInterface;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIRemoteInputViewInfo *remoteAssistantViewInfo; // @synthesize remoteAssistantViewInfo=_remoteAssistantViewInfo;
+@property(retain, nonatomic) UIView *remoteAssistantContainerView; // @synthesize remoteAssistantContainerView=_remoteAssistantContainerView;
+@property(retain, nonatomic) _UILayerHostView *remoteAssistantView; // @synthesize remoteAssistantView=_remoteAssistantView;
 @property(retain, nonatomic) NSValue *currentInputDelegatePointerValue; // @synthesize currentInputDelegatePointerValue=_currentInputDelegatePointerValue;
 @property _Bool currentlyCheckingPreferences; // @synthesize currentlyCheckingPreferences=_currentlyCheckingPreferences;
 @property _Bool hasCheckedPreferences; // @synthesize hasCheckedPreferences=_hasCheckedPreferences;
@@ -51,6 +58,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UIViewController *expandedItemsController; // @synthesize expandedItemsController=_expandedItemsController;
 @property(retain, nonatomic) UIViewController<UIPredictiveViewController> *predictiveViewController; // @synthesize predictiveViewController=_predictiveViewController;
 @property(retain, nonatomic) TUIEmojiSearchInputViewController *emojiSearchViewController; // @synthesize emojiSearchViewController=_emojiSearchViewController;
+@property(nonatomic) double remoteCenterViewPreferredWidth; // @synthesize remoteCenterViewPreferredWidth=_remoteCenterViewPreferredWidth;
+@property(nonatomic) _Bool showsRemoteInputDashViewController; // @synthesize showsRemoteInputDashViewController=_showsRemoteInputDashViewController;
+@property(retain, nonatomic) UITextInputAssistantItem *remoteAssistantItem; // @synthesize remoteAssistantItem=_remoteAssistantItem;
 @property(retain, nonatomic) TUISystemInputAssistantStyleCompact *compactStyle; // @synthesize compactStyle=_compactStyle;
 @property(retain, nonatomic) TUISystemInputAssistantStyleFloat *floatStyle; // @synthesize floatStyle=_floatStyle;
 @property(retain, nonatomic) TUISystemInputAssistantStyleStandard *standardStyle; // @synthesize standardStyle=_standardStyle;
@@ -67,6 +77,9 @@ __attribute__((visibility("hidden")))
 - (id)compatibilityViewController;
 - (id)candidateViewController;
 - (id)predictionViewController;
+- (_Bool)isVisibleWhenMinimized;
+- (_Bool)_hasCustomCenterViewControllerWidth;
+- (id)_customCenterViewController:(id)arg1;
 - (id)_customCenterBarButtonItem:(id)arg1;
 - (_Bool)_usesCustomBackground;
 - (_Bool)shouldUseCustomBackground:(id)arg1;
@@ -92,7 +105,7 @@ __attribute__((visibility("hidden")))
 - (double)_centerViewWidthForTraitCollection:(id)arg1 interfaceOrientation:(long long)arg2;
 - (double)_buttonBarWidthForTraitCollection:(id)arg1 interfaceOrientation:(long long)arg2;
 - (void)_keyboardDictationAvailabilityDidChangeNotification:(id)arg1;
-- (void)_updateLanguageIndicatorPointerInteraction;
+- (void)_updateLanguageIndicatorPointerInteractionAndImage;
 - (void)_didChangePlacementOrInputSourceNotification:(id)arg1;
 - (void)_willChangePlacementNotification:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -106,6 +119,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)_allowedToShowBarButtonItemsInline:(id)arg1;
 - (void)_updateSystemInputAssistantViewStylingForInputAssistantItem:(id)arg1;
 - (id)_defaultTintColor;
+@property(readonly, nonatomic) _Bool supportsCompactStyle;
+- (id)UIAssistantItemForRTIAssistantItem:(id)arg1;
+- (id)UIGroupsForRTIGroups:(id)arg1;
+- (id)placeholderItemOfWidth:(double)arg1;
+- (void)applyRemoteAssistantItem:(id)arg1;
+- (void)updateRemoteAssistantViewHidden;
 - (void)_dismissEmojiSearch;
 - (void)dismissDictationMenuIfNeeded;
 - (void)dismissLanguageIndicatorMenuIfNeeded;
@@ -114,6 +133,8 @@ __attribute__((visibility("hidden")))
 - (void)setInputAssistantButtonItemsForResponder:(id)arg1;
 @property(readonly, nonatomic) TUISystemInputAssistantView *systemInputAssistantView;
 - (void)updateCenterViewVisibilityStateForInputDelegate:(id)arg1;
+- (_Bool)_hidesCenterViewForActiveWindowingMode;
+- (void)_updateViewsForAssistantBarStyle:(long long)arg1;
 - (void)prepareTransition:(id)arg1 animated:(_Bool)arg2;
 - (void)automaticallySetCenterViewControllerBasedOnInputDelegate:(id)arg1;
 - (_Bool)_canShowCenterBarButtonItem;
@@ -127,7 +148,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)layoutHasBuiltinAssistantView;
 - (double)preferredHeightForTraitCollection:(id)arg1;
 - (_Bool)_shouldCollapseEmojiSearchView;
-- (_Bool)_shouldShowEmojiSearchViewControllerForInputDelegate:(id)arg1;
+- (_Bool)shouldShowEmojiSearchViewControllerForInputDelegate:(id)arg1;
 - (_Bool)_isEmojiInputMode;
 - (_Bool)shouldBeShownForInputDelegate:(id)arg1 inputViews:(id)arg2;
 - (_Bool)_centerPredictionViewVisibleForInputDelegate:(id)arg1 inputViews:(id)arg2;

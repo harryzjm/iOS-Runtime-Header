@@ -6,11 +6,9 @@
 
 #import <UIKit/UILabel.h>
 
-#import <UserNotificationsUIKit/NCTextSupporting-Protocol.h>
-
 @class NSString, UIColor, UIFont;
 
-@interface UILabel (NCTextSupportingAdditions) <NCTextSupporting>
+@interface UILabel (NCTextSupportingAdditions)
 - (double)unui_drawingHeightWithNumberOfLines:(unsigned long long)arg1;
 - (double)unui_measuringHeightWithNumberOfLines:(unsigned long long)arg1;
 - (unsigned long long)unui_numberOfLinesInFrame:(struct CGRect)arg1 maximum:(unsigned long long)arg2 drawingContext:(inout id)arg3;
@@ -21,6 +19,7 @@
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) UIFont *font;
 @property(readonly) unsigned long long hash;
+@property(nonatomic, getter=nc_isMenuEnabled, setter=nc_setMenuEnabled:) _Bool nc_menuEnabled;
 @property(readonly) Class superclass;
 @property(copy, nonatomic) NSString *text;
 @property(retain, nonatomic) UIColor *textColor;

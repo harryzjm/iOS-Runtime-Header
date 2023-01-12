@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)edgesAdjustedForTranslucentGapsForGeometry:(id)arg1 key:(id)arg2 onKeyplane:(id)arg3;
 - (void)setupLayoutSegments;
 - (struct UIEdgeInsets)symbolFrameInsets;
+- (double)symbolImageControlKeyFontSize;
 - (double)spaceKeyFontSize;
 - (struct CGPoint)spaceKeyTextOffset;
 - (struct CGPoint)deleteGlyphOffset;

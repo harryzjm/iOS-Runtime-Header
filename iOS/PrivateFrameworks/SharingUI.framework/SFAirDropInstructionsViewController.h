@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SharingUI/SFCollectionViewDelegateLayout-Protocol.h>
-
 @class NSString, SFAirDropActiveIconView, SFCollectionViewLayout, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface SFAirDropInstructionsViewController : UIViewController <SFCollectionViewDelegateLayout>
+@interface SFAirDropInstructionsViewController : UIViewController
 {
     SFCollectionViewLayout *_collectionViewLayout;
     struct CGSize _minimumPreferredContentSize;

@@ -6,11 +6,14 @@
 
 #import <XCTestCore/XCTActivity-Protocol.h>
 #import <XCTestCore/XCTWaiterDelegate-Protocol.h>
+#import <XCTestCore/XCTestCaseDiscoveryUIAutomationDelegate-Protocol.h>
+#import <XCTestCore/XCTestCaseUIAutomationDelegate-Protocol.h>
+#import <XCTestCore/XCTestCastMethodNamesUIAutomationDelegate-Protocol.h>
 
 @class MXMInstrument, NSArray, NSDictionary, NSInvocation, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSThread, XCTAttachmentManager, XCTIssue, XCTMetricDiagnosticHelper, XCTSkippedTestContext, XCTTestIdentifier, XCTWaiter, XCTestCaseRun;
 @protocol OS_dispatch_source;
 
-@interface XCTestCase <XCTWaiterDelegate, XCTActivity>
+@interface XCTestCase <XCTWaiterDelegate, XCTestCaseUIAutomationDelegate, XCTestCastMethodNamesUIAutomationDelegate, XCTestCaseDiscoveryUIAutomationDelegate, XCTActivity>
 {
     _Bool _continueAfterFailure;
     _Bool __preciseTimeoutsEnabled;
@@ -43,7 +46,6 @@
     XCTAttachmentManager *_attachmentManager;
     NSObject<OS_dispatch_source> *_timeoutSource;
     unsigned long long _signpostID;
-    NSDictionary *_testRunConfiguration;
     NSThread *_primaryThread;
     NSMutableSet *_previousIssuesAssociatedWithSwiftErrors;
     NSMutableArray *_enqueuedIssues;
@@ -51,6 +53,7 @@
     XCTSkippedTestContext *_skippedTestContext;
     XCTestCaseRun *_testCaseRun;
     NSMutableDictionary *__perfMetricsForID;
+    NSDictionary *_testRunConfiguration;
 }
 
 + (id)_baselineDictionary;
@@ -59,6 +62,7 @@
 + (id)defaultMetrics;
 + (id)defaultPerformanceMetrics;
 + (CDStruct_2ec95fd7)minimumOperatingSystemVersion;
++ (_Bool)_isAvailable;
 + (_Bool)_reportPerformanceFailuresForLargeImprovements;
 + (id)_testInvocationDescriptors;
 + (id)testInvocations;
@@ -85,14 +89,15 @@
 + (id)allSubclassesOutsideXCTest;
 + (id)allSubclasses;
 + (id)_allSubclasses;
-+ (_Bool)runsForEachTargetApplicationUIConfiguration;
 - (void).cxx_destruct;
+@property(readonly, getter=_testRunConfiguration) NSDictionary *testRunConfiguration; // @synthesize testRunConfiguration=_testRunConfiguration;
 @property(retain) NSMutableDictionary *_perfMetricsForID; // @synthesize _perfMetricsForID=__perfMetricsForID;
 @property(retain) XCTestCaseRun *testCaseRun; // @synthesize testCaseRun=_testCaseRun;
+@property(nonatomic) _Bool hasAttemptedToCaptureScreenshotOnFailure; // @synthesize hasAttemptedToCaptureScreenshotOnFailure=_hasAttemptedToCaptureScreenshotOnFailure;
 @property(nonatomic) _Bool shouldSetShouldHaltWhenReceivesControl; // @synthesize shouldSetShouldHaltWhenReceivesControl=_shouldSetShouldHaltWhenReceivesControl;
 @property(nonatomic) _Bool shouldHaltWhenReceivesControl; // @synthesize shouldHaltWhenReceivesControl=_shouldHaltWhenReceivesControl;
+@property(retain, nonatomic) XCTSkippedTestContext *skippedTestContext; // @synthesize skippedTestContext=_skippedTestContext;
 @property(retain) NSThread *primaryThread; // @synthesize primaryThread=_primaryThread;
-@property(readonly, getter=_testRunConfiguration) NSDictionary *testRunConfiguration; // @synthesize testRunConfiguration=_testRunConfiguration;
 @property long long runLoopNestingCount; // @synthesize runLoopNestingCount=_runLoopNestingCount;
 @property _Bool _didStopMeasuring; // @synthesize _didStopMeasuring=__didStopMeasuring;
 @property _Bool _didStartMeasuring; // @synthesize _didStartMeasuring=__didStartMeasuring;
@@ -107,7 +112,7 @@
 @property unsigned long long maxDurationInMinutes;
 @property double executionTimeAllowance; // @synthesize executionTimeAllowance=_executionTimeAllowance;
 - (void)addAttachment:(id)arg1;
-- (void)runActivityNamed:(id)arg1 inScope:(CDUnknownBlockType)arg2;
+- (void)_addExpectation:(id)arg1;
 - (void)startActivityWithTitle:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)startActivityWithTitle:(id)arg1 type:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)measureMetrics:(id)arg1 automaticallyStartMeasuring:(_Bool)arg2 forBlock:(CDUnknownBlockType)arg3;
@@ -142,6 +147,7 @@
 - (_Bool)_shouldRepeatTest;
 - (_Bool)_testMethodSkippedWithXCTSkip;
 - (void)performTest:(id)arg1;
+- (void)conditionallyRelaunchTestRunnerProcess;
 - (void)_reportFailuresAtFile:(id)arg1 line:(unsigned long long)arg2 forTestAssertionsInScope:(CDUnknownBlockType)arg3;
 - (void)invokeTest;
 - (Class)testRunClass;
@@ -156,9 +162,10 @@
 - (id)nameForLegacyLogging;
 @property(readonly, copy) NSString *name;
 - (id)languageAgnosticTestMethodName;
-- (id)_identifier;
+- (id)_xctTestIdentifier;
 - (unsigned long long)testCaseCount;
 - (id)initWithSelector:(SEL)arg1;
+@property(readonly) _Bool shouldRelaunchBeforeRunningTest;
 - (id)_duplicate;
 - (id)initWithInvocation:(id)arg1;
 - (id)init;
@@ -180,7 +187,6 @@
 - (void)_interruptOrMarkForLaterInterruption;
 - (_Bool)_caughtUnhandledDeveloperExceptionPermittingControlFlowInterruptions:(_Bool)arg1 caughtInterruptionException:(_Bool *)arg2 whileExecutingBlock:(CDUnknownBlockType)arg3;
 - (_Bool)_caughtUnhandledDeveloperExceptionPermittingControlFlowInterruptions:(_Bool)arg1 whileExecutingBlock:(CDUnknownBlockType)arg2;
-- (id)_issueWithFailureScreenshotAttachedToIssue:(id)arg1;
 - (void)_handleIssue:(id)arg1;
 - (void)_dequeueIssues;
 - (void)_enqueueIssue:(id)arg1;
@@ -190,8 +196,6 @@
 @property(copy) XCTIssue *candidateIssueForCurrentThread;
 - (id)_storageKeyForCandidateIssue;
 - (void)handleIssue:(id)arg1;
-- (void)removeUIInterruptionMonitor:(id)arg1;
-- (id)addUIInterruptionMonitorWithDescription:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)recordFailureWithDescription:(id)arg1 inFile:(id)arg2 atLine:(unsigned long long)arg3 expected:(_Bool)arg4;
 
 // Remaining properties

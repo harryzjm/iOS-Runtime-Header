@@ -6,13 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <SharingUI/SFAirDropViewServiceHostProtocol-Protocol.h>
-
 @class NSString;
 @protocol SFAirDropViewServiceHostProtocol;
 
 __attribute__((visibility("hidden")))
-@interface _SFAirDropRemoteViewController : _UIRemoteViewController <SFAirDropViewServiceHostProtocol>
+@interface _SFAirDropRemoteViewController : _UIRemoteViewController
 {
     id <SFAirDropViewServiceHostProtocol> _airDropHost;
 }
@@ -25,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)airDropViewServiceRequestingSharedItemsWithDataRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)airDropViewServiceDidFinishTransferWithSuccess:(_Bool)arg1;
 - (void)airDropViewServiceDidStartTransfer;
+- (void)airDropViewServiceWillStartTransferToRecipient:(id)arg1;
 - (id)airDropExtensionService;
 
 // Remaining properties

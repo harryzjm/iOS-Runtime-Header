@@ -4,21 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
-};
 
 struct chunk_s {
     unsigned int _field1;
@@ -26,10 +12,6 @@ struct chunk_s {
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned long long s[2];
-} CDStruct_9981aeec;
 
 typedef struct {
     unsigned int _field1;

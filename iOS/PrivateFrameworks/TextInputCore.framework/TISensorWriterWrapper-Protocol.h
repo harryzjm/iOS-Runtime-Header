@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, TISKSessionSamples;
+@class NSData, NSDate, TISKSessionSamples;
 
 @protocol TISensorWriterWrapper
-- (void)write:(NSData *)arg1;
+- (void)write:(NSData *)arg1 withTimeStamp:(NSDate *)arg2;
 - (_Bool)isReady;
 
 @optional

@@ -6,10 +6,10 @@
 
 #import <CloudDocsDaemon/BRCancellable-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class BRFileObjectID, NSArray, NSString;
 
 @protocol BRItemNotificationSending <BRCancellable>
-- (void)watchItemAtURL:(NSURL *)arg1 options:(unsigned short)arg2 gatherReply:(void (^)(NSError *))arg3;
+- (void)watchItemWithFileObjectID:(BRFileObjectID *)arg1 options:(unsigned short)arg2 gatherReply:(void (^)(NSError *))arg3;
 - (void)watchItemsNamesPrefixedBy:(NSString *)arg1 inScopes:(unsigned short)arg2 appLibraryIDs:(NSArray *)arg3 gatherReply:(void (^)(NSError *))arg4;
 - (void)watchScopes:(unsigned short)arg1 gatherReply:(void (^)(NSError *))arg2;
 - (void)watchScopes:(unsigned short)arg1 appLibraryIDs:(NSArray *)arg2 gatherReply:(void (^)(NSError *))arg3;

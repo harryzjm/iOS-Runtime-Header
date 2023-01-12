@@ -6,12 +6,10 @@
 
 #import <MediaPlayer/MPVolumeSlider.h>
 
-#import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
-
 @class MTVisualStylingProvider, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsVolumeSlider : MPVolumeSlider <MTVisualStylingProviderObservingPrivate>
+@interface MediaControlsVolumeSlider : MPVolumeSlider
 {
     MTVisualStylingProvider *_visualStylingProvider;
 }

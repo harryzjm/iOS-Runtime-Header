@@ -6,10 +6,11 @@
 
 #import <NotesShared/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSManagedObjectContext, NSManagedObjectID, NSString;
+@class NSArray, NSDate, NSManagedObjectContext, NSManagedObjectID, NSPredicate, NSString;
 @protocol ICLegacyAccount, ICLegacyAttachment, ICLegacyFolder;
 
 @protocol ICLegacyNote <NSObject>
++ (NSPredicate *)predicateForVisibleNotes;
 @property(readonly, nonatomic) _Bool isDeletedOrInTrash;
 @property(readonly, nonatomic) _Bool isMarkedForDeletion;
 @property(readonly, nonatomic) _Bool isPlainText;
@@ -22,6 +23,7 @@
 @property(readonly, copy, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) id <ICLegacyFolder> folder;
 @property(readonly, nonatomic) id <ICLegacyAccount> account;
+@property(readonly, nonatomic) NSString *contentAsPlainText;
 @property(copy, nonatomic) NSString *htmlString;
 - (void)markForDeletion;
 - (id <ICLegacyAttachment>)createAttachmentWithName:(NSString *)arg1;

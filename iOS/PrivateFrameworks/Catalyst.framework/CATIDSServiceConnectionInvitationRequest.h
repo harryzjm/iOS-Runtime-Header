@@ -14,16 +14,16 @@ __attribute__((visibility("hidden")))
 {
     NSUUID *_invitationIdentifier;
     NSString *_appleID;
-    id <CATCancelable> _networkPowerAssertion;
+    id <CATCancelable> _assertion;
     NSDictionary *_userInfo;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
-@property(readonly, nonatomic) id <CATCancelable> networkPowerAssertion; // @synthesize networkPowerAssertion=_networkPowerAssertion;
+@property(readonly, nonatomic) id <CATCancelable> assertion; // @synthesize assertion=_assertion;
 @property(readonly, copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property(readonly, nonatomic) NSUUID *invitationIdentifier; // @synthesize invitationIdentifier=_invitationIdentifier;
-- (id)initWithInvitationIdentifier:(id)arg1 appleID:(id)arg2 networkPowerAssertion:(id)arg3 userInfo:(id)arg4;
+- (id)initWithInvitationIdentifier:(id)arg1 appleID:(id)arg2 assertion:(id)arg3 userInfo:(id)arg4;
 
 @end
 

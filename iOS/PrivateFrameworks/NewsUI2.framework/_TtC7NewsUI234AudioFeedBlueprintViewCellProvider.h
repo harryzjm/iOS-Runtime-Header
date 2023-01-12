@@ -11,15 +11,9 @@
 @interface _TtC7NewsUI234AudioFeedBlueprintViewCellProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *dailyBriefingRenderer;
-    MISSING_TYPE *audioTrackRenderer;
-    MISSING_TYPE *audioActionHandler;
-    MISSING_TYPE *audioFeedPlacardRenderer;
-    MISSING_TYPE *playbackState;
-    MISSING_TYPE *listeningProgressManager;
-    MISSING_TYPE *tracker;
-    MISSING_TYPE *audioPlaybackContext;
-    MISSING_TYPE *router;
+    MISSING_TYPE *baseStyler;
+    MISSING_TYPE *feedItemRenderer;
+    MISSING_TYPE *blueprintProvider;
 }
 
 @end

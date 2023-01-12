@@ -10,6 +10,8 @@ __attribute__((visibility("hidden")))
 @interface AMSMescalFairPlay : NSObject
 {
     _Bool _complete;
+    struct FPSAPContextOpaque_ *_context;
+    long long _mescalType;
 }
 
 @property(readonly, nonatomic, getter=isComplete) _Bool complete; // @synthesize complete=_complete;

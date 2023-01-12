@@ -18,6 +18,5 @@
 - (void)co_flushQueue;
 - (void)co_enqueueOperation:(id)arg1;
 - (void)co_withLock:(CDUnknownBlockType)arg1;
-- (Class)co_DistantAccessorySettingClass;
 @end
 

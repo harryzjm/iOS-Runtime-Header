@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <MLAssetIO/MIOModeling-Protocol.h>
-
 @class MIOModelDescription, MIOParserContext, MIOVersionInfo, NSArray, NSData, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MIOSpecificationModel : NSObject <MIOModeling>
+@interface MIOSpecificationModel : NSObject
 {
+    struct unique_ptr<MIL::IRProgram, std::default_delete<MIL::IRProgram>> _irProgram;
     MIOVersionInfo *_specificationVersion;
     NSString *_modelTypeName;
     MIOModelDescription *_modelDescription;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
     MIOParserContext *_parserContext;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) MIOParserContext *parserContext; // @synthesize parserContext=_parserContext;
 @property(readonly, copy, nonatomic) NSData *specificationData; // @synthesize specificationData=_specificationData;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) void *irProgram;
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;
 - (id)initWithMessageStream:(struct CodedInputStream *)arg1 parserContext:(id)arg2 error:(id *)arg3;
 - (id)initWithSpecificationData:(id)arg1 parserContext:(id)arg2 error:(id *)arg3;

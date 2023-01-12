@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOAbstractMapServiceTicket.h"
+
 @class GEOBatchRevGeocodeRequest;
 
 __attribute__((visibility("hidden")))
-@interface _GEOLegacyBatchReverseGeocodeTicket
+@interface _GEOLegacyBatchReverseGeocodeTicket : GEOAbstractMapServiceTicket
 {
     GEOBatchRevGeocodeRequest *_batchReverseGeocodeRequest;
     CDUnknownBlockType _locationShifter;

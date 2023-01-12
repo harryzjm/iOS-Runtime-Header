@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSMutableArray;
 
-@interface CKDPFetchArchivedRecordsResponse : PBCodable <NSCopying>
+@interface CKDPFetchArchivedRecordsResponse : PBCodable
 {
     NSData *_archiveContinuationToken;
     NSMutableArray *_records;

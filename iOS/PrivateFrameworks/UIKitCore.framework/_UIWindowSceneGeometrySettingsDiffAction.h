@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneSettingsDiffAction-Protocol.h>
-
 @class NSString, UIApplicationSceneSettingsDiffInspector;
 
 __attribute__((visibility("hidden")))
-@interface _UIWindowSceneGeometrySettingsDiffAction : NSObject <_UISceneSettingsDiffAction>
+@interface _UIWindowSceneGeometrySettingsDiffAction : NSObject
 {
     UIApplicationSceneSettingsDiffInspector *_sceneSettingsGeometryMutationDiffInspector;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIApplicationSceneSettingsDiffInspector *sceneSettingsGeometryMutationDiffInspector; // @synthesize sceneSettingsGeometryMutationDiffInspector=_sceneSettingsGeometryMutationDiffInspector;
-- (void)_updateSceneGeometryWithSettingObserverContext:(CDStruct_8a1bf2a3)arg1 windowScene:(id)arg2 transitionContext:(id)arg3;
+- (void)_updateSceneGeometryWithSettingObserverContext:(CDStruct_d8808cea)arg1 windowScene:(id)arg2 transitionContext:(id)arg3;
 - (void)_performActionsForUIScene:(id)arg1 withUpdatedFBSScene:(id)arg2 settingsDiff:(id)arg3 fromSettings:(id)arg4 transitionContext:(id)arg5 lifecycleActionType:(unsigned int)arg6;
 
 // Remaining properties

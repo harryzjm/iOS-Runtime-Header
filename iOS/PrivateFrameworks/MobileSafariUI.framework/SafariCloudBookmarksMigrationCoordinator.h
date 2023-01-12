@@ -6,12 +6,10 @@
 
 #import <SafariSharedUI/WBSCloudBookmarksMigrationCoordinator.h>
 
-#import <MobileSafariUI/WBSCloudBookmarksMigrationCoordinatorLocalDataProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SafariCloudBookmarksMigrationCoordinator : WBSCloudBookmarksMigrationCoordinator <WBSCloudBookmarksMigrationCoordinatorLocalDataProvider>
+@interface SafariCloudBookmarksMigrationCoordinator : WBSCloudBookmarksMigrationCoordinator
 {
 }
 

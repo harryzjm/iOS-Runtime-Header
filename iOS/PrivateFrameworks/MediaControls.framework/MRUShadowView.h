@@ -6,11 +6,22 @@
 
 #import <UIKit/UIView.h>
 
+@class UIColor;
+
 __attribute__((visibility("hidden")))
 @interface MRUShadowView : UIView
 {
+    float _opacity;
+    UIColor *_color;
+    double _radius;
+    struct CGSize _offset;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) float opacity; // @synthesize opacity=_opacity;
+@property(nonatomic) double radius; // @synthesize radius=_radius;
+@property(nonatomic) struct CGSize offset; // @synthesize offset=_offset;
+@property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

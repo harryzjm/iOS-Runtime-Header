@@ -16,7 +16,7 @@
 @property(readonly, nonatomic) SBFolderController *folderController;
 @property(nonatomic) __weak id <SBHomeScreenIconTransitionAnimatorDelegate> homeScreenIconTransitionAnimatorDelegate;
 @property(retain, nonatomic) SBHIconImageCache *iconImageCache;
-@property(nonatomic) __weak id <SBIconListLayoutProvider> listLayoutProvider;
+@property(retain, nonatomic) id <SBIconListLayoutProvider> listLayoutProvider;
 @property(nonatomic) __weak id <SBIconViewProviding> iconViewProvider;
 @property(retain, nonatomic) SBHIconModel *iconModel;
 @end

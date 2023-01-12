@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICDelegationPlayInfoRequest : NSObject <NSCopying>
+@interface ICDelegationPlayInfoRequest : NSObject
 {
     NSString *_playerDeviceGUID;
     NSArray *_tokenRequests;

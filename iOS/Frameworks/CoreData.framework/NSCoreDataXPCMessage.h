@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCoding-Protocol.h>
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSCoreDataXPCMessage : NSObject <NSCoding, NSSecureCoding>
+@interface NSCoreDataXPCMessage : NSObject
 {
     unsigned long long _messageCode;
+    _Bool _allowAncillary;
     NSData *_messageBody;
     NSString *_token;
     NSString *_contextName;

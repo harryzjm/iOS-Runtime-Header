@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class GQDColor, GQDRStrokePattern, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDRStroke : NSObject <GQDNameMappable>
+@interface GQDRStroke : NSObject
 {
     float mMiterLimit;
     float mWidth;

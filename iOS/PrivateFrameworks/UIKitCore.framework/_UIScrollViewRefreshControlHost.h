@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIRefreshControlHosting-Protocol.h>
-
 @class NSString, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface _UIScrollViewRefreshControlHost : NSObject <_UIRefreshControlHosting>
+@interface _UIScrollViewRefreshControlHost : NSObject
 {
     UIScrollView *_scrollView;
     _Bool _refreshControlAutomaticContentOffsetAdjustmentEnabledNeedsReset;

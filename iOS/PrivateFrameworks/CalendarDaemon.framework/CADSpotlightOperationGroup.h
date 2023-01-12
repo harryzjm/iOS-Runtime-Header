@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CADOperationGroup.h"
+
 __attribute__((visibility("hidden")))
-@interface CADSpotlightOperationGroup
+@interface CADSpotlightOperationGroup : CADOperationGroup
 {
 }
 
 + (id)whitelistedBundles;
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
 - (void)CADWaitForSpotlightUpdatesWithReply:(CDUnknownBlockType)arg1;
-- (id)_gatherAllCalendarItemUUIDs;
+- (id)_gatherAllCalendarItemUUIDsInDatbase:(struct CalDatabase *)arg1;
 - (void)CADPushItemsToSpotlight:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (_Bool)accessGrantedToPerformSelector:(SEL)arg1;
+- (_Bool)accessGranted;
 
 @end
 

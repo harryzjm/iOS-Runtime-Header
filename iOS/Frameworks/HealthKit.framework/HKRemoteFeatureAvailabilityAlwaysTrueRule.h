@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthKit/HKRemoteFeatureAvailabilityRule-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HKRemoteFeatureAvailabilityAlwaysTrueRule : NSObject <HKRemoteFeatureAvailabilityRule>
+@interface HKRemoteFeatureAvailabilityAlwaysTrueRule : NSObject
 {
 }
 

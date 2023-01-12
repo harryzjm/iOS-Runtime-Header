@@ -6,24 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@protocol MRULockScreenMonitorDelegate;
+@class NSArray, NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface MRULockScreenMonitor : NSObject
 {
     _Bool _deviceLocked;
     int _mobileKeyBagLockStatusNotifyToken;
-    id <MRULockScreenMonitorDelegate> _delegate;
+    NSHashTable *_weakObservers;
 }
 
++ (id)sharedMonitor;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSHashTable *weakObservers; // @synthesize weakObservers=_weakObservers;
 @property(nonatomic) int mobileKeyBagLockStatusNotifyToken; // @synthesize mobileKeyBagLockStatusNotifyToken=_mobileKeyBagLockStatusNotifyToken;
 @property(readonly, nonatomic, getter=isDeviceLocked) _Bool deviceLocked; // @synthesize deviceLocked=_deviceLocked;
-@property(nonatomic) __weak id <MRULockScreenMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)updateDeviceLocked;
 - (void)setDeviceLocked:(_Bool)arg1;
+@property(readonly, nonatomic) NSArray *observers;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
+- (id)_init;
 
 @end
 

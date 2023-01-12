@@ -6,11 +6,9 @@
 
 #import <TSDrawables/TSDGroupLayout.h>
 
-#import <TSText/TSWPStyleProviding-Protocol.h>
-
 @class NSString;
 
-@interface TSDGroupLayout (TSWPAdditions) <TSWPStyleProviding>
+@interface TSDGroupLayout (TSWPAdditions)
 - (_Bool)tswp_shouldProvideStylesForLayout:(id)arg1;
 - (_Bool)wantsToProvideStylesForTextLayout:(id)arg1;
 - (id)styleProviderForTextLayout:(id)arg1;

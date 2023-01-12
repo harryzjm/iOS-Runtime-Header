@@ -39,6 +39,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *inputs;
 @property(nonatomic) long long singlePassMediaDataSize;
 @property(nonatomic) long long singlePassFileSize;
+@property(nonatomic) _Bool usesVirtualCaptureCard;
+@property(readonly, nonatomic, getter=isVirtualCaptureCardSupported) _Bool virtualCaptureCardSupported;
 @property(nonatomic) _Bool producesCombinableFragments;
 @property(nonatomic) long long initialMovieFragmentSequenceNumber;
 @property(copy, nonatomic) NSString *outputFileTypeProfile;

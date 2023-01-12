@@ -9,6 +9,7 @@
 @protocol SFXPCInterface
 
 @optional
+- (void)pairedWatchWristStateChanged:(long long)arg1;
 - (void)userNotificationDictionaryResponse:(NSDictionary *)arg1;
 - (void)userNotificationTextResponse:(NSString *)arg1;
 - (void)userNotificationResponse:(int)arg1;

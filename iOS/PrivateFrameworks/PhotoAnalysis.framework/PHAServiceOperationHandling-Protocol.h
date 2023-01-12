@@ -6,9 +6,10 @@
 
 #import <PhotoAnalysis/NSObject-Protocol.h>
 
-@class PHAServiceCancelableOperation;
+@class NSXPCConnection, PHAServiceCancelableOperation;
 
 @protocol PHAServiceOperationHandling <NSObject>
+- (_Bool)validateOperation:(PHAServiceCancelableOperation *)arg1 forConnection:(NSXPCConnection *)arg2;
 - (void)handleOperation:(PHAServiceCancelableOperation *)arg1;
 @end
 

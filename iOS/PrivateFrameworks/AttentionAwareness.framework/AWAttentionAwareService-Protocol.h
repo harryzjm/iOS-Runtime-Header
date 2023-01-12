@@ -14,6 +14,6 @@
 - (void)setDebugPreference:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)getDebugPreferences:(void (^)(NSDictionary *))arg1;
 - (void)getSupportedEventsWithReply:(void (^)(unsigned long long))arg1;
-- (void)addClient:(id <AWFrameworkClient>)arg1 clientConfig:(AWAttentionAwarenessConfiguration *)arg2 clientIndex:(int)arg3 unitTestMode:(_Bool)arg4 reply:(void (^)(id <AWRemoteClient>, int, NSError *))arg5;
+- (void)addClient:(id <AWFrameworkClient>)arg1 clientConfig:(AWAttentionAwarenessConfiguration *)arg2 clientIndex:(int)arg3 unitTestMode:(_Bool)arg4 reply:(void (^)(id <AWRemoteClient>, int, NSError *))arg5 subscribeForStreamingEvents:(_Bool)arg6;
 @end
 

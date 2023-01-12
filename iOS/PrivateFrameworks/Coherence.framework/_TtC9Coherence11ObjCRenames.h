@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _TtC9Coherence11ObjCRenames : NSObject
 {
     MISSING_TYPE *renames;
@@ -15,11 +16,9 @@
 
 - (void).cxx_destruct;
 @property(nonatomic, readonly) NSString *description;
-- (void)addMappingWithReplica:(id)arg1 fromRange:(struct _NSRange)arg2;
-- (void)addMappingWithReplica:(id)arg1 from:(long long)arg2;
 - (id)renamedWithRange:(struct _NSRange)arg1 replica:(id)arg2;
+- (id)renamed:(id)arg1;
 - (id)renamed:(long long)arg1 replica:(id)arg2;
-- (id)renamedWithReplica:(id)arg1;
 - (id)init;
 @property(nonatomic, readonly) _Bool hasLocalRenames;
 @property(nonatomic, readonly) long long count;

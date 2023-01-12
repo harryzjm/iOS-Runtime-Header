@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import "UIViewController.h"
 
 @class NSArray, NSString, UIColor, UIScrollView, _UIButtonBar;
 
 __attribute__((visibility("hidden")))
-@interface _UIButtonGroupViewController <UIPopoverPresentationControllerDelegate>
+@interface _UIButtonGroupViewController : UIViewController
 {
     _UIButtonBar *_originalOwner;
     _UIButtonBar *_buttonBar;
@@ -23,12 +23,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(retain, nonatomic) UIColor *backgroundColor;
 - (_Bool)_canShowWhileLocked;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
-- (void)_cleanupForDismissal;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)dismissIfNecessary;
-- (id)initWithBarButtonItemGroups:(id)arg1 fromButtonBar:(id)arg2 createsPopoverLayoutGuides:(_Bool)arg3;
+- (id)initWithBarButtonItemGroups:(id)arg1 overLightKeyboard:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 

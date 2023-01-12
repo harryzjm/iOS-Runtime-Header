@@ -6,7 +6,7 @@
 
 #import <AppleMediaServicesUI/AMSUIWebModelInterface-Protocol.h>
 
-@class AMSMetricsEvent, AMSUIWebNavigationBarModel, NSString, UIViewController;
+@class AMSBinaryPromise, AMSMetricsEvent, AMSUIWebContainerViewController, AMSUIWebNavigationBarModel, NSString, UIViewController;
 @protocol AMSUIWebPagePresenter;
 
 @protocol AMSUIWebPageProvider <AMSUIWebModelInterface>
@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) AMSMetricsEvent *impressionEvent;
 @property(readonly, nonatomic) NSString *backgroundColor;
 @property(readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar;
-- (UIViewController<AMSUIWebPagePresenter> *)createViewController;
+- (AMSBinaryPromise *)loadPage;
+- (UIViewController<AMSUIWebPagePresenter> *)createViewControllerForContainer:(AMSUIWebContainerViewController *)arg1;
 @end
 

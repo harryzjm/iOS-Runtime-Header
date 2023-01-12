@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <StatusKitAgentCore/NSCopying-Protocol.h>
-
 @class AuthCredential, ChannelPublishPayload;
 
 __attribute__((visibility("hidden")))
-@interface SharedChannelPublishRequest : PBRequest <NSCopying>
+@interface SharedChannelPublishRequest : PBRequest
 {
     AuthCredential *_authCredential;
     ChannelPublishPayload *_channelPublishPayload;

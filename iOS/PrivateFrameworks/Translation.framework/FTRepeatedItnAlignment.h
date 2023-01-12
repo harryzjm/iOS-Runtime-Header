@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTRepeatedItnAlignment : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTRepeatedItnAlignment : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_9e06b00a)addObjectToBuffer:(void *)arg1;
+- (void)itn_alignment_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)itn_alignment_count;
+- (id)itn_alignment_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *itn_alignment;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct RepeatedItnAlignment *)arg2 verify:(_Bool)arg3;

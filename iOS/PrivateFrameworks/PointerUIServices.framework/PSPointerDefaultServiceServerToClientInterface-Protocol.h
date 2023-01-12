@@ -6,9 +6,11 @@
 
 #import <PointerUIServices/NSObject-Protocol.h>
 
-@class NSNumber, NSValue;
+@class NSNumber, NSSet, NSValue;
+@protocol __PSMatchMoveSource__, __PSPointerPortalSourceCollection__;
 
 @protocol PSPointerDefaultServiceServerToClientInterface <NSObject>
+- (oneway void)invalidatedPortalSourceCollections:(NSSet<__PSPointerPortalSourceCollection__> *)arg1 matchMoveSources:(NSSet<__PSMatchMoveSource__> *)arg2;
 - (oneway void)adjustedDecelerationTargetPointerPosition:(NSValue *)arg1 velocity:(NSValue *)arg2 inContextID:(NSNumber *)arg3 cursorRegionLookupRadius:(NSNumber *)arg4 cursorRegionLookupResolution:(NSNumber *)arg5 lookupConeAngle:(NSNumber *)arg6 completion:(void (^)(NSValue *, NSError *))arg7;
 - (oneway void)clientInteractionStateDidChange:(NSNumber *)arg1;
 @end

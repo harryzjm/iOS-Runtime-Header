@@ -17,6 +17,7 @@
 - (oneway void)setSharingScreen:(_Bool)arg1 attributes:(TUCallScreenShareAttributes *)arg2 forCallWithUniqueProxyIdentifier:(NSString *)arg3;
 - (oneway void)setScreenShareAttributesForCallWithUniqueProxyIdentifier:(NSString *)arg1 attributes:(TUCallScreenShareAttributes *)arg2;
 - (oneway void)setSharingScreen:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
+- (oneway void)setMixesVoiceWithMedia:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setIsSendingVideo:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setDownlinkMuted:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setUplinkMuted:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;

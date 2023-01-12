@@ -30,9 +30,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned char alignment; // @synthesize alignment=_alignment;
 @property(nonatomic) unsigned int displayID; // @synthesize displayID=_displayID;
 @property(readonly, nonatomic) const void *label; // @synthesize label=_label;
-@property(nonatomic) id <VKLabelNavFeature> navFeature; // @synthesize navFeature=_navFeature;
+@property(nonatomic) __weak id <VKLabelNavFeature> navFeature; // @synthesize navFeature=_navFeature;
 - (id)description;
 - (id)displayGroup;
+- (void)layoutForStagingWithNavContext:(struct NavContext *)arg1;
 - (void)layoutWithNavContext:(struct NavContext *)arg1;
 @property(readonly, nonatomic) _Bool isTrafficCameraLabel;
 @property(readonly, nonatomic) _Bool isEtaLabel;
@@ -41,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isRoadLabel;
 @property(readonly, nonatomic) _Bool isShieldLabel;
 @property(nonatomic) unsigned short renderOrder;
-- (void)dealloc;
 - (id)initWithNavFeature:(id)arg1 label:(const void *)arg2 navLabelType:(int)arg3;
 
 @end

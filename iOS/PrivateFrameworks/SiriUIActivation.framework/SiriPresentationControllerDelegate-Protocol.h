@@ -6,7 +6,7 @@
 
 #import <SiriUIActivation/NSObject-Protocol.h>
 
-@class SiriDismissalOptions, SiriPresentationOptions, SiriPunchoutRequest;
+@class NSString, SiriDismissalOptions, SiriPresentationOptions, SiriPunchoutRequest;
 @protocol SiriPresentation;
 
 @protocol SiriPresentationControllerDelegate <NSObject>
@@ -18,5 +18,7 @@
 - (void)siriPresentation:(id <SiriPresentation>)arg1 requestsPunchout:(SiriPunchoutRequest *)arg2 withHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)siriPresentation:(id <SiriPresentation>)arg1 setHomeAffordanceSuppression:(long long)arg2;
 - (void)siriPresentation:(id <SiriPresentation>)arg1 setShowsHomeAffordance:(_Bool)arg2;
+- (void)invalidateSystemApertureAssertionWithReason:(NSString *)arg1;
+- (void)restrictSystemApertureToDefaultLayoutWithReason:(NSString *)arg1;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <VideoSubscriberAccountUI/VSJSError-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSJSError : IKJSObject <VSJSError>
+@interface VSJSError : IKJSObject
 {
     unsigned long long _code;
     NSString *_message;

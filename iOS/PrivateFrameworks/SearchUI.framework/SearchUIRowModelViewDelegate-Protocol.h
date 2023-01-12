@@ -9,7 +9,7 @@
 @class SearchUIRowModel, UIView;
 
 @protocol SearchUIRowModelViewDelegate <NSObject>
-- (void)scrollToRowModel:(SearchUIRowModel *)arg1;
+- (void)scrollRowModelToVisible:(SearchUIRowModel *)arg1;
 - (UIView *)viewForRowModel:(SearchUIRowModel *)arg1;
 @end
 

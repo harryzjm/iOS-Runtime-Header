@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPBTransitScheduleLookupParameters, GEOPDAddressObjectGeocodingParameters, GEOPDAirportEntityPlaceLookupParameters, GEOPDAllCollectionsViewParameters, GEOPDAllGuidesLocationsViewParameters, GEOPDAutocompleteParameters, GEOPDBatchCategoryLookupParameters, GEOPDBatchMerchantLookupBrandParameters, GEOPDBatchPopularNearbySearchParameters, GEOPDBatchReverseGeocodingParameters, GEOPDBatchSpatialLookupParameters, GEOPDBrandLookupParameters, GEOPDCanonicalLocationSearchParameters, GEOPDCategorySearchParameters, GEOPDChildPlaceLookupByCategoryParameters, GEOPDCollectionSuggestionParameters, GEOPDExtendedGeoLookupParameters, GEOPDExternalTransitLookupParameters, GEOPDFeatureIdGeocodingParameters, GEOPDGeocodingParameters, GEOPDGroundViewLabelParameters, GEOPDGuidesHomeParameters, GEOPDIpGeoLookupParameters, GEOPDLocationDirectedSearchParameters, GEOPDMapsHomeParameters, GEOPDMapsIdentifierPlaceLookupParameters, GEOPDMapsSearchHomeParameters, GEOPDMerchantLookupParameters, GEOPDNearbySearchParameters, GEOPDPlaceCollectionLookupParameters, GEOPDPlaceLookupParameters, GEOPDPlaceQuestionnaireLookupParameters, GEOPDPlaceRefinementParameters, GEOPDPopularNearbySearchParameters, GEOPDPublisherViewParameters, GEOPDReverseGeocodingParameters, GEOPDSearchBrowseCategorySuggestionParameters, GEOPDSearchFieldPlaceholderParameters, GEOPDSearchParameters, GEOPDSearchZeroKeywordCategorySuggestionParameters, GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters, GEOPDSiriSearchParameters, GEOPDTerritoryLookupParameters, GEOPDTransitNearbyScheduleLookupParameters, GEOPDTransitVehiclePositionParameters, GEOPDVendorSpecificPlaceRefinementParameters, GEOPDWifiFingerprintParameters, PBDataReader, PBUnknownFields;
+@class GEOPBTransitScheduleLookupParameters, GEOPDAddressObjectGeocodingParameters, GEOPDAirportEntityPlaceLookupParameters, GEOPDAllCollectionsViewParameters, GEOPDAllGuidesLocationsViewParameters, GEOPDAutocompleteParameters, GEOPDBatchCategoryLookupParameters, GEOPDBatchMerchantLookupBrandParameters, GEOPDBatchPopularNearbySearchParameters, GEOPDBatchReverseGeocodingParameters, GEOPDBatchSpatialLookupParameters, GEOPDBrandLookupParameters, GEOPDCanonicalLocationSearchParameters, GEOPDCategorySearchParameters, GEOPDChildPlaceLookupByCategoryParameters, GEOPDCollectionSuggestionParameters, GEOPDExtendedGeoLookupParameters, GEOPDExternalTransitLookupParameters, GEOPDFeatureIdGeocodingParameters, GEOPDGeocodingParameters, GEOPDGroundViewLabelParameters, GEOPDGuidesHomeParameters, GEOPDIpGeoLookupParameters, GEOPDLocationDirectedSearchParameters, GEOPDMapsHomeParameters, GEOPDMapsIdentifierPlaceLookupParameters, GEOPDMapsSearchHomeParameters, GEOPDMerchantLookupParameters, GEOPDNearbySearchParameters, GEOPDPlaceCollectionLookupParameters, GEOPDPlaceLookupParameters, GEOPDPlaceQuestionnaireLookupParameters, GEOPDPlaceRefinementParameters, GEOPDPlacecardEnrichmentParameters, GEOPDPoiAtAddressLookupParameters, GEOPDPopularNearbySearchParameters, GEOPDPublisherViewParameters, GEOPDQueryUnderstandingParameters, GEOPDReverseGeocodingParameters, GEOPDSearchBrowseCategorySuggestionParameters, GEOPDSearchFieldPlaceholderParameters, GEOPDSearchParameters, GEOPDSearchZeroKeywordCategorySuggestionParameters, GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters, GEOPDSiriSearchParameters, GEOPDTerritoryLookupParameters, GEOPDTransitNearbyPaymentMethodLookupParameters, GEOPDTransitNearbyScheduleLookupParameters, GEOPDTransitVehiclePositionParameters, GEOPDVendorSpecificPlaceRefinementParameters, GEOPDWifiFingerprintParameters, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDPlaceRequestParameters : PBCodable <NSCopying>
+@interface GEOPDPlaceRequestParameters : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -48,8 +46,11 @@ __attribute__((visibility("hidden")))
     GEOPDPlaceLookupParameters *_placeLookupParameters;
     GEOPDPlaceQuestionnaireLookupParameters *_placeQuestionnaireLookupParameters;
     GEOPDPlaceRefinementParameters *_placeRefinementParameters;
+    GEOPDPlacecardEnrichmentParameters *_placecardEnrichmentParameters;
+    GEOPDPoiAtAddressLookupParameters *_poiAtAddressLookupParameters;
     GEOPDPopularNearbySearchParameters *_popularNearbySearchParameters;
     GEOPDPublisherViewParameters *_publisherViewParameters;
+    GEOPDQueryUnderstandingParameters *_queryUnderstandingParameters;
     GEOPDReverseGeocodingParameters *_reverseGeocodingParameters;
     GEOPDSearchFieldPlaceholderParameters *_searchFieldPlaceholderParameters;
     GEOPDSearchParameters *_searchParameters;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
     GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters *_searchZeroKeywordWithSearchResultsSuggestionParameters;
     GEOPDSiriSearchParameters *_siriSearchParameters;
     GEOPDTerritoryLookupParameters *_territoryLookupParameters;
+    GEOPDTransitNearbyPaymentMethodLookupParameters *_transitNearbyPaymentMethodLookupParameters;
     GEOPDTransitNearbyScheduleLookupParameters *_transitNearbyScheduleLookupParameters;
     GEOPBTransitScheduleLookupParameters *_transitScheduleLookupParameter;
     GEOPDTransitVehiclePositionParameters *_transitVehiclePositionParameters;
@@ -100,8 +102,11 @@ __attribute__((visibility("hidden")))
         unsigned int read_placeLookupParameters:1;
         unsigned int read_placeQuestionnaireLookupParameters:1;
         unsigned int read_placeRefinementParameters:1;
+        unsigned int read_placecardEnrichmentParameters:1;
+        unsigned int read_poiAtAddressLookupParameters:1;
         unsigned int read_popularNearbySearchParameters:1;
         unsigned int read_publisherViewParameters:1;
+        unsigned int read_queryUnderstandingParameters:1;
         unsigned int read_reverseGeocodingParameters:1;
         unsigned int read_searchFieldPlaceholderParameters:1;
         unsigned int read_searchParameters:1;
@@ -109,6 +114,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_searchZeroKeywordWithSearchResultsSuggestionParameters:1;
         unsigned int read_siriSearchParameters:1;
         unsigned int read_territoryLookupParameters:1;
+        unsigned int read_transitNearbyPaymentMethodLookupParameters:1;
         unsigned int read_transitNearbyScheduleLookupParameters:1;
         unsigned int read_transitScheduleLookupParameter:1;
         unsigned int read_transitVehiclePositionParameters:1;
@@ -132,7 +138,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 muid:(unsigned long long)arg3 resultProviderId:(int)arg4 contentProvider:(id)arg5;
 - (id)initWithSearchURLQuery:(id)arg1 identifier:(id)arg2;
-- (id)initWithSearchQuery:(id)arg1 entryMetadata:(id)arg2 metadata:(id)arg3 autocompleteEntry:(id)arg4 retainedSearch:(id)arg5 maxResults:(unsigned int)arg6 filters:(id)arg7 traits:(id)arg8 error:(id *)arg9;
+- (id)initWithSearchQuery:(id)arg1 entryMetadata:(id)arg2 metadata:(id)arg3 autocompleteEntry:(id)arg4 retainedSearch:(id)arg5 maxResults:(unsigned int)arg6 filters:(id)arg7 traits:(id)arg8 routeInfo:(id)arg9 error:(id *)arg10;
 - (id)initWithBrandMUID:(unsigned long long)arg1 traits:(id)arg2;
 - (id)initWithCanonicalLocationSearchQueryString:(id)arg1;
 - (id)initWithVendorSpecificPlaceRefinementParameters:(id)arg1 traits:(id)arg2;
@@ -148,7 +154,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 preserveOriginalLocation:(_Bool)arg2 floorOrdinal:(int)arg3;
 - (id)initWithExternalTransitStationCodes:(id)arg1 sourceID:(id)arg2 transactionDate:(id)arg3 transactionLocation:(id)arg4;
 - (id)initWithAirportCode:(id)arg1 terminalCode:(id)arg2 gateCode:(id)arg3 traits:(id)arg4;
-- (id)initWithMerchantCode:(id)arg1 rawMerchantCode:(id)arg2 industryCategory:(id)arg3 industryCode:(id)arg4 paymentNetwork:(id)arg5 transactionDate:(id)arg6 transactionLocation:(id)arg7 terminalId:(id)arg8 transactionCurrencyCode:(id)arg9 transactionType:(int)arg10 transactionId:(id)arg11 warsawMerchantDomain:(id)arg12 warsawMerchantName:(id)arg13 warsawMerchantId:(id)arg14 adamId:(id)arg15 merchantId:(id)arg16 merchantDoingBizAsName:(id)arg17 merchantEnhancedName:(id)arg18 merchantCity:(id)arg19 merchantRawCity:(id)arg20 merchantState:(id)arg21 merchantRawState:(id)arg22 merchantZip:(id)arg23 merchantAddress:(id)arg24 merchantRawAddress:(id)arg25 merchantCountryCode:(id)arg26 merchantType:(id)arg27 merchantCleanConfidenceLevel:(id)arg28 merchantAdditionalData:(id)arg29 merchantCanl:(id)arg30 brandFallbackSupported:(_Bool)arg31 isSettlement:(_Bool)arg32 isRefund:(_Bool)arg33 fuzzyMatched:(id)arg34 coarseLocationUsed:(id)arg35;
+- (id)initWithMerchantCode:(id)arg1 rawMerchantCode:(id)arg2 relyingPartyIdentifier:(id)arg3 industryCategory:(id)arg4 industryCode:(id)arg5 paymentNetwork:(id)arg6 transactionDate:(id)arg7 transactionLocation:(id)arg8 terminalId:(id)arg9 transactionCurrencyCode:(id)arg10 transactionType:(int)arg11 transactionId:(id)arg12 warsawMerchantDomain:(id)arg13 warsawMerchantName:(id)arg14 warsawMerchantId:(id)arg15 adamId:(id)arg16 merchantId:(id)arg17 merchantDoingBizAsName:(id)arg18 merchantEnhancedName:(id)arg19 merchantCity:(id)arg20 merchantRawCity:(id)arg21 merchantState:(id)arg22 merchantRawState:(id)arg23 merchantZip:(id)arg24 merchantAddress:(id)arg25 merchantRawAddress:(id)arg26 merchantCountryCode:(id)arg27 merchantType:(id)arg28 merchantCleanConfidenceLevel:(id)arg29 merchantAdditionalData:(id)arg30 merchantCanl:(id)arg31 brandFallbackSupported:(_Bool)arg32 isSettlement:(_Bool)arg33 isRefund:(_Bool)arg34 fuzzyMatched:(id)arg35 coarseLocationUsed:(id)arg36;
 - (id)initWithExternalBusinessID:(id)arg1 contentProvider:(id)arg2;
 - (id)initWithIdentifiers:(id)arg1 resultProviderID:(int)arg2;
 - (void)clearLocations;

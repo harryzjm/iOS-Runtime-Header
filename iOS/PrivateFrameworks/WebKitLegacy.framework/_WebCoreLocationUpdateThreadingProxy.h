@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKitLegacy/WebGeolocationCoreLocationUpdateListener-Protocol.h>
-
 @class WebGeolocationProviderIOS;
 
 __attribute__((visibility("hidden")))
-@interface _WebCoreLocationUpdateThreadingProxy : NSObject <WebGeolocationCoreLocationUpdateListener>
+@interface _WebCoreLocationUpdateThreadingProxy : NSObject
 {
     WebGeolocationProviderIOS *_provider;
 }

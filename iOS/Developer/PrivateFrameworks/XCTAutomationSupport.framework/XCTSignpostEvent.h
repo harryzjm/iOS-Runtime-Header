@@ -20,6 +20,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSignpostEvent:(id)arg1;
+- (id)initWithProcessID:(int)arg1;
 
 @end
 

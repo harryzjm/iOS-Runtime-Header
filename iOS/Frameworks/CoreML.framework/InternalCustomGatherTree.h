@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLCustomLayer-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface InternalCustomGatherTree : NSObject <MLCustomLayer>
+@interface InternalCustomGatherTree : NSObject
 {
     vector_cd3186ef _shape;
 }

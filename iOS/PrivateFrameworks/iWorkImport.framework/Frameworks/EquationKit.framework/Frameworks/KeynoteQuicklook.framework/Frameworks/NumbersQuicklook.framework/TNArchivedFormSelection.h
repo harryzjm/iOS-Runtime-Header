@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <NumbersQuicklook/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TNFormViewerSelection;
 
-@interface TNArchivedFormSelection : TSPObject <TSKArchivedSelection>
+@interface TNArchivedFormSelection : TSPObject
 {
     TNFormViewerSelection *_selection;
 }

@@ -6,13 +6,11 @@
 
 #import <Foundation/NSProxy.h>
 
-#import <RecapPerformanceTesting/RPTComposer-Protocol.h>
-
 @class NSString, RCPEventSenderProperties, RPTInteractionOptions;
 @protocol RCPEventStreamComposer;
 
 __attribute__((visibility("hidden")))
-@interface RPTDefaultPointerAndFingerInteroppingComposer : NSProxy <RPTComposer>
+@interface RPTDefaultPointerAndFingerInteroppingComposer : NSProxy
 {
     _Bool __usePointer;
     RPTInteractionOptions *_interactionOptions;
@@ -22,8 +20,8 @@ __attribute__((visibility("hidden")))
 
 + (id)composerWrapping:(id)arg1 withInteractionOptions:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, retain, nonatomic) id <RCPEventStreamComposer> forwardingTarget; // @synthesize forwardingTarget=_forwardingTarget;
 @property(readonly, nonatomic) _Bool _usePointer; // @synthesize _usePointer=__usePointer;
+@property(retain, nonatomic) id <RCPEventStreamComposer> forwardingTarget; // @synthesize forwardingTarget=_forwardingTarget;
 @property(nonatomic) struct CGPoint _currentlySetAbsolutePosition; // @synthesize _currentlySetAbsolutePosition=__currentlySetAbsolutePosition;
 @property(readonly, nonatomic) RPTInteractionOptions *interactionOptions; // @synthesize interactionOptions=_interactionOptions;
 - (void)forwardInvocation:(id)arg1;
@@ -51,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double defaultRadius; // @dynamic defaultRadius;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) double pointerFrequency; // @dynamic pointerFrequency;
 @property(retain, nonatomic) RCPEventSenderProperties *senderProperties; // @dynamic senderProperties;
 @property(readonly) Class superclass;
 @property(nonatomic) long long touchFrequency; // @dynamic touchFrequency;

@@ -9,7 +9,7 @@
 @class NSNumber;
 
 @protocol SBFTraitsPreferencesStageComponent <NSObject>
-@property(nonatomic) NSNumber *componentOrder;
+@property(readonly, nonatomic) NSNumber *componentOrder;
 - (long long)preferencesType;
 @end
 

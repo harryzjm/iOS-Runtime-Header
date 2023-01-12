@@ -42,25 +42,6 @@ struct AudioValueRange {
     double _field2;
 };
 
-struct CATransform3D {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
-    double _field8;
-    double _field9;
-    double _field10;
-    double _field11;
-    double _field12;
-    double _field13;
-    double _field14;
-    double _field15;
-    double _field16;
-};
-
 struct CGAffineTransform {
     double a;
     double b;
@@ -71,13 +52,13 @@ struct CGAffineTransform {
 };
 
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
@@ -94,45 +75,12 @@ struct NSEdgeInsets {
 
 struct OpaqueFigSimpleMutex;
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    _Bool _field5;
-    _Bool _field6;
-} CDStruct_157d85a6;
-
-typedef struct {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-} CDStruct_2a4d9400;
-
-typedef struct {
-    _Bool _field1;
-    long long _field2;
-} CDStruct_8f3a66c8;
-
-typedef struct {
-    double left;
-    double top;
-    double right;
-    double bottom;
-} CDStruct_1edcc8d7;
-
-typedef struct {
-    long long _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-} CDStruct_20587683;
+    int width;
+    int height;
+} CDStruct_79c71658;
 
 typedef struct {
     long long value;
@@ -140,11 +88,6 @@ typedef struct {
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
-
-typedef struct {
-    long long horizontalSpacing;
-    long long verticalSpacing;
-} CDStruct_43f4b5b8;
 
 typedef struct {
     CDStruct_1b6d18a9 start;
@@ -155,9 +98,4 @@ typedef struct {
     CDStruct_e83c9415 source;
     CDStruct_e83c9415 target;
 } CDStruct_82206317;
-
-typedef struct {
-    struct CGRect _field1;
-    struct CGRect _field2;
-} CDStruct_b7523c42;
 

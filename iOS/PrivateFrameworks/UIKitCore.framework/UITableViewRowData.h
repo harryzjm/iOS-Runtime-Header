@@ -24,13 +24,13 @@ __attribute__((visibility("hidden")))
     double _tableHeaderHeight;
     double _tableFooterHeight;
     double _heightForTableHeaderViewHiding;
+    long long _headerFooterPinningBehavior;
     struct {
         unsigned int tableHeaderHeightValid:1;
         unsigned int tableFooterHeightValid:1;
         unsigned int tableSidePaddingValid:1;
         unsigned int usesVariableMargins:1;
         unsigned int pinsTableHeaderView:1;
-        unsigned int useChromelessPinningBehavior:1;
     } _rowDataFlags;
     double _minimumRowHeight;
     double _rowSpacing;

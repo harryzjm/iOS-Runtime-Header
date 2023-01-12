@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <EventKitUI/EKDayOccurrenceViewDelegate-Protocol.h>
-#import <EventKitUI/EKUITintColorUpdateDelegate-Protocol.h>
-
 @class EKDayOccurrenceView, EKEvent, EKUIVisualEffectView, NSMutableArray, NSMutableDictionary, UIColor, UILabel, UIScrollView;
 @protocol EKDayAllDayViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKDayAllDayView : UIView <EKDayOccurrenceViewDelegate, EKUITintColorUpdateDelegate>
+@interface EKDayAllDayView : UIView
 {
     long long _orientation;
     NSMutableArray *_occurrenceViews;
@@ -67,7 +64,9 @@ __attribute__((visibility("hidden")))
 - (void)setAllDayLabelHighlighted:(_Bool)arg1;
 @property(readonly, nonatomic) double naturalHeight;
 - (double)_height;
-- (void)dayOccurrenceViewSelected:(id)arg1 atPoint:(struct CGPoint)arg2 wasTapped:(_Bool)arg3;
+- (id)selectedEventsForEditMenu;
+- (id)presentationControllerForEditMenu;
+- (void)dayOccurrenceViewSelected:(id)arg1 source:(unsigned long long)arg2;
 @property(nonatomic) _Bool showsSelection;
 @property(nonatomic) _Bool allowsOccurrenceSelection;
 - (id)occurrenceViews;

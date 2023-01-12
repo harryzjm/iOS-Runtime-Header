@@ -18,8 +18,8 @@
 @optional
 - (void)_replayDrawingCancelled;
 - (void)_replayDrawingEnded;
-- (void)_replayDrawingMoved:(CDStruct_6422aa5d)arg1;
-- (void)_replayDrawingBegan:(CDStruct_6422aa5d)arg1;
+- (void)_replayDrawingMoved:(CDStruct_fedef440)arg1;
+- (void)_replayDrawingBegan:(CDStruct_fedef440)arg1;
 - (_Bool)drawingShouldBegin:(NSSet *)arg1 withEvent:(UIEvent *)arg2;
 @end
 

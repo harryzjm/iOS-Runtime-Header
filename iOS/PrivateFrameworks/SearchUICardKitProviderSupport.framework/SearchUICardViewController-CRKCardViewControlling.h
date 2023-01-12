@@ -6,13 +6,10 @@
 
 #import <SearchUI/SearchUICardViewController.h>
 
-#import <SearchUICardKitProviderSupport/CRKCardViewControlling-Protocol.h>
-#import <SearchUICardKitProviderSupport/CRKFeedbackDelegate-Protocol.h>
-
 @class NSString, SUICKPFeedbackAdapter;
 @protocol CRCard, CRKCardSectionViewSourcing, CRKCardViewControllerDelegate;
 
-@interface SearchUICardViewController (CRKCardViewControlling) <CRKCardViewControlling, CRKFeedbackDelegate>
+@interface SearchUICardViewController (CRKCardViewControlling)
 - (void)cardSectionViewDidDisappearForCardSection:(id)arg1 withDisappearanceFeedback:(id)arg2;
 - (void)cardSectionViewDidAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardSectionViewWillAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;

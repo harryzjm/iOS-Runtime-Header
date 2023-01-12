@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/TSUiOSMemoryWarningFlushable-Protocol.h>
-
 @class NSString, TSUImage;
 
-@interface TSDImageFillCachedImage : NSObject <TSUiOSMemoryWarningFlushable>
+@interface TSDImageFillCachedImage : NSObject
 {
     CDUnknownBlockType mHandler;
     TSUImage *mCachedImage;

@@ -6,9 +6,11 @@
 
 #import <DataDetectorsUI/NSObject-Protocol.h>
 
-@class CalendarOccurrencesCollection, EKDayViewController, NSDate;
+@class CalendarOccurrencesCollection, EKCalendar, EKDayViewController, EKUIPasteboardManager, NSDate;
 
 @protocol EKDayViewControllerDataSource <NSObject>
+- (EKCalendar *)defaultCalendarForNewEvents;
+- (EKUIPasteboardManager *)pasteboardManagerForDayViewController:(EKDayViewController *)arg1;
 - (_Bool)dayViewControllerShouldRespondToApplicationDidBecomeActiveStateChange:(EKDayViewController *)arg1;
 - (CalendarOccurrencesCollection *)dayViewController:(EKDayViewController *)arg1 eventsForStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3;
 @end

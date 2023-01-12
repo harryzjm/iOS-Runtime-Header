@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPImage, LPImageViewStyle, LPPadding, LPPointUnit;
+@class LPImage, LPImageViewStyle, LPPadding, LPPointUnit, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface LPGlyphStyle : NSObject
@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     double _opacity;
     LPImageViewStyle *_imageStyle;
     LPPointUnit *_baselineOffset;
+    UIColor *_color;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 @property(retain, nonatomic) LPPointUnit *baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property(readonly, nonatomic) LPImageViewStyle *imageStyle; // @synthesize imageStyle=_imageStyle;
 @property(nonatomic) double opacity; // @synthesize opacity=_opacity;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIVisualEffectView.h"
+
 @class _UIBarBackgroundShadowContentImageView;
 
 __attribute__((visibility("hidden")))
-@interface _UIBarBackgroundShadowView
+@interface _UIBarBackgroundShadowView : UIVisualEffectView
 {
 }
 

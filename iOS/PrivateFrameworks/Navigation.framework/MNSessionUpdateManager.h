@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/GEOTransitRouteUpdaterDelegate-Protocol.h>
-
 @class GEOApplicationAuditToken, GEOComposedETARoute, GEODataRequestThrottlerToken, GEOETATrafficUpdateRequest, GEOLatLng, GEOTransitRouteUpdater, NSDate, NSError, NSMutableDictionary, NSString, NSTimer;
 @protocol MNSessionUpdateManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MNSessionUpdateManager : NSObject <GEOTransitRouteUpdaterDelegate>
+@interface MNSessionUpdateManager : NSObject
 {
     id <MNSessionUpdateManagerDelegate> _delegate;
     NSString *_requestingAppIdentifier;
@@ -47,21 +45,25 @@ __attribute__((visibility("hidden")))
 - (void)transitRouteUpdater:(id)arg1 willUpdateTransitForRouteIDs:(id)arg2;
 - (void)transitRouteUpdater:(id)arg1 didReceiveResponse:(id)arg2;
 - (void)transitRouteUpdater:(id)arg1 willSendRequests:(id)arg2;
+- (id)_serverDisplayETAForResponseInfo:(id)arg1;
 - (void)_handleETAResponse:(id)arg1 forRouteInfo:(id)arg2 etaRoute:(id)arg3;
+- (id)_updateWaypointsForRequest:(id)arg1 routeInfo:(id)arg2 userLocation:(id)arg3 etaRoute:(id)arg4;
 - (id)_updateETARequest:(id)arg1 withRouteInfo:(id)arg2 andUserLocation:(id)arg3;
 - (id)_baseETARequest;
 - (void)_sendETARequestWithRouteAttributes:(id)arg1;
 - (void)_sendETARequest;
 - (void)_updateRouteAttributesFor:(id)arg1 route:(id)arg2 updatedLocation:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_cancelPendingETARequest;
 - (void)_terminateETARequests;
 - (void)_continueETARequests;
 - (void)_scheduleETATimerWithInterval:(double)arg1;
 - (void)resumeUpdateRequestsForSubscriber:(id)arg1;
 - (void)pauseUpdateRequestsForSubscriber:(id)arg1;
 - (void)requestUpdateForETAUPosition:(id)arg1;
+- (void)requestImmediateUpdate;
 - (void)restartUpdateTimer;
 - (void)stopUpdateRequests;
-- (void)startUpdateRequestsForRoutes:(id)arg1 andNavigationType:(int)arg2;
+- (void)startUpdateRequestsForRoutes:(id)arg1 andNavigationType:(long long)arg2;
 - (void)dealloc;
 - (id)init;
 

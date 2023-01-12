@@ -7,11 +7,10 @@
 #import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 
 @class _UIFocusRegionContentAttributes;
-@protocol UICoordinateSpace;
 
 @protocol _UIFocusRegionContainerInternal <_UIFocusRegionContainer>
 
 @optional
-- (_UIFocusRegionContentAttributes *)_attributesForFocusRegionContentInCoordinateSpace:(id <UICoordinateSpace>)arg1;
+- (_UIFocusRegionContentAttributes *)_attributesForFocusRegionContent;
 @end
 

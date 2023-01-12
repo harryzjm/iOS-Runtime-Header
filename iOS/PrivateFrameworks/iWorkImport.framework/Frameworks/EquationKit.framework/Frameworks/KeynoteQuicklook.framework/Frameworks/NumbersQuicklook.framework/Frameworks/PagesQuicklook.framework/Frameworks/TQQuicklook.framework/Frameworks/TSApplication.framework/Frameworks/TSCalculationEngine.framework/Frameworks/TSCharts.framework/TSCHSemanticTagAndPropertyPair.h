@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCHStyleSemanticTag;
 
-@interface TSCHSemanticTagAndPropertyPair : NSObject <NSCopying>
+@interface TSCHSemanticTagAndPropertyPair : NSObject
 {
     int _property;
     TSCHStyleSemanticTag *_semanticTag;

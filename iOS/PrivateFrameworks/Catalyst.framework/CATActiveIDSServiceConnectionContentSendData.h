@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATActiveIDSServiceConnectionMessageContent-Protocol.h>
-
 @class NSData, NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CATActiveIDSServiceConnectionContentSendData : NSObject <CATActiveIDSServiceConnectionMessageContent>
+@interface CATActiveIDSServiceConnectionContentSendData : NSObject
 {
     struct _NSRange mSegmentRange;
     NSData *mUnderlyingDataSegment;

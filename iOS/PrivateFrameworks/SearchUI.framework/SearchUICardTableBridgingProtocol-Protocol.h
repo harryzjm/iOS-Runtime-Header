@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SearchUI/SearchUITableViewTesting-Protocol.h>
+#import <SearchUI/SearchUIViewTesting-Protocol.h>
 
-@class SFCard, SearchUITableModel, UIScrollView;
+@class SFCard, SearchUITableModel, UIScrollView, UITextField;
 @protocol SFFeedbackListener, SearchUICardViewDelegate, SearchUICommandDelegate, SearchUIResultsViewDelegate, SearchUISizingDelegate;
 
-@protocol SearchUICardTableBridgingProtocol <SearchUITableViewTesting>
+@protocol SearchUICardTableBridgingProtocol <SearchUIViewTesting>
+@property(readonly) struct CGSize collectionViewContentSize;
+@property(nonatomic) __weak UITextField *textField;
 @property(nonatomic) _Bool showsVerticalScrollIndicator;
 @property(nonatomic) _Bool dragInteractionEnabled;
 @property(nonatomic) _Bool threeDTouchEnabled;

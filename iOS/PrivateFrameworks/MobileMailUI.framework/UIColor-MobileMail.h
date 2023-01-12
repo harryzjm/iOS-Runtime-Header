@@ -14,6 +14,9 @@
 + (id)mailTodayFilterColor;
 + (id)mailMailboxPickerBackgroundColorForTraitCollection:(id)arg1;
 + (id)mailCellSelectionStateColorForInterfaceLevel:(long long)arg1;
++ (id)mailMessageListHighlightColor;
++ (id)mailMessageListBackgroundColor;
++ (id)mailFocusBannerTitleColor;
 + (id)mailMessageListSelectedRecipientColor;
 + (id)mailMessageListSelectedStatusIndicatorColor;
 + (id)mailMessageListSelectedAnnotationColor;
@@ -33,11 +36,13 @@
 + (id)mailConversationViewNoSelectedMessageViewBackgroundColor;
 + (id)mailTransferConversationViewBackgroundColor;
 + (id)mailHeaderSeparatorLayerColor;
++ (id)mailConversationViewFindOverlayColor;
 + (id)mailConversationViewCollapsedCellLabelColor;
 + (id)mailConversationViewCollapsedCellHighlightedBackgroundColor;
 + (id)mailConversationViewCollapsedCellBackgroundColor;
 + (id)mailConversationViewExpandedCellBackgroundColor;
 + (id)mailConversationViewBackgroundColor;
++ (id)mailSearchImageBorderColor;
 + (id)mailSplitViewBorderColor;
 + (id)mailPreviousDraftPickerHeaderTextColor;
 + (id)mailAccountCellTitleColor;
@@ -46,6 +51,8 @@
 + (id)mailSecondaryLabelDarkColor;
 + (id)mailSystemLightGrayColor;
 + (id)mailAppBackgroundColor;
++ (id)mailRemoveFollowUpColor;
++ (id)mailRemoveReminderColor;
 + (id)mailMoreButtonGrayColor;
 + (id)mailDarkGrayColor;
 + (id)mailTransparentLightGrayColor;

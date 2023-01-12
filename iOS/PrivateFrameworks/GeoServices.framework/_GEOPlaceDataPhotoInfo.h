@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOMapItemPhotoInfo-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceDataPhotoInfo : NSObject <GEOMapItemPhotoInfo>
+@interface _GEOPlaceDataPhotoInfo : NSObject
 {
     NSURL *_url;
     struct CGSize _size;

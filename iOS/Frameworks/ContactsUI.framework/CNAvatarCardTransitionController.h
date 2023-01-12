@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNAvatarCardTransitionController : NSObject <UIViewControllerTransitioningDelegate>
+@interface CNAvatarCardTransitionController : NSObject
 {
 }
 

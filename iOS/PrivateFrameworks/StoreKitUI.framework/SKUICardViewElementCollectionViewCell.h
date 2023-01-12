@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIAdvertisingSelectable-Protocol.h>
-#import <StoreKitUI/SKUIAdvertisingSelectionForardingTargetAction-Protocol.h>
-#import <StoreKitUI/SKUIPerspectiveView-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class CALayer, NSHashTable, NSMapTable, NSString, SKUIBackgroundImageWrapperForHorizontalLockup, SKUICardLayout, SKUICardViewElement, SKUISizeValue, SKUIViewElement, UIView;
 @protocol SKUIPerspectiveView;
 
 __attribute__((visibility("hidden")))
-@interface SKUICardViewElementCollectionViewCell <SKUIAdvertisingSelectable, SKUIAdvertisingSelectionForardingTargetAction, SKUIPerspectiveView, SKUIViewElementView>
+@interface SKUICardViewElementCollectionViewCell
 {
     NSHashTable *_artworkRelatedChildViewElementViews;
     id <SKUIPerspectiveView> _backgroundViewWithParallax;

@@ -17,10 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *soundIdentifier; // @synthesize soundIdentifier=_soundIdentifier;
-@property(readonly, nonatomic) NSString *featureExtractor; // @synthesize featureExtractor=_featureExtractor;
-@property(readonly, nonatomic) NSString *detectorHead; // @synthesize detectorHead=_detectorHead;
-- (id)initWithDetectorHead:(id)arg1 featureExtractor:(id)arg2 soundIdentifier:(id)arg3;
 
 @end
 

@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_currentNudgePressTypeByScene;
     NSMutableDictionary *_physicalButtonPressesMap;
     NSMapTable *_currentTouchByScene;
+    struct __CFDictionary *_touchMapsByWindow;
     long long _disableTouchCoalescingCount;
     NSMutableDictionary *_estimatedTouchRecordsByContextIDAndEstimationIndex;
     NSMutableArray *_estimatedTouchRecordsInIncomingOrder;

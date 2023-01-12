@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIKeyShortcutHUDCollectionViewManagerClient-Protocol.h>
-#import <UIKitCore/_UIKeyShortcutHUDSearchBarDelegate-Protocol.h>
-#import <UIKitCore/_UIKeyShortcutHUDSearchButtonDelegate-Protocol.h>
+#import "UIViewController.h"
 
-@class NSString, UICollectionView, UICollectionViewCellRegistration, UICollectionViewDiffableDataSource, UICollectionViewSupplementaryRegistration, UIPageControl, UIView, UIVisualEffectView, _UIKeyShortcutHUDCell, _UIKeyShortcutHUDCollectionViewManager, _UIKeyShortcutHUDIndexPath, _UIKeyShortcutHUDMenu, _UIKeyShortcutHUDMetrics, _UIKeyShortcutHUDSearchBar, _UIKeyShortcutHUDSearchButton, _UIKeyShortcutHUDSeparatorView;
+@class NSString, UICollectionView, UICollectionViewCellRegistration, UICollectionViewDiffableDataSource, UICollectionViewSupplementaryRegistration, UIKeyShortcutHUDMetrics, UIPageControl, UIView, UIVisualEffectView, _UIKeyShortcutHUDCell, _UIKeyShortcutHUDCollectionViewManager, _UIKeyShortcutHUDIndexPath, _UIKeyShortcutHUDMenu, _UIKeyShortcutHUDSearchBar, _UIKeyShortcutHUDSearchButton, _UIKeyShortcutHUDSeparatorView;
 @protocol _UIKeyShortcutHUDToolbarViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDToolbarViewController <_UIKeyShortcutHUDSearchButtonDelegate, _UIKeyShortcutHUDSearchBarDelegate, _UIKeyShortcutHUDCollectionViewManagerClient>
+@interface _UIKeyShortcutHUDToolbarViewController : UIViewController
 {
     _Bool _searching;
     _Bool _preparingSearchTransition;
@@ -20,7 +18,7 @@ __attribute__((visibility("hidden")))
     id <_UIKeyShortcutHUDToolbarViewControllerDelegate> _delegate;
     _UIKeyShortcutHUDCollectionViewManager *_collectionViewManager;
     _UIKeyShortcutHUDMenu *_menu;
-    _UIKeyShortcutHUDMetrics *_metrics;
+    UIKeyShortcutHUDMetrics *_metrics;
     _UIKeyShortcutHUDSearchButton *_searchButton;
     _UIKeyShortcutHUDSearchBar *_searchBar;
     UIVisualEffectView *_visualEffectView;
@@ -48,7 +46,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isSearching) _Bool searching; // @synthesize searching=_searching;
 @property(retain, nonatomic) _UIKeyShortcutHUDSearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property(retain, nonatomic) _UIKeyShortcutHUDSearchButton *searchButton; // @synthesize searchButton=_searchButton;
-@property(nonatomic) __weak _UIKeyShortcutHUDMetrics *metrics; // @synthesize metrics=_metrics;
+@property(nonatomic) __weak UIKeyShortcutHUDMetrics *metrics; // @synthesize metrics=_metrics;
 @property(nonatomic) __weak _UIKeyShortcutHUDMenu *menu; // @synthesize menu=_menu;
 @property(nonatomic) __weak _UIKeyShortcutHUDCollectionViewManager *collectionViewManager; // @synthesize collectionViewManager=_collectionViewManager;
 @property(nonatomic) __weak id <_UIKeyShortcutHUDToolbarViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -57,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)flashCategoryAtIndex:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)categoriesPageControlCurrentPageChanged:(id)arg1;
 - (void)selectCategory:(id)arg1 withCategoryIndex:(long long)arg2;
+- (void)hudWillBecomeHidden:(_Bool)arg1;
 - (void)searchButtonDidPress:(id)arg1;
 - (void)searchBar:(id)arg1 didUpdateSearchText:(id)arg2;
 - (void)searchBarDidPressCancelButton:(id)arg1;

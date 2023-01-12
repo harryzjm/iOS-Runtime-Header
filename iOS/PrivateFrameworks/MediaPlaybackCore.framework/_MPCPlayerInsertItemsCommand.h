@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlaybackCore/MPCPlayerInsertItemsCommand-Protocol.h>
-
 @class NSArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCPlayerInsertItemsCommand <MPCPlayerInsertItemsCommand>
+@interface _MPCPlayerInsertItemsCommand
 {
     _Bool _supportsCreateStation;
     NSArray *_devices;

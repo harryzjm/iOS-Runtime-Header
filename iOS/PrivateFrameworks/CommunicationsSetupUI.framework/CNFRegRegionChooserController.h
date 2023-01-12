@@ -6,17 +6,11 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <CommunicationsSetupUI/CNFRegRegionChooserDelegate-Protocol.h>
-#import <CommunicationsSetupUI/PSController-Protocol.h>
-#import <CommunicationsSetupUI/UISearchBarDelegate-Protocol.h>
-#import <CommunicationsSetupUI/UISearchControllerDelegate-Protocol.h>
-#import <CommunicationsSetupUI/UISearchResultsUpdating-Protocol.h>
-
 @class NSArray, NSString, PSRootController, PSSpecifier, UISearchController, UIViewController;
 @protocol CNFRegRegionChooserDelegate, PSController;
 
 __attribute__((visibility("hidden")))
-@interface CNFRegRegionChooserController : UITableViewController <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CNFRegRegionChooserDelegate, PSController>
+@interface CNFRegRegionChooserController : UITableViewController
 {
     NSString *_selectedRegionID;
     NSArray *_regionList;

@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
+@class NSString;
 
 @protocol PXStoryThumbnailActionPerformer
-- (void)fileRadarFomViewController:(NSObject *)arg1;
-- (void)featureLess;
+@property(nonatomic, copy) CDUnknownBlockType presentPlayerAction;
+- (void)showVisualDiagnostics;
+- (void)fileRadar;
+- (void)featureLess:(NSString *)arg1;
 - (void)deleteMemory;
 - (void)presentTitleEditor;
 - (void)presentShareSheet;
-- (void)toggleFavoriteState;
+- (void)setFavorite:(_Bool)arg1 completionHandler:(void (^)(_Bool))arg2;
 @end
 

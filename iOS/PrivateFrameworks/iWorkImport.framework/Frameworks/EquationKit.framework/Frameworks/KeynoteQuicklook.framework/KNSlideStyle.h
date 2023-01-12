@@ -6,6 +6,8 @@
 
 #import <TSStyles/TSSStyle.h>
 
+@class KNMotionBackgroundStyle;
+
 @interface KNSlideStyle : TSSStyle
 {
 }
@@ -16,6 +18,8 @@
 + (id)properties;
 + (void)createStylePresetInStylesheet:(id)arg1;
 - (struct CGSize)targetSizeForImageData:(id)arg1 associatedHint:(id)arg2;
+- (void)referencedStyleWasUpdated:(id)arg1;
+@property(readonly, nonatomic) KNMotionBackgroundStyle *motionBackgroundStyle;
 - (id)initWithContext:(id)arg1 name:(id)arg2 overridePropertyMap:(id)arg3 isVariation:(_Bool)arg4;
 - (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;

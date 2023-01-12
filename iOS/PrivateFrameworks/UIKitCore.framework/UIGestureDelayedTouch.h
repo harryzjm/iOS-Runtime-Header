@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UIGestureDelaying-Protocol.h>
 
 @class NSString, UIEvent, UITouch;
 
 __attribute__((visibility("hidden")))
-@interface UIGestureDelayedTouch : NSObject <NSCopying, _UIGestureDelaying>
+@interface UIGestureDelayedTouch : NSObject <NSCopying>
 {
     UITouch *_touch;
     UITouch *_stateWhenDelayed;

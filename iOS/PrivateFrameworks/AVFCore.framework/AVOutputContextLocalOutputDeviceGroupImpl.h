@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceGroupImpl-Protocol.h>
-
 @class AVOutputContext, AVOutputDevice, AVOutputDeviceGroup, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVOutputContextLocalOutputDeviceGroupImpl : NSObject <AVOutputDeviceGroupImpl>
+@interface AVOutputContextLocalOutputDeviceGroupImpl : NSObject
 {
     AVOutputContext *_outputContext;
     AVOutputDeviceGroup *_parentOutputDeviceGroup;

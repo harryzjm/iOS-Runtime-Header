@@ -4,8 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MISSING_TYPE;
+
 @interface _TtC7SwiftUI16BoldTextModifier
 {
+    MISSING_TYPE *isActive;
 }
 
 @end

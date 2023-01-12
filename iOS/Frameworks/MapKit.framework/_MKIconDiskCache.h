@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/GEOResourceManifestTileGroupObserver-Protocol.h>
-
 @class NSLock, NSMutableArray, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _MKIconDiskCache : NSObject <GEOResourceManifestTileGroupObserver>
+@interface _MKIconDiskCache : NSObject
 {
     NSURL *_directoryURL;
     NSObject<OS_dispatch_queue> *_storingQueue;

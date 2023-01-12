@@ -6,11 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <Silex/SXHostable-Protocol.h>
-
 @class NSString;
 
-@interface UIViewController (SXHostable) <SXHostable>
+@interface UIViewController (SXHostable)
 @property(readonly, nonatomic) unsigned long long viewingLocation;
 
 // Remaining properties

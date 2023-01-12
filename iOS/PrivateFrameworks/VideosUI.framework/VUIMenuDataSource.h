@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface VUIMenuDataSource : NSObject
 {
+    _Bool _hasGenresDataForCheckHasItemsOption;
     NSArray *_mainMenuItems;
     NSArray *_genreMenuItems;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasGenresDataForCheckHasItemsOption; // @synthesize hasGenresDataForCheckHasItemsOption=_hasGenresDataForCheckHasItemsOption;
 @property(retain, nonatomic) NSArray *genreMenuItems; // @synthesize genreMenuItems=_genreMenuItems;
 @property(retain, nonatomic) NSArray *mainMenuItems; // @synthesize mainMenuItems=_mainMenuItems;
 - (id)copyWithZone:(struct _NSZone *)arg1;

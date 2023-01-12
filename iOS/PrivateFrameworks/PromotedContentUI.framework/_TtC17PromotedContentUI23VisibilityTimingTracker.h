@@ -18,6 +18,11 @@
     MISSING_TYPE *visibilityTiming;
     MISSING_TYPE *visibilityTimingLock;
     MISSING_TYPE *hasImpressed;
+    MISSING_TYPE *frequencyStorageType;
+    MISSING_TYPE *searchAdsFacade;
+    MISSING_TYPE *visibilityStartedAt;
+    MISSING_TYPE *impressionTimer;
+    MISSING_TYPE *disableTimer;
 }
 
 @end

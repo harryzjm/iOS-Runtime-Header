@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/AIDAAccountManagerDelegate-Protocol.h>
-
 @class ACAccountStore, AIDAAccountManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIFamilyInviteManager : NSObject <AIDAAccountManagerDelegate>
+@interface VUIFamilyInviteManager : NSObject
 {
     ACAccountStore *_store;
     AIDAAccountManager *_accountManager;

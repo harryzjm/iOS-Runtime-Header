@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 @class NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface LSStashedAppMetadata : NSObject <NSSecureCoding>
+@interface LSStashedAppMetadata : NSObject
 {
     unsigned char _validationState;
     NSString *_exactBundleVersion;

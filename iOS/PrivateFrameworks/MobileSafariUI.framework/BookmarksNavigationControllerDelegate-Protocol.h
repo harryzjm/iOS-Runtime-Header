@@ -6,13 +6,14 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class BookmarksNavigationController, ContinuousReadingItem, WebBookmark;
-@protocol TabGroupProvider;
+@class BookmarksNavigationController, ContinuousReadingItem, NSObject, NSString, WebBookmark;
+@protocol TabGroupProvider, WBSTabItemSearchSupport;
 
 @protocol BookmarksNavigationControllerDelegate <NSObject>
 
 @optional
 @property(readonly, nonatomic) id <TabGroupProvider> tabGroupProvider;
+- (_Bool)bookmarksNavigationController:(BookmarksNavigationController *)arg1 tabItem:(NSObject<WBSTabItemSearchSupport> *)arg2 matchesSearchText:(NSString *)arg3;
 - (void)bookmarksNavigationController:(BookmarksNavigationController *)arg1 provideContextResponseWithBlock:(void (^)(CKContextResponse *))arg2;
 - (void)bookmarksNavigationControllerContentDidBecomeDirty:(BookmarksNavigationController *)arg1;
 - (_Bool)bookmarksNavigationControllerIsPresentedInsideBlankTab:(BookmarksNavigationController *)arg1;
@@ -20,7 +21,6 @@
 - (void)bookmarksNavigationControllerViewDidDisappear:(BookmarksNavigationController *)arg1;
 - (void)bookmarksNavigationControllerViewDidAppear:(BookmarksNavigationController *)arg1;
 - (void)bookmarksNavigationController:(BookmarksNavigationController *)arg1 editFavoritesGridViewBookmark:(WebBookmark *)arg2;
-- (long long)bookmarksNavigationControllerFavoritesGridViewLayoutType:(BookmarksNavigationController *)arg1;
 - (void)bookmarksNavigationController:(BookmarksNavigationController *)arg1 updateReadingListUnreadFilterShowingAllBookmarks:(_Bool)arg2;
 - (ContinuousReadingItem *)bookmarksNavigationControllerCurrentContinuousReadingItem:(BookmarksNavigationController *)arg1;
 - (void)bookmarksNavigationControllerDidTapOutsideFavorites:(BookmarksNavigationController *)arg1;

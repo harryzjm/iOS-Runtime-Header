@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/WKNavigationDelegatePrivate-Protocol.h>
-#import <SafariServices/_SFReaderControllerDelegate-Protocol.h>
-
 @class NSString, _SFReaderController;
 @protocol SFReaderEnabledWebViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFReaderEnabledWebViewController <_SFReaderControllerDelegate, WKNavigationDelegatePrivate>
+@interface SFReaderEnabledWebViewController
 {
     _SFReaderController *_readerController;
 }

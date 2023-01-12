@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSIndexPath;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationSerializableResults : NSObject <NSSecureCoding, NSCopying>
+@interface UIDictationSerializableResults : NSObject <NSCopying>
 {
     _Bool _fromKeyboard;
     _Bool _showMultilingualAlternatives;

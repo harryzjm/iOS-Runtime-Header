@@ -6,14 +6,9 @@
 
 #import <Contacts/CNContact.h>
 
-#import <CoreKnowledge/CKVocabularyItem-Protocol.h>
-
 @class NSString;
 
-@interface CNContact (CKVocabularyItem) <CKVocabularyItem>
-+ (_Bool)isDefaultLabel:(id)arg1;
-- (void)setIsMeCard:(_Bool)arg1;
-- (_Bool)isMeCard;
+@interface CNContact (CKVocabularyItem)
 - (void)setItemId:(id)arg1;
 - (id)itemId;
 

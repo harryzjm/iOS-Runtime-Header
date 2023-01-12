@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UITextViewRestorableScrollPosition : NSObject <NSCoding>
+@interface _UITextViewRestorableScrollPosition : NSObject
 {
     struct _NSRange _range;
     double _offsetInLine;

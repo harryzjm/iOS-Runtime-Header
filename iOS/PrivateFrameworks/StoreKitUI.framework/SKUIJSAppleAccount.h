@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIJSAppleAccount-Protocol.h>
-
 @class ACAccount, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSAppleAccount : NSObject <SKUIJSAppleAccount>
+@interface SKUIJSAppleAccount : NSObject
 {
     ACAccount *_account;
     ACAccount *_nativeAccount;

@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKit/CKSQLiteDelegate-Protocol.h>
-
-@interface CKPackageDBDelegate : NSObject <CKSQLiteDelegate>
+@interface CKPackageDBDelegate : NSObject
 {
 }
 

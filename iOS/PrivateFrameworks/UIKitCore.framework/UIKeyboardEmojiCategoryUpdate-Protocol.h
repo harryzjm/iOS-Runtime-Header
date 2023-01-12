@@ -9,7 +9,7 @@
 @class UIKeyboardEmojiKeyDisplayController;
 
 @protocol UIKeyboardEmojiCategoryUpdate <NSObject>
-@property(nonatomic) UIKeyboardEmojiKeyDisplayController *emojiKeyManager;
+@property(nonatomic) __weak UIKeyboardEmojiKeyDisplayController *emojiKeyManager;
 - (void)updateToCategory:(long long)arg1;
 
 @optional

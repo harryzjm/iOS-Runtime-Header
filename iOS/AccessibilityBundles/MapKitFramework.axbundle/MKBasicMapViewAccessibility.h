@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityAutomationHitTestReverseOrder;
 - (id)accessibilityCustomActions;
 - (id)accessibilityCustomRotors;
 - (id)accessibilityElements;

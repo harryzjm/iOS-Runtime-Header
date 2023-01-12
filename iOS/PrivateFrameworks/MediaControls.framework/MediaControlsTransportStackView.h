@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
-
 @class MPCPlayerResponse, MTVisualStylingProvider, MediaControlsTransportButton, NSString;
 @protocol MediaControlsActionsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsTransportStackView : UIView <MTVisualStylingProviderObservingPrivate>
+@interface MediaControlsTransportStackView : UIView
 {
     _Bool _empty;
     _Bool _shouldShowTVRemoteButton;

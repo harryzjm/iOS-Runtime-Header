@@ -6,12 +6,10 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-#import <MediaPlaybackCore/MPMiddlewareAutomaticDependencyOperation-Protocol.h>
-
 @class MPCPlaybackEngineMiddleware, MPCPlayerRequest, NSArray, NSError, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCPlaybackEngineMiddlewareOperation : MPAsyncOperation <MPMiddlewareAutomaticDependencyOperation>
+@interface MPCPlaybackEngineMiddlewareOperation : MPAsyncOperation
 {
     NSMapTable *_inputOperations;
     CDUnknownBlockType _invalidationHandler;

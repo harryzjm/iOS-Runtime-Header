@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *lock;
     MISSING_TYPE *platform;
+    MISSING_TYPE *remoteBrowsingEnvironmentBuilder;
     MISSING_TYPE *state;
 }
 

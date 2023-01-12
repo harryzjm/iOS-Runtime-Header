@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VMUCallTreeNode.h"
+
 @class NSCountedSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VMUCallTreeLeafNode
+@interface VMUCallTreeLeafNode : VMUCallTreeNode
 {
     NSCountedSet *_addresses;
     NSString *_combinedName;

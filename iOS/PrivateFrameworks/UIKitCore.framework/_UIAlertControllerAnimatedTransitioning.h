@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString, UIAlertController, UIInteractionProgress;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerAnimatedTransitioning : NSObject <UIViewControllerAnimatedTransitioning>
+@interface _UIAlertControllerAnimatedTransitioning : NSObject
 {
     _Bool _presentation;
     UIAlertController *_alertController;

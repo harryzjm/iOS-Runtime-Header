@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKRouteContextObserver-Protocol.h>
-
 @class NSString, VKRouteContext;
 
 __attribute__((visibility("hidden")))
-@interface VKRouteContextObserverThunk : NSObject <VKRouteContextObserver>
+@interface VKRouteContextObserverThunk : NSObject
 {
     void *_transitSupport;
-    struct _retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+    struct _retain_ptr<VKRouteContext *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_vptr$_retain_ptr;
         VKRouteContext *_obj;
-        struct _retain_objc _retain;
-        struct _release_objc _release;
+        struct _retain_objc_arc _retain;
+        struct _release_objc_arc _release;
     } _routeContext;
 }
 

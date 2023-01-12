@@ -6,9 +6,10 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NPKDoublePressDelegationAssertion;
+@class NPKDoublePressDelegationAssertion, NSString;
 
 @protocol NPKDoublePressDelegationAssertionDelegate <NSObject>
+- (void)doublePressDelegationAssertion:(NPKDoublePressDelegationAssertion *)arg1 didReceiveTerminalAuthenticationRequestForPassWithUniqueID:(NSString *)arg2;
 - (void)doublePressDelegationAssertionDidReceiveDelegatedDoublePressEvent:(NPKDoublePressDelegationAssertion *)arg1;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITouchForceObservationMessageReading-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UITouchForceObservationMessageReader : NSObject <_UITouchForceObservationMessageReading>
+@interface _UITouchForceObservationMessageReader : NSObject
 {
     _Bool _shouldFilterDueToSystemGestures;
     double _touchForce;

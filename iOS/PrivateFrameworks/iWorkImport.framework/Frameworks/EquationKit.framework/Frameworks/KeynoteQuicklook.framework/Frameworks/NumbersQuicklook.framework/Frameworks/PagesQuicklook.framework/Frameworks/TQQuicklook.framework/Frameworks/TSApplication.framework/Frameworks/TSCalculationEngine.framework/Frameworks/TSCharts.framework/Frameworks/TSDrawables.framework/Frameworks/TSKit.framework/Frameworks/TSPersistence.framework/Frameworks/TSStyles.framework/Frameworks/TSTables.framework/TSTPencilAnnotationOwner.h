@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCEFormulaOwning-Protocol.h>
-
 @class NSString, TSCECalculationEngine, TSTFormulaStore, TSTTableModel, TSUSparseArray;
 
-@interface TSTPencilAnnotationOwner : NSObject <TSCEFormulaOwning>
+@interface TSTPencilAnnotationOwner : NSObject
 {
     TSCECalculationEngine *_calculationEngine;
     TSTTableModel *_tableModel;

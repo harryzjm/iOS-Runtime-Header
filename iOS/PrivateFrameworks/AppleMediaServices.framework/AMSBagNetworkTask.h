@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServices/AMSURLProtocolDelegate-Protocol.h>
-#import <AppleMediaServices/NSURLSessionTaskDelegate-Protocol.h>
+#import "AMSTask.h"
 
 @class AMSProcessInfo, AMSURLSession, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSBagNetworkTask <NSURLSessionTaskDelegate, AMSURLProtocolDelegate>
+@interface AMSBagNetworkTask : AMSTask
 {
     AMSProcessInfo *_clientInfo;
     NSString *_profile;
@@ -26,7 +25,9 @@ __attribute__((visibility("hidden")))
 + (id)_setStorefrontFromURLResponse:(id)arg1 bagData:(id)arg2;
 + (id)_OSBuildTypeString;
 + (id)_deviceString;
++ (id)bagStorefrontPromiseForAccountMediaType:(id)arg1;
 + (id)bagStorefrontForAccountMediaType:(id)arg1;
++ (id)bagAccountPromiseForAccountMediaType:(id)arg1;
 + (id)bagAccountForAccountMediaType:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSCopying-Protocol.h>
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 @class NSURL;
 
 __attribute__((visibility("hidden")))
-@interface FSNode : NSObject <NSCopying, NSSecureCoding>
+@interface FSNode : NSObject
 {
     NSURL *_url;
     unsigned long long _cacheExpiration;
@@ -25,12 +22,18 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 + (id)_resolvedNodeFromAliasFile:(id)arg1 flags:(unsigned int)arg2 error:(id *)arg3;
 + (id)_resolvedURLFromAliasFile:(id)arg1 flags:(unsigned int)arg2 error:(id *)arg3;
++ (id)userDataVolumeNode;
 + (id)systemDataVolumeNode;
++ (id)prebootVolumeNode;
 + (id)rootVolumeNode;
 + (_Bool)canReadMetadataOfURL:(id)arg1 fromSandboxWithAuditToken:(const CDStruct_4c969caf *)arg2;
 + (_Bool)canWriteURL:(id)arg1 fromSandboxWithAuditToken:(const CDStruct_4c969caf *)arg2;
 + (_Bool)canReadURL:(id)arg1 fromSandboxWithAuditToken:(const CDStruct_4c969caf *)arg2;
++ (_Bool)canReadMetadataOfURL:(id)arg1 withAuditToken:(const CDStruct_4c969caf *)arg2;
++ (_Bool)canWriteURL:(id)arg1 withAuditToken:(const CDStruct_4c969caf *)arg2;
++ (_Bool)canReadURL:(id)arg1 withAuditToken:(const CDStruct_4c969caf *)arg2;
 + (_Bool)canAccessURL:(id)arg1 fromSandboxWithAuditToken:(const CDStruct_4c969caf *)arg2 operation:(const char *)arg3;
++ (_Bool)canAccessURL:(id)arg1 withAuditToken:(const CDStruct_4c969caf *)arg2 operation:(const char *)arg3;
 + (_Bool)getFileSystemRepresentation:(char [1024])arg1 forBookmarkData:(id)arg2;
 + (_Bool)isBookmarkDataFull:(id)arg1;
 + (_Bool)getVolumeIdentifier:(unsigned long long *)arg1 forBookmarkData:(id)arg2 error:(id *)arg3;
@@ -112,6 +115,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)canReadMetadataFromSandboxWithAuditToken:(const CDStruct_4c969caf *)arg1;
 - (_Bool)canWriteFromSandboxWithAuditToken:(const CDStruct_4c969caf *)arg1;
 - (_Bool)canReadFromSandboxWithAuditToken:(const CDStruct_4c969caf *)arg1;
+- (_Bool)canReadMetadataWithAuditToken:(const CDStruct_4c969caf *)arg1;
+- (_Bool)canWriteWithAuditToken:(const CDStruct_4c969caf *)arg1;
+- (_Bool)canReadWithAuditToken:(const CDStruct_4c969caf *)arg1;
 - (_Bool)setExtendedAttribute:(id)arg1 name:(id)arg2 options:(int)arg3 error:(id *)arg4;
 - (id)extendedAttributeWithName:(id)arg1 options:(int)arg2 error:(id *)arg3;
 - (id)initByResolvingBookmarkData:(id)arg1 relativeToNode:(id)arg2 bookmarkDataIsStale:(_Bool *)arg3 error:(id *)arg4;

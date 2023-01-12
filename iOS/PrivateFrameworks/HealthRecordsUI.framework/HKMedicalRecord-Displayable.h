@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKMedicalRecord.h>
 
-#import <HealthRecordsUI/HRWDDisplayable-Protocol.h>
-
 @class NSArray, NSDate, NSString;
 
-@interface HKMedicalRecord (Displayable) <HRWDDisplayable>
+@interface HKMedicalRecord (Displayable)
 - (id)meaningfulDateDisplayStringWithPreferredForm:(long long)arg1 showTime:(_Bool)arg2;
 - (id)sortDateTitle;
 @property(readonly, nonatomic) NSString *titleDisplayStringForDetailViewController;

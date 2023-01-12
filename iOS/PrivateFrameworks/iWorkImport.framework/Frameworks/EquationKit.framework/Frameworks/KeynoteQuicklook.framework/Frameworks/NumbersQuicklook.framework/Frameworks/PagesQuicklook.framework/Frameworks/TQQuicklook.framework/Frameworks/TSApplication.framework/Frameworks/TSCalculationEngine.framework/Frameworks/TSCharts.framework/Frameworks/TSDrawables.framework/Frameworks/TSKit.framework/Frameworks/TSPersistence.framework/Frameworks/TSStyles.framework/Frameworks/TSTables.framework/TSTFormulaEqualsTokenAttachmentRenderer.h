@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSWPGraphicalAttachmentRenderer-Protocol.h>
-
 @class NSString;
 
-@interface TSTFormulaEqualsTokenAttachmentRenderer : NSObject <TSWPGraphicalAttachmentRenderer>
+@interface TSTFormulaEqualsTokenAttachmentRenderer : NSObject
 {
 }
 

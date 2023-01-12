@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <DocumentCamera/DCProgressViewControllerDelegate-Protocol.h>
-
-@class DCProgressViewController, NSDate, NSProgress, NSString, UIViewController, UIWindow;
+@class DCProgressViewController, NSDate, NSProgress, UIViewController, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface DCLongRunningTaskController : NSObject <DCProgressViewControllerDelegate>
+@interface DCLongRunningTaskController : NSObject
 {
     _Bool _isCancelled;
     _Bool _shouldShowCancelButton;
     _Bool _shouldShowCircularProgress;
     _Bool _progressViewControllerDidFinishPresenting;
     _Bool _shouldDismissProgressViewController;
-    NSString *_progressFormatString;
+    CDUnknownBlockType _progressToStringTransformer;
     UIViewController *_viewControllerToPresentFrom;
     UIWindow *_window;
     double _intervalBeforeOpeningProgressDialog;
@@ -46,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIWindow *window; // @synthesize window=_window;
 @property(nonatomic) _Bool shouldShowCircularProgress; // @synthesize shouldShowCircularProgress=_shouldShowCircularProgress;
 @property(retain, nonatomic) UIViewController *viewControllerToPresentFrom; // @synthesize viewControllerToPresentFrom=_viewControllerToPresentFrom;
-@property(copy, nonatomic) NSString *progressFormatString; // @synthesize progressFormatString=_progressFormatString;
+@property(copy, nonatomic) CDUnknownBlockType progressToStringTransformer; // @synthesize progressToStringTransformer=_progressToStringTransformer;
 @property(nonatomic) _Bool shouldShowCancelButton; // @synthesize shouldShowCancelButton=_shouldShowCancelButton;
 @property(nonatomic) _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
 - (void)willDismissProgressViewController:(id)arg1;

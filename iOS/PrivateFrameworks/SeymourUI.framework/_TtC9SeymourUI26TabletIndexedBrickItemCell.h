@@ -13,15 +13,16 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *itemInfo;
-    MISSING_TYPE *storefrontLanguageIsRTL;
     MISSING_TYPE *layout;
     MISSING_TYPE *artworkView;
     MISSING_TYPE *indexLabel;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *downloadButton;
-    MISSING_TYPE *indexLeadingConstraint;
     MISSING_TYPE *textBoxLayoutGuide;
+    MISSING_TYPE *indexLeadingConstraint;
+    MISSING_TYPE *isCurrentTitleRTL;
+    MISSING_TYPE *textBoxLayoutGuideLeadingConstraint;
 }
 
 - (void).cxx_destruct;

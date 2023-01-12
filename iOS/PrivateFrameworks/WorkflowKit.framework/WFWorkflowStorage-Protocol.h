@@ -9,8 +9,7 @@
 @class WFWorkflowRecord, WFWorkflowReference;
 
 @protocol WFWorkflowStorage <NSObject>
-- (_Bool)reloadRecord:(WFWorkflowRecord *)arg1 error:(id *)arg2;
-- (_Bool)saveRecord:(WFWorkflowRecord *)arg1 error:(id *)arg2;
-- (WFWorkflowReference *)reference;
+- (_Bool)reloadRecord:(WFWorkflowRecord *)arg1 withReference:(WFWorkflowReference *)arg2 error:(id *)arg3;
+- (_Bool)saveRecord:(WFWorkflowRecord *)arg1 withReference:(WFWorkflowReference *)arg2 error:(id *)arg3;
 @end
 

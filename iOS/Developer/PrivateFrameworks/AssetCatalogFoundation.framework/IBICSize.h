@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
-@interface IBICSize <NSCopying>
+@interface IBICSize
 {
     struct CGSize _pointSize;
 }
 
 + (id)identifierFromFileName:(id)arg1 inRange:(struct _NSRange *)arg2;
++ (id)createDynamicComponentWithIdentifier:(id)arg1;
++ (_Bool)createsComponentsDynamically;
 + (id)defaultItemWithPointSize:(struct CGSize)arg1;
++ (id)identifierForSizeWithPointSize:(struct CGSize)arg1;
 + (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 pointSize:(struct CGSize)arg4;
 + (id)displayName;
 + (id)contentsJSONKey;

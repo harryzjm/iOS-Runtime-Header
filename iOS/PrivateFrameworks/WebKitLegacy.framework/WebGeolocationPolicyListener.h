@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKitLegacy/WebAllowDenyPolicyListener-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebGeolocationPolicyListener : NSObject <WebAllowDenyPolicyListener>
+@interface WebGeolocationPolicyListener : NSObject
 {
     struct RefPtr<WebCore::Geolocation, WTF::RawPtrTraits<WebCore::Geolocation>, WTF::DefaultRefDerefTraits<WebCore::Geolocation>> _geolocation;
     struct RetainPtr<WebView> _webView;

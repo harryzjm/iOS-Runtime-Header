@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMapTable, NSMutableArray, UIBarButtonItemGroup, UILayoutGuide, _UIButtonBarLayout;
+@class NSMapTable, NSMutableArray, UIBarButtonItemGroup, UILayoutGuide, _UIButtonBarLayout, _UIButtonBarSpacerLayout;
 
 __attribute__((visibility("hidden")))
 @interface _UIButtonBarItemGroupLayout
@@ -13,19 +13,34 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_itemLayouts;
     NSMutableArray *_configuredItemLayouts;
     _UIButtonBarLayout *_representativeLayout;
+    _UIButtonBarSpacerLayout *_leadingSpacerLayout;
+    _Bool _critical;
+    _Bool _fixed;
     _Bool _compact;
+    _Bool _spilled;
     _Bool _useGroupSizing;
     _Bool _suppressSpacing;
+    _Bool _suppressCustomSpacing;
     UIBarButtonItemGroup *_group;
     UILayoutGuide *_groupSizeGuide;
+    long long _leadingSpacerType;
     CDUnknownBlockType _itemViewGenerator;
+    double _compactWidth;
+    double _expandedWidth;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double expandedWidth; // @synthesize expandedWidth=_expandedWidth;
+@property(readonly, nonatomic) double compactWidth; // @synthesize compactWidth=_compactWidth;
 @property(copy, nonatomic) CDUnknownBlockType itemViewGenerator; // @synthesize itemViewGenerator=_itemViewGenerator;
+@property(nonatomic) long long leadingSpacerType; // @synthesize leadingSpacerType=_leadingSpacerType;
+@property(nonatomic) _Bool suppressCustomSpacing; // @synthesize suppressCustomSpacing=_suppressCustomSpacing;
 @property(nonatomic) _Bool suppressSpacing; // @synthesize suppressSpacing=_suppressSpacing;
 @property(nonatomic) _Bool useGroupSizing; // @synthesize useGroupSizing=_useGroupSizing;
+@property(nonatomic) _Bool spilled; // @synthesize spilled=_spilled;
 @property(nonatomic) _Bool compact; // @synthesize compact=_compact;
+@property(nonatomic) _Bool fixed; // @synthesize fixed=_fixed;
+@property(nonatomic) _Bool critical; // @synthesize critical=_critical;
 @property(readonly, nonatomic) UILayoutGuide *groupSizeGuide; // @synthesize groupSizeGuide=_groupSizeGuide;
 @property(readonly, nonatomic) UIBarButtonItemGroup *group; // @synthesize group=_group;
 - (id)description;
@@ -40,12 +55,13 @@ __attribute__((visibility("hidden")))
 - (id)subLayouts;
 - (_Bool)isGroupLayout;
 - (_Bool)isSpaceLayout;
+- (void)recalculateLayoutWidthsGivenItemSpaceWidth:(double)arg1;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
 - (id)layoutsForSpacerItem:(id)arg1;
 - (id)layoutForBarButtonItem:(id)arg1;
 - (void)dirtyLayoutForPlainAppearanceChange:(_Bool)arg1 doneAppearanceChanged:(_Bool)arg2;
 - (id)initWithLayoutMetrics:(id)arg1 barButtonItemGroup:(id)arg2;
-- (_Bool)shouldHoriziontallyCenterView:(id)arg1;
+- (_Bool)shouldHorizontallyCenterView:(id)arg1;
 - (id)initWithLayoutMetrics:(id)arg1;
 
 @end

@@ -7,12 +7,12 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (ADCoreExtensions)
-+ (int)minServerTime;
-+ (int)maxServerTime;
-+ (id)dateFromServerTime:(int)arg1;
-- (id)doubleDateTimeAsString;
-- (id)universalDateTimeAsString;
-- (id)localDateTimeAsString;
-- (int)toServerTime;
++ (int)AD_minServerTime;
++ (int)AD_maxServerTime;
++ (id)AD_dateFromServerTime:(int)arg1;
+- (id)AD_doubleDateTimeAsString;
+- (id)AD_universalDateTimeAsString;
+- (id)AD_localDateTimeAsString;
+- (int)AD_toServerTime;
 @end
 

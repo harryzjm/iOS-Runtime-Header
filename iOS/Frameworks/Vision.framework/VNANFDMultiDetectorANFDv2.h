@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)detectorClass;
+- (id)splitDetectedClassResultsIntoSubclasses:(id)arg1;
 
 @end
 

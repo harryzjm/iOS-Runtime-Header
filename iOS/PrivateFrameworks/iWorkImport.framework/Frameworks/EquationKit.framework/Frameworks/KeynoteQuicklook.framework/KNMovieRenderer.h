@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KeynoteQuicklook/KNAmbientBuildRenderer-Protocol.h>
-#import <KeynoteQuicklook/KNAnimationMovieHost-Protocol.h>
-#import <KeynoteQuicklook/TSKMediaPlayerControllerDelegate-Protocol.h>
-
 @class CALayer, KNBuildRenderer, KNSlideNode, NSObject, NSString, TSDMovieInfo, TSUWeakReference;
 @protocol NSCopying, TSKLayerMediaPlayerController, TSKMediaPlayerController;
 
-@interface KNMovieRenderer <TSKMediaPlayerControllerDelegate, KNAmbientBuildRenderer, KNAnimationMovieHost>
+@interface KNMovieRenderer
 {
     NSObject<TSKLayerMediaPlayerController> *_playerController;
     CALayer *_videoLayer;

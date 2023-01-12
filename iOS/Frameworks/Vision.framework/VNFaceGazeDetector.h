@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
 + (id)supportedImageSizeSetForOptions:(id)arg1 error:(id *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
+- (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
+- (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end

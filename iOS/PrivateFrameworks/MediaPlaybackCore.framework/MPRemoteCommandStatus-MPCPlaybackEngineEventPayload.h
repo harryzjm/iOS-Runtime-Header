@@ -6,11 +6,9 @@
 
 #import <MediaPlayer/MPRemoteCommandStatus.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadValueJSONConvertible-Protocol.h>
-
 @class NSString;
 
-@interface MPRemoteCommandStatus (MPCPlaybackEngineEventPayload) <MPCPlaybackEngineEventPayloadValueJSONConvertible>
+@interface MPRemoteCommandStatus (MPCPlaybackEngineEventPayload)
 + (id)payloadValueFromJSONValue:(id)arg1;
 - (id)mpc_jsonValue;
 

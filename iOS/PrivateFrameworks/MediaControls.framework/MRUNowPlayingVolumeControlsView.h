@@ -6,26 +6,59 @@
 
 #import <UIKit/UIView.h>
 
-@class MRUNowPlayingVolumeSlider, MRUVisualStylingProvider, MRUVolumeStepperView;
+@class MRUSlider, MRUStepper, MRUVisualStylingProvider, MRUVolumeController, NSString, UIImageView, UIWindowScene;
 
 __attribute__((visibility("hidden")))
 @interface MRUNowPlayingVolumeControlsView : UIView
 {
     _Bool _onScreen;
-    MRUNowPlayingVolumeSlider *_slider;
-    MRUVolumeStepperView *_stepper;
+    _Bool _dimmed;
+    MRUVolumeController *_volumeController;
     MRUVisualStylingProvider *_stylingProvider;
+    long long _layout;
+    UIImageView *_minImageView;
+    UIImageView *_maxImageView;
+    MRUSlider *_slider;
+    MRUStepper *_stepper;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) MRUStepper *stepper; // @synthesize stepper=_stepper;
+@property(retain, nonatomic) MRUSlider *slider; // @synthesize slider=_slider;
+@property(retain, nonatomic) UIImageView *maxImageView; // @synthesize maxImageView=_maxImageView;
+@property(retain, nonatomic) UIImageView *minImageView; // @synthesize minImageView=_minImageView;
+@property(nonatomic, getter=isDimmed) _Bool dimmed; // @synthesize dimmed=_dimmed;
 @property(nonatomic, getter=isOnScreen) _Bool onScreen; // @synthesize onScreen=_onScreen;
+@property(nonatomic) long long layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
-@property(readonly, nonatomic) MRUVolumeStepperView *stepper; // @synthesize stepper=_stepper;
-@property(readonly, nonatomic) MRUNowPlayingVolumeSlider *slider; // @synthesize slider=_slider;
-- (void)updateVolumeCapabilities;
+@property(retain, nonatomic) MRUVolumeController *volumeController; // @synthesize volumeController=_volumeController;
+- (void)updateVisualStyling;
+- (void)updateVisibility;
+- (void)updateVolumeAnimated:(_Bool)arg1;
+- (void)visualStylingProviderDidChange:(id)arg1;
+- (void)stepperIncrementHoldEnded:(id)arg1;
+- (void)stepperIncrementHoldBegan:(id)arg1;
+- (void)stepperDecrementHoldEnded:(id)arg1;
+- (void)stepperDecrementHoldBegan:(id)arg1;
+- (void)stepperDidIncrement:(id)arg1;
+- (void)stepperDidDecrement:(id)arg1;
+@property(readonly, nonatomic) NSString *volumeAudioCategory;
+@property(readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;
+@property(readonly, nonatomic, getter=isOnScreenForVolumeDisplay) _Bool onScreenForVolumeDisplay;
+- (void)volumeController:(id)arg1 volumeControlCapabilitiesDidChange:(unsigned int)arg2;
+- (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(_Bool)arg2;
+- (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
+- (void)sliderValueChanged:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

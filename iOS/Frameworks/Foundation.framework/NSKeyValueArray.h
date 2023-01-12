@@ -6,12 +6,10 @@
 
 #import <Foundation/NSArray.h>
 
-#import <Foundation/NSKeyValueProxyCaching-Protocol.h>
-
 @class NSKeyValueNonmutatingArrayMethodSet, NSObject, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSKeyValueArray : NSArray <NSKeyValueProxyCaching>
+@interface NSKeyValueArray : NSArray
 {
     NSObject *_container;
     NSString *_key;

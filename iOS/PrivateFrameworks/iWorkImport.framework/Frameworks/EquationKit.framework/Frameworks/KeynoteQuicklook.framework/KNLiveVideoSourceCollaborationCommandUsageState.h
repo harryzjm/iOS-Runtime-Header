@@ -6,11 +6,9 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
 @class NSUUID;
 
-@interface KNLiveVideoSourceCollaborationCommandUsageState : TSKSosBase <NSCopying>
+@interface KNLiveVideoSourceCollaborationCommandUsageState : TSKSosBase
 {
     _Bool _hasMultipleCollaborationCommandUsageTokens;
     NSUUID *_singleCollaborationCommandUsageToken;

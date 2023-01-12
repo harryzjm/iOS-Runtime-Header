@@ -23,6 +23,7 @@
 - (double)defaultAlphaForReorderingCell;
 - (UIImage *)defaultReorderControlImageForTraitCollection:(UITraitCollection *)arg1 withAccessoryBaseColor:(UIColor *)arg2;
 - (struct CGSize)defaultReorderControlSizeForCell:(UIView<UITableConstantsCellProviding> *)arg1 withAccessoryBaseColor:(UIColor *)arg2;
+- (_Bool)shouldAnimatePropertyInContentViewWithKey:(NSString *)arg1;
 - (double)defaultEditAndUpdateAnimationDuration;
 - (UIImage *)defaultMultiSelectSelectedImageForCellStyle:(long long)arg1 traitCollection:(UITraitCollection *)arg2 checkmarkColor:(UIColor *)arg3 backgroundColor:(UIColor *)arg4;
 - (UIImage *)defaultMultiSelectNotSelectedImageForCellStyle:(long long)arg1 traitCollection:(UITraitCollection *)arg2 accessoryBaseColor:(UIColor *)arg3;
@@ -36,6 +37,7 @@
 - (struct CGSize)defaultEditControlSizeForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
 - (UIImage *)defaultCheckmarkImageForCell:(UIView<UITableConstantsCellProviding> *)arg1;
 - (UIImage *)defaultDisclosureImageForCell:(UIView<UITableConstantsCellProviding> *)arg1 withAccessoryBaseColor:(UIColor *)arg2;
+- (long long)defaultHeaderFooterPinningBehaviorForTableStyle:(long long)arg1;
 - (struct _UITableConstantsBackgroundProperties)defaultHeaderFooterBackgroundPropertiesForTableViewStyle:(long long)arg1 tableBackgroundColor:(UIColor *)arg2 floating:(_Bool)arg3;
 - (_Bool)useChromelessSectionHeadersAndFootersForTableStyle:(long long)arg1;
 - (UIColor *)defaultFooterTextColorForTableViewStyle:(long long)arg1 focused:(_Bool)arg2;
@@ -55,11 +57,12 @@
 - (_Bool)defaultLabelAllowsTighteningForTruncationForSidebar:(_Bool)arg1 traitCollection:(UITraitCollection *)arg2;
 - (long long)defaultLabelNumberOfLinesForSidebar:(_Bool)arg1 traitCollection:(UITraitCollection *)arg2;
 - (UIColor *)defaultMultiSelectBackgroundColorForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
-- (struct _UITableConstantsBackgroundProperties)defaultSidebarHeaderBackgroundPropertiesWithState:(id <_UICellConfigurationStateReadonly>)arg1 traitCollection:(UITraitCollection *)arg2 isAccompanied:(_Bool)arg3;
+- (struct _UITableConstantsBackgroundProperties)defaultSidebarHeaderBackgroundPropertiesWithState:(id <_UICellConfigurationStateReadonly>)arg1 traitCollection:(UITraitCollection *)arg2;
 - (struct _UITableConstantsBackgroundProperties)defaultSidebarCellBackgroundPropertiesWithState:(id <_UICellConfigurationStateReadonly>)arg1 traitCollection:(UITraitCollection *)arg2 isAccompanied:(_Bool)arg3;
 - (struct _UITableConstantsBackgroundProperties)defaultCellBackgroundPropertiesForTableViewStyle:(long long)arg1 state:(id <_UICellConfigurationStateReadonly>)arg2;
 - (double)defaultPaddingBetweenHeaderAndRows;
 - (double)defaultPaddingBetweenRows;
+- (double)defaultSidebarPaddingAboveSectionHeadersWithFallbackTableStyle:(long long)arg1;
 - (double)defaultPaddingAboveSectionHeadersForTableStyle:(long long)arg1;
 - (double)interspaceBetweenInnerAccessoryIdentifier:(NSString *)arg1 outerAccessoryIdentifier:(NSString *)arg2 forCell:(UIView<UITableConstantsCellProviding> *)arg3 trailingAccessoryGroup:(_Bool)arg4;
 - (double)defaultIndentationWidthForSidebarStyle:(_Bool)arg1;
@@ -74,7 +77,7 @@
 - (double)defaultContentReorderPaddingForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
 - (double)defaultContentEditPaddingForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
 - (_Bool)imageViewOffsetByLayoutMarginsForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
-- (struct UIEdgeInsets)defaultHeaderFooterLayoutMarginsForTableViewStyle:(long long)arg1;
+- (struct UIEdgeInsets)defaultHeaderFooterLayoutMarginsForTableViewStyle:(long long)arg1 isHeader:(_Bool)arg2 isFirstSection:(_Bool)arg3;
 - (struct UIEdgeInsets)defaultCellLayoutMarginsForStyle:(long long)arg1 textLabelFont:(UIFont *)arg2 rawLayoutMargins:(struct UIEdgeInsets)arg3;
 - (struct UIEdgeInsets)defaultLayoutMarginsForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
 - (double)defaultTrailingCellMarginWidthForTableView:(id <UITableConstantsTableProviding>)arg1;
@@ -82,6 +85,7 @@
 - (double)defaultMarginWidthForTableView:(id <UITableConstantsTableProviding>)arg1;
 - (_Bool)shouldUseDefaultTableLayoutMarginsAsContentInsets;
 - (struct UIEdgeInsets)defaultSectionContentInsetsForTableStyle:(long long)arg1;
+- (struct UIEdgeInsets)defaultLayoutMarginsInsideSectionForSize:(struct CGSize)arg1 tableStyle:(long long)arg2;
 - (struct UIEdgeInsets)defaultTableLayoutMarginsForScreen:(UIScreen *)arg1 size:(struct CGSize)arg2 tableStyle:(long long)arg3;
 - (struct UIEdgeInsets)defaultLayoutMarginsForTableView:(id <UITableConstantsTableProviding>)arg1;
 - (double)minimumContentViewHeightForFont:(UIFont *)arg1 traitCollection:(UITraitCollection *)arg2;
@@ -117,11 +121,13 @@
 - (UIColor *)defaultFocusedDetailTextColorForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
 - (UIColor *)defaultFocusedTextColorForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
 - (UIColor *)defaultAccessoryColorForCell:(UIView<UITableConstantsCellProviding> *)arg1 inTableView:(id <UITableConstantsTableProviding>)arg2;
-- (UIColor *)defaultHeaderTextColorForTableViewStyle:(long long)arg1 userInterfaceStyle:(long long)arg2;
+- (UIColor *)fallbackHeaderTextColorForTableViewStyle:(long long)arg1 userInterfaceStyle:(long long)arg2;
 - (UIColor *)defaultDetailTextColorForUserInterfaceStyle:(long long)arg1;
 - (UIColor *)defaultTextColorForUserInterfaceStyle:(long long)arg1;
 - (struct NSDirectionalEdgeInsets)defaultInsetGroupedHeaderLayoutMarginsForExtraProminentStyle:(_Bool)arg1;
 - (UIFont *)defaultInsetGroupedHeaderFontForExtraProminentStyle:(_Bool)arg1 secondaryText:(_Bool)arg2;
+- (UIImage *)defaultPopUpMenuIndicatorImageForTraitCollection:(UITraitCollection *)arg1;
+- (UIColor *)defaultSidebarBackgroundColor;
 - (UIColor *)defaultSidebarPlainMultiSelectSeparatorColor;
 - (UIImage *)defaultOutlineDisclosureImageForView:(UIView *)arg1;
 - (UIFont *)defaultSidebarHeaderFont;

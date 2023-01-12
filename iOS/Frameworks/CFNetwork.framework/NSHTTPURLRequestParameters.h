@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSCoding-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
-@interface NSHTTPURLRequestParameters : NSObject <NSCoding>
+@interface NSHTTPURLRequestParameters : NSObject
 {
     NSString *method;
     NSMutableDictionary *fields;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUOutputStream-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OISFUMoveableFileOutputStream : NSObject <SFUOutputStream>
+@interface OISFUMoveableFileOutputStream : NSObject
 {
     int mFd;
     NSString *mPath;

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class FTTextToSpeechResponseDevData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FTMutableFinalTextToSpeechStreamingResponse
 {
 }
 
+@property(copy, nonatomic) FTTextToSpeechResponseDevData *dev_data;
 @property(nonatomic) int total_pkt_number;
 @property(copy, nonatomic) NSString *stream_id;
 @property(copy, nonatomic) NSString *error_str;

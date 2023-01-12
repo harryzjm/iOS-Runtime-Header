@@ -7,9 +7,12 @@
 #import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCContentColorMap, FCHeadlineTemplate, FCTagBanner, FCTextInfo, NSArray, NSString;
+@class FCAssetHandle, FCColor, FCColorGradient, FCContentColorMap, FCHeadlineTemplate, FCTagBanner, FCTextInfo, NSArray, NSString;
 
 @protocol FCFeedTheming <NSObject, NFCopying>
+@property(readonly, nonatomic) unsigned long long navigationChromeBackgroundImageContentModeLarge;
+@property(readonly, nonatomic) unsigned long long navigationChromeBackgroundImageContentModeCompact;
+@property(readonly, nonatomic) unsigned long long navigationChromeBackgroundImageContentMode;
 @property(readonly, nonatomic) _Bool allowCustomBottomStyle;
 @property(readonly, nonatomic) FCHeadlineTemplate *defaultHeadlineTemplate;
 @property(readonly, nonatomic) NSArray *loadableFonts;
@@ -24,7 +27,19 @@
 @property(readonly, nonatomic) FCAssetHandle *nameImageCompactAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *nameImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *logoImageAssetHandle;
+@property(readonly, nonatomic) FCColorGradient *darkStyleNavigationChromeBackgroundGradient;
+@property(readonly, nonatomic) FCColorGradient *navigationChromeBackgroundGradient;
+@property(readonly, nonatomic) FCAssetHandle *darkStyleNavigationChromeBackgroundImageLarge;
+@property(readonly, nonatomic) FCAssetHandle *navigationChromeBackgroundImageLarge;
+@property(readonly, nonatomic) FCAssetHandle *darkStyleNavigationChromeBackgroundImageCompact;
+@property(readonly, nonatomic) FCAssetHandle *navigationChromeBackgroundImageCompact;
+@property(readonly, nonatomic) FCAssetHandle *darkStyleNavigationChromeBackgroundImage;
+@property(readonly, nonatomic) FCAssetHandle *navigationChromeBackgroundImage;
 @property(readonly, nonatomic) FCContentColorMap *contentColorMap;
+@property(readonly, nonatomic) FCColor *darkStyleNavigationChromeSeparatorColor;
+@property(readonly, nonatomic) FCColor *navigationChromeSeparatorColor;
+@property(readonly, nonatomic) FCColor *darkStyleNavigationChromeBackgroundColor;
+@property(readonly, nonatomic) FCColor *navigationChromeBackgroundColor;
 @property(readonly, nonatomic) FCColor *darkStyleForegroundColor;
 @property(readonly, nonatomic) FCColor *foregroundColor;
 @property(readonly, nonatomic) FCColor *darkStyleBackgroundColor;

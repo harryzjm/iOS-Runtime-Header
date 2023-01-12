@@ -12,10 +12,7 @@
 @property(readonly, nonatomic) _UILegibilitySettings *statusBarLegibilitySettings;
 @property(readonly, nonatomic) long long statusBarStyle;
 @property(readonly, nonatomic) NSNumber *statusBarAlpha;
-- (void)disableStatusBarItem:(int)arg1 requestor:(NSString *)arg2;
-- (void)enableStatusBarItem:(int)arg1 requestor:(NSString *)arg2;
-- (void)updateStatusBarTimeEnabled;
-- (void)enableStatusBarTime:(_Bool)arg1 crossfade:(_Bool)arg2 crossfadeDuration:(double)arg3;
+- (void)setStatusBarPart:(unsigned long long)arg1 hidden:(_Bool)arg2 animationDuration:(double)arg3;
 - (void)clearStatusBarParameters;
 - (void)setStatusBarAlpha:(NSNumber *)arg1 style:(long long)arg2 legibilitySettings:(_UILegibilitySettings *)arg3;
 - (void)setStatusBarHidden:(_Bool)arg1 forReason:(NSString *)arg2;

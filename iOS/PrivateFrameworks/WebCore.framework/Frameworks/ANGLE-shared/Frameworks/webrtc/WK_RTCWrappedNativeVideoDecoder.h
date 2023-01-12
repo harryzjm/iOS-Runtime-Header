@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <webrtc/RTCVideoDecoder-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WK_RTCWrappedNativeVideoDecoder : NSObject <RTCVideoDecoder>
+@interface WK_RTCWrappedNativeVideoDecoder : NSObject
 {
     unique_ptr_8ce5ae0d _wrappedDecoder;
 }

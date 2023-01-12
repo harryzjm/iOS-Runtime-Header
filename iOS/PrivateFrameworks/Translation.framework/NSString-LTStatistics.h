@@ -9,5 +9,6 @@
 @interface NSString (LTStatistics)
 - (id)_ltTrimWhitespaces;
 - (id)_ltRemoveAllWhitespaces;
+- (id)lt_realPath:(id *)arg1;
 @end
 

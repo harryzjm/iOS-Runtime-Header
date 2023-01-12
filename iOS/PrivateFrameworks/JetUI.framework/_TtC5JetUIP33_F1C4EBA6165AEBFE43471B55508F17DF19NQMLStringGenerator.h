@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <JetUI/JUNQMLParser-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC5JetUIP33_F1C4EBA6165AEBFE43471B55508F17DF19NQMLStringGenerator : NSObject <JUNQMLParser>
+@interface _TtC5JetUIP33_F1C4EBA6165AEBFE43471B55508F17DF19NQMLStringGenerator : NSObject
 {
     MISSING_TYPE *parser;
     MISSING_TYPE *configuration;

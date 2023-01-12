@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSString, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface UIAutocorrectTextView
+@interface UIAutocorrectTextView : UIView
 {
     NSString *m_string;
     int m_type;
@@ -17,6 +19,7 @@ __attribute__((visibility("hidden")))
     _Bool m_isLongString;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isLongString; // @synthesize isLongString=m_isLongString;
 @property(nonatomic) _Bool animating; // @synthesize animating=m_animating;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -24,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_calculateRectForExpandedHitRegion;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setEdgeType:(int)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 string:(id)arg2 type:(int)arg3 edgeType:(int)arg4;
 
 @end

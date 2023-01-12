@@ -23,18 +23,18 @@
 }
 
 + (id)writingDirectionOrderedStrokes:(id)arg1 substrokesByStrokeIdentifier:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long substrokeCount2; // @synthesize substrokeCount2=_substrokeCount2;
 @property(readonly, nonatomic) long long substrokeCount1; // @synthesize substrokeCount1=_substrokeCount1;
-@property(readonly, retain, nonatomic) NSArray *orderedStrokesGroup2; // @synthesize orderedStrokesGroup2=_orderedStrokesGroup2;
-@property(readonly, retain, nonatomic) NSArray *orderedStrokesGroup1; // @synthesize orderedStrokesGroup1=_orderedStrokesGroup1;
-@property(readonly, retain, nonatomic) NSArray *orderedStrokes; // @synthesize orderedStrokes=_orderedStrokes;
+@property(readonly, nonatomic) NSArray *orderedStrokesGroup2; // @synthesize orderedStrokesGroup2=_orderedStrokesGroup2;
+@property(readonly, nonatomic) NSArray *orderedStrokesGroup1; // @synthesize orderedStrokesGroup1=_orderedStrokesGroup1;
+@property(readonly, nonatomic) NSArray *orderedStrokes; // @synthesize orderedStrokes=_orderedStrokes;
 @property(readonly, nonatomic) double transitionTime; // @synthesize transitionTime=_transitionTime;
 @property(readonly, nonatomic) struct CGRect groupBounds2; // @synthesize groupBounds2=_groupBounds2;
 @property(readonly, nonatomic) struct CGRect groupBounds1; // @synthesize groupBounds1=_groupBounds1;
-@property(readonly, retain, nonatomic) NSArray *strokeGroup2; // @synthesize strokeGroup2=_strokeGroup2;
-@property(readonly, retain, nonatomic) NSArray *strokeGroup1; // @synthesize strokeGroup1=_strokeGroup1;
+@property(readonly, nonatomic) NSArray *strokeGroup2; // @synthesize strokeGroup2=_strokeGroup2;
+@property(readonly, nonatomic) NSArray *strokeGroup1; // @synthesize strokeGroup1=_strokeGroup1;
 - (long long)_substrokeCountForStrokes:(id)arg1 substrokesByStrokeIdentifier:(id)arg2;
-- (void)dealloc;
 - (id)initWithStrokes:(id)arg1 substrokesByStrokeIdentifier:(id)arg2 splitIndex:(long long)arg3;
 
 @end

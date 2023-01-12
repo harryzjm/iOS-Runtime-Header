@@ -6,7 +6,7 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationRequest, NCNotificationSectionSettings, NSDate, NSString;
+@class NCNotificationRequest, NCNotificationSectionSettings, NCNotificationSystemSettings, NSDate, NSString;
 @protocol NCNotificationManagementController;
 
 @protocol NCNotificationManagementControllerSettingsDelegate <NSObject>
@@ -20,5 +20,6 @@
 
 @optional
 - (void)notificationManagementControllerDidDismissManagementView:(id <NCNotificationManagementController>)arg1;
+- (NCNotificationSystemSettings *)notificationManagementControllerRequestsSystemSettings:(id <NCNotificationManagementController>)arg1;
 @end
 

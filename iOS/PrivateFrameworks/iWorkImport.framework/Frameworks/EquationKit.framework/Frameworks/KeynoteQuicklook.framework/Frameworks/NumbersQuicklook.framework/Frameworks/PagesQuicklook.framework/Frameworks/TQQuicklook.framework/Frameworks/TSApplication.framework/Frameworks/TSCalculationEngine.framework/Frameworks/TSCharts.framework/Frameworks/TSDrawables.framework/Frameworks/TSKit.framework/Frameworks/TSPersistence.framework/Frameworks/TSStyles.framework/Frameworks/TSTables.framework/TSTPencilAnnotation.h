@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSKPencilAnnotation-Protocol.h>
-
 @class NSString, TSDPencilAnnotationStorage, TSTTableInfo;
 
-@interface TSTPencilAnnotation : TSPObject <TSKPencilAnnotation>
+@interface TSTPencilAnnotation : TSPObject
 {
     TSDPencilAnnotationStorage *_pencilAnnotationStorage;
     TSTTableInfo *_table;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIBaseCollectionViewCell.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI28CastBannerCollectionViewCell
+@interface _TtC8VideosUI28CastBannerCollectionViewCell : VUIBaseCollectionViewCell
 {
     MISSING_TYPE *castBannerLayout;
     MISSING_TYPE *titleView;

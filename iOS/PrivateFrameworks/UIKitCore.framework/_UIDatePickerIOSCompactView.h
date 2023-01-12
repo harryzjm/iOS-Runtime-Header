@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIDatePickerCompactDateLabelDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerCompactTimeLabelDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerOverlayPresentationDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerViewComponent-Protocol.h>
+#import "UIControl.h"
 
-@class NSArray, NSDateFormatter, NSDictionary, NSString, UIColor, UIDatePicker, UILayoutGuide, UIPanGestureRecognizer, _UIDatePickerCompactDateLabel, _UIDatePickerCompactTimeLabel, _UIDatePickerDataModel, _UIDatePickerOverlayPresentation;
+@class NSArray, NSDateFormatter, NSDictionary, NSString, UIDatePicker, UILayoutGuide, UIPanGestureRecognizer, _UIDatePickerCompactDateLabel, _UIDatePickerCompactTimeLabel, _UIDatePickerDataModel, _UIDatePickerOverlayPresentation;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerIOSCompactView <_UIDatePickerCompactTimeLabelDelegate, _UIDatePickerCompactDateLabelDelegate, _UIDatePickerOverlayPresentationDelegate, _UIDatePickerViewComponent>
+@interface _UIDatePickerIOSCompactView : UIControl
 {
     struct {
         unsigned int isEnabled:1;
@@ -39,23 +36,20 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _UIDatePickerCompactDateLabel *dateView; // @synthesize dateView=_dateView;
 @property(retain, nonatomic) _UIDatePickerDataModel *data; // @synthesize data=_data;
 @property(nonatomic) __weak UIDatePicker *datePicker; // @synthesize datePicker=_datePicker;
-- (struct UIEdgeInsets)_appliedInsetsToEdgeOfContent;
 - (_Bool)hasDefaultSize;
 - (struct CGSize)defaultSize;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1;
 - (void)_setEnabled:(_Bool)arg1;
 - (_Bool)usesAutoLayout;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
-- (void)_setHidesLabels:(_Bool)arg1;
-@property(readonly, nonatomic, getter=_isTimeIntervalMode) _Bool isTimeIntervalMode;
-@property(nonatomic, getter=_allowsZeroTimeInterval, setter=_setAllowsZeroTimeInterval:) _Bool allowsZeroTimeInterval;
-@property(nonatomic, getter=_allowsZeroCountDownDuration, setter=_setAllowsZeroCountDownDuration:) _Bool allowsZeroCountDownDuration;
+@property(readonly, nonatomic) struct UIEdgeInsets appliedInsetsToEdgeOfContent;
 - (void)didChangeToday;
 - (void)didReset;
 - (void)didChangeRoundsToMinuteInterval;
 - (void)didChangeMinuteInterval;
 - (void)didChangeMaximumDate;
 - (void)didChangeMinimumDate;
+- (void)displaySelectedDateAnimated:(_Bool)arg1;
 - (void)didChangeDateFrom:(id)arg1 animated:(_Bool)arg2;
 - (void)didChangeCalendar;
 - (void)didChangeTimeZone;
@@ -78,8 +72,11 @@ __attribute__((visibility("hidden")))
 - (void)compactTimeLabelDidEndEditing:(id)arg1;
 - (void)compactTimeLabelDidBeginEditing:(id)arg1;
 - (void)compactTimeLabel:(id)arg1 didSelectTime:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_didReceivePanGestureRecognizer:(id)arg1;
 - (void)updateConstraints;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)tintColorDidChange;
 @property(readonly, nonatomic) _Bool alignConstraintsToLayoutGuide;
 - (void)_updateDateViewTextAlignment;
@@ -96,11 +93,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(retain, nonatomic, getter=_highlightColor, setter=_setHighlightColor:) UIColor *highlightColor;
-@property(retain, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor;
 @property(readonly) Class superclass;
-@property(retain, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;
-@property(retain, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
 @property(nonatomic) double timeInterval;
 
 @end

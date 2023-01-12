@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKInspectableValueCollection.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKInspectableValueCollection (HDCodingSupport) <HDCoding>
+@interface HKInspectableValueCollection (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

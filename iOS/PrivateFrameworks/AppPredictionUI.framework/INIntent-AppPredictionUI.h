@@ -10,6 +10,5 @@
 + (_Bool)apui_isSupportedForCardRequests;
 - (id)apui_intent;
 - (id)apui_keyPeople;
-- (_Bool)apui_requiresAuthentication;
 @end
 

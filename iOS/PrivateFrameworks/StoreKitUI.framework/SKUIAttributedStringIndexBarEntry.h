@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIIndexBarEntry.h"
+
 @class NSAttributedString, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface SKUIAttributedStringIndexBarEntry
+@interface SKUIAttributedStringIndexBarEntry : SKUIIndexBarEntry
 {
     _Bool _hasValidSynthesizedAttributedString;
     NSAttributedString *_synthesizedAttributedString;

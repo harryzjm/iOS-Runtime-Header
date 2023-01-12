@@ -12,6 +12,7 @@
 - (_Bool)record:(NSArray *)arg1;
 
 @optional
+- (_Bool)recordNumbersVectors:(NSArray *)arg1 metadata:(NSDictionary *)arg2;
 - (_Bool)record:(NSArray *)arg1 metadata:(NSDictionary *)arg2;
 @end
 

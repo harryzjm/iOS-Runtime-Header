@@ -11,6 +11,7 @@
 
 @protocol FCBundleSubscriptionManagerType <FCBundleSubscriptionProviderType>
 @property(retain, nonatomic) id <FCEntitlementsOverrideProviderType> entitlementsOverrideProvider;
+@property(readonly, nonatomic) FCBundleSubscription *validatedCachedSubscription;
 @property(readonly, nonatomic) FCBundleSubscription *cachedSubscription;
 - (void)forceExpireBundleSubscriptionBasedOnInternalSettings;
 - (void)silentExpireBundleSubscription;
@@ -20,6 +21,7 @@
 - (FCBundleSubscriptionLookUpEntry *)bundleSubscriptionLookupEntry;
 - (void)removeObserver:(id <FCBundleSubscriptionChangeObserver>)arg1;
 - (void)addObserver:(id <FCBundleSubscriptionChangeObserver>)arg1;
+- (void)refreshBundleSubscriptionWithCachePolicy:(unsigned long long)arg1 hideBundleDetectionUI:(_Bool)arg2 completion:(void (^)(FCBundleSubscription *))arg3;
 - (void)refreshBundleSubscriptionWithCachePolicy:(unsigned long long)arg1 completion:(void (^)(FCBundleSubscription *))arg2;
 @end
 

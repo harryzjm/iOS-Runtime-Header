@@ -6,10 +6,11 @@
 
 #import <ContactsDonation/NSObject-Protocol.h>
 
-@class NSObject;
+@class NSDate, NSObject;
 @protocol OS_xpc_object;
 
 @protocol CNDonationAnalyticsLogger <NSObject>
+- (void)didSkipDuplicateAnalysis:(NSDate *)arg1;
 - (void)didReportAnalytics;
 - (void)willReportAnalytics;
 - (void)didPerformAnalysis;

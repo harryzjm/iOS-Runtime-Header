@@ -6,17 +6,23 @@
 
 #import <SettingsCellular/PSAppDataUsagePolicySwitchSpecifier.h>
 
+@class ACAccountStore;
+
 __attribute__((visibility("hidden")))
 @interface PSUICloudDriveCellularSwitchSpecifier : PSAppDataUsagePolicySwitchSpecifier
 {
+    ACAccountStore *_accountStore;
 }
 
-+ (id)_appleAccount;
 + (id)accountStore;
-+ (id)cloudDriveGroupSpecifier;
-+ (_Bool)shouldShowCloudDrive;
+- (void).cxx_destruct;
+- (id)getLogger;
 - (void)setCellularUsagePolicy:(id)arg1;
 - (id)cellularUsagePolicy;
+- (id)appleAccount;
+- (id)cloudDriveGroupSpecifier;
+- (_Bool)shouldShowCloudDrive;
+- (id)initWithAppleAccountStore:(id)arg1;
 - (id)initDefault;
 
 @end

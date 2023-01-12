@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MRExternalDeviceTransport.h"
+
 @class MRDeviceInfo, NSNetService;
 
 __attribute__((visibility("hidden")))
-@interface MRNetServiceTransport
+@interface MRNetServiceTransport : MRExternalDeviceTransport
 {
     MRDeviceInfo *_deviceInfo;
     _Bool _requiresCustomPairing;
@@ -19,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNetService *netService; // @synthesize netService=_netService;
 @property(nonatomic) _Bool requiresCustomPairing;
-- (void)reset;
+- (void)resetWithError:(id)arg1;
 - (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
 - (id)createConnectionWithUserInfo:(id)arg1;
 - (id)error;

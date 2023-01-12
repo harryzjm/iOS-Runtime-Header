@@ -6,11 +6,9 @@
 
 #import <Photos/PHThumbnailAsset.h>
 
-#import <PhotosUICore/PXDisplayThumbnailAsset-Protocol.h>
-
 @class NSString;
 
-@interface PHThumbnailAsset (PXDisplayAssetAdoption) <PXDisplayThumbnailAsset>
+@interface PHThumbnailAsset (PXDisplayAssetAdoption)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

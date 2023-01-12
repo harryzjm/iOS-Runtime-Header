@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/EspressoBrick-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MLErfActivationBrick : NSObject <EspressoBrick>
+@interface MLErfActivationBrick : NSObject
 {
     unsigned long long _size;
 }

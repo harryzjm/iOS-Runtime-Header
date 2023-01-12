@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class NSMutableArray, VCPProtoTimeRange;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoMovieMovingObjectResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoMovieMovingObjectResult : PBCodable
 {
     NSMutableArray *_bounds;
     VCPProtoTimeRange *_timeRange;

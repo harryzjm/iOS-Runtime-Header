@@ -6,11 +6,9 @@
 
 #import <SearchFoundation/SFCardViewAppearFeedback.h>
 
-#import <Cards/CRCardViewAppearanceFeedback-Protocol.h>
-
 @class NSString;
 
-@interface SFCardViewAppearFeedback (CRFeedback) <CRCardViewAppearanceFeedback>
+@interface SFCardViewAppearFeedback (CRFeedback)
 @property(readonly, nonatomic) SFCardViewAppearFeedback *backingFeedback;
 
 // Remaining properties

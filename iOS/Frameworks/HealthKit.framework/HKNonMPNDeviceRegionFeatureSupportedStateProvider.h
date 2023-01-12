@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthKit/HKDeviceRegionFeatureSupportedStateProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HKNonMPNDeviceRegionFeatureSupportedStateProvider : NSObject <HKDeviceRegionFeatureSupportedStateProvider>
+@interface HKNonMPNDeviceRegionFeatureSupportedStateProvider : NSObject
 {
 }
 

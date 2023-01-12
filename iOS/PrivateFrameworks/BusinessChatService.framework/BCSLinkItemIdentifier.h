@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSItemIdentifying-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface BCSLinkItemIdentifier : NSObject <BCSItemIdentifying>
+@interface BCSLinkItemIdentifier : NSObject
 {
     NSURL *_url;
     NSString *_fullHash;

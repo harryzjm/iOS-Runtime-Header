@@ -6,14 +6,10 @@
 
 #import <TSApplication/TSADocumentRoot.h>
 
-#import <KeynoteQuicklook/TSKModel-Protocol.h>
-#import <KeynoteQuicklook/TSTResolverContainerNameProvider-Protocol.h>
-#import <KeynoteQuicklook/TSWPDrawableOLC-Protocol.h>
-
 @class KNRecordingSyncMaintainer, KNShow, NSString;
 @protocol KNDocumentRootDelegate;
 
-@interface KNDocumentRoot : TSADocumentRoot <TSWPDrawableOLC, TSKModel, TSTResolverContainerNameProvider>
+@interface KNDocumentRoot : TSADocumentRoot
 {
     _Bool _isObservingRecording;
     KNShow *_show;

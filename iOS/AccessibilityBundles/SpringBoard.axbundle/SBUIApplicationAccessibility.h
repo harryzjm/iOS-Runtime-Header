@@ -17,8 +17,6 @@
 - (id)_accessibilitySpotlightMultiplexingViewController;
 - (_Bool)_accessibilityLeftOfLockTodayViewIsVisible;
 - (_Bool)_accessibilityLeftOfHomeTodayViewIsVisible;
-- (id)_accessibilitySidebarViewController;
-- (_Bool)_accessibilitySidebarTodayViewIsVisible;
 - (id)_accessibilityTodayOverlayController;
 - (_Bool)_accessibilityOverlayTodayViewIsVisible;
 - (_Bool)_accessibilitySpotlightIsVisible;

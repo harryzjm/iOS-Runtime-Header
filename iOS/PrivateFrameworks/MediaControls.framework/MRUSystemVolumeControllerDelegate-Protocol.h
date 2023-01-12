@@ -9,6 +9,6 @@
 @class MRUSystemVolumeController;
 
 @protocol MRUSystemVolumeControllerDelegate <NSObject>
-- (void)systemVolumeController:(MRUSystemVolumeController *)arg1 didChangeVolumeAvailable:(_Bool)arg2 effectiveVolumeValue:(float)arg3 forType:(long long)arg4;
+- (void)systemVolumeController:(MRUSystemVolumeController *)arg1 didChangeVolumeControlCapabilities:(unsigned int)arg2 effectiveVolumeValue:(float)arg3 forType:(long long)arg4;
 @end
 

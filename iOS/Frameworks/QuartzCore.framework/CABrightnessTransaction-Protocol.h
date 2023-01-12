@@ -7,8 +7,15 @@
 #import <QuartzCore/NSObject-Protocol.h>
 
 @protocol CABrightnessTransaction <NSObject>
+- (_Bool)forceCommitBrightness:(id *)arg1 withBlock:(void (^)(NSDictionary *))arg2;
 - (_Bool)commitBrightness:(id *)arg1;
+- (_Bool)commitBrightness:(id *)arg1 withBlock:(void (^)(NSDictionary *))arg2;
+- (void)setLowAmbientAdaptation:(float)arg1;
+- (void)setBrightnessControlDisabled:(_Bool)arg1;
 - (void)setBrightnessLimit:(float)arg1;
+- (void)setContrastEnhancer:(float)arg1;
+- (void)setWhitePointMatrix:(const CDStruct_443af386 *)arg1 scale:(float)arg2;
+- (void)setFilteredAmbient:(float)arg1;
 - (void)setAmbient:(float)arg1;
 - (void)setPotentialHeadroom:(float)arg1;
 - (void)setHeadroom:(float)arg1;

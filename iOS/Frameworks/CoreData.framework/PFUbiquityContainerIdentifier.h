@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSFilePresenter-Protocol.h>
-
 @class NSOperationQueue, NSSet, NSString, NSURL, PFUbiquityLocation;
 
 __attribute__((visibility("hidden")))
-@interface PFUbiquityContainerIdentifier : NSObject <NSFilePresenter>
+@interface PFUbiquityContainerIdentifier : NSObject
 {
     NSString *_storeName;
     NSString *_localPeerID;

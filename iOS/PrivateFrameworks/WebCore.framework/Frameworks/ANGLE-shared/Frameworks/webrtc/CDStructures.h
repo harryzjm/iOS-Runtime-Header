@@ -126,8 +126,8 @@ struct FrameDependencyStructure {
     int _field1;
     int _field2;
     int _field3;
-    struct InlinedVector<int, 10, std::allocator<int>> _field4;
-    struct InlinedVector<webrtc::RenderResolution, 4, std::allocator<webrtc::RenderResolution>> _field5;
+    struct InlinedVector<int, 10UL, std::allocator<int>> _field4;
+    struct InlinedVector<webrtc::RenderResolution, 4UL, std::allocator<webrtc::RenderResolution>> _field5;
     struct vector<webrtc::FrameDependencyTemplate, std::allocator<webrtc::FrameDependencyTemplate>> _field6;
 };
 
@@ -136,12 +136,12 @@ struct FrameDependencyTemplate;
 struct GenericFrameInfo {
     int _field1;
     int _field2;
-    struct InlinedVector<webrtc::DecodeTargetIndication, 10, std::allocator<webrtc::DecodeTargetIndication>> _field3;
-    struct InlinedVector<int, 4, std::allocator<int>> _field4;
-    struct InlinedVector<int, 4, std::allocator<int>> _field5;
-    struct InlinedVector<webrtc::CodecBufferUsage, 8, std::allocator<webrtc::CodecBufferUsage>> _field6;
+    struct InlinedVector<webrtc::DecodeTargetIndication, 10UL, std::allocator<webrtc::DecodeTargetIndication>> _field3;
+    struct InlinedVector<int, 4UL, std::allocator<int>> _field4;
+    struct InlinedVector<int, 4UL, std::allocator<int>> _field5;
+    struct InlinedVector<webrtc::CodecBufferUsage, 8UL, std::allocator<webrtc::CodecBufferUsage>> _field6;
     struct vector<bool, std::allocator<bool>> _field7;
-    struct bitset<32> _field8;
+    struct bitset<32UL> _field8;
 };
 
 struct GofInfoVP9 {
@@ -186,24 +186,24 @@ struct Inlined {
     char _field1[16];
 };
 
-struct InlinedVector<int, 10, std::allocator<int>> {
-    struct Storage<int, 10, std::allocator<int>> _field1;
+struct InlinedVector<int, 10UL, std::allocator<int>> {
+    struct Storage<int, 10UL, std::allocator<int>> _field1;
 };
 
-struct InlinedVector<int, 4, std::allocator<int>> {
-    struct Storage<int, 4, std::allocator<int>> _field1;
+struct InlinedVector<int, 4UL, std::allocator<int>> {
+    struct Storage<int, 4UL, std::allocator<int>> _field1;
 };
 
-struct InlinedVector<webrtc::CodecBufferUsage, 8, std::allocator<webrtc::CodecBufferUsage>> {
-    struct Storage<webrtc::CodecBufferUsage, 8, std::allocator<webrtc::CodecBufferUsage>> _field1;
+struct InlinedVector<webrtc::CodecBufferUsage, 8UL, std::allocator<webrtc::CodecBufferUsage>> {
+    struct Storage<webrtc::CodecBufferUsage, 8UL, std::allocator<webrtc::CodecBufferUsage>> _field1;
 };
 
-struct InlinedVector<webrtc::DecodeTargetIndication, 10, std::allocator<webrtc::DecodeTargetIndication>> {
-    struct Storage<webrtc::DecodeTargetIndication, 10, std::allocator<webrtc::DecodeTargetIndication>> _field1;
+struct InlinedVector<webrtc::DecodeTargetIndication, 10UL, std::allocator<webrtc::DecodeTargetIndication>> {
+    struct Storage<webrtc::DecodeTargetIndication, 10UL, std::allocator<webrtc::DecodeTargetIndication>> _field1;
 };
 
-struct InlinedVector<webrtc::RenderResolution, 4, std::allocator<webrtc::RenderResolution>> {
-    struct Storage<webrtc::RenderResolution, 4, std::allocator<webrtc::RenderResolution>> _field1;
+struct InlinedVector<webrtc::RenderResolution, 4UL, std::allocator<webrtc::RenderResolution>> {
+    struct Storage<webrtc::RenderResolution, 4UL, std::allocator<webrtc::RenderResolution>> _field1;
 };
 
 struct PpsState {
@@ -267,7 +267,7 @@ struct SpsState {
     unsigned int id;
 };
 
-struct Storage<int, 10, std::allocator<int>> {
+struct Storage<int, 10UL, std::allocator<int>> {
     struct CompressedTuple<std::allocator<int>, unsigned long> _field1;
     union Data {
         struct Allocated {
@@ -278,7 +278,7 @@ struct Storage<int, 10, std::allocator<int>> {
     } _field2;
 };
 
-struct Storage<int, 4, std::allocator<int>> {
+struct Storage<int, 4UL, std::allocator<int>> {
     struct CompressedTuple<std::allocator<int>, unsigned long> _field1;
     union Data {
         struct Allocated {
@@ -289,7 +289,7 @@ struct Storage<int, 4, std::allocator<int>> {
     } _field2;
 };
 
-struct Storage<webrtc::CodecBufferUsage, 8, std::allocator<webrtc::CodecBufferUsage>> {
+struct Storage<webrtc::CodecBufferUsage, 8UL, std::allocator<webrtc::CodecBufferUsage>> {
     struct CompressedTuple<std::allocator<webrtc::CodecBufferUsage>, unsigned long> _field1;
     union Data {
         struct Allocated {
@@ -300,7 +300,7 @@ struct Storage<webrtc::CodecBufferUsage, 8, std::allocator<webrtc::CodecBufferUs
     } _field2;
 };
 
-struct Storage<webrtc::DecodeTargetIndication, 10, std::allocator<webrtc::DecodeTargetIndication>> {
+struct Storage<webrtc::DecodeTargetIndication, 10UL, std::allocator<webrtc::DecodeTargetIndication>> {
     struct CompressedTuple<std::allocator<webrtc::DecodeTargetIndication>, unsigned long> _field1;
     union Data {
         struct Allocated {
@@ -311,7 +311,7 @@ struct Storage<webrtc::DecodeTargetIndication, 10, std::allocator<webrtc::Decode
     } _field2;
 };
 
-struct Storage<webrtc::RenderResolution, 4, std::allocator<webrtc::RenderResolution>> {
+struct Storage<webrtc::RenderResolution, 4UL, std::allocator<webrtc::RenderResolution>> {
     struct CompressedTuple<std::allocator<webrtc::RenderResolution>, unsigned long> _field1;
     union Data {
         struct Allocated {
@@ -354,11 +354,10 @@ struct VideoCodec {
     struct SpatialLayer _field12[5];
     int _field13;
     _Bool _field14;
-    struct optional<int> _field15;
-    struct TimingFrameTriggerThresholds _field16;
-    _Bool _field17;
-    union VideoCodecUnion _field18;
-    basic_string_05660eb3 _field19;
+    struct TimingFrameTriggerThresholds _field15;
+    _Bool _field16;
+    union VideoCodecUnion _field17;
+    basic_string_05660eb3 _field18;
 };
 
 struct VideoCodecH264 {
@@ -425,7 +424,7 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
     } _field1;
 };
 
-struct bitset<32> {
+struct bitset<32UL> {
     unsigned long long _field1;
 };
 

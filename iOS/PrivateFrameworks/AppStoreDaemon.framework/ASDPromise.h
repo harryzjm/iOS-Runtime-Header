@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 + (id)onScheduler:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 @property(readonly) ASDPromiseResult *result; // @synthesize result=_result;
-- (void)_invokeExecutor:(CDUnknownBlockType)arg1 onScheduler:(id)arg2;
 - (void)rejectWithError:(id)arg1;
 - (void)resolveWithValue:(id)arg1;
 - (CDUnknownBlockType)completionHandlerAdapter;
@@ -33,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (void)catchError:(CDUnknownBlockType)arg1 onScheduler:(id)arg2;
 - (void)alwaysPerform:(CDUnknownBlockType)arg1 onScheduler:(id)arg2;
 @property(readonly, getter=isResolved) _Bool resolved;
-- (id)initWithState:(long long)arg1 result:(id)arg2;
 - (id)initOnScheduler:(id)arg1 withExecutor:(CDUnknownBlockType)arg2;
 - (id)initWithError:(id)arg1;
 - (id)initWithValue:(id)arg1;

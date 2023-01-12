@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCHStyleOwnerPath;
 
-@interface TSCHStyleOwnerPropertyKey : NSObject <NSCopying>
+@interface TSCHStyleOwnerPropertyKey : NSObject
 {
     TSCHStyleOwnerPath *_styleOwnerPath;
     int _property;

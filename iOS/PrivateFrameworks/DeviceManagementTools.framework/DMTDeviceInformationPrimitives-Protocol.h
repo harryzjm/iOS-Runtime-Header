@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol DMTDeviceInformationPrimitives <NSObject>
+@property(readonly, copy, nonatomic) NSString *deviceClass;
 @property(readonly, copy, nonatomic) NSString *marketingModelName;
 @property(readonly, copy, nonatomic) NSString *modelIdentifier;
 @property(readonly, copy, nonatomic) NSString *deviceUDID;

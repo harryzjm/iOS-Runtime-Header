@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSGraphTransposeOp
+#import "MPSGraphOperation.h"
+
+@interface MPSGraphTransposeOp : MPSGraphOperation
 {
     unsigned long long _dimensionIndex;
     unsigned long long _dimensionIndex2;

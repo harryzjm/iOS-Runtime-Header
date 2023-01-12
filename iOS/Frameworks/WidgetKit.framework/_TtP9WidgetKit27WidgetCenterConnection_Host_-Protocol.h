@@ -7,6 +7,7 @@
 @class NSString;
 
 @protocol _TtP9WidgetKit27WidgetCenterConnection_Host_
+- (void)invalidateConfigurationRecommendationsWithCompletion:(void (^)(NSError *))arg1;
 - (void)_reloadAllTimelines:(void (^)(NSError *))arg1;
 - (void)_reloadTimelinesOfKind:(NSString *)arg1 inBundle:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_reloadTimelinesOfKind:(NSString *)arg1 completion:(void (^)(NSError *))arg2;

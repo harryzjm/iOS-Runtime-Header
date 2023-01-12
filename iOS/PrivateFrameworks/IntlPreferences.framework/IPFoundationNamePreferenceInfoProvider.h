@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IntlPreferences/IPNamePreferenceInfoProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface IPFoundationNamePreferenceInfoProvider : NSObject <IPNamePreferenceInfoProvider>
+@interface IPFoundationNamePreferenceInfoProvider : NSObject
 {
 }
 

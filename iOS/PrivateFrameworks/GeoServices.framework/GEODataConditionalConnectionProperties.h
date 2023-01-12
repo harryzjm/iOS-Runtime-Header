@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEODataConditionalConnectionProperties : NSObject <NSSecureCoding>
+@interface GEODataConditionalConnectionProperties : NSObject
 {
     unsigned long long _workLoad;
     double _timeWindowStartTime;

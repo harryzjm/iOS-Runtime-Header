@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/CKOperationCallbacks-Protocol.h>
-
 @class Protocol;
 @protocol CKOperationCallbacks;
 
-@interface CKDOperationCallbackProxy : NSObject <CKOperationCallbacks>
+@interface CKDOperationCallbackProxy : NSObject
 {
     id <CKOperationCallbacks> _clientOperationCallbackProxy;
     Protocol *_callbackProtocol;

@@ -7,7 +7,6 @@
 #import <SearchFoundation/SFOpenPunchoutCommand.h>
 
 @interface SFOpenPunchoutCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
-- (Class)_searchUI_actionProviderClassWithRowModel:(id)arg1;
+- (Class)_searchUICommandHandlerClass;
 @end
 

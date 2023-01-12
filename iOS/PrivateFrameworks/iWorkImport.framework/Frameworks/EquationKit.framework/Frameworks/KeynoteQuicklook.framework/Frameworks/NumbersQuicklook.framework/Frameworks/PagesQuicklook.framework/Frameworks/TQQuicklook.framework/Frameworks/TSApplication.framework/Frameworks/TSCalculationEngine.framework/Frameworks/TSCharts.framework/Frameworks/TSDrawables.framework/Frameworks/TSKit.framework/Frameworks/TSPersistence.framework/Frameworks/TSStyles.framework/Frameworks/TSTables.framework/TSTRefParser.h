@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCERefParsingProtocol-Protocol.h>
+@class NSCharacterSet, NSString, TSCECalculationEngine, TSCEStringManipulator;
 
-@class NSCharacterSet, NSString, TSCECalculationEngine;
-
-@interface TSTRefParser : NSObject <TSCERefParsingProtocol>
+@interface TSTRefParser : NSObject
 {
+    TSCEStringManipulator *_stringManipulator;
     TSCECalculationEngine *_calcEngine;
     NSCharacterSet *_whitespaceCharSet;
 }

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VSAsyncOperation.h"
+
 @class NSURL, VSOptional;
 
 __attribute__((visibility("hidden")))
-@interface VSFileReadOperation
+@interface VSFileReadOperation : VSAsyncOperation
 {
     NSURL *_source;
     VSOptional *_result;

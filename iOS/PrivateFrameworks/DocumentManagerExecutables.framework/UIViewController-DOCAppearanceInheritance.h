@@ -6,11 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <DocumentManagerExecutables/DOCAppearanceCustomization-Protocol.h>
-
 @class DOCAppearance, NSString;
 
-@interface UIViewController (DOCAppearanceInheritance) <DOCAppearanceCustomization>
+@interface UIViewController (DOCAppearanceInheritance)
 + (void)load;
 - (void)effectiveAppearanceDidChange:(id)arg1;
 @property(readonly) DOCAppearance *effectiveAppearance;

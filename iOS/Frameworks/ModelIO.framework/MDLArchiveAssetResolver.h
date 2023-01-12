@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <ModelIO/MDLAssetResolver-Protocol.h>
-
 @class NSData, NSMutableDictionary, NSString, NSURL;
 
-@interface MDLArchiveAssetResolver : NSObject <MDLAssetResolver>
+@interface MDLArchiveAssetResolver : NSObject
 {
     NSURL *_archiveURL;
     NSMutableDictionary *_archiveDictionary;

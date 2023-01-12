@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     double _lineWidth;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;
 @property(readonly, nonatomic) struct CGPoint lineOrigin; // @synthesize lineOrigin=_lineOrigin;
 @property(readonly, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;

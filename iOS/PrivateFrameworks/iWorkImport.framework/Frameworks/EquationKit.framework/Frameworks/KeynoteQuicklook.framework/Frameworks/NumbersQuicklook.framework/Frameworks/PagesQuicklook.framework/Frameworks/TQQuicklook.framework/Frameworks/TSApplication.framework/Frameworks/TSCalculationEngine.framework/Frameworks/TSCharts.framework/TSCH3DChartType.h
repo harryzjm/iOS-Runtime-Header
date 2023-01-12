@@ -56,6 +56,8 @@
 - (_Bool)supportsAxisLine;
 - (_Bool)supportsAxisLabelsOrientation;
 - (_Bool)supportsValueAxisLabelsPosition;
+- (int)majorGridlineStrokeProperty;
+- (_Bool)supportsGridlineShadow;
 - (_Bool)supportsMinorGridlines;
 - (_Bool)supportsBorderStroke;
 - (_Bool)supportsBorderFrame;

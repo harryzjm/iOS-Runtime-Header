@@ -6,13 +6,10 @@
 
 #import <Preferences/PSViewController.h>
 
-#import <ChatKit/UITableViewDataSource-Protocol.h>
-#import <ChatKit/UITableViewDelegate-Protocol.h>
-
 @class NSString, UIBarButtonItem, UINavigationItem, UITableView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface CKAbstractReviewViewController : PSViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CKAbstractReviewViewController : PSViewController
 {
     UITableView *_tableView;
     UIView *_topLineView;

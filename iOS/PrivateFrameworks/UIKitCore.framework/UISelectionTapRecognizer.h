@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITextTapRecognizer.h"
+
 @class UIResponder;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
-@interface UISelectionTapRecognizer
+@interface UISelectionTapRecognizer : UITextTapRecognizer
 {
     UIResponder<UITextInput> *_textView;
 }

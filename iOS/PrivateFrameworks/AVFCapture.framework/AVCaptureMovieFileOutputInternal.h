@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     _Bool deviceSupportsConstituentDeviceSwitching;
     _Bool streamingDepthSupported;
     _Bool depthCaptureEnabled;
+    _Bool usesVirtualCaptureCard;
 }
 
 - (void)dealloc;

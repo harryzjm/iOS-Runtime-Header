@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
 @protocol CSVTUIAudioSessionDelegate, Endpointer;
 
 @protocol CSVTUIAudioSession
@@ -18,6 +19,7 @@
 - (void)stopRecording;
 - (_Bool)startRecording;
 - (unsigned long long)audioSource;
+- (void)updateAudioRecorderForTrainingDevice:(unsigned long long)arg1 deviceUUIDs:(NSArray *)arg2;
 - (_Bool)prepareRecord;
 - (void)setDelegate:(id <CSVTUIAudioSessionDelegate>)arg1;
 @end

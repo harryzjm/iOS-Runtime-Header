@@ -13,6 +13,7 @@
 @property(nonatomic) __weak id <SBSwitcherLiveContentOverlayCoordinatorDelegate> delegate;
 @property(nonatomic) long long containerOrientation;
 @property(nonatomic, getter=areLiveContentOverlayUpdatesSuspended) _Bool liveContentOverlayUpdatesSuspended;
+- (void)invalidate;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2;
 - (void)willRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2 alongsideContainerView:(UIView *)arg3 animated:(_Bool)arg4;
 - (_Bool)wantsHomeAffordanceAutoHideForAppLayout:(SBAppLayout *)arg1;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/SFSpeechRecognitionTaskDelegate-Protocol.h>
-#import <WebCore/SFSpeechRecognizerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebSpeechRecognizerTaskImpl : NSObject <SFSpeechRecognitionTaskDelegate, SFSpeechRecognizerDelegate>
+@interface WebSpeechRecognizerTaskImpl : NSObject
 {
     ObjectIdentifier_0a27c126 _identifier;
     struct BlockPtr<void (const WebCore::SpeechRecognitionUpdate &)> _delegateCallback;

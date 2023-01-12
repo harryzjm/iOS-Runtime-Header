@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKAllergyReaction.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKAllergyReaction (HDCodingSupport) <HDCoding>
+@interface HKAllergyReaction (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

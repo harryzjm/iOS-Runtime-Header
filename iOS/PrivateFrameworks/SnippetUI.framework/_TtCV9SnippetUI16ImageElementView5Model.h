@@ -10,12 +10,8 @@
 
 @interface _TtCV9SnippetUI16ImageElementView5Model : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *sources;
-    MISSING_TYPE *_sourceIndex;
-    MISSING_TYPE *_image;
-    MISSING_TYPE *_foregroundColor;
-    MISSING_TYPE *downloadData;
-    MISSING_TYPE *cancellables;
+    MISSING_TYPE *_sourceModel;
+    MISSING_TYPE *downloadDataAsync;
 }
 
 @end

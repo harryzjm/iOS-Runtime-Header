@@ -23,6 +23,7 @@
 - (void)hm_encodeSetOfConditionalObjects:(id)arg1 forKey:(id)arg2;
 - (id)hm_decodeArrayOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
 - (void)hm_encodeArrayOfConditionalObjects:(id)arg1 forKey:(id)arg2;
+- (_Bool)hmd_isHH2MigrationInProgress;
 @property(readonly, getter=hmd_isForXPCTransportEntitledForHomeLocationFeedbackAccess) _Bool hmd_isForXPCTransportEntitledForHomeLocationFeedbackAccess;
 @property(readonly, getter=hmd_isForXPCTransportEntitledForAssistantIdentifiers) _Bool hmd_forXPCTransportEntitledForAssistantIdentifiers;
 @property(readonly, getter=hmd_isForXPCTransportEntitledForHomeLocationAccess) _Bool hmd_forXPCTransportEntitledForHomeLocationAccess;

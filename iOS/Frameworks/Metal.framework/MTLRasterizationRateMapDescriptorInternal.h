@@ -4,24 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Metal/MTLRasterizationRateMapDescriptorSPI-Protocol.h>
+#import "MTLRasterizationRateMapDescriptor.h"
 
 @class MTLRasterizationRateLayerArrayInternal, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MTLRasterizationRateMapDescriptorInternal <MTLRasterizationRateMapDescriptorSPI>
+@interface MTLRasterizationRateMapDescriptorInternal : MTLRasterizationRateMapDescriptor
 {
     CDStruct_da2e99ad _screenSize;
     NSString *_label;
     struct vector<MTLRasterizationRateLayerDescriptor *, std::allocator<MTLRasterizationRateLayerDescriptor *>> _layers;
     MTLRasterizationRateLayerArrayInternal *_layerAccessor;
     _Bool _skipSampleValidationAndInterpolation;
+    _Bool _skipSampleValidationAndApplySampleAtTileGranularity;
+    float _minFactor;
+    unsigned long long _mutability;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)setLabel:(id)arg1;
 - (id)label;
+@property(nonatomic) float minFactor; // @synthesize minFactor=_minFactor;
+@property(nonatomic) unsigned long long mutability; // @synthesize mutability=_mutability;
+@property(nonatomic) _Bool skipSampleValidationAndApplySampleAtTileGranularity; // @synthesize skipSampleValidationAndApplySampleAtTileGranularity=_skipSampleValidationAndApplySampleAtTileGranularity;
 @property(nonatomic) _Bool skipSampleValidationAndInterpolation; // @synthesize skipSampleValidationAndInterpolation=_skipSampleValidationAndInterpolation;
 - (void)setScreenSize:(CDStruct_da2e99ad)arg1;
 - (CDStruct_da2e99ad)screenSize;

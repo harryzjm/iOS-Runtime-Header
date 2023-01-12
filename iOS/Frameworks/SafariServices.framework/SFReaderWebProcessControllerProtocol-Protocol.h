@@ -13,6 +13,7 @@
 - (void)checkReaderAvailability;
 - (void)didFinishPresentationUpdateAfterTransitioningToReader;
 - (void)prepareReaderContentForPrinting;
+- (void)setArticleLocale:(NSString *)arg1;
 - (void)setReaderIsActive:(_Bool)arg1;
 - (void)activateFont:(NSString *)arg1;
 - (void)setConfiguration:(NSDictionary *)arg1;

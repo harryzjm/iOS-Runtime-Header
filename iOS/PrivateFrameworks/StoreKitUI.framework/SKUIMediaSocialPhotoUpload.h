@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMediaSocialPhotoUpload : NSObject <NSCopying>
+@interface SKUIMediaSocialPhotoUpload : NSObject
 {
     _Bool _hasAlpha;
     unsigned long long _height;

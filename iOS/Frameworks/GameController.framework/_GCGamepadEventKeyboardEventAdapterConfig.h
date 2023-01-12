@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _GCGamepadEventKeyboardEventAdapterConfig : NSObject <NSSecureCoding>
+@interface _GCGamepadEventKeyboardEventAdapterConfig : NSObject
 {
-    struct UsagePage_Usage_Pair _mappings[41];
+    struct UsagePage_Usage_Pair _mappings[45];
 }
 
 + (_Bool)supportsSecureCoding;

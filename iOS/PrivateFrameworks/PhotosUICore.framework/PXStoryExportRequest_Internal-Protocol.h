@@ -6,7 +6,10 @@
 
 #import <PhotosUICore/PXStoryExportRequest-Protocol.h>
 
+@protocol PXStoryStyle;
+
 @protocol PXStoryExportRequest_Internal <PXStoryExportRequest>
-@property(readonly, nonatomic) CDStruct_1b6d18a9 exportDuration;
+@property(readonly, nonatomic) id <PXStoryStyle> exportedStyle;
+@property(readonly, nonatomic) CDStruct_198678f7 exportDuration;
 @end
 

@@ -7,9 +7,10 @@
 #import <AuthKitUI/AKAppleIDAuthenticationLimitedUIProvider-Protocol.h>
 #import <AuthKitUI/AKAppleIDServerAuthenticationUIProvider-Protocol.h>
 
-@class AKAccountRecoveryContext, NSString;
+@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKFidoContext, NSString;
 
 @protocol AKAppleIDAuthenticationUIProvider <AKAppleIDAuthenticationLimitedUIProvider, AKAppleIDServerAuthenticationUIProvider>
+- (void)presentFidoAuthForContext:(AKAppleIDAuthenticationContext *)arg1 fidoContext:(AKFidoContext *)arg2 completion:(void (^)(AKFidoAuthenticationResponse *, NSError *))arg3;
 - (void)dismissNativeRecoveryUIWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)presentNativeRecoveryUIWithContext:(AKAccountRecoveryContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 

@@ -12,7 +12,7 @@
 - (id)wf_contentItemForValue:(id)arg1;
 - (id)wf_parameterStateForIntentValue:(id)arg1 parameterDefinition:(id)arg2;
 - (_Bool)wf_processParameterValue:(id)arg1 forParameter:(id)arg2 parameterState:(id)arg3 codableAttribute:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)wf_updateParameterDictionary:(id)arg1 forCodableAttribute:(id)arg2;
+- (void)wf_updateParameterDictionary:(id)arg1 forCodableAttribute:(id)arg2 localizer:(id)arg3;
 - (Class)wf_parameterClass;
 - (Class)wf_objectClass;
 @end

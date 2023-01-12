@@ -6,12 +6,10 @@
 
 #import <UIKit/UIVisualEffectView.h>
 
-#import <ClipUIServices/UIContentSizeCategoryAdjusting-Protocol.h>
-
 @class NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface CPSVibrantLabel : UIVisualEffectView <UIContentSizeCategoryAdjusting>
+@interface CPSVibrantLabel : UIVisualEffectView
 {
     UILabel *_label;
 }

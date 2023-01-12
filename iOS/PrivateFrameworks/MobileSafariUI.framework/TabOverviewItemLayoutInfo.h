@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, TabOverview, TabOverviewInterpolatedLocation, TabOverviewInterpolatedValue, TabOverviewItem, UIView;
-@protocol TabOverviewItemView;
+@class NSArray, TabOverview, TabOverviewInterpolatedLocation, TabOverviewInterpolatedValue, TabOverviewItem, TabOverviewItemView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface TabOverviewItemLayoutInfo : NSObject
@@ -16,20 +15,21 @@ __attribute__((visibility("hidden")))
     _Bool _snapshotBlank;
     _Bool _closeSynchronized;
     _Bool _visibleInTabOverview;
+    _Bool _interactivelyInserted;
     TabOverview *_tabOverview;
     TabOverviewItem *_tabOverviewItem;
     UIView *_borrowedContentView;
     double _borrowedContentHeaderHeight;
-    UIView<TabOverviewItemView> *_itemView;
+    TabOverviewItemView *_itemView;
+    double _interactiveInsertionProgress;
     double _alpha;
     double _snapshotAlpha;
     TabOverviewInterpolatedValue *_interpolatedSnapshotAlpha;
-    TabOverviewInterpolatedValue *_interpolatedTitleAlpha;
     TabOverviewInterpolatedValue *_interpolatedTopBackdropHeight;
     TabOverviewInterpolatedValue *_interpolatedCornerRadius;
     TabOverviewInterpolatedValue *_interpolatedHeightTransitionPercent;
+    TabOverviewInterpolatedValue *_interpolatedBoundsLogScale;
     UIView *_attachedView;
-    double _titleAlpha;
     double _dimmingAlpha;
     TabOverviewInterpolatedLocation *_interpolatedLocation;
     struct CGRect _snapshotFrame;

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSLocale.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface NSLocale (IBBinaryArchivingAdditions) <IBBinaryArchiving>
+@interface NSLocale (IBBinaryArchivingAdditions)
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 

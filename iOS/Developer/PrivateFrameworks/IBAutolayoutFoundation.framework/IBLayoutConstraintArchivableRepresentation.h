@@ -6,14 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBAutolayoutFoundation/IBLayoutConstraintRepresentation-Protocol.h>
-#import <IBAutolayoutFoundation/NSCoding-Protocol.h>
-#import <IBAutolayoutFoundation/NSCopying-Protocol.h>
-
 @class IBLayoutConstant, IBLayoutConstraintMultiplier, NSString;
 
-@interface IBLayoutConstraintArchivableRepresentation : NSObject <NSCoding, NSCopying, IBLayoutConstraintRepresentation, IBBinaryArchiving>
+@interface IBLayoutConstraintArchivableRepresentation : NSObject
 {
     _Bool _placeholder;
     NSString *_firstItemIdentifier;

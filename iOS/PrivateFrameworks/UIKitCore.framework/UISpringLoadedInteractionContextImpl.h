@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UISpringLoadedInteractionContext_Internal-Protocol.h>
-
 @class NSString, UISpringLoadedGestureRecognizer, UIView;
 @protocol UIDropSession;
 
 __attribute__((visibility("hidden")))
-@interface UISpringLoadedInteractionContextImpl : NSObject <UISpringLoadedInteractionContext_Internal>
+@interface UISpringLoadedInteractionContextImpl : NSObject
 {
     id targetItem;
     UIView *targetView;

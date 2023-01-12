@@ -6,14 +6,14 @@
 
 #import <TSDrawables/TSDRep.h>
 
-#import <KeynoteQuicklook/TSDMagicMoveMatching-Protocol.h>
-
 @class CALayer, KNSlideBackgroundInfo;
 
-@interface KNSlideBackgroundRep : TSDRep <TSDMagicMoveMatching>
+@interface KNSlideBackgroundRep : TSDRep
 {
     CALayer *_blackBackgroundLayer;
     _Bool _layerNeedsUpdate;
+    _Bool _showStaticFill;
+    _Bool _showMotionBackground;
 }
 
 + (id)magicMoveMatchesBetweenOutgoingObjects:(id)arg1 andIncomingObjects:(id)arg2 textureDescription:(id)arg3;

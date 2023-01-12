@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/HDSPEventScheduler-Protocol.h>
-#import <SleepDaemon/HDSPNotificationObserver-Protocol.h>
-
 @class NSString;
 @protocol HDSPEventScheduleDelegate;
 
 __attribute__((visibility("hidden")))
-@interface HDSPXPCAlarmScheduler : NSObject <HDSPEventScheduler, HDSPNotificationObserver>
+@interface HDSPXPCAlarmScheduler : NSObject
 {
     id <HDSPEventScheduleDelegate> delegate;
     CDUnknownBlockType _currentDateProvider;

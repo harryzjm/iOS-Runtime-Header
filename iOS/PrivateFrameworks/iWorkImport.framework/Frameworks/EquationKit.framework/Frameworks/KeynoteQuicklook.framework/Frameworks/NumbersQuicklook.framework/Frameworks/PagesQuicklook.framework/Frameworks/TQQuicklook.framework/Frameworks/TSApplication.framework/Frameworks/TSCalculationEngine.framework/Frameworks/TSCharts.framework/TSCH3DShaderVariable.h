@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface TSCH3DShaderVariable : NSObject <NSCopying>
+@interface TSCH3DShaderVariable : NSObject
 {
     NSString *_name;
     NSString *_type;

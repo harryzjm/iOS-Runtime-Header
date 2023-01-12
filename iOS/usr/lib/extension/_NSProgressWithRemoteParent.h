@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSProgress.h"
+
 @class NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface _NSProgressWithRemoteParent
+@interface _NSProgressWithRemoteParent : NSProgress
 {
     NSXPCConnection *_parentConnection;
     unsigned long long _sequence;
@@ -15,6 +17,11 @@ __attribute__((visibility("hidden")))
 
 @property unsigned long long sequence; // @synthesize sequence=_sequence;
 @property(retain) NSXPCConnection *parentConnection; // @synthesize parentConnection=_parentConnection;
+- (void)_sendCancellableOrPausableUpdate:(_Bool)arg1 stringKey:(const char *)arg2 intKey:(int)arg3;
+- (void)_setPausable:(_Bool)arg1 fromChild:(_Bool)arg2;
+- (void)setPausable:(_Bool)arg1;
+- (void)_setCancellable:(_Bool)arg1 fromChild:(_Bool)arg2;
+- (void)setCancellable:(_Bool)arg1;
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2 fromChild:(_Bool)arg3;
 - (void)_updateFractionCompleted:(struct _NSProgressFractionTuple)arg1;
 - (void)dealloc;

@@ -8,8 +8,10 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed15FormatStateView : UIView
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *stateViewFormatLayoutViews;
     MISSING_TYPE *state;
 }

@@ -6,13 +6,23 @@
 
 #import <UIKit/UINavigationController.h>
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI25UIKitNavigationController : UINavigationController
 {
+    MISSING_TYPE *update;
+    MISSING_TYPE *isTransitioningToSize;
+    MISSING_TYPE *backgroundHost;
 }
 
+- (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
+- (void)_observeScrollViewGeometryAffectingContentBottomDidChange:(id)arg1;
+- (void)_observeScrollViewDidScroll:(id)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewWillLayoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRootViewController:(id)arg1;
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "RCCompositionWaveformDataSource.h"
+
 @class NSURL;
 
 __attribute__((visibility("hidden")))
-@interface RCTrimmedCompositionWaveformDataSource
+@interface RCTrimmedCompositionWaveformDataSource : RCCompositionWaveformDataSource
 {
     NSURL *_destinationWaveformURL;
 }

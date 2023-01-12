@@ -6,12 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/TSKModel-Protocol.h>
-#import <KeynoteQuicklook/TSPCopying-Protocol.h>
-
 @class KNLiveVideoCaptureDeviceDescription, KNLiveVideoSourceCollaborationCommandUsageState, NSString, TSPData;
 
-@interface KNLiveVideoSource : TSPObject <TSKModel, TSPCopying>
+@interface KNLiveVideoSource : TSPObject
 {
     NSString *_name;
     KNLiveVideoSourceCollaborationCommandUsageState *_collaborationCommandUsageState;
@@ -27,6 +24,7 @@
     KNLiveVideoCaptureDeviceDescription *_defaultSourceCaptureDeviceDescription;
 }
 
++ (id)accessibilityLabelForCameraArrowTriangle2CirclePath;
 + (_Bool)needsObjectUUID;
 + (id)colorForSymbolTintColorIdentifier:(long long)arg1;
 + (id)availableSymbolTintColorIdentifiers;
@@ -44,6 +42,8 @@
 @property(retain, nonatomic) TSPData *posterImageData; // @synthesize posterImageData=_posterImageData;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
+- (void)didInitFromSOS;
+- (_Bool)supportsBackgroundKind:(long long)arg1;
 - (_Bool)isEquivalentToLiveVideoSource:(id)arg1;
 - (void)rollbackToCollaborationCommandUsageState:(id)arg1;
 - (void)willBeUsedByCollaborationCommandWithUsageToken:(id)arg1;

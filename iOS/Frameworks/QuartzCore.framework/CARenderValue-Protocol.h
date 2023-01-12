@@ -9,7 +9,8 @@
 @protocol CARenderValue <NSObject>
 
 @optional
-- (unsigned long long)CA_copyNumericValue:(double [20])arg1;
+- (unsigned long long)CA_copyNumericValue:(double *)arg1;
+- (unsigned long long)CA_numericValueCount;
 - (struct Object *)CA_copyRenderValueWithColorspace:(struct CGColorSpace *)arg1;
 - (struct Object *)CA_copyRenderValue;
 - (void)CA_prepareRenderValue;

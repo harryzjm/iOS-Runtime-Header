@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISwipeViewManipulator-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDefaultSwipeViewManipulator : NSObject <_UISwipeViewManipulator>
+@interface _UIDefaultSwipeViewManipulator : NSObject
 {
     double _swipedViewRestingOffset;
 }
 
 @property(nonatomic) double swipedViewRestingOffset; // @synthesize swipedViewRestingOffset=_swipedViewRestingOffset;
-- (void)moveSwipedView:(id)arg1 atIndexPath:(id)arg2 withSwipeInfo:(CDStruct_9b6dff2a)arg3 animator:(id)arg4;
+- (void)moveSwipedView:(id)arg1 atIndexPath:(id)arg2 withSwipeInfo:(CDStruct_b06b0113)arg3 animator:(id)arg4;
 - (void)removeAnimationsFromSwipedView:(id)arg1 atIndexPath:(id)arg2;
 - (struct CGRect)restingFrameForSwipedView:(id)arg1 atIndexPath:(id)arg2;
 

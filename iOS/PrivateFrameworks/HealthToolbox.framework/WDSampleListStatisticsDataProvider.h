@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthToolbox/WDDataListViewControllerDataProvider-Protocol.h>
-
 @class HKDisplayType, HKUnitPreferenceController, NSMutableArray, NSMutableSet, NSPredicate, NSString, WDProfile;
 
 __attribute__((visibility("hidden")))
-@interface WDSampleListStatisticsDataProvider : NSObject <WDDataListViewControllerDataProvider>
+@interface WDSampleListStatisticsDataProvider : NSObject
 {
     _Bool _hasDetailViewController;
     _Bool _hasCompleteDataSet;

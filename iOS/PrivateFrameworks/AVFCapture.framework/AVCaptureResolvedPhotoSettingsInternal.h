@@ -35,7 +35,10 @@ __attribute__((visibility("hidden")))
     _Bool virtualDeviceFusionEnabled;
     _Bool squareCropEnabled;
     CDStruct_79c71658 deferredPhotoProxyDimensions;
-    CDStruct_e83c9415 photoProcessingTimeRange;
+    struct {
+        CDStruct_1b6d18a9 start;
+        CDStruct_1b6d18a9 duration;
+    } photoProcessingTimeRange;
     _Bool contentAwareDistortionCorrectionEnabled;
     NSArray *photoManifest;
     unsigned long long digitalFlashUserInterfaceHints;

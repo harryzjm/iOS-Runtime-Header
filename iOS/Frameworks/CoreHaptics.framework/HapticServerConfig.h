@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSString *_currentLocality;
     _Bool _usingInternalHaptics;
     _Bool _supportsAudioPlayback;
+    _Bool _supportsHapticPlayback;
     _Bool _supportsAdvancedPatternPlayers;
     float _hapticContinuousTimeLimit;
     float _defaultHapticTransientEventSharpness;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSString *currentLocality; // @synthesize currentLocality=_currentLocality;
 @property(readonly) float hapticContinuousTimeLimit; // @synthesize hapticContinuousTimeLimit=_hapticContinuousTimeLimit;
 @property(readonly) _Bool supportsAdvancedPatternPlayers; // @synthesize supportsAdvancedPatternPlayers=_supportsAdvancedPatternPlayers;
+@property(readonly) _Bool supportsHapticPlayback; // @synthesize supportsHapticPlayback=_supportsHapticPlayback;
 @property(readonly) _Bool supportsAudioPlayback; // @synthesize supportsAudioPlayback=_supportsAudioPlayback;
 @property(readonly) _Bool usingInternalHaptics; // @synthesize usingInternalHaptics=_usingInternalHaptics;
 - (id)initWithHapticPlayer:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;

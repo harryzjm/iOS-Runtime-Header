@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLJSValueProxy-Protocol.h>
-
 @class NSString;
 
-@interface TMLJSValueProxy : NSObject <TMLJSValueProxy>
+@interface TMLJSValueProxy : NSObject
 {
     id _target;
     NSString *_keyPath;

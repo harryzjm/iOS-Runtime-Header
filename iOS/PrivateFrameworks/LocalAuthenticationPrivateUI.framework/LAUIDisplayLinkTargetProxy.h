@@ -15,8 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)draw:(id)arg1;
-- (id)initWithTarget:(id)arg1;
+- (void)drawWithDisplayLink:(id)arg1;
 - (id)init;
 
 @end

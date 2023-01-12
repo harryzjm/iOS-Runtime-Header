@@ -6,10 +6,11 @@
 
 #import <AppStoreComponents/NSObject-Protocol.h>
 
-@class NSString, UIImage;
+@class ASCLockupDisplayContext, NSString, UIImage;
 
 @protocol ASCLockupPresenterView <NSObject>
 @property(readonly, nonatomic) struct CGSize preferredIconSize;
+- (void)setDisplayContext:(ASCLockupDisplayContext *)arg1;
 - (void)setLoading:(_Bool)arg1;
 - (void)setPrefersRightToLeftLayout:(_Bool)arg1;
 - (void)setSubtitle:(NSString *)arg1;

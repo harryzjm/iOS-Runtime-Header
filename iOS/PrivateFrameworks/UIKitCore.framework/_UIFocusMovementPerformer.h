@@ -21,15 +21,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isMovementValidForFocusSequences:(id)arg1;
 - (id)_nextLinearCandidateLoadingScrollableContentForRequest:(id)arg1;
 - (id)_fakeFocusedViewForFocusMovement:(id)arg1 searchArea:(struct CGRect)arg2 window:(id)arg3;
-- (id)_itemContainersToCheckForRequest:(id)arg1;
+- (id)_environmentContainersToCheckForRequest:(id)arg1;
 - (id)_bestCandidateForFocusMovement:(id)arg1;
 - (id)_bestCandidateForLinearFocusMovement:(id)arg1;
 - (id)_bestCandidateForNonLinearFocusMovement:(id)arg1;
 - (id)_findFocusCandidateBySearchingLinearFocusMovementSequencesForRequest:(id)arg1;
-- (id)_findFocusCandidateByExhaustivelySearchingScrollableContainer:(id)arg1 forRequest:(id)arg2;
+- (id)_findFocusCandidateByExhaustivelySearchingEnvironment:(id)arg1 scrollableContainer:(id)arg2 forRequest:(id)arg3;
 - (_Bool)_shouldRecordDestinationItemDistanceOffscreenInWindow:(id)arg1;
-- (id)_findFocusCandidateWithoutLoadingScrollableContent:(id)arg1 forRequest:(id)arg2 minimumSearchArea:(struct CGRect)arg3;
-- (id)__findFocusCandidateInContainer:(id)arg1 forRequest:(id)arg2 minimumSearchArea:(struct CGRect)arg3 isLoadingScrollableContainer:(_Bool)arg4;
+- (id)_findFocusCandidateWithoutLoadingScrollableContentInEnvironment:(id)arg1 container:(id)arg2 forRequest:(id)arg3 minimumSearchArea:(struct CGRect)arg4;
+- (id)__findFocusCandidateInEnvironment:(id)arg1 container:(id)arg2 forRequest:(id)arg3 minimumSearchArea:(struct CGRect)arg4 isLoadingScrollableContainer:(_Bool)arg5;
 - (id)viewForFocusHeading:(unsigned long long)arg1 fromView:(id)arg2;
 - (_Bool)performFocusMovement:(id)arg1;
 

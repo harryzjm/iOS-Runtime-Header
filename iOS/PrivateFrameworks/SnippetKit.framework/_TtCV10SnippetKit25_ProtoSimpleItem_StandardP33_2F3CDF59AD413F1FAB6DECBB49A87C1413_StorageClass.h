@@ -15,6 +15,10 @@
     MISSING_TYPE *_text3;
     MISSING_TYPE *_text4;
     MISSING_TYPE *_action;
+    MISSING_TYPE *_componentName;
+    MISSING_TYPE *_text5;
+    MISSING_TYPE *_text6;
+    MISSING_TYPE *_linkIdentifier;
 }
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceFrecentsWriting-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVOutputDeviceLegacyFrecentsWriter : NSObject <AVOutputDeviceFrecentsWriting>
+@interface AVOutputDeviceLegacyFrecentsWriter : NSObject
 {
     NSMutableDictionary *_updatedFrecentsList;
     NSMutableArray *_keysToRemove;

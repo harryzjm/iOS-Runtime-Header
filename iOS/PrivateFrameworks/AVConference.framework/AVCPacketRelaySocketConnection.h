@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/AVCPacketRelayConnectionProtocol-Protocol.h>
-
 @class AVCPacketFilter;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVCPacketRelaySocketConnection : NSObject <AVCPacketRelayConnectionProtocol>
+@interface AVCPacketRelaySocketConnection : NSObject
 {
     unsigned char _type;
     _Bool _isDemuxNeeded;

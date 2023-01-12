@@ -10,7 +10,7 @@
 @protocol CRTextRecognizerModelInputProvider;
 
 @protocol CRRecognizerFeatureProviding <NSObject>
-- (void)enumerateInputsForImage:(CRImage *)arg1 textFeatures:(NSArray *)arg2 usingBlock:(void (^)(NSArray *, double))arg3;
+- (void)enumerateInputsForImage:(CRImage *)arg1 textFeatures:(NSArray *)arg2 usingBlock:(void (^)(NSArray *, double, _Bool))arg3;
 - (id)initWithConfiguration:(CRNeuralRecognizerConfiguration *)arg1 inputProvider:(NSObject<CRTextRecognizerModelInputProvider> *)arg2 error:(id *)arg3;
 @end
 

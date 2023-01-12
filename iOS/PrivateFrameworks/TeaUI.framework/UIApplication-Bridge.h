@@ -9,10 +9,13 @@
 @class UIWindow;
 
 @interface UIApplication (Bridge)
+- (void)ts_performBlockAfterCATransactionCommits:(CDUnknownBlockType)arg1;
 - (void)ts_installCACommitCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)ts_statusBarWindow;
 - (double)defaultStatusBarHeight;
 - (_Bool)isRunningPerformanceTest;
+- (struct CGRect)ts_accessibilitySoftwareKeyboardAccessibilityFrame;
+- (_Bool)ts_accessibilitySoftwareKeyboardActive;
 @property(nonatomic, readonly) UIWindow *key_window;
 @end
 

@@ -30,39 +30,18 @@ struct CATransform3D {
 };
 
 struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    double _field1;
+    double _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct CLLocationCoordinate2D {
     double _field1;
     double _field2;
-};
-
-struct PKEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures
@@ -73,36 +52,10 @@ typedef struct {
 } CDStruct_3d581f42;
 
 typedef struct {
-    unsigned long long _field1;
-    id *_field2;
-    unsigned long long *_field3;
-    unsigned long long _field4[5];
-} CDStruct_70511ce9;
-
-typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
-
-typedef struct {
-    long long _field1;
-    unsigned long long _field2;
-} CDStruct_1dee9796;
-
-typedef struct {
     struct CLLocationCoordinate2D _field1;
     struct {
         double _field1;
         double _field2;
     } _field2;
 } CDStruct_2b0c6e0b;
-
-// Ambiguous groups
-typedef struct {
-    unsigned int amount:1;
-    unsigned int type:1;
-} CDStruct_9fb36b4c;
-
-typedef struct {
-    unsigned int status:1;
-} CDStruct_47fe53f2;
 

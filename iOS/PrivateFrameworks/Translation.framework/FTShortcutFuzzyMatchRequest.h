@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTShortcutFuzzyMatchRequest_StringTokenPair, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTShortcutFuzzyMatchRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTShortcutFuzzyMatchRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -28,6 +25,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *interaction_id;
 @property(readonly, nonatomic) NSString *session_id;
 @property(readonly, nonatomic) NSString *request_id;
+- (void)shortcuts_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)shortcuts_count;
+- (id)shortcuts_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *shortcuts;
 @property(readonly, nonatomic) FTShortcutFuzzyMatchRequest_StringTokenPair *utterance;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKUserDomainConceptLink.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKUserDomainConceptLink (HDSyncSupport) <HDCoding>
+@interface HKUserDomainConceptLink (HDSyncSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

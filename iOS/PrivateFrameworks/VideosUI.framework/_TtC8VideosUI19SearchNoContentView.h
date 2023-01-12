@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *titleTextLayout;
     MISSING_TYPE *subtitleTextLayout;
     MISSING_TYPE *debugTextLayout;
+    MISSING_TYPE *defaultsKeyJsVersion;
 }
 
 - (void).cxx_destruct;

@@ -39,21 +39,3 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    union {
-        struct {
-            unsigned int :1;
-            unsigned int :1;
-            unsigned int :1;
-            unsigned int :1;
-            unsigned int :1;
-            unsigned int :32;
-            unsigned int :1;
-            unsigned int :1;
-        } _field1;
-        unsigned long long _field2;
-    } _field1;
-} CDStruct_f0461867;
-

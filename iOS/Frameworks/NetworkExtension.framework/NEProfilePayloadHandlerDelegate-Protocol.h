@@ -11,7 +11,7 @@
 - (_Bool)setAssociatedDomains:(NSArray *)arg1;
 - (_Bool)setExcludedDomains:(NSArray *)arg1;
 - (_Bool)setRestrictDomains:(_Bool)arg1;
-- (_Bool)setAppLayerVPNRuleSettings:(NSDictionary *)arg1 withAppIdentifier:(NSString *)arg2;
+- (_Bool)setPerAppRuleSettings:(NSDictionary *)arg1 withAppIdentifier:(NSString *)arg2;
 - (_Bool)setContactsDomains:(NSArray *)arg1 accountIdentifiers:(NSArray *)arg2;
 - (_Bool)setContactsDomains:(NSArray *)arg1;
 - (_Bool)setCalendarDomains:(NSArray *)arg1 accountIdentifiers:(NSArray *)arg2;
@@ -19,6 +19,7 @@
 - (_Bool)setMailDomains:(NSArray *)arg1 accountIdentifiers:(NSArray *)arg2;
 - (_Bool)setMailDomains:(NSArray *)arg1;
 - (_Bool)setSMBDomains:(NSArray *)arg1;
+- (_Bool)setPerAppUUID:(NSString *)arg1 andSafariDomains:(NSArray *)arg2;
 - (_Bool)setAppLayerVPNUUID:(NSString *)arg1 andSafariDomains:(NSArray *)arg2;
 - (_Bool)setProfileInfo:(NSDictionary *)arg1;
 - (_Bool)setPayloadInfoCommon:(NSString *)arg1 payloadOrganization:(NSString *)arg2;

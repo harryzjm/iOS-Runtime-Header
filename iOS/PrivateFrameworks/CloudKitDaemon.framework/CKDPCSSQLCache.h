@@ -4,25 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
+#import <objc/NSObject.h>
+
+@class CKContainerID, CKDPCSSQLCacheTable, CKDPCSSQLCacheTableGroup, NSString;
 @protocol OS_dispatch_queue;
 
-@interface CKDPCSSQLCache
+@interface CKDPCSSQLCache : NSObject
 {
-    NSObject<OS_dispatch_queue> *_recordQueue;
+    CKContainerID *_containerID;
+    NSString *_accountID;
+    NSString *_encryptionServiceName;
+    CKDPCSSQLCacheTableGroup *_cacheGroup;
+    CKDPCSSQLCacheTable *_table;
+    NSObject<OS_dispatch_queue> *_asyncQueue;
     unsigned long long _cacheRequestCount;
     unsigned long long _cacheHitCount;
 }
 
-+ (void)_evictPCSSQLCachesForAppContainerAccountTuples:(id)arg1;
 + (void)evictPCSSQLCachesForKnownContainers;
-+ (void)registerPCSSQLCacheEvictionActivity;
-+ (id)globalPCSSQLCacheEvictionQueue;
-+ (id)pathForContainer:(id)arg1;
 - (void).cxx_destruct;
 @property unsigned long long cacheHitCount; // @synthesize cacheHitCount=_cacheHitCount;
 @property unsigned long long cacheRequestCount; // @synthesize cacheRequestCount=_cacheRequestCount;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *recordQueue; // @synthesize recordQueue=_recordQueue;
 - (id)CKStatusReportArray;
 - (void)clearInvalidatedCacheEntriesWithSkipZonePCS:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearCache;
@@ -36,13 +38,9 @@
 - (void)fetchPCSDataForShareWithID:(id)arg1 databaseScope:(long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPCSDataForZoneWithID:(id)arg1 databaseScope:(long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPCSDataForRecordWithID:(id)arg1 databaseScope:(long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (id)_lockedFetchPCSDataForID:(id)arg1 databaseScope:(long long)arg2 itemType:(unsigned long long)arg3 ofClass:(Class)arg4;
-@property(readonly, nonatomic) double earliestValidDate;
-- (id)infoToUpgradeFromVersion:(unsigned long long)arg1;
-- (id)createInitialTablesSQL;
-- (id)path;
-- (void)dealloc;
-- (id)_initWithContainer:(id)arg1;
+- (id)_lockedFetchPCSDataForID:(id)arg1 databaseScope:(long long)arg2 itemType:(unsigned long long)arg3;
+- (_Bool)hasStatusToReport;
+- (id)initWithDeviceContext:(id)arg1 containerID:(id)arg2 accountOverrideInfo:(id)arg3 accountID:(id)arg4 encryptionServiceName:(id)arg5;
 
 @end
 

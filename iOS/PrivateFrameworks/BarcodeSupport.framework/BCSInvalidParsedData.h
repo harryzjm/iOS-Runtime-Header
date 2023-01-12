@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSParsedDataPrivate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSInvalidParsedData : NSObject <BCSParsedDataPrivate>
+@interface BCSInvalidParsedData : NSObject
 {
     long long _invalidDataType;
     NSString *_invalidContents;

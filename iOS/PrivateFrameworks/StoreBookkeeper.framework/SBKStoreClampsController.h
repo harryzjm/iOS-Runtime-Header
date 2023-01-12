@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreBookkeeper/NSSecureCoding-Protocol.h>
-
 @class NSData, NSDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SBKStoreClampsController : NSObject <NSSecureCoding>
+@interface SBKStoreClampsController : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSDictionary *_transactionClamps;

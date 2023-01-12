@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import "UIControl.h"
 
 @class NSString, UIColor, UIImageView, UILongPressGestureRecognizer;
 @protocol UITableConstants, _UICollectionViewListCellReorderControlDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewListCellReorderControl <UIGestureRecognizerDelegate>
+@interface _UICollectionViewListCellReorderControl : UIControl
 {
     UIImageView *_imageView;
     UILongPressGestureRecognizer *_reorderRecognizer;

@@ -18,15 +18,15 @@
     NSCharacterSet *_requiredRightContext;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool requiresLexiconMatch; // @synthesize requiresLexiconMatch=_requiresLexiconMatch;
-@property(readonly, retain, nonatomic) NSCharacterSet *requiredRightContext; // @synthesize requiredRightContext=_requiredRightContext;
-@property(readonly, retain, nonatomic) NSCharacterSet *requiredLeftContext; // @synthesize requiredLeftContext=_requiredLeftContext;
-@property(readonly, retain, nonatomic) NSArray *locales; // @synthesize locales=_locales;
+@property(readonly, nonatomic) NSCharacterSet *requiredRightContext; // @synthesize requiredRightContext=_requiredRightContext;
+@property(readonly, nonatomic) NSCharacterSet *requiredLeftContext; // @synthesize requiredLeftContext=_requiredLeftContext;
+@property(readonly, nonatomic) NSArray *locales; // @synthesize locales=_locales;
 @property(readonly, copy, nonatomic) NSString *correction; // @synthesize correction=_correction;
 @property(readonly, copy, nonatomic) NSString *confusion; // @synthesize confusion=_confusion;
 - (_Bool)isValidForLocale:(id)arg1;
 - (_Bool)meetsContextRequirementWithLeftContext:(id)arg1 rightContext:(id)arg2;
-- (void)dealloc;
 - (id)initWithConfusion:(id)arg1 correction:(id)arg2 locales:(id)arg3 leftContext:(id)arg4 rightContext:(id)arg5 requiresLexiconMatch:(_Bool)arg6;
 
 @end

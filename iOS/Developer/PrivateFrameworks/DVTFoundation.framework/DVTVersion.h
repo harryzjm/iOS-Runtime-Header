@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface DVTVersion : NSObject <NSCopying>
+@interface DVTVersion : NSObject
 {
     CDUnion_7de6e739 _components;
     NSString *_stringValue;

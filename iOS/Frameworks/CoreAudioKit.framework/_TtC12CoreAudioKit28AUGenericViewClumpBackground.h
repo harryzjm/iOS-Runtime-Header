@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic, retain) UIColor *tintColor;
-- (void)tintColorDidChange;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <ScreenTimeUI/CAStateControllerDelegate-Protocol.h>
-
 @class CALayer, CAStateController, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface STCAPackageView : UIView <CAStateControllerDelegate>
+@interface STCAPackageView : UIView
 {
     CAStateController *_stateController;
     NSMutableArray *_completionHandlers;

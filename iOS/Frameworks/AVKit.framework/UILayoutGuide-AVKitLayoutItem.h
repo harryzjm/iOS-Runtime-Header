@@ -6,11 +6,9 @@
 
 #import <UIKit/UILayoutGuide.h>
 
-#import <AVKit/AVKitLayoutItem-Protocol.h>
-
 @class NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString;
 
-@interface UILayoutGuide (AVKitLayoutItem) <AVKitLayoutItem>
+@interface UILayoutGuide (AVKitLayoutItem)
 - (id)avkit_constraintsFromCenterAndDimensionAnchorsToCenterAndDimensionAnchorsOfItem:(id)arg1;
 - (id)avkit_constraintsFromEdgeAnchorsToEdgeAnchorsOfItem:(id)arg1;
 - (id)avkit_constraintsFromCenterAnchorsToCenterAnchorsOfItem:(id)arg1;

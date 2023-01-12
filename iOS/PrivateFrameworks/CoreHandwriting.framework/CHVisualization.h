@@ -15,9 +15,9 @@
     id <CHVisualizationDelegate> _delegate;
 }
 
-@property(nonatomic) id <CHVisualizationDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, retain, nonatomic) CHRecognitionSession *recognitionSession; // @synthesize recognitionSession=_recognitionSession;
-- (void)dealloc;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <CHVisualizationDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) CHRecognitionSession *recognitionSession; // @synthesize recognitionSession=_recognitionSession;
 - (id)initWithRecognitionSession:(id)arg1;
 - (void)toggleVisualizationRegionAtPoint:(struct CGPoint)arg1;
 - (void)drawVisualizationInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 viewBounds:(struct CGRect)arg3;

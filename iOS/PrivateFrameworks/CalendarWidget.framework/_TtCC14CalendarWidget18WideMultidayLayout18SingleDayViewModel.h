@@ -17,6 +17,7 @@
     MISSING_TYPE *forceAllDayCompressed;
     MISSING_TYPE *emptyStateViewPresent;
     MISSING_TYPE *emptyStateViewCenteredInSpace;
+    MISSING_TYPE *eventsExistBeforeFirst;
     MISSING_TYPE *viewHeights;
     MISSING_TYPE *date;
     MISSING_TYPE *id;

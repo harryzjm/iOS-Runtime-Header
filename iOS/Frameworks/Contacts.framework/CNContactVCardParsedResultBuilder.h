@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNVCardParsedResultBuilder-Protocol.h>
-
 @class CNMutableContact, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactVCardParsedResultBuilder : NSObject <CNVCardParsedResultBuilder>
+@interface CNContactVCardParsedResultBuilder : NSObject
 {
     CNMutableContact *_contact;
     _Bool _empty;
 }
 
 + (id)labeledValuesWithValues:(id)arg1 transform:(CDUnknownBlockType)arg2 labels:(id)arg3 isPrimaries:(id)arg4;
++ (id)os_log;
 + (CDUnknownBlockType)contactValueTransformForVCardKey:(id)arg1;
 + (id)contactKeyForVCardKey:(id)arg1;
 - (void).cxx_destruct;

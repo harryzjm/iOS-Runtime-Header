@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class APPCTapAction, NSString;
+@class APPCAdPolicyData, APPCTapAction, NSString;
 
 @protocol APPCPromotableContentRepresentation
 - (void)performActionWithCompletion:(void (^)(long long))arg1;
+@property(nonatomic, readonly) APPCAdPolicyData *adPolicyData;
 @property(nonatomic, readonly) APPCTapAction *tapAction;
 @property(nonatomic, readonly) struct CGSize adSize;
 @property(nonatomic, readonly) long long privacyMarkerPosition;

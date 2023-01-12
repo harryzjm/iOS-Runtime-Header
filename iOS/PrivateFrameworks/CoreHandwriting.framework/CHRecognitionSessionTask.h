@@ -31,10 +31,11 @@
     CDUnknownBlockType _partialResultBlock;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType partialResultBlock; // @synthesize partialResultBlock=_partialResultBlock;
-@property(readonly, retain, nonatomic) NSArray *subjectStrokeIdentifiers; // @synthesize subjectStrokeIdentifiers=_subjectStrokeIdentifiers;
-@property(readonly, retain, nonatomic) CHStrokeClassificationModel *strokeClassificationModel; // @synthesize strokeClassificationModel=_strokeClassificationModel;
-@property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *_recognizersQueue; // @synthesize _recognizersQueue=__recognizersQueue;
+@property(readonly, nonatomic) NSArray *subjectStrokeIdentifiers; // @synthesize subjectStrokeIdentifiers=_subjectStrokeIdentifiers;
+@property(readonly, nonatomic) CHStrokeClassificationModel *strokeClassificationModel; // @synthesize strokeClassificationModel=_strokeClassificationModel;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_recognizersQueue; // @synthesize _recognizersQueue=__recognizersQueue;
 @property(nonatomic) _Bool strokeGroupingOnly; // @synthesize strokeGroupingOnly=_strokeGroupingOnly;
 @property(copy, nonatomic) NSSet *forceRecognitionStrokeGroupIdentifiers; // @synthesize forceRecognitionStrokeGroupIdentifiers=_forceRecognitionStrokeGroupIdentifiers;
 @property(nonatomic) _Bool saveInputDrawings; // @synthesize saveInputDrawings=_saveInputDrawings;
@@ -42,13 +43,13 @@
 @property(readonly, nonatomic) long long strokeGroupingRequirement; // @synthesize strokeGroupingRequirement=_strokeGroupingRequirement;
 @property(readonly, nonatomic) long long recognitionEnvironment; // @synthesize recognitionEnvironment=_recognitionEnvironment;
 @property(retain, nonatomic, setter=_setOutputResult:) CHRecognitionSessionResult *outputResult; // @synthesize outputResult=_outputResult;
-@property(readonly, retain, nonatomic) id <CHStrokeProvider> strokeProvider; // @synthesize strokeProvider=_strokeProvider;
+@property(readonly, nonatomic) id <CHStrokeProvider> strokeProvider; // @synthesize strokeProvider=_strokeProvider;
 @property(readonly, copy, nonatomic) NSArray *preferredLocales; // @synthesize preferredLocales=_preferredLocales;
 @property(readonly, copy, nonatomic) NSArray *recognitionLocales; // @synthesize recognitionLocales=_recognitionLocales;
 @property(nonatomic) id <CHRecognitionSessionTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property _Bool cancelled; // @synthesize cancelled=_cancelled;
 @property(nonatomic, setter=_setStatus:) long long status; // @synthesize status=_status;
-@property(readonly, retain, nonatomic) CHRecognitionSessionResult *inputResult; // @synthesize inputResult=_inputResult;
+@property(readonly, nonatomic) CHRecognitionSessionResult *inputResult; // @synthesize inputResult=_inputResult;
 - (id)newGroupingManager;
 - (id)newStrokeClassifier;
 - (id)clutterFilter;
@@ -61,7 +62,6 @@
 - (_Bool)_isTransitionValidFromStatus:(long long)arg1 toStatus:(long long)arg2;
 - (void)cancel;
 - (void)main;
-- (void)dealloc;
 - (id)initWithLocales:(id)arg1 preferredLocales:(id)arg2 strokeProvider:(id)arg3 inputResult:(id)arg4 recognitionQOSClass:(unsigned int)arg5 recognitionEnvironment:(long long)arg6 isHighResponsivenessTask:(_Bool)arg7 strokeClassificationModel:(id)arg8 strokeGroupingRequirement:(long long)arg9 subjectStrokeIdentifiers:(id)arg10 partialResultBlock:(CDUnknownBlockType)arg11;
 - (id)initWithLocales:(id)arg1 preferredLocales:(id)arg2 strokeProvider:(id)arg3 inputResult:(id)arg4 recognitionQOSClass:(unsigned int)arg5 recognitionEnvironment:(long long)arg6 isHighResponsivenessTask:(_Bool)arg7 strokeClassificationModel:(id)arg8 strokeGroupingRequirement:(long long)arg9 partialResultBlock:(CDUnknownBlockType)arg10;
 - (id)initWithLocales:(id)arg1 preferredLocales:(id)arg2 strokeProvider:(id)arg3 inputResult:(id)arg4 recognitionQOSClass:(unsigned int)arg5 recognitionEnvironment:(long long)arg6;

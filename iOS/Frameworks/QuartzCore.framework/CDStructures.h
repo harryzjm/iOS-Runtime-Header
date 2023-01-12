@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
+#pragma mark Function Pointers
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
 struct Atomic {
-    CDStruct_8837c899 _field1;
+    struct {
+        int _field1;
+    } _field1;
 };
 
-struct CABrightnessTransaction {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
+struct AveragePixelConstraints {
+    float *_field1;
+    float *_field2;
+    float _field3[3];
+    unsigned long long _field4;
     float _field5;
-    unsigned int _field6;
+    float _field6;
 };
 
 struct CAColorMatrix {
@@ -48,52 +48,11 @@ struct CAColorMatrix {
     float m45;
 };
 
-struct CADisplayModeCriteriaPriv {
-    struct CGSize _field1;
-    double _field2;
-    int _field3;
-};
-
-struct CADisplayModePriv {
-    struct Mode _field1;
-    id _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned int _field5;
-};
-
-struct CADisplayPreferencesPriv {
-    _Bool _field1;
-    int _field2;
-};
-
-struct CAEAGLBuffer;
-
-struct CAFrameIntervalRange {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct CAFrameRateRange {
-    float _field1;
-    float _field2;
-    float _field3;
-};
-
-struct CAMediaTimingFunctionPrivate {
-    float _field1[2];
-    float _field2[2];
-};
-
-struct CAMeshFace {
-    unsigned int _field1[4];
-    float _field2[4];
-};
-
-struct CAMeshVertex {
-    struct CGPoint _field1;
-    struct CAPoint3D _field2;
+struct CACornerRadii {
+    struct CGSize minXMaxY;
+    struct CGSize maxXMaxY;
+    struct CGSize maxXMinY;
+    struct CGSize minXMinY;
 };
 
 struct CAPoint3D {
@@ -121,22 +80,6 @@ struct CATransform3D {
     double m44;
 };
 
-struct CAWindowServerDisplayImpl {
-    struct Mutex _field1;
-    struct Server *_field2;
-    struct CABrightnessTransaction _field3;
-    id _field4;
-    id _field5;
-    _Bool _field6;
-};
-
-struct CAWindowServerImpl {
-    struct __CFArray *_field1;
-    struct __SFBConnection *_field2;
-    unsigned int _field3;
-    CDUnknownBlockType _field4;
-};
-
 struct CGAffineTransform {
     double a;
     double b;
@@ -144,39 +87,6 @@ struct CGAffineTransform {
     double d;
     double tx;
     double ty;
-};
-
-struct CGColorSpace;
-
-struct CGColorTRC {
-    int _field1;
-    union {
-        struct CGColorTRCParametric _field1;
-        struct CGColorTRCTable _field2;
-    } _field2;
-};
-
-struct CGColorTRCBoundaryExtension {
-    float _field1;
-    float _field2;
-};
-
-struct CGColorTRCParametric {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-};
-
-struct CGColorTRCTable {
-    unsigned long long _field1;
-    float *_field2;
-    struct CGColorTRCBoundaryExtension _field3;
-    struct CGColorTRCBoundaryExtension _field4;
 };
 
 struct CGPathElement {
@@ -199,38 +109,8 @@ struct CGSize {
     double height;
 };
 
-struct CVSMPTETime {
-    short _field1;
-    short _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    short _field6;
-    short _field7;
-    short _field8;
-    short _field9;
-};
-
-struct DynamicFrameRateSource {
-    void *_field1;
-    struct CAFrameRateRange _field2;
-    struct CAFrameIntervalRange _field3;
-    unsigned long long _field4;
-    int _field5;
-    unsigned int :1;
-};
-
-struct EDIDAttributes {
-    int dolbyVision;
-    int pqEOTF;
-    int bt2020YCC;
-    int hdrStaticMetadataType1;
-    _Bool legacyHDMI;
-    unsigned int product_id;
-    unsigned int manufacturer_id;
-    unsigned int week_of_manufacture;
-    unsigned int year_of_manufacture;
-    unsigned int serial_number;
+struct MTLResourceID {
+    unsigned long long _field1;
 };
 
 struct Mode {
@@ -239,7 +119,7 @@ struct Mode {
             unsigned int :14;
             unsigned int :14;
             unsigned int :1;
-            unsigned int :24;
+            unsigned int :25;
             unsigned int :1;
             unsigned int :5;
             unsigned int :2;
@@ -250,23 +130,11 @@ struct Mode {
     } _field1;
 };
 
-struct Mutex {
-    struct _opaque_pthread_mutex_t {
-        long long __sig;
-        char __opaque[56];
-    } _m;
-};
-
 struct Object {
     CDUnknownFunctionPointerType *_field1;
     struct Atomic _field2;
-    unsigned int _field3;
-};
-
-struct Server;
-
-struct SpinLock {
-    CDStruct_8837c899 _l;
+    unsigned int :8;
+    unsigned int :24;
 };
 
 struct ValueInterpolator {
@@ -287,113 +155,12 @@ struct ValueInterpolator {
     _Bool _field15;
 };
 
-struct _CAEAGLNativeWindow {
-    struct _EAGLWindowObject _field1;
-    struct CAEAGLBuffer *_field2;
-    unsigned int _field3;
-    unsigned long long _field4;
-    struct Atomic _field5;
-    struct Atomic _field6;
-    struct SpinLock _field7;
-    struct _CAImageQueue *_field8;
-    id _field9;
-    double _field10;
-    double _field11;
-    struct x_list_struct *_field12;
-    unsigned int _field13;
-    struct CAEAGLBuffer *_field14;
-    struct CAEAGLBuffer *_field15;
-    unsigned int _field16;
-    unsigned int _field17;
-    unsigned int _field18;
-    struct CAEAGLBuffer *_field19;
-    id _field20;
-    struct Atomic _field21;
-    unsigned long long _field22;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-};
-
-struct _CAImageQueue;
-
 struct _CALayerArrayIvars {
     id *layers;
     unsigned long long count;
     unsigned long long capacity;
     unsigned long long mutations;
     _Bool retained;
-};
-
-struct _CALayerIvars {
-    int refcount;
-    unsigned int magic;
-    void *layer;
-    void *_objc_observation_info;
-};
-
-struct _CAMLWriterAttribute;
-
-struct _CAMLWriterElement {
-    struct _CAMLWriterElement *_field1;
-    struct _CAMLWriterElement *_field2;
-    struct _CAMLWriterElement *_field3;
-    struct _CAMLWriterElement **_field4;
-    void *_field5;
-    struct __CFString *_field6;
-    struct _CAMLWriterAttribute *_field7;
-    struct _CAMLWriterAttribute **_field8;
-    struct __CFString *_field9;
-    unsigned int _field10;
-};
-
-struct _CAMLWriterPriv {
-    struct __CFData *_field1;
-    struct __CFURL *_field2;
-    id _field3;
-    struct _CAMLWriterElement *_field4;
-    struct __CFString *_field5;
-    struct __CFSet *_field6;
-    int _field7;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-};
-
-struct _CAMetalDrawablePrivate {
-    struct Atomic _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    struct _CAMetalLayerPrivate *_field8;
-    struct __IOSurface *_field9;
-    id _field10;
-    id _field11;
-    struct CGColorSpace *_field12;
-    unsigned char _field13;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-};
-
-struct _CAMetalLayerPrivate;
-
-struct _CAPackageData {
-    id _field1;
-    id _field2;
-    id _field3;
-    _Bool _field4;
-    _Bool _field5;
-    id _field6;
-    id _field7;
 };
 
 struct _CAPropertyInfo {
@@ -405,35 +172,25 @@ struct _CAPropertyInfo {
     struct __CFString *_field4;
 };
 
-struct _CARenderRendererInfo {
-    int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
-struct _CAStateControllerData {
-    id _field1;
-    struct __CFDictionary *_field2;
-    id _field3;
-    id _field4;
-};
-
-struct _EAGLWindowObject {
-    CDUnknownFunctionPointerType _field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
 
-struct __CFString;
-
-struct x_list_struct;
-
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+} CDStruct_a06f635e;
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+} CDStruct_14f26992;
 
 typedef struct {
     unsigned long long _field1;
@@ -447,30 +204,7 @@ typedef struct {
 } CDStruct_443af386;
 
 typedef struct {
-    float _field1;
-    float _field2;
-} CDStruct_b2fbf00d;
-
-typedef struct {
-    int x;
-} CDStruct_8837c899;
-
-typedef struct {
-    unsigned int _field1;
-    int _field2;
-    long long _field3;
-    unsigned long long _field4;
-    double _field5;
-    long long _field6;
-    struct CVSMPTETime _field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-} CDStruct_e50ab651;
-
-typedef struct {
-    CDStruct_b2fbf00d _field1;
-    CDStruct_b2fbf00d _field2;
-    CDStruct_b2fbf00d _field3;
-    CDStruct_b2fbf00d _field4;
-} CDStruct_31cefc2d;
+    CDStruct_14f26992 _field1;
+    CDStruct_14f26992 _field2;
+} CDStruct_4c83c94d;
 

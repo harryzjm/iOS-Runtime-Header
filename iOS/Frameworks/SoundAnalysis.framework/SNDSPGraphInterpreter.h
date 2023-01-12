@@ -12,14 +12,8 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<DSPGraph::Interpreter, std::default_delete<DSPGraph::Interpreter>> _interpreter;
 }
 
-+ (vector_74824a0a)stringVectorFromStringArray:(id)arg1;
-+ (unordered_map_048dd119)stringMapFromStringDictionary:(id)arg1;
-+ (id)compileText:(id)arg1 withSubstitutions:(id)arg2 includingPaths:(id)arg3;
-+ (id)compileFile:(id)arg1 withSubstitutions:(id)arg2 includingPaths:(id)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)compileText:(id)arg1 withSubstitutions:(id)arg2 includingPaths:(id)arg3;
-- (id)compileFile:(id)arg1 withSubstitutions:(id)arg2 includingPaths:(id)arg3;
 - (id)init;
 
 @end

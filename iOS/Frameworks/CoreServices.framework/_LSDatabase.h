@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     struct __CSStore *store;
     struct LSSchema schema;
     FSNode *node;
-    unsigned int uid;
+    struct LSSessionKey sessionKey;
     NSObject<OS_dispatch_queue> *accessQueue;
     unsigned int needsUpdate:1;
     unsigned int isForcedForXCTesting:1;

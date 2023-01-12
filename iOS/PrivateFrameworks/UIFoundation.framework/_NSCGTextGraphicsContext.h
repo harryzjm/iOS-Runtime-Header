@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIFoundation/NSTextGraphicsContextInternal-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSCGTextGraphicsContext : NSObject <NSTextGraphicsContextInternal>
+@interface _NSCGTextGraphicsContext : NSObject
 {
     struct CGContext *_context;
 }

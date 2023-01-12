@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Coordination/COAlarmManagerClientInterface-Protocol.h>
-
 @class COAlarmManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COAlarmManagerMediator : NSObject <COAlarmManagerClientInterface>
+@interface COAlarmManagerMediator : NSObject
 {
     COAlarmManager *_manager;
 }

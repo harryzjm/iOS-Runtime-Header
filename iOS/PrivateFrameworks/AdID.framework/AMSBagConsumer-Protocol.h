@@ -11,9 +11,9 @@
 @protocol AMSBagConsumer <NSObject>
 + (NSString *)bagSubProfileVersion;
 + (NSString *)bagSubProfile;
-+ (AMSBagKeySet *)bagKeySet;
 
 @optional
++ (AMSBagKeySet *)bagKeySet;
 + (AMSBag *)createBagForSubProfile;
 @end
 

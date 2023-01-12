@@ -8,5 +8,6 @@
 
 @interface CKRecord (FCAdditions)
 - (_Bool)fc_isDifferentFromRecord:(id)arg1 forKey:(id)arg2;
+- (id)fc_safeObjectForKey:(id)arg1;
 @end
 

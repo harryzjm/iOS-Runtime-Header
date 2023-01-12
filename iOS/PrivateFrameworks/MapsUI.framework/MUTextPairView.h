@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapsUI/MUStackable-Protocol.h>
-
 @class MUTextPairViewModel, NSArray, NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MUTextPairView : UIView <MUStackable>
+@interface MUTextPairView : UIView
 {
     UILabel *_leftLabel;
     UILabel *_rightLabel;

@@ -11,17 +11,19 @@
 __attribute__((visibility("hidden")))
 @interface MUPlaceHoursFormatter : NSObject
 {
+    _Bool _formatAMPM;
     NSString *_hoursString;
     NSArray *_AMPMSymbols;
 }
 
++ (id)_AMPMFont;
 + (id)_hoursMonospacedFont;
 + (id)hoursFormatterFromHoursStringComponents:(id)arg1 AMPMSymbols:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *AMPMSymbols; // @synthesize AMPMSymbols=_AMPMSymbols;
 @property(readonly, nonatomic) NSString *hoursString; // @synthesize hoursString=_hoursString;
 - (id)buildDefaultPlacecardHoursString;
-- (id)buildAttributedHourStringWithHourFont:(id)arg1 AMPMFont:(id)arg2 hourColor:(id)arg3 AMPMColor:(id)arg4;
+- (id)buildAttributedHourStringWithHourFont:(id)arg1 AMPMFont:(id)arg2 hourColor:(id)arg3;
 - (id)initWithHoursString:(id)arg1 AMPMSymbols:(id)arg2;
 
 @end

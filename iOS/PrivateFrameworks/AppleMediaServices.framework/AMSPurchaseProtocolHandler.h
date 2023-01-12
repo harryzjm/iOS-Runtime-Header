@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServices/AMSURLProtocolDelegate-Protocol.h>
-#import <AppleMediaServices/NSURLSessionDelegate-Protocol.h>
+#import "AMSURLProtocolHandler.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSPurchaseProtocolHandler <NSURLSessionDelegate, AMSURLProtocolDelegate>
+@interface AMSPurchaseProtocolHandler : AMSURLProtocolHandler
 {
 }
 
@@ -20,7 +19,9 @@ __attribute__((visibility("hidden")))
 - (void)_syncDiversityBagFromResponse:(id)arg1 purchaseInfo:(id)arg2;
 - (void)_syncKeybagFromResponse:(id)arg1 purchaseInfo:(id)arg2;
 - (_Bool)_shouldRetryForFailureAction:(id)arg1 response:(id)arg2 task:(id)arg3 decodedObject:(id)arg4 responseDictionary:(id)arg5;
-- (id)_locateBuyParamsFromResponse:(id)arg1 selectedAction:(id)arg2 purchaseInfo:(id)arg3;
+- (id)_determineUpdatedBuyParamsFromResponse:(id)arg1 urlAction:(id)arg2 selectedAction:(id)arg3 purchaseInfo:(id)arg4;
+- (_Bool)_isEquivalentURL:(id)arg1 toURL:(id)arg2;
+- (id)_shouldRedirectWithPurchaseInfo:(id)arg1 bag:(id)arg2 urlAction:(id)arg3 currentURL:(id)arg4;
 - (void)AMSURLSession:(id)arg1 task:(id)arg2 handleEngagementRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)AMSURLSession:(id)arg1 task:(id)arg2 handleAuthenticateRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)AMSURLSession:(id)arg1 task:(id)arg2 handleDialogRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;

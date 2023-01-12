@@ -7,7 +7,7 @@
 #import <SpringBoard/SPUIRemoteSearchViewDelegate-Protocol.h>
 
 @protocol SBMultiplexedSpotlightDelegate <SPUIRemoteSearchViewDelegate>
-- (void)didResignActiveDelegate;
+- (void)didResignActiveDelegate:(_Bool)arg1;
 - (void)didBecomeActiveDelegate;
 @end
 

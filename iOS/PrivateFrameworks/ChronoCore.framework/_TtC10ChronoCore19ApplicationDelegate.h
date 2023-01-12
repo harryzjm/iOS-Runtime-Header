@@ -6,12 +6,10 @@
 
 #import <UIKit/UIResponder.h>
 
-#import <ChronoCore/UIApplicationDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC10ChronoCore19ApplicationDelegate : UIResponder <UIApplicationDelegate>
+@interface _TtC10ChronoCore19ApplicationDelegate : UIResponder
 {
     MISSING_TYPE *environmentProvidingFactory;
     MISSING_TYPE *widgetCenterServer;
@@ -21,6 +19,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *placeholderService;
     MISSING_TYPE *timelineService;
     MISSING_TYPE *snapshotService;
+    MISSING_TYPE *activityService;
     MISSING_TYPE *cacheByExtensionProvider;
     MISSING_TYPE *keybagStateProvider;
     MISSING_TYPE *taskService;
@@ -35,12 +34,16 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *localeChangeCoordinator;
     MISSING_TYPE *layerSnapshotter;
     MISSING_TYPE *userManager;
+    MISSING_TYPE *clientScreenshotManager;
+    MISSING_TYPE *foregroundSceneContentLimiter;
     MISSING_TYPE *subscriptions;
     MISSING_TYPE *servicesBootstrapExtension;
     MISSING_TYPE *finishLaunchingToken;
     MISSING_TYPE *enableGarbageCollection;
     MISSING_TYPE *appAuthorizationMonitor;
-    MISSING_TYPE *reaperNotificationQueue;
+    MISSING_TYPE *focusConfigurationMonitor;
+    MISSING_TYPE *reaperQueue;
+    MISSING_TYPE *reaperTimer;
     MISSING_TYPE *preferences;
     MISSING_TYPE *wakeManager;
     MISSING_TYPE *sigtermSource;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
-@class NSData, NSMutableDictionary, NSString;
+@class FTTextToSpeechResponseDevData, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTFinalTextToSpeechStreamingResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTFinalTextToSpeechStreamingResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_8cb3aebb)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) FTTextToSpeechResponseDevData *dev_data;
 @property(readonly, nonatomic) int total_pkt_number;
 @property(readonly, nonatomic) NSString *stream_id;
 @property(readonly, nonatomic) NSString *error_str;

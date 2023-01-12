@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSTimer;
+#import "UIGestureRecognizer.h"
+
+@class NSObject;
+@protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface _UISystemGestureGateGestureRecognizer
+@interface _UISystemGestureGateGestureRecognizer : UIGestureRecognizer
 {
     unsigned char _systemGestureGateType;
     unsigned int _systemGesturesRecognitionPossible:1;
     unsigned int _waitingForSystemGestureStateNotification:1;
     double _lastTouchTime;
-    NSTimer *_delayTimeoutTimer;
+    NSObject<OS_dispatch_source> *_delayTimeoutTimer;
 }
 
 + (_Bool)_shouldDefaultToTouches;
+- (void).cxx_destruct;
 - (id)_gateGestureTypeString;
 - (void)setEnabled:(_Bool)arg1;
 - (_Bool)canBePreventedByGestureRecognizer:(id)arg1;
@@ -25,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)_cancelTimeoutTimerIfNeeded;
 - (void)_timeOut;
 - (void)_systemGestureStateChanged:(id)arg1;
 - (void)_resetGestureRecognizer;

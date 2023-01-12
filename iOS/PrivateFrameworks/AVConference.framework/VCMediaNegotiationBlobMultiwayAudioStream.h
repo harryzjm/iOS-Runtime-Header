@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobMultiwayAudioStream : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobMultiwayAudioStream : PBCodable
 {
     unsigned int _maxMediaBitrate;
     unsigned int _maxNetworkBitrate;

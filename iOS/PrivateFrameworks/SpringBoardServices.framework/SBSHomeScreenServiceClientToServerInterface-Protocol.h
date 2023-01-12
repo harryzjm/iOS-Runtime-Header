@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BSMachPortSendRight, NSDate, NSError, NSNumber, NSString, NSURL, SBSDebugActiveWidgetInfo, SBSHomeScreenServiceArrayOfNumbers, SBSHomeScreenServiceArrayOfStrings;
+@class BSMachPortSendRight, NSDate, NSError, NSNumber, NSString, NSURL, SBSDebugActiveWidgetInfo, SBSHomeScreenServiceArrayOfNumbers, SBSHomeScreenServiceArrayOfStrings, SBSHomeScreenSilhouetteLayout;
 
 @protocol SBSHomeScreenServiceClientToServerInterface
 @property(readonly, copy, nonatomic) SBSHomeScreenServiceArrayOfNumbers *overflowSlotCounts;
@@ -13,14 +13,16 @@
 @property(readonly, copy, nonatomic) NSString *allIconLists;
 @property(readonly, copy, nonatomic) SBSHomeScreenServiceArrayOfStrings *allHomeScreenApplicationPlaceholderBundleIdentifiers;
 @property(readonly, copy, nonatomic) SBSHomeScreenServiceArrayOfStrings *allHomeScreenApplicationBundleIdentifiers;
+@property(copy, nonatomic) NSNumber *showsHomeScreenSearchAffordanceValue;
 @property(copy, nonatomic) NSNumber *showsBadgesInAppLibraryValue;
 @property(copy, nonatomic) NSNumber *addsNewIconsToHomeScreenValue;
 @property(copy, nonatomic) NSNumber *largeIconLayoutEnabledValue;
-@property(copy, nonatomic) NSNumber *restrictedWidgetsIconLayoutEnabledValue;
-@property(copy, nonatomic) NSNumber *lowDensityIconLayoutEnabledValue;
+- (SBSHomeScreenSilhouetteLayout *)silhouetteLayoutForPageAtIndex:(NSNumber *)arg1;
+- (void)runWidgetDiscoverabilityTest;
 - (void)setupHomeScreenForWidgetScrollPerformanceTest;
 - (void)clearAllOverflowSlotCounts;
 - (void)setObservingHomeScreenLayoutAvailability:(NSNumber *)arg1;
+- (void)addSuggestedPageWithPageType:(NSString *)arg1 focusModeIdentifier:(NSString *)arg2;
 - (void)addEmptyPage;
 - (void)insertEmptyPageAtIndex:(NSNumber *)arg1;
 - (void)setObservingInstalledWebClips:(NSNumber *)arg1;
@@ -38,6 +40,7 @@
 - (void)removeWidgetsFromHomeScreen;
 - (void)removeAllWidgets;
 - (void)ignoreAllApps;
+- (void)randomizeAllIconsAcrossPagesWithPageCount:(NSNumber *)arg1;
 - (void)organizeAllIconsAcrossPagesWithPageCount:(NSNumber *)arg1;
 - (void)organizeAllIconsIntoFoldersWithPageCount:(NSNumber *)arg1;
 - (void)setIconListsHidden:(SBSHomeScreenServiceArrayOfStrings *)arg1;
@@ -58,6 +61,7 @@
 - (oneway void)resetCategoriesLayoutWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)resetHomeScreenLayoutWithCompletion:(void (^)(NSError *))arg1;
 - (void)addWidgetToTodayViewWithBundleIdentifier:(NSString *)arg1;
+- (void)addApplicationIconToHomeScreenWithBundleIdentifier:(NSString *)arg1;
 - (SBSHomeScreenServiceArrayOfStrings *)folderPathToIconWithBundleIdentifier:(NSString *)arg1;
 @end
 

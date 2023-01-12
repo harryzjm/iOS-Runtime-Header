@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HeartHealthDaemon/HKHRCardioFitnessAnalyticsDailyEventDataSourceInterface-Protocol.h>
-
 @class HDProfile;
 
 __attribute__((visibility("hidden")))
-@interface HDHRCardioFitnessAnalyticsDailyEventDataSource : NSObject <HKHRCardioFitnessAnalyticsDailyEventDataSourceInterface>
+@interface HDHRCardioFitnessAnalyticsDailyEventDataSource : NSObject
 {
     HDProfile *_profile;
 }

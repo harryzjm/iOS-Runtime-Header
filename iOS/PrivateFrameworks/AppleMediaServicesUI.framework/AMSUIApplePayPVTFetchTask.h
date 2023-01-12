@@ -6,14 +6,10 @@
 
 #import <AppleMediaServices/AMSTask.h>
 
-#import <AppleMediaServicesUI/AMSURLProtocolDelegate-Protocol.h>
-#import <AppleMediaServicesUI/NSURLSessionDelegate-Protocol.h>
-#import <AppleMediaServicesUI/NSURLSessionTaskDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIApplePayPVTFetchTask : AMSTask <NSURLSessionDelegate, AMSURLProtocolDelegate, NSURLSessionTaskDelegate>
+@interface AMSUIApplePayPVTFetchTask : AMSTask
 {
 }
 

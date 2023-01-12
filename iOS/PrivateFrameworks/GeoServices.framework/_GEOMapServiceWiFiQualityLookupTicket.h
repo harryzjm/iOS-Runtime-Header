@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceWiFiQualityLocationSearchTicket-Protocol.h>
-#import <GeoServices/GEOMapServiceWiFiQualityNetworkSearchTicket-Protocol.h>
-#import <GeoServices/GEOMapServiceWiFiQualityTileLoadTicket-Protocol.h>
+#import "GEOAbstractTicket.h"
 
 @class GEOWiFiQualityServiceRequest, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOMapServiceWiFiQualityLookupTicket <GEOMapServiceWiFiQualityNetworkSearchTicket, GEOMapServiceWiFiQualityLocationSearchTicket, GEOMapServiceWiFiQualityTileLoadTicket>
+@interface _GEOMapServiceWiFiQualityLookupTicket : GEOAbstractTicket
 {
     GEOWiFiQualityServiceRequest *_request;
     NSString *_tileKey;

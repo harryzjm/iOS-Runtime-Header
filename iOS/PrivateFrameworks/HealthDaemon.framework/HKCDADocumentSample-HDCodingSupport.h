@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKCDADocumentSample.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKCDADocumentSample (HDCodingSupport) <HDCoding>
+@interface HKCDADocumentSample (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;

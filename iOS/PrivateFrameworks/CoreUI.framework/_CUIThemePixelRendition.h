@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIThemeRendition.h"
+
 @class CUIRenditionMetrics, CUIRenditionSliceInformation, NSMutableArray, _CSIRenditionBlockData;
 
 __attribute__((visibility("hidden")))
-@interface _CUIThemePixelRendition
+@interface _CUIThemePixelRendition : CUIThemeRendition
 {
     unsigned int _nimages;
     struct CGImage *_image[16];

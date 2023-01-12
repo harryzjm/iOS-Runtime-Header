@@ -24,6 +24,10 @@
 + (id)hk_preferredRoundedFontForTextStyle:(id)arg1;
 + (id)hk_roundedSystemFontWithSize:(double)arg1 weight:(double)arg2 textStyle:(id)arg3;
 + (id)hk_roundedSystemFontWithSize:(double)arg1 weight:(double)arg2;
++ (id)_hk_compactFontOfStyle:(id)arg1 weight:(double)arg2 rounded:(_Bool)arg3;
++ (id)hk_compactFontOfStyle:(id)arg1 weight:(double)arg2;
++ (id)hk_compactFontOfSize:(double)arg1 weight:(double)arg2;
++ (id)hk_compactFontOfSize:(double)arg1;
 + (id)hk_compactRoundedFontOfStyle:(id)arg1 weight:(double)arg2;
 + (id)hk_compactRoundedFontOfSize:(double)arg1 weight:(double)arg2;
 + (id)hk_compactRoundedFontOfSize:(double)arg1;

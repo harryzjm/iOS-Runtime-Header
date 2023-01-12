@@ -13,7 +13,9 @@
 - (_Bool)isPlaceholder;
 @property(nonatomic, readonly) NSURL *activitySetupURL;
 @property(nonatomic, readonly) NSURL *activitySettingsURL;
+@property(nonatomic, readonly) NSString *activityLifetimesAlternativeDescription;
 @property(nonatomic, readonly) NSArray *activityLifetimeDescriptions;
+@property(nonatomic, readonly) NSString *activityDetailText;
 @property(nonatomic, readonly) NSDate *activityCreationDate;
 @property(nonatomic, readonly) NSString *activityColorName;
 @property(nonatomic, readonly) NSString *activitySymbolImageName;

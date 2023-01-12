@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MKCustomSeparatorCell.h"
+
 @class MKButtonWithTargetArgument, NSLayoutConstraint, NSString, NSTimer, UIActivityIndicatorView, UIStackView, _MKUILabel;
 
 __attribute__((visibility("hidden")))
-@interface MKTransitDeparturesSectionHeaderView
+@interface MKTransitDeparturesSectionHeaderView : MKCustomSeparatorCell
 {
     unsigned long long _type;
     _Bool _extraSpacing;

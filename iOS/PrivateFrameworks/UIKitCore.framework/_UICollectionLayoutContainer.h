@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionLayoutContainer_Private-Protocol.h>
-
 @class NSString;
 @protocol _UIContentInsetsEnvironment;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutContainer : NSObject <_UICollectionLayoutContainer_Private>
+@interface _UICollectionLayoutContainer : NSObject
 {
     id <_UIContentInsetsEnvironment> _insetsEnvironment;
     struct CGSize _contentSize;

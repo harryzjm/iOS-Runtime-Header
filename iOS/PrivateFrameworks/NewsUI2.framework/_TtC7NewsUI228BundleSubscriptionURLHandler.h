@@ -12,8 +12,8 @@
 {
     MISSING_TYPE *patterns;
     MISSING_TYPE *magazineActivityNavigator;
-    MISSING_TYPE *offerManager;
-    MISSING_TYPE *navigator;
+    MISSING_TYPE *configurationManager;
+    MISSING_TYPE *landingPageDecider;
 }
 
 @end

@@ -21,12 +21,15 @@ __attribute__((visibility("hidden")))
     unsigned int _internalAudioPacketsPerSecond;
     _Bool _use96Tier;
     id <VCIDSStreamIDGenerator> _streamIDGenerator;
+    unsigned int _videoStreamConfigurationsCount;
 }
 
 + (_Bool)isVideoStreamOnDemand:(struct _VCMediaStreamConfigurationProviderVideo *)arg1;
 + (_Bool)isAudioStreamOnDemand:(struct _VCMediaStreamConfigurationProviderAudio *)arg1 isLowestQualityAudio:(_Bool)arg2;
 + (void)computeMaxNetworkBitrate:(unsigned int *)arg1 maxMediaBitrate:(unsigned int *)arg2 maxPacketsPerSecond:(float *)arg3 maxIDSStreamIDCount:(unsigned int)arg4 internalPacketsPerSecond:(unsigned int)arg5 audioConfig:(struct _VCMediaStreamConfigurationProviderAudio *)arg6;
 + (void)computeMaxNetworkBitrate:(unsigned int *)arg1 maxMediaBitrate:(unsigned int *)arg2 maxPacketsPerSecond:(float *)arg3 audioStreamIndex:(unsigned int)arg4 internalPacketsPerSecond:(unsigned int)arg5;
++ (_Bool)audioConfig:(struct _VCMediaStreamConfigurationProviderAudio *)arg1 supportsDeviceClass:(long long)arg2;
++ (void)fixAudioStreamConfigurations;
 @property(readonly, nonatomic) _Bool isEncodingSqaures; // @synthesize isEncodingSqaures=_isEncodingSqaures;
 @property(readonly, nonatomic) long long highestEncodingResolution; // @synthesize highestEncodingResolution=_highestEncodingResolution;
 @property(readonly, nonatomic) NSArray *audioStreamConfigurations; // @synthesize audioStreamConfigurations=_audioStreamConfigurations;

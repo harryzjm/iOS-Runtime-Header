@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface IBICSlotFilter : NSObject <IBBinaryArchiving>
+@interface IBICSlotFilter : NSObject
 {
     Class _slotClass;
 }

@@ -11,7 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)clearMessageContent;
+- (void)showSearchingSpinner;
+- (void)showLoadingSpinner;
 - (void)viewWillLayoutSubviews;
+- (id)_axButtonHintText;
+- (_Bool)_axVolumeHintEnabled;
+- (_Bool)_axSiriHintEnabled;
+- (id)_axHintsViewController;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

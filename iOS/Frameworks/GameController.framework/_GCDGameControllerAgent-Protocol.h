@@ -5,6 +5,7 @@
 //
 
 @protocol _GCDGameControllerAgent
+- (void)moveLastRecordingToDesktop:(void (^)(_Bool))arg1;
 - (void)ping;
 @end
 

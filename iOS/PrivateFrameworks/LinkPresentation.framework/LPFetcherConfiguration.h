@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/NSCopying-Protocol.h>
-
 @class LPEvent, WKWebView;
 
 __attribute__((visibility("hidden")))
-@interface LPFetcherConfiguration : NSObject <NSCopying>
+@interface LPFetcherConfiguration : NSObject
 {
     _Bool _loadingIsNonAppInitiated;
     WKWebView *_webViewForProcessSharing;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKInactiveTransitLine-Protocol.h>
-
 @class NSDate, NSString, NSTimeZone;
 @protocol GEOTransitDepartureSequence, GEOTransitLine;
 
 __attribute__((visibility("hidden")))
-@interface _MKTransitInactiveLine : NSObject <MKInactiveTransitLine>
+@interface _MKTransitInactiveLine : NSObject
 {
     id <GEOTransitLine> _line;
     _Bool _blocked;

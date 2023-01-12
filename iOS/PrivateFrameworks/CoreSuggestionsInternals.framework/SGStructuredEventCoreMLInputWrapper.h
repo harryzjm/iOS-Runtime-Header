@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreSuggestionsInternals/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface SGStructuredEventCoreMLInputWrapper : NSObject <MLFeatureProvider>
+@interface SGStructuredEventCoreMLInputWrapper : NSObject
 {
     MLMultiArray *_L;
     MLMultiArray *_D;

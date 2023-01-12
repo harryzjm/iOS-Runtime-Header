@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     GEOComposedRouteSection *_section;
     NSArray *_matchedPathSegments;
     struct vector<gm::Matrix<float, 3, 1>, std::allocator<gm::Matrix<float, 3, 1>>> _points;
+    struct vector<geo::PolylineCoordinate, std::allocator<geo::PolylineCoordinate>> _polylineCoordinates;
     _Bool _distanceSnapping;
     struct PolylineCoordinate _routeStart;
     struct PolylineCoordinate _routeEnd;
@@ -28,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) double startDistance; // @synthesize startDistance=_startDistance;
 @property(readonly, nonatomic) NSArray *matchedPathSegments; // @synthesize matchedPathSegments=_matchedPathSegments;
-@property(readonly, nonatomic) GEOComposedRouteSection *section; // @synthesize section=_section;
+@property(readonly, nonatomic) __weak GEOComposedRouteSection *section; // @synthesize section=_section;
 @property(nonatomic) struct PolylineCoordinate routeEnd; // @synthesize routeEnd=_routeEnd;
 @property(nonatomic) struct PolylineCoordinate routeStart; // @synthesize routeStart=_routeStart;
 - (id)description;
@@ -36,10 +37,10 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool isMapMatched;
 @property(readonly) _Bool hasCompletedMapMatching;
 - (float)laneHalfWidthAtIndex:(unsigned int)arg1;
+@property(readonly, nonatomic) const void *polylineCoordinates;
 @property(readonly, nonatomic) void *points;
 @property(readonly, nonatomic) unsigned int pointCount;
 - (const struct GradientTraffic *)gradientTrafficAtIndex:(unsigned int)arg1;
-- (void)dealloc;
 - (id)initWithOverlay:(id)arg1 section:(id)arg2 routeStartIndex:(unsigned int)arg3 routeEndIndex:(unsigned int)arg4 matchedPathSegments:(id)arg5;
 - (id)initWithOverlay:(id)arg1 section:(id)arg2 matchedPathSegments:(id)arg3;
 

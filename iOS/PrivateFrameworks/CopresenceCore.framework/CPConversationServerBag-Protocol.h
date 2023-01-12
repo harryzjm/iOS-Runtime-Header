@@ -6,10 +6,18 @@
 
 #import <CopresenceCore/NSObject-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @protocol CPConversationServerBag <NSObject>
 - (NSString *)stableBundleIdentifierForLocalBundleIdentifier:(NSString *)arg1;
+@property(nonatomic, readonly) NSArray *blockedActivitySessionBundleIdentifiers;
+@property(nonatomic, readonly) long long timeBetweenMacOSSharePlayNotificationsSeconds;
+@property(nonatomic, readonly) long long unreliableMessengerChannelStreamRetryIntervalMillis;
+@property(nonatomic, readonly) long long unreliableMessengerChannelStreamMaxTries;
+@property(nonatomic, readonly) long long unreliableMessengerChannelStreamMaxQueueSize;
+@property(nonatomic, readonly) long long unreliableMessengerEgressMessagePayloadMaxSizeBytes;
+@property(nonatomic, readonly) long long unreliableMessengerEstablishChannelRetryIntervalMillis;
+@property(nonatomic, readonly) long long unreliableMessengerEstablishChannelMaxAttempts;
 @property(nonatomic, readonly) long long qrPluginRpcStreamRetryIntervalMillis;
 @property(nonatomic, readonly) long long qrPluginMaxRpcStreamAttempts;
 @property(nonatomic, readonly) long long qrPluginConnectionRetryIntervalMillis;

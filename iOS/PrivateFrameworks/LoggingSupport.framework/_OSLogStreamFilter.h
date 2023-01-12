@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LoggingSupport/NSPredicateVisitor-Protocol.h>
-
 @class NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _OSLogStreamFilter : NSObject <NSPredicateVisitor>
+@interface _OSLogStreamFilter : NSObject
 {
     NSMutableDictionary *_filter;
     NSMutableDictionary *_pids;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIKeyboardSuppressionPolicyDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyboardSuppressionPencilPolicyDelegate : NSObject <_UIKeyboardSuppressionPolicyDelegate>
+@interface _UIKeyboardSuppressionPencilPolicyDelegate : NSObject
 {
     _Bool _isQueryingLocaleIdentifier;
     _Bool _suppressLocaleIdentifier;

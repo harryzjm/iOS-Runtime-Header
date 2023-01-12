@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Osprey/OspreyDeviceAuthenticating-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OspreyAbsintheAuthenticator : NSObject <OspreyDeviceAuthenticating>
+@interface OspreyAbsintheAuthenticator : NSObject
 {
 }
 

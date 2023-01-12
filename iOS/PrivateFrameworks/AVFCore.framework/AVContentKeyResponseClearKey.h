@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVContentKeyResponse.h"
+
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface AVContentKeyResponseClearKey
+@interface AVContentKeyResponseClearKey : AVContentKeyResponse
 {
     NSData *_keyData;
     NSData *_initializationVector;

@@ -6,17 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/CNPhotoPickerProviderItemDelegate-Protocol.h>
-#import <ContactsUI/CNVisualIdentityEditablePrimaryAvatarViewControllerDelegate-Protocol.h>
-#import <ContactsUI/UICollectionViewDataSource-Protocol.h>
-#import <ContactsUI/UICollectionViewDelegate-Protocol.h>
-#import <ContactsUI/UITextFieldDelegate-Protocol.h>
-
 @class CNPhotoPickerProviderItem, CNPhotoPickerVariantsManager, CNVisualIdentityEditablePrimaryAvatarViewController, CNVisualIdentityItemEditorSegmentedControl, NSArray, NSLayoutConstraint, NSString, UICollectionView, UIView;
 @protocol CNVisualIdentityItemEditorViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNVisualIdentityItemEditorViewController : UIViewController <UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, CNPhotoPickerProviderItemDelegate, CNVisualIdentityEditablePrimaryAvatarViewControllerDelegate>
+@interface CNVisualIdentityItemEditorViewController : UIViewController
 {
     id <CNVisualIdentityItemEditorViewControllerDelegate> _delegate;
     CNVisualIdentityEditablePrimaryAvatarViewController *_editableAvatarViewController;

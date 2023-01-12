@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNContactAction.h"
+
 @class CNUICoreRecentsManager, CNUIExternalComponentsFactory;
 
 __attribute__((visibility("hidden")))
-@interface CNContactDeleteContactAction
+@interface CNContactDeleteContactAction : CNContactAction
 {
     CNUIExternalComponentsFactory *_componentsFactory;
     CNUICoreRecentsManager *_recentsManager;

@@ -10,7 +10,7 @@
 
 @protocol NSPProberDelegate <NSObject>
 - (void)setUserEventAgentProberParameters;
-- (void)probeServerError:(NSPProber *)arg1;
+- (void)probeServerError:(NSPProber *)arg1 httpStatusCode:(long long)arg2;
 - (void)probeRedirected:(NSPProber *)arg1;
 - (void)probeFailed:(NSPProber *)arg1;
 - (void)probeSuccess:(NSPProber *)arg1;

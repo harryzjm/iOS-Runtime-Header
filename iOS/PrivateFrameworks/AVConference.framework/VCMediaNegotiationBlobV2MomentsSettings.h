@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobV2MomentsSettings : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobV2MomentsSettings : PBCodable
 {
     unsigned int _capabilities;
     unsigned int _supportedCodecs;

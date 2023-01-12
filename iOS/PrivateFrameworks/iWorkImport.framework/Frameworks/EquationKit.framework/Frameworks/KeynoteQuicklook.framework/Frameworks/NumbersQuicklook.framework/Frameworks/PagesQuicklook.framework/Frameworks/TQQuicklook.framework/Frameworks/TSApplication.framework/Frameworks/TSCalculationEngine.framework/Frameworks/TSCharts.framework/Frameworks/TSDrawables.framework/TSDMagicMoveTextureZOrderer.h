@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray;
+@protocol OS_dispatch_queue;
 
 @interface TSDMagicMoveTextureZOrderer : NSObject
 {
@@ -15,14 +16,20 @@
     NSArray *_incomingTexturesInZOrder;
     double *_percentTexturesTimes;
     NSArray *_percentTextures;
+    NSObject<OS_dispatch_queue> *_resultQueue;
     unsigned long long _zOrderIntersectionsCount;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long zOrderIntersectionsCount; // @synthesize zOrderIntersectionsCount=_zOrderIntersectionsCount;
 @property(readonly, nonatomic) NSArray *flattenableAnimationMatches;
+- (id)p_zOrderMatchForTextureRectangle:(id)arg1 withTextureSets:(id)arg2;
+- (id)p_outgoingTextureMatchesInZOrderWithTextureSets:(id)arg1;
+- (id)p_textureSetsInZOrderMatches;
+- (id)p_outgoingTextureMatchesInZOrder;
 - (void)p_addFlattenableAnimationMatches:(id)arg1 toArray:(id)arg2;
 - (void)p_calculateTextureArraysFromIntersections;
+- (id)p_uniqueIntersections;
 - (unsigned long long)p_bestZIndexForUnassignedMatch:(id)arg1 inMatchArray:(id)arg2;
 - (id)p_debugDescription;
 - (unsigned long long)p_zIntersectionsBetweenZOrdererMatches:(id)arg1;

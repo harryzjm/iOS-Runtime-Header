@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/CKDURLRequestPipelining-Protocol.h>
+#import "CKDURLRequest.h"
 
 @class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString;
 
-@interface CKDFetchArchivedRecordsURLRequest <CKDURLRequestPipelining>
+@interface CKDFetchArchivedRecordsURLRequest : CKDURLRequest
 {
     _Bool _shouldFetchAssetContent;
     NSArray *_recordZoneIDs;

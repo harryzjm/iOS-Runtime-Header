@@ -11,7 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface _TtC14FamilyControls28ActivityPickerViewController : UIViewController
 {
-    MISSING_TYPE *isPresented;
+    MISSING_TYPE *isEmbedded;
+    MISSING_TYPE *headerText;
+    MISSING_TYPE *footerText;
     MISSING_TYPE *selection;
     MISSING_TYPE *dismissCallback;
     MISSING_TYPE *remoteViewController;

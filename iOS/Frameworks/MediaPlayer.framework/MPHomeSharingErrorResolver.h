@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlayer/SSAuthorizationRequestDelegate-Protocol.h>
+#import "MPAVErrorResolver.h"
 
 @class MPHomeSharingML3DataProvider, NSData, NSError, NSMutableArray, NSString, NSURL, SSAuthorizationRequest;
 
 __attribute__((visibility("hidden")))
-@interface MPHomeSharingErrorResolver <SSAuthorizationRequestDelegate>
+@interface MPHomeSharingErrorResolver : MPAVErrorResolver
 {
     NSURL *_keybagURL;
     unsigned long long _accountID;

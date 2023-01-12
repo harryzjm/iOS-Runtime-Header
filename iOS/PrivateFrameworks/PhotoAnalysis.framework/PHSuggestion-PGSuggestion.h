@@ -6,11 +6,9 @@
 
 #import <Photos/PHSuggestion.h>
 
-#import <PhotoAnalysis/PGSuggestion-Protocol.h>
-
 @class NSArray, NSDate, NSSet, NSString;
 
-@interface PHSuggestion (PGSuggestion) <PGSuggestion>
+@interface PHSuggestion (PGSuggestion)
 @property(readonly, nonatomic) unsigned long long relevanceDurationInDays;
 @property(readonly, nonatomic) id recipe;
 @property(readonly, nonatomic) unsigned char notificationQuality;

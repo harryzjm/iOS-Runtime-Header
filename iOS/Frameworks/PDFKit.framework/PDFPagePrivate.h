@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, PDFAKPageAdaptor, PDFDocument, PDFView, UIImage;
+@class NSAttributedString, NSDictionary, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, PDFAKPageAdaptor, PDFAnnotation, PDFDetectedForm, PDFDetectedFormField, PDFDocument, PDFView;
 
 __attribute__((visibility("hidden")))
 @interface PDFPagePrivate : NSObject
@@ -16,10 +16,8 @@ __attribute__((visibility("hidden")))
     struct CGColor *pageBackgroundColorHint;
     PDFView *view;
     NSString *label;
-    UIImage *image;
-    struct CGImage *cgImage;
-    struct CGImageSource *cgImageSource;
-    unsigned int cgImageOrientation;
+    struct CGImage *pageImage;
+    NSDictionary *pageImageOptions;
     struct os_unfair_lock_s layoutLock;
     struct CGPDFLayout *layout;
     _Atomic _Bool builtLayout;
@@ -42,6 +40,7 @@ __attribute__((visibility("hidden")))
     struct CGRect artBox;
     struct CGDisplayList *displayList;
     _Bool creatingDisplayList;
+    NSMutableArray *createDisplayListCompletionBlocks;
     struct os_unfair_lock_s displayListMutex;
     _Bool bookmarked;
     _Bool isFullyConstructed;
@@ -51,8 +50,17 @@ __attribute__((visibility("hidden")))
     NSMutableArray *annotationChanges;
     NSMutableSet *changedAnnotations;
     NSMutableDictionary *widgetAnnotationLookup;
+    struct os_unfair_lock_s widgetAnnotationLookupLock;
     NSMutableArray *scannerResults;
     _Bool didChangeBounds;
+    BOOL candidateForOCR;
+    _Bool requestedOCR;
+    _Bool textFromOCR;
+    PDFDetectedForm *detectedForm;
+    struct os_unfair_lock_s searchForTextFieldsLock;
+    PDFAnnotation *firstTextField;
+    PDFDetectedFormField *firstDetectedFormField;
+    _Bool didSearchForTextFields;
 }
 
 - (void).cxx_destruct;

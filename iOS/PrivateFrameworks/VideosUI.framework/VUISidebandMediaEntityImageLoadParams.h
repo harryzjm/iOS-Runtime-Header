@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIImageLoadParams-Protocol.h>
-
 @class NSString, VUIImageInfoManagedObject;
 
 __attribute__((visibility("hidden")))
-@interface VUISidebandMediaEntityImageLoadParams : NSObject <VUIImageLoadParams>
+@interface VUISidebandMediaEntityImageLoadParams : NSObject
 {
     VUIImageInfoManagedObject *_imageInfo;
     unsigned long long _imageTypeInternal;

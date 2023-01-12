@@ -6,12 +6,9 @@
 
 #import <NewsTransport/NTPBAVAssetKey.h>
 
-#import <NewsCore/FCAVAssetKeyType-Protocol.h>
-#import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
-
 @class FCContentArchive, NSData, NSDate, NSString;
 
-@interface NTPBAVAssetKey (Conformance) <FCAVAssetKeyType, FCKeyValueStoreCoding>
+@interface NTPBAVAssetKey (Conformance)
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 @property(readonly, nonatomic) FCContentArchive *contentArchive;

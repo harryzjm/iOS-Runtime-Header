@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
 @class NSArray;
 @protocol NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface VUIMediaEntityGroup : NSObject <NSCopying>
+@interface VUIMediaEntityGroup : NSObject
 {
     NSObject<NSCopying> *_identifier;
     NSArray *_mediaEntities;

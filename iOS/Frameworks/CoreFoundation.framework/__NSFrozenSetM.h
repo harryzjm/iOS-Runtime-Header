@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSSet.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSFrozenSetM
+@interface __NSFrozenSetM : NSSet
 {
     CDStruct_af6d7307 storage;
     _Atomic struct __cow_state_t *cow;
@@ -19,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)getObjects:(id *)arg1 count:(unsigned long long)arg2;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (double)clumpingInterestingThreshold;
 - (double)clumpingFactor;
 - (id)objectEnumerator;

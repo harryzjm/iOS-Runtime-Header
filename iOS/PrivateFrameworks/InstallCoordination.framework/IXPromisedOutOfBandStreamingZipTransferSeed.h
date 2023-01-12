@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <InstallCoordination/NSCopying-Protocol.h>
-#import <InstallCoordination/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, NSURL;
 
-@interface IXPromisedOutOfBandStreamingZipTransferSeed <NSSecureCoding, NSCopying>
+__attribute__((visibility("hidden")))
+@interface IXPromisedOutOfBandStreamingZipTransferSeed
 {
     unsigned long long _archiveBytesConsumed;
     unsigned long long _archiveSizeBytes;

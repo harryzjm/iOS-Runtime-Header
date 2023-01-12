@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDictionary;
+@class NSData, NSDictionary, NSUUID;
 @protocol LAUIDelegate;
 
 @protocol LAContextClientEvaluationProt
+- (void)verifyFileVaultUser:(NSUUID *)arg1 volumeUuid:(NSUUID *)arg2 options:(unsigned long long)arg3 reply:(void (^)(_Bool, NSError *))arg4;
 - (void)setOptions:(id)arg1 forInternalOperation:(long long)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)optionsForInternalOperation:(long long)arg1 reply:(void (^)(id, NSError *))arg2;
 - (void)credentialOfType:(long long)arg1 reply:(void (^)(NSData *, NSError *))arg2;

@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFMessage.h>
 
-@class HAPPairingIdentity, HMDBackingStoreTransactionActions, HMDDevice, HMDXPCClientConnection, HMDXPCMessageSendPolicy, NSString;
+@class HAPPairingIdentity, HMDBackingStoreTransactionActions, HMDDevice, HMDRemoteMessageSenderContext, HMDXPCClientConnection, HMDXPCMessageSendPolicy, NSString;
 
 @interface HMFMessage (HMDXPC)
 + (id)nonSPIEntitledMessageWithName:(id)arg1 messagePayload:(id)arg2;
@@ -17,6 +17,7 @@
 + (id)internalMessageWithName:(id)arg1 messagePayload:(id)arg2;
 + (id)homeLocationAuthorizedAndEntitledMessageWithName:(id)arg1 target:(id)arg2 messagePayload:(id)arg3;
 + (id)locationAuthorizedMessageWithName:(id)arg1 messagePayload:(id)arg2;
+@property(readonly, nonatomic, getter=isLocalFallback) _Bool localFallback;
 - (unsigned long long)homeManagerOptions;
 @property(readonly, nonatomic) HMDXPCMessageSendPolicy *sendPolicy;
 @property(readonly, copy, nonatomic) NSString *companionAppBundleIdentifier;
@@ -28,6 +29,7 @@
 @property(readonly, nonatomic, getter=isEntitledForStateDump) _Bool entitledForStateDump;
 @property(readonly, nonatomic, getter=isEntitledForSecureAccess) _Bool entitledForSecureAccess;
 @property(readonly, nonatomic, getter=isEntitledForShortcutsAutomationAccess) _Bool entitledForShortcutsAutomationAccess;
+@property(readonly, nonatomic, getter=isEntitledToProvideMatterSetupPayload) _Bool entitledToProvideMatterSetupPayload;
 @property(readonly, nonatomic, getter=isEntitledToProvideAccessorySetupPayload) _Bool entitledToProvideAccessorySetupPayload;
 @property(readonly, nonatomic, getter=isEntitledForHomeLocationAccess) _Bool entitledForHomeLocationAccess;
 @property(readonly, nonatomic, getter=isAuthorizedForLocationAccess) _Bool authorizedForLocationAccess;
@@ -42,6 +44,7 @@
 @property(readonly, nonatomic) _Bool requiresPersonManagerEntitlement;
 @property(readonly, nonatomic) _Bool requiresMultiUserSetupEntitlement;
 @property(readonly, nonatomic) _Bool requiresCameraClipsEntitlement;
+@property(readonly, nonatomic) _Bool requiresMatterSetupPayloadEntitlement;
 @property(readonly, nonatomic) _Bool requiresSetupPayloadEntitlement;
 @property(readonly, nonatomic) _Bool requiresNoSPIEntitlement;
 @property(readonly, nonatomic) _Bool requiresSPIEntitlement;
@@ -55,13 +58,15 @@
 @property(readonly, nonatomic, getter=isLocationAuthorized) _Bool locationAuthorized;
 - (id)userForHome:(id)arg1;
 - (id)matchingRemoteIdentityUserForHome:(id)arg1;
+- (_Bool)isSingleReadWriteRequest;
+@property(readonly, nonatomic) HMDRemoteMessageSenderContext *remoteSenderContext;
+@property(readonly, nonatomic) unsigned long long remoteResponseRestriction;
 @property(readonly, nonatomic) unsigned long long remoteRestriction;
-@property(readonly, nonatomic) NSString *remoteMergeID;
+@property(readonly, nonatomic) NSString *remoteToID;
 @property(readonly, nonatomic) HAPPairingIdentity *remoteUserPairingIdentity;
 @property(readonly, nonatomic) HMDDevice *remoteSourceDevice;
 @property(readonly, nonatomic) NSString *remoteSourceID;
 @property(readonly, nonatomic, getter=isSecureRemote) _Bool secureRemote;
 @property(readonly, nonatomic, getter=isRemote) _Bool remote;
-- (id)hmd_safeUserInfo;
 @end
 

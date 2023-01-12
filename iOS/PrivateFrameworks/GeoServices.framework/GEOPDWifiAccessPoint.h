@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDWifiAccessPoint : PBCodable <NSCopying>
+@interface GEOPDWifiAccessPoint : PBCodable
 {
     PBUnknownFields *_unknownFields;
     NSString *_macId;
@@ -19,7 +17,12 @@ __attribute__((visibility("hidden")))
     unsigned int _age;
     int _channel;
     int _rssi;
-    CDStruct_e664d718 _flags;
+    struct {
+        unsigned int has_scanTimestamp:1;
+        unsigned int has_age:1;
+        unsigned int has_channel:1;
+        unsigned int has_rssi:1;
+    } _flags;
 }
 
 - (void).cxx_destruct;

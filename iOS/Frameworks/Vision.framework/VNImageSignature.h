@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VNImageSignature : NSObject <NSSecureCoding>
+@interface VNImageSignature : NSObject
 {
     struct FastRegistration_Signatures _signature;
 }

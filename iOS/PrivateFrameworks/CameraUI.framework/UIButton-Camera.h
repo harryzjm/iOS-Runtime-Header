@@ -6,11 +6,9 @@
 
 #import <UIKit/UIButton.h>
 
-#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
-
 @class NSString;
 
-@interface UIButton (Camera) <CAMAccessibilityHUDItemProvider>
+@interface UIButton (Camera)
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
 

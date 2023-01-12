@@ -6,14 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <ContactsUI/CNContactViewHostAsyncProtocol-Protocol.h>
-#import <ContactsUI/CNContactViewHostProtocol-Protocol.h>
-#import <ContactsUI/CNContactViewServiceProtocol-Protocol.h>
-
 @class CNContactViewHostViewController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactViewExtensionHostContext : NSExtensionContext <CNContactViewHostAsyncProtocol, CNContactViewServiceProtocol, CNContactViewHostProtocol>
+@interface CNContactViewExtensionHostContext : NSExtensionContext
 {
     CNContactViewHostViewController *_viewController;
 }

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)transitionFromPlacement:(id)arg1 toPlacement:(id)arg2 withAnimationStyle:(id)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <UIInputViewAnimationController> animationController; // @synthesize animationController;
 @property(retain, nonatomic) id <NSObject> animationContext; // @synthesize animationContext;
 @property(nonatomic) _Bool cancelled; // @synthesize cancelled;

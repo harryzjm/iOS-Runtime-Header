@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CallHistory/NSObject-Protocol.h>
+#import <CallHistory/CHDelegate-Protocol.h>
 
 @class CHConfiguration;
 
-@protocol CHConfigurationDelegate <NSObject>
+@protocol CHConfigurationDelegate <CHDelegate>
 
 @optional
 - (void)propertiesDidChangeForConfiguration:(CHConfiguration *)arg1;

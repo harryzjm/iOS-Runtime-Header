@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FileProvider/FPOperationClient-Protocol.h>
+#import "FPOperation.h"
 
 @class NSDictionary;
 @protocol FPOperationProgressDelegate;
 
 __attribute__((visibility("hidden")))
-@interface FPFetchAppLibraryIconsOperation <FPOperationClient>
+@interface FPFetchAppLibraryIconsOperation : FPOperation
 {
     NSDictionary *_itemIdentifierByAppBundleID;
     struct CGSize _desiredSize;

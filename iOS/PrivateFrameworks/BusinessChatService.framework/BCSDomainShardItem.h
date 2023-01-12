@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BusinessChatService/BCSDomainShardItemProtocol-Protocol.h>
-#import <BusinessChatService/NSCopying-Protocol.h>
-#import <BusinessChatService/NSSecureCoding-Protocol.h>
-
 @class NSDate, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface BCSDomainShardItem <BCSDomainShardItemProtocol, NSCopying, NSSecureCoding>
+@interface BCSDomainShardItem
 {
     NSURL *_fileURL;
 }

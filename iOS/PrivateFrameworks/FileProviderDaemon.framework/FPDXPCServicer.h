@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDDaemon-Protocol.h>
-
 @class FPDServer, NSHashTable, NSXPCConnection;
 @protocol OS_dispatch_queue, OS_os_log;
 
 __attribute__((visibility("hidden")))
-@interface FPDXPCServicer : NSObject <FPDDaemon>
+@interface FPDXPCServicer : NSObject
 {
     NSHashTable *_providerServicers;
     NSObject<OS_dispatch_queue> *_queue;
@@ -24,13 +22,19 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(nonatomic) __weak FPDServer *server; // @synthesize server=_server;
+- (void)_test_resetCounters:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_test_getCountersArray:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_test_getRootSupportDirURLForDomainURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_simulateUninstallOfBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_simulateInstallOfBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_callRemoveTrashedItemsOlderThanDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_callFileProviderManagerAPIs:(CDUnknownBlockType)arg1;
 - (void)_test_retrieveItemWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_setDocIDResolutionPolicy:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)preventDiskImportSchedulerFromRunning:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)forceIndexingInForeground:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchAndStartEnumeratingWithSettings:(id)arg1 observer:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_checkEnumerationPermissionsForSettings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startAccessingServiceWithName:(id)arg1 itemURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startAccessingServiceForItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startAccessingOperationServiceForProviderDomainID:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -45,10 +49,15 @@ __attribute__((visibility("hidden")))
 - (void)getSyncedRootsURLs:(CDUnknownBlockType)arg1;
 - (void)copyDatabaseForFPCKStartingAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)createDatabaseCopyOutputPathForDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getPersonaForProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dumpStateTo:(id)arg1 limitNumberOfItems:(_Bool)arg2 providerFilter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)didUpdateAlternateContentsDocumentForDocumentAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)appHasNonUploadedFiles:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAlternateContentsURLForDocumentURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAlternateContentsURL:(id)arg1 onDocumentURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)dumpDatabaseAt:(id)arg1 fullDump:(_Bool)arg2 writeTo:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)runFPCKForDomainWithID:(id)arg1 databasesBackupsPath:(id)arg2 url:(id)arg3 options:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)stateForDomainWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reimportItemsBelowItemWithID:(id)arg1 removeCachedItems:(_Bool)arg2 markItemDataless:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setEnabled:(_Bool)arg1 forDomainIdentifier:(id)arg2 providerIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getDomainsForProviderIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -58,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)removeDomainWithID:(id)arg1 mode:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeDomainAndPreserveDataWithID:(id)arg1 mode:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addDomain:(id)arg1 forProviderIdentifier:(id)arg2 byImportingDirectoryAtURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)resolveConflictAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)restoreUserURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)backUpUserURL:(id)arg1 outputUserURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateBlockedProcessNamesForProvider:(id)arg1 processNames:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -69,9 +79,9 @@ __attribute__((visibility("hidden")))
 - (void)materializeURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startOperation:(id)arg1 toFetchIconsForAppBundleIDs:(id)arg2 requestedSize:(struct CGSize)arg3 scale:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)fetchListOfMonitoredApps:(CDUnknownBlockType)arg1;
-- (void)updateIgnoreState:(_Bool)arg1 forItemAtURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)valuesForAttributes:(id)arg1 forItemAtURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateLastUsedDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchProviderForShareURL:(id)arg1 fallbackIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)trashItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchIndexPropertiesForItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchFSItemsForItemIdentifiers:(id)arg1 providerIdentifier:(id)arg2 domainIdentifier:(id)arg3 materializingIfNeeded:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;

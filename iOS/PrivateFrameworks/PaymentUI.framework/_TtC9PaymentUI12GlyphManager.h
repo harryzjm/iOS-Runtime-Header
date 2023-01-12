@@ -19,16 +19,21 @@
     MISSING_TYPE *deferredCompletionHandlers;
     MISSING_TYPE *userIntentStyle;
     MISSING_TYPE *authenticating;
+    MISSING_TYPE *disablePasscodeFallback;
     MISSING_TYPE *presentPasscode;
     MISSING_TYPE *idleStateIsPasscode;
     MISSING_TYPE *matchFailed;
-    MISSING_TYPE *localizedErrorMessage;
+    MISSING_TYPE *matchFailedAtLeastOnce;
+    MISSING_TYPE *lastFailureWasUnboundBiometric;
     MISSING_TYPE *glyphSymbol;
     MISSING_TYPE *glyphColorMode;
     MISSING_TYPE *physicalButtonEdge;
+    MISSING_TYPE *physicalButtonHidden;
     MISSING_TYPE *glyphUpdaterCallback;
     MISSING_TYPE *aGlyph;
     MISSING_TYPE *avoidGlyphViewUpdates;
+    MISSING_TYPE *hasPearl;
+    MISSING_TYPE *context;
 }
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputSettingsAssistantVideoSettingsAdjuster-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVExportSettingsOutputSettingsAssistantVideoSettingsAdjuster : NSObject <AVOutputSettingsAssistantVideoSettingsAdjuster>
+@interface AVExportSettingsOutputSettingsAssistantVideoSettingsAdjuster : NSObject
 {
     NSString *_outputSettingsPresetIdentifier;
     NSDictionary *_exportSettings;

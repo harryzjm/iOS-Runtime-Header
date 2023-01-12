@@ -10,6 +10,9 @@
 @protocol ASCCredentialProtocol, ASCLoginChoiceProtocol;
 
 @protocol ASCAuthorizationPresenterHostProtocol <NSObject>
+- (void)cableClientWillAuthenticate;
+- (void)cableClientWillConnect;
+- (void)startCABLEAuthenticationWithCompletionHandler:(void (^)(ASCAuthorizationPresentationContext *, NSError *))arg1;
 - (void)initializeClientToViewServiceConnection;
 - (void)validateUserEnteredPIN:(NSString *)arg1 completionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg2;
 - (void)authorizationRequestFinishedWithCredential:(id <ASCCredentialProtocol>)arg1 error:(NSError *)arg2 completionHandler:(void (^)(void))arg3;

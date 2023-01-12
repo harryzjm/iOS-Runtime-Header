@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class CIImage, NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CIDisparityRefinementAntialiasV3
+@interface CIDisparityRefinementAntialiasV3 : CIFilter
 {
     CIImage *inputImage;
     CIImage *inputPreprocImage;

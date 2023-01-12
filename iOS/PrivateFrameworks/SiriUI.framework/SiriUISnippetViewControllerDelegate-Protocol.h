@@ -7,28 +7,28 @@
 #import <SiriUI/SiriUIAceObjectViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSDate, NSSet, NSUUID, SAStartLocalRequest, SiriUISashItem, SiriUISnippetViewController, UIViewController;
-@protocol SiriUIViewController;
+@protocol SiriSharedUIViewControlling;
 
 @protocol SiriUISnippetViewControllerDelegate <SiriUIAceObjectViewControllerDelegate>
 - (double)boundingWidthForSnippetViewController:(SiriUISnippetViewController *)arg1;
 - (void)siriSnippetViewController:(SiriUISnippetViewController *)arg1 requestPasscodeUnlockWithCompletion:(void (^)(long long))arg2;
-- (_Bool)siriSnippetViewControllerIsVisible:(id <SiriUIViewController>)arg1;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 didShowGuideStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 shouldPresentPicker:(UIViewController *)arg2 completion:(void (^)(_Bool))arg3;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 setStatusBarHidden:(_Bool)arg2 animated:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 setStatusBarHidden:(_Bool)arg2 animated:(_Bool)arg3;
-- (void)siriSnippetViewControllerViewDidLoad:(id <SiriUIViewController>)arg1;
-- (void)siriSnippetViewControllerWillBecomeFirstResponder:(id <SiriUIViewController>)arg1;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 pushSirilandSnippets:(NSArray *)arg2;
+- (_Bool)siriSnippetViewControllerIsVisible:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 didShowGuideStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 shouldPresentPicker:(UIViewController *)arg2 completion:(void (^)(_Bool))arg3;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 setStatusBarHidden:(_Bool)arg2 animated:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 setStatusBarHidden:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)siriSnippetViewControllerViewDidLoad:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriSnippetViewControllerWillBecomeFirstResponder:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 pushSirilandSnippets:(NSArray *)arg2;
 
 @optional
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 performAceCommands:(NSArray *)arg2 sashItem:(SiriUISashItem *)arg3;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 performAceCommands:(NSArray *)arg2 sashItem:(SiriUISashItem *)arg3;
 - (void)userTouchedSnippet;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 handleStartLocalRequest:(SAStartLocalRequest *)arg2 turnIdentifier:(NSUUID *)arg3;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 setTypeToSiriViewHidden:(_Bool)arg2;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 handleStartLocalRequest:(SAStartLocalRequest *)arg2 turnIdentifier:(NSUUID *)arg3;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 setTypeToSiriViewHidden:(_Bool)arg2;
 - (unsigned long long)navigationIndexOfSnippetViewController:(SiriUISnippetViewController *)arg1;
-- (NSSet *)siriEnabledAppListForSiriViewController:(id <SiriUIViewController>)arg1;
-- (unsigned long long)siriDeviceLockStateForSnippetViewController:(id <SiriUIViewController>)arg1;
+- (NSSet *)siriEnabledAppListForSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (unsigned long long)siriDeviceLockStateForSnippetViewController:(id <SiriSharedUIViewControlling>)arg1;
 - (void)siriSnippetViewControllerRequestsPinning:(SiriUISnippetViewController *)arg1;
 @end
 

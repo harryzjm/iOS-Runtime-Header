@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/GEOResourceManifestTileGroupObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VKStylesheetVendorResourceManifestTileGroupObserverProxy : NSObject <GEOResourceManifestTileGroupObserver>
+@interface VKStylesheetVendorResourceManifestTileGroupObserverProxy : NSObject
 {
     struct weak_ptr<md::StylesheetVendor> _vendor;
 }

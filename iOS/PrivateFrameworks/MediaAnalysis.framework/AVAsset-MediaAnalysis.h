@@ -7,6 +7,7 @@
 #import <AVFoundation/AVAsset.h>
 
 @interface AVAsset (MediaAnalysis)
+- (struct __CVBuffer *)vcp_keyFrameWithMaxDimension:(unsigned long long)arg1;
 - (CDStruct_1b6d18a9)vcp_livePhotoStillDisplayTime;
 - (_Bool)vcp_isMontage;
 - (_Bool)vcp_isShortMovie;

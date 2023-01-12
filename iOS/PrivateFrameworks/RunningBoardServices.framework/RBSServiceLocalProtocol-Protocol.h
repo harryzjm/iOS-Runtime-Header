@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSNumber, NSSet, NSString, RBSAssertion, RBSAssertionIdentifier, RBSLaunchRequest, RBSMachPortTaskNameRight, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessInstance, RBSProcessLimitations, RBSProcessMonitor, RBSProcessMonitorConfiguration, RBSProcessPredicate, RBSProcessStateDescriptor, RBSSavedEndowment, RBSTerminateRequest;
+@class NSArray, NSDictionary, NSNumber, NSSet, NSString, RBSAssertion, RBSAssertionIdentifier, RBSLaunchRequest, RBSMachPortTaskNameRight, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessIdentity, RBSProcessInstance, RBSProcessLimitations, RBSProcessMonitor, RBSProcessMonitorConfiguration, RBSProcessPredicate, RBSProcessStateDescriptor, RBSSavedEndowment, RBSTerminateRequest;
 
 @protocol RBSServiceLocalProtocol
 - (void)reset;
+- (_Bool)isIdentityAnAngel:(RBSProcessIdentity *)arg1 withError:(out id *)arg2;
 - (NSSet *)preventLaunchPredicatesWithError:(out id *)arg1;
 - (NSSet *)busyExtensionInstancesFromSet:(NSSet *)arg1 error:(out id *)arg2;
 - (NSSet *)identifiersForStateCaptureSubsystems:(out id *)arg1;

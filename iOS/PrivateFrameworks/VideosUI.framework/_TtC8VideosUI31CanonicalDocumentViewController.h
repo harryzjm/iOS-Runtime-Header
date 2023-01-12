@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI29DocumentRequestViewControllerCN.h"
+
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI31CanonicalDocumentViewController
+@interface _TtC8VideosUI31CanonicalDocumentViewController : _$s8VideosUI29DocumentRequestViewControllerCN
 {
 }
 

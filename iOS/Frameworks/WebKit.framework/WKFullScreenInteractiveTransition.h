@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/UIViewControllerInteractiveTransitioning-Protocol.h>
-
 @class NSString, WKFullscreenAnimationController;
 
 __attribute__((visibility("hidden")))
-@interface WKFullScreenInteractiveTransition : NSObject <UIViewControllerInteractiveTransitioning>
+@interface WKFullScreenInteractiveTransition : NSObject
 {
     struct RetainPtr<WKFullscreenAnimationController> _animator;
     struct RetainPtr<id<UIViewControllerContextTransitioning>> _context;

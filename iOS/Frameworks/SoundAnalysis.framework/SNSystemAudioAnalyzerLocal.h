@@ -6,22 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNSystemAudioAnalyzerProtocol-Protocol.h>
-
-@class AVAudioFormat, AVAudioSession, NSMutableArray, SNAudioConfiguration, SNAudioRecordingQueue, SNAudioStreamAnalyzer;
+@class AVAudioFormat, AVAudioSession, NSMutableArray, NSMutableDictionary, SNAudioConfiguration, SNAudioRecordingQueue, SNAudioStreamAnalyzer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SNSystemAudioAnalyzerLocal : NSObject <SNSystemAudioAnalyzerProtocol>
+@interface SNSystemAudioAnalyzerLocal : NSObject
 {
     AVAudioFormat *_recordFormat;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSObject<OS_dispatch_queue> *_analysisQueue;
     SNAudioRecordingQueue *_recordingQueue;
     SNAudioStreamAnalyzer *_streamAnalyzer;
-    long long _recordingState;
-    _Bool _clientStartedAnalysis;
+    _Bool _audioIsRunning;
     NSMutableArray *_requests;
+    NSMutableDictionary *_observers;
     SNAudioConfiguration *_audioConfiguration;
     AVAudioSession *_audioSession;
 }
@@ -31,17 +29,8 @@ __attribute__((visibility("hidden")))
 - (void)handleAVAudioSessionMediaServicesLost:(id)arg1;
 - (void)handleAVAudioSessionRouteChange:(id)arg1;
 - (void)handleAVAudioSessionInterruption:(id)arg1;
-- (void)sendErrorToAllRequests:(id)arg1;
-- (void)handleAudioStreamInterrupted;
-- (void)stopAudio;
-- (void)startAudio;
-- (void)stop;
-- (void)start;
-- (void)_removeAllRequests;
 - (void)removeAllRequests;
-- (void)_removeRequest:(id)arg1;
 - (void)removeRequest:(id)arg1;
-- (_Bool)_addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
 - (_Bool)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
 - (void)setAudioConfiguration:(id)arg1;
 - (id)init;

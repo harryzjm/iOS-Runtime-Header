@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlaybackCore/AVPlayerPlaybackCoordinatorDelegate-Protocol.h>
-#import <MediaPlaybackCore/ICLiveLinkDelegate-Protocol.h>
-#import <MediaPlaybackCore/MPCQueueControllerCommandInterposing-Protocol.h>
-
 @class AVPlayerPlaybackCoordinator, ICLiveLink, ICLiveLinkIdentity, MPCPlaybackRequestEnvironment, MPPropertySet, NSError, NSMutableArray, NSMutableSet, NSString;
 @protocol MPCQueueControllerCommandInterposingHost;
 
 __attribute__((visibility("hidden")))
-@interface MPCSharedListeningQueueFeeder <ICLiveLinkDelegate, AVPlayerPlaybackCoordinatorDelegate, MPCQueueControllerCommandInterposing>
+@interface MPCSharedListeningQueueFeeder
 {
+    _Bool _lastKnownAutoPlayEnabled;
+    _Bool _lastKnownAutoPlayAvailable;
     _Bool _shouldRefreshBeforeActive;
     _Bool _hasPendingPlayNowInFlight;
+    _Bool _joiningAsInitiator;
     id <MPCQueueControllerCommandInterposingHost> _interposingHost;
     long long _state;
     ICLiveLink *_liveLink;
@@ -31,15 +30,20 @@ __attribute__((visibility("hidden")))
     ICLiveLinkIdentity *_deferredDirectCurrentItemParticipant;
     NSString *_deferredPlayNowCurrentItemIdentifier;
     AVPlayerPlaybackCoordinator *_playbackCoordinator;
+    NSString *_preferredStartItemForCallingSuper;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool joiningAsInitiator; // @synthesize joiningAsInitiator=_joiningAsInitiator;
+@property(copy, nonatomic) NSString *preferredStartItemForCallingSuper; // @synthesize preferredStartItemForCallingSuper=_preferredStartItemForCallingSuper;
 @property(nonatomic) __weak AVPlayerPlaybackCoordinator *playbackCoordinator; // @synthesize playbackCoordinator=_playbackCoordinator;
 @property(copy, nonatomic) NSString *deferredPlayNowCurrentItemIdentifier; // @synthesize deferredPlayNowCurrentItemIdentifier=_deferredPlayNowCurrentItemIdentifier;
 @property(nonatomic) _Bool hasPendingPlayNowInFlight; // @synthesize hasPendingPlayNowInFlight=_hasPendingPlayNowInFlight;
 @property(retain, nonatomic) ICLiveLinkIdentity *deferredDirectCurrentItemParticipant; // @synthesize deferredDirectCurrentItemParticipant=_deferredDirectCurrentItemParticipant;
 @property(copy, nonatomic) NSString *deferredDirectCurrentItemIdentifier; // @synthesize deferredDirectCurrentItemIdentifier=_deferredDirectCurrentItemIdentifier;
 @property(nonatomic) _Bool shouldRefreshBeforeActive; // @synthesize shouldRefreshBeforeActive=_shouldRefreshBeforeActive;
+@property(nonatomic) _Bool lastKnownAutoPlayAvailable; // @synthesize lastKnownAutoPlayAvailable=_lastKnownAutoPlayAvailable;
+@property(nonatomic) _Bool lastKnownAutoPlayEnabled; // @synthesize lastKnownAutoPlayEnabled=_lastKnownAutoPlayEnabled;
 @property(nonatomic) long long lastKnownExplicitContentState; // @synthesize lastKnownExplicitContentState=_lastKnownExplicitContentState;
 @property(retain, nonatomic) NSMutableSet *knownContainerIDs; // @synthesize knownContainerIDs=_knownContainerIDs;
 @property(retain, nonatomic) NSMutableArray *pendingActions; // @synthesize pendingActions=_pendingActions;
@@ -59,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (id)_playbackItemsRequestForQueue:(id)arg1;
 - (id)_mpcSharedListeningEventForICLiveLinkEvent:(id)arg1;
 - (id)_MPSILItemIdentifierForICSharedListeningItemIdentifier:(id)arg1;
+- (id)_ICSharedListeningForMPSILItemIdentifiers:(id)arg1;
 - (id)_ICSharedListeningForMPSILItemIdentifier:(id)arg1;
 - (void)_handleUpdatedSharedListeningQueue:(id)arg1;
 - (void)_handleDirectCurrentItemChangedToItemIdentifier:(id)arg1 participant:(id)arg2;
@@ -76,10 +81,17 @@ __attribute__((visibility("hidden")))
 - (void)didStartLiveLink:(id)arg1;
 - (void)endSynchronizedPlayback;
 - (void)didJumpToItem:(id)arg1;
-- (void)addPlaybackContext:(id)arg1 afterItem:(id)arg2 actions:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 afterItem:(id)arg3 actions:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)moveItem:(id)arg1 afterItem:(id)arg2;
 - (void)moveItem:(id)arg1 beforeItem:(id)arg2;
+- (void)removeAllItemsAfterItem:(id)arg1;
+- (void)removeItems:(id)arg1;
 - (void)removeItem:(id)arg1;
+- (_Bool)isAutoPlayItem:(id)arg1;
+- (void)setAutoPlayEnabled:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)isAutoPlayAvailable;
+- (_Bool)isAutoPlayEnabled;
+- (_Bool)hasActiveRadioStation;
 - (id)containerInfoForItem:(id)arg1;
 - (_Bool)isValidContainerIdentifier:(id)arg1;
 - (id)_responseQueue;

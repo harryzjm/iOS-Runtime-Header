@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-#import <OfficeImport/NSMutableCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface TSUUUIDSet : NSObject <NSCopying, NSMutableCopying>
+@interface TSUUUIDSet : NSObject
 {
     unsigned int _index;
     struct unordered_set<TSU::UUIDData<TSP::UUIDData>, std::hash<TSUUUID>, std::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::allocator<TSU::UUIDData<TSP::UUIDData>>> _uuidSet;

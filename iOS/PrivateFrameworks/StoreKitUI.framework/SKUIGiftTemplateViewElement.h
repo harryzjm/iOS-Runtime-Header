@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class NSString, SKUIItem;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftTemplateViewElement
+@interface SKUIGiftTemplateViewElement : SKUIViewElement
 {
     long long _giftType;
     NSString *_productBuyParams;

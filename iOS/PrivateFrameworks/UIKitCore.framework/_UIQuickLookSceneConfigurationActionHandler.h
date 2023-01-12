@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneBSActionHandler-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIQuickLookSceneConfigurationActionHandler : NSObject <_UISceneBSActionHandler>
+@interface _UIQuickLookSceneConfigurationActionHandler : NSObject
 {
 }
 

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 - (id)_createPrivacyReportViewControllerWithURL:(id)arg1;
 - (void)performActivityWithTabDocument:(id)arg1;
 - (_Bool)canPerformOnNewTabPage;
+- (long long)actionType;
 - (id)activityType;
 - (id)activityTitle;
 - (id)_systemImageName;

@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface WFGetCurrentWeatherConditionsAction
 {
 }
 
-- (void)runAsynchronouslyWithInput:(id)arg1 location:(id)arg2 locationDisclosureLevel:(unsigned long long)arg3;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
+- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSIconControllerProtocol-Protocol.h>
-
 @class BCSIconRemoteFetch, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSIconController : NSObject <BCSIconControllerProtocol>
+@interface BCSIconController : NSObject
 {
     BCSIconRemoteFetch *_iconRemoteFetch;
 }

@@ -9,7 +9,7 @@
 @class BNBannerSourceListenerPresentableViewControllerView;
 
 @protocol BNBannerSourceListenerPresentableViewControllerViewDelegate <NSObject>
-- (struct UIEdgeInsets)contentInsetsForBannerHostSceneViewControllerView:(BNBannerSourceListenerPresentableViewControllerView *)arg1;
-- (void)bannerHostSceneViewControllerViewDidChangeSize:(BNBannerSourceListenerPresentableViewControllerView *)arg1;
+- (struct UIEdgeInsets)contentInsetsForBannerSourceListenerPresentableViewControllerView:(BNBannerSourceListenerPresentableViewControllerView *)arg1;
+- (void)bannerSourceListenerPresentableViewControllerViewDidChangeSize:(BNBannerSourceListenerPresentableViewControllerView *)arg1;
 @end
 

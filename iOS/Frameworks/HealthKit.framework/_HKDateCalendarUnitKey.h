@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthKit/NSCopying-Protocol.h>
-
 @class NSCalendar, NSDate;
 
 __attribute__((visibility("hidden")))
-@interface _HKDateCalendarUnitKey : NSObject <NSCopying>
+@interface _HKDateCalendarUnitKey : NSObject
 {
     NSDate *_date;
     NSCalendar *_calendar;

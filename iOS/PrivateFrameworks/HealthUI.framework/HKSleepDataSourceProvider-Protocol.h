@@ -7,6 +7,7 @@
 @class HKDisplayType, HKHealthQueryChartCacheDataSource, HKHealthStore;
 
 @protocol HKSleepDataSourceProvider
+- (HKHealthQueryChartCacheDataSource *)makeSleepStagesDataSourceFromHealthStore:(HKHealthStore *)arg1 representativeDisplayType:(HKDisplayType *)arg2;
 - (HKHealthQueryChartCacheDataSource *)makeSleepDataSourceFromHealthStore:(HKHealthStore *)arg1 representativeDisplayType:(HKDisplayType *)arg2;
 @end
 

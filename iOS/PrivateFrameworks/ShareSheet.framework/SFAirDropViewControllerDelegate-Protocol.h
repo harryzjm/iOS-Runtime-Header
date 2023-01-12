@@ -6,12 +6,13 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class SFAirDropViewController, UISUIActivityExtensionItemDataRequest;
+@class NSString, SFAirDropViewController, UISUIActivityExtensionItemDataRequest;
 
 @protocol SFAirDropViewControllerDelegate <NSObject>
 - (void)airDropViewController:(SFAirDropViewController *)arg1 requestSharedItemsWithDataRequest:(UISUIActivityExtensionItemDataRequest *)arg2 completionHandler:(void (^)(UISUIActivityExtensionItemData *))arg3;
 - (void)airDropViewController:(SFAirDropViewController *)arg1 didFinishTransferWithSuccess:(_Bool)arg2;
 - (void)airDropViewControllerDidStartTransfer:(SFAirDropViewController *)arg1;
+- (void)airDropViewServiceWillStartTransfer:(SFAirDropViewController *)arg1 toRecipient:(NSString *)arg2;
 
 @optional
 - (void)airDropViewControllerDidDismiss:(SFAirDropViewController *)arg1;

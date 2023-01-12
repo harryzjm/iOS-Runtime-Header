@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSTCell, TSTPivotTranslator, TSTTableDataStore, TSTTableTileRowInfo;
+@class TSTCell, TSTPivotTranslator, TSTTableDataListCache, TSTTableDataStore, TSTTableTileRowInfo;
 
 @interface TSTPivotStoreIterator
 {
@@ -16,6 +16,8 @@
     TSTCell *_cell;
     TSTTableDataStore *_baseDataStore;
     TSTTableDataStore *_summaryDataStore;
+    TSTTableDataListCache *_baseDataListCache;
+    TSTTableDataListCache *_summaryDataListCache;
     TSTTableTileRowInfo *_baseRow;
     TSTTableTileRowInfo *_summaryRow;
     TSTPivotTranslator *_translator;

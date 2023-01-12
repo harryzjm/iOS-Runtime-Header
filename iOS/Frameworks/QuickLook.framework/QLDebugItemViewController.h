@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <QuickLookUICore/QLItemViewController.h>
+
 @class NSLayoutConstraint, NSMutableDictionary, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface QLDebugItemViewController
+@interface QLDebugItemViewController : QLItemViewController
 {
     _Bool _constraintsSetUp;
     UITextView *_logTextView;

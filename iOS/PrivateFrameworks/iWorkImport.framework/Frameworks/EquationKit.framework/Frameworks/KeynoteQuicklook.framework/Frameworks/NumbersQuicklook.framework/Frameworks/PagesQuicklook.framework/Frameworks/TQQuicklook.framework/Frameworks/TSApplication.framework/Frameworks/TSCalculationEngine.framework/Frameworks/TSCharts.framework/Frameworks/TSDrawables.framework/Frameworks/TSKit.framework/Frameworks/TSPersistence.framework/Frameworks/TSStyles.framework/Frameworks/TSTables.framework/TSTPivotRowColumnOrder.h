@@ -19,7 +19,7 @@
 
 + (void)initialGroupOrderForGroupBy:(id)arg1 baseLevel:(unsigned char)arg2 outAllUids:(void *)arg3 outBaseUids:(void *)arg4 outSummaryUids:(void *)arg5;
 - (void).cxx_destruct;
-@property(readonly, retain) TSTGroupBy *groupBy; // @synthesize groupBy=_groupBy;
+@property(readonly) TSTGroupBy *groupBy; // @synthesize groupBy=_groupBy;
 @property _Bool isColumnOrderTemporary; // @synthesize isColumnOrderTemporary=_isColumnOrderTemporary;
 @property _Bool isRowOrderTemporary; // @synthesize isRowOrderTemporary=_isRowOrderTemporary;
 @property(retain) TSTColumnRowUIDMap *uidMap; // @synthesize uidMap=_uidMap;

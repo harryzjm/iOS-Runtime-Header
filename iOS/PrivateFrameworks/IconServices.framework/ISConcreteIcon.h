@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IconServices/NSSecureCoding-Protocol.h>
+#import "ISIcon.h"
 
 @class ISImageCache, NSUUID;
 
-@interface ISConcreteIcon <NSSecureCoding>
+__attribute__((visibility("hidden")))
+@interface ISConcreteIcon : ISIcon
 {
     NSUUID *_digest;
     ISImageCache *_imageCache;

@@ -6,10 +6,10 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class PLPhotoLibraryBundle;
+@class PLBackgroundJobCriteria, PLPhotoLibraryBundle;
 
 @protocol PLBackgroundJobLibraryCoordinatorDelegate <NSObject>
 - (void)libraryCoordinatorFinishedJobsOnAllSubmittedBundles;
-- (void)libraryCoordinatorFinishedJobsOnSubmittedBundle:(PLPhotoLibraryBundle *)arg1 priority:(long long)arg2;
+- (void)libraryCoordinatorFinishedJobsOnSubmittedBundle:(PLPhotoLibraryBundle *)arg1 withCriteria:(PLBackgroundJobCriteria *)arg2;
 @end
 

@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuickLook/QLPrintingProtocol-Protocol.h>
-#import <QuickLook/UITextViewDelegate-Protocol.h>
+#import <QuickLookUICore/QLItemViewController.h>
 
 @class NSAttributedString, NSLayoutConstraint, NSString, UIPrintPageRenderer, UISimpleTextPrintFormatter, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface QLTextItemViewController <UITextViewDelegate, QLPrintingProtocol>
+@interface QLTextItemViewController : QLItemViewController
 {
     UITextView *_textView;
     NSAttributedString *_content;
@@ -42,6 +41,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)canPinchToDismiss;
 - (_Bool)canSwipeToDismiss;
 - (id)printer;
+- (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)toolbarButtonsForTraitCollection:(id)arg1;
+- (void)previewDidAppear:(_Bool)arg1;
 - (_Bool)_documentAttributesContainTextColors:(id)arg1;
 - (void)_setupTextViewColorsWithDocumentAttributes:(id)arg1;
 - (_Bool)_isContentPotentiallySuspicious:(id)arg1 context:(id)arg2;

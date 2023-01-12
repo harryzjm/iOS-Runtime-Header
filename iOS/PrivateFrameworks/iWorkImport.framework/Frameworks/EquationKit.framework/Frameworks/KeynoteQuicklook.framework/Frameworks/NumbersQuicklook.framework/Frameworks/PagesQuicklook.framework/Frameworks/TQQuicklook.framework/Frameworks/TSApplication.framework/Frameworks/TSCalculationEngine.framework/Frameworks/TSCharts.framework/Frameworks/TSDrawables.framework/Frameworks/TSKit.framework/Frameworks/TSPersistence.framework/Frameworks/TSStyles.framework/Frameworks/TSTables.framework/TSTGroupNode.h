@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <TSPersistence/TSPObject.h>
 
 @class NSMutableDictionary, NSUUID, TSCECellValue, TSCEMutableUIDSet, TSCEUIDSet, TSTGroupBy, TSTGroupNodeFormatManager, TSTGroupValueTuple;
 
-@interface TSTGroupNode : NSObject
+@interface TSTGroupNode : TSPObject
 {
     struct TSKUIDStruct _groupUid;
     TSCECellValue *_groupCellValue;
@@ -24,6 +24,7 @@
     TSTGroupNodeFormatManager *_formatManager;
     struct unordered_map<TSKUIDStruct, TSTGroupNode *, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, TSTGroupNode *>>> _childNodesByRowUid;
     TSCEMutableUIDSet *_disconnectedRowUids;
+    vector_7f5598a1 _aggNodeCoordsToUnpack;
 }
 
 + (id)localizedStringForCellValue:(id)arg1 categoryLevel:(unsigned char)arg2 groupBy:(id)arg3;
@@ -33,7 +34,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) TSTGroupNode *parentNode; // @synthesize parentNode=_parentNode;
 @property(readonly, nonatomic) unsigned char groupLevel; // @synthesize groupLevel=_groupLevel;
-@property(readonly, retain, nonatomic) TSCECellValue *groupCellValue; // @synthesize groupCellValue=_groupCellValue;
+@property(readonly, nonatomic) TSCECellValue *groupCellValue; // @synthesize groupCellValue=_groupCellValue;
 @property(readonly) struct TSKUIDStruct groupUid; // @synthesize groupUid=_groupUid;
 @property(nonatomic) TSTGroupBy *groupBy; // @synthesize groupBy=_groupBy;
 - (TSKUIDStructVectorTemplate_de88e035)nodePath;
@@ -55,6 +56,7 @@
 - (id)groupValueHierarchyForChart:(_Bool)arg1;
 - (id)groupValueCellValueForGroupBySet:(id)arg1 aggIndex:(unsigned short)arg2 appendAggregateName:(_Bool)arg3;
 - (id)groupValueCellValue;
+- (id)rawGroupValueCellValue;
 - (id)canonicalKeyStringAtLevel:(unsigned char)arg1;
 - (id)groupValueAtLevel:(unsigned char)arg1;
 - (void)clearEmptyNodes;
@@ -66,6 +68,7 @@
 - (void)enumerateRowUidsWithBlock:(CDUnknownBlockType)arg1;
 - (struct TSUIndexSet)pivotOnlyRowIndexes;
 - (TSKUIDStructVectorTemplate_de88e035)rowUidsAsVector;
+- (TSKUIDStructVectorTemplate_de88e035)unfilteredRowUidsAsVector;
 - (void)markDependentsAsDirtyWithCalcEngine:(id)arg1;
 - (void)markAsDirtyWithCalcEngine:(id)arg1;
 - (void)rebuildFormulasForAggNode:(id)arg1;
@@ -93,14 +96,21 @@
 @property(readonly, nonatomic) _Bool isErrorNode;
 @property(readonly, nonatomic) _Bool isBlankNode;
 @property(readonly, nonatomic) _Bool isLeaf;
-- (void)encodeToArchive:(void *)arg1 backwardCompat:(_Bool)arg2;
+- (void)encodeToArchive:(void *)arg1 backwardCompatOptions:(unsigned long long)arg2 archiver:(id)arg3;
 - (id)safeChildren;
 - (void)removeChildForKey:(id)arg1;
 - (void)addChild:(id)arg1 withKey:(id)arg2;
 - (void)dealloc;
-- (id)initWithArchive:(const void *)arg1 forGroupBy:(id)arg2 atLevel:(unsigned char)arg3;
-- (id)initWithGroupCellValue:(id)arg1 groupBy:(id)arg2 atLevel:(unsigned char)arg3 groupUid:(struct TSKUIDStruct)arg4 children:(id)arg5;
+- (void)saveToArchiver:(id)arg1;
+- (void)loadFromUnarchiver:(id)arg1;
+- (void)unpackAfterUnarchiveForGroupBy:(id)arg1 atLevel:(unsigned char)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2 forGroupBy:(id)arg3;
+- (id)initWithArchive:(const void *)arg1 forGroupBy:(id)arg2;
+- (id)initAsRootNodeForContext:(id)arg1;
 - (id)initAsRootNodeForGroupBy:(id)arg1;
+- (id)initWithGroupCellValue:(id)arg1 context:(id)arg2 atLevel:(unsigned char)arg3 groupUid:(struct TSKUIDStruct)arg4 children:(id)arg5;
+- (id)initWithGroupCellValue:(id)arg1 groupBy:(id)arg2 atLevel:(unsigned char)arg3 groupUid:(struct TSKUIDStruct)arg4 children:(id)arg5;
+- (void)setupWithGroupCellValue:(id)arg1 groupBy:(id)arg2 atLevel:(unsigned char)arg3 groupUid:(struct TSKUIDStruct)arg4 children:(id)arg5;
 @property(readonly, nonatomic) _Bool hasUnfilteredRows;
 @property(readonly, nonatomic) void *aggNodes;
 @property(readonly, nonatomic) TSTGroupValueTuple *groupValueTuple;

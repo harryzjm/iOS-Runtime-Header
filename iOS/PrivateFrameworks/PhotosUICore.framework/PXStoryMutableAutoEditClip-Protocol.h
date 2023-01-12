@@ -10,12 +10,12 @@
 
 @protocol PXStoryMutableAutoEditClip <PXStoryAutoEditClip>
 @property(copy, nonatomic) NSDictionary *debugInfo;
-@property(nonatomic) CDStruct_3ac0dd7e moduleInfo;
-@property(nonatomic) CDStruct_195f2361 audioInfo;
-@property(nonatomic) CDStruct_618113c1 transitionInfo;
-@property(nonatomic) CDStruct_b8e7e30c motionInfo;
+@property(nonatomic) CDStruct_fa0c26dd moduleInfo;
+@property(nonatomic) CDStruct_2f782ce9 audioInfo;
+@property(nonatomic) CDStruct_4ae65f2e transitionInfo;
+@property(nonatomic) CDStruct_412fc33d motionInfo;
 @property(nonatomic) double durationMultiplier;
-@property(nonatomic) CDStruct_c8943d03 durationInfo;
+@property(nonatomic) CDStruct_d00fdffd durationInfo;
 @property(nonatomic) long long playbackStyle;
 @end
 

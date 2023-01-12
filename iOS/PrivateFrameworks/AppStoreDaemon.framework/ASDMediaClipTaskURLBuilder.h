@@ -18,13 +18,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSNumber *externalVersionID; // @synthesize externalVersionID=_externalVersionID;
-- (id)_queryPromise;
-- (id)_pathPromise;
-- (id)_hostPromise;
-- (id)_devicePlatform;
-- (id)build;
-- (id)initWithBundleID:(id)arg1 bag:(id)arg2;
 
 @end
 

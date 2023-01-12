@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TKClientTokenObject.h"
+
 @class TKSEPKey;
 
 __attribute__((visibility("hidden")))
-@interface TKSEPClientTokenObject
+@interface TKSEPClientTokenObject : TKClientTokenObject
 {
     TKSEPKey *_key;
 }

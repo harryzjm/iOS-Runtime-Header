@@ -9,6 +9,8 @@
 
 @interface CKDModifySubscriptionsOperation
 {
+    _Bool _hasSubscriptionsToSave;
+    _Bool _hasSubscriptionsToDelete;
     CDUnknownBlockType _saveCompletionBlock;
     CDUnknownBlockType _deleteCompletionBlock;
     NSArray *_subscriptionsToSave;

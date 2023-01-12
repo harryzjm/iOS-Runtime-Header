@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSSet.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSSetI
+@interface __NSSetI : NSSet
 {
     unsigned int _used:58;
     unsigned int _szidx:6;
@@ -23,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)getObjects:(id *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)countForObject:(id)arg1;
 - (_Bool)containsObject:(id)arg1;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (double)clumpingInterestingThreshold;
 - (double)clumpingFactor;
 - (id)objectEnumerator;

@@ -6,12 +6,11 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMBLocalZone, HMCameraClipEncryptionManager, HMDCameraClipAddSignificantEventOperation, HMDCameraClipCreateClipOperation, HMDCameraClipCreateClipWithSignificantEventOperation, HMDCameraClipFinalizeClipOperation, HMDCameraClipSegmentMetadata, HMDCameraClipUploadPosterFrameOperation, HMDCameraClipUploadVideoSegmentOperation, HMDCameraRecordingSessionSignificantEvent, NSData, NSDate, NSDictionary, NSUUID;
+@class HMBLocalZone, HMCameraClipEncryptionManager, HMDCameraClipAddSignificantEventOperation, HMDCameraClipCreateClipOperation, HMDCameraClipCreateClipWithSignificantEventOperation, HMDCameraClipFinalizeClipOperation, HMDCameraClipSegmentMetadata, HMDCameraClipUploadVideoSegmentOperation, HMDCameraRecordingSessionSignificantEvent, NSData, NSDate, NSDictionary, NSUUID;
 
 @protocol HMDCameraClipUploaderFactory <NSObject>
 - (HMDCameraClipFinalizeClipOperation *)createFinalizeClipOperationForModelID:(NSUUID *)arg1 localZone:(HMBLocalZone *)arg2;
 - (HMDCameraClipAddSignificantEventOperation *)createAddSignificantEventOperationForClipModelID:(NSUUID *)arg1 localZone:(HMBLocalZone *)arg2 significantEvent:(HMDCameraRecordingSessionSignificantEvent *)arg3 homePresenceByPairingIdentity:(NSDictionary *)arg4;
-- (HMDCameraClipUploadPosterFrameOperation *)createUploadPosterFrameOperationForModelID:(NSUUID *)arg1 localZone:(HMBLocalZone *)arg2 data:(NSData *)arg3 metadata:(HMDCameraClipSegmentMetadata *)arg4 encryptionManager:(HMCameraClipEncryptionManager *)arg5;
 - (HMDCameraClipUploadVideoSegmentOperation *)createUploadVideoSegmentOperationForModelID:(NSUUID *)arg1 localZone:(HMBLocalZone *)arg2 data:(NSData *)arg3 metadata:(HMDCameraClipSegmentMetadata *)arg4 encryptionManager:(HMCameraClipEncryptionManager *)arg5;
 - (HMDCameraClipCreateClipWithSignificantEventOperation *)createCreateClipWithSignificantEventOperationForClipModelID:(NSUUID *)arg1 localZone:(HMBLocalZone *)arg2 significantEvent:(HMDCameraRecordingSessionSignificantEvent *)arg3 homePresenceByPairingIdentity:(NSDictionary *)arg4 targetFragmentDuration:(double)arg5 clipStartDate:(NSDate *)arg6 quality:(long long)arg7 encryptionManager:(HMCameraClipEncryptionManager *)arg8;
 - (HMDCameraClipCreateClipOperation *)createCreateClipOperationForClipModelID:(NSUUID *)arg1 localZone:(HMBLocalZone *)arg2 targetFragmentDuration:(double)arg3 clipStartDate:(NSDate *)arg4 quality:(long long)arg5 encryptionManager:(HMCameraClipEncryptionManager *)arg6;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)reportCorrupt:(id)arg1;
 - (void)fetchMetadataWithResponseQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)initForType:(unsigned long long)arg1 parameters:(id)arg2;
 

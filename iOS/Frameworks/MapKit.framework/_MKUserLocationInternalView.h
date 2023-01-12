@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_MKUserLocationView.h"
+
 @class MKUserLocationView;
 
 __attribute__((visibility("hidden")))
-@interface _MKUserLocationInternalView
+@interface _MKUserLocationInternalView : _MKUserLocationView
 {
     MKUserLocationView *_parentView;
 }

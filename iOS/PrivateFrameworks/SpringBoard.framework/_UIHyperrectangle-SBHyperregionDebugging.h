@@ -6,11 +6,9 @@
 
 #import <UIKit/_UIHyperrectangle.h>
 
-#import <SpringBoard/SBDebuggableUIHyperregion-Protocol.h>
-
 @class NSString;
 
-@interface _UIHyperrectangle (SBHyperregionDebugging) <SBDebuggableUIHyperregion>
+@interface _UIHyperrectangle (SBHyperregionDebugging)
 - (struct CGSize)sb_debugSize;
 - (struct CGRect)sb_debugFrame;
 - (id)sb_debugView;

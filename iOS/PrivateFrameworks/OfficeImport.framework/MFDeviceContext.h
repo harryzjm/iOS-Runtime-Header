@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class MFBrush, MFFont, MFPalette, MFPath, MFPen, MFTransform, NSMutableArray, OITSUColor;
 @protocol MFDeviceDriver;
 
 __attribute__((visibility("hidden")))
-@interface MFDeviceContext : NSObject <NSCopying>
+@interface MFDeviceContext : NSObject
 {
     NSObject<MFDeviceDriver> *m_driver;
     _Bool m_textUpdateCP;

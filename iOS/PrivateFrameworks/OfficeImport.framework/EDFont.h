@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDImmutableObject-Protocol.h>
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDColorReference, EDResources, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDFont : NSObject <NSCopying, EDImmutableObject>
+@interface EDFont : NSObject
 {
     EDResources *mResources;
     NSString *mName;

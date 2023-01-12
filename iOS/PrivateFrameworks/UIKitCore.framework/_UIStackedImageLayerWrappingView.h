@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @protocol CALayerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIStackedImageLayerWrappingView
+@interface _UIStackedImageLayerWrappingView : UIView
 {
     id <CALayerDelegate> _actionDelegate;
 }

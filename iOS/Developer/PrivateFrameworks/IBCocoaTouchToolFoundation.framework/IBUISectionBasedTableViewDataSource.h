@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/UITableViewDataSource-Protocol.h>
-
 @class NSString;
 
-@interface IBUISectionBasedTableViewDataSource : NSObject <UITableViewDataSource>
+@interface IBUISectionBasedTableViewDataSource : NSObject
 {
 }
 

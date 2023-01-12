@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UIInterfaceActionHandlerInvocationDelegate-Protocol.h>
-#import <StoreKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, SKUIReviewInAppRatingHeaderView, SKUIStarRatingControl, UIInterfaceAction, UIStackView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIReviewInAppRatingViewController : UIViewController <UIViewControllerTransitioningDelegate, UIInterfaceActionHandlerInvocationDelegate>
+@interface SKUIReviewInAppRatingViewController : UIViewController
 {
     _Bool _disableSubmit;
     CDUnknownBlockType _completion;

@@ -4,17 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKEditItemViewControllerDelegate-Protocol.h>
-#import <EventKitUI/EKEventDetailAttendeeCellDelegate-Protocol.h>
-
-@class EKEventDetailAttendeesCell, NSArray, NSMutableDictionary, NSString, UITableViewCell;
+@class CalendarModel, EKEventDetailAttendeesCell, NSArray, NSMutableDictionary, NSString, UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeesDetailItem <EKEventDetailAttendeeCellDelegate, EKEditItemViewControllerDelegate>
+@interface EKEventAttendeesDetailItem
 {
     NSMutableDictionary *_attendeesCells;
     UITableViewCell *_titleCell;
     EKEventDetailAttendeesCell *_cell;
+    CalendarModel *_model;
     long long _status;
     NSArray *_attendees;
 }
@@ -32,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfSubitems;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2 forceUpdate:(_Bool)arg3;
 - (void)reset;
+- (id)initWithModel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _TtC20FMPrecisionFindingUI12FMPFRingView : UIView
 {
     MISSING_TYPE *style;

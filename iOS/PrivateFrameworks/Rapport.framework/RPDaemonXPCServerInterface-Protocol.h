@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString, RPIdentity;
+@class NSDictionary, NSString, NSUUID, RPIdentity;
 
 @protocol RPDaemonXPCServerInterface
+- (void)serverSetAutoMappingInternal:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)serverCreateDeviceMappingInternal:(int)arg1 applicationService:(NSString *)arg2 deviceID:(NSString *)arg3 endpointID:(NSUUID *)arg4 completion:(void (^)(NSUUID *, NSError *))arg5;
 - (void)primaryAccountSignedOutWithCompletion:(void (^)(NSError *))arg1;
 - (void)primaryAccountSignedInWithCompletion:(void (^)(NSError *))arg1;
 - (void)getIdentitiesWithFlags:(unsigned int)arg1 completion:(void (^)(NSArray *, NSError *))arg2;

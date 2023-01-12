@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOTerritoryDataRing : PBCodable <NSCopying>
+@interface GEOTerritoryDataRing : PBCodable
 {
     CDStruct_9f2792e4 _points;
 }

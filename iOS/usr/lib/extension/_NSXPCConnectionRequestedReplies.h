@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     struct __CFDictionary *_replyDictionaryTable;
     struct __CFDictionary *_replyTransactionTable;
     struct __CFDictionary *_progressTable;
+    struct os_unfair_lock_s _lock;
     unsigned char _invalid;
-    struct _opaque_pthread_mutex_t _lock;
 }
 
 - (void)dealloc;

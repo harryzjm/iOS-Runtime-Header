@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TKSEPKey.h"
+
 @class NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface TKLocalSEPKey
+@interface TKLocalSEPKey : TKSEPKey
 {
     id _keyHolder;
     id _accessControl;
@@ -15,12 +17,13 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_caller;
 }
 
++ (void)set_testing_callerEntitlements:(id)arg1;
 + (void)setupKeybagForTesting:(_Bool)arg1;
 + (_Bool)hasSEP;
 + (void)setContextErrorHandler:(CDUnknownBlockType)arg1;
 + (void)runsInSystemSession;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSXPCConnection *caller; // @synthesize caller=_caller;
+@property(readonly, nonatomic) NSXPCConnection *caller; // @synthesize caller=_caller;
 - (_Bool)lifetimeControlWithType:(long long)arg1 error:(id *)arg2;
 - (id)attestKey:(id)arg1 nonce:(id)arg2 error:(id *)arg3;
 - (id)recryptData:(id)arg1 attributes:(id)arg2 error:(id *)arg3;
@@ -29,9 +32,9 @@ __attribute__((visibility("hidden")))
 - (id)publicKeyWithError:(id *)arg1;
 - (_Bool)deleteWithError:(id *)arg1;
 - (id)objectID;
-- (id)_initWithKeyType:(id)arg1 keySize:(long long)arg2 accessControl:(struct __SecAccessControl *)arg3 options:(id)arg4 authContext:(id)arg5 error:(id *)arg6;
+- (id)_initWithKeyType:(id)arg1 keySize:(long long)arg2 accessControl:(struct __SecAccessControl *)arg3 options:(id)arg4 authContext:(id)arg5 caller:(id)arg6 error:(id *)arg7;
 - (struct __SecAccessControl *)accessControl;
-- (id)_initWithObjectID:(id)arg1 authContext:(id)arg2 error:(id *)arg3;
+- (id)_initWithObjectID:(id)arg1 authContext:(id)arg2 caller:(id)arg3 error:(id *)arg4;
 - (_Bool)systemKey;
 - (id)keyType;
 - (long long)keySize;

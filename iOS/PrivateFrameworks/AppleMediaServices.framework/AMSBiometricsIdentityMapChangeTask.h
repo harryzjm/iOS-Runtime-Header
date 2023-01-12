@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSTask.h"
+
 @class ACAccount, AMSURLSession, NSURLSessionTask;
 
 __attribute__((visibility("hidden")))
-@interface AMSBiometricsIdentityMapChangeTask
+@interface AMSBiometricsIdentityMapChangeTask : AMSTask
 {
     ACAccount *_account;
     AMSURLSession *_session;

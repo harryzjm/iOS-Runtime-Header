@@ -19,7 +19,8 @@
     MISSING_TYPE *externalUpdateCount;
     MISSING_TYPE *mainMenuItem;
     MISSING_TYPE *environment;
-    MISSING_TYPE *_focusedValues;
+    MISSING_TYPE *focusedValues;
+    MISSING_TYPE *focusStore;
     MISSING_TYPE *delegate;
     MISSING_TYPE *currentAccessibilityFocusStore;
 }

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKit/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKAPSMachServiceConnectionKey : NSObject <NSCopying>
+@interface CKAPSMachServiceConnectionKey : NSObject
 {
     NSString *_environmentName;
     NSString *_namedDelegatePort;

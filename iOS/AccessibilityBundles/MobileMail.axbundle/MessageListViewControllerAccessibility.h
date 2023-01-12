@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)shelfButtonItem;
 - (void)_updateBackButtonImageWithCount:(unsigned long long)arg1;
-- (void)_configureCell:(id)arg1 itemID:(id)arg2;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axSetTriageActionForAnnouncement:(unsigned long long)arg1;

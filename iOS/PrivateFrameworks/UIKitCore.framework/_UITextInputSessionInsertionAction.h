@@ -9,10 +9,17 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _textLength;
     unsigned long long _options;
+    unsigned long long _emojiCount;
+    unsigned long long _punctuationCount;
+    unsigned long long _withAlternativesCount;
 }
 
+@property(nonatomic) unsigned long long withAlternativesCount; // @synthesize withAlternativesCount=_withAlternativesCount;
+@property(nonatomic) unsigned long long punctuationCount; // @synthesize punctuationCount=_punctuationCount;
+@property(nonatomic) unsigned long long emojiCount; // @synthesize emojiCount=_emojiCount;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(nonatomic) unsigned long long textLength; // @synthesize textLength=_textLength;
+- (id)description;
 - (_Bool)changedContent;
 - (long long)mergeActionIfPossible:(id)arg1;
 

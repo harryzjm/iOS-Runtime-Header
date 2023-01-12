@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUICollectionViewCell.h"
+
 @class SKUIEmbeddedMediaView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMediaCollectionViewCell
+@interface SKUIMediaCollectionViewCell : SKUICollectionViewCell
 {
     struct UIEdgeInsets _contentInset;
     SKUIEmbeddedMediaView *_mediaView;

@@ -6,13 +6,11 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <ChatKit/CKNicknameUpdateInterface-Protocol.h>
-
 @class CKAvatarView, CKNicknameUpdate, NSLayoutConstraint, NSString, UIButton, UIImageView, UILabel, UIView;
 @protocol CKNicknameUpdatesCollectionViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKNicknameUpdatesCollectionViewCell : UICollectionViewCell <CKNicknameUpdateInterface>
+@interface CKNicknameUpdatesCollectionViewCell : UICollectionViewCell
 {
     _Bool _needsContextualMenu;
     id <CKNicknameUpdatesCollectionViewCellDelegate> _delegate;
@@ -29,6 +27,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)reuseIdentifier;
++ (void)setRecalculateUsesStackedButtonLayout:(_Bool)arg1;
++ (_Bool)recalculateUsesStackedButtonLayout;
++ (void)setUsesStackedButtonLayout:(_Bool)arg1;
++ (_Bool)usesStackedButtonLayout;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKNicknameUpdate *nicknameUpdate; // @synthesize nicknameUpdate=_nicknameUpdate;
 @property(nonatomic) _Bool needsContextualMenu; // @synthesize needsContextualMenu=_needsContextualMenu;
@@ -41,14 +43,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
-@property(nonatomic) id <CKNicknameUpdatesCollectionViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <CKNicknameUpdatesCollectionViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_ignoreButtonTapped:(id)arg1;
 - (void)_updateButtonTapped:(id)arg1;
 - (void)updateInterfaceSelectedAction:(unsigned long long)arg1;
 - (void)updateSeparatorsForOrder:(unsigned long long)arg1;
 - (void)configureWithNicknameUpdate:(id)arg1 order:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (_Bool)__im_ff_uiConsistencyEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

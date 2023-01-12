@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSCopying-Protocol.h>
-
-@interface TSPAlternateArchiverKey : NSObject <NSCopying>
+@interface TSPAlternateArchiverKey : NSObject
 {
     unsigned long long _version;
     const void *_fieldPath;

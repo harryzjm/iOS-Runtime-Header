@@ -14,6 +14,10 @@ __attribute__((visibility("hidden")))
 + (double)floatForKey:(id)arg1 withDefaultValue:(double)arg2;
 + (_Bool)boolForKey:(id)arg1 withDefaultValue:(_Bool)arg2;
 + (id)defaultsKeyForKey:(id)arg1;
++ (id)addSubjectCropRectToPasteboardSettingsValue;
++ (id)subjectAutomaticAnalysisDelaySettingsValue;
++ (id)subjectDragCancellationDelaySettingsValue;
++ (id)subjectDragLiftDelaySettingsValue;
 + (id)isPerformingAutomatedTestSettingsValue;
 + (id)overrideDeviceAvailabilitySettingsValue;
 + (id)alwaysShowTextSelectionBordersSettingsValue;
@@ -24,6 +28,17 @@ __attribute__((visibility("hidden")))
 + (id)randomDelayStartValueSettingsValue;
 + (id)addRandomArtificalAnalysisDelaySettingsValue;
 + (id)isCGImageForMadEnabledSettingsValue;
++ (id)blurBlurRadiusSettingsValue;
++ (id)blurMaxThicknessSettingsValue;
++ (id)blurMinOpacitySettingsValue;
++ (id)sharpBlurRadiusSettingsValue;
++ (id)sharpMaxThicknessSettingsValue;
++ (id)sharpMinOpacitySettingsValue;
++ (id)scaleMultiplierSettingsValue;
++ (_Bool)addSubjectCropRectToPasteboard;
++ (double)subjectAutomaticAnalysisDelay;
++ (double)subjectDragCancellationDelay;
++ (double)subjectDragLiftDelay;
 + (_Bool)isPerformingAutomatedTest;
 + (_Bool)overrideDeviceAvailability;
 + (_Bool)alwaysShowTextSelectionBorders;
@@ -34,6 +49,13 @@ __attribute__((visibility("hidden")))
 + (double)randomDelayStartValue;
 + (_Bool)addRandomArtificalAnalysisDelay;
 + (_Bool)isCGImageForMadEnabled;
++ (double)blurBlurRadius;
++ (double)blurMaxThickness;
++ (double)blurMinOpacity;
++ (double)sharpBlurRadius;
++ (double)sharpMaxThickness;
++ (double)sharpMinOpacity;
++ (double)scaleMultiplier;
 + (id)settingsValueForKey:(id)arg1;
 + (id)defaults;
 

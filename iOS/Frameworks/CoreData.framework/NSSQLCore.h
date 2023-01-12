@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreData/NSFilePresenter-Protocol.h>
-#import <CoreData/NSSQLModelProvider-Protocol.h>
+#import "NSPersistentStore.h"
 
-@class NSData, NSDictionary, NSGenerationalRowCache, NSMutableDictionary, NSOperationQueue, NSSQLCoreDispatchManager, NSSQLModel, NSSQLiteAdapter, NSSQLiteConnection, NSSet, NSString, NSURL, _NSSQLCoreConnectionObserver, _PFMutex;
+@class NSData, NSDictionary, NSGenerationalRowCache, NSMutableDictionary, NSObject, NSOperationQueue, NSSQLCoreDispatchManager, NSSQLModel, NSSQLiteAdapter, NSSQLiteConnection, NSSet, NSString, NSURL, _NSSQLCoreConnectionObserver, _PFMutex;
+@protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface NSSQLCore <NSFilePresenter, NSSQLModelProvider>
+@interface NSSQLCore : NSPersistentStore
 {
     NSSQLModel *_model;
     NSSQLiteAdapter *_adapter;
@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
     id _usedIndexes;
     _Bool _remoteStoresDidChange;
     int _remoteNotificationToken;
+    NSObject<OS_dispatch_source> *_cache_event_source;
 }
 
 + (_Bool)dropPersistentHistoryforPersistentStoreWithURL:(id)arg1 options:(id)arg2 error:(id *)arg3;
@@ -68,6 +69,8 @@ __attribute__((visibility("hidden")))
 + (Class)migrationManagerClass;
 + (Class)rowCacheClass;
 + (void)initialize;
++ (void)setTrackSQLiteDatabaseStatistics:(_Bool)arg1;
++ (_Bool)trackSQLiteDatabaseStatistics;
 + (long long)bufferedAllocationsOverride;
 + (_Bool)useConcurrentFetching;
 + (_Bool)coloredLoggingDefault;
@@ -124,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)load:(id *)arg1;
 - (id)initWithPersistentStoreCoordinator:(id)arg1 configurationName:(id)arg2 URL:(id)arg3 options:(id)arg4;
 - (_Bool)_isCloudKitOptioned;
+- (id)newObjectIDForEntity:(id)arg1 pk:(long long)arg2;
 - (Class)objectIDFactoryForPersistentHistoryEntity:(id)arg1;
 - (Class)objectIDFactoryForSQLEntity:(id)arg1;
 - (Class)objectIDFactoryForEntity:(id)arg1;

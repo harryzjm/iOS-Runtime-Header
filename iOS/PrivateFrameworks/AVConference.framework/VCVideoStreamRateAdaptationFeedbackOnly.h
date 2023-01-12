@@ -10,8 +10,8 @@
 __attribute__((visibility("hidden")))
 @interface VCVideoStreamRateAdaptationFeedbackOnly
 {
-    AVCStatisticsCollector *_statisticsCollector;
     NSObject<OS_dispatch_source> *_rateControlFeedbackSource;
+    AVCStatisticsCollector *_statisticsCollector;
     _Bool _didReceiveVideo;
     _Bool _useLowPrecisionEchoTimeStamp;
     unsigned int _previousRTPTimestamp;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) _Bool didReceiveVideo; // @synthesize didReceiveVideo=_didReceiveVideo;
 - (double)owrd;
-- (void)updateRateControlInfoWithStatisticsMessage:(CDStruct_c0785916)arg1;
+- (void)updateRateControlInfoWithStatisticsMessage:(CDStruct_7df19fcb)arg1;
 - (void)updateRTPReceiveWithTimestamp:(unsigned int)arg1 sampleRate:(unsigned int)arg2 time:(double)arg3 size:(unsigned int)arg4 endOfFrame:(_Bool)arg5;
 - (void)sendRateControlFeedback;
 - (void)stopFeedbackSource;

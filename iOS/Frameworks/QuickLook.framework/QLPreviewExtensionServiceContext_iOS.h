@@ -6,20 +6,21 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <QuickLook/QLRemotePreviewHost-Protocol.h>
-
-@class NSString;
+@class NSString, QLPreviewProvider;
+@protocol QLPreviewingController;
 
 __attribute__((visibility("hidden")))
-@interface QLPreviewExtensionServiceContext_iOS : NSExtensionContext <QLRemotePreviewHost>
+@interface QLPreviewExtensionServiceContext_iOS : NSExtensionContext
 {
     _Bool _isObservingPreviewController;
     id _contents;
+    QLPreviewProvider<QLPreviewingController> *_previewProvider;
 }
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
+@property(retain, nonatomic) QLPreviewProvider<QLPreviewingController> *previewProvider; // @synthesize previewProvider=_previewProvider;
 - (void)dealloc;
 - (void)invalidateService;
 - (void)_stopObservingPreviewControllerAttributeChanges;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)generatePreviewForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setHostViewControllerProxy:(id)arg1;
+- (void)getARQLInlineProxy3WithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getARQLInlineProxy2WithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getARQLInlineProxyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getPrinterProxyWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -39,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)previewControllerDidUpdatePreferredContentSize:(id)arg1;
 - (void)previewControllerDidUpdateTitle:(id)arg1;
 - (void)previewControllerWantsFullScreen:(_Bool)arg1;
-- (id)previewingController;
 - (id)previewViewController;
 - (id)protocolHost;
 

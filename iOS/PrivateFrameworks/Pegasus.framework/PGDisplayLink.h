@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Pegasus/BSInvalidatable-Protocol.h>
-
 @class CADisplayLink, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PGDisplayLink : NSObject <BSInvalidatable>
+@interface PGDisplayLink : NSObject
 {
     CADisplayLink *_link;
     _Bool _invalidated;

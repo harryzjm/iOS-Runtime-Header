@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUISlideshowViewControllerDataSource-Protocol.h>
-#import <StoreKitUI/SKUISlideshowViewControllerDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, SKUIIPhoneSlideshowViewController, SKUISlideshowViewController, SKUIViewElementLayoutContext;
 @protocol SKUIViewElementSlideshowDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIViewElementSlideshowController : NSObject <SKUISlideshowViewControllerDataSource, SKUISlideshowViewControllerDelegate>
+@interface SKUIViewElementSlideshowController : NSObject
 {
     id <SKUIViewElementSlideshowDelegate> _delegate;
     SKUIViewElementLayoutContext *_layoutContext;

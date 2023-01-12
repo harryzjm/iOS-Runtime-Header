@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <XCTestCore/XCTRunnerIDESessionDelegate-Protocol.h>
+#import <XCTestCore/XCTestDriverUIAutomationDelegate-Protocol.h>
 
-@class NSBundle, NSString, NSURL, NSUUID, XCTFuture, XCTPromise, XCTRunnerIDESession, XCTestConfiguration;
+@class NSBundle, NSString, NSURL, NSUUID, XCTFuture, XCTPromise, XCTReportingSession, XCTRunnerIDESession, XCTestConfiguration;
 
-@interface XCTestDriver : NSObject <XCTRunnerIDESessionDelegate>
+@interface XCTestDriver : NSObject <XCTestDriverUIAutomationDelegate, XCTRunnerIDESessionDelegate>
 {
     XCTRunnerIDESession *_ideSession;
     NSURL *_testBundleURLFromEnvironment;
@@ -20,17 +21,18 @@
     XCTestConfiguration *_testConfiguration;
     NSBundle *_testBundle;
     id _testBundlePrincipalClassInstance;
-    XCTFuture *_testRunSessionFuture;
-    XCTPromise *_testRunSessionPromise;
+    XCTFuture *_executionWorkerFuture;
+    XCTPromise *_executionWorkerPromise;
+    XCTReportingSession *_reportingSession;
 }
 
 + (void)_applyRandomExecutionOrderingSeed:(id)arg1;
 + (_Bool)environmentSpecifiesTestConfiguration;
 + (_Bool)shouldSkipInitialBundleLoadBeforeXCTestMain;
 + (id)testBundleURLFromEnvironment;
++ (id)sharedTestDriver;
++ (void)initializeSharedTestDriverWithRunConfiguration:(id)arg1;
 - (void).cxx_destruct;
-@property(retain) XCTPromise *testRunSessionPromise; // @synthesize testRunSessionPromise=_testRunSessionPromise;
-@property(retain) XCTFuture *testRunSessionFuture; // @synthesize testRunSessionFuture=_testRunSessionFuture;
 @property(retain) id testBundlePrincipalClassInstance; // @synthesize testBundlePrincipalClassInstance=_testBundlePrincipalClassInstance;
 @property(retain) NSBundle *testBundle; // @synthesize testBundle=_testBundle;
 @property(retain) XCTestConfiguration *testConfiguration; // @synthesize testConfiguration=_testConfiguration;
@@ -46,7 +48,11 @@
 - (id)_loadTestBundleFromURL:(id)arg1 error:(id *)arg2;
 - (void)_reportBootstrappingFailure:(id)arg1;
 - (id)_prepareIDESessionWithIdentifier:(id)arg1 exitCode:(int *)arg2;
+- (void)_reportFinishedExecutingTests;
+- (void)flushIDEConnectionAndExitWithCode:(int)arg1;
 - (int)_runTests;
+- (id)suspendAppSleep;
+- (_Bool)_preTestingInitialization;
 - (void)_configureGlobalState;
 - (int)_prepareTestConfigurationAndIDESession;
 - (int)run;

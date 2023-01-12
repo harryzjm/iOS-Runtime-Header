@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)executeFetchRequest:(id)arg1 error:(id *)arg2;
 - (void)fulfillFault:(id)arg1;
 - (void)_populateErrors:(id)arg1 withError:(id)arg2 affectingItem:(id)arg3;
+- (id)_deleteQueryForItemValues:(id)arg1 withItemKind:(id)arg2;
 - (id)_queryForItemValues:(id)arg1 withItemKind:(id)arg2;
 - (void)_populateResult:(id)arg1 forRequest:(id)arg2 fromMatch:(id)arg3;
 - (id)_findOrCreateItemForCommittedValues:(id)arg1 withItemKind:(id)arg2;

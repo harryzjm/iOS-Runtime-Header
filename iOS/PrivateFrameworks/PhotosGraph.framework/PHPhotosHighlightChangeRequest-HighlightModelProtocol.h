@@ -6,24 +6,26 @@
 
 #import <Photos/PHPhotosHighlightChangeRequest.h>
 
-#import <PhotosGraph/PGHighlightModelChangeRequest-Protocol.h>
-
 @class NSString;
 
-@interface PHPhotosHighlightChangeRequest (HighlightModelProtocol) <PGHighlightModelChangeRequest>
+@interface PHPhotosHighlightChangeRequest (HighlightModelProtocol)
 - (void)enumerateMomentChangeRequestsForUUIDs:(id)arg1 inPhotoLibrary:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)clearCurations;
 
 // Remaining properties
-@property(retain, nonatomic) NSString *dateDescription;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) unsigned short enrichmentState;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) unsigned short mixedSharingCompositionKeyAssetRelationship;
 @property(nonatomic) unsigned long long mood;
 @property(nonatomic) double promotionScore;
 @property(retain, nonatomic) NSString *smartDescription;
+@property(retain, nonatomic) NSString *smartDescriptionMixed;
+@property(retain, nonatomic) NSString *smartDescriptionShared;
 @property(readonly) Class superclass;
 @property(retain, nonatomic) NSString *verboseSmartDescription;
+@property(retain, nonatomic) NSString *verboseSmartDescriptionMixed;
+@property(retain, nonatomic) NSString *verboseSmartDescriptionShared;
 @end
 

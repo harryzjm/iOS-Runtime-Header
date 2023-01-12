@@ -6,9 +6,9 @@
 
 #import <CloudDocsDaemon/NSObject-Protocol.h>
 
-@class NSError, NSNumber;
+@class BRFileObjectID, NSError;
 
 @protocol BRCDownloadTracking <NSObject>
-- (void)downloadTrackedForItemWithDocID:(NSNumber *)arg1 didFinishWithError:(NSError *)arg2;
+- (void)downloadTrackedForFileObjectID:(BRFileObjectID *)arg1 didFinishWithError:(NSError *)arg2;
 @end
 

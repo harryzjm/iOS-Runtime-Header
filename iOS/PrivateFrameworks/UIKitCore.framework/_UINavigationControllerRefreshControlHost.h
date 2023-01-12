@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIRefreshControlHosting-Protocol.h>
-
 @class NSArray, NSString, UINavigationController, UIRefreshControl, UIScrollView, UIView;
 @protocol _UINavigationControllerRefreshControlHostDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationControllerRefreshControlHost : NSObject <_UIRefreshControlHosting>
+@interface _UINavigationControllerRefreshControlHost : NSObject
 {
     UIScrollView *_scrollView;
     id <_UINavigationControllerRefreshControlHostDelegate> _delegate;

@@ -12,6 +12,7 @@
 @protocol TSPDataStorage <NSObject>
 @property(readonly, nonatomic) _Bool readOnly;
 @property(readonly, nonatomic) unsigned long long reservedLength;
+@property(readonly, nonatomic) unsigned long long materializedLength;
 @property(readonly, nonatomic) unsigned long long encodedLength;
 @property(readonly, nonatomic) unsigned long long length;
 @property(readonly, nonatomic) _Bool isMissingData;

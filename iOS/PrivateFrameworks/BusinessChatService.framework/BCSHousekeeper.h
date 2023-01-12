@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSHousekeeping-Protocol.h>
-
 @class NSUserDefaults;
 
 __attribute__((visibility("hidden")))
-@interface BCSHousekeeper : NSObject <BCSHousekeeping>
+@interface BCSHousekeeper : NSObject
 {
     long long _currentVersion;
     NSUserDefaults *_userDefaults;

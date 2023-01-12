@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
     double _marginInset;
 }
 
-+ (id)_titleFont;
 + (double)_infoLabelMarginInset;
++ (id)_textColorForLabelType:(unsigned long long)arg1;
 + (id)_fontForLabelType:(unsigned long long)arg1;
 + (id)_infoLabelWithString:(id)arg1 labelType:(unsigned long long)arg2;
 - (void).cxx_destruct;

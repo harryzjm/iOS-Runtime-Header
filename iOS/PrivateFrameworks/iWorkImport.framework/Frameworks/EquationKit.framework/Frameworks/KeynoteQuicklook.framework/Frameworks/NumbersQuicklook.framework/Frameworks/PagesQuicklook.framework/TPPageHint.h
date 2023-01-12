@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSWPOffscreenColumn-Protocol.h>
-
 @class NSArray, NSDictionary, NSSet, NSString, TSUNoCopyDictionary;
 @protocol TSDHint, TSWPTopicNumberHints;
 
-@interface TPPageHint : NSObject <TSWPOffscreenColumn>
+@interface TPPageHint : NSObject
 {
     long long _pageKind;
     unsigned long long _pageRow;

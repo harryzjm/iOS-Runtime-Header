@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI17VUIViewControllerCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI19StackViewController
+@interface _TtC8VideosUI19StackViewController : _$s8VideosUI17VUIViewControllerCN
 {
     MISSING_TYPE *peekingEnabled;
     MISSING_TYPE *collectionImpressioner;
@@ -23,18 +25,22 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *$__lazy_storage_$_supplementaryCells;
     MISSING_TYPE *sectionViewModels;
     MISSING_TYPE *$__lazy_storage_$_hostingCellViewControllers;
+    MISSING_TYPE *cellConfigurator;
+    MISSING_TYPE *cellActionInterceptor;
+    MISSING_TYPE *shouldOverrideScrollToTopBehavior;
+    MISSING_TYPE *sectionMetrics;
     MISSING_TYPE *_showcasePercentage;
     MISSING_TYPE *_showcaseHeight;
     MISSING_TYPE *verticalPaginationMonitor;
-    MISSING_TYPE *verticalPaginationMonitorSubscriber;
-    MISSING_TYPE *paginationCollectionTypes;
     MISSING_TYPE *contextMenuInteractor;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)vui_viewDidLayoutSubviews;
+- (void)vui_viewDidAppear:(_Bool)arg1;
 - (void)vui_viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 

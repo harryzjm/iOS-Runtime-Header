@@ -12,14 +12,14 @@
 __attribute__((visibility("hidden")))
 @interface VKImageCanvas : NSObject
 {
-    struct _retain_ptr<VKCameraController *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+    struct _retain_ptr<VKCameraController *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_vptr$_retain_ptr;
         VKCameraController *_obj;
-        struct _retain_objc _retain;
-        struct _release_objc _release;
+        struct _retain_objc_arc _retain;
+        struct _release_objc_arc _release;
     } _cameraController;
     shared_ptr_e963992e _taskContext;
-    _retain_ptr_c0a21da9 _vkCamera;
+    _retain_ptr_a171892e _vkCamera;
     shared_ptr_46708168 _camera;
     int _mapType;
     id <MDRenderTarget> _displayTarget;
@@ -49,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)didLayout;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 @property(readonly, nonatomic) shared_ptr_e963992e taskContext;
-- (void)dealloc;
 - (id)initWithMapEngine:(void *)arg1;
 
 @end

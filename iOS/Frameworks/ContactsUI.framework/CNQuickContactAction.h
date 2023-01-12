@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNContactActionDelegate-Protocol.h>
+#import "CNQuickAction.h"
 
 @class CNContactAction, NSString;
 @protocol CNQuickContactActionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNQuickContactAction <CNContactActionDelegate>
+@interface CNQuickContactAction : CNQuickAction
 {
     CNContactAction *_contactAction;
     id <CNQuickContactActionDelegate> _delegate;

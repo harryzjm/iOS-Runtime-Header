@@ -6,11 +6,9 @@
 
 #import <UIKit/UIButton.h>
 
-#import <ContactsUI/ABText-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface UIButton (ABUIAdditions) <ABText>
+@interface UIButton (ABUIAdditions)
 @property(copy, nonatomic) NSDictionary *ab_textAttributes;
 @property(copy, nonatomic) NSString *ab_text;
 

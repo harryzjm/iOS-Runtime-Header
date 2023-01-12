@@ -6,12 +6,9 @@
 
 #import <Foundation/NSCoder.h>
 
-#import <RunningBoardServices/RBSXPCDecoding-Protocol.h>
-#import <RunningBoardServices/RBSXPCEncoding-Protocol.h>
-
 @class NSString;
 
-@interface NSCoder (RBSXPCCoderExtras) <RBSXPCEncoding, RBSXPCDecoding>
+@interface NSCoder (RBSXPCCoderExtras)
 - (unsigned long long)decodeUInt64ForKey:(id)arg1;
 - (id)decodeStringForKey:(id)arg1;
 - (id)decodeCollectionOfClass:(Class)arg1 containingClass:(Class)arg2 forKey:(id)arg3;

@@ -7,6 +7,7 @@
 #import <UIKit/UIDevice.h>
 
 @interface UIDevice (MessageUI)
-+ (_Bool)mf_isSmalliPhone;
++ (_Bool)mf_isPad;
++ (_Bool)mf_isSmallPhone;
 @end
 

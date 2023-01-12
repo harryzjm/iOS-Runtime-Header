@@ -6,13 +6,10 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthToolbox/HKSourceListDataSourceObserver-Protocol.h>
-#import <HealthToolbox/HKSwitchTableViewCellDelegate-Protocol.h>
-
 @class HKAuthorizationStore, HKDisplayCategory, HKDisplayType, HKHealthStore, HKProfileStore, HKSourceListDataSource, HKTitledIconHeaderView, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, WDProfile, WDSourceOrderController;
 
 __attribute__((visibility("hidden")))
-@interface WDDisplayTypeDataSourcesTableViewController : HKTableViewController <HKSwitchTableViewCellDelegate, HKSourceListDataSourceObserver>
+@interface WDDisplayTypeDataSourcesTableViewController : HKTableViewController
 {
     _Bool _isLoaded;
     HKDisplayCategory *_displayCategory;
@@ -50,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)switchCellValueChanged:(id)arg1 value:(_Bool)arg2;
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (_Bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
+- (id)_makeDataListViewControllerForSource:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
@@ -84,7 +82,9 @@ __attribute__((visibility("hidden")))
 - (void)_gatherDataFromDataSource:(id)arg1;
 - (long long)sectionForSectionIdentifier:(long long)arg1;
 - (long long)sectionIdentifierForSection:(long long)arg1;
-- (_Bool)showReadOnlyDataSourcesOnly;
+- (_Bool)_isPrimaryProfile;
+- (_Bool)_objectTypeRequiresPerObjectAuthorization;
+- (_Bool)showDataSourcesSectionOnly;
 - (id)createSectionIdentifiers;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

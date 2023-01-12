@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDKeyedObject-Protocol.h>
-
 @class CHDTitle, EDResources, NSArray, NSString, OADGraphicProperties;
 
 __attribute__((visibility("hidden")))
-@interface CHDAxis : NSObject <EDKeyedObject>
+@interface CHDAxis : NSObject
 {
     _Bool mReverseOrder;
     _Bool mReverseOrderOverridden;

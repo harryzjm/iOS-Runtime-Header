@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/CAAnimationDelegate-Protocol.h>
-#import <LinkPresentation/LPComponentMediaPlayable-Protocol.h>
-
-@class LPCaptionBarAccessoryView, LPCaptionBarButtonView, LPCaptionBarPresentationProperties, LPCaptionBarStyle, LPComponentView, LPInlineMediaPlaybackInformation, LPPlayButtonView, LPVerticalTextStackView, NSRegularExpression, NSString;
-@protocol LPTextStyleable;
+@class LPCaptionBarAccessoryView, LPCaptionBarButtonView, LPCaptionBarPresentationProperties, LPCaptionBarStyle, LPCollaborationFooterView, LPComponentView, LPInlineMediaPlaybackInformation, LPPlayButtonView, LPVerticalTextStackView, NSRegularExpression, NSString;
+@protocol LPTextStyleable, LPTextStyleable><LPSubtitleButtonContainer;
 
 __attribute__((visibility("hidden")))
-@interface LPCaptionBarView <CAAnimationDelegate, LPComponentMediaPlayable>
+@interface LPCaptionBarView
 {
     LPCaptionBarStyle *_style;
     LPCaptionBarPresentationProperties *_presentationProperties;
@@ -25,22 +22,25 @@ __attribute__((visibility("hidden")))
     LPComponentView *_rightIconBadgeView;
     LPComponentView<LPTextStyleable> *_aboveTopCaptionView;
     LPComponentView<LPTextStyleable> *_topCaptionView;
-    LPComponentView<LPTextStyleable> *_bottomCaptionView;
+    LPComponentView<LPTextStyleable><LPSubtitleButtonContainer> *_bottomCaptionView;
     LPComponentView<LPTextStyleable> *_belowBottomCaptionView;
     LPVerticalTextStackView *_textStackView;
     LPInlineMediaPlaybackInformation *_inlinePlaybackInformation;
     _Bool _hasEverBuilt;
     _Bool _useProgressSpinner;
+    LPCollaborationFooterView *_collaborationFooterView;
     NSRegularExpression *_emphasizedTextExpression;
     struct UIEdgeInsets _textSafeAreaInset;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSRegularExpression *emphasizedTextExpression; // @synthesize emphasizedTextExpression=_emphasizedTextExpression;
+@property(retain, nonatomic) LPCollaborationFooterView *collaborationFooterView; // @synthesize collaborationFooterView=_collaborationFooterView;
 @property(nonatomic) struct UIEdgeInsets textSafeAreaInset; // @synthesize textSafeAreaInset=_textSafeAreaInset;
 @property(nonatomic) _Bool useProgressSpinner; // @synthesize useProgressSpinner=_useProgressSpinner;
 - (id)primaryIconView;
 - (id)playable;
+- (id)subtitleButton;
 - (id)button;
 - (void)_buildViewsForCaptionBarIfNeeded;
 - (struct CGSize)_layoutCaptionBarForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;

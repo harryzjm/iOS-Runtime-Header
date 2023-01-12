@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSCodePayload-Protocol.h>
-
 @class CIBarcodeDescriptor, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSQRCodePayload : NSObject <BCSCodePayload>
+@interface BCSQRCodePayload : NSObject
 {
     CIBarcodeDescriptor *_barcodeDescriptor;
 }

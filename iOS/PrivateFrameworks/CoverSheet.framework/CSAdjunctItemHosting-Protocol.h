@@ -15,6 +15,7 @@
 
 @optional
 @property(nonatomic) double containerCornerRadius;
+- (_Bool)insetsMargins;
 - (_Bool)usesBackgroundView;
 - (PLPlatterView *)platterView;
 - (void)setContainerSize:(struct CGSize)arg1;

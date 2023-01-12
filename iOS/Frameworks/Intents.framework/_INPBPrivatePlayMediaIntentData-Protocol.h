@@ -40,6 +40,8 @@
 @property(nonatomic) _Bool appSelectionEnabled;
 @property(nonatomic) _Bool hasAppInferred;
 @property(nonatomic) _Bool appInferred;
+@property(readonly, nonatomic) _Bool hasAmpPAFDataSetID;
+@property(retain, nonatomic) _INPBString *ampPAFDataSetID;
 @property(readonly, nonatomic) _Bool hasAlternativeProviderBundleIdentifier;
 @property(retain, nonatomic) _INPBString *alternativeProviderBundleIdentifier;
 - (NSString *)internalSignalAtIndex:(unsigned long long)arg1;

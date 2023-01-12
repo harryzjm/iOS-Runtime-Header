@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NRDevicePropertyObserver-Protocol.h>
-
 @class NRDevice, NSConditionLock, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface GEONanoInfo : NSObject <NRDevicePropertyObserver>
+@interface GEONanoInfo : NSObject
 {
+    _Bool _nanoRegEntitled;
     NSConditionLock *_pairedDeviceLock;
     NSObject<OS_dispatch_queue> *_nanoregQueue;
     NSNumber *_hasPairedDevice;

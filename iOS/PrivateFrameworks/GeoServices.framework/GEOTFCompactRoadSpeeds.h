@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSData, NSMutableArray, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOTFCompactRoadSpeeds : PBCodable <NSCopying>
+@interface GEOTFCompactRoadSpeeds : PBCodable
 {
     PBDataReader *_reader;
     CDStruct_5df41632 _geoIds;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UITextLoupeResponderProxyDelegate-Protocol.h>
+#import "UITextInteraction.h"
 
 @class UIDelayedAction, UIResponder, UITextGestureTuning, _UITextLoupeResponderProxy;
 @protocol UITextLoupeInteractionBehaviorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UITextLoupeInteraction <_UITextLoupeResponderProxyDelegate>
+@interface UITextLoupeInteraction : UITextInteraction
 {
     UIDelayedAction *_delayedLoupeAction;
     UIDelayedAction *_delayedSelectionAction;

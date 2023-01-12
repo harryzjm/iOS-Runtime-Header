@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSCountedSet, NSMapTable, NSTimer;
+@class NSMapTable, NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusTreeLock : NSObject
 {
-    NSCountedSet *_lockedEnvironments;
-    NSMapTable *_lockedEnvironmentHistogram;
+    NSMapTable *_lockedEnvironments;
     NSTimer *_validationTimer;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSTimer *validationTimer; // @synthesize validationTimer=_validationTimer;
-@property(readonly, nonatomic) NSMapTable *lockedEnvironmentHistogram; // @synthesize lockedEnvironmentHistogram=_lockedEnvironmentHistogram;
-@property(readonly, nonatomic) NSCountedSet *lockedEnvironments; // @synthesize lockedEnvironments=_lockedEnvironments;
+@property(readonly, nonatomic) NSMapTable *lockedEnvironments; // @synthesize lockedEnvironments=_lockedEnvironments;
 - (id)description;
 - (void)_validateLockedEnvironments;
 - (_Bool)isEnvironmentLocked:(id)arg1;

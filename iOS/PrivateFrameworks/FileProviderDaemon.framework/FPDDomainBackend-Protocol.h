@@ -13,20 +13,22 @@
 @property(readonly, nonatomic) NSData *backingStoreIdentity;
 @property(readonly, nonatomic) NSFileProviderDomainVersion *domainVersion;
 @property(readonly, copy) NSArray *rootURLs;
+- (void)resolveConflictAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)wakeForPushWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)stateWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
 - (void)workingSetDidChangeWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)movingItemAtURL:(NSURL *)arg1 requiresProvidingWithDestinationURL:(NSURL *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)trashItemAtURL:(NSURL *)arg1 request:(FPDRequest *)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
 - (void)bulkItemChanges:(NSArray *)arg1 changedFields:(unsigned long long)arg2 request:(FPDRequest *)arg3 completionHandler:(void (^)(NSDictionary *, NSDictionary *))arg4;
 - (void)fetchVendorEndpointWithRequest:(FPDRequest *)arg1 completionHandler:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
-- (void)fetchServicesForItemID:(FPItemID *)arg1 request:(FPDRequest *)arg2 completionHandler:(void (^)(NSXPCListenerEndpoint *, NSArray *, NSError *))arg3;
+- (void)fetchServicesForItemID:(FPItemID *)arg1 allowRestrictedSources:(_Bool)arg2 request:(FPDRequest *)arg3 completionHandler:(void (^)(NSXPCListenerEndpoint *, NSArray *, NSError *))arg4;
 - (void)fetchOperationServiceOrEndpointWithRequest:(FPDRequest *)arg1 completionHandler:(void (^)(id <FPXOperationService>, NSXPCListenerEndpoint *, NSError *))arg2;
 - (FPDDomainIndexer *)createIndexerWithExtension:(FPDExtension *)arg1 enabled:(_Bool)arg2 error:(id *)arg3;
 - (void)reimportItemsBelowItemWithID:(FPItemID *)arg1 removeCachedItems:(_Bool)arg2 markItemDataless:(_Bool)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)valuesForAttributes:(NSArray *)arg1 forURL:(NSURL *)arg2 request:(FPDRequest *)arg3 completionHandler:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)enumerateWithSettings:(FPExtensionEnumerationSettings *)arg1 lifetimeExtender:(id <FPDLifetimeExtender>)arg2 observer:(id <FPXEnumeratorObserver>)arg3 completionHandler:(void (^)(id <FPXEnumerator>, NSError *))arg4;
-- (void)checkForPendingSetChanges;
-- (void)currentPendingSetSyncAnchorWithCompletionHandler:(void (^)(NSData *))arg1;
-- (void)enumeratePendingSetFromSyncAnchor:(NSData *)arg1 suggestedBatchSize:(long long)arg2 completionHandler:(void (^)(NSArray *, NSArray *, _Bool, NSData *, FPExtensionResponse *, NSError *))arg3;
+- (void)currentPendingSetSyncAnchorWithCompletionHandler:(void (^)(_Bool, double, NSData *))arg1;
+- (void)enumeratePendingSetFromSyncAnchor:(NSData *)arg1 suggestedBatchSize:(long long)arg2 completionHandler:(void (^)(NSArray *, NSArray *, _Bool, _Bool, double, NSData *, FPExtensionResponse *, NSError *))arg3;
 - (void)currentMaterializedSetSyncAnchorWithCompletionHandler:(void (^)(NSData *))arg1;
 - (void)enumerateMaterializedSetFromSyncAnchor:(NSData *)arg1 suggestedBatchSize:(long long)arg2 completionHandler:(void (^)(NSArray *, NSArray *, _Bool, NSData *, FPExtensionResponse *, NSError *))arg3;
 - (void)waitForStabilizationForRequest:(FPDRequest *)arg1 completionHandler:(void (^)(NSError *))arg2;
@@ -36,6 +38,7 @@
 - (_Bool)updateRootAfterDomainChangeWithError:(id *)arg1;
 - (void)itemChangedAtURL:(NSURL *)arg1 request:(FPDRequest *)arg2;
 - (void)createItemBasedOnTemplate:(FPItem *)arg1 fields:(unsigned long long)arg2 urlWrapper:(FPSandboxingURLWrapper *)arg3 options:(unsigned long long)arg4 bounceOnCollision:(_Bool)arg5 request:(FPDRequest *)arg6 completionHandler:(void (^)(FPItem *, NSError *))arg7;
+- (void)materializeItemWithID:(FPItemID *)arg1 requestedRange:(struct _NSRange)arg2 request:(FPDRequest *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)evictItemWithID:(FPItemID *)arg1 request:(FPDRequest *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (NSProgress *)evictItemAtURL:(NSURL *)arg1 request:(FPDRequest *)arg2 completionHandler:(void (^)(FPItemID *, NSError *))arg3;
 - (NSProgress *)startProvidingItemAtURL:(NSURL *)arg1 readerID:(id)arg2 readingOptions:(unsigned long long)arg3 request:(FPDRequest *)arg4 completionHandler:(void (^)(NSError *))arg5;
@@ -52,7 +55,11 @@
 
 @optional
 + (void)registerXPCActivities;
-@property(readonly, copy) NSURL *temporaryDirectoryURL;
+@property(readonly, nonatomic) long long errorGenerationCount;
+@property(readonly, nonatomic) _Bool backgroundActivityIsPaused;
+- (void)hasNonUploadedFilesWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
+- (void)resetCountersWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)getCountersArrayWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)subscribeToDownloadProgressUpdates:(id <FPProgressProtocol>)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)subscribeToUploadProgressUpdates:(id <FPProgressProtocol>)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)runTestingOperations:(NSArray *)arg1 request:(FPDRequest *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
@@ -67,16 +74,17 @@
 - (void)didChangeItemID:(FPItemID *)arg1;
 - (void)unpinItemWithID:(FPItemID *)arg1 request:(FPDRequest *)arg2 completionHandler:(void (^)(FPItem *, NSError *))arg3;
 - (void)pinItemWithID:(FPItemID *)arg1 request:(FPDRequest *)arg2 completionHandler:(void (^)(FPItem *, NSError *))arg3;
-- (void)setDownloadPolicy:(unsigned long long)arg1 forItemWithID:(FPItemID *)arg2 request:(FPDRequest *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)downloadItemWithItemID:(FPItemID *)arg1 request:(FPDRequest *)arg2 progress:(NSProgress *)arg3 completionHandler:(void (^)(NSURL *, NSError *))arg4;
+- (NSString *)providerVersion;
 - (NSDictionary *)telemetryReport;
 - (long long)nonEvictableSpace;
 - (void)forceIngestionForItemID:(FPItemID *)arg1 completionHandler:(void (^)(FPItem *, NSError *))arg2;
 - (void)forceFSIngestionForItemID:(FPItemID *)arg1 completionHandler:(void (^)(FPItem *, NSError *))arg2;
-- (void)forceIngestionAtURL:(NSURL *)arg1 completionHandler:(void (^)(FPItem *, NSError *))arg2;
+- (void)forceIngestionAtURL:(NSURL *)arg1;
 - (NSURL *)materializedURLForItemID:(FPItemID *)arg1;
 - (void)decorateItems:(NSArray *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (void)fakeFSEventAtURL:(NSURL *)arg1;
 - (FPDDomainCleanupResult *)cleanupDomainWithMode:(unsigned long long)arg1 error:(id *)arg2;
+- (void)temporaryDirectoryURLWithCompletionHandler:(void (^)(NSURL *, NSError *))arg1;
 @end
 

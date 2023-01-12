@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewLayoutAttributes.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class IKColor;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGridViewGradientLayoutAttributes : UICollectionViewLayoutAttributes <NSCopying>
+@interface SKUIGridViewGradientLayoutAttributes : UICollectionViewLayoutAttributes
 {
     IKColor *_gradientColor;
 }

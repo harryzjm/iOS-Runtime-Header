@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *viewListID;
     MISSING_TYPE *configuration;
     MISSING_TYPE *host;
+    MISSING_TYPE *isDisplaying;
     MISSING_TYPE *outlineRootSeed;
 }
 
@@ -21,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 @property(nonatomic) _Bool isAccessibilityElement;
-- (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
+- (void)_bridgedUpdateConfigurationUsingState:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)prepareForReuse;
 

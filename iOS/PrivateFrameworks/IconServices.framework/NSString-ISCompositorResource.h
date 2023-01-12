@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <IconServices/ISCompositorResource-Protocol.h>
-
-@interface NSString (ISCompositorResource) <ISCompositorResource>
+@interface NSString (ISCompositorResource)
 - (id)_IS_scaleableResourceMetadataFromFileName;
 - (id)_IS_imageMetadataFromFileName;
 - (id)scaleableResourceMetadataFromFileName;

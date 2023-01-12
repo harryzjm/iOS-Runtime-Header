@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Email/EFCancelable-Protocol.h>
-#import <Email/EMActivityObserver_xpc-Protocol.h>
-
 @class EMActivityRegistry, EMRemoteConnection, NSArray, NSMutableDictionary, NSString;
 @protocol EFCancelable, EMActivityObserver;
 
 __attribute__((visibility("hidden")))
-@interface _EMActivityRegistryObserverWrapper : NSObject <EFCancelable, EMActivityObserver_xpc>
+@interface _EMActivityRegistryObserverWrapper : NSObject
 {
     id <EFCancelable> _observerCancelable;
     NSMutableDictionary *_trackedActivities;

@@ -23,6 +23,8 @@
     MISSING_TYPE *_tableHeaderItem;
     MISSING_TYPE *_tableRowItem;
     MISSING_TYPE *_comparisonItem;
+    MISSING_TYPE *_attributionItem;
+    MISSING_TYPE *_specificAnswerItem;
 }
 
 @end

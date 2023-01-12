@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *date;
     MISSING_TYPE *viewHeights;
+    MISSING_TYPE *eventsExistBeforeFirst;
     MISSING_TYPE *id;
     MISSING_TYPE *viewModels;
 }

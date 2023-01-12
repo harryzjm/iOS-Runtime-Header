@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardKeySwipeTransition <CAAnimationDelegate>
+@interface UIKeyboardKeySwipeTransition
 {
     _Bool _disableMeshOptimization;
     NSArray *_startKeysOrdered;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
     double _previousProgress;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double previousProgress; // @synthesize previousProgress=_previousProgress;
 @property(retain, nonatomic) NSArray *keyInfos; // @synthesize keyInfos=_keyInfos;
 @property(retain, nonatomic) NSArray *transitionKeys; // @synthesize transitionKeys=_transitionKeys;
@@ -39,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)commitTransitionRebuild;
 - (void)rebuildWithStartKeyplane:(id)arg1 startView:(id)arg2 endKeyplane:(id)arg3 endView:(id)arg4;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudDocsDaemon/PQLValuable-Protocol.h>
+#import "BRCVersion.h"
 
 @class NSError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BRCDesiredVersion <PQLValuable>
+@interface BRCDesiredVersion : BRCVersion
 {
     union {
         unsigned int value;

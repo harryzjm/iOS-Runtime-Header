@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <AutomationMode/XAMAuthorizationProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface XAMLocalAuthenticationProvider : NSObject <XAMAuthorizationProvider>
+@interface XAMLocalAuthenticationProvider : NSObject
 {
 }
 
 - (id)authorizationWithError:(id *)arg1;
 - (void)requestAuthorizationWithReply:(CDUnknownBlockType)arg1;
+- (id)_makeAuthorizationContext;
 - (id)localizedAuthorizationReason;
 
 // Remaining properties

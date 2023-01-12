@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, _LSLazyPropertyList;
+#import "_LSLazyPropertyList.h"
+
+@class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _LSPlugInPropertyList
+@interface _LSPlugInPropertyList : _LSLazyPropertyList
 {
     _LSLazyPropertyList *_infoPlist;
     _LSLazyPropertyList *_sdkPlist;

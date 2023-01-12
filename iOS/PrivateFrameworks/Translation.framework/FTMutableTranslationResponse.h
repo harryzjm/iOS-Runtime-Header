@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property(nonatomic) _Bool final_message;
 @property(copy, nonatomic) NSString *sequence_id;
 @property(copy, nonatomic) NSArray *engine_output;
 @property(copy, nonatomic) NSString *engine_input;

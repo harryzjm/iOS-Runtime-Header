@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBKeyView.h"
+
 @class TUISystemInputAssistantView, UIKBHandwritingCandidateView, UIKeyboardCandidatePocketShadow;
 
 __attribute__((visibility("hidden")))
-@interface UIHandwritingAssistantView
+@interface UIHandwritingAssistantView : UIKBKeyView
 {
     TUISystemInputAssistantView *_systemInputAssistantView;
     UIKBHandwritingCandidateView *_candidateView;

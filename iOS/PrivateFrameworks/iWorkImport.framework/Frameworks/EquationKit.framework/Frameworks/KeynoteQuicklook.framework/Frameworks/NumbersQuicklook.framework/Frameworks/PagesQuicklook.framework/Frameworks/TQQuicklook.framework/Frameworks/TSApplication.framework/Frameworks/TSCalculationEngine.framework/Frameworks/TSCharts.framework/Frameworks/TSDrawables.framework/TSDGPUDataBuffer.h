@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/TSDGLDataBuffer-Protocol.h>
-#import <TSDrawables/TSDMTLDataBuffer-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString, TSDGLShader;
 @protocol MTLBuffer, MTLDevice;
 
-@interface TSDGPUDataBuffer : NSObject <TSDGLDataBuffer, TSDMTLDataBuffer>
+@interface TSDGPUDataBuffer : NSObject
 {
     unsigned long long _currentBufferIndex;
     NSMutableArray *_arrayBuffers;
@@ -68,7 +65,7 @@
 @property(nonatomic) unsigned int drawMode; // @synthesize drawMode=_drawMode;
 @property(readonly) NSArray *vertexAttributes; // @synthesize vertexAttributes=_vertexAttributes;
 @property(readonly) unsigned long long vertexCount; // @synthesize vertexCount=_vertexCount;
-- (_Bool)p_setAttributeUpdateData:(CDStruct_64113493 *)arg1 fromAttribute:(id)arg2;
+- (_Bool)p_setAttributeUpdateData:(CDStruct_c8fb1f71 *)arg1 fromAttribute:(id)arg2;
 - (void)updateDataBufferAttributes:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)updateMetalDataBufferAttributes:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)updateDataBufferAttributesWithBlock:(CDUnknownBlockType)arg1;
@@ -83,8 +80,10 @@
 - (void)setCGFloat:(double)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setGLfloat:(float)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
 - (float)GLfloatForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)drawWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2 advanceDynamicBuffer:(_Bool)arg3 instanceCount:(unsigned long long)arg4;
 - (void)drawWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2 advanceDynamicBuffer:(_Bool)arg3;
 - (void)drawWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)drawWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2 range:(struct _NSRange)arg3 advanceDynamicBuffer:(_Bool)arg4 instanceCount:(unsigned long long)arg5;
 - (void)drawWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2 range:(struct _NSRange)arg3 advanceDynamicBuffer:(_Bool)arg4;
 - (void)drawWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2 range:(struct _NSRange)arg3;
 - (void)encodeWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2;

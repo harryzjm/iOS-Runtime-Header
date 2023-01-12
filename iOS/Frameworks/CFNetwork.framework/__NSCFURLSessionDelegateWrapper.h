@@ -16,8 +16,7 @@
     unsigned int checked_sessionDidFinishEventsForBackgroundURLSession:1;
     unsigned int checked__getAuthHeadersForResponse:1;
     unsigned int checked__sessionOpenFileAtPath:1;
-    unsigned int checked__sessionCompanionAvailabilityChanged:1;
-    unsigned int checked__sessionNeedConnectedSocketToHost:1;
+    unsigned int checked_didCreateTask:1;
     unsigned int checked_willBeginDelayedRequest:1;
     unsigned int checked_isWaitingForConnectivity:1;
     unsigned int checked_willPerformHTTPRedirection:1;
@@ -33,6 +32,7 @@
     unsigned int checked__willUseEffectiveConfiguration:1;
     unsigned int checked__isWaitingForConnection_withoutError:1;
     unsigned int checked__isWaitingForConnection_withError:1;
+    unsigned int checked__alternatePathAvailable:1;
     unsigned int checked_didReceiveResponse:1;
     unsigned int checked_didBecomeDownloadTask:1;
     unsigned int checked_didBecomeStreamTask:1;
@@ -58,8 +58,7 @@
     unsigned int accept_sessionDidFinishEventsForBackgroundURLSession:1;
     unsigned int accept__getAuthHeadersForResponse:1;
     unsigned int accept__sessionOpenFileAtPath:1;
-    unsigned int accept__sessionCompanionAvailabilityChanged:1;
-    unsigned int accept__sessionNeedConnectedSocketToHost:1;
+    unsigned int accept_didCreateTask:1;
     unsigned int accept_willBeginDelayedRequest:1;
     unsigned int accept_isWaitingForConnectivity:1;
     unsigned int accept_willPerformHTTPRedirection:1;
@@ -75,6 +74,7 @@
     unsigned int accept__willUseEffectiveConfiguration:1;
     unsigned int accept__isWaitingForConnection_withoutError:1;
     unsigned int accept__isWaitingForConnection_withError:1;
+    unsigned int accept__alternatePathAvailable:1;
     unsigned int accept_didReceiveResponse:1;
     unsigned int accept_didBecomeDownloadTask:1;
     unsigned int accept_didBecomeStreamTask:1;

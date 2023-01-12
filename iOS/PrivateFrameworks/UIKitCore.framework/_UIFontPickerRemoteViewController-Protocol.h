@@ -13,6 +13,7 @@
 - (void)_prepareForDisplayWithCompletion:(void (^)(void))arg1;
 - (void)_setHideNavigationBar:(_Bool)arg1;
 - (void)_setConfiguration:(UIFontPickerViewControllerConfiguration *)arg1;
+- (void)_moveSelectedFontIntoRecents;
 - (void)_setSelectedFont:(UIFontDescriptor *)arg1 scrollToVisible:(_Bool)arg2;
 @end
 

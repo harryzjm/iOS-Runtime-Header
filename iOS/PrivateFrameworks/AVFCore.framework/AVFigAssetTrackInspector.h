@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)_invokeCompletionHandlerForLoadingBatches:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (_Bool)hasSeamSamples;
 - (_Bool)isAudibleBooksContentAuthorized;
 - (_Bool)hasAudibleBooksContent;
 - (_Bool)hasProtectedContent;

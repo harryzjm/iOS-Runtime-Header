@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSNotification.h"
+
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSConcreteNotification
+@interface NSConcreteNotification : NSNotification
 {
     NSString *name;
     id object;

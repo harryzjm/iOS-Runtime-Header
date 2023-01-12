@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)focusGroupIdentifierForItem:(id)arg1;
 - (id)initWithBackingFocusGroupMap:(id)arg1;
+- (id)initWithCoordinateSpace:(id)arg1;
 - (id)init;
 
 @end

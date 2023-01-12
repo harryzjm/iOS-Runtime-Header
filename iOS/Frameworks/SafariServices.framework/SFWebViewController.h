@@ -6,21 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SafariServices/SFFormAutoFillControllerDelegate-Protocol.h>
-#import <SafariServices/WKNavigationDelegatePrivate-Protocol.h>
-#import <SafariServices/WKUIDelegatePrivate-Protocol.h>
-#import <SafariServices/_SFDialogControllerDelegate-Protocol.h>
-#import <SafariServices/_SFDialogPresenting-Protocol.h>
-#import <SafariServices/_SFDialogViewControllerPresenting-Protocol.h>
-#import <SafariServices/_SFWebViewDelegate-Protocol.h>
-#import <SafariServices/_WKInputDelegate-Protocol.h>
-#import <SafariServices/_WKWebAuthenticationPanelDelegate-Protocol.h>
-
-@class NSString, NSUUID, WBSPermissionDialogThrottler, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialogController, _SFFormAutoFillController;
+@class NSString, NSUUID, SFDialogController, WBSPermissionDialogThrottler, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFFormAutoFillController;
 @protocol SFWebViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFWebViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFWebViewDelegate, _WKInputDelegate, _WKWebAuthenticationPanelDelegate, _SFDialogPresenting>
+@interface SFWebViewController : UIViewController
 {
     _SFFormAutoFillController *_autoFillController;
     _Bool _didFirstLayout;
@@ -35,7 +25,7 @@ __attribute__((visibility("hidden")))
     _Bool _hasFormControlInteraction;
     id <SFWebViewControllerDelegate> _delegate;
     WKWebViewConfiguration *_webViewConfiguration;
-    _SFDialogController *_dialogController;
+    SFDialogController *_dialogController;
     NSUUID *_UUID;
 }
 
@@ -44,11 +34,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasFormControlInteraction; // @synthesize hasFormControlInteraction=_hasFormControlInteraction;
 @property(readonly, nonatomic) _Bool hasFocusedInputFieldOnCurrentPage; // @synthesize hasFocusedInputFieldOnCurrentPage=_hasFocusedInputFieldOnCurrentPage;
 @property(readonly, nonatomic) _Bool didFirstPaint; // @synthesize didFirstPaint=_didFirstPaint;
-@property(readonly, nonatomic) _SFDialogController *dialogController; // @synthesize dialogController=_dialogController;
+@property(readonly, nonatomic) SFDialogController *dialogController; // @synthesize dialogController=_dialogController;
 @property(readonly, nonatomic) WKWebViewConfiguration *webViewConfiguration; // @synthesize webViewConfiguration=_webViewConfiguration;
 @property(readonly, nonatomic) _Bool didFirstVisuallyNonEmptyLayout; // @synthesize didFirstVisuallyNonEmptyLayout=_didFirstVisuallyNonEmptyLayout;
 @property(nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
 @property(nonatomic) __weak id <SFWebViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)sfWebViewCanFindNextOrPrevious:(id)arg1;
+- (_Bool)sfWebViewShouldFillStringForFind:(id)arg1;
 - (_Bool)sfWebViewCanPromptForAccountSecurityRecommendation;
 - (id)sfWebView:(id)arg1 didStartDownload:(id)arg2;
 - (void)sfWebViewDidEndFormControlInteraction:(id)arg1;
@@ -68,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)panel:(id)arg1 dismissWebAuthenticationPanelWithResult:(long long)arg2;
 - (void)panel:(id)arg1 updateWebAuthenticationPanel:(long long)arg2;
 - (void)_webView:(id)arg1 runWebAuthenticationPanel:(id)arg2 initiatedByFrame:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_webView:(id)arg1 queryPermission:(id)arg2 forOrigin:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_webView:(id)arg1 mediaCaptureStateDidChange:(unsigned long long)arg2;
 - (void)_webView:(id)arg1 checkUserMediaPermissionForURL:(id)arg2 mainFrameURL:(id)arg3 frameIdentifier:(unsigned long long)arg4 decisionHandler:(CDUnknownBlockType)arg5;
 - (void)_webView:(id)arg1 requestUserMediaAuthorizationForDevices:(unsigned long long)arg2 url:(id)arg3 mainFrameURL:(id)arg4 decisionHandler:(CDUnknownBlockType)arg5;
@@ -93,14 +86,21 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 insertTextSuggestion:(id)arg2 inInputSession:(id)arg3;
 - (void)_webView:(id)arg1 accessoryViewCustomButtonTappedInFormInputSession:(id)arg2;
 - (void)_webView:(id)arg1 willSubmitFormValues:(id)arg2 userObject:(id)arg3 submissionHandler:(CDUnknownBlockType)arg4;
+- (void)makeStrongPasswordFieldViewableAndEditable:(_Bool)arg1;
+- (void)replaceCurrentPasswordWithPassword:(id)arg1;
+@property(readonly, nonatomic) NSString *alphanumericStrongPassword;
+@property(readonly, nonatomic) NSString *defaultStrongPassword;
+@property(readonly, nonatomic) NSString *currentStrongPassword;
 - (id)_webViewAdditionalContextForStrongPasswordAssistance:(id)arg1;
 - (void)_webView:(id)arg1 didResignInputElementStrongPasswordAppearanceWithUserInfo:(id)arg2;
 - (_Bool)_webView:(id)arg1 focusRequiresStrongPasswordAssistance:(id)arg2;
 - (long long)_webView:(id)arg1 decidePolicyForFocusedElement:(id)arg2;
+- (void)_webViewDidShowSafeBrowsingWarning:(id)arg1;
 - (void)_webView:(id)arg1 didStartInputSession:(id)arg2;
 - (void)_webView:(id)arg1 willStartInputSession:(id)arg2;
 - (void)_webView:(id)arg1 didPresentFocusedElementViewController:(id)arg2;
 - (void)formAutoFillControllerDidFocusSensitiveFormField:(id)arg1;
+- (void)_automaticPasswordInputViewAutoFillContextProviderRequiredNotification:(id)arg1;
 - (void)_userDeclinedAutomaticStrongPasswordForCurrentDomainOnTabWithUUID:(id)arg1;
 - (void)_automaticPasswordInputViewNotification:(id)arg1;
 - (void)performPageLevelAutoFill;

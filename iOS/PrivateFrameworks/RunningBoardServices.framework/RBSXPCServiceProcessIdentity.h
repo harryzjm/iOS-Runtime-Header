@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "RBSProcessIdentity.h"
+
 @class RBSXPCServiceIdentity;
 
 __attribute__((visibility("hidden")))
-@interface RBSXPCServiceProcessIdentity
+@interface RBSXPCServiceProcessIdentity : RBSProcessIdentity
 {
     RBSXPCServiceIdentity *_serviceIdentity;
 }
@@ -22,6 +24,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithDecodeFromJob:(id)arg1;
 - (id)encodeForJob;
 - (_Bool)inheritsCoalitionBand;
+- (_Bool)supportsLaunchingDirectly;
+- (id)validationToken;
+- (id)persona;
 - (id)uuid;
 - (id)hostIdentifier;
 - (id)hostIdentity;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     struct OpaqueFigAssetExportSession *figExportSession;
     AVAsset *asset;
     AVAudioMix *audioMix;
+    unsigned long long audioTrackGroupHandling;
     void *figVideoCompositor;
     AVCustomVideoCompositorSession *customVideoCompositorSession;
     AVVideoComposition *videoComposition;

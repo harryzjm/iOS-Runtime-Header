@@ -6,11 +6,9 @@
 
 #import <SearchFoundation/SFStartNetworkSearchFeedback.h>
 
-#import <CoreParsec/_CPStartFeedback-Protocol.h>
-
 @class NSString;
 
-@interface SFStartNetworkSearchFeedback (Handwritten) <_CPStartFeedback>
+@interface SFStartNetworkSearchFeedback (Handwritten)
 @property(readonly, nonatomic) int endpointType; // @dynamic endpointType;
 
 // Remaining properties

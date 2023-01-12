@@ -6,10 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSArray, NSData, NSString;
 
 @interface _TtC3VFX11BindingImpl : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *entityManager;
     MISSING_TYPE *identifier;
     MISSING_TYPE *objectID;
     MISSING_TYPE *objectName;
@@ -20,8 +21,14 @@
     MISSING_TYPE *min;
     MISSING_TYPE *max;
     MISSING_TYPE *isPublic;
+    MISSING_TYPE *enumName;
+    MISSING_TYPE *enumCases;
+    MISSING_TYPE *property;
 }
 
+@property(nonatomic, copy) NSData *rawValue;
+@property(nonatomic, copy) NSArray *enumCases;
+@property(nonatomic, copy) NSString *enumName;
 @property(nonatomic) double max; // @synthesize max;
 @property(nonatomic) double min; // @synthesize min;
 @property(nonatomic) long long semantic; // @synthesize semantic;

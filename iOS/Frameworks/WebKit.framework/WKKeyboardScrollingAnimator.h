@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     id <WKKeyboardScrollableInternal> _scrollable;
     struct RetainPtr<CADisplayLink> _displayLink;
-    optional_105a5b27 _currentScroll;
+    optional_383df22c _currentScroll;
     _Bool _scrollTriggeringKeyIsPressed;
     struct FloatSize _velocity;
     struct FloatPoint _idealPosition;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)stopAnimatedScroll;
 - (void)handleKeyEvent:(id)arg1;
 - (_Bool)beginWithEvent:(id)arg1;
-- (optional_105a5b27)keyboardScrollForEvent:(id)arg1;
+- (optional_383df22c)keyboardScrollForEvent:(id)arg1;
 - (void)invalidate;
 - (const struct KeyboardScrollParameters *)parameters;
 - (id)initWithScrollable:(id)arg1;

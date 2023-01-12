@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
+#import "UILocalNotification.h"
 
 @class CLRegion, NSCalendar, NSData, NSDate, NSString, NSTimeZone;
 
 __attribute__((visibility("hidden")))
-@interface UIConcreteLocalNotification <NSSecureCoding>
+@interface UIConcreteLocalNotification : UILocalNotification
 {
     NSDate *fireDate;
     NSTimeZone *timeZone;

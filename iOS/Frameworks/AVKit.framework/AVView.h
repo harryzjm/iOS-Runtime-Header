@@ -9,10 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface AVView : UIView
 {
+    _Bool _hasBackdropView;
     _Bool _ignoresTouches;
 }
 
 @property(nonatomic) _Bool ignoresTouches; // @synthesize ignoresTouches=_ignoresTouches;
+@property(nonatomic) _Bool hasBackdropView; // @synthesize hasBackdropView=_hasBackdropView;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setHidden:(_Bool)arg1;
 

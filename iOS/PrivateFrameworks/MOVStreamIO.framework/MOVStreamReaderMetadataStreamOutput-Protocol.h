@@ -10,6 +10,6 @@
 
 @protocol MOVStreamReaderMetadataStreamOutput <MOVStreamReaderBaseStreamOutput>
 - (AVTimedMetadataGroup *)grabNextTimedMetadataGroupOfStreamError:(out id *)arg1;
-- (NSArray *)grabNextMetadataOfStreamTimeRange:(out CDStruct_5c5366e1 *)arg1 error:(out id *)arg2;
+- (NSArray *)grabNextMetadataOfStreamTimeRange:(out CDStruct_3c1748cc *)arg1 error:(out id *)arg2;
 @end
 

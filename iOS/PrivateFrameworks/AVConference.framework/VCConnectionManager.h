@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCConnectionHealthMonitorDelegate-Protocol.h>
-#import <AVConference/VCCoreMotionManagerDelegate-Protocol.h>
-#import <AVConference/VCLinkProbingHandlerDelegate-Protocol.h>
-#import <AVConference/VCWifiAssistManagerDelegate-Protocol.h>
-
 @class AVCStatisticsCollector, NSMutableArray, NSMutableDictionary, NSString, VCConnectionHealthMonitor, VCConnectionSelector, VCCoreMotionManager, VCDuplicationHandler, VCLinkProbingHandler, VCStatsRecorder, VCWRMHandler, VCWifiAssistManager;
 @protocol OS_dispatch_queue, VCConnectionManagerDelegate, VCConnectionProtocol;
 
 __attribute__((visibility("hidden")))
-@interface VCConnectionManager : NSObject <VCConnectionHealthMonitorDelegate, VCWifiAssistManagerDelegate, VCLinkProbingHandlerDelegate, VCCoreMotionManagerDelegate>
+@interface VCConnectionManager : NSObject
 {
     _Bool _isStarted;
     unsigned int _callID;
@@ -90,19 +85,20 @@ __attribute__((visibility("hidden")))
     unsigned char _remoteLinkProbingCapabilityVersion;
     VCLinkProbingHandler *_linkProbingHandler;
     struct tagVCNWConnectionMonitor *_nwMonitor;
+    int _mediaHealthStatisticsHandlerIndex;
+    NSObject<OS_dispatch_queue> *_nwConnectionMonitorQueue;
     AVCStatisticsCollector *_statisticsCollector;
     VCCoreMotionManager *_coreMotionManager;
     _Bool _isNWConnectionMonitorEnabled;
     _Bool _ignoreNWConnectionMonitorNotification;
     NSString *_nwMonitorInterfaceName;
-    CDStruct_f284354a _lastNWStatistics;
+    CDStruct_10897a60 _lastNWStatistics;
     id <VCConnectionProtocol> _lastActivePrimaryConnection;
     NSMutableDictionary *_mediaDegradedHistories;
     NSMutableDictionary *_mediaDegradedHistoryIndices;
     NSMutableDictionary *_aggregateStallTimeDuration;
     _Bool _isDuplicationAllowed;
     _Bool _isDuplicationAllowedForMediaDegraded;
-    int _mediaHealthStatisticsHandlerIndex;
     int _endToEndConnectionStatisticsHandlerIndex;
     int _serverBasedConnectionStatisticsHandlerIndex;
     _Bool _isVideoExpected;
@@ -122,6 +118,18 @@ __attribute__((visibility("hidden")))
     long long _initialSentBytes;
     long long _initialReceivedBytes;
     _Bool _startConnectionHealthMonitoring;
+    _Bool _isRemoteMediaQualityDegraded;
+    _Bool _dropLinkRecommendation;
+    unsigned char _linkPreferSuggestion;
+    unsigned char _linkConfidenceScore;
+    unsigned char _linkPreferDecision;
+    _Bool _reportLinkPreferSuggestion;
+    unsigned char _linkIPPreference;
+    _Bool _useIDSLinkSuggestionFeatureFlag;
+    NSObject<OS_dispatch_queue> *_reportingQueue;
+    _Bool _isOneToOneRemoteParticipantAdded;
+    _Atomic unsigned int _sendSuccessCountSinceLastCheck;
+    _Atomic unsigned int _sendFailureCountSinceLastCheck;
     _Bool _iRATDuplicationEnabled;
     _Bool _optIntoExistingSubscribedStreams;
     double _noRemoteDuplicationThresholdFast;
@@ -130,6 +138,8 @@ __attribute__((visibility("hidden")))
 @property _Bool optIntoExistingSubscribedStreams; // @synthesize optIntoExistingSubscribedStreams=_optIntoExistingSubscribedStreams;
 @property(readonly) unsigned long long budgetConsumingCellularRxBytes; // @synthesize budgetConsumingCellularRxBytes=_budgetConsumingCellularRxBytes;
 @property(readonly) unsigned long long budgetConsumingCellularTxBytes; // @synthesize budgetConsumingCellularTxBytes=_budgetConsumingCellularTxBytes;
+@property _Bool isOneToOneRemoteParticipantAdded; // @synthesize isOneToOneRemoteParticipantAdded=_isOneToOneRemoteParticipantAdded;
+@property(nonatomic) _Bool isRemoteMediaQualityDegraded; // @synthesize isRemoteMediaQualityDegraded=_isRemoteMediaQualityDegraded;
 @property(nonatomic) _Bool startConnectionHealthMonitoring; // @synthesize startConnectionHealthMonitoring=_startConnectionHealthMonitoring;
 @property(nonatomic) _Bool isOneToOneModeEnabled; // @synthesize isOneToOneModeEnabled=_isOneToOneModeEnabled;
 @property(readonly, nonatomic) VCConnectionHealthMonitor *connectionHealthMonitor; // @synthesize connectionHealthMonitor=_connectionHealthMonitor;
@@ -176,15 +186,19 @@ __attribute__((visibility("hidden")))
 - (void)queryProbingResultsWithOptions:(id)arg1;
 - (void)stopActiveProbingWithOptions:(id)arg1;
 - (void)startActiveProbingWithOptions:(id)arg1;
+- (void)reselectPrimaryConnection;
 - (void)applyRemoteLinkFlags:(unsigned short)arg1 isCellular:(_Bool)arg2;
 - (void)applyLinkFlags:(unsigned short)arg1 isCellular:(_Bool)arg2;
+- (void)reportLinkSuggestion;
+- (void)applyLinkRecommendation;
+- (void)updateLinkPreferSuggestion:(id)arg1;
 - (_Bool)isDuplicationConnectionCandidate:(id)arg1;
 - (_Bool)areAllLinkProbingTriggersInactive;
 - (void)updateProbingResults:(id)arg1;
 - (void)setActiveLinkProbingEnabled:(_Bool)arg1;
 - (_Bool)shouldDuplicatePacket:(_Bool)arg1;
 - (_Bool)shouldDropCurrentPrimaryConnectionWithConnectionStats:(CDStruct_50492349 *)arg1;
-- (void)updateConnectionHealthWithVCStatisticsMessage:(CDStruct_c0785916)arg1;
+- (void)updateConnectionHealthWithVCStatisticsMessage:(CDStruct_7df19fcb)arg1;
 - (void)updateConnectionStatsWithIndicatorPrimaryImproved:(CDStruct_50492349 *)arg1;
 - (void)updateConnectionStatsWithIndicatorNone:(CDStruct_50492349 *)arg1;
 - (void)updateConnectionStatsWithIndicatorOnlyPrimaryNoPacket:(CDStruct_50492349 *)arg1;
@@ -215,6 +229,7 @@ __attribute__((visibility("hidden")))
 - (void)updateReceivedExcessiveBytes:(int)arg1 isMediaData:(_Bool)arg2 isIPv6:(_Bool)arg3;
 @property(readonly) double primaryConnHealthAllowedDelay;
 - (void)setDefaultLinkProbingCapabilityVersionForDeviceRole:(int)arg1;
+- (void)reportConnectionUpdateWithResponseCode:(unsigned short)arg1 delay:(double)arg2;
 - (void)reportConnectionUpdateWithRespCode:(unsigned short)arg1;
 - (void)reportConnection:(id)arg1 isInitialConnection:(_Bool)arg2;
 @property(readonly) _Bool isLocalCellularInterfaceUsed;
@@ -231,6 +246,10 @@ __attribute__((visibility("hidden")))
 - (void)promoteSecondaryConnectionToPrimary:(id)arg1;
 - (int)getConnectionSelectionVersionFromFrameworkVersion:(id)arg1;
 - (void)disableRemotePreferredInterfaceInference:(_Bool)arg1;
+- (void)destroyNWMonitorInternal;
+- (void)destroyNWMonitor;
+- (void)setVCNWConnectionMonitorStatisticsHandler;
+- (void)renewNWMonitor;
 - (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
 - (void)checkpointPrimaryConnection:(id)arg1;
 - (void)configureNWConnectionMonitor:(id)arg1;
@@ -243,6 +262,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isDuplicationAllowedForParticipantID:(id)arg1 bucketsToSum:(int)arg2 threshold:(double)arg3;
 - (void)updateMediaDegradedHistoryWithValue:(double)arg1 idsParticipantID:(id)arg2;
 - (void)updateMediaHealthStats:(CDStruct_6724876c *)arg1 idsParticipantID:(id)arg2;
+- (void)checkMediaQualityDegradedForParticipantID:(id)arg1;
 - (void)aggregateStallTimeDuration:(CDStruct_6724876c *)arg1 idsParticipantID:(id)arg2;
 - (void)duplicationStateUpdateWithEvent:(CDStruct_9629e118)arg1;
 - (void)removeMediaHealthStatsHistoryEntryForParticipantID:(id)arg1;
@@ -276,7 +296,7 @@ __attribute__((visibility("hidden")))
 - (void)resetMediaByteCounters;
 - (void)alertStateUpdated:(_Bool)arg1 isLocal:(_Bool)arg2;
 - (void)setPreWarmState:(_Bool)arg1;
-- (int)setWRMUpdateCallback:(CDUnknownFunctionPointerType)arg1 requestNotificationCallback:(CDUnknownFunctionPointerType)arg2 withContext:(void *)arg3;
+- (int)setWRMUpdateCallback:(CDUnknownFunctionPointerType)arg1 requestNotificationCallback:(CDUnknownFunctionPointerType)arg2 withContext:(void *)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (const char *)reasonStringWithDuplicationReason:(unsigned char)arg1;
 - (void)setDuplicationEnabledInternal:(_Bool)arg1;
 - (void)addLinkProbingTelemetry:(id)arg1;
@@ -286,6 +306,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isDuplicationEnabled;
 - (void)setConnectionPause:(_Bool)arg1 isLocalConnection:(_Bool)arg2;
 - (void)setDuplicationCallback:(CDUnknownFunctionPointerType)arg1 withContext:(void *)arg2;
+- (_Bool)isBetterPrimaryConnectionAvailable;
+- (void)checkAndUpdatePrimaryConnection;
 - (void)setConnectionSelectionVersionWithLocalFrameworkVersion:(id)arg1 remoteFrameworkVersion:(id)arg2;
 - (void)setReportingAgent:(struct opaqueRTCReporting *)arg1;
 - (void)periodicTask:(void *)arg1;
@@ -296,6 +318,8 @@ __attribute__((visibility("hidden")))
 - (void)start;
 @property(nonatomic) _Bool useMediaDrivenDuplication; // @synthesize useMediaDrivenDuplication=_useMediaDrivenDuplication;
 - (void)resetConnectionStatTimers;
+@property(readonly) unsigned int sendFailureCountSinceLastCheck;
+@property(readonly) unsigned int sendSuccessCountSinceLastCheck;
 - (void)setupConnectionHealthMonitor;
 - (void)setupConnectionHealthMonitorMultiway;
 - (void)unregisterStatisticsHandlers;

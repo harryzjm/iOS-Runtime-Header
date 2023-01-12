@@ -6,7 +6,7 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFApplicationInfo, AFAudioPlaybackRequest, AFClientConfiguration, AFMetrics, AFRequestInfo, AFSetAudioSessionActiveContext, AFSpeechRequestOptions, AFSpeechSynthesisRecord, NSArray, NSData, NSDate, NSDictionary, NSError, NSSet, NSString, NSURL, SASPronunciationContext, SASetApplicationContext;
+@class AFApplicationInfo, AFAudioPlaybackRequest, AFClientConfiguration, AFMetrics, AFModesConfiguration, AFRequestInfo, AFSetAudioSessionActiveContext, AFSpeechRequestOptions, AFSpeechSynthesisRecord, NSArray, NSData, NSDate, NSDictionary, NSError, NSSet, NSString, NSURL, NSUUID, SASPronunciationContext, SASetApplicationContext;
 
 @protocol AFClientService <NSObject>
 - (oneway void)_refreshAssistantValidation;
@@ -35,6 +35,7 @@
 - (oneway void)recordAWDSuccessMetrics;
 - (oneway void)recordCancellationMetrics;
 - (oneway void)recordFailureMetricsForError:(NSError *)arg1;
+- (oneway void)emitHomeMetricInvocationEvent;
 - (oneway void)recordUIMetrics:(AFMetrics *)arg1;
 - (oneway void)telephonyRequestCompleted;
 - (oneway void)prepareForPhoneCall;
@@ -56,12 +57,13 @@
 - (oneway void)continuePendingSpeechRequestWithId:(unsigned long long)arg1 fromTimestamp:(double)arg2;
 - (oneway void)startAcousticIDRequestWithOptions:(AFSpeechRequestOptions *)arg1 context:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)startSpeechPronunciationRequestWithOptions:(AFSpeechRequestOptions *)arg1 context:(SASPronunciationContext *)arg2 completion:(void (^)(NSError *))arg3;
-- (oneway void)startRecordingForPendingSpeechRequestWithOptions:(AFSpeechRequestOptions *)arg1 requestId:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)startRecordingForPendingSpeechRequestWithOptions:(AFSpeechRequestOptions *)arg1 requestId:(unsigned long long)arg2 sessionUUID:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
 - (oneway void)startRequestWithInfo:(AFRequestInfo *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)willPresentUsefulUserResultAtDate:(NSDate *)arg1;
 - (oneway void)endSession;
 - (oneway void)didDismissUI;
 - (oneway void)willPresentUIWithReply:(void (^)(void))arg1;
+- (oneway void)setModesConfiguration:(AFModesConfiguration *)arg1;
 - (oneway void)setConfiguration:(AFClientConfiguration *)arg1;
 - (oneway void)setWatchAuthenticated:(_Bool)arg1;
 - (oneway void)setCarDNDActive:(_Bool)arg1;

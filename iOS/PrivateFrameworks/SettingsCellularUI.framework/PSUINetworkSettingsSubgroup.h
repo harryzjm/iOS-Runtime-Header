@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
-
 @class NSMutableArray, NSString, PSListController, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface PSUINetworkSettingsSubgroup : NSObject <PSSpecifierGroup>
+@interface PSUINetworkSettingsSubgroup : NSObject
 {
     PSListController *_listController;
     PSSpecifier *_parentSpecifier;

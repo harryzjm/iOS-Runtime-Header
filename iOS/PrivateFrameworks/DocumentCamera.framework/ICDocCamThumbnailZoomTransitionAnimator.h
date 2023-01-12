@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DocumentCamera/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSIndexPath, NSString, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface ICDocCamThumbnailZoomTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface ICDocCamThumbnailZoomTransitionAnimator : NSObject
 {
     _Bool _presenting;
     UIImage *_thumbnailImage;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaRemote/NSSecureCoding-Protocol.h>
-
 @class MRContentItem, MRPlaybackQueueRequest;
 
 __attribute__((visibility("hidden")))
-@interface MRContentItemRequest : NSObject <NSSecureCoding>
+@interface MRContentItemRequest : NSObject
 {
     MRContentItem *_item;
     MRPlaybackQueueRequest *_request;

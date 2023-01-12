@@ -7,37 +7,37 @@
 #import <SiriUI/SiriUIBaseAceObjectViewControllerDelegate-Protocol.h>
 
 @class AFDataStore, AFUserUtterance, AceObject, NSArray, NSBundle, NSString, NSURL, SAUIListItem, SiriUIDisambiguationItem, UIView;
-@protocol SiriUIViewController;
+@protocol SiriSharedUIViewControlling;
 
 @protocol SiriUIAceObjectViewControllerDelegate <SiriUIBaseAceObjectViewControllerDelegate>
-- (void)siriViewControllerViewDidDisappear:(id <SiriUIViewController>)arg1 isTopLevelViewController:(_Bool)arg2;
-- (void)siriViewControllerViewDidAppear:(id <SiriUIViewController>)arg1 isTopLevelViewController:(_Bool)arg2;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 setStatusViewHidden:(_Bool)arg2;
-- (void)siriViewController:(id <SiriUIViewController>)arg1 didHideVibrantView:(UIView *)arg2;
-- (AFDataStore *)persistentDataStoreForSiriViewController:(id <SiriUIViewController>)arg1;
-- (void)cancelRequestForSiriSnippetViewController:(id <SiriUIViewController>)arg1;
-- (void)siriViewController:(id <SiriUIViewController>)arg1 addSelectionResponse:(SAUIListItem *)arg2;
-- (SAUIListItem *)siriViewController:(id <SiriUIViewController>)arg1 listItemToPickInAutodisambiguationForListItems:(NSArray *)arg2;
-- (SiriUIDisambiguationItem *)siriViewController:(id <SiriUIViewController>)arg1 disambiguationItemForListItem:(SAUIListItem *)arg2 disambiguationKey:(NSString *)arg3;
-- (NSArray *)siriViewController:(id <SiriUIViewController>)arg1 filteredDisambiguationListItems:(NSArray *)arg2;
-- (void)siriViewController:(id <SiriUIViewController>)arg1 setContentOffset:(double)arg2;
-- (void)siriViewControllerHeightDidChange:(id <SiriUIViewController>)arg1 pinTopOfSnippet:(_Bool)arg2;
-- (void)siriViewControllerHeightDidChange:(id <SiriUIViewController>)arg1;
-- (double)statusBarHeightForSiriViewController:(id <SiriUIViewController>)arg1;
-- (struct UIEdgeInsets)siriViewControllerBackgroundInsets:(id <SiriUIViewController>)arg1;
-- (struct CGSize)siriViewControllerVisibleContentArea:(id <SiriUIViewController>)arg1;
-- (double)siriViewControllerExpectedWidth:(id <SiriUIViewController>)arg1;
-- (NSBundle *)siriViewControllerEffectiveBundleForCoreLocation:(id <SiriUIViewController>)arg1;
-- (void)siriViewController:(id <SiriUIViewController>)arg1 setDomainObject:(AceObject *)arg2 forIdentifier:(NSURL *)arg3;
-- (AceObject *)siriViewController:(id <SiriUIViewController>)arg1 domainObjectForIdentifier:(NSURL *)arg2;
-- (NSArray *)additionalSpeechInterpretationsForSiriViewController:(id <SiriUIViewController>)arg1;
+- (void)siriViewControllerViewDidDisappear:(id <SiriSharedUIViewControlling>)arg1 isTopLevelViewController:(_Bool)arg2;
+- (void)siriViewControllerViewDidAppear:(id <SiriSharedUIViewControlling>)arg1 isTopLevelViewController:(_Bool)arg2;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 setStatusViewHidden:(_Bool)arg2;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 didHideVibrantView:(UIView *)arg2;
+- (AFDataStore *)persistentDataStoreForSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (void)cancelRequestForSiriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 addSelectionResponse:(SAUIListItem *)arg2;
+- (SAUIListItem *)siriViewController:(id <SiriSharedUIViewControlling>)arg1 listItemToPickInAutodisambiguationForListItems:(NSArray *)arg2;
+- (SiriUIDisambiguationItem *)siriViewController:(id <SiriSharedUIViewControlling>)arg1 disambiguationItemForListItem:(SAUIListItem *)arg2 disambiguationKey:(NSString *)arg3;
+- (NSArray *)siriViewController:(id <SiriSharedUIViewControlling>)arg1 filteredDisambiguationListItems:(NSArray *)arg2;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 setContentOffset:(double)arg2;
+- (void)siriViewControllerHeightDidChange:(id <SiriSharedUIViewControlling>)arg1 pinTopOfSnippet:(_Bool)arg2;
+- (void)siriViewControllerHeightDidChange:(id <SiriSharedUIViewControlling>)arg1;
+- (double)statusBarHeightForSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (struct UIEdgeInsets)siriViewControllerBackgroundInsets:(id <SiriSharedUIViewControlling>)arg1;
+- (struct CGSize)siriViewControllerVisibleContentArea:(id <SiriSharedUIViewControlling>)arg1;
+- (double)siriViewControllerExpectedWidth:(id <SiriSharedUIViewControlling>)arg1;
+- (NSBundle *)siriViewControllerEffectiveBundleForCoreLocation:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 setDomainObject:(AceObject *)arg2 forIdentifier:(NSURL *)arg3;
+- (AceObject *)siriViewController:(id <SiriSharedUIViewControlling>)arg1 domainObjectForIdentifier:(NSURL *)arg2;
+- (NSArray *)additionalSpeechInterpretationsForSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
 
 @optional
-- (void)siriViewController:(id <SiriUIViewController>)arg1 setTypeToSiriViewHidden:(_Bool)arg2;
-- (_Bool)inTextInputModeForSiriViewController:(id <SiriUIViewController>)arg1;
-- (void)showCorrectionScreenForSiriViewController:(id <SiriUIViewController>)arg1;
-- (_Bool)shouldEnableInteractionForSiriViewController:(id <SiriUIViewController>)arg1;
-- (void)siriViewControllerDidResignFirstResponder:(id <SiriUIViewController>)arg1;
-- (AFUserUtterance *)updatedUserUtteranceForSiriViewController:(id <SiriUIViewController>)arg1;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 setTypeToSiriViewHidden:(_Bool)arg2;
+- (_Bool)inTextInputModeForSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (void)showCorrectionScreenForSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (_Bool)shouldEnableInteractionForSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriViewControllerDidResignFirstResponder:(id <SiriSharedUIViewControlling>)arg1;
+- (AFUserUtterance *)updatedUserUtteranceForSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
 @end
 

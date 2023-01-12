@@ -6,11 +6,9 @@
 
 #import <UIKit/UITouch.h>
 
-#import <AssetViewer/ASVTouch-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
-@interface UITouch (UITouch_ASVTouch) <ASVTouch>
+@interface UITouch (UITouch_ASVTouch)
 @property(readonly, nonatomic) MISSING_TYPE *previousLocation;
 @property(readonly, nonatomic) MISSING_TYPE *location;
 

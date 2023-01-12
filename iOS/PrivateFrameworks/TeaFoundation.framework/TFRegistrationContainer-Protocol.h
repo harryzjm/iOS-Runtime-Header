@@ -6,14 +6,15 @@
 
 #import <TeaFoundation/NSObject-Protocol.h>
 
-@class NSString, Protocol, TFDefinition, TFKey;
+@class NSString, Protocol;
+@protocol TFDefinition;
 
 @protocol TFRegistrationContainer <NSObject>
-- (TFDefinition *)unsafeRegisterForKey:(NSString *)arg1 name:(NSString *)arg2 factory:(id (^)(id <TFResolver>))arg3;
-- (TFDefinition *)registerKey:(TFKey *)arg1 factory:(id (^)(id <TFResolver>))arg2;
-- (TFDefinition *)registerProtocol:(Protocol *)arg1 name:(NSString *)arg2 factory:(id (^)(id <TFResolver>))arg3;
-- (TFDefinition *)registerProtocol:(Protocol *)arg1 factory:(id (^)(id <TFResolver>))arg2;
-- (TFDefinition *)registerClass:(Class)arg1 name:(NSString *)arg2 factory:(id (^)(id <TFResolver>))arg3;
-- (TFDefinition *)registerClass:(Class)arg1 factory:(id (^)(id <TFResolver>))arg2;
+- (id <TFDefinition>)registerUncheckedProtocol:(Protocol *)arg1 name:(NSString *)arg2 factory:(id (^)(id <TFResolver>))arg3;
+- (id <TFDefinition>)registerUncheckedProtocol:(Protocol *)arg1 factory:(id (^)(id <TFResolver>))arg2;
+- (id <TFDefinition>)registerProtocol:(Protocol *)arg1 name:(NSString *)arg2 factory:(id (^)(id <TFResolver>))arg3;
+- (id <TFDefinition>)registerProtocol:(Protocol *)arg1 factory:(id (^)(id <TFResolver>))arg2;
+- (id <TFDefinition>)registerClass:(Class)arg1 name:(NSString *)arg2 factory:(id (^)(id <TFResolver>))arg3;
+- (id <TFDefinition>)registerClass:(Class)arg1 factory:(id (^)(id <TFResolver>))arg2;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/NSCopying-Protocol.h>
-
 @class UIBlurEffect, UIColor, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface CKConversationListAccessoryViewConfiguration : NSObject <NSCopying>
+@interface CKConversationListAccessoryViewConfiguration : NSObject
 {
     UIImage *_image;
     UIColor *_backgroundColor;

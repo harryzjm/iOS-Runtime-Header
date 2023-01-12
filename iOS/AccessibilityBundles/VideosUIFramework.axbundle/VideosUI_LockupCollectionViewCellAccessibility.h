@@ -11,9 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityOverlayLabel;
+- (id)_axLabelFromComponentsOfStackingPosterView:(id)arg1 overlayView:(id)arg2;
+- (id)_accessibilityTextBadge:(id)arg1;
+- (id)_accessibilityOverlayView;
 - (id)_accessibilityStackingPosterView;
 - (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
 
 @end
 

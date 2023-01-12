@@ -9,7 +9,6 @@
 @class HMDDevice, HMDMessageHandler, HMFMessage, NSNumber;
 
 @protocol HMDMessageHandlerDataSource <NSObject>
-- (_Bool)messageHandler:(HMDMessageHandler *)arg1 reachableForOutgoingMessage:(HMFMessage *)arg2;
 - (HMDDevice *)messageHandler:(HMDMessageHandler *)arg1 deviceForOutgoingMessage:(HMFMessage *)arg2;
 - (NSNumber *)messageHandler:(HMDMessageHandler *)arg1 shouldRelayIncomingMessage:(HMFMessage *)arg2;
 

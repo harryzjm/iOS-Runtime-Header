@@ -6,23 +6,22 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MobileSafariUI/UICollectionViewDataSource-Protocol.h>
-#import <MobileSafariUI/UICollectionViewDelegate-Protocol.h>
-
 @class NSString, SFReaderAppearanceThemeSelector, UICollectionView, UICollectionViewCellRegistration;
 @protocol SFReaderContext, _SFSettingsAlertOptionsGroupController;
 
 __attribute__((visibility("hidden")))
-@interface ReaderFormatViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ReaderFormatViewController : UIViewController
 {
     UICollectionView *_collectionView;
     SFReaderAppearanceThemeSelector *_themeSelector;
     id <_SFSettingsAlertOptionsGroupController> _fontGroupController;
     UICollectionViewCellRegistration *_cellRegistrations[2];
     id <SFReaderContext> _readerContext;
+    long long _provenance;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long provenance; // @synthesize provenance=_provenance;
 @property(readonly, nonatomic) id <SFReaderContext> readerContext; // @synthesize readerContext=_readerContext;
 - (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -35,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
-- (id)initWithReaderContext:(id)arg1;
+- (id)initWithReaderContext:(id)arg1 provenance:(long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

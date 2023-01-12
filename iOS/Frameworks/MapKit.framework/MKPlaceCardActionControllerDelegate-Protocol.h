@@ -6,7 +6,7 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class MKPlaceActionManager, MKPlaceCardActionsViewController, NSArray, UIView, UIViewController;
+@class MKPlaceActionManager, MKPlaceCardActionsViewController, NSDictionary, NSURL, UIView, UIViewController;
 @protocol MKActivityObserving;
 
 @protocol MKPlaceCardActionControllerDelegate <NSObject>
@@ -18,9 +18,11 @@
 - (void)placeCardActionControllerDidSelectionOpenInPinpoint:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectOpenInSkyline:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectSimulateLocation:(MKPlaceCardActionsViewController *)arg1;
-- (NSArray *)placeCardActionControllerRequestsExtraActions:(MKPlaceCardActionsViewController *)arg1;
-- (void)placeCardActionControllerDidSelectDirections:(MKPlaceCardActionsViewController *)arg1;
+- (_Bool)canShowAddPhotosForPlaceCardActionController:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectPlaceEnrichementReportAProblem;
+- (void)placeCardActionControllerDidSelectDirections:(MKPlaceCardActionsViewController *)arg1 options:(NSDictionary *)arg2;
 - (void)placeCardActionControllerDidRequestCopy:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectReportAProblemViewReport:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(MKPlaceCardActionsViewController *)arg1 isQuickAction:(_Bool)arg2;
 - (void)placeCardActionControllerDidSelectRemoveMarker:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectAddToExistingContact:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2;
@@ -29,11 +31,11 @@
 - (void)placeCardActionControllerDidSelectRefineLocation:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectRemoveFromMapsHome:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectAddToMapsHome:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionController:(MKPlaceCardActionsViewController *)arg1 openURL:(NSURL *)arg2 fromView:(UIView *)arg3;
 - (void)placeCardActionControllerDidSelectAddPhoto:(MKPlaceCardActionsViewController *)arg1 presentingViewController:(UIViewController *)arg2 progressObserver:(id <MKActivityObserving>)arg3 sourceView:(UIView *)arg4;
 - (void)placeCardActionControllerDidSelectViewAllPhotos:(MKPlaceCardActionsViewController *)arg1 presentingViewController:(UIViewController *)arg2;
 - (void)placeCardActionControllerDidSelectRemoveFromSuggestedFavorites:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectRemoveFromFavorites:(MKPlaceCardActionsViewController *)arg1;
-- (void)placeCardActionControllerDidSelectAddToFavorites:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectAddToContacts:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2;
 @end
 

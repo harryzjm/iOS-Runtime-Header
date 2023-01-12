@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKPlaceHoursViewDelegate-Protocol.h>
+#import "MKPlaceSectionRowView.h"
 
 @class MKPlaceHoursView, NSLayoutConstraint, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceHoursDayRow <MKPlaceHoursViewDelegate>
+@interface MKPlaceHoursDayRow : MKPlaceSectionRowView
 {
     MKPlaceHoursView *_hoursView;
     NSLayoutConstraint *_topAnchorToTopLabelBaseline;

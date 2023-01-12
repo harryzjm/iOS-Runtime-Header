@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoftwareUpdateServices/SUInvalidatable-Protocol.h>
-
 @class NSString, SUInstallationConstraintObserver;
 
 __attribute__((visibility("hidden")))
-@interface _SUInstallationConstraintBlockObserverToken : NSObject <SUInvalidatable>
+@interface _SUInstallationConstraintBlockObserverToken : NSObject
 {
     SUInstallationConstraintObserver *_observer;
     _Bool _invalidated;

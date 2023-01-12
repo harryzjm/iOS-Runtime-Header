@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSLayoutRule-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSAlignmentLayoutRule : NSObject <NSLayoutRule>
+@interface NSAlignmentLayoutRule : NSObject
 {
     NSArray *_alignedAnchors;
 }

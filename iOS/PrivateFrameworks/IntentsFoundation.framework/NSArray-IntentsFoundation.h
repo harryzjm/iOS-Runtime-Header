@@ -9,7 +9,6 @@
 @interface NSArray (IntentsFoundation)
 + (id)if_arrayWithObjectIfNonNil:(id)arg1;
 + (id)_inf_arrayWithObjectIfNonNil:(id)arg1;
-- (id)_if_firstObjectMatchingPredicate:(id)arg1;
 - (void)if_enumerateAsynchronouslyInSequenceOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)if_enumerateAsynchronouslyInSequence:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)if_enumerateAsynchronouslyOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -32,9 +31,11 @@
 - (void)if_flatMapAsynchronously:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)if_flatMap:(CDUnknownBlockType)arg1;
 - (id)_inf_flatMap:(CDUnknownBlockType)arg1;
+- (id)if_compactMapConcurrently:(CDUnknownBlockType)arg1;
 - (id)if_compactMap:(CDUnknownBlockType)arg1;
 - (void)if_mapAsynchronouslyOnQueue:(id)arg1 transform:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)if_mapAsynchronously:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)if_mapConcurrently:(CDUnknownBlockType)arg1;
 - (id)if_map:(CDUnknownBlockType)arg1;
 @end
 

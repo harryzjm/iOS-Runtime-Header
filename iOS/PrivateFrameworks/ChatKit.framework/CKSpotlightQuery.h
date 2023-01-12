@@ -6,27 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/MDSearchQueryDelegate-Protocol.h>
-
 @class IMChatRegistry, MDSearchQuery, NSArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface CKSpotlightQuery : NSObject <MDSearchQueryDelegate>
+@interface CKSpotlightQuery : NSObject
 {
+    _Bool _cancelled;
+    CDUnknownBlockType _completion;
     MDSearchQuery *_currentQuery;
     unsigned long long _resultIndex;
     NSArray *_searchResults;
     NSMutableDictionary *_chatGUIDToLatestSearchResult;
     NSObject<OS_dispatch_group> *_searchResultLoadingGroup;
-    CDUnknownBlockType _completion;
-    _Bool _cancelled;
     IMChatRegistry *_chatRegisteryOverride;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) MDSearchQuery *currentQuery; // @synthesize currentQuery=_currentQuery;
 @property(retain, nonatomic) IMChatRegistry *chatRegisteryOverride; // @synthesize chatRegisteryOverride=_chatRegisteryOverride;
+@property(nonatomic) _Bool cancelled; // @synthesize cancelled=_cancelled;
+@property(retain, nonatomic) NSObject<OS_dispatch_group> *searchResultLoadingGroup; // @synthesize searchResultLoadingGroup=_searchResultLoadingGroup;
+@property(retain, nonatomic) NSMutableDictionary *chatGUIDToLatestSearchResult; // @synthesize chatGUIDToLatestSearchResult=_chatGUIDToLatestSearchResult;
+@property(retain, nonatomic) NSArray *searchResults; // @synthesize searchResults=_searchResults;
+@property(nonatomic) unsigned long long resultIndex; // @synthesize resultIndex=_resultIndex;
+@property(readonly, nonatomic) MDSearchQuery *currentQuery; // @synthesize currentQuery=_currentQuery;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 - (id)chatRegistry;
 - (id)initWithSearchText:(id)arg1 chatRegistryOverride:(id)arg2 startQuery:(_Bool)arg3 completionBlock:(CDUnknownBlockType)arg4;

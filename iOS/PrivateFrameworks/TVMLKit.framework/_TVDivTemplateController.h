@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_TVBgImageLoadingViewController.h"
+
 @class IKViewElement, NSArray, TVImageProxy, UIImageView, _TVOrganizerView;
 
 __attribute__((visibility("hidden")))
-@interface _TVDivTemplateController
+@interface _TVDivTemplateController : _TVBgImageLoadingViewController
 {
     IKViewElement *_viewElement;
     TVImageProxy *_backgroundImageProxy;

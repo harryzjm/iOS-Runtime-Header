@@ -6,11 +6,9 @@
 
 #import <Intents/INDefaultCardTemplate.h>
 
-#import <RelevanceEngine/REDefaultCardTemplateProperties-Protocol.h>
-
 @class INImage, NSString;
 
-@interface INDefaultCardTemplate (RELogging) <REDefaultCardTemplateProperties>
+@interface INDefaultCardTemplate (RELogging)
 
 // Remaining properties
 @property(readonly, nonatomic) INImage *image;

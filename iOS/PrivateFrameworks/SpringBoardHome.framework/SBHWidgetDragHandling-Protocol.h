@@ -6,13 +6,13 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class CHSAvocadoDescriptor, SBWidgetIcon;
+@class CHSWidgetDescriptor, SBWidgetIcon;
 @protocol SBHAddWidgetSheetGalleryItem;
 
 @protocol SBHWidgetDragHandling <NSObject>
 - (void)didEndDraggingWidgetIcon:(SBWidgetIcon *)arg1;
 - (void)didBeginDraggingWidgetIcon:(SBWidgetIcon *)arg1;
-- (SBWidgetIcon *)widgetIconForDescriptor:(CHSAvocadoDescriptor *)arg1 sizeClass:(long long)arg2;
+- (SBWidgetIcon *)widgetIconForDescriptor:(CHSWidgetDescriptor *)arg1 sizeClass:(long long)arg2;
 - (SBWidgetIcon *)widgetIconForGalleryItem:(id <SBHAddWidgetSheetGalleryItem>)arg1 sizeClass:(long long)arg2;
 @end
 

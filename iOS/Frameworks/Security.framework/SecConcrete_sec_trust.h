@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Security/OS_sec_trust-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SecConcrete_sec_trust : NSObject <OS_sec_trust>
+@interface SecConcrete_sec_trust : NSObject
 {
     struct __SecTrust *trust;
 }

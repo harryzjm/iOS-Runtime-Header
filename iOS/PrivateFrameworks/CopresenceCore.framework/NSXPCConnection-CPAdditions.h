@@ -7,6 +7,7 @@
 #import <Foundation/NSXPCConnection.h>
 
 @interface NSXPCConnection (CPAdditions)
+- (_Bool)cp_clientSandboxCanAccessFileURL:(id)arg1;
 - (id)cp_clientProcessBundleIdentifier;
 - (id)cp_clientProcessName;
 @end

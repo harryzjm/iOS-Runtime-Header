@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVWeakReference.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVRetainReleaseWeakReference
+@interface AVRetainReleaseWeakReference : AVWeakReference
 {
     NSString *_cachedReferencedObjectDescription;
     id _weakStorage;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeSettingsUI/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface STRestrictionItem : NSObject <NSCopying>
+@interface STRestrictionItem : NSObject
 {
     NSString *_rmConfiguration;
     NSString *_payloadKey;

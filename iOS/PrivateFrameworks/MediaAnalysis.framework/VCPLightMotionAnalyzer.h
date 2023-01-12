@@ -19,13 +19,16 @@ __attribute__((visibility("hidden")))
     unsigned long long _flags;
     _Bool _turbo;
     float _actionScore;
+    float _motionDivScore;
 }
 
 + (float)autoLiveMotionScore:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly) float motionDivScore; // @synthesize motionDivScore=_motionDivScore;
 @property(readonly) float actionScore; // @synthesize actionScore=_actionScore;
 - (void)analyzeFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 completion:(CDUnknownBlockType)arg4;
+- (int)computeMotionDivScore:(struct EncodeStats *)arg1;
 - (int)cameraMotionDetection:(void *)arg1;
 - (int)generateThresholds:(float [6])arg1 withConfidences:(float [6])arg2;
 - (int)analyzeFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 flags:(unsigned long long *)arg4;

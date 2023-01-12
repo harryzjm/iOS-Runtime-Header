@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDImmutableObject-Protocol.h>
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDCollection, EDResources, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDPhoneticInfo : NSObject <NSCopying, EDImmutableObject>
+@interface EDPhoneticInfo : NSObject
 {
     EDResources *mResources;
     unsigned long long mFontIndex;

@@ -9,6 +9,8 @@
 @protocol PXAssetsActionReceiver <NSObject>
 
 @optional
+- (void)pasteAdjustments:(id)arg1;
+- (void)copyAdjustments:(id)arg1;
 - (void)autoEnhanceAssets:(id)arg1;
 - (void)rotateAssetsClockwise:(id)arg1;
 - (void)rotateAssetsCounterclockwise:(id)arg1;
@@ -17,6 +19,7 @@
 - (void)favoriteAssets:(id)arg1;
 - (void)hideAssets:(id)arg1;
 - (void)duplicateAssets:(id)arg1;
+- (void)addAssetsToLastUsedAlbum:(id)arg1;
 - (void)addAssetsToAlbum:(id)arg1;
 - (void)shareAssets:(id)arg1;
 - (void)printAssets:(id)arg1;

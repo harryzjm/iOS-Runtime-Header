@@ -6,15 +6,11 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <QuickLook/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <QuickLook/UITableViewDataSource-Protocol.h>
-#import <QuickLook/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSString, QLItem, QLListCellManager, QLPreviewItemStore, UIBarButtonItem, UIPopoverPresentationController, UITableViewController;
 @protocol QLListViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface QLListViewController : UINavigationController <UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate>
+@interface QLListViewController : UINavigationController
 {
     UIPopoverPresentationController *_presentationController;
     UITableViewController *_tableViewController;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSArray, NSMapTable, NSString, SKUIAttributedStringView, SKUIStackItemViewElement, SKUIViewElementLayoutContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStackItemView <SKUIViewElementView>
+@interface SKUIStackItemView
 {
     SKUIStackItemViewElement *_viewElement;
     SKUIViewElementLayoutContext *_lastContext;

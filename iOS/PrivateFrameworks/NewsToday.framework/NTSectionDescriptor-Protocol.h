@@ -26,6 +26,7 @@
 @property(readonly, copy, nonatomic) NSString *personalizationFeatureID;
 @property(readonly, copy, nonatomic) NSString *referralBarName;
 @property(readonly, copy, nonatomic) NSString *compactName;
+@property(readonly, copy, nonatomic) NSString *subidentifier;
 @property(readonly, copy, nonatomic) NSString *identifier;
 @end
 

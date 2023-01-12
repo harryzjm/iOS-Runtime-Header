@@ -6,14 +6,11 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/GEOSurchargeOption-Protocol.h>
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSArray, NSMutableArray, PBUnknownFields;
 @protocol GEOSurchargeType;
 
 __attribute__((visibility("hidden")))
-@interface GEORequestOptions : PBCodable <GEOSurchargeOption, NSCopying>
+@interface GEORequestOptions : PBCodable
 {
     PBUnknownFields *_unknownFields;
     NSMutableArray *_requestOptions;

@@ -6,9 +6,12 @@
 
 #import <ScreenTimeCore/NSObject-Protocol.h>
 
-@class NSDateInterval, NSDictionary, NSNumber, NSSecurityScopedURLWrapper, NSString, NSURL;
+@class NSDateInterval, NSDictionary, NSNumber, NSSecurityScopedURLWrapper, NSString, NSURL, STIntroductionModel;
 
 @protocol STManagementStateServerInterface <NSObject>
+- (void)setLocationSharingModificationAllowed:(_Bool)arg1 forDSID:(NSNumber *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)isLocationSharingModificationAllowedForDSID:(NSNumber *)arg1 completionHandler:(void (^)(NSNumber *, NSError *))arg2;
+- (void)applyIntroductionModel:(STIntroductionModel *)arg1 forDSID:(NSNumber *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)isExplicitContentRestrictedWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
 - (void)shouldAllowOneMoreMinuteForCategoryIdentifier:(NSString *)arg1 replyHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)shouldAllowOneMoreMinuteForWebDomain:(NSString *)arg1 replyHandler:(void (^)(NSNumber *, NSError *))arg2;
@@ -35,6 +38,7 @@
 - (void)shouldRequestMoreTimeWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
 - (void)setScreenTimeSyncingEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)screenTimeSyncStateWithCompletionHandler:(void (^)(long long, NSError *))arg1;
+- (void)isContentPrivacyEnabledForDSID:(NSNumber *)arg1 completionHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)enableScreenTimeForDSID:(NSNumber *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setScreenTimeEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)screenTimeStateWithCompletionHandler:(void (^)(long long, NSError *))arg1;

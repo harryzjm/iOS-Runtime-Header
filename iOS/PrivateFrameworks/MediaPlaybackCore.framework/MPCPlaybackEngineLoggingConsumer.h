@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventConsumer-Protocol.h>
-
-@class NSString;
+@class MPCPlaybackEngineEvent, NSString;
 @protocol MPCPlaybackEngineEventStreamSubscription;
 
 __attribute__((visibility("hidden")))
-@interface MPCPlaybackEngineLoggingConsumer : NSObject <MPCPlaybackEngineEventConsumer>
+@interface MPCPlaybackEngineLoggingConsumer : NSObject
 {
+    struct _MPCLoggingConsumerChartState _chartState;
+    struct _MPCLoggingConsumerChartStatus _chartStatus;
     id <MPCPlaybackEngineEventStreamSubscription> _subscription;
+    MPCPlaybackEngineEvent *_lastTimeControlStatusEvent;
 }
 
 + (id)identifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) MPCPlaybackEngineEvent *lastTimeControlStatusEvent; // @synthesize lastTimeControlStatusEvent=_lastTimeControlStatusEvent;
 @property(readonly, nonatomic) id <MPCPlaybackEngineEventStreamSubscription> subscription; // @synthesize subscription=_subscription;
 - (_Bool)_logAccountEvent:(id)arg1 subscription:(id)arg2 cursor:(id)arg3;
 - (void)unsubscribeFromEventStream:(id)arg1;

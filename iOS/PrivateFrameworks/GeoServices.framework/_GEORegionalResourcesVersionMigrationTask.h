@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOActiveTileGroupMigrationTask-Protocol.h>
-
 @class GEOActiveTileGroupMigrationTaskOptions, GEORegionalResourcesVersionMigrator, GEOReportedProgress, GEOResourceManifestConfiguration, GEOResources, GEOTileGroup, NSProgress, NSSet, NSString;
 @protocol NSObject, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _GEORegionalResourcesVersionMigrationTask : NSObject <GEOActiveTileGroupMigrationTask>
+@interface _GEORegionalResourcesVersionMigrationTask : NSObject
 {
     GEORegionalResourcesVersionMigrator *_migrator;
     GEOResourceManifestConfiguration *_manifestConfiguration;

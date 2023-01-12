@@ -29,6 +29,7 @@
     struct sqlite3_stmt *_sqlDeleteStmtReceiverData;
     NSMutableArray *_entryIDsToDelete;
     unsigned long long _writeCount;
+    _Bool _updatingSchema;
     _Bool _isDBOpen;
     NSString *_dbPathDirectory;
     NSString *_dbPathFile;

@@ -8,7 +8,6 @@
 
 @protocol GQHXMLOutput;
 
-__attribute__((visibility("hidden")))
 @interface GQHXML : NSObject
 {
     id <GQHXMLOutput> mOutput;

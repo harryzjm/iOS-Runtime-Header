@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogCocoaTouchFoundation/IBICSchemaProvider-Protocol.h>
-
 @class IBICColorSpace, IBICContrastAppearance, IBICDeviceOrientation, IBICExtent, IBICHeightClass, IBICIdiom, IBICLanguageDirection, IBICLocale, IBICLuminosityAppearance, IBICPlatform, IBICScale, IBICSize, IBICSubtype, IBICSystemVersion, IBICWidthClass, NSArray, NSString;
 
-@interface IBICCocoaTouchSchemaProvider : NSObject <IBICSchemaProvider>
+@interface IBICCocoaTouchSchemaProvider : NSObject
 {
     IBICPlatform *_iOSPlatform;
     IBICIdiom *_universalIdiom;
@@ -34,6 +32,7 @@
     IBICScale *_oneXScale;
     IBICScale *_twoXScale;
     IBICScale *_threeXScale;
+    IBICSize *_anySize;
     IBICSize *_size20;
     IBICSize *_size29;
     IBICSize *_size40;
@@ -84,6 +83,7 @@
     IBICContrastAppearance *_highContrast;
 }
 
++ (void)enumerateSuggestedAppIconPointSizesAndScaleUsingBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)registerSystemCatalogColors:(id)arg1;
 - (void)registerARImageSetSlots:(id)arg1;
@@ -96,7 +96,9 @@
 - (void)registerIconBadgeSetSlots:(id)arg1;
 - (void)registerStickerIconSlots:(id)arg1;
 - (void)registerAppIconSetSlots:(id)arg1;
+- (void)registerLegacyAppIconSetSlots:(id)arg1;
 - (id)appIconDetailAreaGroupPathForIdiom:(id)arg1 size:(id)arg2;
+- (id)appIconDetailAreaGroupPathForPlatform:(id)arg1 idiom:(id)arg2 size:(id)arg3;
 - (void)registerMarzipanDataSlots:(id)arg1;
 - (void)registerMarzipanColorSlots:(id)arg1;
 - (void)registerMarzipanImageSlots:(id)arg1;

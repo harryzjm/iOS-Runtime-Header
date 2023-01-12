@@ -6,15 +6,13 @@
 
 #import <Intents/INIntentSlotDescription.h>
 
-#import <WorkflowKit/WFIntentParameterDescription-Protocol.h>
-
 @class NSString;
 
-@interface INIntentSlotDescription (Workflow) <WFIntentParameterDescription>
+@interface INIntentSlotDescription (Workflow)
 - (id)wf_parameterStateForIntentValue:(id)arg1 parameterDefinition:(id)arg2;
 - (id)wf_outputContentItemForOutput:(id)arg1;
 - (void)wf_getProcessedIntentValueForParameterValue:(id)arg1 parameter:(id)arg2 parameterState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)wf_updateParameterDictionary:(id)arg1 parameterClass:(Class)arg2;
+- (void)wf_updateParameterDictionary:(id)arg1 parameterClass:(Class)arg2 localizer:(id)arg3;
 - (id)wf_processedParameterValueForValue:(id)arg1;
 - (id)wf_contentItemForValue:(id)arg1;
 @property(readonly, nonatomic) Class wf_contentItemClass;

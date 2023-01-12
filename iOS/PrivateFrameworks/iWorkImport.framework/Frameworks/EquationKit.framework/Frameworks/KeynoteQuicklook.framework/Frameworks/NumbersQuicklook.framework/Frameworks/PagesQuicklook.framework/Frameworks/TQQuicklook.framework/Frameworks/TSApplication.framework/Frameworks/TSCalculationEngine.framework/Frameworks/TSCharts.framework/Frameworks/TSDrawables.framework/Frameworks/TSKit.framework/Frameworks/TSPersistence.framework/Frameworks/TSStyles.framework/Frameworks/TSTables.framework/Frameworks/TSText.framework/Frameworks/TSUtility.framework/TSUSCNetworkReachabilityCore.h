@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/TSUNetworkReachabilityCore-Protocol.h>
-
 @class NSString;
 
-@interface TSUSCNetworkReachabilityCore : NSObject <TSUNetworkReachabilityCore>
+@interface TSUSCNetworkReachabilityCore : NSObject
 {
     struct __SCNetworkReachability *_reachabilityRef;
     CDUnknownBlockType _notifyBlock;

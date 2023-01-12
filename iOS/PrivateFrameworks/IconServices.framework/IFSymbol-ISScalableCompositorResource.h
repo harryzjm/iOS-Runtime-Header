@@ -6,11 +6,9 @@
 
 #import <IconFoundation/IFSymbol.h>
 
-#import <IconServices/ISScalableCompositorResource-Protocol.h>
-
 @class NSString;
 
-@interface IFSymbol (ISScalableCompositorResource) <ISScalableCompositorResource>
+@interface IFSymbol (ISScalableCompositorResource)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

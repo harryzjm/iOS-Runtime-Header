@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIStatesFeedbackGenerator *feedbackBehaviour; // @synthesize feedbackBehaviour=_feedbackBehaviour;
 @property(retain, nonatomic) UIDelayedAction *longForcePressAction; // @synthesize longForcePressAction=_longForcePressAction;
 @property(nonatomic) int previousForcePressCount; // @synthesize previousForcePressCount=_previousForcePressCount;
@@ -65,7 +66,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGPoint accumulatedBounding; // @synthesize accumulatedBounding=_accumulatedBounding;
 @property(nonatomic) struct CGPoint accumulatedAcceleration; // @synthesize accumulatedAcceleration=_accumulatedAcceleration;
 @property(nonatomic) struct CGPoint lastPanTranslation; // @synthesize lastPanTranslation=_lastPanTranslation;
-@property(nonatomic) id <_UIKeyboardTextSelectionGestureControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <_UIKeyboardTextSelectionGestureControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)configureOneFingerForcePressRecognizer:(id)arg1;
 - (void)configureTwoFingerTapGestureRecognizer:(id)arg1;
 - (void)configureTwoFingerPanGestureRecognizer:(id)arg1;

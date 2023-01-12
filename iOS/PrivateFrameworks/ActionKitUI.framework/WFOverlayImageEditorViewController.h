@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ActionKitUI/WFOverlayImageEditorOptionsViewDelegate-Protocol.h>
-
 @class NSArray, NSLayoutConstraint, NSMapTable, WFFileRepresentation, WFImage, WFOpacitySliderView, WFOverlayImageEditorCanvasView, WFOverlayImageEditorOptionsView;
 
 __attribute__((visibility("hidden")))
-@interface WFOverlayImageEditorViewController : UIViewController <WFOverlayImageEditorOptionsViewDelegate>
+@interface WFOverlayImageEditorViewController : UIViewController
 {
     WFImage *_overlayImage;
     NSArray *_fileRepresentations;

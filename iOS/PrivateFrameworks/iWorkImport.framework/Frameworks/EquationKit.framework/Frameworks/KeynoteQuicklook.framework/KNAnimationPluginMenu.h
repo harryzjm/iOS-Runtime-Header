@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableDictionary;
 
-@interface KNAnimationPluginMenu : NSObject <NSSecureCoding>
+@interface KNAnimationPluginMenu : NSObject
 {
     NSMutableDictionary *_localizedStringToDirectionMap;
     NSMutableDictionary *_directionToLocalizedStringMap;

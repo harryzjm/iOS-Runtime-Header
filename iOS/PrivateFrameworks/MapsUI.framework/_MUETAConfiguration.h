@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)configurationForEtaStringFor:(unsigned long long)arg1 travelTime:(double)arg2 hasSecondaryController:(_Bool)arg3 isStackingButtons:(_Bool)arg4;
++ (id)addStopConfigurationETAStringForTravelTime:(double)arg1;
 + (id)rerouteConfigurationETAStringForTravelTime:(double)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *etaString; // @synthesize etaString=_etaString;

@@ -16,6 +16,7 @@
 - (id)_gkFrameworkVersionDescription;
 - (_Bool)_gkIsPurpleBuddy;
 - (_Bool)_gkIsDaemon;
+- (_Bool)_gkIsContacts;
 - (_Bool)_gkIsFirstParty;
 - (_Bool)_gkIsPreferences;
 - (_Bool)_gkIsGameCenterExtension;

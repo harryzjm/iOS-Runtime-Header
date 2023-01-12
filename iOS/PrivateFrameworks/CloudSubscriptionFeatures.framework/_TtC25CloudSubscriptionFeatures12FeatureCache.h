@@ -11,7 +11,7 @@
 @interface _TtC25CloudSubscriptionFeatures12FeatureCache : _TtCs12_SwiftObject
 {
     MISSING_TYPE *defaults;
-    MISSING_TYPE *$__lazy_storage_$_bootSessionUUID;
+    MISSING_TYPE *lock;
 }
 
 @end

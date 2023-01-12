@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIPanOrFlickGestureRecognizerDelegate-Protocol.h>
+#import "UITextInteraction.h"
 
 @class NSMapTable, NSString, NSTimer, _UIKeyboardTextSelectionGestureController, _UIPanOrFlickGestureRecognizer, _UITouchesObservingGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyboardTextSelectionInteraction <_UIPanOrFlickGestureRecognizerDelegate>
+@interface _UIKeyboardTextSelectionInteraction : UITextInteraction
 {
     _UIKeyboardTextSelectionGestureController *_owner;
     NSMapTable *_weakMap;
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)attachToExistingRecogniser:(id)arg1 owner:(id)arg2 forType:(long long)arg3;
+- (void).cxx_destruct;
 - (void)removeTemporaryGesture;
 - (void)oneFingerForcePress:(id)arg1;
 - (void)_clearTouchPadCallback;
@@ -33,7 +34,9 @@ __attribute__((visibility("hidden")))
 - (void)_logTapCounts:(id)arg1;
 - (void)_longForcePressDetected:(id)arg1;
 - (void)_beginLongForcePressTimerForGesture:(id)arg1;
-- (void)indirectPanGestureWithState:(long long)arg1 withTranslation:(struct CGPoint)arg2 withFlickDirection:(unsigned long long)arg3;
+- (void)indirectPanGestureWithState:(long long)arg1 withTranslation:(struct CGPoint)arg2 withFlickDirection:(unsigned long long)arg3 isShiftKeyBeingHeld:(_Bool)arg4;
+- (void)handleRemoteIndirectGestureWithState:(id)arg1;
+- (void)forwardIndirectGestureWithType:(long long)arg1 state:(long long)arg2 translation:(struct CGPoint)arg3 flickDirection:(unsigned long long)arg4 touchCount:(unsigned long long)arg5;
 - (void)cancelLongPressWithExecutionContext:(id)arg1;
 - (void)endLongPressWithExecutionContext:(id)arg1;
 - (void)finishLongPressWithExecutionContext:(id)arg1;
@@ -51,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)handleTwoFingerFlickInDirection:(long long)arg1 executionContext:(id)arg2;
 - (void)endTwoFingerPanWithExecutionContext:(id)arg1;
 - (void)updateTwoFingerPanWithTranslation:(struct CGPoint)arg1 executionContext:(id)arg2;
-- (void)beginTwoFingerPanWithTranslation:(struct CGPoint)arg1 executionContext:(id)arg2;
+- (void)beginTwoFingerPanWithTranslation:(struct CGPoint)arg1 isShiftKeyBeingHeld:(_Bool)arg2 executionContext:(id)arg3;
 - (void)beginTwoFingerCursorPanWithTranslation:(struct CGPoint)arg1 executionContext:(id)arg2;
 - (void)endIndirectBlockPanWithExecutionContext:(id)arg1;
 - (void)updateIndirectBlockPanWithTranslation:(struct CGPoint)arg1 executionContext:(id)arg2;

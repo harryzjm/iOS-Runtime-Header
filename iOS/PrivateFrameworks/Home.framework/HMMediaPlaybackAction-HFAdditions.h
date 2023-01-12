@@ -7,6 +7,7 @@
 #import <HomeKit/HMMediaPlaybackAction.h>
 
 @interface HMMediaPlaybackAction (HFAdditions)
+- (id)hf_affectedAccessoryRepresentables;
 - (id)hf_affectedAccessoryProfiles;
 - (id)hf_affectedCharacteristic;
 @end

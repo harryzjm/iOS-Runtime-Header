@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VoiceMemos/RCKeyPathObservance-Protocol.h>
-
 @class NSArray, NSString;
 @protocol NSObject;
 
 __attribute__((visibility("hidden")))
-@interface __RCKeyPathObservance : NSObject <RCKeyPathObservance>
+@interface __RCKeyPathObservance : NSObject
 {
     id <NSObject> _object;
     NSArray *_keyPaths;

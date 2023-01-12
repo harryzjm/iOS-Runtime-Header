@@ -6,7 +6,7 @@
 
 #import <WebBookmarks/NSObject-Protocol.h>
 
-@class CKRecord, CKRecordID, NSArray;
+@class CKRecord, CKRecordID, NSArray, NSData, NSString;
 
 @protocol WBSSettingsSyncEngineAccess <NSObject>
 @property(readonly, nonatomic) _Bool backgroundImageAppearanceIsLight;
@@ -14,5 +14,12 @@
 @property(readonly, nonatomic) NSArray *syncSettingsUpDictionary;
 - (void)didDeleteRemoteRecordWithID:(CKRecordID *)arg1;
 - (void)didReceiveRemoteCloudSettingsUpdateWithRecord:(CKRecord *)arg1;
+
+@optional
+- (void)clearAllPageZoomSyncData;
+- (void)setPageZoomSyncData:(NSData *)arg1 forRecordName:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
+- (NSData *)pageZoomSyncDataForRecordName:(NSString *)arg1;
+- (NSArray *)macZoomPreferences;
+- (void)deleteBackgroundImageDirectory;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCEmulatedNetworkAlgorithm-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCEmulatedNetworkAlgorithmQueueBandwidth : NSObject <VCEmulatedNetworkAlgorithm>
+@interface VCEmulatedNetworkAlgorithmQueueBandwidth : NSObject
 {
     NSDictionary *_policies;
     double _expectedProcessEndTime;
@@ -19,14 +17,24 @@ __attribute__((visibility("hidden")))
     unsigned int _networkQueueServiceRate;
     unsigned int _networkQueueServiceRateMean;
     unsigned int _networkQueueServiceRateStdDev;
+    unsigned int _networkQueueAQMRate;
     int _currentIndexForServiceRate;
     int _currentIndexForServiceRateDistribution;
+    int _currentIndexForAQMRate;
     double _lastNetworkQueueServiceRateLoadTime;
     double _lastNetworkQueueServiceRateDistributionLoadTime;
+    double _lastNetworkQueueAQMRateLoadTime;
+    double _budgetBufferPktTime[4096];
+    double _budgetBufferPktSize[4096];
+    int _budgentBufferIndex;
+    int _budgetBufferSize;
 }
 
 @property unsigned int packetCountInNetworkQueue; // @synthesize packetCountInNetworkQueue=_packetCountInNetworkQueue;
 @property(readonly, nonatomic) double expectedProcessEndTime; // @synthesize expectedProcessEndTime=_expectedProcessEndTime;
+- (int)getRemainingAQMBudgetWithPacket:(id)arg1;
+- (void)addPacketToBudgetBuffer:(id)arg1;
+- (_Bool)shouldDropPacketWithCurrentAQMBudget:(id)arg1;
 - (void)process:(id)arg1;
 - (double)computeNetworkServiceRate;
 - (void)updateSettingsAtTime:(double)arg1 impairments:(id)arg2;

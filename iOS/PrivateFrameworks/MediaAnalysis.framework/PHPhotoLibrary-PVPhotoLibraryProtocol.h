@@ -6,16 +6,13 @@
 
 #import <Photos/PHPhotoLibrary.h>
 
-#import <MediaAnalysis/PVPhotoLibraryProtocol-Protocol.h>
-
 @class NSString;
 
-@interface PHPhotoLibrary (PVPhotoLibraryProtocol) <PVPhotoLibraryProtocol>
+@interface PHPhotoLibrary (PVPhotoLibraryProtocol)
 + (id)_defaultFacePropertySets;
 + (id)_defaultAssetPropertySets;
 + (id)_phPeopleSortDescriptors;
 + (id)_phFaceSortDescriptors;
-+ (_Bool)_includeTorsoOnlyFaces;
 + (id)vcp_defaultMediaAnalysisDatabaseFilepath;
 + (id)vcp_defaultURL;
 + (id)vcp_defaultPhotoLibrary;
@@ -51,6 +48,9 @@
 - (id)_defaultAssetFetchOptions;
 - (id)_defaultFetchOptions;
 - (_Bool)pv_performChangesAndWait:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (_Bool)vcp_requiresDownloadForTask:(unsigned long long)arg1;
+- (id)vcp_description;
+- (unsigned long long)vcp_requiredFaceLibraryProcessingSubTasks;
 - (_Bool)vcp_requiresProcessingForTask:(unsigned long long)arg1;
 - (_Bool)vcp_isSyndicationLibrary;
 - (unsigned long long)mad_countOfUnclusteredFaces;

@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionViewListCell.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDCell
+@interface _UIKeyShortcutHUDCell : UICollectionViewListCell
 {
     _Bool _flashing;
     _Bool _categoryVisible;
@@ -24,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldSkipKeyCommand:(id)arg1 forMovement:(long long)arg2;
 - (long long)_focusItemDeferralMode;
 - (_Bool)canBecomeFocused;
-- (_Bool)_wantsFocusRing;
+- (id)_defaultFocusEffect;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

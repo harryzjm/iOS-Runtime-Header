@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIPopoverViewBackgroundComponentView
+@interface _UIPopoverViewBackgroundComponentView : UIView
 {
     NSMutableArray *_replicants;
     NSString *_directionSelector;

@@ -6,12 +6,10 @@
 
 #import <Foundation/NSProxy.h>
 
-#import <WebKit/WKObject-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKObject : NSProxy <WKObject>
+@interface WKObject : NSProxy
 {
     _Bool _hasInitializedTarget;
     struct RetainPtr<NSObject> _target;

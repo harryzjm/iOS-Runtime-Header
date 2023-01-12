@@ -14,6 +14,7 @@
 @property(readonly, nonatomic) CKRecord *asCKRecord;
 @property(readonly, nonatomic, getter=isPruningDisabled) _Bool pruningDisabled;
 @property(readonly, nonatomic) unsigned long long articleLikingStatus;
+@property(readonly, nonatomic) _Bool hasArticleBeenRemovedFromAudio;
 @property(readonly, nonatomic) _Bool hasArticleCompletedReading;
 @property(readonly, nonatomic) _Bool hasArticleCompletedListening;
 @property(readonly, nonatomic) _Bool hasArticleBeenConsumed;
@@ -27,6 +28,7 @@
 @property(readonly, copy, nonatomic) NSDate *lastListenedAt;
 @property(readonly, copy, nonatomic) NSDate *listeningProgressSavedAt;
 @property(readonly, nonatomic) double listeningProgress;
+@property(readonly, nonatomic) long long listenedCount;
 @property(readonly, nonatomic) long long maxVersionSeen;
 @property(readonly, copy, nonatomic) NSDate *firstSeenAtOfMaxVersionSeen;
 @property(readonly, copy, nonatomic) NSDate *firstSeenAt;

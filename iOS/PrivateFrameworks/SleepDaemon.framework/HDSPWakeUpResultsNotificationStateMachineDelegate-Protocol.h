@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineDelegate-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineDelegate-Protocol.h>
 
-@protocol HDSPWakeUpResultsNotificationStateMachineDelegate <HKSPStateMachineDelegate>
+@protocol HDSPWakeUpResultsNotificationStateMachineDelegate <HKSPPersistentStateMachineDelegate>
 - (void)postResultsNotification;
 - (void)executeQuery;
 - (void)stopObservingProtectedHealthDataAvailability;
 - (void)startObservingProtectedHealthDataAvailability;
 - (void)unscheduleRetryAttempt;
 - (void)scheduleRetryAttempt;
-- (void)unscheduleTrackingDelay;
-- (void)scheduleTrackingDelay;
 @end
 

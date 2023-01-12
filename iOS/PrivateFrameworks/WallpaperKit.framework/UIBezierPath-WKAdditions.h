@@ -7,6 +7,7 @@
 #import <UIKit/UIBezierPath.h>
 
 @interface UIBezierPath (WKAdditions)
++ (id)wk_parallelogramInRect:(struct CGRect)arg1 stripeIndex:(long long)arg2 firstStripeBaseY:(double)arg3 stripeAngle:(double)arg4 stripeWidth:(double)arg5 sizeScaleFactor:(double)arg6;
 + (id)wk_parallelogramInRect:(struct CGRect)arg1 stripeIndex:(long long)arg2 firstStripeBaseY:(double)arg3 sizeScaleFactor:(double)arg4;
 + (id)wk_parallelogramInRect:(struct CGRect)arg1 stripeIndex:(long long)arg2 firstStripeBaseY:(double)arg3;
 @end

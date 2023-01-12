@@ -6,16 +6,14 @@
 
 #import <GeoServices/GEOPictureItem.h>
 
-#import <MapsUI/MUPlaceTileViewModel-Protocol.h>
+@class NSString;
 
-@class NSString, UIImage;
-
-@interface GEOPictureItem (MUPlaceTileViewModel) <MUPlaceTileViewModel>
+@interface GEOPictureItem (MUPlaceTileViewModel)
 @property(readonly, nonatomic) unsigned long long expectedNumberOfFooterLines;
 - (id)footerAttributedStringForFont:(id)arg1;
 - (id)subtitleAttributedStringForFont:(id)arg1;
-@property(readonly, nonatomic) UIImage *fallbackImage;
-@property(readonly, nonatomic) UIImage *badgeIcon;
+- (void)fetchFallbackIconWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchBadgeIconWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchImageTilewWithSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)tileSubtitle;
 @property(readonly, nonatomic) NSString *tileName;

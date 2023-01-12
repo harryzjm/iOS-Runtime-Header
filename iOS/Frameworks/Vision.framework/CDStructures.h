@@ -6,32 +6,30 @@
 
 @class MISSING_TYPE;
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
-struct CC_MD5state_st {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7[16];
-    int _field8;
+struct BufferSize {
+    unsigned long long width;
+    unsigned long long height;
+};
+
+struct BufferSizeFormat {
+    unsigned long long width;
+    unsigned long long height;
+    unsigned int format;
 };
 
 struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
 };
 
 struct CGPoint {
@@ -55,24 +53,13 @@ struct CVMLCanceller {
     int _field3;
 };
 
-struct CVPixelBufferWrapper {
-    struct __CVBuffer *_field1;
-};
-
 struct CamGazePredictor;
-
-struct EPolygon;
-
-struct EPolygonList {
-    int _field1;
-    int _field2;
-    struct EPolygon *_field3;
-    int _field4;
-};
 
 struct FaceClustering;
 
 struct FaceFrontalizer;
+
+struct FaceID3Model;
 
 struct FaceIDModel;
 
@@ -127,6 +114,8 @@ struct ImageDescriptorProcessorAbstract {
     CDUnknownFunctionPointerType *_field1;
 };
 
+struct ImageDescriptorProcessorHyperplaneLSH;
+
 struct InternalParameters {
     int minRegionSizeX;
     int minRegionSizeY;
@@ -155,8 +144,6 @@ struct LandmarkAttributes;
 
 struct LandmarkDetectorDNN;
 
-struct LandmarkDetectorERT;
-
 struct MPClusteringTreeNode {
     id _field1;
     int _field2;
@@ -169,8 +156,6 @@ struct MPClusteringTreeNode {
     struct MPClusteringTreeNode *_field9;
 };
 
-struct ObjectDetector_DCNFaceDetector;
-
 struct ObjectDetector_DCNFaceDetector_v2;
 
 struct ObjectTrackerAbstract;
@@ -179,19 +164,6 @@ struct ObjectTrackerOptions {
     CDUnknownFunctionPointerType *_field1;
     id _field2;
     int _field3;
-};
-
-struct OpticalFlowOptions {
-    id _field1;
-    unsigned int _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    _Bool _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    float _field8;
-    float _field9;
-    float _field10;
 };
 
 struct Options {
@@ -412,6 +384,11 @@ struct __tree_end_node<std::__tree_node_base<void *>*> {
     void *__left_;
 };
 
+struct basic_string_view<char, std::char_traits<char>> {
+    char *_field1;
+    unsigned long long _field2;
+};
+
 struct deque<std::vector<CGPointWithPts>, std::allocator<std::vector<CGPointWithPts>>> {
     struct __split_buffer<std::vector<CGPointWithPts>*, std::allocator<std::vector<CGPointWithPts>*>> {
         void **__first_;
@@ -482,20 +459,12 @@ struct mapped_model_file {
 
 struct model_file_cache;
 
-struct optional<OpticalFlowOptions> {
-    union {
-        char _field1;
-        struct OpticalFlowOptions _field2;
-    } _field1;
-    _Bool _field2;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct shared_ptr<apple::vision::libraries::autotrace::EPolygonList> {
-    struct EPolygonList *__ptr_;
+struct shared_ptr<const std::vector<std::tuple<std::string, float, bool>>> {
+    void *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -521,6 +490,11 @@ struct shared_ptr<vision::mod::FaceClustering> {
 
 struct shared_ptr<vision::mod::FaceFrontalizer> {
     struct FaceFrontalizer *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<vision::mod::FaceID3Model> {
+    struct FaceID3Model *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -551,6 +525,11 @@ struct shared_ptr<vision::mod::FaceprintAndAttributes> {
 
 struct shared_ptr<vision::mod::GazeFollowPredictor> {
     struct GazeFollowPredictor *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<vision::mod::ImageAnalyzer> {
+    struct ImageAnalyzer *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -586,16 +565,6 @@ struct shared_ptr<vision::mod::LandmarkAttributes> {
 
 struct shared_ptr<vision::mod::LandmarkDetectorDNN> {
     struct LandmarkDetectorDNN *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<vision::mod::LandmarkDetectorERT> {
-    struct LandmarkDetectorERT *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<vision::mod::ObjectDetector_DCNFaceDetector> {
-    struct ObjectDetector_DCNFaceDetector *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -637,6 +606,18 @@ struct tuple<float, float, float> {
     } _field1;
 };
 
+struct unique_ptr<SessionsHandler<VNVTImageRotationSession>, std::default_delete<SessionsHandler<VNVTImageRotationSession>>> {
+    struct __compressed_pair<SessionsHandler<VNVTImageRotationSession>*, std::default_delete<SessionsHandler<VNVTImageRotationSession>>> {
+        void *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<SessionsHandler<VNVTPixelTransferSession>, std::default_delete<SessionsHandler<VNVTPixelTransferSession>>> {
+    struct __compressed_pair<SessionsHandler<VNVTPixelTransferSession>*, std::default_delete<SessionsHandler<VNVTPixelTransferSession>>> {
+        void *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<apple::vision::OpticalFlow::LKTCPU, std::default_delete<apple::vision::OpticalFlow::LKTCPU>> {
     struct __compressed_pair<apple::vision::OpticalFlow::LKTCPU *, std::default_delete<apple::vision::OpticalFlow::LKTCPU>> {
         struct LKTCPU *__value_;
@@ -649,9 +630,36 @@ struct unique_ptr<cvml::util::model_file_cache, std::default_delete<cvml::util::
     } __ptr_;
 };
 
-struct unique_ptr<vision::mod::ImageAnalyzer, std::default_delete<vision::mod::ImageAnalyzer>> {
-    struct __compressed_pair<vision::mod::ImageAnalyzer *, std::default_delete<vision::mod::ImageAnalyzer>> {
-        struct ImageAnalyzer *__value_;
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
     } __ptr_;
 };
 
@@ -661,17 +669,68 @@ struct unique_ptr<vision::mod::ImageAnalyzer_PCA, std::default_delete<vision::mo
     } __ptr_;
 };
 
-struct unique_ptr<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>, std::default_delete<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>>> {
-    struct __compressed_pair<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>*, std::default_delete<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>>> {
-        void *__value_;
+struct unique_ptr<vision::mod::ImageDescriptorProcessorHyperplaneLSH, std::default_delete<vision::mod::ImageDescriptorProcessorHyperplaneLSH>> {
+    struct __compressed_pair<vision::mod::ImageDescriptorProcessorHyperplaneLSH *, std::default_delete<vision::mod::ImageDescriptorProcessorHyperplaneLSH>> {
+        struct ImageDescriptorProcessorHyperplaneLSH *__value_;
     } __ptr_;
 };
 
+struct unordered_map<NSString *, apple::vision::BufferSize, std::hash<NSString *>, std::equal_to<NSString *>, std::allocator<std::pair<NSString *const, apple::vision::BufferSize>>> {
+    struct __hash_table<std::__hash_value_type<NSString *, apple::vision::BufferSize>, std::__unordered_map_hasher<NSString *, std::__hash_value_type<NSString *, apple::vision::BufferSize>, std::hash<NSString *>, std::equal_to<NSString *>, true>, std::__unordered_map_equal<NSString *, std::__hash_value_type<NSString *, apple::vision::BufferSize>, std::equal_to<NSString *>, std::hash<NSString *>, true>, std::allocator<std::__hash_value_type<NSString *, apple::vision::BufferSize>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, apple::vision::BufferSize>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<NSString *, std::__hash_value_type<NSString *, apple::vision::BufferSize>, std::hash<NSString *>, std::equal_to<NSString *>, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<NSString *, std::__hash_value_type<NSString *, apple::vision::BufferSize>, std::equal_to<NSString *>, std::hash<NSString *>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<NSString *, espresso_buffer_t, std::hash<NSString *>, std::equal_to<NSString *>, std::allocator<std::pair<NSString *const, espresso_buffer_t>>> {
+    struct __hash_table<std::__hash_value_type<NSString *, espresso_buffer_t>, std::__unordered_map_hasher<NSString *, std::__hash_value_type<NSString *, espresso_buffer_t>, std::hash<NSString *>, std::equal_to<NSString *>, true>, std::__unordered_map_equal<NSString *, std::__hash_value_type<NSString *, espresso_buffer_t>, std::equal_to<NSString *>, std::hash<NSString *>, true>, std::allocator<std::__hash_value_type<NSString *, espresso_buffer_t>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<NSString *, espresso_buffer_t>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<NSString *, std::__hash_value_type<NSString *, espresso_buffer_t>, std::hash<NSString *>, std::equal_to<NSString *>, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<NSString *, std::__hash_value_type<NSString *, espresso_buffer_t>, std::equal_to<NSString *>, std::hash<NSString *>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<apple::vision::BufferSizeFormat, __CVPixelBufferPool *, std::hash<apple::vision::BufferSizeFormat>, std::equal_to<apple::vision::BufferSizeFormat>, std::allocator<std::pair<const apple::vision::BufferSizeFormat, __CVPixelBufferPool *>>> {
+    struct __hash_table<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, std::__unordered_map_hasher<apple::vision::BufferSizeFormat, std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, std::hash<apple::vision::BufferSizeFormat>, std::equal_to<apple::vision::BufferSizeFormat>, true>, std::__unordered_map_equal<apple::vision::BufferSizeFormat, std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, std::equal_to<apple::vision::BufferSizeFormat>, std::hash<apple::vision::BufferSizeFormat>, true>, std::allocator<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<apple::vision::BufferSizeFormat, std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, std::hash<apple::vision::BufferSizeFormat>, std::equal_to<apple::vision::BufferSizeFormat>, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<apple::vision::BufferSizeFormat, std::__hash_value_type<apple::vision::BufferSizeFormat, __CVPixelBufferPool *>, std::equal_to<apple::vision::BufferSizeFormat>, std::hash<apple::vision::BufferSizeFormat>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
 struct vImage_Buffer {
-    void *data;
-    unsigned long long height;
-    unsigned long long width;
-    unsigned long long rowBytes;
+    void *_field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
 };
 
 struct vector<MPClusteringTreeNode *, std::allocator<MPClusteringTreeNode *>> {
@@ -687,22 +746,6 @@ struct vector<_Geometry2D_point2D_, std::allocator<_Geometry2D_point2D_>> {
     struct _Geometry2D_point2D_ *__end_;
     struct __compressed_pair<_Geometry2D_point2D_ *, std::allocator<_Geometry2D_point2D_>> {
         struct _Geometry2D_point2D_ *__value_;
-    } __end_cap_;
-};
-
-struct vector<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
-    void *__begin_;
-    void *__end_;
-    struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
-        void *__value_;
-    } __end_cap_;
-};
-
-struct vector<float, std::allocator<float>> {
-    float *__begin_;
-    float *__end_;
-    struct __compressed_pair<float *, std::allocator<float>> {
-        float *__value_;
     } __end_cap_;
 };
 
@@ -722,37 +765,7 @@ struct vector<std::tuple<simd_float3x3, float>, std::allocator<std::tuple<simd_f
     } __end_cap_;
 };
 
-struct vector<std::tuple<std::string, float, bool>, std::allocator<std::tuple<std::string, float, bool>>> {
-    void *__begin_;
-    void *__end_;
-    struct __compressed_pair<std::tuple<std::string, float, bool>*, std::allocator<std::tuple<std::string, float, bool>>> {
-        void *__value_;
-    } __end_cap_;
-};
-
-struct vector<std::vector<unsigned int>, std::allocator<std::vector<unsigned int>>> {
-    void *__begin_;
-    void *__end_;
-    struct __compressed_pair<std::vector<unsigned int>*, std::allocator<std::vector<unsigned int>>> {
-        void *__value_;
-    } __end_cap_;
-};
-
-struct vector<unsigned int, std::allocator<unsigned int>> {
-    unsigned int *__begin_;
-    unsigned int *__end_;
-    struct __compressed_pair<unsigned int *, std::allocator<unsigned int>> {
-        unsigned int *__value_;
-    } __end_cap_;
-};
-
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned long long _field1;
-    Class _field2;
-    unsigned long long _field3;
-} CDStruct_d47b9615;
 
 typedef struct {
     unsigned long long _field1;
@@ -762,8 +775,8 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    MISSING_TYPE *columns[3];
-} CDStruct_8e0628e6;
+    MISSING_TYPE *_field1[3];
+} CDStruct_d80e62f2;
 
 typedef struct {
     MISSING_TYPE *_field1[4];
@@ -832,27 +845,23 @@ typedef struct {
 typedef struct {
     CDStruct_1b6d18a9 _field1;
     CDStruct_1b6d18a9 _field2;
-    CDStruct_1b6d18a9 _field3;
-} CDStruct_d2aef016;
-
-typedef struct {
-    CDStruct_1b6d18a9 start;
-    CDStruct_1b6d18a9 duration;
-} CDStruct_e83c9415;
+} CDStruct_5c5366e1;
 
 // Template types
-typedef struct optional<OpticalFlowOptions> {
-    union {
-        char _field1;
-        struct OpticalFlowOptions _field2;
-    } _field1;
-    _Bool _field2;
-} optional_059d4cec;
+typedef struct basic_string_view<char, std::char_traits<char>> {
+    char *_field1;
+    unsigned long long _field2;
+} basic_string_view_1993c9b6;
 
 typedef struct shared_ptr<const vision::mod::FaceClustering> {
     struct FaceClustering *__ptr_;
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_8fc713d1;
+
+typedef struct shared_ptr<vision::mod::FaceID3Model> {
+    struct FaceID3Model *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_d8728072;
 
 typedef struct shared_ptr<vision::mod::FaceIDModel> {
     struct FaceIDModel *__ptr_;

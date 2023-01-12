@@ -6,7 +6,7 @@
 
 @interface TSCH3DMatrixRenderProcessor
 {
-    struct StateStack<glm::detail::tmat4x4<float>, 8> _transformStack;
+    struct StateStack<glm::detail::tmat4x4<float>, 8L> _transformStack;
     tmat4x4_3074befe _projection;
     _Bool _transformChanged;
     _Bool _projectionChanged;

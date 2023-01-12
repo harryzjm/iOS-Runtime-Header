@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLRenderPassDescriptor.h"
+
 __attribute__((visibility("hidden")))
-@interface MTLRenderPassDescriptorInternal
+@interface MTLRenderPassDescriptorInternal : MTLRenderPassDescriptor
 {
     struct MTLRenderPassDescriptorPrivate _private;
 }
@@ -34,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (void)setOpenGLModeEnabled:(_Bool)arg1;
 - (_Bool)isDitherEnabled;
 - (void)setDitherEnabled:(_Bool)arg1;
+- (_Bool)skipEmptyTilesOnClearEnabled;
+- (void)setSkipEmptyTilesOnClearEnabled:(_Bool)arg1;
 - (_Bool)fineGrainedBackgroundVisibilityEnabled;
 - (void)setFineGrainedBackgroundVisibilityEnabled:(_Bool)arg1;
 - (unsigned long long)defaultColorSampleCount;

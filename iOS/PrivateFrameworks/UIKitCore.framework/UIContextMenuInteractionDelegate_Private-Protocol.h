@@ -6,12 +6,14 @@
 
 #import <UIKitCore/UIContextMenuInteractionDelegate-Protocol.h>
 
-@class NSArray, UIContextMenuConfiguration, UIContextMenuInteraction, UIGestureRecognizer, _UIContextMenuStyle;
-@protocol UIContextMenuInteractionCommitAnimating;
+@class NSArray, UIContextMenuConfiguration, UIContextMenuInteraction, UIGestureRecognizer, UITargetedPreview, _UIContextMenuStyle;
+@protocol NSCopying, UIContextMenuInteractionCommitAnimating;
 
 @protocol UIContextMenuInteractionDelegate_Private <UIContextMenuInteractionDelegate>
 
 @optional
+- (UITargetedPreview *)_dci_contextMenuInteraction:(UIContextMenuInteraction *)arg1 previewForDismissingToSecondaryItemWithIdentifier:(id <NSCopying>)arg2 configuration:(UIContextMenuConfiguration *)arg3;
+- (UITargetedPreview *)_dci_contextMenuInteraction:(UIContextMenuInteraction *)arg1 previewForHighlightingSecondaryItemWithIdentifier:(id <NSCopying>)arg2 configuration:(UIContextMenuConfiguration *)arg3;
 - (void)contextMenuInteractionDidEnd:(UIContextMenuInteraction *)arg1;
 - (void)contextMenuInteractionWillPresent:(UIContextMenuInteraction *)arg1;
 - (void)contextMenuInteraction:(UIContextMenuInteraction *)arg1 willCommitWithAnimator:(id <UIContextMenuInteractionCommitAnimating>)arg2;

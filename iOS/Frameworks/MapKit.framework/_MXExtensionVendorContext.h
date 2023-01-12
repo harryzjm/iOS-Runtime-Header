@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/_MXExtensionVendorContextType-Protocol.h>
-
 @class NSString;
 @protocol _MXExtensionResponseObserver;
 
 __attribute__((visibility("hidden")))
-@interface _MXExtensionVendorContext <_MXExtensionVendorContextType>
+@interface _MXExtensionVendorContext
 {
     id <_MXExtensionResponseObserver> _observer;
 }

@@ -8,9 +8,12 @@
 #import <IDSFoundation/NSObject-Protocol.h>
 #import <IDSFoundation/NSSecureCoding-Protocol.h>
 
-@class NSSet;
+@class NSDictionary, NSSet;
 
 @protocol IDSDestinationProtocol <NSSecureCoding, NSCopying, NSObject>
 - (NSSet *)destinationURIs;
+
+@optional
+- (NSDictionary *)destinationLightweightStatus;
 @end
 

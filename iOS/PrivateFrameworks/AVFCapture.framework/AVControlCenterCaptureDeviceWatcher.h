@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _handler;
     _Bool _centerStageSupported;
     _Bool _backgroundBlurSupported;
+    _Bool _studioLightingSupported;
     _Bool _micModesSupported;
 }
 
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(readonly) _Bool micModesSupported;
+@property(readonly) _Bool studioLightingSupported;
 @property(readonly) _Bool backgroundBlurSupported;
 @property(readonly) _Bool centerStageSupported;
 - (void)dealloc;

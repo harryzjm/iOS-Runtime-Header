@@ -6,13 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class AVButton, AVControlOverflowButton, AVLayoutView, AVObservationController, AVPlaybackControlsRoutePickerView, AVPlayerViewControllerCustomControlsView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, AVTransportControlsView, AVView, AVVolumeButtonControl, AVVolumeSlider, NSArray, NSUUID, NSValue, UIViewPropertyAnimator;
+@class AVButton, AVControlOverflowButton, AVLayoutView, AVMobileChromeControlsStyleSheet, AVObservationController, AVPlaybackControlsRoutePickerView, AVPlayerViewControllerCustomControlsView, AVScrubber, AVTouchIgnoringView, AVTransportControlsView, AVView, AVVolumeButtonControl, AVVolumeSlider, NSArray, NSUUID, NSValue, UIViewPropertyAnimator;
 @protocol AVPlaybackControlsViewVisibilityDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AVPlaybackControlsView : UIView
 {
-    NSArray *_customControlsViewLayoutGuideConstraints;
     _Bool _fullScreen;
     _Bool _prefersVolumeSliderExpandedAutomatically;
     _Bool _showsPlaybackControls;
@@ -24,8 +23,7 @@ __attribute__((visibility("hidden")))
     _Bool _prefersVideoGravityButtonIncluded;
     _Bool _prefersFullScreenButtonIncluded;
     _Bool _prefersPiPButtonIncluded;
-    AVPlayerViewControllerCustomControlsView *_customControlsView;
-    AVStyleSheet *_styleSheet;
+    AVMobileChromeControlsStyleSheet *_styleSheet;
     long long _preferredUnobscuredArea;
     long long _includedContainers;
     AVTouchIgnoringView *_volumeControlsContainer;
@@ -56,6 +54,7 @@ __attribute__((visibility("hidden")))
     AVButton *_playbackSpeedButton;
     NSArray *_customMediaItems;
     NSArray *_customControlItems;
+    AVPlayerViewControllerCustomControlsView *_customControlsView;
     id <AVPlaybackControlsViewVisibilityDelegate> _visibilityDelegate;
     NSValue *_overrideLayoutMarginsWhenEmbeddedInline;
     AVObservationController *_observationController;
@@ -89,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <AVPlaybackControlsViewVisibilityDelegate> visibilityDelegate; // @synthesize visibilityDelegate=_visibilityDelegate;
 @property(nonatomic) _Bool showsPlaybackControls; // @synthesize showsPlaybackControls=_showsPlaybackControls;
 @property(nonatomic) _Bool prefersVolumeSliderExpandedAutomatically; // @synthesize prefersVolumeSliderExpandedAutomatically=_prefersVolumeSliderExpandedAutomatically;
+@property(retain, nonatomic) AVPlayerViewControllerCustomControlsView *customControlsView; // @synthesize customControlsView=_customControlsView;
 @property(readonly, copy, nonatomic) NSArray *customControlItems; // @synthesize customControlItems=_customControlItems;
 @property(readonly, copy, nonatomic) NSArray *customMediaItems; // @synthesize customMediaItems=_customMediaItems;
 @property(readonly, nonatomic) AVButton *playbackSpeedButton; // @synthesize playbackSpeedButton=_playbackSpeedButton;
@@ -120,8 +120,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long includedContainers; // @synthesize includedContainers=_includedContainers;
 @property(nonatomic) long long preferredUnobscuredArea; // @synthesize preferredUnobscuredArea=_preferredUnobscuredArea;
 @property(nonatomic, getter=isFullScreen) _Bool fullScreen; // @synthesize fullScreen=_fullScreen;
-@property(retain, nonatomic) AVStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
-@property(retain, nonatomic) AVPlayerViewControllerCustomControlsView *customControlsView; // @synthesize customControlsView=_customControlsView;
+@property(retain, nonatomic) AVMobileChromeControlsStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
 - (id)_customControlsViewIfLoaded;
 - (id)_playbackControlsViewsForControlItems:(id)arg1 withType:(long long)arg2;
 - (id)_playbackControlsViewItems;
@@ -145,14 +144,13 @@ __attribute__((visibility("hidden")))
 - (void)_updateTransportControlsFrame;
 - (void)_showPlaybackControlsAnimated:(_Bool)arg1;
 - (void)layoutSubviews;
-- (void)avkit_sizeWasInvalidatedNeedingLayoutIfNeeded:(id)arg1;
+- (void)avkit_intrinsicContentSizeOfSubviewWasInvalidated:(id)arg1;
 - (void)avkit_reevaluateHiddenStateOfItem:(id)arg1;
 - (void)safeAreaInsetsDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setPrefersVolumeSliderExpanded:(_Bool)arg1 prefersVolumeButtonIncluded:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)showPlaybackControls:(_Bool)arg1 immediately:(_Bool)arg2;
-- (void)updateLayoutForChangedControlsVisibility;
 @property(readonly, nonatomic) _Bool hasVisibleSubview;
 - (void)animateAlongsideVisibilityAnimationsWithAnimationCoordinator:(id)arg1 appearingViews:(id)arg2 disappearingViews:(id)arg3;
 - (void)setCustomControlItems:(id)arg1 animations:(CDUnknownBlockType)arg2;
@@ -163,7 +161,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool includesAudioControlsContainer;
 @property(readonly, nonatomic) _Bool showsProminentPlayButton;
 - (void)setIncludedContainers:(long long)arg1 animations:(CDUnknownBlockType)arg2;
-- (void)_setUpCustomControlsViewConstraintsIfNeeded;
 - (void)setupInitialLayout;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 styleSheet:(id)arg2;

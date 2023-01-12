@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/LSInternalWorkspaceObserverProtocol-Protocol.h>
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 @class NSHashTable, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface LSApplicationWorkspaceRemoteObserver : NSObject <LSInternalWorkspaceObserverProtocol, NSSecureCoding>
+@interface LSApplicationWorkspaceRemoteObserver : NSObject
 {
     NSUUID *_uuid;
     NSHashTable *_observers;
@@ -25,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(getter=isObservinglsd) _Bool observinglsd; // @synthesize observinglsd=_observinglsd;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+- (void)databaseWasRebuilt;
+- (void)applicationsDidChangePersonas:(id)arg1;
 - (void)deviceManagementPolicyDidChange:(id)arg1;
 - (void)networkUsageChanged:(_Bool)arg1;
 - (void)applicationIconDidChange:(id)arg1;
@@ -46,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)applicationInstallsDidChange:(id)arg1;
 - (void)applicationInstallsDidUpdateIcon:(id)arg1;
 - (void)applicationInstallsDidStart:(id)arg1;
+- (_Bool)messageObserversWithSelector:(SEL)arg1;
 - (_Bool)messageObserversWithSelector:(SEL)arg1 andApps:(id)arg2;
 - (unsigned long long)currentObserverCount;
 - (id)localObservers;

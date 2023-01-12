@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)getLogger;
 - (id)remainingCreditDescription:(id)arg1;
 - (_Bool)shouldShowRemainingCredit:(id)arg1;
 - (id)messagesDescription:(id)arg1;

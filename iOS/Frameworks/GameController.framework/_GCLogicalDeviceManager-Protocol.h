@@ -7,10 +7,10 @@
 #import <GameController/_GCDeviceManager-Protocol.h>
 
 @class NSSet, _GCDeviceConfiguration;
-@protocol GCLogicalDeviceRegistry, _GCLogicalDevice;
+@protocol _GCLogicalDevice, _GCLogicalDeviceRegistry;
 
 @protocol _GCLogicalDeviceManager <_GCDeviceManager>
-@property __weak id <GCLogicalDeviceRegistry> deviceRegistry;
+@property __weak id <_GCLogicalDeviceRegistry> deviceRegistry;
 - (id <_GCLogicalDevice>)makeDeviceWithConfiguration:(_GCDeviceConfiguration *)arg1 dependencies:(NSSet *)arg2;
 
 @optional

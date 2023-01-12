@@ -6,30 +6,38 @@
 
 #import <UIKit/UIControl.h>
 
-#import <AppStoreComponents/ASCLockupMediaPresenterView-Protocol.h>
-
-@class ASCScreenshots, ASCTrailers, ASCVideoView, NSArray, NSMutableArray, NSString;
+@class ASCScreenshots, ASCTrailers, ASCVideoView, NSArray, NSMutableArray, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface ASCLockupMediaView : UIControl <ASCLockupMediaPresenterView>
+@interface ASCLockupMediaView : UIControl
 {
+    _Bool _videoLoopingEnabled;
+    _Bool _videoMuted;
     ASCVideoView *_videoView;
+    NSString *_context;
     unsigned long long _numberOfViews;
     ASCScreenshots *_screenshots;
     ASCTrailers *_trailers;
     NSMutableArray *_imageViews;
+    UIView *_containerView;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(readonly, nonatomic) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
 @property(copy, nonatomic) ASCTrailers *trailers; // @synthesize trailers=_trailers;
 @property(copy, nonatomic) ASCScreenshots *screenshots; // @synthesize screenshots=_screenshots;
 @property(nonatomic) unsigned long long numberOfViews; // @synthesize numberOfViews=_numberOfViews;
+@property(nonatomic, getter=isVideoMuted) _Bool videoMuted; // @synthesize videoMuted=_videoMuted;
+@property(nonatomic, getter=isVideoLoopingEnabled) _Bool videoLoopingEnabled; // @synthesize videoLoopingEnabled=_videoLoopingEnabled;
+@property(copy, nonatomic) NSString *context; // @synthesize context=_context;
 @property(retain, nonatomic) ASCVideoView *videoView; // @synthesize videoView=_videoView;
-- (void)setImage:(id)arg1 atIndex:(long long)arg2 withDecoration:(id)arg3;
+- (void)setImage:(id)arg1 atIndex:(long long)arg2;
+- (void)setScreenshots:(id)arg1 andTrailers:(id)arg2;
 - (void)prepareForReuse;
 - (void)updateImageViews;
 - (unsigned long long)numberOfImageViews;
+- (struct UIEdgeInsets)layoutMarginsForCurrentContext;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;

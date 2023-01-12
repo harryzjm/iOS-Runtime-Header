@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPMediaPickerRemoteViewLoader-Protocol.h>
-
 @class MPMediaPickerController, MPMusicMediaPickerRemoteViewController, NSString, UIViewController, _UIResilientRemoteViewContainerViewController;
 
 __attribute__((visibility("hidden")))
-@interface MPMediaPickerController_Appex : NSObject <MPMediaPickerRemoteViewLoader>
+@interface MPMediaPickerController_Appex : NSObject
 {
     _UIResilientRemoteViewContainerViewController *_remoteViewContainerViewController;
     MPMusicMediaPickerRemoteViewController *_musicRemoteViewController;

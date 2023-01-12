@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KeynoteQuicklook/TSKEncryptedDocumentExporter-Protocol.h>
-
 @class NSDictionary, NSString, TSUProgress;
 
-@interface KNPdfExporter <TSKEncryptedDocumentExporter>
+@interface KNPdfExporter
 {
     NSDictionary *_options;
 }

@@ -8,6 +8,7 @@
 
 @interface UIColor (Utilities)
 + (id)vk_randomColor;
+@property(readonly, copy, nonatomic) UIColor *vk_resolvedColor;
 @property(readonly, nonatomic) UIColor *vk_colorWithMaxSaturation;
 @property(readonly, nonatomic) UIColor *vk_colorWith80PercentOpacity;
 @property(readonly, nonatomic) UIColor *vk_colorWith60PercentOpacity;

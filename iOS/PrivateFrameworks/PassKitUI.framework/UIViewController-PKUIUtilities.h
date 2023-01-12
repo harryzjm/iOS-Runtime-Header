@@ -14,6 +14,7 @@
 - (void)pk_presentViewController:(id)arg1 animated:(_Bool)arg2 popToViewControllerAfterPresentation:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)pk_paymentSetupPreflight:(CDUnknownBlockType)arg1;
 - (void)pk_paymentSetupSetHideSetupLaterButton:(_Bool)arg1;
+- (void)presentModalViewController:(id)arg1 withPaymentSetupContext:(long long)arg2;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
 @end

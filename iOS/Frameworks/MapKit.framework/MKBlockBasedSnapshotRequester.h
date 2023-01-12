@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapSnapshotCreatorRequester-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKBlockBasedSnapshotRequester : NSObject <MKMapSnapshotCreatorRequester>
+@interface MKBlockBasedSnapshotRequester : NSObject
 {
     CDUnknownBlockType handler;
 }

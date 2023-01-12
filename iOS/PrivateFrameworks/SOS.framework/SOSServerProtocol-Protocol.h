@@ -6,7 +6,10 @@
 
 #import <SOS/NSObject-Protocol.h>
 
+@class NSUUID;
+
 @protocol SOSServerProtocol <NSObject>
+- (void)triggerSOSWithUUID:(NSUUID *)arg1 triggerMechanism:(long long)arg2 completion:(void (^)(long long))arg3;
 - (void)mostRecentLocationSentWithCompletion:(void (^)(CLLocation *))arg1;
 - (void)isSendingLocationUpdate:(void (^)(_Bool))arg1;
 - (void)stopSendingLocationUpdate;

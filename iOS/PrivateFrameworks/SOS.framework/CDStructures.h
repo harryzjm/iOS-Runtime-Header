@@ -4,10 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CGPoint {
@@ -25,8 +21,8 @@ struct CGSize {
     double _field2;
 };
 
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 

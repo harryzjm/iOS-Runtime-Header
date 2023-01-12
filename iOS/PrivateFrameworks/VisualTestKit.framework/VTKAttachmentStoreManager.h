@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/VTKStoreManager-Protocol.h>
-
 @class NSString, VTKFileStoreManager;
 
 __attribute__((visibility("hidden")))
-@interface VTKAttachmentStoreManager : NSObject <VTKStoreManager>
+@interface VTKAttachmentStoreManager : NSObject
 {
     VTKFileStoreManager *_fileStoreManager;
 }

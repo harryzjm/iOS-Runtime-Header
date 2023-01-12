@@ -7,5 +7,7 @@
 #import <UIKit/UIMenu.h>
 
 @interface UIMenu (RecentlyClosedTabs)
++ (id)safari_recentlyClosedTabsMenuItemsWithOpenHandler:(CDUnknownBlockType)arg1;
++ (id)safari_recentlyClosedTabsMenuWithOpenHandler:(CDUnknownBlockType)arg1;
 @end
 

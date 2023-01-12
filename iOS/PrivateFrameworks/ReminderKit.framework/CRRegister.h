@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ReminderKit/CRCoding-Protocol.h>
-#import <ReminderKit/CRDataType-Protocol.h>
-
 @class CRDocument, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CRRegister : NSObject <CRDataType, CRCoding>
+@interface CRRegister : NSObject
 {
     CRDocument *_document;
 }

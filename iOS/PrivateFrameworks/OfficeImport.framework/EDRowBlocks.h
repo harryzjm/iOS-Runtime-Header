@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/TSUiOSMemoryWarningFlushable-Protocol.h>
-
 @class EDCollection, EDWorksheet, NSMutableArray, NSRecursiveLock, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDRowBlocks : NSObject <TSUiOSMemoryWarningFlushable>
+@interface EDRowBlocks : NSObject
 {
     EDWorksheet *mWorksheet;
     NSMutableArray *mRowBlocks;

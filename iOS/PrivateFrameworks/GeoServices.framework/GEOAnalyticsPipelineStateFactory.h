@@ -29,7 +29,12 @@ __attribute__((visibility("hidden")))
 - (void)sessionStateForType:(int)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)stateForType:(long long)arg1;
 - (int)logMsgStateTypeForType:(long long)arg1;
+- (int)_launchActionFromAPLaunchAction:(int)arg1;
+- (int)_privacyAllowedActionFromActualAction:(int)arg1;
 - (id)curatedCollectionRedacted;
+- (id)placeCardReveal;
+- (id)impressionObject;
+- (id)searchResults;
 - (id)mapUIShown;
 - (void)dealloc;
 - (id)init;

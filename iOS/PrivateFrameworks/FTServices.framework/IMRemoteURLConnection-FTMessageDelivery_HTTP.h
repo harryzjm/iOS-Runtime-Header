@@ -6,11 +6,9 @@
 
 #import <IMFoundation/IMRemoteURLConnection.h>
 
-#import <FTServices/FTMessageDeliveryRemoteURLConnection-Protocol.h>
-
 @class NSString, NSURLRequest;
 
-@interface IMRemoteURLConnection (FTMessageDelivery_HTTP) <FTMessageDeliveryRemoteURLConnection>
+@interface IMRemoteURLConnection (FTMessageDelivery_HTTP)
 
 // Remaining properties
 @property(copy) CDUnknownBlockType block;

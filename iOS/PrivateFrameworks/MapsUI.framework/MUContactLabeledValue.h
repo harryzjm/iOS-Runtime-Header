@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsUI/MULabeledValueActionViewModelProviding-Protocol.h>
-
 @class CNLabeledValue, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MUContactLabeledValue : NSObject <MULabeledValueActionViewModelProviding>
+@interface MUContactLabeledValue : NSObject
 {
     CNLabeledValue *_labeledValue;
     _Bool _emphasizeValueString;

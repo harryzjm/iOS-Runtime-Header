@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class NSMutableArray, VCPProtoBounds;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoImageHumanPoseResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoImageHumanPoseResult : PBCodable
 {
     VCPProtoBounds *_bounds;
     float _confidence;

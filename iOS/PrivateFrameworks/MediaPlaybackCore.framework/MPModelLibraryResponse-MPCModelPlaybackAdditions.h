@@ -6,11 +6,9 @@
 
 #import <MediaPlayer/MPModelLibraryResponse.h>
 
-#import <MediaPlaybackCore/MPCModelPlaybackResponse-Protocol.h>
-
 @class NSString;
 
-@interface MPModelLibraryResponse (MPCModelPlaybackAdditions) <MPCModelPlaybackResponse>
+@interface MPModelLibraryResponse (MPCModelPlaybackAdditions)
 @property(readonly, nonatomic, getter=isFinalResponse) _Bool finalResponse;
 
 // Remaining properties

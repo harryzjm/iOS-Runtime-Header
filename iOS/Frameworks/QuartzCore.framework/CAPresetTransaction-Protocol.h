@@ -7,6 +7,7 @@
 #import <QuartzCore/NSObject-Protocol.h>
 
 @protocol CAPresetTransaction <NSObject>
+@property(nonatomic) _Bool isReferencePreset;
 @property(nonatomic) _Bool preserveAppleSRGBGammaResponse;
 @property(nonatomic) long long trinityCabalConfig;
 - (_Bool)commitPreset;

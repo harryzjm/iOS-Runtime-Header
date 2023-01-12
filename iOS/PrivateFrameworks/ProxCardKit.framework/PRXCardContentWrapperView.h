@@ -6,13 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <ProxCardKit/PRXCardContentViewDelegate-Protocol.h>
-#import <ProxCardKit/UIScrollViewDelegate-Protocol.h>
-
-@class NSArray, NSString, PRXAction, PRXButton, PRXCardBottomTray, PRXCardContentView, UILabel, UIScrollView;
+@class NSArray, NSLayoutConstraint, NSString, PRXAction, PRXButton, PRXCardBottomTray, PRXCardContentView, UILabel, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface PRXCardContentWrapperView : UIView <PRXCardContentViewDelegate, UIScrollViewDelegate>
+@interface PRXCardContentWrapperView : UIView
 {
     PRXButton *_dismissButton;
     NSString *_title;
@@ -24,9 +21,11 @@ __attribute__((visibility("hidden")))
     UIView *_topKeyline;
     UIView *_titleContainer;
     UILabel *_scrolledTitleLabel;
+    NSLayoutConstraint *_scrollViewBottomConstraint;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSLayoutConstraint *scrollViewBottomConstraint; // @synthesize scrollViewBottomConstraint=_scrollViewBottomConstraint;
 @property(readonly, nonatomic) UILabel *scrolledTitleLabel; // @synthesize scrolledTitleLabel=_scrolledTitleLabel;
 @property(readonly, nonatomic) UIView *titleContainer; // @synthesize titleContainer=_titleContainer;
 @property(readonly, nonatomic) UIView *topKeyline; // @synthesize topKeyline=_topKeyline;
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PRXAction *infoButtonAction; // @synthesize infoButtonAction=_infoButtonAction;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) PRXButton *dismissButton; // @synthesize dismissButton=_dismissButton;
+- (void)didChangeContentsOfBottomTray:(id)arg1;
 @property(copy, nonatomic) NSArray *actionButtons;
 @property(readonly, copy, nonatomic) NSArray *auxiliaryViews;
 - (void)scrollViewDidScroll:(id)arg1;

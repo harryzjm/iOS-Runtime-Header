@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSURLRequestComparator-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSMockURLRequestComparator : NSObject <AMSURLRequestComparator>
+@interface AMSMockURLRequestComparator : NSObject
 {
     CDUnknownBlockType _criteriaBlock;
 }

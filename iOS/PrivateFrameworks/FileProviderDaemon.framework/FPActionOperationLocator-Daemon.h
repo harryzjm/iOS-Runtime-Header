@@ -7,7 +7,6 @@
 #import <FileProvider/FPActionOperationLocator.h>
 
 @interface FPActionOperationLocator (Daemon)
-+ (_Bool)_isMoveAcrossZonesOrSharedRootsForSource:(id)arg1 destination:(id)arg2;
 - (void)annotateWithPersonaSandboxIfNeeded:(id)arg1;
 - (id)startAccessingLocator;
 @property(readonly, nonatomic) _Bool isDownloaded;

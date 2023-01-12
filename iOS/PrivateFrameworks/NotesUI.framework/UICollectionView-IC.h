@@ -9,6 +9,7 @@
 @class NSArray, NSIndexPath;
 
 @interface UICollectionView (IC)
+@property(readonly) _Bool ic_selectionContainsFocusedItem;
 @property(readonly, nonatomic) NSArray *indexPathsForFocusedItems;
 - (void)ic_reloadDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)ic_selectCellAtIndexPath:(id)arg1 animated:(_Bool)arg2;

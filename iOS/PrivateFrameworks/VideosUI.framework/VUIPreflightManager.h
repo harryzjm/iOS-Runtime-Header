@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class UIViewController, VUIExtrasInfo, VUIMediaEntity, VUIVideosPlayable;
-@protocol TVPMediaItem;
+@class VUIExtrasInfo, VUIMediaEntity, VUIVideosPlayable;
+@protocol TVPMediaItem, VUIControllerPresenter;
 
 __attribute__((visibility("hidden")))
 @interface VUIPreflightManager : NSObject
@@ -18,12 +18,18 @@ __attribute__((visibility("hidden")))
     VUIMediaEntity *_mediaEntity;
     VUIExtrasInfo *_extrasInfo;
     unsigned long long _restrictionsCheckType;
-    UIViewController *_presentingController;
+    NSObject<VUIControllerPresenter> *_presentingController;
+    CDUnknownBlockType _savedRestrictionsCompletion;
+    long long _restrictionsState;
+    id _restrictionsValidationToken;
 }
 
 + (id)defaultPreflightManager;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIViewController *presentingController; // @synthesize presentingController=_presentingController;
+@property(retain, nonatomic) id restrictionsValidationToken; // @synthesize restrictionsValidationToken=_restrictionsValidationToken;
+@property(nonatomic) long long restrictionsState; // @synthesize restrictionsState=_restrictionsState;
+@property(copy, nonatomic) CDUnknownBlockType savedRestrictionsCompletion; // @synthesize savedRestrictionsCompletion=_savedRestrictionsCompletion;
+@property(retain, nonatomic) NSObject<VUIControllerPresenter> *presentingController; // @synthesize presentingController=_presentingController;
 @property(nonatomic) unsigned long long restrictionsCheckType; // @synthesize restrictionsCheckType=_restrictionsCheckType;
 @property(nonatomic) _Bool contentAllowsCellularDownload; // @synthesize contentAllowsCellularDownload=_contentAllowsCellularDownload;
 @property(retain, nonatomic) VUIExtrasInfo *extrasInfo; // @synthesize extrasInfo=_extrasInfo;
@@ -45,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)_ratingValue;
 - (_Bool)_isTrailer;
 - (id)_ratingDomain;
+- (void)_logRatingsInfo:(id)arg1 maxAllowedRank:(id)arg2 ratingValue:(id)arg3;
 - (void)_preflightWithOptions:(long long)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)preflightWithOptions:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;

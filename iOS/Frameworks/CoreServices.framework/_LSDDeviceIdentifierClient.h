@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreServices/_LSDDeviceIdentifierProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _LSDDeviceIdentifierClient <_LSDDeviceIdentifierProtocol>
+@interface _LSDDeviceIdentifierClient
 {
 }
 
@@ -21,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasEntitlementToClearAllIdentifiersOfType:(long long)arg1;
 - (_Bool)hasUninstallEntitlement;
 - (unsigned int)findAppBundleForExecutableURL:(id)arg1 withContext:(struct LSContext *)arg2;
+- (id)initWithXPCConnection:(id)arg1;
 
 @end
 

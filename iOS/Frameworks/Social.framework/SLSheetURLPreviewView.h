@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SLSheetImagePreviewView.h"
+
 @class SLURLPreviewGenerator, UIImage, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SLSheetURLPreviewView
+@interface SLSheetURLPreviewView : SLSheetImagePreviewView
 {
     UIImage *_shadowImage;
     SLURLPreviewGenerator *_webPreviewGenerator;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceSpatialPlaceLookupTicket-Protocol.h>
-
 @class GEOMapServiceTraits, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOMapServiceSpatialPlaceLookupTicket <GEOMapServiceSpatialPlaceLookupTicket>
+@interface _GEOMapServiceSpatialPlaceLookupTicket
 {
     NSArray *_parameters;
 }
@@ -21,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)mapItemsForPlaceLookupResponses:(id)arg1 usingIdentifierToMapItemMap:(id)arg2;
 - (void)createSpatialPlaceLookupResultForLookupResults:(id)arg1 mapItems:(id)arg2 completion:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (id)spatialPlaceLookupResultsFromResponse:(id)arg1;
-- (void)handleResponse:(id)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3 queue:(id)arg4;
+- (void)handleResponse:(id)arg1 completion:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 queue:(id)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)initWithRequest:(id)arg1 parameters:(id)arg2 traits:(id)arg3;

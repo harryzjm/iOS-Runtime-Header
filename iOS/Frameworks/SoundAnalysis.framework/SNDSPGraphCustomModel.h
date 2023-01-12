@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     MLModelDescription *_modelDescription;
     MLMultiArrayConstraint *_inputConstraint;
     MLMultiArrayConstraint *_outputConstraint;
-    unique_ptr_a0b8f5a3 _graph;
+    struct unique_ptr<DSPGraph::Graph, std::default_delete<DSPGraph::Graph>> _graph;
     struct vector<float, std::allocator<float>> _scratchFloatSpace;
     MLMultiArray *_modelOutput;
     CDUnknownBlockType _preProcessCallback;
@@ -22,9 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType preProcessCallback; // @synthesize preProcessCallback=_preProcessCallback;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)initWithModelDescription:(id)arg1 expectedInputShape:(id)arg2 expectedOutputShape:(id)arg3 graph:(unique_ptr_a0b8f5a3)arg4 error:(id *)arg5;
 
 @end
 

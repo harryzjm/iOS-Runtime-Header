@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SCNAction.h"
+
 @class NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SCNActionRunBlock
+@interface SCNActionRunBlock : SCNAction
 {
     CDUnknownBlockType _block;
     NSObject<OS_dispatch_queue> *_queue;

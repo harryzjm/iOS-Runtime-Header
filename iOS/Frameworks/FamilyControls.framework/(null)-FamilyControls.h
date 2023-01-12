@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FamilyControls/_TtP14FamilyControls29ActivityPickerClientInterface_-Protocol.h>
-
-@interface (null) (FamilyControls) <_TtP14FamilyControls29ActivityPickerClientInterface_>
+@interface (null) (FamilyControls)
 - (void)didCancel;
-- (void)didSelectWithApplications:(id)arg1 categories:(id)arg2 webDomains:(id)arg3;
+- (void)didSelectWithApplications:(id)arg1 categories:(id)arg2 webDomains:(id)arg3 untokenizedApplications:(id)arg4 untokenizedCategories:(id)arg5 untokenizedWebDomains:(id)arg6;
 @end
 

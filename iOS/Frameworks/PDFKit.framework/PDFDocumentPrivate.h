@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSIndexSet, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString, NSURL, PDFAKDocumentAdaptor, PDFForm, PDFOutline, PDFRenderingProperties, PDFSelection;
+@class NSArray, NSDictionary, NSIndexSet, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSOrderedSet, NSString, NSURL, PDFAKDocumentAdaptor, PDFAKPageOverlayViewProvider, PDFForm, PDFOutline, PDFRenderingProperties, PDFSelection;
 @protocol OS_dispatch_queue, PDFAKControllerDelegateProtocol, PDFDocumentPageChangeDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSURL *documentURL;
     _Bool createdWithHighLatencyDataProvider;
     NSMutableArray *pages;
+    NSOrderedSet *pagesOrderedSet;
     NSMutableDictionary *pageIndices;
     NSMutableDictionary *pageDictionaryIndices;
     NSMutableIndexSet *preloadingPageIndexes;
@@ -51,7 +52,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *attributes;
     PDFOutline *outline;
     NSObject<OS_dispatch_queue> *textExtractionQueue;
-    NSObject<OS_dispatch_queue> *displayListCreationQueue;
+    NSObject<OS_dispatch_queue> *formFillingQueue;
     _Bool finding;
     int findModel;
     NSArray *findStrings;
@@ -83,6 +84,7 @@ __attribute__((visibility("hidden")))
     NSMutableIndexSet *bookmarkedPages;
     PDFAKDocumentAdaptor *akDocumentAdaptor;
     id <PDFAKControllerDelegateProtocol> pdfAKControllerDelegateForDeferredSetup;
+    PDFAKPageOverlayViewProvider *akPageOverlayViewProvider;
     PDFRenderingProperties *renderingProperties;
     _Bool useTaggedPDF;
     _Bool limitedSearch;

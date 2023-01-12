@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOMapRequest.h"
+
 @class GEOMapAccess;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapTileFinder
+@interface GEOMapTileFinder : GEOMapRequest
 {
     unsigned long long _zoomLevel;
     int _tileSize;

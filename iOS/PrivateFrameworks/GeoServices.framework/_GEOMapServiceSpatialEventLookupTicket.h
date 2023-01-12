@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceSpatialEventLookupTicket-Protocol.h>
-
 @class GEOMapServiceTraits, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOMapServiceSpatialEventLookupTicket <GEOMapServiceSpatialEventLookupTicket>
+@interface _GEOMapServiceSpatialEventLookupTicket
 {
     NSArray *_parameters;
 }
@@ -22,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)spatialEventLookupResultsFromResponse:(id)arg1;
 - (id)mapItemIdentifiersToPOIEventsMapForPlaces:(id)arg1;
 - (void)createSpatialEventLookupResultForLookupResults:(id)arg1 usingPlaces:(id)arg2 completion:(CDUnknownBlockType)arg3 queue:(id)arg4;
-- (void)handleResponse:(id)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3 queue:(id)arg4;
+- (void)handleResponse:(id)arg1 completion:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 queue:(id)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)initWithRequest:(id)arg1 parameters:(id)arg2 traits:(id)arg3;

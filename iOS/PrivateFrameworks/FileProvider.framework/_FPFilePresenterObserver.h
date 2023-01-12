@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/FPFilePresenterObserver-Protocol.h>
-
 @class NSFileProviderManager;
 
 __attribute__((visibility("hidden")))
-@interface _FPFilePresenterObserver : NSObject <FPFilePresenterObserver>
+@interface _FPFilePresenterObserver : NSObject
 {
     NSFileProviderManager *_parentConnection;
 }

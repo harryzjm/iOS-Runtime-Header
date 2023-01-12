@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
 @interface VCMediaStreamSendGroup
 {
     _Bool _isRedundancyEnabled;
-    _Bool _areStreamsSuspended;
     unsigned int _uplinkBitrateCapWifi;
     unsigned int _uplinkBitrateCapCell;
     VCSessionUplinkBandwidthAllocator *_uplinkBandwidthAllocator;
@@ -22,9 +21,12 @@ __attribute__((visibility("hidden")))
     struct _opaque_pthread_rwlock_t _sourceTimestampRWLock;
     unsigned int _lastSentSourceSampleTime;
     double _lastSentSourceHostTime;
+    _Bool _isSourceTimestampInfoAvailable;
     double _sourceSampleRate;
+    _Bool _isSuspended;
 }
 
+@property(nonatomic) _Bool isSuspended; // @synthesize isSuspended=_isSuspended;
 @property(nonatomic) unsigned int uplinkBitrateCapWifi; // @synthesize uplinkBitrateCapWifi=_uplinkBitrateCapWifi;
 @property(nonatomic) unsigned int uplinkBitrateCapCell; // @synthesize uplinkBitrateCapCell=_uplinkBitrateCapCell;
 @property(nonatomic) unsigned int currentUplinkTargetBitrate; // @synthesize currentUplinkTargetBitrate=_currentUplinkTargetBitrate;
@@ -44,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)updateUplinkStreamsForPeerSubscribedStreams:(id)arg1;
 - (void)isStreamActive:(_Bool *)arg1 isDesiredActive:(_Bool *)arg2 peerSubscribedStreams:(id)arg3 configStreams:(id)arg4;
 - (_Bool)shouldSubscribeToStreamID:(id)arg1 peerSubscribedStreams:(id)arg2;
-- (id)streamDescriptionForMultiwayConfig:(id)arg1;
+- (id)streamDescriptionForMediaStreamConfig:(id)arg1;
 - (void)updateStreamIDCompoundingWithBlock:(CDUnknownBlockType)arg1 activeStreamIds:(id)arg2;
 - (_Bool)shouldCompoundListIgnoreStream:(id)arg1 streamConfig:(id)arg2 activeStreamIds:(id)arg3;
 - (void)dealloc;

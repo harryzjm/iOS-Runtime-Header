@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNChangeHistoryEventVisitorPrivate-Protocol.h>
-
 @class NSString;
 @protocol CNChangeHistoryEventVisitor;
 
 __attribute__((visibility("hidden")))
-@interface CNSafeChangeHistoryEventVisitorWrapper : NSObject <CNChangeHistoryEventVisitorPrivate>
+@interface CNSafeChangeHistoryEventVisitorWrapper : NSObject
 {
     id <CNChangeHistoryEventVisitor> _visitor;
 }

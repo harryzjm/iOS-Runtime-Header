@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLParticipantQuery : PBCodable <NSCopying>
+@interface _ICLLParticipantQuery : PBCodable
 {
     NSMutableArray *_participants;
 }

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MPSNeuralNetwork/MPSCNNConvolutionDataSource-Protocol.h>
-
 @class MISSING_TYPE, MPSCNNConvolutionDescriptor, MPSNNNeuronDescriptor, NSString;
 @protocol MPSCNNConvolutionDataSource;
 
-@interface MPSConvolutionDataSourceWrapper : NSObject <MPSCNNConvolutionDataSource>
+@interface MPSConvolutionDataSourceWrapper : NSObject
 {
     id <MPSCNNConvolutionDataSource> _dataSource;
     MPSCNNConvolutionDescriptor *_convolution;

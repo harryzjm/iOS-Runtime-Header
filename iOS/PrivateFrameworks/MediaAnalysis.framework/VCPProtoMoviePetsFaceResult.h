@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class VCPProtoBounds, VCPProtoTimeRange;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoMoviePetsFaceResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoMoviePetsFaceResult : PBCodable
 {
     VCPProtoBounds *_bounds;
     float _confidence;

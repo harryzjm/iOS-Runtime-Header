@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDropSession-Protocol.h>
-#import <UIKitCore/_UIDragDropSessionInternal-Protocol.h>
-#import <UIKitCore/_UIDropSessionPrivate-Protocol.h>
-
 @class NSArray, NSProgress, NSString, _UIInternalDraggingSessionDestination;
 @protocol UIDragSession;
 
 __attribute__((visibility("hidden")))
-@interface _UIDropSessionImpl : NSObject <UIDropSession, _UIDragDropSessionInternal, _UIDropSessionPrivate>
+@interface _UIDropSessionImpl : NSObject
 {
     NSArray *_items;
     id <UIDragSession> _localDragSession;

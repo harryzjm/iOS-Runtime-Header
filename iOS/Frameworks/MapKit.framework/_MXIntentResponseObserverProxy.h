@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/INIntentResponseObserver-Protocol.h>
-
 @class NSString;
 @protocol _MXIntentResponseObserver;
 
 __attribute__((visibility("hidden")))
-@interface _MXIntentResponseObserverProxy : NSObject <INIntentResponseObserver>
+@interface _MXIntentResponseObserverProxy : NSObject
 {
     id <_MXIntentResponseObserver> _observer;
 }

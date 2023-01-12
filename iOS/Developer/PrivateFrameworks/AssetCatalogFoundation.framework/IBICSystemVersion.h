@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetCatalogFoundation/NSCoding-Protocol.h>
-
 @class NSString;
 
-@interface IBICSystemVersion <NSCoding>
+@interface IBICSystemVersion
 {
     NSString *_platform;
     NSString *_marketingVersion;

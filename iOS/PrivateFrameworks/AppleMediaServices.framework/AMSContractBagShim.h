@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSBagProtocol-Protocol.h>
-
 @class AMSProcessInfo, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSContractBagShim : NSObject <AMSBagProtocol>
+@interface AMSContractBagShim : NSObject
 {
     NSObject *_bagContract;
 }

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/_CATRemoteConnectionSendContext-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _CATRemoteConnectionSendDataContext : NSObject <_CATRemoteConnectionSendContext>
+@interface _CATRemoteConnectionSendDataContext : NSObject
 {
     NSData *mEncodedData;
     NSData *_data;

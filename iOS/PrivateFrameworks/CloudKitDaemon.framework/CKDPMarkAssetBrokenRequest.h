@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecordIdentifier, NSMutableArray, NSString;
 
-@interface CKDPMarkAssetBrokenRequest : PBRequest <NSCopying>
+@interface CKDPMarkAssetBrokenRequest : PBRequest
 {
     NSString *_affectedRecordType;
     CKDPRecordIdentifier *_brokenAssetRecordID;

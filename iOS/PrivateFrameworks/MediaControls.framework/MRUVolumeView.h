@@ -6,32 +6,35 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/CCUIGroupRendering-Protocol.h>
-
-@class CALayer, MediaControlsVolumeSliderView, NSArray, NSString;
+@class MRUContinuousSliderView, MRUVisualStylingProvider, MRUVolumeStepperView, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRUVolumeView : UIView <CCUIGroupRendering>
+@interface MRUVolumeView : UIView
 {
     _Bool _expanded;
     _Bool _showSecondarySlider;
+    _Bool _showStepper;
     _Bool _primaryInteractionEnabled;
     _Bool _secondaryInteractionEnabled;
-    MediaControlsVolumeSliderView *_primarySlider;
-    MediaControlsVolumeSliderView *_secondarySlider;
+    MRUContinuousSliderView *_primarySlider;
+    MRUContinuousSliderView *_secondarySlider;
+    MRUVolumeStepperView *_stepper;
+    MRUVisualStylingProvider *_stylingProvider;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool secondaryInteractionEnabled; // @synthesize secondaryInteractionEnabled=_secondaryInteractionEnabled;
 @property(nonatomic) _Bool primaryInteractionEnabled; // @synthesize primaryInteractionEnabled=_primaryInteractionEnabled;
+@property(nonatomic) _Bool showStepper; // @synthesize showStepper=_showStepper;
 @property(nonatomic) _Bool showSecondarySlider; // @synthesize showSecondarySlider=_showSecondarySlider;
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
-@property(readonly, nonatomic) MediaControlsVolumeSliderView *secondarySlider; // @synthesize secondarySlider=_secondarySlider;
-@property(readonly, nonatomic) MediaControlsVolumeSliderView *primarySlider; // @synthesize primarySlider=_primarySlider;
+@property(readonly, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
+@property(readonly, nonatomic) MRUVolumeStepperView *stepper; // @synthesize stepper=_stepper;
+@property(readonly, nonatomic) MRUContinuousSliderView *secondarySlider; // @synthesize secondarySlider=_secondarySlider;
+@property(readonly, nonatomic) MRUContinuousSliderView *primarySlider; // @synthesize primarySlider=_primarySlider;
 - (void)updateVisibility;
-@property(readonly, nonatomic) NSArray *punchOutRootLayers;
+@property(readonly, nonatomic) NSArray *punchOutRenderingViews;
 @property(readonly, nonatomic, getter=isGroupRenderingRequired) _Bool groupRenderingRequired;
-- (void)resetThresholdAcknowledgment;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
@@ -39,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) CALayer *punchOutRootLayer;
+@property(readonly, nonatomic) NSArray *punchOutRootLayers;
 @property(readonly) Class superclass;
 
 @end

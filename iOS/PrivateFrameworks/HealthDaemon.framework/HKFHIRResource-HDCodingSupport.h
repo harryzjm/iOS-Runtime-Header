@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKFHIRResource.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKFHIRResource (HDCodingSupport) <HDCoding>
+@interface HKFHIRResource (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

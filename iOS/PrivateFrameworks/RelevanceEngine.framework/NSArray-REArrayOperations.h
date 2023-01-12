@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (REArrayOperations) <REDonatedActionIdentifierProviding>
+@interface NSArray (REArrayOperations)
 - (id)re_arrayMappedWithArray:(id)arg1;
 - (unsigned long long)re_actionIdentifierHashValue;
 

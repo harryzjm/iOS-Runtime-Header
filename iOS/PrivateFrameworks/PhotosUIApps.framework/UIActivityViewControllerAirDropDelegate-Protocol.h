@@ -6,12 +6,13 @@
 
 #import <PhotosUIApps/NSObject-Protocol.h>
 
-@class UIActivityViewController;
+@class NSString, UIActivityViewController;
 
 @protocol UIActivityViewControllerAirDropDelegate <NSObject>
 
 @optional
 - (void)activityViewControllerDidFinishAirdropTransfer:(UIActivityViewController *)arg1;
 - (void)activityViewControllerWillStartAirdropTransfer:(UIActivityViewController *)arg1;
+- (void)activityViewController:(UIActivityViewController *)arg1 willStartAirdropTransferToRecipient:(NSString *)arg2;
 @end
 

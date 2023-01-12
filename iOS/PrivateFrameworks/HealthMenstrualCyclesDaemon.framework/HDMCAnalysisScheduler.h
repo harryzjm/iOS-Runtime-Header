@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthMenstrualCyclesDaemon/HDHealthDaemonReadyObserver-Protocol.h>
-
 @class HDMCAnalysisManager, HKCalendarCache, HKMCSettingsManager, NSString;
 
-@interface HDMCAnalysisScheduler : NSObject <HDHealthDaemonReadyObserver>
+__attribute__((visibility("hidden")))
+@interface HDMCAnalysisScheduler : NSObject
 {
     HDMCAnalysisManager *_analysisManager;
     HKMCSettingsManager *_settingsManager;

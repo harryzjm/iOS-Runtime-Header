@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SeymourClient/NSXPCListenerDelegate-Protocol.h>
-
-@interface (null) (SeymourClient) <NSXPCListenerDelegate>
+@interface (null) (SeymourClient)
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)receiveEvent:(long long)arg1 data:(id)arg2;
 - (void)receiveRequest:(long long)arg1 data:(id)arg2 completion:(CDUnknownBlockType)arg3;

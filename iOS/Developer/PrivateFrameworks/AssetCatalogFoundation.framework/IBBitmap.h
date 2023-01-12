@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSData, NSString;
 
-@interface IBBitmap : NSObject <IBBinaryArchiving>
+@interface IBBitmap : NSObject
 {
     NSData *_data;
     unsigned int _bitmapInfo;

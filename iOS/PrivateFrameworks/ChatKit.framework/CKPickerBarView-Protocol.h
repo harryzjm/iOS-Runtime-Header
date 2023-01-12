@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary;
+@class NSArray, NSDictionary, NSString;
 
 @protocol CKPickerBarView <NSObject>
 @property(copy, nonatomic) NSArray *acknowledgmentViews;
@@ -14,7 +14,7 @@
 - (void)performSendAnimation:(void (^)(void))arg1;
 - (void)performSelectedAnimation:(void (^)(void))arg1;
 - (void)performShowAnimation:(void (^)(void))arg1;
-- (id)initWithGroupCounts:(NSDictionary *)arg1 selectedType:(long long)arg2 orientation:(BOOL)arg3;
+- (id)initWithGroupCounts:(NSDictionary *)arg1 selectedType:(long long)arg2 orientation:(BOOL)arg3 serviceName:(NSString *)arg4;
 
 @optional
 - (void)setAnchorVerticalOrientation:(BOOL)arg1;

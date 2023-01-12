@@ -16,6 +16,7 @@
 @property(copy, nonatomic) NSString *ownerHandle;
 @property(copy, nonatomic) NSString *helpLinkURL;
 @property(copy, nonatomic) NSString *helpLinkTitle;
+@property(copy, nonatomic) NSString *leftBarButton;
 @property(copy, nonatomic) NSString *secondaryButton;
 @property(copy, nonatomic) NSString *primaryButton;
 @property(copy, nonatomic) NSString *detailText;

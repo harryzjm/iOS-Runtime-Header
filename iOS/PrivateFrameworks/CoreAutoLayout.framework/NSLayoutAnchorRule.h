@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSLayoutRule-Protocol.h>
-
 @class NSLayoutAnchor, NSString;
 
-@interface NSLayoutAnchorRule : NSObject <NSLayoutRule>
+@interface NSLayoutAnchorRule : NSObject
 {
     NSLayoutAnchor *_firstAnchor;
     NSLayoutAnchor *_secondAnchor;

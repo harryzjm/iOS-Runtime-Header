@@ -11,6 +11,7 @@
 @interface _TtC8VideosUI27SportsFavoritesLocalStorage : _TtCs12_SwiftObject
 {
     MISSING_TYPE *teamFavoritesIds;
+    MISSING_TYPE *teamFavoritesLock;
 }
 
 @end

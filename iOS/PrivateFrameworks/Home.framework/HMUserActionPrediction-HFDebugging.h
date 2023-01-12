@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMUserActionPrediction.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString;
 
-@interface HMUserActionPrediction (HFDebugging) <HFStateDumpBuildable>
+@interface HMUserActionPrediction (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties

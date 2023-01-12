@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIAnimatablePropertyBase.h"
+
 @class NSObject, UIViewInProcessAnimationState, UIViewRunningAnimationEntry, _UIViewAnimatablePropertyTransformer;
 @protocol OS_dispatch_queue, UIVectorOperatable, UIViewAnimationComposing;
 
 __attribute__((visibility("hidden")))
-@interface UIAnimatableProperty
+@interface UIAnimatableProperty : UIAnimatablePropertyBase
 {
     _UIViewAnimatablePropertyTransformer *_transformer;
     NSObject<OS_dispatch_queue> *_animationEntryLockingQueue;
@@ -40,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)setTransformer:(id)arg1;
 - (void)invalidateAndStopImmediately:(_Bool)arg1;
 - (void)invalidate;
-- (_Bool)_performAnimation;
+- (_Bool)_performAnimationFromCurrentValue:(id)arg1;
 - (id)velocityTarget:(_Bool)arg1;
 @property(nonatomic) id velocity;
 - (void)setVelocity:(id)arg1 target:(_Bool)arg2;

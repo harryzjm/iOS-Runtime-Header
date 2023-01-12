@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
 @class UIColor, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface VUIMonogramViewConfiguration : NSObject <NSCopying>
+@interface VUIMonogramViewConfiguration : NSObject
 {
     long long _style;
     double _focusedSizeIncrease;

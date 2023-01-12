@@ -50,7 +50,7 @@
 @property(readonly, nonatomic) TSTTableModel *pivotDataTable; // @synthesize pivotDataTable=_pivotDataTable;
 @property(nonatomic) struct TSKUIDStruct pivotTableUID; // @synthesize pivotTableUID=_pivotTableUID;
 @property(retain, nonatomic) TSTHiddenStates *hiddenStates; // @synthesize hiddenStates=_hiddenStates;
-@property(retain, nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
+@property(nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 @property(copy, nonatomic) TSTTableFilterSet *filterSet; // @synthesize filterSet=_filterSet;
 - (_Bool)verifyConnectionsWithPivotDataModel:(id)arg1 pivotTableUID:(struct TSKUIDStruct)arg2;
 - (id)duplicateFilterSet;
@@ -71,8 +71,12 @@
 - (id)grandTotalCategoryRefForColumn:(const struct TSKUIDStruct *)arg1 forAggregate:(id)arg2;
 - (id)firstAggregate;
 - (id)grandGrandTotalCategoryRefForAggregate:(id)arg1;
-- (id)findExistingGroupNodeInGroupBy:(id)arg1 usingValues:(const void *)arg2 upToLevel:(unsigned long long)arg3;
+- (id)findExistingGroupNodeInGroupBy:(id)arg1 usingValues:(const void *)arg2 upToLevel:(unsigned long long)arg3 coerceForDateFields:(_Bool)arg4;
 - (struct TSUIndexSet)pivotDataModelRowIndexesNeededForCell:(const struct TSKUIDStructCoord *)arg1;
+- (id)descriptionForPivotBodyCellForUidCoord:(const struct TSKUIDStructCoord *)arg1;
+- (id)descriptionForPivotGroupCellForRowUid:(const struct TSKUIDStruct *)arg1 upToLevel:(unsigned char)arg2;
+- (id)descriptionForPivotGroupCellForColumnUid:(const struct TSKUIDStruct *)arg1 upToLevel:(unsigned char)arg2;
+- (id)p_descriptionForPivotGroupValueTuple:(id)arg1 upToLevel:(unsigned char)arg2 locale:(id)arg3;
 - (id)getPivotDataBundleForUidCoord:(const struct TSKUIDStructCoord *)arg1;
 - (id)getPivotDataBundleForUidCoord:(const struct TSKUIDStructCoord *)arg1 upToLevel:(unsigned char)arg2;
 - (id)categoryRefForUidCoord:(const struct TSKUIDStructCoord *)arg1 outShowAsType:(unsigned char *)arg2;
@@ -80,10 +84,10 @@
 - (unsigned char)columnGroupLevelForColumnUID:(const struct TSKUIDStruct *)arg1;
 - (struct TSKUIDStruct)columnUIDForGroupingColumnName:(id)arg1;
 - (unsigned short)aggregateIndexForAggName:(id)arg1 locale:(id)arg2;
-- (id)compactQualifiedColumnNameForAggregateIndex:(unsigned long long)arg1 useShortLabel:(_Bool)arg2 allowDuplicateNames:(_Bool)arg3 locale:(id)arg4;
-- (id)compactQualifiedColumnNameForAggregateIndex:(unsigned long long)arg1 locale:(id)arg2;
-- (id)qualifiedColumnNameForAggregateIndex:(unsigned long long)arg1 useShortLabel:(_Bool)arg2 allowDuplicateNames:(_Bool)arg3 locale:(id)arg4;
-- (id)qualifiedColumnNameForAggregateIndex:(unsigned long long)arg1 locale:(id)arg2;
+- (id)compactDescriptionForAggregateIndex:(unsigned long long)arg1 useShortLabel:(_Bool)arg2 allowDuplicateNames:(_Bool)arg3 locale:(id)arg4;
+- (id)compactDescriptionForAggregateIndex:(unsigned long long)arg1 locale:(id)arg2;
+- (id)descriptionForAggregateIndex:(unsigned long long)arg1 useShortLabel:(_Bool)arg2 allowDuplicateNames:(_Bool)arg3 locale:(id)arg4;
+- (id)descriptionForAggregateIndex:(unsigned long long)arg1 locale:(id)arg2;
 - (id)columnNameForAggregateIndex:(unsigned long long)arg1 allowDuplicateNames:(_Bool)arg2;
 - (id)aggregateForUidCoord:(const struct TSKUIDStructCoord *)arg1;
 - (unsigned short)aggregateIndexForUidCoord:(const struct TSKUIDStructCoord *)arg1;
@@ -125,6 +129,7 @@
 - (void)resetGroupingList;
 - (void)setPivotRulesWithPivotDataTable:(id)arg1 columnGroupings:(id)arg2 rowGroupings:(id)arg3 aggregates:(id)arg4 flatteningDimension:(long long)arg5;
 - (void)restoreFromPivotDataTable:(id)arg1 columnGroupings:(id)arg2 rowGroupings:(id)arg3 aggregates:(id)arg4 flatteningDimension:(long long)arg5;
+- (_Bool)hasValidRunningTotalFieldForAggregate:(id)arg1;
 - (id)description;
 @property(readonly, nonatomic) struct TSKUIDStruct pivotDataTableUID;
 - (void)unregisterFromCalcEngine;

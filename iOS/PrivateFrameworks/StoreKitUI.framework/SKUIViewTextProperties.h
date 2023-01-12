@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SKUIViewTextProperties : NSObject <NSCopying>
+@interface SKUIViewTextProperties : NSObject
 {
     double _baselineOffsetFromBottom;
     double _desiredOffsetTop;

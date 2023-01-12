@@ -7,12 +7,13 @@
 #import <ScreenTimeSettingsUI/NSObject-Protocol.h>
 
 @class NSNumber, NSObject, NSString, STRootViewModel, STUIUser;
-@protocol STContentPrivacyViewModelCoordinator, STTimeAllowancesViewModelCoordinator, STUsageDetailsViewModelCoordinator;
+@protocol STCommunicationSafetyViewModelCoordinator, STContentPrivacyViewModelCoordinator, STTimeAllowancesViewModelCoordinator, STUsageDetailsViewModelCoordinator;
 
 @protocol STRootViewModelCoordinator <NSObject>
 @property(readonly, nonatomic, getter=isPasscodeEnabled) _Bool passcodeEnabled;
 @property(nonatomic) _Bool hasAlreadyEnteredPINForSession;
 @property(nonatomic) _Bool hasShownMiniBuddy;
+@property(readonly) NSObject<STCommunicationSafetyViewModelCoordinator> *communicationSafetyCoordinator;
 @property(readonly) NSObject<STTimeAllowancesViewModelCoordinator> *timeAllowancesCoordinator;
 @property(readonly) NSObject<STUsageDetailsViewModelCoordinator> *usageDetailsCoordinator;
 @property(readonly) NSObject<STContentPrivacyViewModelCoordinator> *contentPrivacyCoordinator;

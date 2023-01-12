@@ -6,25 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionLayoutAuxillaryHosting-Protocol.h>
-#import <UIKitCore/_UICollectionLayoutSectionSolver-Protocol.h>
-
-@class NSCollectionLayoutSection, NSIndexSet, NSString, UITraitCollection, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutItemSolver, _UICollectionLayoutSectionGeometryTranslator, _UICollectionLayoutSupplementaryRegistrar;
+@class NSCollectionLayoutSection, NSIndexSet, NSString, UITraitCollection, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutItemSolver, _UICollectionLayoutSectionGeometryTranslator, _UICollectionLayoutSupplementaryEnroller;
 @protocol NSCollectionLayoutContainer;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutSectionFixedSolver : NSObject <_UICollectionLayoutSectionSolver, _UICollectionLayoutAuxillaryHosting>
+@interface _UICollectionLayoutSectionFixedSolver : NSObject
 {
     _Bool _shouldAdjustContentSizeForPartialLastGroupSolution;
     _Bool _layoutRTL;
     NSString *_errorDescription;
     _UICollectionLayoutItemSolver *_solution;
     _UICollectionLayoutAuxillaryItemSolver *_sectionAuxillarySolution;
-    _UICollectionLayoutSupplementaryRegistrar *_sectionSupplementaryRegistrar;
+    _UICollectionLayoutSupplementaryEnroller *_sectionSupplementaryEnroller;
     _UICollectionLayoutSectionGeometryTranslator *_sectionGeometryTranslator;
     id <NSCollectionLayoutContainer> _memoizedAuxillaryHostContainer;
     NSCollectionLayoutSection *_layoutSection;
     id <NSCollectionLayoutContainer> _container;
+    id <NSCollectionLayoutContainer> _supplementaryContainer;
     UITraitCollection *_traitCollection;
     unsigned long long _layoutAxis;
     unsigned long long _containerLayoutAxis;
@@ -41,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 @property(nonatomic) _Bool layoutRTL; // @synthesize layoutRTL=_layoutRTL;
 @property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
+@property(retain, nonatomic) id <NSCollectionLayoutContainer> supplementaryContainer; // @synthesize supplementaryContainer=_supplementaryContainer;
 @property(retain, nonatomic) id <NSCollectionLayoutContainer> container; // @synthesize container=_container;
 @property(retain, nonatomic) NSCollectionLayoutSection *layoutSection; // @synthesize layoutSection=_layoutSection;
 @property(readonly, nonatomic) NSString *errorDescription; // @synthesize errorDescription=_errorDescription;
@@ -49,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (double)_dimensionForRootGroupAlongAxis:(unsigned long long)arg1;
 - (void)_setOrthogonalOffset:(struct CGPoint)arg1;
 - (double)auxillaryHostPaddingBeforeBoundarySupplementaries;
+- (id)auxillaryHostTraitCollection;
 - (id)auxillaryHostPreferredSizes;
 - (id)auxillaryHostSupplementaryEnroller;
 - (long long)auxillaryHostAuxillaryKind;
@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)auxillaryHostWantsOverlapAdjustmentForMatchingAlignmentsOnly;
 - (struct CGRect)auxillaryHostPinningRect;
 - (struct CGSize)auxillaryHostContentSize;
+@property(readonly, nonatomic) unsigned long long containerSizeDependentAxes;
 - (id)sectionSupplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (long long)sectionSupplementaryKindIndexForEnrollmentIdentifier:(id)arg1;
 - (id)unpinnedSectionSupplementaryFrameForIndex:(long long)arg1;
@@ -74,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1 overrideContentRectForPinning:(struct CGRect)arg2;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;
 - (id)resolveWithParameters:(id)arg1 preferredSizes:(id)arg2;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5 layoutRTL:(_Bool)arg6;
+- (void)solveForContainer:(id)arg1 supplementaryContainer:(id)arg2 traitCollection:(id)arg3 layoutAxis:(unsigned long long)arg4 frameCount:(long long)arg5 preferredSizes:(id)arg6 layoutRTL:(_Bool)arg7;
 - (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5;
 - (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4;
 

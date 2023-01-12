@@ -10,13 +10,11 @@
 
 @interface _TtC18VisualIntelligence14ObjectDetector : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_modelProvider;
-    MISSING_TYPE *detectionCoreMLModelProvider;
-    MISSING_TYPE *_mapping;
+    MISSING_TYPE *mlEngineType;
     MISSING_TYPE *info;
-    MISSING_TYPE *modelProviderService;
-    MISSING_TYPE *observer;
-    MISSING_TYPE *debugMetricsBucket;
+    MISSING_TYPE *detectionCoreMLModelProvider;
+    MISSING_TYPE *ontology;
+    MISSING_TYPE *modelURN;
 }
 
 @end

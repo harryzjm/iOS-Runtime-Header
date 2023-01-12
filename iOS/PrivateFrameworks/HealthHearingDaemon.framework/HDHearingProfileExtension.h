@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthHearingDaemon/HDProfileExtension-Protocol.h>
-
 @class HDAudioAnalyticsManager, HDHeadphoneDoseManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDHearingProfileExtension : NSObject <HDProfileExtension>
+@interface HDHearingProfileExtension : NSObject
 {
     HDAudioAnalyticsManager *_analyticsManager;
     HDHeadphoneDoseManager *_headphoneDoseManager;

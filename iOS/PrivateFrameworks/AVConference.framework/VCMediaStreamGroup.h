@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCMediaCaptureController-Protocol.h>
-#import <AVConference/VCMediaStreamDelegate-Protocol.h>
-#import <AVConference/VCMediaStreamNotification-Protocol.h>
-#import <AVConference/VCSecurityEventHandler-Protocol.h>
-
-@class AVCStatisticsCollector, NSArray, NSDictionary, NSMutableDictionary, NSObject, NSString, VCNetworkFeedbackController, VCSecurityKeyManager;
+@class AVCStatisticsCollector, NSArray, NSDictionary, NSMutableDictionary, NSObject, NSString, TimingCollection, VCNetworkFeedbackController, VCSecurityKeyManager;
 @protocol OS_dispatch_queue, VCMediaCaptureController;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaStreamGroup <VCMediaStreamDelegate, VCMediaCaptureController, VCSecurityEventHandler, VCMediaStreamNotification>
+@interface VCMediaStreamGroup
 {
     NSArray *_mediaStreamInfoArray;
     NSArray *_mediaStreams;
@@ -22,13 +17,15 @@ __attribute__((visibility("hidden")))
     NSString *_sessionUUID;
     NSObject<OS_dispatch_queue> *_stateQueue;
     VCNetworkFeedbackController *_networkFeedbackController;
+    TimingCollection *_perfTimers;
+    double _creationTime;
+    _Bool _areStreamsSuspended;
     id _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     _Bool _encryptionInfoReceived;
     unsigned int _state;
     unsigned long long _idsParticipantID;
     unsigned int _rtpTimestampRate;
-    _Bool _didReceiveNewKeyMaterial;
     unsigned int _streamGroupID;
     long long _streamToken;
     unsigned int _mediaType;
@@ -57,10 +54,12 @@ __attribute__((visibility("hidden")))
 - (void)mediaStream:(id)arg1 didReceiveNewMediaKeyIndex:(id)arg2;
 - (void)unregisterMediaStreamNotificationDelegate;
 - (void)registerMediaStreamNotificationDelegate;
+- (void)didEncryptionKeyRollTimeout;
 - (void)resetDecryptionTimeout;
 - (_Bool)handleEncryptionInfoChange:(id)arg1;
 - (id)stopCapture;
 - (id)startCapture;
+- (void)vcMediaStreamServerDidDie:(id)arg1;
 - (_Bool)removeSyncDestination:(id)arg1;
 - (_Bool)addSyncDestination:(id)arg1;
 - (_Bool)containsStreamWithSSRC:(unsigned int)arg1;
@@ -76,9 +75,10 @@ __attribute__((visibility("hidden")))
 - (id)stopMediaStreams;
 - (id)startMediaStreams;
 @property(nonatomic) id <VCMediaCaptureController> captureController;
+- (void)setPerfTimersWithMediaKeyIndex:(id)arg1 perfTimerIndexToStart:(int)arg2;
 - (_Bool)containsStreamWithIDSStreamID:(unsigned short)arg1;
 - (void)callDelegateWithBlock:(CDUnknownBlockType)arg1;
-- (void)collectAndLogChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectAndLogChannelMetrics:(CDStruct_b671a7c4 *)arg1;
 - (_Bool)configureStreams;
 - (_Bool)setupStreamsWithConfig:(id)arg1;
 @property(readonly, copy) NSString *description;

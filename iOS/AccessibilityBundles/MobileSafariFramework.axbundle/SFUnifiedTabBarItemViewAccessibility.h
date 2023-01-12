@@ -20,6 +20,7 @@
 - (_Bool)_accessibilityServesAsFirstResponder;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (id)_accessibilityResponderElement;
+- (id)_accessibilityTextViewTextOperationResponder;
 - (struct _NSRange)_accessibilityRowRange;
 - (unsigned long long)accessibilityTraits;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;

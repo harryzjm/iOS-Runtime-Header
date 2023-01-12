@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSArray, NSMapTable, NSString, SKUIHeaderViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUISectionHeaderView <SKUIViewElementView>
+@interface SKUISectionHeaderView
 {
     struct UIEdgeInsets _contentInset;
     struct CGSize _lastFitSize;

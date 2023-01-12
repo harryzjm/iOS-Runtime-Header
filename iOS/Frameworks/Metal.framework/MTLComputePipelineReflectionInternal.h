@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLComputePipelineReflection.h"
+
 @class NSArray, NSData, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface MTLComputePipelineReflectionInternal
+@interface MTLComputePipelineReflectionInternal : MTLComputePipelineReflection
 {
     NSArray *_arguments;
     NSArray *_builtInArguments;
@@ -17,11 +19,13 @@ __attribute__((visibility("hidden")))
     NSData *_pluginReturnData;
     NSArray *_constantSamplerUniqueIdentifiers;
     NSArray *_constantSamplerDescriptors;
+    NSArray *_bindings;
 }
 
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)builtInArguments;
+- (id)bindings;
 - (id)arguments;
 - (void)setConstantSamplerDescriptorsFromBitmasks:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)setConstantSamplerUniqueIdentifiers:(id)arg1;

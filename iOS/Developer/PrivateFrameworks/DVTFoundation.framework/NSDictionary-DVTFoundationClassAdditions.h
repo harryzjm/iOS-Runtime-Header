@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <DVTFoundation/DVTPropertyListValue-Protocol.h>
-
 @class NSArray, NSData, NSDate, NSNumber, NSString;
 
-@interface NSDictionary (DVTFoundationClassAdditions) <DVTPropertyListValue>
+@interface NSDictionary (DVTFoundationClassAdditions)
 + (id)dvt_dictionaryWithObjects:(id)arg1 groupedIntoOrderedSetsByKeyPath:(id)arg2 makeGroupsImmutable:(_Bool)arg3;
 + (id)dvt_dictionaryWithObjects:(id)arg1 groupedIntoSetsByKeyPath:(id)arg2 makeGroupsImmutable:(_Bool)arg3;
 + (id)dvt_dictionaryWithObjects:(id)arg1 groupedIntoArraysByKeyPath:(id)arg2 makeGroupsImmutable:(_Bool)arg3;
@@ -19,13 +17,12 @@
 + (id)dvt_dictionaryWithKeysAndValues:(id)arg1;
 - (id)dvt_invertedDictionaryOfKeysGroupedByValueUsingMutableDictionaryClass:(Class)arg1;
 - (id)dvt_invertedDictionaryOfKeysGroupedByValue;
+- (id)dvt_invertedBijectiveDictionaryUsingMutableDictionaryClass:(Class)arg1;
+- (id)dvt_invertedBijectiveDictionary;
 - (id)dvt_dictionaryByApplyingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)dvt_areAnyEntriesPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)dvt_areAllEntriesPassingTest:(CDUnknownBlockType)arg1;
 - (id)dvt_entriesPassingTest:(CDUnknownBlockType)arg1;
-- (struct CGRect)dvt_rectForKey:(id)arg1 defaultValue:(struct CGRect)arg2;
-- (struct CGSize)dvt_sizeForKey:(id)arg1 defaultValue:(struct CGSize)arg2;
-- (struct CGPoint)dvt_pointForKey:(id)arg1 defaultValue:(struct CGPoint)arg2;
 - (double)dvt_doubleForKey:(id)arg1 defaultValue:(double)arg2;
 - (float)dvt_floatForKey:(id)arg1 defaultValue:(float)arg2;
 - (_Bool)dvt_boolForKey:(id)arg1 defaultValue:(_Bool)arg2;

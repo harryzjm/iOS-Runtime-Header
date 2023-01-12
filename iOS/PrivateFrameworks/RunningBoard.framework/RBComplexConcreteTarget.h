@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "RBConcreteTarget.h"
+
 @class NSString, RBProcess, RBSProcessIdentity;
 
 __attribute__((visibility("hidden")))
-@interface RBComplexConcreteTarget
+@interface RBComplexConcreteTarget : RBConcreteTarget
 {
     NSString *_description;
     RBProcess *_process;

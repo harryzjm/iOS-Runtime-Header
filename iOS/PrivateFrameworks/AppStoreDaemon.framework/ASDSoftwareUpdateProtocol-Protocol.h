@@ -13,6 +13,7 @@
 - (void)showApplicationBadgeForPendingUpdates;
 - (void)removeUpdateBulletins;
 - (void)hideApplicationBadgeForPendingUpdates;
+- (void)shouldUseModernUpdatesWithCompletionBlock:(void (^)(_Bool))arg1;
 - (void)updateAllWithOrder:(NSArray *)arg1 completionBlock:(void (^)(_Bool, NSArray *, NSError *))arg2;
 - (void)updateAllWithJobResults:(void (^)(_Bool, NSArray *, NSError *))arg1;
 - (void)reloadFromServerInBackgroundWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     UITargetedDragPreview *_targetedDropPreview;
     UITargetedDragPreview *_updatedTargetedDropPreview;
     double _initialDistanceFromTargetFrame;
+    double _targetCenterZ;
     UIViewPropertyAnimator *_propertyAnimator;
     CDUnknownBlockType _completionHandler;
     UIView *_retargetingContainerView;
@@ -45,9 +46,9 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _midpointHandler;
     CDUnknownBlockType _nonAnimatedMidpointHandler;
     CDUnknownBlockType _nearCompletionHandler;
-    struct CGPoint _center;
     struct CGPoint _initialVelocity;
     struct CGPoint _initialTargetVelocity;
+    struct CAPoint3D _center;
     struct CGRect _targetFrame;
 }
 
@@ -77,8 +78,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool sourceAnimation; // @synthesize sourceAnimation=_sourceAnimation;
 @property(nonatomic) _Bool defaultAnimation; // @synthesize defaultAnimation=_defaultAnimation;
 @property(nonatomic) struct CGRect targetFrame; // @synthesize targetFrame=_targetFrame;
+@property(nonatomic) double targetCenterZ; // @synthesize targetCenterZ=_targetCenterZ;
 @property(nonatomic) double initialDistanceFromTargetFrame; // @synthesize initialDistanceFromTargetFrame=_initialDistanceFromTargetFrame;
-@property(nonatomic) struct CGPoint center; // @synthesize center=_center;
+@property(nonatomic) struct CAPoint3D center; // @synthesize center=_center;
 @property(retain, nonatomic) UITargetedDragPreview *updatedTargetedDropPreview; // @synthesize updatedTargetedDropPreview=_updatedTargetedDropPreview;
 @property(retain, nonatomic) UITargetedDragPreview *targetedDropPreview; // @synthesize targetedDropPreview=_targetedDropPreview;
 @property(retain, nonatomic) id <_UIDragSetDownAnimationTarget> visualTarget; // @synthesize visualTarget=_visualTarget;
@@ -99,7 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)performSpringAnimations:(CDUnknownBlockType)arg1;
 - (void)performTrackingAnimations:(CDUnknownBlockType)arg1;
 - (double)estimatedFractionCompleteOfAnimation;
-- (struct CGRect)getCurrentTargetFrame;
+- (void)updateCurrentTargetFrame;
 - (void)reparentRetargetingContainerViewInTargetContainer;
 - (void)configureCrossfadingAnimationToTargetedPreview;
 - (void)configureSystemDefaultAnimation;

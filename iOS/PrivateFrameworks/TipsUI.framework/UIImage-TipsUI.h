@@ -8,5 +8,6 @@
 
 @interface UIImage (TipsUI)
 + (id)tipsAppHomeScreenIcon;
++ (id)_systemName:(id)arg1;
 @end
 

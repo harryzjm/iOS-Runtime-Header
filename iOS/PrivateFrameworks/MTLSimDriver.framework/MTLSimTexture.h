@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MTLSimDriver/MTLSerializerResource-Protocol.h>
-#import <MTLSimDriver/MTLSerializerTexture-Protocol.h>
-#import <MTLSimDriver/MTLTexture-Protocol.h>
-#import <MTLSimDriver/MTLTextureImplementation-Protocol.h>
-
 @class MTLSimBuffer, NSString;
 @protocol MTLBuffer, MTLDevice, MTLHeap, MTLResource, MTLTexture;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimTexture <MTLSerializerTexture, MTLSerializerResource, MTLTexture, MTLTextureImplementation>
+@interface MTLSimTexture
 {
     MTLSimTexture *_parentTexture;
     unsigned long long _parentRelativeLevel;
@@ -43,7 +38,6 @@ __attribute__((visibility("hidden")))
     _Bool _isInternalTextureView;
     unsigned long long _firstMipmapInTail;
     unsigned long long _tailSizeInBytes;
-    _Bool isCompressed;
     _Bool _isDrawable;
     _Bool _shareable;
     unsigned long long rotation;
@@ -68,7 +62,11 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long iosurfacePlane; // @synthesize iosurfacePlane;
 @property(readonly) struct __IOSurface *iosurface; // @synthesize iosurface=_iosurface;
 @property(readonly) unsigned long long rotation; // @synthesize rotation;
-@property(readonly) _Bool isCompressed; // @synthesize isCompressed;
+@property(readonly) struct MTLResourceID gpuResourceID;
+@property(readonly) unsigned long long gpuHandle;
+@property(readonly) _Bool isCompressed;
+@property(readonly) long long compressionType;
+@property(readonly, nonatomic) unsigned long long compressionFootprint;
 @property(readonly) unsigned long long textureType;
 @property(readonly) unsigned long long arrayLength;
 @property(readonly) unsigned long long mipmapLevelCount;
@@ -119,8 +117,6 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly) unsigned long long allocatedSize;
 @property(readonly) unsigned long long allocationID;
-@property(readonly, nonatomic) unsigned long long compressionFootprint;
-@property(readonly) long long compressionType;
 @property(readonly) unsigned long long cpuCacheMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) id <MTLDevice> device;

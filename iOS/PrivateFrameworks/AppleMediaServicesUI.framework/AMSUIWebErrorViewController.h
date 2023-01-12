@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebPagePresenter-Protocol.h>
+#import "AMSUICommonViewController.h"
 
 @class AMSUIErrorView, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebErrorPageModel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebErrorViewController <AMSUIWebPagePresenter>
+@interface AMSUIWebErrorViewController : AMSUICommonViewController
 {
     _Bool _showingCancelButton;
     AMSUIWebAppearance *_appearance;

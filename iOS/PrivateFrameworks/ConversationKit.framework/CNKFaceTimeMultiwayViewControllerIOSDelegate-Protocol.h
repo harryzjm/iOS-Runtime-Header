@@ -5,6 +5,7 @@
 //
 
 @protocol CNKFaceTimeMultiwayViewControllerIOSDelegate
+- (_Bool)wantsStandardControls;
 - (_Bool)isShownAboveCoverSheet;
 - (_Bool)isMultiwayViewControllerShowingInMiniWindow;
 - (void)updateBackgroundStartPipAuthorizationState;

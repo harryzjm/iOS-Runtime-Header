@@ -27,11 +27,6 @@ struct CGSize {
     double height;
 };
 
-struct CGVector {
-    double _field1;
-    double _field2;
-};
-
 struct Page;
 
 struct Vertex;

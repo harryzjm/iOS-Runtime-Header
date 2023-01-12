@@ -10,11 +10,11 @@
 - (void)schedulePeriodicTabGroupsReport;
 - (void)_performTabsForNonTabGroupUserReport;
 - (void)_performTabGroupsReport;
-- (void)_updatePeriodicCoreAnalyticsLastReportTime;
-- (unsigned long long)_timeUntilNextPeriodicCoreAnalyticsReport;
+- (void)_tabGroupsAnalyticsLogger_updatePeriodicCoreAnalyticsLastReportTime;
+- (unsigned long long)_tabGroupsAnalyticsLogger_timeUntilNextPeriodicCoreAnalyticsReport;
 - (void)schedulePeriodicStandaloneTabBarReport;
 - (void)_performStandaloneTabBarReport;
-- (void)_updatePeriodicCoreAnalyticsLastReportTime;
-- (unsigned long long)_timeUntilNextPeriodicCoreAnalyticsReport;
+- (void)_standaloneTabBarAnalyticsLogger_updatePeriodicCoreAnalyticsLastReportTime;
+- (unsigned long long)_standaloneTabBarAnalyticsLogger_timeUntilNextPeriodicCoreAnalyticsReport;
 @end
 

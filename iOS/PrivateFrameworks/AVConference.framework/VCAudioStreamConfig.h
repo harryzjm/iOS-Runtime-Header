@@ -23,6 +23,11 @@ __attribute__((visibility("hidden")))
     _Bool _useExternalIO;
     struct tagVCAudioFrameFormat _externalIOFormat;
     int _oneToOneOperatingMode;
+    _Bool _dtmfTonePlaybackEnabled;
+    unsigned int _dtmfSampleRate;
+    _Bool _anbrEnabled;
+    long long _subscriptionSlot;
+    _Bool _isLowLatency;
     _Bool _useWifiTiers;
     unsigned int _channelCount;
 }
@@ -30,6 +35,11 @@ __attribute__((visibility("hidden")))
 + (int)bundlingSchemeForAudioStreamMode:(long long)arg1 payloadType:(int)arg2;
 @property(nonatomic) _Bool useWifiTiers; // @synthesize useWifiTiers=_useWifiTiers;
 @property(readonly, nonatomic) _Bool useExternalIO; // @synthesize useExternalIO=_useExternalIO;
+@property(nonatomic) _Bool isLowLatency; // @synthesize isLowLatency=_isLowLatency;
+@property(nonatomic) long long subscriptionSlot; // @synthesize subscriptionSlot=_subscriptionSlot;
+@property(nonatomic) _Bool anbrEnabled; // @synthesize anbrEnabled=_anbrEnabled;
+@property(nonatomic) unsigned int dtmfSampleRate; // @synthesize dtmfSampleRate=_dtmfSampleRate;
+@property(nonatomic) _Bool dtmfTonePlaybackEnabled; // @synthesize dtmfTonePlaybackEnabled=_dtmfTonePlaybackEnabled;
 @property(nonatomic) unsigned int channelCount; // @synthesize channelCount=_channelCount;
 @property(nonatomic) int oneToOneOperatingMode; // @synthesize oneToOneOperatingMode=_oneToOneOperatingMode;
 @property(nonatomic) int bundlingScheme; // @synthesize bundlingScheme=_bundlingScheme;

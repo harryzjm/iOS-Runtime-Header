@@ -6,14 +6,13 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobV2StreamGroupStream : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobV2StreamGroupStream : PBCodable
 {
     unsigned int _audioChannelCount;
+    unsigned int _coordinateSystem;
     unsigned int _maxNetworkBitrate;
     unsigned int _metadata;
     NSData *_optionalPackedPayload;
@@ -26,6 +25,7 @@ __attribute__((visibility("hidden")))
     unsigned int _streamIndex;
     struct {
         unsigned int audioChannelCount:1;
+        unsigned int coordinateSystem:1;
         unsigned int maxNetworkBitrate:1;
         unsigned int metadata:1;
         unsigned int payloadSpecOrPayloads:1;
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)streamIndex:(char *)arg1 forStreamGroupID:(unsigned int)arg2 qualityIndex:(unsigned int)arg3 isFallbackStream:(_Bool)arg4;
 + (_Bool)isDefaultPayloadConfigsWithStreamConfig:(id)arg1 payloadConfigs:(id)arg2 streamGroupID:(unsigned int)arg3;
 + (void)printWithLogFile:(void *)arg1 prefix:(id)arg2 streamConfig:(id)arg3;
+@property(nonatomic) unsigned int coordinateSystem; // @synthesize coordinateSystem=_coordinateSystem;
 @property(retain, nonatomic) NSData *optionalPackedPayload; // @synthesize optionalPackedPayload=_optionalPackedPayload;
 @property(retain, nonatomic) NSData *requiredPackedPayload; // @synthesize requiredPackedPayload=_requiredPackedPayload;
 @property(nonatomic) unsigned int streamIndex; // @synthesize streamIndex=_streamIndex;
@@ -71,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasCoordinateSystem;
 @property(readonly, nonatomic) _Bool hasOptionalPackedPayload;
 @property(readonly, nonatomic) _Bool hasRequiredPackedPayload;
 @property(nonatomic) _Bool hasStreamIndex;
@@ -84,6 +86,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasPayloadSpecOrPayloads;
 @property(nonatomic) _Bool hasMetadata;
 - (void)dealloc;
+- (_Bool)setNegotiatedCoordinateSystemFromCoordinateSystem:(unsigned int)arg1;
+- (unsigned int)mediaStreamGroupCoordinateSystem;
 - (id)compressWithConfig:(id)arg1;
 - (id)optionalPayloadCompressWithConfig:(id)arg1;
 - (id)requiredPayloadCompressWithConfig:(id)arg1;

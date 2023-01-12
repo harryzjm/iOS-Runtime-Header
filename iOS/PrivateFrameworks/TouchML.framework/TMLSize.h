@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLSizeJSExports-Protocol.h>
-
-@interface TMLSize : NSObject <TMLSizeJSExports, NSCopying>
+@interface TMLSize : NSObject
 {
     struct CGSize _size;
 }

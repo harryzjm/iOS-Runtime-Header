@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, NSString;
+@class NSDictionary, NSError, NSString;
 @protocol MFQueuePlayerItem, MFRouteChangeMetadata, MFTimeStamp, MFUserAction;
 
 @protocol MFPlaybackStackControllerDelegate
+- (void)stackControllerDidCreateTransitionFrom:(id <MFQueuePlayerItem>)arg1 to:(id <MFQueuePlayerItem>)arg2 type:(long long)arg3 parameters:(NSDictionary *)arg4;
 - (void)errorResolutionDidEndForItem:(id <MFQueuePlayerItem>)arg1 error:(NSError *)arg2 resolution:(long long)arg3;
 - (void)errorResolutionDidStartForItem:(id <MFQueuePlayerItem>)arg1 error:(NSError *)arg2;
 - (void)didReportSignpostWithType:(long long)arg1;
@@ -23,9 +24,11 @@
 - (void)interruptionDidFinishForInterruptor:(NSString *)arg1 shouldResume:(_Bool)arg2 timeStamp:(id <MFTimeStamp>)arg3;
 - (void)interruptionDidBeginWithInterruptor:(NSString *)arg1 timeStamp:(id <MFTimeStamp>)arg2;
 - (void)didReachEndOfQueueWithReason:(NSString *)arg1;
+- (void)timeControlStatusDidChange:(long long)arg1 waitingReason:(NSString *)arg2 timeStamp:(id <MFTimeStamp>)arg3;
 - (void)tracksDidChangeForItem:(id <MFQueuePlayerItem>)arg1 timeStamp:(id <MFTimeStamp>)arg2;
 - (void)playbackBufferStateDidChangeToState:(long long)arg1 forItem:(id <MFQueuePlayerItem>)arg2 timeStamp:(id <MFTimeStamp>)arg3;
 - (void)playbackIsLikelyToKeepUp:(_Bool)arg1 forItem:(id <MFQueuePlayerItem>)arg2 timeStamp:(id <MFTimeStamp>)arg3;
+- (void)firstFrameWillRenderForItem:(id <MFQueuePlayerItem>)arg1 timeStamp:(id <MFTimeStamp>)arg2;
 - (void)relativeVolumeDidChangeTo:(float)arg1 timeStamp:(id <MFTimeStamp>)arg2;
 - (void)playbackRateDidChangeNotifiedForItem:(id <MFQueuePlayerItem>)arg1 newRate:(float)arg2 reason:(NSString *)arg3 participantIdentifier:(NSString *)arg4 timeStamp:(id <MFTimeStamp>)arg5;
 - (void)playbackRateDidChangeToRate:(float)arg1 forItem:(id <MFQueuePlayerItem>)arg2 timeStamp:(id <MFTimeStamp>)arg3;

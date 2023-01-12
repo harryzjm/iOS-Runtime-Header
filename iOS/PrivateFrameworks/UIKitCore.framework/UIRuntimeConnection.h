@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIRuntimeConnection : NSObject <NSCoding>
+@interface UIRuntimeConnection : NSObject
 {
     id _source;
     id _destination;

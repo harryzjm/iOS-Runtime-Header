@@ -16,10 +16,13 @@
     MISSING_TYPE *blueprintLayoutCollectionProvider;
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *channelDataFactory;
+    MISSING_TYPE *issueModelFactory;
     MISSING_TYPE *sectionPositionProvider;
     MISSING_TYPE *contentPrefetchManager;
     MISSING_TYPE *newsActivityManager;
+    MISSING_TYPE *headlineExposureTracker;
     MISSING_TYPE *trackerConfiguration;
+    MISSING_TYPE *audioPlaybackContext;
     MISSING_TYPE *$__lazy_storage_$_adInstrumentationEnabled;
     MISSING_TYPE *todayActivityRegistrationType;
     MISSING_TYPE *hasRegisteredUserActivity;

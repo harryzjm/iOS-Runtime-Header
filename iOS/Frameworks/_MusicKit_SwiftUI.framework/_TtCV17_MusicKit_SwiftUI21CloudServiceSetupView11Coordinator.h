@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <_MusicKit_SwiftUI/SKCloudServiceSetupViewControllerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCV17_MusicKit_SwiftUI21CloudServiceSetupView11Coordinator : NSObject <SKCloudServiceSetupViewControllerDelegate>
+@interface _TtCV17_MusicKit_SwiftUI21CloudServiceSetupView11Coordinator : NSObject
 {
     MISSING_TYPE *parent;
 }

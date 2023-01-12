@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/_GEOConfigDBOperation-Protocol.h>
-
 @class GEOSQLiteDB, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOConfigDBClearExpireOperation <_GEOConfigDBOperation>
+@interface _GEOConfigDBClearExpireOperation
 {
     GEOSQLiteDB *_db;
     NSString *_keyPath;

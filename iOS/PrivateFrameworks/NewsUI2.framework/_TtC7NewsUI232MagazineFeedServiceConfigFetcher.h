@@ -14,6 +14,7 @@
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *magazineConfigurationService;
     MISSING_TYPE *bundlePurchasePrewarmer;
+    MISSING_TYPE *subscriptionController;
 }
 
 @end

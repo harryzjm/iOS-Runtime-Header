@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreImage/CIGVRenderer-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CGRenderer : NSObject <CIGVRenderer>
+@interface CGRenderer : NSObject
 {
     struct CGContext *context;
     _Bool drawEdgesFirst;

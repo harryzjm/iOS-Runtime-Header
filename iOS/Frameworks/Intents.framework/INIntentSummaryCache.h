@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/LSApplicationWorkspaceObserverProtocol-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface INIntentSummaryCache : NSObject <LSApplicationWorkspaceObserverProtocol>
+@interface INIntentSummaryCache : NSObject
 {
     int _systemLanguageChangeNotificationToken;
     NSObject<OS_dispatch_queue> *_resourceAccessQueue;

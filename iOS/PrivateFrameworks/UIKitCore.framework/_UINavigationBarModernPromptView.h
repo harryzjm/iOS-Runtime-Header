@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIColor, UIFont, UILabel;
+#import "UIView.h"
+
+@class NSString, UIColor, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarModernPromptView
+@interface _UINavigationBarModernPromptView : UIView
 {
     UILabel *_promptLabel;
-    UIFont *_font;
     NSString *_prompt;
     UIColor *_textColor;
 }
@@ -18,9 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property(copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
+- (void)updateLayoutData:(id)arg1 layoutWidth:(double)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
-@property(readonly, nonatomic) double promptHeight;
 - (void)_updatePromptLabel;
 - (id)initWithFrame:(struct CGRect)arg1;
 

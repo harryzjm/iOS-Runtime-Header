@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNPhotoPickerActionsViewControllerLayout-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerActionsViewControllerLayout : NSObject <CNPhotoPickerActionsViewControllerLayout>
+@interface CNPhotoPickerActionsViewControllerLayout : NSObject
 {
     long long _buttonCount;
     struct CGSize _containerSize;

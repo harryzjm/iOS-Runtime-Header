@@ -8,6 +8,7 @@
 
 @protocol LPAsynchronousResource <NSObject>
 - (void)loadAsynchronouslyWithCompletionHandler:(void (^)(id))arg1;
+- (_Bool)hasPlaceholderValueForAsynchronousLoad;
 - (_Bool)needsAsynchronousLoad;
 @end
 

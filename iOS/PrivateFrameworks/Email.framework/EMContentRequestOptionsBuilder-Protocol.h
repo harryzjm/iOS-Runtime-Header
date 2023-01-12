@@ -9,7 +9,7 @@
 @protocol EMContentRequestOptionsBuilder
 @property(copy, nonatomic) NSArray *requestedHeaderKeys;
 @property(nonatomic) _Bool requestAllHeaders;
-@property(nonatomic) _Bool includeSuggestionItems;
+@property(nonatomic) long long includeSuggestionItems;
 @property(nonatomic) long long networkUsage;
 @property(nonatomic) NSString *requestedRepresentation;
 @end

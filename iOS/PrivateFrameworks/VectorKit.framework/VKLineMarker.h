@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VKMarker.h"
+
 @class NSString;
 
-@interface VKLineMarker
+__attribute__((visibility("hidden")))
+@interface VKLineMarker : VKMarker
 {
     struct shared_ptr<md::LabelFeatureMarker> _labelFeatureMarker;
 }

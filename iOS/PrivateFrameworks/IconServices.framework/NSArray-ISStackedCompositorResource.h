@@ -6,12 +6,10 @@
 
 #import <Foundation/NSArray.h>
 
-#import <IconServices/ISStackedCompositorResource-Protocol.h>
-
 @class NSString;
 @protocol ISScalableCompositorResource;
 
-@interface NSArray (ISStackedCompositorResource) <ISStackedCompositorResource>
+@interface NSArray (ISStackedCompositorResource)
 @property(readonly) NSArray<ISScalableCompositorResource> *resourceStack;
 
 // Remaining properties

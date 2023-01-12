@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreServices/NSCopying-Protocol.h>
-#import <StoreServices/NSSecureCoding-Protocol.h>
-
 @class NSIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _SSVPlayActivityEndpointRevisionInformation : NSObject <NSCopying, NSSecureCoding>
+@interface _SSVPlayActivityEndpointRevisionInformation : NSObject
 {
     NSIndexSet *_additionalPendingRevisionsIndexSet;
     unsigned long long _currentRevision;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTAcousticFeature, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTAudioAnalytics_AcousticFeaturesEntry : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTAudioAnalytics_AcousticFeaturesEntry : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;

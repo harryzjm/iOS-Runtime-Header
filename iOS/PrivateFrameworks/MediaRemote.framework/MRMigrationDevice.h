@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaRemote/MRQHONowPlayingControllerDelegate-Protocol.h>
-
 @class MRAVEndpoint, MRNowPlayingPlayerResponse, MRQHONowPlayingController, NSError, NSString;
 @protocol MRMigrationDeviceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MRMigrationDevice : NSObject <MRQHONowPlayingControllerDelegate>
+@interface MRMigrationDevice : NSObject
 {
     _Bool _preparedForAirPlay;
     unsigned long long _deviceState;
@@ -43,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MRNowPlayingPlayerResponse *playerState;
 @property(readonly, nonatomic) NSString *uid;
 @property(readonly, copy) NSString *description;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (id)initWithUID:(id)arg1;
 

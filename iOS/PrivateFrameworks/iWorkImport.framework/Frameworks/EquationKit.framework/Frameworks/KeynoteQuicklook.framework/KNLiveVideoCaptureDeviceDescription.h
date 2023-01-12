@@ -6,11 +6,9 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
 @class KNLiveVideoCaptureDeviceIdentifier;
 
-@interface KNLiveVideoCaptureDeviceDescription : TSKSosBase <NSCopying>
+@interface KNLiveVideoCaptureDeviceDescription : TSKSosBase
 {
     KNLiveVideoCaptureDeviceIdentifier *_identifier;
     struct CGSize _defaultVideoResolution;

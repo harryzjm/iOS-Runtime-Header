@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSDrawables/TSDGradientStopContainer-Protocol.h>
-
 @class NSArray, NSString, TSUColor;
 
-@interface TSDMutableTransformGradient <TSDGradientStopContainer>
+@interface TSDMutableTransformGradient
 {
 }
 

@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/WebFrameLoadDelegate-Protocol.h>
-#import <UIKitCore/WebPolicyDelegate-Protocol.h>
-#import <UIKitCore/WebResourceLoadDelegate-Protocol.h>
-#import <UIKitCore/WebUIDelegate-Protocol.h>
-
 @class NSString, UIWebView;
 
 __attribute__((visibility("hidden")))
-@interface UIWebViewWebViewDelegate : NSObject <WebFrameLoadDelegate, WebPolicyDelegate, WebResourceLoadDelegate, WebUIDelegate>
+@interface UIWebViewWebViewDelegate : NSObject
 {
     UIWebView *uiWebView;
 }

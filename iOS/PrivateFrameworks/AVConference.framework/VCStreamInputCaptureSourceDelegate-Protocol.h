@@ -7,6 +7,8 @@
 #import <AVConference/NSObject-Protocol.h>
 
 @protocol VCStreamInputCaptureSourceDelegate <NSObject>
+- (void)didResumeStreamInputCaptureSource;
+- (void)didSuspendStreamInputCaptureSource;
 - (void)didStopStreamInputCaptureSource;
 - (void)didStartStreamInputCaptureSource;
 @end

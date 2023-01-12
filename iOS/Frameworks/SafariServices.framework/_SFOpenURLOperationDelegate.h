@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/LSOpenResourceOperationDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _SFOpenURLOperationDelegate : NSObject <LSOpenResourceOperationDelegate>
+@interface _SFOpenURLOperationDelegate : NSObject
 {
     CDUnknownBlockType _completionHandler;
 }

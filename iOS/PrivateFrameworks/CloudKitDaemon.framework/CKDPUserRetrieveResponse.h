@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecord;
 
-@interface CKDPUserRetrieveResponse : PBCodable <NSCopying>
+@interface CKDPUserRetrieveResponse : PBCodable
 {
     CKDPRecord *_user;
 }

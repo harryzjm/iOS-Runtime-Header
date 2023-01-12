@@ -19,11 +19,11 @@
     MISSING_TYPE *_accessibilityEnabled;
     MISSING_TYPE *_placedChildren;
     MISSING_TYPE *items;
+    MISSING_TYPE *lruItems;
     MISSING_TYPE *usedSeed;
     MISSING_TYPE *commitSeed;
     MISSING_TYPE *lastTransactionID;
     MISSING_TYPE *placementSeed;
-    MISSING_TYPE *failedSeed;
     MISSING_TYPE *invalidationSeed;
     MISSING_TYPE *invalidationTTL;
     MISSING_TYPE *hasSections;

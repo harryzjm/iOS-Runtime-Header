@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSCoding-Protocol.h>
-
-@interface NSHTTPURLResponseInternal : NSObject <NSCoding>
+@interface NSHTTPURLResponseInternal : NSObject
 {
     struct __SecTrust *peerTrust;
     _Bool isMixedReplace;

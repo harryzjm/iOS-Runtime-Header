@@ -6,13 +6,11 @@
 
 #import <UIKit/UIStackView.h>
 
-#import <OnBoardingKit/UIKeyInput-Protocol.h>
-
 @class NSArray, NSMutableString, NSString, UITextInputPasswordRules;
 @protocol OBPasscodeFieldDelegate;
 
 __attribute__((visibility("hidden")))
-@interface OBPasscodeField : UIStackView <UIKeyInput>
+@interface OBPasscodeField : UIStackView
 {
     _Bool _enabled;
     id <OBPasscodeFieldDelegate> _delegate;

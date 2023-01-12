@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "SBAppSwticherAppAccessibilityElementDelegate-Protocol.h"
-
 @class NSString;
 
-@interface SBFluidSwitcherViewControllerAccessibility <SBAppSwticherAppAccessibilityElementDelegate>
+@interface SBFluidSwitcherViewControllerAccessibility
 {
 }
 
@@ -41,6 +39,8 @@
 - (id)_axMainSwitcher;
 - (long long)_axEnvironmentMode;
 - (id)_axVisibleAppLayouts;
+- (id)_axChamoisActiveApps;
+- (id)_axChamoisActiveAppLayouts;
 - (id)_axCollectedVisibleItemContainers;
 - (id)_axCollectedAppLayouts;
 - (id)_axAppLayouts;

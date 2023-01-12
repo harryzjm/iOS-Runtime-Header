@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor, UIImageView, UIView;
+#import "UIView.h"
+
+@class UIColor, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface _UIParallaxDimmingView
+@interface _UIParallaxDimmingView : UIView
 {
     UIImageView *leftEdgeFade;
     _Bool _backgroundIsDimmed;

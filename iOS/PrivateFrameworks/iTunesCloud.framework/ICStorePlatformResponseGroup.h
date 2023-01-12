@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/ICStorePlatformResponse-Protocol.h>
-
 @class NSArray, NSDate, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICStorePlatformResponseGroup : NSObject <ICStorePlatformResponse>
+@interface ICStorePlatformResponseGroup : NSObject
 {
     NSArray *_childResponses;
 }
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) NSArray *performanceMetrics;
 @property(readonly, copy, nonatomic) id rawResponse;
 @property(readonly, copy, nonatomic) NSString *storefrontIdentifier;
 - (id)itemForIdentifier:(id)arg1;

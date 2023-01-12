@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol MPCPlaybackEngineEventStreamSubscription <NSObject>
+@property(readonly, copy, nonatomic) NSString *streamID;
 - (void)cancelSubscription;
 - (void)flushEventsWithCompletion:(void (^)(void))arg1;
 - (void)subscribeToEventType:(NSString *)arg1 options:(unsigned long long)arg2 handler:(_Bool (^)(MPCPlaybackEngineEvent *, id <MPCPlaybackEngineEventStreamCursor>))arg3;

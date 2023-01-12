@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSValue, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface _UIGroupTableViewCellBackground_TV
+@interface _UIGroupTableViewCellBackground_TV : UIView
 {
     NSValue *_currentShadowKey;
     UIImageView *_backgroundImageView;

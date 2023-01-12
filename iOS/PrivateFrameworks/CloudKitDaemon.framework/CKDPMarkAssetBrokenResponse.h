@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecordIdentifier;
 
-@interface CKDPMarkAssetBrokenResponse : PBCodable <NSCopying>
+@interface CKDPMarkAssetBrokenResponse : PBCodable
 {
     CKDPRecordIdentifier *_missingAssetStatusRecord;
 }

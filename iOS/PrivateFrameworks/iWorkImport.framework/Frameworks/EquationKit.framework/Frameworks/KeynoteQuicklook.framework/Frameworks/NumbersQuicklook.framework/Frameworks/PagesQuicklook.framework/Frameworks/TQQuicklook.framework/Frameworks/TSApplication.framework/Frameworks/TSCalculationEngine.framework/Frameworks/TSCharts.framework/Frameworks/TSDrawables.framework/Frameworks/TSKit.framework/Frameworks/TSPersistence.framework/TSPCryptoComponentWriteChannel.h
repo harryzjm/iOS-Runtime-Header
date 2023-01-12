@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPComponentWriteChannel-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_data, OS_dispatch_semaphore, TSPComponentWriteChannel, TSPMutableCryptoInfo;
 
-@interface TSPCryptoComponentWriteChannel : NSObject <TSPComponentWriteChannel>
+@interface TSPCryptoComponentWriteChannel : NSObject
 {
     id <TSPComponentWriteChannel> _writeChannel;
     id <TSPMutableCryptoInfo> _encryptionInfo;

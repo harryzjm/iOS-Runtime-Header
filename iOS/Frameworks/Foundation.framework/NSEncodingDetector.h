@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface NSEncodingDetector : NSObject
 {
+    CDUnknownFunctionPointerType _recognizeFunc;
     unsigned long long _nsEncoding;
     unsigned int _cfEncoding;
     unsigned long long _givenNumBytes;
@@ -33,15 +34,17 @@ __attribute__((visibility("hidden")))
     unsigned int _tag;
 }
 
++ (CDUnknownFunctionPointerType)recognizeFuncForCFStringEncoding:(unsigned int)arg1;
 + (id)detectorForCFStringEncoding:(unsigned int)arg1 allowBackupDetectors:(_Bool)arg2;
-+ (Class)classForCFStringEncoding:(unsigned int)arg1;
 @property(readonly) unsigned int cfEncoding; // @synthesize cfEncoding=_cfEncoding;
 @property(readonly) unsigned long long nsEncoding; // @synthesize nsEncoding=_nsEncoding;
 - (unsigned long long)recognizeString:(const char *)arg1 withDataLength:(unsigned long long)arg2 intoBuffer:(id)arg3;
 - (double)multiBytesRatio;
+- (double)_singleByte_confidence;
+- (double)_ASCII_confidence;
 - (double)confidenceWith2Chars;
 - (double)confidence;
-- (id)initWithNSStringEncoding:(unsigned long long)arg1 CFStringEncoding:(unsigned int)arg2;
+- (id)initWithNSStringEncoding:(unsigned long long)arg1 CFStringEncoding:(unsigned int)arg2 recognizeFunc:(CDUnknownFunctionPointerType)arg3;
 - (unsigned long long)maxSkipBytes;
 - (double)bytesRatio;
 - (void)softReset;

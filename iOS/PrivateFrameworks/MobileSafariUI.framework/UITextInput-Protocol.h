@@ -6,8 +6,8 @@
 
 #import <MobileSafariUI/UIKeyInput-Protocol.h>
 
-@class NSArray, NSAttributedString, NSDictionary, NSString, UITextPlaceholder, UITextPosition, UITextRange, UIView;
-@protocol UITextInputDelegate, UITextInputTokenizer;
+@class NSArray, NSAttributedString, NSDictionary, NSString, UIMenu, UITextPlaceholder, UITextPosition, UITextRange, UIView;
+@protocol UIEditMenuInteractionAnimating, UITextInputDelegate, UITextInputTokenizer;
 
 @protocol UITextInput <UIKeyInput>
 @property(readonly, nonatomic) id <UITextInputTokenizer> tokenizer;
@@ -41,6 +41,9 @@
 @property(readonly, nonatomic) id insertDictationResultPlaceholder;
 @property(nonatomic) long long selectionAffinity;
 @property(readonly, nonatomic) UIView *textInputView;
+- (void)willDismissEditMenuWithAnimator:(id <UIEditMenuInteractionAnimating>)arg1;
+- (void)willPresentEditMenuWithAnimator:(id <UIEditMenuInteractionAnimating>)arg1;
+- (UIMenu *)editMenuForTextRange:(UITextRange *)arg1 suggestedActions:(NSArray *)arg2;
 - (void)endFloatingCursor;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;

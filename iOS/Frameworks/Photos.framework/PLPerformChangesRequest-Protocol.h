@@ -6,12 +6,13 @@
 
 #import <Photos/NSObject-Protocol.h>
 
-@class NSError, NSString;
-@protocol PLClientAuthorization, PLPerformChangesRequestService;
+@class NSError, NSString, PLLibraryServicesManager;
+@protocol PLClientAuthorization, PLPerformChangesRequestService, PLPhotoLibraryExecutionContext;
 
 @protocol PLPerformChangesRequest <NSObject>
 - (NSError *)errorWithLocalizedDescription:(NSString *)arg1;
 - (long long)accessScopeOptionsRequiredForRequestedChanges;
+- (void)executeWithLibraryServicesManager:(PLLibraryServicesManager *)arg1 libraryName:(const char *)arg2 executionContext:(id <PLPhotoLibraryExecutionContext>)arg3 reply:(void (^)(_Bool, NSError *))arg4;
 - (void)executeWithService:(id <PLPerformChangesRequestService>)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)discardUnsupportedLimitedLibraryChangeRequests;
 - (void)decodeWithService:(id <PLPerformChangesRequestService>)arg1 clientAuthorization:(id <PLClientAuthorization>)arg2;

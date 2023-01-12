@@ -6,13 +6,11 @@
 
 #import <Preferences/PSViewController.h>
 
-#import <CommunicationsSetupUI/CNFRegFirstRunExperience-Protocol.h>
-
 @class CNFRegController, NSString, UIBarButtonItem, UIButton;
 @protocol CNFRegFirstRunDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNFRegSplashScreenController : PSViewController <CNFRegFirstRunExperience>
+@interface CNFRegSplashScreenController : PSViewController
 {
     UIButton *_learnMoreButton;
     id <CNFRegFirstRunDelegate> _delegate;

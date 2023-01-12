@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AMSAuthenticateRequest, AMSDialogRequest, AMSEngagementRequest, NSArray;
+@class AMSAuthenticateRequest, AMSDialogRequest, AMSEngagementRequest, ASDViewPresentationRequest, NSArray;
 
 @protocol ASDNotificationServiceProtocol
 - (void)isDialogObserverAvailableWithReplyHandler:(void (^)(_Bool))arg1;
+- (void)deliverViewPresentationRequest:(ASDViewPresentationRequest *)arg1 resultHandler:(void (^)(ASDViewPresentationResult *, NSError *))arg2;
 - (void)deliverProgress:(NSArray *)arg1;
 - (void)deliverNotifications:(NSArray *)arg1;
 - (void)deliverEngagementRequest:(AMSEngagementRequest *)arg1 withResultHandler:(void (^)(AMSEngagementResult *, NSError *))arg2;

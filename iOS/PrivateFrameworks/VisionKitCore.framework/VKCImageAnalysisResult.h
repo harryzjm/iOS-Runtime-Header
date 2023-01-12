@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, UIMenu, UIViewController, VKCVisualSearchResult, VKImageAnalyzerRequest;
+#import "VKCTextRecognitionResult.h"
+
+@class NSArray, UIMenu, UIViewController, VKCImageAnalyzerRequest, VKCVisualSearchResult;
 
 __attribute__((visibility("hidden")))
-@interface VKCImageAnalysisResult
+@interface VKCImageAnalysisResult : VKCTextRecognitionResult
 {
     int _analysisRequestID;
     VKCVisualSearchResult *_visualSearchResult;
-    VKImageAnalyzerRequest *_request;
+    VKCImageAnalyzerRequest *_request;
     double _totalBoundingBoxTextArea;
     double _totalQuadTextArea;
 }
@@ -21,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double totalQuadTextArea; // @synthesize totalQuadTextArea=_totalQuadTextArea;
 @property(nonatomic) double totalBoundingBoxTextArea; // @synthesize totalBoundingBoxTextArea=_totalBoundingBoxTextArea;
 @property(nonatomic) int analysisRequestID; // @synthesize analysisRequestID=_analysisRequestID;
-@property(retain, nonatomic) VKImageAnalyzerRequest *request; // @synthesize request=_request;
+@property(retain, nonatomic) VKCImageAnalyzerRequest *request; // @synthesize request=_request;
 @property(retain, nonatomic) VKCVisualSearchResult *visualSearchResult; // @synthesize visualSearchResult=_visualSearchResult;
 @property(readonly, nonatomic) NSArray *appClipDataDetectorElements;
 @property(readonly, nonatomic) NSArray *mrcDataDetectorElements;

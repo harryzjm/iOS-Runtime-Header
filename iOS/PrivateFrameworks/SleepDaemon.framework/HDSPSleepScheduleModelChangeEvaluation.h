@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/BSDescriptionProviding-Protocol.h>
-
 @class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDSPSleepScheduleModelChangeEvaluation : NSObject <BSDescriptionProviding>
+@interface HDSPSleepScheduleModelChangeEvaluation : NSObject
 {
     _Bool _isSignificantChange;
     _Bool _isSignificantEventRecordUpdate;

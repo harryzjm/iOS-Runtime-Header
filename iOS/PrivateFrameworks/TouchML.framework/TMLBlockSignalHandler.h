@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLSignalHandler-Protocol.h>
-
 @class NSString;
 
-@interface TMLBlockSignalHandler : NSObject <TMLSignalHandler>
+@interface TMLBlockSignalHandler : NSObject
 {
     CDUnknownBlockType _block;
     int _flags;

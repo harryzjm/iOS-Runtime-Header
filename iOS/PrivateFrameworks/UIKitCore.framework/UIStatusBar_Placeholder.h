@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIStatusBar_Base.h"
+
 __attribute__((visibility("hidden")))
-@interface UIStatusBar_Placeholder
+@interface UIStatusBar_Placeholder : UIStatusBar_Base
 {
 }
 

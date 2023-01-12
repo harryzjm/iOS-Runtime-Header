@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView, _UIPlatterView;
+#import "UIView.h"
+
+@class _UIPlatterView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPlatterContainerView
+@interface _UIPlatterContainerView : UIView
 {
     UIView *_updatedTargetWrapper;
     _UIPlatterView *_source;

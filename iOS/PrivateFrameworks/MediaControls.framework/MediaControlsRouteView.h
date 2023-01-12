@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
-
 @class CCUICAPackageView, MTVisualStylingProvider, NSString, NSTimer, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsRouteView : UIView <MTVisualStylingProviderObservingPrivate>
+@interface MediaControlsRouteView : UIView
 {
     _Bool _labelHidden;
     _Bool _displayMessage;

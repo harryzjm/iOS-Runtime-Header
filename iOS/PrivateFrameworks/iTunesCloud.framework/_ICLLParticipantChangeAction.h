@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class _ICLLParticipantQuery;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLParticipantChangeAction : PBCodable <NSCopying>
+@interface _ICLLParticipantChangeAction : PBCodable
 {
     long long _participantId;
     _ICLLParticipantQuery *_participantQuery;

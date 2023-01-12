@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/NSURLConnectionDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKCustomProtocolLoader : NSObject <NSURLConnectionDelegate>
+@interface WKCustomProtocolLoader : NSObject
 {
     struct WeakPtr<WebKit::LegacyCustomProtocolManagerProxy, WTF::EmptyCounter> _customProtocolManagerProxy;
     ObjectIdentifier_93c10595 _customProtocolID;

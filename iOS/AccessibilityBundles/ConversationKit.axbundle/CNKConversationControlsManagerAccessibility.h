@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)joinButtonTappedWithButton:(id)arg1;
 - (void)accessibilityDidAddPendingParticipant:(id)arg1;
 
 @end

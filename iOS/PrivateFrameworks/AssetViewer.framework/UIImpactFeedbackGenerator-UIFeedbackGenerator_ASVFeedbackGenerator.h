@@ -6,11 +6,9 @@
 
 #import <UIKit/UIImpactFeedbackGenerator.h>
 
-#import <AssetViewer/ASVFeedbackGenerator-Protocol.h>
-
 @class NSString;
 
-@interface UIImpactFeedbackGenerator (UIFeedbackGenerator_ASVFeedbackGenerator) <ASVFeedbackGenerator>
+@interface UIImpactFeedbackGenerator (UIFeedbackGenerator_ASVFeedbackGenerator)
 - (void)fire;
 - (void)prepare;
 

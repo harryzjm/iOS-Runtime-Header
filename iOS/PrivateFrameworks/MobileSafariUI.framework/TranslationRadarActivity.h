@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (void)performActivityWithTranslationContext:(id)arg1;
 - (_Bool)canPerformWithTranslationContext:(id)arg1;
+- (long long)actionType;
 - (id)_systemImageName;
 - (id)activityTitle;
 

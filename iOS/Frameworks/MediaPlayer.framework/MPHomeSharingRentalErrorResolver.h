@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlayer/SSRequestDelegate-Protocol.h>
+#import "MPAVErrorResolver.h"
 
 @class MPHomeSharingML3DataProvider, NSError, NSString, SSRentalCheckoutRequest;
 
 __attribute__((visibility("hidden")))
-@interface MPHomeSharingRentalErrorResolver <SSRequestDelegate>
+@interface MPHomeSharingRentalErrorResolver : MPAVErrorResolver
 {
     unsigned long long _accountID;
     MPHomeSharingML3DataProvider *_dataProvider;

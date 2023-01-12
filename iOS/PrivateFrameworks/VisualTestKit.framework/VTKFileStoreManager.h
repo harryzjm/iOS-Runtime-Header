@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/VTKStoreManager-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface VTKFileStoreManager : NSObject <VTKStoreManager>
+@interface VTKFileStoreManager : NSObject
 {
     NSString *_itemsDirectory;
     NSURL *_saveItemsRootURL;

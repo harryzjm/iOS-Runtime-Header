@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIItemStateCenterObserver-Protocol.h>
-#import <StoreKitUI/SKUIRedeemResultsViewDelegate-Protocol.h>
-
 @class NSOperationQueue, NSString, SKUIGiftItemView, SKUIItemStateCenter, SKUIRedeemITunesPassLockup, SKUIRedeemResultMessageView, SKUITextBoxView, SKUITextLayout, UIButton, UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemNativeResultsViewController <SKUIItemStateCenterObserver, SKUIRedeemResultsViewDelegate>
+@interface SKUIRedeemNativeResultsViewController
 {
     _Bool _extendedMessageIsExpanded;
     NSOperationQueue *_operationQueue;

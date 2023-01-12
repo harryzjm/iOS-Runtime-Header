@@ -6,7 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
+@class SBCoverSheetSecureAppEnvironmentViewController;
+
 @protocol SBCoverSheetSecureAppEnvironmentViewControllerDelegate <NSObject>
+- (_Bool)secureAppEnvironmentViewControllerShouldEnableIdleWarning:(SBCoverSheetSecureAppEnvironmentViewController *)arg1 alwaysOnEnabled:(_Bool)arg2;
 - (void)secureAppEnvironmentViewControllerOwnsHomeGestureDidChange;
 @end
 

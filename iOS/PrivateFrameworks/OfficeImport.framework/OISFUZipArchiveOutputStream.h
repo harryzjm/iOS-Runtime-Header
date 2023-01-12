@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUSimpleOutputStream-Protocol.h>
-
 @class NSData, NSMutableArray, NSString, OISFUCryptoKey, OISFUMoveableFileOutputStream, OISFUZipFreeSpaceEntry, OISFUZipOutputEntry;
 @protocol SFUOutputStream;
 
 __attribute__((visibility("hidden")))
-@interface OISFUZipArchiveOutputStream : NSObject <SFUSimpleOutputStream>
+@interface OISFUZipArchiveOutputStream : NSObject
 {
     OISFUMoveableFileOutputStream *mOutputStream;
     OISFUCryptoKey *mCryptoKey;

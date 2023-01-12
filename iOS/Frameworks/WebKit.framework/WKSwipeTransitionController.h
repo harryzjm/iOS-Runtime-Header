@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/_UINavigationInteractiveTransitionBaseDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKSwipeTransitionController : NSObject <_UINavigationInteractiveTransitionBaseDelegate>
+@interface WKSwipeTransitionController : NSObject
 {
     void *_gestureController;
     struct RetainPtr<_UINavigationInteractiveTransitionBase> _backTransitionController;

@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)setSelectedOptionIndex:(long long)arg1;
+- (void)setExpanded:(_Bool)arg1;
+- (struct CGPoint)accessibilityActivationPoint;
 - (_Bool)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

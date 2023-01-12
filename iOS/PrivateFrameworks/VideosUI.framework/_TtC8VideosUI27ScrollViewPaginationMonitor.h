@@ -11,10 +11,12 @@
 @interface _TtC8VideosUI27ScrollViewPaginationMonitor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *direction;
+    MISSING_TYPE *scrollView;
     MISSING_TYPE *threshold;
     MISSING_TYPE *_needsMore;
-    MISSING_TYPE *scrollView;
     MISSING_TYPE *contentOffsetSubscriber;
+    MISSING_TYPE *pageScrollingSubscriber;
+    MISSING_TYPE *contentSizeSubscriber;
 }
 
 @end

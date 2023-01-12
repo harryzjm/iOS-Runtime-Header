@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface VNRecognizeTextRequestConfiguration
 {
     _Bool _usesLanguageCorrection;
+    _Bool _automaticallyDetectsLanguage;
     float _minimumTextHeight;
     NSArray *_recognitionLanguages;
     NSArray *_customWords;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) float minimumTextHeight; // @synthesize minimumTextHeight=_minimumTextHeight;
+@property(nonatomic) _Bool automaticallyDetectsLanguage; // @synthesize automaticallyDetectsLanguage=_automaticallyDetectsLanguage;
 @property(nonatomic) _Bool usesLanguageCorrection; // @synthesize usesLanguageCorrection=_usesLanguageCorrection;
 @property(nonatomic) long long recognitionLevel; // @synthesize recognitionLevel=_recognitionLevel;
 @property(copy, nonatomic) NSArray *customWords; // @synthesize customWords=_customWords;

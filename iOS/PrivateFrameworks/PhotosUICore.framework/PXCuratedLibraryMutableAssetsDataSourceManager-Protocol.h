@@ -10,6 +10,7 @@
 @protocol PXDisplayAsset, PXDisplayAssetCollection;
 
 @protocol PXCuratedLibraryMutableAssetsDataSourceManager <PXMutableAssetsDataSourceManager>
+@property(nonatomic) long long libraryFilter;
 @property(nonatomic) _Bool canIncludeUnsavedSyndicatedAssets;
 @property(retain, nonatomic) NSPredicate *allPhotosFilterPredicate;
 @property(nonatomic) long long zoomLevel;

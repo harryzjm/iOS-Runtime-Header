@@ -7,6 +7,7 @@
 @class NSArray, NSDictionary, NSNumber, NSString, UIColor;
 
 @protocol HKPopulationNormsViewModelDataSource
+- (NSString *)hk_UIAutomationIdentifier;
 - (void)prepareUserCharacteristicCacheWithHandler:(void (^)(void))arg1;
 - (void)clearUserCharacteristicCache;
 - (double)minimumSampleValueQuantity;

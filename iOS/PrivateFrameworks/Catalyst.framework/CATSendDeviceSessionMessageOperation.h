@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CATOperation.h"
+
 @protocol CATDictionaryCodable, CATSharingDeviceSession;
 
 __attribute__((visibility("hidden")))
-@interface CATSendDeviceSessionMessageOperation
+@interface CATSendDeviceSessionMessageOperation : CATOperation
 {
     id <CATSharingDeviceSession> mDeviceSession;
     id <CATDictionaryCodable> mMessage;

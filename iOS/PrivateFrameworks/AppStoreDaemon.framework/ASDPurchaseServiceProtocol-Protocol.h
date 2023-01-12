@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ASDPurchase, NSArray, NSNumber;
+@class ASDPurchase, NSArray, NSNumber, NSString, NSURL;
 
 @protocol ASDPurchaseServiceProtocol
+- (void)renewReceiptForApplicationAtURL:(NSURL *)arg1 withAppleID:(NSString *)arg2 password:(NSString *)arg3 forceSandbox:(_Bool)arg4 withReplyHandler:(void (^)(NSError *))arg5;
 - (void)unadoptWithReplyHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)adoptionStatus:(_Bool)arg1 withReplyHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)notifyDialogCompleteForPurchaseID:(NSNumber *)arg1 result:(_Bool)arg2 selectedButton:(long long)arg3 withResultHandler:(void (^)(_Bool, NSError *))arg4;

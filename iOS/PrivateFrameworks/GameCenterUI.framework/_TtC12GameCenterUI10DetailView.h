@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *selectionHandler;
     MISSING_TYPE *tapGestureRecognizer;
     MISSING_TYPE *style;
+    MISSING_TYPE *gameControllerSelectHandler;
 }
 
 - (void).cxx_destruct;

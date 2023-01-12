@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSMutableArray, NSNumber, NSString;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -30,11 +32,39 @@ struct CLLocationCoordinate2D {
     double _field2;
 };
 
+struct CollectionsPlacecardEvent {
+    int action;
+    NSString *value;
+    NSNumber *collectionId;
+    NSNumber *collectionCurrentlySaved;
+    NSNumber *horizontalIndex;
+    int target;
+    int cardType;
+    NSMutableArray *possibleActions;
+    NSMutableArray *impossibleActions;
+    NSNumber *verticalIndex;
+};
+
+struct MUPlaceCoverPhotoMetrics {
+    double aspectRatio;
+    _Bool hasLogo;
+    struct CGSize logoSize;
+    double coverPhotoBottomToLogoBottomSpacing;
+    double coverPhotoContainerToTitleSpacing;
+    double startingLogoAlphaTransitionValue;
+    double endingLogoAlphaTransitionValue;
+};
+
+struct MUPlaceHeaderMetrics {
+    double topToTitleSpacing;
+    struct MUPlaceCoverPhotoMetrics coverPhotoMetrics;
+};
+
 struct NSDirectionalEdgeInsets {
-    double top;
-    double leading;
-    double bottom;
-    double trailing;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct UIEdgeInsets {
@@ -42,5 +72,15 @@ struct UIEdgeInsets {
     double _field2;
     double _field3;
     double _field4;
+};
+
+struct UIOffset {
+    double _field1;
+    double _field2;
+};
+
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 

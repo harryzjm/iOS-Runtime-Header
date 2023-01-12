@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUInputBundle-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OISFUPackageInputBundle : NSObject <SFUInputBundle>
+@interface OISFUPackageInputBundle : NSObject
 {
     NSString *_rootPath;
 }

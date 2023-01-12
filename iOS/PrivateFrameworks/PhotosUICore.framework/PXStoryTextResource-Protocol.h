@@ -10,5 +10,6 @@
 
 @protocol PXStoryTextResource <PXStoryResource>
 @property(readonly, nonatomic) PXStoryTextResourceInfo *px_storyResourceTextResourceInfo;
+@property(readonly, nonatomic) long long px_storyResourceTextType;
 @end
 

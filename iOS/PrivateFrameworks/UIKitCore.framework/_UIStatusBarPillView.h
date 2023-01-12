@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
-#import <UIKitCore/_UIStatusBarPersistentAnimation-Protocol.h>
-
 @class CALayer, NSString, UIAccessibilityHUDItem, UIColor, UIView, UIVisualEffect, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarPillView <_UIStatusBarDisplayable, _UIStatusBarPersistentAnimation>
+@interface _UIStatusBarPillView
 {
     _Bool _pulsing;
     UIVisualEffect *_visualEffect;
@@ -46,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) long long overriddenVerticalAlignment;
 @property(readonly, nonatomic) _Bool prefersBaselineAlignment;
+@property(readonly, nonatomic) _Bool prefersCenterVerticalAlignment;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool wantsCrossfade;
 

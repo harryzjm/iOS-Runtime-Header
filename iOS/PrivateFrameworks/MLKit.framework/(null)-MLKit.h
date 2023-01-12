@@ -4,10 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MLKit/AVCapturePhotoCaptureDelegate-Protocol.h>
-#import <MLKit/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
-
-@interface (null) (MLKit) <AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface (null) (MLKit)
 - (void)captureOutput:(id)arg1 didFinishProcessingPhoto:(id)arg2 error:(id)arg3;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
 @end

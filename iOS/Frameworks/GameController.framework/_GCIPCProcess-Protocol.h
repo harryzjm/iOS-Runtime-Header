@@ -13,6 +13,6 @@
 @property(readonly) unsigned int effectiveUserIdentifier;
 @property(readonly) int processIdentifier;
 @property(readonly) int auditSessionIdentifier;
-@property(readonly) CDStruct_4c969caf auditToken;
+@property(readonly) CDStruct_6ad76789 auditToken;
 @end
 

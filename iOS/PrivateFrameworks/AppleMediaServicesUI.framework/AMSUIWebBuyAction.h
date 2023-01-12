@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSPurchaseDelegate-Protocol.h>
-#import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
-
 @class ACAccount, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebBuyAction <AMSPurchaseDelegate, AMSUIWebActionRunnable>
+@interface AMSUIWebBuyAction
 {
     _Bool _legacyBuy;
     _Bool _makeCurrentAccount;
@@ -37,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)_purchasePluginIdentifierForContentType:(id)arg1;
 - (id)purchaseContentWithType:(id)arg1;
 - (void)_makeCurrentAccountIfNeeded:(id)arg1;
+- (id)_iTunesAccount;
 - (void)purchase:(id)arg1 handleEngagementRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)purchase:(id)arg1 handleDialogRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)purchase:(id)arg1 handleAuthenticateRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;

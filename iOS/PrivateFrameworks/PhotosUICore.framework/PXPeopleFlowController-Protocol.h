@@ -4,18 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/NSObject-Protocol.h>
+#import <PhotosUICore/PXPeopleFlowDelegate-Protocol.h>
 
 @class UIBarButtonItem, UIViewController;
 @protocol PXPeopleFlowViewController;
 
-@protocol PXPeopleFlowController <NSObject>
+@protocol PXPeopleFlowController <PXPeopleFlowDelegate>
 @property(readonly, nonatomic) UIViewController<PXPeopleFlowViewController> *previousViewController;
 @property(readonly, nonatomic) _Bool hasPreviousViewController;
 @property(readonly, nonatomic) UIViewController<PXPeopleFlowViewController> *nextViewController;
 @property(readonly, nonatomic) _Bool hasNextViewController;
-- (void)cancel:(id)arg1;
-- (void)done:(id)arg1;
 
 @optional
 @property(readonly, nonatomic) UIBarButtonItem *leftBarButton;

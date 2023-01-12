@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineDelegate-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineDelegate-Protocol.h>
 
-@protocol HDSPSleepLockScreenStateMachineDelegate <HKSPStateMachineDelegate>
-- (void)unscheduleLockScreenStateChange;
-- (void)scheduleLockScreenStateChange;
+@protocol HDSPSleepLockScreenStateMachineDelegate <HKSPPersistentStateMachineDelegate>
 - (void)sleepLockScreenStateDidChange:(long long)arg1 previousState:(long long)arg2;
 @end
 

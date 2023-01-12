@@ -10,6 +10,10 @@
 - (_Bool)rem_replaceTTREMHashtag:(id)arg1 withTTREMHashtag:(id)arg2;
 - (void)rem_removeHashtagInRange:(struct _NSRange)arg1;
 - (void)rem_addHashtag:(id)arg1 range:(struct _NSRange)arg2;
+- (void)rem_setUnderline:(_Bool)arg1 inRange:(struct _NSRange)arg2;
+- (void)rem_setFontHint:(unsigned long long)arg1 isOn:(_Bool)arg2 inRange:(struct _NSRange)arg3;
+- (void)rem_removeParagraphNamedStyleFromRange:(struct _NSRange)arg1;
+- (void)rem_addParagraphNamedStyle:(long long)arg1 inRange:(struct _NSRange)arg2;
 - (void)ic_appendAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2;
 - (void)ic_replaceCharactersInRange:(struct _NSRange)arg1 withAttributedSubstring:(id)arg2 fromRange:(struct _NSRange)arg3;
 @end

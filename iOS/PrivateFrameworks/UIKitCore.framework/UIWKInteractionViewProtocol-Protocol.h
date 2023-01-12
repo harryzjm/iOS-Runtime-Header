@@ -29,6 +29,8 @@
 - (void)changeSelectionWithGestureAt:(struct CGPoint)arg1 withGesture:(long long)arg2 withState:(long long)arg3;
 
 @optional
+- (void)requestRVItemInSelectedRangeWithCompletionHandler:(void (^)(RVItem *))arg1;
+- (void)prepareSelectionForContextMenuWithLocationInView:(struct CGPoint)arg1 completionHandler:(void (^)(_Bool, RVItem *))arg2;
 - (_Bool)supportsTextSelectionWithCharacterGranularity;
 - (_Bool)shouldAllowHidingSelectionCommands;
 - (void)willFinishIgnoringCalloutBarFadeAfterPerformingAction;
@@ -40,9 +42,11 @@
 - (void)selectPositionAtPoint:(struct CGPoint)arg1 withContextRequest:(UIWKDocumentRequest *)arg2 completionHandler:(void (^)(UIWKDocumentContext *))arg3;
 - (void)requestDocumentContext:(UIWKDocumentRequest *)arg1 completionHandler:(void (^)(UIWKDocumentContext *))arg2;
 - (void)adjustSelectionWithDelta:(struct _NSRange)arg1 completionHandler:(void (^)(void))arg2;
-- (void)requestRectsToEvadeForSelectionCommandsWithCompletionHandler:(void (^)(NSArray *))arg1;
-- (void)moveSelectionAtBoundary:(id)arg1 inDirection:(long long)arg2 completionHandler:(void (^)(void))arg3;
+- (void)requestPreferredArrowDirectionForEditMenuWithCompletionHandler:(void (^)(long long))arg1;
+- (void)moveSelectionAtBoundary:(long long)arg1 inDirection:(long long)arg2 completionHandler:(void (^)(void))arg3;
 - (void)selectPositionAtBoundary:(long long)arg1 inDirection:(long long)arg2 fromPoint:(struct CGPoint)arg3 completionHandler:(void (^)(void))arg4;
+- (void)didInsertFinalDictationResult;
+- (void)willInsertFinalDictationResult;
 - (void)moveByOffset:(long long)arg1;
 - (struct CGRect)unobscuredContentRect;
 - (double)inverseScale;

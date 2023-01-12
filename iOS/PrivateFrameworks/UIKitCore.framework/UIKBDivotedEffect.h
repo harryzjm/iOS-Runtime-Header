@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIKBRenderEffect-Protocol.h>
-
 @class NSString, UIKBGradient;
 
 __attribute__((visibility("hidden")))
-@interface UIKBDivotedEffect : NSObject <UIKBRenderEffect>
+@interface UIKBDivotedEffect : NSObject
 {
     double _weight;
 }
 
 @property(nonatomic) double weight; // @synthesize weight=_weight;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) SEL renderSelector;
+- (void)renderEffectWithRenderer:(id)arg1 traits:(id)arg2;
 @property(readonly, nonatomic) _Bool renderUnder;
 @property(readonly, nonatomic) UIKBGradient *gradient;
 @property(readonly, nonatomic) _Bool usesRGBColors;

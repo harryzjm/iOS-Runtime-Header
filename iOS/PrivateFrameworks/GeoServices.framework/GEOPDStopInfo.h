@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOTimezone, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDStopInfo : PBCodable <NSCopying>
+@interface GEOPDStopInfo : PBCodable
 {
     PBUnknownFields *_unknownFields;
     unsigned long long _muid;

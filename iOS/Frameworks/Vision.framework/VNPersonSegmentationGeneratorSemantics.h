@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)inputMaskRequired;
 + (_Bool)rotateImageToMatchNetworkOrientation;
-+ (id)outputMaskBlobName;
++ (id)outputMaskBlobNames;
 + (id)inputMaskBlobName;
 + (id)inputImageBlobName;
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;

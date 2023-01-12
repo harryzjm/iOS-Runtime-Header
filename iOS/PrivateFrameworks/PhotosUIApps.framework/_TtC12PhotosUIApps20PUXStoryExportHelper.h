@@ -12,8 +12,6 @@
 {
     MISSING_TYPE *presentingViewController;
     MISSING_TYPE *storyModel;
-    MISSING_TYPE *$__lazy_storage_$_exportManager;
-    MISSING_TYPE *exportProgressVC;
     MISSING_TYPE *isExporting;
 }
 

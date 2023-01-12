@@ -13,11 +13,10 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *feedManager;
+    MISSING_TYPE *feedPluginManager;
     MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *accessQueue;
-    MISSING_TYPE *pluginManager;
-    MISSING_TYPE *pluginFactory;
     MISSING_TYPE *sharedItemManager;
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *subscriptionList;
@@ -26,6 +25,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *sharedItemAdditions;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *cachePreFlushTask;
+    MISSING_TYPE *sportsOnboardingManager;
+    MISSING_TYPE *blockNextAutoRefresh;
 }
 
 - (void).cxx_destruct;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/NSCopying-Protocol.h>
-
 @class NSDictionary, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface AMSSQLiteMemoryEntity : NSObject <NSCopying>
+@interface AMSSQLiteMemoryEntity : NSObject
 {
     long long _databaseID;
     NSMutableDictionary *_propertyValues;

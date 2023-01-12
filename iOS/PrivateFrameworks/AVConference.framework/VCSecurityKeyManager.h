@@ -28,11 +28,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_keyManagerQueue;
     double _lastKeyIndexNotReceived;
     NSObject<OS_dispatch_source> *_pruneTimer;
+    NSObject<OS_dispatch_source> *_encryptionKeyRollTimer;
+    _Bool _isRunning;
 }
 
 @property(nonatomic) struct opaqueRTCReporting *reportingAgent;
 - (id)copyMKMWithPrefix:(id)arg1;
 - (_Bool)associateMKI:(id)arg1 withClientID:(id)arg2;
+- (void)scheduleEncryptionRollTimerWithDelay:(double)arg1;
 - (void)handlePruneTimerEventAndReschedule;
 - (void)schedulePruneTimer:(double)arg1;
 - (double)firstExpirationTime;
@@ -44,6 +47,12 @@ __attribute__((visibility("hidden")))
 - (id)getRecvKeyMaterialWithIndex:(id)arg1;
 - (id)getSendKeyMaterialWithIndex:(id)arg1;
 - (_Bool)addSecurityKeyMaterial:(id)arg1;
+- (void)stopTimers;
+- (_Bool)startTimers;
+- (void)releaseTimers;
+- (void)stop;
+- (void)start;
+- (id)logPrefix;
 - (long long)getNotUsedTimeout;
 - (id)delegate;
 - (void)dealloc;

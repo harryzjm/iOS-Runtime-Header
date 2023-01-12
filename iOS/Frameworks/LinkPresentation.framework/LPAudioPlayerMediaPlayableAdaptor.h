@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/LPMediaPlayable-Protocol.h>
-
 @class NSString;
 @protocol LPAudioPlayer;
 
 __attribute__((visibility("hidden")))
-@interface LPAudioPlayerMediaPlayableAdaptor : NSObject <LPMediaPlayable>
+@interface LPAudioPlayerMediaPlayableAdaptor : NSObject
 {
     id <LPAudioPlayer> _player;
 }

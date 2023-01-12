@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PHASEExternalOutputStreamDefinition;
+@class NSUUID, PHASEExternalOutputStreamDefinition;
 
 __attribute__((visibility("hidden")))
 @interface ManagedOutputStream : NSObject
@@ -15,14 +15,16 @@ __attribute__((visibility("hidden")))
     _Bool _controllerPaused;
     PHASEExternalOutputStreamDefinition *_definition;
     CDUnknownBlockType _renderBlock;
+    NSUUID *_attributedClientID;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUUID *attributedClientID; // @synthesize attributedClientID=_attributedClientID;
 @property(copy, nonatomic) CDUnknownBlockType renderBlock; // @synthesize renderBlock=_renderBlock;
 @property(retain, nonatomic) PHASEExternalOutputStreamDefinition *definition; // @synthesize definition=_definition;
 @property(nonatomic, getter=isControllerPaused) _Bool controllerPaused; // @synthesize controllerPaused=_controllerPaused;
 @property(nonatomic, getter=isStreamPaused) _Bool streamPaused; // @synthesize streamPaused=_streamPaused;
-- (id)initWithPaused:(_Bool)arg1 definition:(id)arg2 renderBlock:(CDUnknownBlockType)arg3;
+- (id)initWithPaused:(_Bool)arg1 attributedTo:(id)arg2 definition:(id)arg3 renderBlock:(CDUnknownBlockType)arg4;
 
 @end
 

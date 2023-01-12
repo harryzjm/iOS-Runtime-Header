@@ -16,8 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)removeOverlappingResults:(id)arg1;
-- (id)initWithTimeBetweenTriggers:(CDStruct_1b6d18a9)arg1;
 
 @end
 

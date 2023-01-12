@@ -8,12 +8,12 @@
 
 @interface PLCompositionHelper (PhotosUICore)
 + (id)compositionControllerImageSourceURL:(id)arg1;
-+ (void)compositionController:(id)arg1 setVideoPosterFrameTime:(CDStruct_1b6d18a9)arg2;
++ (void)compositionController:(id)arg1 setVideoPosterFrameTime:(CDStruct_198678f7)arg2;
 + (id)livePhotoMuteStateForCompositionController:(id)arg1;
 + (void)compositionController:(id)arg1 setLivePhotoMuteState:(id)arg2;
-+ (void)compositionController:(id)arg1 setLivePhotoStillTime:(CDStruct_1b6d18a9)arg2;
-+ (void)compositionController:(id)arg1 setLivePhotoTrimEndTime:(CDStruct_1b6d18a9)arg2;
-+ (void)compositionController:(id)arg1 setLivePhotoTrimStartTime:(CDStruct_1b6d18a9)arg2;
++ (void)compositionController:(id)arg1 setLivePhotoStillTime:(CDStruct_198678f7)arg2;
++ (void)compositionController:(id)arg1 setLivePhotoTrimEndTime:(CDStruct_198678f7)arg2;
++ (void)compositionController:(id)arg1 setLivePhotoTrimStartTime:(CDStruct_198678f7)arg2;
 + (void)compositionController:(id)arg1 applyTrimRangeAndKeyTimeForCurretAssetVariation:(_Bool)arg2;
 + (void)compositionController:(id)arg1 applyAssetVariation:(unsigned int)arg2 withRecipe:(id)arg3;
 + (id)revertComposition:(id)arg1 originalComposition:(id)arg2 isBasedOnOriginal:(_Bool)arg3 keepCrop:(_Bool)arg4 keepOrientation:(_Bool)arg5 primaryEditSource:(id)arg6 overcaptureEditSource:(id)arg7;

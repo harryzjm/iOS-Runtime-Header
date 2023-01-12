@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/NSCopying-Protocol.h>
-
 @class LPPointUnit;
 
 __attribute__((visibility("hidden")))
-@interface LPSize : NSObject <NSCopying>
+@interface LPSize : NSObject
 {
     LPPointUnit *_width;
     LPPointUnit *_height;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PaymentUI/PKGlyphViewDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCV9PaymentUI9GlyphView11Coordinator : NSObject <PKGlyphViewDelegate>
+@interface _TtCV9PaymentUI9GlyphView11Coordinator : NSObject
 {
     MISSING_TYPE *parent;
     MISSING_TYPE *isInErrorState;

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ActionKit/NSCopying-Protocol.h>
 #import <ActionKit/NSObject-Protocol.h>
 #import <ActionKit/WFNaming-Protocol.h>
 
 @class NSDate, NSNumber, NSString, WFFileType;
 @protocol WFRemoteFile;
 
-@protocol WFRemoteFile <WFNaming, NSObject>
+@protocol WFRemoteFile <WFNaming, NSCopying, NSObject>
 - (_Bool)wfIsEqualToFile:(id <WFRemoteFile>)arg1;
 - (WFFileType *)wfFileType;
 - (NSDate *)wfLastModifiedDate;

@@ -16,7 +16,7 @@
 @property(copy, nonatomic) NSString *albumTitle;
 @property(copy, nonatomic) NSString *artistName;
 @property(copy, nonatomic) NSString *title;
-@property(nonatomic) CDStruct_1b6d18a9 duration;
-@property(nonatomic) CDStruct_1b6d18a9 targetDuration;
+@property(nonatomic) CDStruct_198678f7 duration;
+@property(nonatomic) CDStruct_198678f7 targetDuration;
 @end
 

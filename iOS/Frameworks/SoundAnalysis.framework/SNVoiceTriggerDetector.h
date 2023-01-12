@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
 @class MLModel, NSString, SNDetectVoiceTriggerRequest, SNFilterVoiceTriggerResults, SNProcessVoiceTriggerModelOutput;
 
 __attribute__((visibility("hidden")))
-@interface SNVoiceTriggerDetector : NSObject <SNAnalyzing>
+@interface SNVoiceTriggerDetector : NSObject
 {
     MLModel *_model;
     shared_ptr_f6ac7592 _graph;
@@ -27,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (id)initWithModel:(id)arg1 request:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

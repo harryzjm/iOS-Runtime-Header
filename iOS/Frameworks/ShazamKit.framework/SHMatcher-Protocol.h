@@ -11,9 +11,7 @@
 
 @protocol SHMatcher <NSObject>
 @property(nonatomic) __weak id <SHMatcherDelegate> delegate;
+- (void)stop;
 - (void)startRecognitionForRequest:(SHMatcherRequest *)arg1;
-
-@optional
-- (oneway void)stop;
 @end
 

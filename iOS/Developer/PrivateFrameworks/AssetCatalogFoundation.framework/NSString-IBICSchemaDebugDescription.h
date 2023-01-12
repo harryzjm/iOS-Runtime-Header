@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
-@interface NSString (IBICSchemaDebugDescription) <IBBinaryArchiving>
+@interface NSString (IBICSchemaDebugDescription)
 + (id)ib_stringWithListComponentsJoinedByCommasAndAnd:(id)arg1;
 + (id)ib_UUIDString;
 - (void)ibic_generateAttributes:(CDUnknownBlockType)arg1;

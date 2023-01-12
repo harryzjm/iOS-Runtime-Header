@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <StoreServices/NSCopying-Protocol.h>
-
 @class NSData, NSString, SSVPBPlayActivityEnqueuerProperties;
 
 __attribute__((visibility("hidden")))
-@interface SSVPBPlayActivityEvent : PBCodable <NSCopying>
+@interface SSVPBPlayActivityEvent : PBCodable
 {
     long long _characterDisplayedCount;
     unsigned long long _cloudPlaylistID;

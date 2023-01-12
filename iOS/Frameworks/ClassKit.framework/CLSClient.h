@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ClassKit/CLSClientInterface-Protocol.h>
-
 @class NSString;
 @protocol CLSClientDelegate;
 
-__attribute__((visibility("hidden")))
-@interface CLSClient : NSObject <CLSClientInterface>
+@interface CLSClient : NSObject
 {
     id <CLSClientDelegate> _delagate;
 }

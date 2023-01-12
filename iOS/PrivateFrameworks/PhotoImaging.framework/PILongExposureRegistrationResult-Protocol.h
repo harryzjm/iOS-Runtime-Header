@@ -9,7 +9,7 @@
 @class VNImageHomographicAlignmentObservation;
 
 @protocol PILongExposureRegistrationResult <NURenderResult>
-@property(readonly, nonatomic) CDStruct_996ac03c extent;
+@property(readonly, nonatomic) CDStruct_0973877e extent;
 @property(readonly, copy) VNImageHomographicAlignmentObservation *observation;
 @end
 

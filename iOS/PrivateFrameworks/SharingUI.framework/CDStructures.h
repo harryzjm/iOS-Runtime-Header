@@ -35,10 +35,6 @@ struct UIEdgeInsets {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
-
-typedef struct {
     double _field1;
     double _field2;
     _Bool _field3;

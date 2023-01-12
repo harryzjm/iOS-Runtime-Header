@@ -6,13 +6,14 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKRemoteItemForSending, NSArray, NSData, NSDictionary, NSString, NSURL;
+@class CKRemoteItemForSending, NSArray, NSData, NSDictionary, NSString, NSURL, TUConversationActivity;
 
 @protocol CKSMSComposeViewServiceProtocol <NSObject>
 - (void)setGameCenterPickedHandles:(NSArray *)arg1 playerNames:(NSArray *)arg2;
 - (void)setGameCenterModeWithPickerBlock:(void (^)(void))arg1;
 - (void)forceMMS;
 - (void)forceCancelComposition;
+- (void)insertGroupActivity:(TUConversationActivity *)arg1;
 - (void)setTextEntryContentsVisible:(_Bool)arg1;
 - (void)showInsertedItemInEntryView;
 - (void)insertFilename:(NSString *)arg1 MIMEType:(NSString *)arg2 exportedFilename:(NSString *)arg3 options:(NSDictionary *)arg4;
@@ -28,7 +29,7 @@
 - (void)setUTIs:(NSArray *)arg1;
 - (void)setUICustomizationData:(NSData *)arg1;
 - (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3 chatGUID:(NSString *)arg4 groupName:(NSString *)arg5;
-- (void)displaySubscriptionSwitchIfAvailable:(_Bool)arg1;
+- (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3 shouldHideClearPluginButton:(_Bool)arg4 chatGUID:(NSString *)arg5;
 - (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3 shouldHideClearPluginButton:(_Bool)arg4;
 - (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3;
 - (void)disableCameraAttachments;

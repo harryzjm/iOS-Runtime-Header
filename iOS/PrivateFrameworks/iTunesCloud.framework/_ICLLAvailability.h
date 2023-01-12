@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _ICLLAvailability : PBCodable <NSCopying>
+@interface _ICLLAvailability : PBCodable
 {
     CDStruct_95bda58d _repeatModes;
     CDStruct_95bda58d _shuffleModes;

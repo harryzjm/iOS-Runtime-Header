@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetCatalogFoundation/IBICCoreUISlotComponent-Protocol.h>
-
 @class NSString;
 
-@interface IBICLanguageDirection <IBICCoreUISlotComponent>
+@interface IBICLanguageDirection
 {
     long long _coreUIValue;
 }

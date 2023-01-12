@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/AFContextProvider-Protocol.h>
-
 @class CNContact, CNContactStore;
 
 __attribute__((visibility("hidden")))
-@interface CNSiriContactContextProvider : NSObject <AFContextProvider>
+@interface CNSiriContactContextProvider : NSObject
 {
     _Bool _isEnabled;
     CNContact *_contact;

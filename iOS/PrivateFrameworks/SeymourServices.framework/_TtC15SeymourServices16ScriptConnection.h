@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *networkLink;
     MISSING_TYPE *offlineLink;
-    MISSING_TYPE *scriptUnpacker;
     MISSING_TYPE *scriptBundleLoader;
     MISSING_TYPE *lock;
     MISSING_TYPE *state;

@@ -6,11 +6,13 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSSet, PKCatalog, PKPassLibrary;
+@class NSData, NSSet, PKCatalog, PKPassLibrary;
 
 @protocol PKPassLibraryDelegate <NSObject>
 
 @optional
+- (void)vehicleConnectionDidRecievePassthroughData:(NSData *)arg1;
+- (void)vehicleConnectionDidUpdateConnectionState:(long long)arg1;
 - (void)contactlessInterfaceDidDismissFromSource:(long long)arg1;
 - (void)contactlessInterfaceDidPresentFromSource:(long long)arg1;
 - (void)passLibrary:(PKPassLibrary *)arg1 receivedUpdatedCatalog:(PKCatalog *)arg2 passes:(NSSet *)arg3;

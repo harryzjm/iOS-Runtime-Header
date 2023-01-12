@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIItemCellLayout.h"
+
 @class NSString, UIColor, UIImage, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface SKUILockupSwooshCellLayout
+@interface SKUILockupSwooshCellLayout : SKUIItemCellLayout
 {
     UILabel *_artistNameLabel;
     UILabel *_categoryLabel;

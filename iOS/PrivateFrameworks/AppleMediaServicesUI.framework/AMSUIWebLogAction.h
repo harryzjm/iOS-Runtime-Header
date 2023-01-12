@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebLogAction <AMSUIWebActionRunnable>
+@interface AMSUIWebLogAction
 {
+    _Bool _sensitive;
     long long _level;
     NSString *_message;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool sensitive; // @synthesize sensitive=_sensitive;
 @property(retain, nonatomic) NSString *message; // @synthesize message=_message;
 @property(nonatomic) long long level; // @synthesize level=_level;
 - (unsigned char)_logTypeFromLevel:(long long)arg1;

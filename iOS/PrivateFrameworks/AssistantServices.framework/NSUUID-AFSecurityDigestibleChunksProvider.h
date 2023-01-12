@@ -6,11 +6,9 @@
 
 #import <Foundation/NSUUID.h>
 
-#import <AssistantServices/AFSecurityDigestibleChunksProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSUUID (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding>
+@interface NSUUID (AFSecurityDigestibleChunksProvider)
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 
 // Remaining properties

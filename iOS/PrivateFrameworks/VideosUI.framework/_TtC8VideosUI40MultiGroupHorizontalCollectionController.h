@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *viewImpressioner;
     MISSING_TYPE *cachedCellMetrics;
     MISSING_TYPE *$__lazy_storage_$_cachedHeaderViews;
-    MISSING_TYPE *collectionViewModel;
+    MISSING_TYPE *internalCollectionViewModel;
     MISSING_TYPE *$__lazy_storage_$_shelfViewLayout;
     MISSING_TYPE *$__lazy_storage_$_groupCollectionContainerView;
     MISSING_TYPE *dataSource;

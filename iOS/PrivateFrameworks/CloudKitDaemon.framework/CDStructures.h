@@ -4,24 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
-struct __SecKey {
-    struct __CFRuntimeBase {
-        unsigned long long _field1;
-        _Atomic unsigned long long _field2;
-    } _field1;
-    struct __SecKeyDescriptor *_field2;
-    void *_field3;
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
-
-struct internal_state;
 
 struct pcc_invocation_key {
     unsigned char _field1[32];
@@ -32,40 +23,9 @@ struct pcc_wrapped_invocation_key {
     unsigned long long _field2;
 };
 
-struct z_stream_s {
-    char *next_in;
-    unsigned int avail_in;
-    unsigned long long total_in;
-    char *next_out;
-    unsigned int avail_out;
-    unsigned long long total_out;
-    char *msg;
-    struct internal_state *state;
-    CDUnknownFunctionPointerType zalloc;
-    CDUnknownFunctionPointerType zfree;
-    void *opaque;
-    int data_type;
-    unsigned long long adler;
-    unsigned long long reserved;
-};
-
 #pragma mark Typedef'd Structures
 
 // Ambiguous groups
-typedef struct {
-    unsigned int doubleValue:1;
-    unsigned int int64Value:1;
-    unsigned int boolValue:1;
-} CDStruct_f7459c01;
-
-typedef struct {
-    unsigned int code:1;
-} CDStruct_9ab06576;
-
-typedef struct {
-    unsigned int contentRequestAuthorizeGetOptions:1;
-} CDStruct_3f29eb26;
-
 typedef struct {
     unsigned int status:1;
 } CDStruct_47fe53f2;
@@ -77,4 +37,8 @@ typedef struct {
 typedef struct {
     unsigned int type:1;
 } CDStruct_f953fb60;
+
+typedef struct {
+    unsigned int version:1;
+} CDStruct_f20694ce;
 

@@ -6,13 +6,15 @@
 
 #import <CoverSheet/NSObject-Protocol.h>
 
-@class CSRemoteContentModalViewController, CSRemoteContentSession, NSError;
+@class CSCoverSheetViewControllerBase, CSRemoteContentSession, NSError;
+@protocol CSRemoteContentViewControllerProtocol;
 
 @protocol CSRemoteContentSessionHostDelegate <NSObject>
+- (double)remoteContentComplicationHeightInset;
 - (void)remoteContentDidUpdateStyle;
 - (void)remoteContentSession:(CSRemoteContentSession *)arg1 didInvalidateWithError:(NSError *)arg2;
 - (_Bool)remoteContentSession:(CSRemoteContentSession *)arg1 dismissWithReason:(long long)arg2 completion:(void (^)(void))arg3;
-- (_Bool)remoteContentSession:(CSRemoteContentSession *)arg1 presentViewController:(CSRemoteContentModalViewController *)arg2;
+- (_Bool)remoteContentSession:(CSRemoteContentSession *)arg1 presentViewController:(CSCoverSheetViewControllerBase<CSRemoteContentViewControllerProtocol> *)arg2;
 - (_Bool)shouldActivateRemoteContentSession:(CSRemoteContentSession *)arg1;
 @end
 

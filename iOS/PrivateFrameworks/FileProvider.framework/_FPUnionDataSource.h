@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/FPCollectionDataSource-Protocol.h>
-#import <FileProvider/FPItemCollectionItemIDBasedDelegate-Protocol.h>
-
 @class NSArray, NSString;
 @protocol FPCollectionDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _FPUnionDataSource : NSObject <FPCollectionDataSource, FPItemCollectionItemIDBasedDelegate>
+@interface _FPUnionDataSource : NSObject
 {
     NSArray *_collections;
     _Bool _isRunning;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVVideoCompositionInstruction-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVCoreImageFilterVideoCompositionInstruction : NSObject <AVVideoCompositionInstruction>
+@interface AVCoreImageFilterVideoCompositionInstruction : NSObject
 {
     CDStruct_e83c9415 _timeRange;
     NSArray *_requiredSourceTrackIDs;

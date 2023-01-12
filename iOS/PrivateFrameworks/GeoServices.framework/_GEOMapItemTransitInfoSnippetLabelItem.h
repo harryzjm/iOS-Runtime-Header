@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitLabelItem-Protocol.h>
-
 @class NSString;
 @protocol GEOTransitArtworkDataSource;
 
 __attribute__((visibility("hidden")))
-@interface _GEOMapItemTransitInfoSnippetLabelItem : NSObject <GEOTransitLabelItem>
+@interface _GEOMapItemTransitInfoSnippetLabelItem : NSObject
 {
     unsigned long long _type;
     NSString *_labelString;

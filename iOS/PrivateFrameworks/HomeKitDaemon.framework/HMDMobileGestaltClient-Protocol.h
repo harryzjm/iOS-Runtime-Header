@@ -7,5 +7,6 @@
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
 @protocol HMDMobileGestaltClient <NSObject>
+@property(readonly) _Bool supportsSiriHub;
 @end
 

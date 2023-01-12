@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <ScreenTimeSettingsUI/UISearchResultsUpdating-Protocol.h>
-
 @class NSArray, NSMutableOrderedSet, NSOrderedSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface STAllowanceItemSearchResultsController : UITableViewController <UISearchResultsUpdating>
+@interface STAllowanceItemSearchResultsController : UITableViewController
 {
     _Bool _hasNewSelection;
     NSMutableOrderedSet *_selectedBundleIdentifiers;

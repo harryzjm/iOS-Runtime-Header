@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 {
     NSString *_chatGUID;
     NSString *_messageGUID;
-    NSString *_summary;
     NSDate *_messageDate;
+    NSString *_summary;
 }
 
 - (void).cxx_destruct;

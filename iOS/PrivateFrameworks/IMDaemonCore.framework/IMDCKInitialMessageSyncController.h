@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "IMDCKMessageSyncController.h"
+
 @class CKServerChangeToken;
 
-@interface IMDCKInitialMessageSyncController
+@interface IMDCKInitialMessageSyncController : IMDCKMessageSyncController
 {
     CKServerChangeToken *_syncToken;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKServerChangeToken *syncToken; // @synthesize syncToken=_syncToken;
 - (id)ckUtilities;
-- (_Bool)_kickOffWriteIfNeededForSyncType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_kickOffWriteIfNeededForSyncType:(long long)arg1 activity:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_deviceConditionsAllowsMessageSyncForActivity:(id)arg1 deviceConditionsToCheck:(unsigned long long)arg2 currentBatchCount:(long long)arg3 maxBatchCount:(long long)arg4;
 - (_Bool)_deviceConditionsAllowsMessageSyncForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (id)latestSyncToken;
 - (void)setLatestSyncToken:(id)arg1 forSyncType:(id)arg2;
 - (void)setLatestSyncToken:(id)arg1;
 - (void)syncMessagesWithSyncType:(long long)arg1 deviceConditionsToCheck:(unsigned long long)arg2 activity:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (void)dealloc;
 
 @end
 

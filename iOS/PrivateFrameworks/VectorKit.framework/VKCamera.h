@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
     double _horizontalOffset;
     double _ndcZNear;
     double _aspectRatio;
-    Unit_3d259e8a _verticalFieldOfView;
+    Unit_5669e52e _verticalFieldOfView;
     double _near;
     double _far;
     double _width;
@@ -54,8 +54,8 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) optional_76e85d3d maxDistanceToGroundRestriction; // @synthesize maxDistanceToGroundRestriction=_maxDistanceToGroundRestriction;
-@property(nonatomic) optional_76e85d3d minDistanceToGroundRestriction; // @synthesize minDistanceToGroundRestriction=_minDistanceToGroundRestriction;
+@property(nonatomic) optional_c8a16ffb maxDistanceToGroundRestriction; // @synthesize maxDistanceToGroundRestriction=_maxDistanceToGroundRestriction;
+@property(nonatomic) optional_c8a16ffb minDistanceToGroundRestriction; // @synthesize minDistanceToGroundRestriction=_minDistanceToGroundRestriction;
 @property(retain, nonatomic) VKCameraRegionRestriction *regionRestriction; // @synthesize regionRestriction=_regionRestriction;
 @property(nonatomic) double ndcZNear; // @synthesize ndcZNear=_ndcZNear;
 @property(nonatomic) double horizontalOffset; // @synthesize horizontalOffset=_horizontalOffset;
@@ -70,7 +70,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double maxHeightNoPitch; // @synthesize maxHeightNoPitch=_maxHeightNoPitch;
 @property(nonatomic) double aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 - (void)updateCamera:(shared_ptr_46708168)arg1;
-- (CameraFrame_406dbd31)cameraFrame;
+- (CameraFrame_b765d6d7)cameraFrame;
 - (View_a667aa2f)view:(struct ViewSize)arg1;
 @property(readonly, nonatomic) const void *unscaledProjectionMatrix;
 @property(readonly, nonatomic) const void *unscaledViewMatrix;
@@ -104,8 +104,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double tanHalfHorizFOV;
 @property(readonly, nonatomic) double nearClipDistance;
 @property(readonly, nonatomic) double farClipDistance;
-@property(readonly, nonatomic) Unit_3d259e8a horizontalFieldOfView;
-@property(nonatomic) Unit_3d259e8a verticalFieldOfView;
+@property(readonly, nonatomic) Unit_5669e52e horizontalFieldOfView;
+@property(nonatomic) Unit_5669e52e verticalFieldOfView;
 @property(nonatomic) const void *orientation;
 @property(readonly, nonatomic) CDStruct_7a7719de frustum;
 @property(nonatomic) const void *position;
@@ -115,7 +115,6 @@ __attribute__((visibility("hidden")))
 - (id)descriptionDictionaryRepresentation;
 - (id)description;
 - (id)detailedDescription;
-- (void)dealloc;
 - (id)initWithRunLoopController:(struct RunLoopController *)arg1;
 
 @end

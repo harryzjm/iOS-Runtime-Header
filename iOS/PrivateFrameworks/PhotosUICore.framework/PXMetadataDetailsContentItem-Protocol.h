@@ -13,6 +13,7 @@
 @property(readonly, nonatomic) _Bool px_isCinematicVideo;
 @property(readonly, nonatomic) _Bool px_isHEVC;
 @property(readonly, nonatomic) _Bool px_isH264;
+@property(readonly, nonatomic) _Bool px_isProRes;
 @property(readonly, nonatomic) _Bool px_shotWithNightMode;
 @property(readonly, nonatomic) _Bool px_isTimelapse;
 @property(readonly, nonatomic) _Bool px_isSloMo;

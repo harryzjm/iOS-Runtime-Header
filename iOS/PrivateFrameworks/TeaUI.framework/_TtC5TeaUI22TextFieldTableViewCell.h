@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <TeaUI/UITextFieldDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC5TeaUI22TextFieldTableViewCell : UITableViewCell <UITextFieldDelegate>
+@interface _TtC5TeaUI22TextFieldTableViewCell : UITableViewCell
 {
     MISSING_TYPE *onChange;
     MISSING_TYPE *textField;

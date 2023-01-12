@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFCore/AVAssetWriterInputMediaDataRequesterDelegate-Protocol.h>
-#import <AVFCore/AVKeyPathDependencyHost-Protocol.h>
-#import <AVFCore/AVWeakObservable-Protocol.h>
-
 @class AVAssetWriterInputMediaDataRequester, AVAssetWriterInputPassDescription, AVFigAssetWriterTrack, AVKeyPathDependencyManager, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetWriterInputWritingHelper <AVAssetWriterInputMediaDataRequesterDelegate, AVWeakObservable, AVKeyPathDependencyHost>
+@interface AVAssetWriterInputWritingHelper
 {
     AVFigAssetWriterTrack *_assetWriterTrack;
     AVAssetWriterInputMediaDataRequester *_mediaDataRequester;

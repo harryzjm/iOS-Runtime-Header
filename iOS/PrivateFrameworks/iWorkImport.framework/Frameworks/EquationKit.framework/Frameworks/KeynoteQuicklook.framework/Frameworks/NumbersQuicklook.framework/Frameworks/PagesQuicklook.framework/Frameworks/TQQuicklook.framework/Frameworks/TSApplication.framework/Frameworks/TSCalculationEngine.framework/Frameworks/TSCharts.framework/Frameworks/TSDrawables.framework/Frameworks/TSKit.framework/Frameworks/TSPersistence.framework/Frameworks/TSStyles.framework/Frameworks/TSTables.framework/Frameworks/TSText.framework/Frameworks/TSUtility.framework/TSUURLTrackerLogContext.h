@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/TSULogContext-Protocol.h>
-
 @class NSString;
 
-@interface TSUURLTrackerLogContext : NSObject <TSULogContext>
+@interface TSUURLTrackerLogContext : NSObject
 {
     NSString *_publicString;
 }

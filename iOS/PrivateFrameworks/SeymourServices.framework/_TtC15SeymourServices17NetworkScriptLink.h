@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *_shrinkJsFootprintEnabled;
     MISSING_TYPE *scriptConfiguration;
-    MISSING_TYPE *scriptUnpacker;
     MISSING_TYPE *dispatchService;
     MISSING_TYPE *lock;
     MISSING_TYPE *fileStore;

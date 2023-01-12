@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Espresso/ETDataSource-Protocol.h>
-
 @class ETImageDescriptorExtractor;
 @protocol ETDataSource;
 
 __attribute__((visibility("hidden")))
-@interface ETDataSourceWithExtractor : NSObject <ETDataSource>
+@interface ETDataSourceWithExtractor : NSObject
 {
     id <ETDataSource> _source;
     ETImageDescriptorExtractor *_extractor;

@@ -12,7 +12,9 @@
 {
     MISSING_TYPE *isFinal;
     MISSING_TYPE *attachments;
+    MISSING_TYPE *attachmentHashes;
     MISSING_TYPE *currentOffset;
+    MISSING_TYPE *currentHasher;
     MISSING_TYPE *cache;
 }
 

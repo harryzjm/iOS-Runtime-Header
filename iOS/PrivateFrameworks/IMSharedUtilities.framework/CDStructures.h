@@ -10,35 +10,14 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGPoint {
-    double _field1;
-    double _field2;
-};
-
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
-
 struct CGSize {
     double _field1;
     double _field2;
 };
 
-struct CLLocationCoordinate2D {
-    double _field1;
-    double _field2;
-};
-
 struct IMFileSize {
-    unsigned long long file_size;
-    unsigned long long disk_allocation_size;
-};
-
-struct IMMessagePartRanges {
-    struct _NSRange prefixRange;
-    struct _NSRange partNumberRange;
-    struct _NSRange messageGUIDRange;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct IMPreviewConstraints {
@@ -49,25 +28,8 @@ struct IMPreviewConstraints {
     _Bool _field5;
 };
 
-struct IMRequirementFailed_t {
-    char *_field1;
-    _Bool _field2;
-    _Bool _field3;
-    unsigned char _field4;
-};
-
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
-
-struct _TidyDoc {
-    int _field1;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int version:1;
-} CDStruct_f20694ce;
 

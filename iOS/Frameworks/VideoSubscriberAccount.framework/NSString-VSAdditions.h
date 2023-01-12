@@ -7,6 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (VSAdditions)
+- (_Bool)vs_composedCharacterIsLowercase;
+- (_Bool)vs_composedCharacterIsUppercase;
+- (_Bool)vs_composedCharacterIsLetter;
+- (_Bool)vs_composedCharacterIsWhitespace;
 - (unsigned long long)vs_unsignedLongLongValue;
 @end
 

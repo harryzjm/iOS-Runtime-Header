@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BiomeStorage/BMStoreData-Protocol.h>
-
 @class NSString;
 
-@interface PBCodable (BMStoreData) <BMStoreData>
+@interface PBCodable (BMStoreData)
 + (id)eventWithData:(id)arg1 dataVersion:(unsigned int)arg2;
 - (id)serialize;
 @property(readonly, nonatomic) unsigned int dataVersion;

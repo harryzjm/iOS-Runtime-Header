@@ -8,5 +8,7 @@
 
 @interface LSApplicationRecord (SensorKit)
 + (id)sr_applicationRecordWithIdentifier:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) _Bool sr_supportsMessagingIntents;
+@property(readonly, nonatomic) _Bool sr_supportsVOIP;
 @end
 

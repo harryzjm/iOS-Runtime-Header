@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreData/NSSecureCoding-Protocol.h>
+#import "NSPersistentHistoryTransaction.h"
 
 @class NSArray, NSData, NSManagedObjectID, NSPersistentStoreCoordinator, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSPersistentHistoryTransaction <NSSecureCoding>
+@interface _NSPersistentHistoryTransaction : NSPersistentHistoryTransaction
 {
     long long _rowIdentifier;
     double _timestamp;

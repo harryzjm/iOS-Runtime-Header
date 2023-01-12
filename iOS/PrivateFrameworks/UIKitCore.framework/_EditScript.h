@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_script;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *script; // @synthesize script=_script;
 @property(copy, nonatomic) NSArray *operationPrecedenceArray; // @synthesize operationPrecedenceArray=_operationPrecedenceArray;
 - (void)finalizeCurrentScriptAtom;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)initWithOperationPrecedence:(long long)arg1 orderAtomsAscending:(_Bool)arg2;
 - (id)operationPrecedenceArrayFromOperationPrecedence:(long long)arg1;
-- (void)dealloc;
 
 @end
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIVisualEffect.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _UICompoundEffect
+@interface _UICompoundEffect : UIVisualEffect
 {
     NSArray *_effects;
 }

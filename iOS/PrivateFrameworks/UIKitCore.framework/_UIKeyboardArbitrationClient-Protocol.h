@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FBSSceneIdentityToken, NSDictionary, NSString, _UIKeyboardChangedInformation;
+@class FBSSceneIdentityToken, NSDictionary, NSString, _UIKeyboardChangedInformation, _UIKeyboardUIInformation;
 
 @protocol _UIKeyboardArbitrationClient
+- (void)queue_keyboardUIDidChange:(_UIKeyboardUIInformation *)arg1 onComplete:(void (^)(void))arg2;
 - (void)queue_activeProcessResignWithCompletion:(void (^)(void))arg1;
 - (void)queue_setLastEventSource:(long long)arg1 withCompletion:(void (^)(void))arg2;
 - (void)queue_setKeyboardDisabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;

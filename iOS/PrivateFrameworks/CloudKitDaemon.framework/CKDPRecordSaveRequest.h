@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecord, CKDPRecordSaveRequestConflictLoserUpdate, CKDPRecordSaveRequestShareIdUpdate, CKDPRequestedFields, NSMutableArray, NSString;
 
-@interface CKDPRecordSaveRequest : PBRequest <NSCopying>
+@interface CKDPRecordSaveRequest : PBRequest
 {
     CKDPRecordSaveRequestConflictLoserUpdate *_conflictLoserUpdate;
     NSMutableArray *_conflictLosersToResolves;

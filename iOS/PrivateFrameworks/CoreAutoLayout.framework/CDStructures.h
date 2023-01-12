@@ -21,8 +21,8 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct _NSRange {
@@ -50,28 +50,6 @@ typedef struct {
 } CDStruct_1b4a36b4;
 
 typedef struct CDStruct_183601bc;
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    CDStruct_183601bc *_field6;
-} CDStruct_fee1177a;
-
-typedef struct {
-    CDStruct_183601bc *blocks;
-    unsigned long long blocksCount;
-    unsigned long long blocksCapacity;
-    struct {
-        union {
-            unsigned long long _data;
-            unsigned long long *_buckets;
-        } ;
-        unsigned int _bucketCount;
-    } freeIndexes;
-} CDStruct_52118125;
 
 typedef struct {
     unsigned short inline_capacity;

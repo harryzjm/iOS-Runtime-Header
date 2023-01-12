@@ -6,12 +6,13 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXImageRequester;
+@class NSString, PXImageRequester;
 
 @protocol PXMutableUIPlayButtonTile <NSObject>
 @property(nonatomic) _Bool allowsBackdropStatisticsSuppression;
 @property(nonatomic) struct CGPoint imageViewportLocation;
 @property(retain, nonatomic) PXImageRequester *imageRequester;
+@property(nonatomic) NSString *playButtonTitle;
 @property(nonatomic) long long playButtonStyle;
 @property(nonatomic) struct CGSize playButtonSize;
 @end

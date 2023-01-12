@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUIEditorTemplateViewDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSString, SKUIButtonViewElement, SKUIEditorTemplateView, SKUIEditorTemplateViewElement, SKUIViewElementLayoutContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIEditorDocumentViewController <SKUIEditorTemplateViewDelegate, SKUIDocumentViewController>
+@interface SKUIEditorDocumentViewController : SKUIViewController
 {
     SKUIButtonViewElement *_doneButtonElement;
     SKUIEditorTemplateView *_editorView;

@@ -6,15 +6,14 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPDClientRankingFeatureFunctionTypeDiscrete, GEOPDClientRankingFeatureFunctionTypeLinear, GEOPDClientRankingFeatureTypeResult, GEOPDClientRankingFeatureTypeSource, PBDataReader, PBUnknownFields;
+@class GEOPDClientRankingFeatureFunctionTypeDiscrete, GEOPDClientRankingFeatureFunctionTypeLinear, GEOPDClientRankingFeatureTypeComposite, GEOPDClientRankingFeatureTypeResult, GEOPDClientRankingFeatureTypeSource, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDClientRankingFeatureMetadata : PBCodable <NSCopying>
+@interface GEOPDClientRankingFeatureMetadata : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOPDClientRankingFeatureTypeComposite *_featureTypeComposite;
     GEOPDClientRankingFeatureTypeResult *_featureTypeResult;
     GEOPDClientRankingFeatureTypeSource *_featureTypeSource;
     GEOPDClientRankingFeatureFunctionTypeDiscrete *_functionTypeDiscrete;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_featureType:1;
         unsigned int has_functionType:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_featureTypeComposite:1;
         unsigned int read_featureTypeResult:1;
         unsigned int read_featureTypeSource:1;
         unsigned int read_functionTypeDiscrete:1;

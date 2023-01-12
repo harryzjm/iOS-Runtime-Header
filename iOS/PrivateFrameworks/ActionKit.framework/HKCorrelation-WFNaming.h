@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKCorrelation.h>
 
-#import <ActionKit/WFNaming-Protocol.h>
-
 @class NSString;
 
-@interface HKCorrelation (WFNaming) <WFNaming>
+@interface HKCorrelation (WFNaming)
 @property(readonly, copy, nonatomic) NSString *wfName;
 @end
 

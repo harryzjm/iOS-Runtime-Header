@@ -19,7 +19,9 @@
     MISSING_TYPE *privacyPreferenceDataSource;
     MISSING_TYPE *serviceSubscriptionProviderBroker;
     MISSING_TYPE *workoutTopic;
+    MISSING_TYPE *healthStore;
     MISSING_TYPE *state;
+    MISSING_TYPE *_jetMetricsEnabled;
 }
 
 @end

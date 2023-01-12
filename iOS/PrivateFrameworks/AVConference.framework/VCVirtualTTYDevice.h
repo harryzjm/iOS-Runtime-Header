@@ -6,17 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCAudioIODelegate-Protocol.h>
-#import <AVConference/VCAudioIOSink-Protocol.h>
-#import <AVConference/VCAudioIOSource-Protocol.h>
-#import <AVConference/VCMediaStreamProtocol-Protocol.h>
-#import <AVConference/VCTextSender-Protocol.h>
-
 @class NSString, VCAudioIO, VCAudioPayload;
 @protocol OS_dispatch_queue, VCMediaStreamDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCVirtualTTYDevice : NSObject <VCMediaStreamProtocol, VCTextSender, VCAudioIOSink, VCAudioIOSource, VCAudioIODelegate>
+@interface VCVirtualTTYDevice : NSObject
 {
     int _clientPid;
     struct tagVCAudioFrameFormat _vpioFormat;
@@ -38,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property int deviceRole; // @synthesize deviceRole;
 @property _Bool isValid; // @synthesize isValid;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
+- (void)didServerDie;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
 - (void)setCanProcessAudio:(_Bool)arg1;

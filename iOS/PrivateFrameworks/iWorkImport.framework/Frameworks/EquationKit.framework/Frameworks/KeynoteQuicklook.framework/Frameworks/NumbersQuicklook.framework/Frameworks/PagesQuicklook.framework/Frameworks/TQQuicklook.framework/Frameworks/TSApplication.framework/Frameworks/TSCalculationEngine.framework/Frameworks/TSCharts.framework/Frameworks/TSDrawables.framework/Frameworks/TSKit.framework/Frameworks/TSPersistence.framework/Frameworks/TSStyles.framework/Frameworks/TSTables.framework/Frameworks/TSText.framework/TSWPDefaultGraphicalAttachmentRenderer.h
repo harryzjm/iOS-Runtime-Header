@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSWPGraphicalAttachmentRenderer-Protocol.h>
-
 @class NSString;
 
-@interface TSWPDefaultGraphicalAttachmentRenderer : NSObject <TSWPGraphicalAttachmentRenderer>
+@interface TSWPDefaultGraphicalAttachmentRenderer : NSObject
 {
 }
 

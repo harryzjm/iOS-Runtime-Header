@@ -6,11 +6,9 @@
 
 #import <SecurityFoundation/_SFECPublicKey.h>
 
-#import <TrustedPeers/TPPublicKey-Protocol.h>
-
 @class NSString;
 
-@interface _SFECPublicKey (TPPublicKey) <TPPublicKey>
+@interface _SFECPublicKey (TPPublicKey)
 - (_Bool)checkSignature:(id)arg1 matchesData:(id)arg2;
 - (id)spki;
 

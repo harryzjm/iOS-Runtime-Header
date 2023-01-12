@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/_MXExtensionLookupPolicy-Protocol.h>
-
 @class NSPredicate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MXExtensionLookupPolicy : NSObject <_MXExtensionLookupPolicy>
+@interface _MXExtensionLookupPolicy : NSObject
 {
     NSPredicate *_extensionPredicate;
 }

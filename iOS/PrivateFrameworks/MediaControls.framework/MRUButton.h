@@ -6,26 +6,25 @@
 
 #import <MediaPlayer/MPButton.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
 @class MRUVisualStylingProvider, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRUButton : MPButton <MRUVisualStylingProviderObserver>
+@interface MRUButton : MPButton
 {
+    _Bool _dimmed;
     MRUVisualStylingProvider *_stylingProvider;
     long long _pointerStyle;
     double _cursorScale;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isDimmed) _Bool dimmed; // @synthesize dimmed=_dimmed;
 @property(nonatomic) double cursorScale; // @synthesize cursorScale=_cursorScale;
 @property(nonatomic) long long pointerStyle; // @synthesize pointerStyle=_pointerStyle;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 - (void)updateVisualStyling;
 - (id)pointerStyleWithProposedEffect:(id)arg1 proposedShape:(id)arg2;
 - (void)visualStylingProviderDidChange:(id)arg1;
-- (void)setHighlighted:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

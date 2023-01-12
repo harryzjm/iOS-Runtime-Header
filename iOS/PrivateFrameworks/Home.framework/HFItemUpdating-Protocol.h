@@ -6,13 +6,16 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class HFItem, HFItemUpdateRequest, NAFuture, NSSet;
+@class HFItem, HFItemUpdateRequest, NAFuture, NSArray, NSSet, NSString;
 
 @protocol HFItemUpdating <NSObject>
+@property(retain, nonatomic) HFItem *sourceItem;
+- (NSArray *)displayedItemsInSectionWithIdentifier:(NSString *)arg1;
 - (NSSet *)childItemsForItem:(HFItem *)arg1;
 - (NAFuture *)performItemUpdateRequest:(HFItemUpdateRequest *)arg1;
 
 @optional
+- (NAFuture *)firstFullItemUpdateFuture;
 - (_Bool)itemIsBeingDisplayed:(HFItem *)arg1;
 @end
 

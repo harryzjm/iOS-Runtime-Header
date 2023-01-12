@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFocusSoundPlayer-Protocol.h>
-
 @class NSMutableDictionary, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _UIDefaultFocusSoundPlayer : NSObject <_UIFocusSoundPlayer>
+@interface _UIDefaultFocusSoundPlayer : NSObject
 {
     NSMutableDictionary *_urlPools;
     NSMutableDictionary *_focusSoundPools;

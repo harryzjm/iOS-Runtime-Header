@@ -6,9 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
-@interface CKDPListPosition : PBCodable <NSCopying>
+@interface CKDPListPosition : PBCodable
 {
     int _index;
     _Bool _isReversed;

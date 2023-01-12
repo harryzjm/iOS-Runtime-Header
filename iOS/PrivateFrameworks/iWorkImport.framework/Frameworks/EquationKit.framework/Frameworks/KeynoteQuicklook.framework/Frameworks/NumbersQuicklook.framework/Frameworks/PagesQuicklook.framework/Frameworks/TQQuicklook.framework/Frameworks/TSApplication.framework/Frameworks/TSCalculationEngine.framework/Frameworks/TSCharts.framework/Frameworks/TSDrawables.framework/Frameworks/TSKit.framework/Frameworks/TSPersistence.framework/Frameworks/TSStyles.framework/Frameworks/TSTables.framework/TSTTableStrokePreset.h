@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSSPreset-Protocol.h>
-
 @class NSString;
 
-@interface TSTTableStrokePreset : TSPObject <TSSPreset>
+@interface TSTTableStrokePreset : TSPObject
 {
     unsigned long long mIndex;
 }

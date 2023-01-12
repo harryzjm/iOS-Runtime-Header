@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class CMWorkout, CMWorkoutManager, NSDate, NSError;
+@class CMWorkout, CMWorkoutManager, CMWorkoutOverview, NSDate, NSError;
 
 @protocol CMWorkoutManagerDelegate <NSObject>
 
@@ -17,6 +17,12 @@
 - (void)workoutManagerWillPauseWorkout:(CMWorkoutManager *)arg1 workout:(CMWorkout *)arg2 pauseDate:(NSDate *)arg3;
 - (void)workoutManagerDidStopWorkout:(CMWorkoutManager *)arg1 workout:(CMWorkout *)arg2 stopDate:(NSDate *)arg3;
 - (void)workoutManagerDidStartWorkout:(CMWorkoutManager *)arg1 workout:(CMWorkout *)arg2 startDate:(NSDate *)arg3;
+- (void)workoutManager:(CMWorkoutManager *)arg1 detectedChangeInWorkoutType:(CMWorkout *)arg2 withOverview:(CMWorkoutOverview *)arg3;
+- (void)workoutManager:(CMWorkoutManager *)arg1 didResumeWorkout:(CMWorkout *)arg2 withOverview:(CMWorkoutOverview *)arg3;
+- (void)workoutManager:(CMWorkoutManager *)arg1 didPauseWorkout:(CMWorkout *)arg2 withOverview:(CMWorkoutOverview *)arg3;
+- (void)workoutManager:(CMWorkoutManager *)arg1 didEndWorkoutSessionWithWorkout:(CMWorkout *)arg2 withOverview:(CMWorkoutOverview *)arg3;
+- (void)workoutManager:(CMWorkoutManager *)arg1 didSetCurrentWorkoutType:(CMWorkout *)arg2 withOverview:(CMWorkoutOverview *)arg3;
+- (void)workoutManager:(CMWorkoutManager *)arg1 didBeginWorkoutSessionWithWorkout:(CMWorkout *)arg2 withOverview:(CMWorkoutOverview *)arg3;
 - (void)workoutManager:(CMWorkoutManager *)arg1 workoutLocationEventUpdate:(CMWorkout *)arg2;
 - (void)workoutManager:(CMWorkoutManager *)arg1 issuedPrediction:(CMWorkout *)arg2;
 - (void)workoutManager:(CMWorkoutManager *)arg1 suggestedStopWorkout:(CMWorkout *)arg2 atDate:(NSDate *)arg3;

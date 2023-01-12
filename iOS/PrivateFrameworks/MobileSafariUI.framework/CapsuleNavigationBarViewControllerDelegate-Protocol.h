@@ -6,15 +6,17 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class CapsuleNavigationBarViewController, NSArray, SFCapsuleNavigationBar, UIToolbar;
+@class CapsuleNavigationBarViewController, SFCapsuleNavigationBar, UIScrollView, UIToolbar;
 @protocol SFTransitionCoordinating;
 
 @protocol CapsuleNavigationBarViewControllerDelegate <NSObject>
 
 @optional
+- (_Bool)capsuleNavigationBarViewController:(CapsuleNavigationBarViewController *)arg1 shouldUnminimizeOnScrollForScrollView:(UIScrollView *)arg2;
 - (UIToolbar *)createToolbarForCapsuleNavigationBarViewController:(CapsuleNavigationBarViewController *)arg1;
 - (void)capsuleNavigationBarViewControllerWillHideKeyboard:(CapsuleNavigationBarViewController *)arg1;
-- (NSArray *)capsuleNavigationBarViewController:(CapsuleNavigationBarViewController *)arg1 rectsForTapToUnminimizeBarWithDefaultRects:(NSArray *)arg2;
+- (_Bool)capsuleNavigationBarViewControllerIsTrackingDropSession:(CapsuleNavigationBarViewController *)arg1;
+- (_Bool)capsuleNavigationBarViewControllerIsShowingFindOnPage:(CapsuleNavigationBarViewController *)arg1;
 - (_Bool)capsuleNavigationBarViewControllerAllowsMinimizationGesture:(CapsuleNavigationBarViewController *)arg1;
 - (void)capsuleNavigationBarViewControllerDidTapVoiceSearch:(CapsuleNavigationBarViewController *)arg1;
 - (void)capsuleNavigationBarViewController:(CapsuleNavigationBarViewController *)arg1 didCreateNavigationBar:(SFCapsuleNavigationBar *)arg2;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIDOMFeature-Protocol.h>
-#import <StoreKitUI/SKUIJSDOMFeatureCollectionAppBridge-Protocol.h>
-
 @class IKAppContext, NSString;
 @protocol SKUICollectionDOMFeatureTargetting;
 
 __attribute__((visibility("hidden")))
-@interface SKUICollectionDOMFeature : NSObject <SKUIJSDOMFeatureCollectionAppBridge, SKUIDOMFeature>
+@interface SKUICollectionDOMFeature : NSObject
 {
     IKAppContext *_appContext;
     NSString *_featureName;

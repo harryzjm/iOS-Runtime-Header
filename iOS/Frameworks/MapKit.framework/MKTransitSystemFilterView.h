@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapKit/UICollectionViewDelegate-Protocol.h>
-#import <MapKit/UICollectionViewDelegateFlowLayout-Protocol.h>
-
 @class NSArray, NSIndexPath, NSLayoutConstraint, NSString, UICollectionView, UICollectionViewDiffableDataSource;
 @protocol MKTransitSystemFilterViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKTransitSystemFilterView : UIView <UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface MKTransitSystemFilterView : UIView
 {
     UICollectionView *_collectionView;
     UICollectionViewDiffableDataSource *_dataSource;

@@ -14,6 +14,7 @@
     MISSING_TYPE *deviceState;
     MISSING_TYPE *deviceResolutionAnalytics;
     MISSING_TYPE *aceServiceInvoker;
+    MISSING_TYPE *contentResolver;
 }
 
 @end

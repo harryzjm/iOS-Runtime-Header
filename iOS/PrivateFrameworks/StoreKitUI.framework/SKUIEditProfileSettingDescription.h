@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIProfileImagePickerDelegate-Protocol.h>
-#import <StoreKitUI/SKUISuggestedHandlesSettingsHeaderFooterDescriptionDelegate-Protocol.h>
-
 @class NSOperationQueue, NSRegularExpression, NSString, SKUISettingValueStore, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SKUIEditProfileSettingDescription <SKUIProfileImagePickerDelegate, SKUISuggestedHandlesSettingsHeaderFooterDescriptionDelegate>
+@interface SKUIEditProfileSettingDescription
 {
     CDUnknownBlockType _commitBlock;
     _Bool _editing;

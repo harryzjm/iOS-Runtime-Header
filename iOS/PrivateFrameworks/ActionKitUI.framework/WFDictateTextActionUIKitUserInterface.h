@@ -6,13 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/WFDictateTextActionUserInterface-Protocol.h>
-#import <ActionKitUI/WFDictateTextActionViewDelegate-Protocol.h>
-
 @class NSString, WFDictateTextActionView;
 
 __attribute__((visibility("hidden")))
-@interface WFDictateTextActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFDictateTextActionViewDelegate, WFDictateTextActionUserInterface>
+@interface WFDictateTextActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     WFDictateTextActionView *_actionView;
     CDUnknownBlockType _completionHandler;

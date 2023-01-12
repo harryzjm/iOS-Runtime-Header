@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *aceService;
     MISSING_TYPE *deviceState;
-    MISSING_TYPE *videoDialogs;
+    MISSING_TYPE *dialogProvider;
     MISSING_TYPE *locUtil;
 }
 

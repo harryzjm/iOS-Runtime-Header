@@ -11,8 +11,6 @@
 @interface _TtC8NewsFeed30FormatLayeredMediaNodeRenderer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *rendererEnvironment;
-    MISSING_TYPE *layeredMediaViewProvider;
-    MISSING_TYPE *layeredMediaLayerProviderFactory;
     MISSING_TYPE *layeredMediaViewRenderer;
 }
 

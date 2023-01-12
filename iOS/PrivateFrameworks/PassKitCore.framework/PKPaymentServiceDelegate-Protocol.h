@@ -15,7 +15,7 @@
 - (void)transactionBatch:(NSDictionary *)arg1 moreComing:(_Bool)arg2 readyForNextBatch:(void (^)(void))arg3;
 - (void)transactionWithIdentifier:(NSString *)arg1 didDownloadTransactionReceipt:(PKTransactionReceipt *)arg2;
 - (void)credential:(PKAppletSubcredential *)arg1 forPaymentApplication:(PKPaymentApplication *)arg2 didUpdateRangingSuspensionReasons:(unsigned long long)arg3;
-- (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateCredential:(PKAppletSubcredential *)arg2;
+- (void)sharesDidUpdateWithPaymentPassWithUniqueIdentifier:(NSString *)arg1;
 - (void)didRecieveCredentialInvitation:(PKAppletSubcredentialSharingInvitation *)arg1;
 - (void)didUpdateFamilyMembers:(NSArray *)arg1;
 - (void)featureApplicationChanged:(PKFeatureApplication *)arg1;
@@ -33,6 +33,7 @@
 - (void)transactionSourceIdentifier:(NSString *)arg1 didReceiveTransaction:(PKPaymentTransaction *)arg2;
 - (void)passWithUniqueIdentifier:(NSString *)arg1 didUpdateTiles:(NSArray *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didReceiveMessage:(PKPaymentMessage *)arg2;
+- (void)didUpdateApplicationMessages:(NSArray *)arg1;
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(NSString *)arg1;
 - (void)paymentDeviceDidExitField;
 - (void)paymentDeviceDidEnterFieldWithProperties:(PKFieldProperties *)arg1;

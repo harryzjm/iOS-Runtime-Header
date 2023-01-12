@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNAudioHardwareEngineObserver-Protocol.h>
-#import <Navigation/MNAudioProvider-Protocol.h>
-
 @class MNAudioHardwareEngine, MNObserverHashTable, MNUserOptions, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MNAudioManager : NSObject <MNAudioHardwareEngineObserver, MNAudioProvider>
+@interface MNAudioManager : NSObject
 {
     int _transportType;
     MNObserverHashTable *_observers;

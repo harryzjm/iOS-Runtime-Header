@@ -6,11 +6,9 @@
 
 #import <Foundation/NSURL.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface NSURL (IBBinaryArchivingAdditions) <IBBinaryArchiving>
+@interface NSURL (IBBinaryArchivingAdditions)
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 

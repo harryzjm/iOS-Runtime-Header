@@ -21,12 +21,9 @@ __attribute__((visibility("hidden")))
     struct SharingImportanceMeasurements _measurements;
     NSSortDescriptor *_scoreSortDescriptor;
     struct unique_ptr<SharingImportanceManager, std::default_delete<SharingImportanceManager>> _estimatorRangeOnly;
-    struct unique_ptr<SharingImportanceManager, std::default_delete<SharingImportanceManager>> _estimatorRangeAndAngle;
     _Bool _useRegionBasedEstimator;
-    _Bool _outputScoreCalculatedWithAngle;
     _Bool _currentlyInitiating;
     CDUnknownBlockType _newScoresHandler;
-    double _halfPointingAngleDegrees;
     NSObject<OS_os_log> *_logger;
 }
 
@@ -34,8 +31,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_os_log> *logger; // @synthesize logger=_logger;
 @property _Bool currentlyInitiating; // @synthesize currentlyInitiating=_currentlyInitiating;
-@property double halfPointingAngleDegrees; // @synthesize halfPointingAngleDegrees=_halfPointingAngleDegrees;
-@property _Bool outputScoreCalculatedWithAngle; // @synthesize outputScoreCalculatedWithAngle=_outputScoreCalculatedWithAngle;
 @property _Bool useRegionBasedEstimator; // @synthesize useRegionBasedEstimator=_useRegionBasedEstimator;
 @property(copy) CDUnknownBlockType newScoresHandler; // @synthesize newScoresHandler=_newScoresHandler;
 - (void)updateScoresWithNewMeasurement:(const void *)arg1;

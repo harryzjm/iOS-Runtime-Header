@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVKVONotifier-Protocol.h>
-
 @class AVCallbackContextRegistry, AVWeakReference, NSString;
 @protocol AVWeakObservable;
 
 __attribute__((visibility("hidden")))
-@interface AVWeaklyObservedObjectClientBlockKVONotifier : NSObject <AVKVONotifier>
+@interface AVWeaklyObservedObjectClientBlockKVONotifier : NSObject
 {
     AVCallbackContextRegistry *_callbackContextRegistry;
     void *_callbackContextToken;

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPThrottlingConfigCriteria, CKDPThrottlingConfigRateLimit, NSString;
 
-@interface CKDPThrottlingConfig : PBCodable <NSCopying>
+@interface CKDPThrottlingConfig : PBCodable
 {
     CKDPThrottlingConfigCriteria *_criteria;
     NSString *_label;

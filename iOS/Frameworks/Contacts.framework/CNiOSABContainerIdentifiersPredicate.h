@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Contacts/CNiOSContainerPredicate-Protocol.h>
+#import "CNPredicate.h"
 
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNiOSABContainerIdentifiersPredicate <CNiOSContainerPredicate>
+@interface CNiOSABContainerIdentifiersPredicate : CNPredicate
 {
     NSArray *_identifiers;
 }

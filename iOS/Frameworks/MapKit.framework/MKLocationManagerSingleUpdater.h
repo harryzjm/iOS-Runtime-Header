@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKLocationManagerObserver-Protocol.h>
-#import <MapKit/MKLocationManagerOperation-Protocol.h>
-
 @class MKLocationManager, NSString, NSTimer;
 
 __attribute__((visibility("hidden")))
-@interface MKLocationManagerSingleUpdater : NSObject <MKLocationManagerObserver, MKLocationManagerOperation>
+@interface MKLocationManagerSingleUpdater : NSObject
 {
     CDUnknownBlockType _handler;
     _Bool _active;

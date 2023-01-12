@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
-
 @class AMSDialogRequest, AMSURLTaskInfo, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceVerifyPurchaseResponse : NSObject <AMSFinancePerformable>
+@interface AMSFinanceVerifyPurchaseResponse : NSObject
 {
     AMSDialogRequest *_dialogRequest;
     NSDictionary *_responseDictionary;

@@ -6,13 +6,10 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <LocalAuthenticationPrivateUI/LAUIPasscodeHost-Protocol.h>
-#import <LocalAuthenticationPrivateUI/LAUIPasscodeService-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _PasscodeEmbeddedRemoteViewControllerHost : _UIRemoteViewController <LAUIPasscodeHost, LAUIPasscodeService>
+@interface _PasscodeEmbeddedRemoteViewControllerHost : _UIRemoteViewController
 {
 }
 

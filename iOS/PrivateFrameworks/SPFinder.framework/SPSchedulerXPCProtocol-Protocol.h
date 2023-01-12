@@ -9,7 +9,7 @@
 @class SPSchedulerInformation;
 
 @protocol SPSchedulerXPCProtocol <NSObject>
-- (oneway void)publishImmediatelyWithCompletion:(void (^)(NSError *))arg1;
-- (oneway void)schedulePublishWakeWithInformation:(SPSchedulerInformation *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)publishImmediatelyWithCompletion:(void (^)(NSError *))arg1;
+- (void)schedulePublishWakeWithInformation:(SPSchedulerInformation *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioSession;
+@class AVAudioSession, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVVCSessionManager : NSObject
@@ -25,20 +25,32 @@ __attribute__((visibility("hidden")))
     _Bool mDeviceIsOlderWatch;
     unsigned int mSessionActivationOptions;
     long long mPreviousActivationMode;
+    struct recursive_mutex mSessionManagerLock;
     _Bool _isPrimary;
     _Bool _clientRequestsRecording;
+    _Bool _forceGetSessionProperties;
     int _sessionState;
+    float _deviceGain;
+    long long _reporterID;
     AVAudioSession *_audioSession;
+    NSString *_playbackRoute;
     double _inputLatency;
     double _outputLatency;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double outputLatency; // @synthesize outputLatency=_outputLatency;
 @property(readonly, nonatomic) double inputLatency; // @synthesize inputLatency=_inputLatency;
+@property(nonatomic) _Bool forceGetSessionProperties; // @synthesize forceGetSessionProperties=_forceGetSessionProperties;
+@property(retain, nonatomic) NSString *playbackRoute; // @synthesize playbackRoute=_playbackRoute;
+@property(nonatomic) float deviceGain; // @synthesize deviceGain=_deviceGain;
 @property(nonatomic) _Bool clientRequestsRecording; // @synthesize clientRequestsRecording=_clientRequestsRecording;
 @property(readonly, nonatomic) _Bool isPrimary; // @synthesize isPrimary=_isPrimary;
-@property(nonatomic) int sessionState; // @synthesize sessionState=_sessionState;
 @property(retain, nonatomic) AVAudioSession *audioSession; // @synthesize audioSession=_audioSession;
+- (_Bool)isSWVolumeSupportedOnPickedRoute;
+- (_Bool)setDuckToLevelScalar:(id)arg1 error:(id *)arg2;
+- (_Bool)setDuckToLevelDB:(id)arg1 error:(id *)arg2;
 - (long long)inputNumberOfChannels;
 - (_Bool)setRecordingFromRemoteInput:(_Bool)arg1 error:(id *)arg2;
 - (void)removeSessionNotifications:(id)arg1;
@@ -55,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (id)currentRoute;
 - (_Bool)setPreferredSampleRate:(double)arg1 error:(id *)arg2;
 - (_Bool)setIAmTheAssistant:(_Bool)arg1 error:(id *)arg2;
-- (long long)reporterID;
+@property(readonly) long long reporterID; // @synthesize reporterID=_reporterID;
 - (_Bool)setAudioHardwareControlFlags:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)isSessionInSiriCategory;
 - (_Bool)isSessionInSiriCategoryModeAndOptions:(unsigned int)arg1;
@@ -65,6 +77,17 @@ __attribute__((visibility("hidden")))
 - (double)speechDetectionDeviceSampleRate;
 - (double)getOutputLatency;
 - (double)getInputLatency;
+- (_Bool)setEnableBTTriangleMode:(_Bool)arg1 error:(id *)arg2;
+- (_Bool)getForceGetSessionProperties;
+- (id)getPlaybackRoute;
+- (float)getDeviceGain;
+- (_Bool)getClientRequestsRecording;
+- (long long)getAVVCSessionState;
+- (_Bool)isSessionActive;
+@property(nonatomic) int sessionState; // @synthesize sessionState=_sessionState;
+- (void)setSessionStateWithoutLock:(int)arg1;
+- (_Bool)deactivateAudioSessionWithOptions:(unsigned int)arg1 error:(id *)arg2;
+- (_Bool)activateAudioSessionWithPrewarm:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)isAirplayOneOfTheOutputRoutes:(id)arg1;
 - (int)enableSmartRoutingConsideration:(_Bool)arg1;
 - (void)setSessionActivationOptions:(unsigned int)arg1;

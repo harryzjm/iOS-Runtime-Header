@@ -10,7 +10,6 @@
 
 @interface _TtC18VisualIntelligence38VisualIntelligenceModelProviderService : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *metaBundleName;
     MISSING_TYPE *providers;
 }
 

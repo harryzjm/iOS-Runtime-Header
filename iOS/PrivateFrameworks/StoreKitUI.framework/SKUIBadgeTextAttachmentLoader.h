@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-
 @class NSHashTable, NSMapTable, NSString, SKUIResourceLoader;
 
 __attribute__((visibility("hidden")))
-@interface SKUIBadgeTextAttachmentLoader : NSObject <SKUIArtworkRequestDelegate>
+@interface SKUIBadgeTextAttachmentLoader : NSObject
 {
     NSMapTable *_imageRequests;
     SKUIResourceLoader *_resourceLoader;

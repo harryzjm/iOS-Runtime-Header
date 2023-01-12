@@ -15,10 +15,10 @@
     CHMutableTokenizedTextResult *_result;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CHMutableTokenizedTextResult *result; // @synthesize result=_result;
-@property int contentType; // @synthesize contentType=_contentType;
+@property(nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property(retain, nonatomic) NSString *leftContext; // @synthesize leftContext=_leftContext;
-- (void)dealloc;
 - (id)initWithResult:(id)arg1 leftContext:(id)arg2 contentType:(int)arg3;
 
 @end

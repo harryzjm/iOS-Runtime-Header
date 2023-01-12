@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSIndexSet, NSMutableIndexSet, SFUnifiedBarMetrics, SFUnifiedTabBarItemArrangement, UIScrollView;
+@class NSArray, NSIndexSet, NSMutableIndexSet, SFUnifiedBarItem, SFUnifiedTabBarItemArrangement, SFUnifiedTabBarMetrics, UIScrollView;
 
 __attribute__((visibility("hidden")))
 @interface SFUnifiedTabBarLayout : NSObject
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     double _itemWidth;
     double _squishedActiveItemWidth;
     double _leadingItemOffset;
+    double _pinnedItemsWidth;
     _Bool _standalone;
     double _itemSpacing;
     double _transitioningItemScale;
@@ -32,31 +33,33 @@ __attribute__((visibility("hidden")))
     double _activeItemWidthWhenNotExpanded;
     _Bool _contentIsCentered;
     SFUnifiedTabBarItemArrangement *_itemArrangement;
-    SFUnifiedBarMetrics *_barMetrics;
-    unsigned long long _sizeClass;
+    SFUnifiedTabBarMetrics *_barMetrics;
+    SFUnifiedBarItem *_hoveringItem;
     struct CGPoint _midpointForCenteredContent;
     struct CGSize _contentSize;
 }
 
++ (unsigned long long)pinnedItemLimitForItemArrangement:(id)arg1 tabBarWidth:(double)arg2 barMetrics:(id)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SFUnifiedBarItem *hoveringItem; // @synthesize hoveringItem=_hoveringItem;
 @property(readonly, nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(readonly, nonatomic) _Bool contentIsCentered; // @synthesize contentIsCentered=_contentIsCentered;
 @property(nonatomic) struct CGPoint midpointForCenteredContent; // @synthesize midpointForCenteredContent=_midpointForCenteredContent;
-@property(nonatomic) unsigned long long sizeClass; // @synthesize sizeClass=_sizeClass;
-@property(retain, nonatomic) SFUnifiedBarMetrics *barMetrics; // @synthesize barMetrics=_barMetrics;
+@property(retain, nonatomic) SFUnifiedTabBarMetrics *barMetrics; // @synthesize barMetrics=_barMetrics;
 @property(readonly, nonatomic) SFUnifiedTabBarItemArrangement *itemArrangement; // @synthesize itemArrangement=_itemArrangement;
 - (struct CGPoint)_midpointForCenteredContentInScrollView;
 - (double)_maximumActiveItemWidthForCenteringExpandedItem;
 @property(readonly, nonatomic) _Bool horizontalSpaceIsExtremelyConstrained;
 @property(readonly, nonatomic) _Bool centersActiveItemWhenExpanded;
+- (double)_insetToRevealNextItem;
+- (double)_minimumHorizontalOffsetForOccludedItems;
+- (double)_maximumItemSpacing;
+- (double)_minimumItemSpacing;
 - (double)_effectiveMinimumActiveItemWidth;
-@property(readonly, nonatomic) double maximumActiveItemWidth;
-- (double)_minimumActiveItemWidthRatio;
-- (double)_minimumActiveItemWidth;
-- (double)_minimumInactiveItemWidth;
 - (struct UIEdgeInsets)_insetsForActiveItemPinnableArea;
 - (struct CGRect)_contentArea;
 - (struct CGRect)_activeItemPinnableArea;
+- (struct CGRect)_unpinnedItemSafeArea;
 @property(readonly, nonatomic) struct CGRect _safeArea;
 - (id)itemsVisibleInRect:(struct CGRect)arg1;
 - (id)indexesOfItemsVisibleInRect:(struct CGRect)arg1;
@@ -64,22 +67,34 @@ __attribute__((visibility("hidden")))
 - (void)setItemAtIndex:(unsigned long long)arg1 isVisible:(_Bool)arg2;
 @property(readonly, nonatomic) NSArray *visibleItems;
 @property(readonly, nonatomic) NSIndexSet *visibleItemIndexes;
+- (_Bool)_itemAtIndexIsPinned:(unsigned long long)arg1;
+- (_Bool)_activeItemIsPinned;
+@property(readonly, nonatomic) struct UIEdgeInsets autoScrollTouchInsets;
+@property(readonly, nonatomic) struct CGRect pinnedItemDropArea;
+@property(readonly, nonatomic) double pinnedItemsSeparatorOpacity;
+@property(readonly, nonatomic) struct CGRect pinnedItemsSeparatorFrame;
+@property(readonly, nonatomic) _Bool isCurrentlyScrollable;
 - (struct UIEdgeInsets)_insetsForScrollingToItemAtIndex:(unsigned long long)arg1;
 - (struct CGPoint)_contentOffsetForScrollingToRegionWithMinX:(double)arg1 maxX:(double)arg2 insets:(struct UIEdgeInsets)arg3;
 - (struct CGPoint)contentOffsetForScrollingToDroppingItems;
 - (struct CGPoint)contentOffsetForScrollingToItemAtIndex:(unsigned long long)arg1;
 - (id)itemAtPoint:(struct CGPoint)arg1;
-- (unsigned long long)_indexOfItemClosestToPoint:(struct CGPoint)arg1;
-- (id)itemClosestToPoint:(struct CGPoint)arg1;
+- (unsigned long long)_indexOfItemClosestToPoint:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
+- (id)itemClosestToPoint:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
+- (struct CGRect)frameForPreviewingItem:(id)arg1 pinned:(_Bool)arg2;
 - (struct CGRect)frameForItem:(id)arg1;
 @property(readonly, nonatomic) unsigned long long maximumNumberOfVisibleItems;
 @property(readonly, nonatomic) unsigned long long indexOfCenterItem;
 - (double)_zPositionForItem:(id)arg1;
+- (double)_spacingBeforeItem:(id)arg1;
+- (double)_spacingAfterItem:(id)arg1;
 - (double)_widthForItem:(id)arg1;
+- (double)_offsetForItemAtIndex:(unsigned long long)arg1 inItems:(id)arg2;
+- (double)_offsetForPinnedItemAtIndex:(unsigned long long)arg1;
 - (double)_offsetForItemAtIndex:(unsigned long long)arg1;
-- (CDStruct_b1208419)_scrollSlowingLayoutInfoForItemAtIndex:(unsigned long long)arg1 withLayoutInfo:(CDStruct_b1208419)arg2 activeItemFrame:(struct CGRect)arg3;
+- (CDStruct_c9ef18f1)_scrollSlowingLayoutInfoForItemAtIndex:(unsigned long long)arg1 withLayoutInfo:(CDStruct_c9ef18f1)arg2 activeItemFrame:(struct CGRect)arg3;
 - (struct CGRect)_slideFrame:(struct CGRect)arg1 forItemAtIndex:(unsigned long long)arg2 pinnedActiveItemOffset:(double)arg3;
-- (double)_distanceToEdgeForItemAtIndex:(unsigned long long)arg1 withFrame:(struct CGRect)arg2 activeItemFrame:(struct CGRect)arg3 occludedEdge:(unsigned long long *)arg4 occludingItemIndex:(unsigned long long *)arg5;
+- (double)_distanceToEdgeForItemAtIndex:(unsigned long long)arg1 withFrame:(struct CGRect)arg2 activeItemFrame:(struct CGRect)arg3 occludedEdge:(unsigned long long *)arg4;
 - (struct CGRect)_adjustedActiveItemFrame:(struct CGRect)arg1 pinActiveItem:(_Bool)arg2 squishActiveItem:(_Bool)arg3 centerExpandedItem:(_Bool)arg4;
 - (double)_pinnedActiveItemOffsetSquishingActiveItem:(_Bool)arg1 activeItemFrame:(struct CGRect *)arg2;
 - (struct CGRect)_frameForItem:(id)arg1 withOffset:(double)arg2 pinActiveItem:(_Bool)arg3 squishActiveItem:(_Bool)arg4 centerExpandedItem:(_Bool)arg5;

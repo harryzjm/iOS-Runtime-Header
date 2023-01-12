@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Pegasus/PGPictureInPictureExportedInterface-Protocol.h>
-
 @class NSString, PGPictureInPictureProxy;
 
 __attribute__((visibility("hidden")))
-@interface _PGPictureInPictureConnectionExportedObject : NSObject <PGPictureInPictureExportedInterface>
+@interface _PGPictureInPictureConnectionExportedObject : NSObject
 {
     PGPictureInPictureProxy *_pictureInPictureProxy;
 }

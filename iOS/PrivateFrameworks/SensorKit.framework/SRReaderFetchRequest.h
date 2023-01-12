@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/SRRequestFetching-Protocol.h>
-
 @class NSString;
 @protocol SRRequestReading;
 
 __attribute__((visibility("hidden")))
-@interface SRReaderFetchRequest : NSObject <SRRequestFetching>
+@interface SRReaderFetchRequest : NSObject
 {
     id <SRRequestReading> _readerRequest;
     _Bool _bypassHoldingPeriod;

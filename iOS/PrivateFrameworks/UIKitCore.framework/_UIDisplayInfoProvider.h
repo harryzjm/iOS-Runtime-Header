@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIDisplayInfoProviding-Protocol.h>
-
 @class FBSDisplayConfiguration, NSString;
 @protocol _UIDisplayInfoShape;
 
 __attribute__((visibility("hidden")))
-@interface _UIDisplayInfoProvider : NSObject <_UIDisplayInfoProviding>
+@interface _UIDisplayInfoProvider : NSObject
 {
     FBSDisplayConfiguration *displayConfiguration;
     unsigned long long artworkSubtype;

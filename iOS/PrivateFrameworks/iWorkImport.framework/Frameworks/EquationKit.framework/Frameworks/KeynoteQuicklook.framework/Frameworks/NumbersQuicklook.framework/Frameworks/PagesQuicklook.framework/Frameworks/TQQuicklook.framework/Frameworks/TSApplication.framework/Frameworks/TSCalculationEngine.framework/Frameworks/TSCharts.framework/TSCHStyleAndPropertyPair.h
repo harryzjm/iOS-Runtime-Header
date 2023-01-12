@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSSStyle;
 
-@interface TSCHStyleAndPropertyPair : NSObject <NSCopying>
+@interface TSCHStyleAndPropertyPair : NSObject
 {
     int _property;
     TSSStyle *_style;

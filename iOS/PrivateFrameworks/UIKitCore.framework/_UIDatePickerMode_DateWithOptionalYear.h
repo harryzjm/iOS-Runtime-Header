@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 + (long long)datePickerMode;
 - (id)dateComponentsByRestrictingSelectedComponents:(id)arg1 withLastManipulatedColumn:(long long)arg2;
 - (_Bool)_shouldEnableValueForRow:(long long)arg1 inComponent:(long long)arg2 calendarUnit:(unsigned long long)arg3;
-- (id)selectedDateComponents;
+- (void)_updateSelectedDateComponentsWithNewValueInComponent:(long long)arg1 usingSelectionBarValue:(_Bool)arg2;
 - (long long)rowForDate:(id)arg1 dateComponents:(id)arg2 component:(long long)arg3 currentRow:(long long)arg4;
 - (long long)yearForRow:(long long)arg1;
 - (id)titleForRow:(long long)arg1 inComponent:(long long)arg2;

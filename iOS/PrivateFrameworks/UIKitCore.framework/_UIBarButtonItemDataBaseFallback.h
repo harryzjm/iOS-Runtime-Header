@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIBarButtonItemDataFallback-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIBarButtonItemDataBaseFallback : NSObject <_UIBarButtonItemDataFallback>
+@interface _UIBarButtonItemDataBaseFallback : NSObject
 {
 }
 

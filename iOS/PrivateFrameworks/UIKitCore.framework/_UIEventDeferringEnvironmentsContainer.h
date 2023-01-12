@@ -6,15 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/BSDebugDescriptionProviding-Protocol.h>
-#import <UIKitCore/BSXPCCoding-Protocol.h>
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIEventDeferringEnvironmentsContainer : NSObject <NSCopying, NSSecureCoding, BSXPCCoding, BSDebugDescriptionProviding>
+@interface _UIEventDeferringEnvironmentsContainer : NSObject <NSCopying>
 {
     NSSet *_environments;
 }

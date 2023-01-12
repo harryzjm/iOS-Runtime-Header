@@ -6,7 +6,11 @@
 
 #import <PassKitCore/PKSecureElementPass.h>
 
+@class NSSet;
+
 @interface PKSecureElementPass (NanoPassKit)
+- (_Bool)npkSupportUWBSecureRanging;
+@property(readonly, nonatomic) NSSet *npkSubcredentials;
 - (_Bool)npkExclusivelyTransactsOverNFC;
 - (_Bool)npkExclusivelyTransactsOverBluetooth;
 - (_Bool)npkSupportsNFC;

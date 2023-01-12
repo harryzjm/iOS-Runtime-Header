@@ -12,15 +12,17 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_axIsEditing;
+- (_Bool)_axToggleSwitch;
 - (_Bool)_axDeleteAlarm;
+- (void)_axModifyDeleteButton;
 - (id)accessibilityCustomActions;
 - (struct CGPoint)accessibilityActivationPoint;
-- (unsigned long long)accessibilityTraits;
-- (id)accessibilityValue;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
-- (_Bool)isAccessibilityElement;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
 - (id)_accessibilityUserTestingChildren;
+- (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

@@ -22,6 +22,7 @@
 - (unsigned long long)vk_indexOfSortedObject:(id)arg1 insertionIndex:(out unsigned long long *)arg2 usingComparator:(CDUnknownBlockType)arg3;
 - (id)vk_arrayByGroupingIntoArraysWithMaxCount:(unsigned long long)arg1;
 - (id)vk_objectsConformingToProtocol:(id)arg1;
+- (id)vk_safeObjectAtIndex:(long long)arg1;
 - (id)vk_firstObjectOfClass:(Class)arg1;
 - (id)vk_objectsOfClass:(Class)arg1;
 - (id)vk_objectsPassingTest:(CDUnknownBlockType)arg1;

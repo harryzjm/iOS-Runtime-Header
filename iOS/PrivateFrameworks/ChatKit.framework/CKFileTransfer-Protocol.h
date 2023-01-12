@@ -9,12 +9,15 @@
 @class IMMessage, NSDictionary, NSError, NSString, NSURL;
 
 @protocol CKFileTransfer <NSObject>
+@property(readonly, copy, nonatomic) NSURL *shareURL;
 @property(readonly, nonatomic) _Bool isFromMomentShare;
 @property(readonly, nonatomic, getter=isRestoring) _Bool restoring;
 @property(readonly, nonatomic, getter=isDownloading) _Bool downloading;
 @property(readonly, nonatomic, getter=isDownloadable) _Bool downloadable;
+@property(readonly, nonatomic, getter=isRejected) _Bool rejected;
 @property(readonly, nonatomic, getter=isFileDataReady) _Bool fileDataReady;
 @property(readonly, nonatomic, getter=isFileURLFinalized) _Bool fileURLFinalized;
+@property(readonly, nonatomic) long long commSafetySensitive;
 @property(readonly, nonatomic) _Bool isDirectory;
 @property(readonly, nonatomic) _Bool hideAttachment;
 @property(readonly, nonatomic) _Bool isSticker;

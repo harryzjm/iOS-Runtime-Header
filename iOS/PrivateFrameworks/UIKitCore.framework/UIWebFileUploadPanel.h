@@ -4,17 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIDocumentMenuDelegate-Protocol.h>
-#import <UIKitCore/UIDocumentPickerDelegate-Protocol.h>
-#import <UIKitCore/UIImagePickerControllerDelegate-Protocol.h>
-#import <UIKitCore/UINavigationControllerDelegate-Protocol.h>
-#import <UIKitCore/UIPopoverControllerDelegate-Protocol.h>
+#import "UIViewController.h"
 
-@class DOMNode, NSArray, NSObject, NSString, UIDocumentMenuViewController, UIImagePickerController, UIPopoverController, UIViewController, UIWebDocumentView;
+@class DOMNode, NSArray, NSObject, NSString, UIDocumentMenuViewController, UIImagePickerController, UIPopoverController, UIWebDocumentView;
 @protocol UIWebFileUploadPanelDelegate, WebOpenPanelResultListener;
 
 __attribute__((visibility("hidden")))
-@interface UIWebFileUploadPanel <UIDocumentPickerDelegate, UIDocumentMenuDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate>
+@interface UIWebFileUploadPanel : UIViewController
 {
     UIDocumentMenuViewController *_documentMenuController;
     UIImagePickerController *_imagePicker;

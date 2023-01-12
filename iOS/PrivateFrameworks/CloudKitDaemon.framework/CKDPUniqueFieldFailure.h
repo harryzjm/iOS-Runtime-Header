@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPIdentifier;
 
-@interface CKDPUniqueFieldFailure : PBCodable <NSCopying>
+@interface CKDPUniqueFieldFailure : PBCodable
 {
     CKDPIdentifier *_identifierForConstraintFailure;
 }

@@ -5,13 +5,14 @@
 //
 
 #import <MetalTools/MTLBlitCommandEncoder-Protocol.h>
+#import <MetalTools/MTLCommandEncoderSPI-Protocol.h>
 
 @protocol MTLBuffer, MTLTexture;
 
-@protocol MTLBlitCommandEncoderSPI <MTLBlitCommandEncoder>
-- (void)fillTexture:(id <MTLTexture>)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_1e3be3a8)arg4 color:(CDStruct_d2b197d1)arg5 pixelFormat:(unsigned long long)arg6;
-- (void)fillTexture:(id <MTLTexture>)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_1e3be3a8)arg4 color:(CDStruct_d2b197d1)arg5;
-- (void)fillTexture:(id <MTLTexture>)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_1e3be3a8)arg4 bytes:(const void *)arg5 length:(unsigned long long)arg6;
+@protocol MTLBlitCommandEncoderSPI <MTLCommandEncoderSPI, MTLBlitCommandEncoder>
+- (void)fillTexture:(id <MTLTexture>)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_4c83c94d)arg4 color:(CDStruct_d2b197d1)arg5 pixelFormat:(unsigned long long)arg6;
+- (void)fillTexture:(id <MTLTexture>)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_4c83c94d)arg4 color:(CDStruct_d2b197d1)arg5;
+- (void)fillTexture:(id <MTLTexture>)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_4c83c94d)arg4 bytes:(const void *)arg5 length:(unsigned long long)arg6;
 - (void)fillBuffer:(id <MTLBuffer>)arg1 range:(struct _NSRange)arg2 pattern4:(unsigned int)arg3;
 - (void)invalidateCompressedTexture:(id <MTLTexture>)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;
 - (void)invalidateCompressedTexture:(id <MTLTexture>)arg1;

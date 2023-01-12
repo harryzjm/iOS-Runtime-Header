@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/MPStoreDownloadManagerObserver-Protocol.h>
-#import <VideosUI/VUIMPMediaItemDownloadControllerObserver-Protocol.h>
-#import <VideosUI/VUIMediaEntityAssetController-Protocol.h>
-
 @class MPMediaItem, NSString, NSTimer, VUIMPMediaItemDownloadController, VUIMediaEntityAssetControllerState, VUIMediaEntityType;
 @protocol OS_dispatch_queue, VUIMediaEntityAssetControllerDelegate, VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface VUIMPMediaItemAssetController : NSObject <VUIMPMediaItemDownloadControllerObserver, MPStoreDownloadManagerObserver, VUIMediaEntityAssetController>
+@interface VUIMPMediaItemAssetController : NSObject
 {
     _Bool _supportsStartingDownload;
     _Bool _requestingPermissionToDownload;

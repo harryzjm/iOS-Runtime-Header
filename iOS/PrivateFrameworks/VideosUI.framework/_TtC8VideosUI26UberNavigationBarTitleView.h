@@ -13,11 +13,20 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *customBackButton;
     MISSING_TYPE *titleView;
+    MISSING_TYPE *titleOpacity;
+    MISSING_TYPE *hostViewController;
+    MISSING_TYPE *isBackButtonHidden;
+    MISSING_TYPE *touchProxyView;
     MISSING_TYPE *showUberState;
+    MISSING_TYPE *isUber;
+    MISSING_TYPE *futureDisplayMode;
+    MISSING_TYPE *dismissalDisplayMode;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)contentDidChange;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 

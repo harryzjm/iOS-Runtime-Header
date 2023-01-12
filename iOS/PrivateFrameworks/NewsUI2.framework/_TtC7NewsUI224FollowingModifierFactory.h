@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *shortcutService;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *editorialService;
     MISSING_TYPE *appConfigurationManager;
@@ -24,6 +25,7 @@
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *familySharingStatusManager;
     MISSING_TYPE *engagementInlineViewManager;
+    MISSING_TYPE *userInfo;
 }
 
 @end

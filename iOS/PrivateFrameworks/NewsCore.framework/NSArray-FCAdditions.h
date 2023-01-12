@@ -6,12 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <NewsCore/FCContentArchivable-Protocol.h>
-#import <NewsCore/FCOrderedCollectionAdditions-Protocol.h>
-
 @class FCContentArchive;
 
-@interface NSArray (FCAdditions) <FCOrderedCollectionAdditions, FCContentArchivable>
+@interface NSArray (FCAdditions)
 + (void)fc_walkArray:(id)arg1 andArray:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (id)fc_generatedArrayWithCount:(unsigned long long)arg1 generator:(CDUnknownBlockType)arg2;
 + (id)fc_array:(CDUnknownBlockType)arg1;

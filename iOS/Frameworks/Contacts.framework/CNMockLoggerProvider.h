@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNContactsLoggerProvider-Protocol.h>
-
 @class NSString;
 @protocol CNAPITriageLogger, CNContactsLogger, CNFavoritesLogger, CNGeminiLogger, CNImageUtilitiesLogger, CNRegulatoryLogger, CNSpotlightIndexingLogger;
 
 __attribute__((visibility("hidden")))
-@interface CNMockLoggerProvider : NSObject <CNContactsLoggerProvider>
+@interface CNMockLoggerProvider : NSObject
 {
     id <CNContactsLogger> _contactsLogger;
     id <CNSpotlightIndexingLogger> _spotlightIndexingLogger;

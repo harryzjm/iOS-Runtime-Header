@@ -10,7 +10,7 @@
 
 @interface _TtC7NewsUI222NewsAudioPlaybackQueue : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *playNowIgnoringPlaylistSlot;
+    MISSING_TYPE *ephemeralQueue;
     MISSING_TYPE *queue;
     MISSING_TYPE *carplayTemplatesQueue;
     MISSING_TYPE *audioDataManager;

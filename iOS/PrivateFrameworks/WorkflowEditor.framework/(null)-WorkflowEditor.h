@@ -5,7 +5,6 @@
 //
 
 @interface (null) (WorkflowEditor)
-- (void)presentDrawerViewController:(id)arg1 inPopover:(_Bool)arg2 withSourceRect:(struct CGRect)arg3;
-- (void)appendAction:(id)arg1;
+- (void)reportSuggestionSessionEnded;
 @end
 

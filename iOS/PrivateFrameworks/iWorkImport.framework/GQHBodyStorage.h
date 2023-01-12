@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQBodyStorageGenerator-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQHBodyStorage : NSObject <GQBodyStorageGenerator>
+@interface GQHBodyStorage : NSObject
 {
 }
 

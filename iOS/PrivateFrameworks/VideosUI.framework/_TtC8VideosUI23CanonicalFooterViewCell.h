@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIBaseCollectionViewCell.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI23CanonicalFooterViewCell
+@interface _TtC8VideosUI23CanonicalFooterViewCell : VUIBaseCollectionViewCell
 {
     MISSING_TYPE *layout;
     MISSING_TYPE *sectionViews;

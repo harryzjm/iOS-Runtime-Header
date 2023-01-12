@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <SyncedDefaults/SYDClientProtocol-Protocol.h>
-
 @protocol SYDClientProtocol;
 
 __attribute__((visibility("hidden")))
-@interface SYDClientProtocolProxy : NSObject <SYDClientProtocol>
+@interface SYDClientProtocolProxy : NSObject
 {
     id <SYDClientProtocol> _target;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SYDClientProtocol> target; // @synthesize target=_target;
-- (void)storeDidChangeWithConfiguration:(id)arg1 changeDictionary:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)storeDidChangeWithStoreID:(id)arg1 changeDictionary:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithTarget:(id)arg1;
 
 @end

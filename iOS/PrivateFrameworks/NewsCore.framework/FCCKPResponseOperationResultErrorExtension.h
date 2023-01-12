@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPResponseOperationResultErrorExtension : PBCodable <NSCopying>
+@interface FCCKPResponseOperationResultErrorExtension : PBCodable
 {
     NSString *_extensionName;
     NSData *_extensionPayload;

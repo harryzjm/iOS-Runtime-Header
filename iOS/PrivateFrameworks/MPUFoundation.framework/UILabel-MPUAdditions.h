@@ -6,11 +6,9 @@
 
 #import <UIKit/UILabel.h>
 
-#import <MPUFoundation/MPUAutoupdatingTextContainer-Protocol.h>
-
 @class MPUTextContainerContentSizeUpdater, NSAttributedString, NSString, UIFont;
 
-@interface UILabel (MPUAdditions) <MPUAutoupdatingTextContainer>
+@interface UILabel (MPUAdditions)
 @property(nonatomic, setter=MPU_setAutomaticallyUpdatesTextStyleFontsToPreferredTextStyleFonts:) _Bool MPU_automaticallyUpdatesTextStyleFontsToPreferredTextStyleFonts;
 @property(readonly, nonatomic) MPUTextContainerContentSizeUpdater *MPU_contentSizeUpdater;
 - (void)MPU_configureWithTextAttributes:(id)arg1;

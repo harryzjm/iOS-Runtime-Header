@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FigCaptionLayerPrivate : NSObject
@@ -18,6 +18,10 @@ __attribute__((visibility("hidden")))
     unsigned char shouldDrawGrid;
     struct CGRect videoRelativeToViewport;
     struct FigGeometryMargins captionsAvoidanceMargins;
+    unsigned char enableGMSpew;
+    NSMutableDictionary *options;
+    _Bool separated;
+    _Bool separatedUpdated;
 }
 
 @end

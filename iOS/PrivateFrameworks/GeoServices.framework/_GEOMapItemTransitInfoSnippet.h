@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOMapItemTransitInfo-Protocol.h>
-
 @class GEOComposedRoute, GEOPDTransitInfoSnippet, NSArray, NSDate, NSString;
 @protocol GEOTransitNearbySchedule;
 
 __attribute__((visibility("hidden")))
-@interface _GEOMapItemTransitInfoSnippet : NSObject <GEOMapItemTransitInfo>
+@interface _GEOMapItemTransitInfoSnippet : NSObject
 {
     GEOPDTransitInfoSnippet *_transitInfoSnippet;
     NSArray *_labelItems;

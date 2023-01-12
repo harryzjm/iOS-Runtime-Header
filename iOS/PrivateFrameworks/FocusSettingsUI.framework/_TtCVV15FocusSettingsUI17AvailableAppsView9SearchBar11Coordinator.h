@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FocusSettingsUI/UISearchBarDelegate-Protocol.h>
-#import <FocusSettingsUI/UITextFieldDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCVV15FocusSettingsUI17AvailableAppsView9SearchBar11Coordinator : NSObject <UISearchBarDelegate, UITextFieldDelegate>
+@interface _TtCVV15FocusSettingsUI17AvailableAppsView9SearchBar11Coordinator : NSObject
 {
     MISSING_TYPE *_text;
     MISSING_TYPE *_isSearching;

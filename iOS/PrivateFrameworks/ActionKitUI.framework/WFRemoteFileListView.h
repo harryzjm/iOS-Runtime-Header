@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <ActionKitUI/UITableViewDataSource-Protocol.h>
-#import <ActionKitUI/UITableViewDelegate-Protocol.h>
-
 @class NSDateFormatter, NSDictionary, NSString, UILocalizedIndexedCollation, UITableView;
 @protocol WFRemoteFileListViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WFRemoteFileListView : UIView <UITableViewDelegate, UITableViewDataSource>
+@interface WFRemoteFileListView : UIView
 {
     id <WFRemoteFileListViewDelegate> _delegate;
     UITableView *_tableView;

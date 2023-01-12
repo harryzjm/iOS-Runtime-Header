@@ -12,17 +12,17 @@ __attribute__((visibility("hidden")))
 @interface AltTileFetcher : NSObject
 {
     GEOTileLoader *_geoTileLoader;
-    struct _retain_ptr<GEOVectorTileDecoder *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+    struct _retain_ptr<GEOVectorTileDecoder *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_vptr$_retain_ptr;
         GEOVectorTileDecoder *_obj;
-        struct _retain_objc _retain;
-        struct _release_objc _release;
+        struct _retain_objc_arc _retain;
+        struct _release_objc_arc _release;
     } _vectorTileDecoder;
-    struct _retain_ptr<GEOApplicationAuditToken *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+    struct _retain_ptr<GEOApplicationAuditToken *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_vptr$_retain_ptr;
         GEOApplicationAuditToken *_obj;
-        struct _retain_objc _retain;
-        struct _release_objc _release;
+        struct _retain_objc_arc _retain;
+        struct _release_objc_arc _release;
     } _auditToken;
     struct unordered_map<_GEOTileKey, std::shared_ptr<altitude::GeoServicesLoadJob>, GEOTileKeyHashFunc, GEOTileKeyEqualsFunc, std::allocator<std::pair<const _GEOTileKey, std::shared_ptr<altitude::GeoServicesLoadJob>>>> _keyToJobMap;
     struct Mutex _mutex;
@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (void)cancelJob:(void *)arg1;
 - (void)fetchDataForJob:(void *)arg1;
 - (shared_ptr_97fa0047)getJobForKey:(const struct _GEOTileKey *)arg1;
-- (void)dealloc;
 - (id)initWithToken:(id)arg1;
 
 @end

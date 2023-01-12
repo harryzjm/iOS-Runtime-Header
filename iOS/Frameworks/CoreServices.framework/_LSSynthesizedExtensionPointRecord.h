@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "LSExtensionPointRecord.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LSSynthesizedExtensionPointRecord
+@interface _LSSynthesizedExtensionPointRecord : LSExtensionPointRecord
 {
     NSString *_identifier;
 }
@@ -19,6 +21,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)_persistentIdentifierWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const void *)arg4;
+- (unsigned int)TCCPolicy;
+- (unsigned int)extensionPointType;
+- (id)parentAppRecord;
 - (id)SDKDictionary;
 - (unsigned int)platform;
 - (id)version;

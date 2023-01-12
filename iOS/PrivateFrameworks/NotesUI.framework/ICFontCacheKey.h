@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NotesUI/NSCopying-Protocol.h>
-
 @class NSString, UIFontDescriptor;
 
 __attribute__((visibility("hidden")))
-@interface ICFontCacheKey : NSObject <NSCopying>
+@interface ICFontCacheKey : NSObject
 {
     int _traits;
     NSString *_fontName;

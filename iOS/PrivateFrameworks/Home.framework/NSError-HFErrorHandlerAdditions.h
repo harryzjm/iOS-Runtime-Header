@@ -17,6 +17,7 @@
 + (id)hf_errorWithCode:(long long)arg1;
 - (id)hf_errorWithOperationType:(id)arg1 failedItemName:(id)arg2;
 - (id)hf_errorWithOperationType:(id)arg1 options:(id)arg2;
+@property(readonly, nonatomic) _Bool hf_isThreadNetworkRequiredError;
 - (id)hf_errorWithAddedUserInfo:(id)arg1;
 - (_Bool)hf_isPublicHMError;
 - (_Bool)hf_isHMHomeWalletKeyErrorWithCode:(long long)arg1;

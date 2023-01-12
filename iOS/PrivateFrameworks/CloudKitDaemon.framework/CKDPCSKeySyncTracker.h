@@ -14,6 +14,7 @@
     _Bool _manatee;
     _Bool _KRSReturnedExistingIdentity;
     NSString *_serviceName;
+    NSString *_accountDsid;
     NSObject<OS_dispatch_group> *_syncGroup;
     NSDate *_completionDate;
     NSNumber *_syncStatus;
@@ -27,6 +28,7 @@
 @property(retain, nonatomic) NSDate *completionDate; // @synthesize completionDate=_completionDate;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *syncGroup; // @synthesize syncGroup=_syncGroup;
 @property(nonatomic, getter=isManatee) _Bool manatee; // @synthesize manatee=_manatee;
+@property(retain, nonatomic) NSString *accountDsid; // @synthesize accountDsid=_accountDsid;
 @property(retain, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 - (void)waitOnSyncWithQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) unsigned long long state;

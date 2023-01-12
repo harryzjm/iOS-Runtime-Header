@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIScrollEventRespondable-Protocol.h>
+#import "UIGestureRecognizer.h"
 
 @class NSString;
+@protocol _UIPassthroughGestureDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIPassthroughGateGestureRecognizer <_UIScrollEventRespondable>
+@interface _UIPassthroughGateGestureRecognizer : UIGestureRecognizer
 {
 }
 
 + (_Bool)_supportsTouchContinuation;
 - (void)_scrollingChangedWithEvent:(id)arg1;
 - (_Bool)shouldReceiveEvent:(id)arg1;
+- (_Bool)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)endClosed;
 - (void)open;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) __weak id <_UIPassthroughGestureDelegate> delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

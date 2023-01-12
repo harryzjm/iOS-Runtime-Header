@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSString, TSCH3DLabelBitmapContextInfo, TSWPParagraphStyle;
 @protocol TSWPStyleProviding;
 
-@interface TSCH3DLabelResourceAttributes : NSObject <NSCopying>
+@interface TSCH3DLabelResourceAttributes : NSObject
 {
     TSWPParagraphStyle *_paragraphStyle;
     NSString *_string;

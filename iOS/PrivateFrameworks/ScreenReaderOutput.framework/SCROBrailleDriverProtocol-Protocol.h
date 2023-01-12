@@ -6,7 +6,7 @@
 
 #import <ScreenReaderOutput/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, SCRO2DBrailleCanvas;
 @protocol SCROBrailleDriverDelegate, SCROIOElementProtocol;
 
 @protocol SCROBrailleDriverProtocol <NSObject>
@@ -27,6 +27,8 @@
 - (unsigned long long)interfaceVersion;
 
 @optional
+- (void)displayCanvas;
+- (SCRO2DBrailleCanvas *)canvas;
 - (void)setBrailleDriverDelegate:(id <SCROBrailleDriverDelegate>)arg1;
 @end
 

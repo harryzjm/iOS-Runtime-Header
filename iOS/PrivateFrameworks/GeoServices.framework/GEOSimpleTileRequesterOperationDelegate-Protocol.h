@@ -15,6 +15,7 @@
 - (_Bool)shouldReportErrorNetworkEventForTileKey:(const struct _GEOTileKey *)arg1;
 - (NSData *)verifyDataIntegrity:(NSData *)arg1 checksumMethod:(int)arg2;
 - (int)checksumMethodForIncomingTileDataWithKey:(const struct _GEOTileKey *)arg1;
+- (_Bool)tileDataIsCacheableForTileKey:(const struct _GEOTileKey *)arg1;
 - (_Bool)shouldAllowEmptyDataForTileKey:(const struct _GEOTileKey *)arg1;
 - (_Bool)shouldDownloadToDiskForTileKey:(const struct _GEOTileKey *)arg1 estimatedDataSize:(unsigned long long)arg2;
 - (void)operationFailed:(_GEOSimpleTileRequesterOperation *)arg1 error:(NSError *)arg2;

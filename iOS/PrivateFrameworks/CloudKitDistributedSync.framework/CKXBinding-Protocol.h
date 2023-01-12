@@ -8,14 +8,11 @@
 @protocol CKXORCHelpers;
 
 @protocol CKXBinding
+- (id <CKXORCHelpers>)orcHelpers;
 - (Class)mutableProxyClassForStructToken:(unsigned long long)arg1;
 - (Class)proxyClassForStructToken:(unsigned long long)arg1;
-- (Class)objectClassForStructToken:(unsigned long long)arg1;
 - (unsigned long long)structTokenForClass:(Class)arg1;
 - (unsigned long long)topLevelStructToken;
 - (CKXSchema *)schema;
-
-@optional
-- (id <CKXORCHelpers>)orcHelpers;
 @end
 

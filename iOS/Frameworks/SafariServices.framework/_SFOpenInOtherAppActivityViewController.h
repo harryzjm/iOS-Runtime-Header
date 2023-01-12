@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_SFActivityViewController.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _SFOpenInOtherAppActivityViewController
+@interface _SFOpenInOtherAppActivityViewController : _SFActivityViewController
 {
     NSString *_filePath;
 }

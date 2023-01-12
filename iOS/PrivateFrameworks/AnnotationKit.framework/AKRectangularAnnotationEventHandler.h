@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface AKRectangularAnnotationEventHandler
+#import "AKAnnotationEventHandler.h"
+
+@interface AKRectangularAnnotationEventHandler : AKAnnotationEventHandler
 {
-    struct CGPoint _lastMungedPositionInModel;
+    _Bool _initialHorizontalFlip;
+    _Bool _initialVerticalFlip;
 }
 
-@property struct CGPoint lastMungedPositionInModel; // @synthesize lastMungedPositionInModel=_lastMungedPositionInModel;
+@property _Bool initialVerticalFlip; // @synthesize initialVerticalFlip=_initialVerticalFlip;
+@property _Bool initialHorizontalFlip; // @synthesize initialHorizontalFlip=_initialHorizontalFlip;
 - (void)_updateModelFlippednessWithCurrentPoint:(struct CGPoint)arg1;
 - (void)updateModelWithCurrentPoint:(struct CGPoint)arg1 options:(unsigned long long)arg2;
 - (struct CGRect)_rectForModifiedRotatedRect:(struct CGRect)arg1 withOriginal:(struct CGRect)arg2 andRotation:(double)arg3;

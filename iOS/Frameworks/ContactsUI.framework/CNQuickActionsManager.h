@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNQuickContactActionDelegate-Protocol.h>
-
 @class CNContact, CNQuickActionsUsageManager, CNQuickFaceTimeAction, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSOrderedSet, NSString;
 @protocol CNQuickActionsManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNQuickActionsManager : NSObject <CNQuickContactActionDelegate>
+@interface CNQuickActionsManager : NSObject
 {
     NSMutableDictionary *_actionsByCategories;
     NSOrderedSet *_actions;

@@ -6,7 +6,7 @@
 
 #import <ChronoCore/NSObject-Protocol.h>
 
-@class INIntent, NSArray, NSCoder, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, NSUserActivity, UIApplication, UIApplicationShortcutItem, UILocalNotification, UISceneConfiguration, UISceneConnectionOptions, UISceneSession, UIUserNotificationSettings, UIViewController, UIWindow;
+@class CKShareMetadata, INIntent, NSArray, NSCoder, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, NSUserActivity, UIApplication, UIApplicationShortcutItem, UILocalNotification, UISceneConfiguration, UISceneConnectionOptions, UISceneSession, UIUserNotificationSettings, UIViewController, UIWindow;
 
 @protocol UIApplicationDelegate <NSObject>
 
@@ -14,6 +14,7 @@
 - (_Bool)applicationShouldAutomaticallyLocalizeKeyCommands:(UIApplication *)arg1;
 - (void)application:(UIApplication *)arg1 didDiscardSceneSessions:(NSSet *)arg2;
 - (UISceneConfiguration *)application:(UIApplication *)arg1 configurationForConnectingSceneSession:(UISceneSession *)arg2 options:(UISceneConnectionOptions *)arg3;
+- (void)application:(UIApplication *)arg1 userDidAcceptCloudKitShareWithMetadata:(CKShareMetadata *)arg2;
 - (void)application:(UIApplication *)arg1 didUpdateUserActivity:(NSUserActivity *)arg2;
 - (void)application:(UIApplication *)arg1 didFailToContinueUserActivityWithType:(NSString *)arg2 error:(NSError *)arg3;
 - (_Bool)application:(UIApplication *)arg1 continueUserActivity:(NSUserActivity *)arg2 restorationHandler:(void (^)(NSArray *))arg3;

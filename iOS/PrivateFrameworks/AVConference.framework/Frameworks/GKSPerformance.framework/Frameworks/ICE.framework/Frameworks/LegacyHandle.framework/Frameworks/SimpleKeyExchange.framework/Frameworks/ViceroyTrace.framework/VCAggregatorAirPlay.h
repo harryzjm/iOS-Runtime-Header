@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSMutableDictionary, NSString, VCHistogram;
+@class NSMutableDictionary, NSString, VCHistogram;
 
 __attribute__((visibility("hidden")))
 @interface VCAggregatorAirPlay
@@ -25,7 +25,8 @@ __attribute__((visibility("hidden")))
     int _videoWidth;
     int _videoHeight;
     int _codec;
-    int _transportType;
+    int _averageVideoTxMetadataOverheadBitrate;
+    int _averageVideoRxMetadataOverheadBitrate;
     double _averageExpirationTime;
     double _maxExpirationTime;
     double _averageWiFiPacketDelay;
@@ -44,6 +45,8 @@ __attribute__((visibility("hidden")))
     unsigned int _maxJitterQueueSize;
     double _averagePlaybackOffset;
     double _maxPlaybackOffset;
+    unsigned int _mediaCaptureJitterTotal;
+    unsigned int _mediaCaptureBufferRateTotal;
     unsigned int _averageRoundTripTime;
     unsigned int _maxRoundTripTime;
     unsigned int _averageHIDEventLatencySampleCount;
@@ -61,6 +64,7 @@ __attribute__((visibility("hidden")))
     unsigned int _evictedFramesTrackedCount;
     unsigned int _evictedFramesAnalysisValidIntervals;
     double _evictedFramesAverageLatePacketDelay;
+    unsigned int _evictedFramesRecoveredCount;
     unsigned int _accumVideoFrameErasureCount;
     unsigned int _maxVideoFrameErasureCount;
     unsigned int _maxVideoStallCount;
@@ -89,7 +93,6 @@ __attribute__((visibility("hidden")))
     NSString *_remoteFrameworkVersion;
     NSString *_remoteDeviceModel;
     NSString *_segmentName;
-    NSDictionary *_wifiStats;
 }
 
 @property(copy, nonatomic) NSString *segmentName; // @synthesize segmentName=_segmentName;
@@ -100,7 +103,9 @@ __attribute__((visibility("hidden")))
 - (void)reset;
 - (void)updateReceiverVideoStreamConfiguration:(id)arg1;
 - (void)updateSenderVideoStreamConfiguration:(id)arg1;
+- (void)updateVideoStreamInfo:(id)arg1;
 - (void)processRealtimeStats:(id)arg1;
+- (void)processMediaCaptureRealtimeStats:(id)arg1;
 - (void)processRealtimeStatsPart6:(id)arg1;
 - (void)processRealtimeStatsPart5:(id)arg1;
 - (void)processRealtimeStatsPart4:(id)arg1;
@@ -117,6 +122,7 @@ __attribute__((visibility("hidden")))
 - (id)composeSegmentReport:(int)arg1;
 - (void)flushCurrentSegment;
 - (void)dealloc;
+- (id)initWithDelegate:(id)arg1 options:(id)arg2;
 - (id)initWithDelegate:(id)arg1;
 
 @end

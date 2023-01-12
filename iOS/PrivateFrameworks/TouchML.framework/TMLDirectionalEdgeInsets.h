@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLDirectionalEdgeInsetsJSExports-Protocol.h>
-
-@interface TMLDirectionalEdgeInsets : NSObject <TMLDirectionalEdgeInsetsJSExports, NSCopying>
+@interface TMLDirectionalEdgeInsets : NSObject
 {
     struct NSDirectionalEdgeInsets _directionalEdgeInsets;
 }

@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPComponentMediaPlayable-Protocol.h>
-#import <LinkPresentation/LPContentInsettable-Protocol.h>
-
 @class LPAudioPlayButtonStyle, LPInlineMediaPlaybackInformation, LPPlayButtonControl;
 
 __attribute__((visibility("hidden")))
-@interface LPPlayButtonView <LPContentInsettable, LPComponentMediaPlayable>
+@interface LPPlayButtonView
 {
     LPPlayButtonControl *_button;
     LPInlineMediaPlaybackInformation *_playbackInformation;

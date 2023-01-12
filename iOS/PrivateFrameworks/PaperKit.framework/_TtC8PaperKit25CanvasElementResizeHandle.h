@@ -11,13 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8PaperKit25CanvasElementResizeHandle : UIView
 {
-    MISSING_TYPE *anchorPoint;
+    MISSING_TYPE *type;
+    MISSING_TYPE *isControl;
+    MISSING_TYPE *dragGestureRecognizer;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (void)didMoveToWindow;
 
 @end
 

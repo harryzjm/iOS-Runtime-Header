@@ -6,19 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceImpl-Protocol.h>
-
 @class NSArray, NSData, NSDictionary, NSNumber, NSString;
 @protocol AVOutputDeviceImplSupport;
 
 __attribute__((visibility("hidden")))
-@interface AVLocalOutputDeviceImpl : NSObject <AVOutputDeviceImpl>
+@interface AVLocalOutputDeviceImpl : NSObject
 {
     id <AVOutputDeviceImplSupport> _implSupportEventListener;
 }
 
 - (void).cxx_destruct;
 @property __weak id <AVOutputDeviceImplSupport> implEventListener; // @synthesize implEventListener=_implSupportEventListener;
+- (_Bool)supportsFitnessDataDestination;
 - (void)configureUsingBlock:(CDUnknownBlockType)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)setCurrentBluetoothListeningMode:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSString *currentBluetoothListeningMode;
@@ -45,6 +44,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *proposedGroupID;
 @property(readonly, copy, nonatomic) NSString *groupID;
 @property(readonly, nonatomic) _Bool canBeGrouped;
+- (void)decreaseVolumeByCount:(long long)arg1;
+- (void)increaseVolumeByCount:(long long)arg1;
 - (void)setVolume:(float)arg1;
 @property(readonly) long long volumeControlType;
 @property(readonly) _Bool canSetVolume;
@@ -60,6 +61,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool requiresAuthorization;
 @property(readonly, nonatomic) unsigned long long deviceFeatures;
 @property(readonly, copy, nonatomic) NSArray *connectedPairedDevices;
+@property(readonly, nonatomic, getter=isEligibleToBePredictedOutputDevice) _Bool eligibleToBePredictedOutputDevice;
+@property(readonly, nonatomic, getter=isAppleAccessory) _Bool appleAccessory;
 @property(readonly, nonatomic) _Bool producesLowFidelityAudio;
 @property(readonly, nonatomic, getter=isInUseByPairedDevice) _Bool inUseByPairedDevice;
 @property(readonly, nonatomic) NSDictionary *airPlayProperties;
@@ -71,6 +74,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSNumber *batteryLevel;
 @property(readonly, nonatomic) NSString *clusterID;
 @property(readonly, nonatomic) _Bool isClusterLeader;
+@property(readonly, nonatomic) NSArray *allClusterMembers;
+@property(readonly, nonatomic) NSArray *activatedDeviceClusterMembers;
+- (id)deviceClusterMembers;
 @property(readonly, nonatomic) NSArray *clusteredDeviceDescriptions;
 @property(readonly, copy, nonatomic) NSData *identifyingMACAddress;
 @property(readonly, nonatomic) NSString *firmwareVersion;

@@ -6,14 +6,11 @@
 
 #import <Metal/_MTLCommandBuffer.h>
 
-#import <MTLSimDriver/MTLCommandBufferSPI-Protocol.h>
-#import <MTLSimDriver/MTLSerializerCommandStream-Protocol.h>
-
 @class MTLResourceList, NSDictionary, NSError, NSMutableDictionary, NSString;
-@protocol MTLCommandQueue, MTLDevice, MTLLogContainer;
+@protocol MTLCommandQueue, MTLDeadlineProfile, MTLDevice, MTLLogContainer;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimCommandBuffer : _MTLCommandBuffer <MTLCommandBufferSPI, MTLSerializerCommandStream>
+@interface MTLSimCommandBuffer : _MTLCommandBuffer
 {
     struct StorageEntry *commandHead;
     struct BufferStorageEntry *bufferHead;
@@ -52,11 +49,11 @@ __attribute__((visibility("hidden")))
 - (void *)getCommandBytes:(unsigned long long)arg1 forCommand:(unsigned int)arg2;
 - (id)renderCommandEncoderWithDescriptor:(id)arg1;
 - (id)parallelRenderCommandEncoderWithDescriptor:(id)arg1;
-- (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (id)resourceStateCommandEncoderWithDescriptor:(id)arg1;
-- (id)blitCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoderWithDescriptor:(id)arg1;
+- (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (id)computeCommandEncoder;
+- (id)blitCommandEncoderWithDescriptor:(id)arg1;
 - (id)blitCommandEncoder;
 - (_Bool)commitAndWaitUntilSubmitted;
 @property(readonly) unsigned int commandBufferRef;
@@ -67,6 +64,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) double GPUEndTime;
 @property(readonly) double GPUStartTime;
 @property(readonly) id <MTLCommandQueue> commandQueue;
+@property(readonly, retain) id <MTLDeadlineProfile> deadlineProfile;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) NSError *error;

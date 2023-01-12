@@ -6,13 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <ContactsUI/CNContactPickerHostProtocol-Protocol.h>
-#import <ContactsUI/CNContactPickerServiceProtocol-Protocol.h>
-
 @class CNContactPickerHostViewController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactPickerExtensionHostContext : NSExtensionContext <CNContactPickerServiceProtocol, CNContactPickerHostProtocol>
+@interface CNContactPickerExtensionHostContext : NSExtensionContext
 {
     CNContactPickerHostViewController *_viewController;
 }
@@ -22,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak CNContactPickerHostViewController *viewController; // @synthesize viewController=_viewController;
 - (void)pickerDidCancel;
+- (void)pickerDidCompleteWithNewContact:(id)arg1;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectAddNewContact;

@@ -10,8 +10,8 @@
 + (id)bundleWithPID:(int)arg1;
 + (id)executablePathWithPID:(int)arg1;
 + (id)baseIdentifier:(id)arg1;
-+ (id)localizedBundle;
-+ (id)fallbackBundle;
++ (id)preferredLanguage;
++ (id)fallbackLanguage;
 + (id)_rpLocalizedStringFromFrameworkBundleWithKey:(id)arg1;
 + (id)_rpLocalizedAppNameFromBundleID:(id)arg1;
 + (id)_rpFrameworkBundle;

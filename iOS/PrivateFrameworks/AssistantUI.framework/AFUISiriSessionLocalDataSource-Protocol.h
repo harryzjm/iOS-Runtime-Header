@@ -9,11 +9,15 @@
 @class AFUISiriSession, NSArray;
 
 @protocol AFUISiriSessionLocalDataSource <NSObject>
+- (_Bool)isPPTAvailable;
 - (long long)carPlayEnhancedVoiceTriggerModeForSiriSession:(AFUISiriSession *)arg1;
 - (unsigned long long)lockStateForSiriSession:(AFUISiriSession *)arg1;
 - (NSArray *)starkAppBundleIdentifierContextForSiriSession:(AFUISiriSession *)arg1;
 - (NSArray *)currentCarPlaySupportedOEMAppIDListForSiriSession:(AFUISiriSession *)arg1;
 - (NSArray *)contextAppInfosForSiriSession:(AFUISiriSession *)arg1;
 - (NSArray *)bulletinsForSiriSession:(AFUISiriSession *)arg1;
+- (_Bool)recentTouchScreenActivityDetected:(AFUISiriSession *)arg1;
+- (_Bool)recentButtonPressActivityDetected:(AFUISiriSession *)arg1;
+- (long long)getDeviceOrientation:(AFUISiriSession *)arg1;
 @end
 

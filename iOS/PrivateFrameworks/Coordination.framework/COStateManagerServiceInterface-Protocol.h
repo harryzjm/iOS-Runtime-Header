@@ -11,10 +11,9 @@
 
 @protocol COStateManagerServiceInterface <NSObject, COStateManagerLegacyServiceInterface>
 - (void)doorbellDelayWithCallback:(void (^)(double))arg1;
-- (void)removeKeyPaths:(NSSet *)arg1 clusters:(NSSet *)arg2 withCallback:(void (^)(NSError *))arg3;
-- (void)setDictionary:(NSDictionary *)arg1 clusters:(NSSet *)arg2 withCallback:(void (^)(NSError *))arg3;
+- (void)removeKeyPaths:(NSSet *)arg1 targetClusters:(NSSet *)arg2 withCallback:(void (^)(NSError *))arg3;
+- (void)setDictionary:(NSDictionary *)arg1 suite:(NSString *)arg2 interestClusters:(NSSet *)arg3 targetCluster:(NSSet *)arg4 withCallback:(void (^)(NSError *))arg5;
 - (void)removeObserverWithPredicate:(NSPredicate *)arg1;
-- (void)addObserverWithPredicate:(NSPredicate *)arg1;
-- (void)checkinClientWithSuite:(NSString *)arg1 clusters:(NSSet *)arg2 withCallback:(void (^)(NSError *))arg3;
+- (void)addObserverWithPredicate:(NSPredicate *)arg1 suite:(NSString *)arg2 interestClusters:(NSSet *)arg3;
 @end
 

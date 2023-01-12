@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSTLayout;
 
-@interface TSTAnimation : NSObject <NSCopying>
+@interface TSTAnimation : NSObject
 {
     int mKind;
     struct TSUCellRect *mCellRanges;

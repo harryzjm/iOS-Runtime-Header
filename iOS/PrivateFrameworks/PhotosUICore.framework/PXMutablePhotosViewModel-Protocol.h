@@ -6,12 +6,15 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSMutableOrderedSet, NSNumber, NSSet, NSString, PXAssetCollectionReference, PXAssetReference, PXContentFilterState;
+@class NSMutableOrderedSet, NSNumber, NSSet, NSString, PXAssetCollectionReference, PXAssetReference, PXContentFilterState, PXLibraryFilterState;
+@protocol PXTapbackStatusManager;
 
 @protocol PXMutablePhotosViewModel <NSObject>
 @property(readonly, nonatomic) NSMutableOrderedSet *visibleAssetCollections;
 @property(copy, nonatomic) PXContentFilterState *contentFilterState;
+@property(copy, nonatomic) PXLibraryFilterState *libraryFilterState;
 @property(copy, nonatomic) CDUnknownBlockType effectProvider;
+@property(nonatomic) _Bool showLoadingPlaceholderWhenEmpty;
 @property(nonatomic) _Bool shouldAlwaysRespectToolbarActionPlacementPreference;
 @property(nonatomic) _Bool hidesToolbar;
 @property(nonatomic) _Bool hidesNavbar;
@@ -25,10 +28,12 @@
 @property(nonatomic) _Bool footerHasImportantInformation;
 @property(nonatomic) _Bool wantsContentFilterIndicatorVisible;
 @property(nonatomic) _Bool wantsContentFilterVisible;
+@property(retain, nonatomic) id <PXTapbackStatusManager> tapbackStatusManager;
 @property(retain, nonatomic) PXAssetReference *dropTargetAssetReference;
 @property(copy, nonatomic) NSSet *draggedAssetReferences;
 @property(copy, nonatomic) NSNumber *userWantsAspectFitContent;
 @property(nonatomic) long long numberOfZoomSteps;
+@property(retain, nonatomic) Class cplActionManagerClass;
 @property(nonatomic) double headerTitleTopInset;
 @property(nonatomic, getter=isScrolledToTop) _Bool scrolledToTop;
 @property(nonatomic) _Bool hasScrollableContent;

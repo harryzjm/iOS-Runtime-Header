@@ -6,12 +6,11 @@
 
 #import <UIKit/UINibEncoder.h>
 
-#import <IBCocoaTouchToolFoundation/IBNibDataArchiver-Protocol.h>
-
 @protocol IBNibDataArchivingDelegate;
 
-@interface UINibEncoder (FauxARViewSwizzles) <IBNibDataArchiver>
+@interface UINibEncoder (FauxARViewSwizzles)
 - (id)ibFauxARViewSwizzledEncodedClassNameForClass:(Class)arg1;
+- (id)ibFauxRoomCaptureViewSwizzledEncodedClassNameForClass:(Class)arg1;
 @property(nonatomic) id <IBNibDataArchivingDelegate> archivingDelegate;
 @end
 

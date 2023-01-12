@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSHashTable *unfocusingItems; // @synthesize unfocusingItems=_unfocusingItems;
 @property(retain, nonatomic) UIFocusAnimationCoordinator *activeFocusAnimationCoordinator; // @synthesize activeFocusAnimationCoordinator=_activeFocusAnimationCoordinator;
 - (void)_performDelayedFocusingAnimationIfNecessary;
+- (void)_scheduleDelayedFocusingAnimationWithDelay:(double)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 fromItem:(id)arg2;
 - (id)willUpdateFocusInContext:(id)arg1;
 - (id)init;

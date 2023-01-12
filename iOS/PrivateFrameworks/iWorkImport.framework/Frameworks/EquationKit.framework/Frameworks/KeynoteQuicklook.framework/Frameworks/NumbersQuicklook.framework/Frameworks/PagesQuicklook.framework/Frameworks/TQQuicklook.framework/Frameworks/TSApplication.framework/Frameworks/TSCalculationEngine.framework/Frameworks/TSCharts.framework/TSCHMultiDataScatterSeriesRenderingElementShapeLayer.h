@@ -6,9 +6,7 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <TSCharts/TSCHMultiDataElementShapeLayer-Protocol.h>
-
-@interface TSCHMultiDataScatterSeriesRenderingElementShapeLayer : CALayer <TSCHMultiDataElementShapeLayer>
+@interface TSCHMultiDataScatterSeriesRenderingElementShapeLayer : CALayer
 {
 }
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCConnectionChangedHandler-Protocol.h>
-
 @class NSString, VCVideoRule;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoTransmitterBase : NSObject <VCConnectionChangedHandler>
+@interface VCVideoTransmitterBase : NSObject
 {
     void *_controlInfoGenerator;
     unsigned int _captureWidth;
@@ -34,6 +32,9 @@ __attribute__((visibility("hidden")))
     NSString *_profileLevel;
 }
 
+@property(readonly) unsigned int targetFramerate; // @synthesize targetFramerate=_targetFramerate;
+@property(readonly) unsigned int encodingHeight; // @synthesize encodingHeight=_encodingHeight;
+@property(readonly) unsigned int encodingWidth; // @synthesize encodingWidth=_encodingWidth;
 @property(nonatomic) unsigned int targetBitrateChangeCounter; // @synthesize targetBitrateChangeCounter=_targetBitrateChangeCounter;
 @property(nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 @property(nonatomic) _Bool isServerBasedBandwidthProbingEnabled; // @synthesize isServerBasedBandwidthProbingEnabled=_isServerBasedBandwidthProbingEnabled;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property unsigned int lastRTPTimestamp; // @synthesize lastRTPTimestamp=_timestamp;
 @property CDStruct_1b6d18a9 lastFrameTime; // @synthesize lastFrameTime=_latestSampleBufferTimestamp;
 - (void)handleActiveConnectionChange:(id)arg1;
+- (void)setHighestActiveQualityIndex:(unsigned int)arg1;
 - (void)setTemporalBitrateArray:(id)arg1;
 - (void)updateWindowState:(int)arg1 isLocal:(_Bool)arg2 windowRect:(struct CGRect)arg3;
 - (void)handleThermalLevelChange:(int)arg1;
@@ -50,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)setMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1;
 - (void)setFECRedundancyVector:(const CDStruct_d7e2e0ee *)arg1;
 - (void)setFECRatio:(double)arg1;
-- (void)collectChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_b671a7c4 *)arg1 interval:(float)arg2;
 - (void)setStreamIDs:(unsigned short *)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short *)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
 - (void)setKeyFrameOnlyStreamID:(unsigned short)arg1;
 - (unsigned int)setTemporaryMaximumBitrate:(unsigned int)arg1;

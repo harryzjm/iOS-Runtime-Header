@@ -6,20 +6,22 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <GameCenterUI/UINavigationControllerDelegate-Protocol.h>
-#import <GameCenterUI/UIViewControllerTransitioningDelegate-Protocol.h>
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12GameCenterUI29GameLayerNavigationController : UINavigationController <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
+@interface _TtC12GameCenterUI29GameLayerNavigationController : UINavigationController
 {
+    MISSING_TYPE *showsDoneButton;
+    MISSING_TYPE *doneHandler;
 }
 
+- (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (void)didTapDone;
 - (_Bool)_requiresCustomPresentationController;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
-- (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
+- (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 @property(nonatomic, readonly) _Bool canBecomeFirstResponder;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;

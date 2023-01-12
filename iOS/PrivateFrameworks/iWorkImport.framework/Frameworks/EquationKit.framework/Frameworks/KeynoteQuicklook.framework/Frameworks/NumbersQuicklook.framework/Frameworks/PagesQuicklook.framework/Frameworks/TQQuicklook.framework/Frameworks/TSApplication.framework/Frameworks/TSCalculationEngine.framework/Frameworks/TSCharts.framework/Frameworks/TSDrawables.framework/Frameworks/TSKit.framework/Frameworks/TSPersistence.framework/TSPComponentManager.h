@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPComponentDelegate-Protocol.h>
-#import <TSPersistence/TSPObjectModifyDelegate-Protocol.h>
-
 @class NSCache, NSHashTable, NSMapTable, NSString, TSPComponent, TSPObjectContext;
 @protocol OS_dispatch_queue;
 
-@interface TSPComponentManager : NSObject <TSPComponentDelegate, TSPObjectModifyDelegate>
+@interface TSPComponentManager : NSObject
 {
     _Atomic int _ignoreCachedObjectEvictionCount;
     _Bool _isTornDown;

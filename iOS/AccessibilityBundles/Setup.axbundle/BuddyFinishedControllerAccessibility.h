@@ -8,8 +8,11 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (id)iCloudIcon;
 + (id)textIcon;
 + (id)fileIcon;
++ (id)safariAppIcon;
 + (id)faceTimeIcon;
 + (id)unmuteButton;
 + (id)muteButton;

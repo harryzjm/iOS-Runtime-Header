@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
 
 + (id)wrapperWithHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+@property(getter=isUnregistered) _Bool unregistered;
+- (void)callHandlerWithProvidersByID:(id)arg1 error:(id)arg2;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL, SFActionItem, SFCard, SFCustom, SFImage, SFMoreResults, SFPunchout, SFText;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL, SFActionItem, SFCard, SFCustom, SFImage, SFMoreResults, SFPunchout, SFText, SFTopic;
 
 @protocol SFSearchResult
 @property(nonatomic) _Bool shouldAutoNavigate;
@@ -67,6 +67,8 @@
 @property(nonatomic) _Bool isLocalApplicationResult;
 @property(nonatomic, copy) NSString *sectionBundleIdentifier;
 @property(nonatomic, copy) NSString *applicationBundleIdentifier;
+@property(nonatomic, retain) SFTopic *requestedTopic;
+@property(nonatomic, retain) SFTopic *normalizedTopic;
 @property(nonatomic, retain) SFPunchout *moreResultsPunchout;
 @property(nonatomic, retain) SFMoreResults *moreResults;
 @property(nonatomic, retain) SFCard *inlineCard;

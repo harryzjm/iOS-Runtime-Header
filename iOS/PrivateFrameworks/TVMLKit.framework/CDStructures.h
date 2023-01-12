@@ -11,12 +11,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
 };
 
 struct CGPoint {
@@ -40,13 +40,6 @@ struct TVCellMetrics {
     struct UIEdgeInsets cellInset;
     struct UIEdgeInsets cellInsetAlt;
     struct UIEdgeInsets cellMargin;
-};
-
-struct TVCornerRadii {
-    double topLeft;
-    double topRight;
-    double bottomLeft;
-    double bottomRight;
 };
 
 struct TVRowMetrics {
@@ -76,35 +69,10 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct timeval {
-    long long tv_sec;
-    int tv_usec;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
     double top;
     double bottom;
 } CDStruct_13b0aa87;
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    struct _NSRange _field4;
-} CDStruct_6408a1ed;
-
-typedef struct {
-    union {
-        struct UIEdgeInsets insetValue;
-        double doubleValue;
-    } ;
-    _Bool isValueSet;
-} CDStruct_81add385;
-
-// Ambiguous groups
-typedef struct {
-    unsigned int layoutBelowDisabled:1;
-} CDStruct_ce7ae26c;
 

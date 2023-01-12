@@ -11,14 +11,7 @@
 @interface _TtC7NewsUI231AudioFeedBlueprintLayoutBuilder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *feedLayoutSolver;
-    MISSING_TYPE *audioFeedTitleViewLayoutAttributesFactory;
-    MISSING_TYPE *feedLayoutContextFactory;
-    MISSING_TYPE *sectionDecorationFactory;
-    MISSING_TYPE *bundleSubscriptionManager;
-    MISSING_TYPE *audioFeedPlacardLayoutAttributesFactory;
-    MISSING_TYPE *sectionFooterViewLayoutAttributesFactory;
-    MISSING_TYPE *baseStyler;
-    MISSING_TYPE *configurationManager;
+    MISSING_TYPE *decorationProviderFactory;
 }
 
 @end

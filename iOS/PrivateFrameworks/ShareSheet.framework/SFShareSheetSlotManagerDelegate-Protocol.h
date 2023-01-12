@@ -6,17 +6,19 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, NSString, NSUUID, UISDShareSheetSessionConfiguration, UISUIActivityExtensionItemDataRequest;
+@class NSArray, NSString, NSUUID, SFAirDropTransferChange, UISDShareSheetSessionConfiguration, UISUIActivityExtensionItemDataRequest;
 
 @protocol SFShareSheetSlotManagerDelegate <NSObject>
-- (void)setProgress:(NSNumber *)arg1 withTopText:(NSNumber *)arg2 bottomText:(NSNumber *)arg3 forNodeWithIdentifier:(NSUUID *)arg4 shouldPulse:(NSNumber *)arg5 animated:(_Bool)arg6;
+- (void)dataSourceUpdatedWithSessionConfiguration:(UISDShareSheetSessionConfiguration *)arg1;
+- (void)connectionInterrupted;
+
+@optional
+- (void)didUpdateAirDropTransferWithChange:(SFAirDropTransferChange *)arg1;
 - (void)performUserDefaultsWithFavoritesProxies:(NSArray *)arg1 suggestionProxies:(NSArray *)arg2 orderedUUIDs:(NSArray *)arg3 activityCategory:(long long)arg4;
 - (void)willPerformInServiceActivityWithRequest:(UISUIActivityExtensionItemDataRequest *)arg1 completion:(void (^)(NSArray *, UISDActivityItemData *))arg2;
 - (void)performShortcutActivityInHostWithBundleID:(NSString *)arg1 singleUseToken:(NSString *)arg2;
 - (void)performAirDropActivityInHostWithNoContentView:(_Bool)arg1;
 - (void)performExtensionActivityInHostWithBundleID:(NSString *)arg1 request:(UISUIActivityExtensionItemDataRequest *)arg2;
 - (void)performActivityInHostWithUUID:(NSUUID *)arg1;
-- (void)dataSourceUpdatedWithSessionConfiguration:(UISDShareSheetSessionConfiguration *)arg1;
-- (void)connectionInterrupted;
 @end
 

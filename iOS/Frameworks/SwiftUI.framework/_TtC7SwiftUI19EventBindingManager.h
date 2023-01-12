@@ -12,9 +12,11 @@
 {
     MISSING_TYPE *host;
     MISSING_TYPE *delegate;
+    MISSING_TYPE *forwardedEventDispatchers;
     MISSING_TYPE *eventBindings;
     MISSING_TYPE *isActive;
     MISSING_TYPE *eventTimer;
+    MISSING_TYPE *hasPendingHoverUpdate;
 }
 
 @end

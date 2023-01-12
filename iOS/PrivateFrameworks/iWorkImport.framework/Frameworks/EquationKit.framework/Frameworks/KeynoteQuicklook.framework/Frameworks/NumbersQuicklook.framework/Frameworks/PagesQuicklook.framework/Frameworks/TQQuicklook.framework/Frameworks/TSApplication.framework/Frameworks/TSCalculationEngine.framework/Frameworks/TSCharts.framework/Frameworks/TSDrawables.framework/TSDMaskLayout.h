@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSDLayout.h"
+
 @class TSDImageLayout, TSDInfoGeometry, TSDPathSource;
 
-@interface TSDMaskLayout
+@interface TSDMaskLayout : TSDLayout
 {
     struct {
         unsigned int path:1;

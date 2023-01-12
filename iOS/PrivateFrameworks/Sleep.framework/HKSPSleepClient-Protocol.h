@@ -6,14 +6,14 @@
 
 #import <Sleep/HKSPClient-Protocol.h>
 
-@class HKSPSleepEvent, HKSPSleepEventRecord, HKSPSleepModeObject, HKSPSleepSchedule, HKSPSleepScheduleStateObject, HKSPSleepSettings;
+@class HKSPSleepEvent, HKSPSleepEventRecord, HKSPSleepModeObject, HKSPSleepSchedule, HKSPSleepScheduleStateObject, HKSPSleepSettings, HKSPXPCClientIdentifier;
 
 @protocol HKSPSleepClient <HKSPClient>
 - (void)sleepModeChanged:(HKSPSleepModeObject *)arg1;
 - (void)sleepScheduleStateChanged:(HKSPSleepScheduleStateObject *)arg1;
 - (void)sleepEventOccurred:(HKSPSleepEvent *)arg1;
-- (void)sleepEventRecordChanged:(HKSPSleepEventRecord *)arg1;
-- (void)sleepSettingsChanged:(HKSPSleepSettings *)arg1;
-- (void)sleepScheduleChanged:(HKSPSleepSchedule *)arg1;
+- (void)sleepEventRecordChanged:(HKSPSleepEventRecord *)arg1 clientIdentifier:(HKSPXPCClientIdentifier *)arg2;
+- (void)sleepSettingsChanged:(HKSPSleepSettings *)arg1 clientIdentifier:(HKSPXPCClientIdentifier *)arg2;
+- (void)sleepScheduleChanged:(HKSPSleepSchedule *)arg1 clientIdentifier:(HKSPXPCClientIdentifier *)arg2;
 @end
 

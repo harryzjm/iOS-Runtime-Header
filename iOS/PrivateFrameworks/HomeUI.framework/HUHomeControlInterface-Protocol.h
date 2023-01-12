@@ -5,6 +5,7 @@
 //
 
 @protocol HUHomeControlInterface
+- (void)requestDismissal;
 - (void)quickControlsPresentationDidUpdate:(_Bool)arg1;
 - (void)authorizeIfLocked;
 @end

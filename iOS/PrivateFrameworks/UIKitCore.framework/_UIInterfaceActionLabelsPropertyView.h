@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIInterfaceActionDisplayPropertyObserver-Protocol.h>
+#import "UIView.h"
 
 @class NSArray, NSLayoutConstraint, NSString, UIInterfaceAction, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface _UIInterfaceActionLabelsPropertyView <UIInterfaceActionDisplayPropertyObserver>
+@interface _UIInterfaceActionLabelsPropertyView : UIView
 {
     NSLayoutConstraint *_leadingLabelLeadingConstraint;
     NSLayoutConstraint *_leadingLabelVerticalPositionConstraint;

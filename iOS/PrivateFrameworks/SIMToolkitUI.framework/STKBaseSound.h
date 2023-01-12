@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SIMToolkitUI/STKSound-Protocol.h>
-
 @class BSTimer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface STKBaseSound : NSObject <STKSound>
+@interface STKBaseSound : NSObject
 {
     BSTimer *_timer;
     double _duration;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPConfiguration : PBCodable <NSCopying>
+@interface FCCKPConfiguration : PBCodable
 {
     unsigned long long _created;
     unsigned long long _expires;

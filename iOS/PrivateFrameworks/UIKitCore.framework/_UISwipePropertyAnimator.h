@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewPropertyAnimator.h"
+
 @class NSHashTable;
 
 __attribute__((visibility("hidden")))
-@interface _UISwipePropertyAnimator
+@interface _UISwipePropertyAnimator : UIViewPropertyAnimator
 {
     NSHashTable *_viewsToAnimateAdditively;
 }

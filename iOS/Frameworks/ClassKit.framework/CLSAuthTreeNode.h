@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <ClassKit/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface CLSAuthTreeNode : NSObject <NSSecureCoding>
+@interface CLSAuthTreeNode : NSObject
 {
     NSString *_statusID;
     NSString *_identifier;

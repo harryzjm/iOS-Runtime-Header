@@ -6,11 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSOrderedSet, NSSet, NSString, UIView, _UIStatusBar, _UIStatusBarAnimation, _UIStatusBarData, _UIStatusBarIdentifier, _UIStatusBarItem, _UIStatusBarRegion, _UIStatusBarStyleAttributes;
+@class BSAnimationSettings, NSArray, NSOrderedSet, NSSet, NSString, UIFont, UIView, _UIStatusBar, _UIStatusBarAnimation, _UIStatusBarData, _UIStatusBarDisplayItem, _UIStatusBarIdentifier, _UIStatusBarItem, _UIStatusBarRegion, _UIStatusBarStyleAttributes;
 @protocol _UIStatusBarActionable;
 
 @protocol _UIStatusBarVisualProvider <NSObject>
++ (_Bool)requiresIterativeOverflowLayout;
++ (_Bool)scalesWithScreenNativeScale;
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
+@property(readonly, nonatomic) UIFont *clockFont;
 @property(readonly, nonatomic) _Bool supportsIndirectPointerTouchActions;
 @property(nonatomic) __weak _UIStatusBar *statusBar;
 - (_UIStatusBarStyleAttributes *)styleAttributesForStyle:(long long)arg1;
@@ -18,6 +21,7 @@
 - (NSArray *)setupInContainerView:(UIView *)arg1;
 
 @optional
++ (double)referenceScreenScale;
 + (struct CGSize)intrinsicLockScreenContentSizeForOrientation:(long long)arg1;
 @property(readonly, nonatomic) _Bool canFixupDisplayItemAttributes;
 - (_Bool)showSensorActivityIndicatorWithoutPortalView;
@@ -27,6 +31,7 @@
 - (_UIStatusBarAnimation *)removalAnimationForDisplayItemWithIdentifier:(_UIStatusBarIdentifier *)arg1 itemAnimation:(_UIStatusBarAnimation *)arg2;
 - (_UIStatusBarAnimation *)additionAnimationForDisplayItemWithIdentifier:(_UIStatusBarIdentifier *)arg1 itemAnimation:(_UIStatusBarAnimation *)arg2;
 - (_UIStatusBarStyleAttributes *)overriddenStyleAttributesForDisplayItemWithIdentifier:(_UIStatusBarIdentifier *)arg1;
+- (struct CGRect)clockBoundsForLayoutItem:(_UIStatusBarDisplayItem *)arg1;
 - (void)itemCreated:(_UIStatusBarItem *)arg1;
 - (void)statusBarEnabledPartsUpdated;
 - (void)statusBarRegionsUpdated;
@@ -34,7 +39,7 @@
 - (NSOrderedSet *)region:(_UIStatusBarRegion *)arg1 willSetDisplayItems:(NSOrderedSet *)arg2;
 - (NSArray *)willUpdateWithData:(_UIStatusBarData *)arg1;
 - (void)sizeUpdatedFromSize:(struct CGSize)arg1;
-- (void)avoidanceFrameUpdatedFromFrame:(struct CGRect)arg1;
+- (void)avoidanceFrameUpdatedFromFrame:(struct CGRect)arg1 withAnimationSettings:(BSAnimationSettings *)arg2 interactively:(_Bool)arg3;
 - (void)styleUpdatedFromStyle:(long long)arg1;
 - (void)orientationUpdatedFromOrientation:(long long)arg1;
 - (void)modeUpdatedFromMode:(long long)arg1;

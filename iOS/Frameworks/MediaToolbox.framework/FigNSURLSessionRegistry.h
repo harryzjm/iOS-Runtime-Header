@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)releaseSession:(id)arg1;
 - (void)_checkForDoom:(id)arg1;
-- (void)copySessionAndAssertionForClientBundleIdentifier:(id)arg1 dispatchQueue:(id)arg2 outSession:(id *)arg3 outAssertion:(struct FigOpaqueAssertion **)arg4;
+- (void)copySessionAndAssertionForClientBundleIdentifier:(id)arg1 clientPersonaIdentifier:(id)arg2 dispatchQueue:(id)arg3 outSession:(id *)arg4 outAssertion:(struct FigOpaqueAssertion **)arg5;
 
 @end
 

@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FPActionOperationInfo, FPItem, FPItemID, FPSandboxingURLWrapper, NSArray, NSDate, NSFileHandle, NSFileProviderDomain, NSNumber, NSProgress, NSString, NSURL;
-@protocol FPOperationClient;
+@class FPActionOperationInfo, FPExtensionEnumerationSettings, FPItem, FPItemID, FPSandboxingURLWrapper, NSArray, NSDate, NSDictionary, NSFileHandle, NSFileProviderDomain, NSNumber, NSProgress, NSString, NSURL;
+@protocol FPOperationClient, FPXEnumeratorObserver;
 
 @protocol FPDDaemon
+- (void)_test_resetCounters:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)_test_getCountersArray:(NSString *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)_test_getRootSupportDirURLForDomainURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *))arg2;
 - (void)_test_simulateUninstallOfBundleID:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)_test_simulateInstallOfBundleID:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)_test_callRemoveTrashedItemsOlderThanDate:(NSDate *)arg1 completionHandler:(void (^)(NSError *))arg2;
@@ -16,14 +19,20 @@
 - (void)_test_setDocIDResolutionPolicy:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)waitForStabilizationOfDomainWithID:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)waitForChangesOnItemsBelowItemWithID:(FPItemID *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)preventDiskImportSchedulerFromRunning:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)forceIndexingInForeground:(_Bool)arg1 completionHandler:(void (^)(id <FPIndexingAssertion>, NSError *))arg2;
+- (void)fetchAndStartEnumeratingWithSettings:(FPExtensionEnumerationSettings *)arg1 observer:(id <FPXEnumeratorObserver>)arg2 completionHandler:(void (^)(id <FPXEnumerator>, id <FPDLifetimeServicing>, NSError *))arg3;
 - (void)startAccessingServiceWithName:(NSString *)arg1 itemURL:(NSURL *)arg2 completionHandler:(void (^)(NSXPCListenerEndpoint *, id <FPDLifetimeServicing>, NSString *, NSArray *, NSError *))arg3;
 - (void)startAccessingServiceForItemID:(FPItemID *)arg1 completionHandler:(void (^)(NSXPCListenerEndpoint *, id <FPDLifetimeServicing>, NSString *, NSArray *, NSError *))arg2;
 - (void)startAccessingOperationServiceForProviderDomainID:(NSString *)arg1 handler:(void (^)(id <FPXOperationService>, NSXPCListenerEndpoint *, id <FPDLifetimeServicing>, NSString *, NSError *))arg2;
 - (void)startAccessingExtensionForProviderDomainID:(NSString *)arg1 handler:(void (^)(NSXPCListenerEndpoint *, id <FPDLifetimeServicing>, NSString *, NSError *))arg2;
 - (void)didUpdateAlternateContentsDocumentForDocumentAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)appHasNonUploadedFiles:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)fetchAlternateContentsURLForDocumentURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)setAlternateContentsURL:(FPSandboxingURLWrapper *)arg1 onDocumentURL:(NSURL *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)dumpDatabaseAt:(NSString *)arg1 fullDump:(_Bool)arg2 writeTo:(NSFileHandle *)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)runFPCKForDomainWithID:(NSString *)arg1 databasesBackupsPath:(NSDictionary *)arg2 url:(NSURL *)arg3 options:(unsigned long long)arg4 completionHandler:(void (^)(NSString *, FPCKStats *, NSDictionary *, NSError *))arg5;
+- (void)stateForDomainWithID:(NSString *)arg1 completionHandler:(void (^)(unsigned long long, NSError *))arg2;
 - (void)updateBlockedProcessNamesForProvider:(NSString *)arg1 processNames:(NSArray *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)reimportItemsBelowItemWithID:(FPItemID *)arg1 removeCachedItems:(_Bool)arg2 markItemDataless:(_Bool)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)setEnabled:(_Bool)arg1 forDomainIdentifier:(NSString *)arg2 providerIdentifier:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
@@ -34,12 +43,14 @@
 - (void)removeDomain:(NSFileProviderDomain *)arg1 mode:(unsigned long long)arg2 completionHandler:(void (^)(FPSandboxingURLWrapper *, NSError *))arg3;
 - (void)removeDomain:(NSFileProviderDomain *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)addDomain:(NSFileProviderDomain *)arg1 forProviderIdentifier:(NSString *)arg2 byImportingDirectoryAtURL:(FPSandboxingURLWrapper *)arg3 completionHandler:(void (^)(NSString *, NSError *))arg4;
+- (void)resolveConflictAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)restoreUserURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)backUpUserURL:(NSURL *)arg1 outputUserURL:(NSURL *)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
 - (void)reindexAllSearchableItemsForBundleIDs:(NSArray *)arg1 acknowledgementHandler:(void (^)(void))arg2;
 - (void)reindexAllSearchableItemsWithAcknowledgementHandler:(void (^)(void))arg1;
 - (void)providerDomainForURL:(NSURL *)arg1 completionHandler:(void (^)(FPProviderDomain *, NSError *))arg2;
 - (void)copyDatabaseForFPCKStartingAtPath:(NSString *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getPersonaForProvider:(NSString *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)dumpStateTo:(NSFileHandle *)arg1 limitNumberOfItems:(_Bool)arg2 providerFilter:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)getURLForContainerWithItemID:(NSString *)arg1 inDataScopeDomainWithIdentifier:(NSString *)arg2 documentsScopeDomainIdentifier:(NSString *)arg3 documentsFolderItemIdentifier:(NSString *)arg4 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPSandboxingURLWrapper *, NSError *))arg5;
 - (void)makeTopologicallySortedItemsOnDisk:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
@@ -49,10 +60,10 @@
 - (void)scheduleActionOperationWithInfo:(FPActionOperationInfo *)arg1 completionHandler:(void (^)(id <FPDaemonActionOperation>, NSError *))arg2;
 - (void)materializeURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)updateLastUsedDate:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)fetchProviderForShareURL:(NSURL *)arg1 fallbackIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSString *, NSError *))arg3;
 - (void)trashItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)startOperation:(id <FPOperationClient>)arg1 toFetchIconsForAppBundleIDs:(NSArray *)arg2 requestedSize:(struct CGSize)arg3 scale:(double)arg4 completionHandler:(void (^)(NSError *))arg5;
 - (void)fetchListOfMonitoredApps:(void (^)(NSArray *, NSError *))arg1;
-- (void)updateIgnoreState:(_Bool)arg1 forItemAtURL:(NSURL *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)valuesForAttributes:(NSArray *)arg1 forItemAtURL:(NSURL *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchAccessServicer:(void (^)(id <FPDAccessControlServicing>, NSError *))arg1;
 - (void)extendBookmarkForItemID:(FPItemID *)arg1 consumerID:(NSString *)arg2 completionHandler:(void (^)(NSString *, NSError *))arg3;

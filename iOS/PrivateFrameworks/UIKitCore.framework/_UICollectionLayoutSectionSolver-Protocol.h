@@ -7,8 +7,8 @@
 #import <UIKitCore/NSObject-Protocol.h>
 #import <UIKitCore/_UICollectionLayoutAuxillaryHosting-Protocol.h>
 
-@class NSArray, NSCollectionLayoutSection, NSIndexSet, NSString, NSUUID, UITraitCollection, _UICollectionLayoutFramesQueryResult, _UICollectionLayoutSolveParameters;
-@protocol NSCollectionLayoutContainer, _UICollectionLayoutSolveResult, _UICollectionPreferredSizes;
+@class NSArray, NSCollectionLayoutSection, NSIndexSet, NSString, NSUUID, UITraitCollection, _UICollectionLayoutFramesQueryResult, _UICollectionLayoutSolveParameters, _UICollectionLayoutSolveResult;
+@protocol NSCollectionLayoutContainer, _UICollectionPreferredSizes;
 
 @protocol _UICollectionLayoutSectionSolver <NSObject, _UICollectionLayoutAuxillaryHosting>
 @property(readonly, nonatomic) struct CGVector orthogonalScrollingPrefetchingUnitVector;
@@ -19,6 +19,7 @@
 @property(readonly, nonatomic) struct CGSize contentSize;
 @property(readonly, nonatomic) struct CGRect effectiveContentFrame;
 @property(readonly, nonatomic) long long frameCount;
+@property(readonly, nonatomic) unsigned long long containerSizeDependentAxes;
 @property(readonly, nonatomic) unsigned long long layoutAxis;
 @property(readonly, nonatomic) _Bool layoutRTL;
 @property(readonly, nonatomic) UITraitCollection *traitCollection;
@@ -37,8 +38,8 @@
 - (NSArray *)queryFramesIntersectingRect:(struct CGRect)arg1;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1 overrideContentRectForPinning:(struct CGRect)arg2;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;
-- (id <_UICollectionLayoutSolveResult>)resolveWithParameters:(_UICollectionLayoutSolveParameters *)arg1 preferredSizes:(id <_UICollectionPreferredSizes>)arg2;
-- (void)solveForContainer:(id <NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id <_UICollectionPreferredSizes>)arg5 layoutRTL:(_Bool)arg6;
+- (_UICollectionLayoutSolveResult *)resolveWithParameters:(_UICollectionLayoutSolveParameters *)arg1 preferredSizes:(id <_UICollectionPreferredSizes>)arg2;
+- (void)solveForContainer:(id <NSCollectionLayoutContainer>)arg1 supplementaryContainer:(id <NSCollectionLayoutContainer>)arg2 traitCollection:(UITraitCollection *)arg3 layoutAxis:(unsigned long long)arg4 frameCount:(long long)arg5 preferredSizes:(id <_UICollectionPreferredSizes>)arg6 layoutRTL:(_Bool)arg7;
 - (void)solveForContainer:(id <NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id <_UICollectionPreferredSizes>)arg5;
 - (void)solveForContainer:(id <NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4;
 @end

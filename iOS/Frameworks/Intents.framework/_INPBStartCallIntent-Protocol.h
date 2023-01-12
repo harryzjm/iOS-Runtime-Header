@@ -23,6 +23,8 @@
 @property(nonatomic) _Bool isGroupCall;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata;
+@property(readonly, nonatomic) _Bool hasFaceTimeLink;
+@property(copy, nonatomic) NSString *faceTimeLink;
 @property(nonatomic) _Bool hasDestinationType;
 @property(nonatomic) int destinationType;
 @property(readonly, nonatomic) unsigned long long contactsCount;

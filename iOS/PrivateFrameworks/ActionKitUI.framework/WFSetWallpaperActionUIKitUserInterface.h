@@ -6,13 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/SBSUIWallpaperPreviewViewControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFSetWallpaperActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFSetWallpaperActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFSetWallpaperActionUserInterface, SBSUIWallpaperPreviewViewControllerDelegate>
+@interface WFSetWallpaperActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     long long _locations;
     CDUnknownBlockType _completionHandler;

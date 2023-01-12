@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneSettingsDiffAction-Protocol.h>
-
 @class FBSSceneSettingsDiffInspector, NSString, UIApplicationSceneSettingsDiffInspector;
 
 __attribute__((visibility("hidden")))
-@interface _UIWindowSceneDeviceOrientationSettingsDiffAction : NSObject <_UISceneSettingsDiffAction>
+@interface _UIWindowSceneDeviceOrientationSettingsDiffAction : NSObject
 {
     UIApplicationSceneSettingsDiffInspector *_sceneSettingsDeviceOrientationDiffInspector;
 }

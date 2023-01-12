@@ -11,7 +11,7 @@
 @protocol SBUIPasscodeLockView_Internal <SBUIPasscodeLockView>
 @property(nonatomic) _Bool canSuggestSwipeToRetry;
 @property(nonatomic) _Bool confirmedNotInPocket;
-@property(nonatomic) CDStruct_29b32c11 proudLockConfiguration;
+@property(nonatomic) CDStruct_2960579e proudLockConfiguration;
 @property(retain, nonatomic) SBUIProudLockContainerViewController *overrideProudLockContainerViewController;
 - (void)didEndTransitionToState:(long long)arg1;
 - (void)willEndTransitionToState:(long long)arg1;

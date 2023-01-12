@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNContactsUserDefaults.h"
+
 @class CNiOSABContactsUserDefaultsABWrapper, NSCache, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CNiOSABContactsUserDefaults
+@interface CNiOSABContactsUserDefaults : CNContactsUserDefaults
 {
     NSMutableDictionary *_observerCountPerKey;
     NSCache *_valueCache;
@@ -18,6 +20,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CNiOSABContactsUserDefaultsABWrapper *abWrapper; // @synthesize abWrapper=_abWrapper;
 @property(retain, nonatomic) NSCache *valueCache; // @synthesize valueCache=_valueCache;
 @property(retain, nonatomic) NSMutableDictionary *observerCountPerKey; // @synthesize observerCountPerKey=_observerCountPerKey;
+- (void)setLastIgnoredNewDuplicatesCount:(long long)arg1;
+- (long long)lastIgnoredNewDuplicatesCount;
 - (void)setFilteredGroupAndContainerIDs:(id)arg1;
 - (id)filteredGroupAndContainerIDs;
 - (id)countryCode;

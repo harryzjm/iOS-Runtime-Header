@@ -15,7 +15,7 @@
 - (vector_0812e05b)categoryRefsForSpanningCategoryRef:(TSCECategoryRef *)arg1;
 - (vector_522b9630)cellRefsForCategoryRef:(TSCECategoryRef *)arg1 atRowUid:(const struct TSKUIDStruct *)arg2;
 - (TSCEValueGrid *)valueGridForCategoryRef:(TSCECategoryRef *)arg1 atRowUid:(const struct TSKUIDStruct *)arg2 hidingActionMask:(unsigned char)arg3 error:(id *)arg4;
-- (vector_ff6aafb2)valuesForCategoryRef:(TSCECategoryRef *)arg1 atRowUid:(const struct TSKUIDStruct *)arg2 hidingActionMask:(unsigned char)arg3 error:(id *)arg4;
+- (vector_3da01225)valuesForCategoryRef:(TSCECategoryRef *)arg1 atRowUid:(const struct TSKUIDStruct *)arg2 hidingActionMask:(unsigned char)arg3 error:(id *)arg4;
 - (unsigned char)aggregateTypeForCategoryRef:(TSCECategoryRef *)arg1;
 - (struct TSKUIDStruct)mapOwnerUID:(const struct TSKUIDStruct *)arg1;
 - (struct TSCETableResolver *)newTableResolverForResolver:(id <TSCEReferenceResolving>)arg1;

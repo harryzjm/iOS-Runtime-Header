@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreImage/_CIFilterProperties-Protocol.h>
+#import "CIFilter.h"
 
 @class CIImage, NSValue;
 
 __attribute__((visibility("hidden")))
-@interface CIAffineTransform <_CIFilterProperties>
+@interface CIAffineTransform : CIFilter
 {
     CIImage *inputImage;
     NSValue *inputTransform;

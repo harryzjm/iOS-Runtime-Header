@@ -15,6 +15,10 @@ struct CGSize {
     double _field2;
 };
 
+struct MTLResourceID {
+    unsigned long long _field1;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -39,6 +43,10 @@ typedef struct {
     unsigned long long _field1;
     unsigned long long _field2;
 } CDStruct_4bcfbbae;
+
+typedef struct {
+    unsigned char _field1[32];
+} CDStruct_5af0f983;
 
 typedef struct {
     float _field1;

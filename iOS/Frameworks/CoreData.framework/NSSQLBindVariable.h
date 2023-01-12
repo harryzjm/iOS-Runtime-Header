@@ -17,9 +17,12 @@ __attribute__((visibility("hidden")))
     unsigned int _flags;
     id _value;
     NSPropertyDescription *_propertyDescription;
+    NSPropertyDescription *_tombstonedPropertyDescription;
     long long _int64;
 }
 
+- (id)tombstonedPropertyDescription;
+- (void)setTombstonedPropertyDescription:(id)arg1;
 - (id)propertyDescription;
 - (_Bool)allowsCoercion;
 - (_Bool)hasObjectValue;

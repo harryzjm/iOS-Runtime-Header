@@ -9,6 +9,7 @@
 @class AVPlayerController;
 
 @protocol AVPlayerControllerDelegate <NSObject>
+- (void)playerControllerDidCompleteInspection:(AVPlayerController *)arg1;
 - (_Bool)playerControllerCanRestorePlaybackRateAfterAudioSessionDeactivation:(AVPlayerController *)arg1;
 @end
 

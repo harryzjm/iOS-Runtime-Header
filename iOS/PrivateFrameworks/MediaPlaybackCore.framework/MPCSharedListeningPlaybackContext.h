@@ -6,13 +6,10 @@
 
 #import <MediaPlayer/MPPlaybackContext.h>
 
-#import <MediaPlaybackCore/MPCModelPlaybackRequestEnvironmentConsuming-Protocol.h>
-#import <MediaPlaybackCore/MPCPlaybackContextUserIdentityConsuming-Protocol.h>
-
 @class ICLiveLinkIdentity, ICUserIdentity, MPCPlaybackRequestEnvironment, MPCPlaybackSharedListeningProperties, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCSharedListeningPlaybackContext : MPPlaybackContext <MPCPlaybackContextUserIdentityConsuming, MPCModelPlaybackRequestEnvironmentConsuming>
+@interface MPCSharedListeningPlaybackContext : MPPlaybackContext
 {
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     MPCPlaybackSharedListeningProperties *_sharedListeningProperties;

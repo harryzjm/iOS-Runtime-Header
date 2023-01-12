@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIMenuBarViewElement-Protocol.h>
-#import <StoreKitUI/_SKUIMenuBarViewElementConfigurationReloadDelegate-Protocol.h>
+#import "SKUIViewElement.h"
 
 @class NSArray, NSString, SKUIMenuBarViewElementConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMenuBarViewElement <_SKUIMenuBarViewElementConfigurationReloadDelegate, SKUIMenuBarViewElement>
+@interface SKUIMenuBarViewElement : SKUIViewElement
 {
     NSArray *_titleViewElements;
     SKUIMenuBarViewElementConfiguration *_configuration;

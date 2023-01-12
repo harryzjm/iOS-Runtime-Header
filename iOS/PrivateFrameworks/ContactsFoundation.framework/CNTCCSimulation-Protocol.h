@@ -5,6 +5,7 @@
 //
 
 @protocol CNTCCSimulation
+- (_Bool)isUnitTesting;
 - (void)stopSimulation;
 - (void)simulateStatus:(long long)arg1;
 @end

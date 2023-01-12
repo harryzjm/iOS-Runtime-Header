@@ -7,6 +7,6 @@
 @class NSData;
 
 @protocol AudioComponentRegistrarCallbackProtocol
-- (void)registrationsChanged:(NSData *)arg1 fsHash:(NSData *)arg2;
+- (void)registrationsChanged:(NSData *)arg1 includesExtensions:(_Bool)arg2 fsHash:(NSData *)arg3;
 @end
 

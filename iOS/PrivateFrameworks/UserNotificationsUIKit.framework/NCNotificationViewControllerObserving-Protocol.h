@@ -15,6 +15,7 @@
 - (void)longLookWillDismissForNotificationViewController:(NCNotificationViewController *)arg1;
 - (void)longLookDidPresentForNotificationViewController:(NCNotificationViewController *)arg1;
 - (void)longLookWillPresentForNotificationViewController:(NCNotificationViewController *)arg1;
+- (void)notificationViewControllerViewDidAppear:(NCNotificationViewController *)arg1;
 - (void)notificationViewControllerDidDismiss:(NCNotificationViewController *)arg1;
 - (void)notificationViewControllerWillDismiss:(NCNotificationViewController *)arg1;
 - (void)notificationViewControllerDidPresent:(NCNotificationViewController *)arg1;

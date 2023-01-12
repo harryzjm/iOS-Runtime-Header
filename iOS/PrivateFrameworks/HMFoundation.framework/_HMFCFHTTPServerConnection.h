@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HMFoundation/HMFLogging-Protocol.h>
+#import "HMFObject.h"
 
 @class HMFNetAddress, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_queue, _HMFCFHTTPServerConnectionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _HMFCFHTTPServerConnection <HMFLogging>
+@interface _HMFCFHTTPServerConnection : HMFObject
 {
     id <_HMFCFHTTPServerConnectionDelegate> _delegate;
     HMFNetAddress *_address;

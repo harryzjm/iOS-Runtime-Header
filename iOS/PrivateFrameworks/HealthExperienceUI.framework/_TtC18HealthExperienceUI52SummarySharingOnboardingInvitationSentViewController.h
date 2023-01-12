@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI38OnboardingViewControllerWithNextButtonCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI52SummarySharingOnboardingInvitationSentViewController
+@interface _TtC18HealthExperienceUI52SummarySharingOnboardingInvitationSentViewController : _$s18HealthExperienceUI38OnboardingViewControllerWithNextButtonCN
 {
     MISSING_TYPE *selectionFlowContext;
     MISSING_TYPE *selectedContactPhotoPublisher;

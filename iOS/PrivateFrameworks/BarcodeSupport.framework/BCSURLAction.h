@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "BCSAction.h"
+
 @class LSApplicationRecord, NSArray, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface BCSURLAction
+@interface BCSURLAction : BCSAction
 {
     NSArray *_appLinks;
     LSApplicationRecord *_userVisibleAppRecord;
@@ -19,6 +21,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasPreferredAppLink; // @synthesize hasPreferredAppLink=_hasPreferredAppLink;
+- (id)_passkeyRegistrationActionDescription;
+- (id)_passkeyAssertionActionDescription;
+- (_Bool)isPasskeyRegistrationAction;
+- (_Bool)isPasskeyAssertionAction;
+- (_Bool)isPasskeyAction;
 - (unsigned long long)menuElementsCount;
 - (id)menuElements;
 - (id)_menuElementForActionPicker:(id)arg1;
@@ -47,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasSensitiveURL;
 - (id)_appclipLaunchReason;
 - (id)actionPickerItems;
+- (id)_actionPickerItemsForUnlockedAppLinks;
 - (id)_actionPickerItemsForLockScreenVisibleApps;
 - (id)actionIcon;
 - (id)shortDescription;

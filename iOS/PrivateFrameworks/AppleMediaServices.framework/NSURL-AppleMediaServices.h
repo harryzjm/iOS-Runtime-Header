@@ -11,6 +11,8 @@
 @interface NSURL (AppleMediaServices)
 + (id)ams_unescapedStringForString:(id)arg1;
 + (id)ams_engagementDirectory;
++ (id)ams_dynamicUIDirectory;
++ (id)ams_dataVaultDirectory;
 + (id)ams_cachesDirectory;
 + (_Bool)_isAppendWithUnmodifiedParametersFeatureFlagEnabled;
 + (id)ams_realHomeDirectory;
@@ -28,5 +30,8 @@
 - (id)ams_URLByAppendingQueryParameter:(id)arg1 name:(id)arg2;
 - (id)ams_URLQueryAllowedCharacterSet;
 - (id)ams_schemeSwizzledURL;
+@property(readonly, nonatomic) _Bool ams_isSecure;
+@property(readonly, nonatomic) _Bool ams_isHTTP;
+@property(readonly, nonatomic) _Bool ams_isBagLoadURL;
 @end
 

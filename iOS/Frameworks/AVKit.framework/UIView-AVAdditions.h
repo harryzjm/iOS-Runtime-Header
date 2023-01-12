@@ -6,13 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-#import <AVKit/AVKitLayoutItem-Protocol.h>
-
 @class NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString;
 
-@interface UIView (AVAdditions) <AVKitLayoutItem>
+@interface UIView (AVAdditions)
+- (void)avkit_setFrame:(struct CGRect)arg1 inLayoutDirection:(long long)arg2;
 - (struct CGRect)avkit_portionOfFrameUnobscuredBySuperviews;
-- (void)avkit_sizeWasInvalidatedNeedingLayoutIfNeeded:(id)arg1;
+- (void)avkit_intrinsicContentSizeOfSubviewWasInvalidated:(id)arg1;
 - (void)avkit_reevaluateHiddenStateOfItem:(id)arg1;
 - (struct CGRect)avkit_largestInscribedRectInBoundingPathWithCenter:(struct CGPoint)arg1 aspectRatio:(double)arg2;
 - (_Bool)avkit_hasFullScreenLayoutClass;

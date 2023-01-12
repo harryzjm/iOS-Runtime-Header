@@ -18,6 +18,7 @@
     CHPostProcessingManager *_equationProcessor;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CHPostProcessingManager *equationProcessor; // @synthesize equationProcessor=_equationProcessor;
 @property(retain, nonatomic) CHPostProcessingManager *asciiProcessor; // @synthesize asciiProcessor=_asciiProcessor;
 @property(retain, nonatomic) CHPostProcessingManager *urlProcessor; // @synthesize urlProcessor=_urlProcessor;
@@ -26,9 +27,8 @@
 @property(retain, nonatomic) CHPostProcessingManager *phoneProcessor; // @synthesize phoneProcessor=_phoneProcessor;
 @property(retain, nonatomic) CHPostProcessingManager *digitProcessor; // @synthesize digitProcessor=_digitProcessor;
 @property(retain, nonatomic) CHPostProcessingManager *defaultProcessor; // @synthesize defaultProcessor=_defaultProcessor;
-- (void)dealloc;
-- (id)process:(id)arg1;
-- (id)process:(id)arg1 withProcessor:(id)arg2;
+- (id)process:(id)arg1 options:(id)arg2;
+- (id)process:(id)arg1 withProcessor:(id)arg2 options:(id)arg3;
 - (id)initProcessorDefault:(id)arg1 processorDigits:(id)arg2 processorPhone:(id)arg3 processorUsername:(id)arg4 processorEmail:(id)arg5 processorURL:(id)arg6 processorASCII:(id)arg7 processorEquation:(id)arg8;
 
 @end

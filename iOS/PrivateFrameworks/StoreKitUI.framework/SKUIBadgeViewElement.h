@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class NSAttributedString, NSString, NSURL, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SKUIBadgeViewElement
+@interface SKUIBadgeViewElement : SKUIViewElement
 {
     UIImage *_fallbackImage;
     _Bool _hasValidFallbackImage;

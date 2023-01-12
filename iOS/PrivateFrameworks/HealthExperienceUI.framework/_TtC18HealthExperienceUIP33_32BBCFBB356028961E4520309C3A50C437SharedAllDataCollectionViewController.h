@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _TtC18HealthExperienceUIP33_32BBCFBB356028961E4520309C3A50C437SharedAllDataCollectionViewController
+#import "_$s18HealthExperienceUI42CompoundDataSourceCollectionViewControllerCN.h"
+
+@interface _TtC18HealthExperienceUIP33_32BBCFBB356028961E4520309C3A50C437SharedAllDataCollectionViewController : _$s18HealthExperienceUI42CompoundDataSourceCollectionViewControllerCN
 {
 }
 

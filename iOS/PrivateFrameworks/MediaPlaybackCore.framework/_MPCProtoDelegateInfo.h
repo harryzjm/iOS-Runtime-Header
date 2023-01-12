@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCProtoDelegateInfo : PBCodable <NSCopying>
+@interface _MPCProtoDelegateInfo : PBCodable
 {
     unsigned long long _accountID;
     long long _delegateInfoID;

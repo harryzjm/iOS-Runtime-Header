@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UIImpactFeedbackGenerator, UILongPressGestureRecognizer, UINotificationFeedbackGenerator, UIView;
 @protocol MediaControlsMasterVolumeSliderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsMasterVolumeSlider <UIGestureRecognizerDelegate>
+@interface MediaControlsMasterVolumeSlider
 {
     UIView *_growingThumbView;
     double _forcePercent;

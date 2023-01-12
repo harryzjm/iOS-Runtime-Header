@@ -6,9 +6,10 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MUPresentationOptions, UIMenu;
+@class MUPresentationOptions, NSArray, UIMenu;
 
 @protocol MUHeaderButtonMenuActionProvider <NSObject>
+- (UIMenu *)createHeaderButtonsMenuWithPromotedSystemActionTypes:(NSArray *)arg1 excludedSystemActionTypes:(NSArray *)arg2 presentationOptions:(MUPresentationOptions *)arg3;
 - (UIMenu *)createHeaderButtonsMenuWithPresentationOptions:(MUPresentationOptions *)arg1;
 @end
 

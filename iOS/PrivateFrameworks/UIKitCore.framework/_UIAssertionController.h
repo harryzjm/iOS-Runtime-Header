@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (void)_endTrackingAssertion:(id)arg1;
 - (void)_beginTrackingAssertion:(id)arg1;
 - (void)_enforceSubjectAwarenessOfAssertionState:(_Bool)arg1 forAssertionType:(unsigned long long)arg2;
+- (_Bool)hasAssertionsOfType:(unsigned long long)arg1;
+- (id)vendAssertionOfType:(unsigned long long)arg1 initialState:(_Bool)arg2 reason:(id)arg3 requiresExplicitInvalidation:(_Bool)arg4;
 - (id)vendAssertionOfType:(unsigned long long)arg1 initialState:(_Bool)arg2 reason:(id)arg3;
 - (id)vendAssertionOfType:(unsigned long long)arg1 initialState:(_Bool)arg2;
 - (id)initWithAssertionSubject:(id)arg1;

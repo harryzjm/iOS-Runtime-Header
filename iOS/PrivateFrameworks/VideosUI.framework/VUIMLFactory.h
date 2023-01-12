@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 + (void)_registerElements;
 + (id)sharedInstance;
 - (id)_URLForResource:(id)arg1 inBundle:(id)arg2;
-- (id)navigationControllerForTabIdentifier:(id)arg1;
 - (id)imageForResource:(id)arg1;
 - (id)URLForResource:(id)arg1;
 - (id)imageProxyForElement:(id)arg1 withLayout:(id)arg2;

@@ -6,28 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOPListStateCapturing-Protocol.h>
-#import <GeoServices/_GEONetworkDefaultsServerProxy-Protocol.h>
-
 @class NSMutableArray, NSString, geo_isolater;
 @protocol _GEONetworkDefaultsServerProxyDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _GEONetworkDefaultsLocalProxy : NSObject <_GEONetworkDefaultsServerProxy, GEOPListStateCapturing>
+@interface _GEONetworkDefaultsLocalProxy : NSObject
 {
     id <_GEONetworkDefaultsServerProxyDelegate> _delegate;
     geo_isolater *_isolation;
     NSMutableArray *_updateCompletionHandlers;
     unsigned long long _stateCaptureHandle;
+    double _lastAttempt;
+    int _missingContainerRetryCount;
+    _Bool _activelyUpdating;
+    struct atomic_flag _isWaiting;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_GEONetworkDefaultsServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)captureStatePlistWithHints:(struct os_state_hints_s *)arg1;
-- (void)_updateWithNewConfig:(id)arg1 error:(id)arg2 request:(id)arg3 response:(id)arg4;
+- (_Bool)_updateWithNewConfig:(id)arg1 request:(id)arg2 response:(id)arg3 error:(id *)arg4;
+- (void)_callCompletionHandlersWithError:(id)arg1;
 - (void)_processNetworkDefaultsResponse:(id)arg1 data:(id)arg2 error:(id)arg3 request:(id)arg4;
 - (id)_urlRequestForNetworkDefaults;
 - (void)_updateNetworkDefaults;
+- (void)updateNetworkDefaultsWithReason:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateNetworkDefaults:(CDUnknownBlockType)arg1;
 - (id)init;
 

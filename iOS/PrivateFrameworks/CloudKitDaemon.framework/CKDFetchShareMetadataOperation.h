@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDOperation.h"
+
 @class NSDictionary, NSMutableArray, NSMutableDictionary, NSSet;
 @protocol CKFetchShareMetadataOperationCallbacks;
 
-@interface CKDFetchShareMetadataOperation
+@interface CKDFetchShareMetadataOperation : CKDOperation
 {
     _Bool _forceDSRefetch;
     _Bool _errorOnOON;
     _Bool _shouldFetchRootRecord;
     _Bool _clientWillDisplaySystemAcceptPrompt;
+    _Bool _overwriteContainerPCSServiceIfManatee;
+    _Bool _skipShareDecryption;
     CDUnknownBlockType _shareMetadataFetchedBlock;
     NSMutableArray *_shareURLsToFetch;
     NSMutableDictionary *_shareTokenMetadatasToFetchByURL;
@@ -21,6 +25,8 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool skipShareDecryption; // @synthesize skipShareDecryption=_skipShareDecryption;
+@property(nonatomic) _Bool overwriteContainerPCSServiceIfManatee; // @synthesize overwriteContainerPCSServiceIfManatee=_overwriteContainerPCSServiceIfManatee;
 @property(retain, nonatomic) NSDictionary *shareInvitationTokensByShareURL; // @synthesize shareInvitationTokensByShareURL=_shareInvitationTokensByShareURL;
 @property(nonatomic) _Bool clientWillDisplaySystemAcceptPrompt; // @synthesize clientWillDisplaySystemAcceptPrompt=_clientWillDisplaySystemAcceptPrompt;
 @property(retain, nonatomic) NSSet *rootRecordDesiredKeysSet; // @synthesize rootRecordDesiredKeysSet=_rootRecordDesiredKeysSet;

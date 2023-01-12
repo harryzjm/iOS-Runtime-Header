@@ -6,14 +6,11 @@
 
 #import <UIKit/_UIArrayController.h>
 
-#import <CloudDocsUI/_UIDocumentPickerDirectoryObserver-Protocol.h>
-#import <CloudDocsUI/_UIDocumentPickerVnodeDispatchSourceDelegate-Protocol.h>
-
 @class NSArray, NSDate, NSMutableDictionary, NSObject, NSOperationQueue, NSOrderedSet, NSPredicate, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerLocalDirectoryObserver : _UIArrayController <_UIDocumentPickerVnodeDispatchSourceDelegate, _UIDocumentPickerDirectoryObserver>
+@interface _UIDocumentPickerLocalDirectoryObserver : _UIArrayController
 {
     NSArray *_sortDescriptors;
     NSOrderedSet *_staticItems;

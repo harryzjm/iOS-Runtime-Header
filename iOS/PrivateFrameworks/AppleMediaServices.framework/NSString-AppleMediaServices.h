@@ -11,6 +11,8 @@
 + (id)_replaceBreakingSpaceMarkupForMutableAttributedString:(id)arg1;
 - (_Bool)ams_caseInsensitiveEquals:(id)arg1;
 - (id)ams_stringByRemovingCharactersInSet:(id)arg1;
+- (id)ams_sha512HashStringUsingEncoding:(unsigned long long)arg1 error:(id *)arg2;
+- (id)ams_sha256HashStringUsingEncoding:(unsigned long long)arg1 error:(id *)arg2;
 - (id)ams_replacingMarkupUsingAccount:(id)arg1 shouldUppercase:(_Bool)arg2;
 - (id)ams_replacingPatternWithUsername:(id)arg1;
 - (_Bool)ams_matchesRegex:(id)arg1;

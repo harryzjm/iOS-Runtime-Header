@@ -6,21 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface MRUSubtitleValue : NSObject
 {
     NSString *_text;
+    UIImage *_icon;
     long long _accessory;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long accessory; // @synthesize accessory=_accessory;
+@property(readonly, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property(readonly, nonatomic) NSString *text; // @synthesize text=_text;
 - (_Bool)isEqualToSubtitleValue:(id)arg1;
 - (id)description;
-- (id)initWithText:(id)arg1 accessory:(long long)arg2;
+- (id)initWithText:(id)arg1 icon:(id)arg2 accessory:(long long)arg3;
 
 @end
 

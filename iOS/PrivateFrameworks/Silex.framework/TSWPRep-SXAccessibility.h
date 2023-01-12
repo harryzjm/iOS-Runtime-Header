@@ -6,11 +6,9 @@
 
 #import <TSReading/TSWPRep.h>
 
-#import <Silex/UIAccessibilityReadingContent-Protocol.h>
-
 @class NSArray;
 
-@interface TSWPRep (SXAccessibility) <UIAccessibilityReadingContent>
+@interface TSWPRep (SXAccessibility)
 - (_Bool)_accessibilityIsSpeakThisElement;
 - (id)sxaxNameForEditRotorAction:(id)arg1;
 @property(readonly, nonatomic) NSArray *sxaxSupportedEditRotorActions;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EKPersistentObject.h"
+
 @class EKChangeSet, EKReminderStore, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface EKFrozenReminderObject
+@interface EKFrozenReminderObject : EKPersistentObject
 {
     EKChangeSet *_changeSet;
     EKReminderStore *_reminderStore;

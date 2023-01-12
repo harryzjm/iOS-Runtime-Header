@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIThemeRendition.h"
+
 @class CUIRenditionMetrics, CUIRenditionSliceInformation, NSData;
 
 __attribute__((visibility("hidden")))
-@interface _CUIRawPixelRendition
+@interface _CUIRawPixelRendition : CUIThemeRendition
 {
     int _pixelFormat;
     unsigned int _nimages;

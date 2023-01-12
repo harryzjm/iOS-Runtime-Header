@@ -6,23 +6,24 @@
 
 #import <Foundation/NSError.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadValueJSONConvertible-Protocol.h>
-
 @class MPRemoteCommandStatus, NSString;
 
-@interface NSError (ICErrorProcessing) <MPCPlaybackEngineEventPayloadValueJSONConvertible>
+@interface NSError (ICErrorProcessing)
 + (_Bool)_isAgeVerificationError:(id)arg1;
 + (id)errorForICError:(id)arg1 response:(id)arg2;
 + (id)payloadValueFromJSONValue:(id)arg1;
 - (id)mpc_remoteCommandDialog;
 @property(readonly, nonatomic) MPRemoteCommandStatus *mpc_remoteCommandStatus;
+@property(readonly, nonatomic) _Bool mpc_isLeaseTakenError;
 - (_Bool)mpc_isSubscriptionRequiredError;
+@property(readonly, nonatomic) _Bool mpc_isResourceUnavailableError;
 @property(readonly, nonatomic) _Bool mpc_isUnrecoverableAssetLoadingError;
 @property(readonly, nonatomic) _Bool mpc_isAssetUnavailableFailure;
 @property(readonly, nonatomic) _Bool mpc_isQueueLoadingFailure;
 @property(readonly, nonatomic) _Bool mpc_isAirplayStreamingNotSupportedError;
 @property(readonly, nonatomic) _Bool mpc_isRentalContentRequiresDownloadError;
 @property(readonly, nonatomic) _Bool mpc_isAirplayDeviceBusyError;
+- (id)mpc_errorByRemovingUnserializableUserInfo;
 - (id)mpc_jsonValue;
 
 // Remaining properties

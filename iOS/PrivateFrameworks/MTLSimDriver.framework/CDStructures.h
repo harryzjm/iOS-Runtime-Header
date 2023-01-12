@@ -25,6 +25,10 @@ struct IndirectArgumentBufferCapabilities {
     unsigned int :29;
 };
 
+struct MTLResourceID {
+    unsigned long long _field1;
+};
+
 struct MTLSimConnection {
     NSObject *_connection;
     NSObject *_serialQueue;
@@ -152,8 +156,9 @@ typedef struct {
     unsigned int _field60;
     unsigned int _field61;
     unsigned int _field62;
-    unsigned long long _field63;
-} CDStruct_1825b841;
+    unsigned int _field63;
+    unsigned long long _field64;
+} CDStruct_e1c34685;
 
 typedef struct {
     unsigned int _field1;
@@ -167,13 +172,6 @@ typedef struct {
 } CDStruct_c0454aff;
 
 typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-} CDStruct_33dcf794;
-
-typedef struct {
     unsigned long long width;
     unsigned long long height;
     unsigned long long depth;
@@ -183,12 +181,6 @@ typedef struct {
     unsigned long long _field1;
     unsigned long long _field2;
 } CDStruct_4bcfbbae;
-
-typedef struct {
-    unsigned short _field1;
-    unsigned int _field2;
-    unsigned long long _field3;
-} CDStruct_868f45a5;
 
 typedef struct {
     unsigned short _field1;
@@ -221,22 +213,6 @@ typedef struct {
     unsigned long long _field2;
     unsigned long long _field3;
 } CDStruct_4af8c268;
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-} CDStruct_8727d297;
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-} CDStruct_d2b197d1;
 
 typedef struct {
     float _field1;

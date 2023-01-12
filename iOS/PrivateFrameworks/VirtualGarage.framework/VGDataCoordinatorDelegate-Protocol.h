@@ -11,7 +11,6 @@
 @property(readonly, nonatomic) VGVehicle *selectedVehicle;
 - (void)dataCoordinatorDidUpdateInstalledApps:(VGDataCoordinator *)arg1;
 - (void)dataCoordinator:(VGDataCoordinator *)arg1 didUpdateUnpairedVehicles:(NSArray *)arg2;
-- (void)dataCoordinator:(VGDataCoordinator *)arg1 didUpdateCarPlayConnection:(_Bool)arg2 associatedVehicle:(VGVehicle *)arg3;
 - (void)dataCoordinator:(VGDataCoordinator *)arg1 wantsToUpdateVehicle:(VGVehicle *)arg2 syncAcrossDevices:(_Bool)arg3;
 @end
 

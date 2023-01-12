@@ -9,6 +9,7 @@
 @class MIInstallOptions, NSArray, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, NSUUID;
 
 @protocol ACXDeviceConnectionProtocol <NSObject>
+- (void)fetchDuplicatedClassInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)killDaemonForTesting:(void (^)(NSError *))arg1;
 - (void)acknowledgeTestFlightInstallBegunForApp:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)installRequestFailedForApp:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 failureReason:(NSError *)arg3 wasUserInitiated:(_Bool)arg4 completion:(void (^)(NSError *))arg5;

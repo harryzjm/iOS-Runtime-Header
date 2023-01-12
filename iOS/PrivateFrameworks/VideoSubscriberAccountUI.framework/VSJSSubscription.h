@@ -6,13 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <VideoSubscriberAccountUI/NSCopying-Protocol.h>
-#import <VideoSubscriberAccountUI/VSJSSubscription-Protocol.h>
-
 @class NSArray, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSJSSubscription : IKJSObject <VSJSSubscription, NSCopying>
+@interface VSJSSubscription : IKJSObject
 {
     NSString *_bundleId;
     NSDate *_expirationDate;

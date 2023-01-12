@@ -10,8 +10,7 @@
 
 @interface _TtC18VisualIntelligence10FileMapper : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *mappingFileURL;
-    MISSING_TYPE *_mapWrapper;
+    MISSING_TYPE *lazyMap;
 }
 
 @end

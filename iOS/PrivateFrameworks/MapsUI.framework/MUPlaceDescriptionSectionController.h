@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MUPlaceSectionController.h"
+
 @class MUExpandableBlurbView, MUPlaceDescriptionConfiguration, MUPlaceFooterAttributionController, MUPlaceSectionView;
 @protocol MUPlaceDescriptionSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceDescriptionSectionController
+@interface MUPlaceDescriptionSectionController : MUPlaceSectionController
 {
     MUPlaceDescriptionConfiguration *_configuration;
     MUExpandableBlurbView *_blurbView;
@@ -19,10 +21,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MUPlaceDescriptionSectionControllerDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (id)infoCardChildPossibleActions;
 - (void)_attributionTapped;
 - (id)sectionFooterViewModel;
+- (id)sectionHeaderViewModel;
 - (id)sectionView;
 - (void)_setupTextBlurb;
 - (id)initWithMapItem:(id)arg1 configuration:(id)arg2;

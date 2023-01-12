@@ -16,7 +16,7 @@
 - (void)dynamicShutterControlDidPresentCounter:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidPressLockButton:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidStop:(CAMDynamicShutterControl *)arg1;
-- (void)dynamicShutterControl:(CAMDynamicShutterControl *)arg1 didChangeZoomScale:(double)arg2;
+- (void)dynamicShutterControl:(CAMDynamicShutterControl *)arg1 didChangeRelativeZoomProgress:(double)arg2;
 - (void)dynamicShutterControlDidStartZoomGesture:(CAMDynamicShutterControl *)arg1;
 - (void)dynamicShutterControlDidStart:(CAMDynamicShutterControl *)arg1 withGesture:(long long)arg2;
 - (void)dynamicShutterControlDidStart:(CAMDynamicShutterControl *)arg1;

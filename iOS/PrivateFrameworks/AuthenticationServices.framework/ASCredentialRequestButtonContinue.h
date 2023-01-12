@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)_backgroundColorForCurrentControlState;
 - (void)setEnabled:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)_commonInit;

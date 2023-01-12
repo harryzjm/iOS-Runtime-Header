@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-#import <TSCharts/TSSPropertyValueArchiving-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface TSCH3DLightingPackage : NSObject <TSSPropertyValueArchiving, NSCopying>
+@interface TSCH3DLightingPackage : NSObject
 {
     NSString *_name;
     NSArray *_lights;

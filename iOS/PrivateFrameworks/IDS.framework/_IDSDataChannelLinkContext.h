@@ -31,6 +31,15 @@
     unsigned int _remoteDataSoMask;
     _Bool _isVirtualRelayLink;
     NSString *_localInterfaceName;
+    unsigned short _channelNumber;
+    NSData *_hbhEncryptionkey;
+    NSData *_hbhDecryptionkey;
+    NSUUID *_childConnectionID;
+    unsigned long long _parentUniquePID;
+    BOOL _delegatedLinkID;
+    unsigned short _localRelayLinkID;
+    unsigned short _remoteRelayLinkID;
+    _Bool _directConnectionIsReady;
 }
 
 - (void).cxx_destruct;

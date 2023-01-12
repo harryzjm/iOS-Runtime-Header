@@ -8,7 +8,6 @@
 
 @class GQDSStyle;
 
-__attribute__((visibility("hidden")))
 @interface GQHSectionStyleRun : NSObject
 {
     GQDSStyle *mStyle;

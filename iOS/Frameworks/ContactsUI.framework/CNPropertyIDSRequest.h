@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/IDSIDQueryControllerDelegate-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyIDSRequest : NSObject <IDSIDQueryControllerDelegate>
+@interface CNPropertyIDSRequest : NSObject
 {
     NSArray *_propertyItems;
     NSString *_listenerID;

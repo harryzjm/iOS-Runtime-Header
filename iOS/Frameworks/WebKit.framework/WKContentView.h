@@ -4,32 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebKit/UIContextMenuInteractionDelegate-Protocol.h>
-#import <WebKit/UIDragInteractionDelegate-Protocol.h>
-#import <WebKit/UIDropInteractionDelegate-Protocol.h>
-#import <WebKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <WebKit/UIPreviewItemDelegate-Protocol.h>
-#import <WebKit/UITextAutoscrolling-Protocol.h>
-#import <WebKit/UITextInputMultiDocument-Protocol.h>
-#import <WebKit/UITextInputPrivate-Protocol.h>
-#import <WebKit/UIWKInteractionViewProtocol-Protocol.h>
-#import <WebKit/UIWebFormAccessoryDelegate-Protocol.h>
-#import <WebKit/UIWebTouchEventsGestureRecognizerDelegate-Protocol.h>
-#import <WebKit/WKActionSheetAssistantDelegate-Protocol.h>
-#import <WebKit/WKContactPickerDelegate-Protocol.h>
-#import <WebKit/WKDeferringGestureRecognizerDelegate-Protocol.h>
-#import <WebKit/WKFileUploadPanelDelegate-Protocol.h>
-#import <WebKit/WKHoverPlatterDelegate-Protocol.h>
-#import <WebKit/WKKeyboardScrollViewAnimatorDelegate-Protocol.h>
-#import <WebKit/WKShareSheetDelegate-Protocol.h>
-#import <WebKit/WKTouchActionGestureRecognizerDelegate-Protocol.h>
-#import <WebKit/_WKWebViewPrintProvider-Protocol.h>
-
-@class NSArray, NSDictionary, NSIndexSet, NSString, RTIInputSystemSourceSession, UIColor, UIGestureRecognizer, UIImage, UIInputContextHistory, UITextInputAssistantItem, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFormAccessory, UIWebTouchEventsGestureRecognizer, WKBrowsingContextController, WKDateTimeInputControl, WKFormSelectControl, _UISupplementalLexicon;
-@protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer, WKFormControl;
+@class NSArray, NSDictionary, NSIndexSet, NSString, NSUndoManager, RTIInputSystemSourceSession, UIColor, UIContextMenuInteraction, UIGestureRecognizer, UIImage, UIInputContextHistory, UITextInputAssistantItem, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWKTextInteractionAssistant, UIWebFormAccessory, UIWebTouchEventsGestureRecognizer, WKBrowsingContextController, WKDateTimeInputControl, WKFormSelectControl, _UISupplementalLexicon;
+@protocol NSObject><NSCopying, UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer, WKFormControl;
 
 __attribute__((visibility("hidden")))
-@interface WKContentView <_WKWebViewPrintProvider, UIGestureRecognizerDelegate, UITextAutoscrolling, UITextInputMultiDocument, UITextInputPrivate, UIWebFormAccessoryDelegate, UIWebTouchEventsGestureRecognizerDelegate, UIWKInteractionViewProtocol, WKActionSheetAssistantDelegate, WKFileUploadPanelDelegate, WKKeyboardScrollViewAnimatorDelegate, WKDeferringGestureRecognizerDelegate, WKContactPickerDelegate, WKShareSheetDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, WKTouchActionGestureRecognizerDelegate, WKHoverPlatterDelegate, UIContextMenuInteractionDelegate, UIPreviewItemDelegate>
+@interface WKContentView
 {
     struct RefPtr<WebKit::WebPageProxy, WTF::RawPtrTraits<WebKit::WebPageProxy>, WTF::DefaultRefDerefTraits<WebKit::WebPageProxy>> _page;
     struct WeakObjCPtr<WKWebView> _webView;
@@ -39,6 +18,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<WKDeferringGestureRecognizer> _touchEndDeferringGestureRecognizerForImmediatelyResettableGestures;
     struct RetainPtr<WKDeferringGestureRecognizer> _touchEndDeferringGestureRecognizerForDelayedResettableGestures;
     struct RetainPtr<WKDeferringGestureRecognizer> _touchEndDeferringGestureRecognizerForSyntheticTapGestures;
+    struct optional<WTF::HashSet<WTF::RetainPtr<WKDeferringGestureRecognizer>>> _failedTouchStartDeferringGestures;
     struct RetainPtr<WKDeferringGestureRecognizer> _imageAnalysisDeferringGestureRecognizer;
     struct unique_ptr<WebKit::GestureRecognizerConsistencyEnforcer, std::default_delete<WebKit::GestureRecognizerConsistencyEnforcer>> _gestureRecognizerConsistencyEnforcer;
     struct RetainPtr<UIWebTouchEventsGestureRecognizer> _touchEventGestureRecognizer;
@@ -60,8 +40,8 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UISwipeGestureRecognizer> _touchActionUpSwipeGestureRecognizer;
     struct RetainPtr<UISwipeGestureRecognizer> _touchActionDownSwipeGestureRecognizer;
     struct RetainPtr<WKMouseGestureRecognizer> _mouseGestureRecognizer;
+    struct RetainPtr<WKMouseGestureRecognizer> _alternateMouseGestureRecognizer;
     unsigned char _mouseEventPolicy;
-    struct RetainPtr<WKHoverPlatter> _hoverPlatter;
     struct RetainPtr<UIIndirectScribbleInteraction> _scribbleInteraction;
     struct RetainPtr<UIPointerInteraction> _pointerInteraction;
     _Bool _hasOutstandingPointerInteractionRequest;
@@ -71,23 +51,23 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UITextInputTraits> _traits;
     struct RetainPtr<UIWebFormAccessory> _formAccessoryView;
     struct RetainPtr<_UIHighlightView> _highlightView;
-    RetainPtr_1ac284e4 _interactionViewsContainerView;
-    RetainPtr_1ac284e4 _contextMenuHintContainerView;
+    struct RetainPtr<UIView> _interactionViewsContainerView;
+    RetainPtr_f11d553d _contextMenuHintContainerView;
     struct WeakObjCPtr<UIScrollView> _scrollViewForTargetedPreview;
     struct CGPoint _scrollViewForTargetedPreviewInitialOffset;
-    RetainPtr_1ac284e4 _dragPreviewContainerView;
-    RetainPtr_1ac284e4 _dropPreviewContainerView;
+    RetainPtr_f11d553d _dragPreviewContainerView;
+    RetainPtr_f11d553d _dropPreviewContainerView;
     struct RetainPtr<NSString> _markedText;
     struct RetainPtr<WKActionSheetAssistant> _actionSheetAssistant;
     struct RetainPtr<WKAirPlayRoutePicker> _airPlayRoutePicker;
     struct RetainPtr<WKFormInputSession> _formInputSession;
     struct RetainPtr<WKFileUploadPanel> _fileUploadPanel;
-    struct FrameInfoData _frameInfoForFileUploadPanel;
+    // Error: parsing type: '{FrameInfoData="isMainFrame"B"request"{ResourceRequest="m_url"{URL="m_string"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"m_isValid"b1"m_protocolIsInHTTPFamily"b1"m_cannotBeABaseURL"b1"m_portLength"b3"m_schemeEnd"b26"m_userStart"I"m_userEnd"I"m_passwordEnd"I"m_hostEnd"I"m_pathAfterLastSlash"I"m_pathEnd"I"m_queryEnd"I}"m_timeoutInterval"d"m_firstPartyForCookies"{URL="m_string"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"m_isValid"b1"m_protocolIsInHTTPFamily"b1"m_cannotBeABaseURL"b1"m_portLength"b3"m_schemeEnd"b26"m_userStart"I"m_userEnd"I"m_passwordEnd"I"m_hostEnd"I"m_pathAfterLastSlash"I"m_pathEnd"I"m_queryEnd"I}"m_httpMethod"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"m_initiatorIdentifier"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"m_cachePartition"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"m_httpHeaderFields"{HTTPHeaderMap="m_commonHeaders"{Vector<WebCore::HTTPHeaderMap::CommonHeader, 0UL, WTF::CrashOnOverflow, 6UL, WTF::FastMalloc>="m_buffer"^{CommonHeader}"m_capacity"I"m_size"I}"m_uncommonHeaders"{Vector<WebCore::HTTPHeaderMap::UncommonHeader, 0UL, WTF::CrashOnOverflow, 0UL, WTF::FastMalloc>="m_buffer"^{UncommonHeader}"m_capacity"I"m_size"I}}"m_responseContentDispositionEncodingFallbackArray"{Vector<WTF::String, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc>="m_buffer"^{String}"m_capacity"I"m_size"I}"m_httpBody"{RefPtr<WebCore::FormData, WTF::RawPtrTraits<WebCore::FormData>, WTF::DefaultRefDerefTraits<WebCore::FormData>>="m_ptr"^{FormData}}"m_cachePolicy"C"m_sameSiteDisposition"C"m_priority"C"m_requester"C"m_inspectorInitiatorNodeIdentifier"{optional<int>=""(?="__null_state_"c"__val_"i)"__engaged_"B}"m_allowCookies"b1"m_resourceRequestUpdated"b1"m_platformRequestUpdated"b1"m_resourceRequestBodyUpdated"b1"m_platformRequestBodyUpdated"b1"m_hiddenFromInspector"b1"m_isTopSite"b1"m_isAppInitiated"b1"m_systemPreviewInfo"{optional<WebCore::SystemPreviewInfo>=""(?="__null_state_"c"__val_"{SystemPreviewInfo="element"{ElementContext="boundingRect"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"webPageIdentifier"{ObjectIdentifier<WebCore::PageIdentifierType>="m_identifier"Q}"documentIdentifier"{ProcessQualified<WTF::UUID>="m_object"{UUID="m_data"T}"m_processIdentifier"{ObjectIdentifier<WebCore::ProcessIdentifierType>="m_identifier"Q}}"elementIdentifier"{ObjectIdentifier<WebCore::ElementIdentifierType>="m_identifier"Q}}"previewRect"{IntRect="m_location"{IntPoint="m_x"i"m_y"i}"m_size"{IntSize="m_width"i"m_height"i}}"isPreview"B})"__engaged_"B}"m_nsRequest"{RetainPtr<NSURLRequest>="m_ptr"^v}}"securityOrigin"{SecurityOriginData="protocol"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"host"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"port"{optional<unsigned short>=""(?="__null_state_"c"__val_"S)"__engaged_"B}}"frameName"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"frameID"{optional<WTF::ObjectIdentifier<WebCore::FrameIdentifierType>>=""(?="__null_state_"c"__val_"{ObjectIdentifier<WebCore::FrameIdentifierType>="m_identifier"Q})"__engaged_"B}"parentFrameID"{optional<WTF::ObjectIdentifier<WebCore::FrameIdentifierType>>=""(?="__null_state_"c"__val_"{ObjectIdentifier<WebCore::FrameIdentifierType>="m_identifier"Q})"__engaged_"B}}', name: _frameInfoForFileUploadPanel
     struct RetainPtr<WKShareSheet> _shareSheet;
     struct RetainPtr<WKContactPicker> _contactPicker;
     struct RetainPtr<UIGestureRecognizer> _previewGestureRecognizer;
     struct RetainPtr<UIGestureRecognizer> _previewSecondaryGestureRecognizer;
-    struct Vector<bool, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _focusStateStack;
+    struct Vector<bool, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> _focusStateStack;
     struct RetainPtr<UIContextMenuInteraction> _contextMenuInteraction;
     struct RetainPtr<WKContextMenuElementInfo> _contextMenuElementInfo;
     _Bool _showLinkPreviews;
@@ -95,18 +75,19 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIMenu> _contextMenuLegacyMenu;
     _Bool _contextMenuHasRequestedLegacyData;
     _Bool _contextMenuActionProviderDelegateNeedsOverride;
+    _Bool _isDisplayingContextMenuWithAnimation;
     struct RetainPtr<UIPreviewItemController> _previewItemController;
     struct RefPtr<WebCore::TextIndicator, WTF::RawPtrTraits<WebCore::TextIndicator>, WTF::DefaultRefDerefTraits<WebCore::TextIndicator>> _textIndicator;
     struct RetainPtr<WebTextIndicatorLayer> _textIndicatorLayer;
     struct RetainPtr<UITargetedPreview> _contextMenuInteractionTargetedPreview;
     struct unique_ptr<WebKit::SmartMagnificationController, std::default_delete<WebKit::SmartMagnificationController>> _smartMagnificationController;
     struct WeakObjCPtr<id<UITextInputDelegate>> _inputDelegate;
-    unsigned long long _latestTapID;
+    ObjectIdentifier_e7ec9792 _latestTapID;
     struct TapHighlightInformation _tapHighlightInformation;
     struct WebAutocorrectionContext _lastAutocorrectionContext;
     struct WKAutoCorrectionData _autocorrectionData;
-    struct InteractionInformationAtPosition _positionInformation;
-    struct FocusedElementInformation _focusedElementInformation;
+    // Error: parsing type: '{InteractionInformationAtPosition="request"{InteractionInformationRequest="point"{IntPoint="m_x"i"m_y"i}"includeSnapshot"B"includeLinkIndicator"B"includeCaretContext"B"includeHasDoubleClickHandler"B"includeImageData"B"linkIndicatorShouldHaveLegacyMargins"B"disallowUserAgentShadowContent"B}"canBeValid"B"nodeAtPositionHasDoubleClickHandler"{optional<bool>=""(?="__null_state_"c"__val_"B)"__engaged_"B}"selectability"C"isSelected"B"prefersDraggingOverTextSelection"B"isNearMarkedText"B"touchCalloutEnabled"B"isLink"B"isImage"B"isAttachment"B"isAnimatedImage"B"isPausedVideo"B"isElement"B"isContentEditable"B"containerScrollingNodeID"Q"isDataDetectorLink"B"preventTextInteraction"B"elementContainsImageOverlay"B"shouldNotUseIBeamInEditableContent"B"isImageOverlayText"B"isVerticalWritingMode"B"adjustedPointForNodeRespondingToClickEvents"{FloatPoint="m_x"f"m_y"f}"url"{URL="m_string"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"m_isValid"b1"m_protocolIsInHTTPFamily"b1"m_cannotBeABaseURL"b1"m_portLength"b3"m_schemeEnd"b26"m_userStart"I"m_userEnd"I"m_passwordEnd"I"m_hostEnd"I"m_pathAfterLastSlash"I"m_pathEnd"I"m_queryEnd"I}"imageURL"{URL="m_string"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"m_isValid"b1"m_protocolIsInHTTPFamily"b1"m_cannotBeABaseURL"b1"m_portLength"b3"m_schemeEnd"b26"m_userStart"I"m_userEnd"I"m_passwordEnd"I"m_hostEnd"I"m_pathAfterLastSlash"I"m_pathEnd"I"m_queryEnd"I}"imageMIMEType"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"title"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"idAttribute"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"bounds"{IntRect="m_location"{IntPoint="m_x"i"m_y"i}"m_size"{IntSize="m_width"i"m_height"i}}"image"{RefPtr<WebKit::ShareableBitmap, WTF::RawPtrTraits<WebKit::ShareableBitmap>, WTF::DefaultRefDerefTraits<WebKit::ShareableBitmap>>="m_ptr"^{ShareableBitmap}}"textBefore"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"textAfter"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"caretLength"f"lineCaretExtent"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"cursor"{optional<WebCore::Cursor>=""(?="__null_state_"c"__val_"{Cursor="m_type"i"m_image"{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>="m_ptr"^{Image}}"m_hotSpot"{IntPoint="m_x"i"m_y"i}"m_platformCursor"^v})"__engaged_"B}"linkIndicator"{TextIndicatorData="selectionRectInRootViewCoordinates"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"textBoundingRectInRootViewCoordinates"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"contentImageWithoutSelectionRectInRootViewCoordinates"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"textRectsInBoundingRectCoordinates"{Vector<WebCore::FloatRect, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc>="m_buffer"^{FloatRect}"m_capacity"I"m_size"I}"contentImageScaleFactor"f"contentImageWithHighlight"{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>="m_ptr"^{Image}}"contentImageWithoutSelection"{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>="m_ptr"^{Image}}"contentImage"{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>="m_ptr"^{Image}}"estimatedBackgroundColor"{Color="m_colorAndFlags"Q}"presentationTransition"C"options"{OptionSet<WebCore::TextIndicatorOption>="m_storage"S}}"dataDetectorIdentifier"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"dataDetectorResults"{RetainPtr<NSArray>="m_ptr"^v}"dataDetectorBounds"{IntRect="m_location"{IntPoint="m_x"i"m_y"i}"m_size"{IntSize="m_width"i"m_height"i}}"elementContext"{optional<WebCore::ElementContext>=""(?="__null_state_"c"__val_"{ElementContext="boundingRect"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"webPageIdentifier"{ObjectIdentifier<WebCore::PageIdentifierType>="m_identifier"Q}"documentIdentifier"{ProcessQualified<WTF::UUID>="m_object"{UUID="m_data"T}"m_processIdentifier"{ObjectIdentifier<WebCore::ProcessIdentifierType>="m_identifier"Q}}"elementIdentifier"{ObjectIdentifier<WebCore::ElementIdentifierType>="m_identifier"Q}})"__engaged_"B}"hostImageOrVideoElementContext"{optional<WebCore::ElementContext>=""(?="__null_state_"c"__val_"{ElementContext="boundingRect"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"webPageIdentifier"{ObjectIdentifier<WebCore::PageIdentifierType>="m_identifier"Q}"documentIdentifier"{ProcessQualified<WTF::UUID>="m_object"{UUID="m_data"T}"m_processIdentifier"{ObjectIdentifier<WebCore::ProcessIdentifierType>="m_identifier"Q}}"elementIdentifier"{ObjectIdentifier<WebCore::ElementIdentifierType>="m_identifier"Q}})"__engaged_"B}}', name: _positionInformation
+    // Error: parsing type: '{FocusedElementInformation="interactionRect"{IntRect="m_location"{IntPoint="m_x"i"m_y"i}"m_size"{IntSize="m_width"i"m_height"i}}"elementContext"{ElementContext="boundingRect"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"webPageIdentifier"{ObjectIdentifier<WebCore::PageIdentifierType>="m_identifier"Q}"documentIdentifier"{ProcessQualified<WTF::UUID>="m_object"{UUID="m_data"T}"m_processIdentifier"{ObjectIdentifier<WebCore::ProcessIdentifierType>="m_identifier"Q}}"elementIdentifier"{ObjectIdentifier<WebCore::ElementIdentifierType>="m_identifier"Q}}"lastInteractionLocation"{IntPoint="m_x"i"m_y"i}"minimumScaleFactor"d"maximumScaleFactor"d"maximumScaleFactorIgnoringAlwaysScalable"d"nodeFontSize"d"hasNextNode"B"nextNodeRect"{IntRect="m_location"{IntPoint="m_x"i"m_y"i}"m_size"{IntSize="m_width"i"m_height"i}}"hasPreviousNode"B"previousNodeRect"{IntRect="m_location"{IntPoint="m_x"i"m_y"i}"m_size"{IntSize="m_width"i"m_height"i}}"isAutocorrect"B"isRTL"B"isMultiSelect"B"isReadOnly"B"allowsUserScaling"B"allowsUserScalingIgnoringAlwaysScalable"B"insideFixedPosition"B"autocapitalizeType"C"elementType"i"inputMode"C"enterKeyHint"C"formAction"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"selectOptions"{Vector<WebKit::OptionItem, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc>="m_buffer"^{OptionItem}"m_capacity"I"m_size"I}"selectedIndex"i"value"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"valueAsNumber"d"title"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"acceptsAutofilledLoginCredentials"B"isAutofillableUsernameField"B"representingPageURL"{URL="m_string"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"m_isValid"b1"m_protocolIsInHTTPFamily"b1"m_cannotBeABaseURL"b1"m_portLength"b3"m_schemeEnd"b26"m_userStart"I"m_userEnd"I"m_passwordEnd"I"m_hostEnd"I"m_pathAfterLastSlash"I"m_pathEnd"I"m_queryEnd"I}"autofillFieldName"i"placeholder"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"label"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"ariaLabel"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"hasSuggestions"B"isFocusingWithDataListDropdown"B"colorValue"{Color="m_colorAndFlags"Q}"suggestedColors"{Vector<WebCore::Color, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc>="m_buffer"^{Color}"m_capacity"I"m_size"I}"shouldSynthesizeKeyEventsForEditing"B"isSpellCheckingEnabled"B"shouldAvoidResizingWhenInputViewBoundsChange"B"shouldAvoidScrollingWhenFocusedContentIsVisible"B"shouldUseLegacySelectPopoverDismissalBehaviorInDataActivation"B"isFocusingWithValidationMessage"B"preventScroll"B"identifier"{MonotonicObjectIdentifier<WebKit::FocusedElementInformationIdentifierType>="m_identifier"Q}"containerScrollingNodeID"Q}', name: _focusedElementInformation
     struct RetainPtr<NSObject<WKFormPeripheral>> _inputPeripheral;
     struct BlockPtr<void (WebEvent *, bool)> _keyWebEventHandler;
     struct CGPoint _lastInteractionLocation;
@@ -115,10 +96,10 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<WKTextRange> _cachedSelectedTextRange;
     struct optional<WebKit::InteractionInformationRequest> _lastOutstandingPositionInformationRequest;
     unsigned long long _positionInformationCallbackDepth;
-    struct Vector<std::optional<std::pair<WebKit::InteractionInformationRequest, WTF::BlockPtr<void (WebKit::InteractionInformationAtPosition)>>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _pendingPositionInformationHandlers;
+    struct Vector<std::optional<std::pair<WebKit::InteractionInformationRequest, WTF::BlockPtr<void (WebKit::InteractionInformationAtPosition)>>>, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> _pendingPositionInformationHandlers;
     struct unique_ptr<WebKit::InputViewUpdateDeferrer, std::default_delete<WebKit::InputViewUpdateDeferrer>> _inputViewUpdateDeferrer;
     struct RetainPtr<WKKeyboardScrollViewAnimator> _keyboardScrollingAnimator;
-    struct Vector<WTF::BlockPtr<void ()>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _actionsToPerformAfterEditorStateUpdate;
+    struct Vector<WTF::BlockPtr<void ()>, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> _actionsToPerformAfterEditorStateUpdate;
     struct RetainPtr<UIView<WKFormControl>> _dataListTextSuggestionsInputView;
     struct RetainPtr<NSArray<UITextSuggestion *>> _dataListTextSuggestions;
     struct WeakObjCPtr<WKDataListSuggestionsControl> _dataListSuggestionsControl;
@@ -142,7 +123,8 @@ __attribute__((visibility("hidden")))
     _Bool _textInteractionDidChangeFocusedElement;
     _Bool _treatAsContentEditableUntilNextEditorStateUpdate;
     _Bool _isWaitingOnPositionInformation;
-    int m_commitPotentialTapPointerId;
+    _Bool _autocorrectionContextNeedsUpdate;
+    int _commitPotentialTapPointerId;
     _Bool _keyboardDidRequestDismissal;
     _Bool _candidateViewNeedsUpdate;
     _Bool _seenHardwareKeyDownInNonEditableElement;
@@ -155,6 +137,9 @@ __attribute__((visibility("hidden")))
     _Bool _isRelinquishingFirstResponderToFocusedElement;
     _Bool _unsuppressSoftwareKeyboardAfterNextAutocorrectionContextUpdate;
     _Bool _isUnsuppressingSoftwareKeyboardUsingLastAutocorrectionContext;
+    _Bool _waitingForKeyboardToStartAnimatingInAfterElementFocus;
+    _Bool _shouldZoomToFocusRectAfterShowingKeyboard;
+    _Bool _isHidingKeyboard;
     _Bool _focusRequiresStrongPasswordAssistance;
     _Bool _waitingForEditDragSnapshot;
     long long _dropAnimationCount;
@@ -163,6 +148,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _activeTextInteractionCount;
     long long _suppressNonEditableSingleTapTextInteractionCount;
     struct CompletionHandler<void (WebCore::DOMPasteAccessResponse)> _domPasteRequestHandler;
+    struct optional<WebCore::DOMPasteAccessCategory> _domPasteRequestCategory;
     struct BlockPtr<void (UIWKAutocorrectionContext *)> _pendingAutocorrectionContextHandler;
     struct CompletionHandler<void ()> _pendingRunModalJavaScriptDialogCallback;
     struct RetainPtr<NSDictionary> _additionalContextForStrongPasswordAssistance;
@@ -173,31 +159,34 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIDropInteraction> _dropInteraction;
     _Bool _isAnimatingDragCancel;
     _Bool _shouldRestoreCalloutBarAfterDrop;
-    RetainPtr_1ac284e4 _visibleContentViewSnapshot;
-    RetainPtr_1ac284e4 _unselectedContentSnapshot;
+    struct RetainPtr<UIView> _visibleContentViewSnapshot;
+    struct RetainPtr<UIView> _unselectedContentSnapshot;
     struct RetainPtr<_UITextDragCaretView> _editDropCaretView;
     struct BlockPtr<void ()> _actionToPerformAfterReceivingEditDragSnapshot;
-    struct Vector<WTF::BlockPtr<void ()>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _actionsToPerformAfterResettingSingleTapGestureRecognizer;
     struct RetainPtr<WKImageAnalysisGestureRecognizer> _imageAnalysisGestureRecognizer;
     struct RetainPtr<UILongPressGestureRecognizer> _imageAnalysisTimeoutGestureRecognizer;
     struct optional<WTF::ObjectIdentifier<WebKit::ImageAnalysisRequestIdentifierType>> _pendingImageAnalysisRequestIdentifier;
-    struct optional<WebCore::ElementContext> _elementPendingImageAnalysis;
-    struct Vector<WTF::BlockPtr<void (WebKit::ProceedWithTextSelectionInImage)>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _actionsToPerformAfterPendingImageAnalysis;
-    struct RetainPtr<UIMenu> _contextMenuForMachineReadableCode;
+    // Error: parsing type: '{optional<WebCore::ElementContext>=""(?="__null_state_"c"__val_"{ElementContext="boundingRect"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"webPageIdentifier"{ObjectIdentifier<WebCore::PageIdentifierType>="m_identifier"Q}"documentIdentifier"{ProcessQualified<WTF::UUID>="m_object"{UUID="m_data"T}"m_processIdentifier"{ObjectIdentifier<WebCore::ProcessIdentifierType>="m_identifier"Q}}"elementIdentifier"{ObjectIdentifier<WebCore::ElementIdentifierType>="m_identifier"Q}})"__engaged_"B}', name: _elementPendingImageAnalysis
+    struct Vector<WTF::BlockPtr<void (WebKit::ProceedWithTextSelectionInImage)>, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> _actionsToPerformAfterPendingImageAnalysis;
     _Bool _contextMenuWasTriggeredByImageAnalysisTimeout;
     _Bool _isProceedingWithTextSelectionInImage;
-    struct RetainPtr<VKImageAnalyzer> _imageAnalyzer;
+    struct RetainPtr<VKCImageAnalyzer> _imageAnalyzer;
     struct RetainPtr<QLPreviewController> _visualSearchPreviewController;
     RetainPtr_337fe565 _visualSearchPreviewImage;
     struct RetainPtr<NSURL> _visualSearchPreviewImageURL;
     struct RetainPtr<NSString> _visualSearchPreviewTitle;
     struct CGRect _visualSearchPreviewImageBounds;
-    _Bool _hasSelectableTextInImage;
-    _Bool _hasVisualSearchResults;
+    _Bool _waitingForDynamicImageAnalysisContextMenuActions;
+    struct optional<WebKit::ImageAnalysisContextMenuActionData> _imageAnalysisContextMenuActionData;
+    unsigned int _fullscreenVideoImageAnalysisRequestIdentifier;
+    struct RetainPtr<VKCImageAnalysisInteraction> _imageAnalysisInteraction;
+    struct RetainPtr<NSMutableSet<UIButton *>> _imageAnalysisActionButtons;
+    struct FloatRect _imageAnalysisInteractionBounds;
+    // Error: parsing type: '{optional<WebKit::RemoveBackgroundData>=""(?="__null_state_"c"__val_"{RemoveBackgroundData="element"{ElementContext="boundingRect"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"webPageIdentifier"{ObjectIdentifier<WebCore::PageIdentifierType>="m_identifier"Q}"documentIdentifier"{ProcessQualified<WTF::UUID>="m_object"{UUID="m_data"T}"m_processIdentifier"{ObjectIdentifier<WebCore::ProcessIdentifierType>="m_identifier"Q}}"elementIdentifier"{ObjectIdentifier<WebCore::ElementIdentifierType>="m_identifier"Q}}"image"{RetainPtr<CGImage *>="m_ptr"^v}"preferredMIMEType"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}})"__engaged_"B}', name: _removeBackgroundData
     struct unique_ptr<WebKit::PageClientImpl, std::default_delete<WebKit::PageClientImpl>> _pageClient;
     struct RetainPtr<WKBrowsingContextController> _browsingContextController;
-    RetainPtr_1ac284e4 _rootContentView;
-    RetainPtr_1ac284e4 _fixedClippingView;
+    struct RetainPtr<UIView> _rootContentView;
+    struct RetainPtr<UIView> _fixedClippingView;
     struct RetainPtr<WKInspectorIndicationView> _inspectorIndicationView;
     struct RetainPtr<WKInspectorHighlightView> _inspectorHighlightView;
     struct RetainPtr<_UILayerHostView> _visibilityPropagationViewForWebProcess;
@@ -205,8 +194,10 @@ __attribute__((visibility("hidden")))
     struct HistoricalVelocityData _historicalKinematicData;
     struct RetainPtr<NSUndoManager> _undoManager;
     struct RetainPtr<WKQuirkyNSUndoManager> _quirkyUndoManager;
+    struct Lock _pendingBackgroundPrintFormattersLock;
+    struct RetainPtr<NSMutableSet> _pendingBackgroundPrintFormatters;
     unsigned long long _pdfPrintCallbackID;
-    struct RetainPtr<CGPDFDocument *> _printedDocument;
+    struct Vector<WTF::RetainPtr<NSURL>, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> _temporaryURLsToDeleteWhenDeallocated;
     _Bool _sizeChangedSinceLastVisibleContentRectUpdate;
 }
 
@@ -237,6 +228,7 @@ __attribute__((visibility("hidden")))
 - (void)_gpuProcessDidExit;
 - (void)_processDidExit;
 - (unique_ptr_7306e13f)_createDrawingAreaProxy:(void *)arg1;
+- (void)_resetPrintingState;
 - (void)_webViewDestroyed;
 - (void)_accessibilityRegisterUIProcessTokens;
 - (void)_updateRemoteAccessibilityRegistration:(_Bool)arg1;
@@ -246,12 +238,12 @@ __attribute__((visibility("hidden")))
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)canBecomeFocused;
 @property(readonly, nonatomic) long long interfaceOrientation;
-- (id)undoManager;
+@property(readonly, nonatomic) NSUndoManager *undoManagerForWebView;
 - (void)didZoomToScale:(double)arg1;
 - (void)willStartZoomOrScroll;
 - (void)didInterruptScrolling;
 - (void)didFinishScrolling;
-- (void)didUpdateVisibleRect:(struct CGRect)arg1 unobscuredRect:(struct CGRect)arg2 contentInsets:(struct UIEdgeInsets)arg3 unobscuredRectInScrollViewCoordinates:(struct CGRect)arg4 obscuredInsets:(struct UIEdgeInsets)arg5 unobscuredSafeAreaInsets:(struct UIEdgeInsets)arg6 inputViewBounds:(struct CGRect)arg7 scale:(double)arg8 minimumScale:(double)arg9 viewStability:(OptionSet_7e3fdc04)arg10 enclosedInScrollableAncestorView:(_Bool)arg11 sendEvenIfUnchanged:(_Bool)arg12;
+- (void)didUpdateVisibleRect:(struct CGRect)arg1 unobscuredRect:(struct CGRect)arg2 contentInsets:(struct UIEdgeInsets)arg3 unobscuredRectInScrollViewCoordinates:(struct CGRect)arg4 obscuredInsets:(struct UIEdgeInsets)arg5 unobscuredSafeAreaInsets:(struct UIEdgeInsets)arg6 inputViewBounds:(struct CGRect)arg7 scale:(double)arg8 minimumScale:(double)arg9 viewStability:(OptionSet_5ff1ced1)arg10 enclosedInScrollableAncestorView:(_Bool)arg11 sendEvenIfUnchanged:(_Bool)arg12;
 - (struct CGRect)_computeUnobscuredContentRectRespectingInputViewBounds:(struct CGRect)arg1 inputViewBounds:(struct CGRect)arg2;
 - (void)_didExitStableState;
 - (void)updateFixedClippingView:(struct FloatRect)arg1;
@@ -266,6 +258,8 @@ __attribute__((visibility("hidden")))
 - (id)rootContentView;
 - (id)webView;
 @property(readonly, nonatomic) void *page;
+- (void)_removeTemporaryDirectoriesWhenDeallocated:(void *)arg1;
+- (void)_removeTemporaryFilesIfNecessary;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 processPool:(NakedRef_6f117943)arg2 configuration:(void *)arg3 webView:(id)arg4;
 - (void)_removeVisibilityPropagationViewForGPUProcess;
@@ -273,18 +267,34 @@ __attribute__((visibility("hidden")))
 - (void)_setupVisibilityPropagationViewForGPUProcess;
 - (void)_setupVisibilityPropagationViewForWebProcess;
 - (id)_commonInitializationWithProcessPool:(void *)arg1 configuration:(void *)arg2;
-@property(readonly, nonatomic) struct CGPDFDocument *_wk_printedDocument;
-- (_Bool)_waitForDrawToPDFCallback;
+- (void)_wk_requestDocumentForPrintFormatter:(id)arg1;
+- (void)_waitForDrawToPDFCallbackForPrintFormatterIfNeeded:(id)arg1;
 - (unsigned long long)_wk_pageCountForPrintFormatter:(id)arg1;
+@property(readonly, nonatomic) _Bool _wk_printFormatterRequiresMainThread;
+- (optional_76f06855)_frameIdentifierForPrintFormatter:(id)arg1;
+@property(readonly, nonatomic, getter=isImageBacked) _Bool imageBacked;
+@property(readonly, nonatomic) _Bool _shouldAvoidSecurityHeuristicScoreUpdates;
+- (void)uninstallImageAnalysisInteraction;
+- (void)installImageAnalysisInteraction:(id)arg1;
+- (void)cancelTextRecognitionForVideoInElementFullscreen;
+- (void)beginTextRecognitionForVideoInElementFullscreen:(const void *)arg1 bounds:(struct FloatRect)arg2;
+@property(readonly, nonatomic) _Bool isTextRecognitionInFullscreenVideoEnabled;
+- (void)cancelTextRecognitionForFullscreenVideo:(id)arg1;
+- (void)beginTextRecognitionForFullscreenVideo:(const void *)arg1 playerViewController:(id)arg2;
+- (_Bool)imageAnalysisInteraction:(id)arg1 shouldBeginAtPoint:(struct CGPoint)arg2 forAnalysisType:(unsigned long long)arg3;
+- (struct CGRect)contentsRectForImageAnalysisInteraction:(id)arg1;
+- (void)actionSheetAssistant:(id)arg1 copySubject:(id)arg2 sourceMIMEType:(id)arg3;
+- (_Bool)actionSheetAssistantShouldIncludeCopySubjectAction:(id)arg1;
 - (void)captureTextFromCameraForWebView:(id)arg1;
 - (void)imageAnalysisGestureDidTimeOut:(id)arg1;
 - (void)imageAnalysisGestureDidFail:(id)arg1;
+- (void)_completeImageAnalysisRequestForContextMenu:(struct CGImage *)arg1 requestIdentifier:(ObjectIdentifier_073ef476)arg2 hasTextResults:(_Bool)arg3;
 - (void)imageAnalysisGestureDidBegin:(id)arg1;
-- (void)requestTextRecognition:(id)arg1 imageData:(const void *)arg2 completionHandler:(void *)arg3;
+- (void)requestTextRecognition:(id)arg1 imageData:(const void *)arg2 sourceLanguageIdentifier:(id)arg3 targetLanguageIdentifier:(id)arg4 completionHandler:(void *)arg5;
 - (_Bool)validateImageAnalysisRequestIdentifier:(ObjectIdentifier_073ef476)arg1;
-- (void)_updateContextMenuForMachineReadableCodeForImageAnalysis:(id)arg1;
-- (RetainPtr_43c299e4)createImageAnalysisRequest:(unsigned long long)arg1 image:(id)arg2;
-- (RetainPtr_43c299e4)createImageAnalysisRequest:(unsigned long long)arg1 image:(id)arg2 imageURL:(id)arg3;
+- (void)updateImageAnalysisForContextMenuPresentation:(id)arg1;
+- (RetainPtr_acb19053)createImageAnalyzerRequest:(unsigned long long)arg1 image:(struct CGImage *)arg2;
+- (RetainPtr_acb19053)createImageAnalyzerRequest:(unsigned long long)arg1 image:(struct CGImage *)arg2 imageURL:(id)arg3;
 - (void)_cancelImageAnalysis;
 - (void)_tearDownImageAnalysis;
 - (void)_setUpImageAnalysis;
@@ -301,6 +311,23 @@ __attribute__((visibility("hidden")))
 - (id)previewController:(id)arg1 transitionImageForPreviewItem:(id)arg2 contentRect:(struct CGRect *)arg3;
 - (struct CGRect)previewController:(id)arg1 frameForPreviewItem:(id)arg2 inSourceView:(id *)arg3;
 - (void)presentVisualSearchPreviewControllerForImage:(id)arg1 imageURL:(id)arg2 title:(id)arg3 imageBounds:(struct CGRect)arg4 appearanceActions:(unsigned long long)arg5;
+- (id)machineReadableCodeSubMenuForImageContextMenu;
+- (struct CGImage *)copySubjectResultForImageContextMenu;
+- (_Bool)hasVisualSearchResultsForImageContextMenu;
+- (_Bool)hasSelectableTextForImageContextMenu;
+- (void)requestRectForFoundTextRange:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (long long)compareFoundRange:(id)arg1 toRange:(id)arg2 inDocument:(id)arg3;
+- (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2 inDocument:(id)arg3;
+@property(readonly, nonatomic) _Bool supportsTextReplacement;
+- (void)didEndTextSearchOperation;
+- (void)didBeginTextSearchOperation;
+- (void)clearAllDecoratedFoundText;
+- (void)scrollRangeToVisible:(id)arg1 inDocument:(id)arg2;
+- (void)decorateFoundTextRange:(id)arg1 inDocument:(id)arg2 usingStyle:(long long)arg3;
+- (void)replaceFoundTextInRange:(id)arg1 inDocument:(id)arg2 withText:(id)arg3;
+- (void)performTextSearchWithQueryString:(id)arg1 usingOptions:(id)arg2 resultAggregator:(id)arg3;
+- (void)_findSelectedForWebView:(id)arg1;
+- (void)useSelectionForFindForWebView:(id)arg1;
 - (void)startFadeOut;
 - (void)teardownTextIndicatorLayer;
 - (void)setTextIndicatorAnimationProgress:(float)arg1;
@@ -310,6 +337,8 @@ __attribute__((visibility("hidden")))
 - (void)_doAfterPendingImageAnalysis:(CDUnknownBlockType)arg1;
 - (void)_endImageAnalysisGestureDeferral:(_Bool)arg1;
 - (void)_writePromisedAttachmentToPasteboard:(void *)arg1;
+- (void)_didExitFullscreen;
+- (void)_didEnterFullscreen;
 - (void)indirectScribbleInteraction:(id)arg1 didFinishWritingInElement:(id)arg2;
 - (void)indirectScribbleInteraction:(id)arg1 willBeginWritingInElement:(id)arg2;
 - (struct CGRect)indirectScribbleInteraction:(id)arg1 frameForElement:(id)arg2;
@@ -325,16 +354,15 @@ __attribute__((visibility("hidden")))
 - (void)_pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setUpPointerInteraction;
 - (void)_showMediaControlsContextMenu:(struct FloatRect *)arg1 items:(void *)arg2 completionHandler:(void *)arg3;
-- (void)positionInformationForHoverPlatter:(id)arg1 withRequest:(struct InteractionInformationRequest *)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setMouseEventPolicy:(unsigned char)arg1;
 - (void)_configureMouseGestureRecognizer;
 - (void)mouseGestureRecognizerChanged:(id)arg1;
 - (void)setUpMouseGestureRecognizer;
 - (_Bool)shouldUseMouseGestureRecognizer;
 - (void)setContinuousSpellCheckingEnabled:(_Bool)arg1;
-- (void)createHighlightForNewQuickNoteWithRange:(id)arg1;
-- (void)createHighlightForCurrentQuickNoteWithRange:(id)arg1;
-- (void)setUpAppHighlightMenusIfNeeded;
+- (id)appHighlightMenu;
+- (id)menuWithInlineAction:(id)arg1 image:(id)arg2 identifier:(id)arg3 handler:(void *)arg4;
+- (void)buildMenuForWebViewWithBuilder:(id)arg1;
 - (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
 - (void)_dropInteraction:(id)arg1 delayedPreviewProviderForDroppingItem:(id)arg2 previewProvider:(CDUnknownBlockType)arg3;
 - (id)dropInteraction:(id)arg1 previewForDroppingItem:(id)arg2 withDefault:(id)arg3;
@@ -365,7 +393,8 @@ __attribute__((visibility("hidden")))
 - (void)selectPositionAtPoint:(struct CGPoint)arg1 withContextRequest:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestDocumentContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)adjustSelectionWithDelta:(struct _NSRange)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_removeContextMenuViewIfPossible;
+- (void)presentContextMenu:(id)arg1 atLocation:(struct CGPoint)arg2;
+- (void)_removeContextMenuHintContainerIfPossible;
 - (id)_createTargetedContextMenuHintPreviewIfPossible;
 - (_Bool)positionInformationHasImageOverlayDataDetector;
 - (id)_createTargetedContextMenuHintPreviewForFocusedElement;
@@ -381,8 +410,8 @@ __attribute__((visibility("hidden")))
 - (void)_prepareToDragPromisedAttachment:(const void *)arg1;
 - (void)_didChangeDragCaretRect:(struct CGRect)arg1 currentRect:(struct CGRect)arg2;
 - (void)_didPerformDragOperation:(_Bool)arg1;
-- (void)_deliverDelayedDropPreviewIfPossible:(optional_db618f3d)arg1;
-- (void)_didReceiveEditDragSnapshot:(optional_db618f3d)arg1;
+- (void)_deliverDelayedDropPreviewIfPossible:(optional_2e6e99e4)arg1;
+- (void)_didReceiveEditDragSnapshot:(optional_2e6e99e4)arg1;
 - (void)_willReceiveEditDragSnapshot;
 - (void)cleanUpDragSourceSessionState;
 - (struct DragData)dragDataForDropSession:(id)arg1 dragDestinationAction:(unsigned long long)arg2;
@@ -407,7 +436,7 @@ __attribute__((visibility("hidden")))
 - (id)containerForDragPreviews;
 - (void)_removeContainerForDropPreviews;
 - (id)containerForDropPreviews;
-- (RetainPtr_1ac284e4)_createPreviewContainerWithLayerName:(id)arg1;
+- (RetainPtr_f11d553d)_createPreviewContainerWithLayerName:(id)arg1;
 - (unsigned char)_dataOwnerForPasteboard:(_Bool)arg1;
 - (_Bool)shouldDeferGestureDueToImageAnalysis:(id)arg1;
 @property(readonly, nonatomic) _Bool _shouldUseLegacySelectPopoverDismissalBehavior;
@@ -415,6 +444,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool _shouldAvoidResizingWhenInputViewBoundsChange;
 @property(readonly, nonatomic) _Bool _shouldUseContextMenusForFormControls;
 @property(readonly, nonatomic) _Bool _shouldUseContextMenus;
+- (void)_targetedPreviewContainerDidRemoveLastSubview:(id)arg1;
 - (void)actionSheetAssistantDidDismissContextMenu:(id)arg1;
 - (void)actionSheetAssistantDidShowContextMenu:(id)arg1;
 - (void)removeContextMenuViewIfPossibleForActionSheetAssistant:(id)arg1;
@@ -434,7 +464,7 @@ __attribute__((visibility("hidden")))
 - (void)actionSheetAssistant:(id)arg1 openElementAtLocation:(struct CGPoint)arg2;
 - (void)actionSheetAssistant:(id)arg1 performAction:(_Bool)arg2;
 - (void)updatePositionInformationForActionSheetAssistant:(id)arg1;
-- (optional_1cc35013)positionInformationForActionSheetAssistant:(id)arg1;
+-     // Error parsing type: {optional<WebKit::InteractionInformationAtPosition>=(?=c{InteractionInformationAtPosition={InteractionInformationRequest={IntPoint=ii}BBBBBBB}B{optional<bool>=(?=cB)B}CBBBBBBBBBBBQBBBBBB{FloatPoint=ff}{URL={String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}b1b1b1b3b26IIIIIII}{URL={String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}b1b1b1b3b26IIIIIII}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}{IntRect={IntPoint=ii}{IntSize=ii}}{RefPtr<WebKit::ShareableBitmap, WTF::RawPtrTraits<WebKit::ShareableBitmap>, WTF::DefaultRefDerefTraits<WebKit::ShareableBitmap>>=^{ShareableBitmap}}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}f{FloatRect={FloatPoint=ff}{FloatSize=ff}}{optional<WebCore::Cursor>=(?=c{Cursor=i{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>=^{Image}}{IntPoint=ii}^v})B}{TextIndicatorData={FloatRect={FloatPoint=ff}{FloatSize=ff}}{FloatRect={FloatPoint=ff}{FloatSize=ff}}{FloatRect={FloatPoint=ff}{FloatSize=ff}}{Vector<WebCore::FloatRect, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc>=^{FloatRect}II}f{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>=^{Image}}{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>=^{Image}}{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>=^{Image}}{Color=Q}C{OptionSet<WebCore::TextIndicatorOption>=S}}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}{RetainPtr<NSArray>=^v}{IntRect={IntPoint=ii}{IntSize=ii}}{optional<WebCore::ElementContext>=(?=c{ElementContext={FloatRect={FloatPoint=ff}{FloatSize=ff}}{ObjectIdentifier<WebCore::PageIdentifierType>=Q}{ProcessQualified<WTF::UUID>={UUID=T}{ObjectIdentifier<WebCore::ProcessIdentifierType>=Q}}{ObjectIdentifier<WebCore::ElementIdentifierType>=Q}})B}{optional<WebCore::ElementContext>=(?=c{ElementContext={FloatRect={FloatPoint=ff}{FloatSize=ff}}{ObjectIdentifier<WebCore::PageIdentifierType>=Q}{ProcessQualified<WTF::UUID>={UUID=T}{ObjectIdentifier<WebCore::ProcessIdentifierType>=Q}}{ObjectIdentifier<WebCore::ElementIdentifierType>=Q}})B}})B}24@0:8@16, name: positionInformationForActionSheetAssistant:
 - (_Bool)isAnyTouchOverActiveArea:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 isInterruptingMomentumScrollingWithEvent:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldIgnoreWebTouchWithEvent:(id)arg2;
@@ -445,10 +475,10 @@ __attribute__((visibility("hidden")))
 - (id)inputLabelText;
 - (void)contactPickerDidDismiss:(id)arg1;
 - (void)contactPickerDidPresent:(id)arg1;
-- (void)_showContactPicker:(const struct ContactsRequestData *)arg1 completionHandler:(void *)arg2;
+- (void)_showContactPicker:(const void *)arg1 completionHandler:(void *)arg2;
 - (void)shareSheet:(id)arg1 willShowActivityItems:(id)arg2;
 - (void)shareSheetDidDismiss:(id)arg1;
-- (void)_showShareSheet:(const void *)arg1 inRect:(optional_acc783a3)arg2 completionHandler:(void *)arg3;
+- (void)_showShareSheet:(const void *)arg1 inRect:(optional_1d8eff86)arg2 completionHandler:(void *)arg3;
 - (_Bool)fileUploadPanelDestinationIsManaged:(id)arg1;
 - (void)fileUploadPanelDidDismiss:(id)arg1;
 - (void)_showRunOpenPanel:(struct OpenPanelParameters *)arg1 frameInfo:(const void *)arg2 resultListener:(struct WebOpenPanelResultListenerProxy *)arg3;
@@ -460,6 +490,8 @@ __attribute__((visibility("hidden")))
 - (void)_startSuppressingSelectionAssistantForReason:(unsigned char)arg1;
 - (_Bool)_shouldSuppressSelectionCommands;
 - (_Bool)hasHiddenContentEditable;
+- (void)prepareSelectionForContextMenuWithLocationInView:(struct CGPoint)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestRVItemInSelectedRangeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)supportsTextSelectionWithCharacterGranularity;
 - (_Bool)shouldAllowHidingSelectionCommands;
 - (void)_updateChangedSelection:(_Bool)arg1;
@@ -473,13 +505,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateInitialWritingDirectionIfNecessary;
 - (void)_didUpdateEditorState;
 - (void)doAfterEditorStateUpdateAfterFocusingElement:(CDUnknownBlockType)arg1;
-- (void)_requestDOMPasteAccessWithElementRect:(const struct IntRect *)arg1 originIdentifier:(const void *)arg2 completionHandler:(void *)arg3;
+- (void)_requestDOMPasteAccessForCategory:(unsigned char)arg1 elementRect:(const struct IntRect *)arg2 originIdentifier:(const void *)arg3 completionHandler:(void *)arg4;
 - (void)_didUpdateInputMode:(unsigned char)arg1;
 - (void)_hardwareKeyboardAvailabilityChanged;
 @property(readonly, nonatomic) _Bool shouldIgnoreKeyboardWillHideNotification;
 - (void)_updateInputContextAfterBlurringAndRefocusingElement;
 - (void)_elementDidBlur;
 - (void)_elementDidFocus:(const void *)arg1 userIsInteracting:(_Bool)arg2 blurPreviousNode:(_Bool)arg3 activityStateChanges:(OptionSet_05ce0fa5)arg4 userObject:(id)arg5;
+- (_Bool)_shouldShowKeyboardForElementIgnoringInputMode:(const void *)arg1;
 - (_Bool)_shouldShowKeyboardForElement:(const void *)arg1;
 - (void *)focusedSelectElementOptions;
 @property(readonly, nonatomic) const void *focusedElementInformation;
@@ -556,6 +589,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UITextInteractionAssistant *interactionAssistant;
 - (void)_updateTextInputTraits:(id)arg1;
 - (id)textInputTraits;
+- (void)removeEmojiAlternatives;
+- (void)addTextAlternatives:(id)arg1;
 @property(readonly, nonatomic) _Bool hasText;
 - (void)insertText:(id)arg1 alternatives:(id)arg2 style:(long long)arg3;
 - (void)insertText:(id)arg1;
@@ -607,7 +642,6 @@ __attribute__((visibility("hidden")))
 - (void)updateFocusedElementSelectedIndex:(unsigned int)arg1 allowsMultipleSelection:(_Bool)arg2;
 - (void)updateFocusedElementValueAsColor:(id)arg1;
 - (void)updateFocusedElementValue:(id)arg1;
-- (void)updateFocusedElementValueAsNumber:(double)arg1;
 - (void)accessoryDone;
 - (void)accessoryClear;
 - (void)_setDoubleTapGesturesEnabled:(_Bool)arg1;
@@ -627,11 +661,12 @@ __attribute__((visibility("hidden")))
 - (void)applyAutocorrection:(id)arg1 toString:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)requestDictationContext:(CDUnknownBlockType)arg1;
 - (void)replaceDictatedText:(id)arg1 withText:(id)arg2;
+- (void)didInsertFinalDictationResult;
+- (void)willInsertFinalDictationResult;
 - (struct CGRect)textLastRect;
 - (struct CGRect)textFirstRect;
 - (_Bool)_selectionAtDocumentStart;
 - (unsigned int)_characterInRelationToCaretSelection:(int)arg1;
-- (unsigned int)_characterBeforeCaretSelection;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 withBoundary:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)beginSelectionInDirection:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -640,7 +675,12 @@ __attribute__((visibility("hidden")))
 - (void)selectPositionAtBoundary:(long long)arg1 inDirection:(long long)arg2 fromPoint:(struct CGPoint)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_selectPositionAtPoint:(struct CGPoint)arg1 stayingWithinFocusedElement:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)selectPositionAtPoint:(struct CGPoint)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)_handleTapOverImageAnalysisInteractionButton:(struct CGPoint)arg1;
+- (void)doAfterComputingImageAnalysisResultsForBackgroundRemoval:(void *)arg1;
+- (id)removeBackgroundMenu;
+- (void)_requestEvasionRectsAboveSelectionIfNeeded:(void *)arg1;
 - (void)requestRectsToEvadeForSelectionCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestPreferredArrowDirectionForEditMenuWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestAutocorrectionRectsForString:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) const void *autocorrectionData;
 - (void)moveByOffset:(long long)arg1;
@@ -774,6 +814,8 @@ __attribute__((visibility("hidden")))
 - (void)_lookup:(id)arg1;
 - (void)_define:(id)arg1;
 - (void)_addShortcut:(id)arg1;
+- (void)_findSelected:(id)arg1;
+- (void)useSelectionForFind:(id)arg1;
 - (void)captureTextFromCamera:(id)arg1;
 - (id)supportedPasteboardTypesForCurrentSelection;
 @property(readonly, nonatomic) UIView *inputAccessoryViewForWebView;
@@ -807,6 +849,7 @@ __attribute__((visibility("hidden")))
 - (void)_twoFingerSingleTapGestureRecognized:(id)arg1;
 - (void)_doubleTapRecognizedForDoubleClick:(id)arg1;
 - (void)_highlightLongPressRecognized:(id)arg1;
+- (ObjectIdentifier_e7ec9792)nextTapIdentifier;
 - (id)webSelectionRects;
 - (id)webSelectionRectsForSelectionGeometries:(const void *)arg1;
 - (_Bool)textInteractionGesture:(long long)arg1 shouldBeginAtPoint:(struct CGPoint)arg2;
@@ -838,27 +881,32 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)_shouldAdditionallyRecognizeGestureRecognizer:(id)arg1 simultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 canBePreventedByGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 canPreventGestureRecognizer:(id)arg2;
 - (struct CGRect)_selectionClipRect;
 @property(readonly, nonatomic) UIView *inputViewForWebView;
 - (id)inputView;
+- (void)resetShouldZoomToFocusRectAfterShowingKeyboard;
 - (void)_zoomToRevealFocusedElement;
+- (void)_zoomToFocusRectAfterShowingKeyboardIfNeeded;
+- (void)_keyboardDidShow;
+- (void)_keyboardWillShow;
 - (struct FloatRect)rectToRevealWhenZoomingToFocusedElement;
 - (_Bool)_requiresKeyboardResetOnReload;
 - (_Bool)_requiresKeyboardWhenFirstResponder;
 - (_Bool)_disableAutomaticKeyboardUI;
 - (_Bool)_shouldShowAutomaticKeyboardUIIgnoringInputMode;
 - (_Bool)shouldShowAutomaticKeyboardUI;
-- (void)_scrollingNodeScrollingDidEnd;
-- (void)_scrollingNodeScrollingWillBegin;
+- (void)_scrollingNodeScrollingDidEnd:(unsigned long long)arg1;
+- (void)_scrollingNodeScrollingWillBegin:(unsigned long long)arg1;
 - (void)_didScroll;
 - (void)_cancelTouchEventGestureRecognizer;
 - (void)_cancelLongPressGestureRecognizer;
-- (void)_handleSmartMagnificationInformationForPotentialTap:(unsigned long long)arg1 renderRect:(const struct FloatRect *)arg2 fitEntireRect:(_Bool)arg3 viewportMinimumScale:(double)arg4 viewportMaximumScale:(double)arg5 nodeIsRootLevel:(_Bool)arg6;
-- (void)_disableDoubleTapGesturesDuringTapIfNecessary:(unsigned long long)arg1;
+- (void)_handleSmartMagnificationInformationForPotentialTap:(ObjectIdentifier_e7ec9792)arg1 renderRect:(const struct FloatRect *)arg2 fitEntireRect:(_Bool)arg3 viewportMinimumScale:(double)arg4 viewportMaximumScale:(double)arg5 nodeIsRootLevel:(_Bool)arg6;
+- (void)_disableDoubleTapGesturesDuringTapIfNecessary:(ObjectIdentifier_e7ec9792)arg1;
 - (_Bool)_mayDisableDoubleTapGesturesDuringSingleTap;
-- (void)_didGetTapHighlightForRequest:(unsigned long long)arg1 color:(const struct Color *)arg2 quads:(const void *)arg3 topLeftRadius:(const struct IntSize *)arg4 topRightRadius:(const struct IntSize *)arg5 bottomLeftRadius:(const struct IntSize *)arg6 bottomRightRadius:(const struct IntSize *)arg7 nodeHasBuiltInClickHandling:(_Bool)arg8;
+- (void)_didGetTapHighlightForRequest:(ObjectIdentifier_e7ec9792)arg1 color:(const struct Color *)arg2 quads:(const void *)arg3 topLeftRadius:(const struct IntSize *)arg4 topRightRadius:(const struct IntSize *)arg5 bottomLeftRadius:(const struct IntSize *)arg6 bottomRightRadius:(const struct IntSize *)arg7 nodeHasBuiltInClickHandling:(_Bool)arg8;
 - (void)_showTapHighlight;
 @property(readonly, nonatomic) UIGestureRecognizer *imageAnalysisGestureRecognizer;
 @property(readonly, nonatomic) struct CGRect tapHighlightViewRect;
@@ -884,7 +932,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleTouchActionsForTouchEvent:(const void *)arg1;
 - (void)_webTouchEventsRecognized:(id)arg1;
 - (_Bool)_touchEventsMustRequireGestureRecognizerToFail:(id)arg1;
-- (optional_488f82df)activeTouchIdentifierForGestureRecognizer:(id)arg1;
+- (optional_53a37146)activeTouchIdentifierForGestureRecognizer:(id)arg1;
 - (void)cancelPointersForGestureRecognizer:(id)arg1;
 - (_Bool)resignFirstResponderForWebView;
 - (void)endEditingAndUpdateFocusAppearanceWithReason:(long long)arg1;
@@ -923,13 +971,16 @@ __attribute__((visibility("hidden")))
 - (void)cleanUpInteraction;
 - (void)setUpInteraction;
 - (void)_createAndConfigureLongPressGestureRecognizer;
+- (void)_createAndConfigureHighlightLongPressGestureRecognizer;
 - (void)_createAndConfigureDoubleTapGestureRecognizer;
 - (id)_formInputSession;
 @property(readonly, nonatomic) _Bool preventsPanningInYAxis;
 @property(readonly, nonatomic) _Bool preventsPanningInXAxis;
+@property(readonly, nonatomic) UIWKTextInteractionAssistant *textInteractionAssistant;
 @property(readonly, nonatomic) _Bool isShowingDataListSuggestions;
 - (void)_setDataListSuggestionsControl:(id)arg1;
 - (void)_selectDataListOption:(long long)arg1;
+- (void)_simulateSelectionStart;
 - (void)_dismissContactPickerWithContacts:(id)arg1;
 - (id)_contentsOfUserInterfaceItem:(id)arg1;
 - (double)timePickerValueMinute;
@@ -948,7 +999,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) WKFormSelectControl *selectControl;
 @property(readonly, nonatomic) WKDateTimeInputControl *dateTimeInputControl;
 - (void)_doAfterReceivingEditDragSnapshotForTesting:(CDUnknownBlockType)arg1;
-- (void)_doAfterResettingSingleTapGesture:(CDUnknownBlockType)arg1;
 - (void)_previewItemControllerDidCancelPreview:(id)arg1;
 - (id)_presentationRectsForPreviewItemController:(id)arg1;
 - (id)_presentationSnapshotForPreviewItemController:(id)arg1;
@@ -963,17 +1013,20 @@ __attribute__((visibility("hidden")))
 - (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
-- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configuration:(id)arg2 dismissalPreviewForItemWithIdentifier:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
-- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configuration:(id)arg2 highlightPreviewForItemWithIdentifier:(id)arg3;
 - (id)_contextMenuInteraction:(id)arg1 overrideSuggestedActionsForConfiguration:(id)arg2;
 - (void)continueContextMenuInteractionWithDataDetectors:(CDUnknownBlockType)arg1;
 - (void)continueContextMenuInteraction:(CDUnknownBlockType)arg1;
+- (id)placeholderForDynamicallyInsertedImageAnalysisActions;
 - (void)_contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)assignLegacyDataForContextMenuInteraction;
 - (void)_unregisterPreview;
 - (void)_registerPreview;
+@property(readonly, nonatomic) UIContextMenuInteraction *contextMenuInteraction;
+- (id)textInteractionAssistantContextMenuInteraction;
 
 // Remaining properties
 @property(copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
@@ -1008,6 +1061,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool forceDisableDictation;
 @property(nonatomic) _Bool forceEnableDictation;
 @property(nonatomic) _Bool forceFloatingKeyboard;
+@property(nonatomic) _Bool forceSpellingDictation;
 @property(nonatomic) _Bool hasDefaultContents;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hidePrediction;
@@ -1028,6 +1082,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic) long long returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
+@property(readonly) id <NSObject><NSCopying> selectedTextSearchDocument;
 @property(nonatomic) long long selectionAffinity;
 @property(retain, nonatomic) UIColor *selectionBorderColor;
 @property(nonatomic) double selectionBorderWidth;

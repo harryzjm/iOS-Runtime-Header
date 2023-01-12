@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreTelephony/MuxNotificationSinkDelegate-Protocol.h>
-
 @class FrameworkCache, MuxNotificationSink, NSError, NSSet, NSXPCConnection, NSXPCListenerEndpoint;
 
 __attribute__((visibility("hidden")))
-@interface CoreTelephonyClientMux : NSObject <MuxNotificationSinkDelegate>
+@interface CoreTelephonyClientMux : NSObject
 {
     struct map<__unsafe_unretained id, (anonymous namespace)::DelegateContext, std::less<__unsafe_unretained id>, std::allocator<std::pair<const __unsafe_unretained id, (anonymous namespace)::DelegateContext>>> _delegates;
     NSSet *_currentSelectorSet;

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SYSession.h"
+
 @class NSMutableArray, NSObject;
 @protocol OS_dispatch_source, OS_os_activity;
 
 __attribute__((visibility("hidden")))
-@interface SYOutgoingSyncAllObjectsSession
+@interface SYOutgoingSyncAllObjectsSession : SYSession
 {
     NSObject<OS_os_activity> *_sessionActivity;
     unsigned int _state;

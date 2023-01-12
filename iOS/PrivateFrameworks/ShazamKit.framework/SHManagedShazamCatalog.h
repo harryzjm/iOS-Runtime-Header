@@ -10,11 +10,11 @@ __attribute__((visibility("hidden")))
 @interface SHManagedShazamCatalog
 {
     _Bool _sendNotifications;
-    id <SHMatcher> _proxyMatcher;
+    id <SHMatcher> _daemonMatcher;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <SHMatcher> proxyMatcher; // @synthesize proxyMatcher=_proxyMatcher;
+@property(retain, nonatomic) id <SHMatcher> daemonMatcher; // @synthesize daemonMatcher=_daemonMatcher;
 @property(nonatomic) _Bool sendNotifications; // @synthesize sendNotifications=_sendNotifications;
 - (id)_createMatcher;
 - (void)stop;

@@ -6,14 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/IBICDetailAreaPathComponent-Protocol.h>
-#import <AssetCatalogFoundation/NSCoding-Protocol.h>
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface IBICSlotComponent : NSObject <NSCopying, NSCoding, IBICDetailAreaPathComponent, IBBinaryArchiving>
+@interface IBICSlotComponent : NSObject
 {
     unsigned long long _cachedHash;
     _Bool _deprecated;
@@ -21,6 +16,8 @@
     NSString *_identifier;
     NSString *_fileNameComponent;
     double _displayOrder;
+    NSString *_subtitle;
+    NSString *_infoDescription;
 }
 
 + (id)effectiveValueInSlot:(id)arg1;
@@ -44,6 +41,8 @@
 + (id)unspecifiedValueFilter;
 + (id)allComponentsFilterForSlotClass:(Class)arg1;
 - (void).cxx_destruct;
+@property(readonly) NSString *infoDescription; // @synthesize infoDescription=_infoDescription;
+@property(readonly) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly) _Bool deprecated; // @synthesize deprecated=_deprecated;
 @property(readonly) double displayOrder; // @synthesize displayOrder=_displayOrder;
 @property(readonly) NSString *fileNameComponent; // @synthesize fileNameComponent=_fileNameComponent;
@@ -61,7 +60,7 @@
 - (_Bool)isEqualToSlotComponentCounterpartWithKnownEqualClass:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 displayOrder:(double)arg4 deprecated:(_Bool)arg5;
+- (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 displayOrder:(double)arg4 subtitle:(id)arg5 infoDescription:(id)arg6 deprecated:(_Bool)arg7;
 - (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 displayOrder:(double)arg4;
 @property(readonly) long long componentID;
 - (_Bool)isSpecifiedExplicitValue;

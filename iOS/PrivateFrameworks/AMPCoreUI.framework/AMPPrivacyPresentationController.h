@@ -6,12 +6,10 @@
 
 #import <UIKit/UIPresentationController.h>
 
-#import <AMPCoreUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-
 @class NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface AMPPrivacyPresentationController : UIPresentationController <UIAdaptivePresentationControllerDelegate>
+@interface AMPPrivacyPresentationController : UIPresentationController
 {
     UIView *_dimmingView;
 }

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNContactSuggestionViewControllerDataSource-Protocol.h>
-
 @class CNLabeledValue, NSAttributedString, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface CNContactSuggestionViewControllerLabeledValueDataSource : NSObject <CNContactSuggestionViewControllerDataSource>
+@interface CNContactSuggestionViewControllerLabeledValueDataSource : NSObject
 {
     CNLabeledValue *_labeledValue;
 }

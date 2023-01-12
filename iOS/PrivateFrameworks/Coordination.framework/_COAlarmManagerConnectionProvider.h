@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Coordination/COAlarmManagerConnectionProvider-Protocol.h>
-
 @class NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface _COAlarmManagerConnectionProvider : NSObject <COAlarmManagerConnectionProvider>
+@interface _COAlarmManagerConnectionProvider : NSObject
 {
     NSXPCConnection *_alarmManagerServiceConnection;
 }

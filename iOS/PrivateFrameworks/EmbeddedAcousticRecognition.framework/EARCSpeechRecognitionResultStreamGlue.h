@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmbeddedAcousticRecognition/_EARSpeechRecognitionResultStream-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface EARCSpeechRecognitionResultStreamGlue : NSObject <_EARSpeechRecognitionResultStream>
+@interface EARCSpeechRecognitionResultStreamGlue : NSObject
 {
     struct EARCSpeechRecognitionResultStream _stream;
 }

@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed38DebugFormatInspectorPaneViewController : UIViewController
 {
     MISSING_TYPE *groups;
+    MISSING_TYPE *autoPreferredContentSize;
+    MISSING_TYPE *autoDimissOnLayoutChange;
     MISSING_TYPE *tableView;
     MISSING_TYPE *editor;
     MISSING_TYPE *image;

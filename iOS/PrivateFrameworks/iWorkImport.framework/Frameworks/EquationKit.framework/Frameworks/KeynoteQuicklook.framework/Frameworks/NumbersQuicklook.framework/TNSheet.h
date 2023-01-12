@@ -6,20 +6,10 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <NumbersQuicklook/TNPrintableInfoProviding-Protocol.h>
-#import <NumbersQuicklook/TSCEResolverContainer-Protocol.h>
-#import <NumbersQuicklook/TSDDrawableContainerInfo-Protocol.h>
-#import <NumbersQuicklook/TSDMutableContainerInfo-Protocol.h>
-#import <NumbersQuicklook/TSKDocumentObject-Protocol.h>
-#import <NumbersQuicklook/TSKModel-Protocol.h>
-#import <NumbersQuicklook/TSSStyleClient-Protocol.h>
-#import <NumbersQuicklook/TSWPHeaderFooterProvider-Protocol.h>
-#import <NumbersQuicklook/TSWPStorageParent-Protocol.h>
-
 @class NSArray, NSEnumerator, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, TNDocumentRoot, TNSheetStyle, TSDColorFill, TSDInfoGeometry, TSDLayoutController, TSWPStorage;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface TNSheet : TSPObject <TNPrintableInfoProviding, TSKDocumentObject, TSKModel, TSCEResolverContainer, TSDDrawableContainerInfo, TSDMutableContainerInfo, TSSStyleClient, TSWPHeaderFooterProvider, TSWPStorageParent>
+@interface TNSheet : TSPObject
 {
     NSMutableArray *_childInfos;
     unsigned int _tableNameCounter;

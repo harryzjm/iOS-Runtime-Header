@@ -4,25 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBRenderFactory.h"
+
 __attribute__((visibility("hidden")))
-@interface UIKBRenderFactory_Monolith
+@interface UIKBRenderFactory_Monolith : UIKBRenderFactory
 {
 }
 
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
-- (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
+- (id)_variantTraitsForControlKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)_variantTraitsForLetterKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)_disabledTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)_activeTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)_highlightedTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)_enabledTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
-- (void)configureCornersOnGeometry:(id)arg1 forKey:(id)arg2;
-- (void)configureSymbolStyle:(id)arg1 forActiveKeyplaneSwitchKey:(id)arg2;
-- (void)configureSymbolStyle:(id)arg1 forEnabledKeyplaneSwitchKey:(id)arg2;
 - (id)_disabledTraitsForControlKey:(id)arg1;
 - (id)_activeTraitsForControlKey:(id)arg1;
 - (id)_highlightedTraitsForControlKey:(id)arg1;
 - (id)_enabledTraitsForControlKey:(id)arg1;
+- (void)configureGeometry:(id)arg1 forControlKey:(id)arg2;
+- (void)configureCornersOnGeometry:(id)arg1 forKey:(id)arg2;
+- (void)configureSymbolStyle:(id)arg1 forControlKey:(id)arg2;
 - (id)_disabledTraitsForLetterKey:(id)arg1;
 - (id)_activeTraitsForLetterKey:(id)arg1;
 - (id)_highlightedTraitsForLetterKey:(id)arg1;
@@ -35,33 +33,39 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)_secondaryTextOffsetForKey:(id)arg1;
 - (struct CGPoint)_textOffsetForKey:(id)arg1;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
-- (struct CGRect)_insetRectForSpaceClearSymbolFrame:(struct CGRect)arg1;
 - (_Bool)forceVariantsInsideKeyplane;
-- (_Bool)smallTextForSpaceAndClear;
-- (_Bool)spaceKeyIsPressed;
-- (_Bool)preferGlyphForClear;
-- (_Bool)preferGlyphForDelete;
-- (_Bool)includeDeleteInVariants;
-- (double)letterKeyTwoLineFontWeight;
+- (double)variantKeyFocusRectRadius;
+- (double)variantKeyFocusIncrease;
+- (double)variantKeyHeight;
+- (double)variantKeyWidth;
+- (double)variantPlatterCornerRadius;
+- (id)shadowColorString;
+- (double)shadowOpacity;
+- (double)shadowRadius;
+- (double)shadowVerticalOffset;
+- (double)keyRectCornerRadius;
+- (struct CGSize)letterKeyFocusIncreaseSize;
 - (double)tldKeyFontWeight;
-- (double)textKeyFontWeight;
-- (double)letterKeyFontWeight;
 - (double)tldKeyFontSize;
-- (double)spaceKeyFontSize;
-- (double)textKeyFontSize;
+- (double)deleteKeyFontSize;
+- (double)controlKeyRectCornerRadius;
+- (double)controlKeyFontWeight;
+- (double)controlKeyFontSize;
+- (double)letterKeyTwoLineFontWeight;
 - (double)letterKeyTwoLineFontSize;
+- (double)letterKeyFontWeight;
 - (double)letterKeySecondaryFontSize;
 - (double)letterKeyFontSize;
-- (double)shadowYOffset;
-- (double)shadowRadius;
-- (double)keyRoundRectRadius;
+- (id)highlightedVariantBackgroundColor;
+- (id)variantPlatterBackgroundColor;
+- (id)keyplaneSwitcherBackgroundColor;
+- (id)keyplaneSwitcherDividerColor;
 - (id)disabledTextColor;
-- (id)enabledTextColor;
+- (id)highlightedVariantTextColor;
+- (id)variantTextColor;
 - (id)highlightedTextColor;
-- (id)highlightedVariantKeyColor;
-- (id)variantKeyBackgroundColor;
-- (id)variantKeyColor;
-- (id)highlightedKeyColor;
+- (id)activeTextColor;
+- (id)enabledTextColor;
 - (id)displayContentsForKey:(id)arg1;
 - (void)lowQualityTraits:(id)arg1;
 - (long long)assetIdiom;

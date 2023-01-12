@@ -11,6 +11,7 @@
 @interface _TtC9SeymourUI24SessionProgressPresenter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *display;
+    MISSING_TYPE *externalOverlayDisplay;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *gymKitConnection;
 }

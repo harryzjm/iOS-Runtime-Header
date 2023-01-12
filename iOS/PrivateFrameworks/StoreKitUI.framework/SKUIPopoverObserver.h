@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/UIPopoverControllerDelegate-Protocol.h>
-
 @class NSString, UIPopoverController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPopoverObserver : NSObject <UIPopoverControllerDelegate>
+@interface SKUIPopoverObserver : NSObject
 {
     UIPopoverController *_popoverController;
     SEL _selector;

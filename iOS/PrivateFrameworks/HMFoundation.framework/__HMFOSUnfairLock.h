@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HMFUnfairLock.h"
+
 __attribute__((visibility("hidden")))
-@interface __HMFOSUnfairLock
+@interface __HMFOSUnfairLock : HMFUnfairLock
 {
     struct os_unfair_lock_s _internal;
     unsigned int _internalOptions;

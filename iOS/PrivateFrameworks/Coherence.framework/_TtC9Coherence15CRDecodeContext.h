@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *decodingReferences;
     MISSING_TYPE *capsuleReferences;
-    MISSING_TYPE *subcapsules;
+    MISSING_TYPE *assetManager;
 }
 
 @end

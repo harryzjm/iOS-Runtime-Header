@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CNAvatarViewDelegate-Protocol.h>
+#import "CKTipKitCollectionViewCell.h"
 
 @class CALayer, CAPackage, CAStateController, NSArray, NSMutableArray, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface CKTipKitOnboardingCollectionViewCell <CNAvatarViewDelegate>
+@interface CKTipKitOnboardingCollectionViewCell : CKTipKitCollectionViewCell
 {
     NSArray *_recommendedPinningConversations;
     CAPackage *_package;

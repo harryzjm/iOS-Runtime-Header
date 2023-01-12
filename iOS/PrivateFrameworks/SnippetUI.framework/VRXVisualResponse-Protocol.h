@@ -6,14 +6,23 @@
 
 #import <SnippetUI/NSObject-Protocol.h>
 
-@class NSData, NSDictionary;
+@class NSArray, NSData, NSDictionary, NSString;
 @protocol VRXInteractionDelegate;
 
 @protocol VRXVisualResponse <NSObject>
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)postSiriEvent:(long long)arg1;
+- (void)setPlayerState:(long long)arg1 aceId:(NSString *)arg2;
+- (void)setAsrText:(NSString *)arg1;
 - (void)updateSharedStateData:(NSData *)arg1;
 - (void)updateSharedState:(NSDictionary *)arg1;
+@property(nonatomic, readonly) _Bool requestsKeyWindow;
+@property(nonatomic, readonly) _Bool containsComponentsWithAction;
+@property(nonatomic, readonly) NSArray *aceCommands;
+@property(nonatomic) long long backgroundMaterial;
 @property(nonatomic) __weak id <VRXInteractionDelegate> interactionDelegate;
 @property(nonatomic) double snippetWidth;
 @property(nonatomic) long long currentIdiom;
+@property(nonatomic, copy) NSString *viewId;
 @end
 

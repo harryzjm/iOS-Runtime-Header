@@ -10,6 +10,7 @@
 
 @interface NSManagedObjectContext (IC)
 - (void)ic_refreshObject:(id)arg1 mergeChanges:(_Bool)arg2;
+- (id)ic_objectsWithIDs:(id)arg1;
 - (id)ic_existingObjectWithID:(id)arg1;
 - (void)ic_performBlockAndWait:(CDUnknownBlockType)arg1 andPerformBlockAndWaitOnMainThread:(CDUnknownBlockType)arg2;
 - (void)ic_performBlock:(CDUnknownBlockType)arg1 andPerformBlockOnMainThread:(CDUnknownBlockType)arg2;

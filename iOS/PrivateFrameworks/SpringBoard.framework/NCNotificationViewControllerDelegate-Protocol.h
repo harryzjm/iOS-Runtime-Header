@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class BSAnimationSettings, NCNotificationAction, NCNotificationRequest, NCNotificationViewController, NSDictionary, UIDragInteraction, UIView, UIWindow;
+@class BSAnimationSettings, NCNotificationAction, NCNotificationViewController, NSDictionary, UIDragInteraction, UIView, UIWindow;
 @protocol NCContainerViewProviding, PLKeyboardHomeAffordanceAssertion, UIDragSession, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol NCNotificationViewControllerDelegate <NSObject>
@@ -14,11 +14,13 @@
 - (void)notificationViewController:(NCNotificationViewController *)arg1 requestPermissionToExecuteAction:(NCNotificationAction *)arg2 withParameters:(NSDictionary *)arg3 completion:(void (^)(_Bool))arg4;
 
 @optional
+- (_Bool)shouldAlignContentToBottomForNotificationViewController:(NCNotificationViewController *)arg1;
+- (_Bool)isAttachmentImageFeaturedForNotificationViewController:(NCNotificationViewController *)arg1;
+- (_Bool)isRichNotificationContentViewForNotificationViewController:(NCNotificationViewController *)arg1;
+- (_Bool)handleTapOnNotificationViewController:(NCNotificationViewController *)arg1;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 didUpdatePreferredContentSize:(struct CGSize)arg2;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 isPerformingHoverHighlighting:(_Bool)arg2;
 - (_Bool)notificationViewControllerShouldPerformHoverHighlighting:(NCNotificationViewController *)arg1;
-- (_Bool)notificationViewControllerIsCoalescedBundle:(NCNotificationViewController *)arg1;
-- (void)notificationViewController:(NCNotificationViewController *)arg1 requestsExpandingCoalescedBundleForNotificationRequest:(NCNotificationRequest *)arg2;
 - (id <UIViewSpringAnimationBehaviorDescribing>)settleHomeAffordanceAnimationBehaviorDescriptionForNotificationViewController:(NCNotificationViewController *)arg1;
 - (BSAnimationSettings *)unhideHomeAffordanceAnimationSettingsForNotificationViewController:(NCNotificationViewController *)arg1;
 - (BSAnimationSettings *)hideHomeAffordanceAnimationSettingsForNotificationViewController:(NCNotificationViewController *)arg1;

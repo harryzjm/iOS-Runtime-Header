@@ -16,6 +16,8 @@
 - (NSManagedObjectID *)objectID;
 
 @optional
+- (_Bool)isHidden;
+- (_Bool)isTrashed;
 - (struct CGSize)imageSize;
 - (NSString *)thumbnailIdentifier;
 - (NSString *)uuid;

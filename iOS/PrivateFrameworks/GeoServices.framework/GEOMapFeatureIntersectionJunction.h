@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOMapFeatureJunction.h"
+
 __attribute__((visibility("hidden")))
-@interface GEOMapFeatureIntersectionJunction
+@interface GEOMapFeatureIntersectionJunction : GEOMapFeatureJunction
 {
     struct GeoCodecsConnectivityJunction *_connectivityJunction;
 }
@@ -13,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (struct GeoCodecsConnectivityJunction *)connectivityJunction;
+- (unsigned long long)junctionIndex;
 - (id)initWithConnectivityJunction:(struct GeoCodecsConnectivityJunction *)arg1 tile:(id)arg2;
 
 @end

@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOAnalyticsPipelineProxy-Protocol.h>
-
 @class NSOperationQueue, NSString, geo_isolater;
+@protocol OS_xpc_object;
 
 __attribute__((visibility("hidden")))
-@interface GEOAnalyticsPipelineRemoteProxy : NSObject <GEOAnalyticsPipelineProxy>
+@interface GEOAnalyticsPipelineRemoteProxy : NSObject
 {
     NSOperationQueue *_opQueue;
     unsigned long long _maxOpCount;
     unsigned long long _droppedLogMsgCount;
     geo_isolater *_enqueueLock;
+    NSObject<OS_xpc_object> *_sharedXPCConnection;
+    struct os_unfair_lock_s _connectionLock;
 }
 
 - (void).cxx_destruct;
@@ -26,16 +27,19 @@ __attribute__((visibility("hidden")))
 - (void)showEvalDataWithVisitorBlock:(CDUnknownBlockType)arg1;
 - (void)flushEvalData;
 - (void)setEvalMode:(_Bool)arg1;
+- (void)updateSharedStateType:(int)arg1 state:(id)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
 - (void)reportDailySettings:(id)arg1 completion:(CDUnknownBlockType)arg2 completionQueue:(id)arg3;
 - (void)reportCuratedCollectionActionType:(unsigned long long)arg1 collectionId:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
 - (void)reportDailyUsageCountType:(int)arg1 usageString:(id)arg2 usageBool:(id)arg3 appId:(id)arg4 completion:(CDUnknownBlockType)arg5 completionQueue:(id)arg6;
 - (void)reportLogMsg:(id)arg1 uploadBatchId:(unsigned long long)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_geodXPCConnection;
 - (id)init;
 - (void)_enqueueOperation:(id)arg1;
 - (void)_reportLogMsg:(id)arg1 uploadBatchId:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
 - (void)_reportCuratedCollectionActionType:(unsigned long long)arg1 collectionId:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
 - (void)_reportDailyUsageCountType:(int)arg1 usageString:(id)arg2 usageBool:(id)arg3 appId:(id)arg4 completion:(CDUnknownBlockType)arg5 completionQueue:(id)arg6;
 - (void)_reportDailySettings:(id)arg1 completion:(CDUnknownBlockType)arg2 completionQueue:(id)arg3;
+- (void)_updateSharedStateType:(int)arg1 state:(id)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

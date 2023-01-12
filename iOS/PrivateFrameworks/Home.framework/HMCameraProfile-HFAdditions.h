@@ -6,17 +6,16 @@
 
 #import <HomeKit/HMCameraProfile.h>
 
-#import <Home/HFUserNotificationServiceSettingsProviding-Protocol.h>
-
 @class HFCameraManager, HFUserNotificationServiceSettings, HMBulletinBoardNotification, HMCharacteristic, NSString, NSUUID;
 
-@interface HMCameraProfile (HFAdditions) <HFUserNotificationServiceSettingsProviding>
+@interface HMCameraProfile (HFAdditions)
 + (unsigned long long)hf_cameraAccessModeSelectedOptionForCameraProfiles:(id)arg1 presenceType:(unsigned long long)arg2;
 - (id)hf_faceCropImageForSignificantEvent:(id)arg1;
 - (id)hf_significantEventWithIdentifier:(id)arg1;
 - (void)hf_updateDoorbellChime:(_Bool)arg1;
 @property(readonly, nonatomic) HMCharacteristic *hf_doorbellChimeMuteCharacteristic;
 @property(readonly, nonatomic) HMBulletinBoardNotification *hf_doorbellNotificationBulletin;
+@property(readonly, nonatomic) _Bool hf_supportsReachabilityNotifications;
 @property(readonly, nonatomic) _Bool hf_hasDoorbellService;
 @property(readonly, nonatomic) _Bool hf_cameraIsNotSetToRecord;
 @property(readonly, nonatomic) NSString *hf_thermalShutdownModeErrorText;

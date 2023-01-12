@@ -6,16 +6,15 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOLocation, GEOPDAdamAppIdentifier, GEOPDMerchantInformation, GEOPDWarsawMerchantIdentifier, NSString, PBDataReader, PBUnknownFields;
+@class GEOLocation, GEOPDAdamAppIdentifier, GEOPDIdentityMerchantInformation, GEOPDMerchantInformation, GEOPDWarsawMerchantIdentifier, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDMerchantLookupParameters : PBCodable <NSCopying>
+@interface GEOPDMerchantLookupParameters : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     GEOPDAdamAppIdentifier *_appIdentifier;
+    GEOPDIdentityMerchantInformation *_identityMerchantInformation;
     NSString *_industryCategory;
     long long _industryCode;
     NSString *_merchantCode;
@@ -48,6 +47,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_fuzzyMatched:1;
         unsigned int read_unknownFields:1;
         unsigned int read_appIdentifier:1;
+        unsigned int read_identityMerchantInformation:1;
         unsigned int read_industryCategory:1;
         unsigned int read_merchantCode:1;
         unsigned int read_merchantInformation:1;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIControl.h"
+
 @class NSArray, UIStackView;
 
 __attribute__((visibility("hidden")))
-@interface UIInputSwitcherSegmentControl
+@interface UIInputSwitcherSegmentControl : UIControl
 {
     _Bool _usesDarkTheme;
     long long _selectedSegmentIndex;

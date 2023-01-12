@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <TVMLKit/UIKeyInput-Protocol.h>
-
 @class NSString, UIActivityIndicatorView, UITextField, UITextInputPasswordRules;
 @protocol _TVSearchBarDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _TVSearchBar : UIView <UIKeyInput>
+@interface _TVSearchBar : UIView
 {
     UITextField *_textField;
     id <_TVSearchBarDelegate> _delegate;

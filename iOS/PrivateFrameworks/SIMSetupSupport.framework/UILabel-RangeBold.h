@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UILabel.h>
+#import <UIKit/UILabel.h>
 
 @interface UILabel (RangeBold)
+- (void)setBoldSubString:(id)arg1;
 - (void)setBoldSubString:(id)arg1;
 @end
 

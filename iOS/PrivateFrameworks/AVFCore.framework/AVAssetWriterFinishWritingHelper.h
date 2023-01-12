@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_finishWritingOperations;
     NSOperation *_transitionToTerminalStatusOperation;
+    void *_figAssetWriterCallbackContextToken;
 }
 
 @property(readonly, nonatomic) NSOperation *transitionToTerminalStatusOperation; // @synthesize transitionToTerminalStatusOperation=_transitionToTerminalStatusOperation;
@@ -18,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelWriting;
 - (void)_finishWritingOperationsDidFinish;
 - (void)dealloc;
-- (id)initWithConfigurationState:(id)arg1 finishWritingOperations:(id)arg2;
+- (id)initWithConfigurationState:(id)arg1 finishWritingOperations:(id)arg2 figAssetWriterCallbackContextToken:(void *)arg3;
 
 @end
 

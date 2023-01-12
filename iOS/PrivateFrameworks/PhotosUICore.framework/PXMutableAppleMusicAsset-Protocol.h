@@ -11,10 +11,11 @@
 @protocol PXMutableAppleMusicAsset <NSObject>
 @property(copy, nonatomic) NSArray *entryPoints;
 @property(nonatomic) unsigned long long flags;
-@property(nonatomic) CDStruct_1b6d18a9 duration;
+@property(nonatomic) CDStruct_198678f7 duration;
 @property(copy, nonatomic) NSString *colorGradeCategory;
 @property(copy, nonatomic) NSNumber *loudnessMainValue;
 @property(copy, nonatomic) NSNumber *loudnessMainPeak;
+@property(copy, nonatomic) NSString *contentProvider;
 @property(copy, nonatomic) NSURL *introPreviewURL;
 @property(copy, nonatomic) NSURL *songURL;
 @property(copy, nonatomic) NSString *artworkURLFormat;

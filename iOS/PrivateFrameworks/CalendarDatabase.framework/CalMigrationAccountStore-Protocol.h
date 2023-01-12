@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDatabase/NSObject-Protocol.h>
+#import <CalendarDatabase/CalMigrationReadOnlyAccountStore-Protocol.h>
 
 @class NSArray, NSString;
 @protocol CalMigrationAccount;
 
-@protocol CalMigrationAccountStore <NSObject>
+@protocol CalMigrationAccountStore <CalMigrationReadOnlyAccountStore>
 - (_Bool)saveAccount:(id <CalMigrationAccount>)arg1 withError:(id *)arg2;
 - (_Bool)removeAccount:(id <CalMigrationAccount>)arg1 error:(id *)arg2;
 - (id <CalMigrationAccount>)createChildAccountOfParent:(id <CalMigrationAccount>)arg1 withAccountTypeIdentifier:(NSString *)arg2 error:(id *)arg3;

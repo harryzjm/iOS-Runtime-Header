@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPContentInsettable-Protocol.h>
-#import <LinkPresentation/LPTextStyleable-Protocol.h>
-
 @class LPQuotedTextViewStyle, LPTextView, NSAttributedString, NSRegularExpression, UIImageView, UITextView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface LPQuoteView <LPTextStyleable, LPContentInsettable>
+@interface LPQuoteView
 {
     UITextView *_textView;
     _Bool _didLimitNumberOfCharacters;

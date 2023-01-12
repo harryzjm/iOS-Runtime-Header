@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIPopoverControllerDelegate-Protocol.h>
-
 @class NSString, UIAlertController, UIAlertView, UIPopoverController, UIViewController, _UIAlertControllerShimPresenterWindow;
 @protocol UIPopoverControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerShimPresenter : NSObject <UIPopoverControllerDelegate>
+@interface _UIAlertControllerShimPresenter : NSObject
 {
     UIPopoverController *_popoverController;
     id <UIPopoverControllerDelegate> _popoverDelegate;

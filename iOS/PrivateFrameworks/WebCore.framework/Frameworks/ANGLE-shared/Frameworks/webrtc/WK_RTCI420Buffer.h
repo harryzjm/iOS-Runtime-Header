@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <webrtc/RTCI420Buffer-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WK_RTCI420Buffer : NSObject <RTCI420Buffer>
+@interface WK_RTCI420Buffer : NSObject
 {
     scoped_refptr_b674d2a6 _i420Buffer;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)close;
 - (scoped_refptr_b674d2a6)nativeI420Buffer;
 - (id)toI420;
 @property(readonly, nonatomic) const char *dataV;

@@ -6,14 +6,12 @@
 
 #import <NewsUI2/NSObject-Protocol.h>
 
-@class FCPPTTodayContentDescriptor, NSString;
+@class NSString;
 
 @protocol FCPPTContext <NSObject>
 - (void)d_logState;
 @property(nonatomic) _Bool prefetchDisabled;
 - (_Bool)isPrefetchDisabled;
-@property(nonatomic, copy) NSString *forYouFeedIDOverride;
-@property(nonatomic, retain) FCPPTTodayContentDescriptor *todayContentDescriptor;
 @property(nonatomic) _Bool runningPPT;
 - (_Bool)isRunningPPT;
 @property(nonatomic, copy) NSString *testName;

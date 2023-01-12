@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIProductPageChildViewController-Protocol.h>
-#import <StoreKitUI/UIScrollViewDelegate-Protocol.h>
-
 @class NSString, SKUIClientContext, SKUIColorScheme, SKUIProductPageHeaderViewController, SKUIProductPagePlaceholderScrollView, UIActivityIndicatorView, UIScrollView;
 @protocol SKUIProductPageChildViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIProductPagePlaceholderViewController : UIViewController <UIScrollViewDelegate, SKUIProductPageChildViewController>
+@interface SKUIProductPagePlaceholderViewController : UIViewController
 {
     SKUIClientContext *_clientContext;
     SKUIColorScheme *_colorScheme;

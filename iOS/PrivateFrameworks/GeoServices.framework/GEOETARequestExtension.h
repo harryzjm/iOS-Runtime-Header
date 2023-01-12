@@ -6,29 +6,11 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOTFTrafficSnapshot;
-
 __attribute__((visibility("hidden")))
-@interface GEOETARequestExtension : PBCodable <NSCopying>
+@interface GEOETARequestExtension : PBCodable
 {
-    GEOTFTrafficSnapshot *_trafficSnapshot;
-    _Bool _needServerLatency;
-    _Bool _useLiveTrafficAsFallback;
-    struct {
-        unsigned int has_needServerLatency:1;
-        unsigned int has_useLiveTrafficAsFallback:1;
-    } _flags;
 }
 
-- (void).cxx_destruct;
-@property(nonatomic) _Bool hasNeedServerLatency;
-@property(nonatomic) _Bool needServerLatency;
-@property(nonatomic) _Bool hasUseLiveTrafficAsFallback;
-@property(nonatomic) _Bool useLiveTrafficAsFallback;
-@property(retain, nonatomic) GEOTFTrafficSnapshot *trafficSnapshot;
-@property(readonly, nonatomic) _Bool hasTrafficSnapshot;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

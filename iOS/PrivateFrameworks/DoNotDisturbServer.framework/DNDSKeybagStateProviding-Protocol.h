@@ -11,7 +11,9 @@
 @protocol DNDSKeybagStateProviding <NSObject>
 @property(readonly, nonatomic) _Bool hasUnlockedSinceBoot;
 @property(readonly, nonatomic) _Bool isLocked;
+- (void)addPriorityObserver:(id <DNDSKeybagStateObserver>)arg1;
 - (void)removeObserver:(id <DNDSKeybagStateObserver>)arg1;
 - (void)addObserver:(id <DNDSKeybagStateObserver>)arg1;
+- (_Bool)hasUnlockedSinceBootForObserver:(id <DNDSKeybagStateObserver>)arg1;
 @end
 

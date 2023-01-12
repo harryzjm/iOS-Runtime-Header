@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCH3DSceneObjectDelegator-Protocol.h>
-
 @class NSArray, TSCH3DPickedPoint, TSCH3DRayPickPipelineDelegate;
 
-@interface TSCH3DRayPickPipeline <TSCH3DSceneObjectDelegator>
+@interface TSCH3DRayPickPipeline
 {
     tvec2_84d5962d _pickPosition;
     TSCH3DRayPickPipelineDelegate *_sceneObjectDelegate;

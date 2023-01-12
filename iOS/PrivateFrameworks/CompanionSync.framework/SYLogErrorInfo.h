@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CompanionSync/NSCopying-Protocol.h>
-
 @class NSError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SYLogErrorInfo : PBCodable <NSCopying>
+@interface SYLogErrorInfo : PBCodable
 {
     long long _code;
     NSString *_domain;

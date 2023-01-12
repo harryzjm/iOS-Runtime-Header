@@ -6,11 +6,9 @@
 
 #import <Intents/INHomeUserTask.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface INHomeUserTask (ActionIdentifier) <REDonatedActionIdentifierProviding>
+@interface INHomeUserTask (ActionIdentifier)
 - (unsigned long long)re_actionIdentifierHashValue;
 
 // Remaining properties

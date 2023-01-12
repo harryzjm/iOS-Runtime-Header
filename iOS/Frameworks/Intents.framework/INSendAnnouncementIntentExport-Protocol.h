@@ -7,9 +7,10 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INAnnouncement, NSArray, NSNumber;
+@class INAnnouncement, NSArray, NSNumber, NSString;
 
 @protocol INSendAnnouncementIntentExport <NSObject, JSExport>
+@property(copy, nonatomic) NSString *sharedUserID;
 @property(copy, nonatomic) NSNumber *isReply;
 @property(copy, nonatomic) NSArray *recipients;
 @property(copy, nonatomic) INAnnouncement *announcement;

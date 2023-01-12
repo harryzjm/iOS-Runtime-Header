@@ -11,7 +11,6 @@
 @interface _TtC18VisualIntelligence25DomainAssignmentProcessor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *ontologyGraph;
-    MISSING_TYPE *domainParserRegistry;
     MISSING_TYPE *assignmentRules;
     MISSING_TYPE *config;
 }

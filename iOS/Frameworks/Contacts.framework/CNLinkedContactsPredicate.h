@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Contacts/CNSuggestedContactPredicate-Protocol.h>
+#import "CNPredicate.h"
 
 @class CNContact, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNLinkedContactsPredicate <CNSuggestedContactPredicate>
+@interface CNLinkedContactsPredicate : CNPredicate
 {
     CNContact *_contact;
     NSString *_contactIdentifier;
@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithContactIdentifier:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithContactIdentifier:(id)arg1;
 - (id)initWithContact:(id)arg1;
 
 // Remaining properties

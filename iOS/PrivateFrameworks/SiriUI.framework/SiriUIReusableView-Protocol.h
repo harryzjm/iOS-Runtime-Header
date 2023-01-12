@@ -4,17 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SiriUI/NSObject-Protocol.h>
+#import <SiriUI/SiriSharedUIReusableView-Protocol.h>
 
-@class NSString, SiriUISnippetViewController;
+@class SiriUISnippetViewController;
 
-@protocol SiriUIReusableView <NSObject>
-+ (NSString *)elementKind;
-+ (NSString *)reuseIdentifier;
-+ (double)defaultHeight;
+@protocol SiriUIReusableView <SiriSharedUIReusableView>
 
 @optional
 @property(nonatomic) __weak SiriUISnippetViewController *snippetViewController;
-- (struct UIEdgeInsets)edgeInsets;
 @end
 

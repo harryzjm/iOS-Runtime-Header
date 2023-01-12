@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
+@class NSArray, NSMutableArray, NSMutableDictionary, TSUPointerKeyDictionary;
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
-
-@interface TSTConcurrentCellList : TSPObject <NSCopying>
+@interface TSTConcurrentCellList : TSPObject
 {
     struct TSUViewCellRect _viewCellRect;
     struct TSKUIDStructTract _cellUIDRange;
@@ -26,20 +24,19 @@
     struct vector<TSTNineKeyStructPreBNC, std::allocator<TSTNineKeyStructPreBNC>> _preBNCKeysList;
     vector_cdf5f6a1 _oldCells;
     _Bool _uidBased;
-    _Bool _containsCellBorderChanges;
     NSArray *_interestingCells;
-    NSMutableDictionary *_formatsAdded;
+    TSUPointerKeyDictionary *_formatsAdded;
     NSMutableDictionary *_formatsRemoved;
 }
 
++ (id)cellListWithContext:(id)arg1 cellUIDRange:(struct TSKUIDStructTract)arg2 repeatCellVectorPattern:(const void *)arg3 patternDirection:(long long)arg4;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *rowInfosPerRow; // @synthesize rowInfosPerRow=_rowInfosPerRow;
 @property(retain, nonatomic) NSMutableArray *tilesPerRow; // @synthesize tilesPerRow=_tilesPerRow;
 @property(retain, nonatomic) NSMutableDictionary *formatsRemoved; // @synthesize formatsRemoved=_formatsRemoved;
-@property(retain, nonatomic) NSMutableDictionary *formatsAdded; // @synthesize formatsAdded=_formatsAdded;
+@property(retain, nonatomic) TSUPointerKeyDictionary *formatsAdded; // @synthesize formatsAdded=_formatsAdded;
 @property(retain, nonatomic) NSArray *interestingCells; // @synthesize interestingCells=_interestingCells;
-@property(readonly, nonatomic) _Bool containsCellBorderChanges; // @synthesize containsCellBorderChanges=_containsCellBorderChanges;
 @property(nonatomic) struct TSKUIDStructTract cellUIDRange; // @synthesize cellUIDRange=_cellUIDRange;
 @property(nonatomic) struct TSUViewCellRect viewCellRect; // @synthesize viewCellRect=_viewCellRect;
 @property(readonly, nonatomic, getter=isUIDBased) _Bool uidBased; // @synthesize uidBased=_uidBased;
@@ -53,24 +50,28 @@
 - (void)p_enumerateRowCellCountDiffUsingBlock:(CDUnknownBlockType)arg1;
 - (void)p_enumerateColumnCellCountDiffUsingBlock:(CDUnknownBlockType)arg1;
 - (void)p_enumerateCellsAddedAndRemovedForFormatsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)p_enumerateCellsAddedAndRemovedOfType:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)p_enumerateCellsAddedOfType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)p_enumerateCellsAddedAndRemovedOfType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)p_enumerateNewAndOldCellsSeriallyUsingPreBNCBlock:(CDUnknownBlockType)arg1;
 - (void)p_enumerateNewAndOldCellsSeriallyUsingBlock:(CDUnknownBlockType)arg1;
 - (void)p_enumerateRowsOfCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg1;
-- (void)p_accumulateCurrentCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg1;
+- (void)p_accumulateBordersConcurrentlyUsingBlock:(CDUnknownBlockType)arg1 accumulateCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg2;
 - (void)p_gatherRowState:(CDUnknownBlockType)arg1;
 - (void)p_convertToInverseCellMap;
 - (void)p_simpleInvokeBlock:(CDUnknownBlockType)arg1;
 - (void)p_invokeBlock:(CDUnknownBlockType)arg1;
 - (void)p_setupInterestingCells:(void *)arg1 interestingCellIndexes:(id)arg2 forAdding:(_Bool)arg3;
-- (void)p_pruneToBaseWithTableInfo:(id)arg1;
+- (void)p_pruneToBaseWithBaseMap:(id)arg1 viewMap:(id)arg2;
 - (void)p_pruneCellsAtColumn:(unsigned long long)arg1 rowsSize:(unsigned long long)arg2 columnsSize:(unsigned long long)arg3;
 - (void)p_pruneCellsAtRow:(unsigned long long)arg1 rowsSize:(unsigned long long)arg2 columnsSize:(unsigned long long)arg3;
 - (void)p_clearDataListIDs;
 - (void)p_setObjectLocale:(id)arg1;
 - (void)p_convertToUuidBasedCellListUsingTableInfo:(id)arg1 pruneCategorizedCells:(_Bool)arg2;
+- (const void *)p_cells;
+- (unsigned int)rowCount;
 @property(readonly, nonatomic) unsigned long long cellCount;
 @property(readonly, nonatomic) _Bool hasCells;
+- (void)addCell:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)addCell:(id)arg1 atViewCellCoord:(struct TSUViewCellCoord)arg2;
 - (id)initWithContext:(id)arg1 cellUIDRange:(struct TSKUIDStructTract)arg2;
 - (id)initWithContext:(id)arg1 viewCellRect:(struct TSUViewCellRect)arg2;

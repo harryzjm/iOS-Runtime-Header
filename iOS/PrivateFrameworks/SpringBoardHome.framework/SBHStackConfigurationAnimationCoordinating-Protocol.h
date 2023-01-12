@@ -9,9 +9,11 @@
 @class NSSet, SBIconView, UIView;
 
 @protocol SBHStackConfigurationAnimationCoordinating <NSObject>
+@property(readonly, nonatomic) UIView *visiblyActiveDataSourceSnapshotView;
 @property(readonly, nonatomic) UIView *widgetContentContainerView;
 @property(readonly, nonatomic) UIView *widgetStackMatchingBackgroundView;
 @property(readonly, nonatomic) NSSet *apertureBackgroundViews;
+@property(readonly, nonatomic) NSSet *widgetBackgroundViews;
 @property(readonly, nonatomic) NSSet *materialViews;
 @property(readonly, nonatomic) NSSet *fadingViews;
 @property(readonly, nonatomic) UIView *configurationView;

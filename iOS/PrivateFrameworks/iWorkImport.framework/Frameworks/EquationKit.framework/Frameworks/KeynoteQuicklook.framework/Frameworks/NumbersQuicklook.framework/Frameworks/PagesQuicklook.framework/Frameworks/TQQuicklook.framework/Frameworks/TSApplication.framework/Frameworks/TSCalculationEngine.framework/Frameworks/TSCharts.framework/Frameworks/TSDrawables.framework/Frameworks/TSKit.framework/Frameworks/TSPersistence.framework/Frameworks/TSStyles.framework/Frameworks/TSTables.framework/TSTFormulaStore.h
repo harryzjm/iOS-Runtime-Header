@@ -20,6 +20,7 @@
 + (struct TSKUIDStruct)tableUIDFromFormula:(id)arg1 atCoord:(const struct TSUModelCellCoord *)arg2;
 + (struct TSUModelCellRect)rangeFromFormulaObject:(id)arg1 atCoord:(const struct TSUModelCellCoord *)arg2 useBoundingRange:(_Bool)arg3;
 + (struct TSUModelCellRect)rangeFromFormulaObject:(id)arg1 atCoord:(const struct TSUModelCellCoord *)arg2;
++ (id)createFormulaForUIDTract:(const void *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
 + (id)createFormulaForUIDRange:(const void *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
 + (struct TSUCellCoord)coordFromIndex:(unsigned long long)arg1;
 + (unsigned long long)indexFromCoord:(const struct TSUCellCoord *)arg1;

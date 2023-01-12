@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView, UIVisualEffect, UIVisualEffectView;
+#import "UIView.h"
+
+@class UIVisualEffect, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewCellSeparatorView
+@interface _UITableViewCellSeparatorView : UIView
 {
     UIView *_backgroundView;
     UIView *_overlayView;

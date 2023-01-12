@@ -11,8 +11,5 @@
 - (void)doc_adjustForAutomaticKeyboardInfo:(id)arg1 animated:(_Bool)arg2 lastAdjustment:(double *)arg3;
 - (long long)doc_automaticContentOffsetAdjustmentDisabledCount;
 - (void)doc_setAutomaticContentOffsetAdjustmentDisabledCount:(long long)arg1;
-- (void)doc_endDisablingAutomaticContentOffsetAdjustment;
-- (void)doc_beginDisablingAutomaticContentOffsetAdjustment;
-- (void)doc_withAutomaticContentOffsetAdjustmentDisabled:(CDUnknownBlockType)arg1;
 @end
 

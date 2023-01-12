@@ -6,20 +6,17 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFViewContentGraphActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFViewContentGraphActionUIKitUserInterface : WFEmbeddableActionUserInterface <UIAdaptivePresentationControllerDelegate, WFViewContentGraphActionUserInterface>
+@interface WFViewContentGraphActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-- (void)presentationControllerWillDismiss:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)done;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)showWithContentItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

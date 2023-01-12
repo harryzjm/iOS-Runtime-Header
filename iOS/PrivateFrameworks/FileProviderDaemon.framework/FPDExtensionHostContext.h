@@ -6,10 +6,8 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <FileProviderDaemon/FPXHost-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface FPDExtensionHostContext : NSExtensionContext <FPXHost>
+@interface FPDExtensionHostContext : NSExtensionContext
 {
 }
 

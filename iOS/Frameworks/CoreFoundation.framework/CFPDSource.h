@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     unsigned int _lastEgid;
     int _fileProtectionClass;
     int _parentFD;
+    int _cachedPlistFD;
     short _generationShmemIndex;
     _Bool _byHost;
     _Bool _managed;

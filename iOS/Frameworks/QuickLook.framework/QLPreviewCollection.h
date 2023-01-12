@@ -6,19 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <QuickLook/QLItemPresenterViewControllerDelegate-Protocol.h>
-#import <QuickLook/QLPageViewControllerDataSource-Protocol.h>
-#import <QuickLook/QLPageViewControllerDelegate-Protocol.h>
-#import <QuickLook/QLPreviewCollectionProtocol-Protocol.h>
-#import <QuickLook/QLPreviewItemViewControllerDelegate-Protocol.h>
-#import <QuickLook/QLTransitionControllerProtocol-Protocol.h>
-#import <QuickLook/UIGestureRecognizerDelegatePrivate-Protocol.h>
-
 @class NSString, QLAppearance, QLItemViewController, QLPageViewController, QLPinchRotationTracker, QLPreviewItemStore, QLSwipeDownTracker, QLTransitionContext, QLTransitionDriver, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UISwipeGestureRecognizer, UITapGestureRecognizer, UIView;
-@protocol QLPreviewControllerStateProtocol, QLTransitionControllerProtocol;
+@protocol QLPreviewControllerStateProtocol><QLPreviewControllerStateProtocol_UIKit, QLTransitionControllerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface QLPreviewCollection : UIViewController <QLTransitionControllerProtocol, QLPageViewControllerDataSource, QLPageViewControllerDelegate, QLPreviewItemViewControllerDelegate, QLItemPresenterViewControllerDelegate, UIGestureRecognizerDelegatePrivate, QLPreviewCollectionProtocol>
+@interface QLPreviewCollection : UIViewController
 {
     struct _NSRange _previewItemRange;
     long long _currentItemIndex;
@@ -42,7 +34,7 @@ __attribute__((visibility("hidden")))
     _Bool _isTransitioningPage;
     _Bool _hasTriggeredInteractiveTransitionAnimation;
     QLPageViewController *_pageViewController;
-    id <QLPreviewControllerStateProtocol> _stateManager;
+    id <QLPreviewControllerStateProtocol><QLPreviewControllerStateProtocol_UIKit> _stateManager;
     CDUnknownBlockType _prepareForInvalidationCompletionHandler;
     NSString *_overrideParentApplicationDisplayIdentifier;
     UIPanGestureRecognizer *_slideGesture;
@@ -57,6 +49,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)previewCollectionUsingRemoteViewController:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)previewCollectionClassName;
 + (void)remotePreviewCollectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)quickLookExtension;
 - (void).cxx_destruct;
@@ -78,7 +71,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool fullScreen; // @synthesize fullScreen=_fullScreen;
 @property(nonatomic) _Bool allowInteractiveTransitions; // @synthesize allowInteractiveTransitions=_allowInteractiveTransitions;
 @property(nonatomic) _Bool isAvailable; // @synthesize isAvailable=_isAvailable;
-@property(retain) id <QLPreviewControllerStateProtocol> stateManager; // @synthesize stateManager=_stateManager;
+@property(retain) id <QLPreviewControllerStateProtocol><QLPreviewControllerStateProtocol_UIKit> stateManager; // @synthesize stateManager=_stateManager;
 @property(retain) QLPageViewController *pageViewController; // @synthesize pageViewController=_pageViewController;
 - (_Bool)_itemViewControllerIsCurrentlyPresentedItemViewController:(id)arg1;
 - (id)_sandboxExtensionForEditedFileAtURL:(id)arg1;
@@ -89,6 +82,8 @@ __attribute__((visibility("hidden")))
 - (void)previewItemViewControllerDidChangeCurrentPreviewController:(id)arg1;
 - (void)previewItemViewControllerWantsToDismissQuickLook:(id)arg1;
 - (long long)dragDataOwnerForPreviewItemViewController:(id)arg1;
+- (void)previewItemDisplayState:(id)arg1 wasAppliedToItemAtIndex:(unsigned long long)arg2;
+- (void)previewItemViewController:(id)arg1 wantsToUpdatePreviewItemDisplayState:(id)arg2;
 - (void)previewItemViewController:(id)arg1 wantsToUpdateStateRestorationWithUserInfo:(id)arg2;
 - (void)previewItemViewControllerDidHandOverLock:(id)arg1;
 - (void)previewItemViewControllerDidAcquireLock:(id)arg1;
@@ -107,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)previewItemViewControllerWantsToShowShareSheet:(id)arg1;
 - (void)previewItemViewController:(id)arg1 didFailWithError:(id)arg2;
 - (void)previewItemViewController:(id)arg1 wantsToOpenURL:(id)arg2;
+- (void)previewItemViewController:(id)arg1 wantsToSetRemoteEdgePanGestureWidth:(double)arg2;
 - (void)previewItemViewController:(id)arg1 wantsFullScreen:(_Bool)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -134,6 +130,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateFullscreenBackgroundColor;
 - (void)_updatePreferredContentSize;
 - (_Bool)_isVisible;
+- (void)setPreviewItemDisplayState:(id)arg1 onItemAtIndex:(unsigned long long)arg2;
 - (void)setIsContentManaged:(_Bool)arg1;
 @property(readonly, nonatomic) NSString *parentApplicationDisplayIdentifier;
 - (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(id)arg1;
@@ -148,10 +145,13 @@ __attribute__((visibility("hidden")))
 - (void)keyCommandWasPerformed:(id)arg1;
 - (id)_defaultKeyCommands;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)saveIntoPhotoLibraryMediaWithURLWrapper:(id)arg1 previewItemType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestLockForCurrentItem;
 - (void)shouldDisplayLockActivityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)hostApplicationDidBecomeActive;
 - (void)hostApplicationDidEnterBackground:(_Bool)arg1;
+- (void)documentMenuActionWillBegin;
+- (void)hostSceneWillDeactivate;
 - (void)actionSheetDidDismiss;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)saveCurrentPreviewEditsSynchronously:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -168,6 +168,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateService;
 - (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly) QLItemViewController *currentPreviewItemViewController;
+- (void)setScreenEdgePanWidth:(double)arg1;
 - (_Bool)isRemote;
 - (id)accessoryView;
 - (void)setRemoteAccessoryContainer:(id)arg1;

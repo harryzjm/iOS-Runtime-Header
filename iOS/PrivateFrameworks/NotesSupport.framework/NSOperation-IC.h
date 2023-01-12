@@ -6,11 +6,10 @@
 
 #import <Foundation/NSOperation.h>
 
-#import <NotesSupport/ICLoggable-Protocol.h>
-
 @class NSString;
 
-@interface NSOperation (IC) <ICLoggable>
+@interface NSOperation (IC)
+@property(nonatomic, setter=ic_setResistsCancellation:) _Bool ic_resistsCancellation;
 - (id)ic_loggingValues;
 - (id)ic_loggingIdentifier;
 

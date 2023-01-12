@@ -16,9 +16,14 @@ __attribute__((visibility("hidden")))
     id flowProperties;
     CPParagraphListItem *listItem;
     double preformatWidth;
+    _Bool hasRotatedCharacters;
 }
 
 @property(retain, nonatomic) CPParagraphListItem *listItem; // @synthesize listItem;
+- (void)setHasRotatedCharacters:(_Bool)arg1;
+- (_Bool)hasRotatedCharacters;
+- (struct CGRect)renderedBounds;
+- (struct CGRect)bounds;
 - (_Bool)isPreformattedWithUnitWidth:(double *)arg1;
 - (void)setAlignment:(unsigned long long)arg1;
 - (unsigned long long)alignment;

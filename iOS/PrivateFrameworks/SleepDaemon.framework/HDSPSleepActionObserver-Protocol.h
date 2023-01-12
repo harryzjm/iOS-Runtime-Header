@@ -12,7 +12,7 @@
 - (void)sleepLockWasDismissed;
 - (void)wakeNotificationWasConfirmed;
 - (void)goodMorningWasDismissed;
-- (void)wakeUpAlarmWasSnoozed;
-- (void)wakeUpAlarmWasDismissed;
+- (void)wakeUpAlarmWasSnoozedFromSource:(unsigned long long)arg1;
+- (void)wakeUpAlarmWasDismissedFromSource:(unsigned long long)arg1;
 @end
 

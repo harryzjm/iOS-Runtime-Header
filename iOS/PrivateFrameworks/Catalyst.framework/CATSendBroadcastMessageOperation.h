@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CATOperation.h"
+
 @protocol CATDictionaryCodable, CATSharingBroadcastPrimitives;
 
 __attribute__((visibility("hidden")))
-@interface CATSendBroadcastMessageOperation
+@interface CATSendBroadcastMessageOperation : CATOperation
 {
     id <CATSharingBroadcastPrimitives> mBroadcastPrimitives;
     id <CATDictionaryCodable> mMessage;

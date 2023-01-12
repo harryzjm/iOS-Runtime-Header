@@ -4,24 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int protocolVersion:1;
-} CDStruct_f86102d7;
-

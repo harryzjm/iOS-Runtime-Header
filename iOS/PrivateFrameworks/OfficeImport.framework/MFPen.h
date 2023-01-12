@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/MFObject-Protocol.h>
-
 @class OITSUColor;
 
 __attribute__((visibility("hidden")))
-@interface MFPen : NSObject <MFObject>
+@interface MFPen : NSObject
 {
     int m_penStyle;
     int m_penWidth;

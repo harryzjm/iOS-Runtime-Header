@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SIMToolkitUI/STKAlertSessionResponseProvider-Protocol.h>
-
 @class NSString;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
-@interface _STKClass0SMSResponseProvider : NSObject <STKAlertSessionResponseProvider>
+@interface _STKClass0SMSResponseProvider : NSObject
 {
     NSObject<OS_os_log> *_logger;
 }

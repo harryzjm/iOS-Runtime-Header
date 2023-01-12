@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VirtualGarage/VGExternalAccessory-Protocol.h>
-
-@class NSMutableDictionary, NSString, VGExternalAccessoryState, VGVehicle, VGVehicleState;
+@class NSMutableDictionary, NSString, VGExternalAccessoryModelFilter, VGExternalAccessoryState, VGVehicle, VGVehicleState;
 @protocol OS_dispatch_queue, VGExternalAccessoryUpdating;
 
 __attribute__((visibility("hidden")))
-@interface VGExternalAccessory : NSObject <VGExternalAccessory>
+@interface VGExternalAccessory : NSObject
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
     VGExternalAccessoryState *_accessoryState;
     VGVehicleState *_currentVehicleState;
     VGVehicle *_currentVehicle;
+    VGExternalAccessoryModelFilter *_modelFilter;
     id <VGExternalAccessoryUpdating> _accessoryUpdateDelegate;
 }
 
@@ -27,13 +26,16 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <VGExternalAccessoryUpdating> accessoryUpdateDelegate; // @synthesize accessoryUpdateDelegate=_accessoryUpdateDelegate;
 - (void)listCarsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getStateOfChargeForVehicle:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)isConnectedToCarPlayAccessory;
 - (_Bool)isConnectedToAccessoryWithIdentifier:(id)arg1;
 - (_Bool)isConnectedToVehicle:(id)arg1;
+- (id)_firmwareId;
 - (id)_bluetoothIdentifier;
 - (id)_identifier;
 - (_Bool)_isConnectedToCarPlayAccessory;
 - (_Bool)_isConnectedToElectricVehicle;
+- (_Bool)_isConnectedVehicleAllowlisted;
+- (id)_modelIdFromArguments:(id)arg1;
+- (_Bool)_currentStatePassesEVRoutingRequirements;
 - (id)_vehicleStateForCurrentState;
 - (id)_vehicleForCurrentState;
 - (void)_notifyDelegateWithCurrentVehicle;

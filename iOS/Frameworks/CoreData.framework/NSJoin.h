@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCoding-Protocol.h>
-#import <CoreData/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSJoin : NSObject <NSCoding, NSCopying>
+@interface NSJoin : NSObject
 {
     NSString *_sourceAttributeName;
     NSString *_destinationAttributeName;

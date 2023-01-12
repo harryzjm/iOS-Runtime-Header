@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSSecureCoding-Protocol.h>
+#import "NSString.h"
 
 @class NSAttributedString, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface __NSCFLocalizedAttributedString <NSSecureCoding>
+@interface __NSCFLocalizedAttributedString : NSString
 {
     NSAttributedString *_original;
+    NSString *_apparentString;
     NSDictionary *_formatConfiguration;
 }
 
 + (id)stringEncapsulatingBaseAttributedString:(id)arg1;
 + (const struct __CFString *)createStringRequiringInflectionWithFormat:(struct __CFString *)arg1 formatOptions:(struct __CFDictionary *)arg2 arguments:(char *)arg3;
-+ (const struct __CFString *)copyStringWithMarkdown:(struct __CFString *)arg1 formatConfiguration:(struct __CFDictionary *)arg2 tableURL:(struct __CFURL *)arg3;
++ (const struct __CFString *)copyStringWithMarkdown:(struct __CFString *)arg1 formatConfiguration:(struct __CFDictionary *)arg2 bundle:(struct __CFBundle *)arg3 tableURL:(struct __CFURL *)arg4;
 - (const char *)_fastCStringContents:(_Bool)arg1;
 - (const unsigned short *)_fastCharacterContents;
 - (_Bool)isEqualToString:(id)arg1;
@@ -35,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)formatConfiguration;
 - (void)dealloc;
 - (id)_initWithAttributedString:(id)arg1;
-- (id)initWithAttributedStringMarkdown:(id)arg1 formatConfiguration:(id)arg2 tableURL:(id)arg3;
+- (id)initWithAttributedStringMarkdown:(id)arg1 formatConfiguration:(id)arg2 bundle:(struct __CFBundle *)arg3 tableURL:(id)arg4;
 - (void)encodeWithCoder:(id)arg1;
 - (Class)classForCoder;
 - (id)initWithCoder:(id)arg1;

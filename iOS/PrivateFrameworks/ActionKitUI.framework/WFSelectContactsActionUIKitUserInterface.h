@@ -6,14 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/CNContactPickerDelegate-Protocol.h>
-#import <ActionKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFSelectContactsActionUserInterface-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFSelectContactsActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFSelectContactsActionUserInterface, CNContactPickerDelegate, UIAdaptivePresentationControllerDelegate>
+@interface WFSelectContactsActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     _Bool _selectMultiple;
     CDUnknownBlockType _completionHandler;

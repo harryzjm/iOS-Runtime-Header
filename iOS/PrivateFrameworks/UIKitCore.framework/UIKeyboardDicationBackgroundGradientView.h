@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
+#import "UIView.h"
 
 @class NSString, UIDictationView, UIKBRenderConfig;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardDicationBackgroundGradientView <_UIBasicAnimationFactory>
+@interface UIKeyboardDicationBackgroundGradientView : UIView
 {
     UIKBRenderConfig *_renderConfig;
     UIDictationView *_dictationView;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) UIDictationView *dictationView; // @synthesize dictationView=_dictationView;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 - (void)layoutSubviews;
@@ -25,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)startColorTransitionOut;
 - (void)startColorTransitionIn;
 - (id)backgroundColorForCurrentRenderConfig;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

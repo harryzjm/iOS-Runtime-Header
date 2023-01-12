@@ -10,17 +10,17 @@
 
 @interface _TtC20PegasusConfiguration23PegasusConfigController : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *queue;
-    MISSING_TYPE *userAgent;
-    MISSING_TYPE *context;
+    MISSING_TYPE *activityMonitor;
     MISSING_TYPE *requestFactory;
     MISSING_TYPE *configSession;
+    MISSING_TYPE *context;
     MISSING_TYPE *fileManager;
-    MISSING_TYPE *locker;
-    MISSING_TYPE *tasksInProgress;
-    MISSING_TYPE *fetchInProgress;
-    MISSING_TYPE *activityMonitor;
-    MISSING_TYPE *__inMemoryConfig;
+    MISSING_TYPE *configFactory;
+    MISSING_TYPE *userAgent;
+    MISSING_TYPE *taskController;
+    MISSING_TYPE *usageReporter;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *configContainer;
 }
 
 @end

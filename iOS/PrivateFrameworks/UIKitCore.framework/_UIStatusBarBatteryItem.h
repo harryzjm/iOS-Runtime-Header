@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIStatusBarItem.h"
+
 @class _UIBatteryView, _UIStaticBatteryView, _UIStatusBarImageView, _UIStatusBarStringView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarBatteryItem
+@interface _UIStatusBarBatteryItem : _UIStatusBarItem
 {
     _Bool _highlighted;
+    _Bool _usesCondensedPercentageDisplay;
     _UIBatteryView *_batteryView;
     _UIStaticBatteryView *_staticBatteryView;
     _UIStatusBarImageView *_chargingView;
@@ -25,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIStatusBarImageView *chargingView; // @synthesize chargingView=_chargingView;
 @property(retain, nonatomic) _UIStaticBatteryView *staticBatteryView; // @synthesize staticBatteryView=_staticBatteryView;
 @property(retain, nonatomic) _UIBatteryView *batteryView; // @synthesize batteryView=_batteryView;
+@property(nonatomic) _Bool usesCondensedPercentageDisplay; // @synthesize usesCondensedPercentageDisplay=_usesCondensedPercentageDisplay;
 @property(nonatomic) _Bool highlighted; // @synthesize highlighted=_highlighted;
 - (id)viewForIdentifier:(id)arg1;
 - (void)_create_percentView;

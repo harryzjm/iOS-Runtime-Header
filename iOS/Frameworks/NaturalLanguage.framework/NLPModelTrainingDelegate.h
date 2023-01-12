@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NaturalLanguage/NLModelTrainerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface NLPModelTrainingDelegate : NSObject <NLModelTrainerDelegate>
+@interface NLPModelTrainingDelegate : NSObject
 {
     CDUnknownBlockType _logHandler;
     _Bool _stop;

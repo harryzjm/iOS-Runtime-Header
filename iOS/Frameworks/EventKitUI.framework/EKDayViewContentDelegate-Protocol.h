@@ -6,9 +6,11 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKDayOccurrenceView, EKDayViewContent, EKEvent, NSArray, UIView;
+@class EKDayOccurrenceView, EKDayViewContent, EKEvent, NSArray, UIView, UIViewController;
 
 @protocol EKDayViewContentDelegate <NSObject>
+- (NSArray *)selectedEventsForEditMenu;
+- (UIViewController *)presentationControllerForEditMenu;
 - (void)dayViewContent:(EKDayViewContent *)arg1 didTapInEmptySpaceOnDay:(double)arg2;
 - (void)dayViewContent:(EKDayViewContent *)arg1 didTapPinnedOccurrence:(EKEvent *)arg2;
 
@@ -16,8 +18,7 @@
 - (_Bool)dayViewContentShouldDrawSynchronously:(EKDayViewContent *)arg1;
 - (UIView *)dayViewContent:(EKDayViewContent *)arg1 selectedCopyViewForOccurrenceView:(EKDayOccurrenceView *)arg2;
 - (void)dayViewContentDidLayout:(EKDayViewContent *)arg1;
-- (void)dayViewContent:(EKDayViewContent *)arg1 didSelectEvent:(EKEvent *)arg2;
-- (void)occurrencePressed:(EKEvent *)arg1 onDay:(double)arg2;
+- (void)dayViewContent:(EKDayViewContent *)arg1 didSelectEvent:(EKEvent *)arg2 userInitiated:(_Bool)arg3;
 - (void)dayViewContent:(EKDayViewContent *)arg1 didCreateOccurrenceViews:(NSArray *)arg2;
 @end
 

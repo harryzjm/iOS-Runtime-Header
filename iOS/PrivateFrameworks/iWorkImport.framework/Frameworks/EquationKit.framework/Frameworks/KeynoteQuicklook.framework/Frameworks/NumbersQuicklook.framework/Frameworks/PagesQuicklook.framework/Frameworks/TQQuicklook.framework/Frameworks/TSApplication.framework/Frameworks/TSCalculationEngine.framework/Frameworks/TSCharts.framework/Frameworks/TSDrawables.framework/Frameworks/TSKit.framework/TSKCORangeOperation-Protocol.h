@@ -6,5 +6,6 @@
 
 @protocol TSKCORangeOperation
 @property(readonly, nonatomic) const void *rangeVector;
+- (_Bool)isEqualWithIgnoringEmptyRange:(id)arg1;
 @end
 

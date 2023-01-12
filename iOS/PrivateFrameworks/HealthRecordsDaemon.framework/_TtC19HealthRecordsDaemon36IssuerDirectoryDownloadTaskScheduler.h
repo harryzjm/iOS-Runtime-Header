@@ -10,9 +10,11 @@
 
 @interface _TtC19HealthRecordsDaemon36IssuerDirectoryDownloadTaskScheduler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *$__lazy_storage_$_backgroundActivityScheduler;
+    MISSING_TYPE *backgroundActivityScheduler;
     MISSING_TYPE *clientHandler;
     MISSING_TYPE *lock;
+    MISSING_TYPE *successInterval;
+    MISSING_TYPE *retryInterval;
 }
 
 @end

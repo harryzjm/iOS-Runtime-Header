@@ -10,6 +10,7 @@
 {
     MISSING_TYPE *_cancellable;
     MISSING_TYPE *_sourceEnvironmentProvider;
+    MISSING_TYPE *_widget;
     MISSING_TYPE *descriptor;
 }
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MPSNeuralNetwork/MPSCNNConvolutionDataSource-Protocol.h>
-
 @class MPSCNNConvolutionDescriptor, NSString;
 @protocol MPSCNNConvolutionDataSource;
 
-@interface TmpWeights : NSObject <MPSCNNConvolutionDataSource>
+@interface TmpWeights : NSObject
 {
     id <MPSCNNConvolutionDataSource> _parentObj;
     MPSCNNConvolutionDescriptor *_convDesc;

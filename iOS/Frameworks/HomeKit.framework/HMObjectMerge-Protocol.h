@@ -6,12 +6,12 @@
 
 #import <HomeKit/NSObject-Protocol.h>
 
-@class HMObjectMergeOperations, NSUUID;
+@class NSUUID;
 @protocol HMObjectMerge;
 
 @protocol HMObjectMerge <NSObject>
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier;
-- (_Bool)_mergeWithNewObject:(id <HMObjectMerge>)arg1 operations:(HMObjectMergeOperations *)arg2;
+- (_Bool)_mergeWithNewObject:(id <HMObjectMerge>)arg1;
 
 @optional
 - (void)mergeWithNewObjectNoMergeCount:(id <HMObjectMerge>)arg1;

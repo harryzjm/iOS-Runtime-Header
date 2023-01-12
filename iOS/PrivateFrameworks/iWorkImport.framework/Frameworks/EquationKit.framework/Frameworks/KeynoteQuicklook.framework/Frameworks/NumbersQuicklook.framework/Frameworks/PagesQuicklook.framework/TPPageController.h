@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSWPFootnoteMarkProvider-Protocol.h>
-
 @class NSArray, NSString, TPDocumentRoot, _TtC6TSText16TSWPTopicNumbers;
 
-@interface TPPageController : NSObject <TSWPFootnoteMarkProvider>
+@interface TPPageController : NSObject
 {
     TPDocumentRoot *_documentRoot;
     _TtC6TSText16TSWPTopicNumbers *_bodyTopicNumbers;
@@ -33,6 +31,7 @@
 - (id)markStringForFootnoteReferenceStorage:(id)arg1;
 @property(readonly, nonatomic) long long nominalFootnoteNumbering;
 @property(readonly, nonatomic) long long nominalFootnoteKind;
+- (void)changeTrackingVisibilityDidChange;
 - (unsigned long long)pageIndexFromCanvasPoint:(struct CGPoint)arg1;
 - (_Bool)okToAnchorDrawables:(id)arg1 toPageIndex:(unsigned long long)arg2;
 - (_Bool)okToAnchorDrawable:(id)arg1 toPageIndex:(unsigned long long)arg2;

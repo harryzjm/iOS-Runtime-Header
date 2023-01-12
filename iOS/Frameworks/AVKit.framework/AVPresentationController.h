@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIPresentationController.h>
+#import <objc/NSObject.h>
 
-@class AVObservationController, AVPresentationContext, UIWindow;
+@class AVObservationController, AVPresentationContext, UIPresentationController, UIView, UIViewController, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface AVPresentationController : UIPresentationController
+@interface AVPresentationController : NSObject
 {
+    UIPresentationController *_presentationController;
     AVPresentationContext *_context;
     AVObservationController *_observationController;
     UIWindow *_presentationWindowForDisablingAutorotation;
@@ -27,11 +28,19 @@ __attribute__((visibility("hidden")))
 - (void)_ensureOrientation:(long long)arg1 enablingMixedOrientations:(_Bool)arg2;
 - (void)presentationTransitionDidEnd:(_Bool)arg1;
 - (void)presentationTransitionWillBegin;
+@property(readonly, nonatomic) UIView *presentedView;
+@property(readonly, nonatomic) UIView *containerView;
+@property(readonly, nonatomic) UIViewController *presentedViewController;
+@property(readonly, nonatomic) UIViewController *presentingViewController;
 - (void)containerViewWillLayoutSubviews;
+- (_Bool)dismissed;
+- (_Bool)presented;
+- (_Bool)presenting;
+- (_Bool)dismissing;
 - (_Bool)shouldPresentInFullscreen;
 - (_Bool)shouldRemovePresentersView;
 - (void)dealloc;
-- (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2 withConfiguration:(id)arg3;
+- (id)initWithPresentationController:(id)arg1 presentedViewController:(id)arg2 presentingViewController:(id)arg3 withConfiguration:(id)arg4;
 
 @end
 

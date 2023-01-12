@@ -6,13 +6,13 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSArray, SBDeviceApplicationSceneEntity, UIViewController;
+@class NSArray, SBDeviceApplicationSceneEntity, SBWindowScene, UIViewController;
 
 @protocol SBPIPControllerAdapterContextProviding <NSObject>
-@property(readonly, nonatomic) double windowLevel;
+- (double)windowLevelForWindowScene:(SBWindowScene *)arg1;
 - (void)invalidateIdleTimerBehaviors;
-- (void)restoreContentViewController:(UIViewController *)arg1 appSceneEntity:(SBDeviceApplicationSceneEntity *)arg2 morphAnimatorConfigurationBlock:(void (^)(SBPIPMorphAnimatorController *))arg3;
+- (void)restoreContentViewController:(UIViewController *)arg1 appSceneEntity:(SBDeviceApplicationSceneEntity *)arg2 morphAnimatorConfigurationBlock:(void (^)(SBPIPMorphAnimatorController *))arg3 completion:(void (^)(_Bool))arg4;
 - (void)prepareContainerViewControllerForHidingContentViewController:(UIViewController *)arg1;
-- (NSArray *)allContainerViewControllers;
+- (NSArray *)containerViewControllersOnWindowScene:(SBWindowScene *)arg1;
 @end
 

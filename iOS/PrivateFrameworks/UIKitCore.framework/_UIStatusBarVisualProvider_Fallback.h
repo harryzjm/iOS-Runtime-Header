@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIStatusBarVisualProvider-Protocol.h>
-
-@class NSArray, NSString, _UIStatusBar;
+@class NSArray, NSString, UIFont, _UIStatusBar;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_Fallback : NSObject <_UIStatusBarVisualProvider>
+@interface _UIStatusBarVisualProvider_Fallback : NSObject
 {
     _UIStatusBar *_statusBar;
     NSArray *_placements;
 }
 
++ (_Bool)requiresIterativeOverflowLayout;
++ (_Bool)scalesWithScreenNativeScale;
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *placements; // @synthesize placements=_placements;
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)styleAttributesForStyle:(long long)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
+@property(readonly, nonatomic) UIFont *clockFont;
 @property(readonly, nonatomic) _Bool supportsIndirectPointerTouchActions;
 
 // Remaining properties

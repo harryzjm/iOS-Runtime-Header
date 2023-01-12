@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/NSFilePresenter-Protocol.h>
-
 @class NSData, NSError, NSOperationQueue, NSSet, NSString, NSURL, TSUSandboxedURL, TSUURLTracker;
 @protocol OS_dispatch_queue, TSULogContext, TSUURLTrackerDelegate;
 
-@interface TSUURLTrackerFilePresenter : NSObject <NSFilePresenter>
+@interface TSUURLTrackerFilePresenter : NSObject
 {
     TSUURLTracker *_urlTracker;
     id <TSULogContext> _logContext;

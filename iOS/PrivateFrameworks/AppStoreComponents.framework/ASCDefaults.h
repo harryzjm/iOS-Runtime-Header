@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+@property(nonatomic) _Bool preferInternalJS;
+@property(copy, nonatomic) NSString *debugPackageURL;
 @property(nonatomic) _Bool forceStandaloneWatch;
 @property(nonatomic) _Bool enableWebInspector;
 @property(copy, nonatomic) NSNumber *overlaysLoadTimeout;

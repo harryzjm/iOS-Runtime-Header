@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/_SFSettingsAlertStepperConfiguration-Protocol.h>
-
 @class NSString, _SFSettingsAlertButton;
 
 __attribute__((visibility("hidden")))
-@interface _SFSettingsAlertStepper <_SFSettingsAlertStepperConfiguration>
+@interface _SFSettingsAlertStepper
 {
     _SFSettingsAlertButton *_incrementButton;
     _SFSettingsAlertButton *_decrementButton;

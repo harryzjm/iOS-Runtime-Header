@@ -10,6 +10,7 @@
 @property(nonatomic) double backlightLevel;
 - (_Bool)shouldDisableALS;
 - (void)startLockScreenFadeInAnimationForSource:(int)arg1;
+- (void)setInScreenOffMode:(_Bool)arg1 preservingCoverSheetPresentationState:(_Bool)arg2;
 - (void)setInScreenOffMode:(_Bool)arg1 forAutoUnlock:(_Bool)arg2 fromUnlockSource:(int)arg3;
 - (void)setInScreenOffMode:(_Bool)arg1;
 - (_Bool)isInScreenOffMode;

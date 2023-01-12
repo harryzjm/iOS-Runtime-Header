@@ -6,9 +6,10 @@
 
 #import <MapsUI/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class GEOAPPlaceCardModule;
+@class GEOAPPlaceCardModule, GEORevealedPlaceCardModule;
 
 @protocol MUInfoCardSectionAnalyticsDelegate <_MKInfoCardChildViewControllerAnalyticsDelegate>
+- (GEORevealedPlaceCardModule *)revealedAnalyticsModule;
 - (GEOAPPlaceCardModule *)analyticsModule;
 @end
 

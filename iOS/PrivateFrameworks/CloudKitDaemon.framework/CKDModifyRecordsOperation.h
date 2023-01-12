@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class C2RequestOptions, CKDDecryptRecordsOperation, CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMapTable, NSMutableDictionary, NSObject;
+@class C2RequestOptions, CKDDecryptRecordsOperation, CKDProtocolTranslator, NSArray, NSData, NSDictionary, NSMapTable, NSMutableDictionary, NSObject;
 @protocol CKModifyRecordsOperationCallbacks, OS_dispatch_queue;
 
 @interface CKDModifyRecordsOperation
 {
     CKDDecryptRecordsOperation *_decryptOperation;
+    _Bool _hasRecordsToSave;
+    _Bool _hasRecordsToDelete;
     _Bool _retryPCSFailures;
     _Bool _canSetPreviousProtectionEtag;
     _Bool _trustProtectionData;
@@ -23,6 +25,7 @@
     _Bool _markAsParticipantNeedsNewInvitationToken;
     _Bool _requestNeedsUserPublicKeys;
     _Bool _shouldModifyRecordsInDatabase;
+    _Bool _includeMergeableDeltasInModifyRecordsRequest;
     int _saveAttempts;
     NSData *_cachedUserBoundaryKeyData;
     CDUnknownBlockType _saveProgressBlock;
@@ -43,7 +46,6 @@
     NSMutableDictionary *_modifyHandlersByZoneID;
     long long _savePolicy;
     NSData *_clientChangeTokenData;
-    CKDRecordCache *_cache;
     CKDProtocolTranslator *_translator;
     NSObject<OS_dispatch_queue> *_modifyRecordsQueue;
     NSDictionary *_assetUUIDToExpectedProperties;
@@ -55,6 +57,7 @@
 + (long long)isPredominatelyDownload;
 + (_Bool)_claimPackagesInRecord:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool includeMergeableDeltasInModifyRecordsRequest; // @synthesize includeMergeableDeltasInModifyRecordsRequest=_includeMergeableDeltasInModifyRecordsRequest;
 @property(nonatomic) _Bool shouldModifyRecordsInDatabase; // @synthesize shouldModifyRecordsInDatabase=_shouldModifyRecordsInDatabase;
 @property(copy, nonatomic) C2RequestOptions *streamingAssetRequestOptions; // @synthesize streamingAssetRequestOptions=_streamingAssetRequestOptions;
 @property(retain, nonatomic) NSArray *userPublicKeys; // @synthesize userPublicKeys=_userPublicKeys;
@@ -70,7 +73,6 @@
 @property(nonatomic) _Bool haveOutstandingHandlers; // @synthesize haveOutstandingHandlers=_haveOutstandingHandlers;
 @property(nonatomic) _Bool shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
 @property(nonatomic) _Bool retriedRecords; // @synthesize retriedRecords=_retriedRecords;
-@property(retain, nonatomic) CKDRecordCache *cache; // @synthesize cache=_cache;
 @property(copy, nonatomic) NSData *clientChangeTokenData; // @synthesize clientChangeTokenData=_clientChangeTokenData;
 @property(nonatomic) long long savePolicy; // @synthesize savePolicy=_savePolicy;
 @property(nonatomic) int saveAttempts; // @synthesize saveAttempts=_saveAttempts;
@@ -103,13 +105,16 @@
 - (void)finishWithError:(id)arg1;
 - (void)_clearProtectionDataIfNotEntitled;
 - (void)main;
+- (void)_uploadMergeableDeltas;
 - (void)_continueRecordsModify;
 - (void)_reportRecordsInFlight;
 - (id)requestedFieldsByRecordIDForRecords:(id)arg1;
-- (id)_createModifyRequestWithRecordsToSave:(id)arg1 recordsToDelete:(id)arg2 recordsToDeleteToEtags:(id)arg3 recordIDsToDeleteToSigningPCSIdentity:(id)arg4 handlersByRecordID:(id)arg5;
+- (id)_createModifyRequestWithRecordsToSave:(id)arg1 recordsToDelete:(id)arg2 recordsToDeleteToEtags:(id)arg3 recordIDsToDeleteToSigningPCSIdentity:(id)arg4 handlersByRecordID:(id)arg5 sendMergeableDeltas:(_Bool)arg6;
+- (void)_handleReplaceDeltasRequest:(id)arg1 result:(id)arg2;
+- (void)_handleMergeableDeltaSavedForRecordID:(id)arg1 key:(id)arg2 result:(id)arg3;
 - (void)_handleRecordDeleted:(id)arg1 handler:(id)arg2 responseCode:(id)arg3;
-- (void)_reallyHandleRecordSaved:(id)arg1 handler:(id)arg2 etag:(id)arg3 dateStatistics:(id)arg4 responseCode:(id)arg5 keysAssociatedWithETag:(id)arg6 recordForOplockFailure:(id)arg7 decryptedServerRecord:(id)arg8;
-- (void)_handleRecordSaved:(id)arg1 handler:(id)arg2 etag:(id)arg3 dateStatistics:(id)arg4 responseCode:(id)arg5 keysAssociatedWithETag:(id)arg6 recordForOplockFailure:(id)arg7 serverRecord:(id)arg8;
+- (void)_reallyHandleRecordSaved:(id)arg1 handler:(id)arg2 etag:(id)arg3 dateStatistics:(id)arg4 expirationDate:(id)arg5 responseCode:(id)arg6 keysAssociatedWithETag:(id)arg7 recordForOplockFailure:(id)arg8 decryptedServerRecord:(id)arg9;
+- (void)_handleRecordSaved:(id)arg1 handler:(id)arg2 etag:(id)arg3 dateStatistics:(id)arg4 expirationDate:(id)arg5 responseCode:(id)arg6 keysAssociatedWithETag:(id)arg7 recordForOplockFailure:(id)arg8 serverRecord:(id)arg9;
 - (void)_verifyRecordEncryption;
 - (void)_handleDecryptionFailure:(id)arg1 forRecordID:(id)arg2;
 - (_Bool)_prepareRecordsForSave;
@@ -144,6 +149,8 @@
 - (_Bool)makeStateTransition;
 @property(readonly, nonatomic) _Bool hasDecryptOperation;
 @property(readonly, nonatomic) CKDDecryptRecordsOperation *recordDecryptOperation;
+- (id)handlerForDeleteWithRecordID:(id)arg1;
+- (id)handlerForSaveWithRecord:(id)arg1;
 - (_Bool)isOperationType:(int)arg1;
 - (int)operationType;
 - (void)_enumerateHandlersInState:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;

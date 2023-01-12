@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionViewFlowLayout.h"
+
+@class NSMutableArray, NSMutableDictionary;
+
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiLayout
+@interface UIKeyboardEmojiLayout : UICollectionViewFlowLayout
 {
-    id *_attributes;
-    double *_headerWidths;
-    long long _arrayLength;
+    NSMutableDictionary *_attributes;
+    NSMutableArray *_headerWidths;
 }
 
 + (Class)invalidationContextClass;
+- (void).cxx_destruct;
 - (id)invalidationContextForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (_Bool)shouldInvalidateLayoutForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
@@ -22,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (void)prepareLayout;
-- (void)_setAttributes:(id)arg1 ForSection:(long long)arg2;
+- (void)_setAttributes:(id)arg1 forSection:(long long)arg2;
 - (void)dealloc;
 
 @end

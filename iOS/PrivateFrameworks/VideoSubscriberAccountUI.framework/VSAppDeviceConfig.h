@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccountUI/IKAppDeviceConfig-Protocol.h>
-
 @class NSOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSAppDeviceConfig : NSObject <IKAppDeviceConfig>
+@interface VSAppDeviceConfig : NSObject
 {
     NSOperationQueue *_privateQueue;
 }

@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BusinessChatService/BCSFilterShardItemProtocol-Protocol.h>
-#import <BusinessChatService/NSCopying-Protocol.h>
-#import <BusinessChatService/NSSecureCoding-Protocol.h>
-
 @class NSDate, NSString, _PASBloomFilter;
 
 __attribute__((visibility("hidden")))
-@interface BCSFilterShardItem <BCSFilterShardItemProtocol, NSCopying, NSSecureCoding>
+@interface BCSFilterShardItem
 {
     _PASBloomFilter *_bloomFilter;
 }

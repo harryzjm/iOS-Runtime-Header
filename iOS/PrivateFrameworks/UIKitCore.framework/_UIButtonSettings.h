@@ -6,12 +6,10 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-#import <UIKitCore/PTSettingsKeyObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIButtonSettings : PTSettings <PTSettingsKeyObserver>
+@interface _UIButtonSettings : PTSettings
 {
     _Bool _highlightMode;
     _Bool _highlightSubclasses;

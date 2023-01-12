@@ -9,6 +9,8 @@
 @interface NSDictionary (EmailFoundationAdditions)
 - (id)ef_mapValues:(CDUnknownBlockType)arg1;
 - (id)ef_filter:(CDUnknownBlockType)arg1;
+- (_Bool)ef_any:(CDUnknownBlockType)arg1;
+- (_Bool)ef_all:(CDUnknownBlockType)arg1;
 - (id)ef_objectOfClass:(Class)arg1 forKey:(id)arg2;
 @end
 

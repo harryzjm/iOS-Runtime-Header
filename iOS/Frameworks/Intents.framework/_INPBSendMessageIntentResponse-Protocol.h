@@ -6,10 +6,16 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBMessage;
+@class NSArray, _INPBMessage;
 
 @protocol _INPBSendMessageIntentResponse <NSObject>
++ (Class)sentMessagesType;
+@property(readonly, nonatomic) unsigned long long sentMessagesCount;
+@property(copy, nonatomic) NSArray *sentMessages;
 @property(readonly, nonatomic) _Bool hasSentMessage;
 @property(retain, nonatomic) _INPBMessage *sentMessage;
+- (_INPBMessage *)sentMessagesAtIndex:(unsigned long long)arg1;
+- (void)addSentMessages:(_INPBMessage *)arg1;
+- (void)clearSentMessages;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PDFKit/NSCopying-Protocol.h>
-
 @class PDFFormPrivateVars;
 
 __attribute__((visibility("hidden")))
-@interface PDFForm : NSObject <NSCopying>
+@interface PDFForm : NSObject
 {
     PDFFormPrivateVars *_private;
 }

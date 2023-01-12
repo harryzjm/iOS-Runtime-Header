@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNPropertyGroupItem.h"
+
 @class CNPhoneNumber;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyGroupPhoneItem
+@interface CNPropertyGroupPhoneItem : CNPropertyGroupItem
 {
 }
 

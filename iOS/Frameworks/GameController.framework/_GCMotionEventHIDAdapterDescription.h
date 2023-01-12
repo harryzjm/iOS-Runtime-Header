@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCMotionEventSourceDescription-Protocol.h>
-
 @class NSString, _GCCControllerHIDServiceInfoDescription, _GCMotionEventHIDAdapter;
 @protocol _GCHIDEventSourceDescription;
 
 __attribute__((visibility("hidden")))
-@interface _GCMotionEventHIDAdapterDescription : NSObject <_GCMotionEventSourceDescription>
+@interface _GCMotionEventHIDAdapterDescription : NSObject
 {
     id <_GCHIDEventSourceDescription> _sourceDescription;
     _GCCControllerHIDServiceInfoDescription *_serviceDescription;

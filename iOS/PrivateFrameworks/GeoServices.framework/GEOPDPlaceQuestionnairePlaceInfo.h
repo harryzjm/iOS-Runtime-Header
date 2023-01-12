@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDMapsIdentifier, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDPlaceQuestionnairePlaceInfo : PBCodable <NSCopying>
+@interface GEOPDPlaceQuestionnairePlaceInfo : PBCodable
 {
     PBDataReader *_reader;
     NSString *_countryCode;

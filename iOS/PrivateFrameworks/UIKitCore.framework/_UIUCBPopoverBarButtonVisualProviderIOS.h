@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (long long)_securePasteButtonSite;
 - (id)init;
 
 @end

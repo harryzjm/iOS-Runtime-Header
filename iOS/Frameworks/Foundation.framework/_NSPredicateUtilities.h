@@ -61,6 +61,9 @@ __attribute__((visibility("hidden")))
 + (id)min:(id)arg1;
 + (id)count:(id)arg1;
 + (id)sum:(id)arg1;
++ (void)initialize;
++ (void)_setDebugPredicateTestAction:(_Bool)arg1;
++ (void)_setDebugPredicateSecurityScoping:(_Bool)arg1;
 - (double)distanceFromLocation:(id)arg1;
 
 @end

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <PaperKit/PKLinedPaperLayerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8PaperKit14LinedPaperView : UIView <PKLinedPaperLayerDelegate>
+@interface _TtC8PaperKit14LinedPaperView : UIView
 {
     MISSING_TYPE *linedPaperLayer;
     MISSING_TYPE *linedPaper;

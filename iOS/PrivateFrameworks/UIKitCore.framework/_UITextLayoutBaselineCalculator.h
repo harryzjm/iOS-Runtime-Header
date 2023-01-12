@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITextLayoutBaselineCalculator-Protocol.h>
-
-@class NSDictionary, NSString, _UITextLayoutController;
-@protocol UICoordinateSpace;
+@class NSDictionary, NSString, _UITextLayoutControllerBase;
+@protocol UICoordinateSpace, _UITextLayoutController;
 
 __attribute__((visibility("hidden")))
-@interface _UITextLayoutBaselineCalculator : NSObject <_UITextLayoutBaselineCalculator>
+@interface _UITextLayoutBaselineCalculator : NSObject
 {
-    _UITextLayoutController *_textLayoutController;
+    _UITextLayoutControllerBase<_UITextLayoutController> *_textLayoutController;
     NSDictionary *_typingAttributes;
     id <UICoordinateSpace> _coordinateSpace;
     double _scale;
+    _Bool _usesLineFragmentOrigin;
+    struct CGPoint _fallbackTextContainerOrigin;
 }
 
 - (void).cxx_destruct;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double lastBaselineOffsetFromBottom;
 @property(readonly, nonatomic) double firstBaselineOffsetFromTop;
 - (double)_baselineOffsetAtPosition:(id)arg1;
-- (id)initWithTextLayoutController:(id)arg1 typingAttributes:(id)arg2 coordinateSpace:(id)arg3 scale:(double)arg4;
+- (id)initWithTextLayoutController:(id)arg1 typingAttributes:(id)arg2 usesLineFragmentOrigin:(_Bool)arg3 coordinateSpace:(id)arg4 scale:(double)arg5 fallbackTextContainerOrigin:(struct CGPoint)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

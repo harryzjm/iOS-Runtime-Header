@@ -6,11 +6,9 @@
 
 #import <HealthKit/_HKFitnessFriendAchievement.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface _HKFitnessFriendAchievement (HDCodingSupport) <HDCoding>
+@interface _HKFitnessFriendAchievement (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;

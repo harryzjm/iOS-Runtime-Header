@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_semaphore> *readySemaphore;
     NSObject<OS_nw_listener> *listener;
     int listenerState;
-    struct os_unfair_lock_s layerLock;
     void *layer;
 }
 

@@ -45,13 +45,6 @@ struct Message {
     struct InternalMetadata _field2;
 };
 
-struct UIEdgeInsets {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -72,35 +65,11 @@ struct shared_ptr<TSKCO::AbstractOperation> {
     struct __shared_weak_count *_field2;
 };
 
-struct vector<TSKOperationPropertyId, std::allocator<TSKOperationPropertyId>> {
-    unsigned short *_field1;
-    unsigned short *_field2;
-    struct __compressed_pair<TSKOperationPropertyId *, std::allocator<TSKOperationPropertyId>> {
-        unsigned short *_field1;
-    } _field3;
-};
-
 struct vector<TSU::UUIDData<TSP::UUIDData>, std::allocator<TSU::UUIDData<TSP::UUIDData>>> {
     void *__begin_;
     void *__end_;
     struct __compressed_pair<TSU::UUIDData<TSP::UUIDData>*, std::allocator<TSU::UUIDData<TSP::UUIDData>>> {
         void *__value_;
-    } __end_cap_;
-};
-
-struct vector<_NSRange, std::allocator<_NSRange>> {
-    struct _NSRange *__begin_;
-    struct _NSRange *__end_;
-    struct __compressed_pair<_NSRange *, std::allocator<_NSRange>> {
-        struct _NSRange *__value_;
-    } __end_cap_;
-};
-
-struct vector<unsigned int, std::allocator<unsigned int>> {
-    unsigned int *__begin_;
-    unsigned int *__end_;
-    struct __compressed_pair<unsigned int *, std::allocator<unsigned int>> {
-        unsigned int *__value_;
     } __end_cap_;
 };
 
@@ -130,55 +99,9 @@ typedef struct {
     CDStruct_1b6d18a9 duration;
 } CDStruct_e83c9415;
 
-typedef struct {
-    unsigned int _field1;
-    union {
-        struct {
-            unsigned int :16;
-            unsigned int :8;
-            unsigned int :3;
-            unsigned int :1;
-            unsigned int :1;
-        } _field1;
-        struct {
-            unsigned int :8;
-        } _field2;
-        struct {
-            unsigned int :8;
-            unsigned int :8;
-            unsigned int :1;
-        } _field3;
-        struct {
-            unsigned int :1;
-            unsigned int :1;
-            id _field1;
-        } _field4;
-        struct {
-            unsigned int :1;
-            unsigned char _field1;
-            unsigned char _field2;
-            unsigned char _field3;
-        } _field5;
-        struct {
-            id _field1;
-            id _field2;
-            unsigned int _field3;
-            unsigned char _field4;
-        } _field6;
-    } _field2;
-} CDStruct_fef6b84f;
-
 // Template types
 typedef struct shared_ptr<TSKCO::AbstractOperation> {
     struct AbstractOperation *_field1;
     struct __shared_weak_count *_field2;
 } shared_ptr_f167ad79;
-
-typedef struct vector<TSKOperationPropertyId, std::allocator<TSKOperationPropertyId>> {
-    unsigned short *_field1;
-    unsigned short *_field2;
-    struct __compressed_pair<TSKOperationPropertyId *, std::allocator<TSKOperationPropertyId>> {
-        unsigned short *_field1;
-    } _field3;
-} vector_9203507d;
 

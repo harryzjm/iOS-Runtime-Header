@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/_SFSaveToFilesOperationDelegate-Protocol.h>
+#import "_SFActivity.h"
 
 @class NSString, UIViewController, _SFActivityItemCustomizationController, _SFSaveToFilesOperation;
 
 __attribute__((visibility("hidden")))
-@interface SFSaveToFilesActivity <_SFSaveToFilesOperationDelegate>
+@interface SFSaveToFilesActivity : _SFActivity
 {
     _SFSaveToFilesOperation *_operation;
     UIViewController *_presenterViewController;

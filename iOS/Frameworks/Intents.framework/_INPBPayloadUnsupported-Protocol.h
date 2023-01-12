@@ -26,6 +26,8 @@
 @property(nonatomic) int setTimerAttributeIntentTargetTimerUnsupportedReason;
 @property(nonatomic) _Bool hasAddTasksIntentTargetTaskListMembersUnsupportedReason;
 @property(nonatomic) int addTasksIntentTargetTaskListMembersUnsupportedReason;
+@property(nonatomic) _Bool hasTargetEventUnsupportedReason;
+@property(nonatomic) int targetEventUnsupportedReason;
 @property(nonatomic) _Bool hasSaveHealthSampleIntentRecordDateUnsupportedReason;
 @property(nonatomic) int saveHealthSampleIntentRecordDateUnsupportedReason;
 @property(nonatomic) _Bool hasSendAnnouncementIntentRecipientsUnsupportedReason;
@@ -46,6 +48,10 @@
 @property(nonatomic) int requestPaymentIntentPayerUnsupportedReason;
 @property(nonatomic) _Bool hasSendPaymentIntentPayeeUnsupportedReason;
 @property(nonatomic) int sendPaymentIntentPayeeUnsupportedReason;
+@property(nonatomic) _Bool hasAddCallParticipantIntentParticipantsUnsupportedReason;
+@property(nonatomic) int addCallParticipantIntentParticipantsUnsupportedReason;
+@property(nonatomic) _Bool hasParticipantUnsupportedReason;
+@property(nonatomic) int participantUnsupportedReason;
 @property(nonatomic) _Bool hasUpdateMediaAffinityIntentMediaItemsUnsupportedReason;
 @property(nonatomic) int updateMediaAffinityIntentMediaItemsUnsupportedReason;
 @property(nonatomic) _Bool hasSearchForMediaIntentMediaItemsUnsupportedReason;
@@ -64,6 +70,8 @@
 @property(nonatomic) int joinCallIntentGroupConversationUnsupportedReason;
 @property(nonatomic) _Bool hasFindDeviceAndPlaySoundIntentDeviceUnsupportedReason;
 @property(nonatomic) int findDeviceAndPlaySoundIntentDeviceUnsupportedReason;
+@property(nonatomic) _Bool hasDateTimeRangeUnsupportedReason;
+@property(nonatomic) int dateTimeRangeUnsupportedReason;
 @property(nonatomic) _Bool hasCustomUnsupportedReason;
 @property(nonatomic) unsigned int customUnsupportedReason;
 @property(nonatomic) _Bool hasSendPaymentIntentCurrencyAmountUnsupportedReason;
@@ -110,6 +118,8 @@
 - (NSString *)setTimerAttributeIntentTargetTimerUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsAddTasksIntentTargetTaskListMembersUnsupportedReason:(NSString *)arg1;
 - (NSString *)addTasksIntentTargetTaskListMembersUnsupportedReasonAsString:(int)arg1;
+- (int)StringAsTargetEventUnsupportedReason:(NSString *)arg1;
+- (NSString *)targetEventUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsSaveHealthSampleIntentRecordDateUnsupportedReason:(NSString *)arg1;
 - (NSString *)saveHealthSampleIntentRecordDateUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsSendAnnouncementIntentRecipientsUnsupportedReason:(NSString *)arg1;
@@ -130,6 +140,10 @@
 - (NSString *)requestPaymentIntentPayerUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsSendPaymentIntentPayeeUnsupportedReason:(NSString *)arg1;
 - (NSString *)sendPaymentIntentPayeeUnsupportedReasonAsString:(int)arg1;
+- (int)StringAsAddCallParticipantIntentParticipantsUnsupportedReason:(NSString *)arg1;
+- (NSString *)addCallParticipantIntentParticipantsUnsupportedReasonAsString:(int)arg1;
+- (int)StringAsParticipantUnsupportedReason:(NSString *)arg1;
+- (NSString *)participantUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsUpdateMediaAffinityIntentMediaItemsUnsupportedReason:(NSString *)arg1;
 - (NSString *)updateMediaAffinityIntentMediaItemsUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsSearchForMediaIntentMediaItemsUnsupportedReason:(NSString *)arg1;
@@ -148,6 +162,8 @@
 - (NSString *)joinCallIntentGroupConversationUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsFindDeviceAndPlaySoundIntentDeviceUnsupportedReason:(NSString *)arg1;
 - (NSString *)findDeviceAndPlaySoundIntentDeviceUnsupportedReasonAsString:(int)arg1;
+- (int)StringAsDateTimeRangeUnsupportedReason:(NSString *)arg1;
+- (NSString *)dateTimeRangeUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsSendPaymentIntentCurrencyAmountUnsupportedReason:(NSString *)arg1;
 - (NSString *)sendPaymentIntentCurrencyAmountUnsupportedReasonAsString:(int)arg1;
 - (int)StringAsRequestPaymentIntentCurrencyAmountUnsupportedReason:(NSString *)arg1;

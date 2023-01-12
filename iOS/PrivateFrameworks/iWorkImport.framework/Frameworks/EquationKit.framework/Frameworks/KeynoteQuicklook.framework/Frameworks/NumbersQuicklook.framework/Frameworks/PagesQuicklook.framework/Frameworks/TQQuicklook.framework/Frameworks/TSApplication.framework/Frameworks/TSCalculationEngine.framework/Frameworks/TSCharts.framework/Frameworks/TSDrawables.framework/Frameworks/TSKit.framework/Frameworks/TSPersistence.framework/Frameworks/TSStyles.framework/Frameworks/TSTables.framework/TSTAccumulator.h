@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSULocale;
 
-@interface TSTAccumulator : NSObject <NSCopying>
+@interface TSTAccumulator : NSObject
 {
     unsigned int _boolCount;
     unsigned int _boolTrueCount;

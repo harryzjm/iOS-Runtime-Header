@@ -4,22 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct Fields {
-    NSString *identifier;
-    unsigned int family:2;
-    unsigned int tagQuantity:1;
-    unsigned int nodeType:1;
-    unsigned int reservedFlags:4;
-    char preferredExtension[7];
-};
 
 struct UTHardwareColor {
     unsigned char _field1;

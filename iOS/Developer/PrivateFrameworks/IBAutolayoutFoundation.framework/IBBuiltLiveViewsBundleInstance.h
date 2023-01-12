@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface IBBuiltLiveViewsBundleInstance : NSObject <IBBinaryArchiving>
+@interface IBBuiltLiveViewsBundleInstance : NSObject
 {
     NSString *_bundlePath;
     NSString *_projectSourceDirectory;

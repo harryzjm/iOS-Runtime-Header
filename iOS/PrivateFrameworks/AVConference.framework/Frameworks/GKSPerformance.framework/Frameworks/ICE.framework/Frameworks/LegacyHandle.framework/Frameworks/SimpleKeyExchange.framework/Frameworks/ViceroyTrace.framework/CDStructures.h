@@ -19,13 +19,6 @@ struct os_unfair_lock_s {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned int linkProbingVersion;
-    unsigned int remoteLinkProbingVersion;
-    double localAlertDuration;
-    double remoteAlertDuration;
-} CDStruct_4bc0a271;
-
-typedef struct {
     int twoPtFourGhzChannelCount;
     int fiveGhzChannelCount;
     int dfsChannelCount;

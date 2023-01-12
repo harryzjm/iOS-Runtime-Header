@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC15_MapKit_SwiftUI21SwiftUIAnnotationView : MKAnnotationView
 {
     MISSING_TYPE *wrappedView;
-    MISSING_TYPE *anchorPoint;
+    MISSING_TYPE *contentAnchorPoint;
     MISSING_TYPE *model;
     MISSING_TYPE *hostView;
 }

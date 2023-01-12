@@ -8,6 +8,7 @@
 @protocol ICSAppendable;
 
 @protocol ICSWriting
+- (NSSet *)propertiesToHide;
 - (_Bool)shouldObscureValue;
 - (NSSet *)parametersToObscure;
 - (NSSet *)propertiesToObscure;

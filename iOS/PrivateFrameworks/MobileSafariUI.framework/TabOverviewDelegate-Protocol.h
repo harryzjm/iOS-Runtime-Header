@@ -9,6 +9,7 @@
 @class NSArray, TabOverview, TabOverviewItem;
 
 @protocol TabOverviewDelegate <TabThumbnailCollectionViewDelegate>
+- (_Bool)tabOverviewShouldReserveSpaceForSidebarButton:(TabOverview *)arg1;
 - (void)tabOverview:(TabOverview *)arg1 closeItems:(NSArray *)arg2;
 - (void)tabOverview:(TabOverview *)arg1 willInteractivelyCloseItem:(TabOverviewItem *)arg2;
 - (void)tabOverviewWillUpdateInteractivePresentation:(TabOverview *)arg1;

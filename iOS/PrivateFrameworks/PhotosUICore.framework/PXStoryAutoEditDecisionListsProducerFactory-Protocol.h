@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol PXDisplayAssetCollection, PXDisplayAssetFetchResult, PXStoryAutoEditDecisionListsProducer, PXStoryMovieHighlightsCollection;
+@protocol PXDisplayAssetCollection, PXDisplayAssetFetchResult, PXStoryAutoEditDecisionListsProducer, PXStoryChapterCollection, PXStoryMovieHighlightsCollection;
 
 @protocol PXStoryAutoEditDecisionListsProducerFactory
 - (id <PXStoryAutoEditDecisionListsProducer>)fallbackAutoEditDecisionListsProducer;
-- (id <PXStoryAutoEditDecisionListsProducer>)autoEditDecisionListsProducerForAssetCollection:(id <PXDisplayAssetCollection>)arg1 displayAssets:(id <PXDisplayAssetFetchResult>)arg2 movieHighlights:(id <PXStoryMovieHighlightsCollection>)arg3 targetOverallDurationInfo:(CDStruct_5d4c7ed3)arg4;
+- (id <PXStoryAutoEditDecisionListsProducer>)autoEditDecisionListsProducerForAssetCollection:(id <PXDisplayAssetCollection>)arg1 displayAssets:(id <PXDisplayAssetFetchResult>)arg2 movieHighlights:(id <PXStoryMovieHighlightsCollection>)arg3 chapterCollection:(id <PXStoryChapterCollection>)arg4 targetOverallDurationInfo:(CDStruct_9ee4859c)arg5;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/UITableViewDataSource-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface TMLUITableViewDataSource : NSObject <UITableViewDataSource>
+@interface TMLUITableViewDataSource : NSObject
 {
     NSArray *_sections;
 }

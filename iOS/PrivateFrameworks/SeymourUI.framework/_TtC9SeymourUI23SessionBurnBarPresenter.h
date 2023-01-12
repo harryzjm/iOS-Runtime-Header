@@ -11,6 +11,7 @@
 @interface _TtC9SeymourUI23SessionBurnBarPresenter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *display;
+    MISSING_TYPE *externalOverlayDisplay;
     MISSING_TYPE *_activityRings;
     MISSING_TYPE *activityRingsSubscriptionToken;
     MISSING_TYPE *activityTypeBehavior;
@@ -27,6 +28,7 @@
     MISSING_TYPE *rollingScoreGenerator;
     MISSING_TYPE *rollingScoreGeneratorSubscription;
     MISSING_TYPE *rollingScoreMetricSubscription;
+    MISSING_TYPE *_durationRequiredForShowingScore;
     MISSING_TYPE *_alwaysFakeCommunityScores;
     MISSING_TYPE *_fakeCommunityScoresOnFailure;
     MISSING_TYPE *catalogWorkout;

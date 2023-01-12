@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "VKMapViewAccessibilityElementManagerDelegate-Protocol.h"
-
-@interface VKMapViewAccessibility <VKMapViewAccessibilityElementManagerDelegate>
+@interface VKMapViewAccessibility
 {
 }
 
@@ -117,6 +115,7 @@
 - (id)accessibilityElements;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axInitializeTimers;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (void)_axSetCurrentLocationText:(id)arg1;
 - (id)_axCurrentLocationText;
 

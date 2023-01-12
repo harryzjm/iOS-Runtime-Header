@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/WBSFormAutoFillFrame-Protocol.h>
-
 @class NSString, WKWebProcessPlugInFrame;
 
 __attribute__((visibility("hidden")))
-@interface SFFormAutoFillFrame : NSObject <WBSFormAutoFillFrame>
+@interface SFFormAutoFillFrame : NSObject
 {
     WKWebProcessPlugInFrame *_plugInFrame;
 }

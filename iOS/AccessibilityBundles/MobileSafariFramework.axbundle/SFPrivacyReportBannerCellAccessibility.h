@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_axMarkupTrackerLabel;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

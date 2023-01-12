@@ -35,6 +35,7 @@
 - (id)vk_pathFromFlippingInRect:(struct CGRect)arg1;
 - (void)vk_applyTransform:(struct CGAffineTransform)arg1;
 @property(readonly, nonatomic) NSMutableArray *vk_allPoints;
+@property(readonly, nonatomic) double vk_lengthIgnoringCurves;
 @property(readonly, nonatomic) struct CGPoint vk_centroid;
 - (void)vk_appendBezierPath:(id)arg1;
 - (void)vk_addCurveToPoint:(struct CGPoint)arg1 controlPoint1:(struct CGPoint)arg2 controlPoint2:(struct CGPoint)arg3;

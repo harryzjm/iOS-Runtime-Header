@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEXPCConnectionOrigin-Protocol.h>
-
 @class NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface AEForwardingXPCConnectionOrigin : NSObject <AEXPCConnectionOrigin>
+@interface AEForwardingXPCConnectionOrigin : NSObject
 {
     NSXPCConnection *_connection;
 }

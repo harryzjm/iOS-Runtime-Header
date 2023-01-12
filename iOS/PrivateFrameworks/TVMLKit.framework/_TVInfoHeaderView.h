@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TVInfoHeaderView : UIView <TVAppTemplateImpressionable>
+@interface _TVInfoHeaderView : UIView
 {
     UIView *_headerView;
 }

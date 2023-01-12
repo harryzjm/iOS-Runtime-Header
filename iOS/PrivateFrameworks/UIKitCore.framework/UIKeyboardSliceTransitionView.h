@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     } _rebuildFlags;
 }
 
+- (void).cxx_destruct;
 - (_Bool)canDisplayTransition;
 - (void)updateWithProgress:(double)arg1;
 - (void)rebuildControlKeys:(unsigned long long)arg1;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSWPAdornmentLineRenderingDelegate-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface TSWPTextHighlightRenderingDelegate : NSObject <TSWPAdornmentLineRenderingDelegate>
+@interface TSWPTextHighlightRenderingDelegate : NSObject
 {
     NSArray *_highlights;
 }

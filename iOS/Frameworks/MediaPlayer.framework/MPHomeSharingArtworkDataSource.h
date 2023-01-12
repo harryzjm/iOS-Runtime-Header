@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlayer/MPArtworkDataSourceIdentifiable-Protocol.h>
+#import "MPAbstractNetworkArtworkDataSource.h"
 
 @class HSHomeSharingLibrary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPHomeSharingArtworkDataSource <MPArtworkDataSourceIdentifiable>
+@interface MPHomeSharingArtworkDataSource : MPAbstractNetworkArtworkDataSource
 {
     HSHomeSharingLibrary *_library;
 }

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableArray, PDFAKOverlayAdaptor, PDFAnnotation, PDFCoachMarkManager, PDFDocument, PDFDocumentViewController, PDFPage, PDFPasswordViewController, PDFRenderingProperties, PDFScrollView, PDFSelection, PDFTimer, PDFViewController, PDFViewLayout, UIDragInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer;
+@class NSArray, NSDictionary, NSMutableArray, PDFAnnotation, PDFCoachMarkManager, PDFDocument, PDFDocumentViewController, PDFPage, PDFPasswordViewController, PDFRenderingProperties, PDFScrollView, PDFSelection, PDFTimer, PDFViewController, PDFViewLayout, UIDragInteraction, UIFindInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol OS_dispatch_queue, PDFViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     id <PDFViewDelegate> delegate;
     _Bool delegateWillScale;
     _Bool delegateOrdersPageDrawing;
+    _Bool delegateRespondsToAllowFormFilling;
     double gutterWide;
     _Bool displaysPageBreaks;
     struct UIEdgeInsets pageBreakMargins;
@@ -35,11 +36,11 @@ __attribute__((visibility("hidden")))
     unsigned long long lastVerticalScrollDirection;
     unsigned long long lastHorizontalScrollDirection;
     _Bool displaysBookmarksForPages;
-    unsigned long long currentPageIndex;
     unsigned long long firstVisiblePage;
     unsigned long long lastVisiblePage;
     _Bool inhibitAutoScroll;
     PDFPage *fromPage;
+    PDFPage *toPage;
     PDFTimer *pageSyncTimer;
     NSObject<OS_dispatch_queue> *pagePreloadQueue;
     NSMutableArray *destinationHistory;
@@ -47,14 +48,16 @@ __attribute__((visibility("hidden")))
     NSArray *highlights;
     PDFCoachMarkManager *coachMarkManager;
     PDFPasswordViewController *passwordViewController;
-    PDFAnnotation *currentTextWidget;
-    PDFAKOverlayAdaptor *akOverlayAdaptor;
+    PDFAnnotation *annotationOver;
     _Bool showsScrollIndicators;
     _Bool dataDetectorsEnabled;
     _Bool debugDrawCGPDFNodeLayer[11];
+    _Bool debugDrawCGPDFTextBoundingBoxesLayer[8];
+    _Bool debugDrawCGPDFNodeBoundingBoxesLayer[11];
     _Bool wantsForceUpdate;
     double blockingWaitDuration;
     unsigned long long activeMarkupStyle;
+    _Bool inFormFillingMode;
     UILongPressGestureRecognizer *longPressGestureRecognizer;
     UITapGestureRecognizer *tapGestureRecognizer;
     UITapGestureRecognizer *doubleTapGestureRecognizer;
@@ -62,6 +65,7 @@ __attribute__((visibility("hidden")))
     PDFDocumentViewController *documentViewController;
     NSDictionary *pageViewControllerOptions;
     UIDragInteraction *dragInteraction;
+    UIFindInteraction *findInteraction;
     struct UIEdgeInsets savedSafeAreaInsets;
     double horizontalScaleFactorBeforeRotation;
     struct CGPoint documentViewCenterBeforeRotation;

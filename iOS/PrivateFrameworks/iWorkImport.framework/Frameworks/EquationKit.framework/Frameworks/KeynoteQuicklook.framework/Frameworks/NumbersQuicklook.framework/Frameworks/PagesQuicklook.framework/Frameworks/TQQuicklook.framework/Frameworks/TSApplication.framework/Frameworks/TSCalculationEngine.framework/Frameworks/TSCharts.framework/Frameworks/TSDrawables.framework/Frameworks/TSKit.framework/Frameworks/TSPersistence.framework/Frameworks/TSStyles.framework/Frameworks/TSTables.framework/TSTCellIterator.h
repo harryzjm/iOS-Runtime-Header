@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTCellIterating-Protocol.h>
-
 @class NSString, TSTCell, TSTCellRegion, TSTMutableCellIteratorData, TSTTableInfo, TSTTableModel;
 @protocol TSTCellRegionIterating, TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating;
 
-@interface TSTCellIterator : NSObject <TSTCellIterating>
+@interface TSTCellIterator : NSObject
 {
     struct unordered_map<unsigned short, TSUCellRect, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, TSUCellRect>>> _columnIndexToMergeRangeMap;
     _Bool _returnCellContents;

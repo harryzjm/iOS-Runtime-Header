@@ -8,7 +8,5 @@
 
 @interface RBSProcessIdentity (FBProcess)
 - (Class)fb_processClass;
-- (_Bool)fb_canTaskSuspend;
-- (_Bool)fb_supportsBeingLaunched;
 @end
 

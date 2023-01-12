@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOStyleAttributes, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDMiniBrowseCategory : PBCodable <NSCopying>
+@interface GEOPDMiniBrowseCategory : PBCodable
 {
     PBUnknownFields *_unknownFields;
     GEOStyleAttributes *_styleAttributes;

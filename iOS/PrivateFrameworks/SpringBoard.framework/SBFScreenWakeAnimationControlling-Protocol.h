@@ -6,13 +6,13 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, SBFLockScreenDateView;
 @protocol SBFScreenWakeAnimationTarget;
 
 @protocol SBFScreenWakeAnimationControlling <NSObject>
 - (void)setScreenWakeTemporarilyDisabled:(_Bool)arg1 forReason:(NSString *)arg2;
 - (void)sleepForSource:(long long)arg1 target:(id <SBFScreenWakeAnimationTarget>)arg2 completion:(void (^)(void))arg3;
-- (void)prepareToWakeForSource:(long long)arg1 timeAlpha:(double)arg2 statusBarAlpha:(double)arg3 target:(id <SBFScreenWakeAnimationTarget>)arg4 completion:(void (^)(void))arg5;
+- (void)prepareToWakeForSource:(long long)arg1 timeAlpha:(double)arg2 statusBarAlpha:(double)arg3 target:(id <SBFScreenWakeAnimationTarget>)arg4 dateView:(SBFLockScreenDateView *)arg5 completion:(void (^)(void))arg6;
 - (_Bool)interruptSleepAnimationIfNeeded;
 - (_Bool)isSleepAnimationInProgress;
 - (_Bool)isWakeAnimationInProgressForSource:(long long)arg1;

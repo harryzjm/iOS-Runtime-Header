@@ -12,8 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)cellStyle;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)layoutSubviews;
+- (void)updateConfigurationUsingState:(id)arg1;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 
 @end

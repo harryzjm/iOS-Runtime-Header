@@ -6,13 +6,12 @@
 
 #import <BusinessChatService/NSObject-Protocol.h>
 
-@class BCSBusinessLinkFetchMetric, BCSBusinessLinkHashFetchMetric, BCSBusinessLinkRegisteredMetric, BCSChatSuggestFetchMetric, BCSChatSuggestRegisteredMetric, BCSConfigPrefetchMetric, BCSConfigResolutionMetric, BCSItemResolutionMetric, BCSMegashardPrefetchMetric, BCSShardResolutionMetric;
+@class BCSBusinessLinkFetchMetric, BCSBusinessLinkHashFetchMetric, BCSBusinessLinkRegisteredMetric, BCSChatSuggestFetchMetric, BCSChatSuggestRegisteredMetric, BCSConfigResolutionMetric, BCSItemResolutionMetric, BCSMegashardFetchMetric, BCSShardResolutionMetric;
 @protocol BCSItemIdentifying, BCSMeasurementFactoryProtocol, BCSShardItemIdentifying;
 
 @protocol BCSMetricFactoryProtocol <NSObject>
 @property(readonly, nonatomic) id <BCSMeasurementFactoryProtocol> measurementFactory;
-- (BCSMegashardPrefetchMetric *)megashardPrefetchMetricForType:(long long)arg1;
-- (BCSConfigPrefetchMetric *)configPrefetchMetricForConfigType:(long long)arg1;
+- (BCSMegashardFetchMetric *)megashardFetchMetricForType:(long long)arg1;
 - (BCSChatSuggestFetchMetric *)chatSuggestFetchMetricForItemIdentifier:(id <BCSItemIdentifying>)arg1;
 - (BCSChatSuggestRegisteredMetric *)chatSuggestRegisteredMetricForItemIdentifier:(id <BCSItemIdentifying>)arg1;
 - (BCSBusinessLinkHashFetchMetric *)businessLinkHashFetchMetricForItemIdentifier:(id <BCSItemIdentifying>)arg1;

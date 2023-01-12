@@ -4,72 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
-
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CATransform3D {
-    double m11;
-    double m12;
-    double m13;
-    double m14;
-    double m21;
-    double m22;
-    double m23;
-    double m24;
-    double m31;
-    double m32;
-    double m33;
-    double m34;
-    double m41;
-    double m42;
-    double m43;
-    double m44;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+    double _field10;
+    double _field11;
+    double _field12;
+    double _field13;
+    double _field14;
+    double _field15;
+    double _field16;
 };
 
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    MISSING_TYPE *columns[4];
-} CDStruct_14d5dc5e;
-
-typedef struct {
-    double imageHeight;
-    double imageWidth;
-    int frameCount;
-    int fps;
-    _Bool color;
-    char *fileName;
-} CDStruct_53edd9a0;
-
-typedef struct {
-    float value;
-    float curVelocity;
-    float maxAcceleration;
-    float springAmount;
-} CDStruct_d7a90142;
 

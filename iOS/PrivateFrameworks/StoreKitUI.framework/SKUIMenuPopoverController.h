@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIMenuViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/UIPopoverControllerDelegate-Protocol.h>
-
 @class NSArray, NSString, SKUIMenuViewController, UIPopoverController;
 @protocol SKUIMenuPopoverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMenuPopoverController : NSObject <SKUIMenuViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SKUIMenuPopoverController : NSObject
 {
     id <SKUIMenuPopoverDelegate> _delegate;
     SKUIMenuViewController *_menuViewController;

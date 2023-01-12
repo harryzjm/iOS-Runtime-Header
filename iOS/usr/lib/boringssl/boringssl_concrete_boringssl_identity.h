@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <boringssl/OS_boringssl_identity-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_data, OS_dispatch_queue, OS_sec_array, OS_sec_identity;
 
 __attribute__((visibility("hidden")))
-@interface boringssl_concrete_boringssl_identity : NSObject <OS_boringssl_identity>
+@interface boringssl_concrete_boringssl_identity : NSObject
 {
     struct __SecKey *private_key;
     NSObject<OS_sec_array> *certificates;

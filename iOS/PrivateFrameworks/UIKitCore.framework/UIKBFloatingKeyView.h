@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBContainerKeyView.h"
+
 @class _UIFloatingContentView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBFloatingKeyView
+@interface UIKBFloatingKeyView : UIKBContainerKeyView
 {
     _UIFloatingContentView *_floatingContentView;
 }
@@ -16,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForDisplay;
 @property(readonly, nonatomic) _UIFloatingContentView *floatingContentView;
 - (void)layoutSubviews;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3 renderTraits:(id)arg4;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 
 @end

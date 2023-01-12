@@ -14,11 +14,13 @@
     unsigned long long _isAnySIMUsable;
     unsigned long long _isAnySIMInserted;
     unsigned long long _supportsIdentification;
+    unsigned long long _doesAnySIMSupportsSimultaneousVoiceAndDataRightNow;
     NSArray *_sims;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *sims; // @synthesize sims=_sims;
+@property(nonatomic) unsigned long long doesAnySIMSupportsSimultaneousVoiceAndDataRightNow; // @synthesize doesAnySIMSupportsSimultaneousVoiceAndDataRightNow=_doesAnySIMSupportsSimultaneousVoiceAndDataRightNow;
 @property(nonatomic) unsigned long long supportsIdentification; // @synthesize supportsIdentification=_supportsIdentification;
 @property(nonatomic) unsigned long long isAnySIMInserted; // @synthesize isAnySIMInserted=_isAnySIMInserted;
 @property(nonatomic) unsigned long long isAnySIMUsable; // @synthesize isAnySIMUsable=_isAnySIMUsable;

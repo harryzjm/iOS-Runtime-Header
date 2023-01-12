@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
-
 @class NSHashTable, NSIndexSet, NSMapTable, NSString, NSUUID, UICollectionView, _UICollectionViewOrthogonalScrollerEmbeddedScrollView;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewOrthogonalScrollerSectionController : NSObject <UIScrollViewDelegate>
+@interface _UICollectionViewOrthogonalScrollerSectionController : NSObject
 {
     _Bool _shouldPreventFocusScrollPastContentSize;
     _Bool _isHandlingScrollViewDelegateCallout;
@@ -39,11 +37,12 @@ __attribute__((visibility("hidden")))
 - (id)_managedScrollViews;
 - (void)_placeView:(id)arg1 belowOrthogonalScrollViewForSection:(long long)arg2;
 - (void)_updateElementOrdering;
-- (struct CGSize)_contentSizeForSection:(long long)arg1 layout:(id)arg2;
+- (struct CGSize)_orthogonalScrollViewContentSizeForSection:(long long)arg1 layout:(id)arg2;
 - (_Bool)_configureScrollView:(id)arg1 forSection:(long long)arg2 baseContentInsets:(struct UIEdgeInsets)arg3 frameInsets:(struct UIEdgeInsets)arg4 isInitialConfiguration:(_Bool)arg5;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)_updateEmbeddedScrollViewContentSizeForSection:(long long)arg1;
+- (struct CGPoint)_contentOffsetForScrollingToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 itemFrame:(struct CGRect)arg3 containingScrollView:(id)arg4;
 - (void)_scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (id)_addSectionScrollViewForSection:(long long)arg1;
 - (id)_addSectionScrollViewForIndexPath:(id)arg1;
@@ -57,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (struct NSDirectionalEdgeInsets)_orthogonalScrollViewFrameInsetsForSection:(long long)arg1 layout:(id)arg2;
 - (void)performLayout;
 - (_Bool)hasOrthogonalSections;
-- (void)addElementIfNeeded:(id)arg1;
+- (void)addControlledSubview:(id)arg1 atZIndex:(long long)arg2;
 - (id)autoScrollAssistantForOrthogonalScrollingSectionAtIndexPath:(id)arg1;
 - (void)scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (_Bool)isIndexPathInExtantOrthogonalScroller:(id)arg1;

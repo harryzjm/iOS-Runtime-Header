@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VideosExtrasSlideshowViewControllerDataSource-Protocol.h>
-#import <VideosUI/VideosExtrasZoomingImageTransitionParticipant-Protocol.h>
-
 @class IKSlideshowElement, NSArray, NSString, UITapGestureRecognizer, VideosExtrasSlideshowViewController;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasSlideshowTemplateViewController <VideosExtrasSlideshowViewControllerDataSource, VideosExtrasZoomingImageTransitionParticipant>
+@interface VideosExtrasSlideshowTemplateViewController
 {
     _Bool _overlayHidden;
     _Bool _preventNavbarAutohide;

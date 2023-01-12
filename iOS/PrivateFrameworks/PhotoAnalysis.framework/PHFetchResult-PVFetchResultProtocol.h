@@ -6,14 +6,10 @@
 
 #import <Photos/PHFetchResult.h>
 
-#import <PhotoAnalysis/PVFetchResultProtocol-Protocol.h>
-
 @class NSArray;
 
-@interface PHFetchResult (PVFetchResultProtocol) <PVFetchResultProtocol>
+@interface PHFetchResult (PVFetchResultProtocol)
 - (id)allObjects;
-- (id)resultsAsSet;
-- (id)resultsAsArray;
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long count;

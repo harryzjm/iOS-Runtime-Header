@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFCore/AVAssetWriterInputMediaDataRequesterDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetWriterInputTerminalHelper <AVAssetWriterInputMediaDataRequesterDelegate>
+@interface AVAssetWriterInputTerminalHelper
 {
     long long _terminalStatus;
     _Bool _didRequestMediaDataOnce;

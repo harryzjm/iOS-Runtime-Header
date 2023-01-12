@@ -6,9 +6,7 @@
 
 #import <SAObjects/AceObject.h>
 
-#import <SiriUIFoundation/SRUIFUUFRSayable-Protocol.h>
-
-@interface AceObject (SRUIFUUFRSayable) <SRUIFUUFRSayable>
+@interface AceObject (SRUIFUUFRSayable)
 - (id)sruif__uufrSaid;
 - (id)_uufrShownRequestedByInstrumentationManager:(id)arg1;
 - (id)sruif_insertionContext;

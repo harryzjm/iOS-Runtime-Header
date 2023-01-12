@@ -12,6 +12,7 @@
 
 @optional
 @property(readonly, nonatomic) UIBarButtonItem *barButtonItem;
+@property(nonatomic) long long provenance;
 @property(nonatomic) unsigned long long permittedArrowDirections;
 @property(nonatomic) _Bool shouldHideArrow;
 @property(nonatomic) _Bool shouldPassthroughSuperview;

@@ -6,9 +6,7 @@
 
 #import <Foundation/NSEnumerator.h>
 
-#import <TSUtility/NSFastEnumeration-Protocol.h>
-
-@interface TSUCFSetEnumerator : NSEnumerator <NSFastEnumeration>
+@interface TSUCFSetEnumerator : NSEnumerator
 {
     void *mInlineObjects[16];
     const void **mObjects;

@@ -4,31 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct __darwin_arm_thread_state64 {
-    unsigned long long _field1[29];
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-};
-
-struct _opaque_pthread_rwlock_t {
-    long long __sig;
-    char __opaque[192];
-};
-
-struct dl_info {
-    char *_field1;
-    void *_field2;
-    char *_field3;
-    void *_field4;
-};
-

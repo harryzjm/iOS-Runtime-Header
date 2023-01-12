@@ -8,6 +8,5 @@
 
 @interface ICCryptor (UI)
 + (void)removePassphraseForNotesInAccount:(id)arg1;
-+ (void)removePassphraseForAccount:(id)arg1;
 @end
 

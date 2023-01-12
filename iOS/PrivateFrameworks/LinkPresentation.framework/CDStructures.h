@@ -21,13 +21,13 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct CLLocationCoordinate2D {
-    double latitude;
-    double longitude;
+    double _field1;
+    double _field2;
 };
 
 struct UIEdgeInsets {
@@ -53,5 +53,5 @@ typedef struct {
         double _field1;
         double _field2;
     } _field2;
-} CDStruct_26e8d939;
+} CDStruct_2b0c6e0b;
 

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITapGestureRecognizer.h"
+
 @class UIInterfaceAction, UIInterfaceActionGroupView;
 @protocol UIFocusedInterfaceActionPressDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIInterfaceActionSelectByPressGestureRecognizer
+@interface _UIInterfaceActionSelectByPressGestureRecognizer : UITapGestureRecognizer
 {
     id <UIFocusedInterfaceActionPressDelegate> _pressDelegate;
     UIInterfaceActionGroupView *_actionGroupView;

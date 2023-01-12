@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
-@interface KNRecordingEvent : NSObject <NSCopying>
+@interface KNRecordingEvent : NSObject
 {
     double _startTime;
 }

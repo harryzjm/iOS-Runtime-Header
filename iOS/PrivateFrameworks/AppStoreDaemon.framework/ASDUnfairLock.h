@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreDaemon/NSLocking-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface ASDUnfairLock : NSObject <NSLocking>
+@interface ASDUnfairLock : NSObject
 {
     struct os_unfair_lock_s _lock;
 }

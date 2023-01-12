@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @class DVTMacroDefinitionConditionParameter, NSString;
 
-@interface DVTMacroDefinitionCondition : NSObject <NSCopying>
+@interface DVTMacroDefinitionCondition : NSObject
 {
     DVTMacroDefinitionConditionParameter *_parameter;
     NSString *_valuePattern;

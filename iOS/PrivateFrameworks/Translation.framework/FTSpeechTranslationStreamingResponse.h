@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTAudioLimitExceeded, FTClientSetupInfo, FTFinalBlazarResponse, FTRecognitionCandidate, FTRecognitionProgress, FTRequestStatsResponse, FTServerEndpointFeatures, FTSpeechTranslationFinalRecognitionResponse, FTSpeechTranslationMtResponse, FTSpeechTranslationPartialRecognitionResponse, FTSpeechTranslationServerEndpointFeatures, FTSpeechTranslationTextToSpeechResponse, NSData, NSMutableDictionary;
+@protocol FLTBFBufferAccessor><NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface FTSpeechTranslationStreamingResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTSpeechTranslationStreamingResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
     const struct SpeechTranslationStreamingResponse *_root;
 }
 
++ (long long)content_typeForImmutableObject:(id)arg1;
++ (Class)content_immutableClassForType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_3523418e)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) NSObject<FLTBFBufferAccessor><NSCopying> *content;
 @property(readonly, nonatomic) FTSpeechTranslationServerEndpointFeatures *contentAsFTSpeechTranslationServerEndpointFeatures;
 @property(readonly, nonatomic) FTClientSetupInfo *contentAsFTClientSetupInfo;
 @property(readonly, nonatomic) FTServerEndpointFeatures *contentAsFTServerEndpointFeatures;

@@ -12,7 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+@property(nonatomic, readonly) _Bool prefersStatusBarHidden;
 - (_Bool)_canShowWhileLocked;
+- (id)_childViewControllersForAlwaysOnTimelines;
 @property(nonatomic, readonly) _Bool shouldAutomaticallyForwardAppearanceMethods;
 - (void)loadView;
 - (id)initWithCoder:(id)arg1;

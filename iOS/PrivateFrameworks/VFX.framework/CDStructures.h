@@ -6,46 +6,10 @@
 
 @class MISSING_TYPE;
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
-struct CGPoint {
-    double _field1;
-    double _field2;
-};
-
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
-
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
-struct ImDrawData {
-    _Bool _field1;
-    struct ImDrawList **_field2;
-    int _field3;
-    int _field4;
-    int _field5;
-    struct ImVec2 _field6;
-    struct ImVec2 _field7;
-    struct ImVec2 _field8;
-    struct ImGuiViewport *_field9;
-};
-
-struct ImDrawList;
-
-struct ImGuiViewport;
-
-struct ImVec2 {
-    float _field1;
-    float _field2;
+struct MTLResourceID {
+    unsigned long long _field1;
 };
 
 struct _NSRange {
@@ -61,18 +25,6 @@ typedef struct {
     unsigned char _field3;
     unsigned char _field4;
 } CDStruct_a06f635e;
-
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-} CDStruct_c0454aff;
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-} CDStruct_33dcf794;
 
 typedef struct {
     unsigned long long _field1;
@@ -92,15 +44,6 @@ typedef struct {
 typedef struct {
     MISSING_TYPE *_field1[4];
 } CDStruct_f1db2b5e;
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-} CDStruct_8727d297;
 
 typedef struct {
     float _field1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WatchKit/SPLocalApplicationProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SPXcodeSupport : NSObject <SPLocalApplicationProtocol>
+@interface SPXcodeSupport : NSObject
 {
 }
 

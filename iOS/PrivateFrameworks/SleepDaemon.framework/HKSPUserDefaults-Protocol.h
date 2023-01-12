@@ -9,6 +9,7 @@
 @class NSData, NSDictionary, NSSet, NSString;
 
 @protocol HKSPUserDefaults <NSObject>
+- (void)hksp_reset;
 - (void)hksp_synchronizeKeys:(NSSet *)arg1;
 - (void)hksp_synchronize;
 - (void)hksp_removeObjectsForKeys:(NSSet *)arg1;

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VCPMADResource.h"
+
 @class NSObject, VIService;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCPMADVIResource
+@interface VCPMADVIResource : VCPMADResource
 {
     NSObject<OS_dispatch_queue> *_queue;
     VIService *_service;
@@ -17,8 +19,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)purge;
 @property(readonly, nonatomic) VIService *service;
-- (double)inactiveCost;
-- (double)activeCost;
+- (long long)inactiveCost;
+- (long long)activeCost;
 - (id)init;
 
 @end

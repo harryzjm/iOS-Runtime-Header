@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNContactAction.h"
+
 @class CNDonationStore, CNUIExternalComponentsFactory;
 
 __attribute__((visibility("hidden")))
-@interface CNContactIgnoreDonatedInformationAction
+@interface CNContactIgnoreDonatedInformationAction : CNContactAction
 {
     CNUIExternalComponentsFactory *_componentsFactory;
     CNDonationStore *_donationStore;

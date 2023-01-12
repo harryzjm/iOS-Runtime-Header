@@ -16,6 +16,7 @@
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(readonly, nonatomic) UIView *sectionView;
 @property(readonly, nonatomic) _Bool hasContent;
 - (NSArray *)draggableContent;

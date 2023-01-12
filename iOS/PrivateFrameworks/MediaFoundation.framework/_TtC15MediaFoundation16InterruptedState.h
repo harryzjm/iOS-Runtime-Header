@@ -10,6 +10,7 @@
 {
     MISSING_TYPE *interruptedState;
     MISSING_TYPE *interruptionEvent;
+    MISSING_TYPE *signalOnEnter;
 }
 
 @end

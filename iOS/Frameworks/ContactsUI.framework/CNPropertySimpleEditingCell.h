@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/UITextFieldDelegate-Protocol.h>
-
 @class NSString, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertySimpleEditingCell <UITextFieldDelegate>
+@interface CNPropertySimpleEditingCell
 {
     UITextField *_textField;
 }

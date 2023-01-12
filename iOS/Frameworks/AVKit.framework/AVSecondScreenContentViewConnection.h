@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_updateReadyToConnect;
+- (void)enablePlayerDebugInformation:(id)arg1;
 - (id)initWithContentView:(id)arg1;
 
 // Remaining properties

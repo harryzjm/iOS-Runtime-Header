@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
+#import "UIView.h"
 
 @class NSArray, NSString, NSTimer, UIPageControl, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBTutorialMultipageView <UIScrollViewDelegate>
+@interface UIKBTutorialMultipageView : UIView
 {
     UIScrollView *_pageScrollView;
     NSArray *_pageViews;

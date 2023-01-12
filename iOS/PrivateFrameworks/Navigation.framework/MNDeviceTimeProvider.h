@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNTimeProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MNDeviceTimeProvider : NSObject <MNTimeProvider>
+@interface MNDeviceTimeProvider : NSObject
 {
 }
 

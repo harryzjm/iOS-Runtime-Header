@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSArray, UIInterfaceActionVisualStyle, UIStackView;
 
 __attribute__((visibility("hidden")))
-@interface _UIInterfaceActionSeparatableSequenceView
+@interface _UIInterfaceActionSeparatableSequenceView : UIView
 {
     _Bool _visualCornerForcedOverride;
     UIInterfaceActionVisualStyle *_visualStyle;

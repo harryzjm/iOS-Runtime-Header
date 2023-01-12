@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DAxisLabelPositioner-Protocol.h>
-
-@interface TSCH3DGenericAxisLabelPositioner : NSObject <TSCH3DAxisLabelPositioner>
+@interface TSCH3DGenericAxisLabelPositioner : NSObject
 {
     tvec2_84d5962d _range;
     unsigned long long _axis;

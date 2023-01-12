@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NLDataSet.h"
+
 @class NLDataProvider;
 
 __attribute__((visibility("hidden")))
-@interface NLModelTrainingDataSet
+@interface NLModelTrainingDataSet : NLDataSet
 {
     NLDataProvider *_modelTrainingDataProvider;
     NLDataProvider *_modelValidationDataProvider;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSArray, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface SKUIFacebookLikeStatus : NSObject <NSCopying>
+@interface SKUIFacebookLikeStatus : NSObject
 {
     NSArray *_friends;
     NSURL *_url;

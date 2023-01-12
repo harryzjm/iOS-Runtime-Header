@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSMetricHandler-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSCoreAnalyticsMetricHandler : NSObject <BCSMetricHandler>
+@interface BCSCoreAnalyticsMetricHandler : NSObject
 {
 }
 

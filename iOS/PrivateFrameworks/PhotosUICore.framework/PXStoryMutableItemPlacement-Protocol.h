@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, PXGLayout;
+@class NSObject, PXGLayout, PXStoryItemPlacement;
 @protocol NSCopying, PXDisplayAsset, UICoordinateSpace;
 
 @protocol PXStoryMutableItemPlacement
+@property(retain, nonatomic) PXStoryItemPlacement *otherItemsPlacement;
+@property(nonatomic) float soundVolume;
 @property(nonatomic) double legibilityOverlayAlpha;
 @property(nonatomic) double scrubberAlpha;
 @property(nonatomic) double chromeAlpha;
 @property(nonatomic) struct CGRect normalizedSubtitleRect;
 @property(nonatomic) struct CGRect normalizedTitleRect;
 @property(nonatomic) struct CGRect normalizedDisplayedAssetRect;
-@property(nonatomic) CDStruct_2bd92d94 cornerRadius;
-@property(nonatomic) CDStruct_597fa96d displayedAssetContentsRect;
+@property(nonatomic) CDStruct_c2259bfa cornerRadius;
+@property(nonatomic) CDStruct_e7d4c00a displayedAssetContentsRect;
 @property(retain, nonatomic) id <PXDisplayAsset> displayedAsset;
 @property(nonatomic) double alpha;
 - (void)registerSourceIdentifier:(id <NSCopying>)arg1;

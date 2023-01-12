@@ -9,12 +9,16 @@
 @class NSString;
 
 @protocol GKAccountService <NSObject>
+- (oneway void)getLastContactsIntegrationConsentVersionDisplayedForSignedInPlayerWithHandler:(void (^)(NSString *, NSError *))arg1;
+- (oneway void)setLastContactsIntegrationConsentVersionDisplayedForSignedInPlayer:(NSString *)arg1;
 - (oneway void)getLastProfilePrivacyVersionDisplayedForSignedInPlayerWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)setLastProfilePrivacyVersionDisplayedForSignedInPlayer:(NSString *)arg1;
 - (oneway void)getLastPersonalizationVersionDisplayedForSignedInPlayerWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)setLastPersonalizationVersionDisplayedForSignedInPlayer:(NSString *)arg1;
 - (oneway void)getLastPrivacyNoticeVersionDisplayedForSignedInPlayerWithHandler:(void (^)(unsigned long long, NSError *))arg1;
 - (oneway void)setLastPrivacyNoticeVersionDisplayedForSignedInPlayer:(unsigned long long)arg1;
+- (oneway void)getLastWelcomeWhatsNewCopyVersionDisplayedForSignedInPlayerWithHandler:(void (^)(unsigned long long, NSError *))arg1;
+- (oneway void)setLastWelcomeWhatsNewCopyVersionDisplayedForSignedInPlayer:(unsigned long long)arg1;
 - (oneway void)resetCredentialsWithHandler:(void (^)(NSError *))arg1;
 - (oneway void)signOutPlayerWithHandler:(void (^)(NSError *))arg1;
 - (oneway void)authenticationWasCancelled;

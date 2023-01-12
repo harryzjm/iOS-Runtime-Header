@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSText/NSObject-Protocol.h>
+#import <TSText/TSWPPageNumberProvider-Protocol.h>
 
 @class NSArray, NSMutableArray, NSObject, TSDCanvas, TSDLayout, TSDWrapSegments, TSPObject, TSUBezierPath, TSWPDrawableAttachment, TSWPStorage;
 @protocol TSDHint, TSDInfo, TSWPColumnMetrics, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
-@protocol TSWPLayoutTarget <NSObject>
+@protocol TSWPLayoutTarget <TSWPPageNumberProvider>
 @property(readonly, nonatomic) double maxAnchorInBlockDirection;
 @property(readonly, nonatomic) _Bool shouldWrapAroundExternalDrawables;
 @property(readonly, nonatomic) _Bool layoutIsValid;
 @property(readonly, nonatomic) _Bool textIsVertical;
-@property(readonly, nonatomic) unsigned long long pageCount;
-@property(readonly, nonatomic) unsigned long long pageNumber;
 @property(readonly, nonatomic) _Bool wantsLineFragments;
 @property(readonly, nonatomic) int naturalDirection;
-@property(readonly, nonatomic) int naturalAlignment;
+@property(readonly, nonatomic) long long naturalAlignment;
 @property(readonly, nonatomic) int verticalAlignment;
 @property(readonly, nonatomic) unsigned long long autosizeFlags;
 @property(readonly, nonatomic) struct CGPoint anchorPoint;
@@ -56,7 +54,6 @@
 @property(readonly, nonatomic) _Bool alwaysIncludesSpaceAfter;
 @property(readonly, nonatomic) _Bool alwaysIncludesSpaceBefore;
 @property(readonly, nonatomic) Class inlineTableOfContentsLayoutClass;
-@property(readonly, nonatomic) _Bool supportsPageNumbers;
 @property(readonly, nonatomic) struct _NSRange restrictedLayoutCharRange;
 @property(readonly, nonatomic) _Bool marginsAreMirrored;
 @property(readonly, nonatomic) _Bool isLinked;

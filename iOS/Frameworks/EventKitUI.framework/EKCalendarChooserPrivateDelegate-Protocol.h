@@ -6,9 +6,12 @@
 
 #import <EventKitUI/EKCalendarChooserDelegate-Protocol.h>
 
-@class EKAccountRefresher;
+@class EKAccountRefresher, EKCalendarChooser, NSSet;
 
 @protocol EKCalendarChooserPrivateDelegate <EKCalendarChooserDelegate>
+@property(readonly, nonatomic) NSSet *unselectedCalendarsForFocusMode;
+@property(nonatomic) unsigned long long focusFilterMode;
+- (void)calendarChooserSelectedIdentityDidChange:(EKCalendarChooser *)arg1;
 - (void)calendarChooserUpdatedToolbarItems;
 - (EKAccountRefresher *)refreshCalendarsButtonPressed;
 @end

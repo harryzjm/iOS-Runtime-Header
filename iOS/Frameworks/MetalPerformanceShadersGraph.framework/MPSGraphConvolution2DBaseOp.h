@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPSGraphOperation.h"
+
 @class MPSGraphConvolution2DOpDescriptor;
 
-@interface MPSGraphConvolution2DBaseOp
+@interface MPSGraphConvolution2DBaseOp : MPSGraphOperation
 {
     MPSGraphConvolution2DOpDescriptor *_desc;
 }

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <Accounts/NSCopying-Protocol.h>
-
 @class NSDictionary, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ACProtobufAccountCredential : PBCodable <NSCopying>
+@interface ACProtobufAccountCredential : PBCodable
 {
     NSMutableArray *_credentialItems;
     NSString *_credentialType;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/NSFileProviderItemDecorating-Protocol.h>
-#import <FileProvider/NSFileProviderItem_Private-Protocol.h>
-
 @class FPItem, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL, UTType;
 
 __attribute__((visibility("hidden")))
-@interface FPXEnumeratorAlternateContentsItem : NSObject <NSFileProviderItem_Private, NSFileProviderItemDecorating>
+@interface FPXEnumeratorAlternateContentsItem : NSObject
 {
     FPItem *_documentItem;
     NSDictionary *_resourceValues;
@@ -39,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSPersonNameComponents *mostRecentEditorNameComponents;
 @property(readonly, nonatomic) NSPersonNameComponents *ownerNameComponents;
 @property(readonly, nonatomic, getter=fp_isLastModifiedByCurrentUser) _Bool fp_lastModifiedByCurrentUser;
+- (id)collaborationIdentifier;
 @property(readonly, nonatomic, getter=isSharedByCurrentUser) _Bool sharedByCurrentUser;
 @property(readonly, nonatomic, getter=isShared) _Bool shared;
 @property(readonly, nonatomic, getter=isMostRecentVersionDownloaded) _Bool mostRecentVersionDownloaded;
@@ -64,6 +62,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithOriginalDocumentItem:(id)arg1 alternateContentsURL:(id)arg2;
 
 // Remaining properties
+@property(readonly, copy) NSArray *conflictingVersions;
+@property(readonly, nonatomic) long long contentPolicy;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic, getter=isExcludedFromSync) _Bool excludedFromSync;
@@ -75,12 +75,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
 @property(readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
 @property(readonly, copy) NSString *fp_cloudContainerIdentifier;
+@property(readonly) _Bool fp_isCloudDocsContainer;
 @property(readonly) _Bool fp_isContainer;
 @property(readonly) _Bool fp_isContainerPristine;
 @property(readonly, copy) NSString *fp_parentDomainIdentifier;
 @property(readonly, getter=fp_isUbiquitous) _Bool fp_ubiquitous;
 @property(readonly) unsigned long long hash;
 @property(readonly, getter=isHidden) _Bool hidden;
+@property(readonly) _Bool isCollaborationInvitation;
 @property(readonly, nonatomic) NSString *preformattedMostRecentEditorName;
 @property(readonly, nonatomic) NSString *preformattedOwnerName;
 @property(readonly, copy) NSString *providerIdentifier;

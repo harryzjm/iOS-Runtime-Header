@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSBusinessLinkContentItemDescribing-Protocol.h>
-#import <BusinessChatService/BSDescriptionProviding-Protocol.h>
-#import <BusinessChatService/NSCopying-Protocol.h>
-#import <BusinessChatService/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSBusinessLinkContentItemModel : NSObject <BSDescriptionProviding, BCSBusinessLinkContentItemDescribing, NSCopying, NSSecureCoding>
+@interface BCSBusinessLinkContentItemModel : NSObject
 {
     NSString *_title;
     NSString *_subtitle;

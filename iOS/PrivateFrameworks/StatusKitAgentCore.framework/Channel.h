@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)channelTypeKeyPath;
++ (id)presenceIdentifierKeyPath;
 + (id)dateChannelCreatedKeyPath;
 + (id)encryptionKeysKeyPath;
 + (id)statusTypeKeyPath;
@@ -21,6 +23,9 @@ __attribute__((visibility("hidden")))
 + (id)identifierKeyPath;
 + (id)predicateForCreationDateNotNil;
 + (id)predicateForChannelIdentifier:(id)arg1;
++ (id)predicateForPresenceIdentifier:(id)arg1;
++ (id)predicateForChannelTypePresence;
++ (id)predicateForChannelTypeStatus;
 + (id)predicateForDecomissioned:(_Bool)arg1;
 + (id)predicateForPersonal:(_Bool)arg1;
 + (id)predicateForStatusTypeIdentifier:(id)arg1;
@@ -32,14 +37,19 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(retain, nonatomic) NSData *channelToken; // @dynamic channelToken;
+@property(nonatomic) short channelType; // @dynamic channelType;
 @property(retain, nonatomic) NSData *currentOutgoingRatchetState; // @dynamic currentOutgoingRatchetState;
 @property(copy, nonatomic) NSDate *dateChannelCreated; // @dynamic dateChannelCreated;
 @property(nonatomic) _Bool decomissioned; // @dynamic decomissioned;
 @property(retain, nonatomic) NSSet *generatedEncryptionKeys; // @dynamic generatedEncryptionKeys;
 @property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
 @property(retain, nonatomic) NSSet *invitedUsers; // @dynamic invitedUsers;
+@property(retain, nonatomic) NSData *membershipKey; // @dynamic membershipKey;
+@property(retain, nonatomic) NSData *peerKey; // @dynamic peerKey;
 @property(nonatomic) _Bool personal; // @dynamic personal;
+@property(copy, nonatomic) NSString *presenceIdentifier; // @dynamic presenceIdentifier;
 @property(retain, nonatomic) NSSet *receivedInvitations; // @dynamic receivedInvitations;
+@property(retain, nonatomic) NSData *serverKey; // @dynamic serverKey;
 @property(copy, nonatomic) NSString *statusType; // @dynamic statusType;
 
 @end

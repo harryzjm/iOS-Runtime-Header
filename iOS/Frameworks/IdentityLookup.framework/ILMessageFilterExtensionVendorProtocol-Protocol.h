@@ -6,10 +6,11 @@
 
 #import <IdentityLookup/NSObject-Protocol.h>
 
-@class ILMessageFilterQueryRequest, ILMessageFilterReportRequest;
+@class ILMessageFilterCapabilitiesQueryRequest, ILMessageFilterQueryRequest, ILMessageFilterReportRequest;
 
 @protocol ILMessageFilterExtensionVendorProtocol <NSObject>
 - (oneway void)finish;
+- (oneway void)handleCapabilitiesQueryRequest:(ILMessageFilterCapabilitiesQueryRequest *)arg1 reply:(void (^)(ILMessageFilterCapabilitiesQueryResponse *))arg2;
 - (oneway void)handleReportRequest:(ILMessageFilterReportRequest *)arg1 reply:(void (^)(void))arg2;
 - (oneway void)handleQueryRequest:(ILMessageFilterQueryRequest *)arg1 reply:(void (^)(ILMessageFilterQueryResponse *))arg2;
 @end

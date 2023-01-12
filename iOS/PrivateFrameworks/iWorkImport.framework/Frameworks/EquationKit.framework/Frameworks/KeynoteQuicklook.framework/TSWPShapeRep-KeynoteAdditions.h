@@ -6,11 +6,9 @@
 
 #import <TSText/TSWPShapeRep.h>
 
-#import <KeynoteQuicklook/TSDMagicMoveMatching-Protocol.h>
-
 @class TSWPStorage;
 
-@interface TSWPShapeRep (KeynoteAdditions) <TSDMagicMoveMatching>
+@interface TSWPShapeRep (KeynoteAdditions)
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
 + (id)magicMoveTextMatchesBetweenOutgoingObjects:(id)arg1 andIncomingObjects:(id)arg2 textureDescription:(id)arg3 textDeliveryType:(long long)arg4 repToOpacityTextRangeDictMap:(id)arg5;
 + (_Bool)p_shouldDisableTextMorphingBetweenOutgoingRep:(id)arg1 outgoingChunkRange:(struct _NSRange)arg2 incomingRep:(id)arg3 incomingChunkRange:(struct _NSRange)arg4;

@@ -6,10 +6,12 @@
 
 #import <CallHistory/NSObject-Protocol.h>
 
-@protocol CHConfigurationDelegate;
+@class NSObject;
+@protocol CHConfigurationDelegate, OS_dispatch_queue;
 
 @protocol CHConfiguration <NSObject>
 @property(readonly, nonatomic, getter=isCloudKitEnabled) _Bool cloudKitEnabled;
-@property(nonatomic) __weak id <CHConfigurationDelegate> delegate;
+- (void)removeDelegate:(id <CHConfigurationDelegate>)arg1;
+- (void)addDelegate:(id <CHConfigurationDelegate>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
 @end
 

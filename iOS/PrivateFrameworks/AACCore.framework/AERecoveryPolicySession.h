@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEPolicySession-Protocol.h>
-
 @class NSArray;
 @protocol AEPerformancePrimitives, AEPolicyStore, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AERecoveryPolicySession : NSObject <AEPolicySession>
+@interface AERecoveryPolicySession : NSObject
 {
     NSArray *_persistentDeactivations;
     id <AEPolicyStore> _policyStore;

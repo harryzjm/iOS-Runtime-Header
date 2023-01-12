@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsUI/MKETAProviderObserver-Protocol.h>
-#import <MapsUI/MKPlaceHeaderButtonsViewControllerDelegate-Protocol.h>
-#import <MapsUI/MUPlaceHeaderButtonsViewControllerDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-
-@class MKETAProvider, MKPlaceHeaderButtonsViewController, MKUGCCallToActionViewAppearance, MUHeaderButtonsView, MUHeaderButtonsViewConfiguration, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSString, UIView, UIViewController, _MKPlaceActionButtonController;
+@class MKETAProvider, MKPlaceHeaderButtonsViewController, MKUGCCallToActionViewAppearance, MUHeaderButtonsView, MUHeaderButtonsViewConfiguration, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController, _MKPlaceActionButtonController;
 @protocol MUHeaderButtonsSectionControllerDelegate, MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUHeaderButtonsSectionController : NSObject <MKETAProviderObserver, MUPlaceHeaderButtonsViewControllerDelegate, MKPlaceHeaderButtonsViewControllerDelegate, MUPlaceSectionControlling>
+@interface MUHeaderButtonsSectionController : NSObject
 {
     MKETAProvider *_etaProvider;
     MUHeaderButtonsViewConfiguration *_headerConfiguration;
@@ -36,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel; // @synthesize sectionHeaderViewModel=_sectionHeaderViewModel;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+- (id)revealedAnalyticsModule;
 - (int)analyticsModuleType;
 - (id)analyticsModule;
 - (id)infoCardChildUnactionableUIElements;
@@ -43,12 +39,15 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 - (id)draggableContent;
 - (void)placeHeaderButtonsViewController:(id)arg1 didSelectPrimaryType:(unsigned long long)arg2 withView:(id)arg3;
-- (void)placeHeaderButtonsViewController:(id)arg1 didSelectPrimaryType:(unsigned long long)arg2 withPresentationOptions:(id)arg3;
+- (void)headerButtonsViewWillPresentMenu:(id)arg1;
+- (void)headerButtonsView:(id)arg1 didSelectPrimaryType:(unsigned long long)arg2 withPresentationOptions:(id)arg3;
 - (void)_updateWithPreviousState:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool hasContent;
 @property(nonatomic) unsigned long long primaryButtonType;
 @property(retain, nonatomic) _MKPlaceActionButtonController *alternatePrimaryButtonController;
 @property(retain, nonatomic) _MKPlaceActionButtonController *secondaryButtonController;
+- (struct CGRect)impressionsFrame;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(readonly, nonatomic) UIView *sectionView;
 - (void)_setupSectionView;
 - (id)initWithETAProvider:(id)arg1 headerButtonsConfiguration:(id)arg2;

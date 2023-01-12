@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKCellShortener-Protocol.h>
-
 @class NSDate, NSString, PreferencesDoubleTwoPartValueCell;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDateDetailItem <EKCellShortener>
+@interface EKEventDateDetailItem
 {
     PreferencesDoubleTwoPartValueCell *_cell;
     NSDate *_startDate;

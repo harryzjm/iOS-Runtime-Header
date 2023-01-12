@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -34,11 +32,6 @@ struct CGRect {
 struct CGSize {
     double width;
     double height;
-};
-
-struct QLFrameDurationInformation {
-    double _field1;
-    double _field2;
 };
 
 struct QLPHDisplayVelocity {
@@ -82,18 +75,6 @@ struct _QLDismissGestureTrackingVelocity {
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    _Bool _field5;
-    _Bool _field6;
-    _Bool _field7;
-    _Bool _field8;
-    _Bool _field9;
-} CDStruct_3ea018b0;
 
 typedef struct {
     long long _field1;

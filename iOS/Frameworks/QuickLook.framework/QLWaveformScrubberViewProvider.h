@@ -6,16 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/PHVideoScrubberFilmstripViewProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface QLWaveformScrubberViewProvider : NSObject <PHVideoScrubberFilmstripViewProvider>
+@interface QLWaveformScrubberViewProvider : NSObject
 {
 }
 
-+ (_Bool)generateWaveformForWidth:(double)arg1 asset:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
++ (void)generateWaveformForWidth:(double)arg1 asset:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
 - (id)createFilmstripViewForVideoScrubberView:(id)arg1;
 
 // Remaining properties

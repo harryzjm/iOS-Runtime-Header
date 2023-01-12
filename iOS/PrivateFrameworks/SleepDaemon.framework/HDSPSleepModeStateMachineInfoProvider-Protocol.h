@@ -9,6 +9,8 @@
 @class HKSPSleepScheduleModel, NSDate;
 
 @protocol HDSPSleepModeStateMachineInfoProvider <HKSPStateMachineInfoProvider>
+@property(readonly, nonatomic) _Bool sleepFeaturesEnabled;
+@property(readonly, nonatomic) _Bool isAppleWatch;
 @property(readonly, nonatomic) _Bool hasSleepFocusMode;
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;

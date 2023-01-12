@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CommunicationsSetupUI/CNFRegFirstRunExperience-Protocol.h>
+#import "CNFRegListController.h"
 
 @class IMAccount, NSString, NSTimer, UIBarButtonItem;
 @protocol CNFRegFirstRunDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNFRegFirstRunController <CNFRegFirstRunExperience>
+@interface CNFRegFirstRunController : CNFRegListController
 {
     Class _completionControllerClass;
     _Bool _showingActivityIndicator;

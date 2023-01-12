@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)estimateFlow:(struct __CVBuffer *)arg1 correlation:(struct __CVBuffer *)arg2 flow:(struct __CVBuffer *)arg3 outputFlow:(struct __CVBuffer *)arg4 callback:(CDUnknownBlockType)arg5;
 - (int)bindWithBuffers:(struct __CVBuffer *)arg1 correlation:(struct __CVBuffer *)arg2 flow:(struct __CVBuffer *)arg3 outputFlow:(struct __CVBuffer *)arg4;
-- (id)initModule:(int)arg1 config:(id)arg2;
+- (id)initModule:(int)arg1 config:(id)arg2 cancel:(CDUnknownBlockType)arg3;
 
 @end
 

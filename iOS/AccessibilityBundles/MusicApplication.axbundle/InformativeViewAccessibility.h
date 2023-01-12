@@ -11,8 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)layoutSubviews;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)accessibilityViewIsModal;
 
 @end

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSMapTable, NSString, SKUIAttributedStringView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIKeyValueInfoListCollectionViewCell <SKUIViewElementView>
+@interface SKUIKeyValueInfoListCollectionViewCell
 {
     double _titleColumnWidth;
     SKUIAttributedStringView *_titleView;

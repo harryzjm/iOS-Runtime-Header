@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSUICommonView.h"
+
 __attribute__((visibility("hidden")))
-@interface AMSUIInlineDialogView
+@interface AMSUIInlineDialogView : AMSUICommonView
 {
 }
 
+- (_Bool)_layoutHeightDependsOnWidth;
+- (unsigned long long)_axesForDerivingIntrinsicContentSizeFromLayoutSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)_contentView;

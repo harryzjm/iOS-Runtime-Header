@@ -8,13 +8,15 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC13SleepHealthUI31ScheduleOccurrenceTableViewCell : UITableViewCell
 {
     MISSING_TYPE *viewModelProviding;
-    MISSING_TYPE *occurrenceView;
+    MISSING_TYPE *$__lazy_storage_$_occurrenceView;
 }
 
 - (void).cxx_destruct;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

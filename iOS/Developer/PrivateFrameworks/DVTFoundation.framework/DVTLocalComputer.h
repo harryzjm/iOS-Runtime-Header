@@ -27,12 +27,12 @@
 + (id)logAspect;
 + (void)initialize;
 - (void).cxx_destruct;
-@property unsigned long long logicalCPUCoresPerPackage; // @synthesize logicalCPUCoresPerPackage=_logicalCPUCoresPerPackage;
-@property unsigned long long physicalCPUCoresPerPackage; // @synthesize physicalCPUCoresPerPackage=_physicalCPUCoresPerPackage;
+@property(nonatomic) unsigned long long logicalCPUCoresPerPackage; // @synthesize logicalCPUCoresPerPackage=_logicalCPUCoresPerPackage;
+@property(nonatomic) unsigned long long physicalCPUCoresPerPackage; // @synthesize physicalCPUCoresPerPackage=_physicalCPUCoresPerPackage;
 @property unsigned long long ramSizeInMegabytes; // @synthesize ramSizeInMegabytes=_ramSizeInMegabytes;
 @property unsigned long long busSpeedInMHz; // @synthesize busSpeedInMHz=_busSpeedInMHz;
 @property unsigned long long cpuSpeedInMHz; // @synthesize cpuSpeedInMHz=_cpuSpeedInMHz;
-@property unsigned long long cpuCount; // @synthesize cpuCount=_cpuCount;
+@property(nonatomic) unsigned long long cpuCount; // @synthesize cpuCount=_cpuCount;
 @property(copy) NSString *cpuKind; // @synthesize cpuKind=_cpuKind;
 - (id)_processSharedCacheFiles;
 - (_Bool)deferProfileGenerationSetupUntilAfterInstallation;
@@ -52,7 +52,7 @@
 - (_Bool)supportsDebugAsDifferentUser;
 - (_Bool)supportsDebuggingDocumentVersioning;
 - (_Bool)supportsResumeAndTurningItOnOrOff;
-- (_Bool)supportsFeature:(unsigned long long)arg1;
+- (_Bool)supportsSimulateMetricPayloads;
 - (_Bool)supportsCustomWorkingDirectory;
 - (id)processInformations;
 - (_Bool)isConcreteDevice;
@@ -60,6 +60,7 @@
 - (_Bool)isIgnored;
 - (void)setIgnored:(_Bool)arg1;
 - (_Bool)allowsSecureServices;
+- (_Bool)isAvailableWithError:(id *)arg1;
 - (_Bool)isAvailable;
 - (void)setAvailable:(_Bool)arg1;
 - (_Bool)canRunExecutables;

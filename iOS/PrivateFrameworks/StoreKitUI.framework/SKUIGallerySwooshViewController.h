@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIEmbeddedMediaViewDelegate-Protocol.h>
-#import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
-#import <StoreKitUI/UICollectionViewDelegateFlowLayout-Protocol.h>
+#import "SKUISwooshViewController.h"
 
 @class NSString, SKUISwooshPageComponent, SKUISwooshView, UICollectionView;
 @protocol SKUIGallerySwooshViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGallerySwooshViewController <SKUIEmbeddedMediaViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface SKUIGallerySwooshViewController : SKUISwooshViewController
 {
     UICollectionView *_collectionView;
     _Bool _delegateWantsWillDisplay;

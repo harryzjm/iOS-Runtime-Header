@@ -6,10 +6,10 @@
 
 #import <CloudKit/CKOperationCallbacks-Protocol.h>
 
-@class CKRecord, CKRecordID, CKRecordZoneID, CKServerChangeToken, NSData, NSError, NSString;
+@class CKRecord, CKRecordID, CKRecordZoneID, CKServerChangeToken, NSData, NSError, NSSet, NSString;
 
 @protocol CKFetchRecordZoneChangesOperationCallbacks <CKOperationCallbacks>
-- (void)handleChangeSetCompletionForRecordZoneID:(CKRecordZoneID *)arg1 serverChangeToken:(CKServerChangeToken *)arg2 clientChangeTokenData:(NSData *)arg3 recordChangesStatus:(long long)arg4 hasPendingArchivedRecords:(_Bool)arg5 error:(NSError *)arg6 reply:(void (^)(NSError *))arg7;
+- (void)handleChangeSetCompletionForRecordZoneID:(CKRecordZoneID *)arg1 serverChangeToken:(CKServerChangeToken *)arg2 clientChangeTokenData:(NSData *)arg3 recordChangesStatus:(long long)arg4 hasPendingArchivedRecords:(_Bool)arg5 syncObligationZoneIDs:(NSSet *)arg6 error:(NSError *)arg7 reply:(void (^)(NSError *))arg8;
 - (void)handleDeleteForRecordID:(CKRecordID *)arg1 recordType:(NSString *)arg2;
 - (void)handleChangeForRecordID:(CKRecordID *)arg1 record:(CKRecord *)arg2 error:(NSError *)arg3;
 @end

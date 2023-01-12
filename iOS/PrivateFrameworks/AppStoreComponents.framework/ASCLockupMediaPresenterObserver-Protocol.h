@@ -10,5 +10,8 @@
 - (void)lockupMediaPresenterDidFinishScreenshotsFetchRequest;
 - (void)lockupMediaPresenterDidCancelScreenshotsFetchRequest;
 - (void)lockupMediaPresenterDidBeginScreenshotsFetchRequest;
+
+@optional
+- (void)lockupMediaPresenterVideoStateDidChange:(long long)arg1;
 @end
 

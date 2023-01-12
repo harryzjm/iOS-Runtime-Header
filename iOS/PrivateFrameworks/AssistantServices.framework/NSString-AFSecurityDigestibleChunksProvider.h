@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <AssistantServices/AFSecurityDigestibleChunksProviding-Protocol.h>
-
-@interface NSString (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding>
+@interface NSString (AFSecurityDigestibleChunksProvider)
 + (id)hexStringFromData:(id)arg1;
 + (id)hexStringFromBytes:(const char *)arg1 length:(unsigned long long)arg2;
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;

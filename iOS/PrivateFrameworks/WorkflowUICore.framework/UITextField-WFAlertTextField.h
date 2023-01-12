@@ -6,38 +6,24 @@
 
 #import <UIKit/UITextField.h>
 
-#import <WorkflowUICore/WFAlertTextField-Protocol.h>
-#import <WorkflowUICore/WFInputViewMutable-Protocol.h>
+@class NSArray, NSString, UIView;
 
-@class NSArray, NSString, UITextInputPasswordRules, UIView;
-
-@interface UITextField (WFAlertTextField) <WFAlertTextField, WFInputViewMutable>
+@interface UITextField (WFAlertTextField)
 + (_Bool)usesSuggestions;
+@property(nonatomic) NSString *alertReturnKeyType;
+@property(nonatomic) NSString *alertAutocapitalizationType;
+@property(nonatomic) NSString *alertClearButtonMode;
 @property(nonatomic) long long alertTextInputMode;
 @property(copy, nonatomic) NSArray *suggestions;
 
 // Remaining properties
-@property(nonatomic) long long autocapitalizationType;
-@property(nonatomic) long long autocorrectionType;
-@property(nonatomic) long long clearButtonMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(nonatomic) _Bool enablesReturnKeyAutomatically;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) UIView *inputAccessoryView;
 @property(retain, nonatomic) UIView *inputView;
-@property(nonatomic) long long keyboardAppearance;
-@property(nonatomic) long long keyboardType;
-@property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(copy, nonatomic) NSString *placeholder;
-@property(nonatomic) long long returnKeyType;
-@property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
-@property(nonatomic) long long smartDashesType;
-@property(nonatomic) long long smartInsertDeleteType;
-@property(nonatomic) long long smartQuotesType;
-@property(nonatomic) long long spellCheckingType;
 @property(readonly) Class superclass;
 @property(copy, nonatomic) NSString *text;
-@property(copy, nonatomic) NSString *textContentType;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <SAObjects/SAUIDisambiguationGroup.h>
 
-#import <AssistantServices/AFDisambiguationAssistancePrivate-Protocol.h>
-
 @class AFDisambiguationInfo, NSData;
 
-@interface SAUIDisambiguationGroup (AFDisambiguationAssistancePrivate) <AFDisambiguationAssistancePrivate>
+@interface SAUIDisambiguationGroup (AFDisambiguationAssistancePrivate)
 - (void)af_saveItemSelection:(id)arg1 forType:(long long)arg2;
 - (id)af_assistedSelectionItem;
 @property(retain, nonatomic, setter=af_setDisambiguationInfo:) AFDisambiguationInfo *af_disambiguationInfo;

@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOServiceRequestConfiguring-Protocol.h>
+#import "GEOServiceRequestDefaultConfig.h"
 
 @class GEODirectionsRequest, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEODirectionsRequestConfig <GEOServiceRequestConfiguring>
+@interface GEODirectionsRequestConfig : GEOServiceRequestDefaultConfig
 {
     NSNumber *_requestPriority;
     GEODirectionsRequest *_request;
 }
 
 - (void).cxx_destruct;
+- (_Bool)usesBackgroundURL;
 - (id)additionalStatesForNetworkEvent;
 - (unsigned long long)multipathServiceType;
 - (CDStruct_d1a7ebee)dataRequestKindForRequest:(id)arg1 traits:(id)arg2;

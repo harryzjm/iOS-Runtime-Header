@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Security/OS_sec_array-Protocol.h>
-
 @class NSString;
 @protocol OS_xpc_object;
 
 __attribute__((visibility("hidden")))
-@interface SecConcrete_sec_array : NSObject <OS_sec_array>
+@interface SecConcrete_sec_array : NSObject
 {
     NSObject<OS_xpc_object> *xpc_array;
 }

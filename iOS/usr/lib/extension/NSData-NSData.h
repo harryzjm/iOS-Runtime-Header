@@ -86,12 +86,13 @@
 - (id)_decompressedDataUsingCompressionAlgorithm:(int)arg1 error:(id *)arg2;
 - (id)compressedDataUsingAlgorithm:(long long)arg1 error:(id *)arg2;
 - (id)decompressedDataUsingAlgorithm:(long long)arg1 error:(id *)arg2;
-- (id)_dataWithCompressionOperation:(int)arg1 algorithm:(int)arg2;
+- (void)_produceDataWithCompressionOperation:(int)arg1 algorithm:(int)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_replaceCString:(const char *)arg1 withCString:(const char *)arg2;
 - (id)_web_parseRFC822HeaderFields;
 - (id)_web_guessedMIMETypeForExtension:(id)arg1;
 - (id)_web_guessedMIMEType;
 - (id)_web_guessedMIMETypeForXML;
+- (_Bool)_getBPlistMarker:(char *)arg1 offset:(unsigned long long *)arg2 trailer:(CDStruct_f10e9336 *)arg3;
 - (_Bool)isNSData__;
 - (id)replacementObjectForPortCoder:(id)arg1;
 @end

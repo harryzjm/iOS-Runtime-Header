@@ -6,11 +6,9 @@
 
 #import <Intents/INPerson.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface INPerson (ActionIdentifier) <REDonatedActionIdentifierProviding>
+@interface INPerson (ActionIdentifier)
 - (unsigned long long)re_actionIdentifierHashValue;
 
 // Remaining properties

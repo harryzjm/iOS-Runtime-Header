@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ReminderKit/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface TTFont : NSObject <NSSecureCoding>
+@interface TTFont : NSObject
 {
     unsigned int _fontHints;
     NSString *_fontName;

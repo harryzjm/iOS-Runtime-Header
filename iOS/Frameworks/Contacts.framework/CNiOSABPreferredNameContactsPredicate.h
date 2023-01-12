@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Contacts/CNiOSContactPredicate-Protocol.h>
+#import "CNPredicate.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNiOSABPreferredNameContactsPredicate <CNiOSContactPredicate>
+@interface CNiOSABPreferredNameContactsPredicate : CNPredicate
 {
     struct _NSRange _range;
 }
@@ -17,14 +17,14 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 @property(readonly) struct _NSRange range; // @synthesize range=_range;
 @property(readonly, copy) NSString *description;
-- (id)cn_cursorForEncodedPeopleFromAddressBook:(void *)arg1 fetchRequest:(id)arg2 environment:(id)arg3 error:(id *)arg4;
+- (id)cn_ABQSLPredicateForAddressBook:(void *)arg1 fetchRequest:(id)arg2 error:(id *)arg3;
 - (struct __CFArray *)cn_copyPeopleInAddressBook:(void *)arg1 fetchRequest:(id)arg2 matchInfos:(id *)arg3 environment:(id)arg4 error:(struct __CFError **)arg5;
 - (_Bool)cn_supportsEncodedFetching;
 - (_Bool)cn_supportsNativeBatchFetch;
 - (_Bool)cn_supportsNativeSorting;
-- (id)initWithRange:(struct _NSRange)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRange:(struct _NSRange)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

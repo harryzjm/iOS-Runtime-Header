@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNCardGroupItem.h"
+
 @class CNContact;
 
 __attribute__((visibility("hidden")))
-@interface CNCardLinkedCardsGroupItem
+@interface CNCardLinkedCardsGroupItem : CNCardGroupItem
 {
     CNContact *_contact;
 }

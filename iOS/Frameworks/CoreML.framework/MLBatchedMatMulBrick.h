@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/EspressoBrick-Protocol.h>
-
 @class NSArray, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MLBatchedMatMulBrick : NSObject <EspressoBrick>
+@interface MLBatchedMatMulBrick : NSObject
 {
     _Bool _shapeInfoNeeded;
     NSNumber *_transposeA;

@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly) FPProgressProxy *progressProxy; // @synthesize progressProxy=_progressProxy;
 - (void)setProgressProxy:(id)arg1;
+- (_Bool)isPausable;
+- (_Bool)isCancellable;
 - (void)dealloc;
 
 @end

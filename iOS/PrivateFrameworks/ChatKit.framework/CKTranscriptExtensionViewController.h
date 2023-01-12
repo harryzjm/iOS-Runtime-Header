@@ -6,12 +6,10 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <ChatKit/CKChatControllerDelegate-Protocol.h>
-
 @class CKDetailsNavigationController, NSExtension, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface CKTranscriptExtensionViewController : UINavigationController <CKChatControllerDelegate>
+@interface CKTranscriptExtensionViewController : UINavigationController
 {
     NSUUID *_requestUUID;
     NSExtension *_weakExtension;
@@ -32,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void)chatController:(id)arg1 willSendComposition:(id)arg2 inConversation:(id)arg3;
 - (void)presentConversationWithMessageGUID:(id)arg1 attachmentGUID:(id)arg2;
 - (void)viewDidLoad;
-- (_Bool)__im_ff_chatCacheEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -49,7 +49,6 @@
 - (unsigned long long)_detectDirectionalChanges;
 - (id)directionChangeCornerIndexes;
 - (id)cornerIndexes;
-- (void)dealloc;
 - (id)init;
 
 @end

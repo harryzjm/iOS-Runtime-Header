@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class CIImage, MLModel, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CICoreMLModelFilter
+@interface CICoreMLModelFilter : CIFilter
 {
     CIImage *inputImage;
     MLModel *inputModel;

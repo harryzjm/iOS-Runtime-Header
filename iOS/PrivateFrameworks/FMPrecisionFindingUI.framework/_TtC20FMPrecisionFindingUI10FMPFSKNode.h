@@ -6,7 +6,6 @@
 
 #import <SpriteKit/SKNode.h>
 
-__attribute__((visibility("hidden")))
 @interface _TtC20FMPrecisionFindingUI10FMPFSKNode : SKNode
 {
 }

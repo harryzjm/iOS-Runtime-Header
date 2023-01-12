@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOBatchRevGeocodeRequest : PBRequest <NSCopying>
+@interface GEOBatchRevGeocodeRequest : PBRequest
 {
     PBDataReader *_reader;
     CDStruct_95bda58d _additionalPlaceTypes;

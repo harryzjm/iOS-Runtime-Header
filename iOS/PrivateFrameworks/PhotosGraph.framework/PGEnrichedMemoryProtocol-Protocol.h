@@ -30,5 +30,6 @@
 @property(nonatomic, copy) NSString *keyAssetUUID;
 @property(nonatomic, copy) NSString *subtitle;
 @property(nonatomic, copy) NSString *title;
+@property(copy, nonatomic) NSArray *chapterTitles;
 @end
 

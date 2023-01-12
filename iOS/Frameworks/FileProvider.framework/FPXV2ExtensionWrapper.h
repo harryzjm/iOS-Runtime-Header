@@ -6,18 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/NSFileProviderCustomAction-Protocol.h>
-#import <FileProvider/NSFileProviderIncrementalContentFetching-Protocol.h>
-#import <FileProvider/NSFileProviderReplicatedExtension-Protocol.h>
-#import <FileProvider/NSFileProviderSearching-Protocol.h>
-#import <FileProvider/NSFileProviderServicing-Protocol.h>
-#import <FileProvider/NSFileProviderThumbnailing-Protocol.h>
-#import <FileProvider/NSFileProviderUserInteractionSuppressing-Protocol.h>
-
 @class NSFileProviderExtension, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPXV2ExtensionWrapper : NSObject <NSFileProviderReplicatedExtension, NSFileProviderSearching, NSFileProviderIncrementalContentFetching, NSFileProviderThumbnailing, NSFileProviderCustomAction, NSFileProviderServicing, NSFileProviderUserInteractionSuppressing>
+@interface FPXV2ExtensionWrapper : NSObject
 {
     Class _extensionClass;
     NSFileProviderExtension *_extension;
@@ -26,6 +18,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSFileProviderExtension *extension; // @synthesize extension=_extension;
 @property(retain, nonatomic) Class extensionClass; // @synthesize extensionClass=_extensionClass;
+- (id)forwardingTargetForSelector:(SEL)arg1;
+- (_Bool)conformsToProtocol:(id)arg1;
+- (id)methodSignatureForSelector:(SEL)arg1;
 - (void)setInteractionSuppressed:(_Bool)arg1 forIdentifier:(id)arg2;
 - (_Bool)isInteractionSuppressedForIdentifier:(id)arg1;
 - (id)fetchThumbnailsForItemIdentifiers:(id)arg1 requestedSize:(struct CGSize)arg2 perThumbnailCompletionHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;

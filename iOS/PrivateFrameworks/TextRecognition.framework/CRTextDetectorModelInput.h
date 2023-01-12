@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TextRecognition/MLFeatureProvider-Protocol.h>
-
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface CRTextDetectorModelInput : NSObject <MLFeatureProvider>
+@interface CRTextDetectorModelInput : NSObject
 {
     struct __CVBuffer *_data;
 }

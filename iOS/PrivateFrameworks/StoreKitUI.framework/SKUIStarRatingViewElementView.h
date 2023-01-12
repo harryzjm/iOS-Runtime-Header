@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSString, SKUIAttributedStringLayout, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStarRatingViewElementView : UIView <SKUIViewElementView>
+@interface SKUIStarRatingViewElementView : UIView
 {
     struct UIEdgeInsets _contentInset;
     long long _elementSpacing;

@@ -7,6 +7,9 @@
 @class UIBarButtonItem, _UINavigationBarContentView;
 
 @protocol _UINavigationBarContentViewDelegate
+- (void)navigationBarContentViewDidChangeTintColor:(_UINavigationBarContentView *)arg1;
+- (void)navigationBarContentViewDidTriggerTitleRenameAction:(_UINavigationBarContentView *)arg1;
+- (void)navigationBarContentViewDidTriggerCustomization:(_UINavigationBarContentView *)arg1;
 - (void)navigationBarContentViewDidChangeDesiredHeight:(_UINavigationBarContentView *)arg1;
 - (void)navigationBarContentViewDidTriggerBackAction:(_UINavigationBarContentView *)arg1 fromBackButtonItem:(UIBarButtonItem *)arg2;
 @end

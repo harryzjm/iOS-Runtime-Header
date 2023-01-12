@@ -8,7 +8,9 @@
 
 @interface BMAppLaunchStream (ATXExtras)
 - (double)uniqueAppsLaunchedOverLast28Days;
+- (id)_rawLaunchCountAndDistinctDaysLaunchedOverLast28DaysWithFilter:(CDUnknownBlockType)arg1;
 - (id)rawLaunchCountAndDistinctDaysLaunchedOverLast28DaysForApps:(id)arg1;
+- (id)rawLaunchCountAndDistinctDaysLaunchedOverLast28DaysForAllApps;
 - (double)timesAppHasBeenLaunchedOverLast28Days:(id)arg1;
 - (double)uniqueDaysAppHasBeenLaunchedOverLast28Days:(id)arg1;
 - (id)rawLaunchCountAndDistinctDaysLaunchedOverLast28DaysForApp:(id)arg1;

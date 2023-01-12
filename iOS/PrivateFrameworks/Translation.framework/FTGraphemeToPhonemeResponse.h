@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTGraphemeToPhonemeResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTGraphemeToPhonemeResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,12 +19,21 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_184a929b)addObjectToBuffer:(void *)arg1;
+- (void)jit_token_prons_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)jit_token_prons_count;
+- (id)jit_token_prons_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *jit_token_prons;
+- (void)aot_token_prons_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)aot_token_prons_count;
+- (id)aot_token_prons_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *aot_token_prons;
 @property(readonly, nonatomic) NSString *phoneset_version;
 @property(readonly, nonatomic) NSString *g2p_model_version;
 @property(readonly, nonatomic) NSString *g2p_version;
 @property(readonly, nonatomic) _Bool is_pron_guessed;
+- (void)phonemes_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)phonemes_count;
+- (id)phonemes_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *phonemes;
 @property(readonly, nonatomic) NSString *return_str;
 @property(readonly, nonatomic) int return_code;

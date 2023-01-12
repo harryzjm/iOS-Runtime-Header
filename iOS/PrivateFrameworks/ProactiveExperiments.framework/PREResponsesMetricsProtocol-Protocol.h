@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ProactiveExperiments/NSObject-Protocol.h>
+
 @class NSNumber, PREResponseTappedEvent, PREResponsesGeneratedEvent;
 
-@protocol PREResponsesMetricsProtocol
+@protocol PREResponsesMetricsProtocol <NSObject>
 - (void)registerResponseViewed:(NSNumber *)arg1;
 - (void)registerResponseTapped:(PREResponseTappedEvent *)arg1;
 - (void)registerResponsesGenerated:(PREResponsesGeneratedEvent *)arg1;

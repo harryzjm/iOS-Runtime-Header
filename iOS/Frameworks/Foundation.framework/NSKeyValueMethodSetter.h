@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSKeyValueSetter.h"
+
 __attribute__((visibility("hidden")))
-@interface NSKeyValueMethodSetter
+@interface NSKeyValueMethodSetter : NSKeyValueSetter
 {
     struct objc_method *_method;
 }

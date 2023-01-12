@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOTFCompactPredictedSpeed : PBCodable <NSCopying>
+@interface GEOTFCompactPredictedSpeed : PBCodable
 {
     unsigned int _deltaMinutesInFuture;
     unsigned int _speedKph;

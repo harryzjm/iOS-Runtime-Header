@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPModelLibraryHasPurchasesRequest;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibraryHasPurchasesRequestOperation
+@interface MPModelLibraryHasPurchasesRequestOperation : MPAsyncOperation
 {
     MPModelLibraryHasPurchasesRequest *_request;
     CDUnknownBlockType _responseHandler;

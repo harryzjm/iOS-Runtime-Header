@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/AMSUIWebModelInterface-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebAppViewModel : NSObject <AMSUIWebModelInterface>
+@interface AMSUIWebAppViewModel : NSObject
 {
+    NSString *_accessibilityLabel;
     NSString *_bundleIdentifier;
     NSURL *_iconURL;
     NSString *_title;
@@ -23,12 +22,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSURL *iconURL; // @synthesize iconURL=_iconURL;
 @property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(retain, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
+@property(readonly, copy) NSString *description;
 - (id)iconWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

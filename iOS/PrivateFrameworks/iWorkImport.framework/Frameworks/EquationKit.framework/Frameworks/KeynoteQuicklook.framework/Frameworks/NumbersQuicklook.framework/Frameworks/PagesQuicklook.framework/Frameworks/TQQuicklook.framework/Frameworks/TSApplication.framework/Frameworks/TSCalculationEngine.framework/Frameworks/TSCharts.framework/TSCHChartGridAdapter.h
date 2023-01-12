@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSFastEnumeration-Protocol.h>
-
 @class NSString, TSCHChartGrid;
 
-@interface TSCHChartGridAdapter : NSObject <NSFastEnumeration>
+@interface TSCHChartGridAdapter : NSObject
 {
     TSCHChartGrid *_grid;
     unsigned long long _index;

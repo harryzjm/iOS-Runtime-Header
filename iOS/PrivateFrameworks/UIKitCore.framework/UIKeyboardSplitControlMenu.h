@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIInputSwitcherSplitMenu-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardSplitControlMenu <_UIInputSwitcherSplitMenu>
+@interface UIKeyboardSplitControlMenu
 {
     struct CGSize m_preferredSize;
     NSArray *_items;
@@ -18,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)activeInstance;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType finishSplitTransitionBlock; // @synthesize finishSplitTransitionBlock=_finishSplitTransitionBlock;
 - (void)didFinishSplitTransition;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;
@@ -29,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)preferredSize;
 - (unsigned long long)numberOfItems;
 - (void)actionForItem:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

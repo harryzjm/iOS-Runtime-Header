@@ -6,12 +6,10 @@
 
 #import <ControlCenterUIKit/CCUICAPackageView.h>
 
-#import <MediaControls/_UICursorInteractionDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsRoutingCornerView : CCUICAPackageView <_UICursorInteractionDelegate>
+@interface MediaControlsRoutingCornerView : CCUICAPackageView
 {
     _Bool _routesAvailable;
     _Bool _routing;

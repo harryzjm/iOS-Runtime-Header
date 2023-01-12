@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <HealthToolbox/UITextViewDelegate-Protocol.h>
-
 @class HKDisplayType, NSString, UILabel, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface WDDisplayTypeDescriptionView : UIView <UITextViewDelegate>
+@interface WDDisplayTypeDescriptionView : UIView
 {
     HKDisplayType *_displayType;
     unsigned long long _style;

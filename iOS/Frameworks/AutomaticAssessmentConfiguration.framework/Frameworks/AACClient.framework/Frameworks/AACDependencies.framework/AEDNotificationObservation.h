@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AACDependencies/AEDObservation-Protocol.h>
-
 @class NSNotificationCenter, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AEDNotificationObservation : NSObject <AEDObservation>
+@interface AEDNotificationObservation : NSObject
 {
     NSString *_notificationName;
     NSNotificationCenter *_notificationCenter;

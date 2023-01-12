@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID;
+@class NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuSection : NSObject
 {
     NSUUID *_identifier;
-    _Bool _isCompact;
+    _Bool _isRoot;
+    NSString *_title;
+    long long _preferredCellSize;
     unsigned long long _preferredActionLineLimit;
 }
 
 + (id)sectionWithMenu:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long preferredActionLineLimit; // @synthesize preferredActionLineLimit=_preferredActionLineLimit;
-@property(readonly, nonatomic) _Bool isCompact; // @synthesize isCompact=_isCompact;
+@property(readonly, nonatomic) long long preferredCellSize; // @synthesize preferredCellSize=_preferredCellSize;
+@property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
+@property(nonatomic) _Bool isRoot; // @synthesize isRoot=_isRoot;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 

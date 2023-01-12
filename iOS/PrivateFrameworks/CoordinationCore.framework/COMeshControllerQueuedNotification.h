@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/COMeshControllerQueuedElementProtocol-Protocol.h>
-
 @class COMeshNode, COMeshNotification, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COMeshControllerQueuedNotification : NSObject <COMeshControllerQueuedElementProtocol>
+@interface COMeshControllerQueuedNotification : NSObject
 {
     COMeshNotification *_notification;
     COMeshNode *_destination;

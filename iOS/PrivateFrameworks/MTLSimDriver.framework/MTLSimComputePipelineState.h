@@ -6,14 +6,11 @@
 
 #import <Metal/_MTLComputePipelineState.h>
 
-#import <MTLSimDriver/MTLComputePipelineState-Protocol.h>
-#import <MTLSimDriver/MTLSerializerComputePipelineState-Protocol.h>
-
-@class MTLSimDevice, NSString;
+@class MTLDebugInstrumentationData, MTLSimDevice, NSString;
 @protocol MTLDevice;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimComputePipelineState : _MTLComputePipelineState <MTLComputePipelineState, MTLSerializerComputePipelineState>
+@interface MTLSimComputePipelineState : _MTLComputePipelineState
 {
     MTLSimDevice *_device;
     unsigned int _pipelineRef;
@@ -28,18 +25,26 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long staticThreadgroupMemoryLength; // @synthesize staticThreadgroupMemoryLength;
 @property(nonatomic) unsigned long long threadExecutionWidth; // @synthesize threadExecutionWidth;
 @property(nonatomic) unsigned long long maxTotalThreadsPerThreadgroup; // @synthesize maxTotalThreadsPerThreadgroup;
+- (id)pipelineBinaries;
 - (unsigned int)pipelineRef;
 - (void)dealloc;
-- (unsigned long long)uniqueIdentifier;
+@property(readonly) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (id)initWithDevice:(id)arg1 pipelineRef:(unsigned int)arg2 descriptor:(id)arg3;
 
 // Remaining properties
+@property(readonly, nonatomic) unsigned long long allocatedSize;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property(readonly, copy) NSString *description;
 @property(readonly) id <MTLDevice> device;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
+@property(readonly) unsigned long long gpuHandle;
+@property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly) unsigned long long hash;
 @property(readonly) NSString *label;
+@property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) Class superclass;
+@property(readonly) long long textureWriteRoundingMode;
 
 @end
 

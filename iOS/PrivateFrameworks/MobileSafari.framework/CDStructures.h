@@ -17,12 +17,12 @@ struct CAFrameRateRange {
 };
 
 struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
 };
 
 struct CGPoint {
@@ -41,10 +41,10 @@ struct CGSize {
 };
 
 struct NSDirectionalEdgeInsets {
-    double top;
-    double leading;
-    double bottom;
-    double trailing;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct UIEdgeInsets {
@@ -55,18 +55,18 @@ struct UIEdgeInsets {
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    id foregroundNotificationObserver;
-    id backgroundNotificationObserver;
-    _Bool needsDeferredContentUpdate;
-    _Bool sceneIsForeground;
-} CDStruct_4e0a34f2;
+    id _field1;
+    id _field2;
+    _Bool _field3;
+    _Bool _field4;
+} CDStruct_c3d9a8d3;
 
 typedef struct {
     double _field1;
@@ -82,7 +82,6 @@ typedef struct {
     double _field4;
     _Bool _field5;
     _Bool _field6;
-    unsigned long long _field7;
-    double _field8;
-} CDStruct_b1208419;
+    double _field7;
+} CDStruct_c9ef18f1;
 

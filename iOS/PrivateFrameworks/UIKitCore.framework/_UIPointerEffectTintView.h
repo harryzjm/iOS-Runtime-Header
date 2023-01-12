@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UILumaTrackingBackdropViewDelegate-Protocol.h>
+#import "UIVisualEffectView.h"
 
 __attribute__((visibility("hidden")))
-@interface _UIPointerEffectTintView <_UILumaTrackingBackdropViewDelegate>
+@interface _UIPointerEffectTintView : UIVisualEffectView
 {
     unsigned long long _luminance;
     CDUnknownBlockType _tintColorMatrixProvider;

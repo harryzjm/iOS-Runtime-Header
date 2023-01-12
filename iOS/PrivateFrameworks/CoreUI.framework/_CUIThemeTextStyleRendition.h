@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIThemeRendition.h"
+
 __attribute__((visibility("hidden")))
-@interface _CUIThemeTextStyleRendition
+@interface _CUIThemeTextStyleRendition : CUIThemeRendition
 {
     const struct _csitextstyle *_csiTextStyle;
 }

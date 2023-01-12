@@ -6,7 +6,7 @@
 
 #import <SettingsCellularUI/NSObject-Protocol.h>
 
-@class CTDataConnectionStatus, CTDataSettings, CTDataStatus, CTServiceDescriptor, CTServiceDisconnectionStatus, CTTetheringStatus, CTXPCServiceSubscriptionContext, NSArray;
+@class CTDataConnectionStatus, CTDataSettings, CTDataStatus, CTDataStatusBasic, CTServiceDescriptor, CTServiceDisconnectionStatus, CTTetheringStatus, CTXPCServiceSubscriptionContext, NSArray, NSNumber;
 
 @protocol CoreTelephonyClientDataDelegate <NSObject>
 
@@ -17,6 +17,7 @@
 - (void)tetheringStatus:(CTTetheringStatus *)arg1;
 - (void)internetConnectionAvailability:(_Bool)arg1;
 - (void)internetDataStatus:(CTDataStatus *)arg1;
+- (void)internetDataStatusBasic:(CTDataStatusBasic *)arg1;
 - (void)internetConnectionActivationError:(int)arg1;
 - (void)internetConnectionStateChanged:(CTDataConnectionStatus *)arg1;
 - (void)dataSettingsChanged:(CTDataSettings *)arg1;
@@ -28,6 +29,8 @@
 - (void)currentDataSimChanged:(CTXPCServiceSubscriptionContext *)arg1;
 - (void)preferredDataServiceDescriptorChanged:(CTServiceDescriptor *)arg1;
 - (void)preferredDataSimChanged:(CTXPCServiceSubscriptionContext *)arg1;
+- (void)anbrBitrateRecommendation:(CTXPCServiceSubscriptionContext *)arg1 bitrate:(NSNumber *)arg2 direction:(int)arg3;
+- (void)anbrActivationState:(CTXPCServiceSubscriptionContext *)arg1 enabled:(_Bool)arg2;
 - (void)connectionActivationError:(CTXPCServiceSubscriptionContext *)arg1 connection:(int)arg2 error:(int)arg3;
 - (void)connectionStateChanged:(CTXPCServiceSubscriptionContext *)arg1 connection:(int)arg2 dataConnectionStatusInfo:(CTDataConnectionStatus *)arg3;
 @end

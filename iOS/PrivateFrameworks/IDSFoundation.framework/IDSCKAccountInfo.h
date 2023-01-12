@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/NSSecureCoding-Protocol.h>
-
-@interface IDSCKAccountInfo : NSObject <NSSecureCoding>
+@interface IDSCKAccountInfo : NSObject
 {
     _Bool _supportsDeviceToDeviceEncryption;
 }

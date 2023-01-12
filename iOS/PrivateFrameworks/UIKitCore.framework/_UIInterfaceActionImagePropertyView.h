@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIInterfaceActionDisplayPropertyObserver-Protocol.h>
+#import "UIImageView.h"
 
 @class NSLayoutConstraint, NSString, UIInterfaceAction;
 
 __attribute__((visibility("hidden")))
-@interface _UIInterfaceActionImagePropertyView <UIInterfaceActionDisplayPropertyObserver>
+@interface _UIInterfaceActionImagePropertyView : UIImageView
 {
     NSLayoutConstraint *_imageWidthConstraint;
     NSLayoutConstraint *_imageHeightConstraint;

@@ -6,17 +6,14 @@
 
 #import <UIKit/UITextView.h>
 
-#import <PassKitUI/PKAppearanceObject-Protocol.h>
-
 @class NSString;
 
-@interface UITextView (PKUIUtilities) <PKAppearanceObject>
+@interface UITextView (PKUIUtilities)
 + (id)pkui_plainNonInteractiveTextViewWithFrame:(struct CGRect)arg1;
 + (id)pkui_plainInteractiveTextViewWithFrame:(struct CGRect)arg1;
 + (void)pkui_styleTextView:(id)arg1;
 - (struct CGRect)pkui_textFrame;
 - (struct CGRect)pkui_frameForTextFrame:(struct CGRect)arg1;
-- (struct CGSize)pkui_textSizeThatFits:(struct CGSize)arg1;
 - (void)pk_setAttributedTextRespectingTextAndBackgroundColors:(id)arg1;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;

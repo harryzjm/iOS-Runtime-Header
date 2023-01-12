@@ -9,6 +9,7 @@
 @class DEDBugSession, DEDBugSessionConfiguration, DEDDevice, DEDXPCInbound, NSArray, NSDictionary, NSString;
 
 @protocol DEDXPCInboundDelegate <NSObject>
+- (void)xpcInbound_forceRemoveNotificationOfType:(long long)arg1 identifier:(NSString *)arg2 hostIdentifier:(NSString *)arg3;
 - (void)xpcInbound_listClientXPCConnectionsReply:(NSArray *)arg1;
 - (void)xpc_listClientXPCConnectionsFromInbound:(DEDXPCInbound *)arg1;
 - (void)xpcInbound_didAbortSessionWithID:(NSString *)arg1;

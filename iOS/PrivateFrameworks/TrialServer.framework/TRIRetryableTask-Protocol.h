@@ -7,7 +7,7 @@
 #import <TrialServer/TRITask-Protocol.h>
 
 @protocol TRIRetryableTask <TRITask>
-@property(nonatomic) _Bool wasDeferred;
+@property _Bool wasDeferred;
 @property(nonatomic) int retryCount;
 @end
 

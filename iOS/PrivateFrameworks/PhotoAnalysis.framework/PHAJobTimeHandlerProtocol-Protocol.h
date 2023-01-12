@@ -6,11 +6,13 @@
 
 #import <PhotoAnalysis/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDate, NSDictionary, NSString;
 
 @protocol PHAJobTimeHandlerProtocol <NSObject>
+- (unsigned long long)versionForTaskName:(NSString *)arg1;
 - (_Bool)completedJobTodayForKey:(NSString *)arg1;
 - (_Bool)didExceedTimeInterval:(double)arg1 forKey:(NSString *)arg2;
+- (void)setLastCompletedDate:(NSDate *)arg1 andVersion:(unsigned long long)arg2 forTaskName:(NSString *)arg3;
 - (void)setLibraryScopedWorkerPreferencesValue:(id)arg1 forKey:(NSString *)arg2;
 - (void)updateLibraryScopedWorkerPreferencesWithEntriesFromDictionary:(NSDictionary *)arg1 keysToRemove:(NSArray *)arg2;
 - (NSDictionary *)libraryScopedWorkerPreferences;

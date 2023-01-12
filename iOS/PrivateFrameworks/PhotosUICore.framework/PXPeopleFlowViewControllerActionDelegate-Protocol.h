@@ -6,10 +6,7 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class UIBarButtonItem;
-
 @protocol PXPeopleFlowViewControllerActionDelegate <NSObject>
-- (void)useCustomBarButtonItem:(UIBarButtonItem *)arg1;
 - (void)setAdvanceButtonEnabled:(_Bool)arg1;
 - (void)requestAdvanceToNextInFlow;
 - (void)requestDone;

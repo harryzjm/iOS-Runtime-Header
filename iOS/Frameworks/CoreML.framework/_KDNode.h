@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _KDNode : NSObject <NSSecureCoding>
+@interface _KDNode : NSObject
 {
     _Bool _isLeaf;
     float _splitValue;

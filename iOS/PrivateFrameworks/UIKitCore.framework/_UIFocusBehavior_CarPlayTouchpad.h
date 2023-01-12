@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (_Bool)refinesIndexBarTargetContentOffset;
 - (_Bool)shouldEnableFocusOnSelect;
 - (_Bool)supportsIndirectPanningMovement;
 

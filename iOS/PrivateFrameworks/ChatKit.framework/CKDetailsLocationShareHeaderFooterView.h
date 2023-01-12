@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <ChatKit/CKDetailsHeaderFooterView-Protocol.h>
-
 @class NSString, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface CKDetailsLocationShareHeaderFooterView : UITableViewHeaderFooterView <CKDetailsHeaderFooterView>
+@interface CKDetailsLocationShareHeaderFooterView : UITableViewHeaderFooterView
 {
     UITextView *_locationSharingTextView;
 }

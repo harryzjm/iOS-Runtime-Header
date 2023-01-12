@@ -6,13 +6,10 @@
 
 #import <UIKit/UIControl.h>
 
-#import <LinkPresentation/LPComponentMediaPlayable-Protocol.h>
-#import <LinkPresentation/UIGestureRecognizerDelegate-Protocol.h>
-
 @class CAShapeLayer, LPAudioPlayButtonStyle, LPAudioPlayButtonTheme, NSString, UIImageView, UILongPressGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
-@interface LPPlayButtonControl : UIControl <UIGestureRecognizerDelegate, LPComponentMediaPlayable>
+@interface LPPlayButtonControl : UIControl
 {
     LPAudioPlayButtonStyle *_style;
     LPAudioPlayButtonTheme *_theme;

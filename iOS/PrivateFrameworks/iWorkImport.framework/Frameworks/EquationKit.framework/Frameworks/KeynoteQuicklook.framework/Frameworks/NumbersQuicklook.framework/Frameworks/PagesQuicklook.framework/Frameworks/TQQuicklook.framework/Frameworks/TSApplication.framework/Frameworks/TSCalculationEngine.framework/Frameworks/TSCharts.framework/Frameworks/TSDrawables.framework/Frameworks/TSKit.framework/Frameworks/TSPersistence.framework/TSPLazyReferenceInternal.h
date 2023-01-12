@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSPLazyReference.h"
+
 @class NSUUID;
 
-@interface TSPLazyReferenceInternal
+@interface TSPLazyReferenceInternal : TSPLazyReference
 {
     NSUUID *_objectUUID;
 }

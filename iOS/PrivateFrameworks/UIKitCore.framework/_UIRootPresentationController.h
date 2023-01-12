@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarAnimationProviding-Protocol.h>
+#import "_UISheetPresentationController.h"
 
 @class NSString, UIStatusBarHideAnimationParameters, UIStatusBarStyleAnimationParameters, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface _UIRootPresentationController <_UIStatusBarAnimationProviding>
+@interface _UIRootPresentationController : _UISheetPresentationController
 {
     UIWindow *_presentingWindow;
 }

@@ -6,24 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MobileSafariUI/SFCapsuleCollectionViewDataSource-Protocol.h>
-#import <MobileSafariUI/SFCapsuleCollectionViewDelegate-Protocol.h>
-#import <MobileSafariUI/SFCapsuleCollectionViewGestureObserving-Protocol.h>
-#import <MobileSafariUI/SFCapsuleNavigationBarContentObserving-Protocol.h>
-#import <MobileSafariUI/SFNavigationBarItemObserver-Protocol.h>
-#import <MobileSafariUI/TabControllerDocumentObserving-Protocol.h>
-#import <MobileSafariUI/TabDocumentNavigationObserving-Protocol.h>
-#import <MobileSafariUI/TabDocumentRenderingProgressEventObserving-Protocol.h>
-#import <MobileSafariUI/TabThumbnailCollectionViewPresentationObserving-Protocol.h>
-#import <MobileSafariUI/UIContextMenuInteractionDelegate-Protocol.h>
-#import <MobileSafariUI/UIDragInteractionDelegate-Protocol.h>
-#import <MobileSafariUI/UIDropInteractionDelegate-Protocol.h>
-
-@class NSString, NSTimer, SFCapsuleCollectionView, SFCapsuleNavigationBar, TabController, TabDocument, UIContextMenuInteraction, UIResponder, UnifiedField;
+@class NSArray, NSString, SFCapsuleCollectionView, SFCapsuleNavigationBar, TabController, TabDocument, UIContextMenuInteraction, UIResponder, UnifiedField;
 @protocol CapsuleNavigationBarViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CapsuleNavigationBarViewController : UIViewController <SFCapsuleCollectionViewGestureObserving, SFCapsuleNavigationBarContentObserving, SFNavigationBarItemObserver, TabControllerDocumentObserving, TabDocumentNavigationObserving, TabDocumentRenderingProgressEventObserving, UIContextMenuInteractionDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, SFCapsuleCollectionViewDataSource, SFCapsuleCollectionViewDelegate, TabThumbnailCollectionViewPresentationObserving>
+@interface CapsuleNavigationBarViewController : UIViewController
 {
     CDUnknownBlockType _nextStateChangeCompletionHandler;
     long long _hideCapsuleCount;
@@ -32,17 +19,18 @@ __attribute__((visibility("hidden")))
     _Bool _unminimizeOnHideKeyboard;
     _Bool _keyboardIsVisible;
     SFCapsuleCollectionView *_capsuleCollectionView;
-    double _autoMinimizationDelay;
-    NSTimer *_autoMinimizationTimer;
-    _Bool _autoDismissAfterDocumentSwitch;
     _Bool _showingContextMenu;
     UIContextMenuInteraction *_contextMenuInteraction;
     SFCapsuleNavigationBar *_sizingNavigationBar;
     SFCapsuleNavigationBar *_minimizedSizingNavigationBar;
     unsigned long long _lastSwipeAxis;
     double _additionalBottomObscuredInset;
+    _Bool _adjustScrollViewContentOffsetForMinimization;
+    TabDocument *_interactivelyInsertedTabDocument;
+    NSArray *_tabDocuments;
     _Bool _capsuleIsFocused;
-    _Bool _swipeDownEnabled;
+    _Bool _focusingForScribble;
+    _Bool _transitioningToNormalStateForKeyboardDismissal;
     SFCapsuleNavigationBar *_cachedSelectedItemNavigationBar;
     TabController *_tabController;
     id <CapsuleNavigationBarViewControllerDelegate> _delegate;
@@ -50,15 +38,20 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool swipeDownEnabled; // @synthesize swipeDownEnabled=_swipeDownEnabled;
+@property(readonly, nonatomic) NSArray *tabDocuments; // @synthesize tabDocuments=_tabDocuments;
+@property(readonly, nonatomic) _Bool transitioningToNormalStateForKeyboardDismissal; // @synthesize transitioningToNormalStateForKeyboardDismissal=_transitioningToNormalStateForKeyboardDismissal;
+@property(readonly, nonatomic) _Bool focusingForScribble; // @synthesize focusingForScribble=_focusingForScribble;
 @property(readonly, nonatomic) _Bool capsuleIsFocused; // @synthesize capsuleIsFocused=_capsuleIsFocused;
 @property __weak UIResponder *customNextResponder; // @synthesize customNextResponder=_customNextResponder;
 @property __weak id <CapsuleNavigationBarViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) TabController *tabController; // @synthesize tabController=_tabController;
+- (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
-- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
-- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configuration:(id)arg2 dismissalPreviewForItemWithIdentifier:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 configuration:(id)arg2 highlightPreviewForItemWithIdentifier:(id)arg3;
 - (CDUnknownBlockType)_contextMenuActionProvider;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
@@ -79,55 +72,54 @@ __attribute__((visibility("hidden")))
 - (void)capsuleCollectionView:(id)arg1 didUpdateProgress:(double)arg2 toSelectItemAtIndex:(long long)arg3 progressToTopAction:(double)arg4 snapToAxis:(unsigned long long)arg5;
 - (void)capsuleCollectionView:(id)arg1 didBeginSelectionGestureOnAxis:(unsigned long long)arg2;
 - (_Bool)capsuleCollectionView:(id)arg1 shouldHideShadowForItemAtIndex:(long long)arg2;
+- (_Bool)capsuleCollectionViewShouldDelayToolbarPresentation:(id)arg1;
 - (id)createToolbarForCapsuleCollectionView:(id)arg1;
 - (void)capsuleCollectionViewLayoutStyleDidChange:(id)arg1;
 - (void)capsuleCollectionView:(id)arg1 willChangeToLayoutStyle:(long long)arg2;
 - (void)capsuleCollectionViewWillHideKeyboard:(id)arg1;
+- (_Bool)capsuleCollectionViewContentScaleCompletesMinimization:(id)arg1;
 - (double)capsuleCollectionViewMinimizedContentScale:(id)arg1;
 - (double)capsuleCollectionView:(id)arg1 heightForItemAtIndex:(long long)arg2 width:(double)arg3 state:(long long)arg4;
-- (id)capsuleCollectionView:(id)arg1 rectsForTapToUnminimizeBarWithDefaultRects:(id)arg2;
 - (_Bool)capsuleCollectionViewAllowsMinimizationGesture:(id)arg1;
 - (id)topActionForCapsuleCollectionView:(id)arg1;
 - (id)trailingActionForCapsuleCollectionView:(id)arg1;
-- (double)capsuleCollectionViewDistanceToTopEdge:(id)arg1;
+- (double)capsuleCollectionView:(id)arg1 distanceToTopEdgeIncludingDeceleration:(_Bool)arg2;
+- (unsigned long long)_boundaryEdgesForScrollView:(id)arg1;
 - (unsigned long long)capsuleCollectionViewBoundaryEdgesForScrollableContent:(id)arg1;
 - (void)capsuleCollectionView:(id)arg1 selectedItemWillChangeToState:(long long)arg2 options:(long long)arg3 coordinator:(id)arg4;
 - (void)capsuleCollectionView:(id)arg1 didSelectItemAtIndex:(long long)arg2;
 - (void)capsuleCollectionViewWillReloadData:(id)arg1;
-- (void)capsuleNavigationBarDidBeginShowingTransientLabel:(id)arg1;
+- (void)tabOverviewWillEndInteractivePresentation:(id)arg1;
+- (void)tabOverviewDidUpdateInteractivePresentation:(id)arg1;
+- (void)tabOverviewWillBeginInteractivePresentation:(id)arg1;
 - (void)tabCollectionViewDidDismiss:(id)arg1;
 - (void)tabCollectionViewDidCancelDismissal:(id)arg1;
 - (void)tabCollectionViewWillDismiss:(id)arg1;
 - (void)tabCollectionViewDidPresent:(id)arg1;
 - (void)tabCollectionViewWillPresent:(id)arg1;
 - (void)_installDetachedCapsuleInCollectionView;
-- (void)_installDetachedCapsuleInTabOverview;
 - (void)_reattachCapsuleToCollectionView;
 - (void)_attachSelectedCapsuleToTabOverview;
 - (void)webViewDidFirstMeaningfulPaintForTabDocument:(id)arg1;
-- (void)navigationBarItemDidUpdateFormatButtonSelected:(id)arg1;
 - (void)tabDocumentDidCommitNavigation:(id)arg1;
-- (void)tapDocumentDidStartProvisionalNavigation:(id)arg1;
 - (void)tabDocumentWillEndNavigationGesture:(id)arg1 withNavigationToBackForwardListItem:(id)arg2;
+- (void)tabControllerDidEndUpdates:(id)arg1;
+- (void)tabControllerWillBeginUpdates:(id)arg1;
 - (void)tabControllerDidChangeCurrentTabDocuments:(id)arg1;
 - (void)tabController:(id)arg1 didMoveTabDocument:(id)arg2 overTabDocument:(id)arg3;
 - (void)tabController:(id)arg1 didCloseTabDocuments:(id)arg2 atIndexes:(id)arg3 info:(unsigned long long)arg4;
 - (void)tabController:(id)arg1 didInsertTabDocument:(id)arg2;
-- (void)_setUnhandledTapHandlerOnWebView:(id)arg1;
 - (void)tabController:(id)arg1 didSwitchFromTabDocument:(id)arg2 toTabDocument:(id)arg3;
 - (void)tabController:(id)arg1 didReplaceTabDocument:(id)arg2 withTabDocument:(id)arg3;
 - (void)tabControllerDocumentCountDidChange:(id)arg1;
+- (void)_observeScrollViewDidScroll:(id)arg1;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (_Bool)_activeWebViewIsFirstResponder;
-- (void)_sceneDidEnterBackground:(id)arg1;
-- (void)_sceneWillEnterForeground:(id)arg1;
-- (void)_updateReachabilitySupportedForDisappearing:(_Bool)arg1;
+- (void)_updateTabDocumentsAnimated:(_Bool)arg1;
+- (void)_updateTabDocumentsWithoutUpdatingCollectionView;
 - (void)_updateSelectedItemAccessoryViews;
 - (void)updateVisibleContextMenu;
-- (void)_minimizeBarAfterDelay:(double)arg1;
-- (void)_startAutoDismissTimerIfNeeded;
-- (_Bool)_shouldDismissBarAutomatically;
 - (id)_dragPreviewForNavigationBar:(id)arg1;
 @property(readonly, nonatomic) SFCapsuleNavigationBar *selectedItemNavigationBar; // @synthesize selectedItemNavigationBar=_cachedSelectedItemNavigationBar;
 - (_Bool)transitionToState:(long long)arg1 options:(long long)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -137,13 +129,14 @@ __attribute__((visibility("hidden")))
 - (void)updateAdditionalBottomObscuredInset;
 @property(readonly, nonatomic) UnifiedField *unifiedField;
 - (void)_switchObservingFromTabDocument:(id)arg1 toTabDocument:(id)arg2;
+- (_Bool)_capsuleShouldShowAlternateToolbarDuringTabViewTransition;
+- (_Bool)_shouldAttachCapsuleForTabViewTransition;
 - (void)_updateHidingCapsuleAnimated:(_Bool)arg1;
 - (void)endHidingCapsuleAnimated:(_Bool)arg1;
 - (void)beginHidingCapsuleAnimated:(_Bool)arg1;
 - (id)nextResponder;
 - (void)willTransitionFromTabView:(id)arg1 toTabView:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

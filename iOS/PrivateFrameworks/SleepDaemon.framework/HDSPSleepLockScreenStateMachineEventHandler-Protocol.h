@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineEventHandler-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineEventHandler-Protocol.h>
 
-@protocol HDSPSleepLockScreenStateMachineEventHandler <HKSPStateMachineEventHandler>
-- (void)bedtimeExpiredEventDue;
+@protocol HDSPSleepLockScreenStateMachineEventHandler <HKSPPersistentStateMachineEventHandler>
 - (void)sleepModeDidChange:(long long)arg1 reason:(unsigned long long)arg2;
 - (void)dismissAlertForGoodMorning;
 - (void)presentAlertForGoodMorning;

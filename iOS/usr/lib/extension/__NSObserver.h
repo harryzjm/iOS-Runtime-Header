@@ -6,21 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSNotificationCenter, NSOperationQueue, NSString;
+@class NSNotificationCenter;
 
 __attribute__((visibility("hidden")))
 @interface __NSObserver : NSObject
 {
     NSNotificationCenter *nc;
-    NSOperationQueue *queue;
-    NSString *name;
-    id object;
-    CDUnknownBlockType block;
+    unsigned long long _token;
 }
 
-- (void)_doit:(id)arg1;
-- (id)object;
-- (id)name;
+@property unsigned long long token; // @synthesize token=_token;
 - (void)dealloc;
 
 @end

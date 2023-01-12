@@ -5,9 +5,10 @@
 //
 
 @class NSArray, NSData, NSDictionary, NSString, NSURL;
-@protocol PXTapToRadarDiagnosticProvider;
+@protocol PXTapToRadarDiagnosticCollectionOperation, PXTapToRadarDiagnosticProvider;
 
 @protocol PXTapToRadarDiagnosticContainer
+- (id <PXTapToRadarDiagnosticCollectionOperation>)beginCollectionOperationWithName:(NSString *)arg1 timeout:(double)arg2;
 - (void)addSubproviders:(NSArray *)arg1;
 - (void)addSubprovider:(id <PXTapToRadarDiagnosticProvider>)arg1;
 - (void)addAttachmentWithData:(NSData *)arg1 name:(NSString *)arg2;

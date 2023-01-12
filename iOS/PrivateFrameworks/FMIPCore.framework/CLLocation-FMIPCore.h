@@ -7,6 +7,7 @@
 #import <CoreLocation/CLLocation.h>
 
 @interface CLLocation (FMIPCore)
+@property(nonatomic, readonly) long long hash;
 - (_Bool)isEqual:(id)arg1;
 @end
 

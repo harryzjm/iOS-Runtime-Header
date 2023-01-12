@@ -11,16 +11,17 @@
 @protocol BNPanGestureProxy, BNPresentableContext;
 
 @protocol BNPresentable <BNPresentableIdentifying, BNPresentableObserving>
-@property(nonatomic, readonly) UIViewController *viewController;
 
 @optional
-- (NSString *)presentableDescription;
 - (void)draggingDidBeginWithGestureProxy:(id <BNPanGestureProxy>)arg1;
+@property(nonatomic, readonly) long long presentableType;
+@property(nonatomic, readonly) UIViewController *viewController;
+- (NSString *)presentableDescription;
 - (_Bool)isTouchOutsideDismissalEnabled;
 - (_Bool)isDraggingInteractionEnabled;
 - (_Bool)isDraggingDismissalEnabled;
 @property(nonatomic) __weak id <BNPresentableContext> presentableContext;
-@property(nonatomic, readonly) long long presentableType;
+@property(nonatomic, readonly) long long presentableBehavior;
 
 // Remaining properties
 @property(nonatomic, readonly) _Bool draggingDismissalEnabled;

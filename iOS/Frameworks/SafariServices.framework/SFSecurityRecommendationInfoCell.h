@@ -6,12 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <SafariServices/SFPasswordTableViewCell-Protocol.h>
-
-@class NSArray, NSLayoutConstraint, NSString, UIImage, UIImageView, UILabel, UIView, WBSSavedPassword;
+@class NSArray, NSLayoutConstraint, NSString, UIButton, UIImage, UIImageView, UILabel, UIView, WBSSavedAccount;
+@protocol SFSecurityRecommendationInfoCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFSecurityRecommendationInfoCell : UITableViewCell <SFPasswordTableViewCell>
+@interface SFSecurityRecommendationInfoCell : UITableViewCell
 {
     UIImageView *_iconView;
     UIImageView *_completedUpgradeCheckmarkView;
@@ -22,18 +21,25 @@ __attribute__((visibility("hidden")))
     unsigned long long _configuration;
     NSArray *_completedUpgradeCheckmarkViewConstraints;
     NSLayoutConstraint *_standardTitleTrailingConstraint;
-    WBSSavedPassword *_savedPassword;
+    UIButton *_hideButton;
+    NSArray *_hideButtonConstraints;
+    WBSSavedAccount *_savedAccount;
+    id <SFSecurityRecommendationInfoCellDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) WBSSavedPassword *savedPassword; // @synthesize savedPassword=_savedPassword;
+@property(nonatomic) __weak id <SFSecurityRecommendationInfoCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) WBSSavedAccount *savedAccount; // @synthesize savedAccount=_savedAccount;
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 - (double)_iconWidth;
 - (void)showPlaceholderImageForDomain:(id)arg1 backgroundColor:(id)arg2;
-- (void)setSavedPassword:(id)arg1;
+- (void)setSavedAccount:(id)arg1;
 @property(copy, nonatomic) NSString *subtitle;
 @property(copy, nonatomic) NSString *title;
+- (void)_hideButtonPressed:(id)arg1;
+- (void)_createHideButton;
+- (void)setShowsHideButton:(_Bool)arg1;
 - (void)setShowsUpgradeCompletionCheckmark:(_Bool)arg1;
 - (void)showCheckmarkForDetailView;
 @property(retain, nonatomic) UIImage *icon;

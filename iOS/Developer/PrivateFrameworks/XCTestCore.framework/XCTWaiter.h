@@ -9,8 +9,8 @@
 #import <XCTestCore/XCTWaiterManagement-Protocol.h>
 #import <XCTestCore/XCTestExpectationDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, XCTWaiterManager;
-@protocol OS_dispatch_queue, XCTWaiterDelegate;
+@class NSArray, NSMutableArray, NSString;
+@protocol OS_dispatch_queue, XCTWaiterDelegate, XCTWaiterManager;
 
 @interface XCTWaiter : NSObject <XCTestExpectationDelegate, XCTWaiterManagement>
 {
@@ -24,7 +24,7 @@
     NSArray *_expectations;
     NSMutableArray *_mutableFulfilledExpectations;
     struct __CFRunLoop *_waitingRunLoop;
-    XCTWaiterManager *_manager;
+    id <XCTWaiterManager> _manager;
     unsigned long long _waitingThreadId;
 }
 
@@ -39,7 +39,7 @@
 + (id)subsystemQueue;
 - (void).cxx_destruct;
 @property(readonly) unsigned long long waitingThreadId; // @synthesize waitingThreadId=_waitingThreadId;
-@property __weak XCTWaiterManager *manager; // @synthesize manager=_manager;
+@property __weak id <XCTWaiterManager> manager; // @synthesize manager=_manager;
 @property struct __CFRunLoop *waitingRunLoop; // @synthesize waitingRunLoop=_waitingRunLoop;
 @property(readonly, nonatomic) NSMutableArray *mutableFulfilledExpectations; // @synthesize mutableFulfilledExpectations=_mutableFulfilledExpectations;
 @property(copy, nonatomic) NSArray *expectations; // @synthesize expectations=_expectations;

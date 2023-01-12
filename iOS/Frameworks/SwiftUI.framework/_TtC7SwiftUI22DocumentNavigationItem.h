@@ -6,7 +6,7 @@
 
 #import <UIKit/UINavigationItem.h>
 
-@class MISSING_TYPE, NSArray;
+@class MISSING_TYPE, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI22DocumentNavigationItem : UINavigationItem
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithTitle:(id)arg1;
 - (void)dismiss:(id)arg1;
+@property(nonatomic, copy) NSString *title;
 @property(nonatomic, copy) NSArray *leftBarButtonItems;
 - (id)initWithCoder:(id)arg1;
 

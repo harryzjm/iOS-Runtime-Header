@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewLayout.h>
 
-#import <VideosUI/VideosExtrasCarouselCollectionViewLayout-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasCarouselCollectionViewLayout : UICollectionViewLayout <VideosExtrasCarouselCollectionViewLayout>
+@interface VideosExtrasCarouselCollectionViewLayout : UICollectionViewLayout
 {
     NSDictionary *_cachedLayoutAttributes;
     long long _indexOfVisibleItemForBoundsChange;

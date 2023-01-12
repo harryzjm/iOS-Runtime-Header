@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long pixelWidth;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) long long mediaType;
+- (struct __CVBuffer *)imageWithPreferredDimension:(unsigned long long)arg1 orientation:(unsigned int *)arg2;
 - (struct __CVBuffer *)imageWithPreferredDimension:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSDictionary *exif;
 @property(readonly, nonatomic) _Bool isSDOF;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)originalMovieSize;
 - (id)originalMovie;
 - (id)streamedMovie;
+- (_Bool)isMovieResourceLocalAvailable;
 - (id)movie;
 @property(readonly, nonatomic) float timelapseRate;
 @property(readonly, nonatomic) CDStruct_e83c9415 slomoRange;

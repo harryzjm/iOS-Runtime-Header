@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) CALayer *layer; // @synthesize layer=_layer;
-- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
+- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3 status:(CDStruct_3d581f42 *)arg4;
 - (struct __C3DTexture *)_textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (double)layerContentsScaleFactor;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)requiresMainThreadUpdates;
 - (float)clearValue;
 - (id)layerToFocusForRenderedLayer:(id)arg1;
-- (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
+- (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3 status:(CDStruct_3d581f42 *)arg4;
 - (_Bool)prefersGL3;
 - (_Bool)supportsMetal;
 - (void)dealloc;

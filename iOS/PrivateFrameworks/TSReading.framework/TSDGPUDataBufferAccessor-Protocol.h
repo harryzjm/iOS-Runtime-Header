@@ -9,12 +9,12 @@
 @class TSDGPUDataBufferAttribute;
 
 @protocol TSDGPUDataBufferAccessor <NSObject>
-- (void)setMetalPoint4D:(CDStruct_83984b6f)arg1 forAttribute:(TSDGPUDataBufferAttribute *)arg2 atIndex:(unsigned long long)arg3;
-- (CDStruct_83984b6f)metalPoint4DForAttribute:(TSDGPUDataBufferAttribute *)arg1 atIndex:(unsigned long long)arg2;
+- (void)setMetalPoint4D:(CDStruct_818bb265)arg1 forAttribute:(TSDGPUDataBufferAttribute *)arg2 atIndex:(unsigned long long)arg3;
+- (CDStruct_818bb265)metalPoint4DForAttribute:(TSDGPUDataBufferAttribute *)arg1 atIndex:(unsigned long long)arg2;
 - (void)setMetalPoint3D:(CDStruct_869f9c67)arg1 forAttribute:(TSDGPUDataBufferAttribute *)arg2 atIndex:(unsigned long long)arg3;
 - (CDStruct_869f9c67)metalPoint3DForAttribute:(TSDGPUDataBufferAttribute *)arg1 atIndex:(unsigned long long)arg2;
-- (void)setMetalPoint2D:(CDStruct_6e3f967a)arg1 forAttribute:(TSDGPUDataBufferAttribute *)arg2 atIndex:(unsigned long long)arg3;
-- (CDStruct_6e3f967a)metalPoint2DForAttribute:(TSDGPUDataBufferAttribute *)arg1 atIndex:(unsigned long long)arg2;
+- (void)setMetalPoint2D:(CDStruct_b2fbf00d)arg1 forAttribute:(TSDGPUDataBufferAttribute *)arg2 atIndex:(unsigned long long)arg3;
+- (CDStruct_b2fbf00d)metalPoint2DForAttribute:(TSDGPUDataBufferAttribute *)arg1 atIndex:(unsigned long long)arg2;
 - (void)setCGFloat:(double)arg1 forAttribute:(TSDGPUDataBufferAttribute *)arg2 atIndex:(unsigned long long)arg3;
 - (void)setMetalFloat:(float)arg1 forAttribute:(TSDGPUDataBufferAttribute *)arg2 atIndex:(unsigned long long)arg3;
 - (float)metalFloatForAttribute:(TSDGPUDataBufferAttribute *)arg1 atIndex:(unsigned long long)arg2;

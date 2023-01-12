@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDPlaceQuestionnaireLookupParameters : PBCodable <NSCopying>
+@interface GEOPDPlaceQuestionnaireLookupParameters : PBCodable
 {
     NSMutableArray *_placeInfos;
 }

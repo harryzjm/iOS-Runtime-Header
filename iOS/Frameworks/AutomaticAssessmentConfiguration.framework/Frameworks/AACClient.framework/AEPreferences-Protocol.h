@@ -7,6 +7,10 @@
 #import <AACClient/NSObject-Protocol.h>
 
 @protocol AEPreferences <NSObject>
+@property(nonatomic) _Bool disableQuickNote;
+- (_Bool)shouldDisableQuickNote;
+@property(nonatomic) _Bool disableDictation;
+- (_Bool)shouldDisableDictation;
 @property(nonatomic) _Bool elevateWindows;
 - (_Bool)shouldElevateWindows;
 @property(nonatomic) _Bool captureDisplays;
@@ -29,8 +33,6 @@
 - (_Bool)shouldDisableContinuity;
 @property(nonatomic) _Bool disableSiri;
 - (_Bool)shouldDisableSiri;
-@property(nonatomic) _Bool createAssessmentFile;
-- (_Bool)shouldCreateAssessmentFile;
 @property(nonatomic) _Bool presentShields;
 - (_Bool)shouldPresentShields;
 @property(nonatomic) _Bool enterSandbox;

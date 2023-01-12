@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, UIFont, UIView;
+#import "UIView.h"
+
+@class NSArray, NSMutableArray, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusFastScrollingIndexBarView
+@interface _UIFocusFastScrollingIndexBarView : UIView
 {
     UIView *_indicatorView;
     double _preferredIndicatorWidth;

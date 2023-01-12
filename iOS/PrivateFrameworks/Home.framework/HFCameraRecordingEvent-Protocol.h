@@ -7,7 +7,7 @@
 #import <Home/HMCameraRecordingEvent-Protocol.h>
 #import <Home/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSDateInterval;
+@class NSDate, NSDateInterval;
 
 @protocol HFCameraRecordingEvent <HMCameraRecordingEvent, NSObject>
 - (NSDateInterval *)hf_dateInterval;
@@ -15,7 +15,6 @@
 - (_Bool)isComplete;
 - (_Bool)canAskForUserFeedback;
 - (_Bool)hf_isPlayable;
-- (NSArray *)posterFrames;
 - (double)duration;
 - (double)hf_duration;
 - (unsigned long long)containerType;

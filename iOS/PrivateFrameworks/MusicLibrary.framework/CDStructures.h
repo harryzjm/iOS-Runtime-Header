@@ -4,18 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct CGSize {
-    double _field1;
-    double _field2;
-};
 
 struct DAAPParserDelegate;
 
@@ -27,28 +20,12 @@ struct ML3ImportItem;
 
 struct ML3VirtualTableDataSource;
 
-struct SearchCriteriaList;
-
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct __shared_weak_count;
-
-struct map<unsigned int, unsigned long, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned long>>> {
-    struct __tree<std::__value_type<unsigned int, unsigned long>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, unsigned long>, std::less<unsigned int>, true>, std::allocator<std::__value_type<unsigned int, unsigned long>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned int, unsigned long>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> {
-                void *__left_;
-            } __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, unsigned long>, std::less<unsigned int>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
 
 struct shared_ptr<DAAPParserDelegate> {
     struct DAAPParserDelegate *__ptr_;
@@ -73,33 +50,6 @@ struct shared_ptr<ML3ImportItem> {
 struct shared_ptr<ML3VirtualTableDataSource> {
     struct ML3VirtualTableDataSource *__ptr_;
     struct __shared_weak_count *__cntrl_;
-};
-
-struct sqlite3_module {
-    int _field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    CDUnknownFunctionPointerType _field5;
-    CDUnknownFunctionPointerType _field6;
-    CDUnknownFunctionPointerType _field7;
-    CDUnknownFunctionPointerType _field8;
-    CDUnknownFunctionPointerType _field9;
-    CDUnknownFunctionPointerType _field10;
-    CDUnknownFunctionPointerType _field11;
-    CDUnknownFunctionPointerType _field12;
-    CDUnknownFunctionPointerType _field13;
-    CDUnknownFunctionPointerType _field14;
-    CDUnknownFunctionPointerType _field15;
-    CDUnknownFunctionPointerType _field16;
-    CDUnknownFunctionPointerType _field17;
-    CDUnknownFunctionPointerType _field18;
-    CDUnknownFunctionPointerType _field19;
-    CDUnknownFunctionPointerType _field20;
-    CDUnknownFunctionPointerType _field21;
-    CDUnknownFunctionPointerType _field22;
-    CDUnknownFunctionPointerType _field23;
-    CDUnknownFunctionPointerType _field24;
 };
 
 struct unique_ptr<std::__hash_node_base<std::__hash_node<long long, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<long long, void *>*>*>>> {
@@ -185,36 +135,11 @@ struct vector<unsigned char, std::allocator<unsigned char>> {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
-
-typedef struct {
     long long _field1;
     long long _field2;
 } CDStruct_912cb5d2;
 
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned char _field3;
-    unsigned char _field4;
-    unsigned char _field5;
-    unsigned char _field6;
-    union {
-        struct {
-            void *_field1;
-            unsigned int _field2;
-        } _field1;
-        struct SearchCriteriaList *_field2;
-    } _field7;
-} CDStruct_ca99c6a1;
-
-// Ambiguous groups
-typedef struct {
-    unsigned int persistentId:1;
-    unsigned int storeId:1;
-} CDStruct_0ee5a09b;
-
+// Template types
 typedef struct shared_ptr<ML3CPP::Element> {
     struct Element *_field1;
     struct __shared_weak_count *_field2;

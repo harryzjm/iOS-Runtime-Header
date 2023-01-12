@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Coordination/COClusterRoleMonitorServiceInterface-Protocol.h>
-
 @class NSString;
 
-@protocol COStateManagerLegacyServiceInterface <COClusterRoleMonitorServiceInterface>
+@protocol COStateManagerLegacyServiceInterface
 - (void)requestCompositionForCluster:(NSString *)arg1 withCallback:(void (^)(NSArray *, NSError *))arg2;
 - (void)unregisterForMediaSystemLeaderChange;
 - (void)registerForMediaSystemLeaderChange;

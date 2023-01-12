@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSTimer, TIHandwritingStrokes, UIDelayedAction, _UIDynamicCaretDot;
 
 __attribute__((visibility("hidden")))
-@interface _UIDynamicCaretInput
+@interface _UIDynamicCaretInput : UIView
 {
     struct CGContext *_bitmapContext;
     long long _fadeCount;

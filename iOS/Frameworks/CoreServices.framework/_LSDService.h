@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSXPCListenerDelegate-Protocol.h>
-
-@class NSString, NSXPCListener;
+@class NSMapTable, NSString, NSXPCListener;
 
 __attribute__((visibility("hidden")))
-@interface _LSDService : NSObject <NSXPCListenerDelegate>
+@interface _LSDService : NSObject
 {
     NSXPCListener *_listener;
+    struct unfair_lock_mutex _clientMapMutex;
+    NSMapTable *_clientMap;
 }
 
 + (id)replacementObjectForXPCConnection:(id)arg1 encoder:(id)arg2 object:(id)arg3;
@@ -24,8 +24,14 @@ __attribute__((visibility("hidden")))
 + (id)dispatchQueue;
 + (_Bool)XPCConnectionIsAlwaysPrivileged;
 + (_Bool)isEnabled;
+- (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
+- (id)replacementObjectForXPCConnection:(id)arg1 encoder:(id)arg2 object:(id)arg3;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (id)clientForConnection:(id)arg1;
+- (void)connectionWasInvalidated:(id)arg1;
+- (void)clientBorn:(id)arg1 forNewConnection:(id)arg2;
 - (id)initWithXPCListener:(id)arg1;
 
 // Remaining properties

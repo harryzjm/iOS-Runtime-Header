@@ -34,6 +34,10 @@
     MISSING_TYPE *_location;
     MISSING_TYPE *_appLink;
     MISSING_TYPE *_eta;
+    MISSING_TYPE *_detour;
+    MISSING_TYPE *_boundaryAnnotation;
+    MISSING_TYPE *_startLocation;
+    MISSING_TYPE *_miniMapsData;
 }
 
 @end

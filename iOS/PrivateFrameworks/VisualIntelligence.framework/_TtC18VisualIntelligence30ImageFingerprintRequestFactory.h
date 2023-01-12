@@ -10,7 +10,7 @@
 
 @interface _TtC18VisualIntelligence30ImageFingerprintRequestFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *knowledgeService;
+    MISSING_TYPE *domainModelRegistry;
 }
 
 @end

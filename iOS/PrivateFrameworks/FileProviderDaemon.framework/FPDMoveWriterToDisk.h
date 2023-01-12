@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDMoveWriterExecutor-Protocol.h>
-
 @class FPDMoveWriter, NSFileManager;
 @protocol FPActionLocatorAccess;
 
 __attribute__((visibility("hidden")))
-@interface FPDMoveWriterToDisk : NSObject <FPDMoveWriterExecutor>
+@interface FPDMoveWriterToDisk : NSObject
 {
     FPDMoveWriter *_writer;
     NSFileManager *_fileManager;

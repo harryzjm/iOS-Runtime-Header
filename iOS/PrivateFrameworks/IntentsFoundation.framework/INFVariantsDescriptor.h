@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IntentsFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface INFVariantsDescriptor : NSObject <NSCopying>
+@interface INFVariantsDescriptor : NSObject
 {
     unsigned long long _plurality;
     unsigned long long _gender;

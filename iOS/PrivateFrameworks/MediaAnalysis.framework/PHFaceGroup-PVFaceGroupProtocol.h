@@ -6,11 +6,9 @@
 
 #import <Photos/PHFaceGroup.h>
 
-#import <MediaAnalysis/PVFaceGroupProtocol-Protocol.h>
-
 @class NSString;
 
-@interface PHFaceGroup (PVFaceGroupProtocol) <PVFaceGroupProtocol>
+@interface PHFaceGroup (PVFaceGroupProtocol)
 @property(readonly, nonatomic) _Bool isDirty;
 @property(readonly, nonatomic) unsigned long long faceCountInFaceGroup;
 

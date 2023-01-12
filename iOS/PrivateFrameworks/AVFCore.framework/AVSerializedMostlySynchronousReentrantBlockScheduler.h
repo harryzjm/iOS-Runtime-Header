@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVBlockScheduler-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVSerializedMostlySynchronousReentrantBlockScheduler : NSObject <AVBlockScheduler>
+@interface AVSerializedMostlySynchronousReentrantBlockScheduler : NSObject
 {
     struct OpaqueFigSimpleMutex *_ivarAccessLock;
     NSArray *_blocks;

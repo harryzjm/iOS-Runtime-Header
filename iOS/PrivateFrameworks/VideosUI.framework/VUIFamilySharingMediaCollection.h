@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIMediaCollection.h"
+
 @class NSArray, NSString, VUIFamilySharingEntity;
 
 __attribute__((visibility("hidden")))
-@interface VUIFamilySharingMediaCollection
+@interface VUIFamilySharingMediaCollection : VUIMediaCollection
 {
     NSString *_artworkURL;
     NSString *_amsShowIdentifier;

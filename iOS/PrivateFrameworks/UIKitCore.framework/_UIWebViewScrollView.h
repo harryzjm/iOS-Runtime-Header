@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIWebScrollView.h"
+
 @class UIWebBrowserView, _UIWebViewScrollViewDelegateForwarder;
 
 __attribute__((visibility("hidden")))
-@interface _UIWebViewScrollView
+@interface _UIWebViewScrollView : UIWebScrollView
 {
     _UIWebViewScrollViewDelegateForwarder *_forwarder;
     _Bool _bouncesSetExplicitly;

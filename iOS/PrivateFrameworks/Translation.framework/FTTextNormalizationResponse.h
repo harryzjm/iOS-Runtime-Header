@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTTextNormalizationResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTTextNormalizationResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -24,6 +21,9 @@ __attribute__((visibility("hidden")))
 - (Offset_2174ecfb)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *error_str;
 @property(readonly, nonatomic) int error_code;
+- (void)tokens_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)tokens_count;
+- (id)tokens_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *tokens;
 @property(readonly, nonatomic) NSString *session_id;
 @property(readonly, nonatomic) NSString *speech_id;

@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _TtC20FMPrecisionFindingUI13FMPFARSCNView : ARSCNView
 {
     MISSING_TYPE *innerIsolationQueue;

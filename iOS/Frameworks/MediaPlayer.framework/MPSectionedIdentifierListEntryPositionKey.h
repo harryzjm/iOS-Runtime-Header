@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPSectionedIdentifierListEntryPositionKey : NSObject <NSSecureCoding>
+@interface MPSectionedIdentifierListEntryPositionKey : NSObject
 {
     NSString *_deviceIdentifier;
     NSString *_generation;

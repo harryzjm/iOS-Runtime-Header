@@ -9,6 +9,7 @@
 @protocol HMDSBSRemoteAlertHandleObserver;
 
 @protocol HMDSBSRemoteAlertHandle <NSObject>
+@property(readonly, getter=isValid) _Bool valid;
 @property(readonly, getter=isActive) _Bool active;
 - (void)invalidate;
 - (void)activate;

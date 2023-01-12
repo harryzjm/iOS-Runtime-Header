@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -44,27 +42,6 @@ struct in6_addr {
 struct in_addr {
     unsigned int s_addr;
 };
-
-struct nw_frame;
-
-struct nw_frame_array_s {
-    struct nw_frame *tqh_first;
-    struct nw_frame **tqh_last;
-};
-
-struct nw_protocol {
-    unsigned char flow_id[16];
-    struct nw_protocol_identifier *identifier;
-    struct nw_protocol_callbacks *callbacks;
-    struct nw_protocol *output_handler;
-    void *handle;
-    struct nw_protocol *default_input_handler;
-    void *output_handler_context;
-};
-
-struct nw_protocol_callbacks;
-
-struct nw_protocol_identifier;
 
 struct sockaddr {
     unsigned char sa_len;

@@ -11,6 +11,8 @@
 - (_Bool)wantsManagement;
 
 @optional
+- (_Bool)prefersPushForSizeClass:(long long)arg1;
+- (_Bool)canRequirePushOrPresentation;
 - (_Bool)canBeDirectlyManaged;
 @end
 

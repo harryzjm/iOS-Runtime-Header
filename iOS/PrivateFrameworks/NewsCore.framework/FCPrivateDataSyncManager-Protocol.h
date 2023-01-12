@@ -6,9 +6,11 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
+@class NSDate;
 @protocol FCPrivateDataContextInternal;
 
 @protocol FCPrivateDataSyncManager <NSObject>
+@property(readonly, nonatomic) NSDate *lastCleanDate;
 - (void)fetchChangesWithContext:(id <FCPrivateDataContextInternal>)arg1 qualityOfService:(long long)arg2 completionHandler:(void (^)(NSArray *, NSArray *, _Bool, void (^)(void), NSError *))arg3;
 - (_Bool)isAwaitingFirstSync;
 - (void)notifyObservers;

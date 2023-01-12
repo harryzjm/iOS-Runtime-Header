@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/CAAnimatableValue-Protocol.h>
-#import <QuartzCore/CARenderValue-Protocol.h>
-
 @class NSString;
 
-@interface NSObject (CARenderValue) <CARenderValue, CAAnimatableValue>
+@interface NSObject (CARenderValue)
 + (id)CA_CAMLPropertyForKey:(id)arg1;
 + (_Bool)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (_Bool)CA_encodesPropertyConditionally:(unsigned int)arg1 type:(int)arg2;
 + (CDUnknownFunctionPointerType)CA_getterForProperty:(const struct _CAPropertyInfo *)arg1;
 + (CDUnknownFunctionPointerType)CA_setterForProperty:(const struct _CAPropertyInfo *)arg1;
-- (unsigned long long)CA_copyNumericValue:(double [20])arg1;
+- (unsigned long long)CA_copyNumericValue:(double *)arg1;
+- (unsigned long long)CA_numericValueCount;
 - (struct Object *)CA_copyRenderValueWithColorspace:(struct CGColorSpace *)arg1;
 - (struct Object *)CA_copyRenderValue;
 - (void)CA_prepareRenderValue;

@@ -8,6 +8,7 @@
 
 @class NSData, NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface ISImageCache : NSObject
 {
     struct os_unfair_lock_s _lock;

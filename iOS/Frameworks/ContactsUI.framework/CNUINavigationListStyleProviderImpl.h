@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNUINavigationListStyle-Protocol.h>
-
 @class NSString, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface CNUINavigationListStyleProviderImpl : NSObject <CNUINavigationListStyle>
+@interface CNUINavigationListStyleProviderImpl : NSObject
 {
 }
 

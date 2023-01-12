@@ -4,15 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKit/UIViewController.h>
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8NewsFeed32DebugFormatBindingViewController
+@interface _TtC8NewsFeed32DebugFormatBindingViewController : UIViewController
 {
     MISSING_TYPE *editor;
+    MISSING_TYPE *formatService;
+    MISSING_TYPE *weatherService;
+    MISSING_TYPE *tableView;
+    MISSING_TYPE *sections;
+    MISSING_TYPE *detailsViewController;
 }
 
 - (void).cxx_destruct;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)doShowDetails;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillLayoutSubviews;
+- (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 
 @end

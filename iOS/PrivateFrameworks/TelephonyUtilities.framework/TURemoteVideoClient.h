@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TelephonyUtilities/TURemoteVideoClient-Protocol.h>
-
 @class CALayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface TURemoteVideoClient : NSObject <TURemoteVideoClient>
+@interface TURemoteVideoClient : NSObject
 {
     long long _videoContextSlotIdentifier;
     CALayer *_videoLayer;

@@ -14,11 +14,7 @@ __attribute__((visibility("hidden")))
 {
     id <MPMediaLibraryDataProviderPrivate> _mediaLibraryDataProvider;
     _Bool _mediaLibraryDataProviderRespondsToSupportsEntityChangeTrackingMethod;
-    struct _opaque_pthread_rwlock_t {
-        long long __sig;
-        char __opaque[192];
-    } _rwlock;
-    struct os_unfair_lock_s _entityCacheMapLock;
+    struct os_unfair_recursive_lock_s _rwlock;
     NSObject<OS_dispatch_queue> *_deallocLaterQueue;
     struct __CFDictionary *_concreteEntitiesByDataProviderEntityClass;
     NSMutableArray *_entityTemporaryReferences;

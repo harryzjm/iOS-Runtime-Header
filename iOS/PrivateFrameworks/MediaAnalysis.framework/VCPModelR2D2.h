@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class MPSImageBilinearScale, NSString, VCPBackwarp, VCPCorrelation, VCPFlowDecoder, VCPFlowFeatureExtractor;
-@protocol MTLCommandQueue, MTLDeviceSPI, OS_dispatch_semaphore;
+@class NSObject, NSString, VCPBackwarp, VCPCorrelation, VCPFlowDecoder, VCPFlowFeatureExtractor;
+@protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface VCPModelR2D2 : NSObject
+@interface VCPModelR2D2
 {
     NSString *_resConfig;
     int _numLevels;
     int _startLevel;
+    struct __CVBuffer *_firstBuffer;
+    struct __CVBuffer *_secondBuffer;
+    struct __CVBuffer *_outputFlow;
     VCPFlowFeatureExtractor *_featureExtractor;
     VCPFlowDecoder *_flowDecoder[7];
     VCPCorrelation *_correlation;
@@ -26,21 +27,19 @@ __attribute__((visibility("hidden")))
         struct __CVBuffer *upscaledFlows[7];
         struct __CVBuffer *warpedBuffers[7];
     } _storage;
-    id <MTLDeviceSPI> _device;
-    id <MTLCommandQueue> _commandQueue;
     NSObject<OS_dispatch_semaphore> *_flowDecoderSemaphore;
-    MPSImageBilinearScale *_bilinearScale;
-    int _inputHeight;
-    int _inputWidth;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) int inputWidth; // @synthesize inputWidth=_inputWidth;
-@property(readonly, nonatomic) int inputHeight; // @synthesize inputHeight=_inputHeight;
+- (void)dealloc;
 - (void)releaseMemory;
-- (int)preferredInputFormat:(int *)arg1 height:(int *)arg2 format:(unsigned int *)arg3;
-- (int)updateModelForAspectRatio:(id)arg1;
-- (int)scaleFlowTo:(struct __CVBuffer *)arg1 inFlow:(struct __CVBuffer *)arg2;
+- (int)updateModelForAspectRatio:(id)arg1 computationAccuracy:(unsigned int)arg2;
+- (int)flowScalingTo:(struct __CVBuffer *)arg1 flowBufferY:(struct __CVBuffer *)arg2 scalerX:(float)arg3 scalerY:(float)arg4;
+- (int)flowScalingTo:(struct __CVBuffer *)arg1 scalerX:(float)arg2 scalerY:(float)arg3;
+- (int)getFlowToBuffer:(struct __CVBuffer *)arg1;
+- (int)analyzeImages:(struct __CVBuffer *)arg1 secondImage:(struct __CVBuffer *)arg2 cancel:(CDUnknownBlockType)arg3;
+- (int)createInput:(struct __CVBuffer *)arg1 withImage:(struct __CVBuffer *)arg2 modelInputHeight:(int)arg3 modelInputWidth:(int)arg4;
+- (int)copyImage:(struct __CVBuffer *)arg1 toBuffer:(struct __CVBuffer *)arg2 withChannels:(int)arg3;
 - (int)estimateFlowForLevel:(int)arg1 upperFlow:(struct __CVBuffer *)arg2 outputFlow:(struct __CVBuffer *)arg3;
 - (int)estimateMotionFlow:(struct __CVBuffer *)arg1;
 - (int)extractFeatureFromImage:(struct __CVBuffer *)arg1 toFeature:(CDStruct_80570e6e *)arg2;
@@ -51,9 +50,11 @@ __attribute__((visibility("hidden")))
 - (void)releaseStorages;
 - (int)allocateStorages;
 - (int)updateModulesWithConfig:(id)arg1;
-- (int)createModules;
+- (int)createModules:(CDUnknownBlockType)arg1;
 - (int)configForAspectRatio:(id)arg1;
-- (id)initUsingLightweight:(_Bool)arg1 aspectRatio:(id)arg2 numLevels:(int)arg3 startLevel:(int)arg4;
+- (int)releaseInputAndOutputBuffers;
+- (int)allocateInputAndOutputBuffers;
+- (int)prepareWithLightweightOption:(_Bool)arg1 aspectRatio:(id)arg2 numLevels:(int)arg3 startLevel:(int)arg4 cancel:(CDUnknownBlockType)arg5;
 
 @end
 

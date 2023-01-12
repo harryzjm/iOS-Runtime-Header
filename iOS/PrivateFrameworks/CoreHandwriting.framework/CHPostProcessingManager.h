@@ -13,9 +13,9 @@
     NSArray *_sequence;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *sequence; // @synthesize sequence=_sequence;
-- (void)dealloc;
-- (id)process:(id)arg1;
+- (id)process:(id)arg1 options:(id)arg2;
 - (id)initWithSequence:(id)arg1;
 - (id)initWithStep:(id)arg1;
 - (id)init;

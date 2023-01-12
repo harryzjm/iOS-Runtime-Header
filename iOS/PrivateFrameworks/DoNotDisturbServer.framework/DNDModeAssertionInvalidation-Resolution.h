@@ -6,14 +6,13 @@
 
 #import <DoNotDisturb/DNDModeAssertionInvalidation.h>
 
-#import <DoNotDisturbServer/DNDSModernAssertionSourceResolution-Protocol.h>
-
 @class NSString;
 
-@interface DNDModeAssertionInvalidation (Resolution) <DNDSModernAssertionSourceResolution>
+@interface DNDModeAssertionInvalidation (Resolution)
 + (id)predicateForModeAssertionInvalidationsWithAssertionClientIdentifiers:(id)arg1;
 - (id)resolveWithExpectedRemoteDeviceIdentifier:(id)arg1 localDeviceIdentifier:(id)arg2 remoteDeviceIdentifier:(id)arg3;
 @property(readonly, nonatomic) _Bool isUserInvalidated;
+@property(readonly, nonatomic) _Bool isInternalScheduled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

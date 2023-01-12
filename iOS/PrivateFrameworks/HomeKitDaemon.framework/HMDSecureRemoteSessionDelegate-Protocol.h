@@ -6,12 +6,13 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDSecureRemoteSession, HMFMessage, NSError;
+@class HMFMessage, NSError;
+@protocol HMDSecureRemoteSession;
 
 @protocol HMDSecureRemoteSessionDelegate <NSObject>
-- (void)secureRemoteSession:(HMDSecureRemoteSession *)arg1 receivedRequestToSendMessage:(HMFMessage *)arg2;
+- (void)secureRemoteSession:(id <HMDSecureRemoteSession>)arg1 receivedRequestToSendMessage:(HMFMessage *)arg2;
 
 @optional
-- (void)secureRemoteSession:(HMDSecureRemoteSession *)arg1 didCloseWithError:(NSError *)arg2;
+- (void)secureRemoteSession:(id <HMDSecureRemoteSession>)arg1 didCloseWithError:(NSError *)arg2;
 @end
 

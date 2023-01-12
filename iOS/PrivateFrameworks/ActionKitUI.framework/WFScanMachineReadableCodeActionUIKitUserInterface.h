@@ -6,12 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/WFScanMachineReadableCodeActionUserInterface-Protocol.h>
-
 @class NSString, UINavigationController;
 
 __attribute__((visibility("hidden")))
-@interface WFScanMachineReadableCodeActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFScanMachineReadableCodeActionUserInterface>
+@interface WFScanMachineReadableCodeActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
     UINavigationController *_navigationController;

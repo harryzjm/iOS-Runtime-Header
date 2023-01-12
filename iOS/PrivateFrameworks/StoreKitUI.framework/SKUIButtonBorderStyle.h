@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class IKColor, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIButtonBorderStyle : NSObject <NSCopying>
+@interface SKUIButtonBorderStyle : NSObject
 {
     IKColor *_borderColor;
     double _borderWidth;

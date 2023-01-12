@@ -21,6 +21,7 @@
 @property(nonatomic, readonly) long long pace;
 @property(nonatomic, readonly) NSString *colorGradeCategory;
 @property(nonatomic, readonly) Class audioSessionClass;
+@property(nonatomic, readonly) CDStruct_198678f7 exportableDuration;
 @property(nonatomic, readonly) CDStruct_198678f7 duration;
 @property(nonatomic, readonly) unsigned long long flags;
 @property(nonatomic, readonly) NSString *albumTitle;

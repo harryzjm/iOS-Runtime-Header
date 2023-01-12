@@ -7,6 +7,6 @@
 #import <NotesShared/ICHashtagController.h>
 
 @interface ICHashtagController (App)
-- (void)checkForHashtagInEditedRange:(struct _NSRange)arg1 ofTextStorage:(id)arg2 note:(id)arg3 textView:(id)arg4 allowAutoExplicitHashtag:(_Bool)arg5 isEndingEditing:(_Bool)arg6 languageHasSpaces:(_Bool)arg7;
+- (void)checkForHashtagInEditedRange:(struct _NSRange)arg1 ofTextStorage:(id)arg2 note:(id)arg3 textView:(id)arg4 allowAutoExplicitHashtag:(_Bool)arg5 isEndingEditing:(_Bool)arg6 languageHasSpaces:(_Bool)arg7 parentAttachment:(id)arg8;
 @end
 

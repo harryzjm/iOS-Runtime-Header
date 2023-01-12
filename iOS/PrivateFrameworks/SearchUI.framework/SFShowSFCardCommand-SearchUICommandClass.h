@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFShowSFCardCommand.h>
 
 @interface SFShowSFCardCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

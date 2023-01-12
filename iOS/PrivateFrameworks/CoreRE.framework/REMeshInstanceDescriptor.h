@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface REMeshInstanceDescriptor : NSObject <NSSecureCoding>
+@interface REMeshInstanceDescriptor : NSObject
 {
     unsigned int _modelIndex;
     NSString *_name;

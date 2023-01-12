@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <dispatch/OS_dispatch_disk-Protocol.h>
-
 @class NSString;
 
-@interface OS_dispatch_disk <OS_dispatch_disk>
+@interface OS_dispatch_disk
 {
 }
 

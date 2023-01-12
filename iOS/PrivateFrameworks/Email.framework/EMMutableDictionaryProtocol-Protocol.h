@@ -11,6 +11,7 @@
 @protocol EMMutableDictionaryProtocol <NSObject>
 @property(readonly) unsigned long long count;
 - (void)removeAllObjects;
+- (void)removeObjectForKey:(id <NSCopying>)arg1;
 - (void)setObject:(id)arg1 forKey:(id <NSCopying>)arg2;
 - (id)objectForKey:(id)arg1;
 @end

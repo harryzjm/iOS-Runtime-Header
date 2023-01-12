@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSSecureCoding-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSProgressValues : NSObject <NSSecureCoding>
+@interface NSProgressValues : NSObject
 {
     NSMutableDictionary *_userInfo;
     struct _NSProgressFraction _selfFraction;
@@ -19,14 +17,14 @@ __attribute__((visibility("hidden")))
     double _remoteFractionCompleted;
     NSString *_localizedDescription;
     NSString *_localizedAdditionalDescription;
+    NSString *_kind;
+    long long _portionOfParent;
     _Bool _isCancellable;
     _Bool _isPausable;
     _Bool _isCancelled;
     _Bool _isPaused;
     _Bool _usingChildUserInfo;
-    NSString *_kind;
     _Bool _isPrioritizable;
-    long long _portionOfParent;
 }
 
 + (id)decodableClasses;

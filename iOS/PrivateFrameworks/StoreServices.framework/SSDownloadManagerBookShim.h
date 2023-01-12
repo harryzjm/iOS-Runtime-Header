@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SSDownloadManagerAppShim.h"
+
 @protocol SSBookDownloadQueue;
 
 __attribute__((visibility("hidden")))
-@interface SSDownloadManagerBookShim
+@interface SSDownloadManagerBookShim : SSDownloadManagerAppShim
 {
     id <SSBookDownloadQueue> _downloadQueue;
 }

@@ -6,7 +6,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC20FMPrecisionFindingUI19FMPFSKBTRangingNode
 {
     MISSING_TYPE *rangeDiskNode;

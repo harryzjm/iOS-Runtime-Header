@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/UICollectionViewDataSource-Protocol.h>
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <VideosUI/VideosExtrasMainMenuSectionMetricsDataSource-Protocol.h>
-
 @class NSArray, NSIndexPath, NSLayoutConstraint, NSString, UICollectionView, UICollectionViewFlowLayout, UIView, VideosExtrasMainMenuSectionMetrics;
 @protocol UICollectionViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasMainTemplateViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, VideosExtrasMainMenuSectionMetricsDataSource>
+@interface VideosExtrasMainTemplateViewController
 {
     VideosExtrasMainMenuSectionMetrics *_mainMenuMetrics;
     UICollectionViewFlowLayout *_collectionViewLayout;

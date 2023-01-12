@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLFontJSExports-Protocol.h>
-
 @class NSString, UIFont, UIFontDescriptor;
 
-@interface TMLFont : NSObject <TMLFontJSExports, NSCopying>
+@interface TMLFont : NSObject
 {
     UIFont *_font;
     UIFontDescriptor *_fontDescriptor;

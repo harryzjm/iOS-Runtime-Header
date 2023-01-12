@@ -6,10 +6,10 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class NSArray, NSString, VUIAppContext;
+@class NSArray, NSString, NSURL, VUIAppContext;
 
 @protocol VUIRootSplitViewController <NSObject>
-- (void)setSelectedIndexForBarItemIdentifier:(NSString *)arg1;
+- (void)handleDeepLinkURL:(NSURL *)arg1 forBarItemIdentifier:(NSString *)arg2;
 - (void)updateWithBarItems:(NSArray *)arg1 setSelectedIndexFromDefaults:(_Bool)arg2 appContext:(VUIAppContext *)arg3;
 @end
 

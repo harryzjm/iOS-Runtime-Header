@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PDFKit/UIDocumentPasswordViewDelegate-Protocol.h>
-
 @class NSObject, UIDocumentPasswordView;
 @protocol PDFPasswordViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PDFPasswordViewController : UIViewController <UIDocumentPasswordViewDelegate>
+@interface PDFPasswordViewController : UIViewController
 {
     NSObject<PDFPasswordViewControllerDelegate> *_delegate;
     UIDocumentPasswordView *_uiDocPasswordView;

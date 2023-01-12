@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
-#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
-#import <UIKitCore/UICollectionViewDelegateFlowLayout-Protocol.h>
+#import "UIView.h"
 
-@class NSArray, NSIndexPath, NSString, UICollectionView, UICollectionViewFlowLayout, UIFocusGuide, _UIFocusFastScrollingIndexBarEntry, _UIHorizontalIndexTitleBarCell;
+@class NSArray, NSIndexPath, NSString, UICollectionView, UICollectionViewCompositionalLayout, UIFocusGuide, _UIFocusFastScrollingIndexBarEntry, _UIHorizontalIndexTitleBarCell;
 @protocol _UIHorizontalIndexTitleBarDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIHorizontalIndexTitleBar <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface _UIHorizontalIndexTitleBar : UIView
 {
     NSArray *_entries;
     UICollectionView *_collectionView;
-    UICollectionViewFlowLayout *_flowLayout;
+    UICollectionViewCompositionalLayout *_layout;
     UIFocusGuide *_horizontalIndexTitleBarFocusGuide;
     _UIFocusFastScrollingIndexBarEntry *_selectedEntry;
     NSIndexPath *_selectedEntryIndexPath;
@@ -33,11 +31,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSIndexPath *selectedEntryIndexPath; // @synthesize selectedEntryIndexPath=_selectedEntryIndexPath;
 @property(retain, nonatomic) _UIFocusFastScrollingIndexBarEntry *selectedEntry; // @synthesize selectedEntry=_selectedEntry;
 @property(retain, nonatomic) UIFocusGuide *horizontalIndexTitleBarFocusGuide; // @synthesize horizontalIndexTitleBarFocusGuide=_horizontalIndexTitleBarFocusGuide;
-@property(retain, nonatomic) UICollectionViewFlowLayout *flowLayout; // @synthesize flowLayout=_flowLayout;
+@property(retain, nonatomic) UICollectionViewCompositionalLayout *layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(nonatomic) struct UIEdgeInsets sectionInset; // @synthesize sectionInset=_sectionInset;
 @property(retain, nonatomic) NSArray *entries; // @synthesize entries=_entries;
-- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -47,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
 - (id)_existingCellForSelectedIndexPath;
-- (void)_updateSectionInset;
+- (struct NSDirectionalEdgeInsets)_combinedSectionInset;
 - (void)_cancelDelayedFocusAction;
 - (void)_sendDelayedFocusActionIfNecessary;
 - (void)_selectFocusedCell;

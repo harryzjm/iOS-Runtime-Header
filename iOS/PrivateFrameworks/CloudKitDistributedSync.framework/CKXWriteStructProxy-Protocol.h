@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKXStructProxyBase, NSObject;
+@class CKXStructProxyBase;
 @protocol CKXReadStructProxy;
 
 @protocol CKXWriteStructProxy
 - (void)copyFromReadProxy:(CKXStructProxyBase<CKXReadStructProxy> *)arg1;
-- (void)copyFromObject:(NSObject *)arg1;
 @end
 

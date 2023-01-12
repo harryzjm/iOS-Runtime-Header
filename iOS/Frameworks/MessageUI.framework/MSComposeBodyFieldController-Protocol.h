@@ -6,7 +6,13 @@
 
 #import <MessageUI/NSObject-Protocol.h>
 
+@class NSString, NSURL;
+
 @protocol MSComposeBodyFieldController <NSObject>
-- (void)changeQuoteLevelBy:(long long)arg1;
+- (void)changeQuoteLevelBy:(long long)arg1 withUndoActionName:(NSString *)arg2;
+- (void)stripCustomBodyIdentifiers;
+- (void)removeRichLinkFromSelection;
+- (void)makeRichLinkFromSelection;
+- (void)insertRichLinkWithURL:(NSURL *)arg1 completionHandler:(void (^)(void))arg2;
 @end
 

@@ -11,6 +11,7 @@
 @protocol SFPin <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSString *pinText;
 @property(nonatomic) int pinBehavior;
 @property(copy, nonatomic) NSData *mapsData;
 @property(copy, nonatomic) NSString *resultID;

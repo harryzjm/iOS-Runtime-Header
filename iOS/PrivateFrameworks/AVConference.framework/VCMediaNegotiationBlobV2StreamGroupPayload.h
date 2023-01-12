@@ -6,15 +6,14 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobV2StreamGroupPayload : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobV2StreamGroupPayload : PBCodable
 {
     unsigned int _cipherSuite;
     unsigned int _codecType;
+    unsigned int _encoderUsage;
     unsigned int _mediaFlags;
     unsigned int _pTime;
     NSData *_packedPayload;
@@ -25,6 +24,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int cipherSuite:1;
         unsigned int codecType:1;
+        unsigned int encoderUsage:1;
         unsigned int mediaFlags:1;
         unsigned int pTime:1;
         unsigned int profileLevelId:1;
@@ -51,6 +51,10 @@ __attribute__((visibility("hidden")))
 + (_Bool)isDefaultPayloadConfig:(id)arg1 index:(unsigned int)arg2 rtpSampleRate:(unsigned int)arg3 streamGroupID:(unsigned int)arg4;
 + (unsigned int)defaultRTPSampleRateForStreamGroupID:(unsigned int)arg1;
 + (id)defaultPayloadConfigurationsForStreamGroupID:(unsigned int)arg1;
++ (id)defaultMoCapConfig;
++ (id)defaultDataCodecConfig;
++ (id)defaultFTXTCodecConfig;
+@property(nonatomic) unsigned int encoderUsage; // @synthesize encoderUsage=_encoderUsage;
 @property(retain, nonatomic) NSData *packedPayload; // @synthesize packedPayload=_packedPayload;
 @property(nonatomic) unsigned int cipherSuite; // @synthesize cipherSuite=_cipherSuite;
 @property(nonatomic) unsigned int rtpSampleRate; // @synthesize rtpSampleRate=_rtpSampleRate;
@@ -69,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasEncoderUsage;
 @property(readonly, nonatomic) _Bool hasPackedPayload;
 @property(nonatomic) _Bool hasCipherSuite;
 @property(nonatomic) _Bool hasRtpSampleRate;

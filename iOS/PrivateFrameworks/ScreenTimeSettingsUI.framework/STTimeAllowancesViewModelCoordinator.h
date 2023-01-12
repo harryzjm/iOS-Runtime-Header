@@ -6,17 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeSettingsUI/STGroupFetchedResultsControllerDelegate-Protocol.h>
-#import <ScreenTimeSettingsUI/STTimeAllowancesViewModelCoordinator-Protocol.h>
-
 @class NSManagedObjectID, NSNumber, NSString, STAskForTimeClient, STGroupFetchedResultsController, STTimeAllowancesViewModel;
 @protocol STPersistenceControllerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface STTimeAllowancesViewModelCoordinator : NSObject <STGroupFetchedResultsControllerDelegate, STTimeAllowancesViewModelCoordinator>
+@interface STTimeAllowancesViewModelCoordinator : NSObject
 {
     STTimeAllowancesViewModel *_viewModel;
-    NSString *_organizationIdentifier;
     NSNumber *_userDSID;
     id <STPersistenceControllerProtocol> _persistenceController;
     STAskForTimeClient *_askForTimeClient;
@@ -31,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) STAskForTimeClient *askForTimeClient; // @synthesize askForTimeClient=_askForTimeClient;
 @property(readonly, nonatomic) id <STPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
 @property(copy, nonatomic) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
-@property(copy, nonatomic) NSString *organizationIdentifier; // @synthesize organizationIdentifier=_organizationIdentifier;
 @property(readonly) STTimeAllowancesViewModel *viewModel; // @synthesize viewModel=_viewModel;
 - (void)respondToAskForTime:(id)arg1 withApproval:(_Bool)arg2 timeApproved:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)saveAlwaysAllowList:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -48,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)groupResultsController:(id)arg1 didChangeResultsForRequest:(id)arg2 objectID:(id)arg3 changeType:(unsigned long long)arg4;
 - (void)_registerForPersistentStoreNotifications;
 - (void)saveDefaultAlwaysAllowListWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithPersistenceController:(id)arg1 organizationIdentifier:(id)arg2 userDSID:(id)arg3;
+- (id)initWithPersistenceController:(id)arg1 userDSID:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

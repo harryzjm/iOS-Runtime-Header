@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     void *_commandHandlerIdentifier;
     AVObservationController *_keyValueObservationController;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
+    _Bool _suspended;
     _Bool _requiresLinearPlayback;
     NSString *_overrideParentApplicationDisplayIdentifier;
     AVPlayerController *_playerController;
@@ -37,15 +38,17 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
 @property(copy, nonatomic) NSString *overrideParentApplicationDisplayIdentifier; // @synthesize overrideParentApplicationDisplayIdentifier=_overrideParentApplicationDisplayIdentifier;
 @property(nonatomic) _Bool requiresLinearPlayback; // @synthesize requiresLinearPlayback=_requiresLinearPlayback;
+@property(nonatomic, getter=isSuspended) _Bool suspended; // @synthesize suspended=_suspended;
 - (id)_currentLanguageOptions;
 - (id)_availableLanguageOptions;
 - (unsigned int)_handleRemoteCommand:(unsigned int)arg1 options:(id)arg2;
 - (void)_updateRegisteredRemoteCommandEnabledStatesWithCommandsAndStates:(id)arg1;
 - (id)_makeCommandsAndStatesDictionaryForPlayerController:(id)arg1;
-- (id)_makeNowPlayingInfo;
+- (id)_makePlaybackInfoDictionary;
 - (void)_updateNowPlayingInfo:(id)arg1 commandsAndStates:(id)arg2;
 - (void)_updateNowPlayingInfoIfNeeded;
 - (void)_setNowPlayingInfoNeedsUpdate;
+- (id)_createNowPlayingInfoFromPlaybackInfo:(id)arg1;
 - (void)stopNowPlayingUpdatesForPlayerController:(id)arg1;
 - (void)startNowPlayingUpdatesForPlayerController:(id)arg1 afterDelay:(double)arg2;
 @property(nonatomic, getter=isEnabled) _Bool enabled;

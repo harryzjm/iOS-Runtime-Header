@@ -4,17 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UICollectionViewDropCoordinator-Protocol.h>
-#import <UIKitCore/_UICollectionViewDragDestinationControllerDelegate-Protocol.h>
-#import <UIKitCore/_UICollectionViewDragSourceControllerDelegate-Protocol.h>
-#import <UIKitCore/_UICollectionViewDropCoordinator-Protocol.h>
-#import <UIKitCore/_UICollectionViewPlaceholderContextDelegate-Protocol.h>
-
 @class NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID, UICollectionViewDropProposal, _UICollectionViewDragDestinationController, _UICollectionViewDragSourceController, _UICollectionViewPlaceholderContext, _UIDropAnimationHandlers;
 @protocol UIDropSession;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewDragAndDropController <_UICollectionViewPlaceholderContextDelegate, _UICollectionViewDragSourceControllerDelegate, _UICollectionViewDragDestinationControllerDelegate, _UICollectionViewDropCoordinator, UICollectionViewDropCoordinator>
+@interface _UICollectionViewDragAndDropController
 {
     int _sessionKind;
     _UICollectionViewDragDestinationController *_destinationController;
@@ -27,7 +21,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_cellAppearanceStatesByCellPointers;
     NSMutableArray *_dropCoordinatorItems;
     NSMapTable *_dropCoordinatorItemsMap;
-    NSMutableArray *_cellsDeferredForReuse;
+    NSMutableSet *_cellsDeferredForReuse;
     long long _sessionRefCount;
     _UIDropAnimationHandlers *_defaultAnimationHandlers;
     NSUUID *_currentDropInsertionShadowUpdateIdentifier;
@@ -38,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSUUID *currentDropInsertionShadowUpdateIdentifier; // @synthesize currentDropInsertionShadowUpdateIdentifier=_currentDropInsertionShadowUpdateIdentifier;
 @property(retain, nonatomic) _UIDropAnimationHandlers *defaultAnimationHandlers; // @synthesize defaultAnimationHandlers=_defaultAnimationHandlers;
 @property(nonatomic) long long sessionRefCount; // @synthesize sessionRefCount=_sessionRefCount;
-@property(retain, nonatomic) NSMutableArray *cellsDeferredForReuse; // @synthesize cellsDeferredForReuse=_cellsDeferredForReuse;
+@property(retain, nonatomic) NSMutableSet *cellsDeferredForReuse; // @synthesize cellsDeferredForReuse=_cellsDeferredForReuse;
 @property(retain, nonatomic) NSMapTable *dropCoordinatorItemsMap; // @synthesize dropCoordinatorItemsMap=_dropCoordinatorItemsMap;
 @property(retain, nonatomic) NSMutableArray *dropCoordinatorItems; // @synthesize dropCoordinatorItems=_dropCoordinatorItems;
 @property(retain, nonatomic) NSMapTable *cellAppearanceStatesByCellPointers; // @synthesize cellAppearanceStatesByCellPointers=_cellAppearanceStatesByCellPointers;
@@ -143,10 +137,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)cancelReorderingShouldRevertOrdering;
 - (_Bool)hasShadowUpdates;
 - (void)transferOwnershipOfCellForDeferredReuseAfterDropAnimations:(id)arg1;
+- (_Bool)isCellInvolvedInDragOrDropAnimationAtIndexPath:(id)arg1;
 - (_Bool)cellShouldRemainInHierarchy:(id)arg1 indexPath:(id)arg2;
 - (void)updateAppearanceForCell:(id)arg1 atIndexPath:(id)arg2;
 - (CDUnknownBlockType)endReordering;
 - (CDUnknownBlockType)cancelReordering;
+- (void)commitReorderedItems;
 - (void)updateReorderingTargetIndexPath:(id)arg1;
 - (_Bool)beginReorderingForItemAtIndexPath:(id)arg1 cell:(id)arg2;
 @property(readonly, copy) NSString *description;

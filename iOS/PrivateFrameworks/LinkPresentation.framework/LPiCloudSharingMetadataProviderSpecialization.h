@@ -10,26 +10,27 @@ __attribute__((visibility("hidden")))
 @interface LPiCloudSharingMetadataProviderSpecialization
 {
     NSString *_applicationFromURL;
+    NSString *_kindFromURL;
     NSString *_titleFromURL;
     CKContainer *_baseContainer;
     CKContainer *_applicationContainer;
     _Bool _canceled;
 }
 
-+ (id)applicationNameMap;
++ (id)normalizeKind:(id)arg1 forApplication:(id)arg2;
 + (id)specializedMetadataProviderForURLWithContext:(id)arg1;
-+ (id)extractTitleFromURL:(id)arg1;
-+ (id)extractApplicationFromURL:(id)arg1;
 + (unsigned long long)specialization;
 - (void).cxx_destruct;
+- (void)completeRetrievingThumbnailForShareMetadata:(id)arg1 application:(id)arg2 kind:(id)arg3 title:(id)arg4;
+- (_Bool)canRetrieveThumbnailForApplication:(id)arg1;
 - (void)cancel;
 - (void)fail;
-- (void)completeUsingApplication:(id)arg1 title:(id)arg2;
+- (void)completeUsingApplication:(id)arg1 kind:(id)arg2 title:(id)arg3 thumbnail:(id)arg4;
 - (void)completeWithShareMetadata:(id)arg1 bundleIDs:(id)arg2;
 - (void)start;
 - (id)iconFromShare:(id)arg1;
 - (id)applicationFromBundleIdentifiers:(id)arg1 containerIdentifier:(id)arg2;
-- (id)initWithContext:(id)arg1 applicationFromURL:(id)arg2 titleFromURL:(id)arg3;
+- (id)initWithContext:(id)arg1 applicationFromURL:(id)arg2 kindFromURL:(id)arg3 titleFromURL:(id)arg4;
 - (_Bool)canUseCloudKit;
 
 @end

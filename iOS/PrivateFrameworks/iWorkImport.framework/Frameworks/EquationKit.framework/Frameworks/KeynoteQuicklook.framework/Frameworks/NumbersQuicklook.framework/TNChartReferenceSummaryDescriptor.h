@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NumbersQuicklook/TSCHChartSummaryDescriptor-Protocol.h>
-
 @class TSCEViewTractRef;
 
-@interface TNChartReferenceSummaryDescriptor : NSObject <TSCHChartSummaryDescriptor>
+@interface TNChartReferenceSummaryDescriptor : NSObject
 {
     unsigned char _groupLabelOptions;
     unsigned long long _tableType;

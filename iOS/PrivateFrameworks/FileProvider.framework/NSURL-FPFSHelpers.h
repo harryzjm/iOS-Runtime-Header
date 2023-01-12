@@ -6,6 +6,8 @@
 
 #import <Foundation/NSURL.h>
 
+@class NSPersonNameComponents, NSString;
+
 @interface NSURL (FPFSHelpers)
 + (id)fp_uniqueTempFolderWithError:(id *)arg1;
 + (id)fp_containerDirectoryForDataSeparatedPersonaWithPurposeIdentifier:(id)arg1;
@@ -43,12 +45,14 @@
 - (_Bool)fp_moveUnderFolder:(id)arg1 withNewName:(id)arg2 coordinationOptions:(unsigned long long)arg3 allowBounce:(_Bool)arg4 allowCoordination:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (_Bool)fp_moveUnderFolder:(id)arg1 withNewName:(id)arg2 allowBounce:(_Bool)arg3 allowCoordination:(_Bool)arg4 moveHandler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (_Bool)fp_moveUnderFolder:(id)arg1 withNewName:(id)arg2 allowBounce:(_Bool)arg3 allowCoordination:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)fp_existingURLOfChildWithName:(id)arg1 notMatchingFileID:(id)arg2 maximumBounceNumber:(id *)arg3 forceFetchingBounceNumber:(_Bool)arg4;
-- (id)_fp_scanForURLOfChildWithName:(id)arg1 notMatchingFileID:(id)arg2 maximumBounceNumber:(id *)arg3;
+- (id)fp_existingURLOfChildWithName:(id)arg1 isFolder:(_Bool)arg2 notMatchingFileID:(id)arg3 maximumBounceNumber:(id *)arg4 forceFetchingBounceNumber:(_Bool)arg5;
+- (id)_fp_scanForURLOfChildWithName:(id)arg1 isFolder:(_Bool)arg2 notMatchingFileID:(id)arg3 maximumBounceNumber:(id *)arg4;
 - (id)_fp_lookupURLOfChildWithName:(id)arg1 notMatchingFileID:(id)arg2;
-- (id)fp_existingURLOfChildWithName:(id)arg1;
+- (id)fp_existingURLOfChildWithName:(id)arg1 isFolder:(_Bool)arg2;
 - (CDUnknownBlockType)fp_defaultMoverBlock;
 - (id)fp_isDatalessWithError:(id *)arg1;
+- (id)fp_bouncedNameWithIndex:(long long)arg1;
+- (id)fp_commonDirectDescendantOf:(id)arg1;
 - (id)fp_matchesUbiquitousHeuristics;
 - (_Bool)fp_matchesFileProviderHeuristics:(unsigned int)arg1;
 - (_Bool)fp_isInSyncableRootFast;
@@ -62,6 +66,7 @@
 - (_Bool)fp_matchesLiveFilesURL:(id)arg1;
 - (_Bool)fp_matchesFPFSURL:(id)arg1;
 - (_Bool)fp_matchesCloudDocsURL:(id)arg1;
+- (_Bool)fp_isLocationOrInLocation:(id)arg1 relativeTo:(id)arg2;
 - (_Bool)fp_matchesFileProviderURL:(id)arg1;
 - (id)fp_moveToTempFolderWithFilename:(id)arg1 error:(id *)arg2;
 - (id)fp_directorySizeWithError:(id *)arg1;
@@ -88,5 +93,9 @@
 - (id)fp_copyToTempFolderWithFilename:(id)arg1 queue:(id)arg2 precomputedItemSize:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)fp_copyToURL:(id)arg1 queue:(id)arg2 precomputedItemSize:(unsigned long long)arg3 replacePlaceholder:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)fp_getSize:(unsigned long long *)arg1 error:(id *)arg2;
+- (id)fp_addTestConflictLoserFromItemAtURL:(id)arg1 lastEditorDeviceName:(id)arg2 lastEditorUserName:(id)arg3 error:(id *)arg4;
+@property(readonly, nonatomic) NSPersonNameComponents *fp_lastEditorNameComponents;
+@property(readonly, nonatomic) NSString *fp_lastEditorDeviceName;
+- (_Bool)shouldBeForwardedToFileProvider;
 @end
 

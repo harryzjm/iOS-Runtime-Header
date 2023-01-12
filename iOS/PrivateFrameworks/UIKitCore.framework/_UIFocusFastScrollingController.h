@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink, NSArray, NSTimer, UIPanGestureRecognizer, UIScrollView, _UIDynamicAnimationGroup, _UIDynamicValueAnimation, _UIFocusEngineJoystickGestureRecognizer, _UIFocusFastScrollingIndexBarEntry, _UIFocusFastScrollingIndexBarView;
+@class CADisplayLink, NSArray, NSMutableArray, NSTimer, UIPanGestureRecognizer, UIScrollView, _UIDynamicAnimationGroup, _UIDynamicValueAnimation, _UIFocusEngineJoystickGestureRecognizer, _UIFocusFastScrollingIndexBarEntry, _UIFocusFastScrollingIndexBarView, _UIRotaryGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusFastScrollingController : NSObject
@@ -14,7 +14,18 @@ __attribute__((visibility("hidden")))
     UIScrollView *_scrollView;
     UIPanGestureRecognizer *_panGesture;
     NSArray *_arrowButtonGestures;
+    NSArray *_pageButtonGestures;
     _UIFocusEngineJoystickGestureRecognizer *_joystickGesture;
+    _UIRotaryGestureRecognizer *_rotaryGesture;
+    double _lastRotaryMilestoneAccumulatedDistance;
+    double _rotaryAccelerationMultiplier;
+    _Bool _rotaryModeIsFullContent;
+    double _currentRotaryDirection;
+    NSMutableArray *_rotaryDeltaBufferArray;
+    double _rotaryDeltaBufferAverage;
+    double _rotaryDeltaBufferPendingValue;
+    long long _rotaryDeltaBufferCurrentIndex;
+    CADisplayLink *_rotaryDeltaBufferDisplayLink;
     _UIDynamicValueAnimation *_animationX;
     _UIDynamicValueAnimation *_animationY;
     _UIDynamicAnimationGroup *_animationGroup;
@@ -22,6 +33,8 @@ __attribute__((visibility("hidden")))
     long long _userStyle;
     struct CGPoint _offsetWhenPanStarted;
     CDStruct_5e2aa800 _previousPanVelocity;
+    double _panDeadBand;
+    struct CGPoint _panDeadBandTranslationAdjustment;
     unsigned long long _accelerationSwipeCount;
     double _accelerationMultiplier;
     double _accelerationStartMultiplier;
@@ -98,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (void)_startDiscreteButtonScrollGestureAlongHeading:(unsigned long long)arg1;
 - (_Bool)_shouldArrowButtonInterruptPanGesture;
 - (_Bool)_shouldArrowButtonGestureDiscreteScroll;
+- (void)_handlePageButtonGesture:(id)arg1;
 - (void)_handleJoystickGesture:(id)arg1;
 - (void)_resetAllButtonGestures;
 - (void)_beginDeceleratingAfterContinuousButtonScroll;
@@ -107,6 +121,27 @@ __attribute__((visibility("hidden")))
 - (void)_startContinuousButtonScrollAlongHeading:(unsigned long long)arg1 withVelocity:(CDStruct_c3b9c2ee)arg2 delayed:(_Bool)arg3;
 - (_Bool)_shouldArrowButtonGestureInstantlyAdvanceToNextEntry;
 - (void)_handleArrowButtonGesture:(id)arg1;
+- (void)_rotaryHeartbeat:(id)arg1;
+- (struct CGPoint)_lerpRotaryGestureAccumulatedDistanceToDigitizerLocation;
+- (void)_updateFullContentRotaryGesture;
+- (void)_startFullContentRotaryGesture;
+- (void)_handleFullContentRotaryEnd:(id)arg1;
+- (void)_handleFullContentRotaryChanged:(id)arg1;
+- (void)_handleFullContentRotaryBegin:(id)arg1;
+- (CDStruct_c3b9c2ee)_velocityOfRotaryGesture:(id)arg1 inView:(id)arg2;
+- (struct CGPoint)_translationOfRotaryGesture:(id)arg1 inView:(id)arg2;
+- (void)_handleRotaryEnd:(id)arg1;
+- (struct CGPoint)_rotaryRubberbandedOffsetForTranslatedOffset:(struct CGPoint)arg1;
+- (struct CGPoint)_rotaryTranslatedOffsetForCurrentOffset:(struct CGPoint)arg1 translation:(struct CGPoint)arg2;
+- (void)_updateRotaryAcceleration:(id)arg1;
+- (void)_handleRotaryChanged:(id)arg1;
+- (_Bool)_updateRotaryDirection:(id)arg1;
+- (void)_handleRotaryBegin:(id)arg1;
+- (void)_handleCommonRotaryBegin:(id)arg1;
+- (void)_handleRotaryGesture:(id)arg1;
+- (void)_resetPanDeadBand;
+- (_Bool)_isPanDeadBandActive;
+- (struct CGPoint)_applyPanDeadbandToTranslation:(struct CGPoint)arg1 withVelocity:(CDStruct_c3b9c2ee)arg2 inScrollView:(id)arg3;
 - (void)_resetSwipeAcceleration;
 - (void)_endDraggingWithFinalVelocity:(CDStruct_c3b9c2ee)arg1;
 - (void)_beginInitialSwipeDeceleration;

@@ -6,12 +6,14 @@
 
 #import <SpringBoard/SBVolumePressBandit-Protocol.h>
 
-@class NSString;
+@class NSString, SBWindowScene;
 
 @protocol SBTestRecipe <SBVolumePressBandit>
 - (NSString *)title;
 
 @optional
++ (_Bool)shouldRegisterTestRecipe;
+- (void)windowSceneDidUpdate:(SBWindowScene *)arg1;
 - (Class)domainClass;
 @end
 

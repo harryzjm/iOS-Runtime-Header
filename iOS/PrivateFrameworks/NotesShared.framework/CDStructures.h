@@ -4,74 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
-struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-};
-
-struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-
-struct Document {
-    CDUnknownFunctionPointerType *_vptr$MessageLite;
-    basic_string_0ec669f3 _unknown_fields_;
-    unsigned int _has_bits_[1];
-    int _cached_size_;
-    struct NoteDocument *notedocument_;
-    struct LegacyNoteDocument *legacynotedocument_;
-};
-
-struct Document_DocObject;
-
-struct ICDrawingCommandID {
-    unsigned int clock;
-    NSUUID *replicaUUID;
-    unsigned int subclock;
-};
-
-struct LegacyNoteDocument;
-
-struct NoteDocument;
-
-struct TopoID {
-    NSUUID *replicaID;
-    unsigned int clock;
-};
-
-struct TopoIDRange {
-    struct TopoID _field1;
-    unsigned int _field2;
-};
-
-struct TopoSubstring;
-
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
@@ -79,54 +20,22 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
-                    char *__data_;
-                    unsigned long long __size_;
-                    unsigned long long __cap_;
-                } __l;
+                    char *_field1;
+                    unsigned long long _field2;
+                    unsigned long long _field3;
+                } _field1;
                 struct __short {
-                    char __data_[23];
+                    char _field1[23];
                     struct {
-                        unsigned char __size_;
-                    } ;
-                } __s;
+                        unsigned char _field1;
+                    } _field2;
+                } _field2;
                 struct __raw {
-                    unsigned long long __words[3];
-                } __r;
-            } ;
-        } __value_;
-    } __r_;
-};
-
-struct vector<CRDT::Document_DocObject *, std::allocator<CRDT::Document_DocObject *>> {
-    struct Document_DocObject **__begin_;
-    struct Document_DocObject **__end_;
-    struct __compressed_pair<CRDT::Document_DocObject **, std::allocator<CRDT::Document_DocObject *>> {
-        struct Document_DocObject **__value_;
-    } __end_cap_;
-};
-
-struct vector<ICDrawingOutputPoint, std::allocator<ICDrawingOutputPoint>> {
-    CDStruct_183601bc *__begin_;
-    CDStruct_183601bc *__end_;
-    struct __compressed_pair<ICDrawingOutputPoint *, std::allocator<ICDrawingOutputPoint>> {
-        CDStruct_183601bc *__value_;
-    } __end_cap_;
-};
-
-struct vector<TopoSubstring *, std::allocator<TopoSubstring *>> {
-    struct TopoSubstring **__begin_;
-    struct TopoSubstring **__end_;
-    struct __compressed_pair<TopoSubstring **, std::allocator<TopoSubstring *>> {
-        struct TopoSubstring **__value_;
-    } __end_cap_;
-};
-
-struct vector<std::pair<TopoID, TopoID>, std::allocator<std::pair<TopoID, TopoID>>> {
-    void *__begin_;
-    void *__end_;
-    struct __compressed_pair<std::pair<TopoID, TopoID>*, std::allocator<std::pair<TopoID, TopoID>>> {
-        void *__value_;
-    } __end_cap_;
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
 };
 
 #pragma mark Typedef'd Structures
@@ -138,45 +47,27 @@ typedef struct {
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
 
-typedef struct {
-    double baseAlpha;
-    double blendAlpha;
-    double targetMultiple;
-} CDStruct_30364a2d;
-
-typedef struct CDStruct_183601bc;
-
-typedef struct {
-    struct CGPoint point;
-    double radius;
-    double opacity;
-    double azimuth;
-    double edgeWidth;
-    double aspectRatio;
-    double timestamp;
-} CDStruct_4a3d0796;
-
 // Template types
 typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
     struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
-                    char *__data_;
-                    unsigned long long __size_;
-                    unsigned long long __cap_;
-                } __l;
+                    char *_field1;
+                    unsigned long long _field2;
+                    unsigned long long _field3;
+                } _field1;
                 struct __short {
-                    char __data_[23];
+                    char _field1[23];
                     struct {
-                        unsigned char __size_;
-                    } ;
-                } __s;
+                        unsigned char _field1;
+                    } _field2;
+                } _field2;
                 struct __raw {
-                    unsigned long long __words[3];
-                } __r;
-            } ;
-        } __value_;
-    } __r_;
-} basic_string_0ec669f3;
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+} basic_string_05660eb3;
 

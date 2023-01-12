@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChat/BCNetworkProviderProtocol-Protocol.h>
-
 @class NSString, NSURLSession;
 
 __attribute__((visibility("hidden")))
-@interface BCNetworkProvider : NSObject <BCNetworkProviderProtocol>
+@interface BCNetworkProvider : NSObject
 {
     NSURLSession *_session;
 }

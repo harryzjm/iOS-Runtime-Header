@@ -13,6 +13,8 @@
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
+- (_Bool)_accessibilityTextViewShouldBreakUpParagraphs;
+- (id)accessibilityAttributedValue;
 - (id)accessibilityValue;
 
 @end

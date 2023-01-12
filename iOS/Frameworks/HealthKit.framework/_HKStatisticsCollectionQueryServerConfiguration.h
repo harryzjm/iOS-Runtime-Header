@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class HKStatisticsCollectionCacheSettings, NSDate, NSDateComponents, NSDateInterval;
 
 __attribute__((visibility("hidden")))
-@interface _HKStatisticsCollectionQueryServerConfiguration
+@interface _HKStatisticsCollectionQueryServerConfiguration : HKQueryServerConfiguration
 {
     NSDate *_anchorDate;
     unsigned long long _options;

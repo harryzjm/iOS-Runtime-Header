@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *id;
     MISSING_TYPE *height;
+    MISSING_TYPE *noEventsAtAllToday;
 }
 
 @end

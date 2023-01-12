@@ -7,7 +7,7 @@
 #import <RunningBoardServices/RBSCPUMinimumUsageGrant.h>
 
 @interface RBSCPUMinimumUsageGrant (RBProcessState)
-- (_Bool)conflictsWithAttribute:(id)arg1;
+- (_Bool)allowedWithAttribute:(id)arg1 error:(id *)arg2;
 - (_Bool)isValidForContext:(id)arg1 withError:(id *)arg2;
 - (void)applyToProcessState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;
 @end

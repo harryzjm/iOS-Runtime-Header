@@ -6,15 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <PagesQuicklook/TPSectionTemplateDrawableProvider-Protocol.h>
-#import <PagesQuicklook/TSKDocumentObject-Protocol.h>
-#import <PagesQuicklook/TSKModel-Protocol.h>
-#import <PagesQuicklook/TSPCopying-Protocol.h>
-#import <PagesQuicklook/TSWPHeaderFooterProvider-Protocol.h>
-
 @class NSArray, NSEnumerator, NSMutableArray, NSString, TPDocumentRoot, TPSection, TSKDocumentRoot, TSUUUIDPath, TSWPStorage;
 
-@interface TPSectionTemplatePage : TSPObject <TSWPHeaderFooterProvider, TPSectionTemplateDrawableProvider, TSKDocumentObject, TSKModel, TSPCopying>
+@interface TPSectionTemplatePage : TSPObject
 {
     TPDocumentRoot *_documentRoot;
     TPSection *_section;
@@ -78,6 +72,7 @@
 - (id)sectionTemplateDrawablesSortedByZOrder:(id)arg1;
 - (id)masterDrawables;
 @property(readonly, nonatomic) unsigned long long countOfSectionTemplateDrawables;
+- (_Bool)containsInfo:(id)arg1;
 - (_Bool)containsModelObject:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (void)saveToArchiver:(id)arg1;

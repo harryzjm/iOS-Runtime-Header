@@ -11,6 +11,7 @@
 @protocol SFFormattedText <SFText>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) int encapsulationStyle;
 @property(nonatomic) int textColor;
 @property(nonatomic) _Bool isBold;
 @property(nonatomic) _Bool isEmphasized;

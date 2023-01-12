@@ -11,10 +11,11 @@
     NSLocale *_locale;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
-- (id)process:(id)arg1;
-- (id)cleanUpSpacesInToken:(id)arg1 leftContext:(id)arg2;
-- (void)dealloc;
+- (id)process:(id)arg1 options:(id)arg2;
+- (id)cleanUpSpacesInToken:(id)arg1 leftContext:(id)arg2 inString:(id)arg3 withQuoteCount:(id)arg4;
+- (id)prepareQuoteCountFromLeftContext:(id)arg1;
 - (id)initWithLocale:(id)arg1;
 
 @end

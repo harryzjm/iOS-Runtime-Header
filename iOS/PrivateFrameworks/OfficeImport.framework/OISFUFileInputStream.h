@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUInputStream-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OISFUFileInputStream : NSObject <SFUInputStream>
+@interface OISFUFileInputStream : NSObject
 {
     int mFd;
     _Bool mIsCachingDisabled;

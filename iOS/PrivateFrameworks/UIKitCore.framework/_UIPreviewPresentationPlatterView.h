@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView, _UIPreviewPresentationEffectView;
+#import "UIView.h"
+
+@class _UIPreviewPresentationEffectView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewPresentationPlatterView
+@interface _UIPreviewPresentationPlatterView : UIView
 {
     _Bool _dropShadowEnabled;
     UIView *_contentView;

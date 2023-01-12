@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
+#import "UIView.h"
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingInformationContainerView
+@interface UIDebuggingInformationContainerView : UIView
 {
     UIView *_shadowView;
     _Bool _shadowHidden;

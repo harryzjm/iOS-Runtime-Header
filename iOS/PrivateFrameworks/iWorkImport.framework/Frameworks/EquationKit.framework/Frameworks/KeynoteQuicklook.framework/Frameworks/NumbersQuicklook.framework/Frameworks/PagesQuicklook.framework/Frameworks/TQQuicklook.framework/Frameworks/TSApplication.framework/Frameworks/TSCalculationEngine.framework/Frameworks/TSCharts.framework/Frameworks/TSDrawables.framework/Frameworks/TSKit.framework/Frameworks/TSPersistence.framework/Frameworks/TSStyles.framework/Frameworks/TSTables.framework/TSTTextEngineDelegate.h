@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSWPTextDelegate-Protocol.h>
-
 @class TSULocale, TSWPPadding;
 @protocol TSWPStyleProviding;
 
-@interface TSTTextEngineDelegate : NSObject <TSWPTextDelegate>
+@interface TSTTextEngineDelegate : NSObject
 {
     TSWPPadding *mPadding;
     int mVerticalAlignment;

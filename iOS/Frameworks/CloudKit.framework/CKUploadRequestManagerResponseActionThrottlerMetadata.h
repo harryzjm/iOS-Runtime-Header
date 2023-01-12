@@ -10,8 +10,10 @@
 {
     double _lastRunTime;
     long long _repeatCount;
+    unsigned long long _totalThrottleCount;
 }
 
+@property(nonatomic) unsigned long long totalThrottleCount; // @synthesize totalThrottleCount=_totalThrottleCount;
 @property(nonatomic) long long repeatCount; // @synthesize repeatCount=_repeatCount;
 @property(nonatomic) double lastRunTime; // @synthesize lastRunTime=_lastRunTime;
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOResourceRequesterProxy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOResourceRequesterRemoteProxy : NSObject <GEOResourceRequesterProxy>
+@interface GEOResourceRequesterRemoteProxy : NSObject
 {
 }
 

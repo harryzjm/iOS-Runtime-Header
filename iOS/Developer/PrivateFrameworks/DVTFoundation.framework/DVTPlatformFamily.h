@@ -10,15 +10,16 @@
 
 @interface DVTPlatformFamily : NSObject
 {
-    NSString *_identifier;
-    NSString *_name;
     NSMutableSet *_platforms;
+    NSString *_name;
     NSArray *_osVersions;
+    NSString *_identifier;
 }
 
 + (id)registerPlatformFamilyWithIdentifier:(id)arg1 name:(id)arg2;
-+ (id)platformFamilyWithName:(id)arg1;
-+ (id)platformFamilyWithIdentifier:(id)arg1;
++ (id)platformFamilyForName:(id)arg1;
++ (id)platformFamilyForIdentifier:(id)arg1;
++ (id)allFamilies;
 + (id)platformFamiliesSortedByName;
 + (id)allPlatformFamilies;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
@@ -26,7 +27,7 @@
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
-@property(readonly, copy) NSSet *platforms; // @synthesize platforms=_platforms;
+@property(readonly, copy) NSSet *platforms;
 - (void)addPlatform:(id)arg1;
 @property(readonly) NSArray *osVersions; // @synthesize osVersions=_osVersions;
 - (id)description;

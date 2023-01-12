@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVBehaviorContext-Protocol.h>
-
 @class AVPlayerViewController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVDefaultBehaviorContext : NSObject <AVBehaviorContext>
+@interface AVDefaultBehaviorContext : NSObject
 {
     AVPlayerViewController *_playerViewController;
 }

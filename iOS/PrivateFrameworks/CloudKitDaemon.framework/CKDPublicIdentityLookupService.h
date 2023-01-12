@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class CKDContainer, CKDKeyValueDiskCache;
+@class CKDContainer, CKDIdentityCache;
 @protocol OS_dispatch_queue;
 
 @interface CKDPublicIdentityLookupService : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     CKDContainer *_container;
-    CKDKeyValueDiskCache *_cache;
+    CKDIdentityCache *_cache;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CKDKeyValueDiskCache *cache; // @synthesize cache=_cache;
+@property(retain, nonatomic) CKDIdentityCache *cache; // @synthesize cache=_cache;
 @property(nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
 - (void)removeCacheForLookupInfos:(id)arg1;
-- (void)configureRequest:(id)arg1 parentOperation:(id)arg2;
-- (void)scheduleRequest:(id)arg1 forOperation:(id)arg2;
+- (void)configureRequest:(id)arg1;
+- (void)scheduleRequest:(id)arg1;
 - (id)initWithContainer:(id)arg1;
 
 @end

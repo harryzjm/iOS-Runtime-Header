@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class IBSparseAutolayoutInfo, NSString;
 
-@interface IBAutolayoutArbitrationUnitSparseRepresentation : NSObject <IBBinaryArchiving>
+@interface IBAutolayoutArbitrationUnitSparseRepresentation : NSObject
 {
     id _rootObject;
     IBSparseAutolayoutInfo *_sparseInfo;

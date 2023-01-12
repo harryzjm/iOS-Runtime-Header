@@ -10,11 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGSize {
-    double width;
-    double height;
-};
-
 struct CloudVodkaAttributes_ {
     unsigned int _field1;
     unsigned int _field2;
@@ -27,22 +22,13 @@ struct VanillaVodkaAttributes_ {
     unsigned int _field3;
 };
 
-struct _NSRange {
-    unsigned long long _field1;
+struct WHAVodkaAttributes_ {
+    unsigned int _field1;
     unsigned long long _field2;
-};
-
-struct atomic_flag {
-    _Atomic _Bool _Value;
 };
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
-};
-
-struct os_unfair_recursive_lock_s {
-    struct os_unfair_lock_s ourl_lock;
-    unsigned int ourl_count;
 };
 
 struct sinfEntry_;
@@ -69,11 +55,6 @@ typedef struct {
 
 // Ambiguous groups
 typedef struct {
-    unsigned int explicitSetting:1;
-    unsigned int revision:1;
-} CDStruct_aa73ff45;
-
-typedef struct {
     unsigned int position:1;
     unsigned int revision:1;
 } CDStruct_bf543796;
@@ -84,8 +65,9 @@ typedef struct {
 } CDStruct_c634eefe;
 
 typedef struct {
-    unsigned int dSID:1;
-} CDStruct_f07dd4d9;
+    unsigned int revision:1;
+    unsigned int trackGenerationSource:1;
+} CDStruct_4af0550e;
 
 typedef struct {
     unsigned int payload:1;
@@ -105,5 +87,6 @@ union FPContentInfo_ {
     unsigned int _field1;
     struct VanillaVodkaAttributes_ _field2;
     struct CloudVodkaAttributes_ _field3;
+    struct WHAVodkaAttributes_ _field4;
 };
 

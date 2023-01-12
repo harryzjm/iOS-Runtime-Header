@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ML3ImportOperation.h"
+
 @class NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
-@interface ML3ITunesSyncImportOperation
+@interface ML3ITunesSyncImportOperation : ML3ImportOperation
 {
     _Bool _sagaIsEnabled;
     _Bool _resetSync;

@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface TSPMutableLargeObjectArraySegment
+#import "TSPAbstractMutableLargeArraySegment.h"
+
+@interface TSPMutableLargeObjectArraySegment : TSPAbstractMutableLargeArraySegment
 {
 }
 
@@ -13,6 +15,7 @@
 - (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (Class)elementClass;
+- (unsigned long long)estimatedCostOfElement:(id)arg1;
 - (unsigned long long)estimatedByteSizeOfElement:(id)arg1;
 
 @end

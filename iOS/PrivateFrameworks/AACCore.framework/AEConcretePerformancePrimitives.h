@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEPerformancePrimitives-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AEConcretePerformancePrimitives : NSObject <AEPerformancePrimitives>
+@interface AEConcretePerformancePrimitives : NSObject
 {
     NSString *_subsystem;
 }

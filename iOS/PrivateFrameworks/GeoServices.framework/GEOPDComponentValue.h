@@ -6,16 +6,15 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPBTransitVehiclePosition, GEOPDAbout, GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAnnotatedItemList, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDBusinessHours, GEOPDCaptionedPhoto, GEOPDCategorizedPhotos, GEOPDCollectionIds, GEOPDContainedPlace, GEOPDContainmentPlace, GEOPDETA, GEOPDEnhancedPlacement, GEOPDEntity, GEOPDExploreGuides, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDGroundViewLabel, GEOPDGuideGroup, GEOPDHours, GEOPDISO3166Code, GEOPDIcon, GEOPDLabelGeometry, GEOPDLinkedService, GEOPDLocationEvent, GEOPDMessageLink, GEOPDMiniBrowseCategories, GEOPDPhoto, GEOPDPlaceCollection, GEOPDPlaceCollectionItem, GEOPDPlaceInfo, GEOPDPlaceQuestionnaireResult, GEOPDPlacecardLayoutConfiguration, GEOPDPlacecardURL, GEOPDPoiEvent, GEOPDPriceDescription, GEOPDPrototypeContainer, GEOPDPublisher, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRelatedPlace, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDStorefront, GEOPDStorefrontFaces, GEOPDStorefrontPresentation, GEOPDTemplatePlace, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitNearbySchedule, GEOPDTransitSchedule, GEOPDTransitTripGeometry, GEOPDTransitTripStop, GEOPDTransitTripStopTime, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
+@class GEOPBTransitVehiclePosition, GEOPDAbout, GEOPDActionData, GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAnnotatedItemList, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessAssets, GEOPDBusinessClaim, GEOPDBusinessHours, GEOPDCaptionedPhoto, GEOPDCategorizedPhotos, GEOPDCollectionIds, GEOPDContainedPlace, GEOPDContainmentPlace, GEOPDETA, GEOPDEnhancedPlacement, GEOPDEnrichmentData, GEOPDEnrichmentInfo, GEOPDEntity, GEOPDExploreGuides, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDGroundViewLabel, GEOPDGuideGroup, GEOPDHours, GEOPDISO3166Code, GEOPDIcon, GEOPDLabelGeometry, GEOPDLinkedService, GEOPDLocationEvent, GEOPDMessageLink, GEOPDMiniBrowseCategories, GEOPDPOIClaim, GEOPDPhoto, GEOPDPlaceCollection, GEOPDPlaceCollectionItem, GEOPDPlaceInfo, GEOPDPlaceQuestionnaireResult, GEOPDPlacecardLayoutConfiguration, GEOPDPlacecardURL, GEOPDPoiEvent, GEOPDPriceDescription, GEOPDPrototypeContainer, GEOPDPublisher, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRelatedPlace, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDStorefront, GEOPDStorefrontFaces, GEOPDStorefrontPresentation, GEOPDTemplatePlace, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitNearbySchedule, GEOPDTransitPaymentMethodInfo, GEOPDTransitSchedule, GEOPDTransitTripGeometry, GEOPDTransitTripStop, GEOPDTransitTripStopTime, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDComponentValue : PBCodable <NSCopying>
+@interface GEOPDComponentValue : PBCodable
 {
     PBUnknownFields *_unknownFields;
     GEOPDAbout *_about;
     GEOPDRoadAccessInfo *_accessInfo;
+    GEOPDActionData *_actionData;
     GEOPDAddressObject *_addressObject;
     GEOPDAddress *_address;
     GEOPDAmenities *_amenities;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
     GEOPDAssociatedApp *_associatedApp;
     GEOPDBounds *_bounds;
     GEOPDBrowseCategories *_browseCategories;
+    GEOPDBusinessAssets *_businessAssets;
     GEOPDBusinessClaim *_businessClaim;
     GEOPDBusinessHours *_businessHours;
     GEOPDCaptionedPhoto *_captionedPhoto;
@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
     GEOPDContainedPlace *_containedPlace;
     GEOPDContainmentPlace *_containmentPlace;
     GEOPDEnhancedPlacement *_enhancedPlacement;
+    GEOPDEnrichmentData *_enrichmentData;
+    GEOPDEnrichmentInfo *_enrichmentInfo;
     GEOPDEntity *_entity;
     GEOPDETA *_eta;
     GEOPDExploreGuides *_exploreGuides;
@@ -55,6 +57,7 @@ __attribute__((visibility("hidden")))
     GEOPDPlaceQuestionnaireResult *_placeQuestionnaire;
     GEOPDPlacecardLayoutConfiguration *_placecardLayoutConfiguration;
     GEOPDPlacecardURL *_placecardUrl;
+    GEOPDPOIClaim *_poiClaim;
     GEOPDPoiEvent *_poiEvent;
     GEOPDPriceDescription *_priceDescription;
     GEOPDPrototypeContainer *_prototypeContainer;
@@ -81,6 +84,7 @@ __attribute__((visibility("hidden")))
     GEOPDTransitInfoSnippet *_transitInfoSnippet;
     GEOPDTransitInfo *_transitInfo;
     GEOPDTransitNearbySchedule *_transitNearbySchedule;
+    GEOPDTransitPaymentMethodInfo *_transitPaymentMethodInfo;
     GEOPDTransitSchedule *_transitSchedule;
     GEOPDTransitTripGeometry *_transitTripGeometry;
     GEOPDTransitTripStopTime *_transitTripStopTime;

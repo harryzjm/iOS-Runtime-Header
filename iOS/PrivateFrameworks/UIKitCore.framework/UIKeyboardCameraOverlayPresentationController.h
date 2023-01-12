@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardCameraOverlayPresentationController
 {
     NSLayoutConstraint *_topLayoutConstraint;
-    _Bool _presentingOverKeyboard;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UIKeyboardCameraGrabberView *_grabberView;
     double _keyboardCameraNormalHeight;
@@ -27,10 +26,10 @@ __attribute__((visibility("hidden")))
 - (void)dismissalTransitionWillBegin;
 - (void)presentationTransitionDidEnd:(_Bool)arg1;
 - (void)presentationTransitionWillBegin;
-- (void)_postNotificationsForType:(unsigned long long)arg1 forStart:(_Bool)arg2;
 - (void)_installGrabber;
 - (void)_handlePan:(id)arg1;
 - (void)_determinePortraitHeights;
+- (_Bool)updatesGuideDuringRotation;
 
 @end
 

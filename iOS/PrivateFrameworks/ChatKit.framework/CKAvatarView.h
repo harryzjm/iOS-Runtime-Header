@@ -8,6 +8,7 @@
 
 @class NSString, UIViewController;
 
+__attribute__((visibility("hidden")))
 @interface CKAvatarView : CNAvatarView
 {
     UIViewController *_presentingViewController;

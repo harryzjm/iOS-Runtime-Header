@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MKMuninViewProvider-Protocol.h>
 #import <MapsUI/MKScrollableStacking-Protocol.h>
-#import <MapsUI/_MKInfoCardController-Protocol.h>
 #import <MapsUI/_MKPlaceCardRefreshable-Protocol.h>
 
-@protocol _MKPlaceCardConforming <_MKInfoCardController, _MKPlaceCardRefreshable, MKScrollableStacking, MKMuninViewProvider>
+@protocol _MKPlaceCardConforming <_MKPlaceCardRefreshable, MKScrollableStacking>
 @end
 

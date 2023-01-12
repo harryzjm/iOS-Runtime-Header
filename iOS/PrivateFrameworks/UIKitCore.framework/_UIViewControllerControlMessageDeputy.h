@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIViewServiceDeputy-Protocol.h>
-#import <UIKitCore/_UIViewServiceUIBehaviorInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewControllerControlMessageDeputy <_UIViewServiceDeputy, _UIViewServiceUIBehaviorInterface>
+@interface _UIViewControllerControlMessageDeputy
 {
 }
 

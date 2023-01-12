@@ -6,19 +6,10 @@
 
 #import <TSApplication/TSADocumentRoot.h>
 
-#import <PagesQuicklook/TPPageControllerDelegate-Protocol.h>
-#import <PagesQuicklook/TSCEResolverContainer-Protocol.h>
-#import <PagesQuicklook/TSDInfoUUIDPathPrefixComponentsProvider-Protocol.h>
-#import <PagesQuicklook/TSTResolverContainerNameProvider-Protocol.h>
-#import <PagesQuicklook/TSWPChangeSessionManager-Protocol.h>
-#import <PagesQuicklook/TSWPChangeVisibility-Protocol.h>
-#import <PagesQuicklook/TSWPDrawableOLC-Protocol.h>
-#import <PagesQuicklook/TSWPStorageParent-Protocol.h>
-
 @class EQKitEnvironment, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, TPBookmarkController, TPDocumentSettings, TPDocumentViewController, TPDrawablesZOrder, TPFloatingDrawables, TPSection, TPTheme, TPUIState, TSDThumbnailController, TSPData, TSSStylesheet, TSWPChangeSession, TSWPFlowInfoContainer, TSWPStorage;
 @protocol TSWPTOCController;
 
-@interface TPDocumentRoot : TSADocumentRoot <TSDInfoUUIDPathPrefixComponentsProvider, TSWPDrawableOLC, TSWPStorageParent, TSWPChangeSessionManager, TSWPChangeVisibility, TSTResolverContainerNameProvider, TSCEResolverContainer, TPPageControllerDelegate>
+@interface TPDocumentRoot : TSADocumentRoot
 {
     NSArray *_citationRecords;
     _Bool _shouldUniquifyTableNames;
@@ -128,7 +119,7 @@
 - (_Bool)textIsVerticalInStorage:(id)arg1 atCharIndex:(unsigned long long)arg2;
 - (_Bool)isMultiPageForQuickLook;
 - (int)verticalAlignmentForTextStorage:(id)arg1;
-- (int)naturalAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
+- (long long)naturalAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
 - (_Bool)useLigatures;
 - (const struct __CFLocale *)hyphenationLocale;
 - (_Bool)shouldHyphenate;
@@ -141,7 +132,9 @@
 - (_Bool)cellCommentsAllowedOnInfo:(id)arg1;
 - (_Bool)isDrawableOnSectionTemplatePage:(id)arg1;
 - (_Bool)isSectionTemplateInfo:(id)arg1;
+- (id)sectionTemplatePageOwningInfo:(id)arg1;
 - (id)sectionTemplatePageOwningModel:(id)arg1;
+- (_Bool)isSectionInfo:(id)arg1;
 - (_Bool)isSectionModel:(id)arg1;
 - (unsigned long long)pageTemplateIndexForModelObject:(id)arg1;
 - (void)setValue:(double)arg1 forMargin:(long long)arg2;
@@ -241,7 +234,6 @@
 @property(nonatomic) double pageScale;
 @property(nonatomic) struct CGSize pageSize;
 @property(nonatomic) _Bool usesSingleHeaderFooter;
-- (void)forceRepaginationOfAllChangeTrackedTextForPageController:(id)arg1;
 - (id)storagesWithChanges;
 - (_Bool)needsToExplainEnablingChangeTracking;
 @property(readonly, nonatomic) _Bool hasTrackedChanges;

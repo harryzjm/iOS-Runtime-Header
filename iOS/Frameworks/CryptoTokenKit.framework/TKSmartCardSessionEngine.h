@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CryptoTokenKit/TKProtocolSmartCardSession-Protocol.h>
-
 @class NSXPCConnection, TKSmartCardSlotEngine;
 
 __attribute__((visibility("hidden")))
-@interface TKSmartCardSessionEngine : NSObject <TKProtocolSmartCardSession>
+@interface TKSmartCardSessionEngine : NSObject
 {
     TKSmartCardSlotEngine *_slot;
     _Bool _transmitting;

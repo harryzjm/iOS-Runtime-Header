@@ -14,6 +14,8 @@
 - (HAPPairingIdentity *)securitySession:(HAPSecuritySession *)arg1 didReceiveLocalPairingIdentityRequestWithError:(id *)arg2;
 
 @optional
+- (NSString *)shortDescription;
+- (void)securitySessionWillCloseWithResponseData:(NSData *)arg1 error:(id *)arg2;
 - (NSArray *)securitySessionDidRequestAdditionalDerivedKeyTuples:(HAPSecuritySession *)arg1;
 - (void)securitySession:(HAPSecuritySession *)arg1 didCloseWithError:(NSError *)arg2;
 - (void)securitySessionDidOpen:(HAPSecuritySession *)arg1;

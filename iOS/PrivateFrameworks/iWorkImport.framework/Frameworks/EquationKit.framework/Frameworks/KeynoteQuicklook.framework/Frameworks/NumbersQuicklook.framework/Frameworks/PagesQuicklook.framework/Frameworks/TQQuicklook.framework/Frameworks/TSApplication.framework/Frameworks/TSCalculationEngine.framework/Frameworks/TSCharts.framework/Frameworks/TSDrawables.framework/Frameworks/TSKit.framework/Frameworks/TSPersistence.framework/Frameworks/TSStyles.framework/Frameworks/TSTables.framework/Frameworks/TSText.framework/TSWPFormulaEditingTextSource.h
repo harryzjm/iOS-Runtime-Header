@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSWPTextSource-Protocol.h>
-
 @class NSString;
 @protocol TSWPTextSource;
 
-@interface TSWPFormulaEditingTextSource : NSObject <TSWPTextSource>
+@interface TSWPFormulaEditingTextSource : NSObject
 {
     id <TSWPTextSource> _source;
 }

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <C2/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface C2MPGenericEvent : PBCodable <NSCopying>
+@interface C2MPGenericEvent : PBCodable
 {
     unsigned long long _timestampEnd;
     unsigned long long _timestampStart;

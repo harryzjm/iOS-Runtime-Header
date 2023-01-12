@@ -6,16 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-#import <PhotosUICore/PXGInternalReusableView-Protocol.h>
-#import <PhotosUICore/PXLayoutParticipant-Protocol.h>
+@class NSString, PXViewSpec;
 
-@class NSString, PXViewSpec, UIFont;
-
-@interface UIView (PXLayoutParticipant) <PXLayoutParticipant, PXGInternalReusableView>
+@interface UIView (PXLayoutParticipant)
++ (struct CGSize)px_videoOverlayButtonSizeWithConfiguration:(id)arg1;
 + (struct CGSize)px_videoOverlayButtonSize;
 + (id)px_videoOverlayButtonWithStyle:(long long)arg1;
 + (id)px_videoOverlayButtonWithStyle:(long long)arg1 allowBackdropStatisticsSupression:(_Bool)arg2;
++ (id)px_videoOverlayButtonWithConfiguration:(id)arg1;
 + (void)px_preloadResourcesForVideoOverlayButtonWithStyle:(long long)arg1;
++ (id)px_contentLoadingView;
 + (id)px_circularGlyphViewWithName:(id)arg1 backgroundColor:(id)arg2;
 + (void)px_animateUsingDefaultDampedEaseInEaseOutWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_px_animateView:(id)arg1 toCenter:(struct CGPoint)arg2 bounds:(struct CGRect)arg3 transform:(struct CGAffineTransform)arg4 withInitialVelocity:(struct PXDisplayVelocity)arg5 usingSpringAnimation:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
@@ -24,16 +24,13 @@
 - (_Bool)shouldReloadForUserData:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
 - (void)pxg_shiftPosition:(struct CGPoint)arg1;
-- (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_4f725fed *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_76b550e2 *)arg4 textureInfo:(CDStruct_183601bc *)arg5 resizableCapInsets:(CDStruct_0054b44d)arg6 reusableViewInfo:(id)arg7 screenScale:(double)arg8;
+- (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_4f725fed *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_a79e78a9 *)arg4 textureInfo:(struct *)arg5 resizableCapInsets:(CDStruct_818bb265)arg6 reusableViewInfo:(id)arg7 screenScale:(double)arg8;
 - (void)pxg_prepareForReuse;
 - (void)pxg_becomeReusable;
 - (void)pxg_removeFromSuperview;
+- (_Bool)pxg_hasSuperview;
+- (void)pxg_addToHostingView:(id)arg1;
 - (void)pxg_addToScrollViewController:(id)arg1;
-@property(readonly, nonatomic) struct CGPoint px_bannerTitlePosition;
-@property(readonly, nonatomic) UIFont *px_bannerTitleFont;
-- (void)px_transferToSuperview:(id)arg1 forZoomTransitionWithContex:(id)arg2;
-- (void)px_animateAlpha:(_Bool)arg1 transformType:(long long)arg2 withZoomTransitionContext:(id)arg3;
-- (void)px_animateWithZoomTransitionContext:(id)arg1;
 @property(retain, nonatomic, setter=px_setSpec:) PXViewSpec *px_spec;
 - (void)px_transferToSuperview:(id)arg1;
 - (struct CGAffineTransform)px_convertTransform:(struct CGAffineTransform)arg1 toView:(id)arg2;
@@ -42,7 +39,9 @@
 - (void)px_enumerateDescendantSubviewsUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)px_isAncestorOfFocusEnvironment:(id)arg1;
 @property(readonly, nonatomic) _Bool px_hasHiddenAncestor;
+- (void)px_addFullBoundsSubview:(id)arg1;
 @property(readonly, nonatomic) struct UIEdgeInsets px_peripheryInsets;
+@property(readonly, nonatomic) _Bool px_hasRightToLeftLayoutDirection;
 @property(readonly, nonatomic) double px_screenScale;
 @property(readonly, nonatomic) _Bool px_intersectsWindowBounds;
 

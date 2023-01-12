@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateForDeviceInfo;
 - (void)sessionProgressEvent:(int)arg1 info:(id)arg2;
 - (void)eventCancel:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 

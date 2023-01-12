@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSProgress.h"
+
 @protocol NSProgressPublisher;
 
 __attribute__((visibility("hidden")))
-@interface _NSProgressProxy
+@interface _NSProgressProxy : NSProgress
 {
     id <NSProgressPublisher> _forwarder;
     _Bool _isOld;

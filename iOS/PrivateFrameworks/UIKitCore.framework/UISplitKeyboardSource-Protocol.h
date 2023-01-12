@@ -11,12 +11,12 @@
 @protocol UIInputViewSetPlacementApplicator;
 
 @protocol UISplitKeyboardSource <_UIRemoteKeyboardViewSource, UIInputViewSetPlacementOwner>
-@property(readonly, retain, nonatomic) id <UIInputViewSetPlacementApplicator> applicator;
-@property(readonly, retain, nonatomic) UIInputViewSetPlacement *placement;
-@property(readonly, retain, nonatomic) UIViewController *_inputViewController;
+@property(readonly, nonatomic) id <UIInputViewSetPlacementApplicator> applicator;
+@property(readonly, nonatomic) UIInputViewSetPlacement *placement;
+@property(readonly, nonatomic) UIViewController *_inputViewController;
 @property(readonly, nonatomic) struct CGPoint positionConstraintConstant;
 @property(readonly, nonatomic) _Bool isChangingPlacement;
-@property(readonly, retain, nonatomic) UIView *view;
+@property(readonly, nonatomic) UIView *view;
 - (void)finishSplitTransition;
 - (void)prepareForSplitTransition;
 - (UIInputViewSetNotificationInfo *)constructNotificationInfoForScrollWithMode:(unsigned long long)arg1;

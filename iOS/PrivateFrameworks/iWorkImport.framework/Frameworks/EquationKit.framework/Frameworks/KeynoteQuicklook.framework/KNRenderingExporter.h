@@ -6,12 +6,10 @@
 
 #import <TSApplication/TSARenderingExporter.h>
 
-#import <KeynoteQuicklook/TSDCanvasDelegate-Protocol.h>
-
 @class KNOffscreenController, KNPdfHyperlinkController, KNSlideNode, NSArray, NSMutableArray, NSOrderedSet, NSString;
 @protocol TSDCanvasProxyDelegate;
 
-@interface KNRenderingExporter : TSARenderingExporter <TSDCanvasDelegate>
+@interface KNRenderingExporter : TSARenderingExporter
 {
     KNSlideNode *_currentSlideNode;
     NSMutableArray *_currentSlidesOnPage;
@@ -20,11 +18,13 @@
     KNPdfHyperlinkController *_hyperlinkController;
     unsigned long long _slidesPerPage;
     unsigned long long _currentPage;
-    NSString *_printTitle;
     double _pageMargin;
     NSOrderedSet *_selectedSlideNodes;
     id _printView;
     _Bool _hasObjectComments;
+    unsigned long long _rangeStart;
+    unsigned long long _rangeEnd;
+    unsigned long long _maxRangeValue;
     _Bool _printingBuilds;
     _Bool _printingBackgrounds;
     _Bool _printingSlideBackgroundsWithAlpha;
@@ -33,31 +33,36 @@
     _Bool _printingDate;
     _Bool _printingSkippedSlides;
     _Bool _printingSelectedSlides;
-    _Bool _printingPageMargins;
     _Bool _printingDraftQuality;
+    _Bool _printingNotes;
+    _Bool _printingRuledLines;
     _Bool _printingComments;
+    _Bool _printingPageMargins;
     _Bool _isPrintingCommentsSidebar;
     long long _printLayout;
     double _viewScaleForPageCount;
+    NSString *_printTitle;
     struct CGRect _unscaledClipRectForPageCount;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *printTitle; // @synthesize printTitle=_printTitle;
 @property(readonly, nonatomic) _Bool isPrintingCommentsSidebar; // @synthesize isPrintingCommentsSidebar=_isPrintingCommentsSidebar;
 @property(nonatomic) double viewScaleForPageCount; // @synthesize viewScaleForPageCount=_viewScaleForPageCount;
 @property(nonatomic) struct CGRect unscaledClipRectForPageCount; // @synthesize unscaledClipRectForPageCount=_unscaledClipRectForPageCount;
 @property(nonatomic) id printView; // @synthesize printView=_printView;
-@property(copy, nonatomic) NSString *printTitle; // @synthesize printTitle=_printTitle;
 @property(nonatomic) double pageMargin; // @synthesize pageMargin=_pageMargin;
-@property(nonatomic, getter=isPrintingComments) _Bool printingComments; // @synthesize printingComments=_printingComments;
-@property(nonatomic, getter=isPrintingDraftQuality) _Bool printingDraftQuality; // @synthesize printingDraftQuality=_printingDraftQuality;
 @property(nonatomic, getter=isPrintingPageMargins) _Bool printingPageMargins; // @synthesize printingPageMargins=_printingPageMargins;
+@property(nonatomic, getter=isPrintingComments) _Bool printingComments; // @synthesize printingComments=_printingComments;
+@property(nonatomic, getter=isPrintingRuledLines) _Bool printingRuledLines; // @synthesize printingRuledLines=_printingRuledLines;
+@property(nonatomic, getter=isPrintingNotes) _Bool printingNotes; // @synthesize printingNotes=_printingNotes;
+@property(readonly, nonatomic, getter=isPrintingDraftQuality) _Bool printingDraftQuality; // @synthesize printingDraftQuality=_printingDraftQuality;
 @property(nonatomic, getter=isPrintingSelectedSlides) _Bool printingSelectedSlides; // @synthesize printingSelectedSlides=_printingSelectedSlides;
 @property(nonatomic, getter=isPrintingSkippedSlides) _Bool printingSkippedSlides; // @synthesize printingSkippedSlides=_printingSkippedSlides;
 @property(nonatomic, getter=isPrintingDate) _Bool printingDate; // @synthesize printingDate=_printingDate;
 @property(nonatomic, getter=isPrintingSlideNumbers) _Bool printingSlideNumbers; // @synthesize printingSlideNumbers=_printingSlideNumbers;
 @property(nonatomic, getter=isPrintingBorders) _Bool printingBorders; // @synthesize printingBorders=_printingBorders;
-@property(nonatomic, getter=isPrintingSlideBackgroundsWithAlpha) _Bool printingSlideBackgroundsWithAlpha; // @synthesize printingSlideBackgroundsWithAlpha=_printingSlideBackgroundsWithAlpha;
+@property(readonly, nonatomic, getter=isPrintingSlideBackgroundsWithAlpha) _Bool printingSlideBackgroundsWithAlpha; // @synthesize printingSlideBackgroundsWithAlpha=_printingSlideBackgroundsWithAlpha;
 @property(nonatomic, getter=isPrintingBackgrounds) _Bool printingBackgrounds; // @synthesize printingBackgrounds=_printingBackgrounds;
 @property(nonatomic, getter=isPrintingBuilds) _Bool printingBuilds; // @synthesize printingBuilds=_printingBuilds;
 @property(nonatomic) long long printLayout; // @synthesize printLayout=_printLayout;
@@ -75,6 +80,9 @@
 - (_Bool)supportsPrintingComments;
 - (id)p_slideNumberStringForSlideNode:(id)arg1 buildIndex:(unsigned long long)arg2;
 - (unsigned long long)p_slideNumberForSlideNode:(id)arg1;
+- (unsigned long long)maximumRangeValue;
+- (void)setSlideRangeEnd:(unsigned long long)arg1;
+- (void)setSlideRangeStart:(unsigned long long)arg1;
 - (id)quickLookSlideNodes;
 - (long long)pageIndexFromQuickLookSlideNode:(id)arg1;
 - (void)enableRenderAllContent;
@@ -91,8 +99,8 @@
 @property(readonly, nonatomic) double heightOfPrintedText;
 - (double)progressForCurrentPage;
 - (void)drawBorderForRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
+- (id)p_sourceNodes;
 @property(readonly, nonatomic) NSArray *slidesForPrinting;
-- (id)slideIndexesToPrint;
 @property(readonly, nonatomic) unsigned long long rangeEnd;
 @property(readonly, nonatomic) unsigned long long rangeStart;
 - (_Bool)incrementPage;
@@ -112,6 +120,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool verticalTextAllowed;
 
 @end
 

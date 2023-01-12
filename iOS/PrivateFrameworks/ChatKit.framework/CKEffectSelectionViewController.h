@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ChatKit/UICollectionViewDelegate-Protocol.h>
-
 @class CKFullScreenEffectManager, NSArray, NSString, UICollectionView, UICollectionViewDiffableDataSource, UIColor;
 @protocol CKEffectSelectionViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKEffectSelectionViewController : UIViewController <UICollectionViewDelegate>
+@interface CKEffectSelectionViewController : UIViewController
 {
     _Bool _labelUsesDarkVibrancy;
     id <CKEffectSelectionViewControllerDelegate> _delegate;

@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNPropertyGroupItem.h"
+
 @class CNSocialProfile;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyGroupSocialProfileItem
+@interface CNPropertyGroupSocialProfileItem : CNPropertyGroupItem
 {
 }
 
++ (id)displayStringForSocialProfile:(id)arg1;
++ (id)displayLabelForSocialProfile:(id)arg1 forPropertyKey:(id)arg2;
 + (id)emptyValueForLabel:(id)arg1;
 - (_Bool)isEquivalentToItem:(id)arg1;
 - (id)editingStringValue;

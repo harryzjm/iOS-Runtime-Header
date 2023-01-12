@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/WCMClientDelegate-Protocol.h>
-#import <AVConference/WRMClientDelegate-Protocol.h>
-
 @class VCConnectionManager, VCRecommendedNetworkSettings, VCWCMClient, WRMClient;
 @protocol VCNetworkFeedbackControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCNetworkFeedbackController : NSObject <WCMClientDelegate, WRMClientDelegate>
+@interface VCNetworkFeedbackController : NSObject
 {
     id <VCNetworkFeedbackControllerDelegate> _weakDelegate;
     VCWCMClient *_WCMClient;
@@ -34,6 +31,7 @@ __attribute__((visibility("hidden")))
     _Bool _isLocalCellular;
     _Bool _isVideoPaused;
     _Bool _shouldSendFeedbackControllerReport;
+    _Bool _isStarted;
 }
 
 @property _Bool shouldSendFeedbackControllerReport; // @synthesize shouldSendFeedbackControllerReport=_shouldSendFeedbackControllerReport;

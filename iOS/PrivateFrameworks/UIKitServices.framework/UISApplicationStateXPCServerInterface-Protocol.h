@@ -6,7 +6,7 @@
 
 #import <UIKitServices/NSObject-Protocol.h>
 
-@class NSNumber, NSObject;
+@class NSNumber, NSString;
 
 @protocol UISApplicationStateXPCServerInterface <NSObject>
 - (oneway void)setNextWakeIntervalSinceReferenceDate:(NSNumber *)arg1;
@@ -14,7 +14,8 @@
 - (oneway void)setMinimumBackgroundFetchInterval:(NSNumber *)arg1;
 - (oneway void)setUsesBackgroundNetwork:(NSNumber *)arg1;
 - (void)usesBackgroundNetworkWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
-- (oneway void)setBadgeValue:(NSObject *)arg1;
-- (void)badgeValueWithCompletion:(void (^)(NSObject *, NSError *))arg1;
+- (oneway void)setBadgeString:(NSString *)arg1;
+- (oneway void)setBadgeNumber:(NSNumber *)arg1;
+- (void)badgeValueWithCompletion:(void (^)(NSNumber *, NSString *, NSError *))arg1;
 @end
 

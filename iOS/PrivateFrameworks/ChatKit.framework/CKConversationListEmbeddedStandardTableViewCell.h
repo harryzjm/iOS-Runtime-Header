@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKConversationListEmbeddedTableViewCellProtocol-Protocol.h>
+#import "CKConversationListStandardCell.h"
 
 @class NSObject, NSString;
 @protocol CKConversationListCellDelegate;
 
-@interface CKConversationListEmbeddedStandardTableViewCell <CKConversationListEmbeddedTableViewCellProtocol>
+__attribute__((visibility("hidden")))
+@interface CKConversationListEmbeddedStandardTableViewCell : CKConversationListStandardCell
 {
     struct UIEdgeInsets _marginInsets;
     struct CGRect _containerBounds;
@@ -19,7 +20,6 @@
 @property(nonatomic) struct CGRect containerBounds; // @synthesize containerBounds=_containerBounds;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)chevronImageView;
 - (void)prepareForReuse;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

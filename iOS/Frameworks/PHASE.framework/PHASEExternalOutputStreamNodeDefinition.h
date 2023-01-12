@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "PHASEGeneratorNodeDefinition.h"
+
 @class NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface PHASEExternalOutputStreamNodeDefinition
+@interface PHASEExternalOutputStreamNodeDefinition : PHASEGeneratorNodeDefinition
 {
     _Bool _normalize;
     unsigned int _channelLayoutTag;

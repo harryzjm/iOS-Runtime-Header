@@ -6,9 +6,7 @@
 
 #import <Foundation/NSLock.h>
 
-#import <DVTFoundation/DVTLocking-Protocol.h>
-
-@interface NSLock (DVTFoundationExtensions) <DVTLocking>
+@interface NSLock (DVTFoundationExtensions)
 - (void)dvt_asyncPerformLockedBlock:(CDUnknownBlockType)arg1;
 - (void)dvt_performLockedBlock:(CDUnknownBlockType)arg1;
 @end

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/LSInstallationServiceCallbackProtocol-Protocol.h>
-
 @class NSDictionary, NSString, NSXPCConnection;
 @protocol LSMIInstallUninstallCall, OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface _LSInstallerClient : NSObject <LSInstallationServiceCallbackProtocol>
+@interface _LSInstallerClient : NSObject
 {
     unsigned long long _operationType;
     NSString *_operationTypeString;

@@ -9,6 +9,7 @@
 @class NSSet, NSString;
 
 @protocol SRAuthorizationPromptServiceInterface <NSObject>
+- (void)requestAuthorizationMigrationForBundle:(NSString *)arg1 services:(NSSet *)arg2;
 - (void)showFirstRunOnboarding;
 - (void)showResearchData;
 - (void)showStudyAuthorizationForBundlePath:(NSString *)arg1;

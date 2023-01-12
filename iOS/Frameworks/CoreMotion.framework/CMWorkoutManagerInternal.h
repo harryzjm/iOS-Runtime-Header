@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CMWorkout, CMWorkoutManager;
+@class CMWorkout, CMWorkoutManager, CMWorkoutOverview;
 @protocol CMWorkoutManagerDelegate, OS_dispatch_queue;
 
 @interface CMWorkoutManagerInternal : NSObject
@@ -15,16 +15,27 @@
     NSObject<OS_dispatch_queue> *fInternalQueue;
     id <CMWorkoutManagerDelegate> fDelegate;
     CMWorkoutManager *fSender;
+    CMWorkout *fLastNonTransitionWorkout;
     CMWorkout *fWorkout;
-    _Bool fResumeWorkoutOnInterrupt;
+    CMWorkoutOverview *fWorkoutOverview;
+    _Bool fEnableWorkoutChangeDetection;
+    long long fSessionState;
 }
 
+- (void)_checkWorkout:(id)arg1;
+- (void)_resumeWorkout:(id)arg1;
+- (void)_pauseWorkout:(id)arg1;
+- (void)_endWorkoutSession:(id)arg1;
+- (void)_setWorkout:(id)arg1;
+- (void)_setCurrentWorkoutType:(id)arg1 isManualTransition:(_Bool)arg2;
+- (void)_beginWorkoutSession:(id)arg1 withWorkout:(id)arg2 enableWorkoutChangeDetection:(_Bool)arg3;
 - (void)_getPromptsNeededForWorkoutType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (_Bool)_shouldAllowMotionCalibrationPromptsForWorkoutType:(long long)arg1;
 - (void)_unregisterForWorkoutEvents;
 - (void)_registerForWorkoutEvents;
 - (void)_handleDaemonEvent:(id)arg1;
 - (void)_handleDaemonResponse:(id)arg1;
+- (void)_setMode:(unsigned long long)arg1 forWorkout:(id)arg2;
 - (void)_triggerWorkoutLocationUpdateForTesting:(long long)arg1;
 - (void)_userDismissedWorkoutAlert;
 - (void)_setSuggestedStopTimeout:(double)arg1;

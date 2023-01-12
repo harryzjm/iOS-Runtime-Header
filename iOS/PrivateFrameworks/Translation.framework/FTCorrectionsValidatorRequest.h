@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTRecognitionResult, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTCorrectionsValidatorRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTCorrectionsValidatorRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;

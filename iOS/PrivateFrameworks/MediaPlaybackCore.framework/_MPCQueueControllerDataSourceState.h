@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPShuffleableSectionedIdentifierListDataSource-Protocol.h>
-#import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
-
 @class MPCPlaybackEngineEventStream, MPPlaceholderAVItem, MPPlaybackContext, NSString;
-@protocol MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring><MPRTCReportingItemSessionContaining;
+@protocol MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring;
 
 __attribute__((visibility("hidden")))
-@interface _MPCQueueControllerDataSourceState : NSObject <MPShuffleableSectionedIdentifierListDataSource, NSSecureCoding>
+@interface _MPCQueueControllerDataSourceState : NSObject
 {
     struct {
         unsigned int dataSourcePlaceholderItemForLoadingAdditionalItemsInSection:1;
         unsigned int dataSourceSupplementalPlaybackContextWithReason:1;
         unsigned int dataSourceSupplementalPlaybackContextBehavior:1;
+        unsigned int dataSourceCanJumpToItem:1;
         unsigned int dataSourceCanSkipItem:1;
         unsigned int dataSourceFirstItemIntersectingIdentifierSet:1;
         unsigned int dataSourceItemDidBeginPlayback:1;
@@ -31,13 +29,14 @@ __attribute__((visibility("hidden")))
     _Bool _frozen;
     struct os_unfair_lock_s _stateLock;
     MPPlaceholderAVItem *_tailPlaceholderItem;
-    id <MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring><MPRTCReportingItemSessionContaining> _dataSource;
+    id <MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring> _dataSource;
     MPPlaybackContext *_playbackContext;
     MPPlaybackContext *_originalPlaybackContext;
     long long _state;
     NSString *_sectionIdentifier;
     NSString *_preferredStartItemIdentifier;
     id _rtcSectionHierarchyToken;
+    NSString *_playerID;
     MPCPlaybackEngineEventStream *_eventStream;
     long long _supplementalPlaybackContextBehavior;
     MPPlaybackContext *_supplementalPlaybackContext;
@@ -49,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long supplementalPlaybackContextBehavior; // @synthesize supplementalPlaybackContextBehavior=_supplementalPlaybackContextBehavior;
 @property(readonly, nonatomic) struct os_unfair_lock_s stateLock; // @synthesize stateLock=_stateLock;
 @property(nonatomic) __weak MPCPlaybackEngineEventStream *eventStream; // @synthesize eventStream=_eventStream;
+@property(retain, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
 @property(retain, nonatomic) id rtcSectionHierarchyToken; // @synthesize rtcSectionHierarchyToken=_rtcSectionHierarchyToken;
 @property(readonly, nonatomic) NSString *preferredStartItemIdentifier; // @synthesize preferredStartItemIdentifier=_preferredStartItemIdentifier;
 @property(readonly, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
@@ -56,7 +56,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) MPPlaybackContext *originalPlaybackContext; // @synthesize originalPlaybackContext=_originalPlaybackContext;
 @property(readonly, nonatomic) MPPlaybackContext *playbackContext; // @synthesize playbackContext=_playbackContext;
-@property(readonly, nonatomic) id <MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring><MPRTCReportingItemSessionContaining> dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly, nonatomic) id <MPCQueueControllerDataSource><MPCQueueControllerDataSourceStateRestoring> dataSource; // @synthesize dataSource=_dataSource;
+- (id)_rtcSourceServiceName;
+- (void)_updateRadioStationPlaybackAuthorizationTokenIfNeeded;
 - (void)_inLock_buildPlaceholder;
 - (void)_buildPlaceholder;
 - (_Bool)section:(id)arg1 shouldShuffleExcludeItem:(id)arg2;
@@ -74,7 +76,9 @@ __attribute__((visibility("hidden")))
 - (void)itemDidBeginPlayback:(id)arg1;
 - (id)firstItemIntersectingIdentifierSet:(id)arg1;
 @property(readonly, nonatomic) _Bool containsLiveStream;
-- (_Bool)canSkipItem:(id)arg1;
+- (_Bool)canSkipItem:(id)arg1 reason:(id *)arg2;
+- (_Bool)canJumpToItem:(id)arg1 reason:(id *)arg2;
+- (id)getTailPlaceholderItemAndState:(long long *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy) NSString *description;

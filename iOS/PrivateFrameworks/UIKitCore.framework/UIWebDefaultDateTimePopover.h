@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIWebFormControl-Protocol.h>
-
 @class UIWebDateTimePopoverViewController;
 
 __attribute__((visibility("hidden")))
-@interface UIWebDefaultDateTimePopover <UIWebFormControl>
+@interface UIWebDefaultDateTimePopover
 {
     UIWebDateTimePopoverViewController *_webDateTimeViewController;
 }

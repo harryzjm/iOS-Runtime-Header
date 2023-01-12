@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <PagesQuicklook/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TPAllFootnoteSelection;
 
-@interface TPArchivedAllFootnoteSelection : TSPObject <TSKArchivedSelection>
+@interface TPArchivedAllFootnoteSelection : TSPObject
 {
     TPAllFootnoteSelection *_selection;
 }

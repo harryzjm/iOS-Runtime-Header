@@ -11,6 +11,7 @@
 @protocol PXPhotosDetailsHeaderTileLayoutDelegate <NSObject>
 
 @optional
+- (struct CGSize)photosDetailsHeaderTileLayoutPlayButtonSize:(PXPhotosDetailsHeaderTileLayout *)arg1;
 - (NSString *)photosDetailsHeaderTileLayoutFontName:(PXPhotosDetailsHeaderTileLayout *)arg1;
 - (struct CGRect)photosDetailsHeaderTileLayout:(PXPhotosDetailsHeaderTileLayout *)arg1 contentsRectForAspectRatio:(double)arg2;
 @end

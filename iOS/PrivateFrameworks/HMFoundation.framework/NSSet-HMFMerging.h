@@ -6,11 +6,9 @@
 
 #import <Foundation/NSSet.h>
 
-#import <HMFoundation/HMFObject-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSSet (HMFMerging) <HMFObject>
+@interface NSSet (HMFMerging)
 + (id)shortDescription;
 - (id)hmf_commonObjectsFromSet:(id)arg1;
 - (id)hmf_removedObjectsFromSet:(id)arg1;

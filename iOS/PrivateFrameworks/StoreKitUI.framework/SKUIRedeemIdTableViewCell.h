@@ -6,13 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
-
 @class NSString, UITextField;
 @protocol SKUIRedeemIdTableViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemIdTableViewCell : UITableViewCell <UITextFieldDelegate>
+@interface SKUIRedeemIdTableViewCell : UITableViewCell
 {
     id <SKUIRedeemIdTableViewCellDelegate> _delegate;
     UITextField *_textField;

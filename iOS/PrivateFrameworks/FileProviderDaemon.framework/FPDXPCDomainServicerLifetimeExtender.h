@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDLifetimeExtender-Protocol.h>
-#import <FileProviderDaemon/FPDLifetimeServicing-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPDXPCDomainServicerLifetimeExtender : NSObject <FPDLifetimeExtender, FPDLifetimeServicing>
+@interface FPDXPCDomainServicerLifetimeExtender : NSObject
 {
     int _requestEffectivePID;
     NSString *_prettyDescription;
@@ -30,6 +27,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly) double timeout;
+@property unsigned long long timeoutState;
 
 @end
 

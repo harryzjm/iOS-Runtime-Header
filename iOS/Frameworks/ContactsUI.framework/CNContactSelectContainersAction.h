@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNContactContainerPickerViewControllerDelegate-Protocol.h>
+#import "CNContactAction.h"
 
 @class CNContactContainerPickerViewController, CNUIContainerContext, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactSelectContainersAction <CNContactContainerPickerViewControllerDelegate>
+@interface CNContactSelectContainersAction : CNContactAction
 {
     CNContactContainerPickerViewController *_containerPicker;
     CNUIContainerContext *_containerContext;

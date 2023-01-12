@@ -16,9 +16,9 @@
 - (void)setLockScreenOverrideState:(long long)arg1 userInfo:(NSDictionary *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)publishWakeUpResultsNotificationWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)publishNotificationWithIdentifier:(NSString *)arg1 userInfo:(NSDictionary *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)sleepAlarmWasModifiedWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)sleepAlarmWasSnoozedUntilDate:(NSDate *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)sleepAlarmWasDismissedOnDate:(NSDate *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)sleepAlarmWasModifiedFromSource:(unsigned long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)sleepAlarmWasSnoozedUntilDate:(NSDate *)arg1 source:(unsigned long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)sleepAlarmWasDismissedOnDate:(NSDate *)arg1 source:(unsigned long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)dismissSleepLockWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)dismissGoodMorningWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)confirmAwakeWithCompletion:(void (^)(_Bool, NSError *))arg1;

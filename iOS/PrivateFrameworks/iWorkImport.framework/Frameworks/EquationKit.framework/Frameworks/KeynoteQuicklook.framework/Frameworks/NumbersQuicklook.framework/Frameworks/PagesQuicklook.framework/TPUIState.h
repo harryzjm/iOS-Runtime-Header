@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/NSCopying-Protocol.h>
-#import <PagesQuicklook/TSAUIState-Protocol.h>
-
 @class NSDictionary, NSString, TSDFreehandDrawingToolkitUIState, TSKAnnotationAuthor, TSKPencilAnnotationUIState, TSKSelectionPath;
 
-@interface TPUIState : NSObject <NSCopying, TSAUIState>
+@interface TPUIState : NSObject
 {
     _Bool _sectionTemplateDrawablesSelectable;
     long long _viewScaleMode;
@@ -35,6 +32,7 @@
     _Bool _showsPageNavigator;
     _Bool _showsTOCNavigator;
     _Bool _pencilAnnotationsHidden;
+    _Bool _showsActivityStream;
     _Bool _showUserDefinedGuides;
     _Bool _showUserDefinedPageTemplateGuides;
     TSKSelectionPath *_selectionPath;
@@ -47,10 +45,14 @@
     TSKPencilAnnotationUIState *_pencilAnnotationUIState;
     long long _viewScaleModeiOS;
     double _presentationAutoScrollSpeed;
+    double _tocOrPageNavWidth;
+    double _activityOrAnnotationWidth;
     struct CGRect _visibleRect;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double activityOrAnnotationWidth; // @synthesize activityOrAnnotationWidth=_activityOrAnnotationWidth;
+@property(nonatomic) double tocOrPageNavWidth; // @synthesize tocOrPageNavWidth=_tocOrPageNavWidth;
 @property(nonatomic) _Bool showUserDefinedPageTemplateGuides; // @synthesize showUserDefinedPageTemplateGuides=_showUserDefinedPageTemplateGuides;
 @property(nonatomic) double presentationAutoScrollSpeed; // @synthesize presentationAutoScrollSpeed=_presentationAutoScrollSpeed;
 @property(nonatomic) long long viewScaleModeiOS; // @synthesize viewScaleModeiOS=_viewScaleModeiOS;
@@ -61,6 +63,7 @@
 @property(nonatomic) _Bool showUserDefinedGuides; // @synthesize showUserDefinedGuides=_showUserDefinedGuides;
 @property(nonatomic) double viewScale; // @synthesize viewScale=_viewScale;
 @property(nonatomic) long long pageViewState; // @synthesize pageViewState=_pageViewState;
+@property(nonatomic) _Bool showsActivityStream; // @synthesize showsActivityStream=_showsActivityStream;
 @property(nonatomic) _Bool pencilAnnotationsHidden; // @synthesize pencilAnnotationsHidden=_pencilAnnotationsHidden;
 @property(nonatomic) _Bool showsTOCNavigator; // @synthesize showsTOCNavigator=_showsTOCNavigator;
 @property(nonatomic) _Bool showsPageNavigator; // @synthesize showsPageNavigator=_showsPageNavigator;

@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
-#import <TVMLKit/__TVShelfViewControllerDelegate-Protocol.h>
-
 @class NSString, _TVShelfViewController;
 
 __attribute__((visibility("hidden")))
-@interface _TVRelatedContentShelfViewController : UIViewController <__TVShelfViewControllerDelegate, TVAppTemplateImpressionable>
+@interface _TVRelatedContentShelfViewController : UIViewController
 {
     _TVShelfViewController *_shelfViewController;
 }

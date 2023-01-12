@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IMDaemonCore/IMDAutoReplying-Protocol.h>
-
 @class CARAutomaticDNDStatus, NSString;
 @protocol IMDAutoReplyDelegate, OS_dispatch_queue;
 
-@interface IMDAvailabilityAutoReplier : NSObject <IMDAutoReplying>
+@interface IMDAvailabilityAutoReplier : NSObject
 {
     id <IMDAutoReplyDelegate> _replyDelegate;
     NSObject<OS_dispatch_queue> *_privateWorkQueue;
@@ -57,8 +55,6 @@
 - (_Bool)_chatEligibleForAvailabilityInformation:(id)arg1;
 - (id)_dndHandleForIMDHandle:(id)arg1;
 - (_Bool)_userIsAvailableToHandle:(id)arg1;
-- (_Bool)sendSMSAutoReplyDuringUnavailability;
-- (_Bool)kettleFeatureEnabled;
 - (void)_processMessagesForAvailabilityAutoReply:(id)arg1 forIncomingMessageFromIDSID:(id)arg2 inChat:(id)arg3;
 - (void)processMessages:(id)arg1 inChat:(id)arg2 fromIDSID:(id)arg3;
 - (id)init;

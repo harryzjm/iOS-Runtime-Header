@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-#import <DVTFoundation/NSFastEnumeration-Protocol.h>
-
 @class DVTMacroDefinitionCondition, NSArray, NSString;
 
-@interface DVTMacroDefinitionConditionSet : NSObject <NSCopying, NSFastEnumeration>
+@interface DVTMacroDefinitionConditionSet : NSObject
 {
     unsigned long long _combinedHash;
     unsigned long long _combinedPrecedence;

@@ -16,6 +16,8 @@
 + (id)catalogItemFileExtension;
 + (id)defaultInstanceForIdioms:(id)arg1 enforceStrictIdioms:(_Bool)arg2;
 + (id)defaultName;
++ (void)setComponentInterpretationForCreation:(long long)arg1;
++ (long long)componentInterpretationForCreation;
 + (id)colorSetWithName:(id)arg1 color:(id)arg2;
 + (id)createDefaultInstancesForUnitTesting;
 + (Class)assetRepClass;

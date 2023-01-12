@@ -18,6 +18,7 @@
     struct CGPoint _controlPoint;
 }
 
+- (void).cxx_destruct;
 @property(readonly) _Bool cornerLine; // @synthesize cornerLine=_cornerLine;
 @property(readonly) NSArray *pathPoints; // @synthesize pathPoints=_pathPoints;
 @property(readonly) struct CGPoint controlPoint; // @synthesize controlPoint=_controlPoint;
@@ -26,7 +27,6 @@
 @property(readonly) struct CGPoint startLocation; // @synthesize startLocation=_startLocation;
 @property(readonly) int endEndpointType; // @synthesize endEndpointType=_endEndpointType;
 @property(readonly) int startEndpointType; // @synthesize startEndpointType=_startEndpointType;
-- (void)dealloc;
 - (id)initWithString:(id)arg1 score:(double)arg2 rotation:(double)arg3 startLocation:(struct CGPoint)arg4 startEndpointType:(int)arg5 endLocation:(struct CGPoint)arg6 endEndpointType:(int)arg7 midPointLocation:(struct CGPoint)arg8 controlPointLocation:(struct CGPoint)arg9;
 - (id)initWithString:(id)arg1 score:(double)arg2 rotation:(double)arg3 startLocation:(struct CGPoint)arg4 startEndpointType:(int)arg5 endLocation:(struct CGPoint)arg6 endEndpointType:(int)arg7 midPointLocation:(struct CGPoint)arg8 controlPointLocation:(struct CGPoint)arg9 pathPoints:(id)arg10;
 

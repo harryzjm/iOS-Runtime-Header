@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ReminderKit/CRDataType-Protocol.h>
-
 @class CRTTCompatibleDocument, NSHashTable, NSMutableAttributedString, NSString, NSUUID, TTVectorMultiTimestamp;
 @protocol TTMergeableStringDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TTMergeableString : NSObject <CRDataType>
+@interface TTMergeableString : NSObject
 {
     struct vector<TopoSubstring *, std::allocator<TopoSubstring *>> _startNodes;
     struct vector<TopoSubstring *, std::allocator<TopoSubstring *>> _endNodes;

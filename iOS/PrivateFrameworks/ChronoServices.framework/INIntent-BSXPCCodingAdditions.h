@@ -6,11 +6,9 @@
 
 #import <Intents/INIntent.h>
 
-#import <ChronoServices/BSXPCCoding-Protocol.h>
-
 @class NSString;
 
-@interface INIntent (BSXPCCodingAdditions) <BSXPCCoding>
+@interface INIntent (BSXPCCodingAdditions)
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 

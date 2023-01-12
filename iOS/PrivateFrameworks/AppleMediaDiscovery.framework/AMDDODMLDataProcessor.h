@@ -32,8 +32,10 @@ __attribute__((visibility("hidden")))
 - (id)replicateArray:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)randomizeArray:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)padArray:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
+- (id)insertRawArray:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)insertArray:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)generateHashFromInputs:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
+- (id)ifStatement:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)hashAdamIdsToIndices:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)hashFromCoreDictionary:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)filterArrayOnNumber:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
@@ -43,6 +45,9 @@ __attribute__((visibility("hidden")))
 - (id)combineArray:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)checkIfArrayEmptyAndThrowError:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
 - (id)bindToBuffer:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
+- (id)aggregateArray:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
+- (id)processForLoop:(id)arg1 error:(id *)arg2 errorDomain:(id)arg3;
+- (id)processForLoopHelper:(id)arg1 withNumber:(id)arg2 withDictionary:(id)arg3;
 - (id)parseAndCall:(id)arg1 withInputs:(id)arg2 error:(id *)arg3 errorDomain:(id)arg4;
 - (id)processRecipe:(id *)arg1 errorDomain:(id)arg2;
 - (id)getElementsInSampleDictionary;
@@ -51,8 +56,10 @@ __attribute__((visibility("hidden")))
 - (id)getElementInNumberInputsBounds:(id)arg1;
 - (id)getElementInInputDictionary:(id)arg1;
 - (id)getElementInCoreDictionary:(id)arg1;
+- (void)setElementsInCoreDictionary:(id)arg1;
 - (id)getCoreDictionary;
 - (void)setElementInCoreDictionary:(id)arg1 withKey:(id)arg2;
+- (void)resetDataProcessorWithRecipe:(id)arg1;
 - (id)initWithActionArray:(id)arg1 withAttachmentProcessor:(id)arg2;
 
 @end

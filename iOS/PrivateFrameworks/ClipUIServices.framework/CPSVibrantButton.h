@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)setAdjustFontSizeToFitWidth:(_Bool)arg1;
 @property(readonly, nonatomic) UIButton *uiButton;
 - (void)updateCornerRadius;
 - (id)initWithButtonType:(long long)arg1;

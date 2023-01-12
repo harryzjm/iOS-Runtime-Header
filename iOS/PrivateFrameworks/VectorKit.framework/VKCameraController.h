@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKCameraController-Protocol.h>
-
 @class GEOMapRegion, NSString, VKCamera;
 @protocol MDRenderTarget, VKMapViewCameraDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCameraController : NSObject <VKCameraController>
+@interface VKCameraController : NSObject
 {
     VKCamera *_vkCamera;
     shared_ptr_46708168 _camera;
@@ -100,7 +98,6 @@ __attribute__((visibility("hidden")))
 - (void)setCamera:(shared_ptr_46708168)arg1;
 - (id)vkCamera;
 - (void)setVkCamera:(id)arg1;
-- (void)dealloc;
 - (id)initWithMapDataAccess:(struct MapDataAccess *)arg1 animationRunner:(struct AnimationRunner *)arg2 runLoopController:(struct RunLoopController *)arg3 cameraDelegate:(id)arg4;
 
 // Remaining properties

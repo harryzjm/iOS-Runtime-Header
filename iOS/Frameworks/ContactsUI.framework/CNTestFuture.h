@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/NSSecureCoding-Protocol.h>
-
 @class NSError;
 @protocol NSObject><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface CNTestFuture : NSObject <NSSecureCoding>
+@interface CNTestFuture : NSObject
 {
     id <NSObject><NSSecureCoding> _result;
     NSError *_error;
@@ -24,8 +22,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, nonatomic) id <NSObject><NSSecureCoding> result; // @synthesize result=_result;
-- (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithError:(id)arg1;
 - (id)initWithResult:(id)arg1;
 

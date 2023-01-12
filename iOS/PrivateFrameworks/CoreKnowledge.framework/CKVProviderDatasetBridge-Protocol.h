@@ -6,11 +6,11 @@
 
 #import <CoreKnowledge/NSObject-Protocol.h>
 
-@class CKVOriginApp;
+@class NSString;
 
 @protocol CKVProviderDatasetBridge <NSObject>
-- (_Bool)enumerateVocabularyItemsWithError:(id *)arg1 usingBlock:(_Bool (^)(NSObject<CKVocabularyItem> *))arg2;
-- (CKVOriginApp *)originApp;
-- (Class)itemClass;
+- (_Bool)enumerateItemsWithError:(id *)arg1 usingBlock:(_Bool (^)(KVItem *))arg2;
+- (NSString *)originAppId;
+- (long long)itemType;
 @end
 

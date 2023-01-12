@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSCoding-Protocol.h>
-#import <AVConference/NSCopying-Protocol.h>
-#import <AVConference/NSSecureCoding-Protocol.h>
-#import <AVConference/VCCaptionsTranscriptionSegment-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCCaptionsTranscriptionSegment : NSObject <NSCopying, NSCoding, NSSecureCoding, VCCaptionsTranscriptionSegment>
+@interface VCCaptionsTranscriptionSegment : NSObject
 {
     NSString *_text;
     struct _NSRange _range;

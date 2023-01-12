@@ -13,6 +13,7 @@
 - (void)getNotificationTopicsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSSet *))arg2;
 - (void)setNotificationTopics:(NSSet *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)setBadgeString:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
+- (void)setBadgeCount:(NSNumber *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)setBadgeNumber:(NSNumber *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)getBadgeNumberForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSNumber *))arg2;
 - (void)removeAllDeliveredNotificationsForBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;

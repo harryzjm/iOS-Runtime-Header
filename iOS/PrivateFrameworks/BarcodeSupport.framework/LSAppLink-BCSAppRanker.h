@@ -6,11 +6,9 @@
 
 #import <CoreServices/LSAppLink.h>
 
-#import <BarcodeSupport/BCSApp-Protocol.h>
-
 @class NSString;
 
-@interface LSAppLink (BCSAppRanker) <BCSApp>
+@interface LSAppLink (BCSAppRanker)
 - (id)bundleIdentifier;
 
 // Remaining properties

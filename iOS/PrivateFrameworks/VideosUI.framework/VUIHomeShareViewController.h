@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/UICollectionViewDataSource-Protocol.h>
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-
 @class NSArray, NSString, VUILibraryMenuItemViewCell, VUIViewControllerContentPresenter;
 @protocol VUIHomeShareViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIHomeShareViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
+@interface VUIHomeShareViewController
 {
     id <VUIHomeShareViewControllerDelegate> _delegate;
     NSArray *_homeShares;

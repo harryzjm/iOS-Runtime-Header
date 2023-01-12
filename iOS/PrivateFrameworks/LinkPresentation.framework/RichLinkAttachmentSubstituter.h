@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/NSKeyedArchiverDelegate-Protocol.h>
-#import <LinkPresentation/NSKeyedUnarchiverDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface RichLinkAttachmentSubstituter : NSObject <NSKeyedArchiverDelegate, NSKeyedUnarchiverDelegate>
+@interface RichLinkAttachmentSubstituter : NSObject
 {
     _Bool _shouldSubstituteAttachments;
     _Bool _shouldIgnoreAppStoreMetadata;

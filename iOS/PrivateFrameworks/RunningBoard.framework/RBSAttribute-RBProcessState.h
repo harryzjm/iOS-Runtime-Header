@@ -7,9 +7,10 @@
 #import <RunningBoardServices/RBSAttribute.h>
 
 @interface RBSAttribute (RBProcessState)
++ (_Bool)allowedForPrimitiveAttributeForProcessTarget:(id)arg1 withError:(id *)arg2;
 - (_Bool)preventsSuspension;
 - (_Bool)hasMandatoryAttributes:(id)arg1 error:(id *)arg2;
-- (_Bool)conflictsWithAttribute:(id)arg1;
+- (_Bool)allowedWithAttribute:(id)arg1 error:(id *)arg2;
 - (_Bool)isValidForContext:(id)arg1 withError:(id *)arg2;
 - (id)effectiveAttributesWithContext:(id)arg1;
 - (void)applyToAcquisitionContext:(id)arg1;

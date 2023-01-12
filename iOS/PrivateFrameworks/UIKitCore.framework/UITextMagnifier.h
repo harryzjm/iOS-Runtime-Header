@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIResponder, UITextMagnifierTimeWeightedPoint, UIView;
+#import "UIView.h"
+
+@class UIResponder, UITextMagnifierTimeWeightedPoint;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
-@interface UITextMagnifier
+@interface UITextMagnifier : UIView
 {
     UIView *_target;
     struct CGPoint _magnificationPoint;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNNullDetector : NSObject <SNAnalyzing>
+@interface SNNullDetector : NSObject
 {
     shared_ptr_f6ac7592 _graph;
     _Bool _graphIsDeadEnded;
@@ -23,17 +21,11 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool shouldThrowException; // @synthesize shouldThrowException=_shouldThrowException;
-@property(nonatomic) _Bool graphIsDeadEnded; // @synthesize graphIsDeadEnded=_graphIsDeadEnded;
-@property(nonatomic) double computationalDutyCycle; // @synthesize computationalDutyCycle=_computationalDutyCycle;
-@property(nonatomic) unsigned int blockSize; // @synthesize blockSize=_blockSize;
-@property(nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 @property(readonly, nonatomic) void *resultsBox;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)sharedProcessorConfiguration;
 - (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (id)initWithSampleRate:(double)arg1 blockSize:(unsigned int)arg2 computationalDutyCycle:(double)arg3 graphIsDeadEnded:(_Bool)arg4 shouldThrowException:(_Bool)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

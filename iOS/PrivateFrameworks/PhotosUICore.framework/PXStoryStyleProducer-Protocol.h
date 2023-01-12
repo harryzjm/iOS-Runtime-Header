@@ -8,6 +8,6 @@
 @protocol PXAudioCueSource, PXStoryAutoEditDecisionList, PXStorySongResource, PXStoryStyle;
 
 @protocol PXStoryStyleProducer
-- (id <PXStoryStyle>)styleWithCustomColorGradeKind:(long long)arg1 originalColorGradeCategory:(NSString *)arg2 songResource:(id <PXStorySongResource>)arg3 cueSource:(id <PXAudioCueSource>)arg4 autoEditDecisionList:(id <PXStoryAutoEditDecisionList>)arg5 styleOptions:(CDStruct_aa11df03)arg6 isCustomized:(_Bool)arg7;
+- (id <PXStoryStyle>)styleWithCustomColorGradeKind:(long long)arg1 originalColorGradeCategory:(NSString *)arg2 songResource:(id <PXStorySongResource>)arg3 cueSource:(id <PXAudioCueSource>)arg4 autoEditDecisionList:(id <PXStoryAutoEditDecisionList>)arg5 styleOptions:(CDStruct_5577c19c)arg6 isCustomized:(_Bool)arg7;
 @end
 

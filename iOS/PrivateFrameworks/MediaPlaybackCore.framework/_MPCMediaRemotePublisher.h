@@ -6,34 +6,35 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
-#import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSourcePrivate-Protocol.h>
-
-@class MPCPlaybackEngine, MPCPlayerPath, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSArray, NSString, NSUserDefaults;
+@class MPCPlayPerfMetrics, MPCPlaybackEngine, MPCPlayerPath, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSArray, NSString, NSUserDefaults;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface _MPCMediaRemotePublisher : NSObject <MPNowPlayingPlaybackQueueDataSourcePrivate, MPCPlaybackEngineEventObserving>
+@interface _MPCMediaRemotePublisher : NSObject
 {
     MPLibraryAddStatusObserver *_libraryAddStatusObserver;
     struct os_unfair_lock_s _libraryAddStatusObserverLock;
     NSArray *_accounts;
     _Bool _activeAccountAllowsSubscriptionPlayback;
+    _Bool _activeAccountRequiresAuthorizationTokensForPlayback;
     NSString *_activeAccountStoreFrontIdentifier;
     NSUserDefaults *_ipodDefaults;
     _Bool _hasBeganFastForward;
     _Bool _hasBeganRewind;
     NSObject<OS_dispatch_source> *_nextPreviousTrackCooldownTimer;
     long long _deferredTrackChangeDelta;
+    NSArray *_lastCommandDescriptions;
     _Bool _initializedSupportedCommands;
     _Bool _engineRestoringState;
     _Bool _mediaServerAvailable;
     MPCPlaybackEngine *_playbackEngine;
     MPNowPlayingInfoCenter *_infoCenter;
     MPRemoteCommandCenter *_commandCenter;
+    MPCPlayPerfMetrics *_lastPerformanceMetrics;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) MPCPlayPerfMetrics *lastPerformanceMetrics; // @synthesize lastPerformanceMetrics=_lastPerformanceMetrics;
 @property(nonatomic, getter=isMediaServerAvailable) _Bool mediaServerAvailable; // @synthesize mediaServerAvailable=_mediaServerAvailable;
 @property(nonatomic, getter=isEngineRestoringState) _Bool engineRestoringState; // @synthesize engineRestoringState=_engineRestoringState;
 @property(readonly, nonatomic) MPRemoteCommandCenter *commandCenter; // @synthesize commandCenter=_commandCenter;
@@ -41,7 +42,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=hasInitializedSupportedCommands) _Bool initializedSupportedCommands; // @synthesize initializedSupportedCommands=_initializedSupportedCommands;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 - (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_homeAccessorySettingsPrivateListeningOverride:(id)arg1;
 - (void)_performDebugEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_canInsertPlaybackContext:(id)arg1 forUser:(id)arg2;
+- (_Bool)_isRestrictedSubscriptionUser:(id)arg1;
 - (void)_updateSupportedCommands;
 - (_Bool)_playbackStateIsIdle:(long long)arg1;
 - (void)_updateLaunchCommands;
@@ -67,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)engine:(id)arg1 didChangeQueueWithReason:(id)arg2;
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
 - (void)engine:(id)arg1 didChangeToItem:(id)arg2;
+- (void)updatePlaybackMetrics:(id)arg1;
 - (void)leaveSharedSessionWithCommandID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getShouldRestoreStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reportUserBackgroundedApplication;

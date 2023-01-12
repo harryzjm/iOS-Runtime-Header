@@ -14,7 +14,7 @@
 @property(nonatomic) _Bool isAtEnd;
 @property(nonatomic) _Bool isReadyToPlay;
 @property(retain, nonatomic) NSError *error;
-@property(nonatomic) CDStruct_1b6d18a9 duration;
+@property(nonatomic) CDStruct_198678f7 duration;
 @property(nonatomic) long long status;
 @end
 

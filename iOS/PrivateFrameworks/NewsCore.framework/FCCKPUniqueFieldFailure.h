@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPUniqueFieldFailure : PBCodable <NSCopying>
+@interface FCCKPUniqueFieldFailure : PBCodable
 {
     FCCKPIdentifier *_identifierForConstraintFailure;
 }

@@ -6,11 +6,10 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDAppleMediaAccessory, HMDBackingStore, HMDHomeMediaSystemHandler, HMDUser, NSArray, NSUUID;
+@class HMDHomeMediaSystemHandler, HMDUser, NSArray, NSUUID;
 
 @protocol HMDHomeMediaSystemHandlerDelegate <NSObject>
-@property(readonly, nonatomic) HMDBackingStore *backingStore;
+- (void)mediaSystemController:(HMDHomeMediaSystemHandler *)arg1 didRemoveMediaSystem:(NSUUID *)arg2;
 - (void)mediaSystemController:(HMDHomeMediaSystemHandler *)arg1 removeAccessories:(NSArray *)arg2 fromAssistantAccessControl:(HMDUser *)arg3;
-- (HMDAppleMediaAccessory *)mediaSystemController:(HMDHomeMediaSystemHandler *)arg1 accessoryForUUID:(NSUUID *)arg2;
 @end
 

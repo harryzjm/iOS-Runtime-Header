@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     UIView *_currentBackgroundView;
 }
 
++ (_Bool)shouldDecodeSubviews;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
 @property(readonly, nonatomic) UIView *currentBackgroundView; // @synthesize currentBackgroundView=_currentBackgroundView;

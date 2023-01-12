@@ -13,7 +13,6 @@
 @property(readonly, nonatomic) _Bool shouldUseTranslatingAnimationBehavior;
 @property(readonly, nonatomic) SBHLibraryIconViewController *libraryIconViewController;
 @property(readonly, nonatomic) SBIconView *libraryPodIconView;
-@property(readonly, nonatomic) SBIconListView *sourceIconListView;
 @property(readonly, nonatomic) UIView *sourceContainerView;
 @property(readonly, nonatomic) MTMaterialView *backgroundView;
 @property(readonly, nonatomic) SBIconListView *iconListView;

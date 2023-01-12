@@ -6,12 +6,10 @@
 
 #import <System/OS_object.h>
 
-#import <ate/OS_at_encoder-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OS_at_encoder : OS_object <OS_at_encoder>
+@interface OS_at_encoder : OS_object
 {
 }
 

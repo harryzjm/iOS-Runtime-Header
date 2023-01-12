@@ -14,7 +14,6 @@
 @property(readonly, nonatomic) _Bool canProcessCurrentRequest;
 @property(nonatomic) __weak id <CSEndpointAnalyzerImplDelegate> implDelegate;
 @property(nonatomic) __weak id <CSEndpointAnalyzerDelegate> delegate;
-- (double)trailingSilenceDurationAtEndpoint;
 - (void)recordingStoppedForReason:(long long)arg1;
 - (void)stopEndpointer;
 - (void)processAudioSamplesAsynchronously:(CSAudioChunk *)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneComponentProviding-Protocol.h>
-
 @class CADisplayLink, NSMutableArray, NSString, UIScene;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneDisplayLink : NSObject <_UISceneComponentProviding>
+@interface _UISceneDisplayLink : NSObject
 {
     NSMutableArray *_targetsAndActions;
     CADisplayLink *_displayLink;

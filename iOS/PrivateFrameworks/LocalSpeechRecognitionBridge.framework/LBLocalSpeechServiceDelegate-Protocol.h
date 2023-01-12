@@ -6,9 +6,14 @@
 
 #import <LocalSpeechRecognitionBridge/NSObject-Protocol.h>
 
-@class AFSpeechPackage, NSArray, NSDictionary, NSError, NSString;
+@class AFSpeechInfoPackage, AFSpeechPackage, AFVoiceIdScoreCard, NSArray, NSDictionary, NSError, NSString;
 
 @protocol LBLocalSpeechServiceDelegate <NSObject>
+- (oneway void)localSpeechServiceDidReceivedFinalResultCandidateWithRequestId:(NSString *)arg1 speechPackage:(AFSpeechPackage *)arg2;
+- (oneway void)localSpeechServiceDidReceivedFinalResultWithRequestId:(NSString *)arg1 speechPackage:(AFSpeechPackage *)arg2 metadata:(AFSpeechInfoPackage *)arg3;
+- (oneway void)localSpeechServiceDidReceivedEagerRecognitionCandidateWithRequestId:(NSString *)arg1 rcId:(unsigned long long)arg2 speechPackage:(AFSpeechPackage *)arg3 duration:(double)arg4 metadata:(AFSpeechInfoPackage *)arg5;
+- (oneway void)localSpeechServiceDidReceivedPartialResultWithRequestId:(NSString *)arg1 language:(NSString *)arg2 tokens:(NSArray *)arg3 metadata:(AFSpeechInfoPackage *)arg4;
+- (oneway void)localSpeechServiceDidReceivedVoiceIdScoreCard:(AFVoiceIdScoreCard *)arg1;
 - (oneway void)localSpeechServiceDidCompletionRecognitionWithStatistics:(NSDictionary *)arg1 requestId:(NSString *)arg2 endpointMode:(long long)arg3 error:(NSError *)arg4;
 - (oneway void)localSpeechServiceDidReceivedEagerResultWithRequestId:(NSString *)arg1 rcId:(unsigned long long)arg2 shouldAccept:(_Bool)arg3 mitigationSignal:(_Bool)arg4 featuresToLog:(NSArray *)arg5;
 - (oneway void)localSpeechServiceDidReceivedEagerRecognitionCandidateWithRequestId:(NSString *)arg1 rcId:(unsigned long long)arg2 speechPackage:(AFSpeechPackage *)arg3 duration:(double)arg4;

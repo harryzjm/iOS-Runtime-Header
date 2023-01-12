@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <DrawingKit/DKInkRenderer-Protocol.h>
-
 @class NSMutableArray, NSString, UIColor;
 @protocol DKInkRendererDelegate;
 
 __attribute__((visibility("hidden")))
-@interface DKInkRendererCG : UIView <DKInkRenderer>
+@interface DKInkRendererCG : UIView
 {
     _Bool scaleDrawingToFitCanvas;
     _Bool drawingEnabled;

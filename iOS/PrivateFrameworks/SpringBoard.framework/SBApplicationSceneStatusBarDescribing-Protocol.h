@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) long long statusBarOrientation;
 @property(readonly, nonatomic) double statusBarAlpha;
 @property(readonly, nonatomic) _Bool statusBarHidden;
+@property(readonly, nonatomic) long long defaultStatusBarStyle;
 @property(readonly, nonatomic) long long statusBarStyle;
 - (long long)statusBarStyleForPartWithIdentifier:(NSString *)arg1;
 @end

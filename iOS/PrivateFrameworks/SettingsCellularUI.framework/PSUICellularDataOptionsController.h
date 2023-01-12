@@ -6,16 +6,24 @@
 
 #import <Preferences/PSListController.h>
 
-@class CTServiceDescriptor, PSSpecifier;
+@class CTServiceDescriptor, PSSimStatusCache, PSSpecifier, PSUICellularPlanManagerCache, PSUICoreTelephonyDataCache;
 
 __attribute__((visibility("hidden")))
 @interface PSUICellularDataOptionsController : PSListController
 {
+    struct __CTServerConnection *_serverConnection;
     PSSpecifier *_parentSpecifier;
     CTServiceDescriptor *_serviceDescriptor;
+    PSSimStatusCache *_simStatusCache;
+    PSUICellularPlanManagerCache *_planManagerCache;
+    PSUICoreTelephonyDataCache *_dataCache;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PSUICoreTelephonyDataCache *dataCache; // @synthesize dataCache=_dataCache;
+@property(retain, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
+@property(retain, nonatomic) PSSimStatusCache *simStatusCache; // @synthesize simStatusCache=_simStatusCache;
+- (id)getLogger;
 - (void)airplaneModeChanged;
 - (void)roamingOptionsDidChange;
 - (id)getCDMARoamingStatus:(id)arg1;
@@ -25,10 +33,10 @@ __attribute__((visibility("hidden")))
 - (id)getDataRoamingStatusForService:(id)arg1;
 - (id)getDataRoamingStatus:(id)arg1;
 - (id)roamingSettingsDescription:(id)arg1;
-- (id)roamingSpecifierforSubscription;
 - (id)roamingSpecifiers;
 - (id)specifiers;
 - (void)dealloc;
+- (id)initWithParentSpecifier:(id)arg1 simStatusCache:(id)arg2 planManagerCache:(id)arg3 dataCache:(id)arg4;
 - (id)initWithParentSpecifier:(id)arg1;
 - (id)init;
 

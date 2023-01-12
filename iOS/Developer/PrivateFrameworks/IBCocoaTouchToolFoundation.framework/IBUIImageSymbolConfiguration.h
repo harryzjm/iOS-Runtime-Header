@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCoding-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCopying-Protocol.h>
-
 @class IBUIFontDescription, NSString;
 
-@interface IBUIImageSymbolConfiguration : NSObject <NSCopying, NSCoding, IBBinaryArchiving>
+@interface IBUIImageSymbolConfiguration : NSObject
 {
     long long _configurationType;
     double _pointSize;

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *renameMapping;
     int faceIdCounter;
     NSMutableArray *faceInfoArray;
-    int numFramesSinceFullFaceCore;
     int numFramesNoFaces;
     FCRFaceDetector *faceDetector;
     NSMutableArray *faceTimestampArray;

@@ -9,14 +9,14 @@
 @class NSArray, NSDate, NSURL, NSUUID, SPAdvertisementCacheSearchCriteria, SPBeaconPayloadCacheSearchCriteria;
 
 @protocol SPAdvertisementCacheXPCProtocol <NSObject>
-- (oneway void)clearCacheWithCompletion:(void (^)(NSError *))arg1;
-- (oneway void)beaconAdvertisementAtFileURL:(NSURL *)arg1 beaconIdentifier:(NSUUID *)arg2 scanDate:(NSDate *)arg3 completion:(void (^)(SPBeaconAdvertisement *, NSError *))arg4;
-- (oneway void)beaconPayloadsForSearchCriteria:(SPBeaconPayloadCacheSearchCriteria *)arg1 completion:(void (^)(SPBeaconPayloadCacheSearchResult *))arg2;
-- (oneway void)markFilesProcessed:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)saveBeaconPayloads:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)advertisementCacheSimulation:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)advertisementsForSearchCriteria:(SPAdvertisementCacheSearchCriteria *)arg1 completion:(void (^)(SPAdvertisementCacheSearchResult *))arg2;
-- (oneway void)markAdvertisementsProcessed:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)saveAdvertisements:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)clearCacheWithCompletion:(void (^)(NSError *))arg1;
+- (void)beaconAdvertisementAtFileURL:(NSURL *)arg1 beaconIdentifier:(NSUUID *)arg2 scanDate:(NSDate *)arg3 completion:(void (^)(SPBeaconAdvertisement *, NSError *))arg4;
+- (void)beaconPayloadsForSearchCriteria:(SPBeaconPayloadCacheSearchCriteria *)arg1 completion:(void (^)(SPBeaconPayloadCacheSearchResult *))arg2;
+- (void)markFilesProcessed:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)saveBeaconPayloads:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)advertisementCacheSimulation:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)advertisementsForSearchCriteria:(SPAdvertisementCacheSearchCriteria *)arg1 completion:(void (^)(SPAdvertisementCacheSearchResult *))arg2;
+- (void)markAdvertisementsProcessed:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)saveAdvertisements:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

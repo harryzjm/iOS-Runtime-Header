@@ -6,18 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AESystemNotificationPrimitives-Protocol.h>
-
-@protocol OS_dispatch_queue;
-
 __attribute__((visibility("hidden")))
-@interface AEConcreteSystemNotificationPrimitives : NSObject <AESystemNotificationPrimitives>
+@interface AEConcreteSystemNotificationPrimitives : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
-- (void).cxx_destruct;
-- (id)observeAssessmentStateChangeWithHandler:(CDUnknownBlockType)arg1;
+- (id)observeAssessmentStateChangeOnQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 
 @end
 

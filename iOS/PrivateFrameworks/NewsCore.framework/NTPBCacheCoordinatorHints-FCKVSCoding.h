@@ -6,11 +6,9 @@
 
 #import <NewsTransport/NTPBCacheCoordinatorHints.h>
 
-#import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
-
 @class NSString;
 
-@interface NTPBCacheCoordinatorHints (FCKVSCoding) <FCKeyValueStoreCoding>
+@interface NTPBCacheCoordinatorHints (FCKVSCoding)
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 - (void)writeToKeyValuePair:(id)arg1;

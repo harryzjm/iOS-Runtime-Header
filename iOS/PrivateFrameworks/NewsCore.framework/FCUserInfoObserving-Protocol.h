@@ -21,7 +21,11 @@
 - (void)userInfoDidChangeDateLastViewedSaved:(FCUserInfo *)arg1 fromCloud:(_Bool)arg2;
 - (void)userInfoDidChangeAdsUserID:(FCUserInfo *)arg1 fromCloud:(_Bool)arg2;
 - (void)userInfoDidChangeNotificationsUserID:(FCUserInfo *)arg1;
+- (void)userInfoDidChangeSportsUserID:(FCUserInfo *)arg1;
+- (void)userInfoDidChangeSportsSyncState:(FCUserInfo *)arg1;
 - (void)userInfoDidChangeOnboardingStatus:(FCUserInfo *)arg1;
+- (void)userInfoDidChangeShortcutsOnboardingState:(FCUserInfo *)arg1;
+- (void)userInfoDidChangeSportsOnboardingState:(FCUserInfo *)arg1;
 - (void)userInfoDidChangeFeldsparID:(FCUserInfo *)arg1 fromCloud:(_Bool)arg2;
 @end
 

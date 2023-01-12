@@ -9,7 +9,8 @@
 @interface _TtC9WidgetKit24ResolvedWidgetBundleHost
 {
     MISSING_TYPE *host;
-    MISSING_TYPE *widgetDescriptors;
+    MISSING_TYPE *$__lazy_storage_$_widgetDescriptors;
+    MISSING_TYPE *$__lazy_storage_$_activityDescriptors;
 }
 
 @end

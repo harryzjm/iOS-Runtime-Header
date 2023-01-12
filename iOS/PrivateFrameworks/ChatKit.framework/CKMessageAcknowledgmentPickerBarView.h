@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <ChatKit/CKPickerBarView-Protocol.h>
-
 @class CALayer, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKMessageAcknowledgmentPickerBarView : UIView <CKPickerBarView>
+@interface CKMessageAcknowledgmentPickerBarView : UIView
 {
     CALayer *_anchorBubble;
     CALayer *_intermediateBubble;
@@ -38,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)_ackViewsBoundsWidth;
-- (id)initWithGroupCounts:(id)arg1 selectedType:(long long)arg2 orientation:(BOOL)arg3;
+- (id)initWithGroupCounts:(id)arg1 selectedType:(long long)arg2 orientation:(BOOL)arg3 serviceName:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

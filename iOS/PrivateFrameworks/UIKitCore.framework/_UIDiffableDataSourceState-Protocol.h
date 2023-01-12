@@ -11,11 +11,14 @@
 @protocol _UIDataSourceSnapshotTranslating;
 
 @protocol _UIDiffableDataSourceState <_UIDiffableDataSourceQuerying, NSObject>
+@property(readonly, nonatomic) NSOrderedSet *guaranteedPerformanceSections;
+@property(readonly, nonatomic) NSOrderedSet *guaranteedPerformanceIdentifiers;
 @property(readonly, nonatomic) id <_UIDataSourceSnapshotTranslating> dataSourceSnapshot;
 @property(readonly, nonatomic) NSOrderedSet *sections;
 @property(readonly, nonatomic) NSOrderedSet *identifiers;
 @property(readonly, nonatomic) NSUUID *generationID;
 - (void)validateIdentifiers;
+- (void)willBecomeWiredToDataSource;
 - (void)ensureOrderedSetsHaveGuaranteedPerformance;
 - (NSIndexSet *)sectionIndexesForItemIndexRange:(struct _NSRange)arg1;
 @end

@@ -7,11 +7,15 @@
 #import <HeartRhythmUI/NSObject-Protocol.h>
 #import <HeartRhythmUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, NSTextAttachment, NSURL, UITextView;
+@class NSArray, NSString, NSTextAttachment, NSURL, UIMenu, UITextView;
+@protocol UIEditMenuInteractionAnimating;
 
 @protocol UITextViewDelegate <NSObject, UIScrollViewDelegate>
 
 @optional
+- (void)textView:(UITextView *)arg1 willDismissEditMenuWithAnimator:(id <UIEditMenuInteractionAnimating>)arg2;
+- (void)textView:(UITextView *)arg1 willPresentEditMenuWithAnimator:(id <UIEditMenuInteractionAnimating>)arg2;
+- (UIMenu *)textView:(UITextView *)arg1 editMenuForTextInRange:(struct _NSRange)arg2 suggestedActions:(NSArray *)arg3;
 - (_Bool)textView:(UITextView *)arg1 shouldInteractWithTextAttachment:(NSTextAttachment *)arg2 inRange:(struct _NSRange)arg3;
 - (_Bool)textView:(UITextView *)arg1 shouldInteractWithURL:(NSURL *)arg2 inRange:(struct _NSRange)arg3;
 - (_Bool)textView:(UITextView *)arg1 shouldInteractWithTextAttachment:(NSTextAttachment *)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;

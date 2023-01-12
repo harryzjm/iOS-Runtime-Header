@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UITableViewDelegate-Protocol.h>
+#import "UITableView.h"
 
 @class NSMutableArray, NSMutableIndexSet, NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface UIPickerTableView <UITableViewDelegate>
+@interface UIPickerTableView : UITableView
 {
     struct CGRect _selectionBarRect;
     long long _selectionBarRow;

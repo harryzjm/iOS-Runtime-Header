@@ -14,7 +14,7 @@
 - (id)accessibilityCustomRotors;
 - (id)accessibilityElements;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2 targetWindow:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2 targetWindow:(id)arg3 rightClickDelegate:(id)arg4;
 - (void)_axAnnotateScrollView;
 
 @end

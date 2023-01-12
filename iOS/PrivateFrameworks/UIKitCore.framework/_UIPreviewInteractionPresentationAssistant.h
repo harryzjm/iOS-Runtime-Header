@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSString, UITargetedPreview, UIView, UIViewController, UIViewPropertyAnimator, _UIPortalView, _UIPreviewInteractionHighlighter, _UIPreviewInteractionViewControllerPresentation;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionPresentationAssistant : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface _UIPreviewInteractionPresentationAssistant : NSObject
 {
     id <UIViewControllerContextTransitioning> _currentContext;
     _Bool _isAppearing;

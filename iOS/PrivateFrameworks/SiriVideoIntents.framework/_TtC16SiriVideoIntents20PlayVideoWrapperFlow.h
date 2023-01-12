@@ -21,6 +21,7 @@
     MISSING_TYPE *deviceResolutionAnalytics;
     MISSING_TYPE *aceServiceInvoker;
     MISSING_TYPE *analyticsService;
+    MISSING_TYPE *contentResolver;
     MISSING_TYPE *state;
     MISSING_TYPE *input;
     MISSING_TYPE *executionDevice;

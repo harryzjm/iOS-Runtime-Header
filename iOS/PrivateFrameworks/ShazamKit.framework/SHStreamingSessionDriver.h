@@ -6,42 +6,36 @@
 
 #import <objc/NSObject.h>
 
-#import <ShazamKit/SHMatcherDelegate-Protocol.h>
-
-@class NSString, SHSignature, SHSignatureBuffer, SHSignatureMetrics;
+@class NSDate, NSString, NSUUID, SHSignatureBuffer, SHSignatureMetrics;
 @protocol SHSessionDriverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SHStreamingSessionDriver : NSObject <SHMatcherDelegate>
+@interface SHStreamingSessionDriver : NSObject
 {
-    _Bool _waiting;
+    struct os_unfair_lock_s _lock;
     id <SHSessionDriverDelegate> _sessionDelegate;
-    double _currentRequiredDuration;
-    double _maximumSignatureDuration;
-    double _minimumSignatureDuration;
-    SHSignatureBuffer *_signatureBuffer;
     SHSignatureMetrics *_metrics;
+    NSUUID *_matchingSignatureID;
+    NSDate *_intermissionDeadline;
+    double _currentRequiredDuration;
+    SHSignatureBuffer *_signatureBuffer;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) SHSignatureMetrics *metrics; // @synthesize metrics=_metrics;
+@property(nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
 @property(retain, nonatomic) SHSignatureBuffer *signatureBuffer; // @synthesize signatureBuffer=_signatureBuffer;
-@property(nonatomic) double minimumSignatureDuration; // @synthesize minimumSignatureDuration=_minimumSignatureDuration;
-@property(nonatomic) double maximumSignatureDuration; // @synthesize maximumSignatureDuration=_maximumSignatureDuration;
 @property(nonatomic) double currentRequiredDuration; // @synthesize currentRequiredDuration=_currentRequiredDuration;
-@property(nonatomic) _Bool waiting; // @synthesize waiting=_waiting;
+@property(retain, nonatomic) NSDate *intermissionDeadline; // @synthesize intermissionDeadline=_intermissionDeadline;
+@property(retain, nonatomic) NSUUID *matchingSignatureID; // @synthesize matchingSignatureID=_matchingSignatureID;
 @property(nonatomic) __weak id <SHSessionDriverDelegate> sessionDelegate; // @synthesize sessionDelegate=_sessionDelegate;
-@property(readonly, nonatomic) SHSignature *matchingSignature;
-- (double)clampTimeInterval:(double)arg1;
-- (void)matcher:(id)arg1 didFinishWithOutcome:(long long)arg2;
-- (void)matcher:(id)arg1 didNotFindMatch:(id)arg2;
-- (void)matcher:(id)arg1 didFindMatch:(id)arg2;
-- (void)matcher:(id)arg1 didFail:(id)arg2;
-- (_Bool)isCurrentSignature:(id)arg1;
-- (void)startResetTimerForIntermission:(double)arg1 requiredSignatureDuration:(double)arg2;
-- (void)match;
+@property(readonly, nonatomic) SHSignatureMetrics *metrics; // @synthesize metrics=_metrics;
+- (id)signatureForMatching;
+- (void)matcher:(id)arg1 didProduceResponse:(id)arg2;
+- (_Bool)canPerformMatch;
+- (void)receivedSignature:(id)arg1 retry:(double)arg2 intermission:(double)arg3 dropCurrentSignature:(_Bool)arg4;
 - (void)flow:(id)arg1 time:(id)arg2;
-- (id)initWithMinimumSignatureDuration:(double)arg1 maximumSignatureDuration:(double)arg2;
+- (id)initWithSignatureBuffer:(id)arg1;
+- (id)initWithMinimumSignatureDuration:(double)arg1 maximumSignatureDuration:(double)arg2 bufferDuration:(double)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

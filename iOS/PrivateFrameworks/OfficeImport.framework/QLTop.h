@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OCDReaderDelegate-Protocol.h>
-
 @class CMArchiveManager, CMMapper, CMState, NSString, OCDDocument;
 
 __attribute__((visibility("hidden")))
-@interface QLTop : NSObject <OCDReaderDelegate>
+@interface QLTop : NSObject
 {
     CMMapper *_mapper;
     CMState *_state;

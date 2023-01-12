@@ -6,44 +6,51 @@
 
 #import <Foundation/NSOperation.h>
 
-@class DVTDispatchLock, DVTObservingToken, DVTStackBacktrace, NSArray, NSError, NSMutableArray;
+@class DVTStackBacktrace, NSArray, NSError, NSMutableArray;
 
 @interface DVTOperation : NSOperation
 {
+    struct DVTUnfairLock _lock;
     CDUnknownBlockType _block;
-    NSError *_error;
-    DVTDispatchLock *_cancellationRegistrationLock;
-    DVTDispatchLock *_cancellationBlockLock;
     NSMutableArray *_cancellationBlockTokens;
-    DVTDispatchLock *_finishingLock;
     NSMutableArray *_finishingTokens;
-    _Bool _preventFinish;
-    DVTObservingToken *_isFinishedObserverToken;
-    DVTObservingToken *_isExecutingObserverToken;
+    unsigned int _state:2;
+    unsigned int _isFinishingAllowed:1;
+    unsigned int _isCancelled:1;
+    NSError *_error;
     NSArray *_warnings;
     DVTStackBacktrace *_creationBacktrace;
 }
 
-+ (void)_trackStateChange:(id)arg1 ofOperation:(id)arg2 forKeyPath:(id)arg3;
 + (id)unfinishedOperations;
++ (_Bool)callsMainIfCancelled;
++ (_Bool)removesDependenciesWhenFinished;
++ (_Bool)_removesDependenciesAfterFinish;
++ (id)operationWithAsynchronousBlock:(CDUnknownBlockType)arg1;
++ (id)operationWithSynchronousBlock:(CDUnknownBlockType)arg1;
 + (id)operationWithBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-@property _Bool preventFinish; // @synthesize preventFinish=_preventFinish;
-@property(retain) DVTStackBacktrace *creationBacktrace; // @synthesize creationBacktrace=_creationBacktrace;
+@property(readonly) DVTStackBacktrace *creationBacktrace; // @synthesize creationBacktrace=_creationBacktrace;
 @property(copy) NSArray *warnings; // @synthesize warnings=_warnings;
 @property(copy) NSError *error; // @synthesize error=_error;
-@property(copy) CDUnknownBlockType block; // @synthesize block=_block;
 - (id)notFinishedReasonWithDepth:(unsigned long long)arg1;
 - (id)stateString;
 - (void)enumerateUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateWithStop:(_Bool *)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)allowFinishForToken:(id)arg1;
 - (id)disallowFinishWithReason:(id)arg1;
+- (void)start;
+- (void)_postflightMain;
+- (void)main;
+- (_Bool)_preflightMain;
 - (_Bool)isFinished;
+- (_Bool)isExecuting;
+- (_Bool)isReady;
 - (void)cancel;
+- (_Bool)isCancelled;
 - (_Bool)unregisterCancellationBlockForToken:(id)arg1;
 - (id)registerCancellationBlock:(CDUnknownBlockType)arg1;
-- (void)main;
+- (id)debugDescription;
 - (id)description;
 - (void)dealloc;
 - (id)init;

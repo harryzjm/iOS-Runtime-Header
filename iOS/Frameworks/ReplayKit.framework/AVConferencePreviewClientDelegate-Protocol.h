@@ -19,6 +19,7 @@
 - (void)didReceiveErrorFromCameraUniqueID:(NSString *)arg1 error:(NSError *)arg2;
 - (void)didChangeLocalScreenAttributes:(VideoAttributes *)arg1;
 - (void)didChangeLocalVideoAttributes:(VideoAttributes *)arg1;
+- (void)didChangeLocalCameraUID:(NSString *)arg1;
 - (void)didReceiveFirstPreviewFrameFromCameraUniqueID:(NSString *)arg1;
 - (void)didReceiveFirstPreviewFrameFromCamera:(unsigned int)arg1;
 - (void)didStopPreview;

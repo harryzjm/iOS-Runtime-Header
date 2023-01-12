@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WDFont : NSObject <NSCopying>
+@interface WDFont : NSObject
 {
     NSString *mName;
     NSMutableArray *mAlternateNames;

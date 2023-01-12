@@ -6,12 +6,10 @@
 
 #import <Preferences/PSSpecifier.h>
 
-#import <SettingsCellularUI/CXCallObserverDelegate-Protocol.h>
-
 @class CTCellularPlanManager, CXCallObserver, NSString, PSListController, PSUICellularPlanManagerCache, PSUICellularPlanUniversalReference, PSUICoreTelephonyCallCache;
 
 __attribute__((visibility("hidden")))
-@interface PSUITurnOnThisLineSpecifier : PSSpecifier <CXCallObserverDelegate>
+@interface PSUITurnOnThisLineSpecifier : PSSpecifier
 {
     PSUICellularPlanUniversalReference *_planReference;
     CTCellularPlanManager *_cellularPlanManager;
@@ -28,11 +26,17 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
 @property(retain, nonatomic) CTCellularPlanManager *cellularPlanManager; // @synthesize cellularPlanManager=_cellularPlanManager;
 @property(retain, nonatomic) PSUICellularPlanUniversalReference *planReference; // @synthesize planReference=_planReference;
+- (id)getLogger;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
+- (void)_useLine:(_Bool)arg1 forPlan:(id)arg2;
+- (void)turnItOff;
+- (void)_showPromptFor:(id)arg1;
+- (id)getAlertMessage:(id)arg1 onPad:(_Bool)arg2;
 - (void)setPlanEnabled:(id)arg1 specifier:(id)arg2;
+- (_Bool)isTransferredPlan:(id)arg1;
 - (id)isPlanEnabled:(id)arg1;
 - (void)setSwitchEnabled;
-- (id)initWithPlanUniversalReference:(id)arg1 cellularPlanManager:(id)arg2 planManagerCache:(id)arg3 callCache:(id)arg4 hostController:(id)arg5;
+- (id)initWithPlanUniversalReference:(id)arg1 cellularPlanManager:(id)arg2 planManagerCache:(id)arg3 callCache:(id)arg4 hostController:(id)arg5 isActivating:(_Bool)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

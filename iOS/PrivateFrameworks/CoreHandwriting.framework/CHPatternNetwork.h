@@ -23,6 +23,7 @@
 + (id)rootCursorForContentType:(int)arg1 inNetwork:(id)arg2 forFirstSegmentGroup:(_Bool)arg3;
 + (id)patternToSymbolMap;
 + (id)contentTypesToPatternsMapping;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithFile:(id)arg1;
 - (id)newCursorByAdvancingCursor:(id)arg1 withSymbol:(unsigned long long)arg2;

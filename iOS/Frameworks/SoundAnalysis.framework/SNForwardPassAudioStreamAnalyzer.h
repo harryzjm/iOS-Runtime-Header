@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNTimeConverting-Protocol.h>
-
-@class AVAudioFormat, NSArray, NSMutableArray, NSString, SNAudioProcessorCache, SNUltronResultsLogger;
+@class AVAudioFormat, NSArray, NSMutableArray, NSString, SNAudioProcessorCache;
 
 __attribute__((visibility("hidden")))
-@interface SNForwardPassAudioStreamAnalyzer : NSObject <SNTimeConverting>
+@interface SNForwardPassAudioStreamAnalyzer : NSObject
 {
     SNAudioProcessorCache *_processorCache;
     struct list<SoundAnalysis::ProcessingContext, std::allocator<SoundAnalysis::ProcessingContext>> _processingContexts;
@@ -19,39 +17,14 @@ __attribute__((visibility("hidden")))
     AVAudioFormat *_currentFormat;
     NSArray *_requests;
     NSMutableArray *_analyzerInfos;
-    SNUltronResultsLogger *_resultsLogger;
     _Bool _shouldRebuildProcessingTree;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)stopRecording;
-- (_Bool)startRecordingToDirectory:(id)arg1 requestDescription:(id)arg2 error:(id *)arg3;
-- (id)detailedDescription;
-- (void)writeDSPGraphDotFilesToDirectory:(id)arg1;
 @property(readonly, nonatomic) double clientSampleRate;
 - (long long)clientSampleTimeFromSampleTime:(long long)arg1 fromBox:(void *)arg2;
-- (void)handleAnalysisPrimingError;
-- (void)handleAnalyzeAudioBufferError;
-- (void)sendErrorToAllRequests:(id)arg1;
-- (void)analyzeAudioBuffer:(id)arg1 atAudioFramePosition:(long long)arg2;
-- (void)completeAnalysis;
-- (void)analyzeAudioBufferList:(struct AudioBufferList *)arg1 withAudioFrameCount:(unsigned int)arg2 atAudioFramePosition:(long long)arg3;
-- (_Bool)configureAnalysisTreeWithFormat:(id)arg1;
-- (void)updateProcessingTreeFormat:(id)arg1;
-- (_Bool)updateTreeProcessingContexts;
-- (_Bool)configureAnalyzer:(id)arg1 withFormat:(id)arg2;
-- (void)removeAllRequests;
-- (void)removeRequest:(id)arg1;
-- (_Bool)addRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 resultsHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
-- (CDUnknownBlockType)completionHandlerWithClientCompletionHandler:(CDUnknownBlockType)arg1 forRequest:(id)arg2;
-- (CDUnknownBlockType)resultsHandlerWithClientResultsHandler:(CDUnknownBlockType)arg1 forRequest:(id)arg2;
-- (_Bool)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
-- (void)removeAnalyzerInfoForRequest:(id)arg1;
-- (id)createAnalyzerInfoForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 resultsHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
-- (id)analyzerInfoForRequest:(id)arg1;
 - (void)dealloc;
-- (id)initWithFormat:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

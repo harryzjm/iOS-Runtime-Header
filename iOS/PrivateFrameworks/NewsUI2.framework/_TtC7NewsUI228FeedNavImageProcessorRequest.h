@@ -4,25 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsUI2/TSProcessedImageRequestType-Protocol.h>
+@class MISSING_TYPE;
 
-@class MISSING_TYPE, NSDictionary, NSString;
-
-@interface _TtC7NewsUI228FeedNavImageProcessorRequest : NSObject <TSProcessedImageRequestType>
+@interface _TtC7NewsUI228FeedNavImageProcessorRequest : _TtCs12_SwiftObject
 {
     MISSING_TYPE *assetHandles;
+    MISSING_TYPE *assetHandle;
     MISSING_TYPE *feedNavImageSize;
     MISSING_TYPE *scale;
     MISSING_TYPE *cornerRadius;
+    MISSING_TYPE *continuousCurve;
     MISSING_TYPE *userInterfaceStyle;
+    MISSING_TYPE *fillColor;
+    MISSING_TYPE *cacheIdentifier;
+    MISSING_TYPE *uniqueIdentifier;
 }
-
-- (void).cxx_destruct;
-- (id)init;
-@property(nonatomic, readonly) NSString *cacheIdentifier;
-@property(nonatomic, copy) NSDictionary *assetHandles;
 
 @end
 

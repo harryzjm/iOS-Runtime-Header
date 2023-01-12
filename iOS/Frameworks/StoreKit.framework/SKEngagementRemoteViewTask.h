@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKit/SKEngagementPresenterProtocol-Protocol.h>
-
 @class NSData, NSDictionary, NSError, NSString, SKRemoteEngagementPresenterViewController, UIViewController, UIWindowScene;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SKEngagementRemoteViewTask : NSObject <SKEngagementPresenterProtocol>
+@interface SKEngagementRemoteViewTask : NSObject
 {
     NSString *_clientBundleID;
     CDUnknownBlockType _completion;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSError *_error;
     SKRemoteEngagementPresenterViewController *_remoteViewController;
     NSData *_requestData;
+    NSData *_resultData;
     NSDictionary *_result;
     UIViewController *_viewController;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -31,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(retain, nonatomic) NSDictionary *result; // @synthesize result=_result;
+@property(retain, nonatomic) NSData *resultData; // @synthesize resultData=_resultData;
 @property(retain, nonatomic) NSData *requestData; // @synthesize requestData=_requestData;
 @property(retain, nonatomic) SKRemoteEngagementPresenterViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)_presentViewController:(id)arg1;
 - (void)_unblock;
 - (void)preferredContentSizeDidChange:(struct CGSize)arg1;
-- (void)engagementTaskDidFinishWithResult:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)engagementTaskDidFinishWithResult:(id)arg1 resultData:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentEngagement;
 - (id)initWithRequestData:(id)arg1 presentingViewController:(id)arg2 windowScene:(id)arg3;
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class CIImage, NSDictionary, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CIPortraitBlurV2
+@interface CIPortraitBlurV2 : CIFilter
 {
     CIImage *inputImage;
     CIImage *inputBlurmapImage;

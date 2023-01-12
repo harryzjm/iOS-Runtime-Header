@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputSettingsValidation-Protocol.h>
-
 @class AVMediaFileType;
 
 __attribute__((visibility("hidden")))
-@interface AVMediaFileOutputSettingsValidator : NSObject <AVOutputSettingsValidation>
+@interface AVMediaFileOutputSettingsValidator : NSObject
 {
     AVMediaFileType *_fileType;
 }

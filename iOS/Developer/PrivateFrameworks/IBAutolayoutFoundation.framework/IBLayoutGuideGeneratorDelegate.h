@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBLayoutGuideGeneratorDelegate-Protocol.h>
-
 @class NSArray, NSString;
 @protocol IBAutolayoutInfoProvider;
 
-@interface IBLayoutGuideGeneratorDelegate : NSObject <IBLayoutGuideGeneratorDelegate>
+@interface IBLayoutGuideGeneratorDelegate : NSObject
 {
     long long _disabledContainmentGuidesCount;
     long long _disabledSiblingGuidesCount;

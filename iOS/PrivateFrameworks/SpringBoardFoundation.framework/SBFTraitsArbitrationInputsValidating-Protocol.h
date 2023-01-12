@@ -9,7 +9,7 @@
 @class NSNumber, SBFTraitsArbitrationInputs;
 
 @protocol SBFTraitsArbitrationInputsValidating <NSObject>
-@property(nonatomic) NSNumber *validatorOrder;
+@property(readonly, nonatomic) NSNumber *validatorOrder;
 - (SBFTraitsArbitrationInputs *)validateInputs:(SBFTraitsArbitrationInputs *)arg1;
 @end
 

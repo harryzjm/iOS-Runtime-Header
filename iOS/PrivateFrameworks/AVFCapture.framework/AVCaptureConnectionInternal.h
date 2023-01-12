@@ -52,6 +52,12 @@ __attribute__((visibility("hidden")))
     _Bool debugMetadataSidecarFileEnabled;
     NSArray *supportedVideoMirroringMethodsForMovieRecording;
     long long videoMirroringMethodForMovieRecording;
+    _Bool videoZoomSmoothingSupported;
+    _Bool videoZoomSmoothingEnabled;
+    _Bool videoGreenGhostMitigationSupported;
+    _Bool videoGreenGhostMitigationEnabled;
+    _Bool videoDeviceOrientationCorrectionSupported;
+    _Bool videoDeviceOrientationCorrectionEnabled;
 }
 
 @end

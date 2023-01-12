@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UISliderVisualElement-Protocol.h>
+#import "UIView.h"
 
-@class NSArray, NSString, UIImageView, UISlider, UISliderDataModel, UIView;
+@class NSArray, NSString, UIImageView, UISlider, UISliderDataModel;
 
 __attribute__((visibility("hidden")))
-@interface _UISlideriOSVisualElement <UIPointerInteractionDelegate, _UISliderVisualElement>
+@interface _UISlideriOSVisualElement : UIView
 {
     UIImageView *_innerThumbView;
     UIImageView *_minValueImageView;
@@ -92,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)maximumValueImageRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)minimumValueImageRectForBounds:(struct CGRect)arg1;
+- (void)didUpdateTraitCollection;
 - (unsigned long long)state;
 - (id)currentMaximumTrackImage;
 - (id)currentMinimumTrackImage;

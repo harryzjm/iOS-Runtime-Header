@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTRecognitionResult, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTKeywordFinderRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTKeywordFinderRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -24,6 +21,9 @@ __attribute__((visibility("hidden")))
 - (Offset_002dc819)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) _Bool enable_sanitization;
 @property(readonly, nonatomic) FTRecognitionResult *recognition_result;
+- (void)keywords_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)keywords_count;
+- (id)keywords_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *keywords;
 @property(readonly, nonatomic) NSString *language;
 @property(readonly, nonatomic) NSString *session_id;

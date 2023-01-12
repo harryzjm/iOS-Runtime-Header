@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class CIColor, CIVector;
 
 __attribute__((visibility("hidden")))
-@interface CISmoothLinearGradient
+@interface CISmoothLinearGradient : CIFilter
 {
     CIVector *inputPoint0;
     CIVector *inputPoint1;

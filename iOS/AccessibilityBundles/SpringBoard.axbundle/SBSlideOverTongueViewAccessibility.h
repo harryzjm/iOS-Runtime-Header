@@ -17,8 +17,10 @@
 - (id)_accessibilitySlideOverApplication;
 - (id)accessibilityCustomActions;
 - (_Bool)accessibilityScroll:(long long)arg1;
+- (struct CGRect)accessibilityFrame;
 - (id)accessibilityIdentification;
 - (id)accessibilityHint;
+- (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 

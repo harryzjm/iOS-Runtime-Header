@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTTableHiddenRowColumnProviding-Protocol.h>
-
 @class NSIndexSet, NSMutableIndexSet, NSString, TSTHiddenStateIndexSet;
 
-@interface TSTHiddenRowsColumnsCache : NSObject <TSTTableHiddenRowColumnProviding>
+@interface TSTHiddenRowsColumnsCache : NSObject
 {
     TSTHiddenStateIndexSet *_rowsVisible;
     TSTHiddenStateIndexSet *_rowsUserVisible;
@@ -29,6 +27,7 @@
 @property(retain, nonatomic) TSTHiddenStateIndexSet *rowsVisible; // @synthesize rowsVisible=_rowsVisible;
 - (void)validateChangeDescriptors:(id)arg1;
 - (void)validate:(id)arg1;
+- (void)enumerateVisibleColumnIndexesInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (unsigned int)numberOfVisibleRowsFromStartRowIndex:(unsigned long long)arg1 toEndRowIndex:(unsigned int)arg2;
 - (unsigned int)numberOfVisibleRowsFromHeader:(unsigned int)arg1;
 @property(readonly, nonatomic) NSIndexSet *visibleColumnIndices;

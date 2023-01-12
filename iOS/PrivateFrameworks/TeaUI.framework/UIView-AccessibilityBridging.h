@@ -6,8 +6,6 @@
 
 #import <UIKit/UIView.h>
 
-@class _TtC5TeaUI10GutterView;
-
 @interface UIView (AccessibilityBridging)
 + (void)ts_executeWithAnimated:(_Bool)arg1 duration:(double)arg2 setupBlock:(CDUnknownBlockType)arg3 animationBlock:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)_accessibilityIsSpeakThisElement;
@@ -17,8 +15,5 @@
 - (_Bool)ts_safeAreaWidthExceedsReadableWidth;
 - (void)ts_setFrameUsingCenterAndBounds:(struct CGRect)arg1;
 @property(nonatomic, readonly) struct CGRect ts_frameUsingCenterAndBounds;
-- (void)expandWidthToGutterViewBounds;
-- (void)unclipUpToGutterView;
-@property(nonatomic, readonly) _TtC5TeaUI10GutterView *gutterView;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <AWDSupportFramework/AWDCoreRoutineLMPAutofillSelectedInstance.h>
 
-#import <coreroutine/RTMetricManagerMetricIdProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AWDCoreRoutineLMPAutofillSelectedInstance (MetricManager) <RTMetricManagerMetricIdProtocol>
+@interface AWDCoreRoutineLMPAutofillSelectedInstance (MetricManager)
 @property(readonly, copy) NSString *description;
 - (_Bool)valid:(id *)arg1;
 - (id)_init;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSLayoutRule-Protocol.h>
-
 @class NSDictionary, NSLayoutRect, NSString;
 
-@interface NSVisualFormatLayoutRule : NSObject <NSLayoutRule>
+@interface NSVisualFormatLayoutRule : NSObject
 {
     NSString *_visualFormatString;
     unsigned long long _formatOptions;

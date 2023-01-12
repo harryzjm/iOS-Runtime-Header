@@ -18,7 +18,6 @@
 - (id)_lp_faceTimeInviteLink;
 - (id)_lp_formattedTelephoneNumber;
 - (_Bool)_lp_isTelephoneURL;
-- (_Bool)_lp_isHTTPFamilyOrLinkPresentationTestingURL;
 - (_Bool)_lp_hasAllowedNonHTTPScheme;
 @end
 

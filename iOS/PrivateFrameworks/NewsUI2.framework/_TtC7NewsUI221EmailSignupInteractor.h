@@ -11,9 +11,10 @@
 @interface _TtC7NewsUI221EmailSignupInteractor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *onComplete;
     MISSING_TYPE *model;
     MISSING_TYPE *newsletterManager;
-    MISSING_TYPE *signupDetectionManager;
+    MISSING_TYPE *signupAutomaticPresentor;
     MISSING_TYPE *tracker;
     MISSING_TYPE *interacted;
 }

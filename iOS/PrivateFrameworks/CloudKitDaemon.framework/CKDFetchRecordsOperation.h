@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKDDecryptRecordsOperation, CKDRecordCache, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSSet;
+@class CKDDecryptRecordsOperation, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSSet;
 @protocol CKFetchRecordsOperationCallbacks, OS_dispatch_group;
 
 @interface CKDFetchRecordsOperation
 {
     CKDDecryptRecordsOperation *_decryptOperation;
-    CKDRecordCache *_cache;
     _Bool _useCachedEtags;
     _Bool _useRecordCache;
     _Bool _forcePCSDecrypt;
     _Bool _skipDecryption;
+    _Bool _shouldUpdateTimestampsForFetchedMergeableValues;
     _Bool _shouldFetchAssetContent;
     _Bool _shouldFetchAssetContentInMemory;
+    _Bool _shouldFetchMergeableValues;
     _Bool _shouldRollSharePCSOnFetch;
     NSArray *_fullRecordsToFetch;
     CDUnknownBlockType _recordFetchProgressBlock;
@@ -38,18 +39,21 @@
     NSMutableArray *_recordIDsToRefetch;
     NSMutableDictionary *_keyOrErrorForHostname;
     NSMutableDictionary *_shareRecordsToUpdateByRecordID;
+    NSMutableDictionary *_mergeableValueDownloadTasks;
     NSDictionary *_webSharingIdentityDataByRecordID;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldRollSharePCSOnFetch; // @synthesize shouldRollSharePCSOnFetch=_shouldRollSharePCSOnFetch;
 @property(retain, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
+@property(retain, nonatomic) NSMutableDictionary *mergeableValueDownloadTasks; // @synthesize mergeableValueDownloadTasks=_mergeableValueDownloadTasks;
 @property(retain, nonatomic) NSMutableDictionary *shareRecordsToUpdateByRecordID; // @synthesize shareRecordsToUpdateByRecordID=_shareRecordsToUpdateByRecordID;
 @property(retain, nonatomic) NSMutableDictionary *keyOrErrorForHostname; // @synthesize keyOrErrorForHostname=_keyOrErrorForHostname;
 @property(retain, nonatomic) NSMutableArray *recordIDsToRefetch; // @synthesize recordIDsToRefetch=_recordIDsToRefetch;
 @property(nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property(nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
 @property(retain, nonatomic) NSSet *assetFieldNamesToPublishURLs; // @synthesize assetFieldNamesToPublishURLs=_assetFieldNamesToPublishURLs;
+@property(nonatomic) _Bool shouldFetchMergeableValues; // @synthesize shouldFetchMergeableValues=_shouldFetchMergeableValues;
 @property(nonatomic) _Bool shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 @property(nonatomic) _Bool shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
@@ -65,6 +69,7 @@
 @property(copy, nonatomic) CDUnknownBlockType recordFetchCompletionBlock; // @synthesize recordFetchCompletionBlock=_recordFetchCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordFetchCommandBlock; // @synthesize recordFetchCommandBlock=_recordFetchCommandBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordFetchProgressBlock; // @synthesize recordFetchProgressBlock=_recordFetchProgressBlock;
+@property(nonatomic) _Bool shouldUpdateTimestampsForFetchedMergeableValues; // @synthesize shouldUpdateTimestampsForFetchedMergeableValues=_shouldUpdateTimestampsForFetchedMergeableValues;
 @property(retain, nonatomic) NSArray *fullRecordsToFetch; // @synthesize fullRecordsToFetch=_fullRecordsToFetch;
 @property(nonatomic) _Bool skipDecryption; // @synthesize skipDecryption=_skipDecryption;
 @property(nonatomic) _Bool forcePCSDecrypt; // @synthesize forcePCSDecrypt=_forcePCSDecrypt;
@@ -75,15 +80,20 @@
 - (void)main;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)finishWithError:(id)arg1;
+- (void)_downloadMergeableValues;
 - (void)_downloadAssets;
 - (void)_fetchCloudCerts;
 - (void)_didDownloadAssetsWithError:(id)arg1;
 - (void)_finishAllDownloadTasksWithError:(id)arg1;
-- (void)_addDownloadTaskForRecord:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)_addMergeableValueDownloadTasksForRecord:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)_addAssetDownloadTaskForRecord:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)_addDownloadTasksForRecord:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (int)_prepareAsset:(id)arg1 record:(id)arg2 recordKey:(id)arg3 assetTransferOptions:(id)arg4;
 - (void)_decryptPropertiesIfNeededForRecord:(id)arg1 record:(id)arg2;
 - (void)_handleSharePCSPrepForShare:(id)arg1 recordID:(id)arg2;
 - (void)_handleRecordFetch:(id)arg1 recordID:(id)arg2 etagMatched:(_Bool)arg3 responseCode:(id)arg4;
+- (void)_fetchPCSForMergeableValueDeltaRecord:(id)arg1 recordID:(id)arg2;
+- (void)_reallyDecryptPropertiesOnRecord:(id)arg1 recordID:(id)arg2;
 - (void)_decryptPropertiesOnRecord:(id)arg1 recordID:(id)arg2;
 @property(readonly, nonatomic) _Bool hasRecordDecryptOperation;
 @property(readonly, nonatomic) CKDDecryptRecordsOperation *recordDecryptOperation;
@@ -98,7 +108,6 @@
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
-- (id)cache:(id *)arg1;
 - (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties

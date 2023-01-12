@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, UIImageView, UILabel, UIStackView;
+@class NSArray, NSLayoutConstraint, OBBulletedListItemLinkButton, UIImageView, UILabel, UIStackView;
 
 __attribute__((visibility("hidden")))
 @interface OBBulletedListItem : UIView
@@ -18,9 +18,21 @@ __attribute__((visibility("hidden")))
     UILabel *_descriptionLabel;
     NSLayoutConstraint *_stackViewLeadingConstraintVertical;
     NSLayoutConstraint *_stackViewLeadingConstraintHorizontal;
+    OBBulletedListItemLinkButton *_linkButton;
+    NSArray *_imageContainerSizeConstraints;
+    NSLayoutConstraint *_topConstraintToStackView;
+    NSLayoutConstraint *_bottomConstraintToStackView;
+    NSLayoutConstraint *_topConstraintToImageContainer;
+    NSLayoutConstraint *_bottomConstraintToImageContainer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSLayoutConstraint *bottomConstraintToImageContainer; // @synthesize bottomConstraintToImageContainer=_bottomConstraintToImageContainer;
+@property(retain, nonatomic) NSLayoutConstraint *topConstraintToImageContainer; // @synthesize topConstraintToImageContainer=_topConstraintToImageContainer;
+@property(retain, nonatomic) NSLayoutConstraint *bottomConstraintToStackView; // @synthesize bottomConstraintToStackView=_bottomConstraintToStackView;
+@property(retain, nonatomic) NSLayoutConstraint *topConstraintToStackView; // @synthesize topConstraintToStackView=_topConstraintToStackView;
+@property(retain, nonatomic) NSArray *imageContainerSizeConstraints; // @synthesize imageContainerSizeConstraints=_imageContainerSizeConstraints;
+@property(retain, nonatomic) OBBulletedListItemLinkButton *linkButton; // @synthesize linkButton=_linkButton;
 @property(retain, nonatomic) NSLayoutConstraint *stackViewLeadingConstraintHorizontal; // @synthesize stackViewLeadingConstraintHorizontal=_stackViewLeadingConstraintHorizontal;
 @property(retain, nonatomic) NSLayoutConstraint *stackViewLeadingConstraintVertical; // @synthesize stackViewLeadingConstraintVertical=_stackViewLeadingConstraintVertical;
 @property(retain, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
@@ -28,6 +40,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIView *imageContainer; // @synthesize imageContainer=_imageContainer;
+- (double)_combinedLabelHeight;
+- (void)updateConstraints;
 - (id)_titleFont;
 - (id)_descriptionFont;
 - (double)_horizontalMargins;
@@ -37,8 +51,10 @@ __attribute__((visibility("hidden")))
 - (double)leadingMargins;
 - (_Bool)shouldLayoutVertically;
 - (double)imageSizeForImage:(id)arg1;
+- (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithTitle:(id)arg1 description:(id)arg2 image:(id)arg3 tintColor:(id)arg4;
+- (id)initWithTitle:(id)arg1 description:(id)arg2 image:(id)arg3 tintColor:(id)arg4 linkButton:(id)arg5;
 
 @end
 

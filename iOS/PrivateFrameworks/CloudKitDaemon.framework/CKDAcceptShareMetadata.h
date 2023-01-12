@@ -18,7 +18,7 @@
     NSString *_publicPCSEtag;
     NSData *_publicKey;
     unsigned long long _publicKeyVersion;
-    NSString *_oonParticipantID;
+    NSString *_participantID;
     NSData *_pppcsProtectionInfo;
     NSString *_anonymousCKUserID;
     struct _PCSIdentityData *_signingPCSIdentity;
@@ -29,7 +29,7 @@
 @property(nonatomic) struct _PCSIdentityData *signingPCSIdentity; // @synthesize signingPCSIdentity=_signingPCSIdentity;
 @property(retain, nonatomic) NSString *anonymousCKUserID; // @synthesize anonymousCKUserID=_anonymousCKUserID;
 @property(retain, nonatomic) NSData *pppcsProtectionInfo; // @synthesize pppcsProtectionInfo=_pppcsProtectionInfo;
-@property(retain, nonatomic) NSString *oonParticipantID; // @synthesize oonParticipantID=_oonParticipantID;
+@property(retain, nonatomic) NSString *participantID; // @synthesize participantID=_participantID;
 @property(nonatomic) unsigned long long publicKeyVersion; // @synthesize publicKeyVersion=_publicKeyVersion;
 @property(retain, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
 @property(retain, nonatomic) NSString *publicPCSEtag; // @synthesize publicPCSEtag=_publicPCSEtag;

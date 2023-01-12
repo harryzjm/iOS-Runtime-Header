@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "WFContentItemChangeTransaction.h"
+
 @class CNMutableContact, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface WFContactContentItemChangeTransaction
+@interface WFContactContentItemChangeTransaction : WFContentItemChangeTransaction
 {
     CNMutableContact *_mutableContact;
     NSArray *_groupChangeRequest;
@@ -16,6 +18,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *groupChangeRequest; // @synthesize groupChangeRequest=_groupChangeRequest;
 @property(readonly, nonatomic) CNMutableContact *mutableContact; // @synthesize mutableContact=_mutableContact;
+- (void)updateURLs:(id)arg1;
+- (void)updateStreetAddresses:(id)arg1;
+- (void)updateEmailAddresses:(id)arg1;
+- (void)updatePhoneNumbers:(id)arg1;
 - (void)saveWithCompletionHandler:(CDUnknownBlockType)arg1 isNew:(_Bool)arg2;
 - (id)initWithContentItem:(id)arg1;
 

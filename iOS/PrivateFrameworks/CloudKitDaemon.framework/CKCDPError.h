@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
-@interface CKCDPError : PBCodable <NSCopying>
+@interface CKCDPError : PBCodable
 {
     int _auxiliaryCode;
     NSString *_auxiliaryDomain;

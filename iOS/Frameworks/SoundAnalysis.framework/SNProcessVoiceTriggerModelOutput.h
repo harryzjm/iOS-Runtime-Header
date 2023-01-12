@@ -15,9 +15,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *commandFilters; // @synthesize commandFilters=_commandFilters;
-- (id)processNewResults:(id)arg1 timeRange:(CDStruct_e83c9415)arg2;
-- (id)initWithCommands:(id)arg1;
 
 @end
 

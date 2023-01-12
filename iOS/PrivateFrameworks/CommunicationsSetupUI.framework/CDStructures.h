@@ -37,7 +37,3 @@ typedef struct {
     unsigned long long _field2;
 } CDStruct_856ef1b3;
 
-typedef struct {
-    unsigned int listeningForNotifications:1;
-} CDStruct_34e8bc21;
-

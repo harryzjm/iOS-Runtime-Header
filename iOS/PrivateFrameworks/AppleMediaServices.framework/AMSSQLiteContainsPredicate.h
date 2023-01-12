@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServices/NSCopying-Protocol.h>
-
 @class AMSSQLiteQuery, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSSQLiteContainsPredicate <NSCopying>
+@interface AMSSQLiteContainsPredicate
 {
     _Bool _negative;
     AMSSQLiteQuery *_query;

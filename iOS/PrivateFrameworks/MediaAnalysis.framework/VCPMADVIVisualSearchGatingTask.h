@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/VCPMADServiceImageProcessingSubtaskProtocol-Protocol.h>
-#import <MediaAnalysis/VCPMADTaskProtocol-Protocol.h>
-
 @class MADVIVisualSearchGatingRequest, NSString, VCPMADServiceImageAsset;
 @protocol MTLDevice, OS_dispatch_queue, VICancellable;
 
 __attribute__((visibility("hidden")))
-@interface VCPMADVIVisualSearchGatingTask : NSObject <VCPMADServiceImageProcessingSubtaskProtocol, VCPMADTaskProtocol>
+@interface VCPMADVIVisualSearchGatingTask : NSObject
 {
     MADVIVisualSearchGatingRequest *_request;
     VCPMADServiceImageAsset *_imageAsset;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Pasteboard/PBDataProviderProtocol-Protocol.h>
-
 @class NSMutableDictionary, NSString, PBItemCollection;
 
 __attribute__((visibility("hidden")))
-@interface PBItemCollectionServicer : NSObject <PBDataProviderProtocol>
+@interface PBItemCollectionServicer : NSObject
 {
     NSMutableDictionary *_cleanupQueue_cleanupHandlerByUUID;
     PBItemCollection *_itemCollection;

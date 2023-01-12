@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/NSCoding-Protocol.h>
-
 @class NSDictionary;
 
-@interface IBUIReplacementEncodedObject : NSObject <NSCoding>
+@interface IBUIReplacementEncodedObject : NSObject
 {
     id _objectToEncode;
     NSDictionary *_keyReplacements;

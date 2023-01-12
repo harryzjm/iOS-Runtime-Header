@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthPlatformCore/RERelevanceEngineMetricsRecorder-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthPlatformCore35RelevanceEngineMetricsBlockRecorder : NSObject <RERelevanceEngineMetricsRecorder>
+@interface _TtC18HealthPlatformCore35RelevanceEngineMetricsBlockRecorder : NSObject
 {
     MISSING_TYPE *callback;
 }

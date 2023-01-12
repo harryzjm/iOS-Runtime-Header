@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *toolbarManager;
     MISSING_TYPE *sceneStateManager;
-    MISSING_TYPE *parsecQueryID;
+    MISSING_TYPE *origination;
     MISSING_TYPE *searchBar;
     MISSING_TYPE *searchAction;
     MISSING_TYPE *clearAction;

@@ -10,7 +10,8 @@
 {
     MISSING_TYPE *action;
     MISSING_TYPE *menuAttribute;
-    MISSING_TYPE *cachedMenu;
+    MISSING_TYPE *menuTitle;
+    MISSING_TYPE *menuChangeDetector;
     MISSING_TYPE *token;
 }
 

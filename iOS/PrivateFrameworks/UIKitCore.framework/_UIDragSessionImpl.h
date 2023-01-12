@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDragSession-Protocol.h>
-#import <UIKitCore/_UIDragDropSessionInternal-Protocol.h>
-#import <UIKitCore/_UIDragSetDownAnimationTarget-Protocol.h>
-#import <UIKitCore/_UIDraggingSessionDelegate-Protocol.h>
-
 @class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, UIDragInteraction, _UIInternalDraggingSessionSource;
 
 __attribute__((visibility("hidden")))
-@interface _UIDragSessionImpl : NSObject <_UIDraggingSessionDelegate, UIDragSession, _UIDragSetDownAnimationTarget, _UIDragDropSessionInternal>
+@interface _UIDragSessionImpl : NSObject
 {
     NSMutableArray *_allItems;
     NSMapTable *_dragSourceInteractionByItem;

@@ -8,7 +8,6 @@
 
 @class GQDSStyle;
 
-__attribute__((visibility("hidden")))
 @interface GQDWPSection : NSObject
 {
     struct __CFArray *mChildren;

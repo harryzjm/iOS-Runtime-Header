@@ -6,23 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/NSCopying-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface SNMLModelCacheKey : NSObject <NSCopying>
+@interface SNMLModelCacheKey : NSObject
 {
     NSArray *_keys;
 }
 
 - (void).cxx_destruct;
 - (unsigned long long)hash;
-- (_Bool)isEqualToModelCacheKey:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithKeys:(id)arg1;
-- (id)initWithModelClass:(Class)arg1 modelConfiguration:(id)arg2;
 
 @end
 

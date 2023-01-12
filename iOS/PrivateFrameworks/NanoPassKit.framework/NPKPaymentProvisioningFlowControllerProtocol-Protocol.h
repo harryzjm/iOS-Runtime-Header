@@ -6,11 +6,14 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NPKPaymentProvisioningFlowControllerRequestContext, NPKPaymentProvisioningFlowPickerItem, NPKPaymentProvisioningFlowPickerSection, NSArray, NSDecimalNumber, NSError, NSString, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPaymentCredential, PKPaymentPass, PKPaymentSetupProduct, PKVerificationChannel;
+@class NPKPaymentProvisioningFlowControllerDigitalIssuanceAmountStepContext, NPKPaymentProvisioningFlowControllerRequestContext, NPKPaymentProvisioningFlowPickerItem, NPKPaymentProvisioningFlowPickerSection, NSArray, NSDecimalNumber, NSError, NSString, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKDigitalIssuanceServiceProviderItem, PKDigitalIssuanceServiceProviderProduct, PKPaymentCredential, PKPaymentPass, PKPaymentSetupProduct, PKVerificationChannel;
 @protocol NPKPaymentProvisioningFlowControllerDelegate;
 
 @protocol NPKPaymentProvisioningFlowControllerProtocol <NSObject>
 @property(nonatomic) __weak id <NPKPaymentProvisioningFlowControllerDelegate> delegate;
+- (void)presentTransitServiceProviderProductsWithRequestContext:(NPKPaymentProvisioningFlowControllerDigitalIssuanceAmountStepContext *)arg1;
+- (void)acknowledgeAppleBalanceAccountDetailsWithProduct:(PKPaymentSetupProduct *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
+- (void)chooseEMoneyProductFromFlowPickerSection:(NPKPaymentProvisioningFlowPickerSection *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
 - (void)chooseTransitProductFromFlowPickerSection:(NPKPaymentProvisioningFlowPickerSection *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
 - (void)chooseCardsOnFileFlowForProduct:(PKPaymentSetupProduct *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2 preloadMetadata:(_Bool)arg3;
 - (void)handleIssuerApplicationAddRequest:(PKAddPaymentPassRequest *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
@@ -28,6 +31,7 @@
 - (void)chooseCredentials:(NSArray *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
 - (void)handleReaderModeFields:(NSArray *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
 - (void)chooseReaderMode:(NPKPaymentProvisioningFlowControllerRequestContext *)arg1;
+- (void)handleDigitalIssuanceAmount:(NSDecimalNumber *)arg1 serviceProviderProduct:(PKDigitalIssuanceServiceProviderProduct *)arg2 item:(PKDigitalIssuanceServiceProviderItem *)arg3 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg4;
 - (void)handleDigitalIssuanceAmount:(NSDecimalNumber *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;
 - (void)chooseProduct:(PKPaymentSetupProduct *)arg1 includeCardsOnFile:(_Bool)arg2 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg3;
 - (void)chooseProduct:(PKPaymentSetupProduct *)arg1 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg2;

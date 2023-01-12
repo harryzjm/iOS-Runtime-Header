@@ -14,15 +14,13 @@ __attribute__((visibility("hidden")))
     unsigned short _serviceType;
     NSDictionary *_performanceMetrics;
     NSDictionary *_configuration;
-    NSString *_perfDataPath;
-    NSString *_perfDataName;
     NSArray *_processIdentifiers;
+    NSString *_hostApplicationDisplayID;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSString *hostApplicationDisplayID; // @synthesize hostApplicationDisplayID=_hostApplicationDisplayID;
 @property(retain) NSArray *processIdentifiers; // @synthesize processIdentifiers=_processIdentifiers;
-@property(retain) NSString *perfDataName; // @synthesize perfDataName=_perfDataName;
-@property(retain) NSString *perfDataPath; // @synthesize perfDataPath=_perfDataPath;
 @property(retain, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) unsigned short serviceType; // @synthesize serviceType=_serviceType;
 @property(readonly, nonatomic) NSDictionary *performanceMetrics; // @synthesize performanceMetrics=_performanceMetrics;

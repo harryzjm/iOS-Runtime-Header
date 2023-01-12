@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKEventAttachmentCellControllerDelegate-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttachmentDetailItem <EKEventAttachmentCellControllerDelegate>
+@interface EKEventAttachmentDetailItem
 {
     NSArray *_cellControllers;
     _Bool _visibilityChanged;

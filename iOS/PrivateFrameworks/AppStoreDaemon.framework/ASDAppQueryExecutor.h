@@ -14,10 +14,11 @@ __attribute__((visibility("hidden")))
     ASDDispatchQueue *_dispatchQueue;
     NSMutableDictionary *_queryPromises;
     ASDServiceBroker *_serviceBroker;
+    long long _queryOptions;
 }
 
-+ (void)_executeQueryWithPredicate:(id)arg1 onPairedDevice:(id)arg2 usingServiceBroker:(id)arg3 withResultHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
+@property(nonatomic) long long queryOptions; // @synthesize queryOptions=_queryOptions;
 - (void)executeQueryWithPredicate:(id)arg1 onPairedDevice:(id)arg2 withResultHandler:(CDUnknownBlockType)arg3;
 - (id)initWithServiceBroker:(id)arg1;
 - (id)init;

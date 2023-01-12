@@ -6,12 +6,9 @@
 
 #import <Foundation/NSMeasurement.h>
 
-#import <Intents/INCodableAttributeRelationComparing-Protocol.h>
-#import <Intents/INJSONSerializable-Protocol.h>
-
 @class NSString;
 
-@interface NSMeasurement (Readable) <INCodableAttributeRelationComparing, INJSONSerializable>
+@interface NSMeasurement (Readable)
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (_Bool)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;

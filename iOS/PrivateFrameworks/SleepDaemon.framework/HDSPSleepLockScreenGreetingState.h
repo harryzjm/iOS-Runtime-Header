@@ -12,8 +12,7 @@ __attribute__((visibility("hidden")))
 - (long long)sleepLockScreenState;
 - (id)stateName;
 - (void)dismissAlertForGoodMorning;
-- (void)updateState;
-- (void)willEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (id)nextStateWithContext:(id *)arg1;
 
 @end
 

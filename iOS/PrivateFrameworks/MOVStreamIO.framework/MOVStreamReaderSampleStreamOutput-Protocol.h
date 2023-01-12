@@ -11,7 +11,7 @@
 @protocol MOVStreamReaderSampleStreamOutput <MOVStreamReaderBaseStreamOutput>
 @property(readonly) NSString *relationSpecifier;
 @property(readonly) NSString *relatedStreamId;
-- (struct opaqueCMSampleBuffer *)nextSampleBufferForStreamAttachementsData:(out id *)arg1 timestamp:(out CDStruct_1b6d18a9 *)arg2 error:(out id *)arg3;
-- (struct opaqueCMSampleBuffer *)grabNextSampleBufferForStreamTimestamp:(out CDStruct_1b6d18a9 *)arg1 error:(out id *)arg2;
+- (struct opaqueCMSampleBuffer *)nextSampleBufferForStreamAttachementsData:(out id *)arg1 timestamp:(out CDStruct_198678f7 *)arg2 error:(out id *)arg3;
+- (struct opaqueCMSampleBuffer *)grabNextSampleBufferForStreamTimestamp:(out CDStruct_198678f7 *)arg1 error:(out id *)arg2;
 @end
 

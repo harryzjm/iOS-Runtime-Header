@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlaybackCore/MPCPlayerActionAtQueueEndCommand-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCPlayerActionAtQueueEndCommand <MPCPlayerActionAtQueueEndCommand>
+@interface _MPCPlayerActionAtQueueEndCommand
 {
     long long _actionAtQueueEnd;
     NSArray *_supportedActions;

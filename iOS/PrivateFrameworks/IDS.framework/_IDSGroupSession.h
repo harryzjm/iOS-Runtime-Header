@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSBaseSocketPairConnectionDelegate-Protocol.h>
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-
 @class CUTWeakReference, IDSBaseSocketPairConnection, IDSGroupEncryptionKeyMaterialCache, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSNumber, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface _IDSGroupSession : NSObject <IDSDaemonListenerProtocol, IDSBaseSocketPairConnectionDelegate>
+@interface _IDSGroupSession : NSObject
 {
     id _delegateContext;
     id _boostContext;
@@ -20,6 +17,7 @@
     NSString *_instanceID;
     NSString *_accountID;
     NSSet *_destinations;
+    NSDictionary *_destinationsLightweightStatus;
     NSString *_fromID;
     IDSBaseSocketPairConnection *_unreliableSocketPairConnection;
     CUTWeakReference *_delegate;
@@ -59,10 +57,12 @@
     NSMutableArray *_dataCryptorRequests;
     NSMutableDictionary *_createParticipantIDAliasCallbacks;
     NSMutableDictionary *_getParticipantIDForAliasCallbacks;
+    NSMutableArray *_getParticipantIDForAliasDelegateQueueCallbacks;
     NSSet *_requiredCapabilities;
     NSSet *_requiredLackOfCapabilities;
 }
 
++ (id)keyValueDeliveryForSessionID:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly) _Bool isLightweightParticipant; // @synthesize isLightweightParticipant=_isLightweightParticipant;
 @property(readonly, nonatomic) NSSet *requiredLackOfCapabilities; // @synthesize requiredLackOfCapabilities=_requiredLackOfCapabilities;
@@ -70,13 +70,21 @@
 @property(readonly, nonatomic) unsigned long long localParticipantID; // @synthesize localParticipantID=_localParticipantID;
 @property(retain, nonatomic) id boostContext; // @synthesize boostContext=_boostContext;
 @property(readonly, nonatomic) unsigned int state; // @synthesize state=_state;
+- (id)getDestinationsLightweightStatusDict;
+- (id)getDestinations;
 - (void)setKeyMaterialCache:(id)arg1;
 - (void)setUniqueID:(id)arg1;
+- (id)keyValueDelivery;
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
+- (void)session:(id)arg1 didReceiveServerErrorCode:(unsigned int)arg2;
+- (void)session:(id)arg1 didReceiveData:(id)arg2 dataType:(unsigned short)arg3 forParticipant:(id)arg4;
+- (void)session:(id)arg1 didReceiveDataBlob:(id)arg2 forParticipant:(id)arg3;
 - (void)session:(id)arg1 didReceiveParticipantID:(unsigned long long)arg2 forParticipantIDAlias:(unsigned long long)arg3 salt:(id)arg4;
 - (void)session:(id)arg1 didCreateParticipantIDAlias:(unsigned long long)arg2 forParticipantID:(unsigned long long)arg3 salt:(id)arg4;
 - (void)session:(id)arg1 hasOutdatedSKI:(id)arg2;
 - (void)participantUpdatedForSession:(id)arg1;
+- (void)session:(id)arg1 didReceiveParticipantIDs:(id)arg2 withCode:(unsigned int)arg3 managementType:(unsigned short)arg4;
+- (void)sessionDidReceiveParticipantUpgrade:(id)arg1 participantType:(unsigned short)arg2 error:(id)arg3;
 - (void)session:(id)arg1 shouldInvalidateKeyMaterialByKeyIndexes:(id)arg2;
 - (void)session:(id)arg1 didReceiveKeyMaterial:(id)arg2;
 - (void)session:(id)arg1 didRemoveParticipantIDs:(id)arg2 withCode:(unsigned int)arg3 isTruncated:(_Bool)arg4;
@@ -84,7 +92,6 @@
 - (void)session:(id)arg1 didReceiveBlockedParticipantIDs:(id)arg2 withCode:(unsigned int)arg3 withType:(unsigned short)arg4 isTruncated:(_Bool)arg5;
 - (void)session:(id)arg1 didUnregisterPluginAllocationInfo:(id)arg2;
 - (void)session:(id)arg1 didRegisterPluginAllocationInfo:(id)arg2;
-- (void)session:(id)arg1 didReceivePluginAllocationInfo:(id)arg2;
 - (void)session:(id)arg1 didReceiveActiveLightweightParticipants:(id)arg2 success:(_Bool)arg3;
 - (void)session:(id)arg1 didReceiveActiveParticipants:(id)arg2 success:(_Bool)arg3;
 - (void)session:(id)arg1 participantDidLeaveGroupWithInfo:(id)arg2;
@@ -96,6 +103,10 @@
 - (void)groupSessionEnded:(id)arg1 withReason:(unsigned int)arg2 error:(id)arg3;
 - (void)groupSessionDidTerminate:(id)arg1;
 - (void)session:(id)arg1 didReceiveReport:(id)arg2;
+- (void)getParticipantIDForAlias:(unsigned long long)arg1 salt:(id)arg2 delegateQueueCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)createAliasForLocalParticipantIDWithSalt:(id)arg1 delegateQueueCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)createAliasForParticipantID:(unsigned long long)arg1 salt:(id)arg2 delegateQueueCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)createSessionIDAliasWithSalt:(id)arg1 delegateQueueCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)getParticipantIDForAlias:(unsigned long long)arg1 salt:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)createAliasForParticipantID:(unsigned long long)arg1 salt:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)sessionIDAliasWithSalt:(id)arg1;
@@ -111,6 +122,7 @@
 - (void)reconnectUPlusOneSession;
 - (void)leaveGroupSession;
 - (void)joinWithOptions:(id)arg1;
+- (void)updateParticipantType:(unsigned short)arg1 members:(id)arg2 withContext:(id)arg3 triggeredLocally:(_Bool)arg4;
 - (void)setParticipantInfo:(id)arg1;
 - (void)updateParticipantData:(id)arg1 withContext:(id)arg2;
 - (void)removeParticipantIDs:(id)arg1;

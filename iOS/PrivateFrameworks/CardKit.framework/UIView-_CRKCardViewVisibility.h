@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <CardKit/CRKCardSectionView-Protocol.h>
-
 @class NSString;
 @protocol CRKComposableView;
 
-@interface UIView (_CRKCardViewVisibility) <CRKCardSectionView>
+@interface UIView (_CRKCardViewVisibility)
 + (struct CGSize)sizeThatFitsCardSection:(id)arg1 boundingSize:(struct CGSize)arg2;
 - (_Bool)_crk_subviewIsVisible:(id)arg1;
 - (_Bool)_crk_otherSubviewsOccludeSubview:(id)arg1;

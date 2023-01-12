@@ -4,20 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCTextReceiverDelegate-Protocol.h>
-#import <AVConference/VCTextSender-Protocol.h>
-
 @class NSString, VCTextReceiver, VCTextTransmitter;
 @protocol VCTextReceiverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCTextStream <VCTextSender, VCTextReceiverDelegate>
+@interface VCTextStream
 {
     VCTextReceiver *_textReceiver;
     VCTextTransmitter *_textTransmitter;
     id <VCTextReceiverDelegate> _receiveDelegate;
 }
 
++ (void)terminateProcess:(id)arg1 terminateSource:(id)arg2 agent:(struct opaqueRTCReporting *)arg3;
 - (double)rtcpHeartbeatLeeway;
 @property(readonly, nonatomic) double lastReceivedRTCPPacketTime;
 @property(readonly, nonatomic) double lastReceivedRTPPacketTime;

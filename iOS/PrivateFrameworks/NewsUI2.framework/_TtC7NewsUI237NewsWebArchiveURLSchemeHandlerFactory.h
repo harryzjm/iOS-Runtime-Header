@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/SWURLSchemeHandlerFactory-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI237NewsWebArchiveURLSchemeHandlerFactory : NSObject <SWURLSchemeHandlerFactory>
+@interface _TtC7NewsUI237NewsWebArchiveURLSchemeHandlerFactory : NSObject
 {
     MISSING_TYPE *webArchiveService;
 }

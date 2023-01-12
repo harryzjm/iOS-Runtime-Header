@@ -7,6 +7,7 @@
 #import <CalendarDaemon/NSObject-Protocol.h>
 
 @protocol CADPermissionValidator <NSObject>
+@property(readonly) _Bool allowsCustomDatabasePath;
 @property(readonly) _Bool shouldTrustClientEnforcedManagedConfigurationAccess;
 @property(readonly) _Bool hasManagedConfigurationBundleIDOverrideEntitlement;
 @property(readonly) _Bool hasNotificationCountEntitlement;
@@ -18,6 +19,7 @@
 @property(readonly) _Bool internalAccessLevelGranted;
 @property(readonly) _Bool testingAccessLevelGranted;
 @property(readonly) _Bool canModifyCalendarDatabase;
+@property(readonly) _Bool canRequestDiagnostics;
 @property(readonly) _Bool canModifyBirthdayCalendar;
 @property(readonly) _Bool canMakeSpotlightChanges;
 @property(readonly) _Bool canModifySuggestedEventCalendar;

@@ -16,6 +16,7 @@
 + (id)p_propertiesThatResetSeriesStorage;
 + (id)p_propertiesThatResetSceneProperties;
 + (void)upgradeSceneDepthSettingsForChartInfo:(id)arg1 hasConstantDepth:(_Bool)arg2 willModifyBlock:(CDUnknownBlockType)arg3;
+- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (void)setSeriesIndexedPieWedgeExplosions:(id)arg1;
 - (void)modelInvalidated:(id)arg1;
 - (void)p_resetSeriesStorage;

@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UINavigationItem, UITraitCollection;
+@class NSArray, UINavigationItem, UITraitCollection;
 @protocol _UINavigationBarTitleViewDataSource;
 
 @protocol _UINavigationBarAugmentedTitleView <NSObject>
@@ -15,11 +15,13 @@
 @property(readonly, nonatomic) double _navigationBarLeadingBarButtonsAlpha;
 @property(readonly, nonatomic) double _navigationBarBackButtonAlpha;
 @property(readonly, nonatomic) _Bool _hideNavigationBarTrailingBarButtons;
+@property(readonly, nonatomic) _Bool _hideNavigationBarCenterBarButtons;
 @property(readonly, nonatomic) _Bool _hideNavigationBarStandardTitle;
 @property(readonly, nonatomic) _Bool _hideNavigationBarLeadingBarButtons;
 @property(readonly, nonatomic) _Bool _hideNavigationBarBackButton;
 @property(readonly, nonatomic) double _navigationBarBackButtonMaximumWidth;
 @property(readonly, nonatomic) double _navigationBarContentHeight;
+@property(readonly, copy, nonatomic) NSArray *_navigationBarContentOverlayRects;
 @property(readonly, nonatomic) _Bool _underlayNavigationBarContent;
 - (UITraitCollection *)_traitCollectionOverridesForNavigationBarTraitCollection:(UITraitCollection *)arg1;
 - (void)_navigationBarTraitCollectionDidChangeTo:(UITraitCollection *)arg1 from:(UITraitCollection *)arg2;

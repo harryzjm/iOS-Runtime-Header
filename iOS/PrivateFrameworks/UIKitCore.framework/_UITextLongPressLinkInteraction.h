@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (void)longDelayRecognizer:(id)arg1;
 - (void)smallDelayRecognizer:(id)arg1;
-- (id)init;
+- (id)initWithShouldProxyContextMenuDelegate:(_Bool)arg1;
 
 @end
 

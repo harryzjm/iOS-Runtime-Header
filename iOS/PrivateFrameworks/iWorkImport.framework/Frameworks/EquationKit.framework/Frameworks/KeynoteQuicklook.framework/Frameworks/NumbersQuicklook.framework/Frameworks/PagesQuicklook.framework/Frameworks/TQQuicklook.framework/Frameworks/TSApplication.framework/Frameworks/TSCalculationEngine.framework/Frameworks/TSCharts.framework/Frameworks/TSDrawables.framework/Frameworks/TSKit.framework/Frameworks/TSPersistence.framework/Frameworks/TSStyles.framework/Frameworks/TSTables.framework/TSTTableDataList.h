@@ -6,18 +6,16 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSPCopying-Protocol.h>
-#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
-
 @class NSMutableArray, NSMutableIndexSet, NSObject, TSTTableDataListSegment;
 @protocol TSDContainerInfo><TSWPStorageParent;
 
-@interface TSTTableDataList : TSPObject <TSPCopying, TSTCompatibilityVersionProviding>
+@interface TSTTableDataList : TSPObject
 {
     NSMutableArray *_segments;
     struct unordered_map<NSObject<TSTTableDataPayloadHashing>*, TSTTableDataObject *, TSTTableDataPayloadHash, TSTTableDataPayloadEqual, std::allocator<std::pair<NSObject<TSTTableDataPayloadHashing>*const, TSTTableDataObject *>>> _payloadToObjectMap;
     NSMutableIndexSet *_unusedKeySet;
     _Bool _isNewForBraveNewCell;
+    _Bool _mightHaveCustomFormats;
     _Bool _useReverseMap;
     int _listType;
     unsigned int _nextID;
@@ -32,6 +30,7 @@
 @property(nonatomic) TSTTableDataListSegment *cachedSegment; // @synthesize cachedSegment=_cachedSegment;
 @property(readonly, nonatomic) _Bool useReverseMap; // @synthesize useReverseMap=_useReverseMap;
 @property(nonatomic) unsigned int nextID; // @synthesize nextID=_nextID;
+@property(readonly, nonatomic) _Bool mightHaveCustomFormats; // @synthesize mightHaveCustomFormats=_mightHaveCustomFormats;
 @property(nonatomic) _Bool isNewForBraveNewCell; // @synthesize isNewForBraveNewCell=_isNewForBraveNewCell;
 @property(nonatomic) int listType; // @synthesize listType=_listType;
 @property(nonatomic) NSObject<TSDContainerInfo><TSWPStorageParent> *richTextParentInfo; // @synthesize richTextParentInfo=_richTextParentInfo;
@@ -47,7 +46,7 @@
 - (void)replaceConditionalStyleSetsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)replaceFormulasUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateKeysAndCountsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateCustomFormatsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateLegacyCustomFormatsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFormatsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)p_enumerateDataObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)p_objectForKey:(unsigned int)arg1;
@@ -92,6 +91,8 @@
 - (unsigned int)addConditionalStyleSet:(id)arg1 atSuggestedKey:(unsigned int)arg2 callWillModify:(_Bool)arg3;
 - (unsigned int)addCommentStorage:(id)arg1 atSuggestedKey:(unsigned int)arg2 callWillModify:(_Bool)arg3;
 - (unsigned int)addCellFormat:(id)arg1 atSuggestedKey:(unsigned int)arg2 callWillModify:(_Bool)arg3;
+- (void)updateCustomFormatsAtKey:(id)arg1;
+- (void)replaceCustomFormatsWithBlock:(CDUnknownBlockType)arg1;
 - (_Bool)containsFormulas;
 - (_Bool)containsControlCellSpecs;
 - (id)allRichTextStorages;

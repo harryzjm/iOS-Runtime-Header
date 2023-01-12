@@ -19,10 +19,12 @@ __attribute__((visibility("hidden")))
     UIView *_containerView;
     NSString *_captionText;
     NSString *_buttonText;
+    NSString *_displayLanguage;
     struct CGSize _contentSize;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
 @property _Bool largeIcon; // @synthesize largeIcon=_largeIcon;
@@ -45,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 - (void)tintColorDidChange;
 - (void)layoutSubviews;
-- (id)initWithCaption:(id)arg1 buttonText:(id)arg2 image:(id)arg3 imageSize:(struct CGSize)arg4 useLargeIcon:(_Bool)arg5;
+- (id)initWithCaption:(id)arg1 buttonText:(id)arg2 image:(id)arg3 imageSize:(struct CGSize)arg4 useLargeIcon:(_Bool)arg5 displayLanguage:(id)arg6;
 
 @end
 

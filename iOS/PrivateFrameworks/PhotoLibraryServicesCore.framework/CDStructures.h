@@ -4,102 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
-struct CGPoint {
+struct CGSize {
     double _field1;
     double _field2;
-};
-
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-
-struct PLImageTableEntryFooter_s {
-    CDStruct_bd2f613f _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    int _field4;
-};
-
-struct PLUnitMultiplier {
-    double _field1[6];
-    char *_field2[6];
-};
-
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
-struct flock {
-    long long _field1;
-    long long _field2;
-    int _field3;
-    short _field4;
-    short _field5;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-struct tagPLPositionalTableMemoryPool {
-    struct {
-        void *_field1;
-        long long _field2;
-    } _field1;
-    unsigned long long _field2;
-    int _field3;
-    void *_field4;
-    void *_field5;
-    unsigned long long _field6;
-};
-
-struct tagPLPositionalTableMemoryPoolNode {
-    void *_field1;
-    struct tagPLPositionalTableMemoryPool *_field2;
-    _Bool _field3;
-    struct tagPLPositionalTableMemoryPoolNode *_field4;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned char _field1;
-    unsigned char _field2;
-    unsigned char _field3;
-    unsigned char _field4;
-    unsigned char _field5;
-    unsigned char _field6;
-    unsigned char _field7;
-    unsigned char _field8;
-    unsigned char _field9;
-    unsigned char _field10;
-    unsigned char _field11;
-    unsigned char _field12;
-    unsigned char _field13;
-    unsigned char _field14;
-    unsigned char _field15;
-    unsigned char _field16;
-} CDStruct_bd2f613f;
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
 
 typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
-
-typedef struct {
-    int _field1;
-    int _field2;
-} CDStruct_1ef3fb1f;
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/CKEntityContactStoreProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _CKEntityContactStoreProvider : NSObject <CKEntityContactStoreProvider>
+@interface _CKEntityContactStoreProvider : NSObject
 {
 }
 

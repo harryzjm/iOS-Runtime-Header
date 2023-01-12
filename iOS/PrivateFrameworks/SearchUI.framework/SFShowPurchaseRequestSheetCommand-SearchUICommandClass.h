@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFShowPurchaseRequestSheetCommand.h>
 
 @interface SFShowPurchaseRequestSheetCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

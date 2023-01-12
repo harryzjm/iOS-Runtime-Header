@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/TSKChangeSourceObserver-Protocol.h>
-
 @class NSString, TSDLayoutController, TSKDocumentRoot;
 
-@interface TSDLayoutChangeObserver : NSObject <TSKChangeSourceObserver>
+@interface TSDLayoutChangeObserver : NSObject
 {
     TSKDocumentRoot *_documentRoot;
     TSDLayoutController *_layoutController;

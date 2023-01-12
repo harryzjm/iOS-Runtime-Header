@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned int prominenceInactiveProbabilityThreshold;
 @property(readonly) unsigned int prominenceActiveAccumulationThreshold;
 @property(readonly) unsigned int prominenceActiveProbabilityThreshold;
+@property(readonly) _Bool forceDisableProcessSpecificRequirements;
 @property(readonly) _Bool forceDisableReporting;
 @property(readonly) _Bool forceDisableMessageEncryption;
 @property(readonly) _Bool forceDisableMediaEncryption;

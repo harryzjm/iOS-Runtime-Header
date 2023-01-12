@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarRegionCursorInsetProvider-Protocol.h>
+#import "_UIStatusBarVisualProvider_iOS.h"
 
-@class NSDictionary, NSLayoutConstraint, NSString, _UIStatusBar, _UIStatusBarDisplayItemPlacement;
+@class NSDictionary, NSLayoutConstraint, NSString, UIFont, _UIStatusBar, _UIStatusBarDisplayItemPlacement;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_Pad <_UIStatusBarRegionCursorInsetProvider>
+@interface _UIStatusBarVisualProvider_Pad : _UIStatusBarVisualProvider_iOS
 {
     NSDictionary *_orderedDisplayItemPlacements;
     NSLayoutConstraint *_trailingRegionLeadingAnchorConstraint;
@@ -39,18 +39,20 @@ __attribute__((visibility("hidden")))
 - (_Bool)_updateDateAndTimePlacements;
 - (void)itemCreated:(id)arg1;
 - (void)sizeUpdatedFromSize:(struct CGSize)arg1;
-- (void)avoidanceFrameUpdatedFromFrame:(struct CGRect)arg1;
+- (void)avoidanceFrameUpdatedFromFrame:(struct CGRect)arg1 withAnimationSettings:(id)arg2 interactively:(_Bool)arg3;
 - (void)_updateConstraintsForAvoidanceFrame:(struct CGRect)arg1;
 - (void)statusBarEnabledPartsUpdated;
 - (void)actionable:(id)arg1 highlighted:(_Bool)arg2 initialPress:(_Bool)arg3;
 - (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
 - (id)styleAttributesForStyle:(long long)arg1;
+- (struct CGRect)clockBoundsForLayoutItem:(id)arg1;
 - (id)displayItemIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
 - (void)dealloc;
 - (id)init;
+@property(readonly, nonatomic) UIFont *clockFont;
 - (id)pillSmallFont;
 - (id)pillFont;
 - (id)expandedFont;

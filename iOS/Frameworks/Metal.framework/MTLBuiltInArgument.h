@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
     unsigned short _builtInDataType;
 }
 
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)builtInType;
 - (unsigned long long)builtInDataType;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 access:(unsigned long long)arg3 active:(_Bool)arg4 index:(unsigned long long)arg5 dataType:(unsigned long long)arg6 builtInType:(unsigned long long)arg7;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OCDDelayedMediaContext-Protocol.h>
-
 @class NSString, NSURL, OCPPackage;
 
 __attribute__((visibility("hidden")))
-@interface OCXDelayedMediaContext : NSObject <OCDDelayedMediaContext>
+@interface OCXDelayedMediaContext : NSObject
 {
     OCPPackage *mPackage;
     NSURL *mTargetLocation;

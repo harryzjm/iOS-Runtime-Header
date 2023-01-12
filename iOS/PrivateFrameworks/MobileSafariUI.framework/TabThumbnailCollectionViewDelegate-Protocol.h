@@ -6,17 +6,18 @@
 
 #import <MobileSafariUI/TabCollectionViewDelegate-Protocol.h>
 
-@class NSString, UIImage, UIView, WBSCloudTab, WBSCloudTabDevice;
+@class NSString, NSUndoManager, UIImage, UIView, WBSCloudTab, WBSCloudTabDevice;
 @protocol TabCollectionItem, TabThumbnailCollectionView;
 
 @protocol TabThumbnailCollectionViewDelegate <TabCollectionViewDelegate>
+- (NSUndoManager *)undoManagerForTabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1;
 - (_Bool)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 cloudTab:(WBSCloudTab *)arg2 matchesSearchText:(NSString *)arg3;
 - (_Bool)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 item:(id <TabCollectionItem>)arg2 matchesSearchText:(NSString *)arg3;
 - (void)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 closeCloudTab:(WBSCloudTab *)arg2 onDevice:(WBSCloudTabDevice *)arg3;
 - (void)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 relinquishBorrowedContentView:(UIView *)arg2 forItem:(id <TabCollectionItem>)arg3;
 - (UIView *)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 borrowContentViewForItem:(id <TabCollectionItem>)arg2 withTopBackdropView:(id *)arg3 ofHeight:(double)arg4;
 - (struct UIEdgeInsets)effectiveSafeAreaInsetsForTabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1;
-- (double)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 headerHeightForItem:(id <TabCollectionItem>)arg2;
+- (double)tabCollectionViewItemHeaderHeight:(UIView<TabThumbnailCollectionView> *)arg1;
 - (void)tabCollectionViewDidUpdateItemVisibilityOrder:(UIView<TabThumbnailCollectionView> *)arg1;
 - (UIImage *)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 snapshotForItem:(id <TabCollectionItem>)arg2;
 - (_Bool)tabCollectionView:(UIView<TabThumbnailCollectionView> *)arg1 validSnapshotExistsForItem:(id <TabCollectionItem>)arg2;

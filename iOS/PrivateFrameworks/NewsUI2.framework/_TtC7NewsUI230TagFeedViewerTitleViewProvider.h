@@ -14,6 +14,7 @@
     MISSING_TYPE *$__lazy_storage_$_containerTitleView;
     MISSING_TYPE *renderer;
     MISSING_TYPE *refreshStateMachine;
+    MISSING_TYPE *feedDescriptor;
 }
 
 @end

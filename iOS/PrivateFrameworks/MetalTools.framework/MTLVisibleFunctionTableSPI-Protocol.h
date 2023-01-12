@@ -9,6 +9,7 @@
 @protocol MTLBuffer, MTLVisibleFunctionTable;
 
 @protocol MTLVisibleFunctionTableSPI <MTLVisibleFunctionTable>
+@property(readonly) unsigned long long gpuHandle;
 - (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)setVisibleFunctionTable:(id <MTLVisibleFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setValue:(unsigned long long)arg1 withRange:(struct _NSRange)arg2;

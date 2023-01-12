@@ -7,7 +7,16 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (CoreHandwriting)
+- (unsigned long long)cursorPositionAtIndex:(unsigned long long)arg1 usingBlockToSelectSide:(CDUnknownBlockType)arg2;
+- (_Bool)isAbbreviation;
+- (void)enumerateCodepointsInRange:(struct _NSRange)arg1 reverse:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateCodepointsInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (unsigned int)codepointAtIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
+- (struct _NSRange)codepointRangeAtIndex:(unsigned long long)arg1;
+- (long long)countCodepoints;
+- (long long)countSubstringsWithOptions:(unsigned long long)arg1;
 - (_Bool)hasSubstringInSet:(id)arg1;
+- (id)ch_hasCharactersFromSets:(id)arg1;
 - (long long)ch_occurrencesOfCharactersInSet:(id)arg1 maxCount:(long long)arg2;
 @end
 

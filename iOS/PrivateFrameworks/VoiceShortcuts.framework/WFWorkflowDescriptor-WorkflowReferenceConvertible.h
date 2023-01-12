@@ -6,11 +6,9 @@
 
 #import <VoiceShortcutClient/WFWorkflowDescriptor.h>
 
-#import <VoiceShortcuts/WFWorkflowReferenceConvertible-Protocol.h>
-
 @class NSString;
 
-@interface WFWorkflowDescriptor (WorkflowReferenceConvertible) <WFWorkflowReferenceConvertible>
+@interface WFWorkflowDescriptor (WorkflowReferenceConvertible)
 + (void)getObjectsFromReferences:(id)arg1 databaseProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 // Remaining properties

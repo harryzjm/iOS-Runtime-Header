@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNPersonsModelDataSource-Protocol.h>
-#import <Vision/VNPersonsModelFaceModelDataProvider-Protocol.h>
-
 @class NSDate, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString;
 @protocol VNPersonsModelDataDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VNPersonsModelData : NSObject <VNPersonsModelDataSource, VNPersonsModelFaceModelDataProvider>
+@interface VNPersonsModelData : NSObject
 {
     unsigned long long _maximumIdentities;
     unsigned long long _faceprintRequestRevision;

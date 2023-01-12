@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC18VisualIntelligence22RegionMergingProcessor : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *config;
+    MISSING_TYPE *boxScorer;
 }
 
 @end

@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol SUSUIControllerServerInterface <NSObject>
+- (void)getPasscodePolicy:(void (^)(unsigned long long))arg1;
 - (_Bool)createKeybagWithSecret:(NSString *)arg1;
 @end
 

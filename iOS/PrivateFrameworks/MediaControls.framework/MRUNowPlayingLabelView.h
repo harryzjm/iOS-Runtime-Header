@@ -4,45 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIControl.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
-@class BSUIEmojiLabelView, MPAVRoute, MPRouteLabel, MPUMarqueeView, MRUVisualStylingProvider, NSString, UILabel;
+@class MPAVRoute, MPRouteLabel, MRUMarqueeLabel, MRUVisualStylingProvider, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MRUNowPlayingLabelView : UIView <MRUVisualStylingProviderObserver>
+@interface MRUNowPlayingLabelView : UIControl
 {
-    _Bool _showPlaceholderText;
+    _Bool _showRoute;
+    _Bool _showSubtitle;
+    _Bool _showPlaceholder;
     _Bool _marqueeEnabled;
     MPAVRoute *_route;
     NSString *_title;
     NSString *_subtitle;
-    NSString *_placeholderText;
+    NSString *_placeholder;
     MRUVisualStylingProvider *_stylingProvider;
+    long long _textAlignment;
     long long _layout;
-    long long _context;
+    UIView *_contentView;
     MPRouteLabel *_routeLabel;
-    MPUMarqueeView *_titleMarqueeView;
-    MPUMarqueeView *_subtitleMarqueeView;
-    BSUIEmojiLabelView *_titleLabel;
-    BSUIEmojiLabelView *_subtitleLabel;
-    UILabel *_placeholderLabel;
+    MRUMarqueeLabel *_titleMarqueeView;
+    MRUMarqueeLabel *_subtitleMarqueeView;
+    MRUMarqueeLabel *_placeholderMarqueeView;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UILabel *placeholderLabel; // @synthesize placeholderLabel=_placeholderLabel;
-@property(retain, nonatomic) BSUIEmojiLabelView *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(retain, nonatomic) BSUIEmojiLabelView *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) MPUMarqueeView *subtitleMarqueeView; // @synthesize subtitleMarqueeView=_subtitleMarqueeView;
-@property(retain, nonatomic) MPUMarqueeView *titleMarqueeView; // @synthesize titleMarqueeView=_titleMarqueeView;
+@property(retain, nonatomic) MRUMarqueeLabel *placeholderMarqueeView; // @synthesize placeholderMarqueeView=_placeholderMarqueeView;
+@property(retain, nonatomic) MRUMarqueeLabel *subtitleMarqueeView; // @synthesize subtitleMarqueeView=_subtitleMarqueeView;
+@property(retain, nonatomic) MRUMarqueeLabel *titleMarqueeView; // @synthesize titleMarqueeView=_titleMarqueeView;
 @property(retain, nonatomic) MPRouteLabel *routeLabel; // @synthesize routeLabel=_routeLabel;
+@property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic, getter=isMarqueeEnabled) _Bool marqueeEnabled; // @synthesize marqueeEnabled=_marqueeEnabled;
-@property(nonatomic) _Bool showPlaceholderText; // @synthesize showPlaceholderText=_showPlaceholderText;
-@property(nonatomic) long long context; // @synthesize context=_context;
+@property(nonatomic) _Bool showPlaceholder; // @synthesize showPlaceholder=_showPlaceholder;
+@property(nonatomic) _Bool showSubtitle; // @synthesize showSubtitle=_showSubtitle;
+@property(nonatomic) _Bool showRoute; // @synthesize showRoute=_showRoute;
 @property(nonatomic) long long layout; // @synthesize layout=_layout;
+@property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
-@property(copy, nonatomic) NSString *placeholderText; // @synthesize placeholderText=_placeholderText;
+@property(copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) MPAVRoute *route; // @synthesize route=_route;
@@ -51,7 +51,9 @@ __attribute__((visibility("hidden")))
 - (void)updateContentSizeCategory;
 - (void)updateVisualStyling;
 - (void)visualStylingProviderDidChange:(id)arg1;
+- (void)setHighlighted:(_Bool)arg1;
 - (id)viewForFirstBaselineLayout;
+- (struct CGSize)sizeForText:(id)arg1 font:(id)arg2 layout:(long long)arg3 availableSize:(struct CGSize)arg4;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (void)didMoveToWindow;

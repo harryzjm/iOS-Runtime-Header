@@ -11,11 +11,12 @@
 
 @protocol SBFTraitsParticipantDelegate <NSObject>
 - (void)didChangeSettingsForParticipant:(SBFTraitsParticipant *)arg1 context:(id <SBFTraitsSettingsActuationContextProviding>)arg2;
-- (void)updatePreferenceForParticipant:(SBFTraitsParticipant *)arg1 updater:(id <SBFTraitsPreferencesUpdating>)arg2;
+- (void)updatePreferencesForParticipant:(SBFTraitsParticipant *)arg1 updater:(id <SBFTraitsPreferencesUpdating>)arg2;
 
 @optional
-- (NSArray *)participantAssociatedSceneIdentifiers:(SBFTraitsParticipant *)arg1;
 - (NSArray *)participantAssociatedWindows:(SBFTraitsParticipant *)arg1;
+- (unsigned int)_TEMP_89890840_participantAssociatedContextID:(SBFTraitsParticipant *)arg1;
+- (NSArray *)participantAssociatedSceneIdentityTokens:(SBFTraitsParticipant *)arg1;
 - (void)participantWillInvalidate:(SBFTraitsParticipant *)arg1;
 - (void)validateSettingsForParticipant:(SBFTraitsParticipant *)arg1 validator:(id <SBFTraitsSettingsValidating>)arg2;
 @end

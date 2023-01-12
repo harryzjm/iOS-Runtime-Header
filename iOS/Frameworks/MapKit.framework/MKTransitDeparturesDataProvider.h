@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKTransitMapItemUpdaterDelegate-Protocol.h>
-
 @class MKMapItem, MKTransitItemIncidentsController, MKTransitMapItemUpdater, NSArray, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol GEOMapItemTransitInfo, GEOTransitSystem, MKTransitDeparturesDataProviderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKTransitDeparturesDataProvider : NSObject <MKTransitMapItemUpdaterDelegate>
+@interface MKTransitDeparturesDataProvider : NSObject
 {
     NSSet *_disabledSections;
     NSMutableArray *_sections;

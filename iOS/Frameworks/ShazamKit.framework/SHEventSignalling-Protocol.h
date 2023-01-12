@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol SHEventSignalling <NSObject>
-- (void)sendEventSignal:(NSString *)arg1;
+- (oneway void)sendEventSignal:(NSString *)arg1;
 @end
 

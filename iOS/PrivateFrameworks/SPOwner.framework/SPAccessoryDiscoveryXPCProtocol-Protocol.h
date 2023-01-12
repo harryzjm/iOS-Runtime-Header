@@ -9,10 +9,10 @@
 @class SPAccessoryPairingConfiguration, SPDiscoveredAccessory;
 
 @protocol SPAccessoryDiscoveryXPCProtocol <NSObject>
-- (oneway void)invalidatePairingWith:(SPDiscoveredAccessory *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)finalizePairingWith:(SPDiscoveredAccessory *)arg1 configuration:(SPAccessoryPairingConfiguration *)arg2 completion:(void (^)(SPBeacon *, NSError *))arg3;
-- (oneway void)initiatePairingWith:(SPDiscoveredAccessory *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)stopAccessoryDiscoveryWithCompletion:(void (^)(NSError *))arg1;
-- (oneway void)startAccessoryDiscoveryWithCompletion:(void (^)(NSError *))arg1;
+- (void)invalidatePairingWith:(SPDiscoveredAccessory *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)finalizePairingWith:(SPDiscoveredAccessory *)arg1 configuration:(SPAccessoryPairingConfiguration *)arg2 completion:(void (^)(SPBeacon *, NSError *))arg3;
+- (void)initiatePairingWith:(SPDiscoveredAccessory *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)stopAccessoryDiscoveryWithCompletion:(void (^)(NSError *))arg1;
+- (void)startAccessoryDiscoveryWithCompletion:(void (^)(NSError *))arg1;
 @end
 

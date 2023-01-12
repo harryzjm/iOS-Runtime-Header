@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextInputDelegate-Protocol.h>
-
 @class NSString, UITextInteraction;
 
 __attribute__((visibility("hidden")))
-@interface UITextInteractionInputDelegate : NSObject <UITextInputDelegate>
+@interface UITextInteractionInputDelegate : NSObject
 {
     UITextInteraction *_rootInteraction;
 }

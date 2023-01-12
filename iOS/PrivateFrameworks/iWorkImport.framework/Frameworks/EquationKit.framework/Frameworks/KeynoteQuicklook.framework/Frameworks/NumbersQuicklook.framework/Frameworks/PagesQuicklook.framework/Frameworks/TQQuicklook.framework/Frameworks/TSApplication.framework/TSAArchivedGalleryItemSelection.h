@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSApplication/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSKSelection;
 
-@interface TSAArchivedGalleryItemSelection : TSPObject <TSKArchivedSelection>
+@interface TSAArchivedGalleryItemSelection : TSPObject
 {
     TSKSelection *_selection;
 }

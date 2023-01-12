@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OABFillPropertiesManager-Protocol.h>
-
 @class NSString;
 @protocol OABPropertiesManager;
 
 __attribute__((visibility("hidden")))
-@interface OABFillPropertiesManager : NSObject <OABFillPropertiesManager>
+@interface OABFillPropertiesManager : NSObject
 {
     const struct EshFill *mFill;
     int mShapeType;

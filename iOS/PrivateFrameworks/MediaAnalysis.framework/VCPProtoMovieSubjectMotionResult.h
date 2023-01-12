@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class VCPProtoTimeRange;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoMovieSubjectMotionResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoMovieSubjectMotionResult : PBCodable
 {
     VCPProtoTimeRange *_timeRange;
     _Bool _hasAction;

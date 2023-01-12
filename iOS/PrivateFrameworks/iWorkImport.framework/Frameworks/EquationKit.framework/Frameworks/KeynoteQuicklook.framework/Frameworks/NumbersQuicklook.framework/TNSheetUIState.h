@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NumbersQuicklook/NSCopying-Protocol.h>
-
 @class TSKSelectionPath;
 
-@interface TNSheetUIState : NSObject <NSCopying>
+@interface TNSheetUIState : NSObject
 {
     _Bool _hasVisibleRect;
     _Bool _hasPreviousVisibleRect;

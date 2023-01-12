@@ -6,12 +6,15 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIResponder;
+@class NSUUID, UIResponder;
 
 @protocol UITextInputSessionActionAnalyticsDelegateSource <NSObject>
+- (NSUUID *)_sessionIdentifier;
 - (UIResponder *)_delegateAsResponder;
 
 @optional
+- (void)_didEndEnumeratingAnalytics;
+- (void)_didFinishInit;
 - (long long)_overrideTextInputSource;
 @end
 

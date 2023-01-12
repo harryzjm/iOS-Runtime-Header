@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPDCollectionSuggestionParameters, GEOPDGuidesLocationsSuggestionParameters, GEOPDPlaceSuggestionParameters, GEOPDPublisherSuggestionParameters, GEOPDSearchBrowseCategorySuggestionParameters, PBDataReader, PBUnknownFields;
+@class GEOPDCollectionSuggestionParameters, GEOPDGuidesLocationsSuggestionParameters, GEOPDPlaceSuggestionParameters, GEOPDPublisherSuggestionParameters, GEOPDSearchBrowseCategorySuggestionParameters, GEOPDSearchOriginationInfo, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDMapsSearchHomeParameters : PBCodable <NSCopying>
+@interface GEOPDMapsSearchHomeParameters : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -21,6 +19,7 @@ __attribute__((visibility("hidden")))
     GEOPDPlaceSuggestionParameters *_placeSuggestionParameters;
     GEOPDPublisherSuggestionParameters *_publisherSuggestionParameters;
     GEOPDSearchBrowseCategorySuggestionParameters *_searchBrowseCategorySuggestionParameters;
+    GEOPDSearchOriginationInfo *_searchOriginationInfo;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_placeSuggestionParameters:1;
         unsigned int read_publisherSuggestionParameters:1;
         unsigned int read_searchBrowseCategorySuggestionParameters:1;
+        unsigned int read_searchOriginationInfo:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }

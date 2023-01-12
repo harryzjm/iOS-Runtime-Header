@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/HDPeriodicActivityDelegate-Protocol.h>
-
 @class HDAssertion, HDPeriodicActivity, HDProfile, NSDate, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _HDAWDPeriodicAction : NSObject <HDPeriodicActivityDelegate>
+@interface _HDAWDPeriodicAction : NSObject
 {
     NSString *_waitingToRunKey;
     NSString *_lastSubmissionAttemptKey;

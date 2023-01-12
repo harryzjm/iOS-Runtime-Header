@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class NSString, SKUIImageViewElement, SKUILabelViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPhysicalCircleItemViewElement
+@interface SKUIPhysicalCircleItemViewElement : SKUIViewElement
 {
     long long _circleSize;
     NSString *_itemIdentifier;

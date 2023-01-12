@@ -15,15 +15,24 @@ __attribute__((visibility("hidden")))
     _Bool _supportVCPEncoder;
     NSMutableDictionary *_hardwareUsageModeSettings;
     NSMutableSet *_pixelFormatCollections;
+    _Bool _isSiriVoiceTapSupported;
+    _Bool _isSiriVoicePlayoutSupported;
     _Bool _vcpSupportsHEVCEncoder;
 }
 
++ (_Bool)retainPixelBufferForMomentsEnabled;
++ (_Bool)isCellularTappingSupported;
++ (struct CGPoint)frontCameraOffsetFromDisplayCenter;
++ (_Bool)isSiriVoicePlayoutSupported;
++ (_Bool)isSiriVoiceTapSupported;
++ (unsigned int)maxVCPSupportedTemporalLayers;
++ (_Bool)preferPresentationTimestamp;
 + (_Bool)supportsPortraitCameraCapture;
 + (_Bool)isVideoRenderingSupported;
 + (unsigned int)maxActiveVideoDecoders;
 + (unsigned int)maxActiveVideoEncoders;
 + (long long)screenShareCapabilities;
-+ (float)previewPreferredAspectRatio;
++ (double)previewPreferredAspectRatio;
 + (_Bool)disableMLScalarDuringSharing;
 + (_Bool)supportsDedicatedSystemAudioStream;
 + (_Bool)limitCameraDownlinkBitrateDuringSharing;
@@ -33,17 +42,20 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsHEVCDecoding;
 + (_Bool)supportsHEVCEncoding;
 + (_Bool)supportsHEIFEncoding;
++ (_Bool)isCaptionsSupported;
 + (_Bool)isCaptureSIFRPreferred;
 + (_Bool)isSpatialAudioSupported;
 + (_Bool)isDisplayPortrait;
 + (unsigned int)maxFrameRateSupportedBackgroundBlur;
 + (unsigned int)maxActiveScreenEncoders;
++ (_Bool)shouldEnforceScreenFrameRateLimit;
 + (unsigned int)maxFrameRateSupportedScreenShare;
 + (unsigned long long)maxScreenEncodingSizeSupported;
-+ (unsigned int)mainDisplayHeight;
-+ (unsigned int)mainDisplayWidth;
++ (unsigned int)screenHeightForDisplayID:(unsigned int)arg1;
++ (unsigned int)screenWidthForDisplayID:(unsigned int)arg1;
 + (unsigned int)screenHeight;
 + (unsigned int)screenWidth;
++ (_Bool)shouldOverrideGPUMuxing;
 + (_Bool)disableViewPointCorrectionForSharing;
 + (unsigned int)maxFpsCameraCaptureDuringSharing;
 + (unsigned int)maxRemoteParticipants30fps;
@@ -51,6 +63,8 @@ __attribute__((visibility("hidden")))
 + (long long)deviceClass;
 @property(readonly, nonatomic) NSSet *pixelFormatCollections; // @synthesize pixelFormatCollections=_pixelFormatCollections;
 @property(readonly, nonatomic) _Bool vcpSupportsHEVCEncoder; // @synthesize vcpSupportsHEVCEncoder=_vcpSupportsHEVCEncoder;
+@property(readonly, nonatomic) _Bool isSiriVoicePlayoutSupported;
+@property(readonly, nonatomic) _Bool isSiriVoiceTapSupported;
 @property(readonly, nonatomic) _Bool isVideoRenderingSupported;
 - (unsigned int)maxNetworkBitrateMultiwayVideoOnWifi:(_Bool)arg1;
 - (unsigned int)maxNetworkBitrateMultiwayAudioOnWifi:(_Bool)arg1 isLowLatencyAudio:(_Bool)arg2;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSPredicateVisitor-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface NSSQLPredicateAnalyser : NSObject <NSPredicateVisitor>
+@interface NSSQLPredicateAnalyser : NSObject
 {
     _Bool _compoundPredicate;
     NSMutableArray *_keys;

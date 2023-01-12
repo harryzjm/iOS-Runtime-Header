@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlayer/MPCacheableConcreteMediaEntity-Protocol.h>
-#import <MediaPlayer/NSCopying-Protocol.h>
+#import "MPMediaItem.h"
 
 @class MPConcreteMediaEntityPropertiesCache, MPMediaLibrary, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPConcreteMediaItem <NSCopying, MPCacheableConcreteMediaEntity>
+@interface MPConcreteMediaItem : MPMediaItem
 {
     MPMediaLibrary *_library;
     unsigned long long _persistentID;

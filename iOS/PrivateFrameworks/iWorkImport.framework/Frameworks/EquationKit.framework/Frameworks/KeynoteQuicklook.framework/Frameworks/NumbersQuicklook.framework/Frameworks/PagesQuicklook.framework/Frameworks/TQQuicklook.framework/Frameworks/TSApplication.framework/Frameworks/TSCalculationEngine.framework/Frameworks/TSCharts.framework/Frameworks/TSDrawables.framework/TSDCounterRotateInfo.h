@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/TSDContainerInfo-Protocol.h>
-#import <TSDrawables/TSDResizingAwareInfo-Protocol.h>
-
 @class NSArray, NSString, TSDDrawableInfo, TSDGroupInfo, TSDInfoGeometry, TSPObject;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface TSDCounterRotateInfo : NSObject <TSDResizingAwareInfo, TSDContainerInfo>
+@interface TSDCounterRotateInfo : NSObject
 {
     TSDInfoGeometry *_geometry;
     TSDGroupInfo *_parentGroup;

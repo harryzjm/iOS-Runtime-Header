@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)meltedClass;
 - (void).cxx_destruct;
+- (id)syncError;
 - (id)sharedOwnerName;
 - (_Bool)isColorDisplayOnly;
 - (id)externalID;
@@ -34,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)calendarIdentifier;
 - (id)hexColorStringFromREMColor:(id)arg1;
 - (id)REMColorFromEKHexColorString:(id)arg1;
-- (id)publishURL;
+- (id)publishURLString;
 - (_Bool)isPublished;
 - (unsigned long long)ekSharingStatusFromREMSharingStatus:(long long)arg1;
 - (unsigned long long)sharingStatus;

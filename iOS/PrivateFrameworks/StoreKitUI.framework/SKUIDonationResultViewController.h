@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIDonationConfigurationObserver-Protocol.h>
-
 @class NSString, SKUIDonationResultView, SKUIGiftAmount;
 
 __attribute__((visibility("hidden")))
-@interface SKUIDonationResultViewController <SKUIDonationConfigurationObserver>
+@interface SKUIDonationResultViewController
 {
     SKUIGiftAmount *_donationAmount;
     SKUIDonationResultView *_resultView;

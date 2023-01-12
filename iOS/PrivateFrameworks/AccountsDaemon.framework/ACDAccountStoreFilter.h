@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AccountsDaemon/ACRemoteAccountStoreProtocol-Protocol.h>
-
 @class ACDAccountStore, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ACDAccountStoreFilter : NSObject <ACRemoteAccountStoreProtocol>
+@interface ACDAccountStoreFilter : NSObject
 {
     ACDAccountStore *_backingAccountStore;
 }
@@ -19,10 +17,11 @@ __attribute__((visibility("hidden")))
 + (id)new;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) ACDAccountStore *backingAccountStore; // @synthesize backingAccountStore=_backingAccountStore;
-- (void)registerMonitorForAccountsOfTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)registerMonitorForAccountsOfTypes:(id)arg1 propertiesToPrefetch:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)shutdownAccountsD:(CDUnknownBlockType)arg1;
 - (void)resetDatabaseToVersion:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)scheduleBackupIfNonexistent:(CDUnknownBlockType)arg1;
+- (void)runAccountMigrationPlugins:(CDUnknownBlockType)arg1;
 - (void)triggerKeychainMigrationIfNecessary:(CDUnknownBlockType)arg1;
 - (void)removeAccountFromPairedDevice:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAccountsFromPairedDeviceWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;

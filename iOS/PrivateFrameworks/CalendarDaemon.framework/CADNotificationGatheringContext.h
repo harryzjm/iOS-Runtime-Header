@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSMutableArray, NSString;
+@class ClientConnection, NSArray, NSDate, NSMutableArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CADNotificationGatheringContext : NSObject
@@ -14,31 +14,31 @@ __attribute__((visibility("hidden")))
     NSString *_sourceExternalIdentifier;
     _Bool _excludingDelegateSources;
     _Bool _filteredByShowsNotificationsFlag;
-    NSMutableArray *_notificationTypes;
-    NSMutableArray *_rowIDs;
-    NSMutableArray *_occurrenceDates;
+    _Bool _expanded;
+    NSSet *_uncheckedCalendarIdentifiers;
+    NSMutableArray *_notifications;
     double _earliestExpirationDate;
     _Bool _deleteOldNotifications;
-    struct CalDatabase *_database;
+    ClientConnection *_connection;
     double _now;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
 @property(readonly, nonatomic) _Bool deleteOldNotifications; // @synthesize deleteOldNotifications=_deleteOldNotifications;
 @property(readonly, nonatomic) double now; // @synthesize now=_now;
-@property(readonly, nonatomic) struct CalDatabase *database; // @synthesize database=_database;
-- (double)endDateOfLastOccurrenceInCacheForEvent:(const void *)arg1;
-- (double)expirationTimestampForRecurrence:(const void *)arg1 event:(const void *)arg2;
-- (double)expirationTimestampForEvent:(const void *)arg1 withInitialOccurrenceDate:(double)arg2;
-- (double)expirationTimestampForEvent:(const void *)arg1;
+@property(readonly, nonatomic) NSArray *notifications; // @synthesize notifications=_notifications;
+@property(readonly, nonatomic) ClientConnection *connection; // @synthesize connection=_connection;
+- (double)endDateOfLastOccurrenceInCacheForEvent:(const void *)arg1 database:(struct CalDatabase *)arg2 cacheRange:(id *)arg3;
+- (double)expirationTimestampForRecurrence:(const void *)arg1 event:(const void *)arg2 database:(struct CalDatabase *)arg3;
+- (double)expirationTimestampForEvent:(const void *)arg1 withInitialOccurrenceDate:(double)arg2 database:(struct CalDatabase *)arg3;
+- (double)expirationTimestampForEvent:(const void *)arg1 database:(struct CalDatabase *)arg2;
+- (_Bool)isEventTimeSensitiveForFocus:(const void *)arg1;
+- (_Bool)shouldSkipNotificationForCalendar:(const void *)arg1;
 - (_Bool)shouldSkipNotificationForStore:(const void *)arg1;
-- (void)addNotificationWithType:(int)arg1 rowID:(int)arg2 expirationDate:(double)arg3;
-- (void)addNotificationWithType:(int)arg1 rowID:(int)arg2 occurrenceDate:(double)arg3 expirationDate:(double)arg4;
+- (void)addNotification:(id)arg1;
 @property(readonly, nonatomic) NSDate *earliestExpiringNotification;
-@property(readonly, nonatomic) NSArray *occurrenceDates;
-@property(readonly, nonatomic) NSArray *rowIDs;
-@property(readonly, nonatomic) NSArray *notificationTypes;
-- (id)initWithDatabase:(struct CalDatabase *)arg1 afterDate:(id)arg2 forSourceWithExternalIdentifier:(id)arg3 excludingDelegateSources:(_Bool)arg4 filteredByShowsNotificationsFlag:(_Bool)arg5;
+- (id)initWithConnection:(id)arg1 afterDate:(id)arg2 forSourceWithExternalIdentifier:(id)arg3 excludingDelegateSources:(_Bool)arg4 excludingUncheckedCalendars:(_Bool)arg5 filteredByShowsNotificationsFlag:(_Bool)arg6 expanded:(_Bool)arg7;
 
 @end
 

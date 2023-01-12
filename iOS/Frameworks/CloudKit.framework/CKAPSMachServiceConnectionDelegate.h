@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKit/APSConnectionDelegate-Protocol.h>
-
 @class APSConnection, CKAPSMachServiceConnectionKey, NSString;
 
-@interface CKAPSMachServiceConnectionDelegate : NSObject <APSConnectionDelegate>
+@interface CKAPSMachServiceConnectionDelegate : NSObject
 {
     APSConnection *_connection;
     CKAPSMachServiceConnectionKey *_key;

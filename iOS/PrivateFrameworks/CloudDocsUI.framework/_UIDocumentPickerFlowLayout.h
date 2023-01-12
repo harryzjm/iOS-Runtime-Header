@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewFlowLayout.h>
 
-#import <CloudDocsUI/_UICollectionViewLayoutCellStyle-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerFlowLayout : UICollectionViewFlowLayout <_UICollectionViewLayoutCellStyle>
+@interface _UIDocumentPickerFlowLayout : UICollectionViewFlowLayout
 {
     long long cellStyle;
     double _contentSizeAdjustment;

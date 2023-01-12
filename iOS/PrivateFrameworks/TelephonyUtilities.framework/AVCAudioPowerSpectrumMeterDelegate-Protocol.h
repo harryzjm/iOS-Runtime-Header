@@ -11,6 +11,7 @@
 @protocol AVCAudioPowerSpectrumMeterDelegate <NSObject>
 
 @optional
+- (void)meterSpectrumCaptureWasInterrupted:(AVCAudioPowerSpectrumMeter *)arg1;
 - (void)meterServerDidDisconnect:(AVCAudioPowerSpectrumMeter *)arg1;
 - (void)audioPowerSpectrumMeter:(AVCAudioPowerSpectrumMeter *)arg1 didUpdateLocalAudioPowerSpectrum:(AVCAudioPowerSpectrum *)arg2 remoteAudioPowerSpectrums:(NSDictionary *)arg3;
 - (void)audioPowerSpectrumMeter:(AVCAudioPowerSpectrumMeter *)arg1 didUpdateAudioPowerSpectrums:(NSDictionary *)arg2;

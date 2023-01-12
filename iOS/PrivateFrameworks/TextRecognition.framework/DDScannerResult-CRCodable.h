@@ -6,11 +6,9 @@
 
 #import <DataDetectorsCore/DDScannerResult.h>
 
-#import <TextRecognition/CRCodable-Protocol.h>
-
 @class NSString;
 
-@interface DDScannerResult (CRCodable) <CRCodable>
+@interface DDScannerResult (CRCodable)
 + (id)ddScannerResultWithCRCodableDataRepresentation:(id)arg1;
 - (id)crCodableDataRepresentation;
 

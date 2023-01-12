@@ -4,17 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CommunicationsSetupUI/AKAppleIDAuthenticationDelegate-Protocol.h>
-#import <CommunicationsSetupUI/CKOnboardingControllerDelegate-Protocol.h>
-#import <CommunicationsSetupUI/CNFRegWizardControllerDelegate-Protocol.h>
-#import <CommunicationsSetupUI/CNMeCardSharingSettingsViewControllerDelegate-Protocol.h>
-#import <CommunicationsSetupUI/IMCloudKitEventHandler-Protocol.h>
-#import <CommunicationsSetupUI/PSSystemPolicyForAppDelegate-Protocol.h>
+#import "CNFRegListController.h"
 
-@class CKBlackholeConversationListViewController, CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, IMCTXPCServiceSubscriptionInfo, NSString, PSSystemPolicyForApp;
+@class CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, IMCTXPCServiceSubscriptionInfo, NSString, PSSystemPolicyForApp, UIViewController;
+@protocol PSController;
 
 __attribute__((visibility("hidden")))
-@interface CKSettingsMessagesController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler, CNMeCardSharingSettingsViewControllerDelegate, CKOnboardingControllerDelegate, PSSystemPolicyForAppDelegate>
+@interface CKSettingsMessagesController : CNFRegListController
 {
     _Bool _showingChildViewController;
     int _profileToken;
@@ -25,7 +21,7 @@ __attribute__((visibility("hidden")))
     CKMultipleCTSubscriptionsController *_mmsAllowsGroupMessagingController;
     IMCTXPCServiceSubscriptionInfo *_ctSubscriptionInfo;
     CKOnboardingController *_onboardingController;
-    CKBlackholeConversationListViewController *_blackholeConversationListViewController;
+    UIViewController<PSController> *_blackholeConversationListViewController;
     CKNSExtension *_ckExtension;
 }
 
@@ -37,7 +33,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)currentMessageAutoKeepForType:(int)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKNSExtension *ckExtension; // @synthesize ckExtension=_ckExtension;
-@property(retain, nonatomic) CKBlackholeConversationListViewController *blackholeConversationListViewController; // @synthesize blackholeConversationListViewController=_blackholeConversationListViewController;
+@property(retain, nonatomic) UIViewController<PSController> *blackholeConversationListViewController; // @synthesize blackholeConversationListViewController=_blackholeConversationListViewController;
 @property(retain, nonatomic) CKOnboardingController *onboardingController; // @synthesize onboardingController=_onboardingController;
 @property(retain, nonatomic) IMCTXPCServiceSubscriptionInfo *ctSubscriptionInfo; // @synthesize ctSubscriptionInfo=_ctSubscriptionInfo;
 @property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsAllowsGroupMessagingController; // @synthesize mmsAllowsGroupMessagingController=_mmsAllowsGroupMessagingController;
@@ -81,8 +77,6 @@ __attribute__((visibility("hidden")))
 - (id)areReadReceiptsEnabled:(id)arg1;
 - (id)readReceiptSpecifierIdentifiers;
 - (_Bool)shouldShowReadReceipts;
-- (id)mentionsSettingsSpecifierIdentifiers;
-- (_Bool)shouldShowMentionsSettings;
 - (id)smsRelaySettingsSpecifierIdentifiers;
 - (_Bool)hasPhoneNumber;
 - (_Bool)shouldShowSMSRelaySettings;

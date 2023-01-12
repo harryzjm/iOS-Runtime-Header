@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "INImage.h"
+
 @class NSData, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface _INDataImage
+@interface _INDataImage : INImage
 {
     NSUUID *_sha256HashUUID;
     NSData *_imageData;

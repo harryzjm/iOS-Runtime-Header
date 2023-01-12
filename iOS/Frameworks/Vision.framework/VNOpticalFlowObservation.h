@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VNPixelBufferObservation.h"
+
 @class LKTOpticalFlow, VNImageSignature;
 
 __attribute__((visibility("hidden")))
-@interface VNOpticalFlowObservation
+@interface VNOpticalFlowObservation : VNPixelBufferObservation
 {
     VNImageSignature *_targetImageSignature;
     LKTOpticalFlow *_opticalFlow;

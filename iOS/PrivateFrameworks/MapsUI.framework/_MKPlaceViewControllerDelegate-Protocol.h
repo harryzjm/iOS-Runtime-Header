@@ -7,8 +7,8 @@
 #import <MapsUI/NSObject-Protocol.h>
 #import <MapsUI/UIScrollViewDelegate-Protocol.h>
 
-@class CNContact, CNContactViewController, CNLabeledValue, GEOGuideLocation, GEOMapServiceTraits, GEOPlaceCollection, GEOSearchCategory, MKActivityViewController, MKMapItem, MKMuninView, MKPlacePhotoGalleryViewController, NSArray, NSDictionary, NSNumber, NSString, UINavigationController, UIView, UIViewController, _MKPlaceViewController;
-@protocol GEOMapItemPhoto, GEOTransitConnectionInfo, GEOTransitDepartureSequence, MKActivityObserving, MKCuratedCollectionsSyncCoordinator, MKTransitLineMarker, _MKInfoCardAnalyticsDelegate, _MKPlaceItem;
+@class CNContact, CNContactViewController, CNLabeledValue, GEOAttribution, GEOGuideLocation, GEOMapServiceTraits, GEOPlaceCollection, GEOSearchCategory, MKLookAroundView, MKMapItem, NSArray, NSDictionary, NSNumber, NSString, UINavigationController, UIView, UIViewController, _MKPlaceViewController;
+@protocol GEOTransitConnectionInfo, GEOTransitDepartureSequence, MKActivityObserving, MKCuratedCollectionsSyncCoordinator, MKTransitLineMarker, _MKInfoCardAnalyticsDelegate, _MKPlaceItem;
 
 @protocol _MKPlaceViewControllerDelegate <NSObject, UIScrollViewDelegate>
 
@@ -16,7 +16,6 @@
 - (void)placeViewController:(_MKPlaceViewController *)arg1 getRemainingQuickLinksBlock:(void (^)(NSArray *))arg2;
 - (void)placeViewControllerLinkedServicesDidTapHeaderButton:(_MKPlaceViewController *)arg1;
 - (void)placeViewControllerDidUpdateHeight:(_MKPlaceViewController *)arg1;
-- (void)placeViewController:(_MKPlaceViewController *)arg1 didRequestSceneActivationForPhotoGalleryViewController:(MKPlacePhotoGalleryViewController *)arg2;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectPhotoCategoryAtIndex:(unsigned long long)arg2;
 - (void)placeViewControllerDidRequestCopy:(_MKPlaceViewController *)arg1;
 - (void)placeViewControllerDidRequestInformedConsentForAddingContributions:(_MKPlaceViewController *)arg1;
@@ -26,16 +25,13 @@
 - (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectAddPhotosWithObserver:(id <MKActivityObserving>)arg2 sourceView:(UIView *)arg3 shouldAddFromPhotoLibrary:(_Bool)arg4;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectEditSubmissionWithObserver:(id <MKActivityObserving>)arg2;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectAddNewPhotoWithPresentingViewController:(UIViewController *)arg2 progressObserver:(id <MKActivityObserving>)arg3 sourceView:(UIView *)arg4;
-- (void)placeViewController:(_MKPlaceViewController *)arg1 photoGalleryDidScroll:(MKPlacePhotoGalleryViewController *)arg2;
-- (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectPhotoToReport:(id <GEOMapItemPhoto>)arg2 withPhotoGalleryViewController:(MKPlacePhotoGalleryViewController *)arg3;
 - (void)placeViewControllerDidSelectSeeMorePhotos:(_MKPlaceViewController *)arg1;
-- (_Bool)shouldMoveMuninStorefrontViewForPlaceViewController:(_MKPlaceViewController *)arg1;
-- (void)placeViewController:(_MKPlaceViewController *)arg1 enterMuninForMapItem:(MKMapItem *)arg2 muninView:(MKMuninView *)arg3;
+- (_Bool)shouldMoveLookAroundStorefrontViewForPlaceViewController:(_MKPlaceViewController *)arg1;
+- (void)placeViewController:(_MKPlaceViewController *)arg1 enterLookAroundForMapItem:(MKMapItem *)arg2 lookAroundView:(MKLookAroundView *)arg3;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectParent:(MKMapItem *)arg2;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectSearchCategory:(GEOSearchCategory *)arg2;
 - (void)placeViewControllerDidSelectRemoveMarker:(_MKPlaceViewController *)arg1;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 showRelatedMapItems:(NSArray *)arg2 withTitle:(NSString *)arg3 originalMapItem:(MKMapItem *)arg4 analyticsDelegate:(id <_MKInfoCardAnalyticsDelegate>)arg5;
-- (NSArray *)placeViewController:(_MKPlaceViewController *)arg1 viewsForMapItems:(NSArray *)arg2 prefersAddressOverCategory:(_Bool)arg3;
 - (id <MKCuratedCollectionsSyncCoordinator>)curatedCollectionSyncCoordinator;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 seeAllCollections:(NSArray *)arg2 usingTitle:(NSString *)arg3 usingCollectionIds:(NSArray *)arg4;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 selectExploreGuidesWithGuideLocation:(GEOGuideLocation *)arg2;
@@ -48,6 +44,7 @@
 - (void)placeViewControllerDidSelectRemoveShortcut:(_MKPlaceViewController *)arg1;
 - (void)placeViewControllerDidSelectAddShortcut:(_MKPlaceViewController *)arg1;
 - (int)mapTypeForPlaceViewController:(_MKPlaceViewController *)arg1;
+- (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectTransitAttribution:(GEOAttribution *)arg2;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectTransitLine:(id <MKTransitLineMarker>)arg2;
 - (_Bool)placeViewController:(_MKPlaceViewController *)arg1 canSelectDepartureSequence:(id <GEOTransitDepartureSequence>)arg2 mapItem:(MKMapItem *)arg3;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectDepartureSequence:(id <GEOTransitDepartureSequence>)arg2 mapItem:(MKMapItem *)arg3;
@@ -86,6 +83,5 @@
 - (double)placeViewControllerPlaceCardHeaderTitleTrailingConstant:(_MKPlaceViewController *)arg1;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 didSelectActivityOfType:(NSString *)arg2 completed:(_Bool)arg3;
 - (GEOMapServiceTraits *)traitsForPlaceViewController:(_MKPlaceViewController *)arg1;
-- (MKActivityViewController *)activityViewControllerForPlaceViewController:(_MKPlaceViewController *)arg1;
 @end
 

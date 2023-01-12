@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKDPCodeFunctionInvokeResponseAttestationResponseAttestation : PBCodable <NSCopying>
+@interface CKDPCodeFunctionInvokeResponseAttestationResponseAttestation : PBCodable
 {
     NSData *_appQuote;
     NSData *_aqeQuote;

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <SiriCore/SiriCoreSQLiteValue-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (SiriCoreSQLiteValue) <SiriCoreSQLiteValue>
+@interface NSNumber (SiriCoreSQLiteValue)
 - (long long)siriCoreSQLiteValue_integerRepresentation;
 - (double)siriCoreSQLiteValue_doubleRepresentation;
 - (long long)siriCoreSQLiteValue_type;

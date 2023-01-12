@@ -4,22 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableData;
-
 __attribute__((visibility("hidden")))
 @interface VNFaceAnalyzerMultiDetector
 {
     struct shared_ptr<vision::mod::FaceFrontalizer> _mFaceFrontalizerImpl;
-    struct vImage_Buffer _faceVImageBuffer;
-    NSMutableData *_mFaceFrontalizerWorkingBuffer;
 }
 
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
++ (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
 + (float)faceBoundingBoxScalingFactorForFaceObservation:(unsigned long long)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (_Bool)_isFaceprintJunk:(shared_ptr_0a6daad2)arg1;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
+- (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;
+- (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end

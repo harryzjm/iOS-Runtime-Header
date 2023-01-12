@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDReviewFilter : PBCodable <NSCopying>
+@interface GEOPDReviewFilter : PBCodable
 {
     PBUnknownFields *_unknownFields;
     struct GEOPDPhotoSizeFilterValue *_photoSizeFilters;

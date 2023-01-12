@@ -6,9 +6,7 @@
 
 #import <UIKit/UIColor.h>
 
-#import <TouchML/UIColorJSExports-Protocol.h>
-
-@interface UIColor (TouchML) <UIColorJSExports>
+@interface UIColor (TouchML)
 + (void)initializeJSContext:(id)arg1;
 - (id)image;
 @property(readonly, nonatomic) id CGColorRef;

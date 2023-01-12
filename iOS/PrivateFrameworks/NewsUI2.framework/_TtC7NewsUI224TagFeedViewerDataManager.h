@@ -18,7 +18,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *membershipController;
-    MISSING_TYPE *channel;
+    MISSING_TYPE *sportsGraphManager;
+    MISSING_TYPE *topLevelSportsTags;
+    MISSING_TYPE *_request;
 }
 
 - (void).cxx_destruct;

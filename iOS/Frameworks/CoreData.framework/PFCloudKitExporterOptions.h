@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-
 @class CKDatabase, NSCloudKitMirroringDelegateOptions;
 
 __attribute__((visibility("hidden")))
-@interface PFCloudKitExporterOptions : NSObject <NSCopying>
+@interface PFCloudKitExporterOptions : NSObject
 {
     CKDatabase *_database;
     NSCloudKitMirroringDelegateOptions *_mirroringDelegateOptions;

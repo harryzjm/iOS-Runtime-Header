@@ -6,26 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepHealthDaemon/HDDataObserver-Protocol.h>
-#import <SleepHealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
-
-@class CHSTimelineController, HDProfile, HKSPSleepStore, HKSPThrottler, NSString;
+@class HDProfile, HKSPSleepStore, HKSPThrottler, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HDSHWidgetSchedulingManager : NSObject <HDHealthDaemonReadyObserver, HDDataObserver>
+@interface HDSHWidgetSchedulingManager : NSObject
 {
     HDProfile *_profile;
     HKSPThrottler *_reloadThrottler;
     HKSPSleepStore *_sleepStore;
-    CHSTimelineController *_timelineController;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
++ (void)_logSleepSampleStatistics:(id)arg1;
 - (void).cxx_destruct;
-- (void)_reloadWidgetTimelinesWithReason:(unsigned long long)arg1;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)daemonReady:(id)arg1;
+- (void)_reloadWidgetsWithReasons:(unsigned long long)arg1;
 - (void)_stopObservingSleep;
 - (void)_startObservingSleep;
 - (void)dealloc;

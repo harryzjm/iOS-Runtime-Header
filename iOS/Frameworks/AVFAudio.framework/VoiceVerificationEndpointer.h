@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFAudio/Endpointer-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VoiceVerificationEndpointer : NSObject <Endpointer>
+@interface VoiceVerificationEndpointer : NSObject
 {
 }
 

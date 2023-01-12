@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsFeed/NUURLHandlerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8NewsFeed26WebEmbedURLHandlerDelegate : NSObject <NUURLHandlerDelegate>
+@interface _TtC8NewsFeed26WebEmbedURLHandlerDelegate : NSObject
 {
     MISSING_TYPE *webLinkPresentingViewController;
+    MISSING_TYPE *webEmbedIdentifier;
+    MISSING_TYPE *webEmbedCoordinator;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)URLHandler:(id)arg1 willOpenURL:(id)arg2;
 - (void)URLHandler:(id)arg1 wantsToPresentViewController:(id)arg2 animated:(_Bool)arg3;
 
 @end

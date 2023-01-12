@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNEnumeratorRefillStrategy-Protocol.h>
-
 @class CNContactStore, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _CNChangeHistoryContactRefillStrategy : NSObject <CNEnumeratorRefillStrategy>
+@interface _CNChangeHistoryContactRefillStrategy : NSObject
 {
     _Bool _unifyResults;
     NSArray *_keys;

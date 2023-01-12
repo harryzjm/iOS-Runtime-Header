@@ -7,8 +7,8 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (StdString)
-+ (id)stringForStdString:(const void *)arg1;
-+ (basic_string_05660eb3)stdStringForString:(id)arg1;
-@property(readonly, nonatomic) basic_string_05660eb3 stdString;
++ (id)rtcStringForStdString:(const void *)arg1;
++ (basic_string_05660eb3)rtcStdStringForString:(id)arg1;
+@property(readonly, nonatomic) basic_string_05660eb3 rtcStdString;
 @end
 

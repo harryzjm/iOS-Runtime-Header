@@ -7,9 +7,11 @@
 #import <CoreData/NSManagedObjectID.h>
 
 @interface NSManagedObjectID (Shared)
+@property(readonly, nonatomic) _Bool ic_isInvitationType;
 @property(readonly, nonatomic) _Bool ic_isHashtagType;
 @property(readonly, nonatomic) _Bool ic_isInlineAttachmentType;
 @property(readonly, nonatomic) _Bool ic_isAttachmentType;
+@property(readonly, nonatomic) _Bool ic_isBaseAttachmentType;
 @property(readonly, nonatomic) _Bool ic_isNoteType;
 @property(readonly, nonatomic) _Bool ic_isLegacyNoteType;
 @property(readonly, nonatomic) _Bool ic_isModernNoteType;

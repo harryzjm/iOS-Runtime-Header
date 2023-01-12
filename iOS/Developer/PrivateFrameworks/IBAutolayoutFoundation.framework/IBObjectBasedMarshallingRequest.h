@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBAutolayoutFoundation/IBObjectRepresentationTranslator-Protocol.h>
-
 @class IBMarshallableObjectPackage, NSString;
 
-@interface IBObjectBasedMarshallingRequest : NSObject <IBBinaryArchiving, IBObjectRepresentationTranslator>
+@interface IBObjectBasedMarshallingRequest : NSObject
 {
     NSString *_identifier;
     IBMarshallableObjectPackage *_objectPackage;

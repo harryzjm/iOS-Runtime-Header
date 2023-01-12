@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSDChangeDetails-Protocol.h>
-
 @class NSDate, NSString, TSKAnnotationAuthor, TSWPChange;
 
-@interface TSWPChangeDetails : NSObject <TSDChangeDetails>
+@interface TSWPChangeDetails : NSObject
 {
     TSWPChange *_change;
     NSDate *_dateForLastChangeStringUpdate;
@@ -25,6 +23,7 @@
 @property(retain, nonatomic) NSString *changeTrackingContentString; // @synthesize changeTrackingContentString=_changeTrackingContentString;
 @property(retain, nonatomic) NSDate *dateForLastChangeStringUpdate; // @synthesize dateForLastChangeStringUpdate=_dateForLastChangeStringUpdate;
 @property(retain, nonatomic) TSWPChange *change; // @synthesize change=_change;
+@property(readonly, nonatomic) NSString *parentUUID;
 @property(readonly, nonatomic) NSString *annotationUUID;
 - (_Bool)isInDocument;
 - (void)commentWillBeAddedToDocumentRoot;

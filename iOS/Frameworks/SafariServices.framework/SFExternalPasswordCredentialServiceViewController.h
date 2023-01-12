@@ -4,16 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/SFCredentialProviderExtensionManagerObserver-Protocol.h>
-#import <SafariServices/SFExternalPasswordCredentialServiceViewControllerProtocol-Protocol.h>
-#import <SafariServices/_ASPasswordCredentialAuthenticationViewControllerDelegate-Protocol.h>
-#import <SafariServices/_SFAuthenticationClient-Protocol.h>
-#import <SafariServices/_SFAuthenticationContextDelegate-Protocol.h>
-
 @class NSString, _ASPasswordCredentialAuthenticationViewController, _SFAuthenticationContext;
 
 __attribute__((visibility("hidden")))
-@interface SFExternalPasswordCredentialServiceViewController <SFCredentialProviderExtensionManagerObserver, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate, SFExternalPasswordCredentialServiceViewControllerProtocol>
+@interface SFExternalPasswordCredentialServiceViewController
 {
     _SFAuthenticationContext *_authenticationContext;
     _ASPasswordCredentialAuthenticationViewController *_extensionController;

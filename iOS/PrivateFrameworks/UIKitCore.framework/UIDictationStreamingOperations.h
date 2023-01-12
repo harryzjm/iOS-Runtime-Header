@@ -30,8 +30,8 @@ __attribute__((visibility("hidden")))
 - (void)pushSelectRangeForSpeech:(struct _NSRange)arg1;
 - (void)dictationWillBeginInDocument:(id)arg1;
 - (void)setDocument:(id)arg1;
-- (void)performSelectRangeForSpeech:(id)arg1;
-- (void)pushSpeechOperationWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
+- (void)performSelectRangeForSpeech:(struct _NSRange)arg1;
+- (void)pushSpeechOperationWithSelectionChangeDelta:(long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)pushSpeechOperation:(id)arg1;
 - (void)popAndInvoke;
 - (double)delayAfterSelector:(SEL)arg1;

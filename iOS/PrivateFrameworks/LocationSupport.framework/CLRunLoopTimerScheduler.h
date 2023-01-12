@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <LocationSupport/CLTimerScheduler-Protocol.h>
-
 @class CLTimer, NSRunLoop, NSTimer;
 
-@interface CLRunLoopTimerScheduler : NSObject <CLTimerScheduler>
+@interface CLRunLoopTimerScheduler : NSObject
 {
     NSTimer *_underlyingTimer;
     CDUnknownBlockType _fireBlock;

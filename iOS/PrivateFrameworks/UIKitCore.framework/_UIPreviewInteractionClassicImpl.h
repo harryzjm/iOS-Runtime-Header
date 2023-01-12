@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIPreviewInteractionImpl-Protocol.h>
-
 @class CADisplayLink, NSString, UIPreviewInteraction, UIView, _UIDeepPressAnalyzer, _UIPreviewInteractionHighlighter, _UIPreviewInteractionStateRecognizer, _UIPreviewInteractionViewControllerHelper, _UIStatesFeedbackGenerator;
 @protocol UIPreviewInteractionDelegate, _UIPreviewInteractionTouchForceProviding;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionClassicImpl : NSObject <_UIPreviewInteractionImpl>
+@interface _UIPreviewInteractionClassicImpl : NSObject
 {
     UIView *_view;
     struct {

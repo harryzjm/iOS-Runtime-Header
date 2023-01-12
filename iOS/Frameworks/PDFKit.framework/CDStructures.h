@@ -19,6 +19,8 @@ struct CGAffineTransform {
     double ty;
 };
 
+struct CGDisplayListEntry;
+
 struct CGPoint {
     double x;
     double y;
@@ -34,9 +36,12 @@ struct CGSize {
     double height;
 };
 
-struct PDFSizeIntegral {
-    unsigned long long _field1;
-    unsigned long long _field2;
+struct PDFDetectedFormRow;
+
+struct TextAnnotationAnimationProperties {
+    struct CGRect visibleTextViewRectInScrollView;
+    double animationDuration;
+    double originDelta;
 };
 
 struct UIEdgeInsets {
@@ -51,20 +56,41 @@ struct _NSRange {
     unsigned long long length;
 };
 
+struct mutex {
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } __m_;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
+struct vector<PDFDetectedFormRow, std::allocator<PDFDetectedFormRow>> {
+    struct PDFDetectedFormRow *__begin_;
+    struct PDFDetectedFormRow *__end_;
+    struct __compressed_pair<PDFDetectedFormRow *, std::allocator<PDFDetectedFormRow>> {
+        struct PDFDetectedFormRow *__value_;
+    } __end_cap_;
+};
+
+struct vector<const CGDisplayListEntry *, std::allocator<const CGDisplayListEntry *>> {
+    struct CGDisplayListEntry **_field1;
+    struct CGDisplayListEntry **_field2;
+    struct __compressed_pair<const CGDisplayListEntry **, std::allocator<const CGDisplayListEntry *>> {
+        struct CGDisplayListEntry **_field1;
+    } _field3;
+};
+
 #pragma mark Typedef'd Structures
 
-typedef struct {
-    struct CGPoint _field1;
-    struct CGPoint _field2;
-} CDStruct_e3b9714e;
-
-typedef struct {
-    struct CGRect visibleTextViewRectInScrollView;
-    double animationDuration;
-    double originDelta;
-} CDStruct_c23cc2dc;
+// Template types
+typedef struct vector<const CGDisplayListEntry *, std::allocator<const CGDisplayListEntry *>> {
+    struct CGDisplayListEntry **_field1;
+    struct CGDisplayListEntry **_field2;
+    struct __compressed_pair<const CGDisplayListEntry **, std::allocator<const CGDisplayListEntry *>> {
+        struct CGDisplayListEntry **_field1;
+    } _field3;
+} vector_dc32f2d1;
 

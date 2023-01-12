@@ -5,6 +5,7 @@
 //
 
 @interface (null) (NewsAnalytics)
-- (void)loadInRegistry:(id)arg1;
+- (void)startAppSessionWithUserIDReset:(id)arg1;
+- (void)endAppSessionWithEndReason:(id)arg1;
 @end
 

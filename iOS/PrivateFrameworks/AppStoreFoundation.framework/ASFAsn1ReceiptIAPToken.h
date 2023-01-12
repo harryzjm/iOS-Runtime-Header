@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ASFAsn1Token, NSString;
+@class ASFAsn1Token;
 
 __attribute__((visibility("hidden")))
 @interface ASFAsn1ReceiptIAPToken : NSObject
@@ -16,15 +16,8 @@ __attribute__((visibility("hidden")))
     ASFAsn1Token *mContentToken;
 }
 
-+ (id)readFromBuffer:(const char *)arg1;
 - (void).cxx_destruct;
-@property(readonly) ASFAsn1Token *contentToken; // @synthesize contentToken=mContentToken;
-@property(readonly) unsigned long long typeVersion; // @synthesize typeVersion=mTypeVersion;
-@property(readonly) unsigned long long type; // @synthesize type=mType;
-@property(readonly) unsigned long long integerValue; // @dynamic integerValue;
-@property(readonly) NSString *stringValue; // @dynamic stringValue;
 - (id)description;
-- (id)_initWithType:(unsigned long long)arg1 typeVersion:(unsigned long long)arg2 contentToken:(id)arg3;
 
 @end
 

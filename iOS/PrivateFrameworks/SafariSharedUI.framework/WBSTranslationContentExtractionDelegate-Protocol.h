@@ -6,12 +6,14 @@
 
 #import <SafariSharedUI/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 @protocol WBSTranslationContentExtracting;
 
 @protocol WBSTranslationContentExtractionDelegate <NSObject>
 
 @optional
+- (NSString *)sourceLocaleForContentExtractor:(id <WBSTranslationContentExtracting>)arg1;
+- (NSString *)targetLocaleForContentExtractor:(id <WBSTranslationContentExtracting>)arg1;
 - (void)contentExtractorDidFinishExtractingInitialContent:(id <WBSTranslationContentExtracting>)arg1;
 - (void)contentExtractorDidStopExtractingContent:(id <WBSTranslationContentExtracting>)arg1;
 - (void)contentExtractorDidBeginExtractingContent:(id <WBSTranslationContentExtracting>)arg1;

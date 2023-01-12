@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ML3ImportOperation.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface ML3SetCloudIDImportOperation
+@interface ML3SetCloudIDImportOperation : ML3ImportOperation
 {
     NSArray *_trackInfo;
     NSArray *_playlistInfo;

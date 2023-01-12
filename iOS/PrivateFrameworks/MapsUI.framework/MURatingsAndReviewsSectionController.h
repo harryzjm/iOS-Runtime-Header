@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceCollectionPullQuotePlatterViewDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKPlaceReviewAvatarGenerator, MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUScrollableStackView, NSMutableArray, NSString, UIView, UIViewController;
+@class MKUGCCallToActionViewAppearance, MUPlaceRatingReviewTitleBuilder, MUPlaceReviewAvatarGenerator, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUScrollableStackView, NSArray, NSMutableArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MURatingsAndReviewsSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MURatingsAndReviewsSectionController <MUPlaceCollectionPullQuotePlatterViewDelegate, MUPlaceSectionControlling>
+@interface MURatingsAndReviewsSectionController : MUPlaceSectionController
 {
     MUScrollableStackView *_contentStackView;
     MUPlaceSectionView *_sectionView;
-    MKPlaceReviewAvatarGenerator *_avatarGenerator;
+    MUPlaceReviewAvatarGenerator *_avatarGenerator;
     NSMutableArray *_focusItems;
+    MUPlaceRatingReviewTitleBuilder *_titleBuilder;
     MUPlaceSectionHeaderViewModel *_sectionHeaderViewModel;
     id <MURatingsAndReviewsSectionControllerDelegate> _actionDelegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MURatingsAndReviewsSectionControllerDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (id)infoCardChildPossibleActions;
 - (void)pullQuoteViewDidTapMore:(id)arg1;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel; // @synthesize sectionHeaderViewModel=_sectionHeaderViewModel;
 - (void)_addHorizontalTileToContentStackView:(id)arg1 items:(id)arg2;
 - (void)_addPlaceCollectionPullQuotesIfNeeded:(id)arg1;
+- (void)_addRatingSnippets:(id)arg1 withCellItems:(id)arg2;
 - (void)_addUserReviewCategoryTilesIfNeeded:(id)arg1;
 - (void)_addAppleRatingsCategoryTileIfNeeded:(id)arg1;
 - (void)_setupRatingRows;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

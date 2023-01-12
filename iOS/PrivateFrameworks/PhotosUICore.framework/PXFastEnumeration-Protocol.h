@@ -8,6 +8,10 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @protocol PXFastEnumeration <NSFastEnumeration, NSObject>
+@property(readonly, nonatomic) id firstObject;
 @property(readonly) unsigned long long count;
+
+@optional
+- (id)copy;
 @end
 

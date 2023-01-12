@@ -14,6 +14,7 @@
     MISSING_TYPE *summaryText;
     MISSING_TYPE *attribution;
     MISSING_TYPE *objectWillChange;
+    MISSING_TYPE *hasEverHadAWatch;
     MISSING_TYPE *displayType;
 }
 

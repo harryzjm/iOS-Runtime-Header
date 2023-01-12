@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class NSArray, NSString, SKUIDividerViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUISegmentedControlViewElement
+@interface SKUISegmentedControlViewElement : SKUIViewElement
 {
     long long _maximumNumberOfVisibleItems;
     NSString *_moreListTitle;

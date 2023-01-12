@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNContactAction.h"
+
 @class NSArray;
 @protocol CNContactGroupPickerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNContactAddNewFieldAction
+@interface CNContactAddNewFieldAction : CNContactAction
 {
     NSArray *_prohibitedPropertyKeys;
     id <CNContactGroupPickerDelegate> _groupPickerDelegate;

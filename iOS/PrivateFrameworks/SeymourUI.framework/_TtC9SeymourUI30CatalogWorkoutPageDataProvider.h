@@ -20,6 +20,7 @@
     MISSING_TYPE *activationState;
     MISSING_TYPE *page;
     MISSING_TYPE *workoutDetail;
+    MISSING_TYPE *accessibilityShelf;
     MISSING_TYPE *guidedWorkoutTagsShelf;
     MISSING_TYPE *headerShelf;
     MISSING_TYPE *musicTracksShelf;
@@ -27,6 +28,7 @@
     MISSING_TYPE *detailActionsShelf;
     MISSING_TYPE *summaryShelf;
     MISSING_TYPE *workoutTagsShelf;
+    MISSING_TYPE *languageDisclaimerShelf;
     MISSING_TYPE *shouldPublishPageEventWhenAvailable;
 }
 

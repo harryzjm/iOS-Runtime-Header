@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, UITextReplacement, _UISlotView;
+#import "UIButton.h"
+
+@class NSDate, UITextReplacement, _UICalloutBarVisualStyle, _UISlotView;
 
 __attribute__((visibility("hidden")))
-@interface UICalloutBarButton
+@interface UICalloutBarButton : UIButton
 {
     SEL m_action;
     int m_position;
@@ -27,13 +29,15 @@ __attribute__((visibility("hidden")))
     NSDate *m_appearanceDate;
     _UISlotView *m_securePasteButtonSlotView;
     _Bool forceFlash;
+    _UICalloutBarVisualStyle *m_visualStyle;
 }
 
 + (id)symbolConfigurationForScale:(double)arg1;
-+ (id)buttonWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 type:(int)arg4 inView:(id)arg5;
-+ (id)buttonWithImage:(id)arg1 action:(SEL)arg2 type:(int)arg3 inView:(id)arg4;
-+ (id)buttonWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3 inView:(id)arg4;
-+ (id)buttonWithTitle:(id)arg1 subtitle:(id)arg2 maxWidth:(double)arg3 action:(SEL)arg4 type:(int)arg5 inView:(id)arg6;
++ (id)buttonWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 type:(int)arg4 inView:(id)arg5 visualStyle:(id)arg6;
++ (id)buttonWithImage:(id)arg1 action:(SEL)arg2 type:(int)arg3 inView:(id)arg4 visualStyle:(id)arg5;
++ (id)buttonWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3 inView:(id)arg4 visualStyle:(id)arg5;
++ (id)buttonWithTitle:(id)arg1 subtitle:(id)arg2 maxWidth:(double)arg3 action:(SEL)arg4 type:(int)arg5 inView:(id)arg6 visualStyle:(id)arg7;
++ (Class)_visualProviderClass;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool dontDismiss; // @synthesize dontDismiss=m_dontDismiss;
 @property(nonatomic) double imageVerticalAdjust; // @synthesize imageVerticalAdjust=m_imageVerticalAdjust;
@@ -41,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long page; // @synthesize page=m_page;
 @property(nonatomic) _Bool forceFlash; // @synthesize forceFlash;
 @property(retain, nonatomic) UITextReplacement *textReplacement; // @synthesize textReplacement=m_textReplacement;
+@property(retain, nonatomic) _UICalloutBarVisualStyle *visualStyle; // @synthesize visualStyle=m_visualStyle;
 @property(readonly, nonatomic) int type; // @synthesize type=m_type;
 @property(readonly, nonatomic) double additionalContentHeight; // @synthesize additionalContentHeight=m_additionalContentHeight;
 @property(readonly, nonatomic) double contentScale; // @synthesize contentScale=m_contentScale;
@@ -62,17 +67,20 @@ __attribute__((visibility("hidden")))
 - (void)configureForMiddlePosition;
 - (void)configureForLeftPosition:(int)arg1;
 - (void)configureForSingle:(int)arg1;
+- (unsigned int)_secureName;
 - (void)configureSecurePasteButtonWithWidth:(double)arg1 height:(double)arg2;
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 - (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
 - (struct CGRect)adjustRectForPosition:(struct CGRect)arg1;
+- (double)cornerRadius;
+- (double)buttonHorizontalPadding;
 - (void)removeFromSuperview;
 - (void)dealloc;
-- (void)setupWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 type:(int)arg4;
-- (void)setupWithImage:(id)arg1 action:(SEL)arg2 type:(int)arg3;
-- (void)setupWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3;
-- (void)setupWithTitle:(id)arg1 subtitle:(id)arg2 maxWidth:(double)arg3 action:(SEL)arg4 type:(int)arg5;
-- (void)_commonSetupWithAction:(SEL)arg1 type:(int)arg2;
+- (void)setupWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 type:(int)arg4 visualStyle:(id)arg5;
+- (void)setupWithImage:(id)arg1 action:(SEL)arg2 type:(int)arg3 visualStyle:(id)arg4;
+- (void)setupWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3 visualStyle:(id)arg4;
+- (void)setupWithTitle:(id)arg1 subtitle:(id)arg2 maxWidth:(double)arg3 action:(SEL)arg4 type:(int)arg5 visualStyle:(id)arg6;
+- (void)_commonSetupWithAction:(SEL)arg1 type:(int)arg2 visualStyle:(id)arg3;
 - (double)_scaleFactorForImage;
 
 @end

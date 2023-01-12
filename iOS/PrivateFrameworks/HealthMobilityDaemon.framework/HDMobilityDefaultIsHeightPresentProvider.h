@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthMobilityDaemon/HDMobilityIsHeightPresentProvider-Protocol.h>
-
 @class HDProfile;
 
 __attribute__((visibility("hidden")))
-@interface HDMobilityDefaultIsHeightPresentProvider : NSObject <HDMobilityIsHeightPresentProvider>
+@interface HDMobilityDefaultIsHeightPresentProvider : NSObject
 {
     HDProfile *_profile;
 }
 
 - (void).cxx_destruct;
-- (_Bool)isHeightPresent;
+- (id)isHeightPresentWithError:(id *)arg1;
 - (id)initWithProfile:(id)arg1;
 
 @end

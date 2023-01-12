@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <ProtectedCloudStorage/NSCopying-Protocol.h>
-
 @class PCSManateePrivateKey;
 
 __attribute__((visibility("hidden")))
-@interface PCSManateeShareableIdentity : PBCodable <NSCopying>
+@interface PCSManateeShareableIdentity : PBCodable
 {
     PCSManateePrivateKey *_encryptionPrivateKey;
     PCSManateePrivateKey *_signingPrivateKey;

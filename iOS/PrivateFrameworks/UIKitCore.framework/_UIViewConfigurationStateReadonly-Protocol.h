@@ -8,7 +8,7 @@
 
 @protocol _UIViewConfigurationStateReadonly <NSObject>
 @property(readonly, nonatomic) unsigned long long _viewConfigurationState;
-@property(readonly, nonatomic) _Bool _showingCompactContextMenu;
+@property(readonly, nonatomic) long long _contextMenuGroupLocation;
 @property(readonly, nonatomic, getter=isPinned) _Bool pinned;
 @property(readonly, nonatomic, getter=isFocused) _Bool focused;
 @property(readonly, nonatomic, getter=isSelected) _Bool selected;

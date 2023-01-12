@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UISpringLoadedInteractionEffect-Protocol.h>
-
 @class NSString, NSTimer;
 @protocol UISpringLoadedInteractionEffect;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewSpringLoadedEffect : NSObject <UISpringLoadedInteractionEffect>
+@interface _UICollectionViewSpringLoadedEffect : NSObject
 {
     id <UISpringLoadedInteractionEffect> _blinkEffect;
     NSTimer *_stateBlinkTimer;

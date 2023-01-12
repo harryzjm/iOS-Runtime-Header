@@ -7,8 +7,6 @@
 @class NSDictionary;
 
 @protocol MTLPipelineStateWithProgramAddressTable
-
-@optional
 - (NSDictionary *)pipelineBinaries;
 @end
 

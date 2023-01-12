@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)_backgroundColorIgnoringHighContrast;
 - (id)_highContrastDynamicColor;
 - (id)colorWithAlphaComponent:(double)arg1;
+- (id)_resolvedMaterialWithTraitCollection:(id)arg1;
 - (id)_resolvedColorWithTraitCollection:(id)arg1;
 - (_Bool)_isDynamicTintColor;
 - (unsigned long long)hash;

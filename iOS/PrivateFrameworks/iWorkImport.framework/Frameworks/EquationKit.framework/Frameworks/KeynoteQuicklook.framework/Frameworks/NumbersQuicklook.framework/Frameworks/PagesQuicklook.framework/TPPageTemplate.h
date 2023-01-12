@@ -6,18 +6,10 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <PagesQuicklook/TPSectionTemplateDrawableProvider-Protocol.h>
-#import <PagesQuicklook/TSDDrawableContainerInfo-Protocol.h>
-#import <PagesQuicklook/TSKDocumentObject-Protocol.h>
-#import <PagesQuicklook/TSKModel-Protocol.h>
-#import <PagesQuicklook/TSKModelRootIndexProvider-Protocol.h>
-#import <PagesQuicklook/TSSPropertySource-Protocol.h>
-#import <PagesQuicklook/TSWPStorageParentStatisticsFilter-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableDictionary, NSObject, NSString, TPDrawablesZOrder, TSDFill, TSDInfoGeometry;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface TPPageTemplate : TSPObject <TSKDocumentObject, TSDDrawableContainerInfo, TPSectionTemplateDrawableProvider, TSSPropertySource, TSKModelRootIndexProvider, TSKModel, TSWPStorageParentStatisticsFilter>
+@interface TPPageTemplate : TSPObject
 {
     _Bool _headersFootersMatchPreviousPage;
     _Bool _hideHeadersFooters;

@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIPassthroughScrollInteractionDelegate-Protocol.h>
-
 @class NSString, UIView, _UIPassthroughScrollInteraction;
 @protocol _UIPopoverDimmingViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIPopoverDimmingView <_UIPassthroughScrollInteractionDelegate>
+@interface _UIPopoverDimmingView
 {
     _Bool _lastHitTestWasPassedThrough;
     _UIPassthroughScrollInteraction *_passthroughScrollInteraction;

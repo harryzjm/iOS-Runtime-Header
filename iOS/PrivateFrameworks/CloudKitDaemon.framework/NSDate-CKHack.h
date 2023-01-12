@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDate.h>
 
-#import <CloudKitDaemon/CKLParsedObject-Protocol.h>
-
 @class NSString;
 
-@interface NSDate (CKHack) <CKLParsedObject>
+@interface NSDate (CKHack)
 + (id)ck_dateWithNaturalLanguageString:(id)arg1;
 + (id)ck_dateFormatterWithString:(id)arg1;
 + (id)CKSharedCalendar;

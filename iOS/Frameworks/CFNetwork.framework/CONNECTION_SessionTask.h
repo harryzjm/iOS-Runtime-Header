@@ -31,6 +31,7 @@
 }
 
 @property(retain, nonatomic) __CFN_TaskMetrics *_metrics; // @synthesize _metrics;
+- (int)_requiresDNSSECValidation;
 - (id)_cookieTransformCallback;
 - (id)_resolvedCNAMEChain;
 - (void)set_resolvedCNAMEChain:(id)arg1;
@@ -103,13 +104,14 @@
 - (unsigned char)_preventsIdleSystemSleep;
 - (unsigned long long)_cachePolicy;
 - (unsigned long long)_allowedProtocolTypes;
+- (id)_prohibitPrivacyProxy;
+- (id)_privacyProxyFailClosedForUnreachableNonMainHosts;
 - (id)_privacyProxyFailClosed;
 - (id)_trackerContext;
 - (id)_isKnownTracker;
 - (id)_attribution;
 - (id)_timeWindowDuration;
 - (id)_timeWindowDelay;
-- (id)_expectedWorkload;
 - (id)_assumesHTTP3Capable;
 - (id)_allowsCellularOverride;
 - (id)_allowsConstrainedOverride;
@@ -119,7 +121,6 @@
 - (id)_prohibitAuthUI;
 - (id)_networkServiceType;
 - (id)_allowsCellular;
-- (id)_contentDispositionFallbackArray;
 - (id)_shouldHandleCookies;
 - (id)_cfCookies;
 - (id)_cfCreds;
@@ -164,6 +165,7 @@
 - (id)_private_nw_activity;
 - (void)dealloc;
 - (id)initWithRequest:(struct _CFURLRequest *)arg1 mutableCurrent:(struct _CFURLRequest *)arg2 connProps:(struct __CFDictionary *)arg3 sockProps:(struct __CFDictionary *)arg4 session:(id)arg5;
+@property(readonly, nonatomic) _Bool _isAVAssetTask;
 
 @end
 

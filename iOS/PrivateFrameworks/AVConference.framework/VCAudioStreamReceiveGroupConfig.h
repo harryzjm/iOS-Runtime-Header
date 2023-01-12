@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCAudioStreamGroupConfig-Protocol.h>
-
-@class NSString, VCAudioStreamGroupCommonConfig;
+@class NSString, VCAudioCaptionsCoordinator, VCAudioStreamGroupCommonConfig;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioStreamReceiveGroupConfig <VCAudioStreamGroupConfig>
+@interface VCAudioStreamReceiveGroupConfig
 {
     VCAudioStreamGroupCommonConfig *_audioStreamGroupConfig;
+    VCAudioCaptionsCoordinator *_captionsCoordinator;
 }
 
+@property(retain, nonatomic) VCAudioCaptionsCoordinator *captionsCoordinator; // @synthesize captionsCoordinator=_captionsCoordinator;
 @property(retain) VCAudioStreamGroupCommonConfig *audioStreamGroupConfig; // @synthesize audioStreamGroupConfig=_audioStreamGroupConfig;
 - (void)dealloc;
 - (id)init;

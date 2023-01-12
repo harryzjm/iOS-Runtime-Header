@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axSetupTextViewForSwitchControl:(id)arg1;
 - (id)initWithContentList:(id)arg1 dataDetectorTypes:(unsigned long long)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
 

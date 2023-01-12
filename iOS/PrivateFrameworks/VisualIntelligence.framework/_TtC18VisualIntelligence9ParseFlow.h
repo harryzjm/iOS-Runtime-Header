@@ -17,11 +17,12 @@
     MISSING_TYPE *triggeringPredictionProcessor;
     MISSING_TYPE *annotationExtractorProcessor;
     MISSING_TYPE *nsfwCheckerProcessor;
+    MISSING_TYPE *domainSelectionProcessor;
     MISSING_TYPE *eligibilityChecker;
     MISSING_TYPE *availableDomainManager;
     MISSING_TYPE *config;
     MISSING_TYPE *trialWrapper;
-    MISSING_TYPE *ocrRequiringDomains;
+    MISSING_TYPE *mlEngineType;
     MISSING_TYPE *modelProviderService;
     MISSING_TYPE *objectDetector;
     MISSING_TYPE *domainGlyphConfig;

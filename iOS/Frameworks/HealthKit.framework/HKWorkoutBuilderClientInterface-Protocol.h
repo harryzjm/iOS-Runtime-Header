@@ -6,9 +6,11 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKWorkout, NSArray, NSDate, NSDictionary, NSError;
+@class HKWorkout, HKWorkoutActivity, HKWorkoutBuilderStatistics, NSArray, NSDate, NSDictionary, NSError;
 
 @protocol HKWorkoutBuilderClientInterface <NSObject>
+- (void)clientRemote_didEndActivity:(HKWorkoutActivity *)arg1;
+- (void)clientRemote_didBeginActivity:(HKWorkoutActivity *)arg1;
 - (void)clientRemote_didFailWithError:(NSError *)arg1;
 - (void)clientRemote_finishedWorkout:(HKWorkout *)arg1;
 - (void)clientRemote_stateDidChange:(long long)arg1 startDate:(NSDate *)arg2 endDate:(NSDate *)arg3;
@@ -16,8 +18,9 @@
 - (void)clientRemote_didFinishRecovery;
 - (void)clientRemote_didRecoverSeriesBuilders:(NSDictionary *)arg1;
 - (void)clientRemote_didChangeElapsedTimeBasisWithStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2;
+- (void)clientRemote_didUpdateActivities:(NSArray *)arg1;
 - (void)clientRemote_didUpdateEvents:(NSArray *)arg1;
 - (void)clientRemote_didUpdateMetadata:(NSDictionary *)arg1;
-- (void)clientRemote_didUpdateStatistics:(NSDictionary *)arg1;
+- (void)clientRemote_didUpdateStatistics:(HKWorkoutBuilderStatistics *)arg1;
 @end
 

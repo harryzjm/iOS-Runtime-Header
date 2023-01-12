@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNVCardPerson-Protocol.h>
-
 @class CNContact, NSArray, NSData, NSDateComponents, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactVCardWritingAdapter : NSObject <CNVCardPerson>
+@interface CNContactVCardWritingAdapter : NSObject
 {
     CNContact *_contact;
 }

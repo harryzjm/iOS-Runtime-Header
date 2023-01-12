@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPModelLibraryAlbumAppDataChangeRequest;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibraryAlbumAppDataChangeRequestOperation
+@interface MPModelLibraryAlbumAppDataChangeRequestOperation : MPAsyncOperation
 {
     CDUnknownBlockType _responseHandler;
     MPModelLibraryAlbumAppDataChangeRequest *_request;

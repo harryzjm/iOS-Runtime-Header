@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCaptureDataOutputDelegateCallbackHelper, AVWeakReference;
+@class AVCaptureDataOutputDelegateCallbackHelper, AVWeakReference, NSData;
 
 __attribute__((visibility("hidden")))
 @interface AVCaptureVisionDataOutputInternal : NSObject
@@ -21,6 +21,16 @@ __attribute__((visibility("hidden")))
     unsigned long long maxKeypointsCount;
     _Bool featureBinningEnabled;
     _Bool featureOrientationAssignmentEnabled;
+    _Bool dynamicThresholdingEnabled;
+    unsigned long long keypointDetectionFlowType;
+    unsigned long long subPixelThreshold;
+    _Bool featureMatchingEnabled;
+    unsigned long long featureMatchingDescriptorSize;
+    float orientationDistanceThreshold;
+    float sigmaDistanceThreshold;
+    float squareDistanceDisparityFraction;
+    unsigned long long hammingDistanceThreshold;
+    NSData *laccConfigAndMetadata;
     float keypointDetectionThreshold;
 }
 

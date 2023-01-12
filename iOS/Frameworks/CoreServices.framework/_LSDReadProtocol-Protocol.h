@@ -7,7 +7,10 @@
 @class LSDocumentProxy, NSArray, NSSet, NSString, NSURL, _LSDiskUsage;
 
 @protocol _LSDReadProtocol
+- (void)getSystemContentStoreWithCompletionHandler:(void (^)(id, FSNode *, NSError *))arg1;
 - (void)getSessionLanguagesForImproperlyLocalizedProcessWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)getSystemModeWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
+- (void)getSettingsStoreConfigurationWithCompletionHandler:(void (^)(LSSettingsStoreConfiguration *, NSError *))arg1;
 - (void)getPreferencesWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)mapPlugInBundleIdentifiersToContainingBundleIdentifiers:(NSSet *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)mapBundleIdentifiers:(NSSet *)arg1 orMachOUUIDs:(NSSet *)arg2 completionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg3;
@@ -30,8 +33,7 @@
 - (void)getKnowledgeUUIDAndSequenceNumberWithCompletionHandler:(void (^)(NSUUID *, NSNumber *))arg1;
 - (void)getDiskUsage:(_LSDiskUsage *)arg1 completionHandler:(void (^)(_LSDiskUsage *, NSError *))arg2;
 - (void)getKernelPackageExtensionsWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
-- (void)getServerStoreNonBlockingWithCompletionHandler:(void (^)(id, FSNode *, NSError *))arg1;
-- (void)getServerStoreWithCompletionHandler:(void (^)(id, FSNode *, NSError *))arg1;
+- (void)getServerStoreNonBlockingWithCompletionHandler:(void (^)(id, FSNode *, NSXPCListenerEndpoint *, NSError *))arg1;
 - (void)getServerStatusWithCompletionHandler:(void (^)(unsigned int))arg1;
 @end
 

@@ -14,24 +14,32 @@
     NSString *_name;
     NSDictionary *_buildSettings;
     NSArray *_archs;
+    NSString *_deploymentTargetSettingName;
     DVTVersion *_defaultDeploymentTarget;
     NSArray *_validDeploymentTargets;
+    DVTVersion *_recommendedDeploymentTarget;
     DVTVersion *_minimumDeploymentTarget;
     DVTVersion *_maximumDeploymentTarget;
     NSString *_llvmTargetTripleVendor;
     NSString *_llvmTargetTripleSys;
     NSString *_llvmTargetTripleEnvironment;
+    NSString *_systemPrefix;
+    NSArray *_deviceFamilies;
 }
 
 - (void).cxx_destruct;
+@property(readonly) NSArray *deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
+@property(readonly) NSString *systemPrefix; // @synthesize systemPrefix=_systemPrefix;
 @property(readonly) unsigned int buildVersionPlatformID; // @synthesize buildVersionPlatformID=_buildVersionPlatformID;
 @property(readonly) NSString *llvmTargetTripleEnvironment; // @synthesize llvmTargetTripleEnvironment=_llvmTargetTripleEnvironment;
 @property(readonly) NSString *llvmTargetTripleSys; // @synthesize llvmTargetTripleSys=_llvmTargetTripleSys;
 @property(readonly) NSString *llvmTargetTripleVendor; // @synthesize llvmTargetTripleVendor=_llvmTargetTripleVendor;
 @property(readonly) DVTVersion *maximumDeploymentTarget; // @synthesize maximumDeploymentTarget=_maximumDeploymentTarget;
 @property(readonly) DVTVersion *minimumDeploymentTarget; // @synthesize minimumDeploymentTarget=_minimumDeploymentTarget;
+@property(readonly) DVTVersion *recommendedDeploymentTarget; // @synthesize recommendedDeploymentTarget=_recommendedDeploymentTarget;
 @property(readonly) NSArray *validDeploymentTargets; // @synthesize validDeploymentTargets=_validDeploymentTargets;
 @property(readonly) DVTVersion *defaultDeploymentTarget; // @synthesize defaultDeploymentTarget=_defaultDeploymentTarget;
+@property(readonly) NSString *deploymentTargetSettingName; // @synthesize deploymentTargetSettingName=_deploymentTargetSettingName;
 @property(readonly) NSArray *archs; // @synthesize archs=_archs;
 @property(readonly) NSDictionary *buildSettings; // @synthesize buildSettings=_buildSettings;
 @property(readonly) NSString *name; // @synthesize name=_name;

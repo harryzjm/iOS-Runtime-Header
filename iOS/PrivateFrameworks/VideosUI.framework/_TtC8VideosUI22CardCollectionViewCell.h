@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)vui_cellWillBeDisplayed;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (void)vui_prepareForReuse;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/LPCSSText-Protocol.h>
-#import <LinkPresentation/NSCopying-Protocol.h>
-
 @class LPPointUnit;
 
 __attribute__((visibility("hidden")))
-@interface LPPadding : NSObject <LPCSSText, NSCopying>
+@interface LPPadding : NSObject
 {
     LPPointUnit *_top;
     LPPointUnit *_leading;

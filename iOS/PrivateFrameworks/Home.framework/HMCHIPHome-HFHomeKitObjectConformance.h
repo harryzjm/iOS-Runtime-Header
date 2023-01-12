@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMCHIPHome.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface HMCHIPHome (HFHomeKitObjectConformance) <HFHomeKitObject>
+@interface HMCHIPHome (HFHomeKitObjectConformance)
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 // Remaining properties

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIJSUserDefaults-Protocol.h>
+#import "VUIJSObject.h"
 
 @protocol VUIAppUserDefaultsStoring;
 
 __attribute__((visibility("hidden")))
-@interface VUIJSUserDefaults <VUIJSUserDefaults>
+@interface VUIJSUserDefaults : VUIJSObject
 {
     id <VUIAppUserDefaultsStoring> _userDefaultsStorage;
 }

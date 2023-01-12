@@ -6,37 +6,38 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/AMSUIWebPageProvider-Protocol.h>
-
-@class AMSMetricsEvent, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSString;
+@class AMSMetricsEvent, AMSUIWebClientContext, AMSUIWebNavigationBarModel, AMSUIWebToolbarModel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebPageModel : NSObject <AMSUIWebPageProvider>
+@interface AMSUIWebPageModel : NSObject
 {
     _Bool _ignoreBottomSafeArea;
     _Bool _ignoreTopSafeArea;
     NSString *_backgroundColor;
     AMSMetricsEvent *_impressionEvent;
     AMSUIWebNavigationBarModel *_navigationBar;
+    AMSUIWebToolbarModel *_toolbar;
     AMSUIWebClientContext *_context;
     struct CGSize _windowSize;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property(retain, nonatomic) AMSUIWebToolbarModel *toolbar; // @synthesize toolbar=_toolbar;
 @property(nonatomic) _Bool ignoreTopSafeArea; // @synthesize ignoreTopSafeArea=_ignoreTopSafeArea;
 @property(nonatomic) _Bool ignoreBottomSafeArea; // @synthesize ignoreBottomSafeArea=_ignoreBottomSafeArea;
 @property(readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property(readonly, nonatomic) struct CGSize windowSize; // @synthesize windowSize=_windowSize;
 @property(readonly, nonatomic) AMSMetricsEvent *impressionEvent; // @synthesize impressionEvent=_impressionEvent;
 @property(readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(readonly, copy) NSString *description;
+- (id)loadPage;
 @property(readonly, nonatomic) _Bool disableReappearPlaceholder;
-- (id)createViewController;
+- (id)createViewControllerForContainer:(id)arg1;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

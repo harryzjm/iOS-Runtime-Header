@@ -8,10 +8,3 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
-#pragma mark Named Structures
-
-struct CLLocationCoordinate2D {
-    double latitude;
-    double longitude;
-};
-

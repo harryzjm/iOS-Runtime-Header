@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 + (void)_loadPreviewForAppContentItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_loadPreviewUsingLPForItem:(id)arg1 fullDetail:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_loadPreviewMetadataForItem:(id)arg1 fullDetail:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)loadPreviewDataForItems:(id)arg1 fullDetail:(_Bool)arg2;
++ (void)loadPreviewDataForItems:(id)arg1 fullDetail:(_Bool)arg2 didFinishLoadingPreviewHandler:(CDUnknownBlockType)arg3;
 
 @end
 

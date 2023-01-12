@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCDeviceGameIntentComponent-Protocol.h>
-#import <GameController/GCGameIntentXPCProxyRemoteClientEndpointInterface-Protocol.h>
-#import <GameController/_GCIPCEndpointClient-Protocol.h>
-
 @class GCController, NSString;
 @protocol GCGameIntentXPCProxyRemoteServerEndpointInterface, NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface GCGameIntentXPCProxyClientEndpoint : NSObject <_GCIPCEndpointClient, GCDeviceGameIntentComponent, GCGameIntentXPCProxyRemoteClientEndpointInterface>
+@interface GCGameIntentXPCProxyClientEndpoint : NSObject
 {
     GCController *_controller;
     id <GCGameIntentXPCProxyRemoteServerEndpointInterface> _serverEndpoint;
@@ -25,7 +21,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly) id <NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
-- (void)triggerGestureGameIntent;
+- (void)triggerGestureGameIntentGameCenter;
+- (void)triggerGestureGameIntentAppLibrary;
 - (void)fetchObjectIdentifierWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidateConnection;
 - (void)setController:(id)arg1;

@@ -15,7 +15,7 @@
 + (id)queryWithTemplate:(id <CLSQueryPerformerProtocol>)arg1 forRegions:(NSArray *)arg2;
 @property(nonatomic) NSObject<OS_os_log> *loggingConnection;
 @property(nonatomic) double precision;
-@property(nonatomic) CDStruct_95c2efd7 statistics;
+@property(nonatomic) CDStruct_889e84b8 statistics;
 @property(readonly, nonatomic) _Bool isCancelled;
 - (void)logGeoLookupFailureResult;
 - (void)logGeoLookupCounterAndDurationWithLookupDuration:(NSNumber *)arg1;

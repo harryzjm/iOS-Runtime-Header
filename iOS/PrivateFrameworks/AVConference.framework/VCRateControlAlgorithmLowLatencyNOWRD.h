@@ -19,9 +19,7 @@ __attribute__((visibility("hidden")))
     double _lastSendDataTime;
     double _lastRampDownTime;
     double _lastPositiveOWRDTime;
-    double _lastCongestionTime;
     _Bool _isRampUpSettling;
-    _Bool _isFirstTimestampArrived;
     unsigned int _actualSendBitrate;
     unsigned int _instantBitrate;
     unsigned int _fastRampDownBitrateRange;
@@ -52,9 +50,9 @@ __attribute__((visibility("hidden")))
 - (void)resetRampingStatus;
 - (void)updateInternalStatus;
 - (void)updateSendBitrateAndCheckIdlePeriod:(unsigned int)arg1 instantBitrate:(unsigned int)arg2;
-- (_Bool)doRateControlWithNWConnectionStatistics:(CDStruct_c0785916)arg1;
-- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_c0785916)arg1;
-- (_Bool)doRateControlWithStatistics:(CDStruct_c0785916)arg1;
+- (_Bool)doRateControlWithNWConnectionStatistics:(CDStruct_7df19fcb)arg1;
+- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_7df19fcb)arg1;
+- (_Bool)doRateControlWithStatistics:(CDStruct_7df19fcb)arg1;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
 - (id)init;
 

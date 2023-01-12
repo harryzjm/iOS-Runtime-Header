@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <TSPersistence/TSPObject.h>
 
 @class TSTAggNode, TSTCategoryOwner, TSTGroupBy;
 
-@interface TSTAggregator : NSObject
+@interface TSTAggregator : TSPObject
 {
     TSTGroupBy *_groupBy;
     struct TSKUIDStruct _columnUid;
@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct TSKUIDStruct columnUid; // @synthesize columnUid=_columnUid;
-@property(readonly, nonatomic) __weak TSTGroupBy *groupBy; // @synthesize groupBy=_groupBy;
+@property(nonatomic) __weak TSTGroupBy *groupBy; // @synthesize groupBy=_groupBy;
 - (void)upgradeForNewAggregateTypes:(id)arg1;
 - (void)clearAggFormulas:(id)arg1;
 - (void)rebuildAggFormulas;
@@ -26,9 +26,14 @@
 - (id)description;
 - (vector_522b9630)cellRefsForRowIndexes:(const struct TSUIndexSet *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
 @property(readonly, nonatomic) TSTCategoryOwner *categoryOwner;
+- (void)saveToArchiver:(id)arg1;
+- (void)loadFromUnarchiver:(id)arg1;
+- (void)unpackAfterUnarchiveForGroupBy:(id)arg1;
 - (void)encodeToArchive:(void *)arg1;
+- (void)loadFromArchive:(const void *)arg1;
 - (id)initWithArchive:(const void *)arg1 groupBy:(id)arg2;
 - (id)initWithColumn:(struct TSKUIDStruct)arg1 forGroupBy:(id)arg2;
+- (id)initWithColumn:(struct TSKUIDStruct)arg1 context:(id)arg2;
 
 @end
 

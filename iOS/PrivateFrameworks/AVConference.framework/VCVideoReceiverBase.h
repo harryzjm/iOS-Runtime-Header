@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCConnectionChangedHandler-Protocol.h>
-#import <AVConference/VCMediaStreamSyncDestination-Protocol.h>
-
 @class NSString, VCMediaStreamSynchronizer;
 @protocol VCMediaStreamSyncSource, VCVideoReceiverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoReceiverBase : NSObject <VCMediaStreamSyncDestination, VCConnectionChangedHandler>
+@interface VCVideoReceiverBase : NSObject
 {
     int _remoteVideoOrientation;
     id <VCVideoReceiverDelegate> _delegate;
@@ -37,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)handleActiveConnectionChange:(id)arg1;
 @property(readonly, nonatomic) unsigned int lastDisplayedFrameRTPTimestamp;
 - (void)setTargetStreamID:(unsigned short)arg1;
-- (void)collectChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_b671a7c4 *)arg1 interval:(float)arg2;
 - (void)updateSourcePlayoutTimestamp:(CDStruct_1b6d18a9 *)arg1;
 - (void)setSynchronizer:(id)arg1;
 - (void)stopSynchronization;

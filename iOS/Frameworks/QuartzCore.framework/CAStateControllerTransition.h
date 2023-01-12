@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/CAAnimationDelegate-Protocol.h>
-
 @class CALayer, CAStateController, CAStateTransition, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CAStateControllerTransition : NSObject <CAAnimationDelegate>
+@interface CAStateControllerTransition : NSObject
 {
     CAStateController *_controller;
     CALayer *_layer;

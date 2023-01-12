@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPEncoderWriteCoordinatorDelegate-Protocol.h>
-
 @class NSString, NSUUID, TSPObjectContext;
 
-@interface TSPObjectSerializationWriteAssistant : NSObject <TSPEncoderWriteCoordinatorDelegate>
+@interface TSPObjectSerializationWriteAssistant : NSObject
 {
     TSPObjectContext *_context;
     NSUUID *_documentUUID;

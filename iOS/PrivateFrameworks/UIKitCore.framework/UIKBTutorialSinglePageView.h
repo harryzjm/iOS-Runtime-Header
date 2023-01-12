@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UILabel, UIView;
+#import "UIView.h"
+
+@class UILabel;
 
 __attribute__((visibility("hidden")))
-@interface UIKBTutorialSinglePageView
+@interface UIKBTutorialSinglePageView : UIView
 {
     _Bool _useAlertStyle;
     UIView *_visualDisplayView;

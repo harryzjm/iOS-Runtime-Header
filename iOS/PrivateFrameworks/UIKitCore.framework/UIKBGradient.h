@@ -30,12 +30,12 @@ __attribute__((visibility("hidden")))
 + (id)gradientWithStartColor:(id)arg1 endColor:(id)arg2;
 + (id)gradientWithFlatColor:(id)arg1;
 + (id)gradientWithName:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool horizontal; // @synthesize horizontal=_horizontal;
 @property(nonatomic) double opacity; // @synthesize opacity=_opacity;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (void)dealloc;
 - (id)initWithColors:(id)arg1 middleLocations:(id)arg2;
 - (id)initWith3Colors:(id)arg1 middleLocation:(double)arg2;
 - (id)initWithStartColor:(id)arg1 endColor:(id)arg2;

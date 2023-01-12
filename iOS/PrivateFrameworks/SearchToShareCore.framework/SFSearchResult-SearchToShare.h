@@ -9,6 +9,7 @@
 @interface SFSearchResult (SearchToShare)
 - (id)_sts_cardSectionWithClass:(Class)arg1;
 - (void)sts_providerIconWithScale:(double)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)sts_userReportRequest;
 - (struct CGSize)sts_providerIconSize;
 - (id)sts_providerHostPageURL;
 - (id)sts_appProviderName;

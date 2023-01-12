@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MKETAProviderObserver-Protocol.h>
-#import <MapsUI/MUHeaderButtonsSectionControllerDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUHeaderButtonsSectionController, MUPlaceHeaderButtonsSectionControllerConfiguration, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSString, UIView, UIViewController, _MKPlaceActionButtonController;
+@class MKUGCCallToActionViewAppearance, MUHeaderButtonsSectionController, MUPlaceHeaderButtonsSectionControllerConfiguration, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController, _MKPlaceActionButtonController;
 @protocol MUInfoCardAnalyticsDelegate, MUPlaceHeaderButtonsSectionControllerDelegate, _MKPlaceItem;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceHeaderButtonsSectionController <MKETAProviderObserver, MUHeaderButtonsSectionControllerDelegate, MUPlaceSectionControlling>
+@interface MUPlaceHeaderButtonsSectionController : MUPlaceSectionController
 {
     MUHeaderButtonsSectionController *_headerSectionController;
     MUPlaceHeaderButtonsSectionControllerConfiguration *_configuration;
@@ -23,11 +21,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <_MKPlaceItem> placeItem; // @synthesize placeItem=_placeItem;
 @property(nonatomic) __weak id <MUPlaceHeaderButtonsSectionControllerDelegate> headerDelegate; // @synthesize headerDelegate=_headerDelegate;
+- (id)revealedAnalyticsModule;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (id)analyticsModule;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
 @property(nonatomic) __weak id <MUInfoCardAnalyticsDelegate> analyticsDelegate;
+- (void)headerButtonsSectionControllerWillPresentMenu:(id)arg1;
 - (void)headerButtonsSectionController:(id)arg1 didSelectPrimaryType:(unsigned long long)arg2 withPresentationOptions:(id)arg3;
 - (void)headerButtonsSectionControllerDidUpdateContent:(id)arg1;
 @property(nonatomic, getter=isActive) _Bool active;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _MKPlaceActionButtonController *alternatePrimaryButtonController;
 @property(retain, nonatomic) _MKPlaceActionButtonController *secondaryButtonController;
 @property(nonatomic) unsigned long long primaryButtonType;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(readonly, nonatomic) UIView *sectionView;
 - (id)initWithPlaceItem:(id)arg1 configuration:(id)arg2;
 

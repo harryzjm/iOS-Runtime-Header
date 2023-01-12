@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNIdentifierProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNUuidIdentifierProvider : NSObject <CNIdentifierProvider>
+@interface CNUuidIdentifierProvider : NSObject
 {
     NSString *_suffix;
 }

@@ -6,11 +6,9 @@
 
 #import <BulletinBoard/BBGlobalSettings.h>
 
-#import <BulletinDistributorCompanion/BLTRemoteGlobalSettingsProvider-Protocol.h>
-
 @class NSString;
 
-@interface BBGlobalSettings (BLTRemoteGlobalSettingsProvider) <BLTRemoteGlobalSettingsProvider>
+@interface BBGlobalSettings (BLTRemoteGlobalSettingsProvider)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ITMLKit/IKDataSourceElementImplementing-Protocol.h>
-
 @class IKChangeSet, IKDataSourceElement, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface IKDSEUnboundItemsImpl : NSObject <IKDataSourceElementImplementing>
+@interface IKDSEUnboundItemsImpl : NSObject
 {
     IKDataSourceElement *_dataSourceElement;
     NSArray *_itemElements;

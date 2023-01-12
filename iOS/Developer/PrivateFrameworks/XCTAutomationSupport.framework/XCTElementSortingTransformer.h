@@ -6,7 +6,7 @@
 
 #import <XCTAutomationSupport/XCTCapabilitiesProviding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray;
 
 @interface XCTElementSortingTransformer <XCTCapabilitiesProviding>
 {
@@ -25,14 +25,9 @@
 - (_Bool)canBeRemotelyEvaluatedWithCapabilities:(id)arg1;
 - (id)transform:(id)arg1 relatedElements:(id *)arg2;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSortDescriptors:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
 
 @end
 

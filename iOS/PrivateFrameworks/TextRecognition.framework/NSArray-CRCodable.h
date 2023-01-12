@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <TextRecognition/CRCodable-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (CRCodable) <CRCodable>
+@interface NSArray (CRCodable)
 - (id)initWithCRCodableDataRepresentation:(id)arg1 objectProviderBlock:(CDUnknownBlockType)arg2;
 - (id)crCodableDataRepresentation;
 

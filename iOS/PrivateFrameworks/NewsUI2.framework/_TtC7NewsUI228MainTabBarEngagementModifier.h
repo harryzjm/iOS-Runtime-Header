@@ -11,7 +11,10 @@
 @interface _TtC7NewsUI228MainTabBarEngagementModifier : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tabBarController;
+    MISSING_TYPE *featureAvailability;
     MISSING_TYPE *bootstrapperDidComplete;
+    MISSING_TYPE *isKeyboardVisible;
+    MISSING_TYPE *keyboardObserver;
 }
 
 @end

@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-#import <UIKitCore/UITextRangeAdjustmentInteractionDelegate-Protocol.h>
+#import "UIView.h"
 
-@class NSArray, NSMutableArray, NSString, UIPointerInteraction, UIResponder, UISelectionGrabber, UISelectionGrabberCustomPath, UITextRangeAdjustmentInteraction, UITextSelectionView, UITouch, UIView;
+@class NSArray, NSMutableArray, NSString, UIPointerInteraction, UIResponder, UISelectionGrabber, UISelectionGrabberCustomPath, UITextRangeAdjustmentInteraction, UITextSelectionView, UITouch;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
-@interface UITextRangeView <UIPointerInteractionDelegate, UITextRangeAdjustmentInteractionDelegate>
+@interface UITextRangeView : UIView
 {
     UITextSelectionView *m_selectionView;
     UIResponder<UITextInput> *m_container;
@@ -36,7 +35,6 @@ __attribute__((visibility("hidden")))
     UIPointerInteraction *_pointerInteraction;
     _Bool m_isClearingRange;
     _Bool m_shouldStayVisible;
-    _Bool _baseIsStart;
     UITextRangeAdjustmentInteraction *_adjustmentInteraction;
     UISelectionGrabberCustomPath *_startCustomPath;
     UISelectionGrabberCustomPath *_endCustomPath;
@@ -51,7 +49,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UISelectionGrabberCustomPath *startCustomPath; // @synthesize startCustomPath=_startCustomPath;
 @property(retain, nonatomic) UITextRangeAdjustmentInteraction *adjustmentInteraction; // @synthesize adjustmentInteraction=_adjustmentInteraction;
 @property(readonly, nonatomic) struct CGPoint activeTouchPoint; // @synthesize activeTouchPoint=_activeTouchPoint;
-@property(nonatomic) _Bool baseIsStart; // @synthesize baseIsStart=_baseIsStart;
 @property(nonatomic) _Bool shouldStayVisible; // @synthesize shouldStayVisible=m_shouldStayVisible;
 @property(nonatomic) _Bool isClearingRange; // @synthesize isClearingRange=m_isClearingRange;
 @property(nonatomic) _Bool inputViewIsChanging; // @synthesize inputViewIsChanging=m_inputViewIsChanging;
@@ -91,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)applyTouchOffset:(struct CGPoint)arg1;
 - (_Bool)pointCloserToEnd:(struct CGPoint)arg1 startEdge:(struct CGRect)arg2 endEdge:(struct CGRect)arg3;
 - (void)cancelDelayedActions;
+- (void)_updateGrabbersVisibility:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)stopAnimating;
 - (void)startAnimating;
 - (void)updateDots;
@@ -107,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForMagnification;
 - (void)updateBaseAndExtentPointsFromEdges;
 - (void)updateBaseIsStartWithDocumentPoint:(struct CGPoint)arg1;
+@property(nonatomic) _Bool baseIsStart;
 - (void)updateSelectionWithDocumentPoint:(struct CGPoint)arg1;
 @property(retain, nonatomic) NSArray *rects; // @synthesize rects=m_rects;
 - (void)updateEdges;
@@ -126,6 +125,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)_endEdgeHitRectWithPrecision:(unsigned long long)arg1;
 - (struct CGRect)_startEdgeHitRectWithPrecision:(unsigned long long)arg1;
+- (struct CGRect)_edgeHitRectForEdgeRect:(struct CGRect)arg1 grabber:(id)arg2 precision:(unsigned long long)arg3;
 - (void)removeFromSuperview;
 - (id)initWithFrame:(struct CGRect)arg1 selectionView:(id)arg2;
 

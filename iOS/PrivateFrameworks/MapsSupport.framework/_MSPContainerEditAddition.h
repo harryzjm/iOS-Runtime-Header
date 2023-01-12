@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsSupport/MSPContainerEditAddition-Protocol.h>
-
 @class NSArray, NSIndexSet, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MSPContainerEditAddition <MSPContainerEditAddition>
+@interface _MSPContainerEditAddition
 {
     NSMapTable *_identifiersAtopByIdentifier;
     NSArray *_objects;

@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)createVariantsItemsWithVariantsManager:(id)arg1;
 - (void)applyVariantEffectToFullsizeImageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)generateThumbnailImageDataIfNeeded;
+- (void)generateAllImageDatasIfNeeded;
 - (id)generateImageDataIfNeeded;
 - (id)renderAvatarWithBackgroundWithImage:(id)arg1;
 - (id)renderAvatarWithBackgroundWithImageData:(id)arg1;

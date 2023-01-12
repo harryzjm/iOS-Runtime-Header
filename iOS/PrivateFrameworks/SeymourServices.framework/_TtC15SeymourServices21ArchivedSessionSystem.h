@@ -17,6 +17,7 @@
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *healthKitWorkoutDataStore;
     MISSING_TYPE *configurationDataStore;
+    MISSING_TYPE *programCompletionDataStore;
 }
 
 @end

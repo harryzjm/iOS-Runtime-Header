@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIScrollView.h"
+
 @class NSArray, NSMutableArray, UIView;
 @protocol _UIQueuingScrollViewDataSource, _UIQueuingScrollViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIQueuingScrollView
+@interface _UIQueuingScrollView : UIScrollView
 {
     id <_UIQueuingScrollViewDelegate> _qDelegate;
     id <_UIQueuingScrollViewDataSource> _qDataSource;

@@ -16,10 +16,11 @@
 - (BNBannerSourceLayoutDescription *)bannerSourceListener:(BNBannerSourceListener *)arg1 layoutDescriptionWithError:(id *)arg2;
 
 @optional
+- (_Bool)bannerSourceListenerShouldEnablePresentableContextInterface:(BNBannerSourceListener *)arg1;
 - (_Bool)bannerSourceListener:(BNBannerSourceListener *)arg1 requestsRevokingAllPresentablesForRequesterWithIdentifier:(NSString *)arg2 reason:(NSString *)arg3 userInfo:(NSDictionary *)arg4 error:(id *)arg5;
 - (_Bool)bannerSourceListener:(BNBannerSourceListener *)arg1 requestsRevokingPresentableWithRequestIdentifier:(NSString *)arg2 requesterIdentifier:(NSString *)arg3 animated:(_Bool)arg4 reason:(NSString *)arg5 userInfo:(NSDictionary *)arg6 error:(id *)arg7;
 - (void)bannerSourceListener:(BNBannerSourceListener *)arg1 presentationSize:(out struct CGSize *)arg2 containerSize:(out struct CGSize *)arg3 error:(id *)arg4;
-- (id <BNBannerSourceListenerPresentable>)bannerSourceListener:(BNBannerSourceListener *)arg1 newBannerSourceListenerPresentableForBannerSpecification:(id <BNPresentableSpecifying>)arg2 scene:(FBScene *)arg3 readyCompletion:(void (^)(id <BNBannerSourceListenerPresentable>, NSError *))arg4;
+- (id <BNBannerSourceListenerPresentable>)bannerSourceListener:(BNBannerSourceListener *)arg1 newBannerSourceListenerPresentableForBannerSpecification:(id <BNPresentableSpecifying>)arg2 serviceDomain:(NSString *)arg3 scene:(FBScene *)arg4 readyCompletion:(void (^)(id <BNBannerSourceListenerPresentable>, NSError *))arg5;
 - (void)bannerSourceListener:(BNBannerSourceListener *)arg1 didUpdateInitialSceneClientSettingsWithParameters:(FBSMutableSceneParameters *)arg2;
 - (void)bannerSourceListener:(BNBannerSourceListener *)arg1 didUpdateInitialSceneSettingsWithParameters:(FBSMutableSceneParameters *)arg2;
 - (UIApplicationSceneSpecification *)bannerSourceListener:(BNBannerSourceListener *)arg1 sceneSpecificationForBannerSceneWithIdentifier:(NSString *)arg2 forProcess:(FBProcess *)arg3 userInfo:(NSDictionary *)arg4;

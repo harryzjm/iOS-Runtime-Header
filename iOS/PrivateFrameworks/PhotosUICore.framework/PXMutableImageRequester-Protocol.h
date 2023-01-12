@@ -10,6 +10,7 @@
 @protocol PXDisplayAsset, PXUIImageProvider;
 
 @protocol PXMutableImageRequester <NSObject>
+@property(nonatomic) long long downloadIntent;
 @property(nonatomic) struct CGSize viewportSize;
 @property(nonatomic) struct CGRect desiredContentsRect;
 @property(nonatomic) struct CGSize maximumRequestSize;

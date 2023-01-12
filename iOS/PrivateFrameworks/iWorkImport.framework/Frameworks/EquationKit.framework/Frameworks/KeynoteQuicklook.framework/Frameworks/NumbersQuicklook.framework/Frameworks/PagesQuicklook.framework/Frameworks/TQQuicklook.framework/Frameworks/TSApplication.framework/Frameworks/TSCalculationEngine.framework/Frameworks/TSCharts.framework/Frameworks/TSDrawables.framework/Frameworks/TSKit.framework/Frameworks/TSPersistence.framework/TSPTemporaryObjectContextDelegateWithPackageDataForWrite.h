@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSPTemporaryObjectContextDelegate.h"
+
 @class NSDictionary;
 
-@interface TSPTemporaryObjectContextDelegateWithPackageDataForWrite
+@interface TSPTemporaryObjectContextDelegateWithPackageDataForWrite : TSPTemporaryObjectContextDelegate
 {
     NSDictionary *_packageDataForWrite;
     NSDictionary *_additionalDocumentPropertiesForWrite;

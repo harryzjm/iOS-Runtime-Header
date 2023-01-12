@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/NSKeyedArchiverDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CADebuggingArchiverDelegate : NSObject <NSKeyedArchiverDelegate>
+@interface CADebuggingArchiverDelegate : NSObject
 {
 }
 

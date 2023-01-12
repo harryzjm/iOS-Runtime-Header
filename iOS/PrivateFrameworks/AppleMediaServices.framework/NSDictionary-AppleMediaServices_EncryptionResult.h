@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <AppleMediaServices/AMSHashable-Protocol.h>
-
 @class NSString;
 
-@interface NSDictionary (AppleMediaServices_EncryptionResult) <AMSHashable>
+@interface NSDictionary (AppleMediaServices_EncryptionResult)
 + (id)ams_dictionaryWithEncryptionResult:(CDStruct_0f015c83)arg1;
 - (CDStruct_0f015c83)ams_encryptionResult;
 - (id)ams_dictionaryRemovingKeys:(id)arg1;

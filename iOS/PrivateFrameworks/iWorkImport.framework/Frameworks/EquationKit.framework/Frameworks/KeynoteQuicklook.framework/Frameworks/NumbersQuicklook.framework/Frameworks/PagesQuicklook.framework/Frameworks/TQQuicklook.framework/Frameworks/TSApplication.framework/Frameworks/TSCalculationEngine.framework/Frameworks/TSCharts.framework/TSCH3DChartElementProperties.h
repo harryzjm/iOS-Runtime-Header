@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCH3DTexturePool;
 
-@interface TSCH3DChartElementProperties : NSObject <NSCopying>
+@interface TSCH3DChartElementProperties : NSObject
 {
     TSCH3DTexturePool *_pool;
 }

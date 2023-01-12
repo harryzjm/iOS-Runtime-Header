@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SCRCMathExpression.h"
+
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SCRCMathArrayExpression
+@interface SCRCMathArrayExpression : SCRCMathExpression
 {
     NSArray *_children;
 }

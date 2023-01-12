@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIDetector.h"
+
 @class CIContext, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CIBarcodeDetector
+@interface CIBarcodeDetector : CIDetector
 {
     CIContext *context;
     double _width;
@@ -18,7 +20,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CIContext *context; // @synthesize context;
 - (id)featuresInImage:(id)arg1;
 - (id)featuresInImage:(id)arg1 options:(id)arg2;
-- (void)finalize;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1 options:(id)arg2;
 

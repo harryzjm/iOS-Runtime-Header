@@ -6,19 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/NSCopying-Protocol.h>
-#import <CoordinationCore/NSMutableCopying-Protocol.h>
-#import <CoordinationCore/NSSecureCoding-Protocol.h>
+@class NSDictionary, NSOrderedSet;
 
-@class NSOrderedSet;
-
-@interface COBallot : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+__attribute__((visibility("hidden")))
+@interface COBallot : NSObject
 {
     NSOrderedSet *_candidates;
+    NSDictionary *_discovery;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *discovery; // @synthesize discovery=_discovery;
 @property(copy, nonatomic) NSOrderedSet *candidates; // @synthesize candidates=_candidates;
 - (_Bool)isEqualToBallot:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

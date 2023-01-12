@@ -6,9 +6,12 @@
 
 #import <MetalTools/MTLRasterizationRateMap-Protocol.h>
 
-@class NSString;
+@class MTLRasterizationRateMapDescriptor, NSString;
 
 @protocol MTLRasterizationRateMapSPI <MTLRasterizationRateMap>
+@property(readonly, nonatomic) float minFactor;
+@property(readonly, nonatomic) unsigned long long mutability;
+- (void)resetUsingDescriptor:(MTLRasterizationRateMapDescriptor *)arg1;
 - (NSString *)formattedDescription:(unsigned long long)arg1;
 @end
 

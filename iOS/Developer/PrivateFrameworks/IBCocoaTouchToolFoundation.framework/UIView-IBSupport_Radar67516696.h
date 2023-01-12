@@ -6,15 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <IBCocoaTouchToolFoundation/IBAutolayoutView-Protocol.h>
-#import <IBCocoaTouchToolFoundation/IBCTTAutolayoutItem-Protocol.h>
-#import <IBCocoaTouchToolFoundation/IBUIViewAutolayoutGuideDelegate-Protocol.h>
-#import <IBCocoaTouchToolFoundation/IBUIViewControllerAutolayoutGuideDelegate-Protocol.h>
-
-@class IBPlaceholderDrawingAttributes, IBUIViewAutolayoutGuide, NSArray, NSObject, NSSet, NSString, NSValue, UIViewController;
+@class IBPlaceholderDrawingAttributes, IBUIViewAutolayoutGuide, IBUIViewKeyboardLayoutGuide, NSArray, NSObject, NSSet, NSString, NSValue, UIViewController;
 @protocol IBAutolayoutItem, IBCollection, IBOrderedCollection;
 
-@interface UIView (IBSupport_Radar67516696) <IBCTTAutolayoutItem, IBAutolayoutView, IBUIViewControllerAutolayoutGuideDelegate, IBUIViewAutolayoutGuideDelegate>
+@interface UIView (IBSupport_Radar67516696)
 + (_Bool)ibSwizzled__allowsUnsupportedMacIdiomBehavior;
 + (void)_installPlaceholderInstrinsicContentSizeSupport;
 - (void)ibInvalidateWindowLevelInternalConstraints;
@@ -29,6 +24,7 @@
 @property(retain, nonatomic) IBPlaceholderDrawingAttributes *ibPlaceholderDrawingAttributes;
 - (id)ibMakeWindowForRenderingWithSimulatedMetricsContext:(id)arg1;
 - (id)ibEffectiveViewForRendering;
+- (_Bool)ibShouldAssociateWithWindowDuringSimulatedMetrics;
 - (void)ibApplySimulatedMetricsWithContext:(id)arg1;
 - (id)ibEffectiveWrappingViewControllerCreatingIfNecessary;
 - (void)setIbEffectiveSimulatedMetrics:(id)arg1;
@@ -40,6 +36,7 @@
 - (id)ibEffectiveParentItemForReferencingConstraintTraversalOfAutolayoutGuide:(id)arg1;
 - (struct CGRect)ibFrameForAutolayoutGuide:(id)arg1;
 - (id)ibContainingItemForAutolayoutGuide:(id)arg1;
+@property(retain, nonatomic) IBUIViewKeyboardLayoutGuide *ibShadowedKeyboardLayoutGuide;
 @property(retain, nonatomic) IBUIViewAutolayoutGuide *ibShadowedSafeAreaLayoutGuide;
 - (void)setIbShadowedEffectiveViewLayoutGuides:(id)arg1;
 - (id)ibShadowedEffectiveViewLayoutGuides;
@@ -104,7 +101,7 @@
 - (void)setFrameSize:(struct CGSize)arg1;
 - (unsigned long long)ibAllowedSiblingEdgesForGuidesToSelectedItems:(id)arg1;
 - (_Bool)ibAllowsSiblingGuidesToSelectedItems:(id)arg1 ofType:(long long)arg2;
-- (_Bool)ibAllowsConstraintSpacingFromInsideEdgesForSiblings;
+- (_Bool)ibAllowsConstraintSpacingFromInsideEdgesForSiblingsForOrientation:(unsigned long long)arg1;
 - (_Bool)ibShouldConsiderGuidesToEdgeWithAttribute:(unsigned long long)arg1 fromEdgeWithAttribute:(unsigned long long)arg2 ofSelectedItems:(id)arg3;
 - (id)ibViewForAncestorViewEdgeMovementQuestionsOfSubview:(id)arg1;
 - (struct CGRect)ibLayoutFrameForFrame:(struct CGRect)arg1;

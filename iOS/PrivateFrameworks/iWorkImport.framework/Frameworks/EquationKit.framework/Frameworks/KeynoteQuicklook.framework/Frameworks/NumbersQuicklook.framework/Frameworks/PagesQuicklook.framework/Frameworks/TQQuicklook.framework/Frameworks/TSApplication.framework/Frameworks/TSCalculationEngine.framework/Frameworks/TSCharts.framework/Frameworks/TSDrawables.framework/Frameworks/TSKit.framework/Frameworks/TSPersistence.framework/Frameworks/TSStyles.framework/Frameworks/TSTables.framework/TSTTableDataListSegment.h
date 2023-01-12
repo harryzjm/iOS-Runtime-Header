@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSPCopying-Protocol.h>
-
 @class NSMutableIndexSet;
 
-@interface TSTTableDataListSegment : TSPObject <TSPCopying>
+@interface TSTTableDataListSegment : TSPObject
 {
     struct unordered_map<unsigned int, TSTTableDataObject *, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, TSTTableDataObject *>>> _data;
     int _listType;

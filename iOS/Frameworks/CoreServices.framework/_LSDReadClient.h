@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreServices/_LSDReadProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _LSDReadClient <_LSDReadProtocol>
+@interface _LSDReadClient
 {
 }
 
+- (void)getSystemContentStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getSessionLanguagesForImproperlyLocalizedProcessWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getSystemModeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getSettingsStoreConfigurationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)mapPlugInBundleIdentifiersToContainingBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)mapBundleIdentifiers:(id)arg1 orMachOUUIDs:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -35,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (void)getDiskUsage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getKernelPackageExtensionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getServerStoreNonBlockingWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getServerStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getServerStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)willHandleInvocation:(id)arg1 isReply:(_Bool)arg2;
 

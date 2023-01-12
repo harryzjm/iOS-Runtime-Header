@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TLKStackView.h"
+
 @class NSMutableArray, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface TLKIconsView
+@interface TLKIconsView : TLKStackView
 {
     NSMutableArray *_imageViews;
     unsigned long long _prominence;

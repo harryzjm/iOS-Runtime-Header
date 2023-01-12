@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVPictureInPicturePlayerLayerView.h"
+
 @class AVObservationController, AVPictureInPictureIndicatorLayer, AVPictureInPictureSampleBufferDisplayLayerHostView, AVSampleBufferDisplayLayer, AVSampleBufferDisplayLayerPlayerController, CALayerHost;
 
 __attribute__((visibility("hidden")))
-@interface AVPictureInPictureSampleBufferDisplayLayerView
+@interface AVPictureInPictureSampleBufferDisplayLayerView : AVPictureInPicturePlayerLayerView
 {
     _Bool _PIPModeEnabled;
     unsigned int _sourceContextId;

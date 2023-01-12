@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSDHint-Protocol.h>
-
 @class NSString;
 @protocol TSDHint;
 
-@interface TSWPTOCLayoutHint : NSObject <TSDHint>
+@interface TSWPTOCLayoutHint : NSObject
 {
     struct _NSRange _charRange;
 }

@@ -6,11 +6,9 @@
 
 #import <IMFoundation/IMSystemMonitor.h>
 
-#import <IDSFoundation/IDSFoundationSystemMonitor-Protocol.h>
-
 @class NSString;
 
-@interface IMSystemMonitor (IDSFoundationSystemMonitor) <IDSFoundationSystemMonitor>
+@interface IMSystemMonitor (IDSFoundationSystemMonitor)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

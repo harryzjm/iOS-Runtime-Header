@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIFocusSystem.h"
+
 @protocol UIFocusEnvironment, _UIHostedFocusSystemDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIHostedFocusSystem
+@interface _UIHostedFocusSystem : UIFocusSystem
 {
     _Bool _didSetFocusSoundGenerator;
     id <UIFocusEnvironment> _hostEnvironment;

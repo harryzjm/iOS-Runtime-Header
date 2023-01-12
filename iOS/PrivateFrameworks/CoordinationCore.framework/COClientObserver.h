@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/NSCopying-Protocol.h>
-
 @class NSXPCConnection;
 @protocol OS_os_transaction;
 
 __attribute__((visibility("hidden")))
-@interface COClientObserver : NSObject <NSCopying>
+@interface COClientObserver : NSObject
 {
     NSXPCConnection *_connection;
     NSObject<OS_os_transaction> *_transaction;

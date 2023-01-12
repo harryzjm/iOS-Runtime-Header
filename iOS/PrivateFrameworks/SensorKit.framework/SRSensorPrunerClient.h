@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/SRSensorKitServiceClientPruning-Protocol.h>
-
 @class SRSensorPruner;
 
 __attribute__((visibility("hidden")))
-@interface SRSensorPrunerClient : NSObject <SRSensorKitServiceClientPruning>
+@interface SRSensorPrunerClient : NSObject
 {
     SRSensorPruner *_pruner;
 }

@@ -8,7 +8,6 @@
 
 @class GQDSStylesheet;
 
-__attribute__((visibility("hidden")))
 @interface GQDBGTheme : NSObject
 {
     GQDSStylesheet *mStylesheet;

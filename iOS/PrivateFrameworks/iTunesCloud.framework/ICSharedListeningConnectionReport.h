@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/MSVQRConnectionReportProtocol-Protocol.h>
-
 @class NSMapTable, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICSharedListeningConnectionReport : NSObject <MSVQRConnectionReportProtocol>
+@interface ICSharedListeningConnectionReport : NSObject
 {
+    NSString *_sharedListeningSessionIdentifier;
+    NSString *_groupSessionIdentifier;
     NSMutableArray *_topLevelEvents;
     NSMapTable *_allEvents;
 }
@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMapTable *allEvents; // @synthesize allEvents=_allEvents;
 @property(retain, nonatomic) NSMutableArray *topLevelEvents; // @synthesize topLevelEvents=_topLevelEvents;
+@property(copy, nonatomic) NSString *groupSessionIdentifier; // @synthesize groupSessionIdentifier=_groupSessionIdentifier;
+@property(copy, nonatomic) NSString *sharedListeningSessionIdentifier; // @synthesize sharedListeningSessionIdentifier=_sharedListeningSessionIdentifier;
 @property(readonly, nonatomic) id analyticsPayload;
 - (void)_addEvents:(id)arg1 toReportString:(id)arg2 eventLevel:(long long)arg3;
 @property(readonly, nonatomic) NSString *formattedReport;

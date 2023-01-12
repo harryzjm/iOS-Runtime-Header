@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/NSSecureCoding-Protocol.h>
-
 @class ICDelegateAccountStoreOptions, ICValueHistory;
 @protocol ICUserIdentityStoreBackend;
 
 __attribute__((visibility("hidden")))
-@interface ICUserIdentityStoreCoding : NSObject <NSSecureCoding>
+@interface ICUserIdentityStoreCoding : NSObject
 {
     struct os_unfair_lock_s _lock;
     long long _identityStoreStyle;

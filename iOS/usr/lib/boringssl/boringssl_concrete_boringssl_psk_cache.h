@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <boringssl/OS_boringssl_psk_cache-Protocol.h>
-
 @class NSString, boringssl_concrete_boringssl_ctx;
 @protocol OS_dispatch_queue, OS_sec_array;
 
 __attribute__((visibility("hidden")))
-@interface boringssl_concrete_boringssl_psk_cache : NSObject <OS_boringssl_psk_cache>
+@interface boringssl_concrete_boringssl_psk_cache : NSObject
 {
     NSObject<OS_sec_array> *list;
     boringssl_concrete_boringssl_ctx *context;

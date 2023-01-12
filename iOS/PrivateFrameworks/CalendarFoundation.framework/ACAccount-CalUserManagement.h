@@ -22,6 +22,7 @@
 - (_Bool)_dataclassIsEnabled:(id)arg1;
 - (id)_createExchangeWebServicesURLFromURL:(id)arg1;
 - (id)_accountPropertiesKeys;
+- (id)calSyncingAccountUsingChildAccounts:(id)arg1;
 - (id)valueForKey:(id)arg1 forPrincipalWithUID:(id)arg2;
 - (id)valueForAccountPropertyKey:(id)arg1;
 - (_Bool)setValue:(id)arg1 forKey:(id)arg2 forPrincipalWithUID:(id)arg3;

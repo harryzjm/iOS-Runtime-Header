@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDOperationMetrics, NSMutableDictionary, NSString;
 
-@interface CKDOperationStatistics : NSObject <NSCopying>
+@interface CKDOperationStatistics : NSObject
 {
     NSString *_operationClassName;
     NSMutableDictionary *_recentErrorsByDate;

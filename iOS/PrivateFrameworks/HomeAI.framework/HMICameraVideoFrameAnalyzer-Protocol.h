@@ -6,15 +6,18 @@
 
 #import <HomeAI/NSObject-Protocol.h>
 
-@class HMIAnalysisStateUpdate, HMICameraVideoFrame, HMICameraVideoFrameResult, HMIVideoAnalyzerConfiguration, NSArray, NSDictionary, NSSet, NSUUID;
+@class HMIAnalysisStateUpdate, HMIVideoAnalyzerConfiguration, HMIVideoFrame, NSArray, NSDictionary, NSMutableSet, NSSet, NSUUID;
 
 @protocol HMICameraVideoFrameAnalyzer <NSObject>
 + (NSDictionary *)classHierarchyMap;
 - (HMIAnalysisStateUpdate *)flushAndGetAnalysisStateUpdateForHome:(NSUUID *)arg1 enableFaceClassification:(_Bool)arg2;
 - (NSSet *)analyzePixelBuffer:(struct __CVBuffer *)arg1 regionOfInterest:(struct CGRect)arg2 error:(id *)arg3;
-- (HMICameraVideoFrameResult *)analyze:(HMICameraVideoFrame *)arg1 targetEventTypes:(long long)arg2 enableFaceClassification:(_Bool)arg3 homeUUID:(NSUUID *)arg4 error:(id *)arg5;
-- (void)handleMotionDetection:(NSArray *)arg1 inFrame:(struct opaqueCMSampleBuffer *)arg2;
-- (void)preAnalyze:(HMICameraVideoFrame *)arg1;
+- (NSSet *)recognizeEvents:(NSSet *)arg1 frame:(HMIVideoFrame *)arg2 regionOfInterest:(struct CGRect)arg3 homeUUID:(NSUUID *)arg4;
+- (NSSet *)analyzeBackgroundFrame:(HMIVideoFrame *)arg1 packageEvents:(NSSet *)arg2 newBackgroundEvents:(NSMutableSet *)arg3 regionOfInterest:(struct CGRect)arg4;
+- (NSSet *)getPackageEvents:(NSSet *)arg1 foregroundEvents:(NSSet *)arg2 newBackgroundEvents:(NSMutableSet *)arg3 backgroundTimeStamp:(CDStruct_1b6d18a9)arg4;
+- (NSSet *)getAnalyzerEvents:(NSSet *)arg1 eventTriggers:(long long)arg2 enableFaceClassification:(_Bool)arg3 enableTorsoRecognition:(_Bool)arg4;
+- (NSSet *)analyzeFrame:(HMIVideoFrame *)arg1 regionOfInterest:(struct CGRect)arg2;
+- (struct CGRect)regionOfInterestForMotionDetections:(NSArray *)arg1 foregroundEvents:(NSSet *)arg2 frameSize:(struct CGSize)arg3;
 - (id)initWithMediumConfidenceThresholds:(NSDictionary *)arg1 highConfidenceThresholds:(NSDictionary *)arg2 analyzerConfiguration:(HMIVideoAnalyzerConfiguration *)arg3 error:(id *)arg4;
 - (id)init;
 @end

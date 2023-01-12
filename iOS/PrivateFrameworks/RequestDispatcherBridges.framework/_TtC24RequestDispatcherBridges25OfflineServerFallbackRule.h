@@ -12,7 +12,9 @@
 {
     MISSING_TYPE *ruleType;
     MISSING_TYPE *networkAvailabilityProvider;
+    MISSING_TYPE *coreTelephonyServiceProvider;
     MISSING_TYPE *fallbackReason;
+    MISSING_TYPE *processInfo;
 }
 
 @end

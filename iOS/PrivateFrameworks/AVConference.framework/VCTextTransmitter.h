@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCTextSender-Protocol.h>
-
 @class NSLock, NSMutableArray, NSString, VCAudioRedBuilder;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface VCTextTransmitter : NSObject <VCTextSender>
+@interface VCTextTransmitter : NSObject
 {
     struct _VCTextTransmitterConfiguration _config;
     double _txIntervalMin;

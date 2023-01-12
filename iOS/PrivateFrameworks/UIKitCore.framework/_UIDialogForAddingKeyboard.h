@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)presentDialogForAddingKeyboard;
+- (void).cxx_destruct;
 - (void)presentDialogForAddingKeyboard;
 - (void)dismiss;
 - (void)presentPrivacySheet;

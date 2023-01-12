@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CMImaging/MTLTexture-Protocol.h>
-
 @class NSString;
 @protocol MTLBuffer, MTLDevice, MTLHeap, MTLResource, MTLTexture;
 
 __attribute__((visibility("hidden")))
-@interface FigMetalTextureStub : NSObject <MTLTexture>
+@interface FigMetalTextureStub : NSObject
 {
     NSString *_label;
     unsigned long long _offset;
@@ -54,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) id <MTLDevice> device;
 @property(readonly) unsigned long long firstMipmapInTail;
 @property(readonly, getter=isFramebufferOnly) _Bool framebufferOnly;
+@property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly) unsigned long long hash;
 @property(readonly) unsigned long long hazardTrackingMode;
 @property(readonly) id <MTLHeap> heap;

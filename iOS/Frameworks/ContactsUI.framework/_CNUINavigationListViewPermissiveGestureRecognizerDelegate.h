@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _CNUINavigationListViewPermissiveGestureRecognizerDelegate : NSObject <UIGestureRecognizerDelegate>
+@interface _CNUINavigationListViewPermissiveGestureRecognizerDelegate : NSObject
 {
 }
 

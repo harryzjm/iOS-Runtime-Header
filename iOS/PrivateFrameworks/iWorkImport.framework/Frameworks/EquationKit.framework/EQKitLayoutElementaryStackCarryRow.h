@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EquationKit/EQKitLayoutElementaryStackRow-Protocol.h>
-
 @class NSString;
 
-@interface EQKitLayoutElementaryStackCarryRow <EQKitLayoutElementaryStackRow>
+@interface EQKitLayoutElementaryStackCarryRow
 {
     struct vector<EQKitTypes::Crossout::Enum, std::allocator<EQKitTypes::Crossout::Enum>> mCrossouts;
 }

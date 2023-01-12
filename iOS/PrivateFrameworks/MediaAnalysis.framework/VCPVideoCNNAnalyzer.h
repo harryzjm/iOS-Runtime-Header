@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSString, VCPVideoCNNAutoplay, VCPVideoCNNBackbone, VCPVideoPersonDetector;
+@class NSMutableArray, NSString, VCPTransforms, VCPVideoCNNAutoplay, VCPVideoCNNBackbone, VCPVideoCNNCameraMotion, VCPVideoCNNHighlight, VCPVideoCNNQuality, VCPVideoPersonDetector;
 
 __attribute__((visibility("hidden")))
 @interface VCPVideoCNNAnalyzer
 {
     VCPVideoCNNBackbone *_backbone;
+    VCPTransforms *_transformImage;
     NSMutableArray *_tasks;
     NSMutableArray *_postTasks;
+    NSMutableArray *_privateTasks;
     float *_inputData;
     int _inputWidth;
     int _inputHeight;
@@ -23,23 +25,29 @@ __attribute__((visibility("hidden")))
     VCPVideoPersonDetector *_personDetector;
     NSString *_resConfig;
     VCPVideoCNNAutoplay *_autoplay;
+    VCPVideoCNNCameraMotion *_cameraMotion;
+    VCPVideoCNNQuality *_quality;
+    VCPVideoCNNHighlight *_highlight;
     struct CGRect _regionCrop;
     CDStruct_1b6d18a9 _timeEnd;
     _Bool _postInference;
 }
 
++ (_Bool)isMLHighlightEnabled;
 + (_Bool)forcePersonDetection;
 - (void).cxx_destruct;
 - (id)results;
+- (id)privateResults;
 - (int)finishAnalysisPass:(CDStruct_e83c9415)arg1;
 - (int)runTasks:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2 persons:(id)arg3 regionCrop:(struct CGRect)arg4;
+- (CDStruct_1b6d18a9)isAnalysisResultNeeded:(CDStruct_1b6d18a9)arg1;
 - (int)loadAnalysisResults:(id)arg1 audioResults:(id)arg2;
+- (int)loadAnalysisResultsFrom:(id)arg1 actionAnalyzer:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3;
 - (int)analyzeFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 flags:(unsigned long long *)arg4;
-- (struct __CVBuffer *)cropAndScale:(struct __CVBuffer *)arg1 regionCrop:(struct CGRect)arg2;
 - (int)copyImage:(struct __CVBuffer *)arg1 withChannels:(int)arg2;
 - (int)configForAspectRatio:(float)arg1;
 - (void)dealloc;
-- (id)initWithTimeOfInteret:(id)arg1 frameRate:(float)arg2 phFaces:(id)arg3 timeRange:(CDStruct_e83c9415)arg4;
+- (id)initWithTimeOfInteret:(id)arg1 frameRate:(float)arg2 isLivePhoto:(_Bool)arg3 phFaces:(id)arg4 timeRange:(CDStruct_e83c9415)arg5 requestedAnalyses:(unsigned long long)arg6;
 
 @end
 

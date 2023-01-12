@@ -12,11 +12,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_axSetCurrentFolderScrollEnabled:(_Bool)arg1;
-- (void)setOverlayLibraryViewVisible:(_Bool)arg1;
+- (void)setMainDisplayLibraryViewVisible:(_Bool)arg1;
 - (void)closeFolderAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setEditing:(_Bool)arg1 withFeedbackBehavior:(id)arg2;
 - (id)createNewFolderFromRecipientIcon:(id)arg1 grabbedIcon:(id)arg2;
-- (void)pushExpandedIcon:(id)arg1 location:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)pushExpandedIcon:(id)arg1 location:(id)arg2 context:(id)arg3 animated:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

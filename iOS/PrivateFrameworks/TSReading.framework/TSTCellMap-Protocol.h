@@ -14,11 +14,11 @@
 - (_Bool)mayModifyValuesReferencedByFormulas;
 - (_Bool)mayModifyFormulasInCells;
 - (TSTCell *)cellAtIndex:(unsigned long long)arg1;
-- (CDStruct_0441cfb5)cellIDAtIndex:(unsigned long long)arg1;
-- (_Bool)containsCellID:(CDStruct_0441cfb5)arg1;
-- (CDStruct_0441cfb5 *)cellIDs;
+- (CDStruct_bd4d8e6b)cellIDAtIndex:(unsigned long long)arg1;
+- (_Bool)containsCellID:(CDStruct_bd4d8e6b)arg1;
+- (CDStruct_bd4d8e6b *)cellIDs;
 - (void)popLastCell;
-- (void)addCell:(TSTCell *)arg1 andCellID:(CDStruct_0441cfb5)arg2;
+- (void)addCell:(TSTCell *)arg1 andCellID:(CDStruct_bd4d8e6b)arg2;
 - (unsigned long long)count;
 @end
 

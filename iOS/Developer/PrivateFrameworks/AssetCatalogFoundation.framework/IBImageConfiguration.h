@@ -6,27 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/NSCoding-Protocol.h>
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
+@class NSArray, NSNumber, NSString;
 
-@class NSArray, NSString;
-
-@interface IBImageConfiguration : NSObject <IBBinaryArchiving, NSCopying, NSCoding>
+@interface IBImageConfiguration : NSObject
 {
     long long _symbolScale;
     long long _renderingMode;
+    NSNumber *_variableValue;
     NSArray *_colors;
 }
 
-+ (id)configurationWithSymbolScale:(long long)arg1 renderingMode:(long long)arg2 colors:(id)arg3;
++ (id)configurationWithSymbolScale:(long long)arg1 renderingMode:(long long)arg2 variableValue:(id)arg3 colors:(id)arg4;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *colors; // @synthesize colors=_colors;
+@property(readonly, nonatomic) NSNumber *variableValue; // @synthesize variableValue=_variableValue;
 @property(readonly, nonatomic) long long renderingMode; // @synthesize renderingMode=_renderingMode;
 @property(readonly, nonatomic) long long symbolScale; // @synthesize symbolScale=_symbolScale;
 - (id)effectiveHierarchicalColors;
 - (id)hierarchcicalColor;
 - (long long)effectiveRenderingMode;
+@property(readonly, nonatomic) _Bool hasVariableValue;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToImageConfiguration:(id)arg1;
@@ -38,9 +37,10 @@
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)configurationWithColors:(id)arg1;
 - (id)configurationByReplacingColorAtIndex:(long long)arg1 withColor:(id)arg2;
+- (id)configurationWithVariableValue:(id)arg1;
 - (id)configurationWithSymbolScale:(long long)arg1;
 - (id)configurationWithRenderingMode:(long long)arg1;
-- (id)initWithSymbolScale:(long long)arg1 renderingMode:(long long)arg2 colors:(id)arg3;
+- (id)initWithSymbolScale:(long long)arg1 renderingMode:(long long)arg2 variableValue:(id)arg3 colors:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

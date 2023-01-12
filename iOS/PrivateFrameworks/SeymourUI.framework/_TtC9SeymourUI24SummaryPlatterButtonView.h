@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *button;
     MISSING_TYPE *label;
+    MISSING_TYPE *styleProvider;
 }
 
 - (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

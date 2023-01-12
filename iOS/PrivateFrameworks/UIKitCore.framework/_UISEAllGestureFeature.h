@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISEGestureFeatureDelegate-Protocol.h>
-
 @class NSArray, NSMutableIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISEAllGestureFeature <_UISEGestureFeatureDelegate>
+@interface _UISEAllGestureFeature
 {
     NSMutableIndexSet *_unrecognizedIndexes;
     NSArray *_subfeatures;

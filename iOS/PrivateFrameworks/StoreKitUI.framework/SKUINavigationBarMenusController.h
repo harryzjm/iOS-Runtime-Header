@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIMenuPopoverDelegate-Protocol.h>
-
 @class NSArray, NSString, SKUIMenuPopoverController, SKUINavigationBarMenusView, UIControl;
 
 __attribute__((visibility("hidden")))
-@interface SKUINavigationBarMenusController <SKUIMenuPopoverDelegate>
+@interface SKUINavigationBarMenusController
 {
     UIControl *_focusedMenuButton;
     SKUINavigationBarMenusView *_menusView;

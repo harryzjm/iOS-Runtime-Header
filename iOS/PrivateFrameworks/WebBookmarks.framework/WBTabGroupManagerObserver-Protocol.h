@@ -6,14 +6,18 @@
 
 #import <WebBookmarks/NSObject-Protocol.h>
 
-@class WBTab, WBTabGroup, WBTabGroupManager;
+@class WBTab, WBTabGroup, WBTabGroupManager, WebBookmarkList;
 
 @protocol WBTabGroupManagerObserver <NSObject>
 
 @optional
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateScopedBookmarkList:(WebBookmarkList *)arg2;
+- (void)tabGroupManagerDidUpdateSyncableContent:(WBTabGroupManager *)arg1;
 - (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateTab:(WBTab *)arg2 userDriven:(_Bool)arg3;
 - (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateTabsInTabGroup:(WBTabGroup *)arg2;
 - (void)tabGroupManager:(WBTabGroupManager *)arg1 didUpdateTabGroup:(WBTabGroup *)arg2;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 didPerformBlockUpdatesForTabGroup:(WBTabGroup *)arg2;
+- (void)tabGroupManager:(WBTabGroupManager *)arg1 willPerformBlockUpdatesForTabGroup:(WBTabGroup *)arg2;
 - (void)tabGroupManager:(WBTabGroupManager *)arg1 didRemoveTabGroup:(WBTabGroup *)arg2;
 - (void)tabGroupManagerDidUpdateTabGroups:(WBTabGroupManager *)arg1;
 - (void)tabGroupManagerDidFinishSetup:(WBTabGroupManager *)arg1;

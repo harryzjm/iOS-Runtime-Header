@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class AVCameraCalibrationData, CIImage, CIVector, NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CIDepthEffectMakeBlurMap
+@interface CIDepthEffectMakeBlurMap : CIFilter
 {
     CIImage *inputImage;
     CIImage *inputShiftmapImage;

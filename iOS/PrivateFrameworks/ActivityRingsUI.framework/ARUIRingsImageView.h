@@ -6,12 +6,10 @@
 
 #import <UIKit/UIImageView.h>
 
-#import <ActivityRingsUI/ARUIRingGroupDelegate-Protocol.h>
-
 @class ARUIRenderContext, ARUIRenderer, ARUIRingGroup, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ARUIRingsImageView : UIImageView <ARUIRingGroupDelegate>
+@interface ARUIRingsImageView : UIImageView
 {
     ARUIRenderContext *_renderContext;
     _Bool _needsImageRender;

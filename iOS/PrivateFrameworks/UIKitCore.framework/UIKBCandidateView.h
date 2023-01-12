@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBKeyView.h"
+
 @class UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBCandidateView
+@interface UIKBCandidateView : UIKBKeyView
 {
     CDStruct_227bb23d _visualStyling;
     UIView *_candidateKey;

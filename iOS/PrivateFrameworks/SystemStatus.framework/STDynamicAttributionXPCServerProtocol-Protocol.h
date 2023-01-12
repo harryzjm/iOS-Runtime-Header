@@ -10,7 +10,9 @@
 
 @protocol STDynamicAttributionXPCServerProtocol <NSObject>
 - (void)subscribeToUpdates;
-- (void)setCurrentAttributionStringWithFormat:(NSString *)arg1 maskingClientAuditToken:(CDStruct_4c969caf)arg2 reply:(void (^)(_Bool))arg3;
+- (void)setCurrentAttributionWebsiteString:(NSString *)arg1 maskingClientAuditToken:(CDStruct_6ad76789)arg2 reply:(void (^)(_Bool))arg3;
+- (void)setCurrentAttributionStringWithFormat:(NSString *)arg1 maskingClientAuditToken:(CDStruct_6ad76789)arg2 reply:(void (^)(_Bool))arg3;
+- (void)setCurrentAttributionLocalizableKey:(NSString *)arg1 maskingClientAuditToken:(CDStruct_6ad76789)arg2 reply:(void (^)(_Bool))arg3;
 - (void)setCurrentAttributionKey:(NSString *)arg1 application:(NSString *)arg2 reply:(void (^)(_Bool))arg3;
 @end
 

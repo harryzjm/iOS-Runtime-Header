@@ -20,6 +20,7 @@
 - (double)_statusBarAlpha;
 - (long long)_statusBarStyleForPartWithIdentifier:(NSString *)arg1 suppressingInherited:(_Bool)arg2;
 - (NSDictionary *)_statusBarPartStyles;
+- (long long)_defaultStatusBarStyle;
 - (long long)_statusBarStyle;
 @end
 

@@ -6,17 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MediaControls/MRUEndpointMetadataControllerObserver-Protocol.h>
-#import <MediaControls/MRURoutingViewControllerDelegate-Protocol.h>
-#import <MediaControls/MediaControlsEndpointsManagerDelegate-Protocol.h>
-#import <MediaControls/UITableViewDelegate-Protocol.h>
-#import <MediaControls/UITableViewDelegatePrivate-Protocol.h>
-
-@class MPAVOutputDeviceRoutingDataSource, MPMediaControlsConfiguration, MRUEndpointMetadataController, MRURoutingViewController, MRUViewServiceRoutingView, MRUVisualStylingProvider, MediaControlsEndpointsManager, NSMutableDictionary, NSString, UITableViewDiffableDataSource;
+@class MPAVOutputDeviceRoutingDataSource, MPMediaControlsConfiguration, MRUNowPlayingController, MRURoutingViewController, MRUVendorSpecificDeviceManager, MRUViewServiceRoutingView, MRUVisualStylingProvider, MediaControlsEndpointsManager, NSMutableDictionary, NSString, UITableViewDiffableDataSource;
 @protocol MRUViewServiceRoutingViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MRUViewServiceRoutingViewController : UIViewController <MediaControlsEndpointsManagerDelegate, MRUEndpointMetadataControllerObserver, MRURoutingViewControllerDelegate, UITableViewDelegate, UITableViewDelegatePrivate>
+@interface MRUViewServiceRoutingViewController : UIViewController
 {
     _Bool _onScreen;
     _Bool _canShowRemoteDevices;
@@ -28,20 +22,22 @@ __attribute__((visibility("hidden")))
     MRURoutingViewController *_routingViewController;
     MPAVOutputDeviceRoutingDataSource *_outputDeviceRoutingDataSource;
     UITableViewDiffableDataSource *_dataSource;
-    NSMutableDictionary *_controllers;
-    MRUEndpointMetadataController *_selectedController;
+    NSMutableDictionary *_nowPlayingControllers;
+    MRUNowPlayingController *_selectedNowPlayingController;
     CDUnknownBlockType _replaceRoutes;
     UIViewController *_alertViewController;
+    MRUVendorSpecificDeviceManager *_vendorSpecificManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) MRUVendorSpecificDeviceManager *vendorSpecificManager; // @synthesize vendorSpecificManager=_vendorSpecificManager;
 @property(retain, nonatomic) UIViewController *alertViewController; // @synthesize alertViewController=_alertViewController;
 @property(nonatomic) _Bool supportsQueueHandoff; // @synthesize supportsQueueHandoff=_supportsQueueHandoff;
 @property(nonatomic) _Bool canShowRemoteDevices; // @synthesize canShowRemoteDevices=_canShowRemoteDevices;
 @property(nonatomic, getter=isOnScreen) _Bool onScreen; // @synthesize onScreen=_onScreen;
 @property(copy, nonatomic) CDUnknownBlockType replaceRoutes; // @synthesize replaceRoutes=_replaceRoutes;
-@property(retain, nonatomic) MRUEndpointMetadataController *selectedController; // @synthesize selectedController=_selectedController;
-@property(retain, nonatomic) NSMutableDictionary *controllers; // @synthesize controllers=_controllers;
+@property(retain, nonatomic) MRUNowPlayingController *selectedNowPlayingController; // @synthesize selectedNowPlayingController=_selectedNowPlayingController;
+@property(retain, nonatomic) NSMutableDictionary *nowPlayingControllers; // @synthesize nowPlayingControllers=_nowPlayingControllers;
 @property(retain, nonatomic) UITableViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) MPAVOutputDeviceRoutingDataSource *outputDeviceRoutingDataSource; // @synthesize outputDeviceRoutingDataSource=_outputDeviceRoutingDataSource;
 @property(retain, nonatomic) MRURoutingViewController *routingViewController; // @synthesize routingViewController=_routingViewController;
@@ -49,28 +45,26 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MRUViewServiceRoutingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property(retain, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
-- (void)updateHeader;
 - (void)updateCell:(id)arg1 forIdentifier:(id)arg2;
 - (void)updateCellForIdentifier:(id)arg1;
-- (void)updateRoutingViewControllerContentEdgeInsets;
+- (void)updateRoutingViewControllerScrollIndicatorInsets;
 - (void)updateSelectedViewController;
 - (void)updateRoutingViewController;
 - (void)updateDiscoveryMode;
 - (void)updateMoreButtonVisibility;
-- (void)updateControllers;
+- (void)updateNowPlayingControllers;
 - (void)routingViewControllerDidUpdateItems:(id)arg1;
 - (void)routingViewController:(id)arg1 didSelectRoutingViewItem:(id)arg2;
-- (void)metadataController:(id)arg1 didUpdateApplicationIcon:(id)arg2;
-- (void)metadataControllerRouteDidUpdate:(id)arg1;
-- (void)metadataControllerDidUpdateRoutingAvailability:(id)arg1;
-- (void)metadataControllerDidChangeState:(id)arg1;
-- (void)metadataController:(id)arg1 didLoadNewResponse:(id)arg2;
-- (_Bool)metadataControllerShouldAutomaticallyUpdateReponse:(id)arg1;
+- (void)nowPlayingController:(id)arg1 didChangeQuickControlItem:(id)arg2;
+- (void)nowPlayingController:(id)arg1 metadataController:(id)arg2 didChangeNowPlayingInfo:(id)arg3;
+- (void)nowPlayingController:(id)arg1 metadataController:(id)arg2 didChangeArtwork:(id)arg3;
+- (void)nowPlayingController:(id)arg1 endpointController:(id)arg2 didChangeRoute:(id)arg3;
+- (_Bool)nowPlayingControllerShouldAutomaticallyUpdateResponse:(id)arg1;
 - (void)endpointsManager:(id)arg1 defersRoutesReplacement:(CDUnknownBlockType)arg2;
 - (void)endpointsManager:(id)arg1 activeSystemRouteDidChange:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHaveFullLengthBottomSeparatorForSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (void)didSelectQuickActionButton:(id)arg1;
+- (void)didSelectQuickControl:(id)arg1;
 - (void)didSelectListState:(id)arg1;
 - (_Bool)canShowMoreButton;
 - (id)selectedIdentifier;
@@ -80,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

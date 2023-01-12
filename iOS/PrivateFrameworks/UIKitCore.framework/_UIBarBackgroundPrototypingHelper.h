@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/PTSettingsKeyObserver-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIBarBackgroundPrototypingHelper : NSObject <PTSettingsKeyObserver>
+@interface _UIBarBackgroundPrototypingHelper : NSObject
 {
     NSMutableArray *_callbacks;
 }

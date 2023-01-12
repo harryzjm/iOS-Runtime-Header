@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBRenderFactory.h"
+
 __attribute__((visibility("hidden")))
-@interface UIKBRenderFactory_Car
+@interface UIKBRenderFactory_Car : UIKBRenderFactory
 {
 }
 

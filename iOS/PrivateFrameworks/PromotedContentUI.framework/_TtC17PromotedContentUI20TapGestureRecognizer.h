@@ -6,11 +6,9 @@
 
 #import <UIKit/UIGestureRecognizer.h>
 
-#import <PromotedContentUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC17PromotedContentUI20TapGestureRecognizer : UIGestureRecognizer <UIGestureRecognizerDelegate>
+@interface _TtC17PromotedContentUI20TapGestureRecognizer : UIGestureRecognizer
 {
     MISSING_TYPE *kMaximumTimeSinceTap;
     MISSING_TYPE *touchDownHandler;

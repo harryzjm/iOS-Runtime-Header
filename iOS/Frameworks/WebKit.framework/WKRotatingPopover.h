@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/UIPopoverControllerDelegate-Protocol.h>
-
 @class NSString, UIPopoverController, WKContentView;
 @protocol WKRotatingPopoverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WKRotatingPopover : NSObject <UIPopoverControllerDelegate>
+@interface WKRotatingPopover : NSObject
 {
     WKContentView *_view;
     _Bool _isRotating;

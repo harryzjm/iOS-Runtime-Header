@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIImageLoadParams-Protocol.h>
-
 @class MPArtworkCatalog, MPMediaItem, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIMPMediaEntityImageLoadParams : NSObject <VUIImageLoadParams>
+@interface VUIMPMediaEntityImageLoadParams : NSObject
 {
     _Bool _calculatedIdentifier;
     NSString *_imageIdentifier;

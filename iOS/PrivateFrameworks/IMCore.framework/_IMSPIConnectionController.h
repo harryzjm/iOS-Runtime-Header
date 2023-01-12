@@ -12,7 +12,8 @@
 
 + (id)sharedController;
 - (void)clearChatCap;
-- (void)setChatCapWithAttachments;
+- (void)setChatSendCapWithAttachments;
+- (void)setChatSendCap;
 - (void)setChatCap;
 
 @end

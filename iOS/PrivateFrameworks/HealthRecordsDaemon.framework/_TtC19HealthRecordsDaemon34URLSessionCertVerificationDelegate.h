@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthRecordsDaemon/NSURLSessionDelegate-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _TtC19HealthRecordsDaemon34URLSessionCertVerificationDelegate : NSObject <NSURLSessionDelegate>
+@interface _TtC19HealthRecordsDaemon34URLSessionCertVerificationDelegate : NSObject
 {
 }
 

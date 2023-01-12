@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Vision/VNClusteringWritable-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VNGreedyClusteringReadWrite <VNClusteringWritable>
+@interface VNGreedyClusteringReadWrite
 {
     struct shared_ptr<vision::mod::FaceClustering> m_ClusteringImpl;
 }

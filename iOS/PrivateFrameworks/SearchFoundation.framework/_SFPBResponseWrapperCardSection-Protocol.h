@@ -6,13 +6,19 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _SFPBCATModel;
+@class NSArray, NSData, NSDictionary, _SFPBCATModel, _SFPBPatternModel;
 
 @protocol _SFPBResponseWrapperCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSArray *pattern_models;
+@property(retain, nonatomic) _SFPBPatternModel *pattern_model;
 @property(copy, nonatomic) NSData *visualCATOutput;
 @property(retain, nonatomic) _SFPBCATModel *catModel;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (_SFPBPatternModel *)pattern_modelsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)pattern_modelsCount;
+- (void)addPattern_models:(_SFPBPatternModel *)arg1;
+- (void)clearPattern_models;
 @end
 

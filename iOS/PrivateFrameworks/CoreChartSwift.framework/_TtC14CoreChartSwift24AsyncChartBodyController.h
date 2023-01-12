@@ -15,8 +15,8 @@
     MISSING_TYPE *latestEnvironment;
     MISSING_TYPE *mutex;
     MISSING_TYPE *pendingUpdates;
-    MISSING_TYPE *padding;
     MISSING_TYPE *paddingPreferenceValue;
+    MISSING_TYPE *chartProxy;
     MISSING_TYPE *safeMargin;
     MISSING_TYPE *rbDisplayLists;
     MISSING_TYPE *axChildren;

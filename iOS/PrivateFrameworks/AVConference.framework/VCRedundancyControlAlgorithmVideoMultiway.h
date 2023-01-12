@@ -6,30 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCRedundancyControlAlgorithm-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCRedundancyControlAlgorithmVideoMultiway : NSObject <VCRedundancyControlAlgorithm>
+@interface VCRedundancyControlAlgorithmVideoMultiway : NSObject
 {
+    double _packetLossPercentage;
+    double _plrEnvelope;
+    double _currentTime;
+    double _lastPercentageChange;
     unsigned int _redundancyPercentage;
     double _redundancyInterval;
-    double _packetLossPercentages[20];
-    double _roundTripTime;
-    double _packetLossThreshold;
-    unsigned int _targetBitrate;
-    unsigned int _packetLossWindowSize;
-    unsigned int _packetLossPercentageIndex;
-    int _mode;
 }
 
 @property(readonly, nonatomic) double redundancyInterval; // @synthesize redundancyInterval=_redundancyInterval;
 @property(readonly, nonatomic) unsigned int redundancyPercentage; // @synthesize redundancyPercentage=_redundancyPercentage;
-- (void)updateInternalParametersWithMode:(int)arg1;
-- (void)updateRoundTripTimeWithStatistics:(CDStruct_c0785916)arg1;
 - (void)updateRedundancyPercentage;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_7df19fcb)arg1;
 - (id)init;
 
 // Remaining properties

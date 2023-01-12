@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AppSSO/SORemoteExtensionViewProtocol-Protocol.h>
-
 @class NSString, SORemoteExtensionContext;
 
 __attribute__((visibility("hidden")))
-@interface SOExtensionViewService : UIViewController <SORemoteExtensionViewProtocol>
+@interface SOExtensionViewService : UIViewController
 {
     SORemoteExtensionContext *_extensionContext;
 }

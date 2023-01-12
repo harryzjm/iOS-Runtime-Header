@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/VTKComparator-Protocol.h>
-
 @class NSString;
 @protocol VTKColorDifferenceStrategy;
 
 __attribute__((visibility("hidden")))
-@interface VTKColorDifferenceComparator : NSObject <VTKComparator>
+@interface VTKColorDifferenceComparator : NSObject
 {
     id <VTKColorDifferenceStrategy> _strategy;
     unsigned long long _comparisonOptions;

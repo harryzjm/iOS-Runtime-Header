@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPSectionedIdentifierListEnumerationItem-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCAutoPlayEnumerationResult : NSObject <MPSectionedIdentifierListEnumerationItem>
+@interface _MPCAutoPlayEnumerationResult : NSObject
 {
     NSString *_sectionIdentifier;
 }

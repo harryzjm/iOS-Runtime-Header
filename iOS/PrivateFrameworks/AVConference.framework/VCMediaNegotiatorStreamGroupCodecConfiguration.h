@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiatorStreamGroupCodecConfiguration : NSObject <NSCopying>
+@interface VCMediaNegotiatorStreamGroupCodecConfiguration : NSObject
 {
     long long _codecType;
     unsigned int _rtpPayload;
@@ -24,8 +22,10 @@ __attribute__((visibility("hidden")))
     unsigned long long _profileLevelId;
     unsigned long long _serializedSize;
     unsigned int _cipherSuite;
+    unsigned int _encoderUsage;
 }
 
+@property(nonatomic) unsigned int encoderUsage; // @synthesize encoderUsage=_encoderUsage;
 @property(nonatomic) unsigned int cipherSuite; // @synthesize cipherSuite=_cipherSuite;
 @property(nonatomic) unsigned long long serializedSize; // @synthesize serializedSize=_serializedSize;
 @property(nonatomic) unsigned long long profileLevelId; // @synthesize profileLevelId=_profileLevelId;

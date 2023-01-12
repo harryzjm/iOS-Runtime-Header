@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPDecoderReadCoordinatorDelegate-Protocol.h>
-
 @class NSDictionary, NSString, NSURL, TSPComponent, TSPObjectContext;
 
-@interface TSPObjectSerializationReadAssistant : NSObject <TSPDecoderReadCoordinatorDelegate>
+@interface TSPObjectSerializationReadAssistant : NSObject
 {
     TSPObjectContext *_context;
     NSURL *_resourcesFolderURL;

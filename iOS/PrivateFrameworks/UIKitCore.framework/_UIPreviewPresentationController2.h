@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIPreviewPresentationController.h"
+
 @class UIViewPropertyAnimator, _UIPreviewPresentationPlatterView;
 @protocol UIViewControllerPreviewing_Internal, _UIPreviewInteractionHighlighting;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewPresentationController2
+@interface _UIPreviewPresentationController2 : UIPreviewPresentationController
 {
     _Bool _hasPerformedInitialLayout;
     _Bool _shouldScaleContentViewToAspectFitPlatter;

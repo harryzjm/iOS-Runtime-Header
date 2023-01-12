@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOPListStateCapturing-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOTileRequestBalancer : NSObject <GEOPListStateCapturing>
+@interface GEOTileRequestBalancer : NSObject
 {
     void *_requesters;
     void *_randomIndexGenerator;

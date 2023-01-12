@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPKnownFieldRuleProvider-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface TSPUnknownContentSnapshot : NSObject <TSPKnownFieldRuleProvider>
+@interface TSPUnknownContentSnapshot : NSObject
 {
     NSArray *_preserveFields;
     NSArray *_preserveUntilModifiedFields;

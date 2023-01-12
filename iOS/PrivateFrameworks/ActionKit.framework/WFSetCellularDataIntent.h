@@ -6,12 +6,10 @@
 
 #import <Intents/INIntent.h>
 
-#import <ActionKit/WFBooleanSettingIntent-Protocol.h>
-
 @class NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface WFSetCellularDataIntent : INIntent <WFBooleanSettingIntent>
+@interface WFSetCellularDataIntent : INIntent
 {
 }
 

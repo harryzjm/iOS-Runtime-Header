@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI10ViewLayout : _TtCs12_SwiftObject <NSCopying>
+@interface _TtC8VideosUI10ViewLayout : _TtCs12_SwiftObject
 {
     MISSING_TYPE *gridType;
     MISSING_TYPE *relationalLayout;

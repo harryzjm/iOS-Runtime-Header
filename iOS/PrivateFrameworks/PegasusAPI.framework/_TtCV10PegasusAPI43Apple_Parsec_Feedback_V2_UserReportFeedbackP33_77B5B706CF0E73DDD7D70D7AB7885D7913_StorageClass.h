@@ -15,6 +15,9 @@
     MISSING_TYPE *_userSelection;
     MISSING_TYPE *_cardSection;
     MISSING_TYPE *_uuidBytes;
+    MISSING_TYPE *_sections;
+    MISSING_TYPE *_uploadedDataIdentifier;
+    MISSING_TYPE *_reportType;
 }
 
 @end

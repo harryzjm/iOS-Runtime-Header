@@ -10,24 +10,33 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct __map_iterator<std::__tree_iterator<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, std::__tree_node<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, void *>*, long>> {
-    struct __tree_iterator<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, std::__tree_node<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, void *>*, long> {
-        void *_field1;
-    } _field1;
+struct HapticSharedMemoryAddressReserve {
+    void *_field1;
+    unsigned int _field2;
+    void *_field3;
+    unsigned int _field4;
+    int _field5;
 };
 
-struct map<unsigned long, std::pair<NSURL *, NSDictionary *>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::pair<NSURL *, NSDictionary *>>>> {
-    struct __tree<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, std::less<unsigned long>, true>, std::allocator<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>>> {
+struct map<unsigned long, AVHapticSequenceEntry *, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, AVHapticSequenceEntry *>>> {
+    struct __tree<std::__value_type<unsigned long, AVHapticSequenceEntry *>, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, AVHapticSequenceEntry *>, std::less<unsigned long>, true>, std::allocator<std::__value_type<unsigned long, AVHapticSequenceEntry *>>> {
         void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, void *>>> {
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned long, AVHapticSequenceEntry *>, void *>>> {
             struct __tree_end_node<std::__tree_node_base<void *>*> {
                 void *__left_;
             } __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, std::less<unsigned long>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned long, std::__value_type<unsigned long, AVHapticSequenceEntry *>, std::less<unsigned long>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
+};
+
+struct mutex {
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } __m_;
 };
 
 struct vector<unsigned long, std::allocator<unsigned long>> {
@@ -41,12 +50,6 @@ struct vector<unsigned long, std::allocator<unsigned long>> {
 #pragma mark Typedef'd Structures
 
 // Template types
-typedef struct __map_iterator<std::__tree_iterator<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, std::__tree_node<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, void *>*, long>> {
-    struct __tree_iterator<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, std::__tree_node<std::__value_type<unsigned long, std::pair<NSURL *, NSDictionary *>>, void *>*, long> {
-        void *_field1;
-    } _field1;
-} __map_iterator_9d4ef06d;
-
 typedef struct vector<unsigned long, std::allocator<unsigned long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;

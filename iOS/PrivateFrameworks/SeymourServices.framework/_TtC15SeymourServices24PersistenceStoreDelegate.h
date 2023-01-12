@@ -10,8 +10,10 @@
 
 @interface _TtC15SeymourServices24PersistenceStoreDelegate : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *$defaultActor;
     MISSING_TYPE *container;
     MISSING_TYPE *dataProtectionMonitor;
+    MISSING_TYPE *monitors;
     MISSING_TYPE *unloadedStores;
     MISSING_TYPE *lock;
 }

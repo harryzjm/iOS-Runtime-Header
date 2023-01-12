@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)stateWithResponder:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIResponder *responderToReload; // @synthesize responderToReload=_responderPreventedFromSettingInputViews;
 - (void)dealloc;
 

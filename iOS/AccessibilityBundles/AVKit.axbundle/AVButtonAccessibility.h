@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axSetLabelForDirectionButton;
 - (void)_axSetLabelForPlayPauseButton;
 - (void)setHasAlternateAppearance:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;

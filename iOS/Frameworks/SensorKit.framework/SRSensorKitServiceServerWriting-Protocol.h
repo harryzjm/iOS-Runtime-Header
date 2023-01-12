@@ -7,6 +7,7 @@
 @class NSString;
 
 @protocol SRSensorKitServiceServerWriting
+- (void)fetchEligibilityStatusForBundleIdentifier:(NSString *)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)requestFileHandleForWritingWithReply:(void (^)(NSDictionary *))arg1;
 - (void)startWritingForSensor:(NSString *)arg1;
 @end

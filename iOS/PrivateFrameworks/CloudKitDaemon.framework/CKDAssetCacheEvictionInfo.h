@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CKDContainer, NSMutableOrderedSet;
+@class NSMutableOrderedSet;
 
 @interface CKDAssetCacheEvictionInfo : NSObject
 {
     _Bool _forced;
     _Bool _evictNow;
     _Bool _clearRegisteredItems;
-    CKDContainer *_container;
     NSMutableOrderedSet *_itemIDsToUnregister;
     NSMutableOrderedSet *_assetHandleItemIDsToDelete;
 }
@@ -21,11 +20,10 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableOrderedSet *assetHandleItemIDsToDelete; // @synthesize assetHandleItemIDsToDelete=_assetHandleItemIDsToDelete;
 @property(retain, nonatomic) NSMutableOrderedSet *itemIDsToUnregister; // @synthesize itemIDsToUnregister=_itemIDsToUnregister;
-@property(nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
 @property _Bool clearRegisteredItems; // @synthesize clearRegisteredItems=_clearRegisteredItems;
 @property _Bool evictNow; // @synthesize evictNow=_evictNow;
 @property _Bool forced; // @synthesize forced=_forced;
-- (id)initWithContainer:(id)arg1 forced:(_Bool)arg2 evictNow:(_Bool)arg3;
+- (id)initWithForced:(_Bool)arg1 evictNow:(_Bool)arg2;
 
 @end
 

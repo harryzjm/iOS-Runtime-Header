@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIAlertViewDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIUserNotificationRestrictedAlertViewProxy <UIAlertViewDelegate>
+@interface _UIUserNotificationRestrictedAlertViewProxy
 {
     id _delegate;
 }

@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface ObjCReplica : NSObject
 {
     MISSING_TYPE *uuid;

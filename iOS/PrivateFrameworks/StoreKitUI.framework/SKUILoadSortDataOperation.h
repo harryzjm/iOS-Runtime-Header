@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUILoadResourceOperation.h"
+
 @class SKUISortDataRequest, SSVLoadURLOperation;
 
 __attribute__((visibility("hidden")))
-@interface SKUILoadSortDataOperation
+@interface SKUILoadSortDataOperation : SKUILoadResourceOperation
 {
     SSVLoadURLOperation *_underlyingOperation;
 }

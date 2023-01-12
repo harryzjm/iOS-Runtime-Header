@@ -6,16 +6,10 @@
 
 #import <UIKit/UIBarButtonItem.h>
 
-#import <MessageUI/MFPresentationSource-Protocol.h>
-
 @class NSString;
 
-@interface UIBarButtonItem (MFPresentationSource) <MFPresentationSource>
+@interface UIBarButtonItem (MFPresentationSource)
 - (void)mf_setAsSourceForPopoverPresentationController:(id)arg1;
-- (void)mf_setLandscapeImagePhoneVerticalOffset:(double)arg1;
-- (void)mf_setLandscapeImagePhoneOffset:(struct CGPoint)arg1;
-- (void)mf_setImageVerticalOffset:(double)arg1;
-- (void)mf_setImageOffset:(struct CGPoint)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

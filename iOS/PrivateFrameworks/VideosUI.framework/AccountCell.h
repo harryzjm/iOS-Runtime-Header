@@ -12,6 +12,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)cellStyle;
+- (void)_setAccountImage:(id)arg1;
+- (void)_configureUserImage;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)layoutSubviews;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 
 @end

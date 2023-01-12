@@ -6,6 +6,7 @@
 
 #import <StorageSettings/STStoragePlugin.h>
 
+__attribute__((visibility("hidden")))
 @interface CKStoragePlugin : STStoragePlugin
 {
 }

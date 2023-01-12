@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSBatchDeleteRequest, NSFetchRequest, NSSQLFetchRequestContext, NSString;
+@class NSArray, NSBatchDeleteRequest, NSFetchRequest, NSSQLFetchRequestContext;
 
 __attribute__((visibility("hidden")))
 @interface NSSQLBatchDeleteRequestContext
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     NSArray *_deletedObjectIDs;
     NSSQLFetchRequestContext *_fetchContext;
     NSArray *_externalDataReferenceTriggerStatements;
-    NSString *_tempTableName;
     NSArray *_externalDataReferencesToDelete;
     NSArray *_fileBackedFuturesToDelete;
 }

@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MFExternalPlaybackController-Protocol.h>
-#import <MediaPlaybackCore/MPAVRoutingControllerDelegate-Protocol.h>
-#import <MediaPlaybackCore/MPCExternalPlaybackRouter-Protocol.h>
-
 @class MPAVRoutingController, MPCMediaFoundationTranslator, MPCPlaybackEngine, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCExternalPlaybackControllerImplementation : NSObject <MPAVRoutingControllerDelegate, MFExternalPlaybackController, MPCExternalPlaybackRouter>
+@interface MPCExternalPlaybackControllerImplementation : NSObject
 {
     MPAVRoutingController *_routingController;
     MPCPlaybackEngine *_playbackEngine;

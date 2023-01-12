@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-
 @class NSIndexPath, NSString, UICollectionView, VUILibraryStackView;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryStackViewController : UIViewController <UICollectionViewDelegate>
+@interface VUILibraryStackViewController : UIViewController
 {
     double _lastAppearWidth;
     _Bool _requiresRelayout;

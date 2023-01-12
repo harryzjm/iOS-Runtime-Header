@@ -6,20 +6,17 @@
 
 #import <CopresenceCore/CPConversationMediaControllerXPCHost-Protocol.h>
 
-@class NSSet, NSString, NSUUID, TUConversationActivity, TUConversationMember;
+@class NSDictionary, NSSet, NSString, NSUUID, TUConversationActivityCreateSessionRequest, TUConversationMember;
 
 @protocol CPConversationManagerXPCHost <CPConversationMediaControllerXPCHost>
+- (void)includeMetricsReport:(NSDictionary *)arg1 onConversationWithUUID:(NSUUID *)arg2;
 - (void)kickMember:(TUConversationMember *)arg1 conversationUUID:(NSUUID *)arg2;
-- (void)requestScreenShareFromMember:(TUConversationMember *)arg1 conversationUUID:(NSUUID *)arg2;
 - (void)setDownlinkMuted:(_Bool)arg1 forRemoteParticipantsInConversationWithUUID:(NSUUID *)arg2;
 - (void)buzzMember:(TUConversationMember *)arg1 conversationUUID:(NSUUID *)arg2;
-- (void)createActivitySession:(TUConversationActivity *)arg1 onConversationWithUUID:(NSUUID *)arg2 completion:(void (^)(_Bool))arg3;
+- (void)createActivitySessionWith:(TUConversationActivityCreateSessionRequest *)arg1 onConversationWithUUID:(NSUUID *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)setActivityAuthorization:(_Bool)arg1 forBundleIdentifier:(NSString *)arg2;
 - (void)prepareForGroupActivityWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
-- (void)removeActivitySuggestion:(TUConversationActivity *)arg1;
-- (void)addActivitySuggestion:(TUConversationActivity *)arg1;
 - (void)addRemoteMembers:(NSSet *)arg1 toConversationWithUUID:(NSUUID *)arg2;
-- (void)requestActivitySuggestionsWithReply:(void (^)(NSSet *))arg1;
 - (void)requestConversationContainersByGroupUUIDWithReply:(void (^)(NSDictionary *))arg1;
 @end
 

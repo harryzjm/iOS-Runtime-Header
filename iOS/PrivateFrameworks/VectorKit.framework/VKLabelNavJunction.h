@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKLabelNavFeature-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, VKLabelNavRoad, VKLabelNavRoadLabel;
 
 __attribute__((visibility("hidden")))
-@interface VKLabelNavJunction : NSObject <VKLabelNavFeature>
+@interface VKLabelNavJunction : NSObject
 {
     struct shared_ptr<md::LabelTile> _tile;
     Matrix_8746f91e _tileCoordinate;
@@ -55,18 +53,19 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isRouteRefineJunction; // @synthesize isRouteRefineJunction=_isRouteRefineJunction;
 @property(nonatomic) _Bool isRouteOverpass; // @synthesize isRouteOverpass=_isRouteOverpass;
 @property(readonly, nonatomic) _Bool isOverpass; // @synthesize isOverpass=_isOverpass;
-@property(nonatomic) VKLabelNavJunction *overpassJunction; // @synthesize overpassJunction=_overpassJunction;
+@property(nonatomic) __weak VKLabelNavJunction *overpassJunction; // @synthesize overpassJunction=_overpassJunction;
 @property(nonatomic) unsigned long long depthFromRoute; // @synthesize depthFromRoute=_depthFromRoute;
 @property(nonatomic) Matrix_8746f91e sharedRouteDirection; // @synthesize sharedRouteDirection=_sharedRouteDirection;
 @property(readonly, nonatomic) _Bool hasSharedRouteDirection; // @synthesize hasSharedRouteDirection=_hasSharedRouteDirection;
 @property(nonatomic) _Bool isOnDualCarriageway; // @synthesize isOnDualCarriageway=_isOnDualCarriageway;
 @property(nonatomic) float distanceFromPreviousShieldLabel; // @synthesize distanceFromPreviousShieldLabel=_distanceFromPreviousShieldLabel;
 @property(nonatomic) int preferredLabelPlacement; // @synthesize preferredLabelPlacement=_preferredLabelPlacement;
-@property(readonly, nonatomic) VKLabelNavRoad *incomingRoad; // @synthesize incomingRoad=_incomingRoad;
-@property(readonly, nonatomic) VKLabelNavRoad *outgoingRoad; // @synthesize outgoingRoad=_outgoingRoad;
+@property(readonly, nonatomic) __weak VKLabelNavRoad *incomingRoad; // @synthesize incomingRoad=_incomingRoad;
+@property(readonly, nonatomic) __weak VKLabelNavRoad *outgoingRoad; // @synthesize outgoingRoad=_outgoingRoad;
 @property(nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
 @property(readonly, nonatomic) Matrix_8746f91e tileCoordinate; // @synthesize tileCoordinate=_tileCoordinate;
 @property(readonly, nonatomic) const struct GeoCodecsConnectivityJunction *geoJunction; // @synthesize geoJunction=_geoJunction;
+@property(readonly, nonatomic) _Bool isValid;
 @property(readonly, nonatomic) _Bool isTrafficCameraFeature;
 @property(readonly, nonatomic) _Bool isEtaFeature;
 @property(readonly, nonatomic) _Bool isGuidanceStepStart;
@@ -94,7 +93,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isOffRouteGraph;
 @property(readonly, nonatomic) _Bool isAwayFromRoute;
 @property(readonly, nonatomic) _Bool isRamp;
-@property(readonly, nonatomic) long long intraRoadPriority;
+@property(readonly, nonatomic) long long intraRoadPriorityForShieldLabel;
+@property(readonly, nonatomic) long long intraRoadPriorityForRoadLabel;
 @property(readonly, nonatomic) _Bool isIntersection;
 @property(readonly, nonatomic) _Bool isOnRoute;
 @property(readonly, nonatomic) _Bool isRoadTerminus;

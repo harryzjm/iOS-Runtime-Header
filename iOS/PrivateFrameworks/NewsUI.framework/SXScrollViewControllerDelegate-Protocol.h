@@ -17,6 +17,7 @@
 - (_Bool)scrollViewController:(SXScrollViewController *)arg1 shouldOccludeAccessibilityElement:(id)arg2;
 - (void)scrollViewController:(SXScrollViewController *)arg1 enableNavigation:(_Bool)arg2;
 - (void)scrollViewControllerDidStopScrolling:(SXScrollViewController *)arg1;
+- (void)scrollViewControllerDidScrollToBottomOfPrimaryContent:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerDidScroll:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerDismissFullscreen:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerWillDismissFullscreen:(SXScrollViewController *)arg1;

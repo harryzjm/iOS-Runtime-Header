@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SceneKit/SCNCaptureDeviceOutputConsumer-Protocol.h>
+#import "SCNTextureSource.h"
 
 @class NSString;
 @protocol MTLTexture;
 
 __attribute__((visibility("hidden")))
-@interface SCNCaptureDeviceOutputConsumerSource <SCNCaptureDeviceOutputConsumer>
+@interface SCNCaptureDeviceOutputConsumerSource : SCNTextureSource
 {
     struct __CVMetalTextureCache *_textureCache;
     struct __CVBuffer *_pixelBuffer;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)setPixelBuffer:(struct __CVBuffer *)arg1;
 - (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 fromDevice:(id)arg2;
 - (void)setSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
+- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3 status:(CDStruct_3d581f42 *)arg4;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)connectToProxy:(struct __C3DImageProxy *)arg1;
 - (void)dealloc;

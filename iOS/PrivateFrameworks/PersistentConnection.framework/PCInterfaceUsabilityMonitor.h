@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <PersistentConnection/PCInterfaceUsabilityMonitorProtocol-Protocol.h>
-
 @class CUTWeakReference, NSMutableArray, NSRecursiveLock, NSString;
 @protocol OS_dispatch_queue, OS_nw_interface, OS_nw_parameters, OS_nw_path_evaluator, PCInterfaceUsabilityMonitorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PCInterfaceUsabilityMonitor : NSObject <PCInterfaceUsabilityMonitorProtocol>
+@interface PCInterfaceUsabilityMonitor : NSObject
 {
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_scQueue;

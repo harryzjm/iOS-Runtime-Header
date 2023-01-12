@@ -15,10 +15,9 @@
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityElements;
-- (id)_accessibilitySupplementaryHeaderViews;
 - (id)_accessibilityUserTestingChildren;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)initWithCaption:(id)arg1 buttonText:(id)arg2 image:(id)arg3 imageSize:(struct CGSize)arg4 useLargeIcon:(_Bool)arg5;
+- (id)initWithCaption:(id)arg1 buttonText:(id)arg2 image:(id)arg3 imageSize:(struct CGSize)arg4 useLargeIcon:(_Bool)arg5 displayLanguage:(id)arg6;
 - (_Bool)accessibilityActivate;
 
 @end

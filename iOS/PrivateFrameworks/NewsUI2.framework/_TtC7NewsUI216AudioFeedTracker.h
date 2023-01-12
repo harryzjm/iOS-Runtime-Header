@@ -11,11 +11,13 @@
 @interface _TtC7NewsUI216AudioFeedTracker : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tracker;
+    MISSING_TYPE *audioPlaybackContext;
     MISSING_TYPE *readingHistory;
+    MISSING_TYPE *suggestionsTracker;
     MISSING_TYPE *contentPrefetchManager;
+    MISSING_TYPE *blueprintProvider;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *scienceDataFactory;
-    MISSING_TYPE *suggestionsTracker;
 }
 
 @end

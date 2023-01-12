@@ -13,6 +13,7 @@
     MISSING_TYPE *deviceState;
     MISSING_TYPE *remembersStoreProvider;
     MISSING_TYPE *analyticsService;
+    MISSING_TYPE *historicalDeviceInteractionProvider;
 }
 
 @end

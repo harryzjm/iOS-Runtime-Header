@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class UIInputViewSetPlacement;
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewSetPlacementOffScreenLeftOrRight <NSSecureCoding>
+@interface UIInputViewSetPlacementOffScreenLeftOrRight
 {
     UIInputViewSetPlacement *_otherPlacement;
 }

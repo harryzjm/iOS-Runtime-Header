@@ -8,6 +8,6 @@
 
 @interface NSURLRequest (SafariCoreExtras)
 + (id)safari_nonAppInitiatedRequestWithURL:(id)arg1;
-- (id)safari_requestBySettingIsNonAppInitiated:(_Bool)arg1;
+- (id)safari_requestBySettingIsUserInitiated:(_Bool)arg1;
 @end
 

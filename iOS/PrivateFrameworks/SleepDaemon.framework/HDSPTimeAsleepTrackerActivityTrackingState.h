@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HDSPTimeAsleepTrackerAutoTrackingState.h"
+
 __attribute__((visibility("hidden")))
-@interface HDSPTimeAsleepTrackerActivityTrackingState
+@interface HDSPTimeAsleepTrackerActivityTrackingState : HDSPTimeAsleepTrackerAutoTrackingState
 {
 }
 
 - (void)activityDetectedOnDate:(id)arg1;
+- (_Bool)inExpectedAutoTrackingWindow;
 - (_Bool)isActivityTrackingState;
 - (id)stateName;
 - (void)didExitWithNextState:(id)arg1 context:(id)arg2;

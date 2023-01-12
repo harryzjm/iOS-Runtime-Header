@@ -12,12 +12,14 @@ __attribute__((visibility("hidden")))
 @interface VUISportsScoreboardViewModel : NSObject
 {
     _Bool _showScoreboard;
+    _Bool _configureScoreUpdates;
     NSString *_canonicalId;
     NSDictionary *_leagueContext;
     NSArray *_scores;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool configureScoreUpdates; // @synthesize configureScoreUpdates=_configureScoreUpdates;
 @property(readonly, nonatomic) _Bool showScoreboard; // @synthesize showScoreboard=_showScoreboard;
 @property(readonly, nonatomic) NSArray *scores; // @synthesize scores=_scores;
 @property(readonly, nonatomic) NSDictionary *leagueContext; // @synthesize leagueContext=_leagueContext;

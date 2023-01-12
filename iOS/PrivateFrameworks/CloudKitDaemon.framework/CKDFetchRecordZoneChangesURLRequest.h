@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/CKDURLRequestPipelining-Protocol.h>
+#import "CKDURLRequest.h"
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 
-@interface CKDFetchRecordZoneChangesURLRequest <CKDURLRequestPipelining>
+@interface CKDFetchRecordZoneChangesURLRequest : CKDURLRequest
 {
     _Bool _shouldFetchAssetContent;
+    _Bool _fetchChangesForMergeableValues;
     NSArray *_recordZoneIDs;
     NSDictionary *_configurationsByRecordZoneID;
     long long _changeTypes;
     NSSet *_desiredAssetKeys;
+    NSDictionary *_supplementalChangeTokenByZoneID;
     CDUnknownBlockType _recordsChangedBlock;
     CDUnknownBlockType _recordDeletedBlock;
     NSMutableDictionary *_zoneIDsByRequestOperationUUID;
@@ -30,6 +32,8 @@
 @property(retain, nonatomic) NSMutableDictionary *zoneIDsByRequestOperationUUID; // @synthesize zoneIDsByRequestOperationUUID=_zoneIDsByRequestOperationUUID;
 @property(copy, nonatomic) CDUnknownBlockType recordDeletedBlock; // @synthesize recordDeletedBlock=_recordDeletedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordsChangedBlock; // @synthesize recordsChangedBlock=_recordsChangedBlock;
+@property(nonatomic) _Bool fetchChangesForMergeableValues; // @synthesize fetchChangesForMergeableValues=_fetchChangesForMergeableValues;
+@property(retain, nonatomic) NSDictionary *supplementalChangeTokenByZoneID; // @synthesize supplementalChangeTokenByZoneID=_supplementalChangeTokenByZoneID;
 @property(retain, nonatomic) NSSet *desiredAssetKeys; // @synthesize desiredAssetKeys=_desiredAssetKeys;
 @property(nonatomic) _Bool shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property(nonatomic) long long changeTypes; // @synthesize changeTypes=_changeTypes;
@@ -38,7 +42,7 @@
 - (void)requestDidComplete;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
-- (id)_handleRecordChanges:(id)arg1 forZoneID:(id)arg2;
+- (id)_handleRecordChanges:(id)arg1 deltaChanges:(id)arg2 forZoneID:(id)arg3;
 - (id)generateRequestOperations;
 - (_Bool)handlesAnonymousCKUserIDPropagation;
 - (_Bool)requestGETPreAuth;

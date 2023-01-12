@@ -4,22 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct _NFData;
-
-struct _NFDataScanner {
-    struct _NFData *_field1;
-    unsigned long long _field2;
-    void *_field3;
-};
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-

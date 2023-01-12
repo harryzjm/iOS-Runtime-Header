@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) const void *venueWallEndMeshes;
 @property(readonly, nonatomic) const void *venueWallMeshes;
 - (id)initWithStyleQuery:(void *)arg1 tileZoom:(float)arg2 layer:(int)arg3 buildingId:(unsigned long long)arg4 contentScale:(float)arg5;
+- (id)initWithStyleQuery:(void *)arg1 tileZoom:(float)arg2 layer:(int)arg3 buildingId:(unsigned long long)arg4 contentScale:(float)arg5 storage:(shared_ptr_fb8448a7)arg6;
 
 @end
 

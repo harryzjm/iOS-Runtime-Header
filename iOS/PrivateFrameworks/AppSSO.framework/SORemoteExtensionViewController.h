@@ -6,17 +6,20 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <AppSSO/SOHostExtensionViewProtocol-Protocol.h>
-
 @class NSString;
+@protocol SORemoteExtensionViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SORemoteExtensionViewController : _UIRemoteViewController <SOHostExtensionViewProtocol>
+@interface SORemoteExtensionViewController : _UIRemoteViewController
 {
+    id <SORemoteExtensionViewControllerDelegate> _delegate;
 }
 
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <SORemoteExtensionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,27 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceHoursSectionViewDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
+@class MKUGCCallToActionViewAppearance, MUPlaceHoursSectionViewConfiguration, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceHoursSectionController <MUPlaceHoursSectionViewDelegate, MUPlaceSectionControlling>
+@interface MUPlaceHoursSectionController : MUPlaceSectionController
 {
     MUPlaceSectionView *_sectionView;
-    NSArray *_businessHoursConfig;
+    MUPlaceHoursSectionViewConfiguration *_businessHoursConfig;
 }
 
 + (id)sectionControllerForMessagesMapItem:(id)arg1;
-+ (id)sectionControllerForMapItem:(id)arg1 isInMapsApp:(_Bool)arg2;
++ (id)sectionControllerForMapItem:(id)arg1;
 - (void).cxx_destruct;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
-- (void)hoursSectionView:(id)arg1 didExpand:(_Bool)arg2 atIndex:(unsigned long long)arg3;
+- (void)hoursSectionView:(id)arg1 didExpand:(_Bool)arg2 forConfiguration:(id)arg3;
 @property(readonly, nonatomic) UIView *sectionView;
 - (void)_setupSectionView;
-- (id)initWithMapItem:(id)arg1 businessHoursConfiguration:(id)arg2;
+- (id)initWithMapItem:(id)arg1 sectionViewConfiguration:(id)arg2;
 
 // Remaining properties
 @property(nonatomic, getter=isActive) _Bool active;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSSecureCoding-Protocol.h>
-#import <Foundation/NSXPCProxyCreating-Protocol.h>
-
 @class NSDictionary, NSXPCConnection, NSXPCInterface;
 
 __attribute__((visibility("hidden")))
-@interface _NSXPCDistantObject : NSObject <NSXPCProxyCreating, NSSecureCoding>
+@interface _NSXPCDistantObject : NSObject
 {
     NSXPCConnection *_connection;
     NSXPCInterface *_remoteInterface;

@@ -16,6 +16,8 @@
     MISSING_TYPE *archiveID;
     MISSING_TYPE *time;
     MISSING_TYPE *nextTime;
+    MISSING_TYPE *stableIDs;
+    MISSING_TYPE *inTransitionGroup;
     MISSING_TYPE *platformViewMode;
 }
 

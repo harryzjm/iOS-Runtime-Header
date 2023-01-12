@@ -8,6 +8,7 @@
 
 @interface UIColor (SBUIColorAdditions)
 + (id)sbui_randomColor;
++ (id)sbui_systemColorNamed:(id)arg1;
 - (double)sb_brightness;
 - (_Bool)sb_isGrayscale;
 @end

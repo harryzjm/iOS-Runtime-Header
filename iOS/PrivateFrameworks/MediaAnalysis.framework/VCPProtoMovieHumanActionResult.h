@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class NSString, VCPProtoBounds, VCPProtoTimeRange;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoMovieHumanActionResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoMovieHumanActionResult : PBCodable
 {
     float _absoluteScore;
     VCPProtoBounds *_bounds;

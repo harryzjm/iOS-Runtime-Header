@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <SafariServices/SFPrivacyReportGridItem-Protocol.h>
-#import <SafariServices/UITextViewDelegate-Protocol.h>
-
 @class NSLayoutConstraint, NSString, UILabel, UITextView;
 @protocol SFPrivacyReportGridItemDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFPrivacyReportExplanationDetailItemView : UIView <SFPrivacyReportGridItem, UITextViewDelegate>
+@interface SFPrivacyReportExplanationDetailItemView : UIView
 {
     UIView *_hairline;
     NSLayoutConstraint *_titleTopConstraint;

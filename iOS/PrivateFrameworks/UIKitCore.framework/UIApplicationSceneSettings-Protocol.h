@@ -7,10 +7,15 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class BSCornerRadiusConfiguration, NSNumber, NSSet, NSString;
+@protocol BSInterfaceOrientationMapResolving><BSXPCSecureCoding;
 
 @protocol UIApplicationSceneSettings <NSObject>
+@property(readonly, nonatomic) _Bool inLiveResize;
 @property(readonly, nonatomic) _Bool _debugValidationOrientationMaskEnabled;
 @property(readonly, nonatomic) NSSet *targetOfEventDeferringEnvironments;
+@property(readonly, nonatomic) _Bool enhancedWindowingEnabled;
+@property(readonly, nonatomic) long long screenReferenceDisplayModeStatus;
+@property(readonly, nonatomic) id <BSInterfaceOrientationMapResolving><BSXPCSecureCoding> interfaceOrientationMapResolver;
 @property(readonly, nonatomic) long long interfaceOrientationMode;
 @property(readonly, nonatomic) long long pointerLockStatus;
 @property(readonly, nonatomic) long long accessibilityContrast;

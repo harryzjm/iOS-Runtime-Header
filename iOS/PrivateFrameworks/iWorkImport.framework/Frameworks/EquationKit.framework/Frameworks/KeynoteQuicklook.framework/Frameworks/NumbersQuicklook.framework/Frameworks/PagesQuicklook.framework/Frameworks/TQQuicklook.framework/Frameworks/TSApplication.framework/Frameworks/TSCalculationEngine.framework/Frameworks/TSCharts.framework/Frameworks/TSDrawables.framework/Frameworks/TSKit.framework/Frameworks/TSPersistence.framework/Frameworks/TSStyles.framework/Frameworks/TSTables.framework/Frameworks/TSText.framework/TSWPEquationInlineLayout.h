@@ -19,7 +19,6 @@
 - (id)computeLayoutGeometry;
 - (struct CGSize)invalidEquationSize;
 - (id)layoutGeometryFromInfo;
-- (double)inlineCenteredAlignmentHorizontalOffset;
 - (double)descentForInlineLayout;
 - (void)invalidateTextScalePercent;
 - (_Bool)wantsRoundedInlinePosition;

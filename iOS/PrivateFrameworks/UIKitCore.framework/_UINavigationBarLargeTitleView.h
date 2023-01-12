@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UINavigationBarTransitionContextParticipant-Protocol.h>
+#import "UIView.h"
 
-@class NSArray, NSDictionary, NSString, UIView, _UINavigationBarLargeTitleViewLayout, _UINavigationBarTransitionContext, _UIPointerInteractionAssistant;
+@class NSArray, NSDictionary, NSString, _UINavigationBarLargeTitleViewLayout, _UINavigationBarTransitionContext, _UIPointerInteractionAssistant;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarLargeTitleView <UIPointerInteractionDelegate, _UINavigationBarTransitionContextParticipant>
+@interface _UINavigationBarLargeTitleView : UIView
 {
     _UINavigationBarTransitionContext *_transitionContext;
     NSArray *_titleCandidates;
@@ -58,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateContent;
 - (void)_updateContentAndInvalidate:(_Bool)arg1;
+- (void)safeAreaInsetsDidChange;
 - (id)_effectiveTitle;
 - (id)_titleForCurrentWidth;
 - (void)layoutSubviews;

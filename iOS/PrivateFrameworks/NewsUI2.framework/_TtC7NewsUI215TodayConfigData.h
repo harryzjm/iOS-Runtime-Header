@@ -11,8 +11,11 @@
 @interface _TtC7NewsUI215TodayConfigData : _TtCs12_SwiftObject
 {
     MISSING_TYPE *recordID;
+    MISSING_TYPE *source;
+    MISSING_TYPE *fetchInterval;
     MISSING_TYPE *headlines;
     MISSING_TYPE *tags;
+    MISSING_TYPE *localNewsArticles;
 }
 
 @end

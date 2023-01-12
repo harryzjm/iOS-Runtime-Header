@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/SSDownloadManagerObserver-Protocol.h>
-
 @class NSMutableArray, NSString, SSDownload, SSDownloadManager, TVPStateMachine;
 
 __attribute__((visibility("hidden")))
-@interface VUIStoreDownloadMonitor : NSObject <SSDownloadManagerObserver>
+@interface VUIStoreDownloadMonitor : NSObject
 {
     SSDownloadManager *_downloadManager;
     SSDownload *_download;

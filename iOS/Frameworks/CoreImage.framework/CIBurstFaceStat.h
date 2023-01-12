@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreImage/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface CIBurstFaceStat : NSObject <NSCopying>
+@interface CIBurstFaceStat : NSObject
 {
     _Bool leftEyeOpen;
     _Bool rightEyeOpen;
@@ -84,7 +82,6 @@ __attribute__((visibility("hidden")))
 @property _Bool rightEyeOpen; // @synthesize rightEyeOpen;
 @property _Bool leftEyeOpen; // @synthesize leftEyeOpen;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithFaceStat:(id)arg1;
 
 @end

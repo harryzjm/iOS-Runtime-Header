@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PagesQuicklook/TPPageLayoutInfoProvider-Protocol.h>
-#import <PagesQuicklook/TSKChangeSourceObserver-Protocol.h>
-#import <PagesQuicklook/TSWPLayoutOwner-Protocol.h>
-
 @class NSMutableArray, NSString, TPBackgroundPaginationController, TPFootnoteLayoutController, TPPageController, TPPageControllerCanvasDelegate, TPTextFlowLayoutController, TPTextWrapController, TSUMutablePointerSet, TSWPLayoutManager, TSWPLayoutMetricsCache, _TtC14PagesQuicklook17TPPageLayoutCache, _TtC14PagesQuicklook17TPPaginationState;
 @protocol TPPageControllerDelegate;
 
-@interface TPPaginatedPageController <TPPageLayoutInfoProvider, TSKChangeSourceObserver, TSWPLayoutOwner>
+@interface TPPaginatedPageController
 {
     _Atomic int _isScrolling;
     _Atomic int _isZooming;
@@ -23,6 +19,7 @@
     TPPageControllerCanvasDelegate *_offscreenSearchDelegate;
     TPFootnoteLayoutController *_footnoteLayoutController;
     _Bool _checkedForBackUp;
+    _Bool _isTornDown;
     NSMutableArray *_pageGeneratorStack;
     unsigned long long _lastKnownPageCount;
     unsigned long long _completePageCount;
@@ -46,6 +43,9 @@
     TPBackgroundPaginationController *_backgroundPaginationController;
 }
 
++ (void)disownPaginatedPageControllerForDelegate:(id)arg1;
++ (id)existingOwnedPaginatedPageControllerForDelegate:(id)arg1;
++ (id)ownedPaginatedPageControllerForDelegate:(id)arg1;
 + (id)paginatedPageControllerForDelegate:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
@@ -72,6 +72,7 @@
 - (void)i_trimPageAtIndex:(unsigned long long)arg1 toCharIndex:(unsigned long long)arg2 removeFootnoteReferenceCount:(unsigned long long)arg3 removeAutoNumberFootnoteCount:(unsigned long long)arg4;
 - (id)i_pageIndexPathForPageIndex:(unsigned long long)arg1 forcePagination:(_Bool)arg2 allowAfterPaginationPoint:(_Bool)arg3;
 - (id)i_pageHintForPageIndex:(unsigned long long)arg1;
+- (void)p_invalidateThumbnailForPageIndex:(unsigned long long)arg1;
 - (void)p_invalidateThumbnailsFromSectionIndexToEnd:(unsigned long long)arg1;
 - (void)p_invalidateThumbnailsFromSectionToEnd:(id)arg1;
 - (_Bool)p_layOutNextPageOnceWithOffscreenLayoutController;
@@ -125,7 +126,7 @@
 - (struct _NSRange)p_footnoteLayoutRangeForPageIndex:(unsigned long long)arg1 forcePagination:(_Bool)arg2 allowAfterPaginationPoint:(_Bool)arg3;
 - (struct _NSRange)p_anchoredRangeForPageIndex:(unsigned long long)arg1 forcePagination:(_Bool)arg2 allowAfterPaginationPoint:(_Bool)arg3;
 - (struct _NSRange)p_bodyRangeForPageIndex:(unsigned long long)arg1 forcePagination:(_Bool)arg2 allowAfterPaginationPoint:(_Bool)arg3;
-- (unsigned long long)p_pageIndexForCharIndex:(unsigned long long)arg1 includeEmptyPages:(_Bool)arg2 caretAffinity:(int)arg3 forcePagination:(_Bool)arg4 searchAfterPaginationPoint:(_Bool)arg5;
+- (unsigned long long)p_pageIndexForCharIndex:(unsigned long long)arg1 includeEmptyPages:(_Bool)arg2 caretAffinity:(long long)arg3 forcePagination:(_Bool)arg4 searchAfterPaginationPoint:(_Bool)arg5;
 - (id)p_pageInfoForPageAtIndex:(unsigned long long)arg1;
 - (void)p_withPageLayoutAtIndex:(unsigned long long)arg1 preferredLayoutController:(id)arg2 executeBlock:(CDUnknownBlockType)arg3;
 - (id)p_cachedPageLayoutForPageIndex:(unsigned long long)arg1 preferredLayoutController:(id)arg2;
@@ -151,6 +152,7 @@
 @property(readonly, nonatomic) double verticalPageSeparation;
 @property(readonly, nonatomic) double horizontalPageSeparation;
 - (void)invalidateAllPageLayoutsSizeAndPosition;
+- (void)changeTrackingVisibilityDidChange;
 - (struct CGSize)canvasSizeToFitAllPagesForPageViewState:(long long)arg1;
 - (unsigned long long)pageHeightCountForPageViewState:(long long)arg1;
 - (unsigned long long)calculatePageIndexFromCanvasPoint:(struct CGPoint)arg1;
@@ -180,6 +182,7 @@
 - (_Bool)isPaginationCompleteForSelection:(id)arg1 inFlow:(id)arg2;
 - (double)footerHeight;
 - (double)headerHeight;
+- (id)offscreenLayoutController;
 - (void)withPageLayoutAtIndex:(unsigned long long)arg1 preferredLayoutController:(id)arg2 executeBlock:(CDUnknownBlockType)arg3;
 - (void)withPageLayoutAtIndex:(unsigned long long)arg1 executeBlock:(CDUnknownBlockType)arg2;
 - (id)pageIndicesForPartitionableAttachmentAtBodyCharIndex:(unsigned long long)arg1 selectionPath:(id)arg2 forcePagination:(_Bool)arg3;
@@ -219,6 +222,7 @@
 - (id)p_sectionAtSectionIndex:(unsigned long long)arg1;
 - (void)enumerateHeaderFooterFragmentsOnPageIndex:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (_Bool)isSectionInfo:(id)arg1 onPage:(unsigned long long)arg2;
+- (_Bool)shouldUseFacingPagesForPageIndex:(unsigned long long)arg1;
 - (unsigned long long)contentFlagsForPageIndex:(unsigned long long)arg1;
 - (id)displayPageNumberForPageIndex:(unsigned long long)arg1;
 - (id)displayPageNumberForCharIndex:(unsigned long long)arg1;

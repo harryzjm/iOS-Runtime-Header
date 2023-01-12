@@ -6,24 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <ShazamInsights/SHDataFetcher-Protocol.h>
-
 @class NSString;
+@protocol SHNetworkRequester;
 
 __attribute__((visibility("hidden")))
-@interface SHCDNDataFetcher : NSObject <SHDataFetcher>
+@interface SHCDNDataFetcher : NSObject
 {
+    id <SHNetworkRequester> _networkRequester;
 }
 
-+ (id)downloadedClusterFilePath;
-+ (id)downloadedClusterDirectoryPath;
-+ (_Bool)hasDownloadedClusterFile;
-- (_Bool)clearDataWithError:(id *)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) id <SHNetworkRequester> networkRequester; // @synthesize networkRequester=_networkRequester;
 - (id)endpointFromDate:(id)arg1 insights:(id)arg2 location:(id)arg3;
-- (void)clusterDataForLocation:(id)arg1 date:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)clusterDataAtURL:(id)arg1 forLocation:(id)arg2 date:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)doesRequestEtag:(id)arg1 matchInResponse:(id)arg2;
-- (void)fetchDataForCountryCode:(id)arg1 etag:(id)arg2 insights:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)fetchTargetingDataForCurrentStorefront:(id)arg1 cachedEtag:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchClusterURL:(id)arg1 forCurrentStorefront:(id)arg2 cachedUniqueHash:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)initWithNetworkRequester:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

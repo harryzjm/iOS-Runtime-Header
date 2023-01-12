@@ -11,6 +11,7 @@
 + (id)_gkImageWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 + (id)_gkImageWithRawData:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 rowBytes:(unsigned long long)arg4 bitmapInfo:(unsigned int)arg5;
 - (id)_gkImageByTintingWithColor:(id)arg1;
+- (id)_gkImageByAppyingCornerRadius:(double)arg1;
 - (id)_gkImageByAddingAlpha;
 - (id)_gkImageByScalingToSize:(struct CGSize)arg1;
 - (id)_gkImageByScalingToSize:(struct CGSize)arg1 scale:(double)arg2;

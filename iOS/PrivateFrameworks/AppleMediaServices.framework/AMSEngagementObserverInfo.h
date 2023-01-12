@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet, NSSet;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AMSEngagementObserverInfo : NSObject
 {
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSMutableSet *_underlyingPlacements;
     NSMutableSet *_underlyingServiceTypes;
 }
@@ -18,13 +20,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *underlyingServiceTypes; // @synthesize underlyingServiceTypes=_underlyingServiceTypes;
 @property(retain, nonatomic) NSMutableSet *underlyingPlacements; // @synthesize underlyingPlacements=_underlyingPlacements;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 - (void)removeServiceType:(id)arg1;
 - (void)addServiceType:(id)arg1;
 - (void)removePlacement:(id)arg1;
 - (void)addPlacement:(id)arg1;
 @property(readonly, nonatomic) NSSet *serviceTypes;
 @property(readonly, nonatomic) NSSet *placements;
-- (id)init;
+- (id)initWithQueue:(id)arg1;
 
 @end
 

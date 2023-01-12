@@ -7,6 +7,7 @@
 #import <Foundation/NSDateFormatter.h>
 
 @interface NSDateFormatter (FamilyCircle)
++ (id)fa_checklistDateFormatter;
 + (id)fa_standardFormatter;
 @end
 

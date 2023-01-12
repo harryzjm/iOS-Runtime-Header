@@ -12,6 +12,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityScrollToVisible;
+- (unsigned long long)accessibilityTraits;
+- (struct _NSRange)_accessibilityRowRange;
+- (id)accessibilityLabel;
+- (id)_accessibilityUserTestingChildren;
+- (id)_accessibilitySupplementaryFooterViews;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
+- (id)accessibilityCustomActions;
+- (_Bool)isAccessibilityElement;
 
 @end
 

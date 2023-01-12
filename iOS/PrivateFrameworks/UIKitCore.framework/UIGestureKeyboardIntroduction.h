@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     unsigned long long m_insertedTextLength;
 }
 
+- (void).cxx_destruct;
 - (void)dismissGestureKeyboardIntroduction;
 - (void)dismissGestureKeyboardIntroduction:(id)arg1;
 - (void)playGestureKeyboardIntroduction:(id)arg1;

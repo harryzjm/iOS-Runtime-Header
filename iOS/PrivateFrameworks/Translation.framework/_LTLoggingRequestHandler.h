@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FTBatchTranslationResponseDelegate-Protocol.h>
-#import <Translation/FTSpeechTranslationResponseDelegate-Protocol.h>
-
 @class FTBlazarService, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LTLoggingRequestHandler : NSObject <FTSpeechTranslationResponseDelegate, FTBatchTranslationResponseDelegate>
+@interface _LTLoggingRequestHandler : NSObject
 {
     FTBlazarService *_mtAppService;
 }

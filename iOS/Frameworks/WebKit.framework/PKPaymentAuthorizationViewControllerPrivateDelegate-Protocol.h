@@ -12,6 +12,7 @@
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)arg1 willFinishWithError:(NSError *)arg2;
 
 @optional
+- (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)arg1 didEncounterAuthorizationEvent:(unsigned long long)arg2;
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)arg1 didRequestMerchantSession:(void (^)(PKPaymentMerchantSession *, NSError *))arg2;
 @end
 

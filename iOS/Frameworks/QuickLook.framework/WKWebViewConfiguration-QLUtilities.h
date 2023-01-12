@@ -7,6 +7,7 @@
 #import <WebKit/WKWebViewConfiguration.h>
 
 @interface WKWebViewConfiguration (QLUtilities)
+- (id)_sharedDataStoreForBundleIdentifier:(id)arg1;
 - (id)ql_initWithForegroundPriorityAndSourceBundleIdentifier:(id)arg1;
 @end
 

@@ -6,14 +6,10 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitBackingStore/HMBLocalZoneID-Protocol.h>
-#import <HomeKitBackingStore/NSCopying-Protocol.h>
-#import <HomeKitBackingStore/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMBLocalZoneIDRow : HMFObject <NSCopying, NSSecureCoding, HMBLocalZoneID>
+@interface HMBLocalZoneIDRow : HMFObject
 {
     NSString *_name;
     NSData *_token;

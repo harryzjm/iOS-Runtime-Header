@@ -20,11 +20,9 @@ __attribute__((visibility("hidden")))
 - (id)readBaseImageFromImageAtURL:(id)arg1 baseWasValid:(_Bool *)arg2;
 - (id)readBaseImageFromData:(id)arg1 baseWasValid:(_Bool *)arg2;
 - (id)_readAnnotationsFromDataProvider:(struct CGDataProvider *)arg1;
-- (void)readAnnotationsFromArchivedModelData:(id)arg1 toController:(id)arg2;
+- (_Bool)readAnnotationsFromArchivedModelData:(id)arg1 toController:(id)arg2;
 - (id)readArchivedModelDataFromImageURL:(id)arg1;
 - (id)readArchivedModelDataFromImageData:(id)arg1;
-- (_Bool)readAnnotationsFromImageAtURL:(id)arg1 toController:(id)arg2;
-- (_Bool)readAnnotationsFromData:(id)arg1 toController:(id)arg2;
 
 @end
 

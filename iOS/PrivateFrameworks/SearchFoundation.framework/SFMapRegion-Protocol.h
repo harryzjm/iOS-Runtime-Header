@@ -11,6 +11,7 @@
 @protocol SFMapRegion <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) double altitudeInMeters;
 @property(nonatomic) double eastLng;
 @property(nonatomic) double northLat;
 @property(nonatomic) double westLng;

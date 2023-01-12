@@ -6,19 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/_GEOTileDBWriteOperation-Protocol.h>
-
 @class GEOTileData, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTileDBAddTileOperation : NSObject <_GEOTileDBWriteOperation>
+@interface _GEOTileDBAddTileOperation : NSObject
 {
     struct _GEOTileKey _key;
-    CDUnion_23a7df3d _tileSet;
+    CDUnion_20bcf645 _tileSet;
     GEOTileData *_data;
     NSString *_ETag;
     unsigned char _reason;
     NSUUID *_externalResourceUUID;
+    NSString *_subscriptionIdentifier;
 }
 
 - (void).cxx_destruct;
@@ -29,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canIncreaseDataSizeInDB;
 @property(readonly, nonatomic) unsigned long long sizeInBytes;
 @property(readonly, nonatomic) struct _GEOTileKey *key;
-- (id)initWithTileKey:(const struct _GEOTileKey *)arg1 tileSet:(CDUnion_23a7df3d)arg2 data:(id)arg3 ETag:(id)arg4 reason:(unsigned char)arg5 externalResourceUUID:(id)arg6;
+- (id)initWithTileKey:(const struct _GEOTileKey *)arg1 tileSet:(CDUnion_20bcf645)arg2 data:(id)arg3 ETag:(id)arg4 reason:(unsigned char)arg5 externalResourceUUID:(id)arg6 forSubscriptionWithIdentifier:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

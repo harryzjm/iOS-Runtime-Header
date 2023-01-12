@@ -6,11 +6,10 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <MediaPlayer/MPMusicMediaPickerClientController-Protocol.h>
-
 @class MPMediaPickerController, NSString;
 
-@interface MPMusicMediaPickerRemoteViewController : _UIRemoteViewController <MPMusicMediaPickerClientController>
+__attribute__((visibility("hidden")))
+@interface MPMusicMediaPickerRemoteViewController : _UIRemoteViewController
 {
     MPMediaPickerController *_mediaPickerController;
 }

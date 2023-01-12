@@ -4,25 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPCPlayerCommandRequest, NSString;
+@class MRUCAPackageView, NSString, UIView;
 
 __attribute__((visibility("hidden")))
 @interface MRUTransportButton
 {
-    _Bool _shouldPresentActionSheet;
+    _Bool _showHighlightCircle;
     NSString *_identifier;
-    MPCPlayerCommandRequest *_touchUpInsideCommandRequest;
-    MPCPlayerCommandRequest *_holdBeginCommandRequest;
-    MPCPlayerCommandRequest *_holdEndCommandRequest;
+    double _packageScale;
+    UIView *_backgroundView;
+    MRUCAPackageView *_packageView;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool shouldPresentActionSheet; // @synthesize shouldPresentActionSheet=_shouldPresentActionSheet;
-@property(retain, nonatomic) MPCPlayerCommandRequest *holdEndCommandRequest; // @synthesize holdEndCommandRequest=_holdEndCommandRequest;
-@property(retain, nonatomic) MPCPlayerCommandRequest *holdBeginCommandRequest; // @synthesize holdBeginCommandRequest=_holdBeginCommandRequest;
-@property(retain, nonatomic) MPCPlayerCommandRequest *touchUpInsideCommandRequest; // @synthesize touchUpInsideCommandRequest=_touchUpInsideCommandRequest;
+@property(retain, nonatomic) MRUCAPackageView *packageView; // @synthesize packageView=_packageView;
+@property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(nonatomic) _Bool showHighlightCircle; // @synthesize showHighlightCircle=_showHighlightCircle;
+@property(nonatomic) double packageScale; // @synthesize packageScale=_packageScale;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void)prepareForReuse;
+- (void)updateContentView;
+- (void)updateBackgroundView;
+- (void)updateVisualStyling;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)clearPackage;
+- (void)setPackageGlyphState:(id)arg1;
+- (void)setImage:(id)arg1 forState:(unsigned long long)arg2 animated:(_Bool)arg3;
+- (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
+- (void)setAsset:(id)arg1 animated:(_Bool)arg2;
+- (void)setAsset:(id)arg1;
+- (void)setEnabled:(_Bool)arg1;
+- (void)setSelected:(_Bool)arg1;
+- (void)setHighlighted:(_Bool)arg1;
+- (void)layoutSubviews;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

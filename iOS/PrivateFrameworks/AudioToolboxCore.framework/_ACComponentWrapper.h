@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _ACComponentWrapper : NSObject <NSSecureCoding>
+@interface _ACComponentWrapper : NSObject
 {
     struct shared_ptr<APComponent> mComponent;
 }

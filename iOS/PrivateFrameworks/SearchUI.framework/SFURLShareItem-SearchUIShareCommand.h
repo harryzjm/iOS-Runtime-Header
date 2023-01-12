@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFURLShareItem.h>
 
 @interface SFURLShareItem (SearchUIShareCommand)
-- (void)searchUI_fetchShareableItem:(CDUnknownBlockType)arg1;
+- (void)searchUI_fetchShareableItemWithCompletionHandler:(CDUnknownBlockType)arg1;
 @end
 

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPActivitySessionEvent, NSArray, TUConversationActivity;
+@class CPActivitySessionEvent, NSArray, NSString, TUConversationActivity;
 
 @protocol CPActivitySessionXPCHost
+- (void)disassociateScene;
+- (void)associateSceneWithSceneID:(NSString *)arg1;
 - (void)requestForegroundPresentation;
 - (void)presentSessionDismissalAlertWithAllowingCancellation:(_Bool)arg1 completion:(void (^)(_Bool))arg2;
 - (void)updateActivityWithActivity:(TUConversationActivity *)arg1;

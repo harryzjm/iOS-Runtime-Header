@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIMediaEntityAssetController-Protocol.h>
-#import <VideosUI/VUIMediaEntityAssetControllerDelegate-Protocol.h>
-
 @class MPMediaItemCollection, NSArray, NSString, VUIMediaEntityAssetControllerState, VUIMediaEntityType;
 @protocol OS_dispatch_queue, VUIMediaEntityAssetControllerDelegate, VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface VUIMPMediaItemCollectionAssetController : NSObject <VUIMediaEntityAssetControllerDelegate, VUIMediaEntityAssetController>
+@interface VUIMPMediaItemCollectionAssetController : NSObject
 {
     _Bool _supportsStartingDownload;
     NSObject<OS_dispatch_queue> *_completionDispatchQueue;

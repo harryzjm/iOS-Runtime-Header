@@ -10,9 +10,10 @@
 
 @interface _TtC7NewsUI222AudioHeadlineConverter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *state;
-    MISSING_TYPE *trackFactory;
-    MISSING_TYPE *configurationManager;
+    MISSING_TYPE *feedConfigManager;
+    MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *paidBundleConfigManager;
+    MISSING_TYPE *avAssetFactory;
 }
 
 @end

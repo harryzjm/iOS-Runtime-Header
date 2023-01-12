@@ -7,6 +7,7 @@
 #import <HomeUI/NSObject-Protocol.h>
 
 @protocol HUDisableableCellProtocol <NSObject>
-@property(nonatomic, getter=isDisabled) _Bool disabled;
+@property(nonatomic) _Bool disabled;
+- (_Bool)isDisabled;
 @end
 

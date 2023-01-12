@@ -10,10 +10,13 @@
 
 @interface _TtC14SiriMessageBus7Session : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *assistantId;
-    MISSING_TYPE *isSessionStoreLoaded;
     MISSING_TYPE *sessionId;
+    MISSING_TYPE *assistantId;
+    MISSING_TYPE *transactionName;
+    MISSING_TYPE *sessionTransaction;
     MISSING_TYPE *lastAccessedTime;
+    MISSING_TYPE *expirationTime;
+    MISSING_TYPE *conversationSession;
 }
 
 @end

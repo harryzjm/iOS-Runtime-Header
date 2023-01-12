@@ -4,23 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/VKCDataDetectorElementViewDelegate-Protocol.h>
-#import <VisionKitCore/VKCMRCHighlightViewDelegate-Protocol.h>
-
 @class NSArray, NSMutableSet, NSString;
 @protocol VKCImageDataDetectorViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCImageDataDetectorView <VKCDataDetectorElementViewDelegate, VKCMRCHighlightViewDelegate>
+@interface VKCImageDataDetectorView
 {
     _Bool _highlightSelectableItems;
     _Bool _allowLongPressDDActivationOnly;
     id <VKCImageDataDetectorViewDelegate> _delegate;
     unsigned long long _dataDetectorTypes;
     NSArray *_displayedElements;
-    NSArray *_allElements;
     NSArray *_unfilteredElements;
-    NSMutableSet *_displayedElementViews;
+    NSArray *_allElements;
+    NSMutableSet *__displayedElementViews;
     NSMutableSet *_displayedMRCPills;
     struct CGRect _boundsUsedToCalculateElementFrames;
     struct CGRect _contentsRectUsedToCalculateElementFrames;
@@ -30,15 +27,17 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect contentsRectUsedToCalculateElementFrames; // @synthesize contentsRectUsedToCalculateElementFrames=_contentsRectUsedToCalculateElementFrames;
 @property(nonatomic) struct CGRect boundsUsedToCalculateElementFrames; // @synthesize boundsUsedToCalculateElementFrames=_boundsUsedToCalculateElementFrames;
 @property(retain, nonatomic) NSMutableSet *displayedMRCPills; // @synthesize displayedMRCPills=_displayedMRCPills;
-@property(retain, nonatomic) NSMutableSet *displayedElementViews; // @synthesize displayedElementViews=_displayedElementViews;
-@property(retain, nonatomic) NSArray *unfilteredElements; // @synthesize unfilteredElements=_unfilteredElements;
+@property(retain, nonatomic) NSMutableSet *_displayedElementViews; // @synthesize _displayedElementViews=__displayedElementViews;
 @property(retain, nonatomic) NSArray *allElements; // @synthesize allElements=_allElements;
 @property(nonatomic) _Bool allowLongPressDDActivationOnly; // @synthesize allowLongPressDDActivationOnly=_allowLongPressDDActivationOnly;
 @property(nonatomic) _Bool highlightSelectableItems; // @synthesize highlightSelectableItems=_highlightSelectableItems;
+@property(retain, nonatomic) NSArray *unfilteredElements; // @synthesize unfilteredElements=_unfilteredElements;
 @property(retain, nonatomic) NSArray *displayedElements; // @synthesize displayedElements=_displayedElements;
 @property(nonatomic) unsigned long long dataDetectorTypes; // @synthesize dataDetectorTypes=_dataDetectorTypes;
 @property(nonatomic) __weak id <VKCImageDataDetectorViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dataDetectorElementView:(id)arg1 analyticsEventOccured:(id)arg2;
+- (struct CGRect)previewImageBoundsForDataDetectorElementView:(id)arg1;
+- (id)previewImageForDataDetectorElementView:(id)arg1;
 - (id)previewForDataDetectorElementView:(id)arg1;
 - (id)presentingViewControllerForInteractionWithDataDetectorElementView:(id)arg1;
 - (void)willDismissMenuForDataDetectorElementView:(id)arg1;
@@ -48,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)currentViewSpaceQaudForHighlightView:(id)arg1;
 - (void)showMRCPills:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHighlightSelectableItems:(_Bool)arg1 animated:(_Bool)arg2;
-- (id)elementAtPoint:(struct CGPoint)arg1;
+- (id)closestElementToPoint:(struct CGPoint)arg1 maxDistance:(double)arg2;
 - (id)viewSpaceQuadsForDataDetectorElement:(id)arg1;
 - (struct CGRect)frameForDataDetectorElement:(id)arg1;
 @property(readonly, nonatomic) _Bool needsElementFrameUpdate;
@@ -57,12 +56,13 @@ __attribute__((visibility("hidden")))
 - (void)loadDataDetectorViewsFromDisplayedElements;
 - (_Bool)shouldFilterElementForSpecialCase:(id)arg1;
 - (void)updateDisplayedElements;
-- (void)activateLongPressDataDetectorAtPoint:(struct CGPoint)arg1;
+- (void)activateLongPressDataDetectorAtPoint:(struct CGPoint)arg1 maxDistance:(double)arg2;
 - (void)setCustomAnalyticsIdentifier:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)didMoveToSuperview;
 - (void)layoutSubviews;
 - (void)setContentsRect:(struct CGRect)arg1;
+@property(readonly, nonatomic) NSArray *displayedElementViews;
 - (void)setRecognitionResult:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

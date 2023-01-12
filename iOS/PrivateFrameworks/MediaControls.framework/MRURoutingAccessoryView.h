@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
 @class MRUVisualStylingProvider, NSString, UIActivityIndicatorView, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface MRURoutingAccessoryView : UIView <MRUVisualStylingProviderObserver>
+@interface MRURoutingAccessoryView : UIView
 {
     MRUVisualStylingProvider *_stylingProvider;
     long long _state;

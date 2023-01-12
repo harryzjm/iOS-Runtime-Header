@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _NSCFURLProtocol
+#import "NSURLProtocol.h"
+
+@interface _NSCFURLProtocol : NSURLProtocol
 {
     struct _CFURLProtocol *_prot;
     struct NSCFURLProtocolClient *_client;

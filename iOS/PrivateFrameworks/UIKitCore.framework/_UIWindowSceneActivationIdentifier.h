@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIContentEffectKey-Protocol.h>
-
 @class NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIWindowSceneActivationIdentifier : NSObject <_UIContentEffectKey>
+@interface _UIWindowSceneActivationIdentifier : NSObject
 {
     UIView *_view;
     struct CGPoint _location;

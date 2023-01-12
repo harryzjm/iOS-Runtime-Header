@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKSemanticDate.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKSemanticDate (HDCodingSupport) <HDCoding>
+@interface HKSemanticDate (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

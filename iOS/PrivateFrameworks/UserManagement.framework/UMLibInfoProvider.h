@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <UserManagement/UMLibInfoProviding-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface UMLibInfoProvider : NSObject <UMLibInfoProviding>
+@interface UMLibInfoProvider : NSObject
 {
 }
 

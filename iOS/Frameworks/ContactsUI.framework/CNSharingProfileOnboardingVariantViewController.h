@@ -6,13 +6,11 @@
 
 #import <OnBoardingKit/OBWelcomeController.h>
 
-#import <ContactsUI/CNPhotoPickerVariantListControllerDelegate-Protocol.h>
-
 @class CNPhotoPickerProviderItem, CNPhotoPickerVariantListController, CNPhotoPickerVariantsManager, NSLayoutConstraint, NSString, OBBoldTrayButton, OBLinkTrayButton;
 @protocol CNSharingProfileOnboardingVariantViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNSharingProfileOnboardingVariantViewController : OBWelcomeController <CNPhotoPickerVariantListControllerDelegate>
+@interface CNSharingProfileOnboardingVariantViewController : OBWelcomeController
 {
     _Bool _shouldShowPoseButton;
     id <CNSharingProfileOnboardingVariantViewControllerDelegate> _onboardingDelegate;

@@ -6,11 +6,10 @@
 
 #import <CloudKit/CKRecord.h>
 
-#import <NotesShared/ICHasDatabaseScope-Protocol.h>
-
 @class NSString;
 
-@interface CKRecord (IC) <ICHasDatabaseScope>
+@interface CKRecord (IC)
++ (id)ic_encryptedDataKeyForAssetKey:(id)arg1;
 + (id)ic_encryptedKeyForKeyPrefix:(id)arg1;
 + (id)ic_assetKeyForKeyPrefix:(id)arg1;
 + (id)ic_valueKeyForKeyPrefix:(id)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
-
 @class NSArray, NSString, PSListController, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface PSUICallingSubgroup : NSObject <PSSpecifierGroup>
+@interface PSUICallingSubgroup : NSObject
 {
     _Bool _supportsWiFiCalling;
     PSListController *_listController;
@@ -23,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *wifiCallingSpecifiers; // @synthesize wifiCallingSpecifiers=_wifiCallingSpecifiers;
 @property(nonatomic) __weak PSSpecifier *parentSpecifier; // @synthesize parentSpecifier=_parentSpecifier;
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
+- (id)getLogger;
 - (id)specifiers;
 - (void)viewWillAppear;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;

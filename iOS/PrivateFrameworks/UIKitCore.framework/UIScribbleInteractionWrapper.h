@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/PKScribbleInteractionWrapper-Protocol.h>
-
 @class NSString, UIIndirectScribbleInteraction, UIScribbleInteraction, UIView;
 @protocol UIInteraction;
 
 __attribute__((visibility("hidden")))
-@interface UIScribbleInteractionWrapper : NSObject <PKScribbleInteractionWrapper>
+@interface UIScribbleInteractionWrapper : NSObject
 {
     UIScribbleInteraction *_scribbleInteraction;
     UIIndirectScribbleInteraction *_indirectInteraction;

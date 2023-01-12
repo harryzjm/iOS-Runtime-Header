@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIStorePageSection.h"
+
 @class ACAccountStore, SKUIFacebookLikeStatus, SKUIFacebookPageComponent, SKUIReviewsFacebookView, SKUIViewElementLayoutContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIFacebookPageSection
+@interface SKUIFacebookPageSection : SKUIStorePageSection
 {
     ACAccountStore *_accountStore;
     BOOL _facebookAccountsExist;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SPOwner/SPLocationFetchClientXPCProtocol-Protocol.h>
-
 @class FMXPCSession, NSString, SPLocationFetchContext;
 @protocol SPOwnerSessionXPCProtocol;
 
 __attribute__((visibility("hidden")))
-@interface SPOwnerSessionLocationFetch : NSObject <SPLocationFetchClientXPCProtocol>
+@interface SPOwnerSessionLocationFetch : NSObject
 {
     FMXPCSession *_session;
     id <SPOwnerSessionXPCProtocol> _proxy;
@@ -33,10 +31,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) FMXPCSession *session; // @synthesize session=_session;
 - (void)setInvalidationBlock:(CDUnknownBlockType)arg1;
 - (void)locationForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (oneway void)unsubscribeLocationUpdatesWithCompletion:(CDUnknownBlockType)arg1;
-- (oneway void)subscribeAndFetchLocationForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unsubscribeLocationUpdatesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)subscribeAndFetchLocationForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setLocationUpdateBlock:(CDUnknownBlockType)arg1;
-- (oneway void)receivedUpdatedLocation:(id)arg1;
+- (void)receivedUpdatedLocation:(id)arg1;
 - (void)invalidationHandler:(id)arg1;
 - (double)_decayedWaitIntervalForRetryCount:(unsigned long long)arg1;
 - (void)interruptionHandler:(id)arg1;

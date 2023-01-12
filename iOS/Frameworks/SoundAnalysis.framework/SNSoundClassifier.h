@@ -6,38 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
-@class MLModel, NSArray, NSString;
+@class NSSet, NSString;
+@protocol SNMLModel;
 
 __attribute__((visibility("hidden")))
-@interface SNSoundClassifier : NSObject <SNAnalyzing>
+@interface SNSoundClassifier : NSObject
 {
-    MLModel *_model;
+    id <SNMLModel> _model;
     shared_ptr_f6ac7592 _graph;
     unsigned int _modelBlockSize;
     int _resultsToDiscardCount;
-    NSArray *_feedbackConnections;
-    NSArray *_classLabelsDenylist;
+    NSSet *_classLabelsDenylist;
     double _overlapFactor;
     NSString *_classifierIdentifier;
     CDStruct_1b6d18a9 _windowDuration;
 }
 
-+ (void)completeTimingInfoInResult:(id)arg1 usingBox:(void *)arg2 modelBlockSize:(unsigned int)arg3;
 + (id)new;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly) NSString *classifierIdentifier; // @synthesize classifierIdentifier=_classifierIdentifier;
-@property(readonly) CDStruct_1b6d18a9 windowDuration; // @synthesize windowDuration=_windowDuration;
-@property(readonly) double overlapFactor; // @synthesize overlapFactor=_overlapFactor;
 - (id)sharedProcessorConfiguration;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 - (void)primeGraph;
 @property(readonly, nonatomic) void *resultsBox;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (id)initWithMLModel:(id)arg1 overlapFactor:(double)arg2 windowDuration:(CDStruct_1b6d18a9)arg3 classifierIdentifier:(id)arg4 error:(id *)arg5;
 - (id)init;
 
 // Remaining properties

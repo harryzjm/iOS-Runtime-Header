@@ -4,32 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Named Structures
-
-struct ccdigest_info {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    char *_field5;
-    void *_field6;
-    CDUnknownFunctionPointerType _field7;
-    CDUnknownFunctionPointerType _field8;
-};
-
-struct ccrsa_full_ctx {
-    unsigned long long pb_n;
-    unsigned long long pb_bitlen;
-    struct cczp_funcs *pb_funcs;
-    unsigned long long pb_ccn[0];
-};
-
-struct ccrsa_pub_ctx {
-    unsigned long long pb_n;
-    unsigned long long pb_bitlen;
-    struct cczp_funcs *pb_funcs;
-    unsigned long long pb_ccn[0];
-};
-
-struct cczp_funcs;
-

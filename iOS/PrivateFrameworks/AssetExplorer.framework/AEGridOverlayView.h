@@ -6,13 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <AssetExplorer/PXReusableObject-Protocol.h>
-#import <AssetExplorer/PXUIViewBasicTile-Protocol.h>
-
 @class AEGridOverlayConfiguration, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AEGridOverlayView : UIView <PXUIViewBasicTile, PXReusableObject>
+@interface AEGridOverlayView : UIView
 {
     AEGridOverlayConfiguration *_overlayConfiguration;
 }

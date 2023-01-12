@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, TSCHChartStyle, TSCHLegendStyle, TSCHReferenceLineStyle, TSSStylesheet, TSURetainedPointerKeyDictionary;
 
-@interface TSCHChartStyleState <NSCopying>
+@interface TSCHChartStyleState
 {
     TSCHChartStyleState *_themeChartStyleState;
 }

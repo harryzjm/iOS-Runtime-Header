@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PassKitUI/PKIdentifiable-Protocol.h>
 #import <PassKitUI/PKTableViewCellProviding-Protocol.h>
 
 @class NSString;
 
-@protocol PKTableViewSettingsRow <PKTableViewCellProviding>
+@protocol PKTableViewSettingsRow <PKTableViewCellProviding, PKIdentifiable>
 @property(copy, nonatomic) CDUnknownBlockType changeHandler;
 @property(nonatomic, getter=isEnabled) _Bool enabled;
 @property(copy, nonatomic) id value;

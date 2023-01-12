@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTPropertyListEncoding-Protocol.h>
-
 @class DVTPlugInManager, NSArray, NSBundle, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
-@interface DVTPlugIn : NSObject <DVTPropertyListEncoding>
+@interface DVTPlugIn : NSObject
 {
     DVTPlugInManager *_plugInManager;
     NSString *_identifier;
@@ -25,6 +23,8 @@
     NSString *_bundlePath;
     NSBundle *_bundle;
     NSDictionary *_bundleRawInfoDictionary;
+    NSDictionary *_localizedStrings;
+    NSDictionary *_plugInData;
     NSString *_path;
     NSString *_principalClassName;
     id _principalInstance;
@@ -49,13 +49,16 @@
 @property(readonly, copy) NSString *version; // @synthesize version=_version;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly) DVTPlugInManager *plugInManager; // @synthesize plugInManager=_plugInManager;
+- (_Bool)loadAssertingOnError:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)load:(id *)arg1;
 - (void)_instantiatePrincipalClass;
 @property(readonly, getter=isLoadable) _Bool loadable;
 @property(readonly) NSBundle *bundle;
 @property(readonly, copy) NSString *description;
 - (void)encodeIntoPropertyList:(id)arg1;
-- (void)awakeWithPropertyList:(id)arg1;
+- (id)_localizedStringForKey:(id)arg1;
+- (void)_loadLocalizedStrings;
+- (void)awakeFromPropertyList;
 - (id)initWithPropertyList:(id)arg1 owner:(id)arg2;
 - (void)assertAutoIdentifierRulesAreSatisfied;
 - (void)_configureToUsePath:(id)arg1 andBundle:(id)arg2 rawInfoPlist:(id)arg3;

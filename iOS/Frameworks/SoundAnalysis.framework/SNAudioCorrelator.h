@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
 @class AVAudioFile, NSString, SNSystemConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface SNAudioCorrelator : NSObject <SNAnalyzing>
+@interface SNAudioCorrelator : NSObject
 {
     SNSystemConfiguration *_systemConfiguration;
     shared_ptr_f6ac7592 _graph;
@@ -24,13 +22,11 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly) double overlapFactor; // @synthesize overlapFactor=_overlapFactor;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 - (id)sharedProcessorConfiguration;
 @property(readonly, nonatomic) void *resultsBox;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (id)initWithAudioFile:(id)arg1 overlapFactor:(double)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

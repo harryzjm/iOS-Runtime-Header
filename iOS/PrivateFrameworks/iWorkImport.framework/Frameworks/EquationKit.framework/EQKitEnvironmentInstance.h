@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EQKitEnvironment.h"
+
 @class NSDictionary;
 
-@interface EQKitEnvironmentInstance
+@interface EQKitEnvironmentInstance : EQKitEnvironment
 {
     NSDictionary *mConfig;
     void *mOperatorDictionary;
@@ -20,6 +22,7 @@
 + (id)defaultEnvironment;
 + (id)dataForDefaultEnvironment;
 + (id)environmentFromData:(id)arg1;
+- (void)reloadFonts;
 @property(nonatomic) _Bool kerning;
 - (void)endLayout;
 - (void)beginLayout;

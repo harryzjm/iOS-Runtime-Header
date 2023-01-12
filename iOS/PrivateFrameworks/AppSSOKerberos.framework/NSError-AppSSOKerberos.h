@@ -7,7 +7,9 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (AppSSOKerberos)
++ (id)passwordSyncNotEnabled;
 + (id)kerberosErrorWithCode:(long long)arg1 withDescription:(id)arg2;
++ (id)KDCUnreachable;
 + (id)sourceAppNotAllowed;
 + (id)unhandledKerberosResult;
 + (id)hostNameMissing;

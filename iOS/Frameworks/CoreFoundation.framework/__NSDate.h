@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSDate.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSDate
+@interface __NSDate : NSDate
 {
     double _time;
 }

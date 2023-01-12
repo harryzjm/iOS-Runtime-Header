@@ -6,13 +6,10 @@
 
 #import <SafariServices/_SFAutomationController.h>
 
-#import <MobileSafariUI/_WKAutomationDelegate-Protocol.h>
-#import <MobileSafariUI/_WKAutomationSessionDelegate-Protocol.h>
-
 @class NSMapTable, NSString, SFClient, _WKAutomationSession, _WKAutomationSessionConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface AutomationController : _SFAutomationController <_WKAutomationDelegate, _WKAutomationSessionDelegate>
+@interface AutomationController : _SFAutomationController
 {
     _Bool _automationSessionRequestedFirstWebView;
     _Bool _closingAutomationTabsForSessionTeardown;
@@ -43,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)_applicationDidEnterBackground;
 - (_Bool)_uninstallAutomationSession;
 - (void)terminateSession;
-- (void)createAutomationSessionWithIdentifier:(id)arg1 configuration:(id)arg2;
+- (void)createAutomationSessionWithIdentifier:(id)arg1 configuration:(id)arg2 retryBehavior:(long long)arg3;
 - (void)createAutomationSessionWithIdentifier:(id)arg1;
 - (void)updatePreferencesForAutomation:(id)arg1;
 @property(readonly, nonatomic) _Bool canCreateNewAutomationTabs;

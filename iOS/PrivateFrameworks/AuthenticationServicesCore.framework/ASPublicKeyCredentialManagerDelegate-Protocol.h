@@ -6,11 +6,13 @@
 
 #import <AuthenticationServicesCore/NSObject-Protocol.h>
 
-@class NSArray, NSError;
+@class NSArray, NSError, NSXPCListenerEndpoint;
 @protocol ASCCredentialProtocol;
 
 @protocol ASPublicKeyCredentialManagerDelegate <NSObject>
 - (void)didReceiveError:(long long)arg1;
+- (void)presentCABLESheetWithCompletionHandler:(void (^)(_Bool))arg1;
+- (NSXPCListenerEndpoint *)viewServiceListenerEndpoint;
 - (void)requestPINWithRemainingRetries:(unsigned long long)arg1 completionHandler:(void (^)(NSString *))arg2;
 - (void)didCompleteAssertionWithCredential:(id <ASCCredentialProtocol>)arg1 error:(NSError *)arg2;
 - (void)didCompleteRegistrationWithCredential:(id <ASCCredentialProtocol>)arg1 error:(NSError *)arg2;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)birthdayCalendarEnabled;
 + (void)setBirthdayCalendarEnabled:(_Bool)arg1;
++ (void)reset;
 + (void)start;
 + (id)sharedListener;
 - (void).cxx_destruct;
@@ -24,6 +25,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <CalBirthdayListener> ekBirthdayListener; // @synthesize ekBirthdayListener=_ekBirthdayListener;
 - (_Bool)birthdayCalendarEnabled;
 - (void)setBirthdayCalendarEnabled:(_Bool)arg1;
+- (void)reset;
+- (void)start;
 - (id)init;
 
 @end

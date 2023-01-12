@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKCustomFeatureDataSourceObserver-Protocol.h>
-
 @class NSString;
 @protocol VKCustomFeatureDataSource;
 
 __attribute__((visibility("hidden")))
-@interface VKCustomFeatureDataSourceObserverThunk : NSObject <VKCustomFeatureDataSourceObserver>
+@interface VKCustomFeatureDataSourceObserverThunk : NSObject
 {
     void *_observer;
-    struct _retain_ptr<id<VKCustomFeatureDataSource>, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+    struct _retain_ptr<id<VKCustomFeatureDataSource>, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_vptr$_retain_ptr;
         id <VKCustomFeatureDataSource> _obj;
-        struct _retain_objc _retain;
-        struct _release_objc _release;
+        struct _retain_objc_arc _retain;
+        struct _release_objc_arc _release;
     } _dataSource;
 }
 
@@ -28,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)dataSource:(id)arg1 didChangeSceneID:(unsigned char)arg2;
 - (void)dataSource:(id)arg1 didChangeSceneState:(unsigned char)arg2;
 - (void)globalFeaturesDidChangeForDataSource:(id)arg1;
-- (void)dataSource:(id)arg1 featuresDidChangeForRect:(CDStruct_02837cd9)arg2;
+- (void)dataSource:(id)arg1 featuresDidChangeForRect:(CDStruct_90e2a262)arg2;
 - (void)clearObserver;
 - (void)dealloc;
 - (id)initWithDataSource:(id)arg1 observer:(void *)arg2;

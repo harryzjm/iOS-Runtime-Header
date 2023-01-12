@@ -8,6 +8,7 @@
 
 @protocol PXCuratedLibraryFilterTipControllerDelegate
 - (NSArray *)passthroughViewsForTipForController:(PXCuratedLibraryFilterTipController *)arg1;
+- (void)didDismissTipForController:(PXCuratedLibraryFilterTipController *)arg1;
 - (void)willPresentTipForController:(PXCuratedLibraryFilterTipController *)arg1;
 - (UIViewController *)viewControllerToPresentTipForController:(PXCuratedLibraryFilterTipController *)arg1;
 - (struct CGRect)anchorViewRectForController:(PXCuratedLibraryFilterTipController *)arg1;

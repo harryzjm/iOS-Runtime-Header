@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSNNConcatenationGradient
+#import "MPSCNNGradientKernel.h"
+
+@interface MPSNNConcatenationGradient : MPSCNNGradientKernel
 {
     unsigned long long _sourceIndex;
 }
 
 + (const struct MPSLibraryInfo *)libraryInfo:(void *)arg1;
-- (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 primaryOffset:(CDStruct_d6af7fc0 *)arg4 secondaryOffset:(CDStruct_d6af7fc0 *)arg5 kernelOffset:(CDStruct_d6af7fc0 *)arg6;
+- (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 primaryOffset:(CDStruct_2ec95fd7 *)arg4 secondaryOffset:(CDStruct_2ec95fd7 *)arg5 kernelOffset:(CDStruct_2ec95fd7 *)arg6;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

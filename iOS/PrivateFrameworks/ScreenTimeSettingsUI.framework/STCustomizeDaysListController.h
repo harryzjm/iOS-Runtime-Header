@@ -6,13 +6,11 @@
 
 #import <Preferences/PSListController.h>
 
-#import <ScreenTimeSettingsUI/PSDateTimePickerCellDelegate-Protocol.h>
-
 @class NSDictionary, PSSpecifier;
 @protocol STCustomizeDaysListControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface STCustomizeDaysListController : PSListController <PSDateTimePickerCellDelegate>
+@interface STCustomizeDaysListController : PSListController
 {
     id <STCustomizeDaysListControllerDelegate> _delegate;
     NSDictionary *_timeByDay;

@@ -6,12 +6,10 @@
 
 #import <Intents/INIntent.h>
 
-#import <ActionKit/WFDecimalSettingIntent-Protocol.h>
-
 @class NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface WFSetBrightnessIntent : INIntent <WFDecimalSettingIntent>
+@interface WFSetBrightnessIntent : INIntent
 {
 }
 

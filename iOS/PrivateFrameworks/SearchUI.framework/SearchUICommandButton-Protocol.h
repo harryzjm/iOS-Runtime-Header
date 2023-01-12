@@ -6,9 +6,9 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
-@class SFCommand;
+@class SFButtonItem;
 
 @protocol SearchUICommandButton <NSObject>
-@property(retain) SFCommand *command;
+@property(retain) SFButtonItem *buttonItem;
 @end
 

@@ -4,39 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceRibbonViewDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class GEOPlaceRibbonConfiguration, MKUGCCallToActionViewAppearance, MUPlaceCallToActionRibbonViewModel, MUPlaceDistanceRibbonViewModel, MUPlaceRibbonItemViewModel, MUPlaceRibbonSectionControllerConfiguration, MUPlaceRibbonView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSString, UIView, UIViewController;
+@class GEOPlaceRibbonConfiguration, MKUGCCallToActionViewAppearance, MUPlaceCallToActionRibbonViewModel, MUPlaceDistanceRibbonViewModel, MUPlaceRatingAndSubmissionStatusRibbonViewModel, MUPlaceRibbonSectionControllerConfiguration, MUPlaceRibbonView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUPlaceRibbonSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceRibbonSectionController <MUPlaceRibbonViewDelegate, MUPlaceSectionControlling>
+@interface MUPlaceRibbonSectionController : MUPlaceSectionController
 {
     MUPlaceRibbonView *_ribbonView;
     MUPlaceSectionView *_sectionView;
     MUPlaceRibbonSectionControllerConfiguration *_configuration;
     MUPlaceCallToActionRibbonViewModel *_arpViewModel;
-    MUPlaceRibbonItemViewModel *_ratingViewModel;
+    MUPlaceRatingAndSubmissionStatusRibbonViewModel *_arpViewModelSydney;
+    MUPlaceRatingAndSubmissionStatusRibbonViewModel *_ratingViewModel;
     MUPlaceDistanceRibbonViewModel *_distanceViewModel;
     _Bool _active;
+    _Bool _shouldShowARPCallToAction;
+    _Bool _isAllowedToShowRatingScoreRibbonItem;
     MKUGCCallToActionViewAppearance *_submissionStatus;
     id <MUPlaceRibbonSectionControllerDelegate> _ribbonDelegate;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isAllowedToShowRatingScoreRibbonItem; // @synthesize isAllowedToShowRatingScoreRibbonItem=_isAllowedToShowRatingScoreRibbonItem;
+@property(readonly, nonatomic) _Bool shouldShowARPCallToAction; // @synthesize shouldShowARPCallToAction=_shouldShowARPCallToAction;
 @property(nonatomic) __weak id <MUPlaceRibbonSectionControllerDelegate> ribbonDelegate; // @synthesize ribbonDelegate=_ribbonDelegate;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
+- (_Bool)isImpressionable;
+- (void)performInstrumentationForScrollRight;
+- (void)performInstrumentationForScrollLeft;
 - (int)analyticsModuleType;
 - (_Bool)ribbonView:(id)arg1 shouldShowRibbonItem:(id)arg2;
 - (void)ribbonView:(id)arg1 didTapItemWithViewModel:(id)arg2 withPresentationOptions:(id)arg3;
 - (void)_updateWithPreviousState:(_Bool)arg1;
 - (void)_updateAppearanceForSubmissionStatus;
 @property(readonly, nonatomic) UIView *sectionView;
+- (id)_submissionStatusForCallToAction;
+- (id)_submissionStatusForRatings;
 @property(readonly, nonatomic) _Bool hasContent;
-@property(readonly, nonatomic) _Bool isAllowedToShowRatingScoreRibbonItem;
-@property(readonly, nonatomic) _Bool shouldShowARPCallToAction;
+- (_Bool)_shouldShowRatingsRibbonItem;
+- (_Bool)_shouldShowCallToActionRibbonItem;
+- (_Bool)_supportsAddRatingsCallToAction;
 @property(readonly, nonatomic) GEOPlaceRibbonConfiguration *ribbonConfig;
 - (void)buildContent;
 - (void)_setupRibbonView;
@@ -50,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(readonly) Class superclass;
 
 @end

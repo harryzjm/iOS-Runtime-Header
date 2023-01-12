@@ -6,10 +6,13 @@
 
 #import <CDMFoundation/NSObject-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @protocol NLAsset <NSObject>
+- (NSDictionary *)toDictionary;
 - (NSString *)description;
+- (NSDictionary *)getAssetMetadata;
+- (NSString *)getAssetVersion;
 - (NSString *)getAssetPath;
 - (long long)getAssetType;
 @end

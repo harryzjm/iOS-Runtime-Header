@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
     VCPMADResource *_resource;
     long long _activeCount;
+    long long _currentCost;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long currentCost; // @synthesize currentCost=_currentCost;
 @property(nonatomic) long long activeCount; // @synthesize activeCount=_activeCount;
 @property(retain, nonatomic) VCPMADResource *resource; // @synthesize resource=_resource;
 - (id)initWithResource:(id)arg1;

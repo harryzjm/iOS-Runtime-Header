@@ -6,10 +6,13 @@
 
 #import <CoverSheet/NSObject-Protocol.h>
 
-@class CSRemoteContentHostViewController, NSError;
+@class CSRemoteContentHostViewController, NSError, SBSRemoteContentPreferences;
 
 @protocol CSRemoteContentHostDelegate <NSObject>
+- (double)remoteContentComplicationHeightInset;
 - (void)remoteContentHostViewController:(CSRemoteContentHostViewController *)arg1 didTerminateWithError:(NSError *)arg2;
-- (void)didChangeStyle;
+- (void)didChangeRemoteHostContentFrame:(struct CGRect)arg1;
+- (void)didChangeRemotePreferences:(SBSRemoteContentPreferences *)arg1;
+- (_Bool)prefersInlineForPreferences:(SBSRemoteContentPreferences *)arg1;
 @end
 

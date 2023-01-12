@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDragAnimating-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDropAnimationHandlers : NSObject <UIDragAnimating>
+@interface _UIDropAnimationHandlers : NSObject
 {
     NSMutableArray *_alongsideAnimationHandlers;
     NSMutableArray *_completionHandlers;

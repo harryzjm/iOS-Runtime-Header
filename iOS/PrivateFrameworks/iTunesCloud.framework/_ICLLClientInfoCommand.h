@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLClientInfoCommand : PBCodable <NSCopying>
+@interface _ICLLClientInfoCommand : PBCodable
 {
     NSString *_externalId;
     NSString *_sharedSessionToken;

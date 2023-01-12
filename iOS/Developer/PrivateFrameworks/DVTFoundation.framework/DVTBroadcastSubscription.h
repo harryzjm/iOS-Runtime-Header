@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTBroadcastCenter, DVTBroadcastChannel, DVTStackBacktrace, NSOperationQueue, NSString;
 
-@interface DVTBroadcastSubscription : NSObject <DVTInvalidation>
+@interface DVTBroadcastSubscription : NSObject
 {
     struct os_unfair_lock_s _lock;
     DVTBroadcastCenter *_center;

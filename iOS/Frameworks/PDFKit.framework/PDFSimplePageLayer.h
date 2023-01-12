@@ -6,14 +6,11 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <PDFKit/CALayerDelegate-Protocol.h>
-#import <PDFKit/PDFPageLayerInterface-Protocol.h>
-
 @class NSMutableDictionary, NSObject, NSString, PDFPage, PDFRenderingProperties;
 @protocol PDFPageLayerGeometryInterface;
 
 __attribute__((visibility("hidden")))
-@interface PDFSimplePageLayer : CALayer <CALayerDelegate, PDFPageLayerInterface>
+@interface PDFSimplePageLayer : CALayer
 {
     PDFPage *_page;
     NSObject<PDFPageLayerGeometryInterface> *_geometryInterface;

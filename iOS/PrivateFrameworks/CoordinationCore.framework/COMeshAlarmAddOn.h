@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "COMeshAddOn.h"
+
 @class COAlarmReadRequest, COHomeHubAdapter, COHomeKitAdapter, MTAlarmManager, NSArray, NSDictionary;
 @protocol COMeshAlarmAddOnDelegate;
 
-@interface COMeshAlarmAddOn
+__attribute__((visibility("hidden")))
+@interface COMeshAlarmAddOn : COMeshAddOn
 {
     struct os_unfair_lock_s _lock;
     id <COMeshAlarmAddOnDelegate> _delegate;
@@ -20,9 +23,11 @@
     NSDictionary *_mergeResponses;
     NSArray *_queuedCommands;
     MTAlarmManager *_observedAlarmManager;
+    CDUnknownBlockType _recorder;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType recorder; // @synthesize recorder=_recorder;
 @property(readonly, nonatomic) MTAlarmManager *observedAlarmManager; // @synthesize observedAlarmManager=_observedAlarmManager;
 @property(copy, nonatomic) NSArray *queuedCommands; // @synthesize queuedCommands=_queuedCommands;
 @property(retain, nonatomic) NSDictionary *mergeResponses; // @synthesize mergeResponses=_mergeResponses;

@@ -9,9 +9,9 @@
 @class NSArray, NSData;
 
 @protocol MDLSkinDeformerComponent <MDLComponent>
-@property(readonly, nonatomic) CDStruct_14d5dc5e meshBindTransform;
+@property(readonly, nonatomic) CDStruct_f1db2b5e meshBindTransform;
 @property(readonly, nonatomic) NSData *jointBindTransforms;
 @property(readonly, nonatomic) NSArray *jointPaths;
-- (unsigned long long)copyJointBindTransformsInto:(CDStruct_14d5dc5e *)arg1 maxCount:(unsigned long long)arg2;
+- (unsigned long long)copyJointBindTransformsInto:(CDStruct_f1db2b5e *)arg1 maxCount:(unsigned long long)arg2;
 @end
 

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSWPTextAdornment-Protocol.h>
-#import <TSText/TSWPTextAdornmentRenderer-Protocol.h>
-
 @class NSArray, NSString, TSDFill, TSDWrapSegments, TSUBezierPath, TSWPCharacterStyle, TSWPDropCap, TSWPDropCapCharacterMetrics, TSWPDropCapStyle, TSWPParagraphStyle;
 @protocol TSWPTextSource;
 
-@interface TSWPDropCapAdornment : NSObject <TSWPTextAdornment, TSWPTextAdornmentRenderer>
+@interface TSWPDropCapAdornment : NSObject
 {
     _Bool _isRightToLeft;
     _Bool _isVertical;

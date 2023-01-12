@@ -8,8 +8,11 @@
 
 @interface _TtC7SwiftUI14HoverResponder
 {
-    MISSING_TYPE *style;
-    MISSING_TYPE *id;
+    MISSING_TYPE *callback;
+    MISSING_TYPE *transform;
+    MISSING_TYPE *size;
+    MISSING_TYPE *coordinateSpace;
+    MISSING_TYPE *helper;
 }
 
 @end

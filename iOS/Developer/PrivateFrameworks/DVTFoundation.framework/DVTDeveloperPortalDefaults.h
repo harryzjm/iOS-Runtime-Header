@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DVTFoundation/DVTDeveloperPortalDefaultsProtocol-Protocol.h>
-
 @class DVTDispatchLock, DVTNotificationToken, NSString;
 
-@interface DVTDeveloperPortalDefaults <DVTDeveloperPortalDefaultsProtocol>
+@interface DVTDeveloperPortalDefaults
 {
     DVTDispatchLock *_lock;
     DVTNotificationToken *_token;

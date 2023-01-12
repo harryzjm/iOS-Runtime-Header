@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)willBeginAuthWithContext:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (id)serviceIcon;
+- (id)serviceFooter;
 - (id)serviceDescription;
 - (id)serviceName;
 - (void)setSpecifier:(id)arg1;

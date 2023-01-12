@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CKConversationList *conversationList; // @synthesize conversationList=_conversationList;
 - (id)_chatPredicateForFilterMode:(unsigned long long)arg1;
 - (id)_convertFilterActionDictionaryToConversationListFilterModeDictionary:(id)arg1;
-- (void)_loadOlderConversationsWithFilterMode:(unsigned long long)arg1 limit:(unsigned long long)arg2;
+- (void)_loadOlderConversationsWithFilterMode:(unsigned long long)arg1 limit:(unsigned long long)arg2 iteration:(unsigned long long)arg3;
 - (void)_loadOlderConversationsWithFilterMode:(unsigned long long)arg1;
 - (void)reachedConversationWithLastMessageDate:(id)arg1 filterMode:(unsigned long long)arg2 remainingRows:(long long)arg3;
 - (void)_handleRegistryDidLoadNotification:(id)arg1;

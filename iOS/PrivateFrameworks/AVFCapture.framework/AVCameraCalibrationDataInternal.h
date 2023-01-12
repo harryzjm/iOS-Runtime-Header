@@ -6,14 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary;
+@class MISSING_TYPE, NSData, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface AVCameraCalibrationDataInternal : NSObject
 {
-    CDStruct_8e0628e6 intrinsicMatrix;
+    struct {
+        MISSING_TYPE *columns[3];
+    } intrinsicMatrix;
     struct CGSize intrinsicMatrixReferenceDimensions;
-    CDStruct_14d5dc5e extrinsicMatrix;
+    struct {
+        MISSING_TYPE *columns[4];
+    } extrinsicMatrix;
     float pixelSize;
     NSData *lensDistortionCoefficients;
     NSData *inverseLensDistortionCoefficients;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SceneKit/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SCNProgramSemanticInfo : NSObject <NSSecureCoding>
+@interface SCNProgramSemanticInfo : NSObject
 {
     NSString *_semantic;
     NSDictionary *_options;

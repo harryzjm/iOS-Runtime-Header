@@ -7,9 +7,10 @@
 #import <Silex/NSCopying-Protocol.h>
 #import <Silex/NSObject-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @protocol SXFontAttributes <NSObject, NSCopying>
+@property(readonly, nonatomic) NSNumber *grade;
 @property(readonly, nonatomic) long long width;
 @property(readonly, nonatomic) long long style;
 @property(readonly, nonatomic) long long weight;

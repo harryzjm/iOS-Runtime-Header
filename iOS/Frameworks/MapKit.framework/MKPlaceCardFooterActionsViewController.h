@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceCardFooterActionsViewController <MKModuleViewControllerProtocol>
+@interface MKPlaceCardFooterActionsViewController
 {
 }
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IBICIdiom, IBICPlatform, IBICRole, IBICScale, IBICSize, IBICSubtype, NSValue;
+@class IBICColorSpace, IBICIdiom, IBICPlatform, IBICRole, IBICScale, IBICSize, IBICSubtype, NSValue;
 
 @interface IBICBundleIconSetRepSlot
 {
@@ -16,6 +16,7 @@
     IBICSubtype *_subtype;
 }
 
++ (id)detailAreaGroupPathForPlatform:(id)arg1 idiom:(id)arg2 role:(id)arg3 size:(id)arg4;
 + (id)detailAreaGroupPathForIdiom:(id)arg1 role:(id)arg2 size:(id)arg3;
 + (id)orderedComponentClasses;
 + (id)genesisSlotsForSlots:(id)arg1;
@@ -33,8 +34,10 @@
 @property(readonly) IBICIdiom *idiom; // @synthesize idiom=_idiom;
 @property(readonly) IBICPlatform *platform; // @synthesize platform=_platform;
 - (id)requiredPixelSize;
+- (id)infoPlistReferenceNameInParent:(id)arg1;
 - (id)outputFileNameGivenBaseName:(id)arg1 andExtension:(id)arg2;
 - (id)detailAreaPath;
+@property(readonly) IBICColorSpace *effectiveColorSpace;
 @property(readonly) IBICPlatform *activePlatform;
 @property(readonly) NSValue *pixelSize;
 - (long long)compareDisplayOrder:(id)arg1;

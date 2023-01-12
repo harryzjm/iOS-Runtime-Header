@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSArray.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSFrozenArrayM
+@interface __NSFrozenArrayM : NSArray
 {
     _Atomic struct __cow_state_t *cow;
     CDStruct_a6934631 storage;
@@ -21,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)indexOfObjectIdenticalTo:(id)arg1;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;

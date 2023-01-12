@@ -6,7 +6,12 @@
 
 #import <NotesShared/ICAccount.h>
 
+@class ICVirtualSmartFolderItemIdentifier;
+
 @interface ICAccount (UI)
++ (id)globalVirtualSystemPaperFolder;
++ (id)globalVirtualSharedWithYouFolder;
 + (id)localizedLocalAccountNameMidSentence:(_Bool)arg1;
+@property(readonly, copy, nonatomic) ICVirtualSmartFolderItemIdentifier *virtualSystemPaperFolder;
 @end
 

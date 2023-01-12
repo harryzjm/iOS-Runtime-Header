@@ -6,21 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <PDFKit/AKControllerDelegateProtocol-Protocol.h>
-#import <PDFKit/PKRulerHostingDelegate-Protocol.h>
-
-@class AKController, AKModelController, NSString, PDFAKDocumentAdaptorPrivate, PDFDocument, PDFView, UIView;
+@class AKController, AKModelController, AKRectAnnotation, AKToolbarView, NSString, PDFDocument, PDFView, UIView;
 @protocol PDFAKControllerDelegateProtocol;
 
 __attribute__((visibility("hidden")))
-@interface PDFAKDocumentAdaptor : NSObject <AKControllerDelegateProtocol, PKRulerHostingDelegate>
+@interface PDFAKDocumentAdaptor : NSObject
 {
-    PDFAKDocumentAdaptorPrivate *_private;
+    _Bool _isTornDown;
+    PDFDocument *_pdfDocument;
+    PDFView *_pdfView;
+    AKController *_akController;
+    id <PDFAKControllerDelegateProtocol> _pdfAKControllerDelegate;
+    AKToolbarView *_akToolbarView;
+    AKRectAnnotation *_editingAnnotaiton;
+    struct TextAnnotationAnimationProperties _animationProperties;
+    double _modelBaseScaleFactor;
 }
 
 + (_Bool)isHandlingEditDetected;
 + (void)setIsHandlingEditDetected:(_Bool)arg1;
 - (void).cxx_destruct;
+- (void)_adjustScrollViewWithAnimationProperties:(struct TextAnnotationAnimationProperties)arg1 delta:(double)arg2;
+- (void)adjustScrollViewForKeyboardNotification:(id)arg1;
+- (unsigned long long)pageIndexForAnnotation:(id)arg1;
+- (void)annotationDidEndEditing:(id)arg1;
+- (void)annotationWillBeginEditing:(id)arg1;
+- (void)_resetAnimationProperties;
+- (id)_scrollViewRecognizersForPageAtIndex:(unsigned long long)arg1;
+- (void)_updatePDFScrollViewMinimumNumberOfTouches;
 - (void)_delayedModelBaseScaleFactorCalculation;
 - (void)_scheduleDelayedModelBaseScaleFactorCalculation;
 - (void)_pdfViewDidChangeScale:(id)arg1;
@@ -32,6 +45,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasHighlightableSelectionForAnnotationController:(id)arg1;
 - (id)controller:(id)arg1 willSetToolbarItems:(id)arg2;
 - (void)positionSketchOverlay:(id)arg1 forAnnotationController:(id)arg2;
+- (_Bool)handleBackTabInTextEditorForAnnotation:(id)arg1 forAnnotationController:(id)arg2;
+- (_Bool)handleTabInTextEditorForAnnotation:(id)arg1 forAnnotationController:(id)arg2;
+- (_Bool)shouldAddTabControlsToTextEditorForAnnotation:(id)arg1 forAnnotationController:(id)arg2;
 - (void)controllerDidExitToolMode:(id)arg1;
 - (void)controllerWillExitToolMode:(id)arg1;
 - (void)controllerDidEnterToolMode:(id)arg1;
@@ -71,6 +87,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AKController *akMainController;
 @property(readonly, nonatomic) __weak PDFDocument *pdfDocument;
 @property(nonatomic) __weak PDFView *pdfView;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_teardown;
 - (void)teardown;
 - (void)dealloc;
@@ -82,6 +99,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic) NSString *originalImageDescription;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsFormFill;
 @property(readonly, nonatomic) _Bool supportsImageDescriptionEditing;
 
 @end

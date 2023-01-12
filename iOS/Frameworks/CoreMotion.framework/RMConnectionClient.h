@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMotion/RMConnectionLifecycleDelegate-Protocol.h>
-#import <CoreMotion/RMConnectionStreamConsumingDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, RMConnectionEndpoint;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface RMConnectionClient : NSObject <RMConnectionLifecycleDelegate, RMConnectionStreamConsumingDelegate>
+@interface RMConnectionClient : NSObject
 {
     _Bool _valid;
     RMConnectionEndpoint *_endpoint;

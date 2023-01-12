@@ -6,17 +6,11 @@
 
 #import <Photos/PHAsset.h>
 
-#import <PhotosUICore/PXLayoutItemInput-Protocol.h>
-#import <PhotosUICore/PXMetadataAsset-Protocol.h>
-#import <PhotosUICore/PXMetadataDetailsContentItem-Protocol.h>
-#import <PhotosUICore/PXPhotoKitAdjustedDisplayAsset-Protocol.h>
-#import <PhotosUICore/PXShareable-Protocol.h>
-#import <PhotosUICore/PXStoryDisplayAssetResource-Protocol.h>
-
-@class CLLocation, NSAttributedString, NSData, NSDate, NSNumber, NSSet, NSString, NSTimeZone, NSValue, PFVideoAdjustments, PXDebugValueList;
+@class CLLocation, NSAttributedString, NSData, NSDate, NSNumber, NSSet, NSString, NSTimeZone, PFVideoAdjustments, PXDebugValueList;
 @protocol PXDisplayAsset;
 
-@interface PHAsset (PXMetadataAssetAdoption) <PXMetadataAsset, PXLayoutItemInput, PXPhotoKitAdjustedDisplayAsset, PXShareable, PXMetadataDetailsContentItem, PXStoryDisplayAssetResource>
+@interface PHAsset (PXMetadataAssetAdoption)
++ (void)px_generateResourceFilesForAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)addressWithoutUnitedStatesZipCode:(id)arg1;
 + (id)px_orderedAssetsFromAssets:(id)arg1 sortDescriptors:(id)arg2;
 + (id)px_fetchPlacesAssetsInAssetCollection:(id)arg1 options:(id)arg2;
@@ -39,9 +33,10 @@
 - (id)_sdClassificationStringWithClassifications:(id)arg1;
 - (id)_sceneClassificationStringWithClassifications:(id)arg1;
 - (id)_ocrStrings;
-- (id)stringMinutesTimeRangeFromTimeRange:(CDStruct_e83c9415)arg1;
+- (id)stringMinutesTimeRangeFromTimeRange:(CDStruct_3c1748cc)arg1;
 @property(readonly, nonatomic) PXDebugValueList *px_curationDebugValues;
 - (id)px_detailedDebugDescriptionInLibrary:(id)arg1;
+@property(readonly, nonatomic) NSString *px_exportFilename;
 @property(readonly, nonatomic) NSAttributedString *px_curationDebugString;
 - (id)px_slHighlightWithError:(id *)arg1;
 @property(readonly, nonatomic) _Bool px_wasSavedThroughExternalApp;
@@ -52,18 +47,12 @@
 @property(readonly, nonatomic) long long px_currentVariationType;
 - (id)px_singleLineMailingAddress;
 @property(readonly, copy, nonatomic) NSString *px_adjustmentUuid;
-@property(readonly, nonatomic) struct CGRect px_faceAreaRect;
-@property(readonly, nonatomic) NSValue *px_originalFaceAreaRectValue;
-@property(readonly, nonatomic) struct CGRect px_originalFaceAreaRect;
 @property(readonly, nonatomic) NSData *fetchColorNormalizationData;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
+@property(readonly, nonatomic) CDStruct_198678f7 livePhotoVideoDuration;
+@property(readonly, nonatomic) float audioScore;
 @property(readonly, nonatomic) _Bool isEligibleForAutoPlayback;
 @property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) NSDate *importDate;
-- (id)applyAdjustmentsToCompositionController:(id)arg1 renderer:(id)arg2;
-@property(readonly, nonatomic) PHAsset *photoKitAsset;
-@property(readonly, nonatomic) NSString *adjustedContentIdentifier;
-@property(readonly, nonatomic) _Bool wantsAdjustments;
 - (struct CGRect)bestCropRectForAspectRatioV2:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
@@ -73,6 +62,8 @@
 - (id)localizedDetailedGeoDescriptionForRTL:(_Bool)arg1;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly, nonatomic) struct CGRect faceAreaRect;
+@property(readonly, nonatomic) long long originalFileSize;
+@property(readonly, nonatomic) _Bool isInSharedLibrary;
 @property(readonly, nonatomic) _Bool isInCloud;
 - (id)_faceNamesStringForAsset;
 - (id)px_accessibilityLabelForStyles:(unsigned long long)arg1;
@@ -81,6 +72,7 @@
 @property(readonly, nonatomic) NSNumber *px_semanticStylePreset;
 @property(readonly, nonatomic) _Bool px_isHEVC;
 @property(readonly, nonatomic) _Bool px_isH264;
+@property(readonly, nonatomic) _Bool px_isProRes;
 @property(readonly, nonatomic) _Bool px_isCinematicVideo;
 @property(readonly, nonatomic) _Bool px_isTimelapse;
 @property(readonly, nonatomic) _Bool px_isSloMo;
@@ -147,7 +139,7 @@
 @property(readonly, nonatomic) NSSet *px_storyResourceFetchSceneClassifications;
 @property(readonly, nonatomic) NSData *px_storyResourceFetchNormalizationData;
 @property(readonly, nonatomic) struct CGRect px_storyResourceFetchBestPlaybackRect;
-@property(readonly, nonatomic) CDStruct_e83c9415 px_storyResourceFetchBestPlaybackRange;
+@property(readonly, nonatomic) CDStruct_3c1748cc px_storyResourceFetchBestPlaybackRange;
 @property(readonly, nonatomic) PFVideoAdjustments *px_storyResourceFetchVideoAdjustments;
 @property(readonly, nonatomic) id <PXDisplayAsset> px_storyResourceDisplayAsset;
 @property(readonly, nonatomic) long long px_storyResourceKind;

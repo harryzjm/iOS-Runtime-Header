@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedAccessQueue;
 - (void).cxx_destruct;
 - (void)_handleUserIdentityStoreDidChangeNotification:(id)arg1;
+- (void)_handleHomeUserPrivateListeningDidChangeNotification:(id)arg1;
 - (void)_loadCurrentValueFromIdentityProperties;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

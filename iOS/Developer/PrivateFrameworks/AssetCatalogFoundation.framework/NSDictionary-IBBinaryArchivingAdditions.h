@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface NSDictionary (IBBinaryArchivingAdditions) <IBBinaryArchiving>
+@interface NSDictionary (IBBinaryArchivingAdditions)
 + (id)ib_dictionaryWithIntrinsicallyKeyedValues:(id)arg1 nilKeyBehavior:(long long)arg2 intrinsicKeyAccessor:(CDUnknownBlockType)arg3;
 + (id)ib_strictDictionaryWithKeysAndObjects:(id)arg1;
 + (id)ib_dictionaryOfObjects:(id)arg1 groupedIntoSetsByKeyPath:(id)arg2;
@@ -25,7 +23,6 @@
 - (id)ib_anyKey;
 - (id)ib_onlyObject;
 - (id)ib_onlyKey;
-- (id)ib_keysSortedUsingComparator:(CDUnknownBlockType)arg1;
 - (id)ib_objectForClassKey:(Class)arg1;
 - (long long)ib_integerForKey:(id)arg1;
 - (double)ib_doubleForKey:(id)arg1 defaultValue:(double)arg2;

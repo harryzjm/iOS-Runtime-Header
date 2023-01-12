@@ -6,13 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/UIDocumentPickerDelegate-Protocol.h>
-#import <ActionKitUI/WFFilePickerUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFSelectFilesUIKitUserInterface : WFEmbeddableActionUserInterface <WFFilePickerUserInterface, UIDocumentPickerDelegate>
+@interface WFSelectFilesUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
     NSString *_consumingBundleID;

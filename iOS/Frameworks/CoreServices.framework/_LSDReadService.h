@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)isEnabled;
 + (id)dispatchQueue;
 + (id)XPCInterface;
 + (Class)clientClass;

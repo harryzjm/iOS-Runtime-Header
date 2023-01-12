@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIButtonBarAppearanceDelegate-Protocol.h>
-#import <UIKitCore/_UINavigationItemChangeObserver-Protocol.h>
+#import "_UINavigationBarVisualProvider.h"
 
 @class NSArray, NSLayoutConstraint, NSString, UIColor, UIFocusContainerGuide, UIImageSymbolConfiguration, UIView, UIVisualEffectView, _CarTitleView, _UIBarButtonItemAppearanceStorage, _UIButtonBar, _UIButtonBarButton;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarVisualProviderModernCarPlay <_UIButtonBarAppearanceDelegate, _UINavigationItemChangeObserver>
+@interface _UINavigationBarVisualProviderModernCarPlay : _UINavigationBarVisualProvider
 {
     _Bool _compactMetrics;
     _Bool _havePrepared;
@@ -87,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (void)navigationItemUpdatedCanvasView:(id)arg1;
 - (void)navigationItemUpdatedBottomPalette:(id)arg1 oldPalette:(id)arg2;
 - (void)navigationItemUpdatedBackgroundAppearance:(id)arg1;
+- (void)navigationItemSearchControllerReadyForDeferredAutomaticShowsScopeBar:(id)arg1;
 - (void)navigationItemUpdatedRightBarButtonItems:(id)arg1 animated:(_Bool)arg2;
 - (void)navigationItemUpdatedLeftBarButtonItems:(id)arg1 animated:(_Bool)arg2;
 - (void)navigationItemUpdatedBackButtonContent:(id)arg1 animated:(_Bool)arg2;

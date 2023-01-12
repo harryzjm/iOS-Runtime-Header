@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PromotedContentProxy/NSURLSessionDataDelegate-Protocol.h>
-
 @class APUnfairLock, NSMutableDictionary, NSString, NSURLSession, NSURLSessionConfiguration;
 
-@interface APNSURLSessionDemultiplexer : NSObject <NSURLSessionDataDelegate>
+@interface APNSURLSessionDemultiplexer : NSObject
 {
     _Atomic long long _requestCount;
     _Bool _sessionMarkedInvalid;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface GEORequestCounterStatistics : NSObject <NSSecureCoding>
+@interface GEORequestCounterStatistics : NSObject
 {
     unsigned long long _bytesTransmitted;
     unsigned long long _bytesReceived;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DProtectResourceDelegate-Protocol.h>
-
 @class NSCountedSet, NSMutableDictionary, TSCH3DDictionaryOfSet;
 
-@interface TSCH3DResourceCache : NSObject <TSCH3DProtectResourceDelegate>
+@interface TSCH3DResourceCache : NSObject
 {
     TSCH3DDictionaryOfSet *_resourceKeyedEntries;
     NSMutableDictionary *_handles;

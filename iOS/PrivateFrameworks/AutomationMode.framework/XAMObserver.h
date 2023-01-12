@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly) NSString *changeNotificationName; // @synthesize changeNotificationName=_changeNotificationName;
 @property(readonly) CDUnknownBlockType readerConnectionFactory; // @synthesize readerConnectionFactory=_readerConnectionFactory;
+@property(readonly) _Bool automationModeRequiresAuthentication;
 @property(readonly) _Bool isAutomationModeEnabled; // @synthesize isAutomationModeEnabled=_isAutomationModeEnabled;
 - (void)unregisterAutomationModeChangeHandler:(id)arg1;
 - (id)registerAutomationModeChangeHandlerOnQueue:(id)arg1 withBlock:(CDUnknownBlockType)arg2;

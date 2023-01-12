@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/NSCopying-Protocol.h>
-
 @class LPTextViewStyle, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface LPQuotedTextViewStyle <NSCopying>
+@interface LPQuotedTextViewStyle
 {
     _Bool _showQuoteIndicator;
     _Bool _showCharacterLimitIndicator;

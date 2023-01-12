@@ -6,19 +6,17 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <ContactsUI/CNContactPickerHostProtocol-Protocol.h>
-#import <ContactsUI/CNContactPickerServiceProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactPickerExtensionContext : NSExtensionContext <CNContactPickerServiceProtocol, CNContactPickerHostProtocol>
+@interface CNContactPickerExtensionContext : NSExtensionContext
 {
 }
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void)pickerDidCancel;
+- (void)pickerDidCompleteWithNewContact:(id)arg1;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectAddNewContact;

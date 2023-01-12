@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/ICSQLiteBinding-Protocol.h>
-
 @class ICSQLiteConnection, NSDictionary, NSString;
 
-@interface ICSQLiteStatement : NSObject <ICSQLiteBinding>
+__attribute__((visibility("hidden")))
+@interface ICSQLiteStatement : NSObject
 {
     ICSQLiteConnection *_connection;
     struct sqlite3_stmt *_statement;

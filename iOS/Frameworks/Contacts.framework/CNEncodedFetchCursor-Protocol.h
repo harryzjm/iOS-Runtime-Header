@@ -7,6 +7,6 @@
 #import <Contacts/NSObject-Protocol.h>
 
 @protocol CNEncodedFetchCursor <NSObject>
-- (void)fetchNextBatchWithReply:(void (^)(NSData *, NSDictionary *, _Bool, NSError *))arg1;
+- (void)fetchNextBatchWithReply:(void (^)(id <CNEncodedFetchResponse>, _Bool, NSError *))arg1;
 @end
 

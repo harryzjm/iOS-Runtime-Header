@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOWiFiQualityServiceProxy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOWiFiQualityServiceRemoteProxy : NSObject <GEOWiFiQualityServiceProxy>
+@interface GEOWiFiQualityServiceRemoteProxy : NSObject
 {
 }
 

@@ -16,6 +16,9 @@
 + (id)bu_booksGroupContainerDocumentsURL;
 + (id)bu_booksGroupContainerURL;
 + (id)bu_urlWithAssetID:(id)arg1;
+- (_Bool)bu_removeExtendedAttributeNamed:(id)arg1 iCloudSyncable:(_Bool)arg2;
+- (_Bool)bu_setExtendedAttributeNamed:(id)arg1 value:(id)arg2 iCloudSyncable:(_Bool)arg3;
+- (id)bu_extendedAttributeNamed:(id)arg1 iCloudSyncable:(_Bool)arg2;
 - (id)bu_dictionaryForQueryItems;
 - (long long)bu_storeURLTypeFromHost:(id)arg1;
 - (id)bu_utType;

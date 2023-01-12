@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreUI/TXRDataSourceProvider-Protocol.h>
-
 @class CUINamedTexture, NSString;
 @protocol TXRBufferAllocator;
 
 __attribute__((visibility("hidden")))
-@interface _CUTextureLink : NSObject <TXRDataSourceProvider>
+@interface _CUTextureLink : NSObject
 {
     CUINamedTexture *_namedTexture;
     id <TXRBufferAllocator> _bufferAllocator;

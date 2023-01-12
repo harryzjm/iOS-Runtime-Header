@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSArray, NSHashTable, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMenuBarTemplateShelfFixedElementsCollectionViewCell <SKUIViewElementView>
+@interface SKUIMenuBarTemplateShelfFixedElementsCollectionViewCell
 {
     NSHashTable *_artworkRelatedChildViewElementViews;
     struct UIEdgeInsets _contentInset;

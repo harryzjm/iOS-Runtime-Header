@@ -6,12 +6,10 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <DataDetectorsUI/DDParsecHostVCInterface-Protocol.h>
-
 @protocol DDParsecHostVCInterface;
 
 __attribute__((visibility("hidden")))
-@interface DDParsecRemoteCollectionViewController : _UIRemoteViewController <DDParsecHostVCInterface>
+@interface DDParsecRemoteCollectionViewController : _UIRemoteViewController
 {
     _Bool _receivedInteractionDidFinish;
     id <DDParsecHostVCInterface> _hostSideDelegate;
@@ -23,12 +21,14 @@ __attribute__((visibility("hidden")))
 @property __weak id <DDParsecHostVCInterface> hostSideDelegate; // @synthesize hostSideDelegate=_hostSideDelegate;
 - (_Bool)_canShowWhileLocked;
 - (void)remoteVCIsReady;
+- (void)performClientTextQueryWithTerm:(id)arg1 queryId:(unsigned long long)arg2 sessionId:(id)arg3 userAgent:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)performClientQueryWithServerAccessPermitted:(_Bool)arg1 localSearchPermitted:(_Bool)arg2;
 - (void)openTrailerPunchout:(id)arg1;
 - (void)getStatusBarHidden:(CDUnknownBlockType)arg1;
 - (void)openParsecURL:(id)arg1;
 - (void)showingFTE:(_Bool)arg1;
 - (void)showingErrorView:(_Bool)arg1;
+- (void)reportAnIssueWithReportIdentifier:(id)arg1;
 - (void)interactionEndedWithPunchout:(_Bool)arg1;
 - (void)interactionEnded;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

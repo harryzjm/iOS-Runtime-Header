@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
     long long _identifier;
     NSMutableDictionary *_properties;
     NSMutableDictionary *_valuePersistenceBlocks;
-    NSObject<OS_dispatch_queue> *_propertiesQueue;
+    NSObject<OS_dispatch_queue> *_calloutQueue;
+    struct os_unfair_lock_s _lock;
     id <MPMediaLibraryDataProvider> _dataProvider;
 }
 
@@ -29,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)delete;
 - (void)cacheValue:(id)arg1 forProperty:(id)arg2 persistValueInBackgroundBlock:(CDUnknownBlockType)arg3;
 - (void)cachePropertyValues:(id)arg1 forProperties:(id)arg2 persistValueInBackgroundBlock:(CDUnknownBlockType)arg3;
-- (void)_onBarrierCacheValues:(id)arg1 persistValueInBackgroundBlock:(CDUnknownBlockType)arg2;
+- (void)_cacheValues:(id)arg1 persistValueInBackgroundBlock:(CDUnknownBlockType)arg2;
 - (id)valueForProperty:(id)arg1 isCached:(_Bool *)arg2;
 - (id)initWithLibraryDataProvider:(id)arg1 dataProviderEntityClass:(Class)arg2 identifier:(long long)arg3;
 

@@ -6,14 +6,11 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthToolbox/HKDataMetadataDeletionSectionDelegate-Protocol.h>
-#import <HealthToolbox/HKElectrocardiogramMetadataViewDelegate-Protocol.h>
-
 @class HKElectrocardiogram, HRElectrocardiogramReportGenerator, NSMutableArray, WDElectrocardiogramReportDataSource;
 @protocol HKDataMetadataViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WDElectrocardiogramDataMetadataViewController : HKTableViewController <HKDataMetadataDeletionSectionDelegate, HKElectrocardiogramMetadataViewDelegate>
+@interface WDElectrocardiogramDataMetadataViewController : HKTableViewController
 {
     _Bool _firstViewDidLayoutSubviews;
     _Bool _actionsEnabled;

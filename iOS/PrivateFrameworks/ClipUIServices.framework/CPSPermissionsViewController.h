@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ClipUIServices/PRXCardContentProviding-Protocol.h>
-
 @class CPSPermissionItemView, NSString, UIImage, UIImageView, UIView;
 @protocol CPSPermissionsViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CPSPermissionsViewController : UIViewController <PRXCardContentProviding>
+@interface CPSPermissionsViewController : UIViewController
 {
     NSString *_appName;
     UIImageView *_backgroundImageView;

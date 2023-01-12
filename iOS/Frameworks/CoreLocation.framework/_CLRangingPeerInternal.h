@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreLocation/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface _CLRangingPeerInternal : NSObject <NSCopying>
+@interface _CLRangingPeerInternal : NSObject
 {
     unsigned long long _macAddress;
     NSData *_secureRangingKeyID;

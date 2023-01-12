@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiatorStreamGroupStreamConfiguration : NSObject <NSCopying>
+@interface VCMediaNegotiatorStreamGroupStreamConfiguration : NSObject
 {
     unsigned char _streamIndex;
     unsigned int _ssrc;
@@ -34,10 +32,12 @@ __attribute__((visibility("hidden")))
     _Bool _isSubStream;
     unsigned int _audioChannelCount;
     unsigned long long _serializedSize;
+    unsigned int _coordinateSystem;
 }
 
-+ (id)configWithQualityIndex:(unsigned int)arg1 nwBitrate:(unsigned int)arg2 mediaBitrate:(unsigned int)arg3 maxPacketsPerSecond:(unsigned int)arg4 repairedNwBitrate:(unsigned int)arg5 keyFrameInterval:(unsigned int)arg6 framerate:(unsigned int)arg7 rtpSampleRate:(unsigned int)arg8 isTemporal:(_Bool)arg9 isSubStream:(_Bool)arg10 metadata:(unsigned int)arg11 payloads:(id)arg12 codecs:(id)arg13 width:(unsigned int)arg14 height:(unsigned int)arg15 audioChannelCount:(unsigned int)arg16 streamIndex:(unsigned char)arg17;
++ (id)configWithQualityIndex:(unsigned int)arg1 nwBitrate:(unsigned int)arg2 mediaBitrate:(unsigned int)arg3 maxPacketsPerSecond:(unsigned int)arg4 repairedNwBitrate:(unsigned int)arg5 keyFrameInterval:(unsigned int)arg6 framerate:(unsigned int)arg7 rtpSampleRate:(unsigned int)arg8 isTemporal:(_Bool)arg9 isSubStream:(_Bool)arg10 metadata:(unsigned int)arg11 payloads:(id)arg12 codecs:(id)arg13 width:(unsigned int)arg14 height:(unsigned int)arg15 audioChannelCount:(unsigned int)arg16 streamIndex:(unsigned char)arg17 coordinateSystem:(unsigned int)arg18;
 @property(nonatomic) unsigned char streamIndex; // @synthesize streamIndex=_streamIndex;
+@property(nonatomic) unsigned int coordinateSystem; // @synthesize coordinateSystem=_coordinateSystem;
 @property(nonatomic) unsigned long long serializedSize; // @synthesize serializedSize=_serializedSize;
 @property(nonatomic) unsigned int audioChannelCount; // @synthesize audioChannelCount=_audioChannelCount;
 @property(nonatomic) _Bool isSubStream; // @synthesize isSubStream=_isSubStream;

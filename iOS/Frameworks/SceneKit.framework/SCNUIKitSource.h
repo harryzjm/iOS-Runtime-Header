@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SCNImageSource.h"
+
 @class CALayer, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface SCNUIKitSource
+@interface SCNUIKitSource : SCNImageSource
 {
     id _uiView;
     id _uiWindow;

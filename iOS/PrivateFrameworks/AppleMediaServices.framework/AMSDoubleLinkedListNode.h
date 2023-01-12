@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *listIdentifier; // @synthesize listIdentifier=_listIdentifier;
 @property(retain, nonatomic) AMSDoubleLinkedListNode *next; // @synthesize next=_next;
 @property(retain, nonatomic) id object; // @synthesize object=_object;
-@property(retain, nonatomic) AMSDoubleLinkedListNode *previous; // @synthesize previous=_previous;
+@property(nonatomic) __weak AMSDoubleLinkedListNode *previous; // @synthesize previous=_previous;
 - (id)initWithObject:(id)arg1;
 - (id)init;
 

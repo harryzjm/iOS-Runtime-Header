@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUILayoutCacheDelegate-Protocol.h>
-#import <StoreKitUI/SKUISignInViewDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSString, SKUILayoutCache, SKUISignInTemplateView, SKUISignInTemplateViewElement, SKUIViewElementLayoutContext, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface SKUISignInDocumentViewController <SKUIArtworkRequestDelegate, SKUILayoutCacheDelegate, SKUISignInViewDelegate, SKUIDocumentViewController>
+@interface SKUISignInDocumentViewController : SKUIViewController
 {
     struct CGRect _keyboardFrame;
     SKUIViewElementLayoutContext *_layoutContext;

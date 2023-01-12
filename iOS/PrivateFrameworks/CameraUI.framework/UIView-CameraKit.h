@@ -34,6 +34,6 @@
 - (void)cam_setHidden:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)cam_isOnScreen:(id)arg1;
 - (void)cam_ensureSubview:(id)arg1;
-@property(nonatomic, setter=cam_setGeometry:) CDStruct_d54ccef3 cam_geometry;
+@property(nonatomic, setter=cam_setGeometry:) CDStruct_3b81988a cam_geometry;
 @end
 

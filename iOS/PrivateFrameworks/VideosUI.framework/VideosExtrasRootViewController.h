@@ -6,17 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/IKAppContextDelegate-Protocol.h>
-#import <VideosUI/IKAppDeviceConfig-Protocol.h>
-#import <VideosUI/IKApplication-Protocol.h>
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/UINavigationControllerDelegate-Protocol.h>
-
 @class IKAppContext, NSArray, NSLayoutConstraint, NSObject, NSString, UIButton, UINavigationController, UIStackView, UITraitCollection, UIView, VideosExtrasArtworkDataSource, VideosExtrasContext, VideosExtrasFeatureContainerViewController, VideosExtrasMainTemplateViewController, VideosExtrasNavigationController;
 @protocol IKAppDataStoring, IKAppUserDefaultsStoring, OS_dispatch_queue, VideosExtrasRootViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasRootViewController : UIViewController <IKApplication, IKAppContextDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, IKAppDeviceConfig>
+@interface VideosExtrasRootViewController : UIViewController
 {
     NSLayoutConstraint *_bottomConstraint;
     VideosExtrasNavigationController *_navigationController;

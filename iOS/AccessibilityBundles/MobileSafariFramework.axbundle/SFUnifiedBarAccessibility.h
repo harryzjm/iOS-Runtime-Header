@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)preferredFocusEnvironments;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (id)accessibilityElements;
 - (id)initWithFrame:(struct CGRect)arg1;

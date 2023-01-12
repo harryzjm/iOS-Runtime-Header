@@ -6,70 +6,9 @@
 
 @class MISSING_TYPE;
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-};
-
-struct CGPoint {
-    double _field1;
-    double _field2;
-};
-
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-
-struct CLLocationCoordinate2D {
-    double latitude;
-    double longitude;
-};
-
-struct vector<float __attribute__((ext_vector_type(3))), std::allocator<float __attribute__((ext_vector_type(3)))>> {
-    void *__begin_;
-    void *__end_;
-    struct __compressed_pair<float * __attribute__((ext_vector_type(3))), std::allocator<float __attribute__((ext_vector_type(3)))>> {
-        void *__value_;
-    } __end_cap_;
-};
-
-struct vector<unsigned long long, std::allocator<unsigned long long>> {
-    unsigned long long *__begin_;
-    unsigned long long *__end_;
-    struct __compressed_pair<unsigned long long *, std::allocator<unsigned long long>> {
-        unsigned long long *__value_;
-    } __end_cap_;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    MISSING_TYPE *columns[3];
-} CDStruct_8e0628e6;
-
-typedef struct {
-    MISSING_TYPE *columns[4];
-} CDStruct_14d5dc5e;
-
-typedef struct {
-    double x;
-    double y;
-    double z;
-} CDStruct_31142d93;
+    MISSING_TYPE *_field1[4];
+} CDStruct_f1db2b5e;
 

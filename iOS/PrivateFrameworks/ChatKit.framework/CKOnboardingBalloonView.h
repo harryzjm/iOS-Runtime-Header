@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKTextBalloonView.h"
+
 @class UIImage;
 
 __attribute__((visibility("hidden")))
-@interface CKOnboardingBalloonView
+@interface CKOnboardingBalloonView : CKTextBalloonView
 {
     UIImage *_largeBalloonImage;
 }

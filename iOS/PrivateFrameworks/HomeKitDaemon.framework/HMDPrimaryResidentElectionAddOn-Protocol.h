@@ -6,12 +6,16 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
+@class HMDResidentDevice;
 @protocol HMDPrimaryResidentElectionAddOnDelegate;
 
 @protocol HMDPrimaryResidentElectionAddOn <NSObject>
 @property __weak id <HMDPrimaryResidentElectionAddOnDelegate> delegate;
+- (void)primaryResidentChanged:(HMDResidentDevice *)arg1 previousResidentDevice:(HMDResidentDevice *)arg2;
 - (void)registerForMessages;
+- (void)performElectionWithReason:(unsigned long long)arg1;
 - (void)performElection;
+- (void)stop;
 - (void)start;
 @end
 

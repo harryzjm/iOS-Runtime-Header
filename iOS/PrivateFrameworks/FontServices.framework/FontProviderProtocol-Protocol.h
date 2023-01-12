@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 @protocol FontProviderProtocol
-- (void)registeredFontsInfo:(_Bool)arg1 completionHandler:(void (^)(NSArray *))arg2;
-- (void)unregisterFonts:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSDictionary *))arg2;
-- (void)registerFonts:(NSArray *)arg1 enabled:(_Bool)arg2 completionHandler:(void (^)(NSArray *, NSDictionary *))arg3;
+- (void)updateAppInfo:(NSDictionary *)arg1;
+- (void)ping:(void (^)(void))arg1;
+- (void)registeredFontsInfo:(_Bool)arg1 appInfo:(NSDictionary *)arg2 completionHandler:(void (^)(NSArray *))arg3;
+- (void)unregisterFonts:(NSArray *)arg1 appInfo:(NSDictionary *)arg2 completionHandler:(void (^)(NSArray *, NSDictionary *))arg3;
+- (void)registerFonts:(NSArray *)arg1 enabled:(_Bool)arg2 appInfo:(NSDictionary *)arg3 completionHandler:(void (^)(NSArray *, NSDictionary *))arg4;
 @end
 

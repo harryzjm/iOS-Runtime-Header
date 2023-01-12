@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SwiftUI/UICollectionViewDataSource-Protocol.h>
-#import <SwiftUI/UICollectionViewDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7SwiftUIP33_8825076C2763A50452A210CBE1FA4AF011Coordinator <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface _TtC7SwiftUIP33_8825076C2763A50452A210CBE1FA4AF011Coordinator
 {
+    MISSING_TYPE *collectionView;
     MISSING_TYPE *selectedIndex;
     MISSING_TYPE *children;
     MISSING_TYPE *lastIDs;
@@ -21,6 +19,8 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)scrollViewDidScroll:(id)arg1;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;

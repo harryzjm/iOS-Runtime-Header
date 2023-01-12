@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/UIActivityItemsSource-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _SFOpenInOtherAppActivityItemsSource : NSObject <UIActivityItemsSource>
+@interface _SFOpenInOtherAppActivityItemsSource : NSObject
 {
     NSURL *_fileURL;
 }

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKAggregateZonePCSOperationInfo, CKArchiveRecordsOperationInfo, CKCompleteParticipantVettingOperationInfo, CKDPResponseOperationResult, CKDatabaseOperationInfo, CKFetchArchivedRecordsOperationInfo, CKFetchRecordVersionsOperationInfo, CKFetchShareParticipantKeyOperationInfo, CKInitiateParticipantVettingOperationInfo, CKMarkAssetBrokenOperationInfo, CKModifyRecordAccessOperationInfo, CKModifyWebSharingOperationInfo, CKOperationInfo, CKPublishAssetsOperationInfo, CKRecordID, CKRecordZoneID, CKRepairAssetsOperationInfo, CKRepairZonePCSOperationInfo, CKShare, NSArray, NSError, NSString;
-@protocol CKArchiveRecordsOperationCallbacks, CKCompleteParticipantVettingOperationCallbacks, CKFetchArchivedRecordsOperationCallbacks, CKFetchRecordVersionsOperationCallbacks, CKFetchRegisteredBundleIDsOperationCallbacks, CKFetchShareParticipantKeyOperationCallbacks, CKFetchUserQuotaOperationCallbacks, CKFetchWhitelistedBundleIDsOperationCallbacks, CKInitiateParticipantVettingOperationCallbacks, CKMarkAssetBrokenOperationCallbacks, CKModifyRecordAccessOperationCallbacks, CKModifyWebSharingOperationCallbacks, CKOperationCallbacks, CKPublishAssetsOperationCallbacks, CKRepairAssetsOperationCallbacks, CKRepairZonePCSOperationCallbacks;
+@class CKAggregateZonePCSOperationInfo, CKArchiveRecordsOperationInfo, CKCompleteParticipantVettingOperationInfo, CKDPResponseOperationResult, CKDatabaseOperationInfo, CKDeserializeRecordModificationsOperationInfo, CKFetchArchivedRecordsOperationInfo, CKFetchMergeableDeltaMetadataOperationInfo, CKFetchMergeableDeltasOperationInfo, CKFetchRecordVersionsOperationInfo, CKFetchShareParticipantKeyOperationInfo, CKInitiateParticipantVettingOperationInfo, CKMarkAssetBrokenOperationInfo, CKModifyRecordAccessOperationInfo, CKModifyWebSharingOperationInfo, CKOperationInfo, CKPublishAssetsOperationInfo, CKRecordID, CKRecordZoneID, CKRepairAssetsOperationInfo, CKRepairZonePCSOperationInfo, CKReplaceMergeableDeltasOperationInfo, CKSerializeRecordModificationsOperationInfo, CKShare, CKUploadMergeableDeltasOperationInfo, NSArray, NSError, NSString;
+@protocol CKArchiveRecordsOperationCallbacks, CKCompleteParticipantVettingOperationCallbacks, CKDeserializeRecordModificationsOperationCallbacks, CKFetchArchivedRecordsOperationCallbacks, CKFetchMergeableDeltaMetadataOperationCallbacks, CKFetchMergeableDeltasOperationCallbacks, CKFetchRecordVersionsOperationCallbacks, CKFetchRegisteredBundleIDsOperationCallbacks, CKFetchShareParticipantKeyOperationCallbacks, CKFetchUserQuotaOperationCallbacks, CKFetchWhitelistedBundleIDsOperationCallbacks, CKInitiateParticipantVettingOperationCallbacks, CKMarkAssetBrokenOperationCallbacks, CKModifyRecordAccessOperationCallbacks, CKModifyWebSharingOperationCallbacks, CKOperationCallbacks, CKPublishAssetsOperationCallbacks, CKRepairAssetsOperationCallbacks, CKRepairZonePCSOperationCallbacks, CKReplaceMergeableDeltasOperationCallbacks, CKSerializeRecordModificationsOperationCallbacks, CKUploadMergeableDeltasOperationCallbacks;
 
 @protocol CKXPCContainerScopedDaemonSPI
-- (void)deviceCountWithCompletionHandler:(void (^)(long long, NSError *))arg1;
+- (void)deviceCountWithCompletionHandler:(void (^)(long long, _Bool, NSError *))arg1;
 - (void)tossConfigWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)performRepairZonePCSOperation:(CKRepairZonePCSOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKRepairZonePCSOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
 - (void)getRecordPCSDiagnosticsForZonesWithCompletionHandler:(void (^)(NSArray *))arg1;
@@ -33,6 +33,12 @@
 - (void)countAssetCacheItemsWithDatabaseScope:(long long)arg1 completionHandler:(void (^)(unsigned long long, NSError *))arg2;
 - (void)setFakeResponseOperationResult:(CKDPResponseOperationResult *)arg1 forNextRequestOfClassName:(NSString *)arg2 forItemID:(id)arg3 withLifetime:(int)arg4;
 - (void)setFakeError:(NSError *)arg1 forNextRequestOfClassName:(NSString *)arg2;
+- (void)performDeserializeRecordModificationsOperation:(CKDeserializeRecordModificationsOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKDeserializeRecordModificationsOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
+- (void)performSerializeRecordModificationsOperation:(CKSerializeRecordModificationsOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKSerializeRecordModificationsOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
+- (void)performUploadMergeableDeltasOperation:(CKUploadMergeableDeltasOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKUploadMergeableDeltasOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
+- (void)performReplaceMergeableDeltasOperation:(CKReplaceMergeableDeltasOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKReplaceMergeableDeltasOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
+- (void)performFetchMergeableDeltaMetadataOperation:(CKFetchMergeableDeltaMetadataOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKFetchMergeableDeltaMetadataOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
+- (void)performFetchMergeableDeltasOperation:(CKFetchMergeableDeltasOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKFetchMergeableDeltasOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
 - (void)performAggregateZonePCSOperation:(CKAggregateZonePCSOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
 - (void)currentUserBoundaryKeyWithCompletionHandler:(void (^)(NSData *, NSError *))arg1;
 - (void)currentDeviceIDWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
@@ -46,7 +52,6 @@
 - (void)performFetchShareParticipantKeyOperation:(CKFetchShareParticipantKeyOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKFetchShareParticipantKeyOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
 - (void)performCompleteParticipantVettingOperation:(CKCompleteParticipantVettingOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKCompleteParticipantVettingOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
 - (void)performModifyRecordAccessOperation:(CKModifyRecordAccessOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKModifyRecordAccessOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
-- (void)fetchXPCCriteriaWithCompletionHandler:(void (^)(NSObject<OS_xpc_object> *, NSError *))arg1;
 - (void)getNewWebSharingIdentityDataWithCompletionHandler:(void (^)(NSData *, NSError *))arg1;
 - (void)performModifyWebSharingOperation:(CKModifyWebSharingOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKModifyWebSharingOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;
 - (void)performMarkAssetBrokenOperation:(CKMarkAssetBrokenOperationInfo *)arg1 clientOperationCallbackProxy:(id <CKMarkAssetBrokenOperationCallbacks>)arg2 withBlock:(void (^)(void))arg3;

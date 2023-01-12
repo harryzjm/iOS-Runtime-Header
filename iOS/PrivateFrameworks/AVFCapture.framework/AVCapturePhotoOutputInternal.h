@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 livePhotoMovieVideoFrameDuration;
     CDStruct_79c71658 livePhotoMovieDimensions;
     _Bool livePhotoCaptureSuspended;
+    _Bool preservesLivePhotoCaptureSuspendedOnSessionStop;
     _Bool depthDataDeliverySupported;
     _Bool depthDataDeliveryEnabled;
     _Bool portraitEffectsMatteDeliverySupported;
@@ -100,6 +101,8 @@ __attribute__((visibility("hidden")))
     _Bool highPhotoQualitySupported;
     _Bool semanticStyleRenderingSupported;
     _Bool semanticStyleRenderingEnabled;
+    CDStruct_79c71658 maxPhotoDimensions;
+    _Bool privatePhotoDimensionsEnabled;
 }
 
 @end

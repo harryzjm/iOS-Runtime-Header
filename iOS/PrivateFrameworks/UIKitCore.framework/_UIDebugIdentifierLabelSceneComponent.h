@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneComponentProviding-Protocol.h>
-
 @class NSString, UIScene, _UIDebugIdentifierWindow;
 
 __attribute__((visibility("hidden")))
-@interface _UIDebugIdentifierLabelSceneComponent : NSObject <_UISceneComponentProviding>
+@interface _UIDebugIdentifierLabelSceneComponent : NSObject
 {
     _UIDebugIdentifierWindow *_debugWindow;
     UIScene *_scene;

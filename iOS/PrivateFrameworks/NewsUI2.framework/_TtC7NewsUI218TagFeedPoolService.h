@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *context;
     MISSING_TYPE *headlineService;
+    MISSING_TYPE *channelSectionHeadlinesService;
     MISSING_TYPE *headlineFetchSize;
 }
 

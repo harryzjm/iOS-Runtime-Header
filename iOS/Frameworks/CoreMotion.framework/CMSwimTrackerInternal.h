@@ -23,6 +23,7 @@
 
 - (void)_resetOffsets;
 - (void)_handleUpdates:(id)arg1;
+- (void)_querySWOLFSummaryWithSessionID:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_querySwimUpdatesFromRecord:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_stopUpdates;
 - (void)_startUpdatesFromRecord:(id)arg1 handler:(CDUnknownBlockType)arg2;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/_GEOLocationShifterProxy-Protocol.h>
-
 @class NSCache, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _GEOLocationShifterRemoteProxy : NSObject <_GEOLocationShifterProxy>
+@interface _GEOLocationShifterRemoteProxy : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSNumber *_shiftingEnabled;

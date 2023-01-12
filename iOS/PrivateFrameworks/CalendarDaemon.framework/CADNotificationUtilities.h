@@ -13,15 +13,20 @@ __attribute__((visibility("hidden")))
 
 + (id)_stringForNotificationType:(int)arg1;
 + (_Bool)_storeIsDelegate:(const void *)arg1;
-+ (void)_logNotificationCountsForNotificationTypes:(id)arg1;
++ (void)_logNotificationCountsForNotifications:(id)arg1;
++ (id)flattenedNotificationsFromNotifications:(id)arg1 expanded:(_Bool)arg2;
 + (_Bool)storeIsReadOnlyDelegate:(const void *)arg1;
-+ (int)_gatherSuggestionResourceChangeNotification:(const void *)arg1 withContext:(id)arg2;
-+ (int)_gatherSharedCalendarResourceChangeNotification:(const void *)arg1 withContext:(id)arg2;
-+ (int)_gatherSharedCalendarInviteReplyNotification:(const void *)arg1 withContext:(id)arg2;
++ (int)_gatherSuggestionResourceChangeNotification:(const void *)arg1 withContext:(id)arg2 database:(struct CalDatabase *)arg3 databaseID:(int)arg4;
++ (int)_gatherSharedCalendarResourceChangeNotification:(const void *)arg1 withContext:(id)arg2 database:(struct CalDatabase *)arg3 databaseID:(int)arg4;
++ (int)_gatherSharedCalendarInviteReplyNotification:(const void *)arg1 withContext:(id)arg2 database:(struct CalDatabase *)arg3 databaseID:(int)arg4;
 + (int)_gatherSharedCalendarResponsesAndResourceChangesWithContext:(id)arg1;
 + (int)_gatherSharedCalendarInvitationsWithContext:(id)arg1;
 + (int)_gatherEventInvitationsAndRepliesWithContext:(id)arg1;
-+ (int)CADDatabaseGetEventNotificationItemsWithDatabase:(struct CalDatabase *)arg1 afterDate:(id)arg2 forSourceWithExternalIdentifier:(id)arg3 excludingDelegateSources:(_Bool)arg4 filteredByShowsNotificationsFlag:(_Bool)arg5 earliestExpirationDate:(id *)arg6 notificationTypes:(id *)arg7 rowIDs:(id *)arg8 occurrenceDates:(id *)arg9;
++ (int)CADDatabaseGetEventNotificationItemsWithConnection:(id)arg1 afterDate:(id)arg2 forSourceWithExternalIdentifier:(id)arg3 excludingDelegateSources:(_Bool)arg4 excludingUncheckedCalendars:(_Bool)arg5 filteredByShowsNotificationsFlag:(_Bool)arg6 expanded:(_Bool)arg7 earliestExpirationDate:(id *)arg8 notificationTypes:(id *)arg9 objectIDs:(id *)arg10 occurrenceDates:(id *)arg11 attendeeObjectIDs:(id *)arg12;
++ (id)_attendeeObjectIDsFromNotifications:(id)arg1;
++ (id)_occurrenceDatesFromNotifications:(id)arg1;
++ (id)_objectIDsFromNotifications:(id)arg1;
++ (id)_notificationTypesFromNotifications:(id)arg1;
 
 @end
 

@@ -13,7 +13,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)screenIsDim;
-- (void)animateBacklightToFactor:(float)arg1 duration:(double)arg2 source:(long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setBacklightState:(long long)arg1 source:(long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (float)_factorToPublishForBacklightState:(long long)arg1;
 
 @end
 

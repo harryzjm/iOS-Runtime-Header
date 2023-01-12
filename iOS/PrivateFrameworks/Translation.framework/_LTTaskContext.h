@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/NSSecureCoding-Protocol.h>
-
 @class NSString, _LTLocalePair;
 
 __attribute__((visibility("hidden")))
-@interface _LTTaskContext : NSObject <NSSecureCoding>
+@interface _LTTaskContext : NSObject
 {
     NSString *_sessionID;
     long long _taskHint;

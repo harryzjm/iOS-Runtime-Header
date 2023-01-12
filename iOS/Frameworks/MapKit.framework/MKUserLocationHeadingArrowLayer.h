@@ -6,13 +6,10 @@
 
 #import <QuartzCore/CAShapeLayer.h>
 
-#import <MapKit/MKUserLocationHeadingAnimatableIndicator-Protocol.h>
-#import <MapKit/MKUserLocationHeadingIndicator-Protocol.h>
-
 @class NSString, UITraitCollection, _MKPuckAnnotationView;
 
 __attribute__((visibility("hidden")))
-@interface MKUserLocationHeadingArrowLayer : CAShapeLayer <MKUserLocationHeadingIndicator, MKUserLocationHeadingAnimatableIndicator>
+@interface MKUserLocationHeadingArrowLayer : CAShapeLayer
 {
     double _maxUncertaintyAngleToShowArrow;
     double _baseRadius;

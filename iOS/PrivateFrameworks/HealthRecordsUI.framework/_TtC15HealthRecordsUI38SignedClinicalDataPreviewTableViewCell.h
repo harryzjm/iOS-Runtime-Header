@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 presentationStyle:(long long)arg3;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 presentationOptions:(long long)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

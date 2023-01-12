@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "WDTableViewSection.h"
+
 @class HKHealthChartFactory, HKHeartbeatSequenceChartViewController, HKInteractiveChartOverlayViewController, NSMutableArray, WDActivityQueryTestController;
 
 __attribute__((visibility("hidden")))
-@interface WDChartExperimentsChartSection
+@interface WDChartExperimentsChartSection : WDTableViewSection
 {
     NSMutableArray *_viewControllers;
     HKHeartbeatSequenceChartViewController *_heartbeatSequenceForUpdate;

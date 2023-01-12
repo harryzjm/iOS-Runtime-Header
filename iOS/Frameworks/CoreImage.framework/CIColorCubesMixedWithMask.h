@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class CIImage, NSData, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CIColorCubesMixedWithMask
+@interface CIColorCubesMixedWithMask : CIFilter
 {
     CIImage *inputImage;
     CIImage *inputMaskImage;
@@ -15,9 +17,11 @@ __attribute__((visibility("hidden")))
     NSData *inputCube0Data;
     NSData *inputCube1Data;
     id inputColorSpace;
+    NSNumber *inputExtrapolate;
 }
 
 + (id)customAttributes;
+@property(copy, nonatomic) NSNumber *inputExtrapolate; // @synthesize inputExtrapolate;
 @property(retain, nonatomic) id inputColorSpace; // @synthesize inputColorSpace;
 @property(copy, nonatomic) NSData *inputCube1Data; // @synthesize inputCube1Data;
 @property(copy, nonatomic) NSData *inputCube0Data; // @synthesize inputCube0Data;

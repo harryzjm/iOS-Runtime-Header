@@ -16,16 +16,16 @@ __attribute__((visibility("hidden")))
     const struct __CFData *_data;
     NSObject<OS_xpc_object> *_xpcData;
     unsigned long long _dataFlags;
-    unsigned char _isHidden;
     CDUnknownBlockType _promisor;
     CDUnknownBlockType _asyncPromisor;
-    _Atomic int _promiseState;
     NSObject<OS_dispatch_group> *_promiseGroup;
-    struct os_unfair_lock_s _lock;
     NSObject<OS_xpc_object> *_promisorConnection;
+    struct os_unfair_lock_s _lock;
     int _itemIdentifier;
+    unsigned char _isHidden;
     unsigned char _isPendingFlush;
     unsigned char _extensionConsumed;
+    _Atomic unsigned char _promiseState;
 }
 
 @property unsigned char extensionConsumed; // @synthesize extensionConsumed=_extensionConsumed;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)createXPCObjectWithMetadataOnly:(unsigned char)arg1;
 - (id)initFromXPCObject:(id)arg1 fromConnection:(id)arg2;
 @property(readonly) unsigned char promisorExistsInCurrentProcess;
-- (void)_setLocalPromiseState:(int)arg1;
+- (void)_setLocalPromiseState:(unsigned char)arg1;
 @property(readonly) unsigned char hasLocalPromise;
 - (const struct __CFData *)createDataAndReturnError:(int *)arg1;
 - (id)_createXPCData;

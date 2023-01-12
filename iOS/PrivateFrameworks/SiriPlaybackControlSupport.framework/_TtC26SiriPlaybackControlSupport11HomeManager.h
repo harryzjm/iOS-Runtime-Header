@@ -6,26 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <SiriPlaybackControlSupport/HMHomeManagerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC26SiriPlaybackControlSupport11HomeManager : NSObject <HMHomeManagerDelegate>
+@interface _TtC26SiriPlaybackControlSupport11HomeManager : NSObject
 {
     MISSING_TYPE *homeManagerInitTimeout;
     MISSING_TYPE *hmHomeManager;
     MISSING_TYPE *hmHomeManagerOptions;
     MISSING_TYPE *homeData;
-    MISSING_TYPE *loadSucceeded;
+    MISSING_TYPE *mgGroupQuery;
     MISSING_TYPE *readyGroup;
     MISSING_TYPE *initializationSignpost;
-    MISSING_TYPE *loadQueue;
+    MISSING_TYPE *homeKitTracker;
+    MISSING_TYPE *mediaGroupTracker;
 }
 
 - (void).cxx_destruct;
-- (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)init;
+- (void)homeManagerDidUpdateHomes:(id)arg1;
 
 @end
 

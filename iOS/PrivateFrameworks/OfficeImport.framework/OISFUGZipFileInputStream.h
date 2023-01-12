@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUInputStream-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OISFUGZipFileInputStream : NSObject <SFUInputStream>
+@interface OISFUGZipFileInputStream : NSObject
 {
     int _fd;
     struct gzFile_s *_file;

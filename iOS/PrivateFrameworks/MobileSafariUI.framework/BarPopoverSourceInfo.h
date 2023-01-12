@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/_SFPopoverSourceInfo-Protocol.h>
-
 @class BrowserController, NSString, UIBarButtonItem, UIView;
 
 __attribute__((visibility("hidden")))
-@interface BarPopoverSourceInfo : NSObject <_SFPopoverSourceInfo>
+@interface BarPopoverSourceInfo : NSObject
 {
     long long _barItem;
     BrowserController *_browserController;
@@ -31,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) unsigned long long permittedArrowDirections;
+@property(nonatomic) long long provenance;
 @property(nonatomic) _Bool shouldHideArrow;
 @property(nonatomic) _Bool shouldPassthroughSuperview;
 @property(readonly) Class superclass;

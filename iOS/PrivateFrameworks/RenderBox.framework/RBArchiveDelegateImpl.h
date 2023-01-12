@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RenderBox/RBDecoderDelegate-Protocol.h>
-#import <RenderBox/RBEncoderDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface RBArchiveDelegateImpl : NSObject <RBEncoderDelegate, RBDecoderDelegate>
+@interface RBArchiveDelegateImpl : NSObject
 {
     unsigned int _flags;
     struct objc_ptr<NSData *> _metadata;

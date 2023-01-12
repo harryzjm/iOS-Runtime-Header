@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIDebugMetricsTermCollector-Protocol.h>
-
 @class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIDebugMetricsTermCollector : NSObject <VUIDebugMetricsTermCollector>
+@interface VUIDebugMetricsTermCollector : NSObject
 {
 }
 

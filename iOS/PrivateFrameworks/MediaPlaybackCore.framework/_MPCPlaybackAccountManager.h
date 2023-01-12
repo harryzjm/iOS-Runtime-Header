@@ -21,11 +21,13 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+- (_Bool)_shouldPurgeGlideSubscriptionDataForAccount:(id)arg1;
 - (void)_enumerateIdentitiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_buildAccountFromDelegatedIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_buildAccountFromLocalIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateAccountsWithAttemptCount:(long long)arg1;
 - (void)_updateAccounts;
+- (void)_homeUserSettingsChangeNotification:(id)arg1;
 - (void)_userIdentityStoreChangedNotification:(id)arg1;
 - (void)_subscriptionStatusChangedNotification:(id)arg1;
 - (id)accountForUserIdentity:(id)arg1;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)performAfterLoadingAccounts:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool hasLoadedInitialAccounts;
 @property(readonly, copy, nonatomic) NSArray *accounts;
+- (void)start;
 - (id)initWithPlaybackEngine:(id)arg1;
 
 @end

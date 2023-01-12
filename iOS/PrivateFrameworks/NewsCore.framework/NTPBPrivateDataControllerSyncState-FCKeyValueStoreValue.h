@@ -6,11 +6,9 @@
 
 #import <NewsTransport/NTPBPrivateDataControllerSyncState.h>
 
-#import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
-
 @class NSString;
 
-@interface NTPBPrivateDataControllerSyncState (FCKeyValueStoreValue) <FCKeyValueStoreCoding>
+@interface NTPBPrivateDataControllerSyncState (FCKeyValueStoreValue)
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 - (void)writeToKeyValuePair:(id)arg1;

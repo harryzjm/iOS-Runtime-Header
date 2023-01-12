@@ -45,6 +45,7 @@
 - (void)_cellDidBecomeUnfocused:(UITableViewCell *)arg1;
 - (void)_cellDidBecomeFocused:(UITableViewCell *)arg1;
 - (_Bool)_canFocusCell:(UITableViewCell *)arg1;
+- (void)_cellDidInvalidateIntrinsicContentSize:(UITableViewCell *)arg1;
 - (void)_cellDidHideSelectedBackground:(UITableViewCell *)arg1;
 - (void)_cellDidShowSelectedBackground:(UITableViewCell *)arg1;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;

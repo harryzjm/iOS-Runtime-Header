@@ -6,7 +6,7 @@
 
 #import <FindMyDevice/NSObject-Protocol.h>
 
-@class FMDFMIPAccountInfo, FMDLostModeInfo, FMDPairingCheckCommandRequestInfo, FMDPairingLockRegisterRequestInfo, FMDSecureLocationContext, NSData, NSDictionary, NSString;
+@class FMDFMIPAccountInfo, FMDLostModeInfo, FMDPairingCheckCommandRequestInfo, FMDPairingLockRegisterRequestInfo, FMDPairingLockUpdateRequestInfo, FMDSecureLocationContext, NSData, NSDictionary, NSString;
 
 @protocol FMDFMIPProtocol <NSObject>
 - (void)stopLocationMonitoringWithContext:(FMDSecureLocationContext *)arg1 completion:(void (^)(NSError *))arg2;
@@ -20,6 +20,7 @@
 - (void)clearOfflineFindingInfoWithCompletion:(void (^)(NSError *))arg1;
 - (void)fetchOfflineFindingInfoWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)storeOfflineFindingInfo:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)activationLockAuthInfoWithCompletion:(void (^)(FMDActivationLockAuthInfo *, NSError *))arg1;
 - (void)activationLockInfoFromDeviceWithCompletion:(void (^)(FMDActivationLockInfo *, NSError *))arg1;
 - (void)showDailyLocateReport;
 - (void)setDailyLocateReportEnabled:(_Bool)arg1;
@@ -28,6 +29,7 @@
 - (void)playSoundWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)getConnectedAccessoriesDiscoveryIds:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)pairingCheckWith:(FMDPairingCheckCommandRequestInfo *)arg1 completion:(void (^)(NSError *, FMDPairingCheckCommandResponseInfo *))arg2;
+- (oneway void)updatePairingLockInfo:(FMDPairingLockUpdateRequestInfo *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)registerDeviceForPairingLock:(FMDPairingLockRegisterRequestInfo *)arg1 completion:(void (^)(NSError *, FMDPairingLockRegisterResponseInfo *))arg2;
 - (oneway void)setPhoneNumber:(NSString *)arg1 toAccessoryWithDiscoveryId:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)removeAccessoryWithDiscoveryId:(NSString *)arg1 completion:(void (^)(NSError *))arg2;

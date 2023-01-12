@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIInputViewAnimationController-Protocol.h>
-
 @class NSString, _UIKeyboardAnimator;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyboardAnimatorAnimationStyleController : NSObject <UIInputViewAnimationController>
+@interface _UIKeyboardAnimatorAnimationStyleController : NSObject
 {
     _UIKeyboardAnimator *_animator;
 }

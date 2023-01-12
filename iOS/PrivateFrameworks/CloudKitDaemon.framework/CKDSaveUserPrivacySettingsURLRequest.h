@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDURLRequest.h"
+
 @class NSString;
 
-@interface CKDSaveUserPrivacySettingsURLRequest
+@interface CKDSaveUserPrivacySettingsURLRequest : CKDURLRequest
 {
     NSString *_bundleID;
     long long _discoverableTrinary;

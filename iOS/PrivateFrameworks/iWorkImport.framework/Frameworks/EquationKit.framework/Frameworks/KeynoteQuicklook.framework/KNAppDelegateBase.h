@@ -29,9 +29,6 @@
 - (void)registerSOSClassTypeMappings;
 - (double)maximumAspectRatioForPreviewImage;
 - (double)mimimumAspectRatioForPreviewImage;
-- (id)stringForEquationChoiceUseEQKitButtonTitle;
-- (id)stringForEquationChoiceBody;
-- (id)stringForEquationChoiceTitle;
 - (id)equationEditorAPDID;
 - (id)previewImageNameForEncryptedNativeDocument;
 - (id)previewImageNameForNativeDocument;

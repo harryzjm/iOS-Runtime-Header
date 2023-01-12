@@ -4,22 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <UIKitCore/_UIFocusMovementActionForwarding-Protocol.h>
-#import <UIKitCore/_UIHostedTextServiceSessionDelegate-Protocol.h>
-#import <UIKitCore/_UIViewServiceDeputy-Protocol.h>
-#import <UIKitCore/_UIViewServiceDeputyRotationSource-Protocol.h>
-#import <UIKitCore/_UIViewServiceDummyPopoverControllerDelegate-Protocol.h>
-#import <UIKitCore/_UIViewServiceViewControllerOperator_RemoteViewControllerInterface-Protocol.h>
+#import "UIViewController.h"
 
-@class NSArray, NSMutableArray, NSString, NSUndoManager, UIPopoverController, UIViewController, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIQueueingProxy, _UIViewControllerOneToOneTransitionContext, _UIViewServiceDummyPopoverController;
+@class BLSFrameSpecifierModel, NSArray, NSDate, NSMutableArray, NSString, NSUndoManager, UIPopoverController, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIQueueingProxy, _UIViewControllerOneToOneTransitionContext, _UIViewServiceDummyPopoverController;
 @protocol _UIViewServiceViewControllerOperatorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceViewControllerOperator <_UIViewServiceViewControllerOperator_RemoteViewControllerInterface, _UIHostedTextServiceSessionDelegate, _UIViewServiceDummyPopoverControllerDelegate, UIAdaptivePresentationControllerDelegate, _UIFocusMovementActionForwarding, _UIViewServiceDeputy, _UIViewServiceDeputyRotationSource>
+@interface _UIViewServiceViewControllerOperator : UIViewController
 {
-    int __automatic_invalidation_retainCount;
-    _Bool __automatic_invalidation_invalidated;
     NSMutableArray *_deferredToViewDidAppear;
     int _hostPID;
     int _mediaPID;
@@ -55,17 +47,22 @@ __attribute__((visibility("hidden")))
     _Bool _sheetPresentationControllerFirstResponderRequiresKeyboard;
     struct CGRect _sheetPresentationControllerKeyboardFrame;
     _Bool _hasRequestedKeyboardEventEnvironmentDeferring;
+    NSDate *_previousPresentationDate;
+    BLSFrameSpecifierModel *_blsFrameSpecifierModel;
     id <_UIViewServiceViewControllerOperatorDelegate> _delegate;
     CDUnknownBlockType __traitsWillChangeHandler;
     CDUnknownBlockType __traitsDidChangeHandler;
 }
 
 + (id)XPCInterface;
++ (void)initialize;
 + (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2 hostBundleID:(id)arg3 hostAuditToken:(CDStruct_4c969caf)arg4;
 - (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setTraitsDidChangeHandler:) CDUnknownBlockType _traitsDidChangeHandler; // @synthesize _traitsDidChangeHandler=__traitsDidChangeHandler;
 @property(copy, nonatomic, setter=_setTraitsWillChangeHandler:) CDUnknownBlockType _traitsWillChangeHandler; // @synthesize _traitsWillChangeHandler=__traitsWillChangeHandler;
 @property(nonatomic) __weak id <_UIViewServiceViewControllerOperatorDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)__updateWithFrameSpecifierDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)__timelinesForDateInterval:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
@@ -125,7 +122,7 @@ __attribute__((visibility("hidden")))
 - (void)__hostDidRotateFromInterfaceOrientation:(long long)arg1 skipSelf:(_Bool)arg2;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
 - (void)__hostWillRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
-- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(id)arg2 boundingPath:(id)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 fence:(id)arg6 hostPresentationTime:(unsigned long long)arg7 whenDone:(CDUnknownBlockType)arg8;
+- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(id)arg2 boundingPath:(id)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 fence:(id)arg6 timing:(struct _UIUpdateTiming)arg7 whenDone:(CDUnknownBlockType)arg8;
 - (_Bool)_shouldForwardLegacyRotationOnly;
 - (id)_viewControllersForRotationCallbacks;
 - (void)__hostDidChangeStatusBarHeight:(double)arg1;
@@ -145,6 +142,7 @@ __attribute__((visibility("hidden")))
 - (void)__hostViewDidDisappear:(_Bool)arg1;
 - (void)__hostViewWillDisappear:(_Bool)arg1;
 - (void)__hostViewDidAppear:(_Bool)arg1;
+- (void)__hostViewWillMoveToWindowInInterfaceOrientation:(long long)arg1 withStatusBarHeight:(double)arg2 underlapsStatusBar:(_Bool)arg3;
 - (void)__hostViewWillAppear:(_Bool)arg1 inInterfaceOrientation:(long long)arg2 traitCollection:(id)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)__hostReadyToReceiveMessagesFromServiceViewController;
 - (id)invalidate;
@@ -170,7 +168,7 @@ __attribute__((visibility("hidden")))
 - (void)_viewServiceIsDisplayingPopoverController:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 - (void)__prepareForDisconnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_wantsKeyboardEventEnvironmentDeferringWithoutFirstResponder:(id)arg1;
+- (void)_wantsKeyboardEventsWithoutFirstResponder:(id)arg1;
 - (void)_windowDidBecomeApplicationKey:(id)arg1;
 - (void)_firstResponderDidChange:(id)arg1;
 - (_Bool)becomeFirstResponder;
@@ -202,14 +200,8 @@ __attribute__((visibility("hidden")))
 - (void)_prepareForDisconnectionUnconditionallyThen:(CDUnknownBlockType)arg1;
 - (void)establishViewControllerDeputyWithProxy:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (void)_objc_initiateDealloc;
 - (id)_queue;
-- (id)autorelease;
-- (_Bool)_isDeallocating;
-- (_Bool)_tryRetain;
-- (unsigned long long)retainCount;
-- (oneway void)release;
-- (id)retain;
-- (int)__automatic_invalidation_logic;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

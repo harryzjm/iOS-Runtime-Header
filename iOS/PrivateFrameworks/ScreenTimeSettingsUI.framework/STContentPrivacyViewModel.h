@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultValueForRestriction:(id)arg1;
 - (id)visibleRestrictionWithConfiguration:(id)arg1 key:(id)arg2;
 - (id)init;
+- (id)defaultValueForRestrictionIdentifier:(id)arg1;
 
 @end
 

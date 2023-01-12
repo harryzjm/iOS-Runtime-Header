@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLModule-Protocol.h>
-
 @class NSString;
 
-@interface NotificationCenter_TMLModule : NSObject <TMLModule>
+@interface NotificationCenter_TMLModule : NSObject
 {
 }
 

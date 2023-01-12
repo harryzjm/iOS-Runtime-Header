@@ -17,13 +17,15 @@
 @property(readonly, copy, nonatomic) NSDictionary *seedSongIdentifiersByCatalog;
 @property(readonly, copy, nonatomic) id <PFStoryRecipeSongAsset> currentStyleSongAsset;
 @property(readonly, copy, nonatomic) id <PFStoryRecipeStyle> currentStyle;
-@property(readonly, nonatomic) CDStruct_5d4c7ed3 overallDurationInfo;
+@property(readonly, nonatomic) CDStruct_9ee4859c overallDurationInfo;
 @property(readonly, nonatomic) long long numberOfAssets;
 @property(readonly, nonatomic) long long minorVersion;
 @property(readonly, nonatomic) long long majorVersion;
 @property(readonly, copy, nonatomic) NSString *contentIdentifier;
 - (id <PFStoryRecipePresentation>)presentationAtIndex:(long long)arg1;
 - (_Bool)isEqualToRecipe:(id <PFStoryRecipe>)arg1;
+- (id <PFStoryRecipeSongAsset>)seedSongAssetForCatalog:(NSString *)arg1;
+- (id <PFStoryRecipeAsset>)assetWithKind:(long long)arg1 identifier:(NSString *)arg2;
 - (void)enumerateAssetsWithKind:(long long)arg1 usingBlock:(void (^)(id <PFStoryRecipeAsset>, _Bool *))arg2;
 - (id <PFStoryRecipeAsset>)assetAtIndex:(long long)arg1;
 - (id <PFStoryRecipeLibrary>)libraryWithKind:(long long)arg1;

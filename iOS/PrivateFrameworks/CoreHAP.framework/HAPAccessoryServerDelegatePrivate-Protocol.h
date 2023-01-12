@@ -6,9 +6,6 @@
 
 #import <CoreHAP/HAPAccessoryServerDelegate-Protocol.h>
 
-@class HAPAccessoryServer;
-
 @protocol HAPAccessoryServerDelegatePrivate <HAPAccessoryServerDelegate>
-- (_Bool)shouldAccessoryServerEnableSessionSecurity:(HAPAccessoryServer *)arg1;
 @end
 

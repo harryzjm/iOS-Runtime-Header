@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNNavigationServiceProxy-Protocol.h>
-#import <Navigation/MNNavigationSessionManagerDelegate-Protocol.h>
-#import <Navigation/MNNavigationStateObserver-Protocol.h>
-
 @class NSString;
 @protocol MNNavigationServiceClientInterface;
 
 __attribute__((visibility("hidden")))
-@interface MNNavigationServiceLocalProxy : NSObject <MNNavigationStateObserver, MNNavigationSessionManagerDelegate, MNNavigationServiceProxy>
+@interface MNNavigationServiceLocalProxy : NSObject
 {
     id <MNNavigationServiceClientInterface> _delegate;
     unsigned long long _navigationServiceState;
@@ -66,13 +62,13 @@ __attribute__((visibility("hidden")))
 - (void)navigationSessionManager:(id)arg1 didUpdateMotionType:(unsigned long long)arg2 confidence:(unsigned long long)arg3;
 - (void)navigationSessionManager:(id)arg1 didUpdateHeading:(double)arg2 accuracy:(double)arg3;
 - (void)navigationSessionManager:(id)arg1 didUpdateETAResponseForRoute:(id)arg2;
-- (void)navigationSessionManager:(id)arg1 didUpdateDisplayETA:(id)arg2 remainingDistance:(id)arg3;
+- (void)navigationSessionManager:(id)arg1 didUpdateDisplayETA:(id)arg2 remainingDistance:(id)arg3 batteryChargeInfo:(id)arg4;
 - (void)navigationSessionManager:(id)arg1 didReceiveRouteSignalStrength:(unsigned long long)arg2;
 - (void)navigationSessionManagerWillResumeFromPause:(id)arg1;
 - (void)navigationSessionManagerWillPause:(id)arg1;
 - (void)navigationSessionManagerDidArrive:(id)arg1;
 - (void)navigationSessionManagerDidEnterPreArrivalState:(id)arg1;
-- (void)navigationSessionManager:(id)arg1 didResumeNavigatingFromWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSessionManager:(id)arg1 didResumeNavigatingFromWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)navigationSessionManager:(id)arg1 didArriveAtWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSessionManager:(id)arg1 didEnterPreArrivalStateForWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSessionManager:(id)arg1 currentStepIndex:(unsigned long long)arg2 didUpdateDistanceUntilManeuver:(double)arg3 timeUntilManeuver:(double)arg4;
@@ -83,7 +79,8 @@ __attribute__((visibility("hidden")))
 - (void)navigationSessionManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)navigationSessionManager:(id)arg1 shouldEndWithReason:(unsigned long long)arg2;
 - (void)navigationSessionManager:(id)arg1 didStopWithReason:(unsigned long long)arg2;
-- (void)navigationSessionManager:(id)arg1 willStartNavigationWithRoute:(id)arg2 navigationType:(int)arg3 request:(id)arg4 response:(id)arg5;
+- (void)navigationSessionManager:(id)arg1 willStopWithReason:(unsigned long long)arg2;
+- (void)navigationSessionManager:(id)arg1 willStartNavigationWithRoute:(id)arg2 navigationType:(long long)arg3 request:(id)arg4 response:(id)arg5 simulationType:(long long)arg6 isResumingMultipointRoute:(_Bool)arg7;
 - (unsigned long long)_serviceStateForStateType:(unsigned long long)arg1;
 - (void)stateManager:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)stateManager:(id)arg1 willChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
@@ -91,6 +88,9 @@ __attribute__((visibility("hidden")))
 - (void)pauseRealtimeUpdatesForSubscriber:(id)arg1;
 - (void)checkinForNavigationService:(CDUnknownBlockType)arg1;
 - (void)interfaceHashesWithHandler:(CDUnknownBlockType)arg1;
+- (void)setSimulationPosition:(double)arg1;
+- (void)setSimulationSpeedMultiplier:(double)arg1;
+- (void)setSimulationSpeedOverride:(double)arg1;
 - (void)recordPedestrianTracePath:(id)arg1;
 - (void)recordTraceBookmarkAtCurrentPositionWthScreenshotData:(id)arg1;
 - (void)setTracePosition:(double)arg1;
@@ -115,6 +115,10 @@ __attribute__((visibility("hidden")))
 - (void)forceReroute;
 - (void)resumeOriginalDestination;
 - (void)updateDestination:(id)arg1;
+- (void)advanceToNextLeg;
+- (void)removeWaypointAtIndex:(unsigned long long)arg1;
+- (void)insertWaypoint:(id)arg1;
+- (void)rerouteWithWaypoints:(id)arg1;
 - (void)stopNavigationWithReason:(unsigned long long)arg1;
 - (void)startNavigationWithDetails:(id)arg1 activeBlock:(CDUnknownBlockType)arg2;
 - (void)setRoutesForPreview:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;

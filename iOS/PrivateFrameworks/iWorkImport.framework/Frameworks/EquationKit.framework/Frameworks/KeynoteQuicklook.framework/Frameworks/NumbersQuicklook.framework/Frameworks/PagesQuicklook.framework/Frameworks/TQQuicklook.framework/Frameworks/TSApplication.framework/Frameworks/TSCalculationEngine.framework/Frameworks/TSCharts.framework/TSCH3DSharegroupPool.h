@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DSharegroupDelayCheckerParent-Protocol.h>
-#import <TSCharts/TSUiOSMemoryWarningFlushable-Protocol.h>
-
 @class NSCondition, NSMutableArray, NSString, TSCH3DSharegroupDelayChecker;
 
-@interface TSCH3DSharegroupPool : NSObject <TSCH3DSharegroupDelayCheckerParent, TSUiOSMemoryWarningFlushable>
+@interface TSCH3DSharegroupPool : NSObject
 {
     long long _size;
     long long _numAlive;

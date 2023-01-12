@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/LPiTunesMediaUnresolvedMetadata-Protocol.h>
-
 @class LPiTunesMediaAsset, NSString;
 
 __attribute__((visibility("hidden")))
-@interface LPiTunesMediaRadioUnresolvedMetadata : NSObject <LPiTunesMediaUnresolvedMetadata>
+@interface LPiTunesMediaRadioUnresolvedMetadata : NSObject
 {
     NSString *_storeFrontIdentifier;
     NSString *_storeIdentifier;

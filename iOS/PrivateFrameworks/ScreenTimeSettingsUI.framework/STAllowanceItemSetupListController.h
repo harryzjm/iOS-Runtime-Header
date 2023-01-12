@@ -6,12 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-#import <ScreenTimeSettingsUI/UISearchControllerDelegate-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSMutableOrderedSet, NSString, STAllowanceItemSearchResultsController;
 
 __attribute__((visibility("hidden")))
-@interface STAllowanceItemSetupListController : PSListController <UISearchControllerDelegate>
+@interface STAllowanceItemSetupListController : PSListController
 {
     _Bool _allAppsAndCategoriesSelected;
     NSMutableOrderedSet *_selectedBundleIdentifiers;

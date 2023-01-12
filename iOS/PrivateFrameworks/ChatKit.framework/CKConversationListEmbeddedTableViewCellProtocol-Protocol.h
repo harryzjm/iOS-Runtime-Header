@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKAvatarView, CKConversation, CNContact, NSObject, UIHoverGestureRecognizer;
+@class CKAvatarView, CKConversation, CNContact, NSObject, UIColor, UIHoverGestureRecognizer;
 @protocol CKConversationListCellDelegate;
 
 @protocol CKConversationListEmbeddedTableViewCellProtocol <NSObject>
@@ -14,6 +14,7 @@
 @property(nonatomic) _Bool shouldHidePreviewSummary;
 @property(nonatomic) struct UIEdgeInsets marginInsets;
 @property(nonatomic) __weak NSObject<CKConversationListCellDelegate> *delegate;
+- (UIColor *)summaryLabelTextColor;
 - (void)didHoverOverCell:(UIHoverGestureRecognizer *)arg1;
 - (void)setEditingPins:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)forceUnreadIndicatorVisibility:(_Bool)arg1 forConversation:(CKConversation *)arg2 animated:(_Bool)arg3;

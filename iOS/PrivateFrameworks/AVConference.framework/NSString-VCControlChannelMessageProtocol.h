@@ -6,11 +6,9 @@
 
 #import <Foundation/NSString.h>
 
-#import <AVConference/VCControlChannelMessageProtocol-Protocol.h>
-
 @class NSData;
 
-@interface NSString (VCControlChannelMessageProtocol) <VCControlChannelMessageProtocol>
+@interface NSString (VCControlChannelMessageProtocol)
 @property(readonly) NSString *VCCCPayloadKey;
 @property(readonly) NSData *VCCCData;
 @property(readonly) NSString *VCCCString;

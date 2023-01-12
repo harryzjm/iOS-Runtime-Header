@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HMFObject.h"
+
 @class NSHashTable;
 
 __attribute__((visibility("hidden")))
-@interface __HMFActivityManager
+@interface __HMFActivityManager : HMFObject
 {
     struct os_unfair_lock_s _lock;
     NSHashTable *_activities;

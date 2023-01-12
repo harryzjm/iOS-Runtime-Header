@@ -16,15 +16,13 @@
 - (void)rootFolderView:(SBRootFolderView *)arg1 didDismissPageManagementWithLayoutManager:(SBRootFolderViewPageManagementLayoutManager *)arg2 context:(NSMutableDictionary *)arg3;
 - (void)rootFolderView:(SBRootFolderView *)arg1 willDismissPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2 context:(NSMutableDictionary *)arg3;
 - (void)rootFolderView:(SBRootFolderView *)arg1 willPresentPageManagementWithLayoutManager:(SBRootFolderViewPageManagementLayoutManager *)arg2 animator:(id <UIViewImplicitlyAnimating>)arg3 context:(NSMutableDictionary *)arg4;
+- (void)rootFolderViewWantsSearchPresented:(SBRootFolderView *)arg1;
 - (void)rootFolderViewWantsWidgetEditingViewControllerPresented:(SBRootFolderView *)arg1;
 - (void)rootFolderViewWantsToEndEditing:(SBRootFolderView *)arg1;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didEndOverscrollOnLastPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didOverscrollOnLastPageByAmount:(double)arg2;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
-- (void)rootFolderView:(SBRootFolderView *)arg1 didEndSidebarVisibilityTransitionWithEffectiveProgress:(double)arg2;
-- (void)rootFolderView:(SBRootFolderView *)arg1 didChangeEffectiveSidebarVisibilityProgress:(double)arg2;
-- (void)rootFolderView:(SBRootFolderView *)arg1 didChangeSidebarVisibilityProgress:(double)arg2;
 - (UIView *)backgroundViewForEditingDoneButtonForRootFolderView:(SBRootFolderView *)arg1;
 - (UIView *)backgroundViewForDockForRootFolderView:(SBRootFolderView *)arg1;
 - (double)preferredExternalDockVerticalMarginForRootFolderView:(SBRootFolderView *)arg1;

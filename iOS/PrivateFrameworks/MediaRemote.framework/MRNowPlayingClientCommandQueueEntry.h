@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary;
+@class MRPlayerPath, NSDate, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MRNowPlayingClientCommandQueueEntry : NSObject
 {
     unsigned int _command;
     NSMutableDictionary *_options;
+    MRPlayerPath *_playerPath;
     NSDate *_dateCreated;
     CDUnknownBlockType _commandCompletion;
 }
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType commandCompletion; // @synthesize commandCompletion=_commandCompletion;
 @property(retain, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property(retain, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property(retain, nonatomic) NSMutableDictionary *options; // @synthesize options=_options;
 @property(nonatomic) unsigned int command; // @synthesize command=_command;
 - (id)description;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSIDQueryControllerDelegate-Protocol.h>
-
 @class CUTWeakReference, NSArray, NSDate, NSMutableArray, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
-@interface _IDSBatchIDQueryController : NSObject <IDSIDQueryControllerDelegate>
+@interface _IDSBatchIDQueryController : NSObject
 {
     NSString *_serviceName;
     CUTWeakReference *_delegate;
@@ -19,6 +17,7 @@
     NSString *_listenerID;
     NSArray *_destinations;
     NSMutableArray *_destinationsToQuery;
+    struct os_unfair_lock_s _destinationsToQuerylock;
     NSTimer *_nextQueryTimer;
     NSDate *_timeOfDeath;
     id _rateLimiter;

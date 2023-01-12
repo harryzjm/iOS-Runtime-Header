@@ -14,6 +14,10 @@
 - (void)start;
 - (void)resetAccountWithType:(long long)arg1;
 - (void)updateRequestWithIdentifier:(NSString *)arg1 action:(long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)getCachedRequestsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)checkDownloadQueueWithContentType:(long long)arg1 completion:(void (^)(NSError *))arg2;
+- (void)getRequestWithIdentifier:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)presentApprovalSheetWithRequestIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)localApproveRequestWithItemIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)addRequestWithURL:(NSURL *)arg1 account:(ACAccount *)arg2 completion:(void (^)(NSError *))arg3;
 @end

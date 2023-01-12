@@ -21,6 +21,7 @@
 - (CDUnknownBlockType)_payloadUpdateBlockForIdentifier:(id)arg1;
 - (id)_objectForIdentifier:(id)arg1;
 - (id)_payloadForIdentifier:(id)arg1;
+- (void)_forceSave;
 - (_Bool)_finishUserInfoUpdate;
 - (unsigned long long)_beginUserInfoUpdate:(id)arg1;
 @property(getter=_isUniversalLink) _Bool _universalLink;
@@ -34,7 +35,6 @@
 @property(readonly, copy) NSUUID *_originalUniqueIdentifier;
 - (id)_createUserActivityDataWithSaving:(_Bool)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)_createUserActivityStringsWithSaving:(_Bool)arg1 options:(id)arg2 string:(id *)arg3 optionalString:(id *)arg4 data:(id *)arg5 error:(id *)arg6;
-- (void)_forceSave;
 - (_Bool)doSaveUserActivityWithTimeout:(double)arg1 isCurrent:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_supportsSynchronizeActivityWithTimeout;
 @end

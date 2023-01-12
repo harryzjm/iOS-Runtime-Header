@@ -6,11 +6,9 @@
 
 #import <SAObjects/AceObject.h>
 
-#import <SiriCore/SiriCoreThunking-Protocol.h>
-
 @class NSString;
 
-@interface AceObject (SiriCoreAceThunk) <SiriCoreThunking>
+@interface AceObject (SiriCoreAceThunk)
 - (void)siriCore_invokeThunk;
 
 // Remaining properties

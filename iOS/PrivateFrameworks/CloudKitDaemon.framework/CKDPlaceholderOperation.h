@@ -24,7 +24,6 @@
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 - (id)statusReportWithIndent:(unsigned long long)arg1;
 - (id)_startDateString;
-- (id)_runDurationString;
 - (id)description;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (id)ckShortDescription;

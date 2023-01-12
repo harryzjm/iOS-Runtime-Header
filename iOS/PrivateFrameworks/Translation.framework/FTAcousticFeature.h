@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTAcousticFeature : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTAcousticFeature : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -23,6 +20,9 @@ __attribute__((visibility("hidden")))
 - (id)flatbuffData;
 - (Offset_b1e182a8)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) float frame_duration;
+- (void)acoustic_feature_per_frame_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)acoustic_feature_per_frame_count;
+- (id)acoustic_feature_per_frame_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *acoustic_feature_per_frame;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct AcousticFeature *)arg2 verify:(_Bool)arg3;

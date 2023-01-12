@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GKFocusableButton.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12GameCenterUI13RoundedButton
+@interface _TtC12GameCenterUI13RoundedButton : GKFocusableButton
 {
     MISSING_TYPE *backing;
     MISSING_TYPE *fontUseCase;

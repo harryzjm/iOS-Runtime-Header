@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class DCNoCopyDictionary, VKImageAnalyzer;
+@class NSCache, VKCImageAnalyzer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface DCImageAnalyzerManager : NSObject
 {
-    VKImageAnalyzer *_imageAnalyzer;
-    DCNoCopyDictionary *_cachedAnalyses;
+    VKCImageAnalyzer *_imageAnalyzer;
+    NSCache *_cachedAnalyses;
     NSObject<OS_dispatch_queue> *_operationQueue;
 }
 

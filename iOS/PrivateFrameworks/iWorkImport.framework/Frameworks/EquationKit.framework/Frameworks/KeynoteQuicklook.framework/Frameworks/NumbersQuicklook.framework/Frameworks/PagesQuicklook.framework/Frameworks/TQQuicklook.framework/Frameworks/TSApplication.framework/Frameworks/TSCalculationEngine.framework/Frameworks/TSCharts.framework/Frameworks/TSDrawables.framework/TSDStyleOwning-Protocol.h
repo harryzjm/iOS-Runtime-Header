@@ -6,10 +6,11 @@
 
 #import <TSDrawables/NSObject-Protocol.h>
 
-@class TSSStyle;
+@class TSSPropertyMap, TSSStyle;
 
 @protocol TSDStyleOwning <NSObject>
 @property(readonly, nonatomic) Class styleClass;
 @property(retain, nonatomic) TSSStyle *style;
+- (TSSPropertyMap *)pastedPropertyMapForStyle:(TSSStyle *)arg1 tailLineEndInfo:(int)arg2;
 @end
 

@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreUtils/CLLocationManagerDelegate-Protocol.h>
-#import <CoreUtils/CXCallObserverDelegate-Protocol.h>
-#import <CoreUtils/CoreTelephonyClientDelegate-Protocol.h>
-#import <CoreUtils/FMFSessionDelegate-Protocol.h>
-
-@class CLLocationManager, CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, CoreTelephonyClient, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, RTRoutineManager, TUCallCenter;
+@class CLLocationManager, CMDeviceOrientationManager, CMMotionActivityManager, CMMotionManager, CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, CoreTelephonyClient, FBSDisplayLayoutMonitor, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableSet, NSString, RTRoutineManager, TUCallCenter;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface CUSystemMonitorImp : NSObject <FMFSessionDelegate, CXCallObserverDelegate, CLLocationManagerDelegate, CoreTelephonyClientDelegate>
+@interface CUSystemMonitorImp : NSObject
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSMutableSet *_monitors;
@@ -47,6 +42,11 @@ __attribute__((visibility("hidden")))
     NSString *_meDeviceName;
     _Bool _meDeviceIsMe;
     _Bool _meDeviceValid;
+    CMMotionActivityManager *_motionActivityManager;
+    unsigned int _motionFlags;
+    CMMotionManager *_motionManager;
+    int _motionOrientation;
+    CMDeviceOrientationManager *_orientationManager;
     CUNetInterfaceMonitor *_netInterfaceMonitor;
     unsigned int _netFlags;
     CDUnion_fab80606 _primaryIPv4Addr;
@@ -84,6 +84,10 @@ __attribute__((visibility("hidden")))
     NSArray *_scNotificationKeys;
     NSArray *_scNotificationPatterns;
     NSString *_systemName;
+    int _systemUIBluetoothNotifyToken;
+    unsigned int _systemUIFlags;
+    NSDictionary *_systemUIIdentifierMap;
+    FBSDisplayLayoutMonitor *_systemUIMonitor;
     CUWiFiManager *_wifiManager;
     unsigned int _wifiFlags;
     int _wifiState;
@@ -95,6 +99,9 @@ __attribute__((visibility("hidden")))
 - (void)_wifiMonitorStart;
 - (void)_firstUnlockMonitorStop;
 - (void)_firstUnlockMonitorStart;
+- (void)_systemUIMonitorChangedFlags:(unsigned int)arg1;
+- (void)_systemUIMonitorStop;
+- (void)_systemUIMonitorStart;
 - (void)_systemConfigSystemNameChanged:(_Bool)arg1;
 - (void)_systemConfigNetInterfaceChanged:(id)arg1 initial:(_Bool)arg2;
 - (void)_systemConfigChanged:(id)arg1 initial:(_Bool)arg2;
@@ -128,6 +135,10 @@ __attribute__((visibility("hidden")))
 - (void)_powerUnlimitedMonitorStart;
 - (void)_netInterfaceMonitorStop;
 - (void)_netInterfaceMonitorStart;
+- (void)_motionMonitorOrientationChanged:(id)arg1;
+- (void)_motionMonitorHandleActivity:(id)arg1;
+- (void)_motionMonitorStop;
+- (void)_motionMonitorStart;
 - (void)_meDeviceCheckCompletion:(id)arg1 error:(id)arg2 firstCheck:(_Bool)arg3;
 - (void)_meDeviceCheckStart:(_Bool)arg1;
 - (void)_meDeviceMonitorStop;

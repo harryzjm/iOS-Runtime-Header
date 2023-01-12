@@ -6,11 +6,9 @@
 
 #import <Foundation/NSData.h>
 
-#import <Intents/INJSONSerializable-Protocol.h>
-
 @class NSString;
 
-@interface NSData (Readable) <INJSONSerializable>
+@interface NSData (Readable)
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)_in_writeDataToPathForImage:(id)arg1 storeType:(unsigned long long)arg2 error:(id *)arg3;

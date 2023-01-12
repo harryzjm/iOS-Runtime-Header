@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIGiftConfigurationObserver-Protocol.h>
-#import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
-#import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
-
 @class NSArray, NSString, SKUIGiftThemeCollectionView, SKUIGiftThemePickerFlowLayout, UIImage, UIPageControl, UITapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftThemePickerViewController <SKUIGiftConfigurationObserver, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SKUIGiftThemePickerViewController
 {
     _Bool _animatingScrollView;
     SKUIGiftThemePickerFlowLayout *_flowLayout;

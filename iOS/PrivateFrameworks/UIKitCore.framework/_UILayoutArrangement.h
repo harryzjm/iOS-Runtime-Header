@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UILAPropertySource-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableSet, NSSet, NSString, UIView, _UILAConfigurationHistory, _UILayoutSpacer;
 @protocol _UILAPropertySource;
 
 __attribute__((visibility("hidden")))
-@interface _UILayoutArrangement : NSObject <_UILAPropertySource>
+@interface _UILayoutArrangement : NSObject
 {
     NSMutableSet *_incomingItems;
     NSMutableSet *_outgoingItems;

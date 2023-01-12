@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PromotedContent/APMetricPrimitiveCreating-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC15PromotedContent16PrimitiveCreator : NSObject <APMetricPrimitiveCreating>
+@interface _TtC15PromotedContent16PrimitiveCreator : NSObject
 {
     MISSING_TYPE *promotedContentIdentifier;
     MISSING_TYPE *contextIdentifier;

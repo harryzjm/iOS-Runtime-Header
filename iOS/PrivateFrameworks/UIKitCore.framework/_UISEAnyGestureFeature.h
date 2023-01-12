@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISEGestureFeatureDelegate-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISEAnyGestureFeature <_UISEGestureFeatureDelegate>
+@interface _UISEAnyGestureFeature
 {
     NSArray *_subfeatures;
 }

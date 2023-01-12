@@ -11,11 +11,11 @@
 #import <PhotoLibraryServices/PLPhotoAnalysisJobServiceProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLPhotoAnalysisPresentationServiceProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLPhotoAnalysisVisionServiceFaceProcessingProtocol-Protocol.h>
-#import <PhotoLibraryServices/PLPhotoAnalysisVisionServiceTaxonomyProtocol-Protocol.h>
+#import <PhotoLibraryServices/PLPhotoAnalysisWallpaperServiceProtocol-Protocol.h>
 
 @class NSArray, NSDictionary, NSString, NSURL;
 
-@protocol PLPhotoAnalysisServiceProtocol <PLPhotoAnalysisJobServiceProtocol, PLPhotoAnalysisGraphServiceProtocol, PLPhotoAnalysisGraphServiceMusicProtocol, PLPhotoAnalysisGraphServiceClientProtocol, PLPhotoAnalysisGraphServiceOnDiskProtocol, PLPhotoAnalysisVisionServiceTaxonomyProtocol, PLPhotoAnalysisVisionServiceFaceProcessingProtocol, PLPhotoAnalysisPresentationServiceProtocol>
+@protocol PLPhotoAnalysisServiceProtocol <PLPhotoAnalysisJobServiceProtocol, PLPhotoAnalysisGraphServiceProtocol, PLPhotoAnalysisGraphServiceMusicProtocol, PLPhotoAnalysisGraphServiceClientProtocol, PLPhotoAnalysisGraphServiceOnDiskProtocol, PLPhotoAnalysisVisionServiceFaceProcessingProtocol, PLPhotoAnalysisPresentationServiceProtocol, PLPhotoAnalysisWallpaperServiceProtocol>
 - (void)writeQALog:(NSString *)arg1;
 - (void)notifyLibraryAvailableAtURL:(NSURL *)arg1;
 - (void)cancelOperationsWithIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *))arg3;

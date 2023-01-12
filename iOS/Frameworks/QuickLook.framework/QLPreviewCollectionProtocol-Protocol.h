@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString, QLAppearance, QLKeyCommand, QLTransitionContext, UITraitCollection;
+@class FPSandboxingURLWrapper, NSDictionary, NSString, QLAppearance, QLKeyCommand, QLTransitionContext, UITraitCollection;
 @protocol QLPreviewControllerStateProtocol, QLPreviewItemProvider, QLTransitionControllerProtocol;
 
 @protocol QLPreviewCollectionProtocol
@@ -12,6 +12,7 @@
 - (void)setIsContentManaged:(_Bool)arg1;
 - (void)actionSheetDidDismiss;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(void (^)(void))arg1;
+- (void)setPreviewItemDisplayState:(id)arg1 onItemAtIndex:(unsigned long long)arg2;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)invalidateService;
 - (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(void (^)(void))arg1;
@@ -19,6 +20,7 @@
 - (void)setLoadingString:(NSString *)arg1;
 - (void)tearDownTransition:(_Bool)arg1;
 - (void)startTransitionWithSourceViewProvider:(QLTransitionContext *)arg1 transitionController:(id <QLTransitionControllerProtocol>)arg2 presenting:(_Bool)arg3 useInteractiveTransition:(_Bool)arg4 completionHandler:(void (^)(void))arg5;
+- (void)previewItemDisplayState:(id)arg1 wasAppliedToItemAtIndex:(unsigned long long)arg2;
 - (void)getCurrentPreviewActivityUserInfoWithCompletionHandler:(void (^)(NSDictionary *))arg1;
 - (void)notifyStateRestorationUserInfo:(NSDictionary *)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
@@ -33,5 +35,11 @@
 - (void)hostApplicationDidEnterBackground:(_Bool)arg1;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(_Bool)arg2;
 - (void)configureWithNumberOfItems:(long long)arg1 currentPreviewItemIndex:(unsigned long long)arg2 itemProvider:(id <QLPreviewItemProvider>)arg3 stateManager:(id <QLPreviewControllerStateProtocol>)arg4;
+
+@optional
+- (void)saveIntoPhotoLibraryMediaWithURLWrapper:(FPSandboxingURLWrapper *)arg1 previewItemType:(unsigned long long)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+- (void)documentMenuActionWillBegin;
+- (void)setScreenEdgePanWidth:(double)arg1;
+- (void)hostSceneWillDeactivate;
 @end
 

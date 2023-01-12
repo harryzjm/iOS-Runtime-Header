@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CallHistory/CHCallInteractionDataSource-Protocol.h>
-
 @class CHNotifyObserver, NSString;
 @protocol CHCallInteractionDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CHCallInteractionInProcessDataSource : NSObject <CHCallInteractionDataSource>
+@interface CHCallInteractionInProcessDataSource : NSObject
 {
     struct os_unfair_lock_s _accessorLock;
     id <CHCallInteractionDataSourceDelegate> _delegate;

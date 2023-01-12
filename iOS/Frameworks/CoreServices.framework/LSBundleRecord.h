@@ -34,6 +34,9 @@
 - (id)description;
 - (void)_detachFromContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const void *)arg4;
 - (id)_initWithContext:(struct LSContext *)arg1 persistentIdentifierData:(const struct LSPersistentIdentifierData *)arg2 length:(unsigned long long)arg3;
+- (void)_LSRecord_resolve__localizedIdentityUsageDescription;
+@property(readonly) _LSLocalizedStringRecord *_localizedIdentityUsageDescription;
+- (id)_localizedIdentityUsageDescriptionWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
 - (void)_LSRecord_resolve__localizedMicrophoneUsageDescription;
 @property(readonly) _LSLocalizedStringRecord *_localizedMicrophoneUsageDescription;
 - (id)_localizedMicrophoneUsageDescriptionWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
@@ -68,6 +71,9 @@
 - (struct LSVersionNumber)_bundleVersionWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
 @property(readonly, nonatomic) const CDStruct_4c969caf *_auditToken;
 - (id)_initWithNode:(id)arg1 bundleIdentifier:(id)arg2 context:(struct LSContext *)arg3 tableID:(unsigned int)arg4 unitID:(unsigned int)arg5 bundleBaseData:(const struct LSBundleBaseData *)arg6 error:(id *)arg7;
+- (void)_LSRecord_resolve_isLinkEnabled;
+@property(readonly) _Bool isLinkEnabled;
+- (_Bool)isLinkEnabledWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 @property(readonly) NSSet *serviceRecords;
 - (void)_LSRecord_resolve_importedTypeRecords;
 @property(readonly) NSSet *importedTypeRecords;
@@ -111,6 +117,7 @@
 - (void)_LSRecord_resolve_entitlements;
 @property(readonly) LSPropertyList *entitlements;
 - (id)entitlementsWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;
+- (_Bool)getDataContainerURL:(id *)arg1 error:(id *)arg2;
 @property(readonly) NSURL *dataContainerURL;
 - (id)localizedUsageDescriptionForFeature:(unsigned long long)arg1 preferredLocalizations:(id)arg2;
 - (id)localizedUsageDescriptionForFeature:(unsigned long long)arg1;
@@ -118,6 +125,7 @@
 - (id)localizedNameWithPreferredLocalizations:(id)arg1;
 @property(readonly) NSString *localizedShortName;
 @property(readonly) NSString *localizedName;
+@property(readonly) unsigned long long compatibilityState;
 - (void)_LSRecord_resolve_codeSignatureVersion;
 @property(readonly) unsigned int codeSignatureVersion;
 - (unsigned int)codeSignatureVersionWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleBaseData *)arg4;

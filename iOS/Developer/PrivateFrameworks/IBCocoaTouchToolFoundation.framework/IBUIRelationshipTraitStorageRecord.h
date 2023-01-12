@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class IBUITraitCollection, NSMutableOrderedSet, NSOrderedSet, NSString;
 
-@interface IBUIRelationshipTraitStorageRecord : NSObject <IBBinaryArchiving>
+@interface IBUIRelationshipTraitStorageRecord : NSObject
 {
     NSMutableOrderedSet *_addedObjectIDs;
     NSMutableOrderedSet *_removedObjectIDs;

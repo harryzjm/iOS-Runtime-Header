@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCCCMessageAcknowledgment : PBCodable <NSCopying>
+@interface VCCCMessageAcknowledgment : PBCodable
 {
     unsigned long long _transactionID;
     unsigned int _status;

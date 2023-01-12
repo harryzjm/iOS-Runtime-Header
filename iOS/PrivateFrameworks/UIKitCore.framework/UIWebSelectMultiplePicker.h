@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPickerViewDataSource-Protocol.h>
-#import <UIKitCore/UIPickerViewDelegate-Protocol.h>
-#import <UIKitCore/UIWebFormControl-Protocol.h>
+#import "UIPickerView.h"
 
 @class DOMHTMLSelectElement, NSArray, NSString;
 @protocol UIWebSelectedItemPrivate;
 
 __attribute__((visibility("hidden")))
-@interface UIWebSelectMultiplePicker <UIWebFormControl, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface UIWebSelectMultiplePicker : UIPickerView
 {
     DOMHTMLSelectElement *_selectionNode;
     NSArray *_cachedItems;

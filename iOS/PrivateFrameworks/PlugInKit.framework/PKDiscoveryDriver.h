@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PlugInKit/LSApplicationWorkspaceObserverProtocol-Protocol.h>
-
-@class NSDictionary, NSSet, NSString, PKDiscoveryLSWatcher;
+@class NSDictionary, NSSet, NSString, PKDiscoveryLSWatcher, PKHost;
 @protocol OS_dispatch_queue, OS_os_activity;
 
-@interface PKDiscoveryDriver : NSObject <LSApplicationWorkspaceObserverProtocol>
+@interface PKDiscoveryDriver : NSObject
 {
     int _annotationNotifyToken;
     NSDictionary *_attributes;
@@ -23,9 +21,11 @@
     PKDiscoveryLSWatcher *_lsWatcher;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_sync;
+    PKHost *_host;
 }
 
 - (void).cxx_destruct;
+@property(retain) PKHost *host; // @synthesize host=_host;
 @property(retain) NSObject<OS_dispatch_queue> *sync; // @synthesize sync=_sync;
 @property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain) PKDiscoveryLSWatcher *lsWatcher; // @synthesize lsWatcher=_lsWatcher;
@@ -42,7 +42,7 @@
 - (void)_performWithPreviousResults:(id)arg1 forceNotify:(_Bool)arg2 uninstalledProxies:(id)arg3;
 - (void)performWithPreviousResults:(id)arg1 forceNotify:(_Bool)arg2;
 - (void)dealloc;
-- (id)initWithAttributes:(id)arg1 flags:(unsigned long long)arg2 report:(CDUnknownBlockType)arg3;
+- (id)initWithAttributes:(id)arg1 flags:(unsigned long long)arg2 host:(id)arg3 report:(CDUnknownBlockType)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

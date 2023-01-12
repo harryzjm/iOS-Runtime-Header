@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEONavdProxyObserver-Protocol.h>
+#import "GEONavdServerProxy.h"
 
 @class NSMutableArray, NSMutableDictionary, NSObject, NSXPCConnection;
 @protocol GEONavdXPCInterface, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface GEONavdRemoteProxy <GEONavdProxyObserver>
+@interface GEONavdRemoteProxy : GEONavdServerProxy
 {
     NSXPCConnection *_connection;
     NSMutableArray *_observers;

@@ -6,24 +6,34 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class FPItem, FPSandboxingURLWrapper, INShortcut, NSArray, NSData, NSDictionary, NSString, VCSleepWorkflow, WFContextualActionContext, WFDatabaseObjectDescriptor, WFOnScreenContentServiceOptions, WFRemoteImageDrawingContext, WFResultQuery, WFSpringBoardWebClipMetadata, WFWorkflowReference, WFWorkflowRunRequest, WFWorkflowRunningContext;
+@class FPItem, FPSandboxingURLWrapper, INShortcut, LNAction, LNActionMetadata, NSArray, NSData, NSDictionary, NSString, VCSleepWorkflow, WFContextualActionContext, WFDatabaseObjectDescriptor, WFOnScreenContentServiceOptions, WFRemoteImageDrawingContext, WFResultQuery, WFSpringBoardWebClipMetadata, WFWorkflowReference, WFWorkflowRunDescriptor, WFWorkflowRunRequest, WFWorkflowRunningContext;
 
 @protocol VCVoiceShortcutManagerXPCInterface <NSObject>
+- (void)unarchiveActionFromData:(NSData *)arg1 withActionMetadata:(LNActionMetadata *)arg2 completion:(void (^)(LNAction *, NSError *))arg3;
+- (void)archiveAction:(LNAction *)arg1 withActionMetadata:(LNActionMetadata *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
+- (void)setSpotlightAutoShortcutsEnablement:(_Bool)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)getSpotlightAutoShortcutsEnablementForBundleIdentifier:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)setSiriAutoShortcutsEnablement:(_Bool)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)getSiriAutoShortcutsEnablementForBundleIdentifier:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)resetAutomationConfirmationStatusWithCompletion:(void (^)(NSError *))arg1;
+- (void)userHasAutomationsWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)getStingWorkflowWithIdentifier:(NSString *)arg1 completion:(void (^)(WFStingWorkflow *, NSError *))arg2;
+- (void)getStingWorkflowsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)getRunningWorkflowNamesAndProgressCompletedWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)setPerWorkflowStateData:(NSData *)arg1 forSmartPromptWithActionUUID:(NSString *)arg2 reference:(WFWorkflowReference *)arg3 completion:(void (^)(NSError *))arg4;
-- (void)setPerWorkflowStateData:(NSData *)arg1 forAccessResourceWithIdentifier:(NSString *)arg2 reference:(WFWorkflowReference *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)fetchURLForFPItem:(FPItem *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (void)createBookmarkWithBookmarkableString:(NSString *)arg1 path:(NSString *)arg2 workflowID:(NSString *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
 - (void)createBookmarkWithURL:(FPSandboxingURLWrapper *)arg1 workflowID:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (void)resolveCrossDeviceItemID:(NSString *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (void)resolveBookmarkData:(NSData *)arg1 completion:(void (^)(FPSandboxingURLWrapper *, NSData *, NSError *))arg2;
 - (void)resolveFilePath:(NSString *)arg1 workflowID:(NSString *)arg2 completion:(void (^)(FPSandboxingURLWrapper *, NSError *))arg3;
+- (void)computeFinderResizedSizesForImages:(NSArray *)arg1 inSizes:(NSArray *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)filterContextualActions:(NSArray *)arg1 forContext:(WFContextualActionContext *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getContextualActionsForContext:(WFContextualActionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)showSingleStepCompletionForWebClip:(WFSpringBoardWebClipMetadata *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)getFirstUnsortedWorkflowWithCompletion:(void (^)(WFWorkflowDescriptor *, NSNumber *, NSError *))arg1;
+- (void)drawGlyphs:(NSArray *)arg1 withBackgroundColorValues:(NSArray *)arg2 padding:(double)arg3 rounded:(_Bool)arg4 intoContext:(WFRemoteImageDrawingContext *)arg5 completion:(void (^)(void))arg6;
 - (void)drawGlyphs:(NSArray *)arg1 withBackgroundColorValues:(NSArray *)arg2 padding:(double)arg3 intoContext:(WFRemoteImageDrawingContext *)arg4 completion:(void (^)(void))arg5;
-- (void)getAccessibilityWorkflowWithIdentifier:(NSString *)arg1 completion:(void (^)(WFAccessibilityWorkflow *, NSError *))arg2;
-- (void)getAccessibilityWorkflowsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)deleteSleepWorkflowWithIdentifier:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)getSleepActionSuggestionsForAllAppsWithOptions:(unsigned long long)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getSleepActionSuggestionsForAppWithBundleIdentifier:(NSString *)arg1 options:(unsigned long long)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
@@ -37,13 +47,12 @@
 - (void)sendAceCommandDictionary:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)createShortcutWithRecordData:(NSData *)arg1 name:(NSString *)arg2 shortcutSource:(NSString *)arg3 completion:(void (^)(VCVoiceShortcut *, NSError *))arg4;
 - (void)obliterateShortcuts:(void (^)(NSError *))arg1;
-- (void)hasRunEventsInTheLast5DaysWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)getOnScreenContentWithOptions:(WFOnScreenContentServiceOptions *)arg1 completionHandler:(void (^)(WFOnScreenContentNode *, NSError *))arg2;
 - (void)getOnScreenContentWithOptions:(WFOnScreenContentServiceOptions *)arg1 completion:(void (^)(WFOnScreenContent *, NSError *))arg2;
 - (void)stopRunningWorkflowWithRunningContext:(WFWorkflowRunningContext *)arg1;
 - (void)resumeWorkflowFromContext:(WFWorkflowRunningContext *)arg1 withRequest:(WFWorkflowRunRequest *)arg2 completion:(void (^)(WFWorkflowRunResult *))arg3;
 - (void)resumeWorkflowFromContext:(WFWorkflowRunningContext *)arg1 presentationMode:(unsigned long long)arg2 completion:(void (^)(WFWorkflowRunResult *))arg3;
-- (void)runWorkflowWithRequest:(WFWorkflowRunRequest *)arg1 context:(WFWorkflowRunningContext *)arg2 completion:(void (^)(WFWorkflowRunResult *))arg3;
+- (void)runWorkflowWithDescriptor:(WFWorkflowRunDescriptor *)arg1 request:(WFWorkflowRunRequest *)arg2 context:(WFWorkflowRunningContext *)arg3 completion:(void (^)(WFWorkflowRunResult *))arg4;
 - (void)deleteTriggerWithIdentifier:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)checkTriggerStateWithKeyPath:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)checkTriggerStateWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;

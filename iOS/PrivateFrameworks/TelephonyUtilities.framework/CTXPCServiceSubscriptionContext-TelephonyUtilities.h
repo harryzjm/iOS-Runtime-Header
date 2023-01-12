@@ -6,11 +6,9 @@
 
 #import <CoreTelephony/CTXPCServiceSubscriptionContext.h>
 
-#import <TelephonyUtilities/TUTelephonySubscription-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface CTXPCServiceSubscriptionContext (TelephonyUtilities) <TUTelephonySubscription>
+@interface CTXPCServiceSubscriptionContext (TelephonyUtilities)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

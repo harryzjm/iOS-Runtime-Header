@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -36,23 +34,6 @@ struct CGSize {
     double height;
 };
 
-struct FigLocalQueueMessage {
-    int _field1;
-    union {
-        struct {
-            struct opaqueCMSampleBuffer *_field1;
-        } _field1;
-        struct {
-            long long _field1;
-            struct opaqueCMFormatDescription *_field2;
-        } _field2;
-    } _field2;
-};
-
-struct opaqueCMFormatDescription;
-
-struct opaqueCMSampleBuffer;
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -65,14 +46,6 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
-
-typedef struct {
-    MISSING_TYPE *columns[3];
-} CDStruct_8e0628e6;
-
-typedef struct {
-    MISSING_TYPE *columns[4];
-} CDStruct_14d5dc5e;
 
 typedef struct {
     float redGain;
@@ -96,9 +69,4 @@ typedef struct {
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
-
-typedef struct {
-    CDStruct_1b6d18a9 start;
-    CDStruct_1b6d18a9 duration;
-} CDStruct_e83c9415;
 

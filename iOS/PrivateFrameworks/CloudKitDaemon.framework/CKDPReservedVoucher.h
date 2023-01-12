@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface CKDPReservedVoucher : PBCodable <NSCopying>
+@interface CKDPReservedVoucher : PBCodable
 {
     NSData *_content;
 }

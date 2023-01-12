@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (HealthKit)
++ (id)hk_tapToRadarURLForBundleID:(id)arg1 component:(unsigned long long)arg2 title:(id)arg3 description:(id)arg4 classification:(long long)arg5 reproducibility:(long long)arg6 keywords:(id)arg7 autoDiagnostics:(long long)arg8 attachments:(id)arg9 collaborationContactHandles:(id)arg10 diagnosticExtensionOptions:(unsigned long long)arg11;
 + (id)hk_tapToRadarURLForBundleID:(id)arg1 component:(unsigned long long)arg2 title:(id)arg3 description:(id)arg4 classification:(long long)arg5 reproducibility:(long long)arg6 keywords:(id)arg7 autoDiagnostics:(long long)arg8 attachments:(id)arg9 collaborationContactHandles:(id)arg10;
 + (id)hk_tapToRadarURLForBundleID:(id)arg1 component:(unsigned long long)arg2 title:(id)arg3 description:(id)arg4 classification:(long long)arg5 reproducibility:(long long)arg6 keywords:(id)arg7 autoDiagnostics:(long long)arg8 attachments:(id)arg9;
 + (id)hk_tapToHealthRadarURLForComponent:(unsigned long long)arg1 title:(id)arg2 description:(id)arg3 classification:(long long)arg4 reproducibility:(long long)arg5 keywords:(id)arg6 autoDiagnostics:(long long)arg7 attachments:(id)arg8 collaborationContactHandles:(id)arg9;
@@ -19,6 +20,8 @@
 + (id)_hk_urlForElectrocardiogramType;
 + (id)_hk_urlForHealthRecordsProviderSearch;
 + (id)_hk_urlForViewHealthRecords;
+- (id)hk_fileSizeWithError:(id *)arg1;
+- (_Bool)hk_isRewrittenEUDigitalCOVIDCertificateQRCodeURL;
 - (_Bool)hk_isRewrittenHealthCardQRCodeURL;
 - (_Bool)hk_isValidSafariViewControllerURL;
 - (_Bool)hk_hasBaseURL:(id)arg1 error:(id *)arg2;

@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
-#import <SleepDaemon/HDSPSleepLockScreenAssertionManager-Protocol.h>
-#import <SleepDaemon/HKSPSleepLockScreenServer-Protocol.h>
-#import <SleepDaemon/NSXPCListenerDelegate-Protocol.h>
-
 @class HDSPEnvironment, NSString, NSXPCConnection, NSXPCListener, SBSLockScreenRemoteContentAssertion;
 @protocol HDSPSleepLockScreenAssertionManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface HDSPSleepLockScreenAssertionManager : NSObject <HKSPSleepLockScreenServer, NSXPCListenerDelegate, HDSPEnvironmentAware, HDSPSleepLockScreenAssertionManager>
+@interface HDSPSleepLockScreenAssertionManager : NSObject
 {
     NSXPCListener *_listener;
     NSXPCConnection *_connection;

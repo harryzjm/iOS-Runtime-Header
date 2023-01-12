@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/VTKDrawItem-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VTKExclusionAreaDrawItem : NSObject <VTKDrawItem>
+@interface VTKExclusionAreaDrawItem : NSObject
 {
     struct CGRect _frame;
 }

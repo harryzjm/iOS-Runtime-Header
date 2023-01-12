@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPAnonymousZoneInfo, CKDPRecordZoneIdentifier, CKDPZoneCapabilities;
 
-@interface CKDPZoneRetrieveChangesResponseChangedZone : PBCodable <NSCopying>
+@interface CKDPZoneRetrieveChangesResponseChangedZone : PBCodable
 {
     CKDPAnonymousZoneInfo *_anonymousZoneInfo;
     CKDPZoneCapabilities *_capabilities;

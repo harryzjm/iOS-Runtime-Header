@@ -7,11 +7,9 @@
 #import <Cards/NSObject-Protocol.h>
 #import <Cards/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, SFCard, SFColor, SFCommand, SFUserReportRequest;
+@class NSArray, NSMutableArray, NSString, SFCard, SFColor, SFCommand, SFUserReportRequest;
 
 @protocol SFCardSection <NSSecureCoding, NSObject>
-@property(readonly) NSArray *cardsFromButtons;
-@property(readonly) NSArray *cardsFromEmbeddedSections;
 @property(readonly) NSArray *embeddedCards;
 @property(retain, nonatomic) NSString *previewButtonItemsTitle;
 @property(retain, nonatomic) NSString *cardSectionDetail;
@@ -35,5 +33,7 @@
 @property(copy, nonatomic) NSString *punchoutPickerDismissText;
 @property(copy, nonatomic) NSString *punchoutPickerTitle;
 @property(copy, nonatomic) NSArray *punchoutOptions;
+- (void)addCardsFromEmbeddedSectionsTo:(NSMutableArray *)arg1;
+- (void)addCardsFromButtonsTo:(NSMutableArray *)arg1;
 @end
 

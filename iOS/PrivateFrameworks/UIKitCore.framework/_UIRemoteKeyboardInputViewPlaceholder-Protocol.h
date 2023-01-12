@@ -10,7 +10,7 @@
 @property(readonly, nonatomic) _Bool isLocalMinimumHeightPlaceholder;
 @property(retain, nonatomic) UIView *associatedView;
 @property(retain, nonatomic) UIView *fallbackView;
-@property(readonly, retain) UIView *placeheldView;
+@property(readonly) UIView *placeheldView;
 @property(nonatomic) struct CGSize fixedSize;
 - (void)_isPlaceholderViewSelector;
 - (_Bool)refreshPlaceholder;

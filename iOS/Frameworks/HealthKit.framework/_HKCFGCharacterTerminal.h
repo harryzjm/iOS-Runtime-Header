@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_HKCFGTerminal.h"
+
 @class NSCharacterSet;
 
 __attribute__((visibility("hidden")))
-@interface _HKCFGCharacterTerminal
+@interface _HKCFGCharacterTerminal : _HKCFGTerminal
 {
     NSCharacterSet *_characterSet;
 }

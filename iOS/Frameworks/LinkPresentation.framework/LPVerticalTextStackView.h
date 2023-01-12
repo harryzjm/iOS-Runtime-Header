@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPContentInsettable-Protocol.h>
-
 @class LPVerticalTextStackViewStyle, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface LPVerticalTextStackView <LPContentInsettable>
+@interface LPVerticalTextStackView
 {
     NSMutableArray *_items;
     _Bool _hasEverBuilt;

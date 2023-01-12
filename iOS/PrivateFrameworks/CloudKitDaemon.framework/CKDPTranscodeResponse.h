@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKCodeRecordTransport;
 
-@interface CKDPTranscodeResponse : PBCodable <NSCopying>
+@interface CKDPTranscodeResponse : PBCodable
 {
     CKCodeRecordTransport *_record;
 }

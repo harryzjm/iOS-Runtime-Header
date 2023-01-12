@@ -6,11 +6,12 @@
 
 #import <Foundation/NSURL.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @interface NSURL (SafariServicesExtras)
 + (void)_sf_urlsFromDragItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (_Bool)_sf_canCreateURLsFromDropSession:(id)arg1;
+@property(readonly, nonatomic) NSNumber *_sf_itunesItemIdentifier;
 @property(readonly, nonatomic) _Bool _sf_isAppleOneURL;
 - (void)_sf_accessingSecurityScopedResource:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *_sf_highLevelDomainFromHostFallingBackToHostOrAbsoluteString;

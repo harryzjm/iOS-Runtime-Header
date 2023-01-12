@@ -4,13 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <HealthKit/NSCopying-Protocol.h>
-#import <HealthKit/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface HKFeatureAvailabilityMustBeTrueRequirement : NSObject <NSSecureCoding, NSCopying>
+@interface HKFeatureAvailabilityMustBeTrueRequirement
 {
     _Bool _isTrue;
 }

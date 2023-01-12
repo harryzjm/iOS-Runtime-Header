@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MKETAProviderObserver-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-#import <MapsUI/MUPlaceVerticalCardContainerViewDelegate-Protocol.h>
-
-@class MKETAProvider, MKMapItem, MKUGCCallToActionViewAppearance, MUNearestStationRowView, MUPlaceFooterAttributionController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceVerticalCardContainerView, NSString, UIView, UIViewController;
+@class MKETAProvider, MKMapItem, MKUGCCallToActionViewAppearance, MUNearestStationRowView, MUPlaceFooterAttributionController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceVerticalCardContainerView, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUNearestStationSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUNearestStationSectionController <MKETAProviderObserver, MUPlaceVerticalCardContainerViewDelegate, MUPlaceSectionControlling>
+@interface MUNearestStationSectionController
 {
     MKETAProvider *_etaProvider;
     MKMapItem *_nearestStation;
@@ -43,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasContent;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

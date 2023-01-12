@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPComponentWriteChannel-Protocol.h>
-
 @class NSError, NSString;
 
-@interface TSPIOHandlerWriteChannelAdapter : NSObject <TSPComponentWriteChannel>
+@interface TSPIOHandlerWriteChannelAdapter : NSObject
 {
     CDUnknownBlockType _handler;
     NSError *_error;

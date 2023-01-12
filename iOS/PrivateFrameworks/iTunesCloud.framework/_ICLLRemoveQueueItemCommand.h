@@ -6,15 +6,14 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLRemoveQueueItemCommand : PBCodable <NSCopying>
+@interface _ICLLRemoveQueueItemCommand : PBCodable
 {
     NSString *_itemId;
     NSMutableArray *_itemIdsToRemoves;
+    NSString *_queueContext;
     int _removeType;
     int _revision;
     CDStruct_c634eefe _has;

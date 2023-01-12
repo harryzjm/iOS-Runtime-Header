@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LocalAuthenticationPrivateUI/CAAnimationDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface LAUIAnimationDelegate : NSObject <CAAnimationDelegate>
+@interface LAUIAnimationDelegate : NSObject
 {
     CDUnknownBlockType _didStartHandler;
     CDUnknownBlockType _didStopHandler;

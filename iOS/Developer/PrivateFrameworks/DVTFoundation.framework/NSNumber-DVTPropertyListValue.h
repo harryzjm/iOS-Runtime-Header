@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <DVTFoundation/DVTPropertyListValue-Protocol.h>
-
 @class NSArray, NSData, NSDate, NSDictionary, NSString;
 
-@interface NSNumber (DVTPropertyListValue) <DVTPropertyListValue>
+@interface NSNumber (DVTPropertyListValue)
 @property(readonly) NSDictionary *dictionaryValue;
 @property(readonly) NSArray *arrayValue;
 @property(readonly) NSDate *dateValue;

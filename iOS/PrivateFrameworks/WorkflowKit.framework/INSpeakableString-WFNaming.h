@@ -6,12 +6,9 @@
 
 #import <Intents/INSpeakableString.h>
 
-#import <WorkflowKit/WFINObject-Protocol.h>
-#import <WorkflowKit/WFNaming-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface INSpeakableString (WFNaming) <WFNaming, WFINObject>
+@interface INSpeakableString (WFNaming)
 @property(readonly, copy, nonatomic) NSString *wfName;
 - (id)wf_initWithIdentifier:(id)arg1 displayString:(id)arg2;
 

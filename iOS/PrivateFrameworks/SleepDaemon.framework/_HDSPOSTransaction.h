@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/BSDescriptionProviding-Protocol.h>
-#import <SleepDaemon/HDSPAssertion-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_source, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
-@interface _HDSPOSTransaction : NSObject <BSDescriptionProviding, HDSPAssertion>
+@interface _HDSPOSTransaction : NSObject
 {
     struct os_unfair_lock_s _transactionLock;
     NSString *_identifier;

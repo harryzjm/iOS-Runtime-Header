@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
-
 @class AMSMetricsEvent, AMSUIWebClientContext, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebAction : NSObject
 {
     NSArray *_acceptedResponseVersions;
     AMSUIWebClientContext *_context;

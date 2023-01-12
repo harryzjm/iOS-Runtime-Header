@@ -17,9 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain) NSString *fileName; // @synthesize fileName=_fileName;
-@property long long busIndex; // @synthesize busIndex=_busIndex;
-@property(retain) NSString *boxName; // @synthesize boxName=_boxName;
 
 @end
 

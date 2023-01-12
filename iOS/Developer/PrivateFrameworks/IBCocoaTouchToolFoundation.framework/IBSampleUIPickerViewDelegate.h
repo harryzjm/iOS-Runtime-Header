@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/UIPickerViewDataSource-Protocol.h>
-#import <IBCocoaTouchToolFoundation/UIPickerViewDelegate-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface IBSampleUIPickerViewDelegate : NSObject <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface IBSampleUIPickerViewDelegate : NSObject
 {
     NSArray *_rows;
 }

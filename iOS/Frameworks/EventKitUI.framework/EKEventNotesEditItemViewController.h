@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/UITableViewDataSource-Protocol.h>
-#import <EventKitUI/UITableViewDelegate-Protocol.h>
-
 @class CalendarNotesCell, NSString, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface EKEventNotesEditItemViewController <UITableViewDataSource, UITableViewDelegate>
+@interface EKEventNotesEditItemViewController
 {
     UITableView *_table;
     CalendarNotesCell *_cell;

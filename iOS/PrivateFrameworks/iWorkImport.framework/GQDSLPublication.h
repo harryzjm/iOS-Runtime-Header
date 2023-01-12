@@ -6,7 +6,6 @@
 
 @class GQDSLPageMargins, GQDSStylesheet;
 
-__attribute__((visibility("hidden")))
 @interface GQDSLPublication
 {
     struct CGSize mPageSize;

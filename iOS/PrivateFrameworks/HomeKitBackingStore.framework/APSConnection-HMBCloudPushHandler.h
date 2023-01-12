@@ -6,12 +6,10 @@
 
 #import <ApplePushService/APSConnection.h>
 
-#import <HomeKitBackingStore/HMBAPSConnection-Protocol.h>
-
 @class NSArray, NSString;
 @protocol HMBAPSConnectionDelegate;
 
-@interface APSConnection (HMBCloudPushHandler) <HMBAPSConnection>
+@interface APSConnection (HMBCloudPushHandler)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

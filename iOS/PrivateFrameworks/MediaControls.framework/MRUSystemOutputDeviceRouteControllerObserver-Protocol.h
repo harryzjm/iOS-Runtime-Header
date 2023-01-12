@@ -9,9 +9,9 @@
 @class MRUSystemOutputDeviceRouteController;
 
 @protocol MRUSystemOutputDeviceRouteControllerObserver <NSObject>
-- (void)systemOutputDeviceRouteControllerDidUpdateOutputDevices:(MRUSystemOutputDeviceRouteController *)arg1;
 
 @optional
 - (void)systemOutputDeviceRouteControllerDidUpdateOutputDeviceProperties:(MRUSystemOutputDeviceRouteController *)arg1;
+- (void)systemOutputDeviceRouteControllerDidUpdateOutputDevices:(MRUSystemOutputDeviceRouteController *)arg1;
 @end
 

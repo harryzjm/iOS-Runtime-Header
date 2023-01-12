@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessServicesUI/BSUIMapServiceTicket-Protocol.h>
-
 @class NSString;
 @protocol MKMapServiceTicket;
 
 __attribute__((visibility("hidden")))
-@interface _BSUIMapServiceTicket : NSObject <BSUIMapServiceTicket>
+@interface _BSUIMapServiceTicket : NSObject
 {
     id <MKMapServiceTicket> _serviceTicket;
 }

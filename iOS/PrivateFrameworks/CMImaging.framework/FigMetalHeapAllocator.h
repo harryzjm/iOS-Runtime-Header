@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CMImaging/FigMetalAllocatorImpl-Protocol.h>
-
 @class FigMetalUtils;
 @protocol MTLHeap;
 
 __attribute__((visibility("hidden")))
-@interface FigMetalHeapAllocator : NSObject <FigMetalAllocatorImpl>
+@interface FigMetalHeapAllocator : NSObject
 {
     id <MTLHeap> _heap;
     unsigned long long _alignment;
@@ -26,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long alignment; // @synthesize alignment=_alignment;
 - (unsigned long long)bufferOffset:(id)arg1;
 - (unsigned long long)textureOffset:(id)arg1;
+- (_Bool)hasCreatedBuffer:(id)arg1;
 - (_Bool)hasCreatedTexture:(id)arg1;
 - (void)purgeResources;
 - (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2;

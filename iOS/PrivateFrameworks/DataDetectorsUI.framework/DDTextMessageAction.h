@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DataDetectorsUI/MFMessageComposeViewControllerDelegate-Protocol.h>
+#import "DDTelephoneNumberAction.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface DDTextMessageAction <MFMessageComposeViewControllerDelegate>
+@interface DDTextMessageAction : DDTelephoneNumberAction
 {
 }
 
++ (id)matchingScheme;
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (id)viewController;
 - (_Bool)canBePerformedByOpeningURL;

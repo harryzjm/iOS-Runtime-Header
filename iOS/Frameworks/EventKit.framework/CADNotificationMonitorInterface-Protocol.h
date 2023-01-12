@@ -8,13 +8,10 @@
 
 @protocol CADNotificationMonitorInterface
 - (void)CADEventSetInvitationStatus:(int)arg1 forEvents:(NSArray *)arg2 error:(void (^)(int))arg3;
-- (void)CADInviteReplyNotification:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
 - (void)CADResourceChange:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
-- (void)CADCalendar:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
-- (void)CADEvent:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
 - (void)CADDatabaseGetInboxRepliedSectionItems:(void (^)(int, NSArray *, NSArray *))arg1;
-- (void)CADDatabaseGetNotificationCountForSourceWithExternalIdentifier:(NSString *)arg1 excludingDelegateSources:(_Bool)arg2 filteredByShowsNotificationsFlag:(_Bool)arg3 reply:(void (^)(int, unsigned long long, NSArray *))arg4;
-- (void)CADDatabaseGetEventNotificationItemsAfterDate:(NSDate *)arg1 filteredByShowsNotificationsFlag:(_Bool)arg2 calculateEarliestExpirationDate:(_Bool)arg3 reply:(void (^)(int, NSArray *, NSArray *, NSArray *, NSDate *))arg4;
+- (void)CADDatabaseGetNotificationCountForSourceWithExternalIdentifier:(NSString *)arg1 excludingDelegateSources:(_Bool)arg2 filteredByShowsNotificationsFlag:(_Bool)arg3 expanded:(_Bool)arg4 reply:(void (^)(int, unsigned long long, NSArray *))arg5;
+- (void)CADDatabaseGetEventNotificationItemsAfterDate:(NSDate *)arg1 excludingUncheckedCalendars:(_Bool)arg2 filteredByShowsNotificationsFlag:(_Bool)arg3 reply:(void (^)(int, NSArray *, NSArray *, NSArray *, NSDate *))arg4;
 - (void)CADDatabaseGetInviteReplyNotifications:(void (^)(int, NSArray *))arg1;
 - (void)CADDatabaseGetResourceChanges:(void (^)(int, NSArray *))arg1;
 - (void)CADCalendarSetClearedFromNotificationCenter:(CADObjectID *)arg1 error:(void (^)(int))arg2;

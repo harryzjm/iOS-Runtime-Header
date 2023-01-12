@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType platterTapAction; // @synthesize platterTapAction=_platterTapAction;
 @property(nonatomic) __weak _SFBrowserView *browserView; // @synthesize browserView=_browserView;
 @property(nonatomic) double maximumHeight; // @synthesize maximumHeight=_maximumHeight;
-- (void)updateWithDomain:(id)arg1 isSecure:(_Bool)arg2 showsNotSecureAnotation:(_Bool)arg3;
+- (void)updateWithDomain:(id)arg1 isSecure:(_Bool)arg2 showsNotSecureAnnotation:(_Bool)arg3;
 
 @end
 

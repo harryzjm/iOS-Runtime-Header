@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
-@interface DVTStackBacktraceFrame : NSObject <NSSecureCoding>
+@interface DVTStackBacktraceFrame : NSObject
 {
     unsigned long long _stackAddress;
     unsigned long long _lineNumber;

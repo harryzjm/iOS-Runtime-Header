@@ -6,12 +6,14 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSURL, SFSafariViewControllerConfiguration, UIColor;
+@class NSArray, NSString, NSURL, SFSafariViewControllerConfiguration, UIColor, UISClickAttribution;
 
 @protocol SFServiceViewControllerProtocol <NSObject>
+- (void)clearWebsiteDataWithCompletionHandler:(void (^)(void))arg1;
+- (void)addClickAttribution:(UISClickAttribution *)arg1;
 - (void)invalidatePrewarmingTokenWithID:(unsigned long long)arg1;
 - (void)requestPrewarmingWithTokens:(NSArray *)arg1;
-- (void)stopDigitalHealthTracking;
+- (void)stopDigitalHealthTrackingWithCompletionHandler:(void (^)(void))arg1;
 - (void)beginDigitalHealthTracking;
 - (void)prepareForDisplayWithCompletionHandler:(void (^)(void))arg1;
 - (void)didRequestShowLinkPreviews:(_Bool)arg1;

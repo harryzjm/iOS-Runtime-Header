@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)privateResults;
 - (id)results;
+- (id)clipResults:(CDStruct_e83c9415)arg1;
 - (int)finishAnalysisPass:(CDStruct_e83c9415)arg1;
 - (int)analyzeFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 flags:(unsigned long long *)arg4;
 - (void)addActiveResults:(CDStruct_1b6d18a9)arg1;

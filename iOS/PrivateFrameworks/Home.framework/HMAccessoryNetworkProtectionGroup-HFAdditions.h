@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMAccessoryNetworkProtectionGroup.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-
 @class HMHome, NSArray, NSString, NSUUID;
 
-@interface HMAccessoryNetworkProtectionGroup (HFAdditions) <HFHomeKitObject>
+@interface HMAccessoryNetworkProtectionGroup (HFAdditions)
 + (id)hf_updateProtectionMode:(long long)arg1 forGroups:(id)arg2;
 - (id)hf_updateProtectionMode:(long long)arg1;
 @property(readonly, nonatomic) long long hf_displayCurrentProtectionMode;

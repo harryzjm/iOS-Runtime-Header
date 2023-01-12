@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCGamepadEventSourceDescription-Protocol.h>
-
 @class NSString, _GCGamepadEventKeyboardEventAdapter, _GCGamepadEventKeyboardEventAdapterConfig;
 @protocol _GCKeyboardEventSourceDescription;
 
 __attribute__((visibility("hidden")))
-@interface _GCGamepadEventKeyboardEventAdapterDescription : NSObject <_GCGamepadEventSourceDescription>
+@interface _GCGamepadEventKeyboardEventAdapterDescription : NSObject
 {
     _GCGamepadEventKeyboardEventAdapterConfig *_config;
     id <_GCKeyboardEventSourceDescription> _sourceDescription;

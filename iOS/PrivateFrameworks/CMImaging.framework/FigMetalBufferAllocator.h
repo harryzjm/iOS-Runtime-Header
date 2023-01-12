@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CMImaging/FigMetalAllocatorImpl-Protocol.h>
-
 @class FigMetalUtils;
 @protocol MTLBuffer;
 
 __attribute__((visibility("hidden")))
-@interface FigMetalBufferAllocator : NSObject <FigMetalAllocatorImpl>
+@interface FigMetalBufferAllocator : NSObject
 {
     id <MTLBuffer> _buffer;
     unsigned long long _alignment;
@@ -30,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)newBufferWithDescriptor:(id)arg1 offset:(unsigned long long)arg2;
 - (CDStruct_4bcfbbae)getSizeAndAlignForBufferDescriptor:(id)arg1;
 - (CDStruct_4bcfbbae)getSizeAndAlignForDescriptor:(id)arg1;
+- (_Bool)hasCreatedBuffer:(id)arg1;
 - (_Bool)hasCreatedTexture:(id)arg1;
 - (void)purgeResources;
 - (int)setupWithDescriptor:(id)arg1;

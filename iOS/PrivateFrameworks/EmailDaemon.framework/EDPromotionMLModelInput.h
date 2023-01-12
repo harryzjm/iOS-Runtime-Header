@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailDaemon/MLFeatureProvider-Protocol.h>
-
 @class NSDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface EDPromotionMLModelInput : NSObject <MLFeatureProvider>
+@interface EDPromotionMLModelInput : NSObject
 {
     NSDictionary *_header_key_filtered;
     double _to_count;

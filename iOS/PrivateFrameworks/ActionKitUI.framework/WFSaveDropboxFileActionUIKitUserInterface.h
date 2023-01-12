@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowUICore/WFActionUserInterface.h>
-
-#import <ActionKitUI/WFSaveDropboxFileActionUserInterface-Protocol.h>
+#import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
 @class NSString;
 @protocol WFFileStorageServiceOperation;
 
 __attribute__((visibility("hidden")))
-@interface WFSaveDropboxFileActionUIKitUserInterface : WFActionUserInterface <WFSaveDropboxFileActionUserInterface>
+@interface WFSaveDropboxFileActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     id <WFFileStorageServiceOperation> _saveOperation;
     CDUnknownBlockType _completionHandler;
@@ -21,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(retain, nonatomic) id <WFFileStorageServiceOperation> saveOperation; // @synthesize saveOperation=_saveOperation;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)cancel;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)showWithServiceName:(id)arg1 input:(id)arg2 managedLevel:(unsigned long long)arg3 options:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;

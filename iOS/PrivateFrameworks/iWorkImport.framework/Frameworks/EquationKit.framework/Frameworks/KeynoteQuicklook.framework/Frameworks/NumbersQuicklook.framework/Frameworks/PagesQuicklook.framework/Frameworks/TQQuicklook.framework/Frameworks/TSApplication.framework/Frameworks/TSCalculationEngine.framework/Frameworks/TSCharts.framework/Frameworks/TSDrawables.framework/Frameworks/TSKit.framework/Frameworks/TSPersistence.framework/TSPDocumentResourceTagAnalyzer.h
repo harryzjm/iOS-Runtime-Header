@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSFastEnumeration-Protocol.h>
-
 @class NSMutableDictionary, NSMutableSet, NSSet;
 
-@interface TSPDocumentResourceTagAnalyzer : NSObject <NSFastEnumeration>
+@interface TSPDocumentResourceTagAnalyzer : NSObject
 {
     NSMutableDictionary *_tagsToDocumentResourceInfosDictionary;
     NSMutableSet *_documentResourceInfos;

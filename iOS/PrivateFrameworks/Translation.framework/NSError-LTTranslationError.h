@@ -13,7 +13,6 @@
 + (id)lt_speechLimitExceeded;
 + (id)lt_speechTranslationOngoing;
 + (id)lt_invalidRequestErrorWithDescription:(id)arg1;
-+ (id)lt_speechTranslationOngoingError;
 + (id)lt_lidModelLoadError;
 + (id)lt_incompatibleForcedRoutes;
 + (id)lt_onlineNotImplementedError;

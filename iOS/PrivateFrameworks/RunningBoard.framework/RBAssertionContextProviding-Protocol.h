@@ -6,7 +6,7 @@
 
 #import <RunningBoard/NSObject-Protocol.h>
 
-@class RBProcess;
+@class RBProcess, RBSystemState;
 @protocol RBBundleProperties, RBEntitlementPossessing;
 
 @protocol RBAssertionContextProviding <NSObject>
@@ -14,6 +14,7 @@
 @property(readonly, nonatomic) id <RBEntitlementPossessing> originatorEntitlements;
 @property(readonly, nonatomic) id <RBBundleProperties> originatorProperties;
 @property(readonly, nonatomic) id <RBBundleProperties> targetProperties;
+@property(readonly, nonatomic) RBSystemState *systemState;
 @property(readonly, nonatomic) RBProcess *targetProcess;
 @property(readonly, nonatomic) RBProcess *originatorProcess;
 @end

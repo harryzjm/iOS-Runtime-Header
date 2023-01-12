@@ -6,23 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/MLFeatureProvider-Protocol.h>
-
 @class NSDictionary, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNSoundClassifierVersion1ModelOutput : NSObject <MLFeatureProvider>
+@interface SNSoundClassifierVersion1ModelOutput : NSObject
 {
-    NSDictionary *__646;
+    NSDictionary *__9;
     NSString *_classLabel;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *classLabel; // @synthesize classLabel=_classLabel;
-@property(retain, nonatomic) NSDictionary *_646; // @synthesize _646=__646;
+@property(retain, nonatomic) NSDictionary *_9; // @synthesize _9=__9;
 - (id)featureValueForName:(id)arg1;
 @property(readonly, nonatomic) NSSet *featureNames;
-- (id)initWith_646:(id)arg1 classLabel:(id)arg2;
+- (id)initWith_9:(id)arg1 classLabel:(id)arg2;
 
 @end
 

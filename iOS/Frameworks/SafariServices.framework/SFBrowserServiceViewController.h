@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/SFServiceViewControllerProtocol-Protocol.h>
-#import <SafariServices/_SFActivityDelegate-Protocol.h>
-#import <SafariServices/_SFLinkPreviewHeaderDelegate-Protocol.h>
+#import "_SFBrowserContentViewController.h"
 
 @class NSDate, NSString, NSTimer, SFBrowserPersonaAnalyticsHelper, SFSystemAlert, WKProcessPool, _SFSafariViewControllerPrewarmingRequestThrottler, _SFWebViewUsageMonitor;
 
 __attribute__((visibility("hidden")))
-@interface SFBrowserServiceViewController <_SFActivityDelegate, _SFLinkPreviewHeaderDelegate, SFServiceViewControllerProtocol>
+@interface SFBrowserServiceViewController : _SFBrowserContentViewController
 {
     CDUnknownBlockType _activityViewControllerInfoFetchCompletionHandler;
     _SFWebViewUsageMonitor *_usageMonitor;
@@ -50,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)webViewController:(id)arg1 didReceiveServerRedirectForProvisionalNavigation:(id)arg2;
 - (_Bool)_shouldReloadImmediatelyAfterPageLoadError;
 - (id)_hostAppBundleId;
-- (unsigned long long)_persona;
+- (long long)_persona;
 - (id)_analyticsHelper;
 - (id)bundleIdentifierForProfileInstallation;
 - (id)_applicationPayloadForOpeningInSafari;
@@ -79,12 +77,16 @@ __attribute__((visibility("hidden")))
 - (void)_openCurrentURLInSafari;
 - (void)openCurrentURLInSafariFromPreviewAction;
 - (void)_didResolveDestinationURL:(id)arg1 pendingAppLinkCheck:(_Bool)arg2;
+- (void)clearWebsiteDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_prewarmConnectionsToURLs:(id)arg1;
 - (void)invalidatePrewarmingTokenWithID:(unsigned long long)arg1;
 - (void)requestPrewarmingWithTokens:(id)arg1;
 - (void)prepareForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startResolveRedirectionForURL:(id)arg1;
 - (void)decideCookieSharingForURL:(id)arg1 callbackURLScheme:(id)arg2;
+- (void)addClickAttribution:(id)arg1;
+- (id)_trustedReportEndpoint;
+- (_Bool)_shouldAcceptMessage:(id)arg1;
 - (void)loadURL:(id)arg1;
 - (id)processPool;
 - (void)updateScrollViewIndicatorVerticalInsets:(struct UIEdgeInsets)arg1 horizontalInsets:(struct UIEdgeInsets)arg2;

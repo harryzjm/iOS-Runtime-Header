@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIPopoverController.h"
+
 @protocol _UIViewServiceDummyPopoverControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceDummyPopoverController
+@interface _UIViewServiceDummyPopoverController : UIPopoverController
 {
     id <_UIViewServiceDummyPopoverControllerDelegate> _dummyPopoverControllerDelegate;
 }

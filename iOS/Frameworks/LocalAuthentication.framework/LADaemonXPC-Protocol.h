@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDictionary, NSString, NSUUID;
-@protocol LAContextCallbackXPC;
+#import <LocalAuthentication/NSObject-Protocol.h>
 
-@protocol LADaemonXPC
+@class NSData, NSDictionary, NSString, NSUUID;
+@protocol LAContextCallbackXPC, LANotificationObserverXPC;
+
+@protocol LADaemonXPC <NSObject>
+- (void)postNotificationOfClassNamed:(NSString *)arg1 newValue:(id)arg2 oldValue:(id)arg3 completionHandler:(void (^)(void))arg4;
+- (void)addNotificationObserver:(id <LANotificationObserverXPC>)arg1 className:(NSString *)arg2 completionHandler:(void (^)(id <LANotificationXPC>, NSError *))arg3;
 - (void)bootstrapSessionServiceType:(NSString *)arg1 serviceClientID:(NSString *)arg2 completionHandler:(void (^)(NSXPCListenerEndpoint *, NSError *))arg3;
 - (void)notifyEvent:(long long)arg1 options:(NSDictionary *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)prearmTouchIdWithReply:(void (^)(id <LAPrearmContextXPC>, NSError *))arg1;

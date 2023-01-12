@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
-
 @class GEOResourceManager, GEOResourceManifestManager, NSDictionary, NSSet, NSString, geo_isolater;
 
 __attribute__((visibility("hidden")))
-@interface GEOPOITypeMapping : NSObject <GEOResourceManifestTileGroupObserver>
+@interface GEOPOITypeMapping : NSObject
 {
     NSSet *_alwaysVisibleTypes;
     NSDictionary *_categoryToTypeMapping;

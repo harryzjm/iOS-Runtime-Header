@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CATintedImage : NSObject <NSSecureCoding>
+@interface CATintedImage : NSObject
 {
     struct CGImage *_image;
     struct CGColor *_tint;

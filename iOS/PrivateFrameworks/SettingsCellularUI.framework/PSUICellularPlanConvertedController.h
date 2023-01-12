@@ -18,11 +18,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) PSUICellularPlanUniversalReference *planReference; // @synthesize planReference=_planReference;
 @property(retain, nonatomic) CTCellularPlanItem *plan; // @synthesize plan=_plan;
+- (id)getLogger;
+- (void)_maybeAddRemoveCellularPlanSpecifier:(id)arg1;
 - (id)_turnOnThisLineSpecifier;
 - (id)_phoneNumberSpecifier;
 - (id)_labelSpecifier;
 - (id)_carrierNameSpecifier;
 - (id)_removeSIMSpecifier;
+- (id)getTransferredTitle:(id)arg1 forPad:(_Bool)arg2;
 - (id)_phoneNumber:(id)arg1;
 - (id)_planLabel:(id)arg1;
 - (id)specifiers;

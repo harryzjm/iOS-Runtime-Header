@@ -11,6 +11,7 @@
 
 @protocol HMFWiFiManagerDataSource <NSObject>
 + (NSString *)MACAddressString;
+@property(readonly, nonatomic, getter=isCaptive) _Bool captive;
 @property(readonly, copy, nonatomic) NSString *currentNetworkSSID;
 @property(nonatomic, getter=isWoWAsserted, setter=setWoWAsserted:) _Bool wowAsserted;
 @property(readonly) unsigned long long assertionOptions;

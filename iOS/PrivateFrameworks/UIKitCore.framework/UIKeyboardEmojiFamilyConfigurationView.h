@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKBKeyViewContentView-Protocol.h>
+#import "UIView.h"
 
-@class NSArray, NSIndexPath, NSMutableArray, NSString, UIKBTree, UIKeyboardEmojiWellView, UIStackView, UIView;
+@class NSArray, NSIndexPath, NSMutableArray, NSString, UIKBTree, UIKeyboardEmojiWellView, UIStackView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiFamilyConfigurationView <UIKBKeyViewContentView>
+@interface UIKeyboardEmojiFamilyConfigurationView : UIView
 {
     double _metachronalRhythmAnimationStartTime;
     _Bool _usesDarkStyle;

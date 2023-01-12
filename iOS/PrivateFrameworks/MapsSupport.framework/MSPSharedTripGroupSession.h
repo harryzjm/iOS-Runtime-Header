@@ -35,8 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)participantDidJoin:(id)arg1;
 - (_Bool)_validParticipant:(id)arg1;
 - (id)_currentRoutePath;
-- (_Bool)_sendChunkMessage:(id)arg1 to:(id)arg2 packet:(id)arg3 requirement:(unsigned long long)arg4 error:(id *)arg5;
-- (_Bool)sendChunkedMessage:(id)arg1 to:(id)arg2 requirement:(unsigned long long)arg3 error:(id *)arg4;
+- (_Bool)_sendChunkMessage:(id)arg1 to:(id)arg2 packet:(id)arg3 options:(id)arg4 error:(id *)arg5;
+- (_Bool)sendChunkedMessage:(id)arg1 to:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (_Bool)sendChunkedMessage:(id)arg1 to:(id)arg2 error:(id *)arg3;
 - (_Bool)sendCommand:(id)arg1 fromHandle:(id)arg2 fromAccountID:(id)arg3 error:(id *)arg4;
 - (void)_sharingEndedWithError:(id)arg1;

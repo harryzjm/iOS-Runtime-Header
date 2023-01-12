@@ -6,13 +6,9 @@
 
 #import <Foundation/NSData.h>
 
-#import <NotesShared/CRCoding-Protocol.h>
-#import <NotesShared/CRDataType-Protocol.h>
-#import <NotesShared/CREquatable-Protocol.h>
-
 @class NSString;
 
-@interface NSData (CRDT) <CRDataType, CREquatable, CRCoding>
+@interface NSData (CRDT)
 - (id)tombstone;
 - (void)realizeLocalChangesIn:(id)arg1;
 - (void)setDocument:(id)arg1;

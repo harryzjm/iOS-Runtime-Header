@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/NSFastEnumeration-Protocol.h>
-
 @class _MKSpatialColliderPairSet;
 
 __attribute__((visibility("hidden")))
-@interface MKSpatialCollider : NSObject <NSFastEnumeration>
+@interface MKSpatialCollider : NSObject
 {
     long long _options;
     _MKSpatialColliderPairSet *_previousCollisionPairs;

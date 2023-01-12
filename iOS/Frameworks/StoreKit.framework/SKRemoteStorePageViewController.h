@@ -6,12 +6,10 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <StoreKit/SKUIClientStorePageViewController-Protocol.h>
-
 @class NSString, SKStorePageViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKRemoteStorePageViewController : _UIRemoteViewController <SKUIClientStorePageViewController>
+@interface SKRemoteStorePageViewController : _UIRemoteViewController
 {
     SKStorePageViewController *_storePageViewController;
 }

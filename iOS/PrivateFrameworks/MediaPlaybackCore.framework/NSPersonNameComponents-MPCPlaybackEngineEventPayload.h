@@ -6,11 +6,9 @@
 
 #import <Foundation/NSPersonNameComponents.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadValueJSONConvertible-Protocol.h>
-
 @class NSString;
 
-@interface NSPersonNameComponents (MPCPlaybackEngineEventPayload) <MPCPlaybackEngineEventPayloadValueJSONConvertible>
+@interface NSPersonNameComponents (MPCPlaybackEngineEventPayload)
 + (id)payloadValueFromJSONValue:(id)arg1;
 - (id)mpc_jsonValue;
 

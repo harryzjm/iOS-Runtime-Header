@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HMFObject.h"
+
 @class HMFActivity, NSData, NSDictionary, NSMutableDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface HMFHTTPRequestInternal
+@interface HMFHTTPRequestInternal : HMFObject
 {
     NSMutableDictionary *_headerFields;
     NSURL *_URL;

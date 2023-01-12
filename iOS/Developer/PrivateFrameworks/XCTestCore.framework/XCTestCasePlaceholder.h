@@ -14,7 +14,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *reason; // @synthesize reason=_reason;
-- (id)_identifier;
+- (id)_xctTestIdentifier;
 - (long long)defaultExecutionOrderCompare:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)performTest:(id)arg1;

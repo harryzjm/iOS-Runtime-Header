@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
-#import <UIKitCore/_UIClickInteractionDriving-Protocol.h>
-
 @class NSString, UIGestureRecognizer, UITouchForceGestureRecognizer, UIView;
 @protocol _UIClickInteractionDriverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIForceClickInteractionDriver : NSObject <UIGestureRecognizerDelegatePrivate, _UIClickInteractionDriving>
+@interface _UIForceClickInteractionDriver : NSObject
 {
     unsigned long long _currentState;
     _Bool _cancelsTouchesInView;

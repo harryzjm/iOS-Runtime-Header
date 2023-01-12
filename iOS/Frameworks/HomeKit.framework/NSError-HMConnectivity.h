@@ -8,6 +8,7 @@
 
 @interface NSError (HMConnectivity)
 + (id)hm_errorWithNWError:(id)arg1;
++ (id)hmPrivateErrorWithCode:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (id)hmPrivateErrorWithCode:(long long)arg1 underlyingError:(id)arg2;
 + (id)hmInternalErrorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)hmPrivateErrorWithCode:(long long)arg1;
@@ -17,6 +18,7 @@
 + (id)hmErrorWithCode:(long long)arg1;
 + (id)hmErrorWithCode:(long long)arg1 description:(id)arg2 reason:(id)arg3 suggestion:(id)arg4;
 + (id)hmErrorWithCode:(long long)arg1 description:(id)arg2 reason:(id)arg3 suggestion:(id)arg4 underlyingError:(id)arg5;
+@property(readonly, copy, nonatomic) NSError *hmPublicError;
 @property(readonly, nonatomic, getter=isHMError) _Bool hmError;
 @end
 

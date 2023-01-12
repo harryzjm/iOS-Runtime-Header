@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/VUILegacyCollectionViewDelegate-Protocol.h>
-
 @class NSArray, NSString, UICollectionViewCell, UICollectionViewDiffableDataSource, VUICollectionConfiguration, VUILegacyCollectionView, VUIMenuDataSource, VUIMenuSectionHeaderCollectionViewCell, _UIDiffableDataSourceSectionController;
 @protocol VUIMenuCollectionViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIMenuCollectionViewController : UIViewController <UICollectionViewDelegate, VUILegacyCollectionViewDelegate>
+@interface VUIMenuCollectionViewController : UIViewController
 {
     _Bool _shouldShowLeftBarButton;
     _Bool _shouldShowBackButton;
@@ -21,7 +18,6 @@ __attribute__((visibility("hidden")))
     _Bool _isInPrimaryOnlyMode;
     _Bool _shouldMarkFirstCategorySelected;
     _Bool _genresOnlyMenu;
-    _Bool _isForLibrarySplitViewController;
     id <VUIMenuCollectionViewControllerDelegate> _delegate;
     VUIMenuDataSource *_categories;
     VUICollectionConfiguration *_collectionConfiguration;
@@ -42,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIMenuSectionHeaderCollectionViewCell *sectionHeaderSizingCell; // @synthesize sectionHeaderSizingCell=_sectionHeaderSizingCell;
 @property(retain, nonatomic) UICollectionViewCell *sizingCell; // @synthesize sizingCell=_sizingCell;
 @property(retain, nonatomic) VUILegacyCollectionView *menuCollectionView; // @synthesize menuCollectionView=_menuCollectionView;
-@property(nonatomic) _Bool isForLibrarySplitViewController; // @synthesize isForLibrarySplitViewController=_isForLibrarySplitViewController;
 @property(nonatomic) _Bool genresOnlyMenu; // @synthesize genresOnlyMenu=_genresOnlyMenu;
 @property(nonatomic) _Bool shouldMarkFirstCategorySelected; // @synthesize shouldMarkFirstCategorySelected=_shouldMarkFirstCategorySelected;
 @property(retain, nonatomic) VUICollectionConfiguration *collectionConfiguration; // @synthesize collectionConfiguration=_collectionConfiguration;
@@ -77,7 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
-- (id)initWithCategories:(id)arg1 gridConfiguration:(id)arg2 isForLibrarySplitViewController:(_Bool)arg3;
+- (id)initWithCategories:(id)arg1 gridConfiguration:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

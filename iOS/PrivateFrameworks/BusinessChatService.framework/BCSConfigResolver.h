@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSConfigResolving-Protocol.h>
-
 @class NSString;
-@protocol BCSConfigCacheSkipping, BCSConfigCaching, BCSConfigRemoteFetching, BCSMetricFactoryProtocol;
+@protocol BCSConfigCacheSkipping, BCSConfigCaching, BCSFetchTrigger, BCSMetricFactoryProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface BCSConfigResolver : NSObject <BCSConfigResolving>
+@interface BCSConfigResolver : NSObject
 {
     id <BCSConfigCaching> _configCache;
     id <BCSConfigCacheSkipping> _configCacheSkipper;
-    id <BCSConfigRemoteFetching> _configRemoteFetcher;
+    id <BCSFetchTrigger> _megashardFetchTrigger;
     id <BCSMetricFactoryProtocol> _metricFactory;
+    NSObject<OS_dispatch_queue> *_serialDispatchQueue;
 }
 
 - (void).cxx_destruct;

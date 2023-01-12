@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <PDFKit/UITextViewDelegate-Protocol.h>
-
 @class NSString, PDFKitPopupViewPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFKitPopupView : UIView <UITextViewDelegate>
+@interface PDFKitPopupView : UIView
 {
     PDFKitPopupViewPrivate *_private;
 }

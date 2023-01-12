@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTLanguageDetected, FTTranslationLocalePair, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTStartSpeechTranslationLoggingRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTStartSpeechTranslationLoggingRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,8 +19,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_a1e3ccf4)addObjectToBuffer:(void *)arg1;
+- (void)user_interacted_senses_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)user_interacted_senses_count;
+- (id)user_interacted_senses_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *user_interacted_senses;
 @property(readonly, nonatomic) NSString *user_selected_sense;
+- (void)senses_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)senses_count;
+- (id)senses_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *senses;
 @property(readonly, nonatomic) NSString *user_selected_locale;
 @property(readonly, nonatomic) FTLanguageDetected *detected_locale;

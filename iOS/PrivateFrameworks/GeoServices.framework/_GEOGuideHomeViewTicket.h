@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceGuideHomeViewTicket-Protocol.h>
+#import "GEOAbstractRequestResponseTicket.h"
 
 @class GEOMapServiceTraits, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOGuideHomeViewTicket <GEOMapServiceGuideHomeViewTicket>
+@interface _GEOGuideHomeViewTicket : GEOAbstractRequestResponseTicket
 {
 }
 

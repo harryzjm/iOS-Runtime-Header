@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UITableViewDataSource-Protocol.h>
-#import <UIKitCore/UITableViewDelegate-Protocol.h>
+#import "UIViewController.h"
 
 @class NSArray, NSString, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingInformationOverlayWindowPickerViewController <UITableViewDataSource, UITableViewDelegate>
+@interface UIDebuggingInformationOverlayWindowPickerViewController : UIViewController
 {
     UITableView *_tableView;
     NSArray *_windows;

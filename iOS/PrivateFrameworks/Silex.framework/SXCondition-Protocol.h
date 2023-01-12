@@ -10,7 +10,10 @@
 
 @protocol SXCondition <NSObject>
 @property(readonly, nonatomic) NSSet *types;
+@property(readonly, nonatomic) NSString *app;
 @property(readonly, nonatomic) NSString *configurationKey;
+@property(readonly, nonatomic) long long subscriptionActivationEligibility;
+@property(readonly, nonatomic) long long offerUpsellScenario;
 @property(readonly, nonatomic) unsigned long long newsletterSubscriptionStatus;
 @property(readonly, nonatomic) unsigned long long preferredColorScheme;
 @property(readonly, nonatomic) unsigned long long testing;

@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MKBrowseCategoryViewControllerDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKBrowseCategoryViewController, MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSString, UIView, UIViewController;
+@class MKUGCCallToActionViewAppearance, MUBrowseCategoryViewController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
 @protocol MUBrowseCategorySectionControllerDelegate, MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUBrowseCategorySectionController <MKBrowseCategoryViewControllerDelegate, MUPlaceSectionControlling>
+@interface MUBrowseCategorySectionController : MUPlaceSectionController
 {
-    MKBrowseCategoryViewController *_browseCategoryVC;
+    MUBrowseCategoryViewController *_browseCategoryVC;
     MUPlaceSectionView *_sectionView;
     id <MUBrowseCategorySectionControllerDelegate> _browseCategoryDelegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MUBrowseCategorySectionControllerDelegate> browseCategoryDelegate; // @synthesize browseCategoryDelegate=_browseCategoryDelegate;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (void)categoryBrowseViewControllerDidDisplayBrowseCategories:(id)arg1;
 - (void)categoryBrowseViewController:(id)arg1 didTapOnSearchCategory:(id)arg2;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

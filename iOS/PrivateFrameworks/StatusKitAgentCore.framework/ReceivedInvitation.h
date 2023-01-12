@@ -25,12 +25,16 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(retain, nonatomic) Channel *channel; // @dynamic channel;
+@property(retain, nonatomic) NSData *channelToken; // @dynamic channelToken;
 @property(copy, nonatomic) NSDate *dateInvitationCreated; // @dynamic dateInvitationCreated;
 @property(retain, nonatomic) NSData *incomingRatchetState; // @dynamic incomingRatchetState;
 @property(copy, nonatomic) NSString *invitationIdentifier; // @dynamic invitationIdentifier;
 @property(retain, nonatomic) NSData *invitationPayload; // @dynamic invitationPayload;
 @property(copy, nonatomic) NSString *invitedHandle; // @dynamic invitedHandle;
+@property(retain, nonatomic) NSData *peerKey; // @dynamic peerKey;
+@property(copy, nonatomic) NSString *presenceIdentifier; // @dynamic presenceIdentifier;
 @property(copy, nonatomic) NSString *senderHandle; // @dynamic senderHandle;
+@property(retain, nonatomic) NSData *serverKey; // @dynamic serverKey;
 @property(copy, nonatomic) NSString *statusTypeIdentifier; // @dynamic statusTypeIdentifier;
 
 @end

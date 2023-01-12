@@ -15,8 +15,6 @@
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (id)_axTaglineLabel;
-- (id)_axSubtextLabel;
-- (id)_axTitleLabel;
 
 @end
 

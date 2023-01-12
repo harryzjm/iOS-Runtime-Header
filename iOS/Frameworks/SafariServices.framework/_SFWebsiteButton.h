@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType activationHandler; // @synthesize activationHandler=_activationHandler;
+- (void)setTintColor:(id)arg1;
 - (void)_activate:(id)arg1;
 - (id)init;
 

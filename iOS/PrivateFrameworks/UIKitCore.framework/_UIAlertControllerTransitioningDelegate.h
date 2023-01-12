@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIForceTransitioningDelegate-Protocol.h>
-
 @class NSString, UIInteractionProgress;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerTransitioningDelegate : NSObject <UIForceTransitioningDelegate>
+@interface _UIAlertControllerTransitioningDelegate : NSObject
 {
     UIInteractionProgress *interactionProgressForPresentation;
 }

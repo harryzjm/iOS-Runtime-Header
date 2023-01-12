@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class IBBitmap, NSString, NSValue;
 
-@interface IBImageLayoutInfoViewMarshallingResult : NSObject <IBBinaryArchiving>
+@interface IBImageLayoutInfoViewMarshallingResult : NSObject
 {
     IBBitmap *_bitmap;
     NSValue *_intrinsicContentSize;

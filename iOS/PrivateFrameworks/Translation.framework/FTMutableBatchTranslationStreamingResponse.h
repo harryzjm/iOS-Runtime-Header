@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FTBatchTranslationResponse, FTFinalBlazarResponse;
+@class FTBatchTranslationResponse, FTFinalBlazarResponse, NSObject;
+@protocol FLTBFBufferAccessor><NSCopying;
 
 __attribute__((visibility("hidden")))
 @interface FTMutableBatchTranslationStreamingResponse
 {
 }
 
++ (long long)content_typeForObject:(id)arg1;
++ (long long)content_typeForMutableObject:(id)arg1;
++ (Class)content_mutableClassForType:(long long)arg1;
+@property(copy, nonatomic) NSObject<FLTBFBufferAccessor><NSCopying> *content; // @dynamic content;
 @property(copy, nonatomic) FTFinalBlazarResponse *contentAsFTFinalBlazarResponse;
 @property(copy, nonatomic) FTBatchTranslationResponse *contentAsFTBatchTranslationResponse;
 @property(nonatomic) long long content_type;

@@ -10,6 +10,7 @@
 + (id)powerLogEventKindForTrigger:(id)arg1;
 - (_Bool)shouldFireInResponseToEvent:(id)arg1;
 - (id)publisherWithScheduler:(id)arg1;
+- (_Bool)needsRegistrationAfterFiring;
 - (_Bool)requiresEventInfoAsInput;
 - (_Bool)shouldFireTriggerWithEventInfo:(id)arg1 error:(out id *)arg2;
 - (_Bool)contextStoreRegistrationIsForWatch;

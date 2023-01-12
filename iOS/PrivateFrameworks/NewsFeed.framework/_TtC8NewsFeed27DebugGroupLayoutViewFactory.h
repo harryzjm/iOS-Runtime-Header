@@ -14,19 +14,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *colorPaletteProvider;
     MISSING_TYPE *cellSelectionRenderer;
     MISSING_TYPE *imageHeadlineViewRenderer;
-    MISSING_TYPE *featuredHeadlineViewRenderer;
-    MISSING_TYPE *featuredIssueHeadlineViewRenderer;
-    MISSING_TYPE *orderedHeadlineViewRenderer;
-    MISSING_TYPE *issueViewRenderer;
     MISSING_TYPE *coverIssueViewRenderer;
     MISSING_TYPE *coverChannelViewRenderer;
-    MISSING_TYPE *featuredIssueSupplementaryViewRenderer;
     MISSING_TYPE *formatLayoutViewRenderer;
-    MISSING_TYPE *webEmbedViewRenderer;
-    MISSING_TYPE *webEmbedViewControllerFactory;
     MISSING_TYPE *internalErrorViewRenderer;
-    MISSING_TYPE *audioTrackViewRenderer;
-    MISSING_TYPE *audioDailyBriefingViewRenderer;
+    MISSING_TYPE *hiddenContentEffectRenderer;
 }
 
 - (void).cxx_destruct;

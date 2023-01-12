@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTTokenProns_SanitizedSequence : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTTokenProns_SanitizedSequence : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_2dc830c1)addObjectToBuffer:(void *)arg1;
+- (void)sanitized_tokens_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)sanitized_tokens_count;
+- (id)sanitized_tokens_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *sanitized_tokens;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct SanitizedSequence *)arg2 verify:(_Bool)arg3;

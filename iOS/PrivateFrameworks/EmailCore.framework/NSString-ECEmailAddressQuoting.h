@@ -6,11 +6,9 @@
 
 #import <Foundation/NSString.h>
 
-#import <EmailCore/ECEmailAddressConvertible-Protocol.h>
-
 @class ECEmailAddress;
 
-@interface NSString (ECEmailAddressQuoting) <ECEmailAddressConvertible>
+@interface NSString (ECEmailAddressQuoting)
 + (id)ec_partialSurnames;
 + (id)ec_nameExtensions;
 + (void)__ec_extractFirstName:(id *)arg1 middleName:(id *)arg2 lastName:(id *)arg3 extension:(id *)arg4 fromString:(id)arg5;

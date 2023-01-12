@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOPDStorefrontFacesFilter : PBCodable <NSCopying>
+@interface GEOPDStorefrontFacesFilter : PBCodable
 {
 }
 

@@ -4,19 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIObservableScrollViewDelegate-Protocol.h>
-#import <StoreKitUI/SKUIShelfPageSection-Protocol.h>
-#import <StoreKitUI/SKUIShelfPageSectionConfigurationDataSource-Protocol.h>
-#import <StoreKitUI/SKUIViewElementSlideshowDelegate-Protocol.h>
-#import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
-#import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSArray, NSString, SKUIShelfPageComponent, SKUIShelfPageSectionConfiguration, SKUIShelfViewElement, SKUIViewElementLayoutContext, SKUIViewElementSlideshowController;
 @protocol SKUIScrollViewDelegateObserver;
 
 __attribute__((visibility("hidden")))
-@interface SKUIShelfPageSection <SKUIArtworkRequestDelegate, SKUIObservableScrollViewDelegate, SKUIShelfPageSectionConfigurationDataSource, SKUIViewElementSlideshowDelegate, UICollectionViewDataSource, UICollectionViewDelegate, SKUIShelfPageSection>
+@interface SKUIShelfPageSection : SKUIStorePageSection
 {
     SKUIViewElementLayoutContext *_cellLayoutContext;
     SKUIShelfPageSectionConfiguration *_configuration;

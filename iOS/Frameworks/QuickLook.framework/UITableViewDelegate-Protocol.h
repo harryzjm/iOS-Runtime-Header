@@ -41,6 +41,8 @@
 - (NSArray *)tableView:(UITableView *)arg1 editActionsForRowAtIndexPath:(NSIndexPath *)arg2;
 - (NSString *)tableView:(UITableView *)arg1 titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)arg2;
 - (long long)tableView:(UITableView *)arg1 editingStyleForRowAtIndexPath:(NSIndexPath *)arg2;
+- (void)tableView:(UITableView *)arg1 performPrimaryActionForRowAtIndexPath:(NSIndexPath *)arg2;
+- (_Bool)tableView:(UITableView *)arg1 canPerformPrimaryActionForRowAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableView:(UITableView *)arg1 didDeselectRowAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableView:(UITableView *)arg1 didSelectRowAtIndexPath:(NSIndexPath *)arg2;
 - (NSIndexPath *)tableView:(UITableView *)arg1 willDeselectRowAtIndexPath:(NSIndexPath *)arg2;

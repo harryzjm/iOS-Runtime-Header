@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBICActivtyItem-Protocol.h>
-#import <AssetCatalogFoundation/NSCoding-Protocol.h>
-
 @class NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSOrderedSet, NSSet, NSString, NSURL;
 
-@interface IBICAbstractCatalogItem : NSObject <IBICActivtyItem, NSCoding>
+@interface IBICAbstractCatalogItem : NSObject
 {
     NSDictionary *_cachedChildrenByIdentifier;
     NSArray *_cachedDisplayOrderedChildren;
@@ -29,6 +26,7 @@
     NSSet *_children;
     NSSet *_explicitTags;
     NSNumber *_compressionType;
+    long long _thinningPreference;
 }
 
 + (long long)validateCompressionType:(long long)arg1;
@@ -77,6 +75,7 @@
 + (id)createDefaultInstancesForUnitTesting;
 + (_Bool)populateNamedAssetImportInfo:(id)arg1 withIdiom:(id)arg2 options:(id)arg3 isIcon:(_Bool)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
+@property(nonatomic) long long thinningPreference; // @synthesize thinningPreference=_thinningPreference;
 @property(copy, nonatomic) NSNumber *compressionType; // @synthesize compressionType=_compressionType;
 @property(copy, nonatomic) NSSet *explicitTags; // @synthesize explicitTags=_explicitTags;
 @property(readonly, nonatomic) NSOrderedSet *intrinsicallyOrderedChildren; // @synthesize intrinsicallyOrderedChildren=_intrinsicallyOrderedChildren;
@@ -184,7 +183,7 @@
 - (void)assertChildIsLegalToAdd:(id)arg1;
 - (long long)displayPositionForProposedChild:(id)arg1 temporarilyValidatingFileName:(_Bool)arg2;
 @property(readonly, nonatomic) NSArray *displayOrderedChildren;
-- (id)recomupteDisplayOrderedChildren;
+- (id)recomputeDisplayOrderedChildren;
 - (long long)compareDisplayOrder:(id)arg1;
 @property(readonly) NSString *absoluteManifestFilePath;
 @property(readonly) NSDictionary *manifestContent;
@@ -240,6 +239,7 @@
 - (id)manifestArchivist:(id)arg1 slotForChild:(id)arg2;
 - (Class)manifestArchivistSlotClassForChildren:(id)arg1;
 - (_Bool)populateNamedAssetImportInfo:(id)arg1 allCompiledItems:(id)arg2 withOptions:(id)arg3 error:(id *)arg4;
+- (id)createNamedAssetImportInfosWithOptions:(id)arg1 allCompiledItems:(id)arg2 error:(id *)arg3;
 - (void)enumerateSizeProvidingItemsForValidatingBrandAssetCollection:(CDUnknownBlockType)arg1;
 - (_Bool)shouldPerformCV3DValidation;
 

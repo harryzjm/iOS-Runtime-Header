@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthMenstrualCyclesDaemon/HDMCAnalysisManagerObserver-Protocol.h>
-#import <HealthMenstrualCyclesDaemon/HKMCSettingsManagerObserver-Protocol.h>
-
-@class HDKeyValueDomain, HDMCAnalysisManager, HDPrimaryProfile, HDRestorableAlarm, HKMCAnalysis, HKMCSettingsManager, NSDate, NSString;
+@class HDKeyValueDomain, HDMCAnalysisManager, HDMCOvulationConfirmationStateManager, HDPrimaryProfile, HDRestorableAlarm, HKMCAnalysis, HKMCSettingsManager, NSDate, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDMCNotificationManager : NSObject <HDMCAnalysisManagerObserver, HKMCSettingsManagerObserver>
+__attribute__((visibility("hidden")))
+@interface HDMCNotificationManager : NSObject
 {
     HDPrimaryProfile *_profile;
     HDMCAnalysisManager *_analysisManager;
     HKMCSettingsManager *_settingsManager;
     NSObject<OS_dispatch_queue> *_queue;
     HDKeyValueDomain *_keyValueDomain;
+    HDMCOvulationConfirmationStateManager *_ovulationConfirmationStateManager;
+    HDKeyValueDomain *_unconfirmedDeviationStateKeyValueDomain;
+    HDKeyValueDomain *_protectedKeyValueDomain;
+    NSNumber *_lastDismissalDayIndex;
     HKMCAnalysis *_lastAnalysis;
     NSDate *_currentDateOverride;
     HDRestorableAlarm *_scheduler;
@@ -28,7 +30,10 @@
 @property(readonly, nonatomic) HDRestorableAlarm *scheduler; // @synthesize scheduler=_scheduler;
 - (void)_queue_removeAllScheduledNotificationsIfNotEnabled;
 - (void)_queue_rescheduleNotificationsForAnalysis:(id)arg1;
+- (id)_periodEventFromNotificationCategory:(id)arg1 notificationFireDayIndex:(long long)arg2;
+- (id)_notificationCategoriesWithBasicAnalytics;
 - (void)_queue_alarm:(id)arg1 didReceiveDueEvents:(id)arg2;
+- (id)_requestFromAlarmEvent:(id)arg1;
 - (void)settingsManagerDidUpdateNotificationSettings:(id)arg1;
 - (void)analysisManager:(id)arg1 didUpdateAnalysis:(id)arg2;
 - (id)_currentDate;

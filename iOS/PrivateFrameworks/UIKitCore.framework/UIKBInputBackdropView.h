@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSArray, NSLayoutConstraint, UIKBBackdropView, _UIVisualEffectBackdropView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBInputBackdropView
+@interface UIKBInputBackdropView : UIView
 {
     UIKBBackdropView *_inputBackdropFullView;
     UIKBBackdropView *_inputBackdropLeftView;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(nonatomic) double heightDiff; // @synthesize heightDiff=_heightDiff;
 @property(nonatomic) double tallHeight; // @synthesize tallHeight=_tallHeight;
 @property(nonatomic) double rightWidthDiff; // @synthesize rightWidthDiff=_rightWidthDiff;

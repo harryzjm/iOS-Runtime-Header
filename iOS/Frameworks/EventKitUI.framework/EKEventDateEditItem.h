@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKCellShortener-Protocol.h>
-#import <EventKitUI/EKDateTimeCellDelegate-Protocol.h>
-#import <EventKitUI/EKTimeZoneViewControllerDelegate-Protocol.h>
+#import "EKEventEditItem.h"
 
 @class EKDateTimeCell, NSArray, NSDate, NSDateComponents, NSString, NSTimeZone, PreferencesTwoPartValueCell, UIDatePicker, UITableViewCell;
 @protocol EKEventDateEditItemDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDateEditItem <EKTimeZoneViewControllerDelegate, EKDateTimeCellDelegate, EKCellShortener>
+@interface EKEventDateEditItem : EKEventEditItem
 {
     NSDateComponents *_startComponents;
     NSDateComponents *_endComponents;
@@ -62,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)_timeZoneDescription:(id)arg1;
 - (void)_allDayChanged:(id)arg1;
 - (void)dateChanged:(id)arg1 forSubitem:(long long)arg2;
+- (void)_datePickerEndedEditing:(id)arg1;
 - (void)_datePickerChanged:(id)arg1;
 - (void)_updateDatePicker:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_endDateIsBeforeStartDate;
@@ -100,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)setupPickerConstraintsForCell:(id)arg1 datePicker:(id)arg2;
 - (id)_endDatePickerCell;
 - (id)_startDatePickerCell;
+- (void)adjustDatePickerInterval:(id)arg1;
 - (id)_newDatePicker;
 - (id)_endTimeZoneCell;
 - (id)_startTimeZoneCell;

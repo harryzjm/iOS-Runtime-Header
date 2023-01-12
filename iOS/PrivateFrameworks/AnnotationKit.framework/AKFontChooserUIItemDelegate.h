@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/AKFontChooserUserInterfaceItem-Protocol.h>
-#import <AnnotationKit/AKUserInterfaceItem-Protocol.h>
-
 @class AKTextAttributesViewController, NSString;
 
-@interface AKFontChooserUIItemDelegate : NSObject <AKUserInterfaceItem, AKFontChooserUserInterfaceItem>
+@interface AKFontChooserUIItemDelegate : NSObject
 {
     AKTextAttributesViewController *_parentController;
 }

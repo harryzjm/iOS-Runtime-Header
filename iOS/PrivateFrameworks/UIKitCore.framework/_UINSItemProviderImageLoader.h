@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIImageLoader.h"
+
 @class NSItemProvider, NSProgress, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UINSItemProviderImageLoader
+@interface _UINSItemProviderImageLoader : _UIImageLoader
 {
     NSItemProvider *_itemProvider;
     NSString *_typeIdentifier;

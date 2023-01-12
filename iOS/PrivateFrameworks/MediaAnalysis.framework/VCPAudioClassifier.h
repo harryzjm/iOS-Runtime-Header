@@ -17,13 +17,14 @@ __attribute__((visibility("hidden")))
     long long _framePosition;
     float _sampleRate;
     NSMutableArray *_detectors;
+    NSMutableArray *_classifiers;
 }
 
 - (void).cxx_destruct;
 - (id)results;
 - (int)finalizeAnalysisAtTime:(const CDStruct_1b6d18a9 *)arg1;
 - (int)processAudioSamples:(struct AudioBufferList *)arg1 timestamp:(struct AudioTimeStamp)arg2;
-- (int)setupWithSample:(struct opaqueCMSampleBuffer *)arg1 andSampleBatchSize:(int)arg2;
+- (int)setupWithSample:(struct opaqueCMSampleBuffer *)arg1 trackDuration:(CDStruct_1b6d18a9)arg2 andSampleBatchSize:(int)arg3;
 - (id)initWithTypes:(unsigned long long)arg1;
 
 @end

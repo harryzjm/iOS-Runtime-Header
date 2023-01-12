@@ -10,6 +10,7 @@
 @protocol OS_dispatch_queue;
 
 @protocol CUAuthenticatableClient <NSObject>
+@property(nonatomic) int passwordType;
 @property(copy, nonatomic) NSString *password;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
 @property(copy, nonatomic) CDUnknownBlockType authPromptHandler;

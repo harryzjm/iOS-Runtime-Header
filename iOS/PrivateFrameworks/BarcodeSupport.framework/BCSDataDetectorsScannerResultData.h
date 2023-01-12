@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSParsedDataPrivate-Protocol.h>
-
 @class DDScannerResult, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSDataDetectorsScannerResultData : NSObject <BCSParsedDataPrivate>
+@interface BCSDataDetectorsScannerResultData : NSObject
 {
     long long _type;
     NSString *_extraPreviewText;

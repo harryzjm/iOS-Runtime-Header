@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceFrecentsWriting-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVOutputDeviceFrecentsWriter : NSObject <AVOutputDeviceFrecentsWriting>
+@interface AVOutputDeviceFrecentsWriter : NSObject
 {
     NSString *_frecentsFilePath;
     NSMutableDictionary *_frecents;

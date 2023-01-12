@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIClickPresentationTransition-Protocol.h>
-
-@class NSArray, NSString, UITargetedPreview, UIViewFloatAnimatableProperty, UIViewPropertyAnimator, _UIContextMenuAnimator, _UIContextMenuLayoutArbiterOutput, _UIContextMenuPresentationController, _UIContextMenuReparentingContainerView, _UIPortalView;
+@class NSArray, NSString, UITargetedPreview, UIViewFloatAnimatableProperty, UIViewPropertyAnimator, _UIContextMenuAnimator, _UIContextMenuLayoutArbiterOutput, _UIContextMenuPresentationController, _UIContextMenuReparentingContainerView, _UIGroupCompletion, _UIPortalView;
 @protocol _UIContextMenuPresentationAnimationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuPresentationAnimation : NSObject <_UIClickPresentationTransition>
+@interface _UIContextMenuPresentationAnimation : NSObject
 {
     _Bool _previewOverlapsMenu;
     _Bool _isDismissTransition;
@@ -23,6 +21,8 @@ __attribute__((visibility("hidden")))
     _UIContextMenuAnimator *_alongsideAnimator;
     unsigned long long _dismissalStyle;
     NSArray *_preferredBackgroundEffects;
+    NSArray *_secondarySourcePreviews;
+    unsigned long long _totalItemCount;
     _UIPortalView *_reparentingPortalView;
     UITargetedPreview *_trackedPreviewForReparenting;
     _UIContextMenuReparentingContainerView *_reparentingContainerView;
@@ -30,10 +30,14 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _reparentingAnimationBlock;
     CDUnknownBlockType _accessoryAnimationBlock;
     _UIContextMenuLayoutArbiterOutput *_expandedLayout;
+    _UIGroupCompletion *_groupCompletion;
+    UITargetedPreview *_stashedDismissalPreview;
     struct UIEdgeInsets _preferredBackgroundInsets;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UITargetedPreview *stashedDismissalPreview; // @synthesize stashedDismissalPreview=_stashedDismissalPreview;
+@property(retain, nonatomic) _UIGroupCompletion *groupCompletion; // @synthesize groupCompletion=_groupCompletion;
 @property(retain, nonatomic) _UIContextMenuLayoutArbiterOutput *expandedLayout; // @synthesize expandedLayout=_expandedLayout;
 @property(copy, nonatomic) CDUnknownBlockType accessoryAnimationBlock; // @synthesize accessoryAnimationBlock=_accessoryAnimationBlock;
 @property(copy, nonatomic) CDUnknownBlockType reparentingAnimationBlock; // @synthesize reparentingAnimationBlock=_reparentingAnimationBlock;
@@ -43,6 +47,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIPortalView *reparentingPortalView; // @synthesize reparentingPortalView=_reparentingPortalView;
 @property(nonatomic) _Bool reparentsInDestinationContainer; // @synthesize reparentsInDestinationContainer=_reparentsInDestinationContainer;
 @property(nonatomic) _Bool isDismissTransition; // @synthesize isDismissTransition=_isDismissTransition;
+@property(nonatomic) unsigned long long totalItemCount; // @synthesize totalItemCount=_totalItemCount;
+@property(copy, nonatomic) NSArray *secondarySourcePreviews; // @synthesize secondarySourcePreviews=_secondarySourcePreviews;
 @property(nonatomic) _Bool previewOverlapsMenu; // @synthesize previewOverlapsMenu=_previewOverlapsMenu;
 @property(nonatomic) struct UIEdgeInsets preferredBackgroundInsets; // @synthesize preferredBackgroundInsets=_preferredBackgroundInsets;
 @property(retain, nonatomic) NSArray *preferredBackgroundEffects; // @synthesize preferredBackgroundEffects=_preferredBackgroundEffects;
@@ -52,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_UIContextMenuPresentationAnimationDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) UITargetedPreview *sourcePreview; // @synthesize sourcePreview=_sourcePreview;
 - (void)_setBackgroundVisible:(_Bool)arg1;
+- (id)_accessoryViews;
 - (id)_menuView;
 - (id)_platterView;
 - (id)_backgroundView;
@@ -65,7 +72,9 @@ __attribute__((visibility("hidden")))
 - (void)_presentation_applyBackgroundEffectWithProgress:(double)arg1;
 - (void)_prepareAnimatablePropertyBasedAnimations;
 - (void)animateForDragSetDown;
+- (void)_prepareOverallAnimationCompletion;
 - (void)transitionDidEnd:(_Bool)arg1;
+- (id)_dismissalPreviewForSecondaryItemPreview:(id)arg1;
 - (id)_targetedPreviewForDismissalAnimation;
 - (void)_performReduceMotionDisappearanceTransition;
 - (void)_performReduceMotionAppearanceTransition;

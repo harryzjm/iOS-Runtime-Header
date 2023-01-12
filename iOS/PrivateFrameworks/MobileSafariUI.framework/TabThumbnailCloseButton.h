@@ -6,7 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIImageView, UIVisualEffectView;
+@class UIImage, UIImageView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface TabThumbnailCloseButton : UIButton
@@ -16,7 +16,10 @@ __attribute__((visibility("hidden")))
     UIImageView *_imageView;
 }
 
++ (id)backgroundColor;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *image;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

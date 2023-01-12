@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)description;
 - (void)removeAllSizes;
-- (void)addSize:(struct CGSize)arg1 baselineInfo:(CDStruct_a0add0ba *)arg2 forTargetSize:(struct CGSize)arg3;
-- (_Bool)getSize:(struct CGSize *)arg1 baselineInfo:(CDStruct_a0add0ba *)arg2 forTargetSize:(struct CGSize)arg3 isMultiline:(_Bool)arg4;
+- (void)addSize:(struct CGSize)arg1 baselineInfo:(CDStruct_3ae44ac1 *)arg2 forTargetSize:(struct CGSize)arg3;
+- (_Bool)getSize:(struct CGSize *)arg1 baselineInfo:(CDStruct_3ae44ac1 *)arg2 forTargetSize:(struct CGSize)arg3 isMultiline:(_Bool)arg4;
 
 @end
 

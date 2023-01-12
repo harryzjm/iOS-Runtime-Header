@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPAVLightweightRoutingControllerDelegate-Protocol.h>
-
-@class MPAVLightweightRoutingController, MPCMediaFoundationTranslator, MPCModelGenericAVItem, MPCPlaybackEngine, MPCPlayerAudioRoute, NSString;
+@class MPAVRoutingController, MPCMediaFoundationTranslator, MPCModelGenericAVItem, MPCPlaybackEngine, MPCPlayerAudioRoute, MPPlaybackEQSetting, NSString;
 @protocol MFPlaybackStackController><MFQueueManagement, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface MPCPlayerItemConfigurator : NSObject <MPAVLightweightRoutingControllerDelegate>
+@interface MPCPlayerItemConfigurator : NSObject
 {
     MPCPlayerAudioRoute *_currentAudioRoute;
-    long long _defaultEQPresetType;
+    MPAVRoutingController *_routingController;
+    MPPlaybackEQSetting *_eqSetting;
     MPCMediaFoundationTranslator *_translator;
     id <MFPlaybackStackController><MFQueueManagement> _stackController;
     MPCPlaybackEngine *_playbackEngine;
-    MPAVLightweightRoutingController *_routingController;
     NSObject<OS_dispatch_source> *_userDefaultsDebouncer;
     MPCModelGenericAVItem *_currenItem;
 }
@@ -27,20 +25,26 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak MPCModelGenericAVItem *currenItem; // @synthesize currenItem=_currenItem;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *userDefaultsDebouncer; // @synthesize userDefaultsDebouncer=_userDefaultsDebouncer;
-@property(readonly, nonatomic) MPAVLightweightRoutingController *routingController; // @synthesize routingController=_routingController;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(readonly, nonatomic) __weak id <MFPlaybackStackController><MFQueueManagement> stackController; // @synthesize stackController=_stackController;
 @property(readonly, nonatomic) __weak MPCMediaFoundationTranslator *translator; // @synthesize translator=_translator;
-@property(nonatomic) long long defaultEQPresetType; // @synthesize defaultEQPresetType=_defaultEQPresetType;
+@property(retain, nonatomic) MPPlaybackEQSetting *eqSetting; // @synthesize eqSetting=_eqSetting;
+@property(readonly, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
 - (void)_updatePreferredAudioFormatIfRequiredForItem:(id)arg1 route:(id)arg2;
+- (void)_updateQueueItemsAndPlayerForFormatChangeIfRequired;
+- (_Bool)_shouldReloadEntireQueue;
+- (id)_modeObjectForPlayerItem:(id)arg1;
+- (id)queuedItems;
 - (id)currentItem;
 - (void)updateCurrentAudioRouteWithPickedRoutes:(id)arg1;
 @property(readonly, nonatomic) MPCPlayerAudioRoute *currentAudioRoute; // @synthesize currentAudioRoute=_currentAudioRoute;
-- (void)lightweightRoutingController:(id)arg1 didChangePickedRoutes:(id)arg2;
+- (void)routingController:(id)arg1 pickedRoutesDidChange:(id)arg2;
 - (id)_audioFormatsDictionaryWithHLSMetadata:(id)arg1;
 - (id)_HLSMetadataForAsset:(id)arg1 error:(id *)arg2;
-- (id)_audioFormatsDictionaryWithHLSMetadataFromAsset:(id)arg1 error:(id *)arg2;
-- (_Bool)_setupQueueItemForHLSPlayback:(id)arg1 error:(id *)arg2;
+- (id)_audioFormatsDictionaryWithHLSMetadataFromAsset:(id)arg1 metadataWaitTime:(double *)arg2 error:(id *)arg3;
+- (void)_emitAudioFormatSelection:(id)arg1 item:(id)arg2;
+- (void)_setupQueueItemForLossyAudioPlayback:(id)arg1;
+- (_Bool)_setupQueueItemForEnhancedAudioHLSPlayback:(id)arg1 metadataWaitTime:(double *)arg2 error:(id *)arg3;
 - (void)_setupPlayer;
 - (void)processAudioQualityChanges;
 - (void)tearDownDefaultsDebouncer;

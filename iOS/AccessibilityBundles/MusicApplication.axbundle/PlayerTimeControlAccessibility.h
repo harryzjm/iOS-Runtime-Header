@@ -12,12 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityAbsoluteValue;
-- (struct CGPoint)_accessibilityMaxScrubberPosition;
-- (struct CGPoint)_accessibilityMinScrubberPosition;
-- (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
-- (double)_accessibilityIncreaseAmount:(_Bool)arg1;
+- (void)_accessibilityIncreaseAmount:(_Bool)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;

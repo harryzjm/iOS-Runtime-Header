@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDFormulaBuilding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDBuildableFormula : NSObject <EDFormulaBuilding>
+@interface EDBuildableFormula : NSObject
 {
     struct EDBuildablePtg *mTree;
     int mWarning;

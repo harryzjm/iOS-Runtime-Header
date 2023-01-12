@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UserAlerts/URTDestinationPresenting-Protocol.h>
-
 @class NSString, URTAlert;
 @protocol URTDestinationPresentationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface URTDefaultDestinationPresentation <URTDestinationPresenting>
+@interface URTDefaultDestinationPresentation
 {
     struct __CFRunLoopSource *_runLoopSource;
     URTAlert *_alert;

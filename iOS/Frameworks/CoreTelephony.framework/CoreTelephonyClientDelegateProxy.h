@@ -6,12 +6,10 @@
 
 #import <Foundation/NSProxy.h>
 
-#import <CoreTelephony/CoreTelephonyClientDelegateProxyInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CoreTelephonyClientDelegateProxy : NSProxy <CoreTelephonyClientDelegateProxyInterface>
+@interface CoreTelephonyClientDelegateProxy : NSProxy
 {
     struct queue _userQueue;
     id _delegate;

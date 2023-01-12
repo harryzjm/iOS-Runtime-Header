@@ -11,8 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axWorkflowCellName;
 - (void)setRunningState:(long long)arg1;
 - (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
 
 @end
 

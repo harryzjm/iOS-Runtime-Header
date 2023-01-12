@@ -6,8 +6,6 @@
 
 #import <Foundation/NSURL.h>
 
-#import <MailWebProcessSupport/_MSComposeBundlePageControllerNSURL-Protocol.h>
-
-@interface NSURL (MSComposeBundlePageControllerExtras) <_MSComposeBundlePageControllerNSURL>
+@interface NSURL (MSComposeBundlePageControllerExtras)
 @end
 

@@ -7,6 +7,7 @@
 #import <PassKitCore/PKPaymentAuthorizationDataModel.h>
 
 @interface PKPaymentAuthorizationDataModel (NanoPassKit)
+- (_Bool)npkIsCompanionAuthForTvOS;
 - (_Bool)npkIsExternalContextAuthorization;
 - (_Bool)npkIsCardOnFilePayment;
 - (_Bool)_hasNonPeerPaymentAcceptedPasses;

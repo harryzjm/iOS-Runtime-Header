@@ -11,7 +11,16 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)leafSubclassesOfClass:(Class)arg1 excludingRootClass:(_Bool)arg2 overridingClassSelector:(SEL)arg3;
++ (id)allSubclassesOfClass:(Class)arg1 excludingRootClass:(_Bool)arg2 overridingClassSelector:(SEL)arg3;
++ (id)subclassesOfClass:(Class)arg1 excludingRootClass:(_Bool)arg2 passingTest:(CDUnknownBlockType)arg3;
++ (void)enumerateSubclassesOfClass:(Class)arg1 excludingRootClass:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
++ (_Bool)class:(Class)arg1 overridesClassSelector:(SEL)arg2;
 + (_Bool)object:(id)arg1 overridesSelector:(SEL)arg2;
++ (_Bool)linkTimeOrRunTimeAtLeastVersion:(int)arg1;
++ (_Bool)linkTimeOrRunTimeBeforeVersion:(int)arg1;
++ (int)runTimeVersion;
++ (int)linkTimeVersion;
 
 @end
 

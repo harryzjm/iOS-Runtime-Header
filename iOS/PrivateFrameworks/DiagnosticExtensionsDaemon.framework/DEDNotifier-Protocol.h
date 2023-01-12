@@ -6,11 +6,10 @@
 
 #import <DiagnosticExtensionsDaemon/NSObject-Protocol.h>
 
-@class DEDBugSession, DEDBugSessionConfiguration;
+@class NSString;
 
 @protocol DEDNotifier <NSObject>
-- (void)cancelNotification;
-- (void)scheduleNotification;
-- (id)initWithConfiguration:(DEDBugSessionConfiguration *)arg1 session:(DEDBugSession *)arg2;
+- (void)removeNotificationForSession:(NSString *)arg1;
+- (void)presentNotificationForSession:(NSString *)arg1;
 @end
 

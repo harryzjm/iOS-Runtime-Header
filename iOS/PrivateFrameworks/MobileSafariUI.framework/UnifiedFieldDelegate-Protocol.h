@@ -19,6 +19,7 @@
 - (void)unifiedField:(UnifiedField *)arg1 moveCompletionSelectionByRowOffset:(long long)arg2;
 - (_Bool)unifiedFieldShouldMoveCompletionSelection:(UnifiedField *)arg1;
 - (void)unifiedFieldReflectedItemDidChange:(UnifiedField *)arg1;
+- (void)unifiedFieldExternalSearchDidEnd:(UnifiedField *)arg1;
 - (void)unifiedFieldVoiceSearchStateDidChange:(UnifiedField *)arg1;
 - (id <CompletionItem>)unifiedField:(UnifiedField *)arg1 topHitForText:(NSString *)arg2;
 - (_Bool)unifiedField:(UnifiedField *)arg1 shouldWaitForTopHitForText:(NSString *)arg2;

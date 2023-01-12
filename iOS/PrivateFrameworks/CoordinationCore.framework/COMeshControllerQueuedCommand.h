@@ -6,24 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/COMeshControllerQueuedElementProtocol-Protocol.h>
-
 @class COMeshCommand, COMeshNode, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COMeshControllerQueuedCommand : NSObject <COMeshControllerQueuedElementProtocol>
+@interface COMeshControllerQueuedCommand : NSObject
 {
     COMeshCommand *_command;
-    CDUnknownBlockType _callback;
+    CDUnknownBlockType _completionHandler;
     COMeshNode *_destination;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) COMeshNode *destination; // @synthesize destination=_destination;
-@property(readonly, copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
+@property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(readonly, nonatomic) COMeshCommand *command; // @synthesize command=_command;
 - (void)invokeCallbackWithError:(id)arg1;
-- (id)initWithCommand:(id)arg1 sentCallback:(CDUnknownBlockType)arg2;
+- (id)initWithCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

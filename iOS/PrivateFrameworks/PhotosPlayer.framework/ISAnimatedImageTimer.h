@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ISObservable.h"
+
 @class CADisplayLink, _ISAnimatedImageTimerForwardingProxy;
 
 __attribute__((visibility("hidden")))
-@interface ISAnimatedImageTimer
+@interface ISAnimatedImageTimer : ISObservable
 {
     CADisplayLink *_displayLink;
     _ISAnimatedImageTimerForwardingProxy *_displayLinkProxy;

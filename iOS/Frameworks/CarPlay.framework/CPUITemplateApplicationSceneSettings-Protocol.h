@@ -10,6 +10,7 @@
 @protocol OS_xpc_object;
 
 @protocol CPUITemplateApplicationSceneSettings <NSObject>
+@property(readonly, nonatomic) long long mapStyle;
 @property(readonly, copy, nonatomic) NSObject<OS_xpc_object> *endpoint;
 @end
 

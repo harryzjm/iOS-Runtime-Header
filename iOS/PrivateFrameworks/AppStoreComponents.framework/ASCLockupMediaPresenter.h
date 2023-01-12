@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class ASCLockup, ASCPendingPromises, ASCPresenterContext;
-@protocol ASCLockupMediaPresenterObserver, ASCLockupMediaPresenterView;
+@class ASCLockup, ASCPendingPromises, ASCPresenterContext, NSString;
+@protocol ASCLockupMediaPresenterBackgroundView, ASCLockupMediaPresenterObserver, ASCLockupMediaPresenterView;
 
 __attribute__((visibility("hidden")))
 @interface ASCLockupMediaPresenter : NSObject
 {
     id <ASCLockupMediaPresenterObserver> _observer;
+    id <ASCLockupMediaPresenterBackgroundView> _backgroundView;
     id <ASCLockupMediaPresenterView> _view;
     ASCPresenterContext *_context;
     ASCLockup *_lockup;
@@ -25,7 +26,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) ASCLockup *lockup; // @synthesize lockup=_lockup;
 @property(readonly, nonatomic) ASCPresenterContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) id <ASCLockupMediaPresenterView> view; // @synthesize view=_view;
+@property(nonatomic) __weak id <ASCLockupMediaPresenterBackgroundView> backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(nonatomic) __weak id <ASCLockupMediaPresenterObserver> observer; // @synthesize observer=_observer;
+- (void)videoView:(id)arg1 videoStateDidChange:(long long)arg2;
 - (void)screenshotArtwork:(id)arg1 didFailFetchWithError:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)screenshotArtwork:(id)arg1 didFetchImage:(id)arg2 atIndex:(long long)arg3;
 - (void)performFollowUpWork:(CDUnknownBlockType)arg1;
@@ -33,11 +36,16 @@ __attribute__((visibility("hidden")))
 - (id)artworkForLockup:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (id)videoViewForLockup:(id)arg1;
-- (unsigned long long)numberOfMediaViewsForLockup:(id)arg1;
 - (void)lockupPresenterDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithView:(id)arg1 lockupPresenter:(id)arg2;
 - (id)initWithView:(id)arg1 lockupPresenter:(id)arg2 context:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

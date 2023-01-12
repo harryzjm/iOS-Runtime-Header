@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class HKConceptSelection;
 
 __attribute__((visibility("hidden")))
-@interface HKConceptQueryConfiguration
+@interface HKConceptQueryConfiguration : HKQueryServerConfiguration
 {
     HKConceptSelection *_selection;
 }

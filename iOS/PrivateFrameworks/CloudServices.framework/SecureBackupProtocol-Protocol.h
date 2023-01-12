@@ -6,13 +6,13 @@
 
 #import <CloudServices/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSSet, NSString, OTEscrowRecord, OTICDPRecordContext, SecureBackup;
+@class NSArray, NSData, NSDictionary, NSSet, NSString, OTEscrowRecord, OTICDPRecordContext, SecureBackup, SecureBackupEscrowReason;
 
 @protocol SecureBackupProtocol <NSObject>
 - (void)getCertificatesWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSData *, NSData *, NSError *))arg2;
 - (void)createICDPRecordWithRequest:(SecureBackup *)arg1 recordContents:(NSDictionary *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)recoverRecordContentsWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)beginHSA2PasscodeRequest:(SecureBackup *)arg1 desirePasscodeImmediately:(_Bool)arg2 uuid:(NSString *)arg3 reply:(void (^)(SecureBackupBeginPasscodeRequestResults *, NSError *))arg4;
+- (void)beginHSA2PasscodeRequest:(SecureBackup *)arg1 desirePasscodeImmediately:(_Bool)arg2 uuid:(NSString *)arg3 reason:(SecureBackupEscrowReason *)arg4 reply:(void (^)(SecureBackupBeginPasscodeRequestResults *, NSError *))arg5;
 - (void)prepareHSA2EscrowRecordContents:(SecureBackup *)arg1 usesComplexPassphrase:(_Bool)arg2 reply:(void (^)(NSError *))arg3;
 - (void)stateCaptureWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)backupWithInfo:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;

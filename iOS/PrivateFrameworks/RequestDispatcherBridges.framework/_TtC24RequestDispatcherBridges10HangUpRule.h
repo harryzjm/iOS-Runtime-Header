@@ -11,6 +11,8 @@
 @interface _TtC24RequestDispatcherBridges10HangUpRule : _TtCs12_SwiftObject
 {
     MISSING_TYPE *ruleType;
+    MISSING_TYPE *isUserOnActivePhoneCall;
+    MISSING_TYPE *isBlushingPhantomEnabled;
 }
 
 @end

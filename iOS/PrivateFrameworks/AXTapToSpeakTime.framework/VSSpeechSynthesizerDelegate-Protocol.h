@@ -6,19 +6,12 @@
 
 #import <AXTapToSpeakTime/NSObject-Protocol.h>
 
-@class NSArray, NSError, NSString, VSAudioData, VSInstrumentMetrics, VSPresynthesizedAudioRequest, VSSpeechRequest, VSSpeechSynthesizer;
+@class NSArray, NSError, NSString, VSAudioData, VSInstrumentMetrics, VSPresynthesizedAudioRequest, VSPreviewRequest, VSSpeechRequest, VSSpeechSynthesizer;
 
 @protocol VSSpeechSynthesizerDelegate <NSObject>
 
 @optional
-- (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 willSpeakRangeOfSpeechString:(struct _NSRange)arg2;
-- (void)speechSynthesizerDidContinueSpeaking:(VSSpeechSynthesizer *)arg1;
-- (void)speechSynthesizerDidPauseSpeaking:(VSSpeechSynthesizer *)arg1;
-- (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishSpeakingRequest:(VSSpeechRequest *)arg2 successfully:(_Bool)arg3 withError:(NSError *)arg4;
-- (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishSpeaking:(_Bool)arg2 withError:(NSError *)arg3;
-- (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishSpeaking:(_Bool)arg2 phonemesSpoken:(NSString *)arg3 withError:(NSError *)arg4;
-- (void)speechSynthesizerDidStartSpeaking:(VSSpeechSynthesizer *)arg1;
-- (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishSynthesisRequest:(VSSpeechRequest *)arg2 withError:(NSError *)arg3;
+- (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didStartPlayingPreviewRequest:(VSPreviewRequest *)arg2;
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishPrewarmRequest:(VSSpeechRequest *)arg2 withError:(NSError *)arg3;
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishPresynthesizedAudioRequest:(VSPresynthesizedAudioRequest *)arg2 withInstrumentMetrics:(VSInstrumentMetrics *)arg3 error:(NSError *)arg4;
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didStopPresynthesizedAudioRequest:(VSPresynthesizedAudioRequest *)arg2 atEnd:(_Bool)arg3 error:(NSError *)arg4;

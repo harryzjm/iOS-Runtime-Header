@@ -12,7 +12,8 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *coordinator;
-    MISSING_TYPE *article;
+    MISSING_TYPE *articleModel;
+    MISSING_TYPE *loadedArticle;
     MISSING_TYPE *articleAccess;
     MISSING_TYPE *dataManager;
     MISSING_TYPE *readingListObserver;

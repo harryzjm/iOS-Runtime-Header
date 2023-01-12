@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
 @class NSUUID;
 
-@interface KNBuildChunkIdentifier : NSObject <NSCopying>
+@interface KNBuildChunkIdentifier : NSObject
 {
     NSUUID *_buildUUID;
     int _chunkID;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, readonly) UIView *attachmentContainerView;
 - (void)updateDrawingHeight:(double)arg1;
 - (double)heightFromDrawing:(id)arg1 delta:(double)arg2;
+- (_Bool)hitByTouchLocation:(struct CGPoint)arg1 bounds:(struct CGRect)arg2;
 @property(nonatomic, readonly) _Bool isAtEndOfDocument;
 - (void)updateFrameForTextContainer;
 - (void)didEndDrawing;

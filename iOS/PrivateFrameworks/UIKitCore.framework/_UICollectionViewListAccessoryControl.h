@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIControl.h"
+
 @class UIColor, UIImageView;
 @protocol UITableConstants;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewListAccessoryControl
+@interface _UICollectionViewListAccessoryControl : UIControl
 {
     UIImageView *_imageView;
     _Bool _needsImageViewUpdate;
@@ -16,9 +18,11 @@ __attribute__((visibility("hidden")))
     id <UITableConstants> _constants;
     UIColor *_accessoryTintColor;
     UIColor *_accessoryBackgroundColor;
+    CDUnknownBlockType _actionHandler;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(retain, nonatomic) UIColor *accessoryBackgroundColor; // @synthesize accessoryBackgroundColor=_accessoryBackgroundColor;
 @property(retain, nonatomic) UIColor *accessoryTintColor; // @synthesize accessoryTintColor=_accessoryTintColor;
 @property(retain, nonatomic) id <UITableConstants> constants; // @synthesize constants=_constants;
@@ -33,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
-- (void)addActionHandler:(CDUnknownBlockType)arg1;
+- (void)_executeActionHandler;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (id)initWithType:(long long)arg1 constants:(id)arg2;
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSArray, NSDate, NSMutableSet, NSNumber, NSString, TSCECategoryRef, TSCEUndoTractList, TSCEViewTractRef, TSTFormulaPredArgData, TSTUIDRectRef;
 
-@interface TSTFormulaPredArg : NSObject <NSCopying>
+@interface TSTFormulaPredArg : NSObject
 {
     TSCECategoryRef *_categoryRef;
     TSCEViewTractRef *_viewTractRef;

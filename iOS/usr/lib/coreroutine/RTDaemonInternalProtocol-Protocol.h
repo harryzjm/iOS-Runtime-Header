@@ -9,7 +9,14 @@
 @class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, NSUUID, RTFetchFingerprintsOptions, RTFingerprint, RTLocation, RTLocationOfInterest, RTLocationOfInterestVisit, RTPlaceInferenceOptions, RTScenarioTrigger, RTSignalGeneratorOptions, RTVisit;
 
 @protocol RTDaemonInternalProtocol <NSObject>
-- (void)fetchSnapshotWithOptions:(unsigned long long)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)updateIntermittentGNSSRegistrationOverrideState:(unsigned long long)arg1 reply:(void (^)(NSError *))arg2;
+- (void)fetchIntermittentGNSSRegistrationStateWithReply:(void (^)(_Bool, NSError *))arg1;
+- (void)fetchBuildingPolygonsFromLocations:(NSArray *)arg1 radius:(double)arg2 limit:(unsigned long long)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
+- (void)displayWorkoutDistanceRecordsWithHandler:(void (^)(NSError *))arg1;
+- (void)deleteWorkout:(NSUUID *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)processNewlyAddedWorkout:(NSUUID *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)updateRelevanceScoresWithReply:(void (^)(NSError *))arg1;
+- (void)forceProcessWorkoutsClearClusters:(_Bool)arg1 clearExistingDistanceMatrix:(_Bool)arg2 buildDistanceMatrix:(_Bool)arg3 syncClustersToHealhtKit:(_Bool)arg4 syncClustersToWatch:(_Bool)arg5 filteringDistanceThreshold:(double)arg6 topNWorkouts:(unsigned long long)arg7 isSchedulerTriggered:(_Bool)arg8 reply:(void (^)(NSError *))arg9;
 - (void)logDatabasesWithReply:(void (^)(NSError *))arg1;
 - (void)extendLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 toExpireOn:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)expireLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 expirationDate:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;

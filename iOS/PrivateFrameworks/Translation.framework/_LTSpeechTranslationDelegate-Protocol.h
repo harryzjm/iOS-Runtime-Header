@@ -6,11 +6,12 @@
 
 #import <Translation/NSObject-Protocol.h>
 
-@class NSArray, NSError, NSLocale, NSString, _LTLanguageDetectionResult, _LTServerEndpointerFeatures, _LTSpeechRecognitionResult, _LTTranslationResult;
+@class NSArray, NSError, NSLocale, NSString, _LTLanguageDetectionResult, _LTServerEndpointerFeatures, _LTSpeechRecognitionResult, _LTTranslationResult, _LTWordTimingInfo;
 
 @protocol _LTSpeechTranslationDelegate <NSObject>
 
 @optional
+- (void)ttsProgressed:(_LTWordTimingInfo *)arg1;
 - (void)languageInstallProgressed:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)paragraphTranslation:(NSString *)arg1 result:(_LTTranslationResult *)arg2 error:(NSError *)arg3;
 - (void)cancel;

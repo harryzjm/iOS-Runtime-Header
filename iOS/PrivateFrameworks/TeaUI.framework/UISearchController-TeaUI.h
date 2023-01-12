@@ -6,9 +6,7 @@
 
 #import <UIKit/UISearchController.h>
 
-#import <TeaUI/TSPresentable-Protocol.h>
-
-@interface UISearchController (TeaUI) <TSPresentable>
+@interface UISearchController (TeaUI)
 - (void)presenterDidAppear:(id)arg1;
 - (void)presenterDidDisappear:(id)arg1;
 - (void)presenterWillDisappear:(id)arg1;

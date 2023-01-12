@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFCore/NSCopying-Protocol.h>
-
-@class AVDisplayCriteria, AVMetadataItem, NSArray, NSData, NSDictionary, NSString;
+@class AVDisplayCriteria, AVMetadataItem, NSArray, NSData, NSDictionary, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetInspector <NSCopying>
+@interface AVAssetInspector
 {
 }
 
@@ -34,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isCompatibleWithPhotosTranscodingServiceWithOptions:(id)arg1;
 @property(readonly, nonatomic, getter=isPlayable) _Bool playable;
 - (_Bool)hasProtectedContent;
-@property(readonly, nonatomic, getter=_instanceIdentifier) NSString *instanceIdentifier;
+@property(readonly, nonatomic) NSUUID *httpSessionIdentifier;
 @property(readonly, nonatomic) NSString *identifyingTag;
 @property(readonly, nonatomic) NSString *identifyingTagClass;
 - (id)metadataForFormat:(id)arg1;

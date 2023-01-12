@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)enumerateDatesInString:(id)arg1 calendar:(id)arg2 currentDate:(id)arg3 locale:(id)arg4 withBlock:(CDUnknownBlockType)arg5;
+- (void)enumerateDatesInString:(id)arg1 options:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 
 @end
 

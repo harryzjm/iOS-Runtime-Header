@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/_UIBasicAnimationFactory-Protocol.h>
-
 @class CAMediaTimingFunction, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUISimpleAnimationFactory : NSObject <_UIBasicAnimationFactory>
+@interface SKUISimpleAnimationFactory : NSObject
 {
     CAMediaTimingFunction *_timingFunction;
 }

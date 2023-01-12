@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <PersistentConnection/CoreTelephonyClientDataDelegate-Protocol.h>
-#import <PersistentConnection/PCInterfaceUsabilityMonitorDelegate-Protocol.h>
-#import <PersistentConnection/PCInterfaceUsabilityMonitorProtocol-Protocol.h>
-
 @class CTXPCServiceSubscriptionContext, CUTWeakReference, CoreTelephonyClient, NSString, PCInterfaceUsabilityMonitor;
 @protocol OS_dispatch_queue, PCInterfaceUsabilityMonitorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PCWWANUsabilityMonitor : NSObject <CoreTelephonyClientDataDelegate, PCInterfaceUsabilityMonitorProtocol, PCInterfaceUsabilityMonitorDelegate>
+@interface PCWWANUsabilityMonitor : NSObject
 {
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_ivarQueue;

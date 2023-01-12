@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/CKDOperationPipelining-Protocol.h>
-
 @class CKDRecordFetchAggregator, CKQuery, CKQueryCursor, CKRecordZoneID, NSDictionary, NSMutableArray, NSObject, NSSet, NSString;
 @protocol CKQueryOperationCallbacks, OS_dispatch_group, OS_dispatch_queue;
 
-@interface CKDQueryOperation <CKDOperationPipelining>
+@interface CKDQueryOperation
 {
     _Bool _shouldFetchAssetContent;
     _Bool _fetchAllResults;

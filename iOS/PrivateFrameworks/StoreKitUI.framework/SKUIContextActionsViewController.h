@@ -6,16 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <StoreKitUI/UIInterfaceActionHandlerInvocationDelegate-Protocol.h>
-#import <StoreKitUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <StoreKitUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <StoreKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, SKUIContextActionsConfiguration, SKUIContextActionsPresentationController, UIGestureRecognizer, UIInterfaceActionGroupView, UIStackView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIContextActionsViewController : UIViewController <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning, UIPopoverPresentationControllerDelegate, UIInterfaceActionHandlerInvocationDelegate, UIAdaptivePresentationControllerDelegate>
+@interface SKUIContextActionsViewController : UIViewController
 {
     _Bool _orbPresentation;
     _Bool _appliedSystemRecognizer;

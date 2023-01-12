@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCH3DLens;
 
-@interface TSCH3DCamera : NSObject <NSCopying>
+@interface TSCH3DCamera : NSObject
 {
     TSCH3DLens *_lens;
     float _viewportScale;

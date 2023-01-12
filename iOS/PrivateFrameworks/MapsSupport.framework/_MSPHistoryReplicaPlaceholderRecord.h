@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/MSPHistoryReplicaRecord-Protocol.h>
-#import <MapsSupport/NSSecureCoding-Protocol.h>
-
 @class MSPVectorTimestamp, NSData, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MSPHistoryReplicaPlaceholderRecord : NSObject <MSPHistoryReplicaRecord, NSSecureCoding>
+@interface _MSPHistoryReplicaPlaceholderRecord : NSObject
 {
     NSData *_contents;
     MSPVectorTimestamp *_contentsTimestamp;

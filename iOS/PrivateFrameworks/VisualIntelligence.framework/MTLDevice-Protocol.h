@@ -6,14 +6,16 @@
 
 #import <VisualIntelligence/NSObject-Protocol.h>
 
-@class MTLAccelerationStructureDescriptor, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLStitchedLibraryDescriptor, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSString, NSURL, OS_dispatch_data;
-@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLCounterSampleBuffer, MTLDepthStencilState, MTLDynamicLibrary, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture;
+@class MTLAccelerationStructureDescriptor, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIOCommandQueueDescriptor, MTLIndirectCommandBufferDescriptor, MTLMeshRenderPipelineDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLStitchedLibraryDescriptor, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSString, NSURL, OS_dispatch_data;
+@protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLBufferBinding, MTLCommandQueue, MTLComputePipelineState, MTLCounterSampleBuffer, MTLDepthStencilState, MTLDynamicLibrary, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIOCommandQueue, MTLIOFileHandle, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture;
 
 @protocol MTLDevice <NSObject>
 @property(nonatomic, readonly) _Bool supportsPrimitiveMotionBlur;
 @property(nonatomic, readonly) _Bool supportsRaytracingFromRender;
 @property(nonatomic, readonly) _Bool supportsFunctionPointersFromRender;
 @property(nonatomic, readonly) _Bool supportsFunctionPointers;
+- (CDStruct_4bcfbbae)heapAccelerationStructureSizeAndAlignWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
+- (CDStruct_4bcfbbae)heapAccelerationStructureSizeAndAlignWithSize:(unsigned long long)arg1;
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
 - (id <MTLAccelerationStructure>)newAccelerationStructureWithSize:(unsigned long long)arg1;
 - (CDStruct_14f26992)accelerationStructureSizesWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
@@ -25,12 +27,18 @@
 @property(nonatomic, readonly) _Bool supportsDynamicLibraries;
 - (_Bool)supportsVertexAmplificationCount:(unsigned long long)arg1;
 - (_Bool)supportsCounterSampling:(unsigned long long)arg1;
+- (id <MTLArgumentEncoder>)newArgumentEncoderWithBufferBinding:(id <MTLBufferBinding>)arg1;
 - (void)sampleTimestamps:(unsigned long long *)arg1 gpuTimestamp:(unsigned long long *)arg2;
 - (id <MTLCounterSampleBuffer>)newCounterSampleBufferWithDescriptor:(MTLCounterSampleBufferDescriptor *)arg1 error:(id *)arg2;
 @property(nonatomic, readonly) NSArray *counterSets;
 @property(nonatomic, readonly) long long maxBufferLength;
+- (CDStruct_14f26992)sparseTileSizeWithTextureType:(unsigned long long)arg1 pixelFormat:(unsigned long long)arg2 sampleCount:(unsigned long long)arg3 sparsePageSize:(long long)arg4;
+- (unsigned long long)sparseTileSizeInBytesForSparsePageSize:(long long)arg1;
 @property(nonatomic, readonly) long long sparseTileSizeInBytes;
 - (CDStruct_14f26992)sparseTileSizeWithTextureType:(unsigned long long)arg1 pixelFormat:(unsigned long long)arg2 sampleCount:(unsigned long long)arg3;
+- (id <MTLIOFileHandle>)newIOHandleWithURL:(NSURL *)arg1 compressionMethod:(long long)arg2 error:(id *)arg3;
+- (id <MTLIOCommandQueue>)newIOCommandQueueWithDescriptor:(MTLIOCommandQueueDescriptor *)arg1 error:(id *)arg2;
+- (id <MTLIOFileHandle>)newIOHandleWithURL:(NSURL *)arg1 error:(id *)arg2;
 - (id <MTLSharedEvent>)newSharedEventWithHandle:(MTLSharedEventHandle *)arg1;
 - (id <MTLSharedEvent>)newSharedEvent;
 - (id <MTLEvent>)newEvent;
@@ -42,6 +50,8 @@
 - (_Bool)areProgrammableSamplePositionsSupported;
 @property(nonatomic, readonly) long long maxArgumentBufferSamplerCount;
 @property(nonatomic, readonly) long long maxThreadgroupMemoryLength;
+- (void)newRenderPipelineStateWithMeshDescriptor:(MTLMeshRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(id <MTLRenderPipelineState>, MTLRenderPipelineReflection *, NSError *))arg3;
+- (id <MTLRenderPipelineState>)newRenderPipelineStateWithMeshDescriptor:(MTLMeshRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (void)newRenderPipelineStateWithTileDescriptor:(MTLTileRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 completionHandler:(void (^)(id <MTLRenderPipelineState>, MTLRenderPipelineReflection *, NSError *))arg3;
 - (id <MTLRenderPipelineState>)newRenderPipelineStateWithTileDescriptor:(MTLTileRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (unsigned long long)minimumTextureBufferAlignmentForPixelFormat:(unsigned long long)arg1;

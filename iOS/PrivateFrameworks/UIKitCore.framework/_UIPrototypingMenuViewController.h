@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIDebuggingInformationViewController-Protocol.h>
-#import <UIKitCore/UITableViewDataSource-Protocol.h>
-#import <UIKitCore/UITableViewDelegate-Protocol.h>
+#import "UIViewController.h"
 
 @class NSArray, NSString, UITableView, _UIContentUnavailableView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPrototypingMenuViewController <UITableViewDelegate, UITableViewDataSource, UIDebuggingInformationViewController>
+@interface _UIPrototypingMenuViewController : UIViewController
 {
     NSArray *_allSettings;
     UITableView *_tableView;

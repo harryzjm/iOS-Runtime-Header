@@ -16,8 +16,9 @@
 + (void)setAssetsPurgeabilityExceptLanguages:(NSSet *)arg1 assetType:(unsigned long long)arg2;
 + (_Bool)purgeInstalledAssetsExceptLanguages:(NSSet *)arg1 assetType:(unsigned long long)arg2 error:(id *)arg3;
 + (NSNumber *)purgeInstalledAssetsExceptLanguages:(NSSet *)arg1 error:(id *)arg2;
-+ (NSNumber *)installedAssetSizeWithError:(id *)arg1;
 + (NSDate *)speechProfileDataLastModifiedDataForLanguage:(NSString *)arg1;
+- (void)resumeRecognitionWithPrefixText:(NSString *)arg1 postfixText:(NSString *)arg2 selectedText:(NSString *)arg3;
+- (void)pauseRecognition;
 - (void)invalidateUaapLM;
 - (unsigned char (*)[16])instanceUUID;
 - (void)deleteAllDESRecordsForDictationPersonalization;

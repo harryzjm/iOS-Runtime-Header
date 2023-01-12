@@ -4,20 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
-@protocol TSKMultiTableRemapping;
+#import "TSKAddedToDocumentContext.h"
 
-@interface TSKAddedToDocumentContext_Pasting
+@class NSMutableArray;
+
+@interface TSKAddedToDocumentContext_Pasting : TSKAddedToDocumentContext
 {
     NSMutableArray *mAddedDrawables;
-    id <TSKMultiTableRemapping> mMultiTableRemapper;
 }
 
 - (void).cxx_destruct;
-- (void)setMultiTableRemapper:(id)arg1;
-- (id)multiTableRemapper;
 - (_Bool)syncChanges;
-- (_Bool)uniqueBookmarks;
+- (_Bool)uniqueSmartFields;
 - (_Bool)autoUpdateSmartFields;
 - (_Bool)wasPasted;
 - (id)description;

@@ -4,23 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideoSubscriberAccountUI/VSMessageQueueDelegate-Protocol.h>
-
 @class IKViewElement, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSOnscreenCodeAuthenticationAppDocumentController <VSMessageQueueDelegate>
+@interface VSOnscreenCodeAuthenticationAppDocumentController
 {
-    IKViewElement *_regenerateCodeButtonElement;
+    IKViewElement *_buttonLockupViewElement;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) IKViewElement *regenerateCodeButtonElement; // @synthesize regenerateCodeButtonElement=_regenerateCodeButtonElement;
+@property(retain, nonatomic) IKViewElement *buttonLockupViewElement; // @synthesize buttonLockupViewElement=_buttonLockupViewElement;
 - (_Bool)_updateViewModel:(id)arg1 error:(id *)arg2;
 - (id)_newViewModel;
-- (void)_stopObservingViewModel:(id)arg1;
-- (void)_startObservingViewModel:(id)arg1;
-- (void)didAddMessagesToMessageQueue:(id)arg1;
+- (void)onscreenCodeViewModelButtonLockupPressed;
 - (_Bool)_updateOnscreenCodeViewModel:(id)arg1 withTemplate:(id)arg2;
 - (_Bool)_updateOnscreenCodeViewModel:(id)arg1 error:(id *)arg2;
 - (id)_onscreenCodeViewModelWithViewModel:(id)arg1;

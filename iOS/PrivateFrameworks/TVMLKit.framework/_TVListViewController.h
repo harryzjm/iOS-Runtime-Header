@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
-#import <TVMLKit/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <TVMLKit/_TVListViewCellDelegate-Protocol.h>
+#import "_TVMLCollectionViewController.h"
 
 @class IKViewElement, NSDictionary, NSIndexPath, NSMutableArray, NSString, UIViewController;
 @protocol _TVListViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _TVListViewController <_TVListViewCellDelegate, TVAppTemplateImpressionable, UICollectionViewDelegateFlowLayout>
+@interface _TVListViewController : _TVMLCollectionViewController
 {
     _Bool _configureForStackTemplate;
     _Bool _relatedContentElementValid;

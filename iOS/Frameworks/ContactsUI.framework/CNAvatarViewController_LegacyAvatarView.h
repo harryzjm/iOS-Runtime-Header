@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNAvatarViewDelegate-Protocol.h>
+#import "CNAvatarViewController.h"
 
-@class CNAvatarView, CNContactStore, NSArray, NSString, PRPersonaStore;
+@class CNAvatarView, CNContactStore, NSArray, NSString;
 @protocol CNSchedulerProvider, CNUILikenessRendering, NSObject><CNAvatarViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNAvatarViewController_LegacyAvatarView <CNAvatarViewDelegate>
+@interface CNAvatarViewController_LegacyAvatarView : CNAvatarViewController
 {
     _Bool _threeDTouchEnabled;
     NSArray *_contacts;
     CNContactStore *_contactStore;
-    PRPersonaStore *_personaStore;
     id <CNUILikenessRendering> _imageRenderer;
     unsigned long long _style;
     id <NSObject><CNAvatarViewControllerDelegate> _delegate;
@@ -30,13 +29,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(readonly, nonatomic) id <CNUILikenessRendering> imageRenderer; // @synthesize imageRenderer=_imageRenderer;
 @property(nonatomic, getter=isThreeDTouchEnabled) _Bool threeDTouchEnabled; // @synthesize threeDTouchEnabled=_threeDTouchEnabled;
-@property(readonly, nonatomic) PRPersonaStore *personaStore; // @synthesize personaStore=_personaStore;
 @property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 - (id)contacts;
 - (void)didUpdateContentForAvatarView:(id)arg1;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)setContacts:(id)arg1;
 - (void)loadView;
+- (void)setAllowStaleRendering:(_Bool)arg1;
 - (void)updateViewWithGroupIdentity:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 - (id)initWithSettings:(id)arg1;

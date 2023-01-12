@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <CoreSuggestionsInternals/HVHeaderCollection-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (SuggestionsExtensions) <HVHeaderCollection>
+@interface NSArray (SuggestionsExtensions)
 - (id)hv_firstHeaderForKey:(id)arg1;
 
 // Remaining properties

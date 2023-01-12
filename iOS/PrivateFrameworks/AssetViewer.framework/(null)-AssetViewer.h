@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetViewer/WKNavigationDelegate-Protocol.h>
-
-@interface (null) (AssetViewer) <WKNavigationDelegate>
+@interface (null) (AssetViewer)
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
 - (void)webViewWebContentProcessDidTerminate:(id)arg1;

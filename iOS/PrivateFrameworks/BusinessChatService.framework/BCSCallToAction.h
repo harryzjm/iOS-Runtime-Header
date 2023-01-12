@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSCallToAction : PBCodable <NSCopying>
+@interface BCSCallToAction : PBCodable
 {
     NSString *_body;
     NSString *_language;

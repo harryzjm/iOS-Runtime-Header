@@ -8,7 +8,11 @@
 
 @interface UIColor (MobileSafariExtras)
 + (id)sf_colorNamed:(id)arg1;
++ (id)sf_alternateSecondaryLabelColor;
++ (id)sf_alternateLabelColor;
++ (id)sf_tabSeparatorColor;
 + (id)sf_transparentBarHairlineColor;
++ (id)sf_separateTabBarHighlightColor;
 + (id)sf_secondaryBarHairlineOutlineColor;
 + (id)sf_barHairlineOutlineColor;
 + (id)sf_barHairlineShadowColor;

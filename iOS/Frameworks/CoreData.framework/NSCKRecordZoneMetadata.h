@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSManagedObject.h"
+
 @class CKServerChangeToken, NSCKDatabaseMetadata, NSData, NSDate, NSNumber, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSCKRecordZoneMetadata
+@interface NSCKRecordZoneMetadata : NSManagedObject
 {
 }
 
 + (id)entityPath;
++ (id)fetchZoneIDsAssignedToObjectsWithIDs:(id)arg1 fromStore:(id)arg2 inContext:(id)arg3 error:(id *)arg4;
 @property(nonatomic) _Bool hasSubscription;
 @property(nonatomic) _Bool hasRecordZone;
 
@@ -26,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *lastFetchDate; // @dynamic lastFetchDate;
 @property(retain, nonatomic) NSSet *mirroredRelationships; // @dynamic mirroredRelationships;
 @property(nonatomic) _Bool needsImport; // @dynamic needsImport;
+@property(nonatomic) _Bool needsRecoveryFromIdentityLoss; // @dynamic needsRecoveryFromIdentityLoss;
 @property(nonatomic) _Bool needsRecoveryFromUserPurge; // @dynamic needsRecoveryFromUserPurge;
 @property(nonatomic) _Bool needsRecoveryFromZoneDelete; // @dynamic needsRecoveryFromZoneDelete;
 @property(nonatomic) _Bool needsShareDelete; // @dynamic needsShareDelete;

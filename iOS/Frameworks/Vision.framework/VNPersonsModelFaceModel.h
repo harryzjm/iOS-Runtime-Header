@@ -6,24 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSSecureCoding-Protocol.h>
-
-@class NSMapTable;
-
 __attribute__((visibility("hidden")))
-@interface VNPersonsModelFaceModel : NSObject <NSSecureCoding>
+@interface VNPersonsModelFaceModel : NSObject
 {
-    NSMapTable *_serialNumberToPersonUniqueIdentifierMapTable;
-    shared_ptr_8c39738b _faceIDModel;
-    unsigned long long _faceprintRequestRevision;
-    int _maximumElementsPerID;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)modelBuiltFromConfiguration:(id)arg1 dataProvider:(id)arg2 canceller:(id)arg3 error:(id *)arg4;
-+ (shared_ptr_099ccdd3)_concatenateFaceprintImageDescriptorBuffer:(shared_ptr_099ccdd3)arg1 withFaceprints:(id)arg2 forIdentityWithSerialNumber:(int)arg3 faceprintLabels:(void *)arg4;
-- (id).cxx_construct;
-- (void).cxx_destruct;
++ (_Bool)getStoredRepresentationTag:(unsigned int *)arg1 forModelVersion:(unsigned long long)arg2 error:(id *)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)trainingFaceprintsForPersonWithUniqueIdentifier:(id)arg1 error:(id *)arg2;
@@ -33,10 +23,8 @@ __attribute__((visibility("hidden")))
 - (id)personUniqueIdentifiers;
 - (unsigned long long)personCount;
 - (unsigned long long)faceprintRequestRevision;
+- (_Bool)isCompatibleWithConfiguration:(id)arg1;
 - (id)personPredictionsForFace:(id)arg1 withDescriptor:(const void *)arg2 limit:(unsigned long long)arg3 canceller:(id)arg4 error:(id *)arg5;
-- (id)_personPredictionsForFace:(id)arg1 withDescriptor:(const void *)arg2 limit:(unsigned long long)arg3 faceIDCanceller:(struct CVMLCanceller *)arg4 error:(id *)arg5;
-- (_Bool)_getSerialNumber:(int *)arg1 forPersonUniqueIdentifier:(id)arg2 error:(id *)arg3;
-- (id)initWithFaceIDModel:(shared_ptr_8c39738b)arg1 faceprintRequestRevision:(unsigned long long)arg2 maximumElementsPerID:(unsigned long long)arg3 personUniqueIdentifierToSerialNumberMapping:(id)arg4;
 
 @end
 

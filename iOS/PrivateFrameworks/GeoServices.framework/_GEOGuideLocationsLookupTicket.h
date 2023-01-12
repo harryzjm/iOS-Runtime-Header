@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceGuideLocationsLookupTicket-Protocol.h>
+#import "GEOAbstractRequestResponseTicket.h"
 
 @class GEOMapServiceTraits, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOGuideLocationsLookupTicket <GEOMapServiceGuideLocationsLookupTicket>
+@interface _GEOGuideLocationsLookupTicket : GEOAbstractRequestResponseTicket
 {
     NSArray *_guideLocationEntries;
 }

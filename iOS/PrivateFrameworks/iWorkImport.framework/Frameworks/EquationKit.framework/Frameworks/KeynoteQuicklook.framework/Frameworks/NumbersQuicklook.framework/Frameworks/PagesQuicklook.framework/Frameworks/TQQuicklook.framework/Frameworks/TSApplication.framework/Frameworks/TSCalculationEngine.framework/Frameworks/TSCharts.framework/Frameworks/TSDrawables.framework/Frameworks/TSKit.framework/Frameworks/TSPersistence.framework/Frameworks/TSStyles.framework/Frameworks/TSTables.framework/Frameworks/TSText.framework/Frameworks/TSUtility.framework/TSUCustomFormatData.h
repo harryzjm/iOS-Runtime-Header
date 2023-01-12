@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/NSCopying-Protocol.h>
-#import <TSUtility/NSMutableCopying-Protocol.h>
-
 @class NSArray, NSIndexSet, NSString;
 
-@interface TSUCustomFormatData : NSObject <NSCopying, NSMutableCopying>
+@interface TSUCustomFormatData : NSObject
 {
     BOOL _fractionAccuracy;
     unsigned char _minimumIntegerWidth;

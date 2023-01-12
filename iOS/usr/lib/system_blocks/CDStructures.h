@@ -4,16 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct Block_byref {
-    void *_field1;
-    struct Block_byref *_field2;
-    int _field3;
-    unsigned int _field4;
-};
-

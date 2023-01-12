@@ -15,6 +15,8 @@
     MISSING_TYPE *_identifier;
     MISSING_TYPE *_environment;
     MISSING_TYPE *_groupActivity;
+    MISSING_TYPE *_remoteParticipantDeviceType;
+    MISSING_TYPE *_badgingCounts;
 }
 
 @end

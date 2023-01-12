@@ -6,11 +6,9 @@
 
 #import <HealthKit/_HKFitnessFriendWorkout.h>
 
-#import <ActivitySharing/ASCloudKitCodable-Protocol.h>
-
 @class ASCodableCloudKitWorkout, NSString;
 
-@interface _HKFitnessFriendWorkout (CloudKitCodingSupport) <ASCloudKitCodable>
+@interface _HKFitnessFriendWorkout (CloudKitCodingSupport)
 + (id)_fitnessFriendWorkoutWithCodableWorkout:(id)arg1 friendUUID:(id)arg2;
 + (id)fitnessFriendWorkoutWithCodableWorkout:(id)arg1 friendUUID:(id)arg2;
 + (id)fitnessFriendWorkoutWithCodableWorkout:(id)arg1;

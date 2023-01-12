@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVMediaSelectionOption.h"
+
 @class AVWeakReference, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface AVMediaSelectionNilOption
+@interface AVMediaSelectionNilOption : AVMediaSelectionOption
 {
     id _groupID;
     id _groupMediaType;

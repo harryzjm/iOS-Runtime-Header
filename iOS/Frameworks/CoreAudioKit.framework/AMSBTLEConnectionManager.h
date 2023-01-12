@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAudioKit/CBCentralManagerDelegate-Protocol.h>
-#import <CoreAudioKit/CBPeripheralDelegate-Protocol.h>
-
 @class CBCentralManager, NSMutableArray, NSString, NSTimer;
 @protocol BTLEConnectionTable;
 
 __attribute__((visibility("hidden")))
-@interface AMSBTLEConnectionManager : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
+@interface AMSBTLEConnectionManager : NSObject
 {
     CBCentralManager *centralManager;
     NSMutableArray *peripheralList;

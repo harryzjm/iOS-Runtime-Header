@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/AKInkOverlayViewDelegate-Protocol.h>
-#import <AnnotationKit/AKShapeDetectionControllerDelegate-Protocol.h>
-
 @class AKInkOverlayView, AKPageController, AKShapeDetectionController, NSString;
 @protocol PKRulerHostingDelegate;
 
-@interface AKInkPageOverlayController : NSObject <AKInkOverlayViewDelegate, AKShapeDetectionControllerDelegate>
+@interface AKInkPageOverlayController : NSObject
 {
     _Bool _ignoreAnnotationAndSelectionKVO;
     _Bool _onlyPencilDraws;

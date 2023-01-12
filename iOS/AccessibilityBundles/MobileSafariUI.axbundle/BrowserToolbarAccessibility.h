@@ -13,7 +13,8 @@
 + (id)safeCategoryTargetClassName;
 - (long long)accessibilityContainerType;
 - (void)setItems:(id)arg1 animated:(_Bool)arg2;
-- (id)initWithPlacement:(long long)arg1;
+- (_Bool)accessibilityElementsHidden;
+- (id)initWithPlacement:(long long)arg1 hideBackground:(_Bool)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

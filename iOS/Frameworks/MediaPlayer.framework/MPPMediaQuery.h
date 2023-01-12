@@ -6,11 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlayer/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface MPPMediaQuery : PBCodable <NSCopying>
+__attribute__((visibility("hidden")))
+@interface MPPMediaQuery : PBCodable
 {
     int _entityOrder;
     NSMutableArray *_filterPredicates;

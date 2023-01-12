@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_EditScriptData-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _EditScriptDataArray : NSObject <_EditScriptData>
+@interface _EditScriptDataArray : NSObject
 {
     NSArray *_data;
     NSString *_cachedStringValue;
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (id)EditScriptDataWithArray:(id)arg1;
 + (id)EditScriptDataWithString:(id)arg1 chunkSize:(long long)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *cachedStringValue; // @synthesize cachedStringValue=_cachedStringValue;
 @property(retain, nonatomic) NSArray *data; // @synthesize data=_data;
 - (long long)indexOfFirstDifferenceWithOtherData:(id)arg1 shouldReverseIterate:(_Bool)arg2;
@@ -30,7 +29,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 - (id)initWithArray:(id)arg1;
 - (id)initWithString:(id)arg1 chunkSize:(long long)arg2;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

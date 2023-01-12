@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VNObservationsCache : NSObject
 {
+    struct os_unfair_lock_s _observationsCacheLock;
     NSMapTable *_observationsCache;
 }
 

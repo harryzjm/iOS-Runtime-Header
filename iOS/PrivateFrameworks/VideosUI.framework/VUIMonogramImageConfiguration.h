@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
 @class NSString, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface VUIMonogramImageConfiguration : NSObject <NSCopying>
+@interface VUIMonogramImageConfiguration : NSObject
 {
     long long _style;
     NSString *_firstName;

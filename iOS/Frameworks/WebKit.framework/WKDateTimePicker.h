@@ -6,17 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/WKFormControl-Protocol.h>
-
 @class NSString, WKContentView;
 
 __attribute__((visibility("hidden")))
-@interface WKDateTimePicker : NSObject <WKFormControl>
+@interface WKDateTimePicker : NSObject
 {
     NSString *_formatString;
     struct RetainPtr<NSString> _initialValue;
-    double _initialValueAsNumber;
-    _Bool _shouldRemoveTimeZoneInformation;
     WKContentView *_view;
     struct CGPoint _interactionPoint;
     struct RetainPtr<UIDatePicker> _datePicker;
@@ -36,11 +32,8 @@ __attribute__((visibility("hidden")))
 - (id)controlView;
 - (void)setDateTimePickerToInitialValue;
 - (void)_dateChanged;
-- (void)_dateChangedSetAsString;
-- (void)_dateChangedSetAsNumber;
 - (RetainPtr_6b9d0b10)dateFormatterForPicker;
 - (id)_sanitizeInputValueForFormatter:(id)arg1;
-- (long long)_timeZoneOffsetFromGMT:(id)arg1;
 - (void)dealloc;
 - (_Bool)shouldForceGregorianCalendar;
 - (void)done:(id)arg1;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class SKUIActionsViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUITrackViewElement
+@interface SKUITrackViewElement : SKUIViewElement
 {
     BOOL _enabled;
     _Bool _selected;

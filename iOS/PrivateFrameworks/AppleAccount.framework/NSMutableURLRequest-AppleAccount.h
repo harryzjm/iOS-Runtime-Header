@@ -26,6 +26,7 @@
 - (_Bool)aa_addGrandSlamAuthorizationHeaderWithAccount:(id)arg1 grandslamToken:(id)arg2;
 - (void)aa_setXMLBodyWithParameters:(id)arg1 signingSession:(id)arg2;
 - (void)aa_signBodyData:(id)arg1 withSigningSession:(id)arg2;
+- (void)aa_setJSONBodyWithParameters:(id)arg1;
 - (id)aa_setXMLBodyWithParameters:(id)arg1;
 - (void)aa_setBodyWithParameters:(id)arg1;
 - (_Bool)aa_addAuthTokenOrBasicAuthHeaderWithAccount:(id)arg1 preferUsingPassword:(_Bool)arg2;

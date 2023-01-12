@@ -57,6 +57,8 @@
 
 @optional
 - (void)presentationDidPresentKeyboard;
+- (void)invalidateSystemApertureAssertion;
+- (void)requestSystemApertureCollapse;
 - (void)requestHostBlurVisible:(_Bool)arg1 reason:(long long)arg2 fence:(BKSAnimationFenceHandle *)arg3;
 - (void)setShouldDismissForSwipesOutsideContent:(_Bool)arg1;
 - (void)setShouldDismissForTapsOutsideContent:(_Bool)arg1;

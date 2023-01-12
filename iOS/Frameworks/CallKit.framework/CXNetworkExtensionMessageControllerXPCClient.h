@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CallKit/CXNetworkExtensionMessageControllerDataSource-Protocol.h>
-
 @class NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface CXNetworkExtensionMessageControllerXPCClient : NSObject <CXNetworkExtensionMessageControllerDataSource>
+@interface CXNetworkExtensionMessageControllerXPCClient : NSObject
 {
     struct os_unfair_lock_s _accessorLock;
     NSXPCConnection *_connection;

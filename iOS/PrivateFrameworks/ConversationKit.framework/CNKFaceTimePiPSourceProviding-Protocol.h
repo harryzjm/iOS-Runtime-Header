@@ -9,6 +9,7 @@
 @protocol CNKFaceTimePiPSourceProviding
 - (struct CGSize)preferredPiPContentAspectRatio;
 - (_Bool)restoreViewControllerHierarchyWhenExitingPiP;
+- (struct CGRect)frameForRestoreAnimation;
 - (UIViewController *)viewControllerForPiP;
 @end
 

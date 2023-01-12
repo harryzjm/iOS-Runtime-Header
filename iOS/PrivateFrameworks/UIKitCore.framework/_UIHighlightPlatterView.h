@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UITargetedPreview, UIView, _UIPlatterSoftShadowView, _UIPortalView;
+#import "UIView.h"
+
+@class UITargetedPreview, _UIPlatterSoftShadowView, _UIPortalView;
 
 __attribute__((visibility("hidden")))
-@interface _UIHighlightPlatterView
+@interface _UIHighlightPlatterView : UIView
 {
     double _shadowAlpha;
     double _backgroundAlpha;

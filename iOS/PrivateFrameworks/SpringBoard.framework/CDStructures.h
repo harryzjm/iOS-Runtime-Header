@@ -4,101 +4,53 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
-struct CAColorMatrix {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-    float _field9;
-    float _field10;
-    float _field11;
-    float _field12;
-    float _field13;
-    float _field14;
-    float _field15;
-    float _field16;
-    float _field17;
-    float _field18;
-    float _field19;
-    float _field20;
-};
-
-struct CATransform3D {
-    double m11;
-    double m12;
-    double m13;
-    double m14;
-    double m21;
-    double m22;
-    double m23;
-    double m24;
-    double m31;
-    double m32;
-    double m33;
-    double m34;
-    double m41;
-    double m42;
-    double m43;
-    double m44;
-};
-
 struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
 };
 
 struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-
-struct CGVector {
     double _field1;
     double _field2;
 };
 
-struct SBDeviceApplicationSceneStatusBarStateObserverFlags {
-    unsigned int wantsDidChangeStatusBarStyleTo:1;
-    unsigned int wantsDidChangeStatusBarPartStylesTo:1;
-    unsigned int wantsDidChangeStatusBarAlphaTo:1;
-    unsigned int wantsDidChangeStatusBarHiddenTo_withAnimation:1;
-    unsigned int wantsDidChangeStatusBarOrientationTo:1;
-    unsigned int wantsDidInvalidateStatusBarDescriptionForSceneWithIdentifier:1;
-    unsigned int wantsDidChangeStatusBarStyleOverridesToSuppressTo:1;
-    unsigned int wantsDidChangeStatusBarAvoidanceFrameTo:1;
-    unsigned int wantsDidChangeSceneInterfaceOrientationTo:1;
+struct CGRect {
+    struct CGPoint _field1;
+    struct CGSize _field2;
+};
+
+struct CGSize {
+    double _field1;
+    double _field2;
+};
+
+struct NSDirectionalEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct SBDragPreviewShadowParameters {
-    double shadowOpacity;
-    double shadowRadius;
-    struct CGSize shadowOffset;
+    double _field1;
+    double _field2;
+    struct CGSize _field3;
+};
+
+struct SBHSearchInteractivePresentationMetrics {
+    double _field1;
+    double _field2;
+    double _field3;
 };
 
 struct SBIconCoordinate {
@@ -112,47 +64,39 @@ struct SBIconImageInfo {
     double _field3;
 };
 
-struct SBModifierCacheDispatchData {
-    id _field1;
-    CDUnknownFunctionPointerType _field2;
-};
-
 struct SBPIPPositionGeometryContext {
-    struct CGSize pipCurrentSize;
-    struct CGSize pipLastSteadySize;
-    struct CGSize pipStashedSize;
-    struct CGPoint pipAnchorPointOffset;
-    struct CGSize containerSize;
-    struct UIEdgeInsets edgeInsets;
-    struct UIEdgeInsets minimumPadding;
-    struct UIEdgeInsets stashedMinimumPadding;
-    unsigned long long offscreenCorner;
-    long long orientation;
+    struct CGSize _field1;
+    struct CGSize _field2;
+    struct CGSize _field3;
+    struct CGPoint _field4;
+    struct CGRect _field5;
+    struct UIEdgeInsets _field6;
+    struct UIEdgeInsets _field7;
+    struct UIEdgeInsets _field8;
+    unsigned long long _field9;
+    long long _field10;
 };
 
 struct SBPIPPositionInteractionStateContext {
-    _Bool isStashed;
-    _Bool isInteractive;
-    _Bool hasActiveGesture;
-    _Bool isFreelyPositionable;
-    struct CGPoint projectedPosition;
-    struct CGPoint initialPosition;
-    struct CGPoint currentPosition;
-    double currentPositionStashProgress;
-    double projectedPositionStashProgress;
-};
-
-struct SBReachabilityActivationContext {
-    struct CGPoint location;
-    struct CGPoint translation;
-    struct CGPoint velocity;
-    struct CGRect viewBounds;
-    _Bool everTranslatedUpwards;
+    _Bool _field1;
+    _Bool _field2;
+    _Bool _field3;
+    _Bool _field4;
+    struct CGPoint _field5;
+    struct CGPoint _field6;
+    struct CGPoint _field7;
+    double _field8;
+    double _field9;
 };
 
 struct SBSwitcherAsyncRenderingAttributes {
     _Bool _field1;
     _Bool _field2;
+};
+
+struct SBSwitcherGradientWallpaperAttributes {
+    double _field1;
+    double _field2;
 };
 
 struct SBSwitcherShelfPresentationAttributes {
@@ -162,40 +106,18 @@ struct SBSwitcherShelfPresentationAttributes {
     unsigned long long _field4;
 };
 
-struct SBTodayIconListLayoutAttributes {
-    struct CGRect _field1;
+struct UIEdgeInsets {
+    double _field1;
     double _field2;
     double _field3;
     double _field4;
 };
 
-struct SBWindowLevelRange_struct {
-    double start;
-    double end;
-};
-
-struct TouchHistory {
-    struct CGPoint _field1;
-    double _field2;
-};
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
-struct UIOffset {
+struct UIRectCornerRadii {
     double _field1;
     double _field2;
-};
-
-struct UIRectCornerRadii {
-    double topLeft;
-    double bottomLeft;
-    double bottomRight;
-    double topRight;
+    double _field3;
+    double _field4;
 };
 
 struct WGWidgetListSettings {
@@ -206,17 +128,8 @@ struct WGWidgetListSettings {
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct _SBPressSequenceValidatorBounds {
-    double _field1;
-    double _field2;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 #pragma mark Typedef'd Structures
@@ -239,89 +152,64 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    _Bool itemIsEnabled[44];
-    char timeString[64];
-    char shortTimeString[64];
-    char dateString[256];
-    int gsmSignalStrengthRaw;
-    int secondaryGsmSignalStrengthRaw;
-    int gsmSignalStrengthBars;
-    int secondaryGsmSignalStrengthBars;
-    char serviceString[100];
-    char secondaryServiceString[100];
-    char serviceCrossfadeString[100];
-    char secondaryServiceCrossfadeString[100];
-    char serviceImages[2][100];
-    char operatorDirectory[1024];
-    unsigned int serviceContentType;
-    unsigned int secondaryServiceContentType;
-    unsigned int cellLowDataModeActive:1;
-    unsigned int secondaryCellLowDataModeActive:1;
-    int wifiSignalStrengthRaw;
-    int wifiSignalStrengthBars;
-    unsigned int wifiLowDataModeActive:1;
-    unsigned int dataNetworkType;
-    unsigned int secondaryDataNetworkType;
-    int batteryCapacity;
-    unsigned int batteryState;
-    char batteryDetailString[150];
-    int bluetoothBatteryCapacity;
-    int thermalColor;
-    unsigned int thermalSunlightMode:1;
-    unsigned int slowActivity:1;
-    unsigned int syncActivity:1;
-    char activityDisplayId[256];
-    unsigned int bluetoothConnected:1;
-    unsigned int displayRawGSMSignal:1;
-    unsigned int displayRawWifiSignal:1;
-    unsigned int locationIconType:2;
-    unsigned int voiceControlIconType:2;
-    unsigned int quietModeInactive:1;
-    unsigned int tetheringConnectionCount;
-    unsigned int batterySaverModeActive:1;
-    unsigned int deviceIsRTL:1;
-    unsigned int lock:1;
-    char breadcrumbTitle[256];
-    char breadcrumbSecondaryTitle[256];
-    char personName[100];
-    unsigned int electronicTollCollectionAvailable:1;
-    unsigned int radarAvailable:1;
-    unsigned int announceNotificationsAvailable:1;
-    unsigned int wifiLinkWarning:1;
-    unsigned int wifiSearching:1;
-    double backgroundActivityDisplayStartDate;
-    unsigned int shouldShowEmergencyOnlyStatus:1;
-    unsigned int secondaryCellularConfigured:1;
-    char primaryServiceBadgeString[100];
-    char secondaryServiceBadgeString[100];
-    char quietModeImage[256];
-    char quietModeName[256];
-} CDStruct_e9def42b;
-
-typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
-
-typedef struct {
-    double value;
-    _Bool inclusive;
-} CDStruct_e3385c33;
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-} CDStruct_39925896;
-
-typedef struct {
-    double minimum;
-    double maximum;
-} CDStruct_ef18196a;
-
-typedef struct {
-    int _field1;
-    int _field2;
-} CDStruct_1ef3fb1f;
+    _Bool _field1[45];
+    char _field2[64];
+    char _field3[64];
+    char _field4[256];
+    int _field5;
+    int _field6;
+    int _field7;
+    int _field8;
+    char _field9[100];
+    char _field10[100];
+    char _field11[100];
+    char _field12[100];
+    char _field13[2][100];
+    char _field14[1024];
+    unsigned int _field15;
+    unsigned int _field16;
+    unsigned int :1;
+    unsigned int :1;
+    int _field17;
+    int _field18;
+    unsigned int :1;
+    unsigned int _field19;
+    unsigned int _field20;
+    int _field21;
+    unsigned int _field22;
+    char _field23[150];
+    int _field24;
+    int _field25;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    char _field26[256];
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :2;
+    unsigned int :2;
+    unsigned int :1;
+    unsigned int _field27;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    char _field28[256];
+    char _field29[256];
+    char _field30[100];
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    double _field31;
+    unsigned int :1;
+    unsigned int :1;
+    char _field32[100];
+    char _field33[100];
+    char _field34[256];
+    char _field35[256];
+} CDStruct_d53647a2;
 
 typedef struct {
     long long _field1;
@@ -330,7 +218,7 @@ typedef struct {
 } CDStruct_8ff95007;
 
 typedef struct {
-    _Bool _field1[44];
+    _Bool _field1[45];
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -366,12 +254,12 @@ typedef struct {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    CDStruct_e9def42b _field3;
-} CDStruct_56970673;
+    CDStruct_d53647a2 _field3;
+} CDStruct_43a31ce7;
 
 typedef struct {
     long long _field1;
     struct CGPoint _field2;
     struct CGPoint _field3;
-} CDStruct_3b09cf25;
+} CDStruct_02f813cc;
 

@@ -70,7 +70,7 @@ __attribute__((visibility("hidden")))
 - (float)preferredRate;
 @property(readonly, nonatomic) NSArray *variants;
 - (CDStruct_1b6d18a9)duration;
-- (id)_instanceIdentifier;
+- (id)httpSessionIdentifier;
 - (id)identifyingTag;
 - (id)identifyingTagClass;
 - (void *)_valueAsCFTypeForProperty:(struct __CFString *)arg1;

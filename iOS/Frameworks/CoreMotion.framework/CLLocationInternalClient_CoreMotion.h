@@ -19,9 +19,10 @@
 - (unsigned char)timeSyncMachTimeStamp:(unsigned long long *)arg1 oscarTimeStamp:(unsigned long long *)arg2;
 - (unsigned char)gyroCalibrationDatabaseSupportsMiniCalibration:(int *)arg1;
 - (unsigned char)setBackgroundIndicatorForBundleID:(const struct __CFString *)arg1 orBundlePath:(const struct __CFString *)arg2 enabled:(unsigned char)arg3;
+- (unsigned char)setLocationButtonUseMode:(int)arg1 forBundleID:(const struct __CFString *)arg2 orBundlePath:(const struct __CFString *)arg3;
 - (unsigned char)setIncidentalUseMode:(int)arg1 forBundleID:(const struct __CFString *)arg2 orBundlePath:(const struct __CFString *)arg3;
 - (unsigned char)updateCorrectiveCompensationChoiceForOutstandingPrompt:(int)arg1;
-- (unsigned char)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 andZoneIdentifier:(const struct __CFString *)arg3 forBundleID:(const struct __CFString *)arg4 orBundlePath:(const struct __CFString *)arg5;
+- (unsigned char)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 andZoneIdentifier:(const struct __CFString *)arg3 andSubIdentityIdentifier:(const struct __CFString *)arg4 forBundleID:(const struct __CFString *)arg5 orBundlePath:(const struct __CFString *)arg6;
 - (const struct __CFArray *)copyActivityAlarms;
 - (unsigned char)setTemporaryAuthorizationGranted:(unsigned char)arg1 forBundleID:(const struct __CFString *)arg2 orBundlePath:(const struct __CFString *)arg3 orAuditToken:(CDStruct_6ad76789)arg4 byLocationButton:(unsigned char)arg5 voiceInteractionEnabled:(unsigned char)arg6;
 - (id)getAccessoryMotionSensorLogs;
@@ -31,6 +32,8 @@
 - (unsigned char)getStatusBarIconEnabled:(_Bool *)arg1 forEntityClass:(unsigned int)arg2;
 - (unsigned char)setStatusBarIconEnabled:(_Bool)arg1 forEntityClass:(unsigned int)arg2;
 - (unsigned char)copyLastLog;
+- (id)getOdometryBatchedLocations;
+- (int)getAccessoryPASCDTransmissionState;
 - (int)getAccessoryTypeBitSet;
 - (void)setMapMatchingRouteHint:(CDStruct_b7b5e951 *)arg1 count:(int)arg2 routingType:(int)arg3 stepType:(int)arg4;
 - (unsigned char)getGroundAltitudeForBundleID:(const struct __CFString *)arg1 orBundlePath:(const struct __CFString *)arg2 location:(id)arg3 groundAltitude:(CDStruct_b141a4d0 *)arg4;
@@ -47,6 +50,7 @@
 - (unsigned char)performMigration;
 - (unsigned char)getPrecisionPermission:(char *)arg1 forBundleID:(const struct __CFString *)arg2 orBundlePath:(const struct __CFString *)arg3;
 - (unsigned char)getAuthorizationStatus:(int *)arg1 forBundleID:(const struct __CFString *)arg2 orBundlePath:(const struct __CFString *)arg3;
+- (unsigned char)getAuthorizationStatusForApp:(int *)arg1 withAuditToken:(CDStruct_6ad76789)arg2;
 - (unsigned char)getGestureServiceEnabled:(char *)arg1;
 - (void)setGestureServiceEnabled:(unsigned char)arg1;
 - (id)triggerExpiredAuthorizationPurgeOnClientManager;
@@ -67,10 +71,12 @@
 - (const struct __CFDictionary *)copyZaxisStats;
 - (const struct __CFString *)copyMicroLocationInternalVersion;
 - (const struct __CFArray *)copyTechnologiesInUse;
+- (const struct __CFDictionary *)copyActiveClientsUsingLocation;
 - (const struct __CFDictionary *)copyAppsUsingLocation;
 - (id)applyArchivedAuthorizationDecisions:(id)arg1;
 - (id)getArchivedAuthorizationDecisionsWithError:(id *)arg1;
 - (unsigned char)clearLocationAuthorizations;
+- (void)clearLocationAuthorizationForBundleId:(const struct __CFString *)arg1 orBundlePath:(const struct __CFString *)arg2;
 - (unsigned char)getIncidentalUseMode:(int *)arg1 forBundleID:(const struct __CFString *)arg2 orBundlePath:(const struct __CFString *)arg3;
 - (unsigned char)setAuthorizationStatus:(unsigned char)arg1 withCorrectiveCompensation:(int)arg2 forBundleID:(const struct __CFString *)arg3 orBundlePath:(const struct __CFString *)arg4;
 - (id)synchronousRemoteObject;

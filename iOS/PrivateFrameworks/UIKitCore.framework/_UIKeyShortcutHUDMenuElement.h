@@ -14,13 +14,16 @@ __attribute__((visibility("hidden")))
     UIMenuElement *_uiMenuElement;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)elementWithUIMenuElement:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIMenuElement *uiMenuElement; // @synthesize uiMenuElement=_uiMenuElement;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
 - (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 shortcutVisit:(CDUnknownBlockType)arg2;
+- (id)description;
 @property(readonly, nonatomic) NSString *subtitle;
 @property(readonly, nonatomic) NSString *title;
 

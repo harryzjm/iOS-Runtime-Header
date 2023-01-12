@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface FPErrorRedactionHelper : NSObject
 {
-    NSError *error;
-    unsigned long long depth;
+    NSError *_error;
+    unsigned long long _depth;
 }
 
 - (void).cxx_destruct;

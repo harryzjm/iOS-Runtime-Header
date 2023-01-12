@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIOLAPropertySource-Protocol.h>
-
 @class NSMapTable, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIOrderedLayoutArrangement <_UIOLAPropertySource>
+@interface _UIOrderedLayoutArrangement
 {
     NSMapTable *_spacingOrCenteringGuides;
     NSMapTable *_edgeToEdgeConstraintsForVisibleItems;
@@ -65,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (long long)_minAttributeForGapConstraintRespectingBaselineRelative:(_Bool)arg1;
 - (void)_adjustConstraintConstantsIfPossible;
 - (void)_removeIndividualGuidesAndConstraintsAsNecessary;
-- (void)_cleanUpEdgeToEdgeConstraintsForVisibleItemsForItem:(id)arg1 atIndex:(unsigned long long)arg2 processPrecedingVisisbleItem:(_Bool)arg3;
+- (void)_cleanUpEdgeToEdgeConstraintsForVisibleItemsForItem:(id)arg1 atIndex:(unsigned long long)arg2 processPrecedingVisibleItem:(_Bool)arg3;
 - (void)_cleanUpEdgeToEdgeConstraintsForHiddenItemsForItem:(id)arg1 atIndex:(unsigned long long)arg2 processAdjacentHiddenItems:(_Bool)arg3;
 - (void)_cleanUpGuideAtGapFollowingItem:(id)arg1;
 - (void)_removeGuideAndConstraintGroupsAsNecessary;
@@ -93,6 +91,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool layoutUsesCanvasMarginsWhenFilling;
 @property(nonatomic) _Bool layoutFillsCanvas;
 @property(nonatomic) long long axis;
+- (void)dealloc;
 
 // Remaining properties
 @property(readonly, nonatomic) NSSet *_newlyHiddenItems;

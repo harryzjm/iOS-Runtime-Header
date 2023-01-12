@@ -10,6 +10,8 @@
 
 @protocol _UITextCanvas <NSObject>
 @property(nonatomic) __weak id <_UITextCanvasContext> context;
+- (void)updateContentSizeIfNeeded;
+- (void)viewportBoundsDidChange;
 - (void)drawTextInRect:(struct CGRect)arg1;
 @end
 

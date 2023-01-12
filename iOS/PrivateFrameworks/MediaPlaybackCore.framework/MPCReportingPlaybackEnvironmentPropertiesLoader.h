@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCReportingIdentityPropertiesLoading-Protocol.h>
-
 @class MPCPlaybackRequestEnvironment, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCReportingPlaybackEnvironmentPropertiesLoader : NSObject <MPCReportingIdentityPropertiesLoading>
+@interface MPCReportingPlaybackEnvironmentPropertiesLoader : NSObject
 {
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
 }

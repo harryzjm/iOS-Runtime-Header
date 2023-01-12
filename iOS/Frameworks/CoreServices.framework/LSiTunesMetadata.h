@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface LSiTunesMetadata : NSObject <NSSecureCoding>
+@interface LSiTunesMetadata : NSObject
 {
     _Bool _deviceBasedVPP;
     _Bool _purchasedRedownload;

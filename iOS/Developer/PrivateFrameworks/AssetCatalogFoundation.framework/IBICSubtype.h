@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetCatalogFoundation/IBICCoreUISlotComponent-Protocol.h>
-
 @class NSString;
 
-@interface IBICSubtype <IBICCoreUISlotComponent>
+@interface IBICSubtype
 {
     long long _coreUISubtype;
 }
 
 + (id)identifierFromFileName:(id)arg1 inRange:(struct _NSRange *)arg2;
++ (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 coreUISubtype:(long long)arg4 displayOrder:(double)arg5 subtitle:(id)arg6 infoDescription:(id)arg7;
 + (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 coreUISubtype:(long long)arg4 displayOrder:(double)arg5;
 + (id)displayName;
 + (id)contentsJSONKey;
@@ -27,7 +26,7 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) long long coreUIValue;
 - (_Bool)isEqualToSlotComponentCounterpartWithKnownEqualClass:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 coreUISubtype:(long long)arg4 displayOrder:(double)arg5;
+- (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 coreUISubtype:(long long)arg4 displayOrder:(double)arg5 subtitle:(id)arg6 infoDescription:(id)arg7;
 - (long long)componentID;
 
 // Remaining properties

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSUStreamReadChannel-Protocol.h>
-
 @class NSString;
 @protocol TSPMutableCryptoInfo, TSUStreamReadChannel;
 
-@interface TSPCryptoTranscodeReadChannel : NSObject <TSUStreamReadChannel>
+@interface TSPCryptoTranscodeReadChannel : NSObject
 {
     id <TSUStreamReadChannel> _readChannel;
     id <TSPMutableCryptoInfo> _encryptionInfo;

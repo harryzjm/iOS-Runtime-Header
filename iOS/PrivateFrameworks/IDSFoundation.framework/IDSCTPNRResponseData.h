@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/IDSCTPNRResponseData-Protocol.h>
-
 @class NSData, NSString;
 
-@interface IDSCTPNRResponseData : NSObject <IDSCTPNRResponseData>
+@interface IDSCTPNRResponseData : NSObject
 {
     _Bool _success;
     NSString *_phoneNumber;

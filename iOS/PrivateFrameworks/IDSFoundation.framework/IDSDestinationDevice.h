@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "IDSDestination.h"
+
 @class IDSURI;
 
-@interface IDSDestinationDevice
+@interface IDSDestinationDevice : IDSDestination
 {
     IDSURI *_destinationURI;
     _Bool _isGuest;

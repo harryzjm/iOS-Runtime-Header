@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLArrayType.h"
+
 @class MTLType;
 
 __attribute__((visibility("hidden")))
-@interface MTLArrayTypeInternal
+@interface MTLArrayTypeInternal : MTLArrayType
 {
     unsigned long long _dataType;
     unsigned int _arrayLength:32;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDictionary *fieldFilters; // @synthesize fieldFilters=_fieldFilters;
 - (id)_fieldFiltersFromOverrides:(id)arg1;
 - (id)_createSampleSessionKey;
+- (id)_encodedExperimentDataForTopic:(id)arg1;
 - (_Bool)_shouldSampleEvent:(id)arg1;
 - (id)_overridePropertyForKey:(id)arg1;
 - (_Bool)shouldSkipEvent:(id)arg1;

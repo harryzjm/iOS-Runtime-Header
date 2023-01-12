@@ -6,11 +6,9 @@
 
 #import <MediaMiningKit/CLSPublicEvent.h>
 
-#import <PhotosGraph/PGPublicEventDescriptor-Protocol.h>
-
 @class NSString;
 
-@interface CLSPublicEvent (PublicEventDescriptor) <PGPublicEventDescriptor>
+@interface CLSPublicEvent (PublicEventDescriptor)
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *name;

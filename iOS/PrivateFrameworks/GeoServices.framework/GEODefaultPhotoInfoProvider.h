@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOPhotoInfoProvider-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEODefaultPhotoInfoProvider : NSObject <GEOPhotoInfoProvider>
+@interface GEODefaultPhotoInfoProvider : NSObject
 {
     NSArray *_sortedPhotoInfos;
 }

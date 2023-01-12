@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCMediaStreamSyncSourceDelegate-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaStreamSynchronizer : NSObject <VCMediaStreamSyncSourceDelegate>
+@interface VCMediaStreamSynchronizer : NSObject
 {
     double _sourcePlayoutSampleSystemTime;
     int _sourceRTPTimestampWraps;
@@ -23,6 +21,8 @@ __attribute__((visibility("hidden")))
     struct tagVCMediaStreamSyncTime _destination;
     unsigned int _sourcePlayoutSampleRTPTimestamp;
     int _sourceState;
+    CDUnknownBlockType _sourcePlayoutHandler;
+    struct os_unfair_lock_s _sourcePlayoutHandlerLock;
 }
 
 @property(readonly, nonatomic) unsigned int sourceSampleRate;

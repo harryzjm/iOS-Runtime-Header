@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDOperation.h"
+
 @class NSArray, NSMutableDictionary, NSMutableSet;
 @protocol CKMarkNotificationsReadOperationCallbacks;
 
-@interface CKDMarkNotificationsReadOperation
+@interface CKDMarkNotificationsReadOperation : CKDOperation
 {
     CDUnknownBlockType _notificationMarkedRead;
     NSArray *_notificationIDs;

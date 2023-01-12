@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIStatusBarPrioritized-Protocol.h>
-
 @class NSMutableArray, _UIStatusBarDisplayItemPlacement, _UIStatusBarRegion;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarDisplayItemPlacementState : NSObject <_UIStatusBarPrioritized>
+@interface _UIStatusBarDisplayItemPlacementState : NSObject
 {
     _UIStatusBarDisplayItemPlacement *_placement;
     _UIStatusBarRegion *_region;

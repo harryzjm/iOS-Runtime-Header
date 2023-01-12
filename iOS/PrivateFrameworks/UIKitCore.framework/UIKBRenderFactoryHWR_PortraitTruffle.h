@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (double)symbolImageControlKeyFontSize;
 - (struct UIEdgeInsets)symbolFrameInsets;
 - (struct CGPoint)globeKeyTextOffset;
 - (struct CGPoint)moreKeyTextOffset;

@@ -9,6 +9,7 @@
 @class NSNumber;
 
 @protocol EMOutgoingMessageRepositoryInterfaceObserver <NSObject>
+- (void)hasDelayedMessagesDidChange:(_Bool)arg1;
 - (void)numberOfPendingMessagesChanged:(NSNumber *)arg1;
 @end
 

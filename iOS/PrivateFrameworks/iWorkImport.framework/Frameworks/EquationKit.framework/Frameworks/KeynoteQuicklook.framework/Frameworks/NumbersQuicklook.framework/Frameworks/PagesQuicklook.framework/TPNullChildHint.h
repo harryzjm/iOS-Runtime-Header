@@ -6,12 +6,10 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <PagesQuicklook/TSDArchivedHint-Protocol.h>
-
 @class NSString;
 @protocol TSDHint;
 
-@interface TPNullChildHint : TSPObject <TSDArchivedHint>
+@interface TPNullChildHint : TSPObject
 {
 }
 

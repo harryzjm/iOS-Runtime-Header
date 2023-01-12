@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DataDetectorsUI/EKEventEditViewDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface DDCreateEventAction <EKEventEditViewDelegate>
+@interface DDCreateEventAction
 {
 }
 

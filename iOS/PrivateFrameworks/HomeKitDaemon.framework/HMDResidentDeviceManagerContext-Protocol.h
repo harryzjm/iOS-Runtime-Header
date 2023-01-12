@@ -6,12 +6,13 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDDevice, HMDHome, HMDMessageDispatcher, HMDResidentDevice, NSArray, NSObject;
+@class HMDDevice, HMDHome, HMDMessageDispatcher, HMDResidentDevice, HMFFuture, NSArray, NSObject;
 @protocol OS_dispatch_queue;
 
 @protocol HMDResidentDeviceManagerContext <NSObject>
 @property(readonly) long long atHomeLevel;
 @property(readonly) NSObject<OS_dispatch_queue> *queue;
+@property(readonly) HMFFuture *cloudReady;
 @property(readonly) HMDMessageDispatcher *messageDispatcher;
 @property(readonly) HMDHome *home;
 @property(readonly) _Bool isCurrentDeviceAvailableResident;

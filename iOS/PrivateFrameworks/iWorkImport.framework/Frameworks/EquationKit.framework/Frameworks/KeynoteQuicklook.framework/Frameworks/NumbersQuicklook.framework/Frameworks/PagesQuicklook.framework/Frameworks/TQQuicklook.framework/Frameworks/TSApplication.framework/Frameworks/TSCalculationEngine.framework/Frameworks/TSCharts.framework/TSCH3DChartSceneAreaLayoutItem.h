@@ -17,7 +17,7 @@
     tvec4_ac57c72d _initialInfoChartScale;
 }
 
-+ (id)worldBoundsDescriptionForScene:(id)arg1;
++ (id)debug_worldBoundsDescriptionForScene:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isInvariant; // @synthesize isInvariant=_isInvariant;

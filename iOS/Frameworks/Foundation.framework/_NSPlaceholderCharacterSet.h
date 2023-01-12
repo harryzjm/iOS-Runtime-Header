@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSCharacterSet;
+#import "NSCharacterSet.h"
 
 __attribute__((visibility("hidden")))
-@interface _NSPlaceholderCharacterSet
+@interface _NSPlaceholderCharacterSet : NSCharacterSet
 {
     NSCharacterSet *_original;
     NSCharacterSet *_invertedSet;

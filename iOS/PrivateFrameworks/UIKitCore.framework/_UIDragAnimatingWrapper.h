@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDragAnimating-Protocol.h>
-
 @class NSString, UIViewPropertyAnimator;
 
 __attribute__((visibility("hidden")))
-@interface _UIDragAnimatingWrapper : NSObject <UIDragAnimating>
+@interface _UIDragAnimatingWrapper : NSObject
 {
     UIViewPropertyAnimator *_animator;
 }

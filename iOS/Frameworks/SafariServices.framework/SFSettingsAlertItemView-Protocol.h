@@ -14,6 +14,7 @@
 @property(readonly, nonatomic) long long backgroundMode;
 @property(nonatomic) long long defaultBackgroundMode;
 @property(nonatomic) _Bool hidesSeparator;
+@property(nonatomic, getter=isEnabled) _Bool enabled;
 @property(nonatomic) __weak _SFSettingsAlertItem *item;
 @end
 

@@ -17,12 +17,10 @@
     MISSING_TYPE *playbackState;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *scienceDataFactory;
-    MISSING_TYPE *paidBundleConfigManager;
+    MISSING_TYPE *completedListeningProcessor;
     MISSING_TYPE *itemSession;
     MISSING_TYPE *onNextTrack;
 }
-
-- (void)captureArticleViewContextWithSessionID:(id)arg1;
 
 @end
 

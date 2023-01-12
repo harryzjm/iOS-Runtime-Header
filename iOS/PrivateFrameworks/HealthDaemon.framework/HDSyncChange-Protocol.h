@@ -13,11 +13,11 @@
 @property(readonly, nonatomic) long long encodedByteCount;
 @property(readonly, nonatomic) _Bool done;
 @property(readonly, nonatomic) NSNumber *sequenceNumber;
-@property(readonly, nonatomic) CDStruct_c12fb951 versionRange;
+@property(readonly, nonatomic) CDStruct_1ef3fb1f versionRange;
 @property(readonly, nonatomic) struct HDSyncAnchorRange syncAnchorRange;
 @property(readonly, nonatomic, getter=isSpeculative) _Bool speculative;
 - (id <HDSyncAnchorMap>)requiredAnchorMapWithProfile:(HDProfile *)arg1 error:(id *)arg2;
-- (void)setVersionRange:(CDStruct_c12fb951)arg1;
+- (void)setVersionRange:(CDStruct_1ef3fb1f)arg1;
 - (void)setSequenceNumber:(long long)arg1 done:(_Bool)arg2;
 - (NSArray *)decodedObjectsForProfile:(HDProfile *)arg1 error:(id *)arg2;
 - (void)setObjects:(NSArray *)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 requiredAnchorMap:(id <HDSyncAnchorMap>)arg3;

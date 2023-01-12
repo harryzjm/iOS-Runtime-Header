@@ -6,20 +6,28 @@
 
 #import <ContactsAutocompleteUI/CNComposeRecipientTextView.h>
 
+@class UIView;
 @protocol CKComposeRecipientViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CKComposeRecipientView : CNComposeRecipientTextView
 {
+    _Bool _showsBackgroundPlatterView;
     id <CKComposeRecipientViewDelegate> layoutDelegate;
+    UIView *_backgroundPlatterView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *backgroundPlatterView; // @synthesize backgroundPlatterView=_backgroundPlatterView;
+@property(nonatomic) _Bool showsBackgroundPlatterView; // @synthesize showsBackgroundPlatterView=_showsBackgroundPlatterView;
 @property(nonatomic) __weak id <CKComposeRecipientViewDelegate> layoutDelegate; // @synthesize layoutDelegate;
+- (void)_updateBackgroundPlatterViewIfNecessary;
 - (struct UIEdgeInsets)layoutMargins;
 - (struct UIEdgeInsets)safeAreaInsets;
 - (void)atomTextViewDidBecomeFirstResponder:(id)arg1;
 - (void)reset;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

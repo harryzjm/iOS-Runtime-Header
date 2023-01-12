@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMapTable, NSMutableArray, NSMutableSet, UIGestureGraph;
+@protocol BSInvalidatable;
 
 __attribute__((visibility("hidden")))
 @interface UIGestureEnvironment : NSObject
@@ -16,6 +17,9 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_gestureRecognizersNeedingReset;
     NSMutableSet *_gestureRecognizersNeedingRemoval;
     NSMutableArray *_dirtyGestureRecognizers;
+    NSMutableSet *_gestureRecognizersBlockedFromReset;
+    unsigned long long _lastBlockedResetEvaluationMachTime;
+    id <BSInvalidatable> _blockedResetStateCaptureToken;
     NSMutableArray *_delayedTouches;
     NSMutableArray *_delayedTouchesToSend;
     NSMutableArray *_delayedPresses;
@@ -31,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)removeGestureRecognizer:(id)arg1;
 - (void)addGestureRecognizer:(id)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

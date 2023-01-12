@@ -6,11 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBDeviceApplicationSceneHandle, SBInCallPresentationManager, SBInCallPresentationSession;
+@class SBDeviceApplicationSceneHandle, SBInCallPresentationManager, SBInCallPresentationSession, SBWindowScene;
 
 @protocol SBInCallPresentationManagerDelegate <NSObject>
 - (void)inCallPresentationManagerRequestsHandlingOfDeferredUILock:(SBInCallPresentationManager *)arg1;
-- (long long)inCallPresentationManagerInterfaceOrientationForTransientOverlayPresentation:(SBInCallPresentationManager *)arg1;
+- (long long)inCallPresentationManager:(SBInCallPresentationManager *)arg1 interfaceOrientationForTransientOverlayPresentationInWindowScene:(SBWindowScene *)arg2;
 - (long long)inCallPresentationManagerInterfaceOrientationForBannerPresentation:(SBInCallPresentationManager *)arg1;
 - (SBInCallPresentationSession *)inCallPresentationManager:(SBInCallPresentationManager *)arg1 createPresentationSessionWithSceneHandle:(SBDeviceApplicationSceneHandle *)arg2;
 @end

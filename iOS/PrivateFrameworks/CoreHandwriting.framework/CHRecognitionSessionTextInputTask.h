@@ -15,8 +15,9 @@
 
 + (id)lastStrokeInGroup:(id)arg1 strokeProvider:(id)arg2;
 + (struct CGRect)_contextBoundsForTargetContentInfo:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CHTextInputQuery *activeTextInputQuery; // @synthesize activeTextInputQuery=_activeTextInputQuery;
-@property(readonly, retain, nonatomic) NSArray *initialTextInputTargets; // @synthesize initialTextInputTargets=_initialTextInputTargets;
+@property(readonly, nonatomic) NSArray *initialTextInputTargets; // @synthesize initialTextInputTargets=_initialTextInputTargets;
 - (id)_dataSource:(id)arg1 textInputTargetForStrokeGroup:(id)arg2 simultaneousGroups:(id)arg3;
 - (id)_dataSource:(id)arg1 inputTargetContentInfoForStrokeGroups:(id)arg2 groupingManager:(id)arg3;
 - (id)_textCorrectionResultForStrokeGroup:(id)arg1 groupingManager:(id)arg2 targetContentInfo:(id)arg3 locales:(id)arg4 previousCorrectionResult:(id)arg5;
@@ -25,7 +26,6 @@
 - (id)clutterFilter;
 - (id)textCorrectionResultsForGroupingResult:(id)arg1 groupingManager:(id)arg2;
 - (id)recognitionResultsForGroupingResult:(id)arg1 groupingManager:(id)arg2;
-- (void)dealloc;
 - (id)initWithLocales:(id)arg1 preferredLocales:(id)arg2 strokeProvider:(id)arg3 inputResult:(id)arg4 recognitionQOSClass:(unsigned int)arg5;
 - (id)initWithLocales:(id)arg1 strokeProvider:(id)arg2 initialTextInputTargets:(id)arg3 inputResult:(id)arg4 recognitionEnvironment:(long long)arg5;
 

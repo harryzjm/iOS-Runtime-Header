@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class NSArray, NSMutableArray;
 @protocol OS_dispatch_mach, OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
@@ -16,13 +16,8 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_publishers;
     NSObject<OS_dispatch_workloop> *_workloop;
     NSObject<OS_dispatch_mach> *_channel;
-    CDStruct_e9def42b _statusBarData;
-    CDStruct_e9def42b _composedStatusBarData;
-    CDStruct_0caf55ee _overrides;
-    struct __CFDictionary *_doubleHeightStatusStrings;
-    struct __CFDictionary *_glowAnimationStates;
-    NSMutableDictionary *_glowAnimationEndTimes;
-    _Bool _composedStatusBarDataValid;
+    struct os_unfair_lock_s _publishersLock;
+    CDStruct_b90c07c4 _overrides;
 }
 
 + (id)sharedInstance;
@@ -30,24 +25,15 @@ __attribute__((visibility("hidden")))
 - (void)_removeStatusBarItem:(int)arg1 forPublisher:(id)arg2;
 - (void)_addStatusBarItem:(int)arg1 forPublisher:(id)arg2;
 - (_Bool)_permanentizeStatusBarOverrideData;
-- (void)_postStatusBarOverrideData:(CDStruct_0caf55ee *)arg1;
-- (void)_postDoubleHeightStatus:(char *)arg1 forStyle:(long long)arg2;
-- (id)_doubleHeightStatusStringForStyle:(long long)arg1;
-- (void)_postGlowAnimationState:(_Bool)arg1 forStyle:(long long)arg2;
-- (_Bool)_glowAnimationStateForStyle:(long long)arg1;
-- (double)_glowAnimationEndTimeForStyle:(long long)arg1;
-- (void)_removeAnimationEndTimesForOverrides:(unsigned long long)arg1;
-- (void)_removeStyleOverrides:(unsigned long long)arg1 forPublisher:(id)arg2;
-- (void)_setAnimationEndTimesForOverrides:(unsigned long long)arg1;
-- (void)_addStyleOverrides:(unsigned long long)arg1 forPublisher:(id)arg2;
+- (void)_postStatusBarOverrideData:(CDStruct_b90c07c4 *)arg1;
+- (void)_removeStyleOverrides:(unsigned long long)arg1 forPublisher:(id)arg2 broadcasting:(_Bool)arg3;
+- (void)_addStyleOverrides:(unsigned long long)arg1 forPublisher:(id)arg2 broadcasting:(_Bool)arg3;
 - (void)_broadcastStyleOverrides;
 - (unsigned long long)_styleOverrides;
-- (void)_postStatusBarData:(CDStruct_e9def42b *)arg1 actions:(int)arg2 animated:(_Bool)arg3;
-- (void)_broadcastStatusBarDataWithActions:(int)arg1 animated:(_Bool)arg2;
-- (CDStruct_0caf55ee *)_statusBarOverrideData;
-- (CDStruct_e9def42b *)_statusBarData;
+- (CDStruct_b90c07c4 *)_statusBarOverrideData;
 - (void)_removePublisher:(struct __CFMachPort *)arg1;
 - (id)_publisherForPort:(unsigned int)arg1;
+@property(readonly, copy, nonatomic) NSArray *allPublishers;
 - (void)_removeClient:(struct __CFMachPort *)arg1;
 - (void)_addClient:(unsigned int)arg1;
 - (void)async:(CDUnknownBlockType)arg1;

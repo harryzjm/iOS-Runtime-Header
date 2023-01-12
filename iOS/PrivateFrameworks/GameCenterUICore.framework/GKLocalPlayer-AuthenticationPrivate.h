@@ -38,8 +38,11 @@
 @property(retain, nonatomic) UIViewController *rootViewController;
 @property(retain, nonatomic) UIViewController *activeViewController;
 - (_Bool)shouldShowAnyOnboardingScreen;
+- (_Bool)shouldShowProfileCreatedScreen;
+- (_Bool)shouldShowContactsIntegrationConsentScreen;
 - (_Bool)hasAcknowledgedLatestGDPR;
 - (_Bool)shouldShowProfilePrivacyScreen;
 - (_Bool)shouldShowPersonalizationScreen;
+- (_Bool)shouldUseWelcomeOnboardingCopy;
 @end
 

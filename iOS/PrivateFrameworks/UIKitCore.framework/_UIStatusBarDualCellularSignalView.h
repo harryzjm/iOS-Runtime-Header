@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
+#import "UIView.h"
 
 @class NSLayoutConstraint, NSString, UIAccessibilityHUDItem, _UIStatusBarCellularSignalView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarDualCellularSignalView <_UIStatusBarDisplayable>
+@interface _UIStatusBarDualCellularSignalView : UIView
 {
+    _Bool _rounded;
     _UIStatusBarCellularSignalView *_topSignalView;
     _UIStatusBarCellularSignalView *_bottomSignalView;
     long long _iconSize;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *verticalInterspaceConstraint; // @synthesize verticalInterspaceConstraint=_verticalInterspaceConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
 @property(nonatomic) long long iconSize; // @synthesize iconSize=_iconSize;
+@property(nonatomic) _Bool rounded; // @synthesize rounded=_rounded;
 @property(readonly) _UIStatusBarCellularSignalView *bottomSignalView; // @synthesize bottomSignalView=_bottomSignalView;
 @property(readonly) _UIStatusBarCellularSignalView *topSignalView; // @synthesize topSignalView=_topSignalView;
 - (struct CGSize)intrinsicContentSize;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) long long overriddenVerticalAlignment;
 @property(readonly, nonatomic) _Bool prefersBaselineAlignment;
+@property(readonly, nonatomic) _Bool prefersCenterVerticalAlignment;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool wantsCrossfade;
 

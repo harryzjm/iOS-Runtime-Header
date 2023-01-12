@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCH3DChartElementProperties, TSCH3DRenderProcessor, TSCH3DSceneRenderPipeline, TSCHChartSeries;
 
-@interface TSCH3DRenderElementInfo : NSObject <NSCopying>
+@interface TSCH3DRenderElementInfo : NSObject
 {
     _Bool _useBoundsGeometry;
     _Bool _twoPasses;

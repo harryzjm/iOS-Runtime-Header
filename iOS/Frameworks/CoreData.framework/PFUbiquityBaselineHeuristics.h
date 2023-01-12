@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-
 @class NSString, PFUbiquityKnowledgeVector, PFUbiquityLocation;
 
 __attribute__((visibility("hidden")))
-@interface PFUbiquityBaselineHeuristics : NSObject <NSCopying>
+@interface PFUbiquityBaselineHeuristics : NSObject
 {
     NSString *_localPeerID;
     NSString *_storeName;

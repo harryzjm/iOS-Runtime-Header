@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineEventHandler-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineEventHandler-Protocol.h>
 
-@protocol HDSPChargingReminderStateMachineEventHandler <HKSPStateMachineEventHandler>
+@protocol HDSPChargingReminderStateMachineEventHandler <HKSPPersistentStateMachineEventHandler>
 - (void)batteryLevelChanged:(float)arg1;
-- (void)batteryMonitoringEventDue;
 @end
 

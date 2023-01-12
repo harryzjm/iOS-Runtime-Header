@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoordinationCore/COCapabilityAddOnDelegate-Protocol.h>
-#import <CoordinationCore/COCapabilityManagerServiceInterface-Protocol.h>
-
 @class NSDictionary, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COCapabilityService <COCapabilityAddOnDelegate, COCapabilityManagerServiceInterface>
+@interface COCapabilityService
 {
     NSDictionary *_capabilities;
     NSDictionary *_observers;
@@ -40,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)unregisterCapability:(id)arg1;
 - (void)registerCapability:(id)arg1;
 - (void)addMesh:(id)arg1 forCluster:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_canRequestCreationOfCluster:(id)arg1;
 - (void)_addOnRemoved:(id)arg1;
 - (void)_addOnAdded:(id)arg1;
 - (void)_clientLost:(id)arg1;

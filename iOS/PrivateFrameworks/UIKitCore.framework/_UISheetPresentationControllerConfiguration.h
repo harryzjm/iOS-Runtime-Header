@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISheetPresentationControllerConfiguration : NSObject <NSSecureCoding>
+@interface _UISheetPresentationControllerConfiguration : NSObject
 {
     _Bool __peeksWhenFloating;
     _Bool __wantsFullScreen;

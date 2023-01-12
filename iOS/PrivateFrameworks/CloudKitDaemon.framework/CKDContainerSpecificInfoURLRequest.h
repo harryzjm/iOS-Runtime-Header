@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDURLRequest.h"
+
 @class CKDContainerServerInfo, NSString;
 
-@interface CKDContainerSpecificInfoURLRequest
+@interface CKDContainerSpecificInfoURLRequest : CKDURLRequest
 {
     _Bool _requireUserIDs;
     NSString *_containerIdentifier;

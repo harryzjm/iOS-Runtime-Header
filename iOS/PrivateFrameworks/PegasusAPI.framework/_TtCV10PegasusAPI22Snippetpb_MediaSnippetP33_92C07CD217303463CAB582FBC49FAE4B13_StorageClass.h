@@ -30,6 +30,7 @@
     MISSING_TYPE *_bornOrFormed;
     MISSING_TYPE *_contentRatingsBySystem;
     MISSING_TYPE *_parentName;
+    MISSING_TYPE *_siribaseID;
 }
 
 @end

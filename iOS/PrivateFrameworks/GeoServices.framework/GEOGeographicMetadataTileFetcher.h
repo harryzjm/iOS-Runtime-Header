@@ -6,23 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOGeographicMetadataFetcher-Protocol.h>
-
-@class GEOLocation, NSArray, NSString;
+@class GEOLocation, NSArray, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface GEOGeographicMetadataTileFetcher : NSObject <GEOGeographicMetadataFetcher>
+@interface GEOGeographicMetadataTileFetcher : NSObject
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     int _tileStyle;
     GEOLocation *_location;
     unsigned long long _options;
     NSArray *_tileDatas;
+    NSDictionary *_resultURLs;
 }
 
 - (void).cxx_destruct;
 - (void)fetchMetadataWithResponseQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)reportCorrupt:(id)arg1;
 - (id)initForTileStyle:(int)arg1 location:(id)arg2 options:(unsigned long long)arg3;
 
 // Remaining properties

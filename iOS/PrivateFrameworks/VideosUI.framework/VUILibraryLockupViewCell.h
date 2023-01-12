@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
-
 @class NSString, VUIImageView, VUILabel, VUIRentalExpirationLabel;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryLockupViewCell : UICollectionViewCell <VUIRentalExpirationLabelDelegate>
+@interface VUILibraryLockupViewCell : UICollectionViewCell
 {
     _Bool _hideTitleLabel;
     VUIImageView *_imageView;

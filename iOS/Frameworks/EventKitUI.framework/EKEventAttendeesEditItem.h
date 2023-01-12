@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EKEventEditItem.h"
+
 @class EKParticipant, NSOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeesEditItem
+@interface EKEventAttendeesEditItem : EKEventEditItem
 {
     EKParticipant *_selfOrganizer;
     NSString *_searchAccountID;
@@ -18,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)_noneInviteesLocalizedString;
 - (void).cxx_destruct;
 - (_Bool)editItemViewControllerSave:(id)arg1;
+- (void)editor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (_Bool)forceRefreshInviteesItemOnSave;
 - (_Bool)forceRefreshStartAndEndDatesOnSave;
 - (_Bool)forceTableReloadOnSave;

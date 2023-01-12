@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/VTKColor-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _VTKColor : NSObject <VTKColor>
+@interface _VTKColor : NSObject
 {
     double _red;
     double _green;

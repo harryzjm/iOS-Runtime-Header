@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeSettingsUI/NSCopying-Protocol.h>
-
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface STUIAskForTimeRequestResponse : NSObject <NSCopying>
+@interface STUIAskForTimeRequestResponse : NSObject
 {
     unsigned long long _usageType;
     NSString *_identifier;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/UITableViewDataSource-Protocol.h>
-
 @class NSString, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIReportAConcernDetailsDataSource : NSObject <UITableViewDataSource>
+@interface SKUIReportAConcernDetailsDataSource : NSObject
 {
     UITableView *_tableView;
     NSString *_placeholder;

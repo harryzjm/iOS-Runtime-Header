@@ -12,19 +12,22 @@
 
 @interface XCTScreenshotRequest : NSObject <NSSecureCoding>
 {
-    unsigned int _screenID;
+    long long _screenID;
     XCTImageEncoding *_encoding;
+    unsigned long long _options;
     struct CGRect _rect;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly) unsigned long long options; // @synthesize options=_options;
 @property(readonly) XCTImageEncoding *encoding; // @synthesize encoding=_encoding;
 @property(readonly) struct CGRect rect; // @synthesize rect=_rect;
-@property(readonly) unsigned int screenID; // @synthesize screenID=_screenID;
+@property(readonly) long long screenID; // @synthesize screenID=_screenID;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithScreenID:(unsigned int)arg1 rect:(struct CGRect)arg2 encoding:(id)arg3;
+- (id)initWithScreenID:(long long)arg1 rect:(struct CGRect)arg2 encoding:(id)arg3 options:(unsigned long long)arg4;
+- (id)initWithScreenID:(long long)arg1 rect:(struct CGRect)arg2 encoding:(id)arg3;
 
 @end
 

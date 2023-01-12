@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSMutableArray, NSString;
 
-@interface CKCDPCodeServiceResponseAssetAuthorizationResponse : PBCodable <NSCopying>
+@interface CKCDPCodeServiceResponseAssetAuthorizationResponse : PBCodable
 {
     NSData *_authGetResponseBody;
     NSMutableArray *_responseHeaders;

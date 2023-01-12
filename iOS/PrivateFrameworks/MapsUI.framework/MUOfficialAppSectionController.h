@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceAppLockupViewDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class GEOAppStoreApp, MKUGCCallToActionViewAppearance, MUPlaceAppLockupView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSString, UIView, UIViewController;
+@class GEOAppleMediaServicesResult, MKUGCCallToActionViewAppearance, MUPlaceAppLockupView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUTimeExpirableLRUCache, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUOfficialAppSectionController <MUPlaceAppLockupViewDelegate, MUPlaceSectionControlling>
+@interface MUOfficialAppSectionController : MUPlaceSectionController
 {
     MUPlaceAppLockupView *_officialAppView;
     MUPlaceSectionView *_sectionView;
-    GEOAppStoreApp *_appStoreApp;
+    GEOAppleMediaServicesResult *_appStoreApp;
+    MUTimeExpirableLRUCache *_cachedMediaResults;
 }
 
 - (void).cxx_destruct;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (id)infoCardChildPossibleActions;
 - (id)_sectionHeaderText;
@@ -26,9 +27,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 @property(readonly, nonatomic) _Bool hasContent;
 @property(readonly, nonatomic) UIView *sectionView;
+- (void)_updateViewWithMediaServicesResult:(id)arg1;
 - (void)_hydrateViewWithApp;
 - (void)_setupLockupView;
-- (id)initWithMapItem:(id)arg1;
+- (id)initWithMapItem:(id)arg1 usingCachedMediaResults:(id)arg2;
 
 // Remaining properties
 @property(nonatomic, getter=isActive) _Bool active;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

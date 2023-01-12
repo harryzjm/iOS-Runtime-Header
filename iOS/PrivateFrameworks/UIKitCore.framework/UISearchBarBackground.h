@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIBarPositioningInternal-Protocol.h>
-
 @class NSMutableDictionary, NSString, UIColor, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface UISearchBarBackground <_UIBarPositioningInternal>
+@interface UISearchBarBackground
 {
     UIColor *_barTintColor;
     NSMutableDictionary *_customBackgroundImages;

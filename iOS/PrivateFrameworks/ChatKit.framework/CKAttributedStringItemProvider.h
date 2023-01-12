@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/NSItemProviderWriting-Protocol.h>
-
 @class NSArray, NSAttributedString, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKAttributedStringItemProvider : NSObject <NSItemProviderWriting>
+@interface CKAttributedStringItemProvider : NSObject
 {
     NSAttributedString *_attributedString;
 }

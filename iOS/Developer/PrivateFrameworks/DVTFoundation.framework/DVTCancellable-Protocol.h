@@ -7,7 +7,10 @@
 #import <DVTFoundation/NSObject-Protocol.h>
 
 @protocol DVTCancellable <NSObject>
-@property(readonly, getter=isCancelled) _Bool cancelled;
+- (_Bool)isCancelled;
 - (void)cancel;
+
+// Remaining properties
+@property(nonatomic, readonly) _Bool cancelled;
 @end
 

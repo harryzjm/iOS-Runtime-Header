@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <AnnotationKit/CHPointFIFODrawingTarget-Protocol.h>
-
 @class AKBitmapFIFO, AKController, CHBoxcarFilterPointFIFO, CHPointStrokeFIFO, CHQuadCurvePointFIFO, MISSING_TYPE, NSString, UIColor;
 @protocol AKSmoothPathViewDelegate;
 
-@interface AKSmoothPathView : UIView <CHPointFIFODrawingTarget>
+@interface AKSmoothPathView : UIView
 {
     double _cachedEffectiveStrokeWidthInModel;
     double _cachedModelToViewScale;

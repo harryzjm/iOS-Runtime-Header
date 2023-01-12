@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPlaceSearchResponse, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOETAResult : PBCodable <NSCopying>
+@interface GEOETAResult : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;

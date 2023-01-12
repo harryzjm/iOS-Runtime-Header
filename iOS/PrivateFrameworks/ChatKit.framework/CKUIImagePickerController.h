@@ -6,12 +6,10 @@
 
 #import <UIKit/UIImagePickerController.h>
 
-#import <ChatKit/CKAdaptivePresentedControllerProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKUIImagePickerController : UIImagePickerController <CKAdaptivePresentedControllerProtocol>
+@interface CKUIImagePickerController : UIImagePickerController
 {
     _Bool _wantsWindowedPresentation;
     _Bool _preserveModalPresentationStyle;

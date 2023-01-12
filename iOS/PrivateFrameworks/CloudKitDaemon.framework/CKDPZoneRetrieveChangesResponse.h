@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSMutableArray;
 
-@interface CKDPZoneRetrieveChangesResponse : PBCodable <NSCopying>
+@interface CKDPZoneRetrieveChangesResponse : PBCodable
 {
     NSMutableArray *_changedZones;
     int _status;

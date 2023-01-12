@@ -6,12 +6,9 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <GameCenterUICore/GKContentRefresh-Protocol.h>
-#import <GameCenterUICore/GKURLHandling-Protocol.h>
-
 @class NSString;
 
-@interface UINavigationController (GKAdditions) <GKContentRefresh, GKURLHandling>
+@interface UINavigationController (GKAdditions)
 - (void)makeNavigationBarBackgroundTranslucent;
 - (_Bool)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)_gkRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;

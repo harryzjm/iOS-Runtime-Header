@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <SeymourUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _TtC9SeymourUI21PopTransitionDelegate : NSObject <UIViewControllerTransitioningDelegate>
+@interface _TtC9SeymourUI21PopTransitionDelegate : NSObject
 {
 }
 

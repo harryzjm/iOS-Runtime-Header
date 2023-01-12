@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Vision/VNEntityIdentificationModelDataSource-Protocol.h>
+#import "VNEntityIdentificationModel.h"
 
 @class NSString, VNEntityIdentificationModelTrainedModel;
 
 __attribute__((visibility("hidden")))
-@interface VNReadOnlyEntityIdentificationModel <VNEntityIdentificationModelDataSource>
+@interface VNReadOnlyEntityIdentificationModel : VNEntityIdentificationModel
 {
     VNEntityIdentificationModelTrainedModel *_trainedModel;
 }
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)observationsForEntityWithUniqueIdentifier:(id)arg1 error:(id *)arg2;
 - (unsigned long long)observationCountForEntityWithUniqueIdentifier:(id)arg1;
 - (id)trainedModelWithCanceller:(id)arg1 error:(id *)arg2;
+- (_Bool)dropTrainedModelAndReturnError:(id *)arg1;
 - (id)initWithConfiguration:(id)arg1 trainedModel:(id)arg2;
 
 // Remaining properties

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSSecureCoding-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface REMeshSkinningPartDescriptor : NSObject <NSSecureCoding>
+@interface REMeshSkinningPartDescriptor : NSObject
 {
     unsigned int _skeletonIndex;
     NSDictionary *_attributes;
@@ -27,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSkeletonIndex:(unsigned int)arg1 attributes:(id)arg2;
 - (void)addToSkinningModelBuilder:(struct SkinningModelBuilder *)arg1 payloadBuffer:(const struct Buffer *)arg2;
 - (id)initWithSkinningPartPayload:(void *)arg1 payloadBuilder:(void *)arg2;
+- (id)initWithSkinningData:(const void *)arg1 payloadBuilder:(void *)arg2;
 
 @end
 

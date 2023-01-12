@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import "ICStoreURLRequest.h"
+
+@class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICMusicSubscriptionPlaybackURLRequest
+@interface ICMusicSubscriptionPlaybackURLRequest : ICStoreURLRequest
 {
     _Bool _delegatedPlayback;
     NSString *_assetSourceStorefrontID;
+    NSData *_leaseCertificateData;
+    NSData *_leaseAssetIDData;
     NSString *_cloudUniversalLibraryID;
     NSString *_playbackAuthorizationToken;
     long long _requestType;
@@ -27,7 +31,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isDelegatedPlayback) _Bool delegatedPlayback; // @synthesize delegatedPlayback=_delegatedPlayback;
 @property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
 @property(copy, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
+@property(copy, nonatomic) NSData *leaseAssetIDData; // @synthesize leaseAssetIDData=_leaseAssetIDData;
+@property(copy, nonatomic) NSData *leaseCertificateData; // @synthesize leaseCertificateData=_leaseCertificateData;
 @property(copy, nonatomic) NSString *assetSourceStorefrontID; // @synthesize assetSourceStorefrontID=_assetSourceStorefrontID;
+- (id)_signpostRequestInfo;
+- (id)description;
+- (void)_populateItemIdentifiers:(id)arg1;
+- (id)_actionType;
 - (void)buildStoreURLRequestWithURLRequest:(id)arg1 builderProperties:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

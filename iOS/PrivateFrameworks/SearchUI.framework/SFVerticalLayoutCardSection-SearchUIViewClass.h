@@ -9,6 +9,7 @@
 @interface SFVerticalLayoutCardSection (SearchUIViewClass)
 - (Class)_searchUIViewClass;
 - (Class)_searchUIHorizontallyScrollingButtonControllerClass;
+- (double)searchUIHorizontallyScrollingSectionModel_interItemSpacing;
 - (double)searchUIHorizontallyScrollingSectionModel_widthDimensionMultiplier;
 @end
 

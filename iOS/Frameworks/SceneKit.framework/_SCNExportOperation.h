@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SCNExportOperation.h"
+
 @class NSDictionary, NSError, NSURL, SCNNode, SCNRenderer, SCNScene;
 
 __attribute__((visibility("hidden")))
-@interface _SCNExportOperation
+@interface _SCNExportOperation : SCNExportOperation
 {
     void *_userInfo;
     SEL _didEndSelector;

@@ -6,7 +6,11 @@
 
 #import <UIKit/UIColor.h>
 
+@class NSString;
+
 @interface UIColor (WKAdditions)
 + (id)wk_colorWithHexString:(id)arg1;
+- (id)wk_interpolatedToColor:(id)arg1 progress:(double)arg2;
+@property(readonly, copy, nonatomic) NSString *wk_colorHexString;
 @end
 

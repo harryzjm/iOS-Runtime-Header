@@ -7,6 +7,7 @@
 #import <BaseBoard/BSAnimationSettings.h>
 
 @interface BSAnimationSettings (UIKit)
++ (void)tryAnimatingWithSettings:(id)arg1 fromCurrentState:(_Bool)arg2 actions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)tryAnimatingWithSettings:(id)arg1 actions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 @end
 

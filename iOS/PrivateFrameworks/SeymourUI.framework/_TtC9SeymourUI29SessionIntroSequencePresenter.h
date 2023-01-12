@@ -13,18 +13,25 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *display;
     MISSING_TYPE *sessionCountdownCoordinator;
+    MISSING_TYPE *audioPlayer;
     MISSING_TYPE *onStartCountdown;
     MISSING_TYPE *onCountdownSequenceStarted;
     MISSING_TYPE *onCountdownSequenceCompleted;
     MISSING_TYPE *timerProvider;
+    MISSING_TYPE *sessionRouteMonitor;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *timer;
+    MISSING_TYPE *sessionRouteCategory;
+    MISSING_TYPE *audioSessionCategory;
+    MISSING_TYPE *audioSessionMode;
+    MISSING_TYPE *watchConnectionState;
     MISSING_TYPE *platform;
     MISSING_TYPE *catalogWorkout;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)audioPlayerDidFinishPlaying:(id)arg1 successfully:(_Bool)arg2;
 
 @end
 

@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-#import <TSCharts/TSCHNotifyOnModify-Protocol.h>
-#import <TSCharts/TSDMixing-Protocol.h>
-
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, TSCHChartGrid, TSCHChartInfo;
 
-@interface TSCHChartModel : NSObject <TSCHNotifyOnModify, TSDMixing, NSCopying>
+@interface TSCHChartModel : NSObject
 {
     TSCHChartInfo *_chartInfo;
     TSCHChartGrid *_grid;

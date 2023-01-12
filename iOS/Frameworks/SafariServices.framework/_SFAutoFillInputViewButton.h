@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)layoutSubviews;
-- (struct CGSize)intrinsicContentSize;
 
 @end
 

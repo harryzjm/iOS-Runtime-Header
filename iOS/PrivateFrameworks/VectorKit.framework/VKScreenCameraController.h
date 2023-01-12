@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/VKAnnotationTrackingCameraController-Protocol.h>
-#import <VectorKit/VKGesturingCameraController-Protocol.h>
-
 @class NSString, VKAnnotationTrackingCameraController, VKCameraRegionRestriction, VKGestureCameraBehavior, VKTimedAnimation;
 @protocol VKTrackableAnnotation;
 
 __attribute__((visibility("hidden")))
-@interface VKScreenCameraController <VKAnnotationTrackingCameraController, VKGesturingCameraController>
+@interface VKScreenCameraController
 {
     VKTimedAnimation *_zoomAnimation;
     VKTimedAnimation *_pitchAnimation;
@@ -30,6 +27,7 @@ __attribute__((visibility("hidden")))
     } _centerCoordinateDistanceRange;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) VKCameraRegionRestriction *regionRestriction; // @synthesize regionRestriction=_regionRestriction;
 @property(nonatomic) _Bool userChangedZoomSinceLastProgrammaticRegionChange; // @synthesize userChangedZoomSinceLastProgrammaticRegionChange=_userChangedZoomSinceLastProgrammaticRegionChange;
 @property(nonatomic) CDStruct_c3b9c2ee centerCoordinateDistanceRange; // @synthesize centerCoordinateDistanceRange=_centerCoordinateDistanceRange;

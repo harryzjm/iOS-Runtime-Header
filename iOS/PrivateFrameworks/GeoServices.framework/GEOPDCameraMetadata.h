@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDLensProjection, GEOPDOrientedPosition, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDCameraMetadata : PBCodable <NSCopying>
+@interface GEOPDCameraMetadata : PBCodable
 {
     PBDataReader *_reader;
     CDStruct_9f2792e4 _textureIds;

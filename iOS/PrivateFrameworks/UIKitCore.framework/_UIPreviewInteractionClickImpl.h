@@ -6,17 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/UIInteraction-Protocol.h>
-#import <UIKitCore/UIInteraction_Private-Protocol.h>
-#import <UIKitCore/_UIClickInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UIPreviewInteractionImpl-Protocol.h>
-
 @class NSString, UIDragInteraction, UIPreviewInteraction, UIView, _UIClickInteraction, _UIPreviewInteractionHighlighter, _UIPreviewInteractionPresentationAssistant, _UIRelationshipGestureRecognizer;
 @protocol UIInteractionEffect, UIPreviewInteractionDelegate, UIPreviewInteractionDelegatePrivate, _UIPreviewInteractionTouchForceProviding;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionClickImpl : NSObject <_UIClickInteractionDelegate, UIInteraction_Private, UIGestureRecognizerDelegate, _UIPreviewInteractionImpl, UIInteraction>
+@interface _UIPreviewInteractionClickImpl : NSObject
 {
     unsigned long long _currentState;
     struct {

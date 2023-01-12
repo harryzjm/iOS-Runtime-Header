@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitNearbyScheduleCell-Protocol.h>
-
 @class GEOPDDepartureSequenceContainer, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitNearbyScheduleLine : NSObject <GEOTransitNearbyScheduleCell>
+@interface _GEOTransitNearbyScheduleLine : NSObject
 {
     GEOPDDepartureSequenceContainer *_departureSequenceContainer;
     NSArray *_departureSequences;

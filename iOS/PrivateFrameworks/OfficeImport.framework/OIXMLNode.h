@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OIXMLNode : NSObject <NSCopying>
+@interface OIXMLNode : NSObject
 {
 }
 

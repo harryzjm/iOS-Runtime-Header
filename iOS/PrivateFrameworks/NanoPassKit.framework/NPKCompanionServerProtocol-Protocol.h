@@ -6,10 +6,12 @@
 
 #import <NanoPassKit/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSData, NSDate, NSError, NSSet, NSString, NSURL, NSUUID, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKTransitCommutePlan, PKVerificationChannel;
+@class NSArray, NSData, NSDate, NSError, NSSet, NSString, NSUUID, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKTransitCommutePlan, PKVerificationChannel;
 
 @protocol NPKCompanionServerProtocol <PDXPCServiceExportedInterface>
 - (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(NSString *)arg1 sessionData:(NSData *)arg2 handler:(void (^)(NSString *, unsigned long long, NSData *, NSError *))arg3;
+- (void)expressModeEnabledForPassIdentifier:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)hasActiveExternallySharedPassesWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)presentStandaloneTransaction:(long long)arg1 forPassUniqueIdentifier:(NSString *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)markPendingTransactionAsProcessedForPassWithUniqueID:(NSString *)arg1;
 - (void)fetchPendingTransactionForPassWithUniqueID:(NSString *)arg1 completion:(void (^)(PKPaymentPass *, PKPaymentTransaction *, NSString *))arg2;
@@ -30,6 +32,9 @@
 - (void)setPeerPaymentAccount:(PKPeerPaymentAccount *)arg1 forPairingID:(NSUUID *)arg2 completion:(void (^)(void))arg3;
 - (void)sharedPeerPaymentWebServiceContextForPairingID:(NSUUID *)arg1 withCompletion:(void (^)(PKPeerPaymentWebServiceContext *))arg2;
 - (void)setSharedPeerPaymentWebServiceContext:(PKPeerPaymentWebServiceContext *)arg1 forPairingID:(NSUUID *)arg2 completion:(void (^)(void))arg3;
+- (void)deviceIDSIdentifierWithCompletion:(void (^)(NSString *))arg1;
+- (void)passesWithCompletion:(void (^)(NSArray *))arg1;
+- (void)countOfPassesWithCompletion:(void (^)(unsigned long long))arg1;
 - (void)updateSettings:(unsigned long long)arg1 forPassWithUniqueID:(NSString *)arg2;
 - (void)sharedPaymentWebServiceContextForPairingID:(NSUUID *)arg1 withCompletion:(void (^)(PKPaymentWebServiceContext *))arg2;
 - (void)setSharedPaymentWebServiceContext:(PKPaymentWebServiceContext *)arg1 forPairingID:(NSUUID *)arg2 completion:(void (^)(void))arg3;
@@ -43,18 +48,19 @@
 - (void)defaultCard:(void (^)(NSString *))arg1;
 - (void)setDefaultCard:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)removePaymentPassWithUniqueID:(NSString *)arg1 forPairingID:(NSUUID *)arg2 waitForConfirmation:(_Bool)arg3 completion:(void (^)(_Bool, NSError *))arg4;
-- (void)savePaymentPassAtURL:(NSURL *)arg1 withUniqueID:(NSString *)arg2 forPairingID:(NSUUID *)arg3 completion:(void (^)(_Bool))arg4;
+- (void)savePaymentPassData:(NSData *)arg1 withUniqueID:(NSString *)arg2 forPairingID:(NSUUID *)arg3 completion:(void (^)(_Bool))arg4;
 - (void)credentialedPassUniqueIDsWithReply:(void (^)(NSSet *))arg1;
 - (void)paymentPassWithPairedTerminalIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentPass *))arg2;
 - (void)paymentPassWithDeviceAccountIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentPass *))arg2;
 - (void)paymentPassesWithPrimaryAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)paymentPassWithUniqueID:(NSString *)arg1 reply:(void (^)(PKPaymentPass *))arg2;
-- (void)paymentPassUniqueIDs:(void (^)(NSSet *))arg1;
+- (void)paymentPassUniqueIDsExcludingDeactivated:(_Bool)arg1 reply:(void (^)(NSSet *))arg2;
 - (void)registerDeviceWithCompletion:(void (^)(unsigned long long, unsigned long long, NSError *))arg1;
 - (void)handleDeviceUnlockedForPendingProvisioningRequestFromGizmo;
+- (void)provisionPassForRemoteCredentialWithType:(long long)arg1 andIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)provisionPassForAccountIdentifier:(NSString *)arg1 makeDefault:(_Bool)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)noteProvisioningPreflightCompleteWithSuccess:(_Bool)arg1 error:(NSError *)arg2 completion:(void (^)(void))arg3;
-- (void)beginProvisioningFromWatchOfferForPaymentPass:(PKPaymentPass *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
+- (void)beginProvisioningFromWatchOfferForPaymentPasses:(NSArray *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)noteWatchOfferDisplayedForPaymentPassWithUniqueID:(NSString *)arg1;
 - (void)connect;
 @end

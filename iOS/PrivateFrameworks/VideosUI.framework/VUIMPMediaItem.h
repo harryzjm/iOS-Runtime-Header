@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIMPMediaEntityImageLoadParamsCreating-Protocol.h>
+#import "VUIMediaItem.h"
 
 @class MPMediaItem, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIMPMediaItem <VUIMPMediaEntityImageLoadParamsCreating>
+@interface VUIMPMediaItem : VUIMediaItem
 {
     NSString *_coverArtImageIdentifier;
     NSString *_previewFrameImageIdentifier;

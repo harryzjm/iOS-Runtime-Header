@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudDocs/BRNotificationReceiverDelegate-Protocol.h>
-
-@class BRNotificationReceiver, NSArray, NSMetadataQuery, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSPredicate, NSString;
+@class BRItemCollectionGatherer, BRNotificationReceiver, NSArray, NSMetadataQuery, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSPredicate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BRQuery : NSObject <BRNotificationReceiverDelegate>
+@interface BRQuery : NSObject
 {
     NSMutableArray *_results;
     NSMutableDictionary *_resultsByRowID;
+    NSMutableDictionary *_fpItemIDToResultItem;
     BRNotificationReceiver *_receiver;
     NSMetadataQuery *_query;
     NSPredicate *_predicate;
@@ -27,6 +26,7 @@ __attribute__((visibility("hidden")))
     _Bool _needsCrashMarking;
     _Bool _needsCrashEvicting;
     _Bool _sendHasUpdateNotification;
+    _Bool _isFPFSMode;
     NSArray *_values;
     NSArray *_sortingAttributes;
     CDStruct_37e85dac _batchingParameters;
@@ -45,7 +45,8 @@ __attribute__((visibility("hidden")))
     struct __CFRunLoop *_runLoop;
     NSOperationQueue *_queryQueue;
     _Atomic int _disableCount;
-    int _receiverDisableCount;
+    int _handlerDisableCount;
+    BRItemCollectionGatherer *_collectionGatherer;
 }
 
 + (void)initialize;
@@ -56,6 +57,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain) BRNotificationReceiver *receiver; // @synthesize receiver=_receiver;
 @property __weak NSMetadataQuery *query; // @synthesize query=_query;
+- (void)itemCollectionGathererDidReceiveUpdates:(id)arg1 deleteItemsWithIDs:(id)arg2;
+- (void)itemCollectionGathererGatheredItems:(id)arg1;
+- (void)itemCollectionGathererReloadedItems:(id)arg1;
+- (void)itemCollectionGathererFinishedGathering;
+- (void)_prepareResultsForRelaoding;
+- (void)_handleRemovedItemsNotifications:(id)arg1 userInfo:(id)arg2;
+- (void)_handleReplacedItemsNotifications:(id)arg1 userInfo:(id)arg2;
+- (void)_handleAddedItemsNotifications:(id)arg1 userInfo:(id)arg2;
+- (id)_classifyItems:(id)arg1 deletedItemIDs:(id)arg2;
 - (void)notificationReceiverDidReceiveNotifications:(id)arg1;
 - (void)notificationsReceiverDidReceiveNotificationsBatch:(id)arg1;
 - (void)notificationsReceiverDidFinishGathering:(id)arg1;

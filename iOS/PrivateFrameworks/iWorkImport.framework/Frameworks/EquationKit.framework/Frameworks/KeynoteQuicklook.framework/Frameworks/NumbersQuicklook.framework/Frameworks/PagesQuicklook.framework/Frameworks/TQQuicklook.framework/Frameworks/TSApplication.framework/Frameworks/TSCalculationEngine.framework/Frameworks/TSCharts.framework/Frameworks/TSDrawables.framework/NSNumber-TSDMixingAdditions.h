@@ -6,9 +6,7 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <TSDrawables/TSDMixing-Protocol.h>
-
-@interface NSNumber (TSDMixingAdditions) <TSDMixing>
+@interface NSNumber (TSDMixingAdditions)
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 @end

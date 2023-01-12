@@ -31,9 +31,11 @@ __attribute__((visibility("hidden")))
 - (long long)_threadUnsafeRowIdOfKey:(id)arg1;
 - (id)_rowIdsOfEntriesBeforeTimeStamp:(double)arg1;
 - (double)_nextTimeStampForRefreshTimer;
+- (void)_removeLegacyCacheFromPath:(id)arg1;
 - (void)_removeOldFormatCacheFromPath:(id)arg1;
+- (void)_removeFileIfItExistsAtPath:(id)arg1;
 - (void)tearDown;
-- (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 legacyPath:(id)arg2;
 - (id)init;
 
 @end

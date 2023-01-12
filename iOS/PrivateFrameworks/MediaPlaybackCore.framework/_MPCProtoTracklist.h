@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class NSMutableArray, _MPCProtoTracklistIndexPath;
 
 __attribute__((visibility("hidden")))
-@interface _MPCProtoTracklist : PBCodable <NSCopying>
+@interface _MPCProtoTracklist : PBCodable
 {
     NSMutableArray *_accountInfos;
     NSMutableArray *_containers;

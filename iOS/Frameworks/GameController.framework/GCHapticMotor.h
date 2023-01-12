@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/NSCopying-Protocol.h>
-#import <GameController/NSSecureCoding-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GCHapticMotor : NSObject <NSCopying, NSSecureCoding>
+@interface GCHapticMotor : NSObject
 {
     int _index;
     float _frequency;

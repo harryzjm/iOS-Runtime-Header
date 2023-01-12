@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/NSCopying-Protocol.h>
-#import <ContactsUI/NSSecureCoding-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNUICoreApplicationAuthorizationItem : NSObject <NSCopying, NSSecureCoding>
+@interface CNUICoreApplicationAuthorizationItem : NSObject
 {
     NSData *_icon;
     NSString *_name;

@@ -8,7 +8,7 @@
 #import <Email/EMCollectionItem-Protocol.h>
 #import <Email/EMObject-Protocol.h>
 
-@class ECMessageFlags, ECSubject, EFFuture, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
+@class ECMessageFlags, ECSubject, EFFuture, EMFollowUp, EMObjectID, EMReadLater, NSArray, NSDate, NSIndexSet, NSString, NSURL;
 @protocol EMCollectionItemID;
 
 @protocol EMMessageListItem <EMCollectionItem, EMObject, EFPubliclyDescribable>
@@ -19,14 +19,19 @@
 @property(readonly) EFFuture *displayMessage;
 @property(readonly) EMObjectID *displayMessageObjectID;
 @property(readonly) id <EMCollectionItemID> displayMessageItemID;
+@property(readonly, copy) NSArray *mailboxesIfAvailable;
 @property(readonly, copy) NSArray *mailboxes;
 @property(readonly, copy) NSArray *mailboxObjectIDs;
 @property(readonly) long long conversationID;
 @property(readonly) unsigned long long count;
+@property(readonly, nonatomic) NSURL *brandIndicatorLocation;
+@property(readonly) _Bool hasUnscreenedSender;
+@property(readonly) long long senderBucket;
 @property(readonly) long long conversationNotificationLevel;
 @property(readonly) _Bool hasAttachments;
 @property(readonly) _Bool isCCMe;
 @property(readonly) _Bool isToMe;
+@property(readonly) long long unsubscribeType;
 @property(readonly) _Bool isBlocked;
 @property(readonly) _Bool isVIP;
 @property(readonly, copy) NSIndexSet *flagColors;
@@ -37,6 +42,10 @@
 @property(readonly, copy) NSArray *senderList;
 @property(readonly, copy) NSString *summary;
 @property(readonly) ECSubject *subject;
+@property(readonly) EMFollowUp *followUp;
+@property(readonly) NSDate *sendLaterDate;
+@property(readonly) EMReadLater *readLater;
+@property(readonly) NSDate *displayDate;
 @property(readonly) NSDate *date;
 @end
 

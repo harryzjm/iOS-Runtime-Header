@@ -6,12 +6,10 @@
 
 #import <SearchFoundation/SFSearchResult.h>
 
-#import <MobileSafariUI/CompletionItem-Protocol.h>
-
 @class NSString, WBSQuerySuggestion;
 @protocol CompletionItemActionHandler;
 
-@interface SFSearchResult (CompletionItem) <CompletionItem>
+@interface SFSearchResult (CompletionItem)
 - (void)didPerformCommand:(id)arg1;
 - (void)resultsDidBecomeVisible:(id)arg1;
 - (void)didEngageResult:(id)arg1;

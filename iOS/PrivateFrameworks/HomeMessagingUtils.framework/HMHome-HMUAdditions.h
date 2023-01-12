@@ -6,9 +6,15 @@
 
 #import <HomeKit/HMHome.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 @interface HMHome (HMUAdditions)
++ (id)hmu_homesFromHomes:(id)arg1 withHomeLocationStatus:(long long)arg2;
++ (id)hmu_homesFromHomes:(id)arg1 withZoneNames:(id)arg2;
++ (id)hmu_homesFromHomes:(id)arg1 withRoomNames:(id)arg2;
+@property(readonly, nonatomic) NSArray *hmu_endpointAccessories;
+@property(readonly, nonatomic) NSDictionary *hmu_homePodsIncludingCurrentAccessoryDictionary;
+@property(readonly, nonatomic) NSDictionary *hmu_homePodsDictionary;
 - (id)hmu_accessoryWithUniqueIdentifierUUIDString:(id)arg1;
 - (id)hmu_zoneWithName:(id)arg1;
 - (id)hmu_zonesWithUniqueIdentifiers:(id)arg1;
@@ -16,6 +22,7 @@
 - (id)hmu_roomWithName:(id)arg1;
 - (id)hmu_roomsWithUniqueIdentifiers:(id)arg1;
 - (id)hmu_roomWithUniqueIdentifier:(id)arg1;
+@property(readonly, nonatomic) NSArray *hmu_allRoomsIncludingRoomForEntireHome;
 - (id)hmu_userWithSenderCorrelationIdentifier:(id)arg1;
 - (_Bool)hmu_isOwner:(id)arg1;
 - (_Bool)hmu_isAdministrator:(id)arg1;

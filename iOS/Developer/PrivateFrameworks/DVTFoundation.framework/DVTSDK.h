@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DVTFilePath, DVTPlatform, DVTSDKVariant, DVTSearchPath, NSArray, NSDictionary, NSNumber, NSSet, NSString;
+@class DVTBuildVersion, DVTFilePath, DVTPlatform, DVTSDKVariant, DVTSearchPath, NSArray, NSDictionary, NSNumber, NSSet, NSString;
 
 @interface DVTSDK : NSObject
 {
@@ -31,8 +31,10 @@
     DVTSearchPath *_commandLineToolSearchPath;
     NSArray *_headerSearchPaths;
     NSArray *_frameworkSearchPaths;
+    NSDictionary *_versionMap;
     NSDictionary *_iOSToMacOSVersionMap;
     NSDictionary *_macOSToiOSVersionMap;
+    DVTBuildVersion *_productBuildVersion;
     NSDictionary *_versionInfo;
     NSString *_canonicalNameForBuildSettings;
     NSArray *_toolchains;
@@ -67,6 +69,7 @@
 @property(readonly, copy) NSArray *toolchainNames; // @synthesize toolchainNames=_toolchainNames;
 @property(readonly) NSDictionary *macOSToiOSVersionMap; // @synthesize macOSToiOSVersionMap=_macOSToiOSVersionMap;
 @property(readonly) NSDictionary *iOSToMacOSVersionMap; // @synthesize iOSToMacOSVersionMap=_iOSToMacOSVersionMap;
+@property(readonly) NSDictionary *versionMap; // @synthesize versionMap=_versionMap;
 @property(readonly, copy) NSArray *propertyConditionFallbackNames; // @synthesize propertyConditionFallbackNames=_propertyConditionFallbackNames;
 @property(readonly, copy) NSDictionary *defaultProperties; // @synthesize defaultProperties=_defaultProperties;
 @property(readonly, copy) NSArray *toolchains; // @synthesize toolchains=_toolchains;
@@ -90,7 +93,11 @@
 - (id)additionalHeaderSearchPaths;
 - (id)commandLineToolSearchPath;
 @property(readonly, copy) NSString *canonicalNameForBuildSettings; // @synthesize canonicalNameForBuildSettings=_canonicalNameForBuildSettings;
+@property(readonly) DVTBuildVersion *productBuildVersion;
 @property(readonly) NSDictionary *versionInfo; // @synthesize versionInfo=_versionInfo;
+- (id)_canonicalNameForLookupIncludingCohortInfix:(_Bool)arg1;
+@property(readonly) NSString *canonicalNameForLookup;
+@property(readonly) _Bool isLatestCanonicalSDKForPlatform;
 @property(readonly, getter=isBaseSDK) _Bool baseSDK;
 @property(readonly, getter=isInternal) _Bool internal;
 @property(retain) DVTPlatform *platform;

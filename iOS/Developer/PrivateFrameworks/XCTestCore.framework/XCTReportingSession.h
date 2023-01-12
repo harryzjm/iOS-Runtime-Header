@@ -20,6 +20,7 @@
 - (void)finishWithCompletion:(CDUnknownBlockType)arg1;
 - (id)reportSuiteStartedWithName:(id)arg1 atDate:(id)arg2;
 - (void)reportStarted;
+- (id)initWithIDEProxy:(id)arg1 testConfiguration:(id)arg2;
 - (id)initWithIDEProxy:(id)arg1 configuration:(id)arg2;
 
 @end

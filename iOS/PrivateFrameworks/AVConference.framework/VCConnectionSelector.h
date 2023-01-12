@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)updateConnectionSelectionPolicyWithPreferRelayOverP2P:(_Bool)arg1 preferNonVPN:(_Bool)arg2 preferE2E:(_Bool)arg3;
 - (CDStruct_155bd25f *)getConnectionSelectionPolicy;
 - (void)useConnectionAsPrimary:(id)arg1;
-- (_Bool)selectPrimaryAndSecondaryWithConnection:(id)arg1;
+- (_Bool)selectPrimaryAndSecondaryWithConnection:(id)arg1 isEndToEnd:(_Bool)arg2;
 - (void)updateConnectionForDuplicationForDuplicationReason:(unsigned char)arg1 duplicationEnhancementEnabled:(_Bool)arg2 preferredLocalInterfaceForDuplication:(unsigned char)arg3 preferredRemoteInterfaceForDuplication:(unsigned char)arg4 connectionArray:(id)arg5;
 - (void)updateSecondaryWithConnection:(id)arg1;
 - (void)updatePrimaryWithConnection:(id)arg1;

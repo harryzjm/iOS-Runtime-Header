@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CDDCloudKitServerConfiguration : NSObject <NSCopying, NSSecureCoding>
+@interface CDDCloudKitServerConfiguration : NSObject
 {
     NSString *_storeDirectoryPath;
     NSString *_machServiceName;

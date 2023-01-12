@@ -6,9 +6,7 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <CoreDuet/_DKDeduping-Protocol.h>
-
-@interface NSNumber (_DKDeduping) <_DKDeduping>
+@interface NSNumber (_DKDeduping)
 - (id)dedup;
 - (id)dk_dedup;
 @end

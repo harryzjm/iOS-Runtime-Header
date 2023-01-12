@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKVOriginApp, CKVocabularyDonator;
+@class KVDonator, NSString;
 
 @protocol CKVDonatorProvider
-- (CKVocabularyDonator *)makeDonatorForOriginApp:(CKVOriginApp *)arg1;
+- (KVDonator *)donatorWithItemType:(long long)arg1 originAppId:(NSString *)arg2 userId:(NSString *)arg3 error:(id *)arg4;
+- (KVDonator *)donatorWithItemType:(long long)arg1 originAppId:(NSString *)arg2 error:(id *)arg3;
 @end
 

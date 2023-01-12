@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleLDAP/OS_ldap_connection-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OS_ldap_connection : NSObject <OS_ldap_connection>
+@interface OS_ldap_connection : NSObject
 {
 }
 

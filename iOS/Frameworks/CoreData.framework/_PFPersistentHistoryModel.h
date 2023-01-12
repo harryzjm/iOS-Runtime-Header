@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/_PFAncillaryModelFactory-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _PFPersistentHistoryModel : NSObject <_PFAncillaryModelFactory>
+@interface _PFPersistentHistoryModel : NSObject
 {
 }
 

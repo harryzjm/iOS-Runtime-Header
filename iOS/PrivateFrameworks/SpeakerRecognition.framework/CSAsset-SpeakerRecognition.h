@@ -9,6 +9,8 @@
 @class NSString;
 
 @interface CSAsset (SpeakerRecognition)
+@property(readonly, nonatomic) _Bool useSpeakerRecognitionAsset;
+@property(readonly, nonatomic) _Bool containsMultiUserThresholds;
 @property(readonly, nonatomic) _Bool satImplicitTrainingEnabled;
 @property(readonly, nonatomic) NSString *keywordDetectorNDAPIConfigFilePath;
 @property(readonly, nonatomic) NSString *keywordDetectorQuasarConfigFilePath;
@@ -28,6 +30,7 @@
 @property(readonly, nonatomic) long long multiUserHighScoreThreshold;
 @property(readonly, nonatomic) long long multiUserLowScoreThreshold;
 @property(readonly, nonatomic) float satScoreThreshold;
+- (float)satScoreThresholdForPhId:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool containsSpeakerRecognitionCategory;
 @end
 

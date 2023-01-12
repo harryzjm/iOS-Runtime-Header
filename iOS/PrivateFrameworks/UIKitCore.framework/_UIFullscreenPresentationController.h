@@ -4,26 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
+#import "_UICurrentContextPresentationController.h"
+
+@class UIView, _UIForcedOrientationTransactionToken;
 
 __attribute__((visibility("hidden")))
-@interface _UIFullscreenPresentationController
+@interface _UIFullscreenPresentationController : _UICurrentContextPresentationController
 {
     UIView *_counterRotatedView;
     double _counterRotatedAngle;
     struct CGRect _counterRotatedOriginalBounds;
     long long _originalOrientation;
     _Bool _presentingViewControllerHandledCounterRotation;
-    CDUnknownBlockType finalRotationBlock;
+    CDUnknownBlockType _finalRotationBlock;
+    _UIForcedOrientationTransactionToken *_forcedOrientationToken;
+    _Bool _disableAnimatedReenablingOfAutorotation;
 }
 
 - (void).cxx_destruct;
+- (_Bool)_shouldAnimateReenablingOfAutorotation;
 - (_Bool)_inheritsPresentingViewControllerThemeLevel;
 - (void)_setPresentedViewController:(id)arg1;
+- (void)_transitionDidEnd:(_Bool)arg1 isDismissal:(_Bool)arg2;
 - (void)dismissalTransitionDidEnd:(_Bool)arg1;
 - (void)presentationTransitionDidEnd:(_Bool)arg1;
-- (void)_removeCounterRotation;
+- (void)_removeCounterRotationIfApplied;
+- (void)_applyCounterRotationToView:(id)arg1 fromOrientation:(long long)arg2 toOrientation:(long long)arg3 withBounds:(struct CGRect)arg4;
 - (void)_placeCounterRotationViewWithView:(id)arg1 inWindow:(id)arg2 fromOrientation:(long long)arg3 toOrientation:(long long)arg4 force:(_Bool)arg5;
+- (void)_prepareForMixedOrientationTransitionIfNecessaryInWindow:(id)arg1 fromViewController:(id)arg2 toViewController:(id)arg3;
 - (void)_adjustOrientationIfNecessaryInWindow:(id)arg1 forViewController:(id)arg2 preservingViewController:(id)arg3;
 - (_Bool)_invokesDelegatesOnOrientationChange;
 - (struct CGRect)frameOfPresentedViewInContainerView;

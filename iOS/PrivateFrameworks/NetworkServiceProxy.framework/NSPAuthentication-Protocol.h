@@ -6,10 +6,11 @@
 
 #import <NetworkServiceProxy/NSObject-Protocol.h>
 
-@class NSMutableURLRequest, NSPPrivacyProxyTokenActivationQuery;
+@class NSData, NSMutableURLRequest, NSPPrivacyProxyTokenActivationQuery, NSURLSession;
 
 @protocol NSPAuthentication <NSObject>
 + (void)authenticationFailure;
-+ (void)addAuthenticationInformationToRequest:(NSMutableURLRequest *)arg1 tokenActivationQuery:(NSPPrivacyProxyTokenActivationQuery *)arg2 completionHandler:(void (^)(_Bool, int))arg3;
++ (void)sendRequestForTokens:(NSMutableURLRequest *)arg1 tokenFetchURLSession:(NSURLSession *)arg2 messageBody:(NSData *)arg3 completionHandler:(void (^)(int, NSData *, NSURLResponse *, NSError *))arg4;
++ (void)sendRequestForTokens:(NSMutableURLRequest *)arg1 tokenFetchURLSession:(NSURLSession *)arg2 tokenActivationQuery:(NSPPrivacyProxyTokenActivationQuery *)arg3 completionHandler:(void (^)(int, NSData *, NSURLResponse *, NSError *))arg4;
 @end
 

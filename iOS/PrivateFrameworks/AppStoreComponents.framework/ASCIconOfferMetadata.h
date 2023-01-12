@@ -4,26 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ASCOfferMetadata.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ASCIconOfferMetadata
+@interface ASCIconOfferMetadata : ASCOfferMetadata
 {
-    NSString *_imageName;
     NSString *_animationName;
+    NSString *_baseImageName;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *baseImageName; // @synthesize baseImageName=_baseImageName;
 @property(readonly, copy, nonatomic) NSString *animationName; // @synthesize animationName=_animationName;
-@property(readonly, copy, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 - (_Bool)isIcon;
+- (id)imageNameForSize:(id)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithImageName:(id)arg1 animationName:(id)arg2;
+- (id)initWithBaseImageName:(id)arg1 animationName:(id)arg2;
 
 @end
 

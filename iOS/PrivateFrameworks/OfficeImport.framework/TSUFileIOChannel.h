@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/TSURandomWriteChannel-Protocol.h>
-#import <OfficeImport/TSUReadChannel-Protocol.h>
-#import <OfficeImport/TSUStreamWriteChannel-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_io, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface TSUFileIOChannel : NSObject <TSUReadChannel, TSUStreamWriteChannel, TSURandomWriteChannel>
+@interface TSUFileIOChannel : NSObject
 {
     NSObject<OS_dispatch_queue> *_ioQueue;
     NSObject<OS_dispatch_io> *_channel;

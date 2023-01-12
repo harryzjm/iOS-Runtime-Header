@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 @class GEOSearchAttributionSource, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOSearchAttributionInfo : NSObject <NSSecureCoding>
+@interface GEOSearchAttributionInfo : NSObject
 {
     GEOSearchAttributionSource *_source;
     NSArray *_logoPaths;

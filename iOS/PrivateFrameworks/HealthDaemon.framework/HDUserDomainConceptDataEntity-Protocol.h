@@ -6,15 +6,15 @@
 
 #import <HealthDaemon/HDSQLiteEntity-Protocol.h>
 
-@class HDDatabaseTransaction, HKUserDomainConcept, PBCodable;
+@class HDDatabaseTransaction, HKUserDomainConcept, NSMutableArray, PBCodable;
 
 @protocol HDUserDomainConceptDataEntity <HDSQLiteEntity>
 + (_Bool)addPropertyDataToCodable:(PBCodable *)arg1 userDomainConceptID:(long long)arg2 transaction:(HDDatabaseTransaction *)arg3 error:(id *)arg4;
-+ (_Bool)willDeleteUserDomainConcept:(HKUserDomainConcept *)arg1 userDomainConceptID:(long long)arg2 transaction:(HDDatabaseTransaction *)arg3 error:(id *)arg4;
-+ (_Bool)retrieveDataForUserDomainConcept:(HKUserDomainConcept *)arg1 userDomainConceptID:(long long)arg2 transaction:(HDDatabaseTransaction *)arg3 error:(id *)arg4;
++ (_Bool)willDeleteUserDomainConcept:(HKUserDomainConcept *)arg1 userDomainConceptID:(long long)arg2 syncProvenance:(long long)arg3 transaction:(HDDatabaseTransaction *)arg4 error:(id *)arg5;
++ (_Bool)retrieveDataForUserDomainConcept:(HKUserDomainConcept *)arg1 userDomainConceptID:(long long)arg2 mutableUserDomainConceptProperties:(NSMutableArray *)arg3 transaction:(HDDatabaseTransaction *)arg4 error:(id *)arg5;
 + (_Bool)insertDataForUserDomainConcept:(HKUserDomainConcept *)arg1 userDomainConceptID:(long long)arg2 transaction:(HDDatabaseTransaction *)arg3 error:(id *)arg4;
 
 @optional
-+ (_Bool)deleteDataForUserDomainConcept:(HKUserDomainConcept *)arg1 userDomainConceptID:(long long)arg2 transaction:(HDDatabaseTransaction *)arg3 error:(id *)arg4;
++ (_Bool)pruneDataForUpdatedUserDomainConcept:(HKUserDomainConcept *)arg1 userDomainConceptID:(long long)arg2 transaction:(HDDatabaseTransaction *)arg3 error:(id *)arg4;
 @end
 

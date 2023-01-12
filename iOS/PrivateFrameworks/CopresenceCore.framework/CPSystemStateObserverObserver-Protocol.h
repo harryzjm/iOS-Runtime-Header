@@ -10,5 +10,8 @@
 
 @protocol CPSystemStateObserverObserver <NSObject>
 - (void)systemStateObserver:(id <CPSystemStateObserver>)arg1 sharePlayAllowedStateChanged:(_Bool)arg2;
+
+@optional
+- (void)systemStateObserver:(id <CPSystemStateObserver>)arg1 screenSharingAllowedStateChanged:(_Bool)arg2;
 @end
 

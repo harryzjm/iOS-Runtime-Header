@@ -8,55 +8,12 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
-#pragma mark Named Structures
-
-struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
-
-typedef struct {
-    CDStruct_f261e59c origin;
-    struct {
-        long long width;
-        long long height;
-    } size;
-} CDStruct_996ac03c;
-
-// Ambiguous groups
-typedef struct {
     long long _field1;
-    long long _field2;
-} CDStruct_912cb5d2;
-
-typedef struct {
-    long long x;
-    long long y;
-} CDStruct_f261e59c;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
 

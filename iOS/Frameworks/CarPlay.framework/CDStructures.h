@@ -4,10 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CGPoint {
@@ -50,14 +46,7 @@ typedef struct {
     _Bool _field8;
     _Bool _field9;
     _Bool _field10;
-    _Bool _field11;
-    _Bool _field12;
-    _Bool _field13;
-} CDStruct_98d137ef;
-
-typedef struct {
-    _Bool _field1;
-} CDStruct_b31ca263;
+} CDStruct_b73e569c;
 
 typedef struct {
     struct CLLocationCoordinate2D _field1;

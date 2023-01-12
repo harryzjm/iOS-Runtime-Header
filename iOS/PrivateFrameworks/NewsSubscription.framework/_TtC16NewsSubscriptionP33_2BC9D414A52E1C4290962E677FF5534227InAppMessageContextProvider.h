@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsSubscription/IAMApplicationContextProvider-Protocol.h>
-
-@interface _TtC16NewsSubscriptionP33_2BC9D414A52E1C4290962E677FF5534227InAppMessageContextProvider : NSObject <IAMApplicationContextProvider>
+@interface _TtC16NewsSubscriptionP33_2BC9D414A52E1C4290962E677FF5534227InAppMessageContextProvider : NSObject
 {
 }
 

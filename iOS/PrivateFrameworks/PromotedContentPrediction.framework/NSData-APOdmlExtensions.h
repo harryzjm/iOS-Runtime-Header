@@ -7,6 +7,6 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (APOdmlExtensions)
-- (id)dataStringForJSON;
+- (id)APOdml_dataStringForJSON;
 @end
 

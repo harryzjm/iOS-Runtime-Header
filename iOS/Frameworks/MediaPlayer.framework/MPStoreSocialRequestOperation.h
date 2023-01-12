@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class ICStoreURLRequest, NSObject;
 @protocol MPStoreSocialRequestOperationDataSource, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPStoreSocialRequestOperation
+@interface MPStoreSocialRequestOperation : MPAsyncOperation
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     ICStoreURLRequest *_request;
@@ -22,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(readonly, nonatomic) id <MPStoreSocialRequestOperationDataSource> dataSource; // @synthesize dataSource=_dataSource;
-- (id)_requestURLFromBagDictionary:(id)arg1;
+- (id)_requestURLFromBag:(id)arg1;
 - (void)execute;
 - (void)cancel;
 - (id)initWithDataSource:(id)arg1;

@@ -6,12 +6,14 @@
 
 #import <CloudPhotoLibrary/NSObject-Protocol.h>
 
-@class CPLRecordChange, CPLResource, CPLResourceTypeSet, NSString, NSURL;
+@class CPLRecordChange, CPLResource, CPLResourceTypeSet, CPLScopedIdentifier, NSURL;
 
 @protocol CPLBeforeUploadCheckItemsProvider <NSObject>
+- (_Bool)isCloudRecordWithScopedIdentifierShared:(CPLScopedIdentifier *)arg1;
+- (CPLRecordChange *)knownCloudRecordWithScopedIdentifier:(CPLScopedIdentifier *)arg1;
 - (_Bool)isResourceDynamic:(CPLResource *)arg1;
 - (NSURL *)willUploadCloudResource:(CPLResource *)arg1 localResource:(CPLResource *)arg2 error:(id *)arg3;
 - (CPLResourceTypeSet *)availableResourceTypesToUploadForChange:(CPLRecordChange *)arg1;
-- (_Bool)willNeedToAccessScopeWithIdentifier:(NSString *)arg1 error:(id *)arg2;
+- (_Bool)willNeedToAccessRecordWithScopedIdentifier:(CPLScopedIdentifier *)arg1 error:(id *)arg2;
 @end
 

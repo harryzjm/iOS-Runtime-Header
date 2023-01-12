@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppSSOCore/SOAuthorizationCoreDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SOAuthorizationResultClientImpl : NSObject <SOAuthorizationCoreDelegate>
+@interface SOAuthorizationResultClientImpl : NSObject
 {
     CDUnknownBlockType _authorizationHandleResponseCompletion;
     CDUnknownBlockType _authorizationHandleCredentialCompletion;

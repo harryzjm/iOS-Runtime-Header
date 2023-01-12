@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface DVTArchitecture : NSObject <NSCopying>
+@interface DVTArchitecture : NSObject
 {
     _Bool _is64Bit;
     int _CPUType;

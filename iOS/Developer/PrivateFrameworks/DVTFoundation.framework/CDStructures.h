@@ -48,21 +48,6 @@ struct CC_SHA256state_st {
     unsigned int wbuf[16];
 };
 
-struct CGPoint {
-    double _field1;
-    double _field2;
-};
-
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
-
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
 struct DVTBitSet {
     unsigned long long _field1;
     unsigned long long _field2[0];
@@ -101,6 +86,10 @@ struct DVTStringBuilder {
     unsigned short *_field2;
     unsigned long long _field3;
     unsigned long long _field4;
+};
+
+struct DVTUnfairLock {
+    struct os_unfair_lock_s __lock;
 };
 
 struct UParseError {

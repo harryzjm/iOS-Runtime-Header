@@ -6,11 +6,9 @@
 
 #import <Intents/INRelevantShortcut.h>
 
-#import <RelevanceEngine/RERelevantShortcutProperties-Protocol.h>
-
 @class INDefaultCardTemplate, INShortcut, NSArray;
 
-@interface INRelevantShortcut (RELogging) <RERelevantShortcutProperties>
+@interface INRelevantShortcut (RELogging)
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *relevanceProviders;

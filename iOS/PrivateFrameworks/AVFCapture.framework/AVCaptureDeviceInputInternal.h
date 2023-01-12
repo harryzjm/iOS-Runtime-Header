@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     float portraitLightingEffectStrength;
     AVWeakReference *weakReference;
     id <AVCallbackCancellation> deviceOpenCallbackInvoker;
+    _Bool studioLightingAllowed;
 }
 
 - (void)dealloc;

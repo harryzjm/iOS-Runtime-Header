@@ -6,11 +6,9 @@
 
 #import <MediaPlayer/MPModelKind.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadValueJSONConvertible-Protocol.h>
-
 @class NSString;
 
-@interface MPModelKind (MPCPlaybackEngineEventPayload) <MPCPlaybackEngineEventPayloadValueJSONConvertible>
+@interface MPModelKind (MPCPlaybackEngineEventPayload)
 + (id)payloadValueFromJSONValue:(id)arg1;
 - (id)mpc_jsonValue;
 

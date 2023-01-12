@@ -6,9 +6,7 @@
 
 #import <Foundation/NSLock.h>
 
-#import <HMFoundation/HMFLocking-Protocol.h>
-
-@interface NSLock (HMFLock) <HMFLocking>
+@interface NSLock (HMFLock)
 - (void)performBlock:(CDUnknownBlockType)arg1;
 @end
 

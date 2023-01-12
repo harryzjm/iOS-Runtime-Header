@@ -6,11 +6,9 @@
 
 #import <CoreRoutine/RTLocation.h>
 
-#import <coreroutine/RTCoreDataReadable-Protocol.h>
-
 @class NSString;
 
-@interface RTLocation (RTCoreDataTransformable) <RTCoreDataReadable>
+@interface RTLocation (RTCoreDataTransformable)
 + (id)createWithMapItemMO:(id)arg1;
 + (id)createWithManagedObject:(id)arg1;
 + (int)convertLocationReferenceFrame:(int)arg1;
@@ -18,6 +16,9 @@
 - (void)_distanceBetweenShiftedLocation:(id)arg1 unshiftedLocation:(id)arg2 locationShifter:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)distanceFromLocation:(id)arg1 locationShifter:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (double)distanceFromLocation:(id)arg1 locationShifter:(id)arg2 error:(id *)arg3;
+- (id)initWithCLCircularRegion:(id)arg1;
+- (id)initWithCLLocationCoordinate2D:(struct CLLocationCoordinate2D *)arg1;
+- (id)initWithRTPair:(id)arg1;
 - (id)initWithCLLocation:(id)arg1;
 - (id)initWithRTPLocation:(id)arg1;
 

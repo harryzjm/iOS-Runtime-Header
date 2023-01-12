@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetExplorer/PUReviewAssetProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AEReviewAssetProvider : NSObject <PUReviewAssetProvider>
+@interface AEReviewAssetProvider : NSObject
 {
 }
 

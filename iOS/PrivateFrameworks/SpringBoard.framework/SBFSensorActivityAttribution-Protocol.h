@@ -10,7 +10,11 @@
 @class NSString;
 
 @protocol SBFSensorActivityAttribution <NSObject, NSCopying>
-@property(readonly, copy, nonatomic) NSString *bundleIdentifierMatchingDisplayName;
+@property(readonly, copy, nonatomic) NSString *executableDisplayName;
+@property(readonly, copy, nonatomic) NSString *activeEntityBundleIdentifier;
+@property(readonly, nonatomic) _Bool usedRecently;
+@property(readonly, nonatomic) _Bool isSystemService;
+@property(readonly, copy, nonatomic) NSString *website;
 @property(readonly, copy, nonatomic) NSString *attributionGroup;
 @property(readonly, nonatomic) long long sensor;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier;

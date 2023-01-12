@@ -12,19 +12,24 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI22HighlightBrickItemCell : UICollectionViewCell
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *currentConstraints;
     MISSING_TYPE *itemInfo;
     MISSING_TYPE *artworkView;
+    MISSING_TYPE *layoutGuide;
     MISSING_TYPE *headlineLabel;
     MISSING_TYPE *indexLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *platter;
-    MISSING_TYPE *lastConstraints;
+    MISSING_TYPE *hasIndex;
+    MISSING_TYPE *isCurrentTitleRTL;
+    MISSING_TYPE *indexLeadingConstraint;
     MISSING_TYPE *layout;
+    MISSING_TYPE *layoutGuideLeadingConstraint;
 }
 
 - (void).cxx_destruct;
-- (void)textSizeChanged:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)prepareForReuse;
 - (id)initWithCoder:(id)arg1;

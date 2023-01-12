@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreLocation/NSCopying-Protocol.h>
-
 @class NSDate, NSNumber, _CLRangingPeer;
 
-@interface _CLRangingPeerDistanceInternal : NSObject <NSCopying>
+@interface _CLRangingPeerDistanceInternal : NSObject
 {
     _CLRangingPeer *_peer;
     NSDate *_date;

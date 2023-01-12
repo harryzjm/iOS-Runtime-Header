@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBAutolayoutFoundation/NSCoding-Protocol.h>
-
 @class NSString;
 
-@interface IBLayoutConstant : NSObject <NSCoding, IBBinaryArchiving>
+@interface IBLayoutConstant : NSObject
 {
     double _value;
 }

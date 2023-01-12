@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIPlistMediaEntityImageLoadParamsCreating-Protocol.h>
+#import "VUIMediaCollection.h"
 
 @class VUIPlistMediaDatabaseSeason;
 
 __attribute__((visibility("hidden")))
-@interface VUIPlistSeasonMediaCollection <VUIPlistMediaEntityImageLoadParamsCreating>
+@interface VUIPlistSeasonMediaCollection : VUIMediaCollection
 {
     VUIPlistMediaDatabaseSeason *_databaseSeason;
 }

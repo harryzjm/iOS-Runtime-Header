@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     VKCameraRegionRestriction *_regionRestriction;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) VKCameraRegionRestriction *regionRestriction; // @synthesize regionRestriction=_regionRestriction;
 @property(nonatomic) void *globeView; // @synthesize globeView=_globeView;
 - (void)_rotateToHeadingAnimated:(_Bool)arg1 duration:(double)arg2;

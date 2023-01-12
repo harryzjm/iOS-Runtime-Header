@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
+#import "UIImageView.h"
 
-@class NSArray, NSString, UIAction, UIImageView, UIView, _UIBadgeView, _UIFloatingContentView, _UISegmentedControlAppearanceStorage;
+@class NSArray, NSString, UIAction, UIView, _UIBadgeView, _UIFloatingContentView, _UISegmentedControlAppearanceStorage;
+@protocol UISegmentBezelView;
 
 __attribute__((visibility("hidden")))
-@interface UISegment <CAAnimationDelegate>
+@interface UISegment : UIImageView
 {
     UIView *_info;
     UIImageView *_backgroundView;
     UIView *_selectionIndicatorView;
     UIImageView *_selectionImageView;
+    UIView<UISegmentBezelView> *_bezelView;
     _UISegmentedControlAppearanceStorage *_appearanceStorage;
     _UIFloatingContentView *_floatingContentView;
     double _width;
@@ -72,7 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)setContentOffset:(struct CGSize)arg1;
 - (id)_segmentLabel;
 - (id)label;
-@property(nonatomic) unsigned int position;
+@property(nonatomic) unsigned int segmentPosition;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)_positionInfoWithoutAnimation;
@@ -89,10 +91,11 @@ __attribute__((visibility("hidden")))
 - (void)animateAdd:(_Bool)arg1;
 - (void)setShowDivider:(_Bool)arg1;
 - (_Bool)showDivider;
-@property int controlSize;
-@property(getter=isMomentary) _Bool momentary;
-- (_Bool)isRightHighlighted;
-- (_Bool)isRightSelected;
+- (void)setControlSize:(int)arg1;
+@property(readonly, nonatomic) int controlSize;
+@property(nonatomic, getter=isMomentary) _Bool momentary;
+@property(readonly, nonatomic, getter=isRightHighlighted) _Bool rightHighlighted;
+@property(readonly, nonatomic, getter=isRightSelected) _Bool rightSelected;
 - (_Bool)_isContainedInHostedFocusSystem;
 @property(readonly) UIView *badgeView;
 @property(copy, nonatomic) NSString *badgeValue;
@@ -106,8 +109,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isSelectionIndicatorDragged;
 - (void)_setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHighlighted:(_Bool)arg1;
-- (_Bool)isHighlighted;
-@property(getter=isSelected) _Bool selected;
+@property(readonly, nonatomic, getter=isHighlighted) _Bool highlighted;
+@property(nonatomic, getter=isSelected) _Bool selected;
 - (void)setSelected:(_Bool)arg1 highlighted:(_Bool)arg2;
 - (void)setEnabled:(_Bool)arg1;
 - (void)_setEnabledAppearance:(_Bool)arg1;
@@ -117,7 +120,6 @@ __attribute__((visibility("hidden")))
 - (void)setBarStyle:(long long)arg1;
 - (id)disabledTextColor;
 - (id)_attributedTextForState:(unsigned long long)arg1 selected:(_Bool)arg2 forceSelectedAppearance:(_Bool)arg3;
-- (id)_enabledColor:(_Bool)arg1;
 - (id)_stateTextAttibutes:(id)arg1 segmentState:(unsigned long long)arg2;
 - (void)_updateTextColors;
 - (void)setUsesAXTextSize:(_Bool)arg1;
@@ -156,7 +158,7 @@ __attribute__((visibility("hidden")))
 - (Class)_segmentedControlClass;
 - (id)_parentSegmentedControl;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithInfo:(id)arg1 size:(int)arg2 barStyle:(long long)arg3 tintColor:(id)arg4 appearanceStorage:(id)arg5 position:(unsigned int)arg6 autosizeText:(_Bool)arg7 adjustsForContentSizeCategory:(_Bool)arg8;
+- (id)initWithInfo:(id)arg1 size:(int)arg2 barStyle:(long long)arg3 tintColor:(id)arg4 appearanceStorage:(id)arg5 position:(unsigned int)arg6 autosizeText:(_Bool)arg7 adjustsForContentSizeCategory:(_Bool)arg8 traitCollection:(id)arg9;
 - (void)_finishInitialSegmentSetup;
 
 // Remaining properties

@@ -6,13 +6,14 @@
 
 #import <CoverSheet/NSObject-Protocol.h>
 
-@class MRPlatterViewController, MRUCoverSheetViewController, UIGestureRecognizer;
+@class MRUCoverSheetViewController, NSArray, UIGestureRecognizer;
 
 @protocol MRUCoverSheetViewControllerDelegate <NSObject>
-- (void)coverSheetViewController:(MRUCoverSheetViewController *)arg1 willChangeToLayout:(long long)arg2 animations:(void (^)(void))arg3 completion:(void (^)(void))arg4;
 
 @optional
-- (void)platterViewController:(MRPlatterViewController *)arg1 didReceiveInteractionEvent:(UIGestureRecognizer *)arg2;
 - (void)coverSheetViewController:(MRUCoverSheetViewController *)arg1 didReceiveInteractionEvent:(UIGestureRecognizer *)arg2;
+- (void)coverSheetViewController:(MRUCoverSheetViewController *)arg1 willChangeToLayout:(long long)arg2 animations:(void (^)(void))arg3 completion:(void (^)(void))arg4;
+- (void)coverSheetViewController:(MRUCoverSheetViewController *)arg1 didUpdateRestrictedRects:(NSArray *)arg2;
+- (void)coverSheetViewController:(MRUCoverSheetViewController *)arg1 didUpdatePreferredContentSize:(struct CGSize)arg2;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IMSharedUtilities/IMEventListenerResponse-Protocol.h>
-
 @class NSDictionary, NSError, NSString;
 
-@interface IMEventListenerResponse : NSObject <IMEventListenerResponse>
+@interface IMEventListenerResponse : NSObject
 {
     _Bool _success;
     NSDictionary *_userInfo;

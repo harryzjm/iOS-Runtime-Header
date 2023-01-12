@@ -6,13 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <TestFlightCore/TFFeedbackDataDisplayable-Protocol.h>
-
 @class UIView;
 @protocol TFFeedbackDataUpdateProxy;
 
 __attribute__((visibility("hidden")))
-@interface TFFeedbackFormBaseCell : UITableViewCell <TFFeedbackDataDisplayable>
+@interface TFFeedbackFormBaseCell : UITableViewCell
 {
     id <TFFeedbackDataUpdateProxy> _updateProxy;
     UIView *_topSeparator;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface AKTSDLineEnd : NSObject <NSCopying>
+@interface AKTSDLineEnd : NSObject
 {
     struct CGPath *mPath;
     struct CGPath *mWrapPath;

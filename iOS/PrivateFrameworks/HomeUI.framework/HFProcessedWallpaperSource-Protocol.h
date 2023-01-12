@@ -11,6 +11,7 @@
 @protocol HFProcessedWallpaperSource <NSObject>
 @property(readonly, nonatomic) unsigned long long processVersionNumber;
 @property(readonly, copy, nonatomic) NSArray *supportedVariants;
+- (UIImage *)generateFilteredImageForWallpaper:(HFWallpaper *)arg1 image:(UIImage *)arg2;
 - (UIImage *)processedImageForVariant:(long long)arg1 wallpaper:(HFWallpaper *)arg2 image:(UIImage *)arg3;
 @end
 

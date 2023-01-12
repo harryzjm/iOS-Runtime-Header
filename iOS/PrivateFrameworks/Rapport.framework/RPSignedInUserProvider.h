@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Rapport/RPSignedInUserProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface RPSignedInUserProvider : NSObject <RPSignedInUserProvider>
+@interface RPSignedInUserProvider : NSObject
 {
 }
 

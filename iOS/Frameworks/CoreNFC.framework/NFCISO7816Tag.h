@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreNFC/NFCISO7816Tag-Protocol.h>
-
 @class NSData, NSString;
-@protocol NFCReaderSession;
 
 __attribute__((visibility("hidden")))
-@interface NFCISO7816Tag <NFCISO7816Tag>
+@interface NFCISO7816Tag
 {
 }
 
@@ -27,9 +24,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSData *historicalBytes;
 @property(readonly, copy, nonatomic) NSData *identifier;
 @property(readonly, nonatomic) _Bool proprietaryApplicationDataCoding;
-@property(readonly, nonatomic) __weak id <NFCReaderSession> session;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) unsigned long long type;
 
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSMetricsDataSource-Protocol.h>
-
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface AMSMetricsMemoryDataSource : NSObject <AMSMetricsDataSource>
+@interface AMSMetricsMemoryDataSource : NSObject
 {
     NSMutableDictionary *_batches;
 }

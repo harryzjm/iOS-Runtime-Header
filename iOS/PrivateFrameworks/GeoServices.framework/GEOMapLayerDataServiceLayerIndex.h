@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapLayerDataServiceLayerIndex : PBCodable <NSCopying>
+@interface GEOMapLayerDataServiceLayerIndex : PBCodable
 {
     NSData *_index;
 }

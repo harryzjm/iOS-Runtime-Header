@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
+#import "AVRoutePickerView.h"
 
 @class AVButton, AVLayoutItemAttributes, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVPlaybackControlsRoutePickerView <AVPlaybackControlsViewItem>
+@interface AVPlaybackControlsRoutePickerView : AVRoutePickerView
 {
     AVButton *_customButton;
     _Bool _removed;

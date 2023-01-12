@@ -9,6 +9,6 @@
 @class NSUUID;
 
 @protocol ANTonePlayerServiceInterface <NSObject>
-- (void)playTone:(unsigned long long)arg1 endpointUUID:(NSUUID *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)playTone:(unsigned long long)arg1 audioSessionID:(unsigned int)arg2 endpointUUID:(NSUUID *)arg3 completionHandler:(void (^)(NSError *))arg4;
 @end
 

@@ -6,9 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBSystemNotesContentViewController;
+@class NSSet, SBSystemNotesContentViewController;
 
 @protocol SBSystemNotesContentViewControllerDelegate <NSObject>
+- (void)contentViewController:(SBSystemNotesContentViewController *)arg1 didReceiveScreenshotRequestForDisplays:(NSSet *)arg2 completion:(void (^)(NSArray *))arg3;
 - (void)contentViewControllerWantsDismissal:(SBSystemNotesContentViewController *)arg1 forReason:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (void)contentViewController:(SBSystemNotesContentViewController *)arg1 didChangeToPresentationMode:(long long)arg2;
 - (void)contentViewControllerDidReceiveTapToExpand:(SBSystemNotesContentViewController *)arg1;

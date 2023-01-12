@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HMFObject.h"
+
 @class NSData, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _HMFCFHTTPMessage
+@interface _HMFCFHTTPMessage : HMFObject
 {
     struct __CFHTTPMessage *_message;
 }

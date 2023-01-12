@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FileProviderDaemon/FPDLifetimeExtender-Protocol.h>
-#import <FileProviderDaemon/FPXEnumeratorObserver-Protocol.h>
-
 @class FPDDomain, FPDExtension, FPItem, NSError, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface FPDItemIterator <FPXEnumeratorObserver, FPDLifetimeExtender>
+@interface FPDItemIterator
 {
     NSObject<OS_dispatch_queue> *_queue;
     FPItem *_current;
@@ -50,6 +47,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly) double timeout;
+@property unsigned long long timeoutState;
 
 @end
 

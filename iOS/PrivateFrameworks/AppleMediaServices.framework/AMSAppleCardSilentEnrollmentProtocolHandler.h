@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServices/AMSURLProtocolDelegate-Protocol.h>
-#import <AppleMediaServices/NSURLSessionDelegate-Protocol.h>
+#import "AMSURLProtocolHandler.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSAppleCardSilentEnrollmentProtocolHandler <NSURLSessionDelegate, AMSURLProtocolDelegate>
+@interface AMSAppleCardSilentEnrollmentProtocolHandler : AMSURLProtocolHandler
 {
 }
 

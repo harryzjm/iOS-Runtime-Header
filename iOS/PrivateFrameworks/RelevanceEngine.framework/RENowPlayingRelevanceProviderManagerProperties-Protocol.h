@@ -6,7 +6,11 @@
 
 #import <RelevanceEngine/REExportedInterface-Protocol.h>
 
+@class MPRequestResponseController;
+
 @protocol RENowPlayingRelevanceProviderManagerProperties <REExportedInterface>
+@property(readonly, nonatomic) MPRequestResponseController *requestResponseController;
+@property(readonly, nonatomic) long long playbackState;
 @property(readonly, nonatomic) unsigned long long state;
 @end
 

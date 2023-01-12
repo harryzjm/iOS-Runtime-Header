@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKExpandingLabel.h>
+#import "MUExpandingLabel.h"
 
 __attribute__((visibility("hidden")))
-@interface MUPullQuoteView : MKExpandingLabel
+@interface MUPullQuoteView : MUExpandingLabel
 {
 }
 

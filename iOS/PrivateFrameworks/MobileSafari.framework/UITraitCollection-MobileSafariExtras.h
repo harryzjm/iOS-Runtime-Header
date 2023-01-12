@@ -9,10 +9,12 @@
 @class UIBlurEffect, UIColor;
 
 @interface UITraitCollection (MobileSafariExtras)
++ (id)sf_traitCollectionWithSidebarPresentation:(_Bool)arg1;
 + (id)sf_traitCollectionUsingVibrantAppearance;
 + (id)sf_traitCollectionWithBackgroundBlurEffect:(id)arg1;
 + (id)sf_traitCollectionWithAlternateUserInterfaceStyle:(long long)arg1;
 + (id)sf_traitCollectionWithAlternateTraitCollection:(id)arg1;
+@property(readonly, nonatomic) _Bool sf_usesSidebarPresentation;
 - (_Bool)sf_hasSameVisualEffectAs:(id)arg1;
 @property(readonly, nonatomic) _Bool sf_usesVibrantAppearance;
 @property(readonly, nonatomic) UIBlurEffect *sf_backgroundBlurEffect;

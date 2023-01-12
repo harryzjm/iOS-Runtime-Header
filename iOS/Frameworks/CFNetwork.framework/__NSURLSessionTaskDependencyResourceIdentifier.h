@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface __NSURLSessionTaskDependencyResourceIdentifier : NSObject <NSCopying>
+@interface __NSURLSessionTaskDependencyResourceIdentifier : NSObject
 {
     NSString *_URLPath;
     NSString *_mimeType;

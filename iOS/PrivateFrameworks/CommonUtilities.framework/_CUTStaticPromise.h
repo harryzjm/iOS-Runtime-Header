@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUTPromise.h"
+
 @class CUTResult;
 
-@interface _CUTStaticPromise
+@interface _CUTStaticPromise : CUTPromise
 {
     CUTResult *_result;
     _Bool _safe;

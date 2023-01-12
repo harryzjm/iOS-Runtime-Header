@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/TVMediaPlaybackManagerDelegate-Protocol.h>
-
 @class NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, TVMediaPlaybackManager;
 @protocol TVPAVFPlayback, VUINowPlayingFeature, VUINowPlayingFeatureMonitorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUINowPlayingFeatureMonitor : NSObject <TVMediaPlaybackManagerDelegate>
+@interface VUINowPlayingFeatureMonitor : NSObject
 {
     struct {
         _Bool respondsToFeatureDidChangeState;

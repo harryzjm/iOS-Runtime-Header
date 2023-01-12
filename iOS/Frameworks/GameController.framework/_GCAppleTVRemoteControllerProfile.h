@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameController/CoalescableMicroGamepad-Protocol.h>
-#import <GameController/DigitizerValueChangedDelegate-Protocol.h>
+#import "GCMicroGamepad.h"
 
 @class GCControllerDirectionPad, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GCAppleTVRemoteControllerProfile <DigitizerValueChangedDelegate, CoalescableMicroGamepad>
+@interface _GCAppleTVRemoteControllerProfile : GCMicroGamepad
 {
     double _windowX;
     double _windowY;

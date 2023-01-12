@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <ContentKit/WFNaming-Protocol.h>
-#import <ContentKit/WFTyping-Protocol.h>
-
 @class NSString, WFType;
 
-@interface NSObject (WFRuntimeUtilities) <WFTyping, WFNaming>
+@interface NSObject (WFRuntimeUtilities)
 + (void)wf_enumerateClassMethodsWithPrefix:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) WFType *wfType;
 @property(readonly, copy, nonatomic) NSString *wfName;

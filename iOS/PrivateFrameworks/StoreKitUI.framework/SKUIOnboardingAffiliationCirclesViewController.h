@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIPhysicalCirclesDataSource-Protocol.h>
-#import <StoreKitUI/SKUIPhysicalCirclesDelegate-Protocol.h>
-
 @class NSArray, NSMapTable, NSMutableArray, NSObject, NSString, SKUIClientContext, SKUIOnboardingInstructionsView, SKUIPhysicalCirclesView, UIView;
 @protocol OS_dispatch_source, SKUIOnboardingAffiliationCirclesDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIOnboardingAffiliationCirclesViewController : UIViewController <SKUIPhysicalCirclesDataSource, SKUIPhysicalCirclesDelegate>
+@interface SKUIOnboardingAffiliationCirclesViewController : UIViewController
 {
     NSMutableArray *_affiliationItems;
     SKUIPhysicalCirclesView *_circlesView;

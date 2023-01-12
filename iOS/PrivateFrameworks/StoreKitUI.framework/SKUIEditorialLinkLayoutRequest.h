@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUILayoutRequest-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIEditorialLinkLayoutRequest : NSObject <SKUILayoutRequest>
+@interface SKUIEditorialLinkLayoutRequest : NSObject
 {
     NSArray *_links;
     double _width;

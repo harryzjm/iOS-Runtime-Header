@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UICoordinateSpace-Protocol.h>
-
 @class FBSSceneSettings, NSString, UIWindowScene;
 
 __attribute__((visibility("hidden")))
-@interface _UIWindowSceneCoordinateSpace : NSObject <UICoordinateSpace>
+@interface _UIWindowSceneCoordinateSpace : NSObject
 {
     FBSSceneSettings *_effectiveSettings;
     UIWindowScene *_windowScene;

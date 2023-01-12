@@ -16,6 +16,8 @@
     MISSING_TYPE *reporter;
     MISSING_TYPE *configuration;
     MISSING_TYPE *observations;
+    MISSING_TYPE *firstFrameMonitoredItem;
+    MISSING_TYPE *firstFrameMonitoredItemStartTime;
 }
 
 @end

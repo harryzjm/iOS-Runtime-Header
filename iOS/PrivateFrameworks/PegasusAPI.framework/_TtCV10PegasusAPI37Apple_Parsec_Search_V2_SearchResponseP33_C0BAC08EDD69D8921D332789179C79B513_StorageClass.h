@@ -27,7 +27,6 @@
     MISSING_TYPE *_results;
     MISSING_TYPE *_sections;
     MISSING_TYPE *_legacyJson;
-    MISSING_TYPE *_debug;
 }
 
 @end

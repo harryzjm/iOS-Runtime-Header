@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface DVTRegularExpression : NSObject <NSCopying>
+@interface DVTRegularExpression : NSObject
 {
     NSString *_expressionString;
     struct URegularExpression *_compiledExpression;

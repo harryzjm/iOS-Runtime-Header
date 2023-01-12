@@ -6,16 +6,10 @@
 
 #import <TSApplication/TSATheme.h>
 
-#import <KeynoteQuicklook/KNSlideCollection-Protocol.h>
-#import <KeynoteQuicklook/TSDModelContainer-Protocol.h>
-#import <KeynoteQuicklook/TSKDocumentObject-Protocol.h>
-#import <KeynoteQuicklook/TSKTransformableObject-Protocol.h>
-#import <KeynoteQuicklook/TSSPresetSource-Protocol.h>
-
 @class KNLiveVideoSourceCollection, KNSlideNode, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, TSUPointerKeyDictionary, TSWPParagraphStyle;
 @protocol OS_dispatch_queue;
 
-@interface KNTheme : TSATheme <KNSlideCollection, TSSPresetSource, TSKTransformableObject, TSKDocumentObject, TSDModelContainer>
+@interface KNTheme : TSATheme
 {
     NSString *_UUID;
     NSArray *_templateSlides;
@@ -70,6 +64,7 @@
 - (void)addDefaultPresenterNotesStylesIfAbsent;
 @property(readonly, nonatomic) TSWPParagraphStyle *defaultPresenterNotesParagraphStyle;
 - (id)undeletableStyles;
+- (void)createDefaultMotionBackgroundStylePresetsIfNeeded;
 - (id)mappedTemplateSlideForPasteForSlide:(id)arg1;
 - (id)mappedTemplateSlideForThemeChangeForTemplateSlide:(id)arg1;
 - (id)mappedTemplateSlideForPasteForTemplateSlide:(id)arg1;

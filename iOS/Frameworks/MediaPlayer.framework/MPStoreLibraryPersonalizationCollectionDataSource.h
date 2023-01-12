@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPLazySectionedCollectionDataSource-Protocol.h>
-
 @class MPMediaLibraryEntityTranslationContext, MPMediaLibraryView, MPPropertySet, MPSectionedCollection, NSDictionary, NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPStoreLibraryPersonalizationCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
+@interface MPStoreLibraryPersonalizationCollectionDataSource : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessSerialQueue;
     struct vector<std::shared_ptr<mlcore::EntityCache>, std::allocator<std::shared_ptr<mlcore::EntityCache>>> _entityCaches;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/VCPMADServiceImageProcessingSubtaskProtocol-Protocol.h>
-#import <MediaAnalysis/VCPMADTaskProtocol-Protocol.h>
-
 @class MADVIDocumentRecognitionRequest, NSString, VCPMADServiceImageAsset, VNImageBasedRequest;
 @protocol MTLDevice, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCPMADVIDocumentRecognitionTask : NSObject <VCPMADServiceImageProcessingSubtaskProtocol, VCPMADTaskProtocol>
+@interface VCPMADVIDocumentRecognitionTask : NSObject
 {
     MADVIDocumentRecognitionRequest *_request;
     VCPMADServiceImageAsset *_imageAsset;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVAsset.h"
+
 @class AVAssetProxyInternal;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetProxy
+@interface AVAssetProxy : AVAsset
 {
     AVAssetProxyInternal *_assetProxy;
 }

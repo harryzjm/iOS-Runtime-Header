@@ -9,6 +9,7 @@
 @interface NSDate (PhotosUICore)
 + (void)px_unionStartDate:(id *)arg1 endDate:(id *)arg2 withDateInterval:(id)arg3;
 + (void)px_unionStartDate:(id *)arg1 endDate:(id *)arg2 withDate:(id)arg3;
+- (id)px_dateTruncatedToCalendarUnit:(unsigned long long)arg1 calendar:(id)arg2;
 - (_Bool)px_isBetweenDate:(id)arg1 andDate:(id)arg2;
 - (_Bool)px_isWithinTimeInterval:(double)arg1 sinceDate:(id)arg2;
 - (long long)px_yearsSinceDate:(id)arg1;

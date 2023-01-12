@@ -6,10 +6,8 @@
 
 #import <UIKit/UICollectionViewFlowLayout.h>
 
-#import <VideosUI/VideosExtrasCarouselCollectionViewLayout-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VideosExtrasCarouselCollectionViewFlowLayout : UICollectionViewFlowLayout <VideosExtrasCarouselCollectionViewLayout>
+@interface VideosExtrasCarouselCollectionViewFlowLayout : UICollectionViewFlowLayout
 {
 }
 

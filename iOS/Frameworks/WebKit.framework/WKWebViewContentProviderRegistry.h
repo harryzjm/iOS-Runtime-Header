@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (Vector_f69b9135)_mimeTypesWithCustomContentProviders;
+- (Vector_7aeb0c1e)_mimeTypesWithCustomContentProviders;
 - (Class)providerForMIMEType:(const void *)arg1;
 - (void)registerProvider:(Class)arg1 forMIMEType:(const void *)arg2;
 - (void)removePage:(void *)arg1;

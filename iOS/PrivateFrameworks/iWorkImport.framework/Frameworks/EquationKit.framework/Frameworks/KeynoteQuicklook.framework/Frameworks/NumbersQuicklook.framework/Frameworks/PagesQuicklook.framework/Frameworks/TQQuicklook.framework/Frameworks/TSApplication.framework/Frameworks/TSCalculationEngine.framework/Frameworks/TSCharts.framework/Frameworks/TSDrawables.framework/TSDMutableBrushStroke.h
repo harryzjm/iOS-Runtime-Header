@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSDrawables/TSDMutableStroke-Protocol.h>
-
 @class TSDStrokePattern, TSUColor;
 
-@interface TSDMutableBrushStroke <TSDMutableStroke>
+@interface TSDMutableBrushStroke
 {
 }
 

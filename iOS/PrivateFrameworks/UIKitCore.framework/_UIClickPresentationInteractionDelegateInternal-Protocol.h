@@ -12,6 +12,7 @@
 @protocol _UIClickPresentationInteractionDelegateInternal <_UIClickPresentationInteractionDelegate>
 
 @optional
+- (NSArray *)_secondaryPreviewsForClickPresentationInteraction:(_UIClickPresentationInteraction *)arg1;
 - (_Bool)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 shouldBeDelayedByGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (void)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 shouldPresentWithCompletion:(void (^)(_Bool))arg2;
 - (_Bool)_clickPresentationInteractionShouldPlayFeedback:(_UIClickPresentationInteraction *)arg1;
@@ -20,7 +21,7 @@
 - (id <_UIClickHighlightEffect>)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 interactionEffectForTargetedPreview:(UITargetedPreview *)arg2;
 - (void)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 item:(UIDragItem *)arg2 willAnimateDragCancelWithAnimator:(id <UIDragAnimating>)arg3;
 - (UITargetedDragPreview *)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 previewForCancellingDragItem:(UIDragItem *)arg2;
-- (_UICPILiveDragPreview *)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 liveDragPreviewForPresentation:(_UIClickPresentation *)arg2;
+- (_UICPILiveDragPreview *)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 liveDragPreviewForPresentation:(_UIClickPresentation *)arg2 dragItem:(UIDragItem *)arg3;
 - (_Bool)_clickPresentationInteractionShouldAllowDragAfterDismiss:(_UIClickPresentationInteraction *)arg1;
 - (_Bool)_clickPresentationInteractionShouldAllowRapidRestart:(_UIClickPresentationInteraction *)arg1;
 - (void)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 shouldBegin:(void (^)(unsigned long long))arg2;

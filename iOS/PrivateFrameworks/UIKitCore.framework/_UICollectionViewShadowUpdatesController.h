@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UICollectionViewDragDestination_Internal-Protocol.h>
-
 @class NSMutableArray, NSPointerArray, NSString, UICollectionView, _UIDataSourceSnapshotter, _UIDataSourceUpdateMap;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewShadowUpdatesController : NSObject <UICollectionViewDragDestination_Internal>
+@interface _UICollectionViewShadowUpdatesController : NSObject
 {
     UICollectionView *_collectionView;
     _UIDataSourceSnapshotter *_initialSnapshot;
@@ -109,22 +107,31 @@ __attribute__((visibility("hidden")))
 - (id)_collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 cancelPrefetchingForItemsAtIndexPaths:(id)arg2;
 - (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
+- (id)_dci_collectionView:(id)arg1 contextMenuConfiguration:(id)arg2 previewForDismissingToItemAtIndexPath:(id)arg3;
+- (id)_dci_collectionView:(id)arg1 contextMenuConfiguration:(id)arg2 previewForHighlightingItemAtIndexPath:(id)arg3;
+- (id)_dci_collectionView:(id)arg1 contextMenuConfigurationForSelectedItemsAtIndexPaths:(id)arg2 point:(struct CGPoint)arg3;
+- (id)_dci_collectionView:(id)arg1 contextMenuConfigurationForItemsAtIndexPaths:(id)arg2 point:(struct CGPoint)arg3;
 - (id)_collectionView:(id)arg1 accessoriesForContextMenuWithConfiguration:(id)arg2 layoutAnchor:(CDStruct_17a0fc55)arg3;
 - (id)_collectionView:(id)arg1 styleForContextMenuWithConfiguration:(id)arg2;
-- (void)_collectionView:(id)arg1 willLayoutCell:(id)arg2 usingTemplateLayoutCell:(id)arg3 forItemAtIndexPath:(id)arg4;
-- (id)_collectionView:(id)arg1 templateLayoutCellForCellsWithReuseIdentifier:(id)arg2;
 - (id)_collectionView:(id)arg1 targetIndexPathForMoveFromItemAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
+- (id)_collectionView:(id)arg1 indexPathOfReferenceItemToPreserveContentOffsetWithProposedReference:(id)arg2;
 - (void)_collectionView:(id)arg1 orthogonalScrollViewDidScroll:(id)arg2 section:(long long)arg3;
 - (_Bool)_collectionView:(id)arg1 shouldApplyTransitionContentOffset:(struct CGPoint)arg2 contentSize:(struct CGSize)arg3;
 - (struct CGPoint)_collectionView:(id)arg1 targetContentOffsetForProposedContentOffset:(struct CGPoint)arg2;
 - (id)_indexPathOfReferenceItemForLayoutTransitionInCollectionView:(id)arg1;
 - (id)_collectionView:(id)arg1 sceneActivationConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (id)collectionView:(id)arg1 sceneActivationConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
+- (void)collectionView:(id)arg1 performPrimaryActionForItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 canPerformPrimaryActionForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willEndContextMenuInteractionWithConfiguration:(id)arg2 animator:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayContextMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (void)collectionView:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
+- (id)collectionView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
 - (id)collectionView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (id)collectionView:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
+- (id)collectionView:(id)arg1 contextMenuConfiguration:(id)arg2 dismissalPreviewForItemAtIndexPath:(id)arg3;
+- (id)collectionView:(id)arg1 contextMenuConfiguration:(id)arg2 highlightPreviewForItemAtIndexPath:(id)arg3;
+- (id)collectionView:(id)arg1 contextMenuConfigurationForItemsAtIndexPaths:(id)arg2 point:(struct CGPoint)arg3;
 - (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
 - (_Bool)collectionView:(id)arg1 selectionFollowsFocusForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;

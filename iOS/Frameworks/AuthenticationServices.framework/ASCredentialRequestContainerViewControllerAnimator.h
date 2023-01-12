@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AuthenticationServices/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ASCredentialRequestContainerViewControllerAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface ASCredentialRequestContainerViewControllerAnimator : NSObject
 {
     _Bool _presenting;
 }

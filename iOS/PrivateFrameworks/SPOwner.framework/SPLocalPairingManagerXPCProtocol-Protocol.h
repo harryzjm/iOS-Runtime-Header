@@ -9,10 +9,10 @@
 @class NSData;
 
 @protocol SPLocalPairingManagerXPCProtocol <NSObject>
-- (oneway void)getOfflineFindingInfoWithCurrentData:(NSData *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
-- (oneway void)currentBeaconingKeyWithCompletion:(void (^)(SPBeaconingKey *))arg1;
-- (oneway void)alwaysBeaconWildStateWithCompletion:(void (^)(_Bool))arg1;
-- (oneway void)setAlwaysBeaconWildState:(_Bool)arg1 completion:(void (^)(_Bool))arg2;
-- (oneway void)getLocalPairingDataWithCompletion:(void (^)(NSUUID *))arg1;
+- (void)getOfflineFindingInfoWithCurrentData:(NSData *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)currentBeaconingKeyWithCompletion:(void (^)(SPBeaconingKey *))arg1;
+- (void)alwaysBeaconWildStateWithCompletion:(void (^)(_Bool))arg1;
+- (void)setAlwaysBeaconWildState:(_Bool)arg1 completion:(void (^)(_Bool))arg2;
+- (void)getLocalPairingDataWithCompletion:(void (^)(NSUUID *))arg1;
 @end
 

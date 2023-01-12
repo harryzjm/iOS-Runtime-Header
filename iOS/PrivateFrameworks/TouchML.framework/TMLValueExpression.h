@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLModelSerialize-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface TMLValueExpression : NSObject <TMLModelSerialize>
+@interface TMLValueExpression : NSObject
 {
     NSString *_expressionText;
     NSArray *_bindings;

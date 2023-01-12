@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewLayout.h>
 
-#import <StoreKitUI/SKUIShelfCollectionViewLayout-Protocol.h>
-
 @class NSString, SKUIShelfLayoutData;
 
 __attribute__((visibility("hidden")))
-@interface SKUIShelfCollectionViewLayout : UICollectionViewLayout <SKUIShelfCollectionViewLayout>
+@interface SKUIShelfCollectionViewLayout : UICollectionViewLayout
 {
     SKUIShelfLayoutData *_layoutData;
 }

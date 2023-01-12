@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITextPlaceholder.h"
+
 @class DOMElement, UIWebDocumentView;
 
 __attribute__((visibility("hidden")))
-@interface UIWebTextPlaceholder
+@interface UIWebTextPlaceholder : UITextPlaceholder
 {
     UIWebDocumentView *_webDocumentView;
     DOMElement *_element;

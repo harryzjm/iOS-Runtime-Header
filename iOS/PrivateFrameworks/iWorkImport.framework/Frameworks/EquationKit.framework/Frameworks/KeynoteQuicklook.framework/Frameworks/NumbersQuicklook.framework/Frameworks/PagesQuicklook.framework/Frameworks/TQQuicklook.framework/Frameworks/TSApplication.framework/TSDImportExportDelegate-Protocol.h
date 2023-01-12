@@ -5,14 +5,12 @@
 //
 
 #import <TSApplication/NSObject-Protocol.h>
+#import <TSApplication/TSKImportExportDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, TSPData, TSUWarning;
+@class NSMapTable, TSPData;
 @protocol TSDCompatibilityAwareMediaContainer;
 
-@protocol TSDImportExportDelegate <NSObject>
-- (void)removeWarning:(TSUWarning *)arg1;
-- (void)addWarning:(TSUWarning *)arg1;
-- (NSArray *)warnings;
+@protocol TSDImportExportDelegate <NSObject, TSKImportExportDelegate>
 
 @optional
 @property(readonly, nonatomic) _Bool isBrowsingVersions;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVNewsWidgetPlayerBehavior.h"
+
 @protocol AVPlayerViewControllerContentTransitioning_NewsOnly;
 
 __attribute__((visibility("hidden")))
-@interface AVNewsWidgetPlayerLegacyBehavior
+@interface AVNewsWidgetPlayerLegacyBehavior : AVNewsWidgetPlayerBehavior
 {
     id <AVPlayerViewControllerContentTransitioning_NewsOnly> _legacyDelegate;
 }

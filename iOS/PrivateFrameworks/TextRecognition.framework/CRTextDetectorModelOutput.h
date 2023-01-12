@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TextRecognition/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface CRTextDetectorModelOutput : NSObject <MLFeatureProvider>
+@interface CRTextDetectorModelOutput : NSObject
 {
     MLMultiArray *_f_score_act_sigmoid_output;
     MLMultiArray *_geometry_output;

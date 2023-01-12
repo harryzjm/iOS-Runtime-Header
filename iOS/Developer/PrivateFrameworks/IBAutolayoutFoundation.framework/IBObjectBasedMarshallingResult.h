@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 @protocol IBObjectRepresentationTranslator;
 
-@interface IBObjectBasedMarshallingResult : NSObject <IBBinaryArchiving>
+@interface IBObjectBasedMarshallingResult : NSObject
 {
     NSString *_identifier;
     NSObject<IBObjectRepresentationTranslator> *_archivingTranslationContext;

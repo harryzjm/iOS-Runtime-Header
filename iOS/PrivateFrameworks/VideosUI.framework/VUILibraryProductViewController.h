@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/UICollectionViewDataSource-Protocol.h>
-#import <VideosUI/VUIProductLockupViewDelegate-Protocol.h>
-#import <VideosUI/VUIRoundButtonDelegate-Protocol.h>
-
 @class NSString, VUIDownloadButton, VUILibraryProductInfoView, VUIMediaItem, VUIProductLockupView, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryProductViewController <UICollectionViewDataSource, VUIProductLockupViewDelegate, VUIRoundButtonDelegate>
+@interface VUILibraryProductViewController
 {
     VUIMediaItem *_mediaItem;
     VUIProductLockupView *_productLockupView;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/FPCollectionDataSource-Protocol.h>
-#import <FileProvider/FPSpotlightDataSourceDelegate-Protocol.h>
-
 @class FPExtensionDataSource, FPSearchQueryDescriptor, FPSpotlightDataSource;
 @protocol FPSpotlightDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface FPSearchQueryDataSource : NSObject <FPCollectionDataSource, FPSpotlightDataSourceDelegate>
+@interface FPSearchQueryDataSource : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _started;

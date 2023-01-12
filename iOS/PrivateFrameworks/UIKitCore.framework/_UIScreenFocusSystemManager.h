@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFocusMovementPerformerDelegate-Protocol.h>
-#import <UIKitCore/_UIFocusSystemDelegate-Protocol.h>
-
 @class NSString, UIWindowScene, _UIFocusScrollManager;
 
 __attribute__((visibility("hidden")))
-@interface _UIScreenFocusSystemManager : NSObject <_UIFocusSystemDelegate, _UIFocusMovementPerformerDelegate>
+@interface _UIScreenFocusSystemManager : NSObject
 {
     _Bool _handlesFocusMovementAction;
     _Bool _allowsForwardingFocusMovementActions;

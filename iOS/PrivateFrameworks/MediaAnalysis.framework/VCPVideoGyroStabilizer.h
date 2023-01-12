@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VCPVideoStabilizer.h"
+
 @class NSArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface VCPVideoGyroStabilizer
+@interface VCPVideoGyroStabilizer : VCPVideoStabilizer
 {
     NSMutableDictionary *_analysisDict;
     NSArray *_metadata;

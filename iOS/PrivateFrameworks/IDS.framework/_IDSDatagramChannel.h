@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class IDSDataChannelLinkContext, NSData, NSMutableArray, NSMutableDictionary;
-@protocol OS_nw_connection, OS_nw_path_evaluator;
+@protocol OS_dispatch_queue, OS_nw_connection, OS_nw_context, OS_nw_path_evaluator;
 
 @interface _IDSDatagramChannel : NSObject
 {
@@ -16,11 +16,16 @@
     CDUnknownBlockType _eventHandler;
     CDUnknownBlockType _readHandler;
     CDUnknownBlockType _readHandlerWithOptions;
+    CDUnknownBlockType _writeHandler;
     _Bool _connected;
     struct os_unfair_lock_s _writeLock;
     struct os_unfair_lock_s _readLock;
     _Bool _isInvalidated;
+    long long _operationMode;
+    long long _preferredDataPathType;
     NSObject<OS_nw_connection> *_connection;
+    NSObject<OS_nw_context> *_context;
+    NSObject<OS_dispatch_queue> *_queue;
     _Bool _hasMetadata;
     _Bool _sentFirstReadLinkInfo;
     _Bool _receivedPreConnectionData;
@@ -44,6 +49,10 @@
     NSMutableDictionary *_MKIArrivalTime;
     NSMutableDictionary *_firstPacketArrivalTimeForMKI;
     NSMutableDictionary *_probingDict;
+    NSObject<OS_nw_connection> *_directConnectionsByLinkID[256];
+    IDSDataChannelLinkContext *_linkContextsByLinkID[256];
+    NSMutableDictionary *_linkIDToParticipantMap;
+    NSMutableDictionary *_localRemoteRelayLinkIDToVirtualLinkIDMap;
 }
 
 - (void).cxx_destruct;

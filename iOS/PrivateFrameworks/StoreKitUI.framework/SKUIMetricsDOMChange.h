@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMetricsDOMChange : NSObject <NSCopying>
+@interface SKUIMetricsDOMChange : NSObject
 {
     _Bool _fromDeferredMessage;
     double _buildStartTime;

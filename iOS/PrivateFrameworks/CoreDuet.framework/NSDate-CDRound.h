@@ -6,9 +6,7 @@
 
 #import <Foundation/NSDate.h>
 
-#import <CoreDuet/_DKDeduping-Protocol.h>
-
-@interface NSDate (CDRound) <_DKDeduping>
+@interface NSDate (CDRound)
 - (id)cd_dateWithCeilingForAlignment:(double)arg1 withOffset:(double)arg2 inTimeZone:(id)arg3;
 - (id)cd_dateWithFloorForAlignment:(double)arg1 withOffset:(double)arg2 inTimeZone:(id)arg3;
 - (id)cd_dateWithCeilingForAlignment:(double)arg1;

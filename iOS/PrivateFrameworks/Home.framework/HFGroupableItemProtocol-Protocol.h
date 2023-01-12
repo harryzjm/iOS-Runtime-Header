@@ -7,8 +7,8 @@
 #import <Home/HFHomeKitItemProtocol-Protocol.h>
 
 @protocol HFGroupableItemProtocol <HFHomeKitItemProtocol>
-@property(readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
-@property(readonly, nonatomic) _Bool isContainedWithinItemGroup;
-@property(readonly, nonatomic) _Bool isItemGroup;
+@property(nonatomic, readonly) long long numberOfItemsContainedWithinGroup;
+@property(nonatomic, readonly) _Bool isContainedWithinItemGroup;
+@property(nonatomic, readonly) _Bool isItemGroup;
 @end
 

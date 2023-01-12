@@ -15,6 +15,7 @@
     MISSING_TYPE *scale;
     MISSING_TYPE *descriptor;
     MISSING_TYPE *_image;
+    MISSING_TYPE *loadTask;
 }
 
 @end

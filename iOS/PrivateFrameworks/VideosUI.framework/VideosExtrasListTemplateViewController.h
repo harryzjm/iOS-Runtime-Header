@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/UITableViewDataSource-Protocol.h>
-#import <VideosUI/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSIndexPath, NSMapTable, NSString, UIImageView, UITableView, VideosExtrasViewElementViewController;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasListTemplateViewController <UITableViewDataSource, UITableViewDelegate>
+@interface VideosExtrasListTemplateViewController
 {
     UITableView *_tableView;
     _Bool _tableViewLeft;

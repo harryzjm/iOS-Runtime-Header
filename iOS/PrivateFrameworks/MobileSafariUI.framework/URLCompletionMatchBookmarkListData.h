@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/WBSURLCompletionMatchData-Protocol.h>
-
 @class NSMutableArray, NSString;
 @protocol WBSURLCompletionMatchData;
 
 __attribute__((visibility("hidden")))
-@interface URLCompletionMatchBookmarkListData : NSObject <WBSURLCompletionMatchData>
+@interface URLCompletionMatchBookmarkListData : NSObject
 {
     NSMutableArray *_bookmarks;
     id <WBSURLCompletionMatchData> _historyMatchData;

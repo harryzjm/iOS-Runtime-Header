@@ -4,22 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Typedef'd Structures
-
-// Ambiguous groups
-typedef struct {
-    unsigned int cacheCreationDate:1;
-} CDStruct_b0d15472;
-
-typedef struct {
-    unsigned int outcomeType:1;
-} CDStruct_8667bddf;
-
-typedef struct {
-    unsigned int timeout:1;
-} CDStruct_118de075;
-

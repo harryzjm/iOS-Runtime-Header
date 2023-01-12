@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATInitializingIDSServiceConnectionMessageContent-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CATInitializingIDSServiceConnectionContentInvite : NSObject <CATInitializingIDSServiceConnectionMessageContent>
+@interface CATInitializingIDSServiceConnectionContentInvite : NSObject
 {
     NSDictionary *_userInfo;
 }

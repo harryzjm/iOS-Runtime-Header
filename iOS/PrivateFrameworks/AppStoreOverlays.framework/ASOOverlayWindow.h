@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIWindow.h>
+#import <UIKit/UIApplicationRotationFollowingWindow.h>
 
 __attribute__((visibility("hidden")))
-@interface ASOOverlayWindow : UIWindow
+@interface ASOOverlayWindow : UIApplicationRotationFollowingWindow
 {
 }
 
 + (_Bool)_isSystemWindow;
+- (_Bool)_canAffectStatusBarAppearance;
 - (_Bool)isInternalWindow;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithWindowScene:(id)arg1;

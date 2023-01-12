@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-#import <UIKitCore/UIViewControllerPreviewingDelegate-Protocol.h>
-
 @class NSString, UIStoryboardPreviewingSegueTemplateStorage, UIView, UIViewController;
 @protocol UIViewControllerPreviewing;
 
 __attribute__((visibility("hidden")))
-@interface UIStoryboardPreviewingRegistrant : NSObject <NSCoding, UIViewControllerPreviewingDelegate>
+@interface UIStoryboardPreviewingRegistrant : NSObject
 {
     id <UIViewControllerPreviewing> _previewingContext;
     UIStoryboardPreviewingSegueTemplateStorage *_segueTemplateStorage;

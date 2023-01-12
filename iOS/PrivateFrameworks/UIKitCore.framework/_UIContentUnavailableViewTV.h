@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIContentUnavailableView.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIContentUnavailableViewTV
+@interface _UIContentUnavailableViewTV : _UIContentUnavailableView
 {
 }
 

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UINavigationControllerDelegate-Protocol.h>
-#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSString;
 @protocol UIViewControllerAnimatedTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface _UISimpleTransitioningDelegate : NSObject <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
+@interface _UISimpleTransitioningDelegate : NSObject
 {
     id <UIViewControllerAnimatedTransitioning> _animator;
     _Bool __suppressCrossFadeNavigationBarAnimation;

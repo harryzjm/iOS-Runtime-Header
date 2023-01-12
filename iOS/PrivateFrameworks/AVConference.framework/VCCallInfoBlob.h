@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCCallInfoBlob : PBCodable <NSCopying>
+@interface VCCallInfoBlob : PBCodable
 {
     unsigned int _callID;
     unsigned int _clientVersion;

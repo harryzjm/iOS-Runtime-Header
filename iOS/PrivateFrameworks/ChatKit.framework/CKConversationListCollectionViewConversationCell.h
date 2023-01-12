@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKConversationListCell-Protocol.h>
-#import <ChatKit/CKConversationListCellDelegate-Protocol.h>
+#import "CKConversationListEmbeddedCollectionViewCell.h"
 
-@class NSObject, NSString, _CKCollectionViewTapGestureRecognizer;
+@class CKConversationListCellLayout, NSObject, NSString, _CKCollectionViewTapGestureRecognizer;
 @protocol CKConversationListCollectionViewCellDelegate;
 
-@interface CKConversationListCollectionViewConversationCell <CKConversationListCellDelegate, CKConversationListCell>
+__attribute__((visibility("hidden")))
+@interface CKConversationListCollectionViewConversationCell : CKConversationListEmbeddedCollectionViewCell
 {
     NSObject<CKConversationListCollectionViewCellDelegate> *_delegate;
     _CKCollectionViewTapGestureRecognizer *_avatarViewTapGestureRecognizer;
@@ -26,6 +26,7 @@
 @property(retain, nonatomic) _CKCollectionViewTapGestureRecognizer *avatarViewTapGestureRecognizer; // @synthesize avatarViewTapGestureRecognizer=_avatarViewTapGestureRecognizer;
 @property(nonatomic) __weak NSObject<CKConversationListCollectionViewCellDelegate> *delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
+- (id)summaryLabelTextColor;
 - (void)didHoverOverCell:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -42,6 +43,7 @@
 - (id)embeddedConversationTableViewCell;
 
 // Remaining properties
+@property(retain, nonatomic) CKConversationListCellLayout *cellLayout;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

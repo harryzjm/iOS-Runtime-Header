@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class HKSharedSummaryTransaction, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HKSharedSummaryQueryServerConfiguration
+@interface _HKSharedSummaryQueryServerConfiguration : HKQueryServerConfiguration
 {
     HKSharedSummaryTransaction *_transaction;
     NSString *_package;

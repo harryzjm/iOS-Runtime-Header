@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecordIdentifier, CKDPRecordType, NSMutableArray;
 
-@interface CKDPAssetUploadTokenRetrieveRequestRecordAssetUpload : PBCodable <NSCopying>
+@interface CKDPAssetUploadTokenRetrieveRequestRecordAssetUpload : PBCodable
 {
     NSMutableArray *_assetFields;
     CKDPRecordIdentifier *_recordId;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IdentityLookupUI/MFMessageComposeViewControllerDelegate-Protocol.h>
-
 @class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface ILClassificationReportingController : NSObject <MFMessageComposeViewControllerDelegate>
+@interface ILClassificationReportingController : NSObject
 {
     UIViewController *_hostViewController;
     CDUnknownBlockType _completion;

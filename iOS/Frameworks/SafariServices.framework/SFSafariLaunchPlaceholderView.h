@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <SafariServices/UINavigationBarDelegate-Protocol.h>
-
 @class NSString, UINavigationBar, UIToolbar;
 
 __attribute__((visibility("hidden")))
-@interface SFSafariLaunchPlaceholderView : UIView <UINavigationBarDelegate>
+@interface SFSafariLaunchPlaceholderView : UIView
 {
     UINavigationBar *_topNavigationBar;
     UIToolbar *_bottomToolbar;

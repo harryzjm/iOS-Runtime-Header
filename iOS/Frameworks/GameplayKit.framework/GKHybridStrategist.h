@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameplayKit/GKStrategist-Protocol.h>
-
 @class NSString;
 @protocol GKGameModel, GKRandom;
 
 __attribute__((visibility("hidden")))
-@interface GKHybridStrategist : NSObject <GKStrategist>
+@interface GKHybridStrategist : NSObject
 {
     void *_hybridStrategist;
 }

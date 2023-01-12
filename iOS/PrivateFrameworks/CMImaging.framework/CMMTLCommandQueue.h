@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CMImaging/MTLCommandQueueSPI-Protocol.h>
-
 @class CMMTLDevice, InterceptConfig, NSString;
 @protocol MTLCommandQueue, MTLDevice, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CMMTLCommandQueue : NSObject <MTLCommandQueueSPI>
+@interface CMMTLCommandQueue : NSObject
 {
     CMMTLDevice *_cmDevice;
     id <MTLCommandQueue> _commandQueue;

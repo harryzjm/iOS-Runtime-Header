@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "UIAccessibilityContainerDataTable-Protocol.h"
-#import "UIAccessibilityContainerDataTableCell-Protocol.h"
-
 @class NSMutableArray, NSString;
 
-@interface UICGPDFNodeAccessibilityElement <UIAccessibilityContainerDataTable, UIAccessibilityContainerDataTableCell>
+@interface UICGPDFNodeAccessibilityElement
 {
     struct CGPDFTaggedNode *_nodeRef;
     NSMutableArray *_cachedAXElements;

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQHContext-Protocol.h>
-
 @class GQDAffineGeometry, NSMutableString, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQHCanvasContext : NSObject <GQHContext>
+@interface GQHCanvasContext : NSObject
 {
     GQDAffineGeometry *mGeometry;
     NSMutableString *mFunctionName;

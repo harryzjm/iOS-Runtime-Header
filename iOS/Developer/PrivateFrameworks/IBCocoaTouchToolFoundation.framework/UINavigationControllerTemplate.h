@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBCocoaTouchToolFoundation/UINavigationBarDelegate-Protocol.h>
-
 @class NSArray, NSString, UINavigationBar, UIToolbar;
 
-@interface UINavigationControllerTemplate <UINavigationBarDelegate>
+@interface UINavigationControllerTemplate
 {
     _Bool _navigationBarHidden;
     _Bool _toolbarHidden;

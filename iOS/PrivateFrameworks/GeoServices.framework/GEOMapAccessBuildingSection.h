@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOMapBuildingSection-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapAccessBuildingSection : NSObject <GEOMapBuildingSection>
+@interface GEOMapAccessBuildingSection : NSObject
 {
     CDStruct_c3b9c2ee *_coordinates;
     unsigned long long _coordinateCount;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
+#import "MKPlaceSectionRowView.h"
 
 @class CNLabeledValue, MKPlaceSectionHeaderView, MKVibrantLabel, NSArray, NSLayoutConstraint, NSString, UIColor, _MKUILabel;
 @protocol NSItemProviderWriting;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceInfoContactRowView <UIGestureRecognizerDelegate>
+@interface MKPlaceInfoContactRowView : MKPlaceSectionRowView
 {
     MKPlaceSectionHeaderView *_headerView;
     NSLayoutConstraint *_topToTitleConstraint;

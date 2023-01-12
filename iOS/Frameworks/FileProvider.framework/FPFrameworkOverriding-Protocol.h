@@ -11,11 +11,12 @@
 @protocol FPFrameworkOverriding <NSObject>
 
 @optional
+- (void)FPStateForDomainWithID:(NSString *)arg1 completionHandler:(void (^)(unsigned long long, NSError *))arg2;
 - (void)FPEvictItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)FPFetchLatestVersionForFileAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSFileVersion *, NSError *))arg2;
 - (void)FPGetPausedFilesList:(void (^)(NSURL *))arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)FPResumeSyncForFileAtURL:(NSURL *)arg1 dropLocalChanges:(_Bool)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
-- (void)FPPauseSyncForFileAtURL:(NSURL *)arg1 timeout:(double)arg2 options:(long long)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
+- (void)FPResumeSyncForFileAtURL:(NSURL *)arg1 resumeOptions:(unsigned long long)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+- (void)FPPauseSyncForFileAtURL:(NSURL *)arg1 timeout:(double)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)FPDocumentURLFromUniversalBookmarkableString:(NSString *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)FPUniversalBookmarkableStringFromDocumentURL:(NSURL *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (NSURL *)FPTrashURLForItemAtURL:(NSURL *)arg1 error:(id *)arg2;

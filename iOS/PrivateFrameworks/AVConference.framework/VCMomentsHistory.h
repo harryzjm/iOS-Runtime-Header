@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCMomentsHistoryBufferDelegate-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSString, VCMomentsHistoryBuffer, VideoAttributes;
 @protocol OS_dispatch_queue, VCMovieWriterProtocol;
 
 __attribute__((visibility("hidden")))
-@interface VCMomentsHistory : NSObject <VCMomentsHistoryBufferDelegate>
+@interface VCMomentsHistory : NSObject
 {
     NSMutableDictionary *_writers;
     NSObject<VCMovieWriterProtocol> *_writer;
@@ -38,6 +36,10 @@ __attribute__((visibility("hidden")))
     int videoPayload;
     struct __CFAllocator *_audioSampleBufferAllocator;
     _Bool _enableLocalVideoRecording;
+    struct tagVCMomentsHistoryAudioFormat _localFormat;
+    struct tagVCMomentsHistoryAudioFormat _remoteFormat;
+    struct __CFAllocator *_frameAllocator;
+    _Bool _retainPixelBufferEnabled;
     int _videoCodec;
 }
 
@@ -51,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)appendSampleWithWriter:(id)arg1 buffer:(id)arg2 sample:(struct opaqueCMSampleBuffer *)arg3;
 - (unsigned char)_mediaTypeForBuffer:(id)arg1;
 - (void)flushHistoryBuffers;
-- (void)updateVideoBuffer:(struct __CVBuffer *)arg1 withPresentationTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3 timestamp:(unsigned int)arg4;
+- (void)updateVideoBuffer:(struct __CVBuffer *)arg1 withPresentationTime:(CDStruct_1b6d18a9)arg2 sampleBufferCopy:(struct opaqueCMSampleBuffer *)arg3 cameraStatusBits:(unsigned char)arg4 timestamp:(unsigned int)arg5 retainPixelBuffer:(_Bool)arg6;
 - (struct __CVBuffer *)copyBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)updateAudioBuffer:(id)arg1 WithSample:(struct opaqueCMSampleBuffer *)arg2 timestamp:(unsigned int)arg3;
 - (void)handlePendingRequestsWithSourceURL:(id)arg1 error:(id)arg2;
@@ -74,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)startRecording:(unsigned char)arg1 transactionID:(id)arg2 timestamp:(unsigned int)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getLivePhotoWithTransactionID:(id)arg1 timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getPhotoWithTransactionID:(id)arg1 timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setRetainPixelBufferEnabled:(_Bool)arg1;
 - (void)setFrameRate:(float)arg1;
 - (void)updateResizeFlag;
 - (void)updateRemoteScreenAttributes:(id)arg1;

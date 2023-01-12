@@ -14,6 +14,7 @@
 - (unsigned long long)viewMap:(SBReusableViewMap *)arg1 maxRecycledViewsOfClass:(Class)arg2;
 
 @optional
+- (void)viewMap:(SBReusableViewMap *)arg1 willDiscardView:(UIView<SBReusableView> *)arg2;
 - (_Bool)viewMap:(SBReusableViewMap *)arg1 shouldRecycleView:(UIView<SBReusableView> *)arg2;
 - (UIView<SBReusableView> *)viewMap:(SBReusableViewMap *)arg1 makeNewViewOfClass:(Class)arg2;
 @end

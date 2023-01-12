@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBRenderFactory.h"
+
 __attribute__((visibility("hidden")))
-@interface UIKBRenderFactory10Key
+@interface UIKBRenderFactory10Key : UIKBRenderFactory
 {
 }
 
 + (_Bool)_isActiveKeyplaneSwitchKey:(id)arg1;
+- (void)populateFlickGuide:(id)arg1 forKey:(id)arg2 from:(id)arg3;
 - (void)setupColumnLayoutSegmentsWithControlWidth:(double)arg1;
 - (id)shiftedWhiteControlKeyTraits;
 - (id)shiftedControlKeyTraits;

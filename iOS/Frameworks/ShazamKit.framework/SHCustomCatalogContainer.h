@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, SHJSONLCustomCatalogTransformer;
+@class NSArray, NSData, SHJSONLCustomCatalogTransformer;
 @protocol SHCustomCatalogStorage;
 
 __attribute__((visibility("hidden")))
@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
 - (id)referenceSignatureForTrackID:(unsigned long long)arg1;
 - (id)mediaItemsForReferenceSignature:(id)arg1;
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) NSData *dataRepresentation;
 - (_Bool)loadFromURL:(id)arg1 error:(id *)arg2;
+- (_Bool)loadFromData:(id)arg1 error:(id *)arg2;
 - (id)init;
 
 @end

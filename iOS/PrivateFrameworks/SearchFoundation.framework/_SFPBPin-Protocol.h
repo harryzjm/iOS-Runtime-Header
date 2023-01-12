@@ -10,6 +10,7 @@
 
 @protocol _SFPBPin <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *pinText;
 @property(nonatomic) int pinBehavior;
 @property(copy, nonatomic) NSData *mapsData;
 @property(copy, nonatomic) NSString *resultID;

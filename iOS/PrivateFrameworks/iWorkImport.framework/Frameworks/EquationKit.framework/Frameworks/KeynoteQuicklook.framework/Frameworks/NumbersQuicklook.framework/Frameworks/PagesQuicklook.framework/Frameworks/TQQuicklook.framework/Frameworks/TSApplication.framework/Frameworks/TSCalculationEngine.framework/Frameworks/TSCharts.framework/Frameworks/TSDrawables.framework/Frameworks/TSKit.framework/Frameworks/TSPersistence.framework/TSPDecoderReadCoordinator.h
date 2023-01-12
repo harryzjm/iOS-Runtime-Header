@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSPersistence/TSPReadCoordinator-Protocol.h>
-
 @class NSMapTable, NSObject, NSString, TSPComponent, TSPDocumentLoadValidationPolicy, TSPFinalizeHandlerQueue, TSPObjectContext;
 @protocol OS_dispatch_queue, TSPDecoder, TSPDecoderReadCoordinatorDelegate;
 
-@interface TSPDecoderReadCoordinator <TSPReadCoordinator>
+@interface TSPDecoderReadCoordinator
 {
     id <TSPDecoder> _decoder;
     TSPObjectContext *_context;

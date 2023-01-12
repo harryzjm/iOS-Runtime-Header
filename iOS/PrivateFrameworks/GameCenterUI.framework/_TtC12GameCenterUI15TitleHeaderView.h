@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSString, UIView, _TtC12GameCenterUI16DynamicTypeLabel;
+@class MISSING_TYPE, NSString, UIView, _TtC12GameCenterUI11ArtworkView, _TtC12GameCenterUI16DynamicTypeLabel;
 
 __attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI15TitleHeaderView
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *detailLabel;
     MISSING_TYPE *style;
     MISSING_TYPE *accessoryView;
+    MISSING_TYPE *iconArtworkView;
     MISSING_TYPE *accessory;
     MISSING_TYPE *accessoryAction;
     MISSING_TYPE *separatorLineView;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)didTapWithAccessoryView:(id)arg1;
+@property(nonatomic, retain) _TtC12GameCenterUI11ArtworkView *iconArtworkView; // @synthesize iconArtworkView;
 @property(nonatomic, retain) UIView *accessoryView; // @synthesize accessoryView;
 @property(nonatomic, readonly) _TtC12GameCenterUI16DynamicTypeLabel *titleLabel; // @synthesize titleLabel;
 - (_Bool)_disableRasterizeInAnimations;

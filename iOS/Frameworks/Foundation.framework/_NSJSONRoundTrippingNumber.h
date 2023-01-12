@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSSecureCoding-Protocol.h>
-
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSJSONRoundTrippingNumber : NSObject <NSSecureCoding>
+@interface _NSJSONRoundTrippingNumber : NSObject
 {
     NSNumber *_number;
     NSString *_representation;

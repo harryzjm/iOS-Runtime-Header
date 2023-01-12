@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/SFWebAppServiceViewControllerProtocol-Protocol.h>
-#import <SafariServices/_SFMediaRecordingDocument-Protocol.h>
-
-@class BKSApplicationStateMonitor, NSMutableArray, NSString, UIColor, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore, _SFApplicationManifestFetcher, _SFInjectedJavaScriptController, _SFWebClipMetadataFetcher;
+@class BKSApplicationStateMonitor, NSMutableArray, NSString, SFApplicationManifestFetcher, UIColor, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore, _SFInjectedJavaScriptController, _SFWebClipMetadataFetcher;
 
 __attribute__((visibility("hidden")))
-@interface _SFWebAppServiceViewController <SFWebAppServiceViewControllerProtocol, _SFMediaRecordingDocument>
+@interface _SFWebAppServiceViewController
 {
     UIWebClip *_webClip;
     UIView *_statusBarBackgroundView;
@@ -20,7 +17,7 @@ __attribute__((visibility("hidden")))
     BKSApplicationStateMonitor *_stateMonitor;
     unsigned int _hostState;
     unsigned long long _mediaStateIconBeforeSuspension;
-    _SFApplicationManifestFetcher *_applicationManifestFetcher;
+    SFApplicationManifestFetcher *_applicationManifestFetcher;
     _SFInjectedJavaScriptController *_activityJSController;
     _SFWebClipMetadataFetcher *_webClipMetadataFetcher;
     UIColor *_themeColor;
@@ -42,16 +39,18 @@ __attribute__((visibility("hidden")))
 - (void)_loadWebClipPageURL:(id)arg1;
 - (id)_canonicalPageURL;
 - (void)_handleHostStateUpdate:(id)arg1;
+- (void)processWebPushForWebAppWithIdentifier:(id)arg1;
 - (void)loadWebAppWithIdentifier:(id)arg1;
 - (void)navigationBarDoneButtonWasTapped:(id)arg1;
-- (unsigned long long)_persona;
+- (long long)_persona;
 - (void)_initialLoadFinishedWithSuccess:(_Bool)arg1;
 - (id)processPool;
 - (_Bool)_usesScrollToTopView;
 - (void)_setCurrentWebViewController:(id)arg1;
 - (id)webViewConfiguration;
+- (void)_setUpCookieStoragePolicyForDataStore:(id)arg1;
 - (id)websiteDataStore;
-- (id)websiteDataStoreConfiguration;
+- (id)websiteDataStoreConfigurationWithWebClipIdentifier:(id)arg1;
 - (_Bool)canPrint;
 - (void)webViewControllerDidUpdateThemeColor:(id)arg1;
 - (void)_updateDisplayMode;

@@ -5,6 +5,7 @@
 //
 
 @protocol ADAppTracking_XPC
+- (void)latestPersonalizedAdsConsentVersion:(void (^)(long long))arg1;
 - (void)shouldAppStoreDisplayAdvertisingScreen:(void (^)(_Bool))arg1;
 - (void)shouldDisplayPersonalizedAdsUI:(void (^)(_Bool))arg1;
 - (void)getAccountLevelSwitchDisabledReasonWithHandler:(void (^)(long long))arg1;

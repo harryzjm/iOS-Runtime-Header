@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEPreferences-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AEEmptyPreferences : NSObject <AEPreferences>
+@interface AEEmptyPreferences : NSObject
 {
 }
 
+@property(nonatomic, getter=shouldDisableQuickNote) _Bool disableQuickNote;
+@property(nonatomic, getter=shouldDisableDictation) _Bool disableDictation;
 @property(nonatomic, getter=shouldElevateWindows) _Bool elevateWindows;
 @property(nonatomic, getter=shouldCaptureDisplays) _Bool captureDisplays;
 @property(nonatomic, getter=shouldDisableTrackpadLookup) _Bool disableTrackpadLookup;
@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=shouldScrubPasteboard) _Bool scrubPasteboard;
 @property(nonatomic, getter=shouldDisableContinuity) _Bool disableContinuity;
 @property(nonatomic, getter=shouldDisableSiri) _Bool disableSiri;
-@property(nonatomic, getter=shouldCreateAssessmentFile) _Bool createAssessmentFile;
 @property(nonatomic, getter=shouldRestrictFrontmostApp) _Bool restrictFrontmostApp;
 @property(nonatomic, getter=shouldPresentShields) _Bool presentShields;
 @property(nonatomic, getter=shouldEnterSandbox) _Bool enterSandbox;

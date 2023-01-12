@@ -4,25 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/UIDragInteractionDelegate-Protocol.h>
-#import <VisionKitCore/UIKeyInput-Protocol.h>
-#import <VisionKitCore/UIScribbleInteractionDelegatePrivate-Protocol.h>
-#import <VisionKitCore/UITextInput-Protocol.h>
-#import <VisionKitCore/UITextInputTraits_Private-Protocol.h>
-#import <VisionKitCore/UITextInteractionDelegate-Protocol.h>
-#import <VisionKitCore/VKCTextRecognitionResultTextDelegate-Protocol.h>
-#import <VisionKitCore/VKCTextSelectionLongPressHandlerDelegate-Protocol.h>
-#import <VisionKitCore/_UITextInputTranslationSupport-Protocol.h>
-
-@class NSArray, NSDictionary, NSIndexSet, NSString, UIColor, UIDragInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UITextInputPasswordRules, UITextInputStringTokenizer, UITextInteraction, UITextPosition, UITextRange, UIView, VKCTextPointerTrackingView, VKCTextSelectionLongPressDelegateHandler, _UISupplementalLexicon;
+@class NSArray, NSDictionary, NSIndexSet, NSString, UIColor, UIDragInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UITextInputPasswordRules, UITextInputStringTokenizer, UITextInteraction, UITextPosition, UITextRange, UITextSelectionGrabberSuppressionAssertion, UIView, VKCTextPointerTrackingView, VKCTextSelectionLongPressDelegateHandler, _UISupplementalLexicon;
 @protocol UITextInputDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCImageTextSelectionView_iOS <UITextInteractionDelegate, VKCTextRecognitionResultTextDelegate, UIDragInteractionDelegate, UIScribbleInteractionDelegatePrivate, UITextInputTraits_Private, _UITextInputTranslationSupport, VKCTextSelectionLongPressHandlerDelegate, UITextInput, UIKeyInput>
+@interface VKCImageTextSelectionView_iOS
 {
     _Bool _useFullDocumentRangeForEmptySelection;
     _Bool _beginSelectionChangedCalled;
     _Bool _manuallySettingSelectedRange;
+    _Bool _initializationComplete;
     id <UITextInputDelegate> _inputDelegate;
     UITextInputStringTokenizer *_tokenizer;
     NSDictionary *_markedTextStyle;
@@ -36,11 +27,14 @@ __attribute__((visibility("hidden")))
     VKCTextPointerTrackingView *_textPointerTrackingView;
     VKCTextSelectionLongPressDelegateHandler *_longPressHandler;
     UILongPressGestureRecognizer *_longPressGR;
+    UITextSelectionGrabberSuppressionAssertion *_textSelectionGrabberSuppression;
     struct _NSRange _preSelectionChangeSelectedRange;
 }
 
 + (_Bool)processHasSnapshotDragEntitlement;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UITextSelectionGrabberSuppressionAssertion *textSelectionGrabberSuppression; // @synthesize textSelectionGrabberSuppression=_textSelectionGrabberSuppression;
+@property(nonatomic) _Bool initializationComplete; // @synthesize initializationComplete=_initializationComplete;
 @property(retain, nonatomic) UILongPressGestureRecognizer *longPressGR; // @synthesize longPressGR=_longPressGR;
 @property(retain, nonatomic) VKCTextSelectionLongPressDelegateHandler *longPressHandler; // @synthesize longPressHandler=_longPressHandler;
 @property(nonatomic) __weak VKCTextPointerTrackingView *textPointerTrackingView; // @synthesize textPointerTrackingView=_textPointerTrackingView;
@@ -58,6 +52,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSDictionary *markedTextStyle; // @synthesize markedTextStyle=_markedTextStyle;
 @property(retain, nonatomic) UITextInputStringTokenizer *tokenizer; // @synthesize tokenizer=_tokenizer;
 @property(nonatomic) __weak id <UITextInputDelegate> inputDelegate; // @synthesize inputDelegate=_inputDelegate;
+- (void)unsuppressSelectionViewGrabbers;
+- (void)suppressSelectionViewGrabbers;
 - (id)_accessibilityUserTestingChildren;
 - (_Bool)_scribbleInteractionShouldDisableInputAssistant:(id)arg1;
 - (_Bool)scribbleInteraction:(id)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
@@ -66,6 +62,8 @@ __attribute__((visibility("hidden")))
 - (id)targetedDragPreviewWithLabelsForCurrentSelection;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
+- (id)_rvItemInRange:(struct _NSRange)arg1;
+- (id)_rvItemForSelectedRange;
 @property(readonly, nonatomic, getter=isImageBacked) _Bool imageBacked;
 - (void)takeTraitsFrom:(id)arg1;
 - (id)_textRangeForActions;
@@ -148,6 +146,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool forceDisableDictation;
 @property(nonatomic) _Bool forceEnableDictation;
 @property(nonatomic) _Bool forceFloatingKeyboard;
+@property(nonatomic) _Bool forceSpellingDictation;
 @property(nonatomic) _Bool hasDefaultContents;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hidePrediction;

@@ -20,6 +20,9 @@
 - (_Bool)scrc_containsOnlyOneGlyph;
 - (id)scrc_composedCharacterAtIndex:(unsigned long long)arg1;
 - (id)stringWithMathIndicators;
+- (void)enumerateCharacter32sInRange:(struct _NSRange)arg1 block:(CDUnknownBlockType)arg2;
+- (id)stringByTrimmingTrailingCharactersInSet:(id)arg1;
+- (id)stringByTrimmingLeadingCharactersInSet:(id)arg1;
 - (struct _NSRange)previousWordFromPosition:(long long)arg1;
 - (struct _NSRange)nextWordFromPosition:(long long)arg1;
 - (_Bool)containsAttachmentCharSet;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class BSServiceConnectionEndpointInjector, NSMutableArray, NSString, RBSTarget;
 
 __attribute__((visibility("hidden")))
-@interface _UIVisibilityPropagationView
+@interface _UIVisibilityPropagationView : UIView
 {
     struct os_unfair_lock_s _visibilityLock;
     RBSTarget *_visibilityLock_target;

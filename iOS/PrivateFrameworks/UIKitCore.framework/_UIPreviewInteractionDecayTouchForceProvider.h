@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIPreviewInteractionTouchForceProviding-Protocol.h>
-
 @class NSString;
 @protocol UICoordinateSpace, _UIPreviewInteractionTouchForceProviding;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionDecayTouchForceProvider : NSObject <_UIPreviewInteractionTouchForceProviding>
+@interface _UIPreviewInteractionDecayTouchForceProvider : NSObject
 {
     id <_UIPreviewInteractionTouchForceProviding> _touchForceProvider;
     double _initialTouchForce;

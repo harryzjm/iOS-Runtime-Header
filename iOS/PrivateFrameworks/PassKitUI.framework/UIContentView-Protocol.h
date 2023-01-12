@@ -10,5 +10,8 @@
 
 @protocol UIContentView <NSObject>
 @property(copy, nonatomic) id <UIContentConfiguration> configuration;
+
+@optional
+- (_Bool)supportsConfiguration:(id <UIContentConfiguration>)arg1;
 @end
 

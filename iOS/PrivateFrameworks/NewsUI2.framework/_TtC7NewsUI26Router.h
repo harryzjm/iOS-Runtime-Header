@@ -22,6 +22,11 @@
     MISSING_TYPE *offerManager;
     MISSING_TYPE *dynamicViewControllerFactory;
     MISSING_TYPE *amsUIWebViewControllerFactory;
+    MISSING_TYPE *purchasePresenter;
+    MISSING_TYPE *appConfigurationManager;
+    MISSING_TYPE *sportsOnboardingFlowManager;
+    MISSING_TYPE *landingPageDecider;
+    MISSING_TYPE *feedAvailabilityService;
 }
 
 @end

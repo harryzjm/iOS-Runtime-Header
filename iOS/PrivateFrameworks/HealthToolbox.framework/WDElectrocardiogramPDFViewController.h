@@ -6,19 +6,21 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <HealthToolbox/UIInterfaceOrientationMaskOverride-Protocol.h>
-
 @class NSData, NSDate, NSString, PDFDocument, PDFView;
 
 __attribute__((visibility("hidden")))
-@interface WDElectrocardiogramPDFViewController : UIViewController <UIInterfaceOrientationMaskOverride>
+@interface WDElectrocardiogramPDFViewController : UIViewController
 {
     NSData *_pdfData;
     NSDate *_sampleDate;
     PDFDocument *_pdfDocument;
+    NSString *_firstName;
+    NSString *_lastName;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property(readonly, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property(readonly, nonatomic) PDFDocument *pdfDocument; // @synthesize pdfDocument=_pdfDocument;
 @property(readonly, nonatomic) NSDate *sampleDate; // @synthesize sampleDate=_sampleDate;
 @property(readonly, nonatomic) NSData *pdfData; // @synthesize pdfData=_pdfData;
@@ -28,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 @property(readonly, nonatomic) PDFView *pdfView;
-- (id)initWithPDFData:(id)arg1 sampleDate:(id)arg2;
+- (id)initWithPDFData:(id)arg1 sampleDate:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

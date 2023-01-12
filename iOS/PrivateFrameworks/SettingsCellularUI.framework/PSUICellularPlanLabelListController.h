@@ -6,12 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-#import <SettingsCellularUI/UITextFieldDelegate-Protocol.h>
-
 @class NSArray, NSString, PSUICellularPlanUniversalReference, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface PSUICellularPlanLabelListController : PSListController <UITextFieldDelegate>
+@interface PSUICellularPlanLabelListController : PSListController
 {
     NSArray *_predefinedLabels;
     NSString *_validatedCustomLabelText;
@@ -24,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UITextField *textField; // @synthesize textField=_textField;
 @property(retain, nonatomic) NSString *validatedCustomLabelText; // @synthesize validatedCustomLabelText=_validatedCustomLabelText;
 @property(retain, nonatomic) NSArray *predefinedLabels; // @synthesize predefinedLabels=_predefinedLabels;
+- (id)getLogger;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (void)dismissKeyboard;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

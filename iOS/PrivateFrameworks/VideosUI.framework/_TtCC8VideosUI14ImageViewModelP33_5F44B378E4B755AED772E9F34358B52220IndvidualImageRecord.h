@@ -18,6 +18,9 @@
     MISSING_TYPE *format;
     MISSING_TYPE *themeString;
     MISSING_TYPE *backgroundColor;
+    MISSING_TYPE *disableGradient;
+    MISSING_TYPE *p3Specifier;
+    MISSING_TYPE *originalCrop;
     MISSING_TYPE *crop;
 }
 

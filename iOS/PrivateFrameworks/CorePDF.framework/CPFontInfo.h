@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPDisposable-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CPFontInfo : NSObject <CPDisposable>
+@interface CPFontInfo : NSObject
 {
     struct __CFData *fontData;
     const char *dataPtr;

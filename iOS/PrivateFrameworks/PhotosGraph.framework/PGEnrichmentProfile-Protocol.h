@@ -15,13 +15,13 @@
 @property(nonatomic) _Bool collectsDebugInfo;
 @property(readonly, nonatomic) NSString *identifier;
 - (PGCurationCriteria *)keyAssetCurationCriteriaWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 graph:(PGGraph *)arg2;
-- (PGCurationOptions *)curationOptionsForForHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1;
+- (PGCurationOptions *)curationOptionsForForHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 sharingFilter:(unsigned short)arg2;
 - (unsigned short)enrichmentStateWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1;
-- (NSDictionary *)curationsWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
-- (NSArray *)extendedCurationWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
-- (PHAsset *)keyAssetWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 graph:(PGGraph *)arg2 progressBlock:(void (^)(double, _Bool *))arg3;
+- (NSArray *)summaryCurationWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 sharingFilter:(unsigned short)arg2 progressBlock:(void (^)(double, _Bool *))arg3;
+- (NSArray *)extendedCurationWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 sharingFilter:(unsigned short)arg2 progressBlock:(void (^)(double, _Bool *))arg3;
+- (PHAsset *)keyAssetWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 sharingFilter:(unsigned short)arg2 graph:(PGGraph *)arg3 progressBlock:(void (^)(double, _Bool *))arg4;
 - (NSDictionary *)momentTitleByMomentUUIDWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1;
-- (PGTitleTuple *)titleWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 curatedAssets:(NSArray *)arg2 keyAsset:(PHAsset *)arg3 createVerboseTitle:(_Bool)arg4;
+- (PGTitleTuple *)titleWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1 sharingFilter:(unsigned short)arg2 curatedAssets:(NSArray *)arg3 keyAsset:(PHAsset *)arg4 createVerboseTitle:(_Bool)arg5;
 - (double)promotionScoreWithHighlightInfo:(PGHighlightTailorHighlightInfo *)arg1;
 - (PGHighlightTailorHighlightInfo *)highlightInfoWithHighlight:(id <PGHighlightModel>)arg1 graph:(PGGraph *)arg2 highlightTailorContext:(PGHighlightTailorContext *)arg3;
 - (_Bool)canEnrichHighlight:(id <PGHighlightModel>)arg1 withOptions:(unsigned long long)arg2;

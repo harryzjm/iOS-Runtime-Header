@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/PKModularService-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AUAudioUnitServiceUI_Subsystem : NSObject <PKModularService>
+@interface AUAudioUnitServiceUI_Subsystem : NSObject
 {
 }
 

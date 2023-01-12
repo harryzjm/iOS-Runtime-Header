@@ -24,6 +24,5 @@
 - (NSDictionary *)doubleForKey:(NSString *)arg1;
 - (NSDictionary *)boolForKey:(NSString *)arg1;
 - (NSDictionary *)arrayForKey:(NSString *)arg1;
-- (void)registerBagKey:(NSString *)arg1 withValueType:(unsigned long long)arg2;
 @end
 

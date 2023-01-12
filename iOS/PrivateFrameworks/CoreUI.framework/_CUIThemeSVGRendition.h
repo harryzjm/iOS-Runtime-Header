@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreUI/NSLocking-Protocol.h>
+#import "CUIThemeRendition.h"
 
 @class NSArray, NSData;
 
 __attribute__((visibility("hidden")))
-@interface _CUIThemeSVGRendition <NSLocking>
+@interface _CUIThemeSVGRendition : CUIThemeRendition
 {
     struct CGSVGDocument *_svgDocument;
     NSData *_fileData;
@@ -22,9 +22,15 @@ __attribute__((visibility("hidden")))
     struct CGSize _canvasSize;
     float _templateVersion;
     _Bool _isInterpolatable;
+    long long _renderingMode;
+    short _containsMulticolorLayers;
+    short _containsHierarchicalLayers;
     struct os_unfair_lock_s _lock;
 }
 
+- (short)containsHierarchicalLayers;
+- (short)containsMulticolorLayers;
+- (long long)vectorGlyphRenderingMode;
 - (_Bool)isInterpolatable;
 - (float)vectorGlyphTemplateVersion;
 - (CDStruct_3c058996)vectorGlyphAlignmentRectInsets;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCMotionEventSource-Protocol.h>
-
 @class NSArray, NSString;
 @protocol _GCHIDEventSource;
 
 __attribute__((visibility("hidden")))
-@interface _GCMotionEventHIDAdapter : NSObject <_GCMotionEventSource>
+@interface _GCMotionEventHIDAdapter : NSObject
 {
     id <_GCHIDEventSource> _HIDEventSource;
     id _HIDEventObservation;

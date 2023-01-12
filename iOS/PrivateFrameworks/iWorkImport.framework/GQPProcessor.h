@@ -8,7 +8,6 @@
 
 @class GQSDocument, SFUCryptoKey, SFUZipArchive, SFUZipInflateInputStream;
 
-__attribute__((visibility("hidden")))
 @interface GQPProcessor : NSObject
 {
     struct _xmlTextReader *mReader;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSUUID;
+@class NSDictionary, NSString, NSURL, NSUUID;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,16 +18,18 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
     int _saveFlag;
     NSDictionary *_perUserEntropy;
+    NSURL *_identifiersFileURL;
+    NSString *_personaUniqueString;
 }
 
-+ (id)sharedCache;
 - (void).cxx_destruct;
+@property(readonly) NSString *personaUniqueString; // @synthesize personaUniqueString=_personaUniqueString;
 - (void)save;
 - (void)clearAllIdentifiersOfType:(long long)arg1;
 - (void)clearIdentifiersForUninstallationWithVendorName:(id)arg1 bundleIdentifier:(id)arg2;
 - (void)getIdentifierOfType:(long long)arg1 vendorName:(id)arg2 bundleIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 @property(readonly) NSObject<OS_dispatch_queue> *queue;
-- (id)init;
+- (id)initWithPersona:(id)arg1;
 - (id)deviceIdentifierVendorSeed;
 - (id)identifiersOfTypeNotDispatched:(long long)arg1;
 - (id)allIdentifiersNotDispatched;

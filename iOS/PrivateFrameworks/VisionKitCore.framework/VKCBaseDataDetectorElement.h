@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/VKAnalysisElementDebugMenuProvider-Protocol.h>
-
 @class DDScannerResult, NSArray, NSString, NSUUID, UIMenu;
 
 __attribute__((visibility("hidden")))
-@interface VKCBaseDataDetectorElement <VKAnalysisElementDebugMenuProvider>
+@interface VKCBaseDataDetectorElement
 {
+    double _area;
+    double _maxLineHeight;
     NSUUID *_uuid;
 }
 
@@ -21,14 +21,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *stringValue;
 - (_Bool)containsPoint:(struct CGPoint)arg1;
 @property(readonly, nonatomic) UIMenu *debugMenu;
+@property(readonly, nonatomic) double maxLineHeight; // @synthesize maxLineHeight=_maxLineHeight;
+@property(readonly, nonatomic) double area; // @synthesize area=_area;
 @property(readonly, nonatomic) _Bool wantsMacOSHandCursor;
 - (_Bool)isInspectableCellSelectable;
+@property(readonly, nonatomic) _Bool isUnitConversionDataDetector;
 @property(readonly, nonatomic) _Bool isMRCDataDetector;
 @property(readonly, nonatomic) _Bool isTextDataDetector;
 @property(readonly, nonatomic) unsigned long long dataDetectorTypes;
 @property(readonly, nonatomic) NSArray *boundingQuads;
 @property(readonly, nonatomic) DDScannerResult *scannerResult;
 - (long long)elementType;
+- (id)init;
 
 @end
 

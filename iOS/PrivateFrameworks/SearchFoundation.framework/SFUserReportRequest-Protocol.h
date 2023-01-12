@@ -11,6 +11,7 @@
 @protocol SFUserReportRequest <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) int reportType;
 @property(copy, nonatomic) NSArray *userReportOptions;
 @property(copy, nonatomic) NSString *dismissText;
 @property(copy, nonatomic) NSString *title;

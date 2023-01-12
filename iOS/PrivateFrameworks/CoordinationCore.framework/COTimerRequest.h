@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "COMeshRequest.h"
+
 @class MTTimer;
 
 __attribute__((visibility("hidden")))
-@interface COTimerRequest
+@interface COTimerRequest : COMeshRequest
 {
     MTTimer *_timer;
 }

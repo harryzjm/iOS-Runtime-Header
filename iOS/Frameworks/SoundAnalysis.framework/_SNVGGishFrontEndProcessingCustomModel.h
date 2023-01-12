@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/MLCustomModel-Protocol.h>
-
 @class SNDSPGraphCustomModel;
 
 __attribute__((visibility("hidden")))
-@interface _SNVGGishFrontEndProcessingCustomModel : NSObject <MLCustomModel>
+@interface _SNVGGishFrontEndProcessingCustomModel : NSObject
 {
     SNDSPGraphCustomModel *_model;
 }

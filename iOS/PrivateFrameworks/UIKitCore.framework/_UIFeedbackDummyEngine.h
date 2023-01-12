@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIFeedbackPlayer_Internal-Protocol.h>
+#import "_UIFeedbackEngine.h"
 
 __attribute__((visibility("hidden")))
-@interface _UIFeedbackDummyEngine <_UIFeedbackPlayer_Internal>
+@interface _UIFeedbackDummyEngine : _UIFeedbackEngine
 {
     CDUnknownBlockType _invalidationBlock;
 }

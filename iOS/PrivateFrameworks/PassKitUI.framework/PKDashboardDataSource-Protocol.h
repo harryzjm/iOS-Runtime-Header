@@ -6,7 +6,7 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSIndexPath, NSString, PKDashboardFooterTextItem;
+@class NSIndexPath, NSString, PKDashboardFooterTextItem, PKDashboardHeaderTextItem;
 @protocol PKDashboardDataSourceDelegate, PKDashboardItem;
 
 @protocol PKDashboardDataSource <NSObject>
@@ -14,7 +14,7 @@
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;
 - (PKDashboardFooterTextItem *)footerTextItemForSection:(unsigned long long)arg1;
-- (NSString *)titleForSection:(unsigned long long)arg1;
+- (PKDashboardHeaderTextItem *)titleForSection:(unsigned long long)arg1;
 
 @optional
 - (NSString *)navigationBarTitle;

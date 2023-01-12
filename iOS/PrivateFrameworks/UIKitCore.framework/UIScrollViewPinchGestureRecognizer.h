@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIPinchGestureRecognizer.h"
+
 @class UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface UIScrollViewPinchGestureRecognizer
+@interface UIScrollViewPinchGestureRecognizer : UIPinchGestureRecognizer
 {
     UIScrollView *_scrollView;
     SEL _scrollViewAction;

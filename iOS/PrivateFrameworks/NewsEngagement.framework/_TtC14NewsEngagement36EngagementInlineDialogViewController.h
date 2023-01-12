@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *placement;
     MISSING_TYPE *identifier;
+    MISSING_TYPE *source;
+    MISSING_TYPE *messageID;
 }
 
 - (void).cxx_destruct;

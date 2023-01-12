@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATSharingConnection-Protocol.h>
-
 @class CATOperationQueue, CATSharingDevice, NSError, NSString;
 @protocol CATSharingBroadcastPrimitives, CATSharingConnectionDelegate, CATTimer, CATTimerSource;
 
 __attribute__((visibility("hidden")))
-@interface CATSharingBroadcastConnection : NSObject <CATSharingConnection>
+@interface CATSharingBroadcastConnection : NSObject
 {
     id <CATSharingBroadcastPrimitives> mBroadcastPrimitives;
     _Bool mIsClosing;

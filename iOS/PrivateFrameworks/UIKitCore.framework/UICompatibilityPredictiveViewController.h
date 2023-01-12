@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPredictiveViewController-Protocol.h>
+#import "UIViewController.h"
 
 @class NSArray, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UICompatibilityPredictiveViewController <UIPredictiveViewController>
+@interface UICompatibilityPredictiveViewController : UIViewController
 {
     UIView *_customView;
 }

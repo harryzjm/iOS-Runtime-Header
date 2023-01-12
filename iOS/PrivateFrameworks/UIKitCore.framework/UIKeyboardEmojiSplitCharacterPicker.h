@@ -4,12 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIKeyboardEmojiCategory;
+
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiSplitCharacterPicker
 {
+    UIKeyboardEmojiCategory *_category;
 }
 
 + (_Bool)wantsScreenTraits;
+- (void).cxx_destruct;
+- (void)setCategory:(id)arg1;
+- (id)category;
 - (void)updateToCategory:(long long)arg1;
 - (void)didMoveToWindow;
 - (double)snappedYOffsetForOffset:(double)arg1;

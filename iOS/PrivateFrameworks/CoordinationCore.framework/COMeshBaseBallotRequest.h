@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "COMeshRequest.h"
+
 @class COBallot;
 
 __attribute__((visibility("hidden")))
-@interface COMeshBaseBallotRequest
+@interface COMeshBaseBallotRequest : COMeshRequest
 {
     COBallot *_ballot;
     long long _variant;

@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <KeychainCircle/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface OTSponsorToApplicantRound1M2 : PBCodable <NSCopying>
+@interface OTSponsorToApplicantRound1M2 : PBCodable
 {
     unsigned long long _epoch;
     struct {

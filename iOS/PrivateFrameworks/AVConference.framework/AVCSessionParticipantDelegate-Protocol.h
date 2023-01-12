@@ -12,6 +12,8 @@
 
 @optional
 - (void)participant:(AVCSessionParticipant *)arg1 spatialAudioSourceIDDidChange:(unsigned long long)arg2;
+- (void)participant:(AVCSessionParticipant *)arg1 remoteMediaStateDidChange:(unsigned int)arg2 forMediaType:(unsigned int)arg3;
+- (void)participant:(AVCSessionParticipant *)arg1 mediaStateDidChange:(unsigned int)arg2 forMediaType:(unsigned int)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;
 - (void)participant:(AVCSessionParticipant *)arg1 mediaPrioritiesDidChange:(NSDictionary *)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 remoteVideoPausedDidChange:(_Bool)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 remoteAudioPausedDidChange:(_Bool)arg2;

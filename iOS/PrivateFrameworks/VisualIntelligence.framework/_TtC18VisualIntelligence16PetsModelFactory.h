@@ -8,6 +8,7 @@
 
 @interface _TtC18VisualIntelligence16PetsModelFactory
 {
+    MISSING_TYPE *mlEngineType;
     MISSING_TYPE *modelInfo;
     MISSING_TYPE *postProcessor;
     MISSING_TYPE *coreMLModelProvider;

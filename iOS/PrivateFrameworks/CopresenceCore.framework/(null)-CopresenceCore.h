@@ -5,19 +5,6 @@
 //
 
 @interface (null) (CopresenceCore)
-- (void)updateConversationContainersWithConversationContainersByGroupUUID:(id)arg1;
-- (void)updateConversationWith:(id)arg1 participantPresentationContexts:(id)arg2;
-- (void)kickMember:(id)arg1 conversationUUID:(id)arg2;
-- (void)requestScreenShareFromMember:(id)arg1 conversationUUID:(id)arg2;
-- (void)setDownlinkMuted:(_Bool)arg1 forRemoteParticipantsInConversationWithUUID:(id)arg2;
-- (void)buzzMember:(id)arg1 conversationUUID:(id)arg2;
-- (void)setActivityAuthorization:(_Bool)arg1 forBundleIdentifier:(id)arg2;
-- (void)requestActivitySuggestionsWithReply:(CDUnknownBlockType)arg1;
-- (void)addRemoteMembers:(id)arg1 toConversationWithUUID:(id)arg2;
-- (void)requestConversationContainersByGroupUUIDWithReply:(CDUnknownBlockType)arg1;
-- (void)removeActivitySuggestion:(id)arg1;
-- (void)addActivitySuggestion:(id)arg1;
-- (void)createActivitySession:(id)arg1 onConversationWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)prepareForGroupActivityWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)audioPolicyManager:(id)arg1 sharePlayAllowedStateChanged:(_Bool)arg2;
 @end
 

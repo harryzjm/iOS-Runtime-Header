@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIKeyShortcutHUDCollectionViewManagerClient-Protocol.h>
+#import "UIView.h"
 
 @class NSString, UICollectionView, UICollectionViewCellRegistration, UICollectionViewDiffableDataSource, _UIKeyShortcutHUDCollectionViewManager, _UIKeyShortcutHUDIndexPath, _UIKeyShortcutHUDToolbarViewController;
 @protocol _UIKeyShortcutHUDSearchButtonDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDSearchButton <_UIKeyShortcutHUDCollectionViewManagerClient>
+@interface _UIKeyShortcutHUDSearchButton : UIView
 {
     _Bool _searching;
     UICollectionView *_collectionView;

@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed24NoopFeedAppConfigManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *segmentSetIds;
+    MISSING_TYPE *timesOfDayConfiguration;
 }
 
 @end

@@ -10,7 +10,5 @@
 {
 }
 
-- (void)captureArticleViewContextWithSessionID:(id)arg1;
-
 @end
 

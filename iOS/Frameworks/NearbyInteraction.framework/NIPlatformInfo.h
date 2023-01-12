@@ -11,6 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)supportsSyntheticAperture;
++ (_Bool)supportsAoA;
++ (_Bool)supportsUWB;
 + (_Bool)isInternalBuild;
 
 @end

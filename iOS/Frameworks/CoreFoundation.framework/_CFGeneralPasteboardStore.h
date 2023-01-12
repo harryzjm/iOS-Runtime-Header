@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreFoundation/NSXPCListenerDelegate-Protocol.h>
-#import <CoreFoundation/UAPasteboardClientProtocol-Protocol.h>
-
 @class NSObject, NSString, _CFRemotePasteboardCache;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _CFGeneralPasteboardStore <NSXPCListenerDelegate, UAPasteboardClientProtocol>
+@interface _CFGeneralPasteboardStore
 {
     long long _localOnlyGeneration;
     _CFRemotePasteboardCache *_remotePasteboardCache;
     NSObject<OS_dispatch_queue> *_remotePasteboardNotificationQueue;
+    unsigned long long _lastAccessTimestamp;
+    unsigned long long _lastRemoteAvailableTimestamp;
+    unsigned long long _timeout;
 }
 
 + (id)generalPasteboard;
@@ -28,6 +28,12 @@ __attribute__((visibility("hidden")))
 - (long long)_onqueue_nextGenerationCount;
 - (void)notifyRemoteGenerationBecameAvailable:(unsigned char)arg1;
 - (void)_onqueue_notifyRemoteGenerationBecameAvailable:(unsigned char)arg1;
+- (void)handleRequestData:(id)arg1;
+- (void)handleRefreshCache:(id)arg1;
+- (void)setTimeout:(unsigned long long)arg1;
+- (void)handlePasteNotification;
+- (void)handleRegisterEntries:(id)arg1;
+- (void)handleNotifyHasEntries:(id)arg1;
 - (void)handleMakeGenerationLocal:(id)arg1;
 - (id)_initWithName:(struct __CFString *)arg1;
 

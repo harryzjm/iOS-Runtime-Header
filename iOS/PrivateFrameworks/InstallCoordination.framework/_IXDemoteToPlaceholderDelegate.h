@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <InstallCoordination/IXAppInstallCoordinatorObserver-Protocol.h>
-
 @class IXDemotingAppInstallCoordinator, NSString;
 
-@interface _IXDemoteToPlaceholderDelegate : NSObject <IXAppInstallCoordinatorObserver>
+__attribute__((visibility("hidden")))
+@interface _IXDemoteToPlaceholderDelegate : NSObject
 {
     NSString *_bundleID;
     CDUnknownBlockType _completion;
@@ -22,7 +21,7 @@
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (void)coordinator:(id)arg1 canceledWithReason:(id)arg2 client:(unsigned long long)arg3;
-- (void)coordinatorDidCompleteSuccessfully:(id)arg1;
+- (void)coordinatorDidCompleteSuccessfully:(id)arg1 forApplicationRecord:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

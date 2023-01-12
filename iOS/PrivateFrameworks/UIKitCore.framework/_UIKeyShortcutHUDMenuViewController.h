@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIKeyShortcutHUDCollectionViewManagerClient-Protocol.h>
+#import "UIViewController.h"
 
-@class NSString, UICollectionView, UICollectionViewCellRegistration, UICollectionViewDiffableDataSource, UICollectionViewSupplementaryRegistration, UIVisualEffectView, _UIKeyShortcutHUDCollectionViewManager, _UIKeyShortcutHUDMenu, _UIKeyShortcutHUDMetrics;
+@class NSString, UICollectionView, UICollectionViewCellRegistration, UICollectionViewDiffableDataSource, UICollectionViewSupplementaryRegistration, UIKeyShortcutHUDMetrics, UIVisualEffectView, _UIKeyShortcutHUDCollectionViewManager, _UIKeyShortcutHUDMenu;
 @protocol _UIKeyShortcutHUDMenuViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDMenuViewController <_UIKeyShortcutHUDCollectionViewManagerClient>
+@interface _UIKeyShortcutHUDMenuViewController : UIViewController
 {
     _Bool _searching;
     _Bool _transitioningSearch;
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     id <_UIKeyShortcutHUDMenuViewControllerDelegate> _delegate;
     _UIKeyShortcutHUDCollectionViewManager *_collectionViewManager;
     _UIKeyShortcutHUDMenu *_menu;
-    _UIKeyShortcutHUDMetrics *_metrics;
+    UIKeyShortcutHUDMetrics *_metrics;
     UIVisualEffectView *_visualEffectView;
     UICollectionViewCellRegistration *_cellRegistration;
     UICollectionViewSupplementaryRegistration *_cellSeparatorRegistration;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UICollectionViewCellRegistration *cellRegistration; // @synthesize cellRegistration=_cellRegistration;
 @property(retain, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 @property(nonatomic, getter=isSearching) _Bool searching; // @synthesize searching=_searching;
-@property(nonatomic) __weak _UIKeyShortcutHUDMetrics *metrics; // @synthesize metrics=_metrics;
+@property(nonatomic) __weak UIKeyShortcutHUDMetrics *metrics; // @synthesize metrics=_metrics;
 @property(nonatomic) __weak _UIKeyShortcutHUDMenu *menu; // @synthesize menu=_menu;
 @property(nonatomic) __weak _UIKeyShortcutHUDCollectionViewManager *collectionViewManager; // @synthesize collectionViewManager=_collectionViewManager;
 @property(nonatomic) __weak id <_UIKeyShortcutHUDMenuViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canShowWhileLocked;
 - (void)flashShortcutIfVisible:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)scrollToCategory:(id)arg1 withCategoryIndex:(long long)arg2 animated:(_Bool)arg3;
+- (void)hudWillBecomeHidden:(_Bool)arg1;
 - (void)didCompleteSearchTransition;
 - (void)prepareForSearchTransition:(_Bool)arg1;
 - (id)indexPathsForSeparatorsUsedByCellAtIndexPath:(id)arg1;

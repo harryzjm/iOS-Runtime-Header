@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIFilter, CIImage, NSNumber, NSString;
+#import "CIFilter.h"
+
+@class CIImage, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CIImageWriter
+@interface CIImageWriter : CIFilter
 {
     CIImage *inputImage;
     NSString *inputFilename;

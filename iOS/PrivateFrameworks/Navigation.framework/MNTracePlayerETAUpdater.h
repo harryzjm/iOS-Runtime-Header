@@ -4,20 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSTimer;
-
 __attribute__((visibility("hidden")))
 @interface MNTracePlayerETAUpdater
 {
-    NSTimer *_delayTimer;
 }
 
-- (void).cxx_destruct;
+- (id)_serverDisplayETAForResponseInfo:(id)arg1;
 - (void)resumeUpdateRequests;
-- (void)startUpdateRequestsForRoutes:(id)arg1 andNavigationType:(int)arg2;
-- (void)_handleDelayTimerWithUpdateRow:(id)arg1;
+- (void)startUpdateRequestsForRoutes:(id)arg1 andNavigationType:(long long)arg2;
 - (void)playETAUpdate:(id)arg1;
-- (void)dealloc;
 
 @end
 

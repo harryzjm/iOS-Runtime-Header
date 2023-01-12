@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIScrollView.h"
+
 @class NSArray, NSLayoutConstraint, UIInterfaceActionVisualStyle, _UIInterfaceActionSeparatableSequenceView;
 
 __attribute__((visibility("hidden")))
-@interface _UIInterfaceActionRepresentationsSequenceView
+@interface _UIInterfaceActionRepresentationsSequenceView : UIScrollView
 {
     long long _sizingSeparatedContentSequenceViewToFitDisabledCount;
     _Bool _visualCornerForcedOverride;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)layoutSubviews;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (double)_contentFitCanScrollThreshold;
 - (void)reloadDisplayedContentVisualStyle;
 - (double)fittingWidthForLayoutAxis:(long long)arg1;

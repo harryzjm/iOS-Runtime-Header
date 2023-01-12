@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Espresso/ETDataSource-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface ETDataSourceBuf : NSObject <ETDataSource>
+@interface ETDataSourceBuf : NSObject
 {
     struct map<std::string, std::shared_ptr<Espresso::blob<float, 2>>, std::less<std::string>, std::allocator<std::pair<const std::string, std::shared_ptr<Espresso::blob<float, 2>>>>> blobs;
     int number_of_data_points;

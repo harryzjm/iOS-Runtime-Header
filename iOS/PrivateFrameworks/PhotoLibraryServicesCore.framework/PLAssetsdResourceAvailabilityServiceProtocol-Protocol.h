@@ -6,13 +6,14 @@
 
 #import <PhotoLibraryServicesCore/NSObject-Protocol.h>
 
-@class NSProgress, NSSet, PHMakeResourceAvailableRequest, PHVideoXPCRequest, PLXPCShMemObject;
+@class NSProgress, NSSet, PHMakeResourceAvailableRequest, PHResourceRequest, PHVideoXPCRequest, PLXPCShMemObject;
 
 @protocol PLAssetsdResourceAvailabilityServiceProtocol <NSObject>
 - (void)makeResourceUnavailableWithRequest:(PHMakeResourceAvailableRequest *)arg1;
 - (void)initializeSharedMemoryForCacheMetricsCollector:(PLXPCShMemObject *)arg1;
+- (NSProgress *)appyCorrectionsToAssetWithRequest:(PHResourceRequest *)arg1 errorCodes:(NSSet *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (NSProgress *)appyCorrectionsToResourceWithRequest:(PHMakeResourceAvailableRequest *)arg1 errorCodes:(NSSet *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
-- (NSProgress *)runVideoRequest:(PHVideoXPCRequest *)arg1 reply:(void (^)(_Bool, NSURL *, NSDictionary *, NSDictionary *, NSError *))arg2;
+- (NSProgress *)runVideoRequest:(PHVideoXPCRequest *)arg1 reply:(void (^)(_Bool, NSURL *, NSData *, NSDictionary *, NSDictionary *, NSError *))arg2;
 - (NSProgress *)makeResourceAvailableWithRequest:(PHMakeResourceAvailableRequest *)arg1 reply:(void (^)(_Bool, NSURL *, NSData *, NSDictionary *, NSError *))arg2;
 @end
 

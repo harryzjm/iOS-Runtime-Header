@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSAttributedString, UIColor, UIImpactFeedbackGenerator, UIRefreshControl;
 
 __attribute__((visibility("hidden")))
-@interface _UIRefreshControlContentView
+@interface _UIRefreshControlContentView : UIView
 {
     UIRefreshControl *_refreshControl;
     UIColor *_tintColor;

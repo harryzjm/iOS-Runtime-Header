@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPExclusiveAccessToken-Protocol.h>
-
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPDispatchQueueExclusiveAccessToken : NSObject <MPExclusiveAccessToken>
+@interface MPDispatchQueueExclusiveAccessToken : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     id _owner;

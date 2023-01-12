@@ -6,11 +6,10 @@
 
 #import <ShazamInsights/NSObject-Protocol.h>
 
-@class CLLocation, NSDate, NSString;
+@class CLLocation, NSDate, NSString, NSURL;
 
 @protocol SHDataFetcher <NSObject>
-- (_Bool)clearDataWithError:(id *)arg1;
-- (void)clusterDataForLocation:(CLLocation *)arg1 date:(NSDate *)arg2 completionHandler:(void (^)(NSData *, NSError *))arg3;
-- (void)fetchTargetingDataForCurrentStorefront:(NSString *)arg1 cachedEtag:(NSString *)arg2 completionHandler:(void (^)(NSURL *, SHDataStoreMetadata *, NSError *))arg3;
+- (void)clusterDataAtURL:(NSURL *)arg1 forLocation:(CLLocation *)arg2 date:(NSDate *)arg3 completionHandler:(void (^)(SHDataFetcherFileInfo *, NSError *))arg4;
+- (void)fetchClusterURL:(NSURL *)arg1 forCurrentStorefront:(NSString *)arg2 cachedUniqueHash:(NSString *)arg3 completionHandler:(void (^)(SHDataFetcherFileInfo *, NSError *))arg4;
 @end
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Email/EMXPCProxyCreating-Protocol.h>
-
 @class EMRemoteConnection;
 @protocol EMRemoteProxyGenerator;
 
 __attribute__((visibility("hidden")))
-@interface _EMRemoteInterfaceDistantObject : NSObject <EMXPCProxyCreating>
+@interface _EMRemoteInterfaceDistantObject : NSObject
 {
     _Bool _synchronous;
     EMRemoteConnection *_remoteInterface;

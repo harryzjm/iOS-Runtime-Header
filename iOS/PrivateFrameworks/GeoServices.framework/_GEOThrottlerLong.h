@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/_GEOThrottler-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOThrottlerLong : NSObject <_GEOThrottler>
+@interface _GEOThrottlerLong : NSObject
 {
     NSString *_keyPath;
     unsigned int _maxRequestCount;

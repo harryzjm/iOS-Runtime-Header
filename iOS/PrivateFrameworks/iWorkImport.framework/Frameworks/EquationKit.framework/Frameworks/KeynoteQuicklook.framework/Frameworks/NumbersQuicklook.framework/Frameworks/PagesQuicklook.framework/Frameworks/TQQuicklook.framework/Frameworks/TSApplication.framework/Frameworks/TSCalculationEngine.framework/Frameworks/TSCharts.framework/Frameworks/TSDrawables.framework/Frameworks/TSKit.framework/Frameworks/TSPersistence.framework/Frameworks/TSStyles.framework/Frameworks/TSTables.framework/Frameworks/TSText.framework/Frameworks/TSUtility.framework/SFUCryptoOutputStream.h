@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUOutputStream-Protocol.h>
-
 @class NSString, SFUCryptor;
 @protocol SFUOutputStream;
 
-@interface SFUCryptoOutputStream : NSObject <SFUOutputStream>
+@interface SFUCryptoOutputStream : NSObject
 {
     id <SFUOutputStream> mBaseStream;
     SFUCryptor *mCryptor;

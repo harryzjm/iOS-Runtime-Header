@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OnBoardingKit/_UIScrollViewLayoutObserver-Protocol.h>
-
 @protocol _UIScrollViewLayoutObserver;
 
 __attribute__((visibility("hidden")))
-@interface OBScrollViewWeakLayoutObserver : NSObject <_UIScrollViewLayoutObserver>
+@interface OBScrollViewWeakLayoutObserver : NSObject
 {
     OBScrollViewWeakLayoutObserver *_selfReference;
     id <_UIScrollViewLayoutObserver> _weakLayoutObserver;

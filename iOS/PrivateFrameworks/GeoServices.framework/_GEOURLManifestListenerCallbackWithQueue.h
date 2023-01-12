@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/_GEOURLManifestListenerCallback-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue, OS_voucher;
 
 __attribute__((visibility("hidden")))
-@interface _GEOURLManifestListenerCallbackWithQueue : NSObject <_GEOURLManifestListenerCallback>
+@interface _GEOURLManifestListenerCallbackWithQueue : NSObject
 {
     CDUnknownBlockType _handler;
     NSObject<OS_dispatch_queue> *_queue;

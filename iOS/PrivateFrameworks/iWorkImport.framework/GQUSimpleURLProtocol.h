@@ -6,7 +6,6 @@
 
 #import <Foundation/NSURLProtocol.h>
 
-__attribute__((visibility("hidden")))
 @interface GQUSimpleURLProtocol : NSURLProtocol
 {
 }

@@ -10,6 +10,7 @@
 @protocol MTLTexture;
 
 @protocol MTLBuffer <MTLResource>
+@property(readonly) unsigned long long gpuAddress;
 @property(readonly) unsigned long long length;
 - (void)removeAllDebugMarkers;
 - (void)addDebugMarker:(NSString *)arg1 range:(struct _NSRange)arg2;

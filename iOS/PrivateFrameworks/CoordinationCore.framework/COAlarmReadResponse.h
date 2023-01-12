@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "COMeshResponse.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface COAlarmReadResponse
+@interface COAlarmReadResponse : COMeshResponse
 {
     _Bool _filtered;
     NSArray *_alarms;

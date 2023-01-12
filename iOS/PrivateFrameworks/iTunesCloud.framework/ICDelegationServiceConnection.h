@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/ICDelegationServicePairingSessionDelegate-Protocol.h>
-#import <iTunesCloud/MSVMessageParserDelegate-Protocol.h>
-
 @class ICDelegationServicePairingSession, ICDelegationServiceSecuritySettings, MSVMessageParser, MSVStreamReader, MSVStreamWriter, NSMutableDictionary, NSString;
 @protocol ICDelegationServiceConnectionDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface ICDelegationServiceConnection : NSObject <ICDelegationServicePairingSessionDelegate, MSVMessageParserDelegate>
+@interface ICDelegationServiceConnection : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;

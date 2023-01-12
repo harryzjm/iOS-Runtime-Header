@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-#import <TSCharts/TSCH3DObjectStateResource-Protocol.h>
-
 @class NSString, TSCH3DDataBuffer;
 
-@interface TSCH3DResource : NSObject <NSCopying, TSCH3DObjectStateResource>
+@interface TSCH3DResource : NSObject
 {
     int _caching;
     TSCH3DDataBuffer *_cache;

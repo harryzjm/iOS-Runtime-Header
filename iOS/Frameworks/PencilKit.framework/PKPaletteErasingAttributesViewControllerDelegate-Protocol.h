@@ -9,6 +9,7 @@
 @class PKPaletteErasingAttributesViewController;
 
 @protocol PKPaletteErasingAttributesViewControllerDelegate <NSObject>
+- (void)erasingAttributesViewControllerDidChangeInkThickness:(PKPaletteErasingAttributesViewController *)arg1;
 - (void)erasingAttributesViewControllerDidChangeErasingType:(PKPaletteErasingAttributesViewController *)arg1;
 @end
 

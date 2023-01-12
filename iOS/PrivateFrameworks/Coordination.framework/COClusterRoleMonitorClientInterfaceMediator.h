@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <Coordination/COClusterRoleMonitorClientInterface-Protocol.h>
-
 @class COClusterRoleMonitor, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COClusterRoleMonitorClientInterfaceMediator : NSObject <COClusterRoleMonitorClientInterface>
+@interface COClusterRoleMonitorClientInterfaceMediator : NSObject
 {
     COClusterRoleMonitor *_monitor;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak COClusterRoleMonitor *monitor; // @synthesize monitor=_monitor;
+- (void)snapshotOfCluster:(id)arg1 didChangeTo:(id)arg2;
+- (void)membersWithRole:(id)arg1 inCluster:(id)arg2 didChangeTo:(id)arg3;
 - (void)roleOfMember:(id)arg1 inCluster:(id)arg2 didChangeTo:(id)arg3;
 - (id)initWithClusterRoleMonitor:(id)arg1;
 

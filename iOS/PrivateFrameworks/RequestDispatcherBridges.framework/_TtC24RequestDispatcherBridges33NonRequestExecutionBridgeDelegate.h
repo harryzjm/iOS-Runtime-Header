@@ -11,6 +11,7 @@
 @interface _TtC24RequestDispatcherBridges33NonRequestExecutionBridgeDelegate : _TtCs12_SwiftObject
 {
     MISSING_TYPE *executionOutputSubmitter;
+    MISSING_TYPE *userId;
 }
 
 @end

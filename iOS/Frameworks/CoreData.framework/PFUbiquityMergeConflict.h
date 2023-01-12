@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSMergeConflict.h"
+
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface PFUbiquityMergeConflict
+@interface PFUbiquityMergeConflict : NSMergeConflict
 {
     NSDictionary *_ancestorSnapshot;
 }

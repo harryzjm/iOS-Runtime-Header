@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Security/OS_sec_experiment-Protocol.h>
-
 @class NSString, SecExperiment;
 
 __attribute__((visibility("hidden")))
-@interface SecExpConcrete_sec_experiment : NSObject <OS_sec_experiment>
+@interface SecExpConcrete_sec_experiment : NSObject
 {
     SecExperiment *innerExperiment;
     unsigned long long numRuns;

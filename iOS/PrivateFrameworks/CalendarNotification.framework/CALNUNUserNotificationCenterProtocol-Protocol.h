@@ -14,6 +14,7 @@
 - (NSDictionary *)notificationSettingsForTopics;
 - (UNNotificationSettings *)notificationSettings;
 - (void)setWantsNotificationResponsesDelivered;
+- (void)removeAllPendingNotificationRequests;
 - (void)removeAllDeliveredNotifications;
 - (void)removeDeliveredNotificationsWithIdentifiers:(NSArray *)arg1;
 - (NSArray *)deliveredNotifications;

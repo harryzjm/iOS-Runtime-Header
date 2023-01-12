@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSLayoutRule-Protocol.h>
-
 @class NSArray, NSLayoutRect, NSString;
 
-@interface NSStackInContainerRule : NSObject <NSLayoutRule>
+@interface NSStackInContainerRule : NSObject
 {
     NSArray *_stackedRects;
     NSLayoutRect *_containingRect;

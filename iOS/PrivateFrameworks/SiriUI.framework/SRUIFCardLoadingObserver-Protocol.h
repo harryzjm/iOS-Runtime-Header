@@ -6,9 +6,12 @@
 
 #import <SiriUI/NSObject-Protocol.h>
 
-@class SACardSnippet, SRUIFCardLoadingMonitor;
+@class SACardSnippet, SAUIVisualResponseSnippet, SRUIFCardLoadingMonitor;
 
 @protocol SRUIFCardLoadingObserver <NSObject>
+
+@optional
+- (void)cardLoadingMonitor:(SRUIFCardLoadingMonitor *)arg1 didReceiveVisualResponseSnippet:(SAUIVisualResponseSnippet *)arg2;
 - (void)cardLoadingMonitor:(SRUIFCardLoadingMonitor *)arg1 didReceiveCardSnippet:(SACardSnippet *)arg2;
 @end
 

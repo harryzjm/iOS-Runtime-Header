@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface CKDDatabaseOperation
+#import "CKDOperation.h"
+
+@interface CKDDatabaseOperation : CKDOperation
 {
     long long _databaseScope;
 }
@@ -14,12 +16,12 @@
 - (id)analyticsPayload;
 - (id)CKStatusReportProperties;
 - (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 spawnQueue:(id)arg3 container:(id)arg4 operationConfigurationBlock:(CDUnknownBlockType)arg5;
-- (id)flowControlKey;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 - (void)setPCSData:(id)arg1 forFetchedShareID:(id)arg2;
 - (void)setPCSData:(id)arg1 forFetchedZoneID:(id)arg2;
 - (void)setPCSData:(id)arg1 forFetchedRecordID:(id)arg2;
+- (void)_encryptMergeableDeltas:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

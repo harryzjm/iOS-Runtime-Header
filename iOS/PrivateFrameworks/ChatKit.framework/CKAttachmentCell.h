@@ -6,14 +6,11 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <ChatKit/CKAnimationTimerObserver-Protocol.h>
-#import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
-
 @class CKAnimatedImage, CKAttachmentItem, NSArray, NSObject, NSString, UIImage, UIImageView, UITapGestureRecognizer;
 @protocol CKAttachmentCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKAttachmentCell : UICollectionViewCell <CKAnimationTimerObserver, UIGestureRecognizerDelegate>
+@interface CKAttachmentCell : UICollectionViewCell
 {
     _Bool _editing;
     _Bool _isIrisAsset;

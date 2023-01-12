@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNContactListStyle-Protocol.h>
-
 @class UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface CNContactListStyleDefautProvider : NSObject <CNContactListStyle>
+@interface CNContactListStyleDefautProvider : NSObject
 {
 }
 
@@ -39,7 +37,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIColor *headerBackgroundColor;
 @property(readonly, nonatomic) _Bool cellIsVibrant;
 @property(readonly, nonatomic) _Bool cellIsOpaque;
-@property(readonly, nonatomic) struct UIEdgeInsets cellSeparatorInset;
 @property(readonly, nonatomic) UIFont *cellNameTextEmphasisedFont;
 @property(readonly, nonatomic) UIFont *cellNameTextFont;
 @property(readonly, nonatomic) UIColor *cellBlueSelectionSecondaryTextColor;

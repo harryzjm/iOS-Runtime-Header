@@ -15,6 +15,8 @@
     MISSING_TYPE *headlineService;
     MISSING_TYPE *articleRecirculationConfigFactory;
     MISSING_TYPE *articleProviderService;
+    MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *readingList;
     MISSING_TYPE *historyService;
     MISSING_TYPE *endOfArticleQuotaSatisfierFactory;
     MISSING_TYPE *personalizationService;

@@ -18,6 +18,7 @@
 - (_Bool)dnds_hasSettingsUpdatesEntitlementForClientIdentifier:(id)arg1;
 - (_Bool)dnds_hasSettingsModificationEntitlementForClientIdentifier:(id)arg1;
 - (_Bool)dnds_hasSettingsRequestEntitlementForClientIdentifier:(id)arg1;
+- (_Bool)dnds_hasAuxiliaryStateModificationEntitlementForClientIdentifier:(id)arg1;
 - (_Bool)dnds_hasStateUpdatesEntitlementForClientIdentifier:(id)arg1;
 - (_Bool)dnds_hasStateRequestEntitlementForClientIdentifier:(id)arg1;
 - (_Bool)dnds_hasUserRequestedModeAssertionEntitlementForClientIdentifier:(id)arg1;

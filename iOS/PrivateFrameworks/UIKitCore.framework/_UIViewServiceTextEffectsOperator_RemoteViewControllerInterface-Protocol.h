@@ -7,9 +7,10 @@
 #import <UIKitCore/_UIViewServiceDeputy_UIViewServiceInterface-Protocol.h>
 #import <UIKitCore/_UIViewServiceUIBehaviorInterface-Protocol.h>
 
-@class NSArray;
+@class BKSHIDEventAuthenticationMessage, NSArray;
 
 @protocol _UIViewServiceTextEffectsOperator_RemoteViewControllerInterface <_UIViewServiceDeputy_UIViewServiceInterface, _UIViewServiceUIBehaviorInterface>
+- (void)__hostDidReceiveGestureDirection:(long long)arg1 authenticationMessage:(BKSHIDEventAuthenticationMessage *)arg2;
 - (void)__hostViewWillDisappear:(_Bool)arg1;
 - (void)__hostViewWillAppear:(_Bool)arg1;
 - (void)__hostDidEnterBackground;

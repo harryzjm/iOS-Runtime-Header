@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI17VUIViewControllerCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI27LibraryPromptViewController
+@interface _TtC8VideosUI27LibraryPromptViewController : _$s8VideosUI17VUIViewControllerCN
 {
     MISSING_TYPE *$__lazy_storage_$_alertView;
 }

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemon/NSObject-Protocol.h>
+
 @class HMDUser, NSArray;
 
-@protocol HMDHomePresenceCheck
+@protocol HMDHomePresenceCheck <NSObject>
 - (_Bool)isAnyUserAtHome;
 - (_Bool)isNoUserAtHome;
 - (_Bool)areUsersNotAtHome:(NSArray *)arg1;

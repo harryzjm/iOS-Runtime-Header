@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/TSUReadChannel-Protocol.h>
-
 @class NSArray, NSError, NSString;
 @protocol OS_dispatch_data, OS_dispatch_queue, TSUReadChannel, TSUStreamReadChannel;
 
 __attribute__((visibility("hidden")))
-@interface TSUBufferedReadChannel : NSObject <TSUReadChannel>
+@interface TSUBufferedReadChannel : NSObject
 {
     NSObject<OS_dispatch_queue> *_readQueue;
     id <TSUReadChannel> _sourceReadChannel;

@@ -10,6 +10,7 @@
 
 @interface WebBookmark (SafariServicesExtras)
 + (void)_sf_webBookmarksFromDropSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (unsigned long long)_sf_operationForDropSession:(id)arg1 destinationSubtype:(long long)arg2;
 + (unsigned long long)_sf_operationForDropSession:(id)arg1;
 - (id)_sf_contextMenuUsingCollection:(id)arg1 tabGroupProvider:(id)arg2 withUserInfo:(id)arg3 handler:(id)arg4;
 - (id)_sf_contextMenuUsingCollection:(id)arg1 withUserInfo:(id)arg2 handler:(id)arg3;

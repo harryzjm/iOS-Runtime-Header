@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsFeed/FCHeadlineMetadata-Protocol.h>
-
 @class MISSING_TYPE, NSDate, NSString;
 
-@interface _TtC8NewsFeedP33_9D5A6E1FF31637D5C463DABCD297298D16HeadlineMetadata : NSObject <FCHeadlineMetadata>
+@interface _TtC8NewsFeedP33_9D5A6E1FF31637D5C463DABCD297298D16HeadlineMetadata : NSObject
 {
     MISSING_TYPE *title;
     MISSING_TYPE *displayDate;

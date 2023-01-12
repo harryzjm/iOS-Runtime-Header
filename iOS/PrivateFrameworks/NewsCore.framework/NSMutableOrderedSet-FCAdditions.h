@@ -6,9 +6,7 @@
 
 #import <Foundation/NSMutableOrderedSet.h>
 
-#import <NewsCore/FCOrderedMutableCollectionAdditions-Protocol.h>
-
-@interface NSMutableOrderedSet (FCAdditions) <FCOrderedMutableCollectionAdditions>
+@interface NSMutableOrderedSet (FCAdditions)
 - (void)fc_transformWithBlock:(CDUnknownBlockType)arg1;
 - (void)fc_insertObjects:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)fc_removeAndReturnObjectsPassingTest:(CDUnknownBlockType)arg1;

@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol HDSPIDSMessage <HKSPDictionarySerializable>
+@property(readonly, nonatomic) unsigned long long destinations;
 @property(readonly, copy, nonatomic) NSString *identifier;
 @end
 

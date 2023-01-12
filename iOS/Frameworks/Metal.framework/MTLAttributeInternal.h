@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLAttribute.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MTLAttributeInternal
+@interface MTLAttributeInternal : MTLAttribute
 {
     unsigned char _flags;
     NSString *_name;

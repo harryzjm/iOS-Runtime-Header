@@ -6,11 +6,9 @@
 
 #import <SearchFoundation/SFCard.h>
 
-#import <Cards/CRCard-Protocol.h>
-
 @class NSArray, NSSet, NSString;
 
-@interface SFCard (CRCard) <CRCard>
+@interface SFCard (CRCard)
 + (id)_interactionsByIntentDataHashes;
 - (id)_interactionDataKey;
 - (id)underlyingInteraction;

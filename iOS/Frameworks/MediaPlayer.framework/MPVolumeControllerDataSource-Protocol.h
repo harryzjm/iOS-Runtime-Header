@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) _Bool volumeWarningEnabled;
 @property(nonatomic, getter=isMuted) _Bool muted;
 @property(nonatomic) float volume;
+@property(readonly, nonatomic) unsigned int volumeControlCapabilities;
 @property(readonly, nonatomic, getter=isVolumeControlAvailable) _Bool volumeControlAvailable;
 @property(readonly, copy, nonatomic) NSString *volumeControlLabel;
 @property(readonly, nonatomic) _Bool applicationShouldOverrideHardwareVolumeBehavior;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IMFoundation/IMPerfProfilerBehavior-Protocol.h>
-
 @class NSString;
 
-@interface IMPerfProfilerDefaultBehavior : NSObject <IMPerfProfilerBehavior>
+@interface IMPerfProfilerDefaultBehavior : NSObject
 {
 }
 

@@ -10,7 +10,7 @@
 
 @protocol MOVStreamPostProcessor <NSObject>
 @property(nonatomic) unsigned int originalPixelFormat;
-@property unsigned long long exactBytesPerRow;
+@property(retain) id exactBytesPerRow;
 @property(readonly) unsigned int processedPixelFormat;
 @property _Bool removePadding;
 - (struct __CVBuffer *)processedPixelBufferFrom:(struct __CVBuffer *)arg1 metadata:(NSDictionary *)arg2 error:(id *)arg3;

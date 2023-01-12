@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary, NSSet;
+#import "CKDURLRequest.h"
 
-@interface CKDRecordResolveTokenURLRequest
+@class CKDProtocolTranslator, NSArray, NSMutableDictionary, NSSet;
+
+@interface CKDRecordResolveTokenURLRequest : CKDURLRequest
 {
     _Bool _shouldFetchRootRecord;
     NSSet *_rootRecordDesiredKeySet;
     CDUnknownBlockType _tokenResolveBlock;
     NSArray *_lookupInfos;
     NSMutableDictionary *_lookupInfosByRequestID;
+    CKDProtocolTranslator *_privateDBTranslator;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDProtocolTranslator *privateDBTranslator; // @synthesize privateDBTranslator=_privateDBTranslator;
 @property(retain, nonatomic) NSMutableDictionary *lookupInfosByRequestID; // @synthesize lookupInfosByRequestID=_lookupInfosByRequestID;
 @property(retain, nonatomic) NSArray *lookupInfos; // @synthesize lookupInfos=_lookupInfos;
 @property(copy, nonatomic) CDUnknownBlockType tokenResolveBlock; // @synthesize tokenResolveBlock=_tokenResolveBlock;

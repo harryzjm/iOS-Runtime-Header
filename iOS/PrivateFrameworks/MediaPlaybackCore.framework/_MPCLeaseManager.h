@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
-
 @class MPCPlaybackEngine, NSMutableDictionary, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCLeaseManager : NSObject <MPCPlaybackEngineEventObserving>
+@interface _MPCLeaseManager : NSObject
 {
     MPCPlaybackEngine *_playbackEngine;
     NSMutableSet *_leaseEndIgnoreReasons;
@@ -25,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateStateForPlaybackPrevention;
 - (void)_itemShouldPreventPlaybackDidChangeNotification:(id)arg1;
 - (void)engine:(id)arg1 willChangeToItem:(id)arg2 fromItem:(id)arg3;
-- (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
 - (void)setCanStealLeaseIfNeeded;
 - (void)prepareForCurrentItemPlayback;
 - (void)endIgnoringLeaseEndEventsForReason:(id)arg1;

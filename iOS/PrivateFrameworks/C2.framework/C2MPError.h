@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <C2/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface C2MPError : PBCodable <NSCopying>
+@interface C2MPError : PBCodable
 {
     long long _errorCode;
     NSString *_errorDescription;

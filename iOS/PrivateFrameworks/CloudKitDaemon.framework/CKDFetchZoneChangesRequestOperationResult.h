@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+@class NSData, NSSet;
 
 @interface CKDFetchZoneChangesRequestOperationResult : NSObject
 {
@@ -14,9 +14,11 @@
     NSData *_resultServerChangeTokenData;
     NSData *_resultClientChangeTokenData;
     long long _status;
+    NSSet *_syncObligationZoneIDs;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSSet *syncObligationZoneIDs; // @synthesize syncObligationZoneIDs=_syncObligationZoneIDs;
 @property(nonatomic) _Bool hasPendingArchivedRecords; // @synthesize hasPendingArchivedRecords=_hasPendingArchivedRecords;
 @property(nonatomic) long long status; // @synthesize status=_status;
 @property(retain, nonatomic) NSData *resultClientChangeTokenData; // @synthesize resultClientChangeTokenData=_resultClientChangeTokenData;

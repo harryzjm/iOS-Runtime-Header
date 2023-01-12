@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)displayContents;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool forceImageKeycap; // @synthesize forceImageKeycap=_forceImageKeycap;
 @property(retain, nonatomic) NSString *bundlePathOverride; // @synthesize bundlePathOverride=_bundlePathOverride;
 @property(nonatomic) _Bool flipImageHorizontally; // @synthesize flipImageHorizontally=_flipImageHorizontally;
@@ -43,7 +44,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *displayStringImage; // @synthesize displayStringImage=_displayStringImage;
 @property(retain, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 - (id)description;
-- (void)dealloc;
 
 @end
 

@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class APClientInfo, APContext, NSArray, NSUUID;
+@class APClientInfo, APContext, NSArray, NSDictionary, NSUUID;
 
 @protocol APPCControllerDaemonInterface
+- (void)preWarm:(NSDictionary *)arg1;
 - (void)proxyURLWithCompletionHandler:(void (^)(NSString *))arg1;
 - (void)finishedWithRequestsForRequester:(NSUUID *)arg1;
 - (void)requestPromotedContentOfTypes:(NSArray *)arg1 forRequester:(NSUUID *)arg2 forContext:(APContext *)arg3 withClientInfo:(APClientInfo *)arg4 completionHandler:(void (^)(void))arg5;

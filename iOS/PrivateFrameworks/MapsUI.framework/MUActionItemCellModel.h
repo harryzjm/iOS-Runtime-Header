@@ -6,26 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsUI/MUDynamicButtonCellModel-Protocol.h>
-
-@class MKPlaceCardActionItem, NSString;
+@class MKPlaceCardActionItem, NSString, UIMenu;
 @protocol MUDynamicButtonCellModelChangeDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUActionItemCellModel : NSObject <MUDynamicButtonCellModel>
+@interface MUActionItemCellModel : NSObject
 {
     MKPlaceCardActionItem *_actionItem;
     CDUnknownBlockType _actionBlock;
     id <MUDynamicButtonCellModelChangeDelegate> _changeDelegate;
+    UIMenu *_menu;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) UIMenu *menu; // @synthesize menu=_menu;
 @property(nonatomic) __weak id <MUDynamicButtonCellModelChangeDelegate> changeDelegate; // @synthesize changeDelegate=_changeDelegate;
 @property(copy, nonatomic) CDUnknownBlockType actionBlock; // @synthesize actionBlock=_actionBlock;
 - (void)dealloc;
 - (id)_resolvedActionItem;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_registerObserver;
+@property(readonly, nonatomic) long long actionStyle;
+@property(readonly, nonatomic, getter=isEnabled) _Bool enabled;
+- (id)accessibilityIdentifierForAction;
 - (void)loadSubtitleWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *titleString;
 @property(readonly, nonatomic) NSString *symbolName;

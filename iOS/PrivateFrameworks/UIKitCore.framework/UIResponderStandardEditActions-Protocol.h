@@ -9,8 +9,17 @@
 @protocol UIResponderStandardEditActions <NSObject>
 
 @optional
+- (void)export:(id)arg1;
+- (void)move:(id)arg1;
+- (void)duplicate:(id)arg1;
+- (void)rename:(id)arg1;
 - (void)print:(id)arg1;
 - (void)updateTextAttributesWithConversionHandler:(NSDictionary * (^)(NSDictionary *))arg1;
+- (void)useSelectionForFind:(id)arg1;
+- (void)findPrevious:(id)arg1;
+- (void)findNext:(id)arg1;
+- (void)findAndReplace:(id)arg1;
+- (void)find:(id)arg1;
 - (void)decreaseSize:(id)arg1;
 - (void)increaseSize:(id)arg1;
 - (void)toggleUnderline:(id)arg1;

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/MFObject-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface MFRegion : NSObject <MFObject>
+@interface MFRegion : NSObject
 {
 }
 

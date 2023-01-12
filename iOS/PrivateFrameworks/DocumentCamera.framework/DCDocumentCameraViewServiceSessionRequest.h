@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DocumentCamera/NSSecureCoding-Protocol.h>
-
 @class DCSandboxExtension, NSString;
 
 __attribute__((visibility("hidden")))
-@interface DCDocumentCameraViewServiceSessionRequest : NSObject <NSSecureCoding>
+@interface DCDocumentCameraViewServiceSessionRequest : NSObject
 {
     NSString *_appName;
     DCSandboxExtension *_cachesDirectorySandboxExtension;

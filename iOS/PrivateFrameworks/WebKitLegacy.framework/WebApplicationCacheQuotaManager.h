@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKitLegacy/WebQuotaManager-Protocol.h>
-
 @class WebSecurityOrigin;
 
 __attribute__((visibility("hidden")))
-@interface WebApplicationCacheQuotaManager : NSObject <WebQuotaManager>
+@interface WebApplicationCacheQuotaManager : NSObject
 {
     WebSecurityOrigin *_origin;
 }

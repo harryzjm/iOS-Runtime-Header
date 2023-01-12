@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray, _GCHapticClientProxy;
-@protocol NSCopying><NSObject><NSSecureCoding, _GCDriverClientInterface, _GCLogicalDevice;
+@protocol NSCopying><NSObject><NSSecureCoding, _GCDriverClientHapticInterface, _GCLogicalDevice;
 
 __attribute__((visibility("hidden")))
 @interface _GCHapticLogicalDevice : NSObject
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_hapticPlayers;
     float _prevSharpness[4];
     float _prevIntensity[4];
-    id <_GCDriverClientInterface> _driver;
+    id <_GCDriverClientHapticInterface> _driver;
     _GCHapticClientProxy *_clientConnection;
 }
 

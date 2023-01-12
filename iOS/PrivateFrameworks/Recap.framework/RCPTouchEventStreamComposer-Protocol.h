@@ -33,6 +33,7 @@
 - (void)liftUp:(struct CGPoint)arg1;
 - (void)liftUp:(struct CGPoint)arg1 touchCount:(unsigned long long)arg2;
 - (void)liftUpAtPoints:(struct CGPoint *)arg1 touchCount:(unsigned long long)arg2;
+- (void)liftUpAtAllActivePointsWithEventType:(long long)arg1;
 - (void)liftUpAtAllActivePoints;
 - (void)liftUpActivePointsByIndex:(NSArray *)arg1;
 - (void)edgeOrbSwipe:(struct CGPoint)arg1 withEndLocation:(struct CGPoint)arg2 withDuration:(double)arg3;

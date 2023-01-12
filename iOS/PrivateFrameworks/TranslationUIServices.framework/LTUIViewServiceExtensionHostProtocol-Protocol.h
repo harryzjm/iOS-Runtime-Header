@@ -10,7 +10,9 @@
 
 @protocol LTUIViewServiceExtensionHostProtocol <NSObject>
 - (void)finishWithTranslation:(NSAttributedString *)arg1;
+- (void)remoteIsReady;
 - (void)expandSheet;
+- (void)confirmUserConsent;
 - (void)dismiss;
 @end
 

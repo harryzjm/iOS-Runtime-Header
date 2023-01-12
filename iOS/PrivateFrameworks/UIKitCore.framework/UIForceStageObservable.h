@@ -6,12 +6,10 @@
 
 #import <Foundation/NSObservationSource.h>
 
-#import <UIKitCore/NSObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIForceStageObservable : NSObservationSource <NSObserver>
+@interface UIForceStageObservable : NSObservationSource
 {
 }
 

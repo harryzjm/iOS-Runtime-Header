@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDynamicItem-Protocol.h>
-
 @class NSString, UIBezierPath;
 
 __attribute__((visibility("hidden")))
-@interface _UIDynamicTransformer : NSObject <UIDynamicItem>
+@interface _UIDynamicTransformer : NSObject
 {
     struct CGPoint _center;
     CDUnknownBlockType _action;

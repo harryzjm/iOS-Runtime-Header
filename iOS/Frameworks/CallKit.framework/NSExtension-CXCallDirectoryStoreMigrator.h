@@ -6,11 +6,9 @@
 
 #import <Foundation/NSExtension.h>
 
-#import <CallKit/CXCallDirectoryStoreMigratorExtension-Protocol.h>
-
 @class LSPlugInKitProxy, NSString, NSURL;
 
-@interface NSExtension (CXCallDirectoryStoreMigrator) <CXCallDirectoryStoreMigratorExtension>
+@interface NSExtension (CXCallDirectoryStoreMigrator)
 @property(readonly, nonatomic, getter=isEnabledViaPlugInKit) _Bool enabledViaPlugInKit;
 @property(readonly, nonatomic) LSPlugInKitProxy *plugInKitProxy;
 @property(readonly, nonatomic) NSURL *containingAppURL;

@@ -9,7 +9,6 @@
 @class GQHTableState, GQHXML, GQSDocument;
 @protocol GQHContext;
 
-__attribute__((visibility("hidden")))
 @interface GQHState : NSObject
 {
     GQHXML *mHtmlDoc;

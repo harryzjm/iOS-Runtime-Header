@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSCodePayload-Protocol.h>
-
 @class NFCNDEFMessage, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSNFCCodePayload : NSObject <BCSCodePayload>
+@interface BCSNFCCodePayload : NSObject
 {
     NFCNDEFMessage *_nfcPayload;
 }

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIColorWellVisualStyle.h"
+
 @class UIButton, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIColorWelliOSVisualStyle
+@interface _UIColorWelliOSVisualStyle : _UIColorWellVisualStyle
 {
     UIButton *_button;
     UIView *_gradientView;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUOutputStream-Protocol.h>
-
 @class NSString;
 @protocol SFUOutputStream;
 
 __attribute__((visibility("hidden")))
-@interface OISFUOffsetOutputStream : NSObject <SFUOutputStream>
+@interface OISFUOffsetOutputStream : NSObject
 {
     id <SFUOutputStream> mOutputStream;
     long long mInitialOffset;

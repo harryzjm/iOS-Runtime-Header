@@ -7,6 +7,8 @@
 #import <HealthDaemon/HDFeatureAvailabilityManager.h>
 
 @interface HDFeatureAvailabilityManager (HDMenstrualCycles)
++ (id)hdmc_deviationsAvailabilityManagerWithProfile:(id)arg1;
++ (id)hdmc_wristTemperatureInputAvailabilityManagerWithProfile:(id)arg1;
 + (id)hdmc_heartRateInputAvailabilityManagerWithProfile:(id)arg1;
 + (id)hdmc_menstrualCyclesAvailabilityManagerWithProfile:(id)arg1;
 @end

@@ -9,5 +9,8 @@
 @protocol UISDrawing <NSObject>
 @property(readonly, nonatomic) struct CGSize drawingSize;
 - (void)drawInContext:(struct CGContext *)arg1 atPoint:(struct CGPoint)arg2;
+
+@optional
+@property(readonly, nonatomic) struct CGRect alignmentRect;
 @end
 

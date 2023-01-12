@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSSecureCoding-Protocol.h>
-
-@class NSData, NSDictionary, NSURLRequest, NSURLResponse, NSUUID, __CFN_ConnectionMetrics, __CFN_SessionMetrics, __CFN_TaskMetrics;
+@class NSData, NSDictionary, NSURLRequest, NSURLResponse, NSUUID, __CFN_ConnectionMetrics, __CFN_TaskMetrics;
 @protocol OS_nw_data_transfer_report;
 
-@interface __CFN_TransactionMetrics : NSObject <NSSecureCoding>
+@interface __CFN_TransactionMetrics : NSObject
 {
     _Bool _scheduledOriginLoad;
     _Bool _firstOnConnection;
@@ -20,7 +18,6 @@
     _Bool _APSRelaySucceeded;
     int _pidForHAR;
     __CFN_TaskMetrics *_taskMetrics;
-    __CFN_SessionMetrics *_sessionMetrics;
     long long _lastResponseHeaderSize;
     long long _lastResponseBodySize;
     long long _lastResponseBodyTransferSize;
@@ -63,7 +60,7 @@
 @property(readonly, nonatomic) long long _daemon_responseHeaderSize;
 @property(readonly, nonatomic) long long _daemon_requestBodyTransferSize;
 @property(readonly, nonatomic) long long _daemon_requestHeaderSize;
-@property(readonly, nonatomic) __CFN_ConnectionMetrics *_daemon_connectionMetrics;
+@property(readonly) __CFN_ConnectionMetrics *_daemon_connectionMetrics;
 
 @end
 

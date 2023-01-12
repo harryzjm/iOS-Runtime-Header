@@ -7,7 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (ADError)
-- (void)Log:(id)arg1;
-- (id)initWithCode:(long long)arg1 andDescription:(id)arg2;
+- (void)AD_Log:(id)arg1;
+- (id)initWithAdCode:(long long)arg1 andDescription:(id)arg2;
 @end
 

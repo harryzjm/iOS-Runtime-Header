@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUICellLayoutParentView-Protocol.h>
+#import "SKUICollectionViewCell.h"
 
 @class NSString, SKUIEditorialCellLayout;
 
 __attribute__((visibility("hidden")))
-@interface SKUIEditorialCollectionViewCell <SKUICellLayoutParentView>
+@interface SKUIEditorialCollectionViewCell : SKUICollectionViewCell
 {
     SKUIEditorialCellLayout *_layout;
     _Bool _layoutNeedsLayout;

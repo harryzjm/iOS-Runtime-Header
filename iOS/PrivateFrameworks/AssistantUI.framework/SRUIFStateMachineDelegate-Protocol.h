@@ -12,6 +12,7 @@
 - (void)stateMachine:(SRUIFStateMachine *)arg1 didTransitionFromState:(long long)arg2 forEvent:(long long)arg3;
 
 @optional
+- (void)stateMachine:(SRUIFStateMachine *)arg1 didTransitionFromState:(long long)arg2 forEvent:(long long)arg3 eventTimeStamp:(double)arg4;
 - (NSString *)stateMachine:(SRUIFStateMachine *)arg1 descriptionForEvent:(long long)arg2;
 @end
 

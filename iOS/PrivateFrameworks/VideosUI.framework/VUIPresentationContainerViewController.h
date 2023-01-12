@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIPresentationContainerViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface VUIPresentationContainerViewController : UIViewController
 {
 }
 

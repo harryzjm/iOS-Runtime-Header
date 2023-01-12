@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPFetcherURLResponse-Protocol.h>
-
 @class LPImage, NSString;
 
 __attribute__((visibility("hidden")))
-@interface LPFetcherImageResponse <LPFetcherURLResponse>
+@interface LPFetcherImageResponse
 {
     LPImage *_image;
 }

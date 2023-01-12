@@ -6,14 +6,11 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-#import <MediaPlaybackCore/MPCMediaRemoteMiddlewareModelObjectsProviding-Protocol.h>
-#import <MediaPlaybackCore/MPMiddlewareAutomaticDependencyOperation-Protocol.h>
-
 @class MPCFuture, MPCMediaRemoteMiddleware, MPRequest, MPSectionedCollection, NSArray, NSError, NSIndexPath, NSMapTable, NSString;
 @protocol MPCMediaRemoteMiddlewareMetadataOperationConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface MPCMediaRemoteMiddlewareMetadataOperation : MPAsyncOperation <MPCMediaRemoteMiddlewareModelObjectsProviding, MPMiddlewareAutomaticDependencyOperation>
+@interface MPCMediaRemoteMiddlewareMetadataOperation : MPAsyncOperation
 {
     CDUnknownBlockType _invalidationHandler;
     NSArray *_invalidationObservers;
@@ -36,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 - (id)_itemGenericObjectPropertySetForContentItem:(id)arg1 propertySet:(id)arg2;
 - (id)_genericObjectPropertySetForContentItem:(id)arg1 preferredRelationships:(id)arg2 propertySet:(id)arg3;
-- (struct _MSVSignedRange)rangeFromTracklistRange:(CDStruct_339ad95e)arg1;
+- (struct _MSVSignedRange)rangeFromTracklistRange:(CDStruct_912cb5d2)arg1;
 @property(readonly, nonatomic) NSArray *outputProtocols;
 @property(readonly, nonatomic) NSArray *inputProtocols;
 - (id)timeoutDescription;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface VCCaptionsTranscriptionBlob : PBCodable <NSCopying>
+@interface VCCaptionsTranscriptionBlob : PBCodable
 {
     NSMutableArray *_segments;
     unsigned int _updateNumber;

@@ -6,15 +6,12 @@
 
 #import <RequestDispatcherBridges/NSObject-Protocol.h>
 
-@class CDMNLXRequestID, CDMNLXResponse, NSError, SIRINLURequestID, SIRINLUResponse;
+@class CDMNluRequestID, CDMNluResponse, NSError;
 
 @protocol CDMClientDelegate <NSObject>
 
 @optional
-- (void)processNLURequestErrorCallback:(NSError *)arg1;
-- (void)processNLURequestCallback:(SIRINLUResponse *)arg1;
-- (void)processNLURequestErrorCallback:(SIRINLURequestID *)arg1 error:(NSError *)arg2;
-- (void)processCDMNLXRequestCallback:(CDMNLXResponse *)arg1;
-- (void)processCDMNLXRequestErrorCallback:(CDMNLXRequestID *)arg1 error:(NSError *)arg2;
+- (void)processCDMNluRequestCallback:(CDMNluResponse *)arg1;
+- (void)processCDMNluRequestErrorCallback:(CDMNluRequestID *)arg1 error:(NSError *)arg2;
 @end
 

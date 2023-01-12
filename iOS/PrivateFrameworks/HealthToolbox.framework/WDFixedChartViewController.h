@@ -6,12 +6,10 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthToolbox/WDUserActivityResponder-Protocol.h>
-
 @class HKDataMetadataDetailSection, HKInteractiveChartViewController, HKValueRange, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WDFixedChartViewController : HKTableViewController <WDUserActivityResponder>
+@interface WDFixedChartViewController : HKTableViewController
 {
     HKValueRange *_fixedRange;
     HKInteractiveChartViewController *_chartController;

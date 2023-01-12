@@ -6,11 +6,13 @@
 
 #import <RemoteTextInput/NSObject-Protocol.h>
 
-@class RTITextOperations;
+@class RTIDocumentRequest, RTITextOperations;
 
 @protocol RTIInputSystemSessionResponseProtocol <NSObject>
 
 @optional
+- (oneway void)performDocumentRequest:(RTIDocumentRequest *)arg1 completion:(void (^)(RTIDocumentState *))arg2;
+- (oneway void)updateDefaultDocumentRequest:(RTIDocumentRequest *)arg1;
 - (oneway void)performTextOperations:(RTITextOperations *)arg1 resultHandler:(void (^)(unsigned long long))arg2;
 - (oneway void)performTextOperations:(RTITextOperations *)arg1;
 @end

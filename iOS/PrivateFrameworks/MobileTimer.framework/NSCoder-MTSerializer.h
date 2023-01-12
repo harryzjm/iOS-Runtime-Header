@@ -6,9 +6,7 @@
 
 #import <Foundation/NSCoder.h>
 
-#import <MobileTimer/MTSerializer-Protocol.h>
-
-@interface NSCoder (MTSerializer) <MTSerializer>
+@interface NSCoder (MTSerializer)
 @property(readonly, nonatomic) NSCoder *mtCoder;
 @property(readonly, nonatomic) unsigned long long mtType;
 @end

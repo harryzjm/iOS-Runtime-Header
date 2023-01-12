@@ -12,6 +12,6 @@
 @protocol SBIconListViewDraggingPolicyHandling <UIDropInteractionDelegate_Private>
 - (void)handleSpringLoadOnIconView:(SBIconView *)arg1;
 - (_Bool)allowsSpringLoadForSession:(id <UIDropSession>)arg1 onIconView:(SBIconView *)arg2;
-- (long long)dragPlacementForDropSession:(id <UIDropSession>)arg1 iconListView:(SBIconListView *)arg2 point:(struct CGPoint)arg3 icon:(SBIcon *)arg4 options:(unsigned long long)arg5;
+- (long long)dragHitRegionForDropSession:(id <UIDropSession>)arg1 iconListView:(SBIconListView *)arg2 point:(struct CGPoint)arg3 icon:(SBIcon *)arg4;
 @end
 

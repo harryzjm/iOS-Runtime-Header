@@ -6,11 +6,9 @@
 
 #import <CloudKit/CKOperationGroup.h>
 
-#import <NotesShared/ICLoggable-Protocol.h>
-
 @class NSString;
 
-@interface CKOperationGroup (IC) <ICLoggable>
+@interface CKOperationGroup (IC)
 - (id)ic_loggingIdentifier;
 - (id)ic_loggingValues;
 

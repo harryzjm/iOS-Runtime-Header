@@ -6,18 +6,23 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLQueue : PBCodable <NSCopying>
+@interface _ICLLQueue : PBCodable
 {
+    CDStruct_95bda58d _storefronts;
+    NSString *_currentRadioStationId;
+    int _demarkationPos;
     int _explicitSetting;
     NSMutableArray *_items;
     NSString *_queueId;
     int _revision;
-    CDStruct_aa73ff45 _has;
+    struct {
+        unsigned int demarkationPos:1;
+        unsigned int explicitSetting:1;
+        unsigned int revision:1;
+    } _has;
 }
 
 - (void).cxx_destruct;
@@ -28,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (void)dealloc;
 
 @end
 

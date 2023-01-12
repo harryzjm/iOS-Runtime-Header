@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQZArchiveInputStream-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQZArchiveFileInputStream : NSObject <GQZArchiveInputStream>
+@interface GQZArchiveFileInputStream : NSObject
 {
     struct __sFILE {
         char *_field1;

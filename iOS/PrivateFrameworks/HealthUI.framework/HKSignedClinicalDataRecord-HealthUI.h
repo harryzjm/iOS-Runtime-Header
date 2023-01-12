@@ -7,6 +7,8 @@
 #import <HealthKit/HKSignedClinicalDataRecord.h>
 
 @interface HKSignedClinicalDataRecord (HealthUI)
+- (id)expiredAttributedString;
+- (_Bool)isExpired;
 - (id)signatureStatusDisplayString;
 - (id)issuerDisplayStringWithSignatureStatusGlyph;
 - (id)sortDateTitle;

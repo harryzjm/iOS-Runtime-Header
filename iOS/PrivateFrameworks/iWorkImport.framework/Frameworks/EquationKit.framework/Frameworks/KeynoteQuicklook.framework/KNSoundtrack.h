@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
 @class NSArray;
 
-@interface KNSoundtrack : TSPObject <NSCopying>
+@interface KNSoundtrack : TSPObject
 {
     float _volume;
     long long _mode;

@@ -6,12 +6,13 @@
 
 #import <MobileSafari/NSObject-Protocol.h>
 
-@class NSArray, UITraitCollection;
+@class NSArray, UIFont, UITraitCollection;
 
 @protocol SFStartPageVisualStyleProviding <NSObject>
+@property(readonly, nonatomic) UIFont *sectionHeaderLargeTitleFont;
 @property(readonly, nonatomic) double sectionHeaderBottomGap;
 @property(readonly, nonatomic) double defaultRowSpacing;
-- (long long)numberOfColumnsForSectionItemType:(long long)arg1 sectionWidth:(double)arg2;
+- (long long)numberOfColumnsForSectionItemType:(long long)arg1 sectionWidth:(double)arg2 traitCollection:(UITraitCollection *)arg3;
 - (struct UIEdgeInsets)collectionViewContentInsetsWithNavigationBarPosition:(long long)arg1;
 - (struct NSDirectionalEdgeInsets)sectionContentInsetsWithViewLayoutMargins:(struct NSDirectionalEdgeInsets)arg1;
 - (double)rowSpacingForSectionItemType:(long long)arg1 containerSize:(struct CGSize)arg2;

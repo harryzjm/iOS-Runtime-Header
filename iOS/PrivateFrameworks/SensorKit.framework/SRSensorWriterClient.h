@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/SRSensorKitServiceClientWriting-Protocol.h>
-
 @class SRSensorWriter;
 
 __attribute__((visibility("hidden")))
-@interface SRSensorWriterClient : NSObject <SRSensorKitServiceClientWriting>
+@interface SRSensorWriterClient : NSObject
 {
     SRSensorWriter *_writer;
 }

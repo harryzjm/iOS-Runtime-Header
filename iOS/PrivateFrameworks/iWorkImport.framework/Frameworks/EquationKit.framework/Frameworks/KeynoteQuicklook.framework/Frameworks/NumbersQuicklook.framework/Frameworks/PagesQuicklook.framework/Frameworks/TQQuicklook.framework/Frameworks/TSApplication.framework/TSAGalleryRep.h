@@ -6,14 +6,10 @@
 
 #import <TSDrawables/TSDRep.h>
 
-#import <TSApplication/TSDImageDrawingDataSource-Protocol.h>
-#import <TSApplication/TSKChangeSourceObserver-Protocol.h>
-#import <TSApplication/TSWPContainerTextEditingRep-Protocol.h>
-
 @class NSObject, NSString, TSAGalleryLayout, TSDImageDrawingHelper, TSWPRep;
 @protocol TSDContainerInfo;
 
-@interface TSAGalleryRep : TSDRep <TSWPContainerTextEditingRep, TSDImageDrawingDataSource, TSKChangeSourceObserver>
+@interface TSAGalleryRep : TSDRep
 {
     TSDImageDrawingHelper *_drawingHelper;
     TSWPRep *_captionRep;

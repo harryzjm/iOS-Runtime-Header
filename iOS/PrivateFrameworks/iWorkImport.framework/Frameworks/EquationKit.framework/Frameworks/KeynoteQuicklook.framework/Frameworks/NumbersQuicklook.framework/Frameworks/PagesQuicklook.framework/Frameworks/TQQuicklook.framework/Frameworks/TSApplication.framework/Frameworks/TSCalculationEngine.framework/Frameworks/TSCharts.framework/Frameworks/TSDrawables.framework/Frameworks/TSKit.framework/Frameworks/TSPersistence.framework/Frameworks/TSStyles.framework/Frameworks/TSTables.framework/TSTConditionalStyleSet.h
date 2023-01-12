@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSPCopying-Protocol.h>
-
 @class NSArray, NSMutableArray;
 
-@interface TSTConditionalStyleSet : TSPObject <TSPCopying>
+@interface TSTConditionalStyleSet : TSPObject
 {
     NSMutableArray *_conditionalStyleSetRules;
 }

@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCTodayPrivateData-Protocol.h>
 
-@class FCBundleSubscription, NSArray, NSDictionary, NSNumber, NSSet;
+@class FCBundleSubscription, NSArray, NSDictionary, NSNumber, NSSet, NSString;
 @protocol FCDerivedPersonalizationData><NSCoding;
 
 @protocol FCMutableTodayPrivateData <FCTodayPrivateData>
@@ -18,6 +18,7 @@
 @property(copy, nonatomic) NSSet *purchasedTagIDs;
 @property(copy, nonatomic) NSArray *autoFavoriteTagIDs;
 @property(copy, nonatomic) NSSet *mutedTagIDs;
+@property(copy, nonatomic) NSString *localNewsTagID;
 @property(copy, nonatomic) id <FCDerivedPersonalizationData><NSCoding> derivedPersonalizationData;
 @end
 

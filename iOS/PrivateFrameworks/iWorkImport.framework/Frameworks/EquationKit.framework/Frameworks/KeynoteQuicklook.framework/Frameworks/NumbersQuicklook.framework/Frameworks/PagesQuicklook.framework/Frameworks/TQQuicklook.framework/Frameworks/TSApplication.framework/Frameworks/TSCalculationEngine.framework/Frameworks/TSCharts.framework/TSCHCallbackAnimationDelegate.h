@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/CAAnimationDelegate-Protocol.h>
-
 @class NSString;
 
-@interface TSCHCallbackAnimationDelegate : NSObject <CAAnimationDelegate>
+@interface TSCHCallbackAnimationDelegate : NSObject
 {
     id target;
     SEL selector;

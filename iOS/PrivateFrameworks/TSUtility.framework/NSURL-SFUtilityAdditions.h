@@ -6,11 +6,9 @@
 
 #import <Foundation/NSURL.h>
 
-#import <TSUtility/TSUDownloadItem-Protocol.h>
-
 @class NSString;
 
-@interface NSURL (SFUtilityAdditions) <TSUDownloadItem>
+@interface NSURL (SFUtilityAdditions)
 + (id)filePathURLWithEscapes:(id)arg1;
 + (id)relativeURLWithEscapes:(id)arg1;
 + (id)improperlyEscapedString:(id)arg1;

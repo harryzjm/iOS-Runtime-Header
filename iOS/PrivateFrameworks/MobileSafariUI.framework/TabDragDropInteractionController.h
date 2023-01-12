@@ -6,17 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/UIContextMenuInteractionDelegate-Protocol.h>
-#import <MobileSafariUI/UIDragInteractionDelegate-Protocol.h>
-#import <MobileSafariUI/UIDragInteractionDelegate_Private-Protocol.h>
-#import <MobileSafariUI/UIDropInteractionDelegate-Protocol.h>
-#import <MobileSafariUI/UIDropInteractionDelegate_Private-Protocol.h>
-
 @class NSMapTable, NSString, TabDocumentDropHandler;
 @protocol TabDocumentDragDropDataSource, UIDragSession;
 
 __attribute__((visibility("hidden")))
-@interface TabDragDropInteractionController : NSObject <UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, UIDragInteractionDelegate, UIDropInteractionDelegate, UIContextMenuInteractionDelegate>
+@interface TabDragDropInteractionController : NSObject
 {
     NSMapTable *_placeholderDocumentsForSessions;
     NSMapTable *_insertedTabsForDragItems;
@@ -32,9 +26,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak id <TabDocumentDragDropDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
-- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
-- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configuration:(id)arg2 dismissalPreviewForItemWithIdentifier:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 configuration:(id)arg2 highlightPreviewForItemWithIdentifier:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (void)_updatePreviewsForSession:(id)arg1 pinned:(_Bool)arg2;
 - (id)_autoscrollerForInteraction:(id)arg1;
 - (void)_transitionToDragState:(long long)arg1 fromDragState:(long long)arg2 forTabCollectionItemsInSession:(id)arg3 interaction:(id)arg4;
 - (id)_insertPlaceholderTabIfNeededForSession:(id)arg1 interaction:(id)arg2;
@@ -62,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)dropInteraction:(id)arg1 sessionDidExit:(id)arg2;
 - (_Bool)_tabViewIsFilteringTabs:(id)arg1;
 - (_Bool)_shouldMovePlaceholderItem:(id)arg1 overTargetItem:(id)arg2 withDropLocation:(struct CGPoint)arg3 interaction:(id)arg4;
+- (_Bool)_canOpenInCurrentTabForSession:(id)arg1 tabView:(id)arg2;
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (void)dropInteraction:(id)arg1 sessionDidEnter:(id)arg2;
 - (_Bool)dropInteraction:(id)arg1 canHandleSession:(id)arg2;

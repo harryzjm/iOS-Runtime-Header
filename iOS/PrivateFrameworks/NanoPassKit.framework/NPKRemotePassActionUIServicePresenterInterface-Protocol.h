@@ -6,11 +6,13 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSError, NSString, PKCurrencyAmount;
+@class NSDictionary, NSError, NSString, PKCurrencyAmount;
 
 @protocol NPKRemotePassActionUIServicePresenterInterface <NSObject>
-- (void)handleCompanionValueEntryDidCancelForRequestIdentifier:(NSString *)arg1;
-- (void)handleCompanionValueEntryDidFinishWithCurrencyAmount:(PKCurrencyAmount *)arg1 forRequestIdentifier:(NSString *)arg2;
+- (void)handleCompanionItemSelectionCancelledForRequestIdentifier:(NSString *)arg1;
+- (void)handleCompanionItemSelectionFinishedWithRenewalAmount:(PKCurrencyAmount *)arg1 serviceProviderData:(NSDictionary *)arg2 forRequestIdentifier:(NSString *)arg3;
+- (void)handleCompanionValueEntryCancelledForRequestIdentifier:(NSString *)arg1;
+- (void)handleCompanionValueEntryFinishedWithCurrencyAmount:(PKCurrencyAmount *)arg1 forRequestIdentifier:(NSString *)arg2;
 
 @optional
 - (void)deactivateWithError:(NSError *)arg1;

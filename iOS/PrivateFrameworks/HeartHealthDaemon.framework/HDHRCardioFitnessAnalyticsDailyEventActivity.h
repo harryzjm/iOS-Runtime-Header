@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HeartHealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
-#import <HeartHealthDaemon/HDPeriodicActivityDelegate-Protocol.h>
-
 @class HDAssertion, HDHRCardioFitnessAnalyticsDailyEventDataSource, HDPeriodicActivity, HDProfile, HKHRCardioFitnessAnalyticsManager, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HDHRCardioFitnessAnalyticsDailyEventActivity : NSObject <HDHealthDaemonReadyObserver, HDPeriodicActivityDelegate>
+@interface HDHRCardioFitnessAnalyticsDailyEventActivity : NSObject
 {
     HDAssertion *_preparedDatabaseAccessibilityAssertion;
     HDProfile *_profile;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewController.h"
+
 @class _UISearchControllerLimitedAccessView;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchControllerLimitedUIShieldViewController
+@interface _UISearchControllerLimitedUIShieldViewController : UIViewController
 {
     CDUnknownBlockType _dismissAction;
     _UISearchControllerLimitedAccessView *_limitedAccessView;

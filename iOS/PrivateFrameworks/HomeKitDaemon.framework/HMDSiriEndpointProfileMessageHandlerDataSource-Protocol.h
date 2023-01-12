@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemon/NSObject-Protocol.h>
+
 @class HMDSiriEndpointOnboardingManager, HMDSiriEndpointProfileMessageHandler, NSArray, NSUUID;
 
-@protocol HMDSiriEndpointProfileMessageHandlerDataSource
+@protocol HMDSiriEndpointProfileMessageHandlerDataSource <NSObject>
 - (NSArray *)hubAccessoriesWithHomeUUID:(NSUUID *)arg1 forSiriEndpointProfileMessageHandler:(HMDSiriEndpointProfileMessageHandler *)arg2;
 - (HMDSiriEndpointOnboardingManager *)siriEndpointOnboardingManagerForSiriEndpointProfileMessageHandler:(HMDSiriEndpointProfileMessageHandler *)arg1;
 @end

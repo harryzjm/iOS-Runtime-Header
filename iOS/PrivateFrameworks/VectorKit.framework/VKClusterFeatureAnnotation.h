@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKCustomFeatureAnnotation-Protocol.h>
-
 @class NSString, VKCustomFeature;
 
 __attribute__((visibility("hidden")))
-@interface VKClusterFeatureAnnotation : NSObject <VKCustomFeatureAnnotation>
+@interface VKClusterFeatureAnnotation : NSObject
 {
     CDStruct_2c43369c _coordinate;
     VKCustomFeature *_customFeature;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) CDStruct_c3b9c2ee coordinate; // @synthesize coordinate=_coordinate;
 - (id)feature;
-- (void)dealloc;
 - (id)initWithClusterNode:(void *)arg1 clusterTree:(const void *)arg2 baseStyle:(const void *)arg3 imageText:(id)arg4 annotationText:(id)arg5 annotationLocale:(id)arg6;
 
 // Remaining properties

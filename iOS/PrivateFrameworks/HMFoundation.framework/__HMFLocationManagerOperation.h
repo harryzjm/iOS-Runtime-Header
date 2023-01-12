@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HMFoundation/HMFLogging-Protocol.h>
+#import "HMFOperation.h"
 
 @class CLLocationManager, HMFLocationAuthorization, NSString;
 
 __attribute__((visibility("hidden")))
-@interface __HMFLocationManagerOperation <HMFLogging>
+@interface __HMFLocationManagerOperation : HMFOperation
 {
     struct os_unfair_lock_s _lock;
     _Bool _ready;

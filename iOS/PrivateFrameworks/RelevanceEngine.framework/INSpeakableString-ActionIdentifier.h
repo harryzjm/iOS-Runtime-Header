@@ -6,11 +6,9 @@
 
 #import <Intents/INSpeakableString.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface INSpeakableString (ActionIdentifier) <REDonatedActionIdentifierProviding>
+@interface INSpeakableString (ActionIdentifier)
 - (unsigned long long)re_actionIdentifierHashValue;
 
 // Remaining properties

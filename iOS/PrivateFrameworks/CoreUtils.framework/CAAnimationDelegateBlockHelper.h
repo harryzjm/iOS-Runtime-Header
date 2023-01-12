@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreUtils/CAAnimationDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CAAnimationDelegateBlockHelper : NSObject <CAAnimationDelegate>
+@interface CAAnimationDelegateBlockHelper : NSObject
 {
     CDUnknownBlockType _animationDidStartBlock;
     CDUnknownBlockType _animationDidStopBlock;

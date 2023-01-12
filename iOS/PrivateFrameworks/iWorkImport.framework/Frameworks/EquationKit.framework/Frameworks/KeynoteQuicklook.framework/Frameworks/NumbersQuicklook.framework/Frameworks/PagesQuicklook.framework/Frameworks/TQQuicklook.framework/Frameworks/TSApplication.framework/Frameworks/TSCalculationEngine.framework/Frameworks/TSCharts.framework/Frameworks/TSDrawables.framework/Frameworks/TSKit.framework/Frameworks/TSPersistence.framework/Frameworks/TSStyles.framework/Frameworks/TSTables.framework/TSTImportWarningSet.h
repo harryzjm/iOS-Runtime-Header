@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSSPropertyCommandSerializing-Protocol.h>
-
 @class NSString;
 
-@interface TSTImportWarningSet : NSObject <TSSPropertyCommandSerializing>
+@interface TSTImportWarningSet : NSObject
 {
     struct TSTImportWarningSetCellWarningFlags _cellWarning;
     NSString *_originalDataFormat;

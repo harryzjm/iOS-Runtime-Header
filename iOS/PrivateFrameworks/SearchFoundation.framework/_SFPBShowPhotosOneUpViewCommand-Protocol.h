@@ -6,10 +6,11 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _SFPBPhotosLibraryImage;
+@class NSData, NSDictionary, _SFPBPerson, _SFPBPhotosLibraryImage;
 
 @protocol _SFPBShowPhotosOneUpViewCommand <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBPerson *matchedPerson;
 @property(retain, nonatomic) _SFPBPhotosLibraryImage *photosLibraryImage;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

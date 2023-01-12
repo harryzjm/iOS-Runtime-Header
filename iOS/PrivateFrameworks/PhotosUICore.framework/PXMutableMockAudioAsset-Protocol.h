@@ -12,8 +12,10 @@
 @property(retain, nonatomic) Class audioSessionClass;
 @property(copy, nonatomic) NSString *colorGradeCategory;
 @property(copy, nonatomic) NSArray *entryPoints;
-@property(nonatomic) CDStruct_1b6d18a9 duration;
+@property(nonatomic) CDStruct_198678f7 exportableDuration;
+@property(nonatomic) CDStruct_198678f7 duration;
 @property(nonatomic) unsigned long long flags;
+@property(nonatomic) long long pace;
 @property(copy, nonatomic) NSString *artworkURLFormat;
 @property(copy, nonatomic) NSString *identifier;
 @property(copy, nonatomic) NSString *albumTitle;

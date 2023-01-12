@@ -6,21 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSString, TSCEFormulaObject, TSTCellStyle, TSTFormulaPredicate, TSWPParagraphStyle;
 
-@interface TSTConditionalStyleRule : NSObject <NSCopying>
+@interface TSTConditionalStyleRule : NSObject
 {
     TSTFormulaPredicate *_predicate;
     TSWPParagraphStyle *_textStyle;
     TSTCellStyle *_cellStyle;
-    unsigned char mPredicateType;
 }
 
 + (id)conditionalStyleRuleWithRule:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned char predicateType; // @synthesize predicateType=mPredicateType;
 - (void)getPrecedents:(void *)arg1 calcEngine:(id)arg2 hostOwnerUID:(const struct TSKUIDStruct *)arg3 hostCellID:(const struct TSUCellCoord *)arg4;
 - (_Bool)hasBadRefWithUidInfo;
 - (_Bool)containsUidReferences;
@@ -50,6 +46,7 @@
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithContext:(id)arg1;
+@property(readonly, nonatomic) unsigned char predicateType;
 - (id)initWithPredicate:(id)arg1 cellStyle:(id)arg2 textStyle:(id)arg3;
 
 @end

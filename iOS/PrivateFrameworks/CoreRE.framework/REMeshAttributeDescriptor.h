@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface REMeshAttributeDescriptor : NSObject <NSSecureCoding>
+@interface REMeshAttributeDescriptor : NSObject
 {
     unsigned int _payloadOffset;
     unsigned int _count;

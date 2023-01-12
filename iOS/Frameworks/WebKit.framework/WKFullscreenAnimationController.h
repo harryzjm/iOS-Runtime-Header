@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <WebKit/UIViewControllerInteractiveTransitioning-Protocol.h>
-
 @class NSString, UIViewController;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface WKFullscreenAnimationController : NSObject <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning>
+@interface WKFullscreenAnimationController : NSObject
 {
     struct CGRect _initialMaskViewBounds;
     struct CGRect _finalMaskViewBounds;
@@ -21,8 +18,8 @@ __attribute__((visibility("hidden")))
     struct CGAffineTransform _finalAnimatingViewTransform;
     struct CGPoint _initialMaskViewCenter;
     struct CGPoint _finalMaskViewCenter;
-    RetainPtr_1ac284e4 _maskView;
-    RetainPtr_1ac284e4 _animatingView;
+    struct RetainPtr<UIView> _maskView;
+    struct RetainPtr<UIView> _animatingView;
     struct RetainPtr<id<UIViewControllerContextTransitioning>> _context;
     double _initialBackgroundAlpha;
     double _finalBackgroundAlpha;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIControl.h>
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSString, SKUIStarRatingControl, SKUIStarRatingViewElement, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStarRatingControlView : UIControl <SKUIViewElementView>
+@interface SKUIStarRatingControlView : UIControl
 {
     struct UIEdgeInsets _contentInset;
     UIImage *_emptyStars;

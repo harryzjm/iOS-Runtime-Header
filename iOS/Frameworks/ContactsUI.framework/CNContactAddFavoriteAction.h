@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNPropertyContextMenuAction-Protocol.h>
-#import <ContactsUI/CNUIFavoritesEntryPickerDelegate-Protocol.h>
-
 @class CNFavorites, CNUIFavoritesEntryPicker, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactAddFavoriteAction <CNUIFavoritesEntryPickerDelegate, CNPropertyContextMenuAction>
+@interface CNContactAddFavoriteAction
 {
     CNUIFavoritesEntryPicker *_favoritesEntryPicker;
     CNFavorites *_favorites;

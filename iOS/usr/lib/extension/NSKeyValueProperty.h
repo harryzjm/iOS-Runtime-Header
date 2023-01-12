@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCopying-Protocol.h>
-
 @class NSKeyValueContainerClass, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSKeyValueProperty : NSObject <NSCopying>
+@interface NSKeyValueProperty : NSObject
 {
     NSKeyValueContainerClass *_containerClass;
     NSString *_keyPath;

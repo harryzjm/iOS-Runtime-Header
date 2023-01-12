@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (struct UIEdgeInsets)dynamicInsets;
 - (double)messagesTypeKeyplanSwitchKeyFontSize;
 - (double)fallbackFontSize;
 - (double)fontSizeAdjustmentForNonAlphanumericKeycaps;

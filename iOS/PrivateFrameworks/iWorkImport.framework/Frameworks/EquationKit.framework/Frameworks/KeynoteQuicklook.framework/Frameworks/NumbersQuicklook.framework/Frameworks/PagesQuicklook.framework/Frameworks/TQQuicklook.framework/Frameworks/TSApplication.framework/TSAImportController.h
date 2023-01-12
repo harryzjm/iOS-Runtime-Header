@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSApplication/NSFilePresenter-Protocol.h>
-#import <TSApplication/TSDImportExportDelegate-Protocol.h>
-#import <TSApplication/TSPObjectContextDelegate-Protocol.h>
-
 @class NSDictionary, NSMapTable, NSMutableArray, NSMutableSet, NSOperationQueue, NSProgress, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPDocumentLoadValidationPolicy, TSPDocumentSaveValidationPolicy, TSPObjectContext, TSUTemporaryDirectory;
 @protocol NSFilePresenter, OS_dispatch_queue, TSADocumentPassphraseProvider, TSAImportDelegate, TSKImporter;
 
-@interface TSAImportController : NSObject <TSPObjectContextDelegate, NSFilePresenter, TSDImportExportDelegate>
+@interface TSAImportController : NSObject
 {
     NSURL *_temporaryURL;
     TSUTemporaryDirectory *_temporaryDFFDirectory;

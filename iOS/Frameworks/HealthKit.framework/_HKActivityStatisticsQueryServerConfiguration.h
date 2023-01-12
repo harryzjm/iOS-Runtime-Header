@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class NSDate, NSDateComponents;
 
 __attribute__((visibility("hidden")))
-@interface _HKActivityStatisticsQueryServerConfiguration
+@interface _HKActivityStatisticsQueryServerConfiguration : HKQueryServerConfiguration
 {
     NSDate *_startDate;
     NSDate *_endDate;

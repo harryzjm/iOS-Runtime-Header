@@ -6,13 +6,11 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <UIKitCore/CALayerDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, UIBezierPath;
 @protocol _UITextTiledLayerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UITextTiledLayer : CALayer <CALayerDelegate>
+@interface _UITextTiledLayer : CALayer
 {
     NSMutableArray *_visibleTiles;
     struct CGSize _tileSize;

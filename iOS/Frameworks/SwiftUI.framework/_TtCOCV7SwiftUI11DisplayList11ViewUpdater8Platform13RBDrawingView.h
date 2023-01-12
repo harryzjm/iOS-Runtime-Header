@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *_state;
 }
 
+- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 
 @end

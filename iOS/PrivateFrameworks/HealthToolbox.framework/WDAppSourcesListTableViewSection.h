@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "WDSourcesListTableViewSection.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface WDAppSourcesListTableViewSection
+@interface WDAppSourcesListTableViewSection : WDSourcesListTableViewSection
 {
     _Bool _uninstalledSourcesExist;
     NSArray *_installedSources;

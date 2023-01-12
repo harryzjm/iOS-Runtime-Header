@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCAudioStreamGroup-Protocol.h>
-#import <AVConference/VCRedundancyControllerDelegate-Protocol.h>
-
 @class AVCBasebandCongestionDetector, VCAudioStreamGroupCommon, VCRedundancyControllerAudio, VCSystemAudioCaptureSession;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioStreamSendGroup <VCRedundancyControllerDelegate, VCAudioStreamGroup>
+@interface VCAudioStreamSendGroup
 {
     _Bool _isVADFilteringEnabled;
     _Bool _isCurrentDTXEnabled;
@@ -30,6 +27,9 @@ __attribute__((visibility("hidden")))
     struct opaqueVCVoiceDetector *_voiceDetector;
     VCRedundancyControllerAudio *_redundancyController;
     VCSystemAudioCaptureSession *_systemAudioCaptureSession;
+    struct tagVCAudioDucker *_audioDucker;
+    _Bool _shouldScheduleMediaQueue;
+    float _averageInputPower;
 }
 
 @property(nonatomic) unsigned int cellularUniqueTag; // @synthesize cellularUniqueTag=_cellularUniqueTag;
@@ -39,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (id)checkStreamsForAudioOptIn:(id)arg1;
 - (id)setupRedundancyController;
 - (void)setMuteOnStreams;
+- (void)stopDynamicDucker;
+- (void)startDynamicDucker;
 - (void)stopVoiceActivityDetection;
 - (void)startVoiceActivityDetection;
 - (void)flushAudioRedundancyEventQueue;
@@ -56,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)activeStreamKeys;
 - (void)updateActiveMediaStreamIDs:(id)arg1 withTargetBitrate:(unsigned int)arg2 mediaBitrates:(id)arg3;
 - (void)setReportingAgent:(struct opaqueRTCReporting *)arg1;
-- (void)collectAndLogChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectAndLogChannelMetrics:(CDStruct_b671a7c4 *)arg1;
 - (_Bool)configureStreams;
 @property(nonatomic, setter=setMuted:) _Bool isMuted;
 - (void)didStop;

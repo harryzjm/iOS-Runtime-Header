@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNCustomPresentation-Protocol.h>
-#import <ContactsUI/UIActionSheetPresentationControllerDelegate-Protocol.h>
-#import <ContactsUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSString, UIView, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface _CNCustomActionSheetPresentation : NSObject <UIActionSheetPresentationControllerDelegate, UIViewControllerTransitioningDelegate, CNCustomPresentation>
+@interface _CNCustomActionSheetPresentation : NSObject
 {
     UIView *_sourceView;
     CDUnknownBlockType _dismissHandler;

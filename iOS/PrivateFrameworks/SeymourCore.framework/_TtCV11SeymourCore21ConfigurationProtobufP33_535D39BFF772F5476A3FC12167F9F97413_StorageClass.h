@@ -23,6 +23,7 @@
     MISSING_TYPE *_resumableSessionThreshold;
     MISSING_TYPE *_filterConfigurations;
     MISSING_TYPE *_persistedHealthKitMindfulSessionThreshold;
+    MISSING_TYPE *_guidedAudioWorkoutActivityTypeBehaviors;
 }
 
 @end

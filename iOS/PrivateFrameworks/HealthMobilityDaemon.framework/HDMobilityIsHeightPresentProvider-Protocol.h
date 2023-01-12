@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSNumber;
+
 @protocol HDMobilityIsHeightPresentProvider
-- (_Bool)isHeightPresent;
+- (NSNumber *)isHeightPresentWithError:(id *)arg1;
 @end
 

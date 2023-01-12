@@ -14,8 +14,9 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)getBackingData;
 @property(readonly, nonatomic) struct AudioFileAssetReader *reader;
-- (id)initWithData:(id)arg1 bytes:(const void *)arg2 length:(unsigned long long)arg3;
+- (id)initWithStream:(struct SeekableInputStream *)arg1 ownsStream:(_Bool)arg2;
 
 @end
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUInputStream-Protocol.h>
-
 @class NSString;
 @protocol OISFUBufferedInputStream;
 
 __attribute__((visibility("hidden")))
-@interface OISFUZipInflateInputStream : NSObject <SFUInputStream>
+@interface OISFUZipInflateInputStream : NSObject
 {
     struct z_stream_s mStream;
     long long mOffset;

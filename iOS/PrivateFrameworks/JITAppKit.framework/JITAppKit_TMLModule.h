@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <JITAppKit/TMLModule-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface JITAppKit_TMLModule : NSObject <TMLModule>
+@interface JITAppKit_TMLModule : NSObject
 {
 }
 

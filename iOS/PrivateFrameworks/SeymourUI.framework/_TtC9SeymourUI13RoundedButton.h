@@ -12,14 +12,14 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI13RoundedButton : UIButton
 {
     MISSING_TYPE *currentState;
-    MISSING_TYPE *defaults;
-    MISSING_TYPE *highlightTimer;
-    MISSING_TYPE *shouldShowHighlight;
-    MISSING_TYPE *undimmedBackgroundColor;
     MISSING_TYPE *layout;
     MISSING_TYPE *indefiniteSpinner;
+    MISSING_TYPE *defaults;
+    MISSING_TYPE *highlightTimer;
     MISSING_TYPE *lastFont;
     MISSING_TYPE *lastSymbolScale;
+    MISSING_TYPE *shouldShowHighlight;
+    MISSING_TYPE *undimmedBackgroundColor;
 }
 
 - (void).cxx_destruct;
@@ -27,15 +27,16 @@ __attribute__((visibility("hidden")))
 - (void)handleTouchDown:(id)arg1;
 - (void)handleTimer:(id)arg1;
 - (void)textSizeChanged:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)tintColorDidChange;
 - (void)setAttributedTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic, retain) UIColor *backgroundColor;
 @property(nonatomic) _Bool highlighted;
 - (_Bool)isHighlighted;
+@property(nonatomic, retain) UIColor *backgroundColor;
 
 @end
 

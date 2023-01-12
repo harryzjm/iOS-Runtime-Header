@@ -10,7 +10,6 @@
 
 @protocol HMDAccessorySymptomsDelegate <NSObject>
 - (void)symptomManager:(HMDSymptomManager *)arg1 didChangeSFDeviceIdentifier:(NSUUID *)arg2;
-- (void)symptomManager:(HMDSymptomManager *)arg1 didChangeLocalSymptoms:(NSSet *)arg2;
-- (void)symptomManager:(HMDSymptomManager *)arg1 didChangeBroadcastedSymptoms:(NSSet *)arg2;
+- (void)symptomManager:(HMDSymptomManager *)arg1 didChangeSymptoms:(NSSet *)arg2;
 @end
 

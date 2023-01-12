@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Contacts/CNMAIDPredicate-Protocol.h>
-#import <Contacts/CNSuggestedContactPredicate-Protocol.h>
+#import "CNPredicate.h"
 
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNEmailAddressContactPredicate <CNMAIDPredicate, CNSuggestedContactPredicate>
+@interface CNEmailAddressContactPredicate : CNPredicate
 {
     _Bool _returnsMultipleResults;
     NSArray *_emailAddresses;

@@ -10,6 +10,6 @@
 
 @protocol HUFeatureOnboardingConfiguratorDelegate <HUConfiguratorDelegate>
 - (void)restartCurrentOnboarding;
-- (NAFuture *)getNextViewControllerForOnboardingInput:(NSDictionary *)arg1;
+- (NAFuture *)getNextViewControllerForOnboardingInput:(NSDictionary *)arg1 currentOnboardingFlowClass:(Class)arg2;
 @end
 

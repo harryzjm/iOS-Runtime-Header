@@ -11,6 +11,7 @@
 @protocol ICMentionsControllerUI <NSObject>
 
 @optional
+- (void)registerForContactsChangedNotification;
 - (NSDictionary *)fetchContactNamesForParticipants:(NSArray *)arg1;
 @end
 

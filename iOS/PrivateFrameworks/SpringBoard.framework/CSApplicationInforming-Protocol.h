@@ -12,7 +12,9 @@
 @protocol CSApplicationInforming <NSObject>
 - (void)removeApplicationInformationObserver:(id <CSApplicationInformationObserving>)arg1;
 - (void)addApplicationInformationObserver:(id <CSApplicationInformationObserving>)arg1;
+- (_Bool)isBundleIdentifierUserVisible:(NSString *)arg1;
 - (_Bool)shouldScreenTimeSuppressNotificationsForBundleIdentifier:(NSString *)arg1;
+- (_Bool)isBundleIdentifierBlockedForScreenTimeExpiration:(NSString *)arg1;
 - (_Bool)isBundleIdentifierWallet:(NSString *)arg1;
 - (_Bool)isBundleIdentifierClock:(NSString *)arg1;
 @end

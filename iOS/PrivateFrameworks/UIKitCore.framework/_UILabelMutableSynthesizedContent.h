@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor, _UILabelContent;
+@class NSTextEncapsulation, UIColor, _UILabelContent;
 
 __attribute__((visibility("hidden")))
 @interface _UILabelMutableSynthesizedContent
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_resetSynthesizedResults;
+@property(copy, nonatomic) NSTextEncapsulation *textEncapsulation; // @dynamic textEncapsulation;
 @property(nonatomic) _Bool disableLinkHypenation; // @dynamic disableLinkHypenation;
 @property(nonatomic) _Bool overallWritingDirectionFollowsLayoutDirection; // @dynamic overallWritingDirectionFollowsLayoutDirection;
 @property(nonatomic) _Bool eliminateShadows; // @dynamic eliminateShadows;

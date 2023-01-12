@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIBanner-Protocol.h>
-
 @class NSLayoutConstraint, NSMutableArray, NSString, _UIBannerContent, _UIBannerManager, _UIBannerView;
 
 __attribute__((visibility("hidden")))
-@interface _UIBanner : NSObject <_UIBanner>
+@interface _UIBanner : NSObject
 {
     _UIBannerView *_view;
     _UIBannerContent *_content;

@@ -6,21 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
 @class MRUVisualStylingProvider, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRUEqualizerView : UIView <MRUVisualStylingProviderObserver>
+@interface MRUEqualizerView : UIView
 {
     _Bool _animating;
     MRUVisualStylingProvider *_stylingProvider;
     NSArray *_barViews;
     double _width;
     double _spacing;
+    long long _visualStyle;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long visualStyle; // @synthesize visualStyle=_visualStyle;
 @property(nonatomic) double spacing; // @synthesize spacing=_spacing;
 @property(nonatomic) double width; // @synthesize width=_width;
 @property(retain, nonatomic) NSArray *barViews; // @synthesize barViews=_barViews;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Email/EMMessageListItemQueryResultsObserver-Protocol.h>
-#import <Email/EMRecoverableObserver-Protocol.h>
-
 @class EFCancelationToken, EFQuery, EMMessageRepository, EMObjectID, NSString;
 @protocol EFCancelable, EFScheduler, EMQueryResultsObserver;
 
 __attribute__((visibility("hidden")))
-@interface _EMMessageRepositoryQueryObserver : NSObject <EMMessageListItemQueryResultsObserver, EMRecoverableObserver>
+@interface _EMMessageRepositoryQueryObserver : NSObject
 {
     EMMessageRepository *_repository;
     EFQuery *_query;

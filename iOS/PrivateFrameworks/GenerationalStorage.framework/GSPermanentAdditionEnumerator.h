@@ -6,12 +6,10 @@
 
 #import <Foundation/NSEnumerator.h>
 
-#import <GenerationalStorage/GSAdditionEnumerating-Protocol.h>
-
 @class GSDaemonProxySync, GSPermanentStorage, NSArray, NSError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GSPermanentAdditionEnumerator : NSEnumerator <GSAdditionEnumerating>
+@interface GSPermanentAdditionEnumerator : NSEnumerator
 {
     GSPermanentStorage *_storage;
     NSString *_nameSpace;

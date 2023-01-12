@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _GCGamepadEventFusionConfig : NSObject <NSSecureCoding>
+@interface _GCGamepadEventFusionConfig : NSObject
 {
     unsigned long long _sourceCount;
-    int (*_matrix)[41];
+    unsigned char (*_matrix)[45];
 }
 
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) unsigned long long sourceCount; // @synthesize sourceCount=_sourceCount;
-- (void)enumeratePassedElementsForSourceAtIndex:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (_Bool)shouldPassElement:(long long)arg1 forSourceAtIndex:(unsigned long long)arg2;
-- (void)setPass:(_Bool)arg1 element:(long long)arg2 forSourceAtIndex:(unsigned long long)arg3;
+- (void)enumerateElementsForSourceAtIndex:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (unsigned char)passRuleForElement:(long long)arg1 forSourceAtIndex:(unsigned long long)arg2;
+- (void)setPassRule:(unsigned char)arg1 forElement:(long long)arg2 forSourceAtIndex:(unsigned long long)arg3;
 - (id)debugDescription;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

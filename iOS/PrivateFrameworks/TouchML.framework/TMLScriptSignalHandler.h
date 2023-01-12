@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLSignalHandler-Protocol.h>
-
 @class NSString, TMLContext;
 
-@interface TMLScriptSignalHandler : NSObject <TMLSignalHandler>
+@interface TMLScriptSignalHandler : NSObject
 {
     TMLContext *_context;
     id _target;

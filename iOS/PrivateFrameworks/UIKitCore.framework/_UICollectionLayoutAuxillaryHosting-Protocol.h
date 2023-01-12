@@ -6,13 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray;
-@protocol NSCollectionLayoutContainer, _UICollectionLayoutSupplementaryEnrolling, _UICollectionPreferredSizes;
+@class NSArray, UITraitCollection, _UICollectionLayoutSupplementaryEnroller;
+@protocol NSCollectionLayoutContainer, _UICollectionPreferredSizes;
 
 @protocol _UICollectionLayoutAuxillaryHosting <NSObject>
 - (_Bool)auxillaryHostWantsOverlapAdjustmentForMatchingAlignmentsOnly;
+- (UITraitCollection *)auxillaryHostTraitCollection;
 - (id <_UICollectionPreferredSizes>)auxillaryHostPreferredSizes;
-- (id <_UICollectionLayoutSupplementaryEnrolling>)auxillaryHostSupplementaryEnroller;
+- (_UICollectionLayoutSupplementaryEnroller *)auxillaryHostSupplementaryEnroller;
 - (long long)auxillaryHostAuxillaryKind;
 - (unsigned long long)auxillaryHostLayoutAxis;
 - (_Bool)auxillaryHostShouldLayoutRTL;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDTileList : PBCodable <NSCopying>
+@interface GEOPDTileList : PBCodable
 {
     NSMutableArray *_tiles;
 }

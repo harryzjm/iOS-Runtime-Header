@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/IDSCTSIM-Protocol.h>
-
 @class CTXPCServiceSubscriptionContext, NSString;
 
-@interface IDSCTSIM : NSObject <IDSCTSIM>
+@interface IDSCTSIM : NSObject
 {
     NSString *_mobileCountryCode;
     NSString *_mobileNetworkCode;

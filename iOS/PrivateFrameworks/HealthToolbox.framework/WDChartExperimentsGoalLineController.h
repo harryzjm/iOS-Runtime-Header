@@ -6,12 +6,10 @@
 
 #import <HealthUI/HKInteractiveChartViewController.h>
 
-#import <HealthToolbox/HKInteractiveChartViewObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WDChartExperimentsGoalLineController : HKInteractiveChartViewController <HKInteractiveChartViewObserver>
+@interface WDChartExperimentsGoalLineController : HKInteractiveChartViewController
 {
 }
 

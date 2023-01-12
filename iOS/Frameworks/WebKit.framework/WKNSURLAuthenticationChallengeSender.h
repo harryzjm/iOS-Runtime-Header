@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/NSURLAuthenticationChallengeSender-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKNSURLAuthenticationChallengeSender : NSObject <NSURLAuthenticationChallengeSender>
+@interface WKNSURLAuthenticationChallengeSender : NSObject
 {
 }
 

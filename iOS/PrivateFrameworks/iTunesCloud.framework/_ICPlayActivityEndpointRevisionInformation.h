@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-#import <iTunesCloud/NSSecureCoding-Protocol.h>
-
 @class NSIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICPlayActivityEndpointRevisionInformation : NSObject <NSCopying, NSSecureCoding>
+@interface _ICPlayActivityEndpointRevisionInformation : NSObject
 {
     NSIndexSet *_additionalPendingRevisionsIndexSet;
     unsigned long long _currentRevision;

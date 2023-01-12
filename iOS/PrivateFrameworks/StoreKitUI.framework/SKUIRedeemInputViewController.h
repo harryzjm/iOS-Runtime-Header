@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
+#import "SKUIRedeemStepViewController.h"
 
 @class NSString, SKUIRedeemITunesPassLockup, SKUIRedeemTextField, UIBarButtonItem, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemInputViewController <UITextFieldDelegate>
+@interface SKUIRedeemInputViewController : SKUIRedeemStepViewController
 {
     long long _category;
     SKUIRedeemTextField *_field;

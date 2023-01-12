@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class MPIdentifierSet, MPModelFileAsset, MPModelGenericObject, MPModelHomeSharingAsset, MPModelStoreAsset, NSString;
+@class MPCAudioAssetTypeSelection, MPIdentifierSet, MPModelFileAsset, MPModelGenericObject, MPModelHomeSharingAsset, MPModelStoreAsset, NSString;
 @protocol MPCModelPlaybackAssetCacheProviding;
 
 __attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItemAssetLoadProperties : NSObject
 {
-    _Bool _allowsHLSContent;
     _Bool _prefersVideoContent;
     _Bool _prefersHighQualityContent;
     _Bool _radioPlayback;
     _Bool _followUp;
+    long long _HLSContentPolicy;
     NSString *_assetSourceStorefrontID;
     id <MPCModelPlaybackAssetCacheProviding> _assetCacheProvider;
     MPModelFileAsset *_fileAsset;
@@ -30,9 +30,11 @@ __attribute__((visibility("hidden")))
     NSString *_storefrontID;
     NSString *_playbackAuthorizationToken;
     long long _preferredAudioAssetType;
+    MPCAudioAssetTypeSelection *_audioAssetTypeSelection;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) MPCAudioAssetTypeSelection *audioAssetTypeSelection; // @synthesize audioAssetTypeSelection=_audioAssetTypeSelection;
 @property(nonatomic) long long preferredAudioAssetType; // @synthesize preferredAudioAssetType=_preferredAudioAssetType;
 @property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
 @property(copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
@@ -50,7 +52,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <MPCModelPlaybackAssetCacheProviding> assetCacheProvider; // @synthesize assetCacheProvider=_assetCacheProvider;
 @property(nonatomic) _Bool prefersVideoContent; // @synthesize prefersVideoContent=_prefersVideoContent;
 @property(copy, nonatomic) NSString *assetSourceStorefrontID; // @synthesize assetSourceStorefrontID=_assetSourceStorefrontID;
-@property(nonatomic) _Bool allowsHLSContent; // @synthesize allowsHLSContent=_allowsHLSContent;
+@property(nonatomic) long long HLSContentPolicy; // @synthesize HLSContentPolicy=_HLSContentPolicy;
+@property(readonly, nonatomic) _Bool allowsHLSContent;
 
 @end
 

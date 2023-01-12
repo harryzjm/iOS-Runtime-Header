@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMutableDictionary, UIMovieScrubberTrackOverlayView, UIView;
+#import "UIView.h"
+
+@class NSArray, NSDictionary, NSMutableDictionary, UIMovieScrubberTrackOverlayView;
 @protocol UIMovieScrubberTrackViewDataSource, UIMovieScrubberTrackViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIMovieScrubberTrackView
+@interface UIMovieScrubberTrackView : UIView
 {
     NSArray *_summaryThumbnailViews;
     NSArray *_summaryThumbnailTimestamps;

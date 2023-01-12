@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "WFFloatingView.h"
+
 @class NSProgress, NSString, NSTimer, UIImageView, UITextView, WFFloatingViewConfiguration, WFWorkflowDescriptor, WFWorkflowProgressView;
 @protocol WFWidgetCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WFWidgetCell
+@interface WFWidgetCell : WFFloatingView
 {
     _Bool _enabled;
     _Bool _completingSuccessfully;

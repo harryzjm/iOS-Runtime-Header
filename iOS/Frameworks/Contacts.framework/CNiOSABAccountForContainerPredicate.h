@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Contacts/CNiOSAccountPredicate-Protocol.h>
+#import "CNPredicate.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNiOSABAccountForContainerPredicate <CNiOSAccountPredicate>
+@interface CNiOSABAccountForContainerPredicate : CNPredicate
 {
     NSString *_containerIdentifier;
 }
@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 - (struct __CFArray *)cn_copyAccountsInAddressBook:(void *)arg1 error:(struct __CFError **)arg2;
-- (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithContainerIdentifier:(id)arg1;
 - (id)initWithPredicate:(id)arg1;
 

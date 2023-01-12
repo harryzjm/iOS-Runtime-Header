@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)updateRotate:(double)arg1 atScreenPoint:(struct CGPoint)arg2;
 - (void)updateZoom:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
 - (void)updatePan:(struct CGPoint)arg1 lastScreenPoint:(struct CGPoint)arg2;
 - (void)beginPan:(struct CGPoint)arg1;
-- (void)dealloc;
 - (id)initWithARCameraController:(id)arg1;
 
 @end

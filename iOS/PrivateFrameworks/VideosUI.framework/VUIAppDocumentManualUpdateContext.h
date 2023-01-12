@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIAppDocumentUpdateContext-Protocol.h>
-
 @class IKUpdateServiceRequest, IKViewElement, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIAppDocumentManualUpdateContext : NSObject <VUIAppDocumentUpdateContext>
+@interface VUIAppDocumentManualUpdateContext : NSObject
 {
     IKUpdateServiceRequest *_currentUpdateRequest;
     NSDictionary *_contextDictionary;

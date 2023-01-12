@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface TSPMutableLargeObjectArray
+#import "TSPAbstractMutableLargeArray.h"
+
+@interface TSPMutableLargeObjectArray : TSPAbstractMutableLargeArray
 {
 }
 

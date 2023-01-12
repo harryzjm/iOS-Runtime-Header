@@ -6,7 +6,7 @@
 
 #import <BridgePreferences/NSObject-Protocol.h>
 
-@class UIViewController;
+@class BPSExpressSetupDetailItem, NRDevice, NSString, UIImage, UIViewController;
 @protocol BPSBuddyControllerDelegate;
 
 @protocol BPSBuddyController <NSObject>
@@ -14,6 +14,11 @@
 - (id <BPSBuddyControllerDelegate>)delegate;
 
 @optional
++ (UIImage *)imageForExpressSetting;
++ (void)doWorkForSkippedExpressSettingPane:(NRDevice *)arg1;
++ (NSString *)expressModeSettingsString:(NRDevice *)arg1;
++ (BPSExpressSetupDetailItem *)expressModeSettingsItem:(NRDevice *)arg1;
++ (_Bool)skipControllerForExpressMode:(NRDevice *)arg1;
 + (_Bool)controllerNeedsToRun;
 - (_Bool)holdBeforeDisplaying;
 - (_Bool)controllerAllowsNavigatingBackFrom;

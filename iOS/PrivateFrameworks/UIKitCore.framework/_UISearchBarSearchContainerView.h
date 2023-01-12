@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class _UISearchBarSearchContainerLayout;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchBarSearchContainerView
+@interface _UISearchBarSearchContainerView : UIView
 {
     _Bool _needsLayoutWhenThawed;
     _Bool _frozenLayout;
@@ -17,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) _Bool frozenLayout; // @synthesize frozenLayout=_frozenLayout;
 @property(retain, nonatomic) _UISearchBarSearchContainerLayout *layout; // @synthesize layout=_layout;
+- (id)description;
 - (void)setNeedsLayout;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

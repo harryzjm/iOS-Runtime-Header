@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setTemperature:(id)arg1 humidity:(id)arg2 weatherCondition:(long long)arg3 formattingManager:(id)arg4;
 - (id)accessibilityElements;
 
 @end

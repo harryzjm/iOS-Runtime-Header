@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CryptoTokenKit/NSExtensionRequestHandling-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface TKTokenDriverRequest : NSObject <NSExtensionRequestHandling>
+@interface TKTokenDriverRequest : NSObject
 {
 }
 

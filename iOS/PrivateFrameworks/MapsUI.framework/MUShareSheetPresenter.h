@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsUI/MKActivityViewControllerDelegate-Protocol.h>
-
-@class MKActivityViewController, MUPresentationOptions, NSString;
+@class MUActivityViewController, MUPresentationOptions, NSString;
 @protocol MUShareSheetPresenterDelegate, _MKPlaceItem;
 
 __attribute__((visibility("hidden")))
-@interface MUShareSheetPresenter : NSObject <MKActivityViewControllerDelegate>
+@interface MUShareSheetPresenter : NSObject
 {
-    MKActivityViewController *_activityViewController;
+    MUActivityViewController *_activityViewController;
     MUPresentationOptions *_presentationOptions;
     id <_MKPlaceItem> _placeItem;
     id <MUShareSheetPresenterDelegate> _delegate;

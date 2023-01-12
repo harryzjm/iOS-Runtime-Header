@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIBarButtonItemDataFallback-Protocol.h>
-
 @class NSDictionary, NSString, UIImage, UIImageSymbolConfiguration;
 @protocol _UIBarButtonItemDataFallback;
 
 __attribute__((visibility("hidden")))
-@interface _UIBarButtonItemData <_UIBarButtonItemDataFallback>
+@interface _UIBarButtonItemData
 {
     NSDictionary *_titleTextAttributes[4];
     UIImage *_backgroundImage[4];

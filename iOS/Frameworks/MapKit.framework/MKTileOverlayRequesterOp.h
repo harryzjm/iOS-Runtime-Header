@@ -6,23 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class MKTileOverlayRequester, NSData;
+@class _MKOverlayTileRequester;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MKTileOverlayRequesterOp : NSObject
 {
     struct _GEOTileKey _key;
-    MKTileOverlayRequester *_delegate;
+    _MKOverlayTileRequester *_delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSData *_data;
+    id _data;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
-@property(nonatomic) __weak MKTileOverlayRequester *delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) id data; // @synthesize data=_data;
+@property(nonatomic) __weak _MKOverlayTileRequester *delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) struct _GEOTileKey key; // @synthesize key=_key;
 - (void)_cancel;
 - (void)cancel;

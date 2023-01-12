@@ -6,23 +6,20 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapsUI/MUCollectionViewDiffableDataSourceCellProviding-Protocol.h>
-#import <MapsUI/UICollectionViewDelegate-Protocol.h>
-#import <MapsUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-
 @class MUPagingScrollContainerView, NSArray, NSString, UICollectionView, UICollectionViewDiffableDataSource;
 @protocol MUPlacePhotoSliderDataSource, MUPlacePhotoSliderDelegate, MUScrollAnalyticActionObserving;
 
 __attribute__((visibility("hidden")))
-@interface MUPlacePhotoSliderView : UIView <UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MUCollectionViewDiffableDataSourceCellProviding>
+@interface MUPlacePhotoSliderView : UIView
 {
     UICollectionView *_contentCollectionView;
     MUPagingScrollContainerView *_pagingScrollView;
     id <MUPlacePhotoSliderDataSource> _dataSource;
     UICollectionViewDiffableDataSource *_diffableDataSource;
-    UIView *_floatingView;
     struct CGSize _photoTileSize;
     struct CGPoint _beginAnalyticsScrollingPoint;
+    _Bool _hasHeaderView;
+    NSArray *_photoModels;
     id <MUScrollAnalyticActionObserving> _analyticsDelegate;
     id <MUPlacePhotoSliderDelegate> _delegate;
 }
@@ -42,8 +39,9 @@ __attribute__((visibility("hidden")))
 - (void)enumerateImageViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)scrollToViewAtIndex:(unsigned long long)arg1;
 - (id)attributionViewForAttribution:(id)arg1;
+- (void)updatePhotoSliderViews:(_Bool)arg1;
 - (void)updateViewsWithAlpha:(double)arg1;
-- (void)_attachFloatingView;
+- (void)displayPhotos:(_Bool)arg1;
 - (void)displayPhotos;
 - (id)imageViewForIndex:(unsigned long long)arg1;
 - (void)_setupConstraints;

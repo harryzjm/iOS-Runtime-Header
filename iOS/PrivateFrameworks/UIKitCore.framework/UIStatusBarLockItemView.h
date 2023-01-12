@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-
 @class NSString, UIView, _UIExpandingGlyphsView, _UIStatusBarLockItemPadlockView;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarLockItemView <CAAnimationDelegate>
+@interface UIStatusBarLockItemView
 {
     _Bool _alongsideViewIsBecomingVisible;
     int _animationCount;

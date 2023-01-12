@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNPickerControllerDelegate-Protocol.h>
-#import <ContactsUI/CNUINavigationListViewControllerDelegate-Protocol.h>
-#import <ContactsUI/HKMedicalIDViewControllerDelegate-Protocol.h>
-
 @class CNContactProperty, CNContactStore, CNHealthStoreManager, CNUINavigationListViewController, NSString, UIAlertController;
 @protocol CNScheduler;
 
 __attribute__((visibility("hidden")))
-@interface CNEmergencyContactAction <CNUINavigationListViewControllerDelegate, CNPickerControllerDelegate, HKMedicalIDViewControllerDelegate>
+@interface CNEmergencyContactAction
 {
     _Bool _addingToEmergency;
     CNContactStore *_contactStore;
@@ -21,9 +17,12 @@ __attribute__((visibility("hidden")))
     UIAlertController *_alertController;
     CNUINavigationListViewController *_listController;
     id <CNScheduler> _mainThreadScheduler;
+    id <CNScheduler> _workQueue;
 }
 
++ (id)log;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <CNScheduler> workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) id <CNScheduler> mainThreadScheduler; // @synthesize mainThreadScheduler=_mainThreadScheduler;
 @property(retain, nonatomic) CNUINavigationListViewController *listController; // @synthesize listController=_listController;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/NSXPCListenerDelegate-Protocol.h>
-#import <VideoSubscriberAccount/VSServiceConnectionHandlerDelegate-Protocol.h>
-
 @class NSArray, NSMutableSet, NSString, NSXPCInterface;
 
 __attribute__((visibility("hidden")))
-@interface VSServiceListener : NSObject <VSServiceConnectionHandlerDelegate, NSXPCListenerDelegate>
+@interface VSServiceListener : NSObject
 {
     NSArray *_entitlementNames;
     NSXPCInterface *_exportedInterface;

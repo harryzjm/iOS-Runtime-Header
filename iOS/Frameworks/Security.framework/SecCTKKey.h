@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Security/NSCopying-Protocol.h>
-
 @class NSDictionary, TKClientTokenObject;
 
 __attribute__((visibility("hidden")))
-@interface SecCTKKey : NSObject <NSCopying>
+@interface SecCTKKey : NSObject
 {
     TKClientTokenObject *_tokenObject;
     NSDictionary *_keychainAttributes;
@@ -23,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *sessionParameters; // @synthesize sessionParameters=_sessionParameters;
 @property(readonly, nonatomic) NSDictionary *keychainAttributes; // @synthesize keychainAttributes=_keychainAttributes;
 @property(retain, nonatomic) TKClientTokenObject *tokenObject; // @synthesize tokenObject=_tokenObject;
+@property(readonly, nonatomic) long long algorithmID;
 - (_Bool)isEqual:(id)arg1;
 - (id)performOperation:(long long)arg1 data:(id)arg2 algorithms:(id)arg3 parameters:(id)arg4 error:(id *)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;

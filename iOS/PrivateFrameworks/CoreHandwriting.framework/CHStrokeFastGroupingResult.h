@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface CHStrokeFastGroupingResult
+#import "CHStrokeGroupingResult.h"
+
+@interface CHStrokeFastGroupingResult : CHStrokeGroupingResult
 {
     vector_4ea6921b _fastGroupingClusters;
 }

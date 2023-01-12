@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNUIAAfamilyMember : NSObject <NSSecureCoding>
+@interface CNUIAAfamilyMember : NSObject
 {
     _Bool _isMe;
     NSString *_appleID;

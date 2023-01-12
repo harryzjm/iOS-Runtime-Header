@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UISettings.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIScreenEdgePanRecognizerCornerSettings
+@interface _UIScreenEdgePanRecognizerCornerSettings : _UISettings
 {
     double _cornerSize;
     double _cornerAngleWindow;

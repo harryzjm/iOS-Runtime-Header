@@ -14,6 +14,8 @@
     MISSING_TYPE *_length;
     MISSING_TYPE *_addedBy;
     MISSING_TYPE *_child;
+    MISSING_TYPE *_removedAddedBy;
+    MISSING_TYPE *_contentOptions;
 }
 
 @end

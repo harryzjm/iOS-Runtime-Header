@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIColor.h"
+
 __attribute__((visibility("hidden")))
-@interface UIDynamicColor
+@interface UIDynamicColor : UIColor
 {
 }
 
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)_backgroundColorIgnoringHighContrast;
 - (id)_highContrastDynamicColor;
 - (id)colorWithAlphaComponent:(double)arg1;
+- (id)_resolvedMaterialWithTraitCollection:(id)arg1;
 - (id)_resolvedColorWithTraitCollection:(id)arg1;
 - (id)resolvedColorWithTraitCollection:(id)arg1;
 - (_Bool)_isDynamic;

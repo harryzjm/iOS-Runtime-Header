@@ -7,6 +7,6 @@
 #import <MediaPlayer/MPMusicPlayerRadioStationQueueDescriptor.h>
 
 @interface MPMusicPlayerRadioStationQueueDescriptor (MPCModelPlaybackAdditions)
-- (id)playbackContext;
+- (id)playbackContexts;
 @end
 

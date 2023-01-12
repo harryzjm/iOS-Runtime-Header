@@ -6,13 +6,16 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class CKRecord, CKRecordID, CKRecordZoneID, NSArray, NSData, NSString;
+@class CKRecord, CKRecordID, CKRecordZoneID, NSArray, NSData, NSSet, NSString;
 
 @protocol DNDSSyncEngineMetadataStoring <NSObject>
 @property(nonatomic, getter=isEncryptionAvailable) _Bool encryptionAvailable;
 @property(nonatomic) long long accountStatus;
 @property(copy, nonatomic) NSString *userRecordID;
 @property(copy, nonatomic) NSData *metadata;
+- (NSSet *)zoneNames;
+- (_Bool)removeZoneName:(NSString *)arg1;
+- (_Bool)addZoneName:(NSString *)arg1;
 - (NSArray *)recordIDsWithZoneID:(CKRecordZoneID *)arg1;
 - (void)purge;
 - (void)removeRecordsWithZoneID:(CKRecordZoneID *)arg1;

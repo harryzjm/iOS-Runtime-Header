@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary, NSPredicate;
+@class NSDate, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _OSLogEventSerializationMetadata : NSObject
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_indexToStringMapping;
     NSMutableDictionary *_stringToIndexMapping;
     unsigned long long _flags;
-    NSPredicate *_filterPredicate;
+    NSString *_filterPredicateDescription;
     unsigned long long _maxLogEventBatchSize;
     unsigned long long _serializedEventCount;
     NSDate *_firstDate;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *firstDate; // @synthesize firstDate=_firstDate;
 @property(nonatomic) unsigned long long serializedEventCount; // @synthesize serializedEventCount=_serializedEventCount;
 @property(nonatomic) unsigned long long maxLogEventBatchSize; // @synthesize maxLogEventBatchSize=_maxLogEventBatchSize;
-@property(retain, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
+@property(retain, nonatomic) NSString *filterPredicateDescription; // @synthesize filterPredicateDescription=_filterPredicateDescription;
 @property(nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property(readonly, nonatomic) NSMutableDictionary *stringToIndexMapping; // @synthesize stringToIndexMapping=_stringToIndexMapping;
 @property(readonly, nonatomic) NSMutableDictionary *indexToStringMapping; // @synthesize indexToStringMapping=_indexToStringMapping;

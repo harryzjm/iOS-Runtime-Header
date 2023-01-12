@@ -6,11 +6,9 @@
 
 #import <Foundation/NSData.h>
 
-#import <ProactiveSupport/_PASDistilledString-Protocol.h>
-
 @class NSString;
 
-@interface NSData (_PASDistilledString) <_PASDistilledString>
+@interface NSData (_PASDistilledString)
 - (id)_pas_revivedString;
 - (id)_pas_dataWithNonnullBytes;
 

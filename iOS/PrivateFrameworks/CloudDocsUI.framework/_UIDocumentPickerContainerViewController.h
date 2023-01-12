@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <CloudDocsUI/UISearchControllerDelegate-Protocol.h>
-
 @class NSArray, NSString, _UIDocumentPickerContainerModel, _UIDocumentPickerSearchPaletteView, _UIDocumentPickerSortOrderView, _UIDocumentSearchListController;
 @protocol _UIDocumentPickerContainedViewController, _UIDocumentPickerServiceViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerContainerViewController : UIViewController <UISearchControllerDelegate>
+@interface _UIDocumentPickerContainerViewController : UIViewController
 {
     long long _explicitDisplayMode;
     id <_UIDocumentPickerServiceViewController> _serviceViewController;

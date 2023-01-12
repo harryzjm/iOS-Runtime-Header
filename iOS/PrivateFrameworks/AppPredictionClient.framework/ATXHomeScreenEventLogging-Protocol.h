@@ -6,7 +6,7 @@
 
 #import <AppPredictionClient/NSObject-Protocol.h>
 
-@class ATXDefaultHomeScreenItemComparator, ATXHomeScreenPrediction, ATXHomeScreenStackConfig, ATXHomeScreenWidgetIdentifiable, ATXProactiveSuggestion, NSArray, NSDictionary, NSString, NSURL;
+@class ATXDefaultHomeScreenItemComparator, ATXHomeScreenApp, ATXHomeScreenPage, ATXHomeScreenPrediction, ATXHomeScreenStackConfig, ATXHomeScreenWidgetIdentifiable, ATXProactiveSuggestion, NSArray, NSDictionary, NSString, NSURL;
 
 @protocol ATXHomeScreenEventLogging <NSObject>
 - (void)logUserDidSwitchHomeScreenExperience:(unsigned long long)arg1;
@@ -26,12 +26,14 @@
 - (void)logWidgetInsertionDidFailInStack:(NSString *)arg1 prediction:(ATXHomeScreenPrediction *)arg2;
 - (void)logDeviceUnlock;
 - (void)logDeviceLock;
-- (void)logUserDidDeleteStack:(ATXHomeScreenStackConfig *)arg1 stackKind:(unsigned long long)arg2 stackLocation:(unsigned long long)arg3;
-- (void)logUserDidCreateStack:(ATXHomeScreenStackConfig *)arg1 isSuggestion:(_Bool)arg2;
+- (void)logUserDidDeleteStack:(ATXHomeScreenStackConfig *)arg1 stackKind:(unsigned long long)arg2 stackLocation:(unsigned long long)arg3 page:(ATXHomeScreenPage *)arg4;
+- (void)logUserDidCreateStack:(ATXHomeScreenStackConfig *)arg1 page:(ATXHomeScreenPage *)arg2 isSuggestion:(_Bool)arg3;
 - (void)logUserDidDeleteWidgetOnStack:(ATXHomeScreenWidgetIdentifiable *)arg1 stackIdentifier:(NSString *)arg2 stackKind:(unsigned long long)arg3 stackLocation:(unsigned long long)arg4;
 - (void)logUserDidAddWidgetToStack:(ATXHomeScreenWidgetIdentifiable *)arg1 stackIdentifier:(NSString *)arg2 isSuggestion:(_Bool)arg3;
-- (void)logUserDidDeletePinnedWidget:(ATXHomeScreenWidgetIdentifiable *)arg1 stackLocation:(unsigned long long)arg2;
-- (void)logUserDidAddPinnedWidget:(ATXHomeScreenWidgetIdentifiable *)arg1 defaultsComparator:(ATXDefaultHomeScreenItemComparator *)arg2;
+- (void)logUserDidDeletePinnedWidget:(ATXHomeScreenWidgetIdentifiable *)arg1 stackLocation:(unsigned long long)arg2 page:(ATXHomeScreenPage *)arg3;
+- (void)logUserDidAddPinnedWidget:(ATXHomeScreenWidgetIdentifiable *)arg1 page:(ATXHomeScreenPage *)arg2 defaultsComparator:(ATXDefaultHomeScreenItemComparator *)arg3;
+- (void)logUserDidRemoveApp:(ATXHomeScreenApp *)arg1 page:(ATXHomeScreenPage *)arg2;
+- (void)logUserDidAddApp:(ATXHomeScreenApp *)arg1 page:(ATXHomeScreenPage *)arg2;
 - (void)logUserDidChangeStackConfiguration:(NSString *)arg1;
 - (void)logSupplementaryActionInContextMenu:(unsigned long long)arg1 stackId:(NSString *)arg2 widgetOnTop:(ATXHomeScreenWidgetIdentifiable *)arg3 prediction:(ATXHomeScreenPrediction *)arg4;
 - (void)logStackDidTap:(NSString *)arg1 engagedUrl:(NSURL *)arg2 widgetOnTop:(ATXHomeScreenWidgetIdentifiable *)arg3 prediction:(ATXHomeScreenPrediction *)arg4;

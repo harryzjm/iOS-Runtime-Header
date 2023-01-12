@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOMapRequest.h"
+
 @class GEOMapAccess, GEOMapTileFinder, NSMutableSet;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapEdgeFinder
+@interface GEOMapEdgeFinder : GEOMapRequest
 {
     GEOMapTileFinder *_tileFinder;
     CDStruct_34734122 _centerPoint;

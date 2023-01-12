@@ -6,11 +6,9 @@
 
 #import <NewsTransport/NTPBAVAsset.h>
 
-#import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
-
 @class NSString;
 
-@interface NTPBAVAsset (KVS) <FCKeyValueStoreCoding>
+@interface NTPBAVAsset (KVS)
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 - (void)writeToKeyValuePair:(id)arg1;

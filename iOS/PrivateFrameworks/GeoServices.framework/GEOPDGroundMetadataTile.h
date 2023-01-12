@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOTileCoordinate, NSMutableArray, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDGroundMetadataTile : PBCodable <NSCopying>
+@interface GEOPDGroundMetadataTile : PBCodable
 {
     PBDataReader *_reader;
     NSMutableArray *_buildTables;

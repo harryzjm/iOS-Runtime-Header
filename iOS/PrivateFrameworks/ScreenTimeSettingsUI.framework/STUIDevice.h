@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeSettingsUI/NSCopying-Protocol.h>
-
 @class NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface STUIDevice : NSObject <NSCopying>
+@interface STUIDevice : NSObject
 {
     short _platform;
     NSString *_name;

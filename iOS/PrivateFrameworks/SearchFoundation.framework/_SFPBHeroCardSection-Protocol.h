@@ -10,6 +10,7 @@
 
 @protocol _SFPBHeroCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int imageAlign;
 @property(retain, nonatomic) _SFPBImage *image;
 @property(copy, nonatomic) NSArray *buttonItems;
 @property(retain, nonatomic) _SFPBRichText *subtitle;

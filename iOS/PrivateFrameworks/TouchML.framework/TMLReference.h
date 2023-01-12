@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLValue-Protocol.h>
-
 @class NSString;
 
-@interface TMLReference : NSObject <TMLValue>
+@interface TMLReference : NSObject
 {
     id _target;
     CDUnknownBlockType _block;

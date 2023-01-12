@@ -6,12 +6,10 @@
 
 #import <Foundation/NSData.h>
 
-#import <WebKit/WKObject-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKNSData : NSData <WKObject>
+@interface WKNSData : NSData
 {
     struct ObjectStorage<API::Data> _data;
 }

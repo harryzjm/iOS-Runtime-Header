@@ -12,6 +12,7 @@
     CKDRecordCache *_recordCache;
     _Bool _useRecordCache;
     _Bool _fetchAssetContents;
+    _Bool _fetchMergeableValues;
     _Bool _preserveOrdering;
     _Bool _started;
     _Bool _markedToFinishByParent;
@@ -44,6 +45,7 @@
 @property(retain, nonatomic) NSSet *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property(nonatomic) _Bool preserveOrdering; // @synthesize preserveOrdering=_preserveOrdering;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
+@property(nonatomic) _Bool fetchMergeableValues; // @synthesize fetchMergeableValues=_fetchMergeableValues;
 @property(nonatomic) _Bool fetchAssetContents; // @synthesize fetchAssetContents=_fetchAssetContents;
 @property(copy, nonatomic) CDUnknownBlockType fetchAggregatorCompletionBlock; // @synthesize fetchAggregatorCompletionBlock=_fetchAggregatorCompletionBlock;
 @property(nonatomic) _Bool useRecordCache; // @synthesize useRecordCache=_useRecordCache;
@@ -61,10 +63,10 @@
 - (void)_flushFetchedRecordsToConsumerNoOrderingLocked;
 - (void)_flushFetchedRecordsToConsumerOrderedLocked;
 - (void)_performCallbackForFetchInfoLocked:(id)arg1;
+- (int)operationType;
 - (id)description;
 - (id)CKPropertiesDescription;
 - (void)dealloc;
-- (id)recordCache:(id *)arg1;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 

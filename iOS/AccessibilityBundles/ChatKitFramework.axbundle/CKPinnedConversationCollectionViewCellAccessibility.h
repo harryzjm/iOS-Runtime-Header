@@ -17,7 +17,6 @@
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (id)axCustomActionsForActions:(id)arg1;
 - (id)accessibilityCustomActions;
 
 @end

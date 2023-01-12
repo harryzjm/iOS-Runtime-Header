@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NanoPassKit/NPKIDVRemoteDeviceNotificationManager-Protocol.h>
 #import <NanoPassKit/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSString, PKIdentityProvisioningAttestations, PKShareablePassMetadata;
+@class NSString;
 
-@protocol NPKIDVRemoteDeviceServiceSessionServerProtocol <PDXPCServiceExportedInterface>
-- (void)provisionCredentialWithType:(unsigned long long)arg1 metadata:(PKShareablePassMetadata *)arg2 policyIdentifier:(NSString *)arg3 credentialIdentifier:(NSString *)arg4 attestations:(PKIdentityProvisioningAttestations *)arg5 completion:(void (^)(NSError *))arg6;
-- (void)credentialPreflightStatusForType:(unsigned long long)arg1 completion:(void (^)(NPKIDVRemoteDeviceCredentialPreflightStatus *, NSError *))arg2;
+@protocol NPKIDVRemoteDeviceServiceSessionServerProtocol <PDXPCServiceExportedInterface, NPKIDVRemoteDeviceNotificationManager>
+- (void)credentialPreflightStatusForType:(unsigned long long)arg1 minOSVersion:(NSString *)arg2 completion:(void (^)(NPKIDVRemoteDeviceCredentialPreflightStatus *, NSError *))arg3;
 - (void)unregisterFromEvents:(unsigned long long)arg1 withRemoteProcessServiceName:(NSString *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
 - (void)registerForEvents:(unsigned long long)arg1 withRemoteProcessServiceName:(NSString *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
 - (void)confirmRemoteDeviceID:(NSString *)arg1 withCompletion:(void (^)(NSString *, NSError *))arg2;

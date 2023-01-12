@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreData/NSCopying-Protocol.h>
-#import <CoreData/NSManagedObjectContextFaultingDelegate-Protocol.h>
-
 @class NSError, NSManagedObjectContext, NSMutableDictionary, NSMutableSet, NSObject, NSPersistentStoreCoordinator, NSString, PFUbiquityImportContext, PFUbiquityKnowledgeVector, PFUbiquitySwitchboardEntry, PFUbiquityTransactionLog;
 @protocol _PFUbiquityRecordImportOperationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _PFUbiquityRecordImportOperation <NSCopying, NSManagedObjectContextFaultingDelegate>
+@interface _PFUbiquityRecordImportOperation
 {
     NSManagedObjectContext *_moc;
     NSPersistentStoreCoordinator *_psc;

@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSBagConsumer_Project-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSAnisette : NSObject <AMSBagConsumer_Project>
+@interface AMSAnisette : NSObject
 {
 }
 
++ (id)bagKeySet;
 + (_Bool)_shouldRetryAfterError:(id)arg1;
 + (id)_syncMachineWithActionData:(id)arg1 type:(long long)arg2 account:(id)arg3 bag:(id)arg4;
 + (id)_provisionMachineWithActionData:(id)arg1 type:(long long)arg2 account:(id)arg3 bag:(id)arg4;
@@ -23,11 +22,9 @@ __attribute__((visibility("hidden")))
 + (id)_eraseProvisioningForType:(long long)arg1 account:(id)arg2;
 + (void)_bagDomainExistsForURL:(id)arg1 type:(long long)arg2 bag:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (unsigned long long)_accountIDForType:(long long)arg1 account:(id)arg2;
-+ (void)addRequiredBagKeysToAggregator:(id)arg1;
 + (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
-+ (id)bagKeySet;
 + (id)headersForRequest:(id)arg1 account:(id)arg2 type:(long long)arg3 bag:(id)arg4;
 + (id)handleResponse:(id)arg1 type:(long long)arg2 bag:(id)arg3 account:(id)arg4;
 + (_Bool)handleResponse:(id)arg1 account:(id)arg2 type:(long long)arg3 bag:(id)arg4;

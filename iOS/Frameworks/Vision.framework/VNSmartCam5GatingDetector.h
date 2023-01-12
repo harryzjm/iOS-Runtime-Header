@@ -13,11 +13,14 @@ __attribute__((visibility("hidden")))
     VNSaliencyOHeatmapBoundingBoxGenerator *_boundingBoxGenerator;
 }
 
++ (id)primaryInferenceNetworkDescriptorForVNInferenceNetworkIdentifierSmartCam_5_0_0;
++ (id)availableVNInferenceNetworkIdentifierSmartCamVersions;
++ (id)inferenceNetworkIdentifiers;
 + (unsigned int)analysisPixelFormatTypeForConfiguration:(id)arg1;
 + (id)inputImageBlobNameForConfiguration:(id)arg1;
 + (id)modelNameForConfiguration:(id)arg1;
 - (void).cxx_destruct;
-- (id)observationsForLastAnalysisOfImageAnalyzer:(void *)arg1 processOptions:(id)arg2 originatingRequestSpecifier:(id)arg3 error:(id *)arg4;
+- (id)observationsForLastAnalysisOfImageAnalyzer:(void *)arg1 processOptions:(id)arg2 originatingRequestSpecifier:(id)arg3 qosClass:(unsigned int)arg4 error:(id *)arg5;
 - (unsigned int)analysisTypesForProcessOptions:(id)arg1;
 - (_Bool)configureImageAnalyzerOptions:(void *)arg1 error:(id *)arg2;
 - (id)segmentationLabelsFileName;

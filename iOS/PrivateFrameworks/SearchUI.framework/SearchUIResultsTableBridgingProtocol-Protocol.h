@@ -5,14 +5,13 @@
 //
 
 #import <SearchUI/SearchUIShowMoreSectionsDelegate-Protocol.h>
-#import <SearchUI/SearchUITableViewTesting-Protocol.h>
+#import <SearchUI/SearchUIViewTesting-Protocol.h>
 
 @class NSArray, NSString, SFSearchResult, SearchUITableModel, UIControl, UIScrollView, UIView;
 @protocol SFFeedbackListener, SearchUICommandDelegate, SearchUIKeyboardableTableViewDelegate, SearchUIResultsViewDelegate, SearchUISizingDelegate, UITextInput;
 
-@protocol SearchUIResultsTableBridgingProtocol <SearchUIShowMoreSectionsDelegate, SearchUITableViewTesting>
+@protocol SearchUIResultsTableBridgingProtocol <SearchUIShowMoreSectionsDelegate, SearchUIViewTesting>
 @property(retain, nonatomic) UIView *footerView;
-@property(nonatomic) _Bool shortenTopFloatingHeader;
 @property(retain, nonatomic) NSString *queryString;
 @property(readonly, nonatomic) double headerHeight;
 @property(nonatomic) _Bool dragInteractionEnabled;

@@ -6,18 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @class DVTFilePath, DVTMacroDefinitionTable, DVTSearchPath, DVTVersion, NSArray, NSDate, NSNumber, NSString, NSURL;
 
-@interface DVTToolchain : NSObject <NSCopying>
+@interface DVTToolchain : NSObject
 {
     NSNumber *_embeddedDebuggerSetting;
     DVTFilePath *_lldbPath;
     DVTFilePath *_llvmProfdataPath;
     DVTFilePath *_swiftDemanglePath;
-    DVTVersion *_swiftVersion;
-    NSString *_swiftCompilerVersionString;
     unsigned long long _hash;
     NSNumber *_requiresSwiftDevelopmentRuntime;
     NSString *_identifier;
@@ -60,8 +56,6 @@
 @property(readonly) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly) _Bool isSwiftOpenSourceToolchain;
 @property(readonly) _Bool requiresSwiftDevelopmentRuntime;
-@property(readonly) NSString *swiftCompilerVersionString;
-@property(readonly) DVTVersion *swiftVersion;
 - (id)swiftDemanglePath;
 - (id)llvmProfdataPath;
 - (id)lldbPath;

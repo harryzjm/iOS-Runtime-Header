@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIGeometryChangeObserver-Protocol.h>
+#import "UIView.h"
 
-@class NSLayoutConstraint, NSString, UILayoutGuide, UIView;
+@class NSLayoutConstraint, NSString;
+@protocol _UITAMICAdaptorViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UITAMICAdaptorView <_UIGeometryChangeObserver>
+@interface _UITAMICAdaptorView : UIView
 {
     UIView *_view;
     NSLayoutConstraint *_width;
@@ -17,16 +18,16 @@ __attribute__((visibility("hidden")))
     struct CGSize _layoutSize;
     _Bool _inLayout;
     float _sizingPriority;
-    UILayoutGuide *_sizingLayoutGuide;
+    id <_UITAMICAdaptorViewDelegate> _delegate;
 }
 
 + (_Bool)shouldWrapView:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UILayoutGuide *sizingLayoutGuide; // @synthesize sizingLayoutGuide=_sizingLayoutGuide;
+@property(nonatomic) __weak id <_UITAMICAdaptorViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) float sizingPriority; // @synthesize sizingPriority=_sizingPriority;
 @property(readonly, nonatomic) UIView *view; // @synthesize view=_view;
 - (void)layoutSubviews;
-- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateForAvailableSize;
 - (void)didMoveToWindow;

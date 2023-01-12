@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/CDDCloudKitServerProxy-Protocol.h>
-#import <CoreData/NSXPCListenerDelegate-Protocol.h>
-#import <CoreData/_PFCoreDataCloudKitServer-Protocol.h>
-
 @class CDDCloudKitServerConfiguration, CKScheduler, NSError, NSPersistentContainer, NSString, NSXPCListener, PFCloudKitContainerProvider;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface CDDCloudKitServer : NSObject <NSXPCListenerDelegate, CDDCloudKitServerProxy, _PFCoreDataCloudKitServer>
+@interface CDDCloudKitServer : NSObject
 {
     _Bool _initialized;
     NSXPCListener *_listener;

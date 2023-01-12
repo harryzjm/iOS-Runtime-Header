@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNWarningRecorder-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VNWarningRecorder : NSObject <VNWarningRecorder>
+@interface VNWarningRecorder : NSObject
 {
     NSMutableDictionary *_warnings;
 }

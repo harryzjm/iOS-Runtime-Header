@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class _UISearchBarScopeContainerLayout;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchBarScopeContainerView
+@interface _UISearchBarScopeContainerView : UIView
 {
     _UISearchBarScopeContainerLayout *_layout;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UISearchBarScopeContainerLayout *layout; // @synthesize layout=_layout;
+- (id)description;
 - (void)setNeedsLayout;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

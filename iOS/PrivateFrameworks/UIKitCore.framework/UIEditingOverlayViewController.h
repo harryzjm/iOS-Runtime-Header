@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewController.h"
+
 @class UIUndoGestureInteraction, _UIActionWhenIdle;
 @protocol UIInteraction;
 
 __attribute__((visibility("hidden")))
-@interface UIEditingOverlayViewController
+@interface UIEditingOverlayViewController : UIViewController
 {
     UIUndoGestureInteraction *_undoInteraction;
     _UIActionWhenIdle *_addPencilTextInputInteractionAction;

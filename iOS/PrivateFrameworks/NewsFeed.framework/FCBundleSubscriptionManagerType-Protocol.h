@@ -18,8 +18,10 @@
 - (FCBundleSubscriptionLookUpEntry *)bundleSubscriptionLookupEntry;
 - (void)removeObserver:(id <FCBundleSubscriptionChangeObserver>)arg1;
 - (void)addObserver:(id <FCBundleSubscriptionChangeObserver>)arg1;
+- (void)refreshBundleSubscriptionWithCachePolicy:(unsigned long long)arg1 hideBundleDetectionUI:(_Bool)arg2 completion:(void (^)(FCBundleSubscription *))arg3;
 - (void)refreshBundleSubscriptionWithCachePolicy:(unsigned long long)arg1 completion:(void (^)(FCBundleSubscription *))arg2;
 @property(nonatomic, retain) id <FCEntitlementsOverrideProviderType> entitlementsOverrideProvider;
+@property(nonatomic, readonly) FCBundleSubscription *validatedCachedSubscription;
 @property(nonatomic, readonly) FCBundleSubscription *cachedSubscription;
 @end
 

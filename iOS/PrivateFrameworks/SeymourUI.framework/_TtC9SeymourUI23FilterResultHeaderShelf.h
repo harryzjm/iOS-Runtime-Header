@@ -20,6 +20,10 @@
     MISSING_TYPE *activeSortMode;
     MISSING_TYPE *title;
     MISSING_TYPE *row;
+    MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *hasDetail;
+    MISSING_TYPE *filter;
+    MISSING_TYPE *filterResult;
 }
 
 @end

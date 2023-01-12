@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WKTextPlaceholder : UITextPlaceholder
 {
-    struct ElementContext _elementContext;
+    // Error: parsing type: '{ElementContext="boundingRect"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"webPageIdentifier"{ObjectIdentifier<WebCore::PageIdentifierType>="m_identifier"Q}"documentIdentifier"{ProcessQualified<WTF::UUID>="m_object"{UUID="m_data"T}"m_processIdentifier"{ObjectIdentifier<WebCore::ProcessIdentifierType>="m_identifier"Q}}"elementIdentifier"{ObjectIdentifier<WebCore::ElementIdentifierType>="m_identifier"Q}}', name: _elementContext
 }
 
 - (id).cxx_construct;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCH3DResource, TSCH3DResourceLoader;
 
-@interface TSCH3DResourceCacheKey : NSObject <NSCopying>
+@interface TSCH3DResourceCacheKey : NSObject
 {
     TSCH3DResourceLoader *_loader;
     TSCH3DResource *_resource;

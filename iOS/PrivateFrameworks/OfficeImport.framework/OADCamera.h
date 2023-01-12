@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class OADRotation3D;
 
 __attribute__((visibility("hidden")))
-@interface OADCamera : NSObject <NSCopying>
+@interface OADCamera : NSObject
 {
     OADRotation3D *mRotation;
     int mCameraType;

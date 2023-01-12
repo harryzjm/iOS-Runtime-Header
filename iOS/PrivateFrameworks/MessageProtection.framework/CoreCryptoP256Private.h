@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MessageProtection/P256PrivateKeyProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CoreCryptoP256Private : NSObject <P256PrivateKeyProtocol>
+@interface CoreCryptoP256Private : NSObject
 {
     struct ccec_full_ctx *_full_key;
 }

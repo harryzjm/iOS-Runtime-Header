@@ -6,13 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-#import <VideosUI/UITableViewDataSource-Protocol.h>
-#import <VideosUI/UITextFieldDelegate-Protocol.h>
-
 @class NSString, NSURL, PSSpecifier, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface VUIAccountSettingsViewController : PSListController <UITableViewDataSource, UITextFieldDelegate>
+@interface VUIAccountSettingsViewController : PSListController
 {
     _Bool _authenticationInProgress;
     long long _watchListAppsCount;
@@ -20,6 +17,7 @@ __attribute__((visibility("hidden")))
     PSSpecifier *_credentialsPasswordSpecifier;
     PSSpecifier *_signInSpecifier;
     PSSpecifier *_createAccountSpecifier;
+    PSSpecifier *_syncMySportsSpecifier;
     UITextField *_credentialsAppleIDTextField;
     UITextField *_credentialsPasswordTextField;
     NSURL *_addFundsUrl;
@@ -29,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSURL *addFundsUrl; // @synthesize addFundsUrl=_addFundsUrl;
 @property(retain, nonatomic) UITextField *credentialsPasswordTextField; // @synthesize credentialsPasswordTextField=_credentialsPasswordTextField;
 @property(retain, nonatomic) UITextField *credentialsAppleIDTextField; // @synthesize credentialsAppleIDTextField=_credentialsAppleIDTextField;
+@property(retain, nonatomic) PSSpecifier *syncMySportsSpecifier; // @synthesize syncMySportsSpecifier=_syncMySportsSpecifier;
 @property(retain, nonatomic) PSSpecifier *createAccountSpecifier; // @synthesize createAccountSpecifier=_createAccountSpecifier;
 @property(retain, nonatomic) PSSpecifier *signInSpecifier; // @synthesize signInSpecifier=_signInSpecifier;
 @property(retain, nonatomic) PSSpecifier *credentialsPasswordSpecifier; // @synthesize credentialsPasswordSpecifier=_credentialsPasswordSpecifier;
@@ -36,14 +35,20 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long watchListAppsCount; // @synthesize watchListAppsCount=_watchListAppsCount;
 @property(nonatomic) _Bool authenticationInProgress; // @synthesize authenticationInProgress=_authenticationInProgress;
 - (void)_dismissViewController;
+- (void)_handleAccountSettingsEventWithUrl:(id)arg1 amsBagKey:(id)arg2 useAMSWebView:(_Bool)arg3;
 - (long long)_alertStyle;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)_recordDialogClick:(id)arg1;
+- (id)_dialogMetricsData;
 - (id)_getConnectedAppsCountString;
 - (void)_checkExternalLinksWithDispatchGroup:(id)arg1;
 - (void)_checkConnectedAppsWithDispatchGroup:(id)arg1;
 - (void)_loadDynamicIdentifiers;
+- (void)_setSyncMySportsEnabled:(id)arg1;
+- (id)_syncMySportsEnabled;
+- (void)_syncMySportsSettingDidChange:(id)arg1;
 - (void)_openiForgotAppleURL;
 - (void)_clearPlayHistory:(id)arg1;
 - (void)_didSelectSpecifier:(id)arg1;
@@ -51,6 +56,9 @@ __attribute__((visibility("hidden")))
 - (id)_signInSpecifiers;
 - (id)_credentialsSpecifiers;
 - (id)_signOutSpecifiers;
+- (void)_showPrivacySheet:(id)arg1;
+- (void)_addPrivacyFooterToGroup:(id)arg1;
+- (id)_mySportsSpecifiers;
 - (id)_clearHistorySpecifiers;
 - (id)_externalSpecifiers;
 - (id)_sourcesSpecifiers;

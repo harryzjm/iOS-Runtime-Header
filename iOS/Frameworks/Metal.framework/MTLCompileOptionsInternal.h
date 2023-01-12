@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLCompileOptions.h"
+
 @class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MTLCompileOptionsInternal
+@interface MTLCompileOptionsInternal : MTLCompileOptions
 {
     _Bool _userSetLanguageVersion;
     NSDictionary *_preprocessorMacros;
@@ -23,8 +25,11 @@ __attribute__((visibility("hidden")))
     NSArray *_libraries;
     NSString *_installName;
     _Bool _preserveInvariance;
+    long long _optimizationLevel;
 }
 
+- (void)setOptimizationLevel:(long long)arg1;
+- (long long)optimizationLevel;
 - (void)setPreserveInvariance:(_Bool)arg1;
 - (_Bool)preserveInvariance;
 - (void)setInstallName:(id)arg1;

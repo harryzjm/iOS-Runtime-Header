@@ -6,10 +6,11 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _SFPBImage;
+@class NSData, NSDictionary, NSString, _SFPBButtonItem, _SFPBImage;
 
 @protocol _SFPBSportsTeam <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBButtonItem *button;
 @property(copy, nonatomic) NSString *name;
 @property(copy, nonatomic) NSString *accessibilityDescription;
 @property(copy, nonatomic) NSString *score;

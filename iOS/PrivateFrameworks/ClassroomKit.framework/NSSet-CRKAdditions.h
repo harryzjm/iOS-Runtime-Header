@@ -6,11 +6,9 @@
 
 #import <Foundation/NSSet.h>
 
-#import <ClassroomKit/_SetOperable-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSSet (CRKAdditions) <_SetOperable>
+@interface NSSet (CRKAdditions)
 + (id)crk_setByCopyingObjectsFromArray:(id)arg1;
 - (id)setByCombiningWithSet:(id)arg1 operation:(SEL)arg2;
 - (_Bool)crk_containsObjectMatchingPredicate:(CDUnknownBlockType)arg1;

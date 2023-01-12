@@ -6,12 +6,9 @@
 
 #import <TSCharts/TSCHPersistentChartMediator.h>
 
-#import <NumbersQuicklook/TSCECalculationEngineRegistration-Protocol.h>
-#import <NumbersQuicklook/TSKDocumentObject-Protocol.h>
-
 @class NSString;
 
-@interface TNPersistentChartMediator : TSCHPersistentChartMediator <TSKDocumentObject, TSCECalculationEngineRegistration>
+@interface TNPersistentChartMediator : TSCHPersistentChartMediator
 {
 }
 

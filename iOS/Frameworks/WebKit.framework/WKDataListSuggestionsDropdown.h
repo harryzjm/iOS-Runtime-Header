@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebKit/UIContextMenuInteractionDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKDataListSuggestionsDropdown <UIContextMenuInteractionDelegate>
+@interface WKDataListSuggestionsDropdown
 {
     struct RetainPtr<NSArray<UIMenuElement *>> _suggestionsMenuElements;
     struct RetainPtr<UIContextMenuInteraction> _suggestionsContextMenuInteraction;
@@ -21,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
-- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configuration:(id)arg2 highlightPreviewForItemWithIdentifier:(id)arg3;
 - (struct UIEdgeInsets)_preferredEdgeInsetsForSuggestionsMenu;
 - (void)_suggestionsMenuDidDismiss;
 - (void)_suggestionsMenuDidPresent;

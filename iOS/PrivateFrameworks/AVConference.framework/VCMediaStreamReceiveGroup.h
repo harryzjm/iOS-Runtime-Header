@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCMediaStreamDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaStreamReceiveGroup <VCMediaStreamDelegate>
+@interface VCMediaStreamReceiveGroup
 {
     NSNumber *_optedInStreamID;
     NSNumber *_activeStreamID;

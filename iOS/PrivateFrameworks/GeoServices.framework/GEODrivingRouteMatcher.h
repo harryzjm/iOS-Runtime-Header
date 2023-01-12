@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEORouteMatcher.h"
+
 __attribute__((visibility("hidden")))
-@interface GEODrivingRouteMatcher
+@interface GEODrivingRouteMatcher : GEORouteMatcher
 {
     double _differentLegScorePenalty;
 }
@@ -17,9 +19,9 @@ __attribute__((visibility("hidden")))
 - (id)_startStepForPreviousRouteMatch:(id)arg1;
 - (double)_maxCourseDelta:(id)arg1 previousRouteMatch:(id)arg2 timeSinceTunnel:(double)arg3;
 - (double)_modifiedCourseAccuracyForLocation:(id)arg1 previousRouteMatch:(id)arg2;
-- (double)_modifiedHorizontalAccuracy:(double)arg1 routeIndex:(unsigned int)arg2;
+- (double)_modifiedHorizontalAccuracy:(double)arg1 routeCoordinate:(struct PolylineCoordinate)arg2;
 - (double)_courseWeightForLocation:(id)arg1 accuracyType:(long long)arg2;
-- (double)_maxMatchDistance:(double)arg1 routeIndex:(unsigned int)arg2 previousRouteMatch:(id)arg3 timeSinceTunnel:(double)arg4;
+- (double)_maxMatchDistance:(double)arg1 routeCoordinate:(struct PolylineCoordinate)arg2 previousRouteMatch:(id)arg3 timeSinceTunnel:(double)arg4;
 - (id)_candidateForSegment:(id)arg1 location:(id)arg2 previousRouteMatch:(id)arg3;
 - (id)initWithRoute:(id)arg1;
 

@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)addJunction:(id)arg1;
 - (id)junctionAtCoordinate:(Matrix_8746f91e)arg1;
 - (id)junctionForGeoJunction:(struct GeoCodecsConnectivityJunction *)arg1;
-- (void)dealloc;
 - (id)initWithTile:(const void *)arg1;
 
 @end

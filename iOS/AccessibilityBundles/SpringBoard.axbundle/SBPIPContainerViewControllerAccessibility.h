@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axTagSBInteractionPassThroughView;
 - (_Bool)accessibilityActivate;
 - (id)_announcementStringForQuadrant:(int)arg1;
 - (int)_quadrantForContentView;
@@ -22,8 +21,6 @@
 - (id)accessibilityCustomActions;
 - (void)setNeedsLayoutForInteractionController:(id)arg1 traits:(unsigned long long)arg2 withReason:(unsigned long long)arg3 behavior:(int)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)interactionControllerDidEndAllInteractions:(id)arg1;
-- (void)loadView;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

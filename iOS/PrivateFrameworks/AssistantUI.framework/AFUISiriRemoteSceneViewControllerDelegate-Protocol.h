@@ -64,6 +64,8 @@
 - (void)siriRemoteViewControllerDidDeactivateScene:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 sceneDidActivateWithIdentifier:(NSString *)arg2;
 - (void)siriRemoteViewControllerDidPresentKeyboard:(AFUISiriRemoteSceneViewController *)arg1;
+- (void)invalidateSystemApertureAssertion;
+- (void)requestSystemApertureCollapse;
 - (void)requestBlurVisible:(_Bool)arg1 reason:(long long)arg2 fence:(BKSAnimationFenceHandle *)arg3;
 - (void)setShouldDismissForSwipesOutsideContent:(_Bool)arg1;
 - (void)setShouldDismissForTapsOutsideContent:(_Bool)arg1;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *sceneProvider;
     MISSING_TYPE *cloudContext;
+    MISSING_TYPE *tagService;
     MISSING_TYPE *commandCenter;
 }
 

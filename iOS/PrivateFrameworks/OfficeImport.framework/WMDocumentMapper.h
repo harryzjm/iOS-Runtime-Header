@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OfficeImport/CMMapperRoot-Protocol.h>
-
 @class NSString, WDDocument;
 
 __attribute__((visibility("hidden")))
-@interface WMDocumentMapper <CMMapperRoot>
+@interface WMDocumentMapper
 {
     NSString *mFileName;
 }

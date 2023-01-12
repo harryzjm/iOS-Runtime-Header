@@ -6,15 +6,20 @@
 
 #import <Intents/INFile.h>
 
-#import <WorkflowKit/WFCodableAttributeContentConvertible-Protocol.h>
-#import <WorkflowKit/WFCodableAttributeTransformable-Protocol.h>
-
 @class NSString;
 
-@interface INFile (Workflow) <WFCodableAttributeContentConvertible, WFCodableAttributeTransformable>
+@interface INFile (Workflow)
++ (id)compatibleFileTypeForContentItem:(id)arg1 availableTypes:(id)arg2;
++ (void)coerceContentItems:(id)arg1 toSupportedUTIs:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)coerceContentItemsIfAppropriate:(id)arg1 toSupportedUTIs:(id)arg2 withParameterStates:(id)arg3 dynamicOptions:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)getINFileRepresentationsFromContent:(id)arg1 byCoercingToSupportedUTIs:(id)arg2 withParameterState:(id)arg3 dynamicOptions:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
++ (_Bool)wf_processParameterValue:(id)arg1 parameterState:(id)arg2 coerceToSupportedUTIs:(id)arg3 array:(_Bool)arg4 dynamicOptions:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (Class)wf_contentItemClass;
 + (id)wf_fileWithFileRepresentation:(id)arg1 bookmarkData:(id)arg2 displayName:(id)arg3;
 + (id)wf_fileWithFileRepresentation:(id)arg1 displayName:(id)arg2;
+- (_Bool)wf_removedOnCompletion;
+- (id)wf_initWithBookmarkData:(id)arg1 filename:(id)arg2 typeIdentifier:(id)arg3 removedOnCompletion:(id)arg4;
+- (id)wf_initWithData:(id)arg1 filename:(id)arg2 fileURL:(id)arg3 typeIdentifier:(id)arg4 removedOnCompletion:(id)arg5;
 - (id)wf_fileRepresentation;
 - (void)wf_transformUsingCodableAttribute:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)wf_contentItemWithCodableAttribute:(id)arg1;

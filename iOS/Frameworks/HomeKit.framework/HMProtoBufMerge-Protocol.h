@@ -6,9 +6,9 @@
 
 #import <HomeKit/HMProtoBuf-Protocol.h>
 
-@class HMObjectMergeOperations, NSData;
+@class NSData;
 
 @protocol HMProtoBufMerge <HMProtoBuf>
-- (_Bool)applyProtoBufData:(NSData *)arg1 callbackOperations:(HMObjectMergeOperations *)arg2;
+- (_Bool)applyProtoBufData:(NSData *)arg1;
 @end
 

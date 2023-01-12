@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/PKModularService-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSExtensionService_Subsystem : NSObject <PKModularService>
+@interface NSExtensionService_Subsystem : NSObject
 {
 }
 

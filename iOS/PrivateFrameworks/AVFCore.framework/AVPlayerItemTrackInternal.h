@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVAsset, AVWeakReference, NSDictionary, NSMutableArray, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVPlayerItemTrackInternal : NSObject
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
     float hapticVolume;
     _Bool hapticVolumeWasSet;
     NSMutableArray *sampleBufferOutputs;
+    NSObject<OS_dispatch_queue> *ivarAccessQueue;
 }
 
 @end

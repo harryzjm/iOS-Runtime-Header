@@ -12,9 +12,9 @@
 {
     MISSING_TYPE *callbackStore;
     MISSING_TYPE *objects;
+    MISSING_TYPE *erasedObjects;
     MISSING_TYPE *publicContainer;
     MISSING_TYPE *contextContainer;
-    MISSING_TYPE *bridgedContext;
 }
 
 @end

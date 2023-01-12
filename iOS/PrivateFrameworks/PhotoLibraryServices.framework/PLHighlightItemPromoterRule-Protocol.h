@@ -10,9 +10,9 @@
 @protocol PLHighlightItem;
 
 @protocol PLHighlightItemPromoterRule <NSObject>
-- (id <PLHighlightItem>)fallbackHighlightItemFromAllHighlightItems:(NSSet *)arg1;
-- (NSArray *)highlightItemsSortedByImportance:(NSSet *)arg1;
-- (_Bool)highlightItemHasMinimumRequirementToBePromoted:(id <PLHighlightItem>)arg1;
+- (id <PLHighlightItem>)fallbackHighlightItemFromAllHighlightItems:(NSSet *)arg1 withSharingConsideration:(long long)arg2;
+- (NSArray *)highlightItemsSortedByImportance:(NSSet *)arg1 withSharingConsideration:(long long)arg2;
+- (_Bool)highlightItemHasMinimumRequirementToBePromoted:(id <PLHighlightItem>)arg1 withSharingConsideration:(long long)arg2;
 - (unsigned long long)maximumNumberOfHighlightItemsToPromote;
 @end
 

@@ -6,8 +6,8 @@
 
 #import <SpringBoardHome/SBFolderControllerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, SBHAddWidgetSheetViewController, SBHIconImageCache, SBIcon, SBIconListView, SBIconView, SBRootFolderController, SBRootFolderViewPageManagementLayoutManager, SBViewControllerTransitionContext, SBWidgetIcon, UIView, UIViewController, UIViewPropertyAnimator;
-@protocol SBHWidgetSheetViewControllerPresenter, SBHWidgetSheetViewControlling, SBIconDragPreview, UIDropSession, UIViewImplicitlyAnimating;
+@class NSMutableDictionary, NSString, SBHAddWidgetSheetViewController, SBHIconImageCache, SBIcon, SBIconListView, SBIconView, SBRootFolderController, SBRootFolderViewPageManagementLayoutManager, SBViewControllerTransitionContext, SBWidgetIcon, UIView, UIViewController, UIViewPropertyAnimator, UIWindow, UIWindowScene;
+@protocol SBHWidgetSheetViewControllerPresenter, SBHWidgetSheetViewControlling, SBIconDragPreview, SBIconDragPreviewContaining, SBLeafIconDataSource, UIDropSession, UIViewImplicitlyAnimating;
 
 @protocol SBRootFolderControllerDelegate <SBFolderControllerDelegate>
 
@@ -23,6 +23,8 @@
 - (void)rootFolderController:(SBRootFolderController *)arg1 willDismissWidgetEditingViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didPresentWidgetEditingViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 willPresentWidgetEditingViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
+- (id <SBLeafIconDataSource>)rootFolderController:(SBRootFolderController *)arg1 promoteSuggestedWidget:(id <SBLeafIconDataSource>)arg2 withinStack:(SBWidgetIcon *)arg3;
+- (UIWindow<SBIconDragPreviewContaining> *)windowForStackConfigurationIconDragPreviewsForRootFolderController:(SBRootFolderController *)arg1 forWindowScene:(UIWindowScene *)arg2;
 - (UIView<SBIconDragPreview> *)rootFolderController:(SBRootFolderController *)arg1 dragPreviewForIconView:(SBIconView *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 noteDidRemoveSuggestedWidgetIcon:(SBWidgetIcon *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 noteDragItemWasConsumedExternallyForDropSession:(id <UIDropSession>)arg2;
@@ -32,6 +34,7 @@
 - (void)rootFolderController:(SBRootFolderController *)arg1 didDismissPageManagementWithLayoutManager:(SBRootFolderViewPageManagementLayoutManager *)arg2 context:(NSMutableDictionary *)arg3;
 - (void)rootFolderController:(SBRootFolderController *)arg1 willDismissPageManagementUsingAnimator:(id <UIViewImplicitlyAnimating>)arg2 context:(NSMutableDictionary *)arg3;
 - (void)rootFolderController:(SBRootFolderController *)arg1 willPresentPageManagementWithLayoutManager:(SBRootFolderViewPageManagementLayoutManager *)arg2 animator:(id <UIViewImplicitlyAnimating>)arg3 context:(NSMutableDictionary *)arg4;
+- (void)rootFolderController:(SBRootFolderController *)arg1 viewDidTransitionToSize:(struct CGSize)arg2;
 - (void)rootFolderControllerViewDidDisappear:(SBRootFolderController *)arg1;
 - (void)rootFolderControllerViewWillAppear:(SBRootFolderController *)arg1;
 - (NSString *)rootFolderController:(SBRootFolderController *)arg1 vendorNameForAppWithBundleIdentifiers:(NSString *)arg2;

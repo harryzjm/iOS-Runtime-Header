@@ -6,12 +6,21 @@
 
 #import <IDS/IDSService.h>
 
-@class HMDAccountHandle, HMDDeviceHandle, NSArray;
+@class HMDAccountHandle, IDSAccount, NSArray, NSSet, NSString;
 
 @interface IDSService (HMDAccounts)
-@property(readonly, copy) HMDDeviceHandle *hmd_localDeviceHandle;
 @property(readonly, copy) HMDAccountHandle *hmd_preferredHandle;
 @property(readonly, copy) NSArray *hmd_handles;
 @property(readonly, nonatomic, getter=hmd_isActive) _Bool hmd_active;
+
+// Remaining properties
+@property(readonly, copy, nonatomic) NSSet *accounts;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSArray *devices;
+@property(readonly) unsigned long long hash;
+@property(readonly, retain, nonatomic) IDSAccount *iCloudAccount;
+@property(readonly, copy, nonatomic) NSString *serviceIdentifier;
+@property(readonly) Class superclass;
 @end
 

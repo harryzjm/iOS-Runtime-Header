@@ -4,21 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOTileLoader;
+@class GEOMapFeatureMultiSegmentRoadFinder;
 
 __attribute__((visibility("hidden")))
 @interface GEOMapFeatureIntersectedRoadFinder
 {
-    GEOTileLoader *_tileLoader;
+    GEOMapFeatureMultiSegmentRoadFinder *_multiSegmentRoadFinder;
+    _Bool _joinAllRoadsByMuid;
 }
 
 - (void).cxx_destruct;
-- (void)_tilesAdjacentToTile:(struct _GEOTileKey)arg1 atPoint:(struct GeoCodecsVectorTilePoint)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (id)_findRoadsAtJunction:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 featureToIgnore:(id)arg3 handler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+@property(nonatomic) _Bool joinAllRoadsByMuid; // @synthesize joinAllRoadsByMuid=_joinAllRoadsByMuid;
+- (void)_tilesBorderingTile:(struct _GEOTileKey)arg1 atPoint:(struct GeoCodecsVectorTilePoint)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (id)findUnjoinedRoadsAtJunction:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 muid:(unsigned long long)arg3 requireExactMuidMatch:(_Bool)arg4 featureToIgnore:(id)arg5 handler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (id)_findRoadsAtJunction:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 muid:(unsigned long long)arg3 featureToIgnore:(id)arg4 handler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)findRoadsAtJunction:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)findRoadsAtNextIntersectionOf:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)findRoadsAtPreviousIntersectionOf:(id)arg1 desiredRoadDirectionality:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)initWithTileLoader:(id)arg1;
 
 @end
 

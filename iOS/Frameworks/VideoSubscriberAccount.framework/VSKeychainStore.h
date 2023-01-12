@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)_fixUpdateConflictForItemWithAttributes:(id)arg1 andAttributesToUpdate:(id)arg2;
 - (_Bool)deleteItemsMatchingQuery:(id)arg1 error:(id *)arg2;
 - (_Bool)updateAttributes:(id)arg1 ofItemsMatchingQuery:(id)arg2 error:(id *)arg3;
 - (id)findItemsMatchingQuery:(id)arg1 error:(id *)arg2;

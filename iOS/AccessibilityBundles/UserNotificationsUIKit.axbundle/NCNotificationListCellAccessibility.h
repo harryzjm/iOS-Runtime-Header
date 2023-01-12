@@ -12,12 +12,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySupplementaryFooterViews;
+- (id)axCustomActionsForActions:(id)arg1;
 - (id)_accessibilityUserTestingChildren;
-- (id)_accessibilityCellActionControls;
-- (id)_accessibilityOpenActionControls;
-- (id)_accessibilityActionControlsInButtonView:(id)arg1;
+- (id)_accessibilityCellButtons;
+- (id)_accessibilityCellActions;
+- (id)_accessibilityOpenAction;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (id)_accessibilityListViewParent;
 - (_Bool)_axIsCollapsed;
 - (id)_axNCNotificationViewController;
 - (id)_axLookView;
@@ -26,7 +28,6 @@
 - (_Bool)isAccessibilityElement;
 - (_Bool)_accessibilityIsAwayAlertElement;
 - (id)accessibilityDragSourceDescriptors;
-- (_Bool)_axPerformNotificationCustomAction:(id)arg1;
 - (id)accessibilityCustomActions;
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;

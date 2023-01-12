@@ -4,17 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/BCSActionDelegate-Protocol.h>
-#import <VisionKitCore/UIContextMenuInteractionDelegate-Protocol.h>
-#import <VisionKitCore/UIGestureRecognizerDelegate-Protocol.h>
-
 @class CAShapeLayer, NSArray, NSDictionary, NSString, UIBezierPath, UIContextMenuInteraction, UITapGestureRecognizer, VKCBaseDataDetectorElement, VKCMRCDataDetectorElement, VKQuad;
 @protocol VKCDataDetectorElementViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCDataDetectorElementView <UIContextMenuInteractionDelegate, UIGestureRecognizerDelegate, BCSActionDelegate>
+@interface VKCDataDetectorElementView
 {
-    _Bool _isPeformingManualContextInvocation;
+    _Bool _isPerformingManualContextInvocation;
     _Bool _allowLongPressDDActivationOnly;
     VKCBaseDataDetectorElement *_dataDetectorElement;
     NSArray *_allDataDetectorElements;
@@ -32,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *dataDetectorContext; // @synthesize dataDetectorContext=_dataDetectorContext;
 @property(retain, nonatomic) UIContextMenuInteraction *menuInteraction; // @synthesize menuInteraction=_menuInteraction;
 @property(nonatomic) _Bool allowLongPressDDActivationOnly; // @synthesize allowLongPressDDActivationOnly=_allowLongPressDDActivationOnly;
-@property(nonatomic) _Bool isPeformingManualContextInvocation; // @synthesize isPeformingManualContextInvocation=_isPeformingManualContextInvocation;
+@property(nonatomic) _Bool isPerformingManualContextInvocation; // @synthesize isPerformingManualContextInvocation=_isPerformingManualContextInvocation;
 @property(retain, nonatomic) UIBezierPath *highlightPath; // @synthesize highlightPath=_highlightPath;
 @property(retain, nonatomic) CAShapeLayer *highlightPathLayer; // @synthesize highlightPathLayer=_highlightPathLayer;
 @property(copy, nonatomic) NSString *customAnalyticsIdentifier; // @synthesize customAnalyticsIdentifier=_customAnalyticsIdentifier;

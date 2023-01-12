@@ -18,7 +18,7 @@
 - (struct CGPath *)newElementPathWithPercentage:(double)arg1 radius:(double)arg2 center:(struct CGPoint)arg3 startAngle:(double)arg4 midAngle:(double)arg5 endAngle:(double)arg6 withInnerRadius:(id)arg7;
 - (id)pathCacheForSeries:(unsigned long long)arg1 withInnerRadius:(id)arg2;
 - (id)knobsOfElementForSeries:(unsigned long long)arg1 withInnerRadius:(id)arg2;
-- (struct CGPath *)pathOfElementForSeries:(unsigned long long)arg1 outWedgeCenterPoint:(struct CGPoint *)arg2 withInnerRadius:(id)arg3;
+- (const struct CGPath *)pathOfElementForSeries:(unsigned long long)arg1 outWedgeCenterPoint:(struct CGPoint *)arg2 withInnerRadius:(id)arg3;
 - (id)labelStringForType:(long long)arg1 seriesModelCache:(id)arg2;
 - (struct CGRect)calloutLineBoundingBoxForSeries:(unsigned long long)arg1;
 - (id)newPathsForRenderingCalloutLineForSeries:(unsigned long long)arg1 outStartLineEndPath:(id *)arg2 outEndLineEndPath:(id *)arg3 stroke:(id)arg4 outStroke:(id *)arg5 context:(struct CGContext *)arg6 contextScale:(float)arg7;

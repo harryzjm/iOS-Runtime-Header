@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface _UIMirrorNinePatchView
+@interface _UIMirrorNinePatchView : UIView
 {
     UIImage *_originalImage;
     struct UIEdgeInsets _insets;

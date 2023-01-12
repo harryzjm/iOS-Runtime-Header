@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TUNonAnimatingLayer.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC5TeaUI15ShineImageLayer
+@interface _TtC5TeaUI15ShineImageLayer : TUNonAnimatingLayer
 {
     MISSING_TYPE *shineOptions;
     MISSING_TYPE *shineImage;

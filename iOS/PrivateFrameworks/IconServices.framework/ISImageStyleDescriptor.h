@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IconServices/NSCopying-Protocol.h>
-#import <IconServices/NSSecureCoding-Protocol.h>
-
 @class IFColor, NSUUID;
 
-@interface ISImageStyleDescriptor : NSObject <NSSecureCoding, NSCopying>
+__attribute__((visibility("hidden")))
+@interface ISImageStyleDescriptor : NSObject
 {
     _Bool _templateVariant;
     _Bool _selectedVariant;

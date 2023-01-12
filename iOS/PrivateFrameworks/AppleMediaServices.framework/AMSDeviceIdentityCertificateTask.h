@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSTask.h"
+
 @class NSObject;
 @protocol AMSBagProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AMSDeviceIdentityCertificateTask
+@interface AMSDeviceIdentityCertificateTask : AMSTask
 {
     id <AMSBagProtocol> _bag;
     NSObject<OS_dispatch_queue> *_requestQueue;
@@ -19,8 +21,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 - (id)performDeviceIdentityRequestWithBaaOptions:(id)arg1 ttlBagKey:(id)arg2 logInformation:(id)arg3;
 - (id)initWithBag:(id)arg1;
-- (id)performDeviceIdentityRequest;
-- (id)performDeviceIdentityRequest;
+- (id)performDeviceIdentityRequestForAbsinthe;
+- (id)performDeviceIdentityRequestForFraudReport;
 
 @end
 

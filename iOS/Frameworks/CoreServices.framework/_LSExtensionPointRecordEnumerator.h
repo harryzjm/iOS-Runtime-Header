@@ -4,14 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_LSRecordEnumerator.h"
+
+@class LSApplicationRecord;
+
 __attribute__((visibility("hidden")))
-@interface _LSExtensionPointRecordEnumerator
+@interface _LSExtensionPointRecordEnumerator : _LSRecordEnumerator
 {
     struct vector<unsigned int, std::allocator<unsigned int>> _extensionIDs;
+    LSApplicationRecord *_parentApplicationRecord;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(retain) LSApplicationRecord *parentApplicationRecord; // @synthesize parentApplicationRecord=_parentApplicationRecord;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;

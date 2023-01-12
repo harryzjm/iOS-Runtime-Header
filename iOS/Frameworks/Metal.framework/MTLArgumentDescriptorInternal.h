@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLArgumentDescriptor.h"
+
 __attribute__((visibility("hidden")))
-@interface MTLArgumentDescriptorInternal
+@interface MTLArgumentDescriptorInternal : MTLArgumentDescriptor
 {
     struct MTLArgumentDescriptorPrivate _private;
 }

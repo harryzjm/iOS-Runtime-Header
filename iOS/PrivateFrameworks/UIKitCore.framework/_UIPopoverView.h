@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIActionSheet, UIColor, UIImageView, UIPopoverBackgroundView, UIPopoverController, UIView;
+#import "UIView.h"
+
+@class UIActionSheet, UIColor, UIImageView, UIPopoverBackgroundView, UIPopoverController;
 
 __attribute__((visibility("hidden")))
-@interface _UIPopoverView
+@interface _UIPopoverView : UIView
 {
     UIView *_contentView;
     UIPopoverBackgroundView *_backgroundView;

@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE, NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ObjCVersion : NSObject
 {
     MISSING_TYPE *version;

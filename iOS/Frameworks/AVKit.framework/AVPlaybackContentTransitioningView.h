@@ -6,14 +6,11 @@
 
 #import <UIKit/UIScrollView.h>
 
-#import <AVKit/AVPlaybackContentContainer-Protocol.h>
-#import <AVKit/UIScrollViewDelegate-Protocol.h>
-
 @class AVPlaybackContentContainerView, NSString, NSValue;
 @protocol AVPlaybackContentTransitioningViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVPlaybackContentTransitioningView : UIScrollView <UIScrollViewDelegate, AVPlaybackContentContainer>
+@interface AVPlaybackContentTransitioningView : UIScrollView
 {
     _Bool _playingOnSecondScreen;
     _Bool _transitionInteractive;
@@ -62,7 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
 @property(nonatomic) _Bool canShowStatusBarBackgroundGradientWhenStatusBarVisible;
-- (void)setVideoGravity:(long long)arg1 removingAllSubayerTransformAnimations:(_Bool)arg2;
+- (void)setVideoGravity:(long long)arg1 removingAllSublayerTransformAnimations:(_Bool)arg2;
 @property(nonatomic) struct CGRect videoContentFrame;
 - (void)setFrame:(struct CGRect)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;

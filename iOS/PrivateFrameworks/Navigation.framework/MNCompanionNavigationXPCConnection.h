@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNCompanionNavigationDelegate-Protocol.h>
-
 @class GEOCompanionRouteDetails, GEOCompanionRouteStatus, NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface MNCompanionNavigationXPCConnection : NSObject <MNCompanionNavigationDelegate>
+@interface MNCompanionNavigationXPCConnection : NSObject
 {
     NSXPCConnection *_connection;
     GEOCompanionRouteDetails *_companionRouteDetails;

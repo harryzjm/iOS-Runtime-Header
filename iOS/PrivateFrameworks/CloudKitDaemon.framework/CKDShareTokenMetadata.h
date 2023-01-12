@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKDShareTokenMetadata : NSObject <NSCopying>
+@interface CKDShareTokenMetadata : NSObject
 {
     _Bool _forceDSRefetch;
     NSString *_routingKey;
     NSData *_shortSharingTokenData;
     NSData *_publicTokenData;
     NSData *_privateTokenData;
+    NSString *_participantID;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *participantID; // @synthesize participantID=_participantID;
 @property(retain, nonatomic) NSData *privateTokenData; // @synthesize privateTokenData=_privateTokenData;
 @property(retain, nonatomic) NSData *publicTokenData; // @synthesize publicTokenData=_publicTokenData;
 @property(nonatomic) _Bool forceDSRefetch; // @synthesize forceDSRefetch=_forceDSRefetch;

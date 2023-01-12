@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/__CFNCoreLoggableReq-Protocol.h>
-
-@interface __CFNCoreLoggable : NSObject <__CFNCoreLoggableReq>
+@interface __CFNCoreLoggable : NSObject
 {
     struct CoreLoggable *_loggable;
 }

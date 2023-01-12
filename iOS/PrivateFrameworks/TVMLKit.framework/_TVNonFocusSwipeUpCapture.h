@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TVMLKit/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UIPanGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _TVNonFocusSwipeUpCapture : NSObject <UIGestureRecognizerDelegate>
+@interface _TVNonFocusSwipeUpCapture : NSObject
 {
     UIView *_initiallyFocusedView;
     struct CGPoint _translation;

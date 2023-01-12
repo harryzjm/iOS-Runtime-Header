@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSInputStream, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSBatchInsertRequestEncodingToken : NSObject <NSSecureCoding>
+@interface NSBatchInsertRequestEncodingToken : NSObject
 {
     NSString *_entityName;
     NSArray *_objectsToInsert;

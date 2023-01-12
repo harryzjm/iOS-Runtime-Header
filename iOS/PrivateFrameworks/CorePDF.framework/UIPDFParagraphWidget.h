@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/UIPDFSelectionWidget-Protocol.h>
-
 @class CALayer, CAShapeLayer, UIPDFPageView;
 
 __attribute__((visibility("hidden")))
-@interface UIPDFParagraphWidget : NSObject <UIPDFSelectionWidget>
+@interface UIPDFParagraphWidget : NSObject
 {
     CAShapeLayer *_trackingBorder;
     struct CGRect _initialRect;

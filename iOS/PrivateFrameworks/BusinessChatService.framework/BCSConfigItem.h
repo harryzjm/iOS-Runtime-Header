@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSExpiring-Protocol.h>
-#import <BusinessChatService/NSCopying-Protocol.h>
-#import <BusinessChatService/NSSecureCoding-Protocol.h>
-
 @class NSDate, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface BCSConfigItem : NSObject <BCSExpiring, NSCopying, NSSecureCoding>
+@interface BCSConfigItem : NSObject
 {
     long long _buckets;
     long long _shards;

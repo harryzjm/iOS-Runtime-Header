@@ -6,10 +6,11 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, UIGestureRecognizer;
+@class NSArray, UIGestureRecognizer, UIWindow;
 @protocol _UIGestureOwning;
 
 @protocol _UIGestureOwning <NSObject>
+@property(readonly, nonatomic) UIWindow *_eventReceivingWindow;
 @property(readonly, nonatomic) NSArray *_nativeInteractions;
 @property(readonly, nonatomic) id <_UIGestureOwning> _actingGestureParent;
 @property(readonly, nonatomic) id <_UIGestureOwning> gestureParent;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/MCNearbyServiceBrowserDelegate-Protocol.h>
-#import <NewsUI2/MCSessionDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI225LocalDraftsDeviceListener : NSObject <MCSessionDelegate, MCNearbyServiceBrowserDelegate>
+@interface _TtC7NewsUI225LocalDraftsDeviceListener : NSObject
 {
     MISSING_TYPE *localFiles;
     MISSING_TYPE *deviceInfo;

@@ -6,13 +6,10 @@
 
 #import <UIKit/UIDocumentBrowserViewController.h>
 
-#import <SwiftUI/UIDocumentBrowserViewControllerDelegate-Protocol.h>
-#import <SwiftUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI29DocumentBrowserViewController : UIDocumentBrowserViewController <UIDocumentBrowserViewControllerDelegate, UIViewControllerTransitioningDelegate>
+@interface _TtC7SwiftUI29DocumentBrowserViewController : UIDocumentBrowserViewController
 {
     MISSING_TYPE *documentConfigurations;
     MISSING_TYPE *rootModifier;

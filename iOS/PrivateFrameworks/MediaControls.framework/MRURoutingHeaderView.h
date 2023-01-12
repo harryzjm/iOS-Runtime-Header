@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
 @class MRUVisualStylingProvider, NSString, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MRURoutingHeaderView : UITableViewHeaderFooterView <MRUVisualStylingProviderObserver>
+@interface MRURoutingHeaderView : UITableViewHeaderFooterView
 {
     NSString *_title;
     MRUVisualStylingProvider *_stylingProvider;

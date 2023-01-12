@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MessageProtection/P256PrivateKeyProtocol-Protocol.h>
-
 @class NSData, NSString, SecKeyP256Public;
 
 __attribute__((visibility("hidden")))
-@interface SecKeyP256Private : NSObject <P256PrivateKeyProtocol>
+@interface SecKeyP256Private : NSObject
 {
     id _privateKey;
     NSData *_privateKeyBlob;

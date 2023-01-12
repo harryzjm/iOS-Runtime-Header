@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsCore/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface FCUserVectorModelOutput : NSObject <MLFeatureProvider>
+@interface FCUserVectorModelOutput : NSObject
 {
     MLMultiArray *_user_vector;
 }

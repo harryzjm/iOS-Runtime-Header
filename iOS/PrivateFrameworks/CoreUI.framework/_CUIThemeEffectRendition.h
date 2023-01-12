@@ -4,12 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIThemeRendition.h"
+
 @class CUIShapeEffectPreset;
 
 __attribute__((visibility("hidden")))
-@interface _CUIThemeEffectRendition
+@interface _CUIThemeEffectRendition : CUIThemeRendition
 {
-    const struct _cuieffectdata *effectData;
+    const struct _cuieffectdata {
+        unsigned int _field1;
+        unsigned int _field2;
+        unsigned int _field3;
+        unsigned int _field4;
+        struct _cuieffectlist {
+            unsigned int _field1;
+            unsigned int _field2[0];
+        } _field5;
+    } *effectData;
     CUIShapeEffectPreset *_effectPreset;
     float _minimumShadowSpread;
 }

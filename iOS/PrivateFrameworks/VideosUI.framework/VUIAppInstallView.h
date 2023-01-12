@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/VUISBIconProgressViewDelegate-Protocol.h>
-
 @class NSString, UIImage, UIImageView, VUISBIconProgressView;
 
 __attribute__((visibility("hidden")))
-@interface VUIAppInstallView : UIView <VUISBIconProgressViewDelegate>
+@interface VUIAppInstallView : UIView
 {
     UIImageView *_appIconImageView;
     UIView *_backgroundKnockoutView;

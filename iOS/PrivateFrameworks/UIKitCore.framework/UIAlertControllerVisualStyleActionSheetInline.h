@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIAlertControllerVisualStyleActionSheet.h"
+
 @class UIView, UIVisualEffectView, _UIPreviewPresentationEffectView;
 
 __attribute__((visibility("hidden")))
-@interface UIAlertControllerVisualStyleActionSheetInline
+@interface UIAlertControllerVisualStyleActionSheetInline : UIAlertControllerVisualStyleActionSheet
 {
     _Bool _actionsReversed;
     UIView *_headerView;
@@ -38,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldPreserveRespondersAcrossWindows;
 - (_Bool)shouldOccludeDuringPresentation;
 - (double)_actionDescriptiveTextFontSize;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
 
 @end
 

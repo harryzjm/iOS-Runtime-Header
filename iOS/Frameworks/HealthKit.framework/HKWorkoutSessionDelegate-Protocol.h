@@ -6,13 +6,15 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKWorkoutEvent, HKWorkoutSession, NSDate, NSError;
+@class HKWorkoutConfiguration, HKWorkoutEvent, HKWorkoutSession, NSDate, NSError;
 
 @protocol HKWorkoutSessionDelegate <NSObject>
 - (void)workoutSession:(HKWorkoutSession *)arg1 didFailWithError:(NSError *)arg2;
 - (void)workoutSession:(HKWorkoutSession *)arg1 didChangeToState:(long long)arg2 fromState:(long long)arg3 date:(NSDate *)arg4;
 
 @optional
+- (void)workoutSession:(HKWorkoutSession *)arg1 didEndActivityWithConfiguration:(HKWorkoutConfiguration *)arg2 date:(NSDate *)arg3;
+- (void)workoutSession:(HKWorkoutSession *)arg1 didBeginActivityWithConfiguration:(HKWorkoutConfiguration *)arg2 date:(NSDate *)arg3;
 - (void)workoutSession:(HKWorkoutSession *)arg1 didGenerateEvent:(HKWorkoutEvent *)arg2;
 @end
 

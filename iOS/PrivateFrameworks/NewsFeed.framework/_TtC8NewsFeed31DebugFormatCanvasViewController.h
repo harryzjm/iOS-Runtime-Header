@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *$__lazy_storage_$_columnView;
     MISSING_TYPE *viewportMonitor;
     MISSING_TYPE *editor;
+    MISSING_TYPE *scrollView;
 }
 
 - (void).cxx_destruct;

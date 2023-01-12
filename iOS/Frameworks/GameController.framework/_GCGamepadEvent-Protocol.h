@@ -8,6 +8,7 @@
 #import <GameController/NSObject-Protocol.h>
 
 @protocol _GCGamepadEvent <NSCopying, NSObject>
+@property(readonly) unsigned long long timestamp;
 - (float)floatValueForElement:(long long)arg1;
 - (_Bool)hasValidValueForElement:(long long)arg1;
 @end

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/_TtP8VideosUI27JSPromiseOperationInterface_-Protocol.h>
+#import "VUIJSObject.h"
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI18JSPromiseOperation <_TtP8VideosUI27JSPromiseOperationInterface_>
+@interface _TtC8VideosUI18JSPromiseOperation : VUIJSObject
 {
     MISSING_TYPE *loadImmediately;
 }

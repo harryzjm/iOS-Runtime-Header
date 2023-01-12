@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSUICommonView.h"
+
 @class UIButton, UILabel;
 @protocol AMSUIWebActionRunnable;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebCameraReaderInfoView
+@interface AMSUIWebCameraReaderInfoView : AMSUICommonView
 {
     UIButton *_bottomLink;
     id <AMSUIWebActionRunnable> _bottomLinkAction;

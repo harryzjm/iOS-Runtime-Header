@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCConnectionManagerDelegate-Protocol.h>
-#import <AVConference/VCIDSSessionInfoSynchronizerDelegate-Protocol.h>
-
 @class NSString, VCIDSSessionInfoSynchronizer;
 
 __attribute__((visibility("hidden")))
-@interface VCTransportSessionIDSMultiLink <VCConnectionManagerDelegate, VCIDSSessionInfoSynchronizerDelegate>
+@interface VCTransportSessionIDSMultiLink
 {
     VCIDSSessionInfoSynchronizer *_sessionInfoSynchronizer;
     _Bool _isWiFiAssistActive;
@@ -19,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) VCIDSSessionInfoSynchronizer *sessionInfoSynchronizer; // @synthesize sessionInfoSynchronizer=_sessionInfoSynchronizer;
 - (void)VCIDSSessionInfoSynchronizer:(void *)arg1 sendVCIDSSessionInfoRequest:(id)arg2;
+- (void)logSignalStrength;
 - (void)setRemoteDeviceVersionIDS;
 - (void)flushLinkProbingStatusWithOptions:(id)arg1;
 - (void)queryProbingResultsWithOptions:(id)arg1;
@@ -29,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)optOutAllStreamsForConnection:(id)arg1;
 - (void)resetParticipantGenerationCounter;
 - (void)updateParticipantGenerationCounter:(unsigned char)arg1;
+- (void)didMediaQualityDegrade:(_Bool)arg1;
 - (void)didUpdatePreferredInterfaceForDuplication:(unsigned char)arg1 notifyPeer:(_Bool)arg2 enableDuplication:(_Bool)arg3 isMediaUnrecoverableSignal:(_Bool)arg4;
 - (void)didEnableDuplication:(_Bool)arg1 activeConnection:(id)arg2;
 - (void)discardConnection:(id)arg1;
@@ -45,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)onStop;
 - (int)onStart;
 - (void)dealloc;
+- (id)initWithCallID:(unsigned int)arg1 requireEncryptionInfo:(_Bool)arg2 reportingAgent:(id)arg3 notificationQueue:(id)arg4 isMultiwaySession:(_Bool)arg5 dataPath:(int)arg6;
 - (id)initWithCallID:(unsigned int)arg1 requireEncryptionInfo:(_Bool)arg2 reportingAgent:(id)arg3 notificationQueue:(id)arg4 isMultiwaySession:(_Bool)arg5;
 - (id)initWithCallID:(unsigned int)arg1 reportingAgent:(id)arg2;
 

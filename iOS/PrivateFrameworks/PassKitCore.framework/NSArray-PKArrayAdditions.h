@@ -22,11 +22,21 @@
 - (unsigned long long)pk_countObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_objectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_shuffledArray;
+- (id)pk_createMutableOrderedSetByApplyingBlock:(CDUnknownBlockType)arg1;
+- (id)pk_createOrderedSetByApplyingBlock:(CDUnknownBlockType)arg1;
+- (id)pk_createMutableSetByApplyingBlock:(CDUnknownBlockType)arg1;
+- (id)pk_createSetByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_arrayBySafelyApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_arrayByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_createArrayBySafelyApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_createArrayByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_arrayByRemovingObjectsInArray:(id)arg1;
 - (id)pk_arrayByRemovingObject:(id)arg1;
+- (id)stringSetValue;
+- (id)stringArrayValue;
+- (id)nonZeroUnsignedLongLongSetValue;
+- (id)nonZeroUnsignedLongLongArrayValue;
+- (id)deepCopyWithZone:(struct _NSZone *)arg1;
+- (id)jsonString;
 @end
 

@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _disclosedSubitem;
     NSArray *_alarms;
-    _Bool _userChangedAlarm;
     _Bool _hasLeaveNowAlarm;
     _Bool _canHaveLeaveNowAlarm;
     EKAlarmsViewModel *_alarmsViewModel;
@@ -26,9 +25,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateAlarms;
 - (_Bool)_calendarItemHasLeaveNowAlarm;
 - (_Bool)configureForCalendarConstraints:(id)arg1;
+- (id)footerTitle;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
-- (_Bool)editItemViewControllerSave:(id)arg1;
-- (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (unsigned long long)numberOfSubitems;
 - (void)setCalendarItem:(id)arg1 store:(id)arg2;
 

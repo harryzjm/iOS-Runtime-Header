@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextDropRequest-Protocol.h>
-#import <UIKitCore/UITextDropRequest_Private-Protocol.h>
-
 @class NSString, UITextDropProposal, UITextPosition, UITextRange;
 @protocol UIDropSession;
 
 __attribute__((visibility("hidden")))
-@interface UITextDropRequest : NSObject <UITextDropRequest_Private, UITextDropRequest>
+@interface UITextDropRequest : NSObject
 {
     _Bool _sameView;
     id <UIDropSession> _dropSession;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
+@class NSArray, NSMutableArray, NSString;
 
-@class NSMutableArray, NSString;
-
-@interface IBUITraitStorage : NSObject <IBBinaryArchiving>
+@interface IBUITraitStorage : NSObject
 {
     NSMutableArray *_records;
     NSString *_keyPath;
@@ -25,7 +23,7 @@
 - (id)uiTraitStorageWithObjectIDTable:(id)arg1;
 - (void)addRecord:(id)arg1;
 - (id)existingRecordForTraitCollection:(id)arg1;
-- (id)records;
+@property(readonly, nonatomic) NSArray *records;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithObjectID:(id)arg1 keyPath:(id)arg2;

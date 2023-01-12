@@ -13,14 +13,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)configurationClass;
-+ (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 + (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (_Bool)allowsCachingOfResults;
-- (CDUnknownBlockType)resultsSortingComparator;
-- (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
+- (id)applicableDetectorTypeForRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (id)initWithDetectorType:(id)arg1 groupingConfiguration:(id)arg2;
 
 @end

@@ -9,6 +9,8 @@
 @class CKAttachmentMessagePartChatItem, CKMediaObjectAssetMenuBuilder, NSArray;
 
 @protocol CKMediaObjectAssetMenuBuilderDelegate <NSObject>
+- (_Bool)shouldHideInteractionsForMenuBuilder:(CKMediaObjectAssetMenuBuilder *)arg1;
+- (void)menuBuilder:(CKMediaObjectAssetMenuBuilder *)arg1 deleteChatItems:(NSArray *)arg2;
 - (void)menuBuilder:(CKMediaObjectAssetMenuBuilder *)arg1 forwardChatItems:(NSArray *)arg2;
 - (void)menuBuilder:(CKMediaObjectAssetMenuBuilder *)arg1 copyChatItems:(NSArray *)arg2;
 - (void)menuBuilder:(CKMediaObjectAssetMenuBuilder *)arg1 replyChatItem:(CKAttachmentMessagePartChatItem *)arg2;

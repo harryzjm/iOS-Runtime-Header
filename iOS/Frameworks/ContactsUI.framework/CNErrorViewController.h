@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-
 @class NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface CNErrorViewController : UIViewController <UIAdaptivePresentationControllerDelegate>
+@interface CNErrorViewController : UIViewController
 {
     NSString *_errorMessage;
     UILabel *_label;

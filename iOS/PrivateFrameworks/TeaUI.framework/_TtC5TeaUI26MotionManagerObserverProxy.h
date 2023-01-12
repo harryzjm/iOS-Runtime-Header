@@ -11,10 +11,8 @@
 @interface _TtC5TeaUI26MotionManagerObserverProxy : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *view;
 }
-
-- (void)motionManager:(id)arg1 motionEnabled:(_Bool)arg2;
-- (void)motionManager:(id)arg1 didUpdateMotionData:(id)arg2;
 
 @end
 

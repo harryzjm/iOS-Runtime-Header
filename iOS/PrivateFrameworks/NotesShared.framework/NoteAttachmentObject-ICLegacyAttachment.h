@@ -6,11 +6,9 @@
 
 #import <Notes/NoteAttachmentObject.h>
 
-#import <NotesShared/ICLegacyAttachment-Protocol.h>
-
 @class NSManagedObjectContext, NSString, NSURL;
 
-@interface NoteAttachmentObject (ICLegacyAttachment) <ICLegacyAttachment>
+@interface NoteAttachmentObject (ICLegacyAttachment)
 @property(readonly, copy, nonatomic) NSURL *cidURL;
 @property(readonly, copy, nonatomic) NSString *typeUTI;
 @property(readonly, copy, nonatomic) NSURL *fileURL;

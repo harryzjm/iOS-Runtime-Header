@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
-
 @class AVButton, AVLayoutItemAttributes, NSString, UIActivityIndicatorView;
 
 __attribute__((visibility("hidden")))
-@interface AVLoadingButtonView : UIView <AVPlaybackControlsViewItem>
+@interface AVLoadingButtonView : UIView
 {
     _Bool _removed;
     _Bool _included;

@@ -7,16 +7,19 @@
 #import <UserNotificationsUIKit/MTVisualStylingRequiring-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class BSUIFontProvider, MTVisualStylingProvider, NSAttributedString, NSDate, NSString, NSTimeZone, UIImage, UIImageConfiguration, UIView;
+@class BSUIFontProvider, MTVisualStylingProvider, NSAttributedString, NSDate, NSString, NSTimeZone, UIAction, UIImage, UIImageConfiguration, UIView;
 
 @protocol NCNotificationContentDisplaying <MTVisualStylingRequiring, PLContentSizeCategoryAdjusting>
-@property(nonatomic) unsigned long long maximumNumberOfSecondaryTextLines;
+@property(nonatomic) unsigned long long secondaryTextMaximumNumberOfLines;
+@property(nonatomic) unsigned long long primarySubtitleTextMaximumNumberOfLines;
+@property(nonatomic) unsigned long long primaryTextMaximumNumberOfLines;
 @property(copy, nonatomic) UIImage *thumbnail;
 @property(copy, nonatomic) NSString *secondaryText;
 @property(copy, nonatomic) NSString *primarySubtitleText;
 @property(copy, nonatomic) NSString *primaryText;
 
 @optional
+@property(nonatomic) _Bool alignContentToBottom;
 @property(nonatomic) long long dateFormatStyle;
 @property(copy, nonatomic) NSTimeZone *timeZone;
 @property(nonatomic, getter=isDateAllDay) _Bool dateAllDay;
@@ -24,6 +27,7 @@
 @property(retain, nonatomic) BSUIFontProvider *fontProvider;
 @property(copy, nonatomic) NSString *summaryText;
 @property(copy, nonatomic) NSString *footerText;
+@property(copy, nonatomic) UIAction *inlineAction;
 @property(copy, nonatomic) MTVisualStylingProvider *importantTextVisualStylingProvider;
 @property(readonly, copy, nonatomic) UIImageConfiguration *importantTextImageConfiguration;
 @property(copy, nonatomic) NSAttributedString *importantAttributedText;

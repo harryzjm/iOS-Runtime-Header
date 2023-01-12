@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPEncoder-Protocol.h>
-
 @class NSString, TSPMemoryComponentWriteChannel;
 @protocol OS_dispatch_data;
 
-@interface TSPMemoryEncoder : NSObject <TSPEncoder>
+@interface TSPMemoryEncoder : NSObject
 {
     TSPMemoryComponentWriteChannel *_metadataWriteChannel;
     TSPMemoryComponentWriteChannel *_rootComponentWriteChannel;

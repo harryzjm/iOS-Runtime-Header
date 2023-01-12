@@ -16,6 +16,6 @@
 - (void)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 shouldHideAssetReferences:(NSSet *)arg2;
 - (UIImage *)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 currentImageForAssetReference:(PUAssetReference *)arg2;
 - (struct CGRect)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 rectForAssetReference:(PUAssetReference *)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
-- (PXRegionOfInterest *)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 regionOfInterestForAssetReference:(PUAssetReference *)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
+- (PXRegionOfInterest *)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 regionOfInterestForAssetReference:(PUAssetReference *)arg2 cropInsets:(struct UIEdgeInsets *)arg3;
 @end
 

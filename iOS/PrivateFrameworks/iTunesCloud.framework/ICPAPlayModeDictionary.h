@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface ICPAPlayModeDictionary : PBCodable <NSCopying>
+@interface ICPAPlayModeDictionary : PBCodable
 {
     int _autoPlayMode;
     int _repeatPlayMode;

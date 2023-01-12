@@ -60,7 +60,6 @@
 @property(readonly, nonatomic) TSDCanvas *canvas;
 @property(retain, nonatomic) NSMutableArray *anchoredDrawablesForRelayout;
 @property(readonly, nonatomic) struct CGRect maskRect;
-- (void)d_dumpAnchoredAttachmentsForRelayout;
 - (_Bool)adjustColumnOriginForAlignment;
 - (_Bool)siblingTargetIsManipulatingDrawable:(TSDDrawableInfo *)arg1;
 - (struct _NSRange)expandedRangeForLayoutRange:(struct _NSRange)arg1 styleProvider:(id <TSWPStyleProvider>)arg2;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBICCatalogItemIssueProvider-Protocol.h>
-
 @class NSString;
 
-@interface _IBICBlockBasedIssueProvider : NSObject <IBICCatalogItemIssueProvider>
+@interface _IBICBlockBasedIssueProvider : NSObject
 {
     CDUnknownBlockType _issueProviderBlock;
 }

@@ -6,8 +6,11 @@
 
 #import <SetupAssistant/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol BYDeviceProvider <NSObject>
 @property(readonly, nonatomic) _Bool hasHomeButton;
+@property(readonly, copy, nonatomic) NSString *deviceClass;
 @property(readonly, nonatomic) long long size;
 @property(readonly, nonatomic) long long type;
 @end

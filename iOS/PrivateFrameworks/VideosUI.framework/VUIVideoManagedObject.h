@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSNumber *mainContentRelativeBookmarkTime; // @dynamic mainContentRelativeBookmarkTime;
 @property(copy, nonatomic) NSDate *mainContentRelativeBookmarkTimeStamp; // @dynamic mainContentRelativeBookmarkTimeStamp;
 @property(nonatomic) _Bool markedAsDeleted; // @dynamic markedAsDeleted;
+@property(copy, nonatomic) NSString *mediaDescription; // @dynamic mediaDescription;
 @property(retain, nonatomic) NSData *mediaMetricsJSONData; // @dynamic mediaMetricsJSONData;
 @property(copy, nonatomic) NSNumber *offlineKeyRenewalPolicy; // @dynamic offlineKeyRenewalPolicy;
 @property(copy, nonatomic) NSURL *playbackURL; // @dynamic playbackURL;

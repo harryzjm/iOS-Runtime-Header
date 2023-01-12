@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIPopoverControllerDelegate-Protocol.h>
-
 @class DOMNode, NSString, UIPopoverController;
 @protocol UIWebRotatingNodePopoverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIWebRotatingNodePopover : NSObject <UIPopoverControllerDelegate>
+@interface UIWebRotatingNodePopover : NSObject
 {
     _Bool _isRotating;
     DOMNode *_node;

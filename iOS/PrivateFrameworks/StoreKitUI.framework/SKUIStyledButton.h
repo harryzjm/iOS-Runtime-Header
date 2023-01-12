@@ -6,13 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-#import <StoreKitUI/SKUIViewElementOfferButton-Protocol.h>
-
 @class NSString, SKUIAttributedStringLayout, SKUIAttributedStringView, SKUIButtonBorderStyle, SKUIImageView, SKUIItemOfferButton, SKUIShapeView, UIImageView;
 @protocol SKUIItemOfferButtonDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStyledButton : UIControl <SKUIViewElementOfferButton>
+@interface SKUIStyledButton : UIControl
 {
     SKUIAttributedStringView *_attributedStringView;
     struct UIEdgeInsets _bigHitInsets;

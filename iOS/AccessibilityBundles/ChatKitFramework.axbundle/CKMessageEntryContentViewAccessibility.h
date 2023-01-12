@@ -14,7 +14,7 @@
 - (void)_accessibilityClearPlugin;
 - (_Bool)_accessibilityUsesScrollParentForOrdering;
 - (void)setPluginEntryViewController:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 shouldShowSubject:(_Bool)arg2 shouldDisableAttachments:(_Bool)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 shouldShowSubject:(_Bool)arg2 shouldDisableAttachments:(_Bool)arg3 shouldUseNonEmojiKeyboard:(_Bool)arg4;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

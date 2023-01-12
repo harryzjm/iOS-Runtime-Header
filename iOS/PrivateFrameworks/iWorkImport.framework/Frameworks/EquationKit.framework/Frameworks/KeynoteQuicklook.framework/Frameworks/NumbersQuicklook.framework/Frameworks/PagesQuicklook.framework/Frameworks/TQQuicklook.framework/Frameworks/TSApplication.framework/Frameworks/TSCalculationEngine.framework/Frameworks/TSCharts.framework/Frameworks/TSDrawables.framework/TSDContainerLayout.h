@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSDLayout.h"
+
 @class NSObject;
 @protocol TSDContainerInfo;
 
-@interface TSDContainerLayout
+@interface TSDContainerLayout : TSDLayout
 {
 }
 

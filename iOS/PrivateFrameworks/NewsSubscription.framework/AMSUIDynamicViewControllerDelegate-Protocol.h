@@ -12,6 +12,8 @@
 @protocol AMSUIDynamicViewControllerDelegate <NSObject>
 
 @optional
+- (_Bool)dynamicViewControllerShouldDismiss:(AMSUIDynamicViewController *)arg1;
+- (void)dynamicViewController:(AMSUIDynamicViewController *)arg1 didResolveWithResult:(NSDictionary *)arg2 error:(NSError *)arg3;
 - (void)dynamicViewController:(AMSUIDynamicViewController *)arg1 didFinishCarrierLinkingWithResult:(AMSCarrierLinkResult *)arg2 error:(NSError *)arg3;
 - (void)dynamicViewController:(AMSUIDynamicViewController *)arg1 didFinishWithPurchaseResult:(AMSPurchaseResult *)arg2 error:(NSError *)arg3;
 - (void)dynamicViewController:(AMSUIDynamicViewController *)arg1 didFinishPurchaseWithResult:(AMSPurchaseResult *)arg2 error:(NSError *)arg3;

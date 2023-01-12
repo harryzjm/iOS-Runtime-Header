@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/CPInterfaceControllerDelegate-Protocol.h>
-
 @class CPInterfaceController, CPListTemplate, NSDateFormatter, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKStarkConversationController : NSObject <CPInterfaceControllerDelegate>
+@interface CKStarkConversationController : NSObject
 {
     CPInterfaceController *_interfaceController;
     CPListTemplate *_conversationListTemplate;

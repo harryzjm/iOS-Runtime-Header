@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SwiftUI/UISearchBarDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI25UIKitSearchBarCoordinator <UISearchBarDelegate>
+@interface _TtC7SwiftUI25UIKitSearchBarCoordinator
 {
     MISSING_TYPE *triggerSubmission;
     MISSING_TYPE *configuration;
+    MISSING_TYPE *scopes;
     MISSING_TYPE *delegate;
     MISSING_TYPE *isViewUpdating;
     MISSING_TYPE *oldText;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)searchBar:(id)arg1 selectedScopeButtonIndexDidChange:(long long)arg2;
 - (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchBarTextDidEndEditing:(id)arg1;
 - (void)searchBarTextDidBeginEditing:(id)arg1;

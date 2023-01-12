@@ -6,9 +6,12 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
+@class HMEPersistentConnectionServer, NSArray, NSSet, NSString;
 @protocol HMEPersistentConnection;
 
 @protocol HMEPersistentConnectionServerDataSource <NSObject>
+- (NSArray *)server:(HMEPersistentConnectionServer *)arg1 expandedTopicsForTopics:(NSArray *)arg2;
+- (NSSet *)server:(HMEPersistentConnectionServer *)arg1 upstreamTopicsForTopic:(NSString *)arg2;
 - (unsigned long long)debounceTimeForConnection:(id <HMEPersistentConnection>)arg1;
 @end
 

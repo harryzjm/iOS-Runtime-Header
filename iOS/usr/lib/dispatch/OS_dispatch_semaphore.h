@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <dispatch/OS_dispatch_semaphore-Protocol.h>
-
 @class NSString;
 
-@interface OS_dispatch_semaphore <OS_dispatch_semaphore>
+@interface OS_dispatch_semaphore
 {
 }
 

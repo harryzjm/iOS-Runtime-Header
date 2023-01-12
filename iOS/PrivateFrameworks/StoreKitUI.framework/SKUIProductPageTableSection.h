@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUITableViewSection.h"
+
 @class SKUIClientContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIProductPageTableSection
+@interface SKUIProductPageTableSection : SKUITableViewSection
 {
     SKUIClientContext *_clientContext;
     _Bool _expanded;

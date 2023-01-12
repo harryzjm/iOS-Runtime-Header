@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/APSConnectionDelegate-Protocol.h>
-#import <FileProviderDaemon/FPProviderObserver-Protocol.h>
-#import <FileProviderDaemon/NSXPCListenerDelegate-Protocol.h>
-#import <FileProviderDaemon/PKFileProviderXPCServer-Protocol.h>
-
 @class FPDExtensionManager, FPProviderMonitor, NSMutableDictionary, NSString, NSXPCListener;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface FPDPushConnection : NSObject <NSXPCListenerDelegate, PKFileProviderXPCServer, APSConnectionDelegate, FPProviderObserver>
+@interface FPDPushConnection : NSObject
 {
     FPDExtensionManager *_manager;
     NSXPCListener *_xpcListener;

@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) long long currentModifierFlags; // @synthesize currentModifierFlags=_currentModifierFlags;
 @property(nonatomic) __weak id <_UIKeyShortcutHUDKeyListenerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)resetModifierFlags;
 - (void)handleKeyboardEvent:(id)arg1;
 
 @end

@@ -6,12 +6,9 @@
 
 #import <HomeKit/HMCharacteristic.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface HMCharacteristic (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
+@interface HMCharacteristic (HFDebugging)
 + (id)hf_descriptionForProperties:(id)arg1;
 + (id)_hf_visibleLightLevelTriggerValues;
 + (long long)_hf_indexOfSortedValues:(id)arg1 closestToValue:(id)arg2 top:(unsigned long long)arg3 bottom:(unsigned long long)arg4;
@@ -36,6 +33,7 @@
 + (id)hf_powerStateCharacteristicTypes;
 + (id)hf_suggestionVendorForCharacteristicType:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)_hf_stepValue;
 - (id)_hf_triggerValuesWithMinStepValue:(id)arg1;
 - (id)_hf_lightLevelVisibleTriggerValues;
 - (id)hf_visibleTriggerValues;

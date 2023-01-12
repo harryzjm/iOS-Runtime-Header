@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCEColumnRowUIDMapping-Protocol.h>
-
 @class TSTColumnRowUIDMap, TSTImmutableColumnRowUIDMap;
 
-@interface TSTColumnRowUIDMapper : NSObject <TSCEColumnRowUIDMapping>
+@interface TSTColumnRowUIDMapper : NSObject
 {
     TSTColumnRowUIDMap *_originalUIDMap;
     unsigned long long _originalVersionCounter;

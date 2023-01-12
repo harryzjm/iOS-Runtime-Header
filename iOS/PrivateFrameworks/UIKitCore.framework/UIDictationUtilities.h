@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)trackingPunctuations;
 + (unsigned long long)maxLoggableLengthOfInsertionBySubstitution:(id)arg1;
 + (unsigned long long)maxLoggableLengthOfInsertionWithDeletion:(id)arg1;
 + (unsigned long long)maxLoggableLengthOfInsertionWithoutDeletion:(id)arg1;
@@ -27,12 +28,14 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)characterDeletionCount:(id)arg1;
 + (unsigned long long)characterInsertionCount:(id)arg1;
 + (id)_properNameForString:(id)arg1;
++ (_Bool)needsTrailingSpaceForText:(id)arg1 secureInput:(_Bool)arg2;
 + (_Bool)needsTrailingSpaceForPhrases:(id)arg1 secureInput:(_Bool)arg2;
 + (_Bool)needsLeadingSpaceForText:(id)arg1 secureInput:(_Bool)arg2 previousCharacter:(unsigned short)arg3 selectionStartIsStartOfParagraph:(_Bool)arg4;
 + (void)selectionStartInfoWithBlock:(CDUnknownBlockType)arg1;
 + (_Bool)needsLeadingSpaceForText:(id)arg1 secureInput:(_Bool)arg2;
 + (_Bool)needsLeadingSpaceForPhrases:(id)arg1 secureInput:(_Bool)arg2;
 + (id)metadataDictionaryForCorrectionIdentifier:(id)arg1;
++ (id)voiceCommandParameterFromAFVoiceCommandGrammarParamMatch:(id)arg1;
 + (id)attributedStringForDictationResult:(id)arg1 andCorrectionIdentifier:(id)arg2;
 + (id)bestInterpretationForPhrases:(id)arg1;
 + (id)bestInterpretationForDictationResult:(id)arg1;

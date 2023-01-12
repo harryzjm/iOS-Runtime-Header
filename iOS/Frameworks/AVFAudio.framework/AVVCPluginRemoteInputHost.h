@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFAudio/AVAudioRemoteInputPluginDelegate-Protocol.h>
-
 @class AVVoiceController, NSMutableArray;
 @protocol AVAudioRemoteInputPlugin;
 
 __attribute__((visibility("hidden")))
-@interface AVVCPluginRemoteInputHost : NSObject <AVAudioRemoteInputPluginDelegate>
+@interface AVVCPluginRemoteInputHost : NSObject
 {
     NSMutableArray<AVAudioRemoteInputPlugin> *mPlugins;
-    AVVoiceController *mMotherController;
+    AVVoiceController *_mMotherController;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) __weak AVVoiceController *mMotherController; // @synthesize mMotherController=_mMotherController;
 - (id)mockPluginEndpoint;
 - (void)inputPlugin:(id)arg1 didUnpublishDevice:(id)arg2;
 - (void)inputPlugin:(id)arg1 didPublishDevice:(id)arg2;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)allBundles:(id *)arg1;
 - (void)invalidatePlugins;
 - (void)dealloc;
-- (id)initializePlugins;
+- (id)init;
 
 @end
 

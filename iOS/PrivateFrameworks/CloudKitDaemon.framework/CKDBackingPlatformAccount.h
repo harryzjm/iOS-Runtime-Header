@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface CKDBackingPlatformAccount
+#import "CKDBackingAccount.h"
+
+@interface CKDBackingPlatformAccount : CKDBackingAccount
 {
 }
 
 - (void)updateAccountPropertiesAndSaveAccount:(CDUnknownBlockType)arg1;
 - (id)ckAccount;
+- (long long)accountType;
 - (id)_initWithParentAccount:(id)arg1;
 
 @end

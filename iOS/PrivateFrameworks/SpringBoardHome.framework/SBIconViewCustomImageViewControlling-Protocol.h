@@ -17,6 +17,7 @@
 @property(readonly, nonatomic) UIView *springLoadingEffectTargetView;
 @property(readonly, nonatomic) struct CGPoint snapshotViewCenter;
 @property(readonly, nonatomic) UIView *snapshotView;
+@property(readonly, nonatomic) struct UIEdgeInsets minimumPreferredEdgeInsetsForContextMenu;
 @property(readonly, copy, nonatomic) NSArray *applicationShortcutItems;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(nonatomic) unsigned long long pauseReasons;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AWAttentionSampler, NSMutableArray;
+@class AWAttentionSampler, AWAttentionStreamer, NSMutableArray, NSMutableDictionary;
 @protocol AWSchedulerObserver, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,11 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_timer;
     NSMutableArray *_clients;
+    NSMutableDictionary *_streamingClients;
+    NSMutableDictionary *_interruptedStreamingClients;
     AWAttentionSampler *_attentionSampler;
+    AWAttentionStreamer *_attentionStreamer;
+    struct mach_timebase_info _timebase;
     id <AWSchedulerObserver> _observer;
 }
 
@@ -24,6 +28,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AWAttentionSampler *attentionSampler; // @synthesize attentionSampler=_attentionSampler;
 @property(nonatomic) __weak id <AWSchedulerObserver> observer; // @synthesize observer=_observer;
+- (double)calculateTimeDelta:(unsigned long long)arg1 endTime:(unsigned long long)arg2 timebase:(struct mach_timebase_info)arg3;
+- (void)setClientAsInterrupted:(id)arg1 forKey:(id)arg2;
+- (void)handleNotification:(unsigned long long)arg1;
+- (id)cancelFaceDetectStream:(id)arg1 withIdentifier:(id)arg2;
+- (id)streamFaceDetectEvents;
+- (void)removeStreamingClientwithIdentifier:(int)arg1;
+- (id)addStreamingClient:(id)arg1 withIdentifier:(int)arg2;
 - (void)reevaluate;
 - (void)armEvents;
 - (void)setSmartCoverClosed:(_Bool)arg1;

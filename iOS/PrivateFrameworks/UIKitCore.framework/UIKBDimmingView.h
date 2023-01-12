@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIKBScreenTraits, UIKBTree;
 
 __attribute__((visibility("hidden")))
-@interface UIKBDimmingView
+@interface UIKBDimmingView : UIView
 {
     UIKBTree *_keyplane;
     UIKBScreenTraits *_screenTraits;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIKBScreenTraits *screenTraits; // @synthesize screenTraits=_screenTraits;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)refreshStyleForKeyplane:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

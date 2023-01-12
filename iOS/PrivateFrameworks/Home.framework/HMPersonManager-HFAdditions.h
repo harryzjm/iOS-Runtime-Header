@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMPersonManager.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface HMPersonManager (HFAdditions) <HFHomeKitObject>
+@interface HMPersonManager (HFAdditions)
 - (id)hf_linkFromPerson:(id)arg1 toPerson:(id)arg2 toPersonManagerUUID:(id)arg3;
 - (id)hf_reassociateFaceCropsFromPersonWithUUID:(id)arg1 toPersonWithUUID:(id)arg2 removePerson:(_Bool)arg3;
 - (id)hf_associateFaceCropsWithUUIDs:(id)arg1 toPersonWithUUID:(id)arg2;

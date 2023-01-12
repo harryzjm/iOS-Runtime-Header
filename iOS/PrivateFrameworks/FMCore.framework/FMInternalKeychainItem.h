@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FMCore/FMKeychainItem-Protocol.h>
-
 @class NSData, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FMInternalKeychainItem : NSObject <FMKeychainItem>
+@interface FMInternalKeychainItem : NSObject
 {
     NSString *_password;
     NSDate *_lastModifyDate;

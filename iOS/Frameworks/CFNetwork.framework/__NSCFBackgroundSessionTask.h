@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/NSURLSessionTaskSubclass-Protocol.h>
+#import "NSURLSessionTask.h"
 
-@class NSError, NSString;
+@class NSError, NSMutableSet, NSString;
 
-@interface __NSCFBackgroundSessionTask <NSURLSessionTaskSubclass>
+@interface __NSCFBackgroundSessionTask : NSURLSessionTask
 {
+    NSMutableSet *_secKeyProxies;
+    struct os_unfair_lock_s _proxyLock;
     _Bool _sentCancel;
     _Bool _sentDidFinish;
     NSError *_immediateError;
@@ -32,6 +34,8 @@
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_onqueue_didReceiveResponse:(id)arg1;
 - (void)_onqueue_willSendRequestForEstablishedConnection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)removeSecKeyProxy:(id)arg1;
+- (void)addSecKeyProxy:(id)arg1;
 - (void)dealloc;
 - (id)initWithBackgroundTask:(id)arg1;
 - (id)initWithTaskInfo:(id)arg1 taskGroup:(id)arg2 ident:(unsigned long long)arg3;

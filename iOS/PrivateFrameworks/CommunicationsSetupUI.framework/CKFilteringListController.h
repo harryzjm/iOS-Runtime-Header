@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showingParentViewController; // @synthesize showingParentViewController=_showingParentViewController;
 @property(retain, nonatomic) NSDictionary *extensionNameMapping; // @synthesize extensionNameMapping=_extensionNameMapping;
 @property(retain, nonatomic) NSArray *extensionIDArray; // @synthesize extensionIDArray=_extensionIDArray;
+- (void)_updateSMSFilteringParams;
 - (id)specifiers;
 - (void)grayOutSMSFilteringIfNecessary:(id)arg1;
 - (id)getSpamSpecifiers;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Synapse/NSSecureCoding-Protocol.h>
-#import <Synapse/SYUserActivityInfo-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface SYUserActivityIdentifierInfo : NSObject <NSSecureCoding, SYUserActivityInfo>
+@interface SYUserActivityIdentifierInfo : NSObject
 {
     NSString *_activityType;
     NSURL *_webpageURL;

@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPSectionedIdentifierListEnumerationResult-Protocol.h>
-#import <MediaPlayer/NSSecureCoding-Protocol.h>
-#import <MediaPlayer/_MPSectionedIdentifierListEncodableNextEntriesProviding-Protocol.h>
-
 @class MPSectionedIdentifierListEntryPositionKey, NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPSectionedIdentifierListEntry : NSObject <_MPSectionedIdentifierListEncodableNextEntriesProviding, NSSecureCoding, MPSectionedIdentifierListEnumerationResult>
+@interface MPSectionedIdentifierListEntry : NSObject
 {
     NSMutableArray *_nextEntries;
     _Bool _dataSourceRemoved;
@@ -42,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long entryType;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)_stateDumpObject;
 @property(readonly, copy) NSString *description;
 - (id)initWithPositionKey:(id)arg1 sectionIdentifier:(id)arg2;
 - (id)encodableNextEntriesWithExclusiveAccessToken:(id)arg1;

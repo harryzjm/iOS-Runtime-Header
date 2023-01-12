@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UITableViewDataSource-Protocol.h>
-#import <StoreKitUI/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSString, SKUIClientContext, UITableView, _UIContentUnavailableView;
 @protocol SKUIDownloadsChildViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIIPhoneDownloadsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SKUIIPhoneDownloadsViewController : UIViewController
 {
     UITableView *_tableView;
     _UIContentUnavailableView *_noContentView;

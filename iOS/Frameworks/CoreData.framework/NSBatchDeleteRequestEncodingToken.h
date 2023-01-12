@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface NSBatchDeleteRequestEncodingToken : NSObject <NSSecureCoding>
+@interface NSBatchDeleteRequestEncodingToken : NSObject
 {
     NSData *_fetchData;
     long long _resultType;

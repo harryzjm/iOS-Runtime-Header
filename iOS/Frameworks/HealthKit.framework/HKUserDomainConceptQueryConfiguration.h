@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class HKQueryAnchor, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface HKUserDomainConceptQueryConfiguration
+@interface HKUserDomainConceptQueryConfiguration : HKQueryServerConfiguration
 {
     NSArray *_sortDescriptors;
     HKQueryAnchor *_anchor;

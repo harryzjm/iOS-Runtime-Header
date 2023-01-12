@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     void *_bufferPool;
     _Bool _unifyPostMorphNormals;
     _Bool _shouldMorphNormals;
+    unsigned int _lastMorpherIncrementalPassState;
     unsigned char _dataKindForMorphing;
     id <MTLBuffer> _splatProvokingVertices;
     struct {
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isCompatibleWithMorph:(struct __C3DMorph *)arg1;
 - (unsigned int)sparseIndexSize;
 - (void)dealloc;
+- (void)setNextMorphRequiresReset;
 - (CDStruct_798fd7c0)newBufferWithLength:(unsigned long long)arg1;
 - (id)initWithMorph:(struct __C3DMorph *)arg1 baseGeometry:(struct __C3DGeometry *)arg2 resourceManager:(id)arg3;
 - (void)_prepareTargetDataForIndex:(long long)arg1 morph:(struct __C3DMorph *)arg2 baseMesh:(struct __C3DMesh *)arg3;

@@ -6,11 +6,9 @@
 
 #import <CoreData/NSManagedObjectID.h>
 
-#import <VoiceMemos/RCRecordingsFolderIdentifier-Protocol.h>
-
 @class NSString;
 
-@interface NSManagedObjectID (RCFolderIdentifier) <RCRecordingsFolderIdentifier>
+@interface NSManagedObjectID (RCFolderIdentifier)
 @property(readonly, nonatomic) long long __rc_folderType;
 
 // Remaining properties

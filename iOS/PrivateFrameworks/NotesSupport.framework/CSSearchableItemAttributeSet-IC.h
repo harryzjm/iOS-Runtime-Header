@@ -9,9 +9,10 @@
 @class NSString;
 
 @interface CSSearchableItemAttributeSet (IC)
++ (id)ic_itemHasAttachmentsCustomKey;
 + (id)ic_itemHasScannedDocumentsCustomKey;
 + (id)ic_itemHasDrawingsCustomKey;
-+ (id)ic_itemHasAttachmentsCustomKey;
++ (id)ic_itemHasTagsCustomKey;
 + (id)ic_itemHasChecklistsCustomKey;
 + (id)ic_relatedModernNoteUniqueIdentifierCustomKey;
 + (id)ic_itemIsSharedCustomKey;
@@ -21,9 +22,10 @@
 + (id)ic_specializedIndexFieldAttributeKeyForStringField:(id)arg1;
 + (id)ic_customAttributeKeyWithName:(id)arg1 searchable:(_Bool)arg2 searchableByDefault:(_Bool)arg3 unique:(_Bool)arg4 multiValued:(_Bool)arg5;
 + (id)ic_customAttributeKeyDictionary;
+@property(nonatomic) _Bool ic_hasAttachments;
 @property(nonatomic) _Bool ic_hasScannedDocuments;
 @property(nonatomic) _Bool ic_hasDrawings;
-@property(nonatomic) _Bool ic_hasAttachments;
+@property(nonatomic) _Bool ic_hasTags;
 @property(nonatomic) _Bool ic_hasChecklists;
 @property(retain, nonatomic) NSString *ic_relatedModernNoteUniqueIdentifier;
 @property(nonatomic) _Bool ic_isShared;

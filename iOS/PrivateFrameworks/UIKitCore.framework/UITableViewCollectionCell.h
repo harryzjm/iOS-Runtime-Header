@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UICollectionViewTableAllRowAttributes-Protocol.h>
+#import "UITableViewCell.h"
 
 @class UIColor, UIVisualEffect;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewCollectionCell <UICollectionViewTableAllRowAttributes>
+@interface UITableViewCollectionCell : UITableViewCell
 {
 }
 

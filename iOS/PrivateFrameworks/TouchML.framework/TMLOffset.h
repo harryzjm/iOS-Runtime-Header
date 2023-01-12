@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLOffsetJSExports-Protocol.h>
-
-@interface TMLOffset : NSObject <TMLOffsetJSExports, NSCopying>
+@interface TMLOffset : NSObject
 {
     struct UIOffset _offset;
 }

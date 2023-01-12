@@ -11,9 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_roadComplexitiesForGeoWaypointRoute:(id)arg1 coordinates:(id)arg2;
++ (id)_cellularCoverageForGeoWaypointRoute:(id)arg1 coordinates:(id)arg2;
 + (id)_visualInfosForGuidanceEvents:(id)arg1 steps:(id)arg2 coordinates:(id)arg3;
-+ (id)_buildGuidanceEventsForGeoRoute:(id)arg1 withComposedSteps:(id)arg2 coordinates:(id)arg3;
 + (_Bool)_isGuidanceEventAtEndOfLeg:(int)arg1;
 + (id)_guidanceEventsForGeoWaypointRoute:(id)arg1 legs:(id)arg2 steps:(id)arg3 coordinates:(id)arg4;
 + (id)buildMapRegionFromPointSections:(id)arg1;
@@ -26,14 +25,9 @@ __attribute__((visibility("hidden")))
 + (id)_composedRouteSegmentForStartStep:(id)arg1 andEndStep:(id)arg2 andCustodian:(id)arg3;
 + (id)_composedRouteStepWithTransportType:(int)arg1 andCustodian:(id)arg2 geoRouteLeg:(id)arg3 forGeoStep:(id)arg4 withStepIndex:(unsigned long long)arg5 stepStartPointIndex:(unsigned long long)arg6 legStartPointIndex:(unsigned long long)arg7;
 + (id)_composedRouteStepWithTransportType:(int)arg1 andCustodian:(id)arg2 geoRouteLeg:(id)arg3 forGeoStep:(id)arg4 withStepIndex:(unsigned long long)arg5 startRouteCoordinate:(struct PolylineCoordinate)arg6 endRouteCoordinate:(struct PolylineCoordinate)arg7 maneuverStartRouteCoordinate:(struct PolylineCoordinate)arg8;
-+ (void)_buildComponentsForGeoRoute:(id)arg1 andCustodian:(id)arg2 initializerData:(id)arg3 outLegs:(out id *)arg4 outSegments:(out id *)arg5 outSteps:(out id *)arg6;
 + (void)_componentsForGeoWaypointRoute:(id)arg1 initializerData:(id)arg2 coordinates:(id)arg3 custodian:(id)arg4 outLegs:(out id *)arg5 outSegments:(out id *)arg6 outSteps:(out id *)arg7;
-+ (id)_cellularCoverageForGeoRoute:(id)arg1 coordinates:(id)arg2;
-+ (id)_cellularCoverageForGeoWaypointRoute:(id)arg1 coordinates:(id)arg2;
-+ (id)_buildCoordinatesForGeoRoute:(id)arg1;
 + (id)_unpackedPointsDataForGeoRoute:(id)arg1;
 + (id)_coordinatesForGeoWaypointRoute:(id)arg1;
-+ (id)outputForGeoRoute:(id)arg1 initializerData:(id)arg2 andCustodian:(id)arg3;
 + (id)outputForGeoWaypointRoute:(id)arg1 initializerData:(id)arg2 custodian:(id)arg3;
 
 @end

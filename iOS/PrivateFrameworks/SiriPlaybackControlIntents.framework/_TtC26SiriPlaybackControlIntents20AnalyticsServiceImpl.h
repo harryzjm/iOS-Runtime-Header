@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *analyticsServiceLogger;
     MISSING_TYPE *contextProvider;
-    MISSING_TYPE *metricsState;
+    MISSING_TYPE *siriEnvironment;
 }
 
 @end

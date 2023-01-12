@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)fillPath:(id)arg1 evenOddRule:(_Bool)arg2;
+- (void)fillPath:(id)arg1;
 - (void)setColor:(id)arg1;
 - (id)color;
 - (id)initWithColor:(id)arg1;

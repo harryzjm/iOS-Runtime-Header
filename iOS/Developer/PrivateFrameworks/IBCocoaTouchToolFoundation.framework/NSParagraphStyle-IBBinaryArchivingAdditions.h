@@ -6,11 +6,9 @@
 
 #import <UIKit/NSParagraphStyle.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface NSParagraphStyle (IBBinaryArchivingAdditions) <IBBinaryArchiving>
+@interface NSParagraphStyle (IBBinaryArchivingAdditions)
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 

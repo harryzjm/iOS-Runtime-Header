@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FTAudioLimitExceeded, FTClientSetupInfo, FTFinalBlazarResponse, FTRecognitionCandidate, FTRecognitionProgress, FTRequestStatsResponse, FTServerEndpointFeatures, FTSpeechTranslationFinalRecognitionResponse, FTSpeechTranslationMtResponse, FTSpeechTranslationPartialRecognitionResponse, FTSpeechTranslationServerEndpointFeatures, FTSpeechTranslationTextToSpeechResponse;
+@class FTAudioLimitExceeded, FTClientSetupInfo, FTFinalBlazarResponse, FTRecognitionCandidate, FTRecognitionProgress, FTRequestStatsResponse, FTServerEndpointFeatures, FTSpeechTranslationFinalRecognitionResponse, FTSpeechTranslationMtResponse, FTSpeechTranslationPartialRecognitionResponse, FTSpeechTranslationServerEndpointFeatures, FTSpeechTranslationTextToSpeechResponse, NSObject;
+@protocol FLTBFBufferAccessor><NSCopying;
 
 __attribute__((visibility("hidden")))
 @interface FTMutableSpeechTranslationStreamingResponse
 {
 }
 
++ (long long)content_typeForObject:(id)arg1;
++ (long long)content_typeForMutableObject:(id)arg1;
++ (Class)content_mutableClassForType:(long long)arg1;
+@property(copy, nonatomic) NSObject<FLTBFBufferAccessor><NSCopying> *content; // @dynamic content;
 @property(copy, nonatomic) FTSpeechTranslationServerEndpointFeatures *contentAsFTSpeechTranslationServerEndpointFeatures;
 @property(copy, nonatomic) FTClientSetupInfo *contentAsFTClientSetupInfo;
 @property(copy, nonatomic) FTServerEndpointFeatures *contentAsFTServerEndpointFeatures;

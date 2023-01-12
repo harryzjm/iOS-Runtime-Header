@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUICore/CAAction-Protocol.h>
-
 @class CABasicAnimation, NSString;
 
-@interface VUIPathAnimationAction : NSObject <CAAction>
+__attribute__((visibility("hidden")))
+@interface VUIPathAnimationAction : NSObject
 {
     CABasicAnimation *_animationToRun;
     const struct CGPath *_fromPath;

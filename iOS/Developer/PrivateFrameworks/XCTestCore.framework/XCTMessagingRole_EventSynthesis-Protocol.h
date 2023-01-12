@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, XCDeviceEvent, XCSynthesizedEventRecord;
+@class NSNumber, NSString, XCDeviceEvent, XCSynthesizedEventRecord;
 
 @protocol XCTMessagingRole_EventSynthesis
+- (void)_XCT_hasHardwareButton:(NSNumber *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)_XCT_getInterfaceOrientationWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)_XCT_enableFauxCollectionViewCells:(void (^)(_Bool, NSError *))arg1;
 - (void)_XCT_setLocalizableStringsDataGatheringEnabled:(_Bool)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (void)_XCT_unloadAccessibility:(void (^)(_Bool, NSError *))arg1;

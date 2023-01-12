@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SwiftUI/UITabBarControllerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7SwiftUIP33_E007CD1636CD44CE99B3923B80F5F6AD11Coordinator <UITabBarControllerDelegate>
+@interface _TtC7SwiftUIP33_E007CD1636CD44CE99B3923B80F5F6AD11Coordinator
 {
     MISSING_TYPE *selected;
     MISSING_TYPE *$__lazy_storage_$_formatter;

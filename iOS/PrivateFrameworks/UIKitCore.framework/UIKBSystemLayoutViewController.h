@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewController.h"
+
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface UIKBSystemLayoutViewController
+@interface UIKBSystemLayoutViewController : UIViewController
 {
     NSMutableArray *_constraints;
     unsigned long long _horizontalLayoutType;
@@ -17,12 +19,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)systemLayoutViewControllerWithViewController:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) struct CGSize centeredOffsets; // @synthesize centeredOffsets=_centeredOffsets;
 @property(nonatomic) struct UIEdgeInsets minimumInsets; // @synthesize minimumInsets=_minimumInsets;
 @property(nonatomic) unsigned long long verticalLayoutType; // @synthesize verticalLayoutType=_verticalLayoutType;
 @property(nonatomic) unsigned long long horizontalLayoutType; // @synthesize horizontalLayoutType=_horizontalLayoutType;
 - (void)updateViewConstraints;
-- (void)dealloc;
 
 @end
 

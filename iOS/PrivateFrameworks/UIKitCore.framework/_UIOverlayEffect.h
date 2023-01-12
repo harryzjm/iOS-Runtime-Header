@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIVisualEffect.h"
+
 @class NSString, UIColor, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface _UIOverlayEffect
+@interface _UIOverlayEffect : UIVisualEffect
 {
     NSString *_filterType;
     UIImage *_image;

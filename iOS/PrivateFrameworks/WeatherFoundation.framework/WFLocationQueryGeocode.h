@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WeatherFoundation/WFLocationQuery-Protocol.h>
-
 @class CLGeocoder, MKLocalSearch, MKLocalSearchCompletion, NSString, WFResponse, WFTaskIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface WFLocationQueryGeocode : NSObject <WFLocationQuery>
+@interface WFLocationQueryGeocode : NSObject
 {
     _Bool _finished;
     WFTaskIdentifier *identifier;
@@ -44,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)handleSearchResponseWithLocation:(id)arg1;
 - (id)_reverseGeocoderLocation;
 - (id)_mkLocalSearchRequest;
+- (_Bool)isLocationValid:(id)arg1;
 - (void)_startCLGeocoderReverseGeo;
 - (void)_startMKLocalSearch;
 - (void)cancel;

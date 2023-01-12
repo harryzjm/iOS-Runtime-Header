@@ -6,11 +6,9 @@
 
 #import <Foundation/NSError.h>
 
-#import <HMFoundation/HMFObject-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSError (HMFError) <HMFObject>
+@interface NSError (HMFError)
 + (id)hmfUnspecifiedError;
 + (id)hmfErrorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)hmfErrorWithCode:(long long)arg1;

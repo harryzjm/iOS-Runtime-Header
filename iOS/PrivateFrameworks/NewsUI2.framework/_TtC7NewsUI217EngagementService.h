@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI217EngagementService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *dataController;
-    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *featureSettings;
 }
 
 @end

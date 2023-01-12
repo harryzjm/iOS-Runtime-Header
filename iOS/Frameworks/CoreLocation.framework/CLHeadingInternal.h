@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreLocation/NSCopying-Protocol.h>
-
-@interface CLHeadingInternal : NSObject <NSCopying>
+@interface CLHeadingInternal : NSObject
 {
     CDStruct_b560b707 fHeading;
 }

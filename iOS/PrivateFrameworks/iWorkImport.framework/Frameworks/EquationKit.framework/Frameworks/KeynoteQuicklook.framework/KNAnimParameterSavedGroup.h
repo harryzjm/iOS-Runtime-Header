@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSSecureCoding-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
-@interface KNAnimParameterSavedGroup : NSObject <NSSecureCoding>
+@interface KNAnimParameterSavedGroup : NSObject
 {
     NSString *_name;
     NSString *_version;

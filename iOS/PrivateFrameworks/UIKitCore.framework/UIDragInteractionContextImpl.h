@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDragAnimating-Protocol.h>
-#import <UIKitCore/UIDragInteractionContext-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, UITouch;
 
 __attribute__((visibility("hidden")))
-@interface UIDragInteractionContextImpl : NSObject <UIDragInteractionContext, UIDragAnimating>
+@interface UIDragInteractionContextImpl : NSObject
 {
     _Bool _shouldAnimateLift;
     _Bool _preparedForLift;

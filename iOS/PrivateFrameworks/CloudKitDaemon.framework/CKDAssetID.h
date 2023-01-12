@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecordIdentifier, NSData, NSNumber;
 
-@interface CKDAssetID : NSObject <NSCopying>
+@interface CKDAssetID : NSObject
 {
     CKDPRecordIdentifier *_recordID;
     NSData *_fileSignature;

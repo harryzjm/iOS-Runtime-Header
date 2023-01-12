@@ -16,6 +16,10 @@ struct CF<__CVMetalTextureCache *> {
     struct __CVMetalTextureCache *value_;
 };
 
+struct CF<__CVPixelBufferPool *> {
+    struct __CVPixelBufferPool *value_;
+};
+
 struct MetalBufferPool {
     NSMutableArray *pool_;
     id device_;

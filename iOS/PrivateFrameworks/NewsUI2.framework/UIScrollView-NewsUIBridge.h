@@ -7,6 +7,7 @@
 #import <UIKit/UIScrollView.h>
 
 @interface UIScrollView (NewsUIBridge)
+- (void)ts_performScrollTest:(id)arg1 iterations:(long long)arg2 length:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)ts_performScrollTest:(id)arg1 iterations:(int)arg2 delta:(int)arg3 extraResultsBlock:(CDUnknownBlockType)arg4;
 - (void)ts_performScrollTest:(id)arg1 iterations:(int)arg2 delta:(int)arg3;
 @end

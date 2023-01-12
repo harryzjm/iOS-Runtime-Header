@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface TabBarItemLayoutInfo : NSObject
 {
     TabBarItemView *_tabBarItemView;
+    TabBarItemView *_tabBarItemPreviewView;
     UIView *_itemSnapshotView;
     _Bool _canClose;
     _Bool _reordering;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     TabBarItem *_tabBarItem;
     double _titleLayoutWidth;
     double _titleAnchorAdditionalOffset;
+    double _contentOffset;
     unsigned long long _activeAnimationCount;
     struct CGRect _frame;
 }
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long activeAnimationCount; // @synthesize activeAnimationCount=_activeAnimationCount;
 @property(nonatomic, getter=isRemovedFromTabBar) _Bool removedFromTabBar; // @synthesize removedFromTabBar=_removedFromTabBar;
 @property(nonatomic, getter=isVisibleInTabBar) _Bool visibleInTabBar; // @synthesize visibleInTabBar=_visibleInTabBar;
+@property(nonatomic) double contentOffset; // @synthesize contentOffset=_contentOffset;
 @property(nonatomic) double titleAnchorAdditionalOffset; // @synthesize titleAnchorAdditionalOffset=_titleAnchorAdditionalOffset;
 @property(nonatomic) _Bool hidesTitleText; // @synthesize hidesTitleText=_hidesTitleText;
 @property(nonatomic) double titleLayoutWidth; // @synthesize titleLayoutWidth=_titleLayoutWidth;
@@ -48,16 +51,21 @@ __attribute__((visibility("hidden")))
 - (_Bool)_requiresViews;
 @property(readonly, nonatomic) _Bool hasViews;
 @property(readonly, nonatomic) TabBarItemView *tabBarItemView;
+- (void)clearPreviewView;
 - (void)_clearViews;
 - (void)_clearViewsIfNeeded;
 - (void)_clearView:(id)arg1;
-@property(readonly, nonatomic) UIView *viewForDragPreview;
+@property(readonly, nonatomic) TabBarItemView *tabBarItemPreviewView;
+@property(readonly, nonatomic) TabBarItemView *viewForDragPreview;
 - (id)_reusableView;
 - (void)updateTabBarStyle;
 - (void)updateTitleTruncation;
 - (long long)_visibleEdge;
 - (void)mediaStateMuteButtonTapped:(id)arg1;
 - (void)closeButtonTapped:(id)arg1;
+- (void)itemDidUpdateShareParticipants;
+- (void)itemDidUpdateIsUnread;
+- (void)itemDidUpdateIsPinned;
 - (void)itemDidUpdateMediaState;
 - (void)itemDidUpdateIsPlaceholder;
 - (void)itemDidUpdateIsActive;

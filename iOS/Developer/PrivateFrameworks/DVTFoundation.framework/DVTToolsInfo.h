@@ -6,26 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class DVTBuildVersion, DVTFilePath, DVTToolsVersion, DVTVersion, NSNumber;
+@class DVTBuildVersion, DVTToolsVersion, DVTVersion;
 
 @interface DVTToolsInfo : NSObject
 {
-    NSNumber *_isAppleInternal;
     DVTBuildVersion *_toolsBuildVersion;
-    DVTFilePath *_xcodeFilePath;
 }
 
-+ (id)toolsInfoWithXcodeFilePath:(id)arg1 error:(id *)arg2;
 + (_Bool)isToolsInfoAvailableForHost;
 + (id)toolsInfo;
 + (void)initialize;
 - (void).cxx_destruct;
-- (_Bool)_isAppleInternal;
-- (_Bool)_hasDVTFoundationFramework;
 @property(readonly) _Bool isRunningASAN;
+@property(readonly) _Bool isRuntimeOSAppleInternal;
+@property(readonly) _Bool isAppleInternal;
 @property(readonly) _Bool hasUnlimitedPower;
 @property(readonly) _Bool isSIPDisabled;
-@property(readonly) _Bool isRuntimeOSAppleInternal;
 @property(readonly) DVTVersion *runtimeDarwinVersion;
 @property(readonly) DVTVersion *runtimeOSVersion;
 @property(readonly) unsigned long long runtimeOSActualVersion;
@@ -38,9 +34,8 @@
 @property(readonly) DVTBuildVersion *toolsBuildVersion;
 - (id)_playgroundsToolsBuildVersionPlistPath;
 @property(readonly) DVTToolsVersion *toolsVersion;
-@property(readonly) _Bool hasDVTFoundationFramework;
-@property(readonly) _Bool isAppleInternal;
-- (id)initWithXcodeFilePath:(id)arg1 error:(id *)arg2;
+- (_Bool)runtimeInternalStateContains:(unsigned long long)arg1;
+@property(readonly) unsigned long long runtimeInternalState;
 
 @end
 

@@ -8,5 +8,6 @@
 
 @interface SFScoreboardCardSection (SearchUIViewClass)
 - (Class)_searchUIViewClass;
+- (_Bool)searchUIHorizontallyScrollingSectionModel_useBackground;
 @end
 

@@ -4,31 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ScreenTimeSettingsUI/STAlwaysAllowListControllerDelegate-Protocol.h>
-#import <ScreenTimeSettingsUI/STDeviceBedtimeListControllerDelegate-Protocol.h>
-
 @class NSString, NSTimer, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface STAllowancesConfigurationGroupSpecifierProvider <STAlwaysAllowListControllerDelegate, STDeviceBedtimeListControllerDelegate>
+@interface STAllowancesConfigurationGroupSpecifierProvider
 {
+    _Bool _isCommunicationSafetyRegionSupported;
     PSSpecifier *_deviceBedtimeSpecifier;
     PSSpecifier *_appLimitsSpecifier;
     PSSpecifier *_alwaysAllowedSpecifier;
     PSSpecifier *_communicationLimitsSpecifier;
     PSSpecifier *_contentPrivacySpecifier;
+    PSSpecifier *_communicationSafetySpecifier;
     NSTimer *_downtimeScheduleRefreshTimer;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *downtimeScheduleRefreshTimer; // @synthesize downtimeScheduleRefreshTimer=_downtimeScheduleRefreshTimer;
+@property(retain, nonatomic) PSSpecifier *communicationSafetySpecifier; // @synthesize communicationSafetySpecifier=_communicationSafetySpecifier;
+@property(readonly, nonatomic) _Bool isCommunicationSafetyRegionSupported; // @synthesize isCommunicationSafetyRegionSupported=_isCommunicationSafetyRegionSupported;
 @property(retain, nonatomic) PSSpecifier *contentPrivacySpecifier; // @synthesize contentPrivacySpecifier=_contentPrivacySpecifier;
 @property(retain, nonatomic) PSSpecifier *communicationLimitsSpecifier; // @synthesize communicationLimitsSpecifier=_communicationLimitsSpecifier;
 @property(retain, nonatomic) PSSpecifier *alwaysAllowedSpecifier; // @synthesize alwaysAllowedSpecifier=_alwaysAllowedSpecifier;
 @property(retain, nonatomic) PSSpecifier *appLimitsSpecifier; // @synthesize appLimitsSpecifier=_appLimitsSpecifier;
 @property(retain, nonatomic) PSSpecifier *deviceBedtimeSpecifier; // @synthesize deviceBedtimeSpecifier=_deviceBedtimeSpecifier;
 - (_Bool)showDemoModeAlertIfNeeded;
-- (void)showContentPrivacyViewController:(id)arg1;
+- (_Bool)_isCommunicationSafetyRegionSupportedOrAlreadyEnabled;
+- (id)_communicationSafetyDetailText;
+- (void)_communicationSafetyDidChange;
+- (void)showCommunicationSafetyViewController:(id)arg1;
 - (id)contentPrivacyDetailText;
 - (void)_showCommunicationLimitsViewController:(id)arg1;
 - (id)_communicationLimitsDetailText;

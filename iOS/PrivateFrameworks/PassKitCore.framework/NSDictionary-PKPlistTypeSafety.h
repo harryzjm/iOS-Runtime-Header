@@ -13,6 +13,7 @@
 - (id)PKArrayContaining:(Class)arg1 forKey:(id)arg2;
 - (id)PKArrayForKey:(id)arg1;
 - (id)PKDictionaryForKey:(id)arg1;
+- (id)PKDataForKey:(id)arg1;
 - (_Bool)PKBoolForKey:(id)arg1;
 - (double)PKDoubleForKey:(id)arg1;
 - (long long)PKIntegerForKey:(id)arg1;

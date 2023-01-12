@@ -6,17 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDragInteractionDelegate_Private-Protocol.h>
-#import <UIKitCore/UIDropInteractionDelegate_Private-Protocol.h>
-#import <UIKitCore/UITextDragDropSupport-Protocol.h>
-#import <UIKitCore/UITextPasteSessionDelegate-Protocol.h>
-#import <UIKitCore/_UITextPasteProgressSupport-Protocol.h>
-
 @class NSArray, NSMapTable, NSString, NSTextStorage, UIDragInteraction, UIDragItem, UIDropInteraction, UITargetedDragPreview, UITextDraggableGeometrySameViewDropOperationResult, UITextDropProposal, UITextPasteController, UITextRange, UIView, _UITextDragCaretView;
 @protocol UIDragSession, UIDropSession, UITextDragSupporting><UITextDropSupporting, UITextDraggableGeometry, UITextDraggableGeometrySameViewDropOperation, UITextDropPasteSession;
 
 __attribute__((visibility("hidden")))
-@interface UITextDragAssistant : NSObject <UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, _UITextPasteProgressSupport, UITextPasteSessionDelegate, UITextDragDropSupport>
+@interface UITextDragAssistant : NSObject
 {
     struct {
         unsigned int viewSupportsGhostedRanges:1;

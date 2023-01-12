@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSProxy.h"
+
 @class NSUndoManager;
 
 __attribute__((visibility("hidden")))
-@interface NSUndoManagerProxy
+@interface NSUndoManagerProxy : NSProxy
 {
     NSUndoManager *_manager;
     Class _targetClass;

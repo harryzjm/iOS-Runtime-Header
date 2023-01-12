@@ -6,13 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapKit/MKActivityObserving-Protocol.h>
-#import <MapKit/MKPhotoBigAttributionViewSubclass-Protocol.h>
-
 @class MKMapItem, NSString, UIActivityIndicatorView, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface MKPhotoBigAttributionView : UIView <MKPhotoBigAttributionViewSubclass, MKActivityObserving>
+@interface MKPhotoBigAttributionView : UIView
 {
     UIImageView *_imageView;
     UIView *_backgroundView;

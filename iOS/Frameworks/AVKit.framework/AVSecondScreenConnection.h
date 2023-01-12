@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     AVPlayerLayer *_playerLayer;
     AVSecondScreen *_connectedSecondScreen;
     AVDisplayCriteria *_preferredDisplayCriteria;
+    AVPlayer *_debugInfoPlayer;
     AVObservationController *_observationController;
     UIView *_contentView;
     AVSecondScreenViewController *_secondScreenViewController;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property(nonatomic, getter=isReady) _Bool ready; // @synthesize ready=_ready;
 @property(nonatomic) struct CGSize maximumVideoResolution; // @synthesize maximumVideoResolution=_maximumVideoResolution;
+@property(retain, nonatomic) AVPlayer *debugInfoPlayer; // @synthesize debugInfoPlayer=_debugInfoPlayer;
 @property(retain, nonatomic) AVDisplayCriteria *preferredDisplayCriteria; // @synthesize preferredDisplayCriteria=_preferredDisplayCriteria;
 @property(nonatomic) _Bool requiresTVOutScreen; // @synthesize requiresTVOutScreen=_requiresTVOutScreen;
 @property(nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;

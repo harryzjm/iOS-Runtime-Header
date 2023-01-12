@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKDirections, MKMapItem, NSMutableDictionary;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, GEOWalkingOptions, MKDirections, MKMapItem, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface _MKRouteETAFetcher : NSObject
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     MKMapItem *_mapItem;
     MKMapItem *_originMapItem;
     GEOAutomobileOptions *_automobileOptions;
+    GEOWalkingOptions *_walkingOptions;
     GEOTransitOptions *_transitOptions;
     GEOCyclingOptions *_cyclingOptions;
 }
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) GEOCyclingOptions *cyclingOptions; // @synthesize cyclingOptions=_cyclingOptions;
 @property(copy, nonatomic) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
+@property(copy, nonatomic) GEOWalkingOptions *walkingOptions; // @synthesize walkingOptions=_walkingOptions;
 @property(copy, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property(retain, nonatomic) MKMapItem *originMapItem; // @synthesize originMapItem=_originMapItem;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;

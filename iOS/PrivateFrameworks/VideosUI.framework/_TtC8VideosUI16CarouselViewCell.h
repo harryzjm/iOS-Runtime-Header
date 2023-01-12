@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIBaseCollectionViewCell.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI16CarouselViewCell
+@interface _TtC8VideosUI16CarouselViewCell : VUIBaseCollectionViewCell
 {
     MISSING_TYPE *overlayView;
     MISSING_TYPE *isOverlayViewMasked;
     MISSING_TYPE *cellImageView;
     MISSING_TYPE *cornerRadius;
     MISSING_TYPE *shadow;
-    MISSING_TYPE *previousSize;
     MISSING_TYPE *$__lazy_storage_$_inlinePlaybackView;
 }
 

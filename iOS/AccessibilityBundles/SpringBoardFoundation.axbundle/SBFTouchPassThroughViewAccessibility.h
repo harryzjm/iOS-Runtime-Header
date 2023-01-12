@@ -12,6 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_isTransparentFocusRegion;
+- (_Bool)_accessibilitySupportsActivateAction;
+- (_Bool)accessibilityActivate;
+- (_Bool)_accessibilityAllowsSiblingsWhenOvergrown;
 
 @end
 

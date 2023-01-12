@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)_buildStepsForGeometry:(id)arg1 andPointStarts:(id)arg2 andStopCount:(unsigned long long)arg3 andLine:(id)arg4 andCustodian:(id)arg5;
 + (id)_buildPointDataForGeometry:(id)arg1 andCreatePointStarts:(id)arg2;
 + (id)outputForGeometry:(id)arg1 andLine:(id)arg2 andStops:(id)arg3 andCustodian:(id)arg4;
-+ (id)_sectionForSteps:(id)arg1 withIndex:(unsigned long long)arg2 andSegment:(id)arg3 withIndex:(unsigned long long)arg4 andCoordinates:(id)arg5 andPointRange:(struct _NSRange)arg6 andBounds:(CDStruct_953f3dc7)arg7 andTransitLineColor:(id)arg8 andStartDistance:(double)arg9 andDecoderData:(id)arg10;
++ (id)_sectionForSteps:(id)arg1 withIndex:(unsigned long long)arg2 andSegment:(id)arg3 withIndex:(unsigned long long)arg4 andCoordinates:(id)arg5 andPointRange:(struct _NSRange)arg6 andBounds:(CDStruct_0d04b6a8)arg7 andTransitLineColor:(id)arg8 andStartDistance:(double)arg9 andDecoderData:(id)arg10;
 + (double)_buildPointSectionsInCollection:(id)arg1 pointRange:(struct _NSRange)arg2 stepIndex:(unsigned long long)arg3 transitLineColor:(id)arg4 startDistance:(double)arg5 coordinates:(id)arg6 fromSteps:(id)arg7 andSegments:(id)arg8 andDecoderData:(id)arg9;
 + (_Bool)_shouldBreakPointSectionAtStep:(id)arg1 previousStep:(id)arg2;
 + (id)buildRouteSectionsForSuggestedRoute:(id)arg1 fromSteps:(id)arg2 andSegments:(id)arg3 andCoordinates:(id)arg4 andDecoderData:(id)arg5;

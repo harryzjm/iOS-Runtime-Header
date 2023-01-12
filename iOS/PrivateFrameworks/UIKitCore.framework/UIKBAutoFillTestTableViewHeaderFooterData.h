@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBAutoFillTestTableViewHeaderFooterData : NSObject <NSCoding>
+@interface UIKBAutoFillTestTableViewHeaderFooterData : NSObject
 {
     NSString *_title;
     UIView *_headerFooterView;

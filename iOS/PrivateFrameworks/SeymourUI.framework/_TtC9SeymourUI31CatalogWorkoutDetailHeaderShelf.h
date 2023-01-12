@@ -17,6 +17,7 @@
     MISSING_TYPE *artwork;
     MISSING_TYPE *cropCode;
     MISSING_TYPE *titleTags;
+    MISSING_TYPE *item;
 }
 
 @end

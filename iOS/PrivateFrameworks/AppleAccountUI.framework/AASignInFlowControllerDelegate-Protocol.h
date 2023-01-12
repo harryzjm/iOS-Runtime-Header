@@ -11,6 +11,7 @@
 @protocol AASignInFlowControllerDelegate <NSObject>
 
 @optional
+@property(nonatomic, getter=isFastSignInEnabled) _Bool fastSignInEnabled;
 @property(nonatomic) unsigned long long findMyActivationAction;
 @property(nonatomic) _Bool shouldStashLoginResponse;
 @property(copy, nonatomic) NSSet *requiredTerms;

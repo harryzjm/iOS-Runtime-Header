@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WatchKit/NSKeyedArchiverDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SPRemoteInterfaceKeyedArchiverDelegate : NSObject <NSKeyedArchiverDelegate>
+@interface SPRemoteInterfaceKeyedArchiverDelegate : NSObject
 {
     _Bool _imageIsNamed;
 }

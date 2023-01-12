@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSDStroke;
 
-@interface TSCHSymbolPathCacheKey : NSObject <NSCopying>
+@interface TSCHSymbolPathCacheKey : NSObject
 {
     int _symbolType;
     double _size;

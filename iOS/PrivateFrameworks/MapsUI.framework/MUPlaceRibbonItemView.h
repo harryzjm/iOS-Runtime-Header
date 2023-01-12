@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapsUI/MKActivityObserving-Protocol.h>
-#import <MapsUI/MUPlaceRibbonItemViewModelUpdateDelegate-Protocol.h>
-
 @class MUHairlineView, MUPlaceRibbonItemViewModel, NSString, UITapGestureRecognizer;
 @protocol MULabelViewProtocol;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceRibbonItemView : UIView <MUPlaceRibbonItemViewModelUpdateDelegate, MKActivityObserving>
+@interface MUPlaceRibbonItemView : UIView
 {
     UIView<MULabelViewProtocol> *_titleLabel;
     UIView<MULabelViewProtocol> *_valueLabel;
@@ -30,9 +27,11 @@ __attribute__((visibility("hidden")))
 - (void)ribbonItemViewModelDidUpdate:(id)arg1;
 - (void)endAnimatingActivityIndicatorWithError:(id)arg1;
 - (void)beginAnimatingActivityIndicator;
+- (void)_setAXIdentifierWithItemType:(id)arg1;
 - (void)_updateLabelWithAlpha:(double)arg1;
 - (void)_handleTap;
 @property(nonatomic) _Bool showTrailingHairline;
+- (void)_updateValueText;
 - (void)_updateGestureRecognizers;
 - (void)_updateAppearance;
 - (void)_setupConstraints;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString, WDDocument;
 
 __attribute__((visibility("hidden")))
-@interface WDListDefinition : NSObject <NSCopying>
+@interface WDListDefinition : NSObject
 {
     WDDocument *mDocument;
     int mListDefinitionId;

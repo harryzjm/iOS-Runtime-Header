@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDrawablesGenerator-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQHDrawable : NSObject <GQDrawablesGenerator>
+@interface GQHDrawable : NSObject
 {
 }
 

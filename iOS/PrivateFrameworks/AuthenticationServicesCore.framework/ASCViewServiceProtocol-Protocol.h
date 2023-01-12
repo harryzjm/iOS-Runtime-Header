@@ -7,6 +7,8 @@
 @class NSArray, NSError;
 
 @protocol ASCViewServiceProtocol
+- (void)cableClientWillAuthenticate;
+- (void)cableClientWillConnect;
 - (void)dismissWithError:(NSError *)arg1;
 - (void)dismiss;
 - (void)updateInterfaceForUserVisibleError:(NSError *)arg1;

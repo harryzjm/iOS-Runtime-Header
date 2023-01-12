@@ -6,11 +6,9 @@
 
 #import <IconFoundation/IFImage.h>
 
-#import <IconServices/ISScalableCompositorResource-Protocol.h>
-
 @class NSString;
 
-@interface IFImage (ISScalableCompositorResource) <ISScalableCompositorResource>
+@interface IFImage (ISScalableCompositorResource)
 - (id)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
 
 // Remaining properties

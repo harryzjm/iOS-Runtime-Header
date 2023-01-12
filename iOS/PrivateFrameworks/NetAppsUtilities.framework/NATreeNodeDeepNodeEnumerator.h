@@ -6,12 +6,10 @@
 
 #import <Foundation/NSEnumerator.h>
 
-#import <NetAppsUtilities/NSCopying-Protocol.h>
-
 @class NATreeNode, NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface NATreeNodeDeepNodeEnumerator : NSEnumerator <NSCopying>
+@interface NATreeNodeDeepNodeEnumerator : NSEnumerator
 {
     NSMutableArray *_enumeratorStack;
     NATreeNode *_node;

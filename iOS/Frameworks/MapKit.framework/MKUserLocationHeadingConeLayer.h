@@ -6,13 +6,10 @@
 
 #import <QuartzCore/CAGradientLayer.h>
 
-#import <MapKit/MKUserLocationHeadingAnimatableIndicator-Protocol.h>
-#import <MapKit/MKUserLocationHeadingIndicator-Protocol.h>
-
 @class CAShapeLayer, NSString, UIColor, UITraitCollection, _MKPuckAnnotationView;
 
 __attribute__((visibility("hidden")))
-@interface MKUserLocationHeadingConeLayer : CAGradientLayer <MKUserLocationHeadingIndicator, MKUserLocationHeadingAnimatableIndicator>
+@interface MKUserLocationHeadingConeLayer : CAGradientLayer
 {
     _MKPuckAnnotationView *_userLocationView;
     CAShapeLayer *_maskLayer;

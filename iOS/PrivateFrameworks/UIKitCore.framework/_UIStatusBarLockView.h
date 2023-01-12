@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
+#import "UIView.h"
 
 @class NSString, UIAccessibilityHUDItem, _UIStatusBarImageView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarLockView <CAAnimationDelegate, _UIStatusBarDisplayable>
+@interface _UIStatusBarLockView : UIView
 {
     _UIStatusBarImageView *_bodyView;
     _UIStatusBarImageView *_shackleView;
@@ -36,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) long long overriddenVerticalAlignment;
+@property(readonly, nonatomic) _Bool prefersCenterVerticalAlignment;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool wantsCrossfade;
 

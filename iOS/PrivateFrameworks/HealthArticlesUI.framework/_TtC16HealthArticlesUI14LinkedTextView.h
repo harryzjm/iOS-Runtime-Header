@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *paragraphText;
     MISSING_TYPE *linkedText;
-    MISSING_TYPE *linkContent;
 }
 
 - (void).cxx_destruct;

@@ -9,6 +9,7 @@
 @class AMSEngagementResult, NSError;
 
 @protocol AMSSystemEngagementTaskClientInterface <NSObject>
+- (void)initializeClientToViewServiceConnection;
 - (void)engagementTaskDidFinishWithResult:(AMSEngagementResult *)arg1 error:(NSError *)arg2 completion:(void (^)(void))arg3;
 @end
 

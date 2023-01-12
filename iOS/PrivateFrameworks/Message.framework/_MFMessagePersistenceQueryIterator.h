@@ -6,15 +6,10 @@
 
 #import <EmailDaemon/EDPersistedMessageQueryIterator.h>
 
-#import <Message/EFCancelable-Protocol.h>
-#import <Message/MFSearchResultHandler-Protocol.h>
-#import <Message/QueryProgressMonitor-Protocol.h>
-#import <Message/_MFFlushableMessageSetIterator-Protocol.h>
-
 @class NSMutableIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MFMessagePersistenceQueryIterator : EDPersistedMessageQueryIterator <MFSearchResultHandler, QueryProgressMonitor, _MFFlushableMessageSetIterator, EFCancelable>
+@interface _MFMessagePersistenceQueryIterator : EDPersistedMessageQueryIterator
 {
     NSMutableIndexSet *_messageSet;
 }

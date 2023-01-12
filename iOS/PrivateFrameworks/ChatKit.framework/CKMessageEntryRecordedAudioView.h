@@ -6,14 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <ChatKit/CKAudioControllerDelegate-Protocol.h>
-
 @class CKAudioController, CKAudioMediaObject, NSString, UIButton, UIImage, UIImageView, UILabel, UIVisualEffectView;
 @protocol CKMessageEntryRecordedAudioViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKMessageEntryRecordedAudioView : UIView <CKAudioControllerDelegate>
+@interface CKMessageEntryRecordedAudioView : UIView
 {
+    _Bool _cachedWaveFormImageIsValid;
     CKAudioMediaObject *_audioMediaObject;
     UIButton *_playPauseDeleteButton;
     id <CKMessageEntryRecordedAudioViewDelegate> _delegate;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool cachedWaveFormImageIsValid; // @synthesize cachedWaveFormImageIsValid=_cachedWaveFormImageIsValid;
 @property(copy, nonatomic) NSString *timeFormat; // @synthesize timeFormat=_timeFormat;
 @property(nonatomic) double time; // @synthesize time=_time;
 @property(retain, nonatomic) UIImageView *waveformImageView; // @synthesize waveformImageView=_waveformImageView;
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)play;
 - (void)updateProgress;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)updateTimeString;
@@ -57,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (void)handlePlayPauseDelete:(id)arg1;
 - (void)updatePlayPauseDeleteButton;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

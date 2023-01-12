@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/BSDescriptionProviding-Protocol.h>
-
 @class HDSPSleepScheduleModelChangeEvaluation, NSString;
 @protocol HDSPSource;
 
 __attribute__((visibility("hidden")))
-@interface HDSPEnvironmentContext : NSObject <BSDescriptionProviding>
+@interface HDSPEnvironmentContext : NSObject
 {
     id <HDSPSource> _source;
     HDSPSleepScheduleModelChangeEvaluation *_changeEvaluation;

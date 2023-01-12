@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCondition, NSMutableArray;
+@class NSArray, NSCondition;
 
 __attribute__((visibility("hidden")))
 @interface _NSThreadPerformInfo : NSObject
@@ -14,13 +14,14 @@ __attribute__((visibility("hidden")))
     id _target;
     SEL _selector;
     id _argument;
-    NSMutableArray *modes;
-    NSCondition *waiter;
-    char *signalled;
+    NSArray *_modes;
+    NSCondition *_waiter;
+    int _state;
 }
 
 - (void)dealloc;
-- (id)init;
+- (int)wait;
+- (void)signal:(int)arg1;
 
 @end
 

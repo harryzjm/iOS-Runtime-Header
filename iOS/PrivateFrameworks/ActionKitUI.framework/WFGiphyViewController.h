@@ -6,15 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ActionKitUI/UICollectionViewDataSource-Protocol.h>
-#import <ActionKitUI/UICollectionViewDelegate-Protocol.h>
-#import <ActionKitUI/UISearchBarDelegate-Protocol.h>
-
 @class NSArray, NSString, UICollectionView, UICollectionViewFlowLayout, UIView, WFGiphySessionManager;
 @protocol WFGiphyViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WFGiphyViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate>
+@interface WFGiphyViewController : UIViewController
 {
     _Bool _selectMultiple;
     NSString *_query;

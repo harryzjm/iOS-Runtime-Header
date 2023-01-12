@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setHint:(long long)arg1;
 - (id)_axStringForElapsedAndRemainingTime;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateRemainingTimeText;

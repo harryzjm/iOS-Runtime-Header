@@ -6,13 +6,15 @@
 
 #import <VisionKitCore/NSObject-Protocol.h>
 
-@class UIView, UIViewController, VKAnalyticsEvent, VKCDataDetectorElementView;
+@class UIImage, UIView, UIViewController, VKAnalyticsEvent, VKCDataDetectorElementView;
 
 @protocol VKCDataDetectorElementViewDelegate <NSObject>
 - (void)willDismissMenuForDataDetectorElementView:(VKCDataDetectorElementView *)arg1;
 - (void)willDisplayMenuForDataDetectorElementView:(VKCDataDetectorElementView *)arg1;
 - (_Bool)dataDetectorElementView:(VKCDataDetectorElementView *)arg1 shouldBeginAtPoint:(struct CGPoint)arg2;
 - (void)dataDetectorElementView:(VKCDataDetectorElementView *)arg1 analyticsEventOccured:(VKAnalyticsEvent *)arg2;
+- (struct CGRect)previewImageBoundsForDataDetectorElementView:(VKCDataDetectorElementView *)arg1;
+- (UIImage *)previewImageForDataDetectorElementView:(VKCDataDetectorElementView *)arg1;
 - (UIView *)previewForDataDetectorElementView:(VKCDataDetectorElementView *)arg1;
 
 @optional

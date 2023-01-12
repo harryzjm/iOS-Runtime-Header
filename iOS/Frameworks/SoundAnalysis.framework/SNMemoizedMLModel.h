@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/MLCustomModel-Protocol.h>
-#import <SoundAnalysis/SNMLModel-Protocol.h>
-
 @class MLModelDescription, NSString;
 @protocol SNMLModel;
 
 __attribute__((visibility("hidden")))
-@interface SNMemoizedMLModel : NSObject <MLCustomModel, SNMLModel>
+@interface SNMemoizedMLModel : NSObject
 {
     unsigned long long _maxCacheSize;
     struct unordered_map<SoundAnalysis::MD5Hash, id<MLFeatureProvider>, std::hash<SoundAnalysis::MD5Hash>, std::equal_to<SoundAnalysis::MD5Hash>, std::allocator<std::pair<const SoundAnalysis::MD5Hash, id<MLFeatureProvider>>>> _cacheStorage;
@@ -21,17 +18,11 @@ __attribute__((visibility("hidden")))
     id <SNMLModel> _wrappedModel;
 }
 
-+ (unsigned long long)defaultMaxCacheSize;
-+ (id)withWrappedModel:(id)arg1;
-+ (id)withWrappedModel:(id)arg1 maxCacheSize:(unsigned long long)arg2;
 + (id)new;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly) id <SNMLModel> wrappedModel; // @synthesize wrappedModel=_wrappedModel;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
 @property(readonly) MLModelDescription *modelDescription;
-- (id)initWithWrappedModel:(id)arg1 maxCacheSize:(unsigned long long)arg2;
-- (id)initWithWrappedModel:(id)arg1;
 - (id)initWithModelDescription:(id)arg1 parameterDictionary:(id)arg2 error:(id *)arg3;
 - (id)init;
 

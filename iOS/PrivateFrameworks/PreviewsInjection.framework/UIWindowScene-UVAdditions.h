@@ -6,9 +6,12 @@
 
 #import <UIKit/UIWindowScene.h>
 
-@protocol UVFBSDisplayConfiguration;
+@class NSString;
 
 @interface UIWindowScene (UVAdditions)
-@property(readonly, nonatomic) id <UVFBSDisplayConfiguration> displayConfiguration;
+@property(readonly, nonatomic) double displayScale;
+@property(readonly, nonatomic) NSString *displayName;
+@property(readonly, nonatomic) NSString *previewSceneIdentifier;
+@property(readonly, nonatomic) struct CGSize previewMaximumSize;
 @end
 

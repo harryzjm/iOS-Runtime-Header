@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _ML3ArtworkConfigurationMediaArtworkTypeKey : NSObject <NSCopying>
+@interface _ML3ArtworkConfigurationMediaArtworkTypeKey : NSObject
 {
     unsigned int _mediaType;
     long long _artworkType;

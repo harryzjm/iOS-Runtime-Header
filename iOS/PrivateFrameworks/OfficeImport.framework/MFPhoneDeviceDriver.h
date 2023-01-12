@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/MFDeviceDriver-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface MFPhoneDeviceDriver : NSObject <MFDeviceDriver>
+@interface MFPhoneDeviceDriver : NSObject
 {
     struct CGRect m_canvas;
     struct CGAffineTransform m_canvasTransform;

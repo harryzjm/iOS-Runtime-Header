@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPOplockFailure, FCCKPUniqueFieldFailure;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPResponseOperationResultErrorClient : PBCodable <NSCopying>
+@interface FCCKPResponseOperationResultErrorClient : PBCodable
 {
     FCCKPOplockFailure *_oplockFailure;
     int _type;

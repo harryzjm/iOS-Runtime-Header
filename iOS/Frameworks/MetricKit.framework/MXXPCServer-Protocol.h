@@ -6,5 +6,9 @@
 
 @protocol MXXPCServer
 - (void)registerClient;
+
+@optional
+- (void)retrieveMetrics;
+- (void)retrieveDiagnostics;
 @end
 

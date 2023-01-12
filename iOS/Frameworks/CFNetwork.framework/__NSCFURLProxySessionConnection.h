@@ -4,14 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/NSURLSessionDataDelegate-Protocol.h>
-#import <CFNetwork/NSURLSessionDataDelegatePrivate-Protocol.h>
-#import <CFNetwork/NSURLSessionDelegate_Internal-Protocol.h>
-#import <CFNetwork/NSURLSessionTaskDelegatePrivate-Protocol.h>
-
 @class NSArray, NSCachedURLResponse, NSString, NSURLRequest, NSURLSessionTask;
 
-@interface __NSCFURLProxySessionConnection <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDelegate_Internal>
+@interface __NSCFURLProxySessionConnection
 {
     NSURLSessionTask *_proxyTask;
     NSURLSessionTask *_cacheTask;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/UIDocumentInteractionControllerDelegate-Protocol.h>
-
 @class NSString;
 @protocol UIDocumentInteractionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface QLCustomURLSharingProxyDelegate : NSObject <UIDocumentInteractionControllerDelegate>
+@interface QLCustomURLSharingProxyDelegate : NSObject
 {
     id <UIDocumentInteractionControllerDelegate> _delegate;
 }

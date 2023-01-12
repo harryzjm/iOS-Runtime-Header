@@ -17,6 +17,7 @@
 - (oneway void)getGamedFiredUpWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)getPreferenceForKey:(NSString *)arg1 handler:(void (^)(_Bool, _Bool))arg2;
 - (oneway void)getAuthenticatedLocalPlayersWithStatus:(unsigned long long)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (oneway void)getAuthenticatedPlayerCredential:(void (^)(GKAuthenticateCredential *))arg1;
 - (oneway void)getAuthenticatedPlayerInfo:(void (^)(GKAuthenticateResponse *, NSError *))arg1;
 - (oneway void)getAuthenticatedPlayerIDWithHandler:(void (^)(NSString *))arg1;
 - (oneway void)getAccountNameWithHandler:(void (^)(NSString *))arg1;

@@ -9,7 +9,7 @@
 #import <XCTAutomationSupport/NSSecureCoding-Protocol.h>
 #import <XCTAutomationSupport/XCTCapabilitiesProviding-Protocol.h>
 
-@class NSArray, NSDictionary, NSSet, NSString, XCAccessibilityElement, XCElementSnapshot, XCTTimeoutControls;
+@class NSArray, NSDictionary, NSSet, XCAccessibilityElement, XCElementSnapshot, XCTTimeoutControls;
 @protocol XCTElementSnapshotAttributeDataSource, XCTElementSnapshotProvider;
 
 @interface XCTElementQuery : NSObject <NSSecureCoding, XCTCapabilitiesProviding>
@@ -56,19 +56,15 @@
 - (_Bool)hasTransformerWithStopsOnFirstMatch;
 @property(readonly) _Bool supportsAttributeKeyPathAnalysis;
 - (_Bool)canBeRemotelyEvaluatedWithCapabilities:(id)arg1;
-@property(readonly, copy) NSString *description;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRootElement:(id)arg1 transformers:(id)arg2 options:(unsigned long long)arg3 isMacOS:(_Bool)arg4 timeoutControls:(id)arg5;
 - (id)initWithRootElement:(id)arg1 transformers:(id)arg2 options:(unsigned long long)arg3 isMacOS:(_Bool)arg4;
 - (id)initWithRootElement:(id)arg1 transformers:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithRootElement:(id)arg1 transformers:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) Class superclass;
 
 @end
 

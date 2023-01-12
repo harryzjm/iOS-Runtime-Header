@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNSystemAudioAnalyzerProtocol-Protocol.h>
-#import <SoundAnalysis/SNSystemAudioAnalyzerXPCProtocol-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 @protocol SNSystemAudioAnalyzerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface SNSystemAudioAnalyzerXPCSubscriber : NSObject <SNSystemAudioAnalyzerProtocol, SNSystemAudioAnalyzerXPCProtocol>
+@interface SNSystemAudioAnalyzerXPCSubscriber : NSObject
 {
     NSMutableDictionary *_remoteObservers;
     id <SNSystemAudioAnalyzerProtocol> _receiver;
@@ -21,18 +18,13 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)xpcSetAudioConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)xpcStopWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)xpcStartWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)xpcRemoveAllRequestsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)xpcRemoveRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)xpcAddRequest:(id)arg1 withObserver:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setAudioConfiguration:(id)arg1;
-- (void)stop;
-- (void)start;
 - (void)removeAllRequests;
 - (void)removeRequest:(id)arg1;
 - (_Bool)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
-- (id)initWithReceiver:(id)arg1;
 - (id)init;
 
 // Remaining properties

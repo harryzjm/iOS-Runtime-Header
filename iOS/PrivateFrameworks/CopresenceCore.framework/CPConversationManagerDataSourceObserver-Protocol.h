@@ -14,6 +14,7 @@
 - (void)conversationManager:(id <CPConversationManagerDataSource>)arg1 conversationChanged:(TUConversation *)arg2;
 
 @optional
+- (void)conversationManager:(id <CPConversationManagerDataSource>)arg1 screenSharingAllowedChanged:(_Bool)arg2;
 - (void)conversationManager:(id <CPConversationManagerDataSource>)arg1 sharePlayAllowedChanged:(_Bool)arg2;
 @end
 

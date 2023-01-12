@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIEvent.h"
+
 @class BKSAccelerometer, NSTimer;
 
 __attribute__((visibility("hidden")))
-@interface UIMotionEvent
+@interface UIMotionEvent : UIEvent
 {
     BKSAccelerometer *_motionAccelerometer;
     long long _subtype;

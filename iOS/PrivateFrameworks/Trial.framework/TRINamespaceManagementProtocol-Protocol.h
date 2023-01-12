@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSSet, NSString, NSURL, TRIClientNamespaceMetadata, TRIDownloadOptions, TRIRolloutDeployment;
-@protocol TRIFactorPackId;
+@class NSArray, NSDictionary, NSObject, NSSet, NSString, NSURL, TRIClientNamespaceMetadata, TRIDownloadOptions, TRIFactorsState, TRIRolloutDeployment;
+@protocol OS_dispatch_queue, TRIFactorPackId;
 
 @protocol TRINamespaceManagementProtocol
 - (NSArray *)activeRolloutInformation:(id *)arg1;
-- (unsigned long long)statusOfDownloadForFactors:(NSArray *)arg1 withNamespace:(NSString *)arg2 notificationKey:(id *)arg3 error:(id *)arg4;
+- (unsigned long long)statusOfDownloadForFactors:(NSArray *)arg1 withNamespace:(NSString *)arg2 factorsState:(TRIFactorsState *)arg3 notificationKey:(id *)arg4 error:(id *)arg5;
 - (_Bool)promoteFactorPackId:(NSString<TRIFactorPackId> *)arg1 forNamespaceName:(NSString *)arg2 rolloutDeployment:(TRIRolloutDeployment *)arg3 error:(id *)arg4;
 - (_Bool)rejectFactorPackId:(NSString<TRIFactorPackId> *)arg1 forNamespaceName:(NSString *)arg2 rolloutDeployment:(TRIRolloutDeployment *)arg3 error:(id *)arg4;
 - (_Bool)setProvisionalFactorPackId:(NSString<TRIFactorPackId> *)arg1 forNamespaceName:(NSString *)arg2 error:(id *)arg3;
@@ -17,8 +17,8 @@
 - (_Bool)setPurgeabilityLevelsForFactors:(NSDictionary *)arg1 forNamespaceName:(NSString *)arg2 error:(id *)arg3;
 - (_Bool)immediateDownloadForNamespaceNames:(NSSet *)arg1 allowExpensiveNetworking:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)deregisterNamespaceWithNamespaceName:(NSString *)arg1 error:(id *)arg2;
-- (_Bool)removeLevelsForFactors:(NSArray *)arg1 withNamespace:(NSString *)arg2 error:(id *)arg3;
-- (NSString *)startDownloadLevelsForFactors:(NSArray *)arg1 withNamespace:(NSString *)arg2 options:(TRIDownloadOptions *)arg3 error:(id *)arg4;
+- (_Bool)removeLevelsForFactors:(NSArray *)arg1 withNamespace:(NSString *)arg2 factorsState:(TRIFactorsState *)arg3 removeImmediately:(_Bool)arg4 error:(id *)arg5;
+- (void)downloadLevelsForFactors:(NSArray *)arg1 withNamespace:(NSString *)arg2 queue:(NSObject<OS_dispatch_queue> *)arg3 factorsState:(TRIFactorsState *)arg4 options:(TRIDownloadOptions *)arg5 progress:(void (^)(unsigned long long))arg6 completion:(void (^)(_Bool, NSError *))arg7;
 - (_Bool)startNamespaceDownloadWithName:(NSString *)arg1 options:(TRIDownloadOptions *)arg2 error:(id *)arg3;
 - (_Bool)registerNamespaceWithNamespaceName:(NSString *)arg1 compatibilityVersion:(unsigned int)arg2 defaultsFileURL:(NSURL *)arg3 applicationGroup:(NSString *)arg4 cloudKitContainerId:(int)arg5 error:(id *)arg6;
 @end

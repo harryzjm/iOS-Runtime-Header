@@ -6,9 +6,11 @@
 
 #import <Synapse/NSObject-Protocol.h>
 
-@class SYActivityObserverContext, SYUserActivityIdentifierInfo;
+@class NSNumber, SYActivityObserverContext, SYUserActivityIdentifierInfo;
 
 @protocol SYBacklinkMonitorServiceProtocol <NSObject>
+- (oneway void)indicatorCoverageWithCompletion:(void (^)(NSNumber *))arg1;
+- (oneway void)setIndicatorCoverage:(NSNumber *)arg1;
 - (oneway void)activeUserActivityDidChange:(SYUserActivityIdentifierInfo *)arg1 context:(SYActivityObserverContext *)arg2 completion:(void (^)(void))arg3;
 @end
 

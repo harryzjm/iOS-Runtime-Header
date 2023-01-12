@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *feedLayoutSolver;
     MISSING_TYPE *baseStyler;
-    MISSING_TYPE *assetManager;
+    MISSING_TYPE *decorationProviderFactory;
     MISSING_TYPE *feedDescriptor;
 }
 

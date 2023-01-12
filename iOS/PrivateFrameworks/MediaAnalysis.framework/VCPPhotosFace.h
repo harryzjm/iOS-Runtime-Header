@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/PFPhotosFaceRepresentation-Protocol.h>
-
 @class NSString, VCPVNImageprintWrapper;
 
 __attribute__((visibility("hidden")))
-@interface VCPPhotosFace : NSObject <PFPhotosFaceRepresentation>
+@interface VCPPhotosFace : NSObject
 {
     _Bool _hidden;
     _Bool _isInTrash;
@@ -64,6 +62,13 @@ __attribute__((visibility("hidden")))
     double _quality;
 }
 
++ (_Bool)_isColocatingAnimalObservation:(id)arg1 withFaceObservations:(id)arg2 orTorsoObservations:(id)arg3;
++ (double)_calculateIoUBetweenObservation:(id)arg1 andObservation:(id)arg2;
++ (double)_calculateOverlappingBetweenFaceObservation:(id)arg1 andHumanObservation:(id)arg2;
++ (id)facesFromPHFetchResult:(id)arg1 copyOption:(long long)arg2;
++ (id)faceFromPHFace:(id)arg1 copyOption:(long long)arg2;
++ (id)facesFromFaceObservations:(id)arg1 humanObservations:(id)arg2 animalObservations:(id)arg3 sourceWidth:(unsigned long long)arg4 sourceHeight:(unsigned long long)arg5 visionRequests:(id)arg6 blurScorePerFace:(id)arg7 exposureScorePerFace:(id)arg8 tooSmallFaceObservations:(id)arg9 processingVersion:(int)arg10;
++ (id)faceFromFaceObservation:(id)arg1 humanObservation:(id)arg2 sourceWidth:(unsigned long long)arg3 sourceHeight:(unsigned long long)arg4 visionRequests:(id)arg5 processingVersion:(int)arg6 force:(_Bool)arg7 andError:(id *)arg8;
 + (id)faceWithLocalIdentifier:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) double quality; // @synthesize quality=_quality;
@@ -129,7 +134,8 @@ __attribute__((visibility("hidden")))
 - (double)photosFaceRepresentationCenterX;
 - (long long)photosFaceRepresentationSourceHeight;
 - (long long)photosFaceRepresentationSourceWidth;
-- (id)gistDescription;
+- (long long)qualityMeasureWithCountOfFacesOnAsset:(unsigned long long)arg1;
+- (id)gist;
 - (struct CGRect)normalizedFaceRect;
 - (_Bool)setCenterAndSizeFromNormalizedFaceRect:(struct CGRect)arg1;
 - (void)replaceCoordinatesAndFeaturesFromDetectedFace:(id)arg1;

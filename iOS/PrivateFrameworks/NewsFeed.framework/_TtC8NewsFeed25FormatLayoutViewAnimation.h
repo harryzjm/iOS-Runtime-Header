@@ -10,11 +10,15 @@
 
 @interface _TtC8NewsFeed25FormatLayoutViewAnimation : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *animationCompletion;
     MISSING_TYPE *runModeRunner;
     MISSING_TYPE *identifier;
     MISSING_TYPE *view;
     MISSING_TYPE *layer;
+    MISSING_TYPE *supplementaryLayers;
+    MISSING_TYPE *allLayers;
     MISSING_TYPE *animationData;
+    MISSING_TYPE *animators;
 }
 
 @end

@@ -7,8 +7,8 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (APOdmlExtensions)
-- (id)jsonString;
-- (id)jsonStringWithPrettyPrint:(_Bool)arg1;
-- (id)arrayForJSON;
+- (id)APOdml_jsonString;
+- (id)APOdml_jsonStringWithPrettyPrint:(_Bool)arg1;
+- (id)APOdml_arrayForJSON;
 @end
 

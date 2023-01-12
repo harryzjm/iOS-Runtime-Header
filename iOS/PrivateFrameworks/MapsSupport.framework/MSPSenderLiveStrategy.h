@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 
 - (void)trafficUpdated:(id)arg1;
 - (void)routeUpdated:(id)arg1;
-- (void)destinationUpdated:(id)arg1;
+- (void)waypointsUpdated:(id)arg1;
 - (void)etaUpdated:(id)arg1;
 - (void)setState:(id)arg1;
 - (void)addParticipants:(id)arg1;

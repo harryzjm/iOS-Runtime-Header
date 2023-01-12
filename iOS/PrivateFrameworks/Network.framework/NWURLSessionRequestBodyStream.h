@@ -6,16 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <Network/NWURLSessionRequestBodyProvider-Protocol.h>
-
-@class NSString;
+@class NSInputStream, NSString, NWURLSessionReadRequest;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface NWURLSessionRequestBodyStream : NSObject <NWURLSessionRequestBodyProvider>
+@interface NWURLSessionRequestBodyStream : NSObject
 {
+    _Bool _streamIsSetup;
+    NSInputStream *_stream;
+    unsigned long long _offset;
+    NSObject<OS_dispatch_queue> *_queue;
+    NWURLSessionReadRequest *_readRequest;
 }
 
-- (void)readMinimumLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+- (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
+- (void)readMinimumIncompleteLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

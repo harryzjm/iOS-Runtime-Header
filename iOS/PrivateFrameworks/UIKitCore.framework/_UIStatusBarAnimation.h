@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UIStatusBarPrioritized-Protocol.h>
 
 @class NSMutableArray, NSSet, NSString, _UIStatusBarIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarAnimation : NSObject <NSCopying, _UIStatusBarPrioritized>
+@interface _UIStatusBarAnimation : NSObject <NSCopying>
 {
     _Bool _delaysAnimatingItems;
     _Bool _delaysDependentItems;
@@ -27,7 +26,9 @@ __attribute__((visibility("hidden")))
     NSSet *_delayedDisplayItemPlacements;
     NSMutableArray *_subAnimations;
     _UIStatusBarAnimation *_parentAnimation;
+    double _timeout;
     CDUnknownBlockType _animationBlock;
+    CDUnknownBlockType _timeoutBlock;
     NSMutableArray *_completionHandlers;
 }
 
@@ -39,7 +40,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(retain, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
+@property(copy, nonatomic) CDUnknownBlockType timeoutBlock; // @synthesize timeoutBlock=_timeoutBlock;
 @property(copy, nonatomic) CDUnknownBlockType animationBlock; // @synthesize animationBlock=_animationBlock;
+@property(nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property(nonatomic) __weak _UIStatusBarAnimation *parentAnimation; // @synthesize parentAnimation=_parentAnimation;
 @property(retain, nonatomic) NSMutableArray *subAnimations; // @synthesize subAnimations=_subAnimations;
 @property(nonatomic) _Bool delaysDependentItems; // @synthesize delaysDependentItems=_delaysDependentItems;
@@ -57,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSSet *effectiveDelayedItemIdentifiers;
 - (void)addSubAnimation:(id)arg1 forDisplayItemWithIdentifier:(id)arg2;
 - (void)cancel;
+- (void)addTimeout:(double)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)performForStatusBar:(id)arg1;
 - (void)_prepareForStatusBar:(id)arg1 preparingAnimations:(id)arg2 exclusiveAnimations:(id)arg3;
 - (void)addTotalCompletionHandler:(CDUnknownBlockType)arg1;

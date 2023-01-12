@@ -6,9 +6,12 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol PLBackgroundJobServiceObserver <NSObject>
 
 @optional
+- (void)backgroundJobServiceDidRegisterCriteriaShortCode:(NSString *)arg1;
 - (void)backgroundJobServiceDidChangeStateFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (void)backgroundJobServiceDidShutdown;
 @end

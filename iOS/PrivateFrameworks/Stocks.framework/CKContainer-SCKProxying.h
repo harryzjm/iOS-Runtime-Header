@@ -6,9 +6,7 @@
 
 #import <CloudKit/CKContainer.h>
 
-#import <Stocks/SCKContainerProxying-Protocol.h>
-
-@interface CKContainer (SCKProxying) <SCKContainerProxying>
+@interface CKContainer (SCKProxying)
 - (void)addDatabaseOperation:(id)arg1;
 @end
 

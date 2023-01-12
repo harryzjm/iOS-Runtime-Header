@@ -10,7 +10,6 @@
 
 @interface _TtC18HealthExperienceUIP33_5F1999B9FEFBF147C2BFD4A3470439DE41PlatformNotificationHandlerPluginProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *$__lazy_storage_$_categoriesProvidingPlugins;
     MISSING_TYPE *$__lazy_storage_$_delegateProvidingPlugins;
     MISSING_TYPE *pluginBundleProvider;
 }

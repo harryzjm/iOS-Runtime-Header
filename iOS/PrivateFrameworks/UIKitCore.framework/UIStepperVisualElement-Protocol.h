@@ -13,7 +13,6 @@
 + (struct UIEdgeInsets)initialAlignmentRectInsets;
 + (struct CGSize)initialIntrinsicSize;
 + (struct CGSize)initialSize;
-+ (id)new;
 @property(nonatomic) __weak id <UIStepperControl> stepperControl;
 @property(nonatomic) _Bool autorepeat;
 @property(nonatomic) _Bool wraps;
@@ -38,5 +37,6 @@
 - (void)endTrackingWithTouch:(UITouch *)arg1 withEvent:(UIEvent *)arg2;
 - (_Bool)continueTrackingWithTouch:(UITouch *)arg1 withEvent:(UIEvent *)arg2;
 - (_Bool)beginTrackingWithTouch:(UITouch *)arg1 withEvent:(UIEvent *)arg2;
+- (id)init;
 @end
 

@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIFocusMovementInfo.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIFocusRegionMovementInfo
+@interface _UIFocusRegionMovementInfo : _UIFocusMovementInfo
 {
     unsigned long long _originatingHeading;
 }

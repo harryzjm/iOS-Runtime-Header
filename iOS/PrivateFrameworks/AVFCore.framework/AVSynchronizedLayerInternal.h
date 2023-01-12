@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayerItem;
+@class AVPlayerItem, NSMutableSet;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVSynchronizedLayerInternal : NSObject
 {
-    AVPlayerItem *playerItem;
-    _Bool isVisible;
     NSObject<OS_dispatch_queue> *serialQueue;
+    NSObject<OS_dispatch_queue> *ivarAccessQueue;
+    AVPlayerItem *playerItem;
+    NSMutableSet *oldPlayerItems;
+    _Bool isVisible;
 }
 
 @end

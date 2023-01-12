@@ -7,6 +7,7 @@
 #import <Silex/NSObject-Protocol.h>
 
 @protocol SXMediaPlaybackDelegate <NSObject>
+- (void)pauseMediaPlaybackForDisappearance;
 - (void)pauseMediaPlayback;
 @end
 

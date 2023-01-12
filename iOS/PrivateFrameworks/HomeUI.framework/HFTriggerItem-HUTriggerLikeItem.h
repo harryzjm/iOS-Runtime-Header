@@ -6,11 +6,9 @@
 
 #import <Home/HFTriggerItem.h>
 
-#import <HomeUI/HUTriggerLikeItem-Protocol.h>
-
 @class HMTrigger, NSString;
 
-@interface HFTriggerItem (HUTriggerLikeItem) <HUTriggerLikeItem>
+@interface HFTriggerItem (HUTriggerLikeItem)
 @property(readonly, nonatomic) NSString *identifier;
 
 // Remaining properties

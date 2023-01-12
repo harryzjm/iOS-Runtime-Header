@@ -6,9 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSError, PKAccount, PKAccountBillPaymentController;
+@class NSError, NSString, PKAccount, PKAccountBillPaymentController;
 
 @protocol PKAccountBillPaymentControllerDelegate <NSObject>
+- (NSString *)presentationSceneIdentifierForAccountBillPaymentController:(PKAccountBillPaymentController *)arg1;
 - (void)accountBillPaymentController:(PKAccountBillPaymentController *)arg1 hasChangedState:(unsigned long long)arg2 error:(NSError *)arg3 updatedAccount:(PKAccount *)arg4;
 @end
 

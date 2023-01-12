@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <StatusKitAgentCore/NSCopying-Protocol.h>
-
 @class AuthCredential, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SharedChannelCreateRequest : PBRequest <NSCopying>
+@interface SharedChannelCreateRequest : PBRequest
 {
     AuthCredential *_authCredential;
     int _channelOwnershipType;

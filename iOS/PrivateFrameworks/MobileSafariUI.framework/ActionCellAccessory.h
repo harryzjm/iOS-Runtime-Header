@@ -6,16 +6,21 @@
 
 #import <UIKit/UICellAccessoryCustomView.h>
 
+@class UIImageSymbolConfiguration;
+
 __attribute__((visibility("hidden")))
 @interface ActionCellAccessory : UICellAccessoryCustomView
 {
     CDUnknownBlockType _visibilityProvider;
+    UIImageSymbolConfiguration *_preferredSymbolConfiguration;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImageSymbolConfiguration *preferredSymbolConfiguration; // @synthesize preferredSymbolConfiguration=_preferredSymbolConfiguration;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)applyContentConfiguration:(id)arg1 forState:(id)arg2;
 - (id)initWithAction:(id)arg1 visibilityProvider:(CDUnknownBlockType)arg2;
+- (id)initWithAction:(id)arg1;
 
 @end
 

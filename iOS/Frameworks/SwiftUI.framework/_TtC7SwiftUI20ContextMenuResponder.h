@@ -8,7 +8,7 @@
 
 @interface _TtC7SwiftUI20ContextMenuResponder
 {
-    MISSING_TYPE *cachedItems;
+    MISSING_TYPE *menuChangeDetector;
     MISSING_TYPE *_itemList;
     MISSING_TYPE *id;
 }

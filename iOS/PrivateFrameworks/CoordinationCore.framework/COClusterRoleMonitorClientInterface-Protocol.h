@@ -6,9 +6,11 @@
 
 #import <CoordinationCore/NSObject-Protocol.h>
 
-@class COClusterMember, COClusterRole, NSString;
+@class COClusterMember, COClusterRole, NSSet, NSString;
 
 @protocol COClusterRoleMonitorClientInterface <NSObject>
+- (void)snapshotOfCluster:(NSString *)arg1 didChangeTo:(NSSet *)arg2;
+- (void)membersWithRole:(COClusterRole *)arg1 inCluster:(NSString *)arg2 didChangeTo:(NSSet *)arg3;
 - (void)roleOfMember:(COClusterMember *)arg1 inCluster:(NSString *)arg2 didChangeTo:(COClusterRole *)arg3;
 @end
 

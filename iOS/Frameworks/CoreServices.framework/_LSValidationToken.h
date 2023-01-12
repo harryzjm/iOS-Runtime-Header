@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface _LSValidationToken : NSObject <NSSecureCoding>
+@interface _LSValidationToken : NSObject
 {
     NSData *_payload;
     NSData *_nonce;

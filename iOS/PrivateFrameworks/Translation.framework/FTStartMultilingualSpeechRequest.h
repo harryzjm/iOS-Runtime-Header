@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTStartSpeechRequest, NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTStartMultilingualSpeechRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTStartMultilingualSpeechRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_0fc89d0c)addObjectToBuffer:(void *)arg1;
+- (void)language_parameters_by_id_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)language_parameters_by_id_count;
+- (id)language_parameters_by_id_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *language_parameters_by_id;
 @property(readonly, nonatomic) FTStartSpeechRequest *start_speech_request;
 - (id)copyWithZone:(struct _NSZone *)arg1;

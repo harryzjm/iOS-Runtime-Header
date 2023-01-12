@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCControllerComponentDescription-Protocol.h>
-
 @class GCBatteryXPCProxyClientEndpoint, GCDeviceBattery, NSString;
 @protocol NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface GCBatteryXPCProxyClientEndpointDescription : NSObject <_GCControllerComponentDescription>
+@interface GCBatteryXPCProxyClientEndpointDescription : NSObject
 {
     GCDeviceBattery *_initialBattery;
     GCBatteryXPCProxyClientEndpoint *_materializedObject;

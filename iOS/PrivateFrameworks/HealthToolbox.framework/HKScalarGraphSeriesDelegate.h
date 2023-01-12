@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthToolbox/HKGraphViewDelegate-Protocol.h>
-
 @class HKGraphSeries, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HKScalarGraphSeriesDelegate : NSObject <HKGraphViewDelegate>
+@interface HKScalarGraphSeriesDelegate : NSObject
 {
     HKGraphSeries *_graphSeries;
 }

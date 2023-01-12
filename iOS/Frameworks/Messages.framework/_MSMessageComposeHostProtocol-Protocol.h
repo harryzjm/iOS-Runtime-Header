@@ -6,9 +6,10 @@
 
 #import <Messages/NSObject-Protocol.h>
 
-@class BKSAnimationFenceHandle, MSMessage, MSRichLink, NSData, NSString, NSURL, UIImage, _MSMessageMediaPayload;
+@class BKSAnimationFenceHandle, MSMessage, MSRichLink, NSArray, NSData, NSString, NSURL, UIImage, _MSMessageMediaPayload;
 
 @protocol _MSMessageComposeHostProtocol <NSObject>
+- (void)_requestHostSceneIdentifierWithCompletion:(void (^)(NSString *))arg1;
 - (void)_openURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)_remoteViewDidBecomeReadyForDisplay;
 - (void)_updateSnapshotForNextLaunch:(UIImage *)arg1;
@@ -25,6 +26,7 @@
 - (void)_stageAppItem:(MSMessage *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 
 @optional
+- (void)_presentAlertSheetWith:(NSArray *)arg1 styles:(NSArray *)arg2 completion:(void (^)(int))arg3;
 - (void)_removeAssetArchiveWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)_stageAssetArchive:(NSData *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)_contentDidLoad;

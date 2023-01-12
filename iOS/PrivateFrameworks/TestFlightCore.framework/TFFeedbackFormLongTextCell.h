@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TestFlightCore/UITextViewDelegate-Protocol.h>
-
 @class NSString, TFFeedbackEntryLongText, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface TFFeedbackFormLongTextCell <UITextViewDelegate>
+@interface TFFeedbackFormLongTextCell
 {
     UITextView *_textView;
     TFFeedbackEntryLongText *_longTextEntry;

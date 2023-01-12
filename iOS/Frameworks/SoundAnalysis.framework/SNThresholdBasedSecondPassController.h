@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNSecondPassController-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNThresholdBasedSecondPassController : NSObject <SNSecondPassController>
+@interface SNThresholdBasedSecondPassController : NSObject
 {
     double _secondPassBeginThreshold;
     double _secondPassEndThreshold;
@@ -30,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property(copy) CDUnknownBlockType beginSecondPassHandler; // @synthesize beginSecondPassHandler=_beginSecondPassHandler;
 - (void)secondPassDidProduceResult:(id)arg1;
 - (void)firstPassDidProduceResult:(id)arg1;
-- (id)initWithSecondPassBeginThreshold:(double)arg1 secondPassEndThreshold:(double)arg2 secondPassHangoverPeriod:(double)arg3 firstPassResultToComparableFunction:(CDUnknownBlockType)arg4 secondPassResultToComparableFunction:(CDUnknownBlockType)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

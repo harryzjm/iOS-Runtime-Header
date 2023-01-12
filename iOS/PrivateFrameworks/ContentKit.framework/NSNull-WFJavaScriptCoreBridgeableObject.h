@@ -6,12 +6,9 @@
 
 #import <Foundation/NSNull.h>
 
-#import <ContentKit/WFJSONObject-Protocol.h>
-#import <ContentKit/WFJavaScriptCoreBridgeableObject-Protocol.h>
-
 @class NSString;
 
-@interface NSNull (WFJavaScriptCoreBridgeableObject) <WFJavaScriptCoreBridgeableObject, WFJSONObject>
+@interface NSNull (WFJavaScriptCoreBridgeableObject)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,7 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol ATXMemoryPressureObserver
+#import <ProactiveSuggestionClientModel/NSObject-Protocol.h>
+
+@protocol ATXMemoryPressureObserver <NSObject>
+
+@optional
+- (void)handleMemoryPressureOfType:(unsigned long long)arg1;
 - (void)handleMemoryPressure;
 @end
 

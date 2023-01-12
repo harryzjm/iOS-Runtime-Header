@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/NSCopying-Protocol.h>
+#import "VUIAppDocumentUpdateEvent.h"
 
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface VUIAppDocumentRemovePlayHistoryEvent <NSCopying>
+@interface VUIAppDocumentRemovePlayHistoryEvent : VUIAppDocumentUpdateEvent
 {
     NSSet *_removedCanonicalIDs;
 }

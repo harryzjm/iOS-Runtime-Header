@@ -19,6 +19,7 @@
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *articleThumbnailImageCache;
     MISSING_TYPE *issueCoverImageCache;
+    MISSING_TYPE *dismissalDelayProvider;
 }
 
 @end

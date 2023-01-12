@@ -8,7 +8,9 @@
 
 @interface _TtC7SwiftUIP33_53095E34581C439FFBDB89F0B27FB22127CUINamedVectorGlyphContents
 {
+    MISSING_TYPE *glyph;
     MISSING_TYPE *_data;
+    MISSING_TYPE *_size;
 }
 
 @end

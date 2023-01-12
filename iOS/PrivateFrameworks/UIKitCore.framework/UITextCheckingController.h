@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
     id <UITextCheckingClient> _client;
     UITextChecker *_textChecker;
     struct _NSRange _selectedRangeFromPreviousUnchecked;
+    struct _NSRange _previousCheckedSentenceRange;
+    struct _NSRange _previousCheckedSelectedRange;
+    long long _prechangeCheckingSequenceNumber;
     struct __tccClientFlags {
         unsigned int respondsToAutocorrectionType:1;
         unsigned int respondsToSpellCheckingType:1;
@@ -25,17 +28,26 @@ __attribute__((visibility("hidden")))
     } _tccClientFlags;
 }
 
+- (void).cxx_destruct;
 - (void)considerTextCheckingForRange:(id)arg1;
+- (void)willReplaceTextInRange:(id)arg1 withText:(id)arg2;
+- (_Bool)rangeIsSuitableForGrammarAutocorrections:(id)arg1;
+- (void)feedbackForGrammarMarkersFromWordsInRange:(id)arg1 replacementText:(id)arg2;
 - (void)didChangeSelectionFromRange:(id)arg1;
 - (void)insertedTextInRange:(id)arg1;
 - (void)didChangeTextInRange:(id)arg1;
 - (void)checkSpellingForSelectionChangeFromRange:(struct _NSRange)arg1;
+- (struct _NSRange)terminatedSentenceRangeInTextRange:(id)arg1;
 - (_Bool)foundApostropheAfterRange:(struct _NSRange)arg1;
 - (void)removeSpellingMarkersFromWordInRange:(id)arg1;
+- (void)removeGrammarAnnotationFromWordAtPosition:(id)arg1;
+- (void)removeGrammarMarkersFromWordsInRange:(id)arg1;
+- (void)checkGrammarForSentenceInRange:(id)arg1;
+- (void)_handleGrammarCheckingResults:(id)arg1 sequenceNumber:(long long)arg2 forSentenceRange:(id)arg3;
+- (void)_addGrammarAttributesForRange:(struct _NSRange)arg1 details:(id)arg2 inAnnotatedString:(id)arg3;
 - (void)checkSpellingForWordInRange:(id)arg1;
 - (struct _NSRange)selectedRange;
 - (struct _NSRange)nsRangeForTextRange:(id)arg1;
-- (id)keyboardLanguages;
 - (void)preheatTextChecker;
 - (id)textChecker;
 - (id)validAnnotations;

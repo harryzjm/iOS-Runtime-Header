@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIImageLoader.h"
+
 @class NSURLRequest, NSURLSession, NSURLSessionTask;
 
 __attribute__((visibility("hidden")))
-@interface _UINSURLRequestImageLoader
+@interface _UINSURLRequestImageLoader : _UIImageLoader
 {
     NSURLRequest *_request;
     NSURLSession *_session;

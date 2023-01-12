@@ -6,24 +6,24 @@
 
 #import <Foundation/NSString.h>
 
-#import <EmailFoundation/EFSQLBindable-Protocol.h>
-#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
+@class EFSQLBinding, NSData, UTType;
 
-@class EFSQLBinding, NSData;
-
-@interface NSString (EmailFoundationAdditions) <EFSQLBindable, EFSQLValueExpressable>
+@interface NSString (EmailFoundationAdditions)
 + (id)ef_emptyStringIfNil:(id)arg1;
 + (id)ef_stringByIsolatingDirectionalityForString:(id)arg1;
 + (id)ef_UUID;
 - (id)ef_pathByReplacingRelativePathWithFolderName:(id)arg1;
+- (id)ef_filenameWithExtensionForMimeType:(id)arg1;
 - (id)ef_sanitizedFileName;
 - (id)ef_stringByEscapingSingleQuotes;
+@property(readonly) UTType *ef_declaredUTTypeFromExtension;
 @property(readonly) _Bool ef_conformsToRFC822UTType;
 @property(readonly) _Bool ef_conformsToIWorkUTType;
 @property(readonly) _Bool ef_conformsToMarkupUTType;
 - (id)ef_stringByEscapingForMessageBody;
 - (id)ef_stringByEscapingForXML;
 - (_Bool)ef_isUnsignedIntegerString;
+- (struct _NSRange)ef_rangeOfWebAddressContainingRange:(struct _NSRange)arg1;
 - (_Bool)ef_isWebAddress;
 - (const void *)ef_lossyDefaultCStringBytes;
 - (id)ef_stringByApplyingJavaScriptArguments:(id)arg1;
@@ -54,6 +54,7 @@
 - (id)_ef_sqliteFormattedWithFormatSpecifier:(const char *)arg1;
 @property(readonly) _Bool ef_lastStrongDirectionalityIsLeftToRight;
 @property(readonly) _Bool ef_firstStrongDirectionalityIsLeftToRight;
+@property(readonly, copy) NSString *ef_sha256String;
 @property(readonly, copy) NSData *ef_sha256Digest;
 @property(readonly, copy) NSData *ef_md5Digest;
 @property(readonly, copy) NSString *ef_quotedSQLEscapedString;

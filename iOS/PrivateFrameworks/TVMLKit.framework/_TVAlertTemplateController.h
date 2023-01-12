@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/UICollectionViewDataSource-Protocol.h>
-#import <TVMLKit/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <TVMLKit/_TVCollectionViewDelegate-Protocol.h>
+#import "_TVBgImageLoadingViewController.h"
 
 @class IKImageElement, IKViewElement, NSArray, NSIndexPath, NSString, _TVCollectionView;
 
 __attribute__((visibility("hidden")))
-@interface _TVAlertTemplateController <UICollectionViewDelegateFlowLayout, _TVCollectionViewDelegate, UICollectionViewDataSource>
+@interface _TVAlertTemplateController : _TVBgImageLoadingViewController
 {
     IKViewElement *_templateElement;
     _TVCollectionView *_collectionView;

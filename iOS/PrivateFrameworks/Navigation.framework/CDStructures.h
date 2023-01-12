@@ -16,8 +16,8 @@ struct CLLocationCoordinate2D {
 };
 
 struct GEOPolylineCoordinateRange {
-    CDStruct_3f2a7a20 start;
-    CDStruct_3f2a7a20 end;
+    struct PolylineCoordinate start;
+    struct PolylineCoordinate end;
 };
 
 struct LineSegment<double, 2> {
@@ -34,8 +34,11 @@ struct PolylineCoordinate {
     float offset;
 };
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
+struct os_state_hints_s {
+    unsigned int _field1;
+    char *_field2;
+    unsigned int _field3;
+    unsigned int _field4;
 };
 
 #pragma mark Typedef'd Structures
@@ -50,26 +53,20 @@ typedef struct {
 } CDStruct_ef0b40be;
 
 typedef struct {
+    unsigned int _field1;
+    void *_field2;
+} CDStruct_35640fce;
+
+typedef struct {
     unsigned int index;
     float offset;
 } CDStruct_3f2a7a20;
 
 typedef struct {
-    double latitude;
-    double longitude;
-    double altitude;
-} CDStruct_071ac149;
-
-typedef struct {
-    long long context;
-    double distance;
-    _Bool usePrimaryName;
-    _Bool useSecondaryName;
-    _Bool useDistanceForSecondary;
-    _Bool useContinueForSecondary;
-    int numPrimarySigns;
-    int numSecondarySigns;
-} CDStruct_61a83fd4;
+    double _field1;
+    double _field2;
+    double _field3;
+} CDStruct_39925896;
 
 typedef struct {
     int _field1;
@@ -105,16 +102,22 @@ typedef struct {
     _Bool _field25;
 } CDStruct_7cf4616f;
 
+typedef struct {
+    struct {
+        double x;
+        double y;
+    } origin;
+    struct {
+        double width;
+        double height;
+    } size;
+} CDStruct_02837cd9;
+
 // Ambiguous groups
 typedef struct {
     double _field1;
     double _field2;
 } CDStruct_c3b9c2ee;
-
-typedef struct {
-    double latitude;
-    double longitude;
-} CDStruct_2c43369c;
 
 typedef struct LineSegment<double, 2> {
     Matrix_2bdd42a3 _origin;

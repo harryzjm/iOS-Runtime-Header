@@ -10,6 +10,6 @@
 
 @protocol MapsSyncHistoryEvDirectionsItem <MapsSyncHistoryDirectionsItem>
 @property(readonly, copy, nonatomic) NSString *vehicleIdentifier;
-@property(readonly, nonatomic) double requiredCharge;
+@property(readonly, nonatomic) double requiredBatteryCharge;
 @end
 

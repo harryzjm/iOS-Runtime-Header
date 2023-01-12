@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AnnotationKit/UITableViewDataSource-Protocol.h>
-#import <AnnotationKit/UITableViewDelegate-Protocol.h>
-
 @class AKController, NSArray, NSSet, NSString, UITableView;
 @protocol AKAttributePickerViewControllerDelegate;
 
-@interface AKAttributePickerViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface AKAttributePickerViewController : UIViewController
 {
     AKController *_controller;
     id <AKAttributePickerViewControllerDelegate> _delegate;

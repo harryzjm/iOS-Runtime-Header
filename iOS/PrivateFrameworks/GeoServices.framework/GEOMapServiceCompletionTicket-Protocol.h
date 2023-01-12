@@ -7,12 +7,12 @@
 #import <GeoServices/GEOMapServiceCancellableTicket-Protocol.h>
 #import <GeoServices/GEOMapServiceThrottlableTicket-Protocol.h>
 
-@class GEOClientRankingModel, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDPlaceSummaryLayoutMetadata, GEORPSuggestionEntry, GEORPSuggestionList, GEOSortPriorityMapping, NSDictionary, NSString;
+@class GEOClientRankingModel, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDPlaceSummaryLayoutMetadata, GEORPSuggestionEntry, GEORPSuggestionList, GEOSortPriorityMapping, NSString;
 
 @protocol GEOMapServiceCompletionTicket <GEOMapServiceCancellableTicket, GEOMapServiceThrottlableTicket>
-@property(readonly, nonatomic) NSDictionary *responseUserInfo;
 @property(readonly, nonatomic) GEOMapServiceTraits *traits;
 @property(readonly, nonatomic, getter=_searchQuery) NSString *searchQuery;
+- (_Bool)enableStructuredRAPAffordance;
 - (long long)highlightType;
 - (GEOPDPlaceSummaryLayoutMetadata *)placeSummaryLayoutMetadata;
 - (_Bool)shouldUseDistanceFeatureServerResults;
@@ -25,7 +25,6 @@
 - (_Bool)shouldDisplayNoResults;
 - (_Bool)hasShouldDisplayNoResults;
 - (double)retainSearchTime;
-- (_Bool)isRapEnabled;
 - (void)applyToSuggestionEntry:(GEORPSuggestionEntry *)arg1 withAutocompleteSearchResultIdentifier:(GEOMapItemIdentifier *)arg2;
 - (void)applyToSuggestionList:(GEORPSuggestionList *)arg1;
 - (_Bool)matchesFragment:(NSString *)arg1;

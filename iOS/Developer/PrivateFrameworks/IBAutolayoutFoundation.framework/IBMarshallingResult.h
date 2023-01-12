@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSArray, NSError, NSString;
 
-@interface IBMarshallingResult : NSObject <IBBinaryArchiving>
+@interface IBMarshallingResult : NSObject
 {
     id _value;
     NSArray *_warningMessages;

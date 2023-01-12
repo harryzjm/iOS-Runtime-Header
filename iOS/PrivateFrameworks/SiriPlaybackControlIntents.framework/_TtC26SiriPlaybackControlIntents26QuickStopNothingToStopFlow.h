@@ -14,6 +14,8 @@
     MISSING_TYPE *deviceState;
     MISSING_TYPE *dialogProvider;
     MISSING_TYPE *analyticsService;
+    MISSING_TYPE *aceServiceHelper;
+    MISSING_TYPE *playbackController;
 }
 
 @end

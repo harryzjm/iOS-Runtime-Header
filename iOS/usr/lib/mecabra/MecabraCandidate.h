@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <mecabra/NSCopying-Protocol.h>
-
-@interface MecabraCandidate : NSObject <NSCopying>
+@interface MecabraCandidate : NSObject
 {
     void *_rawCandidate;
 }

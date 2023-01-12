@@ -22,6 +22,7 @@
 - (_Bool)openSensitiveURL:(NSURL *)arg1;
 
 @optional
+- (void)dismissAssistantWithReason:(long long)arg1;
 - (void)isDeviceWatchAuthenticatedWithCompletion:(void (^)(_Bool))arg1;
 - (AFSpeechInfo *)speechInfo;
 - (AFInstanceInfo *)instanceInfo;

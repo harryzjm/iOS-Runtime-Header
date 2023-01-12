@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIFieldEditor.h"
+
 __attribute__((visibility("hidden")))
-@interface _UISearchBarFieldEditor
+@interface _UISearchBarFieldEditor : UIFieldEditor
 {
     struct {
         unsigned int inLayoutSubviews:1;
@@ -16,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateTokenViews;
 - (void)layoutManager:(id)arg1 didCompleteLayoutForTextContainer:(id)arg2 atEnd:(_Bool)arg3;
 - (_Bool)layoutManager:(id)arg1 shouldSetLineFragmentRect:(inout struct CGRect *)arg2 lineFragmentUsedRect:(inout struct CGRect *)arg3 baselineOffset:(inout double *)arg4 inTextContainer:(id)arg5 forGlyphRange:(struct _NSRange)arg6;
-- (struct CGRect)_usedRectWithLayoutManager:(id)arg1 textContainer:(id)arg2;
 - (void)deactivateEditorDiscardingEdits:(_Bool)arg1;
 - (void)activateEditor;
 - (void)layoutSubviews;

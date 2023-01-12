@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSSPropertyCommandSerializing-Protocol.h>
-#import <TSTables/TSTCellDiffing-Protocol.h>
-
 @class NSString;
 
-@interface TSTCellSpec : NSObject <TSTCellDiffing, TSSPropertyCommandSerializing>
+@interface TSTCellSpec : NSObject
 {
     unsigned int _interactionTypeFromTheFuture;
 }

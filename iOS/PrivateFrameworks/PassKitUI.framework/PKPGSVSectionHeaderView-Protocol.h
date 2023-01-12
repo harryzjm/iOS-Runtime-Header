@@ -9,7 +9,8 @@
 @class UIView;
 
 @protocol PKPGSVSectionHeaderView <NSObject>
-- (_Bool)needsUpdate;
+- (void)setSectionsState:(CDStruct_e7027284)arg1;
+- (_Bool)needsRemoval;
 - (UIView *)trailingView;
 - (UIView *)leadingView;
 @end

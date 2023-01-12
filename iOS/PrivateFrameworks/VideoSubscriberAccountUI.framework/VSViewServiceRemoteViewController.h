@@ -6,13 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <VideoSubscriberAccountUI/VSViewServiceHostProtocol-Protocol.h>
-
 @class NSString;
 @protocol VSViewServiceRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSViewServiceRemoteViewController : _UIRemoteViewController <VSViewServiceHostProtocol>
+@interface VSViewServiceRemoteViewController : _UIRemoteViewController
 {
     id <VSViewServiceRemoteViewControllerDelegate> _delegate;
 }

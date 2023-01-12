@@ -6,23 +6,24 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-@class MPCModelGenericAVItemAssetLoadProperties;
+@class MPCAssetLoadPropertiesLocalFileEvaluation, MPCModelGenericAVItemAssetLoadProperties;
 
 __attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItemLocalFileLoadOperation : MPAsyncOperation
 {
     _Bool _requirePreferredAssetQuality;
     MPCModelGenericAVItemAssetLoadProperties *_assetLoadProperties;
+    MPCAssetLoadPropertiesLocalFileEvaluation *_fileAssetEvaluation;
     CDUnknownBlockType _responseHandler;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(nonatomic) _Bool requirePreferredAssetQuality; // @synthesize requirePreferredAssetQuality=_requirePreferredAssetQuality;
-@property(retain, nonatomic) MPCModelGenericAVItemAssetLoadProperties *assetLoadProperties; // @synthesize assetLoadProperties=_assetLoadProperties;
-- (_Bool)isHLSFileAsset:(id)arg1;
-- (long long)_loadedAudioAssetTypeForFileAsset:(id)arg1;
+@property(readonly, nonatomic) MPCAssetLoadPropertiesLocalFileEvaluation *fileAssetEvaluation; // @synthesize fileAssetEvaluation=_fileAssetEvaluation;
+@property(readonly, nonatomic) MPCModelGenericAVItemAssetLoadProperties *assetLoadProperties; // @synthesize assetLoadProperties=_assetLoadProperties;
 - (void)execute;
+- (id)initWithEvaluation:(id)arg1 properties:(id)arg2;
 
 @end
 

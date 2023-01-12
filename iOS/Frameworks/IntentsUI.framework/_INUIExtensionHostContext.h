@@ -6,13 +6,11 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <IntentsUI/_INUIExtensionContextHosting-Protocol.h>
-
 @class NSString;
 @protocol INUIExtensionHostContextDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _INUIExtensionHostContext : NSExtensionContext <_INUIExtensionContextHosting>
+@interface _INUIExtensionHostContext : NSExtensionContext
 {
     id <INUIExtensionHostContextDelegate> _extensionHostContextDelegate;
 }

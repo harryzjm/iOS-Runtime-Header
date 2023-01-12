@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/BSDebugDescriptionProviding-Protocol.h>
-
 @class NSMapTable, NSMutableOrderedSet, NSString, UIWindowScene;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyWindowSceneStack : NSObject <BSDebugDescriptionProviding>
+@interface _UIKeyWindowSceneStack : NSObject
 {
     NSMapTable *_recordsByWindowScene;
     NSMutableOrderedSet *_orderedRecords;

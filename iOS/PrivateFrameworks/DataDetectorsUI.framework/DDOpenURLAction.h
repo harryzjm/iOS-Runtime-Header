@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "DDAction.h"
+
 @class LSAppLink;
 
 __attribute__((visibility("hidden")))
-@interface DDOpenURLAction
+@interface DDOpenURLAction : DDAction
 {
     LSAppLink *_appLink;
     _Bool _appLinkInitDone;
@@ -21,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canBePerformedByOpeningURL;
 - (_Bool)canBePerformedWhenDeviceIsLocked;
 - (void)performFromView:(id)arg1;
+- (id)quickActionTitle;
 - (id)compactTitle;
 - (id)localizedName;
 - (id)companionAction;

@@ -6,14 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <SafariServices/MPVolumeDisplaying-Protocol.h>
-#import <SafariServices/SFRemoteViewControllerProtocol-Protocol.h>
-
 @class NSString, UIWindowScene;
 @protocol SFBrowserRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFBrowserRemoteViewController : _UIRemoteViewController <MPVolumeDisplaying, SFRemoteViewControllerProtocol>
+@interface SFBrowserRemoteViewController : _UIRemoteViewController
 {
     _Bool _isInFullScreen;
     _Bool _hasBeenDisplayedAtLeastOnce;

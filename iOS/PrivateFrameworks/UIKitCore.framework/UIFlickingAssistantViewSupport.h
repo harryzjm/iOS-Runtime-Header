@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     long long _draggingState;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long draggingState; // @synthesize draggingState=_draggingState;
 @property(retain, nonatomic) UIInputViewSetPlacement *remotePlacement; // @synthesize remotePlacement=_remotePlacement;
 @property(nonatomic, setter=setCompact:) _Bool isCompact; // @synthesize isCompact=_isCompact;
@@ -35,10 +36,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)isInputAssistantItemHidden;
 - (void)panGestureHandler:(id)arg1;
 - (void)_initalizePosition;
+- (void)setPositionAndVisualStateByPersistentLocation:(_Bool)arg1 minimize:(_Bool)arg2;
 - (void)_updatedController;
 - (void)_connectController:(id)arg1;
 - (void)_disconnectingController:(id)arg1;
-- (void)dealloc;
 
 @end
 

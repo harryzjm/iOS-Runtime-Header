@@ -10,20 +10,24 @@
 
 @protocol PGHighlightItem <NSObject>
 @property(readonly, nonatomic) id modelObject;
+@property(readonly, nonatomic) unsigned short sharingComposition;
 @property(readonly, nonatomic) unsigned short enrichmentState;
-@property(readonly, nonatomic) unsigned short visibilityState;
+@property(readonly, nonatomic) unsigned short category;
 @property(readonly, nonatomic) unsigned short kind;
 @property(readonly, nonatomic) unsigned short type;
 @property(readonly, nonatomic) double promotionScore;
-@property(readonly, nonatomic) unsigned long long numberOfAssetsInExtended;
+@property(readonly, nonatomic) unsigned long long numberOfAssetsInExtendedMixed;
+@property(readonly, nonatomic) unsigned long long numberOfAssetsInExtendedShared;
+@property(readonly, nonatomic) unsigned long long numberOfAssetsInExtendedPrivate;
 @property(readonly, nonatomic) NSArray *extendedCuratedAssets;
-@property(readonly, nonatomic) PHAsset *keyAsset;
-@property(readonly, copy, nonatomic) NSString *smartDescription;
-@property(readonly, copy, nonatomic) NSString *dateDescription;
+@property(readonly, nonatomic) unsigned short mixedSharingCompositionKeyAssetRelationship;
 @property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) NSDate *localEndDate;
 @property(readonly, nonatomic) NSDate *localStartDate;
 @property(readonly, nonatomic) NSDate *endDate;
 @property(readonly, nonatomic) NSDate *startDate;
+- (unsigned long long)numberOfAssetsInExtendedForSharingFilter:(unsigned short)arg1;
+- (unsigned short)visibilityStateForHighlightFilter:(unsigned short)arg1;
+- (PHAsset *)keyAssetForHighlightFilter:(unsigned short)arg1;
 @end
 

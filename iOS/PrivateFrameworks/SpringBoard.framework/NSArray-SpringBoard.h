@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (SpringBoard)
+- (id)sb_arrayByRemovingObjects:(id)arg1;
 - (id)sb_arrayByRemovingObject:(id)arg1;
 - (id)sb_arrayByAddingOrMovingObject:(id)arg1;
 - (id)sb_arrayByInsertingOrMovingObject:(id)arg1 toIndex:(unsigned long long)arg2;

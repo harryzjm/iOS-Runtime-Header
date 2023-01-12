@@ -6,13 +6,9 @@
 
 #import <TSUtility/TSUColor.h>
 
-#import <TSReading/TSSPreset-Protocol.h>
-#import <TSReading/TSSPresetSource-Protocol.h>
-#import <TSReading/TSSThemeAsset-Protocol.h>
-
 @class NSString;
 
-@interface TSUColor (TSSAdditions) <TSSPreset, TSSPresetSource, TSSThemeAsset>
+@interface TSUColor (TSSAdditions)
 + (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
 + (id)presetKinds;
 + (id)p_defaultPresetColors:(int)arg1;

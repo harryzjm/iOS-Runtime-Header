@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/IKAppNavigationController-Protocol.h>
-#import <StoreKitUI/SKUIDOMFeature-Protocol.h>
-
 @class IKAppContext, IKJSNavigationDocument, NSMutableArray, NSString, SKUINavigationDocumentController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSDOMFeatureNavigationDocument : NSObject <IKAppNavigationController, SKUIDOMFeature>
+@interface SKUIJSDOMFeatureNavigationDocument : NSObject
 {
     IKJSNavigationDocument *_jsNavigationDocument;
     SKUINavigationDocumentController *_navigationDocumentController;

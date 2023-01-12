@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
-#import <SleepDaemon/HDSPWakeDetector-Protocol.h>
-#import <SleepDaemon/HDSPWatchOnWristObserver-Protocol.h>
-
 @class HDSPEnvironment, NSString;
 @protocol HDSPWakeDetectorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface HDSPWatchOnWristWakeDetector : NSObject <HDSPWatchOnWristObserver, HDSPWakeDetector, HDSPEnvironmentAware>
+@interface HDSPWatchOnWristWakeDetector : NSObject
 {
     _Bool _isDetecting;
     id <HDSPWakeDetectorDelegate> _wakeDetectorDelegate;
@@ -27,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <HDSPWakeDetectorDelegate> wakeDetectorDelegate; // @synthesize wakeDetectorDelegate=_wakeDetectorDelegate;
 - (void)detectedOffWristOnDate:(id)arg1;
 - (void)detectedOnWristOnDate:(id)arg1;
-@property(readonly, nonatomic) unsigned long long detectionWindowMinutes;
+@property(readonly, nonatomic) unsigned long long type;
 - (void)stopDetecting;
 - (void)startDetecting;
 - (id)onWristMonitor;

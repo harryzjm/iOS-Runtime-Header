@@ -6,10 +6,11 @@
 
 #import <Email/NSObject-Protocol.h>
 
-@class CNContact, NSArray, NSString;
+@class CNContact, NSArray, NSSet, NSString;
 @protocol EMBlockedSenderTokenAddress;
 
 @protocol EMBlockedSenderReader <NSObject>
+@property(readonly, copy, nonatomic) NSSet *blockedSenderEmailAddresses;
 - (_Bool)isContactBlocked:(CNContact *)arg1;
 - (_Bool)isTokenAddressIsBlocked:(id <EMBlockedSenderTokenAddress>)arg1;
 - (_Bool)areAnyEmailAddressesBlocked:(NSArray *)arg1;

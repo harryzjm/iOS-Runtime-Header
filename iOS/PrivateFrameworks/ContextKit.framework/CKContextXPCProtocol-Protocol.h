@@ -20,6 +20,7 @@
 - (void)ancestorsForTopics:(NSArray *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)capabilitiesForRequestType:(unsigned long long)arg1 withReply:(void (^)(NSSet *, NSString *, NSError *))arg2;
 - (void)warmUpForRequestType:(unsigned long long)arg1 withReply:(void (^)(NSError *))arg2;
+- (void)findCategorizationsForRequest:(CKContextRequest *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)findResultsForRequest:(CKContextRequest *)arg1 withReply:(void (^)(CKContextResponse *))arg2;
 @end
 

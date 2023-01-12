@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/CMMapperRootArchiver-Protocol.h>
-
 @class CMArchiveManager, NSString, OCDDocument;
 
 __attribute__((visibility("hidden")))
-@interface CMMapper : NSObject <CMMapperRootArchiver>
+@interface CMMapper : NSObject
 {
     CMMapper *mParent;
     CMMapper *mRoot;

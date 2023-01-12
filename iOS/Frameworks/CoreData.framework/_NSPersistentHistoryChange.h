@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreData/NSSecureCoding-Protocol.h>
+#import "NSPersistentHistoryChange.h"
 
 @class NSData, NSDictionary, NSManagedObjectID, NSPersistentHistoryTransaction, NSSQLEntity;
 
 __attribute__((visibility("hidden")))
-@interface _NSPersistentHistoryChange <NSSecureCoding>
+@interface _NSPersistentHistoryChange : NSPersistentHistoryChange
 {
     long long _changeID;
     NSManagedObjectID *_changedObjectID;

@@ -6,22 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <ShazamKit/NSCopying-Protocol.h>
-#import <ShazamKit/NSSecureCoding-Protocol.h>
-
-@class NSDate, NSString;
+@class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface SHSignatureMetrics : NSObject <NSSecureCoding, NSCopying>
+@interface SHSignatureMetrics : NSObject
 {
-    NSString *_audioSource;
+    long long _audioRecordingSource;
     NSDate *_sessionStartDate;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *sessionStartDate; // @synthesize sessionStartDate=_sessionStartDate;
-@property(copy, nonatomic) NSString *audioSource; // @synthesize audioSource=_audioSource;
+@property(nonatomic) long long audioRecordingSource; // @synthesize audioRecordingSource=_audioRecordingSource;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) double sessionDuration;

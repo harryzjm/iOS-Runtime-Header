@@ -6,12 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSCEFormulaOwning-Protocol.h>
-#import <TSTables/TSCETableNameChangeProtocol-Protocol.h>
-
 @class NSString, TSCECalculationEngine, TSCECellTractRef, TSTColumnAggregateList, TSTFormula, TSTFormulaStore, TSTGroupBySet, TSTGroupingColumnList, TSTPivotGroupingColumnOptionsMap, TSTTableModel;
 
-@interface TSTPivotOwner : TSPObject <TSCEFormulaOwning, TSCETableNameChangeProtocol>
+@interface TSTPivotOwner : TSPObject
 {
     TSTTableModel *_tableModel;
     TSCECalculationEngine *_calcEngine;
@@ -42,6 +39,7 @@
     TSKUIDStructVectorTemplate_de88e035 _pivotColumnUIDs;
 }
 
++ (id)enclosingGroupNameForGroupCellValue:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldSkipNextAsyncSort; // @synthesize shouldSkipNextAsyncSort=_shouldSkipNextAsyncSort;
@@ -102,15 +100,16 @@
 - (unsigned char)columnGroupLevelForHeaderRow:(struct TSUViewRowIndex)arg1;
 - (_Bool)requiresUnwrapping:(struct TSUCellCoord)arg1;
 - (_Bool)requiresTrailingAlignment:(struct TSUCellCoord)arg1;
-- (id)enclosingGroupNameforRowIndex:(unsigned int)arg1 level:(unsigned char)arg2;
-- (id)enclosingGroupNameforColumnIndex:(unsigned short)arg1 level:(unsigned char)arg2;
+- (id)enclosingGroupNameForRowIndex:(unsigned int)arg1 level:(unsigned char)arg2;
+- (id)enclosingGroupNameForColumnIndex:(unsigned short)arg1 level:(unsigned char)arg2;
 - (void)p_resetHiddenTotalsForGroupingColumnUid:(const struct TSKUIDStruct *)arg1 hideTotals:(_Bool)arg2;
 - (void)p_resetHiddenGrandTotals;
-- (void)p_clearAllPivotHiddenAndFiltered:(_Bool)arg1;
+- (void)clearAllPivotHiddenAndFiltered:(_Bool)arg1;
 - (void)rewriteForPaste;
 - (void)documentLocaleDidChange;
 - (void)resetCellsForNewPivotOrder;
 - (void)resetCellsForNewPivotRules;
+- (void)p_setEmptyPivotTableLabels;
 - (void)p_resetSummaryFormulasForRunningTotalsOnly:(_Bool)arg1 preservingStyles:(_Bool)arg2;
 - (void)setHidingGrandTotalRows:(_Bool)arg1;
 - (_Bool)isHidingGrandTotalRows;
@@ -131,10 +130,15 @@
 - (id)filterSetForPivotDataTable:(id)arg1;
 - (id)hiddenStatesForPivotDataTable:(id)arg1;
 - (void)p_ensureHiddenStatesExistsWithPivotDataTable:(id)arg1;
+- (void)upgradeSourceTractsForAbsoluteRefs;
+- (void)upgradeSourceTractsForHostCellChange;
 @property(nonatomic) struct TSKUIDStructTract pivotSourceBodyUidTract;
 @property(retain, nonatomic) TSCECellTractRef *pivotSourceHeaderTract;
-@property(retain, nonatomic) TSCECellTractRef *pivotSourceBodyTract;
+- (id)pivotSourceRangeNameWithTractRef:(id)arg1;
+- (id)pivotSourceRangeName;
 @property(readonly, nonatomic) TSTFormula *pivotSourceBodyReferenceEmbeddedInFormula;
+- (id)p_referenceNodeFromTractRef:(id)arg1;
+@property(retain, nonatomic) TSCECellTractRef *pivotSourceBodyTract;
 - (void)unregisterFromCalcEngine;
 - (int)linkToCalcEngine:(id)arg1 forTableModel:(id)arg2;
 - (int)registerWithCalcEngine:(id)arg1 forTableModel:(id)arg2 baseOwnerUID:(const struct TSKUIDStruct *)arg3;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FileProvider/FPOperationClient-Protocol.h>
+#import "FPOperation.h"
 
 @class FPItemManager, NSArray;
 @protocol FPOperationProgressDelegate;
 
 __attribute__((visibility("hidden")))
-@interface FPFetchRegularItemThumbnailsOperation <FPOperationClient>
+@interface FPFetchRegularItemThumbnailsOperation : FPOperation
 {
     NSArray *_itemIDs;
     struct CGSize _desiredSizeToScale;

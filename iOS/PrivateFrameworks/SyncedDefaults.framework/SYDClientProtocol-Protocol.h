@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, SYDStoreConfiguration;
+@class NSDictionary, SYDStoreID;
 
 @protocol SYDClientProtocol
-- (void)storeDidChangeWithConfiguration:(SYDStoreConfiguration *)arg1 changeDictionary:(NSDictionary *)arg2 reply:(void (^)(void))arg3;
+- (void)storeDidChangeWithStoreID:(SYDStoreID *)arg1 changeDictionary:(NSDictionary *)arg2 reply:(void (^)(void))arg3;
 @end
 

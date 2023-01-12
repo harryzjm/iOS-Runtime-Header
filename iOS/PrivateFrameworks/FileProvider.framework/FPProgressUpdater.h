@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/FPProgressProtocol-Protocol.h>
-
 @class FPProgressProxy, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPProgressUpdater : NSObject <FPProgressProtocol>
+@interface FPProgressUpdater : NSObject
 {
     FPProgressProxy *_progress;
 }

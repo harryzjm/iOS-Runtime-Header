@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKVaccinationRecord.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKVaccinationRecord (HDCodingSupport) <HDCoding>
+@interface HKVaccinationRecord (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;

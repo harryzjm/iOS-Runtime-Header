@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/NSCopying-Protocol.h>
-
 @class HKDevice, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HDAggregationStateKey : NSObject <NSCopying>
+@interface _HDAggregationStateKey : NSObject
 {
     NSString *_collectorIdentifier;
     HKDevice *_device;

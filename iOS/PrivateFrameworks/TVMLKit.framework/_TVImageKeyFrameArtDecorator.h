@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TVImageScaleDecorator.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TVImageKeyFrameArtDecorator
+@interface _TVImageKeyFrameArtDecorator : TVImageScaleDecorator
 {
     NSString *_inlineTitle;
 }

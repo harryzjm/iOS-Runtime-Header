@@ -9,6 +9,6 @@
 @class DMTNetworkCredential, NSData, NSString;
 
 @protocol DMTEnrollmentPrerequisiteReceiving <NSObject>
-- (void)setNetworkCredential:(DMTNetworkCredential *)arg1 networkPayload:(NSData *)arg2 enrollmentNonce:(NSString *)arg3 postEnrollmentBehavior:(long long)arg4 organizationName:(NSString *)arg5 organizationType:(long long)arg6;
+- (void)setNetworkCredential:(DMTNetworkCredential *)arg1 networkPayload:(NSData *)arg2 enrollmentNonce:(NSString *)arg3 postEnrollmentBehavior:(long long)arg4 organizationName:(NSString *)arg5 organizationType:(long long)arg6 networkConfiguration:(long long)arg7;
 @end
 

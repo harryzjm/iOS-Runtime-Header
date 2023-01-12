@@ -6,13 +6,11 @@
 
 #import <Metal/_MTLIndirectArgumentEncoder.h>
 
-#import <MTLSimDriver/MTLArgumentEncoder-Protocol.h>
-
-@class MTLSimBuffer, MTLSimDevice, MTLSimIndirectArgumentBufferLayout, NSString;
+@class MTLSimBuffer, MTLSimDevice, MTLSimIndirectArgumentBufferLayout, NSString, _MTLIndirectArgumentBufferLayout;
 @protocol MTLDevice;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimArgumentEncoder : _MTLIndirectArgumentEncoder <MTLArgumentEncoder>
+@interface MTLSimArgumentEncoder : _MTLIndirectArgumentEncoder
 {
     unsigned int _reference;
     MTLSimDevice *_device;
@@ -44,8 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
-- (void)setFunctionPointers:(const id *)arg1 withRange:(struct _NSRange)arg2;
-- (void)setFunctionPointer:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;
 @property(readonly) unsigned long long alignment;
 @property(readonly) unsigned long long encodedLength;
@@ -59,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) id <MTLDevice> device;
 @property(readonly) unsigned long long hash;
 @property(copy) NSString *label;
+@property(readonly, nonatomic) _MTLIndirectArgumentBufferLayout *layout;
 @property(readonly) Class superclass;
 
 @end

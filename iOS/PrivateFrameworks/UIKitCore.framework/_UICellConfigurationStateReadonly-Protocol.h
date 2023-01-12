@@ -7,6 +7,7 @@
 #import <UIKitCore/_UIViewConfigurationStateReadonly-Protocol.h>
 
 @protocol _UICellConfigurationStateReadonly <_UIViewConfigurationStateReadonly>
+@property(readonly, nonatomic) _Bool _usesAnyPlainListStyle;
 @property(readonly, nonatomic) long long cellDropState;
 @property(readonly, nonatomic) long long cellDragState;
 @property(readonly, nonatomic, getter=isReordering) _Bool reordering;

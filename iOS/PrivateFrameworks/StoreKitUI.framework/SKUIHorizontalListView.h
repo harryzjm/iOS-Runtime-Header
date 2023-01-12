@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIMenuPopoverDelegate-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSArray, NSMapTable, NSMutableArray, NSString, SKUIListViewElement, SKUIMenuPopoverController, UIControl;
 
 __attribute__((visibility("hidden")))
-@interface SKUIHorizontalListView <SKUIMenuPopoverDelegate, SKUIViewElementView>
+@interface SKUIHorizontalListView
 {
     NSMutableArray *_artworkRequestPassthroughViews;
     struct UIEdgeInsets _contentInset;

@@ -6,11 +6,9 @@
 
 #import <AWDSupportFramework/AWDCoreRoutineModelAlgorithmSet.h>
 
-#import <coreroutine/RTMetricManagerMetricIdProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AWDCoreRoutineModelAlgorithmSet (MetricManager) <RTMetricManagerMetricIdProtocol>
+@interface AWDCoreRoutineModelAlgorithmSet (MetricManager)
 - (_Bool)valid:(id *)arg1;
 - (id)_init;
 - (long long)metricId;

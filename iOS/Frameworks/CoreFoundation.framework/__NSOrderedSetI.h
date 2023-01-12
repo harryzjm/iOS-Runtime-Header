@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSOrderedSet.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSOrderedSetI
+@interface __NSOrderedSetI : NSOrderedSet
 {
     unsigned int _used:56;
     unsigned int _stride:2;
@@ -18,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexOfObject:(id)arg1;

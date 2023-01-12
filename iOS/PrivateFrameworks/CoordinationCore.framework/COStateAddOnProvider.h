@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/COServiceAddOnProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface COStateAddOnProvider : NSObject <COServiceAddOnProvider>
+@interface COStateAddOnProvider : NSObject
 {
 }
 

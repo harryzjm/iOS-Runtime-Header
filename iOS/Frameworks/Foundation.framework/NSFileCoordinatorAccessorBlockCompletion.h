@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSFileCoordinationRetainedAccess-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSFileCoordinatorAccessorBlockCompletion : NSObject <NSFileCoordinationRetainedAccess>
+@interface NSFileCoordinatorAccessorBlockCompletion : NSObject
 {
     CDUnknownBlockType block;
     _Atomic int count;

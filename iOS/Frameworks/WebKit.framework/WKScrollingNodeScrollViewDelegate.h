@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/UIScrollViewDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKScrollingNodeScrollViewDelegate : NSObject <UIScrollViewDelegate>
+@interface WKScrollingNodeScrollViewDelegate : NSObject
 {
     void *_scrollingTreeNodeDelegate;
     _Bool _inUserInteraction;
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)_scrollView:(id)arg1 asynchronouslyHandleScrollEvent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (struct CGPoint)_scrollView:(id)arg1 adjustedOffsetForOffset:(struct CGPoint)arg2 translation:(struct CGPoint)arg3 startPoint:(struct CGPoint)arg4 locationInView:(struct CGPoint)arg5 horizontalVelocity:(inout double *)arg6 verticalVelocity:(inout double *)arg7;
+- (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;

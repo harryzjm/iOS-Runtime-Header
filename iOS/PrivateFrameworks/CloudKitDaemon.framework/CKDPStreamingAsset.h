@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPStreamingAssetIdentifier, CKDPStreamingAssetRetrieveAssetResponse, CKDPStreamingAssetSaveAssetRequest, CKDPStreamingAssetSaveAssetResponse;
 
-@interface CKDPStreamingAsset : PBCodable <NSCopying>
+@interface CKDPStreamingAsset : PBCodable
 {
     CKDPStreamingAssetIdentifier *_assetId;
     CKDPStreamingAssetRetrieveAssetResponse *_retrieveAssetResponse;

@@ -13,6 +13,7 @@
     MISSING_TYPE *visibilityProvider;
     MISSING_TYPE *styler;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

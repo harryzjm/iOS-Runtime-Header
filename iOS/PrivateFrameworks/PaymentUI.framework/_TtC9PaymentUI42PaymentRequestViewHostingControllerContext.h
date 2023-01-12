@@ -11,12 +11,13 @@
 @interface _TtC9PaymentUI42PaymentRequestViewHostingControllerContext : _TtCs12_SwiftObject
 {
     MISSING_TYPE *_isPresented;
+    MISSING_TYPE *_isArmable;
+    MISSING_TYPE *_armableObserverError;
     MISSING_TYPE *_physicalButtonEdge;
     MISSING_TYPE *_isAnimating;
+    MISSING_TYPE *_screen;
     MISSING_TYPE *animationDuration;
-    MISSING_TYPE *animationDurationMs;
     MISSING_TYPE *springAnimationDuration;
-    MISSING_TYPE *springAnimationDurationMs;
 }
 
 @end

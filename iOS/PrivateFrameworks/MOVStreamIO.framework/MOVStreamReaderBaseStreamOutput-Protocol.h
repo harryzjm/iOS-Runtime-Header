@@ -13,7 +13,7 @@
 @property(readonly) _Bool endOfStreamReached;
 @property(readonly) __weak AVAssetTrack *assetTrack;
 @property(readonly) NSString *streamId;
-- (NSArray *)grabNextMetadataItemsOfTrackAssociatedWithStreamWithIdentifier:(in NSString *)arg1 timeRange:(out CDStruct_5c5366e1 *)arg2 error:(out id *)arg3;
+- (NSArray *)grabNextMetadataItemsOfTrackAssociatedWithStreamWithIdentifier:(in NSString *)arg1 timeRange:(out CDStruct_3c1748cc *)arg2 error:(out id *)arg3;
 - (NSArray *)getAssociatedMetadataStreams;
 @end
 

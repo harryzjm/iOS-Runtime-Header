@@ -12,9 +12,7 @@
 {
     MISSING_TYPE *playbackConductor;
     MISSING_TYPE *dataManager;
-    MISSING_TYPE *playNowIgnoringPlaylistSlot;
-    MISSING_TYPE *audioPlaybackTracker;
-    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *bundleSubscriptionManager;
 }
 
 @end

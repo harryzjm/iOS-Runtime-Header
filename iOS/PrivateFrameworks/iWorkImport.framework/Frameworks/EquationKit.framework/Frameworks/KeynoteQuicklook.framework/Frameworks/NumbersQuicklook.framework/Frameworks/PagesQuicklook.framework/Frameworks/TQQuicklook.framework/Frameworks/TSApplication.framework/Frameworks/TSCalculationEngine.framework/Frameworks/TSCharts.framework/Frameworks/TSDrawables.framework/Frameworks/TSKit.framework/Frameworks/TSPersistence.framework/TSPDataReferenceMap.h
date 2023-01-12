@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPDataInDocumentProviding-Protocol.h>
-
 @class NSIndexSet, NSMutableIndexSet, NSString, TSPPersistedDataReferenceMap, _TtC13TSPersistence15TSPReferenceMap, _TtC13TSPersistence22TSPMutableReferenceMap;
 @protocol OS_dispatch_queue, TSPDataReferenceMapDelegate;
 
-@interface TSPDataReferenceMap : NSObject <TSPDataInDocumentProviding>
+@interface TSPDataReferenceMap : NSObject
 {
     id <TSPDataReferenceMapDelegate> _delegate;
     _Atomic _Bool _isReady;

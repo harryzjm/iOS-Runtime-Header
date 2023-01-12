@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UILayoutContainerViewDelegate-Protocol.h>
-
-@class NSArray, NSMutableArray, NSString, UIDimmingView, UILayoutContainerView, UINavigationBar, UISlidingBarConfiguration, UISlidingBarState, UISlidingBarStateRequest, UIView, UIViewController, _UIFloatableBarButtonItem, _UIPanelInternalState, _UIVerticalEdgeShadowView;
-@protocol UIPanelControllerDelegate;
+@class NSArray, NSMutableArray, NSString, UIDimmingView, UILayoutContainerView, UINavigationBar, UISlidingBarConfiguration, UISlidingBarState, UISlidingBarStateRequest, UIView, UIViewController, _UIFloatableBarButtonItem, _UIMTCaptureView, _UIPanelInternalState, _UIVerticalEdgeShadowView;
+@protocol UIPanelControllerDelegate, UIViewControllerTransitionCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface UIPanelController : NSObject <UILayoutContainerViewDelegate>
+@interface UIPanelController : NSObject
 {
     struct {
         unsigned int isUpdatingState:1;
@@ -57,6 +55,7 @@ __attribute__((visibility("hidden")))
     UIView *__supplementaryBorderView;
     _UIVerticalEdgeShadowView *__overlayEdgeShadowView;
     _UIVerticalEdgeShadowView *__supplementaryParallaxShadowView;
+    _UIMTCaptureView *__captureView;
     UIDimmingView *__primaryParallaxDimmingView;
     UIView *__sourceTransitionView;
     UIView *__destTransitionView;
@@ -71,6 +70,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=_setDestinationTransitionView:) UIView *_destTransitionView; // @synthesize _destTransitionView=__destTransitionView;
 @property(retain, nonatomic, setter=_setSourceTransitionView:) UIView *_sourceTransitionView; // @synthesize _sourceTransitionView=__sourceTransitionView;
 @property(retain, nonatomic, setter=_setPrimaryParallaxDimmingView:) UIDimmingView *_primaryParallaxDimmingView; // @synthesize _primaryParallaxDimmingView=__primaryParallaxDimmingView;
+@property(retain, nonatomic, setter=_setMaterialThemesCaptureView:) _UIMTCaptureView *_captureView; // @synthesize _captureView=__captureView;
 @property(retain, nonatomic, setter=_setSupplementaryParallaxShadowView:) _UIVerticalEdgeShadowView *_supplementaryParallaxShadowView; // @synthesize _supplementaryParallaxShadowView=__supplementaryParallaxShadowView;
 @property(retain, nonatomic, setter=_setOverlayEdgeShadowView:) _UIVerticalEdgeShadowView *_overlayEdgeShadowView; // @synthesize _overlayEdgeShadowView=__overlayEdgeShadowView;
 @property(retain, nonatomic, setter=_setSupplementaryBorderView:) UIView *_supplementaryBorderView; // @synthesize _supplementaryBorderView=__supplementaryBorderView;
@@ -105,7 +105,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isSupplementaryViewControllerVisibleAfterAnimation;
 - (_Bool)isTrailingViewControllerVisibleAfterAnimation;
 - (_Bool)isLeadingViewControllerVisibleAfterAnimation;
-- (id)transitionCoordinator;
+@property(readonly, nonatomic) id <UIViewControllerTransitionCoordinator> transitionCoordinator;
 - (void)_animateFromRequest:(id)arg1 toRequest:(id)arg2 withAffectedSides:(long long)arg3 forceOverlay:(_Bool)arg4 velocity:(double)arg5;
 - (struct CGSize)_expectedSecondaryColumnSizeAfterAnimatingToState:(id)arg1 getLeadingColumnSize:(struct CGSize *)arg2 trailingColumnSize:(struct CGSize *)arg3 supplementaryColumnSize:(struct CGSize *)arg4;
 - (void)stopAnimations;

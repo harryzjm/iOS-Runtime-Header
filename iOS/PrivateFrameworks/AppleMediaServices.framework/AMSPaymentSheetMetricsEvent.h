@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSMetricsEvent.h"
+
 __attribute__((visibility("hidden")))
-@interface AMSPaymentSheetMetricsEvent
+@interface AMSPaymentSheetMetricsEvent : AMSMetricsEvent
 {
 }
 
@@ -16,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)addUserActions:(id)arg1;
 - (void)addDualActionSuccess:(_Bool)arg1;
 - (void)addClientMetadataForPurchaseInfo:(id)arg1 metricsDictionary:(id)arg2;
+- (void)addClientMetadataForPaymentSheetRequest:(id)arg1;
 - (void)addBiometricsState:(long long)arg1;
 - (void)addBiometricMatchState:(long long)arg1;
 

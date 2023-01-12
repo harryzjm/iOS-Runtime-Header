@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFCore/AVDecodedVideoSettingsForFig-Protocol.h>
+#import "AVVideoOutputSettings.h"
 
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVPixelBufferAttributesVideoOutputSettings <AVDecodedVideoSettingsForFig>
+@interface AVPixelBufferAttributesVideoOutputSettings : AVVideoOutputSettings
 {
     NSDictionary *_VTPixelAspectRatioDictionary;
     NSDictionary *_VTCleanApertureDictionary;

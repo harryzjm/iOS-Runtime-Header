@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCControlChannelDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCSessionMessaging : NSObject <VCControlChannelDelegate>
+@interface VCSessionMessaging : NSObject
 {
     NSMutableDictionary *topics;
     id controlChannelWeak;
@@ -32,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)newPackedMessageFromMomentsDictionary:(id)arg1;
 - (id)newDictionaryFromUnpackedMessage:(id)arg1;
 - (id)newPackedMessageFromDictionary:(id)arg1;
+- (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendMessageDictionary:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
 - (void)sendMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
 - (void)sendMessage:(id)arg1 withTopic:(id)arg2;

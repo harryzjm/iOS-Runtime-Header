@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, CNContactStore, CNContainer, CNGroup, CNMutableContact, CNUIContainerContext, NSMutableArray;
+@class CNContact, CNContactStore, CNContainer, CNGroup, CNMutableContact, CNUIContainerContext, CNUIGroupContext, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CNUIContactSaveConfiguration : NSObject
@@ -21,11 +21,13 @@ __attribute__((visibility("hidden")))
     CNGroup *_parentGroup;
     CNContainer *_parentContainer;
     CNUIContainerContext *_containerContext;
+    CNUIGroupContext *_groupContext;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool saveWasAuthorized; // @synthesize saveWasAuthorized=_saveWasAuthorized;
 @property(readonly, nonatomic) _Bool ignoresParentalRestrictions; // @synthesize ignoresParentalRestrictions=_ignoresParentalRestrictions;
+@property(readonly, nonatomic) CNUIGroupContext *groupContext; // @synthesize groupContext=_groupContext;
 @property(readonly, nonatomic) CNUIContainerContext *containerContext; // @synthesize containerContext=_containerContext;
 @property(readonly, nonatomic) CNContainer *parentContainer; // @synthesize parentContainer=_parentContainer;
 @property(readonly, nonatomic) CNGroup *parentGroup; // @synthesize parentGroup=_parentGroup;
@@ -35,7 +37,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CNMutableContact *mutableContact; // @synthesize mutableContact=_mutableContact;
 @property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 - (id)copyWithEditingLinkedContacts:(id)arg1;
-- (id)initWithContact:(id)arg1 mutableContact:(id)arg2 shadowCopyOfReadonlyContact:(id)arg3 editingLinkedContacts:(id)arg4 contactStore:(id)arg5 parentGroup:(id)arg6 parentContainer:(id)arg7 containerContext:(id)arg8 ignoresParentalRestrictions:(_Bool)arg9 saveWasAuthorized:(_Bool)arg10;
+- (id)initWithContact:(id)arg1 mutableContact:(id)arg2 shadowCopyOfReadonlyContact:(id)arg3 editingLinkedContacts:(id)arg4 contactStore:(id)arg5 parentGroup:(id)arg6 parentContainer:(id)arg7 containerContext:(id)arg8 groupContext:(id)arg9 ignoresParentalRestrictions:(_Bool)arg10 saveWasAuthorized:(_Bool)arg11;
+- (id)initWithContact:(id)arg1 mutableContact:(id)arg2 editingLinkedContacts:(id)arg3 contactStore:(id)arg4 ignoresParentalRestrictions:(_Bool)arg5 saveWasAuthorized:(_Bool)arg6;
 
 @end
 

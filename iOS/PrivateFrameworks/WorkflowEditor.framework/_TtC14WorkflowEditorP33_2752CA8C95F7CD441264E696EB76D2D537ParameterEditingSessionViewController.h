@@ -6,11 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WorkflowEditor/WFUIKitParameterEditingControllerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC14WorkflowEditorP33_2752CA8C95F7CD441264E696EB76D2D537ParameterEditingSessionViewController : UIViewController <WFUIKitParameterEditingControllerDelegate>
+@interface _TtC14WorkflowEditorP33_2752CA8C95F7CD441264E696EB76D2D537ParameterEditingSessionViewController : UIViewController
 {
     MISSING_TYPE *parameter;
     MISSING_TYPE *currentState;

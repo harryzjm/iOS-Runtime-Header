@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) int navigationState;
 - (double)durationForAnnouncement:(NSString *)arg1;
 - (_Bool)isCurrentlySpeaking;
+- (_Bool)guidanceManagerIsRerouting;
 - (void)guidanceManager:(MNGuidanceManager *)arg1 updatedGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)guidanceManager:(MNGuidanceManager *)arg1 newGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)guidanceManager:(MNGuidanceManager *)arg1 hideJunctionViewForId:(NSUUID *)arg2;
@@ -24,7 +25,7 @@
 - (void)guidanceManager:(MNGuidanceManager *)arg1 triggerHaptics:(int)arg2;
 - (void)guidanceManager:(MNGuidanceManager *)arg1 didProcessSpeechEvent:(GEOComposedGuidanceEvent *)arg2;
 - (void)guidanceManager:(MNGuidanceManager *)arg1 willProcessSpeechEvent:(GEOComposedGuidanceEvent *)arg2;
-- (void)guidanceManager:(MNGuidanceManager *)arg1 announce:(NSString *)arg2 isImportant:(_Bool)arg3 shortPromptType:(unsigned long long)arg4 ignorePromptStyle:(_Bool)arg5 stage:(unsigned long long)arg6 hasSecondaryManeuver:(_Bool)arg7 completionBlock:(void (^)(unsigned long long))arg8;
+- (void)guidanceManager:(MNGuidanceManager *)arg1 announce:(NSString *)arg2 isImportant:(_Bool)arg3 shortPromptType:(unsigned long long)arg4 ignorePromptStyle:(_Bool)arg5 stage:(unsigned long long)arg6 completionBlock:(void (^)(unsigned long long))arg7;
 - (void)guidanceManager:(MNGuidanceManager *)arg1 willAnnounce:(unsigned long long)arg2 inSeconds:(double)arg3;
 - (void)guidanceManagerEndGuidanceUpdate:(MNGuidanceManager *)arg1;
 - (void)guidanceManagerBeginGuidanceUpdate:(MNGuidanceManager *)arg1;

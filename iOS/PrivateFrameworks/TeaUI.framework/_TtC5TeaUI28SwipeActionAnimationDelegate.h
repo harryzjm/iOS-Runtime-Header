@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TeaUI/CAAnimationDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC5TeaUI28SwipeActionAnimationDelegate : NSObject <CAAnimationDelegate>
+@interface _TtC5TeaUI28SwipeActionAnimationDelegate : NSObject
 {
     MISSING_TYPE *swipeState;
     MISSING_TYPE *completion;

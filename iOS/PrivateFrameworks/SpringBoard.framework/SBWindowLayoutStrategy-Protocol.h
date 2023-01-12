@@ -6,13 +6,13 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class UIWindow;
+@class UIWindow, UIWindowScene;
 @protocol SBWindowLayoutStrategyObserving;
 
 @protocol SBWindowLayoutStrategy <NSObject>
 - (void)removeObserver:(id <SBWindowLayoutStrategyObserving>)arg1;
 - (void)addObserver:(id <SBWindowLayoutStrategyObserving>)arg1;
 - (_Bool)shouldClipForWindow:(UIWindow *)arg1;
-- (struct CGRect)frameWithInterfaceOrientation:(long long)arg1;
+- (struct CGRect)frameWithInterfaceOrientation:(long long)arg1 windowScene:(UIWindowScene *)arg2;
 @end
 

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebSubscriptionAction <AMSUIWebActionRunnable>
+@interface AMSUIWebSubscriptionAction
 {
     _Bool _extendedCarrierCheck;
     long long _cachePolicy;

@@ -9,10 +9,10 @@
 @protocol HKFeatureAvailabilityProviding;
 
 @protocol HKFeatureAvailabilityProvidingObserver <NSObject>
-- (void)featureAvailabilityProvidingDidUpdatePairedDeviceCapability:(id <HKFeatureAvailabilityProviding>)arg1;
 - (void)featureAvailabilityProvidingDidUpdateOnboardingCompletion:(id <HKFeatureAvailabilityProviding>)arg1;
 
 @optional
 - (void)featureAvailabilityProvidingDidUpdateSettings:(id <HKFeatureAvailabilityProviding>)arg1;
+- (void)featureAvailabilityProvidingDidUpdatePairedDeviceCapability:(id <HKFeatureAvailabilityProviding>)arg1;
 @end
 

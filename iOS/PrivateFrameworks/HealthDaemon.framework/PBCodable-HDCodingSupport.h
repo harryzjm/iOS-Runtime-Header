@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <HealthDaemon/HDSyncCodable-Protocol.h>
-
 @class NSString;
 
-@interface PBCodable (HDCodingSupport) <HDSyncCodable>
+@interface PBCodable (HDCodingSupport)
 - (long long)encodedByteCount;
 
 // Remaining properties

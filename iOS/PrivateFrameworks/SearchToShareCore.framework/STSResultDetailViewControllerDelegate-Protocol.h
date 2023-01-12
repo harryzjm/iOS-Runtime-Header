@@ -6,9 +6,10 @@
 
 #import <SearchToShareCore/NSObject-Protocol.h>
 
-@class STSResultDetailViewController;
+@class SFPunchout, SFSearchResult, STSResultDetailViewController;
 
 @protocol STSResultDetailViewControllerDelegate <NSObject>
+- (void)detailViewControllerDidReportConcern:(STSResultDetailViewController *)arg1 result:(SFSearchResult *)arg2 punchout:(SFPunchout *)arg3;
 - (void)detailViewControllerDidInsert:(STSResultDetailViewController *)arg1;
 - (void)detailViewControllerDidSelectProviderLink:(STSResultDetailViewController *)arg1;
 @end

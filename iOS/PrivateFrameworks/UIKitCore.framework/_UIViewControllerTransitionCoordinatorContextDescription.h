@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIViewControllerTransitionCoordinatorContextDescription : NSObject <NSSecureCoding>
+@interface _UIViewControllerTransitionCoordinatorContextDescription : NSObject
 {
     _Bool _animated;
     _Bool _interactive;

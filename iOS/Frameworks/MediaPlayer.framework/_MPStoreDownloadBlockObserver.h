@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPStoreDownloadManagerObserver-Protocol.h>
-
 @class MPStoreDownload, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPStoreDownloadBlockObserver : NSObject <MPStoreDownloadManagerObserver>
+@interface _MPStoreDownloadBlockObserver : NSObject
 {
     CDUnknownBlockType _didFinishDownloadHandler;
     CDUnknownBlockType _didFinishPurchaseHandler;

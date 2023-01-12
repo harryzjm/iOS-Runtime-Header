@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/NSCopying-Protocol.h>
-
 @class AMSSQLitePredicate, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSSQLiteQueryDescriptor : NSObject <NSCopying>
+@interface AMSSQLiteQueryDescriptor : NSObject
 {
     Class _entityClass;
     long long _limitCount;

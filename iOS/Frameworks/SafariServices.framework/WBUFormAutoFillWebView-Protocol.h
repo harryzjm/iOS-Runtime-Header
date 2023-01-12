@@ -7,7 +7,7 @@
 #import <SafariServices/NSObject-Protocol.h>
 
 @class NSString, UIViewController, WBSFormMetadata;
-@protocol WBUFormAutoFillFrameHandle;
+@protocol UIPredictiveViewController, WBUFormAutoFillFrameHandle;
 
 @protocol WBUFormAutoFillWebView <NSObject>
 @property(copy, nonatomic, setter=webui_setLastGeneratedPasswordForCurrentBackForwardItem:) NSString *webui_lastGeneratedPasswordForCurrentBackForwardItem;
@@ -19,6 +19,7 @@
 - (void (^)(void))webui_preventNavigationDuringAutoFillPrompt;
 
 @optional
+- (void)webui_setInputDashboardViewController:(UIViewController<UIPredictiveViewController> *)arg1;
 - (_Bool)webui_canPromptForAccountSecurityRecommendation;
 @end
 

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GCMouseEventData : NSObject <NSSecureCoding>
+@interface GCMouseEventData : NSObject
 {
     unsigned short _source;
     unsigned int _type;

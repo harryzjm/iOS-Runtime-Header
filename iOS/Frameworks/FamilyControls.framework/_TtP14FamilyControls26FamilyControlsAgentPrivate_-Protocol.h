@@ -9,9 +9,12 @@
 @protocol _TtP14FamilyControls26FamilyControlsAgentPrivate_
 - (void)removeAllActivityWithReplyHandler:(void (^)(NSError *))arg1;
 - (void)updateActivityWithReplyHandler:(void (^)(NSError *))arg1;
+- (void)fetchAllSharedActivityWithReplyHandler:(void (^)(NSError *))arg1;
+- (void)revokeInternalAuthorizationWithReplyHandler:(void (^)(NSError *))arg1;
 - (void)revokeAuthorizationForDeletionWithRecordIdentifier:(NSUUID *)arg1 replyHandler:(void (^)(NSError *))arg2;
 - (void)revokeAuthorizationWithRecordIdentifier:(NSUUID *)arg1 replyHandler:(void (^)(NSError *))arg2;
 - (void)resetAuthorizationWithRecordIdentifier:(NSUUID *)arg1 replyHandler:(void (^)(NSError *))arg2;
+- (void)requestInternalAuthorizationWithReplyHandler:(void (^)(NSError *))arg1;
 - (void)requestAuthorizationWithRecordIdentifier:(NSUUID *)arg1 replyHandler:(void (^)(NSError *))arg2;
 - (void)authorizationRecordsWithReplyHandler:(void (^)(NSArray *, NSError *))arg1;
 @end

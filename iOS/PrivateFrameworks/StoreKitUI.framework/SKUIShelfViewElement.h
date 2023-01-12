@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIShelfViewElement
+@interface SKUIShelfViewElement : SKUIViewElement
 {
     long long _numberOfRows;
     NSString *_slideshowTitle;

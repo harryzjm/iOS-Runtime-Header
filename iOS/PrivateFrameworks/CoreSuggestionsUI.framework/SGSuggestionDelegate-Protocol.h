@@ -15,6 +15,7 @@
 - (void)suggestion:(id <SGSuggestion>)arg1 actionFinished:(_Bool)arg2;
 
 @optional
+- (void)suggestionBatchDismissal;
 - (void)bannerDismissAction;
 - (UIViewController *)tableViewController;
 - (void)bannerPrimaryAction;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKit/CKObjectValidating-Protocol.h>
-
 @class NSString;
 
-@interface CKPredicateValidatorInstance : NSObject <CKObjectValidating>
+@interface CKPredicateValidatorInstance : NSObject
 {
 }
 

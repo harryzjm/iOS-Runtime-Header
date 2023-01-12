@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQPagesGenerator-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQHPages : NSObject <GQPagesGenerator>
+@interface GQHPages : NSObject
 {
 }
 

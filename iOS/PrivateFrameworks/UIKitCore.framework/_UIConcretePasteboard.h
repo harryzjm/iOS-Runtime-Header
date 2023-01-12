@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import "UIPasteboard.h"
+
+@class NSObject, NSString, UISPasteSharingToken;
+@protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface _UIConcretePasteboard
+@interface _UIConcretePasteboard : UIPasteboard
 {
     NSString *_name;
+    UISPasteSharingToken *_sharingToken;
+    NSObject<OS_dispatch_group> *_saveCompletionGroup;
 }
 
 + (void)_asynchronouslyEnumerateItemSet:(id)arg1 itemsCompletionHandler:(CDUnknownBlockType)arg2 usingItemBlock:(CDUnknownBlockType)arg3;
@@ -18,6 +23,9 @@ __attribute__((visibility("hidden")))
 + (void)_detectPatternsForPatterns:(id)arg1 atIndex:(unsigned long long)arg2 itemCollection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)_pasteboardWithUniqueName;
 + (id)_pasteboardWithName:(id)arg1 create:(_Bool)arg2;
++ (id)_loadRequestContextForNonBlockingUIKitCall;
++ (id)_loadRequestContextForBlockingUIKitCall;
++ (id)_loadRequestContextForBlockingUIKitCall:(_Bool)arg1;
 + (id)_remoteContentForLayerContextWithId:(unsigned long long)arg1 slotStyle:(id)arg2 pasteButtonTag:(id)arg3;
 + (void)_attemptAuthenticationWithMessage:(id)arg1;
 + (void)_clearPinnedItemProvidersForPasteboardNamed:(id)arg1;
@@ -28,7 +36,10 @@ __attribute__((visibility("hidden")))
 + (id)generalPasteboard;
 + (id)_pasteboardNamed:(id)arg1 createIfNotFound:(_Bool)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_group> *saveCompletionGroup; // @synthesize saveCompletionGroup=_saveCompletionGroup;
+@property(copy) UISPasteSharingToken *sharingToken; // @synthesize sharingToken=_sharingToken;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (void)_requestSecurePasteAuthenticationMessageWithContext:(unsigned long long)arg1 forClientVersionedPID:(long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)detectValuesForPatterns:(id)arg1 inItemSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)detectValuesForPatterns:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)detectPatternsForPatterns:(id)arg1 inItemSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -91,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)setItemProviders:(id)arg1 localOnly:(_Bool)arg2 expirationDate:(id)arg3;
 - (void)setItemProviders:(id)arg1 options:(id)arg2;
 - (void)setItemProviders:(id)arg1;
+- (id)pasteSharingToken;
 - (long long)_changeCountIgnoringPinningActivity;
 - (long long)changeCount;
 - (void)_setPersistent:(_Bool)arg1;

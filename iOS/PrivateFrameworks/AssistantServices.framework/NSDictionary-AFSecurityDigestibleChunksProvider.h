@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <AssistantServices/AFSecurityDigestibleChunksProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSDictionary (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding>
+@interface NSDictionary (AFSecurityDigestibleChunksProvider)
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_af_lenient:(_Bool)arg1 map:(CDUnknownBlockType)arg2;
 - (id)af_lenientMappedDictionary:(CDUnknownBlockType)arg1;

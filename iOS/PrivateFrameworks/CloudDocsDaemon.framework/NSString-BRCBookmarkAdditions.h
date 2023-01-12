@@ -9,19 +9,25 @@
 @interface NSString (BRCBookmarkAdditions)
 + (id)unsaltedBookmarkDataWithRelativePath:(id)arg1 serverZoneMangledID:(id)arg2;
 + (id)bookmarkDataWithRelativePath:(id)arg1 serverZone:(id)arg2;
++ (id)bookmarkDataWithDocumentID:(id)arg1 serverZone:(id)arg2;
 + (id)itemResolutionStringWithRelativePath:(id)arg1;
++ (id)itemResolutionStringWithDocumentID:(id)arg1;
 + (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
 + (id)unsaltedBookmarkDataWithItemResolutionString:(id)arg1 serverZoneMangledID:(id)arg2;
 + (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZoneMangledID:(id)arg2 saltAccountDSID:(id)arg3;
++ (id)br_currentMobileDocumentsDirWithRefreshCache:(_Bool)arg1;
++ (id)br_currentMobileDocumentsDir;
 + (id)brc_locateUbiquityTokenSaltInOldAccountPath:(id)arg1;
 + (id)ubiquityTokenSaltFilename;
 + (id)brc_accountIDPathForAccountPath:(id)arg1;
 + (id)brc_currentCachesDir;
 + (id)brc_hexadecimalStringWithBytes:(const char *)arg1 length:(unsigned long long)arg2;
 + (void)brc_addForcedPackageExtension:(id)arg1;
-+ (void)brc_loadForcedPackageExtensions;
++ (void)brc_loadForcedPackageExtensionsForCurrentPersona;
++ (void)brc_closeForcedPackageExtensionsForPersona:(id)arg1;
 - (_Bool)parseBookmarkDataWithAccountSession:(id)arg1 docID:(id *)arg2 itemID:(id *)arg3 mangledID:(id *)arg4 unsaltedBookmarkData:(id *)arg5 error:(id *)arg6;
 - (_Bool)parseUnsaltedBookmarkDataWithItemID:(id *)arg1 mangledID:(id *)arg2 error:(id *)arg3;
+- (id)brc_dataFromHexidecimalString;
 - (id)brc_SHA1WithSalt:(id)arg1;
 - (id)brc_SHA256;
 - (_Bool)brc_isBlacklistedPackageExtension;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSMapTable, NSString, SKUIAttributedStringView, SKUITextBoxView, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIResponseView <SKUIViewElementView>
+@interface SKUIResponseView
 {
     SKUITextBoxView *_descriptionView;
     SKUIAttributedStringView *_subtitleView;

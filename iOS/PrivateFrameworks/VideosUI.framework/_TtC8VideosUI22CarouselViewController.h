@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)vui_willMoveToParentViewController:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 

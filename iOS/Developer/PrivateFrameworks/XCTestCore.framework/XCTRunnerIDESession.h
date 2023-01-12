@@ -8,14 +8,13 @@
 
 #import <XCTestCore/XCDebugLogDelegate-Protocol.h>
 #import <XCTestCore/XCTMessagingChannel_IDEToRunner-Protocol.h>
-#import <XCTestCore/XCTTestRunSessionDelegate-Protocol.h>
 #import <XCTestCore/XCUIXcodeApplicationManaging-Protocol.h>
 #import <XCTestCore/_XCTestObservationInternal-Protocol.h>
 
 @class DTXConnection, NSString, XCTCapabilities, XCTFuture, XCTPromise, XCTestRun;
 @protocol OS_dispatch_queue, XCTMessagingChannel_RunnerToIDE><NSObject, XCTRunnerIDESessionDelegate, XCUIApplicationMonitor;
 
-@interface XCTRunnerIDESession : NSObject <_XCTestObservationInternal, XCTMessagingChannel_IDEToRunner, XCTTestRunSessionDelegate, XCUIXcodeApplicationManaging, XCDebugLogDelegate>
+@interface XCTRunnerIDESession : NSObject <_XCTestObservationInternal, XCTMessagingChannel_IDEToRunner, XCUIXcodeApplicationManaging, XCDebugLogDelegate>
 {
     XCTCapabilities *_IDECapabilities;
     XCTFuture *_readyForTestingFuture;
@@ -42,8 +41,8 @@
 @property(copy) CDUnknownBlockType readinessReply; // @synthesize readinessReply=_readinessReply;
 @property(retain) XCTestRun *currentTestRun; // @synthesize currentTestRun=_currentTestRun;
 @property(retain) XCTPromise *readyForTestingPromise; // @synthesize readyForTestingPromise=_readyForTestingPromise;
-@property(retain) id <XCTMessagingChannel_RunnerToIDE><NSObject> IDEProxy; // @synthesize IDEProxy=_IDEProxy;
-@property(retain) DTXConnection *IDEConnection; // @synthesize IDEConnection=_IDEConnection;
+@property(readonly) id <XCTMessagingChannel_RunnerToIDE><NSObject> IDEProxy; // @synthesize IDEProxy=_IDEProxy;
+@property(readonly) DTXConnection *IDEConnection; // @synthesize IDEConnection=_IDEConnection;
 @property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property __weak id <XCUIApplicationMonitor> applicationMonitor; // @synthesize applicationMonitor=_applicationMonitor;
 @property __weak id <XCTRunnerIDESessionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -71,10 +70,9 @@
 - (id)_IDE_processWithBundleID:(id)arg1 path:(id)arg2 pid:(id)arg3 crashedUnderSymbol:(id)arg4;
 - (void)reportStallOnMainThreadInTestCase:(id)arg1 file:(id)arg2 line:(unsigned long long)arg3;
 - (void)logDebugMessage:(id)arg1;
-- (void)testRunSessionDidFinishExecutingTestPlan:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)testRunSession:(id)arg1 initializationForUITestingDidFailWithError:(id)arg2;
-- (void)testRunSessionDidBeginInitializingForUITesting:(id)arg1;
-- (void)testRunSessionDidBeginExecutingTestPlan:(id)arg1;
+- (void)reportDidFinishExecutingTestPlanWithCompletion:(CDUnknownBlockType)arg1;
+- (void)reportInitializationForUITestingFinishedWithError:(id)arg1;
+- (void)reportDidBeginExecutingTestPlan;
 - (id)_IDE_shutdown;
 - (id)_IDE_executeTestsWithIdentifiersToRun:(id)arg1 identifiersToSkip:(id)arg2;
 - (id)_IDE_executeTestIdentifiers:(id)arg1 skippingTestIdentifiers:(id)arg2;

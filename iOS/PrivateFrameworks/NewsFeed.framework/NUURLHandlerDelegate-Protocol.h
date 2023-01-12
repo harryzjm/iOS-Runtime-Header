@@ -6,9 +6,10 @@
 
 #import <NewsFeed/NSObject-Protocol.h>
 
-@class NUURLHandler, UIViewController;
+@class NSURL, NUURLHandler, UIViewController;
 
 @protocol NUURLHandlerDelegate <NSObject>
+- (void)URLHandler:(NUURLHandler *)arg1 willOpenURL:(NSURL *)arg2;
 - (void)URLHandler:(NUURLHandler *)arg1 wantsToPresentViewController:(UIViewController *)arg2 animated:(_Bool)arg3;
 @end
 

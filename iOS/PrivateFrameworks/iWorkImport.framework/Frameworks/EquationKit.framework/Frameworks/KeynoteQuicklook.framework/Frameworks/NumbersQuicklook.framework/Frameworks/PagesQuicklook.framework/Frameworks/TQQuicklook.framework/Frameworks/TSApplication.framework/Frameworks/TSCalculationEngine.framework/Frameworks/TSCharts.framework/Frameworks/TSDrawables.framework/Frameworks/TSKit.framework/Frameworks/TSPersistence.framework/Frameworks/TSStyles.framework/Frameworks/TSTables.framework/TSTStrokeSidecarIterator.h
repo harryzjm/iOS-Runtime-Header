@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTCellRegionIterating-Protocol.h>
-#import <TSTables/TSTMutableCellIteratorDataUpdating-Protocol.h>
-
 @class NSString, TSTCellRegion, TSTStrokeSidecar;
 @protocol TSTCellRegionIterating;
 
-@interface TSTStrokeSidecarIterator : NSObject <TSTCellRegionIterating, TSTMutableCellIteratorDataUpdating>
+@interface TSTStrokeSidecarIterator : NSObject
 {
     TSTStrokeSidecar *_strokeSidecar;
     TSTCellRegion *_region;

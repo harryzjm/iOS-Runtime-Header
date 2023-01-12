@@ -18,6 +18,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)initWithIdentifier:(id)arg1 transform:(CDStruct_f1db2b5e)arg2 name:(id)arg3 hiddenFromPublicDelegate:(_Bool)arg4;
+- (id)initWithIdentifier:(id)arg1 transform:(CDStruct_f1db2b5e)arg2 name:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 transform:(CDStruct_f1db2b5e)arg2;
 - (id)initWithName:(id)arg1 transform:(CDStruct_f1db2b5e)arg2;
 - (id)initWithTransform:(CDStruct_f1db2b5e)arg1;
 - (id)initWithName:(id)arg1 transform:(CDStruct_f1db2b5e)arg2 extent: /* Error: Ran out of types for this method. */;

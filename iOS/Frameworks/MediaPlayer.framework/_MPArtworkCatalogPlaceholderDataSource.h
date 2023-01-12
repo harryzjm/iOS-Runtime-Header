@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPArtworkDataSource-Protocol.h>
-
 @class NSCache, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPArtworkCatalogPlaceholderDataSource : NSObject <MPArtworkDataSource>
+@interface _MPArtworkCatalogPlaceholderDataSource : NSObject
 {
     NSCache *_fallbackCache;
 }

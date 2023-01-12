@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPSNNGradientState.h"
+
 @class MPSCNNLossLabels;
 
-@interface MPSNNLossGradientState
+@interface MPSNNLossGradientState : MPSNNGradientState
 {
     float _weight;
     float _labelSmoothing;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/NSCopying-Protocol.h>
-
 @class NSPredicate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSSubscriptionFetchOptionDescription : NSObject <NSCopying>
+@interface VSSubscriptionFetchOptionDescription : NSObject
 {
     _Bool _container;
     NSString *_key;

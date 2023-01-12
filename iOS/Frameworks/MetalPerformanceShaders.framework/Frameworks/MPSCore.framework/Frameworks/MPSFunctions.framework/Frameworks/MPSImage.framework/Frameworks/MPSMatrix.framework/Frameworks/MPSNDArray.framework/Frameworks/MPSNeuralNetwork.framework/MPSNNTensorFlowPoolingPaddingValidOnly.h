@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MPSNeuralNetwork/MPSNNPadding-Protocol.h>
+#import "MPSNNDefaultPadding.h"
 
 @class NSString;
 
-@interface MPSNNTensorFlowPoolingPaddingValidOnly <MPSNNPadding>
+@interface MPSNNTensorFlowPoolingPaddingValidOnly : MPSNNDefaultPadding
 {
 }
 

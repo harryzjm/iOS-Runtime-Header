@@ -6,18 +6,22 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKCDPErrorUserInfoValue : PBCodable <NSCopying>
+@interface CKCDPErrorUserInfoValue : PBCodable
 {
     double _doubleValue;
     long long _int64Value;
     NSData *_bytesValue;
     NSString *_stringValue;
+    int _value;
     _Bool _boolValue;
-    CDStruct_f7459c01 _has;
+    struct {
+        unsigned int doubleValue:1;
+        unsigned int int64Value:1;
+        unsigned int value:1;
+        unsigned int boolValue:1;
+    } _has;
 }
 
 - (void).cxx_destruct;
@@ -35,6 +39,11 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (void)clearOneofValuesForValue;
+- (int)StringAsValue:(id)arg1;
+- (id)valueAsString:(int)arg1;
+@property(nonatomic) _Bool hasValue;
+@property(nonatomic) int value; // @synthesize value=_value;
 @property(readonly, nonatomic) _Bool hasBytesValue;
 @property(readonly, nonatomic) _Bool hasStringValue;
 @property(nonatomic) _Bool hasBoolValue;

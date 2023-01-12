@@ -6,17 +6,21 @@
 
 #import <Notes/NoteContext.h>
 
-#import <NotesShared/ICLegacyContext-Protocol.h>
-
 @class NSManagedObjectContext, NSString;
 
-@interface NoteContext (ICLegacyContext) <ICLegacyContext>
+@interface NoteContext (ICLegacyContext)
+- (id)folderForIdentifier:(id)arg1;
+- (id)noteForIdentifier:(id)arg1;
 - (void)reset;
+- (id)ic_objectsWithIDs:(id)arg1;
 - (id)existingObjectWithID:(id)arg1 error:(id *)arg2;
+- (id)objectWithID:(id)arg1;
 - (void)performBlockAndWait:(CDUnknownBlockType)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (id)allVisibleNoteObjectIDsForAccountWithObjectID:(id)arg1;
+- (unsigned long long)countOfVisibleNotesForAccount:(id)arg1;
 - (unsigned long long)countOfVisibleNotesForAccountWithObjectID:(id)arg1;
+- (id)allVisibleNotesInFolder:(id)arg1;
 - (id)allVisibleNotesForAccountWithObjectID:(id)arg1;
 - (_Bool)nonEmptyNoteExistsForLegacyAccountWithObjectID:(id)arg1;
 

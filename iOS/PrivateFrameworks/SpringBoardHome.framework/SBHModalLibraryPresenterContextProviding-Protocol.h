@@ -6,13 +6,12 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class NSString, SBHLibraryIconViewController, SBHModalLibraryPresenter, SBIconListView, SBIconView, UIView, UIViewController;
+@class NSString, SBHLibraryIconViewController, SBHModalLibraryPresenter, SBIconView, UIView, UIViewController;
 @protocol BSInvalidatable;
 
 @protocol SBHModalLibraryPresenterContextProviding <NSObject>
 - (SBHLibraryIconViewController *)libraryIconViewControllerForPresenter:(SBHModalLibraryPresenter *)arg1;
 - (SBIconView *)libraryIconViewForPresenter:(SBHModalLibraryPresenter *)arg1;
-- (SBIconListView *)sourceListViewForPresenter:(SBHModalLibraryPresenter *)arg1;
 - (id <BSInvalidatable>)acquireOrderSourceContainerViewBeforeLibraryViewAssertionForReason:(NSString *)arg1;
 - (UIView *)sourceContainerViewForPresenter:(SBHModalLibraryPresenter *)arg1;
 - (UIViewController *)containerViewControllerForPresentingInForeground:(SBHModalLibraryPresenter *)arg1;

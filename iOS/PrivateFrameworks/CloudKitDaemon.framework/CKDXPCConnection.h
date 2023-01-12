@@ -6,18 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/CKDSystemAvailabilityWatcher-Protocol.h>
-#import <CloudKitDaemon/CKDXPCConnectionMuxer-Protocol.h>
-
 @class CKCoalescer, CKDProcessScopedClientProxy, NSArray, NSHashTable, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSPointerArray, NSString, NSXPCConnection;
 
-@interface CKDXPCConnection : NSObject <CKDSystemAvailabilityWatcher, CKDXPCConnectionMuxer>
+@interface CKDXPCConnection : NSObject
 {
     NSXPCConnection *_xpcConnection;
+    CKDProcessScopedClientProxy *_processScopedClientProxy;
     NSHashTable *_sharedContainers;
     unsigned long long _keepAlive;
     CKCoalescer *_activityCoalescer;
-    CKDProcessScopedClientProxy *_processScopedClientProxy;
     NSMutableDictionary *_logicalDeviceScopedClientProxiesByDeviceReference;
     NSMutableSet *_allDeviceContexts;
     NSPointerArray *_allContainerPointers;
@@ -29,10 +26,10 @@
 @property(retain, nonatomic) NSPointerArray *allContainerPointers; // @synthesize allContainerPointers=_allContainerPointers;
 @property(retain, nonatomic) NSMutableSet *allDeviceContexts; // @synthesize allDeviceContexts=_allDeviceContexts;
 @property(retain, nonatomic) NSMutableDictionary *logicalDeviceScopedClientProxiesByDeviceReference; // @synthesize logicalDeviceScopedClientProxiesByDeviceReference=_logicalDeviceScopedClientProxiesByDeviceReference;
-@property(retain, nonatomic) CKDProcessScopedClientProxy *processScopedClientProxy; // @synthesize processScopedClientProxy=_processScopedClientProxy;
 @property(readonly, nonatomic) CKCoalescer *activityCoalescer; // @synthesize activityCoalescer=_activityCoalescer;
 @property(nonatomic) unsigned long long keepAlive; // @synthesize keepAlive=_keepAlive;
 @property(retain, nonatomic) NSHashTable *sharedContainers; // @synthesize sharedContainers=_sharedContainers;
+@property(retain, nonatomic) CKDProcessScopedClientProxy *processScopedClientProxy; // @synthesize processScopedClientProxy=_processScopedClientProxy;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 - (void)getLogicalDeviceScopedClientProxyCreatorForTestDeviceReference:(id)arg1 synchronous:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getProcessScopedClientProxyCreatorSynchronous:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -50,12 +47,14 @@
 - (void)allowToClose;
 - (void)keepOpen;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
+- (id)redactedDescription;
+@property(readonly, copy) NSString *description;
+- (void)CKDescribePropertiesUsing:(id)arg1;
 - (void)dealloc;
 - (id)initWithXPCConnection:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <SeymourMedia/AVPlaybackCoordinationMediumDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtCC12SeymourMedia26MediaPlayerSyncCoordinatorP33_75A9D0B74F4CEE621C27366C52243E4627AVCoordinatorDelegateBridge : NSObject <AVPlaybackCoordinationMediumDelegate>
+@interface _TtCC12SeymourMedia26MediaPlayerSyncCoordinatorP33_75A9D0B74F4CEE621C27366C52243E4627AVCoordinatorDelegateBridge : NSObject
 {
     MISSING_TYPE *localParticipantID;
     MISSING_TYPE *delegate;

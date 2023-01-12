@@ -15,6 +15,7 @@
 - (void)__ck_updateWatermarkToMessageID:(long long)arg1 date:(id)arg2;
 - (id)__ck_watermarkDate;
 - (long long)__ck_watermarkMessageID;
+- (void)sendTapback:(id)arg1 forChatItem:(id)arg2 withGuid:(id)arg3;
 - (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withGuid:(id)arg3;
 - (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2;
 @end

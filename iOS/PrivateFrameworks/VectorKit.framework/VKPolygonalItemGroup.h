@@ -11,12 +11,13 @@ __attribute__((visibility("hidden")))
 {
     struct optional<md::MeshSet<ggl::PolygonBase::CompressedMeshMesh, ggl::PolygonBase::CompressedVbo>> _fillMeshInfo;
     struct vector<std::shared_ptr<ggl::PolygonBase::CompressedMeshMesh>, std::allocator<std::shared_ptr<ggl::PolygonBase::CompressedMeshMesh>>> _fillMeshes;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _fillCullingGroups;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _strokeCullingGroups;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _venueCullingGroups;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _venueEndCapCullingGroups;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _venueWallHorizontalStrokeCullingGroups;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _venueWallVerticalStrokeCullingGroups;
+    shared_ptr_fb8448a7 _meshStorage;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _fillCullingGroups;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _strokeCullingGroups;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _venueCullingGroups;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _venueEndCapCullingGroups;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _venueWallHorizontalStrokeCullingGroups;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _venueWallVerticalStrokeCullingGroups;
     struct unordered_map<std::pair<const void *, unsigned long>, std::vector<md::Edge>, std::hash<md::SectionKey>, std::equal_to<std::pair<const void *, unsigned long>>, std::allocator<std::pair<const std::pair<const void *, unsigned long>, std::vector<md::Edge>>>> _polygonEdges;
     struct unordered_set<unsigned long long, std::hash<unsigned long long>, std::equal_to<unsigned long long>, std::allocator<unsigned long long>> _featureIds;
     struct Box<float, 3> _boundingBox;
@@ -63,7 +64,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) const void *origin;
 - (const void *)attributeSets;
 - (unsigned char)maxAttributeSetsPerGroup;
-- (void)dealloc;
+- (id)initWithStyleQuery:(void *)arg1 tileZoom:(float)arg2 fixedAroundCentroid:(const void *)arg3 contentScale:(float)arg4 storage:(shared_ptr_fb8448a7)arg5;
 - (id)initWithStyleQuery:(void *)arg1 tileZoom:(float)arg2 fixedAroundCentroid:(const void *)arg3 contentScale:(float)arg4;
 
 @end

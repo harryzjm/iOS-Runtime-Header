@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <FileProvider/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface FPSearchableItemVersion : PBCodable <NSCopying>
+@interface FPSearchableItemVersion : PBCodable
 {
     NSData *_contentVersion;
     NSData *_metadataVersion;

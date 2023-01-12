@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSCEColumnRowUIDMapping-Protocol.h>
-
 @class TSTColumnRowUIDMapper;
 
-@interface TSTColumnRowUIDMap : TSPObject <TSCEColumnRowUIDMapping>
+@interface TSTColumnRowUIDMap : TSPObject
 {
     TSKUIDStructVectorTemplate_de88e035 _columnUidForIndex;
     TSKUIDStructVectorTemplate_de88e035 _rowUidForIndex;

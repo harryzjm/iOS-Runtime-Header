@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCoding-Protocol.h>
-
 @class NSString;
 
-@interface IBUISimulatedBarMetrics : NSObject <IBBinaryArchiving, NSCoding>
+@interface IBUISimulatedBarMetrics : NSObject
 {
     long long _barStyle;
 }

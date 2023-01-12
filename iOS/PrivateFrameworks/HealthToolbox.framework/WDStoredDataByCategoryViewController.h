@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIFont *bodyFont; // @synthesize bodyFont=_bodyFont;
 @property(retain, nonatomic) NSArray *capturedSampleTypes; // @synthesize capturedSampleTypes=_capturedSampleTypes;
 @property(retain, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
+- (id)_makeDataListViewControllerForDisplayType:(id)arg1;
 - (void)selectSourceStoredDataTableViewCell:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;

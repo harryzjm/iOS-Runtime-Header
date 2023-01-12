@@ -18,13 +18,16 @@
     MISSING_TYPE *environmentProvidingFactory;
     MISSING_TYPE *statefulStore;
     MISSING_TYPE *statefulStoreUI;
+    MISSING_TYPE *placeholderStoreUI;
     MISSING_TYPE *lock;
     MISSING_TYPE *logger;
     MISSING_TYPE *persistentSubscriptions;
     MISSING_TYPE *environmentSubscriptions;
     MISSING_TYPE *configurationLifetimeAssertions;
-    MISSING_TYPE *widgetKeysNeedingPrivacyContent;
     MISSING_TYPE *processMonitor;
+    MISSING_TYPE *proactiveForwardingQueue;
+    MISSING_TYPE *widgetEnvironmentModificationContext;
+    MISSING_TYPE *reloadFilters;
 }
 
 @end

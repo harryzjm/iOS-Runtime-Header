@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/CKDZoneGatekeeperWaiter-Protocol.h>
-
 @class NSString;
 
-@interface CKDDeferredRelinquishPlaceholder : NSObject <CKDZoneGatekeeperWaiter>
+@interface CKDDeferredRelinquishPlaceholder : NSObject
 {
     long long _qualityOfService;
     NSString *_underlyingCKShortDescription;

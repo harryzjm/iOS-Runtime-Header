@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIColor, UIVisualEffect, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDSeparatorView
+@interface _UIKeyShortcutHUDSeparatorView : UIView
 {
     UIVisualEffectView *_separatorVisualEffectView;
 }

@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (FamilyCircle)
+- (id)fa_firstObjectMatching:(CDUnknownBlockType)arg1;
 - (id)fa_map:(CDUnknownBlockType)arg1;
 @end
 

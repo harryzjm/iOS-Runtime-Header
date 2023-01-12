@@ -12,6 +12,7 @@
 @protocol EFSQLSelectComponent <NSObject>
 - (void)orderByColumn:(NSString *)arg1 ascending:(_Bool)arg2;
 - (void)groupByColumn:(NSString *)arg1;
+- (void)addResultColumn:(NSString *)arg1 alias:(NSString *)arg2;
 - (void)addResultColumn:(NSString *)arg1;
 - (id <EFSQLSelectComponent>)leftOuterJoin:(NSString *)arg1 alias:(NSString *)arg2 sourceColumn:(NSString *)arg3 targetColumn:(NSString *)arg4;
 - (id <EFSQLSelectComponent>)join:(NSString *)arg1 alias:(NSString *)arg2 sourceColumn:(NSString *)arg3 targetColumn:(NSString *)arg4;

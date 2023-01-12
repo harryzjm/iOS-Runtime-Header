@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AXMediaUtilities/MLFeatureProvider-Protocol.h>
-
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface SelectedCheckboxFromIcon__generated__Input : NSObject <MLFeatureProvider>
+@interface SelectedCheckboxFromIcon__generated__Input : NSObject
 {
     struct __CVBuffer *_image;
 }

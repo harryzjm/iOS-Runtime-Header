@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *infoItemPairs;
     MISSING_TYPE *separators;
     MISSING_TYPE *scrollView;
+    MISSING_TYPE *gradient;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, readonly) NSArray *accessibilityInfoItemPairs;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (struct JUMeasurements)measurementsWithFitting:(struct CGSize)arg1 in:(id)arg2;

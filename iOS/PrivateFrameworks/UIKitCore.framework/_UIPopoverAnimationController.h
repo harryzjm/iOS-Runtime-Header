@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIPopoverAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
+@interface _UIPopoverAnimationController : NSObject
 {
 }
 

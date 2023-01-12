@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
-
 @class CKRecordID, NSData, NSString;
 
-@interface CKDSharePCSData <NSSecureCoding, NSCopying>
+@interface CKDSharePCSData
 {
     CKRecordID *_shareID;
     unsigned long long _serviceType;

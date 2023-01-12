@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSUStreamWriteChannel-Protocol.h>
-
 @class NSString, TSUZipFileWriter;
 @protocol OS_dispatch_queue;
 
-@interface TSPZipFileWriteChannel : NSObject <TSUStreamWriteChannel>
+@interface TSPZipFileWriteChannel : NSObject
 {
     TSUZipFileWriter *_archiveWriter;
     NSObject<OS_dispatch_queue> *_writerQueue;

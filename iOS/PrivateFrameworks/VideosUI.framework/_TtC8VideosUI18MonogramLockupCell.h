@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIBaseCollectionViewCell.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI18MonogramLockupCell
+@interface _TtC8VideosUI18MonogramLockupCell : VUIBaseCollectionViewCell
 {
     MISSING_TYPE *lockupLayout;
     MISSING_TYPE *monogramView;

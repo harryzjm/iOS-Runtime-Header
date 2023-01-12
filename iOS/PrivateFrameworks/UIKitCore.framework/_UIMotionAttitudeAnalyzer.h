@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISettingsKeyObserver-Protocol.h>
-
 @class NSString, UILabel, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface _UIMotionAttitudeAnalyzer <_UISettingsKeyObserver>
+@interface _UIMotionAttitudeAnalyzer
 {
     double _smoothingDegree;
     double _referenceShiftSpeed;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSURLSessionStreamTask.h"
+
 @class NSData, NSDictionary, NSError, NSMutableArray, NSObject, NSString, NSURLRequest, NSURLResponse, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface __NSCFURLLocalStreamTask
+@interface __NSCFURLLocalStreamTask : NSURLSessionStreamTask
 {
     struct BaseSocketStreamClient *_socketStreamClient;
     NSMutableArray *_extraWork;
@@ -45,7 +47,6 @@
     long long _countOfBytesClientExpectsToReceive;
     long long _countOfBytesExpectedToSend;
     long long _countOfBytesExpectedToReceive;
-    long long _expectedWorkload;
     double _timeWindowDelay;
     double _timeWindowDuration;
     double startTime;
@@ -103,8 +104,6 @@
 - (void)set_timeWindowDuration:(double)arg1;
 - (double)_timeWindowDelay;
 - (void)set_timeWindowDelay:(double)arg1;
-- (long long)_expectedWorkload;
-- (void)set_expectedWorkload:(long long)arg1;
 - (void)_task_onqueue_didReceiveDispatchData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_task_onqueue_didFinish;
 - (void)_onSessionQueue_cleanupAndBreakCycles;

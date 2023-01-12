@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQUOutputBundle-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQUFileOutputBundle : NSObject <GQUOutputBundle>
+@interface GQUFileOutputBundle : NSObject
 {
     struct __CFURL *mOutputUrl;
 }

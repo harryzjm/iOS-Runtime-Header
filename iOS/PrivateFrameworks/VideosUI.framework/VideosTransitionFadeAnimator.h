@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VideosTransitionFadeAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface VideosTransitionFadeAnimator : NSObject
 {
     long long _transitionType;
     double _animationDuration;

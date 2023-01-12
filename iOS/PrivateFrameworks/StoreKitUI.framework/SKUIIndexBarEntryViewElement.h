@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SKUIViewElement;
+#import "SKUIViewElement.h"
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIIndexBarEntryViewElement
+@interface SKUIIndexBarEntryViewElement : SKUIViewElement
 {
     NSString *_targetIndexBarEntryID;
     long long _visibilityPriority;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOCollectionPublisherAttribution-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _GEOCollectionPublisherAttribution : NSObject <GEOCollectionPublisherAttribution>
+@interface _GEOCollectionPublisherAttribution : NSObject
 {
     unsigned int _iconIdentifier;
     unsigned int _logoIdentifier;

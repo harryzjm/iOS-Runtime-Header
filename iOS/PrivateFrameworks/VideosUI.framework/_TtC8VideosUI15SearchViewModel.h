@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI9ViewModelCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI15SearchViewModel
+@interface _TtC8VideosUI15SearchViewModel : _$s8VideosUI9ViewModelCN
 {
     MISSING_TYPE *searchListCellLayout;
     MISSING_TYPE *searchEntityCellLayout;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MKPlaceSectionItemView.h"
+
 @class MKVibrantLabel, NSArray, NSLayoutConstraint, NSString, UIFont, UIImage, _MKRightImageButton;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceSectionHeaderView
+@interface MKPlaceSectionHeaderView : MKPlaceSectionItemView
 {
     NSLayoutConstraint *_baselineToTopConstraint;
     NSLayoutConstraint *_baselineToBottomConstraint;

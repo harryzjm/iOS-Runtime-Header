@@ -7,11 +7,12 @@
 #import <Sharing/NSObject-Protocol.h>
 
 @class CDPContext;
-@protocol CDPRecoveryKeyValidator;
+@protocol CDPRecoveryKeyValidator, CDPRemoteDeviceSecretValidatorProtocol;
 
 @protocol CDPRecoveryKeyUIProvider <NSObject>
 
 @optional
+- (void)cdpContext:(CDPContext *)arg1 promptForRecoveryKeyWithSecretValidator:(id <CDPRemoteDeviceSecretValidatorProtocol>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)cdpContext:(CDPContext *)arg1 promptForRecoveryKeyWithValidator:(id <CDPRecoveryKeyValidator>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)cdpContext:(CDPContext *)arg1 presentRecoveryKeyWithValidator:(id <CDPRecoveryKeyValidator>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 @end

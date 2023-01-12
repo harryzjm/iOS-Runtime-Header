@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNChangeNotificationReceiver-Protocol.h>
-
 @class CNCoalescingTimer, NSCountedSet, NSMapTable, NSMutableDictionary, NSString;
 @protocol CNContactsLoggerProvider, CNSchedulerProvider, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CNChangesNotifierProxy : NSObject <CNChangeNotificationReceiver>
+@interface CNChangesNotifierProxy : NSObject
 {
     _Bool forwardsSelfGeneratedDistributedSaveNotifications;
     double _externalNotificationCoalescingDelay;

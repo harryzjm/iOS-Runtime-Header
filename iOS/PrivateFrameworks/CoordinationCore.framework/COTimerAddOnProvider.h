@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/COServiceAddOnProvider-Protocol.h>
-
 @class COHomeHubAdapter, COHomeKitAdapter, MTTimerManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COTimerAddOnProvider : NSObject <COServiceAddOnProvider>
+@interface COTimerAddOnProvider : NSObject
 {
     MTTimerManager *_timerManager;
     COHomeKitAdapter *_homekit;

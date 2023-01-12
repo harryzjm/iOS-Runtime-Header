@@ -7,7 +7,7 @@
 #import <Photos/NSObject-Protocol.h>
 #import <Photos/_PLThumbnailLoadingAsset-Protocol.h>
 
-@class NSString, NSURL, PLManagedAsset, PLPhotoLibrary;
+@class NSString, PLManagedAsset, PLPhotoLibrary;
 
 @protocol _PLImageLoadingAsset <_PLThumbnailLoadingAsset, NSObject>
 - (_Bool)isOriginalSRGB;
@@ -40,10 +40,7 @@
 - (short)kind;
 - (short)savedAssetType;
 - (NSString *)uuid;
-- (NSString *)debugFilename;
 - (_Bool)hasAdjustments;
 - (long long)originalImageOrientation;
-- (NSURL *)assetsLibraryURL;
-- (double)aspectRatio;
 @end
 

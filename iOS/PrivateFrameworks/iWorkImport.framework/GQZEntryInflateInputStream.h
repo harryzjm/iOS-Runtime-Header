@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQZEntryInputStream-Protocol.h>
-
 @class NSString;
 @protocol GQZArchiveInputStream;
 
-__attribute__((visibility("hidden")))
-@interface GQZEntryInflateInputStream : NSObject <GQZEntryInputStream>
+@interface GQZEntryInflateInputStream : NSObject
 {
     struct z_stream_s mStream;
     long long mOffset;

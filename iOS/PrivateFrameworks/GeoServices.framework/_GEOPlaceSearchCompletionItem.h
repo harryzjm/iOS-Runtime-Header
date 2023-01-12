@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOCompletionItemPrivate-Protocol.h>
-
 @class GEOCollectionResult, GEODirectionIntent, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, GEOStyleAttributes, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceSearchCompletionItem : NSObject <GEOCompletionItemPrivate>
+@interface _GEOPlaceSearchCompletionItem : NSObject
 {
     GEOMapServiceTraits *_traits;
     int _entryListIndex;

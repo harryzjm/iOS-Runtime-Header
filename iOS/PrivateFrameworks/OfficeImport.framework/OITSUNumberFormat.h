@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-#import <OfficeImport/NSMutableCopying-Protocol.h>
-#import <OfficeImport/TSUNumberFormatting-Protocol.h>
-
 @class NSArray, NSIndexSet, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface OITSUNumberFormat : NSObject <TSUNumberFormatting, NSCopying, NSMutableCopying>
+@interface OITSUNumberFormat : NSObject
 {
     int mValueType;
     NSString *mFormatString;

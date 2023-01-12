@@ -9,10 +9,10 @@
 @class NSValue;
 
 @interface AVAsset (PhotosUICore)
-- (id)px_assetByClampingToDuration:(CDStruct_1b6d18a9)arg1 error:(id *)arg2;
+- (id)px_assetByClampingToDuration:(CDStruct_198678f7)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) struct CGSize px_dimensionsOfFirstVideoTrack;
 - (void)px_loadDurationWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 px_duration;
+@property(readonly, nonatomic) CDStruct_198678f7 px_duration;
 @property(readonly, nonatomic) NSValue *px_cachedDuration;
 - (void)_px_setCachedDuration:(id)arg1;
 @end

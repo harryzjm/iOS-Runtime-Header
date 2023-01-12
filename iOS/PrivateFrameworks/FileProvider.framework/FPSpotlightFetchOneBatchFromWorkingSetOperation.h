@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "FPOperation.h"
+
 @class FPSpotlightIndexState, FPSpotlightIndexer, FPXDomainContext, NSArray, NSData, NSError;
 
 __attribute__((visibility("hidden")))
-@interface FPSpotlightFetchOneBatchFromWorkingSetOperation
+@interface FPSpotlightFetchOneBatchFromWorkingSetOperation : FPOperation
 {
     FPSpotlightIndexer *_indexer;
     FPXDomainContext *_domainContext;

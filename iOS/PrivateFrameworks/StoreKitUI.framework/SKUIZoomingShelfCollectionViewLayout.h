@@ -6,13 +6,10 @@
 
 #import <UIKit/UICollectionViewLayout.h>
 
-#import <StoreKitUI/SKUIHorizontalScrollingContainerMenuBarCollectionViewLayout-Protocol.h>
-#import <StoreKitUI/SKUIShelfCollectionViewLayout-Protocol.h>
-
 @class NSMutableDictionary, NSString, SKUIShelfLayoutData;
 
 __attribute__((visibility("hidden")))
-@interface SKUIZoomingShelfCollectionViewLayout : UICollectionViewLayout <SKUIHorizontalScrollingContainerMenuBarCollectionViewLayout, SKUIShelfCollectionViewLayout>
+@interface SKUIZoomingShelfCollectionViewLayout : UICollectionViewLayout
 {
     struct CGSize _cachedCollectionViewContentSize;
     NSMutableDictionary *_cachedLayoutAttributes;

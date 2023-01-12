@@ -9,8 +9,9 @@
 @class NSError, SPUnknownBeacon;
 
 @protocol SPUnknownDiscoveryXPCClientProtocol <NSObject>
-- (oneway void)unknownAccessoryDiscoveryError:(NSError *)arg1;
-- (oneway void)lostUnknownAccessory:(SPUnknownBeacon *)arg1;
-- (oneway void)discoveredUnknownAccessory:(SPUnknownBeacon *)arg1;
+- (void)unknownAccessoryDiscoveryFinished;
+- (void)unknownAccessoryDiscoveryError:(NSError *)arg1;
+- (void)lostUnknownAccessory:(SPUnknownBeacon *)arg1;
+- (void)discoveredUnknownAccessory:(SPUnknownBeacon *)arg1;
 @end
 

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKeyboardCameraRemoteViewControllerHost-Protocol.h>
+#import "UIViewController.h"
 
 @class NSExtension, NSString, UIKeyboardCameraRemoteViewController;
 @protocol UIKeyboardCameraViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCameraViewController <UIKeyboardCameraRemoteViewControllerHost>
+@interface UIKeyboardCameraViewController : UIViewController
 {
     id <UIKeyboardCameraViewControllerDelegate> _delegate;
     NSString *_textContentType;

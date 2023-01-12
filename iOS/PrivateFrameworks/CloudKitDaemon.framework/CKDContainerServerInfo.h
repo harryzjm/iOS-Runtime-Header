@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
-
 @class NSString, NSURL;
 
-@interface CKDContainerServerInfo : NSObject <NSCopying, NSSecureCoding>
+@interface CKDContainerServerInfo : NSObject
 {
     NSURL *_publicCloudDBURL;
     NSURL *_publicShareServiceURL;

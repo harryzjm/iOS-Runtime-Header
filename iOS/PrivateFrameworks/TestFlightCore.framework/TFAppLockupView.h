@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <TestFlightCore/TFImageAssigning-Protocol.h>
-
 @class NSString, TFAppLockupViewSpecification, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface TFAppLockupView : UIView <TFImageAssigning>
+@interface TFAppLockupView : UIView
 {
     UIImageView *_iconView;
     UILabel *_titleLabel;

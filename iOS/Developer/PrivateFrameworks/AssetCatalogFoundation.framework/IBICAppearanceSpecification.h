@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
 @class IBICContrastAppearance, IBICLuminosityAppearance, IBICVibrancyAppearance, NSArray, NSString;
 
-@interface IBICAppearanceSpecification : NSObject <NSCopying, IBBinaryArchiving>
+@interface IBICAppearanceSpecification : NSObject
 {
     IBICLuminosityAppearance *_luminosityAppearance;
     IBICVibrancyAppearance *_vibrancyAppearance;

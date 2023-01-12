@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBRenderFactory.h"
+
 __attribute__((visibility("hidden")))
-@interface UIKBRenderFactoryNumberPad
+@interface UIKBRenderFactoryNumberPad : UIKBRenderFactory
 {
 }
 
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)leftColumnNumberOffset;
 - (struct CGPoint)dictationGlyphOffset;
 - (struct CGPoint)deleteGlyphOffset;
+- (double)symbolImageControlKeyFontSize;
 - (double)letterFontSize;
 - (double)numberFontSize;
 - (id)controlKeyDividerColorName;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKVocabularySearcher;
+@class CKVocabularySearcher, NSString;
 
 @protocol CKVSearcherProvider
-- (CKVocabularySearcher *)makeSearcher;
+- (CKVocabularySearcher *)makeSearcherForUserId:(NSString *)arg1 prewarm:(_Bool)arg2;
 @end
 

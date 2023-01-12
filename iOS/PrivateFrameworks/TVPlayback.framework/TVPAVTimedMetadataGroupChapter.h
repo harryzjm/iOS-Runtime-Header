@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TVPMutableChapter.h"
+
 @class AVMetadataItem;
 
 __attribute__((visibility("hidden")))
-@interface TVPAVTimedMetadataGroupChapter
+@interface TVPAVTimedMetadataGroupChapter : TVPMutableChapter
 {
     AVMetadataItem *_imageMetadataItem;
 }

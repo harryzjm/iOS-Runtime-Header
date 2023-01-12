@@ -6,15 +6,15 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDStreamingManager, NSError, NSNumber;
+@class HMDStreamingManager, NSError;
 
 @protocol HMDStreamingManagerDelegate <NSObject>
 - (void)streamingManagerDidUpdateConfiguration:(HMDStreamingManager *)arg1;
 - (void)streamingManagerDidNetworkDeteriorate:(HMDStreamingManager *)arg1;
 - (void)streamingManagerDidNetworkImprove:(HMDStreamingManager *)arg1;
 - (void)streamingManagerDidStopStream:(HMDStreamingManager *)arg1 error:(NSError *)arg2;
-- (void)streamingManagerDidReceiveFirstFrame:(HMDStreamingManager *)arg1 audioStreamSetting:(unsigned long long)arg2 aspectRatio:(NSNumber *)arg3 slotIdentifier:(NSNumber *)arg4;
-- (void)streamingManager:(HMDStreamingManager *)arg1 didStartStream:(NSError *)arg2 slotIdentifier:(NSNumber *)arg3;
+- (void)streamingManagerDidReceiveFirstFrame:(HMDStreamingManager *)arg1;
+- (void)streamingManager:(HMDStreamingManager *)arg1 didStartStreamWithError:(NSError *)arg2;
 
 @optional
 - (void)streamingManagerDidStartRelay:(HMDStreamingManager *)arg1;

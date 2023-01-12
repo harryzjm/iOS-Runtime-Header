@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Sleep/HKSPXPCObject-Protocol.h>
+#import "HKSPSleepSchedule.h"
 
 @class NSString;
 @protocol HKSPSyncAnchor;
 
 __attribute__((visibility("hidden")))
-@interface _HKSPEmptySleepSchedule <HKSPXPCObject>
+@interface _HKSPEmptySleepSchedule : HKSPSleepSchedule
 {
 }
 

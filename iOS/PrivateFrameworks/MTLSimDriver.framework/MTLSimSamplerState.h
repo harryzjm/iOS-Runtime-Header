@@ -6,14 +6,11 @@
 
 #import <Metal/_MTLSamplerState.h>
 
-#import <MTLSimDriver/MTLSamplerStateSPI-Protocol.h>
-#import <MTLSimDriver/MTLSerializerSamplerState-Protocol.h>
-
 @class NSString;
 @protocol MTLDevice;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimSamplerState : _MTLSamplerState <MTLSamplerStateSPI, MTLSerializerSamplerState>
+@interface MTLSimSamplerState : _MTLSamplerState
 {
     unsigned int _reference;
     unsigned long long _uniqueIdentifier;
@@ -29,6 +26,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) id <MTLDevice> device;
 @property(readonly, nonatomic) unsigned long long gpuAddress;
+@property(readonly) unsigned long long gpuHandle;
+@property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly) unsigned long long hash;
 @property(readonly) NSString *label;
 @property(readonly, nonatomic) unsigned long long pixelFormat;

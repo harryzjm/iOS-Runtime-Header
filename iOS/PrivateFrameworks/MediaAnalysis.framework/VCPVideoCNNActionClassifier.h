@@ -12,12 +12,14 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_actions;
     NSMutableArray *_results;
     NSArray *_taxonomy;
+    VCPCNNModelEspresso *_modelEspressoStage1;
     VCPCNNModelEspresso *_modelEspresso;
     NSArray *_inputNames;
     vector_aebc2d99 _inputsData;
     NSMutableArray *_phFaces;
 }
 
++ (id)sharedModelStage1:(id)arg1 inputNames:(id)arg2 properties:(id)arg3;
 + (id)sharedModel:(id)arg1 inputNames:(id)arg2 properties:(id)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;

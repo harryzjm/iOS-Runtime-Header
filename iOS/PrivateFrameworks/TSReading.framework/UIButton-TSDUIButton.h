@@ -6,11 +6,9 @@
 
 #import <UIKit/UIButton.h>
 
-#import <TSReading/TSDPlatformButtonProtocol-Protocol.h>
-
 @class NSString;
 
-@interface UIButton (TSDUIButton) <TSDPlatformButtonProtocol>
+@interface UIButton (TSDUIButton)
 + (id)tsdPlatformButtonWithFrame:(struct CGRect)arg1;
 - (void)setAlternateImageNamed:(id)arg1 inBundle:(id)arg2;
 - (void)setImageNamed:(id)arg1 inBundle:(id)arg2;

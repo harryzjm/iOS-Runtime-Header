@@ -7,8 +7,13 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (TelephonyUI)
++ (id)genericBusinessLogo;
 + (id)telephonyUIImageNamed:(id)arg1;
++ (long long)fallbackSymbolTypeForCurrentDevice;
++ (id)symbolNameForCurrentDevice;
 + (id)systemImageNameForSymbolType:(long long)arg1;
++ (id)customImageNameForSymbolType:(long long)arg1;
++ (_Bool)isCustomSymbol:(long long)arg1;
 + (id)tpImageForSymbolType:(long long)arg1 configuration:(id)arg2;
 + (id)tpHierarchicalImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
 + (id)tpImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
@@ -18,7 +23,6 @@
 + (_Bool)shouldBeHierarchicalSymbolType:(long long)arg1;
 + (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 isStaticSize:(_Bool)arg4;
 + (long long)scaleForTPScale:(long long)arg1;
-+ (id)routeGlyphForAssetName:(id)arg1 displayStyle:(long long)arg2 shouldScaleAsset:(_Bool)arg3;
 + (id)routeGlyphForDeviceType:(long long)arg1 displayStyle:(long long)arg2 color:(id)arg3;
 + (id)routeGlyphForDeviceType:(long long)arg1 displayStyle:(long long)arg2;
 + (id)hierarchicalImageForSymbolType:(long long)arg1 color:(id)arg2;
@@ -30,9 +34,7 @@
 + (id)headphonesRouteGlyphForDisplayStyle:(long long)arg1;
 + (id)muteRouteGlyphForDisplayStyle:(long long)arg1;
 + (id)carplayRouteGlyphForDisplayStyle:(long long)arg1;
-+ (id)iPodRouteGlyphForDisplayStyle:(long long)arg1;
-+ (id)iPadRouteGlyphForDisplayStyle:(long long)arg1;
-+ (id)iPhoneRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)currentDeviceRouteGlyphForDisplayStyle:(long long)arg1;
 + (id)voicemailGlyphForSymbolType:(long long)arg1;
 + (id)voicemailReportFeedbackGlyphImage;
 + (id)voicemailPauseGlyphDisabledImage;

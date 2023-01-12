@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/MLFeatureProvider-Protocol.h>
-
 @class NSSet, NSString, VNSceneprint;
 @protocol MLFeatureProvider;
 
 __attribute__((visibility("hidden")))
-@interface VNMLFeatureProvider : NSObject <MLFeatureProvider>
+@interface VNMLFeatureProvider : NSObject
 {
     NSString *_imageInputKey;
     struct __CVBuffer *_buffer;
     VNSceneprint *_scenePrint;
-    long long *_scenePrintMLMultiArrayDataType;
+    long long _scenePrintMLMultiArrayDataType;
     id <MLFeatureProvider> _featureProvider;
 }
 
@@ -26,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSSet *featureNames;
 - (id)featureValueFromScenePrint:(id)arg1 dataType:(long long)arg2;
 - (void)dealloc;
-- (id)initWithScenePrint:(id)arg1 dataType:(long long *)arg2 forKey:(id)arg3 originalFeatureProvider:(id)arg4;
+- (id)initWithScenePrint:(id)arg1 dataType:(long long)arg2 forKey:(id)arg3 originalFeatureProvider:(id)arg4;
 - (id)initWithBuffer:(struct __CVBuffer *)arg1 forKey:(id)arg2 originalFeatureProvider:(id)arg3;
 
 @end

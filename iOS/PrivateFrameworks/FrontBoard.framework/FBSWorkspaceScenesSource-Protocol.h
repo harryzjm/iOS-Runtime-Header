@@ -6,12 +6,12 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class FBSScene, NSObject, NSSet, NSString;
+@class FBSScene, FBSSceneIdentity, NSObject, NSSet;
 @protocol NSCopying;
 
 @protocol FBSWorkspaceScenesSource <NSObject>
 @property(readonly, nonatomic) NSObject<NSCopying> *identifier;
-- (FBSScene *)sceneWithIdentifier:(NSString *)arg1;
+- (FBSScene *)sceneWithIdentity:(FBSSceneIdentity *)arg1;
 - (NSSet *)scenes;
 @end
 

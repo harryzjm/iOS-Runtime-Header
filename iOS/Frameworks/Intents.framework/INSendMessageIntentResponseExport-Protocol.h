@@ -7,10 +7,10 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INMessage;
+@class NSArray;
 
 @protocol INSendMessageIntentResponseExport <NSObject, JSExport>
-@property(copy, nonatomic) INMessage *sentMessage;
+@property(copy, nonatomic) NSArray *sentMessages;
 @property(readonly, nonatomic) long long code;
 @end
 

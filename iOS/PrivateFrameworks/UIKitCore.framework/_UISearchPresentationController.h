@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISearchControllerPresenting-Protocol.h>
+#import "UIPresentationController.h"
 
-@class NSMapTable, NSString, UIPresentationController, UIView, _UISearchPresentationAssistant;
+@class NSMapTable, NSString, UIView, _UISearchPresentationAssistant;
 @protocol _UISearchControllerPresenting;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchPresentationController <_UISearchControllerPresenting>
+@interface _UISearchPresentationController : UIPresentationController
 {
     _UISearchPresentationAssistant *_assistant;
     UIView *_placeholderView;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool resultsUnderlapsSearchBar;
 @property(readonly, nonatomic) _Bool shouldAccountForStatusBar;
 @property(readonly, retain, nonatomic) UIView *searchBarContainerView;
+- (id)_createVisualStyleForProvider:(id)arg1;
 - (_Bool)_inheritsPresentingViewControllerThemeLevel;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;

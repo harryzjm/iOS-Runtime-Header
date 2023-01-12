@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTStartSpeechRequest, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTMultiUserStartSpeechRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTMultiUserStartSpeechRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -23,6 +20,9 @@ __attribute__((visibility("hidden")))
 - (id)flatbuffData;
 - (Offset_3f188f44)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *primary_speech_id;
+- (void)user_parameters_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)user_parameters_count;
+- (id)user_parameters_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *user_parameters;
 @property(readonly, nonatomic) FTStartSpeechRequest *start_speech_request;
 - (id)copyWithZone:(struct _NSZone *)arg1;

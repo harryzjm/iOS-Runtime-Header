@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTEndPointCandidate : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTEndPointCandidate : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;

@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <Contacts/CNKeyDescriptor_Private-Protocol.h>
-
-@interface NSString (CNKeyDescriptor_Private) <CNKeyDescriptor_Private>
+@interface NSString (CNKeyDescriptor_Private)
 - (void)_cn_executeGetterForRepresentedKeys:(CDUnknownBlockType)arg1;
 - (id)_cn_ignorableKeys;
 - (id)_cn_optionalKeys;

@@ -4,12 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "FigBaseCALayer.h"
+
 __attribute__((visibility("hidden")))
-@interface FigFCRCALayerOutputNodeLayer
+@interface FigFCRCALayerOutputNodeLayer : FigBaseCALayer
 {
     struct OpaqueFigCaptionRendererCALayerOutputNodeLayerInternal *layerInternal;
 }
 
+- (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (void)_addPositionAnimationToLayer:(id)arg1 usingAnimation:(id)arg2 forKey:(id)arg3;
+- (void)_addBoundsAnimationToLayer:(id)arg1 usingAnimation:(id)arg2 forKey:(id)arg3;
+- (void)setNodeSeparated:(_Bool)arg1;
+- (void)setNodeOptions:(id)arg1 forKeyPath:(id)arg2;
 - (void)setWindowOpacity:(double)arg1;
 - (void)dealloc;
 - (id)init;

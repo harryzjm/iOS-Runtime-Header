@@ -11,7 +11,6 @@
 @interface _TtC12NewsArticles21ArticleViewerRenderer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *navigationBarBottomPaletteHeight;
-    MISSING_TYPE *featureManager;
 }
 
 @end

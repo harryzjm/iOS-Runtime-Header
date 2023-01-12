@@ -12,16 +12,16 @@
 {
     MISSING_TYPE *dataManager;
     MISSING_TYPE *playbackConductor;
-    MISSING_TYPE *playNowIgnoringPlaylistSlot;
+    MISSING_TYPE *ephemeralQueue;
     MISSING_TYPE *headlineConverter;
     MISSING_TYPE *offlineManager;
     MISSING_TYPE *offlineArticleManager;
     MISSING_TYPE *offlineAlertControllerFactory;
     MISSING_TYPE *audioPlaybackTracker;
-    MISSING_TYPE *audioConfigManager;
     MISSING_TYPE *bundleSubscriptionManager;
-    MISSING_TYPE *audioTabVisibilitySignal;
     MISSING_TYPE *sceneProvider;
+    MISSING_TYPE *readingHistory;
+    MISSING_TYPE *audioPlaylist;
 }
 
 @end

@@ -6,13 +6,11 @@
 
 #import <Foundation/NSProxy.h>
 
-#import <CoreTelephony/CoreTelephonyClientDelegateProxyInterface-Protocol.h>
-
 @class NSString;
 @protocol MuxNotificationSinkDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MuxNotificationSink : NSProxy <CoreTelephonyClientDelegateProxyInterface>
+@interface MuxNotificationSink : NSProxy
 {
     id <MuxNotificationSinkDelegate> _delegate;
 }

@@ -6,10 +6,11 @@
 
 #import <IdentityLookup/NSObject-Protocol.h>
 
-@class ILClassificationReportRequest, ILMessageFilterQueryRequest, ILMessageFilterReportRequest;
+@class ILClassificationReportRequest, ILMessageFilterCapabilitiesQueryRequest, ILMessageFilterQueryRequest, ILMessageFilterReportRequest;
 
 @protocol ILMessageFilterHostProtocol <NSObject>
 - (oneway void)performClassificationReportRequest:(ILClassificationReportRequest *)arg1;
+- (oneway void)performCapabilitiesQueryRequest:(ILMessageFilterCapabilitiesQueryRequest *)arg1 reply:(void (^)(ILMessageFilterCapabilitiesQueryResponse *, NSError *))arg2;
 - (oneway void)performReportRequest:(ILMessageFilterReportRequest *)arg1 reply:(void (^)(NSError *))arg2;
 - (oneway void)performQueryRequest:(ILMessageFilterQueryRequest *)arg1 reply:(void (^)(ILMessageFilterQueryResponse *, NSError *))arg2;
 @end

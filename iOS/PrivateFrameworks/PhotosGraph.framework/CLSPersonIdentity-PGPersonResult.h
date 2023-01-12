@@ -6,12 +6,9 @@
 
 #import <MediaMiningKit/CLSPersonIdentity.h>
 
-#import <PhotosGraph/PGGraphIngestPerson-Protocol.h>
-#import <PhotosGraph/PGPersonResult-Protocol.h>
-
 @class NSDate, NSDictionary, NSString;
 
-@interface CLSPersonIdentity (PGPersonResult) <PGPersonResult, PGGraphIngestPerson>
+@interface CLSPersonIdentity (PGPersonResult)
 + (unsigned long long)type;
 @property(readonly, nonatomic) _Bool isInferredChild;
 @property(readonly, nonatomic) _Bool isVerified;
@@ -37,6 +34,7 @@
 @property(readonly, nonatomic) NSDate *potentialBirthdayDate;
 @property(readonly, nonatomic) unsigned long long relationship;
 @property(readonly, nonatomic) unsigned long long sex;
+@property(readonly, nonatomic) NSString *shareParticipantLocalIdentifier;
 @property(readonly) Class superclass;
 @end
 

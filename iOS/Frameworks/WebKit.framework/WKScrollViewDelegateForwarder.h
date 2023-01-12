@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/UIScrollViewDelegate-Protocol.h>
-
 @class NSString, WKWebView;
 
 __attribute__((visibility("hidden")))
-@interface WKScrollViewDelegateForwarder : NSObject <UIScrollViewDelegate>
+@interface WKScrollViewDelegateForwarder : NSObject
 {
     WKWebView *_internalDelegate;
     struct WeakObjCPtr<id<UIScrollViewDelegate>> _externalDelegate;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HDJournalEntry.h"
+
 @class NSData, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface _HDAssociationInsertionJournalEntry
+@interface _HDAssociationInsertionJournalEntry : HDJournalEntry
 {
     _Bool _enforceSameSource;
     NSUUID *_parentUUID;

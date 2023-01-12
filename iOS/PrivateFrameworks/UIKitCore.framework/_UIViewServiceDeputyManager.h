@@ -6,26 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIViewServiceViewControllerOperatorDelegate-Protocol.h>
-
 @class NSLock, NSMutableDictionary, NSMutableSet, NSString, _UIAsyncInvocation;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceDeputyManager : NSObject <_UIViewServiceViewControllerOperatorDelegate>
+@interface _UIViewServiceDeputyManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     _UIAsyncInvocation *_invalidationInvocation;
     NSMutableDictionary *_connectionHandlers;
     NSLock *_connectionHandlersLock;
     NSMutableSet *_deputies;
-    CDUnknownBlockType _terminationHandler;
-    int __automatic_invalidation_retainCount;
-    _Bool __automatic_invalidation_invalidated;
     id _delegate;
 }
 
 + (id)exportedInterfaceSupportingDeputyInterfaces:(id)arg1;
++ (void)initialize;
 @property id delegate; // @synthesize delegate=_delegate;
 - (void)viewControllerOperator:(id)arg1 didCreateServiceViewControllerOfClass:(Class)arg2;
 - (void)checkDeputyForRotation:(id)arg1;
@@ -40,12 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (void)dealloc;
 - (id)init;
-- (_Bool)_isDeallocating;
-- (_Bool)_tryRetain;
-- (unsigned long long)retainCount;
-- (oneway void)release;
-- (id)retain;
-- (int)__automatic_invalidation_logic;
+- (void)_objc_initiateDealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

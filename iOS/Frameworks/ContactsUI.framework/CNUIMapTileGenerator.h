@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)mapTileImagesForPlacemark:(id)arg1 snapshotterProvider:(CDUnknownBlockType)arg2 scheduler:(id)arg3;
 + (id)placemarkForAddress:(id)arg1 geocoderProvider:(CDUnknownBlockType)arg2 scheduler:(id)arg3;
 + (id)defaultImage;
++ (double)defaultTileSize;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 @property(readonly, copy, nonatomic) id <CNScheduler> workQueue; // @synthesize workQueue=_workQueue;

@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 - (void)_setUpCollectionViewIfNeeded;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

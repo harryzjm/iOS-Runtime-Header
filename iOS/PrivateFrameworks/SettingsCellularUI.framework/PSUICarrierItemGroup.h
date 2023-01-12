@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
-
 @class CTCellularPlanManager, NSString, PSListController, PSSpecifier, PSUIAddCellularPlanSpecifier, PSUICellularPlanManagerCache;
 
 __attribute__((visibility("hidden")))
-@interface PSUICarrierItemGroup : NSObject <PSSpecifierGroup>
+@interface PSUICarrierItemGroup : NSObject
 {
     PSUICellularPlanManagerCache *_cellularPlanManagerCache;
     CTCellularPlanManager *_ctCellularPlanManager;
@@ -24,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
 @property(retain, nonatomic) PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
+- (id)getLogger;
 - (void)carrierItemPressed:(id)arg1;
 - (id)specifiersForCarrierItems;
 - (_Bool)hasCarrierItems;

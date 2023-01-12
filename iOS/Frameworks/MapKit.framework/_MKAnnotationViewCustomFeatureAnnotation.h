@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/NSSecureCoding-Protocol.h>
-#import <MapKit/VKCustomFeatureAnnotation-Protocol.h>
-
 @class MKAnnotationView, NSString, VKCustomFeature;
 
 __attribute__((visibility("hidden")))
-@interface _MKAnnotationViewCustomFeatureAnnotation : NSObject <VKCustomFeatureAnnotation, NSSecureCoding>
+@interface _MKAnnotationViewCustomFeatureAnnotation : NSObject
 {
     VKCustomFeature *_customFeature;
     MKAnnotationView *_annotationView;
-    CDStruct_2c43369c _coordinate;
+    struct {
+        double latitude;
+        double longitude;
+    } _coordinate;
 }
 
 + (_Bool)supportsSecureCoding;

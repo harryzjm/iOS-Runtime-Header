@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/NSSecureCoding-Protocol.h>
+#import "SKUIItem.h"
 
 @class NSString;
 @protocol SKUIArtworkProviding;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemItem <NSSecureCoding>
+@interface SKUIRedeemItem : SKUIItem
 {
     id <SKUIArtworkProviding> _artworks;
 }

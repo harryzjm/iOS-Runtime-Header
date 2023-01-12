@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     _Bool _isWatchListed;
     _Bool _dismissOnSelect;
     _Bool _confirmationShouldWaitCompletion;
-    _Bool _hasUpdated;
     VUIUpNextStateView *_addedStateView;
     VUIUpNextStateView *_removedStateView;
     UIView<VUIUpNextButtonProtocol> *_delegate;
@@ -23,7 +22,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool hasUpdated; // @synthesize hasUpdated=_hasUpdated;
 @property(nonatomic) _Bool confirmationShouldWaitCompletion; // @synthesize confirmationShouldWaitCompletion=_confirmationShouldWaitCompletion;
 @property(nonatomic) _Bool dismissOnSelect; // @synthesize dismissOnSelect=_dismissOnSelect;
 @property(nonatomic) _Bool isWatchListed; // @synthesize isWatchListed=_isWatchListed;

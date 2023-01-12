@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIBaseMediaItem.h"
+
 @class ML3Track, MPMediaItem, MPMediaLibrary, NSURL, VUIPlaybackPositionInfo;
 @protocol TVImageLoader;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryMediaItem_iOS
+@interface VUILibraryMediaItem_iOS : VUIBaseMediaItem
 {
     _Bool _bookmarkDisabled;
     long long _persistentID;

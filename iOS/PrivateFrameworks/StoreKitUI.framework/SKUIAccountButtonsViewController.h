@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UINavigationControllerDelegate-Protocol.h>
-
 @class NSString, SKUIAccountButtonsView, SKUIClientContext, SKUILink;
 @protocol SKUIAccountButtonsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIAccountButtonsViewController : UIViewController <UINavigationControllerDelegate>
+@interface SKUIAccountButtonsViewController : UIViewController
 {
     SKUIAccountButtonsView *_buttonsView;
     SKUIClientContext *_clientContext;

@@ -6,11 +6,9 @@
 
 #import <DoNotDisturb/DNDModeAssertion.h>
 
-#import <DoNotDisturbServer/DNDSModernAssertionSourceResolution-Protocol.h>
-
 @class NSString;
 
-@interface DNDModeAssertion (Resolution) <DNDSModernAssertionSourceResolution>
+@interface DNDModeAssertion (Resolution)
 + (id)predicateForModeAssertionsTakenBeforeDate:(id)arg1;
 + (id)predicateForModeAssertionsWithLifetimeClass:(Class)arg1;
 + (id)predicateForModeAssertionsWithModeIdentifiersNotContainedIn:(id)arg1;

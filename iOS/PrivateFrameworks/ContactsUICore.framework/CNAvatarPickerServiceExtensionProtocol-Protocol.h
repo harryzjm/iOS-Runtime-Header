@@ -6,13 +6,14 @@
 
 #import <ContactsUICore/NSObject-Protocol.h>
 
-@class CNMemojiMetadata, NSString;
+@class CNMemojiMetadata, NSArray, NSString;
 
 @protocol CNAvatarPickerServiceExtensionProtocol <NSObject>
 - (void)overrideUserInterfaceStyle:(long long)arg1;
 - (void)setSelectedRecordIdentifier:(NSString *)arg1;
 
 @optional
+- (void)setSetupUserAvatarRecords:(NSArray *)arg1;
 - (void)setCurrentMemojiMetadata:(CNMemojiMetadata *)arg1;
 @end
 

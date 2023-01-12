@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MLModel, NSArray, NSDictionary, NSString;
+@class CHSingletonMLModel, NSArray, NSDictionary, NSString;
 
 @interface CHRecurrentNeuralNetworkCoreML
 {
-    MLModel *_model;
+    CHSingletonMLModel *_model;
     NSString *_resourcePath;
     NSArray *_inputNames;
     NSDictionary *_featureCounts;
@@ -16,12 +16,13 @@
     NSDictionary *_classCounts;
 }
 
-@property(readonly, retain, nonatomic) NSDictionary *classCounts; // @synthesize classCounts=_classCounts;
-@property(readonly, retain, nonatomic) NSArray *outputNames; // @synthesize outputNames=_outputNames;
-@property(readonly, retain, nonatomic) NSDictionary *featureCounts; // @synthesize featureCounts=_featureCounts;
-@property(readonly, retain, nonatomic) NSArray *inputNames; // @synthesize inputNames=_inputNames;
-@property(readonly, retain, nonatomic) NSString *resourcePath; // @synthesize resourcePath=_resourcePath;
-@property(readonly, retain, nonatomic) MLModel *model; // @synthesize model=_model;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *classCounts; // @synthesize classCounts=_classCounts;
+@property(readonly, nonatomic) NSArray *outputNames; // @synthesize outputNames=_outputNames;
+@property(readonly, nonatomic) NSDictionary *featureCounts; // @synthesize featureCounts=_featureCounts;
+@property(readonly, nonatomic) NSArray *inputNames; // @synthesize inputNames=_inputNames;
+@property(readonly, nonatomic) NSString *resourcePath; // @synthesize resourcePath=_resourcePath;
+@property(readonly, nonatomic) CHSingletonMLModel *model; // @synthesize model=_model;
 - (void)dealloc;
 - (id)initWithModelName:(id)arg1 featureIndex:(long long)arg2;
 - (id)initWithModelName:(id)arg1;

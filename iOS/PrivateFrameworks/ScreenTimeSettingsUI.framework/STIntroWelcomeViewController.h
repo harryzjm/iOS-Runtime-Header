@@ -11,16 +11,21 @@
 __attribute__((visibility("hidden")))
 @interface STIntroWelcomeViewController : OBWelcomeController
 {
+    _Bool _forceParentalControls;
     NSString *_childName;
     CDUnknownBlockType _continueHandler;
+    CDUnknownBlockType _endHandler;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy) CDUnknownBlockType endHandler; // @synthesize endHandler=_endHandler;
 @property(readonly, copy) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
+@property(readonly) _Bool forceParentalControls; // @synthesize forceParentalControls=_forceParentalControls;
 @property(readonly, copy) NSString *childName; // @synthesize childName=_childName;
-- (void)_continue:(id)arg1;
+- (void)_notNow:(id)arg1;
+- (void)_turnOnScreenTime:(id)arg1;
 - (void)loadView;
-- (id)initWithChildName:(id)arg1 continueHandler:(CDUnknownBlockType)arg2;
+- (id)initWithChildName:(id)arg1 forceParentalControls:(_Bool)arg2 continueHandler:(CDUnknownBlockType)arg3 endHandler:(CDUnknownBlockType)arg4;
 
 @end
 

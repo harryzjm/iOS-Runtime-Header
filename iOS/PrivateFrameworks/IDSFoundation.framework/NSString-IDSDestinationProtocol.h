@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (IDSDestinationProtocol)
+- (id)destinationLightweightStatus;
 - (id)destinationURIs;
 @end
 

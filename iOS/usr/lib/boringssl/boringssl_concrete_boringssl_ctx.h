@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <boringssl/OS_boringssl_ctx-Protocol.h>
-
 @class NSString, boringssl_concrete_boringssl_identity, boringssl_concrete_boringssl_psk_cache, boringssl_concrete_boringssl_session_cache, boringssl_concrete_boringssl_session_state, boringssl_concrete_nw_protocol_boringssl;
 @protocol OS_dispatch_queue, OS_nw_array, OS_nw_context, OS_nw_protocol_metadata, OS_nw_protocol_options, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
-@interface boringssl_concrete_boringssl_ctx : NSObject <OS_boringssl_ctx>
+@interface boringssl_concrete_boringssl_ctx : NSObject
 {
     struct boringssl_legacy_ctx *legacy_context;
     boringssl_concrete_nw_protocol_boringssl *boringssl_handle;
@@ -31,7 +29,6 @@ __attribute__((visibility("hidden")))
     char *ciphersuite_configuration_string;
     char *experiment_identifier;
     boringssl_concrete_boringssl_identity *identity;
-    NSObject<OS_dispatch_queue> *metrics_queue;
     CDUnknownBlockType verify_block;
     NSObject<OS_dispatch_queue> *verify_queue;
     CDUnknownBlockType challenge_block;
@@ -47,6 +44,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType handshake_message_callback;
     union sockaddr_in_4_6 remote_address;
     unsigned char connection_id[16];
+    unsigned long long nsURLRequestAttribution;
     CDUnknownBlockType alert_callback;
     CDUnknownBlockType connected_callback;
     int internal_error;
@@ -120,6 +118,7 @@ __attribute__((visibility("hidden")))
     unsigned int grease_enabled:1;
     unsigned int tls13_aesgcm_enabled:1;
     unsigned int tls13_chacha20poly1305_enabled:1;
+    unsigned int ech_enabled:1;
 }
 
 - (void).cxx_destruct;

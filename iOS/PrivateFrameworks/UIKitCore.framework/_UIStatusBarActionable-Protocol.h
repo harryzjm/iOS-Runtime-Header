@@ -18,5 +18,7 @@
 @property(readonly, nonatomic) UIView *hoverView;
 @property(retain, nonatomic) _UIStatusBarAction *hoverAction;
 @property(retain, nonatomic) _UIStatusBarAction *action;
+- (void)enableWithToken:(unsigned long long)arg1;
+- (void)disableWithToken:(unsigned long long)arg1;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIJSDOMFeatureCollection-Protocol.h>
-
 @protocol SKUIJSDOMFeatureCollectionAppBridge;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSDOMFeatureCollection : IKJSObject <SKUIJSDOMFeatureCollection>
+@interface SKUIJSDOMFeatureCollection : IKJSObject
 {
     id <SKUIJSDOMFeatureCollectionAppBridge> _appBridge;
 }

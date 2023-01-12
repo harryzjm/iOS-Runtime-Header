@@ -6,13 +6,10 @@
 
 #import <AppleMediaServices/AMSURLProtocolHandler.h>
 
-#import <AppleMediaServicesUI/AMSURLProtocolDelegate-Protocol.h>
-#import <AppleMediaServicesUI/NSURLSessionDelegate-Protocol.h>
-
 @class ACAccount, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIPaymentVerificationProtocolHandler : AMSURLProtocolHandler <NSURLSessionDelegate, AMSURLProtocolDelegate>
+@interface AMSUIPaymentVerificationProtocolHandler : AMSURLProtocolHandler
 {
     ACAccount *_account;
     NSMutableDictionary *_accountParameters;

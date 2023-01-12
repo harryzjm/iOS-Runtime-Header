@@ -5,12 +5,13 @@
 //
 
 #import <SpringBoardHome/NSObject-Protocol.h>
+#import <SpringBoardHome/SBHVisibleContentPresenter-Protocol.h>
 #import <SpringBoardHome/SBIconLocationPresenting-Protocol.h>
 #import <SpringBoardHome/SBIconViewQuerying-Protocol.h>
 
 @class NSString, SBFolder, SBFolderIconImageCache, SBHIconImageCache, SBIcon, UIView, UIViewController, _UILegibilitySettings;
 
-@protocol SBHIconRootViewProviding <SBIconLocationPresenting, SBIconViewQuerying, NSObject>
+@protocol SBHIconRootViewProviding <SBIconLocationPresenting, SBIconViewQuerying, SBHVisibleContentPresenter, NSObject>
 @property(retain, nonatomic) SBHIconImageCache *iconImageCache;
 @property(retain, nonatomic) SBFolderIconImageCache *folderIconImageCache;
 @property(nonatomic) long long currentPageIndex;

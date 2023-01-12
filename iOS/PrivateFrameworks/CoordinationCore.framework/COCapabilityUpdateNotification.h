@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "COMeshNotification.h"
+
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface COCapabilityUpdateNotification
+@interface COCapabilityUpdateNotification : COMeshNotification
 {
     NSSet *_capabilities;
 }

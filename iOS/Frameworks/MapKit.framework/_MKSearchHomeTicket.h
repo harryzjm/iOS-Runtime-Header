@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapServiceSearchHomeTicket-Protocol.h>
-
 @class GEOMapServiceTraits, NSString;
 @protocol GEOMapServiceSearchHomeTicket;
 
 __attribute__((visibility("hidden")))
-@interface _MKSearchHomeTicket : NSObject <MKMapServiceSearchHomeTicket>
+@interface _MKSearchHomeTicket : NSObject
 {
     id <GEOMapServiceSearchHomeTicket> _ticket;
 }

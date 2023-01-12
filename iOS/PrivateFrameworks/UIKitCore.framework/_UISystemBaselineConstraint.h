@@ -6,10 +6,8 @@
 
 #import <CoreAutoLayout/NSLayoutConstraint.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UISystemBaselineConstraint : NSLayoutConstraint <NSCoding>
+@interface _UISystemBaselineConstraint : NSLayoutConstraint
 {
 }
 

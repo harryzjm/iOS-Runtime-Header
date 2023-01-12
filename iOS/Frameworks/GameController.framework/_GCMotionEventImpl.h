@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCMotionEvent-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GCMotionEventImpl : NSObject <_GCMotionEvent>
+@interface _GCMotionEventImpl : NSObject
 {
     _Bool _hasGyro;
     _Bool _hasAccelerometer;
     _Bool _hasAttitude;
+    unsigned long long _timestamp;
     double _gyroPitch;
     double _gyroYaw;
     double _gyroRoll;
@@ -41,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double gyroYaw; // @synthesize gyroYaw=_gyroYaw;
 @property(nonatomic) double gyroPitch; // @synthesize gyroPitch=_gyroPitch;
 @property(nonatomic) _Bool hasGyro; // @synthesize hasGyro=_hasGyro;
+@property(nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithMotionEvent:(id)arg1;
 

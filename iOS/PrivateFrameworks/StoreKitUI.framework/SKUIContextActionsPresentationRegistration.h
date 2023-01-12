@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <StoreKitUI/UIPreviewInteractionDelegate-Protocol.h>
-
 @class NSString, NSTimer, SKUIContextActionsViewController, UILongPressGestureRecognizer, UIPreviewInteraction, UIViewController, UIViewPropertyAnimator;
 
 __attribute__((visibility("hidden")))
-@interface SKUIContextActionsPresentationRegistration : NSObject <UIGestureRecognizerDelegate, UIPreviewInteractionDelegate>
+@interface SKUIContextActionsPresentationRegistration : NSObject
 {
     _Bool _previewInteractionDidEnd;
     CDUnknownBlockType _handler;

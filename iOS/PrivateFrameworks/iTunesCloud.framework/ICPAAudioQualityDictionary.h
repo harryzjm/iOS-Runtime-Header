@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICPAAudioQualityDictionary : PBCodable <NSCopying>
+@interface ICPAAudioQualityDictionary : PBCodable
 {
     long long _bitDepth;
     long long _bitRate;

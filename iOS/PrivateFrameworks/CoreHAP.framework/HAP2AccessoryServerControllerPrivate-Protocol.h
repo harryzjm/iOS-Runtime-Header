@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) id <HAP2AccessoryServerSecureTransport> transport;
 @property(readonly, nonatomic) id <HAP2AccessoryServerEncoding> encoding;
 @property(nonatomic) __weak id <HAP2AccessoryServerPrivate> accessoryServer;
+- (void)closeSession;
 - (_Bool)mergeWithNewController:(id <HAP2AccessoryServerControllerPrivate>)arg1;
 @end
 

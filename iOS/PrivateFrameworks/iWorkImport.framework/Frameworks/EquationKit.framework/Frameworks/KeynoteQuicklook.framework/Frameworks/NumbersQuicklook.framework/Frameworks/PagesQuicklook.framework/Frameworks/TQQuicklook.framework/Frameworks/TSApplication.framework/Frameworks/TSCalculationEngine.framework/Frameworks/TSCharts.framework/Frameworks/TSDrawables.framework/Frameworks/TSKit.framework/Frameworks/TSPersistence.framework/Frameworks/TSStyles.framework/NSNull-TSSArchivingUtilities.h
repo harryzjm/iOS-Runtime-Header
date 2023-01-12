@@ -6,9 +6,7 @@
 
 #import <Foundation/NSNull.h>
 
-#import <TSStyles/TSSPropertyValueArchiving-Protocol.h>
-
-@interface NSNull (TSSArchivingUtilities) <TSSPropertyValueArchiving>
+@interface NSNull (TSSArchivingUtilities)
 + (id)instanceWithArchive:(const struct Message *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchive:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const struct Message *)arg1 unarchiver:(id)arg2;

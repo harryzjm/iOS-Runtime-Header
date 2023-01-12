@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKTransitInfoPreload-Protocol.h>
-
 @class NSAttributedString, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKTransitInfoPreload : NSObject <MKTransitInfoPreload>
+@interface MKTransitInfoPreload : NSObject
 {
     NSAttributedString *_attributedString;
 }

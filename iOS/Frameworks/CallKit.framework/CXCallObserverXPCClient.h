@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CallKit/CXCallObserverDataSource-Protocol.h>
-
 @class NSDictionary, NSHashTable, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CXCallObserverXPCClient : NSObject <CXCallObserverDataSource>
+@interface CXCallObserverXPCClient : NSObject
 {
     _Bool _clientsShouldConnect;
     int _clientsShouldConnectToken;

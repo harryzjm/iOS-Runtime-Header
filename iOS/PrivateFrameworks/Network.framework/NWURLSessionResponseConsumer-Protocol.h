@@ -6,12 +6,12 @@
 
 #import <Network/NSObject-Protocol.h>
 
-@class NSObject, NSURLResponse;
+@class NSError, NSObject, NSURLResponse, NWURLSessionTask;
 @protocol OS_dispatch_data;
 
 @protocol NWURLSessionResponseConsumer <NSObject>
 @property(readonly) NSURLResponse *response;
-- (void)deliverData:(NSObject<OS_dispatch_data> *)arg1 complete:(_Bool)arg2 completionHandler:(void (^)(void))arg3;
-- (void)deliverResponse:(NSURLResponse *)arg1 completionHandler:(void (^)(long long))arg2;
+- (void)task:(NWURLSessionTask *)arg1 deliverData:(NSObject<OS_dispatch_data> *)arg2 complete:(_Bool)arg3 error:(NSError *)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)task:(NWURLSessionTask *)arg1 deliverResponse:(NSURLResponse *)arg2 completionHandler:(void (^)(long long, NSError *))arg3;
 @end
 

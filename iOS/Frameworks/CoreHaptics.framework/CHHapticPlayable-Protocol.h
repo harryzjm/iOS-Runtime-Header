@@ -9,6 +9,7 @@
 @class CHHapticEngine, NSArray, NSString;
 
 @protocol CHHapticPlayable <NSObject>
+@property(readonly) NSString *usageCategory;
 @property(readonly) NSString *audioPowerUsage;
 @property(readonly) NSString *hapticPowerUsage;
 @property(readonly) NSString *priority;

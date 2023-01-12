@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 @class UIDragEvent, _UIDropSessionImpl, _UIInternalDraggingSessionDestination;
 @protocol UIDragGestureRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIDragGestureRecognizer
+@interface UIDragGestureRecognizer : UIGestureRecognizer
 {
     UIDragEvent *_dragEvent;
 }

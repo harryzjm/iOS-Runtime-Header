@@ -9,8 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)epsilon;
-+ (id)valueWithCGPoint:(struct CGPoint)arg1;
++ (id)epsilonCompatibleWithVector:(id)arg1;
 
 @end
 

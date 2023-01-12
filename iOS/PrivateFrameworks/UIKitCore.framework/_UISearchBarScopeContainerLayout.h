@@ -28,11 +28,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UISearchBarSearchContainerLayout *neighboringSearchLayout; // @synthesize neighboringSearchLayout=_neighboringSearchLayout;
 @property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
 @property(nonatomic) __weak id <_UISearchBarContainerSublayoutDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)description;
 - (void)applyLayout;
 - (void)updateLayout;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (double)scopeControlHeight;
-@property(readonly, nonatomic) double naturalBarHeight;
+@property(readonly, nonatomic) double naturalContainerHeight;
 @property(readonly, nonatomic) struct UIEdgeInsets containerSpecificInsets;
 @property(readonly, nonatomic) struct CGRect scopeBarLayoutFrame; // @synthesize scopeBarLayoutFrame=_scopeBarLayoutFrame;
 

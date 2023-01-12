@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIContextCustomBinding-Protocol.h>
-#import <UIKitCore/_UIScreenBasedObject-Protocol.h>
+#import "UITextEffectsWindow.h"
 
-@class CAContext, FBSScene, FBSSceneLayer, NSDictionary, NSString, UIScreen, _UIContextBinder;
+@class CAContext, FBSScene, FBSSceneIdentityToken, FBSSceneLayer, NSDictionary, NSString, UIScreen, _UIContextBinder;
 
 __attribute__((visibility("hidden")))
-@interface UIRemoteKeyboardWindow <_UIContextCustomBinding, _UIScreenBasedObject>
+@interface UIRemoteKeyboardWindow : UITextEffectsWindow
 {
     NSDictionary *_perScreenOptions;
     UIScreen *_intendedScreen;
@@ -22,11 +21,15 @@ __attribute__((visibility("hidden")))
 
 + (id)remoteKeyboardWindowForScreen:(id)arg1 create:(_Bool)arg2;
 + (_Bool)_isHostedInAnotherProcess;
+- (void).cxx_destruct;
+- (_Bool)_isEligibleForFocusOcclusion;
+- (_Bool)isTransparentFocusItem;
 - (void)dealloc;
 - (long long)_orientationForClassicPresentation;
 - (void)endDisablingInterfaceAutorotation;
 - (void)resetScene;
 - (void)_resetScene;
+@property(readonly, nonatomic) FBSSceneIdentityToken *activeSceneIdentity;
 - (void)detachBindable;
 - (_Bool)shouldDetachBindable;
 - (void)attachBindable;
@@ -47,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isWindowServerHostingManaged;
 - (_Bool)_wantsSceneAssociation;
 - (_Bool)_isAlwaysKeyboardWindow;
+- (_Bool)isInternalWindow;
 - (void)invalidate;
 @property(readonly) NSDictionary *_options;
 @property(readonly) UIScreen *_intendedScreen;
@@ -55,7 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)_initBasicWithScreen:(id)arg1 options:(id)arg2;
 
 // Remaining properties
-@property(readonly, nonatomic) CDStruct_98d137ef _bindingDescription;
+@property(readonly, nonatomic) CDStruct_b73e569c _bindingDescription;
 @property(nonatomic, setter=_setBoundContext:) __weak CAContext *_boundContext;
 @property(nonatomic, setter=_setContextBinder:) __weak _UIContextBinder *_contextBinder;
 @property(readonly, copy) NSString *debugDescription;

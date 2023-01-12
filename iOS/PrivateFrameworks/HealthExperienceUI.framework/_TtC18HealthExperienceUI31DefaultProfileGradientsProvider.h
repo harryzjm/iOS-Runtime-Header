@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI24ProfileGradientsProviderCN.h"
+
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI31DefaultProfileGradientsProvider
+@interface _TtC18HealthExperienceUI31DefaultProfileGradientsProvider : _$s18HealthExperienceUI24ProfileGradientsProviderCN
 {
 }
 

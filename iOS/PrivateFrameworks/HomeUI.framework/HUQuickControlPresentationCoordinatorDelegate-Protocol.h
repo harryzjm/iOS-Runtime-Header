@@ -6,7 +6,7 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HFItem, HUControllableCollectionViewLayoutOverrideAttributes, HUQuickControlPresentationContext, HUQuickControlPresentationCoordinator, UITraitCollection, UIViewController;
+@class HFItem, HUControllableCollectionViewLayoutOverrideAttributes, HUQuickControlPresentationContext, HUQuickControlPresentationCoordinator, NSString, UITraitCollection, UIView, UIViewController;
 @protocol HUDetailsPresentationDelegateHost, HUOpenURLHandling;
 
 @protocol HUQuickControlPresentationCoordinatorDelegate <NSObject>
@@ -14,7 +14,7 @@
 - (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 clearOverrideAttributesForItem:(HFItem *)arg2;
 - (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 applyOverrideAttributes:(HUControllableCollectionViewLayoutOverrideAttributes *)arg2 toItem:(HFItem *)arg3;
 - (HUQuickControlPresentationContext *)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 contextForPresentationAtPoint:(struct CGPoint)arg2;
-- (_Bool)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
+- (_Bool)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2 view:(UIView *)arg3;
 - (UITraitCollection *)traitCollectionForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 
 @optional
@@ -30,7 +30,10 @@
 - (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 willBeginPresentationWithContext:(HUQuickControlPresentationContext *)arg2;
 - (_Bool)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 shouldBeginPresentationWithContext:(HUQuickControlPresentationContext *)arg2;
 - (_Bool)shouldOverrideTraitCollectionForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
-- (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 didRecognizeTapForItem:(HFItem *)arg2;
+- (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 touchDidEndForItem:(HFItem *)arg2 tappedArea:(NSString *)arg3;
+- (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 touchDidBeginForItem:(HFItem *)arg2 tappedArea:(NSString *)arg3;
+- (_Bool)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 shouldBeginLongPressPresentationWithContext:(HUQuickControlPresentationContext *)arg2;
+- (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 didRecognizeTapForItem:(HFItem *)arg2 tappedArea:(NSString *)arg3;
 - (id <HUOpenURLHandling>)detailViewURLHandlerForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 - (UIViewController<HUDetailsPresentationDelegateHost> *)detailsViewControllerForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 item:(HFItem *)arg2;
 @end

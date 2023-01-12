@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface VUILibraryMenuItemViewCell
 {
+    VUIVideosImageView *_accessoryView;
     VUIVideosImageView *_imageView;
     _Bool _hideChevron;
     _Bool _shouldAppearAsHeader;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (_Bool)hasImage;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

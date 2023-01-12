@@ -6,25 +6,22 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
-
-@class MRUNowPlayingHeaderView, MRUVisualStylingProvider, NSString, UIView;
+@class MRUNowPlayingCellContentView, MRUVisualStylingProvider, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MRUViewServiceEndpointTableViewCell : UITableViewCell <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
+@interface MRUViewServiceEndpointTableViewCell : UITableViewCell
 {
-    MRUNowPlayingHeaderView *_headerView;
-    UIView *_separatorView;
+    MRUNowPlayingCellContentView *_cellContentView;
     MRUVisualStylingProvider *_stylingProvider;
+    UIView *_separatorView;
     struct UIEdgeInsets _contentEdgeInsets;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property(nonatomic) struct UIEdgeInsets contentEdgeInsets; // @synthesize contentEdgeInsets=_contentEdgeInsets;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
-@property(readonly, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
-@property(readonly, nonatomic) MRUNowPlayingHeaderView *headerView; // @synthesize headerView=_headerView;
+@property(readonly, nonatomic) MRUNowPlayingCellContentView *cellContentView; // @synthesize cellContentView=_cellContentView;
 - (void)updateVisualStyling;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;

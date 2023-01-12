@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic) _Bool retargeted; // @synthesize retargeted=_retargeted;
 @property(copy, nonatomic) CDUnknownBlockType animationAndComposerGetter; // @synthesize animationAndComposerGetter=_animationAndComposerGetter;
+- (id)description;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2 forView:(id)arg3;
 - (void)animatePropertyWithKey:(id)arg1 view:(id)arg2 forceNew:(_Bool)arg3 currentValue:(id)arg4 targetValue:(id)arg5 preTickShouldRemoveCallback:(CDUnknownBlockType)arg6 newValueCallback:(CDUnknownBlockType)arg7 removedCallback:(CDUnknownBlockType)arg8;
 - (void)animatePropertyWithCurrentValue:(id)arg1 targetValue:(id)arg2 preTickShouldRemoveCallback:(CDUnknownBlockType)arg3 newValueCallback:(CDUnknownBlockType)arg4 removedCallback:(CDUnknownBlockType)arg5 animatableProperty:(id)arg6;

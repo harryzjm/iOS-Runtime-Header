@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)notchSize;
 + (double)nativeDisplayWidth;
 + (double)height;
-+ (double)referenceScaleForScreen:(id)arg1;
++ (double)referenceScreenScale;
+- (_Bool)supportsCondensedBatteryPercentage;
 - (id)stringForCellularType:(long long)arg1 condensed:(_Bool)arg2;
 - (long long)normalIconSize;
 - (double)baselineBottomInset;

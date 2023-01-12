@@ -6,11 +6,9 @@
 
 #import <CoreTelephony/CoreTelephonyClient.h>
 
-#import <TelephonyPreferences/TPSTelephonyClient-Protocol.h>
-
 @class NSString;
 
-@interface CoreTelephonyClient (TelephonyPreferences) <TPSTelephonyClient>
+@interface CoreTelephonyClient (TelephonyPreferences)
 - (id)localizedCarrierBundleStringForKey:(id)arg1 subscription:(id)arg2 error:(id *)arg3;
 - (id)carrierBundleForSubscription:(id)arg1 error:(id *)arg2;
 

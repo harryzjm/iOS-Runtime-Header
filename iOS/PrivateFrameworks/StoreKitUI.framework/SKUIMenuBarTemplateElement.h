@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SKUINavigationBarViewElement, SKUIViewElement;
+#import "SKUIViewElement.h"
+
+@class SKUINavigationBarViewElement;
 @protocol SKUIMenuBarViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMenuBarTemplateElement
+@interface SKUIMenuBarTemplateElement : SKUIViewElement
 {
 }
 

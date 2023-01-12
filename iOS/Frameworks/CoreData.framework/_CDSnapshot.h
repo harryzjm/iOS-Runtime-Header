@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-#import <CoreData/NSMutableCopying-Protocol.h>
-
 @class NSManagedObjectID;
 
 __attribute__((visibility("hidden")))
-@interface _CDSnapshot : NSObject <NSCopying, NSMutableCopying>
+@interface _CDSnapshot : NSObject
 {
     int _cd_rc;
     int _cd_version;

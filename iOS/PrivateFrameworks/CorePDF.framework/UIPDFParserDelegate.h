@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/NSXMLParserDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIPDFParserDelegate : NSObject <NSXMLParserDelegate>
+@interface UIPDFParserDelegate : NSObject
 {
     struct CGPoint _p[4];
     struct CGPath *_path;

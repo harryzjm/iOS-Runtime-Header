@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, NSUUID, SUDescriptor, SUDownload, SUInstallPolicy, SUScanOptions, SUScanResults;
+@class NSError, NSUUID, SUDescriptor, SUDownload, SUInstallPolicy, SURollbackDescriptor, SURollbackOptions, SUScanOptions, SUScanResults;
 
 @protocol SUManagerClientInterface
 - (void)scanDidCompleteWithNewUpdateAvailable:(SUDescriptor *)arg1 error:(NSError *)arg2;
@@ -16,10 +16,18 @@
 - (void)autoInstallOperationDidExpire:(NSUUID *)arg1 withError:(NSError *)arg2;
 - (void)autoInstallOperationWasCancelled:(NSUUID *)arg1;
 - (void)managedInstallationRequested:(SUInstallPolicy *)arg1;
+- (void)deviceBootedAfterRollback;
+- (void)rollbackReadyForReboot:(SURollbackDescriptor *)arg1;
+- (void)rollbackDidFinish:(SURollbackDescriptor *)arg1;
+- (void)rollbackDidFail:(SURollbackDescriptor *)arg1 withError:(NSError *)arg2;
+- (void)rollbackDidStart:(SURollbackDescriptor *)arg1;
+- (void)rollbackReadyToStart:(SURollbackDescriptor *)arg1 options:(SURollbackOptions *)arg2 completion:(void (^)(_Bool, SURollbackDescriptor *, NSError *))arg3;
+- (void)deviceBootedAfterSplatUpdate;
 - (void)installPolicyDidChange:(SUInstallPolicy *)arg1;
 - (void)installDidFinish:(SUDescriptor *)arg1;
 - (void)installDidFail:(SUDescriptor *)arg1 withError:(NSError *)arg2;
 - (void)installDidStart:(SUDescriptor *)arg1;
+- (void)clearingSpaceForDownload:(SUDownload *)arg1 clearing:(_Bool)arg2;
 - (void)automaticDownloadDidFailToStartForNewUpdateAvailable:(SUDescriptor *)arg1 withError:(NSError *)arg2;
 - (void)downloadDidFinish:(SUDownload *)arg1 withInstallPolicy:(SUInstallPolicy *)arg2;
 - (void)downloadDidFinish:(SUDownload *)arg1;

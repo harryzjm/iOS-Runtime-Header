@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ScreenTimeSettingsUI/STRestrictionsPINControllerDelegate-Protocol.h>
-
 @class NSObject, NSString;
 @protocol STRootViewModelCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface STPINListViewController <STRestrictionsPINControllerDelegate>
+@interface STPINListViewController
 {
     NSObject<STRootViewModelCoordinator> *_coordinator;
     id _showingPinTarget;

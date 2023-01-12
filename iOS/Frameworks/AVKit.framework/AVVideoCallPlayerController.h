@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVPlayerController.h"
+
 @class AVPictureInPictureControllerContentSource;
 
 __attribute__((visibility("hidden")))
-@interface AVVideoCallPlayerController
+@interface AVVideoCallPlayerController : AVPlayerController
 {
     _Bool _pictureInPicturePossible;
     AVPictureInPictureControllerContentSource *_contentSource;

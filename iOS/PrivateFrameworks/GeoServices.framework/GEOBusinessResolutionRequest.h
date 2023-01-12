@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOLocation, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOBusinessResolutionRequest : PBRequest <NSCopying>
+@interface GEOBusinessResolutionRequest : PBRequest
 {
     PBDataReader *_reader;
     GEOLocation *_deviceLocation;

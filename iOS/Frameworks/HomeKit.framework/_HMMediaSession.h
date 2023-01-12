@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMFMessageReceiver-Protocol.h>
-#import <HomeKit/HMObjectMerge-Protocol.h>
-
-@class HMAudioControl, HMFUnfairLock, NSString, NSUUID, _HMContext;
+@class HMAudioControl, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue, _HMMediaSessionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _HMMediaSession : NSObject <HMFMessageReceiver, HMObjectMerge>
+@interface _HMMediaSession : NSObject
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSUUID *_uuid;
     NSString *_routeUID;
     long long _playbackState;
@@ -26,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSUUID *_uniqueIdentifier;
     NSUUID *_messageTargetUUID;
     HMAudioControl *_audioControl;
+    unsigned long long _sleepWakeState;
     id <_HMMediaSessionDelegate> _delegate;
 }
 
@@ -33,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_HMMediaSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) HMAudioControl *audioControl; // @synthesize audioControl=_audioControl;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-- (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (_Bool)_mergeWithNewObject:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (void)_handleSessionRouteUIDUpdated:(id)arg1;
@@ -49,6 +47,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 - (id)messageDestination;
 @property(retain, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
+- (void)setSleepWakeState:(unsigned long long)arg1;
+@property(readonly) unsigned long long sleepWakeState; // @synthesize sleepWakeState=_sleepWakeState;
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (void)setRouteUID:(id)arg1;
 @property(readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 - (void)setUuid:(id)arg1;
 - (void)_registerNotificationHandlers;
-- (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3 shuffleState:(long long)arg4 repeatState:(long long)arg5 audioControl:(id)arg6 mediaUniqueIdentifier:(id)arg7;
+- (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3 shuffleState:(long long)arg4 repeatState:(long long)arg5 audioControl:(id)arg6 mediaUniqueIdentifier:(id)arg7 sleepWakeState:(unsigned long long)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

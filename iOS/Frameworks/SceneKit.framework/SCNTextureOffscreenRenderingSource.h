@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SCNTextureSource.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface SCNTextureOffscreenRenderingSource
+@interface SCNTextureOffscreenRenderingSource : SCNTextureSource
 {
     _Bool _usesIOSurface;
     struct CGSize _framebufferSize;

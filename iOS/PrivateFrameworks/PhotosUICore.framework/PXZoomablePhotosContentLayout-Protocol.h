@@ -21,7 +21,7 @@
 @property(nonatomic) _Bool hideIncompleteLastRowOrColumn;
 @property(readonly, nonatomic) double rowHeight;
 @property(readonly, nonatomic) long long visualItemShift;
-@property(nonatomic) CDStruct_2bd92d94 itemCornerRadius;
+@property(nonatomic) CDStruct_c2259bfa itemCornerRadius;
 @property(nonatomic) double itemAspectRatio;
 @property(nonatomic) unsigned char spriteInfoFlags;
 @property(nonatomic) _Bool enablePerItemInsets;

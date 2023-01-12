@@ -6,11 +6,9 @@
 
 #import <Foundation/NSURL.h>
 
-#import <SpringBoardFoundation/SBFFileCacheFileIdentifier-Protocol.h>
-
 @class NSString;
 
-@interface NSURL (SBFFileCache) <SBFFileCacheFileIdentifier>
+@interface NSURL (SBFFileCache)
 - (id)fileCacheStableDataRepresentation;
 
 // Remaining properties

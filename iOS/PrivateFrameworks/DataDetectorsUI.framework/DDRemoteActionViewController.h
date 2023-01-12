@@ -6,13 +6,10 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <DataDetectorsUI/DDRemoteActionPresenter-Protocol.h>
-#import <DataDetectorsUI/_UIRemoteViewControllerContaining-Protocol.h>
-
 @class DDAction, DDActionController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface DDRemoteActionViewController : _UIRemoteViewController <DDRemoteActionPresenter, _UIRemoteViewControllerContaining>
+@interface DDRemoteActionViewController : _UIRemoteViewController
 {
     _Bool _proxyConfigured;
     _Bool _waitingForRemoteConfiguration;
@@ -22,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)prepareViewController:(id)arg1 forAction:(id)arg2 actionController:(id)arg3;
++ (_Bool)controllerIsAvailable;
 + (id)serviceViewControllerInterface;
 + (id)exportedInterface;
 - (void).cxx_destruct;

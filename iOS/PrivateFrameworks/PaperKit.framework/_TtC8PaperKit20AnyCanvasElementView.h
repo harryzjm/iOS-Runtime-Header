@@ -13,11 +13,9 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *canvas;
     MISSING_TYPE *parentCanvasElement;
-    MISSING_TYPE *liveModelFrame;
     MISSING_TYPE *isSelected;
     MISSING_TYPE *isDragging;
     MISSING_TYPE *isContextMenuInteractionVisible;
-    MISSING_TYPE *originalFrame;
 }
 
 - (void).cxx_destruct;

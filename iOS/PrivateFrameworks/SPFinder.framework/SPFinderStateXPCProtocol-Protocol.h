@@ -7,11 +7,11 @@
 #import <SPFinder/NSObject-Protocol.h>
 
 @protocol SPFinderStateXPCProtocol <NSObject>
-- (oneway void)setActiveCache:(long long)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)stateInfoWithCompletion:(void (^)(SPFinderStateInfo *, NSError *))arg1;
-- (oneway void)disableFinderModeWithCompletion:(void (^)(NSError *))arg1;
-- (oneway void)enableFinderModeWithCompletion:(void (^)(NSError *))arg1;
-- (oneway void)fetchFinderState:(void (^)(_Bool, NSError *))arg1;
-- (oneway void)start;
+- (void)setActiveCache:(long long)arg1 completion:(void (^)(NSError *))arg2;
+- (void)stateInfoWithCompletion:(void (^)(SPFinderStateInfo *, NSError *))arg1;
+- (void)disableFinderModeWithCompletion:(void (^)(NSError *))arg1;
+- (void)enableFinderModeWithCompletion:(void (^)(NSError *))arg1;
+- (void)fetchFinderState:(void (^)(_Bool, NSError *))arg1;
+- (void)start;
 @end
 

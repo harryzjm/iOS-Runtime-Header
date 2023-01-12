@@ -12,6 +12,7 @@
 - (void)getClientImportServiceListenerEndpointWithCompletion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg1;
 - (void)getMediaLibraryResourcesServiceListenerEndpointWithCompletion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg1;
 - (void)performMaintenanceTasksForDatabaseAtPath:(NSString *)arg1 withCompletionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)updateSiriIndexMetadataForAllLibrariesWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)updateSpotlightIndexMetadataForItemsWithIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2 withCompletion:(void (^)(_Bool, NSError *))arg3;
 - (void)updateSpotlightIndexForBundleID:(NSString *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)getLanguageResourcesWithCompletion:(void (^)(ML3LanguageResources *, NSError *))arg1;
@@ -24,7 +25,6 @@
 - (void)endTransaction:(NSUUID *)arg1 shouldCommit:(_Bool)arg2 withCompletionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)executeQuery:(NSString *)arg1 withParameters:(NSArray *)arg2 options:(NSDictionary *)arg3 onTransaction:(NSUUID *)arg4 withCompletionHandler:(void (^)(NSData *, NSError *))arg5;
 - (void)executeUpdate:(NSString *)arg1 withParameters:(NSArray *)arg2 onTransaction:(NSUUID *)arg3 withCompletionHandler:(void (^)(_Bool, NSError *))arg4;
-- (void)beginTransactionForDatabaseAtPath:(NSString *)arg1 withPriorityLevel:(unsigned long long)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(NSUUID *, NSError *))arg4;
 - (void)beginTransactionForDatabaseWithContext:(MLTransactionContext *)arg1 completionHandler:(void (^)(NSUUID *, NSError *))arg2;
 - (void)recreateDatabaseAtPath:(NSString *)arg1 withCompletionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)performDiagnosticWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;

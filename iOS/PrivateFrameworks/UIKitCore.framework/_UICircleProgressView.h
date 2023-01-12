@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UICircleProgressView
+@interface _UICircleProgressView : UIView
 {
 }
 

@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PlugInKit/NSXPCConnectionDelegate-Protocol.h>
-#import <PlugInKit/PKPlugInPrivate-Protocol.h>
+#import "PKPlugInCore.h"
 
-@class NSArray, NSBundle, NSDate, NSDictionary, NSMutableSet, NSObject, NSString, NSURL, NSUUID, NSUserDefaults, NSXPCConnection, Protocol;
+@class NSArray, NSBundle, NSDate, NSDictionary, NSMutableSet, NSObject, NSString, NSURL, NSUUID, NSUserDefaults, NSXPCConnection, PKHost, Protocol;
 @protocol OS_dispatch_queue, PKCorePlugInProtocol, PKPlugIn;
 
-@interface PKHostPlugIn <PKPlugInPrivate, NSXPCConnectionDelegate>
+@interface PKHostPlugIn : PKPlugInCore
 {
     _Bool _terminating;
     unsigned int _useCount;
     NSUserDefaults *_defaults;
     CDUnknownBlockType _notificationBlock;
     NSArray *_preferredLanguages;
+    NSString *_sandboxProfile;
     NSXPCConnection *_pluginConnection;
     NSObject<OS_dispatch_queue> *__replyQueue;
     NSObject<OS_dispatch_queue> *__syncQueue;
@@ -39,9 +39,11 @@
     NSDictionary *_sourceForm;
     NSDictionary *_environment;
     NSMutableSet *_requests;
+    PKHost *_host;
 }
 
 - (void).cxx_destruct;
+@property(retain) PKHost *host; // @synthesize host=_host;
 @property(readonly) NSMutableSet *requests; // @synthesize requests=_requests;
 @property(retain) NSDictionary *environment; // @synthesize environment=_environment;
 @property(retain) NSDictionary *sourceForm; // @synthesize sourceForm=_sourceForm;
@@ -66,6 +68,7 @@
 @property(retain) NSObject<OS_dispatch_queue> *_syncQueue; // @synthesize _syncQueue=__syncQueue;
 @property(retain) NSObject<OS_dispatch_queue> *_replyQueue; // @synthesize _replyQueue=__replyQueue;
 @property(retain) NSXPCConnection *pluginConnection; // @synthesize pluginConnection=_pluginConnection;
+@property(copy) NSString *sandboxProfile; // @synthesize sandboxProfile=_sandboxProfile;
 @property(copy) NSArray *preferredLanguages; // @synthesize preferredLanguages=_preferredLanguages;
 @property(copy) CDUnknownBlockType notificationBlock; // @synthesize notificationBlock=_notificationBlock;
 - (void)changeState:(unsigned long long)arg1;
@@ -81,7 +84,7 @@
 - (void)setBootstrapWithSubsystemOptions:(id)arg1;
 - (void)preparePlugInUsingService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startPlugInRequest:(id)arg1 synchronously:(_Bool)arg2 subsystemOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)addRequest:(id)arg1;
+- (void)addRequestUUID:(id)arg1;
 - (_Bool)beginUsingRequest:(id)arg1 error:(id *)arg2;
 - (_Bool)beginUsingRequest:(id)arg1 withSubsystemOptions:(id)arg2 error:(id *)arg3;
 - (_Bool)beginUsingWithSubsystemOptions:(id)arg1 error:(id *)arg2;
@@ -99,12 +102,12 @@
 @property(readonly) _Bool active;
 - (void)resume;
 - (void)suspend;
-- (void)updateFromForm:(id)arg1;
+- (void)updateFromForm:(id)arg1 host:(id)arg2;
 @property(retain) NSDictionary *extensionState;
 @property long long userElection;
 @property(readonly) NSUserDefaults *defaults; // @synthesize defaults=_defaults;
 @property(readonly, copy) NSString *description;
-- (id)initWithForm:(id)arg1;
+- (id)initWithForm:(id)arg1 host:(id)arg2;
 
 // Remaining properties
 @property(readonly) NSDictionary *attributes;
@@ -114,6 +117,7 @@
 @property(readonly) NSDictionary *entitlements;
 @property(readonly) unsigned long long hash;
 @property(readonly) NSString *identifier;
+@property(readonly) NSArray *launchPersonas;
 @property(readonly) NSString *localizedContainingName;
 @property(readonly) NSDictionary *localizedFileProviderActionNames;
 @property(readonly) NSString *localizedName;

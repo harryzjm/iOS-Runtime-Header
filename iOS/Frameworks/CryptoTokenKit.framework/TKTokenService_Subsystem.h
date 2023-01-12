@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CryptoTokenKit/PKModularService-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface TKTokenService_Subsystem : NSObject <PKModularService>
+@interface TKTokenService_Subsystem : NSObject
 {
 }
 

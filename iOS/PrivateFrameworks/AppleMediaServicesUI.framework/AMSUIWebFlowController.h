@@ -16,9 +16,13 @@ __attribute__((visibility("hidden")))
     NSString *_currentRefreshToken;
     NSLock *_timeoutLock;
     NSMutableSet *_timeouts;
+    unsigned long long _previousNavigationIndex;
+    long long _previousPageIndex;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long previousPageIndex; // @synthesize previousPageIndex=_previousPageIndex;
+@property(nonatomic) unsigned long long previousNavigationIndex; // @synthesize previousNavigationIndex=_previousNavigationIndex;
 @property(retain, nonatomic) NSMutableSet *timeouts; // @synthesize timeouts=_timeouts;
 @property(retain, nonatomic) NSLock *timeoutLock; // @synthesize timeoutLock=_timeoutLock;
 @property(retain, nonatomic) NSString *currentRefreshToken; // @synthesize currentRefreshToken=_currentRefreshToken;
@@ -31,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)startTimeout:(double)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)startTimeoutInterruption;
 - (id)refreshPageForContainer:(id)arg1 options:(id)arg2;
-- (void)replaceWithPageModel:(id)arg1 forContainer:(id)arg2 options:(id)arg3;
+- (id)replaceWithPageModel:(id)arg1 forContainer:(id)arg2 options:(id)arg3;
 - (void)pushWithOptions:(id)arg1;
 - (void)presentWithOptions:(id)arg1;
 - (void)popViewControllerToRelativeIndex:(long long)arg1;

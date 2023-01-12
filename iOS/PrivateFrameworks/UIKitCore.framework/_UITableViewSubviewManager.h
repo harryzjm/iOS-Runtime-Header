@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSCountedSet *_reusePreventedCells;
     NSMapTable *_cellsReadyForReuse;
     NSMutableDictionary *_prefetchedCells;
+    NSMapTable *_indexPathsForPrefetchedCells;
 }
 
 - (void).cxx_destruct;

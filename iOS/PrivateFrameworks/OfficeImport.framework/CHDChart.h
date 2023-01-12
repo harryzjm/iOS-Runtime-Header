@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OfficeImport/OADDrawableContainer-Protocol.h>
-
 @class CHDDefaultTextProperties, CHDLegend, CHDPlotArea, CHDTitle, CHDView3D, EDSheet, EDWorkbook, NSMutableArray, NSString, OADGraphicProperties, OADThemeOverrides;
 
 __attribute__((visibility("hidden")))
-@interface CHDChart <OADDrawableContainer>
+@interface CHDChart
 {
     EDSheet *mSheet;
     int mStyleId;

@@ -6,10 +6,13 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSArray, PXActivity;
+@class NSArray, NSError, PXActivity;
 
 @protocol PXActivityActionDelegate <NSObject>
 - (void)performActivity:(PXActivity *)arg1;
 - (_Bool)canPerformWithActivityItems:(NSArray *)arg1 forActivity:(PXActivity *)arg2;
+
+@optional
+- (void)activity:(PXActivity *)arg1 didFinishWithSuccess:(_Bool)arg2 error:(NSError *)arg3;
 @end
 

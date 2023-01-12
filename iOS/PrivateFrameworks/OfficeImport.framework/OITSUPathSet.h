@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
-@interface OITSUPathSet : NSObject <NSCopying>
+@interface OITSUPathSet : NSObject
 {
     NSMutableSet *mPaths;
     NSMutableDictionary *mBasePathToNumberMap;

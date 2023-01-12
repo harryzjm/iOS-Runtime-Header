@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface CKDPCodeFunctionInvokeRequestAttestationRequest : PBRequest <NSCopying>
+@interface CKDPCodeFunctionInvokeRequestAttestationRequest : PBRequest
 {
     NSData *_entropy;
 }

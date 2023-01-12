@@ -6,9 +6,9 @@
 
 #import <BiomeStreams/NSObject-Protocol.h>
 
-@class NSNumber, NSString;
+@class BMStoreEvent, NSNumber, NSString;
 
 @protocol BMComputeSource <NSObject>
-- (void)sendEventWithStreamIdentifier:(NSString *)arg1 timestamp:(NSNumber *)arg2;
+- (void)sendEventWithStreamIdentifier:(NSString *)arg1 timestamp:(NSNumber *)arg2 storeEvent:(BMStoreEvent *)arg3;
 @end
 

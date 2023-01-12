@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 __attribute__((visibility("hidden")))
-@interface VCSystemAudioCapture : NSObject
+@interface VCSystemAudioCapture
 {
     struct _opaque_pthread_mutex_t _stateLock;
     struct {
@@ -17,7 +15,7 @@ __attribute__((visibility("hidden")))
         unsigned int _field4;
         int _field5;
     } *_audioRecorderQueue;
-    int _audioProcessIdToTap;
+    struct tagVCSystemAudioCaptureTapSettings _tapSettings;
     struct AudioStreamBasicDescription _audioBasicDescriptionAudioQueue;
     struct AudioStreamBasicDescription _audioBasicDescriptionAudioCapture;
     unsigned int _samplesPerFrame;
@@ -29,13 +27,21 @@ __attribute__((visibility("hidden")))
     double _conversionRatio;
     unsigned int _timestamp;
     double _hostTime;
+    double _startHostTime;
+    _Bool _useSineWave;
 }
 
-+ (id)newAudioTapDescriptionForProcess:(int)arg1 audioStreamBasicDescription:(struct AudioStreamBasicDescription *)arg2;
++ (id)newAudioTapWithCaptureContext:(struct __CFString *)arg1 audioFormat:(id)arg2;
++ (id)newAudioTapWithSessionType:(unsigned int)arg1 audioFormat:(id)arg2;
++ (unsigned int)audioTapSessionTypeForInternalSessionType:(unsigned int)arg1;
++ (id)newAudioTapWithProcessID:(int)arg1 audioFormat:(id)arg2;
++ (_Bool)isValidConfiguration:(CDStruct_b94bc9bb *)arg1;
+- (void)setupCannedAudioInjection;
+- (id)newAudioTapWithAudioStreamBasicDescription:(struct AudioStreamBasicDescription *)arg1;
 - (_Bool)stop;
 - (_Bool)start;
 - (void)dealloc;
-- (id)initWithConfiguration:(CDStruct_29090a4b *)arg1;
+- (id)initWithConfiguration:(CDStruct_b94bc9bb *)arg1;
 
 @end
 

@@ -6,12 +6,9 @@
 
 #import <TSDrawables/TSDRep.h>
 
-#import <TSApplication/TSDMediaControlsHostRep-Protocol.h>
-#import <TSApplication/TSDPlayableRep-Protocol.h>
-
 @class NSString, TSAWebVideoInfo;
 
-@interface TSAWebVideoRep : TSDRep <TSDMediaControlsHostRep, TSDPlayableRep>
+@interface TSAWebVideoRep : TSDRep
 {
 }
 

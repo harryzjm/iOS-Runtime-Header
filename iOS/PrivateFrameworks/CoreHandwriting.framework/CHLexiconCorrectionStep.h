@@ -4,46 +4,52 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CHRecognizer, NSCharacterSet, NSDictionary, NSLocale;
+@class CHSpellChecker, CHStringOVSChecker, NSCharacterSet, NSDictionary, NSLocale;
 
 @interface CHLexiconCorrectionStep
 {
     _Bool _shouldAutoCapitalize;
     _Bool _shouldAutoCorrect;
     int _autoCapitalizationMode;
-    CHRecognizer *_recognizer;
     NSLocale *_locale;
     const struct _LXLexicon *_staticLexicon;
     const struct _LXLexicon *_customLexicon;
     const struct _LXLexicon *_phraseLexicon;
     const struct _LXLexicon *_customPhraseLexicon;
+    void *_lmVocabulary;
+    CHStringOVSChecker *_ovsStringChecker;
+    CHSpellChecker *_spellChecker;
     NSDictionary *_textReplacements;
     NSCharacterSet *_consumableStrokesCharSet;
     NSCharacterSet *_fullWidthPunctuationThatExpectsUppercaseAfter;
     NSCharacterSet *_punctuationThatExpectsUppercaseAfter;
 }
 
++ (id)validatedTokenForCorrectedToken:(id)arg1 rawToken:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSCharacterSet *punctuationThatExpectsUppercaseAfter; // @synthesize punctuationThatExpectsUppercaseAfter=_punctuationThatExpectsUppercaseAfter;
 @property(retain, nonatomic) NSCharacterSet *fullWidthPunctuationThatExpectsUppercaseAfter; // @synthesize fullWidthPunctuationThatExpectsUppercaseAfter=_fullWidthPunctuationThatExpectsUppercaseAfter;
 @property(retain, nonatomic) NSCharacterSet *consumableStrokesCharSet; // @synthesize consumableStrokesCharSet=_consumableStrokesCharSet;
 @property(retain, nonatomic) NSDictionary *textReplacements; // @synthesize textReplacements=_textReplacements;
+@property(retain, nonatomic) CHSpellChecker *spellChecker; // @synthesize spellChecker=_spellChecker;
 @property(nonatomic) _Bool shouldAutoCorrect; // @synthesize shouldAutoCorrect=_shouldAutoCorrect;
 @property(readonly, nonatomic) int autoCapitalizationMode; // @synthesize autoCapitalizationMode=_autoCapitalizationMode;
+@property(retain, nonatomic) CHStringOVSChecker *ovsStringChecker; // @synthesize ovsStringChecker=_ovsStringChecker;
+@property(nonatomic) void *lmVocabulary; // @synthesize lmVocabulary=_lmVocabulary;
 @property(nonatomic) const struct _LXLexicon *customPhraseLexicon; // @synthesize customPhraseLexicon=_customPhraseLexicon;
 @property(nonatomic) const struct _LXLexicon *phraseLexicon; // @synthesize phraseLexicon=_phraseLexicon;
 @property(nonatomic) const struct _LXLexicon *customLexicon; // @synthesize customLexicon=_customLexicon;
 @property(nonatomic) const struct _LXLexicon *staticLexicon; // @synthesize staticLexicon=_staticLexicon;
-@property(nonatomic) NSLocale *locale; // @synthesize locale=_locale;
-@property(nonatomic) CHRecognizer *recognizer; // @synthesize recognizer=_recognizer;
+@property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(nonatomic) _Bool shouldAutoCapitalize; // @synthesize shouldAutoCapitalize=_shouldAutoCapitalize;
-- (id)process:(id)arg1;
+- (id)process:(id)arg1 options:(id)arg2;
 - (id)createPseudoTokensFromToken:(id)arg1;
 - (id)applyCorrectionsAcrossToken:(id)arg1 isFirstToken:(_Bool)arg2 contextBeforeToken:(id)arg3 shouldCapitalizeGivenHistory:(_Bool)arg4 textReplacements:(id)arg5 isSingleIsolatedCharacter:(_Bool)arg6;
-- (id)applyCorrectionsOnSingleToken:(id)arg1 isFirstToken:(_Bool)arg2 contextBeforeToken:(id)arg3 shouldCapitalizeGivenHistory:(_Bool)arg4 textReplacements:(id)arg5 isSingleIsolatedCharacter:(_Bool)arg6;
-- (id)applyLexiconCorrections:(id)arg1 shouldCapitalizeWord:(_Bool)arg2 shouldSkipEntryCorrection:(_Bool)arg3 outBestTokenIndex:(long long *)arg4 bestLexiconTokenScore:(double *)arg5 textReplacements:(id)arg6 contextBeforeToken:(id)arg7;
+- (id)applyCorrectionsOnSingleToken:(id)arg1 isFirstToken:(_Bool)arg2 contextBeforeToken:(id)arg3 shouldCapitalizeGivenHistory:(_Bool)arg4 textReplacements:(id)arg5 isSingleIsolatedCharacter:(_Bool)arg6 allowSpellChecker:(_Bool)arg7;
+- (id)applyLexiconCorrections:(id)arg1 shouldCapitalizeWord:(_Bool)arg2 shouldSkipEntryCorrection:(_Bool)arg3 outBestTokenIndex:(long long *)arg4 bestLexiconTokenScore:(double *)arg5 textReplacements:(id)arg6 contextBeforeToken:(id)arg7 allowSpellChecker:(_Bool)arg8;
 - (id)getSpellCorrectedToken:(id)arg1 contextBeforeToken:(id)arg2;
 - (void)dealloc;
-- (id)initWithAutoCapitalizationMode:(int)arg1 shouldAutoCorrect:(_Bool)arg2 locale:(id)arg3 staticLexicon:(struct _LXLexicon *)arg4 customLexicon:(struct _LXLexicon *)arg5 phraseLexicon:(struct _LXLexicon *)arg6 customPhraseLexicon:(struct _LXLexicon *)arg7 recognizer:(id)arg8 textReplacements:(id)arg9;
+- (id)initWithAutoCapitalizationMode:(int)arg1 shouldAutoCorrect:(_Bool)arg2 shouldAutoCapitalize:(_Bool)arg3 locale:(id)arg4 staticLexicon:(struct _LXLexicon *)arg5 customLexicon:(struct _LXLexicon *)arg6 phraseLexicon:(struct _LXLexicon *)arg7 customPhraseLexicon:(struct _LXLexicon *)arg8 spellChecker:(id)arg9 lmVocabulary:(void *)arg10 ovsStringChecker:(id)arg11 textReplacements:(id)arg12;
 
 @end
 

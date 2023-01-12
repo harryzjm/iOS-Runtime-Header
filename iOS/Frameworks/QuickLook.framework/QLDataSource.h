@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/QLPreviewItemProvider-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface QLDataSource : NSObject <QLPreviewItemProvider>
+@interface QLDataSource : NSObject
 {
     NSArray *_previewItems;
 }

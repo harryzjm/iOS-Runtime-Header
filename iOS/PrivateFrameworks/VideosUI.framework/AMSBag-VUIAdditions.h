@@ -7,7 +7,6 @@
 #import <AppleMediaServices/AMSBag.h>
 
 @interface AMSBag (VUIAdditions)
-+ (void)vui_registerAdditionalBagKey:(id)arg1 withValueType:(unsigned long long)arg2;
 + (id)vui_defaultBag;
 @end
 

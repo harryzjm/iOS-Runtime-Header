@@ -6,14 +6,12 @@
 
 #import <AppStoreComponents/NSObject-Protocol.h>
 
-@class ASCScreenshots, ASCTrailers, ASCVideoView, NSString, UIImage;
+@class ASCScreenshots, ASCTrailers, ASCVideoView, UIImage;
 
 @protocol ASCLockupMediaPresenterView <NSObject>
 @property(readonly, nonatomic) struct CGSize preferredScreenshotSize;
-- (void)setImage:(UIImage *)arg1 atIndex:(long long)arg2 withDecoration:(NSString *)arg3;
+- (void)setImage:(UIImage *)arg1 atIndex:(long long)arg2;
 - (void)setVideoView:(ASCVideoView *)arg1;
-- (void)setTrailers:(ASCTrailers *)arg1;
-- (void)setScreenshots:(ASCScreenshots *)arg1;
-- (void)setNumberOfViews:(unsigned long long)arg1;
+- (void)setScreenshots:(ASCScreenshots *)arg1 andTrailers:(ASCTrailers *)arg2;
 @end
 

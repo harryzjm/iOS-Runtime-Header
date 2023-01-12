@@ -14,6 +14,7 @@
 - (_Bool)escrowCompletedWithinLastSeconds:(double)arg1;
 - (_Bool)pendingEscrowUpload:(id *)arg1;
 - (NSDictionary *)fetchStatuses:(id *)arg1;
+- (_Bool)triggerEscrowUpdate:(NSString *)arg1 options:(NSDictionary *)arg2 error:(id *)arg3;
 - (_Bool)triggerEscrowUpdate:(NSString *)arg1 error:(id *)arg2;
 @end
 

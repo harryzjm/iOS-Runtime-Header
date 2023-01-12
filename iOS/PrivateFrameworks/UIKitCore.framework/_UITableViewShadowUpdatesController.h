@@ -6,19 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDataSourceModelAssociation-Protocol.h>
-#import <UIKitCore/UITableViewDataSourcePrefetching-Protocol.h>
-#import <UIKitCore/UITableViewDataSourcePrivate-Protocol.h>
-#import <UIKitCore/UITableViewDelegatePrivate-Protocol.h>
-#import <UIKitCore/UITableViewDragDelegate_Private-Protocol.h>
-#import <UIKitCore/UITableViewDragDestinationDelegate_Internal-Protocol.h>
-#import <UIKitCore/UITableViewDragSourceDelegate-Protocol.h>
-#import <UIKitCore/UITableViewDropDelegate_Private-Protocol.h>
-
 @class NSMutableArray, NSString, UITableView, _UIDataSourceSnapshotter, _UIDataSourceUpdateMap;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewShadowUpdatesController : NSObject <UITableViewDataSourcePrivate, UIDataSourceModelAssociation, UITableViewDelegatePrivate, UITableViewDataSourcePrefetching, UITableViewDragDelegate_Private, UITableViewDropDelegate_Private, UITableViewDragSourceDelegate, UITableViewDragDestinationDelegate_Internal>
+@interface _UITableViewShadowUpdatesController : NSObject
 {
     UITableView *_tableView;
     NSMutableArray *_shadowUpdates;
@@ -101,8 +92,6 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 leadingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (struct CGRect)tableView:(id)arg1 calloutTargetRectForCell:(id)arg2 forRowAtIndexPath:(id)arg3;
-- (void)_tableView:(id)arg1 willLayoutCell:(id)arg2 usingTemplateLayoutCell:(id)arg3 forRowAtIndexPath:(id)arg4;
-- (id)_tableView:(id)arg1 templateLayoutCellForCellsWithReuseIdentifier:(id)arg2;
 - (id)viewForFooterInTableView:(id)arg1;
 - (id)viewForHeaderInTableView:(id)arg1;
 - (double)heightForFooterInTableView:(id)arg1;
@@ -136,6 +125,8 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForDeleteConfirmationButtonForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 performPrimaryActionForRowAtIndexPath:(id)arg2;
+- (_Bool)tableView:(id)arg1 canPerformPrimaryActionForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willDeselectRowAtIndexPath:(id)arg2;

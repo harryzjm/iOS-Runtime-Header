@@ -6,10 +6,12 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class PKAddShareablePassConfiguration;
+@class NSArray, PKAddShareablePassConfiguration, PKPartialShareInvitation;
 
 @protocol PKServiceShareableCredentialsMessageComposeViewControllerProtocol <NSObject>
+- (void)setPartialShareInvite:(PKPartialShareInvitation *)arg1 completion:(void (^)(void))arg2;
 - (void)setConfiguration:(PKAddShareablePassConfiguration *)arg1 completionHandler:(void (^)(void))arg2;
+- (void)setRecipientAddresses:(NSArray *)arg1;
 - (void)setDisplayPropertiesWithScreenSize:(struct CGSize)arg1 scale:(double)arg2;
 @end
 

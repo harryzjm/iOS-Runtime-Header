@@ -6,9 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
-@interface CKDPThrottlingConfigRateLimit : PBCodable <NSCopying>
+@interface CKDPThrottlingConfigRateLimit : PBCodable
 {
     long long _startTimeSecondsAfterLocalMidnight;
     long long _startTimeSecondsAfterUnixEpoch;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NumbersQuicklook/TNAnnotationPrintingHelperDataSource-Protocol.h>
-
 @class NSArray, NSMapTable, TNAnnotationPrintingHelper, TNDocumentRoot, TNPageCoordinateDictionary, TNPrintProperties, TNSheet, TSUPointerKeyDictionary;
 @protocol TNPageControllerDelegate, TNPrintableInfoProviding;
 
-@interface TNPageController : NSObject <TNAnnotationPrintingHelperDataSource>
+@interface TNPageController : NSObject
 {
     _Bool _pageCountsValid;
     _Bool _computingPageCounts;

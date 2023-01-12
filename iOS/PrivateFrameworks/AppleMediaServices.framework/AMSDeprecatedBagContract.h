@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSDeviceOfferBagContract-Protocol.h>
-#import <AppleMediaServices/AMSLookupBagContract-Protocol.h>
-#import <AppleMediaServices/AMSMescalBagContract-Protocol.h>
-#import <AppleMediaServices/AMSMetricsBagContract-Protocol.h>
-
 @class AMSBagValue, NSString;
 @protocol AMSBagProtocol, AMSMescalBagContract, AMSMetricsBagContract;
 
 __attribute__((visibility("hidden")))
-@interface AMSDeprecatedBagContract : NSObject <AMSDeviceOfferBagContract, AMSMetricsBagContract, AMSMescalBagContract, AMSLookupBagContract>
+@interface AMSDeprecatedBagContract : NSObject
 {
     id <AMSBagProtocol> _bag;
 }

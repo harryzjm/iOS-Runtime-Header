@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UILayoutGuide.h"
+
 @class NSLayoutConstraint;
 
 __attribute__((visibility("hidden")))
-@interface _UIContentConstraintsLayoutGuide
+@interface _UIContentConstraintsLayoutGuide : UILayoutGuide
 {
     _Bool _wantsMaximumSizeConstraintsActive;
     _Bool _wantsMinimumSizeConstraintsActive;

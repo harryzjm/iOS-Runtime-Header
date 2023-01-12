@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedManager;
+- (void)endPrivacyAccountingInterval;
+- (void)startPrivacyAccountingInternval;
 - (void)registerBlocksForService;
 - (id)screenShareDictionary:(id)arg1;
 - (void)screenCaptureStopFor:(id)arg1 didSucceed:(_Bool)arg2 withError:(id)arg3;

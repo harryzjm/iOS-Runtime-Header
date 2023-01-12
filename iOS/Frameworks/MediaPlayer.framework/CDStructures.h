@@ -12,12 +12,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct Arc4State {
-    unsigned int _field1;
-    unsigned int _field2;
-    char *_field3;
-};
-
 struct CGPoint {
     double x;
     double y;
@@ -52,33 +46,9 @@ struct ITColor {
     double _field4;
 };
 
-struct LibraryView;
-
 struct LocalizedSearchQuery;
 
-struct LocalizedSearchScope;
-
-struct MPAddKeepLocalControlStatus {
-    long long statusType;
-    double downloadProgress;
-};
-
-struct MPLibraryActiveKeepLocalStatus {
-    long long statusType;
-    double downloadProgress;
-};
-
-struct MPLibraryAddStatusObserverConfiguration {
-    _Bool isValidContentType;
-    _Bool isLibraryAdded;
-    _Bool hasCleanContent;
-    _Bool hasExplicitContent;
-    _Bool isLibraryAddEligible;
-};
-
 struct ModelPropertyBase;
-
-struct Predicate;
 
 struct PropertiesQuery;
 
@@ -95,14 +65,9 @@ struct UIEdgeInsets {
     double right;
 };
 
-struct _MSVSignedRange {
-    long long location;
-    long long length;
-};
-
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct __shared_weak_count;
@@ -198,24 +163,9 @@ struct shared_ptr<mlcore::EntityQueryResult> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<mlcore::LibraryView> {
-    struct LibraryView *_field1;
-    struct __shared_weak_count *_field2;
-};
-
 struct shared_ptr<mlcore::LocalizedSearchQuery> {
     struct LocalizedSearchQuery *__ptr_;
     struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<mlcore::LocalizedSearchScope> {
-    struct LocalizedSearchScope *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<mlcore::Predicate> {
-    struct Predicate *_field1;
-    struct __shared_weak_count *_field2;
 };
 
 struct shared_ptr<mlcore::PropertiesQuery> {
@@ -239,11 +189,6 @@ struct shared_ptr<std::map<long long, std::shared_ptr<mlcore::EntityQueryResult>
 };
 
 struct shared_ptr<std::map<std::string, mlcore::ModelPropertyBase *>> {
-    void *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<std::vector<std::shared_ptr<mlcore::Entity>>> {
     void *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
@@ -288,6 +233,14 @@ struct vector<std::shared_ptr<mlcore::EntityCache>, std::allocator<std::shared_p
     } __end_cap_;
 };
 
+struct vector<std::shared_ptr<mlcore::Predicate>, std::allocator<std::shared_ptr<mlcore::Predicate>>> {
+    void *_field1;
+    void *_field2;
+    struct __compressed_pair<std::shared_ptr<mlcore::Predicate>*, std::allocator<std::shared_ptr<mlcore::Predicate>>> {
+        void *_field1;
+    } _field3;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -315,51 +268,10 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    unsigned int identifiers:1;
-    unsigned int name:1;
-} CDStruct_63a3d127;
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 
-typedef struct {
-    int mobileiPodPrefsChanged;
-    int mobileiPodPlaybackPrefsChangedAllowCellularData;
-    int videoPrefsChanged;
-    int airplayPrefsChanged;
-} CDStruct_c0841ed3;
-
-typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
-
-typedef struct {
-    long long _field1;
-    long long _field2;
-} CDStruct_912cb5d2;
-
-typedef struct {
-    unsigned int identifiers:1;
-    unsigned int title:1;
-    struct {
-        unsigned int identifiers:1;
-        unsigned int name:1;
-        unsigned int artwork:1;
-    } showCreator;
-} CDStruct_93f342fe;
-
-// Ambiguous groups
-typedef struct {
-    unsigned int identifiers:1;
-    unsigned int text:1;
-    unsigned int hasStoreLyrics:1;
-    unsigned int hasTimeSyncedLyrics:1;
-} CDStruct_78b3e931;
-
-typedef struct {
-    unsigned int identifiers:1;
-} CDStruct_f9384266;
-
+// Template types
 typedef struct map<std::string, mlcore::ModelPropertyBase *, std::less<std::string>, std::allocator<std::pair<const std::string, mlcore::ModelPropertyBase *>>> {
     struct __tree<std::__value_type<std::string, mlcore::ModelPropertyBase *>, std::__map_value_compare<std::string, std::__value_type<std::string, mlcore::ModelPropertyBase *>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, mlcore::ModelPropertyBase *>>> {
         void *_field1;
@@ -402,25 +314,10 @@ typedef struct shared_ptr<mlcore::EntityQueryResult> {
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_274c5e8b;
 
-typedef struct shared_ptr<mlcore::LibraryView> {
-    struct LibraryView *_field1;
-    struct __shared_weak_count *_field2;
-} shared_ptr_5c01893c;
-
 typedef struct shared_ptr<mlcore::LocalizedSearchQuery> {
     struct LocalizedSearchQuery *__ptr_;
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_299ddd6f;
-
-typedef struct shared_ptr<mlcore::LocalizedSearchScope> {
-    struct LocalizedSearchScope *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_c450ebdb;
-
-typedef struct shared_ptr<mlcore::Predicate> {
-    struct Predicate *_field1;
-    struct __shared_weak_count *_field2;
-} shared_ptr_cf7b8a22;
 
 typedef struct shared_ptr<mlcore::PropertiesQuery> {
     struct PropertiesQuery *_field1;
@@ -447,11 +344,6 @@ typedef struct shared_ptr<std::map<std::string, mlcore::ModelPropertyBase *>> {
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_a9db792c;
 
-typedef struct shared_ptr<std::vector<std::shared_ptr<mlcore::Entity>>> {
-    void *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_0bd2c8ea;
-
 typedef struct vector<long long, std::allocator<long long>> {
     long long *__begin_;
     long long *__end_;
@@ -475,4 +367,12 @@ typedef struct vector<mlcore::SortDescriptor, std::allocator<mlcore::SortDescrip
         struct SortDescriptor *_field1;
     } _field3;
 } vector_9ebba6ab;
+
+typedef struct vector<std::shared_ptr<mlcore::Predicate>, std::allocator<std::shared_ptr<mlcore::Predicate>>> {
+    void *_field1;
+    void *_field2;
+    struct __compressed_pair<std::shared_ptr<mlcore::Predicate>*, std::allocator<std::shared_ptr<mlcore::Predicate>>> {
+        void *_field1;
+    } _field3;
+} vector_05d2ab2a;
 

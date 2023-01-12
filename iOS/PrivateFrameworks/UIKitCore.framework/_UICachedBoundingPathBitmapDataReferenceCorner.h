@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UICachedBoundingPathBitmapDataReferenceCorner : NSObject <NSSecureCoding>
+@interface _UICachedBoundingPathBitmapDataReferenceCorner : NSObject
 {
     struct _UIBoundingPathBitmapDataCorner _referenceCorner;
 }

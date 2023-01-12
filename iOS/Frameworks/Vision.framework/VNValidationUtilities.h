@@ -44,6 +44,9 @@ __attribute__((visibility("hidden")))
 + (_Bool)getBOOLValue:(_Bool *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
 + (id)requiredObjectOfClass:(Class)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
 + (_Bool)getOptionalObject:(id *)arg1 ofClass:(Class)arg2 forKey:(id)arg3 inOptions:(id)arg4 error:(id *)arg5;
++ (_Bool)validateAsyncStatusResults:(id)arg1 error:(id *)arg2;
++ (_Bool)validateAsyncStatusResult:(id)arg1 error:(id *)arg2;
++ (_Bool)validateAsyncStatusState:(id)arg1 error:(id *)arg2;
 + (_Bool)validateScoreRange:(float)arg1 error:(id *)arg2;
 + (_Bool)validateVNConfidenceRange:(float)arg1 error:(id *)arg2;
 + (_Bool)validateRequiredClusterIDs:(id)arg1 error:(id *)arg2;

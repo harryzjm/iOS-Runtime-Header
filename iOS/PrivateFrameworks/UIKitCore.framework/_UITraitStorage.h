@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UITraitStorage : NSObject <NSCoding>
+@interface _UITraitStorage : NSObject
 {
     NSMutableArray *_records;
     NSString *_keyPath;

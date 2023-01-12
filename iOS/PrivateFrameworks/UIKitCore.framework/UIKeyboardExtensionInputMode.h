@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKeyboardInputMode.h"
+
 @class NSExtension;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardExtensionInputMode
+@interface UIKeyboardExtensionInputMode : UIKeyboardInputMode
 {
     NSExtension *_extension;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
-- (id)_indicatorIconWithBackground:(_Bool)arg1;
+- (id)_indicatorIconWithBackground:(_Bool)arg1 scaleFactor:(double)arg2;
 - (_Bool)isDesiredForTraits:(id)arg1;
 - (_Bool)isAllowedForTraits:(id)arg1;
 - (id)normalizedIdentifierLevels;
@@ -29,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)hardwareLayout;
 - (_Bool)showSWLayoutWithHWKeyboard;
 - (void)setPrimaryLanguage:(id)arg1;
-- (void)dealloc;
 - (id)initWithIdentifier:(id)arg1;
 
 @end

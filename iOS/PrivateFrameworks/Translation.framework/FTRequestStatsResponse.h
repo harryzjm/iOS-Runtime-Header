@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTRequestStatsResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTRequestStatsResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -25,8 +22,17 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *request_locale;
 @property(readonly, nonatomic) NSString *speech_id;
 @property(readonly, nonatomic) NSString *language;
+- (void)double_stats_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)double_stats_count;
+- (id)double_stats_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *double_stats;
+- (void)int32_stats_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)int32_stats_count;
+- (id)int32_stats_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *int32_stats;
+- (void)bool_stats_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)bool_stats_count;
+- (id)bool_stats_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *bool_stats;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct RequestStatsResponse *)arg2 verify:(_Bool)arg3;

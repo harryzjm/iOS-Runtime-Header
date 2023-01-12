@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSKeyedUnarchiverDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKCaptureUnarchiverDelegate : NSObject <NSKeyedUnarchiverDelegate>
+@interface SKCaptureUnarchiverDelegate : NSObject
 {
 }
 

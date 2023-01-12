@@ -14,12 +14,12 @@
     long long _patternType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool convertToLowercase; // @synthesize convertToLowercase=_convertToLowercase;
 @property(nonatomic) _Bool capitalizationToSplit; // @synthesize capitalizationToSplit=_capitalizationToSplit;
 @property(nonatomic) long long patternType; // @synthesize patternType=_patternType;
 @property(retain, nonatomic) CHPatternNetwork *patternFST; // @synthesize patternFST=_patternFST;
-- (void)dealloc;
-- (id)process:(id)arg1;
+- (id)process:(id)arg1 options:(id)arg2;
 - (id)initWithPatternFst:(id)arg1 patternType:(long long)arg2 capitalizationToSplit:(_Bool)arg3 convertToLowercase:(_Bool)arg4;
 
 @end

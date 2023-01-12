@@ -4,11 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCalculationEngine/TSCEDistributor.h>
-
-#import <TSTables/TSTCellWillChangeProtocol-Protocol.h>
-
-@interface TSTCellWillChangeDistributor : TSCEDistributor <TSTCellWillChangeProtocol>
+@interface TSTCellWillChangeDistributor
 {
 }
 

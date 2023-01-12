@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/NSCoding-Protocol.h>
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface IBICColor : NSObject <NSCoding, NSCopying, IBBinaryArchiving>
+@interface IBICColor : NSObject
 {
     double _components[4];
     struct CGColorSpace *_colorSpace;

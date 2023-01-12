@@ -10,5 +10,7 @@
 + (id)reasonWithError:(id)arg1;
 + (id)reasonWithCode:(id)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (id)reasonWithCode:(id)arg1 description:(id)arg2 details:(id)arg3;
+- (_Bool)isEqualToStatusReason:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 @end
 

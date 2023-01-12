@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _dtxEnabled;
     int _preferredMode;
     NSMutableArray *_supportedModes;
+    NSMutableArray *_supportedBandwidths;
     _Bool _octetAligned;
     _Bool _dtmf;
     unsigned int _networkPayload;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int networkPayload; // @synthesize networkPayload=_networkPayload;
 @property(nonatomic, getter=isDTMF) _Bool dtmf; // @synthesize dtmf=_dtmf;
 @property(nonatomic, getter=isOctetAligned) _Bool octetAligned; // @synthesize octetAligned=_octetAligned;
+@property(retain, nonatomic) NSArray *supportedBandwidths; // @synthesize supportedBandwidths=_supportedBandwidths;
 @property(retain, nonatomic) NSArray *supportedModes; // @synthesize supportedModes=_supportedModes;
 @property(nonatomic) int preferredMode; // @synthesize preferredMode=_preferredMode;
 @property(nonatomic, getter=isDTXEnabled) _Bool dtxEnabled; // @synthesize dtxEnabled=_dtxEnabled;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)setupAMRWBModesWithClientModeMask:(unsigned int)arg1;
 - (void)setupAMRModesWithClientModeMask:(unsigned int)arg1;
 - (void)setPreferredModeWithClientMode:(int)arg1;
+- (void)setupCodecBandwidthsWithClientBandwidthMask:(unsigned int)arg1;
 - (void)setupModesWithClientModeMask:(unsigned int)arg1;
 @property(readonly, nonatomic) _Bool isComfortNoise;
 - (void)dealloc;

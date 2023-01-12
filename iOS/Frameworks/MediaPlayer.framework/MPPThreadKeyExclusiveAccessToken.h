@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPExclusiveAccessToken-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface MPPThreadKeyExclusiveAccessToken : NSObject <MPExclusiveAccessToken>
+@interface MPPThreadKeyExclusiveAccessToken : NSObject
 {
     unsigned long long _key;
     id _owner;

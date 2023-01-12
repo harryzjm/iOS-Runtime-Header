@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     AVAudioSession *_audioSession;
     _Bool _sessionListenerWasSet;
     unsigned long long _endInterruptionFlags;
-    struct AVAudioPlayerCpp *_localPlayer;
+    void *_localPlayer;
     NSObject<OS_dispatch_queue> *_gcd;
 }
 

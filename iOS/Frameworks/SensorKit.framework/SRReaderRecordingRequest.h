@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/SRRequestRecording-Protocol.h>
-
 @class NSDictionary, NSError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SRReaderRecordingRequest : NSObject <SRRequestRecording>
+@interface SRReaderRecordingRequest : NSObject
 {
     NSString *_sensor;
     NSString *_bundleIdentifier;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTVocToken, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTPronGuessResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTPronGuessResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,7 +19,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_11d25f3c)addObjectToBuffer:(void *)arg1;
+- (void)human_readable_prons_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)human_readable_prons_count;
+- (id)human_readable_prons_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *human_readable_prons;
+- (void)tts_pronunciations_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)tts_pronunciations_count;
+- (id)tts_pronunciations_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *tts_pronunciations;
 @property(readonly, nonatomic) FTVocToken *voc_token;
 @property(readonly, nonatomic) NSString *apg_id;

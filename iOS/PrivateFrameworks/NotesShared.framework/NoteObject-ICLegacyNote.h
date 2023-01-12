@@ -6,12 +6,11 @@
 
 #import <Notes/NoteObject.h>
 
-#import <NotesShared/ICLegacyNote-Protocol.h>
-
 @class NSArray, NSDate, NSManagedObjectContext, NSManagedObjectID, NSString;
 @protocol ICLegacyAccount, ICLegacyFolder;
 
-@interface NoteObject (ICLegacyNote) <ICLegacyNote>
+@interface NoteObject (ICLegacyNote)
++ (id)predicateForVisibleNotes;
 - (id)createAttachmentWithName:(id)arg1;
 @property(readonly, nonatomic) id <ICLegacyFolder> folder;
 @property(readonly, nonatomic) id <ICLegacyAccount> account;
@@ -19,6 +18,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *attachments;
+@property(readonly, nonatomic) NSString *contentAsPlainText;
 @property(readonly, copy, nonatomic) NSDate *creationDate;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionLayoutUpdateContainerOffsetResult-Protocol.h>
-
 @class NSMutableDictionary, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutUpdateContainerOffsetResult : NSObject <_UICollectionLayoutUpdateContainerOffsetResult>
+@interface _UICollectionLayoutUpdateContainerOffsetResult : NSObject
 {
     NSMutableDictionary *_invalidatedSupplementaryIndexesDict;
 }

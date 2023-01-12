@@ -14,7 +14,7 @@
 @optional
 - (void)didStopOwnerRangingOnDevice:(NSUUID *)arg1 withError:(NSError *)arg2;
 - (void)didStartRangingOnDevice:(NSUUID *)arg1 withError:(NSError *)arg2;
-- (void)didConnectToDevice:(NSUUID *)arg1 withError:(NSError *)arg2;
+- (void)didConnectDevice:(NSUUID *)arg1 error:(NSError *)arg2;
 - (void)didFetchTxPower:(NSNumber *)arg1 fromDevice:(NSUUID *)arg2 withError:(NSError *)arg3;
 - (void)didReceiveNewBTRSSI:(PRBTRSSI *)arg1;
 @end

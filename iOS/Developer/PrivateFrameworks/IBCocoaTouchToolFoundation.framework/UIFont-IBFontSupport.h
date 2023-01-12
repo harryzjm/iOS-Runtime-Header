@@ -6,13 +6,13 @@
 
 #import <UIKit/UIFont.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface UIFont (IBFontSupport) <IBBinaryArchiving>
+@interface UIFont (IBFontSupport)
 + (id)ibPlaceholderFontWithName:(id)arg1 family:(id)arg2 pointSize:(double)arg3;
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
++ (id)ibFontTextStyleToFontInfoMap;
++ (id)ibSystemFontWeightToFontInfoMap;
 + (id)ib_unregisterFontsAtURLs:(id)arg1;
 + (id)ib_registerFontsAtURLs:(id)arg1;
 + (id)ib_customFonts;

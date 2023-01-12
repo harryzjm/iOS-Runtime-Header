@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSSQLModel;
+@class NSDictionary, NSManagedObjectID, NSSQLEntity, NSSQLModel;
 
 @protocol NSSQLModelProvider
+- (NSManagedObjectID *)newObjectIDForEntity:(NSSQLEntity *)arg1 pk:(long long)arg2;
 - (NSDictionary *)ancillarySQLModels;
 - (NSDictionary *)ancillaryModels;
 - (NSSQLModel *)model;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UILabel;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchBarPromptContainerView
+@interface _UISearchBarPromptContainerView : UIView
 {
     long long _barMetrics;
     UILabel *_promptLabel;
@@ -18,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *promptLabel; // @synthesize promptLabel=_promptLabel;
 @property(nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property(nonatomic) long long barMetrics; // @synthesize barMetrics=_barMetrics;
+- (id)description;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (_Bool)useMini;

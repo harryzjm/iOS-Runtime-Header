@@ -6,11 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC7SwiftUIP33_53095E34581C439FFBDB89F0B27FB22119VectorImageContents : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *imageCache;
 }
 
 @end

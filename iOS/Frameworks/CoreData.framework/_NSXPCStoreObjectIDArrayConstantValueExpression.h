@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCoding-Protocol.h>
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _NSXPCStoreObjectIDArrayConstantValueExpression : NSObject <NSSecureCoding, NSCoding>
+@interface _NSXPCStoreObjectIDArrayConstantValueExpression : NSObject
 {
     id _constantValue;
 }

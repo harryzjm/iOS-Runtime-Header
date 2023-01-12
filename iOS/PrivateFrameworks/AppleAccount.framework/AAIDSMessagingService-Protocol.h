@@ -13,6 +13,7 @@
 @property(nonatomic) __weak id <AAMessagingServiceDelegate> custodianDelegate;
 @property(nonatomic) __weak id <AAMessagingServiceDelegate> inheritanceDelegate;
 - (NSUUID *)sendMessage:(NSData *)arg1 destinations:(NSArray *)arg2 responseIdentifier:(NSString *)arg3 fireAndForget:(_Bool)arg4 requiredCapabilities:(NSSet *)arg5 lackingCapabilities:(NSSet *)arg6 error:(id *)arg7;
+- (void)doDestinations:(NSArray *)arg1 haveIneligibleDeviceForCapability:(AAMessagingCapability *)arg2 completion:(void (^)(_Bool, NSDictionary *, NSError *))arg3;
 - (void)fetchCapability:(AAMessagingCapability *)arg1 destinations:(NSArray *)arg2 completion:(void (^)(_Bool, NSDictionary *, NSError *))arg3;
 - (void)partitionByCapability:(AAMessagingDestination *)arg1 completion:(void (^)(_Bool, NSDictionary *, NSError *))arg2;
 @end

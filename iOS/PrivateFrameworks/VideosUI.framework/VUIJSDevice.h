@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIJSDevice-Protocol.h>
+#import "VUIJSObject.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIJSDevice <VUIJSDevice>
+@interface VUIJSDevice : VUIJSObject
 {
     id _networkPropertiesChangedToken;
 }
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)getMobileGestaltString:(struct __CFString *)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool supportsSharedWatchPostPlayBinge;
-@property(readonly, nonatomic) _Bool isAlternateLayoutEnabled;
+@property(readonly, nonatomic) _Bool isUI;
 @property(readonly, nonatomic) NSString *osBuildNumber;
 @property(readonly, nonatomic) _Bool isSeedBuild;
 @property(readonly, nonatomic) _Bool isInRetailDemoMode;

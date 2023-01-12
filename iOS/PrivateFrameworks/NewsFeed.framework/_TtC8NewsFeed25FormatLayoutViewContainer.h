@@ -14,6 +14,7 @@
     MISSING_TYPE *view;
     MISSING_TYPE *rootView;
     MISSING_TYPE *$__lazy_storage_$_viewportMonitorObservers;
+    MISSING_TYPE *$__lazy_storage_$_loadAwareObservers;
 }
 
 @end

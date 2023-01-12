@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTStackBacktrace, NSString;
 
-@interface DVTTimeSlicedMainThreadWorkQueue : NSObject <DVTInvalidation>
+@interface DVTTimeSlicedMainThreadWorkQueue : NSObject
 {
     DVTStackBacktrace *_creationBacktrace;
     unsigned long long _qosSlot;

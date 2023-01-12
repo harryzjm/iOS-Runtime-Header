@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNUICoreRemoteApplicationIconFetching-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CNUICoreRemoteApplicationIconLoader : NSObject <CNUICoreRemoteApplicationIconFetching>
+@interface CNUICoreRemoteApplicationIconLoader : NSObject
 {
 }
 

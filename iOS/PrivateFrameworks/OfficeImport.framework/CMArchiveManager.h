@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/TCCancelDelegate-Protocol.h>
-
 @class NSCache, NSMutableDictionary, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CMArchiveManager : NSObject <TCCancelDelegate>
+@interface CMArchiveManager : NSObject
 {
     _Bool mIsThumbnail;
     _Bool mIsOnPhone;

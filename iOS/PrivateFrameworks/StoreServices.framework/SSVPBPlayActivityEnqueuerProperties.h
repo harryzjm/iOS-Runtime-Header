@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <StoreServices/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SSVPBPlayActivityEnqueuerProperties : PBCodable <NSCopying>
+@interface SSVPBPlayActivityEnqueuerProperties : PBCodable
 {
     unsigned long long _storeAccountID;
     NSString *_buildVersion;

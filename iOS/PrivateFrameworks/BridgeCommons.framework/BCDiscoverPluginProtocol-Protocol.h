@@ -6,12 +6,12 @@
 
 #import <BridgeCommons/NSObject-Protocol.h>
 
-@class NSString, UIImage, UIViewController;
+@class NSMutableAttributedString, NSString, UIImage, UIViewController;
 
 @protocol BCDiscoverPluginProtocol <NSObject>
 - (unsigned long long)displayIndexForPluginInSection;
 - (unsigned long long)displaySectionForPlugin;
-- (NSString *)descriptionForDiscoverPlugin;
+- (NSMutableAttributedString *)descriptionForDiscoverPlugin;
 - (NSString *)titleForDiscoverPlugin;
 - (UIImage *)badgeImageForDiscoverPlugin;
 
@@ -20,5 +20,6 @@
 - (unsigned long long)analyticsEventType;
 - (void)onUserTappedPlugin;
 - (UIViewController *)detailViewControllerToLaunch;
+- (UIImage *)descriptionImage;
 @end
 

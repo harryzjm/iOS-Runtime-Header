@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/MSPFavoritesReplicaRecord-Protocol.h>
-#import <MapsSupport/NSSecureCoding-Protocol.h>
-
 @class MSPPosition, MSPVectorTimestamp, NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MSPFavoritesReplicaPlaceholderRecord : NSObject <MSPFavoritesReplicaRecord, NSSecureCoding>
+@interface _MSPFavoritesReplicaPlaceholderRecord : NSObject
 {
     NSData *_contents;
     MSPVectorTimestamp *_contentsTimestamp;

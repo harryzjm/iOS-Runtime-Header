@@ -10,10 +10,9 @@
 
 @interface _TtC16SiriVideoIntents23BackgroundPlayableFetch : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *$defaultActor;
     MISSING_TYPE *contentResolver;
     MISSING_TYPE *playableMap;
-    MISSING_TYPE *groupMap;
-    MISSING_TYPE *responseQueue;
 }
 
 @end

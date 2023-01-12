@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewFlowLayout.h>
 
-#import <ContactsUI/NSCopying-Protocol.h>
-
 @class NSIndexPath;
 
 __attribute__((visibility("hidden")))
-@interface CNContactGridViewLayout : UICollectionViewFlowLayout <NSCopying>
+@interface CNContactGridViewLayout : UICollectionViewFlowLayout
 {
     _Bool _needsUpdateLayout;
     long long _numberOfColumns;

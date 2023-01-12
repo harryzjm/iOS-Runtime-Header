@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLBufferLayoutDescriptorArray.h"
+
 @class MTLBufferLayoutDescriptorInternal;
 
 __attribute__((visibility("hidden")))
-@interface MTLBufferLayoutDescriptorArrayInternal
+@interface MTLBufferLayoutDescriptorArrayInternal : MTLBufferLayoutDescriptorArray
 {
     MTLBufferLayoutDescriptorInternal *_descriptors[31];
 }

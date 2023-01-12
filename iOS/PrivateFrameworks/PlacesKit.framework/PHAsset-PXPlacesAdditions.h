@@ -6,11 +6,9 @@
 
 #import <Photos/PHAsset.h>
 
-#import <PlacesKit/PXPlacesGeotaggable-Protocol.h>
-
 @class NSString;
 
-@interface PHAsset (PXPlacesAdditions) <PXPlacesGeotaggable>
+@interface PHAsset (PXPlacesAdditions)
 + (id)pk_fetchPlacesAssetsInAssetCollection:(id)arg1 options:(id)arg2;
 - (long long)pk_isContentEqualTo:(id)arg1;
 - (long long)compareTo:(id)arg1;

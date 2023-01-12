@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <Security/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface MockAKSRefKey : PBCodable <NSCopying>
+@interface MockAKSRefKey : PBCodable
 {
     NSData *_key;
     NSData *_optionalParams;

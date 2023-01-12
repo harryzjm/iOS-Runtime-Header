@@ -9,6 +9,8 @@
 @class IDSAccount, IDSService, NSDictionary, NSString, NSUUID;
 
 @protocol MSVQRConnectionSessionDataSource <NSObject>
+@property(readonly, nonatomic) NSString *applicationProtocol;
+@property(readonly, nonatomic) CDUnknownBlockType trustHandler;
 @property(readonly, nonatomic) NSString *rpcPath;
 @property(readonly, nonatomic) NSString *pluginIdentifier;
 @property(readonly, nonatomic) NSDictionary *groupSessionOptions;

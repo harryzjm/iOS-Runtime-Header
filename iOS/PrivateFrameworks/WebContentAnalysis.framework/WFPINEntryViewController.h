@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WebContentAnalysis/WFPINEntryViewControllerProtocol-Protocol.h>
-
 @class NSArray, NSString, NSURL, WFRemotePINEntryViewController, _UIFallbackPresentationViewController;
 
 __attribute__((visibility("hidden")))
-@interface WFPINEntryViewController : UIViewController <WFPINEntryViewControllerProtocol>
+@interface WFPINEntryViewController : UIViewController
 {
     _UIFallbackPresentationViewController *_fallbackPresentationVC;
     NSArray *_windowsWithDisabledRotation;

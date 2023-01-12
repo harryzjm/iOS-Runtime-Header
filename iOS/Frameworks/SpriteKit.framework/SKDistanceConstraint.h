@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKConstraint.h"
+
 @class SKNode, SKRange;
 
 __attribute__((visibility("hidden")))
-@interface SKDistanceConstraint
+@interface SKDistanceConstraint : SKConstraint
 {
     SKRange *_distanceRange;
     SKNode *_node;

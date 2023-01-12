@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
-@interface TSTLayoutSpaceBezierPathCacheKey : NSObject <NSCopying>
+@interface TSTLayoutSpaceBezierPathCacheKey : NSObject
 {
     _Bool _reoriginToZero;
     double _inset;

@@ -29,7 +29,9 @@
 - (id)msv_flatMap:(CDUnknownBlockType)arg1;
 - (id)msv_firstWhere:(CDUnknownBlockType)arg1;
 - (id)msv_filter:(CDUnknownBlockType)arg1;
+- (id)msv_compactMapValues:(CDUnknownBlockType)arg1;
 - (id)msv_compactMap:(CDUnknownBlockType)arg1;
+- (id)msv_mapValues:(CDUnknownBlockType)arg1;
 - (id)msv_map:(CDUnknownBlockType)arg1;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <Accounts/NSCopying-Protocol.h>
-
 @class ACProtobufDate, ACProtobufURL, ACProtobufUUID, ACProtobufVariableValueDictionary, ACProtobufVariableValueList, NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ACProtobufVariableValue : PBCodable <NSCopying>
+@interface ACProtobufVariableValue : PBCodable
 {
     double _doubleValue;
     long long _integerValue;

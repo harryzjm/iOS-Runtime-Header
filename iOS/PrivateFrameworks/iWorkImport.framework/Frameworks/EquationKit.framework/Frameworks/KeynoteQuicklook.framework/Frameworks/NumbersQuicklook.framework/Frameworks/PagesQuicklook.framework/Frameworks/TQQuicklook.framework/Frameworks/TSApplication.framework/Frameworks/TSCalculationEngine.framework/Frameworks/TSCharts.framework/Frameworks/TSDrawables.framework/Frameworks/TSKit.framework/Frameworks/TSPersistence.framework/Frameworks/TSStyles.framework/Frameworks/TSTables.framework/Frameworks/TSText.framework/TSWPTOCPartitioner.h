@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSDPartitioner-Protocol.h>
-
 @class TSWPTOCInfo;
 
-@interface TSWPTOCPartitioner : NSObject <TSDPartitioner>
+@interface TSWPTOCPartitioner : NSObject
 {
     TSWPTOCInfo *_info;
 }

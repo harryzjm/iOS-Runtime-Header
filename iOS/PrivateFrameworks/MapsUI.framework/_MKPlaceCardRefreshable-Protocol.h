@@ -6,7 +6,7 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MKPlaceCardActionItem, MKUGCCallToActionViewAppearance, NSArray, NSDictionary, UIView, _MKPlaceActionButtonController;
+@class _MKPlaceActionButtonController;
 @protocol _MKPlaceItem;
 
 @protocol _MKPlaceCardRefreshable <NSObject>
@@ -19,14 +19,5 @@
 @property(nonatomic) _Bool placeInCollections;
 - (void)setPlaceItem:(id <_MKPlaceItem>)arg1 updateOriginalContact:(_Bool)arg2;
 - (void)updateHeaderTitle;
-- (NSArray *)createMenuActions;
-- (UIView *)draggableHeaderView;
-- (NSArray *)draggableContent;
-- (void)performAction:(MKPlaceCardActionItem *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(void))arg3;
-- (void)updateCuratedCollectionsView;
-- (void)updateFooterViews;
-- (void)updateCollectionViewsAnimated:(_Bool)arg1;
-- (void)updateActionRowView;
-- (void)updateUGCViewsWithHeaderAppearance:(MKUGCCallToActionViewAppearance *)arg1 rowInfoAppearances:(NSArray *)arg2 userSubmissionStatus:(MKUGCCallToActionViewAppearance *)arg3 animated:(_Bool)arg4;
 @end
 

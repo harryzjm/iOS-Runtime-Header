@@ -6,13 +6,10 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <VideosUI/IKAppNavigationController-Protocol.h>
-#import <VideosUI/VideosExtrasLoadingViewDelegate-Protocol.h>
-
 @class NSString, UIViewController, VideosExtrasContext, VideosExtrasLoadingView, VideosExtrasMainTemplateViewController;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasNavigationController : UINavigationController <VideosExtrasLoadingViewDelegate, IKAppNavigationController>
+@interface VideosExtrasNavigationController : UINavigationController
 {
     VideosExtrasLoadingView *_loadingView;
     UIViewController *_emptyViewController;

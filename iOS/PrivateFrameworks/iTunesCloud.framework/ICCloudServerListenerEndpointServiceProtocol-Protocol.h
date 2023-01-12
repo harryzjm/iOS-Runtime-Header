@@ -7,6 +7,7 @@
 #import <iTunesCloud/NSObject-Protocol.h>
 
 @protocol ICCloudServerListenerEndpointServiceProtocol <NSObject>
+- (void)notifyDeviceSetupFinishedWithCompletion:(void (^)(NSError *))arg1;
 - (void)getListenerEndpointForService:(long long)arg1 completion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
 @end
 

@@ -9,7 +9,7 @@
 @protocol MDLTransformOp
 @property(readonly, nonatomic) NSString *name;
 - (_Bool)IsInverseOp;
-- (CDStruct_14d5dc5e)double4x4AtTime:(double)arg1;
-- (CDStruct_14d5dc5e)float4x4AtTime:(double)arg1;
+- (CDStruct_f1db2b5e)double4x4AtTime:(double)arg1;
+- (CDStruct_f1db2b5e)float4x4AtTime:(double)arg1;
 @end
 

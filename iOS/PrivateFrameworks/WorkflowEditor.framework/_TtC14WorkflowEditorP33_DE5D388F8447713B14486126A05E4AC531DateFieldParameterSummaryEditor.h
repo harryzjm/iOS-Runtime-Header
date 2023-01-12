@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s14WorkflowEditor025TextInputParameterSummaryB0CN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC14WorkflowEditorP33_DE5D388F8447713B14486126A05E4AC531DateFieldParameterSummaryEditor
+@interface _TtC14WorkflowEditorP33_DE5D388F8447713B14486126A05E4AC531DateFieldParameterSummaryEditor : _$s14WorkflowEditor025TextInputParameterSummaryB0CN
 {
     MISSING_TYPE *$__lazy_storage_$_hintDateFormatter;
 }

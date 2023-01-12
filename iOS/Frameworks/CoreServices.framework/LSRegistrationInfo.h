@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSMutableCopying-Protocol.h>
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface LSRegistrationInfo : NSObject <NSSecureCoding, NSMutableCopying>
+@interface LSRegistrationInfo : NSObject
 {
     unsigned int version;
     unsigned int action;

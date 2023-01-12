@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitSystem-Protocol.h>
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 @class GEOPBTransitSystem, GEOStyleAttributes, NSString;
 @protocol GEOTransitArtworkDataSource;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitSystem : NSObject <GEOTransitSystem, NSSecureCoding>
+@interface _GEOTransitSystem : NSObject
 {
     GEOPBTransitSystem *_system;
 }

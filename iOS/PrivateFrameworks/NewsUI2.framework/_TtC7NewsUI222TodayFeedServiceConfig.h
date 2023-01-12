@@ -19,6 +19,8 @@
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *refreshInterval;
     MISSING_TYPE *cacheKey;
+    MISSING_TYPE *canCache;
+    MISSING_TYPE *userInfo;
 }
 
 @end

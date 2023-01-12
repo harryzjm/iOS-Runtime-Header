@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/VCPMADServiceImageProcessingSubtaskProtocol-Protocol.h>
-#import <MediaAnalysis/VCPMADTaskProtocol-Protocol.h>
-
 @class MADImageSafetyClassificationRequest, NSString, VCPMADServiceImageAsset;
 
 __attribute__((visibility("hidden")))
-@interface VCPMADImageSafetyClassificationTask : NSObject <VCPMADServiceImageProcessingSubtaskProtocol, VCPMADTaskProtocol>
+@interface VCPMADImageSafetyClassificationTask : NSObject
 {
     MADImageSafetyClassificationRequest *_request;
     VCPMADServiceImageAsset *_imageAsset;
@@ -24,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)taskWithRequest:(id)arg1 imageAsset:(id)arg2 andSignpostPayload:(id)arg3;
 - (void).cxx_destruct;
 - (int)run;
+- (void)logMemoryWithMessage:(id)arg1;
 - (void)cancel;
 - (_Bool)autoCancellable;
 - (float)resourceRequirement;

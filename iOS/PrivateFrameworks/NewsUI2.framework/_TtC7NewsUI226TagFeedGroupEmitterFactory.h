@@ -12,6 +12,23 @@
 {
     MISSING_TYPE *paywallFactory;
     MISSING_TYPE *formatService;
+    MISSING_TYPE *weatherService;
+    MISSING_TYPE *channelLocationService;
+    MISSING_TYPE *channelPersonalizer;
+    MISSING_TYPE *tagService;
+    MISSING_TYPE *personalizationService;
+    MISSING_TYPE *sportsDataService;
+    MISSING_TYPE *sportsTopicClusteringService;
+    MISSING_TYPE *sportsGraphManager;
+    MISSING_TYPE *sportsScoreSectionService;
+    MISSING_TYPE *tagHighlightsService;
+    MISSING_TYPE *sportsFavoritesService;
+    MISSING_TYPE *sportsEventManager;
+    MISSING_TYPE *promotedHeadlineService;
+    MISSING_TYPE *sportsScoreSorter;
+    MISSING_TYPE *sportsStandingConfigurationManager;
+    MISSING_TYPE *sportsNavigationTitleStringBuilder;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

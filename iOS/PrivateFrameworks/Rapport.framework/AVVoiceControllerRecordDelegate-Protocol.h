@@ -12,6 +12,7 @@
 
 @optional
 - (void)voiceControllerStreamInvalidated:(AVVoiceController *)arg1 forStream:(unsigned long long)arg2;
+- (void)voiceControllerLPCMAudioCallback:(AVVoiceController *)arg1 forStream:(unsigned long long)arg2 buffer:(AVVCAudioBuffer *)arg3;
 - (void)voiceControllerAudioCallback:(AVVoiceController *)arg1 forStream:(unsigned long long)arg2 buffer:(AVVCAudioBuffer *)arg3;
 - (void)voiceControllerDidStopRecording:(AVVoiceController *)arg1 forStream:(unsigned long long)arg2 forReason:(long long)arg3;
 - (void)voiceControllerDidStartRecording:(AVVoiceController *)arg1 forStream:(unsigned long long)arg2 successfully:(_Bool)arg3 error:(NSError *)arg4;

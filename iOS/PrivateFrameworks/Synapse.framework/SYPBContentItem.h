@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <Synapse/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SYPBContentItem : PBCodable <NSCopying>
+@interface SYPBContentItem : PBCodable
 {
     long long _previewLoadLevel;
     NSString *_displayTitle;

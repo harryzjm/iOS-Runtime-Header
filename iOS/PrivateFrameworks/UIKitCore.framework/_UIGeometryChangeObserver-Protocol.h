@@ -9,7 +9,7 @@
 @class UIView;
 
 @protocol _UIGeometryChangeObserver <NSObject>
-- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(UIView *)arg2;
+- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(UIView *)arg2;
 
 @optional
 - (_Bool)_geometryObserverNeedsAncestorOnly;

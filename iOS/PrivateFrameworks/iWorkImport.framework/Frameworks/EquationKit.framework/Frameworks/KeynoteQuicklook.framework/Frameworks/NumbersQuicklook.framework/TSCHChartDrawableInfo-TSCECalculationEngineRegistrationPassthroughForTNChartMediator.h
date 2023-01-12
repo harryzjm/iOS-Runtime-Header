@@ -6,11 +6,9 @@
 
 #import <TSCharts/TSCHChartDrawableInfo.h>
 
-#import <NumbersQuicklook/TSCECalculationEngineRegistration-Protocol.h>
-
 @class NSString;
 
-@interface TSCHChartDrawableInfo (TSCECalculationEngineRegistrationPassthroughForTNChartMediator) <TSCECalculationEngineRegistration>
+@interface TSCHChartDrawableInfo (TSCECalculationEngineRegistrationPassthroughForTNChartMediator)
 - (id)objectToArchiveInDependencyTracker;
 - (id)componentRootObject;
 - (_Bool)registerLast;

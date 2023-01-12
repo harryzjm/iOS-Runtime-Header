@@ -12,21 +12,23 @@ __attribute__((visibility("hidden")))
 @interface PRNLPLanguageModel : NSObject
 {
     NSString *_localization;
-    long long _granularity;
+    long long _modelType;
     NLLanguageModel *_model;
     NLLanguageModelSession *_session;
     NSMutableDictionary *_cachedStates;
     NSMutableArray *_cachedContextsRecycleQueue;
 }
 
-+ (id)languageModelWithLocalization:(id)arg1 granularity:(long long)arg2;
-@property(readonly) long long granularity; // @synthesize granularity=_granularity;
++ (id)languageModelWithLocalization:(id)arg1 type:(long long)arg2;
+@property(readonly) long long modelType; // @synthesize modelType=_modelType;
 @property(readonly, nonatomic) NSString *localization; // @synthesize localization=_localization;
 - (id)stateWithContext:(id)arg1;
+- (_Bool)stringIsBlocklisted:(id)arg1;
 - (_Bool)getConditionalProbabilityForString:(id)arg1 context:(id)arg2 probability:(double *)arg3;
 - (id)description;
 - (void)dealloc;
-- (id)initWithLocalization:(id)arg1 granularity:(long long)arg2;
+- (id)initWithLocalization:(id)arg1 type:(long long)arg2;
+- (id)modelOptionsForLocale:(id)arg1 type:(long long)arg2;
 
 @end
 

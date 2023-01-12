@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI220AudioFeedDataManager : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC7NewsUI220AudioFeedDataManager : NSObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *dataPrewarmer;
-    MISSING_TYPE *audioDataManager;
-    MISSING_TYPE *playbackState;
-    MISSING_TYPE *workQueue;
+    MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *feedService;
-    MISSING_TYPE *audioConfigurationManager;
-    MISSING_TYPE *paidBundleConfigurationManager;
-    MISSING_TYPE *pluginManager;
-    MISSING_TYPE *paywallModule;
-    MISSING_TYPE *paywallFactory;
-    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *feedPluginManager;
+    MISSING_TYPE *accessQueue;
+    MISSING_TYPE *subscriptionService;
+    MISSING_TYPE *tagService;
+    MISSING_TYPE *offlineManager;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

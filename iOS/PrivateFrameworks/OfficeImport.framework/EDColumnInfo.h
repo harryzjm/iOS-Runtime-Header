@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDKeyedObject-Protocol.h>
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDReference, EDResources, EDWorksheet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDColumnInfo : NSObject <NSCopying, EDKeyedObject>
+@interface EDColumnInfo : NSObject
 {
     EDResources *mResources;
     EDWorksheet *mWorksheet;

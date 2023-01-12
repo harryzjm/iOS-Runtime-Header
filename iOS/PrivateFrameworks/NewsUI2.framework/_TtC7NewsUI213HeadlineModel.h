@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI213HeadlineModel : _TtCs12_SwiftObject
 {
     MISSING_TYPE *headline;
+    MISSING_TYPE *audioTrack;
     MISSING_TYPE *likedState;
     MISSING_TYPE *savedState;
     MISSING_TYPE *sharedState;

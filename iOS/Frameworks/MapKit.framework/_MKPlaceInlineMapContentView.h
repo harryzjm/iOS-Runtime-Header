@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_MKUIViewControllerClickableRootView.h"
+
 @class MKMapItemView, MKViewWithHairline, NSLayoutConstraint, UIImage, UIImageView, UIView, _MKUILabel;
 
 __attribute__((visibility("hidden")))
-@interface _MKPlaceInlineMapContentView
+@interface _MKPlaceInlineMapContentView : _MKUIViewControllerClickableRootView
 {
     MKViewWithHairline *_hairlineView;
     NSLayoutConstraint *_topToTitleConstraint;

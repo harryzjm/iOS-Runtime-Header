@@ -10,6 +10,7 @@
 - (id)setQueryItem:(id)arg1 forKey:(id)arg2;
 - (id)removeQueryItemForKey:(id)arg1;
 - (id)queryItemForKey:(id)arg1;
+- (id)changeSchemeToString:(id)arg1;
 - (id)changeSchemeTo:(long long)arg1;
 - (_Bool)isHTTP;
 - (id)removeVideoAdIdentifier;

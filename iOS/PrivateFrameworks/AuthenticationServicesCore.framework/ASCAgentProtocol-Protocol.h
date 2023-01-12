@@ -6,11 +6,13 @@
 
 #import <AuthenticationServicesCore/NSObject-Protocol.h>
 
-@class ASCCredentialRequestContext;
+@class ASCCredentialRequestContext, NSString, NSURL;
 
 @protocol ASCAgentProtocol <NSObject>
+- (void)openCABLEURL:(NSURL *)arg1 fromSourceApplication:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)getShouldUseAlternateCredentialStoreWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)clearAllPlatformPublicKeyCredentialsWithCompletionHandler:(void (^)(void))arg1;
+- (void)cancelCurrentRequest;
 - (void)performAuthorizationRequestsForContext:(ASCCredentialRequestContext *)arg1 withCompletionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg2;
 @end
 

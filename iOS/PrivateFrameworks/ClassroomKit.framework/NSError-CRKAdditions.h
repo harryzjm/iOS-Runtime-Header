@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (CRKAdditions)
++ (id)crk_errorWithPOSIXCode:(int)arg1;
 + (id)crk_errorForSecurityOSStatus:(int)arg1;
 + (id)crk_EDUProfileErrorWithCode:(long long)arg1 errorField:(id)arg2 andValue:(id)arg3;
 + (id)crk_topLevelUserIsNeitherLeaderNorMemberErrorWithUserIdentifier:(id)arg1;

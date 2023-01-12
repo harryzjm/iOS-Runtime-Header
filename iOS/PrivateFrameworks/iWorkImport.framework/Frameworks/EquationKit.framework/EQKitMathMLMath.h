@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EquationKit/EQKitExpression-Protocol.h>
-#import <EquationKit/EQKitMathMLNode-Protocol.h>
-#import <EquationKit/EQKitRootNode-Protocol.h>
-
 @class EQKitEnvironmentInstance, EQKitMathMLNode, NSString;
 @protocol EQKitLayoutNode;
 
-@interface EQKitMathMLMath : NSObject <EQKitMathMLNode, EQKitRootNode, EQKitExpression>
+@interface EQKitMathMLMath : NSObject
 {
     EQKitMathMLNode *mExpression;
     void *mAttributeCollection;

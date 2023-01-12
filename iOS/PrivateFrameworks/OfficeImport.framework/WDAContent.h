@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OADClient-Protocol.h>
-#import <OfficeImport/OADLinkedTextClient-Protocol.h>
-#import <OfficeImport/OADTextClient-Protocol.h>
-
 @class NSString, OADDrawable, WDAAnchor, WDATextBox;
 
 __attribute__((visibility("hidden")))
-@interface WDAContent : NSObject <OADClient, OADTextClient, OADLinkedTextClient>
+@interface WDAContent : NSObject
 {
     WDAAnchor *mAnchor;
     WDATextBox *mTextBox;

@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
     NSArray *__creationStack;
 }
 
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSArray *originatingStack; // @synthesize originatingStack=__creationStack;
 - (void)execute:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithTask:(CDUnknownBlockType)arg1;
 
 @end

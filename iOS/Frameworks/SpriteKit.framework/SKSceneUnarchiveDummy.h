@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SKSceneUnarchiveDummy : NSObject <NSSecureCoding>
+@interface SKSceneUnarchiveDummy : NSObject
 {
 }
 

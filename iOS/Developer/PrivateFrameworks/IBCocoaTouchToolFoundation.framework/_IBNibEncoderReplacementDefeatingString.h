@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <IBCocoaTouchToolFoundation/NSCopying-Protocol.h>
-
-@interface _IBNibEncoderReplacementDefeatingString : NSString <NSCopying>
+@interface _IBNibEncoderReplacementDefeatingString : NSString
 {
     NSString *_string;
 }

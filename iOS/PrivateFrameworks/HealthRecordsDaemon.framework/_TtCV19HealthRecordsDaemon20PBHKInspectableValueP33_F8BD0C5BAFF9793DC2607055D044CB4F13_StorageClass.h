@@ -23,6 +23,7 @@
     MISSING_TYPE *_concept;
     MISSING_TYPE *_dataAbsentReasonConcept;
     MISSING_TYPE *_unitString;
+    MISSING_TYPE *_codedQuantity;
 }
 
 @end

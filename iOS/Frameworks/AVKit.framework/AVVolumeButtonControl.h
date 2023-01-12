@@ -6,13 +6,10 @@
 
 #import <UIKit/UIControl.h>
 
-#import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
-#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
-
 @class AVLayoutItemAttributes, AVMicaPackage, NSString, NSTimer, UIImageView, UISelectionFeedbackGenerator, UIView, UIViewPropertyAnimator;
 
 __attribute__((visibility("hidden")))
-@interface AVVolumeButtonControl : UIControl <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
+@interface AVVolumeButtonControl : UIControl
 {
     long long _trackingState;
     _Bool _included;

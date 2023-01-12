@@ -32,6 +32,7 @@
 + (void)_shouldExpandToFullTokensForScriptInString:(id)arg1 withRange:(struct _NSRange)arg2 shouldExpandStart:(_Bool *)arg3 shouldExpandEnd:(_Bool *)arg4;
 + (struct _NSRange)_affectedRangeByRefiningShapeBasedGesture:(struct _NSRange)arg1 resultType:(long long)arg2 drawing:(id)arg3 targetContentInfo:(id)arg4;
 + (_Bool)_isShapeBasedRangeRefinementSupportedForResultType:(long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) struct _NSRange _storedAffectedRange; // @synthesize _storedAffectedRange=__storedAffectedRange;
 @property(retain, nonatomic) CHTokenizedTextResult *_textResult; // @synthesize _textResult=__textResult;
 @property(readonly, nonatomic) id <CHStroke> lastStroke; // @synthesize lastStroke=_lastStroke;
@@ -47,7 +48,6 @@
 - (struct _NSRange)_affectedRangeByTrimmingSpaces:(struct _NSRange)arg1;
 - (void)getAffectedRange:(struct _NSRange *)arg1 expandedToFullTokens:(_Bool *)arg2;
 - (id)textResult;
-- (void)dealloc;
 - (id)initWithGestureType:(long long)arg1 targetContentInfo:(id)arg2 locale:(id)arg3 normalizedDrawing:(id)arg4 originalDrawing:(id)arg5 lastStroke:(id)arg6 preferCharacterLevel:(_Bool)arg7;
 
 @end

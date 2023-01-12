@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LibraryConfiguration, LibrarySectionController, NSArray, UIAction, UIContextMenuConfiguration, UISwipeActionsConfiguration, UIViewController;
+@class LibraryConfiguration, LibrarySectionController, NSArray, NSString, UIContextMenuConfiguration, UISwipeActionsConfiguration, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface LibraryItemController : NSObject
@@ -15,17 +15,15 @@ __attribute__((visibility("hidden")))
     _Bool _isHidden;
     LibrarySectionController *_sectionController;
     LibraryConfiguration *_configuration;
-    UIAction *_secondaryAction;
-    CDUnknownBlockType _secondaryActionVisibilityProvider;
     UIContextMenuConfiguration *_contextMenuConfiguration;
     UISwipeActionsConfiguration *_swipeActionsConfiguration;
+    NSString *_accessibilityIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *accessibilityIdentifier; // @synthesize accessibilityIdentifier=_accessibilityIdentifier;
 @property(retain, nonatomic) UISwipeActionsConfiguration *swipeActionsConfiguration; // @synthesize swipeActionsConfiguration=_swipeActionsConfiguration;
 @property(retain, nonatomic) UIContextMenuConfiguration *contextMenuConfiguration; // @synthesize contextMenuConfiguration=_contextMenuConfiguration;
-@property(copy, nonatomic) CDUnknownBlockType secondaryActionVisibilityProvider; // @synthesize secondaryActionVisibilityProvider=_secondaryActionVisibilityProvider;
-@property(readonly, nonatomic) UIAction *secondaryAction; // @synthesize secondaryAction=_secondaryAction;
 @property(readonly, nonatomic) _Bool isHidden; // @synthesize isHidden=_isHidden;
 @property(readonly, nonatomic) _Bool isSelected; // @synthesize isSelected=_isSelected;
 @property(readonly, nonatomic) LibraryConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -35,7 +33,12 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)dropOperationForSession:(id)arg1;
 @property(readonly, nonatomic) _Bool isSpringLoaded;
 @property(readonly, nonatomic) NSArray *dragItems;
+- (void)willToggleExpansionState;
+@property(readonly, nonatomic, getter=isExpanded) _Bool expanded;
+@property(readonly, nonatomic) NSArray *subitems;
+@property(readonly, nonatomic) _Bool hasSubitems;
 - (void)updateToolbarIfNeeded;
+@property(readonly, copy, nonatomic) NSArray *accessories;
 @property(readonly, nonatomic) _Bool selectionFollowsFocus;
 @property(readonly, nonatomic) _Bool shouldPersistSelection;
 @property(readonly, nonatomic) UIViewController *viewController;

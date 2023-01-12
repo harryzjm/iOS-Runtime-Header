@@ -10,8 +10,10 @@
 + (id)valueWithCMTimeMapping:(CDStruct_82206317)arg1;
 + (id)valueWithCMTimeRange:(CDStruct_e83c9415)arg1;
 + (id)valueWithCMTime:(CDStruct_1b6d18a9)arg1;
++ (id)valueWithCMVideoDimensions:(CDStruct_79c71658)arg1;
 - (CDStruct_82206317)CMTimeMappingValue;
 - (CDStruct_e83c9415)CMTimeRangeValue;
 - (CDStruct_1b6d18a9)CMTimeValue;
+@property(readonly) CDStruct_79c71658 CMVideoDimensionsValue;
 @end
 

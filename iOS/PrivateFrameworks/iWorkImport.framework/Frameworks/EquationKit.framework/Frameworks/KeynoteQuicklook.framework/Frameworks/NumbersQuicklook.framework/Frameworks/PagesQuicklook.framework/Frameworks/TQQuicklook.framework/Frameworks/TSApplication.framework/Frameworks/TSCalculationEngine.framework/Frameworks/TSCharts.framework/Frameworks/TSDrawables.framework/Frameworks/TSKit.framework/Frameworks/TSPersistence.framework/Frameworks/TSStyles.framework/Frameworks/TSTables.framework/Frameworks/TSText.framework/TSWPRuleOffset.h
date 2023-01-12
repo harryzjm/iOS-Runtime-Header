@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/NSCopying-Protocol.h>
-#import <TSText/TSSPropertyValueArchiving-Protocol.h>
-
-@interface TSWPRuleOffset : NSObject <TSSPropertyValueArchiving, NSCopying>
+@interface TSWPRuleOffset : NSObject
 {
     double _dX;
     double _dY;

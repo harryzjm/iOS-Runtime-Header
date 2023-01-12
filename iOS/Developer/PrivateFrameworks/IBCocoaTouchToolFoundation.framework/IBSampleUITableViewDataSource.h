@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/UITableViewDataSource-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface IBSampleUITableViewDataSource : NSObject <UITableViewDataSource>
+@interface IBSampleUITableViewDataSource : NSObject
 {
     NSArray *_headers;
     NSArray *_sections;

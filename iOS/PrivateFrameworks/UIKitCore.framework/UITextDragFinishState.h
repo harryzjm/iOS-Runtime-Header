@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextDragFinishState-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UITextDragFinishState : NSObject <UITextDragFinishState>
+@interface UITextDragFinishState : NSObject
 {
     _Bool _dragTearoffOccured;
     struct CGPoint _location;

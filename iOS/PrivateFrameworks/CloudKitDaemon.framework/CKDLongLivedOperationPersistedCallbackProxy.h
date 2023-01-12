@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/CKOperationCallbacks-Protocol.h>
-
 @class CKDOperationInfoCache, NSString, Protocol;
 
-@interface CKDLongLivedOperationPersistedCallbackProxy : NSObject <CKOperationCallbacks>
+@interface CKDLongLivedOperationPersistedCallbackProxy : NSObject
 {
     NSString *_operationID;
     Protocol *_callbackProtocol;

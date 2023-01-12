@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/TouchIconFetcherObserver-Protocol.h>
-
 @class NSMutableArray, NSString, WKWebView, _WKRemoteObjectInterface;
 @protocol TouchIconFetcherWebProcessController;
 
 __attribute__((visibility("hidden")))
-@interface TouchIconFetcher : NSObject <TouchIconFetcherObserver>
+@interface TouchIconFetcher : NSObject
 {
     WKWebView *_webView;
     _Bool _fetchingURLs;

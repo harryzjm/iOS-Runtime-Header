@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSAttributedString;
 
 __attribute__((visibility("hidden")))
-@interface _UIAttributedStringView
+@interface _UIAttributedStringView : UIView
 {
     NSAttributedString *_string;
 }

@@ -7,6 +7,7 @@
 #import <Foundation/NSCalendar.h>
 
 @interface NSCalendar (VCSUtilities)
++ (id)VCS_gregorianLocalCalendar:(id)arg1;
 + (id)VCS_gregorianGMTCalendar;
 @end
 

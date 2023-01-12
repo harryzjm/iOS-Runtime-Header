@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/PXBarsControllerDelegate-Protocol.h>
+
 @class PXPhotosBarsController;
 
-@protocol PXPhotosBarsControllerDelegate
+@protocol PXPhotosBarsControllerDelegate <PXBarsControllerDelegate>
+- (void)photosBarsController:(PXPhotosBarsController *)arg1 didRequestDismissWithSender:(id)arg2;
 - (void)photosBarsControllerDidUpdateNavigationItemAppearance:(PXPhotosBarsController *)arg1;
 - (void)photosBarsControllerDidUpdateBars:(PXPhotosBarsController *)arg1;
 @end

@@ -4,42 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPSImageCopyToMatrix, MPSMatrixCopyToImage, MPSMatrixMultiplication, MPSNNGraph, NSData, NSNull, NSObject;
-
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+@class NSData;
 
 #pragma mark Named Structures
-
-struct FilterGraphNode;
-
-struct Graph {
-    struct NodeList<ResourceGraphNode *> _graphSourceImages;
-    struct NodeList<ResourceGraphNode *> _graphSourceStates;
-    struct NodeList<ResourceGraphNode *> _graphResultImages;
-    struct NodeList<ResourceGraphNode *> _graphIntermediateImages;
-    struct NodeList<ResourceGraphNode *> _graphResultStates;
-    MPSNNGraph *_graph;
-    struct NodeList<FilterGraphNode *> _filters;
-    struct NodeList<ResourceGraphNode *> _images;
-    struct NodeList<ResourceGraphNode *> _states;
-    NSObject *_cpuUpdateSem;
-    NSNull *_graphNull;
-};
-
-struct MPSCNNGramFilters_s {
-    MPSImageCopyToMatrix *i2mCopy;
-    MPSMatrixCopyToImage *m2iCopy;
-    MPSMatrixMultiplication *gemm_TN;
-};
-
-struct MPSCNNGramGradientFilters_s {
-    struct MPSCNNGramFilters_s fwdFilters;
-    MPSMatrixMultiplication *gemm_NN;
-};
 
 struct MPSDeviceSpecificInfo {
     struct MPSKernelInfo *_field1;
@@ -51,16 +18,6 @@ struct MPSImageCoordinate {
     unsigned long long x;
     unsigned long long y;
     unsigned long long channel;
-};
-
-struct MPSImageInfo {
-    id _field1;
-    struct MPSPixelInfo *_field2;
-    unsigned int _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    id _field6;
-    unsigned long long _field7;
 };
 
 struct MPSKernelInfo;
@@ -104,51 +61,21 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field36;
     struct MPSDeviceSpecificInfo _field37;
     struct MPSDeviceSpecificInfo _field38;
+    struct MPSDeviceSpecificInfo _field39;
+    struct MPSDeviceSpecificInfo _field40;
+    struct MPSDeviceSpecificInfo _field41;
+    struct MPSDeviceSpecificInfo _field42;
+    struct MPSDeviceSpecificInfo _field43;
+    struct MPSDeviceSpecificInfo _field44;
 };
 
 struct MPSNNDimensionOrder {
     unsigned long long dimensions[4];
 };
 
-struct MPSOrigin {
-    double _field1;
-    double _field2;
-    double _field3;
-};
-
-struct MPSPixelInfo;
-
-struct MPSRegion {
-    struct MPSOrigin _field1;
-    struct MPSSize _field2;
-};
-
-struct MPSSize {
-    double _field1;
-    double _field2;
-    double _field3;
-};
-
 struct MPSSliceInfo {
     unsigned long long _field1;
     unsigned long long _field2;
-};
-
-struct MPSStateInfo {
-    id _field1;
-};
-
-struct NNKernelSourceParams {
-    CDStruct_d6af7fc0 _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    unsigned long long _field10;
 };
 
 struct NeuronInfo {
@@ -159,20 +86,6 @@ struct NeuronInfo {
     NSData *aData;
 };
 
-struct NodeList<FilterGraphNode *> {
-    struct FilterGraphNode **_items;
-    unsigned long long _count;
-    unsigned long long _storageSize;
-};
-
-struct NodeList<ResourceGraphNode *> {
-    struct ResourceGraphNode **_items;
-    unsigned long long _count;
-    unsigned long long _storageSize;
-};
-
-struct ResourceGraphNode;
-
 struct atomic<long> {
     struct __cxx_atomic_impl<long, std::__cxx_atomic_base_impl<long>> {
         _Atomic long long __a_value;
@@ -182,135 +95,34 @@ struct atomic<long> {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned short _field1;
-    unsigned short _field2;
-    unsigned short _field3;
-    unsigned short _field4;
-} CDStruct_8abe0896;
-
-typedef struct {
-    long long x;
-    long long y;
-    long long z;
-} CDStruct_d6af7fc0;
-
-typedef struct CDStruct_183601bc;
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    CDStruct_d6af7fc0 _field3;
-    CDStruct_d6af7fc0 _field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-} CDStruct_12100558;
-
-typedef struct {
-    unsigned short _field1;
-    unsigned short _field2;
-    unsigned short _field3;
-    unsigned short _field4;
-    unsigned short _field5;
-    unsigned short _field6;
-    CDStruct_8abe0896 _field7;
-} CDStruct_4b22da39;
-
-typedef struct {
-    CDStruct_67e7699a origin;
-    CDStruct_da2e99ad size;
-} CDStruct_1e3be3a8;
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    CDStruct_183601bc *_field4;
-    unsigned int _field5;
-    id _field6;
-    CDStruct_4b22da39 _field7;
-    unsigned int _field8;
-    id _field9;
-    CDStruct_8abe0896 _field10;
-    unsigned int _field11;
-    id _field12;
-    CDStruct_8abe0896 _field13;
-    CDStruct_1e3be3a8 _field14;
-    CDStruct_d6af7fc0 _field15;
-    CDStruct_d6af7fc0 _field16;
-    unsigned long long _field17;
-    unsigned long long _field18;
-    unsigned long long _field19;
-} CDStruct_551bb076;
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    CDStruct_183601bc *_field4;
-    unsigned int _field5;
-    id _field6;
-    CDStruct_4b22da39 _field7;
-    unsigned int _field8;
-    id _field9;
-    CDStruct_8abe0896 _field10;
-    CDStruct_1e3be3a8 _field11;
-    CDStruct_d6af7fc0 _field12;
-    unsigned long long _field13;
-    unsigned long long _field14;
-} CDStruct_bbc9fd3e;
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    CDStruct_1e3be3a8 _field4;
-    unsigned long long _field5;
-} CDStruct_5948169e;
-
-typedef struct {
-    struct MPSImageInfo _field1;
-    struct MPSImageInfo _field2;
-    struct MPSStateInfo _field3;
-    struct MPSImageInfo _field4;
-    CDStruct_1e3be3a8 _field5;
-    CDStruct_d6af7fc0 _field6;
-    CDStruct_d6af7fc0 _field7;
-    CDStruct_d6af7fc0 _field8;
-    unsigned long long _field9;
-    unsigned long long _field10;
-    unsigned long long _field11;
-    unsigned long long _field12;
-    unsigned long long _field13;
-} CDStruct_b5ab67bf;
-
-typedef struct {
-    struct MPSImageInfo _field1;
-    struct MPSStateInfo _field2;
-    struct MPSImageInfo _field3;
-    CDStruct_1e3be3a8 _field4;
-    CDStruct_d6af7fc0 _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-} CDStruct_60a8b8fe;
-
-// Ambiguous groups
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-} CDStruct_14f26992;
-
-typedef struct {
     unsigned long long width;
     unsigned long long height;
     unsigned long long depth;
 } CDStruct_da2e99ad;
 
 typedef struct {
-    unsigned long long x;
-    unsigned long long y;
-    unsigned long long z;
-} CDStruct_67e7699a;
+    long long _field1;
+    long long _field2;
+    long long _field3;
+} CDStruct_2ec95fd7;
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    CDStruct_2ec95fd7 _field3;
+    CDStruct_2ec95fd7 _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+} CDStruct_37840a1a;
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    struct {
+        CDStruct_da2e99ad _field1;
+        CDStruct_da2e99ad _field2;
+    } _field4;
+    unsigned long long _field5;
+} CDStruct_1cd378eb;
 

@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKAppMenuBarDocument.h>
 
-#import <StoreKitUI/SKUIDOMFeature-Protocol.h>
-
 @class IKAppContext, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIAppMenuBarDocument : IKAppMenuBarDocument <SKUIDOMFeature>
+@interface SKUIAppMenuBarDocument : IKAppMenuBarDocument
 {
 }
 

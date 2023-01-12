@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface TSCHPropertyMutationIndirectTuple
+#import "TSCHPropertyMutationTuple.h"
+
+@interface TSCHPropertyMutationIndirectTuple : TSCHPropertyMutationTuple
 {
     int _styleOwnerType;
     unsigned long long _styleOwnerIndex;

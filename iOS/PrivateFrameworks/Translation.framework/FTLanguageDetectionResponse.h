@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTLanguageDetectionResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTLanguageDetectionResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_401827d8)addObjectToBuffer:(void *)arg1;
+- (void)predictions_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)predictions_count;
+- (id)predictions_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *predictions;
 @property(readonly, nonatomic) NSString *detected_locale;
 @property(readonly, nonatomic) NSString *return_string;

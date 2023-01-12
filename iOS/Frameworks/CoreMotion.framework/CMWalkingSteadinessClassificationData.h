@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMotion/NSCopying-Protocol.h>
-#import <CoreMotion/NSSecureCoding-Protocol.h>
-
-@interface CMWalkingSteadinessClassificationData : NSObject <NSSecureCoding, NSCopying>
+@interface CMWalkingSteadinessClassificationData : NSObject
 {
     double _lowerBound;
     double _upperBound;

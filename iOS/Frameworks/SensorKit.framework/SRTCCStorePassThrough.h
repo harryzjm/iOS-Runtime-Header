@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/SRTCCStore-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SRTCCStorePassThrough : NSObject <SRTCCStore>
+@interface SRTCCStorePassThrough : NSObject
 {
 }
 

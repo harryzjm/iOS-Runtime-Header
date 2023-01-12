@@ -6,12 +6,10 @@
 
 #import <UIKit/UIActivity.h>
 
-#import <StoreKitUI/SKUIGiftViewControllerDelegate-Protocol.h>
-
 @class NSString, SKUIClientContext, SKUIProductPageItem;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftActivity : UIActivity <SKUIGiftViewControllerDelegate>
+@interface SKUIGiftActivity : UIActivity
 {
     SKUIClientContext *_clientContext;
     SKUIProductPageItem *_item;

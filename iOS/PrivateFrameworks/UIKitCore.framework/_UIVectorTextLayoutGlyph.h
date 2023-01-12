@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIVectorTextLayoutGlyph-Protocol.h>
-
 @class NSString, UIBezierPath;
 
 __attribute__((visibility("hidden")))
-@interface _UIVectorTextLayoutGlyph : NSObject <_UIVectorTextLayoutGlyph>
+@interface _UIVectorTextLayoutGlyph : NSObject
 {
     unsigned short _glyph;
     UIBezierPath *_path;

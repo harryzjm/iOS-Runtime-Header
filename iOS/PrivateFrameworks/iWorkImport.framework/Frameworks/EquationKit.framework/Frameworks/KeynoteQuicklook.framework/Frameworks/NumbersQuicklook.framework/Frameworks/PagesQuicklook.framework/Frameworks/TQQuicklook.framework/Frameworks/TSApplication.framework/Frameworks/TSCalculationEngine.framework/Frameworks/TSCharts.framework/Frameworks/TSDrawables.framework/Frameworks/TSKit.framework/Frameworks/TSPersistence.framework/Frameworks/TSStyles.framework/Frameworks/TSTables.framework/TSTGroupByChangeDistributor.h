@@ -4,11 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCalculationEngine/TSCEDistributor.h>
-
-#import <TSTables/TSTGroupByChangeProtocol-Protocol.h>
-
-@interface TSTGroupByChangeDistributor : TSCEDistributor <TSTGroupByChangeProtocol>
+@interface TSTGroupByChangeDistributor
 {
 }
 

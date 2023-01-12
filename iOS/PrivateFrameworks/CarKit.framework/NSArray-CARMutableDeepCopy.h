@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <CarKit/CARMutableDeepCopying-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (CARMutableDeepCopy) <CARMutableDeepCopying>
+@interface NSArray (CARMutableDeepCopy)
 @property(readonly, nonatomic) id carMutableDeepCopy;
 
 // Remaining properties

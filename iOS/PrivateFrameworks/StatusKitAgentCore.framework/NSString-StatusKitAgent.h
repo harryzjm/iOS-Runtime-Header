@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (StatusKitAgent)
+@property(readonly, nonatomic) NSString *ska_sha256Hash;
 @property(readonly, nonatomic) _Bool ska_appearsToBeEmail;
 @end
 

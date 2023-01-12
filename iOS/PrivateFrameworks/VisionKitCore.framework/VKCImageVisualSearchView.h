@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/VKCVisualSearchResultItemViewDelegate-Protocol.h>
-
 @class NSMutableArray, NSMutableSet, NSString, VKCVisualSearchResult;
 @protocol VKCImageVisualSearchViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCImageVisualSearchView <VKCVisualSearchResultItemViewDelegate>
+@interface VKCImageVisualSearchView
 {
     _Bool _didAddVisualSearchCornerView;
     _Bool _shouldAutomaticallyShowVisualSearchResult;
@@ -30,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)sendDismissedAnalyticsEventEventWithItem:(id)arg1;
 - (void)sendProcessingAnalyticsEventEventWithItem:(id)arg1 duration:(double)arg2;
 - (void)visualSearchItemView:(id)arg1 didProcessResultsWithDuration:(double)arg2;
+- (void)submitVisualSearchUserFeedbackForReportIdentifier:(id)arg1 payload:(id)arg2;
 - (void)generateVisualSearchResultForItems:(id)arg1 queryID:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)visualSearchItemViewDidDismissController:(id)arg1;
 - (void)visualSearchItemView:(id)arg1 didTapVisualSearchIndicatorWithNormalizedBoundingBox:(struct CGRect)arg2;

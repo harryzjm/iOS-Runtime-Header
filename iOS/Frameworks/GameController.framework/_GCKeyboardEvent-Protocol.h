@@ -11,5 +11,6 @@
 @property(readonly) long long down;
 @property(readonly) long long usage;
 @property(readonly) long long usagePage;
+@property(readonly) unsigned long long timestamp;
 @end
 

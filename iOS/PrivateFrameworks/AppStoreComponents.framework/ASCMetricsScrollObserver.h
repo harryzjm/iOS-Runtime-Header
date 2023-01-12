@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/_UIScrollViewScrollObserver-Protocol.h>
-
 @class NSHashTable, NSMutableSet, NSString, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface ASCMetricsScrollObserver : NSObject <_UIScrollViewScrollObserver>
+@interface ASCMetricsScrollObserver : NSObject
 {
     UIScrollView *_scrollView;
     NSHashTable *_delegates;

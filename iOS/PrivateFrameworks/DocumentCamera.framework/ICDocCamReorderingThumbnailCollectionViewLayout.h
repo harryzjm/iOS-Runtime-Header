@@ -6,13 +6,11 @@
 
 #import <UIKit/UICollectionViewLayout.h>
 
-#import <DocumentCamera/UICollectionViewDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString;
 @protocol ICDocCamThumbnailViewLayoutDelegate;
 
 __attribute__((visibility("hidden")))
-@interface ICDocCamReorderingThumbnailCollectionViewLayout : UICollectionViewLayout <UICollectionViewDelegate>
+@interface ICDocCamReorderingThumbnailCollectionViewLayout : UICollectionViewLayout
 {
     _Bool _movingItem;
     _Bool _isScrollingBetweenPages;

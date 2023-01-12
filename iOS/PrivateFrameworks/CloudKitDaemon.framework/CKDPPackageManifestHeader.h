@@ -6,17 +6,13 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface CKDPPackageManifestHeader : PBCodable <NSCopying>
+@interface CKDPPackageManifestHeader : PBCodable
 {
     NSData *_signature;
     int _version;
-    struct {
-        unsigned int version:1;
-    } _has;
+    CDStruct_f20694ce _has;
 }
 
 - (void).cxx_destruct;

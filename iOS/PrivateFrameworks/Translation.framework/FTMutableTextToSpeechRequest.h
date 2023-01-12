@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FTTTSRequestFeatureFlags, FTTextToSpeechRequestContext, FTTextToSpeechRequestDebug, FTTextToSpeechRequestExperiment, FTTextToSpeechRequestMeta, FTTextToSpeechUserProfile, NSArray, NSString;
+@class FTTTSRequestFeatureFlags, FTTextToSpeechRequestContext, FTTextToSpeechRequestDebug, FTTextToSpeechRequestDevConfig, FTTextToSpeechRequestExperiment, FTTextToSpeechRequestMeta, FTTextToSpeechRequestProsodyTransferConfig, FTTextToSpeechUserProfile, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FTMutableTextToSpeechRequest
 {
 }
 
+@property(copy, nonatomic) FTTextToSpeechRequestProsodyTransferConfig *prosody_config;
+@property(copy, nonatomic) FTTextToSpeechRequestDevConfig *dev_config;
 @property(copy, nonatomic) FTTextToSpeechUserProfile *profile;
 @property(copy, nonatomic) FTTextToSpeechRequestDebug *debug;
 @property(copy, nonatomic) FTTTSRequestFeatureFlags *feature_flags;

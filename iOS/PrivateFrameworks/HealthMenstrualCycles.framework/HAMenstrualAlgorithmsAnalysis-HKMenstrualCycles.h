@@ -8,8 +8,9 @@
 
 @interface HAMenstrualAlgorithmsAnalysis (HKMenstrualCycles)
 - (id)hkmc_description;
+- (id)hkmc_deviations;
 - (id)hkmc_statistics;
-- (id)hkmc_fertileWindowProjections;
+- (id)hkmc_fertileWindowProjectionsWithOverridePredictionPrimarySource:(id)arg1 currentDayIndex:(long long)arg2;
 - (id)hkmc_menstruationProjections;
 @end
 

@@ -8,16 +8,9 @@
 
 @protocol ICCloudServerProtocol
 - (void)listCloudServerOperations;
+- (void)fetchEnhancedAudioOfflineKeys;
+- (void)refreshEnhancedAudioSharedKeys;
 - (void)loadBooksForStoreIDs:(NSArray *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
-- (void)disableJaliscoGeniusForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)loadJaliscoGeniusOperationStatusForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(long long, NSError *))arg2;
-- (void)cancelUpdateJaliscoGeniusDataForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)updateJaliscoGeniusDataForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)enableJaliscoGeniusForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)setJaliscoGeniusCUID:(NSString *)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)loadJaliscoGeniusCUIDForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
-- (void)loadJaliscoGeniusLearnMoreURLForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
-- (void)loadIsJaliscoGeniusSupportedForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)updateArtistHeroImagesForConfiguration:(ICConnectionConfiguration *)arg1;
 - (void)setAlbumProperties:(NSDictionary *)arg1 forAlbumPersistentID:(long long)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)uploadCloudPlaylistPropertiesForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
@@ -34,9 +27,11 @@
 - (void)uploadArtworkForPlaylistWithPersistentID:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removePlaylistsWithSagaIDs:(NSArray *)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)publishPlaylistWithSagaID:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSString *, NSString *, NSError *))arg3;
+- (void)sdk_addItemWithSagaID:(long long)arg1 toPlaylistWithPersistentID:(long long)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)sdk_addStoreItemWithOpaqueID:(NSString *)arg1 toPlaylistWithPersistentID:(long long)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)addItemWithSagaID:(long long)arg1 toPlaylistWithPersistentID:(long long)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)addStoreItemWithAdamID:(long long)arg1 referral:(ICCloudAddReferral *)arg2 toPlaylistWithPersistentID:(long long)arg3 configuration:(ICConnectionConfiguration *)arg4 completion:(void (^)(NSError *))arg5;
+- (void)sdk_setPlaylistProperties:(NSDictionary *)arg1 trackList:(ICCloudItemIDList *)arg2 forPlaylistPersistentID:(long long)arg3 configuration:(ICConnectionConfiguration *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)setPlaylistProperties:(NSDictionary *)arg1 trackList:(ICCloudItemIDList *)arg2 forPlaylistPersistentID:(long long)arg3 configuration:(ICConnectionConfiguration *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)sdk_createPlaylistWithPersistentID:(long long)arg1 properties:(NSDictionary *)arg2 trackList:(ICCloudItemIDList *)arg3 configuration:(ICConnectionConfiguration *)arg4 completion:(void (^)(unsigned long long, NSError *))arg5;
 - (void)createPlaylistWithPersistentID:(long long)arg1 properties:(NSDictionary *)arg2 trackList:(ICCloudItemIDList *)arg3 configuration:(ICConnectionConfiguration *)arg4 completion:(void (^)(unsigned long long, NSError *))arg5;

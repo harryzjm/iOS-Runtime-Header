@@ -16,8 +16,8 @@ struct CGSize {
 };
 
 struct NSFileProviderTypeAndCreator {
-    unsigned int type;
-    unsigned int creator;
+    unsigned int _field1;
+    unsigned int _field2;
 };
 
 struct _NSRange {

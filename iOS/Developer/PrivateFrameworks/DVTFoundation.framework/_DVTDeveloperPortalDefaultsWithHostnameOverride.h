@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTDeveloperPortalDefaultsProtocol-Protocol.h>
-
 @class NSString;
 
-@interface _DVTDeveloperPortalDefaultsWithHostnameOverride : NSObject <DVTDeveloperPortalDefaultsProtocol>
+@interface _DVTDeveloperPortalDefaultsWithHostnameOverride : NSObject
 {
     NSString *_hostnameOverride;
     NSString *_endpointOverride;

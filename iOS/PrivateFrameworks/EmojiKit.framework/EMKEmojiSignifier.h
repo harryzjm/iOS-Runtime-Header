@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmojiKit/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface EMKEmojiSignifier : NSObject <NSCopying>
+@interface EMKEmojiSignifier : NSObject
 {
     NSString *_string;
 }

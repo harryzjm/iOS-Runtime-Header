@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _previousCompleteHandler;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isAnimationCompleting; // @synthesize isAnimationCompleting=_isAnimationCompleting;
 @property(copy, nonatomic) CDUnknownBlockType previousCompleteHandler; // @synthesize previousCompleteHandler=_previousCompleteHandler;
-- (void)dealloc;
 
 @end
 

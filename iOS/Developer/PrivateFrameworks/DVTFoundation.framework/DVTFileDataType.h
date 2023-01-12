@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface DVTFileDataType : NSObject <NSCopying>
+@interface DVTFileDataType : NSObject
 {
     struct DVTBitSet *_conformanceBitSet;
 }

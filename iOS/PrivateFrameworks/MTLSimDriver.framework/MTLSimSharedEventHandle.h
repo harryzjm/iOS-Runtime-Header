@@ -6,10 +6,8 @@
 
 #import <Metal/MTLSharedEventHandle.h>
 
-#import <MTLSimDriver/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface MTLSimSharedEventHandle : MTLSharedEventHandle <NSSecureCoding>
+@interface MTLSimSharedEventHandle : MTLSharedEventHandle
 {
 }
 

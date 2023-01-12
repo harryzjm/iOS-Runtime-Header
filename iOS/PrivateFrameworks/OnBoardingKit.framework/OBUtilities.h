@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)stringWithFormat:(id)arg1;
 + (id)localizedString:(id)arg1 forTable:(id)arg2 inBundle:(id)arg3 forLanguage:(id)arg4;
 
 @end

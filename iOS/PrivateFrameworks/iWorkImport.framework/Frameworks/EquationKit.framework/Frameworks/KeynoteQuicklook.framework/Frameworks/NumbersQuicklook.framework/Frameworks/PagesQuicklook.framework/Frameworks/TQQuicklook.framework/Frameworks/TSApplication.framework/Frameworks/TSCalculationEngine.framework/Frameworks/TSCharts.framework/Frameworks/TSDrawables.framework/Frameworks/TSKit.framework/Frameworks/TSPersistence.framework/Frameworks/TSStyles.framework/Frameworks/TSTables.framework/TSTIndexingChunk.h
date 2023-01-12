@@ -10,17 +10,11 @@
 {
     struct TSKUIDStruct _tableUID;
     struct vector<std::vector<NSString *>, std::allocator<std::vector<NSString *>>> _wordFragmentsList;
-    vector_ea0127b3 _headerCoords;
+    struct vector<TSKUIDStructCoord, std::allocator<TSKUIDStructCoord>> _headerCoords;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct TSKUIDStruct tableUID; // @synthesize tableUID=_tableUID;
-- (void)addHeaderWordFragments:(const void *)arg1 atCoord:(const struct TSKUIDStructCoord *)arg2;
-@property(readonly, nonatomic) unsigned long long size;
-- (const void *)headerCoords;
-- (const void *)wordFragmentsList;
-- (id)initWithTableUID:(const struct TSKUIDStruct *)arg1;
 
 @end
 

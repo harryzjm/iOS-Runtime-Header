@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
-@interface TSCHStyleSemanticTag : NSObject <NSCopying>
+@interface TSCHStyleSemanticTag : NSObject
 {
     int _type;
     unsigned long long _index;

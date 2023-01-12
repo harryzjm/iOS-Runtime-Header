@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIStatusBarItem.h"
+
 @class NSString, _UIStatusBarCellularSignalView, _UIStatusBarImageView, _UIStatusBarStringView;
 @protocol _UIStatusBarCellularItemTypeStringProvider;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarCellularItem
+@interface _UIStatusBarCellularItem : _UIStatusBarItem
 {
     _Bool _showsDisabledSignalBars;
     _Bool _marqueeServiceName;
@@ -56,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)entryForDisplayItemWithIdentifier:(id)arg1;
 - (_Bool)_updateSignalView:(id)arg1 withUpdate:(id)arg2 entry:(id)arg3 forceShowingDisabledSignalBars:(_Bool)arg4;
+- (_Bool)_hideSignalViewWithData:(id)arg1 cellularEntry:(id)arg2;
 - (id)_backgroundColorForUpdate:(id)arg1 entry:(id)arg2;
 - (id)_fillColorForUpdate:(id)arg1 entry:(id)arg2;
 - (id)dependentEntryKeys;

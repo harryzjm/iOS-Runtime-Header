@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIFocusContainerGuideRegion.h"
+
 @class UICollectionView;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusCollectionViewSectionContainerGuideRegion
+@interface _UIFocusCollectionViewSectionContainerGuideRegion : _UIFocusContainerGuideRegion
 {
     UICollectionView *_collectionView;
     long long _section;
@@ -18,8 +20,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect sectionFrame; // @synthesize sectionFrame=_sectionFrame;
 @property(nonatomic) long long section; // @synthesize section=_section;
 @property(nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-- (id)_fallbackFocusItemForMovementRequest:(id)arg1 inFocusMap:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_fallbackFocusItemForMovementRequest:(id)arg1 inFocusMap:(id)arg2 withSnapshot:(id)arg3;
+- (_Bool)isEqual:(id)arg1;
+- (id)_focusRegionWithAdjustedFrame:(struct CGRect)arg1 coordinateSpace:(id)arg2;
 
 @end
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPModelLibraryPlaylistEditChangeRequest;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibraryPlaylistEditChangeRequestOperation
+@interface MPModelLibraryPlaylistEditChangeRequestOperation : MPAsyncOperation
 {
     MPModelLibraryPlaylistEditChangeRequest *_request;
     CDUnknownBlockType _localPersistenceResponseHandler;

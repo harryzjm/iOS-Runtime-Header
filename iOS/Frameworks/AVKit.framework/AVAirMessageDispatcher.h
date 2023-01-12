@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVAirTransportDelegate-Protocol.h>
-#import <AVKit/AVBonjourServiceClientDelegate-Protocol.h>
-
 @class AVAirTransport, AVBonjourServiceClient, NSNetService, NSString;
 @protocol AVAirMessageDispatcherClientDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVAirMessageDispatcher : NSObject <AVBonjourServiceClientDelegate, AVAirTransportDelegate>
+@interface AVAirMessageDispatcher : NSObject
 {
     id <AVAirMessageDispatcherClientDelegate> _delegate;
     NSNetService *_currentNetService;

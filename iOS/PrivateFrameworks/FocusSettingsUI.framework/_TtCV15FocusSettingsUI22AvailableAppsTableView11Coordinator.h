@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <FocusSettingsUI/UITableViewDataSource-Protocol.h>
-#import <FocusSettingsUI/UITableViewDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCV15FocusSettingsUI22AvailableAppsTableView11Coordinator : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface _TtCV15FocusSettingsUI22AvailableAppsTableView11Coordinator : NSObject
 {
     MISSING_TYPE *availableApps;
+    MISSING_TYPE *excludedApps;
     MISSING_TYPE *_selectedApps;
     MISSING_TYPE *iconCache;
     MISSING_TYPE *showCheckmarks;

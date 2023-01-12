@@ -6,15 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-#import <CoreChartSwift/UIGestureRecognizerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtCV14CoreChartSwift23InteractionHandlingView10UIViewType : UIView <UIGestureRecognizerDelegate>
+@interface _TtCV14CoreChartSwift23InteractionHandlingView10UIViewType : UIView
 {
     MISSING_TYPE *dispatcher;
     MISSING_TYPE *panDelegate;
-    MISSING_TYPE *panStart;
 }
 
 - (void).cxx_destruct;

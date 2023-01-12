@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/VKGesturingCameraController-Protocol.h>
-
 @class NSString, VKTimedAnimation;
 
 __attribute__((visibility("hidden")))
-@interface VKMapCameraController <VKGesturingCameraController>
+@interface VKMapCameraController
 {
     void *_mapEngine;
     VKTimedAnimation *_horizontalOffsetAnimation;
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
     double _finalPitch;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) void *mapEngine; // @synthesize mapEngine=_mapEngine;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (void)setCamera:(shared_ptr_46708168)arg1;

@@ -14,10 +14,7 @@
     struct Dispatcher *fFilteredPressureDispatcher;
     CDUnknownBlockType fRelativeAltimeterHandler;
     NSOperationQueue *fRelativeAltimeterQueue;
-    struct Sample {
-        double timestamp;
-        CDStruct_ebf20f05 pressureData;
-    } fBaseAltimeterSample;
+    Sample_068dee23 fBaseAltimeterSample;
     float fBarometricBaseAltitude;
     _Bool fBaselineReceived;
     float fMostRecentFilteredPressure;

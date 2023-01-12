@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EquationKit/EQKitLayoutSchemataSpace-Protocol.h>
-#import <EquationKit/EQKitMathMLNode-Protocol.h>
-
 @class NSString;
 
-@interface EQKitMathMLMSpace <EQKitMathMLNode, EQKitLayoutSchemataSpace>
+@interface EQKitMathMLMSpace
 {
 }
 

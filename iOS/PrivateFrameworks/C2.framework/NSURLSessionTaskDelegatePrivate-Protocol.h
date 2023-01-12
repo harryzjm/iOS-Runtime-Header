@@ -11,6 +11,7 @@
 @protocol NSURLSessionTaskDelegatePrivate <NSURLSessionTaskDelegate>
 
 @optional
+- (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 _alternatePathAvailable:(int)arg3;
 - (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 _didReceiveInformationalResponse:(NSURLResponse *)arg3;
 - (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 _conditionalRequirementsChanged:(_Bool)arg3;
 - (void)URLSession:(NSURLSession *)arg1 _taskIsWaitingForConnection:(NSURLSessionTask *)arg2;

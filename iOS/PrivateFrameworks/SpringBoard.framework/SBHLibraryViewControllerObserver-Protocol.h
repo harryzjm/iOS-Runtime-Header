@@ -25,6 +25,5 @@
 - (void)libraryViewControllerWillPresent:(SBHLibraryViewController *)arg1;
 - (void)libraryViewController:(SBHLibraryViewController *)arg1 dataSourceDidChange:(SBHLibraryCategoriesFolderDataSource *)arg2;
 - (void)libraryViewController:(SBHLibraryViewController *)arg1 willLaunchIcon:(SBIcon *)arg2 fromLocation:(NSString *)arg3;
-- (void)libraryViewControllerRequestsDismissal:(SBHLibraryViewController *)arg1;
 @end
 

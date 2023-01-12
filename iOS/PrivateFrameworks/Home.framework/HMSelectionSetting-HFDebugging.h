@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMSelectionSetting.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString;
 
-@interface HMSelectionSetting (HFDebugging) <HFStateDumpBuildable>
+@interface HMSelectionSetting (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties

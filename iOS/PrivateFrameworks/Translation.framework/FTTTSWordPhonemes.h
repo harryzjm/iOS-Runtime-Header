@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTTTSWordPhonemes : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTTTSWordPhonemes : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_9874306f)addObjectToBuffer:(void *)arg1;
+- (void)phonemes_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)phonemes_count;
+- (id)phonemes_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *phonemes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct TTSWordPhonemes *)arg2 verify:(_Bool)arg3;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UINavigationController, UIViewController;
+#import "UIViewController.h"
+
+@class UINavigationController;
 
 __attribute__((visibility("hidden")))
-@interface UISnapshotModalViewController
+@interface UISnapshotModalViewController : UIViewController
 {
     long long _interfaceOrientation;
     UIViewController *_disappearingViewController;

@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthRecordsExtraction/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface _HDUnresolvableReferenceHint : NSObject <NSCopying>
+__attribute__((visibility("hidden")))
+@interface _HDUnresolvableReferenceHint : NSObject
 {
     NSString *_reference;
     unsigned long long _hint;

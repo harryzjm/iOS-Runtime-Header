@@ -6,11 +6,10 @@
 
 #import <GameController/GCControllerComponent-Protocol.h>
 
-@class GCControllerSettings;
+@class GCSProfile;
 
 @protocol GCControllerSettingsComponent <GCControllerComponent>
-@property(readonly, nonatomic) GCControllerSettings *settingsDefault;
-@property(readonly, nonatomic) GCControllerSettings *settingsForBundleID;
+@property(readonly, nonatomic) GCSProfile *settingsProfile;
 @property(copy, nonatomic) CDUnknownBlockType changedHandler;
 @end
 

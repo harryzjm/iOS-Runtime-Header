@@ -12,7 +12,8 @@
 @property(readonly) NSString *feedbackSectionIdentifier;
 @property(readonly) _Bool isWebClip;
 @property(readonly) _Bool isAppClip;
-- (void)setPropertiesOnResultCopy:(id)arg1;
+- (void)copyBasePropertiesOverToResult:(id)arg1;
+- (void)setFeedbackPropertiesOnResultCopy:(id)arg1;
 - (_Bool)collectAnonymousFeatures;
 - (id)objectForFeedback;
 - (id)PRSRankingItemAdditions_correctedQuery;

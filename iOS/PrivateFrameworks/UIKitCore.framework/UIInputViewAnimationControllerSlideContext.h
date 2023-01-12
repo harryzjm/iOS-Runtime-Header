@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
     struct CGRect _snapshotEndFrame;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIInputViewSetPlacement *endPlacement; // @synthesize endPlacement=_endPlacement;
 @property(nonatomic) struct CGRect snapshotEndFrame; // @synthesize snapshotEndFrame=_snapshotEndFrame;
 @property(retain, nonatomic) UIView *snapshot; // @synthesize snapshot=_snapshot;
-- (void)dealloc;
 
 @end
 

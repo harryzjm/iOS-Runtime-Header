@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
-
 @class CALayer, NSString, SKUIClientContext, SKUIEditProfileSettingDescription, SKUIImageView, UIButton, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface SKUIEditProfileSettingDescriptionView <UITextFieldDelegate>
+@interface SKUIEditProfileSettingDescriptionView
 {
     CALayer *_divider1;
     SKUIClientContext *_clientContext;

@@ -6,11 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <HomeUI/HUItemPresentationContainer-Protocol.h>
-
 @class HFItem, NSString;
 
-@interface UIViewController (HUPresentation) <HUItemPresentationContainer>
+@interface UIViewController (HUPresentation)
 - (void)hu_updateNavigationBarStateForViewController;
 - (id)hu_dismissViewControllerAnimated:(_Bool)arg1;
 - (id)hu_performDismissalRequest:(id)arg1;

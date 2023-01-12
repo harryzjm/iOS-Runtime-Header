@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTUserLanguageProfile, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTCreateLanguageProfileRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTCreateLanguageProfileRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -23,6 +20,9 @@ __attribute__((visibility("hidden")))
 - (id)flatbuffData;
 - (Offset_9283f17b)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTUserLanguageProfile *user_language_profile;
+- (void)user_data_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)user_data_count;
+- (id)user_data_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *user_data;
 @property(readonly, nonatomic) NSString *language;
 @property(readonly, nonatomic) NSString *session_id;

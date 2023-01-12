@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIItemCellLayout.h"
+
 @class SKUICellLayoutView, SKUIEditorialCellLayout, SKUILockupItemCellLayout, SKUITextBoxView, UIColor, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIEditorialLockupCellLayout
+@interface SKUIEditorialLockupCellLayout : SKUIItemCellLayout
 {
     struct UIEdgeInsets _contentInsets;
     SKUIEditorialCellLayout *_editorialCellLayout;

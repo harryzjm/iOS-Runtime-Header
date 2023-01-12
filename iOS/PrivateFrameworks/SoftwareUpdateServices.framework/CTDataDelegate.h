@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SoftwareUpdateServices/CoreTelephonyClientDataDelegate-Protocol.h>
-
 @class CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CTDataDelegate : NSObject <CoreTelephonyClientDataDelegate>
+@interface CTDataDelegate : NSObject
 {
     NSObject<OS_dispatch_queue> *_initiationQueue;
     CTXPCServiceSubscriptionContext *_subscriptionContext;

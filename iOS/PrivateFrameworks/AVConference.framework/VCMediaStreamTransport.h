@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     CDStruct_cd00b3f0 _transportStreamInfo;
     struct tagVCCryptor *_receiverSframeCryptor;
     struct tagVCCryptor *_transmitterSframeCryptor;
+    _Bool _rtcpXREnabled;
     _Bool _encryptionInfoReceived;
 }
 
@@ -34,6 +35,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VCMediaStreamConfig *streamConfig; // @synthesize streamConfig=_streamConfig;
 - (unsigned int)getExtendedSequenceNumberForSequenceNumber:(unsigned short)arg1;
 - (unsigned int)getRTCPReportNTPTimeMiddle32ForReportId:(unsigned char)arg1;
+- (_Bool)generateRTCPXRVoIPMetricsReport:(struct tagVCRTCPXRVoIPMetricsReport *)arg1 reportCount:(char *)arg2;
+- (_Bool)generateRTCPXRSummaryReport:(struct tagVCRTCPXRSummaryReport *)arg1 reportCount:(char *)arg2;
 - (_Bool)generateReceptionReport:(struct _RTCP_RECEPTION_REPORT *)arg1 reportCount:(char *)arg2;
 @property(readonly, nonatomic) unsigned short idsStreamId;
 @property(nonatomic) long long streamDirection;
@@ -48,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isRTPTimeoutEnabled) _Bool rtpTimeoutEnabled;
 @property(readonly, nonatomic, getter=isRTCPSendEnabled) _Bool rtcpSendEnabled;
 @property(nonatomic) double rtcpSendInterval;
+@property(readonly, nonatomic, getter=isRTCPXREnabled) _Bool rtcpXREnabled;
 @property(nonatomic, getter=isRTCPEnabled) _Bool rtcpEnabled;
 - (void)handleEncryptionInfoChange:(id)arg1;
 @property(readonly, nonatomic) double lastReceivedRTCPPacketTime;

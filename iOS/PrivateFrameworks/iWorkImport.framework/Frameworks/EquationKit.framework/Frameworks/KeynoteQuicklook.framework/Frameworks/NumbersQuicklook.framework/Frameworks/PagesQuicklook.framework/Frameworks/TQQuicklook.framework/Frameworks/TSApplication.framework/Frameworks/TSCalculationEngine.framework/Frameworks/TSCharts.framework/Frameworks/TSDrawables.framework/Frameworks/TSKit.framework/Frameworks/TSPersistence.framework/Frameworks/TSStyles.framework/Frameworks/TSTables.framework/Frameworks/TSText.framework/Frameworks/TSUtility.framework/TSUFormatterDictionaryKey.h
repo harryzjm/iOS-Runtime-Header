@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/NSCopying-Protocol.h>
-
-@interface TSUFormatterDictionaryKey : NSObject <NSCopying>
+@interface TSUFormatterDictionaryKey : NSObject
 {
     CDStruct_22002e88 _formatStruct;
 }

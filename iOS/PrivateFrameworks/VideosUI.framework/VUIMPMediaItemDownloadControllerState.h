@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VUIMPMediaItemDownloadControllerState : NSObject <NSCopying>
+@interface VUIMPMediaItemDownloadControllerState : NSObject
 {
     _Bool _downloadSucceeded;
     _Bool _downloadInProgress;

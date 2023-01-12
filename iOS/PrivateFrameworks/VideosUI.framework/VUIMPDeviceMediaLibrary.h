@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIDeviceMediaLibrary.h"
+
 @class NSMutableDictionary, VUIMPMediaLibrary;
 
 __attribute__((visibility("hidden")))
-@interface VUIMPDeviceMediaLibrary
+@interface VUIMPDeviceMediaLibrary : VUIDeviceMediaLibrary
 {
     _Bool _updatingRentalPlaybackStartDates;
     VUIMPMediaLibrary *_mediaLibrary;

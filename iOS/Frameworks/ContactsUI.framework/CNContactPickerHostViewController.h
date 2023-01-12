@@ -6,14 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <ContactsUI/CNContactPickerContentViewController-Protocol.h>
-#import <ContactsUI/CNContactPickerHostProtocol-Protocol.h>
-
 @class NSExtension, NSString, UIBarButtonItem, UINavigationController;
 @protocol CNContactPickerContentDelegate, NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface CNContactPickerHostViewController : _UIRemoteViewController <CNContactPickerContentViewController, CNContactPickerHostProtocol>
+@interface CNContactPickerHostViewController : _UIRemoteViewController
 {
     id <CNContactPickerContentDelegate> _delegate;
     id <NSCopying> _currentRequestIdentifier;
@@ -28,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <NSCopying> currentRequestIdentifier; // @synthesize currentRequestIdentifier=_currentRequestIdentifier;
 @property(nonatomic) __weak id <CNContactPickerContentDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)pickerDidCancel;
+- (void)pickerDidCompleteWithNewContact:(id)arg1;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectAddNewContact;

@@ -7,6 +7,8 @@
 #import <UIKit/UILabel.h>
 
 @interface UILabel (NUIContainerView)
++ (id)wrappingLabelWithString:(id)arg1;
++ (id)labelWithString:(id)arg1;
 - (_Bool)isLayoutSizeDependentOnPerpendicularAxis;
 - (_Bool)canUseFastLayoutSizeCalulation;
 @end

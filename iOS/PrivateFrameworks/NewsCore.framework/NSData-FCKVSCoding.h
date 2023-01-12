@@ -6,11 +6,9 @@
 
 #import <Foundation/NSData.h>
 
-#import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
-
 @class NSString;
 
-@interface NSData (FCKVSCoding) <FCKeyValueStoreCoding>
+@interface NSData (FCKVSCoding)
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 + (id)fc_randomDataWithLength:(unsigned long long)arg1;

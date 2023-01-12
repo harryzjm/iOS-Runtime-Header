@@ -7,7 +7,9 @@
 #import <IDS/IDSService.h>
 
 @interface IDSService (MRAdditions)
-+ (id)mediaRemoteServiceName;
-+ (id)sharedIDSService;
++ (id)mr_serviceName;
++ (id)mr_sharedIDSService;
++ (id)mr_companionServiceName;
++ (id)mr_sharedIDSCompanionService;
 @end
 

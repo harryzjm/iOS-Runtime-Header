@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TelephonyUtilities/TUCoreTelephonyClient-Protocol.h>
-#import <TelephonyUtilities/TUEmergencyCoreTelephonyClient-Protocol.h>
-#import <TelephonyUtilities/TUTTYCoreTelephonyClient-Protocol.h>
-
 @class CoreTelephonyClient, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface TUCoreTelephonyClient : NSObject <TUTTYCoreTelephonyClient, TUEmergencyCoreTelephonyClient, TUCoreTelephonyClient>
+@interface TUCoreTelephonyClient : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     CoreTelephonyClient *_client;
@@ -27,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (id)subscriptionForUUID:(id)arg1;
+- (id)subscriptionForLabelIdentifier:(id)arg1;
 - (id)initWithQueue:(id)arg1;
 - (id)init;
 - (unsigned long long)preferredTransportMethodForSubscription:(id)arg1;
@@ -48,6 +45,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)isTTYEnabledForSubscription:(id)arg1;
 - (_Bool)isRTTSupportedForSubscriptionUUID:(id)arg1;
 - (_Bool)isRTTSupportedForSubscription:(id)arg1;
+- (id)objectForKey:(id)arg1 subscriptionLabelIdentifier:(id)arg2 error:(id *)arg3;
+- (id)testEmergencyHandleForSubscriptionLabelIdentifier:(id)arg1 error:(id *)arg2;
+- (_Bool)isDialAssistSupportedForSubscriptionLabelIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)shouldShowEmergencyCallbackModeAlertForSubscription:(id)arg1 error:(id *)arg2;
 - (_Bool)shouldShowEmergencyCallbackModeAlertForSubscriptionUUID:(id)arg1 error:(id *)arg2;
 - (_Bool)isWhitelistedEmergencyNumberForDigits:(id)arg1 subscription:(id)arg2 error:(id *)arg3;

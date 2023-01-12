@@ -6,16 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <Intents/INCacheableContainer-Protocol.h>
-#import <Intents/INCodableAttributeRelationComparing-Protocol.h>
-#import <Intents/INImageProxyInjecting-Protocol.h>
-#import <Intents/INIntentResolutionResultDataProviding-Protocol.h>
-#import <Intents/INJSONSerializable-Protocol.h>
-#import <Intents/INKeyImageProducing-Protocol.h>
-
 @class INImage, NSString;
 
-@interface NSArray (INKeyImageProducing) <INKeyImageProducing, INCacheableContainer, INJSONSerializable, INImageProxyInjecting, INCodableAttributeRelationComparing, INIntentResolutionResultDataProviding>
+@interface NSArray (INKeyImageProducing)
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 @property(readonly) INImage *_keyImage;
 - (id)_intents_localizedCopyWithLocalizer:(id)arg1;

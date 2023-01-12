@@ -6,11 +6,9 @@
 
 #import <Message/MFMailMessage.h>
 
-#import <MessageUI/NSItemProviderWriting-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface MFMailMessage (NSItemProvider) <NSItemProviderWriting>
+@interface MFMailMessage (NSItemProvider)
 + (_Bool)dragItemsAreAllMessages:(id)arg1;
 + (id)writableTypeIdentifiersForItemProvider;
 - (void)_loadMessageDataWithCompletion:(CDUnknownBlockType)arg1;

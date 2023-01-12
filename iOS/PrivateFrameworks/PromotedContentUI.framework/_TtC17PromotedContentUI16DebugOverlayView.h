@@ -6,9 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-#import <PromotedContentUI/APPCVisibilityIgnorable-Protocol.h>
-
-@interface _TtC17PromotedContentUI16DebugOverlayView : UIView <APPCVisibilityIgnorable>
+@interface _TtC17PromotedContentUI16DebugOverlayView : UIView
 {
 }
 

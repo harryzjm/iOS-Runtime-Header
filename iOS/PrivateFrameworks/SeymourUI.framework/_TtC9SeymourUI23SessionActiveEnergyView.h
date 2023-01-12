@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s9SeymourUI23SessionSingleMetricViewCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9SeymourUI23SessionActiveEnergyView
+@interface _TtC9SeymourUI23SessionActiveEnergyView : _$s9SeymourUI23SessionSingleMetricViewCN
 {
     MISSING_TYPE *presenter;
 }

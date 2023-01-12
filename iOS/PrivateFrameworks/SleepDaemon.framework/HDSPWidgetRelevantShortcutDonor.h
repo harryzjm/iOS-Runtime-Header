@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/HDSPWidgetRelevanceDonor-Protocol.h>
-
 @class INRelevantShortcutStore;
 
 __attribute__((visibility("hidden")))
-@interface HDSPWidgetRelevantShortcutDonor : NSObject <HDSPWidgetRelevanceDonor>
+@interface HDSPWidgetRelevantShortcutDonor : NSObject
 {
     INRelevantShortcutStore *_store;
 }

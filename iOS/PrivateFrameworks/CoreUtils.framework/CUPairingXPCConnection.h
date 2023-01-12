@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreUtils/CUPairingDaemonXPCInterface-Protocol.h>
-
 @class CUPairingDaemon, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CUPairingXPCConnection : NSObject <CUPairingDaemonXPCInterface>
+@interface CUPairingXPCConnection : NSObject
 {
     CUPairingDaemon *_daemon;
     _Bool _pmEntitledDeleteIdentity;

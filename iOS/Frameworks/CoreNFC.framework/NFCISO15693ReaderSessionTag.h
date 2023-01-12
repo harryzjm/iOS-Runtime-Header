@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreNFC/NFCISO15693Tag-Protocol.h>
-
 @class NSData, NSString;
 @protocol NFCReaderSession;
 
 __attribute__((visibility("hidden")))
-@interface NFCISO15693ReaderSessionTag <NFCISO15693Tag>
+@interface NFCISO15693ReaderSessionTag
 {
 }
 

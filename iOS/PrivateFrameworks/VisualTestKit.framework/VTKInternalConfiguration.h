@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/NSCopying-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString;
 @protocol VTKComparator, VTKReferenceItemsSource, VTKStoreManager;
 
 __attribute__((visibility("hidden")))
-@interface VTKInternalConfiguration : NSObject <NSCopying>
+@interface VTKInternalConfiguration : NSObject
 {
     unsigned long long _referenceItemsSourceType;
     unsigned long long _imageComparatorStrategy;

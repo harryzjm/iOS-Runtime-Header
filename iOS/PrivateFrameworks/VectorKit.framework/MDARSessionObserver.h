@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
     struct ARSessionObserver *_observer;
 }
 
-@property(nonatomic) ARSession *session; // @synthesize session=_session;
+- (void).cxx_destruct;
+@property(nonatomic) __weak ARSession *session; // @synthesize session=_session;
+@property(nonatomic) struct ARSessionObserver *observer; // @synthesize observer=_observer;
 - (id)initWithObserver:(struct ARSessionObserver *)arg1 onQueue:(id)arg2;
 
 @end

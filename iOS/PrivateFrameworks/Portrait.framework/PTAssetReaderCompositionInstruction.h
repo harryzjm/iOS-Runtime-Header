@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Portrait/AVVideoCompositionInstruction-Protocol.h>
-
 @class NSArray, NSString, PTAssetReader;
 
 __attribute__((visibility("hidden")))
-@interface PTAssetReaderCompositionInstruction : NSObject <AVVideoCompositionInstruction>
+@interface PTAssetReaderCompositionInstruction : NSObject
 {
     int _videTrackID;
     int _auxvTrackID;

@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADSyncInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 __attribute__((visibility("hidden")))
-@interface CADSyncOperationGroup <CADSyncInterface>
+@interface CADSyncOperationGroup : CADOperationGroup
 {
 }
 
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
 - (void)CADDatabaseGetDeletableSources:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetDeletableCalendars:(CDUnknownBlockType)arg1;
-- (_Bool)accessGrantedToPerformSelector:(SEL)arg1;
+- (_Bool)accessGranted;
 
 @end
 

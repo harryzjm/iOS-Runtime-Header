@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPOperation, FCCKPQueryRetrieveRequest, FCCKPRecordRetrieveRequest, FCCKPRequestOperationHeader;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPRequestOperation : PBCodable <NSCopying>
+@interface FCCKPRequestOperation : PBCodable
 {
     FCCKPRequestOperationHeader *_header;
     FCCKPQueryRetrieveRequest *_queryRetrieveRequest;

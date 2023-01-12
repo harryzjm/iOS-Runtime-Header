@@ -6,10 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+@protocol SBUISystemApertureElementContext, SBUISystemApertureElementContextPrivate, SBUISystemApertureHostedElementContext;
+
 @interface NSObject (SBUIPresentableHomeGestureContext)
 - (id)presentableHomeGestureContext;
 - (id)presentableGestureRecognizerPriorityContext;
 - (id)presentableDismissalPreventionContext;
 - (id)presentableButtonEventsContext;
+@property(readonly, nonatomic) id <SBUISystemApertureElementContext> systemApertureElementContext;
+@property(readonly, nonatomic) id <SBUISystemApertureHostedElementContext> systemApertureHostedElementContext;
+@property(readonly, nonatomic) id <SBUISystemApertureElementContextPrivate> systemApertureElementContextPrivate;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

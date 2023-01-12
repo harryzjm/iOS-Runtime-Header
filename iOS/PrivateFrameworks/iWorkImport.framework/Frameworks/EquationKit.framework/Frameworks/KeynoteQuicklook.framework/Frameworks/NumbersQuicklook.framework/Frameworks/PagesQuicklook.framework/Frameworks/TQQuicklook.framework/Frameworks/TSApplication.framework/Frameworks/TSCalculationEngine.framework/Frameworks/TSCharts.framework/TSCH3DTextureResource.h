@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCH3DOptimizedTextureResource-Protocol.h>
-
 @class NSNumber, TSCH3DTexture, TSUOnce;
 
-@interface TSCH3DTextureResource <TSCH3DOptimizedTextureResource>
+@interface TSCH3DTextureResource
 {
     TSCH3DTexture *_parent;
     NSNumber *_cachedHash;

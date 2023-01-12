@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface TSUExtendedAttribute : NSObject <NSCopying>
+@interface TSUExtendedAttribute : NSObject
 {
     NSString *_name;
     NSData *_value;

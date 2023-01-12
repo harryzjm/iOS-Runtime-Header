@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <InstallCoordination/IXAppInstallCoordinatorObserver-Protocol.h>
-
 @class IXAppInstallCoordinator, NSString, NSURL;
 @protocol IXInitiatingOrUpdatingCoordinator;
 
-@interface _IXSimpleInstallerDelegate : NSObject <IXAppInstallCoordinatorObserver>
+__attribute__((visibility("hidden")))
+@interface _IXSimpleInstallerDelegate : NSObject
 {
     CDUnknownBlockType _completion;
+    CDUnknownBlockType _progressBlock;
     NSString *_bundleID;
     IXAppInstallCoordinator<IXInitiatingOrUpdatingCoordinator> *_coordinator;
     NSURL *_moveResultToURL;
@@ -23,9 +23,11 @@
 @property(retain, nonatomic) NSURL *moveResultToURL; // @synthesize moveResultToURL=_moveResultToURL;
 @property(retain, nonatomic) IXAppInstallCoordinator<IXInitiatingOrUpdatingCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property(copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+- (void)coordinator:(id)arg1 didUpdateProgress:(double)arg2 forPhase:(unsigned long long)arg3 overallProgress:(double)arg4;
 - (void)coordinator:(id)arg1 canceledWithReason:(id)arg2 client:(unsigned long long)arg3;
-- (void)coordinatorDidCompleteSuccessfully:(id)arg1;
+- (void)coordinatorDidCompleteSuccessfully:(id)arg1 forApplicationRecord:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

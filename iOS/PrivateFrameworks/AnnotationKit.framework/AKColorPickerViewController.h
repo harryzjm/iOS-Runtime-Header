@@ -6,11 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AnnotationKit/AKTextAttributesUserInterfaceItem-Protocol.h>
-
 @class AKColorPaletteView, AKController, NSString, UIColor;
 
-@interface AKColorPickerViewController : UIViewController <AKTextAttributesUserInterfaceItem>
+@interface AKColorPickerViewController : UIViewController
 {
     UIColor *_color;
     long long _colorAttributeTag;

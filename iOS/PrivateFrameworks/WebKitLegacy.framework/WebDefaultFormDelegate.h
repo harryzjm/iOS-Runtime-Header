@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKitLegacy/WebFormDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebDefaultFormDelegate : NSObject <WebFormDelegate>
+@interface WebDefaultFormDelegate : NSObject
 {
 }
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextPasteItem-Protocol.h>
-
 @class NSArray, NSDictionary, NSItemProvider, NSString, UITextPasteCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface UITextPasteItem : NSObject <UITextPasteItem>
+@interface UITextPasteItem : NSObject
 {
     _Bool _forcesDefaultAttributes;
     NSItemProvider *_itemProvider;

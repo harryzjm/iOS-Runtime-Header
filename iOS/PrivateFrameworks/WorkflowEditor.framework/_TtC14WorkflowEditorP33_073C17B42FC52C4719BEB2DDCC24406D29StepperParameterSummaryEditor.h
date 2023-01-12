@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "WFModuleSummaryEditor.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC14WorkflowEditorP33_073C17B42FC52C4719BEB2DDCC24406D29StepperParameterSummaryEditor
+@interface _TtC14WorkflowEditorP33_073C17B42FC52C4719BEB2DDCC24406D29StepperParameterSummaryEditor : WFModuleSummaryEditor
 {
     MISSING_TYPE *modal;
 }

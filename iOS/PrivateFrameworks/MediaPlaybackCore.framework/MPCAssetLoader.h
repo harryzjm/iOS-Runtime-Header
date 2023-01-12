@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MFAssetLoading-Protocol.h>
-
 @class MPCPlayerItemConfigurator, NSOperationQueue;
 @protocol MPCAssetLoaderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MPCAssetLoader : NSObject <MFAssetLoading>
+@interface MPCAssetLoader : NSObject
 {
     id <MPCAssetLoaderDelegate> _delegate;
     MPCPlayerItemConfigurator *_configurator;

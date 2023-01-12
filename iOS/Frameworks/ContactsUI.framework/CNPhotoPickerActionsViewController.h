@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/CNPhotoPickerActionsDelegate-Protocol.h>
-#import <ContactsUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-
 @class CAShapeLayer, CNPhotoPickerActionButton, CNPhotoPickerActionsModel, NSString, UIStackView, UIView;
 @protocol CNPhotoPickerActionsViewControllerDelegate, CNPhotoPickerActionsViewControllerLayout;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerActionsViewController : UIViewController <CNPhotoPickerActionsDelegate, UIAdaptivePresentationControllerDelegate>
+@interface CNPhotoPickerActionsViewController : UIViewController
 {
     id <CNPhotoPickerActionsViewControllerDelegate> _delegate;
     CNPhotoPickerActionsModel *_actionsModel;

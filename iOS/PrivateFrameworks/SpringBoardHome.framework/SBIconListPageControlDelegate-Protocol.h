@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBIconListPageControl;
+@class SBIconListPageControl, UIView;
 
 @protocol SBIconListPageControlDelegate
+- (UIView *)highlightingViewForPageControl:(SBIconListPageControl *)arg1;
 - (void)pageControl:(SBIconListPageControl *)arg1 didMoveCurrentPageToPage:(long long)arg2 withScrubbing:(_Bool)arg3;
+- (void)pageControlDidEndScrubbing:(SBIconListPageControl *)arg1;
+- (void)pageControlDidBeginScrubbing:(SBIconListPageControl *)arg1;
 - (void)pageControlDidReceiveButtonTap:(SBIconListPageControl *)arg1;
 @end
 

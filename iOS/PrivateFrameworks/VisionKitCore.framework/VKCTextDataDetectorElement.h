@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CRDataDetectorsOutputRegion, NSArray;
+@class CRDataDetectorsOutputRegion, DDScannerResult, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface VKCTextDataDetectorElement
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     _Bool _childrenCreated;
     NSArray *_boundingQuads;
     unsigned long long _dataDetectorTypes;
+    DDScannerResult *_scannerResult;
     unsigned long long _crDataType;
     NSArray *__children;
 }
@@ -28,9 +29,11 @@ __attribute__((visibility("hidden")))
 - (id)boundingQuads;
 @property(readonly, nonatomic) struct _NSRange characterRange;
 - (id)scannerResult;
+- (_Bool)isUnitConversionDataDetector;
 - (_Bool)isTextDataDetector;
 - (unsigned long long)dataType;
 @property(readonly, nonatomic) CRDataDetectorsOutputRegion *ddOutputRegion;
+- (id)initWithScannerResult:(id)arg1;
 - (id)initWithCROutputRegion:(id)arg1 parentDocument:(id)arg2;
 
 @end

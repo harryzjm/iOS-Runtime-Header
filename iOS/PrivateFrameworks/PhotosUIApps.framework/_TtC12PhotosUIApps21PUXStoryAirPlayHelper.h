@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUIApps/PHAirPlayControllerContentProvider-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12PhotosUIApps21PUXStoryAirPlayHelper : NSObject <PHAirPlayControllerContentProvider>
+@interface _TtC12PhotosUIApps21PUXStoryAirPlayHelper : NSObject
 {
     MISSING_TYPE *pickerViewController;
     MISSING_TYPE *presentingViewController;

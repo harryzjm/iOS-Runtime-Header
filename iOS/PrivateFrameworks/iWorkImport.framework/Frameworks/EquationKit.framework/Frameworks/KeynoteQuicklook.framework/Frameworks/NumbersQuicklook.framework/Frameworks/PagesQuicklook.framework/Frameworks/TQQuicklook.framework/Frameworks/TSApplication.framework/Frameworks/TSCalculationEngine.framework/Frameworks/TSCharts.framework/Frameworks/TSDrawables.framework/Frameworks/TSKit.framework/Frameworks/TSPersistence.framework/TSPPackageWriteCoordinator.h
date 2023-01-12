@@ -6,18 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPArchiverManagerDelegate-Protocol.h>
-#import <TSPersistence/TSPComponentWriterDelegate-Protocol.h>
-#import <TSPersistence/TSPDataArchiver-Protocol.h>
-#import <TSPersistence/TSPDataReferenceMapPersistedObjectProvider-Protocol.h>
-#import <TSPersistence/TSPExternalReferenceDelegate-Protocol.h>
-#import <TSPersistence/TSPObjectModifyDelegate-Protocol.h>
-#import <TSPersistence/TSPPersistedObjectUUIDMapDelegate-Protocol.h>
-
 @class NSError, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, NSURL, TSPArchiverManager, TSPComponentExternalReferenceMap, TSPDataAttributesSnapshot, TSPDocumentRevision, TSPObject, TSPObjectContainer, TSPObjectContext, TSPObjectReferenceMap, TSPPackageMetadata, TSPPersistedDataReferenceMap, TSPPersistedObjectUUIDMap, TSPSupportPackageWriteCoordinator;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface TSPPackageWriteCoordinator : NSObject <TSPArchiverManagerDelegate, TSPComponentWriterDelegate, TSPDataArchiver, TSPDataReferenceMapPersistedObjectProvider, TSPExternalReferenceDelegate, TSPPersistedObjectUUIDMapDelegate, TSPObjectModifyDelegate>
+@interface TSPPackageWriteCoordinator : NSObject
 {
     _Atomic _Bool _didWriteObjectContainer;
     TSPObjectContext *_context;

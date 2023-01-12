@@ -7,6 +7,7 @@
 #import <UIKit/UITextField.h>
 
 @interface UITextField (AuthKitUI)
+- (void)ak_clearActivityIndicatorIfExist;
 - (id)ak_addActivityIndicator;
 - (id)ak_addForgotButtonWithTarget:(id)arg1 action:(SEL)arg2;
 @end

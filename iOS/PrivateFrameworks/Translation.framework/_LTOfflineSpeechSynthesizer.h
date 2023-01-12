@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/VSSpeechSynthesizerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LTOfflineSpeechSynthesizer : NSObject <VSSpeechSynthesizerDelegate>
+@interface _LTOfflineSpeechSynthesizer : NSObject
 {
     CDUnknownBlockType _completion;
 }
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (long long)preferredVoiceGender;
 + (void)initialize;
 - (void).cxx_destruct;
+- (void)speechSynthesizer:(id)arg1 willSpeakRangeOfSpeechString:(struct _NSRange)arg2 forRequest:(id)arg3;
 - (void)speechSynthesizer:(id)arg1 didFinishSpeakingRequest:(id)arg2 successfully:(_Bool)arg3 phonemesSpoken:(id)arg4 withError:(id)arg5;
 - (void)speechSynthesizer:(id)arg1 didFinishSpeakingRequest:(id)arg2 withInstrumentMetrics:(id)arg3;
 - (void)cancel;

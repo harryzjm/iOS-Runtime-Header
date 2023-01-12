@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (struct CGRect)accessibilityFrame;
 - (id)_accessibilityAXAttributedLabel;
 - (unsigned int)_accessibilitySlotID;
 - (unsigned long long)accessibilityTraits;

@@ -8,7 +8,6 @@
 @protocol NAArticleFooterType;
 
 @protocol NAArticleFooterDelegate
-- (void)footerResignsAsFirstResponder:(UIViewController<NAArticleFooterType> *)arg1;
 - (void)footerNeedsLayout:(UIViewController<NAArticleFooterType> *)arg1;
 @end
 

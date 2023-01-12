@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SSMetricsEventFieldProvider-Protocol.h>
+#import "SKUIPageComponent.h"
 
 @class NSArray, NSString, SKUICarouselViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUICarouselPageComponent <SSMetricsEventFieldProvider>
+@interface SKUICarouselPageComponent : SKUIPageComponent
 {
     NSArray *_carouselItems;
     double _cycleInterval;

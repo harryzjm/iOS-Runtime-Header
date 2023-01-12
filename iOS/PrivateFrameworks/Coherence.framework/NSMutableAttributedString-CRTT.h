@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableAttributedString.h>
 
 @interface NSMutableAttributedString (CRTT)
+- (void)cr_mergeAttributesInRange:(struct _NSRange)arg1 withStorage:(id)arg2 fromRange:(struct _NSRange)arg3;
 - (void)cr_removeObjectsInRange:(struct _NSRange)arg1;
 - (id)cr_emptyCopy;
 - (id)cr_storageFromRange:(struct _NSRange)arg1;

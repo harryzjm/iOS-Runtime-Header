@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 + (void)logInternalError:(id)arg1;
 + (id)errorForOSStatus:(int)arg1 localizedDescription:(id)arg2;
 + (id)errorForCVReturnCode:(int)arg1 localizedDescription:(id)arg2;
++ (id)errorForVImageError:(long long)arg1 localizedDescription:(id)arg2;
 + (id)errorForFailedEspressoPlan:(void *)arg1 localizedDescription:(id)arg2;
 + (id)errorForEspressoErrorInfo:(CDStruct_3553761d)arg1 localizedDescription:(id)arg2;
 + (id)errorForEspressoReturnStatus:(int)arg1 localizedDescription:(id)arg2;
@@ -46,8 +47,12 @@ __attribute__((visibility("hidden")))
 + (id)errorForUnimplementedFunctionWithLocalizedDescription:(id)arg1;
 + (id)errorForUnsupportedSerializingHeaderVersion:(unsigned int)arg1;
 + (id)errorForInvalidFormatErrorWithLocalizedDescription:(id)arg1;
++ (id)errorForExecutionTimeoutWithLocalizedDescription:(id)arg1 underlyingError:(id)arg2;
++ (id)errorForExecutionTimeoutWithLocalizedDescription:(id)arg1;
 + (id)errorForInternalErrorWithLocalizedDescription:(id)arg1 underlyingError:(id)arg2;
 + (id)errorForInternalErrorWithLocalizedDescription:(id)arg1;
++ (id)errorForInvalidImageFailureWithLocalizedDescription:(id)arg1;
++ (id)errorForInvalidImageFailure;
 + (id)errorForMemoryAllocationFailureWithLocalizedDescription:(id)arg1;
 + (id)errorForMemoryAllocationFailure;
 + (id)errorForCancellationOfRequest:(id)arg1;

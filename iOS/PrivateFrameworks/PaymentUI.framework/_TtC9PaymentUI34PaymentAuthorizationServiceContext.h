@@ -10,6 +10,7 @@
 
 @interface _TtC9PaymentUI34PaymentAuthorizationServiceContext : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *presenter;
     MISSING_TYPE *hostDelegate;
     MISSING_TYPE *needsAuthorizationDidFinishCallback;
 }

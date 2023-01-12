@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SoundAnalysis/MLCustomModel-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _SNSoundPrintKFeatureEmbeddingCustomModel <MLCustomModel>
+@interface _SNSoundPrintKFeatureEmbeddingCustomModel
 {
 }
 

@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreRE/REMeshPayload-Protocol.h>
-
 @class NSArray, NSData, RESerializedPayload;
 @protocol MTLBuffer;
 
 __attribute__((visibility("hidden")))
-@interface REPrivateBufferMeshPayload <REMeshPayload>
+@interface REPrivateBufferMeshPayload
 {
     NSData *_data;
     NSArray *_parts;

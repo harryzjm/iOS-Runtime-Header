@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSSQLiteBinding-Protocol.h>
-
 @class AMSSQLiteConnection, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSSQLiteStatement : NSObject <AMSSQLiteBinding>
+@interface AMSSQLiteStatement : NSObject
 {
     AMSSQLiteConnection *_connection;
     struct sqlite3_stmt *_statement;

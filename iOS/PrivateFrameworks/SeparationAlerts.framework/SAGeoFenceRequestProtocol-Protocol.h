@@ -7,6 +7,7 @@
 @class CLRegion;
 
 @protocol SAGeoFenceRequestProtocol
+- (void)requestStateForRegion:(CLRegion *)arg1;
 - (void)removeGeofence:(CLRegion *)arg1;
 - (void)addGeofence:(CLRegion *)arg1;
 @end

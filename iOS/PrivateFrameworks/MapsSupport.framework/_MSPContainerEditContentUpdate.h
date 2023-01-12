@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsSupport/MSPContainerEditContentUpdate-Protocol.h>
-
 @class NSString;
 @protocol MSPImmutableObject, MSPMutableObject;
 
 __attribute__((visibility("hidden")))
-@interface _MSPContainerEditContentUpdate <MSPContainerEditContentUpdate>
+@interface _MSPContainerEditContentUpdate
 {
     id <MSPMutableObject> _updatedObject;
     id <MSPImmutableObject> _updatedImmutableObject;

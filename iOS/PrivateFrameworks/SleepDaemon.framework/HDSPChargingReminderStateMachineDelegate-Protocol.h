@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineDelegate-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineDelegate-Protocol.h>
 
-@protocol HDSPChargingReminderStateMachineDelegate <HKSPStateMachineDelegate>
+@protocol HDSPChargingReminderStateMachineDelegate <HKSPPersistentStateMachineDelegate>
 - (void)postChargingReminderNotification;
 - (void)stopBatteryMonitoring;
 - (void)startBatteryMonitoring;
-- (void)unscheduleBatteryMonitoring;
-- (void)scheduleBatteryMonitoring;
 @end
 

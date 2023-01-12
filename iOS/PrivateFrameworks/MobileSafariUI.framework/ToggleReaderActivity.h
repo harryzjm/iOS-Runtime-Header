@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 - (void)performActivityWithTabDocument:(id)arg1;
 - (_Bool)_isDisabled;
 - (_Bool)_isEnabled;
+- (long long)actionType;
 - (id)activityType;
 - (id)_systemImageName;
 - (id)activityTitle;

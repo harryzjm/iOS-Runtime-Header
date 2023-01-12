@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
-#import <UIKitCore/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
+#import "UIView.h"
 
-@class NSString, UIView;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControlleriOSActionSheetCancelBackgroundView <UIInterfaceActionVisualBackgroundDisplaying, UIInterfaceActionVisualGroupBackgroundDisplaying>
+@interface _UIAlertControlleriOSActionSheetCancelBackgroundView : UIView
 {
     UIView *backgroundView;
     UIView *highlightBackgroundView;

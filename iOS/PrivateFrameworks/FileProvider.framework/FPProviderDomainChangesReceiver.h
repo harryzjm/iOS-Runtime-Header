@@ -20,8 +20,11 @@ __attribute__((visibility("hidden")))
     FPPacer *_pacer;
 }
 
++ (id)sharedChangesReceiverIfAvailable;
 + (id)sharedChangesReceiver;
++ (id)_sharedChangesReceiverInitIfNeeded:(_Bool)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy) NSDictionary *cachedProviderDomainsByID;
 - (void)providerDomainsHaveChanged:(id)arg1 error:(id)arg2;
 - (void)callChangesHandlersWithProviderDomains:(id)arg1 error:(id)arg2;
 - (void)updateProviderDomainsWithAttemptCount:(unsigned long long)arg1;

@@ -25,6 +25,7 @@
 - (void)searchControllerContentsDidChange:(CKSearchController *)arg1;
 
 @optional
+- (void)deleteChatItemWithTransferGUID:(NSString *)arg1 fromMessageItem:(IMMessageItem *)arg2;
 - (NSArray *)searchControllerChatGUIDsForDetailsSearch:(CKSearchController *)arg1;
 @end
 

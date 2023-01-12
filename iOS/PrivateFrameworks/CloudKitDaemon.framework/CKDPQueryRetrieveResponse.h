@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSMutableArray;
 
-@interface CKDPQueryRetrieveResponse : PBCodable <NSCopying>
+@interface CKDPQueryRetrieveResponse : PBCodable
 {
     NSData *_continuationMarker;
     NSMutableArray *_queryResults;

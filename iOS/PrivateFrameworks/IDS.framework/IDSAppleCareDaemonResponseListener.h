@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-
 @class IDSDaemonRequestTimer, NSString;
 
-@interface IDSAppleCareDaemonResponseListener : NSObject <IDSDaemonListenerProtocol>
+@interface IDSAppleCareDaemonResponseListener : NSObject
 {
     IDSDaemonRequestTimer *_requestTimer;
     CDUnknownBlockType _disconnectedBlock;

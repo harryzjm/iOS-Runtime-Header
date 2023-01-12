@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/UICollectionViewDataSource-Protocol.h>
-#import <ContactsUI/UICollectionViewDelegate-Protocol.h>
-
 @class CNContact, CNMeCardSharingOnboardingAvatarCarouselItem, CNMeCardSharingOnboardingAvatarCarouselLayout, CNSharingProfileLogger, NSArray, NSString, PRMonogramColor, UICollectionView;
 @protocol AVTAvatarRecord, CNMeCardSharingOnboardingAvatarCarouselViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNMeCardSharingOnboardingAvatarCarouselViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CNMeCardSharingOnboardingAvatarCarouselViewController : UIViewController
 {
     id <CNMeCardSharingOnboardingAvatarCarouselViewControllerDelegate> _delegate;
     PRMonogramColor *_monogramColor;

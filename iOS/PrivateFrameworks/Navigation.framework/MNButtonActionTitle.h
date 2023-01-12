@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MNButtonActionTitle : NSObject <NSSecureCoding>
+@interface MNButtonActionTitle : NSObject
 {
     unsigned long long _action;
     NSString *_title;

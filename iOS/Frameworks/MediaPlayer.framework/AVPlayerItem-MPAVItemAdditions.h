@@ -6,12 +6,11 @@
 
 #import <AVFoundation/AVPlayerItem.h>
 
-@class MPAVItem, MPQueuePlayer;
+@class MPAVItem, NSDictionary;
 
 @interface AVPlayerItem (MPAVItemAdditions)
 @property(retain, nonatomic) MPAVItem *MPAVItem;
-@property(nonatomic) __weak MPQueuePlayer *MP_associatedQueuePlayer;
-- (id)MP_shortDescription;
 - (id)createLanguageOptions;
+@property(copy, nonatomic) NSDictionary *nowPlayingInfo; // @dynamic nowPlayingInfo;
 @end
 

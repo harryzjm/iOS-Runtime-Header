@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCoding-Protocol.h>
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface CDDCloudKitMessage : NSObject <NSCoding, NSSecureCoding>
+@interface CDDCloudKitMessage : NSObject
 {
     NSUUID *_identifier;
 }

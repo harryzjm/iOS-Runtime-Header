@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface CNiOSABDependentPropertiesUpdateContext : NSObject
 {
+    _Bool _isUnifiedContact;
     _Bool _hasPendingImageData;
     _Bool _hasPendingCropRect;
     _Bool _hasPendingThumbnailImageData;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSData *pendingThumbnailImageData; // @synthesize pendingThumbnailImageData=_pendingThumbnailImageData;
 @property(nonatomic) struct CGRect pendingCropRect; // @synthesize pendingCropRect=_pendingCropRect;
 @property(copy, nonatomic) NSData *pendingImageData; // @synthesize pendingImageData=_pendingImageData;
+@property(nonatomic) _Bool isUnifiedContact; // @synthesize isUnifiedContact=_isUnifiedContact;
 - (_Bool)setWatchChangesforThumbnailImageDataToPerson:(void *)arg1 error:(id *)arg2;
 - (_Bool)flushPendingImageChangesToPerson:(void *)arg1 logger:(id)arg2 error:(id *)arg3;
 - (_Bool)logIfConditionFailed:(_Bool)arg1 message:(id)arg2 error:(struct __CFError **)arg3;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTRecoverPronsResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTRecoverPronsResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,7 +19,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_78eafd8b)addObjectToBuffer:(void *)arg1;
+- (void)voc_tokens_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)voc_tokens_count;
+- (id)voc_tokens_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *voc_tokens;
+- (void)recovery_return_codes_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)recovery_return_codes_count;
+- (id)recovery_return_codes_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *recovery_return_codes;
 @property(readonly, nonatomic) NSString *error_str;
 @property(readonly, nonatomic) int error_code;

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKDPLocale : PBCodable <NSCopying>
+@interface CKDPLocale : PBCodable
 {
     NSString *_languageCode;
     NSString *_regionCode;

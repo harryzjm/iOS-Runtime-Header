@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface GQHBulletState : NSObject
 {
     struct __CFArray *mLevels;

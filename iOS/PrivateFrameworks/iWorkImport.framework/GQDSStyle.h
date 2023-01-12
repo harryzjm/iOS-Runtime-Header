@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappableWithDefault-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDSStyle : NSObject <GQDNameMappableWithDefault>
+@interface GQDSStyle : NSObject
 {
     GQDSStyle *mParent;
     struct GQDSMap *mPropertyMap;

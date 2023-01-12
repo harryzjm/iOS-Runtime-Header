@@ -10,21 +10,7 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct AbstractVocabulary;
-
-struct CVNLPTextDecodingPruningPolicy {
-    long long strategy;
-    _Bool shouldSort;
-    float threshold;
-    unsigned int maxNumberOfCandidates;
-};
-
 struct _LXCursor;
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
 
 struct __tree_end_node<std::__tree_node_base<void *>*> {
     void *__left_;
@@ -52,12 +38,6 @@ struct map<std::string, std::vector<unsigned long>, std::less<std::string>, std:
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
-};
-
-struct unique_ptr<cvnlp::AbstractVocabulary, std::default_delete<cvnlp::AbstractVocabulary>> {
-    struct __compressed_pair<cvnlp::AbstractVocabulary *, std::default_delete<cvnlp::AbstractVocabulary>> {
-        struct AbstractVocabulary *__value_;
-    } __ptr_;
 };
 
 struct vImage_Buffer {

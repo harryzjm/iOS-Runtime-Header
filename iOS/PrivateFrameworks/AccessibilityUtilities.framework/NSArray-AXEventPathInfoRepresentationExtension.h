@@ -13,6 +13,7 @@
 + (id)axArrayWithPossiblyNilArrays:(unsigned long long)arg1;
 @property(readonly, nonatomic) AXEventPathInfoRepresentation *firstPath;
 - (id)axSafeObjectAtIndex:(unsigned long long)arg1;
+- (id)axFirstObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)axFilterObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)axMapObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)axIsEqualToOrderedArray:(id)arg1 withPredicate:(CDUnknownBlockType)arg2;

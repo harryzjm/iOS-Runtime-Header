@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLModelSerialize-Protocol.h>
-
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSOrderedSet, NSSet, NSString, TMLValueExpression;
 
-@interface TMLMetaObject : NSObject <TMLModelSerialize>
+@interface TMLMetaObject : NSObject
 {
     NSString *_type;
     NSMutableDictionary *_properties;

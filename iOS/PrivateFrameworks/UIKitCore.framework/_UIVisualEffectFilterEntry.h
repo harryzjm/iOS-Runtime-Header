@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIVisualEffectDiffable-Protocol.h>
-
 @class CAFilter, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIVisualEffectFilterEntry : NSObject <_UIVisualEffectDiffable>
+@interface _UIVisualEffectFilterEntry : NSObject
 {
     CAFilter *_filter;
     _Bool _useRelaxedDiffingRule;

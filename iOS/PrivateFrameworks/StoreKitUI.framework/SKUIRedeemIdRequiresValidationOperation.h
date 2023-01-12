@@ -6,12 +6,10 @@
 
 #import <iTunesStore/ISOperation.h>
 
-#import <StoreKitUI/ISDialogOperationDelegate-Protocol.h>
-
 @class NSString, SKUIRedeemViewControllerLegacy;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemIdRequiresValidationOperation : ISOperation <ISDialogOperationDelegate>
+@interface SKUIRedeemIdRequiresValidationOperation : ISOperation
 {
     CDUnknownBlockType _resultBlock;
     SKUIRedeemViewControllerLegacy *_redeemViewController;

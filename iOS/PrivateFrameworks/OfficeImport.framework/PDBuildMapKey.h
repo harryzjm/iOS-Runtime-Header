@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSString, NSValue;
 
 __attribute__((visibility("hidden")))
-@interface PDBuildMapKey : NSObject <NSCopying>
+@interface PDBuildMapKey : NSObject
 {
     NSValue *mDrawableValue;
     NSString *mGroupId;

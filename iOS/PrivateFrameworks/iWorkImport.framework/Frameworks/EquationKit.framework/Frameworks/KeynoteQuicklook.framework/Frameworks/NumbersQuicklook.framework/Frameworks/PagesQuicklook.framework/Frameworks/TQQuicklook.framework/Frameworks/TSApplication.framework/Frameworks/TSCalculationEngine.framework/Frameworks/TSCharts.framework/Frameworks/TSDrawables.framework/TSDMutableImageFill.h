@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSDrawables/NSCopying-Protocol.h>
+#import "TSDImageFill.h"
 
 @class TSPData, TSUColor;
 
-@interface TSDMutableImageFill <NSCopying>
+@interface TSDMutableImageFill : TSDImageFill
 {
 }
 

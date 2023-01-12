@@ -11,7 +11,7 @@
 @protocol PXGItemsLayoutDelegate <NSObject>
 
 @optional
-- (CDStruct_2bd92d94)itemsLayout:(PXGItemsLayout *)arg1 cornerRadiusForItem:(long long)arg2;
+- (CDStruct_c2259bfa)itemsLayout:(PXGItemsLayout *)arg1 cornerRadiusForItem:(long long)arg2;
 - (struct CGSize)itemsLayout:(PXGItemsLayout *)arg1 insetForItem:(long long)arg2;
 - (struct CGSize)itemsLayout:(PXGItemsLayout *)arg1 marginForItem:(long long)arg2;
 - (double)itemsLayout:(PXGItemsLayout *)arg1 rotationAngleForItem:(long long)arg2;

@@ -7,10 +7,10 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (ADCoreExtensions)
-- (id)jsonString;
-- (id)jsonStringWithPrettyPrint:(_Bool)arg1;
-- (_Bool)hasObjectForKey:(id)arg1 ofKindOfClass:(Class)arg2;
-- (id)objectForKey:(id)arg1 ofKindOfClass:(Class)arg2;
-- (id)dictionaryForJSON;
+- (id)AD_jsonString;
+- (id)AD_jsonStringWithPrettyPrint:(_Bool)arg1;
+- (_Bool)AD_hasObjectForKey:(id)arg1 ofKindOfClass:(Class)arg2;
+- (id)AD_objectForKey:(id)arg1 ofKindOfClass:(Class)arg2;
+- (id)AD_dictionaryForJSON;
 @end
 

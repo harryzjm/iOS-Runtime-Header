@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CoreML/CKCodeOperationMessageMutation-Protocol.h>
-#import <CoreML/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ModelKeyServerAPIFetchKeyRequest : PBRequest <CKCodeOperationMessageMutation, NSCopying>
+@interface ModelKeyServerAPIFetchKeyRequest : PBRequest
 {
     NSString *_keyId;
     NSData *_signedKeyRequest;

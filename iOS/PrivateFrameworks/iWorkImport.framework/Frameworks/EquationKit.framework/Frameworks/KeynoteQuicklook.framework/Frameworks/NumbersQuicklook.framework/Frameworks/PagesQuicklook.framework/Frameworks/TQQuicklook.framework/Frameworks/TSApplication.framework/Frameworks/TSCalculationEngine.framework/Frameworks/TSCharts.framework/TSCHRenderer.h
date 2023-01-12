@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHSupportsTextEditing-Protocol.h>
-
 @class NSString, TSCHChartInfo, TSCHChartLayoutItem, TSCHChartModel;
 @protocol TSCHSupportsRendering;
 
-@interface TSCHRenderer : NSObject <TSCHSupportsTextEditing>
+@interface TSCHRenderer : NSObject
 {
     TSCHChartLayoutItem *_layoutItem;
     id <TSCHSupportsRendering> _chartRep;

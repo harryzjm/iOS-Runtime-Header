@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-#import <VideosUI/VUIMediaEntityAssetControllerDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSNumber, NSString;
 @protocol VUIDownloadEntityDelegate, VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadEntity : NSObject <VUIMediaEntityAssetControllerDelegate, NSCopying>
+@interface VUIDownloadEntity : NSObject
 {
     id <VUIDownloadEntityDelegate> _delegate;
     long long _downloadType;

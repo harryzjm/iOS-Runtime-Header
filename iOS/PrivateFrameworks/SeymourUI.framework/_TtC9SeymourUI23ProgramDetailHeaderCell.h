@@ -12,26 +12,34 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI23ProgramDetailHeaderCell : UICollectionViewCell
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *isMinFontPreferred;
     MISSING_TYPE *itemInfo;
     MISSING_TYPE *layout;
     MISSING_TYPE *artworkView;
+    MISSING_TYPE *contentLayoutGuide;
     MISSING_TYPE *vibrantShadowView;
     MISSING_TYPE *textContainer;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *previewButtonPlatter;
     MISSING_TYPE *previewButton;
-    MISSING_TYPE *leadingConstraints;
-    MISSING_TYPE *trailingConstraints;
+    MISSING_TYPE *contentLayoutGuideLeftConstraint;
+    MISSING_TYPE *contentLayoutGuideWidthConstraint;
+    MISSING_TYPE *currentContainerSize;
+    MISSING_TYPE *currentLayout;
+    MISSING_TYPE *oldWidth;
+    MISSING_TYPE *previewButtonRightConstraint;
+    MISSING_TYPE *previewButtonWidthConstraint;
 }
 
 - (void).cxx_destruct;
 - (void)playButtonTapped:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)prepareForReuse;
+- (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic) struct CGRect bounds;
 
 @end
 

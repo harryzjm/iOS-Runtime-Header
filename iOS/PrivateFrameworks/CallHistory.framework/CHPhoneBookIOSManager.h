@@ -6,35 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <CallHistory/CHPhoneBookManagerProtocol-Protocol.h>
-
-@class CNContactStore, NSString;
+@class CNContactStore;
 
 __attribute__((visibility("hidden")))
-@interface CHPhoneBookIOSManager : NSObject <CHPhoneBookManagerProtocol>
+@interface CHPhoneBookIOSManager : NSObject
 {
-    CNContactStore *_fContactsStore;
+    CNContactStore *_contactStore;
 }
 
-+ (id)get;
 - (void).cxx_destruct;
-@property(retain, nonatomic) CNContactStore *fContactsStore; // @synthesize fContactsStore=_fContactsStore;
-- (void)fetchAndCacheContactIdentifiersForCalls:(id)arg1;
-- (_Bool)isABContactASuggestion;
+@property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 - (id)getLocalizedCallerIdLabelForContact:(id)arg1 forCallerId:(id)arg2 withCallerIdIsEmail:(_Bool)arg3;
 - (id)getPersonsNameForContact:(id)arg1;
-- (id)fetchContactIdentifiersForHandles:(id)arg1 error:(id *)arg2;
 - (id)fetchCNContactsMatchingPredicate:(id)arg1 keysToKetch:(id)arg2 error:(id *)arg3;
 - (id)fetchFullCNContactForContactIdentifier:(id)arg1 isEmail:(_Bool)arg2;
 - (id)getRecordId:(id)arg1 countryCode:(id)arg2 isEmail:(_Bool)arg3;
 - (id)fetchCNContact:(id)arg1 countryCode:(id)arg2 isEmail:(_Bool)arg3;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithContactStore:(id)arg1;
 
 @end
 

@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)buildSections;
+- (id)_timeZone;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_showWeekNumbersPreferenceChanged:(id)arg1;
 - (void)importAllPressed:(id)arg1;

@@ -7,6 +7,8 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (EmailFoundationAdditions)
+- (id)ef_popElement;
+- (id)ef_removeFirst;
 - (void)ef_trimToCount:(unsigned long long)arg1 fromStart:(_Bool)arg2;
 - (void)ef_addOptionalObject:(id)arg1;
 - (unsigned long long)ef_removeObject:(id)arg1 usingSortFunction:(CDUnknownFunctionPointerType)arg2 context:(void *)arg3;

@@ -6,15 +6,12 @@
 
 #import <swiftCore/SwiftNativeNSObject.h>
 
-#import <StoreKit/ASDStoreKitTransactionReceiverProtocol-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8StoreKit19TransactionReceiver : SwiftNativeNSObject <ASDStoreKitTransactionReceiverProtocol>
+@interface _TtC8StoreKit19TransactionReceiver : SwiftNativeNSObject
 {
     MISSING_TYPE *$defaultActor;
-    MISSING_TYPE *continuation;
     MISSING_TYPE *logKey;
 }
 

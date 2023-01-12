@@ -11,12 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI30UpdateCoalescingCollectionView : UICollectionView
 {
+    MISSING_TYPE *forceLayoutOnNextSizeChange;
+    MISSING_TYPE *safeAreaTransitionState;
     MISSING_TYPE *cachedIdealSize;
     MISSING_TYPE *visibleCellsUpdate;
     MISSING_TYPE *postUpdateInvalidations;
+    MISSING_TYPE *ignoreGraphUpdates;
+    MISSING_TYPE *pendingGraphUpdate;
     MISSING_TYPE *pendingScrollTarget;
+    MISSING_TYPE *pendingDeselectedItem;
     MISSING_TYPE *_lastUpdateSeed;
     MISSING_TYPE *bridgedState;
+    MISSING_TYPE *eventState;
 }
 
 - (void).cxx_destruct;
@@ -24,8 +30,13 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 @property(nonatomic, readonly) _Bool _wantsConstraintBasedLayout;
 @property(nonatomic, readonly) _Bool canBecomeFirstResponder;
+- (void)safeAreaInsetsDidChange;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)layoutSubviews;
+@property(nonatomic) struct CGSize contentSize;
+@property(nonatomic) struct CGRect frame;
+@property(nonatomic) struct CGRect bounds;
+- (void)layoutBelowIfNeeded;
 
 @end
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TVImageScaleDecorator.h"
+
 @class IKColor;
 
 __attribute__((visibility("hidden")))
-@interface _TVTintedImageDecorator
+@interface _TVTintedImageDecorator : TVImageScaleDecorator
 {
     IKColor *_tintColor;
 }

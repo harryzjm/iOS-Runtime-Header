@@ -13,7 +13,7 @@
     Class _overrideClass;
 }
 
-+ (void)load;
++ (void)initialize;
 - (void).cxx_destruct;
 - (id)description;
 - (void)setSingletonOverride:(id)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
 @class NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface VUIPlaybackPositionInfo : NSObject <NSCopying>
+@interface VUIPlaybackPositionInfo : NSObject
 {
     NSNumber *_bookmarkTime;
     NSNumber *_playCount;

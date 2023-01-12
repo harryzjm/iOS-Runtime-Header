@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/VKGesturingCameraController-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VKARWalkingCameraController <VKGesturingCameraController>
+@interface VKARWalkingCameraController
 {
     void *_arLogic;
     void *_elevationLogic;
     struct Quaternion<double> _rotationCorrectionQuaternion;
-    Coordinate3D_c88e9767 _coordinate;
+    Coordinate3D_b0aa8be1 _coordinate;
     struct EulerAngles _eulerAngles;
-    Unit_57582783 _heading;
+    Unit_6d5b752b _heading;
     struct vector<std::variant<md::ARCameraPanEvent, md::ARCameraRotateEvent>, std::allocator<std::variant<md::ARCameraPanEvent, md::ARCameraRotateEvent>>> _gestures;
     struct Monitorable<md::ConfigValue<GEOConfigKeyDouble, double>> _maxClipDistance;
 }
@@ -52,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateClipPlanes;
 - (void *)_locationProvider;
 - (void)pushGesture:(void *)arg1;
-- (void)dealloc;
 - (id)initWithTaskContext:(shared_ptr_e963992e)arg1 mapDataAccess:(void *)arg2 animationRunner:(struct AnimationRunner *)arg3 runLoopController:(struct RunLoopController *)arg4 cameraDelegate:(id)arg5 arLogic:(void *)arg6 elevationLogic:(void *)arg7;
 
 // Remaining properties

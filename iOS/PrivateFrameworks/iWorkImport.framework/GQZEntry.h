@@ -8,7 +8,6 @@
 
 @protocol GQZArchiveInputStream;
 
-__attribute__((visibility("hidden")))
 @interface GQZEntry : NSObject
 {
     id <GQZArchiveInputStream> mInput;

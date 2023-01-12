@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVAirTransportDelegate-Protocol.h>
-#import <AVKit/AVBonjourServiceDelegate-Protocol.h>
-
 @class AVBonjourService, AVPlayerItem, NSMutableSet, NSString;
 @protocol AVAirMessageNotificationCenterDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVAirMessageNotificationCenter : NSObject <AVBonjourServiceDelegate, AVAirTransportDelegate>
+@interface AVAirMessageNotificationCenter : NSObject
 {
     _Bool _started;
     id <AVAirMessageNotificationCenterDelegate> _delegate;

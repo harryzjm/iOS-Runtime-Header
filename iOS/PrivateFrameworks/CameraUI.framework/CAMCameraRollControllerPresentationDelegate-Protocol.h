@@ -6,7 +6,7 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@class CAMCameraRollController, UIImage, UIViewController;
+@class CAMCameraRollController, PUOneUpViewController, UIImage, UIViewController;
 
 @protocol CAMCameraRollControllerPresentationDelegate <NSObject>
 - (void)cameraRollController:(CAMCameraRollController *)arg1 didDismissPreviewControllerShouldStartCaptureSession:(_Bool)arg2;
@@ -27,6 +27,6 @@
 - (void)cameraRollControllerPrefersPresentingStatusbarHiddenDidChange:(CAMCameraRollController *)arg1;
 - (void)cameraRollController:(CAMCameraRollController *)arg1 shouldHideSourceAsset:(_Bool)arg2;
 - (struct CGRect)cameraRollControllerSourceAssetRect:(CAMCameraRollController *)arg1;
-- (void)cameraRollControllerWillPresentCameraRoll:(CAMCameraRollController *)arg1;
+- (void)cameraRollControllerWillPresentCameraRoll:(CAMCameraRollController *)arg1 withOneUpController:(PUOneUpViewController *)arg2;
 @end
 

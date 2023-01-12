@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIInputViewSetPlacementApplicator-Protocol.h>
-
 @class NSArray, NSLayoutConstraint, NSString, UIView;
 @protocol UIInputViewSetPlacementOwner;
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewSetPlacement_GenericApplicator : NSObject <UIInputViewSetPlacementApplicator>
+@interface UIInputViewSetPlacement_GenericApplicator : NSObject
 {
     NSLayoutConstraint *_horizontalConstraint;
     NSLayoutConstraint *_verticalConstraint;
@@ -36,9 +34,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)isGesture:(id)arg1 inDraggableView:(struct CGPoint)arg2;
 - (_Bool)preBeginGesture:(id)arg1 shouldBegin:(_Bool *)arg2;
 - (struct CGRect)targetRect;
-@property(readonly, retain) UIView *twoFingerDraggableView;
-@property(readonly, retain) UIView *draggableView;
-@property(readonly, retain) NSArray *constraints;
+@property(readonly) UIView *twoFingerDraggableView;
+@property(readonly) UIView *draggableView;
+@property(readonly) NSArray *constraints;
 @property(readonly) struct CGPoint origin;
 - (id)initForOwner:(id)arg1 withPlacement:(id)arg2;
 

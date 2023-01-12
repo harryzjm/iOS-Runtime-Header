@@ -6,11 +6,9 @@
 
 #import <IMCore/IMChatRegistry.h>
 
-#import <IMAssistantCore/IMAssistantChatDataSource-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface IMChatRegistry (IMAssistantChatDataSource) <IMAssistantChatDataSource>
+@interface IMChatRegistry (IMAssistantChatDataSource)
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *allExistingChats;

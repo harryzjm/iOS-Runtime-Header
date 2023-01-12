@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSNNConcatenationGradientState
+#import "MPSNNGradientState.h"
+
+@interface MPSNNConcatenationGradientState : MPSNNGradientState
 {
     unsigned int _sliceCount;
     struct MPSSliceInfo *_info;

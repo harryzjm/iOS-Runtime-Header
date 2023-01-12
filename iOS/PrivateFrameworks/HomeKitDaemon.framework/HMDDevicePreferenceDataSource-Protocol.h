@@ -6,11 +6,11 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDDeviceCapabilities;
+@protocol HMResidentCapabilities;
 
 @protocol HMDDevicePreferenceDataSource <NSObject>
 
 @optional
-- (_Bool)supportsDeviceWithCapabilities:(HMDDeviceCapabilities *)arg1;
+- (_Bool)supportsDeviceWithCapabilities:(id <HMResidentCapabilities>)arg1;
 @end
 

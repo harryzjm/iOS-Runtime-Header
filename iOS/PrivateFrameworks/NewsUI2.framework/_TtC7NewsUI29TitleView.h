@@ -13,7 +13,9 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *backgroundView;
     MISSING_TYPE *titleLabel;
+    MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *chevron;
+    MISSING_TYPE *seeMoreButton;
     MISSING_TYPE *action;
 }
 

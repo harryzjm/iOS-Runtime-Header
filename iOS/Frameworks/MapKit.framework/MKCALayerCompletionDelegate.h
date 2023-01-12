@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/CAAnimationDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKCALayerCompletionDelegate : NSObject <CAAnimationDelegate>
+@interface MKCALayerCompletionDelegate : NSObject
 {
     CDUnknownBlockType _completion;
 }

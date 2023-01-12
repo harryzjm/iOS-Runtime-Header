@@ -6,26 +6,29 @@
 
 #import <Notes/NoteStoreObject.h>
 
-#import <NotesShared/ICLegacyFolder-Protocol.h>
-
-@class NSManagedObjectContext, NSManagedObjectID, NSSet, NSString;
+@class NSArray, NSManagedObjectContext, NSManagedObjectID, NSSet, NSString;
 @protocol ICLegacyAccount, ICLegacyFolder;
 
-@interface NoteStoreObject (ICLegacyFolder) <ICLegacyFolder>
+@interface NoteStoreObject (ICLegacyFolder)
+- (long long)compare:(id)arg1;
+@property(readonly, nonatomic) _Bool isCustomFolder;
 @property(readonly, nonatomic) _Bool isTrashFolder;
 @property(readonly, nonatomic) _Bool isDefaultFolder;
 @property(readonly, nonatomic) _Bool isDeletedOrInTrash;
 - (void)addNotesObject:(id)arg1;
 - (id)newNoteInContext:(id)arg1;
 @property(readonly, nonatomic) long long depth;
+@property(readonly, nonatomic) NSArray *ancestorFolders;
 @property(readonly, nonatomic) id <ICLegacyFolder> parentFolder;
 @property(readonly, copy, nonatomic) NSString *localizedTitle;
+@property(readonly, copy, nonatomic) NSString *identifierURIPathComponent;
 
 // Remaining properties
 @property(readonly, nonatomic) id <ICLegacyAccount> account;
 @property(readonly, nonatomic) NSSet *changes;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSString *externalIdentifier;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property(readonly, copy, nonatomic) NSString *name;

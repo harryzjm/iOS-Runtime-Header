@@ -30,8 +30,6 @@ struct CGSize {
     double height;
 };
 
-struct Collection;
-
 struct Config {
     int _field1;
     _Bool _field2;
@@ -46,9 +44,11 @@ struct EQKitCacheLRUCounter {
 
 struct Manager {
     CDUnknownFunctionPointerType *_field1;
-    struct Collection *_field2;
+    struct STIXCollection *_field2;
     struct EQKitCacheLRUCounter _field3;
 };
+
+struct STIXCollection;
 
 struct Schemata {
     CDUnknownFunctionPointerType *_field1;

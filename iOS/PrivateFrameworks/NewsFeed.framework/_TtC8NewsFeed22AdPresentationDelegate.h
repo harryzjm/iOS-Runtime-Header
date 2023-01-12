@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsFeed/APPCMetricsInteractionPresentationDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC8NewsFeed22AdPresentationDelegate : _TtCs12_SwiftObject <APPCMetricsInteractionPresentationDelegate>
+@interface _TtC8NewsFeed22AdPresentationDelegate : _TtCs12_SwiftObject
 {
     MISSING_TYPE *viewController;
 }

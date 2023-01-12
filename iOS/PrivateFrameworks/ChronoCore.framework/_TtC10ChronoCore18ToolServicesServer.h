@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *connectionListener;
     MISSING_TYPE *clientConnections;
     MISSING_TYPE *queue;
+    MISSING_TYPE *activityService;
 }
 
 - (void).cxx_destruct;

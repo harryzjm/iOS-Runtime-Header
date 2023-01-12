@@ -6,12 +6,10 @@
 
 #import <SearchFoundation/SFCardSection.h>
 
-#import <Cards/CRCardSection-Protocol.h>
-
 @class NSArray, NSString;
 @protocol SFCardSection;
 
-@interface SFCardSection (CRCardSection) <CRCardSection>
+@interface SFCardSection (CRCardSection)
 @property(readonly, nonatomic) NSString *cardSectionIdentifier;
 @property(readonly, nonatomic) _Bool hasNextCard;
 @property(readonly, nonatomic) NSArray *actionCommands;

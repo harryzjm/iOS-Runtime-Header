@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TKClientTokenSession.h"
+
 @class NSArray, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface TKExtensionClientTokenSession
+@interface TKExtensionClientTokenSession : TKClientTokenSession
 {
     long long _connectionIdentifier;
     NSArray *_advertisedItems;

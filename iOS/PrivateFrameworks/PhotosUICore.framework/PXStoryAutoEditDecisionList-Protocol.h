@@ -12,10 +12,10 @@
 @protocol PXStoryAutoEditDecisionList <PXStoryAutoEditClipCatalog>
 @property(readonly, nonatomic) NSString *decisionPapertrail;
 @property(readonly, nonatomic) NSString *diagnosticDescription;
-@property(readonly, nonatomic) CDStruct_5d4c7ed3 overallDurationInfo;
+@property(readonly, nonatomic) CDStruct_9ee4859c overallDurationInfo;
 @property(readonly, nonatomic) _Bool allowsNUp;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 defaultDisplayAssetPresentationDuration;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 outroDuration;
+@property(readonly, nonatomic) CDStruct_198678f7 defaultDisplayAssetPresentationDuration;
+@property(readonly, nonatomic) CDStruct_198678f7 outroDuration;
 @property(readonly, nonatomic) id <PXAudioAsset> song;
 @property(readonly, nonatomic) NSString *colorGradeCategory;
 @end

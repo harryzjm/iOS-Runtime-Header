@@ -12,7 +12,7 @@
 + (id)fc_NewsURLForTagID:(id)arg1;
 + (id)fc_safeURLWithString:(id)arg1;
 + (id)fc_URLWithResourceID:(id)arg1;
-- (id)fc_domainName;
+- (_Bool)fc_directoryExists;
 - (id)fc_URLByAddingQueryItem:(id)arg1;
 - (id)fc_URLByDeletingFragment;
 - (id)fc_URLByDeletingQuery;
@@ -33,6 +33,7 @@
 - (_Bool)fc_isHardPaywallNewsArticleURL:(out id *)arg1;
 - (_Bool)fc_isNewsIssueURL;
 - (_Bool)fc_isNewsArticleURL;
+- (_Bool)fc_hasValidArticleComponents;
 - (_Bool)fc_isWebOptInURL;
 - (id)fc_resourceID;
 - (_Bool)fc_isResourceURL;

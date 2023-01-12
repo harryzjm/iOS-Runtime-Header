@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSURLSessionDelegate-Protocol.h>
-#import <CFNetwork/NSURLSessionTaskDelegate-Protocol.h>
-
 @class NSString;
 
-@interface PACURLSessionDelegate : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate>
+@interface PACURLSessionDelegate : NSObject
 {
     NSString *_username;
     NSString *_password;

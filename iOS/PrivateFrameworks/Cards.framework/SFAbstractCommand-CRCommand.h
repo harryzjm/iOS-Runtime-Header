@@ -6,11 +6,9 @@
 
 #import <SearchFoundation/SFAbstractCommand.h>
 
-#import <Cards/CRReferentialCommand-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface SFAbstractCommand (CRCommand) <CRReferentialCommand>
+@interface SFAbstractCommand (CRCommand)
 @property(readonly, copy, nonatomic) NSString *referenceIdentifier;
 @property(copy, nonatomic) NSDictionary *userInfo; // @dynamic userInfo;
 

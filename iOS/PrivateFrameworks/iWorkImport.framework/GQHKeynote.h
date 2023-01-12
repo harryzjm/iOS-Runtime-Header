@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQKeynoteGenerator-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQHKeynote : NSObject <GQKeynoteGenerator>
+@interface GQHKeynote : NSObject
 {
 }
 

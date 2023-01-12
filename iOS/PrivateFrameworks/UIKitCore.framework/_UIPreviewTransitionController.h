@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIForceInteractionController-Protocol.h>
-#import <UIKitCore/UIInteractionProgressObserver-Protocol.h>
-#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
+#import "UIPercentDrivenInteractiveTransition.h"
 
 @class NSDictionary, NSMutableDictionary, NSString, UIInteractionProgress, _UIStatesFeedbackGenerator;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewTransitionController <UIInteractionProgressObserver, UIViewControllerAnimatedTransitioning, UIForceInteractionController>
+@interface _UIPreviewTransitionController : UIPercentDrivenInteractiveTransition
 {
     UIInteractionProgress *_interactionProgress;
     unsigned long long _targetPresentationPhase;

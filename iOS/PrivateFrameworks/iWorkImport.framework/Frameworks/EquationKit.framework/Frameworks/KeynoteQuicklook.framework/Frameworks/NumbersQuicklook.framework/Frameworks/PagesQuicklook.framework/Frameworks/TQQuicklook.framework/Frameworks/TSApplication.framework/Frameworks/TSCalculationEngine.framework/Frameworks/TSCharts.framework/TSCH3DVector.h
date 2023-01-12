@@ -6,11 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-#import <TSCharts/NSMutableCopying-Protocol.h>
-#import <TSCharts/TSSPropertyValueArchiving-Protocol.h>
-
-@interface TSCH3DVector : NSObject <TSSPropertyValueArchiving, NSCopying, NSMutableCopying>
+@interface TSCH3DVector : NSObject
 {
     float _x;
     float _y;

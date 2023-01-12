@@ -8,7 +8,6 @@
 
 @class GQDDrawable;
 
-__attribute__((visibility("hidden")))
 @interface GQDWPAttachment : NSObject
 {
     GQDDrawable *mDrawable;

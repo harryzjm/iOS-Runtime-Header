@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DocumentCamera/AVCapturePhotoCaptureDelegate-Protocol.h>
-
 @class AVCapturePhotoSettings, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICDocCamPhotoCaptureDelegate : NSObject <AVCapturePhotoCaptureDelegate>
+@interface ICDocCamPhotoCaptureDelegate : NSObject
 {
     float _highestSharpness;
     AVCapturePhotoSettings *_requestedPhotoSettings;

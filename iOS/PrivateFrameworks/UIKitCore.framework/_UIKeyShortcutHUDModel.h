@@ -6,39 +6,47 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, _UIKeyShortcutHUDMenu;
+@class NSMapTable, NSMutableSet, _UIKeyShortcutHUDMenu, _UIMenuLeafValidation;
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyShortcutHUDModel : NSObject
 {
-    NSMutableArray *_eligibleActiveShortcutAlternates;
-    NSMutableSet *_lowPriorityResponderShortcuts;
+    NSMapTable *_displayableKeyCommandModelMap;
+    NSMutableSet *_equivalentKeyCommandsInPriorityAlreadyEnumerated;
     struct __GSKeyboard *_gsKeyboard;
+    _UIMenuLeafValidation *_validation;
     _UIKeyShortcutHUDMenu *_menu;
-    NSMutableArray *_activeKeyCommands;
-    NSMutableDictionary *_keyCommandModelMap;
+    NSMutableSet *_activeKeyCommands;
+    NSMapTable *_keyCommandModelMap;
 }
 
-+ (id)modelWithConfiguration:(id)arg1;
++ (_Bool)supportsSecureCoding;
++ (id)modelForCurrentMenu;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *keyCommandModelMap; // @synthesize keyCommandModelMap=_keyCommandModelMap;
-@property(retain, nonatomic) NSMutableArray *activeKeyCommands; // @synthesize activeKeyCommands=_activeKeyCommands;
+@property(retain, nonatomic) NSMapTable *keyCommandModelMap; // @synthesize keyCommandModelMap=_keyCommandModelMap;
+@property(retain, nonatomic) NSMutableSet *activeKeyCommands; // @synthesize activeKeyCommands=_activeKeyCommands;
 @property(readonly, nonatomic) _UIKeyShortcutHUDMenu *menu; // @synthesize menu=_menu;
-- (_Bool)_validateShortcut:(id)arg1 validation:(id)arg2 configuration:(id)arg3;
-- (void)_addKeyCommandsForHUDFromMenu:(id)arg1 validation:(id)arg2 configuration:(id)arg3 currentShortcuts:(id)arg4;
-- (id)_hudMenuFromFullMenu:(id)arg1 withConfiguration:(id)arg2;
-- (void)_addShortcutIfOriginalForBaseKeyCommand:(id)arg1 usingAlternate:(id)arg2 withBaseShortcut:(id)arg3;
-- (id)_addShortcutIfOriginalForKeyCommand:(id)arg1;
-- (id)_addShortcutsIfOriginalForKeyCommandAndAlternates:(id)arg1;
-- (id)_menuByOmittingElementsInMenu:(id)arg1;
-- (id)_responderBasedShortcutsStartingAtResponder:(id)arg1;
-- (id)_fullMenu;
-- (void)_buildMenuWithConfiguration:(id)arg1;
-- (id)modelShortcutForKeyCommand:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)_addShortcutsFromHUDMenu:(id)arg1 toShortcutsArray:(id)arg2;
+- (id)_finalizedHUDMenuFromValidatedHUDMenu:(id)arg1;
+- (id)_validatedHUDMenuFromUIMenu:(id)arg1;
+- (_Bool)_isKeyCommandPerformable:(id)arg1 outTarget:(out id *)arg2;
+- (void)_validateBaseKeyCommand:(id)arg1 usingAlternate:(id)arg2;
+- (void)_validateKeyCommandAndAlternates:(id)arg1;
+- (void)_enumerateKeyCommandsInMenu:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)_menuByOmittingNonKeyCommandsInMenu:(id)arg1;
+- (id)_sanitizedMainMenu;
+- (id)_responderBasedKeyCommandsStartingAtResponder:(id)arg1;
+- (void)_buildMenu;
+- (id)originalTargetForAppKeyCommand:(id)arg1;
+- (id)appKeyCommandForEquivalentKeyCommand:(id)arg1;
+- (id)hudModelShortcutForAppKeyCommand:(id)arg1;
 - (id)menuWithAlternatesForModifierFlags:(long long)arg1;
 - (id)searchMenuWithSearchText:(id)arg1 maxSearchResultEntries:(unsigned long long)arg2;
 - (id)activeKeyCommandsExcludingHUDCommands:(id)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
+- (id)init;
 
 @end
 

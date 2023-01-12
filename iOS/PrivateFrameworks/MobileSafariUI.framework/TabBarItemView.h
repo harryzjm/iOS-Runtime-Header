@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, TabBar, UIButton, UIHoverGestureRecognizer, UIImage, UIImageView, UILabel, UIVisualEffectView;
+@class NSArray, NSString, SFAvatarStackView, SFUnreadIndicator, TabBar, UIButton, UIHoverGestureRecognizer, UIImage, UIImageView, UILabel, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface TabBarItemView : UIView
@@ -26,26 +26,36 @@ __attribute__((visibility("hidden")))
     UIImageView *_closeButtonImageView;
     UIView *_highlightView;
     UIHoverGestureRecognizer *_hoverRecognizer;
+    SFAvatarStackView *_participantsView;
+    SFUnreadIndicator *_unreadIndicator;
     _Bool _active;
     _Bool _reordering;
     _Bool _isPlaceholder;
+    _Bool _pinned;
+    _Bool _unread;
     _Bool _hidesTitleText;
     UIButton *_closeButton;
     UIButton *_mediaStateMuteButton;
     UIImage *_icon;
     unsigned long long _mediaStateIcon;
+    NSArray *_shareParticipants;
     long long _visibleEdge;
     double _titleLayoutWidth;
     long long _titleAnchorEdge;
     double _titleAnchorAdditionalOffset;
+    double _contentOffset;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double contentOffset; // @synthesize contentOffset=_contentOffset;
 @property(nonatomic) double titleAnchorAdditionalOffset; // @synthesize titleAnchorAdditionalOffset=_titleAnchorAdditionalOffset;
 @property(nonatomic) long long titleAnchorEdge; // @synthesize titleAnchorEdge=_titleAnchorEdge;
 @property(nonatomic) double titleLayoutWidth; // @synthesize titleLayoutWidth=_titleLayoutWidth;
 @property(nonatomic) _Bool hidesTitleText; // @synthesize hidesTitleText=_hidesTitleText;
 @property(nonatomic) long long visibleEdge; // @synthesize visibleEdge=_visibleEdge;
+@property(copy, nonatomic) NSArray *shareParticipants; // @synthesize shareParticipants=_shareParticipants;
+@property(nonatomic, getter=isUnread) _Bool unread; // @synthesize unread=_unread;
+@property(nonatomic, getter=isPinned) _Bool pinned; // @synthesize pinned=_pinned;
 @property(nonatomic) unsigned long long mediaStateIcon; // @synthesize mediaStateIcon=_mediaStateIcon;
 @property(nonatomic) _Bool isPlaceholder; // @synthesize isPlaceholder=_isPlaceholder;
 @property(nonatomic, getter=isReordering) _Bool reordering; // @synthesize reordering=_reordering;
@@ -54,11 +64,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIButton *mediaStateMuteButton; // @synthesize mediaStateMuteButton=_mediaStateMuteButton;
 @property(readonly, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
 - (void)configureForDragPreview;
+- (_Bool)_isPinnedAndNarrow;
 - (void)_updateHighlightAlpha;
 - (_Bool)_isHoveringOverCloseButton;
 - (_Bool)_isHovering;
 - (void)_hover:(id)arg1;
 - (_Bool)_showsCloseButton;
+- (void)_updateCloseButtonEffect;
+- (void)_updateCloseButtonImage;
 - (void)_updateCloseButtonAlpha;
 - (void)_showOrHideCloseButton;
 - (void)setTitleText:(id)arg1;
@@ -66,6 +79,13 @@ __attribute__((visibility("hidden")))
 - (void)setBounds:(struct CGRect)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithTabBar:(id)arg1;
+- (double)_contentWidthIgnoringCollaborationViews;
+- (_Bool)_showsParticipants;
+- (void)_updateShowsParticipants;
+- (void)_layOutParticipantsView;
+- (_Bool)_showsUnreadIndicator;
+- (void)_updateShowsUnreadIndicator;
+- (void)_layOutUnreadIndicator;
 - (void)_updateMediaStateButtonButtonAlpha;
 - (void)_layoutMediaStateIndicator;
 - (struct CGRect)_closeButtonFrame;

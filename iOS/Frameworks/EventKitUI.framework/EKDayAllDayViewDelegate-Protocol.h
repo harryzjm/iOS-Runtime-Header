@@ -6,14 +6,16 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKCalendarDate, EKDayAllDayView, EKEvent;
+@class EKCalendarDate, EKDayAllDayView, EKEvent, NSArray, UIViewController;
 
 @protocol EKDayAllDayViewDelegate <NSObject>
+- (NSArray *)selectedEventsForEditMenu;
+- (UIViewController *)presentationControllerForEditMenu;
 - (EKCalendarDate *)allDayViewRequestsCurrentDisplayDate:(EKDayAllDayView *)arg1;
 
 @optional
 - (_Bool)allDayViewContentShouldDrawSynchronously:(EKDayAllDayView *)arg1;
 - (void)allDayViewDidLayoutSubviews:(EKDayAllDayView *)arg1;
-- (void)allDayView:(EKDayAllDayView *)arg1 didSelectEvent:(EKEvent *)arg2;
+- (void)allDayView:(EKDayAllDayView *)arg1 didSelectEvent:(EKEvent *)arg2 userInitiated:(_Bool)arg3;
 @end
 

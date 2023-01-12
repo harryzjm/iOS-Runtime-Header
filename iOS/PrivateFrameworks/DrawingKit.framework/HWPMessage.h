@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <DrawingKit/NSCopying-Protocol.h>
-
 @class NSData, NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface HWPMessage : PBCodable <NSCopying>
+@interface HWPMessage : PBCodable
 {
     PBUnknownFields *_unknownFields;
     long long _creationDate;

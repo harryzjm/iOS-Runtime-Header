@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebKitLegacy/DOMXPathNSResolver-Protocol.h>
+#import "DOMObject.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface DOMNativeXPathNSResolver <DOMXPathNSResolver>
+@interface DOMNativeXPathNSResolver : DOMObject
 {
 }
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebCoreAVVideoCaptureSourceObserver : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface WebCoreAVVideoCaptureSourceObserver : NSObject
 {
     void *m_callback;
 }

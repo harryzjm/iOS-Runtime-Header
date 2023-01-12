@@ -6,12 +6,9 @@
 
 #import <TSPersistence/TSPContainedObject.h>
 
-#import <KeynoteQuicklook/KNInspectableAnimation-Protocol.h>
-#import <KeynoteQuicklook/TSKModel-Protocol.h>
-
 @class KNAnimationInfo, KNAnimationPluginMenu, KNTransitionAttributes, NSArray, NSSet, NSString, TSDBezierPathSource, TSUColor;
 
-@interface KNTransition : TSPContainedObject <KNInspectableAnimation, TSKModel>
+@interface KNTransition : TSPContainedObject
 {
     KNTransitionAttributes *_attributes;
 }

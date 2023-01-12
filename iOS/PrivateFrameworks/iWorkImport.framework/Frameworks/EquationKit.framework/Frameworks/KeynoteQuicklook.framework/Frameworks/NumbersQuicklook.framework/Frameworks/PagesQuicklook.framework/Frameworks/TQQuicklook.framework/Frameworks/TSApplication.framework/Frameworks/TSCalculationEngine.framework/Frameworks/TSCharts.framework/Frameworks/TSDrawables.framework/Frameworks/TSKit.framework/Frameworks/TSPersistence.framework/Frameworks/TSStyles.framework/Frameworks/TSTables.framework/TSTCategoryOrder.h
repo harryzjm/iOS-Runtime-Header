@@ -15,7 +15,6 @@
     TSTColumnRowUIDMap *_uidMap;
 }
 
-+ (struct TSKUIDStruct)categoryColumnUID;
 - (void).cxx_destruct;
 @property _Bool isRowOrderTemporary; // @synthesize isRowOrderTemporary=_isRowOrderTemporary;
 @property(retain) TSTColumnRowUIDMap *uidMap; // @synthesize uidMap=_uidMap;

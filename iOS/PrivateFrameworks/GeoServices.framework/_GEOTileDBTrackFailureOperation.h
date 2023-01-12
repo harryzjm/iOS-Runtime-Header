@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/_GEOTileDBWriteOperation-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTileDBTrackFailureOperation : NSObject <_GEOTileDBWriteOperation>
+@interface _GEOTileDBTrackFailureOperation : NSObject
 {
     struct _GEOTileKey _key;
-    CDUnion_23a7df3d _tileSet;
+    CDUnion_20bcf645 _tileSet;
     _Bool _shouldProactivelyLoad;
 }
 
@@ -24,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canIncreaseDataSizeInDB;
 @property(readonly, nonatomic) unsigned long long sizeInBytes;
 @property(readonly, nonatomic) struct _GEOTileKey *key;
-- (id)initWithTileKey:(const struct _GEOTileKey *)arg1 tileSet:(CDUnion_23a7df3d)arg2 shouldProactivelyLoad:(_Bool)arg3;
+- (id)initWithTileKey:(const struct _GEOTileKey *)arg1 tileSet:(CDUnion_20bcf645)arg2 shouldProactivelyLoad:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

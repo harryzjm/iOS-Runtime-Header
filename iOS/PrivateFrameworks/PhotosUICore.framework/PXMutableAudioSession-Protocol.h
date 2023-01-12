@@ -10,6 +10,7 @@
 @property(nonatomic) float targetLoudnessInLKFS;
 @property(nonatomic) float volume;
 - (void)performFinalCleanup;
+- (void)playFromTime:(CDStruct_198678f7)arg1;
 - (void)play;
 - (void)pause;
 - (void)prepareToPlay;

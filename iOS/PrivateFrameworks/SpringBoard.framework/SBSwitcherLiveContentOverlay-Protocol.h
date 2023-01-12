@@ -6,21 +6,29 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, UIView, UIWindow;
+@class FBSSceneIdentityToken, NSString, SBSceneHandle, SBUIAnimationController, UIView, UIWindow;
 @protocol SBSwitcherLiveContentOverlayDelegate;
 
 @protocol SBSwitcherLiveContentOverlay <NSObject>
+@property(nonatomic, getter=isDisplayLayoutElementActive) _Bool displayLayoutElementActive;
+@property(readonly, nonatomic) long long touchBehavior;
 @property(readonly, nonatomic) _Bool requiresLegacyRotationSupport;
+@property(nonatomic) _Bool resizesHostedContext;
+@property(nonatomic) _Bool wantsEnhancedWindowingEnabled;
 @property(readonly, nonatomic, getter=isAsyncRenderingEnabled) _Bool asyncRenderingEnabled;
 @property(nonatomic, getter=isInsetForHomeAffordance) _Bool insetForHomeAffordance;
 @property(readonly, nonatomic) UIView *contentOverlayView;
 @property(nonatomic) __weak id <SBSwitcherLiveContentOverlayDelegate> delegate;
+- (SBSceneHandle *)overlaySceneHandle;
+- (FBSSceneIdentityToken *)liveSceneIdentityToken;
+- (void)setTouchBehavior:(long long)arg1;
 - (double)currentStatusBarHeight;
+- (unsigned long long)styleOverridesToSuppress;
 - (long long)trailingStatusBarStyle;
 - (long long)leadingStatusBarStyle;
-- (long long)preferredInterfaceOrientation;
-- (unsigned long long)_debugPostModernRotationSupportedInterfaceOrientations;
+- (SBUIAnimationController *)prepareOverlayForContentRotation;
 - (unsigned long long)supportedInterfaceOrientations;
+- (long long)preferredInterfaceOrientation;
 - (void)disableAsynchronousRenderingForNextCommit;
 - (void)setAsyncRenderingEnabled:(_Bool)arg1 withMinificationFilterEnabled:(_Bool)arg2;
 - (void)setBlurViewIconScale:(double)arg1;

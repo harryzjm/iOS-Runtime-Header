@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *locker;
-    MISSING_TYPE *trackerStore;
+    MISSING_TYPE *spans;
 }
 
 @end

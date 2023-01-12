@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TestFlightCore/UITextFieldDelegate-Protocol.h>
-
 @class NSString, TFFeedbackEntryShortText, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface TFFeedbackFormShortTextCell <UITextFieldDelegate>
+@interface TFFeedbackFormShortTextCell
 {
     UITextField *_textField;
     TFFeedbackEntryShortText *_shortTextEntry;

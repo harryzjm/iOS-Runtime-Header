@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "DCMapsLink.h"
+
 @class NSArray, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface DCNewGoogleMapsLink
+@interface DCNewGoogleMapsLink : DCMapsLink
 {
     _Bool _showsTransit;
     _Bool _showsBicycling;

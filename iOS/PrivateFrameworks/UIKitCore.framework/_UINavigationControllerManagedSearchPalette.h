@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UINavigationControllerPalette.h"
+
 @class UISearchBar, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationControllerManagedSearchPalette
+@interface _UINavigationControllerManagedSearchPalette : _UINavigationControllerPalette
 {
     _Bool _ignoreGeometryChanges;
     CDUnknownBlockType _resetAfterSearchFieldFade;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, UILabel, _TtC9SeymourUI14WatchBadgeView;
+@class MISSING_TYPE, UILabel, _TtC9SeymourUI15DeviceBadgeView;
 
 __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI23TVRemoteParticipantCell
@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *monogramButton;
     MISSING_TYPE *imageViewEdgeFillConstraints;
     MISSING_TYPE *type;
-    MISSING_TYPE *watchBadgeView;
+    MISSING_TYPE *deviceBadgeView;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, readonly) _TtC9SeymourUI14WatchBadgeView *accessibilityWatchBadgeView;
+@property(nonatomic, readonly) _TtC9SeymourUI15DeviceBadgeView *accessibilityDeviceBadgeView;
 @property(nonatomic, readonly) UILabel *accessibilityTitleLabel;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)layoutSubviews;

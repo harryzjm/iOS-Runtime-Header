@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/UITextFieldDelegate-Protocol.h>
-
 @class NSString, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface OBComplexPasscodeInputView <UITextFieldDelegate>
+@interface OBComplexPasscodeInputView
 {
     UITextField *_passcodeField;
 }

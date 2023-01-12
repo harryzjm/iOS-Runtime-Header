@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/IDSCurrentServerTimeProvider-Protocol.h>
-
-@interface _IDSCurrentServerTimeProvider : NSObject <IDSCurrentServerTimeProvider>
+@interface _IDSCurrentServerTimeProvider : NSObject
 {
+    id _apsConnection;
 }
 
-- (double)serverTime;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) id apsConnection; // @synthesize apsConnection=_apsConnection;
+- (unsigned long long)serverTimeInNanoSeconds;
+- (_Bool)isAccurate;
+- (id)init;
 
 @end
 

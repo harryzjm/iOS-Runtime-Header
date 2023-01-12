@@ -6,11 +6,9 @@
 
 #import <Foundation/NSError.h>
 
-#import <BaseBoard/BSDescriptionProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSError (BaseBoard) <BSDescriptionProviding>
+@interface NSError (BaseBoard)
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

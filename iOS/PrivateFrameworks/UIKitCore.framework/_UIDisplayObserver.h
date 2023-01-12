@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/FBSDisplayObserving-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDisplayObserver : NSObject <FBSDisplayObserving>
+@interface _UIDisplayObserver : NSObject
 {
 }
 

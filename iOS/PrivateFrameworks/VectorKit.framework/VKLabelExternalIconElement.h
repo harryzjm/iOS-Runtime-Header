@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VKLabelExternalIconElement : NSObject <NSSecureCoding>
+@interface VKLabelExternalIconElement : NSObject
 {
     struct LabelExternalIconElement _element;
 }

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATResettableTimer-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface CATDispatchTimer : NSObject <CATResettableTimer>
+@interface CATDispatchTimer : NSObject
 {
     NSString *mIdentifier;
     NSObject<OS_dispatch_queue> *mWorkQueue;

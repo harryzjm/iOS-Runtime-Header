@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
-
 @class NSMutableSet, NSString, VUIFamilyMember;
 
 __attribute__((visibility("hidden")))
-@interface VUIFamilySharingLibraryShelvesDataSource <VUILibraryDataSourceDelegate>
+@interface VUIFamilySharingLibraryShelvesDataSource
 {
     VUIFamilyMember *_familyMember;
     NSMutableSet *_fetchedDataSources;

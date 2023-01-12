@@ -7,9 +7,10 @@
 #import <PhotosGraph/NSObject-Protocol.h>
 
 @class CLSInvestigationPhotoKitFeeder, MAProgressReporter, NSArray, NSSet, PGCurationOptions, PGDejunkerDeduperOptions, PGGraph, PGKeyAssetCurationOptions, PGTitleGenerationContext, PGTitleGenerator, PHAsset;
-@protocol PGTriggeredMemoryProtocol;
+@protocol PGChapterTitleGeneratorProtocol, PGTriggeredMemoryProtocol;
 
 @protocol PGMemoryEnrichmentProtocol <NSObject>
+- (id <PGChapterTitleGeneratorProtocol>)chapterTitleGeneratorForTriggeredMemory:(id <PGTriggeredMemoryProtocol>)arg1 curatedAssets:(NSArray *)arg2 extendedCuratedAssets:(NSArray *)arg3 titleGenerationContext:(PGTitleGenerationContext *)arg4 inGraph:(PGGraph *)arg5;
 - (PGTitleGenerator *)titleGeneratorForTriggeredMemory:(id <PGTriggeredMemoryProtocol>)arg1 withKeyAsset:(PHAsset *)arg2 curatedAssets:(NSArray *)arg3 extendedCuratedAssets:(NSArray *)arg4 titleGenerationContext:(PGTitleGenerationContext *)arg5 inGraph:(PGGraph *)arg6;
 - (NSSet *)uuidsOfRequiredAssetsWithKeyAsset:(PHAsset *)arg1 triggeredMemory:(id <PGTriggeredMemoryProtocol>)arg2 inGraph:(PGGraph *)arg3 progressReporter:(MAProgressReporter *)arg4;
 - (PGDejunkerDeduperOptions *)extendedCurationOptionsWithRequiredAssetUUIDs:(NSSet *)arg1 triggeredMemory:(id <PGTriggeredMemoryProtocol>)arg2;

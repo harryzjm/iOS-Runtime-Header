@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)formattedDurationForWorkout:(id)arg1 context:(id)arg2;
+- (id)formattedDurationForWorkout:(id)arg1 workoutActivity:(id)arg2 context:(id)arg3;
 
 @end
 

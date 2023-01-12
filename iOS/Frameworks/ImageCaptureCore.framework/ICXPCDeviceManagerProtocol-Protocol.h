@@ -7,6 +7,7 @@
 @class NSDictionary, NSString;
 
 @protocol ICXPCDeviceManagerProtocol
+- (void)ejectDevice:(NSString *)arg1 withReply:(void (^)(NSMutableDictionary *))arg2;
 - (void)closeDevice:(NSString *)arg1 withReply:(void (^)(NSMutableDictionary *))arg2;
 - (void)openDevice:(NSString *)arg1 withReply:(void (^)(NSMutableDictionary *))arg2;
 - (void)notifyRemovedDevice:(NSDictionary *)arg1;

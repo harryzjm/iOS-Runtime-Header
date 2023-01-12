@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/PSPointerClientControllerDelegate-Protocol.h>
-#import <UIKitCore/_UILumaTrackingBackdropViewDelegate-Protocol.h>
-#import <UIKitCore/_UIPointerArbitrating-Protocol.h>
-
 @class NSMapTable, NSMutableArray, NSString, PSPointerClientController, PSPointerHoverRegion, PSPointerPortalSourceCollection, UIPointerRegion, UIPointerStyle, _UILumaTrackingBackdropView, _UIPortalView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPointerArbiterCore_iOS : NSObject <PSPointerClientControllerDelegate, _UILumaTrackingBackdropViewDelegate, _UIPointerArbitrating>
+@interface _UIPointerArbiterCore_iOS : NSObject
 {
     _Bool _hasRunningTransaction;
     NSMutableArray *_pendingTransactionBlocks;
@@ -58,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_performNextTransaction;
 - (void)pointerClientControllerClientInteractionStateDidChange:(id)arg1;
 - (void)pointerClientControllerWillDecelerate:(id)arg1 targetPointerPosition:(inout struct CGPoint *)arg2 velocity:(struct CGPoint)arg3 inContextID:(unsigned int)arg4 cursorRegionLookupRadius:(double)arg5 cursorRegionLookupResolution:(double)arg6 lookupConeAngle:(double)arg7;
-- (void)pointerClientControllerDidInvalidateRemoteSources:(id)arg1;
+- (void)pointerClientController:(id)arg1 didInvalidatePortalSourceCollections:(id)arg2 matchMoveSources:(id)arg3;
 - (void)endScrollingWithRegion:(id)arg1;
 - (void)beginScrollingWithRegion:(id)arg1;
 @property(readonly, nonatomic) long long pointerState;

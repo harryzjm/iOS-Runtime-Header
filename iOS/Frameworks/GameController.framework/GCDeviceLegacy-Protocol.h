@@ -6,7 +6,7 @@
 
 #import <GameController/NSObject-Protocol.h>
 
-@class NSArray, NSString, _GCCControllerHIDServiceInfo;
+@class NSArray, NSString, _GCHIDServiceInfo;
 @protocol GCDeviceLegacy;
 
 @protocol GCDeviceLegacy <NSObject>
@@ -17,7 +17,7 @@
 - (void)clearServiceRef;
 - (void)removeServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (_Bool)hasServiceRef:(struct __IOHIDServiceClient *)arg1;
-- (void)addServiceRef:(_GCCControllerHIDServiceInfo *)arg1;
+- (void)addServiceRef:(_GCHIDServiceInfo *)arg1;
 - (void)addServiceRefsWithDevice:(id <GCDeviceLegacy>)arg1;
 - (void)handleEvent:(struct __IOHIDEvent *)arg1;
 - (id)initWithServiceRef:(struct __IOHIDServiceClient *)arg1;

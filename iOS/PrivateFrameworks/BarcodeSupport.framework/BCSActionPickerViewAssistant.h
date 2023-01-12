@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSActionPickerItemDelegate-Protocol.h>
-
 @class NSString, UIAlertController;
 
 __attribute__((visibility("hidden")))
-@interface BCSActionPickerViewAssistant : NSObject <BCSActionPickerItemDelegate>
+@interface BCSActionPickerViewAssistant : NSObject
 {
     UIAlertController *_alertController;
 }

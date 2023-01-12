@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, UITextField, UIView, _UIAlertControllerTextField;
+#import "UIView.h"
+
+@class NSArray, UITextField, _UIAlertControllerTextField;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerTextFieldView
+@interface _UIAlertControllerTextFieldView : UIView
 {
     UIView *_containerView;
     _UIAlertControllerTextField *_textField;

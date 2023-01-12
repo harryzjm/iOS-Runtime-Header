@@ -20,5 +20,7 @@
 @property(nonatomic, getter=isAudioMuted) _Bool audioMuted;
 @property(readonly, nonatomic) NSData *negotiationData;
 @property(readonly, nonatomic) NSString *uuid;
+- (unsigned int)mediaStateForMediaType:(unsigned int)arg1;
+- (void)setMediaState:(unsigned int)arg1 forMediaType:(unsigned int)arg2;
 @end
 

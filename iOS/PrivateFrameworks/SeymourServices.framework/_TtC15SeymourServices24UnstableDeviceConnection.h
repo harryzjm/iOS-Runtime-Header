@@ -11,6 +11,7 @@
 @interface _TtC15SeymourServices24UnstableDeviceConnection : _TtCs12_SwiftObject
 {
     MISSING_TYPE *analyticsReporter;
+    MISSING_TYPE *authentication;
     MISSING_TYPE *destination;
     MISSING_TYPE *device;
     MISSING_TYPE *networkInterface;

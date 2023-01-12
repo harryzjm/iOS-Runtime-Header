@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSApplication.h>
 
-#import <StoreKitUI/SKUIJSApplication-Protocol.h>
-
 @class SKUIApplicationController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSApplication : IKJSApplication <SKUIJSApplication>
+@interface SKUIJSApplication : IKJSApplication
 {
     SKUIApplicationController *_applicationController;
 }

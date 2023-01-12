@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapServiceFeedbackReportTicket-Protocol.h>
-
 @class GEOMapServiceTraits, NSString;
 @protocol GEOMapServiceFeedbackReportTicket;
 
 __attribute__((visibility("hidden")))
-@interface _MKFeedbackReportTicket : NSObject <MKMapServiceFeedbackReportTicket>
+@interface _MKFeedbackReportTicket : NSObject
 {
     id <GEOMapServiceFeedbackReportTicket> _ticket;
 }

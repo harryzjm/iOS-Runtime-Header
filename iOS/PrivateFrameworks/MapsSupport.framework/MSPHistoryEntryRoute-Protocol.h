@@ -6,10 +6,17 @@
 
 #import <MapsSupport/MSPHistoryEntry-Protocol.h>
 
-@class GEOComposedWaypoint, GEOURLRouteHandle;
+@class GEOAutomobileOptions, GEOComposedWaypoint, GEOCyclingOptions, GEOTransitOptions, GEOURLRouteHandle, GEOWalkingOptions, NSArray, NSData, NSString;
 
 @protocol MSPHistoryEntryRoute <MSPHistoryEntry>
+@property(readonly, nonatomic) NSString *identifier;
+@property(readonly, nonatomic) NSData *archivedSharedTripData;
 @property(readonly, nonatomic) _Bool navigationWasInterrupted;
+@property(readonly, nonatomic) GEOCyclingOptions *cyclingOptions;
+@property(readonly, nonatomic) GEOWalkingOptions *walkingOptions;
+@property(readonly, nonatomic) GEOTransitOptions *transitOptions;
+@property(readonly, nonatomic) GEOAutomobileOptions *automobileOptions;
+@property(readonly, nonatomic) NSArray *waypoints;
 @property(readonly, nonatomic) GEOURLRouteHandle *routeHandle;
 @property(readonly, nonatomic) GEOComposedWaypoint *endWaypoint;
 @property(readonly, nonatomic) GEOComposedWaypoint *startWaypoint;

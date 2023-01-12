@@ -6,11 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AnnotationKit/AKTextAttributesUserInterfaceItem-Protocol.h>
-
 @class AKColorPaletteView, AKController, NSArray, NSString, UIBarButtonItem, UIColor, UIToolbar, UIView;
 
-@interface AKFloatingAttributePickerViewController : UIViewController <AKTextAttributesUserInterfaceItem>
+@interface AKFloatingAttributePickerViewController : UIViewController
 {
     UIToolbar *_toolbar;
     UIColor *_color;

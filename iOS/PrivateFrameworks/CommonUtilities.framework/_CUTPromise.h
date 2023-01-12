@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUTPromise.h"
+
 @class CUTResult, NSObject;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface _CUTPromise
+@interface _CUTPromise : CUTPromise
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_group> *_group;

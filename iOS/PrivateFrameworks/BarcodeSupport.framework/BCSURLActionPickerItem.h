@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "BCSActionPickerItem.h"
+
 @class LSAppLink, LSApplicationRecord, NSURL;
 @protocol BCSCodePayload;
 
 __attribute__((visibility("hidden")))
-@interface BCSURLActionPickerItem
+@interface BCSURLActionPickerItem : BCSActionPickerItem
 {
     NSURL *_url;
     LSApplicationRecord *_applicationRecord;
@@ -26,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)performAction;
 - (void)performActionWithFBOptions:(id)arg1;
 - (id)icon;
+- (id)initWithLabel:(id)arg1 action:(id)arg2 appLink:(id)arg3 codePayload:(id)arg4 preferApplicationIcon:(_Bool)arg5;
 - (id)initWithLabel:(id)arg1 action:(id)arg2 appLink:(id)arg3 codePayload:(id)arg4;
 - (id)initWithLabel:(id)arg1 action:(id)arg2 url:(id)arg3 applicationRecord:(id)arg4;
 - (id)initWithLabel:(id)arg1 action:(id)arg2 url:(id)arg3 applicationRecord:(id)arg4 preferApplicationIcon:(_Bool)arg5;

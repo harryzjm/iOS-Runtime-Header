@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Montreal/MontrealNNDescriptionProtocol-Protocol.h>
-
 @class NSNumber, NSString;
 
-@interface MontrealNNModelQuantization <MontrealNNDescriptionProtocol>
+@interface MontrealNNModelQuantization
 {
     NSString *_weightStorage;
     NSNumber *_weightStorageRange;

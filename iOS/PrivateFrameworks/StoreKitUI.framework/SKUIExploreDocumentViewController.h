@@ -4,17 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/CLLocationManagerDelegate-Protocol.h>
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUINavigationBarDisplayConfiguring-Protocol.h>
-#import <StoreKitUI/SKUIStackedBarDelegate-Protocol.h>
-#import <StoreKitUI/UINavigationControllerDelegate-Protocol.h>
-#import <StoreKitUI/UISplitViewControllerDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class CLLocationManager, NSArray, NSString, SKUIContentInsetScrollView, SKUIExploreTemplateElement, SKUIMetricsImpressionSession, SKUIStorePageSectionsViewController, UINavigationController, UISplitViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIExploreDocumentViewController <CLLocationManagerDelegate, SKUINavigationBarDisplayConfiguring, SKUIStackedBarDelegate, UINavigationControllerDelegate, UISplitViewControllerDelegate, SKUIDocumentViewController>
+@interface SKUIExploreDocumentViewController : SKUIViewController
 {
     SKUIMetricsImpressionSession *_activeMetricsImpressionSession;
     NSArray *_contentOffsets;

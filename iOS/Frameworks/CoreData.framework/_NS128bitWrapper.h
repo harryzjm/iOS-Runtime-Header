@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _NS128bitWrapper : NSObject <NSCopying>
+@interface _NS128bitWrapper : NSObject
 {
     struct _double_quad_uint {
         unsigned long long high64;

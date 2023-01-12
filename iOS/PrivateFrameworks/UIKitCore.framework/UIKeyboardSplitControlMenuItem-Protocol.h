@@ -11,7 +11,7 @@
 
 @protocol UIKeyboardSplitControlMenuItem <NSObject>
 @property(readonly) _Bool visible;
-@property(readonly, retain) NSString *label;
+@property(readonly) NSString *label;
 - (void)actionForMenu:(id <_UIInputSwitcherSplitMenu>)arg1;
 @end
 

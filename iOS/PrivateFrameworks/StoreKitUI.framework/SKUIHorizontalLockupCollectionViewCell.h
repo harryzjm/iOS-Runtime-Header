@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIPerspectiveView-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-#import <StoreKitUI/UIScrollViewAccessibilityDelegate-Protocol.h>
+#import "SKUICollectionViewCell.h"
 
 @class NSString, SKUIButtonViewElement, SKUICellScrollView, SKUICheckboxInputViewElement, SKUIHorizontalLockupView, UIButton, UIColor, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIHorizontalLockupCollectionViewCell <UIScrollViewAccessibilityDelegate, SKUIPerspectiveView, SKUIViewElementView>
+@interface SKUIHorizontalLockupCollectionViewCell : SKUICollectionViewCell
 {
     UIButton *_actionButton;
     SKUIButtonViewElement *_actionButtonViewElement;

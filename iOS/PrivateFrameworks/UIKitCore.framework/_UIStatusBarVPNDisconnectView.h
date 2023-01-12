@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
+#import "UIView.h"
 
-@class CAShapeLayer, NSString, UIAccessibilityHUDItem, UIView, _UIStatusBarImageView;
+@class CAShapeLayer, NSString, UIAccessibilityHUDItem, _UIStatusBarImageView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVPNDisconnectView <CAAnimationDelegate, _UIStatusBarDisplayable>
+@interface _UIStatusBarVPNDisconnectView : UIView
 {
     _UIStatusBarImageView *_iconView;
     CAShapeLayer *_iconSlashMaskShapeLayer;
@@ -39,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) long long overriddenVerticalAlignment;
 @property(readonly, nonatomic) _Bool prefersBaselineAlignment;
+@property(readonly, nonatomic) _Bool prefersCenterVerticalAlignment;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool wantsCrossfade;
 

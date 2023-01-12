@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OTSVG/NSXMLParserDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _OTSVGParserDelegate : NSObject <NSXMLParserDelegate>
+@interface _OTSVGParserDelegate : NSObject
 {
     _Bool errorOccurred;
     unsigned int skipDepth;

@@ -6,9 +6,12 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSSet, NSString, UIColor;
+@class NSDate, NSSet, NSString, UIColor;
 
 @protocol PXMutableSyntheticAsset <NSObject>
+@property(nonatomic) float audioScore;
+@property(copy, nonatomic) NSDate *localCreationDate;
+@property(copy, nonatomic) NSString *localizedGeoDescription;
 @property(nonatomic) long long faceCount;
 @property(nonatomic) double curationScore;
 @property(copy, nonatomic) NSSet *sceneClassifications;
@@ -25,6 +28,7 @@
 @property(nonatomic) struct CGRect preferredCropRect;
 @property(nonatomic) struct CGSize size;
 @property(nonatomic) unsigned long long mediaSubtypes;
+@property(nonatomic) long long mediaType;
 @property(copy, nonatomic) NSString *uuid;
 @end
 

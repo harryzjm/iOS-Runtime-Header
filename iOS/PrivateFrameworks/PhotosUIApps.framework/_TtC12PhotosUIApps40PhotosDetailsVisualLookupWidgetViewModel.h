@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC12PhotosUIApps40PhotosDetailsVisualLookupWidgetViewModel
 {
-    MISSING_TYPE *imageSize;
+    MISSING_TYPE *onTappedAction;
     MISSING_TYPE *_visualLookupData;
 }
 

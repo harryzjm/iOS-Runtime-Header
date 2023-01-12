@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class CNAuditToken, NSObject;
+@protocol OS_tcc_identity;
+
 @protocol CNTCC
-- (void)requestAuthorization:(long long)arg1 completionHandler:(void (^)(long long))arg2;
+- (void)requestAuthorization:(long long)arg1 auditToken:(CNAuditToken *)arg2 assumedIdentity:(NSObject<OS_tcc_identity> *)arg3 completionHandler:(void (^)(long long))arg4;
 - (_Bool)isAuthorizationRestricted;
-- (long long)checkAuthorizationStatusOfAuditToken:(CDStruct_4c969caf)arg1;
+- (long long)checkAuthorizationStatusOfAuditToken:(CNAuditToken *)arg1 assumedIdentity:(NSObject<OS_tcc_identity> *)arg2;
+- (long long)checkAuthorizationStatusOfCurrentProcessUsingAssumedIdentity:(NSObject<OS_tcc_identity> *)arg1;
 - (long long)checkAuthorizationStatusOfCurrentProcess;
 @end
 

@@ -4,33 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIScrollEventRespondable-Protocol.h>
+#import "UIGestureRecognizer.h"
 
 @class NSString;
+@protocol _UIPassthroughGestureDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIPassthroughScrollGestureRecognizer <_UIScrollEventRespondable>
+@interface _UIPassthroughScrollGestureRecognizer : UIGestureRecognizer
 {
     struct CGPoint _startPoint;
     double _startTime;
+    struct CGVector _accumulatedScrollEventDelta;
+    struct {
+        unsigned int commandHeldThroughAllTouchPhases:1;
+    } _flags;
     _Bool _endForPrimaryButtonDown;
     _Bool _endForSecondaryButtonDown;
     unsigned long long _endReason;
 }
 
++ (_Bool)canHandleEventForPassthrough:(id)arg1;
 + (_Bool)_supportsTouchContinuation;
 @property(nonatomic) _Bool endForSecondaryButtonDown; // @synthesize endForSecondaryButtonDown=_endForSecondaryButtonDown;
 @property(nonatomic) _Bool endForPrimaryButtonDown; // @synthesize endForPrimaryButtonDown=_endForPrimaryButtonDown;
 @property(readonly, nonatomic) unsigned long long endReason; // @synthesize endReason=_endReason;
 - (_Bool)canBePreventedByGestureRecognizer:(id)arg1;
-- (_Bool)shouldRequireFailureOfGestureRecognizer:(id)arg1;
+- (void)_transformChangedWithEvent:(id)arg1;
 - (void)_scrollingChangedWithEvent:(id)arg1;
 - (_Bool)shouldReceiveEvent:(id)arg1;
+- (_Bool)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_endWithReason:(unsigned long long)arg1;
+- (void)_beginAtLocation:(struct CGPoint)arg1;
 - (void)reset;
 - (id)_window;
 - (void)setView:(id)arg1;
@@ -38,6 +46,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) __weak id <_UIPassthroughGestureDelegate> delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

@@ -6,8 +6,11 @@
 
 #import <EmailDaemon/NSObject-Protocol.h>
 
+@class NSArray;
+
 @protocol EDClientStateReporting <NSObject>
-@property(readonly, nonatomic) _Bool isRunningTests;
-@property(readonly, nonatomic) _Bool isForeground;
+@property(readonly, copy) NSArray *visibleMailboxObjectIDs;
+@property(readonly) _Bool isRunningTests;
+@property(readonly) _Bool isForeground;
 @end
 

@@ -6,12 +6,15 @@
 
 #import <CalendarNotification/CALNNotificationResponseDelegate-Protocol.h>
 
-@class CALNNotificationContent, NSArray, NSSet, NSString;
+@class CALNNotificationContent, CALNNotificationRecord, NSArray, NSSet, NSString;
 
 @protocol CALNNotificationSource <CALNNotificationResponseDelegate>
 @property(readonly, nonatomic) NSArray *categories;
 @property(readonly, nonatomic) NSString *sourceIdentifier;
 - (CALNNotificationContent *)contentForNotificationWithSourceClientIdentifier:(NSString *)arg1;
 - (void)refreshNotifications:(NSSet *)arg1;
+
+@optional
+- (void)willPostNotification:(CALNNotificationRecord *)arg1;
 @end
 

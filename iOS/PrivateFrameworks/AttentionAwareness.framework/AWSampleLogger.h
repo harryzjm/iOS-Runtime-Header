@@ -38,6 +38,8 @@ __attribute__((visibility("hidden")))
 - (void)powerLogName:(id)arg1 event:(id)arg2;
 - (void)outputPowerLog;
 - (void)_outputPowerLog;
+- (void)streamingCompleteWithidentifier:(id)arg1 duration:(unsigned long long)arg2 ERActivated:(_Bool)arg3;
+- (void)_logFeatureEnablement;
 - (id)init;
 
 @end

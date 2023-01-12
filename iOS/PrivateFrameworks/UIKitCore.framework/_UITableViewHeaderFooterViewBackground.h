@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class _UISystemBackgroundView;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewHeaderFooterViewBackground
+@interface _UITableViewHeaderFooterViewBackground : UIView
 {
     _UISystemBackgroundView *_systemBackgroundView;
 }

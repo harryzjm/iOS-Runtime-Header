@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceTileTemplateView-Protocol.h>
+#import "MUPlaceSectionRowView.h"
 
-@class MUImageView, NSString, UIImageView, UILayoutGuide, UIView;
+@class MUImageView, NSString, UIImageView, UIView;
 @protocol MULabelViewProtocol, MUPlaceTileViewModel;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceTileListContentView <MUPlaceTileTemplateView>
+@interface MUPlaceTileListContentView : MUPlaceSectionRowView
 {
     UIView<MULabelViewProtocol> *_titleLabel;
     UIView<MULabelViewProtocol> *_secondaryLabel;
     UIView<MULabelViewProtocol> *_tertiaryLabel;
-    UILayoutGuide *_stackLayoutGuide;
     MUImageView *_stopImageView;
     UIImageView *_tileImageView;
     id <MUPlaceTileViewModel> _viewModel;

@@ -6,13 +6,12 @@
 
 #import <Accounts/ACAccount.h>
 
-#import <AppleMediaServices/AMSHashable-Protocol.h>
-
 @class NSArray, NSDictionary, NSNumber, NSString;
 
-@interface ACAccount (AppleMediaServices) <AMSHashable>
+@interface ACAccount (AppleMediaServices)
 + (_Bool)_isAccountFlagWritable:(id)arg1;
 + (_Bool)_isAccountFlagValue:(id)arg1 validForAccountFlag:(id)arg2;
++ (id)_globalCookieAllowlistWithBag:(id)arg1 forURL:(id)arg2;
 + (id)_getSetCookiesForResponse:(id)arg1;
 + (id)_getSetGlobalCookiesForResponse:(id)arg1;
 + (id)_defaultValueForAccountFlag:(id)arg1;
@@ -31,6 +30,7 @@
 - (id)ams_homeUserID;
 - (id)ams_homeIdentifier;
 - (id)ams_homeID;
+- (_Bool)ams_bundleOwner;
 - (void)ams_addHomeUserIdentifier:(id)arg1;
 - (void)_setAccountProperty:(id)arg1 forKey:(id)arg2 dataProtectionClass:(unsigned long long)arg3 expectedClass:(Class)arg4;
 - (void)_setAccountProperty:(id)arg1 forKey:(id)arg2 expectedClass:(Class)arg3;
@@ -39,22 +39,32 @@
 - (id)_hashedMultiUserIdentifiers;
 - (id)_hashedActiveState;
 - (id)_archivedCookiesAtPath:(id)arg1;
-- (id)_createCookieStorage;
-- (_Bool)_updateCookiesWithCookiesToAdd:(id)arg1 cookiesToRemove:(id)arg2;
+- (id)_archivedCookieDataAtPath:(id)arg1 error:(id *)arg2;
+- (_Bool)_updateCookiesWithCookiesToAdd:(id)arg1 cookiesToRemove:(id)arg2 error:(id *)arg3;
 - (id)_cookiesMatchingProperties:(id)arg1;
+- (_Bool)_ams_migrateCookieProperties:(id)arg1 intoCookies:(id)arg2 error:(id *)arg3;
+- (_Bool)_ams_setCookieProperties:(id)arg1;
 - (id)_ams_cookieProperties;
 - (id)_accountPropertyForKey:(id)arg1 dataProtectionClass:(unsigned long long)arg2 expectedClasses:(id)arg3 error:(id *)arg4;
 - (id)_accountPropertyForKey:(id)arg1 expectedClassContainedInArray:(Class)arg2;
 - (id)_accountPropertyForKey:(id)arg1 expectedClass:(Class)arg2;
+- (_Bool)_accountPropertyBooleanForKey:(id)arg1;
 @property(readonly, nonatomic) NSString *hashedDescription;
+- (_Bool)ams_removeCookiesMatchingProperties:(id)arg1 error:(id *)arg2;
 - (_Bool)ams_removeCookiesMatchingProperties:(id)arg1;
+- (_Bool)ams_removeCookies:(id)arg1 error:(id *)arg2;
 - (_Bool)ams_removeCookies:(id)arg1;
+- (_Bool)ams_removeAllCookiesWithError:(id *)arg1;
 - (_Bool)ams_removeAllCookies;
+- (id)ams_cookiesForURL:(id)arg1 bag:(id)arg2 cleanupGlobalCookies:(_Bool)arg3;
+- (id)ams_cookiesForURL:(id)arg1 bag:(id)arg2;
 - (id)ams_cookiesForURL:(id)arg1;
 - (_Bool)ams_addGlobalCookiesForResult:(id)arg1;
 - (_Bool)ams_addGlobalCookiesForResponse:(id)arg1;
 - (_Bool)ams_addCookiesForResult:(id)arg1;
+- (_Bool)ams_addCookiesForResponse:(id)arg1 error:(id *)arg2;
 - (_Bool)ams_addCookiesForResponse:(id)arg1;
+- (_Bool)ams_addCookies:(id)arg1 error:(id *)arg2;
 - (_Bool)ams_addCookies:(id)arg1;
 - (id)ams_storefrontForMediaType:(id)arg1;
 - (void)ams_setStorefront:(id)arg1 forMediaType:(id)arg2;
@@ -115,15 +125,20 @@
 - (_Bool)ams_disablePrivacyAcknowledgementSync;
 - (_Bool)ams_disableAccountFlagsSync;
 - (_Bool)ams_didAgreeToTerms;
-@property(readonly, nonatomic) NSString *ams_dataMigrationStoragePath;
 @property(readonly, nonatomic) NSString *ams_creditsString;
 @property(readonly, nonatomic) NSArray *ams_cookies;
 @property(readonly, nonatomic) NSArray *ams_automaticDownloadKinds;
 @property(readonly, nonatomic) NSString *ams_altDSID;
 - (id)ams_accountFlags;
+- (_Bool)ams_setAccountFlagOverrideValue:(id)arg1 forAccountFlag:(id)arg2;
+- (id)ams_accountFlagOverrideValueForAccountFlag:(id)arg1;
+- (_Bool)ams_migrateCookiePropertiesWithError:(id *)arg1;
+- (_Bool)ams_copyStorefrontFromAccount:(id)arg1;
+@property(retain, nonatomic, getter=ams_isBundleOwner, setter=ams_setIsBundleOwner:) NSNumber *ams_isBundleOwner;
 @property(nonatomic, getter=ams_isDemoAccount, setter=ams_setDemoAccount:) _Bool ams_demoAccount;
-@property(nonatomic, setter=ams_setLastAuthenticationCredentialSource:) unsigned long long ams_lastAuthenticationCredentialSource;
 @property(nonatomic, setter=ams_setBiometricsState:) long long ams_biometricsState;
+@property(nonatomic, setter=ams_setLastAuthenticationCredentialSource:) unsigned long long ams_lastAuthenticationCredentialSource;
+@property(readonly, nonatomic) NSString *ams_dataMigrationStoragePath;
 @property(readonly, nonatomic) NSDictionary *ams_allStorefronts;
 
 // Remaining properties

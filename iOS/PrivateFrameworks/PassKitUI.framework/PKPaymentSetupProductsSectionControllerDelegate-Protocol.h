@@ -17,5 +17,7 @@
 - (void)reloadItem:(id)arg1 animated:(_Bool)arg2;
 - (void)reloadSectionIdentifier:(NSString *)arg1 animated:(_Bool)arg2;
 - (void)reloadSectionsRequired;
+- (void)reconfigureHeaderAndFooterForSectionIdentifier:(NSString *)arg1;
+- (void)reloadData;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AFBulletin, NSArray, NSError, NSString, SiriPresentationIdentifierTransport;
+@class AFBulletin, NSArray, NSError, NSString, SASPresentationState, SiriPresentationIdentifierTransport;
 @protocol __AFBulletin__;
 
 @protocol SASPresentationClientInterface
@@ -14,6 +14,7 @@
 - (AFBulletin *)bulletinForIdentifier:(NSString *)arg1;
 - (NSArray<__AFBulletin__> *)bulletinsOnLockScreen;
 - (NSArray<__AFBulletin__> *)allBulletins;
+- (oneway void)didUpdatePresentationState:(SASPresentationState *)arg1;
 - (oneway void)failedToPresentSiriWithError:(NSError *)arg1;
 - (oneway void)resetSiriToActive;
 - (oneway void)didPresentSiri;

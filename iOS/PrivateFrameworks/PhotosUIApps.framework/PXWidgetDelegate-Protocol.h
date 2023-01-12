@@ -6,7 +6,7 @@
 
 #import <PhotosUIApps/NSObject-Protocol.h>
 
-@class NSObject, PXBasicTileAnimationOptions, PXExtendedTraitCollection, PXScrollViewController;
+@class NSObject, NSUndoManager, PXBasicTileAnimationOptions, PXExtendedTraitCollection, PXScrollViewController;
 @protocol PXAnonymousView, PXAnonymousViewController, PXWidget;
 
 @protocol PXWidgetDelegate <NSObject>
@@ -23,6 +23,7 @@
 - (void)widgetLocalizedSubtitleDidChange:(id <PXWidget>)arg1;
 - (void)widgetLocalizedTitleDidChange:(id <PXWidget>)arg1;
 - (void)widget:(id <PXWidget>)arg1 animateChanges:(void (^)(void))arg2 withAnimationOptions:(PXBasicTileAnimationOptions *)arg3;
+- (NSUndoManager *)widgetUndoManager:(id <PXWidget>)arg1;
 - (PXExtendedTraitCollection *)widgetExtendedTraitCollection:(id <PXWidget>)arg1;
 - (NSObject<PXAnonymousViewController> *)widgetViewControllerHostingWidget:(id <PXWidget>)arg1;
 - (PXScrollViewController *)widgetScrollViewControllerHostingWidget:(id <PXWidget>)arg1;

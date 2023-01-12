@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI213RootTestSuite : SNTestSuite
 {
     MISSING_TYPE *navigator;
+    MISSING_TYPE *featureAvailability;
 }
 
 - (void).cxx_destruct;

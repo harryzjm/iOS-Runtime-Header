@@ -25,6 +25,7 @@
 - (ICUserIdentityProperties *)identityPropertiesForDSID:(NSNumber *)arg1 error:(id *)arg2;
 - (NSArray *)allManageableStoreAccountDSIDsWithError:(id *)arg1;
 - (NSArray *)allStoreAccountDSIDsWithError:(id *)arg1;
+- (_Bool)disableLockerAccountDSID:(NSNumber *)arg1 error:(id *)arg2;
 - (_Bool)updateActiveLockerAccountDSID:(NSNumber *)arg1 error:(id *)arg2;
 - (NSNumber *)activeLockerAccountDSIDWithError:(id *)arg1;
 - (_Bool)updateActiveAccountDSID:(NSNumber *)arg1 error:(id *)arg2;

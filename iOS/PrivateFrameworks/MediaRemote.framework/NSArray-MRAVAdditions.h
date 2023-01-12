@@ -6,12 +6,15 @@
 
 #import <Foundation/NSArray.h>
 
+@class NSString;
+
 @interface NSArray (MRAVAdditions)
 - (id)mr_arrayByRemovingLocalEndpoint;
 - (_Bool)mr_isEqualToOutputDevicesArray:(id)arg1;
 - (int)mr_ifDisabledWhyDisabled:(unsigned int)arg1;
 - (_Bool)mr_isCommandSupportedAndEnabled:(unsigned int)arg1;
 - (_Bool)mr_isCommandSupported:(unsigned int)arg1;
+@property(readonly, nonatomic) NSString *mr_formattedDebugDescription;
 - (id)changeDescriptionTo:(id)arg1 keyBlock:(CDUnknownBlockType)arg2 isUpdatedBlock:(CDUnknownBlockType)arg3 descriptionBlock:(CDUnknownBlockType)arg4;
 - (id)mr_compactMap:(CDUnknownBlockType)arg1;
 - (id)mr_flatMap:(CDUnknownBlockType)arg1;

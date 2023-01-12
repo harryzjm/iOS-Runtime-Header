@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKit/SKEngagementViewServiceProtocol-Protocol.h>
-
 @class NSObject, NSString, SKRemoteEngagementRemoteViewController;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, SKEngagementPresenterProtocol;
 
 __attribute__((visibility("hidden")))
-@interface SKRemoteEngagementPresenterViewController : UIViewController <SKEngagementViewServiceProtocol>
+@interface SKRemoteEngagementPresenterViewController : UIViewController
 {
     id <SKEngagementPresenterProtocol> _delegate;
     SKRemoteEngagementRemoteViewController *_remoteViewController;

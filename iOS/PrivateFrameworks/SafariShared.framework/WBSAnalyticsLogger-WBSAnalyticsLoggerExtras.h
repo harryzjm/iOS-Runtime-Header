@@ -7,6 +7,6 @@
 #import <SafariCore/WBSAnalyticsLogger.h>
 
 @interface WBSAnalyticsLogger (WBSAnalyticsLoggerExtras)
-- (void)reportNumberOfFlaggedPasswordsUsingSavedPasswordAuditorIfNeeded:(id)arg1;
+- (void)reportNumberOfFlaggedPasswordsUsingSavedAccountAuditorIfNeeded:(id)arg1;
 @end
 

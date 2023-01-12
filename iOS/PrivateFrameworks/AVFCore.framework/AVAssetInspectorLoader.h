@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVAsynchronousKeyValueLoading-Protocol.h>
-#import <AVFCore/NSCopying-Protocol.h>
-
 @class AVWeakReference, NSArray, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetInspectorLoader : NSObject <NSCopying, AVAsynchronousKeyValueLoading>
+@interface AVAssetInspectorLoader : NSObject
 {
     AVWeakReference *_weakReference;
 }

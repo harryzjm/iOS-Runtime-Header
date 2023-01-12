@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuickLook/CAAnimationDelegate-Protocol.h>
-
 @class CAAnimation, CALayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface QLPULayerAnimation <CAAnimationDelegate>
+@interface QLPULayerAnimation
 {
     float _speed;
     double _timeOffset;

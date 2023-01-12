@@ -6,15 +6,15 @@
 
 #import <Accounts/ACAccount.h>
 
-@class CKDBackingFakeAccount;
+@class CKDBackingExplicitCredentialsAccount;
 
 @interface CKCredentialInterceptingAccount : ACAccount
 {
-    CKDBackingFakeAccount *_backingFakeAccount;
+    CKDBackingExplicitCredentialsAccount *_backingExplicitCredentialsAccount;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak CKDBackingFakeAccount *backingFakeAccount; // @synthesize backingFakeAccount=_backingFakeAccount;
+@property(nonatomic) __weak CKDBackingExplicitCredentialsAccount *backingExplicitCredentialsAccount; // @synthesize backingExplicitCredentialsAccount=_backingExplicitCredentialsAccount;
 - (_Bool)aa_updateTokensWithProvisioningResponse:(id)arg1;
 
 @end

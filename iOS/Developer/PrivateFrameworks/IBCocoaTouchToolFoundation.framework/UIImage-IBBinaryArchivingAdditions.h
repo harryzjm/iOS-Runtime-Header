@@ -6,15 +6,13 @@
 
 #import <UIKit/UIImage.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class IBICImageResizingBehavior, NSString;
 
-@interface UIImage (IBBinaryArchivingAdditions) <IBBinaryArchiving>
+@interface UIImage (IBBinaryArchivingAdditions)
 + (double)ibUpScaleForSize:(struct CGSize)arg1;
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
-+ (id)ibSystemImageNamed:(id)arg1 compatibleWithTraitCollection:(id)arg2;
-+ (id)ibSymbolImageNamed:(id)arg1;
++ (id)ibSystemImageNamed:(id)arg1 imageConfiguration:(id)arg2;
++ (id)ibSystemImageNamed:(id)arg1;
 - (const char *)cStringClassNameForBinaryArchiver:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)ibImageByApplyingImageConfiguration:(id)arg1;

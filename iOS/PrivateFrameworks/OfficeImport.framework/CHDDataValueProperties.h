@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDKeyedObject-Protocol.h>
-
 @class CHDDataLabel, CHDMarker, NSString, OADGraphicProperties;
 
 __attribute__((visibility("hidden")))
-@interface CHDDataValueProperties : NSObject <EDKeyedObject>
+@interface CHDDataValueProperties : NSObject
 {
     CHDDataLabel *mDataLabel;
     CHDMarker *mMarker;

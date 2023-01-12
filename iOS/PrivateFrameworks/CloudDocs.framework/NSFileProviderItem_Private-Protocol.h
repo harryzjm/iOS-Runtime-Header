@@ -6,11 +6,12 @@
 
 #import <CloudDocs/NSFileProviderItem-Protocol.h>
 
-@class NSData, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
+@class NSArray, NSData, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
 
 @protocol NSFileProviderItem_Private <NSFileProviderItem>
 
 @optional
+@property(readonly) _Bool isCollaborationInvitation;
 @property(readonly, nonatomic) NSString *preformattedMostRecentEditorName;
 @property(readonly, nonatomic) NSString *preformattedOwnerName;
 @property(readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
@@ -24,8 +25,10 @@
 @property(readonly, copy, nonatomic) NSString *displayName;
 @property(readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
 @property(readonly, copy) NSString *fp_cloudContainerIdentifier;
+@property(readonly) _Bool fp_isCloudDocsContainer;
 @property(readonly) _Bool fp_isContainerPristine;
 @property(readonly) _Bool fp_isContainer;
+@property(readonly, copy) NSArray *conflictingVersions;
 @property(readonly, getter=fp_isUbiquitous) _Bool fp_ubiquitous;
 @property(readonly, copy) NSString *fp_parentDomainIdentifier;
 @property(readonly, copy) NSString *fp_domainIdentifier;

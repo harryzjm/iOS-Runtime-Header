@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITextAttributeDefaultCategories-Protocol.h>
-#import <UIKitCore/_UITextAttributeDefaultFontSizes-Protocol.h>
-
 @class NSString, _UITextAttributeDefaults;
 @protocol _UITextAttributeDefaults;
 
 __attribute__((visibility("hidden")))
-@interface _UITextAttributeDefaultCategories : NSObject <_UITextAttributeDefaultCategories, _UITextAttributeDefaultFontSizes>
+@interface _UITextAttributeDefaultCategories : NSObject
 {
     _UITextAttributeDefaults *_generic;
     _UITextAttributeDefaults *_label;
@@ -35,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <_UITextAttributeDefaults> _label; // @synthesize _label;
 @property(readonly, nonatomic) id <_UITextAttributeDefaults> _generic; // @synthesize _generic;
 @property(readonly, copy) NSString *description;
+- (id)_textViewDefaults:(long long)arg1;
 - (id)_textFieldDefaults:(long long)arg1;
 - (id)_labelDefaults:(long long)arg1;
 - (id)_genericDefaults:(long long)arg1;

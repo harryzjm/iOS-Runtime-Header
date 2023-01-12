@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPSGraphOperation.h"
+
 @class MPSGraphTensor, NSArray;
 
-@interface MPSGraphStitchedOp
+@interface MPSGraphStitchedOp : MPSGraphOperation
 {
     CDUnknownBlockType _stitchingBlock;
     MPSGraphTensor *_finalOutputTensorForStitchedRegion;

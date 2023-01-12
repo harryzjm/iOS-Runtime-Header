@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <Home/HFPropertyListConvertible-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (HFPropertyListConverting) <HFPropertyListConvertible>
+@interface NSNumber (HFPropertyListConverting)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

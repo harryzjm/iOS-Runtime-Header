@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import "AXUIClientDelegate-Protocol.h"
-
 @class AXUIClient, NSString;
 
-@interface AXBHardwareKeyboardsManager : NSObject <AXUIClientDelegate>
+@interface AXBHardwareKeyboardsManager : NSObject
 {
     AXUIClient *_stickyKeysClient;
     _Bool _shouldNotUpdateHIDClientForNextStickyKeysEnabledChange;

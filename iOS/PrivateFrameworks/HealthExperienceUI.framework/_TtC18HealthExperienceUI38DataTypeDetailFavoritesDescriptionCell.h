@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI31CollectionViewGroupedFooterCellCN.h"
+
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI38DataTypeDetailFavoritesDescriptionCell
+@interface _TtC18HealthExperienceUI38DataTypeDetailFavoritesDescriptionCell : _$s18HealthExperienceUI31CollectionViewGroupedFooterCellCN
 {
 }
 

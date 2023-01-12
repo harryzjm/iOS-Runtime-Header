@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <prequelite/PQLResultSetInitializer-Protocol.h>
-
 @class NSString;
 
-@interface NSObject (PQLResultSetInitializer) <PQLResultSetInitializer>
+@interface NSObject (PQLResultSetInitializer)
 - (id)initFromPQLResultSet:(id)arg1 error:(id *)arg2;
 
 // Remaining properties

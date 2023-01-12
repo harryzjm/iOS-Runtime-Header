@@ -26,19 +26,24 @@ __attribute__((visibility("hidden")))
     _Bool _isNullInputView;
     _Bool _isCustomInputView;
     _Bool _isRemoteKeyboard;
+    UIView *_hostedCustomInputView;
     struct CGRect _inputAssistantViewBounds;
 }
 
 + (id)emptyInputSet;
 + (id)inputSetWithOriginalInputSet:(id)arg1 duplicateInputView:(_Bool)arg2 duplicateInputAccessoryView:(_Bool)arg3 duplicateInputAssistantView:(_Bool)arg4;
++ (id)inputSetWithPlaceholderAndCustomInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3;
++ (id)inputSetWithPlaceholderAndAccessoryView:(id)arg1 assistantView:(id)arg2;
 + (id)inputSetWithPlaceholderAndAccessoryView:(id)arg1;
 + (id)inputSetWithKeyboardAndAccessoryView:(id)arg1;
 + (id)inputSetWithKeyboardAndAccessoryView:(id)arg1 assistantView:(id)arg2;
 + (id)inputSetWithInputView:(id)arg1 accessoryView:(id)arg2;
 + (id)inputSetWithInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isRemoteKeyboard; // @synthesize isRemoteKeyboard=_isRemoteKeyboard;
 @property(nonatomic) _Bool isCustomInputView; // @synthesize isCustomInputView=_isCustomInputView;
 @property(readonly, nonatomic) struct CGRect inputAssistantViewBounds; // @synthesize inputAssistantViewBounds=_inputAssistantViewBounds;
+@property(retain, nonatomic) UIView *hostedCustomInputView; // @synthesize hostedCustomInputView=_hostedCustomInputView;
 @property(readonly, nonatomic) _Bool isNullInputView; // @synthesize isNullInputView=_isNullInputView;
 @property(nonatomic) __weak UIResponder *accessoryViewNextResponder; // @synthesize accessoryViewNextResponder=_accessoryViewNextResponder;
 @property(retain, nonatomic) UIKBRenderConfig *restorableRenderConfig; // @synthesize restorableRenderConfig=_restorableRenderConfig;
@@ -101,6 +106,7 @@ __attribute__((visibility("hidden")))
 - (void)setKeyboardAssistantBar:(id)arg1;
 - (void)inheritNullState:(id)arg1;
 - (void)dealloc;
+- (id)initWithInputView:(id)arg1 customInputView:(id)arg2 accessoryView:(id)arg3 assistantView:(id)arg4 isKeyboard:(_Bool)arg5;
 - (id)initWithInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3 isKeyboard:(_Bool)arg4;
 @property(readonly, nonatomic) UIKeyboard *keyboard;
 - (_Bool)_isKeyboard;

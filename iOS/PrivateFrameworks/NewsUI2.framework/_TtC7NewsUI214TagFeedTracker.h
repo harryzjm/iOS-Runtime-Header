@@ -10,6 +10,7 @@
 
 @interface _TtC7NewsUI214TagFeedTracker : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *urlReferralData;
     MISSING_TYPE *tracker;
     MISSING_TYPE *blueprintProvider;
     MISSING_TYPE *blueprintLayoutProvider;
@@ -17,9 +18,12 @@
     MISSING_TYPE *newsActivityManager;
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *channelDataFactory;
+    MISSING_TYPE *issueModelFactory;
     MISSING_TYPE *contentPrefetchManager;
+    MISSING_TYPE *headlineExposureTracker;
     MISSING_TYPE *trackerConfiguration;
-    MISSING_TYPE *urlReferralData;
+    MISSING_TYPE *tagService;
+    MISSING_TYPE *feedDescriptor;
 }
 
 @end

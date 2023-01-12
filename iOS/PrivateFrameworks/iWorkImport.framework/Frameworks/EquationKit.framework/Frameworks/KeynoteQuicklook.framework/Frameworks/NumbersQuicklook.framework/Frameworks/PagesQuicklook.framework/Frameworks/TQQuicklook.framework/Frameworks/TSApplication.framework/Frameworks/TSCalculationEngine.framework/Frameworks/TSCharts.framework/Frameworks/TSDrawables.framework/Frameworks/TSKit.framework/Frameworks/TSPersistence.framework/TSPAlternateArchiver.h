@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSPersistence/TSPKnownFieldRuleProvider-Protocol.h>
-
 @class NSString, TSPArchiverBase;
 
-@interface TSPAlternateArchiver <TSPKnownFieldRuleProvider>
+@interface TSPAlternateArchiver
 {
     struct RepeatedPtrField<TSP::FieldPath> _fieldPathsToRemove;
     struct {

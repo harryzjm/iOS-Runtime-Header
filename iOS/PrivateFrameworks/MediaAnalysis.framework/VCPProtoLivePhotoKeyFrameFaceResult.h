@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class VCPProtoBounds;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoLivePhotoKeyFrameFaceResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoLivePhotoKeyFrameFaceResult : PBCodable
 {
     VCPProtoBounds *_faceBounds;
     float _faceQuality;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-#import <OfficeImport/NSFastEnumeration-Protocol.h>
-
 @class NSArray, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface TSUUUIDPath : NSObject <NSCopying, NSFastEnumeration>
+@interface TSUUUIDPath : NSObject
 {
     NSArray *_uuids;
 }

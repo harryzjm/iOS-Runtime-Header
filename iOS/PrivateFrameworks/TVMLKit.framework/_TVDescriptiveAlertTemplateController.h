@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_TVBgImageLoadingViewController.h"
+
 @class IKImageElement, IKViewElement, NSArray, UIColor, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _TVDescriptiveAlertTemplateController
+@interface _TVDescriptiveAlertTemplateController : _TVBgImageLoadingViewController
 {
     IKViewElement *_templateElement;
     NSArray *_templateSubviews;

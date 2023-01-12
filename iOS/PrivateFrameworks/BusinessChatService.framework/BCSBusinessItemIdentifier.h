@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSItemIdentifying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSBusinessItemIdentifier : NSObject <BCSItemIdentifying>
+@interface BCSBusinessItemIdentifier : NSObject
 {
     long long _computedTruncatedHash;
 }

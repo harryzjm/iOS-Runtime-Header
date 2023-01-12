@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol WFGetDropboxFileActionUserInterface <WFActionRemoteUserInterface>
-- (void)showWithServiceName:(NSString *)arg1 directoryPath:(NSString *)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(NSArray *, WFContentAttributionSet *, NSError *))arg4;
+- (void)showWithServiceName:(NSString *)arg1 directoryPath:(NSString *)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(NSArray *, NSError *))arg4;
 @end
 

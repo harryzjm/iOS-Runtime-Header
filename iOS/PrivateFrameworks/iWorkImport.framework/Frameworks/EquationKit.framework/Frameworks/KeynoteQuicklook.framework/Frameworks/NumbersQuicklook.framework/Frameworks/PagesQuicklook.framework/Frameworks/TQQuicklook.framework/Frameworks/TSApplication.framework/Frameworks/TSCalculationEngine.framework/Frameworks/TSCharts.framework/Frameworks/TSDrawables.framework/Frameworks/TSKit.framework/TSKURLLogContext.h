@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSKit/TSULogContext-Protocol.h>
-
 @class NSString, NSURL;
 
-@interface TSKURLLogContext : NSObject <TSULogContext>
+@interface TSKURLLogContext : NSObject
 {
     NSURL *_url;
 }

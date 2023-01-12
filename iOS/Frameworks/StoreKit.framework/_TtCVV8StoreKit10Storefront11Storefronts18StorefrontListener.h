@@ -6,12 +6,10 @@
 
 #import <swiftCore/SwiftNativeNSObject.h>
 
-#import <StoreKit/SKStorefrontListenerProtocol-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCVV8StoreKit10Storefront11Storefronts18StorefrontListener : SwiftNativeNSObject <SKStorefrontListenerProtocol>
+@interface _TtCVV8StoreKit10Storefront11Storefronts18StorefrontListener : SwiftNativeNSObject
 {
     MISSING_TYPE *$defaultActor;
     MISSING_TYPE *continuation;

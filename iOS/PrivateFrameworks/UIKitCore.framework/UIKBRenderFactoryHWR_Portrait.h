@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)moreKeyTextOffset;
 - (struct CGPoint)spaceKeyTextOffset;
 - (struct CGPoint)deleteGlyphOffset;
+- (double)symbolImageControlKeyFontSize;
 - (struct UIEdgeInsets)handwritingAreaInsets;
 - (double)handwritingGradientStartLocation;
 

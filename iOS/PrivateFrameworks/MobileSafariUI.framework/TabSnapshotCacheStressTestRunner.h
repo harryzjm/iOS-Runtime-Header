@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/TabSnapshotCacheDelegate-Protocol.h>
-
 @class NSMutableOrderedSet, NSString, TabSnapshotCache;
 @protocol TabSnapshotCacheStressTestRunnerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TabSnapshotCacheStressTestRunner : NSObject <TabSnapshotCacheDelegate>
+@interface TabSnapshotCacheStressTestRunner : NSObject
 {
     unsigned long long _maxIterations;
     id <TabSnapshotCacheStressTestRunnerDelegate> _delegate;

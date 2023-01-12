@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSUStreamReadChannel-Protocol.h>
-
 @class NSString;
 @protocol TSUStreamReadChannel;
 
-@interface TSPSnappyReadChannel : NSObject <TSUStreamReadChannel>
+@interface TSPSnappyReadChannel : NSObject
 {
     id <TSUStreamReadChannel> _readChannel;
 }

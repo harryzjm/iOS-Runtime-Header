@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface BCSDomainShardItemMetadata : PBCodable <NSCopying>
+@interface BCSDomainShardItemMetadata : PBCodable
 {
     long long _count;
     long long _index;

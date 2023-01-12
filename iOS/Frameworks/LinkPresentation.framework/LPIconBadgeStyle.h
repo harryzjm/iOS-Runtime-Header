@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface LPIconBadgeStyle <NSCopying>
+@interface LPIconBadgeStyle
 {
     double _offset;
 }

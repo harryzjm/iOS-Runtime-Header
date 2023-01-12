@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDURLRequest.h"
+
 @class NSData, NSString, NSURL;
 
-@interface CKDCodeLocalFunctionInvokeURLRequest
+@interface CKDCodeLocalFunctionInvokeURLRequest : CKDURLRequest
 {
     CDUnknownBlockType _serializedResultsCallback;
     NSString *_serviceName;

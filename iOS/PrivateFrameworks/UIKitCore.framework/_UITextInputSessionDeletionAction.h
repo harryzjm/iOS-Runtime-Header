@@ -8,8 +8,10 @@ __attribute__((visibility("hidden")))
 @interface _UITextInputSessionDeletionAction
 {
     unsigned long long _deletionCount;
+    unsigned long long _options;
 }
 
+@property(nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(nonatomic) unsigned long long deletionCount; // @synthesize deletionCount=_deletionCount;
 - (_Bool)changedContent;
 - (long long)mergeActionIfPossible:(id)arg1;

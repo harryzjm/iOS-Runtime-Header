@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTCellIteratorData-Protocol.h>
-
 @class NSString, TSTCell, TSTCellFormulaSpec;
 
-@interface TSTMutableCellIteratorData : NSObject <TSTCellIteratorData>
+@interface TSTMutableCellIteratorData : NSObject
 {
     _Bool _cellIDIsValid;
     _Bool _cellIsValid;

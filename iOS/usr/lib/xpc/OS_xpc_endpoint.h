@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <xpc/OS_xpc_endpoint-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OS_xpc_endpoint <OS_xpc_endpoint>
+@interface OS_xpc_endpoint
 {
 }
 

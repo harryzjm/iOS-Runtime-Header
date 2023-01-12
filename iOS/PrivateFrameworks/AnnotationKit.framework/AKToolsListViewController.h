@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AnnotationKit/UITableViewDataSource-Protocol.h>
-#import <AnnotationKit/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSString, UITableView;
 @protocol AKToolsListViewControllerDelegate;
 
-@interface AKToolsListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface AKToolsListViewController : UIViewController
 {
     _Bool _supportsOpacityEditing;
     _Bool _supportsImageDescriptionEditing;

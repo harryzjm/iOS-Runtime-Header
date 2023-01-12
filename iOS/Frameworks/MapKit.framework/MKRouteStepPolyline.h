@@ -4,18 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKRoutePolyline;
+#import "MKPolyline.h"
+
+@class MKRoutePolyline, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKRouteStepPolyline
+@interface MKRouteStepPolyline : MKPolyline
 {
     MKRoutePolyline *_fullRoute;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_requiresModernMap) _Bool requiresModernMap;
 - (struct CLLocationCoordinate2D)coordinate;
 - (void)dealloc;
 - (id)_initWithRoute:(id)arg1 range:(struct _NSRange)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

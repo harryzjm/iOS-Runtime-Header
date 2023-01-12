@@ -15,5 +15,7 @@
 @property(readonly, nonatomic) _Bool hf_isReady;
 @property(readonly, nonatomic) _Bool hf_isStatusKnown;
 @property(readonly, nonatomic) _Bool hf_isConnected;
+- (Class)hf_itemClass;
+- (id)hf_rootAccessoryLikeHomeKitObject;
 @end
 

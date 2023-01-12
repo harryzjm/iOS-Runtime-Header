@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIBezierPath, UIView, _UIPlatterShadowView;
+#import "UIView.h"
+
+@class UIBezierPath, _UIPlatterShadowView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPlatterSoftShadowView
+@interface _UIPlatterSoftShadowView : UIView
 {
     _Bool _needsPunchOut;
     UIBezierPath *_shadowPath;

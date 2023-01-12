@@ -6,11 +6,10 @@
 
 #import <ContactsAutocompleteUI/CNComposeRecipientGroup.h>
 
-#import <ChatKit/CKIMComposeRecipient-Protocol.h>
-
 @class CKIMComposeRecipient, NSArray, NSDate, NSString;
 
-@interface CKIMGroupComposeRecipient : CNComposeRecipientGroup <CKIMComposeRecipient>
+__attribute__((visibility("hidden")))
+@interface CKIMGroupComposeRecipient : CNComposeRecipientGroup
 {
     NSString *_conversationGUID;
     NSArray *_composeRecipients;

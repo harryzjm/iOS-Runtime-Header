@@ -6,11 +6,9 @@
 
 #import <Foundation/NSKeyedArchiver.h>
 
-#import <IBCocoaTouchToolFoundation/IBNibDataArchiver-Protocol.h>
-
 @protocol IBNibDataArchivingDelegate;
 
-@interface NSKeyedArchiver (IBNibFactoryAdditions) <IBNibDataArchiver>
+@interface NSKeyedArchiver (IBNibFactoryAdditions)
 @property(nonatomic) id <IBNibDataArchivingDelegate> archivingDelegate;
 @end
 

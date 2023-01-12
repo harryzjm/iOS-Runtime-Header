@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEPerformancePrimitivesInFlightInterval-Protocol.h>
-
 @class NSString;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
-@interface AEConcretePerformancePrimitivesInFlightInterval : NSObject <AEPerformancePrimitivesInFlightInterval>
+@interface AEConcretePerformancePrimitivesInFlightInterval : NSObject
 {
     _Bool _isEnded;
     NSString *_name;

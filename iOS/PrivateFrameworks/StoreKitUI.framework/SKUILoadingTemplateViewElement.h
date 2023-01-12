@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class SKUIActivityIndicatorViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUILoadingTemplateViewElement
+@interface SKUILoadingTemplateViewElement : SKUIViewElement
 {
 }
 

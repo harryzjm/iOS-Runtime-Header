@@ -12,6 +12,7 @@
 @protocol CRTextRecognizerModel <NSObject, CRTextRecognizerModelInputProvider>
 @property(nonatomic) long long ctcBlankLabelIndex;
 @property(nonatomic) int *codemapArray;
+- (void)releaseIntermediateBuffers;
 - (_Bool)supportCharacterBoxes;
 - (_Bool)preheatWithError:(id *)arg1;
 - (NSArray *)predictFromInputs:(NSArray *)arg1 error:(id *)arg2;

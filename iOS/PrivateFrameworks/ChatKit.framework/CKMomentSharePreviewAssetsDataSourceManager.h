@@ -11,13 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface CKMomentSharePreviewAssetsDataSourceManager : PXAssetsDataSourceManager
 {
-    PHMomentShare *_momentShare;
     IMMomentShareCache *_momentShareCache;
     PXStaticDisplayAssetsDataSource *_currentDataSource;
     NSURL *_momentShareURL;
+    PHMomentShare *_momentShare;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PHMomentShare *momentShare; // @synthesize momentShare=_momentShare;
 @property(readonly, nonatomic) NSURL *momentShareURL; // @synthesize momentShareURL=_momentShareURL;
 - (void)_momentShareCacheDidChange:(id)arg1;
 - (void)_handleFetchedMomentShare:(id)arg1 error:(id)arg2;

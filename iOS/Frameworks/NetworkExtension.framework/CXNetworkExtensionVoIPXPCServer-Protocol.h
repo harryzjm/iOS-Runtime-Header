@@ -5,7 +5,6 @@
 //
 
 @protocol CXNetworkExtensionVoIPXPCServer
-- (void)unregisterVoIPNetworkExtension;
 - (void)registerVoIPNetworkExtension;
 @end
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
-
 @class NSString;
 @protocol WKShareSheetDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WKShareSheet : NSObject <UIAdaptivePresentationControllerDelegate>
+@interface WKShareSheet : NSObject
 {
     struct RetainPtr<NSURL> _temporaryFileShareDirectory;
     struct WeakObjCPtr<WKWebView> _webView;
@@ -29,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dismiss;
-- (void)presentWithShareDataArray:(id)arg1 inRect:(optional_acc783a3)arg2;
-- (void)presentWithParameters:(const void *)arg1 inRect:(optional_acc783a3)arg2 completionHandler:(void *)arg3;
+- (void)presentWithShareDataArray:(id)arg1 inRect:(optional_1d8eff86)arg2;
+- (void)presentWithParameters:(const void *)arg1 inRect:(optional_1d8eff86)arg2 completionHandler:(void *)arg3;
 - (id)initWithView:(id)arg1;
 @property(nonatomic) __weak id <WKShareSheetDelegate> delegate;
 

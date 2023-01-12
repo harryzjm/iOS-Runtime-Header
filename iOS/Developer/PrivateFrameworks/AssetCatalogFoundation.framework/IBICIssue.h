@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSArray, NSSet, NSString;
 
-@interface IBICIssue : NSObject <IBBinaryArchiving>
+@interface IBICIssue : NSObject
 {
     NSString *_message;
     NSString *_catalogPath;
@@ -36,6 +34,7 @@
 @property(readonly) NSString *severityDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) NSArray *orderedCatalogItemIdentifiers;
+- (id)copyWithReplacedIdentifiers:(id)arg1 catalogPath:(id)arg2;
 - (id)copyWithReplacedCatalogItems:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;

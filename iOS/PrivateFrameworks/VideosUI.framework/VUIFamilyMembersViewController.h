@@ -6,18 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/VUILegacyCollectionViewDelegate-Protocol.h>
-#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
-
 @class NSDictionary, NSString, UICollectionViewDiffableDataSource, VUIFamilyMemberCell, VUILegacyCollectionView, VUILibraryFamilyMembersDataSource, VUIViewControllerContentPresenter;
 @protocol VUIFamilyMembersViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIFamilyMembersViewController : UIViewController <VUILibraryDataSourceDelegate, UICollectionViewDelegate, VUILegacyCollectionViewDelegate>
+@interface VUIFamilyMembersViewController : UIViewController
 {
     double _lastAppearWidth;
-    _Bool _requiresRelayout;
     id <VUIFamilyMembersViewControllerDelegate> _delegate;
     VUILibraryFamilyMembersDataSource *_dataSource;
     UICollectionViewDiffableDataSource *_diffableDataSource;
@@ -28,11 +23,12 @@ __attribute__((visibility("hidden")))
     long long _gridType;
     long long _gridStyle;
     double _tvCellWidth;
+    struct CGSize _lastCollectionViewSize;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) double tvCellWidth; // @synthesize tvCellWidth=_tvCellWidth;
-@property(nonatomic) _Bool requiresRelayout; // @synthesize requiresRelayout=_requiresRelayout;
+@property(nonatomic) struct CGSize lastCollectionViewSize; // @synthesize lastCollectionViewSize=_lastCollectionViewSize;
 @property(nonatomic) long long gridStyle; // @synthesize gridStyle=_gridStyle;
 @property(nonatomic) long long gridType; // @synthesize gridType=_gridType;
 @property(retain, nonatomic) NSDictionary *familyMemberHashToFamilyMemberDictionary; // @synthesize familyMemberHashToFamilyMemberDictionary=_familyMemberHashToFamilyMemberDictionary;
@@ -44,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <VUIFamilyMembersViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updateNavigationBarPadding;
 - (void)_clearCollectionViewSelections:(_Bool)arg1;
-- (void)_updateLayoutForSize:(struct CGSize)arg1;
+- (void)_updateLayoutForSizeIfNeeded:(struct CGSize)arg1;
 - (void)_updateCurrentViewIfNeeded;
 - (id)_generateFamilyMemberHashToFamilyMemberDictionaryForFamilyMembers:(id)arg1;
 - (id)_getFamilyMemberIdentifiersFromFamilyMembers;
@@ -59,8 +55,11 @@ __attribute__((visibility("hidden")))
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)applicationWillEnterForegroundNotification:(id)arg1;
+- (void)unregisterApplicationNotifications;
+- (void)registerForApplicationNotifications;
 - (void)viewDidLayoutSubviews;
-- (void)viewWillLayoutSubviews;
+- (void)dealloc;
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithDataSource:(id)arg1;

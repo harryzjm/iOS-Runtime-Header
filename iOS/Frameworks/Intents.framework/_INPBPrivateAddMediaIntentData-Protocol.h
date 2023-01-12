@@ -6,14 +6,19 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, _INPBMediaItemValue, _INPBPrivateMediaIntentData;
+@class NSArray, NSString, _INPBMediaItemValue, _INPBPrivateMediaIntentData;
 
 @protocol _INPBPrivateAddMediaIntentData <NSObject>
 + (Class)audioSearchResultsType;
 @property(readonly, nonatomic) _Bool hasPrivateMediaIntentData;
 @property(retain, nonatomic) _INPBPrivateMediaIntentData *privateMediaIntentData;
+@property(readonly, nonatomic) unsigned long long internalSignalsCount;
+@property(copy, nonatomic) NSArray *internalSignals;
 @property(readonly, nonatomic) unsigned long long audioSearchResultsCount;
 @property(copy, nonatomic) NSArray *audioSearchResults;
+- (NSString *)internalSignalAtIndex:(unsigned long long)arg1;
+- (void)addInternalSignal:(NSString *)arg1;
+- (void)clearInternalSignals;
 - (_INPBMediaItemValue *)audioSearchResultsAtIndex:(unsigned long long)arg1;
 - (void)addAudioSearchResults:(_INPBMediaItemValue *)arg1;
 - (void)clearAudioSearchResults;

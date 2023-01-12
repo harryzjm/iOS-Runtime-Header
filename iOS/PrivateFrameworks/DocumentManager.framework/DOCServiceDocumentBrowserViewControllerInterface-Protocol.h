@@ -13,16 +13,17 @@
 - (void)_clearCurrentOpenInteraction;
 - (void)_dismissAllPresentedViewControllers:(_Bool)arg1 completion:(void (^)(void))arg2;
 - (void)_setCreateButtonTitle:(NSString *)arg1;
-- (void)_setCreateButtonAspectRatio:(double)arg1;
+- (void)_setDefaultDocumentAspectRatio:(double)arg1;
 - (void)_setAllowsPickingMultipleItems:(_Bool)arg1;
 - (void)_setAllowsDocumentCreation:(_Bool)arg1;
-- (void)_importDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg1 nextToDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg2 mode:(unsigned long long)arg3 completionHandler:(void (^)(DOCItem *, NSError *))arg4;
-- (void)_importDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg1 mode:(unsigned long long)arg2 toCurrentBrowserLocationWithCompletion:(void (^)(DOCItem *, NSError *))arg3;
+- (void)_importDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg1 nextToDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg2 mode:(unsigned long long)arg3 completionHandler:(void (^)(DOCItemBookmark *, NSError *))arg4;
+- (void)_importDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg1 mode:(unsigned long long)arg2 toCurrentBrowserLocationWithCompletion:(void (^)(DOCItemBookmark *, NSError *))arg3;
 - (void)_establishFirstResponderAndPerformKeyCommand:(UIKeyCommand *)arg1;
 - (void)_setSceneIdentifier:(NSString *)arg1;
 - (void)_setCustomActions:(NSArray *)arg1;
 - (void)_setAdditionalTrailingNavigationBarButtonItems:(NSArray *)arg1;
 - (void)_setAdditionalLeadingNavigationBarButtonItems:(NSArray *)arg1;
-- (void)_revealDocumentAtURL:(FPSandboxingURLWrapper *)arg1 importIfNeeded:(_Bool)arg2 completion:(void (^)(DOCItem *, NSError *))arg3;
+- (void)_revealSymbolicLocation:(unsigned long long)arg1 completion:(void (^)(DOCItemBookmark *, NSError *))arg2;
+- (void)_revealDocumentAtURL:(FPSandboxingURLWrapper *)arg1 importIfNeeded:(_Bool)arg2 completion:(void (^)(DOCItemBookmark *, NSError *))arg3;
 @end
 

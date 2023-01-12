@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BusinessChatService/BCSItemCaching-Protocol.h>
-#import <BusinessChatService/BCSLinkItemCacheClearing-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface BCSLinkItemPersistentStore <BCSItemCaching, BCSLinkItemCacheClearing>
+@interface BCSLinkItemPersistentStore
 {
     long long _schemaVersion;
 }

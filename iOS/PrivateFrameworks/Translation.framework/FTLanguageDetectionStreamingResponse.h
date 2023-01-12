@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTLanguageDetectionResponse, NSData, NSMutableDictionary;
+@protocol FLTBFBufferAccessor><NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface FTLanguageDetectionStreamingResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTLanguageDetectionStreamingResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
     const struct LanguageDetectionStreamingResponse *_root;
 }
 
++ (long long)content_typeForImmutableObject:(id)arg1;
++ (Class)content_immutableClassForType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_1d53fa02)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) NSObject<FLTBFBufferAccessor><NSCopying> *content;
 @property(readonly, nonatomic) FTLanguageDetectionResponse *contentAsFTLanguageDetectionResponse;
 @property(readonly, nonatomic) long long content_type;
 - (id)copyWithZone:(struct _NSZone *)arg1;

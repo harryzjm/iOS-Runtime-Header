@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDDeparturePredicate : PBCodable <NSCopying>
+@interface GEOPDDeparturePredicate : PBCodable
 {
     PBUnknownFields *_unknownFields;
     struct GEOPDTimeRange _timeRange;

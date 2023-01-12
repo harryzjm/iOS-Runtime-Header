@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/SSDownloadManagerObserver-Protocol.h>
-#import <VideosUI/SSPurchaseManagerDelegate-Protocol.h>
-#import <VideosUI/VUIMediaEntityAssetController-Protocol.h>
-
 @class NSString, NSTimer, SSDownload, SSDownloadManager, VUIFamilySharingMediaItem, VUIMediaEntityAssetControllerState, VUIMediaEntityType;
 @protocol OS_dispatch_queue, VUIMediaEntityAssetControllerDelegate, VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface VUIFamilySharingMediaItemAssetController : NSObject <SSPurchaseManagerDelegate, SSDownloadManagerObserver, VUIMediaEntityAssetController>
+@interface VUIFamilySharingMediaItemAssetController : NSObject
 {
     _Bool _observingDownload;
     VUIFamilySharingMediaItem *_mediaItemInternal;

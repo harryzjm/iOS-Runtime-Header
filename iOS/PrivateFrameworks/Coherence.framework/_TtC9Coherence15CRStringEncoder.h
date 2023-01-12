@@ -18,12 +18,16 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)setFromAddedByVersion:(id)arg1;
+- (void)setFromVersion:(id)arg1;
 - (void)setWithAddedByVersion:(id)arg1;
 - (void)setWithVersion:(id)arg1;
-- (void)setStorage:(id)arg1;
+- (_Bool)setStorage:(id)arg1 error:(id *)arg2;
 - (void)finishSubstring;
 - (void)addChildWithId:(unsigned int)arg1;
+- (void)setWithContentOptions:(long long)arg1;
 - (void)setWithLength:(unsigned int)arg1;
+- (void)addRemovedAddedById:(id)arg1 clock:(unsigned int)arg2;
 - (void)addAddedById:(id)arg1 clock:(unsigned int)arg2;
 - (void)setCharWithId:(id)arg1 clock:(unsigned int)arg2;
 

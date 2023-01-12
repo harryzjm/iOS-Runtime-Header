@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityInTopLevelTabLoop;
-- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
+- (id)_childFocusViews;
 - (id)accessibilityCustomActions;
 - (void)_axActivateSpeaking:(id)arg1;
 - (id)_axCandidate;

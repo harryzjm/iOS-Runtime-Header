@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCH3DShaderVariable;
 
-@interface TSCH3DMaterialShaderVariables : NSObject <NSCopying>
+@interface TSCH3DMaterialShaderVariables : NSObject
 {
     TSCH3DShaderVariable *_texture;
     TSCH3DShaderVariable *_intensity;

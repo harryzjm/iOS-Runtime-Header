@@ -11,6 +11,7 @@
 @protocol SFHeroCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) int imageAlign;
 @property(retain, nonatomic) SFImage *image;
 @property(copy, nonatomic) NSArray *buttonItems;
 @property(retain, nonatomic) SFRichText *subtitle;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TemplateKit/TLKGridArrangementItem-Protocol.h>
-
 @class NSString, NUISizeCache, TLKRichText;
 
 __attribute__((visibility("hidden")))
-@interface TLKLabelItem : NSObject <TLKGridArrangementItem>
+@interface TLKLabelItem : NSObject
 {
     unsigned long long row;
     double horizontalHuggingPriority;

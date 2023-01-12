@@ -28,6 +28,12 @@ __attribute__((visibility("hidden")))
     NSString *_backgroundBlurControlModeKey;
     NSString *_backgroundBlurEnabledKey;
     NSString *_backgroundBlurUnavailableReasonsKey;
+    _Bool _studioLightingSupported;
+    long long _studioLightingControlMode;
+    _Bool _studioLightingEnabled;
+    NSString *_studioLightingControlModeKey;
+    NSString *_studioLightingEnabledKey;
+    NSString *_studioLightingUnavailableReasonsKey;
     _Bool _micModesSupported;
     _Bool _auVoiceIOBypassVoiceProcessing;
     NSString *_auVoiceIOBypassVoiceProcessingKey;
@@ -37,6 +43,8 @@ __attribute__((visibility("hidden")))
     NSString *_activeMicrophoneModeKey;
     NSArray *_supportedMicrophoneModes;
     NSString *_supportedMicrophoneModesKey;
+    NSArray *_hiddenMicrophoneModes;
+    NSString *_hiddenMicrophoneModesKey;
 }
 
 + (id)moduleStateForBundleID:(id)arg1 micModesSupported:(_Bool)arg2;
@@ -45,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (long long)activeMicrophoneMode;
 - (_Bool)setMicrophoneMode:(long long)arg1;
 - (long long)microphoneMode;
+- (id)hiddenMicrophoneModes;
 - (id)supportedMicrophoneModes;
 - (unsigned long long)unavailableReasonsForVideoEffect:(id)arg1;
 - (_Bool)setEnabled:(_Bool)arg1 forVideoEffect:(id)arg2;
@@ -52,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (long long)controlModeForVideoEffect:(id)arg1;
 - (_Bool)supportsVideoEffect:(id)arg1;
 @property _Bool micModesSupported;
+@property _Bool studioLightingSupported;
 @property _Bool backgroundBlurSupported;
 @property _Bool centerStageSupported;
 @property(readonly, getter=isActive) _Bool active;

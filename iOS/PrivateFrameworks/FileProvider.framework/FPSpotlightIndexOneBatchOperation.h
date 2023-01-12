@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "FPOperation.h"
+
 @class FPSpotlightIndexer, NSArray, NSData, NSError;
 
 __attribute__((visibility("hidden")))
-@interface FPSpotlightIndexOneBatchOperation
+@interface FPSpotlightIndexOneBatchOperation : FPOperation
 {
     FPSpotlightIndexer *_indexer;
     _Bool _isInitialIndexing;

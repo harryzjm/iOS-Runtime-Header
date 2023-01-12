@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <Accounts/NSCopying-Protocol.h>
-
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface ACProtobufDate : PBCodable <NSCopying>
+@interface ACProtobufDate : PBCodable
 {
     double _value;
 }

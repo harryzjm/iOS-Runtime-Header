@@ -9,6 +9,7 @@
 @class NSFileProviderDomainVersion;
 
 @protocol NSFileProviderPendingSetEnumerator <NSFileProviderEnumerator>
+@property(readonly, nonatomic, getter=isMaximumSizeReached) _Bool maximumSizeReached;
 @property(readonly, nonatomic) double refreshInterval;
 @property(readonly, nonatomic) NSFileProviderDomainVersion *domainVersion;
 @end

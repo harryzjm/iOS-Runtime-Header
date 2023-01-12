@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIMediaCollection.h"
+
 @class VUITVSeriesManagedObject;
 
 __attribute__((visibility("hidden")))
-@interface VUISidebandSeriesMediaCollection
+@interface VUISidebandSeriesMediaCollection : VUIMediaCollection
 {
     VUITVSeriesManagedObject *_seriesManagedObject;
 }

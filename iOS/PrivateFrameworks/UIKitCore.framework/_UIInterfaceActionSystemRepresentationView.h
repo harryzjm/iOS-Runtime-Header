@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIInterfaceActionDisplayPropertyObserver-Protocol.h>
-
 @class NSArray, NSSet, NSString, _UIInterfaceActionImagePropertyView, _UIInterfaceActionLabelsPropertyView;
 
 __attribute__((visibility("hidden")))
-@interface _UIInterfaceActionSystemRepresentationView <UIInterfaceActionDisplayPropertyObserver>
+@interface _UIInterfaceActionSystemRepresentationView
 {
     _UIInterfaceActionImagePropertyView *_leadingImageView;
     _UIInterfaceActionImagePropertyView *_trailingImageView;

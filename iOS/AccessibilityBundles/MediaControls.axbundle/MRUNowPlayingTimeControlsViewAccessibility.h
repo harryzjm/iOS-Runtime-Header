@@ -11,8 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (void)_accessibilityAnnounceCurrentElapsedTime;
+- (void)sliderValueChanged:(id)arg1;
 - (_Bool)_accessibilityIsTrackInfoEmpty;
 - (id)accessibilityIdentifier;
 - (void)_accessibilityAdjustElapsedTime:(_Bool)arg1;
@@ -20,7 +19,6 @@
 - (void)accessibilityIncrement;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
-- (struct CGPoint)accessibilityActivationPoint;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 

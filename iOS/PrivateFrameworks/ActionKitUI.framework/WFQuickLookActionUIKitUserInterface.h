@@ -6,20 +6,19 @@
 
 #import <WorkflowUICore/WFActionUserInterface.h>
 
-#import <ActionKitUI/QLPreviewControllerPrivateDelegate-Protocol.h>
-#import <ActionKitUI/WFQuickLookActionUserInterface-Protocol.h>
-
-@class NSString, QLPreviewController, WFContentCollection;
+@class NSError, NSString, QLPreviewController, WFContentCollection;
 
 __attribute__((visibility("hidden")))
-@interface WFQuickLookActionUIKitUserInterface : WFActionUserInterface <QLPreviewControllerPrivateDelegate, WFQuickLookActionUserInterface>
+@interface WFQuickLookActionUIKitUserInterface : WFActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
     WFContentCollection *_dataSource;
     QLPreviewController *_previewController;
+    NSError *_exitError;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSError *exitError; // @synthesize exitError=_exitError;
 @property(retain, nonatomic) QLPreviewController *previewController; // @synthesize previewController=_previewController;
 @property(retain, nonatomic) WFContentCollection *dataSource; // @synthesize dataSource=_dataSource;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;

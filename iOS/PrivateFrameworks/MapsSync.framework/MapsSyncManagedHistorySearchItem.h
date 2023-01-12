@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (Class)wrapperClass;
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 
 // Remaining properties

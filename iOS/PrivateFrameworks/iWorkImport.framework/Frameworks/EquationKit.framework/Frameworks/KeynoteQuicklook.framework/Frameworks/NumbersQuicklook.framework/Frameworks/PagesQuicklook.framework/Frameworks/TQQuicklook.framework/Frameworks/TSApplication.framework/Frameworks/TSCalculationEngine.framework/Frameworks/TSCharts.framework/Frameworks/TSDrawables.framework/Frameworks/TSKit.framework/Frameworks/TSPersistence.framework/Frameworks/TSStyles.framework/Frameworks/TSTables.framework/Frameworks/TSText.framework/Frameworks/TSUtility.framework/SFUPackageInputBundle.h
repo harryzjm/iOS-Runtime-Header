@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUInputBundle-Protocol.h>
-
 @class NSString;
 
-@interface SFUPackageInputBundle : NSObject <SFUInputBundle>
+@interface SFUPackageInputBundle : NSObject
 {
     NSString *_rootPath;
 }

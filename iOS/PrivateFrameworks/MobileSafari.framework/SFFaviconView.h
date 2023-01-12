@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)setTrailingInset:(double)arg1;
 @property(retain, nonatomic) UIImageSymbolConfiguration *preferredSymbolConfiguration;
 @property(nonatomic) long long iconContentMode;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

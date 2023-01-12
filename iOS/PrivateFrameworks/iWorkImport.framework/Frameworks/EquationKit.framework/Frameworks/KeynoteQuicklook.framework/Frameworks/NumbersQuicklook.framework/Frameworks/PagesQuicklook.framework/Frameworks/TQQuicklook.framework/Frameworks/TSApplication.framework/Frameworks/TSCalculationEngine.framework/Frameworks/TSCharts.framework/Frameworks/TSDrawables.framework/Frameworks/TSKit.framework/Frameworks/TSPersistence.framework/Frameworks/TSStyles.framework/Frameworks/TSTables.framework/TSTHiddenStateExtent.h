@@ -6,36 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCEFormulaOwning-Protocol.h>
-#import <TSTables/TSTCellWillChangeProtocol-Protocol.h>
-#import <TSTables/TSTGroupByChangeProtocol-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString, TSCECalculationEngine, TSCEMutableUIDSet, TSCEUIDSet, TSTHiddenStatesOwner, TSTTableFilterSet, TSTTableInfo, TSTTableModel;
 
-@interface TSTHiddenStateExtent : NSObject <TSCEFormulaOwning, TSTGroupByChangeProtocol, TSTCellWillChangeProtocol>
+@interface TSTHiddenStateExtent : NSObject
 {
     TSTHiddenStatesOwner *_hiddenStatesOwner;
     TSCECalculationEngine *_calcEngine;
     struct TSKUIDStruct _hiddenStateExtentUid;
-    struct unordered_map<TSKUIDStruct, unsigned char, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, unsigned char>>> _hiddenByUid;
+    struct unordered_map<TSKUIDStruct, unsigned char, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, unsigned char>>> _baseHiddenByUid;
+    struct unordered_map<TSKUIDStruct, unsigned char, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, unsigned char>>> _summaryHiddenByUid;
     _Bool _forRows;
     TSTTableFilterSet *_filterSet;
     TSCEMutableUIDSet *_collapsedGroupUids;
     NSMutableIndexSet *_baseUserHiddenIndexes;
     NSMutableIndexSet *_baseFilteredIndexes;
-    NSMutableIndexSet *_viewOnlyFilteredIndexes;
-    NSMutableIndexSet *_pivotHiddenIndexes;
-    struct _opaque_pthread_mutex_t {
-        long long __sig;
-        char __opaque[56];
-    } _viewIndexesMutex;
+    struct _opaque_pthread_mutex_t _viewIndexesMutex;
     NSMutableIndexSet *_userHiddenIndexes;
     NSMutableIndexSet *_filteredIndexes;
     NSMutableIndexSet *_combinedHiddenIndexes;
     NSMutableIndexSet *_collapsedIndexes;
+    NSMutableIndexSet *_summaryFilteredIndexes;
+    NSMutableIndexSet *_summaryPivotHiddenIndexes;
     NSMutableArray *_thresholdCellValues;
     NSMutableDictionary *_uniqueValuesByColumnUid;
-    struct unordered_set<TSKUIDStruct, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<TSKUIDStruct>> _columnUidsWithUniqueIndexes;
+    unordered_set_f120dcbf _columnUidsWithUniqueIndexes;
     TSTTableFilterSet *_rewrittenFilterSet;
     struct os_unfair_lock_s _pendingComputedLock;
     struct TSUIndexSet _pendingColumnsOrRowsShown;
@@ -46,6 +40,8 @@
     _Bool _invalidateViewGeometry;
     _Bool _invalidateCollapsed;
     _Bool _needsToUpdateFilterSetForImport;
+    struct os_unfair_lock_s _uniqueValuesLock;
+    _Bool _needsSummaryUidUpgrade;
 }
 
 + (void)swapIndexesWithIndexSet:(id)arg1 index:(unsigned long long)arg2 withIndex:(unsigned long long)arg3;
@@ -77,7 +73,7 @@
 - (void)willApplyConcurrentCellMap:(id)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
 - (void)willApplyBaseCellMap:(id)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
 - (void)willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
-- (void)hiddenStateChangedForBaseIndex:(struct TSUModelColumnOrRowIndex)arg1 viewIndex:(struct TSUViewColumnOrRowIndex)arg2 forAction:(unsigned char)arg3;
+- (void)p_hiddenStateChangedForBaseIndex:(struct TSUModelColumnOrRowIndex)arg1 viewIndex:(struct TSUViewColumnOrRowIndex)arg2 forAction:(unsigned char)arg3;
 - (struct TSCECellRef)cellReferenceForIndex:(struct TSUModelColumnOrRowIndex)arg1;
 - (_Bool)hasFilterRulesWithTable:(id)arg1 inBaseColumns:(id)arg2;
 - (void)dirtyFilterState;
@@ -128,7 +124,7 @@
 - (id)hiddenOrCollapsedIndexes;
 - (id)mutableFilteredIndexes;
 - (id)mutableUserHiddenIndexes;
-- (id)p_viewOnlyHiddenIndexes;
+- (id)p_summaryHiddenIndexes;
 - (id)p_baseHiddenIndexes;
 - (void)swapBaseIndex:(struct TSUModelColumnOrRowIndex)arg1 withIndex:(struct TSUModelColumnOrRowIndex)arg2;
 - (void)moveViewRangeOnlyFrom:(struct _NSRange)arg1 toIndex:(struct TSUViewColumnOrRowIndex)arg2;
@@ -158,6 +154,7 @@
 - (id)indexesOfHiddenInRange:(struct _NSRange)arg1;
 - (unsigned char)hidingActionForBaseIndex:(struct TSUModelColumnOrRowIndex)arg1;
 - (unsigned char)hidingActionForViewIndex:(struct TSUViewColumnOrRowIndex)arg1;
+- (void)invalidateViewGeometry;
 - (void)invalidateAllCollapsed;
 - (void)clearAllPivotHidden;
 - (void)clearAllFiltered;
@@ -167,10 +164,12 @@
 - (void)hideAtViewIndexes:(id)arg1 forAction:(unsigned char)arg2;
 - (_Bool)showAtViewIndex:(struct TSUViewColumnOrRowIndex)arg1 forAction:(unsigned char)arg2;
 - (_Bool)hideAtViewIndex:(struct TSUViewColumnOrRowIndex)arg1 forAction:(unsigned char)arg2;
-- (id)userHiddenIndexes;
-- (id)filteredIndexes;
+- (id)p_summaryPivotHiddenIndexes;
+- (id)p_userHiddenIndexes;
+- (id)p_summaryFilteredIndexes;
+- (id)p_filteredIndexes;
 - (id)p_hiddenIndexes;
-- (id)collapsedIndexes;
+- (id)p_collapsedIndexes;
 - (void)clearInvalidIndexes;
 - (void)loadIndexesFromTable:(id)arg1;
 @property(readonly, nonatomic) unsigned int numberOfUserHidden;
@@ -179,18 +178,20 @@
 @property(readonly, nonatomic) _Bool anyCollapsed;
 @property(readonly, nonatomic) _Bool anyHidden;
 - (void)removeUid:(const struct TSKUIDStruct *)arg1;
-- (unsigned char)hidingActionForUid:(const struct TSKUIDStruct *)arg1 viewRcIndex:(struct TSUViewColumnOrRowIndex)arg2;
+- (unsigned char)hidingActionForUid:(const struct TSKUIDStruct *)arg1;
 - (_Bool)showAtUid:(const struct TSKUIDStruct *)arg1 forIndex:(struct TSUModelColumnOrRowIndex)arg2 forViewIndex:(struct TSUViewColumnOrRowIndex)arg3 forAction:(unsigned char)arg4;
 - (_Bool)showAtUid:(const struct TSKUIDStruct *)arg1 forAction:(unsigned char)arg2;
 - (_Bool)hideAtUid:(const struct TSKUIDStruct *)arg1 forIndex:(struct TSUModelColumnOrRowIndex)arg2 forViewIndex:(struct TSUViewColumnOrRowIndex)arg3 forAction:(unsigned char)arg4;
 - (_Bool)hideAtUid:(const struct TSKUIDStruct *)arg1 forAction:(unsigned char)arg2;
-- (void)removeHiddenIndex:(struct TSUModelColumnOrRowIndex)arg1 viewIndex:(struct TSUViewColumnOrRowIndex)arg2 forAction:(unsigned char)arg3;
-- (void)addHiddenIndex:(struct TSUModelColumnOrRowIndex)arg1 viewIndex:(struct TSUViewColumnOrRowIndex)arg2 forAction:(unsigned char)arg3;
-- (struct TSUViewColumnOrRowIndex)viewIndexForBaseIndex:(struct TSUModelColumnOrRowIndex)arg1;
-- (struct TSUModelColumnOrRowIndex)baseIndexForViewIndex:(struct TSUViewColumnOrRowIndex)arg1;
+- (void)p_removeHiddenIndex:(struct TSUModelColumnOrRowIndex)arg1 viewIndex:(struct TSUViewColumnOrRowIndex)arg2 forAction:(unsigned char)arg3;
+- (void)p_addHiddenIndex:(struct TSUModelColumnOrRowIndex)arg1 viewIndex:(struct TSUViewColumnOrRowIndex)arg2 forAction:(unsigned char)arg3;
+- (struct TSUViewColumnOrRowIndex)p_viewIndexForBaseIndex:(struct TSUModelColumnOrRowIndex)arg1;
 - (void)willChangeGroupByTo:(id)arg1;
 - (void)syncUpHiddenStateFormulaOwnerUIDs;
+- (void)uniqueValuesUnlock;
+- (void)uniqueValuesLock;
 - (void)setupAfterUnarchive;
+- (_Bool)p_canUsePrePivotFilterSet;
 - (id)tableTranslator;
 @property(readonly, nonatomic) TSTTableInfo *tableInfo;
 - (void)dealloc;

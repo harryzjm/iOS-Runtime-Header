@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITextItemInteractionHandler-Protocol.h>
-
 @class NSString, NSTextAttachment;
 
 __attribute__((visibility("hidden")))
-@interface _UITextAttachmentInteractionHandler : NSObject <_UITextItemInteractionHandler>
+@interface _UITextAttachmentInteractionHandler : NSObject
 {
     NSTextAttachment *_textAttachment;
 }

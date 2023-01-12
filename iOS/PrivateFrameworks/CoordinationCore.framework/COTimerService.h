@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoordinationCore/COMeshTimerAddOnDelegate-Protocol.h>
-#import <CoordinationCore/COTimerManagerServiceInterface-Protocol.h>
-
 @class COClientObserverSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COTimerService <COTimerManagerServiceInterface, COMeshTimerAddOnDelegate>
+@interface COTimerService
 {
     COClientObserverSet *_observers;
 }

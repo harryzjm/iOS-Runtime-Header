@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CALayer, NSArray, __TVAnimatedImageView;
+#import "VUILabel.h"
+
+@class CALayer, NSArray, UIImage, __TVAnimatedImageView;
 
 __attribute__((visibility("hidden")))
-@interface VUIAnimatedLabel
+@interface VUIAnimatedLabel : VUILabel
 {
     _Bool _crossfading;
     _Bool _marqueeNeeded;
@@ -27,9 +29,11 @@ __attribute__((visibility("hidden")))
     double _underPosterOutset;
     __TVAnimatedImageView *_currentMarqueeView;
     __TVAnimatedImageView *_nextMarqueeView;
+    UIImage *_marqueeContentImage;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *marqueeContentImage; // @synthesize marqueeContentImage=_marqueeContentImage;
 @property(readonly, nonatomic) __weak __TVAnimatedImageView *nextMarqueeView; // @synthesize nextMarqueeView=_nextMarqueeView;
 @property(readonly, nonatomic) __weak __TVAnimatedImageView *currentMarqueeView; // @synthesize currentMarqueeView=_currentMarqueeView;
 @property(nonatomic) double underPosterOutset; // @synthesize underPosterOutset=_underPosterOutset;

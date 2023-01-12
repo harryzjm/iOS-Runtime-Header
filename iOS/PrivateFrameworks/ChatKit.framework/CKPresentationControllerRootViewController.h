@@ -10,9 +10,12 @@ __attribute__((visibility("hidden")))
 @interface CKPresentationControllerRootViewController : UIViewController
 {
     _Bool _allowsRotation;
+    _Bool _restrictedToPortraitOrientation;
 }
 
+@property(nonatomic) _Bool restrictedToPortraitOrientation; // @synthesize restrictedToPortraitOrientation=_restrictedToPortraitOrientation;
 @property(nonatomic) _Bool allowsRotation; // @synthesize allowsRotation=_allowsRotation;
+- (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotate;
 
 @end

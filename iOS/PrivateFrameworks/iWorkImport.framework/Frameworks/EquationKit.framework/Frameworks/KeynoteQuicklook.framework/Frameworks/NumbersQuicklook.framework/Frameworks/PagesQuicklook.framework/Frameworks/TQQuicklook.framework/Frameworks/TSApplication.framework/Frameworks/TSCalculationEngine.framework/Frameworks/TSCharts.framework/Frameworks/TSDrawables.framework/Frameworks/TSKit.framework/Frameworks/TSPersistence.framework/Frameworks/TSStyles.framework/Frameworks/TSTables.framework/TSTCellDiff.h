@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSSMutablePropertySet, TSSPropertyMap;
 
-@interface TSTCellDiff : NSObject <NSCopying>
+@interface TSTCellDiff : NSObject
 {
     _Bool _hasCachedContainsCellStyleProperties;
     _Bool _cachedContainsCellStyleProperties;

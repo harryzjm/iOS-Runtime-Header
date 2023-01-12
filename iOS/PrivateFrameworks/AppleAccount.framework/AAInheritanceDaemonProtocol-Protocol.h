@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AABenefactorInfo, AABeneficiary, AAInheritanceInvitation, AKBeneficiaryManifest, NSString, NSUUID;
+@class AABenefactorInfo, AABeneficiary, AAInheritanceInvitation, AAMessagingCapability, AKBeneficiaryManifest, NSString, NSUUID;
 @protocol AAInheritanceContact, AAInheritanceContactInfo;
 
 @protocol AAInheritanceDaemonProtocol
+- (void)setupBeneficiaryAliasWithAccessKey:(NSString *)arg1 password:(NSString *)arg2 firstName:(NSString *)arg3 lastName:(NSString *)arg4 authToken:(NSString *)arg5 completion:(void (^)(NSString *, NSString *, NSError *))arg6;
 - (void)presentInheritanceInvitationUIWithBeneficiaryID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)fetchAllHealthInfoWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)respondToInvitation:(NSUUID *)arg1 accepted:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
@@ -24,6 +25,7 @@
 - (void)updateAccessCodeForContactInfo:(id <AAInheritanceContact>)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateBeneficiaryManifest:(AKBeneficiaryManifest *)arg1 contactInfo:(id <AAInheritanceContact>)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setupBeneficiaryManifest:(AKBeneficiaryManifest *)arg1 contactInfo:(id <AAInheritanceContact>)arg2 setupAuthToken:(NSString *)arg3 completion:(void (^)(AABeneficiary *, NSError *))arg4;
+- (void)isRecipient:(NSString *)arg1 capableOf:(AAMessagingCapability *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)fetchManifestOptionsForContact:(id <AAInheritanceContact>)arg1 completion:(void (^)(AKBeneficiaryManifest *, NSError *))arg2;
 @end
 

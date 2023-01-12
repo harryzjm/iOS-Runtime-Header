@@ -10,6 +10,7 @@
 
 @interface _TtC7NewsUI232TitleViewLayoutAttributesFactory : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *buttonStyler;
     MISSING_TYPE *styler;
     MISSING_TYPE *cache;
 }

@@ -6,12 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class LPAudioPlayButtonStyle, LPButtonStyle, LPCaptionBarAccessoryStyle, LPIconBadgeStyle, LPImageViewStyle, LPPadding, LPPointUnit, LPVerticalTextStackViewStyle, UIColor;
+@class LPAudioPlayButtonStyle, LPButtonStyle, LPCaptionBarAccessoryStyle, LPCollaborationFooterStyle, LPIconBadgeStyle, LPImageViewStyle, LPPadding, LPPointUnit, LPVerticalTextStackViewStyle, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface LPCaptionBarStyle : NSObject
 {
     _Bool _usesOutOfLineButton;
+    _Bool _canAddLineForButton;
+    _Bool _positionButtonRelativeToTextStack;
+    _Bool _buttonRespectsTextStackPadding;
+    _Bool _buttonIgnoresTextSafeAreaInsets;
+    _Bool _addFullWidthLineForButton;
+    _Bool _alignButtonWithCaptionTextLeadingEdge;
+    _Bool _expandButtonToCaptionEdge;
     unsigned int _minimumNumberOfLinesToVerticallyCenter;
     LPImageViewStyle *_leadingIcon;
     LPImageViewStyle *_trailingIcon;
@@ -25,11 +32,20 @@ __attribute__((visibility("hidden")))
     LPPadding *_playButtonPadding;
     LPButtonStyle *_button;
     UIColor *_backgroundColor;
+    LPCollaborationFooterStyle *_collaborationFooter;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) LPCollaborationFooterStyle *collaborationFooter; // @synthesize collaborationFooter=_collaborationFooter;
 @property(nonatomic) unsigned int minimumNumberOfLinesToVerticallyCenter; // @synthesize minimumNumberOfLinesToVerticallyCenter=_minimumNumberOfLinesToVerticallyCenter;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) _Bool expandButtonToCaptionEdge; // @synthesize expandButtonToCaptionEdge=_expandButtonToCaptionEdge;
+@property(nonatomic) _Bool alignButtonWithCaptionTextLeadingEdge; // @synthesize alignButtonWithCaptionTextLeadingEdge=_alignButtonWithCaptionTextLeadingEdge;
+@property(nonatomic) _Bool addFullWidthLineForButton; // @synthesize addFullWidthLineForButton=_addFullWidthLineForButton;
+@property(nonatomic) _Bool buttonIgnoresTextSafeAreaInsets; // @synthesize buttonIgnoresTextSafeAreaInsets=_buttonIgnoresTextSafeAreaInsets;
+@property(nonatomic) _Bool buttonRespectsTextStackPadding; // @synthesize buttonRespectsTextStackPadding=_buttonRespectsTextStackPadding;
+@property(nonatomic) _Bool positionButtonRelativeToTextStack; // @synthesize positionButtonRelativeToTextStack=_positionButtonRelativeToTextStack;
+@property(nonatomic) _Bool canAddLineForButton; // @synthesize canAddLineForButton=_canAddLineForButton;
 @property(nonatomic) _Bool usesOutOfLineButton; // @synthesize usesOutOfLineButton=_usesOutOfLineButton;
 @property(retain, nonatomic) LPButtonStyle *button; // @synthesize button=_button;
 @property(readonly, retain, nonatomic) LPPadding *playButtonPadding; // @synthesize playButtonPadding=_playButtonPadding;

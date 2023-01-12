@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIDownloadEntityDelegate-Protocol.h>
-#import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
-
 @class NSString, UIImageView, VUIDownloadButton, VUIDownloadEntity, VUILabel;
 @protocol VUIDownloadCollectionViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadCollectionViewCell <VUIDownloadEntityDelegate, VUIRentalExpirationLabelDelegate>
+@interface VUIDownloadCollectionViewCell
 {
     _Bool _editing;
     id <VUIDownloadCollectionViewCellDelegate> _delegate;

@@ -21,6 +21,7 @@
     MISSING_TYPE *dataManager;
     MISSING_TYPE *tapContexts;
     MISSING_TYPE *liveSessionStatistics;
+    MISSING_TYPE *legacyFallbackData;
     MISSING_TYPE *refreshQueue;
     MISSING_TYPE *callbackInterval;
     MISSING_TYPE *minCallbackInterval;

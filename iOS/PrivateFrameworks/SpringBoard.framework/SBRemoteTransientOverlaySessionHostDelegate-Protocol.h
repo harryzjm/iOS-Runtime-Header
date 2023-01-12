@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSError, NSString, SBRemoteTransientOverlayDismissalRequest, SBRemoteTransientOverlayPresentationRequest, SBRemoteTransientOverlaySession, SBSRemoteAlertActivationContext, SBTransientOverlayViewController;
+@class NSError, NSString, SBRemoteTransientOverlayDismissalRequest, SBRemoteTransientOverlayPresentationRequest, SBRemoteTransientOverlaySession, SBSRemoteAlertActivationContext, SBTransientOverlayViewController, SBWindowScene;
 
 @protocol SBRemoteTransientOverlaySessionHostDelegate <NSObject>
 - (void)remoteTransientOverlaySession:(SBRemoteTransientOverlaySession *)arg1 didInvalidateWithReason:(long long)arg2 error:(NSError *)arg3;
@@ -16,5 +16,6 @@
 - (_Bool)remoteTransientOverlaySession:(SBRemoteTransientOverlaySession *)arg1 shouldActivateWithContext:(SBSRemoteAlertActivationContext *)arg2;
 - (void)remoteTransientOverlaySession:(SBRemoteTransientOverlaySession *)arg1 requestsHandlingForButtonEvents:(unsigned long long)arg2 viewController:(SBTransientOverlayViewController *)arg3;
 - (long long)activeWallpaperVariantForRemoteTransientOverlaySession:(SBRemoteTransientOverlaySession *)arg1;
+- (SBWindowScene *)embeddedDisplayWindowSceneForRemoteTransientOverlaySession:(SBRemoteTransientOverlaySession *)arg1;
 @end
 

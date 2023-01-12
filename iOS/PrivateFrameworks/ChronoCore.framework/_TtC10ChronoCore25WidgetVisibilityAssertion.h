@@ -10,10 +10,8 @@
 
 @interface _TtC10ChronoCore25WidgetVisibilityAssertion : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *logIdentifier;
     MISSING_TYPE *widget;
     MISSING_TYPE *locationService;
-    MISSING_TYPE *lifetimeAssertion;
     MISSING_TYPE *lock;
     MISSING_TYPE *locationAssertion;
     MISSING_TYPE *lock_visiblySettled;

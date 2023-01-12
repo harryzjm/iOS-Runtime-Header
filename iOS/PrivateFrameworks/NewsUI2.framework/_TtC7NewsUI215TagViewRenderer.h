@@ -13,7 +13,7 @@
     MISSING_TYPE *rendererEnvironment;
     MISSING_TYPE *styler;
     MISSING_TYPE *imageApplier;
-    MISSING_TYPE *likeButtonRenderer;
+    MISSING_TYPE *accessoryButtonRenderer;
     MISSING_TYPE *dislikeButtonRenderer;
     MISSING_TYPE *notificationSwitchRenderer;
 }

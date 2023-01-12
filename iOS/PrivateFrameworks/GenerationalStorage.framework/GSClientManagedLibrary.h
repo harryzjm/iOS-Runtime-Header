@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GenerationalStorage/GSLibraryProtocol-Protocol.h>
-
 @class GSTemporaryStorage, NSString;
 @protocol GSAdditionStoring;
 
 __attribute__((visibility("hidden")))
-@interface GSClientManagedLibrary : NSObject <GSLibraryProtocol>
+@interface GSClientManagedLibrary : NSObject
 {
     GSTemporaryStorage *_ts;
 }

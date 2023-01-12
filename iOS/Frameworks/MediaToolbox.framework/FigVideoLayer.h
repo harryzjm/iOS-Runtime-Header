@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "FigBaseCALayer.h"
+
 @class FigVideoLayerInternal;
 
 __attribute__((visibility("hidden")))
-@interface FigVideoLayer
+@interface FigVideoLayer : FigBaseCALayer
 {
     FigVideoLayerInternal *_videoLayer;
 }

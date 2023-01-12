@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIImage.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _UIAnimatedImage
+@interface _UIAnimatedImage : UIImage
 {
     NSArray *_images;
     double _duration;
@@ -33,7 +35,8 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_contentStretchInPixels;
 - (long long)resizingMode;
 - (struct UIEdgeInsets)capInsets;
-- (void)_flipImageOrientationHorizontally;
+- (void)_horizontallyFlipImageOrientation;
+- (void)_mirrorImageOrientation;
 - (double)duration;
 - (id)images;
 - (void)encodeWithCoder:(id)arg1;

@@ -12,6 +12,7 @@
 - (void)setSchemaCategoryType:(long long)arg1;
 - (void)setCategoryType:(NSString *)arg1;
 - (void)setManufacturer:(NSString *)arg1;
+- (void)setHasActiveThirdPartyMusicSubscription:(_Bool)arg1;
 - (void)setIsSpeaker:(_Bool)arg1;
 - (void)setAssistantIdentifier:(NSString *)arg1;
 - (void)setRoomName:(NSString *)arg1;

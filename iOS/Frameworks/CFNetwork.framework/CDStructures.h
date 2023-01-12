@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -23,38 +21,6 @@ struct CBs {
     CDUnknownBlockType _field4;
     CDUnknownBlockType _field5;
     CDUnknownBlockType _field6;
-};
-
-struct CFNetworkTaskMetrics_s {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    long long _field4;
-    long long _field5;
-    long long _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned char _field9[16];
-    unsigned char _field10[16];
-    int _field11;
-    _Bool _field12;
-    struct {
-        unsigned long long _field1;
-        unsigned long long _field2;
-        unsigned long long _field3;
-        unsigned long long _field4;
-        unsigned long long _field5;
-        unsigned long long _field6;
-        unsigned char _field7[16];
-        long long _field8;
-        long long _field9;
-        long long _field10;
-        int _field11;
-        _Bool _field12;
-        _Bool _field13;
-        _Bool _field14;
-        _Bool _field15;
-    } _field13[0];
 };
 
 struct CFURLProtocolClient {
@@ -132,6 +98,7 @@ struct ConfigFlags {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
+    unsigned int :1;
 };
 
 struct CoreLoggable {
@@ -146,36 +113,16 @@ struct Flags {
     unsigned int _flag_SHOULD_START_SYNCHRONOUSLY:1;
     unsigned int _flag_ALLOW_CELLULAR:1;
     unsigned int _flag_PREVENTSIDLESYSTEMSLEEP:1;
-    unsigned int _flag_SET_EXPLICIT_COOKIE_ACCEPTANCE_POLICY:1;
     unsigned int _flag_SET_EXPLICIT_SHOULD_HANDLE_COOKIES:1;
     unsigned int _flag_SET_EXPLICIT_NETWORK_SERVICE_TYPE:1;
     unsigned int _flag_SET_EXPLICIT_ALLOWS_CELLULAR:1;
     unsigned int _flag_SET_EXPLICIT_PREVENTS_IDLE_SYSTEM_SLEEP:1;
-    unsigned int _flag_SET_EXPLICIT_BOUND_INTERFACE_IDENTIFIER:1;
     unsigned int _flag_SET_EXPLICIT_SHOULD_PIPELINE:1;
     unsigned int _flag_SET_EXPLICIT_CACHE_POLICY:1;
     unsigned int _flag_SET_EXPLICIT_TIMEOUT:1;
     unsigned int _flag_SET_EXPLICIT_PROXY_DICT:1;
     unsigned int _flag_SET_EXPLICIT_SSL_PROPERTIES:1;
-    unsigned int _flag_SET_EXPLICIT_CONTENT_DISPOSITION_HEADER_ENCODING_FALLBACK_ARRAY:1;
     unsigned int _flag_SET_EXPLICIT_SHOULD_START_SYNCHRONOUSLY:1;
-};
-
-struct HTTPConnectionCacheLimits {
-    int fHTTPLoadWidth;
-    int fHTTPPipeliningHighWatermark;
-    int fHTTPPipeliningLowWatermark;
-    int fHTTPPriorityNumLevels;
-    int fHTTPNumFastLanes;
-    int fHTTPMinimumFastLanePriority;
-    int fHTTPConnectionCachePurgeTimeout;
-    int fHTTPConnectionCacheCellPurgeTimeout;
-    int fLongLivedConnectionCachePurgeTimeout;
-    int fLongLivedConnectionCacheCellPurgeTimeout;
-};
-
-struct HTTPConnectionInfo {
-    CDUnknownFunctionPointerType *_field1;
 };
 
 struct HTTPCookie {
@@ -314,7 +261,6 @@ struct URLRequest {
     int fNetworkServiceType;
     struct __CFString *fBoundInterfaceIdentifier;
     struct __CFString *fTrackerContext;
-    unsigned long long fExpectedWorkload;
     double fTimeWindowDelay;
     double fTimeWindowDuration;
     double fStartTimeoutTime;
@@ -325,6 +271,9 @@ struct URLRequest {
     unsigned char fAssumesHTTP3Capable;
     unsigned char fKnownTracker;
     unsigned char fPrivacyProxyFailClosed;
+    unsigned char fPrivacyProxyFailClosedForUnreachableNonMainHosts;
+    unsigned char fProhibitPrivacyProxy;
+    int fRequiresDNSSECValidation;
     unsigned long long fAttribution;
     double fPayloadTransmissionTimeout;
     struct __CFDictionary *fATSOverrides;
@@ -393,8 +342,6 @@ struct __tree_end_node<std::__tree_node_base<void *>*> {
     void *__left_;
 };
 
-struct internal_state;
-
 struct map<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>, CoalescingConnectionKeyComparator, std::allocator<std::pair<const std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>>> {
     struct __tree<std::__value_type<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>, std::__map_value_compare<std::shared_ptr<__CoalescingConnectionKey>, std::__value_type<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>, CoalescingConnectionKeyComparator, true>, std::allocator<std::__value_type<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>>> {
         void *__begin_node_;
@@ -459,11 +406,6 @@ struct shared_ptr<HTTPProtocol> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<NSObject<OS_nw_context>> {
-    NSObject *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
 struct shared_ptr<TCPIO_EstablishBase> {
     struct TCPIO_EstablishBase *__ptr_;
     struct __shared_weak_count *__cntrl_;
@@ -516,37 +458,11 @@ struct weak_ptr<TransportConnection> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct z_stream_s {
-    char *next_in;
-    unsigned int avail_in;
-    unsigned long long total_in;
-    char *next_out;
-    unsigned int avail_out;
-    unsigned long long total_out;
-    char *msg;
-    struct internal_state *state;
-    CDUnknownFunctionPointerType zalloc;
-    CDUnknownFunctionPointerType zfree;
-    void *opaque;
-    int data_type;
-    unsigned long long adler;
-    unsigned long long reserved;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
     unsigned int _field1[8];
 } CDStruct_6ad76789;
-
-typedef struct {
-    double domainLookupBeginTime;
-    double connectBeginTime;
-    unsigned int domainLookupDuration;
-    unsigned int connectDuration;
-    unsigned int secureConnectionDuration;
-    _Bool secure;
-} CDStruct_c0a2f610;
 
 typedef struct {
     long long _field1;

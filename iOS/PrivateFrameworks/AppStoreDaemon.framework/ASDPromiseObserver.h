@@ -17,9 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly) id <ASDTaskScheduler> scheduler; // @synthesize scheduler=_scheduler;
-@property(readonly) CDUnknownBlockType errorBlock; // @synthesize errorBlock=_errorBlock;
-@property(readonly) CDUnknownBlockType valueBlock; // @synthesize valueBlock=_valueBlock;
 - (void)notifyRejectedWithError:(id)arg1;
 - (void)notifyResolvedWithValue:(id)arg1;
 - (id)initWithValueBlock:(CDUnknownBlockType)arg1 errorBlock:(CDUnknownBlockType)arg2 scheduler:(id)arg3;

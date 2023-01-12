@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDWPSectionTemplatePage : NSObject <GQDNameMappable>
+@interface GQDWPSectionTemplatePage : NSObject
 {
     struct __CFString *mHeaderIdentifier;
     struct __CFString *mFooterIdentifier;

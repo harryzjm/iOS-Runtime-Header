@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/WBSCertificateWarningPagePresenter-Protocol.h>
-
 @class NSString, WBSCertificateWarningPageContext, _SFWebProcessPlugInPageController, _WKRemoteObjectInterface;
 @protocol WBSCertificateWarningPageHandler;
 
 __attribute__((visibility("hidden")))
-@interface SFWebProcessPlugInCertificateWarningController : NSObject <WBSCertificateWarningPagePresenter>
+@interface SFWebProcessPlugInCertificateWarningController : NSObject
 {
     _SFWebProcessPlugInPageController *_pageController;
     _WKRemoteObjectInterface *_certificateWarningPagePresenterInterface;

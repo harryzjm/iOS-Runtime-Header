@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/SKAccountPageViewControllerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKAccountPageHandler : NSObject <SKAccountPageViewControllerDelegate>
+@interface SKAccountPageHandler : NSObject
 {
 }
 

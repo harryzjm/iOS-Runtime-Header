@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCRedundancyControlAlgorithm-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCRedundancyControlAlgorithmVideo : NSObject <VCRedundancyControlAlgorithm>
+@interface VCRedundancyControlAlgorithmVideo : NSObject
 {
     unsigned int _redundancyPercentage;
     double _redundancyInterval;
@@ -40,13 +38,13 @@ __attribute__((visibility("hidden")))
 - (unsigned int)computeRedundancyWithBurstyLoss;
 - (unsigned int)computeRedundancyWithLossPercentage;
 - (void)updateBurstyLoss:(unsigned int)arg1;
-- (void)processRCNetworkStatistics:(CDStruct_c0785916)arg1;
-- (void)processNWConnectionStatistics:(CDStruct_c0785916)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
+- (void)processRCNetworkStatistics:(CDStruct_7df19fcb)arg1;
+- (void)processNWConnectionStatistics:(CDStruct_7df19fcb)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_7df19fcb)arg1;
 - (void)reset;
-- (void)checkForRedundancyFreeze:(CDStruct_c0785916)arg1;
-- (void)stateFrozen:(CDStruct_c0785916)arg1;
-- (void)stateRunning:(CDStruct_c0785916)arg1;
+- (void)checkForRedundancyFreeze:(CDStruct_7df19fcb)arg1;
+- (void)stateFrozen:(CDStruct_7df19fcb)arg1;
+- (void)stateRunning:(CDStruct_7df19fcb)arg1;
 - (CDStruct_9650830d)setupFeedbackAnalyzerConfig;
 - (void)dealloc;
 - (id)initWithRedundancyControllerMode:(unsigned int)arg1 maxAllowedRedundancyPercentage:(unsigned int)arg2 mediaControlInfoFECFeedbackVersion:(unsigned char)arg3;

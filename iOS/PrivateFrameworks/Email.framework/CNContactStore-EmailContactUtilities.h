@@ -6,10 +6,25 @@
 
 #import <Contacts/CNContactStore.h>
 
+@class NSString, _EMContactsCache;
+
 @interface CNContactStore (EmailContactUtilities)
-- (id)_contactForEmailAddress:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
++ (id)log;
+@property(readonly, nonatomic) _EMContactsCache *em_cache;
+- (id)allContactEmailAddressesWithError:(id *)arg1;
+- (id)_allContactsForName:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
+- (id)_allContactsForEmailAddress:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
+- (id)_bestContactForEmailAddress:(id)arg1 keysToFetch:(id)arg2 allowMatchOnDisplayName:(_Bool)arg3 error:(id *)arg4;
+- (id)em_contactsFutureOnScheduler:(id)arg1 forEmailAddresses:(id)arg2 keysToFetch:(id)arg3;
 - (id)em_onScheduler:(id)arg1 contactFutureForEmailAddress:(id)arg2 keysToFetch:(id)arg3;
-- (id)em_fetchContactForEmailAddress:(id)arg1 keysToFetch:(id)arg2 createIfNeeded:(_Bool)arg3 error:(id *)arg4;
+- (id)_fetchContactForEmailAddress:(id)arg1 keysToFetch:(id)arg2 allowMatchOnDisplayName:(_Bool)arg3 createIfNeeded:(_Bool)arg4 error:(id *)arg5;
+- (id)em_fetchContactForEmailAddress:(id)arg1 keysToFetch:(id)arg2 allowMatchOnDisplayName:(_Bool)arg3 createIfNeeded:(_Bool)arg4;
 - (id)em_fetchContactForEmailAddress:(id)arg1 keysToFetch:(id)arg2 createIfNeeded:(_Bool)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

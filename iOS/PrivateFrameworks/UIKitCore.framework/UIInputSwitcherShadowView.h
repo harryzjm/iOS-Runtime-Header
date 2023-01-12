@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSArray, UIKeyboardMenuView, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
-@interface UIInputSwitcherShadowView
+@interface UIInputSwitcherShadowView : UIView
 {
     int m_mode;
     double m_pointerOffset;

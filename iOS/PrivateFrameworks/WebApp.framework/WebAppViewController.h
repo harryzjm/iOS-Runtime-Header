@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WebApp/_SFWebAppViewControllerDelegate-Protocol.h>
-
-@class LoadingViewController, NSString, NSTimer, UIWebClip, _SFWebAppViewController, _UIAsyncInvocation;
+@class CPSPromise, LoadingViewController, NSString, NSTimer, UIWebClip, _SFWebAppViewController, _UIAsyncInvocation;
 
 __attribute__((visibility("hidden")))
-@interface WebAppViewController : UIViewController <_SFWebAppViewControllerDelegate>
+@interface WebAppViewController : UIViewController
 {
     _SFWebAppViewController *_contentViewController;
     _UIAsyncInvocation *_cancelViewServiceRequest;
@@ -20,14 +18,18 @@ __attribute__((visibility("hidden")))
     LoadingViewController *_loadingViewController;
     long long _orientation;
     NSTimer *_hideSnapshotTimer;
+    CPSPromise *_connectionPromiseForPush;
+    _Bool _wasLaunchedForWebPush;
     UIWebClip *_webClip;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool wasLaunchedForWebPush; // @synthesize wasLaunchedForWebPush=_wasLaunchedForWebPush;
 @property(readonly, nonatomic) UIWebClip *webClip; // @synthesize webClip=_webClip;
 - (void)webAppViewController:(id)arg1 viewServiceDidTerminateWithError:(id)arg2;
 - (void)webAppViewControllerDidFinishInitialLoad:(id)arg1;
 - (void)webAppViewController:(id)arg1 didChangeLoadingState:(_Bool)arg2;
+- (void)processWebPushWithIdentifier:(id)arg1;
 - (void)openURLWithCustomSchemeIfNeeded;
 - (void)viewDidAppear:(_Bool)arg1;
 - (id)childViewControllerForWhitePointAdaptivityStyle;

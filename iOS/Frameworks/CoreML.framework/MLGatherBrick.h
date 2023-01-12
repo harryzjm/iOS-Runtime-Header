@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/EspressoBrick-Protocol.h>
-
 @class NSArray, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MLGatherBrick : NSObject <EspressoBrick>
+@interface MLGatherBrick : NSObject
 {
     _Bool _shapeInfoNeeded;
     NSNumber *_axis;

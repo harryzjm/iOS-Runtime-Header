@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSMutableData.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSCFData
+@interface __NSCFData : NSMutableData
 {
     unsigned long long _cfinfoa;
     long long _length;
@@ -15,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 - (Class)classForCoder;
 - (_Bool)_providesConcreteBacking;
 - (void)setLength:(unsigned long long)arg1;

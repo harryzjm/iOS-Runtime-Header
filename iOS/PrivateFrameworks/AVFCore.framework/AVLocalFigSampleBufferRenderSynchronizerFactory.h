@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVFigSampleBufferRenderSynchronizerFactory-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVLocalFigSampleBufferRenderSynchronizerFactory : NSObject <AVFigSampleBufferRenderSynchronizerFactory>
+@interface AVLocalFigSampleBufferRenderSynchronizerFactory : NSObject
 {
 }
 

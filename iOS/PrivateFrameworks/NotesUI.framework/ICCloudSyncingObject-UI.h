@@ -10,7 +10,9 @@
 
 @interface ICCloudSyncingObject (UI)
 + (_Bool)isInlineAttachment:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *participantsInfoDescription;
 @property(readonly, copy, nonatomic) NSString *shareViaICloudSystemImageName;
+@property(readonly, copy, nonatomic) NSString *shareViaICloudGelatoActionTitle;
 @property(readonly, copy, nonatomic) NSString *shareViaICloudActionTitle;
 @end
 

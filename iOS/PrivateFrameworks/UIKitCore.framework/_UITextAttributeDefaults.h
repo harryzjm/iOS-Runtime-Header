@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UITextAttributeDefaults-Protocol.h>
 
 @class NSParagraphStyle, NSShadow, NSString, UIColor, UIFont, _UIMutableTextAttributeDictionary, _UITextAttributeDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _UITextAttributeDefaults : NSObject <_UITextAttributeDefaults, NSCopying>
+@interface _UITextAttributeDefaults : NSObject <NSCopying>
 {
     _UIMutableTextAttributeDictionary *_attributes;
 }

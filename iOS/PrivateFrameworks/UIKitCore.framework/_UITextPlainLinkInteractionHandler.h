@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITextItemInteractionHandler-Protocol.h>
-
 @class NSString, UIView;
 @protocol _UITextContent;
 
 __attribute__((visibility("hidden")))
-@interface _UITextPlainLinkInteractionHandler : NSObject <_UITextItemInteractionHandler>
+@interface _UITextPlainLinkInteractionHandler : NSObject
 {
     struct _NSRange _range;
     UIView<_UITextContent> *_view;

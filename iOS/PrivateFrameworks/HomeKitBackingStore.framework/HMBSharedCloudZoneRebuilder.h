@@ -6,13 +6,10 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitBackingStore/HMBCloudZoneRebuilder-Protocol.h>
-#import <HomeKitBackingStore/HMFLogging-Protocol.h>
-
 @class HMBCloudZone, HMBCloudZoneRebuilderStatus, NAFuture, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMBSharedCloudZoneRebuilder : HMFObject <HMFLogging, HMBCloudZoneRebuilder>
+@interface HMBSharedCloudZoneRebuilder : HMFObject
 {
     HMBCloudZoneRebuilderStatus *_rebuilderStatus;
     NAFuture *_rebuildCompleteFuture;

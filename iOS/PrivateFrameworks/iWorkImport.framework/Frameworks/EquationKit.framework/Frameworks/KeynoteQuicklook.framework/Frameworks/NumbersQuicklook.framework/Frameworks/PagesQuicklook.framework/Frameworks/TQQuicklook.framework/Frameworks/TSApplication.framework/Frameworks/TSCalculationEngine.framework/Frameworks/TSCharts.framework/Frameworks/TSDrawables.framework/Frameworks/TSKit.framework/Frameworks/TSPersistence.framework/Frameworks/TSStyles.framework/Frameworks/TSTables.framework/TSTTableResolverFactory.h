@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCEResolverLocatingProtocol-Protocol.h>
-#import <TSTables/TSCETableResolverFactoryProtocol-Protocol.h>
-
 @class NSString;
 
-@interface TSTTableResolverFactory : NSObject <TSCETableResolverFactoryProtocol, TSCEResolverLocatingProtocol>
+@interface TSTTableResolverFactory : NSObject
 {
     void *_calcEngine;
 }
@@ -21,7 +18,7 @@
 - (vector_0812e05b)categoryRefsForSpanningCategoryRef:(id)arg1;
 - (vector_522b9630)cellRefsForCategoryRef:(id)arg1 atRowUid:(const struct TSKUIDStruct *)arg2;
 - (id)valueGridForCategoryRef:(id)arg1 atRowUid:(const struct TSKUIDStruct *)arg2 hidingActionMask:(unsigned char)arg3 error:(id *)arg4;
-- (vector_ff6aafb2)valuesForCategoryRef:(id)arg1 atRowUid:(const struct TSKUIDStruct *)arg2 hidingActionMask:(unsigned char)arg3 error:(id *)arg4;
+- (vector_3da01225)valuesForCategoryRef:(id)arg1 atRowUid:(const struct TSKUIDStruct *)arg2 hidingActionMask:(unsigned char)arg3 error:(id *)arg4;
 - (unsigned char)aggregateTypeForCategoryRef:(id)arg1;
 - (struct TSKUIDStruct)mapOwnerUID:(const struct TSKUIDStruct *)arg1;
 - (id)resolverMatchingNameWithContextContainer:(id)arg1 inDocumentRoot:(id)arg2 contextContainerName:(id)arg3;

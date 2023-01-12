@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
-@class FTTTSRequestFeatureFlags, FTTextToSpeechRequestContext, FTTextToSpeechRequestDebug, FTTextToSpeechRequestExperiment, FTTextToSpeechRequestMeta, FTTextToSpeechUserProfile, NSArray, NSData, NSMutableDictionary, NSString;
+@class FTTTSRequestFeatureFlags, FTTextToSpeechRequestContext, FTTextToSpeechRequestDebug, FTTextToSpeechRequestDevConfig, FTTextToSpeechRequestExperiment, FTTextToSpeechRequestMeta, FTTextToSpeechRequestProsodyTransferConfig, FTTextToSpeechUserProfile, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTStartTextToSpeechStreamingRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTStartTextToSpeechStreamingRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_acd6b661)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) FTTextToSpeechRequestProsodyTransferConfig *prosody_config;
+@property(readonly, nonatomic) FTTextToSpeechRequestDevConfig *dev_config;
 @property(readonly, nonatomic) FTTextToSpeechUserProfile *profile;
 @property(readonly, nonatomic) FTTextToSpeechRequestDebug *debug;
 @property(readonly, nonatomic) FTTTSRequestFeatureFlags *feature_flags;
@@ -29,6 +28,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FTTextToSpeechRequestContext *context;
 @property(readonly, nonatomic) FTTextToSpeechRequestMeta *meta_info;
 @property(readonly, nonatomic) long long preferred_voice_type;
+- (void)context_info_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)context_info_count;
+- (id)context_info_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *context_info;
 @property(readonly, nonatomic) NSString *voice_name;
 @property(readonly, nonatomic) _Bool enable_word_timing_info;

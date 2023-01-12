@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIAlertActionViewRepresentation_Internal-Protocol.h>
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import "UIView.h"
 
-@class NSArray, NSLayoutConstraint, NSString, UIAlertAction, UIAlertController, UIAlertControllerVisualStyle, UIImageView, UILabel, UIView, _UIAlertControllerActionViewMetrics;
+@class NSArray, NSLayoutConstraint, NSString, UIAlertAction, UIAlertController, UIAlertControllerVisualStyle, UIImageView, UILabel, _UIAlertControllerActionViewMetrics;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerActionView <UIGestureRecognizerDelegate, UIAlertActionViewRepresentation_Internal>
+@interface _UIAlertControllerActionView : UIView
 {
     _Bool _highlighted;
     UIView *_labelContainerView;

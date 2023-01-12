@@ -52,9 +52,13 @@
 @property(readonly, nonatomic) NSNumber *leftBatteryLevel;
 @property(readonly, nonatomic) NSNumber *caseBatteryLevel;
 @property(readonly, nonatomic) NSNumber *batteryLevel;
+@property(readonly, nonatomic, getter=isEligibleToBePredictedOutputDevice) _Bool eligibleToBePredictedOutputDevice;
+@property(readonly, nonatomic, getter=isAppleAccessory) _Bool appleAccessory;
 @property(readonly, nonatomic) _Bool producesLowFidelityAudio;
 @property(readonly, nonatomic) NSString *clusterID;
 @property(readonly, nonatomic) _Bool isClusterLeader;
+@property(readonly, nonatomic) NSArray *allClusterMembers;
+@property(readonly, nonatomic) NSArray *activatedDeviceClusterMembers;
 @property(readonly, nonatomic) NSArray *clusteredDeviceDescriptions;
 @property(readonly, copy, nonatomic) NSData *identifyingMACAddress;
 @property(readonly, nonatomic) NSString *firmwareVersion;
@@ -68,10 +72,13 @@
 @property(readonly, copy, nonatomic) NSString *ID;
 @property(readonly, copy, nonatomic) NSString *name;
 @property __weak id <AVOutputDeviceImplSupport> implEventListener;
+- (_Bool)supportsFitnessDataDestination;
 - (void)configureUsingBlock:(void (^)(id <AVOutputDeviceConfigurationModification>))arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(long long, id <AVOutputDeviceConfigurationRetrieval>, NSString *, NSError *))arg3;
 - (_Bool)setCurrentBluetoothListeningMode:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)setHeadTrackedSpatialAudioMode:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)setAllowsHeadTrackedSpatialAudio:(_Bool)arg1 error:(id *)arg2;
+- (void)decreaseVolumeByCount:(long long)arg1;
+- (void)increaseVolumeByCount:(long long)arg1;
 - (void)setVolume:(float)arg1;
 - (void)setSecondDisplayMode:(NSString *)arg1 completionHandler:(void (^)(id, NSError *))arg2;
 - (void)setSecondDisplayEnabled:(_Bool)arg1;

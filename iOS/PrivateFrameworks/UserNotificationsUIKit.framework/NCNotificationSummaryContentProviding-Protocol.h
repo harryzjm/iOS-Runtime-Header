@@ -12,6 +12,7 @@
 @property(copy, nonatomic) NSString *summaryIconSymbolName;
 @property(copy, nonatomic) NSDate *summaryDate;
 @property(copy, nonatomic) NSString *summaryTitleFontName;
+@property(readonly, nonatomic) _Bool hideSummaryIconViews;
 @property(readonly, nonatomic, getter=isIconViewLeading) _Bool iconViewLeading;
 @property(readonly, nonatomic) NSArray *summaryIconViews;
 @property(readonly, copy, nonatomic) NSString *summary;

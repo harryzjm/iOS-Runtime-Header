@@ -6,12 +6,13 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class FBScene, FBSceneWorkspace;
+@class FBScene, FBSceneClientHandshake, FBSceneWorkspace;
 
 @protocol FBSceneWorkspaceDelegate <NSObject>
 
 @optional
 - (void)workspace:(FBSceneWorkspace *)arg1 willRemoveScene:(FBScene *)arg2;
 - (void)workspace:(FBSceneWorkspace *)arg1 didAddScene:(FBScene *)arg2;
+- (void)workspace:(FBSceneWorkspace *)arg1 clientDidConnectWithHandshake:(FBSceneClientHandshake *)arg2;
 @end
 

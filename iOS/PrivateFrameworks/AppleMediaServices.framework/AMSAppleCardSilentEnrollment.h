@@ -6,20 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSAppleCardSilentEnrollment : NSObject <AMSBagConsumer>
+@interface AMSAppleCardSilentEnrollment : NSObject
 {
 }
 
-+ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
 + (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
-+ (id)bagKeySet;
 + (id)headersForAccount:(id)arg1;
 + (id)gsTokenForAccount:(id)arg1 error:(id *)arg2;
 

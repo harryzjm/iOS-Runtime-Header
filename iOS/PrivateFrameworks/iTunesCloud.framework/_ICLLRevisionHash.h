@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLRevisionHash : PBCodable <NSCopying>
+@interface _ICLLRevisionHash : PBCodable
 {
     NSString *_hashValue;
     int _revision;

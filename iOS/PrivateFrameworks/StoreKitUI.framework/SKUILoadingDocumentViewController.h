@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSObject, NSString, SKUIActivityIndicatorView, SKUIActivityIndicatorViewElement, SKUILayoutCache, SKUILoadingTemplateViewElement, SKUIViewElementLayoutContext;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface SKUILoadingDocumentViewController <SKUIDocumentViewController>
+@interface SKUILoadingDocumentViewController : SKUIViewController
 {
     SKUIActivityIndicatorViewElement *_activityIndicatorElement;
     SKUIActivityIndicatorView *_activityIndicatorView;

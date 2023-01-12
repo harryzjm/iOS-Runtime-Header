@@ -16,6 +16,7 @@
     MISSING_TYPE *handshakeRegistry;
     MISSING_TYPE *discovery;
     MISSING_TYPE *eventHub;
+    MISSING_TYPE *platform;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *xpcBroadcastConnection;
 }

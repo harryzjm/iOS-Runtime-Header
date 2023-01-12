@@ -6,11 +6,9 @@
 
 #import <PhotoLibraryServices/PLDataCluster.h>
 
-#import <MediaMiningKit/CLSCurationDebugItemCluster-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface PLDataCluster (CLSCurationDebugItemCluster) <CLSCurationDebugItemCluster>
+@interface PLDataCluster (CLSCurationDebugItemCluster)
 @property(readonly) NSArray *clsCurationItems;
 
 // Remaining properties

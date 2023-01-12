@@ -4,25 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/AVCRateControllerDelegate-Protocol.h>
-#import <AVConference/VCMediaStreamSyncDestination-Protocol.h>
-#import <AVConference/VCRedundancyControllerDelegate-Protocol.h>
-#import <AVConference/VCStreamSychronizationDelegate-Protocol.h>
-#import <AVConference/VCVideoCaptureClient-Protocol.h>
-#import <AVConference/VCVideoCaptureConverterDelegate-Protocol.h>
-#import <AVConference/VCVideoReceiverDelegate-Protocol.h>
-#import <AVConference/VCVideoSink-Protocol.h>
-
 @class AVCRateController, AVCStatisticsCollector, NSNumber, NSObject, NSString, VCRedundancyControllerVideo, VCVideoCaptureConverter, VCVideoReceiverBase, VCVideoRule, VCVideoTransmitterBase;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, VCSessionParticipantLocalVideoStreamDelegate, VCVideoReceiverFeedbackDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStream <VCVideoReceiverDelegate, VCMediaStreamSyncDestination, VCVideoSink, VCVideoCaptureClient, VCVideoCaptureConverterDelegate, AVCRateControllerDelegate, VCRedundancyControllerDelegate, VCStreamSychronizationDelegate>
+@interface VCVideoStream
 {
     long long _type;
     NSObject<OS_dispatch_queue> *_lastDecodedFrameQueue;
-    struct _opaque_pthread_mutex_t _remoteLayerLock;
-    struct _opaque_pthread_mutex_t _localLayerLock;
     unsigned int _uplinkOperatingBitrate;
     struct __CVBuffer *_cachedRemoteVideoFrame;
     VCVideoTransmitterBase *_videoTransmitter;
@@ -44,6 +33,7 @@ __attribute__((visibility("hidden")))
     _Atomic _Bool _isVideoCaptureRegistered;
     double _fecRatio;
     int _captureSource;
+    int _streamInputCaptureSource;
     unsigned int _screenDisplayID;
     unsigned int _customWidth;
     unsigned int _customHeight;
@@ -59,22 +49,23 @@ __attribute__((visibility("hidden")))
     double _lastStatisticsCollectorVideoStallTotalUpdateTime;
     _Bool _isRemoteMediaStalled;
     double _lastMediaStallReportTime;
-    int _networkInterfaceType;
-    int _channelSequenceCountWithInactiveSlots;
     float _synchronizationTimeOffset;
     unsigned int _rtpTimestampRate;
-    unsigned int _rttScaleFactor;
     unsigned short _temporalScalingBaseLayerStreamID;
     _Bool _isTemporalScalingEnabled;
     CDStruct_1b6d18a9 _lastSentFrameHostTimeBeforeStop;
     unsigned int _lastSentFrameRTPTimestampBeforeStop;
     id <VCSessionParticipantLocalVideoStreamDelegate> _videoStreamDelegate;
+    struct __CFDictionary *_hdrColorInfo;
 }
 
++ (_Bool)isLowLatencyStreamType:(long long)arg1;
 + (id)capabilities;
 + (id)supportedVideoPayloads;
++ (void)terminateProcess:(id)arg1 terminateSource:(id)arg2 agent:(struct opaqueRTCReporting *)arg3;
 + (_Bool)shouldUseRandomRTPTimestampWithType:(long long)arg1;
 + (id)newFeatureListStringsWithConfiguration:(id)arg1;
++ (int)reportingClientTypeForStreamType:(long long)arg1;
 @property(nonatomic) id <VCSessionParticipantLocalVideoStreamDelegate> videoStreamDelegate; // @synthesize videoStreamDelegate=_videoStreamDelegate;
 @property(readonly, nonatomic) _Bool isTemporalScalingEnabled; // @synthesize isTemporalScalingEnabled=_isTemporalScalingEnabled;
 @property(readonly) VCVideoTransmitterBase *videoTransmitter; // @synthesize videoTransmitter=_videoTransmitter;
@@ -96,9 +87,9 @@ __attribute__((visibility("hidden")))
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
 - (void)rateController:(id)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 - (void)handleActiveConnectionChange:(id)arg1;
-- (void)collectTxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
+- (void)collectTxChannelMetrics:(CDStruct_b671a7c4 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_b671a7c4 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_b671a7c4 *)arg1 interval:(float)arg2;
 - (void)converter:(id)arg1 didConvertFrame:(struct opaqueCMSampleBuffer *)arg2 frameTime:(CDStruct_1b6d18a9)arg3 cameraStatusBits:(unsigned char)arg4;
 - (void)cameraAvailabilityDidChange:(_Bool)arg1;
 - (void)thermalLevelDidChange:(int)arg1;
@@ -144,28 +135,30 @@ __attribute__((visibility("hidden")))
 - (void)onPauseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)onStopWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)onStartWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)shouldReportNetworkInterfaceType;
 - (_Bool)isTransportIPv6;
 @property(readonly) unsigned int networkMTU;
-- (void)reportTransportInfo;
-- (void)initializeInterfaceType;
-- (void)initializeInterfaceTypeForSocket;
-- (void)initializeInterfaceTypeForNWConnection;
 - (void)gatherRealtimeStats:(struct __CFDictionary *)arg1;
 - (void)setupReportingAgent;
-- (void)collectChannelSequenceMetrics:(id)arg1;
 - (void)collectImageQueuePerformanceMetrics:(struct __CFDictionary *)arg1;
 - (_Bool)registerForVideoCapture;
+- (_Bool)registerForCameraCaptureWithConfig:(id)arg1;
 - (void)deregisterForVideoCapture;
 - (int)operatingModeForVideoStreamType:(long long)arg1;
 - (_Bool)onConfigureStreamWithConfiguration:(id)arg1 error:(id *)arg2;
+- (void)configureNetworkSampleRateScaleForStream:(id)arg1 transport:(id)arg2;
+- (unsigned int)maxFramerateFromStreamConfigs:(id)arg1;
+- (_Bool)configureStreamInputCaptureSourceWithStreamInputID:(long long)arg1 frameRate:(unsigned int)arg2;
+- (void)deregisterCurrentStreamInputCaptureSource;
 - (id)getReceiveStatsCollectorWithStreamConfig:(id)arg1;
 - (id)getTransmitStatsCollectorWithStreamConfig:(id)arg1;
 - (id)getTransmitMediaControllerWithStreamConfig:(id)arg1;
 - (void)onCallIDChanged;
 - (id)supportedPayloads;
-- (_Bool)updateStreamConfigForAirPlaySidecar:(id)arg1;
+- (_Bool)updateStreamConfigForLowLatencyStreamTypes:(id)arg1;
 - (_Bool)setEncodingMode:(int)arg1;
 - (_Bool)validateStreamConfiguration:(id)arg1 error:(id *)arg2;
+- (_Bool)isLowLatencyStreamType;
 @property(readonly, nonatomic) unsigned int lastDisplayedFrameRTPTimestamp;
 - (void)cleanupBeforeReconfigure:(id)arg1;
 - (_Bool)validateVideoStreamConfigurations:(id)arg1;
@@ -174,17 +167,19 @@ __attribute__((visibility("hidden")))
 - (void)setFECRedundancyVector:(const CDStruct_d7e2e0ee *)arg1;
 - (void)generateKeyFrameWithFIRType:(int)arg1;
 - (void)updateSourcePlayoutTimestamp:(CDStruct_1b6d18a9 *)arg1;
+- (void)resetRemoteMediaStalled;
 - (void)submitStatisticsCollectorVideoStallUpdateWithType:(int)arg1 currentTime:(double)arg2 stallDuration:(double)arg3 idsParticipantID:(unsigned long long)arg4;
 - (void)submitStatisticsCollectorVideoStallUpdateWithTime:(double)arg1;
 - (void)requestLastDecodedFrame;
 - (void)updateVideoConfig:(id)arg1;
 - (void)dealloc;
 - (void)setupVideoStream;
-- (id)initWithTransportSessionID:(unsigned int)arg1 ssrc:(unsigned int)arg2 streamToken:(long long)arg3;
+- (id)initWithTransportSessionID:(unsigned int)arg1 idsParticipantID:(unsigned long long)arg2 ssrc:(unsigned int)arg3 streamToken:(long long)arg4;
 - (id)init;
 - (double)lastReceivedRTCPPacketTime;
 - (double)lastReceivedRTPPacketTime;
 - (_Bool)setRTPPayloads:(int *)arg1 numPayloads:(int)arg2 withError:(id *)arg3;
+- (void)setupColorInfo;
 - (void)setMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1;
 - (void)handleNWConnectionPacketEvent:(struct packet_id *)arg1 eventType:(int)arg2;
 - (void)handleNWConnectionNotification:(struct ifnet_interface_advisory *)arg1;
@@ -196,6 +191,7 @@ __attribute__((visibility("hidden")))
 - (void)updateVideoReceiver:(id)arg1;
 - (_Bool)useUEPForVideoConfig:(int)arg1;
 - (void)setupVideoReceiver:(id)arg1 withTransmitterHandle:(struct tagHANDLE *)arg2;
+- (struct tagVCNACKGeneratorStoreBagsConfig)readServerPacketRetransmissionsForVideoStoreBagConfig:(id)arg1;
 - (struct tagVCVideoReceiverConfig)videoReceiverConfigWithVideoStreamConfig:(id)arg1;
 - (struct tagVCVideoStreamReceiverConfig)videoStreamReceiverConfigWithDumpID:(unsigned int)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
 - (void)cleaunpReceiverConfig:(struct tagVCVideoReceiverConfig *)arg1;

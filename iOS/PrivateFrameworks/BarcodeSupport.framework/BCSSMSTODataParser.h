@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSDataParser-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSSMSTODataParser : NSObject <BCSDataParser>
+@interface BCSSMSTODataParser : NSObject
 {
 }
 

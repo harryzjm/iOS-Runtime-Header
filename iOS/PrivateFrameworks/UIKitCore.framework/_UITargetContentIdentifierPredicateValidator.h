@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSPredicateVisitor-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UITargetContentIdentifierPredicateValidator : NSObject <NSPredicateVisitor>
+@interface _UITargetContentIdentifierPredicateValidator : NSObject
 {
     NSString *_compileTimeIssues;
 }

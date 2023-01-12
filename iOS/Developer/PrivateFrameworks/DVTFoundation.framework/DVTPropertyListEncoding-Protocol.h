@@ -10,6 +10,7 @@
 
 @protocol DVTPropertyListEncoding <NSObject>
 - (void)encodeIntoPropertyList:(NSMutableDictionary *)arg1;
+- (void)awakeFromPropertyList;
 - (id)initWithPropertyList:(NSDictionary *)arg1 owner:(id)arg2;
 @end
 

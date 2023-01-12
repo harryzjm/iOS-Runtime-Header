@@ -9,6 +9,6 @@
 @class HDStatisticsCollectionCalculator, NSDateInterval;
 
 @protocol HDStatisticsCollectionCalculatorDataSource <NSObject>
-- (_Bool)collectionCalculator:(HDStatisticsCollectionCalculator *)arg1 queryForInterval:(NSDateInterval *)arg2 error:(id *)arg3 sampleHandler:(_Bool (^)(double, double, double, long long, _Bool, id *))arg4;
+- (_Bool)collectionCalculator:(HDStatisticsCollectionCalculator *)arg1 queryForInterval:(NSDateInterval *)arg2 error:(id *)arg3 sampleHandler:(_Bool (^)(double, double, double, long long, _Bool, id *))arg4 mergeHandler:(void (^)(double))arg5;
 @end
 

@@ -11,6 +11,7 @@
 @class ATXProactiveSuggestionUIFeedbackSession, ATXProactiveSuggestionWidgetRotationFeedbackSession, NSArray, NSString, NSUUID;
 
 @protocol ATXProactiveSuggestionUIInteractionProtocol <NSSecureCoding, BMStoreData, ATXProtoBufWrapper>
+@property(readonly, nonatomic) unsigned char consumerSubTypeForUIStream;
 - (NSUUID *)blendingUICacheUpdateUUIDForUICacheConsumerSubType:(unsigned char)arg1;
 - (NSString *)sessionIdentifierForSessionType:(long long)arg1 uiCacheConsumerSubType:(unsigned char)arg2;
 - (NSArray *)sessionProcessingOptionsForSessionType:(long long)arg1;

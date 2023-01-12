@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSProgressPublisher-Protocol.h>
-
 @class NSFileAccessNode, NSProgressValues, NSString, NSXPCConnection;
 @protocol NSProgressPublisher;
 
 __attribute__((visibility("hidden")))
-@interface NSProgressPublisherProxy : NSObject <NSProgressPublisher>
+@interface NSProgressPublisherProxy : NSObject
 {
     id <NSProgressPublisher> _forwarder;
     id _publisherID;

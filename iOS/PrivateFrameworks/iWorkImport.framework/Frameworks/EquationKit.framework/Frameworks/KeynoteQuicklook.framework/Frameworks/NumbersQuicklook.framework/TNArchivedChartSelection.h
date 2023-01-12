@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <NumbersQuicklook/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TNChartSelection, TSKSelection;
 
-@interface TNArchivedChartSelection : TSPObject <TSKArchivedSelection>
+@interface TNArchivedChartSelection : TSPObject
 {
     TNChartSelection *_selection;
 }

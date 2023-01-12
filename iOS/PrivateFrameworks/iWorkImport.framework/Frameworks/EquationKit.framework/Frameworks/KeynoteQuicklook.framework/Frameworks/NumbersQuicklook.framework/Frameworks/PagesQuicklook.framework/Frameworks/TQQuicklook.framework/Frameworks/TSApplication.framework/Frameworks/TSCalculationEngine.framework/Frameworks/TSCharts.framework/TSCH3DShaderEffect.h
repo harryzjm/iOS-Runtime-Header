@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DShaderEffectStateInfo-Protocol.h>
-
-@interface TSCH3DShaderEffect : NSObject <TSCH3DShaderEffectStateInfo>
+@interface TSCH3DShaderEffect : NSObject
 {
 }
 

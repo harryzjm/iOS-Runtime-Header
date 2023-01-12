@@ -6,11 +6,9 @@
 
 #import <AVFoundation/AVMetadataItem.h>
 
-#import <AVKit/AVAirSerializationProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AVMetadataItem (AVAirSerialization) <AVAirSerializationProtocol>
+@interface AVMetadataItem (AVAirSerialization)
 + (id)itemArrayWithAirRepresentations:(id)arg1;
 + (id)airRepresentationForArray:(id)arg1;
 + (id)itemWithAirDictionaryRepresentation:(id)arg1;

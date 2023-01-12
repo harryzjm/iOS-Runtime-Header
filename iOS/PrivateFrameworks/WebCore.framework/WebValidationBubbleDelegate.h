@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/UIPopoverPresentationControllerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebValidationBubbleDelegate : NSObject <UIPopoverPresentationControllerDelegate>
+@interface WebValidationBubbleDelegate : NSObject
 {
 }
 

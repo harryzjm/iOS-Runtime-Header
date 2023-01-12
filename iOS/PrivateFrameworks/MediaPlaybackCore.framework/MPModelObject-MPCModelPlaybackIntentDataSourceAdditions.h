@@ -13,9 +13,6 @@
 - (id)mpc_protoItemRepresentation;
 - (id)mpc_protoContainerRepresentation;
 - (id)MPC_modelObjectWithStoreFrontLocalEquivalentModelObject:(id)arg1;
-- (id)mqf_playbackItemMetadataModelObject;
-- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
-- (id)mqf_newPlaybackItemMetadata;
 - (id)mpc_radioContentReference;
 @end
 

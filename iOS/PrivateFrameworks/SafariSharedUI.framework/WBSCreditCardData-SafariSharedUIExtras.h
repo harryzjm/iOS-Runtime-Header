@@ -9,6 +9,7 @@
 @class UIImage;
 
 @interface WBSCreditCardData (SafariSharedUIExtras)
+- (void)virtualCardArtworkWithSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) UIImage *virtualCardIcon;
 @end
 

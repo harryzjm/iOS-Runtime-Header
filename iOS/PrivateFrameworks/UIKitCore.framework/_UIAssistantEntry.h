@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-
 @class NSString, UIView;
 @protocol UIPointerInteractionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIAssistantEntry : NSObject <UIPointerInteractionDelegate>
+@interface _UIAssistantEntry : NSObject
 {
     UIView<UIPointerInteractionDelegate> *_view;
 }

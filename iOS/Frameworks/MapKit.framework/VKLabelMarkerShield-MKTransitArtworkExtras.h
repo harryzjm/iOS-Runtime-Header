@@ -6,11 +6,9 @@
 
 #import <VectorKit/VKLabelMarkerShield.h>
 
-#import <MapKit/GEOTransitShieldDataSource-Protocol.h>
-
 @class NSString;
 
-@interface VKLabelMarkerShield (MKTransitArtworkExtras) <GEOTransitShieldDataSource>
+@interface VKLabelMarkerShield (MKTransitArtworkExtras)
 @property(readonly, nonatomic) NSString *shieldColorString;
 @property(readonly, nonatomic) NSString *shieldText;
 @property(readonly, nonatomic) long long shieldType;

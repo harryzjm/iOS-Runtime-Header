@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPSubscription;
 
-@interface CKDPSubscriptionCreateRequest : PBRequest <NSCopying>
+@interface CKDPSubscriptionCreateRequest : PBRequest
 {
     CKDPSubscription *_subscription;
 }

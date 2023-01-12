@@ -15,6 +15,6 @@
 - (void)xpcGetChangeHistoryWithBlock:(void (^)(NRDeviceCollectionHistory *))arg1;
 - (void)xpcRetrieveSecureProperties:(NSSet *)arg1 block:(void (^)(NSDictionary *))arg2;
 - (void)xpcGetDiffSinceTokenValue:(unsigned long long)arg1 getSecureProperties:(_Bool)arg2 withBlock:(void (^)(NRDeviceCollectionDiff *, NSDictionary *, _Bool, unsigned long long))arg3;
-- (void)xpcGetDeviceCollectionWithBlock:(void (^)(NRMutableDeviceCollection *, NRSecureDevicePropertyStore *, unsigned long long))arg1;
+- (void)xpcGetDeviceCollectionWithBlock:(void (^)(NRMutableDeviceCollection *, NRSecureDevicePropertyStore *, unsigned long long, _Bool))arg1;
 @end
 

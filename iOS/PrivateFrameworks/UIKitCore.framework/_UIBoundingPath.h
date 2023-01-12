@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @protocol UICoordinateSpace;
 
 __attribute__((visibility("hidden")))
-@interface _UIBoundingPath : NSObject <NSSecureCoding>
+@interface _UIBoundingPath : NSObject
 {
     id <UICoordinateSpace> _coordinateSpace;
 }
@@ -21,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <UICoordinateSpace> coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
 - (id)debugQuickLookObject;
 - (id)_imageRepresentation;
+- (struct UIEdgeInsets)_centerEdgeInsetsOfBoundingPathAndRect:(struct CGRect)arg1;
 - (struct CGRect)_rectTuckedAgainstEdge:(unsigned long long)arg1 ofBoundingRect:(struct CGRect)arg2 withSize:(double)arg3 minimumPadding:(double)arg4;
 - (struct CGRect)_rectTuckedInCorner:(unsigned long long)arg1 ofBoundingRect:(struct CGRect)arg2 withSize:(struct CGSize)arg3 minimumPadding:(double)arg4;
 - (struct CGRect)_largestInscribedRectInBoundingRect:(struct CGRect)arg1 withCenter:(struct CGPoint)arg2 aspectRatio:(double)arg3;

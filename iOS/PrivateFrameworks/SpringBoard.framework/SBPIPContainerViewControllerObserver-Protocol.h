@@ -17,7 +17,5 @@
 - (void)containerViewControllerStartReducingResourcesUsage:(SBPIPContainerViewController *)arg1;
 - (void)containerViewController:(SBPIPContainerViewController *)arg1 userDidUpdateStashState:(_Bool)arg2;
 - (void)containerViewControllerUserMayUpdateStashState:(SBPIPContainerViewController *)arg1;
-- (void)containerViewControllerRequiredInterfaceOrientationDidChange:(SBPIPContainerViewController *)arg1;
-- (void)containerViewControllerRequiredInterfaceOrientationWillChange:(SBPIPContainerViewController *)arg1;
 @end
 

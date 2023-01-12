@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/MFObject-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MFFont : NSObject <MFObject>
+@interface MFFont : NSObject
 {
     int m_lfHeight;
     int m_lfWidth;

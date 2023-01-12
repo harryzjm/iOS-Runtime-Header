@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, NSSharedKeySet;
+#import "NSMutableDictionary.h"
+
+@class NSSharedKeySet;
 
 __attribute__((visibility("hidden")))
-@interface NSSharedKeyDictionary
+@interface NSSharedKeyDictionary : NSMutableDictionary
 {
     NSSharedKeySet *_keyMap;
     unsigned long long _count;
@@ -33,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)enumerateKeysAndObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)keyEnumerator;
 - (void)getObjects:(id *)arg1 andKeys:(id *)arg2 count:(unsigned long long)arg3;
 - (id)objectForKey:(id)arg1;

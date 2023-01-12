@@ -12,7 +12,8 @@ __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI229PersonalizationScriptTestCase : NSObject
 {
     MISSING_TYPE *tagService;
-    MISSING_TYPE *dataStore;
+    MISSING_TYPE *personalizationData;
+    MISSING_TYPE *$__lazy_storage_$_dataStore;
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *tracker;
     MISSING_TYPE *testName;

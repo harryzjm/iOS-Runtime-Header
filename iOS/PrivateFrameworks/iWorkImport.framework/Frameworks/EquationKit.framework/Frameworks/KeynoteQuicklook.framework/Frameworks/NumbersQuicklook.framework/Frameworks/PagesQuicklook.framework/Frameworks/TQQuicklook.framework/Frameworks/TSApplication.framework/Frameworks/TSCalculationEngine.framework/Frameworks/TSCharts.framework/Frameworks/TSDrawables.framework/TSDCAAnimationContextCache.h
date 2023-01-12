@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/TSDCAAnimationContextCacheProtocol-Protocol.h>
-
 @class CAMediaTimingFunction, NSString;
 
-@interface TSDCAAnimationContextCache : NSObject <TSDCAAnimationContextCacheProtocol>
+@interface TSDCAAnimationContextCache : NSObject
 {
     _Bool _autoreverses;
     CAMediaTimingFunction *_timingFunction;

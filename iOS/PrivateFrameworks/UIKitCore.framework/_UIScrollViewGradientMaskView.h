@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIScrollViewGradientMaskView
+@interface _UIScrollViewGradientMaskView : UIView
 {
     long long _gradientDirection;
     struct UIEdgeInsets _gradientStartInsets;

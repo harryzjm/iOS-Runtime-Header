@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CHLogger.h"
+
 @class NSObject, NSString;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface WatchDogTimer
+@interface WatchDogTimer : CHLogger
 {
     NSString *_name;
     NSObject<OS_dispatch_source> *_timer;

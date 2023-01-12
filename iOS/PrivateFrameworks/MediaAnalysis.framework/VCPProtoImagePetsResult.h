@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class VCPProtoBounds;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoImagePetsResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoImagePetsResult : PBCodable
 {
     VCPProtoBounds *_bounds;
     float _confidence;

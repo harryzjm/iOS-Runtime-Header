@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FileProvider/NSFileProviderEnumerationObserver-Protocol.h>
-
 @class NSData, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPXItemsObserver <NSFileProviderEnumerationObserver>
+@interface FPXItemsObserver
 {
     NSMutableArray *_items;
     CDUnknownBlockType _finishedBlock;

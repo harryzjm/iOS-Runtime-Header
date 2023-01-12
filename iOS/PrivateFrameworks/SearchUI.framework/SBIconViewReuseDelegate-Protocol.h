@@ -14,7 +14,7 @@
 @optional
 - (id <SBIconViewSnapshotProviding>)screenSnapshotProviderForComponentsOfIconView:(SBIconView *)arg1;
 - (_Bool)iconView:(SBIconView *)arg1 shouldContinueToUseBackgroundViewForComponents:(UIView *)arg2;
-- (UIView *)backgroundViewForComponentsOfIconView:(SBIconView *)arg1;
+- (UIView *)iconView:(SBIconView *)arg1 backgroundViewForComponentsOfType:(long long)arg2;
 - (SBIconLabelImage *)iconView:(SBIconView *)arg1 labelImageWithParameters:(SBIconLabelImageParameters *)arg2;
 - (void)iconView:(SBIconView *)arg1 willRemoveIconLabelAccessoryView:(UIView<SBIconLabelAccessoryView> *)arg2;
 - (UIView<SBIconLabelAccessoryView> *)iconView:(SBIconView *)arg1 iconLabelAccessoryViewOfType:(long long)arg2;

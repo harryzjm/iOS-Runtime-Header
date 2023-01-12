@@ -4,20 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/UIPopoverControllerDelegate-Protocol.h>
-#import <StoreKitUI/UITableViewDataSource-Protocol.h>
-#import <StoreKitUI/UITableViewDelegate-Protocol.h>
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
-
-@class NSIndexPath, NSMutableArray, NSObject, NSString, SKUIGiftAddressingSection, SKUIGiftAmountSection, SKUIGiftItemView, SKUIGiftSendDateSection, SKUIGiftTermsAndConditionsSection, SKUIGiftValidationResponse, SKUIGiftValidator, UIBarButtonItem, UIDatePicker, UIImage, UIPopoverController, UITableView, UIView;
+@class NSIndexPath, NSMutableArray, NSObject, NSString, SKUIGiftAddressingSection, SKUIGiftAmountSection, SKUIGiftItemView, SKUIGiftSendDateSection, SKUIGiftTermsAndConditionsSection, SKUIGiftValidationResponse, SKUIGiftValidator, UIBarButtonItem, UIImage, UIPopoverController, UITableView, UIView;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftComposeViewController <UIPopoverControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface SKUIGiftComposeViewController
 {
     SKUIGiftAddressingSection *_addressingSection;
     SKUIGiftAmountSection *_amountSection;
-    UIDatePicker *_datePicker;
     UIImage *_itemImage;
     SKUIGiftItemView *_itemView;
     SKUIGiftValidationResponse *_lastValidationResponse;
@@ -30,7 +24,6 @@ __attribute__((visibility("hidden")))
     SKUIGiftTermsAndConditionsSection *_termsSection;
     NSObject<OS_dispatch_source> *_validationTimer;
     SKUIGiftValidator *_validator;
-    UIPopoverController *_datePickerPopover;
     UIPopoverController *_peoplePickerPopover;
     UIPopoverController *_searchResultsPopover;
     UIBarButtonItem *_nextButton;
@@ -40,10 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIBarButtonItem *nextButton; // @synthesize nextButton=_nextButton;
 - (void)_validateGiftThrottled:(_Bool)arg1;
 - (void)_validateGift;
-- (void)_showDatePickerPopoverForRowAtIndexPath:(id)arg1;
-- (void)_showDatePickerForRowAtIndexPath:(id)arg1;
 - (void)_setItemImage:(id)arg1 error:(id)arg2;
-- (void)_removeDatePickerIfPossible;
 - (void)_reloadSections;
 - (void)_pushThemePickerOrShowInvalidAlert;
 - (id)_itemView;
@@ -56,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)_recipientsDidChangeNotification:(id)arg1;
 - (void)_keyboardChangeNotification:(id)arg1;
 - (void)_nextAction:(id)arg1;
-- (void)_datePickerAction:(id)arg1;
 - (void)_cancelAction:(id)arg1;
 - (void)_amountControlAction:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
@@ -68,12 +57,9 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
-- (void)scrollViewDidScroll:(id)arg1;
-- (void)scrollViewDidEndScrollingAnimation:(id)arg1;
-- (void)scrollViewDidEndDecelerating:(id)arg1;
 - (_Bool)popoverControllerShouldDismissPopover:(id)arg1;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
+- (void)giftSendDateSection:(id)arg1 didChangeDate:(id)arg2;
 - (void)tableView:(id)arg1 giftRecipientCell:(id)arg2 presentContactPicker:(id)arg3;
 - (void)tableView:(id)arg1 giftRecipientCell:(id)arg2 dismissContactPicker:(id)arg3;
 - (void)tableView:(id)arg1 giftRecipientCell:(id)arg2 didUpdateSearchController:(id)arg3;

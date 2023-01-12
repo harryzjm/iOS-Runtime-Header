@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SKUISizeValue : NSObject <NSCopying>
+@interface SKUISizeValue : NSObject
 {
     long long _height;
     long long _width;

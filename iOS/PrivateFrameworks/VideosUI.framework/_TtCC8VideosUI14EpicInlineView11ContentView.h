@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *shelfLockupStyle;
     MISSING_TYPE *decoratedShelfLayout;
     MISSING_TYPE *mainGradientColor;
+    MISSING_TYPE *disableGradient;
     MISSING_TYPE *playbackDelayInterval;
     MISSING_TYPE *hostMediaController;
     MISSING_TYPE *didHostMediaController;
@@ -28,9 +29,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *playbackDidStopObserver;
     MISSING_TYPE *userInterfaceStyleToRestore;
     MISSING_TYPE *$__lazy_storage_$_logoGradientView;
-    MISSING_TYPE *gradientContainerView;
+    MISSING_TYPE *$__lazy_storage_$_gradientContainerView;
     MISSING_TYPE *visualEffectView;
-    MISSING_TYPE *gradientLayer;
+    MISSING_TYPE *$__lazy_storage_$_gradientLayer;
     MISSING_TYPE *opacityMaskLayer;
 }
 

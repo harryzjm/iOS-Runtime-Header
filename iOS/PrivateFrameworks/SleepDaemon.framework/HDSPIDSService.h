@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)cloudServiceWithScheduler:(id)arg1;
 + (id)localServiceWithScheduler:(id)arg1;
 
 @end

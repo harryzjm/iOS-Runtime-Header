@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCMediaNegotiatorProtocol-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSString, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorResults, VCMediaNegotiatorResultsAudio, VCMediaNegotiatorResultsFaceTimeSettings, VCMediaNegotiatorResultsMoments, VCMediaNegotiatorResultsVideo;
 @protocol VCMediaNegotiatorProtocol;
 
 __attribute__((visibility("hidden")))
-@interface VCSessionMediaNegotiator : NSObject <VCMediaNegotiatorProtocol>
+@interface VCSessionMediaNegotiator : NSObject
 {
     VCMediaNegotiatorLocalConfiguration *_localSettings;
     id <VCMediaNegotiatorProtocol> _activeNegotiator;
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)unserializeNegotiationData:(id)arg1;
 + (id)serializeNegotiationData:(id)arg1;
 + (_Bool)initializeLocalConfiguration:(id)arg1 negotiationData:(id)arg2 deviceRole:(int)arg3 preferredAudioPayload:(int)arg4;
++ (id)streamGroupIDsWithMediaBlob:(id)arg1;
 + (id)negotiationDataWithVersion1:(id)arg1 version2:(id)arg2;
 + (id)negotiationDataWithVersion:(int)arg1 mediaBlob:(id)arg2;
 + (id)mediaBlobForVersion:(int)arg1 negotiationData:(id)arg2;

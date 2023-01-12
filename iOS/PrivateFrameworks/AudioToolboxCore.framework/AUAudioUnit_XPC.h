@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AUAudioUnit.h"
+
 @class AUAudioUnitBusArray_XPC, AUCrashHandler, AUParameterTree, NSArray, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface AUAudioUnit_XPC
+@interface AUAudioUnit_XPC : AUAudioUnit
 {
     struct recursive_mutex _propListenerMutex;
     struct OpaqueAudioComponentInstance *_componentInstance;
@@ -35,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (id)speechVoices;
 - (void)cancelSpeechRequest;
 - (void)synthesizeSpeechRequest:(id)arg1;
+- (id)messageChannelFor:(id)arg1;
+- (CDStruct_6ad76789)remoteProcessAuditToken;
 - (int)remoteProcessIdentifier;
 - (_Bool)isLoadedInProcess;
 - (id)userPresets;
@@ -68,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (id)_getValueForProperty:(id)arg1 error:(id *)arg2;
 - (CDUnknownBlockType)internalRenderBlock;
 - (void)reset;
+- (void)remoteReset;
 - (void)internalDeallocateRenderResources;
 - (_Bool)allocateRenderResourcesAndReturnError:(id *)arg1;
 - (void)setTransportStateBlock:(CDUnknownBlockType)arg1;

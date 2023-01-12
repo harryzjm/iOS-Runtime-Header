@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSPushParsable-Protocol.h>
-#import <AppleMediaServices/AMSUserNotificationIntentDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSPushParsableRichNotification : NSObject <AMSPushParsable, AMSUserNotificationIntentDelegate>
+@interface AMSPushParsableRichNotification : NSObject
 {
 }
 

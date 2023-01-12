@@ -6,12 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-#import <InternalPreferences/UITextFieldDelegate-Protocol.h>
-
 @class NSString, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface HangTracerController : PSListController <UITextFieldDelegate>
+@interface HangTracerController : PSListController
 {
     float _hudThresholdMS;
     PSSpecifier *_hangtracerExplanation;

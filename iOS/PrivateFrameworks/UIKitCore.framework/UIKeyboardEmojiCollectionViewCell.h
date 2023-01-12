@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionViewCell.h"
+
 @class UIKeyboardEmoji, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiCollectionViewCell
+@interface UIKeyboardEmojiCollectionViewCell : UICollectionViewCell
 {
     UILabel *_emojiLabel;
     _Bool _unreleasedHighlight;

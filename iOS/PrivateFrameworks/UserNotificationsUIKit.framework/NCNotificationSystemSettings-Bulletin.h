@@ -7,7 +7,9 @@
 #import <UserNotificationsKit/NCNotificationSystemSettings.h>
 
 @interface NCNotificationSystemSettings (Bulletin)
-+ (id)notificationSystemSettingsForScheduledDeliveryEnabled:(_Bool)arg1 scheduledDeliveryUninitialized:(_Bool)arg2 scheduledDeliveryShowNextSummary:(_Bool)arg3 scheduledDeliveryTimes:(id)arg4;
++ (long long)bbListDisplayStyleSettingForNCNotificationListDisplayStyleSetting:(unsigned long long)arg1;
++ (unsigned long long)listDisplayStyleSettingForBBNotificationListDisplayStyleSetting:(long long)arg1;
++ (id)notificationSystemSettingsForScheduledDeliveryEnabled:(_Bool)arg1 scheduledDeliveryUninitialized:(_Bool)arg2 scheduledDeliveryShowNextSummary:(_Bool)arg3 scheduledDeliveryTimes:(id)arg4 listDisplayStyleSetting:(unsigned long long)arg5;
 + (id)notificationSystemSettingsForBBGlobalSettings:(id)arg1;
 @end
 

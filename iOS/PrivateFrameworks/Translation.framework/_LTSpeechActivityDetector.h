@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/SNResultsObserving-Protocol.h>
-
 @class NSString, SNAudioStreamAnalyzer;
 @protocol OS_dispatch_queue, _LTSpeechTranslationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _LTSpeechActivityDetector : NSObject <SNResultsObserving>
+@interface _LTSpeechActivityDetector : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     SNAudioStreamAnalyzer *_streamAnalyzer;

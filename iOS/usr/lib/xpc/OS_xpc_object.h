@@ -6,11 +6,9 @@
 
 #import <dispatch/OS_object.h>
 
-#import <xpc/OS_xpc_object-Protocol.h>
-
 @class NSString;
 
-@interface OS_xpc_object : OS_object <OS_xpc_object>
+@interface OS_xpc_object : OS_object
 {
 }
 

@@ -6,12 +6,9 @@
 
 #import <SAObjects/AceObject.h>
 
-#import <AssistantServices/AFAnalyticsContextVending-Protocol.h>
-#import <AssistantServices/AFSecurityDigestibleChunksProviding-Protocol.h>
-
 @class NSString;
 
-@interface AceObject (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding, AFAnalyticsContextVending>
+@interface AceObject (AFSecurityDigestibleChunksProvider)
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)af_dialogIdentifiersForAnalyticsContext;
 - (void)af_addEntriesToAnalyticsContext:(id)arg1;

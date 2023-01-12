@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *message;
 @property(copy, nonatomic) NSString *title;
 - (void)reconfigureWithTitle:(id)arg1 message:(id)arg2 progress:(id)arg3 buttonTitle:(id)arg4 dismissalHandler:(CDUnknownBlockType)arg5;
-- (void)hideAfterDelay:(double)arg1 forceCompletion:(_Bool)arg2 afterMinimumUptimeDismissalHandler:(CDUnknownBlockType)arg3;
+- (void)hideAfterDelay:(double)arg1 forceCompletion:(_Bool)arg2 replacementDismissalHandler:(CDUnknownBlockType)arg3;
 - (void)hideAfterMinimumUptimeWithDismissalHandler:(CDUnknownBlockType)arg1;
 - (void)_dismissButtonAction:(id)arg1;
 - (void)_hideTimerAction:(id)arg1;

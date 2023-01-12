@@ -23,6 +23,7 @@
 @property(readonly) XCTTestIdentifier *identifier; // @synthesize identifier=_identifier;
 - (void)finishAtDate:(id)arg1;
 - (void)reportIssue:(id)arg1 atDate:(id)arg2;
+- (id)reportTestStartedWithName:(id)arg1 atDate:(id)arg2 iteration:(long long)arg3;
 - (id)reportTestStartedWithName:(id)arg1 atDate:(id)arg2;
 - (id)reportSuiteStartedWithName:(id)arg1 atDate:(id)arg2;
 

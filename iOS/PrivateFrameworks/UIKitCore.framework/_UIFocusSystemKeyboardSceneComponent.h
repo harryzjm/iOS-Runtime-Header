@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIFocusSystemSceneComponent.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIFocusSystemKeyboardSceneComponent
+@interface _UIFocusSystemKeyboardSceneComponent : _UIFocusSystemSceneComponent
 {
 }
 
 + (_Bool)needsFocusSystem;
-- (id)focusSystem;
 
 @end
 

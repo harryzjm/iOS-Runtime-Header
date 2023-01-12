@@ -6,9 +6,10 @@
 
 #import <NewsToday/NSObject-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCFeedPersonalizedItemScoreProfile, NSArray, NSDate, NSString;
 
 @protocol FCFeedPersonalizingItem <NSObject>
+@property(retain) FCFeedPersonalizedItemScoreProfile *scoreProfile;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *publisherTagMetadata;
 @property(readonly, copy, nonatomic) NSArray *topics;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
@@ -16,6 +17,7 @@
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
 @property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites;
+@property(readonly, nonatomic) _Bool hasThumbnail;
 @property(readonly, nonatomic) _Bool hasVideo;
 @property(readonly, nonatomic, getter=isPaid) _Bool paid;
 @property(readonly, nonatomic, getter=isANF) _Bool anf;
@@ -31,11 +33,16 @@
 - (void)enumerateTopicCohortsWithBlock:(void (^)(NSString *, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *))arg1;
 
 @optional
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration *expirationData;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
+@property(readonly, nonatomic) unsigned long long halfLifeOverride;
 @property(readonly, copy, nonatomic) NSArray *iAdCategories;
+@property(readonly, nonatomic) _Bool webConverted;
+@property(readonly, nonatomic) _Bool reduceVisibility;
 @property(readonly, nonatomic) _Bool isEvergreen;
 @property(readonly, nonatomic) _Bool hasAudioTrack;
+@property(readonly, nonatomic) _Bool isFeatureCandidate;
 @property(readonly, nonatomic) _Bool isFeatured;
 @property(readonly, nonatomic) long long bodyTextLength;
 @property(readonly, nonatomic, getter=isBundlePaid) _Bool bundlePaid;

@@ -6,22 +6,28 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUILibraryProductLockupViewLayout-Protocol.h>
-
-@class NSString, VUIMediaEntityType;
+@class NSString, VUIMediaEntityType, VUITextLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryProductLockupLayout : NSObject <VUILibraryProductLockupViewLayout>
+@interface VUILibraryProductLockupLayout : NSObject
 {
     long long _type;
     VUIMediaEntityType *_entityType;
+    VUITextLayout *_playLabelTextLayout;
+    VUITextLayout *_subtitleTextLayout;
+    VUITextLayout *_descriptionTextLayout;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) VUITextLayout *descriptionTextLayout; // @synthesize descriptionTextLayout=_descriptionTextLayout;
+@property(retain, nonatomic) VUITextLayout *subtitleTextLayout; // @synthesize subtitleTextLayout=_subtitleTextLayout;
+@property(retain, nonatomic) VUITextLayout *playLabelTextLayout; // @synthesize playLabelTextLayout=_playLabelTextLayout;
 @property(readonly, nonatomic) VUIMediaEntityType *entityType; // @synthesize entityType=_entityType;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 - (id)contentDescriptionFontForSizeClass:(long long)arg1;
 - (int)contentDescriptionNumberOfLinesForTraitCollection:(id)arg1;
+- (id)descriptionTextLayoutForTraitCollection:(id)arg1 isExpanded:(_Bool)arg2;
+- (id)subtitleTextLayoutForWindowWidth:(double)arg1;
 - (long long)downloadButtonPosition;
 - (double)buttonModuleTopMarginForWindowWidth:(double)arg1;
 - (double)contentDescriptionBottomMarginForWindowWidth:(double)arg1;
@@ -33,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (double)coverArtImageRightMarginForWindowWidth:(double)arg1;
 - (struct CGSize)coverArtImageSize;
 - (long long)layoutTypeForWindowWidth:(double)arg1;
+- (void)configLayout;
 - (id)initWithLayoutType:(long long)arg1 entityType:(id)arg2;
 
 // Remaining properties

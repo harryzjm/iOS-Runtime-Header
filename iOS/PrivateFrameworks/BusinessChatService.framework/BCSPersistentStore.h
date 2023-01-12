@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSBatchable-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface BCSPersistentStore : NSObject <BCSBatchable>
+@interface BCSPersistentStore : NSObject
 {
     struct sqlite3 *_openedDatabase;
     long long _batchCount;

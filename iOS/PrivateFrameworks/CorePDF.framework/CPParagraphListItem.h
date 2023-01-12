@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPDisposable-Protocol.h>
-
 @class CPList;
 
 __attribute__((visibility("hidden")))
-@interface CPParagraphListItem : NSObject <CPDisposable>
+@interface CPParagraphListItem : NSObject
 {
     CPList *list;
     int number;

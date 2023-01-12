@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/REResourceSharingService-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface REResourceSharingClientObject : NSObject <REResourceSharingService>
+@interface REResourceSharingClientObject : NSObject
 {
     struct AssetService *_assetService;
     void *_resourceSharingManager;

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <prequelite/PQLBindable-Protocol.h>
-
 @class NSString;
 
-@interface NSDictionary (PQLBindable) <PQLBindable>
+@interface NSDictionary (PQLBindable)
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 
 // Remaining properties

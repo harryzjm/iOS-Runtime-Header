@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <HealthKit/HKObservableFeatureAvailabilityRequirement-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HKFeatureAvailabilityRequirementBooleanUserDefaultEvaluator : NSObject <HKObservableFeatureAvailabilityRequirement>
+@interface HKFeatureAvailabilityRequirementBooleanUserDefaultEvaluator
 {
     NSString *_userDefaultsKey;
 }

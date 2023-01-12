@@ -6,10 +6,13 @@
 
 #import <SwiftUI/UIFocusEnvironment-Protocol.h>
 
+@class NSArray;
+
 @protocol _UIFocusEnvironmentPrivate <UIFocusEnvironment>
 
 @optional
 - (void)_setNeedsNonDeferredFocusUpdate;
+- (NSArray *)_linearFocusMovementSequences;
 - (long long)_preferredFocusMovementStyle;
 - (_Bool)_isEligibleForFocusOcclusion;
 - (_Bool)_isEligibleForFocusInteraction;
@@ -19,6 +22,7 @@
 // Remaining properties
 @property(nonatomic, readonly) _Bool eligibleForFocusInteraction;
 @property(nonatomic, readonly) _Bool eligibleForFocusOcclusion;
+@property(nonatomic, readonly) NSArray *linearFocusMovementSequences;
 @property(nonatomic, readonly) long long preferredFocusMovementStyle;
 @end
 

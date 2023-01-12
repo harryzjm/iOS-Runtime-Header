@@ -9,6 +9,7 @@
 @class NSDictionary;
 
 @protocol ImageConversionService <NSObject>
+- (void)requestStatusWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)convertImageWithOptions:(NSDictionary *)arg1 reply:(void (^)(NSData *, NSDictionary *, NSError *))arg2;
 @end
 

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 + (id)generate;
 - (void).cxx_destruct;
+- (id)signingKeyIdentifier;
 - (id)serializedData;
 - (id)currentSubscriptionKeys;
 - (id)sealMessage:(id)arg1 authenticating:(id)arg2 error:(id *)arg3;

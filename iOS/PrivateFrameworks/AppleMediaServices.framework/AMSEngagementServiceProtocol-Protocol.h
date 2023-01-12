@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AMSEngagementEnqueueRequest, AMSEngagementSyncRequest;
+@class AMSEngagementEnqueueRequest, AMSEngagementSyncRequest, NSString;
 
 @protocol AMSEngagementServiceProtocol
-- (void)beginObservingMessages;
+- (void)treatmentStoreServiceWithReply:(void (^)(id <AMSTreatmentStoreServiceProtocol>, NSError *))arg1;
 - (void)syncWithRequest:(AMSEngagementSyncRequest *)arg1 completion:(void (^)(AMSEngagementSyncResult *, NSError *))arg2;
 - (void)enqueueWithRequest:(AMSEngagementEnqueueRequest *)arg1 completion:(void (^)(AMSEngagementEnqueueResult *, NSError *))arg2;
+- (void)contentInfoForApp:(NSString *)arg1 cacheKey:(NSString *)arg2 version:(NSString *)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)beginObservingMessages;
 
 @optional
 - (oneway void)syncMetricsIdentifiers;

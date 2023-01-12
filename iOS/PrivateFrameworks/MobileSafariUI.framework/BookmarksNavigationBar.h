@@ -6,12 +6,12 @@
 
 #import <UIKit/UINavigationBar.h>
 
-@class _SFVibrantSeparatorView;
+@class SFVibrantSeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface BookmarksNavigationBar : UINavigationBar
 {
-    _SFVibrantSeparatorView *_separator;
+    SFVibrantSeparatorView *_separator;
 }
 
 - (void).cxx_destruct;

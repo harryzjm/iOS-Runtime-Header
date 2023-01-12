@@ -12,6 +12,7 @@
 - (NSString *)debugControllerRequestsBugReportPrefixForTitle:(id <AFUIDebugControlling>)arg1;
 - (void)debugController:(id <AFUIDebugControlling>)arg1 openURL:(NSURL *)arg2;
 - (void)debugController:(id <AFUIDebugControlling>)arg1 requestsScreenShotWithCompletion:(void (^)(UIImage *))arg2;
+- (void)debugController:(id <AFUIDebugControlling>)arg1 utterances:(NSArray *)arg2 openTTR:(void (^)(_Bool *))arg3;
 - (void)debugController:(id <AFUIDebugControlling>)arg1 requestsPermissionToScreenshot:(void (^)(_Bool))arg2;
 - (void)debugController:(id <AFUIDebugControlling>)arg1 stateDidChangeWithAddViews:(SAUIAddViews *)arg2;
 @end

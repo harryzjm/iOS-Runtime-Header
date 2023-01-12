@@ -11,7 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)hk_validateUserMotionContextMetadataValue:(id)arg1 error:(id *)arg2;
++ (_Bool)hk_validateHeartRateRecoveryActivityTypeMetadataValue:(id)arg1 error:(id *)arg2;
++ (_Bool)hk_validateHeartRateRecoveryTestTypeMetadataValue:(id)arg1 error:(id *)arg2;
 + (_Bool)hk_validateCoreMotionSourceIdentifierMetadataValue:(id)arg1 error:(id *)arg2;
++ (_Bool)hk_validateAppleIrregularRhythmNotificationsAlgorithmVersionMetadataValue:(id)arg1 error:(id *)arg2;
 + (_Bool)hk_validateAppleHeartbeatSeriesAlgorithmVersionMetadataValue:(id)arg1 error:(id *)arg2;
 + (_Bool)hk_validateDevicePlacementSideValue:(id)arg1 error:(id *)arg2;
 + (_Bool)hk_validateAppleECGAlgorithmValue:(id)arg1 error:(id *)arg2;

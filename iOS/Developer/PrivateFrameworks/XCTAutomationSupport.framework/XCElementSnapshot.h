@@ -9,7 +9,7 @@
 #import <XCTAutomationSupport/NSCopying-Protocol.h>
 #import <XCTAutomationSupport/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSEnumerator, NSIndexPath, NSSet, NSString, XCAccessibilityElement, XCTLocalizableStringInfo;
+@class NSArray, NSDictionary, NSEnumerator, NSIndexPath, NSSet, NSString, NSValue, XCAccessibilityElement, XCTLocalizableStringInfo;
 @protocol XCTElementSnapshotAttributeDataSource, XCUIElementSnapshotApplication;
 
 @interface XCElementSnapshot : NSObject <NSSecureCoding, NSCopying>
@@ -21,6 +21,7 @@
     _Bool _hasKeyboardFocus;
     _Bool _isTruncatedValue;
     _Bool _hasPrivilegedAttributeValues;
+    unsigned int _windowContextID;
     unsigned int _faultedInProperties;
     id <XCUIElementSnapshotApplication> _application;
     unsigned long long _generation;
@@ -39,11 +40,14 @@
     NSDictionary *_additionalAttributes;
     NSArray *_userTestingAttributes;
     NSSet *_disclosedChildRowAXElements;
+    NSValue *_activationPoint;
+    long long _interfaceOrientation;
     XCAccessibilityElement *_accessibilityElement;
     XCAccessibilityElement *_parentAccessibilityElement;
     XCElementSnapshot *_parent;
     XCTLocalizableStringInfo *_localizableStringInfo;
     struct CGRect _frame;
+    struct CGRect _eventSynthesisFrame;
 }
 
 + (unsigned long long)elementTypeForAccessibilityElement:(id)arg1 usingAXAttributes_iOS:(id)arg2 useLegacyElementType:(_Bool)arg3;
@@ -86,6 +90,7 @@
 - (id)nearestSharedAncestorOfElement:(id)arg1 matchingType:(long long)arg2;
 - (id)_nearestAncestorMatchingAnyOfTypes:(id)arg1;
 - (id)nearestAncestorMatchingType:(long long)arg1;
+- (id)nearestRemoteAncestor;
 - (id)localizableStringsDataIncludingChildren;
 - (_Bool)_frameFuzzyMatchesElement:(id)arg1 tolerance:(double)arg2;
 - (_Bool)_frameFuzzyMatchesElement:(id)arg1;
@@ -135,22 +140,27 @@
 @property(copy) NSString *placeholderValue; // @synthesize placeholderValue=_placeholderValue;
 @property(copy) id value; // @synthesize value=_value;
 @property(readonly, copy) NSString *truncatedValueString;
+@property(copy) NSValue *activationPoint; // @synthesize activationPoint=_activationPoint;
+@property unsigned int windowContextID; // @synthesize windowContextID=_windowContextID;
 @property long long displayID; // @synthesize displayID=_displayID;
+@property struct CGRect eventSynthesisFrame; // @synthesize eventSynthesisFrame=_eventSynthesisFrame;
 @property struct CGRect frame; // @synthesize frame=_frame;
+- (void)setInterfaceOrientation:(long long)arg1;
+@property(readonly) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property unsigned long long elementType; // @synthesize elementType=_elementType;
 - (id)_fetchPrivilegedValueForKey:(id)arg1;
 - (_Bool)_shouldAttemptPrivilegedFaultForValue:(id)arg1;
 - (_Bool)_fetchBoolForKey:(id)arg1;
 - (id)_fetchSimpleValueForKey:(id)arg1;
 - (void)_assertForFaultsInContext:(CDUnknownBlockType)arg1;
-- (int)_faultingBitForKey:(id)arg1;
+- (unsigned int)_faultingBitForKey:(id)arg1;
 - (void)markAsFaultedInPropertiesDerivedFromSnapshotAttributes:(id)arg1;
 - (_Bool)_willAssertOnFault;
-- (void)_recursivelySetFaultedBits:(int)arg1;
-- (void)_unsetIsFaultedIn:(int)arg1;
-- (void)_setIsFaultedIn:(int)arg1;
-- (_Bool)_isFaultedIn:(int)arg1;
-- (_Bool)_shouldAttemptFaultForBit:(int)arg1;
+- (void)_recursivelySetFaultedBits:(unsigned int)arg1;
+- (void)_unsetIsFaultedIn:(unsigned int)arg1;
+- (void)_setIsFaultedIn:(unsigned int)arg1;
+- (_Bool)_isFaultedIn:(unsigned int)arg1;
+- (_Bool)_shouldAttemptFaultForBit:(unsigned int)arg1;
 - (void)_compensateForInsufficientElementTypeData;
 - (void)_recursivelyResetElementType;
 - (void)recursivelyClearDataSource;

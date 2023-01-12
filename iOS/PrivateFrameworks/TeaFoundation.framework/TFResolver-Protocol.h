@@ -6,22 +6,26 @@
 
 #import <TeaFoundation/NSObject-Protocol.h>
 
-@class NSString, Protocol, TFContext, TFKey;
+@class NSString, Protocol;
 @protocol TFResolver;
 
 @protocol TFResolver <NSObject>
-- (id)resolveForKey:(TFKey *)arg1 context:(TFContext *)arg2 error:(id *)arg3;
-- (id)resolveForKey:(TFKey *)arg1 context:(TFContext *)arg2;
-- (id)resolveForKey:(TFKey *)arg1;
+- (id)resolveOptionalProtocol:(Protocol *)arg1 name:(NSString *)arg2 contextBlock:(void (^)(id <TFContext>))arg3;
+- (id)resolveOptionalProtocol:(Protocol *)arg1 name:(NSString *)arg2;
+- (id)resolveOptionalProtocol:(Protocol *)arg1 contextBlock:(void (^)(id <TFContext>))arg2;
+- (id)resolveOptionalProtocol:(Protocol *)arg1;
 - (id)resolveProtocol:(Protocol *)arg1 name:(NSString *)arg2 contextBlock:(void (^)(id <TFContext>))arg3;
 - (id)resolveProtocol:(Protocol *)arg1 name:(NSString *)arg2;
 - (id)resolveProtocol:(Protocol *)arg1 contextBlock:(void (^)(id <TFContext>))arg2;
 - (id)resolveProtocol:(Protocol *)arg1;
+- (id)resolveOptionalClass:(Class)arg1 name:(NSString *)arg2 contextBlock:(void (^)(id <TFContext>))arg3;
+- (id)resolveOptionalClass:(Class)arg1 name:(NSString *)arg2;
+- (id)resolveOptionalClass:(Class)arg1 contextBlock:(void (^)(id <TFContext>))arg2;
+- (id)resolveOptionalClass:(Class)arg1;
 - (id)resolveClass:(Class)arg1 name:(NSString *)arg2 contextBlock:(void (^)(id <TFContext>))arg3;
 - (id)resolveClass:(Class)arg1 name:(NSString *)arg2;
 - (id)resolveClass:(Class)arg1 contextBlock:(void (^)(id <TFContext>))arg2;
 - (id)resolveClass:(Class)arg1;
-- (void)linkResolverWithLinkBlock:(void (^)(void (^)(void)))arg1;
 - (id <TFResolver>)currentObjectGraphResolver:(unsigned long long)arg1;
 @end
 

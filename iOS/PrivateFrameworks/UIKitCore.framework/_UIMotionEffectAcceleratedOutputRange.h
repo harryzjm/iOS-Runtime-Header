@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/NSCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIMotionEffectAcceleratedOutputRange : NSObject <NSCoding, NSCopying>
+@interface _UIMotionEffectAcceleratedOutputRange : NSObject <NSCopying>
 {
     struct UIOffset _referenceOffset;
     struct CGPoint _referenceAcceleration;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ScreenTimeSettingsUI/CNUIFamilyMemberContactsPresentation-Protocol.h>
-
 @class CNUIFamilyMemberContactsController, NSString, PSSpecifier, STCommunicationLimits;
 
 __attribute__((visibility("hidden")))
-@interface STCommunicationLimitsListController <CNUIFamilyMemberContactsPresentation>
+@interface STCommunicationLimitsListController
 {
     _Bool _syncingiCloudContacts;
     PSSpecifier *_duringScreenTimeSpecifier;

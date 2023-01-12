@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property(retain, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 @property(nonatomic) int installState; // @synthesize installState=_installState;
+- (id)getLogger;
 - (void)_updateCellWithInstallState;
 - (void)layoutSubviews;
 - (void)updateConstraints;

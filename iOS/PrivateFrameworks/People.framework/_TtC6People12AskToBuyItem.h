@@ -16,6 +16,8 @@
     MISSING_TYPE *status;
     MISSING_TYPE *starRating;
     MISSING_TYPE *ageRating;
+    MISSING_TYPE *storeLink;
+    MISSING_TYPE *productTypeCode;
 }
 
 @end

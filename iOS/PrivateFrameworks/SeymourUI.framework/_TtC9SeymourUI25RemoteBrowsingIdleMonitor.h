@@ -11,6 +11,7 @@
 @interface _TtC9SeymourUI25RemoteBrowsingIdleMonitor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *eventHub;
+    MISSING_TYPE *attentionAwarenessMonitor;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *timerProvider;
     MISSING_TYPE *state;

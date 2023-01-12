@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <VideosUI/VideosExtrasCarouselCollectionViewCell-Protocol.h>
-
 @class IKLockupElement, NSLayoutConstraint, NSString, UILabel, UIPinchGestureRecognizer, UIView, VideosExtrasConstrainedArtworkContainerView, VideosExtrasZoomingImageInteractiveTransitionSourceContext;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasLockupCollectionViewCell : UICollectionViewCell <VideosExtrasCarouselCollectionViewCell>
+@interface VideosExtrasLockupCollectionViewCell : UICollectionViewCell
 {
     struct CGSize _artworkSize;
     VideosExtrasConstrainedArtworkContainerView *_artworkContainerView;

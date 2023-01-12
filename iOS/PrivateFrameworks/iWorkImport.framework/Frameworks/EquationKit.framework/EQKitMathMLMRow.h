@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EquationKit/EQKitLayoutSchemataRow-Protocol.h>
-#import <EquationKit/EQKitMathMLNode-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface EQKitMathMLMRow <EQKitMathMLNode, EQKitLayoutSchemataRow>
+@interface EQKitMathMLMRow
 {
     NSArray *mChildren;
     struct {

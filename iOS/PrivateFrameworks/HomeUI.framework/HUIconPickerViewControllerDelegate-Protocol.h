@@ -6,11 +6,11 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HUIconPickerViewController;
+@class HUIconPickerViewController, UICollectionViewController;
 @protocol HFIconDescriptor;
 
 @protocol HUIconPickerViewControllerDelegate <NSObject>
 - (void)iconPicker:(HUIconPickerViewController *)arg1 didPickIconDescriptor:(id <HFIconDescriptor>)arg2;
-- (void)iconPickerDidCancel:(HUIconPickerViewController *)arg1;
+- (void)iconPickerDidCancel:(UICollectionViewController *)arg1;
 @end
 

@@ -14,6 +14,6 @@
 - (void)_transformPreferredLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1 interactionState:(id <_UICollectionViewLayoutInteractionStateProviding>)arg2;
 - (void)_transformFittingLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1 interactionState:(id <_UICollectionViewLayoutInteractionStateProviding>)arg2;
 - (_Bool)_shouldInvalidateForScrollViewLayoutAdjustmentsChange;
-- (UICollectionViewLayoutInvalidationContext *)_invalidationContextForBackgroundChangeAtIndexPath:(NSIndexPath *)arg1 interactionState:(id <_UICollectionViewLayoutInteractionStateProviding>)arg2;
+- (UICollectionViewLayoutInvalidationContext *)_invalidationContextForCellBackgroundOrBottomSeparatorChangeAtIndexPath:(NSIndexPath *)arg1 interactionState:(id <_UICollectionViewLayoutInteractionStateProviding>)arg2 separatorOnly:(_Bool)arg3;
 @end
 

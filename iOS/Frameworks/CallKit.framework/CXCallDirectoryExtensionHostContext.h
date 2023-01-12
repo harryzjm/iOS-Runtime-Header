@@ -6,13 +6,11 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <CallKit/CXCallDirectoryProviderHostProtocol-Protocol.h>
-
 @class NSObject, NSString;
 @protocol CXCallDirectoryProviderHostProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CXCallDirectoryExtensionHostContext : NSExtensionContext <CXCallDirectoryProviderHostProtocol>
+@interface CXCallDirectoryExtensionHostContext : NSExtensionContext
 {
     id <CXCallDirectoryProviderHostProtocol> _delegate;
     NSObject<OS_dispatch_queue> *_queue;

@@ -6,12 +6,10 @@
 
 #import <TSDrawables/TSDContainerRep.h>
 
-#import <PagesQuicklook/TSWPRepParent-Protocol.h>
-
 @class NSObject, NSString;
 @protocol TSDContainerInfo;
 
-@interface TPFootnoteContainerRep : TSDContainerRep <TSWPRepParent>
+@interface TPFootnoteContainerRep : TSDContainerRep
 {
 }
 

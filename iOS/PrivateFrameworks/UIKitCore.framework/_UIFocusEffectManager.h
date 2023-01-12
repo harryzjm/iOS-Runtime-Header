@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIGeometryChangeObserver-Protocol.h>
-
 @class NSString, _UIFocusHaloView;
 @protocol UIFocusItem;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusEffectManager : NSObject <_UIGeometryChangeObserver>
+@interface _UIFocusEffectManager : NSObject
 {
     _UIFocusHaloView *_haloView;
     id <UIFocusItem> _focusedItem;
@@ -21,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <UIFocusItem> focusedItem; // @synthesize focusedItem=_focusedItem;
 @property(readonly, nonatomic) _UIFocusHaloView *haloView; // @synthesize haloView=_haloView;
-- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
 - (void)_observeFocusedItemGeometryForItem:(id)arg1;
 - (void)moveFocusToItem:(id)arg1;
 

@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _IMBalloonBundleApp
+#import "IMBalloonApp.h"
+
+@interface _IMBalloonBundleApp : IMBalloonApp
 {
     Class _bubbleClass;
     Class _browserClass;

@@ -6,13 +6,10 @@
 
 #import <NewsTransport/NTPBFeedItem.h>
 
-#import <NewsCore/FCClassifiable-Protocol.h>
-#import <NewsCore/FCFeedTransformationItem-Protocol.h>
-
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCFeedPersonalizedItemScoreProfile, NSArray, NSDate, NSString;
 @protocol FCChannelProviding;
 
-@interface NTPBFeedItem (FCFeedItem) <FCClassifiable, FCFeedTransformationItem>
+@interface NTPBFeedItem (FCFeedItem)
 + (id)feedItemFromCKRecord:(id)arg1 storefrontID:(id)arg2 recordSource:(id)arg3;
 + (id)baseKeysForArticleRecord;
 + (id)keysForArticleRecordWithRecordSource:(id)arg1;
@@ -34,6 +31,7 @@
 @property(readonly, nonatomic) unsigned long long halfLife;
 @property(readonly, copy, nonatomic) NSDate *publishDate;
 @property(readonly, copy, nonatomic) NSString *sourceFeedID;
+@property(retain) FCFeedPersonalizedItemScoreProfile *scoreProfile;
 @property(readonly, nonatomic, getter=isANF) _Bool anf;
 @property(readonly, copy, nonatomic) NSString *itemID;
 @property(readonly, nonatomic) NSString *identifier;
@@ -52,6 +50,7 @@
 @property(readonly, copy, nonatomic) NSString *clusterID;
 @property(readonly, nonatomic) unsigned long long contentType;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration *expirationData;
 @property(readonly, nonatomic, getter=isExplicitContent) _Bool explicitContent;
 @property(readonly, nonatomic) unsigned long long feedHalfLifeMilliseconds;
 @property(readonly, copy, nonatomic) NSString *feedID;
@@ -59,20 +58,26 @@
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
 @property(readonly, nonatomic) double globalUserFeedback;
+@property(readonly, nonatomic) unsigned long long halfLifeOverride;
 @property(readonly, nonatomic) _Bool hasAudioTrack;
+@property(readonly, nonatomic) _Bool hasThumbnail;
 @property(readonly, nonatomic) _Bool hasVideo;
 @property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites;
 @property(readonly, copy, nonatomic) NSArray *iAdCategories;
 @property(readonly, nonatomic) _Bool isEvergreen;
+@property(readonly, nonatomic) _Bool isFeatureCandidate;
 @property(readonly, nonatomic) _Bool isFeatured;
 @property(readonly, nonatomic) long long minimumNewsVersion;
 @property(readonly, nonatomic) unsigned long long order;
 @property(readonly, nonatomic, getter=isPaid) _Bool paid;
 @property(readonly, nonatomic) unsigned long long publishDateMilliseconds;
+@property(readonly, nonatomic) _Bool reduceVisibility;
+@property(readonly, nonatomic) unsigned long long role;
 @property(readonly, copy, nonatomic) id <FCChannelProviding> sourceChannel;
 @property(readonly, copy, nonatomic) NSString *sourceChannelID;
 @property(readonly) Class superclass;
 @property(readonly, copy, nonatomic) NSArray *topicIDs;
 @property(readonly, copy, nonatomic) NSArray *topics;
+@property(readonly, nonatomic) _Bool webConverted;
 @end
 

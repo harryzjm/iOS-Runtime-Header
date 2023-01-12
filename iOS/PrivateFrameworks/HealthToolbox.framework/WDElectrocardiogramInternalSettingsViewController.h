@@ -6,15 +6,10 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthToolbox/HKHeartRhythmAvailabilityObserver-Protocol.h>
-#import <HealthToolbox/HRElectrocardiogramOnboardingManagerDelegate-Protocol.h>
-#import <HealthToolbox/UIPickerViewDataSource-Protocol.h>
-#import <HealthToolbox/UIPickerViewDelegate-Protocol.h>
-
 @class HKDateCache, HKHealthStore, HKHeartRhythmAvailability, HKHostingAreaLayoutView, HKKeyValueDomain, HRElectrocardiogramOnboardingManager, NPSManager, NSArray, NSDictionary, NSString, UIPickerView;
 
 __attribute__((visibility("hidden")))
-@interface WDElectrocardiogramInternalSettingsViewController : HKTableViewController <UIPickerViewDelegate, UIPickerViewDataSource, HRElectrocardiogramOnboardingManagerDelegate, HKHeartRhythmAvailabilityObserver>
+@interface WDElectrocardiogramInternalSettingsViewController : HKTableViewController
 {
     _Bool _deletingSamples;
     NSArray *_allDemoResults;

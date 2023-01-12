@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface CHTimeWindowStrokeGroup
+#import "CHStrokeGroup.h"
+
+@interface CHTimeWindowStrokeGroup : CHStrokeGroup
 {
     double _startTimestamp;
     double _endTimestamp;

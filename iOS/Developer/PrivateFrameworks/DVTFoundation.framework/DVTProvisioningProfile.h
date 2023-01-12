@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTQualifiableProfile-Protocol.h>
-#import <DVTFoundation/NSCopying-Protocol.h>
+@class DVTFilePath, DVTLogAspect, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSSet, NSString;
 
-@class DVTFilePath, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSSet, NSString;
-
-@interface DVTProvisioningProfile : NSObject <DVTQualifiableProfile, NSCopying>
+@interface DVTProvisioningProfile : NSObject
 {
     NSNumber *_xcodeManaged;
+    NSSet *_platformsFromProfile;
+    DVTLogAspect *_logAspect;
     _Bool _isUniversal;
     _Bool _isAppleInternal;
     _Bool _isFreeTeamProfile;
@@ -33,15 +32,11 @@
     NSSet *_supportedUDIDs;
     DVTFilePath *_filePath;
     NSString *_pathExtension;
-    NSSet *_platforms;
     NSData *_dataRepresentation;
-    NSSet *_profilePlatforms;
 }
 
 - (void).cxx_destruct;
-@property(readonly) NSSet *profilePlatforms; // @synthesize profilePlatforms=_profilePlatforms;
 @property(readonly, nonatomic) NSData *dataRepresentation; // @synthesize dataRepresentation=_dataRepresentation;
-@property(readonly) NSSet *platforms; // @synthesize platforms=_platforms;
 @property(readonly, nonatomic) NSString *pathExtension; // @synthesize pathExtension=_pathExtension;
 @property(retain) DVTFilePath *filePath; // @synthesize filePath=_filePath;
 @property(readonly) _Bool containsDEREncodedProfile; // @synthesize containsDEREncodedProfile=_containsDEREncodedProfile;
@@ -62,7 +57,6 @@
 @property(readonly) NSString *name; // @synthesize name=_name;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)isGameCenterFeatureEnabled;
 - (long long)compare:(id)arg1;
 - (id)certificates;
 @property(readonly) id underlyingProfile;
@@ -79,7 +73,13 @@
 - (long long)localizedCompare:(id)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithName:(id)arg1 UUID:(id)arg2 entitlements:(id)arg3 appIdentifierName:(id)arg4 appIdentifierPrefixes:(id)arg5 teamName:(id)arg6 teamIdentifierPrefixes:(id)arg7 dateCreated:(id)arg8 dateExpired:(id)arg9 platforms:(id)arg10 supportedUDIDs:(id)arg11 certificateSHA1Hashes:(id)arg12 certificateKinds:(id)arg13 isUniversal:(_Bool)arg14 isAppleInternal:(_Bool)arg15 isXcodeManaged:(id)arg16 isFreeTeamProfile:(_Bool)arg17 containsDEREncodedProfile:(_Bool)arg18;
+- (_Bool)hasDevelopmentCertificateKind;
+- (_Bool)hasiOSPlatform;
+- (_Bool)hasMacPlatform;
+- (_Bool)hasDriverKitEntitlement;
+- (_Bool)isDriverKitDevelopmentProfile;
+@property(readonly) NSSet *platforms;
+- (id)initWithName:(id)arg1 UUID:(id)arg2 entitlements:(id)arg3 appIdentifierName:(id)arg4 appIdentifierPrefixes:(id)arg5 teamName:(id)arg6 teamIdentifierPrefixes:(id)arg7 dateCreated:(id)arg8 dateExpired:(id)arg9 platforms:(id)arg10 supportedUDIDs:(id)arg11 certificateSHA1Hashes:(id)arg12 certificateKinds:(id)arg13 isUniversal:(_Bool)arg14 isAppleInternal:(_Bool)arg15 isXcodeManaged:(id)arg16 isFreeTeamProfile:(_Bool)arg17 containsDEREncodedProfile:(_Bool)arg18 logAspect:(id)arg19;
 - (id)initWithName:(id)arg1 UUID:(id)arg2 entitlements:(id)arg3 appIdentifierName:(id)arg4 appIdentifierPrefixes:(id)arg5 teamName:(id)arg6 teamIdentifierPrefixes:(id)arg7 dateCreated:(id)arg8 dateExpired:(id)arg9 platforms:(id)arg10 supportedUDIDs:(id)arg11 certificates:(id)arg12 isUniversal:(_Bool)arg13 isAppleInternal:(_Bool)arg14 isXcodeManaged:(id)arg15 isFreeTeamProfile:(_Bool)arg16 containsDEREncodedProfile:(_Bool)arg17;
 
 @end

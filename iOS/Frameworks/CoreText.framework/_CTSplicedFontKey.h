@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreText/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _CTSplicedFontKey : NSObject <NSCopying>
+@interface _CTSplicedFontKey : NSObject
 {
     unsigned long long _hash;
     _Bool _ignoreLegibilityWeight;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/_NSAttributedStringFromMarkdownCreator-Protocol.h>
-
 @class NSMutableAttributedString, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSAttributedStringFromMarkdownCreatorConcrete : NSObject <_NSAttributedStringFromMarkdownCreator>
+@interface _NSAttributedStringFromMarkdownCreatorConcrete : NSObject
 {
     NSMutableAttributedString *_result;
 }

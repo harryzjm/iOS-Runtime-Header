@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVTransitionDriver-Protocol.h>
-#import <AVKit/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSArray, NSString, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UIView;
 @protocol AVTransitionDriverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVInteractiveTransitionGestureTracker : NSObject <UIGestureRecognizerDelegate, AVTransitionDriver>
+@interface AVInteractiveTransitionGestureTracker : NSObject
 {
     _Bool _enabled;
     _Bool _pinchToDismissEnabled;
@@ -70,14 +67,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) __weak id <AVTransitionDriverDelegate> transitionDriverDelegate; // @synthesize transitionDriverDelegate=_transitionDriverDelegate;
 @property(nonatomic) __weak UIPanGestureRecognizer *contentTransitioningViewGestureRecognizer; // @synthesize contentTransitioningViewGestureRecognizer=_contentTransitioningViewGestureRecognizer;
-- (void)_reset;
+- (void)_updateLastNonZeroVelocityDirection;
 - (void)_setHasContinuedIfNeeded;
 - (void)_resetGesturesIfPossible;
-- (void)_updateLastNonZeroVelocityDirection;
-- (void)_cancel;
-- (void)_finish;
-- (void)_beginTracking:(long long)arg1;
+- (void)_reset;
 - (_Bool)_isWaitingToContinue;
+- (void)_finish;
+- (void)_cancel;
+- (void)_beginTracking:(long long)arg1;
 - (void)_handlePanGesture:(id)arg1;
 - (void)_handleRotationGesture:(id)arg1;
 - (void)_handlePinchGesture:(id)arg1;

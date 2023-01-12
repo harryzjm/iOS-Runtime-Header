@@ -6,6 +6,8 @@
 
 #import <UIKit/UIView.h>
 
+@class NSString;
+
 @interface UIView (SafariServicesExtras)
 + (void)_sf_cancelLinkAnimationsOnWindow:(id)arg1;
 + (void)_sf_performLinkAnimation:(long long)arg1 onView:(id)arg2;
@@ -14,18 +16,25 @@
 + (void)sf_animate:(_Bool)arg1 usingDefaultDampedSpringWithDelay:(double)arg2 initialSpringVelocity:(double)arg3 options:(unsigned long long)arg4 preferredFrameRateRange:(struct CAFrameRateRange)arg5 animations:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
 + (void)sf_animateUsingDefaultDampedSpringWithDelay:(double)arg1 initialSpringVelocity:(double)arg2 options:(unsigned long long)arg3 preferredFrameRateRange:(struct CAFrameRateRange)arg4 animations:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 + (void)sf_animate:(_Bool)arg1 usingDefaultTimingWithOptions:(unsigned long long)arg2 preferredFrameRateRange:(struct CAFrameRateRange)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)sf_animated:(_Bool)arg1 usingFastSpringWithDelay:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)sf_animate:(_Bool)arg1 usingDefaultDampedSpringWithDelay:(double)arg2 initialSpringVelocity:(double)arg3 options:(unsigned long long)arg4 animations:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 + (void)sf_animate:(_Bool)arg1 withDuration:(double)arg2 delay:(double)arg3 options:(unsigned long long)arg4 animations:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 + (void)sf_animate:(_Bool)arg1 usingDefaultMotionWithDelay:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)sf_animate:(_Bool)arg1 usingDefaultMotionWithOptions:(unsigned long long)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)sf_animate:(_Bool)arg1 usingDefaultTimingWithOptions:(unsigned long long)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sf_applyContentSizeCategoryLimitsForToolbarButton;
+- (void)_sf_addInteractionUnlessNil:(id)arg1;
 - (void)_sf_addEdgeMatchedSubview:(id)arg1;
 - (void)_sf_setMatchesIntrinsicContentSize;
 - (id)_sf_firstAncestorViewOfClass:(Class)arg1;
 - (void)_sf_setOrderedSubviews:(id *)arg1 count:(unsigned long long)arg2;
 - (id)_sf_snapshotImageFromIOSurface;
 - (double)_sf_convertY:(double)arg1 toCoordinateSpace:(id)arg2;
+- (id)sf_commonAncestrySummaryWithView:(id)arg1;
+- (long long)_sf_depth;
+@property(readonly, nonatomic) NSString *sf_viewAncestrySummary;
+- (id)_sf_viewAncestrySummaryWithMinDepth:(long long)arg1 paddingLevel:(long long)arg2;
+@property(readonly, nonatomic) NSString *sf_privacyPreservingDescription;
 @property(readonly, nonatomic) struct CGRect _sf_bottomUnsafeAreaFrameForToolbar;
 @property(readonly, nonatomic) struct CGRect _sf_bottomUnsafeAreaFrame;
 @property(readonly, nonatomic) struct CGRect _sf_safeAreaBounds;
@@ -36,6 +45,7 @@
 @property(readonly, nonatomic) _Bool _sf_isFullScreenWidth;
 - (void)ss_setUntransformedFrame:(struct CGRect)arg1;
 - (struct CGRect)ss_untransformedFrame;
-- (void)sf_configureLargeContentViewerInteractionForBarItem:(long long)arg1;
+- (void)sf_configureLargeContentViewerWithImage:(id)arg1 title:(id)arg2;
+- (void)sf_configureLargeContentViewerForBarItem:(long long)arg1;
 @end
 

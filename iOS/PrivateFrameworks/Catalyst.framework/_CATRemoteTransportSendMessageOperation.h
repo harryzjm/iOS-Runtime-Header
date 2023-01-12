@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CATOperation.h"
+
 @class CATMessage, CATRemoteTransport;
 
 __attribute__((visibility("hidden")))
-@interface _CATRemoteTransportSendMessageOperation
+@interface _CATRemoteTransportSendMessageOperation : CATOperation
 {
     CATRemoteTransport *_transport;
     CATMessage *_message;

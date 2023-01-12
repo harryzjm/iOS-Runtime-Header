@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarCellularItemTypeStringProvider-Protocol.h>
+#import "_UIStatusBarVisualProvider_Phone.h"
 
 @class NSDictionary, NSLayoutConstraint, NSString, _UIStatusBarCellularItem, _UIStatusBarDisplayItemPlacementGroup, _UIStatusBarRegionAxisCenteringLayout, _UIStatusBarRegionAxisStackingLayout;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_LegacyPhone <_UIStatusBarCellularItemTypeStringProvider>
+@interface _UIStatusBarVisualProvider_LegacyPhone : _UIStatusBarVisualProvider_Phone
 {
     NSDictionary *_orderedDisplayItemPlacements;
     _UIStatusBarDisplayItemPlacementGroup *_lowerWifiGroup;
@@ -58,6 +58,8 @@ __attribute__((visibility("hidden")))
 - (void)statusBarRegionsUpdated;
 - (void)dataUpdated:(id)arg1;
 - (void)orientationUpdatedFromOrientation:(long long)arg1;
+- (struct CGRect)clockBoundsForLayoutItem:(id)arg1;
+- (id)displayItemIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)styleAttributesForStyle:(long long)arg1;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
@@ -71,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)itemCreated:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
+- (id)clockFont;
 - (struct CGSize)smallPillSize;
 - (struct CGSize)pillSize;
 - (id)pillFont;

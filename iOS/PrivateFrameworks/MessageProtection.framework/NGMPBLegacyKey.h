@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MessageProtection/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface NGMPBLegacyKey : PBCodable <NSCopying>
+@interface NGMPBLegacyKey : PBCodable
 {
     NSData *_encryptionKey;
     NSData *_signingKey;

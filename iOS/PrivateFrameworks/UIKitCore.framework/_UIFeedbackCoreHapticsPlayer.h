@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFeedbackPlayer_Internal-Protocol.h>
-
 @class _UIFeedbackCoreHapticsEngine;
 @protocol CHHapticPatternPlayer, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _UIFeedbackCoreHapticsPlayer : NSObject <_UIFeedbackPlayer_Internal>
+@interface _UIFeedbackCoreHapticsPlayer : NSObject
 {
     NSObject<OS_dispatch_queue> *_internalQueue;
     CDUnknownBlockType _invalidationBlock;

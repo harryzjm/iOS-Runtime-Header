@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/QLPreviewItem-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface CNContactPhotoPreviewItem : NSObject <QLPreviewItem>
+@interface CNContactPhotoPreviewItem : NSObject
 {
     NSURL *_previewItemURL;
     NSString *_previewItemTitle;

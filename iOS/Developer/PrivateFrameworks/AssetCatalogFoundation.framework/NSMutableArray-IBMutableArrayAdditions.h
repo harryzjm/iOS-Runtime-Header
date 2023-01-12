@@ -6,11 +6,9 @@
 
 #import <Foundation/NSMutableArray.h>
 
-#import <AssetCatalogFoundation/IBMutableOrderedCollection-Protocol.h>
-
 @class NSString;
 
-@interface NSMutableArray (IBMutableArrayAdditions) <IBMutableOrderedCollection>
+@interface NSMutableArray (IBMutableArrayAdditions)
 - (void)ib_sortUsingSelector:(SEL)arg1 onKeyPath:(id)arg2;
 - (void)ib_reverseObjects;
 - (void)ib_removeObjectsInCollection:(id)arg1;

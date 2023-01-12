@@ -5,11 +5,8 @@
 //
 
 @class HULocationTriggerEditorMapDragRadiusView;
-@protocol MKOverlay;
 
 @protocol HULocationTriggerEditorMapDragRadiusViewDelegate
-- (id <MKOverlay>)mapRadiusView:(HULocationTriggerEditorMapDragRadiusView *)arg1 overlayForRadius:(double)arg2;
-- (CDStruct_02837cd9)mapRadiusView:(HULocationTriggerEditorMapDragRadiusView *)arg1 boundingMapRectForOverlay:(id <MKOverlay>)arg2;
-- (void)mapRadiusView:(HULocationTriggerEditorMapDragRadiusView *)arg1 radiusDidChange:(double)arg2;
+- (void)mapRadiusView:(HULocationTriggerEditorMapDragRadiusView *)arg1 radiusDidChange:(double)arg2 radiusInPoints:(double)arg3;
 @end
 

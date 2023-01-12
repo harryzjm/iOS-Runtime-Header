@@ -9,9 +9,11 @@
 @interface AXPearlWeakObjectShell : NSObject
 {
     id _weakObjectReference;
+    id _weakSpatialProfileReference;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id weakSpatialProfileReference; // @synthesize weakSpatialProfileReference=_weakSpatialProfileReference;
 @property(nonatomic) __weak id weakObjectReference; // @synthesize weakObjectReference=_weakObjectReference;
 
 @end

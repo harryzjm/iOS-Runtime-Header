@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKConstraint.h"
+
 @class SKNode, SKRange;
 
 __attribute__((visibility("hidden")))
-@interface SKOrientationConstraint
+@interface SKOrientationConstraint : SKConstraint
 {
     SKNode *_node;
     SKRange *_offset;

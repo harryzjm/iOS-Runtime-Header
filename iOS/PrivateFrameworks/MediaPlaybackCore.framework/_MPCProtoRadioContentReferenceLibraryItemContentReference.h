@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCProtoRadioContentReferenceLibraryItemContentReference : PBCodable <NSCopying>
+@interface _MPCProtoRadioContentReferenceLibraryItemContentReference : PBCodable
 {
     long long _cloudID;
     double _duration;
@@ -27,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSString *_copyrightText;
     int _discNumber;
     NSString *_genreName;
+    NSString *_playbackAuthorizationToken;
     NSString *_title;
     int _trackNumber;
     int _year;

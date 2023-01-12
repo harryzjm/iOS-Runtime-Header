@@ -16,7 +16,8 @@
 @property(readonly, nonatomic, getter=_hasBackgroundColor) _Bool hasBackgroundColor;
 @property(nonatomic, setter=_setShadowType:) long long _shadowType;
 @property(nonatomic, setter=_setCornerRadius:) double _cornerRadius;
-@property(nonatomic, getter=_maskedCorners, setter=_setMaskedCorners:) unsigned long long maskedCorners;
+@property(nonatomic, setter=__setMaskedCorners:) unsigned long long __maskedCorners;
+@property(nonatomic, getter=_strokeLocation, setter=_setStrokeLocation:) long long strokeLocation;
 @property(nonatomic) double strokeOutset;
 @property(nonatomic) double strokeWidth;
 @property(retain, nonatomic) UIColor *strokeColor;

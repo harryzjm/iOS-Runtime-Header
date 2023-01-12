@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuickLook/QLMediaScrubberGestureDelegate-Protocol.h>
-#import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSLayoutConstraint, NSMutableDictionary, NSNumber, NSString, NSTimer, QLMediaScrubberGesture, UILabel, UIScrollView, UITapGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
-@interface QLMediaItemViewController <QLMediaScrubberGestureDelegate, UIGestureRecognizerDelegate>
+@interface QLMediaItemViewController
 {
     NSMutableDictionary *_playingInfo;
     UIView *_timeLabelBackground;

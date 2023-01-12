@@ -8,10 +8,12 @@
 
 @interface UIContextualAction (IC)
 + (id)contextualActionWithSystemImageNamed:(id)arg1 style:(long long)arg2 color:(id)arg3 actionBlock:(CDUnknownBlockType)arg4;
-+ (id)ic_shareContextualActionWithShared:(_Bool)arg1 shareBlock:(CDUnknownBlockType)arg2;
++ (id)ic_replyContextualActionWithBlock:(CDUnknownBlockType)arg1;
++ (id)ic_shareContextualActionWithShareImageName:(id)arg1 shareBlock:(CDUnknownBlockType)arg2;
 + (id)ic_pinContextualActionWithPinned:(_Bool)arg1 pinBlock:(CDUnknownBlockType)arg2;
 + (id)ic_passwordProtectContextualActionWithPasswordProtected:(_Bool)arg1 passwordProtectBlock:(CDUnknownBlockType)arg2;
 + (id)ic_moveContextualActionWithBlock:(CDUnknownBlockType)arg1;
++ (id)ic_removeContextualActionWithBlock:(CDUnknownBlockType)arg1;
 + (id)ic_deleteContextualActionWithBlock:(CDUnknownBlockType)arg1;
 @end
 

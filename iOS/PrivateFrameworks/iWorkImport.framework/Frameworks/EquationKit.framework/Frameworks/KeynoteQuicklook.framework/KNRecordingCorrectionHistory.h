@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
-@interface KNRecordingCorrectionHistory : NSObject <NSCopying>
+@interface KNRecordingCorrectionHistory : NSObject
 {
     _Bool _didAddMissingEventsForRadar49654305;
 }

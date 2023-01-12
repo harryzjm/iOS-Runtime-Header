@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UISettings.h"
+
 @class NSString, _UIScreenEdgePanRecognizerCornerSettings, _UIScreenEdgePanRecognizerDwellSettings, _UIScreenEdgePanRecognizerEdgeSettings;
 
 __attribute__((visibility("hidden")))
-@interface _UIScreenEdgePanRecognizerSettings
+@interface _UIScreenEdgePanRecognizerSettings : _UISettings
 {
     NSString *_multitaskingGestureMode;
     NSString *_navigationGestureMode;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Pegasus/PGButtonViewDelegate-Protocol.h>
-
 @class NSArray, NSString, PGButtonView, PGCABackdropLayerView, PGControlsViewModel, PGDisplayLink, PGLayoutContainerView, PGPrerollIndicatorView, PGProgressIndicator, UIActivityIndicatorView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface PGControlsView <PGButtonViewDelegate>
+@interface PGControlsView
 {
     PGControlsViewModel *_viewModel;
     PGButtonView *_restoreButton;

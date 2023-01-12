@@ -13,7 +13,7 @@
     MISSING_TYPE *patterns;
     MISSING_TYPE *engagementEventHandler;
     MISSING_TYPE *engagementInlineViewManager;
-    MISSING_TYPE *placementFactory;
+    MISSING_TYPE *dialogRequestFactory;
 }
 
 @end

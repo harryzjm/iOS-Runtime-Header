@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <UniformTypeIdentifiers/NSCopying-Protocol.h>
-#import <UniformTypeIdentifiers/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, UTTypeRecord;
 
-@interface UTType : NSObject <NSCopying, NSSecureCoding>
+@interface UTType : NSObject
 {
     UTTypeRecord *_typeRecord;
 }
@@ -29,9 +26,11 @@
 + (id)typeWithFilenameExtension:(id)arg1;
 + (id)typeWithIdentifier:(id)arg1;
 + (id)new;
++ (id)_typeWithDeviceModelCodeWithoutResolvingCurrentDevice:(id)arg1;
 + (id)_typeWithDeviceModelCode:(id)arg1 enclosureColor:(struct UTHardwareColor)arg2;
 + (id)_typeWithDeviceModelCode:(id)arg1;
 + (id)_typeOfCurrentDevice;
++ (id)_typeWithBluetoothProductID:(unsigned int)arg1 vendorID:(unsigned short)arg2;
 + (id)typesWithTag:(id)arg1 tagClass:(id)arg2 conformingToType:(id)arg3;
 + (id)typeWithTag:(id)arg1 tagClass:(id)arg2 conformingToType:(id)arg3;
 + (id)importedTypeWithIdentifier:(id)arg1 conformingToType:(id)arg2;

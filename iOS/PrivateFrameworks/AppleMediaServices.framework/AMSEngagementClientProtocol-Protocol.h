@@ -7,6 +7,7 @@
 @class AMSEngagementPushEvent;
 
 @protocol AMSEngagementClientProtocol
+- (void)treatmentsDidSyncronize;
 - (void)handlePushedEvent:(AMSEngagementPushEvent *)arg1;
 @end
 

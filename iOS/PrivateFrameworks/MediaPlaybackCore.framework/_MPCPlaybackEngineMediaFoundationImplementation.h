@@ -6,24 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MFPlaybackStackControllerDelegate-Protocol.h>
-#import <MediaPlaybackCore/MPAVQueueControllerDelegate-Protocol.h>
-#import <MediaPlaybackCore/MPCAssetLoaderDelegate-Protocol.h>
-#import <MediaPlaybackCore/MPCPlaybackEngineImplementation-Protocol.h>
-
-@class AVPlayerViewController, MPAVItem, MPCAVItemTrace, MPCErrorControllerImplementation, MPCExternalPlaybackControllerImplementation, MPCItemBookmarker, MPCLeaseController, MPCMediaFoundationTranslator, MPCPlaybackEngine, MPCPlayerItemConfigurator, MPQueuePlayer, NSDictionary, NSString;
-@protocol MFAssetLoading, MFPlaybackStackController><MFQueueManagement, MPAVQueueController;
+@class AVPlayerViewController, MPAVItem, MPCAVItemTrace, MPCErrorControllerImplementation, MPCExternalPlaybackControllerImplementation, MPCItemBookmarker, MPCLeaseController, MPCMediaFoundationTranslator, MPCPlayPerfAnalytics, MPCPlaybackEngine, MPCPlayerItemConfigurator, MPCQueueController, NSDictionary, NSNumber, NSString, _MPCAudioSessionController;
+@protocol MFAssetLoading, MFPlaybackStackController><MFQueueManagement, MPCPlaybackEngineEventStreamDeferralAssertion;
 
 __attribute__((visibility("hidden")))
-@interface _MPCPlaybackEngineMediaFoundationImplementation : NSObject <MFPlaybackStackControllerDelegate, MPAVQueueControllerDelegate, MPCAssetLoaderDelegate, MPCPlaybackEngineImplementation>
+@interface _MPCPlaybackEngineMediaFoundationImplementation : NSObject
 {
     _Bool _autoPlayWhenLikelyToKeepUp;
     _Bool _reloadingPlaybackContext;
-    _Bool _loadingInitialItem;
     MPCPlaybackEngine *_playbackEngine;
-    id <MPAVQueueController> _queueController;
-    MPQueuePlayer *_queuePlayer;
+    MPCQueueController *_queueController;
     long long _actionAtQueueEnd;
+    long long _jumpIdentifier;
     id <MFPlaybackStackController><MFQueueManagement> _playbackStackController;
     MPCItemBookmarker *_bookmarker;
     MPCMediaFoundationTranslator *_translator;
@@ -34,13 +28,18 @@ __attribute__((visibility("hidden")))
     MPCPlayerItemConfigurator *_configurator;
     unsigned long long _stateHandle;
     MPCAVItemTrace *_playbackStartTrace;
-    unsigned long long _pendingWaitForReadyToPlaySignpostIdentifier;
+    MPCPlayPerfAnalytics *_playPerfAnalytics;
+    _MPCAudioSessionController *_transientAudioSessionController;
+    id <MPCPlaybackEngineEventStreamDeferralAssertion> _evsDeferralAssertionForFirstAudioFrame;
+    NSNumber *_currentRelativeVolume;
 }
 
 + (id)describePlayer:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long pendingWaitForReadyToPlaySignpostIdentifier; // @synthesize pendingWaitForReadyToPlaySignpostIdentifier=_pendingWaitForReadyToPlaySignpostIdentifier;
-@property(nonatomic) _Bool loadingInitialItem; // @synthesize loadingInitialItem=_loadingInitialItem;
+@property(copy, nonatomic) NSNumber *currentRelativeVolume; // @synthesize currentRelativeVolume=_currentRelativeVolume;
+@property(retain, nonatomic) id <MPCPlaybackEngineEventStreamDeferralAssertion> evsDeferralAssertionForFirstAudioFrame; // @synthesize evsDeferralAssertionForFirstAudioFrame=_evsDeferralAssertionForFirstAudioFrame;
+@property(retain, nonatomic) _MPCAudioSessionController *transientAudioSessionController; // @synthesize transientAudioSessionController=_transientAudioSessionController;
+@property(retain, nonatomic) MPCPlayPerfAnalytics *playPerfAnalytics; // @synthesize playPerfAnalytics=_playPerfAnalytics;
 @property(retain, nonatomic) MPCAVItemTrace *playbackStartTrace; // @synthesize playbackStartTrace=_playbackStartTrace;
 @property(nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
 @property(retain, nonatomic) MPCPlayerItemConfigurator *configurator; // @synthesize configurator=_configurator;
@@ -51,14 +50,17 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MPCMediaFoundationTranslator *translator; // @synthesize translator=_translator;
 @property(retain, nonatomic) MPCItemBookmarker *bookmarker; // @synthesize bookmarker=_bookmarker;
 @property(retain, nonatomic) id <MFPlaybackStackController><MFQueueManagement> playbackStackController; // @synthesize playbackStackController=_playbackStackController;
+@property(nonatomic) long long jumpIdentifier; // @synthesize jumpIdentifier=_jumpIdentifier;
 @property(readonly, nonatomic, getter=isReloadingPlaybackContext) _Bool reloadingPlaybackContext; // @synthesize reloadingPlaybackContext=_reloadingPlaybackContext;
 @property(nonatomic) long long actionAtQueueEnd; // @synthesize actionAtQueueEnd=_actionAtQueueEnd;
 @property(nonatomic) _Bool autoPlayWhenLikelyToKeepUp; // @synthesize autoPlayWhenLikelyToKeepUp=_autoPlayWhenLikelyToKeepUp;
-@property(readonly, nonatomic) MPQueuePlayer *queuePlayer; // @synthesize queuePlayer=_queuePlayer;
-@property(retain, nonatomic) id <MPAVQueueController> queueController; // @synthesize queueController=_queueController;
+@property(retain, nonatomic) MPCQueueController *queueController; // @synthesize queueController=_queueController;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+- (void)invalidateEVSDeferralAssertionForFirstAudioFrame;
+- (void)takeEVSDeferralAssertionForFirstAudioFrame;
 - (void)assetLoadingDidStartForItem:(id)arg1;
 - (void)assetLoadingDidCompleteForItem:(id)arg1 error:(id)arg2;
+- (void)stackControllerDidCreateTransitionFrom:(id)arg1 to:(id)arg2 type:(long long)arg3 parameters:(id)arg4;
 - (void)errorResolutionDidEndForItem:(id)arg1 error:(id)arg2 resolution:(long long)arg3;
 - (void)errorResolutionDidStartForItem:(id)arg1 error:(id)arg2;
 - (void)didReportSignpostWithType:(long long)arg1;
@@ -79,6 +81,8 @@ __attribute__((visibility("hidden")))
 - (void)stateDidChangeFromState:(long long)arg1 toState:(long long)arg2 timeStamp:(id)arg3;
 - (void)routeDidChange:(_Bool)arg1 metadata:(id)arg2 timeStamp:(id)arg3;
 - (void)playbackWaitingToPlayForItem:(id)arg1 reason:(id)arg2 timeStamp:(id)arg3;
+- (void)timeControlStatusDidChange:(long long)arg1 waitingReason:(id)arg2 timeStamp:(id)arg3;
+- (void)firstFrameWillRenderForItem:(id)arg1 timeStamp:(id)arg2;
 - (void)playbackRateDidChangeNotifiedForItem:(id)arg1 newRate:(float)arg2 reason:(id)arg3 participantIdentifier:(id)arg4 timeStamp:(id)arg5;
 - (void)playbackRateDidChangeToRate:(float)arg1 forItem:(id)arg2 timeStamp:(id)arg3;
 - (void)playbackDidStopForItem:(id)arg1 source:(id)arg2 reason:(id)arg3 timeStamp:(id)arg4;
@@ -102,6 +106,8 @@ __attribute__((visibility("hidden")))
 - (void)queueController:(id)arg1 didChangeContentsWithReplacementPlaybackContext:(id)arg2;
 - (void)queueController:(id)arg1 failedToLoadItem:(id)arg2;
 - (void)queueControllerDidChangeContents:(id)arg1;
+- (void)_performSkipForUserAction:(id)arg1;
+- (_Bool)_isAVKitSkipAction:(id)arg1;
 - (void)_playbackDidStopForItem:(id)arg1 source:(id)arg2 reason:(id)arg3 time:(double)arg4;
 - (id)_MPAVItemForMFQueuePlayerItem:(id)arg1;
 - (void)_logTimeJumpForItem:(id)arg1 fromTime:(double)arg2 toTime:(double)arg3 userInitiated:(_Bool)arg4 timeStamp:(id)arg5;
@@ -141,6 +147,8 @@ __attribute__((visibility("hidden")))
 - (void)loadSessionWithQueueController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)replaceCurrentItemWithPlaybackContext:(id)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)reloadWithPlaybackContext:(id)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setupPlaybackStackIfNeeded;
+- (void)prewarm;
 - (void)dealloc;
 - (id)initWithPlaybackEngine:(id)arg1;
 

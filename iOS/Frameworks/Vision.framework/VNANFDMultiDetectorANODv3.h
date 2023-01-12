@@ -9,12 +9,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)shouldAlignFacesForRequestWithSpecifier:(id)arg1;
 + (id)knownFoodAndDrinkIdentifiers;
 + (id)recognizedFoodAndDrinkObjectClassToFoodAndDrinkCategoryName;
 + (id)detectedObjectRequestKeyToRequestInfo;
 + (id)detectedObjectClassToRequestKey;
 + (Class)detectorClass;
-- (_Bool)processDetectedObject:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 warningRecorder:(id)arg5 detectedObjectResults:(id)arg6 error:(id *)arg7;
+- (id)splitDetectedClassResultsIntoSubclasses:(id)arg1;
+- (_Bool)processDetectedObject:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 qosClass:(unsigned int)arg5 warningRecorder:(id)arg6 detectedObjectResults:(id)arg7 error:(id *)arg8;
 - (_Bool)updateRuntimeParametersFromOptions:(id)arg1 error:(id *)arg2;
 
 @end

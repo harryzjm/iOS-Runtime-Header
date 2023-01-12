@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPListPosition;
 
-@interface CKDPListRange : PBCodable <NSCopying>
+@interface CKDPListRange : PBCodable
 {
     CKDPListPosition *_left;
     CKDPListPosition *_right;

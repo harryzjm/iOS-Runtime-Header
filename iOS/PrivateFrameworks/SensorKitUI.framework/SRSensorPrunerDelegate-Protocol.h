@@ -11,6 +11,7 @@
 @protocol SRSensorPrunerDelegate <NSObject>
 
 @optional
+- (void)sensorPrunerDidStopPruningAllData:(SRSensorPruner *)arg1;
 - (void)sensorPrunerDidStopPruning:(SRSensorPruner *)arg1;
 @end
 

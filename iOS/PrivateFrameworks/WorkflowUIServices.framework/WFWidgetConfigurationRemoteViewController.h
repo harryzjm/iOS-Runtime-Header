@@ -6,12 +6,10 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <WorkflowUIServices/WFWidgetConfigurationServiceHostProtocol-Protocol.h>
-
 @protocol WFWidgetConfigurationRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WFWidgetConfigurationRemoteViewController : _UIRemoteViewController <WFWidgetConfigurationServiceHostProtocol>
+@interface WFWidgetConfigurationRemoteViewController : _UIRemoteViewController
 {
     id <WFWidgetConfigurationRemoteViewControllerDelegate> _delegate;
 }

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDMoveWriterExecutor-Protocol.h>
-
 @class FPDMoveWriter;
 @protocol FPActionLocatorAccess;
 
 __attribute__((visibility("hidden")))
-@interface FPDMoveWriterToProvider : NSObject <FPDMoveWriterExecutor>
+@interface FPDMoveWriterToProvider : NSObject
 {
     FPDMoveWriter *_writer;
     id <FPActionLocatorAccess> _stopAccessingToken;

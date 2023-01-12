@@ -6,20 +6,17 @@
 
 #import <UIKit/UIButton.h>
 
-#import <SafariServices/PKScribbleInteractionDelegate-Protocol.h>
-#import <SafariServices/PKScribbleInteractionElementSource-Protocol.h>
-#import <SafariServices/UIGestureRecognizerDelegate-Protocol.h>
-
-@class NSString, PKScribbleInteraction, UIGestureRecognizer, UIVibrancyEffect, UIView, UIVisualEffectView, _SFNavigationBarTheme;
+@class NSString, PKScribbleInteraction, UIEditMenuInteraction, UIGestureRecognizer, UIVibrancyEffect, UIView, UIVisualEffectView, _SFNavigationBarTheme;
 @protocol _SFNavigationBarURLButtonDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _SFNavigationBarURLButton : UIButton <PKScribbleInteractionDelegate, PKScribbleInteractionElementSource, UIGestureRecognizerDelegate>
+@interface _SFNavigationBarURLButton : UIButton
 {
     UIVibrancyEffect *_highlightedVibrancyEffect;
     UIVibrancyEffect *_vibrancyEffect;
     UIVisualEffectView *_effectView;
     UIView *_effectMask;
+    UIEditMenuInteraction *_editMenuInteraction;
     UIGestureRecognizer *_longPressGestureRecognizer;
     PKScribbleInteraction *_pencilScribbleInteraction;
     double _backgroundAlphaFactor;
@@ -29,6 +26,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (struct CGRect)editMenuInteraction:(id)arg1 targetRectForConfiguration:(id)arg2;
+- (id)editMenuInteraction:(id)arg1 menuForConfiguration:(id)arg2 suggestedActions:(id)arg3;
 - (void)_hover:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;

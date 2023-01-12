@@ -6,14 +6,12 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <VideoSubscriberAccountUI/NSCopying-Protocol.h>
-#import <VideoSubscriberAccountUI/VSJSResponsePayload-Protocol.h>
-
 @class NSArray, NSDate, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSJSResponsePayload : IKJSObject <VSJSResponsePayload, NSCopying>
+@interface VSJSResponsePayload : IKJSObject
 {
+    _Bool _synchronizable;
     NSString *_authN;
     NSString *_username;
     NSDate *_expirationDate;
@@ -25,11 +23,14 @@ __attribute__((visibility("hidden")))
     NSNumber *_expectedAction;
     NSArray *_subscriptions;
     NSArray *_clearSubscriptions;
+    NSArray *_userAccounts;
     NSString *_appBundleIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isSynchronizable) _Bool synchronizable; // @synthesize synchronizable=_synchronizable;
 @property(copy, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
+@property(copy, nonatomic) NSArray *userAccounts; // @synthesize userAccounts=_userAccounts;
 @property(copy, nonatomic) NSArray *clearSubscriptions; // @synthesize clearSubscriptions=_clearSubscriptions;
 @property(copy, nonatomic) NSArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 @property(copy, nonatomic) NSNumber *expectedAction; // @synthesize expectedAction=_expectedAction;

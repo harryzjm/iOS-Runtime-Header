@@ -12,10 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityCustomActions;
-- (_Bool)accessibilityActivate;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (unsigned long long)accessibilityTraits;
 
 @end
 

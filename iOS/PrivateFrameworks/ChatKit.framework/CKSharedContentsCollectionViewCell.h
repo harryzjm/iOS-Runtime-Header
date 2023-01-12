@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UIImage, UIImageView, UITapGestureRecognizer;
 @protocol CKSharedContentsCollectionViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKSharedContentsCollectionViewCell <UIGestureRecognizerDelegate>
+@interface CKSharedContentsCollectionViewCell
 {
     _Bool _editing;
     UIImage *_previewImage;

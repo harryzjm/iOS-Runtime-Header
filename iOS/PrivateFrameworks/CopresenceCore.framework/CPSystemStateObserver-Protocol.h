@@ -6,6 +6,12 @@
 
 #import <CopresenceCore/NSObject-Protocol.h>
 
+@class OS_dispatch_queue;
+@protocol CPSystemStateObserverObserver;
+
 @protocol CPSystemStateObserver <NSObject>
+- (void)addObserver:(id <CPSystemStateObserverObserver>)arg1 withQueue:(OS_dispatch_queue *)arg2;
+@property(nonatomic, readonly) _Bool allowScreenSharing;
+@property(nonatomic, readonly) _Bool allowSharePlay;
 @end
 

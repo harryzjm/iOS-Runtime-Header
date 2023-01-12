@@ -7,7 +7,10 @@
 #import <Silex/NSObject-Protocol.h>
 
 @protocol SXConditionHints <NSObject>
+@property(readonly, nonatomic) long long app;
 @property(readonly, nonatomic) long long configurationKey;
+@property(readonly, nonatomic) long long subscriptionActivationEligibility;
+@property(readonly, nonatomic) long long upsellScenario;
 @property(readonly, nonatomic) long long newsletter;
 @property(readonly, nonatomic) long long preferredColorScheme;
 @property(readonly, nonatomic) long long testing;

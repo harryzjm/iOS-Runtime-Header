@@ -10,6 +10,7 @@
 
 @interface _TtCCC8MusicKit22ApplicationMusicPlayer5QueueP33_AE64796EEE0D7625679413166E5EEE9025ContiguousInsertionRecord : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *playActivityFeatureName;
     MISSING_TYPE *offset;
     MISSING_TYPE *entries;
 }

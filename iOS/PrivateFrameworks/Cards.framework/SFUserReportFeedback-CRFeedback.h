@@ -6,11 +6,9 @@
 
 #import <SearchFoundation/SFUserReportFeedback.h>
 
-#import <Cards/CRUserReportRequestFeedback-Protocol.h>
-
 @class NSString;
 
-@interface SFUserReportFeedback (CRFeedback) <CRUserReportRequestFeedback>
+@interface SFUserReportFeedback (CRFeedback)
 @property(readonly, nonatomic) SFUserReportFeedback *backingFeedback;
 
 // Remaining properties

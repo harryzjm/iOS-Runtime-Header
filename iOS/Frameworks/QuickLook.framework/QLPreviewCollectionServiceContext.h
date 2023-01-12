@@ -6,12 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <QuickLook/QLPreviewCollectionServiceProtocol-Protocol.h>
-
 @protocol QLPreviewItemProvider;
 
 __attribute__((visibility("hidden")))
-@interface QLPreviewCollectionServiceContext : NSExtensionContext <QLPreviewCollectionServiceProtocol>
+@interface QLPreviewCollectionServiceContext : NSExtensionContext
 {
     id <QLPreviewItemProvider> _itemProvider;
 }
@@ -19,6 +17,8 @@ __attribute__((visibility("hidden")))
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
+- (void)setScreenEdgePanWidth:(double)arg1;
+- (void)setPreviewItemDisplayState:(id)arg1 onItemAtIndex:(unsigned long long)arg2;
 - (void)setIsContentManaged:(_Bool)arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(id)arg1;
@@ -34,8 +34,10 @@ __attribute__((visibility("hidden")))
 - (void)updateTransitionWithProgress:(double)arg1;
 - (void)keyCommandWasPerformed:(id)arg1;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)saveIntoPhotoLibraryMediaWithURLWrapper:(id)arg1 previewItemType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestLockForCurrentItem;
 - (void)shouldDisplayLockActivityWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)documentMenuActionWillBegin;
 - (void)actionSheetDidDismiss;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)saveCurrentPreviewEditsSynchronously:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)toolbarButtonsForTraitCollection:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)hostApplicationDidBecomeActive;
 - (void)hostApplicationDidEnterBackground:(_Bool)arg1;
+- (void)hostSceneWillDeactivate;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(_Bool)arg2;
 - (void)configureWithNumberOfItems:(long long)arg1 currentPreviewItemIndex:(unsigned long long)arg2 itemProvider:(id)arg3 stateManager:(id)arg4;
 - (void)setNotificationCenter:(id)arg1;

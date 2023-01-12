@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/UIPDFSelectionWidget-Protocol.h>
-
 @class CALayer, UIPDFPageView;
 
 __attribute__((visibility("hidden")))
-@interface UIPDFTextRangeWidget : NSObject <UIPDFSelectionWidget>
+@interface UIPDFTextRangeWidget : NSObject
 {
     CALayer *_startSelectionGrabber;
     CALayer *_startBar;

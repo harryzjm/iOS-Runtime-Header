@@ -11,14 +11,13 @@ __attribute__((visibility("hidden")))
     struct sockaddr_in _localAddress;
 }
 
-- (_Bool)isMediaPacket:(char *)arg1 length:(unsigned long long)arg2;
-- (void)setParticipantIDOnOptions:(CDStruct_c6a5d548 *)arg1;
-- (void)setIsHopByHopEncryptedOnOptions:(CDStruct_c6a5d548 *)arg1;
-- (void)setAllSubscribedStreamIDsOnOptions:(CDStruct_c6a5d548 *)arg1;
+- (void)setParticipantIDOnOptions:(CDStruct_9bf45fcd *)arg1;
+- (void)setIsHopByHopEncryptedOnOptions:(CDStruct_9bf45fcd *)arg1;
+- (void)setAllSubscribedStreamIDsOnOptions:(CDStruct_9bf45fcd *)arg1;
 - (int)readyToRead;
 - (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2;
 - (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_4aae7d13 *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_4aae7d13)arg3 options:(CDStruct_c6a5d548 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_4aae7d13)arg3 options:(CDStruct_9bf45fcd *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 flags:(CDStruct_4aae7d13)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)initRequiresOptions:(_Bool)arg1 localIP:(id)arg2 localPort:(short)arg3 remoteIP:(id)arg4 remotePort:(short)arg5;

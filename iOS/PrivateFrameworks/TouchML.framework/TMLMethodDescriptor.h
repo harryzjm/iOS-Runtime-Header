@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLModelSerialize-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface TMLMethodDescriptor : NSObject <TMLModelSerialize>
+@interface TMLMethodDescriptor : NSObject
 {
     NSString *_methodName;
     unsigned long long _returnType;

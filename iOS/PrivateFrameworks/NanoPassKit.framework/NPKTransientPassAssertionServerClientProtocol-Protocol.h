@@ -6,7 +6,11 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol NPKTransientPassAssertionServerClientProtocol <NSObject>
+- (void)didEnterFieldForPassWithUniqueID:(NSString *)arg1;
+- (void)handleTerminalAuthenticationRequestedForPassWithUniqueID:(NSString *)arg1;
 - (void)handleDelegatedDoublePressEvent;
 @end
 

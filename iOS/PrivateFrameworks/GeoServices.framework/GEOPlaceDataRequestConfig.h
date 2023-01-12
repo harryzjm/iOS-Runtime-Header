@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOServiceRequestDefaultConfig.h"
+
 @class GEOPDPlaceRequest, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface GEOPlaceDataRequestConfig
+@interface GEOPlaceDataRequestConfig : GEOServiceRequestDefaultConfig
 {
     double _timeout;
     unsigned long long _urlType;
     NSNumber *_requestPriority;
     unsigned long long _multipathServiceType;
     GEOPDPlaceRequest *_placeRequest;
+    _Bool _usesBackgroundURL;
 }
 
 - (void).cxx_destruct;
+- (_Bool)usesBackgroundURL;
 - (id)additionalStatesForNetworkEvent;
 - (unsigned long long)multipathServiceType;
 - (double)timeout;

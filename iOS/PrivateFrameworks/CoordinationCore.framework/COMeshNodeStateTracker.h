@@ -7,30 +7,48 @@
 #import <objc/NSObject.h>
 
 @class COBallot, COMeshNode;
-@protocol COMeshNodeStateTrackerDelegate;
+@protocol COMeshNodeStateTrackerDelegate, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface COMeshNodeStateTracker : NSObject
 {
     _Bool _outstandingProbe;
+    _Bool _outstandingRequest;
     COMeshNode *_node;
     unsigned long long _state;
     long long _status;
+    long long _electionStage;
     id <COMeshNodeStateTrackerDelegate> _delegate;
-    unsigned long long _generation;
-    COBallot *_ballot;
+    unsigned long long _backoffBucket;
+    unsigned long long _totalBackedOffTime;
+    CDUnknownBlockType _backoffResponse;
+    unsigned long long _lastGenerationSent;
+    COBallot *_lastBallotSent;
+    unsigned long long _lastGenerationReceived;
+    COBallot *_lastBallotReceived;
     double _lastHeard;
+    NSObject<OS_dispatch_source> *_backoffTimer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_source> *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
+@property(nonatomic, getter=hasOutstandingRequest) _Bool outstandingRequest; // @synthesize outstandingRequest=_outstandingRequest;
 @property(nonatomic, getter=hasOutstandingProbe) _Bool outstandingProbe; // @synthesize outstandingProbe=_outstandingProbe;
 @property(nonatomic) double lastHeard; // @synthesize lastHeard=_lastHeard;
-@property(copy, nonatomic) COBallot *ballot; // @synthesize ballot=_ballot;
-@property(nonatomic) unsigned long long generation; // @synthesize generation=_generation;
+@property(copy, nonatomic) COBallot *lastBallotReceived; // @synthesize lastBallotReceived=_lastBallotReceived;
+@property(nonatomic) unsigned long long lastGenerationReceived; // @synthesize lastGenerationReceived=_lastGenerationReceived;
+@property(copy, nonatomic) COBallot *lastBallotSent; // @synthesize lastBallotSent=_lastBallotSent;
+@property(nonatomic) unsigned long long lastGenerationSent; // @synthesize lastGenerationSent=_lastGenerationSent;
+@property(copy, nonatomic) CDUnknownBlockType backoffResponse; // @synthesize backoffResponse=_backoffResponse;
+@property(readonly, nonatomic) unsigned long long totalBackedOffTime; // @synthesize totalBackedOffTime=_totalBackedOffTime;
+@property(nonatomic) unsigned long long backoffBucket; // @synthesize backoffBucket=_backoffBucket;
 @property(nonatomic) __weak id <COMeshNodeStateTrackerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) long long electionStage; // @synthesize electionStage=_electionStage;
 @property(nonatomic) long long status; // @synthesize status=_status;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) COMeshNode *node; // @synthesize node=_node;
+- (void)didFireBackoffTimer;
+- (void)resetBackoffInformation;
 - (id)description;
 - (id)initWithNode:(id)arg1;
 

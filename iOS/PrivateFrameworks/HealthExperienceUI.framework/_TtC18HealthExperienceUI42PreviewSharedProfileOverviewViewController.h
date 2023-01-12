@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI42CompoundDataSourceCollectionViewControllerCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI42PreviewSharedProfileOverviewViewController
+@interface _TtC18HealthExperienceUI42PreviewSharedProfileOverviewViewController : _$s18HealthExperienceUI42CompoundDataSourceCollectionViewControllerCN
 {
     MISSING_TYPE *providedPresentation;
     MISSING_TYPE *gradientView;

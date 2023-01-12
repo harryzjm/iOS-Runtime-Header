@@ -6,11 +6,11 @@
 
 #import <GeoServices/GEOAppleRating.h>
 
-#import <MapsUI/MURatingPercentageViewModel-Protocol.h>
-
 @class NSString;
 
-@interface GEOAppleRating (MURatingPercentageViewModel) <MURatingPercentageViewModel>
+@interface GEOAppleRating (MURatingPercentageViewModel)
+@property(readonly, nonatomic) _Bool hasPercentage;
+@property(readonly, nonatomic) _Bool hasSubtitle;
 @property(readonly, nonatomic) unsigned long long displayPercentage;
 @property(readonly, nonatomic) NSString *categoryTitle;
 

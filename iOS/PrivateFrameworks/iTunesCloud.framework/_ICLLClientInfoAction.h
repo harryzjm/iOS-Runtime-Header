@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _ICLLClientInfoAction : PBCodable <NSCopying>
+@interface _ICLLClientInfoAction : PBCodable
 {
     long long _participantId;
     int _code;

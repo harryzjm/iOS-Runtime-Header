@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthMobilityDaemon/HKMobilityWalkingSteadinessAnalyticsNotificationEventDataSourceProvider-Protocol.h>
-
 @class HDProfile, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDMobilityWalkingSteadinessAnalyticsNotificationEventDataSource : NSObject <HKMobilityWalkingSteadinessAnalyticsNotificationEventDataSourceProvider>
+@interface HDMobilityWalkingSteadinessAnalyticsNotificationEventDataSource : NSObject
 {
     HDProfile *_profile;
     NSString *_category;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)areHealthNotificationsAuthorizedWithError:(id *)arg1;
 - (id)notificationTypeWithError:(id *)arg1;
 - (id)notificationClassificationWithError:(id *)arg1;
 - (id)daysSinceLastNotificationWithError:(id *)arg1;

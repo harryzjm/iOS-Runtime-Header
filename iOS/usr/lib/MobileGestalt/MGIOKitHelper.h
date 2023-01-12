@@ -21,7 +21,7 @@
 - (struct __CFNumber *)copyNumberFromDeviceTree:(id)arg1 withFirstChar:(BOOL)arg2 propertyName:(id)arg3 withPropertyFirstChar:(BOOL)arg4;
 - (struct __CFNumber *)copyNumberFromData:(struct __CFData *)arg1;
 - (void *)copyDeviceTreeProperty:(id)arg1 withFirstChar:(BOOL)arg2 propertyName:(id)arg3 withPropertyFirstChar:(BOOL)arg4;
-- (struct __CFDictionary *)deviceTreeNodeIsPresent:(struct __CFString *)arg1 withNodeClass:(struct __CFString *)arg2;
+- (struct __CFDictionary *)deviceTreeNodeIsPresent:(struct __CFString *)arg1 withExactName:(_Bool)arg2 withNodeClass:(struct __CFString *)arg3;
 - (void *)copyServiceTreeProperty:(id)arg1 withFirstChar:(BOOL)arg2 propertyName:(id)arg3 withPropertyFirstChar:(BOOL)arg4;
 - (unsigned int)copyDeviceTreeStructureNext:(id)arg1 withFirstChar:(BOOL)arg2;
 - (_Bool)createServicesIteratorByNameMatch:(const char *)arg1;

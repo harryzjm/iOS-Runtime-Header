@@ -6,11 +6,9 @@
 
 #import <UIKit/UIPanGestureRecognizer.h>
 
-#import <AnnotationKit/AKPenDetectionGestureRecognizerProtocol-Protocol.h>
-
 @class NSMutableArray, NSMutableSet, NSString;
 
-@interface AKPanGestureRecognizer : UIPanGestureRecognizer <AKPenDetectionGestureRecognizerProtocol>
+@interface AKPanGestureRecognizer : UIPanGestureRecognizer
 {
     _Bool _penGestureDetected;
     double _currentWeight;

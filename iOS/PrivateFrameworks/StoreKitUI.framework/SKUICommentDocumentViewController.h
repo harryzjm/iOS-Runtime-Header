@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUICommentDelegate-Protocol.h>
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUILayoutCacheDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSArray, NSMutableSet, NSString, SKUICommentPostBarView, SKUICommentTemplateViewElement, SKUILayoutCache, SKUIMediaSocialAuthor, SKUIStackDocumentViewController, SKUIStackTemplateElement, SKUIViewElementLayoutContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUICommentDocumentViewController <SKUIArtworkRequestDelegate, SKUILayoutCacheDelegate, SKUICommentDelegate, SKUIDocumentViewController>
+@interface SKUICommentDocumentViewController : SKUIViewController
 {
     SKUIMediaSocialAuthor *_authorForActiveAccount;
     SKUIStackDocumentViewController *_childViewController;

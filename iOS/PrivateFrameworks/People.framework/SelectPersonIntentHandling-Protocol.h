@@ -6,10 +6,10 @@
 
 #import <People/NSObject-Protocol.h>
 
-@class PersonType, SelectPersonIntent;
+@class NSString, PersonType, SelectPersonIntent;
 
 @protocol SelectPersonIntentHandling <NSObject>
-- (void)providePersonOptionsCollectionForSelectPerson:(SelectPersonIntent *)arg1 withCompletion:(void (^)(id, NSError *))arg2;
+- (void)providePersonOptionsCollectionForSelectPerson:(SelectPersonIntent *)arg1 searchTerm:(NSString *)arg2 withCompletion:(void (^)(id, NSError *))arg3;
 
 @optional
 - (void)providePersonOptionsForSelectPerson:(SelectPersonIntent *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;

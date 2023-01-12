@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/VideosExtrasZoomingImageTransitionParticipant-Protocol.h>
-
 @class MPUContentSizeLayoutConstraint, NSArray, NSAttributedString, NSString, UIActivityIndicatorView, UIImage, UILabel, UIView, VideosExtrasZoomableImageView, VideosExtrasZoomingImageInteractiveTransitionSourceContext;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasImageViewController : UIViewController <VideosExtrasZoomingImageTransitionParticipant>
+@interface VideosExtrasImageViewController : UIViewController
 {
     _Bool _allowsPinchingImageForInteractiveZoomingImageTransition;
     _Bool _overlayHidden;

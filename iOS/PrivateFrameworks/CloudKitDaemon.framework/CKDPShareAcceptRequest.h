@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPProtectionInfo, CKDPShareIdentifier, NSString;
 
-@interface CKDPShareAcceptRequest : PBRequest <NSCopying>
+@interface CKDPShareAcceptRequest : PBRequest
 {
     NSString *_etag;
     NSString *_participantId;

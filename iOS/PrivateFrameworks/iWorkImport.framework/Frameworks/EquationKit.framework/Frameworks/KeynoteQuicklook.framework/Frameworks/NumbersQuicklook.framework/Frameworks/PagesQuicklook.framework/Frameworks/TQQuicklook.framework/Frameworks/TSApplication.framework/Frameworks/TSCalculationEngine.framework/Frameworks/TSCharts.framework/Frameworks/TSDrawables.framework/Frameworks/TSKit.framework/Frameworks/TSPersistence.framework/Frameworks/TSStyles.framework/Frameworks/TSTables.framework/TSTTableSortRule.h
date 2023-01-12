@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
-@interface TSTTableSortRule : NSObject <NSCopying>
+@interface TSTTableSortRule : NSObject
 {
     struct TSUModelColumnOrRowIndex _baseIndex;
     int _direction;

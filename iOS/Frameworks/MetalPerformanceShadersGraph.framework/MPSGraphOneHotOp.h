@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSGraphOneHotOp
+#import "MPSGraphOperation.h"
+
+@interface MPSGraphOneHotOp : MPSGraphOperation
 {
     unsigned long long _depth;
     unsigned long long _axis;

@@ -6,20 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
-#import <SettingsCellularUI/TSSIMSetupDelegate-Protocol.h>
-
-@class CTCellularPlanManager, Logger, NSMutableArray, NSString, PSListController, PSSpecifier, PSUICellularPlanManagerCache, TSSIMSetupFlow;
+@class CTCellularPlanManager, NSMutableArray, NSString, PSListController, PSSpecifier, PSUICellularPlanManagerCache, TSSIMSetupFlow;
 
 __attribute__((visibility("hidden")))
-@interface PSUIAddOnPlanGroup : NSObject <TSSIMSetupDelegate, PSSpecifierGroup>
+@interface PSUIAddOnPlanGroup : NSObject
 {
     PSUICellularPlanManagerCache *_cellularPlanManager;
     CTCellularPlanManager *_ctCellularPlanManager;
     PSSpecifier *_groupSpecifier;
     NSString *_carrierName;
     NSMutableArray *_remotePlansSpecifiers;
-    Logger *_logger;
     PSListController *_listController;
     TSSIMSetupFlow *_flow;
 }

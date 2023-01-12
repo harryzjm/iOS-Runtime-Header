@@ -6,14 +6,11 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <AuthenticationServices/_ASAccountAuthenticationModificationExtensionHostContextProtocol-Protocol.h>
-#import <AuthenticationServices/_ASExtensionHostContext-Protocol.h>
-
 @class NSString;
 @protocol _ASAccountAuthenticationModificationExtensionHostContextDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _ASAccountAuthenticationModificationExtensionHostContext : NSExtensionContext <_ASAccountAuthenticationModificationExtensionHostContextProtocol, _ASExtensionHostContext>
+@interface _ASAccountAuthenticationModificationExtensionHostContext : NSExtensionContext
 {
     id <_ASAccountAuthenticationModificationExtensionHostContextDelegate> _delegate;
 }

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <HMFoundation/HMFAsyncContext-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _HMFCallerAsyncContext : NSObject <HMFAsyncContext>
+@interface _HMFCallerAsyncContext : NSObject
 {
 }
 

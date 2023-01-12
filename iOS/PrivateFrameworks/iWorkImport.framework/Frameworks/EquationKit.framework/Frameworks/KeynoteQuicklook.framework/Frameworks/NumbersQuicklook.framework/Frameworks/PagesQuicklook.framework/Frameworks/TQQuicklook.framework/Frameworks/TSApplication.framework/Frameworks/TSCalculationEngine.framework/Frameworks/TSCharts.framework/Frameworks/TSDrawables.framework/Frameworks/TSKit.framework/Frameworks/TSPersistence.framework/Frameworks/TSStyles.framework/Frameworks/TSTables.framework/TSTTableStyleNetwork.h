@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSTStyleProviding-Protocol.h>
-
 @class TSTCellStyle, TSTTableStyle, TSWPParagraphStyle, TSWPShapeStyle;
 
-@interface TSTTableStyleNetwork : TSPObject <TSTStyleProviding>
+@interface TSTTableStyleNetwork : TSPObject
 {
     int _presetIndex;
     TSTTableStyle *_tableStyle;
@@ -43,6 +41,7 @@
 + (id)tableNameShapeStyleIDForPreset:(unsigned long long)arg1;
 + (id)tableNameStyleIDForPreset:(unsigned long long)arg1;
 + (id)networkWithContext:(id)arg1 presetID:(unsigned long long)arg2 styleProvider:(id)arg3 styleMorphingBlock:(CDUnknownBlockType)arg4;
++ (id)nonValidatedNetworkWithContext:(id)arg1 presetID:(unsigned long long)arg2 styleProvider:(id)arg3 tableStyleMorphingBlock:(CDUnknownBlockType)arg4 nameStyleMorphingBlock:(CDUnknownBlockType)arg5 nameShapeStyleMorphingBlock:(CDUnknownBlockType)arg6 cellStyleMorphingBlockByStyleArea:(CDUnknownBlockType)arg7 textStyleMorphingBlockByStyleArea:(CDUnknownBlockType)arg8;
 + (id)networkWithContext:(id)arg1 presetID:(unsigned long long)arg2 styleProvider:(id)arg3 tableStyleMorphingBlock:(CDUnknownBlockType)arg4 nameStyleMorphingBlock:(CDUnknownBlockType)arg5 nameShapeStyleMorphingBlock:(CDUnknownBlockType)arg6 cellStyleMorphingBlockByStyleArea:(CDUnknownBlockType)arg7 textStyleMorphingBlockByStyleArea:(CDUnknownBlockType)arg8;
 + (id)networkFromTheme:(id)arg1 presetIndex:(unsigned long long)arg2;
 + (id)networkFromTheme:(id)arg1 presetID:(unsigned long long)arg2;
@@ -92,7 +91,6 @@
 - (id)initWithContext:(id)arg1 styleProvider:(id)arg2 presetID:(unsigned long long)arg3;
 - (id)initWithContext:(id)arg1 styleProvider:(id)arg2;
 - (id)initWithContext:(id)arg1;
-- (id)networkForPivotTables:(_Bool)arg1;
 - (id)networkForPivotTables;
 - (const void *)textStyles;
 - (const void *)cellStyles;

@@ -18,10 +18,8 @@
 - (void)unifiedField:(id)arg1 moveCompletionSelectionByRowOffset:(long long)arg2;
 - (void)_setShowingCompletions:(_Bool)arg1 popoverDismissalReason:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)showUniversalSearchFirstTimeExperienceIfNotShowing;
-- (void)setNavigationBar:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)_axUpdateAccessibilityElements;
-- (void)_axHideWebView:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

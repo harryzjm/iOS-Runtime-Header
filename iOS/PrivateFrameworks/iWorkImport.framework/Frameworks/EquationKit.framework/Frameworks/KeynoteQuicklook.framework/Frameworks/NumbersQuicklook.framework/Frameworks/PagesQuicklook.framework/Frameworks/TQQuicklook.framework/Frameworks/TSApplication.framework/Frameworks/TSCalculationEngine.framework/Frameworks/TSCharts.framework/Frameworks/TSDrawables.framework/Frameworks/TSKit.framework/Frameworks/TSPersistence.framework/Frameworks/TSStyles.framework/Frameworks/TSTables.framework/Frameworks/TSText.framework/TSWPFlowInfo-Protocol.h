@@ -8,11 +8,12 @@
 #import <TSText/TSDFlowInfo-Protocol.h>
 #import <TSText/TSKDocumentObject-Protocol.h>
 #import <TSText/TSKModel-Protocol.h>
+#import <TSText/TSWPStorageContainer-Protocol.h>
 #import <TSText/TSWPTextBoxNesting-Protocol.h>
 
 @class NSArray, NSString, TSUColor, TSWPShapeInfo, TSWPStorage;
 
-@protocol TSWPFlowInfo <NSObject, TSKDocumentObject, TSKModel, TSDFlowInfo, TSWPTextBoxNesting>
+@protocol TSWPFlowInfo <NSObject, TSKDocumentObject, TSKModel, TSDFlowInfo, TSWPTextBoxNesting, TSWPStorageContainer>
 + (TSUColor *)strokeColorForUserInterfaceIdentifier:(unsigned long long)arg1;
 + (TSUColor *)fillColorForUserInterfaceIdentifier:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool containsRotatedOrFlippedTextBox;

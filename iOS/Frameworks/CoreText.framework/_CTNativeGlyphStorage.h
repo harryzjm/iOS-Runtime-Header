@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     void *_preallocatedStorage;
 }
 
-+ (id)newWithCount:(long long)arg1;
++ (id)newWithCount:(long long)arg1 capacity:(long long)arg2;
 - (void)popGlyphAtIndex:(long long)arg1;
 - (void)pushGlyphAtIndex:(long long)arg1;
 - (void)initGlyphStackWithCapacity:(long long)arg1;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (oneway void)release;
 - (id)retain;
 - (id)copyWithRange:(CDStruct_912cb5d2)arg1;
-- (id)initWithCount:(long long)arg1;
+- (id)initWithCount:(long long)arg1 capacity:(long long)arg2;
 
 @end
 

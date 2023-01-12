@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <FileProvider/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPSearchableItemError : PBCodable <NSCopying>
+@interface FPSearchableItemError : PBCodable
 {
     long long _code;
     NSString *_customDomain;

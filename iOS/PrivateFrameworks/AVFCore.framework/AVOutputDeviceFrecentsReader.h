@@ -6,15 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceFrecentsReading-Protocol.h>
-
-@class NSArray, NSMutableDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVOutputDeviceFrecentsReader : NSObject <AVOutputDeviceFrecentsReading>
+@interface AVOutputDeviceFrecentsReader : NSObject
 {
-    NSString *_frecentsFilePath;
-    NSMutableDictionary *_frecents;
+    NSDictionary *_frecents;
 }
 
 - (id)frecencyInfoForDeviceWithID:(id)arg1;

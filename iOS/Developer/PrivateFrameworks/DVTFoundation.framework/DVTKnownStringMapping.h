@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
-@interface DVTKnownStringMapping : NSObject <NSCopying>
+@interface DVTKnownStringMapping : NSObject
 {
     CDUnknownFunctionPointerType _strToIdxFunc;
     CDUnknownFunctionPointerType _idxToStrFunc;

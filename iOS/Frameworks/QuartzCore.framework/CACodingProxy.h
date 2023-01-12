@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CACodingProxy : NSObject <NSSecureCoding>
+@interface CACodingProxy : NSObject
 {
 }
 

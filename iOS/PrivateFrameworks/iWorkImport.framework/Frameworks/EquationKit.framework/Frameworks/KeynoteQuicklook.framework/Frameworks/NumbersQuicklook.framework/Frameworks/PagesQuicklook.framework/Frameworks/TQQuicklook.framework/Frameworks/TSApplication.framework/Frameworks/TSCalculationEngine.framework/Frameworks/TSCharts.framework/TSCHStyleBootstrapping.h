@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSSPresetSource-Protocol.h>
-
-@interface TSCHStyleBootstrapping : NSObject <TSSPresetSource>
+@interface TSCHStyleBootstrapping : NSObject
 {
 }
 

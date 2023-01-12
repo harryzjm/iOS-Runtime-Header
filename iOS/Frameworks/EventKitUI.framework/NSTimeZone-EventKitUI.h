@@ -7,6 +7,7 @@
 #import <Foundation/NSTimeZone.h>
 
 @interface NSTimeZone (EventKitUI)
+- (void)_cleanupDisallowedTimezonesIfNeeded;
 - (void)setCityName:(id)arg1;
 - (id)cityName;
 @end

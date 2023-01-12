@@ -9,6 +9,7 @@
 @protocol ASDServiceProtocol <NSObject>
 - (void)getUpdatesServiceWithReplyHandler:(void (^)(id <ASDUpdatesServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getTestFlightFeedbackServiceWithReplyHandler:(void (^)(id <ASDTestFlightFeedbackServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
+- (void)getStoreKitExternalNotificationServiceWithReplyHandler:(void (^)(id <ASDStoreKitExternalNotificationServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getRestoreServiceWithReplyHandler:(void (^)(id <ASDRestoreServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getRepairServiceWithReplyHandler:(void (^)(id <ASDRepairServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getPurchaseServiceWithReplyHandler:(void (^)(id <ASDPurchaseServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
@@ -22,6 +23,7 @@
 - (void)getInstallAttributionServiceWithReplyHandler:(void (^)(id <ASDInstallAttributionServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getInstallationServiceWithReplyHandler:(void (^)(id <ASDInstallationServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getIAPHistoryServiceWithReplyHandler:(void (^)(id <ASDIAPHistoryServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
+- (void)getFairPlayServiceWithReplyHandler:(void (^)(id <ASDFairPlayServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getDiagnosticServiceWithReplyHandler:(void (^)(id <ASDDiagnosticServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getClipServiceWithReplyHandler:(void (^)(id <ASDClipServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getCrossfireServiceWithReplyHandler:(void (^)(id <ASDCrossfireServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;

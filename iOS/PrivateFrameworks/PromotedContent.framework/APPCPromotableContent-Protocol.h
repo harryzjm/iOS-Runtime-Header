@@ -9,10 +9,13 @@
 
 @protocol APPCPromotableContent
 - (void)replaceMetricsHelperWithNewMetricsHelper:(id <APPCCarouselMetricsHelping><APPCJourneyMetricsHelping>)arg1;
+@property(nonatomic, readonly) long long feedMetadataContentProviderID;
+@property(nonatomic, readonly) double impressionThreshold;
 @property(nonatomic, readonly) _Bool discarded;
 @property(nonatomic, retain) id <APPCPromotableContentRepresentation> bestRepresentation;
 @property(nonatomic, readonly) APInstallAttribution *installAttribution;
 @property(nonatomic, readonly) _Bool isMRAID;
+@property(nonatomic, readonly) long long numOfArticlesSinceInterstitial;
 @property(nonatomic, readonly) _Bool isOutstreamVideoAd;
 @property(nonatomic, readonly) long long serverUnfilledReason;
 @property(nonatomic, readonly) _Bool available;

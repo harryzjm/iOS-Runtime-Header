@@ -4,30 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, UIDatePicker, UIView, UIVisualEffectView, _UIRoundedRectShadowView;
+#import "UIView.h"
+
+@class NSLayoutConstraint, UIDatePicker, _UIDatePickerStyle, _UIRoundedRectShadowView;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerOverlayPlatterView
+@interface _UIDatePickerOverlayPlatterView : UIView
 {
     _Bool _accessoryViewIgnoresDefaultInsets;
     UIDatePicker *_datePicker;
     _UIRoundedRectShadowView *_shadowView;
-    UIVisualEffectView *_backgroundView;
+    UIView *_backgroundView;
     UIView *_accessoryView;
     UIView *_previousContentView;
     UIView *_contentView;
     NSLayoutConstraint *_contentWidthConstraint;
     NSLayoutConstraint *_contentHeightConstraint;
+    _UIDatePickerStyle *_datePickerStyle;
     struct CGRect _contentBounds;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _UIDatePickerStyle *datePickerStyle; // @synthesize datePickerStyle=_datePickerStyle;
 @property(readonly, nonatomic) NSLayoutConstraint *contentHeightConstraint; // @synthesize contentHeightConstraint=_contentHeightConstraint;
 @property(readonly, nonatomic) NSLayoutConstraint *contentWidthConstraint; // @synthesize contentWidthConstraint=_contentWidthConstraint;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(readonly, nonatomic) UIView *previousContentView; // @synthesize previousContentView=_previousContentView;
 @property(readonly, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
-@property(readonly, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic) _UIRoundedRectShadowView *shadowView; // @synthesize shadowView=_shadowView;
 @property(nonatomic) struct CGRect contentBounds; // @synthesize contentBounds=_contentBounds;
 @property(nonatomic) _Bool accessoryViewIgnoresDefaultInsets; // @synthesize accessoryViewIgnoresDefaultInsets=_accessoryViewIgnoresDefaultInsets;

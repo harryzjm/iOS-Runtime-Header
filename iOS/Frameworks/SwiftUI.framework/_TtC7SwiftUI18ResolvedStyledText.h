@@ -18,9 +18,11 @@
     MISSING_TYPE *isArchived;
     MISSING_TYPE *isCollapsible;
     MISSING_TYPE *features;
+    MISSING_TYPE *transitions;
     MISSING_TYPE *layoutMargins;
     MISSING_TYPE *scaleFactorOverride;
     MISSING_TYPE *$__lazy_storage_$_drawingMargins;
+    MISSING_TYPE *layerCache;
 }
 
 @end

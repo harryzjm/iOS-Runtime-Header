@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIDOMFeature-Protocol.h>
-
 @class IKAppContext, NSMutableArray, NSString;
 @protocol SKUIPhysicalCirclesTemplateDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPhysicalCirclesTemplateDOMFeature : NSObject <SKUIDOMFeature>
+@interface SKUIPhysicalCirclesTemplateDOMFeature : NSObject
 {
     IKAppContext *_appContext;
     id <SKUIPhysicalCirclesTemplateDelegate> _delegate;

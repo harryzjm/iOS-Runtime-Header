@@ -13,10 +13,10 @@
     NSData *_data;
 }
 
-@property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(readonly, nonatomic) unsigned long long length;
 @property(readonly) const void *bytes;
-- (void)dealloc;
 - (id)initWithData:(id)arg1;
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUICachedLayout-Protocol.h>
-
 @class NSAttributedString, NSShadow, NSString, NSStringDrawingContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIAttributedStringLayout : NSObject <SKUICachedLayout>
+@interface SKUIAttributedStringLayout : NSObject
 {
     NSAttributedString *_attributedString;
     struct CGSize _boundingSize;

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CACGPathCodingSegment : NSObject <NSSecureCoding>
+@interface CACGPathCodingSegment : NSObject
 {
     int _type;
     struct CGPoint _points[3];

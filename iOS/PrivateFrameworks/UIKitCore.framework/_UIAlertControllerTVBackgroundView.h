@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
-#import <UIKitCore/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
+#import "UIView.h"
 
-@class NSMutableDictionary, NSString, UIView, _UIFloatingShadowView;
+@class NSMutableDictionary, NSString, _UIFloatingShadowView;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerTVBackgroundView <UIInterfaceActionVisualBackgroundDisplaying, UIInterfaceActionVisualGroupBackgroundDisplaying>
+@interface _UIAlertControllerTVBackgroundView : UIView
 {
     _Bool _isHighlighted;
     _Bool _isPressed;

@@ -9,7 +9,7 @@
 #import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCArticleAudioTrack, FCArticleContent, FCColor, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class FCArticleAudioTrack, FCArticleContent, FCAssetHandle, FCColor, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCContentContext, FCHeadlineMetadata, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @protocol FCHeadlineProviding <NSObject, NFCopying, FCClassifiable, FCFeedTransformationItem>
@@ -29,7 +29,6 @@
 @property(readonly, nonatomic) _Bool usesImageOnTopLayout;
 @property(readonly, nonatomic) unsigned long long topStoryType;
 @property(readonly, nonatomic) _Bool isTopStory;
-@property(readonly, nonatomic) FCFeedPersonalizedItemScoreProfile *scoreProfile;
 @property(readonly, nonatomic) double tileProminenceScore;
 @property(readonly, copy, nonatomic) NSSet *surfacedByTagIDs;
 @property(readonly, copy, nonatomic) NSString *surfacedByBinID;
@@ -63,6 +62,7 @@
 @property(readonly, nonatomic, getter=isSponsored) _Bool sponsored;
 @property(readonly, nonatomic, getter=isFeatureCandidate) _Bool featureCandidate;
 @property(readonly, nonatomic) double videoDuration;
+@property(readonly, nonatomic) FCAssetHandle *videoStillImage;
 @property(readonly, nonatomic) NSURL *videoURL;
 @property(readonly, copy, nonatomic) NSArray *topicIDs;
 @property(readonly, copy, nonatomic) NSArray *topics;
@@ -96,7 +96,6 @@
 @property(readonly, copy, nonatomic) NSString *referencedArticleID;
 @property(readonly, copy, nonatomic) NSString *articleID;
 @property(readonly, copy, nonatomic) NSString *identifier;
-@property(readonly, copy, nonatomic) NSString *versionIdentifier;
 
 @optional
 @property(readonly, copy, nonatomic) id <FCHeadlineMetadata> appliedOverrideMetadata;
@@ -107,6 +106,8 @@
 @property(readonly, nonatomic) double layeredThumbnailAspectRatio;
 @property(readonly, nonatomic) NSString *layeredThumbnailJSON;
 @property(readonly, copy, nonatomic) NSString *surfacedByArticleListID;
+@property(readonly, nonatomic) NSString *narrativeTrackPreferredUpsellVariantID;
+@property(readonly, copy, nonatomic) NSArray *narrativeTrackBuddyArticleIDs;
 @property(readonly, nonatomic) NSString *narrativeTrackTextRanges;
 @property(readonly, nonatomic) FCArticleAudioTrack *narrativeTrackSample;
 @property(readonly, nonatomic) FCArticleAudioTrack *narrativeTrack;
@@ -116,10 +117,15 @@
 @property(readonly, copy, nonatomic) NSArray *linkedArticleIDs;
 @property(readonly, nonatomic, getter=isIssueOnly) _Bool issueOnly;
 @property(readonly, copy, nonatomic) FCIssue *masterIssue;
+@property(readonly, nonatomic) _Bool webConverted;
+@property(readonly, nonatomic) _Bool reduceVisibility;
+@property(readonly, nonatomic) _Bool hideModalCloseButton;
 @property(readonly, nonatomic) _Bool disableBookmarking;
 @property(readonly, nonatomic) _Bool showBundleSoftPaywall;
 @property(readonly, nonatomic) _Bool useTransparentNavigationBar;
 @property(readonly, nonatomic) _Bool webEmbedsEnabled;
+@property(readonly, nonatomic) NSArray *tagsExpiration;
+@property(readonly, nonatomic) NSDate *globalExpirationTime;
 @property(readonly, copy, nonatomic) FCHeadlineExperimentalTitleMetadata *experimentalTitleMetadata;
 @property(readonly, nonatomic) NSData *backingArticleRecordData;
 @property(readonly, nonatomic) id <FCHeadlineStocksFields> stocksFields;

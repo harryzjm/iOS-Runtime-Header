@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLPointerJSExports-Protocol.h>
-
-@interface TMLPointer : NSObject <TMLPointerJSExports>
+@interface TMLPointer : NSObject
 {
     CDUnknownBlockType _readBlock;
     CDUnknownBlockType _writeBlock;

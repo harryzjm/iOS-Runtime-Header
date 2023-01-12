@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLBatchProvider-Protocol.h>
-
 @protocol MLBatchProvider;
 
 __attribute__((visibility("hidden")))
-@interface MLWindowedBatchProvider : NSObject <MLBatchProvider>
+@interface MLWindowedBatchProvider : NSObject
 {
     id <MLBatchProvider> _fullBatch;
     long long _startIndex;

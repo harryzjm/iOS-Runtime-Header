@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNUIContactsEnvironment, HKHealthStore, NSMutableDictionary, _HKMedicalIDData;
+@class CNUIContactsEnvironment, HKHealthStore, HKMedicalIDStore, NSMutableDictionary, _HKMedicalIDData;
 @protocol CNScheduler;
 
 __attribute__((visibility("hidden")))
@@ -21,13 +21,16 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_medicalIDDataHandlers;
     id <CNScheduler> _stateLock;
     HKHealthStore *_healthStore;
+    HKMedicalIDStore *_medicalIDStore;
 }
 
 + (id)identifiersForContactMatchingEmergencyContacts:(id)arg1 contactStore:(id)arg2;
 + (CDUnknownBlockType)emergencyContactMatchingContact:(id)arg1;
 + (_Bool)shouldShowEmergencyContacts;
 + (id)descriptorForRequiredKeys;
++ (id)log;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HKMedicalIDStore *medicalIDStore; // @synthesize medicalIDStore=_medicalIDStore;
 @property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(readonly, nonatomic) id <CNScheduler> stateLock; // @synthesize stateLock=_stateLock;
 @property(readonly, nonatomic) NSMutableDictionary *medicalIDDataHandlers; // @synthesize medicalIDDataHandlers=_medicalIDDataHandlers;
@@ -38,12 +41,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
 - (id)createMedicalIDFromContact:(id)arg1;
 - (void)startListeningForChanges;
+- (void)notifyHandlersWithMedicalIDData:(id)arg1;
 - (void)updateAndDispatchMedicalIDData;
 - (void)unregisterHandlerForToken:(id)arg1;
 - (id)registerMedicalIDDataHandler:(CDUnknownBlockType)arg1;
+- (id)nts_lazyMedicalIDStore;
 - (id)nts_lazyHealthStore;
 - (void)dealloc;
-- (id)initWithEnvironment:(id)arg1 healthStore:(id)arg2;
+- (id)initWithEnvironment:(id)arg1 healthStore:(id)arg2 medicalIDStore:(id)arg3;
 - (id)initWithEnvironment:(id)arg1;
 
 @end

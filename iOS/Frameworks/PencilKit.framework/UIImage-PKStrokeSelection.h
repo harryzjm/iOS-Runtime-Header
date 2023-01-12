@@ -8,6 +8,8 @@
 
 @interface UIImage (PKStrokeSelection)
 + (id)pk_handwritingToolLabelImage;
++ (id)pk_shapeButtonImage;
++ (id)pk_textButtonImage;
 + (id)pk_returnKeyButtonImage;
 + (id)pk_emojiButtonImage;
 + (id)pk_keyboardButtonImage;

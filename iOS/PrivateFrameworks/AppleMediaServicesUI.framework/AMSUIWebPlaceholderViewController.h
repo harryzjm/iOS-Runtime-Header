@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebPagePresenter-Protocol.h>
+#import "AMSUICommonViewController.h"
 
 @class AMSBinaryPromise, AMSUILoadingView, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebLoadingPageModel, NSString, UIView, UIViewController;
 @protocol AMSUIWebPagePresenter;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebPlaceholderViewController <AMSUIWebPagePresenter>
+@interface AMSUIWebPlaceholderViewController : AMSUICommonViewController
 {
     _Bool _animateFadeIn;
     _Bool _hasAppeared;

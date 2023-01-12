@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreRE/REMeshPayload-Protocol.h>
-
 @class NSArray, NSObject, RESerializedPayload;
 @protocol OS_xpc_object;
 
 __attribute__((visibility("hidden")))
-@interface RESharedMemoryMeshPayload <REMeshPayload>
+@interface RESharedMemoryMeshPayload
 {
     NSObject<OS_xpc_object> *_data;
     NSArray *_parts;

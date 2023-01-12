@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *wantsStatusPillHidden;
     MISSING_TYPE *arTrackingState;
     MISSING_TYPE *currentTriggerAffordance;
+    MISSING_TYPE *isARModeEnabled;
     MISSING_TYPE *sessionIsInterrupted;
     MISSING_TYPE *isInFullscreen;
     MISSING_TYPE *cancellables;

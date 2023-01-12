@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/__NSCFURLSessionConnectionDelegate-Protocol.h>
-
 @class NSMutableArray, NSString;
 
-@interface __NSCFURLLocalStreamTaskFromDataTask <__NSCFURLSessionConnectionDelegate>
+@interface __NSCFURLLocalStreamTaskFromDataTask
 {
     struct __CFReadStream *_myReadToHisWrite;
     _Bool _myReadToHisWriteEOF;
@@ -23,8 +21,8 @@
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)connection:(id)arg1 didReceiveTCPConnection:(shared_ptr_8da4e70b)arg2 extraBytes:(id)arg3;
-- (void)connection:(id)arg1 needConnectedSocketToHost:(id)arg2 port:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)connection:(id)arg1 didReceiveSocketInputStream:(id)arg2 outputStream:(id)arg3;
+- (void)connection:(id)arg1 alternatePathAvailable:(int)arg2;
 - (void)connection:(id)arg1 _conditionalRequirementsChanged:(_Bool)arg2;
 - (void)connection:(id)arg1 waitingWithReason:(long long)arg2;
 - (void)connection:(id)arg1 _willSendRequestForEstablishedConnection:(id)arg2 completion:(CDUnknownBlockType)arg3;

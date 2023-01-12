@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/EARCaesuraSilencePosteriorGeneratorDelegate-Protocol.h>
-
 @class EARCaesuraSilencePosteriorGenerator, NSDictionary, NSNumber, NSString, _EAREndpointer, _LTHybridEndpointerAssetInfo, _LTServerEndpointerFeatures, _LTTranslationContext;
 @protocol OS_dispatch_queue, _LTSpeechTranslationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _LTHybridEndpointer : NSObject <EARCaesuraSilencePosteriorGeneratorDelegate>
+@interface _LTHybridEndpointer : NSObject
 {
     _LTTranslationContext *_context;
     _LTHybridEndpointerAssetInfo *_asset;

@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/CNVisualIdentityPrimaryAvatarProvider-Protocol.h>
-#import <ContactsUI/UITextViewDelegate-Protocol.h>
-
 @class CAShapeLayer, CNPhotoPickerProviderItem, CNPhotoPickerVariantsManager, CNVisualIdentityEditablePrimaryAvatarTextField, NSString, UIFont, UIImageView, UIView;
 @protocol CNVisualIdentityEditablePrimaryAvatarViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNVisualIdentityEditablePrimaryAvatarViewController : UIViewController <UITextViewDelegate, CNVisualIdentityPrimaryAvatarProvider>
+@interface CNVisualIdentityEditablePrimaryAvatarViewController : UIViewController
 {
     id <CNVisualIdentityEditablePrimaryAvatarViewControllerDelegate> _delegate;
     double _desiredFontSize;

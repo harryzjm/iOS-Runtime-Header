@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobV2StreamGroup : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobV2StreamGroup : PBCodable
 {
     NSMutableArray *_payloads;
     unsigned int _streamGroup;

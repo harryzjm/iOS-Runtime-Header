@@ -6,14 +6,15 @@
 
 #import <UIKit/UIDragItem.h>
 
-@class NSURL, WBTabGroup, WebBookmark, _SFTabStateData;
+@class NSURL, SFTabStateData, WBTab, WBTabGroup, WebBookmark;
 
 @interface UIDragItem (SafariServicesExtras)
 + (id)_sf_itemWithTabGroup:(id)arg1;
 + (id)_sf_itemWithTabStateData:(id)arg1 userActivity:(id)arg2;
 + (void)_sf_loadObjectsFromDragItems:(id)arg1 usingLocalObjectLoader:(CDUnknownFunctionPointerType)arg2 objectLoader:(CDUnknownFunctionPointerType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+@property(readonly, nonatomic) WBTab *safari_localWBTab;
 @property(readonly, nonatomic) WBTabGroup *_sf_localTabGroup;
-@property(readonly, nonatomic) _SFTabStateData *_sf_tabStateData;
+@property(readonly, nonatomic) SFTabStateData *_sf_tabStateData;
 @property(readonly, nonatomic) NSURL *_sf_localURL;
 @property(readonly, nonatomic) WebBookmark *_sf_localBookmark;
 - (id)_sf_initWithSiriSuggestion:(id)arg1;

@@ -18,5 +18,6 @@
 
 @optional
 - (_Bool)interactionControllerIsExternalPanGestureRecognizing:(SBPIPInteractionController *)arg1;
+- (void)offScreenHyperregionComposersDidChange:(NSArray *)arg1;
 @end
 

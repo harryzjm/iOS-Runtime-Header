@@ -7,15 +7,14 @@
 #import <objc/NSObject.h>
 
 @class ACAccount, AMSObservable, NSString;
-@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AMSAccountsChangedObservable : NSObject
 {
+    struct os_unfair_lock_s _notificationsLock;
     ACAccount *_account;
     NSString *_accountTypeIdentifier;
     AMSObservable *_observable;
-    NSObject<OS_dispatch_queue> *_notificationsQueue;
 }
 
 + (void)_processChangedAccount:(id)arg1;
@@ -24,7 +23,7 @@ __attribute__((visibility("hidden")))
 + (id)createdObservablesAccessQueue;
 + (id)createdObservables;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *notificationsQueue; // @synthesize notificationsQueue=_notificationsQueue;
+@property(readonly, nonatomic) struct os_unfair_lock_s notificationsLock; // @synthesize notificationsLock=_notificationsLock;
 @property(retain, nonatomic) AMSObservable *observable; // @synthesize observable=_observable;
 @property(readonly, nonatomic) NSString *accountTypeIdentifier; // @synthesize accountTypeIdentifier=_accountTypeIdentifier;
 @property(readonly, nonatomic) ACAccount *account; // @synthesize account=_account;

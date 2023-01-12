@@ -6,22 +6,22 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDPlaceCollectionFilter : PBCodable <NSCopying>
+@interface GEOPDPlaceCollectionFilter : PBCodable
 {
     PBUnknownFields *_unknownFields;
     unsigned int _expectedResultCount;
     _Bool _enableCollectionItemDescription;
+    _Bool _enableMediaLink;
     _Bool _isCollectionView;
     _Bool _overrideSuppress;
     _Bool _partiallyClientize;
     struct {
         unsigned int has_expectedResultCount:1;
         unsigned int has_enableCollectionItemDescription:1;
+        unsigned int has_enableMediaLink:1;
         unsigned int has_isCollectionView:1;
         unsigned int has_overrideSuppress:1;
         unsigned int has_partiallyClientize:1;

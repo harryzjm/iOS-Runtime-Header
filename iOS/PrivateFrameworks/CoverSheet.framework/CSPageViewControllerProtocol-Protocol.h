@@ -6,7 +6,7 @@
 
 #import <CoverSheet/CSCoverSheetViewPresenting-Protocol.h>
 
-@class CSLayoutStrategy, NSString;
+@class CSLayoutStrategy, NSArray, NSString;
 @protocol CSCoverSheetViewControllerProtocol;
 
 @protocol CSPageViewControllerProtocol <CSCoverSheetViewPresenting>
@@ -18,6 +18,7 @@
 @property(nonatomic) __weak id <CSCoverSheetViewControllerProtocol> coverSheetViewController;
 
 @optional
+@property(readonly, nonatomic) NSArray *viewsPreferringProminentPresentationAndDismissal;
 @property(readonly, copy, nonatomic) NSString *pageRole;
 - (double)listInsetX;
 - (double)customListWidth;

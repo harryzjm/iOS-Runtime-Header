@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HKDataFlowLink, HKWorkoutConfiguration, NSArray, NSDictionary, NSUUID;
+@class HKDataFlowLink, HKWorkoutActivity, HKWorkoutConfiguration, NSArray, NSDictionary, NSUUID;
 @protocol HDWorkoutDataAccumulator, HDWorkoutDataSource;
 
 @protocol HDWorkoutDataDestination <NSObject>
@@ -14,9 +14,13 @@
 @property(readonly) unsigned long long workoutDataDestinationState;
 @property(readonly, copy) NSUUID *workoutDataProcessorUUID;
 @property(readonly) HKDataFlowLink *workoutDataFlowLink;
+- (void)didSuggestActivity:(HKWorkoutActivity *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
+- (void)didEndActivity:(HKWorkoutActivity *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
+- (void)didBeginActivity:(HKWorkoutActivity *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
 - (void)updateWorkoutConfiguration:(HKWorkoutConfiguration *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
 - (void)addMetadata:(NSDictionary *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
 - (void)addWorkoutEvents:(NSArray *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
-- (void)addSamples:(NSArray *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
+- (void)addOtherSamples:(NSArray *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
+- (void)addQuantities:(NSArray *)arg1 dataSource:(id <HDWorkoutDataSource>)arg2;
 @end
 

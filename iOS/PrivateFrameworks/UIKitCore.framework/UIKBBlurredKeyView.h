@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBContainerKeyView.h"
+
 @class UIKBBackdropView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBBlurredKeyView
+@interface UIKBBlurredKeyView : UIKBContainerKeyView
 {
     UIKBBackdropView *_backdropView;
 }

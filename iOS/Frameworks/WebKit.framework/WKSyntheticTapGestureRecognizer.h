@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     id _resetTarget;
     SEL _resetAction;
     struct RetainPtr<NSNumber> _lastActiveTouchIdentifier;
-    struct WeakObjCPtr<UIScrollView> _lastTouchedScrollView;
+    UIScrollView *_lastTouchedScrollView;
     UIWebTouchEventsGestureRecognizer *_supportingWebTouchEventsGestureRecognizer;
 }
 

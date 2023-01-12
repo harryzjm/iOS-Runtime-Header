@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafari/SFStartPageCollectionDataSource-Protocol.h>
-#import <MobileSafari/SFStartPageDataSourceObserving-Protocol.h>
-
 @class NSString, SFSectionModel, SFStartPageCollectionViewController;
 
 __attribute__((visibility("hidden")))
-@interface SFStartPageSingleSectionDataSource : NSObject <SFStartPageCollectionDataSource, SFStartPageDataSourceObserving>
+@interface SFStartPageSingleSectionDataSource : NSObject
 {
     SFStartPageCollectionViewController *_collectionViewController;
     SFSectionModel *_section;

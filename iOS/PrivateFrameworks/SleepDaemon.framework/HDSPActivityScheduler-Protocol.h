@@ -6,8 +6,10 @@
 
 #import <SleepDaemon/NSObject-Protocol.h>
 
+@protocol HDSPActivity;
+
 @protocol HDSPActivityScheduler <NSObject>
-- (void)unschedule;
-- (void)scheduleActivity:(id)arg1 options:(unsigned long long)arg2 activityHandler:(void (^)(void))arg3;
+- (void)unscheduleActivities;
+- (void)scheduleActivity:(id <HDSPActivity>)arg1 activityHandler:(void (^)(id <HDSPActivity>))arg2;
 @end
 

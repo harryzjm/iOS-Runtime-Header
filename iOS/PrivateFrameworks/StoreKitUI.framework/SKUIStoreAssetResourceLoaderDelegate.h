@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/AVAssetResourceLoaderDelegate-Protocol.h>
-
 @class NSOperationQueue, NSString, NSURL, SKUIClientContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStoreAssetResourceLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
+@interface SKUIStoreAssetResourceLoaderDelegate : NSObject
 {
     _Bool _isITunesStream;
     NSURL *_keyCertificateURL;

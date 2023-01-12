@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVCaptureDevice.h"
+
 @class AVWeakReference, NSDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVCaptureFigAudioDevice
+@interface AVCaptureFigAudioDevice : AVCaptureDevice
 {
     NSObject<OS_dispatch_queue> *_fcsQueue;
     struct OpaqueFigCaptureSource *_fcs;
@@ -17,6 +19,7 @@ __attribute__((visibility("hidden")))
     _Bool _isConnected;
     NSString *_localizedName;
     AVWeakReference *_weakReference;
+    NSString *_clientAudioClockDeviceUID;
 }
 
 + (void)_reconnectDevices:(id)arg1;
@@ -27,6 +30,8 @@ __attribute__((visibility("hidden")))
 - (void)audioInputDeviceLocalizedNameDidChangeHandler:(id)arg1;
 - (void)audioInputDevicesDidChangeHandler:(id)arg1;
 - (id)_copyFigCaptureSourceProperty:(struct __CFString *)arg1;
+- (void)setClientAudioClockDeviceUID:(id)arg1;
+- (id)clientAudioClockDeviceUID;
 - (struct OpaqueCMClock *)deviceClock;
 - (_Bool)supportsAVCaptureSessionPreset:(id)arg1;
 - (void)stopUsingDevice;

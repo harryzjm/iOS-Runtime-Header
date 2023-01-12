@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/VKGesturingCameraController-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VKMuninCameraController <VKGesturingCameraController>
+@interface VKMuninCameraController
 {
     void *_muninSceneLogic;
     void *_elevationLogic;
@@ -21,22 +19,22 @@ __attribute__((visibility("hidden")))
     _Bool _panStopping;
     Matrix_8746f91e _panLocation;
     Matrix_8746f91e _panTranslation;
-    struct _retain_ptr<VKTimedAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _panAnimation;
+    struct _retain_ptr<VKTimedAnimation *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> _panAnimation;
     _Bool _pinching;
     Matrix_8746f91e _pinchZoomOffset;
-    Unit_3d259e8a _pinchStartFieldOfView;
-    struct _retain_ptr<VKTimedAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _pinchResetAnimation;
+    Unit_5669e52e _pinchStartFieldOfView;
+    struct _retain_ptr<VKTimedAnimation *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> _pinchResetAnimation;
     _Bool _virtualParallaxEnabled;
     float _cameraOffsetFactor;
-    struct _retain_ptr<VKTimedAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _offsetAnimation;
+    struct _retain_ptr<VKTimedAnimation *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> _offsetAnimation;
     double _lastUpdateTime;
     struct Spring<double, 1, gdc::SpringType::Angular> _panSpring;
-    Unit_3d259e8a _heading;
-    Unit_3d259e8a _pitch;
+    Unit_5669e52e _heading;
+    Unit_5669e52e _pitch;
     _Bool _restrictWidestFieldOfView;
-    Unit_3d259e8a _widestFieldOfView;
-    Coordinate3D_bc242218 _rigPosition;
-    CameraFrame_406dbd31 _previousCameraFrame;
+    Unit_5669e52e _widestFieldOfView;
+    Coordinate3D_332c2c3b _rigPosition;
+    CameraFrame_b765d6d7 _previousCameraFrame;
     unsigned long long _tapIndex;
     struct shared_ptr<geo::Task> _preparePath;
     struct unique_ptr<(anonymous namespace)::PathAnimationDescription, std::default_delete<(anonymous namespace)::PathAnimationDescription>> _currentPathAnimation;
@@ -63,22 +61,23 @@ __attribute__((visibility("hidden")))
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 degrees:(double)arg2;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;
 - (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;
-- (void)zoomAnimated:(Unit_3d259e8a)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)zoomAnimatedWithDuration:(Unit_3d259e8a)arg1 duration:(float)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)zoomAnimated:(Unit_5669e52e)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)zoomAnimatedWithDuration:(Unit_5669e52e)arg1 duration:(float)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)stopPinchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)updatePinchWithFocusPoint:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
 - (void)startPinchingWithFocusPoint:(struct CGPoint)arg1;
-- (void)setWidestFieldOfView:(Unit_3d259e8a)arg1;
+- (void)setWidestFieldOfView:(Unit_5669e52e)arg1;
 - (double)_zoomRubberBandFov:(double)arg1;
 - (void)stopPanningAtPoint:(struct CGPoint)arg1;
 - (void)willStopPanningAtPoint:(struct CGPoint)arg1 withVelocity:(struct CGPoint)arg2;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;
-- (Unit_3d259e8a)_pitchForScreenPoint:(Matrix_8746f91e)arg1;
-- (Unit_3d259e8a)_verticalFieldOfView:(Unit_3d259e8a)arg1;
-- (Unit_3d259e8a)_horizontalFieldOfView:(Unit_3d259e8a)arg1;
+- (Unit_5669e52e)_pitchForScreenPoint:(Matrix_8746f91e)arg1;
+- (Unit_5669e52e)_verticalFieldOfView:(Unit_5669e52e)arg1;
+- (Unit_5669e52e)_horizontalFieldOfView:(Unit_5669e52e)arg1;
 - (void)startPanningAtPoint:(struct CGPoint)arg1 panAtStartPoint:(_Bool)arg2;
 - (_Bool)tapAtPoint:(struct CGPoint)arg1;
 - (void)moveAlongPath:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_eabd84a1)arg3 continued:(_Bool)arg4;
+- (void)resetPathAnimation;
 - (void)pathAnimationComplete:(unsigned long long)arg1;
 - (void)pathAnimationPrepared:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_eabd84a1)arg3;
 - (void)runBumpAnimation:(const void *)arg1 targetPoint:(const void *)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -93,19 +92,19 @@ __attribute__((visibility("hidden")))
 - (void)stopAnimations;
 - (void)stopAnimationsExceptBump;
 - (void)setCurrentSegment:(void *)arg1;
-- (_Bool)moveToPoint:(const void *)arg1 withHeading:(Unit_3d259e8a)arg2 withPitch:(Unit_3d259e8a)arg3 animated:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)moveToPoint:(const void *)arg1 withHeading:(Unit_5669e52e)arg2 withPitch:(Unit_5669e52e)arg3 animated:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)selectLabelMarker:(const void *)arg1 completion:(CDUnknownBlockType)arg2;
 - (Matrix_8746f91e)screenPointWithOffset:(struct CGPoint)arg1;
 - (void)updateCurrentPointView:(_Bool)arg1;
 - (const void *)currentPoint;
-- (void)setCurrentPoint:(const void *)arg1 secondaryPoint:(optional_ff574c75)arg2;
+- (void)setCurrentPoint:(const void *)arg1 secondaryPoint:(optional_89838882)arg2;
 - (void)setCurrentPoint:(const void *)arg1;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
-- (void)setCameraFrame:(CameraFrame_406dbd31)arg1;
+- (void)setCameraFrame:(CameraFrame_b765d6d7)arg1;
 - (void)setVkCamera:(id)arg1;
 - (double)altitude;
 - (double)pitch;
-- (void)_setHeading:(Unit_3d259e8a)arg1;
+- (void)_setHeading:(Unit_5669e52e)arg1;
 - (double)heading;
 - (CDStruct_c3b9c2ee)centerCoordinate;
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;

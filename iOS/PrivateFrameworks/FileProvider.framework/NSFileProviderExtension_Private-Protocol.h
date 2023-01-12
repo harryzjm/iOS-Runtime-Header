@@ -30,7 +30,6 @@
 - (void)_removeTrashedItemsOlderThanDate:(NSDate *)arg1 completionHandler:(void (^)(void))arg2;
 - (NSProgress *)_defaultApplicationContainerForBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(id <NSFileProviderItem>, NSError *))arg2;
 - (id <NSFileProviderItem>)_propertiesForItemAtURL:(NSURL *)arg1 error:(id *)arg2;
-- (void)acknowledgeUserVisibleRootLocationDidChangeToURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)movingItemAtURL:(NSURL *)arg1 requiresProvidingWithDestinationURL:(NSURL *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)startProvidingItemAtURL:(NSURL *)arg1 readingOptions:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 @end

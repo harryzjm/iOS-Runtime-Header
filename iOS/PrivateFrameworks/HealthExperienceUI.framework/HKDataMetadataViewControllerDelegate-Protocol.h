@@ -6,12 +6,13 @@
 
 #import <HealthExperienceUI/NSObject-Protocol.h>
 
-@class HKDisplayTypeController, HKHealthStore, HKSample, HKSampleType, HKUnitPreferenceController, NSPredicate, NSString, UIViewController;
+@class HKDataMetadataDetailSection, HKDisplayTypeController, HKHealthStore, HKSample, HKSampleType, HKUnitPreferenceController, NSPredicate, NSString, UIViewController;
 
 @protocol HKDataMetadataViewControllerDelegate <NSObject>
 @property(nonatomic, readonly) HKHealthStore *healthStore;
 
 @optional
+- (HKDataMetadataDetailSection *)detailSectionForSample:(HKSample *)arg1;
 - (_Bool)shareDocumentUsingSample:(HKSample *)arg1;
 - (UIViewController *)accessViewControllerForSample:(HKSample *)arg1 healthStore:(HKHealthStore *)arg2;
 - (UIViewController *)viewControllerForSampleType:(HKSampleType *)arg1 subSamplePredicate:(NSPredicate *)arg2 title:(NSString *)arg3;

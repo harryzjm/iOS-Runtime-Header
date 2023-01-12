@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSShardResolving-Protocol.h>
-
 @class NSString;
-@protocol BCSMetricFactoryProtocol, BCSShardCacheSkipping, BCSShardCaching, BCSShardRemoteFetching;
+@protocol BCSFetchTrigger, BCSMetricFactoryProtocol, BCSShardCacheSkipping, BCSShardCaching, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface BCSShardResolver : NSObject <BCSShardResolving>
+@interface BCSShardResolver : NSObject
 {
     id <BCSShardCaching> _shardCache;
     id <BCSShardCacheSkipping> _shardCacheSkipper;
-    id <BCSShardRemoteFetching> _shardRemoteFetcher;
+    id <BCSFetchTrigger> _megashardFetchTrigger;
     id <BCSMetricFactoryProtocol> _metricFactory;
+    NSObject<OS_dispatch_queue> *_serialDispatchQueue;
 }
 
 - (void).cxx_destruct;

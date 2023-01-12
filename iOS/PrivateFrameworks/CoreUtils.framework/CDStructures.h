@@ -10,85 +10,9 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct LogCategory {
-    int _field1;
-    int _field2;
-    char *_field3;
-    unsigned int _field4;
-    char *_field5;
-    char *_field6;
-    int _field7;
-    struct LogCategory *_field8;
-    struct LogOutput *_field9;
-    struct LogOutput *_field10;
-    unsigned long long _field11;
-    unsigned long long _field12;
-    unsigned int _field13;
-    unsigned int _field14;
-    char *_field15;
-    struct LogCategoryPrivate *_field16;
-};
-
-struct LogCategoryPrivate;
-
-struct LogOutput;
-
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
-};
-
-struct __SecKey {
-    struct __CFRuntimeBase {
-        unsigned long long _field1;
-        _Atomic unsigned long long _field2;
-    } _field1;
-    struct __SecKeyDescriptor *_field2;
-    void *_field3;
-};
-
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
-};
-
-struct buffer {
-    char *x;
-    unsigned int p;
-    unsigned int n;
-    int fd;
-    CDUnknownFunctionPointerType op;
-};
-
-struct cdb {
-    char *map;
-    int fd;
-    unsigned int size;
-    unsigned int loop;
-    unsigned int khash;
-    unsigned int kpos;
-    unsigned int hpos;
-    unsigned int hslots;
-    unsigned int dpos;
-    unsigned int dlen;
-};
-
-struct cdb_hp;
-
-struct cdb_hplist;
-
-struct cdb_make {
-    char bspace[8192];
-    char final[2048];
-    unsigned int count[256];
-    unsigned int start[256];
-    struct cdb_hplist *head;
-    struct cdb_hp *split;
-    struct cdb_hp *hash;
-    unsigned int numentries;
-    struct buffer b;
-    unsigned int pos;
-    int fd;
 };
 
 struct in6_addr {
@@ -101,11 +25,6 @@ struct in6_addr {
 
 struct in_addr {
     unsigned int s_addr;
-};
-
-struct iovec {
-    void *iov_base;
-    unsigned long long iov_len;
 };
 
 struct sockaddr {
@@ -134,10 +53,6 @@ struct sockaddr_in6 {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned char bytes[3];
-} CDStruct_ae2970c9;
-
-typedef struct {
     unsigned char bytes[6];
 } CDStruct_83abfce7;
 
@@ -157,9 +72,12 @@ typedef struct {
     long long _field6;
     long long _field7;
     int _field8;
-    struct _opaque_pthread_mutex_t _field9;
+    struct _opaque_pthread_mutex_t {
+        long long _field1;
+        char _field2[56];
+    } _field9;
     struct _telldir *_field10;
-} CDStruct_56034278;
+} CDStruct_84ed1706;
 
 #pragma mark Typedef'd Unions
 

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *isBeingUsedAsPlugin;
     MISSING_TYPE *pluggableDelegate;
     MISSING_TYPE *lastComputedSize;
+    MISSING_TYPE *previousSelectedIndexPath;
 }
 
 - (void).cxx_destruct;

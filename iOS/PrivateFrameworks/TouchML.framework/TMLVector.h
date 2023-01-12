@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLVectorJSExports-Protocol.h>
-
-@interface TMLVector : NSObject <TMLVectorJSExports, NSCopying>
+@interface TMLVector : NSObject
 {
     struct CGVector _vector;
 }

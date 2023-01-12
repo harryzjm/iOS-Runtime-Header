@@ -6,11 +6,10 @@
 
 #import <CoreKnowledge/CKVDatabaseReadOnlyAccess-Protocol.h>
 
-@class CKVDatabaseCommand, CKVDatabaseSelect;
+@class CKVDatabaseCommand;
 
 @protocol CKVDatabaseReadWriteAccess <CKVDatabaseReadOnlyAccess>
 - (_Bool)executeCommand:(CKVDatabaseCommand *)arg1 error:(id *)arg2 returningRow:(id *)arg3;
-- (_Bool)enumerateRowResultsOfSelect:(CKVDatabaseSelect *)arg1 error:(id *)arg2 usingBlock:(_Bool (^)(CKVDatabaseValueRow *, id *, _Bool *))arg3;
 - (_Bool)executeCommand:(CKVDatabaseCommand *)arg1 error:(id *)arg2;
 @end
 

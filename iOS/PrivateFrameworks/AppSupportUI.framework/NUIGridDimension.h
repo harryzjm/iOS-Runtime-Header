@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppSupportUI/NUIGridDimension-Protocol.h>
-
 @class NSArray, NSString, NUIContainerGridView;
 
 __attribute__((visibility("hidden")))
-@interface NUIGridDimension : NSObject <NUIGridDimension>
+@interface NUIGridDimension : NSObject
 {
     NUIContainerGridView *_gridView;
     NSArray *_arrangedSubviews;

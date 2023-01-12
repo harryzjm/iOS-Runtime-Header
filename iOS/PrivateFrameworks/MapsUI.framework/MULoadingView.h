@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapsUI/MKActivityObserving-Protocol.h>
-
 @class NSString, UIActivityIndicatorView;
 
 __attribute__((visibility("hidden")))
-@interface MULoadingView : UIView <MKActivityObserving>
+@interface MULoadingView : UIView
 {
     UIActivityIndicatorView *_loadingIndicator;
 }

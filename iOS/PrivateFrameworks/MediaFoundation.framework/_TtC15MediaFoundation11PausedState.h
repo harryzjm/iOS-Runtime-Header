@@ -12,6 +12,8 @@
     MISSING_TYPE *metadata;
     MISSING_TYPE *playbackDidStopWasProcessed;
     MISSING_TYPE *signalOnEnter;
+    MISSING_TYPE *playbackDidStartEvent;
+    MISSING_TYPE *prepareForPlaybackEvent;
     MISSING_TYPE *fadeOut;
     MISSING_TYPE *suppressed;
 }

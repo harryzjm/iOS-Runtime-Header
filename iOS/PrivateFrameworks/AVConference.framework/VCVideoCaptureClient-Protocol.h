@@ -13,6 +13,9 @@
 - (void)avConferencePreviewError:(NSString *)arg1;
 
 @optional
+- (void)effectsDidApply:(_Bool)arg1;
+- (void)captureSourcePortraitBlurEnabledDidChange:(_Bool)arg1;
+- (void)captureSourceCenterStageEnabledDidChange:(_Bool)arg1;
 - (void)captureSourcePositionDidChange:(_Bool)arg1;
 - (void)avConferenceScreenCaptureError:(NSString *)arg1;
 - (void)frameRateIsBeingThrottled:(int)arg1 thermalLevelDidChange:(_Bool)arg2 powerLevelDidChange:(_Bool)arg3;

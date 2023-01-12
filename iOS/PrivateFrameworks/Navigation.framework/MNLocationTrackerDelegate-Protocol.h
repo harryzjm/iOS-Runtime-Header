@@ -28,10 +28,10 @@
 - (void)locationTracker:(MNLocationTracker *)arg1 didReachETAUpdatePosition:(GEOComposedRouteETAUPosition *)arg2;
 - (void)locationTracker:(MNLocationTracker *)arg1 matchedToStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
 - (void)locationTracker:(MNLocationTracker *)arg1 didUpdateMatchedLocation:(MNLocation *)arg2;
-- (void)locationTrackerDidTimeoutInArrivalRegion:(MNLocationTracker *)arg1;
 - (void)locationTrackerDidArrive:(MNLocationTracker *)arg1;
 - (void)locationTrackerDidEnterPreArrivalState:(MNLocationTracker *)arg1;
-- (void)locationTracker:(MNLocationTracker *)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)locationTracker:(MNLocationTracker *)arg1 didEndNavigatingWithReason:(unsigned long long)arg2;
+- (void)locationTracker:(MNLocationTracker *)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)locationTracker:(MNLocationTracker *)arg1 didArriveAtWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)locationTracker:(MNLocationTracker *)arg1 didEnterPreArrivalStateForWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)locationTracker:(MNLocationTracker *)arg1 didChangeState:(int)arg2;

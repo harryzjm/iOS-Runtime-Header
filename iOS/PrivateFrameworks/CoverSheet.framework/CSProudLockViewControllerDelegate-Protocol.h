@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @protocol CSProudLockViewControllerDelegate
+- (void)proudLockDidChangeToCoachingText:(NSString *)arg1;
 - (_Bool)proudLockViewControllerIsCoverSheetVisible;
 @end
 

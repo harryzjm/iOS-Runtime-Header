@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVPictureInPictureSampleBufferPlaybackDelegate-Protocol.h>
-
 @class NSString;
 @protocol AVPictureInPictureSampleBufferPlaybackDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVSampleBufferDisplayLayerPlaybackDelegateAdapter : NSObject <AVPictureInPictureSampleBufferPlaybackDelegate>
+@interface AVSampleBufferDisplayLayerPlaybackDelegateAdapter : NSObject
 {
     id <AVPictureInPictureSampleBufferPlaybackDelegate> _playbackDelegate;
 }

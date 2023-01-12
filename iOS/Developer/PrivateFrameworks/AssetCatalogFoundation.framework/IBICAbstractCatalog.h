@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetCatalogFoundation/IBICActivityReportingDelegate-Protocol.h>
-
 @protocol IBICActivityReportingDelegate;
 
-@interface IBICAbstractCatalog <IBICActivityReportingDelegate>
+@interface IBICAbstractCatalog
 {
     id <IBICActivityReportingDelegate> _activityReportingDelegate;
 }

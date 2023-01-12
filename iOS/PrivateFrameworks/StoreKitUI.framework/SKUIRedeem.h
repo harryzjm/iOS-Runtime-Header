@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSDictionary, NSString, NSURL, UIImage;
 @protocol SKUIArtworkProviding;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeem : NSObject <NSSecureCoding>
+@interface SKUIRedeem : NSObject
 {
     _Bool _hideItemView;
     NSArray *_items;

@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCLockupFeature-Protocol.h>
-
 @class NSSet, NSString;
 
-@interface ASCLockupFeatureSignpostTags : NSObject <ASCLockupFeature>
+__attribute__((visibility("hidden")))
+@interface ASCLockupFeatureSignpostTags : NSObject
 {
     NSSet *_signpostTags;
 }

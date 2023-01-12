@@ -11,12 +11,12 @@ __attribute__((visibility("hidden")))
 
 - (void)appLaunchedOnDate:(id)arg1;
 - (void)activityDetectedOnDate:(id)arg1;
+- (_Bool)inExpectedAutoTrackingWindow;
 - (id)stateName;
 - (void)didExitWithNextState:(id)arg1 context:(id)arg2;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
-- (void)willEnterWithPreviousState:(id)arg1 context:(id)arg2;
-- (id)determineExpirationDateForCurrentDate:(id)arg1;
-- (void)_updateStateSpecific;
+- (void)stateDidExpireWithContext:(id)arg1;
+- (double)expirationDuration;
 
 @end
 

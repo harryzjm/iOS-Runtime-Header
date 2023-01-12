@@ -9,6 +9,7 @@
 
 @protocol SATimeServiceProtocol
 @property(readonly, nonatomic) NSDate *now;
+- (NSDate *)getCurrentTime;
 - (void)cancelAlarmWithUUID:(NSUUID *)arg1;
 - (NSUUID *)setupAlarmFireAt:(NSDate *)arg1 forClient:(id <SATimeClientProtocol>)arg2;
 @end

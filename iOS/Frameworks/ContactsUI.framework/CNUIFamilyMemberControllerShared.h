@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)contactsUIFetchStatusFromContactsUICoreFetchStatus:(long long)arg1;
++ (id)actionTitleChooseFromContactsForFamilyMember:(id)arg1;
++ (id)actionTitleAddNewContactForFamilyMember:(id)arg1;
 + (id)addContactsToWhitelistOptionsSheetForFamilyMember:(id)arg1 offerChooseFromFamilyMemberContactsOption:(_Bool)arg2 delegate:(id)arg3;
 + (id)addContactsOptionsSheetForFamilyMember:(id)arg1 delegate:(id)arg2;
 + (id)contactMatchingFamilyMemberContactItem:(id)arg1 fetchedFromContactStore:(id)arg2 schedulerProvider:(id)arg3;

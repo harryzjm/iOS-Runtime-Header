@@ -12,6 +12,5 @@
 @property(readonly, nonatomic) double stillTimeInVideo;
 @property(readonly, copy, nonatomic) NSURL *videoAssetURL;
 @property(readonly, copy, nonatomic) NSURL *fullsizeImageURL;
-@property(readonly, copy, nonatomic) NSURL *thumbnailImageURL;
 @end
 

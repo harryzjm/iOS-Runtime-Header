@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
 - (int)unregisterPacketCallback;
 - (int)registerPacketCallbackContext:(void *)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)VCTransportStreamUnblock;
-- (int)receivePacket:(CDStruct_63867230 *)arg1;
-- (int)VCTransportStreamSendPacket:(CDStruct_63867230 *)arg1;
+- (int)receivePacket:(CDStruct_a6ed07b8 *)arg1;
+- (int)VCTransportStreamSendPacket:(CDStruct_a6ed07b8 *)arg1;
 - (void)dealloc;
 - (id)initWithTransportSessionID:(unsigned int)arg1 options:(id)arg2;
 

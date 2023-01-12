@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMFaceCrop.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-
 @class NSString, NSUUID, UIImage;
 
-@interface HMFaceCrop (HFAdditions) <HFHomeKitObject>
+@interface HMFaceCrop (HFAdditions)
 @property(readonly, copy, nonatomic) UIImage *hf_imageRepresentation;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 

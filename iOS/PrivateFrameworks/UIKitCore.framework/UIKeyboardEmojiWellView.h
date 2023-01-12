@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSIndexPath, NSString, UIColor, UIFont, UILabel, UIView;
+#import "UIView.h"
+
+@class NSArray, NSIndexPath, NSString, UIColor, UIFont, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiWellView
+@interface UIKeyboardEmojiWellView : UIView
 {
     _Bool _selected;
     _Bool _activeSelection;

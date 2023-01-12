@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPObjectDelegate-Protocol.h>
-#import <TSPersistence/TSPUnarchiverDelegate-Protocol.h>
-
 @class NSError, NSHashTable, NSMapTable, NSString, TSPCancellationState, TSPComponent, TSPComponentObjectUUIDMap, TSPFinalizeHandlerQueue, TSPMutableComponentDataReferenceMap, TSPObjectContext;
 @protocol OS_dispatch_group, OS_dispatch_queue, TSPReaderDelegate;
 
-@interface TSPReader : NSObject <TSPObjectDelegate, TSPUnarchiverDelegate>
+@interface TSPReader : NSObject
 {
     _Bool _hasReadFailure;
     id <TSPReaderDelegate> _delegate;

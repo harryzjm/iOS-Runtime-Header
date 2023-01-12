@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_ensureAllDataclassesExist;
 - (_Bool)_ensureAllInternalAccountTypesExist:(_Bool)arg1;
 - (id)_managedDataclassesSetForNames:(id)arg1;
+- (void)_addPublishedCalendarAccountType;
 - (void)_addRemoteManagementAccountType;
 - (void)_removeRedundantDataclasses;
 - (void)_aolSupportsAuthentication;

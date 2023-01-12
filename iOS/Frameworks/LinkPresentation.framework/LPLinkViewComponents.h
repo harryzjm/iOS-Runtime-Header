@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionBarView, LPComponentView, LPContactsBadgeView, LPDomainNameIndicator, LPImageView, LPQuoteView, UIView;
+@class LPCaptionBarView, LPCollaborationHandleView, LPComponentView, LPContactsBadgeView, LPDomainNameIndicator, LPImageView, LPQuoteView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface LPLinkViewComponents : NSObject
@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     LPQuoteView *_quote;
     LPImageView *_backgroundImage;
     LPContactsBadgeView *_contactsBadge;
+    LPCollaborationHandleView *_collaborationHandle;
     LPDomainNameIndicator *_domainNameIndicator;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) LPDomainNameIndicator *domainNameIndicator; // @synthesize domainNameIndicator=_domainNameIndicator;
+@property(retain, nonatomic) LPCollaborationHandleView *collaborationHandle; // @synthesize collaborationHandle=_collaborationHandle;
 @property(retain, nonatomic) LPContactsBadgeView *contactsBadge; // @synthesize contactsBadge=_contactsBadge;
 @property(retain, nonatomic) LPImageView *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(retain, nonatomic) LPQuoteView *quote; // @synthesize quote=_quote;

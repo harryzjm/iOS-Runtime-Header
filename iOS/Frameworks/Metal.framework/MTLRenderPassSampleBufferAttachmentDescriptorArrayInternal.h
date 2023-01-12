@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLRenderPassSampleBufferAttachmentDescriptorArray.h"
+
 @class MTLRenderPassSampleBufferAttachmentDescriptorInternal;
 
 __attribute__((visibility("hidden")))
-@interface MTLRenderPassSampleBufferAttachmentDescriptorArrayInternal
+@interface MTLRenderPassSampleBufferAttachmentDescriptorArrayInternal : MTLRenderPassSampleBufferAttachmentDescriptorArray
 {
     MTLRenderPassSampleBufferAttachmentDescriptorInternal *_sampleDescriptors[4];
 }

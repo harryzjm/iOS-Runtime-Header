@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <DocumentCamera/DCAccessibilityExtras-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface DCAccessibility : NSObject <DCAccessibilityExtras>
+@interface DCAccessibility : NSObject
 {
 }
 

@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)siriSessionDidTransitionFromState:(long long)arg1 toState:(long long)arg2 event:(long long)arg3;
+- (void)siriSessionDidTransitionFromState:(long long)arg1 toState:(long long)arg2 event:(long long)arg3 machAbsoluteTransitionTime:(double)arg4;
 - (void)speechSynthesisDidStopSpeakingWithIdentifier:(id)arg1 queueIsEmpty:(_Bool)arg2;
 - (void)speechSynthesisDidStartSpeakingWithIdentifier:(id)arg1;
 - (void)siriDidDeactivateWithCompletion:(CDUnknownBlockType)arg1;

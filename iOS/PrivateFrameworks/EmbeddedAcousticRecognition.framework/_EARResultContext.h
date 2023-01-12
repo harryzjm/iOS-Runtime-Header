@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class _EARSpeechRecognitionResultPackage;
+@class NSDictionary, _EARSpeechRecognitionResultPackage;
 
 __attribute__((visibility("hidden")))
 @interface _EARResultContext : NSObject
@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     _Bool _anyResults;
     unsigned long long _countOfIsFinalFalseAlreadyWritten;
     _EARSpeechRecognitionResultPackage *_prevPackage;
+    NSDictionary *_prevMuxPackages;
+    _EARSpeechRecognitionResultPackage *_prevPackageWithoutPersonalization;
     unsigned long long _partialResultIndexOffset;
     shared_ptr_9d440e49 _continuousListeningResultHelper;
     basic_string_0ec669f3 _prevBestRecogText;
@@ -30,6 +32,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) vector_daa4424d partialResults; // @synthesize partialResults=_partialResults;
 @property(nonatomic) shared_ptr_9d440e49 continuousListeningResultHelper; // @synthesize continuousListeningResultHelper=_continuousListeningResultHelper;
 @property(nonatomic) _Bool anyResults; // @synthesize anyResults=_anyResults;
+@property(retain, nonatomic) _EARSpeechRecognitionResultPackage *prevPackageWithoutPersonalization; // @synthesize prevPackageWithoutPersonalization=_prevPackageWithoutPersonalization;
+@property(retain, nonatomic) NSDictionary *prevMuxPackages; // @synthesize prevMuxPackages=_prevMuxPackages;
 @property(retain, nonatomic) _EARSpeechRecognitionResultPackage *prevPackage; // @synthesize prevPackage=_prevPackage;
 @property(nonatomic) unsigned long long countOfIsFinalFalseAlreadyWritten; // @synthesize countOfIsFinalFalseAlreadyWritten=_countOfIsFinalFalseAlreadyWritten;
 @property(nonatomic) basic_string_0ec669f3 prevBestRecogText; // @synthesize prevBestRecogText=_prevBestRecogText;

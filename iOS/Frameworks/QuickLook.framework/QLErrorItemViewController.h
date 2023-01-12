@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <QuickLookUICore/QLItemViewController.h>
+
 @class NSError, QLItem;
 
 __attribute__((visibility("hidden")))
-@interface QLErrorItemViewController
+@interface QLErrorItemViewController : QLItemViewController
 {
     NSError *_error;
     QLItem *_previewItem;

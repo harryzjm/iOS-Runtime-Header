@@ -6,22 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <Network/NWURLSessionResponseConsumer-Protocol.h>
-
-@class NSString, NSURLResponse, NWURLSessionDataTask, NWURLSessionDelegateWrapper;
+@class NSString, NSURLResponse;
 
 __attribute__((visibility("hidden")))
-@interface NWURLSessionResponseConsumerDataDelegate : NSObject <NWURLSessionResponseConsumer>
+@interface NWURLSessionResponseConsumerDataDelegate : NSObject
 {
-    NWURLSessionDataTask *_task;
-    NWURLSessionDelegateWrapper *_delegateWrapper;
     NSURLResponse *_currentResponse;
 }
 
 - (void).cxx_destruct;
 @property(readonly) NSURLResponse *response;
-- (void)deliverData:(id)arg1 complete:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)deliverResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)task:(id)arg1 deliverData:(id)arg2 complete:(_Bool)arg3 error:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)task:(id)arg1 deliverResponse:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

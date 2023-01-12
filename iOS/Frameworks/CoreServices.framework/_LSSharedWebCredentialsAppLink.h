@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "LSAppLink.h"
+
 @class _SWCServiceDetails;
 
 __attribute__((visibility("hidden")))
-@interface _LSSharedWebCredentialsAppLink
+@interface _LSSharedWebCredentialsAppLink : LSAppLink
 {
     struct LSBinding _binding;
     _SWCServiceDetails *_serviceDetails;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)browserSettings;
 - (_Bool)setEnabled:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)isEnabled;
+- (_Bool)isAlwaysEnabled;
 - (_Bool)_setSWCSetting:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (id)_SWCSettingsReturningError:(id *)arg1;
 - (id)_SWCSpecifierForSettings;

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSMutableOrderedSet.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSPlaceholderOrderedSet
+@interface __NSPlaceholderOrderedSet : NSMutableOrderedSet
 {
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-+ (void)initialize;
 - (void)replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)removeObjectAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;

@@ -6,11 +6,9 @@
 
 #import <UIKit/UIAccessibilityElement.h>
 
-#import "AXChart-Protocol.h"
-
 @class AXChartDescriptor, NSString;
 
-@interface AXSTGraphContainerElement : UIAccessibilityElement <AXChart>
+@interface AXSTGraphContainerElement : UIAccessibilityElement
 {
     AXChartDescriptor *accessibilityChartDescriptor;
     long long _mode;

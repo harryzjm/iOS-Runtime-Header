@@ -6,16 +6,14 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HKConceptIdentifier, NSURL;
+@class HKConceptIdentifier;
 
 @protocol HKConceptStoreServerInterface <NSObject>
-- (void)remote_resetOntologyUsingAssetAtLocation:(NSURL *)arg1 rememberLocation:(_Bool)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)remote_queryCountOfConceptsAssociatedToUserRecordsWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)remote_queryRelationshipsForNodeWithID:(HKConceptIdentifier *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)remote_queryConceptByIdentifier:(HKConceptIdentifier *)arg1 loadRelationships:(_Bool)arg2 completion:(void (^)(HKConcept *, NSError *))arg3;
-- (void)remote_ontologyVersionWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)remote_currentIndexingState:(void (^)(unsigned long long))arg1;
 - (void)remote_testTaskServerWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)remote_startTaskServerIfNeeded;
+- (void)remote_startObservingConceptIndexManagerWithCompletion:(void (^)(_Bool, NSError *))arg1;
 @end
 

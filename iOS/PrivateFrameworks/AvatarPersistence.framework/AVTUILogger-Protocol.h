@@ -9,6 +9,24 @@
 @class NSArray, NSError, NSIndexPath, NSString;
 
 @protocol AVTUILogger <NSObject>
+- (void)logCleanupTimerComplete;
+- (void)logCancellingCleanupBlock;
+- (void)logDecrementingRemoteRendererTransactionCount:(long long)arg1;
+- (void)logIncrementingRemoteRendererTransactionCount:(long long)arg1;
+- (void)logFailedToGenerateStickerInService:(NSString *)arg1;
+- (void)logTimedOutWaitingForSnapshotInService:(NSString *)arg1;
+- (void)logRetrievingSnapshotInServiceForPath:(NSString *)arg1;
+- (void)logImageStoreFailedInServiceForPath:(NSString *)arg1 error:(NSString *)arg2;
+- (void)logImageStoreDoneInServiceForPath:(NSString *)arg1;
+- (void)logGeneratingImageInServiceForRecord:(NSString *)arg1;
+- (void)logImageRenderServiceConnectionError:(NSError *)arg1;
+- (void)logRequestedAnimojiSticker:(NSString *)arg1;
+- (void)logSetupUserImportFailedToRemoveFileWithError:(NSString *)arg1;
+- (void)logSetupUserDataImportCheck;
+- (void)logSetupUserImportSaveError:(NSString *)arg1;
+- (void)logSetupUserImportFailedToUnarchiveDataAtPath:(NSString *)arg1 errorDescription:(NSString *)arg2;
+- (void)logSetupUserImportAttempting:(long long)arg1;
+- (void)logSetupUserHasNoMemojiData;
 - (void)logCarouselEndsDraggingWithVelocity:(double)arg1 willSwitchIndexPathInsteadOfScrollBack:(_Bool)arg2 forHighVelocity:(_Bool)arg3;
 - (void)logCarouselDelegateDidUpdateRecord:(NSString *)arg1;
 - (void)logCarouselDelegateNearnessFactorDidChange:(double)arg1 towardRecord:(_Bool)arg2 editable:(_Bool)arg3;
@@ -36,6 +54,10 @@
 - (void)logCarouselChangesCenterItemTo:(NSString *)arg1;
 - (void)logCarouselChangingToMultiMode;
 - (void)logCarouselChangingToSingleMode;
+- (void)logAnalysisServiceDidNotProcessState:(NSString *)arg1;
+- (void)logAnalysisServiceDidRun;
+- (void)logAnalysisServiceWillRun;
+- (void)logAnalysisServiceCheckingIn:(NSString *)arg1;
 - (void)logNilImageReturnedFromAVTAvatarRecordImageProvider;
 - (void)logNilImageReturnedFromAVTUIStickerRenderer;
 - (void)logErrorUpdatingBodyCarouselVisibleCellAtIndexPath:(NSIndexPath *)arg1;
@@ -112,7 +134,7 @@
 - (void)logErrorReadingCurrentHistoryToken:(NSString *)arg1;
 - (void)logCurrentHistoryTokenFileDoesntExist:(NSString *)arg1;
 - (void)savingChangeTrackerToken:(void (^)(void (^)(void)))arg1;
-- (void)logUnableToReadRemoteRecord:(NSString *)arg1;
+- (void)logUnableToReadRemoteRecord:(NSString *)arg1 isCritical:(_Bool)arg2;
 - (void)logInspectingChangesForExportAfterToken:(NSString *)arg1;
 - (void)logErrorPinningContextToCurrentQueryGenerationToken:(NSString *)arg1;
 - (void)logChangesRequireThumbnailUpdate;

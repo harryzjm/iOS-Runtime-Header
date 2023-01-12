@@ -21,7 +21,8 @@ __attribute__((visibility("hidden")))
     _Bool _shouldIncludeConstantOffset;
     _Bool _includeTipProjection;
     _Bool _strongerBiasAgainstUp;
-    NSObject<UICoordinateSpace> *_coordinateSpace;
+    NSObject<UICoordinateSpace> *_containerCoordinateSpace;
+    NSObject<UICoordinateSpace> *_gestureCoordinateSpace;
     double _initialPosition;
     double _lineBreakProgress;
 }
@@ -34,7 +35,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool includeTipProjection; // @synthesize includeTipProjection=_includeTipProjection;
 @property(nonatomic) _Bool shouldIncludeConstantOffset; // @synthesize shouldIncludeConstantOffset=_shouldIncludeConstantOffset;
 @property(nonatomic) _Bool shouldUseLineThreshold; // @synthesize shouldUseLineThreshold=_shouldUseLineThreshold;
-@property(nonatomic) __weak NSObject<UICoordinateSpace> *coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
+@property(nonatomic) __weak NSObject<UICoordinateSpace> *gestureCoordinateSpace; // @synthesize gestureCoordinateSpace=_gestureCoordinateSpace;
+@property(nonatomic) __weak NSObject<UICoordinateSpace> *containerCoordinateSpace; // @synthesize containerCoordinateSpace=_containerCoordinateSpace;
 - (struct CGPoint)pointIfPlacedCarefully:(struct CGPoint)arg1;
 - (void)updateWeightedPointWithGestureState:(long long)arg1 location:(struct CGPoint)arg2;
 - (struct CGPoint)touchAlignedPointForPoint:(struct CGPoint)arg1 translation:(struct CGPoint)arg2;

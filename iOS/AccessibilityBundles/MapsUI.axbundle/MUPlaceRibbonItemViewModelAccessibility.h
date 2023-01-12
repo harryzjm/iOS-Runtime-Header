@@ -9,7 +9,6 @@
 }
 
 + (id)ratingSubmissionStatusViewModelForRatingState:(long long)arg1;
-+ (id)ratingItemViewModelForMapItem:(id)arg1;
 + (id)guidesItemViewModelForMapItem:(id)arg1;
 + (id)factoidItemForFactoid:(id)arg1;
 + (id)costItemViewForMapItem:(id)arg1;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 screenshotDisplayConfiguration:(id)arg2;
 
 @end
 

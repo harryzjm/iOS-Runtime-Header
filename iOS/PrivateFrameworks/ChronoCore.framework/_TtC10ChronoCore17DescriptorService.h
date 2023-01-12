@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *_descriptorPublisher;
     MISSING_TYPE *descriptorProvider;
+    MISSING_TYPE *_test_noRetries;
     MISSING_TYPE *extensionManager;
     MISSING_TYPE *preferences;
     MISSING_TYPE *descriptorCache;

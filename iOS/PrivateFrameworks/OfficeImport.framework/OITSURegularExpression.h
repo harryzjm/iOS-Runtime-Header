@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCoding-Protocol.h>
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OITSURegularExpression : NSObject <NSCopying, NSCoding>
+@interface OITSURegularExpression : NSObject
 {
     NSString *_expressionString;
     void *_reserved;

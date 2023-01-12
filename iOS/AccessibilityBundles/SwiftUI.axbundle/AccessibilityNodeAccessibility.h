@@ -4,31 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "UIFocusItem-Protocol.h"
 #import "UIFocusItemContainer-Protocol.h"
-#import "_UIFocusEnvironmentPrivate-Protocol.h"
-#import "_UIFocusRegionContainer-Protocol.h"
 
 @class NSArray, NSString, UIFocusEffect, UIView;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
-@interface AccessibilityNodeAccessibility <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer>
+@interface AccessibilityNodeAccessibility <UIFocusItemContainer>
 {
 }
 
 + (_Bool)_isSerializableAccessibilityElement;
-+ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)dealloc;
-- (id)accessibilityLanguage;
+- (_Bool)_accessibilityAutomationHitTestReverseOrder;
 - (_Bool)_accessibilityPrefersNonAttributedAttributeWithOverrideSelector:(SEL)arg1 nonAttributedSelector:(SEL)arg2 attributedSelector:(SEL)arg3;
-- (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (_Bool)_accessibilityUserTestingIsElementClassAcceptable;
 - (_Bool)conformsToProtocol:(id)arg1;
 @property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
 - (id)focusItemsInRect:(struct CGRect)arg1;
-- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (id)_preferredFocusRegionCoordinateSpace;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 @property(readonly, nonatomic) _Bool canBecomeFocused;

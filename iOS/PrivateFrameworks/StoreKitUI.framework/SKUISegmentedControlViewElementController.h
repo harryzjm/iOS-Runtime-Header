@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIFlexibleSegmentedControlDelegate-Protocol.h>
-#import <StoreKitUI/SKUIMenuPopoverDelegate-Protocol.h>
-#import <StoreKitUI/SKUIMenuViewControllerDelegate-Protocol.h>
-
 @class NSString, SKUIClientContext, SKUIFlexibleSegmentedControl, SKUIMenuPopoverController, SKUIMenuViewController, SKUISegmentedControlViewElement, UIBarButtonItem, UIView, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUISegmentedControlViewElementController : NSObject <SKUIFlexibleSegmentedControlDelegate, SKUIMenuPopoverDelegate, SKUIMenuViewControllerDelegate>
+@interface SKUISegmentedControlViewElementController : NSObject
 {
     SKUIClientContext *_clientContext;
     long long _defaultMaximumNumberOfVisibleItems;

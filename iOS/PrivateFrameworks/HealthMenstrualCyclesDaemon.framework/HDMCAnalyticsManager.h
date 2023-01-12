@@ -6,26 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthMenstrualCyclesDaemon/HDAnalyticsSubmissionCoordinatorDelegate-Protocol.h>
-#import <HealthMenstrualCyclesDaemon/HDHealthDaemonReadyObserver-Protocol.h>
-
 @class HDFeatureAvailabilityManager, HDMCAnalysisManager, HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HDMCAnalyticsManager : NSObject <HDAnalyticsSubmissionCoordinatorDelegate, HDHealthDaemonReadyObserver>
+@interface HDMCAnalyticsManager : NSObject
 {
     HDMCAnalysisManager *_analysisManager;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
     HDFeatureAvailabilityManager *_heartRateFeatureAvailabilityManager;
+    HDFeatureAvailabilityManager *_deviationDetectionFeatureAvailabilityManager;
+    HDFeatureAvailabilityManager *_wristTemperatureInputFeatureAvailabilityManager;
 }
 
 - (void).cxx_destruct;
 - (void)_queue_submitAnalyticsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reportDailyAnalyticsWithCoordinator:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)daemonReady:(id)arg1;
-- (id)initWithProfile:(id)arg1 analysisManager:(id)arg2 heartRateFeatureAvailabilityManager:(id)arg3;
+- (id)initWithProfile:(id)arg1 analysisManager:(id)arg2 heartRateFeatureAvailabilityManager:(id)arg3 deviationDetectionFeatureAvailabilityManager:(id)arg4 wristTemperatureInputFeatureAvailabilityManager:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

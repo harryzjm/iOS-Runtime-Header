@@ -13,12 +13,12 @@
 }
 
 + (id)tokenRowAsString:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *characterReplacements; // @synthesize characterReplacements=_characterReplacements;
 @property(retain, nonatomic) NSCharacterSet *allowedCharacters; // @synthesize allowedCharacters=_allowedCharacters;
-- (id)process:(id)arg1;
+- (id)process:(id)arg1 options:(id)arg2;
 - (long long)compareStringForPhoneNumberCompatibility:(id)arg1 with:(id)arg2;
 - (long long)countUnallowedCharactersInString:(id)arg1;
-- (void)dealloc;
 - (id)initForDigitFields;
 - (id)initForPhoneNumberFields;
 

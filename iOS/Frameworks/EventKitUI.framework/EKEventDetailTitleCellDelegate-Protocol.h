@@ -7,11 +7,10 @@
 @class NSDate, UIViewController;
 
 @protocol EKEventDetailTitleCellDelegate
-- (void)conferenceInformationUpdated;
+- (void)refreshForHeightChange;
 - (_Bool)showsDetectedConferenceItem;
 - (UIViewController *)owningViewController;
 - (_Bool)minimalMode;
-- (_Bool)hidesSeparator;
 - (NSDate *)proposedTime;
 - (void)predictionWasActedOn;
 - (void)editButtonPressed;

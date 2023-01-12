@@ -26,24 +26,7 @@ __attribute__((visibility("hidden")))
     long long _order;
 }
 
-+ (CDStruct_cf303044)calculateLayoutHeights:(id)arg1;
-+ (id)calculateRestingHeightsForLayouts:(id)arg1;
-+ (void)updateLayoutParameters:(id)arg1 overflowLayout:(id)arg2 forAvailableHeight:(double)arg3;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool active; // @synthesize active=_active;
-@property(nonatomic) _Bool ignoredForCollapsingBehaviors; // @synthesize ignoredForCollapsingBehaviors=_ignoredForCollapsingBehaviors;
-@property(nonatomic) long long order; // @synthesize order=_order;
-@property(nonatomic) long long priority; // @synthesize priority=_priority;
-@property(readonly, nonatomic) double collapsingHeight; // @synthesize collapsingHeight=_collapsingHeight;
-@property(readonly, nonatomic) double assignedHeight; // @synthesize assignedHeight=_assignedHeight;
-@property(nonatomic) _Bool prefersExpanded; // @synthesize prefersExpanded=_prefersExpanded;
-@property(nonatomic, getter=isCollapsible) _Bool collapsible; // @synthesize collapsible=_collapsible;
-@property(nonatomic) double preferredHeight; // @synthesize preferredHeight=_preferredHeight;
-@property(nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic, getter=isVariableHeight) _Bool variableHeight;
-@property(readonly, nonatomic) double layoutMinimumHeight;
-- (void)setFixedHeight:(double)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)init;

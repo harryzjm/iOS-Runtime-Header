@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUExpandableHoursViewDelegate-Protocol.h>
-#import <MapsUI/MUPlaceVerticalCardContainerViewDelegate-Protocol.h>
+#import "MUPlaceVerticalCardContainerView.h"
 
 @class MUPlaceHoursSectionViewConfiguration, MUPlaceSectionRowView, NSArray, NSString, UIView;
 @protocol MULabelViewProtocol, MUPlaceHoursSectionViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceHoursSectionView <MUPlaceVerticalCardContainerViewDelegate, MUExpandableHoursViewDelegate>
+@interface MUPlaceHoursSectionView : MUPlaceVerticalCardContainerView
 {
     UIView<MULabelViewProtocol> *_moreLabel;
     MUPlaceSectionRowView *_moreRowView;
@@ -21,7 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) MUPlaceHoursSectionViewConfiguration *sectionViewConfiguration; // @synthesize sectionViewConfiguration=_sectionViewConfiguration;
+@property(readonly, nonatomic) MUPlaceHoursSectionViewConfiguration *sectionViewConfiguration; // @synthesize sectionViewConfiguration=_sectionViewConfiguration;
 @property(nonatomic) __weak id <MUPlaceHoursSectionViewDelegate> expandDelegate; // @synthesize expandDelegate=_expandDelegate;
 - (void)expandableHoursViewDidExpand:(id)arg1;
 - (void)verticalCardContainerView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;

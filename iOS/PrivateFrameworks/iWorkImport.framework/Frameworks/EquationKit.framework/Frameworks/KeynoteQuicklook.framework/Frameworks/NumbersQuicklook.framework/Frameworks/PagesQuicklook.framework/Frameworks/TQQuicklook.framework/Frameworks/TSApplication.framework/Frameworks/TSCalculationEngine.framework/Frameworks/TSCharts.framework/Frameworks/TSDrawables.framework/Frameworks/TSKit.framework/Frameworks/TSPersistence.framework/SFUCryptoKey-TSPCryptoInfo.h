@@ -6,11 +6,9 @@
 
 #import <TSUtility/SFUCryptoKey.h>
 
-#import <TSPersistence/TSPMutableCryptoInfo-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface SFUCryptoKey (TSPCryptoInfo) <TSPMutableCryptoInfo>
+@interface SFUCryptoKey (TSPCryptoInfo)
 - (void)incrementDecodedLengthBy:(unsigned long long)arg1;
 - (void)addBlockInfo:(id)arg1;
 - (void)reset;

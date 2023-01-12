@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 @protocol IBAutolayoutItem;
 
-@interface IBAutolayoutAmbiguityStatus : NSObject <IBBinaryArchiving>
+@interface IBAutolayoutAmbiguityStatus : NSObject
 {
     NSObject<IBAutolayoutItem> *_view;
     unsigned long long _ambiguityStatusMask;

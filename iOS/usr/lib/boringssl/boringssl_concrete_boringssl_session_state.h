@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <boringssl/OS_boringssl_session_state-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface boringssl_concrete_boringssl_session_state : NSObject <OS_boringssl_session_state>
+@interface boringssl_concrete_boringssl_session_state : NSObject
 {
     unsigned char cached_content_type;
     unsigned char used_extended_master_secret;

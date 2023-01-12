@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     UIKBTree *_attrlistRight;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSDictionary *hints; // @synthesize hints=_hints;
 @property struct CGSize defaultKeySize; // @synthesize defaultKeySize=_defaultKeySize;
 @property double rowWidth; // @synthesize rowWidth=_rowWidth;

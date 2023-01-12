@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_recycleViewIfNecessary:(id)arg1 withDataSource:(id)arg2;
 - (_Bool)_axHasMultipleViews;
 - (id)_accessibilityListCell;
 - (_Bool)_axShouldForwardToListCell;

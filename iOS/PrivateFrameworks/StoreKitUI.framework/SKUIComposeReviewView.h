@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/SKUIComposeReviewHeaderDelegate-Protocol.h>
-#import <StoreKitUI/UITextContentViewDelegate-Protocol.h>
-
 @class NSString, SKUIComposeReviewHeaderView, SKUIReviewMetadata, SULoadingView, SUTextContentView, UIScrollView;
 @protocol SKUIComposeReviewViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIComposeReviewView : UIView <SKUIComposeReviewHeaderDelegate, UITextContentViewDelegate>
+@interface SKUIComposeReviewView : UIView
 {
     long long _currentBodyLength;
     id <SKUIComposeReviewViewDelegate> _delegate;

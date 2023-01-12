@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <InstallCoordination/NSCopying-Protocol.h>
-#import <InstallCoordination/NSSecureCoding-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface IXDataPromiseSeed : NSObject <NSSecureCoding, NSCopying>
+__attribute__((visibility("hidden")))
+@interface IXDataPromiseSeed : NSObject
 {
     NSString *_name;
     unsigned long long _creatorIdentifier;

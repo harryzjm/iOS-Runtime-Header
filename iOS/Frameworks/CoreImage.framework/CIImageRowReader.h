@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreImage/ImageRowReading-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CIImageRowReader : NSObject <ImageRowReading>
+@interface CIImageRowReader : NSObject
 {
     unsigned long long height;
     unsigned long long width;

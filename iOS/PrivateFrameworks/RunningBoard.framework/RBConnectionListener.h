@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/NSXPCListenerDelegate-Protocol.h>
-#import <RunningBoard/RBStateCapturing-Protocol.h>
-
 @class NSMapTable, NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_os_transaction, OS_xpc_object, RBDaemonContextProviding;
 
 __attribute__((visibility("hidden")))
-@interface RBConnectionListener : NSObject <NSXPCListenerDelegate, RBStateCapturing>
+@interface RBConnectionListener : NSObject
 {
     struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_queue;

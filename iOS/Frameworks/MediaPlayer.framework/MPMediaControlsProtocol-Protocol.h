@@ -6,7 +6,10 @@
 
 #import <MediaPlayer/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol MPMediaControlsProtocol <NSObject>
+- (void)setTappedCustomRowIdentifier:(NSString *)arg1;
 - (void)setDismissalReason:(unsigned long long)arg1;
 - (void)openConnection;
 @end

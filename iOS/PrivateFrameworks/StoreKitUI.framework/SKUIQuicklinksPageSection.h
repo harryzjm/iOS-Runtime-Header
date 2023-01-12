@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIQuicklinksViewControllerDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSString, SKUIQuicklinksPageComponent, SKUIQuicklinksViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIQuicklinksPageSection <SKUIQuicklinksViewControllerDelegate>
+@interface SKUIQuicklinksPageSection : SKUIStorePageSection
 {
     SKUIQuicklinksViewController *_quicklinksViewController;
 }

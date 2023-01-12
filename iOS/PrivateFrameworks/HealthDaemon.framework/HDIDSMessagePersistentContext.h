@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/NSSecureCoding-Protocol.h>
-
 @class NSDate, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDIDSMessagePersistentContext : NSObject <NSSecureCoding>
+@interface HDIDSMessagePersistentContext : NSObject
 {
     _Bool _fromRequest;
     unsigned short _messageID;

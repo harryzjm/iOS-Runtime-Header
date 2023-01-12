@@ -6,24 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <DeviceManagementTools/DMTEnrollmentInitiating-Protocol.h>
-#import <DeviceManagementTools/DMTEnrollmentNetworkNameProviding-Protocol.h>
-#import <DeviceManagementTools/DMTEnrollmentOrganizationProviding-Protocol.h>
-#import <DeviceManagementTools/DMTEnrollmentPrerequisiteReceiving-Protocol.h>
-#import <DeviceManagementTools/DMTEnrollmentStateProviding-Protocol.h>
-
 @class CATOperationQueue, DMTNetworkCredential, NSData, NSError, NSString;
-@protocol DMTAutomatedDeviceEnrollmentPrimitives, DMTErasePrimitives, DMTNetworkingPrimitives, DMTPowerOffPrimitives, DMTProfileInstallationPrimitives;
+@protocol DMTActivationPrimitives, DMTAutomatedDeviceEnrollmentPrimitives, DMTEnrollmentInformationPrimitives, DMTErasePrimitives, DMTInternetReachabilityPrimitives, DMTPowerOffPrimitives, DMTProfileInstallationPrimitives, DMTWiFiPrimitives;
 
 __attribute__((visibility("hidden")))
-@interface DMTAutomatedDeviceEnroller : NSObject <DMTEnrollmentPrerequisiteReceiving, DMTEnrollmentInitiating, DMTEnrollmentStateProviding, DMTEnrollmentOrganizationProviding, DMTEnrollmentNetworkNameProviding>
+@interface DMTAutomatedDeviceEnroller : NSObject
 {
     _Bool _finalized;
+    id <DMTErasePrimitives> _nonDestructiveErasePrimitives;
     id <DMTAutomatedDeviceEnrollmentPrimitives> _enrollmentPrimitives;
-    id <DMTNetworkingPrimitives> _networkingPrimitives;
+    id <DMTEnrollmentInformationPrimitives> _enrollmentInformationPrimitives;
+    id <DMTInternetReachabilityPrimitives> _reachabilityPrimitives;
+    id <DMTActivationPrimitives> _activationPrimitives;
+    id <DMTWiFiPrimitives> _wifiPrimitives;
     id <DMTProfileInstallationPrimitives> _profileInstallationPrimitives;
     id <DMTErasePrimitives> _destructiveErasePrimitives;
-    id <DMTErasePrimitives> _nonDestructiveErasePrimitives;
     id <DMTPowerOffPrimitives> _powerOffPrimitives;
     NSString *_organizationName;
     long long _organizationType;
@@ -36,9 +33,11 @@ __attribute__((visibility("hidden")))
     NSData *_networkPayload;
     NSString *_enrollmentNonce;
     long long _postEnrollmentBehavior;
+    long long _networkConfiguration;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long networkConfiguration; // @synthesize networkConfiguration=_networkConfiguration;
 @property(nonatomic) long long postEnrollmentBehavior; // @synthesize postEnrollmentBehavior=_postEnrollmentBehavior;
 @property(copy, nonatomic) NSString *enrollmentNonce; // @synthesize enrollmentNonce=_enrollmentNonce;
 @property(copy, nonatomic) NSData *networkPayload; // @synthesize networkPayload=_networkPayload;
@@ -52,17 +51,28 @@ __attribute__((visibility("hidden")))
 @property long long organizationType; // @synthesize organizationType=_organizationType;
 @property(copy) NSString *organizationName; // @synthesize organizationName=_organizationName;
 @property(readonly, nonatomic) id <DMTPowerOffPrimitives> powerOffPrimitives; // @synthesize powerOffPrimitives=_powerOffPrimitives;
-@property(readonly, nonatomic) id <DMTErasePrimitives> nonDestructiveErasePrimitives; // @synthesize nonDestructiveErasePrimitives=_nonDestructiveErasePrimitives;
 @property(readonly, nonatomic) id <DMTErasePrimitives> destructiveErasePrimitives; // @synthesize destructiveErasePrimitives=_destructiveErasePrimitives;
 @property(readonly, nonatomic) id <DMTProfileInstallationPrimitives> profileInstallationPrimitives; // @synthesize profileInstallationPrimitives=_profileInstallationPrimitives;
-@property(readonly, nonatomic) id <DMTNetworkingPrimitives> networkingPrimitives; // @synthesize networkingPrimitives=_networkingPrimitives;
+@property(readonly, nonatomic) id <DMTWiFiPrimitives> wifiPrimitives; // @synthesize wifiPrimitives=_wifiPrimitives;
+@property(readonly, nonatomic) id <DMTActivationPrimitives> activationPrimitives; // @synthesize activationPrimitives=_activationPrimitives;
+@property(readonly, nonatomic) id <DMTInternetReachabilityPrimitives> reachabilityPrimitives; // @synthesize reachabilityPrimitives=_reachabilityPrimitives;
+@property(readonly, nonatomic) id <DMTEnrollmentInformationPrimitives> enrollmentInformationPrimitives; // @synthesize enrollmentInformationPrimitives=_enrollmentInformationPrimitives;
 @property(readonly, nonatomic) id <DMTAutomatedDeviceEnrollmentPrimitives> enrollmentPrimitives; // @synthesize enrollmentPrimitives=_enrollmentPrimitives;
 - (void)eraseAllContentAndSettingsDidFinishWithError:(id)arg1;
-- (void)eraseAllContentAndSettings;
+- (void)eraseAllContentAndSettingsWithExternalError:(id)arg1;
 - (void)enrollmentCompleteWithResponse:(id)arg1 error:(id)arg2;
 - (void)enrollDevice;
+- (void)checkIfAlreadyEnrolled;
+- (void)activationCompleteWithSuccess:(_Bool)arg1 error:(id)arg2;
+- (void)activateDevice;
+- (void)activationStatusFetchComplete:(_Bool)arg1 error:(id)arg2;
+- (void)checkActivationStatus;
+- (void)didDisassociateFromNetworkWithSuccess:(_Bool)arg1 error:(id)arg2;
+- (void)disassociateWiFi;
 - (void)didJoinNetworkWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)joinNetworkUsingCredentials;
+- (void)profileUninstallDidFinish:(id)arg1;
+- (void)uninstallProfile;
 - (void)profileInstallationDidFinish:(id)arg1;
 - (void)installProfile;
 - (void)verifyProfile;
@@ -70,11 +80,13 @@ __attribute__((visibility("hidden")))
 - (void)timeoutOperationDidFinish:(id)arg1;
 - (void)waitForReachabilityWithTimeout:(double)arg1;
 - (void)tearDownWithFatalError:(id)arg1;
-- (void)eraseAndShutDown;
-- (void)eraseAndRestart;
+@property(readonly, nonatomic) id <DMTErasePrimitives> nonDestructiveErasePrimitives; // @synthesize nonDestructiveErasePrimitives=_nonDestructiveErasePrimitives;
+- (void)eraseCurrentNetworkIfNeeded;
+- (void)eraseAndShutDownWithExternalError:(id)arg1;
+- (void)eraseAndRestartWithExternalError:(id)arg1;
 - (void)beginAutomatedDeviceEnrollment;
-- (void)setNetworkCredential:(id)arg1 networkPayload:(id)arg2 enrollmentNonce:(id)arg3 postEnrollmentBehavior:(long long)arg4 organizationName:(id)arg5 organizationType:(long long)arg6;
-- (id)initWithEnrollmentPrimitives:(id)arg1 networkingPrimitives:(id)arg2 profileInstallationPrimitives:(id)arg3 destructiveErasePrimitives:(id)arg4 nonDestructiveErasePrimitives:(id)arg5 powerOffPrimitives:(id)arg6;
+- (void)setNetworkCredential:(id)arg1 networkPayload:(id)arg2 enrollmentNonce:(id)arg3 postEnrollmentBehavior:(long long)arg4 organizationName:(id)arg5 organizationType:(long long)arg6 networkConfiguration:(long long)arg7;
+- (id)initWithEnrollmentPrimitives:(id)arg1 enrollmentInformationPrimitives:(id)arg2 reachabilityPrimitives:(id)arg3 activationPrimitives:(id)arg4 wifiPrimitives:(id)arg5 profileInstallationPrimitives:(id)arg6 destructiveErasePrimitives:(id)arg7 nonDestructiveErasePrimitives:(id)arg8 powerOffPrimitives:(id)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

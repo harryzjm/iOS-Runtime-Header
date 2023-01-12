@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSShardItemProtocol-Protocol.h>
-#import <BusinessChatService/NSCopying-Protocol.h>
-#import <BusinessChatService/NSSecureCoding-Protocol.h>
-
 @class NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSShardItem : NSObject <BCSShardItemProtocol, NSCopying, NSSecureCoding>
+@interface BCSShardItem : NSObject
 {
     NSString *_base64EncodedString;
     long long _type;

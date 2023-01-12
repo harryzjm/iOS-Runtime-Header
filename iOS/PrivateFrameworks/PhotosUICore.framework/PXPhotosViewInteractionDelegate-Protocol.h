@@ -6,10 +6,11 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSObject, PXPhotosViewInteraction;
+@class NSObject, NSUndoManager, PXPhotosViewInteraction;
 @protocol PXAnonymousViewController;
 
 @protocol PXPhotosViewInteractionDelegate <NSObject>
+- (NSUndoManager *)undoManagerForPhotosInteraction:(PXPhotosViewInteraction *)arg1;
 - (NSObject<PXAnonymousViewController> *)presentingViewControllerForPhotosInteraction:(PXPhotosViewInteraction *)arg1;
 @end
 

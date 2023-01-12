@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)_URLParameterForLimit:(id)arg1;
 + (id)_URLParameterForSort:(id)arg1;
 + (id)_URLParameterWithSharedPurchases;
++ (id)_URLParameterWithGenreIDsFilter:(id)arg1;
 + (id)_URLParameterWithGenreFilter:(id)arg1;
 + (id)_URLParameterFilterWithShowIdentifier:(id)arg1;
 + (id)_URLParameterWithOwnerIdentifier:(id)arg1;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (id)_URLRequestWithURLString:(id)arg1;
 + (void)_addTypeFilterToURL:(id *)arg1 forRequest:(id)arg2;
 + (id)genresRequestWithOwnerIdentifier:(id)arg1;
++ (id)genresRequestForVUIFamilySharingGenreIDsFilter:(id)arg1 withOwnerIdentifier:(id)arg2;
 + (id)genresRequestForVUIFamilySharingGenre:(id)arg1 withOwnerIdentifier:(id)arg2;
 + (id)showsPurchasesRequestWithOwnerIdentifier:(id)arg1;
 + (id)episodesRequestWithShowIdentifier:(id)arg1 withOwnerIdentifier:(id)arg2;

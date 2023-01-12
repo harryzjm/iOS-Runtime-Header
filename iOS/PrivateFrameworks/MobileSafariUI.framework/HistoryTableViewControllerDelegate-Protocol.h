@@ -11,8 +11,6 @@
 @protocol HistoryTableViewControllerDelegate <BookmarksPanelViewControllerDelegate>
 
 @optional
-- (void)historyTableViewControllerDidDismissPopover:(HistoryTableViewController *)arg1;
-- (void)historyTableViewControllerDidPresentPopover:(HistoryTableViewController *)arg1;
 - (void)historyTableViewControllerDidEndEditing:(HistoryTableViewController *)arg1;
 - (void)historyTableViewControllerDidBeginEditing:(HistoryTableViewController *)arg1;
 @end

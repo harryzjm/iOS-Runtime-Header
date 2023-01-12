@@ -4,24 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC9PaymentUI25PaymentAuthorizationModel : _TtCs12_SwiftObject
+@interface _TtC9PaymentUI25PaymentAuthorizationModel
 {
-    MISSING_TYPE *_authorizationError;
-    MISSING_TYPE *_shippingUnservicableError;
+    MISSING_TYPE *_shippingUnserviceableError;
     MISSING_TYPE *_merchant;
+    MISSING_TYPE *_showAppleCashLogo;
     MISSING_TYPE *_peerPayment;
     MISSING_TYPE *_passes;
     MISSING_TYPE *_billingAddressInfo;
     MISSING_TYPE *_paymentSummary;
     MISSING_TYPE *_shipping;
     MISSING_TYPE *shippingContact;
-    MISSING_TYPE *_state;
+    MISSING_TYPE *requestType;
+    MISSING_TYPE *_assessmentCollection;
+    MISSING_TYPE *_fundingModeObserver;
     MISSING_TYPE *_paymentPassPromotion;
-    MISSING_TYPE *lastSetShippingUnservicableError;
+    MISSING_TYPE *_internalFundingMode;
+    MISSING_TYPE *lastSetShippingUnserviceableError;
+    MISSING_TYPE *authenticator;
     MISSING_TYPE *context;
 }
 

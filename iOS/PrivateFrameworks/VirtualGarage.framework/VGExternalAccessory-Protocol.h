@@ -10,7 +10,6 @@
 @class NSString, VGVehicle;
 
 @protocol VGExternalAccessory <NSObject, VGVehicleStateProviding>
-- (_Bool)isConnectedToCarPlayAccessory;
 - (_Bool)isConnectedToAccessoryWithIdentifier:(NSString *)arg1;
 - (_Bool)isConnectedToVehicle:(VGVehicle *)arg1;
 @end

@@ -6,11 +6,7 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-#import <TSTables/NSMutableCopying-Protocol.h>
-#import <TSTables/TSTStrokeLayerEnumerating-Protocol.h>
-
-@interface TSTStrokeLayer : TSPObject <NSCopying, NSMutableCopying, TSTStrokeLayerEnumerating>
+@interface TSTStrokeLayer : TSPObject
 {
     struct vector<TSTStrokeLayerRun, std::allocator<TSTStrokeLayerRun>> _strokeRuns;
     unsigned int _columnOrRowIndex;
@@ -30,15 +26,17 @@
 - (void)p_invalidate;
 - (void)p_setStroke:(id)arg1 inRange:(struct TSTSimpleRange)arg2 order:(int)arg3;
 - (void)p_appendStroke:(id)arg1 inRange:(struct TSTSimpleRange)arg2 order:(int)arg3;
-- (void)replaceStrokeLayerAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (id)strokeLayerAtIndex:(unsigned long long)arg1;
 @property(readonly) unsigned long long strokeLayerCount;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)strokeLayerModifiedByRemovingRangeAt:(struct TSTSimpleRange)arg1;
 - (id)strokeLayerModifiedByInsertingSpaceAt:(struct TSTSimpleRange)arg1;
+- (void)enumerateWidthsInRange:(struct TSTSimpleRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStrokesInRange:(struct TSTSimpleRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStrokesUsingBlock:(CDUnknownBlockType)arg1;
+- (CDStruct_875b54ce)nextWidthAndRange:(CDStruct_875b54ce)arg1;
+- (CDStruct_875b54ce)findWidthAndRangeAtIndex:(long long)arg1;
 - (id)nextStrokeAndRange:(id)arg1;
 - (id)findStrokeAndRangeAtIndex:(long long)arg1;
 - (int)startingStrokeOrder;

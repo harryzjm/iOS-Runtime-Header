@@ -6,13 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <ManagedSettingsUI/_TtP17ManagedSettingsUI32ShieldConfigurationExtensionHost_-Protocol.h>
-#import <ManagedSettingsUI/_TtP17ManagedSettingsUI34ShieldConfigurationExtensionVendor_-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC17ManagedSettingsUI35ShieldConfigurationExtensionContext : NSExtensionContext <_TtP17ManagedSettingsUI32ShieldConfigurationExtensionHost_, _TtP17ManagedSettingsUI34ShieldConfigurationExtensionVendor_>
+@interface _TtC17ManagedSettingsUI35ShieldConfigurationExtensionContext : NSExtensionContext
 {
     MISSING_TYPE *$__lazy_storage_$_shieldConfigurationDataSource;
 }

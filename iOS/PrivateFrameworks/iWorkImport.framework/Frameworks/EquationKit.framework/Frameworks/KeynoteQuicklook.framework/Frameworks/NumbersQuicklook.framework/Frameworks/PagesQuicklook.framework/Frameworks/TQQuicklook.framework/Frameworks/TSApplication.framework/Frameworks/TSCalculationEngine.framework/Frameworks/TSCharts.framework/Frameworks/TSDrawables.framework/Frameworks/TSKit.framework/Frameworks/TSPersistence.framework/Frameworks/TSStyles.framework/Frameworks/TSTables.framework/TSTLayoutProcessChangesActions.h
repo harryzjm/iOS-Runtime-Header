@@ -8,28 +8,30 @@
 
 @interface TSTLayoutProcessChangesActions : NSObject
 {
-    _Bool mLayoutInvalidate;
-    _Bool mLayoutInvalidateProvider;
-    _Bool mLayoutInvalidateSize;
-    _Bool mLayoutInvalidateTableNameVisibility;
-    _Bool mLayoutSpacesInvalidateCoordinates;
-    _Bool mLayoutSpacesInvalidateTableOffsets;
-    _Bool mLayoutInvalidateChildren;
-    _Bool mLayoutUpdateChildren;
+    _Bool _layoutInvalidate;
+    _Bool _layoutInvalidateProvider;
+    _Bool _layoutInvalidateSize;
+    _Bool _layoutInvalidateTableNameVisibility;
+    _Bool _layoutSpacesInvalidateCoordinates;
+    _Bool _layoutSpacesInvalidateTableOffsets;
+    _Bool _layoutInvalidateChildren;
+    _Bool _layoutUpdateChildren;
+    _Bool _layoutResetScaleToFit;
     unsigned int _layoutSpacesInvalidateCoordinatesAfterRow;
     struct TSUCellCoord _editingCellIDForInvalidation;
 }
 
+@property(nonatomic) _Bool layoutResetScaleToFit; // @synthesize layoutResetScaleToFit=_layoutResetScaleToFit;
 @property(nonatomic) struct TSUCellCoord editingCellIDForInvalidation; // @synthesize editingCellIDForInvalidation=_editingCellIDForInvalidation;
+@property(nonatomic) _Bool layoutUpdateChildren; // @synthesize layoutUpdateChildren=_layoutUpdateChildren;
+@property(nonatomic) _Bool layoutInvalidateChildren; // @synthesize layoutInvalidateChildren=_layoutInvalidateChildren;
+@property(nonatomic) _Bool layoutSpacesInvalidateTableOffsets; // @synthesize layoutSpacesInvalidateTableOffsets=_layoutSpacesInvalidateTableOffsets;
 @property(nonatomic) unsigned int layoutSpacesInvalidateCoordinatesAfterRow; // @synthesize layoutSpacesInvalidateCoordinatesAfterRow=_layoutSpacesInvalidateCoordinatesAfterRow;
-@property(nonatomic) _Bool layoutUpdateChildren; // @synthesize layoutUpdateChildren=mLayoutUpdateChildren;
-@property(nonatomic) _Bool layoutInvalidateChildren; // @synthesize layoutInvalidateChildren=mLayoutInvalidateChildren;
-@property(nonatomic) _Bool layoutSpacesInvalidateTableOffsets; // @synthesize layoutSpacesInvalidateTableOffsets=mLayoutSpacesInvalidateTableOffsets;
-@property(nonatomic) _Bool layoutSpacesInvalidateCoordinates; // @synthesize layoutSpacesInvalidateCoordinates=mLayoutSpacesInvalidateCoordinates;
-@property(nonatomic) _Bool layoutInvalidateTableNameVisibility; // @synthesize layoutInvalidateTableNameVisibility=mLayoutInvalidateTableNameVisibility;
-@property(nonatomic) _Bool layoutInvalidateSize; // @synthesize layoutInvalidateSize=mLayoutInvalidateSize;
-@property(nonatomic) _Bool layoutInvalidateProvider; // @synthesize layoutInvalidateProvider=mLayoutInvalidateProvider;
-@property(nonatomic) _Bool layoutInvalidate; // @synthesize layoutInvalidate=mLayoutInvalidate;
+@property(nonatomic) _Bool layoutSpacesInvalidateCoordinates; // @synthesize layoutSpacesInvalidateCoordinates=_layoutSpacesInvalidateCoordinates;
+@property(nonatomic) _Bool layoutInvalidateTableNameVisibility; // @synthesize layoutInvalidateTableNameVisibility=_layoutInvalidateTableNameVisibility;
+@property(nonatomic) _Bool layoutInvalidateSize; // @synthesize layoutInvalidateSize=_layoutInvalidateSize;
+@property(nonatomic) _Bool layoutInvalidateProvider; // @synthesize layoutInvalidateProvider=_layoutInvalidateProvider;
+@property(nonatomic) _Bool layoutInvalidate; // @synthesize layoutInvalidate=_layoutInvalidate;
 - (void)layoutSpacesInvalidateCoordinatesAfterRow:(id)arg1;
 - (id)init;
 

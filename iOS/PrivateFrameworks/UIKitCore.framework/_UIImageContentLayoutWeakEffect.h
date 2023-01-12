@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIImageContentEffect-Protocol.h>
-
 @class NSString, UITraitCollection;
 @protocol _UIImageContentEffect;
 
 __attribute__((visibility("hidden")))
-@interface _UIImageContentLayoutWeakEffect : NSObject <_UIImageContentEffect>
+@interface _UIImageContentLayoutWeakEffect : NSObject
 {
     id <_UIImageContentEffect> _weakEffect;
 }
@@ -21,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UITraitCollection *traitCollection;
 - (id)_symbolConfigurationForSource:(id)arg1;
 - (long long)_effectiveRenderingModeForSource:(id)arg1 symbolConfiguration:(id)arg2;
-- (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 symbolConfiguration:(id)arg3 withCGImageProvider:(CDUnknownBlockType)arg4 lazy:(_Bool)arg5;
+- (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 symbolConfiguration:(id)arg3 withRenditionResult:(id)arg4 lazy:(_Bool)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

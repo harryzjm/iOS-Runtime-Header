@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isvelocityUsableForVFD) _Bool velocityUsableForVFD; // @synthesize velocityUsableForVFD=_velocityUsableForVFD;
 @property(readonly, nonatomic) unsigned int updateReason; // @synthesize updateReason=_updateReason;
 @property(readonly, nonatomic) struct CAFrameRateRange preferredFrameRateRange; // @synthesize preferredFrameRateRange=_preferredFrameRateRange;
+@property(readonly, nonatomic) _Bool allowsVFD;
 - (id)initWithPreferredFrameRateRange:(struct CAFrameRateRange)arg1 updateReason:(unsigned int)arg2 velocityUsableForVFD:(_Bool)arg3 callback:(CDUnknownBlockType)arg4;
 
 @end

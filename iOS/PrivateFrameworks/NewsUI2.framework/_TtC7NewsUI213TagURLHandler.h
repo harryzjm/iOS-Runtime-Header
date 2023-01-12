@@ -13,6 +13,8 @@
     MISSING_TYPE *patterns;
     MISSING_TYPE *navigator;
     MISSING_TYPE *feedViewContextFactory;
+    MISSING_TYPE *appConfigurationManager;
+    MISSING_TYPE *sportsOnboardingManager;
 }
 
 @end

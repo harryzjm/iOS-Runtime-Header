@@ -30,11 +30,10 @@ __attribute__((visibility("hidden")))
 - (void)setCancellationHandler:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)cancellationHandler;
 - (id)_handlePlaybackResponse:(id)arg1 withPlaybackCacheRequest:(id)arg2 error:(id *)arg3;
-- (id)_loadResultsFromLocalAssetCache;
-- (id)_loadResultsFromMiniSinf;
-- (id)_playbackAuthorizationTokenFromSOD;
-- (_Bool)_canRetrieveLoadResultsFromServerObjectDatabase;
-- (_Bool)_canRetrieveLoadResultsFromMiniSinf;
+- (id)_loadResultsFromServerObjectDatabaseAssets:(id)arg1 hlsAsset:(id)arg2 playbackAuthorizationToken:(id)arg3;
+- (id)_loadResultsFromServerObjectDatabaseAssetsWithMiniSinf:(id)arg1 playbackAuthorizationToken:(id)arg2;
+- (_Bool)_canRetrieveLoadResultsFromServerObjectDatabaseWithAssets:(id *)arg1 hlsAsset:(id *)arg2;
+- (_Bool)_canRetrieveLoadResultsFromMiniSinfWithAssets:(id *)arg1;
 - (void)execute;
 - (void)cancel;
 - (id)description;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualLocalization/VLLocalizationDataProvider-Protocol.h>
-
 @class GEOApplicationAuditToken, GEOTileData, GEOTileKeyMap, GEOTileLoader, GEOVLMetadataTile, NSArray, NSString, geo_isolater;
 @protocol VLLocalizationDataProviderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VLTileDataProvider : NSObject <VLLocalizationDataProvider>
+@interface VLTileDataProvider : NSObject
 {
     id <VLLocalizationDataProviderDelegate> _delegate;
     GEOTileLoader *_tileLoader;
@@ -37,12 +35,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldCacheMetadata; // @synthesize shouldCacheMetadata=_shouldCacheMetadata;
 @property(nonatomic) __weak id <VLLocalizationDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)determineAvailabilityForCoordinate:(const CDStruct_160d0e14 *)arg1 purpose:(long long)arg2 callbackQueue:(id)arg3 callback:(CDUnknownBlockType)arg4;
+- (void)determineAvailabilityForCoordinate:(const CDStruct_c3b9c2ee *)arg1 horizontalAccuracy:(double)arg2 purpose:(long long)arg3 callbackQueue:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)_fetchDataTile:(const struct _GEOTileKey *)arg1 originalKey:(const CDStruct_4c217994 *)arg2 additionalInfo:(const struct _GEOVisualLocalizationTrackAdditionalInfo *)arg3;
 - (id)fileURLForKey:(const CDStruct_4c217994 *)arg1 error:(id *)arg2;
 - (void)_fetchMetadataTile:(const struct _GEOTileKey *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchMetadataForDataKey:(const CDStruct_4c217994 *)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_fetchMetadataForCoordinate:(const CDStruct_160d0e14 *)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_fetchMetadataForCoordinate:(const CDStruct_c3b9c2ee *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_disburseMetadataTileForKey:(const struct _GEOTileKey *)arg1 tileData:(id)arg2 error:(id)arg3;
 - (void)dealloc;
 - (void)_commonInitWithTileLoader:(id)arg1 auditToken:(id)arg2 supportedFormatVersions:(id)arg3;

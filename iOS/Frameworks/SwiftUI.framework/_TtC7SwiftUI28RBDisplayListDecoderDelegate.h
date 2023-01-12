@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SwiftUI/RBDecoderDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI28RBDisplayListDecoderDelegate : NSObject <RBDecoderDelegate>
+@interface _TtC7SwiftUI28RBDisplayListDecoderDelegate : NSObject
 {
     MISSING_TYPE *decoder;
 }

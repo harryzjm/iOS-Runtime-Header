@@ -32,7 +32,7 @@
 @property(readonly, nonatomic) id <MTLCommandBuffer> commandBuffer; // @synthesize commandBuffer=_cmdBuffer;
 - (id)debugDescription;
 - (void)releaseHeapBlock:(id)arg1 heapProvider:(id)arg2;
-- (id)newHeapBlock:(unsigned long long)arg1;
+- (id)newHeapBlock:(unsigned long long)arg1 protections:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)initWithCommandBuffer:(id)arg1;
 - (void)addHandlerToCommandBuffer:(id)arg1;

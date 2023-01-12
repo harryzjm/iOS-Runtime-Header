@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OADClient-Protocol.h>
-
 @class CHDAnchor, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CHDOfficeArtClient : NSObject <OADClient>
+@interface CHDOfficeArtClient : NSObject
 {
     CHDAnchor *mAnchor;
 }

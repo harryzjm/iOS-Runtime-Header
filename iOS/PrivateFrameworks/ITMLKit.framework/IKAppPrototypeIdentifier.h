@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ITMLKit/NSCopying-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface IKAppPrototypeIdentifier : NSObject <NSCopying>
+@interface IKAppPrototypeIdentifier : NSObject
 {
     NSString *_identifier;
     NSString *_selector;

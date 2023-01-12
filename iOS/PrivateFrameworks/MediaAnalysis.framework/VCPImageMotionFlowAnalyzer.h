@@ -4,35 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, NSString, VCPCNNModelEspresso;
+@class MPSImageBilinearScale, MPSImageSpatioTemporalGuidedFilter;
+@protocol MTLCommandQueue, MTLDeviceSPI;
 
 __attribute__((visibility("hidden")))
 @interface VCPImageMotionFlowAnalyzer
 {
-    VCPCNNModelEspresso *_modelEspresso;
-    NSArray *_inputNames;
-    vector_aebc2d99 _inputsData;
-    int _srcWidth;
-    int _srcHeight;
-    int _cnnOutputWidth;
+    int _cnnInputHeight;
+    int _cnnInputWidth;
     int _cnnOutputHeight;
-    NSString *_resConfig;
-    NSMutableArray *_results;
-    float *_flow;
-    _Bool _flushModel;
+    int _cnnOutputWidth;
+    unsigned int _computationAccuracy;
+    id <MTLDeviceSPI> _device;
+    id <MTLCommandQueue> _commandQueue;
+    MPSImageBilinearScale *_bilinearScale;
+    MPSImageSpatioTemporalGuidedFilter *_guidedFilter;
 }
 
-+ (id)sharedModel:(id)arg1 inputNames:(id)arg2;
-- (id).cxx_construct;
++ (id)analyzeWithLightweightOption:(_Bool)arg1 aspectRatio:(id)arg2 computationAccuracy:(unsigned int)arg3 forceCPU:(_Bool)arg4 sharedModel:(_Bool)arg5 flushModel:(_Bool)arg6 cancel:(CDUnknownBlockType)arg7;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) int cnnOutputWidth; // @synthesize cnnOutputWidth=_cnnOutputWidth;
+@property(readonly, nonatomic) int cnnOutputHeight; // @synthesize cnnOutputHeight=_cnnOutputHeight;
+- (int)preferredInputFormat:(int *)arg1 height:(int *)arg2 format:(unsigned int *)arg3;
+- (int)updateModelForAspectRatio:(id)arg1 computationAccuracy:(unsigned int)arg2;
+- (int)guidedUpsampling:(struct __CVBuffer *)arg1 inBGRA:(struct __CVBuffer *)arg2;
+- (int)combineBufferTo:(struct __CVBuffer *)arg1 flowX:(struct __CVBuffer *)arg2 flowY:(struct __CVBuffer *)arg3;
+- (int)scaleFlowTo:(struct __CVBuffer *)arg1;
+- (int)flowScalingTo:(struct __CVBuffer *)arg1 flowBufferY:(struct __CVBuffer *)arg2 scalerX:(float)arg3 scalerY:(float)arg4;
+- (int)flowScalingTo:(struct __CVBuffer *)arg1 scalerX:(float)arg2 scalerY:(float)arg3;
+- (int)getFlowToBuffer:(struct __CVBuffer *)arg1;
 - (float *)getFlowWithHeight:(int *)arg1 andWidth:(int *)arg2;
 - (int)analyzeImages:(struct __CVBuffer *)arg1 secondImage:(struct __CVBuffer *)arg2 cancel:(CDUnknownBlockType)arg3;
-- (int)createInput:(float *)arg1 withBuffer:(struct __CVBuffer *)arg2 cnnInputHeight:(int)arg3 cnnInputWidth:(int)arg4;
-- (int)copyImage:(struct __CVBuffer *)arg1 toData:(float *)arg2 withChannels:(int)arg3;
-- (int)prepareModelForSourceWidth:(int)arg1 andSourceHeight:(int)arg2;
-- (int)prepareModelWithAspectRatio:(float)arg1;
-- (int)creatModel;
-- (void)dealloc;
+- (int)configForAspectRatio:(id)arg1;
+- (int)reInitModel;
+- (int)prepareWithLightweightOption:(_Bool)arg1 aspectRatio:(id)arg2 numLevels:(int)arg3 startLevel:(int)arg4 cancel:(CDUnknownBlockType)arg5;
+- (int)prepareWithLightweightOption:(_Bool)arg1 aspectRatio:(id)arg2 forceCPU:(_Bool)arg3 sharedModel:(_Bool)arg4 flushModel:(_Bool)arg5;
+- (id)initWithLightweightOption:(_Bool)arg1 aspectRatio:(id)arg2 computationAccuracy:(unsigned int)arg3 forceCPU:(_Bool)arg4 sharedModel:(_Bool)arg5 flushModel:(_Bool)arg6 cancel:(CDUnknownBlockType)arg7;
 - (id)init;
 
 @end

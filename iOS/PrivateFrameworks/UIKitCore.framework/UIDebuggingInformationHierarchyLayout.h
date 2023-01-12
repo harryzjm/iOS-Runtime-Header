@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionViewLayout.h"
+
 @class NSDictionary, NSMutableArray, NSMutableDictionary;
 @protocol UIDebuggingInformationHierarchyLayoutDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingInformationHierarchyLayout
+@interface UIDebuggingInformationHierarchyLayout : UICollectionViewLayout
 {
     NSMutableArray *_indexPathsToDelete;
     id <UIDebuggingInformationHierarchyLayoutDelegate> _delegate;

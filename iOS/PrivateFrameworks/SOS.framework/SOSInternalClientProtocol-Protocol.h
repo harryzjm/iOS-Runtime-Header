@@ -6,7 +6,10 @@
 
 #import <SOS/SOSClientProtocol-Protocol.h>
 
+@class SOSStatus;
+
 @protocol SOSInternalClientProtocol <SOSClientProtocol>
+- (void)didUpdateSOSStatus:(SOSStatus *)arg1;
 - (void)didDismissClientSOSBeforeSOSCall:(long long)arg1;
 - (void)dismissClientSOSWithCompletion:(void (^)(_Bool))arg1;
 - (void)updateClientCurrentSOSInteractiveState:(long long)arg1;

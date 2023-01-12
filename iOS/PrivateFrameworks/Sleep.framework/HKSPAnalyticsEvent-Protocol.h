@@ -6,10 +6,13 @@
 
 #import <Sleep/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @protocol HKSPAnalyticsEvent <NSObject>
 @property(readonly, nonatomic) NSDictionary *eventPayload;
 @property(readonly, nonatomic) NSString *eventName;
+
+@optional
+@property(readonly, nonatomic) NSArray *keysRequiringIHAGating;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <MapKit/_MXExtensionContextType-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MXExtensionContext : NSExtensionContext <_MXExtensionContextType>
+@interface _MXExtensionContext : NSExtensionContext
 {
 }
 

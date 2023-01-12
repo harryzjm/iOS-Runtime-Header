@@ -6,15 +6,16 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class NSError, NSString, VKARWalkingFeatureDidUpdateInfo, VKARWalkingFeatureSet, VKLabelMarker, VKMapView, VKMuninJunction, VKMuninRoad, VKVenueBuildingFeatureMarker, VKVenueFeatureMarker;
+@class NSError, NSString, VKARWalkingElevationRequestFailureInfo, VKARWalkingFeatureDidUpdateInfo, VKARWalkingFeatureSet, VKLabelMarker, VKMapView, VKMuninJunction, VKMuninRoad, VKNavigationPuckLocationTracingEvent, VKVenueBuildingFeatureMarker, VKVenueFeatureMarker;
 
 @protocol VKMapViewDelegate <NSObject>
 
 @optional
+- (void)mapLayer:(VKMapView *)arg1 puckLocationTracingEvent:(VKNavigationPuckLocationTracingEvent *)arg2;
+- (void)mapLayer:(VKMapView *)arg1 arWalkingElevationRequestFailure:(VKARWalkingElevationRequestFailureInfo *)arg2;
 - (void)mapLayer:(VKMapView *)arg1 activeARWalkingFeatureDidUpdate:(VKARWalkingFeatureDidUpdateInfo *)arg2;
 - (void)mapLayer:(VKMapView *)arg1 arWalkingFeatureSetStateDidUpdate:(VKARWalkingFeatureSet *)arg2;
 - (void)mapLayer:(VKMapView *)arg1 nearestJunctionDidChange:(VKMuninJunction *)arg2 currentRoad:(VKMuninRoad *)arg3;
-- (void)mapLayer:(VKMapView *)arg1 venueCreated:(VKVenueFeatureMarker *)arg2 venueCreatedBuilding:(VKVenueBuildingFeatureMarker *)arg3;
 - (void)mapLayer:(VKMapView *)arg1 venueWithFocusDidChange:(VKVenueFeatureMarker *)arg2 building:(VKVenueBuildingFeatureMarker *)arg3;
 - (void)mapLayer:(VKMapView *)arg1 didUpdateVerticalYawTo:(double)arg2;
 - (void)mapLayer:(VKMapView *)arg1 willTransitionTo:(long long)arg2;

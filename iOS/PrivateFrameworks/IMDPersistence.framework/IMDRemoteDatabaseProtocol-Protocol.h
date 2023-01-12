@@ -10,8 +10,9 @@
 #import <IMDPersistence/IMDHandleQueries-Protocol.h>
 #import <IMDPersistence/IMDKeyValueQueries-Protocol.h>
 #import <IMDPersistence/IMDMessageQueries-Protocol.h>
+#import <IMDPersistence/IMDNotificationQueries-Protocol.h>
 #import <IMDPersistence/NSObject-Protocol.h>
 
-@protocol IMDRemoteDatabaseProtocol <IMDChatQueries, IMDMessageQueries, IMDHandleQueries, IMDAttachmentQueries, IMDDatabaseQueries, IMDKeyValueQueries, NSObject>
+@protocol IMDRemoteDatabaseProtocol <IMDChatQueries, IMDMessageQueries, IMDHandleQueries, IMDAttachmentQueries, IMDNotificationQueries, IMDDatabaseQueries, IMDKeyValueQueries, NSObject>
 @end
 

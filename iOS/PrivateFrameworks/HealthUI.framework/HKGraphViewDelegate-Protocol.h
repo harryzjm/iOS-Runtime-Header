@@ -27,6 +27,7 @@
 - (_Bool)graphViewPointSelectionDifferentiatesSeriesGroups:(HKGraphView *)arg1;
 
 @optional
+- (long long)defaultAlignmentForTimeScope:(long long)arg1;
 - (void)graphView:(HKGraphView *)arg1 startupTime:(long long)arg2;
 @end
 

@@ -10,35 +10,26 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
-};
-
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
+struct NSDirectionalEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct _NSRange {
@@ -49,23 +40,28 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    _Bool showScanningState;
-    _Bool showScanningStateDuringFaceDetect;
-    double minimumDurationBeforeShowScanningState;
-    _Bool bkCoachingHintsEnabled;
-    double minimumDurationBetweenLeavingCoachingAndCoaching;
-    double minimumDurationShowingCoaching;
-    double durationOnCameraCoveredGlyphBeforeCoaching;
-    double durationToSuppressCameraCoveredWhenWakingWithSmartCover;
-    _Bool coachingDelaysUnlock;
-    _Bool suppressFaceIDDisabledState;
-    _Bool spinBeforeCoaching;
-    unsigned long long substate;
-} CDStruct_29b32c11;
+    _Bool _field1;
+    _Bool _field2;
+    double _field3;
+    _Bool _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    _Bool _field9;
+    _Bool _field10;
+    _Bool _field11;
+    unsigned long long _field12;
+} CDStruct_2960579e;
 
 typedef struct {
-    long long fromState;
-    long long toState;
-    double progress;
-} CDStruct_930a33b1;
+    _Bool _field1;
+} CDStruct_b31ca263;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    long long _field4;
+} CDStruct_7c65fc50;
 

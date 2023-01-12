@@ -25,7 +25,9 @@
 - (id)bundleSubscriptionLookupEntry;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)refreshBundleSubscriptionWithCachePolicy:(unsigned long long)arg1 hideBundleDetectionUI:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)refreshBundleSubscriptionWithCachePolicy:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+@property(nonatomic, readonly) FCBundleSubscription *validatedCachedSubscription;
 @property(nonatomic, retain) id <FCEntitlementsOverrideProviderType> entitlementsOverrideProvider; // @synthesize entitlementsOverrideProvider;
 @property(nonatomic, readonly) FCBundleSubscription *bundleSubscription; // @synthesize bundleSubscription;
 @property(nonatomic, readonly) FCBundleSubscription *cachedSubscription; // @synthesize cachedSubscription;

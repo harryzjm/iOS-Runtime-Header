@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIPanGestureRecognizer.h"
+
 @protocol _UIFocusEnginePanGestureRecognizerDelegate, _UIFocusEnginePanGestureTouchObserver;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusEnginePanGestureRecognizer
+@interface _UIFocusEnginePanGestureRecognizer : UIPanGestureRecognizer
 {
     id <_UIFocusEnginePanGestureTouchObserver> _touchObserver;
 }

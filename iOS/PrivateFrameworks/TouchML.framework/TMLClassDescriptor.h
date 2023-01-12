@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLModelSerialize-Protocol.h>
-
 @class NSDictionary, NSMutableDictionary, NSString, TMLValueExpression;
 
-@interface TMLClassDescriptor : NSObject <TMLModelSerialize>
+@interface TMLClassDescriptor : NSObject
 {
     NSString *_className;
     NSString *_superClassName;

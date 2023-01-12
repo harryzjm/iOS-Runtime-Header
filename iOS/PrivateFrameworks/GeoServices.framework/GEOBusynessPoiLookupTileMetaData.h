@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOBusynessPoiLookupTileMetaData : PBCodable <NSCopying>
+@interface GEOBusynessPoiLookupTileMetaData : PBCodable
 {
     unsigned long long _tileId;
     NSString *_version;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CryptoTokenKit/TKTokenAccessDB-Protocol.h>
-
 @class NSString, NSUserDefaults;
 
 __attribute__((visibility("hidden")))
-@interface TKTokenAccessDBBackedByUserDefaults : NSObject <TKTokenAccessDB>
+@interface TKTokenAccessDBBackedByUserDefaults : NSObject
 {
     NSUserDefaults *_db;
 }

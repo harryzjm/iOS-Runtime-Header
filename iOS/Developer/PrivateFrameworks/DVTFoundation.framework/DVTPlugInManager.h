@@ -82,14 +82,14 @@
 - (void)_saveNonApplePlugInListBasedOnAllowedDescriptors:(id)arg1;
 - (void)_registerDescriptorType:(id)arg1 activationCallback:(CDUnknownBlockType)arg2;
 - (void)_recordNonApplePlugInDescriptor:(id)arg1;
-- (_Bool)_checkValidityForBundle:(id)arg1 error:(id *)arg2;
 - (id)nonApplePlugInDescriptorsNotPreviouslyAllowedOrSkipped;
 - (id)nonApplePlugInDescriptorsPreviouslyAllowed;
 - (id)_nonApplePlugInListDefault;
 @property(readonly, copy) NSArray *nonApplePlugInDescriptors;
 - (id)_extractErrorFromPlugInLoadingException:(id)arg1;
 - (_Bool)_scanForPlugIns:(id *)arg1;
-- (void)_appendRequiredSuperiorPlugInScanRecords:(id)arg1;
+- (void)_initializeBundlesForScanRecords:(id)arg1;
+- (id)_additionalRequiredSuperiorPlugInScanRecords:(id)arg1;
 - (id)_plugInScanRecordsForInitialScan:(_Bool)arg1 linkedFrameworksScanRecords:(id *)arg2;
 - (id)_allFrameworks;
 @property(readonly, copy) NSUUID *plugInHostUUID;
@@ -100,7 +100,7 @@
 @property(readonly, copy) NSArray *defaultSearchPaths;
 - (id)_defaultApplicationSupportSubdirectory;
 @property(readonly, copy) NSArray *extraSearchPaths;
-- (id)_extensionsForExtensionPoint:(id)arg1 matchingPredicate:(id)arg2;
+- (id)_extensionsForExtensionPoint:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)extensionWithIdentifier:(id)arg1;
 - (id)extensionPointWithIdentifier:(id)arg1;
 - (id)_extensionPointWithIdentifier:(id)arg1 forExtension:(id)arg2 orExtensionPoint:(id)arg3 inPlugIn:(id)arg4;

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AVFloat64Range : NSObject <NSCopying>
+@interface AVFloat64Range : NSObject
 {
     double _minimum;
     double _maximum;

@@ -6,23 +6,27 @@
 
 #import <CFNetwork/NSHTTPCookie.h>
 
-#import <AppleMediaServices/AMSHashable-Protocol.h>
-#import <AppleMediaServices/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
-@interface NSHTTPCookie (AMSSecureCoding) <NSSecureCoding, AMSHashable>
+@interface NSHTTPCookie (AMSSecureCoding)
 + (_Bool)supportsSecureCoding;
 + (id)classesForPropertyCoding;
 + (id)ams_cookieByMarkingCookieAsDeleted:(id)arg1;
 + (id)ams_propertiesForCookies:(id)arg1;
-+ (id)ams_dataByArchivingPropertiesOfCookies:(id)arg1 error:(id *)arg2;
 + (id)ams_cookiesForProperties:(id)arg1;
++ (id)ams_cookiesByMergingProperties:(id)arg1 intoProperties:(id)arg2;
++ (id)ams_dataByArchivingPropertiesOfCookies:(id)arg1 error:(id *)arg2;
 + (id)ams_cookiesByUnarchivingPropertyData:(id)arg1 error:(id *)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSString *hashedDescription;
+- (_Bool)ams_matchesURL:(id)arg1;
 - (_Bool)ams_isEquivalent:(id)arg1;
+- (_Bool)ams_isEqualToCookie:(id)arg1;
+- (_Bool)_secureOnlyMatchesURL:(id)arg1;
+- (_Bool)_httpOnlyMatchesURL:(id)arg1;
+- (_Bool)_pathMatchesURL:(id)arg1;
+- (_Bool)_domainMatchesURL:(id)arg1;
 @property(readonly, nonatomic, getter=ams_isExpired) _Bool ams_expired;
 @property(readonly, nonatomic, getter=ams_isDeleted) _Bool ams_deleted;
 @property(readonly, nonatomic, getter=ams_isCookieValidForBag) _Bool ams_cookieValidForBag;

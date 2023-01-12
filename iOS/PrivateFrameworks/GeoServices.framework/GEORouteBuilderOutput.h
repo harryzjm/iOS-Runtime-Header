@@ -21,19 +21,19 @@ __attribute__((visibility("hidden")))
     NSArray *_pointSections;
     GEOComposedRouteCellularCoverage *_cellularCoverage;
     GEOMapRegion *_boundingMapRegion;
+    GEOElevationProfile *_elevationProfile;
     double _distance;
     _Bool _usesZilch;
     NSArray *_cameraInfos;
-    NSArray *_roadComplexities;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) double distance; // @synthesize distance=_distance;
+@property(retain, nonatomic) GEOElevationProfile *elevationProfile; // @synthesize elevationProfile=_elevationProfile;
 @property(retain, nonatomic) GEOMapRegion *boundingMapRegion; // @synthesize boundingMapRegion=_boundingMapRegion;
 @property(retain, nonatomic) NSArray *pointSections; // @synthesize pointSections=_pointSections;
 @property(nonatomic) _Bool usesZilch; // @synthesize usesZilch=_usesZilch;
 @property(retain, nonatomic) GEOComposedRouteCellularCoverage *cellularCoverage; // @synthesize cellularCoverage=_cellularCoverage;
-@property(retain, nonatomic) NSArray *roadComplexities; // @synthesize roadComplexities=_roadComplexities;
 @property(retain, nonatomic) NSArray *cameraInfos; // @synthesize cameraInfos=_cameraInfos;
 @property(retain, nonatomic) NSArray *visualInfos; // @synthesize visualInfos=_visualInfos;
 @property(retain, nonatomic) NSArray *enrouteNotices; // @synthesize enrouteNotices=_enrouteNotices;
@@ -42,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *segments; // @synthesize segments=_segments;
 @property(retain, nonatomic) NSArray *legs; // @synthesize legs=_legs;
 @property(retain, nonatomic) GEOComposedRouteCoordinateArray *coordinatesArray; // @synthesize coordinatesArray=_coordinatesArray;
-@property(readonly, nonatomic) GEOElevationProfile *elevationProfile;
 
 @end
 

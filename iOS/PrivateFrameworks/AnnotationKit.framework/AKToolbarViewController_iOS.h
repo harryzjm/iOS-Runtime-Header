@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AnnotationKit/AKSignatureCreationControllerDelegate-Protocol.h>
-#import <AnnotationKit/AKSignaturesViewControllerDelegate-Protocol.h>
-#import <AnnotationKit/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import "AKToolbarViewController.h"
 
 @class AKColorPickerViewController, AKFloatingAttributePickerViewController, AKLineStylesViewController, AKSignaturesViewController_iOS, AKTextAttributesViewController, NSArray, NSLayoutConstraint, NSString, UIAlertController, UIBarButtonItem, UIColor, UIView;
 
-@interface AKToolbarViewController_iOS <AKSignaturesViewControllerDelegate, AKSignatureCreationControllerDelegate, UIPopoverPresentationControllerDelegate>
+@interface AKToolbarViewController_iOS : AKToolbarViewController
 {
     UIColor *_barTintColor;
     UIColor *_tintColor;

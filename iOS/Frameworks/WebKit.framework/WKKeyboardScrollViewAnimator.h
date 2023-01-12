@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/WKKeyboardScrollableInternal-Protocol.h>
-
 @class NSString;
 @protocol WKKeyboardScrollViewAnimatorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WKKeyboardScrollViewAnimator : NSObject <WKKeyboardScrollableInternal>
+@interface WKKeyboardScrollViewAnimator : NSObject
 {
     struct WeakObjCPtr<UIScrollView> _scrollView;
     struct RetainPtr<WKKeyboardScrollingAnimator> _animator;
@@ -27,8 +25,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <WKKeyboardScrollViewAnimatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)didFinishScrolling;
-- (RectEdges_76d77e37)rubberbandableDirections;
-- (RectEdges_76d77e37)scrollableDirectionsFromOffset:(struct CGPoint)arg1;
+- (RectEdges_e190dc78)rubberbandableDirections;
+- (RectEdges_e190dc78)scrollableDirectionsFromOffset:(struct CGPoint)arg1;
 - (struct CGSize)interactiveScrollVelocity;
 - (struct CGPoint)boundedContentOffset:(struct CGPoint)arg1;
 - (struct CGPoint)contentOffset;

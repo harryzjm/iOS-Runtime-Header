@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
 @class IBICDeviceThinningTraits, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString;
 
-@interface IBICCatalogCompilerOptions : NSObject <IBBinaryArchiving, NSCopying>
+@interface IBICCatalogCompilerOptions : NSObject
 {
     NSMutableSet *_impliedIdiomIdentifiers;
+    NSMutableDictionary *_universalIconSpecializedIdiomsByPlatformIdentifier;
     _Bool _compressPNGs;
     _Bool _enableOnDemandResources;
     _Bool _enableIncrementalDistill;
+    _Bool _targetingAppStoreDeployment;
     _Bool _includeAllAppIcons;
-    _Bool _thinArtwork;
     _Bool _dumpAssets;
     _Bool _includeStickerContent;
     _Bool _includeLocalizationsInInfoPlist;
@@ -57,6 +55,7 @@
     NSString *_xcodeBuildVersion;
     NSString *_xcodeProductVersion;
     NSString *_developmentLanguage;
+    NSNumber *_agentWaitDuration;
     NSString *_issueTextForResizableImage;
     NSString *_issueTextForTemplateRenderingIntent;
     IBICDeviceThinningTraits *_filterForDeviceTraits;
@@ -74,6 +73,7 @@
 @property _Bool supportsTemplateRenderingIntent; // @synthesize supportsTemplateRenderingIntent=_supportsTemplateRenderingIntent;
 @property(copy) NSString *issueTextForResizableImage; // @synthesize issueTextForResizableImage=_issueTextForResizableImage;
 @property _Bool supportsResizableImages; // @synthesize supportsResizableImages=_supportsResizableImages;
+@property(copy, nonatomic) NSNumber *agentWaitDuration; // @synthesize agentWaitDuration=_agentWaitDuration;
 @property(nonatomic) _Bool includeLocalizationsInInfoPlist; // @synthesize includeLocalizationsInInfoPlist=_includeLocalizationsInInfoPlist;
 @property(copy, nonatomic) NSString *developmentLanguage; // @synthesize developmentLanguage=_developmentLanguage;
 @property(copy, nonatomic) NSString *xcodeProductVersion; // @synthesize xcodeProductVersion=_xcodeProductVersion;
@@ -92,7 +92,6 @@
 @property(nonatomic) _Bool dumpAssets; // @synthesize dumpAssets=_dumpAssets;
 @property(retain, nonatomic) NSDictionary *extendedParameters; // @synthesize extendedParameters=_extendedParameters;
 @property(copy) NSDictionary *assetPackOutputSpecifications; // @synthesize assetPackOutputSpecifications=_assetPackOutputSpecifications;
-@property _Bool thinArtwork; // @synthesize thinArtwork=_thinArtwork;
 @property(copy, nonatomic) NSArray *fallbackIdioms; // @synthesize fallbackIdioms=_fallbackIdioms;
 @property(readonly) NSSet *impliedIdiomIdentifiers; // @synthesize impliedIdiomIdentifiers=_impliedIdiomIdentifiers;
 @property(copy) NSSet *targetDevices; // @synthesize targetDevices=_targetDevices;
@@ -105,6 +104,7 @@
 @property(copy) NSString *launchImageName; // @synthesize launchImageName=_launchImageName;
 @property(copy, nonatomic) NSSet *alternateAppIconNames; // @synthesize alternateAppIconNames=_alternateAppIconNames;
 @property(nonatomic) _Bool includeAllAppIcons; // @synthesize includeAllAppIcons=_includeAllAppIcons;
+@property(nonatomic) _Bool targetingAppStoreDeployment; // @synthesize targetingAppStoreDeployment=_targetingAppStoreDeployment;
 @property(copy) NSString *primaryAppIconName; // @synthesize primaryAppIconName=_primaryAppIconName;
 @property(copy) NSString *brandAssetCollectionName; // @synthesize brandAssetCollectionName=_brandAssetCollectionName;
 @property(copy) NSString *commonAssetRepositoryFileName; // @synthesize commonAssetRepositoryFileName=_commonAssetRepositoryFileName;
@@ -120,6 +120,9 @@
 - (void)setFailureIssueText:(id)arg1 forName:(id)arg2;
 - (id)maskForName:(id)arg1;
 - (void)setMask:(id)arg1 forName:(id)arg2;
+- (id)specializedIdiomsForUniversalIconsInSlotWithPlatformIdentifier:(id)arg1;
+- (void)specializeUniversalIconsInSlotWithPlatformIdentifier:(id)arg1 toIdioms:(id)arg2;
+- (_Bool)shouldSpecializeUniversalIconsInSlotWithPlatformIdentifier:(id)arg1;
 @property(readonly) NSSet *targetIdiomsForMasking;
 @property(readonly) NSSet *targetIdiomsForSelection;
 - (void)removeAllImpliedIdioms;

@@ -9,6 +9,7 @@
 @class NSNumber, NSString;
 
 @protocol HKMobilityWalkingSteadinessAnalyticsDailyEventDataSourceProvider <NSObject>
+- (NSNumber *)areHealthNotificationsAuthorizedWithError:(id *)arg1;
 - (NSString *)previousWalkingSteadinessClassificationWithError:(id *)arg1;
 - (NSString *)currentWalkingSteadinessClassificationWithError:(id *)arg1;
 - (NSNumber *)walkingSteadinessNotificationsEnabledWithError:(id *)arg1;
@@ -21,6 +22,8 @@
 - (NSNumber *)hasWalkingSteadinessMeasurementsWithError:(id *)arg1;
 - (NSNumber *)daysSinceLastRepeatNotificationWithError:(id *)arg1;
 - (NSNumber *)daysSinceLastInitialNotificationWithError:(id *)arg1;
+- (NSNumber *)hasLaunchedHealthAppInLastMonth:(id *)arg1;
+- (NSNumber *)hasLaunchedHealthAppInLastWeek:(id *)arg1;
 - (NSNumber *)hasHeightWithError:(id *)arg1;
 - (NSNumber *)biologicalSexWithError:(id *)arg1;
 - (NSNumber *)ageWithError:(id *)arg1;

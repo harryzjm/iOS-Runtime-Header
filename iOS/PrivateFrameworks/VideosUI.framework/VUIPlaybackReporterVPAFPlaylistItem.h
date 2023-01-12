@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/MTMediaPlaylistItem-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIPlaybackReporterVPAFPlaylistItem : NSObject <MTMediaPlaylistItem>
+@interface VUIPlaybackReporterVPAFPlaylistItem : NSObject
 {
-    unsigned long long _overallPosition;
+    unsigned long long _startOverallPosition;
     NSArray *_eventData;
     unsigned long long _duration;
     struct _NSRange _timeRange;
@@ -23,14 +21,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long duration; // @synthesize duration=_duration;
 @property(nonatomic) struct _NSRange timeRange; // @synthesize timeRange=_timeRange;
 @property(retain, nonatomic) NSArray *eventData; // @synthesize eventData=_eventData;
-@property(nonatomic) unsigned long long overallPosition; // @synthesize overallPosition=_overallPosition;
+@property(nonatomic) unsigned long long startOverallPosition; // @synthesize startOverallPosition=_startOverallPosition;
 @property(readonly, copy) NSString *description;
 - (id)initWithPosition:(unsigned long long)arg1 duration:(unsigned long long)arg2 eventData:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) unsigned long long startOverallPosition;
 @property(readonly, nonatomic) unsigned long long startPosition;
 @property(readonly) Class superclass;
 

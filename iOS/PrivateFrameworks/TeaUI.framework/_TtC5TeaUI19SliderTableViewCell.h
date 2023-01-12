@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *onChange;
     MISSING_TYPE *label;
     MISSING_TYPE *valueLabel;
-    MISSING_TYPE *interval;
+    MISSING_TYPE *precision;
     MISSING_TYPE *slider;
 }
 

@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iTunesCloud/MSVQRConnectionDelegate-Protocol.h>
-
 @class ICLiveLinkQRConnectionDataSource, ICSharedListeningConnectionReport, MSVQRConnection, MSVTaskAssertion, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface ICDirectSharedListeningConnectionController <MSVQRConnectionDelegate>
+@interface ICDirectSharedListeningConnectionController
 {
     struct os_unfair_lock_s _lock;
     long long _state;

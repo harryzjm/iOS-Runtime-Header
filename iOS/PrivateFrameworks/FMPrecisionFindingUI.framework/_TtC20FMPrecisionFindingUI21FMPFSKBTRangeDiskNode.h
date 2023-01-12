@@ -6,7 +6,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC20FMPrecisionFindingUI21FMPFSKBTRangeDiskNode
 {
     MISSING_TYPE *sizeSpring;

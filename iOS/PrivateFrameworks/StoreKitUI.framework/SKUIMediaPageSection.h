@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIEmbeddedMediaViewDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSString, SKUIArtwork, SKUIEmbeddedMediaView, SKUIMediaComponent;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMediaPageSection <SKUIArtworkRequestDelegate, SKUIEmbeddedMediaViewDelegate>
+@interface SKUIMediaPageSection : SKUIStorePageSection
 {
     SKUIArtwork *_artwork;
     unsigned long long _artworkRequestID;

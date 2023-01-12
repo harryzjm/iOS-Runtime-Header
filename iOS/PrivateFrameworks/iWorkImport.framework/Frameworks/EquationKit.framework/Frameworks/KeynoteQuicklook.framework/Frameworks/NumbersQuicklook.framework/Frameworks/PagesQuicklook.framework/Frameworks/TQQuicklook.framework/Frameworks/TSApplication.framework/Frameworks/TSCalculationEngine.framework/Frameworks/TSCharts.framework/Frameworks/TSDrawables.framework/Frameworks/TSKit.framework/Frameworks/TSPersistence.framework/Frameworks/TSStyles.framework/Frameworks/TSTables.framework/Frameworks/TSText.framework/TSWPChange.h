@@ -6,13 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSText/TSKDocumentObject-Protocol.h>
-#import <TSText/TSPCopying-Protocol.h>
-#import <TSText/TSWPTextSpanningObject-Protocol.h>
-
 @class NSDate, NSString, TSUColor, TSWPChangeSession, TSWPStorage;
 
-@interface TSWPChange : TSPObject <TSKDocumentObject, TSPCopying, TSWPTextSpanningObject>
+@interface TSWPChange : TSPObject
 {
     TSWPStorage *_parentStorage;
     int _kind;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
-
 @class MTVisualStylingProvider, MediaControlsRelativeVolumeStepper, MediaControlsVolumeSlider, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsVolumeContainerView : UIView <UIGestureRecognizerDelegate>
+@interface MediaControlsVolumeContainerView : UIView
 {
     _Bool _transitioning;
     _Bool _onScreen;

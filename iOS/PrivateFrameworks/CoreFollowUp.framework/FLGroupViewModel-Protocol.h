@@ -9,6 +9,8 @@
 @class NSArray, NSString;
 
 @protocol FLGroupViewModel <NSObject>
+- (_Bool)needsAccountID;
+- (NSString *)accountID;
 - (_Bool)shouldCoalesceItems;
 - (_Bool)restrictionEnabled;
 - (NSArray *)items;

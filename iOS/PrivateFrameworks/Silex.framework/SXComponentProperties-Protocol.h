@@ -9,6 +9,7 @@
 @class NSString, SXComponentClassification, SXComponentConditions, SXJSONArray, SXJSONDictionary;
 
 @protocol SXComponentProperties <SXConditionalComponentProperties>
+@property(readonly, nonatomic) _Bool requiresLinkedContent;
 @property(readonly, nonatomic) SXJSONArray *additions;
 @property(readonly, nonatomic) SXComponentClassification *classification;
 @property(readonly, nonatomic) SXJSONDictionary *analytics;

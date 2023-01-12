@@ -12,5 +12,6 @@
 @property(readonly, nonatomic) long long item;
 @property(readonly, nonatomic) long long row;
 @property(readonly, nonatomic) long long section;
+- (id)_ui_shortDescription;
 @end
 

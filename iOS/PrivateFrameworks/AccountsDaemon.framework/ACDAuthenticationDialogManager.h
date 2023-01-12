@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AccountsDaemon/ACDAuthenticationDialogManagerProtocol-Protocol.h>
-
 @class ACDQueueDictionary, NSString, NSXPCListener;
 
 __attribute__((visibility("hidden")))
-@interface ACDAuthenticationDialogManager : NSObject <ACDAuthenticationDialogManagerProtocol>
+@interface ACDAuthenticationDialogManager : NSObject
 {
     NSXPCListener *_authenticationDialogListener;
     ACDQueueDictionary *_dialogRequestQueues;

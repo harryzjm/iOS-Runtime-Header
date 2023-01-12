@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CALayer, CAShapeLayer, NSArray, NSObject, NSString, UIBezierPath, VKTextRange;
+@class CALayer, CAShapeLayer, NSArray, NSAttributedString, NSObject, NSString, UIBezierPath, VKTextRange;
 @protocol OS_dispatch_queue, VKCImageTextSelectionViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     id <VKCImageTextSelectionViewDelegate> _textSelectionDelegate;
     VKTextRange *_documentRange;
     VKTextRange *_selectedRange;
+    CDUnknownBlockType _textQueryProvider;
     NSArray *_allLineQuads;
     CAShapeLayer *_highlightLayer;
     CALayer *_highlightShadowLayer;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _highlightLayerStartContentsRect;
 }
 
++ (_Bool)sceneAwareLookupEnabled;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *analyticsQueue; // @synthesize analyticsQueue=_analyticsQueue;
 @property(nonatomic) struct CGRect highlightLayerStartContentsRect; // @synthesize highlightLayerStartContentsRect=_highlightLayerStartContentsRect;
@@ -32,16 +34,20 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CALayer *highlightShadowLayer; // @synthesize highlightShadowLayer=_highlightShadowLayer;
 @property(retain, nonatomic) CAShapeLayer *highlightLayer; // @synthesize highlightLayer=_highlightLayer;
 @property(retain, nonatomic) NSArray *allLineQuads; // @synthesize allLineQuads=_allLineQuads;
+@property(copy, nonatomic) CDUnknownBlockType textQueryProvider; // @synthesize textQueryProvider=_textQueryProvider;
 @property(nonatomic) _Bool longPressDataDetectorsInTextMode; // @synthesize longPressDataDetectorsInTextMode=_longPressDataDetectorsInTextMode;
 @property(nonatomic) _Bool highlightSelectableItems; // @synthesize highlightSelectableItems=_highlightSelectableItems;
 @property(retain, nonatomic) VKTextRange *selectedRange; // @synthesize selectedRange=_selectedRange;
 @property(retain, nonatomic) VKTextRange *documentRange; // @synthesize documentRange=_documentRange;
 @property(nonatomic) __weak id <VKCImageTextSelectionViewDelegate> textSelectionDelegate; // @synthesize textSelectionDelegate=_textSelectionDelegate;
+- (void)unsuppressSelectionViewGrabbers;
+- (void)suppressSelectionViewGrabbers;
 - (void)sendAnalyticsEventWithSelector:(SEL)arg1 type:(long long)arg2 source:(long long)arg3;
 - (_Bool)imageContainsPoint:(struct CGPoint)arg1;
 - (_Bool)containsSelectedTextAtPoint:(struct CGPoint)arg1;
 - (_Bool)containsTextAtPoint:(struct CGPoint)arg1;
 - (void)updateSelectionRectsForBoundsChange;
+- (id)attributedTextInRange:(id)arg1;
 - (id)textInRange:(id)arg1;
 - (id)selectionRectsForRange:(id)arg1;
 - (id)positionWithinRange:(id)arg1 farthestInDirection:(unsigned long long)arg2;
@@ -61,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (long long)baseWritingDirectionForPosition:(id)arg1 inDirection:(unsigned long long)arg2;
 - (void)performHighlightSelectableTextAnimated:(_Bool)arg1;
 - (struct CGAffineTransform)transformForHighlightLayerInCurrentBounds;
-@property(readonly, nonatomic) struct CGRect currentContentsRectInLayerCoodinates;
+@property(readonly, nonatomic) struct CGRect currentContentsRectInLayerCoordinates;
 - (void)updateHighlightLayerGeometry;
 - (void)updateHighlightLayerGeometryIfVisible;
 - (void)setBounds:(struct CGRect)arg1;
@@ -70,6 +76,8 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHighlightSelectableItems:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setRecognitionResult:(id)arg1;
+@property(readonly, nonatomic) struct CGPoint selectionQuadsVertexCentroid;
+@property(readonly, nonatomic) NSAttributedString *attributedText;
 @property(readonly, nonatomic) NSString *text;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)quadsForAllWordsForCurrentLayout;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSText/TSWPBookmarkEntry-Protocol.h>
+#import "TSWPSmartField.h"
 
 @class NSString, NSURL;
 
-@interface TSWPBookmarkField <TSWPBookmarkEntry>
+@interface TSWPBookmarkField : TSWPSmartField
 {
     NSString *_name;
     _Bool _forRange;

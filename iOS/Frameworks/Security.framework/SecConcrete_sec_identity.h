@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Security/OS_sec_identity-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SecConcrete_sec_identity : NSObject <OS_sec_identity>
+@interface SecConcrete_sec_identity : NSObject
 {
     struct __SecIdentity *identity;
     struct __CFArray *certs;

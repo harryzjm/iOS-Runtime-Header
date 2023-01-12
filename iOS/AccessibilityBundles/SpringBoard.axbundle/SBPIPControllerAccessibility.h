@@ -11,14 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axTagSBInteractionPassThroughView;
-- (void)_createWindowAndRootViewControllerIfNeeded;
 - (void)_destroyWindowAndRootViewControllerIfPossible;
-- (void)setPictureInPictureWindowHidden:(_Bool)arg1 withReason:(id)arg2;
+- (void)setPictureInPictureWindowsHidden:(_Bool)arg1 forReason:(id)arg2;
 - (void)_axDidDismissPIP;
 - (_Bool)shouldStartPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg1 scenePersistenceIdentifier:(id)arg2;
 - (id)_axPegasusController;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

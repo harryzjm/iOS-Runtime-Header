@@ -14,6 +14,7 @@
 - (void)obliterate;
 - (void)reportTranscriptionRatedAccurate:(_Bool)arg1 forIdentifier:(long long)arg2;
 - (void)reportTranscriptionProblemForIdentifier:(long long)arg1;
+- (void)resetNetworkSettings;
 - (void)remapAccount:(NSString *)arg1 toAccount:(NSString *)arg2;
 - (void)retrieveDataForIdentifier:(long long)arg1;
 - (void)setReadForIdentifiers:(NSArray *)arg1;

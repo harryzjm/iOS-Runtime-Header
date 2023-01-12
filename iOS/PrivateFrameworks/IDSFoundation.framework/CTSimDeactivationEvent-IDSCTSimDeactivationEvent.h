@@ -6,11 +6,9 @@
 
 #import <CoreTelephony/CTSimDeactivationEvent.h>
 
-#import <IDSFoundation/IDSCTSimDeactivationEvent-Protocol.h>
-
 @class NSString;
 
-@interface CTSimDeactivationEvent (IDSCTSimDeactivationEvent) <IDSCTSimDeactivationEvent>
+@interface CTSimDeactivationEvent (IDSCTSimDeactivationEvent)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/AVAudioPlayerDelegate-Protocol.h>
-
 @class AVAudioPlayer, AVPlayer, AVPlayerItem, NSString;
 @protocol CKInternalAudioPlayerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKInternalAudioPlayer : NSObject <AVAudioPlayerDelegate>
+@interface CKInternalAudioPlayer : NSObject
 {
     AVAudioPlayer *_avAudioPlayer;
     AVPlayer *_avPlayer;
@@ -37,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareToPlay;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) double currentTime;
+- (void)setCurrentTime:(double)arg1;
 @property(readonly, nonatomic, getter=isPlaying) _Bool playing;
 @property(nonatomic) float volume;
 - (void)pause;

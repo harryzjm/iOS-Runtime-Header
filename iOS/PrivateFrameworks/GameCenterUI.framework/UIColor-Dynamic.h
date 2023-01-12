@@ -11,6 +11,7 @@
 + (id)gk_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2 darkHighContrastColor:(id)arg3;
 + (id)gk_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2 lightHighContrastColor:(id)arg3;
 + (id)gk_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2;
++ (id)_gkvisualEffectTintColor;
 + (id)_gkSpeechViewTintColor;
 + (id)_gkSelectedCellBackgroundColor;
 + (id)todayCardDefaultBackground;

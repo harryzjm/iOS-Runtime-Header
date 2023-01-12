@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIVisualEffectDiffable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIVisualEffectViewEntry : NSObject <_UIVisualEffectDiffable>
+@interface _UIVisualEffectViewEntry : NSObject
 {
     long long _requirements;
 }

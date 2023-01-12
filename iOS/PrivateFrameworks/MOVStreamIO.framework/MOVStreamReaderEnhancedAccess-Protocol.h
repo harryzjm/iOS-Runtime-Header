@@ -10,8 +10,8 @@
 @protocol MOVStreamReaderAudioStreamOutput, MOVStreamReaderMetadataStreamOutput, MOVStreamReaderSceneStreamOutput, MOVStreamReaderVideoStreamOutput;
 
 @protocol MOVStreamReaderEnhancedAccess <NSObject>
-- (struct __CVBuffer *)nextPixelBufferForStream:(in NSString *)arg1 attachementsData:(out id *)arg2 timestamp:(out CDStruct_1b6d18a9 *)arg3 error:(out id *)arg4;
-- (struct opaqueCMSampleBuffer *)nextSampleBufferForStream:(in NSString *)arg1 attachementsData:(out id *)arg2 timestamp:(out CDStruct_1b6d18a9 *)arg3 error:(out id *)arg4;
+- (struct __CVBuffer *)nextPixelBufferForStream:(in NSString *)arg1 attachementsData:(out id *)arg2 timestamp:(out CDStruct_198678f7 *)arg3 error:(out id *)arg4;
+- (struct opaqueCMSampleBuffer *)nextSampleBufferForStream:(in NSString *)arg1 attachementsData:(out id *)arg2 timestamp:(out CDStruct_198678f7 *)arg3 error:(out id *)arg4;
 - (id <MOVStreamReaderMetadataStreamOutput>)outputForMetadataStream:(in NSString *)arg1 error:(out id *)arg2;
 - (id <MOVStreamReaderSceneStreamOutput>)outputForSceneStream:(in NSString *)arg1 error:(out id *)arg2;
 - (id <MOVStreamReaderAudioStreamOutput>)outputForAudioStream:(in NSString *)arg1 error:(out id *)arg2;

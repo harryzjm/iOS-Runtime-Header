@@ -6,7 +6,7 @@
 
 #import <CloudKit/NSObject-Protocol.h>
 
-@class CKRecord, CKRecordID, CKRecordZone, CKRecordZoneID, CKSyncEngine, NSData, NSError, NSString;
+@class CKRecord, CKRecordID, CKRecordZone, CKRecordZoneID, CKSyncEngine, CKSyncEngineBatch, NSArray, NSData, NSError, NSSet, NSString;
 
 @protocol CKSyncEngineDataSource <NSObject>
 - (void)syncEngine:(CKSyncEngine *)arg1 didUpdateMetadata:(NSData *)arg2;
@@ -19,7 +19,20 @@
 - (CKRecord *)syncEngine:(CKSyncEngine *)arg1 recordToSaveForRecordID:(CKRecordID *)arg2;
 
 @optional
+- (NSArray *)recordZoneIDsToDeleteForSyncEngine:(CKSyncEngine *)arg1;
+- (NSArray *)recordZonesToSaveForSyncEngine:(CKSyncEngine *)arg1;
+- (void)syncEngine:(CKSyncEngine *)arg1 didCompleteModifyRecordsBatch:(CKSyncEngineBatch *)arg2 error:(NSError *)arg3;
+- (CKSyncEngineBatch *)syncEngine:(CKSyncEngine *)arg1 nextBatchOfRecordsToModifyForZoneIDs:(NSSet *)arg2;
+- (void)syncEngineDidEndModifyingPendingChanges:(CKSyncEngine *)arg1;
+- (void)syncEngineWillBeginModifyingPendingChanges:(CKSyncEngine *)arg1;
+- (void)syncEngine:(CKSyncEngine *)arg1 didEndFetchingChangesForZoneID:(CKRecordZoneID *)arg2;
+- (void)syncEngine:(CKSyncEngine *)arg1 willBeginFetchingChangesForZoneIDs:(NSArray *)arg2;
+- (void)syncEngineDidEndFetchingChanges:(CKSyncEngine *)arg1;
+- (void)syncEngineWillBeginFetchingChanges:(CKSyncEngine *)arg1;
+- (void)syncEngineDidBeginFetchingChanges:(CKSyncEngine *)arg1;
+- (void)syncEngine:(CKSyncEngine *)arg1 accountChangedFromUserRecordID:(CKRecordID *)arg2 toUserRecordID:(CKRecordID *)arg3;
 - (void)syncEngine:(CKSyncEngine *)arg1 zoneWithIDWasPurged:(CKRecordZoneID *)arg2;
+- (void)syncEngine:(CKSyncEngine *)arg1 zoneWithIDWasDeletedDueToUserEncryptedDataReset:(CKRecordZoneID *)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 zoneWithIDWasDeleted:(CKRecordZoneID *)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 zoneWithIDChanged:(CKRecordZoneID *)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 failedToDeleteRecordZoneWithID:(CKRecordZoneID *)arg2 error:(NSError *)arg3;

@@ -6,20 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIVectorOperatable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIInterpolatedRect : NSObject <UIVectorOperatable>
+@interface UIInterpolatedRect : NSObject
 {
     struct CGRect _rect;
-    double _epsilon;
 }
 
-+ (id)zero;
-+ (id)epsilon;
-+ (id)valueWithCGRect:(struct CGRect)arg1 epsilon:(double)arg2;
++ (id)zeroCompatibleWithVector:(id)arg1;
++ (id)epsilonCompatibleWithVector:(id)arg1;
 + (id)valueWithCGRect:(struct CGRect)arg1;
 @property(readonly, copy) NSString *debugDescription;
 - (id)multiplyByVector:(id)arg1;
@@ -29,10 +25,9 @@ __attribute__((visibility("hidden")))
 - (void)reinitWithVector:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)getValue;
-- (id)getNSValue;
 - (_Bool)isUndefined;
+- (_Bool)isCompatibleWith:(id)arg1;
 - (_Bool)isApproximatelyEqualTo:(id)arg1 withinEpsilon:(id)arg2;
-- (_Bool)isApproximatelyEqualTo:(id)arg1;
 - (id)interpolateTo:(id)arg1 progress:(double)arg2;
 
 // Remaining properties

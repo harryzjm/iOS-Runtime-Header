@@ -6,11 +6,9 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDOntologyBackingStore, NSError;
+@class HDOntologyBackingStore;
 
 @protocol HDOntologyBackingStoreObserver <NSObject>
-- (void)ontologyBackingStore:(HDOntologyBackingStore *)arg1 didFinishImportWithSuccess:(_Bool)arg2 error:(NSError *)arg3;
-- (void)ontologyBackingStoreWillImport:(HDOntologyBackingStore *)arg1;
 - (void)ontologyBackingStore:(HDOntologyBackingStore *)arg1 didBecomeAvailable:(_Bool)arg2;
 @end
 

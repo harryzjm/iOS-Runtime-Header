@@ -13,8 +13,5 @@
     MISSING_TYPE *complexImageProcessor;
 }
 
-- (id)process:(id)arg1 imageFromCache:(id)arg2;
-- (id)process:(id)arg1;
-
 @end
 

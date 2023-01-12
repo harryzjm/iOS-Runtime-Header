@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
+#import "AUAudioUnitBus.h"
 
 @class AUAudioUnit_XPC, AVAudioFormat, NSArray, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface AUAudioUnitBus_XPC <NSSecureCoding>
+@interface AUAudioUnitBus_XPC : AUAudioUnitBus
 {
     AUAudioUnit_XPC *_audioUnit;
     NSXPCConnection *_remoteAUXPCConnection;

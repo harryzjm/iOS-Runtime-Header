@@ -6,28 +6,6 @@
 
 #pragma mark Named Structures
 
-struct Arena;
-
-struct ArenaStringPtr {
-    void *ptr_;
-};
-
-struct ArrayFeatureType {
-    CDUnknownFunctionPointerType *_vptr$MessageLite;
-    struct InternalMetadataWithArenaLite _internal_metadata_;
-    struct RepeatedField<long long> shape_;
-    int _shape_cached_byte_size_;
-    int datatype_;
-    union ShapeFlexibilityUnion ShapeFlexibility_;
-    union DefaultOptionalValueUnion defaultOptionalValue_;
-    int _cached_size_;
-    unsigned int _oneof_case_[2];
-};
-
-struct ArrayFeatureType_EnumeratedShapes;
-
-struct ArrayFeatureType_ShapeRange;
-
 struct CodedInputStream {
     char *_field1;
     char *_field2;
@@ -49,97 +27,9 @@ struct CodedInputStream {
 
 struct DescriptorPool;
 
-struct DictionaryFeatureType {
-    CDUnknownFunctionPointerType *_vptr$MessageLite;
-    struct InternalMetadataWithArenaLite _internal_metadata_;
-    union KeyTypeUnion KeyType_;
-    int _cached_size_;
-    unsigned int _oneof_case_[1];
-};
-
-struct FeatureDescription {
-    CDUnknownFunctionPointerType *_vptr$MessageLite;
-    struct InternalMetadataWithArenaLite _internal_metadata_;
-    struct ArenaStringPtr name_;
-    struct ArenaStringPtr shortdescription_;
-    struct FeatureType *type_;
-    int _cached_size_;
-};
-
-struct FeatureType;
-
-struct ImageFeatureType {
-    CDUnknownFunctionPointerType *_vptr$MessageLite;
-    struct InternalMetadataWithArenaLite _internal_metadata_;
-    long long width_;
-    long long height_;
-    int colorspace_;
-    union SizeFlexibilityUnion SizeFlexibility_;
-    int _cached_size_;
-    unsigned int _oneof_case_[1];
-};
-
-struct ImageFeatureType_EnumeratedImageSizes;
-
-struct ImageFeatureType_ImageSize {
-    CDUnknownFunctionPointerType *_vptr$MessageLite;
-    struct InternalMetadataWithArenaLite _internal_metadata_;
-    unsigned long long width_;
-    unsigned long long height_;
-    int _cached_size_;
-};
-
-struct ImageFeatureType_ImageSizeRange;
-
-struct Int64FeatureType;
-
-struct InternalMetadataWithArenaLite {
-    void *ptr_;
-};
+struct IRProgram;
 
 struct MessageFactory;
-
-struct Metadata;
-
-struct ModelDescription {
-    CDUnknownFunctionPointerType *_vptr$MessageLite;
-    struct InternalMetadataWithArenaLite _internal_metadata_;
-    struct RepeatedPtrField<CoreML::Specification::FeatureDescription> input_;
-    struct RepeatedPtrField<CoreML::Specification::FeatureDescription> output_;
-    struct RepeatedPtrField<CoreML::Specification::FeatureDescription> traininginput_;
-    struct ArenaStringPtr predictedfeaturename_;
-    struct ArenaStringPtr predictedprobabilitiesname_;
-    struct Metadata *metadata_;
-    int _cached_size_;
-};
-
-struct Rep;
-
-struct RepeatedField<long long> {
-    int current_size_;
-    int total_size_;
-    struct Rep *rep_;
-};
-
-struct RepeatedPtrField<CoreML::Specification::FeatureDescription> {
-    struct Arena *arena_;
-    int current_size_;
-    int total_size_;
-    struct Rep *rep_;
-};
-
-struct SequenceFeatureType {
-    CDUnknownFunctionPointerType *_vptr$MessageLite;
-    struct InternalMetadataWithArenaLite _internal_metadata_;
-    struct SizeRange *sizerange_;
-    union TypeUnion Type_;
-    int _cached_size_;
-    unsigned int _oneof_case_[1];
-};
-
-struct SizeRange;
-
-struct StringFeatureType;
 
 struct ZeroCopyInputStream;
 
@@ -148,31 +38,9 @@ struct _MIORange {
     long long upperBound;
 };
 
-#pragma mark Named Unions
-
-union DefaultOptionalValueUnion {
-    int intdefaultvalue_;
-    float floatdefaultvalue_;
-    double doubledefaultvalue_;
-};
-
-union KeyTypeUnion {
-    struct Int64FeatureType *int64keytype_;
-    struct StringFeatureType *stringkeytype_;
-};
-
-union ShapeFlexibilityUnion {
-    struct ArrayFeatureType_EnumeratedShapes *enumeratedshapes_;
-    struct ArrayFeatureType_ShapeRange *shaperange_;
-};
-
-union SizeFlexibilityUnion {
-    struct ImageFeatureType_EnumeratedImageSizes *enumeratedsizes_;
-    struct ImageFeatureType_ImageSizeRange *imagesizerange_;
-};
-
-union TypeUnion {
-    struct Int64FeatureType *int64type_;
-    struct StringFeatureType *stringtype_;
+struct unique_ptr<MIL::IRProgram, std::default_delete<MIL::IRProgram>> {
+    struct __compressed_pair<MIL::IRProgram *, std::default_delete<MIL::IRProgram>> {
+        struct IRProgram *__value_;
+    } __ptr_;
 };
 

@@ -9,9 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface VUIAutoPlayConfig : NSObject
 {
+    _Bool _autoPlayVideoSound;
     double _autoPlayDelayInterval;
 }
 
+@property(nonatomic) _Bool autoPlayVideoSound; // @synthesize autoPlayVideoSound=_autoPlayVideoSound;
 @property(nonatomic) double autoPlayDelayInterval; // @synthesize autoPlayDelayInterval=_autoPlayDelayInterval;
 - (id)init;
 

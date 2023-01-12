@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IMAssistantCore/IMAssistantCoreTelephonySubscriptionsDataSource-Protocol.h>
-
 @class NSString;
 
-@interface IMAssistantCoreTelephonySubscriptionsDefaultDataSource : NSObject <IMAssistantCoreTelephonySubscriptionsDataSource>
+@interface IMAssistantCoreTelephonySubscriptionsDefaultDataSource : NSObject
 {
 }
 

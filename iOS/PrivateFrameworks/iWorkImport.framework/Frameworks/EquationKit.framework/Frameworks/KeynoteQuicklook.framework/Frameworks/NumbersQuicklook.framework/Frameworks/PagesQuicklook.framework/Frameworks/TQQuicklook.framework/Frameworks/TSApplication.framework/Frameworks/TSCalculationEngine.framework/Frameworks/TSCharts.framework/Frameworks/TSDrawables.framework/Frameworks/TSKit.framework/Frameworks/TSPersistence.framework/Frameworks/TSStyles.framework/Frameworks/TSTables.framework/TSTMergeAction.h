@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
-@interface TSTMergeAction : NSObject <NSCopying>
+@interface TSTMergeAction : NSObject
 {
     int _type;
     vector_87ea8040 _uidRanges;

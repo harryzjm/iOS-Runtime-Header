@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNOriginatingRequestSpecifierProviding-Protocol.h>
-
 @class NSString, NSUUID, VNRequestSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface VNTracker : NSObject <VNOriginatingRequestSpecifierProviding>
+@interface VNTracker : NSObject
 {
     struct shared_ptr<vision::mod::ObjectTrackerAbstract> mTrackerImpl;
     VNRequestSpecifier *_originatingRequestSpecifier;

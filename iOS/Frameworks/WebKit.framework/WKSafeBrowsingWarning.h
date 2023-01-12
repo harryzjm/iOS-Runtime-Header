@@ -6,14 +6,12 @@
 
 #import <UIKit/UIScrollView.h>
 
-#import <WebKit/UITextViewDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKSafeBrowsingWarning : UIScrollView <UITextViewDelegate>
+@interface WKSafeBrowsingWarning : UIScrollView
 {
-    struct CompletionHandler<void (WTF::Variant<WebKit::ContinueUnsafeLoad, WTF::URL>&&)> _completionHandler;
+    struct CompletionHandler<void (std::variant<WebKit::ContinueUnsafeLoad, WTF::URL>&&)> _completionHandler;
     struct RefPtr<const WebKit::SafeBrowsingWarning, WTF::RawPtrTraits<const WebKit::SafeBrowsingWarning>, WTF::DefaultRefDerefTraits<const WebKit::SafeBrowsingWarning>> _warning;
     struct WeakObjCPtr<WKSafeBrowsingTextView> _details;
     struct WeakObjCPtr<WKSafeBrowsingBox> _box;

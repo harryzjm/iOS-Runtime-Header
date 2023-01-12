@@ -6,13 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/MFMailComposeViewControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFSendEmailActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFSendEmailActionUIKitUserInterface : WFEmbeddableActionUserInterface <MFMailComposeViewControllerDelegate, WFSendEmailActionUserInterface>
+@interface WFSendEmailActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCAudioPowerSpectrumProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioPowerSpectrum : NSObject <VCAudioPowerSpectrumProtocol>
+@interface VCAudioPowerSpectrum : NSObject
 {
     long long _streamToken;
     struct _VCAudioPowerSpectrumRealtimeContext _realtimeContext;

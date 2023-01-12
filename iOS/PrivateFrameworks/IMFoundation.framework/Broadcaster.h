@@ -6,11 +6,9 @@
 
 #import <Foundation/NSProxy.h>
 
-#import <IMFoundation/IDSSendXPCProtocol-Protocol.h>
-
 @class IMMessageContext, IMRemoteObjectBroadcaster, NSArray, NSString, Protocol;
 
-@interface Broadcaster : NSProxy <IDSSendXPCProtocol>
+@interface Broadcaster : NSProxy
 {
     NSArray *_targets;
     IMRemoteObjectBroadcaster *_parent;

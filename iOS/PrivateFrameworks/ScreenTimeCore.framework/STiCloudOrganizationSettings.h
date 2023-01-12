@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ScreenTimeCore/STSerializableMappedObject-Protocol.h>
+#import "STCoreOrganizationSettings.h"
 
 @class NSString, STiCloudOrganization;
 
 __attribute__((visibility("hidden")))
-@interface STiCloudOrganizationSettings <STSerializableMappedObject>
+@interface STiCloudOrganizationSettings : STCoreOrganizationSettings
 {
 }
 

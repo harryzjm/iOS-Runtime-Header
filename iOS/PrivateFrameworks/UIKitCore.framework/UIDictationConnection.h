@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/AFDictationDelegate-Protocol.h>
-
 @class AFDictationConnection, AFDictationOptions, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, UIDictationConnectionDelegate, UIDictationConnectionTokenFilterProtocol;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationConnection : NSObject <AFDictationDelegate>
+@interface UIDictationConnection : NSObject
 {
     _Bool _receivedMultilingualResultsCommand;
     _Bool _offlineOnly;
+    _Bool _ignoreSpeechRecognitionResults;
     _Bool _lowConfidenceAboutLanguageDetection;
     unsigned int _charBeforeInsertionPointOnDictationStart;
     unsigned int _charAfterInsertionPointOnDictationStart;
@@ -30,6 +29,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_lastReceivedPartials;
 }
 
++ (_Bool)hasSpeechRecognitionPauseAckPhrases:(id)arg1;
 + (id)interpretationFromSpeechTokens:(id)arg1 startIndex:(unsigned long long)arg2 filterBlock:(CDUnknownBlockType)arg3;
 + (void)_updateFromGlobalOptions:(id)arg1;
 + (void)afDelegate:(id)arg1 didReceiveSearchResults:(id)arg2 recognizedText:(id)arg3 stable:(_Bool)arg4 final:(_Bool)arg5;
@@ -47,17 +47,22 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *lastUsedDetectedLanguage; // @synthesize lastUsedDetectedLanguage=_lastUsedDetectedLanguage;
 @property(copy, nonatomic) NSString *lastUsedPrimaryLanguage; // @synthesize lastUsedPrimaryLanguage=_lastUsedPrimaryLanguage;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *analyticsQueue; // @synthesize analyticsQueue=_analyticsQueue;
+@property(nonatomic) _Bool ignoreSpeechRecognitionResults; // @synthesize ignoreSpeechRecognitionResults=_ignoreSpeechRecognitionResults;
 @property(nonatomic) _Bool offlineOnly; // @synthesize offlineOnly=_offlineOnly;
 @property(retain, nonatomic) AFDictationConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) AFDictationOptions *dictationOptions; // @synthesize dictationOptions=_dictationOptions;
 @property(nonatomic) _Bool receivedMultilingualResultsCommand; // @synthesize receivedMultilingualResultsCommand=_receivedMultilingualResultsCommand;
 @property(nonatomic) __weak id <UIDictationConnectionTokenFilterProtocol> tokenFilter; // @synthesize tokenFilter=_tokenFilter;
 @property(nonatomic) __weak id <UIDictationConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)dictationConnection:(id)arg1 didRecognizeFinalResultCandidatePackage:(id)arg2;
+- (void)dictationConnectionDidPauseRecognition:(id)arg1;
 - (void)dictationConnection:(id)arg1 didReceiveSearchResults:(id)arg2 recognizedText:(id)arg3 stable:(_Bool)arg4 final:(_Bool)arg5;
 - (void)dictationConnnectionDidChangeAvailability:(id)arg1;
 - (void)dictationConnectionSpeechRecognitionDidSucceed:(id)arg1;
 - (void)dictationConnection:(id)arg1 didRecognizeMultilingualSpeech:(id)arg2;
+- (void)dictationConnection:(id)arg1 didRecognizePackage:(id)arg2 nluResult:(id)arg3;
 - (void)dictationConnection:(id)arg1 didRecognizePhrases:(id)arg2 languageModel:(id)arg3 correctionIdentifier:(id)arg4;
+- (id)_dictationSerializedResultWithPhrases:(id)arg1 languageModel:(id)arg2;
 - (void)dictationConnection:(id)arg1 didRecognizePartialResult:(id)arg2;
 - (void)dictationConnection:(id)arg1 didRecognizeTokens:(id)arg2 languageModel:(id)arg3;
 - (void)dictationConnectionSpeechRecordingDidCancel:(id)arg1;
@@ -70,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)dictationConnectionSpeechRecordingWillBegin:(id)arg1;
 - (void)dictationConnection:(id)arg1 languageDetectorFailedWithError:(id)arg2;
 - (void)dictationConnection:(id)arg1 didDetectLanguage:(id)arg2 confidenceScores:(id)arg3 isConfident:(_Bool)arg4;
+- (_Bool)isSecureInput;
 - (void)preheat;
 - (void)logDidAcceptReplacement:(id)arg1 replacementLanguageCode:(id)arg2 originalText:(id)arg3 correctionIdentifier:(id)arg4 interactionIdentifier:(id)arg5;
 - (void)logDidAcceptDictationResult:(id)arg1 reason:(id)arg2 result:(id)arg3 correctionIdentifier:(id)arg4;
@@ -86,6 +92,8 @@ __attribute__((visibility("hidden")))
 - (long long)speechEventTypeForDictationActivationType:(unsigned long long)arg1;
 - (id)_dictationOptions:(id)arg1;
 - (id)languageDetectionUserContext;
+- (void)resumeSpeechRecognitionWithPrefixText:(id)arg1 postfixText:(id)arg2 selectedText:(id)arg3;
+- (void)pauseSpeechRecognition;
 - (void)endSession;
 - (float)averagePower;
 - (void)sendSpeechCorrection:(id)arg1 interactionIdentifier:(id)arg2;

@@ -6,12 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <AppSSO/SOHostExtensionContextProtocol-Protocol.h>
-
 @class NSString, SOExtension;
 
 __attribute__((visibility("hidden")))
-@interface SOHostExtensionContext : NSExtensionContext <SOHostExtensionContextProtocol>
+@interface SOHostExtensionContext : NSExtensionContext
 {
     SOExtension *_contextExtension;
 }
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)_extensionAuxiliaryHostProtocol;
 - (void).cxx_destruct;
 @property __weak SOExtension *contextExtension; // @synthesize contextExtension=_contextExtension;
+- (void)requestReauthenticationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)authorizationDidCompleteWithCredential:(id)arg1 error:(id)arg2;
 - (void)presentAuthorizationViewControllerWithHints:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)canOpenURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

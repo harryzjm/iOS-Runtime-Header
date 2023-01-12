@@ -6,13 +6,11 @@
 
 #import <HomeKit/HMResidentDevice.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class HMAccessory, NSString, NSUUID;
 
-@interface HMResidentDevice (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
+@interface HMResidentDevice (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (_Bool)isiPadDevice;
 - (_Bool)hf_isReachable;
 @property(readonly, nonatomic) NSString *hf_displayName;
 @property(readonly, nonatomic) HMAccessory *hf_linkedAccessory;

@@ -7,10 +7,11 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class UIHoverGestureRecognizer, UIView;
+@protocol _UIPointerInteractionDriver;
 
 @protocol _UIPointerInteractionDriverSink <NSObject>
-- (void)_pointerDidExit;
-- (void)_configureHoverGestureRecognizer:(UIHoverGestureRecognizer *)arg1 forView:(UIView *)arg2;
-- (void)_updatePointerWithPoint:(struct CGPoint)arg1 modifiers:(long long)arg2 buttonMask:(long long)arg3 forReason:(long long)arg4;
+- (void)driverDidExit:(id <_UIPointerInteractionDriver>)arg1;
+- (void)driver:(id <_UIPointerInteractionDriver>)arg1 willAttachHoverGestureRecognizer:(UIHoverGestureRecognizer *)arg2 toView:(UIView *)arg3;
+- (void)driver:(id <_UIPointerInteractionDriver>)arg1 didIssueUpdate:(CDStruct_f8445847)arg2;
 @end
 

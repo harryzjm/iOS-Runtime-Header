@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKTranscriptCollectionViewControllerDelegate-Protocol.h>
+#import "CKViewController.h"
 
 @class CKConversation, CKTranscriptCollectionView, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKTranscriptPreviewController <CKTranscriptCollectionViewControllerDelegate>
+@interface CKTranscriptPreviewController : CKViewController
 {
     _Bool _isInitialLayout;
     CKConversation *_conversation;
@@ -38,6 +38,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)transcriptCollectionViewController:(id)arg1 shouldSetupFullscreenEffectUI:(id)arg2;
 - (_Bool)transcriptCollectionViewControllerPlaybackForOutgoingEffectsIsAllowed:(id)arg1;
 - (void)transcriptCollectionViewController:(id)arg1 willDeleteChatItems:(id)arg2;
+- (void)transcriptCollectionViewController:(id)arg1 viewedCommSafetyItemWithIndexPath:(id)arg2;
+- (void)transcriptCollectionViewController:(id)arg1 showMessageSomeoneForItemWithIndexPath:(id)arg2;
 - (double)transcriptCollectionViewController:(id)arg1 targetAlphaForChatItem:(id)arg2;
 - (id)traitCollectionForTranscriptCollectionViewController:(id)arg1;
 - (void)transcriptCollectionViewControllerDidInsertAssociatedChatItem:(id)arg1;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)transcriptCollectionViewControllerWillDisplayLastBalloon:(id)arg1;
 - (void)transcriptCollectionViewControllerDisplaySMSSpamReporting:(id)arg1;
 - (void)transcriptCollectionViewControllerReportSpamButtonTapped:(id)arg1;
+- (void)transcriptCollectionViewControllerBlockContactButtonTapped:(id)arg1;
 - (void)transcriptCollectionViewControllerWillScrollToBottom:(id)arg1;
 - (void)transcriptCollectionViewControllerPerformBatchUpdateCompleted:(id)arg1;
 - (void)transcriptCollectionViewControllerChatItemsDidChange:(id)arg1;
@@ -62,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 tappedForChatItem:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)transcriptCollectionViewControllerNeedsChatItemLayoutInvalidation:(id)arg1;
 - (id)textInputContextIdentifier;
 - (void)viewDidLayoutSubviews;
 - (void)loadView;

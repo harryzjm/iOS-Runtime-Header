@@ -7,9 +7,11 @@
 #import <Home/HFAccessoryVendor-Protocol.h>
 #import <Home/HFFavoritable-Protocol.h>
 #import <Home/HFHomeKitSettingsVendor-Protocol.h>
+#import <Home/HFHomeStatusVisible-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFRoomContextProviding-Protocol.h>
 #import <Home/HFServiceNameComponentsProviding-Protocol.h>
+#import <Home/HFShowInHomeDashboard-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFSymptomFixableObject-Protocol.h>
 #import <Home/HFSymptomsHandlerVendor-Protocol.h>
@@ -19,30 +21,7 @@
 @class ACAccount, HMAccessory, HMMediaSession, HMUser, NAFuture, NSSet, NSString;
 @protocol HFMediaValueSource, HMMediaDestination;
 
-@protocol HFMediaProfileContainer <HMMediaObject, HFHomeKitSettingsVendor, HFAccessoryVendor, HFStateDumpBuildable, HFReorderableHomeKitObject, HFFavoritable, HFRoomContextProviding, HFSymptomsVendor, HFSymptomsHandlerVendor, HFSymptomFixableObject, HFServiceNameComponentsProviding>
-@property(readonly, nonatomic) _Bool hf_supportsPreferredMediaUser;
-@property(readonly, nonatomic) _Bool hf_supportsHomeTheater;
-@property(readonly, copy, nonatomic) NSString *hf_mediaRouteIdentifier;
-@property(readonly, copy, nonatomic) NSSet *hf_deviceIdentifiers;
-@property(readonly, nonatomic) id <HFMediaValueSource> hf_mediaValueSource;
-@property(readonly, nonatomic) NSSet *hf_fakeDebugSymptoms;
-@property(readonly, nonatomic) _Bool hf_homePodIsCapableOfShowingSplitAccountError;
-@property(readonly, nonatomic) _Bool hf_homePodSupportsMultiUser;
-@property(readonly, nonatomic) _Bool hf_supportsMultiUser;
-@property(readonly, nonatomic) HMAccessory *hf_backingAccessory;
-@property(readonly, copy, nonatomic) NSString *hf_categoryCapitalizedLocalizedDescription;
-@property(readonly, copy, nonatomic) NSString *hf_categoryLowercaseLocalizedDescription;
-@property(readonly, nonatomic) NSString *hf_prettyDescription;
-@property(readonly, nonatomic) _Bool hf_supportsMusicAlarm;
-@property(readonly, nonatomic) _Bool hf_showsAudioSettings;
-@property(readonly, nonatomic) _Bool hf_supportsStereoPairing;
-@property(readonly, nonatomic) _Bool hf_supportsSoftwareUpdate;
-@property(readonly, nonatomic) _Bool hf_isReachable;
-@property(readonly, nonatomic) _Bool hf_isAppleMusicReachable;
-@property(readonly, nonatomic) _Bool hf_isAccessorySettingsReachable;
-@property(readonly, nonatomic) _Bool hf_isCurrentAccessory;
-@property(readonly, nonatomic) NSSet *mediaProfiles;
-@property(readonly, copy, nonatomic) HMMediaSession *mediaSession;
+@protocol HFMediaProfileContainer <HMMediaObject, HFHomeKitSettingsVendor, HFAccessoryVendor, HFStateDumpBuildable, HFReorderableHomeKitObject, HFFavoritable, HFHomeStatusVisible, HFShowInHomeDashboard, HFRoomContextProviding, HFSymptomsVendor, HFSymptomsHandlerVendor, HFSymptomFixableObject, HFServiceNameComponentsProviding>
 - (unsigned long long)hf_preferredUserSelectionType;
 - (HMUser *)hf_preferredMediaUser;
 - (id <HMMediaDestination>)hf_destination;
@@ -54,5 +33,31 @@
 - (NAFuture *)hf_homePodSupportsMultiUserLanguage;
 - (ACAccount *)hf_appleMusicCurrentLoggedInAccount;
 - (NSString *)hf_appleMusicCurrentLoggedInAccountDSID;
+@property(nonatomic, readonly) _Bool hf_supportsPreferredMediaUser;
+@property(nonatomic, readonly) _Bool hf_supportsHomeTheater;
+@property(nonatomic, readonly) NSString *hf_mediaRouteIdentifier;
+@property(nonatomic, readonly) NSSet *hf_deviceIdentifiers;
+@property(nonatomic, readonly) id <HFMediaValueSource> hf_mediaValueSource;
+@property(nonatomic, readonly) NSSet *hf_fakeDebugSymptoms;
+@property(nonatomic, readonly) _Bool hf_homePodIsCapableOfShowingSplitAccountError;
+@property(nonatomic, readonly) _Bool hf_homePodSupportsMultiUser;
+@property(nonatomic, readonly) _Bool hf_supportsMediaActions;
+@property(nonatomic, readonly) _Bool hf_supportsMultiUser;
+@property(nonatomic, readonly) HMAccessory *hf_backingAccessory;
+@property(nonatomic, readonly) NSString *hf_categoryCapitalizedLocalizedDescription;
+@property(nonatomic, readonly) NSString *hf_categoryLowercaseLocalizedDescription;
+@property(nonatomic, readonly) NSString *hf_prettyDescription;
+@property(nonatomic, readonly) _Bool hf_supportsMusicAlarm;
+@property(nonatomic, readonly) _Bool hf_showsAudioSettings;
+@property(nonatomic, readonly) _Bool hf_isSpeakerGrouped;
+@property(nonatomic, readonly) _Bool hf_supportsSpeakerGrouping;
+@property(nonatomic, readonly) _Bool hf_supportsStereoPairing;
+@property(nonatomic, readonly) _Bool hf_supportsSoftwareUpdate;
+@property(nonatomic, readonly) _Bool hf_isReachable;
+@property(nonatomic, readonly) _Bool hf_isAppleMusicReachable;
+@property(nonatomic, readonly) _Bool hf_isAccessorySettingsReachable;
+@property(nonatomic, readonly) _Bool hf_isCurrentAccessory;
+@property(nonatomic, readonly) NSSet *mediaProfiles;
+@property(nonatomic, readonly) HMMediaSession *mediaSession;
 @end
 

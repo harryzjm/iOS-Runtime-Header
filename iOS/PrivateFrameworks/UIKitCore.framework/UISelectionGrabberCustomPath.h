@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGPoint topPoint; // @synthesize topPoint=_topPoint;
 - (id)description;
 - (id)summaryDescription;
+@property(readonly, nonatomic) struct CGRect boundingEdgeRect;
 @property(readonly, nonatomic) struct CGRect boundingRect;
 @property(readonly, nonatomic) _Bool containsZeroPoint;
 

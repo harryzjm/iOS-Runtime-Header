@@ -4,17 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegateInternal-Protocol.h>
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UIControlEventsGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerCalendarTimeLabelDelegate-Protocol.h>
-#import <UIKitCore/_UIPassthroughScrollInteractionDelegate-Protocol.h>
-
-@class NSDateFormatter, NSDictionary, NSString, UILabel, UIPointerInteraction, UIView, _UIDatePickerCalendarTime, _UIDatePickerOverlayPresentation, _UIPassthroughScrollInteraction;
-@protocol _UIDatePickerCompactTimeLabelDelegate;
+@class NSDateFormatter, NSDictionary, NSString, NSTextContentStorage, UILabel, UIPointerInteraction, UIView, _UIDatePickerCalendarTime, _UIDatePickerOverlayPresentation, _UIPassthroughScrollInteraction, _UITextLayoutControllerBase;
+@protocol _UIDatePickerCompactTimeLabelDelegate, _UITextLayoutController;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerCompactTimeLabel <UIPointerInteractionDelegate, _UIDatePickerCalendarTimeLabelDelegate, _UIPassthroughScrollInteractionDelegate, _UIControlEventsGestureRecognizerDelegate, UIGestureRecognizerDelegateInternal>
+@interface _UIDatePickerCompactTimeLabel
 {
     struct {
         unsigned int needsLabelUpdateOnResignFirstResponder:1;
@@ -25,6 +19,8 @@ __attribute__((visibility("hidden")))
     struct CGRect _minuteRect;
     struct CGRect _timeOfDayRect;
     NSDateFormatter *_formatter;
+    _UITextLayoutControllerBase<_UITextLayoutController> *_textLayoutController;
+    NSTextContentStorage *_textContentStorage;
     long long _highlightedScope;
     UIView *_touchHighlightedView;
     _Bool _tapInteractionControlledExternally;
@@ -61,12 +57,14 @@ __attribute__((visibility("hidden")))
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (long long)_inputScopeForPointerLocation:(struct CGPoint)arg1;
+- (void)_expandedComponentRectForHours:(struct CGRect *)arg1 minuteRect:(struct CGRect *)arg2 timeOfDayRect:(struct CGRect *)arg3;
 - (void)timeLabelDidEndEditing:(id)arg1;
 - (void)timeLabelDidBeginEditing:(id)arg1;
 - (void)timeLabelDidResignFirstResponder:(id)arg1;
 - (void)timeLabelDidFailToBecomeFirstResponder:(id)arg1;
 - (void)timeLabelDidBecomeFirstResponder:(id)arg1;
 - (void)timeLabelWillBecomeFirstResponder:(id)arg1;
+- (_Bool)timeLabelCanBecomeFirstResponder:(id)arg1;
 - (_Bool)timeLabelShouldSuppressSoftwareKeyboard:(id)arg1;
 - (long long)keyboardTypeForTimeLabel:(id)arg1;
 - (void)timeLabel:(id)arg1 didUpdateText:(id)arg2;

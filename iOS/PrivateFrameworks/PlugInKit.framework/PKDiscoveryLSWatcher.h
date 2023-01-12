@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <PlugInKit/LSApplicationWorkspaceObserverProtocol-Protocol.h>
-
 @class NSString, PKDiscoveryDriver;
+@protocol PKApplicationWorkspaceProxy;
 
-@interface PKDiscoveryLSWatcher : NSObject <LSApplicationWorkspaceObserverProtocol>
+@interface PKDiscoveryLSWatcher : NSObject
 {
     PKDiscoveryDriver *_wdriver;
+    id <PKApplicationWorkspaceProxy> _workspace;
 }
 
 - (void).cxx_destruct;
+@property(retain) id <PKApplicationWorkspaceProxy> workspace; // @synthesize workspace=_workspace;
 @property __weak PKDiscoveryDriver *wdriver; // @synthesize wdriver=_wdriver;
 - (void)updateWithUninstalledProxies:(id)arg1;
 - (void)update;

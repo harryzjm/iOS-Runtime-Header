@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
-#import <MediaPlaybackCore/MPServerObjectDatabaseObserver-Protocol.h>
-
 @class MPCPlaybackEngine, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _MPCFairPlayPerformanceController : NSObject <MPCPlaybackEngineEventObserving, MPServerObjectDatabaseObserver>
+@interface _MPCFairPlayPerformanceController : NSObject
 {
     NSMutableSet *_SAPSignPrewarmingAccounts;
     NSMutableSet *_SAPSignPrewarmedAccounts;

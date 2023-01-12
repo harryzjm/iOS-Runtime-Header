@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaRemote/MRDestinationResolverDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRDestinationResolverHelper : NSObject <MRDestinationResolverDelegate>
+@interface MRDestinationResolverHelper : NSObject
 {
     long long _level;
     CDUnknownBlockType _callback;

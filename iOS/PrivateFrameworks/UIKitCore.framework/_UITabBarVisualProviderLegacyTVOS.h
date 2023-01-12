@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UITabBarVisualProvider.h"
+
 @class UIMotionEffect, UIScrollView, UIView, _UIBarBackground, _UIBarBackgroundLayoutLegacy;
 
 __attribute__((visibility("hidden")))
-@interface _UITabBarVisualProviderLegacyTVOS
+@interface _UITabBarVisualProviderLegacyTVOS : _UITabBarVisualProvider
 {
     _UIBarBackground *_backgroundView;
     _UIBarBackgroundLayoutLegacy *_backgroundViewLayout;

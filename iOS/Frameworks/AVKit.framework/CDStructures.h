@@ -10,6 +10,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct AVMobileChromelessControlsVisibilityState_st {
+    unsigned long long visibleControls;
+    _Bool backgroundGradientActive;
+};
+
 struct CGAffineTransform {
     double a;
     double b;
@@ -34,18 +39,6 @@ struct CGSize {
     double height;
 };
 
-struct CVSMPTETime {
-    short subframes;
-    short subframeDivisor;
-    unsigned int counter;
-    unsigned int type;
-    unsigned int flags;
-    short hours;
-    short minutes;
-    short seconds;
-    short frames;
-};
-
 struct NSDirectionalEdgeInsets {
     double top;
     double leading;
@@ -65,10 +58,6 @@ struct UIEdgeInsets {
     double left;
     double bottom;
     double right;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures

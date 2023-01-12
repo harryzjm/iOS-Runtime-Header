@@ -29,6 +29,7 @@
 @property(readonly, nonatomic) TSTCellStyle *cellStyle; // @synthesize cellStyle=_cellStyle;
 - (struct TSKUIDStruct)columnRowUID;
 - (_Bool)migrateStylesToDocument:(id)arg1;
+@property(readonly, nonatomic) _Bool hasHeaderContent;
 @property(readonly, nonatomic) _Bool isValid;
 - (id)init;
 - (id)initWithSize:(double)arg1 hidingAction:(unsigned char)arg2 cellStyle:(id)arg3 textStyle:(id)arg4 columnRowUID:(struct TSKUIDStruct)arg5;

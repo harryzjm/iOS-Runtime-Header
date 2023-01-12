@@ -6,12 +6,10 @@
 
 #import <TVMLKit/TVFocusableTextView.h>
 
-#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
-
 @class NSString, VUILabel, VUITextLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIFocusableTextView : TVFocusableTextView <VUILabelBaselineProtocol>
+@interface VUIFocusableTextView : TVFocusableTextView
 {
     VUILabel *_computationLabel;
     VUITextLayout *_textLayout;

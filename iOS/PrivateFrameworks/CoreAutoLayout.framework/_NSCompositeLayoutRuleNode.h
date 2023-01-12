@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreAutoLayout/_NSLayoutRuleNodeParent-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString;
 
-@interface _NSCompositeLayoutRuleNode <_NSLayoutRuleNodeParent>
+@interface _NSCompositeLayoutRuleNode
 {
     NSMutableArray *_childNodes;
 }

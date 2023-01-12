@@ -6,11 +6,9 @@
 
 #import <TSText/TSWPSelection.h>
 
-#import <PagesQuicklook/TSDCanvasSelection-Protocol.h>
-
 @class NSSet, NSString;
 
-@interface TPCanvasSelection : TSWPSelection <TSDCanvasSelection>
+@interface TPCanvasSelection : TSWPSelection
 {
     NSSet *mInfos;
     NSSet *mExcludedInfos;
@@ -35,6 +33,7 @@
 @property(readonly, nonatomic) unsigned long long unlockedInfoCount;
 @property(readonly, nonatomic) NSSet *unlockedInfos;
 - (_Bool)containsKindOfClass:(Class)arg1;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) unsigned long long infoCount;
 @property(readonly, nonatomic) NSSet *infosWithNonInteractiveInfos;
@@ -45,12 +44,12 @@
 @property(readonly, nonatomic) NSSet *rawInfos;
 - (id)copyWithVisualRanges:(id)arg1 headCharIndex:(unsigned long long)arg2 tailCharIndex:(unsigned long long)arg3 rightToLeft:(_Bool)arg4 sameLine:(_Bool)arg5;
 - (id)copyWithNewVisualRanges:(id)arg1;
-- (id)copyWithNewStyleInsertionBehavior:(int)arg1 newCaretAffinity:(int)arg2;
+- (id)copyWithNewStyleInsertionBehavior:(long long)arg1 newCaretAffinity:(long long)arg2;
 - (id)copyWithNewRange:(struct _NSRange)arg1;
-- (id)copyWithNewType:(int)arg1;
+- (id)copyWithNewType:(long long)arg1;
 - (id)copyWithNewVisualTypeRange:(struct _NSRange)arg1 head:(unsigned long long)arg2 tail:(unsigned long long)arg3;
-- (id)copyWithNewType:(int)arg1 range:(struct _NSRange)arg2;
-- (id)copyWithNewType:(int)arg1 smartFieldRange:(struct _NSRange)arg2;
+- (id)copyWithNewType:(long long)arg1 range:(struct _NSRange)arg2;
+- (id)copyWithNewType:(long long)arg1 smartFieldRange:(struct _NSRange)arg2;
 - (id)initWithTextSelection:(id)arg1 infos:(id)arg2 excludedInfos:(id)arg3 additionalInfos:(id)arg4;
 - (id)initWithInfos:(id)arg1;
 - (id)p_UUIDDescriptionsForInfosSet:(id)arg1;
@@ -58,11 +57,12 @@
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool isEmpty;
 @property(readonly, nonatomic) unsigned long long canvasSelectionKind;
-- (id)initWithType:(int)arg1 range:(struct _NSRange)arg2 styleInsertionBehavior:(int)arg3 caretAffinity:(int)arg4 smartFieldRange:(struct _NSRange)arg5 leadingEdge:(_Bool)arg6 leadingCharIndex:(unsigned long long)arg7 infos:(id)arg8 excludedInfos:(id)arg9 additionalInfos:(id)arg10;
+- (id)initWithType:(long long)arg1 range:(struct _NSRange)arg2 styleInsertionBehavior:(long long)arg3 caretAffinity:(long long)arg4 smartFieldRange:(struct _NSRange)arg5 leadingEdge:(_Bool)arg6 leadingCharIndex:(unsigned long long)arg7 infos:(id)arg8 excludedInfos:(id)arg9 additionalInfos:(id)arg10;
+- (id)initWithType:(long long)arg1 ranges:(id)arg2 validVisualRanges:(_Bool)arg3 styleInsertionBehavior:(long long)arg4 caretAffinity:(long long)arg5 smartFieldRange:(struct _NSRange)arg6 caretIsLeadingEdge:(_Bool)arg7 leadingCharIndex:(unsigned long long)arg8 headCharIndex:(unsigned long long)arg9 tailCharIndex:(unsigned long long)arg10;
+- (id)initWithType:(long long)arg1 ranges:(id)arg2 validVisualRanges:(_Bool)arg3 styleInsertionBehavior:(long long)arg4 caretAffinity:(long long)arg5 smartFieldRange:(struct _NSRange)arg6 leadingEdge:(_Bool)arg7 leadingCharIndex:(unsigned long long)arg8 headCharIndex:(unsigned long long)arg9 tailCharIndex:(unsigned long long)arg10 infos:(id)arg11 excludedInfos:(id)arg12 additionalInfos:(id)arg13;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

@@ -20,6 +20,9 @@ __attribute__((visibility("hidden")))
     unsigned int _version;
     double _allSubresourcesFinishedLoadingDelay;
     double _savedDefaultTimeoutInterval;
+    unsigned int _currentTestIteration;
+    unsigned int _testIterations;
+    double _initialDelay;
     NSOutputStream *_logStream;
     _Bool _disableProgressBar;
     _Bool _failFast;
@@ -73,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)finishedTestPage:(id)arg1;
 - (void)startingTestPage:(id)arg1;
 - (void)finishedTestRunner;
+- (void)finishedTestRunnerIteration;
 - (void)startingTestRunner;
 - (void)_handleActionTimer:(id)arg1;
 - (_Bool)performActionForPage:(id)arg1;

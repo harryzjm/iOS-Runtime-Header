@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailDaemon/NSCopying-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface _EMSearchableIndexPendingRemovals : NSObject <NSCopying>
+@interface _EMSearchableIndexPendingRemovals : NSObject
 {
     NSMutableDictionary *_reasonsByIdentifier;
     NSSet *_purgeReasons;

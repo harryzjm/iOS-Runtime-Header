@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTStartSpeechRequest, FTUserAcousticProfile, FTUserLanguageProfile, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTErrorBlamerRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTErrorBlamerRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -23,6 +20,9 @@ __attribute__((visibility("hidden")))
 - (id)flatbuffData;
 - (Offset_9fa31b4a)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *ref_transcript;
+- (void)audio_packets_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)audio_packets_count;
+- (id)audio_packets_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *audio_packets;
 @property(readonly, nonatomic) double longitude;
 @property(readonly, nonatomic) double latitude;
@@ -30,6 +30,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FTUserLanguageProfile *user_language_profile;
 @property(readonly, nonatomic) NSString *right_context;
 @property(readonly, nonatomic) NSString *left_context;
+- (void)contextual_text_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)contextual_text_count;
+- (id)contextual_text_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *contextual_text;
 @property(readonly, nonatomic) FTStartSpeechRequest *start_speech_request;
 - (id)copyWithZone:(struct _NSZone *)arg1;

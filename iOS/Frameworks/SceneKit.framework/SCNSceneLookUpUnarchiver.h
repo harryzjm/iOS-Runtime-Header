@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <SceneKit/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SCNSceneLookUpUnarchiver : NSObject <NSSecureCoding>
+@interface SCNSceneLookUpUnarchiver : NSObject
 {
 }
 

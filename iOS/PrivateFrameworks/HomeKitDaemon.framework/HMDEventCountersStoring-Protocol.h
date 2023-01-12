@@ -9,7 +9,7 @@
 @class NSDictionary;
 
 @protocol HMDEventCountersStoring <NSObject>
-- (NSDictionary *)unarchiveDictionary;
+- (NSDictionary *)unarchive;
 - (void)archiveDictionary:(NSDictionary *)arg1;
 @end
 

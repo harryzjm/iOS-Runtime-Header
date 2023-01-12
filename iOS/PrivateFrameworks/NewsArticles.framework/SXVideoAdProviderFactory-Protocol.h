@@ -6,10 +6,10 @@
 
 #import <NewsArticles/NSObject-Protocol.h>
 
-@class SXComponentView, SXVideoPlayerViewController;
-@protocol SXAnalyticsReporting, SXVideoAdProviding;
+@class SVVideoPlayerViewController, SXComponentView;
+@protocol SVVideoAdProviding, SXAnalyticsReporting;
 
 @protocol SXVideoAdProviderFactory <NSObject>
-- (id <SXVideoAdProviding>)createVideoAdProviderForComponentView:(SXComponentView *)arg1 videoPlayerViewController:(SXVideoPlayerViewController *)arg2 analyticsReporter:(id <SXAnalyticsReporting>)arg3;
+- (id <SVVideoAdProviding>)createVideoAdProviderForComponentView:(SXComponentView *)arg1 videoPlayerViewController:(SVVideoPlayerViewController *)arg2 analyticsReporter:(id <SXAnalyticsReporting>)arg3;
 @end
 

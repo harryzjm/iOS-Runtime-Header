@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, TMLJSONObject;
+#import "TMLJSONObject.h"
 
-@interface TMLJSONObjectDerived
+@class NSString;
+
+@interface TMLJSONObjectDerived : TMLJSONObject
 {
     TMLJSONObject *_parent;
     NSString *_keyPath;

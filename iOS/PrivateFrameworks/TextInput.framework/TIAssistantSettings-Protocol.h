@@ -5,6 +5,7 @@
 //
 
 @protocol TIAssistantSettings
+- (void)launchPencilSettings;
 - (void)launchDictationSettings;
 - (void)launchKeyboardSettings;
 - (void)dismissedDataSharingWithResponse:(long long)arg1;

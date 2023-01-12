@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineEventHandler-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineEventHandler-Protocol.h>
 
 @class NSError;
 
-@protocol HDSPWakeUpResultsNotificationStateMachineEventHandler <HKSPStateMachineEventHandler>
+@protocol HDSPWakeUpResultsNotificationStateMachineEventHandler <HKSPPersistentStateMachineEventHandler>
 - (void)didPostResultsNotification;
 - (void)queryDidComplete;
 - (void)protectedHealthDataDidBecomeAvailable;
 - (void)queryDidFailWithError:(NSError *)arg1;
 - (void)retryAttemptEventDue;
-- (void)trackingDelayEventDue;
 - (void)wakeUpDidOccur;
 @end
 

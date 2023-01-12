@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/NSCopying-Protocol.h>
-
 @class ACAccount, AMSKeychainOptions, AMSProcessInfo, AMSPurchaseInfo, NSDictionary, NSMutableDictionary, NSString;
 @protocol AMSBagProtocol, AMSResponseDecoding;
 
 __attribute__((visibility("hidden")))
-@interface AMSURLRequestProperties : NSObject <NSCopying>
+@interface AMSURLRequestProperties : NSObject
 {
     _Bool _disableBiometricsResponseHandling;
     _Bool _disableLoadURLMetrics;
@@ -27,6 +25,7 @@ __attribute__((visibility("hidden")))
     id <AMSBagProtocol> _bag;
     AMSProcessInfo *_clientInfo;
     long long _dialogOptions;
+    NSString *_gsTokenIdentifier;
     AMSKeychainOptions *_keychainOptions;
     NSString *_logUUID;
     long long _maxRetryCount;
@@ -50,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
 @property(nonatomic) _Bool knownToBeTrusted; // @synthesize knownToBeTrusted=_knownToBeTrusted;
 @property(retain, nonatomic) AMSKeychainOptions *keychainOptions; // @synthesize keychainOptions=_keychainOptions;
+@property(retain, nonatomic) NSString *gsTokenIdentifier; // @synthesize gsTokenIdentifier=_gsTokenIdentifier;
 @property(nonatomic) _Bool disableResponseDecoding; // @synthesize disableResponseDecoding=_disableResponseDecoding;
 @property(nonatomic) _Bool disableLoadURLMetrics; // @synthesize disableLoadURLMetrics=_disableLoadURLMetrics;
 @property(nonatomic) _Bool disableBiometricsResponseHandling; // @synthesize disableBiometricsResponseHandling=_disableBiometricsResponseHandling;

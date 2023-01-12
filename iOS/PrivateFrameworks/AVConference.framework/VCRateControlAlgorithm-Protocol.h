@@ -9,11 +9,15 @@
 @class VCRateControlMediaController;
 
 @protocol VCRateControlAlgorithm <NSObject>
+@property(nonatomic) _Bool isFirstTimestampArrived;
+@property(readonly, nonatomic) _Bool isLossBasedAdaptationOn;
+@property(nonatomic) unsigned int rateSharingCount;
 @property(readonly, nonatomic) _Bool isFirstInitialRampUpDone;
 @property(readonly, nonatomic) _Bool isSendBitrateLimited;
 @property(nonatomic) _Bool didMBLRampDown;
 @property(readonly, nonatomic) unsigned int actualBitrate;
 @property(nonatomic, getter=isPaused) _Bool paused;
+@property(readonly, nonatomic) unsigned int remoteBandwidthEstimation;
 @property(nonatomic) unsigned int localBandwidthEstimation;
 @property(readonly, nonatomic) _Bool isNewRateSentOut;
 @property(readonly, nonatomic) double owrd;
@@ -32,7 +36,7 @@
 @property(retain, nonatomic) VCRateControlMediaController *mediaController;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(_Bool)arg2;
-- (_Bool)doRateControlWithStatistics:(CDStruct_c0785916)arg1;
+- (_Bool)doRateControlWithStatistics:(CDStruct_7df19fcb)arg1;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
 @end
 

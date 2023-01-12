@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LSPropertyList, NSString;
+#import "_LSRecordEnumerator.h"
+
+@class LSExtensionPointRecord, LSPropertyList, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LSApplicationExtensionRecordEnumerator
+@interface _LSApplicationExtensionRecordEnumerator : _LSRecordEnumerator
 {
     NSString *_extensionPointID;
+    unsigned int _platform;
+    LSExtensionPointRecord *_extensionPointRecord;
     unsigned long long _options;
     CDUnknownBlockType _filterBlock;
     LSPropertyList *_propertyList;
@@ -21,7 +25,10 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
+- (id)initWithExtensionPoint:(id)arg1 options:(unsigned long long)arg2;
+- (id)initWithExtensionPointIdentifier:(id)arg1 options:(unsigned long long)arg2 platform:(unsigned int)arg3 filter:(CDUnknownBlockType)arg4;
 - (id)initWithExtensionPointIdentifier:(id)arg1 options:(unsigned long long)arg2 filter:(CDUnknownBlockType)arg3;
+- (id)initWithExtensionPointIdentifier:(id)arg1 options:(unsigned long long)arg2 platform:(unsigned int)arg3;
 - (id)initWithExtensionPointIdentifier:(id)arg1 options:(unsigned long long)arg2;
 - (_Bool)_evaluatePluginNoIO:(unsigned int)arg1 data:(const struct LSPluginData *)arg2 extensionPointID:(unsigned int)arg3 context:(struct LSContext *)arg4;
 - (_Bool)_getExtensionPointID:(unsigned int *)arg1 context:(struct LSContext *)arg2 error:(id *)arg3;

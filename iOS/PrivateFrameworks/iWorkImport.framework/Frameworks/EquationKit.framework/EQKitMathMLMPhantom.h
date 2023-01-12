@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EquationKit/EQKitLayoutSchemataPhantom-Protocol.h>
-#import <EquationKit/EQKitMathMLNode-Protocol.h>
-
 @class NSString;
 
-@interface EQKitMathMLMPhantom <EQKitMathMLNode, EQKitLayoutSchemataPhantom>
+@interface EQKitMathMLMPhantom
 {
 }
 

@@ -4,21 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView, UIVisualEffectView;
+#import "UIView.h"
+
+@class UIImageView, UIVisualEffectView, _UICalloutBarVisualStyle;
 
 __attribute__((visibility("hidden")))
-@interface UICalloutBarBackground
+@interface UICalloutBarBackground : UIView
 {
     UIVisualEffectView *_blurView;
     UIImageView *_selectionTintView;
+    _UICalloutBarVisualStyle *m_visualStyle;
     struct CGRect _highlightRect;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) struct CGRect highlightRect; // @synthesize highlightRect=_highlightRect;
+@property(retain, nonatomic) _UICalloutBarVisualStyle *visualStyle; // @synthesize visualStyle=m_visualStyle;
 - (void)setHighlighted:(_Bool)arg1 forFrame:(struct CGRect)arg2;
 - (void)layoutSubviews;
-- (id)init;
+- (id)blurViewBackgroundEffects;
+- (_Bool)prefersCustomSelection;
+- (id)containerBackgroundColor;
+- (double)cornerRadius;
+- (id)initWithVisualStyle:(id)arg1;
 
 @end
 

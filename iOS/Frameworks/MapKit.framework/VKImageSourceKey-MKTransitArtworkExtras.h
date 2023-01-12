@@ -6,14 +6,10 @@
 
 #import <VectorKit/VKImageSourceKey.h>
 
-#import <MapKit/GEOTransitArtworkDataSource-Protocol.h>
-#import <MapKit/GEOTransitIconDataSource-Protocol.h>
-#import <MapKit/GEOTransitShieldDataSource-Protocol.h>
-
 @class GEOStyleAttributes, NSString;
 @protocol GEOTransitIconDataSource, GEOTransitShieldDataSource, GEOTransitTextDataSource;
 
-@interface VKImageSourceKey (MKTransitArtworkExtras) <GEOTransitArtworkDataSource, GEOTransitIconDataSource, GEOTransitShieldDataSource>
+@interface VKImageSourceKey (MKTransitArtworkExtras)
 @property(readonly, nonatomic) id <GEOTransitTextDataSource> textDataSource;
 @property(readonly, nonatomic) NSString *accessibilityText;
 @property(readonly, nonatomic) _Bool hasRoutingIncidentBadge;

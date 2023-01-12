@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPNowPlayingInfoTransportableSessionRequest-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPNowPlayingInfoTransportableSessionRequest : NSObject <MPNowPlayingInfoTransportableSessionRequest>
+@interface _MPNowPlayingInfoTransportableSessionRequest : NSObject
 {
     NSString *_identifier;
     NSString *_preferredSessionType;

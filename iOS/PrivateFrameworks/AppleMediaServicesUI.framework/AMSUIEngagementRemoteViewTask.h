@@ -6,13 +6,11 @@
 
 #import <AppleMediaServices/AMSTask.h>
 
-#import <AppleMediaServicesUI/AMSUIEngagementTaskHostInterface-Protocol.h>
-
 @class AMSEngagementRequest, AMSEngagementResult, AMSProcessInfo, NSError, NSObject, NSString, NSXPCListener, UIViewController;
 @protocol AMSBagProtocol, OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIEngagementRemoteViewTask : AMSTask <AMSUIEngagementTaskHostInterface>
+@interface AMSUIEngagementRemoteViewTask : AMSTask
 {
     id <AMSBagProtocol> _bag;
     AMSProcessInfo *_clientInfo;

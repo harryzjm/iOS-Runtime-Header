@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 @protocol IBBinaryArchivableColor;
 
-@interface IBUISimulatedNavigationItemMetrics : NSObject <IBBinaryArchiving>
+@interface IBUISimulatedNavigationItemMetrics : NSObject
 {
     NSString *_title;
     NSString *_backButtonTitle;

@@ -15,6 +15,8 @@
     MISSING_TYPE *tracker;
     MISSING_TYPE *contextBuilder;
     MISSING_TYPE *navigator;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *isImprovedBlockingBehaviorEnabled;
 }
 
 @end

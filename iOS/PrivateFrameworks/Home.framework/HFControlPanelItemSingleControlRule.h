@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Home/HFControlPanelItemRule-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HFControlPanelItemSingleControlRule : NSObject <HFControlPanelItemRule>
+@interface HFControlPanelItemSingleControlRule : NSObject
 {
     CDUnknownBlockType _filter;
     CDUnknownBlockType _displayResultsGenerator;

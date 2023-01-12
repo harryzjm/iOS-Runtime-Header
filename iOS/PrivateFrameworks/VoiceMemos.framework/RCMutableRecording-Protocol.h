@@ -15,19 +15,15 @@
 @property(nonatomic) _Bool favorite;
 @property(nonatomic) _Bool recordedOnWatch;
 @property(nonatomic) _Bool downloading;
-@property(nonatomic) _Bool deleted;
 @property(nonatomic) _Bool manuallyRenamed;
 @property(nonatomic) _Bool playable;
 @property(nonatomic) _Bool pendingRestore;
-@property(nonatomic) _Bool synced;
-@property(nonatomic) long long iTunesPersistentID;
-@property(copy, nonatomic) NSString *uniqueID;
-@property(copy, nonatomic) NSString *customLabel;
+@property(copy, nonatomic) NSString *uuid;
 @property(copy, nonatomic) NSString *title;
 @property(copy, nonatomic) CLLocation *location;
-@property(nonatomic) double duration;
+@property(nonatomic) double length;
 @property(copy, nonatomic) NSString *path;
-@property(copy, nonatomic) NSDate *evictionDate;
-@property(copy, nonatomic) NSDate *date;
+@property(copy, nonatomic) NSDate *deletionDate;
+@property(copy, nonatomic) NSDate *creationDate;
 @end
 

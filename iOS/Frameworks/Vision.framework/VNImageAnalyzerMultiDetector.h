@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _model;
     shared_ptr_eb20c8f2 _defaultSceneClassificationHierarchicalModel;
-    struct unique_ptr<vision::mod::ImageAnalyzer, std::default_delete<vision::mod::ImageAnalyzer>> _imageAnalyzer;
+    struct shared_ptr<vision::mod::ImageAnalyzer> _imageAnalyzer;
     struct map<unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<std::vector<std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>>>> _imageAnalyzerJunkCustomClassifiers;
     struct unique_ptr<vision::mod::ImageAnalyzer_PCA, std::default_delete<vision::mod::ImageAnalyzer_PCA>> _imageAnalyzerPCA256;
     _VNImageAnalyzerMultiDetectorSceneOperationPointsCache *_operationPointsCache;
@@ -19,10 +19,20 @@ __attribute__((visibility("hidden")))
     struct map<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _potentialLandmarkCustomClassifiers;
     struct map<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _VN5kJNH3eYuyaLxNpZr5Z7ziCustomClassifiers;
     struct map<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _significantEventCustomClassifiers;
-    struct vector<std::tuple<std::string, float, bool>, std::allocator<std::tuple<std::string, float, bool>>> _cachedAllSceneClassificationsFromLastAnalysis;
+    struct map<unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, std::shared_ptr<vision::mod::ImageAnalyzer_CustomClassifier>>>> _cityNatureGatingCustomClassifiers;
+    struct os_unfair_lock_s _cachedAllSceneClassificationsFromLastAnalysisAccessLock;
+    struct shared_ptr<const std::vector<std::tuple<std::string, float, bool>>> _cachedAllSceneClassificationsFromLastAnalysis;
     NSMutableDictionary *_cachedSaliencyHeatmapBoundingBoxGenerators;
+    _Bool _hasherInitialized;
 }
 
++ (id)primaryInferenceNetworkDescriptorForVNInferenceNetworkIdentifierSceneNet_5_10_0;
++ (id)primaryInferenceNetworkDescriptorForVNInferenceNetworkIdentifierSceneNetObjDetNetSliderNet_3_0_0;
++ (id)availableVNInferenceNetworkIdentifierSceneNetObjDetNetSliderNetVersions;
++ (id)primaryInferenceNetworkDescriptorForVNInferenceNetworkIdentifierSceneNet_3_0_0;
++ (id)availableVNInferenceNetworkIdentifierSceneNetVersions;
++ (id)inferenceNetworkIdentifiers;
++ (id)allPhotosAdjustmentKeysForOptions:(id)arg1 error:(id *)arg2;
 + (id)supportedImageSizeSetForOptions:(id)arg1 error:(id *)arg2;
 + (shared_ptr_eb20c8f2)createHierarchicalModelForMultiDetectorModel:(unsigned long long)arg1 error:(id *)arg2;
 + (id)blacklistForModel:(unsigned long long)arg1;
@@ -31,9 +41,10 @@ __attribute__((visibility("hidden")))
 + (id)configurationOptionKeysForDetectorKey;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
 + (id)_inputImageBlobNameForModel:(unsigned long long)arg1 configuredWithOptions:(id)arg2;
-+ (id)_analyzerNameForModel:(unsigned long long)arg1 configuredWithOptions:(id)arg2;
++ (_Bool)_getAnalyzerName:(id *)arg1 version:(id *)arg2 forModel:(unsigned long long)arg3 configuredWithOptions:(id)arg4 error:(id *)arg5;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)allCityNatureIdentifiersWithOptions:(id)arg1 error:(id *)arg2;
 - (id)allSignificantEventIdentifiersWithOptions:(id)arg1 error:(id *)arg2;
 - (id)allVN5kJNH3eYuyaLxNpZr5Z7ziIdentifiersWithOptions:(id)arg1 error:(id *)arg2;
 - (id)allRecognizedObjectsIdentifiersWithOptions:(id)arg1 error:(id *)arg2;
@@ -42,12 +53,16 @@ __attribute__((visibility("hidden")))
 - (id)allSceneIdentifiersWithOptions:(id)arg1 error:(id *)arg2;
 @property(readonly) _Bool hasSliderNet;
 @property(readonly) _Bool hasObjDetNet;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
+- (id)_processFullImagePixelBuffer:(const struct __CVBuffer *)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
+- (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;
+- (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
+- (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (id)initWithConfigurationOptions:(id)arg1;
 - (_Bool)warmUpSession:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (_Bool)shouldBeReplacedByDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
 - (_Bool)canBehaveAsDetectorOfClass:(Class)arg1 withConfiguration:(id)arg2;
+- (unsigned long long)signPostAdditionalParameter;
 - (id)_junkObservationsForLastAnalysisWithOptions:(id)arg1 error:(id *)arg2;
 
 @end

@@ -6,9 +6,7 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
-@interface CKDPBundlesForContainerRequest : PBRequest <NSCopying>
+@interface CKDPBundlesForContainerRequest : PBRequest
 {
 }
 

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSUResourceCache-Protocol.h>
-#import <TSPersistence/TSUResourceFileURLProvider-Protocol.h>
-
 @class NSOperationQueue, NSString, NSURL;
 
-@interface TSPFileResourceCache : NSObject <TSUResourceCache, TSUResourceFileURLProvider>
+@interface TSPFileResourceCache : NSObject
 {
     NSOperationQueue *_ioOperationQueue;
     NSURL *_cacheURL;

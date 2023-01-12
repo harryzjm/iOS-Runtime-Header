@@ -6,16 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIItemStateCenterObserver-Protocol.h>
-#import <StoreKitUI/SKUIProductPageChildViewController-Protocol.h>
-#import <StoreKitUI/SKUIScreenshotsDelegate-Protocol.h>
-#import <StoreKitUI/SKUITableViewSectionDelegate-Protocol.h>
-
 @class NSMutableArray, NSOperationQueue, NSString, SKUIClientContext, SKUILayoutCache, SKUIProductPage, SKUIProductPageHeaderViewController, SKUIProductPageTableHeaderOnlySection, SKUIProductPageTableTextBoxSection, SKUIProductPageTableViewController, SKUIResourceLoader, UIScrollView;
 @protocol SKUIProductPageChildViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIProductPageDetailsViewController : UIViewController <SKUIScreenshotsDelegate, SKUIItemStateCenterObserver, SKUITableViewSectionDelegate, SKUIProductPageChildViewController>
+@interface SKUIProductPageDetailsViewController : UIViewController
 {
     _Bool _askPermission;
     SKUIClientContext *_clientContext;

@@ -18,8 +18,9 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_reportingQueue;
     CDUnknownFunctionPointerType _symptomReporterCallback;
     id _symptomReporterContext;
-    _Bool _didSubmitABCSymptom[40];
-    _Bool _didShowAlreadyExistFailure[40];
+    _Bool _didSubmitABCSymptom[44];
+    _Bool _didShowAlreadyExistFailure[44];
+    NSString *_procName;
 }
 
 @property(copy, nonatomic) NSString *loggingDirectory; // @synthesize loggingDirectory=_loggingDirectory;
@@ -30,6 +31,10 @@ __attribute__((visibility("hidden")))
 - (int)reportOSLogSymptomWithDictionary:(id)arg1;
 - (int)reportSymptomWithIDSDestination:(id)arg1 sessionID:(id)arg2 type:(id)arg3 subType:(id)arg4 context:(id)arg5;
 - (int)reportSymptomWithType:(id)arg1 subType:(id)arg2 context:(id)arg3 actions:(id)arg4;
+- (int)reportKeyFrameGenerationFailure;
+- (int)reportTerminateProcessWithOptionalDictionary:(id)arg1;
+- (int)reportMediaServerTerminated;
+- (int)reportFrameQueueForDecodeHighWaterMarkExceeded;
 - (int)reportInvalidVideoStallTime;
 - (int)reportInactiveSlotsInChannelSequence;
 - (int)reportInvalidTransportType;
@@ -46,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (int)reportMediaQueuePoolEmpty;
 - (int)reportKeyIndexNotReceived;
 - (int)reportSessionInfoErrorResponse;
-- (int)reportCCReliableDataNotReceived;
 - (int)reportReceiveSessionStatsFailed;
 - (int)reportQRATKNTokenError;
 - (int)reportIDSDataChannelEventUsageError;
@@ -57,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (int)reportSignificantHandshakeDelayWithOptionalDictionary:(id)arg1;
 - (int)reportExtendedPoorConnectionWithOptionalDictionary:(id)arg1;
 - (int)reportMKMDecryptionWithOptionalDictionary:(id)arg1;
+- (int)reportCCReliableDataNotReceived:(id)arg1;
 - (int)reportNoPacketsWithOptionalDictionary:(id)arg1;
 - (int)reportNoFirstFrameWithOptionalDictionary:(id)arg1;
 - (int)reportFailedToStartVideo;

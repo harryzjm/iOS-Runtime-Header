@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MobileSafariUI/_SFSingleBookmarkNavigationControllerDelegate-Protocol.h>
-
 @class TabDocument, _SFSingleBookmarkNavigationController;
 @protocol AddBookmarkActivityDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AddToFavoritesUIActivity <_SFSingleBookmarkNavigationControllerDelegate>
+@interface AddToFavoritesUIActivity
 {
     _SFSingleBookmarkNavigationController *_bookmarkNavController;
     TabDocument *_tabDocument;
+    _Bool _isForPerTabGroupFavorites;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isForPerTabGroupFavorites; // @synthesize isForPerTabGroupFavorites=_isForPerTabGroupFavorites;
 - (_Bool)addBookmarkNavControllerCanSaveBookmarkChanges:(id)arg1;
 - (void)addBookmarkNavController:(id)arg1 didFinishWithResult:(_Bool)arg2 bookmark:(id)arg3;
 - (void)activityDidFinish:(_Bool)arg1;

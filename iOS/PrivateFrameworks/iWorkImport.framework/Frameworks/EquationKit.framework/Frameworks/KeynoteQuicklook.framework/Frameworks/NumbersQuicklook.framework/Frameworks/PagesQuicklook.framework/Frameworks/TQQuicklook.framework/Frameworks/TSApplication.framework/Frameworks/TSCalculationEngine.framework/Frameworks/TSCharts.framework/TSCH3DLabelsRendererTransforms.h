@@ -17,7 +17,7 @@
     tmat4x4_3074befe _unitToWorld;
     tmat4x4_3074befe _stageToWorld;
     tmat4x4_3074befe _worldToStage;
-    struct bitset<5> _validBits;
+    struct bitset<5UL> _validBits;
 }
 
 + (id)transforms;

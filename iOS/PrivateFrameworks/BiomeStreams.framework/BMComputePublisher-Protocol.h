@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <BiomeStreams/NSObject-Protocol.h>
+
 @class BMComputeXPCSubscription, NSString;
 
-@protocol BMComputePublisher
+@protocol BMComputePublisher <NSObject>
 - (void)unsubscribeWithIdentifier:(NSString *)arg1;
 - (void)subscribe:(BMComputeXPCSubscription *)arg1;
 @end

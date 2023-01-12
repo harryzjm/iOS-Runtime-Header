@@ -6,16 +6,10 @@
 
 #import <WebKitLegacy/DOMNode.h>
 
-#import <UIKitCore/UIKeyInput-Protocol.h>
-#import <UIKitCore/UIKeyboardInput-Protocol.h>
-#import <UIKitCore/UITextInputPrivate-Protocol.h>
-#import <UIKitCore/UITextInputTokenizer-Protocol.h>
-#import <UIKitCore/UITextInput_Internal-Protocol.h>
-
 @class NSDictionary, NSIndexSet, NSString, RTIInputSystemSourceSession, UIColor, UIImage, UIInputContextHistory, UIResponder, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UISupplementalLexicon;
 @protocol UITextInput, UITextInputDelegate, UITextInputPrivate, UITextInputSuggestionDelegate, UITextInputTokenizer;
 
-@interface DOMNode (UIWebFormPeripheral) <UITextInput_Internal, UIKeyboardInput, UITextInputPrivate, UIKeyInput, UITextInputTokenizer>
+@interface DOMNode (UIWebFormPeripheral)
 - (id)createPeripheral;
 - (id)itemTitle;
 - (void)populateCell:(id)arg1;
@@ -55,7 +49,9 @@
 - (id)_rangeFromCurrentRangeWithDelta:(struct _NSRange)arg1;
 - (id)_clampedpositionFromPosition:(id)arg1 offset:(int)arg2;
 - (id)_rangeOfSmartSelectionIncludingRange:(id)arg1;
+- (id)_findDocumentBoundaryFromPosition:(id)arg1;
 - (id)_findPleasingWordBoundaryFromPosition:(id)arg1;
+- (id)_findBoundaryPositionClosestToPosition:(id)arg1 withGranularity:(long long)arg2;
 - (_Bool)_range:(id)arg1 isEqualToRange:(id)arg2;
 - (id)_intersectionOfRange:(id)arg1 andRange:(id)arg2;
 - (_Bool)_range:(id)arg1 intersectsRange:(id)arg2;
@@ -88,7 +84,7 @@
 - (id)_positionWithinRange:(id)arg1 farthestInDirection:(long long)arg2;
 - (void)_expandSelectionToStartOfWordsBeforeCaretSelection:(int)arg1;
 - (void)_expandSelectionToStartOfWordBeforeCaretSelection;
-- (void)_expandSelectionToBackwardDeletionCluster;
+- (void)_expandSelectionToBackwardDeletionClusterWithReinsertionOut:(id *)arg1;
 - (void)_moveCurrentSelection:(int)arg1;
 - (void)_extendCurrentSelection:(int)arg1;
 - (_Bool)_hasMarkedTextOrRangedSelection;
@@ -238,7 +234,7 @@
 - (id)metadataDictionariesForDictationResults;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (void)endFloatingCursor;
-- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (id)uiWebDocumentView;
@@ -288,6 +284,7 @@
 @property(nonatomic) _Bool forceDisableDictation;
 @property(nonatomic) _Bool forceEnableDictation;
 @property(nonatomic) _Bool forceFloatingKeyboard;
+@property(nonatomic) _Bool forceSpellingDictation;
 @property(nonatomic) _Bool hasDefaultContents;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hidePrediction;

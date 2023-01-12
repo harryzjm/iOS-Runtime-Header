@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)canPerformWithTabDocument:(id)arg1;
 @property(readonly, nonatomic) _Bool canPerformOnNewTabPage;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
+- (long long)actionTypeWithTabDocument:(id)arg1;
+@property(readonly, nonatomic) long long actionType;
 - (id)activityImageWithTabDocument:(id)arg1;
 - (id)_activityImage;
 - (id)systemImageNameWithTabDocument:(id)arg1;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthKit/HKFeatureAvailabilityRequirement-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HKFeatureAvailabilityRequirementFeatureIsOn <HKFeatureAvailabilityRequirement>
+@interface HKFeatureAvailabilityRequirementFeatureIsOn
 {
     _Bool _isOnWhenSettingIsAbsent;
     NSString *_settingsOnKey;

@@ -8,5 +8,6 @@
 
 @interface NSString (PKVersionComparison)
 - (long long)compareVersionString:(id)arg1;
+- (id)personaUniqueString;
 @end
 

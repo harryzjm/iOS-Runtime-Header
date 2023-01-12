@@ -6,11 +6,9 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <TSDrawables/NSCopying-Protocol.h>
-
 @class NSArray;
 
-@interface TSDMovieFingerprint : TSKSosBase <NSCopying>
+@interface TSDMovieFingerprint : TSKSosBase
 {
     NSArray *_tracks;
     int _versionMajor;

@@ -6,10 +6,7 @@
 
 #import <WallpaperKit/WKWallpaper-Protocol.h>
 
-@class UIImage;
-
 @protocol WKValueBasedWallpaper <WKWallpaper>
 - (id)wallpaperValue;
-- (UIImage *)thumbnailImage;
 @end
 

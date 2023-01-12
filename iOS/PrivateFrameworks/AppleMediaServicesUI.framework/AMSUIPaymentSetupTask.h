@@ -6,13 +6,11 @@
 
 #import <AppleMediaServices/AMSTask.h>
 
-#import <AppleMediaServicesUI/AMSUIPaymentSetupViewControllerDelegate-Protocol.h>
-
 @class AMSBinaryPromise, NSObject, NSString, UIViewController;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIPaymentSetupTask : AMSTask <AMSUIPaymentSetupViewControllerDelegate>
+@interface AMSUIPaymentSetupTask : AMSTask
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     long long _paymentSetupFeatureState;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class CAShapeLayer, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface UITextSelectionRectView
+@interface UITextSelectionRectView : UIView
 {
     UIColor *_selectionColor;
     UIColor *_selectionBorderColor;

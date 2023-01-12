@@ -7,6 +7,7 @@
 #import <WorkflowKit/WFEnumerationParameter.h>
 
 @interface WFEnumerationParameter (WorkflowEditor)
++ (_Bool)supportsEditingMultipleValues;
 + (Class)moduleSummaryEditorClass;
 - (_Bool)moduleSummaryShowsAddButtonForState:(id)arg1;
 - (id)moduleSummarySlotsForState:(id)arg1;

@@ -6,11 +6,9 @@
 
 #import <IDS/IDSBatchIDQueryController.h>
 
-#import <TelephonyUtilities/TUIDSBatchIDQueryController-Protocol.h>
-
 @class NSString;
 
-@interface IDSBatchIDQueryController (TUIDSLookupManager) <TUIDSBatchIDQueryController>
+@interface IDSBatchIDQueryController (TUIDSLookupManager)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

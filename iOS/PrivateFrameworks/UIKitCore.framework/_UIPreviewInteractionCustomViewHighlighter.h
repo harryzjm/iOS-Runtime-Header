@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIPreviewInteractionHighlighting-Protocol.h>
-
 @class NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionCustomViewHighlighter : NSObject <_UIPreviewInteractionHighlighting>
+@interface _UIPreviewInteractionCustomViewHighlighter : NSObject
 {
     _Bool _customViewFlipsHorizontalAxis;
     UIView *_customView;

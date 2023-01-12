@@ -8,7 +8,7 @@
 #import <NewsUI/NSObject-Protocol.h>
 
 @class FCArticleController, FCAssetManager, FCContentManifest, FCFlintResourceManager, FCInterestToken, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
-@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCFeedDatabaseProtocol, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
+@protocol FCAVAssetFactoryType, FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCFeedDatabaseProtocol, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
 @property(readonly, copy, nonatomic) NSString *contentEnvironmentToken;
@@ -22,6 +22,7 @@
 @property(readonly, nonatomic) FCFlintResourceManager *flintResourceManager;
 @property(readonly, nonatomic) FCTagController *tagController;
 @property(readonly, nonatomic) FCArticleController *articleController;
+@property(readonly, nonatomic) id <FCAVAssetFactoryType> avAssetFactory;
 @property(readonly, nonatomic) id <FCAVAssetPrewarming> avAssetPrewarmer;
 @property(readonly, nonatomic) FCAssetManager *assetManager;
 @property(readonly, nonatomic) id <FCNewsAppConfigurationManager> appConfigurationManager;

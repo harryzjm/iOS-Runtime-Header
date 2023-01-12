@@ -4,35 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import "TSWPPlaceholderSmartField.h"
 
-@interface TSWPMergeSmartField
+@class NSString, TSWPMergeFieldType;
+
+@interface TSWPMergeSmartField : TSWPPlaceholderSmartField
 {
-    NSString *_property;
-    NSString *_label;
-    NSString *_key;
-    int _category;
     _Bool _requiresFollowingWhitespace;
+    _Bool _hasCustomText;
+    TSWPMergeFieldType *_fieldType;
+    long long _category;
     NSString *_whitespace;
     NSString *_guid;
-    NSString *_tableField;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *guid; // @synthesize guid=_guid;
+@property(copy, nonatomic) NSString *whitespace; // @synthesize whitespace=_whitespace;
+@property(nonatomic) _Bool hasCustomText; // @synthesize hasCustomText=_hasCustomText;
+@property(nonatomic) _Bool requiresFollowingWhitespace; // @synthesize requiresFollowingWhitespace=_requiresFollowingWhitespace;
+@property(nonatomic) long long category; // @synthesize category=_category;
+@property(copy, nonatomic) TSWPMergeFieldType *fieldType; // @synthesize fieldType=_fieldType;
+- (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (id)scriptTag;
 - (unsigned short)smartFieldKind;
 - (_Bool)allowsPasteAsSmartField;
 - (id)copyWithContext:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-@property(copy, nonatomic) NSString *tableField;
-@property(copy, nonatomic) NSString *guid;
-@property(copy, nonatomic) NSString *whitespace;
-@property(nonatomic) _Bool requiresFollowingWhitespace;
-@property(nonatomic) int category;
-@property(copy, nonatomic) NSString *key;
-@property(copy, nonatomic) NSString *label;
-@property(copy, nonatomic) NSString *property;
+- (id)initWithContext:(id)arg1 category:(long long)arg2;
 
 @end
 

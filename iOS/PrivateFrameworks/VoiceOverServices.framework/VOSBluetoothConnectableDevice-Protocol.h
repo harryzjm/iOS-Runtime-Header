@@ -15,6 +15,7 @@
 - (_Bool)connecting;
 - (_Bool)connected;
 - (_Bool)paired;
+- (NSString *)address;
 - (NSString *)identifier;
 - (NSString *)name;
 @end

@@ -5,8 +5,7 @@
 //
 
 #import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
-#import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 
-@protocol SBNotificationHomeAffordanceControllerClient <SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate>
+@protocol SBNotificationHomeAffordanceControllerClient <SBFZStackParticipantDelegate>
 @end
 

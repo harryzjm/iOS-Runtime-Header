@@ -6,9 +6,10 @@
 
 #import <CallKit/NSObject-Protocol.h>
 
-@class CXAction;
+@class CXAction, CXTransaction;
 
 @protocol CXAbstractProviderHostProtocol <NSObject>
-- (oneway void)actionCompleted:(CXAction *)arg1;
+- (oneway void)requestTransaction:(CXTransaction *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (oneway void)actionCompleted:(CXAction *)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end
 

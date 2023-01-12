@@ -6,11 +6,13 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSData, NSDictionary, SFCATModel;
+@class NSArray, NSData, NSDictionary, SFCATModel, SFPatternModel;
 
 @protocol SFResponseWrapperCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSArray *pattern_models;
+@property(retain, nonatomic) SFPatternModel *pattern_model;
 @property(copy, nonatomic) NSData *visualCATOutput;
 @property(retain, nonatomic) SFCATModel *catModel;
 @end

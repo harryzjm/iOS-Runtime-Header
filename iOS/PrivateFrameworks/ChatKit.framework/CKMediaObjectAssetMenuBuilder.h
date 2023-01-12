@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <CKMediaObjectAssetMenuBuilderDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_deleteChatItems:(id)arg1;
+- (id)_deleteMenuForChatItems:(id)arg1;
 - (void)_copyChatItems:(id)arg1;
 - (id)_copyActionForChatItems:(id)arg1;
 - (void)_forwardChatItems:(id)arg1;
@@ -35,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)_quickLookActionForChatItems:(id)arg1 cursorChatItem:(id)arg2;
 - (id)_quickLookAndOpenActionsForChatItems:(id)arg1 cursorChatItem:(id)arg2;
 - (id)_quickLookAndOpenMenuForChatItems:(id)arg1 cursorChatItem:(id)arg2;
-- (id)contextMenuForChatItems:(id)arg1 cursorChatItem:(id)arg2;
+- (id)contextMenuForChatItems:(id)arg1 cursorChatItem:(id)arg2 isCMM:(_Bool)arg3;
 
 @end
 

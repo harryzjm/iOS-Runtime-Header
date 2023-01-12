@@ -6,13 +6,12 @@
 
 #import <Foundation/NSDate.h>
 
-#import <Home/HFPropertyListConvertible-Protocol.h>
-
 @class NSNumber, NSString;
 
-@interface NSDate (HFAnalytics) <HFPropertyListConvertible>
+@interface NSDate (HFAnalytics)
 + (id)hf_dateByAddingYears:(long long)arg1 months:(long long)arg2 weeks:(long long)arg3 days:(long long)arg4 hours:(long long)arg5 minutes:(long long)arg6 seconds:(long long)arg7 nanoseconds:(long long)arg8 toDate:(id)arg9;
 + (long long)hf_daysBetweenDates:(id)arg1 endDate:(id)arg2;
++ (long long)hf_minutesBetweenDates:(id)arg1 endDate:(id)arg2;
 + (id)hf_dateByAddingNanoseconds:(long long)arg1 toDate:(id)arg2;
 + (id)hf_dateByAddingSeconds:(long long)arg1 toDate:(id)arg2;
 + (id)hf_dateByAddingMinutes:(long long)arg1 toDate:(id)arg2;

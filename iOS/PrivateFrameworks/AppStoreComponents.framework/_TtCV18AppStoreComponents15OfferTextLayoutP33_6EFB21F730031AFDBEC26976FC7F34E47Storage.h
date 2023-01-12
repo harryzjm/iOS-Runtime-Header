@@ -15,6 +15,8 @@
     MISSING_TYPE *titleView;
     MISSING_TYPE *subtitleView;
     MISSING_TYPE *hasTrailingSubtitle;
+    MISSING_TYPE *shouldTopAlign;
+    MISSING_TYPE *backgroundContentMode;
 }
 
 @end

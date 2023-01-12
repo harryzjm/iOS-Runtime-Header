@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUISettingsGroupControllerDelegate-Protocol.h>
-
 @class NSMapTable, NSString, SKUIClientContext, SKUISettingsContext, SKUISettingsObjectStore;
 @protocol SKUISettingsGroupsDescriptionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUISettingsGroupsDescription : NSObject <SKUISettingsGroupControllerDelegate>
+@interface SKUISettingsGroupsDescription : NSObject
 {
     NSMapTable *_controllers;
     SKUISettingsObjectStore *_groupDescriptions;

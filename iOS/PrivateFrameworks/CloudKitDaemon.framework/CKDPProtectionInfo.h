@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKDPProtectionInfo : PBCodable <NSCopying>
+@interface CKDPProtectionInfo : PBCodable
 {
     NSData *_protectionInfo;
     NSString *_protectionInfoTag;

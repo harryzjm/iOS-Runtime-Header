@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Email/EMMessageRepositoryCountQueryObserver_xpc-Protocol.h>
-#import <Email/EMRecoverableObserver-Protocol.h>
-
 @class EFCancelationToken, EFPair, EFQuery, EMMailboxScope, EMMessageRepository, NSString;
 @protocol EMMessageRepositoryCountQueryObserver;
 
 __attribute__((visibility("hidden")))
-@interface _EMMessageRepositoryCountingQueryObserver : NSObject <EMMessageRepositoryCountQueryObserver_xpc, EMRecoverableObserver>
+@interface _EMMessageRepositoryCountingQueryObserver : NSObject
 {
     EMMessageRepository *_repository;
     EFQuery *_query;

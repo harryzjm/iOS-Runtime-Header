@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCControllerComponentDescription-Protocol.h>
-
 @class GCAdaptiveTriggersXPCProxyClientEndpoint, NSArray, NSString;
 @protocol NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface GCAdaptiveTriggersXPCProxyClientEndpointDescription : NSObject <_GCControllerComponentDescription>
+@interface GCAdaptiveTriggersXPCProxyClientEndpointDescription : NSObject
 {
     NSArray *_initialStatuses;
     GCAdaptiveTriggersXPCProxyClientEndpoint *_materializedObject;

@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isSpaceLayout;
 - (void)_configure;
 - (_Bool)_shouldBeDirty;
-- (_Bool)shouldHoriziontallyCenterView:(id)arg1;
+- (_Bool)shouldHorizontallyCenterView:(id)arg1;
 - (id)initWithLayoutMetrics:(id)arg1;
 - (id)init;
 

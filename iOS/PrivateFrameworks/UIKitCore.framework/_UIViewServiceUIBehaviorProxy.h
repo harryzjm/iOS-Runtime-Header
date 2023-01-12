@@ -4,27 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIViewServiceUIBehaviorInterface-Protocol.h>
-
 @class NSString, _UIViewServiceFencingControlProxy;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceUIBehaviorProxy <_UIViewServiceUIBehaviorInterface>
+@interface _UIViewServiceUIBehaviorProxy
 {
     int _remotePID;
     _UIViewServiceFencingControlProxy *_fencingControlProxy;
-    int __automatic_invalidation_retainCount;
-    _Bool __automatic_invalidation_invalidated;
 }
 
++ (void)initialize;
 + (id)proxyWrappingExportedObject:(id)arg1 forCommunicationWithPID:(int)arg2 exportedProtocol:(id)arg3;
 - (void)dealloc;
-- (_Bool)_isDeallocating;
-- (_Bool)_tryRetain;
-- (unsigned long long)retainCount;
-- (oneway void)release;
-- (id)retain;
-- (int)__automatic_invalidation_logic;
+- (void)_objc_initiateDealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -12,15 +12,20 @@
 __attribute__((visibility("hidden")))
 @interface SNAudioRecordingQueueScheduler : NSObject
 {
-    NSObject<OS_dispatch_queue> *_bufferHandlerQueue;
+    NSObject<OS_dispatch_queue> *_eventHandlerQueue;
+    _Atomic long long _eventHandlerQueueFundsSpent;
+    _Atomic long long _eventHandlerQueueFundsEarned;
+    _Atomic _Bool _eventHandlerQueueStopped;
     CDUnknownBlockType _bufferHandler;
+    CDUnknownBlockType _interruptionHandler;
     NSObject<OS_os_transaction> *_transaction;
     AVAudioFormat *_recordFormat;
+    CDStruct_1b6d18a9 _lastAudioHeartbeatTime;
+    CDStruct_1b6d18a9 _lastProcessingHeartbeatTime;
+    int _unhealthyBufferCount;
 }
 
 - (void).cxx_destruct;
-- (void)handleAudioBufferCallbackForQueue:(struct OpaqueAudioQueue *)arg1 buffer:(struct AudioQueueBuffer *)arg2 startTime:(const struct AudioTimeStamp *)arg3 numberPacketDescriptions:(unsigned int)arg4 packetDescriptions:(const struct AudioStreamPacketDescription *)arg5;
-- (id)initWithBufferHandler:(CDUnknownBlockType)arg1 queue:(id)arg2 recordFormat:(id)arg3;
 - (id)init;
 
 @end

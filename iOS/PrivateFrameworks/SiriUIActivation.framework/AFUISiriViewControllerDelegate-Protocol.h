@@ -26,6 +26,8 @@
 - (void)siriViewController:(AFUISiriViewController *)arg1 didEncounterUnexpectedError:(NSError *)arg2;
 
 @optional
+- (void)invalidateSystemApertureAssertion;
+- (void)requestSystemApertureCollapse;
 - (void)siriViewController:(AFUISiriViewController *)arg1 didReceiveButtonUpWithRequestOptions:(SASRequestOptions *)arg2;
 - (void)siriViewControllerDidPresentKeyboard:(AFUISiriViewController *)arg1;
 - (void)siriViewControllerDidChangeToListeningMode:(AFUISiriViewController *)arg1;

@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _NSKeyedUnarchiverHelper : NSObject
 {
-    NSArray *_white;
+    NSArray *_allowed;
     unsigned int _lastRef;
     NSMutableArray *_allowedClasses;
     NSError *_decodeError;

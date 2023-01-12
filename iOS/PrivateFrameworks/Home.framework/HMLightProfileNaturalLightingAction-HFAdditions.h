@@ -7,6 +7,7 @@
 #import <HomeKit/HMLightProfileNaturalLightingAction.h>
 
 @interface HMLightProfileNaturalLightingAction (HFAdditions)
+- (id)hf_affectedAccessoryRepresentables;
 - (id)hf_affectedAccessoryProfiles;
 - (id)hf_affectedCharacteristic;
 @end

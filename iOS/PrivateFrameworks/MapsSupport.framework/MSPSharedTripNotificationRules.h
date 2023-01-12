@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/NSSecureCoding-Protocol.h>
-
-@class NSDate;
+@class NSDate, NSMapTable;
 
 __attribute__((visibility("hidden")))
-@interface MSPSharedTripNotificationRules : NSObject <NSSecureCoding>
+@interface MSPSharedTripNotificationRules : NSObject
 {
     _Bool _hasMadeFinalPush;
     unsigned long long _maxPostedNotifications;
@@ -22,11 +20,13 @@ __attribute__((visibility("hidden")))
     NSDate *_lastPostedNotificationDate;
     NSDate *_lastUpdatedDate;
     NSDate *_currentETADate;
+    NSMapTable *_intermediateArrivalWaypointPostedNotifications;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)unarchivingObjectsSet;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMapTable *intermediateArrivalWaypointPostedNotifications; // @synthesize intermediateArrivalWaypointPostedNotifications=_intermediateArrivalWaypointPostedNotifications;
 @property(nonatomic) _Bool hasMadeFinalPush; // @synthesize hasMadeFinalPush=_hasMadeFinalPush;
 @property(retain, nonatomic) NSDate *currentETADate; // @synthesize currentETADate=_currentETADate;
 @property(retain, nonatomic) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
@@ -36,11 +36,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double minimumETADifference; // @synthesize minimumETADifference=_minimumETADifference;
 @property(nonatomic) unsigned long long postedNotifications; // @synthesize postedNotifications=_postedNotifications;
 @property(nonatomic) unsigned long long maxPostedNotifications; // @synthesize maxPostedNotifications=_maxPostedNotifications;
+- (_Bool)hasSentNotificationType:(unsigned long long)arg1 forState:(id)arg2 waypoint:(id)arg3;
 - (double)minimumETADifferenceIncrement;
 - (void)incrementMinimumETADifference;
 - (void)didReceiveUpdateWithETA:(double)arg1 lastUpdated:(double)arg2;
-@property(readonly, nonatomic) unsigned long long currentlyNecessaryNotificationType;
-- (void)didPostNotification;
+- (unsigned long long)currentlyNecessaryNotificationTypeForState:(id)arg1;
+- (void)didPostNotificationType:(unsigned long long)arg1 forState:(id)arg2;
 - (id)description;
 - (id)initWithMaximumNumberOfNotifications:(unsigned long long)arg1 minimumNotificationInterval:(double)arg2;
 - (id)initWithMaximumNumberOfNotifications:(unsigned long long)arg1;

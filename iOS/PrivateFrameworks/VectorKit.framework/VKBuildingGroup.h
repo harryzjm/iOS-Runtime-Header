@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<ggl::MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh>, std::default_delete<ggl::MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh>>> _extrusionStrokeMeshVendor;
     struct unique_ptr<ggl::MeshVendor<ggl::BuildingPointyRoof::BuildingMesh>, std::default_delete<ggl::MeshVendor<ggl::BuildingPointyRoof::BuildingMesh>>> _pointyRoofFillMeshVendor;
     struct unique_ptr<ggl::MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh>, std::default_delete<ggl::MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh>>> _pointyRoofStrokeMeshVendor;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _extrusionFillCullingGroups;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _extrusionStrokeCullingGroups;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _fillCullingGroupsForPointyRoofs;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _pointyRoofFillCullingGroups;
-    struct array<std::vector<std::vector<FeatureRange>>, 16> _pointyRoofStrokeCullingGroups;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _extrusionFillCullingGroups;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _extrusionStrokeCullingGroups;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _fillCullingGroupsForPointyRoofs;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _pointyRoofFillCullingGroups;
+    struct array<std::vector<std::vector<FeatureRange>>, 16UL> _pointyRoofStrokeCullingGroups;
     struct vector<std::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::allocator<std::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>> _styleQueries;
     struct vector<std::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::allocator<std::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>> _flatRoofStyleQueries;
     struct vector<std::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::allocator<std::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>> _selectedStyleQueries;

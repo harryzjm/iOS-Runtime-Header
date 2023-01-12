@@ -7,8 +7,9 @@
 #import <UIKit/UIResponder.h>
 
 @interface UIResponder (IC)
+@property(readonly, nonatomic) _Bool ic_isTextInputSourcePencil;
 - (_Bool)ic_isInResponderChainOfFirstResponder:(id)arg1;
-- (_Bool)ic_inhbitsGlobalKeyCommands;
+@property(readonly, nonatomic) _Bool ic_inhibitsGlobalKeyCommands;
 - (_Bool)ic_becomeFirstResponder;
 @property(readonly, nonatomic) _Bool ic_isFirstResponder;
 @end

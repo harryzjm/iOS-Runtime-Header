@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CHRecognizer;
+@class CHStringOVSChecker;
 
 @interface CHMultiWordOVSFilteringStep
 {
-    CHRecognizer *_recognizer;
+    CHStringOVSChecker *_ovsStringChecker;
 }
 
-@property(nonatomic) CHRecognizer *recognizer; // @synthesize recognizer=_recognizer;
-- (id)process:(id)arg1;
-- (id)initWithRecognizer:(id)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CHStringOVSChecker *ovsStringChecker; // @synthesize ovsStringChecker=_ovsStringChecker;
+- (id)process:(id)arg1 options:(id)arg2;
+- (id)initWithOVSStringChecker:(id)arg1;
 
 @end
 

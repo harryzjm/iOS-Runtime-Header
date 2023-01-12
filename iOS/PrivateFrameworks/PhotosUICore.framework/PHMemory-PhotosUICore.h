@@ -6,7 +6,11 @@
 
 #import <Photos/PHMemory.h>
 
+@class NSArray;
+
 @interface PHMemory (PhotosUICore)
++ (id)px_photosGraphDataFromProperties:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) NSArray *px_blockableFeatureActions;
 - (void)px_assignStoryTitleCategoryIfNeeded;
 - (id)px_mutatedPhotosGraphPropertiesWithRejectReason:(unsigned long long)arg1;
 - (id)px_photosGraphDataByMutatingPropertiesUsingBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;

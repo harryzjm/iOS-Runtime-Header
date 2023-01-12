@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "BCSAction.h"
+
 __attribute__((visibility("hidden")))
-@interface BCSInvalidDataAction
+@interface BCSInvalidDataAction : BCSAction
 {
 }
 
 - (_Bool)isInvalidDataAction;
 - (id)actionPickerItems;
 - (void)performDefaultAction;
+- (id)actionIcon;
 - (id)localizedDefaultActionDescription;
 - (id)initWithData:(id)arg1 codePayload:(id)arg2;
 

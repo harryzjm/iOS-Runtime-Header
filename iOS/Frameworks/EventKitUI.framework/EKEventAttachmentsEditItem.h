@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKEventAttachmentCellControllerDelegate-Protocol.h>
-#import <EventKitUI/EKEventAttachmentEditViewControllerDelegate-Protocol.h>
-#import <EventKitUI/UIDocumentPickerDelegate-Protocol.h>
-#import <EventKitUI/UIDropInteractionDelegate-Protocol.h>
+#import "EKEventEditItem.h"
 
 @class EKEvent, EKUITableViewCell, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttachmentsEditItem <UIDocumentPickerDelegate, UIDropInteractionDelegate, EKEventAttachmentCellControllerDelegate, EKEventAttachmentEditViewControllerDelegate>
+@interface EKEventAttachmentsEditItem : EKEventEditItem
 {
     NSArray *_cellControllers;
     EKUITableViewCell *_addAttachmentCell;

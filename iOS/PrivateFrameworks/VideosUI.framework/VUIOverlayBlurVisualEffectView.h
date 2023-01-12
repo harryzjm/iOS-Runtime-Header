@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)blurViewWithEffect:(long long)arg1;
 + (id)overlayVisualEffect;
 
 @end

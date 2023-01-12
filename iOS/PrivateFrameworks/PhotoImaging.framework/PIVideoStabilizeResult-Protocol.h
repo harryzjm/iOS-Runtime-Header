@@ -11,7 +11,7 @@
 @protocol PIVideoStabilizeResult <NURenderResult>
 @property(readonly, nonatomic) NSDictionary *rawHomographies;
 @property(readonly, nonatomic) unsigned long long analysisType;
-@property(readonly, nonatomic) CDStruct_996ac03c stabCropRect;
+@property(readonly, nonatomic) CDStruct_0973877e stabCropRect;
 @property(readonly, copy, nonatomic) NSArray *keyframes;
 @end
 

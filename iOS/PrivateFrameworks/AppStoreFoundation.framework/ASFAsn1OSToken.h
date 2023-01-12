@@ -13,9 +13,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly) ASFAsn1Token *value; // @synthesize value=mValue;
-- (id)stringValue;
-- (id)_initWithID:(unsigned long long)arg1 class:(unsigned char)arg2 length:(unsigned long long)arg3 content:(const char *)arg4 opaque:(_Bool)arg5;
 
 @end
 

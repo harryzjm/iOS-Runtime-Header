@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNTimeManagerObserver-Protocol.h>
-
-@class GEOComposedGuidanceEvent, GEOComposedRoute, MNAnnouncementEngine, MNAnnouncementPlanEvent, MNGuidanceSignInfo, MNJunctionViewImageLoader, MNLocation, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class GEOComposedGuidanceEvent, GEOComposedRoute, GEOComposedWaypoint, MNAnnouncementEngine, MNAnnouncementPlanEvent, MNGuidanceSignInfo, MNJunctionViewImageLoader, MNLocation, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol MNGuidanceManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MNGuidanceManager : NSObject <MNTimeManagerObserver>
+@interface MNGuidanceManager : NSObject
 {
     MNAnnouncementEngine *_announcementEngine;
     NSMutableDictionary *_announcementsSpoken;
@@ -55,8 +53,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isInPreArrivalState; // @synthesize isInPreArrivalState=_isInPreArrivalState;
 @property(nonatomic) __weak id <MNGuidanceManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)timeManagerDidChangeProvider:(id)arg1;
-- (unsigned int)_trafficColorForRoute:(id)arg1 traffic:(id)arg2 distanceRemaining:(double)arg3;
+- (unsigned long long)_trafficColorForRoute:(id)arg1 routeCoordinate:(CDStruct_3f2a7a20)arg2;
 - (void)_notifyAnalyticsForNewEvents:(id)arg1 previousEvents:(id)arg2;
+- (double)durationOfAnnouncement:(id)arg1;
 - (double)durationOfEvent:(id)arg1 announcementIndex:(unsigned long long)arg2 distance:(double)arg3;
 - (double)_distanceToEndOfRoute;
 - (double)_distanceToManeuverStart;
@@ -67,12 +66,12 @@ __attribute__((visibility("hidden")))
 - (double)_timeRemainingForEvent:(id)arg1;
 - (int)_indexForEventUUID:(id)arg1;
 - (_Bool)_isEVChargingEvent:(id)arg1;
-- (_Bool)_guidanceEventIsSpecial:(id)arg1;
 - (_Bool)_isValidEvent:(id)arg1;
 - (double)_adjustedVehicleSpeed;
 - (void)_markEventSpoken:(id)arg1;
 - (_Bool)_eventWasSpoken:(id)arg1;
 - (id)_specialSpokenEvents:(int)arg1 forLegIndex:(unsigned long long)arg2;
+- (_Bool)_isInArrivalState;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
 - (id)_junctionViewEvents;
 - (void)_handleJunctionViewInfo:(id)arg1;
@@ -84,8 +83,9 @@ __attribute__((visibility("hidden")))
 - (int)_maneuverTypeForAREvent:(id)arg1;
 - (id)_specialAREvents:(int)arg1 forLeg:(unsigned long long)arg2;
 - (id)_arrivalARGuidanceEventsForLeg:(unsigned long long)arg1;
-- (id)_closestContinueAREvent;
+- (id)_closestContinueAREventToRouteCoordinate:(CDStruct_3f2a7a20)arg1;
 - (id)_validEventsForARGuidance;
+- (id)_createArGuidanceInfosForEvent:(id)arg1 forStep:(id)arg2;
 - (void)_considerARGuidance;
 - (id)_signForGuidanceEvent:(id)arg1 isPrimary:(_Bool)arg2 shouldOverridePrimaryDistances:(_Bool)arg3 distance:(out double *)arg4;
 - (id)_sortedSignEventsFromValidSignEvents:(id)arg1;
@@ -97,11 +97,12 @@ __attribute__((visibility("hidden")))
 - (void)_considerHaptics;
 - (id)_durationsForEvent:(id)arg1;
 - (id)_serverStringDictionaryForChargingEvent:(id)arg1;
-- (id)_serverStringDictionaryForEvent:(id)arg1 distance:(double)arg2 validDistance:(double)arg3 spoken:(_Bool)arg4;
-- (id)_selectAnnouncementForEvent:(id)arg1 withTimeRemaining:(double)arg2 withMinIndex:(unsigned long long)arg3 selectedIndex:(out unsigned long long *)arg4;
-- (void)_notifySpeechEvent:(id)arg1 variant:(unsigned long long)arg2 ignorePromptStyle:(_Bool)arg3;
+- (id)_serverStringDictionaryForEvent:(id)arg1 distance:(double)arg2 validDistance:(double)arg3 spoken:(_Bool)arg4 waypoints:(id)arg5;
+- (id)_selectAnnouncementForEvent:(id)arg1 withTimeRemaining:(double)arg2 withMinWaypointCategory:(int)arg3 selectedWaypointCategory:(out int *)arg4 waypoints:(id)arg5;
+- (void)_notifySpeechEvent:(id)arg1 waypointCategory:(int)arg2 ignorePromptStyle:(_Bool)arg3;
 - (id)_spokenEventsRemainingInStep;
 - (void)_planAnnouncements;
+- (void)_repeatSpokenEvent:(id)arg1;
 - (_Bool)_considerOtherSpecialAnnouncementsForLocation:(id)arg1;
 - (_Bool)_considerArrivalAnnouncementsForLocation:(id)arg1;
 - (_Bool)_considerChargingAnnouncementsForLocation:(id)arg1;
@@ -110,10 +111,11 @@ __attribute__((visibility("hidden")))
 - (void)_considerAnnouncements;
 - (void)_filterValidEvents;
 - (void)updateGuidanceForLocation:(id)arg1 navigatorState:(int)arg2;
-- (void)updateForReroute:(id)arg1;
+- (void)updateForReroute:(id)arg1 rerouteReason:(unsigned long long)arg2;
 - (void)updateDestination:(id)arg1;
 - (_Bool)repeatLastGuidanceAnnouncement:(id)arg1;
 - (void)stop;
+@property(readonly, nonatomic) GEOComposedWaypoint *currentWaypoint;
 @property(readonly, nonatomic) NSArray *events;
 - (void)_resetLastAnnouncementTime;
 - (void)reset;

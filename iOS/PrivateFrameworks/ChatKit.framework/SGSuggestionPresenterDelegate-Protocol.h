@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class SGSuggestionPresenter, UIViewController;
+@class NSArray, SGSuggestionPresenter, UIViewController;
 
 @protocol SGSuggestionPresenterDelegate <NSObject>
 - (UIViewController *)viewControllerForPresentingFromBannerByPresenter:(SGSuggestionPresenter *)arg1;
@@ -14,6 +14,8 @@
 - (void)suggestionPresenterWantsToShowBanner:(SGSuggestionPresenter *)arg1;
 
 @optional
+- (void)dismissAllSuggestions;
+- (void)suggestionPresenterDismissAllSuggestions:(NSArray *)arg1;
 - (long long (^)(id, id))suggestionCategoryComparatorForManager:(SGSuggestionPresenter *)arg1;
 - (void)suggestionPresenter:(SGSuggestionPresenter *)arg1 didDismissViewController:(UIViewController *)arg2;
 - (void)suggestionPresenter:(SGSuggestionPresenter *)arg1 willDismissViewController:(UIViewController *)arg2;

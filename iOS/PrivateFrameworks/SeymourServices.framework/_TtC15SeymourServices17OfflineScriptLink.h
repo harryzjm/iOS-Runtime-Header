@@ -14,7 +14,6 @@
     MISSING_TYPE *dispatchService;
     MISSING_TYPE *lock;
     MISSING_TYPE *fileStore;
-    MISSING_TYPE *scriptUnpacker;
     MISSING_TYPE *state;
 }
 

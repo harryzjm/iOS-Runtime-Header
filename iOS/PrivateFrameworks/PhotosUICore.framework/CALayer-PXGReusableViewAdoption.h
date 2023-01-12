@@ -6,18 +6,18 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <PhotosUICore/PXGInternalReusableView-Protocol.h>
-
 @class NSString;
 
-@interface CALayer (PXGReusableViewAdoption) <PXGInternalReusableView>
+@interface CALayer (PXGReusableViewAdoption)
 - (_Bool)shouldReloadForUserData:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
 - (void)pxg_shiftPosition:(struct CGPoint)arg1;
-- (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_4f725fed *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_76b550e2 *)arg4 textureInfo:(CDStruct_183601bc *)arg5 resizableCapInsets:(CDStruct_0054b44d)arg6 reusableViewInfo:(id)arg7 screenScale:(double)arg8;
+- (void)pxg_configureWithTexture:(id)arg1 geometry:(CDStruct_4f725fed *)arg2 info:(CDStruct_9d1ebe49 *)arg3 style:(CDStruct_a79e78a9 *)arg4 textureInfo:(struct *)arg5 resizableCapInsets:(CDStruct_818bb265)arg6 reusableViewInfo:(id)arg7 screenScale:(double)arg8;
 - (void)pxg_prepareForReuse;
 - (void)pxg_becomeReusable;
 - (void)pxg_removeFromSuperview;
+- (_Bool)pxg_hasSuperview;
+- (void)pxg_addToHostingView:(id)arg1;
 - (void)pxg_addToScrollViewController:(id)arg1;
 - (void)px_setAnchorPoint:(struct CGPoint)arg1;
 @property(readonly, nonatomic) _Bool px_supportsAlphaBlending;

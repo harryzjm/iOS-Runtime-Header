@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLModule-Protocol.h>
-
 @class NSString;
 
-@interface Contacts_TMLModule : NSObject <TMLModule>
+@interface Contacts_TMLModule : NSObject
 {
 }
 

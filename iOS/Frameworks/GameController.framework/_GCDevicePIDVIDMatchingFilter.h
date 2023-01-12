@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCDeviceMatchingFilter-Protocol.h>
-
 @class NSArray, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GCDevicePIDVIDMatchingFilter : NSObject <_GCDeviceMatchingFilter>
+@interface _GCDevicePIDVIDMatchingFilter : NSObject
 {
     NSNumber *_vendorID;
     NSArray *_productIDs;

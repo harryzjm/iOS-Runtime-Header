@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKDPStreamingAssetIdentifier : PBCodable <NSCopying>
+@interface CKDPStreamingAssetIdentifier : PBCodable
 {
     NSData *_fileSignature;
     NSString *_owner;

@@ -9,6 +9,7 @@
 @class NSString, SXComponentClassification, SXComponentConditions;
 
 @protocol SXComponentProperties <SXConditionalComponentProperties>
+@property(nonatomic, readonly) _Bool requiresLinkedContent;
 @property(nonatomic, readonly) id additions;
 @property(nonatomic, readonly) SXComponentClassification *classification;
 @property(nonatomic, readonly) id analytics;

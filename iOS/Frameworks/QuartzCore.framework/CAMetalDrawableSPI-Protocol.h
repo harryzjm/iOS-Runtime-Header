@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol MTLTexture;
+
 @protocol CAMetalDrawableSPI
 @property(nonatomic) struct CGRect dirtyRect;
+- (id <MTLTexture>)newTextureWithResourceIndex:(unsigned long long)arg1;
 @end
 

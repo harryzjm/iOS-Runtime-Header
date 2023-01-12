@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPCopying-Protocol.h>
-#import <CorePDF/CPDisposable-Protocol.h>
-#import <CorePDF/NSCopying-Protocol.h>
-
 @class CPMemoryOwner;
 
 __attribute__((visibility("hidden")))
-@interface CPCharSequence : NSObject <NSCopying, CPCopying, CPDisposable>
+@interface CPCharSequence : NSObject
 {
     unsigned int length;
     struct CPPDFChar **charArray;
@@ -23,6 +19,7 @@ __attribute__((visibility("hidden")))
     _Bool wasMerged;
 }
 
+- (struct CGRect)rotatedBounds;
 - (struct CGRect)boundsFrom:(unsigned int)arg1 length:(unsigned int)arg2;
 - (struct CGRect)bounds;
 - (_Bool)map:(CDUnknownFunctionPointerType)arg1 whereNeighborsWith:(id)arg2 passing:(void *)arg3;

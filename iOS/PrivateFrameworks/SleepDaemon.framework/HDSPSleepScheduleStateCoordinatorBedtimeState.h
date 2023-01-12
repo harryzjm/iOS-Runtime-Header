@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)determineExpirationDateForCurrentDate:(id)arg1;
+- (id)expirationDate;
 - (void)wakeUpConfirmed;
 - (void)wakeTimeReached;
 - (unsigned long long)scheduleState;

@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPContentInsettable-Protocol.h>
-#import <LinkPresentation/LPTextStyleable-Protocol.h>
-
-@class LPCaptionButtonPresentationProperties, LPTextView, NSRegularExpression, UIButton;
+@class LPCaptionButtonPresentationProperties, LPSubtitleButtonView, LPTextView, NSRegularExpression, NSString;
 
 __attribute__((visibility("hidden")))
-@interface LPHorizontalCaptionPairView <LPTextStyleable, LPContentInsettable>
+@interface LPHorizontalCaptionPairView
 {
     LPTextView *_leftView;
     LPTextView *_rightView;
     LPCaptionButtonPresentationProperties *_buttonProperties;
     struct UIEdgeInsets _contentInset;
     long long _balancingMode;
-    UIButton *_button;
+    LPSubtitleButtonView *_button;
     long long _overrideMaximumNumberOfLines;
     NSRegularExpression *_emphasizedTextExpression;
 }
@@ -25,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSRegularExpression *emphasizedTextExpression; // @synthesize emphasizedTextExpression=_emphasizedTextExpression;
 @property(nonatomic) long long overrideMaximumNumberOfLines; // @synthesize overrideMaximumNumberOfLines=_overrideMaximumNumberOfLines;
-- (void)buttonPressed:(id)arg1;
+- (id)subtitleButton;
 - (struct CGSize)_layoutCaptionPairForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutComponentView;
@@ -37,6 +34,12 @@ __attribute__((visibility("hidden")))
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (id)initWithHost:(id)arg1 leadingText:(id)arg2 leadingStyle:(id)arg3 trailingText:(id)arg4 trailingStyle:(id)arg5 button:(id)arg6 balancingMode:(long long)arg7;
 - (id)initWithHost:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/NSCopying-Protocol.h>
-
-@interface IBLayoutGuide : NSObject <NSCopying>
+@interface IBLayoutGuide : NSObject
 {
 }
 

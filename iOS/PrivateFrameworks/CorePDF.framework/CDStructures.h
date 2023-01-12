@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
+#pragma mark Function Pointers
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
@@ -84,11 +82,12 @@ struct CPPDFChar {
     unsigned short _field2;
     unsigned short _field3;
     struct CGPoint _field4;
-    struct CGSize _field5;
-    struct CPPDFStyle *_field6;
-    double _field7;
-    int _field8;
-    long long _field9;
+    struct CGPoint _field5;
+    struct CGSize _field6;
+    struct CPPDFStyle *_field7;
+    double _field8;
+    int _field9;
+    long long _field10;
 };
 
 struct CPPDFClipBuffer {
@@ -192,11 +191,6 @@ struct PrimitiveBuffer {
     unsigned int _field6;
     unsigned int _field7;
     int _field8;
-};
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
 };
 
 struct __CFDictionary;

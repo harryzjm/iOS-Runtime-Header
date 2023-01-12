@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOMapRequestManager.h"
+
 @class NSObject;
 @protocol GEOMapAccessRestrictions, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface GEOZilchDecoder
+@interface GEOZilchDecoder : GEOMapRequestManager
 {
     NSObject<OS_dispatch_queue> *_decoderQueue;
     NSObject<OS_dispatch_queue> *_requestQueue;

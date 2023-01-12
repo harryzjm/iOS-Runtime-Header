@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVPlayerController.h"
+
 @class AVObservationController, AVPictureInPictureController, AVPictureInPicturePlaybackState, AVSampleBufferDisplayLayerPlaybackDelegateAdapter;
 @protocol AVPictureInPictureSampleBufferPlaybackDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVSampleBufferDisplayLayerPlayerController
+@interface AVSampleBufferDisplayLayerPlayerController : AVPlayerController
 {
     _Bool _pictureInPictureAvailable;
     _Bool _paused;

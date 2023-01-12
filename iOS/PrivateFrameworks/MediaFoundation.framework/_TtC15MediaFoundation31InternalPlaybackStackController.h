@@ -15,6 +15,7 @@
     MISSING_TYPE *loadedQueueControllerItems;
     MISSING_TYPE *loadedItemsPool;
     MISSING_TYPE *maximumPlayerQueueLength;
+    MISSING_TYPE *mediaServicesAvailable;
     MISSING_TYPE *playerController;
     MISSING_TYPE *queueAssetLoader;
     MISSING_TYPE *queueController;
@@ -22,15 +23,19 @@
     MISSING_TYPE *errorController;
     MISSING_TYPE *externalPlaybackController;
     MISSING_TYPE *backgroundTaskController;
+    MISSING_TYPE *playbackDefaults;
     MISSING_TYPE *synchronizingToPlayer;
     MISSING_TYPE *currentQueueRestorationItem;
     MISSING_TYPE *playerItemStateSnapshot;
+    MISSING_TYPE *throttlingStateMachine;
+    MISSING_TYPE *transitionController;
     MISSING_TYPE *deferredPlaybackRateForNextSetQueue;
     MISSING_TYPE *inFlightSetQueueLoadingContext;
     MISSING_TYPE *currentQueueAssetLoadingContext;
-    MISSING_TYPE *lastSetQueueIdentifier;
+    MISSING_TYPE *reloadQueueOnGoing;
     MISSING_TYPE *stackVersion;
     MISSING_TYPE *assetLoadingId;
+    MISSING_TYPE *playbackStallTimer;
     MISSING_TYPE *isPausedForLeasePrevention;
     MISSING_TYPE *$__lazy_storage_$_skipAggregator;
     MISSING_TYPE *skippingState;

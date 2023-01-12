@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
-
 @class CAMediaTimingFunction, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneSettingsMediaTimingAnimationFactory : NSObject <_UIBasicAnimationFactory>
+@interface _UISceneSettingsMediaTimingAnimationFactory : NSObject
 {
     CAMediaTimingFunction *__timingFunctionForAnimation;
 }

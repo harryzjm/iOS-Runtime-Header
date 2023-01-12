@@ -22,6 +22,7 @@
 - (void)preventExitForLocaleReason:(NSString *)arg1;
 - (void)preheatXPCConnection;
 - (void)openSetupURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)hashManagerControl:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getPeopleSuggestions:(SFPeopleSuggesterParams *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getDeviceAssets:(SFClientGetDeviceAssetsParams *)arg1 completion:(void (^)(SFClientGetDeviceAssetsResults *, NSError *))arg2;
 - (void)findContact:(SFContactInfo *)arg1 skipIfContactBlocked:(_Bool)arg2 completion:(void (^)(SFContactInfo *, NSError *))arg3;
@@ -34,5 +35,9 @@
 - (void)appleIDInfoWithCompletion:(void (^)(NSString *, NSData *, NSError *))arg1;
 - (void)activityStateWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
 - (void)activateAssertionWithIdentifier:(NSString *)arg1;
+
+@optional
+- (void)beginMonitoringPairedWatchWristState;
+- (void)getPairedWatchWristStateWithCompletionHandler:(void (^)(long long))arg1;
 @end
 

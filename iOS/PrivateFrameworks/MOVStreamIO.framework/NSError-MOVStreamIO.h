@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (MOVStreamIO)
++ (id)movStreamIOWarningWithDomain:(id)arg1 message:(id)arg2 code:(long long)arg3;
 + (id)movStreamIOErrorWithDomain:(id)arg1 message:(id)arg2 code:(long long)arg3;
 + (id)internalErrorWithMessage:(id)arg1 code:(long long)arg2;
 + (id)streamErrorWithMessage:(id)arg1 code:(long long)arg2;

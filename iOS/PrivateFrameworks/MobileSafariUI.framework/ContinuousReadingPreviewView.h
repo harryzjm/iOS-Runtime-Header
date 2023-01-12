@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface ContinuousReadingPreviewView : UIView
 {
-    UIImageView *_snapshotView;
-    UIView *_headerHairline;
     SFBannerTheme *_bannerTheme;
+    UIView *_headerHairline;
+    UIImageView *_snapshotView;
     _Bool _prefetchingDisabled;
     _Bool _previewingNextDocument;
     ContinuousReadingItem *_continuousReadingItem;

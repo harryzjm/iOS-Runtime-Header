@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPModelLibrarySearchRequest, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibrarySearchRequestOperation
+@interface MPModelLibrarySearchRequestOperation : MPAsyncOperation
 {
     NSObject<OS_dispatch_queue> *_accessSerialQueue;
     shared_ptr_299ddd6f _runningQuery;

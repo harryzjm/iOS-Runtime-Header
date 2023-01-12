@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/TUIPredictionViewDelegate-Protocol.h>
-#import <UIKitCore/UIKeyboardAutocorrectionObserver-Protocol.h>
-#import <UIKitCore/UIPredictiveViewController-Protocol.h>
+#import "UIViewController.h"
 
 @class NSArray, NSDate, NSString, NSTimer, TIAutocorrectionList, TUIPredictionView;
 
 __attribute__((visibility("hidden")))
-@interface UIPredictionViewController <TUIPredictionViewDelegate, UIKeyboardAutocorrectionObserver, UIPredictiveViewController>
+@interface UIPredictionViewController : UIViewController
 {
     NSTimer *_updateUITimer;
     NSDate *_lastUIUpdateTime;

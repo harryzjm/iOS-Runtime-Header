@@ -6,12 +6,10 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <PDFKit/PDFPageLayerInterface-Protocol.h>
-
 @class NSString, PDFPageLayerPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFPageLayer : CALayer <PDFPageLayerInterface>
+@interface PDFPageLayer : CALayer
 {
     PDFPageLayerPrivate *_private;
 }

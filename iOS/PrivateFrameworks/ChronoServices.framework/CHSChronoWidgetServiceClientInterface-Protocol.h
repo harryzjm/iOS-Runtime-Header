@@ -6,9 +6,9 @@
 
 #import <ChronoServices/NSObject-Protocol.h>
 
-@class CHSAvocadoDescriptorsBox;
+@class CHSWidgetDescriptorsBox;
 
 @protocol CHSChronoWidgetServiceClientInterface <NSObject>
-- (oneway void)avocadoDescriptorsDidChange:(CHSAvocadoDescriptorsBox *)arg1;
+- (oneway void)widgetDescriptorsDidChange:(CHSWidgetDescriptorsBox *)arg1;
 @end
 

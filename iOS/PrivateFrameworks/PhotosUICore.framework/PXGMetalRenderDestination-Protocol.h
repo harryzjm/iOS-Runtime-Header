@@ -10,6 +10,7 @@
 @protocol MTLDevice, MTLTexture, OS_dispatch_queue, PXGMetalRenderDestinationDelegate;
 
 @protocol PXGMetalRenderDestination <NSObject>
+@property(nonatomic) _Bool lowMemoryMode;
 @property(readonly, nonatomic) unsigned long long destinationColorSpaceName;
 @property(nonatomic) struct CGColorSpace *colorspace;
 @property(readonly, nonatomic) _Bool canSetColorSpace;

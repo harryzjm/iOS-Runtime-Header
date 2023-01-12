@@ -6,7 +6,7 @@
 
 #import <SpotlightDaemon/CSSearchableIndexInterface-Protocol.h>
 
-@class CSSearchQueryContext, CSSearchableItem, CSUserAction, NSArray, NSDate, NSString, SPCoreSpotlightTask;
+@class CSSearchQueryContext, CSSearchableItem, CSUserAction, NSArray, NSDate, NSDictionary, NSString, SPCoreSpotlightTask;
 @protocol CSIndexExtensionDelegate, CSSearchableIndexServiceInterface;
 
 @protocol MDIndexer <CSSearchableIndexInterface>
@@ -20,6 +20,7 @@
 
 @optional
 @property __weak id <CSIndexExtensionDelegate> extensionDelegate;
+- (void)rewriteQueryWithQueryString:(NSString *)arg1 context:(CSSearchQueryContext *)arg2 matchInfo:(NSDictionary *)arg3 rewriteHandler:(void (^)(NSArray *, NSError *))arg4;
 - (void)deleteActionsWithIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteActionsBeforeTime:(double)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteAllInteractionsWithBundleID:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;

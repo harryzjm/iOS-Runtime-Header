@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUTPromise.h"
+
 @class CUTResult, NSMutableArray, NSRecursiveLock;
 
-@interface _CUTLockingPromise
+@interface _CUTLockingPromise : CUTPromise
 {
     NSRecursiveLock *_lock;
     _Bool _done;

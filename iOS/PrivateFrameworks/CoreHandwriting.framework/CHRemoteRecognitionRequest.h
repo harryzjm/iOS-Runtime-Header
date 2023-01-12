@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreHandwriting/NSSecureCoding-Protocol.h>
-
 @class CHDrawing, NSArray, NSDictionary;
 
-@interface CHRemoteRecognitionRequest : NSObject <NSSecureCoding>
+@interface CHRemoteRecognitionRequest : NSObject
 {
     _Bool _shouldUseTextReplacements;
     _Bool _enableCachingIfAvailable;
     _Bool _enableGen2ModelIfAvailable;
     _Bool _enableGen2CharacterLMIfAvailable;
+    _Bool _enableStrokeReordering;
     _Bool _hasBeenSubmitted;
     int _recognitionMode;
     int _contentType;
@@ -27,12 +26,17 @@
     NSDictionary *_options;
     CHDrawing *_drawing;
     long long _priority;
+    NSDictionary *_parametersOverride;
     struct CGSize _minimumDrawingSize;
 }
 
++ (id)loadFromFile:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *parametersOverride; // @synthesize parametersOverride=_parametersOverride;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(nonatomic) _Bool hasBeenSubmitted; // @synthesize hasBeenSubmitted=_hasBeenSubmitted;
+@property(nonatomic) _Bool enableStrokeReordering; // @synthesize enableStrokeReordering=_enableStrokeReordering;
 @property(nonatomic) _Bool enableGen2CharacterLMIfAvailable; // @synthesize enableGen2CharacterLMIfAvailable=_enableGen2CharacterLMIfAvailable;
 @property(nonatomic) _Bool enableGen2ModelIfAvailable; // @synthesize enableGen2ModelIfAvailable=_enableGen2ModelIfAvailable;
 @property(nonatomic) _Bool enableCachingIfAvailable; // @synthesize enableCachingIfAvailable=_enableCachingIfAvailable;
@@ -52,9 +56,10 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToRemoteRecognitionRequest:(id)arg1;
 - (id)recognizerConfigurationKeyWithLocale:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldRemoveUnnaturalGaps;
+- (id)writeToFileInFolder:(id)arg1 basename:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)dealloc;
 - (id)initWithLocales:(id)arg1 recognitionMode:(int)arg2 drawing:(id)arg3 options:(id)arg4 priority:(long long)arg5;
 
 @end

@@ -6,17 +6,17 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOLatLng, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPlaceIdentifier : PBCodable <NSCopying>
+@interface GEOPlaceIdentifier : PBCodable
 {
     PBUnknownFields *_unknownFields;
     GEOLatLng *_center;
     unsigned long long _muid;
-    CDStruct_26a2534e _flags;
+    struct {
+        unsigned int has_muid:1;
+    } _flags;
 }
 
 - (void).cxx_destruct;

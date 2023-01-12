@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface NSCKRecordMetadataReceiptArchive : NSObject <NSSecureCoding>
+@interface NSCKRecordMetadataReceiptArchive : NSObject
 {
     NSMutableDictionary *_zoneIDToArchivedReceipts;
 }

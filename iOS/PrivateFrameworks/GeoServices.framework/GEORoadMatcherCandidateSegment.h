@@ -25,10 +25,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GEOMapFeatureJunction *junction; // @synthesize junction=_junction;
 @property(readonly, nonatomic) double segmentAngle; // @synthesize segmentAngle=_segmentAngle;
 @property(readonly, nonatomic) double distanceFromSegment; // @synthesize distanceFromSegment=_distanceFromSegment;
-@property(readonly, nonatomic) CDStruct_39925896 coordinateOnSegment; // @synthesize coordinateOnSegment=_coordinateOnSegment;
+@property(readonly, nonatomic) CDStruct_071ac149 coordinateOnSegment; // @synthesize coordinateOnSegment=_coordinateOnSegment;
 @property(readonly, nonatomic) GEOMapFeatureRoad *road; // @synthesize road=_road;
 @property(readonly, nonatomic) double score; // @synthesize score=_score;
-- (id)initWithCoordinate:(CDStruct_39925896)arg1 angle:(double)arg2 road:(id)arg3 startCoordinate:(CDStruct_39925896)arg4 endCoordinate:(CDStruct_39925896)arg5;
+- (id)initWithCoordinate:(CDStruct_071ac149)arg1 angle:(double)arg2 road:(id)arg3 startCoordinate:(CDStruct_071ac149)arg4 endCoordinate:(CDStruct_071ac149)arg5;
 
 @end
 

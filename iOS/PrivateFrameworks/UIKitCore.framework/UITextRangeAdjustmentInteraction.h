@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/UIInteraction-Protocol.h>
-
 @class NSString, UITextGestureTuning, UITextModernLoupeSession, UITextRangeAdjustmentGestureRecognizer, UITouch, UIView;
 @protocol UITextRangeAdjustmentInteractionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UITextRangeAdjustmentInteraction : NSObject <UIGestureRecognizerDelegate, UIInteraction>
+@interface UITextRangeAdjustmentInteraction : NSObject
 {
     UIView *_view;
     UITextGestureTuning *_gestureTuning;

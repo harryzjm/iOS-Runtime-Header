@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CompanionSync/IDSServiceDelegate-Protocol.h>
-
 @class IDSMessageContext, IDSService, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSObject, NSString, NSURL, SYDevice, SYStartSyncSession, _SYInputStreamer, _SYOutputStreamer;
 @protocol OS_dispatch_queue, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
-@interface SYFileTransferSyncEngine <IDSServiceDelegate>
+@interface SYFileTransferSyncEngine
 {
     _Bool _inSession;
     _Bool _sessionCanceled;

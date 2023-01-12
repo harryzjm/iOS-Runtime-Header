@@ -7,9 +7,10 @@
 #import <SceneKit/SCNScene.h>
 
 @interface SCNScene (AVTExtension)
++ (id)avt_newSceneWithURL:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)avt_removeFaceSetsExportedAsDummyNodesWithHandler:(CDUnknownBlockType)arg1;
 - (void)avt_removeDuplicateSkeletonRootWithHandler:(CDUnknownBlockType)arg1;
-- (void)avt_setInitialValuesExportedAsAnimationsWithHandler:(CDUnknownBlockType)arg1;
-- (void)avt_fixQuirksOfNewUSDSchemaWithHandler:(CDUnknownBlockType)arg1;
+- (void)avt_setInitialValuesExportedAsAnimationsWithWithOptions:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)avt_fixQuirksOfNewUSDSchemaWithOptions:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 @end
 

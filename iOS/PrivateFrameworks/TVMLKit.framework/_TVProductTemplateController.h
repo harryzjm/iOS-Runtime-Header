@@ -4,17 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/CAAnimationDelegate-Protocol.h>
-#import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
-#import <TVMLKit/UICollectionViewDataSource-Protocol.h>
-#import <TVMLKit/UICollectionViewDelegate-Protocol.h>
-#import <TVMLKit/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <TVMLKit/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import "_TVBgImageLoadingViewController.h"
 
 @class CALayer, IKAudioElement, IKImageElement, IKViewElement, NSArray, NSIndexPath, NSString, UICollectionView, UIImage, UIImageView, UIView, UIViewController, _TVProductCollectionViewCell;
 
 __attribute__((visibility("hidden")))
-@interface _TVProductTemplateController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, TVAppTemplateImpressionable, CAAnimationDelegate, UIPopoverPresentationControllerDelegate>
+@interface _TVProductTemplateController : _TVBgImageLoadingViewController
 {
     IKViewElement *_templateElement;
     IKImageElement *_bgImageElement;

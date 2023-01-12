@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerCompactTimeLabelDelegate-Protocol.h>
+#import "UIView.h"
 
 @class NSArray, NSCalendar, NSLocale, NSString, UILabel, _UIDatePickerCalendarTime, _UIDatePickerCompactTimeLabel, _UIDatePickerOverlayPresentation;
 @protocol _UIDatePickerCalendarTimeViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerCalendarTimeView <_UIDatePickerCompactTimeLabelDelegate, UIPopoverPresentationControllerDelegate>
+@interface _UIDatePickerCalendarTimeView : UIView
 {
     struct {
         unsigned int showsTimeLabel:1;
@@ -54,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)reloadWithCalendar:(id)arg1 locale:(id)arg2 selectedDate:(id)arg3;
 - (void)_reload;
 - (void)_reloadDateFormatters;
+- (void)tintColorDidChange;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)primaryFirstResponder;
 - (void)_updateClockLayout;

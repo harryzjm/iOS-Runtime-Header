@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKWorkoutEvent.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKWorkoutEvent (HDCodingSupport) <HDCoding>
+@interface HKWorkoutEvent (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

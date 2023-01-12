@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKCDPCodeServiceRequestOperationGroup : PBCodable <NSCopying>
+@interface CKCDPCodeServiceRequestOperationGroup : PBCodable
 {
     long long _operationGroupQuantity;
     NSString *_operationGroupId;

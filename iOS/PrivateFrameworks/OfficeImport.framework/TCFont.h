@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSDictionary, NSString, TCFontFamily;
 
 __attribute__((visibility("hidden")))
-@interface TCFont : NSObject <NSCopying>
+@interface TCFont : NSObject
 {
     NSDictionary *_namesByLanguage;
     NSString *_psName;

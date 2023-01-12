@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSSQLiteConnectionDelegate-Protocol.h>
-
 @class AMSSQLiteConnection, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AMSMetricsDatabase : NSObject <AMSSQLiteConnectionDelegate>
+@interface AMSMetricsDatabase : NSObject
 {
     NSString *_containerId;
     AMSSQLiteConnection *_connection;

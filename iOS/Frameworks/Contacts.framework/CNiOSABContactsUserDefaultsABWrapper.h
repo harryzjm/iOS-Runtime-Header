@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)setLastIgnoredNewDuplicatesCount:(long long)arg1;
+- (long long)lastIgnoredNewDuplicatesCount;
 - (void)setDisplayedContactsFilterRepresentationPref:(id)arg1;
 - (id)displayedContactsFilterRepresentationPref;
 - (id)abDefaultCountryCode;

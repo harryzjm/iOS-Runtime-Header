@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHDataFormatter-Protocol.h>
-#import <TSCharts/TSCHDataFormatterPersistableStyleObject-Protocol.h>
-
 @class NSString, NSUUID, TSUCustomFormat;
 
-@interface TSCHCustomDataFormatter : NSObject <TSCHDataFormatter, TSCHDataFormatterPersistableStyleObject>
+@interface TSCHCustomDataFormatter : NSObject
 {
     TSUCustomFormat *_customFormat;
     NSUUID *_customFormatListKey;

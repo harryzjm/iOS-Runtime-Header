@@ -6,6 +6,11 @@
 
 #import <IMDPersistence/NSObject-Protocol.h>
 
+@class NSArray, NSPredicate;
+
 @protocol IMDAttachmentQueries <NSObject>
+- (void)fetchAttachmentRecordsFilteredUsingPredicate:(NSPredicate *)arg1 limit:(unsigned long long)arg2 completionHandler:(void (^)(NSArray *))arg3;
+- (void)deleteAttachmentsDirectWithPredicate:(NSPredicate *)arg1;
+- (void)coreSpotlightDeleteAttachmentGUIDs:(NSArray *)arg1;
 @end
 

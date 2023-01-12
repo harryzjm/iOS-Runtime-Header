@@ -6,10 +6,7 @@
 
 #import <WebKit/WKWebView.h>
 
-@class InterpolatedWebViewGeometry;
-
 @interface WKWebView (TabDocumentViewExtras)
-@property(nonatomic, setter=sf_setDisplayedWebViewGeometry:) CDStruct_bd09fee7 sf_displayedWebViewGeometry;
-@property(retain, nonatomic, setter=sf_setTargetWebViewGeometry:) InterpolatedWebViewGeometry *sf_targetWebViewGeometry;
+@property(nonatomic, setter=sf_setDisplayedWebViewGeometry:) CDStruct_998372b6 sf_displayedWebViewGeometry;
 @end
 

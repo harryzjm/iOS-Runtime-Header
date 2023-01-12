@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreUtils/CUActivatable-Protocol.h>
-
 @class RPCompanionLinkClient, RPCompanionLinkDevice;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CULiveActionPeerSession : NSObject <CUActivatable>
+@interface CULiveActionPeerSession : NSObject
 {
     RPCompanionLinkClient *_clinkClient;
     _Bool _speakDisable;

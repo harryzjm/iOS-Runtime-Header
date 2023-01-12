@@ -46,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)startingLabelLayoutWithContext:(struct NavContext *)arg1 routeUserOffset:(struct PolylineCoordinate)arg2;
 - (void)routeJunctionsHaveChanged;
 - (void)reset;
-- (void)dealloc;
 - (id)initWithJunctions:(id)arg1;
 - (void)debugDraw:(id)arg1 overlayConsole:(void *)arg2 navContext:(struct NavContext *)arg3;
 - (_Bool)prepareOppositeCarriagewayJunctions;

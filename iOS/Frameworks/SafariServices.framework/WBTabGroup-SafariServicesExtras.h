@@ -6,10 +6,13 @@
 
 #import <WebBookmarks/WBTabGroup.h>
 
-@class NSAttributedString;
+@class NSAttributedString, WBTab;
 
 @interface WBTabGroup (SafariServicesExtras)
-- (_Bool)_sf_isOppositeTypeOfTabGroup:(id)arg1;
+- (_Bool)_sf_isOppositeBrowsingModeOfTabGroup:(id)arg1;
+@property(readonly, nonatomic) unsigned long long _sf_validTabsCountForPasteboard;
+@property(readonly, nonatomic) WBTab *pinnedStartPage;
+@property(readonly, nonatomic) WBTab *firstUnpinnedTab;
 @property(readonly, nonatomic) _Bool _sf_hasAttributedString;
 @property(readonly, nonatomic) NSAttributedString *_sf_attributedString;
 @end

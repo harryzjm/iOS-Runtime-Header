@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface IDSServerCertificate : NSObject <NSCopying>
+@interface IDSServerCertificate : NSObject
 {
     NSData *_dataRepresentation;
 }

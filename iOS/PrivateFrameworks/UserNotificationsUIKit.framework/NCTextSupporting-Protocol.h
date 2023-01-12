@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UserNotificationsUIKit/NSObject-Protocol.h>
+#import <UserNotificationsUIKit/NCTextMenuInteractionSupporting-Protocol.h>
 
 @class NSString, NSStringDrawingContext, UIColor, UIFont;
 
-@protocol NCTextSupporting <NSObject>
+@protocol NCTextSupporting <NCTextMenuInteractionSupporting>
 @property(nonatomic, setter=nc_setNumberOfLines:) unsigned long long nc_numberOfLines;
 @property(retain, nonatomic) UIColor *textColor;
 @property(retain, nonatomic) UIFont *font;

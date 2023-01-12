@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)wantsScreenTraits;
+- (void).cxx_destruct;
 @property(nonatomic) UIResponder<UIKBEmojiHitTestResponder> *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
 @property(retain, nonatomic) UIKeyboardEmojiGraphicsTraits *emojiGraphicsTraits; // @synthesize emojiGraphicsTraits=_emojiGraphicsTraits;
 @property(retain, nonatomic) UIView *scrubView; // @synthesize scrubView=_scrubView;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSArray, SKUIStorePageSectionContext, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStorePageSplit : NSObject <NSCopying>
+@interface SKUIStorePageSplit : NSObject
 {
     UIColor *_dividerColor;
     long long _numberOfPageSections;

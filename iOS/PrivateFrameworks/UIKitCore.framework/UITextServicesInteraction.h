@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UITextServicesResponderProxyDelegate-Protocol.h>
+#import "UITextInteraction.h"
 
 @class UIResponder, _UITextServiceSession, _UITextServicesResponderProxy;
 
 __attribute__((visibility("hidden")))
-@interface UITextServicesInteraction <_UITextServicesResponderProxyDelegate>
+@interface UITextServicesInteraction : UITextInteraction
 {
     _UITextServiceSession *_definitionSession;
     _UITextServiceSession *_learnSession;

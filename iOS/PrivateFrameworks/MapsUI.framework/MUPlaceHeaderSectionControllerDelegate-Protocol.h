@@ -6,9 +6,10 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MKMapItem, MUPlaceHeaderSectionController;
+@class MKMapItem, MUPlaceHeaderSectionController, MUPresentationOptions;
 
 @protocol MUPlaceHeaderSectionControllerDelegate <NSObject>
+- (void)placeHeaderSectionController:(MUPlaceHeaderSectionController *)arg1 didSelectShareWithPresentationOptions:(MUPresentationOptions *)arg2;
 - (void)placeHeaderSectionController:(MUPlaceHeaderSectionController *)arg1 didTapMapItem:(MKMapItem *)arg2;
 
 @optional

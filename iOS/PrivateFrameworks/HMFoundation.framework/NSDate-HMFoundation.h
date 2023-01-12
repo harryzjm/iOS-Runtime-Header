@@ -6,20 +6,16 @@
 
 #import <Foundation/NSDate.h>
 
-#import <HMFoundation/HMFObject-Protocol.h>
-
 @class NSArray, NSDateComponents, NSString;
 
-@interface NSDate (HMFoundation) <HMFObject>
+@interface NSDate (HMFoundation)
 + (id)shortDescription;
-+ (id)dateFromFileNameDescription:(id)arg1;
 + (id)timeIntervalDescription:(double)arg1;
+- (id)hmf_dateComponentsUsingTimeZone:(id)arg1;
 @property(readonly, copy) NSDateComponents *hmf_dateComponents;
 @property(readonly, copy) NSString *hmf_localTimeDescription;
 @property(readonly, copy) NSString *privateDescription;
 @property(readonly, copy) NSString *shortDescription;
-@property(readonly, copy) NSString *fileNameDescription;
-@property(readonly, copy) NSString *iso8601Description;
 @property(readonly, copy) NSDateComponents *dateComponents;
 @property(readonly, copy) NSString *localTimeDescription;
 

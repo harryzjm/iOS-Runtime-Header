@@ -6,10 +6,11 @@
 
 #import <SleepDaemon/NSObject-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @protocol HDSPApplicationWorkspaceObserver <NSObject>
-@property(readonly, nonatomic) NSString *bundleIdentifier;
-- (void)observedApplicationDidUninstall;
+@property(readonly, nonatomic) NSSet *observedApplicationBundleIdentifiers;
+- (void)observedApplicationDidUninstall:(NSString *)arg1;
+- (void)observedApplicationDidInstall:(NSString *)arg1;
 @end
 

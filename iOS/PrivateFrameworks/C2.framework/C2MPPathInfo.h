@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <C2/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface C2MPPathInfo : PBCodable <NSCopying>
+@interface C2MPPathInfo : PBCodable
 {
     unsigned long long _applicationBytesReceived;
     unsigned long long _applicationBytesSent;

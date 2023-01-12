@@ -6,12 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <ChatKit/CKSMSComposeRemoteViewControllerDelegate-Protocol.h>
-
 @class NSString;
 @protocol CKSMSComposeRemoteViewControllerDelegate;
 
-@interface CKSMSComposeRemoteViewController : _UIRemoteViewController <CKSMSComposeRemoteViewControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface CKSMSComposeRemoteViewController : _UIRemoteViewController
 {
     id <CKSMSComposeRemoteViewControllerDelegate> _delegate;
 }

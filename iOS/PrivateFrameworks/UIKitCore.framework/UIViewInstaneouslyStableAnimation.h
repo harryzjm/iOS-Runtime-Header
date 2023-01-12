@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIIntervalAnimating-Protocol.h>
-
 @class NSString;
 @protocol UIVectorOperatable;
 
 __attribute__((visibility("hidden")))
-@interface UIViewInstaneouslyStableAnimation : NSObject <UIIntervalAnimating>
+@interface UIViewInstaneouslyStableAnimation : NSObject
 {
     id <UIVectorOperatable> _velocity;
     id <UIVectorOperatable> _targetValue;

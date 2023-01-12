@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/RemoteUIControllerDelegate-Protocol.h>
-
-@class CTCarrierSpaceCapabilities, CTXPCServiceSubscriptionContext, CoreTelephonyClient, Logger, NSDictionary, NSString, PSListController, PSSpecifier, PSUICarrierSpaceOptInSplashScreen, RemoteUIController;
+@class CTCarrierSpaceCapabilities, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSDictionary, NSString, PSListController, PSSpecifier, PSUICarrierSpaceOptInSplashScreen, RemoteUIController;
 
 __attribute__((visibility("hidden")))
-@interface PSUICarrierSpaceGroup : NSObject <RemoteUIControllerDelegate>
+@interface PSUICarrierSpaceGroup : NSObject
 {
     CTXPCServiceSubscriptionContext *_subscriptionContext;
     CoreTelephonyClient *_ctClient;
-    Logger *_logger;
     NSDictionary *_specifersByID;
     _Bool _isSubscriptionDataPreferred;
+    NSString *_instance;
     RemoteUIController *_remoteUIController;
     PSListController *_listController;
     PSSpecifier *_groupSpecifier;

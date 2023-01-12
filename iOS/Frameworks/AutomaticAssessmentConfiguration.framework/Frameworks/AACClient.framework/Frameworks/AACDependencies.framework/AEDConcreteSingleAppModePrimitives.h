@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AACDependencies/AEDSingleAppModePrimitives-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AEDConcreteSingleAppModePrimitives : NSObject <AEDSingleAppModePrimitives>
+@interface AEDConcreteSingleAppModePrimitives : NSObject
 {
 }
 

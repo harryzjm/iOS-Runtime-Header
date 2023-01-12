@@ -9,11 +9,13 @@
 @interface _TtC10ChronoCoreP33_B57BA582B248C1D823BDF785EF8C4B7C9DebugView
 {
     MISSING_TYPE *debugTextView;
-    MISSING_TYPE *animationsDisabledView;
+    MISSING_TYPE *animationsPausedView;
     MISSING_TYPE *isSnapshottingView;
+    MISSING_TYPE *inAlwaysOnDisplayView;
     MISSING_TYPE *debugText;
-    MISSING_TYPE *animationsDisabled;
+    MISSING_TYPE *animationsPaused;
     MISSING_TYPE *isSnapshotting;
+    MISSING_TYPE *inAlwaysOnDisplay;
 }
 
 - (void).cxx_destruct;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIALAPropertySource-Protocol.h>
-
 @class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIALAConfigurationHistory <_UIALAPropertySource>
+@interface _UIALAConfigurationHistory
 {
     _Bool _hasEstablishedAlignmentValues;
     _Bool _inAlignmentLayoutUpdateSection;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SPOwner/CBPeripheralManagerPrivateDelegate-Protocol.h>
-
 @class CBPeripheralManager, FMXPCServiceDescription, FMXPCSession, NSString, SPBeaconManager;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SPOfflineAdvertisingKeysDelegate : NSObject <CBPeripheralManagerPrivateDelegate>
+@interface SPOfflineAdvertisingKeysDelegate : NSObject
 {
     _Bool _inLowPowerMode;
     NSObject<OS_dispatch_queue> *_queue;

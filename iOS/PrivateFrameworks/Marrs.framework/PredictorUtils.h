@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)getPredictStatusWithPredictorName:(id)arg1 code:(long long)arg2;
-+ (id)getInitStatusWithPredictorName:(id)arg1 code:(long long)arg2;
-+ (void)reportPredictStatusWithPredictorName:(id)arg1 code:(long long)arg2 locale:(id)arg3;
-+ (void)reportInitStatusWithPredictorName:(id)arg1 code:(long long)arg2 locale:(id)arg3;
++ (id)getPredictStatusWithPredictorName:(id)arg1 domain:(id)arg2 code:(long long)arg3;
++ (id)getInitStatusWithPredictorName:(id)arg1 domain:(id)arg2 code:(long long)arg3;
++ (void)reportPredictStatusWithPredictorName:(id)arg1 domain:(id)arg2 code:(long long)arg3 locale:(id)arg4;
++ (void)reportInitStatusWithPredictorName:(id)arg1 domain:(id)arg2 code:(long long)arg3 locale:(id)arg4;
 + (long long)handlePredictException:(struct exception_ptr)arg1;
 + (long long)handleInitException:(struct exception_ptr)arg1;
 

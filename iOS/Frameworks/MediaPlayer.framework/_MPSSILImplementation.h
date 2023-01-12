@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPSectionedIdentifierList.h"
+
 @class MPRandomDistribution, NSMutableArray;
 @protocol _MPSSILDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _MPSSILImplementation
+@interface _MPSSILImplementation : MPSectionedIdentifierList
 {
     MPRandomDistribution *_randomDistribution;
     NSMutableArray *_candidateItems;

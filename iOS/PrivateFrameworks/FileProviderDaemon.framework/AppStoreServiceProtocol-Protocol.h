@@ -8,6 +8,6 @@
 @protocol FPOperationClient;
 
 @protocol AppStoreServiceProtocol
-- (void)startOperation:(id <FPOperationClient>)arg1 toFetchAppStoreIconsForAppBundleIDs:(NSArray *)arg2 desiredSizeToScale:(struct CGSize)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)startOperation:(id <FPOperationClient>)arg1 toFetchAppStoreIconsForAppBundleIDs:(NSArray *)arg2 desiredSizeToScale:(struct CGSize)arg3 completionHandler:(void (^)(void))arg4;
 @end
 

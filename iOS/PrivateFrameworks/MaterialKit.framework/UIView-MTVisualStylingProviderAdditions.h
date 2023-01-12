@@ -6,11 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <MaterialKit/MTVisualStylingProviding-Protocol.h>
-
 @class NSString;
 
-@interface UIView (MTVisualStylingProviderAdditions) <MTVisualStylingProviding>
+@interface UIView (MTVisualStylingProviderAdditions)
 - (id)visualStylingProviderForCategory:(long long)arg1;
 - (void)_mt_applyVisualStyling:(id)arg1;
 - (void)mt_removeAllVisualStyling;

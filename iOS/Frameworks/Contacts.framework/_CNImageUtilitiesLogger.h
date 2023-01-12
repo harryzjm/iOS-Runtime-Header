@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNImageUtilitiesLogger-Protocol.h>
-
 @class NSString;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
-@interface _CNImageUtilitiesLogger : NSObject <CNImageUtilitiesLogger>
+@interface _CNImageUtilitiesLogger : NSObject
 {
     NSObject<OS_os_log> *_log;
 }

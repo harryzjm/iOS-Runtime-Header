@@ -9,16 +9,18 @@
 @class NCNotificationListView, UIView;
 
 @protocol NCNotificationListViewDataSource <NSObject>
-- (_Bool)notificationListViewIsGroup:(NCNotificationListView *)arg1;
 - (unsigned long long)notificationListViewNumberOfItems:(NCNotificationListView *)arg1;
 - (UIView *)notificationListView:(NCNotificationListView *)arg1 viewForItemAtIndex:(unsigned long long)arg2;
-- (double)notificationListView:(NCNotificationListView *)arg1 heightForItemAtIndex:(unsigned long long)arg2;
+- (double)notificationListView:(NCNotificationListView *)arg1 heightForItemAtIndex:(unsigned long long)arg2 withWidth:(double)arg3;
 
 @optional
+- (_Bool)isShowingFeaturedLeadingViewsForNotificationListView:(NCNotificationListView *)arg1;
 - (void)recycleView:(UIView *)arg1;
-- (double)insetHorizontalMarginForNotificationListView:(NCNotificationListView *)arg1;
-- (double)footerViewHeightForNotificationList:(NCNotificationListView *)arg1;
-- (double)headerViewHeightForNotificationList:(NCNotificationListView *)arg1;
+- (UIView *)overlayFooterViewForNotificationList:(NCNotificationListView *)arg1;
+- (UIView *)hoverViewForNotificationList:(NCNotificationListView *)arg1;
+- (UIView *)backgroundViewForNotificationList:(NCNotificationListView *)arg1;
+- (double)footerViewHeightForNotificationList:(NCNotificationListView *)arg1 withWidth:(double)arg2;
+- (double)headerViewHeightForNotificationList:(NCNotificationListView *)arg1 withWidth:(double)arg2;
 - (UIView *)footerViewForNotificationList:(NCNotificationListView *)arg1;
 - (UIView *)headerViewForNotificationList:(NCNotificationListView *)arg1;
 @end

@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/BSInvalidatable-Protocol.h>
-#import <UIKitCore/FBSceneLayerManagerObserver-Protocol.h>
+#import "UIView.h"
 
-@class CAContext, FBSSceneSettings, FBScene, NSMutableOrderedSet, NSMutableSet, NSSet, NSString, UIScenePresentationContext, UIView, _UIContextLayerHostView;
+@class CAContext, FBSSceneSettings, FBScene, NSMutableOrderedSet, NSMutableSet, NSSet, NSString, UIScenePresentationContext, _UIContextLayerHostView;
 @protocol _UISceneLayerHostContainerViewDataSource;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneLayerHostContainerView <FBSceneLayerManagerObserver, BSInvalidatable>
+@interface _UISceneLayerHostContainerView : UIView
 {
     FBScene *_scene;
     id <_UISceneLayerHostContainerViewDataSource> _dataSource;
@@ -43,6 +42,9 @@ __attribute__((visibility("hidden")))
 - (void)_adjustHostViewFrameAlignment:(id)arg1;
 - (id)_createHostViewForLayer:(id)arg1;
 - (_Bool)_canShowKeyboardLayer;
+- (void)_toggleStopsHitTestTransformAccumulationWithNewContext:(id)arg1;
+- (void)_toggleResizesHostedContextWithNewContext:(id)arg1;
+- (void)_toggleInheritsSecurityWithNewContext:(id)arg1;
 - (void)_toggleClippingDisabledWithNewContext:(id)arg1;
 - (void)_presentationContextChangedFrom:(id)arg1 toContext:(id)arg2 force:(_Bool)arg3;
 - (void)_setPresentationContext:(id)arg1;

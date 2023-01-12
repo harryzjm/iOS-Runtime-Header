@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSSet, NSString, NSURL, RMModelDeclarationBase, RMStoreUnresolvedAsset;
+@class NSArray, NSDictionary, NSSet, NSString, NSURL, RMModelDeclarationBase, RMStoreUnresolvedAsset;
 
 @protocol RMStoreXPCService
+- (void)publishStatusWithStoreIdentifier:(NSString *)arg1 status:(NSDictionary *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)removeStatusWithStoreIdentifier:(NSString *)arg1 declarationIdentifier:(NSString *)arg2 declarationServerToken:(NSString *)arg3 sourceIdentifier:(NSString *)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)writeStatusWithStoreIdentifier:(NSString *)arg1 declarationType:(NSString *)arg2 declarationIdentifier:(NSString *)arg3 declarationServerToken:(NSString *)arg4 sourceIdentifier:(NSString *)arg5 validity:(_Bool)arg6 reasons:(NSArray *)arg7 completionHandler:(void (^)(NSError *))arg8;
 - (void)resolveAsset:(RMStoreUnresolvedAsset *)arg1 storeIdentifier:(NSString *)arg2 completionHandler:(void (^)(RMStoreResolvedAsset *, NSError *))arg3;
 - (void)subscribedDeclarationsWithTypes:(NSSet *)arg1 storeIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)subscribedStoreDeclarationsWithTypes:(NSSet *)arg1 completionHandler:(void (^)(NSArray *, NSDictionary *, NSError *))arg2;

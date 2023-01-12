@@ -6,11 +6,17 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMEMessageDatagramServer, NSError;
+@class HMEMessageDatagramServer, NSArray, NSError, NSSet, NSString;
 @protocol HMEMessageDatagramConnection, HMETimerProvider;
 
 @protocol HMEMessageDatagramServerDataSource <NSObject>
-- (_Bool)serverShouldProcessEvents:(HMEMessageDatagramServer *)arg1;
+- (NSArray *)server:(HMEMessageDatagramServer *)arg1 forwardingTopicsForTopics:(NSArray *)arg2;
+- (NSArray *)server:(HMEMessageDatagramServer *)arg1 expandedTopicsForTopics:(NSArray *)arg2;
+- (NSSet *)server:(HMEMessageDatagramServer *)arg1 upstreamTopicsForTopic:(NSString *)arg2;
+- (double)serverDebounceTimeInterval:(HMEMessageDatagramServer *)arg1;
+- (_Bool)serverSupportFragmentCachedEvents:(HMEMessageDatagramServer *)arg1;
+- (unsigned long long)serverFragmentEventsDataSize:(HMEMessageDatagramServer *)arg1;
+- (_Bool)server:(HMEMessageDatagramServer *)arg1 shouldProcessEventsForConnection:(id <HMEMessageDatagramConnection>)arg2 shouldLogState:(_Bool)arg3;
 - (id <HMETimerProvider>)serverTimerProvider:(HMEMessageDatagramServer *)arg1;
 - (_Bool)server:(HMEMessageDatagramServer *)arg1 isConnectionTerminatingError:(NSError *)arg2;
 - (double)server:(HMEMessageDatagramServer *)arg1 timeoutIntervalForConnection:(id <HMEMessageDatagramConnection>)arg2;

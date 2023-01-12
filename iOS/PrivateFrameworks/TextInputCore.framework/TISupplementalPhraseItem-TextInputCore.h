@@ -7,6 +7,7 @@
 #import <TextInput/TISupplementalPhraseItem.h>
 
 @interface TISupplementalPhraseItem (TextInputCore)
+- (id)core_nameReadingPairsWithGenerationMode:(unsigned char)arg1 mecabraEnvironment:(id)arg2;
 - (id)core_nonPhoneticRangesInString:(id)arg1 options:(unsigned long long)arg2 locale:(id)arg3;
 - (_Bool)core_isEqualToMecabraCandidate:(id)arg1;
 - (void)core_appendEntitiesToArray:(id)arg1;

@@ -6,11 +6,9 @@
 
 #import <HealthKit/_HKClinicalContact.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface _HKClinicalContact (HDCodingSupport) <HDCoding>
+@interface _HKClinicalContact (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

@@ -9,8 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface VCPVideoFacePoseFilter : NSObject
 {
-    struct Matrix<float, 12, 1, false> _previousState;
-    struct Matrix<float, 12, 12, false> _previousCovar;
+    struct Matrix<float, 12U, 1U, false> _previousState;
+    struct Matrix<float, 12U, 12U, false> _previousCovar;
     _Bool _previousStateIsValid;
 }
 

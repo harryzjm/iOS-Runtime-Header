@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class VCSystemAudioCapture;
+@class VCAudioIO;
 
 __attribute__((visibility("hidden")))
 @interface VCSystemAudioCaptureSession : NSObject
@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
     struct _opaque_pthread_mutex_t _stateLock;
     struct AudioStreamBasicDescription _audioBasicDescription;
     unsigned int _samplesPerFrame;
-    VCSystemAudioCapture *_systemAudioCapture;
     struct opaqueCMSimpleQueue *_poolQueue;
     struct opaqueCMSimpleQueue *_outputQueue;
+    VCAudioIO *_audioIO;
 }
 
 - (void)resetAudioBufferPool;
@@ -24,8 +24,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)createAudioBufferPool;
 - (_Bool)stop;
 - (_Bool)start;
+- (_Bool)setupAudioIOWithConfig:(CDStruct_dea85fb6 *)arg1;
 - (void)dealloc;
-- (id)initWithConfiguration:(CDStruct_0a4efd25 *)arg1;
+- (id)initWithConfiguration:(CDStruct_dea85fb6 *)arg1;
 
 @end
 

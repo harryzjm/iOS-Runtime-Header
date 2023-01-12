@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <IMCore/NSObject-Protocol.h>
+
 @class IMMessageItem, IMSimulatedChat;
 
-@protocol IMSimulatedChatDelegate
-- (void)chat:(IMSimulatedChat *)arg1 didSendMessage:(IMMessageItem *)arg2;
+@protocol IMSimulatedChatDelegate <NSObject>
+- (void)simulatedChat:(IMSimulatedChat *)arg1 didHandleItem:(IMMessageItem *)arg2;
+- (void)simulatedChat:(IMSimulatedChat *)arg1 didSendMessage:(IMMessageItem *)arg2;
 @end
 

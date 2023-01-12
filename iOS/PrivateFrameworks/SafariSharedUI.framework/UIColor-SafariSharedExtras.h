@@ -12,9 +12,11 @@
 + (id)safari_colorWithSerializedColorData:(id)arg1;
 + (id)safari_colorWithRGBColorComponents:(id)arg1;
 - (double)safari_contrastRatioWithColor:(id)arg1;
+@property(readonly, nonatomic) UIColor *safari_sRGBColor;
 @property(readonly, nonatomic) _Bool safari_isOffWhite;
 @property(readonly, nonatomic) _Bool safari_meetsThresholdForDarkAppearance;
 @property(readonly, nonatomic) double safari_grayscaleComponent;
+@property(readonly, nonatomic) double safari_saturation;
 @property(readonly, nonatomic) double safari_luminance;
 @property(readonly, copy, nonatomic) NSData *safari_colorDataForSerialization;
 @property(readonly, copy, nonatomic) NSArray *safari_rgbColorComponents;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceCategoriesTicket-Protocol.h>
+#import "GEOAbstractRequestResponseTicket.h"
 
-@class GEOMapServiceTraits, NSDictionary, NSString;
+@class GEOMapServiceTraits, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceSearchCategoryTicket <GEOMapServiceCategoriesTicket>
+@interface _GEOPlaceSearchCategoryTicket : GEOAbstractRequestResponseTicket
 {
 }
 
@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSDictionary *responseUserInfo;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) GEOMapServiceTraits *traits;
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNContainerUpdate-Protocol.h>
-
 @class CNContainerPropertyDescription, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContainerUpdate : NSObject <CNContainerUpdate>
+@interface CNContainerUpdate : NSObject
 {
     CNContainerPropertyDescription *_property;
     id _value;

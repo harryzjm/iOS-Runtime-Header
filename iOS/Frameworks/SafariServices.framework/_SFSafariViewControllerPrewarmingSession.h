@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/SFBrowserRemoteViewControllerDelegate-Protocol.h>
-#import <SafariServices/SFQueueingServiceViewControllerProxyDelegate-Protocol.h>
-
 @class NSHashTable, NSString, SFBrowserRemoteViewController, SFQueueingServiceViewControllerProxy, _UIAsyncInvocation;
 @protocol SFServiceViewControllerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface _SFSafariViewControllerPrewarmingSession : NSObject <SFQueueingServiceViewControllerProxyDelegate, SFBrowserRemoteViewControllerDelegate>
+@interface _SFSafariViewControllerPrewarmingSession : NSObject
 {
     SFQueueingServiceViewControllerProxy<SFServiceViewControllerProtocol> *_serviceProxy;
     _UIAsyncInvocation *_cancelViewServiceRequest;

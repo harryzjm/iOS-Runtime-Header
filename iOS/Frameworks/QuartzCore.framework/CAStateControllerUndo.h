@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/CAStateRecorder-Protocol.h>
-
 @class CAState, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CAStateControllerUndo : NSObject <CAStateRecorder>
+@interface CAStateControllerUndo : NSObject
 {
     CAStateControllerUndo *_next;
     CAState *_state;

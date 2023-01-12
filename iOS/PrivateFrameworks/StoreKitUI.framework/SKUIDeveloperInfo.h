@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIDeveloperInfo : NSObject <NSCopying>
+@interface SKUIDeveloperInfo : NSObject
 {
     NSArray *_addressLines;
     NSString *_administrativeArea;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/NSTextAttachment.h>
+#import <UIKit/NSTextAttachment.h>
 
 @class NSURL;
 
@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) NSURL *_paperBundleAssetsURL;
 @property(readonly, nonatomic) NSURL *_paperBundleDatabaseURL;
 @property(readonly, nonatomic) NSURL *_paperBundleBaseURL;
+@property(nonatomic) _Bool pkInserting;
 @property(nonatomic) _Bool pkAttachmentBoundsMightBeInvalid;
 @end
 

@@ -6,17 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSManagedObjectContextFaultingDelegate-Protocol.h>
-#import <CoreData/PFUbiquityBaselineRecoveryOperationDelegate-Protocol.h>
-#import <CoreData/PFUbiquityBaselineRollOperationDelegate-Protocol.h>
-#import <CoreData/PFUbiquityBaselineRollResponseOperationDelegate-Protocol.h>
-#import <CoreData/_PFUbiquityRecordImportOperationDelegate-Protocol.h>
-
 @class NSOperationQueue, NSPersistentStoreCoordinator, NSRecursiveLock, NSSQLCore, NSString, PFUbiquityLocation, PFUbiquityRecordsImporterSchedulingContext, PFUbiquitySwitchboardCacheWrapper;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface _PFUbiquityRecordsImporter : NSObject <_PFUbiquityRecordImportOperationDelegate, NSManagedObjectContextFaultingDelegate, PFUbiquityBaselineRollOperationDelegate, PFUbiquityBaselineRecoveryOperationDelegate, PFUbiquityBaselineRollResponseOperationDelegate>
+@interface _PFUbiquityRecordsImporter : NSObject
 {
     NSOperationQueue *_importQueue;
     NSObject<OS_dispatch_queue> *_privateQueue;

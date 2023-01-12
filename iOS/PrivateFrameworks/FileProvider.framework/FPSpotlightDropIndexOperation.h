@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "FPOperation.h"
+
 @class CSSearchableIndex, FPSpotlightIndexer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPSpotlightDropIndexOperation
+@interface FPSpotlightDropIndexOperation : FPOperation
 {
     FPSpotlightIndexer *_indexer;
     CSSearchableIndex *_index;

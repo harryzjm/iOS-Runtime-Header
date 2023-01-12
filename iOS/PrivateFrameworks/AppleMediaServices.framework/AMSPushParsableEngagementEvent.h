@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSPushParsable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSPushParsableEngagementEvent : NSObject <AMSPushParsable>
+@interface AMSPushParsableEngagementEvent : NSObject
 {
 }
 
++ (void)_waitForPromises:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)_eventForStaticAssetPayload:(id)arg1 bag:(id)arg2;
++ (id)_eventForMapiPayload:(id)arg1 account:(id)arg2 bag:(id)arg3;
 + (_Bool)shouldSkipAccountCheck;
 + (void)handleNotificationPayload:(id)arg1 config:(id)arg2 bag:(id)arg3;
 

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <CoreData/NSFetchRequestResult-Protocol.h>
-
 @class NSString;
 
-@interface NSDictionary (NSFetchedResultSupport) <NSFetchRequestResult>
+@interface NSDictionary (NSFetchedResultSupport)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

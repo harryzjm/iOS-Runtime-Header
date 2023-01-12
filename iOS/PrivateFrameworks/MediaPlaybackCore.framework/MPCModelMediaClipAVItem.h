@@ -6,12 +6,10 @@
 
 #import <MediaPlayer/MPAVItem.h>
 
-#import <MediaPlaybackCore/MPRTCReportingItemSessionCreating-Protocol.h>
-
 @class MPModelGenericObject, MPModelMediaClip, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCModelMediaClipAVItem : MPAVItem <MPRTCReportingItemSessionCreating>
+@interface MPCModelMediaClipAVItem : MPAVItem
 {
     MPModelGenericObject *_modelGenericObject;
     MPModelMediaClip *_mediaClip;
@@ -25,10 +23,11 @@ __attribute__((visibility("hidden")))
 - (void)_applyLoudnessInfo;
 - (_Bool)_allowsCellularPlayback;
 @property(readonly, nonatomic) long long rtcReportingAssetType;
-@property(readonly, copy, nonatomic) NSString *rtcReportingServiceIdentifier;
+- (id)rtcReportingServiceIdentifier;
 - (CDUnknownBlockType)artworkCatalogBlock;
 - (_Bool)allowsExternalPlayback;
 - (_Bool)allowsAirPlayFromCloud;
+- (_Bool)supportsRateChange;
 - (void)reevaluateType;
 - (_Bool)prefersSeekOverSkip;
 - (id)modelGenericObject;
@@ -44,7 +43,6 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) id rtcReportingParentHierarchyToken;
 @property(readonly) Class superclass;
 
 @end

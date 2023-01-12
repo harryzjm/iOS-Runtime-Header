@@ -20,7 +20,12 @@
 - (void)_lp_insertSubview:(id)arg1 aboveSubview:(id)arg2;
 - (void)_lp_layoutIfNeeded;
 - (void)_lp_setNeedsLayout;
+- (void)_lp_setShadowOpacity:(double)arg1;
+- (void)_lp_setShadowColor:(id)arg1;
+- (void)_lp_setShadowOffset:(struct CGSize)arg1;
+- (void)_lp_setShadowRadius:(double)arg1;
 - (void)_lp_setOpacity:(double)arg1;
 - (void)_lp_setBackgroundColor:(id)arg1;
+- (void)_lp_setClipsToBounds:(_Bool)arg1;
 @end
 

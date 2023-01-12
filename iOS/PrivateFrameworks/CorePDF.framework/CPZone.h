@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CorePDF/CPGraphicUser-Protocol.h>
-
 @class CPCharSequence, CPZoneProfile, NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface CPZone <CPGraphicUser>
+@interface CPZone
 {
     NSMutableArray *zoneBorders;
     struct CGPoint *outerVertices;
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSArray *gutters;
     NSArray *spacers;
     CPCharSequence *charactersInZone;
+    _Bool hasRotatedCharacters;
     NSMutableArray *textLinesInZone;
     NSArray *graphicsInZone;
     NSMutableArray *backgroundGraphics;
@@ -44,6 +43,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isStraddleZone;
 - (long long)compareArea:(id)arg1;
 - (void)addContentFrom:(id)arg1;
+- (void)updatedCharSequenceFrom:(unsigned int)arg1 length:(unsigned int)arg2;
+- (_Bool)hasRotatedCharacters;
 - (id)charactersInZone;
 - (void)setCharactersInZone:(id)arg1;
 - (void)addPDFChar:(void *)arg1;

@@ -11,5 +11,7 @@
 
 @protocol HKSPQueueBackedScheduler <NAScheduler>
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
+- (void)resume;
+- (void)suspend;
 @end
 

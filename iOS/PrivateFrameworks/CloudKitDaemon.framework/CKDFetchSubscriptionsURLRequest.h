@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDURLRequest.h"
+
 @class NSArray, NSMutableArray, NSMutableDictionary;
 
-@interface CKDFetchSubscriptionsURLRequest
+@interface CKDFetchSubscriptionsURLRequest : CKDURLRequest
 {
     NSMutableArray *_subscriptions;
     CDUnknownBlockType _subscriptionFetchedBlock;
+    CDUnknownBlockType _errorFetchingAllSubscriptionsBlock;
     NSArray *_subscriptionIDs;
     NSMutableDictionary *_subscriptionIDByRequestID;
 }
@@ -17,6 +20,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *subscriptionIDByRequestID; // @synthesize subscriptionIDByRequestID=_subscriptionIDByRequestID;
 @property(retain, nonatomic) NSArray *subscriptionIDs; // @synthesize subscriptionIDs=_subscriptionIDs;
+@property(copy, nonatomic) CDUnknownBlockType errorFetchingAllSubscriptionsBlock; // @synthesize errorFetchingAllSubscriptionsBlock=_errorFetchingAllSubscriptionsBlock;
 @property(copy, nonatomic) CDUnknownBlockType subscriptionFetchedBlock; // @synthesize subscriptionFetchedBlock=_subscriptionFetchedBlock;
 @property(retain, nonatomic) NSMutableArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 - (void)requestDidParseNodeFailure:(id)arg1;

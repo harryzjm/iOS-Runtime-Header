@@ -6,7 +6,7 @@
 
 #import <TextInput/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSString;
 
 @protocol TIPreferencesControllerActions <NSObject>
 @property(nonatomic) unsigned long long floatingKeyboardDockedEdge;
@@ -17,8 +17,13 @@
 @property(nonatomic) _Bool predictionEnabled;
 @property(copy, nonatomic) NSArray *inputModeSelectionSequence;
 - (void)updateVisceral:(NSNumber *)arg1;
+- (void)resetDictationTipsToDefaultSettings;
+- (void)updateDictationTipDisplayCount:(NSNumber *)arg1 dictationTipKey:(id)arg2;
+- (void)updateDictationTipLastShownDate:(NSDate *)arg1;
+- (void)updateDictationAutoPunctuation:(NSNumber *)arg1;
 - (void)updateLastUsedDictationLanguages:(NSDictionary *)arg1;
 - (void)updateEnabledDictationLanguages:(NSDictionary *)arg1;
+- (void)updateCompactAssistantBarPersistentLocation:(unsigned long long)arg1;
 - (void)updateEnableProKeyboard:(_Bool)arg1;
 - (void)updateDidPerformFirstReachableKeyboardInteraction;
 - (void)updateKeyboardHandBias:(NSString *)arg1;

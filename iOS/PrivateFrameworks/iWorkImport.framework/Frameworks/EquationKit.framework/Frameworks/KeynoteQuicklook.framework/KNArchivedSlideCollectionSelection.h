@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/TSKArchivedSelection-Protocol.h>
-
 @class KNSlideCollectionSelection, NSString, TSKSelection;
 
-@interface KNArchivedSlideCollectionSelection : TSPObject <TSKArchivedSelection>
+@interface KNArchivedSlideCollectionSelection : TSPObject
 {
     KNSlideCollectionSelection *_selection;
 }

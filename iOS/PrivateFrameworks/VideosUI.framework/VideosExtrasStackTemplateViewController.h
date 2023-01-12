@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/UICollectionViewDataSource-Protocol.h>
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-
 @class NSMutableDictionary, NSString, UICollectionView, UICollectionViewFlowLayout, VideosExtrasBannerController;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasStackTemplateViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface VideosExtrasStackTemplateViewController
 {
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_collectionViewLayout;

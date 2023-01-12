@@ -10,6 +10,8 @@
 
 @interface _TtC11SiriKitFlow19CATTemplateExecutor : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *catGlobalsOverride;
+    MISSING_TYPE *catOptionsOverride;
     MISSING_TYPE *contextProvider;
 }
 

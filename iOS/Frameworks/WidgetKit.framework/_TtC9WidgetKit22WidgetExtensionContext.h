@@ -20,9 +20,10 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)attachPreviewAgentWithFrameworkPath:(id)arg1 endpoint:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)getTimelinesWithRequests:(id)arg1 isPreview:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getPlaceholdersWithEnvironment:(id)arg1 for:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getPlaceholdersWithRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleURLSessionEventsFor:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getDescriptorsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getAllCurrentDescriptorsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getCurrentDescriptorsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (void)performCleanup;
 

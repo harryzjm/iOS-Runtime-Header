@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPCryptoInfo-Protocol.h>
-
 @class NSArray, NSString, SFUCryptoKey;
 
-@interface TSPCryptoInfoInternal : NSObject <TSPCryptoInfo>
+@interface TSPCryptoInfoInternal : NSObject
 {
     SFUCryptoKey *_cryptoKey;
     unsigned long long _preferredBlockSize;

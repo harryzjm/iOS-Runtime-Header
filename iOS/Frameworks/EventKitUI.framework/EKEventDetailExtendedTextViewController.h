@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <EventKitUI/EKEditItemViewControllerProtocol-Protocol.h>
-
 @class EKEvent, NSString, UITextView;
 @protocol EKEditItemViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDetailExtendedTextViewController : UIViewController <EKEditItemViewControllerProtocol>
+@interface EKEventDetailExtendedTextViewController : UIViewController
 {
     UITextView *_textView;
     NSString *_text;

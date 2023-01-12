@@ -6,16 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ChatKit/CKActionMenuControllerDelegate-Protocol.h>
-#import <ChatKit/CKVideoRecorderDelegate-Protocol.h>
-#import <ChatKit/UIImagePickerControllerDelegate-Protocol.h>
-#import <ChatKit/UINavigationControllerDelegate-Protocol.h>
-
 @class CKActionMenuController, CKActionMenuItem, CKMediaObject, CKRecordingElapsedTimeView, NSError, NSString, UIButton, UIImagePickerController, UIView, UIWindow;
 @protocol CKVideoMessageRecordingViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKVideoMessageRecordingViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, CKActionMenuControllerDelegate, CKVideoRecorderDelegate>
+@interface CKVideoMessageRecordingViewController : UIViewController
 {
     UIView *_presentationView;
     UIWindow *_overlayWindow;
@@ -75,7 +70,6 @@ __attribute__((visibility("hidden")))
 - (void)_animateVideoIn;
 - (_Bool)shouldAutorotate;
 - (void)dismissWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_cameraOrientationChanged:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_previewWarmedUp:(id)arg1;

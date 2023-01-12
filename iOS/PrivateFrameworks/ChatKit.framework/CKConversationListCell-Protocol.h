@@ -6,11 +6,12 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKConversation, NSString;
+@class CKConversation, CKConversationListCellLayout, NSString;
 
 @protocol CKConversationListCell <NSObject>
 + (double)cellHeightForDisplayScale:(double)arg1;
 + (NSString *)identifierForConversation:(CKConversation *)arg1;
+@property(retain, nonatomic) CKConversationListCellLayout *cellLayout;
 - (void)updateContentsForConversation:(CKConversation *)arg1 fastPreview:(_Bool)arg2;
 - (void)updateContentsForConversation:(CKConversation *)arg1;
 @end

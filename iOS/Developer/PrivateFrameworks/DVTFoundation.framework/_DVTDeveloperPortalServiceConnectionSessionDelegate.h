@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSURLSessionDelegate-Protocol.h>
-
 @class NSString, NSURLCredential;
 
-@interface _DVTDeveloperPortalServiceConnectionSessionDelegate : NSObject <NSURLSessionDelegate>
+@interface _DVTDeveloperPortalServiceConnectionSessionDelegate : NSObject
 {
     NSURLCredential *_credential;
 }

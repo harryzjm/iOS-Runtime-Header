@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKPhotoBigAttributionViewSubclass-Protocol.h>
-
 @class NSString, UIView, _MKUILabel;
 
 __attribute__((visibility("hidden")))
-@interface MKThirdPartyPhotoBigAttributionView <MKPhotoBigAttributionViewSubclass>
+@interface MKThirdPartyPhotoBigAttributionView
 {
     _MKUILabel *_firstLineLabel;
     _MKUILabel *_secondLineLabel;

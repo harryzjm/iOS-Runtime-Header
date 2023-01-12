@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCEmulatedNetworkAlgorithm-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCEmulatedNetworkAlgorithmQueueLoss : NSObject <VCEmulatedNetworkAlgorithm>
+@interface VCEmulatedNetworkAlgorithmQueueLoss : NSObject
 {
     double _expectedProcessEndTime;
     unsigned int _packetCountInNetworkQueue;

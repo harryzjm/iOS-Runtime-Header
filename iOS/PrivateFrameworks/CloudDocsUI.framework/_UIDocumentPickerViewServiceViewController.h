@@ -4,17 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudDocsUI/_UIDocumentListControllerDelegate-Protocol.h>
-#import <CloudDocsUI/_UIDocumentPickerOverviewDelegate-Protocol.h>
-#import <CloudDocsUI/_UIDocumentPickerRemoteViewControllerContaining-Protocol.h>
-#import <CloudDocsUI/_UIDocumentPickerViewController-Protocol.h>
-#import <CloudDocsUI/_UIDocumentTargetSelectionControllerDelegate-Protocol.h>
+#import "_UIViewServiceViewController.h"
 
 @class NSArray, NSString, NSURL, UIViewController;
 @protocol _UIDocumentPickerViewControllerHost;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerViewServiceViewController <_UIDocumentPickerRemoteViewControllerContaining, _UIDocumentPickerOverviewDelegate, _UIDocumentListControllerDelegate, _UIDocumentTargetSelectionControllerDelegate, _UIDocumentPickerViewController>
+@interface _UIDocumentPickerViewServiceViewController : _UIViewServiceViewController
 {
     _Bool _displayedAsMenu;
     _Bool _hasBeenDismissed;

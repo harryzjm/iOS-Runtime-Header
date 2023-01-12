@@ -6,10 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBAppStatusBarSettings;
+@class SBStatusBarSettings;
 @protocol SBApplicationSceneViewControlling;
 
 @protocol SBApplicationSceneViewControllingStatusBarDelegate <NSObject>
-- (void)applicationSceneViewController:(id <SBApplicationSceneViewControlling>)arg1 didUpdateStatusBarSettings:(SBAppStatusBarSettings *)arg2;
+- (void)applicationSceneViewController:(id <SBApplicationSceneViewControlling>)arg1 didUpdateStatusBarSettings:(SBStatusBarSettings *)arg2;
 @end
 

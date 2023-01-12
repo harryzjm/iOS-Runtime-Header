@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
-
 @class CASpringAnimation, NSString, UIScrollView, UIView;
 @protocol _UITVScrollViewManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UITVScrollViewManager : NSObject <_UIScrollViewScrollObserver>
+@interface _UITVScrollViewManager : NSObject
 {
     _Bool _delegateScrollViewManagerDidFinishScrolling;
     _Bool _useCustomMaskForScrolling;

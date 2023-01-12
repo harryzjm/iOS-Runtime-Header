@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface REAttributeDescriptor : NSObject <NSSecureCoding>
+@interface REAttributeDescriptor : NSObject
 {
     unsigned int _payloadOffset;
     unsigned int _count;
@@ -30,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 payloadOffset:(unsigned int)arg2 count:(unsigned int)arg3 stride:(unsigned int)arg4;
-- (id)initWithName:(id)arg1 buffer:(void *)arg2 elementSize:(unsigned long long)arg3 payloadBuilder:(void *)arg4;
+- (id)initWithName:(id)arg1 buffer:(const void *)arg2 elementSize:(unsigned long long)arg3 payloadBuilder:(void *)arg4;
 
 @end
 

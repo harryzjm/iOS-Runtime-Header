@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UITableViewDataSource-Protocol.h>
-#import <UIKitCore/UITableViewDelegate-Protocol.h>
+#import "UIViewController.h"
 
 @class NSString, UIKBAutoFillTestArchive;
 
 __attribute__((visibility("hidden")))
-@interface UIKBAutoFillTestViewController <UITableViewDataSource, UITableViewDelegate>
+@interface UIKBAutoFillTestViewController : UIViewController
 {
     UIKBAutoFillTestArchive *_testArchive;
 }

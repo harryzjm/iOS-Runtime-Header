@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKit/SKRemoteReviewViewControllerDelegate-Protocol.h>
-
 @class NSString, SKInvocationQueueProxy, SKRemoteReviewViewController, _UIAsyncInvocation;
 @protocol SKUIServiceReviewViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKStoreReviewViewController : UIViewController <SKRemoteReviewViewControllerDelegate>
+@interface SKStoreReviewViewController : UIViewController
 {
     SKInvocationQueueProxy<SKUIServiceReviewViewController> *_serviceProxy;
     _UIAsyncInvocation *_cancelRequest;

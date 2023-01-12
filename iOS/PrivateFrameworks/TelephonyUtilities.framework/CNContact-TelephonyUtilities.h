@@ -6,12 +6,11 @@
 
 #import <Contacts/CNContact.h>
 
-#import <TelephonyUtilities/TUSearchResult-Protocol.h>
-
 @class NSArray, NSPersonNameComponents, NSString, NSURL;
 
-@interface CNContact (TelephonyUtilities) <TUSearchResult>
+@interface CNContact (TelephonyUtilities)
 + (id)keysToFetchForFaceTime;
++ (id)tu_contactHandlesForHandle:(id)arg1;
 - (id)allTUHandles;
 - (id)tuHandlesForEmailAddresses;
 - (id)tuHandlesForPhoneNumbers;

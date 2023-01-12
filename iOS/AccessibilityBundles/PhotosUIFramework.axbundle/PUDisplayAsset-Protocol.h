@@ -13,8 +13,8 @@
 @protocol PUDisplayAsset <NSObject, NSCopying>
 @property(readonly, nonatomic) unsigned long long deferredLogInfo;
 @property(readonly, nonatomic) _Bool hasPhotoColorAdjustments;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 photoIrisVideoDuration;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 photoIrisStillDisplayTime;
+@property(readonly, nonatomic) CDStruct_198678f7 photoIrisVideoDuration;
+@property(readonly, nonatomic) CDStruct_198678f7 photoIrisStillDisplayTime;
 @property(readonly, nonatomic) _Bool isPhotoIrisPlaceholder;
 @property(readonly, nonatomic) _Bool canPlayLoopingVideo;
 @property(readonly, nonatomic) _Bool canPlayPhotoIris;
@@ -46,7 +46,7 @@
 @property(readonly, nonatomic) _Bool isGuestAsset;
 @property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly, nonatomic) _Bool needsDeferredProcessing;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;
+@property(readonly, nonatomic) CDStruct_198678f7 videoKeyFrameSourceTime;
 - (unsigned long long)contentChangeFromDisplayAsset:(id <PUDisplayAsset>)arg1;
 @end
 

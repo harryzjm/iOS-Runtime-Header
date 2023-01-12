@@ -15,7 +15,7 @@
     MISSING_TYPE *fillColor;
     MISSING_TYPE *iconProvider;
     MISSING_TYPE *title;
-    MISSING_TYPE *titleFontProvider;
+    MISSING_TYPE *titleFontDescriptor;
     MISSING_TYPE *tintColor;
     MISSING_TYPE *defaults;
     MISSING_TYPE *layout;

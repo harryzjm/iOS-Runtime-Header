@@ -7,10 +7,13 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (Workflow)
-+ (_Bool)kettleEnabled;
-+ (_Bool)signedShortcutEnabled;
-+ (_Bool)contextualSuggestionsEnabled;
-+ (_Bool)uiConsistencyEnabled;
++ (_Bool)jindoUseIconOnlyLayoutInCompact;
++ (_Bool)jindoDisableTapToApp;
++ (_Bool)universalPreviewsEnabled;
++ (_Bool)bannerWorkaroundsDisabled;
++ (_Bool)bannersEnabled;
++ (_Bool)useLinkActionDenyList;
++ (_Bool)linkEnabled;
 + (id)siriAssistantUserDefaults;
 + (id)systemShortcutsUserDefaults;
 + (id)workflowUserDefaults;

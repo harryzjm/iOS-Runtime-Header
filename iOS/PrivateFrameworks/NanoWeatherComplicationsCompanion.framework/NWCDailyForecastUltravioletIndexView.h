@@ -4,19 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NWKUILinearGaugeView;
-
 __attribute__((visibility("hidden")))
 @interface NWCDailyForecastUltravioletIndexView
 {
-    NWKUILinearGaugeView *_backgroundLinearGaugeView;
 }
 
-- (void).cxx_destruct;
-@property(readonly, nonatomic) NWKUILinearGaugeView *backgroundLinearGaugeView; // @synthesize backgroundLinearGaugeView=_backgroundLinearGaugeView;
-- (void)applyFilter:(id)arg1;
-- (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithDevice:(id)arg1;
 
 @end
 

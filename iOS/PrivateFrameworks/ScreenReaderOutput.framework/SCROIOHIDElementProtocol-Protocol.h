@@ -6,7 +6,13 @@
 
 #import <ScreenReaderOutput/SCROIOElementProtocol-Protocol.h>
 
+@class NSString;
+
 @protocol SCROIOHIDElementProtocol <SCROIOElementProtocol>
+@property(readonly, nonatomic) NSString *productName;
+@property(readonly, nonatomic) NSString *manufacturerName;
+@property(readonly, nonatomic) unsigned int vendorId;
+@property(readonly, nonatomic) unsigned int productId;
 - (void *)hidDevice;
 @end
 

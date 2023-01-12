@@ -36,6 +36,12 @@
 - (void)_ui_encodeNSUIntegerVector:(const unsigned long long *)arg1 count:(unsigned long long)arg2 forKey:(id)arg3;
 - (CDUnknownBlockType)_ui_decodeVectorForKey:(id)arg1 returnedCount:(unsigned long long *)arg2;
 - (void)_ui_encodeVector:(const double *)arg1 count:(unsigned long long)arg2 forKey:(id)arg3;
+- (void)ui_encodePlatformPoint:(struct CGPoint)arg1 forKey:(id)arg2;
+- (struct CGPoint)ui_decodePlatformPointForKey:(id)arg1;
+- (void)ui_encodePlatformSize:(struct CGSize)arg1 forKey:(id)arg2;
+- (struct CGSize)ui_decodePlatformSizeForKey:(id)arg1;
+- (void)ui_encodeCAPoint3D:(struct CAPoint3D)arg1 forKey:(id)arg2;
+- (struct CAPoint3D)ui_decodeCAPoint3DForKey:(id)arg1;
 - (id)_ui_decodeTextAttributesForKey:(id)arg1;
 - (void)_ui_encodeTextAttributes:(id)arg1 forKey:(id)arg2;
 - (_Bool)_ui_decodeBoolForKey:(id)arg1 defaultValue:(_Bool)arg2;

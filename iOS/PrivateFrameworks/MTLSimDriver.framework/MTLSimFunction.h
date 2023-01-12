@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MTLSimDriver/MTLFunction-Protocol.h>
-
 @class NSArray, NSDictionary, NSString;
 @protocol MTLDevice;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimFunction : NSObject <MTLFunction>
+@interface MTLSimFunction : NSObject
 {
     id <MTLDevice> _device;
     unsigned int _functionRef;
@@ -35,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(copy) NSString *label; // @synthesize label;
 @property(readonly) unsigned long long functionType; // @synthesize functionType=_functionType;
 @property(readonly) id <MTLDevice> device; // @synthesize device=_device;
+@property(readonly) unsigned long long options;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
@@ -46,7 +45,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly) unsigned long long options;
 @property(readonly) Class superclass;
 
 @end

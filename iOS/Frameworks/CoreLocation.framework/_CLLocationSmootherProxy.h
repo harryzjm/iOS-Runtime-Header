@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreLocation/CLLocationSmootherClientInterface-Protocol.h>
-
 @class CLLocationSmoother, NSString, NSXPCConnection;
 @protocol CLLocationSmootherDelegate, OS_dispatch_queue;
 
-@interface _CLLocationSmootherProxy : NSObject <CLLocationSmootherClientInterface>
+@interface _CLLocationSmootherProxy : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_connection;

@@ -8,7 +8,6 @@
 
 @class GQDRoot;
 
-__attribute__((visibility("hidden")))
 @interface GQDSStylesheet : NSObject
 {
     GQDRoot *mRoot;

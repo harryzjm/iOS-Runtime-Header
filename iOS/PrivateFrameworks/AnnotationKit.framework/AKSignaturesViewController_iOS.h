@@ -6,15 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AnnotationKit/AKSignatureCreationControllerDelegate-Protocol.h>
-#import <AnnotationKit/UINavigationBarDelegate-Protocol.h>
-#import <AnnotationKit/UITableViewDataSource-Protocol.h>
-#import <AnnotationKit/UITableViewDelegate-Protocol.h>
-
 @class AKController, NSArray, NSString, UIColor, UINavigationBar, UIResponder, UITableView;
 @protocol AKSignaturesViewControllerDelegate;
 
-@interface AKSignaturesViewController_iOS : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate, AKSignatureCreationControllerDelegate>
+@interface AKSignaturesViewController_iOS : UIViewController
 {
     _Bool _presentedInAlert;
     _Bool _showsNavigationBar;

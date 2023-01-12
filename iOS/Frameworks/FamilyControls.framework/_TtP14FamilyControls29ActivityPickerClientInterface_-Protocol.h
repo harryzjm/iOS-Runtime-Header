@@ -8,6 +8,6 @@
 
 @protocol _TtP14FamilyControls29ActivityPickerClientInterface_
 - (void)didCancel;
-- (void)didSelectWithApplications:(NSArray *)arg1 categories:(NSArray *)arg2 webDomains:(NSArray *)arg3;
+- (void)didSelectWithApplications:(NSArray *)arg1 categories:(NSArray *)arg2 webDomains:(NSArray *)arg3 untokenizedApplications:(NSArray *)arg4 untokenizedCategories:(NSArray *)arg5 untokenizedWebDomains:(NSArray *)arg6;
 @end
 

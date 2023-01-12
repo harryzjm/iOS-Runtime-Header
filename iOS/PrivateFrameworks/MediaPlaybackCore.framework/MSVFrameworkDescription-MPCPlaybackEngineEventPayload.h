@@ -6,11 +6,9 @@
 
 #import <MediaServices/MSVFrameworkDescription.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadValueJSONConvertible-Protocol.h>
-
 @class NSString;
 
-@interface MSVFrameworkDescription (MPCPlaybackEngineEventPayload) <MPCPlaybackEngineEventPayloadValueJSONConvertible>
+@interface MSVFrameworkDescription (MPCPlaybackEngineEventPayload)
 + (id)payloadValueFromJSONValue:(id)arg1;
 - (id)mpc_jsonValue;
 

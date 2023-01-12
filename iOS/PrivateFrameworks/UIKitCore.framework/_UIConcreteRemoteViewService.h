@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIRemoteViewService.h"
+
 @class NSExtension, NSUUID;
 @protocol PKPlugIn;
 
 __attribute__((visibility("hidden")))
-@interface _UIConcreteRemoteViewService
+@interface _UIConcreteRemoteViewService : _UIRemoteViewService
 {
     _Bool _overridesHostAppearance;
     NSUUID *_contextToken;

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQZArchiveInputStream-Protocol.h>
-
 @class NSData, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQZArchiveMemoryInputStream : NSObject <GQZArchiveInputStream>
+@interface GQZArchiveMemoryInputStream : NSObject
 {
     NSData *mData;
     const char *mBytes;

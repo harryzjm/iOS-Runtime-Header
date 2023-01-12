@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/NSSecureCoding-Protocol.h>
-
 @class GEODirectionsError, GEODirectionsRequest, GEODirectionsResponse, MNTraceRecordingData, NSArray, NSError;
 
 __attribute__((visibility("hidden")))
-@interface MNDirectionsResponseInfo : NSObject <NSSecureCoding>
+@interface MNDirectionsResponseInfo : NSObject
 {
     NSArray *_routeInfos;
     GEODirectionsRequest *_request;

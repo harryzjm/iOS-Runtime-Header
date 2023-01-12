@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <ChatKit/CKActionMenuItemView-Protocol.h>
-
 @class NSString, UIImageView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface CKVideoCancelActionMenuItemView : UIView <CKActionMenuItemView>
+@interface CKVideoCancelActionMenuItemView : UIView
 {
     _Bool _highlighted;
     UIVisualEffectView *_blurView;

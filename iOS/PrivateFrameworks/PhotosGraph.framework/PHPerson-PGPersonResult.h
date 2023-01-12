@@ -6,11 +6,9 @@
 
 #import <Photos/PHPerson.h>
 
-#import <PhotosGraph/PGPersonResult-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface PHPerson (PGPersonResult) <PGPersonResult>
+@interface PHPerson (PGPersonResult)
 + (unsigned long long)type;
 @property(readonly, nonatomic) _Bool isInferredChild;
 @property(readonly, nonatomic) NSDate *birthdayDate;

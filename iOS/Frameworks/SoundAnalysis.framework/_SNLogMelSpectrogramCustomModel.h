@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/MLCustomModel-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _SNLogMelSpectrogramCustomModel : NSObject <MLCustomModel>
+@interface _SNLogMelSpectrogramCustomModel : NSObject
 {
     NSString *_inputFeatureName;
     NSString *_outputFeatureName;

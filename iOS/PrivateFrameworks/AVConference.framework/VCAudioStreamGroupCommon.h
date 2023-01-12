@@ -4,15 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCAudioIODelegate-Protocol.h>
-#import <AVConference/VCAudioPowerSpectrumSourceDelegate-Protocol.h>
-#import <AVConference/VCAudioStreamGroup-Protocol.h>
-#import <AVConference/VCMediaCaptureController-Protocol.h>
-
 @class NSString, VCAudioIO, VCAudioPowerSpectrumSource;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioStreamGroupCommon <VCAudioStreamGroup, VCMediaCaptureController, VCAudioPowerSpectrumSourceDelegate, VCAudioIODelegate>
+@interface VCAudioStreamGroupCommon
 {
     struct tagVCAudioStreamGroupStream *_audioStreams;
     struct opaqueVCAudioBufferList *_sampleBuffer;
@@ -26,7 +21,7 @@ __attribute__((visibility("hidden")))
     int _deviceRole;
     int _operatingMode;
     unsigned int _audioType;
-    unsigned long long _spatialToken;
+    unsigned long long _spatialAudioSourceID;
     _Bool _isMuted;
     long long _powerSpectrumStreamToken;
     unsigned int _streamGroupID;
@@ -49,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
 @property(nonatomic, setter=setMuted:) _Bool isMuted; // @synthesize isMuted=_isMuted;
 - (void)cleanupSyncDestinations;
+- (void)didServerDie;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
 - (void)sendAudioPowerSpectrumSourceRegistration:(_Bool)arg1;
 - (void)audioPowerSpectrumSinkDidUnregister;
@@ -56,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
 - (_Bool)enqueueSyncDestinationChangeEvent:(id)arg1 eventType:(int)arg2;
-- (void)collectAndLogChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectAndLogChannelMetrics:(CDStruct_b671a7c4 *)arg1 averagePower:(float)arg2;
 - (_Bool)configureStreams:(id)arg1 withRateControlConfig:(id)arg2;
 - (void)stopAudioDump;
 - (void)startAudioDump;
@@ -70,12 +66,13 @@ __attribute__((visibility("hidden")))
 - (void)cleanupStreams;
 - (void)setupStreamsWithStreamInfos:(id)arg1;
 - (void)cleanupPowerSpectrumSource;
-- (_Bool)setupPowerSpectrumSource;
+- (_Bool)configurePowerSpectrumSource;
 @property(setter=setPowerSpectrumEnabled:) _Bool isPowerSpectrumEnabled;
 @property(readonly) struct tagVCAudioStreamGroupStream *audioStreams;
 - (_Bool)setDeviceRole:(int)arg1 operatingMode:(int)arg2;
 - (void)dealloc;
 - (void)flushSyncDestinationUpdatesEventQueue;
+- (unsigned int)audioTypeForCaptureSource:(int)arg1;
 - (id)initWithConfig:(id)arg1 audioCallback:(CDUnknownFunctionPointerType)arg2 context:(void *)arg3 audioDirection:(unsigned char)arg4;
 
 // Remaining properties

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 + (Class)meltedClass;
 - (_Bool)defaultAlarmWasDeleted;
 - (_Bool)defaultAlarmRemoved;
+- (id)syncError;
 - (id)ekExceptionDates;
 - (id)detachedItems;
 - (id)attachmentsSet;
@@ -42,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)URLString;
 - (id)notes;
 - (id)structuredLocation;
-- (id)title;
+- (id)unlocalizedTitle;
 - (id)calendarItemExternalIdentifier;
 - (id)calendar;
 - (id)calendarItemIdentifier;

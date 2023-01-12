@@ -8,6 +8,7 @@
 
 @class HKMCDaySummaryQueryConfiguration;
 
+__attribute__((visibility("hidden")))
 @interface HDMCDaySummaryQueryServer : HDQueryServer
 {
     HKMCDaySummaryQueryConfiguration *_configuration;

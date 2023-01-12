@@ -10,6 +10,7 @@
 
 @protocol _SFPBMapRegion <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) double altitudeInMeters;
 @property(nonatomic) double eastLng;
 @property(nonatomic) double northLat;
 @property(nonatomic) double westLng;

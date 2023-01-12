@@ -6,12 +6,10 @@
 
 #import <Foundation/NSArray.h>
 
-#import <CoreData/PFObjectIDCollection-Protocol.h>
-
 @class NSCachingFetchRequest, NSManagedObjectContext, NSString, _PFArray;
 
 __attribute__((visibility("hidden")))
-@interface _PFBatchFaultingArray : NSArray <PFObjectIDCollection>
+@interface _PFBatchFaultingArray : NSArray
 {
     int _cd_rc;
     unsigned int _count;

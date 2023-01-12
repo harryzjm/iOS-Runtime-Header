@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthMobilityUI/HKMobilityWalkingSteadinessAnalyticsOnboardingEventDataSourceProvider-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC16HealthMobilityUI51WalkingSteadinessAnalyticsOnboardingEventDataSource : NSObject <HKMobilityWalkingSteadinessAnalyticsOnboardingEventDataSourceProvider>
+@interface _TtC16HealthMobilityUI51WalkingSteadinessAnalyticsOnboardingEventDataSource : NSObject
 {
     MISSING_TYPE *healthStore;
     MISSING_TYPE *presentation;

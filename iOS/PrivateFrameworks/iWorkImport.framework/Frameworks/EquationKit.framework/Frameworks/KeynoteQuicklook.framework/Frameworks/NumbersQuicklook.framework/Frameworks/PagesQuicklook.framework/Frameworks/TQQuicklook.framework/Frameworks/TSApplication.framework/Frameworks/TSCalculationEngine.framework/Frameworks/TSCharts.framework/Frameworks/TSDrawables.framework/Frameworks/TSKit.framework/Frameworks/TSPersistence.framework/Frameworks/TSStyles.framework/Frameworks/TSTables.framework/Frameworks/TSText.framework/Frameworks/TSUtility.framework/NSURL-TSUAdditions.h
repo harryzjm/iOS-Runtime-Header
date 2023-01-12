@@ -6,11 +6,10 @@
 
 #import <Foundation/NSURL.h>
 
-#import <TSUtility/TSUURLWrapper-Protocol.h>
-
 @class NSString, TSUSandboxedURL;
 
-@interface NSURL (TSUAdditions) <TSUURLWrapper>
+@interface NSURL (TSUAdditions)
++ (id)tsu_privacyContactsURL;
 + (id)tsu_urlFromUserProvidedTelephoneString:(id)arg1 withDataDetector:(id)arg2;
 + (id)tsu_fileURLWithPath:(id)arg1;
 - (id)tsu_prettyStringFromTelephoneURL;
@@ -35,11 +34,14 @@
 - (_Bool)tsu_setNeedsDocumentIdentifierAndReturnError:(out id *)arg1;
 - (_Bool)tsu_fileSize:(out unsigned long long *)arg1 error:(id *)arg2;
 - (unsigned long long)tsu_fileSize;
+- (_Bool)tsu_isFileSizeTooLargeForBookPublishing;
 - (_Bool)tsu_isFileSizeTooLargeForSharing;
+- (_Bool)tsu_isFileSizeLargerThanMaxFileSize:(unsigned long long)arg1;
 - (id)tsu_documentIdentifier;
 - (_Bool)tsu_conformsToAnyUTI:(id)arg1;
 - (_Bool)tsu_conformsToUTI:(id)arg1;
 @property(readonly, nonatomic) NSString *tsu_UTI;
+@property(readonly) NSURL *URLIfAvailable;
 @property(readonly) TSUSandboxedURL *sandboxedURL;
 @property(readonly) NSURL *URL;
 

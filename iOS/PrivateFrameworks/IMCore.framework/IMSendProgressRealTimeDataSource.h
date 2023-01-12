@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <IMCore/IMSendProgressTimeDataSource-Protocol.h>
-
-@interface IMSendProgressRealTimeDataSource : NSObject <IMSendProgressTimeDataSource>
+@interface IMSendProgressRealTimeDataSource : NSObject
 {
 }
 

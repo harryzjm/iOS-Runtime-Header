@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double preInvocationDelay; // @synthesize preInvocationDelay=_preInvocationDelay;
 - (void)dealloc;
 - (void)reset;
+- (void)_resetInternalState;
 - (void)invalidate;
 - (void)schedule;
 - (void)_repeatedTimerFire;

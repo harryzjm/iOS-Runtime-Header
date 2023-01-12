@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <IconServices/ISCompositorResourceProvider-Protocol.h>
-
 @class IFSymbol, ISCustomRecipe, NSArray, NSData, NSDictionary, NSMutableDictionary, NSString, NSUUID;
 @protocol ISCompositorResource;
 
-@interface ISResourceProvider : NSObject <ISCompositorResourceProvider>
+__attribute__((visibility("hidden")))
+@interface ISResourceProvider : NSObject
 {
     _Bool _isGenericProvider;
+    _Bool _placeholder;
+    _Bool _supportsGraphicIcons;
+    _Bool _onlySupportsGraphicIcons;
     unsigned long long _lsDatabaseSequenceNumber;
     NSUUID *_lsDatabaseUUID;
     NSData *_resourceToken;
@@ -37,6 +39,9 @@
 - (void).cxx_destruct;
 @property(retain) ISCustomRecipe *customRecipe; // @synthesize customRecipe=_customRecipe;
 @property(readonly) NSMutableDictionary *resourcesByResourceKey; // @synthesize resourcesByResourceKey=_resourcesByResourceKey;
+@property(readonly) _Bool onlySupportsGraphicIcons; // @synthesize onlySupportsGraphicIcons=_onlySupportsGraphicIcons;
+@property(readonly) _Bool supportsGraphicIcons; // @synthesize supportsGraphicIcons=_supportsGraphicIcons;
+@property _Bool placeholder; // @synthesize placeholder=_placeholder;
 @property unsigned long long options; // @synthesize options=_options;
 @property(retain) NSArray *sourceRecordIdentifiers; // @synthesize sourceRecordIdentifiers=_sourceRecordIdentifiers;
 @property _Bool isGenericProvider; // @synthesize isGenericProvider=_isGenericProvider;

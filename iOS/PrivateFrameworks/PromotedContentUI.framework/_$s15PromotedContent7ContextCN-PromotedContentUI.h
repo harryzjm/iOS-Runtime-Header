@@ -9,14 +9,14 @@
 @interface _$s15PromotedContent7ContextCN (PromotedContentUI)
 + (void)start;
 + (void)cleanupWithIdentifier:(id)arg1;
-- (void)apContentDataForSearchLandingPageAds:(id)arg1;
-- (void)newSearchLandingPageAds:(id)arg1;
 - (void)intersititialReady:(CDUnknownBlockType)arg1;
 - (id)promotedContentInterstitialViewWithInfo:(id)arg1;
 - (id)promotedContentInterstitialWithSize:(struct CGSize)arg1;
 - (id)nativePromotedContentViewWithInfo:(id)arg1 contentView:(id)arg2;
+- (id)nativePromotedContentViewWithInfo:(id)arg1 contentView:(id)arg2 size:(struct CGSize)arg3 position:(struct CGRect)arg4;
 - (id)nativePromotedContentViewWithInfo:(id)arg1 contentView:(id)arg2 size:(struct CGSize)arg3;
 - (id)promotedContentVideo;
+- (id)promotedContentViewOfType:(long long)arg1 size:(struct CGSize)arg2 startsCollapsed:(_Bool)arg3 position:(struct CGRect)arg4;
 - (id)promotedContentViewOfType:(long long)arg1 size:(struct CGSize)arg2 startsCollapsed:(_Bool)arg3;
 - (id)promotedContentViewOfType:(long long)arg1 size:(struct CGSize)arg2;
 - (void)newInterstitialRequest:(id)arg1;

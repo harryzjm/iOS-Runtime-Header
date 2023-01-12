@@ -12,6 +12,6 @@
 @protocol MPSExternalCNNBinary <MPSExternalPluginBase>
 
 @optional
-- (unsigned long long)encodeBatchToCommandBuffer:(id <MTLCommandBuffer>)arg1 computeCommandEncoder:(id <MTLComputeCommandEncoder>)arg2 options:(unsigned long long)arg3 pluginOptions:(unsigned long long)arg4 primaryTextures:(NSArray *)arg5 primaryInfo:(const CDStruct_12100558 *)arg6 secondaryTextures:(NSArray *)arg7 secondaryInfo:(const CDStruct_12100558 *)arg8 destinationTextures:(NSArray *)arg9 destinationInfo:(const CDStruct_5948169e *)arg10 predicationBuffer:(id <MTLBuffer>)arg11 predicationOffset:(unsigned long long)arg12;
+- (unsigned long long)encodeBatchToCommandBuffer:(id <MTLCommandBuffer>)arg1 computeCommandEncoder:(id <MTLComputeCommandEncoder>)arg2 options:(unsigned long long)arg3 pluginOptions:(unsigned long long)arg4 primaryTextures:(NSArray *)arg5 primaryInfo:(const CDStruct_37840a1a *)arg6 secondaryTextures:(NSArray *)arg7 secondaryInfo:(const CDStruct_37840a1a *)arg8 destinationTextures:(NSArray *)arg9 destinationInfo:(const CDStruct_1cd378eb *)arg10 predicationBuffer:(id <MTLBuffer>)arg11 predicationOffset:(unsigned long long)arg12;
 @end
 

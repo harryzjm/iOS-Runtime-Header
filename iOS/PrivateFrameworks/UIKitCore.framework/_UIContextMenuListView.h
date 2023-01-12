@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import "UIView.h"
 
-@class NSIndexPath, NSString, UICollectionView, UICollectionViewDiffableDataSource, UIMenu, UIView, UIVisualEffectView, _UICutoutShadowView;
+@class NSIndexPath, NSString, UIBezierPath, UICollectionView, UICollectionViewDiffableDataSource, UIMenu, UIVisualEffectView, _UICutoutShadowView;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuListView <UICollectionViewDelegate>
+@interface _UIContextMenuListView : UIView
 {
     _Bool _reversesActionOrder;
     _Bool _emphasized;
@@ -18,28 +18,33 @@ __attribute__((visibility("hidden")))
     NSString *_backgroundMaterialGroupName;
     UICollectionView *_collectionView;
     UIMenu *_displayedMenu;
+    unsigned long long _parentHierarchyStyle;
     unsigned long long _position;
     NSIndexPath *_highlightedIndexPath;
     unsigned long long _roundedEdges;
     double _shadowAlpha;
     double _collectionViewAlpha;
     _UICutoutShadowView *_shadowView;
-    UIView *_topClippingView;
-    UIView *_bottomClippingView;
+    UIView *_clippingView;
     UIVisualEffectView *_backgroundView;
     UICollectionViewDiffableDataSource *_collectionViewDataSource;
+    UICollectionViewDiffableDataSource *_outgoingCollectionViewDataSource;
     double _emphasisAlphaMultiplier;
+    UIBezierPath *_hoverZone;
     struct CGSize _nativeContentSize;
     struct CGSize _visibleContentSize;
+    struct NSDirectionalEdgeInsets _contentMargins;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct NSDirectionalEdgeInsets contentMargins; // @synthesize contentMargins=_contentMargins;
+@property(retain, nonatomic) UIBezierPath *hoverZone; // @synthesize hoverZone=_hoverZone;
 @property(nonatomic) _Bool hasValidContentSize; // @synthesize hasValidContentSize=_hasValidContentSize;
 @property(nonatomic) double emphasisAlphaMultiplier; // @synthesize emphasisAlphaMultiplier=_emphasisAlphaMultiplier;
+@property(retain, nonatomic) UICollectionViewDiffableDataSource *outgoingCollectionViewDataSource; // @synthesize outgoingCollectionViewDataSource=_outgoingCollectionViewDataSource;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *collectionViewDataSource; // @synthesize collectionViewDataSource=_collectionViewDataSource;
 @property(retain, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property(retain, nonatomic) UIView *bottomClippingView; // @synthesize bottomClippingView=_bottomClippingView;
-@property(retain, nonatomic) UIView *topClippingView; // @synthesize topClippingView=_topClippingView;
+@property(retain, nonatomic) UIView *clippingView; // @synthesize clippingView=_clippingView;
 @property(retain, nonatomic) _UICutoutShadowView *shadowView; // @synthesize shadowView=_shadowView;
 @property(nonatomic) struct CGSize visibleContentSize; // @synthesize visibleContentSize=_visibleContentSize;
 @property(nonatomic) struct CGSize nativeContentSize; // @synthesize nativeContentSize=_nativeContentSize;
@@ -51,16 +56,20 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool emphasized; // @synthesize emphasized=_emphasized;
 @property(nonatomic) _Bool reversesActionOrder; // @synthesize reversesActionOrder=_reversesActionOrder;
 @property(nonatomic) unsigned long long position; // @synthesize position=_position;
+@property(nonatomic) unsigned long long parentHierarchyStyle; // @synthesize parentHierarchyStyle=_parentHierarchyStyle;
 @property(retain, nonatomic) UIMenu *displayedMenu; // @synthesize displayedMenu=_displayedMenu;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+- (void)_updateContentMargins;
+- (id)_platformMetrics;
 - (double)_clampedCornerRadius;
 @property(readonly, nonatomic) NSString *backgroundMaterialGroupName; // @synthesize backgroundMaterialGroupName=_backgroundMaterialGroupName;
-- (void)_configureCell:(id)arg1 forElement:(id)arg2 section:(id)arg3;
+- (_Bool)pointIsInsideHoverZone:(struct CGPoint)arg1;
+- (void)updateHoverZoneWithParentElementRect:(struct CGRect)arg1;
+- (void)_configureCell:(id)arg1 forElement:(id)arg2 section:(id)arg3 size:(long long)arg4;
 - (id)_dataSourceForCollectionView:(id)arg1;
 - (id)_headerIndexPath;
 - (id)_viewAtIndexPath:(id)arg1;
-- (void)highlightItemForOutgoingMenu:(id)arg1;
-- (void)_highlightItemAtIndexPath:(id)arg1 performFocusUpdate:(_Bool)arg2;
+- (void)_highlightItemAtIndexPath:(id)arg1;
 - (void)highlightItemAtIndexPath:(id)arg1;
 - (void)unHighlightItemAtIndexPath:(id)arg1;
 - (id)cellForElement:(id)arg1;
@@ -72,13 +81,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
 - (id)preferredFocusEnvironments;
+- (void)didCompleteInPlaceMenuTransition;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateShadowAlpha;
 - (void)_updateCollectionViewAlpha;
 - (void)_updateCornerRadius;
+- (void)_updateScrollInsets;
 - (void)_sizeClippingAndCollectionViews;
 - (void)layoutSubviews;
-- (struct CGSize)preferredContentSizeWithWidth:(double)arg1;
+- (struct CGSize)preferredContentSizeWithinContainerSize:(struct CGSize)arg1;
 - (void)setSubmenuTitleViewExpanded:(_Bool)arg1 withMaterialGroupName:(id)arg2 numberOfTitleLines:(unsigned long long)arg3 highlighted:(_Bool)arg4;
 @property(readonly, nonatomic) struct CGVector scrubGestureAllowableMovement;
 - (id)initWithFrame:(struct CGRect)arg1;

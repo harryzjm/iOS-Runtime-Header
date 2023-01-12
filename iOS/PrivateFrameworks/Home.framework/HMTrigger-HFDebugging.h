@@ -6,13 +6,9 @@
 
 #import <HomeKit/HMTrigger.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-#import <Home/HFStateDumpBuildable-Protocol.h>
-#import <Home/HFTriggerProtocol-Protocol.h>
-
 @class NSSet, NSString, NSUUID;
 
-@interface HMTrigger (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject, HFTriggerProtocol>
+@interface HMTrigger (HFDebugging)
 + (id)hf_sanitizeTriggerName:(id)arg1 home:(id)arg2;
 + (id)hf_localizedStringForSignficantEvent:(id)arg1 offset:(id)arg2;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;

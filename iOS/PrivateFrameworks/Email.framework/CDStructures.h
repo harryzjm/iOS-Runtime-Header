@@ -10,15 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct atomic_flag {
-    _Atomic _Bool _Value;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };

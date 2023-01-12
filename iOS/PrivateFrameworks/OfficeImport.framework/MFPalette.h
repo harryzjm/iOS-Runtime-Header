@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/MFObject-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface MFPalette : NSObject <MFObject>
+@interface MFPalette : NSObject
 {
     NSMutableArray *m_colours;
 }

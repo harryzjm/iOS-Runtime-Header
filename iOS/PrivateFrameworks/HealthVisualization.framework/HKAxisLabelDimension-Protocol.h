@@ -8,6 +8,7 @@
 
 @protocol HKAxisLabelDimension
 - (NSString *)stringForLocation:(NSNumber *)arg1;
+- (NSNumber *)endingLabelsFactorOverride;
 - (void)setStepSizeForLabels:(double)arg1;
 - (double)ticksPerStepSize:(double)arg1;
 - (double)niceStepSizeLargerThan:(double)arg1;

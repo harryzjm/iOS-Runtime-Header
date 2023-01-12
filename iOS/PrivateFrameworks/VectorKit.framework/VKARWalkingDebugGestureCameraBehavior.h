@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     VKARWalkingCameraController *_controller;
 }
 
+- (void).cxx_destruct;
 - (void)updateRotate:(double)arg1 atScreenPoint:(struct CGPoint)arg2;
 - (void)updateZoom:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
 - (void)updatePan:(struct CGPoint)arg1 lastScreenPoint:(struct CGPoint)arg2;

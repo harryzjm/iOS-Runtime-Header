@@ -13,19 +13,10 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *itemInfo;
-    MISSING_TYPE *linkIconsAndTitles;
-    MISSING_TYPE *textLabelTruncatedLines;
-    MISSING_TYPE *moreTextLabel;
-    MISSING_TYPE *textLabel;
-    MISSING_TYPE *sizingLabel;
-    MISSING_TYPE *tapTargetView;
-    MISSING_TYPE *tapGestureRecognizer;
-    MISSING_TYPE *layout;
+    MISSING_TYPE *expandableTextView;
 }
 
 - (void).cxx_destruct;
-- (void)handleTapGesture:(id)arg1;
-- (void)didTapLink:(id)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)prepareForReuse;
 - (id)initWithCoder:(id)arg1;

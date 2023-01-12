@@ -8,8 +8,10 @@
 
 @interface _TtC7SwiftUI17DragViewResponder
 {
-    MISSING_TYPE *isDragEnabled;
-    MISSING_TYPE *itemsForDragHandler;
+    MISSING_TYPE *prefersFullSizeDragPreviews;
+    MISSING_TYPE *dragItemGroupID;
+    MISSING_TYPE *modifier;
+    MISSING_TYPE *cachedContext;
 }
 
 @end

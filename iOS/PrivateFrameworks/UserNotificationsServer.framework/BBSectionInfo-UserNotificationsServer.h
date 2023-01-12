@@ -17,6 +17,6 @@
 - (long long)uns_notificationSettingForBBSectionInfoSetting:(long long)arg1;
 - (id)uns_notificationSettings;
 - (void)uns_setPropertiesFromNotificationSettings:(id)arg1 systemSettings:(id)arg2;
-- (void)uns_setPropertiesFromAuthorizationOptions:(unsigned long long)arg1;
+- (void)uns_setPropertiesFromAuthorizationOptions:(unsigned long long)arg1 supportsProvisionalAlerts:(_Bool)arg2;
 @end
 

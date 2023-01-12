@@ -6,14 +6,9 @@
 
 #import <TSDrawables/TSDLayout.h>
 
-#import <KeynoteQuicklook/TSWPColumnMetrics-Protocol.h>
-#import <KeynoteQuicklook/TSWPLayoutParent-Protocol.h>
-#import <KeynoteQuicklook/TSWPStyleProvider-Protocol.h>
-#import <KeynoteQuicklook/TSWPStyleProviding-Protocol.h>
-
 @class NSMutableArray, NSString, TSWPLayout, TSWPPadding;
 
-@interface KNNoteLayout : TSDLayout <TSWPLayoutParent, TSWPColumnMetrics, TSWPStyleProviding, TSWPStyleProvider>
+@interface KNNoteLayout : TSDLayout
 {
     TSWPPadding *_padding;
     NSMutableArray *_invertedParagraphsStyles;

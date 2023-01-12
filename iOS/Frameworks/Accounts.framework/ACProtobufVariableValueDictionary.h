@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <Accounts/NSCopying-Protocol.h>
-
 @class NSDictionary, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface ACProtobufVariableValueDictionary : PBCodable <NSCopying>
+@interface ACProtobufVariableValueDictionary : PBCodable
 {
     NSMutableArray *_pairs;
 }

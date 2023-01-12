@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/NSCoding-Protocol.h>
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface IBICImageResizingBehavior : NSObject <NSCopying, NSCoding, IBBinaryArchiving>
+@interface IBICImageResizingBehavior : NSObject
 {
     long long _resizingMode;
     CDStruct_c519178c _capInsets;

@@ -6,16 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUISlideshowItemViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/UIPageViewControllerDataSource-Protocol.h>
-#import <StoreKitUI/UIPageViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSOperationQueue, NSString, SKUIClientContext, UIPageViewController;
 @protocol SKUISlideshowViewControllerDataSource, SKUISlideshowViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUISlideshowViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, SKUISlideshowItemViewControllerDelegate, UIViewControllerTransitioningDelegate>
+@interface SKUISlideshowViewController : UIViewController
 {
     SKUIClientContext *_clientContext;
     UIPageViewController *_pageViewController;

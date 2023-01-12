@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIFoundation/NSTextGraphicsContextProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSStandardTextGraphicsContextProvider : NSObject <NSTextGraphicsContextProvider>
+@interface _NSStandardTextGraphicsContextProvider : NSObject
 {
 }
 

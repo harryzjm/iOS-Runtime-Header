@@ -6,7 +6,7 @@
 
 #import <SoftwareUpdateServices/NSObject-Protocol.h>
 
-@class SUDescriptor;
+@class SUDescriptor, SUSpacePurgeOptions;
 @protocol SUDownloadPolicy;
 
 @protocol SUDownloadPolicy <NSObject>
@@ -14,6 +14,7 @@
 @property(retain, nonatomic) SUDescriptor *descriptor;
 - (_Bool)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(_Bool *)arg2 powerRequired:(_Bool *)arg3;
 - (_Bool)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(_Bool *)arg2;
+- (SUSpacePurgeOptions *)createSpaceOptions;
 - (unsigned long long)wifiOnlyPeriodInDays;
 - (_Bool)is5GDownloadAllowed;
 - (_Bool)allowExpensiveNetwork;

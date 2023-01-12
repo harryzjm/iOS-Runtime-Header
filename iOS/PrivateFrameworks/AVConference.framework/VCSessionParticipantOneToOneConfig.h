@@ -23,11 +23,13 @@ __attribute__((visibility("hidden")))
     _Bool _negotiatedVideoEnabled;
     _Bool _negotiatedScreenEnabled;
     _Bool _initUsingWifiTiers;
+    int _operatingMode;
 }
 
 @property(nonatomic) _Bool initUsingWifiTiers; // @synthesize initUsingWifiTiers=_initUsingWifiTiers;
 @property(nonatomic) _Bool negotiatedScreenEnabled; // @synthesize negotiatedScreenEnabled=_negotiatedScreenEnabled;
 @property(nonatomic) _Bool negotiatedVideoEnabled; // @synthesize negotiatedVideoEnabled=_negotiatedVideoEnabled;
+@property(nonatomic) int operatingMode; // @synthesize operatingMode=_operatingMode;
 @property(retain, nonatomic) VCNetworkFeedbackController *networkFeedbackController; // @synthesize networkFeedbackController=_networkFeedbackController;
 @property(nonatomic) struct tagVCMediaQueue *vcMediaQueue; // @synthesize vcMediaQueue=_vcMediaQueue;
 @property(nonatomic) struct tagHANDLE *mediaQueue; // @synthesize mediaQueue=_mediaQueue;

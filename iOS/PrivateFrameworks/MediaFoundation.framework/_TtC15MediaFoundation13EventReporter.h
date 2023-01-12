@@ -12,7 +12,9 @@
 {
     MISSING_TYPE *stream;
     MISSING_TYPE *activeSubsystems;
+    MISSING_TYPE *mode;
     MISSING_TYPE *queue;
+    MISSING_TYPE *identifier;
 }
 
 @end

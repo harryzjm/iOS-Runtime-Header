@@ -22,9 +22,8 @@ __attribute__((visibility("hidden")))
 - (id)streamIDsForStreamToken:(long long)arg1 targetBitrate:(unsigned int)arg2;
 - (id)repairStreamIDsForStreamToken:(long long)arg1;
 - (id)streamIDsForStreamToken:(long long)arg1;
-- (id)networkBitratesForStreamToken:(long long)arg1 targetNetworkBitrate:(unsigned int)arg2;
 - (id)mediaBitratesForStreamToken:(long long)arg1 targetNetworkBitrate:(unsigned int)arg2;
-- (id)tableEntriesForStreamToken:(long long)arg1 targetBitrate:(unsigned int)arg2 remainingBitrate:(unsigned int *)arg3;
+- (id)tableEntriesForStreamToken:(long long)arg1 targetBitrate:(unsigned int)arg2 remainingBitrate:(unsigned int *)arg3 isLastEntryForStreamToken:(_Bool *)arg4;
 - (_Bool)peerSubscription:(_Bool)arg1 streamID:(unsigned short)arg2;
 @property(nonatomic, getter=isRedundancyEnabledFor720Stream) _Bool redundancyEnabledFor720Stream;
 @property(nonatomic, getter=isRedundancyEnabled) _Bool redundancyEnabled;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSInternalHTTPCookie2Storage-Protocol.h>
-
 @class NSString, NSURL;
 
-@interface NSPersistentHTTPCookie2Storage : NSObject <NSInternalHTTPCookie2Storage>
+@interface NSPersistentHTTPCookie2Storage : NSObject
 {
     struct sqlite3 *persistentDb;
     struct sqlite3_stmt *insertCookiesStmt;

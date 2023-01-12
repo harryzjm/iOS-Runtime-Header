@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UICommand, UICommandAlternate;
+#import "UICommand.h"
+
+@class UICommandAlternate;
 
 __attribute__((visibility("hidden")))
-@interface _UIValidatableCommand
+@interface _UIValidatableCommand : UICommand
 {
     UICommand *_command;
     UICommandAlternate *_alternate;

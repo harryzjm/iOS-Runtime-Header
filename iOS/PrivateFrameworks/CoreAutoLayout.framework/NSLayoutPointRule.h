@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSLayoutRule-Protocol.h>
-
 @class NSLayoutPoint, NSString;
 
-@interface NSLayoutPointRule : NSObject <NSLayoutRule>
+@interface NSLayoutPointRule : NSObject
 {
     NSLayoutPoint *_firstLayoutPoint;
     NSLayoutPoint *_secondLayoutPoint;

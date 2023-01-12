@@ -10,8 +10,8 @@
 
 @interface _TtC11SiriKitFlow16AceOutputHandler : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *contextPublisher;
     MISSING_TYPE *aceServiceInvoker;
-    MISSING_TYPE *flowOutputPublisher;
 }
 
 @end

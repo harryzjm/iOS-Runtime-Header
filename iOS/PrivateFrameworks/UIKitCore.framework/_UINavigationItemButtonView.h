@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UIColor, UIImageView, _UIBarButtonItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationItemButtonView <UIGestureRecognizerDelegate>
+@interface _UINavigationItemButtonView
 {
     long long _style;
     _Bool _pressed;

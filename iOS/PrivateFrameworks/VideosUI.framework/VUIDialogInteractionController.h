@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <VideosUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <VideosUI/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <VideosUI/VUIPreviewInteractionControllerDelegate-Protocol.h>
-
 @class NSIndexPath, NSString, UICollectionView, UILongPressGestureRecognizer, UIViewController, VUIDialogPresentationController, VUIPresentationContainerViewController, VUIPreviewInteractionController;
 @protocol VUIDialogInteractionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIDialogInteractionController : NSObject <VUIPreviewInteractionControllerDelegate, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface VUIDialogInteractionController : NSObject
 {
     UICollectionView *_collectionView;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;

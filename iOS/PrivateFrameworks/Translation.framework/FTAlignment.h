@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTAlignment : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTAlignment : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_dd07f1bb)addObjectToBuffer:(void *)arg1;
+- (void)index_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)index_count;
+- (id)index_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *index;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct Alignment *)arg2 verify:(_Bool)arg3;

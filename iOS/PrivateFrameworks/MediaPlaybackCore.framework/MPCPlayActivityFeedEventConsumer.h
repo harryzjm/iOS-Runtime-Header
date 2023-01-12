@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventConsumer-Protocol.h>
-
-@class ICPlayActivityController, NSMutableArray, NSString;
+@class ICPlayActivityController, NSArray, NSMutableArray, NSString;
 @protocol MPCPlaybackEngineEventStreamSubscription;
 
-@interface MPCPlayActivityFeedEventConsumer : NSObject <MPCPlaybackEngineEventConsumer>
+__attribute__((visibility("hidden")))
+@interface MPCPlayActivityFeedEventConsumer : NSObject
 {
+    NSArray *_allowedBundleIds;
     id <MPCPlaybackEngineEventStreamSubscription> _subscription;
     NSMutableArray *_radioPlayActivityEvents;
     ICPlayActivityController *_playActivityController;
@@ -36,12 +36,16 @@
 - (double)_getStartTimeForMostRecentPlaybackStart:(id)arg1 withItemBeginEvent:(id)arg2 containerBeginEvent:(id)arg3 cursor:(id)arg4;
 - (id)_findRecentPlaybackStartFromTypes:(id)arg1 matchingPayload:(id)arg2 cursor:(id)arg3;
 - (id)_generateAggregateNoncatalogEndEventForCursor:(id)arg1;
+- (_Bool)_itemIsPlaceholderFromQueueSectionIdentifier:(id)arg1 itemIdentifier:(id)arg2 cursor:(id)arg3;
+- (_Bool)_itemIsPlayingFromQueueSectionIdentifier:(id)arg1 itemIdentifier:(id)arg2 cursor:(id)arg3;
 - (_Bool)_handleApplicationTerminationEvent:(id)arg1 cursor:(id)arg2;
 - (id)_generatePlaybackEndEventFromEvent:(id)arg1 withQueueSectionIdentifier:(id)arg2 itemIdentifier:(id)arg3 cursor:(id)arg4;
 - (_Bool)_handleItemEndEvent:(id)arg1 cursor:(id)arg2;
 - (_Bool)_handleItemPauseEvent:(id)arg1 cursor:(id)arg2;
 - (_Bool)_handleItemPositionJumpEvent:(id)arg1 cursor:(id)arg2;
 - (_Bool)_handleItemResumeEvent:(id)arg1 cursor:(id)arg2;
+- (void)_updateAllowedBundleIdsIfNecessary:(id)arg1;
+- (void)_handleURLBagProviderDidUpdateBagNotification:(id)arg1;
 - (void)unsubscribeFromEventStream:(id)arg1;
 - (void)subscribeToEventStream:(id)arg1;
 - (id)init;

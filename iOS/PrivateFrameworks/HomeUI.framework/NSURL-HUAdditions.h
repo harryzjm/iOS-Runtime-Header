@@ -8,7 +8,7 @@
 
 @interface NSURL (HUAdditions)
 + (id)hu_appStoreURLForBundleIdentifier:(id)arg1;
-+ (id)hu_systemSoftwareUpdate;
++ (id)hu_losslessURL;
 + (id)hu_faceRecognitionPrivacyURL;
 + (id)hu_photosLibraryPeopleAlbumURL;
 + (id)hu_learnAboutNetworkProtectionURL;
@@ -25,6 +25,6 @@
 + (id)hu_wifiSettingsURL;
 + (id)hu_notificationSettingsURL;
 + (id)_localeString;
-@property(readonly, nonatomic) _Bool hu_isHomeKnowledgeBasedArticleURL;
+- (_Bool)hu_isHomeKnowledgeBasedArticleURL;
 @end
 

@@ -8,10 +8,12 @@
 #import <GeoServices/GEOMapServiceCorrectableTicket-Protocol.h>
 #import <GeoServices/GEOMapServiceThrottlableTicket-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEOPDPlaceSummaryLayoutMetadata, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, GEOResultRefinementGroup, GEOSearchAutoRedoThreshold, GEOSearchSectionList, NSArray, NSDictionary, NSObject, NSString;
+@class GEOApplicationAuditToken, GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEOPDPlaceSummaryLayoutMetadata, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, GEOResultRefinementGroup, GEOSearchAutoRedoThreshold, GEOSearchSectionList, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @protocol GEOMapServiceTicket <GEOMapServiceCancellableTicket, GEOMapServiceCorrectableTicket, GEOMapServiceThrottlableTicket>
+@property(readonly, nonatomic) _Bool enableStructuredRAPAffordance;
+@property(readonly, nonatomic) int searchResultViewType;
 @property(readonly, nonatomic) _Bool disableAdditionalViewportPadding;
 @property(readonly, nonatomic) GEOSearchSectionList *searchSectionList;
 @property(readonly, nonatomic) GEOResultRefinementGroup *resultRefinementGroup;
@@ -35,7 +37,6 @@
 @property(readonly, nonatomic) NSString *resultDisplayHeader;
 @property(readonly, nonatomic) int searchResultType;
 @property(readonly, nonatomic) NSString *resultSectionHeader;
-@property(readonly, nonatomic) NSDictionary *responseUserInfo;
 @property(readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property(readonly, nonatomic) NSArray *browseCategories;
 @property(readonly, nonatomic) NSArray *relatedSearchSuggestions;

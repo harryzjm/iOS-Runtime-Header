@@ -19,6 +19,7 @@
 - (void)previewDidAppear:(_Bool)arg1;
 - (void)previewWillAppear:(_Bool)arg1;
 - (void)setAppearance:(QLAppearance *)arg1 animated:(_Bool)arg2;
+- (void)getARQLInlineProxy3WithCompletionHandler:(void (^)(id <ARQLInlineService3>))arg1;
 - (void)getARQLInlineProxy2WithCompletionHandler:(void (^)(id <ARQLInlineService2>))arg1;
 - (void)getARQLInlineProxyWithCompletionHandler:(void (^)(id <ARQLInlineService>))arg1;
 - (void)generatePreviewForURL:(QLURLHandler *)arg1 completion:(void (^)(QLPreviewReply *, NSError *))arg2;

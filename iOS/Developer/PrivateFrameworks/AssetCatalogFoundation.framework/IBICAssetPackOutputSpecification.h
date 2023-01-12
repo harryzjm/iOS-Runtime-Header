@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSSet, NSString;
 
-@interface IBICAssetPackOutputSpecification : NSObject <IBBinaryArchiving>
+@interface IBICAssetPackOutputSpecification : NSObject
 {
     NSSet *_tags;
     NSString *_bundleIdentifier;

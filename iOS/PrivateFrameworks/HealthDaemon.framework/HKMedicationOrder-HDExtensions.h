@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKMedicationOrder.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKMedicationOrder (HDExtensions) <HDCoding>
+@interface HKMedicationOrder (HDExtensions)
 + (Class)hd_dataEntityClass;
 + (id)createWithCodable:(id)arg1;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;

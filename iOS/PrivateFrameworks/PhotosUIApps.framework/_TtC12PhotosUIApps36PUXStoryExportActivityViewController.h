@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *exportPreviewViewController;
     MISSING_TYPE *errorReporter;
     MISSING_TYPE *fullSizePlayerAspect;
+    MISSING_TYPE *presentingFailureAlert;
     MISSING_TYPE *$__lazy_storage_$_linkMetadata;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, copy) CDUnknownBlockType completionWithItemsHandler;
 @property(nonatomic) long long modalPresentationStyle;
 - (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2;
 

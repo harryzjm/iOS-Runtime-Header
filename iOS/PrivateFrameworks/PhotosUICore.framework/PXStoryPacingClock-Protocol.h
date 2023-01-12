@@ -7,6 +7,6 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @protocol PXStoryPacingClock <NSObject>
-@property(readonly, nonatomic) CDStruct_1b6d18a9 currentTime;
+@property(readonly, nonatomic) CDStruct_198678f7 currentTime;
 @end
 

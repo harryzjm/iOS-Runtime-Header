@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDropInteractionEffect-Protocol.h>
-
 @class CAShapeLayer, NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UIDropInteractionHighlightEffect : NSObject <UIDropInteractionEffect>
+@interface _UIDropInteractionHighlightEffect : NSObject
 {
     long long _visualState;
     double _highlightWidth;

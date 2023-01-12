@@ -6,11 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlayer/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
-@interface MPPSearchStringPredicate : PBCodable <NSCopying>
+__attribute__((visibility("hidden")))
+@interface MPPSearchStringPredicate : PBCodable
 {
     NSMutableArray *_properties;
     NSString *_searchString;

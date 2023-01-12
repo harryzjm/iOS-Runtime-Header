@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_txPayloadMap;
     NSData *_receiveMediaKey;
     NSMutableDictionary *_rxPayloadMap;
-    _Bool _latencySensitiveModeEnabled;
     long long _SRTPCipherSuite;
     _Bool _rtpTimeOutEnabled;
     double _rtpTimeOutInterval;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
     int _sframeCipherSuite;
     unsigned int _cellularUniqueTag;
     _Bool _rtcpEnabled;
+    _Bool _rtcpXREnabled;
     double _rtcpSendInterval;
     long long _SRTCPCipherSuite;
     _Bool _rtcpTimeOutEnabled;
@@ -41,17 +41,30 @@ __attribute__((visibility("hidden")))
     _Bool _rtcpReceiveCallbackEnabled;
     unsigned short _rtcpRemotePort;
     _Bool _rateAdaptationEnabled;
+    unsigned long long _networkClockID;
     VCMediaStreamMultiwayConfig *_multiwayConfig;
     VCMediaStreamRateControlConfig *_rateControlConfig;
+    long long _streamInputID;
+    int _jitterBufferMode;
+    unsigned long long _fixedJitterBufferSize;
     struct tagVCJBTargetEstimatorSynchronizer *_jbTargetEstimatorSynchronizer;
     VCNetworkFeedbackController *_networkFeedbackController;
+    _Bool _isServerPacketRetransmissionEnabled;
+    _Bool _isExtraDelayForPacketRetransmissionsEnabled;
     int _captureSource;
+    unsigned int _nackGeneratorStorebagConfigVersion;
 }
 
+@property(nonatomic) _Bool isExtraDelayForPacketRetransmissionsEnabled; // @synthesize isExtraDelayForPacketRetransmissionsEnabled=_isExtraDelayForPacketRetransmissionsEnabled;
+@property(nonatomic) unsigned int nackGeneratorStorebagConfigVersion; // @synthesize nackGeneratorStorebagConfigVersion=_nackGeneratorStorebagConfigVersion;
+@property(nonatomic) _Bool isServerPacketRetransmissionEnabled; // @synthesize isServerPacketRetransmissionEnabled=_isServerPacketRetransmissionEnabled;
+@property(nonatomic) unsigned long long fixedJitterBufferSize; // @synthesize fixedJitterBufferSize=_fixedJitterBufferSize;
+@property(nonatomic) int jitterBufferMode; // @synthesize jitterBufferMode=_jitterBufferMode;
+@property(nonatomic) unsigned long long networkClockID; // @synthesize networkClockID=_networkClockID;
+@property(nonatomic) long long streamInputID; // @synthesize streamInputID=_streamInputID;
 @property(retain, nonatomic) VCNetworkFeedbackController *networkFeedbackController; // @synthesize networkFeedbackController=_networkFeedbackController;
 @property(nonatomic) int captureSource; // @synthesize captureSource=_captureSource;
 @property(retain, nonatomic) VCMediaStreamRateControlConfig *rateControlConfig; // @synthesize rateControlConfig=_rateControlConfig;
-@property(nonatomic, getter=isLatencySensitiveModeEnabled) _Bool latencySensitiveModeEnabled; // @synthesize latencySensitiveModeEnabled=_latencySensitiveModeEnabled;
 @property(nonatomic, getter=isRTCPReceiveCallbackEnabled) _Bool rtcpReceiveCallbackEnabled; // @synthesize rtcpReceiveCallbackEnabled=_rtcpReceiveCallbackEnabled;
 @property(retain, nonatomic) VCMediaStreamMultiwayConfig *multiwayConfig; // @synthesize multiwayConfig=_multiwayConfig;
 @property(nonatomic, getter=isRateAdaptationEnabled) _Bool rateAdaptationEnabled; // @synthesize rateAdaptationEnabled=_rateAdaptationEnabled;
@@ -75,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isRTPTimeOutEnabled) _Bool rtpTimeOutEnabled; // @synthesize rtpTimeOutEnabled=_rtpTimeOutEnabled;
 @property(nonatomic) double rtcpSendInterval; // @synthesize rtcpSendInterval=_rtcpSendInterval;
 @property(nonatomic) unsigned short rtcpRemotePort; // @synthesize rtcpRemotePort=_rtcpRemotePort;
+@property(nonatomic, getter=isRTCPXREnabled) _Bool rtcpXREnabled; // @synthesize rtcpXREnabled=_rtcpXREnabled;
 @property(nonatomic, getter=isRTCPEnabled) _Bool rtcpEnabled; // @synthesize rtcpEnabled=_rtcpEnabled;
 @property(nonatomic) unsigned int remoteSSRC; // @synthesize remoteSSRC=_remoteSSRC;
 @property(nonatomic) unsigned int localSSRC; // @synthesize localSSRC=_localSSRC;
@@ -83,6 +97,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VCNetworkAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
 @property(retain, nonatomic) VCNetworkAddress *localAddress; // @synthesize localAddress=_localAddress;
 @property(nonatomic) struct tagVCJBTargetEstimatorSynchronizer *jbTargetEstimatorSynchronizer;
+- (int)jitterBufferModeFromAVCJitterBufferMode:(unsigned int)arg1;
 - (void)applyMediaStreamClientDictionary:(id)arg1;
 - (void)setupMediaStreamConfig;
 @property(readonly, nonatomic) long long primaryTxCodecType;

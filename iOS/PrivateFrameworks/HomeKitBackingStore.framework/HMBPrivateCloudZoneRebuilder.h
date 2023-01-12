@@ -6,18 +6,14 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitBackingStore/HMBCloudZoneRebuilder-Protocol.h>
-#import <HomeKitBackingStore/HMFLogging-Protocol.h>
-#import <HomeKitBackingStore/HMFTimerDelegate-Protocol.h>
-
-@class CKRecord, HMBCloudZone, HMBCloudZoneRebuilderStatus, HMFTimer, HMFUnfairLock, NAFuture, NSString, NSUUID;
+@class CKRecord, HMBCloudZone, HMBCloudZoneRebuilderStatus, HMFTimer, NAFuture, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface HMBPrivateCloudZoneRebuilder : HMFObject <HMFTimerDelegate, HMFLogging, HMBCloudZoneRebuilder>
+@interface HMBPrivateCloudZoneRebuilder : HMFObject
 {
+    struct os_unfair_lock_s _propertyLock;
     HMBCloudZoneRebuilderStatus *_rebuilderStatus;
     NAFuture *_rebuildCompleteFuture;
-    HMFUnfairLock *_propertyLock;
     CKRecord *_previousSentinelRebuildRecord;
     NSUUID *_lastRebuildUUID;
     HMFTimer *_uploadMonitorWatchdogTimer;
@@ -30,7 +26,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) HMFTimer *uploadMonitorWatchdogTimer; // @synthesize uploadMonitorWatchdogTimer=_uploadMonitorWatchdogTimer;
 @property(retain, nonatomic) NSUUID *lastRebuildUUID; // @synthesize lastRebuildUUID=_lastRebuildUUID;
 @property(retain, nonatomic) CKRecord *previousSentinelRebuildRecord; // @synthesize previousSentinelRebuildRecord=_previousSentinelRebuildRecord;
-@property(readonly, nonatomic) HMFUnfairLock *propertyLock; // @synthesize propertyLock=_propertyLock;
 @property(retain, nonatomic) NAFuture *rebuildCompleteFuture; // @synthesize rebuildCompleteFuture=_rebuildCompleteFuture;
 @property(copy) HMBCloudZoneRebuilderStatus *rebuilderStatus; // @synthesize rebuilderStatus=_rebuilderStatus;
 - (id)logIdentifier;

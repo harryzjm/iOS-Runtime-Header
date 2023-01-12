@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface FPPair : NSObject <NSCopying>
+@interface FPPair : NSObject
 {
     id _first;
     id _second;

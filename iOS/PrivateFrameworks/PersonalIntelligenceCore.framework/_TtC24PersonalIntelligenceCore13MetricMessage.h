@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PersonalIntelligenceCore/BMStoreData-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC24PersonalIntelligenceCore13MetricMessage : NSObject <BMStoreData>
+@interface _TtC24PersonalIntelligenceCore13MetricMessage : NSObject
 {
     MISSING_TYPE *backend;
     MISSING_TYPE *messageIdentifier;

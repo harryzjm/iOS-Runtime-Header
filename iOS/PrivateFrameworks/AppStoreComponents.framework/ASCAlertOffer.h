@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCOffer-Protocol.h>
-#import <AppStoreComponents/NSSecureCoding-Protocol.h>
-
 @class ASCAdamID, NSArray, NSDictionary, NSNumber, NSString;
 @protocol ASCOffer;
 
 __attribute__((visibility("hidden")))
-@interface ASCAlertOffer : NSObject <ASCOffer, NSSecureCoding>
+@interface ASCAlertOffer : NSObject
 {
     ASCAdamID *_id;
     NSDictionary *_titles;

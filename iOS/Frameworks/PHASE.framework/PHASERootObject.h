@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "PHASEObject.h"
+
 __attribute__((visibility("hidden")))
-@interface PHASERootObject
+@interface PHASERootObject : PHASEObject
 {
 }
 
 + (id)new;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)setTransform:(CDStruct_14d5dc5e)arg1;
+- (void)setTransform:(CDStruct_f1db2b5e)arg1;
 - (void)setParent:(id)arg1;
 - (void)dealloc;
 - (id)initWithEngine:(id)arg1;

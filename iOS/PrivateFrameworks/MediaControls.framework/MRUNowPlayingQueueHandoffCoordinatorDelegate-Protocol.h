@@ -6,12 +6,10 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class MRUNowPlayingQueueHandoffCoordinator;
+@class MRNowPlayingPlayerResponse, MRUNowPlayingQueueHandoffCoordinator;
 
 @protocol MRUNowPlayingQueueHandoffCoordinatorDelegate <NSObject>
-- (void)nowPlayingQueueHandoffCoordinatorDidCompleteHandoff:(MRUNowPlayingQueueHandoffCoordinator *)arg1;
-- (void)nowPlayingQueueHandoffCoordinatorDidEndTransition:(MRUNowPlayingQueueHandoffCoordinator *)arg1;
-- (void)nowPlayingQueueHandoffCoordinatorDidBeginTransition:(MRUNowPlayingQueueHandoffCoordinator *)arg1;
-- (void)nowPlayingQueueHandoffCoordinatorSetupTransition:(MRUNowPlayingQueueHandoffCoordinator *)arg1;
+- (void)queueHandoffCoordinator:(MRUNowPlayingQueueHandoffCoordinator *)arg1 didChangeResponse:(MRNowPlayingPlayerResponse *)arg2;
+- (void)queueHandoffCoordinator:(MRUNowPlayingQueueHandoffCoordinator *)arg1 didChangeState:(long long)arg2;
 @end
 

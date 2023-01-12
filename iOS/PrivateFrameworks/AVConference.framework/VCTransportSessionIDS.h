@@ -13,10 +13,15 @@ __attribute__((visibility("hidden")))
     int _socket;
     NSString *_destination;
     _Bool _requireEncryptionInfo;
+    int _dataPath;
+    _Bool _useIDSLinkSuggestionFeatureFlag;
+    unsigned int _linkPreferSuggestionFromDefaults;
 }
 
 @property(nonatomic) int socket; // @synthesize socket=_socket;
 @property(copy, nonatomic) NSString *destination; // @synthesize destination=_destination;
+- (void)handleReportingBlob:(id)arg1;
+- (void)handleLinkPreferSuggestion:(id)arg1;
 - (void)setQuickRelayServerProvider:(int)arg1;
 - (void)handleChannelInfoReport:(id)arg1;
 - (void)setConnectionSetupTime;
@@ -47,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)getConnectionSetupData:(id *)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (id)datagramChannel;
 - (void)dealloc;
+- (id)initWithCallID:(unsigned int)arg1 requireEncryptionInfo:(_Bool)arg2 reportingAgent:(id)arg3 notificationQueue:(id)arg4 dataPath:(int)arg5;
 - (id)initWithCallID:(unsigned int)arg1 requireEncryptionInfo:(_Bool)arg2 reportingAgent:(id)arg3 notificationQueue:(id)arg4;
 - (id)initWithCallID:(unsigned int)arg1 reportingAgent:(id)arg2;
 

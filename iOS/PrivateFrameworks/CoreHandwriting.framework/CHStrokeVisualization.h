@@ -11,11 +11,11 @@
     id <CHStrokeProvider> __strokeProviderDrawn;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <CHStrokeProvider> _strokeProviderDrawn; // @synthesize _strokeProviderDrawn=__strokeProviderDrawn;
 - (void)drawStrokesFromStrokeProvider:(id)arg1 inRect:(struct CGRect)arg2 context:(struct CGContext *)arg3;
 - (void)drawVisualizationInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 viewBounds:(struct CGRect)arg3;
 - (void)recognitionSessionDidUpdateRecognitionResult;
-- (void)dealloc;
 
 @end
 

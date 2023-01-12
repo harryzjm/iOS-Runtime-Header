@@ -10,34 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CATransform3D {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
-    double _field8;
-    double _field9;
-    double _field10;
-    double _field11;
-    double _field12;
-    double _field13;
-    double _field14;
-    double _field15;
-    double _field16;
-};
-
-struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
-};
-
 struct CGPoint {
     double x;
     double y;
@@ -53,41 +25,21 @@ struct CGSize {
     double height;
 };
 
-struct CGVector {
-    double _field1;
-    double _field2;
-};
-
-struct CLLocationCoordinate2D {
-    double latitude;
-    double longitude;
-};
-
-struct HUDownloadControlStatus {
-    long long statusType;
-    double downloadProgress;
-};
-
 struct HUGridPosition {
     long long _field1;
     long long _field2;
 };
 
 struct HUGridSize {
-    long long rowsDown;
-    long long columnsAcross;
+    long long _field1;
+    long long _field2;
 };
 
 struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
-struct UIOffset {
-    double horizontal;
-    double vertical;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct _NSRange {
@@ -95,57 +47,17 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    double topToLabelBaselineDistance;
-    double labelBaselineToBottomDistance;
-    double minHorizontalPadding;
-    double minWidth;
-    double heightReduction;
-} CDStruct_e9cf424c;
-
-typedef struct {
-    double r;
-    double g;
-    double b;
-    double temperature;
-} CDStruct_dbd0f16f;
-
-typedef struct {
     double _field1;
-} CDStruct_2418a849;
+    double _field2;
+    double _field3;
+    double _field4;
+} CDStruct_d2b197d1;
 
-typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
-
-typedef struct {
-    struct {
-        double x;
-        double y;
-    } origin;
-    struct {
-        double width;
-        double height;
-    } size;
-} CDStruct_02837cd9;
-
-// Ambiguous groups
 typedef struct {
     double _field1;
     double _field2;
 } CDStruct_c3b9c2ee;
-
-typedef struct {
-    double minimum;
-    double maximum;
-} CDStruct_ef18196a;
 

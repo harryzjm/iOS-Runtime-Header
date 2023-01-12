@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCControlChannelTransactionDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCControlChannelMultiWay <VCControlChannelTransactionDelegate>
+@interface VCControlChannelMultiWay
 {
     unsigned int _transportSessionID;
     int _vfdMessage;
@@ -29,6 +27,7 @@ __attribute__((visibility("hidden")))
     void *_currentReceiveMKI;
     NSObject<OS_dispatch_queue> *_sequentialKeyMaterialQueue;
     long long _transactionID;
+    _Bool _didSubmitCCReliableDataNotReceivedSymptom;
 }
 
 + (id)allocPayoadDataFromVTPPacket:(struct VCBlockBuffer_t *)arg1 vpktFlags:(struct tagVPKTFLAG *)arg2 channelDataFormat:(struct tagVCIDSChannelDataFormat **)arg3;
@@ -56,7 +55,8 @@ __attribute__((visibility("hidden")))
 - (void)scheduleAfter:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)removeAllActiveParticipants;
 - (void)removeActiveParticipant:(unsigned long long)arg1;
-- (_Bool)addActiveParticipant:(unsigned long long)arg1 withConfiguration:(CDStruct_c24deb19 *)arg2;
+- (void)processParticipantRemoval:(id)arg1;
+- (_Bool)addActiveParticipant:(unsigned long long)arg1 participantUUID:(id)arg2 withConfiguration:(CDStruct_c24deb19 *)arg3;
 - (void)sendUnreliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
 - (void)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3;
 - (_Bool)sendReliableMessage:(id)arg1 withTopic:(id)arg2 participantID:(unsigned long long)arg3 timeout:(unsigned int)arg4 completion:(CDUnknownBlockType)arg5;

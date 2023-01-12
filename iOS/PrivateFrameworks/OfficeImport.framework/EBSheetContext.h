@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OCDDelayedNodeContext-Protocol.h>
-
 @class EBReaderSheetState, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EBSheetContext : NSObject <OCDDelayedNodeContext>
+@interface EBSheetContext : NSObject
 {
     EBReaderSheetState *mSheetState;
     unsigned int mSheetIndex;

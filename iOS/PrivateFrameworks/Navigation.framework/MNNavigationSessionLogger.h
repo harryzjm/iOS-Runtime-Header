@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNNavigationSessionObserver-Protocol.h>
-
 @class NSArray, NSError, NSHashTable, NSMutableDictionary, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface MNNavigationSessionLogger : NSObject <MNNavigationSessionObserver>
+@interface MNNavigationSessionLogger : NSObject
 {
     NSUUID *_lastGuidanceSignID;
     NSArray *_lastARInfos;
@@ -27,6 +25,9 @@ __attribute__((visibility("hidden")))
 - (void)navigationSession:(id)arg1 didReceiveTrafficIncidentAlert:(id)arg2 responseCallback:(CDUnknownBlockType)arg3;
 - (void)navigationSession:(id)arg1 updateSignsWithARInfo:(id)arg2;
 - (void)navigationSession:(id)arg1 updateSignsWithInfo:(id)arg2;
+- (void)navigationSession:(id)arg1 didRemoveWaypoint:(id)arg2;
+- (void)navigationSession:(id)arg1 didInsertWaypoint:(id)arg2;
+- (void)navigationSession:(id)arg1 didRerouteWithWaypoints:(id)arg2;
 - (void)navigationSession:(id)arg1 didUpdateDestination:(id)arg2;
 - (void)navigationSession:(id)arg1 didUpdateAlternateRoutes:(id)arg2;
 - (void)navigationSession:(id)arg1 didFailRerouteWithError:(id)arg2;
@@ -36,17 +37,17 @@ __attribute__((visibility("hidden")))
 - (void)navigationSession:(id)arg1 didSuppressReroute:(id)arg2;
 - (void)navigationSessionWillReroute:(id)arg1;
 - (void)navigationSession:(id)arg1 didUpdateETAResponseForRoute:(id)arg2;
-- (void)navigationSession:(id)arg1 didUpdateDisplayETA:(id)arg2 remainingDistance:(id)arg3;
+- (void)navigationSession:(id)arg1 didUpdateDisplayETA:(id)arg2 remainingDistance:(id)arg3 batteryChargeInfo:(id)arg4;
 - (void)navigationSessionDidArrive:(id)arg1;
 - (void)navigationSessionDidEnterPreArrivalState:(id)arg1;
-- (void)navigationSession:(id)arg1 didResumeNavigatingFromWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSession:(id)arg1 didResumeNavigatingFromWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)navigationSession:(id)arg1 didArriveAtWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didEnterPreArrivalStateForWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 matchedToStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didUpdateMatchedLocation:(id)arg2;
 - (void)navigationSession:(id)arg1 didStopWithReason:(unsigned long long)arg2;
 - (void)navigationSession:(id)arg1 didChangeNavigationState:(int)arg2;
-- (void)navigationSession:(id)arg1 didStartWithRoute:(id)arg2 navigationType:(int)arg3 isReconnecting:(_Bool)arg4;
+- (void)navigationSession:(id)arg1 didStartWithRoute:(id)arg2 navigationType:(long long)arg3 isResumingMultipointRoute:(_Bool)arg4 isReconnecting:(_Bool)arg5;
 - (id)init;
 
 // Remaining properties

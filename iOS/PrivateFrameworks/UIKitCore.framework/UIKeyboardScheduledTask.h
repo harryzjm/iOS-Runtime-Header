@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _enqueuedTask;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType enqueuedTask; // @synthesize enqueuedTask=_enqueuedTask;
 @property(retain, nonatomic) _UIActionWhenIdle *deferredAction; // @synthesize deferredAction=_deferredAction;
 @property(retain, nonatomic) NSTimer *timer; // @synthesize timer=_timer;

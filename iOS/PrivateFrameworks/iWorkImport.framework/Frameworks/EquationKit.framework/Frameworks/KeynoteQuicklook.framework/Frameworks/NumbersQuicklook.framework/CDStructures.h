@@ -47,9 +47,9 @@ struct TSCECellRef {
 
 struct TSCEDurationFormat {
     unsigned int :1;
-    unsigned int :5;
-    unsigned int :5;
-    unsigned int :2;
+    unsigned int :6;
+    unsigned int :6;
+    unsigned int :3;
 };
 
 struct TSCEFormat {
@@ -268,44 +268,6 @@ typedef struct {
     struct TSUCellCoord topLeft;
     struct TSUCellCoord bottomRight;
 } CDStruct_39acd760;
-
-typedef struct {
-    unsigned int _field1;
-    union {
-        struct {
-            unsigned int :16;
-            unsigned int :8;
-            unsigned int :3;
-            unsigned int :1;
-            unsigned int :1;
-        } _field1;
-        struct {
-            unsigned int :8;
-        } _field2;
-        struct {
-            unsigned int :8;
-            unsigned int :8;
-            unsigned int :1;
-        } _field3;
-        struct {
-            unsigned int :1;
-            unsigned int :1;
-            id _field1;
-        } _field4;
-        struct {
-            unsigned int :1;
-            unsigned char _field1;
-            unsigned char _field2;
-            unsigned char _field3;
-        } _field5;
-        struct {
-            id _field1;
-            id _field2;
-            unsigned int _field3;
-            unsigned char _field4;
-        } _field6;
-    } _field2;
-} CDStruct_fef6b84f;
 
 // Template types
 typedef struct set<TSUCellCoord, std::less<TSUCellCoord>, std::allocator<TSUCellCoord>> {

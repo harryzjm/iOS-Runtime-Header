@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <IDSFoundation/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface PSIDSLinkHBHEncryptedPayload : PBCodable <NSCopying>
+@interface PSIDSLinkHBHEncryptedPayload : PBCodable
 {
     NSData *_authenticationTag;
     NSData *_cipherText;

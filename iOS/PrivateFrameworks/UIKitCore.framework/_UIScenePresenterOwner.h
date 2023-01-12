@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/BSDescriptionProviding-Protocol.h>
-#import <UIKitCore/BSInvalidatable-Protocol.h>
-
 @class FBScene, NSMutableOrderedSet, NSMutableSet, NSString, UIScenePresentationContext, UIScenePresentationManager, _UISceneLayerHostContainerView, _UIScenePresenter;
 @protocol _UIScenePresenterOwnerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIScenePresenterOwner : NSObject <BSDescriptionProviding, BSInvalidatable>
+@interface _UIScenePresenterOwner : NSObject
 {
     id _context;
     UIScenePresentationManager *_scenePresentationManager;

@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)isAccessibilityElement;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 

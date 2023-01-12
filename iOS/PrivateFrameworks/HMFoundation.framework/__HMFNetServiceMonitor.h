@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HMFNetMonitor.h"
+
 @class HMFNetService;
 
 __attribute__((visibility("hidden")))
-@interface __HMFNetServiceMonitor
+@interface __HMFNetServiceMonitor : HMFNetMonitor
 {
     HMFNetService *_service;
 }

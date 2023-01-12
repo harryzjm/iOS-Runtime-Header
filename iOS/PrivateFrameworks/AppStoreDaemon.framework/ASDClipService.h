@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreDaemon/ASDServiceProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ASDClipService : NSObject <ASDServiceProvider>
+@interface ASDClipService : NSObject
 {
 }
 
-+ (id)_channelInterface;
 + (id)interface;
 
 // Remaining properties

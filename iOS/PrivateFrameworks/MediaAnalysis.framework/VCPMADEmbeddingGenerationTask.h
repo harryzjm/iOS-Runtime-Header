@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/VCPMADServiceImageProcessingSubtaskProtocol-Protocol.h>
-#import <MediaAnalysis/VCPMADTaskProtocol-Protocol.h>
-
 @class MADEmbeddingGenerationRequest, NSString, VCPMADServiceImageAsset;
 
 __attribute__((visibility("hidden")))
-@interface VCPMADEmbeddingGenerationTask : NSObject <VCPMADServiceImageProcessingSubtaskProtocol, VCPMADTaskProtocol>
+@interface VCPMADEmbeddingGenerationTask : NSObject
 {
     MADEmbeddingGenerationRequest *_request;
     VCPMADServiceImageAsset *_imageAsset;

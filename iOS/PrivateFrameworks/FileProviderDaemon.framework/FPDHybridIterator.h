@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FPDIterator, FPDProvider, FPItem, NSURL;
+@class FPDDiskIterator, FPDDomain, FPDIterator, FPItem, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface FPDHybridIterator
 {
     FPItem *_rootItem;
     NSURL *_rootURL;
-    FPDProvider *_provider;
+    FPDDomain *_domain;
     _Bool _done;
     unsigned long long _totalDatalessFoldersPopped;
-    _Bool insideADatalessFolder;
-    FPDIterator *datalessFolderIterator;
-    FPDIterator *diskIterator;
+    _Bool _enforceFPItem;
+    _Bool _insideADatalessFolder;
+    FPDIterator *_datalessFolderIterator;
+    FPDDiskIterator *_diskIterator;
 }
 
 - (void).cxx_destruct;
@@ -25,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)done;
 - (id)error;
 - (id)nextWithError:(id *)arg1;
-- (id)initWithItem:(id)arg1 provider:(id)arg2;
+- (id)initWithItem:(id)arg1 domain:(id)arg2 enforceFPItem:(_Bool)arg3;
 
 @end
 

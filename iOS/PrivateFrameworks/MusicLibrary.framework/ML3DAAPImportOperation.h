@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ML3ImportOperation.h"
+
 @class NSError;
 
 __attribute__((visibility("hidden")))
-@interface ML3DAAPImportOperation
+@interface ML3DAAPImportOperation : ML3ImportOperation
 {
     void *_importSession;
     NSError *_importError;

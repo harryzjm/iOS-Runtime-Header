@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface PurplePageLoadTestRunner
 {
     NSMutableDictionary *_pptResults;
+    NSMutableDictionary *_iterationResults;
     _Bool _showLoadTime;
     _Bool _showFirstVisualLayoutTime;
     _Bool _showRenderTime;
@@ -21,10 +22,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showRenderTime; // @synthesize showRenderTime=_showRenderTime;
 @property(nonatomic) _Bool showFirstVisualLayoutTime; // @synthesize showFirstVisualLayoutTime=_showFirstVisualLayoutTime;
 @property(nonatomic) _Bool showLoadTime; // @synthesize showLoadTime=_showLoadTime;
+- (void)writeOutputData;
 - (void)collectPPTResults;
 - (void)pptResultFor:(id)arg1 measure:(id)arg2 time:(double)arg3;
 - (void)pptResultFor:(id)arg1 measure:(id)arg2 value:(double)arg3 units:(id)arg4;
 - (void)finishedTestRunner;
+- (void)finishedTestRunnerIteration;
 - (void)startingTestRunner;
 - (id)initRenderTestWithName:(id)arg1 browserController:(id)arg2 showRenderTime:(_Bool)arg3 showFPS:(_Bool)arg4;
 - (id)initWithTestName:(id)arg1 browserController:(id)arg2;

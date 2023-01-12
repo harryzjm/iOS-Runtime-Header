@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (struct __CFString *)container;
 - (_Bool)isByHost;
 - (struct __CFString *)domainIdentifier;
+- (_Bool)servedByUserSessionDaemon;
 - (struct __CFString *)userIdentifier;
 - (void)setFileProtectionClass:(int)arg1;
 - (void)setBackupDisabled:(_Bool)arg1;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)alreadylocked_setPrecopiedValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
 - (id)alreadylocked_createObserverUpdateMessageWithOperation:(int)arg1 forRole:(int *)arg2;
 - (int)alreadylocked_updateObservingRemoteChanges;
+- (id)copyVolatileSourceWithContainingPreferences:(id)arg1;
 - (id)initWithContainingPreferences:(id)arg1;
 
 @end

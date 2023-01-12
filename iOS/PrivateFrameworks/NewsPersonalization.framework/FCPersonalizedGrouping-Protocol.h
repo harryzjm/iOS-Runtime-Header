@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMapTable;
+@class FCMapTable, NSArray;
 
 @protocol FCPersonalizedGrouping
-- (NSArray *)bestOfGroupFromFeedItems:(NSArray *)arg1 scoreProfiles:(NSMapTable *)arg2 configurationSet:(long long)arg3;
+- (NSArray *)bestOfGroupFromFeedItems:(NSArray *)arg1 scoreProfiles:(FCMapTable *)arg2 configurationSet:(long long)arg3;
 - (NSArray *)bestOfGroupFromHeadlines:(NSArray *)arg1 configurationSet:(long long)arg2;
 @end
 

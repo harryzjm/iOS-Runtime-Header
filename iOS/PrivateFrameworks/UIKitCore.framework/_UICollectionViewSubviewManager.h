@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
+@protocol _UICollectionViewSubviewManagerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewSubviewManager : NSObject
@@ -14,6 +15,8 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_cells;
     NSMutableDictionary *_supplementaries;
     NSMutableDictionary *_decorations;
+    _Bool _indexPathValidationEnabled;
+    id <_UICollectionViewSubviewManagerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;

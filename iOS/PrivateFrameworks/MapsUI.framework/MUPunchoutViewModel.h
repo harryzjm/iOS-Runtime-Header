@@ -6,18 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, UIMenu;
 
 __attribute__((visibility("hidden")))
 @interface MUPunchoutViewModel : NSObject
 {
-    NSString *_vendorString;
-    NSString *_moreText;
+    NSString *_symbolName;
+    NSString *_punchoutText;
+    UIMenu *_menu;
 }
 
++ (id)viewModelForFullScreenGallery;
++ (id)viewModelForAddPhotos;
++ (id)viewModelForVendorName:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *moreText; // @synthesize moreText=_moreText;
-@property(retain, nonatomic) NSString *vendorString; // @synthesize vendorString=_vendorString;
+@property(retain, nonatomic) UIMenu *menu; // @synthesize menu=_menu;
+@property(retain, nonatomic) NSString *punchoutText; // @synthesize punchoutText=_punchoutText;
+@property(retain, nonatomic) NSString *symbolName; // @synthesize symbolName=_symbolName;
 
 @end
 

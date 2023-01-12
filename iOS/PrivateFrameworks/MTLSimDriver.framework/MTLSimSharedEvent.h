@@ -6,14 +6,11 @@
 
 #import <Metal/_MTLObjectWithLabel.h>
 
-#import <MTLSimDriver/MTLSharedEvent-Protocol.h>
-#import <MTLSimDriver/MTLSimEvent-Protocol.h>
-
 @class MTLSimDevice, NSString;
 @protocol MTLDevice;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimSharedEvent : _MTLObjectWithLabel <MTLSimEvent, MTLSharedEvent>
+@interface MTLSimSharedEvent : _MTLObjectWithLabel
 {
     MTLSimDevice *_device;
     unsigned int _reference;

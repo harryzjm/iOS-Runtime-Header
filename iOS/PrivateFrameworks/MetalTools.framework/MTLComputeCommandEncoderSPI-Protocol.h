@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MetalTools/MTLCommandEncoderSPI-Protocol.h>
 #import <MetalTools/MTLComputeCommandEncoder-Protocol.h>
 
 @class NSData;
 @protocol MTLBuffer, MTLResourceGroupSPI;
 
-@protocol MTLComputeCommandEncoderSPI <MTLComputeCommandEncoder>
+@protocol MTLComputeCommandEncoderSPI <MTLCommandEncoderSPI, MTLComputeCommandEncoder>
+- (void)setThreadgroupPackingDisabled:(_Bool)arg1;
 - (NSData *)newKernelDebugInfo;
 
 @optional

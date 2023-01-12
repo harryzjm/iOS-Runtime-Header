@@ -6,10 +6,8 @@
 
 #import <UIKit/UIViewFloatAnimatableProperty.h>
 
-#import <SharingUI/UIViewSpringAnimationBehaviorDescribing-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SFFloatSpringProperty : UIViewFloatAnimatableProperty <UIViewSpringAnimationBehaviorDescribing>
+@interface SFFloatSpringProperty : UIViewFloatAnimatableProperty
 {
     double _dampingRatio;
     double _response;

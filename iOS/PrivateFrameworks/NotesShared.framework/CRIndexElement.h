@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NotesShared/NSCopying-Protocol.h>
-
 @class NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface CRIndexElement : NSObject <NSCopying>
+@interface CRIndexElement : NSObject
 {
     NSUUID *_replica;
     long long _integer;
@@ -22,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long integer; // @synthesize integer=_integer;
 @property(retain, nonatomic) NSUUID *replica; // @synthesize replica=_replica;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hashValue;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (long long)compare:(id)arg1;
 - (id)initWithInteger:(long long)arg1 replica:(id)arg2;

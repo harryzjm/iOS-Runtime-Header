@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Rapport/RPDaemonConnection-Protocol.h>
-
 @class NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface RPCompanionLinkClientDaemonConnection_XPC : NSObject <RPDaemonConnection>
+@interface RPCompanionLinkClientDaemonConnection_XPC : NSObject
 {
     NSXPCConnection *_cnx;
 }

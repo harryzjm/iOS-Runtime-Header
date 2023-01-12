@@ -6,12 +6,10 @@
 
 #import <HMFoundation/HMFOperation.h>
 
-#import <HomeAI/HMFLogging-Protocol.h>
-
 @class HMIFeedbackSession, NSData, NSDictionary, NSMutableArray, NSSet, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface HMIFeedbackSubmitClipOperation : HMFOperation <HMFLogging>
+@interface HMIFeedbackSubmitClipOperation : HMFOperation
 {
     HMIFeedbackSession *_feedbackSession;
     NSUUID *_cameraProfileUUID;

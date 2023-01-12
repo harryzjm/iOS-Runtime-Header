@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <JetEngine/_TtP9JetEngineP33_D4732CF97A29FCDEA1720AC85A78D8C720JSPlistObjectExports_-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _TtC9JetEngine13JSPlistObject : NSObject <_TtP9JetEngineP33_D4732CF97A29FCDEA1720AC85A78D8C720JSPlistObjectExports_>
+@interface _TtC9JetEngine13JSPlistObject : NSObject
 {
 }
 

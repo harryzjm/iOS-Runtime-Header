@@ -25,6 +25,7 @@
 @property(readonly, copy, nonatomic) NSString *contentSizeCategory;
 @property(readonly, nonatomic) _Bool RTL;
 @property(readonly, nonatomic) double screenScale;
+@property(readonly, nonatomic) double userInfoViewHeight;
 @property(readonly, nonatomic) struct UIEdgeInsets edgeInsets;
 @property(readonly, nonatomic) struct CGSize containerSize;
 @end

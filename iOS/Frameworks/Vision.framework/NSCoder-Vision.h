@@ -21,14 +21,14 @@
 - (void)vn_encodeSize:(struct CGSize)arg1 forKey:(id)arg2;
 - (struct CGPoint)vn_decodePointForKey:(id)arg1;
 - (void)vn_encodePoint:(struct CGPoint)arg1 forKey:(id)arg2;
-- (CDStruct_e83c9415)vn_decodeTimeRangeForKey:(id)arg1;
-- (void)vn_encodeTimeRange:(CDStruct_e83c9415)arg1 forKey:(id)arg2;
+- (CDStruct_5c5366e1)vn_decodeTimeRangeForKey:(id)arg1;
+- (void)vn_encodeTimeRange:(CDStruct_5c5366e1)arg1 forKey:(id)arg2;
 - (MISSING_TYPE *)vn_decodeSimdFloat3ForKey:(id)arg1;
 - (void)vn_encodeSimdFloat3:(id)arg1 forKey: /* Error: Ran out of types for this method. */;
 - (CDStruct_f1db2b5e)vn_decode4x4MatrixForKey:(id)arg1;
 - (void)vn_encode4x4Matrix:(CDStruct_f1db2b5e)arg1 forKey:(id)arg2;
-- (CDStruct_8e0628e6)vn_decode3x3MatrixForKey:(id)arg1;
-- (void)vn_encode3x3Matrix:(CDStruct_8e0628e6)arg1 forKey:(id)arg2;
+- (CDStruct_d80e62f2)vn_decode3x3MatrixForKey:(id)arg1;
+- (void)vn_encode3x3Matrix:(CDStruct_d80e62f2)arg1 forKey:(id)arg2;
 - (struct CGAffineTransform)vn_decodeCGAffineTransformForKey:(id)arg1;
 - (void)vn_encodeCGAffineTransform:(struct CGAffineTransform)arg1 forKey:(id)arg2;
 - (unsigned int)vn_decodeCodingVersionForKey:(id)arg1;

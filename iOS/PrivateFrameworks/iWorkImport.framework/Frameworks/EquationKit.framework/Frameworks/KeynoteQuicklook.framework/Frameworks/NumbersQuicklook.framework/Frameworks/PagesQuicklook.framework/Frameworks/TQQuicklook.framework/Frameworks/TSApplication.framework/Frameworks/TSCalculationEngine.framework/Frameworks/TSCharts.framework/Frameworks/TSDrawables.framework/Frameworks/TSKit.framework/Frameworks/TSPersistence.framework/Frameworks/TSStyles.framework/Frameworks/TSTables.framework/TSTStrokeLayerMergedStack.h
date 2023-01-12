@@ -20,6 +20,7 @@
     TSTMutableStrokeLayer *_spillMajorStrokeLayer;
 }
 
++ (void)enumerateWidthsInLayers:(void *)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)mergeLeftStrokes:(id)arg1 withRightStrokes:(id)arg2;
 + (id)mergeTopStrokes:(id)arg1 withBottomStrokes:(id)arg2;
 - (void).cxx_destruct;
@@ -41,8 +42,7 @@
 - (void)invalidateSpillStrokes;
 - (id)portalledStrokeLayer;
 - (unsigned long long)count;
-- (id)p_strokeLayerEnumeration;
-- (id)initWithReferenceOfMajorStrokes:(id)arg1 andMinorStrokes:(id)arg2;
+- (vector_7cb30fb3)p_strokeLayerVector;
 - (id)initWithCopyOfMajorStrokes:(id)arg1 andMinorStrokes:(id)arg2;
 
 @end

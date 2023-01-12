@@ -6,11 +6,9 @@
 
 #import <IDSFoundation/IDSBaseMessage.h>
 
-#import <FTServices/NSCopying-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface FTGetRegionMetadataMessage : IDSBaseMessage <NSCopying>
+@interface FTGetRegionMetadataMessage : IDSBaseMessage
 {
     NSString *_language;
     NSDictionary *_responseRegionInformation;

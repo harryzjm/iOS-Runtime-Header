@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDateInterval.h>
 
-#import <HealthToolbox/WDDataListDataObjectSource-Protocol.h>
-
 @class NSString;
 
-@interface NSDateInterval (WDDataListDataObjectSource) <WDDataListDataObjectSource>
+@interface NSDateInterval (WDDataListDataObjectSource)
 - (id)device;
 - (id)source;
 

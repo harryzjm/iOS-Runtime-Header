@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIStructuredThemeStore.h"
+
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CUIMutableStructuredThemeStore
+@interface CUIMutableStructuredThemeStore : CUIStructuredThemeStore
 {
     NSString *_identifier;
     NSMutableDictionary *_memoryStore;
@@ -22,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (id)nameForAppearanceIdentifier:(unsigned short)arg1;
 - (unsigned short)appearanceIdentifierForName:(id)arg1;
 - (id)defaultAppearanceName;
+- (long long)deploymentPlatform;
+- (id)deploymentPlatformString;
 - (id)renditionInfoForIdentifier:(unsigned short)arg1;
 - (void)clearRenditionCache;
 - (void)removeImagesNamed:(id)arg1;

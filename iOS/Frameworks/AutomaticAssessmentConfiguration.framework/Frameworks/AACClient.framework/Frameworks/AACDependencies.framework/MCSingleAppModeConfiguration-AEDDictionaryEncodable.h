@@ -6,11 +6,9 @@
 
 #import <ManagedConfiguration/MCSingleAppModeConfiguration.h>
 
-#import <AACDependencies/AEDDictionaryEncodable-Protocol.h>
-
 @class NSDictionary;
 
-@interface MCSingleAppModeConfiguration (AEDDictionaryEncodable) <AEDDictionaryEncodable>
+@interface MCSingleAppModeConfiguration (AEDDictionaryEncodable)
 @property(readonly, copy, nonatomic) NSDictionary *dictionaryValue;
 @end
 

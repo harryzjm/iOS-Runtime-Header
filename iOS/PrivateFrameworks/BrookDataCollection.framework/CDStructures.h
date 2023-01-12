@@ -4,25 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct AudioStreamBasicDescription {
-    double mSampleRate;
-    unsigned int mFormatID;
-    unsigned int mFormatFlags;
-    unsigned int mBytesPerPacket;
-    unsigned int mFramesPerPacket;
-    unsigned int mBytesPerFrame;
-    unsigned int mChannelsPerFrame;
-    unsigned int mBitsPerChannel;
-    unsigned int mReserved;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-

@@ -11,9 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface _UIDatePickerDataModel : NSObject
 {
+    NSLocale *_effectiveLocale;
     NSCalendar *_effectiveCalendar;
+    _Bool _usingLocaleCalendar;
     _UIDatePickerChineseCalendar *_chineseWrapperCalendar;
-    _UIDatePickerDateRange *_dateRange;
     _Bool _roundsToMinuteInterval;
     long long _datePickerStyle;
     long long _datePickerMode;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSTimeZone *_timeZone;
     NSDate *_date;
     NSDateComponents *_lastSelectedDateComponents;
+    _UIDatePickerDateRange *_dateRange;
     long long _minuteInterval;
     NSString *_customFontDesign;
 }
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *customFontDesign; // @synthesize customFontDesign=_customFontDesign;
 @property(nonatomic) _Bool roundsToMinuteInterval; // @synthesize roundsToMinuteInterval=_roundsToMinuteInterval;
 @property(nonatomic) long long minuteInterval; // @synthesize minuteInterval=_minuteInterval;
+@property(readonly, nonatomic) _UIDatePickerDateRange *dateRange; // @synthesize dateRange=_dateRange;
 @property(retain, nonatomic) NSDateComponents *lastSelectedDateComponents; // @synthesize lastSelectedDateComponents=_lastSelectedDateComponents;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(retain, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
@@ -48,7 +51,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSCalendar *formattingCalendar;
 @property(readonly, nonatomic) NSCalendar *effectiveCalendar;
 @property(readonly, nonatomic) NSLocale *effectiveLocale;
-- (void)_setupDerivedCalendars;
+- (void)_setupDerivedLocaleAndCalendars;
 - (id)init;
 
 @end

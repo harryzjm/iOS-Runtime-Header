@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VUIVPPAManager : NSObject
 {
+    _Bool _alreadyInProgress;
     VUIAccessViewController *_accessViewController;
 }
 
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)_isReminderDue:(id)arg1 reminderInterval:(double)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool alreadyInProgress; // @synthesize alreadyInProgress=_alreadyInProgress;
 @property(retain, nonatomic) VUIAccessViewController *accessViewController; // @synthesize accessViewController=_accessViewController;
 - (id)_rootViewController;
 - (id)_getEligibleBulkChannels;
@@ -29,8 +31,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isVPPAPromptDueForConfig:(id)arg1;
 - (_Bool)_isChannelVPPAPromptEligible:(id)arg1;
 - (void)_fetchConfigurationAndPresentVPPAIfRequired:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)reloadConfigurationAfterVPPAChange;
 - (void)startVPPAConsentFlowForDeeplink:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startVPPAConsentFlow:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)init;
 
 @end
 

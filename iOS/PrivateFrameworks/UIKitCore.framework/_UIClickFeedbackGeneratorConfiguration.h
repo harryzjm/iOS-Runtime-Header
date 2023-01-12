@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIFeedbackGeneratorUserInteractionDrivenConfiguration.h"
+
 @class _UIFeedback;
 @protocol _UIFeedbackDiscretePlayable;
 
 __attribute__((visibility("hidden")))
-@interface _UIClickFeedbackGeneratorConfiguration
+@interface _UIClickFeedbackGeneratorConfiguration : _UIFeedbackGeneratorUserInteractionDrivenConfiguration
 {
     _UIFeedback<_UIFeedbackDiscretePlayable> *_clickDownFeedback;
     _UIFeedback<_UIFeedbackDiscretePlayable> *_clickDownAudioFeedback;

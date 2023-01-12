@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIDynamicReferenceSystem-Protocol.h>
-
 @class NSString, UIDynamicAnimator, UIDynamicItemBehavior, UIPushBehavior, _UIDynamicTransformer, _UISpringBehavior;
 
 __attribute__((visibility("hidden")))
-@interface _UIInteractionEffect_deprecated : NSObject <_UIDynamicReferenceSystem>
+@interface _UIInteractionEffect_deprecated : NSObject
 {
     UIDynamicAnimator *_animator;
     _UIDynamicTransformer *_transformer;

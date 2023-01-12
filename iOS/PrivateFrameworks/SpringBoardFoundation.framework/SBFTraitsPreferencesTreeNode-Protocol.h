@@ -16,8 +16,8 @@
 @property(retain, nonatomic) NSArray *children;
 @property(nonatomic) __weak id <SBFTraitsPreferencesTreeNode> parent;
 @property(readonly, copy, nonatomic) SBFTraitsParticipant *participant;
-@property(readonly, copy, nonatomic) NSString *role;
 @property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
+@property(readonly, copy, nonatomic) NSString *role;
 - (id <SBFTraitsSettingsUpdating>)settingsUpdater;
 - (void)addChild:(id <SBFTraitsPreferencesTreeNode>)arg1;
 @end

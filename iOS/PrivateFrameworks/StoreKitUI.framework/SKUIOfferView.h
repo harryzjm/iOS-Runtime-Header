@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIItemOfferButtonDelegate-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSMapTable, NSMutableArray, NSNumber, NSString, UIButton;
 @protocol SKUIOfferViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIOfferView <SKUIItemOfferButtonDelegate, SKUIViewElementView>
+@interface SKUIOfferView
 {
     _Bool _showingConfirmation;
     _Bool _compactModeEnabled;

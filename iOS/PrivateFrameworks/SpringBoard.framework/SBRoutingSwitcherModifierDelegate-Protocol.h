@@ -16,6 +16,7 @@
 - (SBSwitcherModifier *)scrollModifierForRoutingModifier:(SBRoutingSwitcherModifier *)arg1;
 - (struct CGRect)routingModifier:(SBRoutingSwitcherModifier *)arg1 switcherViewBoundsForModifier:(SBSwitcherModifier *)arg2;
 - (struct CGRect)routingModifier:(SBRoutingSwitcherModifier *)arg1 containerViewBoundsForModifier:(SBSwitcherModifier *)arg2;
+- (NSArray *)routingModifier:(SBRoutingSwitcherModifier *)arg1 filteredContinuousExposeIdentifiers:(NSArray *)arg2 forModifier:(SBSwitcherModifier *)arg3;
 - (SBSwitcherModifier *)routingModifier:(SBRoutingSwitcherModifier *)arg1 modifierForAppLayout:(SBAppLayout *)arg2;
 - (NSArray *)routingModifier:(SBRoutingSwitcherModifier *)arg1 filteredAppLayouts:(NSArray *)arg2 forModifier:(SBSwitcherModifier *)arg3;
 - (SBSwitcherModifierEvent *)routingModifier:(SBRoutingSwitcherModifier *)arg1 event:(SBSwitcherModifierEvent *)arg2 forModifier:(SBSwitcherModifier *)arg3;

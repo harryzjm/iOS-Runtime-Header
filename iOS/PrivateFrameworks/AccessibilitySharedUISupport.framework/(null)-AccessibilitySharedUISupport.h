@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AccessibilitySharedUISupport/AXChart-Protocol.h>
-
 @class AXChartDescriptor;
 
-@interface (null) (AccessibilitySharedUISupport) <AXChart>
+@interface (null) (AccessibilitySharedUISupport)
 @property(nonatomic, retain) AXChartDescriptor *accessibilityChartDescriptor;
 @end
 

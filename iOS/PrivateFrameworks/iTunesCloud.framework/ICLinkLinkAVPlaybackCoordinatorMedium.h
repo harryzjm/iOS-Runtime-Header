@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iTunesCloud/AVPlaybackCoordinationMediumDelegate-Protocol.h>
-
 @class AVPlayerPlaybackCoordinator, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICLinkLinkAVPlaybackCoordinatorMedium <AVPlaybackCoordinationMediumDelegate>
+@interface ICLinkLinkAVPlaybackCoordinatorMedium
 {
     AVPlayerPlaybackCoordinator *_playbackCoordinator;
 }
@@ -25,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)handleNewTransportControlStateDictionary:(id)arg1;
 - (void)handleNewParticipantStateDictionary:(id)arg1;
 - (void)_playbackCoordinatorDidIssueCommandToPlaybackObjectNotification:(id)arg1;
+- (_Bool)isCoordinatorSuspended;
 - (id)initWithPlaybackCoordinator:(id)arg1 liveLink:(id)arg2;
 
 // Remaining properties

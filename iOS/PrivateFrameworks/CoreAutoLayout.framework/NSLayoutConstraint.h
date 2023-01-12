@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSISConstraint-Protocol.h>
-
 @class NSLayoutAnchor, NSSet, NSString, _NSConstraintDescriptionLayoutRuleNode;
 
-@interface NSLayoutConstraint : NSObject <NSISConstraint>
+@interface NSLayoutConstraint : NSObject
 {
     id _container;
     id _firstAnchor;

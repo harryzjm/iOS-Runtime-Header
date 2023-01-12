@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreAudioKit/_TtP12CoreAudioKit27CAAUViewParameterDataSource_-Protocol.h>
-
 @class NSNumberFormatter, _TtC12CoreAudioKit14CAAUEQViewBase, _TtC12CoreAudioKit15CAAUEQGraphView, _TtC12CoreAudioKit16CAAUEQHeaderView;
 
 __attribute__((visibility("hidden")))
-@interface AUEQViewControllerBase <_TtP12CoreAudioKit27CAAUViewParameterDataSource_>
+@interface AUEQViewControllerBase
 {
     _TtC12CoreAudioKit16CAAUEQHeaderView *headerView;
     _TtC12CoreAudioKit15CAAUEQGraphView *graphView;
@@ -31,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int param1; // @synthesize param1=_param1;
 @property struct AudioUnitFrequencyResponseBin *frequencyData; // @synthesize frequencyData=_frequencyData;
 - (void)priv_eventListener:(void *)arg1 event:(const struct AudioUnitEvent *)arg2 value:(float)arg3;
+- (id)accessibilityValueFor:(unsigned int)arg1;
 - (float)valueFor:(unsigned int)arg1;
 - (const struct CGPath *)curveIn:(struct CGRect)arg1;
 - (long long)widthTypeFor:(unsigned int)arg1;

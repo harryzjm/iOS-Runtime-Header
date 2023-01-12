@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKUnit.h"
+
 @class _HKDimension, _HKFactorization;
 
 __attribute__((visibility("hidden")))
-@interface _HKCompoundUnit
+@interface _HKCompoundUnit : HKUnit
 {
     _HKFactorization *_baseUnits;
     _HKDimension *_dimension;

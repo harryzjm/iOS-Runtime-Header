@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
-
-@interface TSTTableTileRowInfo : NSObject <TSTCompatibilityVersionProviding>
+@interface TSTTableTileRowInfo : NSObject
 {
     struct TSTTableTileRowBuffer _currentData;
     struct TSTTableTileRowBuffer _preBNCData;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVLoggingIdentifier-Protocol.h>
-
 @class AVAssetLoggingIdentifierInternal, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetLoggingIdentifier : NSObject <AVLoggingIdentifier>
+@interface AVAssetLoggingIdentifier : NSObject
 {
     AVAssetLoggingIdentifierInternal *_priv;
 }

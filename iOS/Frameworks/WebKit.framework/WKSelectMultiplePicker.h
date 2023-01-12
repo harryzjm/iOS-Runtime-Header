@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <WebKit/WKFormControl-Protocol.h>
-
 @class NSString, WKContentView;
 
 __attribute__((visibility("hidden")))
-@interface WKSelectMultiplePicker : NSObject <UIPopoverPresentationControllerDelegate, WKFormControl>
+@interface WKSelectMultiplePicker : NSObject
 {
     WKContentView *_view;
     struct RetainPtr<UINavigationController> _navigationController;

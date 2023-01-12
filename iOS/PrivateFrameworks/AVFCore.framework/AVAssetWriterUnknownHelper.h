@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canAddInput:(id)arg1 exceptionReason:(id *)arg2;
 - (void)setSinglePassMediaDataSize:(long long)arg1;
 - (void)setSinglePassFileSize:(long long)arg1;
+- (void)setUsesVirtualCaptureCard:(_Bool)arg1;
 - (void)setProducesCombinableFragments:(_Bool)arg1;
 - (void)setInitialMovieFragmentSequenceNumber:(long long)arg1;
 - (void)setOutputFileTypeProfile:(id)arg1;

@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface CATIDSServiceConnectionInvitation : NSObject
 {
     NSUUID *_connectionIdentifier;
-    id <CATCancelable> _networkPowerAssertion;
+    id <CATCancelable> _assertion;
     NSString *_senderAppleID;
     NSString *_senderAddress;
     unsigned long long _messagingVersion;
@@ -25,10 +25,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long messagingVersion; // @synthesize messagingVersion=_messagingVersion;
 @property(readonly, copy, nonatomic) NSString *senderAddress; // @synthesize senderAddress=_senderAddress;
 @property(readonly, copy, nonatomic) NSString *senderAppleID; // @synthesize senderAppleID=_senderAppleID;
-@property(readonly, nonatomic) id <CATCancelable> networkPowerAssertion; // @synthesize networkPowerAssertion=_networkPowerAssertion;
+@property(readonly, nonatomic) id <CATCancelable> assertion; // @synthesize assertion=_assertion;
 @property(readonly, nonatomic) NSUUID *connectionIdentifier; // @synthesize connectionIdentifier=_connectionIdentifier;
-- (id)initWithConnectionIdentifier:(id)arg1 senderAppleID:(id)arg2 senderAddress:(id)arg3 networkPowerAssertion:(id)arg4 messagingVersion:(unsigned long long)arg5 userInfo:(id)arg6;
-- (id)initWithSenderAppleID:(id)arg1 senderAddress:(id)arg2 networkPowerAssertion:(id)arg3 messagingVersion:(unsigned long long)arg4 userInfo:(id)arg5;
+- (id)initWithConnectionIdentifier:(id)arg1 senderAppleID:(id)arg2 senderAddress:(id)arg3 assertion:(id)arg4 messagingVersion:(unsigned long long)arg5 userInfo:(id)arg6;
+- (id)initWithSenderAppleID:(id)arg1 senderAddress:(id)arg2 assertion:(id)arg3 messagingVersion:(unsigned long long)arg4 userInfo:(id)arg5;
 
 @end
 

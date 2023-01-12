@@ -6,12 +6,9 @@
 
 #import <PhotosUICore/PXFeatureSpecManager.h>
 
-@class MISSING_TYPE;
-
 __attribute__((visibility("hidden")))
 @interface _TtC12PhotosUIApps41PUXStoryColorGradeEditorLayoutSpecManager : PXFeatureSpecManager
 {
-    MISSING_TYPE *sheetSize;
 }
 
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;

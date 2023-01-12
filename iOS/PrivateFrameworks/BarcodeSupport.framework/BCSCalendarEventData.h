@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSParsedDataPrivate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSCalendarEventData : NSObject <BCSParsedDataPrivate>
+@interface BCSCalendarEventData : NSObject
 {
     NSString *_icsString;
 }

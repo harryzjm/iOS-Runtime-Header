@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLValue-Protocol.h>
-
 @class NSString;
 
-@interface TMLValue : NSObject <TMLValue>
+@interface TMLValue : NSObject
 {
     id _value;
     unsigned long long _valueType;

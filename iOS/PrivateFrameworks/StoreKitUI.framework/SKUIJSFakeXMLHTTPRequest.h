@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIJSFakeXMLHTTPRequest-Protocol.h>
-
 @class IKJSXMLDocument, NSData, NSDictionary, NSHTTPURLResponse, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSFakeXMLHTTPRequest : IKJSObject <SKUIJSFakeXMLHTTPRequest>
+@interface SKUIJSFakeXMLHTTPRequest : IKJSObject
 {
     NSData *_data;
     NSDictionary *_performanceMetrics;

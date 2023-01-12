@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKit/UIButton.h>
 
 @class UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface CompletionArrowView : UIImageView
+@interface CompletionArrowView : UIButton
 {
     UITableViewCell *_parentCell;
 }

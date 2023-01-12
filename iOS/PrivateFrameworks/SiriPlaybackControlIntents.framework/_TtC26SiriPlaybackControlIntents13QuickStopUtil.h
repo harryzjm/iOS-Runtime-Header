@@ -12,6 +12,9 @@
 {
     MISSING_TYPE *flowFactory;
     MISSING_TYPE *contextProvider;
+    MISSING_TYPE *deviceState;
+    MISSING_TYPE *playbackController;
+    MISSING_TYPE *featureFlagProvider;
 }
 
 @end

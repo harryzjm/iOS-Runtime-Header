@@ -10,5 +10,8 @@
 
 @protocol _UIContentView <NSObject>
 @property(copy, nonatomic) id <_UIContentViewConfiguration> configuration;
+
+@optional
+@property(readonly, nonatomic) _Bool _preventFocus;
 @end
 

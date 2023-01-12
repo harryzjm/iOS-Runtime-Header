@@ -45,6 +45,7 @@
 - (id)tsu_newRangesOfEscapedCharactersInNumberFormatPattern;
 - (_Bool)tsu_isNumberFormatPattern;
 - (void)tsu_appendJSONStringToString:(id)arg1;
+- (id)tsu_stringWithFirstStrongIsolation;
 - (id)tsu_stringWithoutBidiControls;
 - (id)tsu_stringWithNormalizedQuotationMarks;
 - (id)tsu_stringWithNormalizedHyphens;
@@ -69,6 +70,9 @@
 - (id)tsu_stringByTrimmingCharactersInSetFromFront:(id)arg1;
 - (id)tsu_stringWithPathRelativeTo:(id)arg1 allowBacktracking:(_Bool)arg2;
 - (id)tsu_stringWithPathRelativeTo:(id)arg1;
+- (id)tsu_substringWithTrailingQuoteIfNeededByTruncatingToSize:(struct CGSize)arg1 forAttributes:(id)arg2;
+- (id)tsu_substringByTruncatingToSize:(struct CGSize)arg1 forAttributes:(id)arg2;
+- (id)tsu_substringWithComposedCharacterSequencesTruncatedToGlyphCount:(unsigned long long)arg1;
 - (id)tsu_substringWithComposedCharacterSequencesToFileSystemLength:(unsigned long long)arg1;
 - (id)tsu_substringWithComposedCharacterSequencesTruncatedToLength:(unsigned long long)arg1;
 - (id)tsu_stringWithTrimmedWhitespace;

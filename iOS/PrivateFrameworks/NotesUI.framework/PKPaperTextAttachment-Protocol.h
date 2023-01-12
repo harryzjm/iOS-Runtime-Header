@@ -16,6 +16,7 @@
 @property(readonly, nonatomic) NSURL *_nonEncryptedContentCRContextURL;
 - (struct CGRect)_paperBoundsHint;
 - (struct CGSize)_paperSizeHint;
+- (void)_paperDidChangeLocally;
 - (void)_linkCanvasElementsDidChange;
 @end
 

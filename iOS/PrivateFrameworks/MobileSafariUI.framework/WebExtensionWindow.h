@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/WBSWebExtensionWindow-Protocol.h>
-
 @class BrowserController, NSArray, NSString;
 @protocol WBSWebExtensionTab;
 
 __attribute__((visibility("hidden")))
-@interface WebExtensionWindow : NSObject <WBSWebExtensionWindow>
+@interface WebExtensionWindow : NSObject
 {
     _Bool _isPrivateWindow;
     double _idForWebExtensions;

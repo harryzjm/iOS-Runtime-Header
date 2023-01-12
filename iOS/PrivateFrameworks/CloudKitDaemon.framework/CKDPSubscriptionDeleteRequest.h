@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPIdentifier;
 
-@interface CKDPSubscriptionDeleteRequest : PBRequest <NSCopying>
+@interface CKDPSubscriptionDeleteRequest : PBRequest
 {
     CKDPIdentifier *_identifier;
 }

@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI16IconWithNameCellCN.h"
+
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI35ProfileNavigationCollectionViewCell
+@interface _TtC18HealthExperienceUI35ProfileNavigationCollectionViewCell : _$s18HealthExperienceUI16IconWithNameCellCN
 {
 }
 

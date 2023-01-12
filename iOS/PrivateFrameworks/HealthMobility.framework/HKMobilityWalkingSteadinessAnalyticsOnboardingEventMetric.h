@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthMobility/HKMobilityAnalyticsEventMetric-Protocol.h>
-
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HKMobilityWalkingSteadinessAnalyticsOnboardingEventMetric : NSObject <HKMobilityAnalyticsEventMetric>
+@interface HKMobilityWalkingSteadinessAnalyticsOnboardingEventMetric : NSObject
 {
     _Bool _improveHealthAndActivityAllowed;
     NSString *_step;

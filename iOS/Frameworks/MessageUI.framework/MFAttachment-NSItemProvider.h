@@ -6,11 +6,9 @@
 
 #import <Message/MFAttachment.h>
 
-#import <MessageUI/NSItemProviderWriting-Protocol.h>
+@class NSArray, NSString, UTType;
 
-@class NSArray, NSString;
-
-@interface MFAttachment (NSItemProvider) <NSItemProviderWriting>
+@interface MFAttachment (NSItemProvider)
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)attachmentElementHTMLStringWithAttributes:(id)arg1;
 + (_Bool)_isPDF:(id)arg1;
@@ -49,9 +47,10 @@
 - (void)compressContentsWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isContentCompressed;
 @property(readonly, nonatomic) _Bool isRestrictedMIMEType;
-@property(readonly, nonatomic) NSString *contentType;
+@property(readonly, nonatomic) NSString *contentTypeIdentifier;
+@property(readonly, nonatomic) UTType *contentType;
 @property(readonly, nonatomic) NSString *className;
-- (id)_contentTypeByStrippingZipIfNeeded:(_Bool)arg1;
+- (id)_contentTypeIdentifierByStrippingZipIfNeeded:(_Bool)arg1;
 - (id)passWithError:(id *)arg1;
 - (_Bool)isPass;
 

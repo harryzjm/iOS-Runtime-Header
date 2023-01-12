@@ -11,6 +11,9 @@
 @protocol SBBacklightControllerObserver <NSObject>
 
 @optional
+- (void)backlightController:(SBBacklightController *)arg1 didUpdateDigitizerDisabled:(_Bool)arg2 tapToWakeEnabled:(_Bool)arg3;
+- (void)backlightController:(SBBacklightController *)arg1 didTransitionToBacklightState:(long long)arg2 source:(long long)arg3;
+- (void)backlightController:(SBBacklightController *)arg1 willTransitionToBacklightState:(long long)arg2 source:(long long)arg3;
 - (void)backlightController:(SBBacklightController *)arg1 didAnimateBacklightToFactor:(float)arg2 source:(long long)arg3;
 - (void)backlightController:(SBBacklightController *)arg1 willAnimateBacklightToFactor:(float)arg2 source:(long long)arg3;
 @end

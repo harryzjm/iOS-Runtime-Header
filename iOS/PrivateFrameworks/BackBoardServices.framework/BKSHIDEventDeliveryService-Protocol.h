@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSSet;
 
 @protocol BKSHIDEventDeliveryService <NSObject>
+- (void)setBufferingPredicates:(NSSet *)arg1;
 - (void)setKeyCommandsRegistrations:(NSSet *)arg1;
 - (void)setDeferringRules:(NSArray *)arg1;
 - (void)setKeyCommandsDispatchingRules:(NSDictionary *)arg1;

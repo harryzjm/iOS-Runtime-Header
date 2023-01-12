@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/NSCoding-Protocol.h>
-#import <AnnotationKit/NSCopying-Protocol.h>
-
-@interface AKTSDBezierPath : NSObject <NSCopying, NSCoding>
+@interface AKTSDBezierPath : NSObject
 {
     long long sfr_elementCount;
     long long sfr_elementMax;

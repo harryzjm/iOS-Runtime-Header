@@ -7,13 +7,14 @@
 #import <IMAssistantCore/NSObject-Protocol.h>
 
 @class IMChat, NSArray, NSCache;
-@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantContactsDataSource, IMAssistantCoreTelephonySubscriptionsDataSource, IMAssistantFileManager, IMFileTransferCenter, IMLocationManager;
+@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantCommSafetyManager, IMAssistantContactsDataSource, IMAssistantCoreTelephonySubscriptionsDataSource, IMAssistantFileManager, IMFileTransferCenter, IMLocationManager;
 
 @protocol IMAssistantMessageHandlerDataSource <NSObject>
 @property(readonly, nonatomic) _Bool isInternationalSpamFilteringEnabled;
 @property(readonly, nonatomic) NSCache *contactIdentifierToUnifiedContactIdentifierCache;
 @property(readonly, nonatomic) NSCache *spiHandleToPersonCache;
 @property(readonly, nonatomic) NSCache *handleToContactIdentifierCache;
+@property(readonly, nonatomic) id <IMAssistantCommSafetyManager> commSafetyDataSource;
 @property(readonly, nonatomic) id <IMFileTransferCenter> fileTransferCenterDataSource;
 @property(readonly, nonatomic) id <IMAssistantFileManager> fileManagerDataSource;
 @property(readonly, nonatomic) id <IMLocationManager> locationManagerDataSource;

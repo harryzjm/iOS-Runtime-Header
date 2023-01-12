@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UIGestureRecognizerDelegatePrivate-Protocol.h>
-#import <StoreKitUI/UIScrollViewDelegate-Protocol.h>
-
 @class NSString, SKUIClientContext, SKUISlideshowImageScrollView, UIImage, UIView;
 @protocol SKUISlideshowItemViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUISlideshowItemViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegatePrivate>
+@interface SKUISlideshowItemViewController : UIViewController
 {
     SKUIClientContext *_clientContext;
     UIView *_loadingView;

@@ -12,7 +12,7 @@
 - (long long)hashedConversationID:(long long)arg1;
 - (long long)hashedMailboxID:(id <ECMailbox>)arg1;
 - (long long)hashedAccountID:(id <ECMailAccount>)arg1;
-- (CDStruct_5df41632)hashedSubject:(ECSubject *)arg1;
+- (CDStruct_76604f73)hashedSubject:(ECSubject *)arg1;
 - (long long)hashedContactIDForAddress:(NSString *)arg1;
 - (long long)hashedString:(NSString *)arg1;
 @end

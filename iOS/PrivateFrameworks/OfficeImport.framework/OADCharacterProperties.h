@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OfficeImport/OADEffectsParent-Protocol.h>
-
 @class NSArray, NSString, OADColor, OADFill, OADHyperlink, OADStroke;
 
 __attribute__((visibility("hidden")))
-@interface OADCharacterProperties <OADEffectsParent>
+@interface OADCharacterProperties
 {
     NSString *mLatinFont;
     NSString *mEastAsianFont;

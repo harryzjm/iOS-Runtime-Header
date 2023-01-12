@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDCategorizedPhotosFilter : PBCodable <NSCopying>
+@interface GEOPDCategorizedPhotosFilter : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -24,9 +22,13 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     int _count;
     int _startIndex;
+    _Bool _coverPhotoFirst;
+    _Bool _includeCoverPhoto;
     struct {
         unsigned int has_count:1;
         unsigned int has_startIndex:1;
+        unsigned int has_coverPhotoFirst:1;
+        unsigned int has_includeCoverPhoto:1;
         unsigned int read_unknownFields:1;
         unsigned int read_photoSizeFilters:1;
         unsigned int read_categoryId:1;

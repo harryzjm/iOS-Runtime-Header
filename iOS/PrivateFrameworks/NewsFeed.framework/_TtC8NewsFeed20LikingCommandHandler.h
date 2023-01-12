@@ -4,17 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC8NewsFeed20LikingCommandHandler : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC8NewsFeed20LikingCommandHandler : NSObject
 {
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *allLikedArticleIDs;
+    MISSING_TYPE *allDislikedArticleIDs;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

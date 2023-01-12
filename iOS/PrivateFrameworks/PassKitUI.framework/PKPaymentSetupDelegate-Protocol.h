@@ -18,5 +18,6 @@
 - (void)paymentSetupRequestPasscodeUpgradeForPasscodeUpgradeFlowController:(PKPasscodeUpgradeFlowController *)arg1 withVisibleViewController:(UIViewController *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)paymentSetupDidShowEligibilityIssue;
 - (void)paymentSetupDidShowError:(NSError *)arg1;
+- (void)paymentSetupDidFinish:(PKPaymentSetupNavigationController *)arg1 withError:(NSError *)arg2;
 @end
 

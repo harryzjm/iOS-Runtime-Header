@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ScreenTimeSettingsUI/STAllowanceDetailListControllerDelegate-Protocol.h>
-
 @class NSSet, NSString, PSSpecifier, STUsageItem;
 
 __attribute__((visibility("hidden")))
-@interface STAllowanceProgressGroupSpecifierProvider <STAllowanceDetailListControllerDelegate>
+@interface STAllowanceProgressGroupSpecifierProvider
 {
     NSSet *_budgetedIdentifiers;
     STUsageItem *_usageItem;

@@ -13,6 +13,8 @@
     MISSING_TYPE *didFallbackToServer;
     MISSING_TYPE *requestType;
     MISSING_TYPE *flowPluginInfo;
+    MISSING_TYPE *currentUserId;
+    MISSING_TYPE *emptyNFCU;
 }
 
 @end

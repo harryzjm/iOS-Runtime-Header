@@ -32,7 +32,5 @@
 - (void)loadProductWithPageDictionary:(NSDictionary *)arg1;
 - (void)finishStarRatingPromptWithRating:(NSNumber *)arg1;
 - (void)finishImmediately;
-- (void)applicationWillEnterForeground;
-- (void)applicationDidEnterBackground;
 @end
 

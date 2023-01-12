@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIThemeRendition.h"
+
 @class CUIStructuredThemeStore, NSMutableArray, TXRTextureInfo;
 
 __attribute__((visibility("hidden")))
-@interface _CUIThemeTextureRendition
+@interface _CUIThemeTextureRendition : CUIThemeRendition
 {
     CUIStructuredThemeStore *_sourceProvider;
     long long _textureInterpretation;

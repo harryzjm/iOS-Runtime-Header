@@ -6,12 +6,10 @@
 
 #import <Preferences/PSTableCell.h>
 
-#import <ScreenTimeSettingsUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UILongPressGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface STRotatingDisclosureCell : PSTableCell <UIGestureRecognizerDelegate>
+@interface STRotatingDisclosureCell : PSTableCell
 {
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
 }

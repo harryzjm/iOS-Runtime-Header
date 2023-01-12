@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/UITextFieldDelegate-Protocol.h>
-#import <UIKitCore/_UIPassthroughScrollInteractionDelegate-Protocol.h>
-
 @class NSString, UILabel, UILongPressGestureRecognizer, UITextField, UIView, _UIContentViewEditingConfiguration, _UIContentViewLabelConfiguration, _UIPassthroughScrollInteraction;
 
 __attribute__((visibility("hidden")))
-@interface _UIContentViewEditingController : NSObject <UITextFieldDelegate, UIGestureRecognizerDelegate, _UIPassthroughScrollInteractionDelegate>
+@interface _UIContentViewEditingController : NSObject
 {
     UILongPressGestureRecognizer *_longPressRecognizer;
     _UIPassthroughScrollInteraction *_passthroughInteraction;
@@ -40,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)textFieldShouldBeginEditing:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 @property(readonly, nonatomic, getter=isDisplayingEditedText) _Bool displayingEditedText;
-- (_Bool)makeTextInputFirstResponder;
+- (_Bool)makeTextInputFirstResponderWithInitialLayoutBlock:(CDUnknownBlockType)arg1;
 - (void)longPressRecognizerChanged:(id)arg1;
 - (void)dealloc;
 - (void)updateLabelConfiguration:(id)arg1 editingConfiguration:(id)arg2;

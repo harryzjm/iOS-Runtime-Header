@@ -70,7 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)resetHealthPrintCounters;
 - (void)healthPrintForServerStats;
 - (void)calculateInterCallbackDurationWithTime:(double)arg1;
-- (void)handleRemoteSessionStats:(CDStruct_63867230 *)arg1;
+- (void)handleRemoteSessionStats:(CDStruct_a6ed07b8 *)arg1;
 - (void)statsReceiveStatsPayload;
 - (void)triggerRateControlWithLocalSessionStats:(CDStruct_b5e1e8f2)arg1 time:(double)arg2 forUplink:(_Bool)arg3 forDownlink:(_Bool)arg4 fromVCRCExternalThread:(_Bool)arg5;
 - (unsigned short)translateTimestampFromMicro:(double)arg1;

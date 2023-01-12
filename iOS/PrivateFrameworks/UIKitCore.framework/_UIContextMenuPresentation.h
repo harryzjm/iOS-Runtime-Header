@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIClickPresentation.h"
+
 @class UIView, UIWindow, _UIPlatterView;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuPresentation
+@interface _UIContextMenuPresentation : _UIClickPresentation
 {
     _Bool _suppressInputViewDuringPresentation;
-    UIView *_presentationContainer;
     UIView *_dragContainer;
     _UIPlatterView *_destinationPlatterView;
     CDUnknownBlockType _postDismissItemUpdate;
@@ -27,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType postDismissItemUpdate; // @synthesize postDismissItemUpdate=_postDismissItemUpdate;
 @property(retain, nonatomic) _UIPlatterView *destinationPlatterView; // @synthesize destinationPlatterView=_destinationPlatterView;
 @property(retain, nonatomic) UIView *dragContainer; // @synthesize dragContainer=_dragContainer;
-@property(readonly, nonatomic) UIView *presentationContainer; // @synthesize presentationContainer=_presentationContainer;
 
 @end
 

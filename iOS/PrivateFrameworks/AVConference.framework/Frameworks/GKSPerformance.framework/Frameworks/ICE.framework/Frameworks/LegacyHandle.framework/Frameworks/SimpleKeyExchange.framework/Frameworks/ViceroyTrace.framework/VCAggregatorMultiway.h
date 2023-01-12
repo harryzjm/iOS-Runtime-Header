@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ViceroyTrace/SegmentStatsDelegate-Protocol.h>
-
-@class DownlinkSegment, NSMutableDictionary, NSString, UplinkSegment;
+@class DownlinkSegment, NSDictionary, NSMutableDictionary, NSString, UplinkSegment, VCHistogram;
 
 __attribute__((visibility("hidden")))
-@interface VCAggregatorMultiway <SegmentStatsDelegate>
+@interface VCAggregatorMultiway
 {
     NSString *_currentUplinkSegmentKey;
     unsigned int _currentUplinkSegmentStreamGroups;
@@ -49,6 +47,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _sessionDownlinkTotalLostSum;
     unsigned long long _sessionUplinkTotalPacketsSentSum;
     unsigned long long _sessionUplinkTotalLostSum;
+    unsigned int _sessionUplinkLBAOnCount;
+    unsigned int _sessionDownlinkLBAOnCount;
     unsigned int _sessionEndReason;
     unsigned int _sessionDetailedEndReason;
     unsigned int _sessionErrorDomain;
@@ -66,6 +66,8 @@ __attribute__((visibility("hidden")))
     _Bool _isGridView;
     _Bool _isDuplicationEnabled;
     _Bool _isUplinkScreenEnabled;
+    _Bool _reportScreenUpgrade;
+    _Bool _isFullScreenCapture;
     unsigned long long _totalCellTxDataBytes;
     unsigned long long _totalCellRxDataBytes;
     unsigned long long _totalCellDupTxDataBytes;
@@ -76,8 +78,31 @@ __attribute__((visibility("hidden")))
     unsigned int _sessionAggregatedScreenUplinkDurationTicks;
     _Bool _sessionAggregatedScreenLocalParticipantEnabled;
     _Bool _isSessionFromOneToOneMode;
+    _Bool _isSessionGoingToOneToOneMode;
+    double _switchToOneToOneTime;
+    double _switchFromOneToOneTime;
+    unsigned int _oneToOneSwitchUpgradeErrorCode;
+    unsigned int _gftSwitchDowngradeErrorCode;
+    _Bool _isExpanseEnabled;
+    _Bool _isCaptionsEnabled;
+    _Bool _isCenterStageEnabled;
+    _Bool _isPortraitBlurEnabled;
+    int _lastCameraCaptureWidth;
+    int _lastCameraCaptureHeight;
+    _Bool _receivedCaptionsMetrics;
+    unsigned int _totalCollectedCaptionsRatioMetrics;
+    unsigned int _longCaptionRatioCollection;
+    unsigned int _maxCaptionsRatio;
+    unsigned int _captionTaskCount;
+    double _lastUtteranceDuration;
+    VCHistogram *_captionsRatioHistogram;
+    VCHistogram *_captionsRatioLongHistogram;
+    VCHistogram *_captionsUtteranceHistogram;
+    unsigned long long _packetSendSuccessCounter;
+    unsigned long long _packetSendFailureCounter;
 }
 
+@property(readonly) NSDictionary *calls; // @synthesize calls=_calls;
 - (unsigned int)numberOfWebParticipants;
 - (double)timeWeightedNumberOfParticipantsWebOnly:(_Bool)arg1;
 - (double)audioErasureTotalTime:(id)arg1;
@@ -95,23 +120,31 @@ __attribute__((visibility("hidden")))
 - (void)updateSegment:(id)arg1 TBR:(int)arg2 ISBTR:(int)arg3 SATXBR:(int)arg4 SARBR:(int)arg5 BWE:(int)arg6;
 - (int)adaptiveLearningState;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
+- (void)addLocalParticipnt:(double)arg1;
 - (void)updateVideoQualityWithPayload:(id)arg1 participantID:(id)arg2;
-- (void)updateAlgoMetrics:(unsigned int)arg1 participantID:(id)arg2;
+- (void)updateAlgoMetrics:(unsigned int)arg1 payload:(id)arg2;
+- (void)processControlChannelEventType:(unsigned short)arg1 payload:(id)arg2;
 - (void)updateWRMMetrics:(unsigned int)arg1 payload:(id)arg2;
+- (void)processActiveTemporalTiers:(id)arg1;
 - (_Bool)isDuplicationChanged:(_Bool)arg1;
 - (void)processMKMRecoveryRequestEventForParticipant:(id)arg1;
 - (void)processUISizeEventForParticipant:(id)arg1 isFullSize:(_Bool)arg2;
-- (void)processInternalErrorDetectedWithCode:(id)arg1;
-- (void)processVideoDegraded:(_Bool)arg1 participantID:(id)arg2 streamGroup:(id)arg3;
-- (void)processVideoDegraded:(_Bool)arg1 participantID:(id)arg2;
+- (void)processInternalErrorDetected:(unsigned short)arg1 payload:(id)arg2;
+- (void)processVideoDegraded:(_Bool)arg1 payload:(id)arg2;
 - (unsigned int)currentDegragedParticipantCount;
-- (void)processSessionStart;
-- (void)processSessionInit;
+- (void)processSessionStart:(double)arg1;
+- (void)processSessionInit:(double)arg1;
 - (void)processParticipantTimingInfo:(id)arg1;
 - (void)processStatsForNumberOfParticipants:(unsigned int)arg1 webParticipants:(unsigned int)arg2;
 - (_Bool)currentUISize;
 - (void)processUILayout:(id)arg1;
+- (void)processRTXStreamData:(id)arg1 streamGroupStats:(id)arg2;
+- (void)processSessionStreamStats:(id)arg1;
+- (void)processCaptionsMetrics:(id)arg1;
 - (void)processRTEvent:(id)arg1;
+- (void)updateNetworkSendResultStats:(id)arg1;
+- (void)processCameraResolution:(id)arg1;
+- (void)processMediaQueueTelemetry:(id)arg1;
 - (void)updateCallStreamGroupTickCount:(id)arg1 streamData:(id)arg2;
 - (void)checkForNewSegmentBasedOnActiveStreamGroups:(id)arg1;
 - (unsigned int)getActiveStreamGroups:(id)arg1 direction:(int)arg2;
@@ -122,12 +155,17 @@ __attribute__((visibility("hidden")))
 - (void)processUplinkActualBitrate:(unsigned int)arg1;
 - (void)processDownlinkTargetBitrate:(unsigned int)arg1;
 - (void)processUplinkTargetBitrate:(unsigned int)arg1;
+- (void)processRTXConfigData:(id)arg1;
 - (void)processDecryptionTimeoutEvent:(id)arg1;
 - (void)processVideoStreamSwitch:(id)arg1;
 - (void)processAudioStreamSwitch:(id)arg1;
 - (void)processActualBitrateChange:(id)arg1;
 - (void)processDownlinkRateChange:(id)arg1;
 - (void)finalizeCall:(id)arg1;
+- (void)updateRateControlExperimentCall:(id)arg1;
+- (void)updatePortraitBlurEnabled:(unsigned short)arg1;
+- (void)updateCenterStageEnabled:(unsigned short)arg1;
+- (void)expanseEnabled:(id)arg1 withType:(unsigned short)arg2;
 - (void)screenEnabled:(id)arg1;
 - (void)videoEnabled:(id)arg1;
 - (void)audioEnabled:(id)arg1;
@@ -142,9 +180,11 @@ __attribute__((visibility("hidden")))
 - (void)resetUplinkSegmentWithStreamGroups:(unsigned int)arg1;
 - (void)flushCurrentUplinkSegment;
 - (id)aggregatedUplinkSegmentReport;
+- (_Bool)isApplePersonalHotspot;
 - (id)interfaceTypeIndicator;
 - (void)saveCallSegmentHistory;
 - (id)aggregatedSessionReport;
+- (void)addMediaQueueStats:(id)arg1;
 - (void)addPerStreamGroupIDStats:(id)arg1;
 - (void)addCellByteCountStats:(id)arg1;
 - (id)aggregatedCallReports;

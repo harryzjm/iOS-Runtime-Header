@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITextInteraction.h"
+
 @class UITextGestureTuning, UITextModernLoupeSession, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
-@interface UITextSelectionInteraction
+@interface UITextSelectionInteraction : UITextInteraction
 {
     double _lastTapTimestamp;
     struct CGPoint _lastTapLocation;
@@ -44,15 +46,12 @@ __attribute__((visibility("hidden")))
 - (void)_checkForRepeatedTap:(id)arg1 gestureLocationOut:(struct CGPoint *)arg2;
 - (long long)_textGranularityForNumberOfTaps:(unsigned long long)arg1;
 - (long long)handOffGranularity;
-- (long long)_textGranularityForRepeatedTap:(long long)arg1;
 - (_Bool)_isRepeatedTap:(id)arg1 gestureLocationOut:(struct CGPoint *)arg2;
 - (_Bool)_isWithinRepeatedTapTimeForTouch:(id)arg1;
 - (_Bool)_isNowWithinRepeatedTapTime;
 - (_Bool)_isShiftKeyBeingHeldForGesture:(id)arg1;
 - (_Bool)_usesPencilSelectionBehaviorForGesture:(id)arg1;
 - (_Bool)_usesIndirectSelectionBehavior;
-- (void)oneFingerDoubleTap:(id)arg1;
-- (void)oneFingerTripleTap:(id)arg1;
 - (void)_showSelectionCommandsIfApplicableAfterDelay:(double)arg1;
 - (void)toggleSelectionCommands;
 - (void)_applyTransientState:(id)arg1;

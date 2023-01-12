@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TVPlayback/TVPPlaybackImageLoader-Protocol.h>
-
 @class NSMutableDictionary, NSMutableSet, NSString, TVPExternalImageConfig;
 
 __attribute__((visibility("hidden")))
-@interface TVPExternalImageLoader : NSObject <TVPPlaybackImageLoader>
+@interface TVPExternalImageLoader : NSObject
 {
     TVPExternalImageConfig *_config;
     NSMutableSet *_imageProxies;

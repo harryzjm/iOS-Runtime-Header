@@ -6,11 +6,12 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class MTVisualStylingProvider, NSArray, NSAttributedString, NSDate, NSString, NSTimeZone, UIImage, UIImageConfiguration, UIView;
+@class MTVisualStylingProvider, NCNotificationAction, NSArray, NSAttributedString, NSDate, NSString, NSTimeZone, UIImage, UIImageConfiguration, UIView;
 @protocol NCNotificationStaticContentProvidingDelegate;
 
 @protocol NCNotificationStaticContentProviding <NSObject>
 @property(readonly, copy, nonatomic) NSArray *currentActions;
+@property(readonly, copy, nonatomic) NCNotificationAction *inlineAction;
 @property(copy, nonatomic) NSArray *overriddenActions;
 @property(readonly, nonatomic, getter=isContentHidingDisabled) _Bool contentHidingDisabled;
 @property(readonly, nonatomic, getter=isHidingContent) _Bool hidingContent;

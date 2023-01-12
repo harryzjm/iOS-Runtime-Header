@@ -6,9 +6,15 @@
 
 #import <WiFiPeerToPeer/NSObject-Protocol.h>
 
-@class WiFiP2PAWDLState;
+@class NSArray, NSDictionary, NSError, NSString, WiFiP2PAWDLState;
 
 @protocol WiFiP2PAWDLStateMonitorXPCDelegate <NSObject>
+- (void)availabilityUpdatedForService:(NSString *)arg1 error:(NSError *)arg2;
+- (void)channelSequenceChangedEvent:(NSArray *)arg1;
+- (void)softAPChannelChangedEvent:(_Bool)arg1 channelNumber:(unsigned short)arg2;
+- (void)threadCoexistenceEvent:(NSDictionary *)arg1;
+- (void)updatedRealtimeMode:(_Bool)arg1;
+- (void)updatedStatistics;
 - (void)updatedAWDLState:(WiFiP2PAWDLState *)arg1;
 @end
 

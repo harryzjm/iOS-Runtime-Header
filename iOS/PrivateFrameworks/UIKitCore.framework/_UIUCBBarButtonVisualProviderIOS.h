@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIButtonBarButtonVisualProvider.h"
+
 @class UIButton, _UISlotView;
 
 __attribute__((visibility("hidden")))
-@interface _UIUCBBarButtonVisualProviderIOS
+@interface _UIUCBBarButtonVisualProviderIOS : _UIButtonBarButtonVisualProvider
 {
     UIButton *_contentButton;
     _UISlotView *_securePasteButtonSlotView;
+    _Bool _slotViewHasRemoteContent;
     CDUnknownBlockType _menuProvider;
 }
 
@@ -25,10 +28,13 @@ __attribute__((visibility("hidden")))
 - (id)pointerShapeInContainer:(id)arg1;
 - (id)imageSymbolConfiguration;
 - (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
-- (void)clearContentButtonImage;
+- (void)enableSecureButton:(_Bool)arg1;
+- (void)updateSecureButton;
+- (_Bool)shouldSuppressPointerSpecularFilter;
 - (void)_configureImageOrTitleFromBarItem:(id)arg1;
+- (long long)_securePasteButtonSite;
 - (id)_defaultTitleAttributes;
-- (id)_newButton;
+- (id)_newButtonSecure:(_Bool)arg1 orDictation:(_Bool)arg2;
 - (id)contentView;
 - (void)updateButton:(id)arg1 forEnabledState:(_Bool)arg2;
 - (void)updateButton:(id)arg1 forHighlightedState:(_Bool)arg2;

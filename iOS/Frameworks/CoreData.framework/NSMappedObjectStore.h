@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSPersistentStore.h"
+
 @class NSPersistentStoreMap, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface NSMappedObjectStore
+@interface NSMappedObjectStore : NSPersistentStore
 {
     NSPersistentStoreMap *_theMap;
     NSSet *_entitiesToFetch;

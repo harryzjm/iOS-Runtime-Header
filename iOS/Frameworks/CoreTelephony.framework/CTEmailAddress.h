@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreTelephony/CTMessageAddress-Protocol.h>
-#import <CoreTelephony/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CTEmailAddress : NSObject <NSCopying, CTMessageAddress>
+@interface CTEmailAddress : NSObject
 {
     NSString *_address;
 }

@@ -10,5 +10,6 @@
 - (id)_geo_firstPhotoOfAtLeastSize:(struct CGSize)arg1;
 - (id)_geo_compactMap:(CDUnknownBlockType)arg1;
 - (id)_geo_map:(CDUnknownBlockType)arg1;
+- (id)_geo_filtered:(CDUnknownBlockType)arg1;
 @end
 

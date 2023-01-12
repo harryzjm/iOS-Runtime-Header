@@ -9,8 +9,6 @@
 @interface NSString (NSEmailAddressString)
 + (id)mf_formattedAddressWithName:(id)arg1 email:(id)arg2 useQuotes:(_Bool)arg3;
 + (id)mf_stringWithData:(id)arg1 encoding:(unsigned long long)arg2;
-- (_Bool)mf_hasSameNamesAs:(id)arg1;
-- (id)mf_personNameComponents;
 - (id)mf_addressCommentPersonNameComponents;
 - (id)mf_emailAddressesWithEquivalentDomains;
 - (id)mf_copyIDNAEncodedEmailAddress;

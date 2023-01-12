@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ActivityRingsUI/ARUIRendering-Protocol.h>
-
 @class NSString;
 @protocol MTLRenderPipelineState;
 
 __attribute__((visibility("hidden")))
-@interface ARUIRenderState : NSObject <ARUIRendering>
+@interface ARUIRenderState : NSObject
 {
     id <MTLRenderPipelineState> _renderPipelineState;
 }

@@ -15,26 +15,6 @@ struct CGSize {
     double _field2;
 };
 
-struct IMAssociatedMessageGeometryDescriptor {
-    unsigned long long layoutIntent;
-    unsigned long long associatedLayoutIntent;
-    float parentPreviewWidth;
-    float xScalar;
-    float yScalar;
-    float scale;
-    float rotation;
-};
-
-struct _FZChatRoomValidity {
-    int _field1;
-    unsigned short _field2;
-};
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIStatusBarStyleRequest.h"
+
 @class NSNumber, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface UIMutableStatusBarStyleRequest
+@interface UIMutableStatusBarStyleRequest : UIStatusBarStyleRequest
 {
 }
 

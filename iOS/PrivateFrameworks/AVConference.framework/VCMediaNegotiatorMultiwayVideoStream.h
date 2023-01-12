@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiatorMultiwayVideoStream <NSCopying>
+@interface VCMediaNegotiatorMultiwayVideoStream
 {
     struct CGSize _size;
     unsigned int _frameRate;

@@ -8,6 +8,6 @@
 
 @interface HAMenstrualAlgorithmsHistoricalCycle (HKMenstrualCycles)
 - (id)hkmc_description;
-- (id)hkmc_cycleWithLastDayIndex:(id)arg1 includeFertileWindow:(_Bool)arg2;
+- (id)hkmc_cycleWithLastDayIndex:(id)arg1 includeFertileWindow:(_Bool)arg2 overridePredictionPrimarySource:(id)arg3 overrideOvulationConfirmationFailure:(id)arg4 overrideDailyEligibleWristTemperatureCount:(id)arg5 useWristTemperatureInput:(_Bool)arg6;
 @end
 

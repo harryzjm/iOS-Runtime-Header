@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVMediaSelectionOption.h"
+
 @class AVAssetTrack, AVWeakReference, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface AVMediaSelectionTrackOption
+@interface AVMediaSelectionTrackOption : AVMediaSelectionOption
 {
     id _groupID;
     AVAssetTrack *_track;

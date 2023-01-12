@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_HMCameraControl.h"
+
 @class HMCameraSnapshot;
 @protocol _HMCameraSnapshotControlDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _HMCameraSnapshotControl
+@interface _HMCameraSnapshotControl : _HMCameraControl
 {
     HMCameraSnapshot *_mostRecentSnapshot;
     id <_HMCameraSnapshotControlDelegate> _delegate;
@@ -17,20 +19,21 @@ __attribute__((visibility("hidden")))
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_handleMostRecentSnapshotUpdatedMessage:(id)arg1;
-- (void)_handleCreateSnapshotWithBulletinContext:(id)arg1 error:(id)arg2 cameraSessionID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_handleCreateSnapshotWithBulletinContext:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_notifyDelegateOfMostRecentSnapshotUpdated;
 - (void)_notifyDelegateOfDidTakeSnapshot:(id)arg1 error:(id)arg2;
 - (void)_handleMostRecentSnapshot:(id)arg1;
-- (void)_handleSnapshot:(id)arg1 error:(id)arg2 cameraSessionID:(id)arg3 mostRecent:(_Bool)arg4;
+- (void)_handleSnapshot:(id)arg1 error:(id)arg2 isMostRecent:(_Bool)arg3;
 - (void)_fetchCameraSnapshotForBulletinContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_takeSnapshot;
 - (void)_registerNotificationHandlers;
-- (void)mergeNewSnapshot:(id)arg1 operations:(id)arg2;
+- (void)__configureWithContext:(id)arg1 home:(id)arg2;
+- (void)mergeNewSnapshotControl:(id)arg1;
 - (void)fetchCameraSnapshotForBulletinContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)takeSnapshot;
 @property(retain) HMCameraSnapshot *mostRecentSnapshot; // @synthesize mostRecentSnapshot=_mostRecentSnapshot;
 @property __weak id <_HMCameraSnapshotControlDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)initWithCameraProfile:(id)arg1 service:(id)arg2 profileUniqueIdentifier:(id)arg3 mostRecentSnapshot:(id)arg4;
+- (id)initWithCameraProfile:(id)arg1 profileUniqueIdentifier:(id)arg2 mostRecentSnapshot:(id)arg3;
 
 @end
 

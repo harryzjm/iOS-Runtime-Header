@@ -4,45 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKeyboardLayoutStarDelegate-Protocol.h>
+#import "UIViewController.h"
 
-@class NSMutableArray, NSString, UIKBScreenTraits, UIKBTree, UIKBViewForResponderForwarding, UIKeyboardLayoutStar, UIKeyboardTaskQueue, UITextInputTraits;
+@class UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardPopoverController <UIKeyboardLayoutStarDelegate>
+@interface UIKeyboardPopoverController : UIViewController
 {
-    NSString *_inputMode;
-    UIKeyboardLayoutStar *_layout;
-    UIKBScreenTraits *_screenTraits;
-    UITextInputTraits *_textInputTraits;
-    UIKeyboardTaskQueue *_taskQueue;
-    UIKBTree *_keyboard;
-    NSMutableArray *_hiddenKeys;
-    UIKBViewForResponderForwarding *_containerForActiveKeys;
+    UIView *_contentView;
+    struct CGSize _contentSize;
 }
 
 - (void).cxx_destruct;
-- (id)keyboardLayout:(id)arg1 willChangeRenderConfig:(id)arg2;
-- (id)keyboardLayout:(id)arg1 containingViewForActiveKey:(id)arg2 inKeyplaneView:(id)arg3;
+@property(nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
+@property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 - (_Bool)_canShowWhileLocked;
-- (void)viewDidAppear:(_Bool)arg1;
-- (void)keyboardLayout:(id)arg1 didSwitchToKeyplane:(id)arg2;
 - (long long)overrideUserInterfaceStyle;
 - (_Bool)handleHardwareKeyboardEvent:(id)arg1;
-@property(readonly, nonatomic) UIKeyboardLayoutStar *layout;
-@property(readonly, nonatomic) NSString *inputModeIdentifier;
-- (void)viewWillDisappear:(_Bool)arg1;
 - (struct CGSize)preferredContentSize;
-- (double)preferredTextFieldHeight;
 - (void)viewDidLoad;
-- (void)dealloc;
-- (id)initWithInputModeIdentifier:(id)arg1 textInputTraits:(id)arg2 taskQueue:(id)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (_Bool)isPresented;
+- (id)init;
 
 @end
 

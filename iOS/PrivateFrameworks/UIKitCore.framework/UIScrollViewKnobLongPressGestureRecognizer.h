@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UILongPressGestureRecognizer.h"
+
 __attribute__((visibility("hidden")))
-@interface UIScrollViewKnobLongPressGestureRecognizer
+@interface UIScrollViewKnobLongPressGestureRecognizer : UILongPressGestureRecognizer
 {
     _Bool _forPointer;
 }
@@ -13,6 +15,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool forPointer; // @synthesize forPointer=_forPointer;
 - (_Bool)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)_isGestureType:(long long)arg1;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 
 @end
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VoiceServices/VSSpeechServiceDelegate-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSString, VSPresynthesizedAudioRequest, VSSpeechConnection, VSSpeechRequest;
 @protocol VSSpeechConnectionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSSpeechConnectionDelegateWrapper : NSObject <VSSpeechServiceDelegate>
+@interface VSSpeechConnectionDelegateWrapper : NSObject
 {
     id <VSSpeechConnectionDelegate> _delegate;
     VSSpeechRequest *_currentRequest;
@@ -20,17 +18,20 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_concurrentSynthesisRequests;
     VSPresynthesizedAudioRequest *_currentAudioRequest;
     NSMutableArray *_audioRequests;
+    NSMutableArray *_previewRequests;
     VSSpeechConnection *_connection;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak VSSpeechConnection *connection; // @synthesize connection=_connection;
+@property(retain, nonatomic) NSMutableArray *previewRequests; // @synthesize previewRequests=_previewRequests;
 @property(retain, nonatomic) NSMutableArray *audioRequests; // @synthesize audioRequests=_audioRequests;
 @property(retain, nonatomic) VSPresynthesizedAudioRequest *currentAudioRequest; // @synthesize currentAudioRequest=_currentAudioRequest;
 @property(retain, nonatomic) NSMutableDictionary *concurrentSynthesisRequests; // @synthesize concurrentSynthesisRequests=_concurrentSynthesisRequests;
 @property(retain, nonatomic) NSMutableArray *requests; // @synthesize requests=_requests;
 @property(retain, nonatomic) VSSpeechRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
 @property(nonatomic) __weak id <VSSpeechConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+- (oneway void)previewRequestDidStartPlaying:(id)arg1;
 - (oneway void)audioRequest:(id)arg1 didReportInstrumentMetrics:(id)arg2 error:(id)arg3;
 - (oneway void)audioRequest:(id)arg1 didStopAtEnd:(_Bool)arg2 error:(id)arg3;
 - (oneway void)audioRequestDidStart:(id)arg1;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (oneway void)speechRequestDidContinue:(id)arg1;
 - (oneway void)speechRequestDidPause:(id)arg1;
 - (oneway void)speechRequestDidStart:(id)arg1;
+- (id)getLocalPreviewRequest:(id)arg1;
 - (id)getLocalAudioRequest:(id)arg1;
 - (id)getLocalRequest:(id)arg1;
 - (id)init;

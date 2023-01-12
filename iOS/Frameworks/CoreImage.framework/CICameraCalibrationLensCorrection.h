@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class AVCameraCalibrationData, CIImage, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CICameraCalibrationLensCorrection
+@interface CICameraCalibrationLensCorrection : CIFilter
 {
     CIImage *inputImage;
     AVCameraCalibrationData *inputAVCameraCalibrationData;

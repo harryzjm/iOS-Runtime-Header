@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideoSubscriberAccount/VSViewServiceHostViewControllerDelegate-Protocol.h>
+#import "VSAsyncOperation.h"
 
 @class NSString, NSUUID, VSOptional, VSViewServiceHostViewController, VSViewServiceRequest;
 @protocol VSViewServiceRequestOperationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSViewServiceRequestOperation <VSViewServiceHostViewControllerDelegate>
+@interface VSViewServiceRequestOperation : VSAsyncOperation
 {
     _Bool _isPresentingViewController;
     VSViewServiceRequest *_viewServiceRequest;

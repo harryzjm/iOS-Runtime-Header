@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <dispatch/OS_dispatch_io-Protocol.h>
-
 @class NSString;
 
-@interface OS_dispatch_io <OS_dispatch_io>
+@interface OS_dispatch_io
 {
 }
 

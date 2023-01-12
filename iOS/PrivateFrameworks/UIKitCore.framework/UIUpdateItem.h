@@ -21,17 +21,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak UITableViewUpdateGap *gap; // @synthesize gap=_gap;
-@property(nonatomic) _Bool headerFooterOnly; // @synthesize headerFooterOnly=_headerFooterOnly;
-@property(nonatomic) long long animation; // @synthesize animation=_animation;
-@property(readonly, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
-@property(readonly, nonatomic) int action; // @synthesize action=_action;
 @property(readonly, nonatomic) _Bool isDecomposedFromReload;
 - (long long)inverseCompareIndexPaths:(id)arg1;
 - (long long)compareIndexPaths:(id)arg1;
-- (_Bool)isSectionOperation;
-- (id)_actionDescription;
 @property(readonly, nonatomic) UICollectionViewUpdateItem *collectionViewUpdateItem;
-- (id)initWithAction:(int)arg1 forIndexPath:(id)arg2 animation:(long long)arg3;
 
 @end
 

@@ -9,6 +9,7 @@
 @class IXPromisedOutOfBandTransfer;
 
 @protocol IXCoordinatorWithDeviceSecurityPromise <NSObject>
+- (_Bool)getHasDeviceSecurityPromise:(_Bool *)arg1 error:(id *)arg2;
 - (IXPromisedOutOfBandTransfer *)deviceSecurityPromiseWithError:(id *)arg1;
 - (_Bool)setDeviceSecurityPromise:(IXPromisedOutOfBandTransfer *)arg1 error:(id *)arg2;
 @end

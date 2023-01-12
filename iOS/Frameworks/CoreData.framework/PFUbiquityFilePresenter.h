@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSFilePresenter-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSURL, PFUbiquityLocation;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface PFUbiquityFilePresenter : NSObject <NSFilePresenter>
+@interface PFUbiquityFilePresenter : NSObject
 {
     PFUbiquityLocation *_ubiquityRootLocation;
     NSString *_localPeerID;

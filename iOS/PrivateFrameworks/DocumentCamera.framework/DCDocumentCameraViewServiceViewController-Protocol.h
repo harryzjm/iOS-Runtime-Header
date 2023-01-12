@@ -7,6 +7,7 @@
 @class DCDocumentCameraViewServiceSessionRequest;
 
 @protocol DCDocumentCameraViewServiceViewController
+- (void)removeSaveActionBlockerForFiles;
 - (void)viewControllerWasDismissed;
 - (void)prepareForDisplayWithCompletion:(void (^)(struct CGSize))arg1;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;

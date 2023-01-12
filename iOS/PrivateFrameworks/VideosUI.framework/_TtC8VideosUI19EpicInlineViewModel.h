@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI9ViewModelCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI19EpicInlineViewModel
+@interface _TtC8VideosUI19EpicInlineViewModel : _$s8VideosUI9ViewModelCN
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *horizontalCollectionViewModel;

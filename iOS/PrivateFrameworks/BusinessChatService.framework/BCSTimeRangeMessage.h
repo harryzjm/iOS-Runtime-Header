@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface BCSTimeRangeMessage : PBCodable <NSCopying>
+@interface BCSTimeRangeMessage : PBCodable
 {
     int _from;
     int _to;

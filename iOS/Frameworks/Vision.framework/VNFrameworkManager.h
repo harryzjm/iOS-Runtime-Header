@@ -6,17 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNLegacyForcedCleanupImplementing-Protocol.h>
-#import <Vision/VNMTLDeviceWisdomParametersProviding-Protocol.h>
-
 @class NSArray, NSNotificationCenter, NSRecursiveLock, NSString, VNMTLDeviceWisdomParameters, _VNWeakSessionsCollection;
 @protocol NSLocking;
 
 __attribute__((visibility("hidden")))
-@interface VNFrameworkManager : NSObject <VNLegacyForcedCleanupImplementing, VNMTLDeviceWisdomParametersProviding>
+@interface VNFrameworkManager : NSObject
 {
     NSNotificationCenter *_notificationCenter;
     NSRecursiveLock *_detectorAccessingLock;
+    NSRecursiveLock *_trackerResourcesAccessingLock;
     struct os_unfair_lock_s _sessionsAccessLock;
     _VNWeakSessionsCollection *_sessions;
     struct os_unfair_lock_s _wisdomParametersLock;
@@ -34,11 +32,14 @@ __attribute__((visibility("hidden")))
 - (id)wisdomParameterForMTLDevice:(id)arg1 error:(id *)arg2;
 - (void)releaseMetalDeviceWisdomParameters;
 - (id)loadedDetectors;
+- (id)trackerResourcesConfiguredWithOptions:(id)arg1 forSession:(id)arg2 error:(id *)arg3;
 - (id)detectorOfClass:(Class)arg1 configuredWithOptions:(id)arg2 forSession:(id)arg3 error:(id *)arg4;
+@property(readonly) id <NSLocking> trackerResourcesAccessingLock;
 @property(readonly) id <NSLocking> detectorAccessingLock;
 @property(readonly, copy) NSArray *allSessions;
 - (void)registerSession:(id)arg1;
 @property(readonly) NSNotificationCenter *notificationCenter;
+- (id)_locateTrackerResourcesConfiguredWithOptions:(id)arg1 inSessions:(id)arg2 excludingSession:(id)arg3;
 - (id)_locateDetectorOfClass:(Class)arg1 configuredWithOptions:(id)arg2 inSessions:(id)arg3 excludingSession:(id)arg4;
 - (id)init;
 

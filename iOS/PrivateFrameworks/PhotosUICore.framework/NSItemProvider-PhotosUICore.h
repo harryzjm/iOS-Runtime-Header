@@ -21,8 +21,8 @@
 - (id)_px_bestTypeIdentifierForItemProvider:(id)arg1;
 - (void)px_createStreamShareSourceWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)px_createAssetWithImportSessionID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)_px_registerFileRepresentationForTypeIdentifier:(id)arg1 visibility:(long long)arg2 fileProviderManager:(id)arg3 domain:(id)arg4 asset:(id)arg5 shouldRequestCurrentIfPossible:(_Bool)arg6;
-- (void)_px_registerFileRepresentationsForAsset:(id)arg1 usage:(long long)arg2 fileProviderManager:(id)arg3 domain:(id)arg4 shouldRequestCurrentIfPossible:(_Bool)arg5;
-- (void)px_registerFileRepresentationsForAsset:(id)arg1 usage:(long long)arg2 domain:(id)arg3 shouldRequestCurrentIfPossible:(_Bool)arg4;
+- (id)_px_registerFileRepresentationForTypeIdentifier:(id)arg1 visibility:(long long)arg2 fileProviderManager:(id)arg3 domain:(id)arg4 asset:(id)arg5 shouldRequestCurrentIfPossible:(_Bool)arg6 downscalingTargetDimension:(id)arg7;
+- (id)_px_registerFileRepresentationsForAsset:(id)arg1 usage:(long long)arg2 fileProviderManager:(id)arg3 domain:(id)arg4 shouldRequestCurrentIfPossible:(_Bool)arg5 downscalingTargetDimension:(id)arg6;
+- (id)px_registerFileRepresentationsForAsset:(id)arg1 usage:(long long)arg2 domain:(id)arg3 shouldRequestCurrentIfPossible:(_Bool)arg4 downscalingTargetDimension:(id)arg5;
 @end
 

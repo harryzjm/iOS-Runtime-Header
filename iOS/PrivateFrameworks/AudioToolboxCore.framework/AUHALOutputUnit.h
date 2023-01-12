@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AUAudioUnitV2Bridge.h"
+
 __attribute__((visibility("hidden")))
-@interface AUHALOutputUnit
+@interface AUHALOutputUnit : AUAudioUnitV2Bridge
 {
     CDUnknownBlockType _outputProvider;
     CDUnknownBlockType _inputHandler;

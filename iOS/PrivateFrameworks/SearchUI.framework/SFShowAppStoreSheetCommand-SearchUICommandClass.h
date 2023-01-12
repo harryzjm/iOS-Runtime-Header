@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFShowAppStoreSheetCommand.h>
 
 @interface SFShowAppStoreSheetCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

@@ -21,7 +21,7 @@
 + (_Bool)activePairedDeviceSupportsCriticalAndGroupingSettings;
 + (_Bool)activePairedDeviceSupportsSendingOnlyCategoryID;
 + (_Bool)activePairedDeviceSupportsAddBulletinReplyToken;
-+ (_Bool)activePairedDeviceSupportsMultiplteAttachments;
++ (_Bool)activePairedDeviceSupportsMultipleAttachments;
 + (_Bool)activePairedDeviceSupportsNSNullPListExtenion;
 + (_Bool)activePairedDeviceSupportsAttachmentFiles;
 + (_Bool)activePairedDeviceSupportsFileBulletinAdd;

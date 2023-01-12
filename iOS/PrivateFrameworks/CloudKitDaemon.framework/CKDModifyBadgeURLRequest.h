@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface CKDModifyBadgeURLRequest
+#import "CKDURLRequest.h"
+
+@interface CKDModifyBadgeURLRequest : CKDURLRequest
 {
     unsigned long long _badgeValue;
 }

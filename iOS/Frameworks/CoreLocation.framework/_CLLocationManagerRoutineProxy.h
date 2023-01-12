@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreLocation/CLLocationManagerRoutineClientInterface-Protocol.h>
-
 @class CLLocationManagerRoutine, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface _CLLocationManagerRoutineProxy : NSObject <CLLocationManagerRoutineClientInterface>
+@interface _CLLocationManagerRoutineProxy : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _updating;

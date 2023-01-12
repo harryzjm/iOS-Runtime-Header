@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIFocusEnginePanGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIFocusFastScrollingRecognizerDelegate-Protocol.h>
-
-@class CADisplayLink, CARInputDeviceTouchpad, NSArray, NSSet, NSString, NSTimer, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, _UIFocusEffectsController, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingRecognizer, _UIFocusLinearMovementDebugGestureRecognizer, _UIFocusLinearMovementDebugView, _UIFocusMovementInfo, _UIFocusPressGestureRecognizer, _UIFocusSelectObserverGestureRecognizer, _UIRepeatingPressGestureRecognizer;
+@class CADisplayLink, CARInputDeviceTouchpad, NSArray, NSSet, NSString, NSTimer, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, _UIFocusEffectsController, _UIFocusEnableOnSelectGestureRecognizer, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusEngineRepeatingPressGestureRecognizer, _UIFocusFastScrollingRecognizer, _UIFocusLinearMovementDebugGestureRecognizer, _UIFocusLinearMovementDebugView, _UIFocusMovementInfo, _UIFocusSelectObserverGestureRecognizer, _UIRotaryGestureRecognizer;
 @protocol _UIFocusEventRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusEventRecognizer : NSObject <UIGestureRecognizerDelegate, _UIFocusEnginePanGestureRecognizerDelegate, _UIFocusFastScrollingRecognizerDelegate>
+@interface _UIFocusEventRecognizer : NSObject
 {
     _UIFocusEnginePanGestureRecognizer *_panGestureRecognizer;
     UITapGestureRecognizer *_tapGestureRecognizer;
-    _UIFocusPressGestureRecognizer *_selectGestureRecognizer;
+    _UIFocusEnableOnSelectGestureRecognizer *_selectGestureRecognizer;
     _UIFocusSelectObserverGestureRecognizer *_selectObserverGestureRecognizer;
+    _UIRotaryGestureRecognizer *_rotaryGestureRecognizer;
+    double _panDeadBand;
     _UIFocusLinearMovementDebugGestureRecognizer *_linearDebugGestureRecognizer;
     _UIFocusLinearMovementDebugView *_linearDebugView;
     struct CGPoint _touchBeganPoint;
@@ -38,7 +36,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _focusUpdateCountSinceLastContinuousMovementBegan;
     CADisplayLink *_momentumDisplayLink;
     NSArray *_arrowButtonGestures;
-    _UIRepeatingPressGestureRecognizer *_tabulatorGesture;
+    NSArray *_pageButtonGestures;
+    _UIFocusEngineRepeatingPressGestureRecognizer *_tabulatorGesture;
     NSSet *_gesturesForFailureRequirements;
     _UIFocusEngineJoystickGestureRecognizer *_joystickGestureRecognizer;
     NSTimer *_joystickModeExitTimer;
@@ -85,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (id)_uiktest_panGestureRecognizer;
 - (void)_uiktest_setPanGestureRecognizer:(id)arg1;
 - (void)_sendGestureBeginNotification;
+- (_Bool)_isRotaryFastScrolling;
 - (void)_fastScrollingEnded;
 - (void)_fastScrollingBeganInScrollView:(id)arg1;
 - (void)fastScrollingRecognizer:(id)arg1 didRecognizeFastScrollingRequest:(id)arg2;
@@ -131,25 +131,42 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_calculateDirectionalHeadingForAccumulator:(struct CGVector)arg1 studyLogData:(id)arg2;
 - (void)_updateMotionEffectsControllerWithProgressAccumulator:(struct CGVector)arg1 unlockedAccumulator:(struct CGVector)arg2;
 - (void)_updateAccumulatorsWithScaledDelta:(struct CGPoint)arg1 unlockedDelta:(struct CGPoint)arg2 studyLogData:(id)arg3;
-- (struct CGVector)_accelerationFactorForCurrentVelocity:(struct CGPoint)arg1;
-- (struct CGPoint)_applyButtonMaskTimeToValue:(struct CGPoint)arg1;
+- (struct CGVector)_accelerationFactorForCurrentVelocity:(struct CGPoint)arg1 isRotaryGesture:(_Bool)arg2 isFocusInKeyboard:(_Bool)arg3 remoteTouchSurfaceType:(unsigned long long)arg4;
+- (struct CGPoint)_applyButtonMaskTimeToValue:(struct CGPoint)arg1 remoteTouchSurfaceType:(unsigned long long)arg2;
 - (struct CGPoint)_applyAxisLockingForNormalizedPoint:(struct CGPoint)arg1 toDelta:(struct CGPoint)arg2;
 - (struct CGPoint)_applyHorizontalFlipForFocusItemInfo:(id)arg1 toDelta:(struct CGPoint)arg2;
-- (struct CGPoint)_applyPanDeadbandToValue:(struct CGPoint)arg1 startPoint:(struct CGPoint)arg2 currentPoint:(struct CGPoint)arg3;
+- (struct CGPoint)_applyPanDeadbandToValue:(struct CGPoint)arg1 startPoint:(struct CGPoint)arg2 currentPoint:(struct CGPoint)arg3 remoteTouchSurfaceType:(unsigned long long)arg4;
 - (struct CGPoint)_calculateDeltaForNormalizedPoint:(struct CGPoint)arg1 studyLogData:(id)arg2;
 - (id)_createStudyLogDataForPanNormalizedPoint:(struct CGPoint)arg1 reportedVelocity:(struct CGPoint)arg2;
 - (id)_createPanMovementRequestWithFocusSystem:(id)arg1;
-- (void)_updatePanLocation:(struct CGPoint)arg1 reportedVelocity:(struct CGPoint)arg2;
+- (void)_updatePanLocation:(struct CGPoint)arg1 reportedVelocity:(struct CGPoint)arg2 remoteTouchSurfaceType:(unsigned long long)arg3;
 - (void)_panGestureStart:(id)arg1;
 - (_Bool)focusEnginePanGestureRecognizerShouldRecognizeImmediately:(id)arg1;
+- (void)_resetPanDeadband;
+- (_Bool)_attemptRotaryFocusMovementWithLinearHeading:(unsigned long long)arg1 directionalHeading:(unsigned long long)arg2 request:(id)arg3 acceleratedVelocity:(struct CGPoint)arg4 studyLogData:(id)arg5;
+- (unsigned long long)_calculateLinearHeadingForAccumulator:(struct CGVector)arg1 studyLogData:(id)arg2;
+- (struct CGPoint)_pointForLinearValue:(double)arg1;
+- (id)_createRotaryMovementRequestWithFocusSystem:(id)arg1;
+- (id)_createStudyLogDataForRotaryDistance:(double)arg1 delta:(double)arg2 reportedVelocity:(double)arg3;
+- (void)_updateRotaryDistance:(double)arg1 delta:(double)arg2 reportedVelocity:(double)arg3 remoteTouchSurfaceType:(unsigned long long)arg4;
+- (void)_handleRotaryCancelled:(id)arg1;
+- (void)_handleRotaryEnd:(id)arg1;
+- (void)_handleRotaryBegin:(id)arg1;
+- (void)_handleRotaryGesture:(id)arg1;
 - (void)_resetProgressAccumulator;
 - (id)_globalCoordinateSpace;
 - (id)_focusSystemSceneComponent;
+- (_Bool)_canFastScrollWithRotaryInputInCurrentFocusContext;
+- (_Bool)_canMoveFocusWithRotaryInputInFocusContext:(id)arg1;
 - (_Bool)_shouldAcceptInputType:(unsigned long long)arg1;
-- (struct CGSize)_touchSensitivityForItem:(id)arg1;
+- (struct CGSize)_touchSensitivityForItem:(id)arg1 remoteTouchSurfaceType:(unsigned long long)arg2;
 - (int)_touchRegionForDigitizerLocation:(struct CGPoint)arg1;
 - (_Bool)_buttonMaskTimeHasExpired;
 - (id)currentFocusBehavior;
+- (void)rotaryGestureRecognizerFailedToBeginFromRest:(id)arg1;
+- (void)rotaryGestureRecognizerIsAttemptingToBeginFromRest:(id)arg1;
+- (_Bool)rotaryGestureRecognizerMustBeginFromRest:(id)arg1;
+- (_Bool)rotaryGestureRecognizerCanBeginFromRest:(id)arg1;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
@@ -160,6 +177,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleTapGesture:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;
 - (void)_handleTabulatorGesture:(id)arg1;
+- (void)_handlePageButtonGesture:(id)arg1;
 - (void)_handleArrowButtonGesture:(id)arg1;
 - (void)_handleSelectObserverGesture:(id)arg1;
 - (void)_handleSelectGesture:(id)arg1;
@@ -172,9 +190,17 @@ __attribute__((visibility("hidden")))
 - (void)_focusSystemEnabledStateDidChange:(id)arg1;
 - (void)_focusBehaviorDidChange:(id)arg1;
 @property(readonly, nonatomic) NSSet *gesturesForFailureRequirements;
-- (void)_removeGestureRecognizersOnlyIfUnsupported:(_Bool)arg1;
-- (void)_removeAllGestureRecognizers;
-- (void)_addGestureRecognizers;
+- (void)_updateGestureRecognizersForcingRemoval:(_Bool)arg1;
+- (void)_linearDebugGestureRecognizerUpdateForcingRemoval:(_Bool)arg1 studyLogData:(id)arg2;
+- (void)_pageButtonGesturesUpdateForcingRemoval:(_Bool)arg1 studyLogData:(id)arg2;
+- (void)_rotaryGestureRecognizerUpdateForcingRemoval:(_Bool)arg1 studyLogData:(id)arg2;
+- (void)_arrowButtonGesturesUpdateForcingRemoval:(_Bool)arg1 studyLogData:(id)arg2;
+- (void)_tabulatorGestureUpdateForcingRemoval:(_Bool)arg1 studyLogData:(id)arg2;
+- (void)_joystickGestureRecognizerUpdateForcingRemoval:(_Bool)arg1 studyLogData:(id)arg2;
+- (void)_tapGestureRecognizerUpdateForcingRemoval:(_Bool)arg1 studyLogData:(id)arg2;
+- (void)_selectObserverGestureRecognizerUpdateForcingRemoval:(_Bool)arg1 studyLogData:(id)arg2;
+- (void)_selectGestureRecognizerUpdateForcingRemoval:(_Bool)arg1 studyLogData:(id)arg2;
+- (void)_panGestureRecognizerUpdateForcingRemoval:(_Bool)arg1 studyLogData:(id)arg2;
 - (void)reset;
 - (void)dealloc;
 - (id)initWithOwningView:(id)arg1;

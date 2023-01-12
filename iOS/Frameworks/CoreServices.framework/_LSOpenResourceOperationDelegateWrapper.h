@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/LSOpenResourceOperationDelegate-Protocol.h>
-
 @class NSOperation, NSString;
 @protocol LSOpenResourceOperationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _LSOpenResourceOperationDelegateWrapper : NSObject <LSOpenResourceOperationDelegate>
+@interface _LSOpenResourceOperationDelegateWrapper : NSObject
 {
     NSOperation *_operation;
     id <LSOpenResourceOperationDelegate> _delegate;

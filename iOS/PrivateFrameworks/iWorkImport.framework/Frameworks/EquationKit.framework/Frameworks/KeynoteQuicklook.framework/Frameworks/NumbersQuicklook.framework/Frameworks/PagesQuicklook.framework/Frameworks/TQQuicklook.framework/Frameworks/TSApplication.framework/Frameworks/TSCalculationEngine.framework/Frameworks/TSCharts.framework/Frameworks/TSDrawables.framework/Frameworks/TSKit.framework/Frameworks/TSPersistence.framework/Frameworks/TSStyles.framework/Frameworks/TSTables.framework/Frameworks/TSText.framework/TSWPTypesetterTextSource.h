@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSWPTextSource-Protocol.h>
-
 @class NSString, TSWPRangeMap;
 @protocol TSWPTextSource;
 
-@interface TSWPTypesetterTextSource : NSObject <TSWPTextSource>
+@interface TSWPTypesetterTextSource : NSObject
 {
-    vector_2056c7c2 _spaceCharIndexes;
-    vector_2056c7c2 _bidiCharIndexes;
+    struct vector<unsigned long, std::allocator<unsigned long>> _spaceCharIndexes;
+    struct vector<unsigned long, std::allocator<unsigned long>> _bidiCharIndexes;
     struct vector<bool, std::allocator<bool>> _bidiDirectionMarkIsRTLVector;
     id <TSWPTextSource> _source;
     TSWPRangeMap *_rangeMap;

@@ -7,7 +7,7 @@
 #import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCEmbedProxyConfiguration, FCForYouGroupsConfiguration, FCNotificationsConfiguration, FCPaidALaCartePaywallConfig, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCSmarterMessagingConfig, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NSURL, NTPBTodayConfig;
+@class FCAppReviewRequestConfig, FCEmbedProxyConfiguration, FCForYouGroupsConfiguration, FCLaunchPresentationConfig, FCNewsPersonalizationConfiguration, FCNotificationsConfiguration, FCPaidALaCartePaywallConfig, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCSmarterMessagingConfig, FCSportsPrivacyConfiguration, FCSportsUpsellConfig, FCTimesOfDayConfiguration, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NSURL, NTPBTodayConfig;
 
 @protocol FCCoreConfiguration <NSObject, NFCopying>
 @property(readonly, nonatomic) long long expirePinnedArticlesAfter;
@@ -36,6 +36,8 @@
 @property(readonly, nonatomic) long long articleRapidUpdatesTimeout;
 @property(readonly, nonatomic) NSString *editorialGemsSectionID;
 @property(readonly, nonatomic) NSString *editorialChannelID;
+@property(readonly, nonatomic) NSString *mySportsTagID;
+@property(readonly, nonatomic) NSString *shortcutsTagID;
 @property(readonly, nonatomic) NSString *myMagazinesTagID;
 @property(readonly, nonatomic) NSString *savedStoriesTagID;
 @property(readonly, nonatomic) NSString *featuredStoriesTagID;
@@ -45,7 +47,6 @@
 @property(readonly, nonatomic) FCTopStoriesConfiguration *topStoriesConfig;
 @property(readonly, nonatomic) NSDictionary *endpointConfigsByEnvironment;
 @property(readonly, nonatomic, getter=isPrivateDataMigrationCleanupEnabled) _Bool privateDataMigrationCleanupEnabled;
-@property(readonly, nonatomic) _Bool privateDataEncryptionMigrationRequiresAllDevicesRunningTigris;
 @property(readonly, nonatomic, getter=isPrivateDataEncryptionMigrationDesired) _Bool privateDataEncryptionMigrationDesired;
 @property(readonly, nonatomic, getter=isPrivateDataEncryptionAllowed) _Bool privateDataEncryptionAllowed;
 @property(readonly, nonatomic) _Bool useSecureConnectionForAssets;
@@ -64,14 +65,14 @@
 - (NSDictionary *)analyticsEnvelopeContentTypeConfigsForEnvironment:(unsigned long long)arg1;
 
 @optional
+@property(readonly, nonatomic) NSString *sharedWithYouTagID;
 @property(readonly, nonatomic) double derivedPersonalizationDataBalanceValue;
 @property(readonly, nonatomic) FCEmbedProxyConfiguration *embedProxyConfiguration;
 @property(readonly, nonatomic) long long minimumBucketGroupConfigVersion;
 @property(readonly, nonatomic, getter=shouldProxyURLBucketFetch) _Bool proxyURLBucketFetch;
 @property(readonly, nonatomic) long long alternateUniversalLinksResourceRefreshRate;
-@property(readonly, nonatomic) unsigned long long premiumTodayFeedDebugSetting;
-@property(readonly, nonatomic) _Bool premiumTodayFeedEnabled;
 @property(readonly, nonatomic) NSString *forYouPremiumRecordConfigID;
+@property(readonly, nonatomic) NSArray *appleNewsNotificationChannelIDs;
 @property(readonly, nonatomic) NSArray *permanentChannelIDs;
 @property(readonly, nonatomic) long long smallWidgetSystemReloadJitterMaxHoneymoon;
 @property(readonly, nonatomic) long long smallWidgetSystemReloadIntervalHoneymoon;
@@ -83,9 +84,9 @@
 @property(readonly, nonatomic) long long widgetSystemHoneymoonDuration;
 @property(readonly, nonatomic) long long widgetSystemReloadJitterMax;
 @property(readonly, nonatomic) long long widgetSystemReloadInterval;
-@property(readonly, nonatomic) _Bool adImpressionTrackingEnabled;
 @property(readonly, nonatomic) _Bool adInstrumentationEnabled;
 @property(readonly, nonatomic) _Bool checkForPaywallConfigChangesEnabled;
+@property(readonly, nonatomic) _Bool xavierClusteringEnabled;
 @property(readonly, nonatomic) _Bool xavierEnabled;
 @property(readonly, nonatomic) _Bool newPersonalizationEnabled;
 @property(readonly, nonatomic) _Bool newNotificationHandlingEnabled;
@@ -111,10 +112,32 @@
 @property(readonly, nonatomic) long long bestOfferRequestTimeoutDurationInSeconds;
 @property(readonly, nonatomic) long long entitlementsRequestTimeoutDurationInSeconds;
 @property(readonly, nonatomic) long long entitlementsCacheRecoveryAttemptDurationInSeconds;
+@property(readonly, nonatomic) NSArray *sportsStandingsDisallowedLeagueIds;
+@property(readonly, nonatomic) FCSportsPrivacyConfiguration *sportsPrivacyConfiguration;
+@property(readonly, nonatomic) NSString *sportTeamHighlightsTagID;
+@property(readonly, nonatomic) NSString *sportLeagueHighlightsTagID;
+@property(readonly, nonatomic) NSString *sportHighlightsTagID;
+@property(readonly, nonatomic) NSString *sportsStandingsTagID;
+@property(readonly, nonatomic) NSString *sportLeagueScoresTagID;
+@property(readonly, nonatomic) NSString *sportTeamScoresTagID;
+@property(readonly, nonatomic) NSString *sportScoresTagID;
+@property(readonly, nonatomic) NSString *mySportsHighlightsTagID;
+@property(readonly, nonatomic) NSString *mySportsScoresTagID;
 @property(readonly, nonatomic) NSString *magazinesConfigRecordID;
+@property(readonly, nonatomic) FCAppReviewRequestConfig *appReviewRequestConfig;
+@property(readonly, nonatomic) FCLaunchPresentationConfig *launchPresentationConfig;
+@property(readonly, nonatomic) NSDictionary *channelPickerConfigsByName;
 @property(readonly, nonatomic) FCSmarterMessagingConfig *smarterMessagingConfig;
+@property(readonly, copy, nonatomic) FCTimesOfDayConfiguration *timesOfDayConfiguration;
+@property(readonly, copy, nonatomic) FCNewsPersonalizationConfiguration *newsPersonalizationConfiguration;
 @property(readonly, nonatomic) FCPaidBundleConfiguration *paidBundleConfig;
+@property(readonly, nonatomic) long long shortcutsOnboardCount;
+@property(readonly, nonatomic) long long minShortcutsOnboardCount;
+@property(readonly, nonatomic) _Bool autoOnboardShortcuts;
+@property(readonly, nonatomic) long long shortcutsMaxCount;
 @property(readonly, nonatomic) long long dailyChannelUpsellsCountLimit;
+@property(readonly, nonatomic) NSDictionary *campaignReferralConfigsByID;
+@property(readonly, nonatomic) FCSportsUpsellConfig *sportsUpsellConfig;
 @property(readonly, nonatomic) NSDictionary *channelUpsellConfigsByChannelID;
 @property(readonly, nonatomic) double delayBeforeRetryingDroppedFeeds;
 @property(readonly, nonatomic) long long maxRetriesForDroppedFeeds;
@@ -125,6 +148,8 @@
 @property(readonly, nonatomic) NSString *engagementCohortsExpField;
 - (NTPBTodayConfig *)todayConfigWithIdentifier:(NSString *)arg1 queueConfigs:(NSArray *)arg2 backgroundColorLight:(NSString *)arg3 backgroundColorDark:(NSString *)arg4 audioIndicatorColor:(NSString *)arg5;
 - (FCPaidALaCartePaywallConfig *)paidALaCartePaywallConfigForChannelID:(NSString *)arg1;
+- (NSURL *)appAnalyticsAppHealthEndpointUrlForEnvironment:(unsigned long long)arg1;
+- (NSURL *)appAnalyticsNotificationReceiptEndpointUrlForEnvironment:(unsigned long long)arg1;
 - (NSURL *)appAnalyticsEndpointUrlForEnvironment:(unsigned long long)arg1;
 @end
 

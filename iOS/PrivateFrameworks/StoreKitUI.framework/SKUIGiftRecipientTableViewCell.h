@@ -6,19 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <StoreKitUI/CNContactPickerDelegate-Protocol.h>
-#import <StoreKitUI/MFComposeRecipientViewDelegate-Protocol.h>
-#import <StoreKitUI/SKUIGiftContactSearchDelegate-Protocol.h>
-
-@class CNContactPickerViewController, CNContactStore, MFComposeRecipientView, NSArray, NSAttributedString, NSString, SKUIGiftContactSearchController, UILabel, UIView;
+@class CNComposeRecipientTextView, CNContactPickerViewController, CNContactStore, NSArray, NSAttributedString, NSString, SKUIGiftContactSearchController, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftRecipientTableViewCell : UITableViewCell <CNContactPickerDelegate, MFComposeRecipientViewDelegate, SKUIGiftContactSearchDelegate>
+@interface SKUIGiftRecipientTableViewCell : UITableViewCell
 {
     CNContactStore *_contactStore;
     CNContactPickerViewController *_contactPickerController;
     UILabel *_placeholderLabel;
-    MFComposeRecipientView *_recipientView;
+    CNComposeRecipientTextView *_recipientView;
     SKUIGiftContactSearchController *_searchController;
     UIView *_topBorderView;
     _Bool _didLayoutSubviews;
@@ -43,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)composeRecipientView:(id)arg1 didFinishEnteringAddress:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didAddRecipient:(id)arg2;
 - (id)composeRecipientView:(id)arg1 composeRecipientForAddress:(id)arg2;
-- (void)composeRecipientView:(id)arg1 didChangeSize:(struct CGSize)arg2;
+- (void)composeHeaderView:(id)arg1 didChangeSize:(struct CGSize)arg2;
 - (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CryptoTokenKit/TKProtocolSmartCardSlotNotification-Protocol.h>
-
 @class NSHashTable, TKSmartCardSlot;
 
 __attribute__((visibility("hidden")))
-@interface TKSmartCardSlotProxy : NSObject <TKProtocolSmartCardSlotNotification>
+@interface TKSmartCardSlotProxy : NSObject
 {
     TKSmartCardSlot *_slot;
     NSHashTable *_cards;

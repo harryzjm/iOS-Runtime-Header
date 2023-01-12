@@ -11,9 +11,10 @@
 @interface _TtC9WidgetKit13DatePublisher : _TtCs12_SwiftObject
 {
     MISSING_TYPE *_date;
-    MISSING_TYPE *fps;
+    MISSING_TYPE *period;
+    MISSING_TYPE *name;
     MISSING_TYPE *requesters;
-    MISSING_TYPE *timer;
+    MISSING_TYPE *machTimer;
 }
 
 @end

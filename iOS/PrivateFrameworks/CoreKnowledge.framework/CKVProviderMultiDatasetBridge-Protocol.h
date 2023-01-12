@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreKnowledge/CKVProviderDatasetBridge-Protocol.h>
-
-@protocol CKVProviderMultiDatasetBridge <CKVProviderDatasetBridge>
+@protocol CKVProviderMultiDatasetBridge
 - (void)enumerateAllDatasets:(unsigned long long *)arg1 usingBlock:(void (^)(NSObject<CKVProviderDatasetBridge> *))arg2;
 @end
 

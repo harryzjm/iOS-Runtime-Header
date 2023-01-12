@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface GEOComposedRouteCellularCoverage : NSObject <NSSecureCoding>
+@interface GEOComposedRouteCellularCoverage : NSObject
 {
     NSData *_offsetsData;
     NSData *_coverageData;

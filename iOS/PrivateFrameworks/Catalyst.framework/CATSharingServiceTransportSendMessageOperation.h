@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CATOperation.h"
+
 @class CATMessage;
 @protocol CATSharingConnection;
 
 __attribute__((visibility("hidden")))
-@interface CATSharingServiceTransportSendMessageOperation
+@interface CATSharingServiceTransportSendMessageOperation : CATOperation
 {
     id <CATSharingConnection> mConnection;
     CATMessage *mMessage;

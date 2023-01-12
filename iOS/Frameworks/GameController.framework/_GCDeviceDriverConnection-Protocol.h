@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class Protocol;
+#import <GameController/NSObject-Protocol.h>
 
-@protocol _GCDeviceDriverConnection
+@class GCFuture, Protocol;
+
+@protocol _GCDeviceDriverConnection <NSObject>
 @property(readonly, nonatomic, getter=isInvalid) _Bool invalid;
 - (void)connectToDeviceService:(Protocol *)arg1 withClient:(id)arg2 reply:(void (^)(id, NSError *))arg3;
+- (GCFuture *)connectToDeviceService:(Protocol *)arg1 withClient:(id)arg2;
 - (void)scheduleSendBarrierBlock:(void (^)(void))arg1;
 - (id)addInvalidationHandler:(void (^)(void))arg1;
 - (id)addInterruptionHandler:(void (^)(void))arg1;

@@ -6,10 +6,10 @@
 
 #import <CoverSheet/NSObject-Protocol.h>
 
-@class SBUIProudLockContainerViewController;
+@class NSString, SBUIProudLockContainerViewController;
 
 @protocol SBUIProudLockContainerViewControllerDelegate <NSObject>
 - (_Bool)proudLockContainerViewControllerIsCoverSheetVisible:(SBUIProudLockContainerViewController *)arg1;
-- (void)proudLockContainerViewController:(SBUIProudLockContainerViewController *)arg1 guidanceTextVisibilityDidChangeAnimated:(_Bool)arg2;
+- (void)proudLockContainerViewController:(SBUIProudLockContainerViewController *)arg1 guidanceTextVisibilityDidChange:(NSString *)arg2 animated:(_Bool)arg3;
 @end
 

@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI226AudioTemplateSceneDelegate : NSObject
 {
-    MISSING_TYPE *$__lazy_storage_$_resolvers;
+    MISSING_TYPE *$__lazy_storage_$_resolver;
     MISSING_TYPE *$__lazy_storage_$_commandCenter;
     MISSING_TYPE *interfaceController;
     MISSING_TYPE *audioTemplateController;

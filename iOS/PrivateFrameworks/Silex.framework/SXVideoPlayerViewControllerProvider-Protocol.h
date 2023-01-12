@@ -10,6 +10,6 @@
 
 @protocol SXVideoPlayerViewControllerProvider <NSObject>
 @property(nonatomic) _Bool presentedAndAppeared;
-- (SXVideoPlayerViewControllerResponse *)videoPlayerViewControllerForURL:(NSURL *)arg1 receiveOwnershipBlock:(void (^)(SXVideoPlayerViewController *))arg2;
+- (SXVideoPlayerViewControllerResponse *)videoPlayerViewControllerForURL:(NSURL *)arg1 receiveOwnershipBlock:(void (^)(SVVideoPlayerViewController *))arg2;
 @end
 

@@ -6,13 +6,11 @@
 
 #import <UIKit/UIPrintPageRenderer.h>
 
-#import <SafariServices/UIPrintInteractionControllerDelegate-Protocol.h>
-
 @class NSNumberFormatter, NSString, UIColor, UIFont, UIPrintFormatter;
 @protocol SFPrintPageRendererDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFPrintPageRenderer : UIPrintPageRenderer <UIPrintInteractionControllerDelegate>
+@interface SFPrintPageRenderer : UIPrintPageRenderer
 {
     NSNumberFormatter *_numberFormatter;
     double _URLWidth;

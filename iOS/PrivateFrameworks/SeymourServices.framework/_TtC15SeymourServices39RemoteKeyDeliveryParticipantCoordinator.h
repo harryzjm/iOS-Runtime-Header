@@ -11,14 +11,14 @@
 @interface _TtC15SeymourServices39RemoteKeyDeliveryParticipantCoordinator : _TtCs12_SwiftObject
 {
     MISSING_TYPE *eventHub;
-    MISSING_TYPE *lock;
     MISSING_TYPE *queue;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *connectionBrokerProvider;
     MISSING_TYPE *connectionPool;
     MISSING_TYPE *handshakeRegistry;
     MISSING_TYPE *localDeviceProvider;
-    MISSING_TYPE *state;
+    MISSING_TYPE *platform;
+    MISSING_TYPE *connection;
 }
 
 @end

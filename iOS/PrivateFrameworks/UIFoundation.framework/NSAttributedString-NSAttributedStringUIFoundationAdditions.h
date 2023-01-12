@@ -52,7 +52,7 @@
 - (unsigned long long)nextWordFromIndex:(unsigned long long)arg1 forward:(_Bool)arg2;
 - (unsigned long long)lineBreakByHyphenatingBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2;
 - (unsigned long long)lineBreakBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2;
-- (unsigned long long)_lineBreakBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2 usesAlternativeBreaker:(_Bool)arg3 lineBreakStrategy:(unsigned long long)arg4;
+- (unsigned long long)_lineBreakBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2 lineBreakStrategy:(unsigned long long)arg3;
 - (struct _NSRange)doubleClickAtIndex:(unsigned long long)arg1 inRange:(struct _NSRange)arg2;
 - (struct _NSRange)doubleClickAtIndex:(unsigned long long)arg1;
 - (id)defaultLanguage;

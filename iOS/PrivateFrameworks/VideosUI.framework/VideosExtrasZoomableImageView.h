@@ -6,13 +6,10 @@
 
 #import <UIKit/UIScrollView.h>
 
-#import <VideosUI/UIScrollViewDelegate-Protocol.h>
-#import <VideosUI/VideosExtrasZoomingImageTransitionParticipant-Protocol.h>
-
 @class NSString, UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasZoomableImageView : UIScrollView <UIScrollViewDelegate, VideosExtrasZoomingImageTransitionParticipant>
+@interface VideosExtrasZoomableImageView : UIScrollView
 {
     UIImage *_image;
     double _scaleToRestoreAfterResize;

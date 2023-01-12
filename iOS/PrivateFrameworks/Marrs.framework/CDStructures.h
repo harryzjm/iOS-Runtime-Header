@@ -6,24 +6,13 @@
 
 #pragma mark Named Structures
 
-struct CorrectionsRepetitionPredictorPlugin {
-    CDUnknownFunctionPointerType *_vptr$RepetitionPredictorBase;
-    struct unordered_map<unsigned int, std::unordered_map<unsigned int, float>, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, std::unordered_map<unsigned int, float>>>> cost_matrix;
-    struct unordered_map<std::string, std::unordered_map<std::string, float>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::unordered_map<std::string, float>>>> symbolic_cost_matrix;
-    struct SymbolMapper symbol_map;
-    struct map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<const std::string, std::string>>> mConfig;
-    vector_bfe5b09a trigger_phrases;
-    CDUnknownFunctionPointerType *_vptr$InputValidator;
-    basic_string_0ec669f3 locale;
-    struct unordered_set<std::string, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::string>> skiplist;
-    float asr_confidence_model_weight;
-    basic_string_0ec669f3 operating_point;
-    basic_string_0ec669f3 asset_version;
-};
+struct MentionDetectorRequest;
+
+struct MentionResolverRequest;
 
 struct QRHypothesis {
     struct Uuid _field1;
-    basic_string_0ec669f3 _field2;
+    basic_string_05660eb3 _field2;
     double _field3;
     int _field4;
 };
@@ -32,53 +21,51 @@ struct QRInteraction {
     struct vector<marrs::qr::orchestration::QRUtterance, std::allocator<marrs::qr::orchestration::QRUtterance>> _field1;
     struct vector<marrs::qr::orchestration::QRUtterance, std::allocator<marrs::qr::orchestration::QRUtterance>> _field2;
     struct vector<marrs::qr::orchestration::QRToken, std::allocator<marrs::qr::orchestration::QRToken>> _field3;
-    basic_string_0ec669f3 _field4;
+    basic_string_05660eb3 _field4;
     _Bool _field5;
     unsigned long long _field6;
 };
 
 struct QRRequest {
-    struct Uuid _field1;
+    int _field1;
     struct vector<marrs::qr::orchestration::QRInteraction, std::allocator<marrs::qr::orchestration::QRInteraction>> _field2;
 };
 
 struct QRResponse {
-    struct Uuid _field1;
-    struct vector<marrs::qr::orchestration::QRHypothesis, std::allocator<marrs::qr::orchestration::QRHypothesis>> _field2;
-    int _field3;
+    struct vector<marrs::qr::orchestration::QRHypothesis, std::allocator<marrs::qr::orchestration::QRHypothesis>> _field1;
+    int _field2;
+    double _field3;
     double _field4;
     double _field5;
-    double _field6;
-    int _field7;
+    int _field6;
 };
 
 struct QRToken {
-    basic_string_0ec669f3 _field1;
-    basic_string_0ec669f3 _field2;
-    vector_bfe5b09a _field3;
+    basic_string_05660eb3 _field1;
+    basic_string_05660eb3 _field2;
+    vector_74824a0a _field3;
     _Bool _field4;
     _Bool _field5;
     unsigned long long _field6;
     unsigned long long _field7;
     double _field8;
-    basic_string_0ec669f3 _field9;
+    basic_string_05660eb3 _field9;
     _Bool _field10;
 };
 
 struct QRUtterance {
     struct Uuid _field1;
-    basic_string_0ec669f3 _field2;
+    basic_string_05660eb3 _field2;
     struct vector<marrs::qr::orchestration::QRToken, std::allocator<marrs::qr::orchestration::QRToken>> _field3;
     struct vector<marrs::qr::orchestration::QRToken, std::allocator<marrs::qr::orchestration::QRToken>> _field4;
     double _field5;
 };
 
-struct QueryRewriteOrchestrator;
-
-struct SymbolMapper {
-    basic_string_0ec669f3 mEpsilonString;
-    unsigned int mEpsilonPhone;
-    struct unordered_map<std::string, unsigned int, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, unsigned int>>> mSymbolMap;
+struct Reader {
+    char *_field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    _Bool _field4;
 };
 
 struct Uuid {
@@ -91,40 +78,26 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
-                    char *__data_;
-                    unsigned long long __size_;
-                    unsigned long long __cap_;
-                } __l;
+                    char *_field1;
+                    unsigned long long _field2;
+                    unsigned long long _field3;
+                } _field1;
                 struct __short {
-                    char __data_[23];
+                    char _field1[23];
                     struct {
-                        unsigned char __size_;
-                    } ;
-                } __s;
+                        unsigned char _field1;
+                    } _field2;
+                } _field2;
                 struct __raw {
-                    unsigned long long __words[3];
-                } __r;
-            } ;
-        } __value_;
-    } __r_;
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
 };
 
 struct exception_ptr {
     void *_field1;
-};
-
-struct map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<const std::string, std::string>>> {
-    struct __tree<std::__value_type<std::string, std::string>, std::__map_value_compare<std::string, std::__value_type<std::string, std::string>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::string>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::string>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> {
-                void *__left_;
-            } __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::string>, std::less<std::string>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
 };
 
 struct unique_ptr<marrs::qr::orchestration::QRRequest, std::default_delete<marrs::qr::orchestration::QRRequest>> {
@@ -133,122 +106,16 @@ struct unique_ptr<marrs::qr::orchestration::QRRequest, std::default_delete<marrs
     } _field1;
 };
 
-struct unique_ptr<marrs::qr::orchestration::QueryRewriteOrchestrator, std::default_delete<marrs::qr::orchestration::QueryRewriteOrchestrator>> {
-    struct __compressed_pair<marrs::qr::orchestration::QueryRewriteOrchestrator *, std::default_delete<marrs::qr::orchestration::QueryRewriteOrchestrator>> {
-        struct QueryRewriteOrchestrator *__value_;
-    } __ptr_;
+struct unique_ptr<sirinluinternalmention_detector::MentionDetectorRequest, std::default_delete<sirinluinternalmention_detector::MentionDetectorRequest>> {
+    struct __compressed_pair<sirinluinternalmention_detector::MentionDetectorRequest *, std::default_delete<sirinluinternalmention_detector::MentionDetectorRequest>> {
+        struct MentionDetectorRequest *_field1;
+    } _field1;
 };
 
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>*>*>>> {
-        void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>*>*>>> {
-        void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>*>*>>> {
-        void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::string, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::string, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::string, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::string, void *>*>*>>> {
-        void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::string, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::string, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unordered_map<std::string, std::unordered_map<std::string, float>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::unordered_map<std::string, float>>>> {
-    struct __hash_table<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, void *>*> {
-                void *__next_;
-            } __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, std::hash<std::string>, std::equal_to<std::string>, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::unordered_map<std::string, float>>, std::equal_to<std::string>, std::hash<std::string>, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-};
-
-struct unordered_map<std::string, unsigned int, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, unsigned int>>> {
-    struct __hash_table<std::__hash_value_type<std::string, unsigned int>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, unsigned int>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, unsigned int>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, unsigned int>>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, unsigned int>, void *>*> {
-                void *__next_;
-            } __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, unsigned int>, std::hash<std::string>, std::equal_to<std::string>, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, unsigned int>, std::equal_to<std::string>, std::hash<std::string>, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-};
-
-struct unordered_map<unsigned int, std::unordered_map<unsigned int, float>, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, std::unordered_map<unsigned int, float>>>> {
-    struct __hash_table<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, std::__unordered_map_hasher<unsigned int, std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, std::hash<unsigned int>, std::equal_to<unsigned int>, true>, std::__unordered_map_equal<unsigned int, std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, std::equal_to<unsigned int>, std::hash<unsigned int>, true>, std::allocator<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, void *>*> {
-                void *__next_;
-            } __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<unsigned int, std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, std::hash<unsigned int>, std::equal_to<unsigned int>, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<unsigned int, std::__hash_value_type<unsigned int, std::unordered_map<unsigned int, float>>, std::equal_to<unsigned int>, std::hash<unsigned int>, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-};
-
-struct unordered_set<std::string, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::string>> {
-    struct __hash_table<std::string, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::string>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::string, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::string, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::string, void *>*>, std::allocator<std::__hash_node<std::string, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::string, void *>*> {
-                void *__next_;
-            } __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::hash<std::string>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::equal_to<std::string>> {
-            float __value_;
-        } __p3_;
-    } __table_;
+struct unique_ptr<sirinluinternalmention_resolver::MentionResolverRequest, std::default_delete<sirinluinternalmention_resolver::MentionResolverRequest>> {
+    struct __compressed_pair<sirinluinternalmention_resolver::MentionResolverRequest *, std::default_delete<sirinluinternalmention_resolver::MentionResolverRequest>> {
+        struct MentionResolverRequest *_field1;
+    } _field1;
 };
 
 struct vector<marrs::qr::orchestration::QRHypothesis, std::allocator<marrs::qr::orchestration::QRHypothesis>> {
@@ -284,11 +151,11 @@ struct vector<marrs::qr::orchestration::QRUtterance, std::allocator<marrs::qr::o
 };
 
 struct vector<std::string, std::allocator<std::string>> {
-    void *__begin_;
-    void *__end_;
+    void *_field1;
+    void *_field2;
     struct __compressed_pair<std::string *, std::allocator<std::string>> {
-        void *__value_;
-    } __end_cap_;
+        void *_field1;
+    } _field3;
 };
 
 #pragma mark Typedef'd Structures
@@ -299,23 +166,23 @@ typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> 
         struct __rep {
             union {
                 struct __long {
-                    char *__data_;
-                    unsigned long long __size_;
-                    unsigned long long __cap_;
-                } __l;
+                    char *_field1;
+                    unsigned long long _field2;
+                    unsigned long long _field3;
+                } _field1;
                 struct __short {
-                    char __data_[23];
+                    char _field1[23];
                     struct {
-                        unsigned char __size_;
-                    } ;
-                } __s;
+                        unsigned char _field1;
+                    } _field2;
+                } _field2;
                 struct __raw {
-                    unsigned long long __words[3];
-                } __r;
-            } ;
-        } __value_;
-    } __r_;
-} basic_string_0ec669f3;
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+} basic_string_05660eb3;
 
 typedef struct unique_ptr<marrs::qr::orchestration::QRRequest, std::default_delete<marrs::qr::orchestration::QRRequest>> {
     struct __compressed_pair<marrs::qr::orchestration::QRRequest *, std::default_delete<marrs::qr::orchestration::QRRequest>> {
@@ -323,11 +190,23 @@ typedef struct unique_ptr<marrs::qr::orchestration::QRRequest, std::default_dele
     } _field1;
 } unique_ptr_d07b5ea7;
 
+typedef struct unique_ptr<sirinluinternalmention_detector::MentionDetectorRequest, std::default_delete<sirinluinternalmention_detector::MentionDetectorRequest>> {
+    struct __compressed_pair<sirinluinternalmention_detector::MentionDetectorRequest *, std::default_delete<sirinluinternalmention_detector::MentionDetectorRequest>> {
+        struct MentionDetectorRequest *_field1;
+    } _field1;
+} unique_ptr_db728b78;
+
+typedef struct unique_ptr<sirinluinternalmention_resolver::MentionResolverRequest, std::default_delete<sirinluinternalmention_resolver::MentionResolverRequest>> {
+    struct __compressed_pair<sirinluinternalmention_resolver::MentionResolverRequest *, std::default_delete<sirinluinternalmention_resolver::MentionResolverRequest>> {
+        struct MentionResolverRequest *_field1;
+    } _field1;
+} unique_ptr_f525a9db;
+
 typedef struct vector<std::string, std::allocator<std::string>> {
-    void *__begin_;
-    void *__end_;
+    void *_field1;
+    void *_field2;
     struct __compressed_pair<std::string *, std::allocator<std::string>> {
-        void *__value_;
-    } __end_cap_;
-} vector_bfe5b09a;
+        void *_field1;
+    } _field3;
+} vector_74824a0a;
 

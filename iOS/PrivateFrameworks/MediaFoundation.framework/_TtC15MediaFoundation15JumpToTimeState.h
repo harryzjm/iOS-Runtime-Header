@@ -14,6 +14,7 @@
     MISSING_TYPE *playbackDidStall;
     MISSING_TYPE *jumpToTimeInfo;
     MISSING_TYPE *suppressed;
+    MISSING_TYPE *deferredPlayerEvent;
 }
 
 @end

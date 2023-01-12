@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, VUILibraryListItemView;
 @protocol VUILibraryDownloadPopoverViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryDownloadPopoverViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface VUILibraryDownloadPopoverViewController : UIViewController
 {
     id <VUILibraryDownloadPopoverViewControllerDelegate> _delegate;
     VUILibraryListItemView *_listView;

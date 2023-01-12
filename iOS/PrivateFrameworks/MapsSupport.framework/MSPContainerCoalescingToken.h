@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/MSPContainerCoalescingToken-Protocol.h>
-
 @class MSPContainer, NSString;
 @protocol NSObject><NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface MSPContainerCoalescingToken : NSObject <MSPContainerCoalescingToken>
+@interface MSPContainerCoalescingToken : NSObject
 {
     MSPContainer *_container;
     id <NSObject><NSCopying> _context;

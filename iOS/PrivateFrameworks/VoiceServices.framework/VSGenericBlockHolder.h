@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VoiceServices/VSGenericUpdate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSGenericBlockHolder : NSObject <VSGenericUpdate>
+@interface VSGenericBlockHolder : NSObject
 {
     CDUnknownBlockType _block;
 }

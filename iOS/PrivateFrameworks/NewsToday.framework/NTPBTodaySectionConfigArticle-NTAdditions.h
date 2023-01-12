@@ -6,11 +6,9 @@
 
 #import <NewsTransport/NTPBTodaySectionConfigArticle.h>
 
-#import <NewsToday/NTHeadlineMetadata-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface NTPBTodaySectionConfigArticle (NTAdditions) <NTHeadlineMetadata>
+@interface NTPBTodaySectionConfigArticle (NTAdditions)
 @property(readonly, nonatomic) NSDate *displayDate;
 
 // Remaining properties

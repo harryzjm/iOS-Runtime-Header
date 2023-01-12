@@ -7,12 +7,12 @@
 #import <Silex/NSObject-Protocol.h>
 
 @class NSArray;
-@protocol SXBlueprintMarker, SXComponent, SXComponentInsertionCondition, SXComponentInsertionLayoutProvider;
+@protocol SXBlueprintMarker, SXComponent, SXComponentInsertionCondition, SXComponentInsertionLayoutProvider, SXDOMObjectProviding;
 
 @protocol SXComponentInsertionConditionEngine <NSObject>
 - (void)addCondition:(id <SXComponentInsertionCondition>)arg1;
 - (_Bool)validateMarker:(id <SXBlueprintMarker>)arg1 componentTraits:(unsigned long long)arg2 layoutProvider:(id <SXComponentInsertionLayoutProvider>)arg3;
 - (void)insertedComponent:(id <SXComponent>)arg1 approximateLocation:(struct CGPoint)arg2;
-- (void)prepareWithComponents:(NSArray *)arg1 layoutProvider:(id <SXComponentInsertionLayoutProvider>)arg2;
+- (void)prepareWithComponents:(NSArray *)arg1 layoutProvider:(id <SXComponentInsertionLayoutProvider>)arg2 DOMObjectProvider:(id <SXDOMObjectProviding>)arg3;
 @end
 

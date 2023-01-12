@@ -8,6 +8,6 @@
 
 @interface HAMenstrualAlgorithmsPrediction (HKMenstrualCycles)
 - (id)hkmc_description;
-- (id)hkmc_projectionConstrainingToMostLikelyDays:(_Bool)arg1;
+- (id)hkmc_projectionConstrainingToMostLikelyDays:(_Bool)arg1 overridePredictionPrimarySource:(id)arg2 currentDayIndex:(long long)arg3;
 @end
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLRenderPassColorAttachmentDescriptorArray.h"
+
 @class MTLRenderPassColorAttachmentDescriptorInternal, MTLRenderPassDepthAttachmentDescriptorInternal, MTLRenderPassStencilAttachmentDescriptorInternal;
 
 __attribute__((visibility("hidden")))
-@interface MTLRenderPassColorAttachmentDescriptorArrayInternal
+@interface MTLRenderPassColorAttachmentDescriptorArrayInternal : MTLRenderPassColorAttachmentDescriptorArray
 {
     MTLRenderPassColorAttachmentDescriptorInternal *_color_descriptors[8];
     MTLRenderPassDepthAttachmentDescriptorInternal *_depth_descriptor;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTDelayedInvocationScheduler, DVTStackBacktrace, NSArray, NSNumber, NSRunLoop, NSString;
 
-@interface DVTDelayedInvocation : NSObject <DVTInvalidation>
+@interface DVTDelayedInvocation : NSObject
 {
     CDUnknownBlockType _block;
     NSRunLoop *_schedulingRunLoop;

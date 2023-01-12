@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMAccessoryNumberSetting.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString;
 
-@interface HMAccessoryNumberSetting (HFDebugging) <HFStateDumpBuildable>
+@interface HMAccessoryNumberSetting (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (_Bool)hf_isBooleanSetting;
 

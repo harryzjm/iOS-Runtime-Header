@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/HSBrowserDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPHSBrowserDelegate : NSObject <HSBrowserDelegate>
+@interface MPHSBrowserDelegate : NSObject
 {
 }
 

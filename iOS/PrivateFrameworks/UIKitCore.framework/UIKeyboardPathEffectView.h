@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class CADisplayLink, NSMutableArray, NSMutableIndexSet, UIKBHandwritingQuadCurvePointFIFO;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardPathEffectView
+@interface UIKeyboardPathEffectView : UIView
 {
     _Bool _increasedContrastEnabled;
     _Bool _done;

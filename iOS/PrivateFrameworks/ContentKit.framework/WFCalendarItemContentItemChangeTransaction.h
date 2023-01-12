@@ -4,17 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKCalendarItem;
+#import "WFContentItemChangeTransaction.h"
+
+@class EKCalendarItem, EKEventStore;
 
 __attribute__((visibility("hidden")))
-@interface WFCalendarItemContentItemChangeTransaction
+@interface WFCalendarItemContentItemChangeTransaction : WFContentItemChangeTransaction
 {
     EKCalendarItem *_mutableEvent;
+    EKEventStore *_eventStore;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
 @property(readonly, nonatomic) EKCalendarItem *mutableEvent; // @synthesize mutableEvent=_mutableEvent;
-- (id)initWithOriginalContentItem:(id)arg1 mutableEvent:(id)arg2;
+- (void)removeAllAttachments;
+- (void)addAttachments:(id)arg1;
+- (void)updateAttachments:(id)arg1;
+- (id)initWithContentItem:(id)arg1 eventStore:(id)arg2;
 
 @end
 

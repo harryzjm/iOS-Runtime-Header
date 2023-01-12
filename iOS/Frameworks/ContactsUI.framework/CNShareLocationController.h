@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/FMFSessionDelegate-Protocol.h>
-
 @class CNContact, CNFuture, CNUIIDSAvailabilityProvider, FMFSession, NSSet, NSString;
 @protocol CNCancelable, CNSchedulerProvider, CNShareLocationProtocol;
 
 __attribute__((visibility("hidden")))
-@interface CNShareLocationController : NSObject <FMFSessionDelegate>
+@interface CNShareLocationController : NSObject
 {
     CNContact *_contact;
     NSObject<CNShareLocationProtocol> *_shareLocationDelegate;

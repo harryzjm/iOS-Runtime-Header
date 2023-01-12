@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, NSString;
+@class FCCompletedPaymentTransaction, NSError, NSString;
 
 @protocol FCPaymentTransactionManagerDelegate
 - (void)transactionFailedWithProductID:(NSString *)arg1 transactionState:(long long)arg2 transactionError:(NSError *)arg3;
-- (void)transactionPurchasedWithProductID:(NSString *)arg1;
+- (void)transactionPurchased:(FCCompletedPaymentTransaction *)arg1;
 @end
 

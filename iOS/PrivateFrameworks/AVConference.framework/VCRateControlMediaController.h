@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     unsigned char _videoPayloadType;
     unsigned int _videoRefreshFrameTimestamp;
     unsigned int _videoRefreshFramePacketCount;
+    double _lastVideoRefreshFrameTime;
     double _lastVideoKeyFrameTime;
     SenderLargeFrameInfo *_senderLargeFrameInfo;
     unsigned int _probingLargeFrameSize;
@@ -68,8 +69,10 @@ __attribute__((visibility("hidden")))
     unsigned int _afrcRemoteEstimatedBandwidth;
 }
 
+@property(nonatomic) struct tagHANDLE *mediaQueue; // @synthesize mediaQueue=_hMediaQueue;
 @property(retain, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
 @property(nonatomic) _Bool enableAggressiveProbingSequence; // @synthesize enableAggressiveProbingSequence=_enableAggressiveProbingSequence;
+@property(readonly, nonatomic) double lastVideoRefreshFrameTime; // @synthesize lastVideoRefreshFrameTime=_lastVideoRefreshFrameTime;
 @property(readonly, nonatomic) double lastVideoKeyFrameTime; // @synthesize lastVideoKeyFrameTime=_lastVideoKeyFrameTime;
 @property(nonatomic) int audioFractionTier; // @synthesize audioFractionTier=_audioFractionTier;
 @property(nonatomic) _Bool isRTPFlushBasebandFromVCRateControl; // @synthesize isRTPFlushBasebandFromVCRateControl=_isRTPFlushBasebandFromVCRateControl;
@@ -112,7 +115,7 @@ __attribute__((visibility("hidden")))
 - (void)stopVideoByVCRateControl;
 - (void)pauseVideoByUser:(_Bool)arg1;
 - (void)updateAudioStallInMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1 isSuggestionNeeded:(_Bool *)arg2 atTime:(double)arg3;
-- (void)updateBasebandSuggestionWithStatistics:(CDStruct_c0785916)arg1;
+- (void)updateBasebandSuggestionWithStatistics:(CDStruct_7df19fcb)arg1;
 - (void)computePacketLossWithRemoteInfo:(struct VCRCMediaPLPFromRemoteInfo *)arg1;
 - (void)getMediaQueueRateChangeCounter:(unsigned int *)arg1 rateChangeTime:(double *)arg2;
 - (void)getMediaQueueInVideoBitrate:(double *)arg1 outVideoBitrate:(double *)arg2 inAudioBitrate:(double *)arg3 outAudioBitrate:(double *)arg4;

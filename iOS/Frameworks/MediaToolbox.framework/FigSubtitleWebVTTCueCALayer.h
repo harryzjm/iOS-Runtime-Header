@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaToolbox/CALayerDelegate-Protocol.h>
+#import "FigSubtitleBackdropCALayer.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FigSubtitleWebVTTCueCALayer <CALayerDelegate>
+@interface FigSubtitleWebVTTCueCALayer : FigSubtitleBackdropCALayer
 {
     struct OpaqueFigSubtitleWebVTTCueCALayerInternal *layerInternal;
 }

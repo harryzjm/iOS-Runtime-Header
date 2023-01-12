@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _timestamp;
 }
 
++ (_Bool)isLivePhotoKeyFrameEnabled;
 - (void).cxx_destruct;
 @property(nonatomic) float humanActionScore; // @synthesize humanActionScore=_humanActionScore;
 @property(nonatomic) float humanPoseScore; // @synthesize humanPoseScore=_humanPoseScore;

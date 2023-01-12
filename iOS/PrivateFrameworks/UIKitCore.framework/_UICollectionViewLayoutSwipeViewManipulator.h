@@ -6,20 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISwipeViewManipulator-Protocol.h>
-
-@class NSString, UICollectionView;
+@class NSString, UICollectionView, _UICollectionViewLayoutSwipeActionsModule;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewLayoutSwipeViewManipulator : NSObject <_UISwipeViewManipulator>
+@interface _UICollectionViewLayoutSwipeViewManipulator : NSObject
 {
     UICollectionView *_collectionView;
+    _UICollectionViewLayoutSwipeActionsModule *_swipeActionsModule;
 }
 
 - (void).cxx_destruct;
 - (struct CGRect)restingFrameForSwipedView:(id)arg1 atIndexPath:(id)arg2;
-- (void)moveSwipedView:(id)arg1 atIndexPath:(id)arg2 withSwipeInfo:(CDStruct_9b6dff2a)arg3 animator:(id)arg4;
-- (id)initWithCollectionView:(id)arg1;
+- (void)moveSwipedView:(id)arg1 atIndexPath:(id)arg2 withSwipeInfo:(CDStruct_b06b0113)arg3 animator:(id)arg4;
+- (id)initWithCollectionView:(id)arg1 swipeActionsModule:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

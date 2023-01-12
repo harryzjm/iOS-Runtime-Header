@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/ASCAuthorizationPresenterDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKASCAuthorizationPresenterDelegate : NSObject <ASCAuthorizationPresenterDelegate>
+@interface WKASCAuthorizationPresenterDelegate : NSObject
 {
     struct WeakPtr<WebKit::AuthenticatorPresenterCoordinator, WTF::EmptyCounter> _coordinator;
 }

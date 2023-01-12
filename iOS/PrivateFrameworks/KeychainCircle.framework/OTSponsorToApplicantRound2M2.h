@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <KeychainCircle/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface OTSponsorToApplicantRound2M2 : PBCodable <NSCopying>
+@interface OTSponsorToApplicantRound2M2 : PBCodable
 {
     NSData *_voucher;
     NSData *_voucherSignature;

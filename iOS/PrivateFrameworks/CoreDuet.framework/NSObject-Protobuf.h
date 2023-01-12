@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreDuet/_DKProtobufConverting-Protocol.h>
-
 @class NSString;
 
-@interface NSObject (Protobuf) <_DKProtobufConverting>
+@interface NSObject (Protobuf)
 + (id)fromPBCodable:(id)arg1;
 - (id)toPBCodable;
 

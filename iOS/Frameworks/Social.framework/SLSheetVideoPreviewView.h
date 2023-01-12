@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SLSheetImagePreviewView.h"
+
 @class UIImageView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SLSheetVideoPreviewView
+@interface SLSheetVideoPreviewView : SLSheetImagePreviewView
 {
     UIView *_infoBar;
     UIImageView *_videoGlyphView;

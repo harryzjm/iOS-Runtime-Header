@@ -6,11 +6,9 @@
 
 #import <LocalAuthentication/LAContext.h>
 
-#import <AutomationMode/XAMAuthorization-Protocol.h>
-
 @class NSData, NSString;
 
-@interface LAContext (XAMAuthorization) <XAMAuthorization>
+@interface LAContext (XAMAuthorization)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

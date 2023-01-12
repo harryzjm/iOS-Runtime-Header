@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI222NotificationRegisterer : NSObject
 {
-    MISSING_TYPE *authorizationRequester;
     MISSING_TYPE *categoriesRegisterer;
 }
 

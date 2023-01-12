@@ -8,13 +8,19 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed22FormatLayeredMediaView : UIView
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *motion;
+    MISSING_TYPE *layeredMediaView;
+    MISSING_TYPE *lastRenderedBounds;
 }
 
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 
 @end
 

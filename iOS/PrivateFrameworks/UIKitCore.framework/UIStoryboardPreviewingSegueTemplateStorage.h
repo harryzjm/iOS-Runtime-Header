@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class UIStoryboardPreviewingSegueTemplate, UIStoryboardSegueTemplate, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIStoryboardPreviewingSegueTemplateStorage : NSObject <NSCoding>
+@interface UIStoryboardPreviewingSegueTemplateStorage : NSObject
 {
     UIView *_sender;
     UIStoryboardPreviewingSegueTemplate *_previewTemplate;

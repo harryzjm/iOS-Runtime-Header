@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIClientContextPreviewContainer-Protocol.h>
-
 @class SKUIClientContext, SKUIPreviewContainerViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIClientContextPreviewContainer : IKJSObject <SKUIClientContextPreviewContainer>
+@interface SKUIClientContextPreviewContainer : IKJSObject
 {
     SKUIClientContext *_clientContext;
     SKUIPreviewContainerViewController *_previewContainerViewController;

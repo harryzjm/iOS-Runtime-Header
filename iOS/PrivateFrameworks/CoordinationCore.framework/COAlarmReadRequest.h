@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "COMeshRequest.h"
+
 @class NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface COAlarmReadRequest
+@interface COAlarmReadRequest : COMeshRequest
 {
     _Bool _isForMerge;
     _Bool _requiresFilter;

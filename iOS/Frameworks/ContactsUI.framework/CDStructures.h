@@ -34,6 +34,13 @@ struct CGSize {
     double height;
 };
 
+struct NSDirectionalEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+};
+
 struct UIEdgeInsets {
     double top;
     double left;
@@ -57,6 +64,14 @@ typedef struct {
     id _field1;
     unsigned long long _field2;
 } CDStruct_856ef1b3;
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    double _field3;
+    double _field4;
+    long long _field5;
+} CDStruct_96a80611;
 
 typedef struct {
     unsigned long long _field1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/WBSFormsMetadataProvider-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SFFormsMetadataProvider : NSObject <WBSFormsMetadataProvider>
+@interface SFFormsMetadataProvider : NSObject
 {
     NSDictionary *_frameHandleToForms;
 }

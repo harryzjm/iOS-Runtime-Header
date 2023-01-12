@@ -6,11 +6,9 @@
 
 #import <Foundation/NSMutableSet.h>
 
-#import <WorkflowKit/WFOutputTraversalContext-Protocol.h>
-
 @class NSString;
 
-@interface NSMutableSet (WFOutputTraversalContext) <WFOutputTraversalContext>
+@interface NSMutableSet (WFOutputTraversalContext)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

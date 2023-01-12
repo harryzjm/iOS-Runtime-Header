@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/Endpointer-Protocol.h>
-
 @class NSDictionary, NSMutableData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKAudioAnalyzer : NSObject <Endpointer>
+@interface CKAudioAnalyzer : NSObject
 {
     _Bool _detectedMusic;
     double _sampleRate;

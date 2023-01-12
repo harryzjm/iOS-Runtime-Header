@@ -9,6 +9,6 @@
 @class NSIndexPath, UICollectionView;
 
 @protocol CKEditableCollectionViewDelegate <UICollectionViewDelegate>
-- (_Bool)collectionView:(UICollectionView *)arg1 isEditableItemAtIndexPath:(NSIndexPath *)arg2;
+- (_Bool)collectionView:(UICollectionView *)arg1 isSelectableDuringEditModeForItemAtIndexPath:(NSIndexPath *)arg2;
 @end
 

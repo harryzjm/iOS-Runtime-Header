@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MobileSafariUI/WebClipDelegate-Protocol.h>
-#import <MobileSafariUI/WebClipViewControllerDelegate-Protocol.h>
-
-@class NSString, UINavigationController, UIWebClip, WebClipViewController, _WKApplicationManifest;
+@class NSString, UIImage, UINavigationController, UIWebClip, WebClipViewController, _WKApplicationManifest;
 
 __attribute__((visibility("hidden")))
-@interface AddToHomeScreenUIActivity <WebClipDelegate, WebClipViewControllerDelegate>
+@interface AddToHomeScreenUIActivity
 {
     UINavigationController *_wrappingNavigationController;
     WebClipViewController *_webClipViewController;
@@ -18,9 +15,11 @@ __attribute__((visibility("hidden")))
     _Bool _webClipConfigured;
     _Bool _waitingForSnapshot;
     _WKApplicationManifest *_manifest;
+    UIImage *_manifestIcon;
 }
 
 - (void).cxx_destruct;
+- (void)_downloadManifestIconWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updateImageFromActiveTabDocument;
 - (id)_manifestTitle;
 - (void)_createWebClip;

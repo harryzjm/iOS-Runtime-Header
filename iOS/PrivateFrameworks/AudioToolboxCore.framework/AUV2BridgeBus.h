@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AUAudioUnitBus.h"
+
 @class AUAudioUnitV2Bridge;
 
 __attribute__((visibility("hidden")))
-@interface AUV2BridgeBus
+@interface AUV2BridgeBus : AUAudioUnitBus
 {
     AUAudioUnitV2Bridge *_owner;
     struct OpaqueAudioComponentInstance *_audioUnit;

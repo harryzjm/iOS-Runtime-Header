@@ -7,6 +7,6 @@
 #import <GameController/_GCIPCRemoteEndpointInterface-Protocol.h>
 
 @protocol GCSettingsXPCProxyRemoteServerEndpointInterface <_GCIPCRemoteEndpointInterface>
-- (void)fetchSettingsWithReply:(void (^)(GCControllerSettings *, GCControllerSettings *))arg1;
+- (void)fetchProfileWithReply:(void (^)(GCSProfile *))arg1;
 @end
 

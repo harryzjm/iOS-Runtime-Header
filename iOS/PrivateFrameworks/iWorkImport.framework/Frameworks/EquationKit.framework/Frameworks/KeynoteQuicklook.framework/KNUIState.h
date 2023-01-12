@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-#import <KeynoteQuicklook/TSAUIState-Protocol.h>
-
 @class KNMacUILayout, KNSlideCollectionSelection, NSArray, NSMutableDictionary, NSSet, NSString, TSDFreehandDrawingToolkitUIState, TSKSelectionPath;
 
-@interface KNUIState : NSObject <NSCopying, TSAUIState>
+@interface KNUIState : NSObject
 {
     double _mobileCanvasViewScale;
     struct CGPoint _mobileCanvasOffset;
@@ -35,6 +32,7 @@
     double _lightTableZoomScale;
     double _mobileLightTableZoomScale;
     double _desktopElementListViewWidth;
+    double _desktopActivityStreamViewWidth;
     double _desktopNavigatorViewWidth;
     double _desktopOutlineViewWidth;
     double _desktopPresenterNotesHeight;
@@ -64,6 +62,7 @@
 @property(nonatomic) double desktopPresenterNotesHeight; // @synthesize desktopPresenterNotesHeight=_desktopPresenterNotesHeight;
 @property(nonatomic) double desktopOutlineViewWidth; // @synthesize desktopOutlineViewWidth=_desktopOutlineViewWidth;
 @property(nonatomic) double desktopNavigatorViewWidth; // @synthesize desktopNavigatorViewWidth=_desktopNavigatorViewWidth;
+@property(nonatomic) double desktopActivityStreamViewWidth; // @synthesize desktopActivityStreamViewWidth=_desktopActivityStreamViewWidth;
 @property(nonatomic) double desktopElementListViewWidth; // @synthesize desktopElementListViewWidth=_desktopElementListViewWidth;
 @property(nonatomic) struct CGSize desktopMainContentSize; // @synthesize desktopMainContentSize=_desktopMainContentSize;
 @property(nonatomic) struct CGPoint desktopMainWindowOrigin; // @synthesize desktopMainWindowOrigin=_desktopMainWindowOrigin;

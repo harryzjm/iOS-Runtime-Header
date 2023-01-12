@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MobileSafari/UIPointerInteractionDelegate-Protocol.h>
+#import "SFUnifiedBarItemView.h"
 
 @class NSLayoutConstraint, NSString, UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface SFUnifiedBarButtonView <UIPointerInteractionDelegate>
+@interface SFUnifiedBarButtonView : SFUnifiedBarItemView
 {
     UIImageView *_imageView;
     NSLayoutConstraint *_imageViewLeadingConstraint;
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_hitRect;
 - (struct CGRect)_selectedIndicatorBounds;
 - (double)preferredWidth;
-- (id)_disabledColorForColor:(id)arg1;
 - (void)tintColorDidChange;
 @property(nonatomic) _Bool shouldTrailingAlignImage;
 - (void)setEnabled:(_Bool)arg1;

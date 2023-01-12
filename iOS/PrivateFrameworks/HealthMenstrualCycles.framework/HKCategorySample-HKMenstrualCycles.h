@@ -16,6 +16,7 @@
 + (id)hkmc_categorySampleWithOvulationTestResult:(long long)arg1 date:(id)arg2;
 + (id)hkmc_categorySampleWithCervicalMucusQuality:(long long)arg1 date:(id)arg2;
 + (id)hkmc_categorySampleWithMenstrualFlow:(long long)arg1 date:(id)arg2 startOfCycle:(_Bool)arg3;
+- (long long)hkmc_deviationType;
 - (long long)hkmc_cycleFactor;
 - (unsigned long long)hkmc_daySummarySymptom;
 - (long long)hkmc_daySummarySexualActivity;

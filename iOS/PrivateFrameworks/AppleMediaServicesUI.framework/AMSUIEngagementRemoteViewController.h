@@ -6,6 +6,7 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
+@class NSString;
 @protocol AMSUIEngagementTaskHostInterface, AMSUIEngagementTaskRemoteInterface;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +21,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <AMSUIEngagementTaskHostInterface> delegate; // @synthesize delegate=_delegate;
 - (void)preferredContentSizeDidChange:(struct CGSize)arg1;
 - (void)engagementTaskDidFinishWithResult:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
 @property(readonly, nonatomic) id <AMSUIEngagementTaskRemoteInterface> remoteProxy;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

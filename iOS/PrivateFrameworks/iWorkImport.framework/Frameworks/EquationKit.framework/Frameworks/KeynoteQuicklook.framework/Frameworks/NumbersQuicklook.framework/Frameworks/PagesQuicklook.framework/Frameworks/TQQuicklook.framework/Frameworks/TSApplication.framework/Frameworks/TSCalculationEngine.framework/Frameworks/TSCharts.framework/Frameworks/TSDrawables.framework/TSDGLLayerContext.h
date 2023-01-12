@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/TSDGLLayerContext-Protocol.h>
-
 @class EAGLContext, NSString;
 
-@interface TSDGLLayerContext : NSObject <TSDGLLayerContext>
+@interface TSDGLLayerContext : NSObject
 {
     EAGLContext *_context;
     unsigned int _renderbuffer;

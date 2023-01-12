@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HMFoundation/HMFSystemInfoSoftwareVersionDataSource-Protocol.h>
+#import "HMFObject.h"
 
 @class HMFSoftwareVersion, NSString;
 
 __attribute__((visibility("hidden")))
-@interface __HMFSoftwareVersionDataSource <HMFSystemInfoSoftwareVersionDataSource>
+@interface __HMFSoftwareVersionDataSource : HMFObject
 {
 }
 

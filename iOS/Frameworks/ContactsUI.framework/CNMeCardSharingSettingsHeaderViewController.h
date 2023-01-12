@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/CNMeCardSharingAvatarViewControllerDelegate-Protocol.h>
-
 @class CNMeCardSharingAvatarViewController, NSString, UIButton, UIView;
 @protocol CNMeCardSharingAvatarProvider, CNMeCardSharingSettingsHeaderViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNMeCardSharingSettingsHeaderViewController : UIViewController <CNMeCardSharingAvatarViewControllerDelegate>
+@interface CNMeCardSharingSettingsHeaderViewController : UIViewController
 {
     id <CNMeCardSharingSettingsHeaderViewControllerDelegate> _delegate;
     id <CNMeCardSharingAvatarProvider> _avatarProvider;

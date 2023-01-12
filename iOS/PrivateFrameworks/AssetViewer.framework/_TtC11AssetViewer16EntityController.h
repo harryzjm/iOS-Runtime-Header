@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetViewer/ASVTurntableGestureRecognizerDelegate-Protocol.h>
-#import <AssetViewer/ASVUnifiedGestureRecognizerDelegate-Protocol.h>
-#import <AssetViewer/ASVWorldGestureRecognizerDelegate-Protocol.h>
-
 @class ASVUnifiedGestureRecognizer, MISSING_TYPE, NSArray, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _TtC11AssetViewer16EntityController : NSObject <ASVWorldGestureRecognizerDelegate, ASVTurntableGestureRecognizerDelegate, ASVUnifiedGestureRecognizerDelegate>
+@interface _TtC11AssetViewer16EntityController : NSObject
 {
     MISSING_TYPE *entity;
     MISSING_TYPE *type;
@@ -48,6 +44,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *shadowPlaneEntity;
     MISSING_TYPE *physicsStateManager;
     MISSING_TYPE *accessibilityAssetURL;
+    MISSING_TYPE *savedViewToProj;
+    MISSING_TYPE *savedInlineModelToCameraTransform;
 }
 
 - (void).cxx_destruct;

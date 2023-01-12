@@ -6,10 +6,9 @@
 
 #import <HealthUI/HKGraphSeriesAxisScalingRule-Protocol.h>
 
-@class HKQuantityType, HKUnit, HKValueRange;
+@class HKQuantityType, HKUnit;
 
 @protocol HKInteractiveChartsAxisScalingRule <HKGraphSeriesAxisScalingRule>
-- (HKValueRange *)portraitYValueRangeForRange:(HKValueRange *)arg1 zoomLevel:(long long)arg2 allowedDecimalPrecision:(long long)arg3;
 
 @optional
 - (_Bool)isCompatibleWithQuantityType:(HKQuantityType *)arg1;

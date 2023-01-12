@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPArchivableContent-Protocol.h>
-
 @class NSArray, NSString, TSPLazyReferenceArray;
 @protocol OS_dispatch_data;
 
-@interface TSPUnknownMessage : NSObject <TSPArchivableContent>
+@interface TSPUnknownMessage : NSObject
 {
     struct MessageInfo _messageInfo;
     NSObject<OS_dispatch_data> *_messageData;

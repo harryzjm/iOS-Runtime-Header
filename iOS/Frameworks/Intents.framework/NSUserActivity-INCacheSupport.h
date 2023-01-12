@@ -6,12 +6,9 @@
 
 #import <CoreServices/NSUserActivity.h>
 
-#import <Intents/INCacheableObject-Protocol.h>
-#import <Intents/INJSONSerializable-Protocol.h>
-
 @class INInteraction, NSString;
 
-@interface NSUserActivity (INCacheSupport) <INCacheableObject, INJSONSerializable>
+@interface NSUserActivity (INCacheSupport)
 + (void)buildFromCachePayload:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)deleteInteractionsWithGroupIdentifier:(id)arg1;
 + (void)deleteInteractionsWithIdentifiers:(id)arg1;

@@ -6,9 +6,12 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class CNFavoritesEntry, CNUIFavoritesEntryPicker;
+@class CNFavoritesEntry, CNUIFavoritesEntryPicker, NSArray;
 
 @protocol CNUIFavoritesEntryPickerDelegate <NSObject>
 - (void)favoritesEntryPicker:(CNUIFavoritesEntryPicker *)arg1 didPickEntry:(CNFavoritesEntry *)arg2;
+
+@optional
+- (NSArray *)actionTypesForFavoritesEntryPicker:(CNUIFavoritesEntryPicker *)arg1;
 @end
 

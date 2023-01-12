@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDWakeupTransaction-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface FPDWakeupTransaction : NSObject <FPDWakeupTransaction>
+@interface FPDWakeupTransaction : NSObject
 {
 }
 

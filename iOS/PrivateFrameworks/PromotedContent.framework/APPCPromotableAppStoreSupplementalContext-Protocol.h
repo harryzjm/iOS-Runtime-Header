@@ -7,11 +7,16 @@
 #import <PromotedContent/APPCSecureCodable-Protocol.h>
 #import <PromotedContent/NSCopying-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDate, NSDictionary, NSString;
 
 @protocol APPCPromotableAppStoreSupplementalContext <APPCSecureCodable, NSCopying>
+@property(nonatomic, readonly) NSDate *requestTime;
+@property(nonatomic, readonly) NSDictionary *appMetadataFields;
+@property(nonatomic, readonly) NSString *adamId;
 @property(nonatomic, readonly) NSString *storeFrontLocale;
 @property(nonatomic, readonly) NSString *storeFront;
+@property(nonatomic, readonly) NSDictionary *secondaryClickCap;
+@property(nonatomic, readonly) NSDictionary *secondaryImpressionCap;
 @property(nonatomic, readonly) NSDictionary *clickCap;
 @property(nonatomic, readonly) NSDictionary *impressionCap;
 @end

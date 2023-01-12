@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/NSCopying-Protocol.h>
-
-@class NSDate;
+@class AVInterstitialDateRange, AVInterstitialTimeRange, NSDate;
 
 __attribute__((visibility("hidden")))
-@interface AVTimeRange : NSObject <NSCopying>
+@interface AVTimeRange : NSObject
 {
     double _startTime;
     double _duration;
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)timeRangeZero;
++ (id)timeRangeWithInterstice:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(readonly) double duration; // @synthesize duration=_duration;
@@ -52,6 +51,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithStartTime:(double)arg1 endTime:(double)arg2;
 - (id)initWithStartTime:(double)arg1 duration:(double)arg2;
 - (id)init;
+- (_Bool)requiresLinearPlaybackForTime:(double)arg1;
+@property(readonly, getter=isCollapsedInTimeLine) _Bool collapsedInTimeLine;
+@property(readonly, getter=isSkipped) _Bool skipped;
+@property(readonly, getter=isHidden) _Bool hidden;
+@property(readonly) AVInterstitialDateRange *dateBasedInterstice;
+@property(readonly) AVInterstitialTimeRange *interstice;
 
 @end
 

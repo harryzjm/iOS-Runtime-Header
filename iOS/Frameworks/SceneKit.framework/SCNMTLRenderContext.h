@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SceneKit/SCNBufferStream-Protocol.h>
-
 @class CAMetalLayer, MISSING_TYPE, MTLRenderPassDescriptor, NSMutableArray, NSMutableDictionary, NSString, SCNMTLMesh, SCNMTLMeshElement, SCNMTLRenderPipeline, SCNMTLResourceManager, SCNMTLShadable;
 @protocol CAMetalDrawable, MTLBuffer, MTLCommandBuffer, MTLCommandQueue, MTLDepthStencilState, MTLDevice, MTLRenderCommandEncoder, MTLSamplerState, MTLTexture, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore, SCNMTLRenderContextCommandBufferStatusMonitor, SCNMTLRenderContextResourceManagerMonitor;
 
 __attribute__((visibility("hidden")))
-@interface SCNMTLRenderContext : NSObject <SCNBufferStream>
+@interface SCNMTLRenderContext : NSObject
 {
     long long _currentFrameIndex;
     struct __C3DEngineStats *__engineStats;
@@ -50,7 +48,7 @@ __attribute__((visibility("hidden")))
     id <MTLCommandBuffer> _resourceCommandBuffer;
     struct SCNMTLBlitCommandEncoder _resourceBlitEncoder;
     struct SCNMTLComputeCommandEncoder _resourceComputeEncoder;
-    CDStruct_7e4e619b _renderPassParameters;
+    CDStruct_365d5154 _renderPassParameters;
     CDStruct_21854d8c _currentStreamBufferIndices;
     struct SCNMTLBufferPool *_volatileBufferPools[3];
     void *_frameVolatileBufferPool;
@@ -254,7 +252,7 @@ __attribute__((visibility("hidden")))
 - (void)stopProcessingRendererElements:(_Bool)arg1;
 - (void)startProcessingRendererElementsWithEngineIterationContext:(CDStruct_65434d98 *)arg1;
 - (void)processRendererElements:(CDStruct_d65e47c4 *)arg1 count:(unsigned int)arg2 engineIterationContext:(CDStruct_65434d98 *)arg3;
-- (void)renderMesh:(struct __C3DMesh *)arg1 meshElement:(struct __C3DMeshElement *)arg2 withProgram:(struct __C3DFXMetalProgram *)arg3 engineContext:(struct __C3DEngineContext *)arg4 transform:(union C3DMatrix4x4)arg5 color:(const C3DColor4_0cad58d8 *)arg6 rasterizerStates:(struct __C3DRasterizerStates *)arg7 blendState:(struct __C3DBlendStates *)arg8 texture:(struct __C3DImage *)arg9 depthBias:(_Bool)arg10;
+- (void)renderMesh:(struct __C3DMesh *)arg1 meshElement:(struct __C3DMeshElement *)arg2 withProgram:(struct __C3DFXMetalProgram *)arg3 engineContext:(struct __C3DEngineContext *)arg4 transform:(union C3DMatrix4x4)arg5 color:(const struct C3DColor4 *)arg6 rasterizerStates:(struct __C3DRasterizerStates *)arg7 blendState:(struct __C3DBlendStates *)arg8 texture:(struct __C3DImage *)arg9 depthBias:(_Bool)arg10;
 - (void)renderVideoBackground:(struct __C3DImageProxy *)arg1 engineContext:(struct __C3DEngineContext *)arg2 slot:(struct __C3DEffectSlot *)arg3;
 - (void)renderBackground:(struct __C3DEffectSlot *)arg1 engineContext:(struct __C3DEngineContext *)arg2 passInstance:(struct __C3DFXPassInstance *)arg3;
 - (float)_zFarForSkyboxRenderingProjectionMatrix:(const union C3DMatrix4x4 *)arg1 defaultZFar:(float)arg2;
@@ -272,7 +270,7 @@ __attribute__((visibility("hidden")))
 - (id)textureForEffectSlot:(struct __C3DEffectSlot *)arg1;
 - (id)newRenderTargetWithDescription:(CDStruct_ace98575 *)arg1 size:(unsigned long long)arg2 arrayLength: /* Error: Ran out of types for this method. */;
 - (void)endRenderPass;
-- (void)beginRenderPass:(id)arg1 renderEncoder:(void *)arg2 parameters:(CDStruct_7e4e619b)arg3;
+- (void)beginRenderPass:(id)arg1 renderEncoder:(void *)arg2 parameters:(CDStruct_365d5154)arg3;
 @property(readonly, nonatomic) struct SCNMTLComputeCommandEncoder *resourceComputeEncoder;
 @property(readonly, nonatomic) struct SCNMTLBlitCommandEncoder *resourceBlitEncoder;
 @property(readonly, nonatomic) id <MTLCommandBuffer> resourceCommandBuffer;
@@ -284,7 +282,7 @@ __attribute__((visibility("hidden")))
 - (id)_finalRenderTexture;
 @property(readonly, nonatomic) CAMetalLayer *layerTarget;
 @property(readonly, nonatomic) id <MTLTexture> textureTarget;
-- (void)endFrameWaitingUntilCompleted:(_Bool)arg1;
+- (void)endFrameWaitingUntilCompleted:(_Bool)arg1 status:(unsigned long long *)arg2 error:(id *)arg3;
 - (void)endFrameSceneSpecifics;
 - (void)beginFrame:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue;
@@ -313,6 +311,16 @@ __attribute__((visibility("hidden")))
 - (id)initWithDevice:(id)arg1 engineContext:(struct __C3DEngineContext *)arg2;
 - (void)_reduceStatsOfConstantBuffer:(id)arg1;
 - (struct __C3DFXPass *)_createPassWithVertex:(id)arg1 fragment:(id)arg2;
+- (id)renderTargetInfo;
+- (void)viewports:(const void **)arg1:(long long *)arg2;
+- (_Bool)constantOffsetAndSize:(int)arg1:(id)arg2:(long long *)arg3:(long long *)arg4;
+- (const char *)constantData:(int)arg1;
+- (id)sampler:(int)arg1:(id)arg2;
+- (id)buffer:(int)arg1:(id)arg2:(long long *)arg3:(long long *)arg4;
+- (id)texture:(int)arg1:(id)arg2;
+- (unsigned long long)colorPixelFormatAtIndex:(long long)arg1;
+- (unsigned long long)depthStencilPixelFormat;
+- (_Bool)vrrEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

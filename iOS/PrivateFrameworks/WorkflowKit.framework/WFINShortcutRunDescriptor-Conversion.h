@@ -8,6 +8,6 @@
 
 @interface WFINShortcutRunDescriptor (Conversion)
 - (void)donateRunInteractionWithDatabase:(id)arg1;
-- (id)workflowRepresentationWithDatabase:(id)arg1 environment:(long long)arg2 error:(id *)arg3;
+- (void)createWorkflowWithEnvironment:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @end
 

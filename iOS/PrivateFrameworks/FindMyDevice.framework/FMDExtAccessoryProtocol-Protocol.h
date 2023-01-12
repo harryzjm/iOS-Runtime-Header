@@ -11,9 +11,10 @@
 @protocol FMDExtAccessoryProtocol <NSObject>
 
 @optional
+- (void)removeAccesoryWithSerialNumber:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)updateCompletedFor:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)launchSetupModuleWithInfo:(NSDictionary *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)setPhoneNumberForAccessoryId:(NSString *)arg1 phoneNumber:(NSString *)arg2 info:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
-- (void)removeAccesoryWithId:(NSString *)arg1 info:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)stopSoundForAccessory:(NSString *)arg1 info:(NSDictionary *)arg2 rampDownDuration:(double)arg3 withCompletion:(void (^)(NSError *))arg4;
 - (void)playSoundForAccessory:(NSString *)arg1 info:(NSDictionary *)arg2 duration:(double)arg3 rampUpDuration:(double)arg4 channels:(NSArray *)arg5 withCompletion:(void (^)(NSError *))arg6;
 - (void)stopDiscoveryForAccessory:(NSString *)arg1 info:(NSDictionary *)arg2 withCompletion:(void (^)(NSError *))arg3;

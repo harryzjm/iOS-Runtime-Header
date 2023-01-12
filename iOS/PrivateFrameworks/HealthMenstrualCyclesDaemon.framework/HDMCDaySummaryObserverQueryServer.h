@@ -6,11 +6,10 @@
 
 #import <HealthDaemon/HDQueryServer.h>
 
-#import <HealthMenstrualCyclesDaemon/HDDataObserver-Protocol.h>
-
 @class HDMCProfileExtension, NSString, _HKDelayedOperation;
 
-@interface HDMCDaySummaryObserverQueryServer : HDQueryServer <HDDataObserver>
+__attribute__((visibility("hidden")))
+@interface HDMCDaySummaryObserverQueryServer : HDQueryServer
 {
     HDMCProfileExtension *_profileExtension;
     _HKDelayedOperation *_updateOperation;

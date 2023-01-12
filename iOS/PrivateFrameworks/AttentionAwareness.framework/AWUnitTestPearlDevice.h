@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AttentionAwareness/AWUnitTestSampler-Protocol.h>
-
 @class AWUnitTestFaceDetectOperation;
 @protocol BKDevicePearlDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AWUnitTestPearlDevice : NSObject <AWUnitTestSampler>
+@interface AWUnitTestPearlDevice : NSObject
 {
     CDStruct_2c6bab44 _sampleStats;
     NSObject<OS_dispatch_queue> *_awQueue;

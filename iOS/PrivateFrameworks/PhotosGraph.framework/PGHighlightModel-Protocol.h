@@ -16,6 +16,7 @@
 @property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) _Bool isGroup;
 @property(readonly, nonatomic, getter=isRecent) _Bool recent;
+@property(readonly, nonatomic) unsigned short sharingComposition;
 @property(nonatomic) unsigned short enrichmentState;
 @property(nonatomic) unsigned short type;
 - (id <PGHighlightModelChangeRequest>)changeRequest;

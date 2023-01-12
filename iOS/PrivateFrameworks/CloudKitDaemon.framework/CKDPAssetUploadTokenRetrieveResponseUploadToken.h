@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPAsset, NSString;
 
-@interface CKDPAssetUploadTokenRetrieveResponseUploadToken : PBCodable <NSCopying>
+@interface CKDPAssetUploadTokenRetrieveResponseUploadToken : PBCodable
 {
     long long _tokenExpiration;
     CKDPAsset *_asset;

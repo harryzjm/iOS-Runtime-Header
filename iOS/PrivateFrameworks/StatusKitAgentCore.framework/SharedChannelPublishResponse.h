@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <StatusKitAgentCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SharedChannelPublishResponse : PBCodable <NSCopying>
+@interface SharedChannelPublishResponse : PBCodable
 {
     unsigned int _retryIntervalSeconds;
     int _status;

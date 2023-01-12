@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface SNVGGishEmbeddingModelOutput : NSObject <MLFeatureProvider>
+@interface SNVGGishEmbeddingModelOutput : NSObject
 {
     MLMultiArray *_output1;
 }

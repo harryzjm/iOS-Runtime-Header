@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CHRecognizer;
+@class CHStringOVSChecker;
 
 @interface CHSemanticTokenizerStep
 {
-    CHRecognizer *_recognizer;
-    void *_languageModel;
+    void *_wordLanguageModel;
+    CHStringOVSChecker *_ovsStringChecker;
 }
 
-@property(nonatomic) void *languageModel; // @synthesize languageModel=_languageModel;
-@property(nonatomic) CHRecognizer *recognizer; // @synthesize recognizer=_recognizer;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CHStringOVSChecker *ovsStringChecker; // @synthesize ovsStringChecker=_ovsStringChecker;
+@property(nonatomic) void *wordLanguageModel; // @synthesize wordLanguageModel=_wordLanguageModel;
 - (void)dealloc;
-- (id)process:(id)arg1;
+- (id)process:(id)arg1 options:(id)arg2;
 - (void)_updateTokenInappropriateFlag:(id)arg1;
-- (id)initWithRecognizer:(id)arg1 languageModel:(void *)arg2;
+- (id)initWithWordLanguageModel:(void *)arg1 ovsStringChecker:(id)arg2;
 
 @end
 

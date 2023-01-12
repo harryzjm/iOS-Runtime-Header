@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCoding-Protocol.h>
-#import <OfficeImport/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface OITSUBezierPath : NSObject <NSCopying, NSCoding>
+@interface OITSUBezierPath : NSObject
 {
     long long sfr_elementCount;
     long long sfr_elementMax;

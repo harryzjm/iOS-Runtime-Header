@@ -6,18 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-#import <PDFKit/PDFPageLayerInterface-Protocol.h>
-#import <PDFKit/UITextViewDelegate-Protocol.h>
-
 @class NSString, PDFPageViewPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFPageView : UIView <UITextViewDelegate, PDFPageLayerInterface>
+@interface PDFPageView : UIView
 {
     PDFPageViewPrivate *_private;
+    _Bool _overlayViewInstalled;
 }
 
 - (void).cxx_destruct;
+@property(getter=isOverlayViewInstalled) _Bool overlayViewInstalled; // @synthesize overlayViewInstalled=_overlayViewInstalled;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setState:(long long)arg1 onButtonWidgetAnnotation:(id)arg2;
 - (void)setStringValue:(id)arg1 onChoiceWidgetAnnotation:(id)arg2 withTableView:(id)arg3;
@@ -95,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (long long)displayBox;
 - (void)setNeedsTilesUpdate;
 - (id)renderingProperties;
+- (void)willMoveToSuperview:(id)arg1;
 - (void)dealloc;
 - (id)initWithPage:(id)arg1 geometryInterface:(id)arg2 andRenderingProperties:(id)arg3;
 

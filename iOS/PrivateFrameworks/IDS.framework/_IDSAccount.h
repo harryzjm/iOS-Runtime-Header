@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-
 @class NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSString;
 
-@interface _IDSAccount : NSObject <IDSDaemonListenerProtocol>
+@interface _IDSAccount : NSObject
 {
     NSDictionary *_accountConfig;
     NSString *_serviceToken;
@@ -110,6 +108,7 @@
 - (void)updateAccountWithAccountInfo:(id)arg1;
 @property(retain, nonatomic) NSDictionary *accountInfo;
 @property(readonly, nonatomic) _Bool isActive;
+@property(readonly, nonatomic) _Bool isFirstGDRAllowlistedAccount;
 @property(readonly, nonatomic) _Bool isTransientAllowlistedAccount;
 @property(readonly, nonatomic) _Bool isInTransientRegistrationState;
 - (void)_setObject:(id)arg1 forKey:(id)arg2;
@@ -123,6 +122,7 @@
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeDelegate:(id)arg1;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
+- (_Bool)_isMagnoliaService;
 - (_Bool)_isThumperService;
 - (_Bool)_isiCloudPairingService;
 - (void)dealloc;

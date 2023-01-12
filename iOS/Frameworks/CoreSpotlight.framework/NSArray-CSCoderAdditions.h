@@ -6,9 +6,7 @@
 
 #import <Foundation/NSArray.h>
 
-#import <CoreSpotlight/CSCoderEncoder-Protocol.h>
-
-@interface NSArray (CSCoderAdditions) <CSCoderEncoder>
+@interface NSArray (CSCoderAdditions)
 - (void)encodeWithCSCoder:(id)arg1;
 @end
 

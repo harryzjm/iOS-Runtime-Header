@@ -6,11 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <BaseBoardUI/BSTraitEnvironment-Protocol.h>
-
 @class NSString, UITraitCollection;
 
-@interface UIViewController (BaseBoardUI) <BSTraitEnvironment>
+@interface UIViewController (BaseBoardUI)
 + (id)bs_nextViewControllerForView:(id)arg1;
 - (void)bs_traitCollectionDidChange:(id)arg1 forManagedTraitEnvironment:(id)arg2;
 - (id)bs_topPresentedViewController;

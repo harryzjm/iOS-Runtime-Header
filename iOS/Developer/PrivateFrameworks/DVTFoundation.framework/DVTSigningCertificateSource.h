@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTLogAspect, DVTStackBacktrace, NSArray, NSString;
 @protocol DVTSigningCertificateSourceDelegate;
 
-@interface DVTSigningCertificateSource : NSObject <DVTInvalidation>
+@interface DVTSigningCertificateSource : NSObject
 {
     _Bool _wantsAllApplicationsToAccessKeychainItems;
     id <DVTSigningCertificateSourceDelegate> _delegate;

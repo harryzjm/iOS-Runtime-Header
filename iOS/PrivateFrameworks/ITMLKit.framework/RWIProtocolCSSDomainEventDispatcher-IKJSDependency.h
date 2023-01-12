@@ -7,6 +7,7 @@
 #import <WebInspector/RWIProtocolCSSDomainEventDispatcher.h>
 
 @interface RWIProtocolCSSDomainEventDispatcher (IKJSDependency)
+- (void)safe_nodeLayoutContextTypeChangedWithNodeId:(int)arg1 layoutContextType:(long long *)arg2;
 - (void)safe_styleSheetRemovedWithStyleSheetId:(id)arg1;
 - (void)safe_styleSheetAddedWithHeader:(id)arg1;
 - (void)safe_mediaQueryResultChanged;

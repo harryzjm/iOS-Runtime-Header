@@ -6,16 +6,21 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKBrowserDragControllerTarget, CKChatInputController, CKComposition, IMSticker, NSData, NSString, UIInputViewController, UIView, UIViewController;
+@class CKBrowserDragControllerTarget, CKChatInputController, CKComposition, IMBalloonPlugin, IMSticker, NSData, NSString, UIInputViewController, UIView, UIViewController;
 @protocol CKBrowserDragControllerTranscriptDelegate;
 
 @protocol CKChatInputControllerDelegate <NSObject>
+- (unsigned long long)recipientsCount;
+- (long long)sceneInterfaceOrientation;
+- (void)stopForcingOrientation;
+- (void)updateSupportedInterfaceOrientations:(unsigned long long)arg1;
 - (_Bool)chatInputControllerShouldShowHandwriting:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidSelectFunCamera:(CKChatInputController *)arg1;
 - (void)chatInputControllerCancelSelectFunCamera:(CKChatInputController *)arg1;
 - (void)chatInputControllerWillSelectFunCamera:(CKChatInputController *)arg1;
 - (void)showContactForHandle:(NSString *)arg1;
 - (void)sendCurrentLocation;
+- (void)chatInputControllerBrowserPluginChangingFromPlugin:(IMBalloonPlugin *)arg1 toPlugin:(IMBalloonPlugin *)arg2;
 - (void)chatInputControllerWillDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidTransitionCollapsed:(CKChatInputController *)arg1;
@@ -46,5 +51,8 @@
 - (UIView *)viewForDragAndChatInputDropTarget;
 - (NSString *)chatInputTranscriptIdentifier;
 - (UIViewController *)viewControllerForChatInputModalPresentation;
+
+@optional
+- (void)chatInputDidSelectEmojiPicker;
 @end
 

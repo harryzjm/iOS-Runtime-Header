@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSWPPageNumberAttachment.h"
+
 @class NSString;
 
-@interface TSWPTOCPageNumberAttachment
+@interface TSWPTOCPageNumberAttachment : TSWPPageNumberAttachment
 {
     NSString *_pageNumber;
     NSString *_bookmarkName;

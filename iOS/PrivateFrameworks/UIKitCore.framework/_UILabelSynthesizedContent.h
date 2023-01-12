@@ -7,16 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/NSMutableCopying-Protocol.h>
 
-@class UIColor, _UILabelContent;
+@class NSTextEncapsulation, UIColor, _UILabelContent;
 
 __attribute__((visibility("hidden")))
-@interface _UILabelSynthesizedContent : NSObject <NSCopying, NSMutableCopying>
+@interface _UILabelSynthesizedContent : NSObject <NSCopying>
 {
     _UILabelContent *_content;
     UIColor *_overrideTextColor;
     long long _semanticContentAttribute;
+    NSTextEncapsulation *_textEncapsulation;
     struct {
         unsigned int eliminateShadows:1;
         unsigned int overallWritingDirectionFollowsLayoutDirection:1;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)synthesizedAttributedString;
 - (id)synthesizedAttributes;
 @property(readonly, nonatomic) unsigned long long length;
+@property(readonly, nonatomic) NSTextEncapsulation *textEncapsulation;
 @property(readonly, nonatomic) _Bool hasExplicitBaselineOffset;
 - (_Bool)reverseNaturalAlignment;
 @property(readonly, nonatomic) _Bool disableLinkHypenation;

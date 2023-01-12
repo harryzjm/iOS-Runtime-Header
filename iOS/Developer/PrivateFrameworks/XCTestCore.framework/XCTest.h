@@ -54,7 +54,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, getter=_identifier) XCTTestIdentifier *identifier; // @dynamic identifier;
+@property(readonly, getter=_xctTestIdentifier) XCTTestIdentifier *identifier; // @dynamic identifier;
 @property(readonly) Class superclass;
 
 @end

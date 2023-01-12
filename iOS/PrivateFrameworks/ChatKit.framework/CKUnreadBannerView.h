@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UIImageView, UILabel, _UIBackdropView;
 @protocol CKUnreadBannerViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKUnreadBannerView : UIView <UIGestureRecognizerDelegate>
+@interface CKUnreadBannerView : UIView
 {
     id <CKUnreadBannerViewDelegate> _delegate;
     unsigned long long _unreadCount;

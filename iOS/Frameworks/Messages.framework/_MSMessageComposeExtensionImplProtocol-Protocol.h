@@ -6,7 +6,7 @@
 
 #import <Messages/_MSMessageComposeExtensionProtocol-Protocol.h>
 
-@class BKSAnimationFenceHandle, MSConversation, MSMessage, MSRichLink, NSData, NSString, UIViewController, _MSMessageMediaPayload;
+@class BKSAnimationFenceHandle, MSConversation, MSMessage, MSRichLink, NSArray, NSData, NSString, UIViewController, _MSMessageMediaPayload;
 @protocol _MSMessageComposeExtensionImplProtocol, _MSMessageComposeHostImplProtocol;
 
 @protocol _MSMessageComposeExtensionImplProtocol <_MSMessageComposeExtensionProtocol>
@@ -24,6 +24,7 @@
 - (void)_remoteViewDidBecomeReadyForDisplay;
 - (void)dismissAndPresentPhotosApp;
 - (void)dismiss;
+- (void)requestHostSceneIdentifierWithCompletion:(void (^)(NSString *))arg1;
 - (void)requestPresentationStyleExpanded:(_Bool)arg1;
 - (void)requestPresentationStyle:(unsigned long long)arg1;
 - (void)dragMediaItemCanceled;
@@ -34,5 +35,8 @@
 - (void)stageRichLink:(MSRichLink *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)stageMediaItem:(_MSMessageMediaPayload *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)stageAppItem:(MSMessage *)arg1 skipShelf:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
+
+@optional
+- (void)presentAlertSheetWith:(NSArray *)arg1 styles:(NSArray *)arg2 completion:(void (^)(int))arg3;
 @end
 

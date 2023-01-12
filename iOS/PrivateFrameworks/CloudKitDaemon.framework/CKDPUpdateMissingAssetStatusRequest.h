@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecordIdentifier, NSMutableArray, NSString;
 
-@interface CKDPUpdateMissingAssetStatusRequest : PBRequest <NSCopying>
+@interface CKDPUpdateMissingAssetStatusRequest : PBRequest
 {
     struct {
         long long *list;

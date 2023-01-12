@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DocumentCamera/ICDocCamViewControllerDelegate-Protocol.h>
+#import "VNDocumentCameraViewController.h"
 
-@class ICDocCamViewController, NSString;
+@class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface VNDocumentCameraViewController_InProcess <ICDocCamViewControllerDelegate>
+@interface VNDocumentCameraViewController_InProcess : VNDocumentCameraViewController
 {
-    ICDocCamViewController *_viewController;
+    UIViewController *_viewController;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) ICDocCamViewController *viewController; // @synthesize viewController=_viewController;
+@property(retain, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
+- (void)removeSaveActionBlockerForFiles;
 - (void)_autoDismiss;
+- (void)remoteDocumentCameraController:(id)arg1 didFailWithError:(id)arg2;
+- (void)remoteDocumentCameraController:(id)arg1 didFinishWithInfoCollection:(id)arg2;
+- (void)remoteDocumentCameraControllerDidCancel:(id)arg1;
 - (id)scanDataDelegateWithIdentifier:(id)arg1;
 - (void)documentCameraControllerDidCancel:(id)arg1;
 - (void)documentCameraController:(id)arg1 didFinishWithImage:(id)arg2;

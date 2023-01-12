@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)alreadylocked_clearCache;
 - (void)handleReply:(id)arg1 toRequestNewDataMessage:(id)arg2 onConnection:(id)arg3 retryCount:(int)arg4 error:(_Bool *)arg5;
 - (id)createRequestNewContentMessageForDaemon:(int)arg1;
+- (_Bool)servedByUserSessionDaemon;
 - (_Bool)isDirectModeEnabled;
 - (void)transitionIntoDirectModeIfNeededWithRetryBlock:(CDUnknownBlockType)arg1;
 - (_Bool)isVolatile;

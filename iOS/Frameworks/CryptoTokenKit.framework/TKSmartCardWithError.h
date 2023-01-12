@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, TKSmartCard;
+#import "TKSmartCard.h"
+
+@class NSError;
 
 __attribute__((visibility("hidden")))
-@interface TKSmartCardWithError
+@interface TKSmartCardWithError : TKSmartCard
 {
     TKSmartCard *_parentCard;
     NSError *_error;

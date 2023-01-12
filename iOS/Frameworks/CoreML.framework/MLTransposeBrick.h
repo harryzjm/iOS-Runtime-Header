@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/EspressoBrick-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MLTransposeBrick : NSObject <EspressoBrick>
+@interface MLTransposeBrick : NSObject
 {
     NSArray *_axes;
     NSArray *_inputRanks;

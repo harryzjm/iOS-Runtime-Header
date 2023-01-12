@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EKSerializableObject.h"
+
 @class EKRecurrenceEnd, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface EKSerializableRecurrenceRule
+@interface EKSerializableRecurrenceRule : EKSerializableObject
 {
     long long _frequency;
     long long _interval;

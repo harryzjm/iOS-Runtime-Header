@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUICacheCoding-Protocol.h>
-
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface SKUIReviewList : NSObject <SKUICacheCoding>
+@interface SKUIReviewList : NSObject
 {
     NSDictionary *_dictionary;
     NSMutableArray *_reviews;

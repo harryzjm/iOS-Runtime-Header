@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/NSCopying-Protocol.h>
-
 @class VKTextPosition;
 
 __attribute__((visibility("hidden")))
-@interface VKTextRange <NSCopying>
+@interface VKTextRange
 {
     VKTextPosition *_start;
     VKTextPosition *_end;

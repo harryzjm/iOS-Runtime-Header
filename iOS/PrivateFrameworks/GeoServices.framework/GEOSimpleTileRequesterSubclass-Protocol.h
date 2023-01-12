@@ -23,7 +23,7 @@
 - (_Bool)tileDataIsCacheableForTileKey:(const struct _GEOTileKey *)arg1;
 - (NSString *)mergeBaseTileEtag:(NSString *)arg1 withLocalizationTileEtag:(NSString *)arg2;
 - (NSData *)mergeBaseTile:(NSData *)arg1 withLocalizationTile:(NSData *)arg2;
-- (CDUnion_23a7df3d)tileSetForKey:(const struct _GEOTileKey *)arg1;
+- (CDUnion_20bcf645)tileSetForKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;
 - (NSObject<OS_xpc_object> *)newXPCDataRequestForTileKey:(const struct _GEOTileKey *)arg1;
 - (_Bool)shouldAllowEmptyDataForTileKey:(const struct _GEOTileKey *)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSUStreamReadChannel-Protocol.h>
-
 @class NSArray, NSString, SFUCryptoKey;
 @protocol OS_dispatch_data, TSUStreamReadChannel;
 
-@interface TSPCryptoReadChannel : NSObject <TSUStreamReadChannel>
+@interface TSPCryptoReadChannel : NSObject
 {
     id <TSUStreamReadChannel> _readChannel;
     SFUCryptoKey *_decryptionKey;

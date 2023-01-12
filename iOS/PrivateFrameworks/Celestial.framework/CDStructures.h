@@ -4,21 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct AVSystemControllerPrivate {
-    _Bool _field1;
-    _Bool _field2;
-    float _field3;
-    id _field4;
-    struct OpaqueFigSystemController *_field5;
-    id _field6;
-    id _field7;
-};
-
-struct OpaqueFigSystemController;
-

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/NSSecureCoding-Protocol.h>
-
 @class QLPreviewController, UIImage, UIView;
 
 __attribute__((visibility("hidden")))
-@interface QLTransitionContext : NSObject <NSSecureCoding>
+@interface QLTransitionContext : NSObject
 {
     QLPreviewController *_previewController;
     UIImage *_sourceViewSnapshotImage;

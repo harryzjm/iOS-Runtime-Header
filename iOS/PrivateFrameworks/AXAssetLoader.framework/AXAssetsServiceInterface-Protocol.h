@@ -6,10 +6,12 @@
 
 #import <AXAssetLoader/NSObject-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSDictionary, NSNumber, NSString;
 
 @protocol AXAssetsServiceInterface <NSObject>
+- (void)runFirstBootTasks:(_Bool)arg1;
+- (void)invokeSimpleTaskById:(NSString *)arg1 arguments:(NSDictionary *)arg2;
 - (void)updateAssetForAssetType:(NSString *)arg1;
-- (void)refreshAssetCatalogForAssetType:(NSString *)arg1 withOverrideTimeout:(NSNumber *)arg2;
+- (void)refreshAssetCatalogForAssetType:(NSString *)arg1 withOverrideTimeout:(NSNumber *)arg2 forceCatalogRefresh:(_Bool)arg3;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSFileManager.h>
 
-#import <PhotoLibraryServices/PLFileManager-Protocol.h>
-
 @class NSString;
 
-@interface NSFileManager (PLFileManager) <PLFileManager>
+@interface NSFileManager (PLFileManager)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

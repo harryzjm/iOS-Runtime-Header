@@ -23,7 +23,8 @@
 @property(retain, nonatomic) NSString *lastFragment; // @synthesize lastFragment=_lastFragment;
 @property(retain, nonatomic) NSString *firstFragment; // @synthesize firstFragment=_firstFragment;
 - (id)splitTile;
-- (void *)fragmentEntryForString:(id)arg1 createIfMissing:(_Bool)arg2;
+- (void *)createFragmentEntryForString:(id)arg1 createIfMissingUsingPrecedentCoord:(const struct TSUCellCoord *)arg2;
+- (void *)fragmentEntryForString:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)unpackAfterUnarchive:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudDocsDaemon/BRCReachabilityDelegate-Protocol.h>
-#import <CloudDocsDaemon/BRCZone-Protocol.h>
-
-@class BRCAccountSession, BRCCreateZoneAndSubscribeOperation, BRCDeadlineSource, BRCItemID, BRCPQLConnection, BRCServerZone, BRCSyncBudgetThrottle, BRCSyncDownOperation, BRCSyncOperationBackoffRatio, BRCSyncOperationThrottle, BRCSyncUpOperation, BRCThrottleBase, BRCZoneRowID, BRMangledID, CKOperationGroup, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, brc_task_tracker;
+@class BRCAccountSession, BRCCreateZoneAndSubscribeOperation, BRCDeadlineSource, BRCFetchRecentAndFavoriteDocumentsOperation, BRCItemID, BRCPQLConnection, BRCServerZone, BRCSyncBudgetThrottle, BRCSyncDownOperation, BRCSyncOperationBackoffRatio, BRCSyncOperationThrottle, BRCSyncUpOperation, BRCThrottle, BRCThrottleBase, BRCZoneRowID, BRMangledID, CKOperationGroup, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, brc_task_tracker;
 @protocol BRCClientZoneDelegate, NSObject, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface BRCClientZone : NSObject <BRCReachabilityDelegate, BRCZone>
+@interface BRCClientZone : NSObject
 {
     BRCAccountSession *_session;
     BRCServerZone *_serverZone;
@@ -43,6 +40,13 @@ __attribute__((visibility("hidden")))
     BRCSyncOperationBackoffRatio *_syncUpBackoffRatio;
     BRCSyncOperationThrottle *_syncDownThrottle;
     BRCDeadlineSource *_syncDeadlineSource;
+    NSMutableArray *_blockedOperationsOnInitialSync;
+    NSMutableDictionary *_runningListOperations;
+    NSMutableDictionary *_recursiveListOperations;
+    NSMutableDictionary *_fetchParentOperations;
+    NSMutableDictionary *_locateRecordOperations;
+    BRCFetchRecentAndFavoriteDocumentsOperation *_fetchRecentsOperation;
+    BRCThrottle *_serverStitchingOperationThrottle;
     NSMutableIndexSet *_appliedTombstoneRanks;
     long long _lastInsertedRank;
     NSDate *_lastSyncDownDate;
@@ -56,11 +60,13 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_onDiskBlockToPerformForItemID;
     NSMutableDictionary *_downloadedBlockToPerformForItemID;
     NSMutableDictionary *_syncDownBlockToPerformForItemID;
+    NSMutableDictionary *_locateBlocksToPerformForRecordID;
     NSMutableDictionary *_parentsOfCZMFaults;
     NSMutableArray *_nextSyncDownBarriers;
     NSMutableArray *_currentSyncDownBarriers;
     id <NSObject> _hasWorkDidUpdateObserver;
     NSMutableArray *_nextIdleHandlers;
+    NSMutableArray *_directoriesCreatedLastSyncUp;
     CKOperationGroup *_syncDownGroup;
     NSMutableArray *_syncDownDependencies;
     NSMutableArray *_allItemsDidUploadTrackers;
@@ -114,11 +120,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)removeItemIsDownloadedBlock:(id)arg1;
 - (_Bool)removeItemOnDiskBlock:(id)arg1;
 @property(readonly, nonatomic) _Bool hasHighPriorityWatchers;
+- (void)performBlock:(CDUnknownBlockType)arg1 whenLocatingCompletesForItemWithRecordID:(id)arg2;
+- (void)_enumerateAndClearLocateBlocksForRecordID:(id)arg1 exists:(_Bool)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1 whenSyncDownCompletesLookingForItemID:(id)arg2;
-- (void)_cancelSyncDownFromDBCorruption;
+- (_Bool)_shouldFailSyncDownWaitImmediately;
 - (void)_prepareForForegroundSyncDown;
 - (void)performBlock:(CDUnknownBlockType)arg1 whenItemWithIDIsDownloaded:(id)arg2;
-- (void)performBlock:(CDUnknownBlockType)arg1 whenItemWithIDIsOnDisk:(id)arg2;
+- (void)performBlock:(CDUnknownBlockType)arg1 whenItemWithRecordIDIsOnDisk:(id)arg2;
 - (CDUnknownBlockType)popDownloadedBlockForItemID:(id)arg1;
 - (CDUnknownBlockType)popOnDiskBlockForItemID:(id)arg1;
 - (void)_removeDownloadedBlockToPerformForItemID:(id)arg1;
@@ -137,6 +145,10 @@ __attribute__((visibility("hidden")))
 - (id)documentItemByItemID:(id)arg1;
 - (id)itemByItemID:(id)arg1 db:(id)arg2;
 - (id)itemByItemID:(id)arg1;
+- (id)serverHiddenChildCountWithParentID:(id)arg1 db:(id)arg2;
+- (id)serverQuotaUsageWithParentID:(id)arg1 db:(id)arg2;
+- (id)clientChildCountWithParentID:(id)arg1 db:(id)arg2;
+- (id)serverChildCountWithParentID:(id)arg1 db:(id)arg2;
 - (id)serverItemByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (id)serverItemByRowID:(unsigned long long)arg1;
 - (id)serverItemByItemID:(id)arg1 db:(id)arg2;
@@ -149,17 +161,33 @@ __attribute__((visibility("hidden")))
 - (_Bool)_resetItemsTable;
 - (_Bool)dumpTablesToContext:(id)arg1 includeAllItems:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)dumpStatusToContext:(id)arg1 error:(id *)arg2;
+- (void)fetchRecentAndFavoriteDocuments;
+- (id)locateRecordIfNecessaryForRecordID:(id)arg1 isUserWaiting:(_Bool)arg2;
+- (id)fetchParentChainIfNecessaryWithParentItemID:(id)arg1 isUserWaiting:(_Bool)arg2;
+- (id)fetchRecursiveDirectoryContentsIfNecessary:(id)arg1 isUserWaiting:(_Bool)arg2 rescheduleApply:(_Bool)arg3;
+- (id)fetchDirectoryContentsIfNecessary:(id)arg1 isUserWaiting:(_Bool)arg2 rescheduleApplyScheduler:(_Bool)arg3;
+- (_Bool)_isSideSyncOperationBlockedWithName:(id)arg1;
+- (id)cancelLocateRecordOperationAndReschedule:(id)arg1;
+- (void)_registerLocateRecordOperation:(id)arg1;
+- (id)cancelFetchParentChainOperationAndReschedule:(id)arg1;
+- (void)_registerFetchParentChainOperation:(id)arg1;
+- (void)_blockLowPriorityStitchingOperationsForOperation:(id)arg1;
+- (id)cancelListOperationAndReschedule:(id)arg1;
+- (void)_registerListOperation:(id)arg1;
+- (void)_registerServerStitchingOperation:(id)arg1;
+- (_Bool)_hasNonDiscretionaryServerStitchingOperation;
+- (_Bool)_checkIfEnumeratorContainsNonDiscretionaryOp:(id)arg1;
 - (_Bool)hasCompletedInitialSyncDownOnce;
 - (void)flushAppliedTombstones;
 - (void)didApplyTombstoneForRank:(long long)arg1;
 - (void)didGCTombstoneRanks:(id)arg1;
-- (void)signalFaultingWatchersWithError:(id)arg1;
 - (void)handleRootRecordDeletion;
 - (void)recomputeAllItemsDidUploadState;
 - (void)_allItemsDidUploadWithError:(id)arg1;
 - (_Bool)_hasAllItemsDidUploadHandlers;
 - (_Bool)_crossZoneMoveDocumentsToZone:(id)arg1;
 - (void)didSyncDownRequestID:(unsigned long long)arg1 maxApplyRank:(long long)arg2 caughtUpWithServer:(_Bool)arg3 syncDownDate:(id)arg4;
+- (void)listedUpToRank:(long long)arg1;
 - (void)_fixupMissingCrossMovedItems;
 - (void)syncDownOperation:(id)arg1 didFinishWithError:(id)arg2 status:(long long)arg3;
 - (void)notifyClient:(id)arg1 afterNextSyncDown:(CDUnknownBlockType)arg2;
@@ -169,6 +197,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)nextSyncUpRequestID;
 - (void)_markRequestIDAcked;
 - (void)_markLatestSyncRequestFailed;
+- (id)directoryItemIDsCreatedLastSyncUp;
+- (void)prepareDirectoryForSyncUp:(id)arg1;
 - (void)clearSyncUpError;
 - (void)resetSyncBudgetAndThrottle;
 - (void)scheduleSyncDownForOOBModifyRecordsAck;
@@ -178,6 +208,7 @@ __attribute__((visibility("hidden")))
 - (void)scheduleSyncUp;
 - (void)_startSync;
 - (id)syncDownImmediately;
+- (void)_blockSyncDownOnStitchingOperations;
 - (void)removeSyncDownDependency:(id)arg1;
 - (void)addSyncDownDependency:(id)arg1;
 - (void)_createCloudKitZoneWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -190,9 +221,14 @@ __attribute__((visibility("hidden")))
 - (void)_enumerateFaultsWithBlock:(CDUnknownBlockType)arg1 rowID:(unsigned long long)arg2 batchSize:(unsigned long long)arg3;
 - (void)enumerateFaultsAsyncWithBlock:(CDUnknownBlockType)arg1 batchSize:(unsigned long long)arg2;
 - (id)documentsNotIdleEnumeratorWithDB:(id)arg1;
+- (_Bool)hasItemsWithInFlightDiffs;
 - (id)itemsWithInFlightDiffsEnumerator;
+- (_Bool)hasItems;
 - (id)itemsEnumeratorWithDB:(id)arg1;
+- (BOOL)serverItemTypeByItemID:(id)arg1 db:(id)arg2;
+- (_Bool)existsByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2 excludingItemID:(id)arg3 db:(id)arg4;
 - (_Bool)existsByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2 db:(id)arg3;
+- (_Bool)existsByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2 excludingItemID:(id)arg3;
 - (_Bool)existsByParentID:(id)arg1 andCaseInsensitiveLogicalName:(id)arg2;
 - (id)faultByParentID:(id)arg1 andPhysicalName:(id)arg2 db:(id)arg3;
 - (id)faultByParentID:(id)arg1 andPhysicalName:(id)arg2;
@@ -210,18 +246,13 @@ __attribute__((visibility("hidden")))
 - (id)itemByFileID:(unsigned long long)arg1;
 - (id)itemByDocumentID:(unsigned int)arg1 db:(id)arg2;
 - (id)itemByDocumentID:(unsigned int)arg1;
-- (id)xattrForSignature:(id)arg1 db:(id)arg2;
-- (id)xattrForSignature:(id)arg1;
 - (id)descriptionWithContext:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToClientZone:(id)arg1;
-- (_Bool)hasInitialFaultsEverLive;
-- (_Bool)hasInitialFaultsLive;
 - (_Bool)isSyncBlockedBecauseOSNeedsUpgrade;
 - (_Bool)isSyncBlockedBecauseAppNotInstalled;
-- (_Bool)isSyncBlockedOrBrokenStructure;
 - (_Bool)isSyncBlocked;
 - (void)clearStateBits:(unsigned int)arg1;
 - (_Bool)setStateBits:(unsigned int)arg1;

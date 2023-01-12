@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <TVMLKit/TVRowHosting-Protocol.h>
-
 @class CAGradientLayer, IKColor, NSString, _TVCollectionView;
 
 __attribute__((visibility("hidden")))
-@interface _TVCollectionWrappingView : UIView <TVRowHosting>
+@interface _TVCollectionWrappingView : UIView
 {
     struct CGRect _headerFrame;
     UIView *_selectingView;

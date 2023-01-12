@@ -5,6 +5,6 @@
 //
 
 @interface (null) (HealthExperienceUI)
-- (void)didSelectCell:(id)arg1 in:(id)arg2;
+- (void)_bridgedUpdateConfigurationUsingState:(id)arg1;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSNumber, NSString, VUIFamilySharingRelationships, VUIMediaEntityType, WLKOfferListing, _TVContentRating;
+@class NSDate, NSNumber, NSString, VUIContentRating, VUIFamilySharingRelationships, VUIMediaEntityType, WLKOfferListing;
 
 __attribute__((visibility("hidden")))
 @interface VUIFamilySharingEntity : NSObject
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     NSNumber *_seasonNumber;
     NSNumber *_episodeNumber;
     NSDate *_releaseDate;
-    _TVContentRating *_contentRating;
+    VUIContentRating *_contentRating;
     VUIFamilySharingRelationships *_relationships;
     WLKOfferListing *_offerListing;
     WLKOfferListing *_personalizedOfferListing;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) WLKOfferListing *personalizedOfferListing; // @synthesize personalizedOfferListing=_personalizedOfferListing;
 @property(retain, nonatomic) WLKOfferListing *offerListing; // @synthesize offerListing=_offerListing;
 @property(retain, nonatomic) VUIFamilySharingRelationships *relationships; // @synthesize relationships=_relationships;
-@property(retain, nonatomic) _TVContentRating *contentRating; // @synthesize contentRating=_contentRating;
+@property(retain, nonatomic) VUIContentRating *contentRating; // @synthesize contentRating=_contentRating;
 @property(retain, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property(retain, nonatomic) NSNumber *episodeNumber; // @synthesize episodeNumber=_episodeNumber;
 @property(retain, nonatomic) NSNumber *seasonNumber; // @synthesize seasonNumber=_seasonNumber;

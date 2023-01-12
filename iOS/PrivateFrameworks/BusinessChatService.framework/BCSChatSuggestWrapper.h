@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 @class BCSChatSuggestMessage, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSChatSuggestWrapper : PBCodable <NSCopying>
+@interface BCSChatSuggestWrapper : PBCodable
 {
     long long _modTime;
     BCSChatSuggestMessage *_message;

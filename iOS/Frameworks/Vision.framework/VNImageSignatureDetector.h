@@ -7,7 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface VNImageSignatureDetector
 {
-    struct unique_ptr<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>, std::default_delete<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>>> _hyperplaneLSHProcessor;
+    struct unique_ptr<vision::mod::ImageDescriptorProcessorHyperplaneLSH, std::default_delete<vision::mod::ImageDescriptorProcessorHyperplaneLSH>> _hyperplaneLSHProcessor;
     unsigned long long _imageSignatureprintType;
     unsigned long long _imageSignatureHashType;
 }
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long imageSignatureprintType; // @synthesize imageSignatureprintType=_imageSignatureprintType;
 - (shared_ptr_0a6daad2)_calculateImageSignatureHashDescriptorFrom:(const void *)arg1 options:(id)arg2 error:(id *)arg3;
 - (shared_ptr_0a6daad2)_calculateImageSignatureprintDescriptorFromOptions:(id)arg1 error:(id *)arg2;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
+- (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)needsMetalContext;
 - (_Bool)supportsProcessingDevice:(id)arg1;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;

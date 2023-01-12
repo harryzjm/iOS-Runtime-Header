@@ -25,8 +25,10 @@
 @property(nonatomic) unsigned long long metalDrawMode;
 - (void)updateMetalDataBufferAttributes:(NSArray *)arg1 withBlock:(void (^)(struct *, unsigned long long))arg2;
 - (void)updateDataBufferAttributesWithBlock:(void (^)(struct *, unsigned long long))arg1;
+- (void)drawWithEncoder:(id <MTLRenderCommandEncoder>)arg1 atIndex:(unsigned long long)arg2 advanceDynamicBuffer:(_Bool)arg3 instanceCount:(unsigned long long)arg4;
 - (void)drawWithEncoder:(id <MTLRenderCommandEncoder>)arg1 atIndex:(unsigned long long)arg2 advanceDynamicBuffer:(_Bool)arg3;
 - (void)drawWithEncoder:(id <MTLRenderCommandEncoder>)arg1 atIndex:(unsigned long long)arg2;
+- (void)drawWithEncoder:(id <MTLRenderCommandEncoder>)arg1 atIndex:(unsigned long long)arg2 range:(struct _NSRange)arg3 advanceDynamicBuffer:(_Bool)arg4 instanceCount:(unsigned long long)arg5;
 - (void)drawWithEncoder:(id <MTLRenderCommandEncoder>)arg1 atIndex:(unsigned long long)arg2 range:(struct _NSRange)arg3 advanceDynamicBuffer:(_Bool)arg4;
 - (void)drawWithEncoder:(id <MTLRenderCommandEncoder>)arg1 atIndex:(unsigned long long)arg2 range:(struct _NSRange)arg3;
 - (void)encodeWithEncoder:(id <MTLRenderCommandEncoder>)arg1 atIndex:(unsigned long long)arg2;

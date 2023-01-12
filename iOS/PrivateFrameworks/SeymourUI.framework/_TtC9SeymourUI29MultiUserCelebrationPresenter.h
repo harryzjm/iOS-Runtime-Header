@@ -11,6 +11,7 @@
 @interface _TtC9SeymourUI29MultiUserCelebrationPresenter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *display;
+    MISSING_TYPE *contactService;
 }
 
 @end

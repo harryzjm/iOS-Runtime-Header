@@ -7,15 +7,15 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIKBGradient;
+@class UIKBGradient, UIKBRenderTraits, UIKBRenderer;
 
 @protocol UIKBRenderEffect <NSObject, NSCopying>
 @property(readonly, nonatomic) UIKBGradient *gradient;
 @property(readonly, nonatomic) _Bool usesRGBColors;
 @property(nonatomic) double weight;
-@property(readonly, nonatomic) SEL renderSelector;
 @property(readonly, nonatomic) _Bool renderUnder;
 @property(readonly, nonatomic) _Bool isValid;
 - (struct CGColor *)CGColor;
+- (void)renderEffectWithRenderer:(UIKBRenderer *)arg1 traits:(UIKBRenderTraits *)arg2;
 @end
 

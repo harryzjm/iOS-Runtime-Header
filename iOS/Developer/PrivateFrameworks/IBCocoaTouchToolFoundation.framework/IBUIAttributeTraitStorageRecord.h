@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class IBUITraitCollection, NSString;
 @protocol IBBinaryArchiving;
 
-@interface IBUIAttributeTraitStorageRecord : NSObject <IBBinaryArchiving>
+@interface IBUIAttributeTraitStorageRecord : NSObject
 {
     IBUITraitCollection *_traitCollection;
     NSObject<IBBinaryArchiving> *_value;

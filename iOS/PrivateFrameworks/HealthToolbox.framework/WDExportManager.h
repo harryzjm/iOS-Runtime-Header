@@ -49,6 +49,14 @@ __attribute__((visibility("hidden")))
 - (id)_electrocardiogramHeaderWithName:(id)arg1 dateOfBirth:(id)arg2;
 - (void)_exportHealthRecords;
 - (void)_writeHealthRecord:(id)arg1 documentDirectory:(id)arg2 fileNamesInUse:(id)arg3;
+- (void)_writeVisionRxSphere:(id)arg1 cylinder:(id)arg2 axis:(id)arg3 add:(id)arg4;
+- (void)_writeContactsRxSphere:(id)arg1 cylinder:(id)arg2 axis:(id)arg3 add:(id)arg4 baseCurve:(id)arg5 diameter:(id)arg6;
+- (void)_writeGlassesRxSphere:(id)arg1 cylinder:(id)arg2 axis:(id)arg3 add:(id)arg4 vertex:(id)arg5 prismAmount:(id)arg6 prismAngle:(id)arg7 farPD:(id)arg8 nearPD:(id)arg9;
+- (void)_writeVisionRxDevice:(id)arg1 metadata:(id)arg2;
+- (void)_writeVisionRxType:(unsigned long long)arg1 dateIssued:(id)arg2 expirationDate:(id)arg3;
+- (void)_writeContactsRx:(id)arg1;
+- (void)_writeGlassesRx:(id)arg1;
+- (void)_writeVisionRx:(id)arg1;
 - (void)_writeCDASectionFooter;
 - (void)_writeCDAResultsHeader;
 - (void)_writeCDAVitalHeader;
@@ -60,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)_writeCDAResultsOrganizerStart;
 - (void)_writeCDAVitalsOrganizerStartWithStartDate:(id)arg1 endDate:(id)arg2;
 - (void)_writeXMLActivitySummary:(id)arg1 activeEnergyBurnedUnit:(id)arg2;
+- (void)_writeXMLWorkoutStatistics:(id)arg1;
 - (void)_writeXMLWorkoutRouteEnd;
 - (void)_writeXMLWorkoutRouteFileReference:(id)arg1;
 - (void)_writeXMLWorkoutRouteStart:(id)arg1;
@@ -67,8 +76,9 @@ __attribute__((visibility("hidden")))
 - (void)_writeXMLSampleAttributes:(id)arg1;
 - (void)_writeXMLObjectAttributes:(id)arg1;
 - (void)_writeXMLWorkoutEnd;
-- (void)_writeXMLWorkoutEventWithEventType:(id)arg1 date:(id)arg2 duration:(double)arg3 durationUnit:(id)arg4;
-- (void)_writeXMLWorkoutStartWithActivityType:(id)arg1 duration:(id)arg2 durationUnit:(id)arg3 totalDistance:(id)arg4 totalDistanceUnit:(id)arg5 totalEnergyBurned:(id)arg6 totalEnergyBurnedUnit:(id)arg7 sourceName:(id)arg8 sourceVersion:(id)arg9 device:(id)arg10 metadata:(id)arg11 creationDate:(id)arg12 startDate:(id)arg13 endDate:(id)arg14;
+- (void)_writeXMLWorkoutActivity:(id)arg1;
+- (void)_writeXMLWorkoutEvent:(id)arg1;
+- (void)_writeXMLWorkoutStartWithActivityType:(id)arg1 duration:(id)arg2 durationUnit:(id)arg3 sourceName:(id)arg4 sourceVersion:(id)arg5 device:(id)arg6 metadata:(id)arg7 creationDate:(id)arg8 startDate:(id)arg9 endDate:(id)arg10;
 - (void)_writeXMLAudiogramEnd;
 - (void)_writeXMLAudiogramSensitivityPoint:(id)arg1;
 - (void)_writeXMLAudiogramStartWithAudiogram:(id)arg1;
@@ -76,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (void)_writeXMLCorrelationStartWithType:(id)arg1 sourceName:(id)arg2 sourceVersion:(id)arg3 device:(id)arg4 metadata:(id)arg5 creationDate:(id)arg6 startDate:(id)arg7 endDate:(id)arg8;
 - (void)_writeXMLRecordWithType:(id)arg1 sourceName:(id)arg2 sourceVersion:(id)arg3 device:(id)arg4 unit:(id)arg5 metadata:(id)arg6 hrvMetadataList:(id)arg7 creationDate:(id)arg8 startDate:(id)arg9 endDate:(id)arg10 value:(id)arg11;
 - (void)_writeDataForMedicalRecords:(id)arg1;
+- (void)_writeDataForVisionRx;
 - (void)_writeDataForHRVAndTachograms;
 - (void)_writeDataForActivitySummaries;
 - (void)_writeDataForWorkoutRoutes:(id)arg1 semaphore:(id)arg2;
@@ -87,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)_outputSerialQueue_writeSamples:(id)arg1 forQuantityType:(id)arg2;
 - (void)_outputSerialQueue_beginWritingQuantityType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (void)_writeMedicalRecords;
+- (void)_writePrescriptionType;
 - (void)_writeHRVAndTachograms;
 - (void)_writeActivitySummaries;
 - (void)_writeWorkoutRouteForWorkout:(id)arg1 semaphore:(id)arg2;

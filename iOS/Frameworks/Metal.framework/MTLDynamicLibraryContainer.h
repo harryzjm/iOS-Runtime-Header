@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     NSArray *_importedLibraries;
     NSString *_installName;
     NSData *_airData;
+    unsigned long long _bitcodeOffset;
+    unsigned long long _bitcodeSize;
     unsigned long long _airOffset;
     unsigned long long _airSize;
     int _airVersion;

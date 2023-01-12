@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <FocusSettingsUI/FSUIFocusActivationManagerListener-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtCC15FocusSettingsUI23ActivityConfigViewModelP33_69469D27B0511CD91350E3DC9D01628B22FocusAssertionListener : NSObject <FSUIFocusActivationManagerListener>
+@interface _TtCC15FocusSettingsUI23ActivityConfigViewModelP33_69469D27B0511CD91350E3DC9D01628B22FocusAssertionListener : NSObject
 {
     MISSING_TYPE *modeActivationDidChange;
 }

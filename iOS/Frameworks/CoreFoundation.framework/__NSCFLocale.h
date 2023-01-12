@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSLocale.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSCFLocale
+@interface __NSCFLocale : NSLocale
 {
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 - (void)_setDoesNotRequireSpecialCaseHandling;
 - (unsigned char)_doesNotRequireSpecialCaseHandling;
-- (id)_prefs;
+- (id)_prefForKey:(id)arg1;
 - (id)initWithLocaleIdentifier:(id)arg1;
 - (id)displayNameForKey:(id)arg1 value:(id)arg2;
 - (id)objectForKey:(id)arg1;

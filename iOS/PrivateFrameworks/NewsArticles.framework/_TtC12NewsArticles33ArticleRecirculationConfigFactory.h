@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles33ArticleRecirculationConfigFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *personalizationService;
+    MISSING_TYPE *isTesting;
 }
 
 @end

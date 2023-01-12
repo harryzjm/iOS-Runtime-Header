@@ -23,6 +23,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *assetViewController;
     MISSING_TYPE *compilerViewController;
     MISSING_TYPE *testViewController;
+    MISSING_TYPE *containerSegmentedViewController;
+    MISSING_TYPE *logViewController;
+    MISSING_TYPE *consoleViewController;
     MISSING_TYPE *formatManager;
     MISSING_TYPE *packages;
 }
@@ -33,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
+- (void)dealloc;
 
 @end
 

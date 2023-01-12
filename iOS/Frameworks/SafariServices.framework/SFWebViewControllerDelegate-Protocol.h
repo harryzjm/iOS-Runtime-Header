@@ -6,7 +6,7 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, SFWebViewController, UIViewController, WKBackForwardListItem, WKContextMenuElementInfo, WKNavigation, WKNavigationAction, WKNavigationResponse, WKWebView, WKWebViewConfiguration, _SFDialog, _SFDownload, _WKDownload, _WKFrameHandle;
+@class NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, SFDialog, SFWebViewController, UIViewController, WKBackForwardListItem, WKContextMenuElementInfo, WKNavigation, WKNavigationAction, WKNavigationResponse, WKWebView, WKWebViewConfiguration, _SFDownload, _WKDownload, _WKFrameHandle;
 @protocol UIContextMenuInteractionCommitAnimating;
 
 @protocol SFWebViewControllerDelegate <NSObject>
@@ -14,8 +14,8 @@
 - (void)webViewControllerUpdateNavigationBar:(SFWebViewController *)arg1;
 - (void)webViewController:(SFWebViewController *)arg1 mediaCaptureStateDidChange:(unsigned long long)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 didChangeFullScreen:(_Bool)arg2;
-- (long long)webViewController:(SFWebViewController *)arg1 presentationPolicyForDialog:(_SFDialog *)arg2;
-- (unsigned long long)browserPersonaForWebViewController:(SFWebViewController *)arg1;
+- (long long)webViewController:(SFWebViewController *)arg1 presentationPolicyForDialog:(SFDialog *)arg2;
+- (long long)browserPersonaForWebViewController:(SFWebViewController *)arg1;
 - (void)webViewControllerDidChangeSafeAreaShouldAffectObscuredInsets:(SFWebViewController *)arg1;
 - (void)webViewControllerDidChangeSafeAreaInsets:(SFWebViewController *)arg1;
 - (void)webViewController:(SFWebViewController *)arg1 printFrame:(_WKFrameHandle *)arg2;
@@ -50,6 +50,8 @@
 - (void)webViewController:(SFWebViewController *)arg1 didStartProvisionalNavigation:(WKNavigation *)arg2;
 
 @optional
+- (_Bool)webViewControllerCanFindNextOrPrevious:(SFWebViewController *)arg1;
+- (_Bool)webViewControllerShouldFillStringForFind:(SFWebViewController *)arg1;
 - (void)webViewControllerDidUpdateThemeColor:(SFWebViewController *)arg1;
 - (_Bool)webViewControllerCanPromptForAccountSecurityRecommendation:(SFWebViewController *)arg1;
 - (void)webViewController:(SFWebViewController *)arg1 willGoToBackForwardListItem:(WKBackForwardListItem *)arg2 inPageCache:(_Bool)arg3;

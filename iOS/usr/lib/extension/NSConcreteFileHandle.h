@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSFileHandle.h"
+
 @class NSObject;
 @protocol OS_dispatch_data, OS_dispatch_io, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface NSConcreteFileHandle
+@interface NSConcreteFileHandle : NSFileHandle
 {
     struct os_unfair_lock_s _lock;
     _Atomic int _error;

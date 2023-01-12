@@ -9,6 +9,7 @@
 @interface UIDevice (SpringBoardFoundation)
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
 - (id)_currentProduct;
+- (long long)sbf_homescreenFolderBackgroundGraphicsQuality;
 - (id)_lowQualityDevicesForHomeScreenBlur;
 - (long long)sbf_homescreenBlurGraphicsQuality;
 - (id)_mediumQualityDevicesForAnimatedHomeScreenBlur;

@@ -14,7 +14,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *assetFileStore;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *persistenceStore;
-    MISSING_TYPE *$__lazy_storage_$_session;
+    MISSING_TYPE *$__lazy_storage_$_userInitiatedSession;
+    MISSING_TYPE *$__lazy_storage_$_systemPrefetchSession;
     MISSING_TYPE *lock;
     MISSING_TYPE *queue;
     MISSING_TYPE *tasks;

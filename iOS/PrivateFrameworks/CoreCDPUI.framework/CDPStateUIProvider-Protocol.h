@@ -6,13 +6,14 @@
 
 #import <CoreCDPUI/CDPRecoveryKeyUIProvider-Protocol.h>
 
-@class CDPContext, CDPLocalDeviceSecretHandler, CDPRemoteDeviceSecretValidator, NSArray, NSError, NSNumber;
+@class CDPContext, CDPLocalDeviceSecretHandler, CDPRecoveryFlowContext, CDPRemoteDeviceSecretValidator, NSArray, NSError, NSNumber;
 
 @protocol CDPStateUIProvider <CDPRecoveryKeyUIProvider>
 - (void)cdpContext:(CDPContext *)arg1 promptForBeneficiaryAccessKeyWithCompletion:(void (^)(AKInheritanceAccessKey *, NSError *))arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptForInteractiveAuthenticationWithCompletion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptForAdoptionOfMultipleICSC:(void (^)(_Bool, NSError *))arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptForICSCWithIsNumeric:(_Bool)arg2 numericLength:(NSNumber *)arg3 isRandom:(_Bool)arg4 validator:(CDPRemoteDeviceSecretValidator *)arg5;
+- (void)cdpRecoveryFlowContext:(CDPRecoveryFlowContext *)arg1 promptForRemoteSecretWithDevices:(NSArray *)arg2 validator:(CDPRemoteDeviceSecretValidator *)arg3;
 - (void)cdpContext:(CDPContext *)arg1 promptForRemoteSecretWithDevices:(NSArray *)arg2 offeringRemoteApproval:(_Bool)arg3 validator:(CDPRemoteDeviceSecretValidator *)arg4;
 
 @optional

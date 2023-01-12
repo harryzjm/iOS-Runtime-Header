@@ -10,6 +10,7 @@
 
 @interface _TtC8VideosUI27RecentlySearchedDataManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *_event;
     MISSING_TYPE *fileManager;
     MISSING_TYPE *fileURL;
     MISSING_TYPE *directoryURL;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol HKSPSyncAnchor;
+@class HKSPSyncAnchorContainer;
 
 @protocol HKSPServer
-- (void)checkInWithSyncAnchor:(id <HKSPSyncAnchor>)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)connectWithCompletion:(void (^)(id <HKSPSyncAnchor>, NSError *))arg1;
+- (void)checkInWithSyncAnchorContainer:(HKSPSyncAnchorContainer *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)connectWithCompletion:(void (^)(HKSPSyncAnchorContainer *, NSError *))arg1;
 @end
 

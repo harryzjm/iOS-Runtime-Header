@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCProtoItemIdentifierSet : PBCodable <NSCopying>
+@interface _MPCProtoItemIdentifierSet : PBCodable
 {
     long long _cloudID;
     long long _delegateInfoID;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
     long long _storeSubscriptionAdamID;
     NSString *_cloudUniversalLibraryID;
     NSString *_contentItemID;
+    NSString *_playbackAuthorizationToken;
     struct {
         unsigned int cloudID:1;
         unsigned int delegateInfoID:1;

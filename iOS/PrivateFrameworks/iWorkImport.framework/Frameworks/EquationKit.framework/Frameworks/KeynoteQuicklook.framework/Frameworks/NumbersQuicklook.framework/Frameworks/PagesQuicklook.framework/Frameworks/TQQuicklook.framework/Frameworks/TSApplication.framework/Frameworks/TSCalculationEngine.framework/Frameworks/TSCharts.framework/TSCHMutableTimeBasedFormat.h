@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCHCustomFormatUpdateSupport-Protocol.h>
-#import <TSCharts/TSUMutableDateTimeFormatInspectorPropertyVendor-Protocol.h>
-#import <TSCharts/TSUMutableDurationFormatInspectorPropertyVendor-Protocol.h>
+#import "TSCHTimeBasedFormat.h"
 
 @class NSNumber, NSSet, NSString;
 
-@interface TSCHMutableTimeBasedFormat <TSCHCustomFormatUpdateSupport, TSUMutableDurationFormatInspectorPropertyVendor, TSUMutableDateTimeFormatInspectorPropertyVendor>
+@interface TSCHMutableTimeBasedFormat : TSCHTimeBasedFormat
 {
 }
 

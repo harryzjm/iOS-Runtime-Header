@@ -6,11 +6,9 @@
 
 #import <AdCore/ADIDManager.h>
 
-#import <AdID/BackgroundTaskDelegate-Protocol.h>
-
 @class NSString;
 
-@interface ADIDManager (Private) <BackgroundTaskDelegate>
+@interface ADIDManager (Private)
 + (void)initialize;
 - (void)checkForLateReconcile;
 - (void)setReconcileOperations:(id)arg1;

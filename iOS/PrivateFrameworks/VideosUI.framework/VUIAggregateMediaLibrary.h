@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class VUIDeviceMediaLibrary, VUISidebandMediaLibrary;
+#import "VUIDeviceMediaLibrary.h"
+
+@class VUISidebandMediaLibrary;
 
 __attribute__((visibility("hidden")))
-@interface VUIAggregateMediaLibrary
+@interface VUIAggregateMediaLibrary : VUIDeviceMediaLibrary
 {
     VUIDeviceMediaLibrary *_deviceMediaLibrary;
     VUISidebandMediaLibrary *_sidebandMediaLibrary;

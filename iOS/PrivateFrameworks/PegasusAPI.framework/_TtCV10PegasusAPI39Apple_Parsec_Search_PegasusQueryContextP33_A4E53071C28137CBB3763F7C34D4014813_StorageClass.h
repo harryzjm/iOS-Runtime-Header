@@ -34,6 +34,11 @@
     MISSING_TYPE *_hsEnabled;
     MISSING_TYPE *_managedDevice;
     MISSING_TYPE *_abTestSeed;
+    MISSING_TYPE *_siriLocale;
+    MISSING_TYPE *_region;
+    MISSING_TYPE *_sil;
+    MISSING_TYPE *_trialIdentifiers;
+    MISSING_TYPE *_ampBaselineExperimentMetadata;
 }
 
 @end

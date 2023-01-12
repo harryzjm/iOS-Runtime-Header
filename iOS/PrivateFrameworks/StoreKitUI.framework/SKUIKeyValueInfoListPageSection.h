@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSArray, NSNumber, NSString, SKUIInfoListViewElement, SKUIViewElementLayoutContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIKeyValueInfoListPageSection <SKUIArtworkRequestDelegate>
+@interface SKUIKeyValueInfoListPageSection : SKUIStorePageSection
 {
     SKUIViewElementLayoutContext *_cellLayoutContext;
     SKUIInfoListViewElement *_infoList;

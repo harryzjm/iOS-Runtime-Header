@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class CALayer, CAPackage;
 
 __attribute__((visibility("hidden")))
-@interface UITutorialAnimatedView
+@interface UITutorialAnimatedView : UIView
 {
     CALayer *_packageLayer;
     long long _appearance;

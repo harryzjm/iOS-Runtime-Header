@@ -13,5 +13,9 @@
 @property(readonly, nonatomic) NSString *name;
 - (_Bool)runWithGraphManager:(PGManager *)arg1 progressReporter:(MAProgressReporter *)arg2 error:(id *)arg3;
 - (_Bool)shouldRunWithGraphManager:(PGManager *)arg1;
+- (_Bool)currentPlatformIsSupported;
+
+@optional
+@property(readonly, nonatomic) unsigned long long version;
 @end
 

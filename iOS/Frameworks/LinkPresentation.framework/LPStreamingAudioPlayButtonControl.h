@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPAudioPlayerClient-Protocol.h>
-
 @class LPAudioPlayerMediaPlayableAdaptor;
 @protocol LPAudioPlayer;
 
 __attribute__((visibility("hidden")))
-@interface LPStreamingAudioPlayButtonControl <LPAudioPlayerClient>
+@interface LPStreamingAudioPlayButtonControl
 {
     id <LPAudioPlayer> _player;
     LPAudioPlayerMediaPlayableAdaptor *_playableAdaptor;

@@ -16,6 +16,11 @@ __attribute__((visibility("hidden")))
     struct unordered_map<MTLLoadedFile *, id, std::hash<MTLLoadedFile *>, std::equal_to<MTLLoadedFile *>, std::allocator<std::pair<MTLLoadedFile *const, id>>> _claims;
 }
 
++ (_Bool)deserializePipelinesFromAIRNTHeaderAtOffset:(unsigned long long)arg1 headerSize:(unsigned long long)arg2 reader:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 handler:(CDUnknownBlockType)arg5;
++ (_Bool)deserializeObjectFromAIRNTHeaderAtOffset:(unsigned long long)arg1 headerSize:(unsigned long long)arg2 reader:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 handler:(CDUnknownBlockType)arg5;
++ (_Bool)deserializeHashesFromAIRNTHeaderAtOffset:(unsigned long long)arg1 headerSize:(unsigned long long)arg2 reader:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 handler:(CDUnknownBlockType)arg5;
++ (_Bool)isAIRHeaderExtLoadCommand:(const void *)arg1 headerOffset:(unsigned long long *)arg2 headerSize:(unsigned long long *)arg3;
++ (_Bool)ReadHashTable:(unsigned long long)arg1 begin:(unsigned int)arg2 end:(unsigned int)arg3 hashList:(void *)arg4 reader:(CDUnknownBlockType)arg5 errorHandler:(CDUnknownBlockType)arg6 handler:(CDUnknownBlockType)arg7;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (oneway void)dealloc;

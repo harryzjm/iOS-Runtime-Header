@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-
 @class CUTWeakReference, NSString;
 @protocol OS_dispatch_queue;
 
-@interface _IDSRealTimeEncryptionProxy : NSObject <IDSDaemonListenerProtocol>
+@interface _IDSRealTimeEncryptionProxy : NSObject
 {
     NSString *_uniqueID;
     NSString *_accountID;

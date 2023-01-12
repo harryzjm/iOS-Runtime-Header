@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)waitForFence:(id)arg1;
 - (void)updateFence:(id)arg1;
 - (void)setStageInRegionWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2;
-- (void)setStageInRegion:(CDStruct_1e3be3a8)arg1;
+- (void)setStageInRegion:(CDStruct_4c83c94d)arg1;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setTexture:(id)arg1 atIndex:(unsigned long long)arg2;

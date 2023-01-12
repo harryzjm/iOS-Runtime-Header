@@ -6,9 +6,11 @@
 
 #import <UIKit/UIVisualEffectView.h>
 
+@class NSString;
+
 @interface UIVisualEffectView (Grouping)
 - (void)smu_setBackgroundEffects:(id)arg1;
-- (void)smu_setGroupName:(id)arg1;
+@property(copy, nonatomic) NSString *smu_groupName;
 - (id)initWithBackgroundEffects:(id)arg1;
 @end
 

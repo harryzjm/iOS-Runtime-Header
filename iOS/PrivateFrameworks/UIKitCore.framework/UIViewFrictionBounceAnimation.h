@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIIntervalAnimating-Protocol.h>
-
 @class NSString;
 @protocol UIVectorOperatable;
 
 __attribute__((visibility("hidden")))
-@interface UIViewFrictionBounceAnimation : NSObject <UIIntervalAnimating>
+@interface UIViewFrictionBounceAnimation : NSObject
 {
     id _stableTarget;
     id _intermediate;
     id _current;
+    id _epsilon;
     double _deceleration;
     double _bounce;
     id <UIVectorOperatable> _targetValue;

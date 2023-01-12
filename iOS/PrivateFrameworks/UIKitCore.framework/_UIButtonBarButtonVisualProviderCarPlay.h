@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIButtonBarButtonVisualProvider.h"
+
 @class NSArray, NSLayoutConstraint, NSMutableDictionary, UIImageView, UILabel, UIView;
 @protocol _UIButtonBarAppearanceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIButtonBarButtonVisualProviderCarPlay
+@interface _UIButtonBarButtonVisualProviderCarPlay : _UIButtonBarButtonVisualProvider
 {
     id <_UIButtonBarAppearanceDelegate> _appearanceDelegate;
     UIView *_focusedView;

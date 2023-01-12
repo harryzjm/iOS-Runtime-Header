@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPDataCopyInputSteamProvider-Protocol.h>
-#import <TSPersistence/TSPDataCopyProvider-Protocol.h>
-#import <TSPersistence/TSPDataCopyReadChannelProvider-Protocol.h>
-#import <TSPersistence/TSPDataCopyURLProvider-Protocol.h>
-
 @class NSInputStream, NSString, NSURL;
 @protocol TSUReadChannel;
 
-@interface TSPDataCopyProviderConcrete : NSObject <TSPDataCopyProvider, TSPDataCopyURLProvider, TSPDataCopyReadChannelProvider, TSPDataCopyInputSteamProvider>
+@interface TSPDataCopyProviderConcrete : NSObject
 {
     NSURL *_directory;
     NSURL *_URLInternal;

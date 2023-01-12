@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSKit/NSCopying-Protocol.h>
-
 @class TSUCustomFormat;
 
-@interface TSKCustomFormatListStemMatchObject : NSObject <NSCopying>
+@interface TSKCustomFormatListStemMatchObject : NSObject
 {
     TSUCustomFormat *_customFormat;
 }

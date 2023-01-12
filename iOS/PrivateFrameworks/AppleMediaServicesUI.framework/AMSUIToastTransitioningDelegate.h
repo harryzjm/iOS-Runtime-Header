@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIToastTransitioningDelegate : NSObject <UIViewControllerTransitioningDelegate>
+@interface AMSUIToastTransitioningDelegate : NSObject
 {
 }
 

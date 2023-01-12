@@ -6,13 +6,13 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class NSArray, NSURL;
+@class NSArray, NSURL, RTDiagnosticOptions;
 
 @protocol RTDiagnosticProvider <NSObject>
 
 @optional
 + (NSArray *)diagnosticFiles;
 - (void)fetchDiagnosticLogsWithHandler:(void (^)(NSArray *, NSError *))arg1;
-- (void)sendDiagnosticsToURL:(NSURL *)arg1 handler:(void (^)(NSError *))arg2;
+- (void)sendDiagnosticsToURL:(NSURL *)arg1 options:(RTDiagnosticOptions *)arg2 handler:(void (^)(NSError *))arg3;
 @end
 

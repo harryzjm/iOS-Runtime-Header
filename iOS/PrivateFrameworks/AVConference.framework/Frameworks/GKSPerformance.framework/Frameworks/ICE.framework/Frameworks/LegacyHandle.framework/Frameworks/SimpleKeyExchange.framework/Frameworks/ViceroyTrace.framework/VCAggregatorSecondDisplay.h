@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
     int _videoWidth;
     int _videoHeight;
     int _codec;
-    int _transportType;
+    int _hdrMode;
     double _averageExpirationTime;
     double _maxExpirationTime;
     double _averageWiFiPacketDelay;
@@ -65,6 +65,7 @@ __attribute__((visibility("hidden")))
     unsigned int _evictedFramesTrackedCount;
     unsigned int _evictedFramesAnalysisValidIntervals;
     double _evictedFramesAverageLatePacketDelay;
+    unsigned int _evictedFramesRecoveredCount;
     VCHistogram *_RBR;
     VCHistogram *_TBR;
     VCHistogram *_SBR;

@@ -6,25 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-@class NWKUILinearGaugeView, UILabel;
+@class CLKDevice, NWKUILinearGaugeView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface NWCDailyForecastView : UIView
 {
-    double _percentage;
+    CLKDevice *_device;
     NWKUILinearGaugeView *_linearGaugeView;
     UILabel *_weekdayLabel;
 }
 
++ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *weekdayLabel; // @synthesize weekdayLabel=_weekdayLabel;
 @property(readonly, nonatomic) NWKUILinearGaugeView *linearGaugeView; // @synthesize linearGaugeView=_linearGaugeView;
-@property(nonatomic) double percentage; // @synthesize percentage=_percentage;
+@property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 - (void)_applyLayoutConstraints:(CDStruct_d2b197d1)arg1;
-- (void)updateMonochromeColor:(id)arg1 fraction:(double)arg2;
-- (void)applyFilter:(id)arg1;
+- (void)updateWithHighlightColor:(id)arg1 fraction:(double)arg2;
+- (void)applyNonAccentFilters:(id)arg1 fraction:(double)arg2;
+- (void)applyAccentFilters:(id)arg1 fraction:(double)arg2;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithDevice:(id)arg1;
 
 @end
 

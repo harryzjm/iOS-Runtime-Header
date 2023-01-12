@@ -12,7 +12,7 @@
 - (unique_ptr_d41df5a5)archiveLineParserForIndexPath:(NSString *)arg1;
 - (const char *)indexLabel;
 - (NSString *)indexName;
-- (_Bool)loadIndexFile:(const char *)arg1;
+- (_Bool)loadIndexFile:(const char *)arg1 fileSize:(long long)arg2;
 - (unsigned long long)indexFileVersion;
 
 @optional

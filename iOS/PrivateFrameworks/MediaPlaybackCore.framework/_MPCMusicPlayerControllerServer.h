@@ -6,21 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
-#import <MediaPlaybackCore/MPMusicPlayerControllerApplicationServer-Protocol.h>
-#import <MediaPlaybackCore/MPMusicPlayerControllerSystemServer-Protocol.h>
-#import <MediaPlaybackCore/NSXPCListenerDelegate-Protocol.h>
-
-@class MPCPlaybackEngine, MPMusicPlayerControllerSystemCache, MPMusicPlayerQueueDescriptor, NSMutableArray, NSString, NSXPCListener, NSXPCListenerEndpoint;
+@class MPCPlaybackEngine, MPMusicPlayerControllerSystemCache, MPMusicPlayerQueueDescriptor, NSMutableArray, NSString, NSUUID, NSXPCListener, NSXPCListenerEndpoint;
 
 __attribute__((visibility("hidden")))
-@interface _MPCMusicPlayerControllerServer : NSObject <MPMusicPlayerControllerSystemServer, MPMusicPlayerControllerApplicationServer, NSXPCListenerDelegate, MPCPlaybackEngineEventObserving>
+@interface _MPCMusicPlayerControllerServer : NSObject
 {
     MPMusicPlayerQueueDescriptor *_queueDescriptor;
     MPMusicPlayerQueueDescriptor *_preparingDescriptor;
     CDUnknownBlockType _prepareCompletionHandler;
     _Bool _skipWaitingForLikelyToKeepUp;
     _Bool _resumed;
+    NSUUID *_settingMultiplePlaybackContextsUUID;
     MPCPlaybackEngine *_playbackEngine;
     MPMusicPlayerControllerSystemCache *_systemCache;
     NSXPCListener *_listener;
@@ -37,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_registerForCommandHandlersRegisteredNotification;
 - (void)_handleCommandHandlersRegistered:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)engine:(id)arg1 didChangeCurrentItemVariantID:(id)arg2;
 - (void)engine:(id)arg1 didChangeItemElapsedTime:(double)arg2 rate:(float)arg3;
 - (void)engine:(id)arg1 didEndPlaybackOfItem:(id)arg2;
 - (void)engine:(id)arg1 didReachEndOfQueueWithReason:(id)arg2;
@@ -67,7 +64,9 @@ __attribute__((visibility("hidden")))
 - (void)stop;
 - (void)pauseWithFadeDuration:(long long)arg1;
 - (void)play;
+- (void)_appendPlaybackContexts:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)appendDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_prependPlaybackContexts:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prependDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDescriptorWithReply:(CDUnknownBlockType)arg1;
 - (void)setDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;

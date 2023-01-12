@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class HKGraphViewRenderer;
+
 @protocol HKGraphTileDrawingDelegate
-- (void)drawToContext:(struct CGContext *)arg1 tileRect:(struct CGRect)arg2 column:(long long)arg3;
+- (void)tileRenderDidFinish;
+- (HKGraphViewRenderer *)createTileRendererWithTileRect:(struct CGRect)arg1 column:(long long)arg2;
 @end
 

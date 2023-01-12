@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMotion/NSFastEnumeration-Protocol.h>
-
 @class NSData, NSDictionary;
 
-@interface CMFallStatsItemsIterator : NSObject <NSFastEnumeration>
+@interface CMFallStatsItemsIterator : NSObject
 {
     NSData *_data;
     NSDictionary *_item;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DeviceManagementTools/DMTConfigurationPayload-Protocol.h>
+#import "DMTConfigurationPayloadBase.h"
 
 @class NSData, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface DMTCertificatePayload <DMTConfigurationPayload>
+@interface DMTCertificatePayload : DMTConfigurationPayloadBase
 {
     NSString *_certificateFileName;
     NSData *_content;

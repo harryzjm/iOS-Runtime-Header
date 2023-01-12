@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @protocol GEOToolProxy
+- (NSDictionary *)listFilePathsLocal;
+- (NSDictionary *)listFilePathsRemote;
+- (_Bool)isProactiveTileDownloadEnabled;
+- (void)forceProactiveTileDownloaderRun;
 - (_Bool)notifyNetworkDefaultsChanged;
 - (void)invalidateTileCache;
 - (unsigned long long)freePurgableSpace:(unsigned long long)arg1 forUrgency:(int)arg2;

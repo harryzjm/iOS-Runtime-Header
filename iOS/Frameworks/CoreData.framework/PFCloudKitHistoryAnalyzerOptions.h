@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKSchedulerActivity;
+@class NSCloudKitMirroringRequest;
 
 __attribute__((visibility("hidden")))
 @interface PFCloudKitHistoryAnalyzerOptions
 {
     _Bool _includePrivateTransactions;
-    CKSchedulerActivity *_activity;
+    NSCloudKitMirroringRequest *_request;
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

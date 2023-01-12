@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HDSyncSession.h"
+
 __attribute__((visibility("hidden")))
-@interface _HDStaticSyncSession
+@interface _HDStaticSyncSession : HDSyncSession
 {
 }
 
 - (long long)maxEncodedBytesPerChangeSetForSyncEntityClass:(Class)arg1;
 - (long long)maxEncodedBytesPerCodableChangeForSyncEntityClass:(Class)arg1;
-- (id)newChangeWithSyncEntityClass:(Class)arg1 version:(CDStruct_c12fb951)arg2;
+- (id)newChangeWithSyncEntityClass:(Class)arg1 version:(CDStruct_1ef3fb1f)arg2;
 
 @end
 

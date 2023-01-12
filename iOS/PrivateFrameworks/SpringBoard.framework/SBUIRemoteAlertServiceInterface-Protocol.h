@@ -14,6 +14,7 @@
 - (void)didInvalidateForRemoteAlert;
 - (void)setUserInfo:(NSDictionary *)arg1;
 - (void)prepareForActivationWithContext:(SBSRemoteAlertActivationContext *)arg1 completion:(void (^)(void))arg2;
+- (void)noteActivatedWithPresentationMode:(long long)arg1;
 - (void)noteActivatedForActivityContinuationWithIdentifier:(NSUUID *)arg1;
 - (void)handleDoubleHeightStatusBarTap;
 - (void)handleButtonActions:(NSSet *)arg1;

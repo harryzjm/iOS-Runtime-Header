@@ -9,7 +9,7 @@
 @class FPSpotlightCollector, NSArray, NSError, NSPredicate;
 
 @protocol FPSpotlightCollectorObserving <NSObject>
-- (unsigned long long)maximumNumberOfItemsForCollector:(FPSpotlightCollector *)arg1;
+- (unsigned long long)maximumNumberOfItems;
 - (NSPredicate *)itemPredicateForCollector:(FPSpotlightCollector *)arg1;
 - (void)collector:(FPSpotlightCollector *)arg1 didUpdateItemsOrigin:(unsigned long long)arg2;
 - (void)collector:(FPSpotlightCollector *)arg1 didEncounterError:(NSError *)arg2;

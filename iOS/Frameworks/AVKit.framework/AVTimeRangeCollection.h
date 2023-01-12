@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithTimedMetadataGroups:(id)arg1;
 - (id)init;
 - (id)initWithTimeRanges:(id)arg1;
+- (id)initWithInterstitialTimeRanges:(id)arg1;
 
 @end
 

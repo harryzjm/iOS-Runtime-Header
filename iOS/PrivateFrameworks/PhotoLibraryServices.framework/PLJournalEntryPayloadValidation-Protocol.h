@@ -13,9 +13,11 @@
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (NSSet *)additionalEntityNames;
 + (_Bool)isValidForPersistenceWithObjectDictionary:(NSDictionary *)arg1 additionalEntityName:(NSString *)arg2;
++ (void)populateValidationPropertiesFromManagedObjectModel:(NSManagedObjectModel *)arg1;
 + (void)validatePayloadPropertiesForManagedObjectModel:(NSManagedObjectModel *)arg1;
 + (NSDictionary *)persistedPropertyNamesForEntityNames;
 + (NSDictionary *)modelProperties;
+- (NSDictionary *)payloadAttributes;
 - (_Bool)comparePayloadToObjectDictionary:(NSDictionary *)arg1 usingModelProperties:(NSDictionary *)arg2 errorDescriptions:(NSMutableArray *)arg3;
 @end
 

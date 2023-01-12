@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/NSXPCListenerDelegate-Protocol.h>
-
 @class FPXExtensionContext, NSString, NSXPCInterface;
 
 __attribute__((visibility("hidden")))
-@interface FPXXPCListenerDelegate : NSObject <NSXPCListenerDelegate>
+@interface FPXXPCListenerDelegate : NSObject
 {
     FPXExtensionContext *_context;
     NSXPCInterface *_interface;

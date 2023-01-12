@@ -16,8 +16,8 @@ struct CCUIModuleLayoutSize {
 };
 
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
@@ -28,12 +28,5 @@ struct CGRect {
 struct CGSize {
     double _field1;
     double _field2;
-};
-
-struct NSDirectionalEdgeInsets {
-    double top;
-    double leading;
-    double bottom;
-    double trailing;
 };
 

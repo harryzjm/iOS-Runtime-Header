@@ -12,7 +12,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)handleConfusableIsolatedCharacterToken:(id)arg1;
-- (id)process:(id)arg1;
+- (id)process:(id)arg1 options:(id)arg2;
 - (id)init;
 
 @end

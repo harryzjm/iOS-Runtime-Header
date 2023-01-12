@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKCalendarItemInlineEditItem-Protocol.h>
-#import <EventKitUI/EKEditItemViewControllerDelegate-Protocol.h>
-#import <EventKitUI/UITextFieldDelegate-Protocol.h>
-
 @class NSString, UITableViewCell, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface EKCalendarItemTitleInlineEditItem <UITextFieldDelegate, EKEditItemViewControllerDelegate, EKCalendarItemInlineEditItem>
+@interface EKCalendarItemTitleInlineEditItem
 {
     UITableViewCell *_titleCell;
     _Bool _drawsOwnRowSeparators;
@@ -24,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)textFieldShouldClear:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)textFieldDidChange:(id)arg1;
+- (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (_Bool)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;

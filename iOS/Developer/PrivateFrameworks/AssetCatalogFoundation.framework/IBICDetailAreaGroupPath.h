@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
 @class IBICDetailAreaGroupPathComponent, NSArray;
 
-@interface IBICDetailAreaGroupPath : NSObject <NSCopying>
+@interface IBICDetailAreaGroupPath : NSObject
 {
     NSArray *_components;
 }

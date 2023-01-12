@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (NNMKAdditions)
++ (_Bool)isString:(id)arg1 equalToNullableString:(id)arg2;
 - (id)nnmk_sanitizedFileNameString;
 - (id)nnmk_base64String;
 @end

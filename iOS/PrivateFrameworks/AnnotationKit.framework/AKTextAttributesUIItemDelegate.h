@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/AKTextAttributesUserInterfaceItem-Protocol.h>
-#import <AnnotationKit/AKUserInterfaceItem-Protocol.h>
-
 @class AKTextAttributesViewController, NSString;
 
-@interface AKTextAttributesUIItemDelegate : NSObject <AKUserInterfaceItem, AKTextAttributesUserInterfaceItem>
+@interface AKTextAttributesUIItemDelegate : NSObject
 {
     AKTextAttributesViewController *_parentController;
 }

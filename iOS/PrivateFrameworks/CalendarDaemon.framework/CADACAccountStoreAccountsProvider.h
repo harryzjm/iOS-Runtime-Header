@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CalendarDaemon/CADACAccountsProvider-Protocol.h>
-
 @class ACAccountStore;
 
 __attribute__((visibility("hidden")))
-@interface CADACAccountStoreAccountsProvider : NSObject <CADACAccountsProvider>
+@interface CADACAccountStoreAccountsProvider : NSObject
 {
     ACAccountStore *_accountStore;
 }

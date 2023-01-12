@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSObservable.h"
+
 @class NSObject, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _AMSKeyValueObservable
+@interface _AMSKeyValueObservable : AMSObservable
 {
     NSObject *_context;
     NSString *_keyPath;

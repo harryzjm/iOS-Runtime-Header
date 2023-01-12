@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WeatherFoundation/WFFavoriteLocationProvider-Protocol.h>
-
 @class NSString;
 @protocol WFFavoriteLocationProviderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WFDefaultFavoritesProvider : NSObject <WFFavoriteLocationProvider>
+@interface WFDefaultFavoritesProvider : NSObject
 {
     id <WFFavoriteLocationProviderDelegate> _delegate;
 }

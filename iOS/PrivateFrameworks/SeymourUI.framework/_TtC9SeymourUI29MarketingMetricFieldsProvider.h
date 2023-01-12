@@ -6,8 +6,13 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC9SeymourUI29MarketingMetricFieldsProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *eventHub;
+    MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *badgingCounts;
 }
 
 @end

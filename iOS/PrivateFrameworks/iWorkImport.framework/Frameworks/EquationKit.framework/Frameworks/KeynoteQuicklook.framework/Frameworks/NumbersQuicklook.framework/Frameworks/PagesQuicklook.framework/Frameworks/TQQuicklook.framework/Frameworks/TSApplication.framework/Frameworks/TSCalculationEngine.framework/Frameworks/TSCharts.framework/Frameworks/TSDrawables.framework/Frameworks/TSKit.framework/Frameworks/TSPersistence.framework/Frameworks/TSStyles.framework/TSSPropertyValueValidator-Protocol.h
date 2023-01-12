@@ -14,11 +14,5 @@
 + (_Bool)validateIntValueAsBool:(int *)arg1 forProperty:(int)arg2;
 + (_Bool)validateIntValue:(int *)arg1 forProperty:(int)arg2 min:(int)arg3 max:(int)arg4;
 + (_Bool)validateIntValue:(int *)arg1 forProperty:(int)arg2;
-- (_Bool)validateObjectValue:(id *)arg1 withClass:(Class)arg2 forProperty:(int)arg3;
-- (_Bool)validateDoubleValue:(double *)arg1 forProperty:(int)arg2;
-- (_Bool)validateFloatValue:(float *)arg1 forProperty:(int)arg2;
-- (_Bool)validateIntValueAsBool:(int *)arg1 forProperty:(int)arg2;
-- (_Bool)validateIntValue:(int *)arg1 forProperty:(int)arg2 min:(int)arg3 max:(int)arg4;
-- (_Bool)validateIntValue:(int *)arg1 forProperty:(int)arg2;
 @end
 

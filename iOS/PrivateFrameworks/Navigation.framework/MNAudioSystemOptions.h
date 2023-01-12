@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface MNAudioSystemOptions : NSObject <NSCopying>
+@interface MNAudioSystemOptions : NSObject
 {
     _Bool _useHFP;
     _Bool _pauseSpokenAudio;

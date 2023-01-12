@@ -6,12 +6,10 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKit/NSSecureCoding-Protocol.h>
-
 @class NSError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMRemoteLoginMessage : HMFObject <NSSecureCoding>
+@interface HMRemoteLoginMessage : HMFObject
 {
     NSString *_sessionID;
     NSError *_error;

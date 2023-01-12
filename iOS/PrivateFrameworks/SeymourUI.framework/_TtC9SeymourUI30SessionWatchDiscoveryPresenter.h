@@ -19,8 +19,10 @@
     MISSING_TYPE *rejectionPresentationTimer;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *sessionClient;
+    MISSING_TYPE *contentAvailabilityClient;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *timerProvider;
+    MISSING_TYPE *remoteBrowsingSource;
     MISSING_TYPE *catalogWorkout;
     MISSING_TYPE *initialWatchConnectionRejection;
     MISSING_TYPE *discoveryStartTimestamp;

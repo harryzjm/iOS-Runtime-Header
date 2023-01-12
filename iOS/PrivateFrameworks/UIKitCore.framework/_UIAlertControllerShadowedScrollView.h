@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIScrollView.h"
+
 @class _UIAlertControllerGradientView;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerShadowedScrollView
+@interface _UIAlertControllerShadowedScrollView : UIScrollView
 {
     _UIAlertControllerGradientView *_shadowView;
     _Bool _shouldPinToBottomOnResize;

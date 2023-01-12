@@ -4,120 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
-
-struct BTStatus {
-    unsigned long long leRemote;
-    unsigned long long leAcc;
-    unsigned long long btKB;
-    unsigned long long a2dp;
-    unsigned long long btGC;
-    unsigned long long eAcc;
-    unsigned long long hk;
-    unsigned long long lowEnergyConnections;
-    unsigned long long nonHIDConnections;
-    unsigned long long connectedHIDDevices;
-    unsigned long long oneSniffAttemptDevices;
-    unsigned long long twoSniffAttemptDevices;
-    unsigned long long sco;
-    unsigned long long wiap;
-    unsigned long long remote;
-    unsigned long long connectedDevices;
-    _Bool isScanning;
-    _Bool isDiscoverable;
-    _Bool isConnectable;
-};
-
-struct HTTPMessagePrivate {
-    struct __CFRuntimeBase {
-        unsigned long long _field1;
-        _Atomic unsigned long long _field2;
-    } _field1;
-    struct HTTPMessagePrivate *_field2;
-    struct {
-        char _field1[8192];
-        unsigned long long _field2;
-        char *_field3;
-        unsigned long long _field4;
-        char *_field5;
-        unsigned long long _field6;
-        int _field7;
-        char *_field8;
-        unsigned long long _field9;
-        struct {
-            char *_field1;
-            unsigned long long _field2;
-            char *_field3;
-            unsigned long long _field4;
-            char *_field5;
-            unsigned long long _field6;
-            char *_field7;
-            unsigned long long _field8;
-            char *_field9;
-            unsigned long long _field10;
-            char *_field11;
-            unsigned long long _field12;
-            char *_field13;
-            unsigned long long _field14;
-            char *_field15;
-            char *_field16;
-            char *_field17;
-            unsigned long long _field18;
-            char *_field19;
-            unsigned long long _field20;
-        } _field10;
-        char *_field11;
-        unsigned long long _field12;
-        int _field13;
-        char *_field14;
-        unsigned long long _field15;
-        unsigned char _field16;
-        unsigned long long _field17;
-        unsigned char _field18;
-        int _field19;
-    } _field3;
-    unsigned char _field4;
-    int _field5;
-    unsigned char _field6;
-    char *_field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    unsigned long long _field10;
-    unsigned char _field11[32000];
-    char *_field12;
-    struct *_field13;
-    char *_field14;
-    unsigned long long _field15;
-    struct iovec _field16[2];
-    struct iovec *_field17;
-    int _field18;
-    unsigned long long _field19;
-    int _field20;
-    int _field21;
-    int _field22;
-    void *_field23;
-    void *_field24;
-    void *_field25;
-    void *_field26;
-    void *_field27;
-    void *_field28;
-    CDUnknownFunctionPointerType _field29;
-    CDUnknownFunctionPointerType _field30;
-    CDUnknownBlockType _field31;
-    int _field32;
-    unsigned char _field33;
-    long long _field34;
-    char *_field35;
-    int _field36;
-    unsigned long long _field37;
-    unsigned int _field38;
-};
 
 struct UT_hash_handle {
     struct UT_hash_table *_field1;
@@ -138,17 +25,15 @@ struct coap_addr_tuple_t {
 };
 
 struct coap_address_t {
-    unsigned int size;
+    unsigned int _field1;
     union {
-        struct sockaddr sa;
-        struct sockaddr_in sin;
-        struct sockaddr_in6 sin6;
-    } addr;
+        struct sockaddr _field1;
+        struct sockaddr_in _field2;
+        struct sockaddr_in6 _field3;
+    } _field2;
 };
 
 struct coap_async_state_t;
-
-struct coap_attr_t;
 
 struct coap_context_t {
     unsigned short _field1[6];
@@ -206,21 +91,7 @@ struct coap_pdu_t {
 
 struct coap_queue_t;
 
-struct coap_resource_t {
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    CDUnknownFunctionPointerType _field1[7];
-    struct UT_hash_handle _field2;
-    struct coap_attr_t *_field3;
-    struct coap_subscription_t *_field4;
-    struct coap_str_const_t *_field5;
-    int _field6;
-    unsigned int _field7;
-    void *_field8;
-};
+struct coap_resource_t;
 
 struct coap_session_t {
     unsigned char _field1;
@@ -269,47 +140,38 @@ struct coap_socket_t {
     struct coap_endpoint_t *_field4;
 };
 
-struct coap_str_const_t;
-
-struct coap_subscription_t;
-
 struct in6_addr {
     union {
-        unsigned char __u6_addr8[16];
-        unsigned short __u6_addr16[8];
-        unsigned int __u6_addr32[4];
-    } __u6_addr;
+        unsigned char _field1[16];
+        unsigned short _field2[8];
+        unsigned int _field3[4];
+    } _field1;
 };
 
 struct in_addr {
-    unsigned int s_addr;
-};
-
-struct iovec {
-    void *_field1;
-    unsigned long long _field2;
+    unsigned int _field1;
 };
 
 struct sockaddr {
-    unsigned char sa_len;
-    unsigned char sa_family;
-    char sa_data[14];
+    unsigned char _field1;
+    unsigned char _field2;
+    char _field3[14];
 };
 
 struct sockaddr_in {
-    unsigned char sin_len;
-    unsigned char sin_family;
-    unsigned short sin_port;
-    struct in_addr sin_addr;
-    char sin_zero[8];
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned short _field3;
+    struct in_addr _field4;
+    char _field5[8];
 };
 
 struct sockaddr_in6 {
-    unsigned char sin6_len;
-    unsigned char sin6_family;
-    unsigned short sin6_port;
-    unsigned int sin6_flowinfo;
-    struct in6_addr sin6_addr;
-    unsigned int sin6_scope_id;
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned short _field3;
+    unsigned int _field4;
+    struct in6_addr _field5;
+    unsigned int _field6;
 };
 

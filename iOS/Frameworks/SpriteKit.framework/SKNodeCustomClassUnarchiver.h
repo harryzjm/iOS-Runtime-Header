@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSKeyedUnarchiverDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKNodeCustomClassUnarchiver : NSObject <NSKeyedUnarchiverDelegate>
+@interface SKNodeCustomClassUnarchiver : NSObject
 {
     NSMutableDictionary *_cache;
 }

@@ -12,5 +12,8 @@
 - (void)vuiScrollViewDidEndDecelerating:(UIScrollView *)arg1;
 - (void)vuiScrollViewDidEndScrollingAnimation:(UIScrollView *)arg1;
 - (void)vuiScrollViewDidScroll:(UIScrollView *)arg1;
+
+@optional
+- (_Bool)vuiScrollViewShouldScrollToTop:(UIScrollView *)arg1;
 @end
 

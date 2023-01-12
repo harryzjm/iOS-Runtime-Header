@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Synapse/SBSSystemNotesPresentationHandleObserver-Protocol.h>
-#import <Synapse/SYShowBacklinkIndicatorCommandImpl-Protocol.h>
-
 @class NSString, SBSSystemNotesPresentationHandle;
 
 __attribute__((visibility("hidden")))
-@interface SYShowBacklinkIndicatorCommandSBImpl : NSObject <SBSSystemNotesPresentationHandleObserver, SYShowBacklinkIndicatorCommandImpl>
+@interface SYShowBacklinkIndicatorCommandSBImpl : NSObject
 {
     SBSSystemNotesPresentationHandle *__handle;
 }

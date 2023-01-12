@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKMapItem, MUPlaceRibbonItemViewModel;
+@class MKETAProvider, MKMapItem, MUPlaceRibbonItemViewModel, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MUPlaceDistanceRibbonViewModel
 {
+    MKETAProvider *_etaProvider;
     MKMapItem *_mapItem;
     MUPlaceRibbonItemViewModel *_crowsDistanceViewModel;
 }
@@ -16,7 +17,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (CDUnknownBlockType)valueStringProvider;
 - (CDUnknownBlockType)titleStringProvider;
-- (id)initWithMapItem:(id)arg1;
+- (void)ETAProviderUpdated:(id)arg1;
+- (void)dealloc;
+- (id)initWithMapItem:(id)arg1 etaProvider:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

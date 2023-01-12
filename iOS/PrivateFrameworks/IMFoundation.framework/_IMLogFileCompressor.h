@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IMFoundation/IMFileCopierDelegate-Protocol.h>
-
 @class NSMutableArray;
 
-@interface _IMLogFileCompressor : NSObject <IMFileCopierDelegate>
+@interface _IMLogFileCompressor : NSObject
 {
     NSMutableArray *_archivers;
 }

@@ -7,6 +7,7 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @protocol PXGDisplayAssetPixelBufferSource <NSObject>
+@property(copy, nonatomic) CDUnknownBlockType providePlaceholderHandler;
 @property(copy, nonatomic) CDUnknownBlockType pixelBufferDidChangeHandler;
 @property(readonly, nonatomic) struct CGAffineTransform preferredTransform;
 @property(readonly, nonatomic) struct __CVBuffer *currentPixelBuffer;

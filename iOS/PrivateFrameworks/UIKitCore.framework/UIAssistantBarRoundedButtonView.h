@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIAssistantBarRoundedButtonViewButton, UIView;
+#import "UIView.h"
+
+@class UIAssistantBarRoundedButtonViewButton;
 
 __attribute__((visibility("hidden")))
-@interface UIAssistantBarRoundedButtonView
+@interface UIAssistantBarRoundedButtonView : UIView
 {
     UIView *_shadowView;
     _Bool _dropShadow;

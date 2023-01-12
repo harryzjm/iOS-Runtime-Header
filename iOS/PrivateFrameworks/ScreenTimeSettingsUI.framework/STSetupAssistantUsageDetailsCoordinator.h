@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeSettingsUI/STUsageDetailsViewModelCoordinator-Protocol.h>
-
 @class NSArray, NSString, STUsageDetailsViewModel;
 
 __attribute__((visibility("hidden")))
-@interface STSetupAssistantUsageDetailsCoordinator : NSObject <STUsageDetailsViewModelCoordinator>
+@interface STSetupAssistantUsageDetailsCoordinator : NSObject
 {
     _Bool _refreshing;
     NSArray *_devices;

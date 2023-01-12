@@ -11,6 +11,7 @@
 @interface BBBulletin (Date)
 - (id)publishDate;
 - (id)dateOrRecencyDate;
+- (_Bool)blt_isVOIPCall;
 - (id)blt_uniqueKey;
 - (id)bltContext;
 - (_Bool)matchesPublisherBulletinID:(id)arg1 andRecordID:(id)arg2;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface IBSceneUpdateProcessingRequestGroup : NSObject <IBBinaryArchiving>
+@interface IBSceneUpdateProcessingRequestGroup : NSObject
 {
     NSArray *_processingRequests;
 }

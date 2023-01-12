@@ -13,6 +13,8 @@
     MISSING_TYPE *items;
     MISSING_TYPE *compactItemSize;
     MISSING_TYPE *largeItemSize;
+    MISSING_TYPE *deleteItemWidth;
+    MISSING_TYPE *reorderItemWidth;
 }
 
 @end

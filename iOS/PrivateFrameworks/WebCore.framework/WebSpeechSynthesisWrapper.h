@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVSpeechSynthesizerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebSpeechSynthesisWrapper : NSObject <AVSpeechSynthesizerDelegate>
+@interface WebSpeechSynthesisWrapper : NSObject
 {
     void *m_synthesizerObject;
     struct RefPtr<WebCore::PlatformSpeechSynthesisUtterance, WTF::RawPtrTraits<WebCore::PlatformSpeechSynthesisUtterance>, WTF::DefaultRefDerefTraits<WebCore::PlatformSpeechSynthesisUtterance>> m_utterance;
@@ -27,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)speechSynthesizer:(id)arg1 didFinishSpeechUtterance:(id)arg2;
 - (void)speechSynthesizer:(id)arg1 didStartSpeechUtterance:(id)arg2;
 - (void)cancel;
+- (void)resetState;
 - (void)resume;
 - (void)pause;
 - (void)speakUtterance:(void *)arg1;

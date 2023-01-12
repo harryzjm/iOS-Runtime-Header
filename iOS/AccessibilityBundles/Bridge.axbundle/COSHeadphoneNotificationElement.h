@@ -6,11 +6,9 @@
 
 #import <UIKit/UIAccessibilityElement.h>
 
-#import "AXContainerDataSeries-Protocol.h"
-
 @class NSArray, NSNumber, NSString;
 
-@interface COSHeadphoneNotificationElement : UIAccessibilityElement <AXContainerDataSeries>
+@interface COSHeadphoneNotificationElement : UIAccessibilityElement
 {
     NSArray *_xLabels;
     NSArray *_xPoints;

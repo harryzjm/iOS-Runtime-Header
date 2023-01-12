@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AnnotationKit/AKInkChooserUserInterfaceItem-Protocol.h>
-
 @class NSString, PKInk;
 
-@interface AKMinimalInkChooserUserInterfaceItem <AKInkChooserUserInterfaceItem>
+@interface AKMinimalInkChooserUserInterfaceItem
 {
     PKInk *_ink;
 }

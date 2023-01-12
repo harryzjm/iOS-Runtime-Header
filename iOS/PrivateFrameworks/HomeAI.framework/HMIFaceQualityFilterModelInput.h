@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeAI/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMIFaceQualityFilterModelInput : NSObject <MLFeatureProvider>
+@interface HMIFaceQualityFilterModelInput : NSObject
 {
     MLMultiArray *_input;
     NSString *_inputName;

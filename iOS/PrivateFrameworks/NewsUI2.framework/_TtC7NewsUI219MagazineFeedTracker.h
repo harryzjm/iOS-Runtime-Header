@@ -10,7 +10,9 @@
 
 @interface _TtC7NewsUI219MagazineFeedTracker : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *blueprintProvider;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *issueModelFactory;
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *supplementaryDataProvider;

@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLPointJSExports-Protocol.h>
-
-@interface TMLPoint : NSObject <TMLPointJSExports, NSCopying>
+@interface TMLPoint : NSObject
 {
     struct CGPoint _point;
 }

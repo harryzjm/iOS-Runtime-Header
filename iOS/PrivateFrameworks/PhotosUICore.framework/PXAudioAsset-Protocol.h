@@ -20,7 +20,8 @@
 @property(readonly, nonatomic) long long pace;
 @property(readonly, copy, nonatomic) NSString *colorGradeCategory;
 @property(readonly, nonatomic) Class audioSessionClass;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 duration;
+@property(readonly, nonatomic) CDStruct_198678f7 exportableDuration;
+@property(readonly, nonatomic) CDStruct_198678f7 duration;
 @property(readonly, nonatomic) unsigned long long flags;
 @property(readonly, copy, nonatomic) NSString *albumTitle;
 @property(readonly, copy, nonatomic) NSString *artistName;

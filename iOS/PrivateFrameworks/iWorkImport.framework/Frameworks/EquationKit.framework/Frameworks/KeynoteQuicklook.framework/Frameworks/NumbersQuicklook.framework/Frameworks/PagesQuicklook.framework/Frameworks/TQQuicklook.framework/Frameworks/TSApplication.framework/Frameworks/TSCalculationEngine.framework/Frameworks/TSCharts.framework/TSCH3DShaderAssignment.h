@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DShaderStatement-Protocol.h>
-
 @class NSArray, NSString, TSCH3DShaderProgram, TSCH3DShaderVariableLinkage;
 
-@interface TSCH3DShaderAssignment : NSObject <TSCH3DShaderStatement>
+@interface TSCH3DShaderAssignment : NSObject
 {
     TSCH3DShaderVariableLinkage *_assignee;
     struct TSCH3DShaderVariableScopeType _assigneeScope;

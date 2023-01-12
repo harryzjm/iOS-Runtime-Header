@@ -6,17 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/CNContactPickerDelegate-Protocol.h>
-
 @class NSString;
 @protocol WKContactPickerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WKContactPicker : NSObject <CNContactPickerDelegate>
+@interface WKContactPicker : NSObject
 {
     struct WeakObjCPtr<WKWebView> _webView;
     struct WeakObjCPtr<id<WKContactPickerDelegate>> _delegate;
-    struct Vector<WebCore::ContactProperty, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _properties;
+    struct Vector<WebCore::ContactProperty, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> _properties;
     struct CompletionHandler<void (std::optional<WTF::Vector<WebCore::ContactInfo, 0, WTF::CrashOnOverflow, 16>>&&)> _completionHandler;
     struct RetainPtr<WKCNContactPickerDelegate> _contactPickerDelegate;
     struct RetainPtr<CNContactPickerViewController> _contactPickerViewController;

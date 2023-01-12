@@ -6,7 +6,7 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class NSArray, ReorderingAutoscroller, UITargetedDragPreview, UITargetedPreview, UIView, _SFNavigationIntent;
+@class NSArray, ReorderingAutoscroller, UIDragPreview, UITargetedDragPreview, UITargetedPreview, UIView, _SFNavigationIntent;
 @protocol TabCollectionItem, TabCollectionViewDelegate, UIDragAnimating;
 
 @protocol TabCollectionView <NSObject>
@@ -20,11 +20,13 @@
 @optional
 @property(readonly, nonatomic) _Bool lastDecelerationWasInterrupted;
 @property(readonly, nonatomic) _Bool hidesInactiveTabs;
+@property(readonly, nonatomic) _Bool canDragOntoActiveTab;
 @property(readonly, nonatomic) _Bool supportsDropTransitionToItemView;
 @property(readonly, nonatomic) unsigned long long layoutAxes;
 @property(readonly, nonatomic) _Bool supportsSystemDrag;
 @property(readonly, nonatomic) ReorderingAutoscroller *reorderingAutoscroller;
 - (void)performDropWithNavigationIntent:(_SFNavigationIntent *)arg1;
+- (_Bool)shouldPinItemsDroppedAtPoint:(struct CGPoint)arg1;
 - (_Bool)shouldSpringLoadItem:(id <TabCollectionItem>)arg1;
 - (void)didEndShowingContextMenuForItem:(id <TabCollectionItem>)arg1;
 - (void)willBeginShowingContextMenuForItem:(id <TabCollectionItem>)arg1;
@@ -32,6 +34,7 @@
 - (void)cleanUpDragPreviewForItem:(id <TabCollectionItem>)arg1;
 - (void)updateDragPreviewForItem:(id <TabCollectionItem>)arg1 atPoint:(struct CGPoint)arg2;
 - (void)willAnimateDropForItem:(id <TabCollectionItem>)arg1 withAnimator:(id <UIDragAnimating>)arg2;
+- (UIDragPreview *)dragPreviewForItem:(id <TabCollectionItem>)arg1 pinned:(_Bool)arg2;
 - (UITargetedPreview *)targetedPreviewForDismissingMenuForItem:(id <TabCollectionItem>)arg1;
 - (UITargetedDragPreview *)targetedDragPreviewForLiftingItem:(id <TabCollectionItem>)arg1;
 - (UITargetedDragPreview *)targetedDragPreviewForDroppingItem:(id <TabCollectionItem>)arg1;

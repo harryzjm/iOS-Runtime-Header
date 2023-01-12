@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobV2VideoPayload : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobV2VideoPayload : PBCodable
 {
     unsigned int _decodeFormats;
     unsigned int _encodeFormats;

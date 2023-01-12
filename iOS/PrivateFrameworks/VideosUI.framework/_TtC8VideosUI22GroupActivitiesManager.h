@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI22GroupActivitiesManager : NSObject
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *sessionStateObserver;
     MISSING_TYPE *sessionActivityObserver;
     MISSING_TYPE *sessionActivityParticipantsObserver;
+    MISSING_TYPE *dismissDelayTimer;
     MISSING_TYPE *previousState;
     MISSING_TYPE *modifyingActivityIdentifier;
     MISSING_TYPE *_isSessionActive;
@@ -24,10 +25,13 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *participantsCount;
     MISSING_TYPE *playerObserver;
     MISSING_TYPE *sharedPlayer;
+    MISSING_TYPE *_sceneIdentifier;
+    MISSING_TYPE *_associateSceneIdentifier;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+@property(nonatomic, copy) NSString *sceneIdentifier;
 @property(nonatomic) _Bool isSessionActive;
 
 @end

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCItemIdentifier-Protocol.h>
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCItemIdentifierImplementation : NSObject <MPCItemIdentifier, NSCopying>
+@interface MPCItemIdentifierImplementation : NSObject
 {
     NSString *_contentItemID;
     long long _repeatIndex;

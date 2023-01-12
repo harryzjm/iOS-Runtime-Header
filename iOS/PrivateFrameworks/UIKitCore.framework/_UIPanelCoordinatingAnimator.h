@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIViewControllerTransitionCoordinator-Protocol.h>
-#import <UIKitCore/UIViewControllerTransitionCoordinatorContext-Protocol.h>
+#import "UIViewPropertyAnimator.h"
 
 @class NSMutableArray, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPanelCoordinatingAnimator <UIViewControllerTransitionCoordinator, UIViewControllerTransitionCoordinatorContext>
+@interface _UIPanelCoordinatingAnimator : UIViewPropertyAnimator
 {
     _Bool _wasCancelled;
     _Bool _isInStartAnimation;

@@ -6,13 +6,10 @@
 
 #import <UIKit/UIControl.h>
 
-#import <StoreKitUI/SKUIMenuViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/UIPopoverControllerDelegate-Protocol.h>
-
 @class NSArray, NSString, SKUIClientContext, SKUIColorScheme, UIButton, UILabel, UIPopoverController, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIIPadCustomerReviewsHeaderView : UIControl <SKUIMenuViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SKUIIPadCustomerReviewsHeaderView : UIControl
 {
     UIButton *_appSupportButton;
     SKUIClientContext *_clientContext;

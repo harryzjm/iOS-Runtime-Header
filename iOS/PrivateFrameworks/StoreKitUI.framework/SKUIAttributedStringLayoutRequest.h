@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUILayoutRequest-Protocol.h>
-
 @class NSAttributedString, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIAttributedStringLayoutRequest : NSObject <SKUILayoutRequest>
+@interface SKUIAttributedStringLayoutRequest : NSObject
 {
     NSAttributedString *_attributedString;
     long long _numberOfLines;

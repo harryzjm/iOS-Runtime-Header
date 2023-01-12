@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSGroupContextNotifyingObserverDelegate-Protocol.h>
-#import <IDS/IDSTransactionLogTaskHandlerDelegate-Protocol.h>
-
 @class CUTPromiseSeal, NSString;
 @protocol IDSGroupContextControllerDelegate, OS_dispatch_queue;
 
-@interface IDSGroupContextController : NSObject <IDSTransactionLogTaskHandlerDelegate, IDSGroupContextNotifyingObserverDelegate>
+@interface IDSGroupContextController : NSObject
 {
     id <IDSGroupContextControllerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;

@@ -10,6 +10,7 @@
 
 @protocol _SFPBMapsDetailedRowCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *pinText;
 @property(copy, nonatomic) NSData *mapsData;
 @property(retain, nonatomic) _SFPBColor *backgroundColor;
 @property(nonatomic) int separatorStyle;

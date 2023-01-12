@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)switcherItemWithIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType persistentSelectedIndex; // @synthesize persistentSelectedIndex=_persistentSelectedIndex;
 @property(retain, nonatomic) NSArray *segmentImages; // @synthesize segmentImages=_segmentImages;
 @property(retain, nonatomic) NSArray *segmentTitles; // @synthesize segmentTitles=_segmentTitles;

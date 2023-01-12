@@ -5,11 +5,13 @@
 //
 
 @class DVTPlatform, DVTProvisioningProfile, NSData, NSSet, NSString;
+@protocol DVTProvisioningProfileProvider;
 
 @protocol DVTProvisioningProfileManagerProtocol
 @property(readonly) NSSet *provisioningProfiles;
 @property(readonly, nonatomic) _Bool areProfilesLoaded;
 - (DVTProvisioningProfile *)profileWithData:(NSData *)arg1 platform:(DVTPlatform *)arg2 error:(id *)arg3;
+- (DVTProvisioningProfile *)profileWithData:(NSData *)arg1 provider:(id <DVTProvisioningProfileProvider>)arg2 error:(id *)arg3;
 - (void)uninstallProfiles:(NSSet *)arg1 callback:(void (^)(NSError *))arg2;
 - (void)installProfiles:(NSSet *)arg1 callback:(void (^)(NSError *))arg2;
 - (void)forceProfileLoadingWithCallback:(void (^)(void))arg1;

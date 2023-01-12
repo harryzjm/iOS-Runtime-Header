@@ -7,7 +7,6 @@
 #import <Foundation/NSAttributedString.h>
 
 @interface NSAttributedString (SPI)
-- (id)initSwiftUIAttributedStringWithMarkdownString:(id)arg1;
 - (id)initSwiftUIAttributedStringWithFormat:(id)arg1 options:(unsigned long long)arg2 locale:(id)arg3 arguments:(char *)arg4;
 @end
 

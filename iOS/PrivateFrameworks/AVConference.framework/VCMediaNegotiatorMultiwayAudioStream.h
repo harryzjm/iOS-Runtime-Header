@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiatorMultiwayAudioStream <NSCopying>
+@interface VCMediaNegotiatorMultiwayAudioStream
 {
     NSMutableSet *_supportedAudioPayloads;
 }

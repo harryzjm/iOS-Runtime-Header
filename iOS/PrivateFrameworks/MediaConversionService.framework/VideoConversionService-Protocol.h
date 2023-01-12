@@ -9,6 +9,7 @@
 @class NSDictionary, NSString;
 
 @protocol VideoConversionService <NSObject>
+- (void)requestStatusWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)modifyJobWithIdentifier:(NSString *)arg1 modifications:(NSDictionary *)arg2;
 - (void)cancelJobWithIdentifier:(NSString *)arg1;
 - (void)extractStillImageFromVideoAtSourceBookmarkDictionary:(NSDictionary *)arg1 toDestinationBookmarkDictionary:(NSDictionary *)arg2 options:(NSDictionary *)arg3 replyHandler:(void (^)(long long, NSDictionary *, NSError *))arg4;

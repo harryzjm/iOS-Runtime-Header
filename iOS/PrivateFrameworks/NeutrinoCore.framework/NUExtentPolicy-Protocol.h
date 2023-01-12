@@ -7,6 +7,6 @@
 #import <NeutrinoCore/NSObject-Protocol.h>
 
 @protocol NUExtentPolicy <NSObject>
-- (CDStruct_996ac03c)extentForImageExtent:(CDStruct_996ac03c)arg1;
+- (CDStruct_0973877e)extentForImageExtent:(CDStruct_0973877e)arg1;
 @end
 

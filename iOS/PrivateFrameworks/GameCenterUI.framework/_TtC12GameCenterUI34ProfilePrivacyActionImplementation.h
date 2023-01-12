@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameCenterUI/GKProfilePrivacyTableViewControllerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12GameCenterUI34ProfilePrivacyActionImplementation : NSObject <GKProfilePrivacyTableViewControllerDelegate>
+@interface _TtC12GameCenterUI34ProfilePrivacyActionImplementation : NSObject
 {
     MISSING_TYPE *viewController;
     MISSING_TYPE *currentAction;

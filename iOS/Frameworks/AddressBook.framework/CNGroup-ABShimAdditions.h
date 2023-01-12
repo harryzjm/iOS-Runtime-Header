@@ -6,11 +6,9 @@
 
 #import <Contacts/CNGroup.h>
 
-#import <AddressBook/ABSCNLegacyIdentifiable-Protocol.h>
-
 @class NSString;
 
-@interface CNGroup (ABShimAdditions) <ABSCNLegacyIdentifiable>
+@interface CNGroup (ABShimAdditions)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -27,11 +27,9 @@ __attribute__((visibility("hidden")))
 - (void)onCancel;
 - (void)onDone;
 - (void)updateTitleView;
-- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic, readonly) UILabel *subtitleLabel; // @synthesize subtitleLabel;

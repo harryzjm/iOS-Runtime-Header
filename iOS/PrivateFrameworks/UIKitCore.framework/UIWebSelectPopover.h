@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIWebFormControl-Protocol.h>
-
 @class UIWebSelectTableViewController;
 
 __attribute__((visibility("hidden")))
-@interface UIWebSelectPopover <UIWebFormControl>
+@interface UIWebSelectPopover
 {
     UIWebSelectTableViewController *_tableViewController;
 }

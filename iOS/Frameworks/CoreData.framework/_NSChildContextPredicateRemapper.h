@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSPredicateVisitor-Protocol.h>
-
 @class NSManagedObjectContext;
 
 __attribute__((visibility("hidden")))
-@interface _NSChildContextPredicateRemapper : NSObject <NSPredicateVisitor>
+@interface _NSChildContextPredicateRemapper : NSObject
 {
     NSManagedObjectContext *_context;
 }

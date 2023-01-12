@@ -5,8 +5,7 @@
 //
 
 #import <CoverSheet/CSCoverSheetViewPresenting-Protocol.h>
-#import <CoverSheet/CSWallpaperOverlayHosting-Protocol.h>
 
-@protocol CSCoverSheetViewControllerProtocol <CSCoverSheetViewPresenting, CSWallpaperOverlayHosting>
+@protocol CSCoverSheetViewControllerProtocol <CSCoverSheetViewPresenting>
 @end
 

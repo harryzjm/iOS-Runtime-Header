@@ -4,22 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKAlarmEditItemViewController, EKAlarmsViewModel, NSArray;
+@class EKAlarmsViewModel, EKUIRecurrenceAlertController, NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface EKEventAlarmDetailItem
 {
     unsigned long long _disclosedSubitem;
     NSArray *_alarms;
-    EKAlarmEditItemViewController *_currentEditViewController;
+    NSMutableArray *_alarmPopupCells;
+    EKUIRecurrenceAlertController *_recurrenceAlertController;
     EKAlarmsViewModel *_alarmsViewModel;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) EKAlarmsViewModel *alarmsViewModel; // @synthesize alarmsViewModel=_alarmsViewModel;
-- (_Bool)editItemViewControllerShouldShowDetachAlert;
-- (_Bool)editItemViewControllerSave:(id)arg1;
-- (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
+- (id)_createRealPopupMenuForIndex:(long long)arg1 popupCell:(id)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (unsigned long long)numberOfSubitems;

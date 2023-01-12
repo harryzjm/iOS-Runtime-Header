@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TextureIO/TXRDataSourceProvider-Protocol.h>
-
 @class NSString, TXRTextureInfo;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, TXRBufferAllocator, TXRParser;
 
 __attribute__((visibility("hidden")))
-@interface TXRFileDataSourceProvider : NSObject <TXRDataSourceProvider>
+@interface TXRFileDataSourceProvider : NSObject
 {
     id <TXRBufferAllocator> _bufferAllocator;
     NSObject<OS_dispatch_queue> *_fileIOQueue;

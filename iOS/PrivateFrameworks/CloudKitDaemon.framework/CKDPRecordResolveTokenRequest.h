@@ -6,12 +6,11 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSMutableArray, NSString;
 
-@interface CKDPRecordResolveTokenRequest : PBRequest <NSCopying>
+@interface CKDPRecordResolveTokenRequest : PBRequest
 {
+    NSString *_participantId;
     NSMutableArray *_rootRecordDesiredKeys;
     NSString *_routingKey;
     NSData *_shortTokenHash;
@@ -26,6 +25,7 @@
 + (Class)rootRecordDesiredKeysType;
 + (id)options;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *participantId; // @synthesize participantId=_participantId;
 @property(retain, nonatomic) NSMutableArray *rootRecordDesiredKeys; // @synthesize rootRecordDesiredKeys=_rootRecordDesiredKeys;
 @property(nonatomic) _Bool forceFetch; // @synthesize forceFetch=_forceFetch;
 @property(retain, nonatomic) NSData *shortTokenHash; // @synthesize shortTokenHash=_shortTokenHash;
@@ -41,6 +41,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasParticipantId;
 - (id)rootRecordDesiredKeysAtIndex:(unsigned long long)arg1;
 - (unsigned long long)rootRecordDesiredKeysCount;
 - (void)addRootRecordDesiredKeys:(id)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIActivityItemSource-Protocol.h>
-
 @class NSString, UICloudSharingController;
 
 __attribute__((visibility("hidden")))
-@interface _UISharingControllerActivityItemSource : NSObject <UIActivityItemSource>
+@interface _UISharingControllerActivityItemSource : NSObject
 {
     UICloudSharingController *_viewController;
 }

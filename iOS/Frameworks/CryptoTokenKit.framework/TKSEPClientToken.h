@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TKClientToken.h"
+
 __attribute__((visibility("hidden")))
-@interface TKSEPClientToken
+@interface TKSEPClientToken : TKClientToken
 {
 }
 
++ (_Bool)handlesTokenID:(id)arg1;
 + (id)builtinTokenIDs;
 - (id)initWithTokenID:(id)arg1 serverEndpoint:(id)arg2 targetUID:(id)arg3;
 

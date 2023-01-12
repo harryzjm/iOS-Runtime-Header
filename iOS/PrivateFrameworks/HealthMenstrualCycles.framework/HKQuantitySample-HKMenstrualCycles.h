@@ -7,6 +7,7 @@
 #import <HealthKit/HKQuantitySample.h>
 
 @interface HKQuantitySample (HKMenstrualCycles)
++ (id)hkmc_quantitySampleWithWristTemperature:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 + (id)hkmc_quantitySampleWithBasalBodyTemperature:(id)arg1 date:(id)arg2;
 @end
 

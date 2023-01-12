@@ -6,8 +6,6 @@
 
 #import <CoreLocation/CLInUseAssertion.h>
 
-#import <Intents/INIntentBackgroundHandlingAssertion-Protocol.h>
-
-@interface CLInUseAssertion (IntentsAdditions) <INIntentBackgroundHandlingAssertion>
+@interface CLInUseAssertion (IntentsAdditions)
 @end
 

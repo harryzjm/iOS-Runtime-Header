@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUICachedLayout-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIEditorialLinkLayout : NSObject <SKUICachedLayout>
+@interface SKUIEditorialLinkLayout : NSObject
 {
     struct CGSize *_sizes;
     struct CGSize _totalSize;

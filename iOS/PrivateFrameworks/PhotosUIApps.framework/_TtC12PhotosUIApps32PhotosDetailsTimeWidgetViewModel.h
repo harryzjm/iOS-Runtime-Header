@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUIApps/PHPhotoLibraryChangeObserver-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12PhotosUIApps32PhotosDetailsTimeWidgetViewModel <PHPhotoLibraryChangeObserver>
+@interface _TtC12PhotosUIApps32PhotosDetailsTimeWidgetViewModel
 {
     MISSING_TYPE *fileName;
     MISSING_TYPE *isiCloudEnabled;
@@ -17,7 +15,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *_cloudLocalState;
     MISSING_TYPE *_date;
     MISSING_TYPE *_timeZone;
-    MISSING_TYPE *fileNameTextHeight;
 }
 
 - (void).cxx_destruct;

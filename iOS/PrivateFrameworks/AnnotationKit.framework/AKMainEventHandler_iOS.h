@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AnnotationKit/PKSelectionInteractionDelegate-Protocol.h>
-#import <AnnotationKit/UIGestureRecognizerDelegate-Protocol.h>
+#import "AKMainEventHandler.h"
 
 @class AKPanGestureRecognizer, AKRotationGestureRecognizer, NSString, UILongPressGestureRecognizer, UITapGestureRecognizer;
 
-@interface AKMainEventHandler_iOS <UIGestureRecognizerDelegate, PKSelectionInteractionDelegate>
+@interface AKMainEventHandler_iOS : AKMainEventHandler
 {
     UITapGestureRecognizer *_tapRecognizer;
     UITapGestureRecognizer *_doubleTapRecognizer;

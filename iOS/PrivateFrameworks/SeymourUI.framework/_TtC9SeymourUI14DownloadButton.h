@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)contentSizeCategoryChanged:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)tintColorDidChange;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;

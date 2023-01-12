@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INCodableAttributeRelationComparing-Protocol.h>
-#import <Intents/INEnumerable-Protocol.h>
-
 @class NSString;
 
-@interface NSObject (Readable) <INCodableAttributeRelationComparing, INEnumerable>
+@interface NSObject (Readable)
 - (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)_intents_readableDescriptionWithLocalizer:(id)arg1;
 - (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;

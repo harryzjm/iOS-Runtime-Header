@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobAudioSettings : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobAudioSettings : PBCodable
 {
     unsigned int _audioUnitModel;
     unsigned int _payloadFlags;

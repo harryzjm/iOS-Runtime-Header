@@ -6,12 +6,9 @@
 
 #import <CoreRoutine/RTWiFiAccessPoint.h>
 
-#import <coreroutine/RTCoreDataReadable-Protocol.h>
-#import <coreroutine/RTCoreDataWritable-Protocol.h>
-
 @class NSString;
 
-@interface RTWiFiAccessPoint (RTCoreDataTransformable) <RTCoreDataReadable, RTCoreDataWritable>
+@interface RTWiFiAccessPoint (RTCoreDataTransformable)
 + (id)createWithWiFiAccessPointMO:(id)arg1;
 + (id)createWithManagedObject:(id)arg1;
 - (id)managedObjectWithContext:(id)arg1;

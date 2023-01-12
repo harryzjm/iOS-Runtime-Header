@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (id)getLogger;
 - (id)messageForError:(id)arg1;
 - (id)init;
 - (id)initPrivate;

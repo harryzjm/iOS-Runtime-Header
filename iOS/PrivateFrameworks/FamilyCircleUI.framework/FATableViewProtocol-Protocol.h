@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
 @protocol UITableViewDataSource, UITableViewDelegate;
 
 @protocol FATableViewProtocol
 @property(nonatomic) __weak id <UITableViewDataSource> dataSource;
 @property(nonatomic) __weak id <UITableViewDelegate> delegate;
+- (void)reloadRowsAtIndexPaths:(NSArray *)arg1 withRowAnimation:(long long)arg2;
 - (void)reloadData;
 @end
 

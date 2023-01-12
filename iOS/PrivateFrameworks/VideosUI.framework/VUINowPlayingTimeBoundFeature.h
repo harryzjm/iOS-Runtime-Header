@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUINowPlayingTimeBoundFeature-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUINowPlayingTimeBoundFeature : NSObject <VUINowPlayingTimeBoundFeature>
+@interface VUINowPlayingTimeBoundFeature : NSObject
 {
     _Bool _active;
     _Bool _autoRemove;

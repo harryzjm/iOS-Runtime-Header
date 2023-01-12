@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
 @class MRUVisualStylingProvider, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRUNowPlayingContainerView : UIView <MRUVisualStylingProviderObserver>
+@interface MRUNowPlayingContainerView : UIView
 {
     _Bool _showSeparator;
     _Bool _supportsHorizontalLayout;

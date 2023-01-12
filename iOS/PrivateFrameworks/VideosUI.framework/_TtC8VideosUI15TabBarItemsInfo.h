@@ -12,17 +12,18 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI15TabBarItemsInfo : NSObject
 {
     MISSING_TYPE *isHidden;
-    MISSING_TYPE *selectedIndex;
+    MISSING_TYPE *_selectedIndex;
+    MISSING_TYPE *selectedIndexDidChange;
     MISSING_TYPE *items;
     MISSING_TYPE *appContext;
     MISSING_TYPE *appEnvironment;
+    MISSING_TYPE *interactionStates;
     MISSING_TYPE *configuresDebugUIGesture;
     MISSING_TYPE *debugUIGestureHandler;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-@property(nonatomic) unsigned long long selectedIndex; // @synthesize selectedIndex;
 
 @end
 

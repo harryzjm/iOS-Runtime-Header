@@ -9,6 +9,7 @@
 @class UIViewController;
 
 @interface UIView (DOCExtensions)
+@property(readonly, nonatomic) UIViewController *doc_presentingViewController;
 @property(readonly, nonatomic) UIViewController *doc_nearestAncestorViewController;
 - (id)doc_owningViewController;
 @end

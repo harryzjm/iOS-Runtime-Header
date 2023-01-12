@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
-
 @class NSString, UIVisualEffectView, VUILabel;
 
 __attribute__((visibility("hidden")))
-@interface VUIVisualEffectLabel : UIView <VUILabelBaselineProtocol>
+@interface VUIVisualEffectLabel : UIView
 {
     VUILabel *_label;
     UIVisualEffectView *_visualEffectView;

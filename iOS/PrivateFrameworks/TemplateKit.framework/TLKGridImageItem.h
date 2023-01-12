@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TemplateKit/TLKGridArrangementItem-Protocol.h>
-
 @class NSString, NUISizeCache;
 
 __attribute__((visibility("hidden")))
-@interface TLKGridImageItem <TLKGridArrangementItem>
+@interface TLKGridImageItem
 {
     unsigned long long row;
     double horizontalHuggingPriority;

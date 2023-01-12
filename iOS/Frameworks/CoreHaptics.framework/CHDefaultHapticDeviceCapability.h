@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreHaptics/CHHapticDeviceCapability-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CHDefaultHapticDeviceCapability : NSObject <CHHapticDeviceCapability>
+@interface CHDefaultHapticDeviceCapability : NSObject
 {
-    _Bool _supports3rdPartyHaptics;
+    _Bool _supportsHaptics;
+    _Bool _supportsAudio;
 }
 
 - (id)attributesForDynamicParameter:(id)arg1 error:(id *)arg2;

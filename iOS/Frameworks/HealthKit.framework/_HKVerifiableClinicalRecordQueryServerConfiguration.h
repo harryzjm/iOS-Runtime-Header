@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _HKVerifiableClinicalRecordQueryServerConfiguration
+@interface _HKVerifiableClinicalRecordQueryServerConfiguration : HKQueryServerConfiguration
 {
     NSArray *_recordTypes;
+    NSArray *_sourceTypes;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *sourceTypes; // @synthesize sourceTypes=_sourceTypes;
 @property(copy, nonatomic) NSArray *recordTypes; // @synthesize recordTypes=_recordTypes;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -6,12 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <AppSupportUI/NUIArrangementItem-Protocol.h>
-#import <AppSupportUI/_UIMultilineTextContentSizing-Protocol.h>
-
 @class NSString;
 
-@interface UIView (NUIContainerView) <NUIArrangementItem, _UIMultilineTextContentSizing>
+@interface UIView (NUIContainerView)
 - (void)setUntransformedFrame:(struct CGRect)arg1;
 @property(nonatomic) _Bool invalidatingIntrinsicContentSizeAlsoInvalidatesSuperview;
 @property(nonatomic) double customFirstBaselineOffsetFromTop;
@@ -43,6 +40,9 @@
 - (long long)_nui_baselineViewType;
 - (_Bool)_isContainerView;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
+- (struct CGSize)testableEffectiveLayoutSizeFittingSize:(struct CGSize)arg1;
+- (struct CGSize)testableSizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)sizeToBestFitAndLayoutIfNeeded;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

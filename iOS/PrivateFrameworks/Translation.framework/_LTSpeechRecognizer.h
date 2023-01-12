@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/_EARSpeechRecognitionResultStream-Protocol.h>
-
 @class NSLocale, NSString, NSURL, _EARSpeechRecognitionAudioBuffer, _EARSpeechRecognitionResultPackage, _EARSpeechRecognizer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _LTSpeechRecognizer : NSObject <_EARSpeechRecognitionResultStream>
+@interface _LTSpeechRecognizer : NSObject
 {
     _EARSpeechRecognizer *_recognizer;
     _EARSpeechRecognitionAudioBuffer *_buffer;

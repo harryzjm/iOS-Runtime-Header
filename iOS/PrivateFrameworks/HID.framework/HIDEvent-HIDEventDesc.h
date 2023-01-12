@@ -6,11 +6,9 @@
 
 #import <IOKit/HIDEvent.h>
 
-#import <HID/NSCopying-Protocol.h>
-
 @class NSArray;
 
-@interface HIDEvent (HIDEventDesc) <NSCopying>
+@interface HIDEvent (HIDEventDesc)
 + (id)vendorDefinedEvent:(unsigned long long)arg1 usagePage:(unsigned short)arg2 usage:(unsigned short)arg3 version:(unsigned int)arg4 data:(char *)arg5 length:(unsigned int)arg6 options:(unsigned int)arg7;
 + (id)temperatureEvent:(unsigned long long)arg1 level:(double)arg2 options:(unsigned int)arg3;
 + (id)accelerometerEvent:(unsigned long long)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 options:(unsigned int)arg5;
@@ -35,7 +33,7 @@
 + (id)tiltOrientationEvent:(unsigned long long)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 options:(unsigned int)arg5;
 + (id)quaternionOrientationEvent:(unsigned long long)arg1 w:(double)arg2 x:(double)arg3 y:(double)arg4 z:(double)arg5 options:(unsigned int)arg6;
 + (id)polarOrientationEvent:(unsigned long long)arg1 radius:(double)arg2 azimuth:(double)arg3 altitude:(double)arg4 options:(unsigned int)arg5;
-+ (id)proximityEvent:(unsigned long long)arg1 detectionMask:(unsigned int)arg2 options:(unsigned int)arg3;
++ (id)proximityEvent:(unsigned long long)arg1 detectionMask:(unsigned short)arg2 options:(unsigned int)arg3;
 + (id)keyboardEvent:(unsigned long long)arg1 usagePage:(unsigned short)arg2 usage:(unsigned short)arg3 down:(unsigned int)arg4 options:(unsigned int)arg5;
 + (id)pointerEvent:(unsigned long long)arg1 x:(double)arg2 y:(double)arg3 z:(double)arg4 buttonMask:(unsigned int)arg5 options:(unsigned int)arg6;
 - (CDStruct_d29ee3f1 *)getEventFields;
@@ -169,6 +167,14 @@
 - (double)gameControllerDirectionPadLeft;
 - (void)setGameControllerDirectionPadDown:(double)arg1;
 - (double)gameControllerDirectionPadDown;
+- (void)setGameControllerButtonR5:(double)arg1;
+- (double)gameControllerButtonR5;
+- (void)setGameControllerButtonR4:(double)arg1;
+- (double)gameControllerButtonR4;
+- (void)setGameControllerButtonL5:(double)arg1;
+- (double)gameControllerButtonL5;
+- (void)setGameControllerButtonL4:(double)arg1;
+- (double)gameControllerButtonL4;
 - (void)setDigitizerZ:(double)arg1;
 - (double)digitizerZ;
 - (void)setDigitizerY:(double)arg1;
@@ -327,10 +333,14 @@
 - (double)orientationAzimuth;
 - (void)setOrientationAltitude:(double)arg1;
 - (double)orientationAltitude;
+- (void)setProximityProximityType:(unsigned short)arg1;
+- (unsigned short)proximityProximityType;
 - (void)setProximityLevel:(unsigned int)arg1;
 - (unsigned int)proximityLevel;
-- (void)setProximityDetectionMask:(unsigned int)arg1;
-- (unsigned int)proximityDetectionMask;
+- (void)setProximityDetectionMask:(unsigned short)arg1;
+- (unsigned short)proximityDetectionMask;
+- (void)setProbabilityLevel:(unsigned int)arg1;
+- (unsigned int)probabilityLevel;
 - (void)setKeyboardUsagePage:(unsigned short)arg1;
 - (unsigned short)keyboardUsagePage;
 - (void)setKeyboardUsage:(unsigned short)arg1;

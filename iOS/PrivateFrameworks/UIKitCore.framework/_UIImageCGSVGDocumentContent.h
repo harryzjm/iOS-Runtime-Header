@@ -10,13 +10,15 @@ __attribute__((visibility("hidden")))
     struct CGSVGDocument *_svgDocumentRef;
 }
 
-- (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
+- (void)_drawWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3 effect:(id)arg4;
+- (void)_prepareForDrawingWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (struct CGSize)sizeInPixels;
 - (struct CGSVGDocument *)CGSVGDocument;
 - (_Bool)isCGSVGDocument;
+- (_Bool)canEmitDrawingCommands;
 - (_Bool)canScaleImageToTargetResolution;
 - (void)dealloc;
 - (id)initWithScale:(double)arg1;

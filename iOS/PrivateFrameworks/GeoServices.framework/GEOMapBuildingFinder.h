@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOMapRequest.h"
+
 @class GEOMapTileFinder;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapBuildingFinder
+@interface GEOMapBuildingFinder : GEOMapRequest
 {
     GEOMapTileFinder *_tileFinder;
     CDStruct_2c43369c _centerCoordinate;

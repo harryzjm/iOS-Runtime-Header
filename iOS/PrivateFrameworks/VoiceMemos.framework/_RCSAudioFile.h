@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VoiceMemos/RCSAudioFile-Protocol.h>
-
 @class AVAudioFormat, NSDictionary, NSString, NSURL, RCSSavedRecordingAccessToken;
 
 __attribute__((visibility("hidden")))
-@interface _RCSAudioFile : NSObject <RCSAudioFile>
+@interface _RCSAudioFile : NSObject
 {
     RCSSavedRecordingAccessToken *_fileToken;
 }

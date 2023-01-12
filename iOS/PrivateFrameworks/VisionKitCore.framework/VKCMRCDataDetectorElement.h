@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/BCSActionDelegate-Protocol.h>
-#import <VisionKitCore/NSSecureCoding-Protocol.h>
-
 @class BCSAction, NSArray, NSString, UIMenu, UIViewController, VKQuad, VNBarcodeObservation;
 
 __attribute__((visibility("hidden")))
-@interface VKCMRCDataDetectorElement <BCSActionDelegate, NSSecureCoding>
+@interface VKCMRCDataDetectorElement
 {
     _Bool _childrenCreated;
     NSArray *_boundingQuads;

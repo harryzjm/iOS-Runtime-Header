@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSDCanvasDelegate-Protocol.h>
-#import <PagesQuicklook/TSWPFootnoteHeightMeasurer-Protocol.h>
-
 @class NSString, TPDocumentRoot, TPFootnoteContainerLayout, TSDCanvas, TSULRUCache;
 @protocol TPFootnotePageDelegate, TSDCanvasProxyDelegate;
 
-@interface TPFootnoteHeightMeasurer : NSObject <TSDCanvasDelegate, TSWPFootnoteHeightMeasurer>
+@interface TPFootnoteHeightMeasurer : NSObject
 {
     TPFootnoteContainerLayout *_footnoteContainerLayout;
     TPDocumentRoot *_documentRoot;
@@ -45,6 +42,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool verticalTextAllowed;
 
 @end
 

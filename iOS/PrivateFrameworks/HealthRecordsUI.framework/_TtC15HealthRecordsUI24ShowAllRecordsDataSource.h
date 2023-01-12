@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _TtC15HealthRecordsUI24ShowAllRecordsDataSource
+#import "_$s15HealthRecordsUI18ConceptsDataSourceCN.h"
+
+@interface _TtC15HealthRecordsUI24ShowAllRecordsDataSource : _$s15HealthRecordsUI18ConceptsDataSourceCN
 {
 }
 

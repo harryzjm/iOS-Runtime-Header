@@ -6,8 +6,14 @@
 
 #import <Foundation/NSString.h>
 
+@class NSNumber, TUConversationHandoffEligibility;
+
 @interface NSString (TelephonyUtilities)
++ (id)tu_conversationHandoffDynamicIdentifierForEligibility:(id)arg1;
++ (id)tu_conversationHandoffDynamicIdentifierWithGroupUUID:(id)arg1 participantIdentifier:(unsigned long long)arg2 uplinkMuted:(_Bool)arg3 sendingVideo:(_Bool)arg4;
 + (id)tu_stringWithTUConfigurationAnnounceCalls:(unsigned long long)arg1;
+@property(readonly, copy, nonatomic) TUConversationHandoffEligibility *tu_handoffEligibility;
+@property(readonly, copy, nonatomic) NSNumber *tu_unsignedLongLongNumber;
 - (id)tu_stringByAddingBase64Padding;
 - (id)tu_stringByStrippingBase64Padding;
 - (id)formattedDisplayID;

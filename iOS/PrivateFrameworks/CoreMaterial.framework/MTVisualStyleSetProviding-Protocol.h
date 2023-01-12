@@ -7,9 +7,9 @@
 #import <CoreMaterial/MTVisualStyleSetVersioning-Protocol.h>
 
 @class NSString;
-@protocol MTTinting><MTBlending><MTFiltering;
+@protocol MTTinting><MTBlending><MTFiltering><MTUserInfoProviding;
 
 @protocol MTVisualStyleSetProviding <MTVisualStyleSetVersioning>
-- (id <MTTinting><MTBlending><MTFiltering>)visualStylingForStyle:(NSString *)arg1;
+- (id <MTTinting><MTBlending><MTFiltering><MTUserInfoProviding>)visualStylingForStyle:(NSString *)arg1;
 @end
 

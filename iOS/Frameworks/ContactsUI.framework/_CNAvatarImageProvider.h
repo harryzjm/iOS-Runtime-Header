@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNAvatarImageProvider-Protocol.h>
-
 @class NSString;
 @protocol CNUIPRLikenessProvider;
 
 __attribute__((visibility("hidden")))
-@interface _CNAvatarImageProvider : NSObject <CNAvatarImageProvider>
+@interface _CNAvatarImageProvider : NSObject
 {
     id <CNUIPRLikenessProvider> _likenessProvider;
 }

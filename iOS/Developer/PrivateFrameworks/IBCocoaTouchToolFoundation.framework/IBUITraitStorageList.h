@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableOrderedSet, NSOrderedSet, NSString;
 
-@interface IBUITraitStorageList : NSObject <IBBinaryArchiving>
+@interface IBUITraitStorageList : NSObject
 {
     NSMutableArray *_traitStorages;
     NSMutableOrderedSet *_descendantObjectIDs;

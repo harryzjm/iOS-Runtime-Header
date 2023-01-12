@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuartzCore/CALayer.h>
-
 __attribute__((visibility("hidden")))
-@interface SHInnerCircleMaskLayer : CALayer
+@interface SHInnerCircleMaskLayer
 {
 }
 
 + (_Bool)needsDisplayForKey:(id)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)setup;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) double innerCircleRelativeSize; // @dynamic innerCircleRelativeSize;

@@ -29,6 +29,7 @@
 @optional
 @property(readonly, nonatomic) UIView *interactionView;
 @property(readonly, nonatomic) UIView *view;
+- (_Bool)isEditableElement:(id <NSObject><NSCopying>)arg1;
 - (_Bool)shouldDisableInputAssistant;
 - (void)didTargetElement:(id <NSObject><NSCopying>)arg1 forTouches:(NSSet *)arg2 event:(UIEvent *)arg3;
 - (_Bool)isEnabled;

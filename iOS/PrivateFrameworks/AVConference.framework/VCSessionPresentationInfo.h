@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCSessionPresentationInfo : NSObject <NSSecureCoding>
+@interface VCSessionPresentationInfo : NSObject
 {
     unsigned int _displayID;
     struct CGSize _displaySize;

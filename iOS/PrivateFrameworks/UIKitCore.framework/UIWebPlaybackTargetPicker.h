@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPopoverControllerDelegate-Protocol.h>
+#import "UIView.h"
 
 @class MPAVRoutingController, MPAVRoutingSheet, MPAudioVideoRoutingPopoverController, NSString, UIWebDocumentView;
 
 __attribute__((visibility("hidden")))
-@interface UIWebPlaybackTargetPicker <UIPopoverControllerDelegate>
+@interface UIWebPlaybackTargetPicker : UIView
 {
     MPAVRoutingController *_routingController;
     MPAudioVideoRoutingPopoverController *_popoverController;

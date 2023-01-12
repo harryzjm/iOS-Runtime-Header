@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _UIFocusMapSearchInfo : NSObject
 {
     _Bool _didFindFocusBlockingBoundary;
+    _Bool _hasOnlyStaticContent;
     NSArray *_linearSortedFocusItems;
     _UIFocusGroupMap *_focusGroupMap;
     NSMutableArray *_mutableSnapshots;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIFocusSearchInfo *searchInfo; // @synthesize searchInfo=_searchInfo;
 @property(retain, nonatomic) NSMutableArray *mutableDestinationRegions; // @synthesize mutableDestinationRegions=_mutableDestinationRegions;
 @property(retain, nonatomic) NSMutableArray *mutableSnapshots; // @synthesize mutableSnapshots=_mutableSnapshots;
+@property(readonly, nonatomic) _Bool hasOnlyStaticContent; // @synthesize hasOnlyStaticContent=_hasOnlyStaticContent;
 @property(retain, nonatomic) _UIFocusGroupMap *focusGroupMap; // @synthesize focusGroupMap=_focusGroupMap;
 @property(retain, nonatomic) NSArray *linearSortedFocusItems; // @synthesize linearSortedFocusItems=_linearSortedFocusItems;
 @property(nonatomic) _Bool didFindFocusBlockingBoundary; // @synthesize didFindFocusBlockingBoundary=_didFindFocusBlockingBoundary;

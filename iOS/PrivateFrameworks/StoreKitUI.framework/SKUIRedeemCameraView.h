@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
-
 @class NSString, SKUIClientContext, SKUIITunesPassConfiguration, SKUIRedeemCameraLandingView, SKUIRedeemITunesPassLockup, SKUIRedeemTextField, UIButton, UIImage;
 @protocol SKUIRedeemCameraViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemCameraView : UIView <UITextFieldDelegate>
+@interface SKUIRedeemCameraView : UIView
 {
     SKUIClientContext *_clientContext;
     id <SKUIRedeemCameraViewDelegate> _delegate;

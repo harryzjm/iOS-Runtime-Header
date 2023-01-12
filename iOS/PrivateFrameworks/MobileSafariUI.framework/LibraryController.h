@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/LibraryItemRegistration-Protocol.h>
-#import <MobileSafariUI/LibraryViewControllerDelegate-Protocol.h>
-#import <MobileSafariUI/UINavigationControllerDelegate-Protocol.h>
-
 @class BrowserRootViewController, LibraryConfiguration, LibraryItemController, LibraryViewController, MainLibrarySectionController, NSMutableDictionary, NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface LibraryController : NSObject <LibraryItemRegistration, UINavigationControllerDelegate, LibraryViewControllerDelegate>
+@interface LibraryController : NSObject
 {
     NSMutableDictionary *_itemsByCollection;
     LibraryItemController *_lastSelectedItemController;
@@ -30,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) LibraryConfiguration *configuration; // @synthesize configuration=_configuration;
 - (_Bool)libraryViewController:(id)arg1 shouldPersistSelectionForItem:(id)arg2;
 - (void)libraryViewControllerDidClearSelection:(id)arg1;
+- (void)_reportSelectedItemForAnalytics:(id)arg1;
 - (void)libraryViewController:(id)arg1 didSelectItem:(id)arg2;
 - (void)registerItem:(id)arg1 forCollectionType:(id)arg2;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;

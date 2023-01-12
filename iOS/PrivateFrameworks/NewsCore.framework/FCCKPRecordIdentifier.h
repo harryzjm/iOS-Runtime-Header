@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPIdentifier, FCCKPRecordZoneIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPRecordIdentifier : PBCodable <NSCopying>
+@interface FCCKPRecordIdentifier : PBCodable
 {
     FCCKPIdentifier *_value;
     FCCKPRecordZoneIdentifier *_zoneIdentifier;

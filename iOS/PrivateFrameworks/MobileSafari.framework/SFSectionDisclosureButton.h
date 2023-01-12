@@ -6,22 +6,31 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIImageView, UILabel;
+@class NSLayoutConstraint, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface SFSectionDisclosureButton : UIButton
 {
     UILabel *_labelWhenCollapsed;
+    NSLayoutConstraint *_labelWhenCollapsedLeadingConstraint;
     UILabel *_labelWhenExpanded;
+    NSLayoutConstraint *_labelWhenExpandedLeadingConstraint;
     UIImageView *_imageView;
+    _Bool _expandsModally;
     _Bool _expanded;
+    _Bool _labelHidden;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isLabelHidden) _Bool labelHidden; // @synthesize labelHidden=_labelHidden;
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
+@property(readonly, nonatomic) UIImageView *chevron;
+@property(readonly, nonatomic) struct CGSize sizeIncludingLabels;
+- (void)buttonShapesEnabledDidChange;
 - (void)toggleExpanded;
 - (void)updateExpanded;
-- (id)initWithFrame:(struct CGRect)arg1 expanded:(_Bool)arg2;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 expanded:(_Bool)arg2 modally:(_Bool)arg3;
 
 @end
 

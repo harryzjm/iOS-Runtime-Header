@@ -5,13 +5,14 @@
 //
 
 #import <SpringBoard/SBHLegibility-Protocol.h>
+#import <SpringBoard/SBHVisibleContentPresenter-Protocol.h>
 #import <SpringBoard/SBIconLocationPresenting-Protocol.h>
 #import <SpringBoard/SBIconViewQuerying-Protocol.h>
 
 @class NSString, SBIcon, SBIconListView, SBIconView, UIScrollView;
 @protocol BSInvalidatable, SBHTodayViewControllerObserver;
 
-@protocol SBHTodayViewController <SBHLegibility, SBIconViewQuerying, SBIconLocationPresenting>
+@protocol SBHTodayViewController <SBHLegibility, SBIconViewQuerying, SBIconLocationPresenting, SBHVisibleContentPresenter>
 @property(readonly, nonatomic, getter=isSpotlightVisible) _Bool spotlightVisible;
 @property(readonly, nonatomic) SBIconListView *listView;
 @property(readonly, nonatomic) UIScrollView *scrollView;

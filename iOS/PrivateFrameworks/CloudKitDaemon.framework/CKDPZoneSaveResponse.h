@@ -6,16 +6,21 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
+@class CKDPDate, CKDPZoneCapabilities;
 
-@class CKDPZoneCapabilities;
-
-@interface CKDPZoneSaveResponse : PBCodable <NSCopying>
+@interface CKDPZoneSaveResponse : PBCodable
 {
     CKDPZoneCapabilities *_capabilities;
+    CKDPDate *_expirationTime;
+    _Bool _expired;
+    struct {
+        unsigned int expired:1;
+    } _has;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDPDate *expirationTime; // @synthesize expirationTime=_expirationTime;
+@property(nonatomic) _Bool expired; // @synthesize expired=_expired;
 @property(retain, nonatomic) CKDPZoneCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -26,6 +31,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasExpirationTime;
+@property(nonatomic) _Bool hasExpired;
 @property(readonly, nonatomic) _Bool hasCapabilities;
 
 @end

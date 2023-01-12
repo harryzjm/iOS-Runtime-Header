@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-#import <DVTFoundation/DVTSigningCertificateManagerProtocol-Protocol.h>
-#import <DVTFoundation/DVTSigningCertificateSourceDelegate-Protocol.h>
-
 @class DVTDispatchLock, DVTSigningCertificate, DVTSigningCertificateSource, DVTStackBacktrace, NSMutableSet, NSSet, NSString;
 @protocol DVTInvalidation;
 
-@interface DVTSigningCertificateManager : NSObject <DVTSigningCertificateSourceDelegate, DVTInvalidation, DVTSigningCertificateManagerProtocol>
+@interface DVTSigningCertificateManager : NSObject
 {
     DVTDispatchLock *_certificateLock;
     NSMutableSet *_signingCertificates;

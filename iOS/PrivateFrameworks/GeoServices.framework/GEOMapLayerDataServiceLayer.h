@@ -6,13 +6,13 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOMapLayerDataServiceLayer : PBCodable <NSCopying>
+@interface GEOMapLayerDataServiceLayer : PBCodable
 {
     unsigned int _identifier;
-    CDStruct_7c00b98a _flags;
+    struct {
+        unsigned int has_identifier:1;
+    } _flags;
 }
 
 - (unsigned long long)hash;

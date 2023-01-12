@@ -6,12 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class AVButton, AVObservationController, AVPlayerController, AVStyleSheet, AVVolumeButtonControl, NSString, NSValue;
+@class AVButton, AVMobileChromeControlsStyleSheet, AVObservationController, AVPlayerController, AVVolumeButtonControl, NSString, NSValue;
 
 __attribute__((visibility("hidden")))
 @interface AVTurboModePlaybackControlsPlaceholderView : UIView
 {
-    AVStyleSheet *_styleSheet;
+    AVMobileChromeControlsStyleSheet *_styleSheet;
     AVPlayerController *_playerController;
     long long _preferredUnobscuredArea;
     long long _includedControlType;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long includedControlType; // @synthesize includedControlType=_includedControlType;
 @property(nonatomic) long long preferredUnobscuredArea; // @synthesize preferredUnobscuredArea=_preferredUnobscuredArea;
 @property(retain, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
-@property(retain, nonatomic) AVStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
+@property(retain, nonatomic) AVMobileChromeControlsStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
 - (id)_makeProminentPlayButtonAndContainer;
 - (void)_makeProminentPlayButtonAndContainerIfNeeded;
 - (id)_makeVolumeButtonAndContainer;

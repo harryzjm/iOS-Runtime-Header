@@ -44,6 +44,7 @@
 @property(readonly, nonatomic) NSString *vk_trimmedString;
 @property(readonly, nonatomic) NSString *vk_htmlStringEscapingQuotesAndLineBreaks;
 @property(readonly, nonatomic) NSString *vk_md5;
+@property(readonly, nonatomic) NSString *vk_hexCodes;
 @property(readonly, nonatomic) struct _NSRange vk_range;
 @end
 

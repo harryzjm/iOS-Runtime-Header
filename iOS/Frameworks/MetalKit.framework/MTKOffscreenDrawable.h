@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MetalKit/CAMetalDrawable-Protocol.h>
-
 @class CAMetalLayer, NSString;
 @protocol MTLDevice, MTLTexture;
 
 __attribute__((visibility("hidden")))
-@interface MTKOffscreenDrawable : NSObject <CAMetalDrawable>
+@interface MTKOffscreenDrawable : NSObject
 {
     id <MTLTexture> _texture;
     unsigned long long _pixelFormat;

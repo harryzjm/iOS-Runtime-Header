@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIInterfaceActionVisualSectionSeparatorDisplaying-Protocol.h>
-#import <UIKitCore/UIInterfaceActionVisualSeparatorDisplaying-Protocol.h>
+#import "UIView.h"
 
 @class NSString, _UIInterfaceActionSeparatorConstraintController;
 
 __attribute__((visibility("hidden")))
-@interface _UIInterfaceActionBlankSeparatorView <UIInterfaceActionVisualSeparatorDisplaying, UIInterfaceActionVisualSectionSeparatorDisplaying>
+@interface _UIInterfaceActionBlankSeparatorView : UIView
 {
     double _horizontalLineLeadingInset;
     _UIInterfaceActionSeparatorConstraintController *_separatorViewConstraints;

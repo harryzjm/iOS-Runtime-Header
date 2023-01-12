@@ -6,11 +6,9 @@
 
 #import <Foundation/NSURL.h>
 
-#import <TouchML/NSURLJSExports-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface NSURL (TouchML) <NSURLJSExports>
+@interface NSURL (TouchML)
 + (void)initializeJSContext:(id)arg1;
 - (id)withPathComponent:(id)arg1;
 - (id)filterQueryParameters:(id)arg1;

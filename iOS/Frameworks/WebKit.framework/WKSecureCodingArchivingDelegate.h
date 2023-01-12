@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/NSKeyedArchiverDelegate-Protocol.h>
-#import <WebKit/NSKeyedUnarchiverDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKSecureCodingArchivingDelegate : NSObject <NSKeyedArchiverDelegate, NSKeyedUnarchiverDelegate>
+@interface WKSecureCodingArchivingDelegate : NSObject
 {
 }
 

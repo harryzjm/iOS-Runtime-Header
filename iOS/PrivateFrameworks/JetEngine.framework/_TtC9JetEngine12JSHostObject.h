@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <JetEngine/_TtP9JetEngineP33_3B280445E2AC6E2542A3DCC2FD82BB2C19JSHostObjectExports_-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9JetEngine12JSHostObject : NSObject <_TtP9JetEngineP33_3B280445E2AC6E2542A3DCC2FD82BB2C19JSHostObjectExports_>
+@interface _TtC9JetEngine12JSHostObject : NSObject
 {
 }
 
@@ -19,6 +17,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isOSAtLeast:(id)arg1:(id)arg2:(id)arg3;
 @property(nonatomic, readonly) NSString *clientVersion;
 @property(nonatomic, readonly) NSString *clientIdentifier;
+@property(nonatomic, readonly) NSString *deviceModelFamily;
+@property(nonatomic, readonly) NSString *devicePhysicalModel;
 @property(nonatomic, readonly) NSString *deviceLocalizedModel;
 @property(nonatomic, readonly) NSString *deviceModel;
 @property(nonatomic, readonly) NSString *osBuild;

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPAssetsToDownload, CKDPRecordZoneIdentifier, CKDPRequestedFields, NSData;
 
-@interface CKDPRecordRetrieveChangesRequest : PBRequest <NSCopying>
+@interface CKDPRecordRetrieveChangesRequest : PBRequest
 {
     CKDPAssetsToDownload *_assetsToDownload;
     unsigned int _maxChanges;
@@ -19,17 +17,20 @@
     NSData *_syncContinuationToken;
     CKDPRecordZoneIdentifier *_zoneIdentifier;
     _Bool _ignoreCallingDeviceChanges;
+    _Bool _includeMergeableDeltas;
     _Bool _newestFirst;
     struct {
         unsigned int maxChanges:1;
         unsigned int requestedChangeTypes:1;
         unsigned int ignoreCallingDeviceChanges:1;
+        unsigned int includeMergeableDeltas:1;
         unsigned int newestFirst:1;
     } _has;
 }
 
 + (id)options;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool includeMergeableDeltas; // @synthesize includeMergeableDeltas=_includeMergeableDeltas;
 @property(nonatomic) _Bool ignoreCallingDeviceChanges; // @synthesize ignoreCallingDeviceChanges=_ignoreCallingDeviceChanges;
 @property(nonatomic) _Bool newestFirst; // @synthesize newestFirst=_newestFirst;
 @property(retain, nonatomic) CKDPAssetsToDownload *assetsToDownload; // @synthesize assetsToDownload=_assetsToDownload;
@@ -48,6 +49,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIncludeMergeableDeltas;
 @property(nonatomic) _Bool hasIgnoreCallingDeviceChanges;
 @property(nonatomic) _Bool hasNewestFirst;
 @property(readonly, nonatomic) _Bool hasAssetsToDownload;

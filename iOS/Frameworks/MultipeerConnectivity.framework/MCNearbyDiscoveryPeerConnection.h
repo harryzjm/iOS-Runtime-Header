@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MultipeerConnectivity/NSStreamDelegate-Protocol.h>
-
 @class NSInputStream, NSMutableArray, NSMutableData, NSOutputStream, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MCNearbyDiscoveryPeerConnection : NSObject <NSStreamDelegate>
+@interface MCNearbyDiscoveryPeerConnection : NSObject
 {
     NSString *_remoteServiceName;
     NSString *_localServiceName;

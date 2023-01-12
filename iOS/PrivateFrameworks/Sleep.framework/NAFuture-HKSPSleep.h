@@ -7,6 +7,9 @@
 #import <NetAppsUtilities/NAFuture.h>
 
 @interface NAFuture (HKSPSleep)
++ (id)_hksp_chainFutureHelperWithFutures:(id)arg1 index:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3 ignoreErrors:(_Bool)arg4;
++ (id)hksp_chainFutures:(id)arg1 returningFirstPassingTest:(CDUnknownBlockType)arg2 ignoreErrors:(_Bool)arg3;
++ (id)hksp_chainFutures:(id)arg1 returningFirstPassingTest:(CDUnknownBlockType)arg2;
 + (id)hksp_expiringFutureWithTimeout:(double)arg1;
 @property(readonly, nonatomic) CDUnknownBlockType hksp_boolErrorCompletionHandlerAdapter;
 @end

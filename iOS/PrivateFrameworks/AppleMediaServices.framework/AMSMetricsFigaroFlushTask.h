@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServices/AMSMetricsFlushStrategy-Protocol.h>
+#import "AMSTask.h"
 
 @class AMSPromise, AMSURLSession, NSString;
 @protocol AMSBagProtocol, AMSMetricsDataSource;
 
 __attribute__((visibility("hidden")))
-@interface AMSMetricsFigaroFlushTask <AMSMetricsFlushStrategy>
+@interface AMSMetricsFigaroFlushTask : AMSTask
 {
     _Bool _cancelled;
     int _requestCount;

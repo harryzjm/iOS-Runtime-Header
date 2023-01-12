@@ -11,6 +11,7 @@
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets contentInsets;
 @property(readonly, nonatomic) struct CGSize contentSize;
 @property(readonly, nonatomic) struct CGRect layoutFrame;
+@property(readonly, nonatomic) double interPageDimension;
 @property(readonly, nonatomic) double groupDimension;
 @property(readonly, nonatomic) double pagingDimension;
 @property(readonly, nonatomic) unsigned long long layoutAxis;

@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class GEOPlaceRibbonConfiguration, MUPlaceDataAvailability;
+@class GEOPlaceRibbonConfiguration, MKETAProvider, MUPlaceDataAvailability;
 
 __attribute__((visibility("hidden")))
 @interface MUPlaceRibbonSectionControllerConfiguration : NSObject
 {
     GEOPlaceRibbonConfiguration *_ribbonConfiguration;
     MUPlaceDataAvailability *_availability;
+    MKETAProvider *_etaProvider;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) MKETAProvider *etaProvider; // @synthesize etaProvider=_etaProvider;
 @property(retain, nonatomic) MUPlaceDataAvailability *availability; // @synthesize availability=_availability;
 @property(retain, nonatomic) GEOPlaceRibbonConfiguration *ribbonConfiguration; // @synthesize ribbonConfiguration=_ribbonConfiguration;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSNumber, NSString;
+@class AMDFeatureProvider, NSArray, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface InputFeatureDefinition : NSObject
@@ -15,11 +15,15 @@ __attribute__((visibility("hidden")))
     NSString *_featureId;
     NSString *_mapOp;
     NSNumber *_size;
+    NSArray *_shape;
     NSString *_remapDictionaryId;
+    AMDFeatureProvider *_featureProvider;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) AMDFeatureProvider *featureProvider; // @synthesize featureProvider=_featureProvider;
 @property(retain, nonatomic) NSString *remapDictionaryId; // @synthesize remapDictionaryId=_remapDictionaryId;
+@property(retain, nonatomic) NSArray *shape; // @synthesize shape=_shape;
 @property(retain, nonatomic) NSNumber *size; // @synthesize size=_size;
 @property(retain, nonatomic) NSString *mapOp; // @synthesize mapOp=_mapOp;
 @property(retain, nonatomic) NSString *featureId; // @synthesize featureId=_featureId;

@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <ClipUIServices/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UITapGestureRecognizer;
 @protocol CPSInlineCardViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CPSInlineCardContainerView : UIView <UIGestureRecognizerDelegate>
+@interface CPSInlineCardContainerView : UIView
 {
     UITapGestureRecognizer *_tapRecognizer;
     id <CPSInlineCardViewDelegate> _delegate;

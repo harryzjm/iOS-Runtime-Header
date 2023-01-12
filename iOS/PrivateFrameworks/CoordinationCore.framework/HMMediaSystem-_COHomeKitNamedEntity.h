@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMMediaSystem.h>
 
-#import <CoordinationCore/_COHomeKitNamedEntity-Protocol.h>
-
 @class NSString;
 
-@interface HMMediaSystem (_COHomeKitNamedEntity) <_COHomeKitNamedEntity>
+@interface HMMediaSystem (_COHomeKitNamedEntity)
 - (id)co_MeshNameForEntity;
 
 // Remaining properties

@@ -11,14 +11,15 @@
 @interface _TtC15SeymourServices25ContentAvailabilitySystem : _TtCs12_SwiftObject
 {
     MISSING_TYPE *contentAvailabilityObserver;
-    MISSING_TYPE *accountSupportedWatchObserver;
     MISSING_TYPE *contentRestrictionObserver;
     MISSING_TYPE *contentAvailabilityScriptClient;
     MISSING_TYPE *eventHub;
-    MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *storefrontObserver;
+    MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *supportedDeviceAvailability;
     MISSING_TYPE *xpcBroadcastConnection;
     MISSING_TYPE *platform;
+    MISSING_TYPE *_fakeFitnessModeString;
 }
 
 @end

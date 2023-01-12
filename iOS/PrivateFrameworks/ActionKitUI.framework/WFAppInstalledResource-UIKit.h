@@ -6,12 +6,9 @@
 
 #import <WorkflowKit/WFAppInstalledResource.h>
 
-#import <ActionKitUI/SKStoreProductViewControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFAppSearchViewControllerDelegate-Protocol.h>
-
 @class NSString, SKStoreProductViewController;
 
-@interface WFAppInstalledResource (UIKit) <WFAppSearchViewControllerDelegate, SKStoreProductViewControllerDelegate>
+@interface WFAppInstalledResource (UIKit)
 - (void)appSearchViewController:(id)arg1 didFinishWithApp:(id)arg2;
 - (void)appSearchViewControllerDidCancel:(id)arg1;
 - (void)productViewControllerDidFinish:(id)arg1;

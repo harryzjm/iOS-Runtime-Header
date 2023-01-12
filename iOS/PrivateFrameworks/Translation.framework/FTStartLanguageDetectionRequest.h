@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTStartLanguageDetectionRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTStartLanguageDetectionRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -23,6 +20,9 @@ __attribute__((visibility("hidden")))
 - (id)flatbuffData;
 - (Offset_98cf57cb)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) long long codec;
+- (void)locales_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)locales_count;
+- (id)locales_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *locales;
 @property(readonly, nonatomic) NSString *session_id;
 @property(readonly, nonatomic) NSString *speech_id;

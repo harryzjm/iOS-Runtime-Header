@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedGuidanceEvent, GEOComposedRoute, GEOComposedRouteMutableData, GEOComposedRouteTraffic, GEOComposedWaypoint, GEOETATrafficUpdateResponse, GEOStep, MNDisplayETAInfo, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocation, MNNavigationService, MNNavigationTraceInfo, MNRouteDistanceInfo, MNTrafficIncidentAlert, MNTransitAlert, NSArray, NSDictionary, NSError, NSSet, NSString, NSUUID;
+@class GEOComposedGuidanceEvent, GEOComposedRoute, GEOComposedRouteMutableData, GEOComposedRouteTraffic, GEOComposedWaypoint, GEOETATrafficUpdateResponse, GEOStep, MNBatteryChargeInfo, MNDisplayETAInfo, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocation, MNNavigationService, MNNavigationTraceInfo, MNRouteDistanceInfo, MNTrafficIncidentAlert, MNTransitAlert, NSArray, NSDictionary, NSError, NSSet, NSString, NSUUID;
 
 @protocol MNNavigationServiceObserver <NSObject>
 
@@ -44,7 +44,7 @@
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateMutableData:(GEOComposedRouteMutableData *)arg2 forRoute:(GEOComposedRoute *)arg3;
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateTrafficForRouteID:(NSUUID *)arg2;
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateETAResponse:(GEOETATrafficUpdateResponse *)arg2 forRoute:(GEOComposedRoute *)arg3;
-- (void)navigationService:(MNNavigationService *)arg1 didUpdateDisplayETA:(MNDisplayETAInfo *)arg2 remainingDistance:(MNRouteDistanceInfo *)arg3;
+- (void)navigationService:(MNNavigationService *)arg1 didUpdateDisplayETA:(MNDisplayETAInfo *)arg2 remainingDistance:(MNRouteDistanceInfo *)arg3 batteryChargeInfo:(MNBatteryChargeInfo *)arg4;
 - (void)navigationServiceDidHideSecondaryStep:(MNNavigationService *)arg1;
 - (void)navigationService:(MNNavigationService *)arg1 displaySecondaryStep:(GEOStep *)arg2 instructions:(NSArray *)arg3 shieldType:(int)arg4 shieldText:(NSString *)arg5 drivingSide:(int)arg6;
 - (void)navigationService:(MNNavigationService *)arg1 displayManeuverAlertForAnnouncementStage:(unsigned long long)arg2;
@@ -64,7 +64,7 @@
 - (void)navigationServiceBeginGuidanceUpdate:(MNNavigationService *)arg1;
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateDistanceUntilSign:(double)arg2 timeUntilSign:(double)arg3 forStepIndex:(unsigned long long)arg4;
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateProceedToRouteDistance:(double)arg2 displayString:(NSString *)arg3 closestStepIndex:(unsigned long long)arg4;
-- (void)navigationService:(MNNavigationService *)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationService:(MNNavigationService *)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)navigationServiceDidArrive:(MNNavigationService *)arg1;
 - (void)navigationServiceDidEnterPreArrivalState:(MNNavigationService *)arg1;
 - (void)navigationService:(MNNavigationService *)arg1 didArriveAtWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
@@ -80,6 +80,7 @@
 - (void)navigationServiceWillResumeFromPause:(MNNavigationService *)arg1;
 - (void)navigationServiceWillPause:(MNNavigationService *)arg1;
 - (void)navigationService:(MNNavigationService *)arg1 didEndWithReason:(unsigned long long)arg2;
+- (void)navigationService:(MNNavigationService *)arg1 willEndWithReason:(unsigned long long)arg2;
 - (void)navigationService:(MNNavigationService *)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)navigationService:(MNNavigationService *)arg1 willChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 @end

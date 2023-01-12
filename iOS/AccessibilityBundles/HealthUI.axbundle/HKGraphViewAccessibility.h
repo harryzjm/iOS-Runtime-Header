@@ -22,7 +22,6 @@
 - (_Bool)_accessibilitySupportsChartsV2;
 - (void)_accessibilityClearElements;
 - (void)_updateGraphViewConfigurationIfNecessary;
-- (void)_renderSeriesWithContext:(struct CGContext *)arg1 secondaryRenderContext:(id)arg2 chartRect:(struct CGRect)arg3;
 - (void)_accessibilitySetChartElements:(id)arg1;
 - (id)_accessibilityChartElements;
 

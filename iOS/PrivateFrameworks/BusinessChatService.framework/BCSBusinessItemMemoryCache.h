@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSItemCaching-Protocol.h>
-
 @class BCSBusinessItem, NSData;
 
 __attribute__((visibility("hidden")))
-@interface BCSBusinessItemMemoryCache : NSObject <BCSItemCaching>
+@interface BCSBusinessItemMemoryCache : NSObject
 {
     BCSBusinessItem *_lastFetchedBusinessItem;
     BCSBusinessItem *_bizItemForLastFetchedIcon;

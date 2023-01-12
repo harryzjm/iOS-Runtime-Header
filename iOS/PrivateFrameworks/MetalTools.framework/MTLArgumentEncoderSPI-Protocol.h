@@ -7,11 +7,8 @@
 #import <MetalTools/MTLArgumentEncoder-Protocol.h>
 
 @class _MTLIndirectArgumentBufferLayout;
-@protocol MTLFunctionPointerHandleSPI;
 
 @protocol MTLArgumentEncoderSPI <MTLArgumentEncoder>
 @property(readonly, nonatomic) _MTLIndirectArgumentBufferLayout *layout;
-- (void)setFunctionPointers:(const id *)arg1 withRange:(struct _NSRange)arg2;
-- (void)setFunctionPointer:(id <MTLFunctionPointerHandleSPI>)arg1 atIndex:(unsigned long long)arg2;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Phoenix/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface backtapOutput : NSObject <MLFeatureProvider>
+@interface backtapOutput : NSObject
 {
     MLMultiArray *_model_output;
 }

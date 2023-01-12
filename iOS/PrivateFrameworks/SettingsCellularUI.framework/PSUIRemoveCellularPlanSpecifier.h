@@ -24,6 +24,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
 @property(retain, nonatomic) CTCellularPlanManager *cellularPlanManager; // @synthesize cellularPlanManager=_cellularPlanManager;
 @property(retain, nonatomic) PSUICellularPlanUniversalReference *planReference; // @synthesize planReference=_planReference;
+- (id)getLogger;
+- (void)remap:(id)arg1 to:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)showRemapFor:(id)arg1 withList:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)prepareToShowRemap:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_didRemoveSessionComplete;
 - (void)removeCellularPlanConfirmed:(id)arg1;
 - (void)removeCellularPlan:(id)arg1;
 - (void)alignLeft;

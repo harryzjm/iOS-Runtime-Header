@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ClassKit/CLSQuery-Protocol.h>
-
 @class NSMapTable, NSMutableArray, NSMutableOrderedSet, NSString;
 @protocol CLSFaultProcessorDelegate, OS_dispatch_group, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
-@interface CLSFaultProcessor : NSObject <CLSQuery>
+@interface CLSFaultProcessor : NSObject
 {
     NSMutableArray *_results;
     NSObject<OS_dispatch_queue> *_queue;
@@ -28,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <CLSFaultProcessorDelegate> delegate; // @synthesize delegate=_delegate;
 - (oneway void)clientRemote_itemChanged:(unsigned long long)arg1;
-- (oneway void)clientRemote_finishWithState:(unsigned long long)arg1 error:(id)arg2;
+- (oneway void)clientRemote_finishWithOffset:(unsigned long long)arg1 error:(id)arg2;
 - (oneway void)clientRemote_deliverObject:(id)arg1;
 - (oneway void)clientRemote_invalidate;
 - (void)_inGroup:(CDUnknownBlockType)arg1;
@@ -38,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_insertRootObjectID:(id)arg1 withChildren:(id)arg2;
 - (void)_insertRootObject:(id)arg1;
 - (void)_addObject:(id)arg1;
-- (void)_faultObject:(id)arg1;
+- (void)_faultObjectsBatch:(id)arg1;
 - (void)_faultRelation:(id)arg1 fromObject:(id)arg2;
 - (_Bool)waitUntilDone:(double)arg1;
 - (void)completionNotify:(CDUnknownBlockType)arg1;

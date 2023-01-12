@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKCalendar, UITableViewCell;
+@class EKCalendar, UIMenu, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface EKEventCalendarDetailItem
 {
     EKCalendar *_calendar;
     UITableViewCell *_cell;
+    UIMenu *_popupMenu;
 }
 
 - (void).cxx_destruct;
@@ -18,6 +19,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_calendarCanBeChanged;
 - (_Bool)editItemViewControllerSave:(id)arg1;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
+- (id)popupMenu:(id)arg1;
+- (id)eligibleCalendars;
 - (_Bool)hasDetailViewControllerAtIndex:(unsigned long long)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1 withTraitCollection:(id)arg2;
 - (_Bool)eventViewController:(id)arg1 shouldSelectSubitem:(unsigned long long)arg2;

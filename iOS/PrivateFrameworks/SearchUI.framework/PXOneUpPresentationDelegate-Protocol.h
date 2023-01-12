@@ -6,8 +6,8 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
-@class NSArray, NSSet, PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIMediaProvider, UIContextMenuInteraction, UIImage, UIScrollView;
-@protocol PXAssetImportStatusManager;
+@class NSArray, NSSet, PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXContentPrivacyController, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIMediaProvider, UIContextMenuConfiguration, UIContextMenuInteraction, UIImage, UIScrollView, UITargetedPreview, _UIContextMenuStyle;
+@protocol NSCopying, PXAssetImportStatusManager;
 
 @protocol PXOneUpPresentationDelegate <NSObject>
 - (long long)oneUpPresentationOrigin:(PXOneUpPresentation *)arg1;
@@ -15,10 +15,10 @@
 - (PXAssetsDataSourceManager *)oneUpPresentationDataSourceManager:(PXOneUpPresentation *)arg1;
 
 @optional
+- (NSArray *)oneUpPresentationAssetUUIDsAllowedToHighlightText:(PXOneUpPresentation *)arg1;
 - (NSArray *)oneUpPresentationMatchedQueryStrings:(PXOneUpPresentation *)arg1;
 - (UIScrollView *)oneUpPresentationHelperScrollView:(PXOneUpPresentation *)arg1;
 - (id <PXAssetImportStatusManager>)oneUpPresentationImportStatusManager:(PXOneUpPresentation *)arg1;
-- (PXGestureProvider *)oneUpPresentationGestureProvider:(PXOneUpPresentation *)arg1;
 - (long long)oneUpPresentationActionContext:(PXOneUpPresentation *)arg1;
 - (PXAssetActionManager *)oneUpPresentationActionManagerForPreviewing:(PXOneUpPresentation *)arg1;
 - (PXAssetActionManager *)oneUpPresentationActionManager:(PXOneUpPresentation *)arg1;
@@ -29,13 +29,20 @@
 - (_Bool)oneUpPresentationWantsShowInLibraryButton:(PXOneUpPresentation *)arg1;
 - (_Bool)oneUpPresentationShouldPreventShowInAllPhotosAction:(PXOneUpPresentation *)arg1;
 - (_Bool)oneUpPresentationShouldAutoPlay:(PXOneUpPresentation *)arg1;
-- (void)oneUpPresentation:(PXOneUpPresentation *)arg1 didEndPreviewingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (_UIContextMenuStyle *)oneUpPresentation:(PXOneUpPresentation *)arg1 styleForContextMenuInteraction:(UIContextMenuInteraction *)arg2 configuration:(UIContextMenuConfiguration *)arg3;
+- (NSArray *)oneUpPresentation:(PXOneUpPresentation *)arg1 accessoriesForContextMenuInteraction:(UIContextMenuInteraction *)arg2 configuration:(UIContextMenuConfiguration *)arg3;
+- (void)oneUpPresentation:(PXOneUpPresentation *)arg1 willEndPreviewingForContextMenuInteraction:(UIContextMenuInteraction *)arg2 configuration:(UIContextMenuConfiguration *)arg3;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 willStartPreviewingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
 - (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 commitPreviewForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
 - (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 allowsPreviewCommitingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 allowsMultiSelectMenuForInteraction:(UIContextMenuInteraction *)arg2;
 - (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 allowsActionsForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
 - (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 canStartPreviewingForContextMenuInteraction:(UIContextMenuInteraction *)arg2;
+- (NSArray *)oneUpPresentation:(PXOneUpPresentation *)arg1 secondaryIdentifiersForConfiguration:(UIContextMenuConfiguration *)arg2;
+- (UITargetedPreview *)oneUpPresentation:(PXOneUpPresentation *)arg1 previewForDismissingToSecondaryItemWithIdentifier:(id <NSCopying>)arg2 configuration:(UIContextMenuConfiguration *)arg3;
+- (UITargetedPreview *)oneUpPresentation:(PXOneUpPresentation *)arg1 previewForHighlightingSecondaryItemWithIdentifier:(id <NSCopying>)arg2 configuration:(UIContextMenuConfiguration *)arg3;
 - (PXAssetReference *)oneUpPresentationInitialAssetReference:(PXOneUpPresentation *)arg1;
+- (PXContentPrivacyController *)oneUpPresentationPrivacyController:(PXOneUpPresentation *)arg1;
 - (PXPhotosDetailsContext *)oneUpPresentationPhotosDetailsContext:(PXOneUpPresentation *)arg1;
 @end
 

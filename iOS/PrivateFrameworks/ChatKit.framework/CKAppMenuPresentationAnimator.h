@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKAppMenuPresentationAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface CKAppMenuPresentationAnimator : NSObject
 {
 }
 

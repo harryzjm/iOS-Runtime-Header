@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     struct CGRect _contentsRect;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(readonly, nonatomic) struct CGSize size;
-- (void)dealloc;
 
 @end
 

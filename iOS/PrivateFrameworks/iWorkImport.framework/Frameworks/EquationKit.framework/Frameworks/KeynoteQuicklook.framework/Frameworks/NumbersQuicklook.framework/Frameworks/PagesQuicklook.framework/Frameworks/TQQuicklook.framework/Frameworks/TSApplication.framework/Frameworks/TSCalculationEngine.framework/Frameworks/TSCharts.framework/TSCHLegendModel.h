@@ -6,15 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-#import <TSCharts/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
-#import <TSCharts/TSCHStyleOwnerCollaborationSupport-Protocol.h>
-#import <TSCharts/TSCHStyleOwning-Protocol.h>
-#import <TSCharts/TSDMixing-Protocol.h>
-
 @class NSString, TSCHChartInfo;
 
-@interface TSCHLegendModel : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHStyleOwning, TSDMixing, NSCopying>
+@interface TSCHLegendModel : NSObject
 {
     TSCHChartInfo *_chartInfo;
     struct CGRect _legendFrame;

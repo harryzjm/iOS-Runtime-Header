@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBCacheToken.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKBCacheToken_Key
+@interface UIKBCacheToken_Key : UIKBCacheToken
 {
     CDUnion_bf7716c0 _style;
     NSString *_cacheDisplayString;
@@ -25,6 +27,7 @@ __attribute__((visibility("hidden")))
 
 + (id)tokenForKey:(id)arg1 style:(CDStruct_227bb23d)arg2 displayInsets:(struct UIEdgeInsets)arg3;
 + (id)tokenForKey:(id)arg1 style:(CDStruct_227bb23d)arg2;
+- (void).cxx_destruct;
 - (id)stringForRenderFlags:(long long)arg1 lightKeyboard:(_Bool)arg2;
 - (id)string;
 - (id)_stringWithAdditionalValues:(CDUnknownBlockType)arg1;
@@ -41,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (int)rowHint;
 - (void)setSize:(struct CGSize)arg1;
 - (struct CGSize)size;
-- (void)dealloc;
 - (id)_initWithKey:(id)arg1 style:(CDStruct_227bb23d)arg2 displayInsets:(struct UIEdgeInsets)arg3;
 
 @end

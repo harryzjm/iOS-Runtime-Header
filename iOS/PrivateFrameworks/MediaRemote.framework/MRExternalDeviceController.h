@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaRemote/NSNetServiceBrowserDelegate-Protocol.h>
-#import <MediaRemote/NSNetServiceDelegate-Protocol.h>
-
 @class NSMutableSet, NSNetServiceBrowser, NSString;
 @protocol MRExternalDeviceControllerDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MRExternalDeviceController : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
+@interface MRExternalDeviceController : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSNetServiceBrowser *_serviceBrowser;

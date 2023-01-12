@@ -10,6 +10,9 @@
 
 @protocol PGGraphPeopledEvent <PGGraphEvent>
 - (NSSet *)socialGroupNodes;
+- (NSSet *)consolidatedPersonNodesPresentInAssets;
+- (NSSet *)consolidatedPersonNodes;
+- (NSSet *)personNodesInProximity;
 - (NSSet *)personNodes;
 - (_Bool)hasPeopleCountingMe:(_Bool)arg1;
 @end

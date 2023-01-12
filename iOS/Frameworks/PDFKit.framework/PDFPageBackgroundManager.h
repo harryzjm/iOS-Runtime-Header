@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PDFKit/PDFPageDrawProgressCallback-Protocol.h>
-
 @class PDFPageBackgroundManagerPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFPageBackgroundManager : NSObject <PDFPageDrawProgressCallback>
+@interface PDFPageBackgroundManager : NSObject
 {
     PDFPageBackgroundManagerPrivate *_private;
 }

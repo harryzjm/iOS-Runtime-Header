@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     PDFTextPosition *_end;
 }
 
++ (id)textRangeFromSelection:(id)arg1;
 - (void).cxx_destruct;
 - (id)description;
 - (id)initFromPos:(id)arg1 toPos:(id)arg2;

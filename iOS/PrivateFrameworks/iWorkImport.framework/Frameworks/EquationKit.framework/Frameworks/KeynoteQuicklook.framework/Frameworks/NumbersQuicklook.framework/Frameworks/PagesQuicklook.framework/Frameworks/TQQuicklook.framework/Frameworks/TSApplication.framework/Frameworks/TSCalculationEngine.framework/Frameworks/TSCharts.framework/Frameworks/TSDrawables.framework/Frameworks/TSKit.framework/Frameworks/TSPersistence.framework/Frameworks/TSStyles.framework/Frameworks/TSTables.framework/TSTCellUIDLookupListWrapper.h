@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
-@interface TSTCellUIDLookupListWrapper : NSObject <NSCopying>
+@interface TSTCellUIDLookupListWrapper : NSObject
 {
     struct TSTCellUIDLookupList _UIDLookupList;
 }

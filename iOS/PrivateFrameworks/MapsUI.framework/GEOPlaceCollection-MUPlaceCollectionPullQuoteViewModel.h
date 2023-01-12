@@ -6,11 +6,9 @@
 
 #import <GeoServices/GEOPlaceCollection.h>
 
-#import <MapsUI/MUPlaceCollectionPullQuoteViewModel-Protocol.h>
-
 @class NSString;
 
-@interface GEOPlaceCollection (MUPlaceCollectionPullQuoteViewModel) <MUPlaceCollectionPullQuoteViewModel>
+@interface GEOPlaceCollection (MUPlaceCollectionPullQuoteViewModel)
 - (id)publisherIconForIsNightMode:(_Bool)arg1;
 @property(readonly, nonatomic) NSString *plainTextDescription;
 @property(readonly, nonatomic) unsigned long long numberOfPlaces;

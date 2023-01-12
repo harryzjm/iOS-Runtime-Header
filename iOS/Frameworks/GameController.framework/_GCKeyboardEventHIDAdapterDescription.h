@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCKeyboardEventSourceDescription-Protocol.h>
-
 @class NSString, _GCCControllerHIDServiceInfoDescription, _GCKeyboardEventHIDAdapter;
 @protocol _GCHIDEventSourceDescription;
 
 __attribute__((visibility("hidden")))
-@interface _GCKeyboardEventHIDAdapterDescription : NSObject <_GCKeyboardEventSourceDescription>
+@interface _GCKeyboardEventHIDAdapterDescription : NSObject
 {
     id <_GCHIDEventSourceDescription> _sourceDescription;
     _GCCControllerHIDServiceInfoDescription *_serviceDescription;

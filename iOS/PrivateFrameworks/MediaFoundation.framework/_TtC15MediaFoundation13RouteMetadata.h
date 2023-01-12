@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <MediaFoundation/MFRouteChangeMetadata-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
-@interface _TtC15MediaFoundation13RouteMetadata : _TtCs12_SwiftObject <MFRouteChangeMetadata>
+@interface _TtC15MediaFoundation13RouteMetadata : _TtCs12_SwiftObject
 {
     MISSING_TYPE *isAirplay;
     MISSING_TYPE *routeDescription;

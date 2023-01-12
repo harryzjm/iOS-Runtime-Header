@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FMCore/FMOwnerAccountIdentity-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FMInternalOwnerAccount : NSObject <FMOwnerAccountIdentity>
+@interface FMInternalOwnerAccount : NSObject
 {
     NSString *_personId;
     NSString *_username;

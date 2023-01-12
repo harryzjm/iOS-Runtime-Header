@@ -8,6 +8,7 @@
 
 @protocol VCPMADServicePublicServerProtocol
 - (void)endEntryPoint;
+- (void)cacheHitWithQueryID:(unsigned long long)arg1 cachedResultQueryID:(unsigned long long)arg2;
 - (void)startEntryPointWithQueryID:(unsigned long long)arg1;
 - (void)cancelAllRequests;
 - (void)cancelRequest:(int)arg1;

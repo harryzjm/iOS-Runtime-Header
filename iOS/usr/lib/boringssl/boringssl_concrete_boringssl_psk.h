@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <boringssl/OS_boringssl_psk-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_data;
 
 __attribute__((visibility("hidden")))
-@interface boringssl_concrete_boringssl_psk : NSObject <OS_boringssl_psk>
+@interface boringssl_concrete_boringssl_psk : NSObject
 {
     NSObject<OS_dispatch_data> *key;
     NSObject<OS_dispatch_data> *identity;

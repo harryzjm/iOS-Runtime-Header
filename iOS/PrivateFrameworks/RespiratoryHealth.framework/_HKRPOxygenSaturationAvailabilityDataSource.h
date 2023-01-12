@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RespiratoryHealth/HKRPOxygenSaturationAvailabilityDataSource-Protocol.h>
-
 @class NRDevice, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HKRPOxygenSaturationAvailabilityDataSource : NSObject <HKRPOxygenSaturationAvailabilityDataSource>
+@interface _HKRPOxygenSaturationAvailabilityDataSource : NSObject
 {
     NRDevice *_device;
 }

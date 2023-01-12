@@ -14,10 +14,10 @@
     NSData *_plainData;
 }
 
-@property(readonly, nonatomic) NSData *plainData; // @synthesize plainData=_plainData;
-@property(readonly, nonatomic) NSString *fieldName; // @synthesize fieldName=_fieldName;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSData *plainData; // @synthesize plainData=_plainData;
+@property(retain, nonatomic) NSString *fieldName; // @synthesize fieldName=_fieldName;
 - (id)description;
-- (void)dealloc;
 - (id)initWithFieldName:(id)arg1 plainData:(id)arg2;
 
 @end

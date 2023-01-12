@@ -6,11 +6,9 @@
 
 #import <UIKit/UILayoutGuide.h>
 
-#import <HomeUI/HULayoutAnchorProviding-Protocol.h>
-
 @class NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString;
 
-@interface UILayoutGuide (HULayoutAnchorAdditions) <HULayoutAnchorProviding>
+@interface UILayoutGuide (HULayoutAnchorAdditions)
 
 // Remaining properties
 @property(readonly, nonatomic) NSLayoutYAxisAnchor *bottomAnchor;

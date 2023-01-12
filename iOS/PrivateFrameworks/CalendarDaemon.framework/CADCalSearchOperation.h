@@ -6,23 +6,25 @@
 
 #import <Foundation/NSOperation.h>
 
-#import <CalendarDaemon/CalSearchDataSink-Protocol.h>
-
-@class CalSearch, ClientConnection, NSObject, NSString;
+@class CalSearch, ClientConnection, NSArray, NSMutableArray, NSObject, NSString;
 @protocol NSObject, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface CADCalSearchOperation : NSOperation <CalSearchDataSink>
+@interface CADCalSearchOperation : NSOperation
 {
     ClientConnection *_connection;
-    CalSearch *_search;
+    CalSearch *_currentSearch;
+    int _currentDatabaseID;
+    NSArray *_calendars;
+    NSString *_searchTerm;
     NSObject<OS_dispatch_semaphore> *_finishedSemaphore;
     unsigned int _replyID;
-    long long _lastIndex;
     id <NSObject> _boostToken;
+    struct os_unfair_lock_s _lock;
+    NSMutableArray *_objectIDsForPrivacyAccounting;
 }
 
-+ (id)operationWithConnection:(id)arg1 filter:(struct CalFilter *)arg2 replyID:(unsigned int)arg3;
++ (id)operationWithConnection:(id)arg1 searchTerm:(id)arg2 calendars:(id)arg3 replyID:(unsigned int)arg4;
 - (void).cxx_destruct;
 - (void)_completeOperation;
 - (void)calSearch:(id)arg1 showResultsStartingOnDate:(double)arg2;
@@ -30,11 +32,11 @@ __attribute__((visibility("hidden")))
 - (void)calSearchComplete:(id)arg1;
 - (void)calSearch:(id)arg1 foundOccurrences:(struct __CFArray *)arg2 cachedDays:(struct __CFArray *)arg3 cachedDaysIndexes:(struct __CFArray *)arg4;
 - (void)cancel;
-- (id)search;
 - (void)main;
 - (unsigned int)replyID;
 - (void)dealloc;
-- (id)initWithConnection:(id)arg1 filter:(struct CalFilter *)arg2 replyID:(unsigned int)arg3;
+- (void)configureSearch:(id)arg1;
+- (id)initWithConnection:(id)arg1 searchTerm:(id)arg2 calendars:(id)arg3 replyID:(unsigned int)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

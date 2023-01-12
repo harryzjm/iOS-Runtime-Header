@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Contacts/CNSuggestedContactPredicate-Protocol.h>
+#import "CNPredicate.h"
 
 @class CNPhoneNumber, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNPhoneNumberContactPredicate <CNSuggestedContactPredicate>
+@interface CNPhoneNumberContactPredicate : CNPredicate
 {
     _Bool _returnsMultipleResults;
     CNPhoneNumber *_phoneNumber;
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)cn_triageWithLog:(id)arg1 serialNumber:(unsigned long long)arg2;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)shortDebugDescription;

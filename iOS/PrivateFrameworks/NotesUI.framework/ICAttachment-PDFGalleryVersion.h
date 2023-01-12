@@ -37,11 +37,11 @@
 @property(readonly, nonatomic) _Bool metadataExists;
 - (void)persistLinkMetadata:(id)arg1;
 - (id)retrieveLinkMetadata;
-- (void)redactAuthorAttributions;
+- (void)redactAuthorAttributionsToCurrentUser;
 - (void)notifyDocCamFrameworkAttachmentWasDeleted;
 - (_Bool)fetchThumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceInfo:(id)arg3 cache:(id)arg4 cacheKey:(id)arg5 processingBlock:(CDUnknownBlockType)arg6 completionBlock:(CDUnknownBlockType)arg7 fallbackBlock:(CDUnknownBlockType)arg8 aboutToLoadHandler:(CDUnknownBlockType)arg9;
-- (_Bool)thumbnailImage:(id *)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4 requireAppearance:(_Bool)arg5 imageScaling:(unsigned long long *)arg6 showAsFileIcon:(_Bool *)arg7 isMovie:(_Bool *)arg8 movieDuration:(CDStruct_1b6d18a9 *)arg9;
-- (_Bool)thumbnailImage:(id *)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 imageScaling:(unsigned long long *)arg4 showAsFileIcon:(_Bool *)arg5 isMovie:(_Bool *)arg6 movieDuration:(CDStruct_1b6d18a9 *)arg7;
+- (_Bool)thumbnailImage:(id *)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4 requireAppearance:(_Bool)arg5 imageScaling:(unsigned long long *)arg6 showAsFileIcon:(_Bool *)arg7 isMovie:(_Bool *)arg8 movieDuration:(CDStruct_198678f7 *)arg9;
+- (_Bool)thumbnailImage:(id *)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 imageScaling:(unsigned long long *)arg4 showAsFileIcon:(_Bool *)arg5 isMovie:(_Bool *)arg6 movieDuration:(CDStruct_198678f7 *)arg7;
 - (id)updateAttachmentPreviewImageWithImage:(id)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 scaleWhenDrawing:(_Bool)arg4 metadata:(id)arg5 sendNotification:(_Bool)arg6;
 - (id)updateAttachmentPreviewImageWithImage:(id)arg1 scale:(double)arg2 scaleWhenDrawing:(_Bool)arg3 metadata:(id)arg4 sendNotification:(_Bool)arg5;
 - (id)deviceInfosWithoutPreviewImagesFromDeviceInfos:(id)arg1;
@@ -57,7 +57,6 @@
 @property(copy, nonatomic) ICDocCamImageQuad *croppingQuad;
 @property(readonly, nonatomic) UIImage *unprocessedDocumentImage;
 @property(readonly, nonatomic) UIImage *image;
-@property(readonly, nonatomic) _Bool supportsPresentingFromScrapPaperPIP;
 @property(readonly, nonatomic) _Bool isUnsupportedOnCurrentPlatform;
 - (id)inlineAttachmentWithTTAttachment:(id)arg1;
 - (id)inlineAttachmentFromObject:(id)arg1 createIfNecessary:(_Bool)arg2;

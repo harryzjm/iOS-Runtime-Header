@@ -6,11 +6,11 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class UIVisualEffect, UIVisualEffectView;
+@class NSString, UIVisualEffectView;
 
 @protocol HUBackgroundEffectViewGrouping <NSObject>
-@property(readonly, nonatomic) UIVisualEffect *sharedEffect;
-- (void)backgroundEffectRemoveCaptureDependent:(UIVisualEffectView *)arg1;
-- (void)backgroundEffectAddCaptureDependent:(UIVisualEffectView *)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (void)backgroundEffectRemoveCaptureDependent:(UIVisualEffectView *)arg1 forBackgroundEffectIdentifier:(NSString *)arg2;
+- (void)backgroundEffectAddCaptureDependent:(UIVisualEffectView *)arg1 forBackgroundEffectIdentifier:(NSString *)arg2;
 @end
 

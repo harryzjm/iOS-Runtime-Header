@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 @class NSMutableSet, UIDelayedAction, UITouch;
 
 __attribute__((visibility("hidden")))
-@interface UITapAndAHalfRecognizer
+@interface UITapAndAHalfRecognizer : UIGestureRecognizer
 {
     struct CGPoint _startPoint;
     double _allowableMovement;

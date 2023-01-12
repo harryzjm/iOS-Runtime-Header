@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ISSettings.h"
+
 __attribute__((visibility("hidden")))
-@interface ISPlayerSettings
+@interface ISPlayerSettings : ISSettings
 {
     _Bool _easingEnabled;
     _Bool _scaleDuringPlayback;

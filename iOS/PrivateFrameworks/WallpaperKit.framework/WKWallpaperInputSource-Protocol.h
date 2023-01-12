@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL, SBFWallpaperOptions, UIImage;
+@class NSString, NSURL, PBUIWallpaperOptions, UIColor, UIImage;
 
 @protocol WKWallpaperInputSource
 @property(readonly, nonatomic, getter=isHomeScreenIsSystemContent) _Bool homeScreenIsSystemContent;
@@ -14,7 +14,8 @@
 @property(readonly, nonatomic) _Bool homeScreenMirrorsLockScreen;
 @property(readonly, nonatomic) unsigned long long homeScreenWallpaperType;
 @property(readonly, nonatomic) unsigned long long lockScreenWallpaperType;
-- (SBFWallpaperOptions *)wallpaperOptionsForLocation:(NSString *)arg1 wallpaperAppearance:(NSString *)arg2;
+- (PBUIWallpaperOptions *)wallpaperOptionsForLocation:(NSString *)arg1 wallpaperAppearance:(NSString *)arg2;
+- (UIColor *)wallpaperColorForLocation:(NSString *)arg1;
 - (NSURL *)wallpaperVideoURLForLocation:(NSString *)arg1 wallpaperAppearance:(NSString *)arg2;
 - (NSURL *)wallpaperOriginalVideoURLForLocation:(NSString *)arg1 wallpaperAppearance:(NSString *)arg2;
 - (UIImage *)wallpaperImageForLocation:(NSString *)arg1 wallpaperAppearance:(NSString *)arg2;

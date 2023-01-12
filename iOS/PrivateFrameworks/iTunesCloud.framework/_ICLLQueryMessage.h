@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class _ICLLParticipantQuery, _ICLLPlaybackControlSettingsQuery, _ICLLPlaybackSyncStateQuery, _ICLLQueueQuery;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLQueryMessage : PBCodable <NSCopying>
+@interface _ICLLQueryMessage : PBCodable
 {
     _ICLLParticipantQuery *_participant;
     _ICLLPlaybackControlSettingsQuery *_playbackControlSettings;

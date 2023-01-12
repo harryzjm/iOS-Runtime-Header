@@ -4,17 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOTileLoader;
-
 __attribute__((visibility("hidden")))
 @interface GEOMapFeatureBuildingFinder
 {
-    GEOTileLoader *_tileLoader;
 }
 
-- (void).cxx_destruct;
 - (id)findBuildingsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)initWithTileLoader:(id)arg1;
+- (id)findBuildingsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 tileSetStyle:(int)arg3 handler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
+#import "SKUICollectionViewCell.h"
 
 @class NSString, SKUIContentUnavailableView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIContentUnavailableCollectionViewCell <SKUIViewElementView>
+@interface SKUIContentUnavailableCollectionViewCell : SKUICollectionViewCell
 {
     struct UIEdgeInsets _contentInset;
     SKUIContentUnavailableView *_contentUnavailableView;

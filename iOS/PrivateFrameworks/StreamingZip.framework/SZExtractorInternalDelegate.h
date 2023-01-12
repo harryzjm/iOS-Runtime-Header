@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StreamingZip/StreamingUnzipDelegateProtocol-Protocol.h>
-
 @protocol SZExtractorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SZExtractorInternalDelegate : NSObject <StreamingUnzipDelegateProtocol>
+@interface SZExtractorInternalDelegate : NSObject
 {
     id <SZExtractorDelegate> delegate;
 }

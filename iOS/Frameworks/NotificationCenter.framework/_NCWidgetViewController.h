@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <NotificationCenter/NCSizeObservingViewDelegate-Protocol.h>
-#import <NotificationCenter/_NCWidgetViewController_Service_IPC-Protocol.h>
-
 @class NSMapTable, NSObject, NSString, UIScrollViewDelayedTouchesBeganGestureRecognizer, UIView;
 @protocol NCWidgetProvidingPrivate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _NCWidgetViewController : UIViewController <_NCWidgetViewController_Service_IPC, NCSizeObservingViewDelegate>
+@interface _NCWidgetViewController : UIViewController
 {
     NSObject<OS_dispatch_queue> *_remoteViewControllerProxyQueue;
     NSMapTable *_wrappedAppearStatesToOpenTransactionIDs;

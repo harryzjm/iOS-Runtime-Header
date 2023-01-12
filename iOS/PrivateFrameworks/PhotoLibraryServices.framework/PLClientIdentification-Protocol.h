@@ -11,6 +11,6 @@
 @protocol PLClientIdentification <NSObject>
 @property(readonly, nonatomic) NSString *trustedCallerBundleID;
 @property(readonly, nonatomic) int clientProcessIdentifier;
-@property(readonly, nonatomic) CDStruct_4c969caf clientAuditToken;
+@property(readonly, nonatomic) CDStruct_6ad76789 clientAuditToken;
 @end
 

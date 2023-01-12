@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SMUTVStackedImageView.h"
+
 @class MISSING_TYPE, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9SeymourUI13TVArtworkView
+@interface _TtC9SeymourUI13TVArtworkView : SMUTVStackedImageView
 {
     MISSING_TYPE *completedIconView;
+    MISSING_TYPE *flipsContentForRightToLeftDirection;
     MISSING_TYPE *iconConstraints;
     MISSING_TYPE *recencyIconView;
     MISSING_TYPE *artwork;

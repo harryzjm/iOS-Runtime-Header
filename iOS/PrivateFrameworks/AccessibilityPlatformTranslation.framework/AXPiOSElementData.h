@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AccessibilityPlatformTranslation/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AXPiOSElementData : NSObject <NSCopying>
+@interface AXPiOSElementData : NSObject
 {
     int _pid;
     CDStruct_26bd94fa _uid;

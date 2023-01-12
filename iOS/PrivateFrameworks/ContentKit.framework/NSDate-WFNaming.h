@@ -6,13 +6,9 @@
 
 #import <Foundation/NSDate.h>
 
-#import <ContentKit/WFNaming-Protocol.h>
-#import <ContentKit/WFPropertyListObject-Protocol.h>
-#import <ContentKit/WFSerializableContent-Protocol.h>
-
 @class NSString;
 
-@interface NSDate (WFNaming) <WFNaming, WFPropertyListObject, WFSerializableContent>
+@interface NSDate (WFNaming)
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *wfName;
 - (id)wfSerializedRepresentation;

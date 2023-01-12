@@ -6,7 +6,6 @@
 
 #import <ARKit/ARWorldTrackingConfiguration.h>
 
-__attribute__((visibility("hidden")))
 @interface _TtC20FMPrecisionFindingUI27FMPFARTrackingConfiguration : ARWorldTrackingConfiguration
 {
 }

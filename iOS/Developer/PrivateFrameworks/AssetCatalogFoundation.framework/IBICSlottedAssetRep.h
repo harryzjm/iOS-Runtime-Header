@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetCatalogFoundation/IBICVariantObject-Protocol.h>
-
 @class IBICSlot, NSData, NSString;
 
-@interface IBICSlottedAssetRep <IBICVariantObject>
+@interface IBICSlottedAssetRep
 {
     NSData *_assetData;
     IBICSlot *_slot;
@@ -81,6 +79,7 @@
 - (id)init;
 - (void)populateLocaleOfNamedAssetImportInfo:(id)arg1 withOptions:(id)arg2;
 - (void)populateDirectionOfNamedAssetImportInfo:(id)arg1 withOptions:(id)arg2;
+- (void)populateThinningPreferenceOfNamedAssetImportInfo:(id)arg1 withOptions:(id)arg2;
 - (_Bool)populateAppearanceOfNamedAssetImportInfo:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (_Bool)populateIdiomOfNamedAssetImportInfo:(id)arg1 options:(id)arg2 isIcon:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)validateSlottedAssetRepForWriting:(id)arg1 withOptions:(id)arg2 forOptionsKey:(id)arg3 andFailureIssue:(id *)arg4;

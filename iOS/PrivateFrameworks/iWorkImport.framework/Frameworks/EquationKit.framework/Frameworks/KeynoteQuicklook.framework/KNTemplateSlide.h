@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KeynoteQuicklook/TSKTransformableObject-Protocol.h>
-
 @class KNClassicStylesheetRecord, NSArray, NSString;
 
-@interface KNTemplateSlide <TSKTransformableObject>
+@interface KNTemplateSlide
 {
     NSString *_name;
     struct CGRect _objectRect;

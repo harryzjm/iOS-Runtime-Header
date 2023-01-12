@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKViewWithHairline.h>
+#import "MUPlaceSectionRowView.h"
 
-#import <MapsUI/MUStackable-Protocol.h>
-
-@class MUBusinessHoursConfiguration, MUHoursSummaryView, MUStackView, NSArray, NSString;
+@class MUBusinessHoursConfiguration, MUHoursSummaryView, MUStackLayout, MUStackView, NSArray, NSString;
 @protocol MUExpandableHoursViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUExpandableHoursView : MKViewWithHairline <MUStackable>
+@interface MUExpandableHoursView : MUPlaceSectionRowView
 {
     MUStackView *_contentStackView;
     MUHoursSummaryView *_hoursSummaryView;
     NSArray *_dayRowViews;
+    MUStackLayout *_summaryAndHoursStackLayout;
     MUBusinessHoursConfiguration *_config;
     _Bool _stacked;
     _Bool _expanded;
@@ -27,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
 @property(nonatomic) __weak id <MUExpandableHoursViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isStacked) _Bool stacked; // @synthesize stacked=_stacked;
+@property(readonly, nonatomic) MUBusinessHoursConfiguration *hoursConfiguration;
 - (void)_invokeChildrenOfStackingChange;
 - (_Bool)shouldStackForProposedWidth:(double)arg1;
 - (void)_updateHoursVisibilityAnimated:(_Bool)arg1;

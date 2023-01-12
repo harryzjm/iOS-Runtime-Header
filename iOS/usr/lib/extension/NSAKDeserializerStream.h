@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSDeserializerStream-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface NSAKDeserializerStream : NSObject <NSDeserializerStream>
+@interface NSAKDeserializerStream : NSObject
 {
     const void *memory;
     const char *current;

@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebKit/PKPaymentAuthorizationViewControllerDelegate-Protocol.h>
-#import <WebKit/PKPaymentAuthorizationViewControllerPrivateDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKPaymentAuthorizationViewControllerDelegate <PKPaymentAuthorizationViewControllerDelegate, PKPaymentAuthorizationViewControllerPrivateDelegate>
+@interface WKPaymentAuthorizationViewControllerDelegate
 {
 }
 

@@ -6,12 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/WFContentAttributionSetDebuggerActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFContentAttributionSetDebuggerActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFContentAttributionSetDebuggerActionUserInterface>
+@interface WFContentAttributionSetDebuggerActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

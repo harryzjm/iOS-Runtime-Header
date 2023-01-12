@@ -7,17 +7,23 @@
 #import <Preferences/PSListController.h>
 
 @class STStoragePlugin, UIProgressHUD;
+@protocol IMDaemonMultiplexedConnectionManaging;
 
 __attribute__((visibility("hidden")))
 @interface CKCloudMessagesDetailController : PSListController
 {
     STStoragePlugin *_plugin;
     UIProgressHUD *_cloudKitProgressView;
+    id <IMDaemonMultiplexedConnectionManaging> _daemonConnection;
 }
 
 + (id)specifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <IMDaemonMultiplexedConnectionManaging> daemonConnection; // @synthesize daemonConnection=_daemonConnection;
 @property(retain, nonatomic) UIProgressHUD *cloudKitProgressView; // @synthesize cloudKitProgressView=_cloudKitProgressView;
+@property(retain, nonatomic) STStoragePlugin *plugin; // @synthesize plugin=_plugin;
+- (void)disconnectFromDaemon;
+- (void)connectToDaemon;
 - (void)setEnabledDidReturned:(id)arg1;
 - (void)undoDelete:(id)arg1;
 - (void)_displayiCloudErrorMessage;
@@ -27,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)dataSize:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (id)cloudDocsSpecifiers;
+- (void)dealloc;
 - (id)init;
 - (void)hideSpinner;
 - (void)showSpinnerMessage:(id)arg1;

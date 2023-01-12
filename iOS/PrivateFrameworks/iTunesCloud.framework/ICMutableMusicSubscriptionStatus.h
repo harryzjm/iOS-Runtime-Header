@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ICMusicSubscriptionStatus.h"
+
 @class NSArray, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICMutableMusicSubscriptionStatus
+@interface ICMutableMusicSubscriptionStatus : ICMusicSubscriptionStatus
 {
     long long _statusCode;
 }
 
 @property(nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
+@property(nonatomic, getter=isInGlidePreview) _Bool inGlidePreview; // @dynamic inGlidePreview;
 @property(copy, nonatomic) NSArray *eligibleOffers; // @dynamic eligibleOffers;
 @property(nonatomic, getter=isBundleOnwer) _Bool bundleOwner; // @dynamic bundleOwner;
 @property(nonatomic, getter=isPartOfBundle) _Bool partOfBundle; // @dynamic partOfBundle;

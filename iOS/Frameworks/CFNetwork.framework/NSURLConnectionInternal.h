@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSURLAuthenticationChallengeSender-Protocol.h>
-#import <CFNetwork/NSURLConnectionRequired-Protocol.h>
-
 @class NSDictionary, NSOperationQueue, NSString, NSURL, NSURLConnection, NSURLRequest;
 
-@interface NSURLConnectionInternal : NSObject <NSURLConnectionRequired, NSURLAuthenticationChallengeSender>
+@interface NSURLConnectionInternal : NSObject
 {
     NSURLConnection *_connection;
     NSOperationQueue *_delegateQueue;

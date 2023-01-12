@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSMutableDictionary.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSCFDictionary
+@interface __NSCFDictionary : NSMutableDictionary
 {
     unsigned char _cfinfo[4];
     unsigned int _rc;
@@ -15,8 +17,8 @@ __attribute__((visibility("hidden")))
     id *_keys;
 }
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)retainCount;
 - (_Bool)_isDeallocating;
 - (_Bool)_tryRetain;
@@ -26,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)removeAllObjects;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (Class)classForCoder;

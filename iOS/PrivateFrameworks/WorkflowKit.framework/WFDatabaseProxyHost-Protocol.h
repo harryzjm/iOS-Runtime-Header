@@ -6,21 +6,21 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class INAppDescriptor, NSData, NSNumber, NSString, WFContentAttributionSet, WFContentDestination, WFWorkflowCollection, WFWorkflowReference;
+@class INAppDescriptor, NSData, NSNumber, NSSet, NSString, WFContentAttributionSet, WFContentLocation, WFWorkflowCollection, WFWorkflowQuery, WFWorkflowReference;
 
 @protocol WFDatabaseProxyHost <NSObject>
 - (void)updateAppDescriptor:(INAppDescriptor *)arg1 atKey:(NSString *)arg2 actionUUID:(NSString *)arg3 actionIndex:(NSNumber *)arg4 actionIdentifier:(NSString *)arg5 workflowID:(NSString *)arg6;
+- (void)saveSmartPromptStateData:(NSData *)arg1 actionUUID:(NSString *)arg2 reference:(WFWorkflowReference *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (void)currentDeletionAuthorizationStatusWithContentItemClassName:(NSString *)arg1 actionUUID:(NSString *)arg2 actionIdentifier:(NSString *)arg3 actionIndex:(unsigned long long)arg4 count:(unsigned long long)arg5 reference:(WFWorkflowReference *)arg6 completion:(void (^)(WFDeletionAuthorizationState *, NSError *))arg7;
-- (void)approvalResultForContentAttributionSet:(WFContentAttributionSet *)arg1 contentDestination:(WFContentDestination *)arg2 actionUUID:(NSString *)arg3 actionIdentifier:(NSString *)arg4 actionIndex:(unsigned long long)arg5 reference:(WFWorkflowReference *)arg6 completion:(void (^)(WFSmartPromptApprovalResult *, NSError *))arg7;
+- (void)approvalResultForContentAttributionSet:(WFContentAttributionSet *)arg1 contentDestination:(WFContentLocation *)arg2 actionUUID:(NSString *)arg3 actionIdentifier:(NSString *)arg4 actionIndex:(unsigned long long)arg5 reference:(WFWorkflowReference *)arg6 allowedOnceStates:(NSSet *)arg7 completion:(void (^)(WFSmartPromptApprovalResult *, NSError *))arg8;
 - (void)setTrustedToRunScripts:(_Bool)arg1 forReference:(WFWorkflowReference *)arg2 onDomain:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)getIsReference:(WFWorkflowReference *)arg1 allowedToRunOnDomain:(NSString *)arg2 completion:(void (^)(NSNumber *, NSError *))arg3;
 - (void)createWorkflowWithWorkflowData:(NSData *)arg1 name:(NSString *)arg2 nameCollisionBehavior:(unsigned long long)arg3 completion:(void (^)(WFWorkflowReference *, NSError *))arg4;
-- (void)deleteAllAccessResourceStateDataForReference:(WFWorkflowReference *)arg1;
-- (void)getCurrentPerWorkflowStateDataForAccessResourceWithIdentifier:(NSString *)arg1 forReference:(WFWorkflowReference *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (void)getConfiguredTriggersForWorkflowID:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getFolderForWorkflowReference:(WFWorkflowReference *)arg1 completion:(void (^)(WFWorkflowCollection *, NSError *))arg2;
 - (void)getCollectionWithIdentifier:(NSString *)arg1 completion:(void (^)(WFWorkflowCollection *, NSError *))arg2;
 - (void)getSortedVisibleFoldersWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)getSortedWorkflowsWithQuery:(WFWorkflowQuery *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getSortedVisibleWorkflowsInCollection:(WFWorkflowCollection *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getSortedVisibleWorkflowsByNameWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)getWorkflowRecordDataForWorkflowReference:(WFWorkflowReference *)arg1 completion:(void (^)(NSData *, NSError *))arg2;

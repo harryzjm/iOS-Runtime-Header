@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNUIContactSaveExecutor-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNUINullSaveExecutor : NSObject <CNUIContactSaveExecutor>
+@interface CNUINullSaveExecutor : NSObject
 {
 }
 

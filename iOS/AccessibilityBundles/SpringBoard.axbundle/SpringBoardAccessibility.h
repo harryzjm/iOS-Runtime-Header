@@ -29,11 +29,15 @@
 - (void)_updateRingerState:(int)arg1 withVisuals:(_Bool)arg2 updatePreferenceRegister:(_Bool)arg3;
 - (_Bool)accessibilityStartStopToggle;
 - (int)_accessibilityCurrentCallState;
-- (void)_accessibilityFocusOnAppWithPid:(int)arg1 bundleIdentifier:(id)arg2;
-- (_Bool)_accessibilitySwitchNativeFocusedApplicationWithPID:(int)arg1;
-- (void)_axPerformDidFocusOnApplicationActionWithPid:(int)arg1;
+- (void)_accessibilityFocusOnAppWithPid:(int)arg1 bundleIdentifier:(id)arg2 identifier:(id)arg3;
+- (_Bool)_accessibilitySwitchNativeFocusedApplicationWithPID:(int)arg1 identifier:(id)arg2;
 - (id)_axKeyboardFocusController;
+- (id)_accessibilityFocusableScenes;
 - (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
+- (void)_setAccessibilityOrientationDeferralAssertion:(id)arg1;
+- (id)_accessibilityOrientationDeferralAssertion;
+- (int)_accessibilityRemoteKeyboardApp;
+- (id)_accessibilityFocusActiveActivityName;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (id)_accessibilityPictureInPictureWindow;
 - (id)_accessibilityPIPCoordinator;
@@ -67,7 +71,7 @@
 - (void)accessibilityDisable;
 - (void)accessibilityInitialize;
 - (id)_accessibilitySoftwareMimicKeyboard;
-- (void)noteInterfaceOrientationChanged:(long long)arg1 duration:(double)arg2 updateMirroredDisplays:(_Bool)arg3 force:(_Bool)arg4 logMessage:(id)arg5;
+- (void)_legacy_noteInterfaceOrientationChanged:(long long)arg1 duration:(double)arg2 updateMirroredDisplays:(_Bool)arg3 force:(_Bool)arg4 logMessage:(id)arg5;
 - (void)_accessibilityHandleOrientationChange;
 - (_Bool)_accessibilitySystemAppServerIsReady;
 - (_Bool)_accessibilityIsSystemAppServer;
@@ -75,7 +79,7 @@
 - (_Bool)_accessibilityShouldHitTestStatusBarWindow;
 - (id)_lastStatusBarElement;
 - (id)_firstStatusBarElement;
-- (id)_accessibilityStatusBarElements;
+- (id)_accessibilityStatusBarElements:(_Bool)arg1 sorted:(_Bool)arg2;
 
 @end
 

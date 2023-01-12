@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long networkRequiredInputImageWidth; // @synthesize networkRequiredInputImageWidth=_networkRequiredInputImageWidth;
 @property(readonly, nonatomic) VNEspressoResources *espressoResources; // @synthesize espressoResources=_espressoResources;
 - (_Bool)executePlanAndReturnError:(id *)arg1;
+- (_Bool)bindPixelBuffer:(struct __CVBuffer *)arg1 toNetworkBlobName:(id)arg2 error:(id *)arg3;
 - (_Bool)bindLockedPixelBuffer:(struct __CVBuffer *)arg1 toNetworkInputBlobName:(id)arg2 error:(id *)arg3;
 - (_Bool)_bindBuffer:(CDStruct_0a65202a *)arg1 toNetworkBlobName:(id)arg2 bindMode:(int)arg3 error:(id *)arg4;
 - (_Bool)bindBuffer:(CDStruct_0a65202a *)arg1 toNetworkOutputBlobName:(id)arg2 error:(id *)arg3;

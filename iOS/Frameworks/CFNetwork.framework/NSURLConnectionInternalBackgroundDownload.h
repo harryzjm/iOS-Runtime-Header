@@ -4,13 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/NSURLConnectionRequired-Protocol.h>
-#import <CFNetwork/SSDownloadHandlerDelegate-Protocol.h>
-#import <CFNetwork/SSDownloadManagerObserver-Protocol.h>
-
 @class NSAsyncSSDownloadManager, NSCountedSet, NSMutableArray, NSString, NSTimer, SSDownloadHandler;
 
-@interface NSURLConnectionInternalBackgroundDownload <NSURLConnectionRequired, SSDownloadManagerObserver, SSDownloadHandlerDelegate>
+@interface NSURLConnectionInternalBackgroundDownload
 {
     struct __CFRunLoopSource *_source;
     NSMutableArray *_pendingOps;

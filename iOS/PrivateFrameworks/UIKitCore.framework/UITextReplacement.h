@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *replacementText; // @synthesize replacementText=_replacementText;
 @property(readonly, nonatomic) NSString *originalText; // @synthesize originalText=_originalText;
 @property(readonly, nonatomic) UITextRange *range; // @synthesize range=_range;
+- (_Bool)_isNoReplacementsFoundItem;
 - (void)didReplaceTextWithTarget:(id)arg1;
 
 @end

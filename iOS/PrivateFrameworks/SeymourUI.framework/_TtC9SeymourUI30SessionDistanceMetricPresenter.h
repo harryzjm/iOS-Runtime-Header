@@ -15,6 +15,7 @@
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *lastDistanceUpdate;
     MISSING_TYPE *metricBuilder;
+    MISSING_TYPE *externalOverlayDisplay;
     MISSING_TYPE *display;
 }
 

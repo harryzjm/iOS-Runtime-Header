@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *cooldownButton;
     MISSING_TYPE *onDoneButtonTap;
     MISSING_TYPE *onCooldownButtonTap;
+    MISSING_TYPE *focusedView;
 }
 
 - (void).cxx_destruct;
 - (void)cooldownButtonTapped;
 - (void)doneButtonTapped;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(nonatomic, readonly) NSArray *preferredFocusEnvironments;

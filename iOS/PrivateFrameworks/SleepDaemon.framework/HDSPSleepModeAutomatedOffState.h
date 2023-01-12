@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (id)stateName;
 - (unsigned long long)defaultChangeReason;
-- (void)updateState;
+- (void)sleepModeTurnedOnForUnknownReason;
 - (void)automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPStoreSocialRequestOperationDataSource-Protocol.h>
-
 @class MPModelSocialPerson, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPStoreSocialFollowOperationDataSource : NSObject <MPStoreSocialRequestOperationDataSource>
+@interface MPStoreSocialFollowOperationDataSource : NSObject
 {
     MPModelSocialPerson *_person;
 }

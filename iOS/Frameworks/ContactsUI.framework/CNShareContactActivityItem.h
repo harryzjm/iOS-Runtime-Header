@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/UIActivityItemLinkPresentationSource-Protocol.h>
-#import <ContactsUI/UIActivityItemSource-Protocol.h>
-#import <ContactsUI/UIActivityItemSourceAttachment-Protocol.h>
-
-@class CNContact, LPFileMetadata, LPLinkMetadata, NSString;
+@class CNContactFormatter, LPFileMetadata, LPLinkMetadata, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNShareContactActivityItem : NSObject <UIActivityItemSource, UIActivityItemSourceAttachment, UIActivityItemLinkPresentationSource>
+@interface CNShareContactActivityItem : NSObject
 {
-    CNContact *_contact;
+    NSArray *_contacts;
+    NSString *_groupName;
     LPLinkMetadata *_linkMetadata;
     LPFileMetadata *_fileMetadata;
+    CNContactFormatter *_contactFormatter;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
 @property(retain, nonatomic) LPFileMetadata *fileMetadata; // @synthesize fileMetadata=_fileMetadata;
 @property(retain, nonatomic) LPLinkMetadata *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
-@property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+@property(retain, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
+@property(retain, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 - (id)activityViewController:(id)arg1 attachmentNameForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
@@ -32,6 +32,8 @@ __attribute__((visibility("hidden")))
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
 - (id)thumbnailImage;
+- (id)displayString;
+- (id)initWithContacts:(id)arg1 inGroupNamed:(id)arg2;
 - (id)initWithContact:(id)arg1;
 
 // Remaining properties

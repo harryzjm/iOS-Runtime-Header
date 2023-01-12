@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class GQDColor, GQDFilteredImage, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDTexturedImageFill : NSObject <GQDNameMappable>
+@interface GQDTexturedImageFill : NSObject
 {
     int mTechnique;
     GQDColor *mColor;

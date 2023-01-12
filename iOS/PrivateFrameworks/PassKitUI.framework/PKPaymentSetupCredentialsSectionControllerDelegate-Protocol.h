@@ -12,13 +12,15 @@
 - (void)deselectCells;
 - (void)reloadItem:(id)arg1 animated:(_Bool)arg2;
 - (UICollectionViewCell *)cellForItem:(id)arg1;
+- (void)reloadAnimated:(_Bool)arg1;
+- (void)setShowNoResultsView:(_Bool)arg1;
 - (void)showCredentialDeletionError;
+- (void)showUnableToDeleteSafariCredentialError;
 - (void)showUnableToDeleteCredentialError;
 - (void)showDeleteConfirmationWithCompletion:(void (^)(_Bool))arg1;
 - (void)showMaxSelectionAlertForCredential:(PKPaymentCredential *)arg1;
 - (void)credentialSelectionDidChange:(_Bool)arg1;
 - (void)presentUnavailableDetailsForCredential:(PKPaymentCredential *)arg1;
 - (void)presentRefundFlowForCredential:(PKPaymentCredential *)arg1;
-- (void)reloadAnimated:(_Bool)arg1;
 @end
 

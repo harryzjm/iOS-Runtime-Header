@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapServiceCuratedCollectionTicket-Protocol.h>
-
 @class GEOMapServiceTraits, NSString;
 @protocol GEOMapServiceCuratedCollectionTicket;
 
 __attribute__((visibility("hidden")))
-@interface _MKCuratedCollectionTicket : NSObject <MKMapServiceCuratedCollectionTicket>
+@interface _MKCuratedCollectionTicket : NSObject
 {
     id <GEOMapServiceCuratedCollectionTicket> _ticket;
 }

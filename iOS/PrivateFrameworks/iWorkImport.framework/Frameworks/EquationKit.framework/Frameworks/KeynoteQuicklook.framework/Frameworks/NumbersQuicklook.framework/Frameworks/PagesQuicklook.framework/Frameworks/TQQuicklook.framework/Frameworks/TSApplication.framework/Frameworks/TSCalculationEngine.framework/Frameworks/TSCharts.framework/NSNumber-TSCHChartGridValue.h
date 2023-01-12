@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <TSCharts/TSCHChartGridValue-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (TSCHChartGridValue) <TSCHChartGridValue>
+@interface NSNumber (TSCHChartGridValue)
 + (id)tsch_optionalNumberWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (void)tsch_saveOptionalNumber:(id)arg1 toArchive:(void *)arg2 archiver:(id)arg3;
 + (id)tsch_instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;

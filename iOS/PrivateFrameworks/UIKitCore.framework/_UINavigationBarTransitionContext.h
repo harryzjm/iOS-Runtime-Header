@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
         unsigned int sharesContentViewLayouts:1;
         unsigned int beginWithTransparencyAllowed:1;
         unsigned int endWithTransparencyAllowed:1;
+        unsigned int usesBarBackground:1;
     } _navigationBarTransitionContextFlags;
     NSMutableSet *_clippingViews;
     struct CGPoint _startingContentOffsetForObservedScrollView;
@@ -48,7 +49,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UINavigationBarLayout *fromLayout; // @synthesize fromLayout=_fromLayout;
 @property(nonatomic) struct CGPoint startingContentOffsetForObservedScrollView; // @synthesize startingContentOffsetForObservedScrollView=_startingContentOffsetForObservedScrollView;
 @property(retain, nonatomic) _UINavigationBarLargeTitleView *largeTitleView; // @synthesize largeTitleView=_largeTitleView;
-@property(retain, nonatomic) _UIBarBackground *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(readonly, nonatomic) _UIBarBackground *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) _UINavigationBarContentView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) _UINavigationBarModernPromptView *promptView; // @synthesize promptView=_promptView;
 @property(nonatomic) double backgroundAlpha; // @synthesize backgroundAlpha=_backgroundAlpha;
@@ -78,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)prepare;
 - (void)recordUpdates:(CDUnknownBlockType)arg1;
 - (id)description;
+- (void)setBackgroundView:(id)arg1 isBarBackground:(_Bool)arg2;
 @property(nonatomic) _Bool endWithTransparencyAllowed;
 @property(nonatomic) _Bool beginWithTransparencyAllowed;
 @property(nonatomic) _Bool sharesContentViewLayouts;

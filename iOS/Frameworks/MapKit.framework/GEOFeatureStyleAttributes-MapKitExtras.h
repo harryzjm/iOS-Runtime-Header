@@ -7,6 +7,7 @@
 #import <GeoServices/GEOFeatureStyleAttributes.h>
 
 @interface GEOFeatureStyleAttributes (MapKitExtras)
++ (id)styleAttributesForMapFeatureAttributes:(id)arg1 elevatedGround:(_Bool)arg2;
 + (id)styleAttributesForTransitType:(long long)arg1;
 + (id)annotationViewProvidedCustomFeatureStyleAttributes;
 + (id)genericMarkerStyleAttributes;

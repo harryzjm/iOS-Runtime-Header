@@ -10,6 +10,7 @@
 @protocol ASCLoginChoiceProtocol;
 
 @protocol ASCAuthorizationPresenterDelegate <NSObject>
+- (void)authorizationPresenter:(ASCAuthorizationPresenter *)arg1 startCABLEAuthenticationWithCompletionHandler:(void (^)(ASCAuthorizationPresentationContext *, NSError *))arg2;
 - (void)authorizationPresenter:(ASCAuthorizationPresenter *)arg1 validateUserEnteredPIN:(NSString *)arg2 completionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg3;
 - (void)authorizationPresenter:(ASCAuthorizationPresenter *)arg1 credentialRequestedForLoginChoice:(id <ASCLoginChoiceProtocol>)arg2 authenticatedContext:(LAContext *)arg3 completionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg4;
 @end

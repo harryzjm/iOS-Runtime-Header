@@ -13,8 +13,7 @@
 - (unsigned long long)numberOfAttributionsForPhotoSliderView:(MUPlacePhotoSliderView *)arg1;
 - (NSArray *)attributionViewModelsForPhotoSliderView:(MUPlacePhotoSliderView *)arg1;
 - (UIView *)photoSliderViewHeaderViewForPhotoSlider:(MUPlacePhotoSliderView *)arg1;
-- (MUPhotoTileOverlay *)photoSliderView:(MUPlacePhotoSliderView *)arg1 photoOverlayAtIndex:(unsigned long long)arg2;
-- (id <MUPhotoTileViewModel>)photoSliderView:(MUPlacePhotoSliderView *)arg1 photoViewModelAtIndex:(unsigned long long)arg2;
-- (unsigned long long)numberOfTilesForPhotoSliderView:(MUPlacePhotoSliderView *)arg1;
+- (MUPhotoTileOverlay *)photoSliderView:(MUPlacePhotoSliderView *)arg1 photoOverlayForModel:(id <MUPhotoTileViewModel>)arg2;
+- (NSArray *)photoSliderViewRequestsViewModels:(MUPlacePhotoSliderView *)arg1;
 @end
 

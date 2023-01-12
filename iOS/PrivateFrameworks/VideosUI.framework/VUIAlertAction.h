@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VUIAlertAction : NSObject
@@ -14,13 +14,16 @@ __attribute__((visibility("hidden")))
     _Bool _enabled;
     NSString *_title;
     long long _style;
+    NSDictionary *_metrics;
     CDUnknownBlockType _handler;
 }
 
++ (id)vui_actionWithTitle:(id)arg1 style:(long long)arg2 metrics:(id)arg3 handler:(CDUnknownBlockType)arg4;
 + (id)vui_actionWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+@property(retain, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 

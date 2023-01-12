@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTCancellable-Protocol.h>
-
 @class DVTStackBacktrace, NSRunLoop, NSString;
 
-@interface DVTRunLoopToken : NSObject <DVTCancellable>
+@interface DVTRunLoopToken : NSObject
 {
     id _target;
     DVTStackBacktrace *_creationBacktrace;

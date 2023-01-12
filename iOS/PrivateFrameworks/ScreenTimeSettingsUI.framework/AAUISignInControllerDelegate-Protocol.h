@@ -6,12 +6,14 @@
 
 #import <ScreenTimeSettingsUI/UINavigationControllerDelegate-Protocol.h>
 
-@class AAUISignInController, NSError;
+@class AAUISignInController, AIDAServiceContext, NSDictionary, NSError;
 
 @protocol AAUISignInControllerDelegate <UINavigationControllerDelegate>
 
 @optional
+- (AIDAServiceContext *)serviceContext;
 - (void)signInControllerDidCancel:(AAUISignInController *)arg1;
+- (void)signInController:(AAUISignInController *)arg1 didCompleteWithOperationsResults:(NSDictionary *)arg2;
 - (void)signInController:(AAUISignInController *)arg1 didCompleteWithSuccess:(_Bool)arg2 error:(NSError *)arg3;
 @end
 

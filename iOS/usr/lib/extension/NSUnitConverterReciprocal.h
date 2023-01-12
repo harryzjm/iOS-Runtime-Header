@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSSecureCoding-Protocol.h>
+#import "NSUnitConverter.h"
 
 __attribute__((visibility("hidden")))
-@interface NSUnitConverterReciprocal <NSSecureCoding>
+@interface NSUnitConverterReciprocal : NSUnitConverter
 {
     double _reciprocalValue;
 }

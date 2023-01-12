@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPXEnumeratorObserver-Protocol.h>
-
 @class NSString;
 @protocol FPXEnumeratorObserver;
 
 __attribute__((visibility("hidden")))
-@interface WrappedFPXEnumeratorObserverProxy : NSObject <FPXEnumeratorObserver>
+@interface WrappedFPXEnumeratorObserverProxy : NSObject
 {
     id <FPXEnumeratorObserver> _target;
 }

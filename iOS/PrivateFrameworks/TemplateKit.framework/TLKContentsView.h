@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TLKStackView.h"
+
 @class NSMutableArray, TLKLabel;
 
 __attribute__((visibility("hidden")))
-@interface TLKContentsView
+@interface TLKContentsView : TLKStackView
 {
     TLKLabel *_titleLabel;
     NSMutableArray *_detailsLabels;

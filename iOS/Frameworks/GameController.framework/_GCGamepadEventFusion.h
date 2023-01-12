@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCGamepadEventSource-Protocol.h>
-
 @class NSArray, NSString, _GCGamepadEventFusionConfig;
 
 __attribute__((visibility("hidden")))
-@interface _GCGamepadEventFusion : NSObject <_GCGamepadEventSource>
+@interface _GCGamepadEventFusion : NSObject
 {
     _GCGamepadEventFusionConfig *_config;
-    CDStruct_5be5f302 _fusedData;
+    struct {
+        unsigned long long mask;
+        float buttons[45];
+    } _fusedData;
+    id *_lastEvent;
     NSArray *_observations;
     NSArray *_observers;
 }

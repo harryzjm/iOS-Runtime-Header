@@ -6,17 +6,16 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPDAboutFilter, GEOPDAddressFilter, GEOPDAddressObjectFilter, GEOPDAmenitiesFilter, GEOPDAnnotatedItemListFilter, GEOPDAssociatedAppFilter, GEOPDBoundsFilter, GEOPDBrowseCategoriesFilter, GEOPDBusinessClaimFilter, GEOPDBusinessHoursFilter, GEOPDCaptionedPhotoFilter, GEOPDCategorizedPhotosFilter, GEOPDCollectionIdsFilter, GEOPDContainedPlaceFilter, GEOPDContainmentPlaceFilter, GEOPDETAFilter, GEOPDEnhancedPlacementFilter, GEOPDEntityFilter, GEOPDExploreGuidesFilter, GEOPDExternalActionFilter, GEOPDFactoidFilter, GEOPDFlyoverFilter, GEOPDGroundViewLabelFilter, GEOPDGuideGroupFilter, GEOPDHoursFilter, GEOPDISO3166CodeFilter, GEOPDIconFilter, GEOPDLabelGeometryFilter, GEOPDLinkedServiceFilter, GEOPDLocationEventFilter, GEOPDMessageLinkFilter, GEOPDPhotoFilter, GEOPDPlaceCollectionFilter, GEOPDPlaceCollectionItemFilter, GEOPDPlaceInfoFilter, GEOPDPlaceQuestionnaireFilter, GEOPDPlacecardLayoutConfigurationFilter, GEOPDPlacecardURLFilter, GEOPDPoiEventFilter, GEOPDPriceDescriptionFilter, GEOPDPrototypeContainerFilter, GEOPDPublisherFilter, GEOPDQuickLinkFilter, GEOPDRapFilter, GEOPDRatingFilter, GEOPDRawAttributeFilter, GEOPDRelatedPlaceFilter, GEOPDRestaurantReservationLinkFilter, GEOPDResultSnippetFilter, GEOPDReviewFilter, GEOPDRoadAccessInfoFilter, GEOPDSimpleRestaurantMenuTextFilter, GEOPDSpatialLookupFilter, GEOPDStorefrontFacesFilter, GEOPDStorefrontFilter, GEOPDStorefrontPresentationFilter, GEOPDStyleAttributesFilter, GEOPDTemplatePlaceFilter, GEOPDTextBlockFilter, GEOPDTipFilter, GEOPDTransitAttributionFilter, GEOPDTransitIncidentFilter, GEOPDTransitInfoFilter, GEOPDTransitInfoSnippetFilter, GEOPDTransitScheduleFilter, GEOPDTransitTripGeometryFilter, GEOPDTransitTripStopFilter, GEOPDTransitTripStopTimeFilter, GEOPDVehiclePositionFilter, GEOPDVendorAmenitiesFilter, GEOPDVenueInfoFilter, GEOPDWalletCategoryInformationFilter, GEOPDWifiFingerprintFilter, PBDataReader, PBUnknownFields;
+@class GEOPDAboutFilter, GEOPDActionDataFilter, GEOPDAddressFilter, GEOPDAddressObjectFilter, GEOPDAmenitiesFilter, GEOPDAnnotatedItemListFilter, GEOPDAssociatedAppFilter, GEOPDBoundsFilter, GEOPDBrowseCategoriesFilter, GEOPDBusinessClaimFilter, GEOPDBusinessHoursFilter, GEOPDCaptionedPhotoFilter, GEOPDCategorizedPhotosFilter, GEOPDCollectionIdsFilter, GEOPDContainedPlaceFilter, GEOPDContainmentPlaceFilter, GEOPDETAFilter, GEOPDEnhancedPlacementFilter, GEOPDEnrichmentDataFilter, GEOPDEnrichmentInfoFilter, GEOPDEntityFilter, GEOPDExploreGuidesFilter, GEOPDExternalActionFilter, GEOPDFactoidFilter, GEOPDFlyoverFilter, GEOPDGroundViewLabelFilter, GEOPDGuideGroupFilter, GEOPDHoursFilter, GEOPDISO3166CodeFilter, GEOPDIconFilter, GEOPDLabelGeometryFilter, GEOPDLinkedServiceFilter, GEOPDLocationEventFilter, GEOPDMessageLinkFilter, GEOPDPOIClaimFilter, GEOPDPhotoFilter, GEOPDPlaceCollectionFilter, GEOPDPlaceCollectionItemFilter, GEOPDPlaceInfoFilter, GEOPDPlaceQuestionnaireFilter, GEOPDPlacecardLayoutConfigurationFilter, GEOPDPlacecardURLFilter, GEOPDPoiEventFilter, GEOPDPriceDescriptionFilter, GEOPDPrototypeContainerFilter, GEOPDPublisherFilter, GEOPDQuickLinkFilter, GEOPDRapFilter, GEOPDRatingFilter, GEOPDRawAttributeFilter, GEOPDRelatedPlaceFilter, GEOPDRestaurantReservationLinkFilter, GEOPDResultSnippetFilter, GEOPDReviewFilter, GEOPDRoadAccessInfoFilter, GEOPDSimpleRestaurantMenuTextFilter, GEOPDSpatialLookupFilter, GEOPDStorefrontFacesFilter, GEOPDStorefrontFilter, GEOPDStorefrontPresentationFilter, GEOPDStyleAttributesFilter, GEOPDTemplatePlaceFilter, GEOPDTextBlockFilter, GEOPDTipFilter, GEOPDTransitAttributionFilter, GEOPDTransitIncidentFilter, GEOPDTransitInfoFilter, GEOPDTransitInfoSnippetFilter, GEOPDTransitPaymentMethodInfoFilter, GEOPDTransitScheduleFilter, GEOPDTransitTripGeometryFilter, GEOPDTransitTripStopFilter, GEOPDTransitTripStopTimeFilter, GEOPDVehiclePositionFilter, GEOPDVendorAmenitiesFilter, GEOPDVenueInfoFilter, GEOPDWalletCategoryInformationFilter, GEOPDWifiFingerprintFilter, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDComponentFilter : PBCodable <NSCopying>
+@interface GEOPDComponentFilter : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     GEOPDAboutFilter *_aboutFilter;
     GEOPDRoadAccessInfoFilter *_accessInfoFilter;
+    GEOPDActionDataFilter *_actionDataFilter;
     GEOPDAddressFilter *_addressFilter;
     GEOPDAddressObjectFilter *_addressObjectFilter;
     GEOPDAmenitiesFilter *_amenitiesFilter;
@@ -32,6 +31,8 @@ __attribute__((visibility("hidden")))
     GEOPDContainedPlaceFilter *_containedPlaceFilter;
     GEOPDContainmentPlaceFilter *_containmentPlaceFilter;
     GEOPDEnhancedPlacementFilter *_enhancedPlacementFilter;
+    GEOPDEnrichmentDataFilter *_enrichmentDataFilter;
+    GEOPDEnrichmentInfoFilter *_enrichmentInfoFilter;
     GEOPDEntityFilter *_entityFilter;
     GEOPDETAFilter *_etaFilter;
     GEOPDExploreGuidesFilter *_exploreGuidesFilter;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
     GEOPDPlaceQuestionnaireFilter *_placeQuestionnaireFilter;
     GEOPDPlacecardLayoutConfigurationFilter *_placecardLayoutConfigurationFilter;
     GEOPDPlacecardURLFilter *_placecardUrlFilter;
+    GEOPDPOIClaimFilter *_poiClaimFilter;
     GEOPDPoiEventFilter *_poiEventFilter;
     GEOPDPriceDescriptionFilter *_priceDescriptionFilter;
     GEOPDPrototypeContainerFilter *_protoTypeContainerFilter;
@@ -79,6 +81,7 @@ __attribute__((visibility("hidden")))
     GEOPDTransitIncidentFilter *_transitIncidentFilter;
     GEOPDTransitInfoFilter *_transitInfoFilter;
     GEOPDTransitInfoSnippetFilter *_transitInfoSnippetFilter;
+    GEOPDTransitPaymentMethodInfoFilter *_transitPaymentMethodInfoFilter;
     GEOPDTransitScheduleFilter *_transitScheduleFilter;
     GEOPDTransitTripGeometryFilter *_transitTripGeometryFilter;
     GEOPDTransitTripStopFilter *_transitTripStopFilter;
@@ -95,6 +98,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_aboutFilter:1;
         unsigned int read_accessInfoFilter:1;
+        unsigned int read_actionDataFilter:1;
         unsigned int read_addressFilter:1;
         unsigned int read_addressObjectFilter:1;
         unsigned int read_amenitiesFilter:1;
@@ -110,6 +114,8 @@ __attribute__((visibility("hidden")))
         unsigned int read_containedPlaceFilter:1;
         unsigned int read_containmentPlaceFilter:1;
         unsigned int read_enhancedPlacementFilter:1;
+        unsigned int read_enrichmentDataFilter:1;
+        unsigned int read_enrichmentInfoFilter:1;
         unsigned int read_entityFilter:1;
         unsigned int read_etaFilter:1;
         unsigned int read_exploreGuidesFilter:1;
@@ -132,6 +138,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_placeQuestionnaireFilter:1;
         unsigned int read_placecardLayoutConfigurationFilter:1;
         unsigned int read_placecardUrlFilter:1;
+        unsigned int read_poiClaimFilter:1;
         unsigned int read_poiEventFilter:1;
         unsigned int read_priceDescriptionFilter:1;
         unsigned int read_protoTypeContainerFilter:1;
@@ -157,6 +164,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_transitIncidentFilter:1;
         unsigned int read_transitInfoFilter:1;
         unsigned int read_transitInfoSnippetFilter:1;
+        unsigned int read_transitPaymentMethodInfoFilter:1;
         unsigned int read_transitScheduleFilter:1;
         unsigned int read_transitTripGeometryFilter:1;
         unsigned int read_transitTripStopFilter:1;

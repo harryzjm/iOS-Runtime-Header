@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)feedback;
 @property(nonatomic, readonly) unsigned long long queryID;
-@property(nonatomic, readonly) _Bool shouldWaitUntilEntryPointStarts;
 @property(nonatomic, readonly) NSString *originatingApplication;
 
 @end

@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIContextMenuPanControllerDelegate-Protocol.h>
-#import <UIKitCore/_UIContextMenuViewDelegate-Protocol.h>
+#import "UIPresentationController.h"
 
-@class NSArray, NSString, UITapGestureRecognizer, UITargetedPreview, UIView, UIViewFloatAnimatableProperty, UIVisualEffectView, _UIContextMenuActionScrubbingHandoffGestureRecognizer, _UIContextMenuLayoutArbiter, _UIContextMenuLayoutArbiterOutput, _UIContextMenuPanController, _UIContextMenuStyle, _UIContextMenuView, _UIFulfilledContextMenuConfiguration, _UIMorphingPlatterView;
+@class NSArray, NSString, UITapGestureRecognizer, UITargetedPreview, UIView, UIViewFloatAnimatableProperty, UIVisualEffectView, _UIContextMenuActionScrubbingHandoffGestureRecognizer, _UIContextMenuLayoutArbiter, _UIContextMenuLayoutArbiterOutput, _UIContextMenuPanController, _UIContextMenuStyle, _UIContextMenuView, _UIFlocker, _UIFulfilledContextMenuConfiguration, _UIMorphingPlatterView;
 @protocol _UIContextMenuPresentationControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuPresentationController <_UIContextMenuViewDelegate, UIGestureRecognizerDelegate, _UIContextMenuPanControllerDelegate>
+@interface _UIContextMenuPresentationController : UIPresentationController
 {
     _Bool _isAnimatingPresentation;
     _Bool _isOccludingControls;
@@ -22,7 +20,7 @@ __attribute__((visibility("hidden")))
     UIVisualEffectView *_backgroundEffectView;
     _UIMorphingPlatterView *_contentPlatterView;
     _UIContextMenuView *_menuView;
-    NSArray *_accessoryViews;
+    _UIFlocker *_flocker;
     _UIContextMenuLayoutArbiterOutput *_currentLayout;
     UIViewFloatAnimatableProperty *_backgroundViewAnimationProgress;
     _UIFulfilledContextMenuConfiguration *_displayedConfiguration;
@@ -54,11 +52,15 @@ __attribute__((visibility("hidden")))
 - (void)_testing_tapAnAction;
 - (void)_testing_dismissByTappingOutside;
 @property(readonly, nonatomic) UIViewFloatAnimatableProperty *backgroundViewAnimationProgress; // @synthesize backgroundViewAnimationProgress=_backgroundViewAnimationProgress;
+- (unsigned long long)_preferredSubmenuHierarchyStyle;
 - (void)_collapseMenuView:(id)arg1 withInitialFrame:(struct CGRect)arg2 offset:(struct CGPoint)arg3 attachment:(unsigned long long)arg4;
-@property(readonly, nonatomic) NSArray *accessoryViews; // @synthesize accessoryViews=_accessoryViews;
+- (void)enumeratePlatterViewsWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
 @property(readonly, nonatomic) UIView *platterContainerView; // @synthesize platterContainerView=_platterContainerView;
+@property(nonatomic) _Bool passthroughInteractionTouchEatingDisabledForSearchSuggestions;
+@property(copy, nonatomic) NSArray *passthroughViews;
 @property(readonly, nonatomic) UIView *platterTransitionView; // @synthesize platterTransitionView=_platterTransitionView;
+@property(readonly, nonatomic) _UIFlocker *flocker; // @synthesize flocker=_flocker;
 @property(readonly, nonatomic) _UIMorphingPlatterView *contentPlatterView; // @synthesize contentPlatterView=_contentPlatterView;
 - (void)_collapseMenu;
 - (void)replaceVisibleMenu:(id)arg1 withMenu:(id)arg2;
@@ -83,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)_updatePlatterContainerViewTraitCollection;
+- (void)viewTraitCollectionDidChange;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_handleActionHandoffGesture:(id)arg1;
@@ -102,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)presentationTransitionWillBegin;
 - (struct UIEdgeInsets)_baseContentInsetsWithLeftMargin:(double *)arg1 rightMargin:(double *)arg2;
 - (long long)presentationStyle;
+- (_Bool)_wantsAutomaticFirstResponderWhenPresentingRemoteViewController;
 - (_Bool)_shouldRestoreFirstResponder;
 - (_Bool)_shouldKeepCurrentFirstResponder;
 - (_Bool)_shouldPreserveFirstResponder;
@@ -110,7 +114,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldDisableInteractionDuringTransitions;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (void)dealloc;
-@property(readonly, nonatomic) _Bool wantsControlOcclusion;
 - (id)initWithPresentingViewController:(id)arg1 configuration:(id)arg2 sourcePreview:(id)arg3 style:(id)arg4;
 
 // Remaining properties

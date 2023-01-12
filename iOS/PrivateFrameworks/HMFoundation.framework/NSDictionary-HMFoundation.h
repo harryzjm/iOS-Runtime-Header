@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <HMFoundation/HMFObject-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSDictionary (HMFoundation) <HMFObject>
+@interface NSDictionary (HMFoundation)
 + (id)shortDescription;
 - (id)hmf_fileHandleForKey:(id)arg1;
 - (id)hmf_unarchivedObjectForKey:(id)arg1 ofClasses:(id)arg2;

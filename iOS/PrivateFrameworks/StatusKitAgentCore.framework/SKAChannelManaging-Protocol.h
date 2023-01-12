@@ -6,14 +6,23 @@
 
 #import <StatusKitAgentCore/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSString;
+@class NSArray, NSData, NSDate, NSString, SKAPresenceEncryptionKey, SKAPresenceMembershipKey;
 
 @protocol SKAChannelManaging <NSObject>
 - (NSDate *)serverTime;
-- (void)unsubscribeFromChannels:(NSArray *)arg1;
-- (void)subscribeToChannels:(NSArray *)arg1;
-- (void)activeChannelSubscriptionsWithCompletion:(void (^)(NSArray *))arg1;
-- (void)publishData:(NSData *)arg1 onChannel:(NSString *)arg2 withChannelToken:(NSData *)arg3 publishInitiateTime:(NSDate *)arg4 isPendingPublish:(_Bool)arg5 isScheduledPublish:(_Bool)arg6 completion:(void (^)(NSError *))arg7;
+- (void)disableActivityTracking;
+- (void)enableActivityTracking;
+- (void)unsubscribeFromPresenceChannels:(NSArray *)arg1;
+- (void)subscribeToPresenceChannels:(NSArray *)arg1;
+- (void)activePresenceChannelSubscriptionsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)unsubscribeFromStatusChannels:(NSArray *)arg1;
+- (void)subscribeToStatusChannels:(NSArray *)arg1;
+- (void)activeStatusChannelSubscriptionsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)pollActiveParticipantsForChannel:(NSString *)arg1 membershipKey:(SKAPresenceMembershipKey *)arg2 serverKey:(SKAPresenceEncryptionKey *)arg3 withChannelToken:(NSData *)arg4 completion:(void (^)(NSError *, NSArray *))arg5;
+- (void)releasePresenceOnChannel:(NSString *)arg1 membershipKey:(SKAPresenceMembershipKey *)arg2 serverKey:(SKAPresenceEncryptionKey *)arg3 timestamp:(NSDate *)arg4 withChannelToken:(NSData *)arg5 completion:(void (^)(NSError *))arg6;
+- (void)assertPresence:(NSData *)arg1 onChannel:(NSString *)arg2 membershipKey:(SKAPresenceMembershipKey *)arg3 serverKey:(SKAPresenceEncryptionKey *)arg4 timestamp:(NSDate *)arg5 withChannelToken:(NSData *)arg6 isRefresh:(_Bool)arg7 completion:(void (^)(NSError *, double, NSArray *))arg8;
+- (void)publishData:(NSData *)arg1 onChannel:(NSString *)arg2 withChannelToken:(NSData *)arg3 publishInitiateTime:(NSDate *)arg4 isPendingPublish:(_Bool)arg5 isScheduledPublish:(_Bool)arg6 retryCount:(unsigned long long)arg7 completion:(void (^)(NSError *))arg8;
+- (void)createPresenceChannelWithMembershipKey:(SKAPresenceMembershipKey *)arg1 serverKey:(SKAPresenceEncryptionKey *)arg2 completion:(void (^)(NSString *, NSData *, NSError *))arg3;
 - (void)createChannelWithCompletion:(void (^)(NSString *, NSData *, NSError *))arg1;
 @end
 

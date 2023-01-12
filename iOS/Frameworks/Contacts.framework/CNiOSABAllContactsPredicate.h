@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Contacts/CNiOSContactPredicate-Protocol.h>
+#import "CNPredicate.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNiOSABAllContactsPredicate <CNiOSContactPredicate>
+@interface CNiOSABAllContactsPredicate : CNPredicate
 {
 }
 
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)cn_cursorForEncodedPeopleFromAddressBook:(void *)arg1 fetchRequest:(id)arg2 environment:(id)arg3 error:(id *)arg4;
+- (id)cn_ABQSLPredicateForAddressBook:(void *)arg1 fetchRequest:(id)arg2 error:(id *)arg3;
 - (struct __CFArray *)cn_copyPeopleInAddressBook:(void *)arg1 fetchRequest:(id)arg2 matchInfos:(id *)arg3 environment:(id)arg4 error:(struct __CFError **)arg5;
 - (_Bool)cn_supportsEncodedFetching;
 - (_Bool)cn_supportsNativeBatchFetch;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
-
 @class AVLayoutItemAttributes, NSAttributedString, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIFont, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface AVLabel : UIView <AVPlaybackControlsViewItem>
+@interface AVLabel : UIView
 {
     _Bool _collapsed;
     _Bool _included;

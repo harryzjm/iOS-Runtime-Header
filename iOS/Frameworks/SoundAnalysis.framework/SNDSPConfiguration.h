@@ -15,8 +15,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *dspItems; // @synthesize dspItems=_dspItems;
-- (id)initWithArray:(id)arg1 resourcePath:(id)arg2;
 
 @end
 

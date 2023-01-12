@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UILabel.h"
+
 @class UIButton;
 
 __attribute__((visibility("hidden")))
-@interface UIButtonLabel
+@interface UIButtonLabel : UILabel
 {
     _Bool _reverseShadow;
     UIButton *_button;

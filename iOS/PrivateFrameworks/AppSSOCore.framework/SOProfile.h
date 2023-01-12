@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppSSOCore/NSCopying-Protocol.h>
-#import <AppSSOCore/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SOProfile : NSObject <NSCopying, NSSecureCoding>
+@interface SOProfile : NSObject
 {
     long long _type;
     NSArray *_URLPrefix;
@@ -21,12 +18,17 @@ __attribute__((visibility("hidden")))
     NSString *_realm;
     NSArray *_deniedBundleIdentifiers;
     long long _screenLockedBehavior;
+    long long _pssoAuthenticationMethod;
+    NSString *_pssoRegistrationToken;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)stringWithAuthenticationMethod:(long long)arg1;
 + (id)stringWithScreenLockedBehavior:(long long)arg1;
 + (id)stringWithProfileType:(long long)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *pssoRegistrationToken; // @synthesize pssoRegistrationToken=_pssoRegistrationToken;
+@property(nonatomic) long long pssoAuthenticationMethod; // @synthesize pssoAuthenticationMethod=_pssoAuthenticationMethod;
 @property(nonatomic) long long screenLockedBehavior; // @synthesize screenLockedBehavior=_screenLockedBehavior;
 @property(retain, nonatomic) NSArray *deniedBundleIdentifiers; // @synthesize deniedBundleIdentifiers=_deniedBundleIdentifiers;
 @property(retain, nonatomic) NSString *realm; // @synthesize realm=_realm;

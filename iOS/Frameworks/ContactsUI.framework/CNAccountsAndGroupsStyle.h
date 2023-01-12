@@ -12,13 +12,16 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)styleForTraitCollection:(id)arg1;
-- (CDUnknownBlockType)cellBackgroundViewConfigurationProvider;
-- (id)cellConfigurationForSelectedState:(_Bool)arg1;
+- (id)cellAccessoriesForContextMenuPreviewForItem:(id)arg1;
+- (id)cellAccessoriesForItem:(id)arg1;
+- (long long)buttonBehavior;
+- (_Bool)shouldShowCellSelection;
+- (CDUnknownBlockType)cellConfigurationUpdateHandler;
 - (id)parentCellConfigurationWithText:(id)arg1;
-- (id)sectionConfigurationForLayoutEnvironment:(id)arg1;
-- (id)cellTrailingAccessoryConfigurationsForSelectedState:(_Bool)arg1;
-- (id)parentCellTrailingAccessoryConfigurations;
+- (id)sectionConfigurationForLayoutEnvironment:(id)arg1 withLeadingActionsProvider:(CDUnknownBlockType)arg2 withTrailingActionsProvider:(CDUnknownBlockType)arg3 hasHeader:(_Bool)arg4;
+- (id)parentCellAccessories;
 - (id)backgroundColor;
+- (_Bool)isInset;
 
 @end
 

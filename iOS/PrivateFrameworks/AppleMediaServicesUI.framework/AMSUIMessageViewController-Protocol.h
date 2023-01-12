@@ -10,7 +10,7 @@
 
 @protocol AMSUIMessageViewController <NSObject>
 @property(nonatomic) _Bool shouldAutomaticallyReportMetrics;
-@property(retain, nonatomic) AMSBinaryPromise *loadPromise;
+@property(nonatomic, retain) AMSBinaryPromise *loadPromise;
 - (void)enqueueImpressionMetrics;
 @end
 

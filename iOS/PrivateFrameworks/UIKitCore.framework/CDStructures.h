@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, NSMutableSet, NSTimer, UIWebPDFView, _UICommandIdentifierDictionary;
+@class CADisplay, CADynamicFrameRateSource, NSMutableDictionary, NSMutableSet, _UICommandIdentifierDictionary;
 
 #pragma mark Blocks
 
@@ -35,10 +35,23 @@ struct CAColorMatrix {
     float m45;
 };
 
+struct CACornerRadii {
+    struct CGSize minXMaxY;
+    struct CGSize maxXMaxY;
+    struct CGSize maxXMinY;
+    struct CGSize minXMinY;
+};
+
 struct CAFrameRateRange {
     float minimum;
     float maximum;
     float preferred;
+};
+
+struct CAPoint3D {
+    double x;
+    double y;
+    double z;
 };
 
 struct CATransform3D {
@@ -94,24 +107,18 @@ struct CGVector {
     double dy;
 };
 
-struct InteractionContext {
-    id _field1;
-};
-
-struct InteractionEndingContext {
-    struct InteractionContext _field1;
-    _Bool _field2;
-    unsigned long long _field3;
-    id _field4;
-    CDUnknownBlockType _field5;
-    CDUnknownBlockType _field6;
-};
-
 struct NSDirectionalEdgeInsets {
     double top;
     double leading;
     double bottom;
     double trailing;
+};
+
+struct NSEdgeInsets {
+    double top;
+    double left;
+    double bottom;
+    double right;
 };
 
 struct UIEdgeInsets {
@@ -146,13 +153,6 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct _PDFHistoryItem {
-    _Bool restorePending;
-    _Bool isInitialScale;
-    double zoomScale;
-    struct CGPoint contentOffset;
-};
-
 struct _UIBoundingPathBitmapData {
     unsigned long long width;
     unsigned long long height;
@@ -176,21 +176,12 @@ struct _UIBoundingPathBitmapDataSkipRegion {
     unsigned long long height;
 };
 
-struct _UICollectionUpdateIndexPair {
-    long long section;
-    long long item;
+struct _UIInstrumentedCADisplay {
+    CADisplay *direct;
 };
 
-struct _UIDatePickerOverlayPlatterLayout {
-    struct CGRect _field1;
-    struct CGPoint _field2;
-    struct CGPoint _field3;
-    struct CGAffineTransform _field4;
-};
-
-struct _UIDragInteractionDriverStateMachine {
-    unsigned long long state;
-    unsigned long long *eventsQueueEnd;
+struct _UIInstrumentedCADynamicFrameRateSource {
+    CADynamicFrameRateSource *direct;
 };
 
 struct _UIIntegralCornerRadii {
@@ -216,14 +207,6 @@ struct _UIIntegralSize {
 };
 
 struct _UIItemSolveResult;
-
-struct _UIMachTimer {
-    unsigned int machPort;
-    struct __CFMachPort *cfPort;
-    struct __CFRunLoopSource *runloopSource;
-    CDUnknownFunctionPointerType callback;
-    void *callbackContext;
-};
 
 struct _UIOrderedRangeIndexerImpl;
 
@@ -292,17 +275,9 @@ struct _UITableConstantsBackgroundProperties {
     double _field8;
     _Bool _field9;
     id _field10;
-    double _field11;
-    struct NSDirectionalEdgeInsets _field12;
-};
-
-struct _UITableViewVisibleCellsUpdateRanges {
-    struct _NSRange _field1;
-    struct _NSRange _field2;
-    struct _NSRange _field3;
-    struct _NSRange _field4;
-    struct _NSRange _field5;
-    _Bool _field6;
+    long long _field11;
+    double _field12;
+    struct NSDirectionalEdgeInsets _field13;
 };
 
 struct _UITraitCollectionChangeDescription {
@@ -321,19 +296,24 @@ struct _UITraitCollectionTraitChanges {
     _Bool _field6;
     _Bool _field7;
     _Bool _field8;
+    _Bool _field9;
+    _Bool _field10;
 };
 
 struct _UIUpdateInputInternal {
     struct _UIUpdateInputState _state;
     unsigned int _flags;
+    struct _UIUpdateInputSet *_set;
     struct {
         struct _UIUpdateInputInternal *le_next;
         struct _UIUpdateInputInternal **le_prev;
-    } _groupEntry;
+    } _setEntry;
     CDUnknownFunctionPointerType _readyForModelTimeCallback;
     void *_context;
     char *_name;
 };
+
+struct _UIUpdateInputSet;
 
 struct _UIUpdateInputState {
     int mode;
@@ -356,36 +336,9 @@ struct _UIUpdateRequestRecord {
 };
 
 struct _UIUpdateTiming {
-    unsigned long long modelTime;
-    unsigned long long commitDeadlineTime;
-    unsigned long long presentationTime;
-};
-
-struct _UIVelocityIntegratorDataSample;
-
-struct _UIWebTouchEvent {
-    int type;
-    double timestamp;
-    struct CGPoint locationInScreenCoordinates;
-    struct CGPoint locationInDocumentCoordinates;
-    double scale;
-    double rotation;
-    _Bool inJavaScriptGesture;
-    struct _UIWebTouchPoint *touchPoints;
-    unsigned int touchPointCount;
-    _Bool isPotentialTap;
-};
-
-struct _UIWebTouchPoint;
-
-struct _UIWebViewportConfiguration {
-    struct CGSize size;
-    float initialScale;
-    float minimumScale;
-    float maximumScale;
-    _Bool allowsUserScaling;
-    _Bool allowsShrinkToFit;
-    _Bool avoidsUnsafeArea;
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
 };
 
 struct __UISignedRange {
@@ -394,25 +347,6 @@ struct __UISignedRange {
 };
 
 struct __shared_weak_count;
-
-struct atomic_flag {
-    _Atomic _Bool _Value;
-};
-
-struct deque<_UIVelocityIntegratorDataSample, std::allocator<_UIVelocityIntegratorDataSample>> {
-    struct __split_buffer<_UIVelocityIntegratorDataSample *, std::allocator<_UIVelocityIntegratorDataSample *>> {
-        struct _UIVelocityIntegratorDataSample **__first_;
-        struct _UIVelocityIntegratorDataSample **__begin_;
-        struct _UIVelocityIntegratorDataSample **__end_;
-        struct __compressed_pair<_UIVelocityIntegratorDataSample **, std::allocator<_UIVelocityIntegratorDataSample *>> {
-            struct _UIVelocityIntegratorDataSample **__value_;
-        } __end_cap_;
-    } __map_;
-    unsigned long long __start_;
-    struct __compressed_pair<unsigned long, std::allocator<_UIVelocityIntegratorDataSample>> {
-        unsigned long long __value_;
-    } __size_;
-};
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
@@ -514,9 +448,9 @@ typedef struct {
 } CDStruct_de35aa0b;
 
 typedef struct {
-    UIWebPDFView *view;
-    NSTimer *timer;
-} CDStruct_d58a15aa;
+    id _field1;
+    id _field2;
+} CDStruct_a70f6672;
 
 typedef struct {
     id _field1;
@@ -529,10 +463,7 @@ typedef struct {
     _Bool _field8;
     _Bool _field9;
     _Bool _field10;
-    _Bool _field11;
-    _Bool _field12;
-    _Bool _field13;
-} CDStruct_98d137ef;
+} CDStruct_b73e569c;
 
 typedef struct {
     id _field1;
@@ -550,6 +481,11 @@ typedef struct {
 } CDStruct_8bdd0ba6;
 
 typedef struct {
+    _Bool _field1;
+    _Bool _field2;
+} CDStruct_3d581f42;
+
+typedef struct {
     unsigned long long direction;
     _Bool primaryActionIsDestructive;
     _Bool primaryActionCanBeTriggeredBySwipe;
@@ -558,13 +494,13 @@ typedef struct {
 } CDStruct_324b76a9;
 
 typedef struct {
-    unsigned long long direction;
-    unsigned long long targetSwipeState;
-    _Bool animated;
-    double xOffset;
-    double initialSpringVelocity;
-    double springStiffness;
-} CDStruct_9b6dff2a;
+    unsigned long long _field1;
+    unsigned long long _field2;
+    _Bool _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+} CDStruct_b06b0113;
 
 typedef struct {
     unsigned long long attachment;
@@ -583,7 +519,7 @@ typedef struct {
 } CDStruct_a7a14e3b;
 
 typedef struct {
-    _Bool itemIsEnabled[44];
+    _Bool itemIsEnabled[45];
     char timeString[64];
     char shortTimeString[64];
     char dateString[256];
@@ -640,7 +576,7 @@ typedef struct {
     char secondaryServiceBadgeString[100];
     char quietModeImage[256];
     char quietModeName[256];
-} CDStruct_e9def42b;
+} CDStruct_8eacfc04;
 
 typedef struct {
     unsigned int val[8];
@@ -674,11 +610,8 @@ typedef struct {
     double _field2;
     double _field3;
     double _field4;
-    _Bool _field5;
-    _Bool _field6;
-    _Bool _field7;
-    _Bool _field8;
-} CDStruct_1c6ce877;
+    unsigned long long _field5;
+} CDStruct_f413d7fe;
 
 typedef struct {
     double rotationX;
@@ -693,12 +626,17 @@ typedef struct {
 } CDStruct_e79446ac;
 
 typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-} CDStruct_d83abbfb;
+    double leadingTargetLayoutWidth;
+    double centerTargetLayoutWidth;
+    double trailingTargetLayoutWidth;
+    long long searchBarLayoutState;
+    float searchBarHorizontalCCRPriority;
+    double searchBarLeftInset;
+    double searchBarRightInset;
+    _Bool usesOverflowGroup;
+    _Bool hidesTitle;
+    _Bool isInitialized;
+} CDStruct_e617d9e5;
 
 typedef struct {
     double targetValue;
@@ -708,21 +646,10 @@ typedef struct {
 } CDStruct_b7daa86d;
 
 typedef struct {
-    double minimum;
-    double preferred;
-    double maximum;
-} CDStruct_cf303044;
-
-typedef struct {
     double _field1;
     double _field2;
     long long _field3;
 } CDStruct_99fbabfb;
-
-typedef struct {
-    double amount;
-    int unit;
-} CDStruct_73524d89;
 
 typedef struct {
     int commonRowHorizontalAlignment;
@@ -747,14 +674,7 @@ typedef struct {
 } CDStruct_0ba2c6ed;
 
 typedef struct {
-    unsigned long long _field1;
-    CDStruct_17a0fc55 _field2;
-    struct CGPoint _field3;
-    unsigned long long _field4;
-} CDStruct_182fafba;
-
-typedef struct {
-    _Bool overrideItemIsEnabled[44];
+    _Bool overrideItemIsEnabled[45];
     unsigned int overrideTimeString:1;
     unsigned int overrideDateString:1;
     unsigned int overrideGsmSignalStrengthRaw:1;
@@ -790,56 +710,20 @@ typedef struct {
     unsigned int overridePrimaryServiceBadgeString:1;
     unsigned int overrideSecondaryServiceBadgeString:1;
     unsigned int overrideQuietModeImage:1;
-    CDStruct_e9def42b values;
-} CDStruct_0caf55ee;
-
-typedef struct {
-    CDStruct_73524d89 _field1[4];
-} CDStruct_bd7e7c01;
+    CDStruct_8eacfc04 values;
+} CDStruct_b90c07c4;
 
 typedef struct {
     int _field1;
     struct CGPoint _field2;
     struct CGPoint _field3;
     struct CGSize _field4;
-    id _field5;
+    struct CGPoint _field5;
     id _field6;
     id _field7;
     id _field8;
-} CDStruct_ac6e8047;
-
-typedef struct {
-    struct {
-        double _field1;
-        double _field2;
-        double _field3;
-        double _field4;
-    } _field1;
-    struct {
-        double _field1;
-        double _field2;
-        double _field3;
-        double _field4;
-    } _field2;
-    struct {
-        double _field1;
-        double _field2;
-        double _field3;
-        double _field4;
-    } _field3;
-    struct {
-        double _field1;
-        double _field2;
-        double _field3;
-        double _field4;
-    } _field4;
-    struct {
-        double _field1;
-        double _field2;
-        double _field3;
-        double _field4;
-    } _field5;
-} CDStruct_10115da1;
+    id _field9;
+} CDStruct_f46536fb;
 
 typedef struct {
     CDStruct_b7daa86d dampingRatioParameters;
@@ -868,9 +752,12 @@ typedef struct {
 } CDStruct_912d1c89;
 
 typedef struct {
-    struct UIEdgeInsets _field1;
-    struct UIEdgeInsets _field2;
-} CDStruct_77fbeba1;
+    struct CGPoint _field1;
+    long long _field2;
+    long long _field3;
+    long long _field4;
+    _Bool _field5;
+} CDStruct_f8445847;
 
 typedef struct {
     struct _NSRange _field1;
@@ -903,12 +790,12 @@ typedef struct {
 } CDStruct_758ece87;
 
 typedef struct {
-    double firstBaseline;
-    double lastBaseline;
-    struct CGRect referenceBounds;
-    long long measuredNumberOfLines;
-    struct CGRect bounds;
-} CDStruct_a0add0ba;
+    double _field1;
+    double _field2;
+    struct CGRect _field3;
+    long long _field4;
+    struct CGRect _field5;
+} CDStruct_3ae44ac1;
 
 typedef struct {
     struct {
@@ -925,12 +812,6 @@ typedef struct {
 typedef struct {
     struct CGRect _field1;
     struct CGRect _field2;
-    struct CGRect _field3;
-} CDStruct_6b60c6e5;
-
-typedef struct {
-    struct CGRect _field1;
-    struct CGRect _field2;
 } CDStruct_b7523c42;
 
 typedef struct {
@@ -940,50 +821,22 @@ typedef struct {
     double _field4;
 } CDStruct_6024001e;
 
-typedef struct {
-    struct CGRect buttonBounds;
-    struct CGSize idealSize;
-    struct CGRect imageFrame;
-    struct CGRect titleFrame;
-    struct CGRect subtitleFrame;
-    struct {
-        double firstFromTop;
-        double lastFromBottom;
-    } baselineOffsets;
-    struct {
-        unsigned int isValid:1;
-        unsigned int hasImage:1;
-        unsigned int hasProgressIndicator:1;
-        unsigned int hasTitle:1;
-        unsigned int hasSubtitle:1;
-    } flags;
-} CDStruct_add6c04a;
-
-typedef struct {
-    CDStruct_6b60c6e5 _field1;
-    CDStruct_6b60c6e5 _field2;
-    CDStruct_6b60c6e5 _field3;
-} CDStruct_c7d8fe75;
-
 // Ambiguous groups
 typedef struct {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-} CDStruct_8024420c;
-
-typedef struct {
-    unsigned int visible:1;
-    unsigned int isCleaningUp:1;
-    unsigned int didRevertStatusBar:1;
-} CDStruct_d1897728;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+} CDStruct_d3566df9;
 
 typedef struct {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-} CDStruct_8a1bf2a3;
+    unsigned int :1;
+} CDStruct_d8808cea;
 
 typedef struct {
     unsigned int :1;
@@ -995,6 +848,12 @@ typedef struct {
     double _field3;
     double _field4;
 } CDStruct_d2b197d1;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+} CDStruct_39925896;
 
 typedef struct {
     double _field1;
@@ -1025,6 +884,11 @@ typedef struct {
     long long hour;
     long long minute;
 } CDStruct_21fd8efb;
+
+typedef struct {
+    long long location;
+    long long length;
+} CDStruct_627e0f85;
 
 typedef struct {
     struct CGPoint _field1;
@@ -1086,16 +950,6 @@ union _UIStateContext {
 };
 
 #pragma mark Typedef'd Unions
-
-typedef union {
-    unsigned char _field1;
-    struct {
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-    } _field2;
-} CDUnion_e8341a59;
 
 typedef union {
     CDStruct_227bb23d styling;

@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/UIKeyboardKeyplaneTransitionDelegate-Protocol.h>
-
 @class CADisplayLink, NSString, UIPanGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface UISplitKeyboardSupport <UIGestureRecognizerDelegate, UIKeyboardKeyplaneTransitionDelegate>
+@interface UISplitKeyboardSupport
 {
     UIPanGestureRecognizer *_singleFingerPanRecognizer;
     UIPanGestureRecognizer *_twoFingerPanRecognizer;
@@ -26,6 +23,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _bounceCompletionBlock;
 }
 
+- (void).cxx_destruct;
 - (void)transitionDidFinish:(_Bool)arg1;
 - (void)finishTransitionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateProgress:(double)arg1 startHeight:(double)arg2 endHeight:(double)arg3;
@@ -52,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (void)_updatedController;
 - (void)_connectController:(id)arg1;
 - (void)_disconnectingController:(id)arg1;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

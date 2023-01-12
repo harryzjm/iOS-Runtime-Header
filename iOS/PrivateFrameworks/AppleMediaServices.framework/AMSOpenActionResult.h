@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSURLAction, NSString;
+@class AMSURLAction;
 
 __attribute__((visibility("hidden")))
 @interface AMSOpenActionResult : NSObject
@@ -14,13 +14,11 @@ __attribute__((visibility("hidden")))
     _Bool _engagementPresented;
     _Bool _interruptionResult;
     AMSURLAction *_action;
-    NSString *_buyParams;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool interruptionResult; // @synthesize interruptionResult=_interruptionResult;
 @property(nonatomic) _Bool engagementPresented; // @synthesize engagementPresented=_engagementPresented;
-@property(retain, nonatomic) NSString *buyParams; // @synthesize buyParams=_buyParams;
 @property(retain, nonatomic) AMSURLAction *action; // @synthesize action=_action;
 
 @end

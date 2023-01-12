@@ -20,6 +20,11 @@ struct CGSize {
     double _field2;
 };
 
+struct GCommonCache {
+    struct LangSysTable *fLastLangSysTable;
+    struct atomic<const unsigned int *> fDynamicClassTable;
+};
+
 struct GlyphStack {
     long long _field1;
     long long _field2;
@@ -34,6 +39,8 @@ struct GlyphStackEntry {
     long long _field5;
     struct CGPoint _field6;
 };
+
+struct LangSysTable;
 
 struct TCFRef<const __CFArray *> {
     struct atomic<const __CFArray *> fRef;
@@ -71,12 +78,14 @@ struct atomic<const __CFSet *> {
     } __a_;
 };
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
+struct atomic<const unsigned int *> {
+    struct __cxx_atomic_impl<const unsigned int *, std::__cxx_atomic_base_impl<const unsigned int *>> {
+        _Atomic unsigned int *__a_value;
+    } __a_;
 };
 
-struct type {
-    unsigned char __lx[16];
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures

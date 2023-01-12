@@ -9,7 +9,7 @@
 @class INImage;
 
 @protocol INImageSizeProvider <NSObject>
-+ (CDStruct_8caa76fc)imageSizeForImage:(INImage *)arg1;
-+ (INImage *)downscaledPNGImageForImage:(INImage *)arg1 size:(CDStruct_8caa76fc)arg2 error:(id *)arg3;
++ (CDStruct_c3b9c2ee)imageSizeForImage:(INImage *)arg1;
++ (INImage *)downscaledPNGImageForImage:(INImage *)arg1 size:(CDStruct_c3b9c2ee)arg2 error:(id *)arg3;
 @end
 

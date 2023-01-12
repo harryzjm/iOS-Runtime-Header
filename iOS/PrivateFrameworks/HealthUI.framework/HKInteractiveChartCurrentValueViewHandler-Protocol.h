@@ -11,7 +11,7 @@
 
 @protocol HKInteractiveChartCurrentValueViewHandler <NSObject>
 - (void)setCurrentValueViewCallbacks:(id <HKInteractiveChartCurrentValueViewCallbacks>)arg1;
-- (void)updateCurrentValueView:(UIView *)arg1 graphView:(HKGraphView *)arg2 timeScope:(long long)arg3;
+- (void)updateCurrentValueView:(UIView *)arg1 graphView:(HKGraphView *)arg2 timeScope:(long long)arg3 showInfoButton:(_Bool)arg4;
 - (UIView *)makeCurrentValueView;
 @end
 

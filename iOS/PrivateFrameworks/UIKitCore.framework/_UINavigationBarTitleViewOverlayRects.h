@@ -13,12 +13,14 @@ __attribute__((visibility("hidden")))
     struct CGRect _backButtonRect;
     struct CGRect _leadingItemsRect;
     struct CGRect _titleRect;
+    struct CGRect _centerItemsRect;
     struct CGRect _trailingItemsRect;
     struct CGRect _trailingStaticItemRect;
 }
 
 @property(nonatomic) struct CGRect trailingStaticItemRect; // @synthesize trailingStaticItemRect=_trailingStaticItemRect;
 @property(nonatomic) struct CGRect trailingItemsRect; // @synthesize trailingItemsRect=_trailingItemsRect;
+@property(nonatomic) struct CGRect centerItemsRect; // @synthesize centerItemsRect=_centerItemsRect;
 @property(nonatomic) struct CGRect titleRect; // @synthesize titleRect=_titleRect;
 @property(nonatomic) struct CGRect leadingItemsRect; // @synthesize leadingItemsRect=_leadingItemsRect;
 @property(nonatomic) struct CGRect backButtonRect; // @synthesize backButtonRect=_backButtonRect;

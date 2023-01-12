@@ -5,6 +5,7 @@
 //
 
 @protocol FPXPCAutomaticErrorProxy
+@property unsigned long long timeoutState;
 - (id)remoteObjectProxy;
 - (id)synchronousRemoteObjectProxy;
 @end

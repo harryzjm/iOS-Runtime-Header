@@ -14,6 +14,7 @@
 - (void)clearAccessories;
 - (void)pollAccessory;
 - (void)verifyConnection;
+- (void)handleLostDiscoveryAdvertisementWithWillSleep:(_Bool)arg1;
 - (void)handleLostDiscoveryAdvertisement;
 - (void)handleReestablishedSession;
 - (void)handleUpdatedCharacteristicValues:(NSArray *)arg1;

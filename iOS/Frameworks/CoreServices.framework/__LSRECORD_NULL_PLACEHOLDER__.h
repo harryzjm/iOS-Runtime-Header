@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface __LSRECORD_NULL_PLACEHOLDER__ : NSObject <NSSecureCoding>
+@interface __LSRECORD_NULL_PLACEHOLDER__ : NSObject
 {
 }
 

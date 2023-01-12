@@ -17,6 +17,7 @@
 - (unsigned long long)urlType;
 
 @optional
+- (_Bool)usesBackgroundURL;
 - (NSString *)appIdForNetworkEvent;
 - (NSArray *)additionalStatesForNetworkEvent;
 - (unsigned long long)multipathServiceType;

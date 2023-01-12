@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-#import <TSCharts/TSDMixing-Protocol.h>
-
 @class NSArray, NSSet, NSString, TSCHChartFeature, TSUIntToIntDictionary;
 
-@interface TSCHChartType : NSObject <TSDMixing, NSCopying>
+@interface TSCHChartType : NSObject
 {
     TSCHChartFeature *_feature;
 }
@@ -128,6 +125,8 @@
 @property(readonly, nonatomic) _Bool supportsAxisLabelsOrientation;
 @property(readonly, nonatomic) _Bool supportsValueAxisLabelsPosition;
 @property(readonly, nonatomic) _Bool supportsMultipleValueScales;
+@property(readonly, nonatomic) int majorGridlineStrokeProperty;
+@property(readonly, nonatomic) _Bool supportsGridlineShadow;
 @property(readonly, nonatomic) _Bool supportsMinorGridlines;
 @property(readonly, nonatomic) _Bool supportsElementChunking;
 @property(readonly, nonatomic) int stackingSignRule;
@@ -203,11 +202,11 @@
 - (double)categoryAxisTitleRotation;
 - (double)valueAxisTitleRotation;
 - (id)titlePositionerWithInfo:(id)arg1 scene:(id)arg2;
+- (struct TSCH3DChartRotationLimit)rotation3DLimit;
 - (float)rotation3DMaxY;
 - (float)rotation3DMinY;
 - (float)rotation3DMaxX;
 - (float)rotation3DMinX;
-- (struct TSCH3DChartRotationLimit)rotation3DLimit;
 - (int)deprecated3DShadowSpecificProperty;
 - (int)deprecated3DBevelEdgesSpecificProperty;
 - (id)g_genericToSpecificPropertyMapRadar;

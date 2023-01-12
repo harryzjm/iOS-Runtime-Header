@@ -46,6 +46,7 @@
 @property(nonatomic) _Bool preferOnlineDictation;
 @property(nonatomic) long long forceDictationKeyboardType;
 @property(nonatomic) _Bool forceDefaultDictationInfo;
+@property(nonatomic) _Bool forceSpellingDictation;
 @property(nonatomic) _Bool forceDisableDictation;
 @property(nonatomic) _Bool forceEnableDictation;
 @property(nonatomic) _Bool showDictationButton;

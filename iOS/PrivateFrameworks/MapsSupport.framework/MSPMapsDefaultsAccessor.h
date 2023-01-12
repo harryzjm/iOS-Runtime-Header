@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/GEOKeyBagProtectedDataDidBecomeAvailableObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MSPMapsDefaultsAccessor : NSObject <GEOKeyBagProtectedDataDidBecomeAvailableObserver>
+@interface MSPMapsDefaultsAccessor : NSObject
 {
     _Bool _protectedDataAvailable;
 }

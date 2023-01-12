@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Sleep/HKSPSleepClient-Protocol.h>
-
 @class HKSPSleepStore;
 
 __attribute__((visibility("hidden")))
-@interface HKSPSleepStoreExportedObject : NSObject <HKSPSleepClient>
+@interface HKSPSleepStoreExportedObject : NSObject
 {
     HKSPSleepStore *_sleepStore;
 }
@@ -21,9 +19,12 @@ __attribute__((visibility("hidden")))
 - (void)sleepModeChanged:(id)arg1;
 - (void)sleepScheduleStateChanged:(id)arg1;
 - (void)sleepEventOccurred:(id)arg1;
-- (void)sleepEventRecordChanged:(id)arg1;
-- (void)sleepSettingsChanged:(id)arg1;
-- (void)sleepScheduleChanged:(id)arg1;
+- (id)_mergeExternalSleepEventRecordChange:(id)arg1 clientIdentifier:(id)arg2;
+- (void)sleepEventRecordChanged:(id)arg1 clientIdentifier:(id)arg2;
+- (id)_mergeExternalSleepSettingsChange:(id)arg1 clientIdentifier:(id)arg2;
+- (void)sleepSettingsChanged:(id)arg1 clientIdentifier:(id)arg2;
+- (id)_mergeExternalSleepScheduleChange:(id)arg1 clientIdentifier:(id)arg2;
+- (void)sleepScheduleChanged:(id)arg1 clientIdentifier:(id)arg2;
 - (void)clientShouldCheckInWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getClientIdentifierWithCompletion:(CDUnknownBlockType)arg1;
 

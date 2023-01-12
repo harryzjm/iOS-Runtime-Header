@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SKUIPredicateListViewElement, SKUIViewElement;
+#import "SKUIViewElement.h"
+
+@class NSString, SKUIPredicateListViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUITemplateDefinitionViewElement
+@interface SKUITemplateDefinitionViewElement : SKUIViewElement
 {
 }
 

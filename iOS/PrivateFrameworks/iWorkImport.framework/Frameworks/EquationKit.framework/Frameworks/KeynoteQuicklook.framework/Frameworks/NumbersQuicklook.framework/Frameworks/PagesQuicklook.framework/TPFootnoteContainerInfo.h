@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSDInfo-Protocol.h>
-
 @class NSString, TSDInfoGeometry, TSPObject;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface TPFootnoteContainerInfo : NSObject <TSDInfo>
+@interface TPFootnoteContainerInfo : NSObject
 {
     NSObject<TSDInfo> *_parentInfo;
 }

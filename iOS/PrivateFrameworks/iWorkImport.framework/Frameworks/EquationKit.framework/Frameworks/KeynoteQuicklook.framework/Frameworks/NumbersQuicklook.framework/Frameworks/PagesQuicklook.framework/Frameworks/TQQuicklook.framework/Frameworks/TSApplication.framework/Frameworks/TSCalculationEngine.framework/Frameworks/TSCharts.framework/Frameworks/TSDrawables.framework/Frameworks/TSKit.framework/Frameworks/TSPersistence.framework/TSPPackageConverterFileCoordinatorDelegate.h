@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPFileCoordinatorDelegate-Protocol.h>
-
 @class NSString, NSURL;
 
-@interface TSPPackageConverterFileCoordinatorDelegate : NSObject <TSPFileCoordinatorDelegate>
+@interface TSPPackageConverterFileCoordinatorDelegate : NSObject
 {
     NSURL *_URL;
 }

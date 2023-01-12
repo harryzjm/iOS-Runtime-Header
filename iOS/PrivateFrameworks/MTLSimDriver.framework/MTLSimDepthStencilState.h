@@ -6,14 +6,11 @@
 
 #import <Metal/_MTLDepthStencilState.h>
 
-#import <MTLSimDriver/MTLDepthStencilStateSPI-Protocol.h>
-#import <MTLSimDriver/MTLSerializerDepthStencilState-Protocol.h>
-
 @class NSString;
 @protocol MTLDevice;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimDepthStencilState : _MTLDepthStencilState <MTLDepthStencilStateSPI, MTLSerializerDepthStencilState>
+@interface MTLSimDepthStencilState : _MTLDepthStencilState
 {
     unsigned int _reference;
 }

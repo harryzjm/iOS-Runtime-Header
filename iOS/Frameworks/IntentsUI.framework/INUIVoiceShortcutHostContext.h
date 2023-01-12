@@ -6,13 +6,11 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <IntentsUI/INUIVoiceShortcutRemoteHostingInterface-Protocol.h>
-
 @class NSString;
 @protocol INUIVoiceShortcutRemoteHostingInterface;
 
 __attribute__((visibility("hidden")))
-@interface INUIVoiceShortcutHostContext : NSExtensionContext <INUIVoiceShortcutRemoteHostingInterface>
+@interface INUIVoiceShortcutHostContext : NSExtensionContext
 {
     id <INUIVoiceShortcutRemoteHostingInterface> _delegate;
 }

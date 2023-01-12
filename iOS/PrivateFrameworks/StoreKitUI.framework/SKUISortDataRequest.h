@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/NSCopying-Protocol.h>
+#import "SKUIResourceRequest.h"
 
 @class NSURL;
 @protocol SKUISortDataRequestDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUISortDataRequest <NSCopying>
+@interface SKUISortDataRequest : SKUIResourceRequest
 {
     id <SKUISortDataRequestDelegate> _delegate;
     NSURL *_sortURL;

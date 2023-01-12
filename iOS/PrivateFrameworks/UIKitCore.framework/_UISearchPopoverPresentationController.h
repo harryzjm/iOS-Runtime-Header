@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISearchControllerPresenting-Protocol.h>
+#import "UIPopoverPresentationController.h"
 
 @class NSString, UIPresentationController, UIView, _UISearchPresentationAssistant;
 @protocol _UISearchControllerPresenting;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchPopoverPresentationController <_UISearchControllerPresenting>
+@interface _UISearchPopoverPresentationController : UIPopoverPresentationController
 {
     _UISearchPresentationAssistant *_assistant;
     struct CGRect finalFrameForContainerView;

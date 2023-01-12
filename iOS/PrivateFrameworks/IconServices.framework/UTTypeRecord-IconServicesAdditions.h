@@ -15,8 +15,10 @@
 - (id)_ICP_filenameExtensions;
 @property(readonly) NSString *_IS_primaryFilenameExtension;
 - (_Bool)_IS_allowsArbitraryExtensionAsText;
+- (id)_IS_symbolProvidingRecordWithVariantKey:(id)arg1 allowNonVariantMatch:(_Bool)arg2 preferHeroOverBaseSymbol:(_Bool)arg3;
 - (id)_IS_symbolProvidingRecordWithVariantKey:(id)arg1 allowNonVariantMatch:(_Bool)arg2;
 - (id)_IS_symbolProvidingRecord;
+- (id)_IS_symbolHeroName;
 - (id)_IS_symbolNameForVariantKey:(id)arg1;
 - (id)_IS_symbolName;
 - (id)_IS_iconProvidingRecordAcceptingWildCard:(_Bool)arg1;

@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKCalendarItemInlineEditItem-Protocol.h>
-#import <EventKitUI/UITextFieldDelegate-Protocol.h>
+#import "EKEventEditItem.h"
 
 @class NSString, UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface EKEventURLInlineEditItem <UITextFieldDelegate, EKCalendarItemInlineEditItem>
+@interface EKEventURLInlineEditItem : EKEventEditItem
 {
     UITableViewCell *_cell;
     _Bool _tokenized;

@@ -6,9 +6,10 @@
 
 #import <AuthKit/NSObject-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, NSData, NSString;
+@class AKAppleIDAuthenticationContext, NSData, NSString, NSURLRequest;
 
 @protocol AKAnisetteProvisioningClientProtocol <NSObject>
+- (void)fetchPeerAttestationDataForContext:(AKAppleIDAuthenticationContext *)arg1 withRequest:(NSURLRequest *)arg2 completion:(void (^)(AKAttestationData *, NSError *))arg3;
 - (void)legacyAnisetteDataForContext:(AKAppleIDAuthenticationContext *)arg1 DSID:(NSString *)arg2 withCompletion:(void (^)(AKAnisetteData *, NSError *))arg3;
 - (void)fetchAnisetteDataForContext:(AKAppleIDAuthenticationContext *)arg1 provisionIfNecessary:(_Bool)arg2 withCompletion:(void (^)(AKAnisetteData *, NSError *))arg3;
 - (void)eraseAnisetteForContext:(AKAppleIDAuthenticationContext *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;

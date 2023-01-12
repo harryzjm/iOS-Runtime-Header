@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlayer/NSCopying-Protocol.h>
-
 @class MPMediaLibrary, MPMediaQueryCriteria, MPMediaQuerySectionInfo, NSMutableArray, NSObject;
 @protocol MPMediaLibraryResultSet, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPMediaEntityResultSetArray <NSCopying>
+@interface MPMediaEntityResultSetArray
 {
     id <MPMediaLibraryResultSet> _resultSet;
     Class _entityClass;

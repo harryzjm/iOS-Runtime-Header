@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSManagedObject.h"
+
 @class NSData, NSDate, NSSet, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface NSCKImportOperation
+@interface NSCKImportOperation : NSManagedObject
 {
 }
 

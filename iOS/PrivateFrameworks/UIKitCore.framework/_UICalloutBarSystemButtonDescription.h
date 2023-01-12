@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType configurationBlock; // @synthesize configurationBlock=m_configurationBlock;
 @property(retain, nonatomic) NSString *title; // @synthesize title=m_title;
 @property(readonly, nonatomic) SEL action; // @synthesize action=m_action;
-- (id)materializeButtonInView:(id)arg1;
+- (id)materializeButtonInView:(id)arg1 visualStyle:(id)arg2;
 - (id)initWithTitle:(id)arg1 orImage:(id)arg2 action:(SEL)arg3 type:(int)arg4;
 
 @end

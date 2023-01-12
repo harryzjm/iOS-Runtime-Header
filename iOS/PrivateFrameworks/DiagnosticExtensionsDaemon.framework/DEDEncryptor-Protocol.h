@@ -6,9 +6,10 @@
 
 #import <DiagnosticExtensionsDaemon/NSObject-Protocol.h>
 
-@class NSURL;
+@class NSDictionary, NSURL;
 
 @protocol DEDEncryptor <NSObject>
+- (NSURL *)encryptLogsAtPath:(NSURL *)arg1 outputDirectory:(NSURL *)arg2 withMetadata:(NSDictionary *)arg3;
 - (NSURL *)encryptLogsAtPath:(NSURL *)arg1 outputDirectory:(NSURL *)arg2;
 @end
 

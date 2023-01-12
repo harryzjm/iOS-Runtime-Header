@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSInvocationOperation.h>
+#import <Foundation/NSBlockOperation.h>
 
 __attribute__((visibility("hidden")))
-@interface UIDictationStreamingOperation : NSInvocationOperation
+@interface UIDictationStreamingOperation : NSBlockOperation
 {
+    long long _selectionChangeDelta;
 }
 
+@property(nonatomic) long long selectionChangeDelta; // @synthesize selectionChangeDelta=_selectionChangeDelta;
 - (void)start;
 
 @end

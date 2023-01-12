@@ -11,6 +11,8 @@
 }
 
 + (Class)archivedSelectionClass;
+- (_Bool)canBeGroupedForActivityStreamWithFullPath:(id)arg1 index:(unsigned long long)arg2;
+- (id)aggregate:(id)arg1 fullPath:(id)arg2 selectionModelTranslatorProvider:(id)arg3;
 - (_Bool)isEqual:(id)arg1;
 - (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const void *)arg1;

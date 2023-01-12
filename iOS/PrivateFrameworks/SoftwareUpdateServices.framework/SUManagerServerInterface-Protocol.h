@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, NSString, NSUUID, SUAnalyticsEvent, SUDownloadMetadata, SUDownloadOptions, SUInstallOptions, SUKeybagOptions, SUScanOptions;
+@class NSArray, NSDate, NSDictionary, NSString, NSUUID, SUAnalyticsEvent, SUDescriptor, SUDownloadMetadata, SUDownloadOptions, SUInstallOptions, SUKeybagOptions, SUPurgeOptions, SURollbackOptions, SUScanOptions;
 
 @protocol SUManagerServerInterface
 - (void)submitSUAnalyticsEventsWithName:(NSString *)arg1;
@@ -30,7 +30,9 @@
 - (void)installUpdateWithOptions:(NSArray *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)installUpdateWithInstallOptions:(SUInstallOptions *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)installUpdate:(void (^)(_Bool, NSError *))arg1;
+- (void)isUpdateReadyForInstallationWithOptions:(SUInstallOptions *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)isUpdateReadyForInstallation:(void (^)(_Bool, NSError *))arg1;
+- (void)isInstallationKeybagRequiredForDescriptor:(SUDescriptor *)arg1 result:(void (^)(_Bool, NSError *))arg2;
 - (void)isInstallationKeybagRequired:(void (^)(_Bool, NSError *))arg1;
 - (void)presentAutoUpdateBanner:(void (^)(_Bool, NSError *))arg1;
 - (void)isAutoUpdateScheduled:(void (^)(_Bool, NSError *))arg1;
@@ -39,6 +41,11 @@
 - (void)consentToAutoInstallOperation:(NSUUID *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)cancelAutoInstallOperation:(NSUUID *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)currentAutoInstallOperation:(_Bool)arg1 withResult:(void (^)(_SUAutoInstallOperationModel *, NSError *))arg2;
+- (void)scheduleRollbackRebootForLater:(void (^)(_Bool, NSError *))arg1;
+- (void)isRollingBack:(void (^)(_Bool, SURollbackDescriptor *, NSError *))arg1;
+- (void)previousRollback:(SURollbackOptions *)arg1 withResult:(void (^)(SURollbackDescriptor *, NSError *))arg2;
+- (void)rollbackUpdateWithOptions:(SURollbackOptions *)arg1 withResult:(void (^)(_Bool, SURollbackDescriptor *, NSError *))arg2;
+- (void)eligibleRollbackWithOptions:(SURollbackOptions *)arg1 withResult:(void (^)(SURollbackDescriptor *, NSError *))arg2;
 - (void)extraSpaceNeededForDownloadWithoutAppPurging:(void (^)(NSNumber *, NSError *))arg1;
 - (void)deviceHasSufficientSpaceForDownload:(void (^)(_Bool, NSError *))arg1;
 - (void)deviceHasSufficientSpaceForDownloads:(void (^)(_Bool, _Bool, NSError *, NSError *))arg1;
@@ -48,12 +55,13 @@
 - (void)updateDownloadMetadata:(SUDownloadMetadata *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)resumeDownload:(void (^)(_Bool, NSError *))arg1;
 - (void)pauseDownload:(void (^)(_Bool, NSError *))arg1;
-- (void)purgeDownload:(void (^)(_Bool, NSError *))arg1;
-- (void)cancelDownload:(void (^)(_Bool, NSError *))arg1;
+- (void)purgeDownloadWithOptions:(SUPurgeOptions *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
+- (void)cancelDownloadWithOptions:(SUPurgeOptions *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)startDownloadWithMetadata:(SUDownloadMetadata *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)startDownloadWithOptions:(SUDownloadOptions *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;
 - (void)startDownload:(void (^)(_Bool, NSError *))arg1;
 - (void)isDownloading:(void (^)(_Bool, NSError *))arg1;
+- (void)isClearingSpaceForDownload:(void (^)(_Bool, NSError *))arg1;
 - (void)descriptors:(void (^)(SUScanResults *, NSError *))arg1;
 - (void)descriptor:(void (^)(SUDescriptor *, NSError *))arg1;
 - (void)autoScanAndDownloadIfAvailable:(void (^)(SUScanResults *, NSError *))arg1;

@@ -6,9 +6,7 @@
 
 #import <Foundation/NSRecursiveLock.h>
 
-#import <DVTFoundation/DVTLocking-Protocol.h>
-
-@interface NSRecursiveLock (DVTFoundationExtensions) <DVTLocking>
+@interface NSRecursiveLock (DVTFoundationExtensions)
 - (void)dvt_asyncPerformLockedBlock:(CDUnknownBlockType)arg1;
 - (void)dvt_performLockedBlock:(CDUnknownBlockType)arg1;
 @end

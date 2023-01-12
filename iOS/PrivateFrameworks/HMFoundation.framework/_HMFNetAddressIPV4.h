@@ -7,16 +7,14 @@
 __attribute__((visibility("hidden")))
 @interface _HMFNetAddressIPV4
 {
-    struct sockaddr_in *_internal;
+    struct sockaddr_in _in;
 }
 
-@property(readonly, nonatomic) struct sockaddr_in *internal; // @synthesize internal=_internal;
 - (id)dataUsingEncoding:(unsigned long long)arg1;
 - (id)addressString;
 - (unsigned long long)addressFamily;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
 - (id)initWithSocketAddress:(const struct sockaddr *)arg1;
 - (id)init;
 

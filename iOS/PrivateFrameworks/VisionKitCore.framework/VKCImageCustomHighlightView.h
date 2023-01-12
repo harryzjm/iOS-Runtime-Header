@@ -21,13 +21,11 @@ __attribute__((visibility("hidden")))
     UIBezierPath *_normalizedHighlightPath;
     UIBezierPath *_borderedNormalizedHighlightPath;
     NSMutableArray *_highlightDots;
-    struct CGRect _startingHighlightLayerRect;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *highlightDots; // @synthesize highlightDots=_highlightDots;
 @property(nonatomic) _Bool isConfiguringHighlights; // @synthesize isConfiguringHighlights=_isConfiguringHighlights;
-@property(nonatomic) struct CGRect startingHighlightLayerRect; // @synthesize startingHighlightLayerRect=_startingHighlightLayerRect;
 @property(retain, nonatomic) UIBezierPath *borderedNormalizedHighlightPath; // @synthesize borderedNormalizedHighlightPath=_borderedNormalizedHighlightPath;
 @property(retain, nonatomic) UIBezierPath *normalizedHighlightPath; // @synthesize normalizedHighlightPath=_normalizedHighlightPath;
 @property(retain, nonatomic) CAShapeLayer *highlightColorLayer; // @synthesize highlightColorLayer=_highlightColorLayer;
@@ -42,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)beginHighlightWithRanges:(id)arg1 animated:(_Bool)arg2;
 - (void)layoutSubviews;
 - (struct CGAffineTransform)transformForHighlightLayerInCurrentBounds;
-- (struct CGRect)currentContentsRectInLayerCoodinates;
+- (struct CGRect)currentContentsRectInLayerCoordinates;
 - (void)updateHighlightLayerGeometry;
 - (void)updateHighlightLayerGeometryIfVisible;
 - (void)clearHighlightsAnimated:(_Bool)arg1 hideLayers:(_Bool)arg2;

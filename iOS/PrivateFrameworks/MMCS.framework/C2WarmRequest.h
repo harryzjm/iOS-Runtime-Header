@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MMCS/C2RequestDelegate-Protocol.h>
-
 @class C2RequestOptions, NSMutableURLRequest, NSString, NSURLSessionTask;
 
 __attribute__((visibility("hidden")))
-@interface C2WarmRequest : NSObject <C2RequestDelegate>
+@interface C2WarmRequest : NSObject
 {
     CDUnknownBlockType _callback;
     NSMutableURLRequest *_warmRequest;

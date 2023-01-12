@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s16HealthExperience21AsynchronousOperationCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC16HealthExperience23MedicalIDFetchOperation
+@interface _TtC16HealthExperience23MedicalIDFetchOperation : _$s16HealthExperience21AsynchronousOperationCN
 {
     MISSING_TYPE *medicalIDData;
     MISSING_TYPE *fetchError;

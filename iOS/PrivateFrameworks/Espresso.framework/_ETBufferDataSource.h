@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Espresso/ETDataProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ETBufferDataSource : NSObject <ETDataProvider>
+@interface _ETBufferDataSource : NSObject
 {
     unsigned long long _number_of_data_points;
     unsigned long long _batchSize;

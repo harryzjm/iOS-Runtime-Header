@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTCancellable-Protocol.h>
-
 @class DVTDispatchLock, DVTStackBacktrace, NSError, NSString;
 @protocol OS_dispatch_group;
 
-@interface DVTFuture : NSObject <DVTCancellable>
+@interface DVTFuture : NSObject
 {
     DVTDispatchLock *_lock;
     NSObject<OS_dispatch_group> *_cond_group;
@@ -35,6 +33,7 @@
 + (id)futureWithBlock:(CDUnknownBlockType)arg1;
 + (id)runOperation:(id)arg1;
 + (id)trackOperation:(id)arg1;
++ (id)swift_errorForCancellationState;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)trackFuture:(id)arg1;
@@ -52,6 +51,7 @@
 - (void)setProgress:(long long)arg1;
 @property(readonly, copy) NSString *description;
 - (id)_description;
+- (void)swift_getValueWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)observeFinishWithDispatchGroup:(id)arg1;
 - (void)observeSuccess:(CDUnknownBlockType)arg1;
 - (void)observeFailure:(CDUnknownBlockType)arg1;
@@ -70,6 +70,8 @@
 - (id)initWithError:(id)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)substitutingSuccessValueInCaseOfError:(id)arg1;
+- (id)after:(CDUnknownBlockType)arg1;
 - (id)then:(CDUnknownBlockType)arg1;
 
 // Remaining properties

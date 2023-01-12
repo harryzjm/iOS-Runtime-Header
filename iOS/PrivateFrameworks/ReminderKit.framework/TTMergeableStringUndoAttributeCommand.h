@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ReminderKit/TTMergeableStringUndoCommand-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface TTMergeableStringUndoAttributeCommand : NSObject <TTMergeableStringUndoCommand>
+@interface TTMergeableStringUndoAttributeCommand : NSObject
 {
     void *_attributeRanges;
 }

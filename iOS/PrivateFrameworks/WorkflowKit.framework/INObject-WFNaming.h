@@ -6,13 +6,9 @@
 
 #import <Intents/INObject.h>
 
-#import <WorkflowKit/WFCodableAttributeTransformable-Protocol.h>
-#import <WorkflowKit/WFINObject-Protocol.h>
-#import <WorkflowKit/WFNaming-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface INObject (WFNaming) <WFNaming, WFINObject, WFCodableAttributeTransformable>
+@interface INObject (WFNaming)
 @property(readonly, copy, nonatomic) NSString *wfName;
 - (id)wf_initWithIdentifier:(id)arg1 displayString:(id)arg2;
 - (void)wf_transformUsingCodableAttribute:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -15,10 +15,15 @@
     MISSING_TYPE *bundleSubscriptionStatus;
     MISSING_TYPE *newsletterSubscription;
     MISSING_TYPE *notificationCategoriesAllowlist;
+    MISSING_TYPE *authorizationStatus;
     MISSING_TYPE *firstAppLaunchDate;
     MISSING_TYPE *userSegmentsSetIDs;
+    MISSING_TYPE *sportsOnboardingStatus;
+    MISSING_TYPE *sportsOnboardingCompletedDate;
+    MISSING_TYPE *lastFetchedSettings;
     MISSING_TYPE *userInfo;
     MISSING_TYPE *configurationManager;
+    MISSING_TYPE *notificationService;
 }
 
 @end

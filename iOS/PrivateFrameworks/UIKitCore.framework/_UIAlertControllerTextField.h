@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITextField.h"
+
 @class _UIAlertControllerTextFieldView;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerTextField
+@interface _UIAlertControllerTextField : UITextField
 {
     _UIAlertControllerTextFieldView *_textFieldView;
 }

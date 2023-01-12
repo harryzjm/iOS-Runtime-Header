@@ -6,11 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCPProtoLivePhotoKeyFrameStillResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoLivePhotoKeyFrameStillResult : PBCodable
 {
     float _sharpness;
     float _stillTime;

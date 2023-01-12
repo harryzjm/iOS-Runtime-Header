@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <USDKit/USKIterator-Protocol.h>
-
-@interface USKPropertyIterator : NSObject <USKIterator>
+@interface USKPropertyIterator : NSObject
 {
-    struct vector<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty, std::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> _properties;
-    struct __wrap_iter<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty *> {
+    struct vector<pxrInternal_v0_21__aapl__pxrReserved__::UsdProperty, std::allocator<pxrInternal_v0_21__aapl__pxrReserved__::UsdProperty>> _properties;
+    struct __wrap_iter<pxrInternal_v0_21__aapl__pxrReserved__::UsdProperty *> {
         struct UsdProperty *__i;
     } _it;
 }

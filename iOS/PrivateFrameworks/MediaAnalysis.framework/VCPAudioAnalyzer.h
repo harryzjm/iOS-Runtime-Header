@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (int)processSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (int)finalizeAnalysisAtTime:(const CDStruct_1b6d18a9 *)arg1;
 - (int)processAudioSamples:(struct AudioBufferList *)arg1 timestamp:(struct AudioTimeStamp)arg2;
-- (int)setupWithSample:(struct opaqueCMSampleBuffer *)arg1;
+- (int)setupWithSample:(struct opaqueCMSampleBuffer *)arg1 andTrackDuration:(CDStruct_1b6d18a9)arg2;
 - (id)audioFormatRequirements;
 - (void)dealloc;
 - (id)initWithAnalysisTypes:(unsigned long long)arg1 forStreaming:(_Bool)arg2;

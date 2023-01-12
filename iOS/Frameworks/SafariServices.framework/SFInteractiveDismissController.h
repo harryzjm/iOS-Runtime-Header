@@ -6,14 +6,11 @@
 
 #import <UIKit/UIPercentDrivenInteractiveTransition.h>
 
-#import <SafariServices/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <SafariServices/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSString, UIScreenEdgePanGestureRecognizer, UIView, UIViewController;
 @protocol SFInteractiveDismissControllerDelegate, UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface SFInteractiveDismissController : UIPercentDrivenInteractiveTransition <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface SFInteractiveDismissController : UIPercentDrivenInteractiveTransition
 {
     id <UIViewControllerContextTransitioning> _transitionContext;
     unsigned long long _dismissMode;

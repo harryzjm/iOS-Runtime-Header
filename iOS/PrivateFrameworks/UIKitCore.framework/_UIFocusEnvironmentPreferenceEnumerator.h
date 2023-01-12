@@ -6,22 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFocusEnvironmentPreferenceEnumerationContextDelegate-Protocol.h>
-
-@class NSString, _UIDebugLogReport;
+@class NSString, _UIDebugLogNode;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusEnvironmentPreferenceEnumerator : NSObject <_UIFocusEnvironmentPreferenceEnumerationContextDelegate>
+@interface _UIFocusEnvironmentPreferenceEnumerator : NSObject
 {
     _Bool _allowsInferringPreferences;
     long long _enumerationMode;
     CDUnknownBlockType _didVisitAllPreferencesForEnvironmentHandler;
     CDUnknownBlockType _shouldInferPreferenceForEnvironmentHandler;
-    _UIDebugLogReport *_debugReport;
+    _UIDebugLogNode *_debugLog;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _UIDebugLogReport *debugReport; // @synthesize debugReport=_debugReport;
+@property(retain, nonatomic) _UIDebugLogNode *debugLog; // @synthesize debugLog=_debugLog;
 @property(copy, nonatomic) CDUnknownBlockType shouldInferPreferenceForEnvironmentHandler; // @synthesize shouldInferPreferenceForEnvironmentHandler=_shouldInferPreferenceForEnvironmentHandler;
 @property(nonatomic) _Bool allowsInferringPreferences; // @synthesize allowsInferringPreferences=_allowsInferringPreferences;
 @property(copy, nonatomic) CDUnknownBlockType didVisitAllPreferencesForEnvironmentHandler; // @synthesize didVisitAllPreferencesForEnvironmentHandler=_didVisitAllPreferencesForEnvironmentHandler;

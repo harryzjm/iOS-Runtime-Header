@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSPredicateVisitor-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSPersistentHistoryPredicateRemapper : NSObject <NSPredicateVisitor>
+@interface _NSPersistentHistoryPredicateRemapper : NSObject
 {
     NSString *_storeID;
     _Bool _previousKeyPathExpressionWasToken;

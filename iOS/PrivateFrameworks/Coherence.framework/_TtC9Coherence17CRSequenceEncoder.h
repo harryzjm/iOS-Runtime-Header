@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)setStorage:(id)arg1;
+- (_Bool)setStorage:(id)arg1 error:(id *)arg2;
 
 @end
 

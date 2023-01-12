@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSArray, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface SKUIReportAConcernConfiguration : NSObject <NSCopying>
+@interface SKUIReportAConcernConfiguration : NSObject
 {
     NSURL *_reportConcernURL;
     long long _itemIdentifier;

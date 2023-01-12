@@ -6,7 +6,7 @@
 
 #import <RelevanceEngineUI/CLKMonochromeComplicationView-Protocol.h>
 
-@class CLKDevice, CLKFullColorImageProvider, NSObject;
+@class CLKDevice, CLKFullColorImageProvider, NSObject, UIFontDescriptor;
 @protocol OS_dispatch_group;
 
 @protocol CLKFullColorImageView <CLKMonochromeComplicationView>
@@ -16,6 +16,8 @@
 - (id)initFullColorImageViewWithDevice:(CLKDevice *)arg1;
 
 @optional
+@property(nonatomic) double fontSizeFactor;
+@property(copy, nonatomic) UIFontDescriptor *fontDescriptor;
 - (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(NSObject<OS_dispatch_group> *)arg2;
 @end
 

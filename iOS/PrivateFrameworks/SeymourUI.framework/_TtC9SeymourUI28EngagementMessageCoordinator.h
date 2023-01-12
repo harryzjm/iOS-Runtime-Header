@@ -12,9 +12,11 @@
 {
     MISSING_TYPE *coordinator;
     MISSING_TYPE *bag;
+    MISSING_TYPE *eventHub;
     MISSING_TYPE *group;
     MISSING_TYPE *marketingMetricFieldsProvider;
     MISSING_TYPE *marketingSubscriptionStatusProvider;
+    MISSING_TYPE *subscriptionToken;
 }
 
 @end

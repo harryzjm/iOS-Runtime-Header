@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UISplittableInputView-Protocol.h>
-#import <UIKitCore/_UIRemoteKeyboardInputViewPlaceholder-Protocol.h>
+#import "UIView.h"
 
-@class NSString, UIView, UIWindowScene;
+@class NSString, UIWindowScene;
 
 __attribute__((visibility("hidden")))
-@interface _UIRemoteKeyboardPlaceholderView <UISplittableInputView, _UIRemoteKeyboardInputViewPlaceholder>
+@interface _UIRemoteKeyboardPlaceholderView : UIView
 {
     UIView *_mirroredView;
     struct CGSize _fixedSize;
@@ -24,6 +23,7 @@ __attribute__((visibility("hidden")))
 + (id)placeholderWithWidthSizer:(CDUnknownBlockType)arg1 heightWithScene:(id)arg2;
 + (id)placeholderWithWidth:(double)arg1 height:(double)arg2;
 + (id)placeholderForView:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *associatedView; // @synthesize associatedView=_associatedView;
 @property(retain, nonatomic) UIView *fallbackView; // @synthesize fallbackView=_fallbackView;
 @property(readonly, nonatomic) _Bool isLocalMinimumHeightPlaceholder;
@@ -35,8 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
-@property(readonly, retain) UIView *placeheldView;
-- (void)dealloc;
+@property(readonly) UIView *placeheldView;
 - (id)initWithSize:(struct CGSize)arg1;
 - (void)_setProgress:(double)arg1 boundedBy:(double)arg2;
 - (void)_endSplitTransitionIfNeeded:(_Bool)arg1;

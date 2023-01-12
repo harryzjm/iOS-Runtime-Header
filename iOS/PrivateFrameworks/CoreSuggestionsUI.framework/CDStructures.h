@@ -4,10 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CGPoint {
@@ -24,17 +20,4 @@ struct CGSize {
     double _field1;
     double _field2;
 };
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    id _field1;
-    id _field2;
-    long long _field3;
-} CDStruct_b01a1f36;
 

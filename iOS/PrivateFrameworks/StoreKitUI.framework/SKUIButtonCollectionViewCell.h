@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class IKViewElementStyle, NSString, SKUIButtonViewElement, SKUIBuyButtonDescriptor, UIControl;
 
 __attribute__((visibility("hidden")))
-@interface SKUIButtonCollectionViewCell <SKUIViewElementView>
+@interface SKUIButtonCollectionViewCell
 {
     UIControl *_button;
     id _buttonImageResourceCacheKey;

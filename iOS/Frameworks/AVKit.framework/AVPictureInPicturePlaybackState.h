@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AVPictureInPicturePlaybackState : NSObject <NSCopying>
+@interface AVPictureInPicturePlaybackState : NSObject
 {
     _Bool _paused;
     double _initializationTimestamp;

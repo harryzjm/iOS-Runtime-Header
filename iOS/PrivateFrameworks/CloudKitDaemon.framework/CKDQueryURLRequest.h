@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/CKDURLRequestPipelining-Protocol.h>
+#import "CKDURLRequest.h"
 
 @class CKQuery, CKRecordZoneID, NSArray, NSData, NSMutableArray, NSSet, NSString;
 
-@interface CKDQueryURLRequest <CKDURLRequestPipelining>
+@interface CKDQueryURLRequest : CKDURLRequest
 {
     NSMutableArray *_queryResponses;
     _Bool _shouldFetchAssetContent;

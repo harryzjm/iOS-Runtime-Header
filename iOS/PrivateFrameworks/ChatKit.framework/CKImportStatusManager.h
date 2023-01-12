@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/PXAssetImportStatusManager-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKImportStatusManager : NSObject <PXAssetImportStatusManager>
+@interface CKImportStatusManager : NSObject
 {
 }
 

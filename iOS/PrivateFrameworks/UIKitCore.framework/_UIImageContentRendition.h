@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor;
+@class UIColor, _UIImageContentRenditionResult;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageContentRendition : NSObject
 {
-    _Bool _requiresMasking;
     struct CGImage *_CGImage;
+    _UIImageContentRenditionResult *_result;
     UIColor *_multiplyColor;
 }
 

@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "BYDevice.h"
+
 __attribute__((visibility("hidden")))
-@interface BYDeviceForTest
+@interface BYDeviceForTest : BYDevice
 {
     _Bool _hasSolidStateHomeButton;
     _Bool _supportsTrueTone;

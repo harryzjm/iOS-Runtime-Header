@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldForceLegacyLeftBackTitleMarginForCustomBackButtonBackground:(id)arg1;
 - (id)buttonFontForStyle:(long long)arg1;
 @property(readonly, nonatomic) struct UIEdgeInsets buttonContentEdgeInsets;
-@property(readonly, copy, nonatomic) UIFont *defaultTitleFont;
 @property(readonly, nonatomic) double backIndicatorBottomMargin;
 @property(readonly, nonatomic) double navigationItemBaselineOffset;
 @property(readonly, nonatomic) double promptTextOffset;

@@ -13,10 +13,10 @@
     MISSING_TYPE *diff;
     MISSING_TYPE *localOffsets;
     MISSING_TYPE *localNumberOfLines;
-    MISSING_TYPE *localAttributedText;
     MISSING_TYPE *remoteOffsets;
     MISSING_TYPE *remoteNumberOfLines;
-    MISSING_TYPE *remoteAttributedText;
+    MISSING_TYPE *localChanges;
+    MISSING_TYPE *remoteChanges;
     MISSING_TYPE *$__lazy_storage_$_titleAttributedText;
     MISSING_TYPE *$__lazy_storage_$_descriptionAttributedText;
     MISSING_TYPE *$__lazy_storage_$_changeSetAttributedText;

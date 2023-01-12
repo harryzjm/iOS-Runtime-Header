@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKDContainer, CKDPCSMemoryCache, CKDPCSSQLCache, NSMutableDictionary;
+@class CKAccountOverrideInfo, CKContainerID, CKDPCSMemoryCache, CKDPCSSQLCache, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CKDPCSCache : NSObject
@@ -15,7 +15,10 @@
     CKDPCSMemoryCache *_recordMemoryCache;
     CKDPCSMemoryCache *_zoneMemoryCache;
     CKDPCSMemoryCache *_shareMemoryCache;
-    CKDContainer *_container;
+    CKContainerID *_containerID;
+    CKAccountOverrideInfo *_accountOverrideInfo;
+    NSString *_accountID;
+    NSString *_encryptionServiceName;
     NSMutableDictionary *_outstandingFetches;
     NSObject<OS_dispatch_queue> *_fetchQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -25,7 +28,10 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
 @property(retain, nonatomic) NSMutableDictionary *outstandingFetches; // @synthesize outstandingFetches=_outstandingFetches;
-@property(nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
+@property(readonly, nonatomic) NSString *encryptionServiceName; // @synthesize encryptionServiceName=_encryptionServiceName;
+@property(readonly, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
+@property(readonly, nonatomic) CKAccountOverrideInfo *accountOverrideInfo; // @synthesize accountOverrideInfo=_accountOverrideInfo;
+@property(readonly, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property(readonly, nonatomic) CKDPCSMemoryCache *shareMemoryCache; // @synthesize shareMemoryCache=_shareMemoryCache;
 @property(readonly, nonatomic) CKDPCSMemoryCache *zoneMemoryCache; // @synthesize zoneMemoryCache=_zoneMemoryCache;
 @property(readonly, nonatomic) CKDPCSMemoryCache *recordMemoryCache; // @synthesize recordMemoryCache=_recordMemoryCache;
@@ -55,7 +61,7 @@
 - (void)_lockedGetSQLCacheWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)runMemoryCacheEviction;
 - (void)dealloc;
-- (id)initWithContainer:(id)arg1;
+- (id)initWithDeviceContext:(id)arg1 containerID:(id)arg2 accountOverrideInfo:(id)arg3 accountID:(id)arg4 encryptionServiceName:(id)arg5;
 - (void)clearInvalidatedPCSSQLCacheEntriesWithSkipZonePCS:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearPCSMemoryCaches;
 - (void)clearPCSCaches;

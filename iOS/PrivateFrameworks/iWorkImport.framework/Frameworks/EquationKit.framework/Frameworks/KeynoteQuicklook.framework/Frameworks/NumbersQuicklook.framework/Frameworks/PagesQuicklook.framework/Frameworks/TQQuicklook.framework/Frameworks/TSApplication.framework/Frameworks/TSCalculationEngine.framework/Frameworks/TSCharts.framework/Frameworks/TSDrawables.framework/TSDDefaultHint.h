@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/TSDHint-Protocol.h>
-
 @class NSString;
 @protocol TSDHint;
 
-@interface TSDDefaultHint : NSObject <TSDHint>
+@interface TSDDefaultHint : NSObject
 {
     struct CGRect mBounds;
     unsigned long long mEdges;

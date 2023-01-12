@@ -6,12 +6,10 @@
 
 #import <UIKit/UIGestureRecognizer.h>
 
-#import <TSReading/TSDGesture-Protocol.h>
-
 @class NSString, TSDRep;
 @protocol TSDGestureDelegate, TSDGestureTarget;
 
-@interface UIGestureRecognizer (TSDGestureDispatcher) <TSDGesture>
+@interface UIGestureRecognizer (TSDGestureDispatcher)
 - (_Bool)isDone;
 @property(readonly, nonatomic) int gestureState;
 @property(nonatomic) id <TSDGestureDelegate> gestureDelegate;

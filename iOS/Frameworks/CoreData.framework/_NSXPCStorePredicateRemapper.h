@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSPredicateVisitor-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _NSXPCStorePredicateRemapper : NSObject <NSPredicateVisitor>
+@interface _NSXPCStorePredicateRemapper : NSObject
 {
 }
 

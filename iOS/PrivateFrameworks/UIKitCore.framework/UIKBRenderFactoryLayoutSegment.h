@@ -23,13 +23,14 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)segmentWithTraits:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool requireAllMatches; // @synthesize requireAllMatches=_requireAllMatches;
 @property(nonatomic) int keyStates; // @synthesize keyStates=_states;
 @property(readonly, nonatomic) UIKBRenderTraits *traits; // @synthesize traits=_traits;
 - (_Bool)containsPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 withKeyplane:(id)arg3;
+- (_Bool)shouldOverlayTraitsForKey:(id)arg1;
 - (void)addRelativeLayoutRectFromEdge:(unsigned long long)arg1 ofCachedKey:(id)arg2;
 - (void)addLayoutRect:(struct CGRect)arg1 asTriangle:(unsigned long long)arg2;
-- (void)dealloc;
 - (id)initWithTraits:(id)arg1;
 
 @end

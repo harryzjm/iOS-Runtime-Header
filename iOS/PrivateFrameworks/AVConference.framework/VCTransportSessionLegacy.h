@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/InterfaceListenerDelegate-Protocol.h>
-#import <AVConference/LoopbackSocketTunnelDelegate-Protocol.h>
-#import <AVConference/VCConnectionManagerDelegate-Protocol.h>
-
 @class GKInterfaceListener, LoopbackSocketTunnel, NSCondition, NSData, NSDictionary, NSMutableDictionary, NSObject, NSString, TCPTunnelClient, VCTransport;
 @protocol OS_dispatch_source, VCConnectionProtocol, VCTransportSessionLegacyDelegate, VideoConferenceRealTimeChannel;
 
 __attribute__((visibility("hidden")))
-@interface VCTransportSessionLegacy <LoopbackSocketTunnelDelegate, InterfaceListenerDelegate, VCConnectionManagerDelegate>
+@interface VCTransportSessionLegacy
 {
     unsigned char _localU8Version;
     long long relayState;
@@ -105,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)loopbackSocketTunnel:(id)arg1 receivedData:(id)arg2 from:(struct tagIPPORT *)arg3;
 - (void)deleteTCPTunnel;
 - (_Bool)createTCPTunnelForParticipantID:(id)arg1 relayDictionary:(id)arg2 didOriginateRequest:(_Bool)arg3 relayType:(unsigned char)arg4 error:(id *)arg5;
+- (void)didMediaQualityDegrade:(_Bool)arg1;
 - (void)handleRATChanged:(id)arg1;
 - (void)updateParticipantGenerationCounter:(unsigned char)arg1;
 - (void)didUpdatePreferredInterfaceForDuplication:(unsigned char)arg1 notifyPeer:(_Bool)arg2 enableDuplication:(_Bool)arg3 isMediaUnrecoverableSignal:(_Bool)arg4;

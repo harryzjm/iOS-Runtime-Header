@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/NSObject-Protocol.h>
-
 @class NSProgress;
 @protocol PXAudioAsset;
 
-@protocol PXAudioCueProvider <NSObject>
+@protocol PXAudioCueProvider
 - (NSProgress *)requestCuesForAudioAsset:(id <PXAudioAsset>)arg1 resultHandler:(void (^)(id <PXAudioCueSource>, NSError *))arg2;
 @end
 

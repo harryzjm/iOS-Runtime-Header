@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class OADPoint3D, OADVector3D;
 
 __attribute__((visibility("hidden")))
-@interface OADBackdrop : NSObject <NSCopying>
+@interface OADBackdrop : NSObject
 {
     OADPoint3D *mAnchor;
     OADVector3D *mNormal;

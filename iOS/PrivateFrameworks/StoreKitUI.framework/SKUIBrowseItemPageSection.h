@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIStorePageSection.h"
+
 @class SKUIBrowseItemComponent, SKUIViewElementLayoutContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIBrowseItemPageSection
+@interface SKUIBrowseItemPageSection : SKUIStorePageSection
 {
     SKUIViewElementLayoutContext *_layoutContext;
     SKUIBrowseItemComponent *_component;

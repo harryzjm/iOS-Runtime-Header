@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarVisualProvider_CustomSplit-Protocol.h>
+#import "_UIStatusBarVisualProvider_FixedSplit.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_Split1284 <_UIStatusBarVisualProvider_CustomSplit>
+@interface _UIStatusBarVisualProvider_Split1284 : _UIStatusBarVisualProvider_FixedSplit
 {
 }
 

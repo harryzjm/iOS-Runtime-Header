@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/VTKReferenceItemsSource-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VTKAssetCatalogReferenceItemsSource : NSObject <VTKReferenceItemsSource>
+@interface VTKAssetCatalogReferenceItemsSource : NSObject
 {
 }
 

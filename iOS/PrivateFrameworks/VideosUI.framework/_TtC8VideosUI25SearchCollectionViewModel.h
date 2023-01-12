@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI19CollectionViewModelCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI25SearchCollectionViewModel
+@interface _TtC8VideosUI25SearchCollectionViewModel : _$s8VideosUI19CollectionViewModelCN
 {
     MISSING_TYPE *appearanceType;
     MISSING_TYPE *defaultGridStyle;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SKAction;
+#import "SKAction.h"
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKRunAction
+@interface SKRunAction : SKAction
 {
     SKAction *_action;
     NSString *_subSpriteKey;

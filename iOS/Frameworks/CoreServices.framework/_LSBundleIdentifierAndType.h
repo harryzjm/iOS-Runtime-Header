@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LSBundleIdentifierAndType : NSObject <NSCopying>
+@interface _LSBundleIdentifierAndType : NSObject
 {
     NSString *_bundleID;
     NSString *_type;

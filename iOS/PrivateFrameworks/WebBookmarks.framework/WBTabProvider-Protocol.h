@@ -11,11 +11,11 @@
 @protocol WBTabProvider <NSObject>
 @property(nonatomic) unsigned long long maximumTabsPerGroup;
 @property(readonly, copy, nonatomic) NSArray *tabGroups;
-@property(readonly, copy, nonatomic) NSArray *recentlyClosedTabs;
 @property(readonly, nonatomic) int privatePinnedTabsFolderID;
 @property(readonly, nonatomic) int pinnedTabsFolderID;
 - (WBTab *)tabWithUUID:(NSString *)arg1;
 - (WBTabGroup *)tabGroupWithUUID:(NSString *)arg1;
 - (NSArray *)tabsForTabGroup:(WBTabGroup *)arg1;
+- (void)tabGroupsWithCompletionHandler:(void (^)(NSArray *))arg1;
 @end
 

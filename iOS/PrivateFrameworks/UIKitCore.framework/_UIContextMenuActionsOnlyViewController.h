@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewController.h"
+
 @class UITargetedPreview;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuActionsOnlyViewController
+@interface _UIContextMenuActionsOnlyViewController : UIViewController
 {
     UITargetedPreview *_sourcePreview;
 }
@@ -15,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UITargetedPreview *sourcePreview; // @synthesize sourcePreview=_sourcePreview;
 - (_Bool)_canShowWhileLocked;
-- (_Bool)_canInfluenceSceneOrientation;
+- (_Bool)_defersToPresentingViewControllerForSupportedInterfaceOrientations;
 - (struct CGSize)preferredContentSize;
 - (void)viewDidLoad;
 - (id)initWithTargetedPreview:(id)arg1;

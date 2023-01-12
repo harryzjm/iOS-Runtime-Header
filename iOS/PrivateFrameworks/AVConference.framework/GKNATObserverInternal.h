@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GKNATObserver.h"
+
 @class GKNATObserver_SCContext, NSMutableDictionary, NSObject, NSRecursiveLock;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface GKNATObserverInternal
+@interface GKNATObserverInternal : GKNATObserver
 {
     id _delegate;
     struct __SCDynamicStore *_dynamicStore;

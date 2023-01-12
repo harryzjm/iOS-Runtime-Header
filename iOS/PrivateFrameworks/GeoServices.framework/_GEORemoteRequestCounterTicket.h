@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEORequestCounterTicketBase.h"
+
 @class GEORequestCounterRemoteProxy;
 
 __attribute__((visibility("hidden")))
-@interface _GEORemoteRequestCounterTicket
+@interface _GEORemoteRequestCounterTicket : GEORequestCounterTicketBase
 {
     GEORequestCounterRemoteProxy *_remoteProxy;
 }

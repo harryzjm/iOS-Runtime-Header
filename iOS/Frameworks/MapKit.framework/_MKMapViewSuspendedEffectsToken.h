@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/_MKMapViewSuspendedEffectsToken-Protocol.h>
-
 @class MKMapView, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MKMapViewSuspendedEffectsToken : NSObject <_MKMapViewSuspendedEffectsToken>
+@interface _MKMapViewSuspendedEffectsToken : NSObject
 {
     _Bool _invalidated;
     MKMapView *_owner;

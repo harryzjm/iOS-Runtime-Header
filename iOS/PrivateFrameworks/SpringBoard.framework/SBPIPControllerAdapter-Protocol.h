@@ -14,7 +14,6 @@
 - (long long)tetheringModeForScenePersistenceIdentifier:(NSString *)arg1;
 - (_Bool)isStoppingOrCancellingPictureForPIPController:(SBPIPController *)arg1 applicationWithBundleIdentifier:(NSString *)arg2 scenePersistenceIdentifier:(NSString *)arg3;
 - (_Bool)shouldStartPictureInPictureForPIPController:(SBPIPController *)arg1 applicationWithProcessIdentifierEnteringBackground:(int)arg2 scenePersistenceIdentifier:(NSString *)arg3;
-- (_Bool)isPictureInPictureActiveForPIPController:(SBPIPController *)arg1;
 - (_Bool)isPresentingPictureInPictureForPIPController:(SBPIPController *)arg1 applicationBundleIdentifier:(NSString *)arg2;
 - (_Bool)isStartingStoppingOrCancellingPictureInPictureForPIPController:(SBPIPController *)arg1;
 - (long long)contentTypeForPIPController:(SBPIPController *)arg1;

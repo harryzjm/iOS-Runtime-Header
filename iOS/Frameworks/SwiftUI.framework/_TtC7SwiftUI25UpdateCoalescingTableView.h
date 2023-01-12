@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (double)_alignedContentMarginGivenMargin:(double)arg1;
 - (void)safeAreaInsetsDidChange;
 - (void)layoutMarginsDidChange;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(nonatomic) struct CGRect bounds;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;

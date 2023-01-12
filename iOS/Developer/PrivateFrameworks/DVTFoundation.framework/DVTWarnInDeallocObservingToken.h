@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class DVTPrivateObservingToken, DVTStackBacktrace;
+@class DVTPrivateObservingToken;
 
 @interface DVTWarnInDeallocObservingToken
 {
@@ -16,7 +16,7 @@
 - (void)dealloc;
 - (_Bool)isCancelled;
 - (void)cancel;
-@property(readonly) DVTStackBacktrace *creationBacktrace;
+- (id)creationBacktrace;
 - (id)initWithObject:(id)arg1;
 
 @end

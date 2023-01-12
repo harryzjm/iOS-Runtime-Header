@@ -19,6 +19,7 @@
 @property(readonly, nonatomic) _Bool isMe;
 @property(readonly, nonatomic) _Bool isUserCreated;
 @property(readonly, nonatomic) _Bool isFavorite;
+@property(readonly, nonatomic) NSString *shareParticipantLocalIdentifier;
 @property(readonly, nonatomic) NSString *contactID;
 @property(readonly, nonatomic) NSString *localIdentifier;
 @property(readonly, nonatomic) NSString *fullName;

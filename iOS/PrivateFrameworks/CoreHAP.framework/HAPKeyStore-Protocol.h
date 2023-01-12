@@ -6,14 +6,15 @@
 
 #import <CoreHAP/NSObject-Protocol.h>
 
-@class HAPPairingIdentity, NSArray, NSData, NSDictionary, NSString, NSUUID;
+@class HAPPairingIdentity, HMFPairingIdentity, NSArray, NSData, NSDictionary, NSString, NSUUID;
 
 @protocol HAPKeyStore <NSObject>
 @property(readonly, nonatomic) NSString *activeControllerPairingIdentifier;
 - (_Bool)removeAllAccessoryKeys:(id *)arg1;
 - (_Bool)removeAccessoryKeyForName:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)registerAccessoryWithHomeKit:(NSString *)arg1 error:(id *)arg2;
-- (_Bool)updateAccessoryPublicKey:(HAPPairingIdentity *)arg1 error:(id *)arg2;
+- (_Bool)isAccessoryAssociatedWithControllerKey:(NSString *)arg1 controllerID:(id *)arg2;
+- (_Bool)establishRelationshipBetweenAccessoryAndControllerKey:(HAPPairingIdentity *)arg1 error:(id *)arg2;
 - (_Bool)savePublicKey:(NSData *)arg1 forAccessoryName:(NSString *)arg2 error:(id *)arg3;
 - (HAPPairingIdentity *)readControllerPairingKeyForAccessory:(NSString *)arg1 error:(id *)arg2;
 - (NSData *)readPublicKeyForAccessoryName:(NSString *)arg1 registeredWithHomeKit:(_Bool *)arg2 error:(id *)arg3;
@@ -35,11 +36,17 @@
 - (HAPPairingIdentity *)getLocalPairingIdentity:(id *)arg1;
 
 @optional
-- (NSArray *)allAccessoryPairingKeysWithError:(id *)arg1;
+- (HMFPairingIdentity *)pairingIdentityForAppleMediaAccessoryWithUUID:(NSUUID *)arg1;
+- (_Bool)saveAppleMediaAccessoryPairingIdentity:(HMFPairingIdentity *)arg1;
+- (_Bool)saveHH2PairingIdentity:(HAPPairingIdentity *)arg1 syncable:(_Bool)arg2;
+- (_Bool)isHH2KeyType:(NSString *)arg1;
+- (HAPPairingIdentity *)getHH2ControllerKey;
+- (NSArray *)allAccessoryPairingKeys;
 - (_Bool)deletePairingKeysForAccessory:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)createAccessoryPairingKey:(HAPPairingIdentity *)arg1 error:(id *)arg2;
 - (_Bool)updateAccessoryPairingKey:(HAPPairingIdentity *)arg1 error:(id *)arg2;
 - (HAPPairingIdentity *)readAccessoryPairingKeyForAccessory:(NSString *)arg1 error:(id *)arg2;
+- (HAPPairingIdentity *)getAssociatedControllerKeyForAccessory:(NSString *)arg1;
 - (NSDictionary *)getPeripherialIdentifiersAndAccessoryNames;
 - (NSUUID *)readPeripheralIdentifierForAccessoryIdentifier:(NSString *)arg1 protocolVersion:(unsigned long long *)arg2 resumeSessionID:(unsigned long long *)arg3 error:(id *)arg4;
 - (_Bool)deleteAllPeripheralIdentifiers:(id *)arg1;

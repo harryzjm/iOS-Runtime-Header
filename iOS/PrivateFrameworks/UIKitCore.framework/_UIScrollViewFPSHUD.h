@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UILabel, _UIScrollViewFPSHUDGraphView;
 
 __attribute__((visibility("hidden")))
-@interface _UIScrollViewFPSHUD
+@interface _UIScrollViewFPSHUD : UIView
 {
     UILabel *_preferredLabel;
     UILabel *_reportedLabel;

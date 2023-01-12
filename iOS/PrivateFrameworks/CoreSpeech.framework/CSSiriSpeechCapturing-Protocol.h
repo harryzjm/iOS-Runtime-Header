@@ -10,6 +10,7 @@
 @protocol CSSiriSpeechCapturingDelegate, OS_dispatch_queue;
 
 @protocol CSSiriSpeechCapturing <NSObject>
+- (void)disableSpeechPacketGeneration:(_Bool)arg1;
 - (void)enforcePreviousEndpointHint;
 - (void)updateEndpointHintForDuration:(double)arg1 completion:(void (^)(_Bool, NSArray *))arg2;
 - (void)updateServerEndpointFeatures:(CSServerEndpointFeatures *)arg1;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKit/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString, UIViewController;
 @protocol SKRemoteDismissingViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKRemoteDismissingTransition : NSObject <UIViewControllerAnimatedTransitioning>
+@interface SKRemoteDismissingTransition : NSObject
 {
     UIViewController<SKRemoteDismissingViewController> *_viewController;
 }

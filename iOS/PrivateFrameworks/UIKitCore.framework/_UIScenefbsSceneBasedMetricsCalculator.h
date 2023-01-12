@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneMetricsCalculating-Protocol.h>
-
 @class NSString, UIWindowScene;
 
 __attribute__((visibility("hidden")))
-@interface _UIScenefbsSceneBasedMetricsCalculator : NSObject <_UISceneMetricsCalculating>
+@interface _UIScenefbsSceneBasedMetricsCalculator : NSObject
 {
     UIWindowScene *_scene;
 }

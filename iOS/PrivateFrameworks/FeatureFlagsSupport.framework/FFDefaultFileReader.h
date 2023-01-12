@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <FeatureFlagsSupport/FFFileReader-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface FFDefaultFileReader : NSObject <FFFileReader>
+@interface FFDefaultFileReader : NSObject
 {
 }
 
+- (id)contentsOfDirectoryAtURL:(id)arg1 error:(id *)arg2;
 - (id)dictionaryWithContentsOfURL:(id)arg1 error:(id *)arg2;
 
 @end

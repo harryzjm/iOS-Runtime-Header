@@ -8,14 +8,18 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC12SeymourMedia23StreamingKeyProvisioner : NSObject
 {
     MISSING_TYPE *workoutIdentifier;
     MISSING_TYPE *asset;
     MISSING_TYPE *assetClient;
+    MISSING_TYPE *certificate;
+    MISSING_TYPE *backoffIntervalProvider;
     MISSING_TYPE *keyDeliveryClient;
     MISSING_TYPE *contentKeySession;
     MISSING_TYPE *state;
+    MISSING_TYPE *onUnrecoverableError;
 }
 
 - (void).cxx_destruct;

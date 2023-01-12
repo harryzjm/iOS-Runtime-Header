@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreBookkeeper/SBKSyncTransactionProcessing-Protocol.h>
-#import <StoreBookkeeper/SBKTransactionControllerDelegate-Protocol.h>
+#import "SBKSyncRequestHandler.h"
 
 @class NSDictionary, NSError, NSMutableDictionary, NSObject, NSString, SBKSyncTransaction, SBKTransactionController;
 @protocol OS_dispatch_queue, SBKUniversalPlaybackPositionDataSource, SBKUniversalPlaybackPositionTransactionContext;
 
 __attribute__((visibility("hidden")))
-@interface SBKPlaybackPositionSyncRequestHandler <SBKTransactionControllerDelegate, SBKSyncTransactionProcessing>
+@interface SBKPlaybackPositionSyncRequestHandler : SBKSyncRequestHandler
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_syncOperationQueue;

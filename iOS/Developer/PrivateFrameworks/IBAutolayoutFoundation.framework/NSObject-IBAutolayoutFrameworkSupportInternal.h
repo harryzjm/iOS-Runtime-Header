@@ -19,6 +19,7 @@
 - (void)ibModifyCandidateReferencingConstraintItemsWithFilter:(CDUnknownBlockType)arg1 duringEffectiveItemBlock:(CDUnknownBlockType)arg2;
 - (void)ibModifyCandidateConstraintItemsWithFilter:(CDUnknownBlockType)arg1 duringEffectiveItemBlock:(CDUnknownBlockType)arg2;
 - (void)ibModifyConstraints:(id)arg1 withFilter:(CDUnknownBlockType)arg2 duringEffectiveItemBlock:(CDUnknownBlockType)arg3;
+- (_Bool)ibAllowsConstraintSpacingFromInsideEdgesForSiblingsForAttribute:(unsigned long long)arg1;
 - (id)ibExplicitCandidateConstraintGenerationMaskForChildView:(id)arg1;
 - (_Bool)ibShouldIgnoreAmbiguityAndMisplacementIssuesForChild:(id)arg1;
 - (_Bool)ibIsSubarbitrationUnitRoot;
@@ -40,5 +41,6 @@
 - (void)ibSetFrameFromDesignFrame;
 @property(readonly, nonatomic) _Bool ibIsSelfManagedContainerInEngine;
 - (_Bool)ibIsValidConstraintItem;
+- (id)ibAutolayoutItem;
 @end
 

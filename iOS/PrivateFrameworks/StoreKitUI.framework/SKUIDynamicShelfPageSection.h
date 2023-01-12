@@ -4,19 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIItemStateCenterObserver-Protocol.h>
-#import <StoreKitUI/SKUIObservableScrollViewDelegate-Protocol.h>
-#import <StoreKitUI/SKUIShelfPageSection-Protocol.h>
-#import <StoreKitUI/SKUIShelfPageSectionConfigurationDataSource-Protocol.h>
-#import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
-#import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSString, SKUIDynamicPageSectionIndexMapper, SKUIShelfPageComponent, SKUIShelfPageSectionConfiguration, SKUIShelfViewElement, SKUIViewElementLayoutContext, SKUIViewElementTextLayoutCache;
 @protocol SKUIDynamicShelfViewElement, SKUIEntityProviding, SKUIScrollViewDelegateObserver;
 
 __attribute__((visibility("hidden")))
-@interface SKUIDynamicShelfPageSection <SKUIArtworkRequestDelegate, SKUIItemStateCenterObserver, SKUIObservableScrollViewDelegate, SKUIShelfPageSectionConfigurationDataSource, UICollectionViewDataSource, UICollectionViewDelegate, SKUIShelfPageSection>
+@interface SKUIDynamicShelfPageSection : SKUIStorePageSection
 {
     SKUIViewElementLayoutContext *_cellLayoutContext;
     SKUIShelfPageSectionConfiguration *_configuration;

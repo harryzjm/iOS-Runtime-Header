@@ -26,9 +26,11 @@ __attribute__((visibility("hidden")))
         unsigned int resetRasterizationAfterAnimation:1;
         unsigned int updateZIndexAfterAnimation:1;
     } _collectionViewAnimationFlags;
+    _Bool _parentInCollectionViewDuringAnimation;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool parentInCollectionViewDuringAnimation; // @synthesize parentInCollectionViewDuringAnimation=_parentInCollectionViewDuringAnimation;
 @property(readonly, nonatomic) double endFraction; // @synthesize endFraction=_endFraction;
 @property(readonly, nonatomic) double startFraction; // @synthesize startFraction=_startFraction;
 @property(readonly, nonatomic) UICollectionViewLayoutAttributes *finalLayoutAttributes; // @synthesize finalLayoutAttributes=_finalLayoutAttributes;

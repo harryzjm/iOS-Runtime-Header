@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNResourceCoordinatorProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNSystemServiceResourceCoordinator : NSObject <SNResourceCoordinatorProtocol>
+@interface SNSystemServiceResourceCoordinator : NSObject
 {
 }
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/QLDismissGestureTracking-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface QLPinchRotationTracker : NSObject <QLDismissGestureTracking>
+@interface QLPinchRotationTracker : NSObject
 {
     double _trackedScale;
     double _rotation;

@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *dataManager;
     MISSING_TYPE *playbackConductor;
-    MISSING_TYPE *playNowIgnoringPlaylistSlot;
     MISSING_TYPE *audioPlaybackTracker;
     MISSING_TYPE *playbackQueue;
     MISSING_TYPE *resumeSlot;

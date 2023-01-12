@@ -12,21 +12,8 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct EFAtomicObject {
-    _Atomic long long cfObject;
-};
-
-struct _EFUInt64Range {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
 };
 

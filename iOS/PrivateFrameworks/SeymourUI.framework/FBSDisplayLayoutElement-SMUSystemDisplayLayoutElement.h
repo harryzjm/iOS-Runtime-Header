@@ -6,11 +6,9 @@
 
 #import <FrontBoardServices/FBSDisplayLayoutElement.h>
 
-#import <SeymourUI/SMUSystemDisplayLayoutElement-Protocol.h>
-
 @class NSString;
 
-@interface FBSDisplayLayoutElement (SMUSystemDisplayLayoutElement) <SMUSystemDisplayLayoutElement>
+@interface FBSDisplayLayoutElement (SMUSystemDisplayLayoutElement)
 @property(readonly, nonatomic) _Bool smu_isTVNotification;
 @property(readonly, nonatomic) _Bool smu_isVolumeHUD;
 @property(readonly, nonatomic) _Bool smu_isTVControlCenter;

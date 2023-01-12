@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATIDSServiceConnectionDataChunker-Protocol.h>
-
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CATConcreteIDSServiceConnectionDataChunker : NSObject <CATIDSServiceConnectionDataChunker>
+@interface CATConcreteIDSServiceConnectionDataChunker : NSObject
 {
     NSObject<OS_dispatch_queue> *mWorkQueue;
     long long mMaxDataLength;

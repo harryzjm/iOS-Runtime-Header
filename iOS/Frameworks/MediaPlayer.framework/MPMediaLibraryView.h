@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/NSCopying-Protocol.h>
-
 @class MPMediaLibrary;
 
 __attribute__((visibility("hidden")))
-@interface MPMediaLibraryView : NSObject <NSCopying>
+@interface MPMediaLibraryView : NSObject
 {
     shared_ptr_6af3da69 _coreView;
     MPMediaLibrary *_library;

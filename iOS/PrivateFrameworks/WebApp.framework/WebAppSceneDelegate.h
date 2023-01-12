@@ -6,12 +6,10 @@
 
 #import <UIKit/UIResponder.h>
 
-#import <WebApp/UIWindowSceneDelegate-Protocol.h>
-
 @class NSString, UIWindow, WebAppViewController;
 
 __attribute__((visibility("hidden")))
-@interface WebAppSceneDelegate : UIResponder <UIWindowSceneDelegate>
+@interface WebAppSceneDelegate : UIResponder
 {
     WebAppViewController *_webApp;
     UIWindow *_window;
@@ -25,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)sceneDidEnterBackground:(id)arg1;
 - (void)sceneDidBecomeActive:(id)arg1;
 - (void)sceneDidDisconnect:(id)arg1;
+- (void)scene:(id)arg1 openURLContexts:(id)arg2;
 - (void)scene:(id)arg1 willConnectToSession:(id)arg2 options:(id)arg3;
 
 // Remaining properties

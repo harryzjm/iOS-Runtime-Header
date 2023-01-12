@@ -6,12 +6,10 @@
 
 #import <Foundation/NSOperation.h>
 
-#import <DataDetectorsUI/NSCopying-Protocol.h>
-
 @class NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface DDOperation : NSOperation <NSCopying>
+@interface DDOperation : NSOperation
 {
     id _container;
     _Bool _needContinuation;

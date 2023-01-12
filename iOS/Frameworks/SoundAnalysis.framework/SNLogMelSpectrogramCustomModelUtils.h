@@ -11,14 +11,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (_Bool)validateModelDescription:(id)arg1 logMelExtractionParameters:(struct SNLogMelParameters)arg2 withHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
-+ (_Bool)resetLogMelExtractionParameters:(struct SNLogMelParameters *)arg1 overrideWithParameterDictionary:(id)arg2 error:(id *)arg3;
-+ (_Bool)overrideLogMelExtractionParameters:(struct SNLogMelParameters *)arg1 withContentsOfParameterDictionary:(id)arg2 error:(id *)arg3;
-+ (struct SNLogMelParameters)defaultLogMelExtractionParameters;
-+ (CDUnknownBlockType)makeHandlerForInt32ParameterWithBlock:(CDUnknownBlockType)arg1;
-+ (CDUnknownBlockType)makeHandlerForUInt32ParameterWithBlock:(CDUnknownBlockType)arg1;
-+ (CDUnknownBlockType)makeHandlerForFloatParameterWithBlock:(CDUnknownBlockType)arg1;
-+ (CDUnknownBlockType)makeHandlerForStringParameterWithChoices:(id)arg1 block:(CDUnknownBlockType)arg2;
-
 @end
 

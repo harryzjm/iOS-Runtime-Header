@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSTimer, UILabel, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
-@interface UIWebPDFLabelView
+@interface UIWebPDFLabelView : UIView
 {
     UILabel *_label;
     _UIBackdropView *_backdropView;

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     NSString *_unzipPath;
     NSArray *_hashes;
     unsigned long long _currentLFRecordAllocationSize;
-    CDStruct_3b890e00 _hashContext;
+    CDStruct_6e7ce3cd _hashContext;
     NSDictionary *_streamInfoDict;
     NSString *_lastChunkPartialHash;
     NSMutableData *_unsureData;
@@ -70,7 +70,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableData *unsureData; // @synthesize unsureData=_unsureData;
 @property(retain, nonatomic) NSString *lastChunkPartialHash; // @synthesize lastChunkPartialHash=_lastChunkPartialHash;
 @property(retain, nonatomic) NSDictionary *streamInfoDict; // @synthesize streamInfoDict=_streamInfoDict;
-@property(readonly, nonatomic) CDStruct_3b890e00 hashContext; // @synthesize hashContext=_hashContext;
+@property(readonly, nonatomic) CDStruct_6e7ce3cd hashContext; // @synthesize hashContext=_hashContext;
 @property(readonly, nonatomic) NSString *unzipPath; // @synthesize unzipPath=_unzipPath;
 - (id)initWithPath:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (_Bool)openCurrentOutputFDForPath:(id)arg1 withOpenFlags:(int)arg2 mode:(unsigned short)arg3 error:(id *)arg4;

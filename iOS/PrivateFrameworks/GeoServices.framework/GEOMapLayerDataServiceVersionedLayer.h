@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOMapLayerDataServiceLayer, GEOMapLayerDataServiceVersion, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapLayerDataServiceVersionedLayer : PBCodable <NSCopying>
+@interface GEOMapLayerDataServiceVersionedLayer : PBCodable
 {
     PBDataReader *_reader;
     GEOMapLayerDataServiceLayer *_layer;

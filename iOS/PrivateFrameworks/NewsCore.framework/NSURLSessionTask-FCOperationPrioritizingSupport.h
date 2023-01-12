@@ -6,12 +6,9 @@
 
 #import <CFNetwork/NSURLSessionTask.h>
 
-#import <NewsCore/FCOperationIdentifying-Protocol.h>
-#import <NewsCore/FCOperationPrioritizing-Protocol.h>
-
 @class NSString;
 
-@interface NSURLSessionTask (FCOperationPrioritizingSupport) <FCOperationPrioritizing, FCOperationIdentifying>
+@interface NSURLSessionTask (FCOperationPrioritizingSupport)
 @property(nonatomic) long long relativePriority;
 @property(readonly, nonatomic) NSString *longOperationDescription;
 @property(readonly, nonatomic) NSString *shortOperationDescription;

@@ -7,7 +7,9 @@
 @class GEOMapItemStorage, NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID, RTLocation, RTMapItem, RTMapServiceOptions;
 
 @protocol RTHelperServiceProtocol
+- (void)fetchBuildingPolygonsFromLocation:(RTLocation *)arg1 radius:(double)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchCountryAndSubdivisionCodesFromLocation:(RTLocation *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
+- (void)fetchAppClipURLsForMapItem:(RTMapItem *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchPostalAddressForMapItem:(RTMapItem *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(CNPostalAddress *, NSError *))arg3;
 - (void)fetchMapItemsFromAddressDictionary:(NSDictionary *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchMapItemsFromAddressString:(NSString *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;

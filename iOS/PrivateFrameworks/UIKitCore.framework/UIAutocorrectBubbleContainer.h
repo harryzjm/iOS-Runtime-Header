@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, NSString, UIAutocorrectBubble, UIView;
+#import "UIView.h"
+
+@class NSLayoutConstraint, NSString, UIAutocorrectBubble;
 
 __attribute__((visibility("hidden")))
-@interface UIAutocorrectBubbleContainer
+@interface UIAutocorrectBubbleContainer : UIView
 {
     NSString *_typedText;
     UIAutocorrectBubble *_bubble;

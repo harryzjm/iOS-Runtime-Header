@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCEFormulaOwning-Protocol.h>
-
 @class NSString, TSCECalculationEngine, TSCECellCoordinateVector, TSTTableModel;
 
-@interface TSTConditionalStyleFormulaOwner : NSObject <TSCEFormulaOwning>
+@interface TSTConditionalStyleFormulaOwner : NSObject
 {
     TSTTableModel *_tableModel;
     TSCECalculationEngine *_calcEngine;

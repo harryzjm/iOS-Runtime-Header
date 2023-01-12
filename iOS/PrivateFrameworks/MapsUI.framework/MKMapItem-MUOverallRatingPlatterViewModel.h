@@ -6,24 +6,22 @@
 
 #import <MapKit/MKMapItem.h>
 
-#import <MapsUI/MUOverallRatingPlatterViewModel-Protocol.h>
-#import <MapsUI/MUPlaceTileViewModel-Protocol.h>
-#import <MapsUI/MUTransitStationSummary-Protocol.h>
-
 @class NSAttributedString, NSString, UIImage;
 
-@interface MKMapItem (MUOverallRatingPlatterViewModel) <MUOverallRatingPlatterViewModel, MUTransitStationSummary, MUPlaceTileViewModel>
+@interface MKMapItem (MUOverallRatingPlatterViewModel)
 @property(readonly, nonatomic) NSAttributedString *attributionText;
 @property(readonly, nonatomic) unsigned long long numberOfVotes;
 @property(readonly, nonatomic) double rating;
+- (id)thumbnailWithSize:(struct CGSize)arg1 annotationView:(id)arg2;
+- (id)sharingURL;
 @property(readonly, nonatomic) UIImage *artworkImage;
 @property(readonly, nonatomic) NSString *stationCategory;
 @property(readonly, nonatomic) NSString *stationTitle;
 @property(readonly, nonatomic) unsigned long long expectedNumberOfFooterLines;
 - (id)footerAttributedStringForFont:(id)arg1;
 - (id)subtitleAttributedStringForFont:(id)arg1;
-@property(readonly, nonatomic) UIImage *badgeIcon;
-@property(readonly, nonatomic) UIImage *fallbackImage;
+- (void)fetchBadgeIconWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchFallbackIconWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchImageTilewWithSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)tileSubtitle;
 @property(readonly, nonatomic) NSString *tileName;

@@ -10,6 +10,8 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI25SportsFavoritesLockupCell
 {
     MISSING_TYPE *layout;
+    MISSING_TYPE *hideTopSeparator;
+    MISSING_TYPE *hideBottomSeparator;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *logoImageView;
     MISSING_TYPE *accessoryImageView;

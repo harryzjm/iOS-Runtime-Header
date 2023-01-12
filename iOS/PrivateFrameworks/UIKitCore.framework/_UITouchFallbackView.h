@@ -4,12 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
+@protocol _UITouchFallbackViewDelegate;
+
 __attribute__((visibility("hidden")))
-@interface _UITouchFallbackView
+@interface _UITouchFallbackView : UIView
 {
+    id <_UITouchFallbackViewDelegate> _delegate;
 }
 
+@property(nonatomic) id <_UITouchFallbackViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (int)textEffectsVisibilityLevel;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

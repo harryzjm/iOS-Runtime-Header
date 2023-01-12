@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SMUOBTextWelcomeController.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9SeymourUI30AnalyticsConsentViewController
+@interface _TtC9SeymourUI30AnalyticsConsentViewController : SMUOBTextWelcomeController
 {
     MISSING_TYPE *privacyPreferenceClient;
     MISSING_TYPE *version;

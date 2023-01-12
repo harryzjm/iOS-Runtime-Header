@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPLazySectionedCollectionDataSource-Protocol.h>
-
 @class MPMediaLibraryEntityTranslationContext, MPModelLibraryRequest, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibraryModelSectionedCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
+@interface MPModelLibraryModelSectionedCollectionDataSource : NSObject
 {
     MPMediaLibraryEntityTranslationContext *_itemTranslationContext;
     MPMediaLibraryEntityTranslationContext *_sectionTranslationContext;
@@ -38,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (id)sectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;
+- (_Bool)respondsToSelector:(SEL)arg1;
 - (id)initWithRequest:(id)arg1 sectionQueryResults:(shared_ptr_274c5e8b)arg2 itemQueryResults:(void *)arg3;
 
 // Remaining properties

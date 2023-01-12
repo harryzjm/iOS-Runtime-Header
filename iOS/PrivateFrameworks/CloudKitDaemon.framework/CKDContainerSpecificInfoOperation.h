@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDOperation.h"
+
 @class CKDContainerServerInfo, NSObject;
 @protocol OS_dispatch_group;
 
-@interface CKDContainerSpecificInfoOperation
+@interface CKDContainerSpecificInfoOperation : CKDOperation
 {
     _Bool _requireUserIDs;
     CKDContainerServerInfo *_containerServerInfo;

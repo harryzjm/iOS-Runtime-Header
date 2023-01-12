@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <ShazamKit/SHMatcher-Protocol.h>
-
 @class MRE, NSString, SHCustomCatalog;
 @protocol SHMatcherDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SHCustomCatalogMatcher : NSObject <SHMatcher>
+@interface SHCustomCatalogMatcher : NSObject
 {
-    id <SHMatcherDelegate> delegate;
+    id <SHMatcherDelegate> _delegate;
     MRE *_mre;
     SHCustomCatalog *_customCatalog;
 }
@@ -22,8 +20,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) SHCustomCatalog *customCatalog; // @synthesize customCatalog=_customCatalog;
 @property(retain, nonatomic) MRE *mre; // @synthesize mre=_mre;
-@property(nonatomic) __weak id <SHMatcherDelegate> delegate; // @synthesize delegate;
-- (id)mediaItemsFromMREResult:(id)arg1 audioStartDate:(id)arg2;
+@property(nonatomic) __weak id <SHMatcherDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)mediaItemsFromTrackID:(unsigned long long)arg1 offset:(id)arg2 timeSkew:(id)arg3 frequencySkew:(id)arg4 score:(id)arg5 audioStartDate:(id)arg6;
+- (void)stop;
 - (void)startRecognitionForRequest:(id)arg1;
 - (id)MRESignaturesFromMatches:(id)arg1;
 - (void)buildMRE;

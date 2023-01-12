@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKitLegacy/WebFormSubmissionListener-Protocol.h>
-#import <WebKitLegacy/WebPolicyDecisionListener-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebFramePolicyListener : NSObject <WebPolicyDecisionListener, WebFormSubmissionListener>
+@interface WebFramePolicyListener : NSObject
 {
     struct RefPtr<WebCore::Frame, WTF::RawPtrTraits<WebCore::Frame>, WTF::DefaultRefDerefTraits<WebCore::Frame>> _frame;
     struct PolicyCheckIdentifier _identifier;

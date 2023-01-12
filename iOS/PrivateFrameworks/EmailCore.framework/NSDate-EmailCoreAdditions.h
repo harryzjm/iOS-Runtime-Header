@@ -7,6 +7,7 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (EmailCoreAdditions)
+- (id)ec_integerDate;
 - (id)ec_descriptionForMimeHeaders;
 @end
 

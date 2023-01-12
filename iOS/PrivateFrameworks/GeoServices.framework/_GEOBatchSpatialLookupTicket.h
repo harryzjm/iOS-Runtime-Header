@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceBatchSpatialLookupTicket-Protocol.h>
+#import "GEOAbstractTicket.h"
 
 @class GEOMapServiceTraits, GEOSpatialLookupBatchRequest, GEOSpatialLookupBatchResponse, NSArray, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOBatchSpatialLookupTicket <GEOMapServiceBatchSpatialLookupTicket>
+@interface _GEOBatchSpatialLookupTicket : GEOAbstractTicket
 {
     GEOSpatialLookupBatchRequest *_request;
     GEOSpatialLookupBatchResponse *_response;

@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLHeapDescriptor.h"
+
 __attribute__((visibility("hidden")))
-@interface MTLHeapDescriptorInternal
+@interface MTLHeapDescriptorInternal : MTLHeapDescriptor
 {
     struct MTLHeapDescriptorPrivate *_private;
 }
 
 - (_Bool)validateWithDevice:(id)arg1;
+- (unsigned long long)protectionOptions;
+- (void)setProtectionOptions:(unsigned long long)arg1;
 - (unsigned long long)pinnedGPUAddress;
 - (void)setPinnedGPUAddress:(unsigned long long)arg1;
 - (void)setResourceOptions:(unsigned long long)arg1;
@@ -23,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)setType:(long long)arg1;
 - (long long)type;
 @property(nonatomic) _Bool sparsePageAccessCountersEnabled;
-@property(nonatomic) unsigned long long sparsePageSize;
+@property(nonatomic) long long sparsePageSize;
 - (void)setStorageMode:(unsigned long long)arg1;
 - (unsigned long long)storageMode;
 - (void)setCpuCacheMode:(unsigned long long)arg1;

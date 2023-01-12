@@ -6,23 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class DSPGMLInputProvider, NSArray;
+@class DSPGMLInputProvider, NSSet;
 @protocol MLFeatureProvider, SNMLModel;
 
 __attribute__((visibility("hidden")))
 @interface DSPGCoreMLInfo : NSObject
 {
     id <SNMLModel> _model;
-    NSArray *_feedbackConnections;
+    NSSet *_feedbackConnections;
     DSPGMLInputProvider *_inputProvider;
     id <MLFeatureProvider> _outputProvider;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <MLFeatureProvider> outputProvider; // @synthesize outputProvider=_outputProvider;
-@property(retain, nonatomic) DSPGMLInputProvider *inputProvider; // @synthesize inputProvider=_inputProvider;
-@property(retain, nonatomic) NSArray *feedbackConnections; // @synthesize feedbackConnections=_feedbackConnections;
-@property(retain, nonatomic) id <SNMLModel> model; // @synthesize model=_model;
 
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/VCPHomeKitAnalysisSessionClientProtocol-Protocol.h>
-
 @class VCPHomeKitAnalysisSession;
 
 __attribute__((visibility("hidden")))
-@interface VCPHomeKitSessionExportedObject : NSObject <VCPHomeKitAnalysisSessionClientProtocol>
+@interface VCPHomeKitSessionExportedObject : NSObject
 {
     VCPHomeKitAnalysisSession *_weakSession;
 }

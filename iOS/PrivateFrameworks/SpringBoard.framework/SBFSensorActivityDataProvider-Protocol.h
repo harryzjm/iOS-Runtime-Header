@@ -10,7 +10,9 @@
 @protocol SBFSensorActivityAttribution, SBFSensorActivityObserver;
 
 @protocol SBFSensorActivityDataProvider <NSObject>
-@property(readonly, copy, nonatomic) id <SBFSensorActivityAttribution> mostRecentSensorActivityAttribution;
+@property(readonly, copy, nonatomic) NSSet *activeAndRecentSensorActivityAttributions;
+@property(readonly, copy, nonatomic) id <SBFSensorActivityAttribution> mostRecentCameraAndMicrophoneSensorActivityAttribution;
+@property(readonly, copy, nonatomic) NSSet *activeCameraAndMicrophoneActivityAttributions;
 @property(readonly, copy, nonatomic) NSSet *activeSensorActivityAttributions;
 - (void)removeObserver:(id <SBFSensorActivityObserver>)arg1;
 - (void)addObserver:(id <SBFSensorActivityObserver>)arg1;

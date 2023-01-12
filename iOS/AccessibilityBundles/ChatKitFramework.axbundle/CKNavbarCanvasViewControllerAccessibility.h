@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)backButtonView;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

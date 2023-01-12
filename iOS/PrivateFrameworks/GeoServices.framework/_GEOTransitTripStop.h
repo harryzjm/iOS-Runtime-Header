@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitTripStop-Protocol.h>
-
 @class GEOLatLng, GEOStyleAttributes, NSArray, NSString, NSTimeZone;
 @protocol GEOTransitDeparture;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitTripStop : NSObject <GEOTransitTripStop>
+@interface _GEOTransitTripStop : NSObject
 {
     NSTimeZone *_timeZone;
     unsigned long long _stationIdentifier;

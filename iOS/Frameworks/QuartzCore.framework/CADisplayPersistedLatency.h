@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CADisplayPersistedLatency : NSObject <NSSecureCoding>
+@interface CADisplayPersistedLatency : NSObject
 {
     NSString *_uuid;
     NSDictionary *_mode;

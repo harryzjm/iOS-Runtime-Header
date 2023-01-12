@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/NSFilePresenter-Protocol.h>
-
 @class NSData, NSOperationQueue, NSSet, NSString, NSURL;
 @protocol SFDownloadFileDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFDownloadFile : NSObject <NSFilePresenter>
+@interface SFDownloadFile : NSObject
 {
     _Bool _invalidated;
     _Bool _usingSecurityScopedURL;

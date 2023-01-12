@@ -6,10 +6,13 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _CPCardSectionForFeedback, _CPPunchoutForFeedback, _CPSearchResultForFeedback;
+@class NSArray, NSData, NSDictionary, NSString, _CPCardSectionForFeedback, _CPPunchoutForFeedback, _CPResultSectionForFeedback, _CPSearchResultForFeedback;
 
 @protocol _CPUserReportFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int reportType;
+@property(copy, nonatomic) NSString *uploadedDataIdentifier;
+@property(copy, nonatomic) NSArray *sections;
 @property(copy, nonatomic) NSData *uuidBytes;
 @property(retain, nonatomic) _CPCardSectionForFeedback *cardSection;
 @property(retain, nonatomic) _CPPunchoutForFeedback *userSelection;
@@ -17,5 +20,9 @@
 @property(nonatomic) unsigned long long timestamp;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (_CPResultSectionForFeedback *)sectionsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)sectionsCount;
+- (void)addSections:(_CPResultSectionForFeedback *)arg1;
+- (void)clearSections;
 @end
 

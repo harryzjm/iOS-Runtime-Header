@@ -10,9 +10,11 @@
 {
 }
 
++ (_Bool)shouldAdjustColumnsFromPostprocessingStepOptions:(id)arg1;
 + (void)expandPathsWithCorrectedTokens:(id)arg1 fromTokens:(id)arg2 correctedTokenPath:(id)arg3 originalTokenPath:(id)arg4;
 + (id)applyTransform:(CDUnknownBlockType)arg1 toAllTokens:(id)arg2;
-- (id)process:(id)arg1;
+@property(readonly) _Bool modifiesOriginalTokens;
+- (id)process:(id)arg1 options:(id)arg2;
 
 @end
 

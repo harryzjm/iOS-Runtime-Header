@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIImageView, UIStatusBarStyleAttributes;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarBackgroundView
+@interface UIStatusBarBackgroundView : UIView
 {
     UIStatusBarStyleAttributes *_style;
     UIImageView *_glowView;

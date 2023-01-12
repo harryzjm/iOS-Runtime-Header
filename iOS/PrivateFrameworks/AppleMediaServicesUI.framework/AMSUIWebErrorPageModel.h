@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/AMSUIWebPageProvider-Protocol.h>
-
-@class AMSMetricsEvent, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSBundle, NSString;
+@class AMSMetricsEvent, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSBundle, NSError, NSString;
 @protocol AMSUIWebActionRunnable;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebErrorPageModel : NSObject <AMSUIWebPageProvider>
+@interface AMSUIWebErrorPageModel : NSObject
 {
     _Bool _errorMessageInternalOnly;
     NSString *_backgroundColor;
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
     id <AMSUIWebActionRunnable> _action;
     CDUnknownBlockType _actionBlock;
     NSString *_actionButtonTitle;
+    NSError *_error;
     NSString *_errorTitle;
     NSBundle *_bundle;
     AMSUIWebClientContext *_context;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property(retain, nonatomic) NSString *errorTitle; // @synthesize errorTitle=_errorTitle;
 @property(nonatomic) _Bool errorMessageInternalOnly; // @synthesize errorMessageInternalOnly=_errorMessageInternalOnly;
+@property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSString *actionButtonTitle; // @synthesize actionButtonTitle=_actionButtonTitle;
 @property(copy, nonatomic) CDUnknownBlockType actionBlock; // @synthesize actionBlock=_actionBlock;
 @property(retain, nonatomic) id <AMSUIWebActionRunnable> action; // @synthesize action=_action;
@@ -41,15 +41,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property(readonly, nonatomic) AMSMetricsEvent *impressionEvent; // @synthesize impressionEvent=_impressionEvent;
 @property(readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+- (id)loadPage;
 @property(readonly, nonatomic) _Bool disableReappearPlaceholder;
-- (id)createViewController;
+- (id)createViewControllerForContainer:(id)arg1;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSString *errorMessage; // @synthesize errorMessage=_errorMessage;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 - (id)initWithError:(id)arg1 context:(id)arg2 actionBlock:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

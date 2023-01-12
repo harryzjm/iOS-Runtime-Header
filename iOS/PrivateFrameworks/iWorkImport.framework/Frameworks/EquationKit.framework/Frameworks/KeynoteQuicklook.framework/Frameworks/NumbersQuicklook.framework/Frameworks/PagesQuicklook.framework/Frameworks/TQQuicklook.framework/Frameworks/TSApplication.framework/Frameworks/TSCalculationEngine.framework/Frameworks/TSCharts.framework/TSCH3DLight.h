@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSString, TSCH3DVector;
 
-@interface TSCH3DLight : NSObject <NSCopying>
+@interface TSCH3DLight : NSObject
 {
     NSString *_name;
     TSCH3DVector *_ambientColor;

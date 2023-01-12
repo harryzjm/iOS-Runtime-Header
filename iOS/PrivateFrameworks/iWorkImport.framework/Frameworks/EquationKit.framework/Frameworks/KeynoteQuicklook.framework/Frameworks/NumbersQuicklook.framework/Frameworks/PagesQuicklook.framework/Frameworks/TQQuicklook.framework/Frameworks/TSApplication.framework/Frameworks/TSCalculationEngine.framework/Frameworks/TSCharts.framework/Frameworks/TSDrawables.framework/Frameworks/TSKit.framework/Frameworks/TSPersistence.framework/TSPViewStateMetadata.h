@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface TSPViewStateMetadata
+#import "TSPObject.h"
+
+@interface TSPViewStateMetadata : TSPObject
 {
     struct ViewStateMetadata _message;
 }

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Coordination/COCapabilityManagerConnectionProvider-Protocol.h>
-
 @class NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface _COCapabilityManagerConnectionProvider : NSObject <COCapabilityManagerConnectionProvider>
+@interface _COCapabilityManagerConnectionProvider : NSObject
 {
     NSXPCConnection *_capabilityManagerServiceConnection;
 }

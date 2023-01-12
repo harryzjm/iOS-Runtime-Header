@@ -6,16 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/CNPhotoPickerProviderItemDelegate-Protocol.h>
-#import <ContactsUI/UICollectionViewDataSource-Protocol.h>
-#import <ContactsUI/UICollectionViewDelegate-Protocol.h>
-#import <ContactsUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-
 @class CNPhotoPickerPreviewView, CNPhotoPickerProviderItem, CNPhotoPickerVariantsManager, NSArray, NSString, UICollectionView, UIImageView, UIView;
 @protocol CNPhotoPickerVariantListControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerVariantListController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CNPhotoPickerProviderItemDelegate>
+@interface CNPhotoPickerVariantListController : UIViewController
 {
     _Bool _showPreview;
     _Bool _showsToolbar;

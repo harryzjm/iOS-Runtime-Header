@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLBlitPassSampleBufferAttachmentDescriptorArray.h"
+
 @class MTLBlitPassSampleBufferAttachmentDescriptorInternal;
 
 __attribute__((visibility("hidden")))
-@interface MTLBlitPassSampleBufferAttachmentDescriptorArrayInternal
+@interface MTLBlitPassSampleBufferAttachmentDescriptorArrayInternal : MTLBlitPassSampleBufferAttachmentDescriptorArray
 {
     MTLBlitPassSampleBufferAttachmentDescriptorInternal *_sampleDescriptors[4];
 }

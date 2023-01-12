@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSObjectInitJSExports-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSObject (Subclass) <NSObjectInitJSExports>
+@interface NSObject (Subclass)
 + (_Bool)subclassInstance:(id)arg1;
 + (void)tmlLoadCategory;
 + (_Bool)tmlIsJSObjectClass;

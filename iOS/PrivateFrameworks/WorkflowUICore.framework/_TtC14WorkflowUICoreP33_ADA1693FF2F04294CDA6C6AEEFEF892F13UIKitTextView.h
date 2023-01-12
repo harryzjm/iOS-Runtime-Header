@@ -11,8 +11,16 @@
 @interface _TtC14WorkflowUICoreP33_ADA1693FF2F04294CDA6C6AEEFEF892F13UIKitTextView : UITextView
 {
     MISSING_TYPE *allowsMultipleLines;
+    MISSING_TYPE *statistics;
+    MISSING_TYPE *pasteboardDelegate;
 }
 
+- (void).cxx_destruct;
+- (void)paste:(id)arg1;
+- (void)cut:(id)arg1;
+- (void)copy:(id)arg1;
+- (void)dealloc;
+- (void)willMoveToWindow:(id)arg1;
 - (void)processedEditing;
 @property(nonatomic) _Bool scrollEnabled;
 - (_Bool)isScrollEnabled;

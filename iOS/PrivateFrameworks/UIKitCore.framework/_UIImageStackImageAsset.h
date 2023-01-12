@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIImageAsset.h"
+
 @class CUICatalog, NSData;
 
 __attribute__((visibility("hidden")))
-@interface _UIImageStackImageAsset
+@interface _UIImageStackImageAsset : UIImageAsset
 {
     CUICatalog *_catalog;
     NSData *_stackData;

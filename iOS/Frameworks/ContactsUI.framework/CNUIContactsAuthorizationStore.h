@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNUIContactsAuthorizationModelFetching-Protocol.h>
-#import <ContactsUI/CNUIContactsAuthorizationModelSaving-Protocol.h>
-
 @class NSString;
 @protocol CNTCCSettings, CNUICoreRemoteApplicationIconFetching;
 
 __attribute__((visibility("hidden")))
-@interface CNUIContactsAuthorizationStore : NSObject <CNUIContactsAuthorizationModelFetching, CNUIContactsAuthorizationModelSaving>
+@interface CNUIContactsAuthorizationStore : NSObject
 {
     NSString *_bundleIdentifier;
     id <CNTCCSettings> _tccSettings;

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <SeymourServices/_TtP15SeymourServices22SimulatorNetworkExport_-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _TtC15SeymourServices16SimulatorNetwork : NSObject <_TtP15SeymourServices22SimulatorNetworkExport_>
+@interface _TtC15SeymourServices16SimulatorNetwork : NSObject
 {
 }
 

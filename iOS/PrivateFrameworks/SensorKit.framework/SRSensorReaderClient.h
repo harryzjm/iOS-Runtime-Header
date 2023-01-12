@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/SRSensorKitServiceClientReading-Protocol.h>
-
 @class SRSensorReader;
 
 __attribute__((visibility("hidden")))
-@interface SRSensorReaderClient : NSObject <SRSensorKitServiceClientReading>
+@interface SRSensorReaderClient : NSObject
 {
     SRSensorReader *_reader;
 }

@@ -15,6 +15,7 @@
     MISSING_TYPE *headline;
     MISSING_TYPE *currentlyPlayingObservable;
     MISSING_TYPE *currentPlayableArticleID;
+    MISSING_TYPE *supportedMessages;
 }
 
 @end

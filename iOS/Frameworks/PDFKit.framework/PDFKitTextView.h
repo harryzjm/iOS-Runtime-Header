@@ -6,29 +6,35 @@
 
 #import <objc/NSObject.h>
 
-#import <PDFKit/UITextViewDelegate-Protocol.h>
-
 @class NSString, PDFKitTextViewPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFKitTextView : NSObject <UITextViewDelegate>
+@interface PDFKitTextView : NSObject
 {
     PDFKitTextViewPrivate *_private;
 }
 
 - (void).cxx_destruct;
+- (void)_didChangeZoomFactor:(id)arg1;
+- (void)_applyScale:(double)arg1 toView:(id)arg2;
+- (void)_updateScaleFactor;
 - (void)_setAttributedString:(id)arg1;
+- (void)_setupTopLevelView;
 - (void)_setup;
 - (void)_setAlignment:(long long)arg1;
 - (void)_setFontColor:(id)arg1;
 - (void)_setFont:(id)arg1;
 - (void)_setString:(id)arg1;
+- (_Bool)handleBackTab;
+- (_Bool)handleTab;
 - (_Bool)textView:(id)arg1 doCommandBySelector:(SEL)arg2;
+- (void)adjustScrollViewToAccomodateKeyboardStartingFrame:(struct CGRect)arg1 endingFrame:(struct CGRect)arg2 annotationFrame:(struct CGRect)arg3 withAnimationDuration:(double)arg4 curve:(long long)arg5;
+- (void)_adjustScrollViewForKeyboardNotification:(id)arg1;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (void)_textWidgetDone;
 - (_Bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
-- (void)textViewDidChange:(id)arg1;
+- (void)textViewDidEndEditing:(id)arg1;
 - (_Bool)becomeFirstResponder;
 - (void)removeFromSuperview;
 - (void)rotateByAngle:(double)arg1;

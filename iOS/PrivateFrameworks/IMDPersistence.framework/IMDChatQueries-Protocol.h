@@ -6,12 +6,16 @@
 
 #import <IMDPersistence/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSPredicate, NSString;
+@class NSArray, NSDate, NSDictionary, NSPredicate, NSString;
 
 @protocol IMDChatQueries <NSObject>
+- (NSDictionary *)loadRecoverableMessagesMetadataGroupedByChatGUID;
+- (void)recoverMessageRecordsForChatRecordsWithGUIDs:(NSArray *)arg1;
+- (void)moveMessageRecordsToRecoveryForChatRecordsWithGUIDs:(NSArray *)arg1 deleteDate:(NSDate *)arg2;
 - (void)fetchGroupPhotoPathsForChatsWithGroupIDs:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *))arg2;
-- (void)fetchChatRecordsWithAtLeastHandles:(NSArray *)arg1 serviceName:(NSString *)arg2 style:(long long)arg3 completionHandler:(void (^)(NSArray *))arg4;
-- (NSArray *)chatRecordsWithHandles:(NSArray *)arg1 serviceName:(NSString *)arg2 displayName:(NSString *)arg3 groupID:(NSString *)arg4 style:(long long)arg5;
+- (void)fetchChatRecordsWithAtLeastHandles:(NSArray *)arg1 serviceName:(NSString *)arg2 style:(unsigned char)arg3 completionHandler:(void (^)(NSArray *))arg4;
+- (NSArray *)chatRecordsWithHandles:(NSArray *)arg1 serviceName:(NSString *)arg2 displayName:(NSString *)arg3 groupID:(NSString *)arg4 style:(unsigned char)arg5;
+- (void)fetchChatRecordsWithPinningIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (NSArray *)chatRecordsWithIdentifier:(NSString *)arg1;
 - (void)fetchChatRecordsFilteredUsingPredicate:(NSPredicate *)arg1 sortedUsingLastMessageDateAscending:(_Bool)arg2 olderThan:(NSDate *)arg3 limit:(unsigned long long)arg4 completionHandler:(void (^)(NSArray *))arg5;
 - (void)fetchChatRecordsFilteredUsingPredicate:(NSPredicate *)arg1 sortedUsingLastMessageDateAscending:(_Bool)arg2 limit:(unsigned long long)arg3 completionHandler:(void (^)(NSArray *))arg4;

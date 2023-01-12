@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPEntityRelationshipTranslator-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPKeyPathEntityRelationshipTranslator : NSObject <MPEntityRelationshipTranslator>
+@interface _MPKeyPathEntityRelationshipTranslator : NSObject
 {
     Class _relatedMPModelClass;
 }

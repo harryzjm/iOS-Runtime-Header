@@ -6,9 +6,8 @@
 
 #import <Foundation/NSString.h>
 
-#import <SpringBoardFoundation/SBFFileCacheFileIdentifier-Protocol.h>
-
-@interface NSString (SBFFileCache) <SBFFileCacheFileIdentifier>
+@interface NSString (SBFFileCache)
++ (id)sb_emojiWithoutVS16Set;
 - (id)fileCacheStableDataRepresentation;
 - (_Bool)sb_containsEmoji;
 - (id)_adjustedFontForScripts:(long long)arg1 forFont:(id)arg2 withPointAdjustment:(double)arg3 ignoringContent:(_Bool)arg4;

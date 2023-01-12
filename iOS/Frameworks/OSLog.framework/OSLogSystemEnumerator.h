@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "OSLogEnumerator.h"
+
 @class NSObject, OSLogEntry, OSLogEventStream;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface OSLogSystemEnumerator
+@interface OSLogSystemEnumerator : OSLogEnumerator
 {
     OSLogEventStream *_stream;
     OSLogEntry *_next;

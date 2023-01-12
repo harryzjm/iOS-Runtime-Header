@@ -6,9 +6,7 @@
 
 #import <CalendarDaemon/CADCalendarItemsWithExternalIdentifierPredicate.h>
 
-#import <EventKit/EKPredicateEvaluating-Protocol.h>
-
-@interface CADCalendarItemsWithExternalIdentifierPredicate (EKPredicateEvaluating) <EKPredicateEvaluating>
+@interface CADCalendarItemsWithExternalIdentifierPredicate (EKPredicateEvaluating)
 - (_Bool)ekPredicateEvaluateWithObject:(id)arg1;
 @end
 

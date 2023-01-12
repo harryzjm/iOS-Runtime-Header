@@ -6,33 +6,43 @@
 
 #import <UIKit/UIView.h>
 
-@class ASCBorderedScreenshotView, AVPlayer, AVPlayerLayer;
+@class ASCBorderedScreenshotView, ASCScreenshotDisplayConfiguration, AVPlayer, AVPlayerLayer;
+@protocol ASCVideoViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface ASCVideoView : UIView
 {
     _Bool _isPlaying;
+    _Bool _loopingEnabled;
+    ASCScreenshotDisplayConfiguration *_screenshotDisplayConfiguration;
     ASCBorderedScreenshotView *_previewFrameArtwork;
     AVPlayer *_player;
     AVPlayerLayer *_playerLayer;
+    id <ASCVideoViewDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isLoopingEnabled) _Bool loopingEnabled; // @synthesize loopingEnabled=_loopingEnabled;
 @property(readonly, nonatomic) _Bool isPlaying; // @synthesize isPlaying=_isPlaying;
+@property(nonatomic) __weak id <ASCVideoViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
 @property(readonly, nonatomic) AVPlayer *player; // @synthesize player=_player;
 @property(readonly, nonatomic) ASCBorderedScreenshotView *previewFrameArtwork; // @synthesize previewFrameArtwork=_previewFrameArtwork;
+@property(readonly, copy, nonatomic) ASCScreenshotDisplayConfiguration *screenshotDisplayConfiguration; // @synthesize screenshotDisplayConfiguration=_screenshotDisplayConfiguration;
+- (void)playerDidPlayToEndTime:(id)arg1;
 - (void)toggleIsPlaying;
 - (void)resetVideo;
 - (void)pauseVideo;
 - (void)playVideo;
-- (void)setImage:(id)arg1 withDecoration:(id)arg2;
+- (void)setImage:(id)arg1;
+@property(nonatomic, getter=isMuted) _Bool muted;
 - (struct CGSize)preferredVideoSize;
 - (void)layoutSubviews;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 videoURL:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 videoURL:(id)arg2 screenshotDisplayConfiguration:(id)arg3;
 
 @end
 

@@ -6,24 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class NSData;
+
 __attribute__((visibility("hidden")))
 @interface ASFAsn1Token : NSObject
 {
     unsigned char mClass;
     unsigned long long mIdentifier;
-    unsigned long long mLength;
-    const char *mContent;
+    NSData *mData;
 }
 
-+ (id)readOpaqueTokenFromBuffer:(const char *)arg1;
-+ (id)readTokenFromBuffer:(const char *)arg1;
-+ (id)readTokenFromBuffer:(const char *)arg1 opaque:(_Bool)arg2;
-@property(readonly) const char *content; // @synthesize content=mContent;
-@property(readonly) unsigned long long length; // @synthesize length=mLength;
-@property(readonly) unsigned long long identifier; // @synthesize identifier=mIdentifier;
-@property(readonly) unsigned char tokenClass; // @synthesize tokenClass=mClass;
+- (void).cxx_destruct;
 - (id)description;
-- (id)_initWithID:(unsigned long long)arg1 class:(unsigned char)arg2 length:(unsigned long long)arg3 content:(const char *)arg4 opaque:(_Bool)arg5;
 
 @end
 

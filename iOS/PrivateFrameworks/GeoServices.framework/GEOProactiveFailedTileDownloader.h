@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _batchSize;
 }
 
-+ (unsigned char)_reason;
 - (void).cxx_destruct;
 - (void)_addMoreKeysToListIfNeeded:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)determineNextBatchWithQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (unsigned long long)numberOfTilesConsidered;
 - (_Bool)cancelKey:(const struct _GEOTileKey *)arg1;
 - (void)_determineKeysToUpdate;
-- (id)initWithDiskCache:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 tileRequesterCreationBlock:(CDUnknownBlockType)arg4;
+- (id)initWithDiskCache:(id)arg1 tileRequesterCreationBlock:(CDUnknownBlockType)arg2;
+- (unsigned char)reason;
 
 @end
 

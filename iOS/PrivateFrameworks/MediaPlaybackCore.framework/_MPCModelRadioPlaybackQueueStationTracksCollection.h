@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) MPSectionedCollection *trackModels; // @synthesize trackModels=_trackModels;
 - (id)trackForItemAtIndex:(long long)arg1;
 - (long long)removeExplicitItems;
+- (void)removeAllItems;
 @property(readonly, nonatomic) long long numberOfItems;
 - (_Bool)isExplicitItemAtIndex:(long long)arg1;
 - (id)AVItemAtIndex:(long long)arg1;

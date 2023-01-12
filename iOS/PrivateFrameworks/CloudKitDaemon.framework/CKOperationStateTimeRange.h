@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/MMCSOperationStateTimeRange-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface CKOperationStateTimeRange : NSObject <MMCSOperationStateTimeRange>
+@interface CKOperationStateTimeRange : NSObject
 {
     unsigned long long _operationState;
     NSDate *_startDate;

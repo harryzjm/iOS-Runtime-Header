@@ -16,6 +16,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _numberOfInlineServiceHours;
 }
 
++ (id)configurationForBusinessHours:(id)arg1;
++ (id)configurationForMessagesMapItem:(id)arg1;
++ (id)configurationForMapItem:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long numberOfInlineServiceHours; // @synthesize numberOfInlineServiceHours=_numberOfInlineServiceHours;
 @property(retain, nonatomic) NSArray *serviceHoursList; // @synthesize serviceHoursList=_serviceHoursList;

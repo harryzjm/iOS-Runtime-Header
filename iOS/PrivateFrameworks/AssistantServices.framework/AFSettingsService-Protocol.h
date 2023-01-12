@@ -6,17 +6,22 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFAudioPlaybackRequest, AFDeleteSiriHistoryContext, AFMyriadAdvertisementContext, AFRequestInfo, AFSpeechRecognition, AFVoiceInfo, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString, NSURL, NSUUID;
+@class AFAudioPlaybackRequest, AFCompanionDeviceInfo, AFDeleteSiriHistoryContext, AFMyriadAdvertisementContext, AFRequestInfo, AFSpeechRecognition, AFVoiceInfo, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString, NSURL, NSUUID;
 
 @protocol AFSettingsService <NSObject>
+- (oneway void)readSyncTokenForAceHost:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
+- (oneway void)setSyncToken:(NSString *)arg1 forAceHost:(NSString *)arg2 completion:(void (^)(void))arg3;
+- (oneway void)getCurrentActiveLanguageCodesWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 - (oneway void)getAssistantIsEnabledForDeviceWithSiriInfo:(NSDictionary *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)getAssetStatusForLanguage:(NSString *)arg1 completionHandler:(void (^)(NSDictionary *))arg2;
 - (oneway void)areSiriUODAssetsAvailable:(void (^)(_Bool, NSError *))arg1;
 - (oneway void)postTestResultSelectedWithRcId:(NSString *)arg1;
 - (oneway void)postTestResultCandidateWithRcId:(NSString *)arg1 recognitionSausage:(AFSpeechRecognition *)arg2;
+- (oneway void)setRecognizeMyVoiceEnabled:(_Bool)arg1;
 - (oneway void)getCurrentAccessoryInfoWithCompletion:(void (^)(AFHomeAccessoryInfo *))arg1;
 - (oneway void)setAllowExplicitContent:(_Bool)arg1;
 - (oneway void)triggerABCForType:(NSString *)arg1 subType:(NSString *)arg2 context:(NSDictionary *)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (oneway void)getPlatformBiasValue:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)getSpeakerCapabilityForAccessoryWithUUID:(NSUUID *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)pushMyriadAdvertisementContext:(AFMyriadAdvertisementContext *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getCurrentRequestIsWatchAuthenticatedWithCompletion:(void (^)(_Bool))arg1;
@@ -26,9 +31,13 @@
 - (oneway void)siriDesignModeIsEnabled:(void (^)(_Bool))arg1;
 - (oneway void)setSiriDesignModeEnabled:(_Bool)arg1 completion:(void (^)(void))arg2;
 - (oneway void)setOnDeviceDictationAvailableAlertPresented:(_Bool)arg1;
+- (oneway void)sendSampledAudioToServerWithCompletion:(void (^)(NSError *))arg1;
+- (oneway void)setIsHomePodInHH2Mode:(_Bool)arg1 completion:(void (^)(void))arg2;
+- (oneway void)setSiriDataSharingHomePodSetupDeviceIsValid:(_Bool)arg1 completion:(void (^)(void))arg2;
 - (oneway void)deleteSiriHistoryWithContext:(AFDeleteSiriHistoryContext *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (oneway void)shouldSuppressSiriDataSharingOptInAlertWithCompletion:(void (^)(_Bool))arg1;
 - (oneway void)setSiriDataSharingOptInAlertPresented:(_Bool)arg1 completion:(void (^)(void))arg2;
+- (oneway void)setSiriDataSharingOptInStatus:(long long)arg1 propagateToHomeAccessories:(_Bool)arg2 source:(long long)arg3 reason:(NSString *)arg4 completion:(void (^)(NSError *))arg5;
 - (oneway void)getSiriDataSharingOptInStatusWithCompletion:(void (^)(long long))arg1;
 - (oneway void)setSiriDataSharingOptInStatus:(long long)arg1 completion:(void (^)(void))arg2;
 - (oneway void)handleCommand:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
@@ -36,6 +45,19 @@
 - (oneway void)getCurrentNWActivityIDWithCompletion:(void (^)(NSUUID *))arg1;
 - (oneway void)clearOpportuneSpeakingEdgeDetectorSignalOverride;
 - (oneway void)setOpportuneSpeakingEdgeDetectorSignalOverride:(long long)arg1;
+- (oneway void)clearMessageWithoutConfirmationHeadphonesEnabled;
+- (oneway void)setMessageWithoutConfirmationHeadphonesEnabled:(_Bool)arg1;
+- (oneway void)getMessageWithoutConfirmationHeadphonesEnabledWithCompletion:(void (^)(_Bool))arg1;
+- (oneway void)clearMessageWithoutConfirmationInCarPlayEnabled;
+- (oneway void)setMessageWithoutConfirmationInCarPlayEnabled:(_Bool)arg1;
+- (oneway void)getMessageWithoutConfirmationInCarPlayEnabledWithCompletion:(void (^)(_Bool))arg1;
+- (oneway void)clearMessageWithoutConfirmationEnabled;
+- (oneway void)setMessageWithoutConfirmationEnabled:(_Bool)arg1;
+- (oneway void)getMessageWithoutConfirmationEnabledWithCompletion:(void (^)(_Bool))arg1;
+- (oneway void)setAnnounceNotificationsOnBuiltInSpeakerEnabled:(_Bool)arg1;
+- (oneway void)updateAnnounceNotificationsOnHearingAidSupportedStatus;
+- (oneway void)setAnnounceNotificationsOnHearingAidsSupported:(_Bool)arg1;
+- (oneway void)setAnnounceNotificationsOnHearingAidsEnabled:(_Bool)arg1;
 - (oneway void)clearAnnounceNotificationsInCarPlayType;
 - (oneway void)setAnnounceNotificationsInCarPlayType:(long long)arg1;
 - (oneway void)getAnnounceNotificationsInCarPlayTypeWithCompletion:(void (^)(long long))arg1;
@@ -54,6 +76,8 @@
 - (oneway void)setSpokenNotificationIsAlwaysOpportune:(_Bool)arg1;
 - (oneway void)getSpokenNotificationIsAlwaysOpportuneWithCompletion:(void (^)(_Bool))arg1;
 - (oneway void)clearSpokenNotificationTemporarilyDisabledStatus;
+- (oneway void)setNanoAlwaysShowRecognizedSpeech:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
+- (oneway void)setNanoSiriResponseShouldAlwaysPrint:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoSiriDataSharingOptInStatus:(long long)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoCrownActivationEnabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoLanguage:(NSString *)arg1 withCompletion:(void (^)(void))arg2;
@@ -62,22 +86,27 @@
 - (oneway void)setNanoUseDeviceSpeakerForTTS:(NSNumber *)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoRaiseToSpeakEnabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoPhraseSpotterEnabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
+- (oneway void)setNanoDictationAutoPunctuationEnabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoDictationEnabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoAssistantEnabled:(_Bool)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)homeOnboardingFlowInvoked:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)fetchMultiUserVoiceIdentificationSetting:(void (^)(_Bool))arg1;
 - (oneway void)getSharedUserID:(void (^)(NSString *, NSString *, NSError *))arg1;
-- (oneway void)updateMultiUserWithSharedUserId:(NSString *)arg1 companionId:(NSString *)arg2 companionSpeechId:(NSString *)arg3 idsIdentifier:(NSString *)arg4 productPrefix:(NSString *)arg5 aceHost:(NSString *)arg6 completion:(void (^)(NSError *))arg7;
+- (oneway void)updateMultiUserWithSharedUserId:(NSString *)arg1 companionInfo:(AFCompanionDeviceInfo *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)getSharedUserIdForHomeUserId:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)getHomeUserIdForSharedUserId:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)forceMultiUserSync:(_Bool)arg1 download:(_Bool)arg2 completion:(void (^)(_Bool))arg3;
 - (oneway void)updateVoiceIdScoreToUser:(NSString *)arg1 score:(NSString *)arg2 reset:(_Bool)arg3 completion:(void (^)(NSError *))arg4;
 - (oneway void)showMultiUserSharedUserIDsCompletion:(void (^)(NSString *, NSArray *))arg1;
 - (oneway void)showPrimaryUserSharedUserIDWithCompletion:(void (^)(NSString *))arg1;
+- (oneway void)resetProfileNames:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)showHomeProfileNamesWithCompletion:(void (^)(NSArray *))arg1;
+- (oneway void)showLocalProfileNamesWithCompletion:(void (^)(NSArray *))arg1;
+- (oneway void)showMultiUserCompanionInfo:(void (^)(NSDictionary *))arg1;
 - (oneway void)showMultiUsers:(void (^)(NSArray *))arg1;
 - (oneway void)removeMultiUserUserWithSharedUserId:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)removeMultiUserUser:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)addMultiUserUser:(NSString *)arg1 sharedId:(NSString *)arg2 loggableSharedId:(NSString *)arg3 enrollmentName:(NSString *)arg4 isPrimary:(_Bool)arg5 completion:(void (^)(NSError *))arg6;
+- (oneway void)addMultiUserUser:(NSString *)arg1 sharedId:(NSString *)arg2 loggableSharedId:(NSString *)arg3 iCloudAltDSID:(NSString *)arg4 enrollmentName:(NSString *)arg5 isPrimary:(_Bool)arg6 completion:(void (^)(NSError *))arg7;
 - (oneway void)stopObservingBluetoothWirelessSplitterSession;
 - (oneway void)startObservingBluetoothWirelessSplitterSession;
 - (oneway void)getBluetoothWirelessSplitterSessionInfoWithCompletion:(void (^)(AFBluetoothWirelessSplitterSessionInfo *))arg1;
@@ -132,9 +161,9 @@
 - (oneway void)startUIRequestWithSpeechAudioFileURL:(NSURL *)arg1;
 - (oneway void)startUIRequestWithInfo:(AFRequestInfo *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)startUIRequestWithText:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)setSpeechProfileExternalOfflineModelRootPath:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)setOfflineDictationProfileOverridePath:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)createOfflineSpeechProfileWithLanguage:(NSString *)arg1 modelOverridePath:(NSString *)arg2 JSONData:(NSData *)arg3 completion:(void (^)(NSData *, NSError *))arg4;
-- (oneway void)updateOfflineSpeechProfileWithLanguage:(NSString *)arg1 modelOverridePath:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)getOfflineDictationStatusWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getOfflineAssistantStatusWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)setLanguage:(NSString *)arg1 outputVoice:(AFVoiceInfo *)arg2 withCompletion:(void (^)(NSDictionary *, NSError *))arg3;
@@ -150,6 +179,7 @@
 - (oneway void)barrierWithReply:(void (^)(void))arg1;
 - (oneway void)_killDaemon;
 - (oneway void)_shutdownSessionIfIdle;
+- (oneway void)setDictationAutoPunctuationEnabled:(_Bool)arg1;
 - (oneway void)setDictationEnabled:(_Bool)arg1;
 - (oneway void)setAssistantEnabled:(_Bool)arg1;
 - (oneway void)fetchActiveAccount:(void (^)(NSDictionary *, NSError *))arg1;

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGColor *)sh_colorNamed:(id)arg1;
-+ (id)defaultPalette;
++ (id)default;
 + (double)contentsScale;
 - (struct CGColor *)R:(double)arg1 G:(double)arg2 B:(double)arg3 A:(double)arg4;
 - (struct CGColor *)shadowColor;
@@ -20,11 +20,11 @@ __attribute__((visibility("hidden")))
 - (struct CGColor *)blackColor;
 - (struct CGColor *)clearColor;
 - (struct CGColor *)appTintColor;
-- (struct CGColor *)taggingCircleColor;
-- (struct CGColor *)tagButtonBackgroundTransparentColor;
-- (struct CGColor *)tagButtonShazamShapeColor;
-- (struct CGColor *)tagButtonTopBorderColor;
-- (struct CGColor *)tagButtonBackgroundColor;
+- (struct CGColor *)listeningCircleColor;
+- (struct CGColor *)listeningButtonBackgroundTransparentColor;
+- (struct CGColor *)listeningButtonShazamShapeColor;
+- (struct CGColor *)listeningButtonTopBorderColor;
+- (struct CGColor *)listeningButtonBackgroundColor;
 - (struct CGColor *)shazamColorNearBlack;
 
 @end

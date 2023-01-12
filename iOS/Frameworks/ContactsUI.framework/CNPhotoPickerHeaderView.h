@@ -6,15 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <ContactsUI/UIDropInteractionDelegate-Protocol.h>
-#import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <ContactsUI/UITextFieldDelegate-Protocol.h>
-
 @class CAShapeLayer, CNPhotoPickerHeaderViewTextField, CNPhotoPickerProviderItem, CNVisualIdentity, CNVisualIdentityAvatarViewController, NSArray, NSString, UIButton, UIGestureRecognizer;
 @protocol CNPhotoPickerHeaderViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerHeaderView : UIView <UITextFieldDelegate, UIDropInteractionDelegate, UIGestureRecognizerDelegate>
+@interface CNPhotoPickerHeaderView : UIView
 {
     id <CNPhotoPickerHeaderViewDelegate> _delegate;
     CNPhotoPickerProviderItem *_placeholderProviderItem;

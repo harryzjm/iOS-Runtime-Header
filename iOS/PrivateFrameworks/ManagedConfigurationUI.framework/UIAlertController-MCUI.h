@@ -7,7 +7,8 @@
 #import <UIKit/UIAlertController.h>
 
 @interface UIAlertController (MCUI)
-+ (void)MCUIShowRebootAlert;
++ (void)MCUIShowAlertForError:(id)arg1 fromViewController:(id)arg2 suggestedTitle:(id)arg3 suggestedMessage:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)MCUIShowRebootAlertFromViewController:(id)arg1;
 + (void)MCUIShowWatchUnavailableAlertWithCompletion:(CDUnknownBlockType)arg1;
 - (void)MCUIShowFromController:(id)arg1;
 - (void)MCUIAddCancelActionWithTitle:(id)arg1;

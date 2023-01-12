@@ -6,18 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeSettingsUI/NSFetchedResultsControllerDelegate-Protocol.h>
-#import <ScreenTimeSettingsUI/STContentPrivacyViewModelCoordinator-Protocol.h>
-
 @class NSArray, NSManagedObjectID, NSMutableDictionary, NSNumber, NSString, STContentPrivacyViewModel;
 @protocol STPersistenceControllerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface STContentPrivacyViewModelCoordinator : NSObject <NSFetchedResultsControllerDelegate, STContentPrivacyViewModelCoordinator>
+@interface STContentPrivacyViewModelCoordinator : NSObject
 {
     _Bool _isLocalDevice;
     id <STPersistenceControllerProtocol> _persistenceController;
-    NSString *_organizationIdentifier;
     NSNumber *_userDSID;
     NSString *_userName;
     NSManagedObjectID *_userObjectID;
@@ -39,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSManagedObjectID *userObjectID; // @synthesize userObjectID=_userObjectID;
 @property(copy, nonatomic) NSString *userName; // @synthesize userName=_userName;
 @property(copy, nonatomic) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
-@property(copy, nonatomic) NSString *organizationIdentifier; // @synthesize organizationIdentifier=_organizationIdentifier;
 @property(readonly, nonatomic) id <STPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
 - (void)_reportCoreAnalyticsEventForChangedCommunicationLimits:(id)arg1 userType:(unsigned long long)arg2 userIsRemote:(_Bool)arg3;
 - (void)_reportCoreAnalyticsEventWithRestrictionsEnabled:(_Bool)arg1 valuesByRestriction:(id)arg2 userType:(unsigned long long)arg3 userIsManaged:(_Bool)arg4;
@@ -48,12 +43,11 @@ __attribute__((visibility("hidden")))
 - (void)saveValuesForRestrictions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveCommunicationLimits:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveContentPrivacyEnabled:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadValuesByRestrictionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadViewModelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updateConfiguration:(id)arg1 keyPath:(id)arg2 value:(id)arg3;
 - (id)_valueInConfiguration:(id)arg1 keyPath:(id)arg2;
-- (id)_createUnrestrictedConfiguration:(id)arg1;
-- (id)_identifierForConfigurationType:(id)arg1;
-- (id)_activationIdentifier;
+- (id)_createUnrestrictedConfigurationForUser:(id)arg1 withType:(id)arg2;
 - (void)reloadViewModelForRemoteChanges;
 - (void)controller:(id)arg1 didChangeObject:(id)arg2 atIndexPath:(id)arg3 forChangeType:(unsigned long long)arg4 newIndexPath:(id)arg5;
 - (void)_registerForPersistentStoreNotifications;
@@ -67,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)_valueForMCFeature:(id)arg1;
 - (id)_visibleRestrictions;
 - (void)_contactStoreDidChange:(id)arg1;
-- (id)initWithPersistenceController:(id)arg1 organizationIdentifier:(id)arg2 userDSID:(id)arg3 userName:(id)arg4;
+- (id)initWithPersistenceController:(id)arg1 userDSID:(id)arg2 userName:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

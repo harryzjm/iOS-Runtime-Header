@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTUserLanguageProfile, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTCreateLanguageProfileResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTCreateLanguageProfileResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;

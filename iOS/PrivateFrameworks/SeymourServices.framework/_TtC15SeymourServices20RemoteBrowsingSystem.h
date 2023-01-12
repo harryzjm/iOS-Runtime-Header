@@ -10,27 +10,16 @@
 
 @interface _TtC15SeymourServices20RemoteBrowsingSystem : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *accountProvider;
-    MISSING_TYPE *archivedSessionDataStore;
-    MISSING_TYPE *bookmarkDataStore;
-    MISSING_TYPE *catalogDataStore;
-    MISSING_TYPE *configurationDataStore;
     MISSING_TYPE *connectionBrokerProvider;
-    MISSING_TYPE *contactService;
-    MISSING_TYPE *contentRestrictionObserver;
     MISSING_TYPE *dataProtectionMonitor;
-    MISSING_TYPE *displayPreferenceDataStore;
-    MISSING_TYPE *healthKitWorkoutDataStore;
     MISSING_TYPE *localDeviceProvider;
-    MISSING_TYPE *metricIdentifierProvider;
+    MISSING_TYPE *platform;
     MISSING_TYPE *persistenceStore;
-    MISSING_TYPE *privacyPreferenceDataSource;
-    MISSING_TYPE *recommendationScriptClient;
     MISSING_TYPE *remoteBrowsingConfirmationCoordinator;
     MISSING_TYPE *remoteBrowsingGuestPairingAuthenticator;
     MISSING_TYPE *remoteBrowsingGuestPairingVerifier;
+    MISSING_TYPE *remoteBrowsingEnvironmentBuilder;
     MISSING_TYPE *serviceSubscriptionProviderBroker;
-    MISSING_TYPE *engagementDataStore;
     MISSING_TYPE *xpcBroadcastConnection;
 }
 

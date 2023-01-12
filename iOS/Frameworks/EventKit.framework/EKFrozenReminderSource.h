@@ -15,13 +15,14 @@ __attribute__((visibility("hidden")))
 - (_Bool)disabled;
 - (id)defaultAlarmOffset;
 - (int)flags;
+- (void)setSyncError:(id)arg1;
 - (void)setLastSyncEndDate:(id)arg1;
 - (void)setLastSyncStartDate:(id)arg1;
-- (void)setLastSyncError:(unsigned long long)arg1;
+- (int)managedConfigurationAccountAccess;
 - (id)constraintsName;
 - (id)lastSyncEndDate;
 - (id)lastSyncStartDate;
-- (unsigned long long)lastSyncError;
+- (id)syncError;
 - (id)delegatedAccountOwnerStoreID;
 - (id)externalID;
 - (id)UUID;

@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <GameCenterUI/CNPhotoPickerViewControllerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC12GameCenterUI38PlayerAvatarPickerActionImplementation : _TtCs12_SwiftObject <CNPhotoPickerViewControllerDelegate>
+@interface _TtC12GameCenterUI38PlayerAvatarPickerActionImplementation : _TtCs12_SwiftObject
 {
     MISSING_TYPE *viewController;
     MISSING_TYPE *currentAction;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNDetectorProviding-Protocol.h>
-#import <Vision/VNDetectorReleasing-Protocol.h>
-
 @class NSMutableSet, NSString;
 @protocol VNDetectorCacheDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VNDetectorCache : NSObject <VNDetectorProviding, VNDetectorReleasing>
+@interface VNDetectorCache : NSObject
 {
     id <VNDetectorCacheDelegate> _delegate;
     struct {

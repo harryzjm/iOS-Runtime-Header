@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CryptoTokenKit/TKClientTokenProtocol-Protocol.h>
-
 @class NSMutableDictionary, NSString, TKTokenConnection;
 
 __attribute__((visibility("hidden")))
-@interface TKTokenSessionConnection : NSObject <TKClientTokenProtocol>
+@interface TKTokenSessionConnection : NSObject
 {
     long long _sessionIDCounter;
     TKTokenConnection *_tokenConnection;

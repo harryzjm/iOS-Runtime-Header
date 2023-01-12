@@ -10,7 +10,7 @@
 
 @protocol CEKAbstractSlider <NSObject>
 @property(nonatomic) unsigned long long fontStyle;
-@property(nonatomic) CDStruct_ae5a35ae gradientInsets;
+@property(nonatomic) CDStruct_c3b9c2ee gradientInsets;
 @property(nonatomic) long long titleAlignment;
 @property(nonatomic) long long textOrientation;
 @property(nonatomic) _Bool interactiveWhenHidden;

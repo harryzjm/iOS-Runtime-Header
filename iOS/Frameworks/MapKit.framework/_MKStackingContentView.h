@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKVibrantGroup-Protocol.h>
+#import "_MKUIViewControllerRootView.h"
 
 @class NSLayoutConstraint, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _MKStackingContentView <MKVibrantGroup>
+@interface _MKStackingContentView : _MKUIViewControllerRootView
 {
     NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_middleConstraint;

@@ -6,14 +6,10 @@
 
 #import <ITMLKit/IKJSITunesStore.h>
 
-#import <VideosUI/IKJSITunesStore-Protocol.h>
-#import <VideosUI/SKStoreProductViewControllerDelegatePrivate-Protocol.h>
-#import <VideosUI/VideosExtrasJSITunesStore-Protocol.h>
-
 @class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasJSITunesStore : IKJSITunesStore <SKStoreProductViewControllerDelegatePrivate, VideosExtrasJSITunesStore, IKJSITunesStore>
+@interface VideosExtrasJSITunesStore : IKJSITunesStore
 {
     UIViewController *_formPresentationViewController;
 }

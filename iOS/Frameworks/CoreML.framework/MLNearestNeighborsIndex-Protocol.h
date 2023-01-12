@@ -7,6 +7,7 @@
 @protocol MLNearestNeighborsIndex
 - (unsigned long long)dataPointCount;
 - (_Bool)updateWithData:(const void *)arg1 error:(id *)arg2;
+- (vector_7105b4ee)findNearestNeighbors:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (vector_7105b4ee)findNearestNeighbors:(unsigned long long)arg1 toQueryPoint:(const void *)arg2;
 @end
 

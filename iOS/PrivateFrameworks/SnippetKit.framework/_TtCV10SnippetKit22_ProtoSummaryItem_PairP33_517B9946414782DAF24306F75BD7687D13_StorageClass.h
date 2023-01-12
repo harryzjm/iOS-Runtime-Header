@@ -23,6 +23,8 @@
     MISSING_TYPE *_thumbnail1;
     MISSING_TYPE *_thumbnail2;
     MISSING_TYPE *_action;
+    MISSING_TYPE *_componentName;
+    MISSING_TYPE *_linkIdentifier;
 }
 
 @end

@@ -6,13 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapKit/MKInfoCardThemeListener-Protocol.h>
-#import <MapKit/MKStackingViewControllerSizableView-Protocol.h>
-
 @class CALayer, MKMapView, NSString;
 @protocol MKInfoCardTheme;
 
-@interface UIView (MapKitExtras) <MKStackingViewControllerSizableView, MKInfoCardThemeListener>
+@interface UIView (MapKitExtras)
 + (double)_mapkit_currentAnimationDuration;
 + (id)_mapkit_currentAnimationTimingFunction;
 + (_Bool)_mapkit_shouldAdoptImplicitAnimationParameters;
@@ -35,6 +32,7 @@
 @property(readonly, nonatomic) _Bool _mapkit_isDarkModeEnabled;
 - (void)_mapkit_bringSubviewToFront:(id)arg1;
 - (void)_mapkit_insertSubview:(id)arg1 atIndex:(long long)arg2;
+- (void)_mapkit_insertSubview:(id)arg1 aboveSubview:(id)arg2;
 - (double)_mapkit_trailingMargin;
 - (double)_mapkit_leadingMargin;
 - (_Bool)_mapkit_YCoordinate:(double)arg1 liesInDirection:(long long)arg2 startingFromYCoordinate:(double)arg3;

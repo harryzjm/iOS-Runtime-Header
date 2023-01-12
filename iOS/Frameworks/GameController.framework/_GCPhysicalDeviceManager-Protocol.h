@@ -6,18 +6,17 @@
 
 #import <GameController/_GCDeviceManager-Protocol.h>
 
-@class NSNumber, _GCCControllerHIDServiceInfo;
-@protocol GCPhysicalDeviceRegistry, _GCDeviceDriverConnection;
+@class NSNumber, _GCHIDServiceInfo;
+@protocol _GCDeviceDriverConnection, _GCPhysicalDeviceRegistry;
 
 @protocol _GCPhysicalDeviceManager <_GCDeviceManager>
-@property __weak id <GCPhysicalDeviceRegistry> deviceRegistry;
-- (void)relinquishHIDDevice:(_GCCControllerHIDServiceInfo *)arg1;
-- (void)claimHIDDevice:(_GCCControllerHIDServiceInfo *)arg1;
-- (NSNumber *)matchHIDDevice:(_GCCControllerHIDServiceInfo *)arg1;
+@property __weak id <_GCPhysicalDeviceRegistry> deviceRegistry;
+- (void)relinquishHIDService:(_GCHIDServiceInfo *)arg1;
+- (void)claimHIDService:(_GCHIDServiceInfo *)arg1;
+- (NSNumber *)matchHIDService:(_GCHIDServiceInfo *)arg1;
 
 @optional
-- (id <_GCDeviceDriverConnection>)driverConnectionForHIDDevice:(_GCCControllerHIDServiceInfo *)arg1;
-- (_Bool)acceptFilterConnection:(id <_GCDeviceDriverConnection>)arg1 forHIDDevice:(_GCCControllerHIDServiceInfo *)arg2;
-- (_Bool)acceptDriverConnection:(id <_GCDeviceDriverConnection>)arg1 forHIDDevice:(_GCCControllerHIDServiceInfo *)arg2;
+- (_Bool)acceptFilterConnection:(id <_GCDeviceDriverConnection>)arg1 forHIDService:(_GCHIDServiceInfo *)arg2;
+- (_Bool)acceptDriverConnection:(id <_GCDeviceDriverConnection>)arg1 forHIDService:(_GCHIDServiceInfo *)arg2;
 @end
 

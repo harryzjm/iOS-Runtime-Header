@@ -9,6 +9,7 @@
 @class CKAudioPlayer;
 
 @protocol CKAudioPlayerDelegate <NSObject>
+- (void)audioPlayerDidGetInterrupted;
 - (void)audioPlayerCurrentTimeDidChange:(CKAudioPlayer *)arg1;
 
 @optional

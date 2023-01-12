@@ -5,7 +5,7 @@
 //
 
 @protocol BLPurchaseDAAPServerDelegate
-- (void)purchaseServerRequestITunesAuthenticationWithCompletion:(void (^)(_Bool))arg1;
+- (void)purchaseServerRequestITunesAuthentication;
 - (void)purchaseServerHandleClientExpired;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSError.h>
 
-#import <MapsSupport/MSPJournaled-Protocol.h>
-
 @class NSString;
 
-@interface NSError (MapsSharedExtras) <MSPJournaled>
+@interface NSError (MapsSharedExtras)
 + (id)_maps_cancellationError;
 + (id)MSPSyncErrorWithCode:(long long)arg1 description:(id)arg2;
 - (_Bool)_maps_isErrorOfDomain:(id)arg1 code:(long long)arg2;

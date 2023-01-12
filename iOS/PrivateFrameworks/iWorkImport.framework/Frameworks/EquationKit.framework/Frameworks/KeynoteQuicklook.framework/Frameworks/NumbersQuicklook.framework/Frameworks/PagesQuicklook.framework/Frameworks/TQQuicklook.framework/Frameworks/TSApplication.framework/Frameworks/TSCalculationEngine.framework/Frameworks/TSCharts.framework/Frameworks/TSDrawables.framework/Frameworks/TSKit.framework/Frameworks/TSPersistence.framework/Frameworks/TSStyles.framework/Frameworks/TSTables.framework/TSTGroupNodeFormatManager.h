@@ -12,13 +12,15 @@
 {
     NSMutableDictionary *_rowLookupKeysForFormat;
     _Bool _noFormatMergingNeeded;
+    NSMutableDictionary *_upgradeRowUidsForFormat;
     TSCECellValue *_cellValue;
 }
 
 - (void).cxx_destruct;
-@property(readonly, retain, nonatomic) TSCECellValue *cellValue; // @synthesize cellValue=_cellValue;
+@property(readonly, nonatomic) TSCECellValue *cellValue; // @synthesize cellValue=_cellValue;
 - (void)encodeToArchive:(void *)arg1 forGroupBy:(id)arg2 backwardCompat:(_Bool)arg3;
-- (id)initWithArchive:(const void *)arg1 forGroupBy:(id)arg2;
+- (void)unpackAfterUnarchiveForGroupBy:(id)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (void)updateWithDocumentRoot:(id)arg1;
 - (id)description;
 - (_Bool)mergedFormatChangedByRemovingRowUID:(const struct TSKUIDStruct *)arg1 groupBy:(id)arg2;

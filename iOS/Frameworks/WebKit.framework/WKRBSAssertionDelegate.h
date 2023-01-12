@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/RBSAssertionObserving-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKRBSAssertionDelegate : NSObject <RBSAssertionObserving>
+@interface WKRBSAssertionDelegate : NSObject
 {
     CDUnknownBlockType _prepareForInvalidationCallback;
     CDUnknownBlockType _invalidationCallback;

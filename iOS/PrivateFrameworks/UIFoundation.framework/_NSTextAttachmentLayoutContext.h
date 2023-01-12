@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIFoundation/NSTextViewportElementProvider-Protocol.h>
-
 @class NSArray, NSMapTable, NSString, NSTextContainer, NSTextLayoutFragment;
 @protocol NSTextLocation, _NSTextLayoutAttachmentLayoutContextDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _NSTextAttachmentLayoutContext : NSObject <NSTextViewportElementProvider>
+@interface _NSTextAttachmentLayoutContext : NSObject
 {
     id <_NSTextLayoutAttachmentLayoutContextDelegate> _delegate;
     NSMapTable *_textAttachmentInfoTable;

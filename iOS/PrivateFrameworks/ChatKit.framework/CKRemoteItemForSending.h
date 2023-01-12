@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/NSSecureCoding-Protocol.h>
-
 @class MSMessage, NSData, NSString, NSURL;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface CKRemoteItemForSending : NSObject <NSSecureCoding>
+@interface CKRemoteItemForSending : NSObject
 {
     _Bool _previewIsFullyRealizedByChatKit;
     NSURL *_attachmentURL;

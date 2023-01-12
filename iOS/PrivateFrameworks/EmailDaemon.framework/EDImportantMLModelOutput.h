@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailDaemon/MLFeatureProvider-Protocol.h>
-
 @class NSDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface EDImportantMLModelOutput : NSObject <MLFeatureProvider>
+@interface EDImportantMLModelOutput : NSObject
 {
     long long _important;
     NSDictionary *_importantProbability;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FlightUtilitiesCore/NSSecureCoding-Protocol.h>
-
 @class FUAirline;
 
 __attribute__((visibility("hidden")))
-@interface FUFlightCodeShare : NSObject <NSSecureCoding>
+@interface FUFlightCodeShare : NSObject
 {
     FUAirline *_airline;
     unsigned long long _flightNumber;

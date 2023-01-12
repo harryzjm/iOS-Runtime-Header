@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSArray, NSLayoutConstraint, NSString, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBSplitImageView
+@interface UIKBSplitImageView : UIView
 {
     _Bool _canStretchAsFullWidth;
     UIImageView *_fullView;
@@ -19,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_rightWidthConstraint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *filterType; // @synthesize filterType=_currentFilterType;
 - (void)clearImages;
 - (void)setImage:(id)arg1 cachedWidth:(double)arg2 keyplane:(id)arg3;
@@ -27,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void)insertSubviewAtBottom:(id)arg1;
 - (void)prepareForDisplay:(_Bool)arg1;
 - (_Bool)_shouldInheritScreenScaleAsContentScaleFactor;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 canStretchAsFullWidth:(_Bool)arg2;
 
 @end

@@ -6,13 +6,19 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBPerson;
 
 @protocol _SFPBPhotosLibraryImage <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *applicationBundleIdentifier;
+@property(copy, nonatomic) NSArray *peopleInPhotos;
 @property(nonatomic) _Bool isSyndicated;
 @property(copy, nonatomic) NSString *photoIdentifier;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (_SFPBPerson *)peopleInPhotoAtIndex:(unsigned long long)arg1;
+- (unsigned long long)peopleInPhotoCount;
+- (void)addPeopleInPhoto:(_SFPBPerson *)arg1;
+- (void)clearPeopleInPhoto;
 @end
 

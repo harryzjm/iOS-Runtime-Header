@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCVideoRuleCollectionKey : NSObject <NSCopying>
+@interface VCVideoRuleCollectionKey : NSObject
 {
     unsigned char _transportType;
     unsigned char _encodingType;

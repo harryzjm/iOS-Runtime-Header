@@ -17,6 +17,9 @@
     MISSING_TYPE *_unit;
     MISSING_TYPE *_thumbnail;
     MISSING_TYPE *_action;
+    MISSING_TYPE *_componentName;
+    MISSING_TYPE *_text4;
+    MISSING_TYPE *_linkIdentifier;
 }
 
 @end

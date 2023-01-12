@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <webrtc/RTCVideoFrameBuffer-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WK_RTCCVPixelBuffer : NSObject <RTCVideoFrameBuffer>
+@interface WK_RTCCVPixelBuffer : NSObject
 {
     int _width;
     int _height;
@@ -30,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) int cropY; // @synthesize cropY=_cropY;
 @property(readonly, nonatomic) int cropX; // @synthesize cropX=_cropX;
 @property(readonly, nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
+- (void)close;
 - (void)cropAndScaleARGBTo:(struct __CVBuffer *)arg1;
 - (void)cropAndScaleNV12To:(struct __CVBuffer *)arg1 withTempBuffer:(char *)arg2;
 - (id)toI420;

@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface FCCKPResponseOperationResultErrorServer : PBCodable <NSCopying>
+@interface FCCKPResponseOperationResultErrorServer : PBCodable
 {
     int _type;
     CDStruct_f953fb60 _has;

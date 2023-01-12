@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUITableViewSection.h"
+
 @class SKUIGiftConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftTableViewSection
+@interface SKUIGiftTableViewSection : SKUITableViewSection
 {
     SKUIGiftConfiguration *_giftConfiguration;
 }

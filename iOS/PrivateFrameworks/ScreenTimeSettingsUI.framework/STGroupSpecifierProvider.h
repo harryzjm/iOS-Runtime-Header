@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeSettingsUI/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, PSSpecifier, UIViewController;
 @protocol STGroupSpecifierProviderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface STGroupSpecifierProvider : NSObject <UITableViewDelegate>
+@interface STGroupSpecifierProvider : NSObject
 {
     _Bool _isHidden;
     _Bool _invalid;

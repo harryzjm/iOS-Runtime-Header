@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     unsigned long long currentPageIndex;
 }
 
++ (id)sidebarAttributedString;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long currentPageIndex; // @synthesize currentPageIndex;
 - (void)fadeOut;
+- (void)resetFadeOutTimer;
 - (void)showNowInSuperView:(id)arg1 withText:(id)arg2;
 - (double)_fadeOutDuration;
 - (double)_fadeOutDelay;

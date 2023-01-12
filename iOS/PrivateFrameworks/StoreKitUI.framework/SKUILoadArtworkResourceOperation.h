@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUILoadResourceOperation.h"
+
 @class SKUIArtworkRequest, SSVLoadURLOperation;
 
 __attribute__((visibility("hidden")))
-@interface SKUILoadArtworkResourceOperation
+@interface SKUILoadArtworkResourceOperation : SKUILoadResourceOperation
 {
     SSVLoadURLOperation *_underlyingOperation;
 }

@@ -17,6 +17,6 @@
 - (void)startQueryWithResult:(DDScannerResult *)arg1 context:(NSDictionary *)arg2;
 - (void)startQueryWithString:(NSString *)arg1 range:(struct _NSRange)arg2;
 - (void)startQueryWithQuery:(RVQuery *)arg1;
-- (void)prepareWithQueryObject:(RVQuery *)arg1 previewMode:(_Bool)arg2 sheetMode:(_Bool)arg3 popoverMode:(_Bool)arg4 viewStyle:(long long)arg5 scale:(double)arg6;
+- (void)prepareWithQueryObject:(RVQuery *)arg1 previewMode:(_Bool)arg2 sheetMode:(_Bool)arg3 popoverMode:(_Bool)arg4 viewStyle:(long long)arg5 scale:(double)arg6 dictionaryMode:(_Bool)arg7 remoteTextQuery:(_Bool)arg8;
 @end
 

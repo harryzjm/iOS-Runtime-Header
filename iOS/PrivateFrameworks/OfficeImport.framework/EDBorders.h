@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDResources;
 
 __attribute__((visibility("hidden")))
-@interface EDBorders : NSObject <NSCopying>
+@interface EDBorders : NSObject
 {
     EDResources *mResources;
     unsigned long long mLeftBorderIndex;

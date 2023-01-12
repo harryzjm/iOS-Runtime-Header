@@ -6,11 +6,9 @@
 
 #import <Foundation/NSUserDefaults.h>
 
-#import <PDSAgent/PDSKVStore-Protocol.h>
-
 @class NSString;
 
-@interface NSUserDefaults (PDSKVStore) <PDSKVStore>
+@interface NSUserDefaults (PDSKVStore)
 - (id)allStoredValues;
 - (void)setString:(id)arg1 forKey:(id)arg2;
 - (void)setNumber:(id)arg1 forKey:(id)arg2;

@@ -8,6 +8,7 @@
 
 @protocol GEONavigationServerRequestStateXPCInterface <NSObject>
 - (void)setWantsRoutes:(_Bool)arg1;
+- (void)requestETAUpdate;
 - (void)requestNavigationVoiceVolume;
 - (void)requestPositionFromDestination;
 - (void)requestPositionFromManeuver;

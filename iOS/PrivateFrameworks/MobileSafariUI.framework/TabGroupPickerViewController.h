@@ -6,15 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MobileSafariUI/UICollectionViewDelegate-Protocol.h>
-#import <MobileSafariUI/UICollectionViewDragDelegate-Protocol.h>
-#import <MobileSafariUI/UICollectionViewDropDelegate-Protocol.h>
-
 @class NSString, UIBarButtonItem, UICollectionView, UICollectionViewDiffableDataSource;
 @protocol TabGroupProvider;
 
 __attribute__((visibility("hidden")))
-@interface TabGroupPickerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDragDelegate, UICollectionViewDropDelegate>
+@interface TabGroupPickerViewController : UIViewController
 {
     id <TabGroupProvider> _tabGroupProvider;
     UICollectionView *_collectionView;
@@ -24,6 +20,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)tabGroupManagerDidUpdateTabGroups:(id)arg1;
+- (void)tabGroupManager:(id)arg1 didUpdateTabGroup:(id)arg2;
 - (long long)_collectionView:(id)arg1 dataOwnerForDropSession:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (long long)_collectionView:(id)arg1 dataOwnerForDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;

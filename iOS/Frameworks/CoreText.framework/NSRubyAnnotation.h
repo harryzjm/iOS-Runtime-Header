@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreText/NSCopying-Protocol.h>
-#import <CoreText/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface NSRubyAnnotation : NSObject <NSCopying, NSSecureCoding>
+@interface NSRubyAnnotation : NSObject
 {
 }
 

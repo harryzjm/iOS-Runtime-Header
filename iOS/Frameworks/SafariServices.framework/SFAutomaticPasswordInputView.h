@@ -26,9 +26,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
 - (_Bool)allowsSelfSizing;
 - (struct CGSize)intrinsicContentSize;
-- (void)_useCustomPasswordButtonAction:(id)arg1;
 - (void)_useStrongPasswordButtonAction:(id)arg1;
-@property(nonatomic) long long keyboardAppearance;
+- (long long)keyboardAppearance;
+- (void)setKeyboardAppearance:(long long)arg1;
 - (id)initWithInputViewStyle:(long long)arg1 keyboardType:(long long)arg2;
 
 @end

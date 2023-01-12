@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MPSNeuralNetwork/NSSecureCoding-Protocol.h>
-
-@interface MPSWeightsWrapper_SecureCoding <NSSecureCoding>
+@interface MPSWeightsWrapper_SecureCoding
 {
 }
 

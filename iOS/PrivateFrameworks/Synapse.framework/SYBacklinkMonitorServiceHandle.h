@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Synapse/SYBacklinkMonitorServiceProtocol-Protocol.h>
-
 @class NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, SYBacklinkMonitorServiceHandleDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SYBacklinkMonitorServiceHandle : NSObject <SYBacklinkMonitorServiceProtocol>
+@interface SYBacklinkMonitorServiceHandle : NSObject
 {
     id <SYBacklinkMonitorServiceHandleDelegate> _delegate;
     NSXPCConnection *_connection;
@@ -24,6 +22,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *handleQueue; // @synthesize handleQueue=_handleQueue;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(nonatomic) __weak id <SYBacklinkMonitorServiceHandleDelegate> delegate; // @synthesize delegate=_delegate;
+- (long long)_indicatorCoverage;
+- (oneway void)indicatorCoverageWithCompletion:(CDUnknownBlockType)arg1;
+- (oneway void)setIndicatorCoverage:(id)arg1;
 - (oneway void)activeUserActivityDidChange:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setFilterCache:(id)arg1;
 @property(readonly, nonatomic) int processIdentifier;

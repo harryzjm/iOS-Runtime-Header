@@ -6,11 +6,9 @@
 
 #import <SearchFoundation/SFSearchResult.h>
 
-#import <SafariSharedUI/WBSCompletionListItem-Protocol.h>
-
 @class NSString, WBSQuerySuggestion;
 
-@interface SFSearchResult (SafariSharedExtras) <WBSCompletionListItem>
+@interface SFSearchResult (SafariSharedExtras)
 + (id)safari_sfSearchResultWithUniqueIdentifier;
 @property(readonly, nonatomic) NSString *safari_loggingDescription;
 - (id)_firstCardSectionOfClass:(Class)arg1 ofCard:(id)arg2 outIndex:(unsigned long long *)arg3;

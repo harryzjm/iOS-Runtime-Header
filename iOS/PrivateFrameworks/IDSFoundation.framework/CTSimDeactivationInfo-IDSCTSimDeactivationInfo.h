@@ -6,11 +6,9 @@
 
 #import <CoreTelephony/CTSimDeactivationInfo.h>
 
-#import <IDSFoundation/IDSCTSimDeactivationInfo-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface CTSimDeactivationInfo (IDSCTSimDeactivationInfo) <IDSCTSimDeactivationInfo>
+@interface CTSimDeactivationInfo (IDSCTSimDeactivationInfo)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

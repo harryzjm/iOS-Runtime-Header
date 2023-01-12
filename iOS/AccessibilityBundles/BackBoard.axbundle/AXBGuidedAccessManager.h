@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import "MCProfileConnectionObserver-Protocol.h"
-
 @class NSString;
 
-@interface AXBGuidedAccessManager : NSObject <MCProfileConnectionObserver>
+@interface AXBGuidedAccessManager : NSObject
 {
     id _notificationToken;
     id _guidedAccessServer;

@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSCopying-Protocol.h>
-
 @class NSURLResponse, NSURLSessionTask;
 @protocol OS_dispatch_data, OS_dispatch_queue, __NSCFURLSessionConnectionDelegate;
 
-@interface __NSCFURLSessionConnection : NSObject <NSCopying>
+@interface __NSCFURLSessionConnection : NSObject
 {
     NSURLSessionTask *_task;
     NSObject<OS_dispatch_queue> *_workQueue;
     id <__NSCFURLSessionConnectionDelegate> _delegate;
+    _Bool _isFromCache;
     NSURLResponse *_cacheResponse;
     NSObject<OS_dispatch_data> *_cacheData;
     unsigned long long _cacheDataMax;

@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPickerViewDataSource-Protocol.h>
-#import <UIKitCore/UIPickerViewDelegate-Protocol.h>
+#import "UIView.h"
 
 @class NSArray, NSString, UIBarButtonItem, UIKBAutoFillTestTagRequest, UILabel, UIPickerView, UIToolbar, UIVisualEffectView;
 @protocol UIKBAutoFillTestTaggerViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKBAutoFillTestTaggerView <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface UIKBAutoFillTestTaggerView : UIView
 {
     UIKBAutoFillTestTagRequest *_currentRequest;
     UIPickerView *_pickerView;

@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/GGLRenderQueueSource-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MapEngineRenderQueueSource : NSObject <GGLRenderQueueSource>
+@interface _MapEngineRenderQueueSource : NSObject
 {
     void *_mapEngine;
 }
 
 - (void *)renderQueueForTimestamp:(double)arg1;
 - (_Bool)isDelayedRenderQueueConsumptionSupported;
+- (void)_forceUpdateSettings;
 - (id)initWithEngine:(void *)arg1;
 
 // Remaining properties

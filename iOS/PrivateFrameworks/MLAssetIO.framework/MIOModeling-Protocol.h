@@ -10,6 +10,7 @@
 @class MIOModelDescription, MIOVersionInfo, NSArray, NSDictionary, NSString, NSURL;
 
 @protocol MIOModeling <NSObject, NSCopying>
+@property(readonly, nonatomic) void *irProgram;
 @property(readonly, copy, nonatomic) NSDictionary *layerHistogram;
 @property(readonly, copy, nonatomic) NSArray *subModels;
 @property(readonly, copy, nonatomic) NSArray *layers;

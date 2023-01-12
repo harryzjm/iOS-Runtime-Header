@@ -11,6 +11,7 @@
 @protocol RTCVideoFrameBuffer <NSObject>
 @property(readonly, nonatomic) int height;
 @property(readonly, nonatomic) int width;
+- (void)close;
 - (id <RTCI420Buffer>)toI420;
 @end
 

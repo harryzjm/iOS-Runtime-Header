@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKTranscriptLabelCell.h"
+
 @class NSAttributedString, UIButton, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface CKTranscriptReportSpamCell
+@interface CKTranscriptReportSpamCell : CKTranscriptLabelCell
 {
     _Bool _showReportSMSSpam;
     UIButton *_reportSpamButton;

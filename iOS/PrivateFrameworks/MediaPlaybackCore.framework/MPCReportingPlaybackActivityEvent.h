@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCReportingEvent-Protocol.h>
-
 @class ICPlayActivityEvent, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCReportingPlaybackActivityEvent : NSObject <MPCReportingEvent>
+@interface MPCReportingPlaybackActivityEvent : NSObject
 {
     _Bool _shouldReportToStore;
     ICPlayActivityEvent *_playActivityEvent;

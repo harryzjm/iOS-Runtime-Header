@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DShaderStatement-Protocol.h>
-
 @class NSString;
 
-@interface TSCH3DShaderRawStatement : NSObject <TSCH3DShaderStatement>
+@interface TSCH3DShaderRawStatement : NSObject
 {
     NSString *_string;
     struct TSCH3DShaderType _linkageType;

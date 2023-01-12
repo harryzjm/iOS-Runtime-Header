@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUBufferedInputStream-Protocol.h>
-
 @class NSString;
 @protocol SFUInputStream;
 
-@interface SFUBufferedInputStream : NSObject <SFUBufferedInputStream>
+@interface SFUBufferedInputStream : NSObject
 {
     id <SFUInputStream> mStream;
     char *mBuffer;

@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCoding-Protocol.h>
-#import <CoreData/NSCopying-Protocol.h>
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface PFUbiquityKnowledgeVector : NSObject <NSCoding, NSCopying, NSSecureCoding>
+@interface PFUbiquityKnowledgeVector : NSObject
 {
     NSDictionary *_kv;
     NSDictionary *_storeKVDict;

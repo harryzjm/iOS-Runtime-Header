@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreTelephony/CoreTelephonyClientDataDelegateInternal-Protocol.h>
-
 @class CTTelephonyNetworkInfo, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CTTelephonyNetworkInfoDelegatePlus : NSObject <CoreTelephonyClientDataDelegateInternal>
+@interface CTTelephonyNetworkInfoDelegatePlus : NSObject
 {
     CTTelephonyNetworkInfo *_delegate;
     struct queue _clientQueue;

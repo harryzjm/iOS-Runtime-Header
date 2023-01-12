@@ -7,6 +7,7 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (BRAdditions)
+- (_Bool)br_forceMoveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (id)br_topLevelSharedFolderForURL:(id)arg1 error:(id *)arg2;
 - (void)br_setFavoriteRank:(id)arg1 onItemAtURL:(id)arg2;
 - (void)br_setLastOpenDate:(id)arg1 onItemAtURL:(id)arg2;

@@ -10,6 +10,7 @@
 
 @protocol SKAAccountProviding <NSObject>
 - (void)refreshCredentialForPrimaryAccountWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (NSString *)jwtTokenForPrimaryAccountWithError:(id *)arg1;
+- (NSString *)presenceJwtTokenForPrimaryAccountWithError:(id *)arg1;
+- (NSString *)statusJwtTokenForPrimaryAccountWithError:(id *)arg1;
 @end
 

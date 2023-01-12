@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary;
 
 @protocol FCTagRanking <NSObject>
+- (void)prepareForUseWithCompletionHandler:(void (^)(void))arg1;
 - (NSDictionary *)scoresForTagIDs:(NSArray *)arg1;
 - (NSArray *)rankTagIDsDescending:(NSArray *)arg1;
 @end

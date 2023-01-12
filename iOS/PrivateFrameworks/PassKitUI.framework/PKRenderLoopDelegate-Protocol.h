@@ -12,6 +12,7 @@
 - (void)renderLoop:(PKRenderLoop *)arg1 drawAtTime:(double)arg2;
 
 @optional
-- (void)renderLoop:(PKRenderLoop *)arg1 didChangeForcingPause:(_Bool)arg2;
+- (void)renderLoop:(PKRenderLoop *)arg1 didChangeRunnable:(_Bool)arg2;
+- (void)renderLoop:(PKRenderLoop *)arg1 didChangeEffectivePaused:(_Bool)arg2;
 @end
 

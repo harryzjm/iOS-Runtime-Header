@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/WebFormDelegate-Protocol.h>
-
 @class NSString, UIWebBrowserView, _UIWebFormDelegateEditedFormsMap;
 
 __attribute__((visibility("hidden")))
-@interface UIWebFormDelegate : NSObject <WebFormDelegate>
+@interface UIWebFormDelegate : NSObject
 {
     UIWebBrowserView *_webBrowserView;
     _UIWebFormDelegateEditedFormsMap *_editedForms;

@@ -7,8 +7,8 @@
 @class NSString;
 
 @protocol SRSensorKitServiceServerPruning
-- (void)removeAllSamplesForAllSensors;
-- (void)removeAllSamplesForCurrentSensor;
+- (void)removeAllSamplesForAllSensorsWithReply:(void (^)(NSError *))arg1;
+- (void)removeAllSamplesForCurrentSensorWithReply:(void (^)(NSError *))arg1;
 - (void)requestFileHandleForPruningAfterSegment:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)requestFileHandleForPruningSample:(double)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)startPruningForSensor:(NSString *)arg1 deviceId:(NSString *)arg2;

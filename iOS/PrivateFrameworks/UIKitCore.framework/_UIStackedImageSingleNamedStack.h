@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UINamedLayerStack-Protocol.h>
-
 @class NSArray, NSString, _UIStackedImageSingleNamedLayerImage;
 
 __attribute__((visibility("hidden")))
-@interface _UIStackedImageSingleNamedStack : NSObject <UINamedLayerStack>
+@interface _UIStackedImageSingleNamedStack : NSObject
 {
     _UIStackedImageSingleNamedLayerImage *_layerImage;
 }

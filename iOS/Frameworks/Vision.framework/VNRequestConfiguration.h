@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSCopying-Protocol.h>
-
 @class VNProcessingDevice;
 
 __attribute__((visibility("hidden")))
-@interface VNRequestConfiguration : NSObject <NSCopying>
+@interface VNRequestConfiguration : NSObject
 {
     _Bool _preferBackgroundProcessing;
     Class _requestClass;
@@ -21,9 +19,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _metalContextPriority;
     unsigned long long _modelFileBackingStore;
     unsigned long long _maximumProcessingDimensionOnTheLongSide;
+    unsigned long long _memoryPoolId;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long memoryPoolId; // @synthesize memoryPoolId=_memoryPoolId;
 @property(nonatomic) unsigned long long maximumProcessingDimensionOnTheLongSide; // @synthesize maximumProcessingDimensionOnTheLongSide=_maximumProcessingDimensionOnTheLongSide;
 @property(nonatomic) unsigned long long modelFileBackingStore; // @synthesize modelFileBackingStore=_modelFileBackingStore;
 @property(nonatomic) _Bool preferBackgroundProcessing; // @synthesize preferBackgroundProcessing=_preferBackgroundProcessing;

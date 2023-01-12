@@ -4,21 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HDMaintenanceOperation.h"
+
 __attribute__((visibility("hidden")))
-@interface _HDMaintenanceWorkCoordinatorAsynchronousOperation
+@interface _HDMaintenanceWorkCoordinatorAsynchronousOperation : HDMaintenanceOperation
 {
     CDUnknownBlockType _operationBlock;
-    _Bool executing;
-    _Bool finished;
 }
 
 - (void).cxx_destruct;
-@property(getter=isFinished) _Bool finished; // @synthesize finished;
-@property(getter=isExecuting) _Bool executing; // @synthesize executing;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (_Bool)isAsynchronous;
-- (void)start;
-- (void)dealloc;
+- (void)main;
 - (id)initWithName:(id)arg1 operationBlock:(CDUnknownBlockType)arg2;
 
 @end

@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE, NSDictionary, NSString;
+@class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
-@interface _TtC8NewsFeed18FormatImageRequest : NSObject
+@interface _TtC8NewsFeed18FormatImageRequest : _TtCs12_SwiftObject
 {
     MISSING_TYPE *size;
     MISSING_TYPE *scale;
@@ -21,12 +20,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *assetHandles;
     MISSING_TYPE *assetHandle;
     MISSING_TYPE *cacheIdentifier;
+    MISSING_TYPE *requestData;
 }
-
-- (void).cxx_destruct;
-- (id)init;
-@property(nonatomic, readonly) NSString *cacheIdentifier;
-@property(nonatomic, readonly) NSDictionary *assetHandles;
 
 @end
 

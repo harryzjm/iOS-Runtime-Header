@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AccountsDaemon/ACDPluginEntryProtocol-Protocol.h>
-
 @class NSBundle, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ACDPluginEntry : NSObject <ACDPluginEntryProtocol>
+@interface ACDPluginEntry : NSObject
 {
     id _principalObject;
     NSSet *_supportedAccountTypes;

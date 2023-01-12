@@ -9,6 +9,8 @@
 
 @interface CKDModifyRecordZonesOperation
 {
+    _Bool _hasZoneSaves;
+    _Bool _hasZoneDeletes;
     _Bool _allowDefaultZoneSave;
     _Bool _markZonesAsUserPurged;
     _Bool _dontFetchFromServer;
@@ -51,10 +53,10 @@
 - (int)operationType;
 - (_Bool)_saveZonesToServer;
 - (void)_handleRecordZoneDeleted:(id)arg1 responseCode:(id)arg2;
-- (void)_handleRecordZoneSaved:(id)arg1 responseCode:(id)arg2 serverCapabilities:(unsigned long long)arg3;
+- (void)_handleRecordZoneSaved:(id)arg1 responseCode:(id)arg2 serverCapabilities:(unsigned long long)arg3 expirationDate:(id)arg4 expired:(_Bool)arg5;
 - (void)_sendErrorForFailedZones;
 - (void)_sendCoreAnalyticsEventForKeySync;
-- (void)_sychronizeUserKeyRegistryIfNeeded;
+- (void)_synchronizeUserKeyRegistryIfNeeded;
 - (_Bool)supportsClearAssetEncryption;
 - (id)relevantZoneIDs;
 - (id)nameForState:(unsigned long long)arg1;

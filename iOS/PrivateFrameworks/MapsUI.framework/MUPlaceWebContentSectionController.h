@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MKWebContentViewControllerDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class GEOWebContentModuleConfiguration, MKUGCCallToActionViewAppearance, MKWebContentViewController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSString, UIView, UIViewController;
+@class GEOWebContentModuleConfiguration, MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUWebContentViewController, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUPlaceWebContentSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceWebContentSectionController <MKWebContentViewControllerDelegate, MUPlaceSectionControlling>
+@interface MUPlaceWebContentSectionController : MUPlaceSectionController
 {
     GEOWebContentModuleConfiguration *_webContentConfig;
-    MKWebContentViewController *_webContentViewController;
+    MUWebContentViewController *_webContentViewController;
     MUPlaceSectionView *_sectionView;
     _Bool _shouldRemoveWebContent;
     id <MUPlaceWebContentSectionControllerDelegate> _webContentDelegate;
@@ -22,11 +21,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MUPlaceWebContentSectionControllerDelegate> webContentDelegate; // @synthesize webContentDelegate=_webContentDelegate;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (id)draggableContent;
 - (void)webContentViewControllerDidStopLoading:(id)arg1;
 - (void)webContentViewController:(id)arg1 performHeightChangeWithBlock:(CDUnknownBlockType)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)removeWebContentViewController:(id)arg1;
+- (void)removeWebContentViewController:(id)arg1 arguments:(id)arg2;
 - (_Bool)isWebContentViewControllerParentPlacecardLoading:(id)arg1;
 @property(readonly, nonatomic, getter=isLoading) _Bool loading;
 @property(readonly, nonatomic) _Bool hasContent;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

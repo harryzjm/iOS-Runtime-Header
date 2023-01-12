@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIClickHighlightEffect-Protocol.h>
-
 @class NSString, UITargetedPreview, _UIAnchoredClickHighlightPlatterView;
 
 __attribute__((visibility("hidden")))
-@interface _UIClickHighlightInteractionEffect : NSObject <_UIClickHighlightEffect>
+@interface _UIClickHighlightInteractionEffect : NSObject
 {
     long long _phase;
     long long _inflightAnimationCount;

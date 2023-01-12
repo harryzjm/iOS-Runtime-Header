@@ -12,8 +12,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_addActivationLockLabels;
+- (void)setActivationLockWarningString:(id)arg1 detailString:(id)arg2 forLanguage:(id)arg3;
 - (double)setTitleString:(id)arg1 forLanguage:(id)arg2;
 - (void)_axSetupActivationLockLabels;
+- (id)_accessibilitySafeStackView;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

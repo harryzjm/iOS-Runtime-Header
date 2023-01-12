@@ -8,8 +8,6 @@
 
 #import <XCTAutomationSupport/XCTCapabilitiesProviding-Protocol.h>
 
-@class NSString;
-
 @interface XCTAnimationsIdleNotifier : NSObject <XCTCapabilitiesProviding>
 {
 }
@@ -24,12 +22,6 @@
 + (_Bool)supportsAnimationsIdleNotification;
 + (void)initialize;
 - (void)notifyWhenIdle:(CDUnknownBlockType)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

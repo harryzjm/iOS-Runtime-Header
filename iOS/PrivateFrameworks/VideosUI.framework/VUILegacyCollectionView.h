@@ -6,13 +6,11 @@
 
 #import <UIKit/UICollectionView.h>
 
-#import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSIndexPath, NSString, UILongPressGestureRecognizer;
 @protocol VUILegacyCollectionViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUILegacyCollectionView : UICollectionView <UIGestureRecognizerDelegate>
+@interface VUILegacyCollectionView : UICollectionView
 {
     UILongPressGestureRecognizer *_longPressRecognizer;
     double _bottomPadding;
@@ -38,9 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)setBottomPaddingForVisibleBounds:(double)arg1;
 - (void)_performBlockWithLongPressedCellIndexPath:(CDUnknownBlockType)arg1;
-- (void)_performBlockWithFocusedCellIndexPath:(CDUnknownBlockType)arg1;
 - (void)_longPressAction:(id)arg1;
-- (void)_playButtonAction:(id)arg1;
 @property(nonatomic) __weak id <VUILegacyCollectionViewDelegate> delegate; // @dynamic delegate;
 - (void)_notifyDidScroll;
 - (void)setScrollEnabled:(_Bool)arg1;

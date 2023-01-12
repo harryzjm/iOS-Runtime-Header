@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLInsetsJSExports-Protocol.h>
-
-@interface TMLInsets : NSObject <TMLInsetsJSExports, NSCopying>
+@interface TMLInsets : NSObject
 {
     struct UIEdgeInsets _insets;
 }

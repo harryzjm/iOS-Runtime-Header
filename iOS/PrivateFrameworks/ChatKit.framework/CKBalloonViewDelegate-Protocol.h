@@ -12,6 +12,7 @@
 @protocol CKBalloonViewDelegate <NSObject>
 - (void)balloonViewShouldCopyToPasteboard:(CKBalloonView *)arg1;
 - (void)balloonView:(CKBalloonView *)arg1 userDidDragOutsideBalloonWithPoint:(struct CGPoint)arg2;
+- (void)audioBalloonScrubberDidChangeValue:(double)arg1;
 - (void)interactionStoppedFromPreviewItemControllerInBalloonView:(CKBalloonView *)arg1;
 - (void)interactionStartedFromPreviewItemControllerInBalloonView:(CKBalloonView *)arg1;
 - (void)liveBalloonTouched:(CKBalloonView *)arg1;

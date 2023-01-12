@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface IBUITraitCollection : NSObject <IBBinaryArchiving, NSCopying>
+@interface IBUITraitCollection : NSObject
 {
     long long _horizontalSizeClass;
     long long _verticalSizeClass;

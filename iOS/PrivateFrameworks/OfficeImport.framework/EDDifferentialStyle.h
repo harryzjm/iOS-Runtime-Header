@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDAlignmentInfo, EDBorders, EDContentFormat, EDFill, EDFont, EDProtection;
 
 __attribute__((visibility("hidden")))
-@interface EDDifferentialStyle : NSObject <NSCopying>
+@interface EDDifferentialStyle : NSObject
 {
     EDAlignmentInfo *mAlignmentInfo;
     EDBorders *mBorders;

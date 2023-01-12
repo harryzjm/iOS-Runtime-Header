@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDKeyedObject-Protocol.h>
-
 @class EDResources, EDRunsCollection, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CHDDefaultTextProperty : NSObject <EDKeyedObject>
+@interface CHDDefaultTextProperty : NSObject
 {
     EDResources *mResources;
     int mDefaultTextType;

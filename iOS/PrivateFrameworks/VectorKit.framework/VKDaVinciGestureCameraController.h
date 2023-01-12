@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (void)endZoom:(struct CGPoint)arg1;
 - (void)updateZoom:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
 - (void)beginZoom:(struct CGPoint)arg1;
-- (void)dealloc;
 - (id)initWithCameraController:(id)arg1 cameraManager:(void *)arg2;
 
 @end

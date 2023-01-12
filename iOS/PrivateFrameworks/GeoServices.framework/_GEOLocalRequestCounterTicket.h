@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEORequestCounterTicketBase.h"
+
 @class GEORequestCounterPersistence;
 
 __attribute__((visibility("hidden")))
-@interface _GEOLocalRequestCounterTicket
+@interface _GEOLocalRequestCounterTicket : GEORequestCounterTicketBase
 {
     GEORequestCounterPersistence *_persistence;
 }

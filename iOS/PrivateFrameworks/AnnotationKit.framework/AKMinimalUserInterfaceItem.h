@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/AKUserInterfaceItem-Protocol.h>
-
 @class NSString;
 
-@interface AKMinimalUserInterfaceItem : NSObject <AKUserInterfaceItem>
+@interface AKMinimalUserInterfaceItem : NSObject
 {
     long long _tag;
 }

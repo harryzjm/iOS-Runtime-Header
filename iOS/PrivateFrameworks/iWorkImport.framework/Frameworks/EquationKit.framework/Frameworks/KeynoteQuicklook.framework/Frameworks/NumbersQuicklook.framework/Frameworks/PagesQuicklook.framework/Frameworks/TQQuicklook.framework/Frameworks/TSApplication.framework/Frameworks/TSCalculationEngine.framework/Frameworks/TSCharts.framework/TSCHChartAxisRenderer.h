@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCHCompositeRendering-Protocol.h>
-
 @class NSString, TSCHSelectionPath;
 
-@interface TSCHChartAxisRenderer <TSCHCompositeRendering>
+@interface TSCHChartAxisRenderer
 {
     TSCHSelectionPath *_axisTitleSelectionPath;
     struct CGRect _startingEditingFrame;

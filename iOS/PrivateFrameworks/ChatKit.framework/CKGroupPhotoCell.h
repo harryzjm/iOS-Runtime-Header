@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKDetailsCell-Protocol.h>
+#import "CKDetailsCell.h"
 
 @class NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface CKGroupPhotoCell <CKDetailsCell>
+@interface CKGroupPhotoCell : CKDetailsCell
 {
     UIView *_groupView;
 }

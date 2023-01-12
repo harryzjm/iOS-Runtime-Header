@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBAutolayoutFoundation/IBObjectRepresentationTranslator-Protocol.h>
-
 @class NSDictionary, NSSet, NSString;
 
-@interface IBMarshallableObjectPackage : NSObject <IBBinaryArchiving, IBObjectRepresentationTranslator>
+@interface IBMarshallableObjectPackage : NSObject
 {
     NSDictionary *_objectsToObjectIDs;
     NSDictionary *_objectIDsToObjects;

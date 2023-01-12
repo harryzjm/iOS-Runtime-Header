@@ -6,12 +6,13 @@
 
 #import <CloudDocs/NSObject-Protocol.h>
 
-@class BRContainer, NSDictionary, NSString, NSURL;
+@class BRContainer, BRMangledID, NSArray, NSDictionary, NSString, NSURL;
 
 @protocol BRContainerHelper <NSObject>
+- (NSArray *)queryPathsForPersona:(NSString *)arg1 withError:(id *)arg2;
 - (NSString *)itemIDForURL:(NSURL *)arg1 error:(id *)arg2;
 - (unsigned short)br_capabilityToMoveFromURL:(NSURL *)arg1 toNewParent:(NSURL *)arg2 error:(id *)arg3;
-- (BRContainer *)fetchContainerForURL:(NSURL *)arg1;
+- (BRContainer *)fetchContainerForMangledID:(BRMangledID *)arg1 personaID:(NSString *)arg2;
 - (NSDictionary *)fetchAllContainersByIDWithError:(id *)arg1;
 - (_Bool)canFetchAllContainersByID;
 @end

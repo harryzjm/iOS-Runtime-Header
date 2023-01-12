@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <_AuthenticationServices_SwiftUI/ASAuthorizationControllerDelegate-Protocol.h>
-#import <_AuthenticationServices_SwiftUI/ASAuthorizationControllerPresentationContextProviding-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC31_AuthenticationServices_SwiftUIP33_A3D59D81812617403D8A44C04D5B775311Coordinator : NSObject <ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate>
+@interface _TtC31_AuthenticationServices_SwiftUIP33_A3D59D81812617403D8A44C04D5B775311Coordinator : NSObject
 {
     MISSING_TYPE *config;
     MISSING_TYPE *presentationAnchor;

@@ -6,14 +6,11 @@
 
 #import <Preferences/PSListController.h>
 
-#import <SettingsCellularUI/CTCarrierSpaceClientDelegate-Protocol.h>
-#import <SettingsCellularUI/RemoteUIControllerDelegate-Protocol.h>
-
 @class CTCarrierSpaceClient, NSObject, NSString, RemoteUIController;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface PSUICarrierSpacePlansController : PSListController <CTCarrierSpaceClientDelegate, RemoteUIControllerDelegate>
+@interface PSUICarrierSpacePlansController : PSListController
 {
     NSObject<OS_dispatch_queue> *_carrierSpaceQueue;
     RemoteUIController *_remoteUIController;
@@ -22,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) CTCarrierSpaceClient *carrierSpaceClient; // @synthesize carrierSpaceClient=_carrierSpaceClient;
+- (id)getLogger;
 - (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;
 - (void)dismissPlanDetail;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

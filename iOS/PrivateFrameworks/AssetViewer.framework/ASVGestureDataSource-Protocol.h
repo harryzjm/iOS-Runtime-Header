@@ -15,7 +15,7 @@
 - (MISSING_TYPE *)assetHeadScreenPositionForScale:(float)arg1;
 - (MISSING_TYPE *)assetScreenPosition;
 - (MISSING_TYPE *)assetWorldPosition;
-- (CDStruct_14d5dc5e)assetTransform;
+- (CDStruct_f1db2b5e)assetTransform;
 - (_Bool)screenPointIsOnAsset: /* Error: Ran out of types for this method. */;
 @end
 

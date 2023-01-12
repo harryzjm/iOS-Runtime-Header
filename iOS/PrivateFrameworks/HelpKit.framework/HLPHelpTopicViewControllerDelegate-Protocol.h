@@ -6,10 +6,11 @@
 
 #import <HelpKit/NSObject-Protocol.h>
 
-@class HLPHelpTopicItem, HLPHelpTopicViewController, NSError, UITraitCollection;
+@class HLPHelpTopicItem, HLPHelpTopicViewController, NSError, NSString, UITraitCollection;
 
 @protocol HLPHelpTopicViewControllerDelegate <NSObject>
 - (void)helpTopicViewControllerCurrentTopicIsPassionPoint:(HLPHelpTopicViewController *)arg1;
+- (void)helpTopicViewControllerContentViewed:(HLPHelpTopicViewController *)arg1 topicID:(NSString *)arg2 topicTitle:(NSString *)arg3 source:(NSString *)arg4 interfaceStyle:(long long)arg5 fromTopicID:(NSString *)arg6 externalURLString:(NSString *)arg7;
 - (void)helpTopicViewController:(HLPHelpTopicViewController *)arg1 failToLoadWithError:(NSError *)arg2;
 - (void)helpTopicViewController:(HLPHelpTopicViewController *)arg1 topicLoaded:(HLPHelpTopicItem *)arg2;
 - (void)helpTopicViewControllerDoneButtonTapped:(HLPHelpTopicViewController *)arg1;

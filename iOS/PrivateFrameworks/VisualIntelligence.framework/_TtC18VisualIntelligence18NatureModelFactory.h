@@ -8,8 +8,9 @@
 
 @interface _TtC18VisualIntelligence18NatureModelFactory
 {
+    MISSING_TYPE *mlEngineType;
     MISSING_TYPE *modelInfo;
-    MISSING_TYPE *natureClassificationPostProcessor;
+    MISSING_TYPE *postProcessor;
     MISSING_TYPE *coreMLModelProvider;
 }
 

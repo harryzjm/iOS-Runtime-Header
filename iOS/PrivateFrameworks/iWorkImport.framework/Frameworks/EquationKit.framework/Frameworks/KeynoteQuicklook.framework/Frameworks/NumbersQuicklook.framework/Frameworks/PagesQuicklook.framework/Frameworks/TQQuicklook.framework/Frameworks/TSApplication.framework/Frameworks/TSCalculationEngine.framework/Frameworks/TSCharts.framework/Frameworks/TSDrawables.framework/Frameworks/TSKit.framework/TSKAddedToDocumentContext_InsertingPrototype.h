@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface TSKAddedToDocumentContext_InsertingPrototype
+#import "TSKAddedToDocumentContext.h"
+
+@interface TSKAddedToDocumentContext_InsertingPrototype : TSKAddedToDocumentContext
 {
 }
 
 - (_Bool)syncChanges;
-- (_Bool)uniqueBookmarks;
+- (_Bool)uniqueSmartFields;
 - (_Bool)autoUpdateSmartFields;
 - (_Bool)wasPasted;
 - (id)description;

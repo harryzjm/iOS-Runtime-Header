@@ -6,13 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <SettingsCellularUI/PSHeaderFooterView-Protocol.h>
-#import <SettingsCellularUI/UITextViewDelegate-Protocol.h>
-
 @class NSString, UIActivityIndicatorView, UIButton, UILabel, UILayoutGuide, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface PSUICarrierItemsNotLoadedView : UIView <UITextViewDelegate, PSHeaderFooterView>
+@interface PSUICarrierItemsNotLoadedView : UIView
 {
     UIActivityIndicatorView *_spinner;
     UILabel *_titleLabel;

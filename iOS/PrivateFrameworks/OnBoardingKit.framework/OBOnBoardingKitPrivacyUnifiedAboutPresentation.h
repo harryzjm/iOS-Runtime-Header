@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <OnBoardingKit/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OBOnBoardingKitPrivacyUnifiedAboutPresentation : PBCodable <NSCopying>
+@interface OBOnBoardingKitPrivacyUnifiedAboutPresentation : PBCodable
 {
     unsigned long long _timestamp;
     NSString *_bundleid;

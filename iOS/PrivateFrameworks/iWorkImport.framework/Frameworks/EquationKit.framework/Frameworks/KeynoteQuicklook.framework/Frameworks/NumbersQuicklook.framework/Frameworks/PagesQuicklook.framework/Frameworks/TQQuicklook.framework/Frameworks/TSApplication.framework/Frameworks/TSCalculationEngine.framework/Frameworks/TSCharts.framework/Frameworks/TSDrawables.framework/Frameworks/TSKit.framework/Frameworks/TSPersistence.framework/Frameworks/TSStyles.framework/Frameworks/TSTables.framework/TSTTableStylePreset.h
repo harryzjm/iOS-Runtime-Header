@@ -6,13 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSKModel-Protocol.h>
-#import <TSTables/TSSPreset-Protocol.h>
-#import <TSTables/TSSStyleClient-Protocol.h>
-
 @class NSSet, NSString, TSTTableStyleNetwork;
 
-@interface TSTTableStylePreset : TSPObject <TSSPreset, TSSStyleClient, TSKModel>
+@interface TSTTableStylePreset : TSPObject
 {
     TSTTableStyleNetwork *_styleNetwork;
     _Bool _tableHasStrongOwnership;

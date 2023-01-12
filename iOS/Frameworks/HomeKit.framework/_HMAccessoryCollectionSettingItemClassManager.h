@@ -6,20 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class HMFUnfairLock, NSMutableDictionary;
+@class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface _HMAccessoryCollectionSettingItemClassManager : NSObject
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSMutableDictionary *_classes;
 }
 
 + (id)sharedManager;
 + (id)defaultItemValueClasses;
 - (void).cxx_destruct;
+- (void)removeItemValueClassesForKeyPath:(id)arg1;
 - (void)setItemValueClasses:(id)arg1 forKeyPath:(id)arg2;
 - (id)itemValueClassesForKeyPath:(id)arg1;
+- (_Bool)hasCustomItemValueClassesForKeyPath:(id)arg1;
 - (id)init;
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNMeCardSharingSectionDataSource-Protocol.h>
-
 @class CNMeCardSharingRowItem, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNMeCardSharingAudienceDataSource : NSObject <CNMeCardSharingSectionDataSource>
+@interface CNMeCardSharingAudienceDataSource : NSObject
 {
     _Bool _shouldShowEveryone;
     unsigned long long _selectedSharingAudience;

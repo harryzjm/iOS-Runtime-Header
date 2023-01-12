@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KeynoteQuicklook/TSKModel-Protocol.h>
-#import <KeynoteQuicklook/TSKTransformableObject-Protocol.h>
-
 @class KNNoteInfo, KNTemplateSlide, NSMutableSet, NSSet, NSString;
 
-@interface KNSlide <TSKModel, TSKTransformableObject>
+@interface KNSlide
 {
     KNTemplateSlide *_templateSlide;
     KNNoteInfo *_note;

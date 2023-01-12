@@ -6,12 +6,11 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class CPLRecordChange, PLMomentShare;
+@class CPLRecordChange;
 
 @protocol PLSyncableObject <NSObject>
 @property(nonatomic) short cloudLocalState;
 @property(readonly, retain, nonatomic) id localID;
-- (PLMomentShare *)momentShare;
 - (CPLRecordChange *)cplFullRecord;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
-@class NSString, SNDetectorHeadConfiguration;
+@class NSString, SNDetectorHeadConfiguration, SNPredicateFilterOperator;
 
 __attribute__((visibility("hidden")))
-@interface SNDetectorHead : NSObject <SNAnalyzing>
+@interface SNDetectorHead : NSObject
 {
     SNDetectorHeadConfiguration *_configuration;
     NSString *_detectorBoxName;
@@ -19,9 +17,9 @@ __attribute__((visibility("hidden")))
     NSString *_inputFeatureName;
     NSString *_outputConfidenceFeatureName;
     NSString *_outputDetectedFeatureName;
+    SNPredicateFilterOperator *_predicateFilter;
 }
 
-+ (void)completeTimingInfoInResult:(id)arg1 windowLengthFrames:(unsigned int)arg2 usingBox:(void *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)primeGraph;

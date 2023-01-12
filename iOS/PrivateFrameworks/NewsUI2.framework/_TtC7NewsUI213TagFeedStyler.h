@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI213TagFeedStyler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *baseStyler;
+    MISSING_TYPE *overriddenRefreshControlBackgroundColor;
 }
 
 @end

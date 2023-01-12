@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OADClient-Protocol.h>
-#import <OfficeImport/OADTextClient-Protocol.h>
-
 @class EDAnchor, EDComment, EDSheet, EDTextBox, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDOfficeArtClient : NSObject <OADClient, OADTextClient>
+@interface EDOfficeArtClient : NSObject
 {
     EDSheet *mSheet;
     id mClientState;

@@ -6,16 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UICollectionViewDataSource-Protocol.h>
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/VideosExtrasCarouselCollectionViewDelegate-Protocol.h>
-#import <VideosUI/VideosExtrasZoomingImageTransitionParticipant-Protocol.h>
-
 @class NSString, UICollectionViewLayout, VideosExtrasCarouselCollectionView;
 @protocol VideosExtrasCarouselCollectionViewLayout, VideosExtrasCarouselViewControllerDataSource, VideosExtrasCarouselViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasCarouselViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, VideosExtrasCarouselCollectionViewDelegate, VideosExtrasZoomingImageTransitionParticipant>
+@interface VideosExtrasCarouselViewController : UIViewController
 {
     _Bool _revealingNavigationBarDuringTransition;
     id <VideosExtrasCarouselViewControllerDataSource> _dataSource;

@@ -10,6 +10,7 @@
 @protocol IDSXPCConnectionProtocol, OS_dispatch_queue;
 
 @protocol IDSXPCAdapter <NSObject>
+- (id <IDSXPCConnectionProtocol>)createSim2HostServiceConnectionWithServiceName:(const char *)arg1 invalidationHandler:(void (^)(void))arg2 terminationHandler:(void (^)(void))arg3 peerEventHandler:(void (^)(NSObject<OS_xpc_object> *, NSObject<OS_xpc_object> *))arg4 peerQueue:(NSObject<OS_dispatch_queue> *)arg5;
 - (id <IDSXPCConnectionProtocol>)createServiceConnectionWithServiceName:(const char *)arg1 invalidationHandler:(void (^)(void))arg2 terminationHandler:(void (^)(void))arg3 peerEventHandler:(void (^)(NSObject<OS_xpc_object> *, NSObject<OS_xpc_object> *))arg4 peerQueue:(NSObject<OS_dispatch_queue> *)arg5;
 @end
 

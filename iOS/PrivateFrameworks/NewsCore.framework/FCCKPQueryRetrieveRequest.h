@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPQuery, FCCKPRecordZoneIdentifier, FCCKPRequestedFields, NSData;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPQueryRetrieveRequest : PBRequest <NSCopying>
+@interface FCCKPQueryRetrieveRequest : PBRequest
 {
     NSData *_continuationMarker;
     unsigned int _limit;

@@ -20,6 +20,7 @@
     MISSING_TYPE *userActivityTrackingInfo;
     MISSING_TYPE *userActivityPreferenceSeed;
     MISSING_TYPE *activationConditionsPreferenceSeed;
+    MISSING_TYPE *enqueuedEvents;
 }
 
 @end

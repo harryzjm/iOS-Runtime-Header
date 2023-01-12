@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIImageView.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIPageIndicatorView
+@interface _UIPageIndicatorView : UIImageView
 {
     struct CGSize _cachedSize;
     long long _page;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
-
 @class NSString, UIWebView;
 @protocol UIScrollViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIWebViewScrollViewDelegateForwarder : NSObject <UIScrollViewDelegate>
+@interface _UIWebViewScrollViewDelegateForwarder : NSObject
 {
     id <UIScrollViewDelegate> _delegate;
     UIWebView *_webView;

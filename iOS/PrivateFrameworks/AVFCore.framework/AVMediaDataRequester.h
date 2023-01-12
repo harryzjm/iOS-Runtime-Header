@@ -14,12 +14,16 @@ __attribute__((visibility("hidden")))
     id <AVMediaDataRequesterConsumer> _mediaDataConsumer;
     NSObject<OS_dispatch_queue> *_requestQueue;
     CDUnknownBlockType _requestBlock;
+    struct OpaqueFigSimpleMutex *_invalidateMutex;
+    _Bool _invalidatePending;
 }
 
 @property(readonly, nonatomic) CDUnknownBlockType requestBlock; // @synthesize requestBlock=_requestBlock;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
 - (void)_requestMediaDataIfReady;
 - (void)invalidate;
+- (_Bool)_isInvalidatePending;
+- (void)_setInvalidatePending;
 - (void)startRequestingMediaData;
 - (void)dealloc;
 - (id)init;

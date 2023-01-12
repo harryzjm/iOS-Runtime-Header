@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
+#import "UIView.h"
+
 @protocol _UIAtomTextViewAtomLayout;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchTokenLayoutView
+@interface _UISearchTokenLayoutView : UIView
 {
     double _verticalDelegateViewOrigin;
     _Bool _isLastSearchToken;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isLastSearchToken; // @synthesize isLastSearchToken=_isLastSearchToken;
 @property(retain, nonatomic) UIView<_UIAtomTextViewAtomLayout> *delegateView; // @synthesize delegateView=_delegateView;
+- (void)updateMaskLayerForVisibleRect:(struct CGRect)arg1;
 - (void)updateMaskLayerForAttachmentRect:(struct CGRect)arg1 lineFragment:(struct CGRect)arg2;
 - (struct CGRect)boundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3;
 - (struct CGRect)selectionBounds;

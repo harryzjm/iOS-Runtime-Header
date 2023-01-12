@@ -7,8 +7,10 @@
 #import <IDS/IDSDevice.h>
 
 @interface IDSDevice (DNDServer)
-- (unsigned long long)_dnds_isIOS14EraOS;
-- (unsigned long long)_dnds_syncProtocolVersion;
+- (_Bool)_dnds_supportsSilenceLists;
+- (_Bool)_dnds_isIOS14EraOS;
+- (unsigned long long)_dnds_configurationSyncProtocolVersion;
+- (unsigned long long)_dnds_assertionSyncProtocolVersion;
 - (unsigned long long)_dnds_minorBuildVersion;
 - (unsigned long long)_dnds_pairedDeviceClass;
 @end

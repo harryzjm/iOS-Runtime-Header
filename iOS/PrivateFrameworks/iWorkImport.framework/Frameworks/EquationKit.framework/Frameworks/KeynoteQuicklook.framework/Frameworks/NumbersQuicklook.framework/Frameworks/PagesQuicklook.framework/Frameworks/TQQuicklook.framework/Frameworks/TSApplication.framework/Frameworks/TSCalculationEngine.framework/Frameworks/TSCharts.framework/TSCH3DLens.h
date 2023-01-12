@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
-@interface TSCH3DLens : NSObject <NSCopying>
+@interface TSCH3DLens : NSObject
 {
     float _near;
     float _far;

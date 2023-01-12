@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AppleMediaServices/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSXDProtoMessage : PBCodable <NSCopying>
+@interface AMSXDProtoMessage : PBCodable
 {
     NSString *_logKey;
     NSData *_messageData;

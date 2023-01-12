@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebPresentationDelegate-Protocol.h>
-#import <AppleMediaServicesUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <AppleMediaServicesUI/UIViewControllerTransitioningDelegate-Protocol.h>
+#import "AMSUICommonViewController.h"
 
-@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSDictionary, NSString, UINavigationItem, UIViewController;
+@class AMSBinaryPromise, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSDictionary, NSString, UINavigationItem, UIViewController;
 @protocol AMSUIWebPagePresenter, AMSUIWebPresentationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebContainerViewController <UIViewControllerTransitioningDelegate, AMSUIWebPresentationDelegate, UIAdaptivePresentationControllerDelegate>
+@interface AMSUIWebContainerViewController : AMSUICommonViewController
 {
     _Bool _shouldSkipInitialRefresh;
+    _Bool _didAppearOnce;
     _Bool _dismissCalled;
-    _Bool _hasAppeared;
+    _Bool _isAppearing;
     UIViewController<AMSUIWebPagePresenter> *_containedViewController;
     unsigned long long _activePresentationType;
     AMSUIWebAppearance *_appearance;
@@ -26,6 +25,7 @@ __attribute__((visibility("hidden")))
     AMSUIWebContainerViewController *_nextContainer;
     NSDictionary *_pageInfo;
     AMSUIWebContainerViewController<AMSUIWebPresentationDelegate> *_pushPresentationDelegate;
+    AMSBinaryPromise *_activeRefresh;
     AMSUIWebClientContext *_context;
     UIViewController *_hiddenViewController;
     UINavigationItem *_lastNavigationItem;
@@ -40,9 +40,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long lastNavigationStyle; // @synthesize lastNavigationStyle=_lastNavigationStyle;
 @property(nonatomic) __weak UINavigationItem *lastNavigationItem; // @synthesize lastNavigationItem=_lastNavigationItem;
 @property(retain, nonatomic) UIViewController *hiddenViewController; // @synthesize hiddenViewController=_hiddenViewController;
-@property(nonatomic) _Bool hasAppeared; // @synthesize hasAppeared=_hasAppeared;
+@property(nonatomic) _Bool isAppearing; // @synthesize isAppearing=_isAppearing;
 @property(nonatomic) _Bool dismissCalled; // @synthesize dismissCalled=_dismissCalled;
+@property(nonatomic) _Bool didAppearOnce; // @synthesize didAppearOnce=_didAppearOnce;
 @property(nonatomic) __weak AMSUIWebClientContext *context; // @synthesize context=_context;
+@property(retain, nonatomic) AMSBinaryPromise *activeRefresh; // @synthesize activeRefresh=_activeRefresh;
 @property(nonatomic) _Bool shouldSkipInitialRefresh; // @synthesize shouldSkipInitialRefresh=_shouldSkipInitialRefresh;
 @property(nonatomic) __weak AMSUIWebContainerViewController<AMSUIWebPresentationDelegate> *pushPresentationDelegate; // @synthesize pushPresentationDelegate=_pushPresentationDelegate;
 @property(retain, nonatomic) NSDictionary *pageInfo; // @synthesize pageInfo=_pageInfo;
@@ -55,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupNavBarAnimated:(_Bool)arg1;
 - (void)_scrollTo:(struct CGPoint)arg1 webView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_rightButtonModel;
+- (id)_refreshWithOptions:(id)arg1;
 - (void)_refreshForInitialAppear;
 - (void)_prepareToMoveWebViewToVC:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_postEvent:(id)arg1;
@@ -65,8 +68,6 @@ __attribute__((visibility("hidden")))
 - (void)_handleLeftNavigationButton:(id)arg1;
 - (unsigned long long)_determineActivePresentationType;
 - (id)_buttonModelForConditionalButtons:(id)arg1;
-- (id)_barButtonItemForButtonModel:(id)arg1;
-- (id)_barButtonItemForAppViewModel:(id)arg1;
 - (void)_applyAppearance;
 - (void)_adjustWebViewScrollFor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(retain, nonatomic) UIViewController<AMSUIWebPagePresenter> *containedViewController; // @synthesize containedViewController=_containedViewController;
@@ -83,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (id)navigationItem;
 - (void)loadView;
 - (void)dealloc;
+- (_Bool)canBeShownFromSuspendedState;
 - (id)initWithViewController:(id)arg1 appearance:(id)arg2 navigationBar:(id)arg3 context:(id)arg4;
 
 // Remaining properties

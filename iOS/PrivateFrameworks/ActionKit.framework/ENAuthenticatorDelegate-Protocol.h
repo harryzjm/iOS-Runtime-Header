@@ -6,11 +6,12 @@
 
 #import <ActionKit/NSObject-Protocol.h>
 
-@class ENCredentials, ENUserStoreClient, NSDictionary, NSError;
+@class ENCredentials, ENUserStoreClient, NSDictionary, NSError, NSString, NSURL;
 
 @protocol ENAuthenticatorDelegate <NSObject>
 - (void)authenticatorDidFailWithError:(NSError *)arg1;
 - (void)authenticatorDidAuthenticateWithCredentials:(ENCredentials *)arg1 authInfo:(NSDictionary *)arg2;
+- (void)authenticatorShouldShowAuthorizationUIWithURL:(NSURL *)arg1 callbackPrefix:(NSString *)arg2 completionBlock:(void (^)(NSURL *))arg3;
 - (ENUserStoreClient *)userStoreClientForBootstrapping;
 @end
 

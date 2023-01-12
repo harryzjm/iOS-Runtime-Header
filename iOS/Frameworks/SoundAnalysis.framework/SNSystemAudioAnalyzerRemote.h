@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNSystemAudioAnalyzerProtocol-Protocol.h>
-
 @class NSMutableDictionary, SNAudioConfiguration;
 @protocol OS_dispatch_queue, SNSystemAudioAnalyzerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface SNSystemAudioAnalyzerRemote : NSObject <SNSystemAudioAnalyzerProtocol>
+@interface SNSystemAudioAnalyzerRemote : NSObject
 {
     NSMutableDictionary *_registeredRequests;
     id <SNSystemAudioAnalyzerProtocol> _analyzer;
@@ -21,24 +19,11 @@ __attribute__((visibility("hidden")))
     SNAudioConfiguration *_audioConfiguration;
 }
 
-+ (id)connectionLostError;
 - (void).cxx_destruct;
-- (void)stop;
-- (void)start;
 - (void)removeAllRequests;
 - (void)removeRequest:(id)arg1;
 - (_Bool)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
 - (void)setAudioConfiguration:(id)arg1;
-- (void)_removeAllRequests;
-- (void)_removeRequest:(id)arg1;
-- (void)_addRequest:(id)arg1 withObserver:(id)arg2;
-- (void)_setAudioConfiguration:(id)arg1;
-- (void)_invalidateAnalyzer:(id)arg1;
-- (void)_invalidateActiveAnalyzer;
-- (void)invalidateActiveAnalyzer;
-- (id)_acquireSystemAudioAnalyzer;
-- (id)initWithClient:(id)arg1 queue:(id)arg2;
-- (id)initWithRemoteAnalyzerGenerator:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)init;
 
 @end

@@ -6,14 +6,9 @@
 
 #import <WebKit/WebView.h>
 
-#import <iWorkImport/WebFrameLoadDelegate-Protocol.h>
-#import <iWorkImport/WebPolicyDelegate-Protocol.h>
-#import <iWorkImport/WebResourceLoadDelegate-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQUWebView : WebView <WebFrameLoadDelegate, WebResourceLoadDelegate, WebPolicyDelegate>
+@interface GQUWebView : WebView
 {
     _Bool mHasAttachments;
 }

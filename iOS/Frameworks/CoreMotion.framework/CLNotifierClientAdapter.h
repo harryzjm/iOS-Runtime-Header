@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMotion/CLNotifierServiceClientProtocol-Protocol.h>
-
 @class NSString;
 
-@interface CLNotifierClientAdapter : NSObject <CLNotifierServiceClientProtocol>
+@interface CLNotifierClientAdapter : NSObject
 {
     struct CLNotifierClientBase *_client;
     _Bool _valid;

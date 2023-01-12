@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreLocation/NSCopying-Protocol.h>
-
-@interface CLVehicleSpeedInternal : NSObject <NSCopying>
+@interface CLVehicleSpeedInternal : NSObject
 {
     CDStruct_6a5f25ec fSpeed;
 }

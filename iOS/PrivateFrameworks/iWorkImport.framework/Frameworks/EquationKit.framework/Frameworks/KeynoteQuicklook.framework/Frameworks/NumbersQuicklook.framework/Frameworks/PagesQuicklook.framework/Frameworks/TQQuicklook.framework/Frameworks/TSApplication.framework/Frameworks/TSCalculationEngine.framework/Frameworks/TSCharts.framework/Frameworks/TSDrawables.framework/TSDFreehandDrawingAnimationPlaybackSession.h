@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/TSDDynamicOverrideProvider-Protocol.h>
-
 @class NSString, TSDFreehandDrawingAnimationPlaybackTiming, TSDFreehandDrawingInfo;
 
-@interface TSDFreehandDrawingAnimationPlaybackSession : NSObject <TSDDynamicOverrideProvider>
+@interface TSDFreehandDrawingAnimationPlaybackSession : NSObject
 {
     TSDFreehandDrawingInfo *_drawingInfo;
     TSDFreehandDrawingAnimationPlaybackTiming *_timing;

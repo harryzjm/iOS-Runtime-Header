@@ -21,67 +21,26 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
-struct Ref<SafariShared::WBSWebExtensionAPIPort, WTF::RawPtrTraits<SafariShared::WBSWebExtensionAPIPort>> {
-    struct WBSWebExtensionAPIPort *_field1;
-};
-
-struct RetainPtr<CGImage *> {
-    void *m_ptr;
-};
-
-struct RetainPtr<CGImageSource *> {
-    void *_field1;
-};
-
-struct RetainPtr<const __SecCode *> {
-    void *m_ptr;
+struct NSDirectionalEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
-struct Vector<WTF::RetainPtr<CGImage *>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
-    void *m_buffer;
-    unsigned int m_capacity;
-    unsigned int m_size;
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
-
-struct WBSWebExtensionAPIPort;
-
-struct atomic<bool> {
-    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
-        _Atomic _Bool __a_value;
-    } __a_;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-#pragma mark Typedef'd Structures
-
-// Template types
-typedef struct Ref<SafariShared::WBSWebExtensionAPIPort, WTF::RawPtrTraits<SafariShared::WBSWebExtensionAPIPort>> {
-    struct WBSWebExtensionAPIPort *_field1;
-} Ref_da50d33d;
-
-typedef struct RetainPtr<CGImage *> {
-    void *m_ptr;
-} RetainPtr_c27edd19;
-
-typedef struct RetainPtr<CGImageSource *> {
-    void *_field1;
-} RetainPtr_36f90b78;
-
-typedef struct RetainPtr<const __SecCode *> {
-    void *m_ptr;
-} RetainPtr_86d965a1;
 

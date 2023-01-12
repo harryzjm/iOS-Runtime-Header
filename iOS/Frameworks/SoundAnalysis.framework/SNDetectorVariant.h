@@ -6,32 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/NSCopying-Protocol.h>
-#import <SoundAnalysis/NSSecureCoding-Protocol.h>
-
-@class MLModel, NSString;
+@class NSString, SNComposedDetector;
 
 __attribute__((visibility("hidden")))
-@interface SNDetectorVariant : NSObject <NSCopying, NSSecureCoding>
+@interface SNDetectorVariant : NSObject
 {
     long long _type;
-    MLModel *_vggishBasedMLModel;
+    SNComposedDetector *_composedDetector;
     NSString *_detectorIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly) NSString *detectorIdentifier; // @synthesize detectorIdentifier=_detectorIdentifier;
-@property(readonly) MLModel *vggishBasedMLModel; // @synthesize vggishBasedMLModel=_vggishBasedMLModel;
-@property(readonly) long long type; // @synthesize type=_type;
 - (unsigned long long)hash;
-- (_Bool)isEqualToDetectorVariant:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDetectorIdentifier:(id)arg1;
-- (id)initWithVGGishBasedMLModel:(id)arg1;
+- (id)init;
 
 @end
 

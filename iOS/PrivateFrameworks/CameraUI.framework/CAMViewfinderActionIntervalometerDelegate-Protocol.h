@@ -9,7 +9,10 @@
 @class CAMViewfinderActionIntervalometer;
 
 @protocol CAMViewfinderActionIntervalometerDelegate <NSObject>
-- (void)intervalometerDidReachMaximumCount:(CAMViewfinderActionIntervalometer *)arg1;
 - (_Bool)shouldAttemptAction;
+
+@optional
+- (_Bool)executeAction;
+- (void)intervalometerDidReachMaximumCount:(CAMViewfinderActionIntervalometer *)arg1;
 @end
 

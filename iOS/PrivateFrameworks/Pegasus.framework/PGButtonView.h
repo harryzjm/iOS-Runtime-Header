@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Pegasus/UIPointerInteractionDelegate-Protocol.h>
-
 @class NSString, UIFont, UIImage, UIPointerInteraction, UIViewPropertyAnimator, _PGButton;
 @protocol BSInvalidatable, PGButtonViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PGButtonView <UIPointerInteractionDelegate>
+@interface PGButtonView
 {
     double _currentGlyphSize;
     NSString *_currentGlyphImageName;

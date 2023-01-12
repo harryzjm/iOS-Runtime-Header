@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKDPWebAuthTokenRetrieveResponse : PBCodable <NSCopying>
+@interface CKDPWebAuthTokenRetrieveResponse : PBCodable
 {
     NSString *_containerScopedUserId;
     NSString *_token;

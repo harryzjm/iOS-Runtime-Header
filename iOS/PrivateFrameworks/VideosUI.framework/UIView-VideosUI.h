@@ -15,5 +15,6 @@
 - (double)topMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(unsigned long long)arg2;
 - (double)topMarginWithBaselineMargin:(double)arg1;
 - (struct CGSize)vui_sizeThatFits:(struct CGSize)arg1;
+- (void)setVisibilityForHighlightStyleWithHighlighted:(_Bool)arg1 recursively:(_Bool)arg2;
 @end
 

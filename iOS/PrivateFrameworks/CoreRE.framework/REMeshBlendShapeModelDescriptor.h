@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSSecureCoding-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface REMeshBlendShapeModelDescriptor : NSObject <NSSecureCoding>
+@interface REMeshBlendShapeModelDescriptor : NSObject
 {
     unsigned long long _blendShapeIndexType;
     NSArray *_perMeshPartBlendShapeBufferIndex;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/NSCopying-Protocol.h>
-#import <ContactsUI/NSSecureCoding-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface CNUICoreContactsAuthorizationModel : NSObject <NSCopying, NSSecureCoding>
+@interface CNUICoreContactsAuthorizationModel : NSObject
 {
     NSArray *_items;
 }

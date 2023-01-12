@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDOperation.h"
+
 @class CKDMarkAssetBrokenURLRequest;
 
-@interface CKDMarkAssetBrokenURLRequestWrapperOperation
+@interface CKDMarkAssetBrokenURLRequestWrapperOperation : CKDOperation
 {
     CKDMarkAssetBrokenURLRequest *_urlRequest;
 }

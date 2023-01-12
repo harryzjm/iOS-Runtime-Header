@@ -6,10 +6,10 @@
 
 #import <GameController/_GCIPCRemoteEndpointInterface-Protocol.h>
 
-@class GCControllerSettings;
+@class GCSProfile;
 
 @protocol GCSettingsXPCProxyRemoteClientEndpointInterface <_GCIPCRemoteEndpointInterface>
-- (void)refreshSettings;
-- (void)newSettingsForBundleID:(GCControllerSettings *)arg1 defaultSettings:(GCControllerSettings *)arg2;
+- (void)refreshProfile;
+- (void)newProfile:(GCSProfile *)arg1;
 @end
 

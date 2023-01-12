@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)layoutAttributesClass;
-- (id)initWithSection:(id)arg1 sectionProvider:(CDUnknownBlockType)arg2 configuration:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSectionProvider:(CDUnknownBlockType)arg1 configuration:(id)arg2;
 - (id)initWithSectionProvider:(CDUnknownBlockType)arg1;

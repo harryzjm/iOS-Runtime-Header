@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSObservationSink.h"
+
 __attribute__((visibility("hidden")))
-@interface NSBlockObservationSink
+@interface NSBlockObservationSink : NSObservationSink
 {
     id _block;
     int _tag;

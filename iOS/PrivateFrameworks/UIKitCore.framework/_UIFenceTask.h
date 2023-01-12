@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/BSInvalidatable-Protocol.h>
-
 @class BKSProcessAssertion, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIFenceTask : NSObject <BSInvalidatable>
+@interface _UIFenceTask : NSObject
 {
     unsigned long long _identifier;
     struct os_unfair_lock_s _lock;

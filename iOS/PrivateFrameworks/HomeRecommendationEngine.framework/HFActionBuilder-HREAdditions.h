@@ -7,8 +7,7 @@
 #import <Home/HFActionBuilder.h>
 
 @interface HFActionBuilder (HREAdditions)
-- (_Bool)hre_isWithinVariance:(id)arg1;
-- (id)hre_actionVarianceDictionaryKey;
++ (id)hre_sortActionBuilders:(id)arg1;
 - (id)recommendableObjectsInvolved;
 @end
 

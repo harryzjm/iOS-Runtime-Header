@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ChatKit/UIScrollViewDelegate-Protocol.h>
-
 @class CKConversation, NSString, UIImageView, UILabel, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface CKSentWithSiriViewController : UIViewController <UIScrollViewDelegate>
+@interface CKSentWithSiriViewController : UIViewController
 {
     CKConversation *_conversation;
     UIScrollView *_scrollView;

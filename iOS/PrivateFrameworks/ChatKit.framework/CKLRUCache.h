@@ -6,12 +6,10 @@
 
 #import <AppSupport/CPLRUDictionary.h>
 
-#import <ChatKit/CKCache-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKLRUCache : CPLRUDictionary <CKCache>
+@interface CKLRUCache : CPLRUDictionary
 {
 }
 

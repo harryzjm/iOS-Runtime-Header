@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITextFieldMetricsProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UITextFieldPaddedMetricsProvider : NSObject <_UITextFieldMetricsProvider>
+@interface _UITextFieldPaddedMetricsProvider : NSObject
 {
     _Bool _canIntrinsicHeightExceedContentHeight;
     double _minimumIntrinsicHeight;

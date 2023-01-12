@@ -25,8 +25,8 @@
 - (id)stackFrameForAddress:(unsigned long long)arg1 uuid:(id *)arg2 error:(id *)arg3;
 - (id)stackFrameForAddress:(unsigned long long)arg1 error:(id *)arg2;
 - (id)_primitiveStackFrameForAddress:(unsigned long long)arg1 uuid:(id *)arg2 error:(id *)arg3;
-- (id)initWithDebugSymbolsFileURL:(id)arg1 loadAddress:(unsigned long long)arg2 architectureName:(id)arg3 error:(id *)arg4;
-- (id)initWithUUID:(id)arg1 loadAddress:(unsigned long long)arg2 architectureName:(id)arg3 error:(id *)arg4;
+- (id)initWithDebugSymbolsFileURL:(id)arg1 loadAddress:(unsigned long long)arg2 architectureName:(id)arg3;
+- (id)initWithUUID:(id)arg1 loadAddress:(unsigned long long)arg2 architectureName:(id)arg3;
 
 @end
 

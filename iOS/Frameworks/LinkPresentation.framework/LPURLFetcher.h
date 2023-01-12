@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/WKNavigationDelegate-Protocol.h>
-
-@class NSString, NSURL, WKWebView;
+@class NSMutableData, NSString, NSURL, WKWebView;
 
 __attribute__((visibility("hidden")))
-@interface LPURLFetcher <WKNavigationDelegate>
+@interface LPURLFetcher
 {
     CDUnknownBlockType _completionHandler;
     WKWebView *_webView;
+    NSMutableData *_data;
+    NSString *_MIMEType;
     NSURL *_URL;
     Class _responseClass;
 }
@@ -23,12 +23,9 @@ __attribute__((visibility("hidden")))
 - (void)_completedWithData:(id)arg1 MIMEType:(id)arg2 error:(id)arg3;
 - (void)_failedWithErrorCode:(long long)arg1 underlyingError:(id)arg2;
 - (void)cancel;
-- (void)webViewWebContentProcessDidTerminate:(id)arg1;
-- (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
-- (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
-- (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
-- (void)webView:(id)arg1 decidePolicyForNavigationResponse:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
-- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
+- (void)dataTask:(id)arg1 didCompleteWithError:(id)arg2;
+- (void)dataTask:(id)arg1 didReceiveData:(id)arg2;
+- (void)dataTask:(id)arg1 didReceiveResponse:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 // Remaining properties

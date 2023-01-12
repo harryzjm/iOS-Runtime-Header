@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUIApps/MKLocalSearchCompleterDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12PhotosUIApps17PXMapKitSuggester : NSObject <MKLocalSearchCompleterDelegate>
+@interface _TtC12PhotosUIApps17PXMapKitSuggester : NSObject
 {
     MISSING_TYPE *$__lazy_storage_$_searchCompleter;
     MISSING_TYPE *input;

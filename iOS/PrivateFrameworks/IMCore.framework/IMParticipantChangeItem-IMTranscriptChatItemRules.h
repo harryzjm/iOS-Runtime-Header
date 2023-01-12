@@ -8,5 +8,6 @@
 
 @interface IMParticipantChangeItem (IMTranscriptChatItemRules)
 - (id)_newChatItems;
+- (id)_newChatItemsWithChatContext:(id)arg1;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUINowPlayingHybridFeature-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUINowPlayingHybridFeature : NSObject <VUINowPlayingHybridFeature>
+@interface VUINowPlayingHybridFeature : NSObject
 {
     _Bool _active;
     _Bool _autoRemove;

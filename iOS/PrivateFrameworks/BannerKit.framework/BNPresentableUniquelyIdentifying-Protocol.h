@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BannerKit/BNPresentableIdentifying-Protocol.h>
+#import <BannerKit/NSObject-Protocol.h>
 
 @class NSUUID;
 
-@protocol BNPresentableUniquelyIdentifying <BNPresentableIdentifying>
+@protocol BNPresentableUniquelyIdentifying <NSObject>
+
+@optional
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property(readonly, copy, nonatomic) NSUUID *uniquePresentableIdentifier;
 @end
 

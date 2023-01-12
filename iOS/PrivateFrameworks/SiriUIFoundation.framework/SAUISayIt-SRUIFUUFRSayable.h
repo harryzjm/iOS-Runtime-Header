@@ -6,9 +6,7 @@
 
 #import <SAObjects/SAUISayIt.h>
 
-#import <SiriUIFoundation/SRUIFUUFRSayable-Protocol.h>
-
-@interface SAUISayIt (SRUIFUUFRSayable) <SRUIFUUFRSayable>
+@interface SAUISayIt (SRUIFUUFRSayable)
 - (id)sruif__uufrSaid;
 @property(nonatomic, setter=sruif_setIgnoresMuteSwitch:) _Bool sruif_ignoresMuteSwitch;
 @end

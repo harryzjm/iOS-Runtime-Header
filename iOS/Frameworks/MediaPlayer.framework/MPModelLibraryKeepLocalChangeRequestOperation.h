@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPModelLibraryKeepLocalChangeRequest, NSOperationQueue;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibraryKeepLocalChangeRequestOperation
+@interface MPModelLibraryKeepLocalChangeRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;
     CDUnknownBlockType _responseHandler;
@@ -18,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) MPModelLibraryKeepLocalChangeRequest *request; // @synthesize request=_request;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 - (void)_handleKeepLocalUpdateStatus:(long long)arg1 forLibraryIdentifier:(long long)arg2 mediaType:(long long)arg3 completedWithError:(id)arg4;
-- (void)_handlePersistentID:(long long)arg1 modelClass:(Class)arg2 keepLocal:(long long)arg3 mediaLibrary:(id)arg4;
+- (void)_handlePersistentID:(long long)arg1 modelClass:(Class)arg2 keepLocal:(long long)arg3 keepLocalConstraints:(unsigned long long)arg4 mediaLibrary:(id)arg5;
 - (void)execute;
 
 @end

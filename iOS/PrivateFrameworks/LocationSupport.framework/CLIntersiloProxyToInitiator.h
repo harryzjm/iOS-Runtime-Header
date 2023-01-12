@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLIntersiloProxy;
+#import "CLIntersiloProxy.h"
 
-@interface CLIntersiloProxyToInitiator
+@interface CLIntersiloProxyToInitiator : CLIntersiloProxy
 {
     CLIntersiloProxy *_peer;
 }

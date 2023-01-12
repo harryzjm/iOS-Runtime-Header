@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICUserIdentity, MPModelStoreBrowseContentItemBuilder, MPModelStoreBrowseSectionBuilder, MPSectionedCollection, NSDictionary, NSIndexSet, NSRegularExpression, NSString;
+@class ICURLBag, ICUserIdentity, MPModelStoreBrowseContentItemBuilder, MPModelStoreBrowseSectionBuilder, MPSectionedCollection, NSIndexSet, NSRegularExpression, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MPModelStoreGroupingsMusicKitResponseParser : NSObject
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     MPSectionedCollection *_results;
     ICUserIdentity *_userIdentity;
     unsigned long long _options;
-    NSDictionary *_storeBagDictionary;
+    ICURLBag *_storeURLBag;
     NSRegularExpression *_storeBagLinkRegularExpression;
     NSString *_rootObjectIdentifier;
 }
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)_parsedSectionedCollection;
 - (id)description;
 @property(readonly, nonatomic) MPSectionedCollection *results;
-- (id)initWithRawResponseOutput:(id)arg1 sectionBuilder:(id)arg2 contentItemBuilder:(id)arg3 filteredFCKinds:(id)arg4 userIdentity:(id)arg5 rootObjectIdentifier:(id)arg6 options:(unsigned long long)arg7 storeBagDictionary:(id)arg8;
+- (id)initWithRawResponseOutput:(id)arg1 sectionBuilder:(id)arg2 contentItemBuilder:(id)arg3 filteredFCKinds:(id)arg4 userIdentity:(id)arg5 rootObjectIdentifier:(id)arg6 options:(unsigned long long)arg7 storeURLBag:(id)arg8;
 
 @end
 

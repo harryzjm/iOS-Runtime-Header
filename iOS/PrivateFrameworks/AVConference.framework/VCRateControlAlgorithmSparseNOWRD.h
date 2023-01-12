@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     double _lastCongestionTime;
     double _lastRampUpTime;
     double _lastAllowRampUpTime;
-    _Bool _isFirstTimestampArrived;
     unsigned int _actualSendBitrate;
+    unsigned int _instantBitrate;
     unsigned int _expectedBitrate;
     int _recentTierWindow[256];
     unsigned int _recentTierWindowSize;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
     _Bool _basebandAdaptationEnabled;
 }
 
+@property(readonly, nonatomic) _Bool basebandAdaptationEnabled; // @synthesize basebandAdaptationEnabled=_basebandAdaptationEnabled;
 - (void)printRateControlInfoToLogDump;
 - (void)resetRampingStatus;
 - (void)resetOscillationDetection;
@@ -59,11 +60,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldRampDownDueToBaseband;
 - (_Bool)shouldRampDown;
 - (_Bool)shouldRampUp;
+- (_Bool)shouldBlockRampUpDueToRecentLossEvent;
+- (_Bool)shouldBlockRampUpDueToNetworkUnstable;
 - (void)checkCongestionStatus;
 - (_Bool)noServerStatsActivityDetected;
-- (_Bool)doRateControlWithBasebandStatistics:(CDStruct_c0785916)arg1;
-- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_c0785916)arg1;
-- (_Bool)doRateControlWithStatistics:(CDStruct_c0785916)arg1;
+- (_Bool)doRateControlWithBasebandStatistics:(CDStruct_7df19fcb)arg1;
+- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_7df19fcb)arg1;
+- (_Bool)doRateControlWithStatistics:(CDStruct_7df19fcb)arg1;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
 - (id)init;
 

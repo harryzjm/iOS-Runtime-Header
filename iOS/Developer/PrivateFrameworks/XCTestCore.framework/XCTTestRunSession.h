@@ -6,31 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <XCTestCore/XCTTestWorker-Protocol.h>
+#import <XCTestCore/XCTExecutionExtension-Protocol.h>
 
-@class NSString, XCTBlockingQueue, XCTestConfiguration;
-@protocol XCTTestRunSessionDelegate;
+@class NSString, XCTestConfiguration, XCTestSuite;
 
-@interface XCTTestRunSession : NSObject <XCTTestWorker>
+@interface XCTTestRunSession : NSObject <XCTExecutionExtension>
 {
-    id <XCTTestRunSessionDelegate> _delegate;
     XCTestConfiguration *_testConfiguration;
-    XCTBlockingQueue *_workQueue;
+    XCTestSuite *_testSuite;
 }
 
-+ (void)initialize;
 - (void).cxx_destruct;
-@property(retain) XCTBlockingQueue *workQueue; // @synthesize workQueue=_workQueue;
-@property(retain) XCTestConfiguration *testConfiguration; // @synthesize testConfiguration=_testConfiguration;
-@property __weak id <XCTTestRunSessionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)shutdown;
-- (void)executeTestIdentifiers:(id)arg1 skippingTestIdentifiers:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
-- (void)fetchDiscoveredTestClasses:(CDUnknownBlockType)arg1;
-- (_Bool)runTestsAndReturnError:(id *)arg1;
-- (_Bool)_preTestingInitialization;
-- (void)resumeAppSleep:(id)arg1;
-- (id)suspendAppSleep;
-- (id)initWithTestConfiguration:(id)arg1;
+- (void)executeTestsWithIdentifiers:(id)arg1 skippingTestsWithIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getParallelizableTestIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
+- (id)initWithTestConfiguration:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

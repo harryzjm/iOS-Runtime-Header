@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKDPCodeFunctionInvokeResponseAttestationResponse : PBCodable <NSCopying>
+@interface CKDPCodeFunctionInvokeResponseAttestationResponse : PBCodable
 {
     NSMutableArray *_attestations;
 }

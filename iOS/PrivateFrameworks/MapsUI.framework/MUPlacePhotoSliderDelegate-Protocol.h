@@ -6,13 +6,13 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MUPlacePhotoSliderView, MUPunchoutViewModel, UIView;
+@class MUPlacePhotoSliderView, MUPunchoutViewModel;
+@protocol MUPhotoTileViewModel;
 
 @protocol MUPlacePhotoSliderDelegate <NSObject>
 - (void)photoSliderViewDidTapHeaderView:(MUPlacePhotoSliderView *)arg1;
 - (void)photoSliderViewDidScroll:(MUPlacePhotoSliderView *)arg1;
 - (void)photoSliderView:(MUPlacePhotoSliderView *)arg1 didTapAttribution:(MUPunchoutViewModel *)arg2;
-- (void)photoSliderView:(MUPlacePhotoSliderView *)arg1 didTapPhotoAtIndex:(unsigned long long)arg2;
-- (UIView *)floatingViewForPhotoSliderView:(MUPlacePhotoSliderView *)arg1;
+- (void)photoSliderView:(MUPlacePhotoSliderView *)arg1 didTapViewModel:(id <MUPhotoTileViewModel>)arg2 atIndex:(unsigned long long)arg3;
 @end
 

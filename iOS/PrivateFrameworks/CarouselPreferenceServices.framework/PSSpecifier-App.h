@@ -9,5 +9,7 @@
 @interface PSSpecifier (App)
 - (void)setApp:(id)arg1;
 - (id)app;
+- (void)cslprf_setSettings:(id)arg1;
+- (id)cslprf_settings;
 @end
 

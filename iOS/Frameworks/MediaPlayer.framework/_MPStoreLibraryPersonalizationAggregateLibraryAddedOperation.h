@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPMediaLibraryView;
 
 __attribute__((visibility("hidden")))
-@interface _MPStoreLibraryPersonalizationAggregateLibraryAddedOperation
+@interface _MPStoreLibraryPersonalizationAggregateLibraryAddedOperation : MPAsyncOperation
 {
     MPMediaLibraryView *_libraryView;
     CDUnknownBlockType _responseHandler;

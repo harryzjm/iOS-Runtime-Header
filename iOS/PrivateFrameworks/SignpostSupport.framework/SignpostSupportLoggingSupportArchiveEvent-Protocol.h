@@ -13,6 +13,8 @@
 @property(nonatomic) int tz_minuteswest;
 @property(nonatomic) int tv_usec;
 @property(nonatomic) long long tv_sec;
+@property(retain, nonatomic) NSString *senderImagePath;
+@property(retain, nonatomic) NSUUID *senderImageUUID;
 @property(retain, nonatomic) NSString *processName;
 @property(retain, nonatomic) NSString *processImagePath;
 @property(retain, nonatomic) NSUUID *processImageUUID;

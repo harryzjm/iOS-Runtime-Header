@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DChartAllSceneObjectDelegate-Protocol.h>
-#import <TSCharts/TSCH3DSceneDelegate-Protocol.h>
-#import <TSCharts/TSCH3DSceneObjectDelegator-Protocol.h>
-
 @class NSString, TSCH3DActiveLabelsTypeBounds, TSCH3DGetBoundsPipeline, TSCH3DLabelsRendererTransforms, TSUMutablePointerSet, TSUNoCopyDictionary;
 
-@interface TSCH3DChartBoundsLayoutSceneDelegate : NSObject <TSCH3DSceneObjectDelegator, TSCH3DSceneDelegate, TSCH3DChartAllSceneObjectDelegate>
+@interface TSCH3DChartBoundsLayoutSceneDelegate : NSObject
 {
     TSCH3DGetBoundsPipeline *_pipeline;
     TSCH3DLabelsRendererTransforms *_transforms;

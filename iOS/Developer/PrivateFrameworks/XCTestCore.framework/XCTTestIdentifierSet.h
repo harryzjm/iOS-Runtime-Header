@@ -25,6 +25,7 @@
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
+- (_Bool)containsTestIdentifier:(id)arg1 includingParents:(_Bool)arg2;
 - (_Bool)containsTestIdentifier:(id)arg1;
 @property(readonly) unsigned long long count;
 - (id)init;

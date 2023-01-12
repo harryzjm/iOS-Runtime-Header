@@ -7,11 +7,11 @@
 #import <SiriUI/NSObject-Protocol.h>
 
 @class NSArray, NSURL;
-@protocol SiriUIViewController;
+@protocol SiriSharedUIViewControlling;
 
 @protocol SiriUIBaseAceObjectViewControllerDelegate <NSObject>
-- (void)siriViewController:(id <SiriUIViewController>)arg1 openURL:(NSURL *)arg2 completion:(void (^)(_Bool))arg3;
-- (void)siriViewController:(id <SiriUIViewController>)arg1 performAceCommands:(NSArray *)arg2 completion:(void (^)(_Bool))arg3;
-- (void)siriViewController:(id <SiriUIViewController>)arg1 performAceCommands:(NSArray *)arg2;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 openURL:(NSURL *)arg2 completion:(void (^)(_Bool))arg3;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 performAceCommands:(NSArray *)arg2 completion:(void (^)(_Bool))arg3;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 performAceCommands:(NSArray *)arg2;
 @end
 

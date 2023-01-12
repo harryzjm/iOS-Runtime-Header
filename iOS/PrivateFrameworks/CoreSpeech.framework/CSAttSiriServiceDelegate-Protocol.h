@@ -11,6 +11,8 @@
 @protocol CSAttSiriServiceDelegate <NSObject>
 
 @optional
+- (void)attSiriAttendingFailed;
+- (void)attSiriAttendingTimeoutTriggered;
 - (void)attSiriDidDetectAttendingTrigger:(CSAttSiriAttendingTriggerEventInfo *)arg1;
 @end
 

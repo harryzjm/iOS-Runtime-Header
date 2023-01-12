@@ -6,13 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSText/TSKDocumentObject-Protocol.h>
-#import <TSText/TSKModel-Protocol.h>
-#import <TSText/TSWPSection-Protocol.h>
-
 @class NSString, TSWPStorage;
 
-@interface TSWPSectionPlaceholder : TSPObject <TSKDocumentObject, TSWPSection, TSKModel>
+@interface TSWPSectionPlaceholder : TSPObject
 {
     TSWPStorage *_parentStorage;
 }
@@ -20,6 +16,7 @@
 + (_Bool)needsObjectUUID;
 - (void).cxx_destruct;
 @property(nonatomic) __weak TSWPStorage *parentStorage; // @synthesize parentStorage=_parentStorage;
+- (id)sectionTemplatePageOwningInfo:(id)arg1;
 - (id)sectionTemplatePageOwningModel:(id)arg1;
 - (void)i_ensureHeaderFooterStoragesExistWithStylesheet:(id)arg1;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;

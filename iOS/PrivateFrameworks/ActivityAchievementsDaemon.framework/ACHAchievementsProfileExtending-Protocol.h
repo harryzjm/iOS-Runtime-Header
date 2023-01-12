@@ -6,12 +6,12 @@
 
 #import <ActivityAchievementsDaemon/NSObject-Protocol.h>
 
-@class ACHAchievementStore, ACHTemplateStore, NSObject, NSString;
-@protocol ACHEarnedInstanceAwarding, ACHTemplateSource;
+@class ACHTemplateStore, NSObject, NSString;
+@protocol ACHAchievementStoring, ACHEarnedInstanceAwarding, ACHTemplateSource;
 
 @protocol ACHAchievementsProfileExtending <NSObject>
 @property(readonly, nonatomic) ACHTemplateStore *templateStore;
-@property(readonly, nonatomic) ACHAchievementStore *achievementStore;
+@property(readonly, nonatomic) id <ACHAchievementStoring> achievementStore;
 - (void)requestIncrementalEvaluationForAwardingSource:(NSString *)arg1 evaluationBlock:(NSSet * (^)(NSDateInterval *))arg2;
 - (void)requestImmediateUpdateForTemplateSource:(NSObject<ACHTemplateSource> *)arg1;
 - (void)deregisterTemplateSource:(NSObject<ACHTemplateSource> *)arg1 awardingSource:(NSObject<ACHEarnedInstanceAwarding> *)arg2;

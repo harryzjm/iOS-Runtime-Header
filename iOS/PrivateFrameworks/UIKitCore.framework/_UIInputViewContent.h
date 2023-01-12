@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIInputView;
 
 __attribute__((visibility("hidden")))
-@interface _UIInputViewContent
+@interface _UIInputViewContent : UIView
 {
     double _contentHeight;
     double _contentWidth;
@@ -15,6 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _unclippableCorners;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long _unclippableCorners; // @synthesize _unclippableCorners;
 - (void)_updateCornerClipping;
 - (struct CGSize)_contentSize;

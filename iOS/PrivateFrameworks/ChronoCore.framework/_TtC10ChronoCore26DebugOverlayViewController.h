@@ -13,12 +13,14 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *debugView;
     MISSING_TYPE *debugText;
-    MISSING_TYPE *animationsDisabled;
+    MISSING_TYPE *animationsPaused;
     MISSING_TYPE *isSnapshotting;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)_didExitAlwaysOn;
+- (void)_willEnterAlwaysOn;
 - (_Bool)_canShowWhileLocked;
 - (void)loadView;
 - (void)viewWillAppear:(_Bool)arg1;

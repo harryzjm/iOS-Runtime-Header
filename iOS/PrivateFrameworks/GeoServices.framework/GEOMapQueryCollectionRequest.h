@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapQueryCollectionRequest : PBRequest <NSCopying>
+@interface GEOMapQueryCollectionRequest : PBRequest
 {
     NSMutableArray *_requestElements;
 }

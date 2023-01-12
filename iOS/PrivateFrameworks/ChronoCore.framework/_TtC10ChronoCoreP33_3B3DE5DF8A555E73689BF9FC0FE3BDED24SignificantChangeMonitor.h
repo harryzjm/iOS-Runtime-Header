@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <ChronoCore/CLLocationManagerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC10ChronoCoreP33_3B3DE5DF8A555E73689BF9FC0FE3BDED24SignificantChangeMonitor : NSObject <CLLocationManagerDelegate>
+@interface _TtC10ChronoCoreP33_3B3DE5DF8A555E73689BF9FC0FE3BDED24SignificantChangeMonitor : NSObject
 {
     MISSING_TYPE *service;
     MISSING_TYPE *manager;

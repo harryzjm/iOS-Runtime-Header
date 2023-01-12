@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQUOutputBundle-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQUQuicklookOutputBundle : NSObject <GQUOutputBundle>
+@interface GQUQuicklookOutputBundle : NSObject
 {
     struct __CFDictionary *mQuicklookProperties;
     struct __CFDictionary *mAttachments;

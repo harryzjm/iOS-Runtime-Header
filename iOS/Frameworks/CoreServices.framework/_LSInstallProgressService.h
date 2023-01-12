@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSXPCListenerDelegate-Protocol.h>
-
 @class LSInstallProgressList, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _LSInstallProgressService : NSObject <NSXPCListenerDelegate>
+@interface _LSInstallProgressService : NSObject
 {
     NSMutableSet *_observers;
     LSInstallProgressList *_progresses;
@@ -34,6 +32,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)dispatchJournalledNotificationsToObserver:(id)arg1;
+- (void)directlySendNotification:(int)arg1 withProxies:(id)arg2 toObserver:(id)arg3;
 - (void)directlySendNotification:(int)arg1 withProxies:(id)arg2 toObserverProxy:(id)arg3;
 - (void)dispatchJournalledNotificationsToConnectedClients;
 - (void)performJournalRecovery;
@@ -41,10 +40,11 @@ __attribute__((visibility("hidden")))
 - (void)addSendNotificationFenceWithTimeout:(double)arg1 fenceBlock:(CDUnknownBlockType)arg2;
 - (void)sendNetworkUsageChangedNotification;
 - (void)sendAppControlsNotificationForApp:(id)arg1 withName:(id)arg2;
-- (void)sendNotification:(int)arg1 forApps:(id)arg2 withPlugins:(_Bool)arg3;
-- (void)sendNotification:(int)arg1 forApps:(id)arg2 withPlugins:(_Bool)arg3 options:(id)arg4;
-- (id)_prepareApplicationProxiesForNotification:(int)arg1 identifiers:(id)arg2 withPlugins:(_Bool)arg3 options:(id)arg4;
-- (void)sendNotification:(int)arg1 forAppProxies:(id)arg2 Plugins:(_Bool)arg3;
+- (void)sendNotification:(int)arg1 forApps:(id)arg2 withPlugins:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_prepareApplicationProxiesForNotification:(int)arg1 identifiers:(id)arg2 withPlugins:(_Bool)arg3;
+- (void)sendDatabaseRebuiltNotification;
+- (void)sendDatabaseRebuiltNotificationToObserver:(id)arg1;
+- (void)sendNotification:(int)arg1 forAppProxies:(id)arg2 Plugins:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (SEL)observerSelectorForNotification:(int)arg1;
 - (void)sendNotification:(id)arg1 forApplicationExtensionRecords:(id)arg2;
 - (void)sendNotification:(id)arg1 ForPlugins:(id)arg2;

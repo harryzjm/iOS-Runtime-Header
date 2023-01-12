@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/NSURLSessionDataDelegate-Protocol.h>
-#import <AppleMediaServices/NSURLSessionDelegate-Protocol.h>
-#import <AppleMediaServices/NSURLSessionTaskDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSCURLSessionDelegate : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
+@interface AMSCURLSessionDelegate : NSObject
 {
     void *_provider;
 }

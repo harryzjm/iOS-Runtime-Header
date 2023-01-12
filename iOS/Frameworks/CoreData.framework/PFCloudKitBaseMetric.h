@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/PFCloudKitMetric-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PFCloudKitBaseMetric : NSObject <PFCloudKitMetric>
+@interface PFCloudKitBaseMetric : NSObject
 {
     NSString *_containerIdentifier;
     NSString *_processName;

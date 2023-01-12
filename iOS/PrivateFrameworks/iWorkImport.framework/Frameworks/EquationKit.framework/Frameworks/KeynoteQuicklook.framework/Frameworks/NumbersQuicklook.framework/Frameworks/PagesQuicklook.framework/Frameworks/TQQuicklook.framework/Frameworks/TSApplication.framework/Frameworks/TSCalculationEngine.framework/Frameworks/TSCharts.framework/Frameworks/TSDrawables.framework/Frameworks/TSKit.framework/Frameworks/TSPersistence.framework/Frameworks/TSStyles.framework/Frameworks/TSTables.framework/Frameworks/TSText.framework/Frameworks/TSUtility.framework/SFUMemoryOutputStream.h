@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUOutputStream-Protocol.h>
-
 @class NSMutableData, NSString;
 
-@interface SFUMemoryOutputStream : NSObject <SFUOutputStream>
+@interface SFUMemoryOutputStream : NSObject
 {
     NSMutableData *mData;
 }

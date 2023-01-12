@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIClickHighlightEffect-Protocol.h>
-
 @class NSString, UITargetedPreview;
 
 __attribute__((visibility("hidden")))
-@interface _UINullClickHighlightEffect : NSObject <_UIClickHighlightEffect>
+@interface _UINullClickHighlightEffect : NSObject
 {
     UITargetedPreview *_targetedPreview;
     CDUnknownBlockType _completionBlock;

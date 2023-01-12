@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVKit/AVScrubberDelegate-Protocol.h>
-#import <AVKit/AVVolumeControlsControllerLayoutDelegate-Protocol.h>
-
-@class AVButton, AVControlOverflowButton, AVLabel, AVLayoutView, AVPlaybackControlsRoutePickerView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, NSArray, NSString, NSTimer, UILabel, UIView;
+@class AVButton, AVControlOverflowButton, AVLabel, AVLayoutView, AVMobileChromeControlsStyleSheet, AVPlaybackControlsRoutePickerView, AVScrubber, AVTouchIgnoringView, NSArray, NSString, NSTimer, UILabel, UIView;
 @protocol AVTransportControlsViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVTransportControlsView <AVScrubberDelegate, AVVolumeControlsControllerLayoutDelegate>
+@interface AVTransportControlsView
 {
     _Bool _doubleRowLayoutEnabled;
     _Bool _showsLoadingIndicator;
@@ -27,7 +24,7 @@ __attribute__((visibility("hidden")))
     _Bool _animatingScrubInstructions;
     float _scrubberValueWhenScrubInstructionsTimerBegan;
     id <AVTransportControlsViewDelegate> _delegate;
-    AVStyleSheet *_styleSheet;
+    AVMobileChromeControlsStyleSheet *_styleSheet;
     double _minimumRequiredWidth;
     AVScrubber *_scrubber;
     AVLabel *_elapsedTimeLabel;
@@ -42,6 +39,7 @@ __attribute__((visibility("hidden")))
     AVControlOverflowButton *_controlOverflowButton;
     AVButton *_playbackSpeedButton;
     NSArray *_customItems;
+    NSArray *_customMenuItemsViews;
     UIView *_customContentTransitioningInfoPanel;
     AVLayoutView *_controlsLayoutView;
     AVLayoutView *_detachedExtraContentLayoutView;
@@ -77,6 +75,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AVLayoutView *detachedExtraContentLayoutView; // @synthesize detachedExtraContentLayoutView=_detachedExtraContentLayoutView;
 @property(readonly, nonatomic) AVLayoutView *controlsLayoutView; // @synthesize controlsLayoutView=_controlsLayoutView;
 @property(retain, nonatomic) UIView *customContentTransitioningInfoPanel; // @synthesize customContentTransitioningInfoPanel=_customContentTransitioningInfoPanel;
+@property(copy, nonatomic) NSArray *customMenuItemsViews; // @synthesize customMenuItemsViews=_customMenuItemsViews;
 @property(copy, nonatomic) NSArray *customItems; // @synthesize customItems=_customItems;
 @property(readonly, nonatomic) AVButton *playbackSpeedButton; // @synthesize playbackSpeedButton=_playbackSpeedButton;
 @property(readonly, nonatomic) AVControlOverflowButton *controlOverflowButton; // @synthesize controlOverflowButton=_controlOverflowButton;
@@ -96,8 +95,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showsLiveStreamingControls; // @synthesize showsLiveStreamingControls=_showsLiveStreamingControls;
 @property(nonatomic) _Bool showsLoadingIndicator; // @synthesize showsLoadingIndicator=_showsLoadingIndicator;
 @property(nonatomic, getter=isDoubleRowLayoutEnabled) _Bool doubleRowLayoutEnabled; // @synthesize doubleRowLayoutEnabled=_doubleRowLayoutEnabled;
-@property(retain, nonatomic) AVStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
+@property(retain, nonatomic) AVMobileChromeControlsStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
 @property(nonatomic) __weak id <AVTransportControlsViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)_subviewIsCustomMenuItemView:(id)arg1;
 @property(readonly, nonatomic) _Bool canShowScrubInstructions;
 @property(readonly, nonatomic) NSArray *doubleRowViews;
 @property(readonly, nonatomic) NSArray *singleRowViews;

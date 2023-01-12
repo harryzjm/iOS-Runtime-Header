@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface CKPCSManateeShareInvitation : PBCodable <NSCopying>
+@interface CKPCSManateeShareInvitation : PBCodable
 {
     NSData *_exportedPCSData;
     NSData *_shareePublicKeyData;

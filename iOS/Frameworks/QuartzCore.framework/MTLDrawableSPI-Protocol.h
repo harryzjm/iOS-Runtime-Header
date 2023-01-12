@@ -6,7 +6,12 @@
 
 #import <QuartzCore/MTLDrawable-Protocol.h>
 
+@class NSDictionary;
+
 @protocol MTLDrawableSPI <MTLDrawable>
 - (void)addPresentScheduledHandler:(void (^)(id <MTLDrawable>))arg1;
+
+@optional
+- (void)presentWithOptions:(NSDictionary *)arg1;
 @end
 

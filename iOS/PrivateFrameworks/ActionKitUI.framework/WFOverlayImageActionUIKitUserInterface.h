@@ -6,12 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/WFOverlayImageActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFOverlayImageActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFOverlayImageActionUserInterface>
+@interface WFOverlayImageActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

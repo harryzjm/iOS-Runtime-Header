@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WebInspector/_RWIRelayToClientMessageProxy-Protocol.h>
-
 @class NSString;
 @protocol _RWIRelayClientConnectionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _RWIRelayClientConnection : NSObject <_RWIRelayToClientMessageProxy>
+@interface _RWIRelayClientConnection : NSObject
 {
     _Bool _closed;
     _Bool _sleeping;

@@ -10,7 +10,11 @@
 + (id)pkui_imageWithColor:(id)arg1 scale:(double)arg2;
 + (id)pkui_imageWithColor:(id)arg1;
 + (id)imageWithPKImage:(id)arg1;
-- (struct CGSize)alignmentSize;
+- (CDStruct_5125ebce)pkui_alignmentSizeThatFills:(struct CGSize)arg1 maximumScale:(double)arg2;
+- (CDStruct_5125ebce)pkui_alignmentSizeThatFills:(struct CGSize)arg1;
+- (CDStruct_5125ebce)pkui_alignmentSizeThatFits:(struct CGSize)arg1 maximumScale:(double)arg2;
+- (CDStruct_5125ebce)pkui_alignmentSizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)pkui_alignmentSize;
 - (id)pkui_imageWithAlpha:(double)arg1;
 - (id)pkui_imageOverlaidWithColor:(id)arg1;
 - (id)pkui_resizableImageByTilingVertically;

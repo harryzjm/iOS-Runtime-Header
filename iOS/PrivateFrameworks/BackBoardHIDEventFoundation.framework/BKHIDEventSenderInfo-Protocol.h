@@ -17,5 +17,6 @@
 @property(readonly, nonatomic) unsigned long long senderID;
 @property(readonly, nonatomic) int eventSource;
 @property(readonly, copy, nonatomic) NSString *displayUUID;
+- (BKSHIDEventSenderDescriptor *)senderDescriptorForEventType:(unsigned int)arg1;
 @end
 

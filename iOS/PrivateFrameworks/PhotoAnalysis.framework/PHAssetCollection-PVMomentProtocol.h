@@ -6,11 +6,9 @@
 
 #import <Photos/PHAssetCollection.h>
 
-#import <PhotoAnalysis/PVMomentProtocol-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface PHAssetCollection (PVMomentProtocol) <PVMomentProtocol>
+@interface PHAssetCollection (PVMomentProtocol)
 @property(readonly, nonatomic) _Bool isCoarse;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D approximateCoordinate;
 

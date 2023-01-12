@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSWPReplaceAction-Protocol.h>
-
 @class NSString, TSWPChangeSession;
 
-@interface TSWPTrackedDeletion : NSObject <TSWPReplaceAction>
+@interface TSWPTrackedDeletion : NSObject
 {
     struct _NSRange _range;
     TSWPChangeSession *_changeSession;

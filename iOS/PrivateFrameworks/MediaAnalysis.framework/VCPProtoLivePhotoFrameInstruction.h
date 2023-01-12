@@ -6,11 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCPProtoLivePhotoFrameInstruction : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoLivePhotoFrameInstruction : PBCodable
 {
     CDStruct_fae3dc92 _homographyParams;
     long long _epoch;

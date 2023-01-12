@@ -8,7 +8,7 @@
 @protocol PXDisplayAssetFetchResult;
 
 @protocol PXStoryAutoCurationProducer
-- (NSProgress *)requestCuratedAssetsWithOptions:(unsigned long long)arg1 targetOverallDurationInfo:(CDStruct_5d4c7ed3)arg2 resultHandler:(void (^)(PXStoryProducerResult *))arg3;
+- (NSProgress *)requestCuratedAssetsWithOptions:(unsigned long long)arg1 targetOverallDurationInfo:(CDStruct_9ee4859c)arg2 resultHandler:(void (^)(PXStoryProducerResult *))arg3;
 - (NSProgress *)requestCurationLengthsWithOptions:(unsigned long long)arg1 allAssets:(id <PXDisplayAssetFetchResult>)arg2 curatedAssets:(id <PXDisplayAssetFetchResult>)arg3 resultHandler:(void (^)(PXStoryProducerResult *))arg4;
 @end
 

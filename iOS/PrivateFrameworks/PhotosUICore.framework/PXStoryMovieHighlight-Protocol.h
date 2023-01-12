@@ -7,6 +7,7 @@
 @class NSData;
 
 @protocol PXStoryMovieHighlight
+@property(readonly, nonatomic) float audioQualityScore;
 @property(readonly, nonatomic) struct CGRect bestPlaybackRect;
 @property(readonly, nonatomic) float loudness;
 @property(readonly, nonatomic) float peakVolume;
@@ -15,8 +16,8 @@
 @property(readonly, nonatomic) _Bool hasVoice;
 @property(readonly, nonatomic) NSData *normalizationData;
 @property(readonly, nonatomic) float qualityScore;
-@property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
-- (CDStruct_e83c9415)bestTimeRangeForPreferredDuration:(double)arg1 min:(double)arg2 max:(double)arg3;
-- (CDStruct_e83c9415)bestTimeRangeForTargetDuration:(double)arg1;
+@property(readonly, nonatomic) CDStruct_3c1748cc timeRange;
+- (CDStruct_3c1748cc)bestTimeRangeForPreferredDuration:(double)arg1 min:(double)arg2 max:(double)arg3;
+- (CDStruct_3c1748cc)bestTimeRangeForTargetDuration:(double)arg1;
 @end
 

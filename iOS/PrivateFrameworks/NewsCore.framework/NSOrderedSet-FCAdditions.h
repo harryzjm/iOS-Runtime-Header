@@ -6,9 +6,7 @@
 
 #import <Foundation/NSOrderedSet.h>
 
-#import <NewsCore/FCOrderedCollectionAdditions-Protocol.h>
-
-@interface NSOrderedSet (FCAdditions) <FCOrderedCollectionAdditions>
+@interface NSOrderedSet (FCAdditions)
 + (id)fc_orderedSet:(CDUnknownBlockType)arg1;
 - (_Bool)fc_isEqualToOrderedSet:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)fc_orderedSetByAddingObject:(id)arg1;

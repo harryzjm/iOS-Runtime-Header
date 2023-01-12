@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, NSURL;
+@class NSDictionary, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItemAssetLoadResult : NSObject
@@ -27,30 +27,32 @@ __attribute__((visibility("hidden")))
     NSDictionary *_purchaseBundleDictionary;
     NSURL *_streamingKeyCertificateURL;
     NSURL *_streamingKeyServerURL;
+    NSString *_keyServerProtocolType;
+    NSNumber *_streamingKeyAdamID;
     NSURL *_alternateHLSPlaylistURL;
     NSURL *_alternateHLSKeyServerURL;
     NSURL *_alternateHLSKeyCertificateURL;
     id _suzeLeaseID;
     CDUnknownBlockType _willBecomeActivePlayerItemHandler;
-    NSURL *_enhancedAudioKeyCertificateURL;
-    NSURL *_enhancedAudioKeyServerURL;
     NSString *_playbackAuthorizationToken;
     long long _audioAssetType;
+    long long _source;
 }
 
-+ (id)assetLoadResultWithStoreAssetPlaybackResponse:(id)arg1 assetLoadProperties:(id)arg2 error:(id *)arg3;
++ (id)assetLoadResultWithStoreAssetPlaybackResponse:(id)arg1 assetLoadProperties:(id)arg2 source:(long long)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
+@property(nonatomic) long long source; // @synthesize source=_source;
 @property(nonatomic, getter=isDownloadedAsset) _Bool downloadedAsset; // @synthesize downloadedAsset=_downloadedAsset;
 @property(nonatomic) long long audioAssetType; // @synthesize audioAssetType=_audioAssetType;
 @property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
-@property(copy, nonatomic) NSURL *enhancedAudioKeyServerURL; // @synthesize enhancedAudioKeyServerURL=_enhancedAudioKeyServerURL;
-@property(copy, nonatomic) NSURL *enhancedAudioKeyCertificateURL; // @synthesize enhancedAudioKeyCertificateURL=_enhancedAudioKeyCertificateURL;
 @property(copy, nonatomic) CDUnknownBlockType willBecomeActivePlayerItemHandler; // @synthesize willBecomeActivePlayerItemHandler=_willBecomeActivePlayerItemHandler;
 @property(nonatomic, getter=isiTunesStoreStream) _Bool iTunesStoreStream; // @synthesize iTunesStoreStream=_iTunesStoreStream;
 @property(retain, nonatomic) id suzeLeaseID; // @synthesize suzeLeaseID=_suzeLeaseID;
 @property(copy, nonatomic) NSURL *alternateHLSKeyCertificateURL; // @synthesize alternateHLSKeyCertificateURL=_alternateHLSKeyCertificateURL;
 @property(copy, nonatomic) NSURL *alternateHLSKeyServerURL; // @synthesize alternateHLSKeyServerURL=_alternateHLSKeyServerURL;
 @property(copy, nonatomic) NSURL *alternateHLSPlaylistURL; // @synthesize alternateHLSPlaylistURL=_alternateHLSPlaylistURL;
+@property(copy, nonatomic) NSNumber *streamingKeyAdamID; // @synthesize streamingKeyAdamID=_streamingKeyAdamID;
+@property(copy, nonatomic) NSString *keyServerProtocolType; // @synthesize keyServerProtocolType=_keyServerProtocolType;
 @property(copy, nonatomic) NSURL *streamingKeyServerURL; // @synthesize streamingKeyServerURL=_streamingKeyServerURL;
 @property(copy, nonatomic) NSURL *streamingKeyCertificateURL; // @synthesize streamingKeyCertificateURL=_streamingKeyCertificateURL;
 @property(copy, nonatomic) NSDictionary *purchaseBundleDictionary; // @synthesize purchaseBundleDictionary=_purchaseBundleDictionary;
@@ -67,7 +69,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool allowsAssetCaching; // @synthesize allowsAssetCaching=_allowsAssetCaching;
 - (id)descriptionDictionary;
 - (id)description;
-@property(readonly, nonatomic) _Bool isEnhancedAudioHLSAsset;
 @property(readonly, nonatomic) _Bool hasValidAsset;
 
 @end

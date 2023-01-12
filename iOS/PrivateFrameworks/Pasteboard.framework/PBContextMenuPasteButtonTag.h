@@ -4,26 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "PBPasteButtonTag.h"
+
 __attribute__((visibility("hidden")))
-@interface PBContextMenuPasteButtonTag
+@interface PBContextMenuPasteButtonTag : PBPasteButtonTag
 {
-    unsigned long long _variantIndex;
+    _Bool _hasTrailingGutter;
+    unsigned int _secureName;
+    long long _layoutSize;
     struct CGSize _size;
     struct CGPoint _titleOrigin;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly) _Bool hasTrailingGutter; // @synthesize hasTrailingGutter=_hasTrailingGutter;
+@property(readonly) long long layoutSize; // @synthesize layoutSize=_layoutSize;
 @property(readonly) struct CGPoint titleOrigin; // @synthesize titleOrigin=_titleOrigin;
 @property(readonly) struct CGSize size; // @synthesize size=_size;
-@property(readonly) unsigned long long variantIndex; // @synthesize variantIndex=_variantIndex;
-- (id)_acceptCalloutBarPasteButtonTagVisit:(CDUnknownBlockType)arg1 systemInputAssistantPasteButtonTagVisit:(CDUnknownBlockType)arg2 undoInteractionHUDIconPasteButtonTagVisit:(CDUnknownBlockType)arg3 undoInteractionHUDTextPasteButtonTagVisit:(CDUnknownBlockType)arg4 contextMenuPasteButtonTagVisit:(CDUnknownBlockType)arg5;
+@property(readonly) unsigned int secureName; // @synthesize secureName=_secureName;
+- (id)_acceptCalloutBarPasteButtonTagVisit:(CDUnknownBlockType)arg1 systemInputAssistantPasteButtonTagVisit:(CDUnknownBlockType)arg2 undoInteractionHUDIconPasteButtonTagVisit:(CDUnknownBlockType)arg3 undoInteractionHUDTextPasteButtonTagVisit:(CDUnknownBlockType)arg4 contextMenuPasteButtonTagVisit:(CDUnknownBlockType)arg5 editMenuPasteButtonTagVisit:(CDUnknownBlockType)arg6;
+- (unsigned int)secureNameForStyle:(id)arg1;
 - (id)resolvedStyleForStyle:(id)arg1;
+- (_Bool)isValid;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (unsigned long long)grade;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)authenticationMessageContextForStyle:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithVariantIndex:(unsigned long long)arg1 size:(struct CGSize)arg2 titleOrigin:(struct CGPoint)arg3;
+- (id)initWithSecureName:(unsigned int)arg1 size:(struct CGSize)arg2 titleOrigin:(struct CGPoint)arg3 layoutSize:(long long)arg4 hasTrailingGutter:(_Bool)arg5;
 
 @end
 

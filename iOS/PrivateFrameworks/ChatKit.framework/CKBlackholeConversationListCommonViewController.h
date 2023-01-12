@@ -6,11 +6,10 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <ChatKit/UITableViewDelegate-Protocol.h>
-
 @class CKScheduledUpdater, NSArray, NSString, UIBarButtonItem, UILabel, _UITableViewDiffableDataSource;
 
-@interface CKBlackholeConversationListCommonViewController : UITableViewController <UITableViewDelegate>
+__attribute__((visibility("hidden")))
+@interface CKBlackholeConversationListCommonViewController : UITableViewController
 {
     _UITableViewDiffableDataSource *_tableViewDataSource;
     UIBarButtonItem *_clearAllButton;

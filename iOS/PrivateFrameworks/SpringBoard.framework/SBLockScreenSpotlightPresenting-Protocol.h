@@ -7,7 +7,7 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @protocol SBLockScreenSpotlightPresenting <NSObject>
-- (void)updateScaleViewWithScale:(double)arg1;
+- (void)updateScaleViewWithScale:(double)arg1 withDuration:(double)arg2;
 - (void)presentOrDismissCoverSheetSpotlightAnimated:(_Bool)arg1;
 - (_Bool)shouldPresentOrDismissCoverSheetSpotlight;
 @end

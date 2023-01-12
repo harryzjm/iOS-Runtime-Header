@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, UIButton, UIView, _UIKeyShortcutHUDSearchButton, _UIKeyShortcutHUDSearchTextField;
+#import "UIView.h"
+
+@class NSArray, NSString, UIButton, _UIKeyShortcutHUDSearchButton, _UIKeyShortcutHUDSearchTextField;
 @protocol _UIKeyShortcutHUDSearchBarDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDSearchBar
+@interface _UIKeyShortcutHUDSearchBar : UIView
 {
     _Bool _searching;
     _Bool _usingFallbackSearchAnimation;

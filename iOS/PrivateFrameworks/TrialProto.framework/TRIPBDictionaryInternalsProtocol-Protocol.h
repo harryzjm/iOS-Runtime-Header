@@ -8,7 +8,7 @@
 
 @protocol TRIPBDictionaryInternalsProtocol
 - (void)enumerateForTextFormat:(void (^)(id, id))arg1;
-- (void)setTRIPBGenericValue:(CDUnion_a49d1a5a *)arg1 forTRIPBGenericValueKey:(CDUnion_a49d1a5a *)arg2;
+- (void)setTRIPBGenericValue:(CDUnion_cf1021d0 *)arg1 forTRIPBGenericValueKey:(CDUnion_cf1021d0 *)arg2;
 - (void)writeToCodedOutputStream:(TRIPBCodedOutputStream *)arg1 asField:(TRIPBFieldDescriptor *)arg2;
 - (unsigned long long)computeSerializedSizeAsField:(TRIPBFieldDescriptor *)arg1;
 @end

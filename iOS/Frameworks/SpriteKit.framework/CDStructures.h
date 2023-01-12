@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -18,8 +16,8 @@ struct CGPoint {
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
@@ -27,38 +25,11 @@ struct CGSize {
     double height;
 };
 
-struct CGVector {
-    double dx;
-    double dy;
-};
-
 struct MaxRectTexturePacker;
-
-struct PKCAether;
 
 struct PKPath;
 
-struct SKCAction {
-    CDUnknownFunctionPointerType *_field1;
-    unsigned int _field2;
-    float _field3;
-    CDUnknownBlockType _field4;
-    id _field5;
-    _Bool _field6;
-    double _field7;
-    double _field8;
-    float _field9;
-    float _field10;
-    double _field11;
-    _Bool _field12;
-    _Bool _field13;
-    CDUnknownBlockType _field14;
-    long long _field15;
-    float _field16;
-    float _field17;
-    float _field18;
-    float _field19;
-};
+struct SKCAction;
 
 struct SKCAnimateMesh {
     CDUnknownFunctionPointerType *_field1;
@@ -247,15 +218,6 @@ struct SKCHide {
     _Bool _field20;
 };
 
-struct SKCKeyframeSequence {
-    int _field1;
-    int _field2;
-    long long _field3;
-    long long _field4;
-    float *_field5;
-    float *_field6;
-};
-
 struct SKCMove {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
@@ -318,29 +280,6 @@ struct SKCPlaySound {
     id _field20;
     _Bool _field21;
     _Bool _field22;
-};
-
-struct SKCReferencedAction {
-    CDUnknownFunctionPointerType *_field1;
-    unsigned int _field2;
-    float _field3;
-    CDUnknownBlockType _field4;
-    id _field5;
-    _Bool _field6;
-    double _field7;
-    double _field8;
-    float _field9;
-    float _field10;
-    double _field11;
-    _Bool _field12;
-    _Bool _field13;
-    CDUnknownBlockType _field14;
-    long long _field15;
-    float _field16;
-    float _field17;
-    float _field18;
-    float _field19;
-    struct SKCAction *_field20;
 };
 
 struct SKCRepeat {
@@ -512,39 +451,6 @@ struct SKCSpeed {
     _Bool _field26;
 };
 
-struct SKCStats {
-    CDUnknownFunctionPointerType *_vptr$SKCStats;
-    double frameBeginTime;
-    double frameDuration;
-    double baseTime;
-    double currentTime;
-    int frameCount;
-    CDStruct_febfcd7b clientUpdate;
-    CDStruct_febfcd7b update;
-    struct {
-        double beginTime;
-        double duration;
-        int bodyCount;
-    } physics;
-    struct {
-        double beginTime;
-        double duration;
-        int constraintCount;
-    } constraints;
-    struct {
-        double beginTime;
-        double duration;
-        int opCount;
-        int quadCount;
-        int nodeTraversalCount;
-        int sknodeTraversalCount;
-        int nodeRenderCount;
-        int drawCallCount;
-        int passCount;
-        int maxBatchElementCount;
-    } render;
-};
-
 struct SKCStrength {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
@@ -596,8 +502,6 @@ struct SKCWait {
     float _field19;
 };
 
-struct Token;
-
 struct __shared_weak_count;
 
 struct __tree_end_node<std::__tree_node_base<void *>*> {
@@ -609,50 +513,7 @@ struct _opaque_pthread_mutex_t {
     char __opaque[56];
 };
 
-struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
-    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    char *__data_;
-                    unsigned long long __size_;
-                    unsigned long long __cap_;
-                } __l;
-                struct __short {
-                    char __data_[23];
-                    struct {
-                        unsigned char __size_;
-                    } ;
-                } __s;
-                struct __raw {
-                    unsigned long long __words[3];
-                } __r;
-            } ;
-        } __value_;
-    } __r_;
-};
-
-struct jet_command_buffer;
-
-struct jet_fence;
-
-struct jet_framebuffer;
-
-struct jet_program;
-
 struct jet_texture;
-
-struct map<std::string, std::shared_ptr<jet_buffer_pool>, std::less<std::string>, std::allocator<std::pair<const std::string, std::shared_ptr<jet_buffer_pool>>>> {
-    struct __tree<std::__value_type<std::string, std::shared_ptr<jet_buffer_pool>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::shared_ptr<jet_buffer_pool>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::shared_ptr<jet_buffer_pool>>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::shared_ptr<jet_buffer_pool>>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::shared_ptr<jet_buffer_pool>>, std::less<std::string>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
 
 struct map<unsigned int, double, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, double>>> {
     struct __tree<std::__value_type<unsigned int, double>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, double>, std::less<unsigned int>, true>, std::allocator<std::__value_type<unsigned int, double>>> {
@@ -695,78 +556,9 @@ struct shared_ptr<MaxRectTexturePacker> {
     struct __shared_weak_count *_field2;
 };
 
-struct shared_ptr<PKCAether> {
-    struct PKCAether *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-struct shared_ptr<jet_command_buffer> {
-    struct jet_command_buffer *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-struct shared_ptr<jet_fence> {
-    struct jet_fence *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<jet_framebuffer> {
-    struct jet_framebuffer *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<jet_program> {
-    struct jet_program *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
 struct shared_ptr<jet_texture> {
     struct jet_texture *__ptr_;
     struct __shared_weak_count *__cntrl_;
-};
-
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>*>*>>> {
-        void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unordered_map<std::string, SKTexture *, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, SKTexture *>>> {
-    struct __hash_table<std::__hash_value_type<std::string, SKTexture *>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, SKTexture *>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, SKTexture *>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, SKTexture *>>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, SKTexture *>, void *>*> {
-                void *__next_;
-            } __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, SKTexture *>, std::hash<std::string>, std::equal_to<std::string>, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, SKTexture *>, std::equal_to<std::string>, std::hash<std::string>, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-};
-
-struct vector<Token, std::allocator<Token>> {
-    struct Token *_field1;
-    struct Token *_field2;
-    struct __compressed_pair<Token *, std::allocator<Token>> {
-        struct Token *_field1;
-    } _field3;
-};
-
-struct vector<float __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
-    void *__begin_;
-    void *__end_;
-    struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::allocator<float __attribute__((ext_vector_type(2)))>> {
-        void *__value_;
-    } __end_cap_;
 };
 
 #pragma mark Typedef'd Structures
@@ -779,34 +571,11 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    MISSING_TYPE *columns[2];
-} CDStruct_1c3b5cc1;
-
-typedef struct {
-    MISSING_TYPE *columns[3];
-} CDStruct_8e0628e6;
-
-typedef struct {
-    MISSING_TYPE *columns[4];
-} CDStruct_14d5dc5e;
-
-typedef struct {
-    double beginTime;
-    double duration;
-} CDStruct_febfcd7b;
-
-typedef struct {
     float _field1;
     float _field2;
     float _field3;
     float _field4;
 } CDStruct_818bb265;
-
-typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-} CDStruct_869f9c67;
 
 // Ambiguous groups
 typedef struct {
@@ -819,83 +588,12 @@ typedef struct shared_ptr<MaxRectTexturePacker> {
     struct __shared_weak_count *_field2;
 } shared_ptr_7747cbe3;
 
-typedef struct shared_ptr<PKCAether> {
-    struct PKCAether *_field1;
-    struct __shared_weak_count *_field2;
-} shared_ptr_11a7378b;
-
-typedef struct shared_ptr<jet_command_buffer> {
-    struct jet_command_buffer *_field1;
-    struct __shared_weak_count *_field2;
-} shared_ptr_d7c0f433;
-
-typedef struct shared_ptr<jet_framebuffer> {
-    struct jet_framebuffer *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_2ce53ef7;
-
-typedef struct shared_ptr<jet_program> {
-    struct jet_program *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_394c00aa;
-
 typedef struct shared_ptr<jet_texture> {
     struct jet_texture *__ptr_;
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_bb77cfd9;
 
-typedef struct vector<Token, std::allocator<Token>> {
-    struct Token *_field1;
-    struct Token *_field2;
-    struct __compressed_pair<Token *, std::allocator<Token>> {
-        struct Token *_field1;
-    } _field3;
-} vector_c6b866d0;
-
 #pragma mark Named Unions
-
-union _GLKMatrix2 {
-    CDStruct_818bb265 _field1;
-    float _field2[2][2];
-    float _field3[4];
-};
-
-union _GLKMatrix3 {
-    struct {
-        float _field1;
-        float _field2;
-        float _field3;
-        float _field4;
-        float _field5;
-        float _field6;
-        float _field7;
-        float _field8;
-        float _field9;
-    } _field1;
-    float _field2[9];
-};
-
-union _GLKMatrix4 {
-    struct {
-        float _field1;
-        float _field2;
-        float _field3;
-        float _field4;
-        float _field5;
-        float _field6;
-        float _field7;
-        float _field8;
-        float _field9;
-        float _field10;
-        float _field11;
-        float _field12;
-        float _field13;
-        float _field14;
-        float _field15;
-        float _field16;
-    } _field1;
-    float _field2[16];
-};
 
 union _GLKVector2 {
     struct {
@@ -907,19 +605,5 @@ union _GLKVector2 {
         float t;
     } ;
     float v[2];
-};
-
-union _GLKVector3 {
-    CDStruct_869f9c67 _field1;
-    CDStruct_869f9c67 _field2;
-    CDStruct_869f9c67 _field3;
-    float _field4[3];
-};
-
-union _GLKVector4 {
-    CDStruct_818bb265 _field1;
-    CDStruct_818bb265 _field2;
-    CDStruct_818bb265 _field3;
-    float _field4[4];
 };
 

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEFileSystemPrimitives-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AEConcreteFileSystemPrimitives : NSObject <AEFileSystemPrimitives>
+@interface AEConcreteFileSystemPrimitives : NSObject
 {
 }
 

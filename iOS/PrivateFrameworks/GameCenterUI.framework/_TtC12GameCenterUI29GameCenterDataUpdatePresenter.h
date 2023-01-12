@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameCenterUI/GKDaemonProxyDataUpdateDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12GameCenterUI29GameCenterDataUpdatePresenter : NSObject <GKDaemonProxyDataUpdateDelegate>
+@interface _TtC12GameCenterUI29GameCenterDataUpdatePresenter : NSObject
 {
     MISSING_TYPE *onGameCenterDataUpdate;
 }
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)friendRequestSelected:(id)arg1;
 - (void)setBadgeCount:(long long)arg1 forType:(unsigned long long)arg2;
 - (void)refreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
+- (void)refreshFriendContents:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

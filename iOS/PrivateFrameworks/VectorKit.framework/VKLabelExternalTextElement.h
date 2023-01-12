@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VKLabelExternalTextElement : NSObject <NSSecureCoding>
+@interface VKLabelExternalTextElement : NSObject
 {
     struct LabelExternalTextElement _element;
 }
@@ -21,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTextElement:(const void *)arg1;
-- (void)dealloc;
 
 @end
 

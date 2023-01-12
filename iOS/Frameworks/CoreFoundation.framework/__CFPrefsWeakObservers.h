@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreFoundation/NSMutableCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface __CFPrefsWeakObservers : NSObject <NSMutableCopying>
+@interface __CFPrefsWeakObservers : NSObject
 {
     struct __cfobservers_t values;
     unsigned long long count;

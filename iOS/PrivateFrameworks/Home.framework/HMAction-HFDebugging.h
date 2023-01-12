@@ -6,13 +6,11 @@
 
 #import <HomeKit/HMAction.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface HMAction (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
+@interface HMAction (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_affectedAccessoryRepresentables;
 - (_Bool)hf_isServiceLikeItemInvolved:(id)arg1;
 - (id)hf_affectedAccessoryProfiles;
 - (id)hf_affectedCharacteristic;

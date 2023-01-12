@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/MLFeatureProvider-Protocol.h>
-
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface MonzaV4_1Input : NSObject <MLFeatureProvider>
+@interface MonzaV4_1Input : NSObject
 {
     struct __CVBuffer *_inputImage;
 }

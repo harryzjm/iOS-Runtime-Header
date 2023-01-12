@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KeynoteQuicklook/KNSlideLayoutPrintHelperDataSource-Protocol.h>
-
 @class KNSlideLayoutPrintHelper, NSString;
 
-@interface KNSlideExporter <KNSlideLayoutPrintHelperDataSource>
+@interface KNSlideExporter
 {
     KNSlideLayoutPrintHelper *_helper;
 }

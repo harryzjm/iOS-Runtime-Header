@@ -22,6 +22,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *__playbackState;
     MISSING_TYPE *__nowPlayingContentItemID;
     MISSING_TYPE *_supportedCommands;
+    MISSING_TYPE *_performanceSupported;
+    MISSING_TYPE *_performanceLoading;
+    MISSING_TYPE *_performanceRevision;
+    MISSING_TYPE *_performanceDetails;
+    MISSING_TYPE *_performanceSyncEnabled;
     MISSING_TYPE *_queueDetailsSupported;
     MISSING_TYPE *_queueDetailsLoading;
     MISSING_TYPE *_queueDetailsRevision;

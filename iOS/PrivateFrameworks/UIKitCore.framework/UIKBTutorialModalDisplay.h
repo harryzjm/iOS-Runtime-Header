@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSLayoutConstraint, NSString, UIButton, UIFont, UIKBTutorialModalDisplayStyling, UIView, UIVisualEffectView;
+#import "UIView.h"
+
+@class NSArray, NSLayoutConstraint, NSString, UIButton, UIFont, UIKBTutorialModalDisplayStyling, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBTutorialModalDisplay
+@interface UIKBTutorialModalDisplay : UIView
 {
     long long _appearance;
     UIView *_containerView;

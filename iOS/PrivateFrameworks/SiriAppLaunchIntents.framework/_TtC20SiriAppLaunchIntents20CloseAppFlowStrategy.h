@@ -10,8 +10,7 @@
 
 @interface _TtC20SiriAppLaunchIntents20CloseAppFlowStrategy : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *appLaunchFeatureFlags;
-    MISSING_TYPE *aceServiceHelper;
+    MISSING_TYPE *referenceResolver;
 }
 
 @end

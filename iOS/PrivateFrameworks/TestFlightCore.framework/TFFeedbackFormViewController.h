@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <TestFlightCore/TFFeedbackFormPresenterView-Protocol.h>
-
 @class TFFeedbackFormPresenter, TFFeedbackFormViewDataSource, UIActivityIndicatorView, UIBarButtonItem, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface TFFeedbackFormViewController : UIViewController <TFFeedbackFormPresenterView>
+@interface TFFeedbackFormViewController : UIViewController
 {
     TFFeedbackFormPresenter *_presenter;
     TFFeedbackFormViewDataSource *_viewDataSource;

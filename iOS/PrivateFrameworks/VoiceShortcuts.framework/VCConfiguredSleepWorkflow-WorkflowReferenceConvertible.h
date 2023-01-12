@@ -6,11 +6,9 @@
 
 #import <VoiceShortcutClient/VCConfiguredSleepWorkflow.h>
 
-#import <VoiceShortcuts/WFWorkflowReferenceConvertible-Protocol.h>
-
 @class NSString;
 
-@interface VCConfiguredSleepWorkflow (WorkflowReferenceConvertible) <WFWorkflowReferenceConvertible>
+@interface VCConfiguredSleepWorkflow (WorkflowReferenceConvertible)
 + (void)getObjectsFromReferences:(id)arg1 databaseProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 // Remaining properties

@@ -14,12 +14,16 @@ __attribute__((visibility("hidden")))
     _Bool _overlapMostLikelyDays;
     _Bool _overlapProjectedDays;
     _Bool _overlapNone;
-    _Bool _sensorBasedPrediction;
     _Bool _partiallyLogged;
     _Bool _periodPredictionEnabled;
-    _Bool _sensorBasedPredictionEnabled;
+    _Bool _heartRateBasedPredictionEnabled;
     _Bool _isLoggingMultipleDays;
+    _Bool _wristTemperatureBasedPredictionEnabled;
+    _Bool _isWristTemperatureInputDelivered;
+    _Bool _isSleepConfiguredForWristTemperatureMeasurements;
+    _Bool _internalLiveOnCycleFactorOverrideEnabled;
     NSDictionary *_eventPayload;
+    NSString *_predictionPrimarySource;
     long long _totalDayRange;
     long long _daysAgoLogged;
     NSNumber *_isOngoingPeriod;
@@ -32,6 +36,10 @@ __attribute__((visibility("hidden")))
 
 + (id)eventName;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool internalLiveOnCycleFactorOverrideEnabled; // @synthesize internalLiveOnCycleFactorOverrideEnabled=_internalLiveOnCycleFactorOverrideEnabled;
+@property(nonatomic) _Bool isSleepConfiguredForWristTemperatureMeasurements; // @synthesize isSleepConfiguredForWristTemperatureMeasurements=_isSleepConfiguredForWristTemperatureMeasurements;
+@property(nonatomic) _Bool isWristTemperatureInputDelivered; // @synthesize isWristTemperatureInputDelivered=_isWristTemperatureInputDelivered;
+@property(nonatomic) _Bool wristTemperatureBasedPredictionEnabled; // @synthesize wristTemperatureBasedPredictionEnabled=_wristTemperatureBasedPredictionEnabled;
 @property(retain, nonatomic) NSNumber *daysFromProjectedEnd; // @synthesize daysFromProjectedEnd=_daysFromProjectedEnd;
 @property(retain, nonatomic) NSNumber *daysFromProjectedStart; // @synthesize daysFromProjectedStart=_daysFromProjectedStart;
 @property(retain, nonatomic) NSNumber *daysFromMostLikelyEnd; // @synthesize daysFromMostLikelyEnd=_daysFromMostLikelyEnd;
@@ -40,17 +48,17 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSNumber *isOngoingPeriod; // @synthesize isOngoingPeriod=_isOngoingPeriod;
 @property(nonatomic) long long daysAgoLogged; // @synthesize daysAgoLogged=_daysAgoLogged;
 @property(nonatomic) _Bool isLoggingMultipleDays; // @synthesize isLoggingMultipleDays=_isLoggingMultipleDays;
-@property(nonatomic) _Bool sensorBasedPredictionEnabled; // @synthesize sensorBasedPredictionEnabled=_sensorBasedPredictionEnabled;
+@property(nonatomic) _Bool heartRateBasedPredictionEnabled; // @synthesize heartRateBasedPredictionEnabled=_heartRateBasedPredictionEnabled;
 @property(nonatomic) _Bool periodPredictionEnabled; // @synthesize periodPredictionEnabled=_periodPredictionEnabled;
 @property(nonatomic) _Bool partiallyLogged; // @synthesize partiallyLogged=_partiallyLogged;
 @property(nonatomic) long long totalDayRange; // @synthesize totalDayRange=_totalDayRange;
-@property(nonatomic) _Bool sensorBasedPrediction; // @synthesize sensorBasedPrediction=_sensorBasedPrediction;
+@property(retain, nonatomic) NSString *predictionPrimarySource; // @synthesize predictionPrimarySource=_predictionPrimarySource;
 @property(nonatomic) _Bool overlapNone; // @synthesize overlapNone=_overlapNone;
 @property(nonatomic) _Bool overlapProjectedDays; // @synthesize overlapProjectedDays=_overlapProjectedDays;
 @property(nonatomic) _Bool overlapMostLikelyDays; // @synthesize overlapMostLikelyDays=_overlapMostLikelyDays;
 @property(copy, nonatomic) NSDictionary *eventPayload; // @synthesize eventPayload=_eventPayload;
 - (id)description;
-- (id)initWithOverlapMostLikelyDays:(_Bool)arg1 overlapProjectedDays:(_Bool)arg2 overlapNone:(_Bool)arg3 sensorBasedPrediction:(_Bool)arg4 totalDayRange:(long long)arg5 partiallyLogged:(_Bool)arg6 periodPredictionEnabled:(_Bool)arg7 sensorBasedPredictionEnabled:(_Bool)arg8 isLoggingMultipleDays:(_Bool)arg9 daysAgoLogged:(long long)arg10 isOngoingPeriod:(id)arg11 activePairedWatchProductType:(id)arg12 daysFromMostLikelyStart:(id)arg13 daysFromMostLikelyEnd:(id)arg14 daysFromProjectedStart:(id)arg15 daysFromProjectedEnd:(id)arg16;
+- (id)initWithOverlapMostLikelyDays:(_Bool)arg1 overlapProjectedDays:(_Bool)arg2 overlapNone:(_Bool)arg3 predictionPrimarySource:(id)arg4 totalDayRange:(long long)arg5 partiallyLogged:(_Bool)arg6 periodPredictionEnabled:(_Bool)arg7 heartRateBasedPredictionEnabled:(_Bool)arg8 isLoggingMultipleDays:(_Bool)arg9 daysAgoLogged:(long long)arg10 isOngoingPeriod:(id)arg11 activePairedWatchProductType:(id)arg12 daysFromMostLikelyStart:(id)arg13 daysFromMostLikelyEnd:(id)arg14 daysFromProjectedStart:(id)arg15 daysFromProjectedEnd:(id)arg16 wristTemperatureBasedPredictionEnabled:(_Bool)arg17 isWristTemperatureInputDelivered:(_Bool)arg18 isSleepConfiguredForWristTemperatureMeasurements:(_Bool)arg19 internalLiveOnCycleFactorOverrideEnabled:(_Bool)arg20;
 
 @end
 

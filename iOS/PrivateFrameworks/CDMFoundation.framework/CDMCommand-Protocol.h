@@ -11,7 +11,6 @@
 @protocol CDMCommand <NSObject>
 @property(retain, nonatomic) NSError *cmdError;
 @property(readonly, nonatomic) NSString *commandName;
-@property(copy, nonatomic) NSString *aceRefId;
 @property(readonly, nonatomic) NSString *uuid;
 @end
 

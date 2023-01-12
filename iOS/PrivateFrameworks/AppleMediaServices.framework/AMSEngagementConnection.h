@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSEngagementClientProtocol-Protocol.h>
-
 @class NSNotificationCenter, NSXPCConnection;
 @protocol AMSEngagementServiceProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AMSEngagementConnection : NSObject <AMSEngagementClientProtocol>
+@interface AMSEngagementConnection : NSObject
 {
     id <AMSEngagementServiceProtocol> _proxy;
     CDUnknownBlockType _errorHandler;
@@ -22,11 +20,12 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property(retain, nonatomic) id <AMSEngagementServiceProtocol> proxy; // @synthesize proxy=_proxy;
+- (void)treatmentsDidSyncronize;
 - (void)handlePushedEvent:(id)arg1;
 - (void)_removeRemoteConnection;
 - (id)_newRemoteConnection;

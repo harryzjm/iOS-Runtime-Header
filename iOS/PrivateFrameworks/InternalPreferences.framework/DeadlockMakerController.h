@@ -6,13 +6,11 @@
 
 #import <Preferences/PSListController.h>
 
-#import <InternalPreferences/UITextFieldDelegate-Protocol.h>
-
 @class NSObject, NSString, PSSpecifier;
 @protocol OS_xpc_object;
 
 __attribute__((visibility("hidden")))
-@interface DeadlockMakerController : PSListController <UITextFieldDelegate>
+@interface DeadlockMakerController : PSListController
 {
     _Bool _enabled;
     float _priority;

@@ -6,16 +6,15 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPDVenueIdentifier, GEOPDViewportInfo, PBDataReader, PBUnknownFields;
+@class GEOPDSSearchEvChargingParameters, GEOPDVenueIdentifier, GEOPDViewportInfo, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDSearchBrowseCategorySuggestionParameters : PBCodable <NSCopying>
+@interface GEOPDSearchBrowseCategorySuggestionParameters : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _engineTypes;
+    GEOPDSSearchEvChargingParameters *_evChargingParameters;
     double _requestLocalTimestamp;
     GEOPDVenueIdentifier *_venueFilter;
     GEOPDViewportInfo *_viewportInfo;
@@ -40,6 +39,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_isWidgetRequest:1;
         unsigned int read_unknownFields:1;
         unsigned int read_engineTypes:1;
+        unsigned int read_evChargingParameters:1;
         unsigned int read_venueFilter:1;
         unsigned int read_viewportInfo:1;
         unsigned int wrote_anyField:1;

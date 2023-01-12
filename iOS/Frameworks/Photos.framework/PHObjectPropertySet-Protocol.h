@@ -17,6 +17,7 @@
 
 @optional
 + (NSArray *)propertiesToSortBy;
++ (_Bool)createsPropertySetObjectWithCustomImplementation;
 + (_Bool)inverseIsToMany;
 + (NSArray *)additionalPropertiesToFetchOnPrimaryObject;
 @end

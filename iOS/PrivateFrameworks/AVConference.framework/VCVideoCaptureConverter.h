@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCVideoCaptureClient-Protocol.h>
-#import <AVConference/VCVideoSink-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoCaptureConverter : NSObject <VCVideoSink, VCVideoCaptureClient>
+@interface VCVideoCaptureConverter : NSObject
 {
     unsigned int _destinationFramerate;
     unsigned int _sourceFramerate;

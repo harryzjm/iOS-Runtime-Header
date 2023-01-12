@@ -6,13 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <DeviceActivity/USDeviceActivityMonitorExtension-Protocol.h>
-#import <DeviceActivity/_TtP14DeviceActivity25DeviceActivityMonitorHost_-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC14DeviceActivity28DeviceActivityMonitorContext : NSExtensionContext <USDeviceActivityMonitorExtension, _TtP14DeviceActivity25DeviceActivityMonitorHost_>
+@interface _TtC14DeviceActivity28DeviceActivityMonitorContext : NSExtensionContext
 {
     MISSING_TYPE *$__lazy_storage_$_monitor;
 }

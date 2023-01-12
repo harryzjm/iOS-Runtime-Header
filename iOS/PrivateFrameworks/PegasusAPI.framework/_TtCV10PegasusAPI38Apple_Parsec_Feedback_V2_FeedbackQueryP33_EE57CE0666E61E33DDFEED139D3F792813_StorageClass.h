@@ -53,6 +53,9 @@
     MISSING_TYPE *_abversionFailure;
     MISSING_TYPE *_trialTreatmentFailure;
     MISSING_TYPE *_cftreatmentID;
+    MISSING_TYPE *_entityType;
+    MISSING_TYPE *_crAtKscore;
+    MISSING_TYPE *_cfdebug;
 }
 
 @end

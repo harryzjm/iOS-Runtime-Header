@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
     AVMetadataObject *_originalMetadataObject;
     long long _groupID;
     unsigned long long _syntheticFocusMode;
+    long long _detectionSource;
 }
 
+@property long long detectionSource; // @synthesize detectionSource=_detectionSource;
 @property unsigned long long syntheticFocusMode; // @synthesize syntheticFocusMode=_syntheticFocusMode;
 @property long long groupID; // @synthesize groupID=_groupID;
 @property(retain) AVMetadataObject *originalMetadataObject; // @synthesize originalMetadataObject=_originalMetadataObject;

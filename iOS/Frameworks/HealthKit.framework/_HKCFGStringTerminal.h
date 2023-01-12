@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_HKCFGTerminal.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HKCFGStringTerminal
+@interface _HKCFGStringTerminal : _HKCFGTerminal
 {
     _Bool _caseSensitive;
     NSString *_string;

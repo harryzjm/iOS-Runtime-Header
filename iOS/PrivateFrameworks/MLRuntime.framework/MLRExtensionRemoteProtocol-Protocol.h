@@ -9,6 +9,7 @@
 @class DESInternalDodMLTask, MLRInternalTrialTask, NSArray;
 
 @protocol MLRExtensionRemoteProtocol <NSObject>
+- (void)simulateCrash;
 - (void)stop;
 - (void)performTrialTask:(MLRInternalTrialTask *)arg1 completion:(void (^)(MLRInternalTrialTaskResult *, NSError *))arg2;
 - (void)performDodMLTask:(DESInternalDodMLTask *)arg1 sandBoxExtensions:(NSArray *)arg2 completion:(void (^)(DESDodMLTaskResultContainer *, NSError *))arg3;

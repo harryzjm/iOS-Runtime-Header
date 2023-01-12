@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/EspressoBrick-Protocol.h>
-
 @class NSString;
 @protocol MLCustomLayer;
 
 __attribute__((visibility("hidden")))
-@interface MLCustomLayerWrapper : NSObject <EspressoBrick>
+@interface MLCustomLayerWrapper : NSObject
 {
     _Bool _ndMode;
     NSString *_className;

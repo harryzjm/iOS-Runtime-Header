@@ -34,42 +34,19 @@ struct CGSize {
     double height;
 };
 
-struct CLLocationCoordinate2D {
+struct UIEdgeInsets {
     double _field1;
     double _field2;
-};
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
+    double _field3;
+    double _field4;
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int listIsFlat:1;
-    unsigned int showAll:1;
-    unsigned int showColors:1;
-    unsigned int allSelected:1;
-    unsigned int allowsRotation:1;
-    unsigned int showsDoneButton:1;
-    unsigned int showsCancelButton:1;
-    unsigned int showsWritableCalendarsOnly:1;
-    unsigned int showsRefreshButton:1;
-    unsigned int allowsPullToRefresh:1;
-} CDStruct_424d6339;
-
-typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
 
 typedef struct {
     int _field1;

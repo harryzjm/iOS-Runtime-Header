@@ -7,7 +7,9 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (TUI_NSStringExtras)
++ (id)tui_excessiveLineHeightCharacterSet;
 - (id)tui_centerTruncatedStringWithAttributes:(id)arg1 fittingWidth:(double)arg2;
 - (struct CGSize)tui_optimizedSizeWithFont:(id)arg1;
+- (struct UIEdgeInsets)tui_languageAwareOutsetsForFont:(id)arg1;
 @end
 

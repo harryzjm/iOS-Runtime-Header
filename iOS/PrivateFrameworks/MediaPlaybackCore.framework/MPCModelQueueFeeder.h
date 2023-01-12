@@ -6,23 +6,17 @@
 
 #import <MediaPlayer/MPQueueFeeder.h>
 
-#import <MediaPlaybackCore/MPCQueueControllerDataSource-Protocol.h>
-#import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
-#import <MediaPlaybackCore/MPRequestResponseControllerDelegate-Protocol.h>
-
-@class MPAVItem, MPCModelGenericAVItemUserIdentityPropertySet, MPCModelPlaybackContext, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, MPModelResponse, MPPropertySet, MPRequestResponseController, NSDictionary, NSHashTable, NSLock, NSObject, NSString;
+@class MPCModelGenericAVItemUserIdentityPropertySet, MPCModelPlaybackContext, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, MPModelResponse, MPPropertySet, MPRequestResponseController, NSDictionary, NSHashTable, NSLock, NSObject, NSString;
 @protocol MPCModelPlaybackRequest, MPCModelPlaybackResponse, MPMutableIdentifierListSection, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPCModelQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining, MPRequestResponseControllerDelegate, MPCQueueControllerDataSource>
+@interface MPCModelQueueFeeder : MPQueueFeeder
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_diffQueue;
     NSLock *_diffLock;
     NSHashTable *_activeModelGenericAVItems;
     NSDictionary *_assetStoreFronts;
-    unsigned long long _backgroundTaskIdentifier;
-    unsigned long long _backgroundTasks;
     NSDictionary *_endTimeModifications;
     CDUnknownBlockType _loadingCompletionHandler;
     MPRequestResponseController *_requestController;
@@ -34,14 +28,14 @@ __attribute__((visibility("hidden")))
     NSDictionary *_startTimeModifications;
     id <MPMutableIdentifierListSection> _section;
     MPCModelGenericAVItemUserIdentityPropertySet *_identityPropertySet;
-    MPAVItem *_currentItem;
     MPCModelPlaybackContext *_playbackContext;
     MPPropertySet *_representativeMetadataPropertySet;
+    unsigned long long _backgroundTaskIdentifier;
+    unsigned long long _backgroundTasks;
     MPModelResponse<MPCModelPlaybackResponse> *_response;
     MPModelGenericObject *_fallbackSectionRepresentation;
 }
 
-+ (id)requiredPropertiesForStaticMediaClips;
 - (void).cxx_destruct;
 @property(copy, nonatomic) MPModelGenericObject *fallbackSectionRepresentation; // @synthesize fallbackSectionRepresentation=_fallbackSectionRepresentation;
 @property(readonly, nonatomic) MPModelResponse<MPCModelPlaybackResponse> *response; // @synthesize response=_response;
@@ -58,12 +52,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldUsePlaceholderForItem:(id)arg1 inSection:(id)arg2;
 - (id)itemForItem:(id)arg1 inSection:(id)arg2;
 - (id)identifiersForItem:(id)arg1 inSection:(id)arg2;
-- (void)itemDidBeginPlayback:(id)arg1;
 - (void)loadPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)firstItemIntersectingIdentifierSet:(id)arg1;
 - (_Bool)supportsAutoPlayForItem:(id)arg1 inSection:(id)arg2;
 @property(readonly, nonatomic) _Bool containsTransportableContent;
 @property(readonly, nonatomic) _Bool containsLiveStream;
+- (_Bool)canJumpToItem:(id)arg1 reason:(id *)arg2;
 @property(readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
 - (void)didFinishLoadingRequestForController:(id)arg1;
 - (void)willBeginLoadingRequestForController:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Celestial/AVSystemController.h>
+#import <MediaExperience/AVSystemController.h>
 
 @interface AVSystemController (Announce)
 @property(readonly, nonatomic) _Bool an_isCarPlayConnected;

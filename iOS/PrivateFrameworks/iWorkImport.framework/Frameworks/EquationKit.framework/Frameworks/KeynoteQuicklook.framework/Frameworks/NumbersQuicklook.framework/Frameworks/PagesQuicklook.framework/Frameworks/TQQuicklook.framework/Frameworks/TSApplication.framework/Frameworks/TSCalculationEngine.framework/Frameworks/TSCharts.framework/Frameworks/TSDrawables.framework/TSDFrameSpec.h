@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/NSCopying-Protocol.h>
-
 @class NSBundle, NSDictionary, NSMutableDictionary, NSString, TSUOnce;
 
-@interface TSDFrameSpec : NSObject <NSCopying>
+@interface TSDFrameSpec : NSObject
 {
     NSBundle *mBundle;
     NSDictionary *mInfoDictionary;

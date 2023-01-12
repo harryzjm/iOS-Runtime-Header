@@ -10,6 +10,12 @@
 @protocol FBSServiceFacilityClientHandle;
 
 @protocol SBSystemServiceServerTestAutomationDelegate <SBSystemServiceServerDelegate>
+- (NSArray *)systemServiceServer:(SBSystemServiceServer *)arg1 getSystemApertureStateDumpForClient:(id <FBSServiceFacilityClientHandle>)arg2;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 getDeviceSupportsSystemAperture:(void (^)(_Bool))arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setChamoisWindowingUIEnabled:(_Bool)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 getIsChamoisWindowingUIEnabledWithCompletion:(void (^)(_Bool))arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 exitLostModeForClient:(id <FBSServiceFacilityClientHandle>)arg2;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 enterLostModeForClient:(id <FBSServiceFacilityClientHandle>)arg2;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 addWidgetStackWithIdentifiers:(NSArray *)arg3 toPage:(long long)arg4 withSizing:(long long)arg5;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 addWidgetWithIdentifier:(NSString *)arg3 toPage:(long long)arg4 withSizing:(long long)arg5;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 addWidgetsToEachPageForClient:(id <FBSServiceFacilityClientHandle>)arg2;

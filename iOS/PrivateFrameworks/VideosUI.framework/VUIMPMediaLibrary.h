@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIMediaLibrary.h"
+
 @class MPMediaLibrary, NSObject, NSOperationQueue;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VUIMPMediaLibrary
+@interface VUIMPMediaLibrary : VUIMediaLibrary
 {
     unsigned long long _connectionState;
     MPMediaLibrary *_mediaLibrary;

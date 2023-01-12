@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <DoNotDisturbServer/DNDRemoteServiceAppConfigurationProtocol-Protocol.h>
 #import <DoNotDisturbServer/DNDRemoteServiceServerAppInfoProtocol-Protocol.h>
+#import <DoNotDisturbServer/DNDRemoteServiceServerAuxiliaryStateProtocol-Protocol.h>
 #import <DoNotDisturbServer/DNDRemoteServiceServerBehaviorResolutionProtocol-Protocol.h>
 #import <DoNotDisturbServer/DNDRemoteServiceServerGlobalConfigurationProtocol-Protocol.h>
 #import <DoNotDisturbServer/DNDRemoteServiceServerMeDeviceStateProtocol-Protocol.h>
@@ -15,6 +17,6 @@
 #import <DoNotDisturbServer/DNDRemoteServiceServerStateProtocol-Protocol.h>
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@protocol DNDRemoteServiceServerProtocol <NSObject, DNDRemoteServiceServerBehaviorResolutionProtocol, DNDRemoteServiceServerModeAssertionProtocol, DNDRemoteServiceServerStateProtocol, DNDRemoteServiceServerSettingsProtocol, DNDRemoteServiceServerModeConfigurationProtocol, DNDRemoteServiceServerModeSelectionProtocol, DNDRemoteServiceServerGlobalConfigurationProtocol, DNDRemoteServiceServerAppInfoProtocol, DNDRemoteServiceServerMeDeviceStateProtocol>
+@protocol DNDRemoteServiceServerProtocol <NSObject, DNDRemoteServiceServerBehaviorResolutionProtocol, DNDRemoteServiceServerModeAssertionProtocol, DNDRemoteServiceServerStateProtocol, DNDRemoteServiceServerSettingsProtocol, DNDRemoteServiceServerModeConfigurationProtocol, DNDRemoteServiceServerModeSelectionProtocol, DNDRemoteServiceServerGlobalConfigurationProtocol, DNDRemoteServiceServerAppInfoProtocol, DNDRemoteServiceServerMeDeviceStateProtocol, DNDRemoteServiceServerAuxiliaryStateProtocol, DNDRemoteServiceAppConfigurationProtocol>
 @end
 

@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/NSCopying-Protocol.h>
-
-@interface TSWPTopicNumberHintLevelData : NSObject <NSCopying>
+@interface TSWPTopicNumberHintLevelData : NSObject
 {
     _Bool _isTiered;
     unsigned long long _number;

@@ -6,34 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNProcessorCreating-Protocol.h>
-
 @class NSString;
 @protocol SNMLModel;
 
 __attribute__((visibility("hidden")))
-@interface SNLogMelBasedFeatureExtractorConfiguration : NSObject <SNProcessorCreating>
+@interface SNLogMelBasedFeatureExtractorConfiguration : NSObject
 {
     id <SNMLModel> _model;
-    unsigned int _windowLengthFrames;
     unsigned int _stepSizeFrames;
-    unsigned int _logMelStepSize;
-    unsigned int _outputFeatureSize;
-    double _sampleRate;
 }
 
 - (void).cxx_destruct;
-@property(readonly) unsigned int outputFeatureSize; // @synthesize outputFeatureSize=_outputFeatureSize;
-@property(readonly) unsigned int logMelStepSize; // @synthesize logMelStepSize=_logMelStepSize;
 @property(readonly) unsigned int stepSizeFrames; // @synthesize stepSizeFrames=_stepSizeFrames;
-@property(readonly) unsigned int windowLengthFrames; // @synthesize windowLengthFrames=_windowLengthFrames;
-@property(readonly) double sampleRate; // @synthesize sampleRate=_sampleRate;
-@property(readonly) id <SNMLModel> model; // @synthesize model=_model;
 - (id)createProcessorWithError:(id *)arg1;
-- (_Bool)isEqualToLogMelBasedFeatureExtractorConfiguration:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)initWithModel:(id)arg1 approximateOverlapFactor:(double)arg2;
+@property(readonly) unsigned int outputFeatureSize; // @dynamic outputFeatureSize;
+@property(readonly) unsigned int windowLengthFrames; // @dynamic windowLengthFrames;
+@property(readonly) double sampleRate; // @dynamic sampleRate;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

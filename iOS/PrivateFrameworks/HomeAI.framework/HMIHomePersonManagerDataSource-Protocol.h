@@ -20,6 +20,6 @@
 - (void)fetchAllUnassociatedFaceCropsWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 
 @optional
-- (void)associateFaceCropsWithUUIDs:(NSSet *)arg1 toPersonWithUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)associateFaceCropsWithUUIDs:(NSSet *)arg1 toPersonWithUUID:(NSUUID *)arg2 forSource:(long long)arg3 completion:(void (^)(NSError *))arg4;
 @end
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLFeatureProvider-Protocol.h>
-
 @class NSSet;
 @protocol MLFeatureProvider;
 
 __attribute__((visibility("hidden")))
-@interface MLLazyUnionFeatureProvider : NSObject <MLFeatureProvider>
+@interface MLLazyUnionFeatureProvider : NSObject
 {
     id <MLFeatureProvider> _first;
     id <MLFeatureProvider> _second;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICDelegationNetServiceTXTRecord : NSObject <NSCopying>
+@interface ICDelegationNetServiceTXTRecord : NSObject
 {
     NSArray *_delegationAccountUUIDs;
     NSString *_deviceName;

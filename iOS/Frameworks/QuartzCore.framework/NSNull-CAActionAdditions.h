@@ -6,9 +6,7 @@
 
 #import <Foundation/NSNull.h>
 
-#import <QuartzCore/CAAction-Protocol.h>
-
-@interface NSNull (CAActionAdditions) <CAAction>
+@interface NSNull (CAActionAdditions)
 - (void)runActionForKey:(id)arg1 object:(id)arg2 arguments:(id)arg3;
 - (id)CAMLType;
 @end

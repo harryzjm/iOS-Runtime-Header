@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class GQDWPTextLabel, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDWPListLabelTypeInfo : NSObject <GQDNameMappable>
+@interface GQDWPListLabelTypeInfo : NSObject
 {
     int mType;
     GQDWPTextLabel *mLabel;

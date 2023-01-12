@@ -6,9 +6,10 @@
 
 #import <NewsPersonalization/NSObject-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, NSArray, NSDate, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration, COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCFeedPersonalizedItemScoreProfile, NSArray, NSDate, NSString;
 
 @protocol FCFeedPersonalizingItem <NSObject>
+@property(nonatomic, retain) FCFeedPersonalizedItemScoreProfile *scoreProfile;
 @property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *publisherTagMetadata;
 @property(nonatomic, readonly) NSArray *topics;
 - (void)enumerateTopicConversionStatsWithBlock:(void (^)(NSString *, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *))arg1;
@@ -18,6 +19,7 @@
 @property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
 @property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
 - (_Bool)isHiddenFromAutoFavorites;
+@property(nonatomic, readonly) _Bool hasThumbnail;
 @property(nonatomic, readonly) _Bool hasVideo;
 - (_Bool)isPaid;
 - (_Bool)isANF;
@@ -31,11 +33,16 @@
 @property(nonatomic, readonly) NSString *sourceFeedID;
 
 @optional
+@property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleContentExpiration *expirationData;
 @property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
 @property(nonatomic, readonly) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
+@property(nonatomic, readonly) unsigned long long halfLifeOverride;
 @property(nonatomic, readonly) NSArray *iAdCategories;
+@property(nonatomic, readonly) _Bool webConverted;
+@property(nonatomic, readonly) _Bool reduceVisibility;
 @property(nonatomic, readonly) _Bool isEvergreen;
 @property(nonatomic, readonly) _Bool hasAudioTrack;
+@property(nonatomic, readonly) _Bool isFeatureCandidate;
 @property(nonatomic, readonly) _Bool isFeatured;
 @property(nonatomic, readonly) long long bodyTextLength;
 - (_Bool)isBundlePaid;

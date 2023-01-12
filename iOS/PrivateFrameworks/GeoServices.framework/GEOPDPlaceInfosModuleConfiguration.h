@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDFactoidInfoItem, GEOPDLocationInfoItem, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDPlaceInfosModuleConfiguration : PBCodable <NSCopying>
+@interface GEOPDPlaceInfosModuleConfiguration : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -20,7 +18,9 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    int _attributionType;
     struct {
+        unsigned int has_attributionType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_factoidInfoItem:1;
         unsigned int read_locationInfoItem:1;

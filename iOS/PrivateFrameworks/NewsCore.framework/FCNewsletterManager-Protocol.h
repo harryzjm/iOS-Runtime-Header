@@ -11,9 +11,13 @@
 
 @protocol FCNewsletterManager <NSObject>
 @property(readonly, nonatomic) long long includeOptions;
+@property(readonly, nonatomic) _Bool includeSportsVector;
+@property(readonly, nonatomic) _Bool includeBundleSubscribedVector;
+@property(readonly, nonatomic) _Bool includeUserVector;
 @property(readonly, nonatomic) _Bool canUnsubscribe;
 @property(readonly, nonatomic) _Bool canSubscribe;
 @property(readonly, nonatomic) _Bool isSubscribed;
+@property(readonly, nonatomic) NSString *cachedVector;
 @property(readonly, nonatomic) long long subscription;
 @property(readonly, nonatomic) long long activeNewsletter;
 @property(readonly, nonatomic) _Bool enabled;
@@ -27,13 +31,12 @@
 - (NFPromise *)forceUpdateSubscription;
 - (NFPromise *)updateSubscription;
 - (void)optOutOfIssues;
-- (void)optIntoIssues;
 - (void)unsubscribe;
 - (void)subscribe;
-- (void)subscribeTo:(long long)arg1;
 - (_Bool)isOptedIntoIssues;
-- (_Bool)canOptIntoIssues;
+- (_Bool)isEligibleForIssues;
 - (long long)issueOptinStatus;
+- (_Bool)isSignedIntoEmailAccount;
 - (_Bool)canSubscribeToNewsletter:(long long)arg1;
 - (long long)subscriptionStatusForNewsletter:(long long)arg1;
 @end

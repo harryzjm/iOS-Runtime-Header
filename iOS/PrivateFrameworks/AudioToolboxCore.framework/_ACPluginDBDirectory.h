@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
-
 @class NSData, NSMutableArray, NSMutableDictionary, NSString, _ACPluginDB;
 
 __attribute__((visibility("hidden")))
-@interface _ACPluginDBDirectory : NSObject <NSSecureCoding>
+@interface _ACPluginDBDirectory : NSObject
 {
     _ACPluginDB *mDB;
     NSString *mFullPath;

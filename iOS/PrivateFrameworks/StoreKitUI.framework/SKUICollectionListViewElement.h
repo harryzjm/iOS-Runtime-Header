@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class SKUISearchBarViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUICollectionListViewElement
+@interface SKUICollectionListViewElement : SKUIViewElement
 {
     SKUISearchBarViewElement *_searchHeader;
 }

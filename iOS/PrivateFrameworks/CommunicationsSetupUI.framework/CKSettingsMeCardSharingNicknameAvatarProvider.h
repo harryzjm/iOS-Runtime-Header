@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CommunicationsSetupUI/CNMeCardSharingAvatarProvider-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKSettingsMeCardSharingNicknameAvatarProvider : NSObject <CNMeCardSharingAvatarProvider>
+@interface CKSettingsMeCardSharingNicknameAvatarProvider : NSObject
 {
     NSData *_imageData;
 }

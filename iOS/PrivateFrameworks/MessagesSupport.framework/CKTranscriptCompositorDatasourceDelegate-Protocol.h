@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKTranscriptLayoutEnvironment, NSArray, NSCollectionLayoutGroup;
+@class CKTranscriptLayoutEnvironment, CKTranscriptLayoutMessageEditingContext, NSArray, NSCollectionLayoutGroup;
 @protocol CKTranscriptItemLayoutProvider;
 
 @protocol CKTranscriptCompositorDatasourceDelegate
+- (CKTranscriptLayoutMessageEditingContext *)compositorMessageEditingContext;
 - (_Bool)compositorSupportsCustomLayoutGroupsForLayoutProvider:(id <CKTranscriptItemLayoutProvider>)arg1;
 - (_Bool)compositorSupportsCustomLayoutGroupsForSection:(long long)arg1;
 - (struct UIEdgeInsets)compositorMarginInsets;

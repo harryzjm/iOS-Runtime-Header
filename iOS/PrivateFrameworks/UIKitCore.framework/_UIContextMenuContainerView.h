@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIPassthroughScrollInteractionDelegate-Protocol.h>
+#import "UIView.h"
 
-@class NSString, UIView, _UIPassthroughScrollInteraction;
+@class NSArray, NSString, _UIPassthroughScrollInteraction;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuContainerView <_UIPassthroughScrollInteractionDelegate>
+@interface _UIContextMenuContainerView : UIView
 {
-    _Bool _lastHitTestWasPassedThrough;
+    _Bool _lastHitTestWasPassedThroughToInteraction;
+    _Bool _inPassthroughViewHitTest;
     _UIPassthroughScrollInteraction *_passthroughInteraction;
+    _Bool _passthroughInteractionTouchEatingDisabledForSearchSuggestions;
     _Bool _dismissesInstantly;
+    NSArray *_passthroughViews;
     UIView *_contentWrapperView;
     CDUnknownBlockType _dismissalHandler;
     CDUnknownBlockType _subtreeTraitPropagationHandler;
@@ -24,6 +27,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
 @property(nonatomic) __weak UIView *contentWrapperView; // @synthesize contentWrapperView=_contentWrapperView;
 @property(nonatomic) _Bool dismissesInstantly; // @synthesize dismissesInstantly=_dismissesInstantly;
+@property(copy, nonatomic) NSArray *passthroughViews; // @synthesize passthroughViews=_passthroughViews;
+@property(nonatomic) _Bool passthroughInteractionTouchEatingDisabledForSearchSuggestions; // @synthesize passthroughInteractionTouchEatingDisabledForSearchSuggestions=_passthroughInteractionTouchEatingDisabledForSearchSuggestions;
 - (void)_traitCollectionDidChangeOnSubtreeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (void)_attemptDismiss:(_Bool)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

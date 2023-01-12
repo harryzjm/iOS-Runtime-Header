@@ -6,26 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreNFC/NFCHardwareManagerCallbacks-Protocol.h>
-#import <CoreNFC/NFCSessionCallbacks-Protocol.h>
-
-@class NFCSession, NSArray, NSMutableDictionary, NSMutableSet, NSString;
+@class NFCSession, NSArray, NSHashTable, NSMutableDictionary, NSString;
+@protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface NFCHardwareManager : NSObject <NFCSessionCallbacks, NFCHardwareManagerCallbacks>
+@interface NFCHardwareManager : NSObject
 {
-    NSMutableSet *_delegates;
+    NSHashTable *_delegates;
     NFCSession *_xpcSession;
     NSMutableDictionary *_queuedReaderSessions;
+    NSObject<OS_dispatch_semaphore> *_hwSupportStateUpdate;
+    struct os_unfair_lock_s _readerSessionLock;
 }
 
 + (id)sharedHardwareManager;
 - (void).cxx_destruct;
 - (void)didInvalidate;
-- (void)hardwareFailedToLoad;
+- (void)hwStateDidChange:(unsigned int)arg1;
 - (id)getReaderSessionWithKey:(id)arg1;
+- (void)areFeaturesSupported:(unsigned long long)arg1 expiry:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)areFeaturesSupported:(unsigned long long)arg1 outError:(id *)arg2;
-- (void)removeNFCHardwareManagerCallbacksListener:(id)arg1;
 - (void)addNFCHardwareManagerCallbacksListener:(id)arg1;
 @property(readonly, copy, nonatomic, getter=getDelegates) NSArray *delegates;
 - (void)dequeueReaderSession:(id)arg1;

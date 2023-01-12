@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)hashCodeForSource:(id)arg1 macros:(id)arg2;
-- (void)libraryForProgramDesc:(CDStruct_db84f6ff)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)libraryForProgramDesc:(CDStruct_8a516eb8)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)libraryForSourceCode:(id)arg1 options:(id)arg2;
 - (id)libraryForFile:(id)arg1;
 - (id)deviceQueue;

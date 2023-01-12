@@ -24,9 +24,10 @@
 + (NSString *)systemLibraryBaseDirectory;
 + (NSURL *)systemLibraryURL;
 @property(readonly, copy) NSString *assetUUIDRecoveryMappingPath;
-@property(readonly, nonatomic) PLFileSystemCapabilities *capabilities;
+@property(readonly) PLFileSystemCapabilities *capabilities;
 @property(readonly, copy) NSString *baseDirectory;
 @property(readonly, copy) NSURL *libraryURL;
+- (_Bool)ensureFileProviderSyncExclusionAttributeIsSetWithError:(id *)arg1;
 - (_Bool)isDeviceRestoreSupported;
 - (unsigned char)photoLibraryPathTypeForBundleScope:(unsigned short)arg1;
 - (void)setExtendedAttributesWithIdentifier:(PLPhotoLibraryFileIdentifier *)arg1 andURL:(NSURL *)arg2;

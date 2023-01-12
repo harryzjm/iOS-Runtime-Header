@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface UIKBStrokeView
+@interface UIKBStrokeView : UIView
 {
     NSMutableArray *_points;
 }

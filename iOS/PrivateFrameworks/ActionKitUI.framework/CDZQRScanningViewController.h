@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ActionKitUI/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
-
 @class AVCaptureDevice, AVCaptureSession, AVCaptureVideoPreviewLayer, NSArray, NSString, UIButton, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface CDZQRScanningViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
+@interface CDZQRScanningViewController : UIViewController
 {
     CDUnknownBlockType _resultBlock;
     CDUnknownBlockType _errorBlock;

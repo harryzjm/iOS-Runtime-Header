@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPZone, NSString;
 
-@interface CKDPZoneSaveRequest : PBRequest <NSCopying>
+@interface CKDPZoneSaveRequest : PBRequest
 {
     CKDPZone *_recordZone;
     NSString *_zoneProtectionInfoTag;

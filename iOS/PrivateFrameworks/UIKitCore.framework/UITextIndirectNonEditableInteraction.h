@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIKeyboardTextSelectionGestureControllerDelegate-Protocol.h>
-
 @class NSString, UIKeyboardTaskQueue, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
-@interface UITextIndirectNonEditableInteraction <_UIKeyboardTextSelectionGestureControllerDelegate>
+@interface UITextIndirectNonEditableInteraction
 {
     _UIKeyboardTextSelectionController *_textSelectionController;
 }

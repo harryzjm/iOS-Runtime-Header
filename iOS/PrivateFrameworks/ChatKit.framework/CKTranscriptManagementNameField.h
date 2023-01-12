@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <ChatKit/UITextFieldDelegate-Protocol.h>
-
 @class NSString, UILabel, UITextField, _UIBackdropView;
 @protocol CKTranscriptManagementNameFieldDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKTranscriptManagementNameField : UIView <UITextFieldDelegate>
+@interface CKTranscriptManagementNameField : UIView
 {
     _Bool _isOverlay;
     _Bool _enabled;

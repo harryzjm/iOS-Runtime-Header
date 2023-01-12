@@ -6,13 +6,13 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class NSAttributedString, NSString, UIFont, UIImage;
+@class NSAttributedString, NSString, UIFont;
 
 @protocol MUPlaceTileViewModel <NSObject>
 @property(readonly, nonatomic) unsigned long long expectedNumberOfFooterLines;
-@property(readonly, nonatomic) UIImage *fallbackImage;
-@property(readonly, nonatomic) UIImage *badgeIcon;
 @property(readonly, nonatomic) NSString *tileName;
+- (void)fetchFallbackIconWithCompletion:(void (^)(UIImage *, NSError *, _Bool))arg1;
+- (void)fetchBadgeIconWithCompletion:(void (^)(UIImage *, NSError *, _Bool))arg1;
 - (void)fetchImageTilewWithSize:(struct CGSize)arg1 completion:(void (^)(UIImage *, NSError *, _Bool))arg2;
 - (NSAttributedString *)footerAttributedStringForFont:(UIFont *)arg1;
 - (NSAttributedString *)subtitleAttributedStringForFont:(UIFont *)arg1;

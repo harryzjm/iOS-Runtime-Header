@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPAssetsToDownload, CKDPRecordIdentifier, CKDPRecordRetrieveRequestRetrieveAssetURL, CKDPRequestedFields, NSString;
 
-@interface CKDPRecordRetrieveRequest : PBRequest <NSCopying>
+@interface CKDPRecordRetrieveRequest : PBRequest
 {
     CKDPAssetsToDownload *_assetsToDownload;
     NSString *_clientVersionETag;

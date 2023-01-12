@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/NSCopying-Protocol.h>
-
 @class AVWeakReference, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVCMNotificationDispatcherListenerKey : NSObject <NSCopying>
+@interface AVCMNotificationDispatcherListenerKey : NSObject
 {
     AVWeakReference *_weakReferenceToListener;
     CDUnknownFunctionPointerType _callback;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLStructType.h"
+
 @class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MTLStructTypeInternal
+@interface MTLStructTypeInternal : MTLStructType
 {
     unsigned long long _dataType;
     NSDictionary *_dictionary;

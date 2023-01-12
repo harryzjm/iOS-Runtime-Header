@@ -6,7 +6,7 @@
 
 #import <CarPlaySupport/NSObject-Protocol.h>
 
-@class CPManeuver, CPTravelEstimates, NSArray, NSString;
+@class CPManeuver, CPTravelEstimates, NSArray, NSString, UIColor;
 
 @protocol CPNavigationSessionManaging <NSObject>
 - (void)updateTripTravelEstimates:(CPTravelEstimates *)arg1;
@@ -14,6 +14,7 @@
 - (void)showManeuvers:(NSArray *)arg1 usingDisplayStyles:(NSArray *)arg2;
 - (void)cancelTrip;
 - (void)finishTrip;
+- (void)pauseTripForReason:(unsigned long long)arg1 description:(NSString *)arg2 turnCardColor:(UIColor *)arg3;
 - (void)pauseTripForReason:(unsigned long long)arg1 description:(NSString *)arg2;
 @end
 

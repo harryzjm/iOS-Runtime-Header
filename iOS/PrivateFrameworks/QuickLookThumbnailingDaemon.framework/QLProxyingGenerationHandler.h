@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLookThumbnailingDaemon/QLIncrementalThumbnailGenerationHandler-Protocol.h>
-
 @class QLTGeneratorThumbnailRequest;
 
 __attribute__((visibility("hidden")))
-@interface QLProxyingGenerationHandler : NSObject <QLIncrementalThumbnailGenerationHandler>
+@interface QLProxyingGenerationHandler : NSObject
 {
     QLTGeneratorThumbnailRequest *_generatorRequest;
 }

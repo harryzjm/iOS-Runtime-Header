@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNMLModel-Protocol.h>
-
 @class MLModelDescription, NSString;
 @protocol MLCustomModel;
 
 __attribute__((visibility("hidden")))
-@interface SNMLCustomModel : NSObject <SNMLModel>
+@interface SNMLCustomModel : NSObject
 {
     id <MLCustomModel> _customModel;
     MLModelDescription *_modelDescription;
@@ -21,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly) MLModelDescription *modelDescription; // @synthesize modelDescription=_modelDescription;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)initWithMLCustomModel:(id)arg1 modelDescription:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)confirmationRequiredWithAskForInputResultToConfirm:(id)arg1;
 + (id)disambiguationWithAskForInputResultsToDisambiguate:(id)arg1;
 + (id)successWithResolvedAskForInputResult:(id)arg1;

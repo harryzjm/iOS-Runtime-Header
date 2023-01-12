@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
+#import "UIView.h"
 
 @class NSArray, NSString, UILongPressGestureRecognizer;
 @protocol _UIPreviewActionSheetViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewActionSheetView <UIGestureRecognizerDelegate, UIScrollViewDelegate>
+@interface _UIPreviewActionSheetView : UIView
 {
     id <_UIPreviewActionSheetViewDelegate> _delegate;
     CDUnknownBlockType _completionHandler;

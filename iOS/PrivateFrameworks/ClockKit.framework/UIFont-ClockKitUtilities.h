@@ -9,6 +9,8 @@
 @interface UIFont (ClockKitUtilities)
 + (id)CLKMonospaceNumbersFeatureSettings;
 - (id)CLKFontByApplyingFeatureSettings:(id)arg1;
+- (id)CLKFontWithRareLigaturesAndStylisticSet:(unsigned long long)arg1;
+- (id)CLKFontWithStylisticSet:(unsigned long long)arg1;
 - (id)CLKFontWithStraightSix;
 - (id)CLKFontWithAlternativePunctuation;
 - (id)CLKFontWithMonospacedNumbers;

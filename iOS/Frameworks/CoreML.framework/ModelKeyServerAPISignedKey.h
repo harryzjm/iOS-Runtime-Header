@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreML/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface ModelKeyServerAPISignedKey : PBCodable <NSCopying>
+@interface ModelKeyServerAPISignedKey : PBCodable
 {
     NSData *_data;
 }

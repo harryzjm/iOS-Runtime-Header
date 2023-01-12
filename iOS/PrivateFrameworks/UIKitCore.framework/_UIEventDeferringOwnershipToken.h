@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/BSDebugDescriptionProviding-Protocol.h>
-
 @class BKSHIDEventDeferringTarget, NSMutableSet, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIEventDeferringOwnershipToken : NSObject <BSDebugDescriptionProviding>
+@interface _UIEventDeferringOwnershipToken : NSObject
 {
     NSMutableSet *_environmentsPendingInvalidation;
     _Bool _hasInvalidated;

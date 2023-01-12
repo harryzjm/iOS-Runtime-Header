@@ -6,11 +6,9 @@
 
 #import <WorkflowKit/WFSmartPromptDialogRequest.h>
 
-#import <WorkflowUI/WFDialogRequestViewControllerSupport-Protocol.h>
-
 @class NSString;
 
-@interface WFSmartPromptDialogRequest (WFDialogRequestViewControllerSupport) <WFDialogRequestViewControllerSupport>
+@interface WFSmartPromptDialogRequest (WFDialogRequestViewControllerSupport)
 - (Class)wf_dialogViewControllerClass;
 
 // Remaining properties

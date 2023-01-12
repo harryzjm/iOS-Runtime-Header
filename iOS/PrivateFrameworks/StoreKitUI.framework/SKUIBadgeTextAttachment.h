@@ -6,13 +6,11 @@
 
 #import <UIKit/NSTextAttachment.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSObject, NSURL;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface SKUIBadgeTextAttachment : NSTextAttachment <NSCopying>
+@interface SKUIBadgeTextAttachment : NSTextAttachment
 {
     NSURL *_imageURL;
     NSObject<OS_dispatch_semaphore> *_imageLoadingSemaphore;

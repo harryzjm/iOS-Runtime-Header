@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/NSNetServiceBrowserDelegate-Protocol.h>
-#import <AVKit/NSNetServiceDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSMutableSet, NSNetServiceBrowser, NSString;
 @protocol AVBonjourServiceClientDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVBonjourServiceClient : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
+@interface AVBonjourServiceClient : NSObject
 {
     _Bool _discovering;
     NSMutableSet *_resolvedServices;

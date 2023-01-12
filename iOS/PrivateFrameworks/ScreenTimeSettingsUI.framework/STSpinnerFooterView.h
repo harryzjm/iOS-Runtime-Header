@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <ScreenTimeSettingsUI/PSHeaderFooterView-Protocol.h>
-
 @class NSLayoutConstraint, PSSpecifier, UIActivityIndicatorView;
 
 __attribute__((visibility("hidden")))
-@interface STSpinnerFooterView : UITableViewHeaderFooterView <PSHeaderFooterView>
+@interface STSpinnerFooterView : UITableViewHeaderFooterView
 {
     PSSpecifier *_specifier;
     UIActivityIndicatorView *_spinnerView;

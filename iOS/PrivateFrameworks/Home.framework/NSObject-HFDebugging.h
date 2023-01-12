@@ -9,6 +9,9 @@
 @class NSString;
 
 @interface NSObject (HFDebugging)
+- (id)hf_prettyDescriptionWithDetailLevel:(unsigned long long)arg1;
+@property(readonly, copy, nonatomic) NSString *hf_prettyFullDescription;
+@property(readonly, copy, nonatomic) NSString *hf_prettyExpensiveDescription;
 @property(readonly, copy, nonatomic) NSString *hf_prettyDescription;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLBatchProvider-Protocol.h>
-
 @protocol MLBatchProvider;
 
 __attribute__((visibility("hidden")))
-@interface MLLazyUnionBatchProvider : NSObject <MLBatchProvider>
+@interface MLLazyUnionBatchProvider : NSObject
 {
     id <MLBatchProvider> _first;
     id <MLBatchProvider> _second;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SPOwner/CBCentralManagerDelegate-Protocol.h>
-
 @class CBCentralManager, NSString;
 @protocol SPBLEStateMonitorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SPBLEStateMonitor : NSObject <CBCentralManagerDelegate>
+@interface SPBLEStateMonitor : NSObject
 {
     unsigned long long _bleState;
     id <SPBLEStateMonitorDelegate> _delegate;

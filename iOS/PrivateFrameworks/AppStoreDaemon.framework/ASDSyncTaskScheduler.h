@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreDaemon/ASDTaskScheduler-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ASDSyncTaskScheduler : NSObject <ASDTaskScheduler>
+@interface ASDSyncTaskScheduler : NSObject
 {
 }
 
-+ (id)sharedInstance;
 - (void)scheduleBlock:(CDUnknownBlockType)arg1;
 
 // Remaining properties

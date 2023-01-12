@@ -6,22 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/NSCopying-Protocol.h>
-#import <SafariServices/NSSecureCoding-Protocol.h>
-#import <SafariServices/WBUFormAutoFillFrameHandle-Protocol.h>
-
-@class NSString, NSURL, _WKFrameHandle;
+@class NSNumber, NSString, NSURL, WBSGlobalFrameIdentifier, _WKFrameHandle;
 
 __attribute__((visibility("hidden")))
-@interface SFFormAutoFillFrameHandle : NSObject <NSCopying, NSSecureCoding, WBUFormAutoFillFrameHandle>
+@interface SFFormAutoFillFrameHandle : NSObject
 {
     NSURL *_URL;
     struct __SecTrust *_serverTrust;
     _WKFrameHandle *_frameHandle;
+    NSNumber *_pageID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSNumber *pageID; // @synthesize pageID=_pageID;
 @property(readonly, nonatomic) _WKFrameHandle *frameHandle; // @synthesize frameHandle=_frameHandle;
 @property(readonly, nonatomic) struct __SecTrust *webui_serverTrust;
 @property(readonly, nonatomic) NSURL *webui_URL;
@@ -32,7 +30,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
-- (id)initWithFrameHandle:(id)arg1 URL:(id)arg2 serverTrust:(struct __SecTrust *)arg3;
+@property(readonly, nonatomic) WBSGlobalFrameIdentifier *webFrameIdentifier;
+- (id)initWithFrameHandle:(id)arg1 URL:(id)arg2 serverTrust:(struct __SecTrust *)arg3 pageID:(id)arg4;
 - (id)initWithWebProcessPlugInFrame:(id)arg1;
 
 // Remaining properties

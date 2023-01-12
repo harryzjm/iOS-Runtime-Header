@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTWebTranslationInfo : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTWebTranslationInfo : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_344821e7)addObjectToBuffer:(void *)arg1;
+- (void)spans_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)spans_count;
+- (id)spans_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *spans;
 @property(readonly, nonatomic) NSString *text;
 - (id)copyWithZone:(struct _NSZone *)arg1;

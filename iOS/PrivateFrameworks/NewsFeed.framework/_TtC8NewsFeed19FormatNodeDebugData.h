@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *bindRecords;
     MISSING_TYPE *buildRecords;
+    MISSING_TYPE *sourceMaps;
 }
 
 @end

@@ -6,12 +6,10 @@
 
 #import <MapKit/MKAnnotationView.h>
 
-#import <FlightUtilities/MKAnnotation-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FUPlaneTrackerAnnotationView : MKAnnotationView <MKAnnotation>
+@interface FUPlaneTrackerAnnotationView : MKAnnotationView
 {
     _Bool _showsPlane;
     NSMutableArray *_viewAddedBlock;

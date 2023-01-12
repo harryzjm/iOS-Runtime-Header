@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIMenuViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/SKUIPopupMenuDelegate-Protocol.h>
-#import <StoreKitUI/SKUISortDataRequestDelegate-Protocol.h>
-#import <StoreKitUI/UIPopoverControllerDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSMutableIndexSet, NSString, SKUIMenuPageComponent, SKUIMenuViewController, SKUIPillsControl, SKUIPopupMenuHeaderView, UIBarButtonItem, UIPopoverController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMenuPageSection <SKUIMenuViewControllerDelegate, SKUIPopupMenuDelegate, SKUISortDataRequestDelegate, UIPopoverControllerDelegate>
+@interface SKUIMenuPageSection : SKUIStorePageSection
 {
     UIBarButtonItem *_cancelMenuItem;
     SKUIPillsControl *_pillsControl;

@@ -16,8 +16,16 @@ __attribute__((visibility("hidden")))
     NSSet *_streamGroupConfigurations;
 }
 
++ (unsigned int)readUint32WithPList:(id)arg1 key:(id)arg2 defaultValue:(unsigned int)arg3;
 + (unsigned int)streamSSRCForStreamGroupID:(unsigned int)arg1 streamIndex:(int)arg2;
++ (id)publicSessionConfigurationForType:(unsigned int)arg1;
 + (id)loadSessionConfigurationWithResourceName:(id)arg1;
++ (id)replaceTag:(id)arg1;
++ (id)ftxtGroupDisabled;
++ (id)moCapGroupDisabled;
++ (id)dataGroupDisabled;
++ (id)screenStreamBaseTierFramerate;
++ (id)sessionConfigurationForType:(unsigned int)arg1;
 + (id)resourceNameForConfigurationType:(unsigned int)arg1;
 @property(readonly, nonatomic) NSSet *streamGroupConfigurations; // @synthesize streamGroupConfigurations=_streamGroupConfigurations;
 @property(readonly, nonatomic) NSSet *streamInputConfigurations; // @synthesize streamInputConfigurations=_streamInputConfigurations;
@@ -33,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)setupVideoStreamGroupStreams:(id)arg1 streamGroupConfig:(id)arg2 streamIDGenerator:(id)arg3;
 - (unsigned short)setParentStreamID:(unsigned short)arg1 videoConfig:(id)arg2;
 - (struct CGSize)computeEncoderResolution:(unsigned long long)arg1;
-- (id)newVideoStreamGroupStreamConfigWithPList:(id)arg1 streamIDGenerator:(id)arg2 ssrc:(unsigned int)arg3 groupID:(unsigned int)arg4;
+- (id)newVideoStreamGroupStreamConfigWithPList:(id)arg1 streamIDGenerator:(id)arg2 ssrc:(unsigned int)arg3 groupID:(unsigned int)arg4 shouldSkip:(_Bool *)arg5;
 - (long long)getVideoCodecFromStreamCodecPList:(id)arg1;
 - (id)getVideoCodecConfigFromStreamConfigPList:(id)arg1;
 - (_Bool)checkEncoderSupportForCodecType:(long long)arg1;

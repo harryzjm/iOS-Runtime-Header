@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCHCustomFormatUpdateSupport-Protocol.h>
+#import "TSCHNumberFormat.h"
 
 @class NSString;
 
-@interface TSCHMutableNumberFormat <TSCHCustomFormatUpdateSupport>
+@interface TSCHMutableNumberFormat : TSCHNumberFormat
 {
 }
 

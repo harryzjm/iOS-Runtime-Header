@@ -6,11 +6,9 @@
 
 #import <Photos/PHSuggestion.h>
 
-#import <PhotosUICore/PXDisplaySuggestion-Protocol.h>
-
 @class NSDate, NSDictionary, NSString;
 
-@interface PHSuggestion (PXDisplaySuggestionAdoption) <PXDisplaySuggestion>
+@interface PHSuggestion (PXDisplaySuggestionAdoption)
 + (id)px_keyAssetFilteringPredicate;
 - (id)fetchKeyAssets;
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/AUAudioUnitHostProtocol-Protocol.h>
-
 @class AUAudioUnit;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AUHostDelegate : NSObject <AUAudioUnitHostProtocol>
+@interface AUHostDelegate : NSObject
 {
     NSObject<OS_dispatch_queue> *mParameterQueue;
     AUAudioUnit *_audioUnit;

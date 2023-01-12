@@ -6,8 +6,10 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/NSCopying-Protocol.h>
+
 __attribute__((visibility("hidden")))
-@interface UIAlertControllerDescriptor : NSObject
+@interface UIAlertControllerDescriptor : NSObject <NSCopying>
 {
     _Bool _hasHeaderContentViewController;
     _Bool _hasTitle;
@@ -25,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property _Bool hasMessage; // @synthesize hasMessage=_hasMessage;
 @property _Bool hasTitle; // @synthesize hasTitle=_hasTitle;
 @property _Bool hasHeaderContentViewController; // @synthesize hasHeaderContentViewController=_hasHeaderContentViewController;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 
 @end

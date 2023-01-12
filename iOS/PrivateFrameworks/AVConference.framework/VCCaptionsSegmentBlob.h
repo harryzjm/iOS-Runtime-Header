@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCCaptionsSegmentBlob : PBCodable <NSCopying>
+@interface VCCaptionsSegmentBlob : PBCodable
 {
     unsigned int _confidence;
     NSString *_text;

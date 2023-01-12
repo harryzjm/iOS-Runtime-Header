@@ -32,10 +32,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property(readonly, nonatomic) unsigned long long functionType;
 @property(readonly, nonatomic) __weak MTLGPUDebugFunction *function;
-@property(readonly, nonatomic) __weak MTLGPUDebugFunction *dynamicLibrary;
+@property(readonly, nonatomic) __weak MTLGPUDebugDynamicLibrary *dynamicLibrary;
 @property(readonly, nonatomic) NSString *loadedImageName;
 - (void)setConstantData:(id)arg1;
-- (void)_applyRelocation:(id)arg1;
+- (void)_applyImageIDRelocation:(id)arg1;
+- (void)_applyConstantRelocation:(id)arg1;
+- (void)_applyConstantRelocation;
 - (id)initWithFunction:(id)arg1 debugInstrumentationData:(id)arg2;
 - (id)initWithFunction:(id)arg1;
 - (id)initWithDynamicLibrary:(id)arg1;

@@ -10,7 +10,10 @@
 + (id)assetURLsFromCKRecord:(id)arg1 assetIndexes:(id)arg2;
 + (id)treatmentFromCKRecord:(id)arg1 treatmentSize:(unsigned long long *)arg2;
 - (id)unlinkedOnDemandAssets;
-- (id)requiredAssetsForInstallationWithAssetStore:(id)arg1 subscriptionSettings:(id)arg2;
+- (_Bool)_triEnumerateMAFactorLevelsWithBlock:(CDUnknownBlockType)arg1;
+- (id)_triRequiredMAAssetsForInstallationWithAssetStore:(id)arg1 subscriptionSettings:(id)arg2 maProvider:(id)arg3 aliasToUnaliasMap:(id)arg4;
+- (id)requiredAssetsForInstallationForNamespace:(id)arg1 assetStore:(id)arg2 maProvider:(id)arg3 subscriptionSettings:(id)arg4 aliasToUnaliasMap:(id)arg5;
+- (id)_triRequiredCKAssetsForInstallationWithAssetStore:(id)arg1 subscriptionSettings:(id)arg2;
 - (id)_triCollectMetadataForAssetsWithTest:(CDUnknownBlockType)arg1;
 @end
 

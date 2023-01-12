@@ -6,18 +6,16 @@
 
 #import <NewsTransport/NTPBReadingHistoryItem.h>
 
-#import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
-#import <NewsCore/FCMutableReadingHistoryItem-Protocol.h>
-
 @class CKRecord, NSDate, NSString;
 
-@interface NTPBReadingHistoryItem (FCReadingHistory) <FCMutableReadingHistoryItem, FCKeyValueStoreCoding>
+@interface NTPBReadingHistoryItem (FCReadingHistory)
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 - (void)writeToKeyValuePair:(id)arg1;
 @property(readonly, nonatomic) CKRecord *asCKRecord;
 @property(nonatomic, getter=isPruningDisabled) _Bool pruningDisabled;
 @property(nonatomic) unsigned long long articleLikingStatus;
+@property(nonatomic) _Bool hasArticleBeenRemovedFromAudio;
 @property(nonatomic) _Bool hasArticleCompletedReading;
 @property(nonatomic) _Bool hasArticleCompletedListening;
 @property(nonatomic) _Bool hasArticleBeenConsumed;
@@ -40,6 +38,7 @@
 @property(copy, nonatomic) NSString *deviceID;
 @property(readonly, nonatomic) unsigned long long flags;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) long long listenedCount;
 @property(nonatomic) double listeningProgress;
 @property(nonatomic) long long maxVersionRead;
 @property(nonatomic) long long maxVersionSeen;

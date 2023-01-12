@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol AEObservation;
+@class NSObject;
+@protocol AEObservation, OS_dispatch_queue;
 
 @protocol AESystemNotificationPrimitives
-- (id <AEObservation>)observeAssessmentStateChangeWithHandler:(void (^)(void))arg1;
+- (id <AEObservation>)observeAssessmentStateChangeOnQueue:(NSObject<OS_dispatch_queue> *)arg1 withHandler:(void (^)(void))arg2;
 @end
 

@@ -19,6 +19,8 @@
 + (NSNumber *)pruneSyncedObjectsThroughAnchor:(NSNumber *)arg1 limit:(unsigned long long)arg2 nowDate:(NSDate *)arg3 profile:(HDProfile *)arg4 error:(id *)arg5;
 + (CDStruct_1ef3fb1f)syncVersionRangeForSession:(HDSyncSession *)arg1;
 + (CDStruct_1ef3fb1f)supportedSyncVersionRange;
++ (int)currentSyncVersion;
++ (NSSet *)excludedSyncIdentitiesForSession:(HDSyncSession *)arg1;
 + (NSSet *)excludedSyncStoresForSession:(HDSyncSession *)arg1;
 + (_Bool)supportsDateBasedSharding;
 + (_Bool)supportsSyncStore:(id <HDSyncStore>)arg1;

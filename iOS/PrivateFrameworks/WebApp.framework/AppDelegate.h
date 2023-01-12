@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebApp/UIApplicationDelegate-Protocol.h>
-
 @class NSString, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface AppDelegate : NSObject <UIApplicationDelegate>
+@interface AppDelegate : NSObject
 {
 }
 

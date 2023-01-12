@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitNearbyScheduleCategory-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitNearbyScheduleCategory : NSObject <GEOTransitNearbyScheduleCategory>
+@interface _GEOTransitNearbyScheduleCategory : NSObject
 {
     NSString *_displayName;
     NSArray *_groups;

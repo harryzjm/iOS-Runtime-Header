@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKDPUserPrivacySettingsBatchLookupResponse : PBCodable <NSCopying>
+@interface CKDPUserPrivacySettingsBatchLookupResponse : PBCodable
 {
     NSMutableArray *_containerPrivacySettings;
 }

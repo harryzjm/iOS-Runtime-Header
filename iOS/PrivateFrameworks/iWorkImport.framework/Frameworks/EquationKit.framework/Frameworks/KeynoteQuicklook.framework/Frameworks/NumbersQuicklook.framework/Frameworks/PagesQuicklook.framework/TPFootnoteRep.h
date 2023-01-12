@@ -6,11 +6,9 @@
 
 #import <TSText/TSWPRep.h>
 
-#import <PagesQuicklook/CALayerDelegate-Protocol.h>
-
 @class NSString;
 
-@interface TPFootnoteRep : TSWPRep <CALayerDelegate>
+@interface TPFootnoteRep : TSWPRep
 {
 }
 

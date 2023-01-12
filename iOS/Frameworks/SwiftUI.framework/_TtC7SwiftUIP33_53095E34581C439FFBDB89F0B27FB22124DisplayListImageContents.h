@@ -9,6 +9,7 @@
 @interface _TtC7SwiftUIP33_53095E34581C439FFBDB89F0B27FB22124DisplayListImageContents
 {
     MISSING_TYPE *_displayList;
+    MISSING_TYPE *_size;
 }
 
 @end

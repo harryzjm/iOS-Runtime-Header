@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUILayoutCacheDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSString, SKUIContentUnavailableTemplateElement, SKUIContentUnavailableView, SKUILayoutCache, SKUIViewElementLayoutContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIContentUnavailableDocumentViewController <SKUIArtworkRequestDelegate, SKUILayoutCacheDelegate, SKUIDocumentViewController>
+@interface SKUIContentUnavailableDocumentViewController : SKUIViewController
 {
     SKUIContentUnavailableView *_contentUnavailableView;
     SKUIViewElementLayoutContext *_layoutContext;

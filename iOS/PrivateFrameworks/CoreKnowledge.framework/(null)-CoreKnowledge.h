@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreKnowledge/CKWritableDeviceActivityStore-Protocol.h>
-
-@interface (null) (CoreKnowledge) <CKWritableDeviceActivityStore>
-- (void)recordActivityWithIdentifier:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (_Bool)recordActivityWithIdentifier:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 error:(id *)arg4;
+@interface (null) (CoreKnowledge)
++ (id)havingSubject:(id)arg1 andAbject:(id)arg2;
++ (id)havingPredicate:(id)arg1 matchType:(long long)arg2 error:(id *)arg3;
 @end
 

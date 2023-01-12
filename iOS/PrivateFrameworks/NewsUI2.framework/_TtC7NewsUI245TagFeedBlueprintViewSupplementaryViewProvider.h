@@ -10,6 +10,7 @@
 
 @interface _TtC7NewsUI245TagFeedBlueprintViewSupplementaryViewProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *feedItemSupplementaryRenderer;
 }
 

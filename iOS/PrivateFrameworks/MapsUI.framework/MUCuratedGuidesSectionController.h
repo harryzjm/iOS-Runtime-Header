@@ -4,33 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MKCollectionCarouselAnalyticsDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-#import <MapsUI/UIScrollViewDelegate-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKCollectionsCarouselView, MKCuratedCollectionsPlacecardAnalyticsManager, MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
+@class MKUGCCallToActionViewAppearance, MUCuratedCollectionsPlacecardAnalyticsManager, MUCuratedGuidesSectionView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
 @protocol MKPlaceCollectionsDelegate, MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUCuratedGuidesSectionController <UIScrollViewDelegate, MKCollectionCarouselAnalyticsDelegate, MUPlaceSectionControlling>
+@interface MUCuratedGuidesSectionController : MUPlaceSectionController
 {
     MUPlaceSectionView *_sectionView;
+    MUCuratedGuidesSectionView *_carouselView;
     _Bool _active;
     MUPlaceSectionHeaderViewModel *_sectionHeaderViewModel;
-    MKCollectionsCarouselView *_carouselView;
-    NSArray *_placeCollections;
-    NSArray *_collectionIds;
-    MKCuratedCollectionsPlacecardAnalyticsManager *_analyticsManager;
+    MUCuratedCollectionsPlacecardAnalyticsManager *_analyticsManager;
     id <MKPlaceCollectionsDelegate> _collectionsDelegate;
+    NSArray *_collectionIds;
+    NSArray *_placeCollections;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <MKPlaceCollectionsDelegate> collectionsDelegate; // @synthesize collectionsDelegate=_collectionsDelegate;
-@property(retain, nonatomic) MKCuratedCollectionsPlacecardAnalyticsManager *analyticsManager; // @synthesize analyticsManager=_analyticsManager;
-@property(retain, nonatomic) NSArray *collectionIds; // @synthesize collectionIds=_collectionIds;
 @property(retain, nonatomic) NSArray *placeCollections; // @synthesize placeCollections=_placeCollections;
-@property(retain, nonatomic) MKCollectionsCarouselView *carouselView; // @synthesize carouselView=_carouselView;
+@property(retain, nonatomic) NSArray *collectionIds; // @synthesize collectionIds=_collectionIds;
+@property(nonatomic) __weak id <MKPlaceCollectionsDelegate> collectionsDelegate; // @synthesize collectionsDelegate=_collectionsDelegate;
+@property(retain, nonatomic) MUCuratedCollectionsPlacecardAnalyticsManager *analyticsManager; // @synthesize analyticsManager=_analyticsManager;
+@property(retain, nonatomic) MUCuratedGuidesSectionView *carouselView; // @synthesize carouselView=_carouselView;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (_Bool)shouldShowMoreButton;
 - (id)_sectionHeaderTitle;
@@ -56,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

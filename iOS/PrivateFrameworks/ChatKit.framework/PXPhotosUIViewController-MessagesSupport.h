@@ -6,13 +6,9 @@
 
 #import <PhotosUICore/PXPhotosUIViewController.h>
 
-#import <ChatKit/CKMacToolbarItemProvider-Protocol.h>
-#import <ChatKit/CKQLPreviewControllerDelegate-Protocol.h>
-#import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
+@class CKChatController, NSString, UIView;
 
-@class NSString, UIView;
-
-@interface PXPhotosUIViewController (MessagesSupport) <QLPreviewControllerDelegate, CKQLPreviewControllerDelegate, CKMacToolbarItemProvider>
+@interface PXPhotosUIViewController (MessagesSupport)
 - (void)_handleBackButton;
 - (id)toolbarItemForIdentifier:(id)arg1;
 - (void)providerWillBeRemovedFromToolbarController:(id)arg1;
@@ -28,8 +24,10 @@
 - (void)previewControllerDidDismiss:(id)arg1;
 - (void)previewControllerWillDismiss:(id)arg1;
 - (id)_assetReferenceForPreviewItem:(id)arg1;
+- (_Bool)shouldHideInteractionOptions;
 - (id)additionalActivitiesTypesForPreviewController:(id)arg1;
 - (id)excludedActivityTypesForPreviewController:(id)arg1;
+@property(nonatomic) __weak CKChatController *ck_chatController;
 @property(retain, nonatomic) UIView *ck_transitionView;
 
 // Remaining properties

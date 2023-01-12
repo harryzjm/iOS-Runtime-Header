@@ -11,13 +11,14 @@
 @interface NSUserActivity (SafariServicesExtras)
 + (id)_sf_windowCreationActivityFromSceneConnectionOptions:(id)arg1;
 + (id)_sf_windowCreationActivityWithRecentlyClosedTabUUID:(id)arg1 browserControllerUUID:(id)arg2;
-+ (id)_sf_windowCreationActivityWithTabUUID:(id)arg1 browserControllerUUID:(id)arg2;
++ (id)_sf_windowCreationActivityWithTabUUID:(id)arg1 tabGroupUUID:(id)arg2 browserControllerUUID:(id)arg3;
 + (id)_sf_windowCreationActivityWithMode:(long long)arg1;
 + (id)_sf_windowCreationActivityWithNavigationIntent:(id)arg1;
 - (void)_sf_invalidateWindowCreationData;
 @property(readonly, nonatomic) NSNumber *_sf_windowCreationMode;
 @property(readonly, nonatomic) NSUUID *_sf_windowCreationRecentlyClosedTabUUID;
 @property(readonly, nonatomic) NSUUID *_sf_windowCreationSourceBrowserControllerUUID;
+@property(readonly, nonatomic) NSUUID *_sf_windowCreationTabGroupUUID;
 @property(readonly, nonatomic) NSUUID *_sf_windowCreationTabUUID;
 @property(readonly, nonatomic) _SFNavigationIntent *_sf_windowCreationNavigationIntent;
 - (id)sf_windowCreationNavigationIntentID;

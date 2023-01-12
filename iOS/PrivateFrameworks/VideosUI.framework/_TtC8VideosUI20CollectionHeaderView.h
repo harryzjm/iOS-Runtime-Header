@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *subtitleView;
     MISSING_TYPE *imageView;
     MISSING_TYPE *buttonView;
+    MISSING_TYPE *supplementaryViewModel;
+    MISSING_TYPE *rendersAsButton;
 }
 
 - (void).cxx_destruct;

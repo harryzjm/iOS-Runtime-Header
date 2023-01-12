@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (VideosUICoreAdditions)
++ (id)vui_URLWithString:(id)arg1;
 - (long long)vuicore_imageURLType;
 - (_Bool)vuicore_isAppIconURL;
 - (id)vuicore_symbolName;

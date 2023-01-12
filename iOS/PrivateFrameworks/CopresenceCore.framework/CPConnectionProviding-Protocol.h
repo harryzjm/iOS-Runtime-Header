@@ -6,13 +6,10 @@
 
 #import <CopresenceCore/NSObject-Protocol.h>
 
-@class CPParticipant, TUUnicastConnector;
+@class CPParticipant;
 
 @protocol CPConnectionProviding <NSObject>
 - (void)requestConnectionObjectForRemoteParticipantSync:(CPParticipant *)arg1 linkType:(unsigned char)arg2 completion:(void (^)(CPLink *))arg3;
-
-@optional
-- (void)requestInitiatorFromUnicastConnector:(TUUnicastConnector *)arg1 linkType:(unsigned char)arg2 completion:(void (^)(CPLink *))arg3;
-- (void)requestListenerFromUnicastConnector:(TUUnicastConnector *)arg1 linkType:(unsigned char)arg2 completion:(void (^)(CPLink *))arg3;
+- (_Bool)supportsLinkOfType:(unsigned char)arg1;
 @end
 

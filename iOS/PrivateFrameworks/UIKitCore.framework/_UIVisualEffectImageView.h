@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIVisualEffectViewParticipatingInternal-Protocol.h>
+#import "UIImageView.h"
 
 @class NSArray, NSString, UIView, _UIVisualEffectViewBackdropCaptureGroup;
 @protocol _UIVisualEffectViewParticipating, _UIVisualEffectViewSubviewMonitoring;
 
 __attribute__((visibility("hidden")))
-@interface _UIVisualEffectImageView <_UIVisualEffectViewParticipatingInternal>
+@interface _UIVisualEffectImageView : UIImageView
 {
     _UIVisualEffectViewBackdropCaptureGroup *_primaryCaptureGroup;
     NSArray *_viewEffects;

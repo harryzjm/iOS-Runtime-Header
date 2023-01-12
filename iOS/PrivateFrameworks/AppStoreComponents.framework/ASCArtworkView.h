@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class ASCBorderView, NSString, UIColor, UIImage, UIImageView;
+@class ASCBorderView, ASCScreenshotDisplayConfiguration, NSString, UIColor, UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface ASCArtworkView : UIView
 {
     NSString *_decoration;
+    ASCScreenshotDisplayConfiguration *_screenshotDisplayConfiguration;
     UIColor *_placeholderColor;
     UIView *_overlayView;
     UIImageView *_imageView;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 @property(retain, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
+@property(copy, nonatomic) ASCScreenshotDisplayConfiguration *screenshotDisplayConfiguration; // @synthesize screenshotDisplayConfiguration=_screenshotDisplayConfiguration;
 @property(retain, nonatomic) NSString *decoration; // @synthesize decoration=_decoration;
 @property(nonatomic) struct CGSize preferredSize; // @synthesize preferredSize=_preferredSize;
 - (id)description;

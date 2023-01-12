@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCAudioIOControllerControl-Protocol.h>
-
-@class NSMutableArray, NSString, VCAudioRelay, VCAudioRelayIOControllerSettings;
+@class NSDictionary, NSMutableArray, NSString, VCAudioRelay, VCAudioRelayIOControllerSettings;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioRelayIOController : NSObject <VCAudioIOControllerControl>
+@interface VCAudioRelayIOController : NSObject
 {
     unsigned int _relayType;
     unsigned int _relayIOType;
@@ -72,6 +70,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSDictionary *reportingStats;
 @property(readonly) Class superclass;
 
 @end

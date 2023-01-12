@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/COServiceListenerProvider-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface COTimerAddOnListenerProvider : NSObject <COServiceListenerProvider>
+@interface COTimerAddOnListenerProvider : NSObject
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
 }

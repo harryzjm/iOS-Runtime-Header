@@ -7,7 +7,7 @@
 #import <UserNotifications/UNNotificationAttachment.h>
 
 @interface UNNotificationAttachment (Staging)
-+ (unsigned long long)stagingActionForAttachmentURL:(id)arg1 bundleProxy:(id)arg2 error:(id *)arg3;
++ (unsigned long long)stagingActionForFileHandle:(id)arg1 bundleProxy:(id)arg2 error:(id *)arg3;
 + (id)_systemDirectoryURL;
 @end
 

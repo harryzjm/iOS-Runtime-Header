@@ -24,9 +24,6 @@
 - (_Bool)supportsLinkedTextBoxes;
 - (_Bool)supportsAutosizingTextboxes;
 - (_Bool)supportsQuickFormatBar;
-- (id)stringForEquationChoiceUseEQKitButtonTitle;
-- (id)stringForEquationChoiceBody;
-- (id)stringForEquationChoiceTitle;
 - (id)previewImageNameForNativeDocument;
 - (id)previewImageNameForEncryptedNativeDocument;
 - (id)universalPreviewImageNameForDocumentType:(id)arg1;

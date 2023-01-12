@@ -11,9 +11,11 @@
 @interface _TtC9SeymourUI21SessionTimerPresenter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *display;
+    MISSING_TYPE *externalOverlayDisplay;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *timer;
     MISSING_TYPE *lastTick;
+    MISSING_TYPE *elapsedTime;
 }
 
 @end

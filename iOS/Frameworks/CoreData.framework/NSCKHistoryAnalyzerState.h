@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreData/PFHistoryAnalyzerObjectState-Protocol.h>
+#import "NSManagedObject.h"
 
 @class NSDictionary, NSManagedObjectID, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSCKHistoryAnalyzerState <PFHistoryAnalyzerObjectState>
+@interface NSCKHistoryAnalyzerState : NSManagedObject
 {
 }
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long originalChangeType;
 @property(readonly, nonatomic) NSDictionary *tombstone; // @dynamic tombstone;
 - (void)updateWithChange:(id)arg1;
+- (void)mergeWithState:(id)arg1;
 @property(readonly, nonatomic) NSManagedObjectID *analyzedObjectID;
 
 // Remaining properties

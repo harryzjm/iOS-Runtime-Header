@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI226AudioCPListSectionProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *sections;
+    MISSING_TYPE *playbackState;
 }
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/TSUURLWrapper-Protocol.h>
-
 @class NSData, NSString, NSURL, TSUURLTrackerFilePresenter;
 
 __attribute__((visibility("hidden")))
-@interface TSUURLTracker : NSObject <TSUURLWrapper>
+@interface TSUURLTracker : NSObject
 {
     TSUURLTrackerFilePresenter *_filePresenter;
 }

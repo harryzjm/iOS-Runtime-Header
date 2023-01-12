@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC18HealthExperienceUI29ProfileSharingWithYouTileCell : UICollectionViewCell
 {
+    MISSING_TYPE *accessibilityIdentiferBase;
     MISSING_TYPE *$__lazy_storage_$_gradientView;
     MISSING_TYPE *$__lazy_storage_$_nameHeaderView;
     MISSING_TYPE *$__lazy_storage_$_tileContentView;

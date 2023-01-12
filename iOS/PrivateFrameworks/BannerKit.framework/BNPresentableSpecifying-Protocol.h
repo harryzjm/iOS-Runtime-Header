@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <BannerKit/BNPresentableIdentifying-Protocol.h>
 #import <BannerKit/BNPresentableUniquelyIdentifying-Protocol.h>
 
-@protocol BNPresentableSpecifying <BNPresentableUniquelyIdentifying>
+@protocol BNPresentableSpecifying <BNPresentableIdentifying, BNPresentableUniquelyIdentifying>
 @property(readonly, nonatomic) struct UIEdgeInsets contentOutsets;
 @property(readonly, nonatomic) struct CGSize preferredContentSize;
-@property(readonly, nonatomic) long long presentableType;
+@property(readonly, nonatomic) long long presentableBehavior;
+@property(readonly, nonatomic) long long contentBehavior;
 @end
 

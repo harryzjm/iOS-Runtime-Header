@@ -17,5 +17,6 @@
 @property(readonly, retain, nonatomic) NSNumber *embeddedThumbnailLength;
 @property(readonly, retain, nonatomic) NSNumber *embeddedThumbnailHeight;
 @property(readonly, copy, nonatomic) NSString *originatingAssetIdentifier;
+@property(readonly, copy, nonatomic) NSString *masterFingerPrint;
 @end
 

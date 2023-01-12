@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUOutputStream-Protocol.h>
-
 @class NSString;
 @protocol SFUOutputStream;
 
-@interface SFUZipDeflateOutputStream : NSObject <SFUOutputStream>
+@interface SFUZipDeflateOutputStream : NSObject
 {
     id <SFUOutputStream> mOutputStream;
     struct z_stream_s mDeflateStream;

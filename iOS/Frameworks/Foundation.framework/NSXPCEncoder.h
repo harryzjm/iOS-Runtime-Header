@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSXPCCoder.h"
+
 @class NSObject, NSXPCConnection;
 @protocol NSXPCEncoderDelegate, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
-@interface NSXPCEncoder
+@interface NSXPCEncoder : NSXPCCoder
 {
     NSObject<OS_xpc_object> *_oolObjects;
     NSXPCConnection *_connection;

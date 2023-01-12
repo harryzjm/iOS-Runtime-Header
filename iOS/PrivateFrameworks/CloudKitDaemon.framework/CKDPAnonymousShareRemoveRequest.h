@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKDPAnonymousShareRemoveRequest : PBRequest <NSCopying>
+@interface CKDPAnonymousShareRemoveRequest : PBRequest
 {
     NSString *_anonymousShareTupleHash;
     NSData *_encryptedShareTuple;

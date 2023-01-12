@@ -6,9 +6,7 @@
 
 #import <UIKit/UIScreen.h>
 
-#import <IntentsUI/INUIImageLoaderDelegate-Protocol.h>
-
-@interface UIScreen (INUIImageLoaderDelegate) <INUIImageLoaderDelegate>
+@interface UIScreen (INUIImageLoaderDelegate)
 - (id)traitCollectionForImageLoader:(id)arg1;
 @end
 

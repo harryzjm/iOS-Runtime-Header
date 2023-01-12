@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSSPropertyValueArchiving-Protocol.h>
-
-@interface TSCHDeprecatedNumberFormat : NSObject <TSSPropertyValueArchiving>
+@interface TSCHDeprecatedNumberFormat : NSObject
 {
 }
 

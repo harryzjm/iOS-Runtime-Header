@@ -15,5 +15,6 @@
 - (UIPointerStyle *)styleForRegion:(UIPointerRegion *)arg1 forView:(UIView *)arg2;
 - (UIPointerRegion *)regionAtLocation:(struct CGPoint)arg1 forView:(UIView *)arg2;
 - (struct UIEdgeInsets)pointerInteractionHitTestInsetsForView:(UIView *)arg1;
+- (void)pointerWillExitRegion;
 @end
 

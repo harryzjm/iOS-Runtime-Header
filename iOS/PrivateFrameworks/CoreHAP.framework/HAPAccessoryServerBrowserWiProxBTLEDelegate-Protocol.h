@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HAPAccessoryServerBrowserWiProxBTLE, NSData, NSNumber, NSString, NSUUID;
+#import <CoreHAP/NSObject-Protocol.h>
 
-@protocol HAPAccessoryServerBrowserWiProxBTLEDelegate
-- (void)accessoryServerBrowserBTLE:(HAPAccessoryServerBrowserWiProxBTLE *)arg1 didDiscoverHAPPeripheral:(NSUUID *)arg2 accessoryName:(NSString *)arg3 pairingIdentifier:(NSString *)arg4 advertisementFormat:(unsigned long long)arg5 statusFlags:(NSNumber *)arg6 stateNumber:(NSNumber *)arg7 category:(NSNumber *)arg8 configurationNumber:(NSNumber *)arg9 setupHash:(NSData *)arg10 encryptedPayload:(NSData *)arg11 whbStableIdentifier:(NSString *)arg12;
+@class CBPeripheral, HAPAccessoryServerBrowserWiProxBTLE, HAPBLEPeripheral, NSUUID;
+
+@protocol HAPAccessoryServerBrowserWiProxBTLEDelegate <NSObject>
+- (void)accessoryServerBrowserBTLE:(HAPAccessoryServerBrowserWiProxBTLE *)arg1 didDiscoverHAPPeripheral:(HAPBLEPeripheral *)arg2;
+
+@optional
+- (CBPeripheral *)retrieveCBPeripheralWithUUID:(NSUUID *)arg1 blePeripheral:(HAPBLEPeripheral *)arg2;
 @end
 

@@ -7,6 +7,9 @@
 #import <HealthKit/HKVaccinationRecord.h>
 
 @interface HKVaccinationRecord (HealthUI)
+- (id)lotNumberItem;
+- (id)performerItem;
+- (id)displayItems;
 - (id)localizedStatusDisplayString;
 - (id)sortDateTitle;
 @end

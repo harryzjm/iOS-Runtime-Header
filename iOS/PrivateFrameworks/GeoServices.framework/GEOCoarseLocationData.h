@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)snappedLocationForLocation:(id)arg1;
+- (id)snappedLocationForLocation:(id)arg1 addLocationNoise:(_Bool)arg2;
 - (id)initWithFileURL:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2;
 - (id)init;
 

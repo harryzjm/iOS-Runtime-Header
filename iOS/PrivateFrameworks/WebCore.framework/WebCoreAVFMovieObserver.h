@@ -6,17 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVPlayerItemLegibleOutputPushDelegate-Protocol.h>
-#import <WebCore/AVPlayerItemMetadataCollectorPushDelegate-Protocol.h>
-#import <WebCore/AVPlayerItemMetadataOutputPushDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebCoreAVFMovieObserver : NSObject <AVPlayerItemLegibleOutputPushDelegate, AVPlayerItemMetadataOutputPushDelegate, AVPlayerItemMetadataCollectorPushDelegate>
+@interface WebCoreAVFMovieObserver : NSObject
 {
     struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC, WTF::EmptyCounter> m_player;
     int m_delayCallbacks;
+    struct RefPtr<WTF::WorkQueue, WTF::RawPtrTraits<WTF::WorkQueue>, WTF::DefaultRefDerefTraits<WTF::WorkQueue>> m_backgroundQueue;
 }
 
 - (id).cxx_construct;
@@ -26,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)outputSequenceWasFlushed:(id)arg1;
 - (void)legibleOutput:(id)arg1 didOutputAttributedStrings:(id)arg2 nativeSampleBuffers:(id)arg3 forItemTime:(CDStruct_198678f7)arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(int)arg4;
+- (void)chapterMetadataDidChange:(id)arg1;
 - (void)didEnd:(id)arg1;
 - (void)metadataLoaded;
 - (void)disconnect;

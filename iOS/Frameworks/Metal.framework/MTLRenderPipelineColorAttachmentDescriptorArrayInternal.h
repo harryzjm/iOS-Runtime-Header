@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLRenderPipelineColorAttachmentDescriptorArray.h"
+
 @class MTLRenderPipelineColorAttachmentDescriptorInternal;
 
 __attribute__((visibility("hidden")))
-@interface MTLRenderPipelineColorAttachmentDescriptorArrayInternal
+@interface MTLRenderPipelineColorAttachmentDescriptorArrayInternal : MTLRenderPipelineColorAttachmentDescriptorArray
 {
     MTLRenderPipelineColorAttachmentDescriptorInternal *_descriptors[8];
 }

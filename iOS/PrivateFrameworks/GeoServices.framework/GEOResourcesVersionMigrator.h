@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOActiveTileGroupMigrator-Protocol.h>
-
 @class GEOResourceManifestConfiguration, NSMutableArray, NSString, geo_isolater;
 
 __attribute__((visibility("hidden")))
-@interface GEOResourcesVersionMigrator : NSObject <GEOActiveTileGroupMigrator>
+@interface GEOResourcesVersionMigrator : NSObject
 {
     GEOResourceManifestConfiguration *_manifestConfiguration;
     geo_isolater *_isolater;

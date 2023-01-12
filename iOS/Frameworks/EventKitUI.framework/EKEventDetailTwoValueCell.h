@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EKEventDetailCell.h"
+
 @class UILabel;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDetailTwoValueCell
+@interface EKEventDetailTwoValueCell : EKEventDetailCell
 {
     int _style;
     UILabel *_titleView;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKit/UIGestureRecognizer.h>
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI22UIKitGestureRecognizer
+@interface _TtC7SwiftUI22UIKitGestureRecognizer : UIGestureRecognizer
 {
     MISSING_TYPE *eventBridge;
     MISSING_TYPE *initialScale;

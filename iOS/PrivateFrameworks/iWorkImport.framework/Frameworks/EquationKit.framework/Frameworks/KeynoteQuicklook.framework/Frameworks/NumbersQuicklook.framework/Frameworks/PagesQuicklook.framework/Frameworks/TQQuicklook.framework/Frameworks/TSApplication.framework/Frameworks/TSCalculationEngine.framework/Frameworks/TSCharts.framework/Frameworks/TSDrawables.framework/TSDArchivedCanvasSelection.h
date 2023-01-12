@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSDrawables/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSKSelection;
 
-@interface TSDArchivedCanvasSelection : TSPObject <TSKArchivedSelection>
+@interface TSDArchivedCanvasSelection : TSPObject
 {
     TSKSelection *_selection;
 }

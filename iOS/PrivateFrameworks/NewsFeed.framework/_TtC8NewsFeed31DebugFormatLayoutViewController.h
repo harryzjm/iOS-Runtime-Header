@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed31DebugFormatLayoutViewController : UIViewController
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *tableView;
     MISSING_TYPE *overlayView;
     MISSING_TYPE *tree;

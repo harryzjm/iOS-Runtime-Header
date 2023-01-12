@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthRecordsDaemon/HKHealthRecordsDaemonConnectionServerInterface-Protocol.h>
-
-@interface (null) (HealthRecordsDaemon) <HKHealthRecordsDaemonConnectionServerInterface>
+@interface (null) (HealthRecordsDaemon)
 - (void)remote_fetchEndpointForServiceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)connectionInvalidated;
 - (id)remoteInterface;

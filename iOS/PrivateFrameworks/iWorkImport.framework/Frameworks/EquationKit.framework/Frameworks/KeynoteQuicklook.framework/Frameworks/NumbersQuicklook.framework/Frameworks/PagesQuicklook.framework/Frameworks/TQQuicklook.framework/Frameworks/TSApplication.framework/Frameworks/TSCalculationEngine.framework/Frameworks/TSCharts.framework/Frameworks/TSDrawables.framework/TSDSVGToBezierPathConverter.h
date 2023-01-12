@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/NSXMLParserDelegate-Protocol.h>
-
 @class NSString, TSUBezierPath;
 
-@interface TSDSVGToBezierPathConverter : NSObject <NSXMLParserDelegate>
+@interface TSDSVGToBezierPathConverter : NSObject
 {
     TSUBezierPath *mFileBezierPath;
     NSString *mHiddenOnTag;

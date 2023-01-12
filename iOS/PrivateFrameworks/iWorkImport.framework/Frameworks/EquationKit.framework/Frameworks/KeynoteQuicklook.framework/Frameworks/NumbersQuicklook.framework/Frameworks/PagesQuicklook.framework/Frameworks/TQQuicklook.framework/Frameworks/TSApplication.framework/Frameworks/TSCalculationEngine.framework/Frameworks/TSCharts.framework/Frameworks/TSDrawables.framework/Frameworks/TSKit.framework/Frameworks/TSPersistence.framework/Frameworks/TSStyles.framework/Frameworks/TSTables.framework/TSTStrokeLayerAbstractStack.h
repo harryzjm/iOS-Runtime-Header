@@ -18,11 +18,12 @@
 - (id)portalledStrokeLayer;
 - (void)enumerateStrokesAndCapsInRange:(struct TSTSimpleRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStrokesAndCapsFrom:(unsigned int)arg1 to:(unsigned int)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateWidthsInRange:(struct TSTSimpleRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStrokesInRange:(struct TSTSimpleRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStrokesFrom:(unsigned int)arg1 to:(unsigned int)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)lookupStrokeAtIndex:(long long)arg1;
 - (unsigned long long)count;
-- (id)p_strokeLayerEnumeration;
+- (vector_7cb30fb3)p_strokeLayerVector;
 - (void)dealloc;
 - (id)init;
 

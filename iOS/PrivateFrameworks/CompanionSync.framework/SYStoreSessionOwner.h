@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CompanionSync/SYSessionDelegate-Protocol.h>
-
 @class NSDictionary, NSString, SYSession, SYStore;
 
 __attribute__((visibility("hidden")))
-@interface SYStoreSessionOwner : NSObject <SYSessionDelegate>
+@interface SYStoreSessionOwner : NSObject
 {
     NSDictionary *_context;
     NSDictionary *_idsOptions;

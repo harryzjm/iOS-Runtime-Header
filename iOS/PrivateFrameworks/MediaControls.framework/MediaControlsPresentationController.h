@@ -6,12 +6,10 @@
 
 #import <UIKit/UIPreviewPresentationController.h>
 
-#import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
-
 @class MTMaterialView, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsPresentationController : UIPreviewPresentationController <UIGestureRecognizerDelegate>
+@interface MediaControlsPresentationController : UIPreviewPresentationController
 {
     UIView *_presentingView;
     MTMaterialView *_materialView;

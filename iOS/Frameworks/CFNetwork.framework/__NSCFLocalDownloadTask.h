@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/NSURLSessionDownloadTaskSubclass-Protocol.h>
-#import <CFNetwork/__NSCFLocalDownloadFileOpener-Protocol.h>
-
 @class NSDictionary, NSObject, NSString, __NSCFLocalDownloadFile;
 @protocol OS_dispatch_data;
 
-@interface __NSCFLocalDownloadTask <NSURLSessionDownloadTaskSubclass, __NSCFLocalDownloadFileOpener>
+@interface __NSCFLocalDownloadTask
 {
     CDUnknownBlockType _fileCompletion;
     __NSCFLocalDownloadFile *_downloadFile;

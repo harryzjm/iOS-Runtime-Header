@@ -20,7 +20,9 @@
     MISSING_TYPE *extensionManager;
     MISSING_TYPE *statefulStore;
     MISSING_TYPE *statefulStoreUI;
+    MISSING_TYPE *placeholderStoreUI;
     MISSING_TYPE *logger;
+    MISSING_TYPE *widgetEnvironmentModificationContext;
 }
 
 @end

@@ -7,11 +7,14 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (IC)
++ (id)ic_shortNameFromGivenName:(id)arg1 familyName:(id)arg2;
 + (id)ic_newURLForContentID:(id)arg1 percentEscaped:(_Bool)arg2;
 + (_Bool)ic_isCharacterInlineAttachmentPrefix:(unsigned short)arg1;
 + (id)ic_NSAttachmentCharacterString;
+- (_Bool)ic_isCaseInsensitiveEqualToString:(id)arg1;
 - (id)ic_dataValue;
 @property(readonly, copy, nonatomic) NSString *ic_mentionString;
+- (id)ic_stringWithoutSuffix:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ic_hashtagDisplayText;
 @property(readonly, copy, nonatomic) NSString *ic_withoutHashtagPrefix;
 @property(readonly, copy, nonatomic) NSString *ic_withHashtagPrefix;
@@ -24,6 +27,7 @@
 @property(readonly, nonatomic) unsigned long long ic_lengthOfLongestLine;
 - (struct _NSRange)ic_sentenceRangeForRange:(struct _NSRange)arg1;
 - (struct _NSRange)ic_paragraphRangeForRange:(struct _NSRange)arg1 contentEnd:(unsigned long long *)arg2;
+- (id)ic_stringByReplacingLeadingFullWidthHashSignIfPossible;
 - (id)ic_stringByReplacingCharactersInStringMap:(id)arg1;
 - (id)ic_stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
 - (id)ic_stringByReplacingNewlineCharactersWithWhiteSpace;
@@ -59,8 +63,5 @@
 - (id)_HTMLTagNameClosing:(_Bool *)arg1;
 - (struct _NSRange)_HTMLRangeOfLastTagBeforeIndex:(unsigned long long)arg1;
 - (unsigned long long)ic_HTMLInsertionPoint;
-- (id)dictionaryFromQueryComponents;
-- (id)stringByEncodingURLFormat;
-- (id)stringByDecodingURLFormat;
 @end
 

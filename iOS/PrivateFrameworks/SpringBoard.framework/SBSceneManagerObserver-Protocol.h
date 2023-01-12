@@ -6,14 +6,14 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBApplicationSceneHandle, SBLayoutState, SBSceneManager;
+@class SBApplicationSceneHandle, SBSceneManager;
 
 @protocol SBSceneManagerObserver <NSObject>
 
 @optional
-- (void)sceneManager:(SBSceneManager *)arg1 didChangeFromLayoutState:(SBLayoutState *)arg2 toLayoutState:(SBLayoutState *)arg3;
 - (void)sceneManagerDidInvalidate:(SBSceneManager *)arg1;
 - (void)sceneManager:(SBSceneManager *)arg1 didRemoveExternalForegroundApplicationSceneHandle:(SBApplicationSceneHandle *)arg2;
+- (void)sceneManager:(SBSceneManager *)arg1 willRemoveExternalForegroundApplicationSceneHandle:(SBApplicationSceneHandle *)arg2 forDestroyEvent:(_Bool)arg3;
 - (void)sceneManager:(SBSceneManager *)arg1 didAddExternalForegroundApplicationSceneHandle:(SBApplicationSceneHandle *)arg2;
 @end
 

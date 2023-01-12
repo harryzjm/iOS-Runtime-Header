@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISettingsKeyObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UICubicPolyTangent : NSObject <_UISettingsKeyObserver>
+@interface _UICubicPolyTangent : NSObject
 {
     double _initialLinearGain;
     double _parabolicGain;

@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNUIIDSHandle-Protocol.h>
-
 @class CNContactProperty, CNUIContactPropertyIDSHandle, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNUIPropertyGroupItemIDSHandle : NSObject <CNUIIDSHandle>
+@interface CNUIPropertyGroupItemIDSHandle : NSObject
 {
     CNContactProperty *_contactProperty;
     CNUIContactPropertyIDSHandle *_contactPropertyHandle;
 }
 
 + (_Bool)supportsPropertyGroupItem:(id)arg1;
++ (_Bool)isSupportedGroupItem:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CNUIContactPropertyIDSHandle *contactPropertyHandle; // @synthesize contactPropertyHandle=_contactPropertyHandle;
 @property(readonly, copy, nonatomic) CNContactProperty *contactProperty; // @synthesize contactProperty=_contactProperty;

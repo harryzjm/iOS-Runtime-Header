@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
     _Bool didTryToDecodeTeethSegmentationMatte;
     AVSemanticSegmentationMatte *glassesSegmentationMatte;
     _Bool didTryToDecodeGlassesSegmentationMatte;
-    _Bool isRawPhoto;
     AVCaptureBracketedStillImageSettings *bracketSettings;
     unsigned long long sequenceCount;
     unsigned long long photoCount;

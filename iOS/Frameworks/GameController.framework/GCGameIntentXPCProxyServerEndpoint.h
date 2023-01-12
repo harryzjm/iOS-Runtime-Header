@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCGameIntentXPCProxyRemoteServerEndpointInterface-Protocol.h>
-#import <GameController/_GCIPCEndpointServer-Protocol.h>
-
 @class NSString;
 @protocol GCGameIntentXPCProxyRemoteClientEndpointInterface, GCGameIntentXPCProxyServerEndpointDelegate, NSObject><NSCopying><NSSecureCoding, _GCControllerComponentDescription, _GCIPCEndpointConnection;
 
 __attribute__((visibility("hidden")))
-@interface GCGameIntentXPCProxyServerEndpoint : NSObject <_GCIPCEndpointServer, GCGameIntentXPCProxyRemoteServerEndpointInterface>
+@interface GCGameIntentXPCProxyServerEndpoint : NSObject
 {
     id <GCGameIntentXPCProxyRemoteClientEndpointInterface> _clientEndpoint;
     id <_GCIPCEndpointConnection> _connection;

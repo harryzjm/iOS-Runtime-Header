@@ -4,9 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class NSArray, NSURL;
 
 @protocol ASDAppStoreServiceProtocol
+- (void)removeBadgeMetricsForBadgeIDs:(NSArray *)arg1 replyHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)removeBadgeIDs:(NSArray *)arg1 replyHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)removeAllBadgeIDsWithReplyHandler:(void (^)(_Bool, NSError *))arg1;
+- (void)badgeIDCountWithReplyHandler:(void (^)(long long, NSError *))arg1;
+- (void)allBadgeMetricsWithReplyHandler:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)allBadgeIDsWithReplyHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)addBadgeIDs:(NSArray *)arg1 replyHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)launchAppStoreWithURL:(NSURL *)arg1 withReplyHandler:(void (^)(long long, NSError *))arg2;
 @end
 

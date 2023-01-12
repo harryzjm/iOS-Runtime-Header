@@ -5,12 +5,11 @@
 //
 
 #import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
-#import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 
 @class SBKeyboardHomeAffordanceAssertion;
 @protocol SBBarSwipeAffordanceControlling;
 
-@protocol SBBarSwipeAffordanceControllingDelegate <SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate>
+@protocol SBBarSwipeAffordanceControllingDelegate <SBFZStackParticipantDelegate>
 
 @optional
 - (SBKeyboardHomeAffordanceAssertion *)keyboardHomeAffordanceAssertionForBarSwipeAffordanceControlling:(id <SBBarSwipeAffordanceControlling>)arg1;

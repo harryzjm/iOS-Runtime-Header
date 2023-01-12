@@ -6,14 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/NSCoding-Protocol.h>
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-#import <AssetCatalogFoundation/NSFastEnumeration-Protocol.h>
-
 @class NSArray, NSDictionary, NSString;
 
-@interface IBICSlot : NSObject <NSFastEnumeration, NSCopying, NSCoding, IBBinaryArchiving>
+@interface IBICSlot : NSObject
 {
     id *_componentsByID;
     id *_denseComponents;

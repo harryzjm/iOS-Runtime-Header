@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface OADBlipEffect : NSObject <NSCopying>
+@interface OADBlipEffect : NSObject
 {
     int mType;
 }

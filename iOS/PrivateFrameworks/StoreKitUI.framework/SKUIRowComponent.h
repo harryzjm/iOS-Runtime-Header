@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIPageComponent.h"
+
 @class NSArray, SKUIRowViewElement, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRowComponent
+@interface SKUIRowComponent : SKUIPageComponent
 {
     UIColor *_backgroundColor;
     NSArray *_childComponents;

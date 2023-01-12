@@ -7,17 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UICollectionViewLayoutOrthogonalScrollingSectionState-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewLayoutOrthogonalScrollingSectionState : NSObject <_UICollectionViewLayoutOrthogonalScrollingSectionState, NSCopying>
+@interface _UICollectionViewLayoutOrthogonalScrollingSectionState : NSObject <NSCopying>
 {
     unsigned long long _orthogonalLayoutAxis;
     unsigned long long _layoutAxis;
     double _pagingDimension;
     double _groupDimension;
+    double _interPageDimension;
     struct CGPoint _orthogonalContentOffset;
     struct CGSize _contentSize;
     struct NSDirectionalEdgeInsets _contentInsets;
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct CGRect layoutFrame; // @synthesize layoutFrame=_layoutFrame;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets environmentInsets; // @synthesize environmentInsets=_environmentInsets;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
+@property(readonly, nonatomic) double interPageDimension; // @synthesize interPageDimension=_interPageDimension;
 @property(readonly, nonatomic) double groupDimension; // @synthesize groupDimension=_groupDimension;
 @property(readonly, nonatomic) double pagingDimension; // @synthesize pagingDimension=_pagingDimension;
 @property(readonly, nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;

@@ -4,24 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/NSObject-Protocol.h>
+#import <AVConference/VCHardwareSettingsProtocol-Protocol.h>
 
-@class NSArray;
-
-@protocol VCHardwareSettingsEmbeddedProtocol <NSObject>
-@property(readonly, nonatomic) NSArray *supportedVideoPayloads;
-@property(readonly, nonatomic) _Bool isSpatialAudioSupported;
+@protocol VCHardwareSettingsEmbeddedProtocol <VCHardwareSettingsProtocol>
 @property(readonly, nonatomic) _Bool isHEVC444DecodeSupported;
-@property(readonly, nonatomic) _Bool isPixelFormatAvailable;
 @property(readonly, nonatomic) _Bool isSecondDisplaySupportEnabled;
-@property(readonly, nonatomic) _Bool supportsHEIFEncoding;
 @property(readonly, nonatomic) _Bool hasAppleNeuralEngine;
 @property(readonly, nonatomic) _Bool isDeviceLargeScreen;
 @property(readonly, nonatomic) _Bool supportsMultiway720pStream;
-@property(readonly, nonatomic) unsigned int maxActiveVideoDecoders;
-@property(readonly, nonatomic) unsigned int maxActiveVideoEncoders;
-@property(readonly, nonatomic) unsigned int maxDisplayRefreshRate;
-@property(readonly, nonatomic) _Bool useSoftFramerateSwitching;
 @property(readonly, nonatomic) long long videoEncoderType;
 @property(readonly, nonatomic) long long chipId;
 @property(readonly, nonatomic) long long deviceClass;

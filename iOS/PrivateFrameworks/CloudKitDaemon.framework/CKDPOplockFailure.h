@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecord;
 
-@interface CKDPOplockFailure : PBCodable <NSCopying>
+@interface CKDPOplockFailure : PBCodable
 {
     CKDPRecord *_recordForOplockFailure;
 }

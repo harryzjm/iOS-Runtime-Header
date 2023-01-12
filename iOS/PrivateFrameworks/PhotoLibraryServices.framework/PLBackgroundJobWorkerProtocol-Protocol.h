@@ -6,18 +6,19 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, PLPhotoLibrary, PLPhotoLibraryBundle;
+@class PLBackgroundJobWorkerPendingWorkItems, PLDatabaseContext, PLPhotoLibrary;
 @protocol NSCopying;
 
 @protocol PLBackgroundJobWorkerProtocol <NSObject>
 + (_Bool)supportsWellKnownPhotoLibraryIdentifier:(long long)arg1;
-+ (id)workerWithLibraryBundle:(PLPhotoLibraryBundle *)arg1;
 - (void)performWorkOnItem:(id <NSCopying>)arg1 inLibrary:(PLPhotoLibrary *)arg2 completion:(void (^)(NSError *))arg3;
-- (NSArray *)workItemsNeedingProcessingInLibrary:(PLPhotoLibrary *)arg1;
+- (PLBackgroundJobWorkerPendingWorkItems *)workItemsNeedingProcessingInLibrary:(PLPhotoLibrary *)arg1;
 
 @optional
-+ (void)workerDidFinishWorkingOnItemsInLibrary:(PLPhotoLibrary *)arg1;
-+ (void)workerWillStartWorkingOnItemsInLibrary:(PLPhotoLibrary *)arg1;
++ (_Bool)usesMultipleLibrariesConcurrently;
+- (_Bool)hasEnoughDiskSpaceToContinue:(void (^)(NSError *))arg1;
+- (void)workerDidFinishWithDatabaseContext:(PLDatabaseContext *)arg1;
+- (PLPhotoLibrary *)photoLibraryWithDatabaseContext:(PLDatabaseContext *)arg1;
 - (void)stopWorkingOnItem:(id <NSCopying>)arg1;
 - (_Bool)isInterruptible;
 @end

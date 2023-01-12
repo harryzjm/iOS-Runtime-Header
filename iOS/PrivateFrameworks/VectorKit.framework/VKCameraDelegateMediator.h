@@ -6,21 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKMapViewCameraDelegate-Protocol.h>
-
 @class NSString;
 @protocol VKMapViewCameraDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCameraDelegateMediator : NSObject <VKMapViewCameraDelegate>
+@interface VKCameraDelegateMediator : NSObject
 {
     id <VKMapViewCameraDelegate> _cameraDelegate;
     _Bool _isChangingMapType;
     unsigned long long _regionChangeCount;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isChangingMapType; // @synthesize isChangingMapType=_isChangingMapType;
-@property(nonatomic) id <VKMapViewCameraDelegate> cameraDelegate; // @synthesize cameraDelegate=_cameraDelegate;
+@property(nonatomic) __weak id <VKMapViewCameraDelegate> cameraDelegate; // @synthesize cameraDelegate=_cameraDelegate;
 - (void)mapLayerWasUnableToAnimate;
 - (void)mapLayerWillAnimateToLocation:(CDStruct_c3b9c2ee)arg1;
 - (void)mapLayerNavigationCameraDidReturnToDefaultZoom;

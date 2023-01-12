@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSError *_error;
 }
 
-+ (id)hybridIteratorForItem:(id)arg1 provider:(id)arg2;
++ (id)hybridIteratorForItem:(id)arg1 domain:(id)arg2 enforceFPItem:(_Bool)arg3;
 + (id)iteratorForLocator:(id)arg1 wantsDisk:(_Bool)arg2 provider:(id)arg3;
 + (id)iteratorForLocator:(id)arg1 provider:(id)arg2;
 + (id)iteratorForLocator:(id)arg1 manager:(id)arg2;

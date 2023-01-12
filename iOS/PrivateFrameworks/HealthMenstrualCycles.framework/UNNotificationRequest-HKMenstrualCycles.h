@@ -8,7 +8,7 @@
 
 @interface UNNotificationRequest (HKMenstrualCycles)
 + (id)_hkmc_notificationRequestWithContent:(id)arg1;
-+ (id)_hkmc_notificationRequestWithCategory:(id)arg1 body:(id)arg2 title:(id)arg3 expirationDate:(id)arg4;
++ (id)_hkmc_notificationRequestWithCategory:(id)arg1 body:(id)arg2 title:(id)arg3 expirationDate:(id)arg4 fertileWindowEndDayIndex:(long long)arg5;
 + (id)_hkmc_requestForCategoryIdentifier:(id)arg1 startDate:(id)arg2 fertileWindowEndDayIndex:(long long)arg3;
 + (id)hkmc_requestForCategoryIdentifier:(id)arg1 fertileWindowEndDayIndex:(long long)arg2;
 + (id)hkmc_requestForCategoryIdentifier:(id)arg1;

@@ -15,11 +15,13 @@
     long long _verticalSizeClass;
     IBAccessibilityOverrides *_accessibilityOverrides;
     NSValue *_additionalSafeAreaEdgeInsets;
+    long long _keyboardType;
     struct CGSize _screenSize;
 }
 
 + (_Bool)canBeRootOfMetricChain;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
 @property(readonly, nonatomic) NSValue *additionalSafeAreaEdgeInsets; // @synthesize additionalSafeAreaEdgeInsets=_additionalSafeAreaEdgeInsets;
 @property(readonly, nonatomic) IBAccessibilityOverrides *accessibilityOverrides; // @synthesize accessibilityOverrides=_accessibilityOverrides;
 @property(readonly, nonatomic) long long verticalSizeClass; // @synthesize verticalSizeClass=_verticalSizeClass;
@@ -36,7 +38,7 @@
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)singleLinkDescription;
-- (id)initWithScreenSize:(struct CGSize)arg1 idiom:(long long)arg2 orientation:(long long)arg3 interfaceStyle:(long long)arg4 horizontalSizeClass:(long long)arg5 verticalSizeClass:(long long)arg6 accessibilityOverrides:(id)arg7 additionalSafeAreaEdgeInsets:(id)arg8;
+- (id)initWithScreenSize:(struct CGSize)arg1 idiom:(long long)arg2 orientation:(long long)arg3 interfaceStyle:(long long)arg4 keyboardType:(long long)arg5 horizontalSizeClass:(long long)arg6 verticalSizeClass:(long long)arg7 accessibilityOverrides:(id)arg8 additionalSafeAreaEdgeInsets:(id)arg9;
 - (id)initWithScreenSize:(struct CGSize)arg1 idiom:(long long)arg2 orientation:(long long)arg3 traitCollection:(id)arg4 accessibilityOverrides:(id)arg5 additionalSafeAreaEdgeInsets:(id)arg6;
 - (id)createWindowForViewController:(id)arg1 initialSize:(id)arg2 inContext:(id)arg3;
 

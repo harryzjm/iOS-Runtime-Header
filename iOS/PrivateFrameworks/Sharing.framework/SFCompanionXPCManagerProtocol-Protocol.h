@@ -6,12 +6,11 @@
 
 #import <Sharing/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, SFRemoteHotspotCellularBearerParams;
+@class NSDictionary, NSString, SFRemoteHotspotTrafficFilterParams;
 @protocol SFCompanionServiceManagerClient;
 
 @protocol SFCompanionXPCManagerProtocol <NSObject>
-- (void)removeDedicatedCellularBearerWithCompletion:(void (^)(NSError *))arg1;
-- (void)addDedicatedCellularBearer:(SFRemoteHotspotCellularBearerParams *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)updateLowLatencyFilter:(SFRemoteHotspotTrafficFilterParams *)arg1 isAddFilter:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)appleAccountSignedOut;
 - (void)appleAccountSignedIn;
 - (void)createUnlockManagerWithReply:(void (^)(id <SFUnlockProtocol>, NSError *))arg1;

@@ -6,17 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-#import <TSCharts/TSCHParagraphStyleOwner-Protocol.h>
-#import <TSCharts/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
-#import <TSCharts/TSCHStyleOwnerCollaborationSupport-Protocol.h>
-#import <TSCharts/TSCHStyleOwning-Protocol.h>
-#import <TSCharts/TSDMixing-Protocol.h>
-#import <TSCharts/TSKTransformableObject-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString, TSCHChartDrawableInfo, TSCHChartLayoutCache, TSCHChartMediator, TSCHChartModel, TSCHChartNonStyle, TSCHChartStyle, TSCHChartStylePreset, TSCHChartStyleState, TSCHChartType, TSCHLegendModel, TSCHLegendNonStyle, TSCHLegendStyle, TSCHReferenceLineStyle, TSDInfoGeometry, TSKCustomFormatList, TSKDocumentRoot, TSPLazyReference, TSSStylesheet;
 
-@interface TSCHChartInfo : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHStyleOwning, TSCHParagraphStyleOwner, TSDMixing, NSCopying, TSKTransformableObject>
+@interface TSCHChartInfo : NSObject
 {
     TSCHChartDrawableInfo *_drawableInfo;
     TSCHChartType *_chartType;

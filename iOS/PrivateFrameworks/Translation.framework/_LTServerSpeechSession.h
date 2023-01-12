@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/_LTSpeechTranslationDelegate-Protocol.h>
-
 @class NSError, NSString, NSUUID, _LTHybridEndpointer, _LTLanguageDetector, _LTSpeechActivityDetector, _LTSpeechDataQueue, _LTTranslationContext;
 @protocol OS_dispatch_queue, _LTSpeechTranslationDelegate, _LTTranslationEngine;
 
 __attribute__((visibility("hidden")))
-@interface _LTServerSpeechSession : NSObject <_LTSpeechTranslationDelegate>
+@interface _LTServerSpeechSession : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _expectFinalLidResult;

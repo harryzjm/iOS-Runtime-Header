@@ -12,7 +12,7 @@
 
 @protocol PUPickerFilter <NSObject, NSCopying, NSSecureCoding>
 @property(readonly, nonatomic) _Bool allowsAlbums;
-@property(readonly, nonatomic) _Bool allowsSearch;
+@property(readonly, nonatomic) _Bool allowsSearchSuggestions;
 @property(readonly, nonatomic) _Bool isValidFilter;
 - (unsigned long long)generatedRequiredAssetTypes;
 - (unsigned long long)generatedPossibleAssetTypes;

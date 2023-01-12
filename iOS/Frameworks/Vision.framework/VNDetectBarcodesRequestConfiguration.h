@@ -10,11 +10,13 @@ __attribute__((visibility("hidden")))
 @interface VNDetectBarcodesRequestConfiguration
 {
     _Bool _stopAtFirstPyramidWith2DCode;
+    _Bool _useMLDetector;
     NSArray *_symbologies;
     NSString *_locateMode;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useMLDetector; // @synthesize useMLDetector=_useMLDetector;
 @property(nonatomic) _Bool stopAtFirstPyramidWith2DCode; // @synthesize stopAtFirstPyramidWith2DCode=_stopAtFirstPyramidWith2DCode;
 @property(copy, nonatomic) NSString *locateMode; // @synthesize locateMode=_locateMode;
 @property(copy, nonatomic) NSArray *symbologies; // @synthesize symbologies=_symbologies;

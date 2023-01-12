@@ -9,6 +9,8 @@
 @class AFSpeechCorrectionInfo, CESRAssetConfig, CESRSpeechParameters, NSArray, NSData, NSDictionary, NSSet, NSString, NSURL;
 
 @protocol CESRSpeechService <NSObject>
+- (oneway void)resumeRecognitionWithPrefixText:(NSString *)arg1 postfixText:(NSString *)arg2 selectedText:(NSString *)arg3;
+- (oneway void)pauseRecognition;
 - (oneway void)invalidateUaapLm;
 - (oneway void)deleteAllDESRecordsForDictationPersonalizationWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)runEvaluationWithDESRecordDatas:(NSDictionary *)arg1 language:(NSString *)arg2 recipe:(NSDictionary *)arg3 attachments:(NSArray *)arg4 fidesPersonalizedLMPath:(NSString *)arg5 fidesPersonalizedLMTrainingAsset:(NSString *)arg6 scrubResult:(_Bool)arg7 completion:(void (^)(NSDictionary *, NSError *))arg8;
@@ -20,11 +22,9 @@
 - (oneway void)setAssetsPurgeabilityExceptLanguages:(NSSet *)arg1 assetType:(unsigned long long)arg2;
 - (oneway void)purgeInstalledAssetsExceptLanguages:(NSSet *)arg1 assetType:(unsigned long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (oneway void)purgeInstalledAssetsExceptLanguages:(NSSet *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
-- (oneway void)getInstalledAssetSizeWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)readProfileAndUserDataWithLanguage:(NSString *)arg1 allowOverride:(_Bool)arg2 completion:(void (^)(NSData *, NSString *))arg3;
 - (oneway void)runCorrectedTextEvaluationWithAudioDatas:(NSDictionary *)arg1 recordDatas:(NSDictionary *)arg2 language:(NSString *)arg3 samplingRate:(unsigned long long)arg4 caseSensitive:(_Bool)arg5 skipLME:(_Bool)arg6 wordSenseAccessListSet:(NSSet *)arg7 completion:(void (^)(NSDictionary *, NSError *))arg8;
 - (oneway void)runAdaptationRecipeEvaluation:(NSDictionary *)arg1 recordData:(NSData *)arg2 attachments:(NSArray *)arg3 completion:(void (^)(NSDictionary *, NSData *, NSError *))arg4;
-- (oneway void)fetchUserDataForLanguage:(NSString *)arg1 completion:(void (^)(NSData *))arg2;
 - (oneway void)fetchModelPropertiesForAssetConfig:(CESRAssetConfig *)arg1 completion:(void (^)(CESRModelProperties *, NSError *))arg2;
 - (oneway void)fetchAssetsForAssetConfig:(CESRAssetConfig *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)fetchAssetsForLanguage:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

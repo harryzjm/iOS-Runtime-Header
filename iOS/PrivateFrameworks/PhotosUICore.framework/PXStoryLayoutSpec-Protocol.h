@@ -7,6 +7,9 @@
 @class NSDictionary, NSShadow, PXExploreLayoutMetrics, PXStoryChromeButtonSpec, UIColor;
 
 @protocol PXStoryLayoutSpec
+@property(readonly, nonatomic) double bottomTitleContentOffset;
+@property(readonly, nonatomic) double distanceBetweenChapterTitleBaselineAndBottomWithChrome;
+@property(readonly, nonatomic) double distanceBetweenChapterTitleBaselineAndBottomWithoutChrome;
 @property(readonly, nonatomic) double distanceBetweenBufferingIndicatorCenterAndBottom;
 @property(readonly, nonatomic) struct CGSize bufferingIndicatorSize;
 @property(readonly, nonatomic) struct CGSize scrubberCurrentAssetSize;
@@ -22,6 +25,13 @@
 @property(readonly, nonatomic) _Bool styleSwitcherShowsRestartButton;
 @property(readonly, nonatomic) double styleSwitcherChromeButtonHorizontalMargin;
 @property(readonly, nonatomic) PXStoryChromeButtonSpec *styleSwitcherChromeButtonSpec;
+@property(readonly, nonatomic) _Bool thumbnailMenuPrefersFeatureLessActionDisambiguationSubmenu;
+@property(readonly, nonatomic) _Bool thumbnailMenuIncludesFavoriteAction;
+@property(readonly, nonatomic) _Bool thumbnailChromeShowsFavoriteButton;
+@property(readonly, nonatomic) _Bool thumbnailChromeShowsActionMenuButton;
+@property(readonly, nonatomic) struct CGSize thumbnailPlayButtonPadding;
+@property(readonly, nonatomic) _Bool thumbnailChromeShowsPlayButton;
+@property(readonly, nonatomic) PXStoryChromeButtonSpec *thumbnailChromePlayButtonSpec;
 @property(readonly, nonatomic) PXStoryChromeButtonSpec *thumbnailChromeButtonSpec;
 @property(readonly, nonatomic) double thumbnailChromeButtonSpacing;
 @property(readonly, nonatomic) struct CGSize thumbnailChromePadding;

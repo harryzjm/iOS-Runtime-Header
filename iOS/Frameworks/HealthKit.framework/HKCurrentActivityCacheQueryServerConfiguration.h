@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class NSDateComponents;
 
 __attribute__((visibility("hidden")))
-@interface HKCurrentActivityCacheQueryServerConfiguration
+@interface HKCurrentActivityCacheQueryServerConfiguration : HKQueryServerConfiguration
 {
     NSDateComponents *_statisticsIntervalComponents;
 }

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "COMeshResponse.h"
+
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface COCapabilityReadResponse
+@interface COCapabilityReadResponse : COMeshResponse
 {
     NSSet *_capabilities;
 }

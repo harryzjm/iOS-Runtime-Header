@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CorePDF/CPDisposable-Protocol.h>
-#import <CorePDF/CPGraphicUser-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CPTable <CPDisposable, CPGraphicUser>
+@interface CPTable
 {
     struct CGRect tableBounds;
     unsigned int rowCount;

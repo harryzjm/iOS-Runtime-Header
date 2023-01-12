@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDragAnimating-Protocol.h>
-
 @class NSMutableArray, NSString, UIDragItem;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewDropAnimation : NSObject <UIDragAnimating>
+@interface _UITableViewDropAnimation : NSObject
 {
     _Bool _didBeginAnimation;
     UIDragItem *_dragItem;

@@ -6,11 +6,9 @@
 
 #import <UIKit/_UILegibilitySettings.h>
 
-#import <SpringBoardFoundation/BSDescriptionProviding-Protocol.h>
-
 @class NSString;
 
-@interface _UILegibilitySettings (SpringBoard) <BSDescriptionProviding>
+@interface _UILegibilitySettings (SpringBoard)
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDRap : PBCodable <NSCopying>
+@interface GEOPDRap : PBCodable
 {
     PBUnknownFields *_unknownFields;
     int _placecardRapButtonType;

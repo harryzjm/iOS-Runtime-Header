@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, VUIAppContext;
+@class NSArray, NSDate, NSDictionary, VUIActionPlayParams, VUIAppContext;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionPlay
@@ -15,23 +15,27 @@ __attribute__((visibility("hidden")))
     VUIAppContext *_appContext;
     NSDate *_userPlaybackInitiationDate;
     NSDate *_openURLCompletionDate;
+    VUIActionPlayParams *_actionPlayParams;
 }
 
++ (id)_hlsURLUpdatedWithBingeWatchingParamFromURL:(id)arg1;
 + (void)_presentPlaybackWithMediaInfo:(id)arg1 extrasInfo:(id)arg2 allowsCellular:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)_playMediaInfo:(id)arg1 watchType:(long long)arg2 extrasInfo:(id)arg3 isRentAndWatchNow:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)playMediaInfo:(id)arg1 watchType:(long long)arg2 isRentAndWatchNow:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)playMediaInfo:(id)arg1 watchType:(long long)arg2 isRentAndWatchNow:(_Bool)arg3;
 + (void)_playPlayables:(id)arg1 appContext:(id)arg2 watchType:(long long)arg3 isUpNextPlayback:(_Bool)arg4 userPlaybackInitiationDate:(id)arg5 openURLCompletionDate:(id)arg6;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isUpNextPlayback) _Bool upNextPlayback; // @synthesize upNextPlayback=_upNextPlayback;
+@property(retain, nonatomic) VUIActionPlayParams *actionPlayParams; // @synthesize actionPlayParams=_actionPlayParams;
 @property(retain, nonatomic) NSDate *openURLCompletionDate; // @synthesize openURLCompletionDate=_openURLCompletionDate;
 @property(retain, nonatomic) NSDate *userPlaybackInitiationDate; // @synthesize userPlaybackInitiationDate=_userPlaybackInitiationDate;
-@property(nonatomic, getter=isUpNextPlayback) _Bool upNextPlayback; // @synthesize upNextPlayback=_upNextPlayback;
 @property(nonatomic) __weak VUIAppContext *appContext; // @synthesize appContext=_appContext;
 @property(retain, nonatomic) NSArray *videosPlayables; // @synthesize videosPlayables=_videosPlayables;
 @property(retain, nonatomic) NSDictionary *contextData; // @synthesize contextData=_contextData;
 - (_Bool)isAccountRequired;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithContextData:(id)arg1 appContext:(id)arg2;
+- (id)initWithMediaInfo:(id)arg1 watchType:(long long)arg2 isRentAndWatchNow:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

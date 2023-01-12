@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSIDSServiceFactoryProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSIDSServiceFactory : NSObject <BCSIDSServiceFactoryProtocol>
+@interface BCSIDSServiceFactory : NSObject
 {
 }
 

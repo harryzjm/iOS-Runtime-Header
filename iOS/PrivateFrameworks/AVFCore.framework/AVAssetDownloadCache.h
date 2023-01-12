@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVAssetCache.h"
+
 @class AVAssetDownloadCacheInternal;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetDownloadCache
+@interface AVAssetDownloadCache : AVAssetCache
 {
     AVAssetDownloadCacheInternal *_internal;
 }

@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 + (_Bool)handlesUrl:(id)arg1 result:(struct __DDResult *)arg2;
 - (void).cxx_destruct;
 - (id)menuHeaderView;
+- (_Bool)menuHasHeaderView;
+- (id)menuHeaderViewController;
 - (_Bool)prefersActionMenuStyle;
 - (struct CGSize)suggestedContentSize;
 - (id)menuActions;

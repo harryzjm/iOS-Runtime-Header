@@ -7,10 +7,9 @@
 #import <EventKit/EKCalendarEventInvitationNotification.h>
 
 @interface EKCalendarEventInvitationNotification (CUIKDescription)
-- (id)_attachmentString;
+- (id)_recurrenceChangedString;
 - (id)_locationString:(unsigned long long)arg1;
 - (id)_dateString:(unsigned long long)arg1;
-- (id)_errorString:(unsigned long long)arg1;
 - (id)_attendeeReplyStringWithOptions:(unsigned long long)arg1 descriptions:(id)arg2;
 - (id)_attendeeString:(unsigned long long)arg1;
 - (id)_organizerString:(unsigned long long)arg1;

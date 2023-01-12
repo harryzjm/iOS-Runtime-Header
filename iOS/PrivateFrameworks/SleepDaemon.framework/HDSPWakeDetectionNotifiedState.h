@@ -10,10 +10,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)stateName;
-- (id)determineNextState;
+- (void)stateDidExpireWithContext:(id)arg1;
+- (id)nextStateWithContext:(id *)arg1;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
-- (id)determineExpirationDateForCurrentDate:(id)arg1;
-- (void)willEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (id)expirationDate;
 
 @end
 

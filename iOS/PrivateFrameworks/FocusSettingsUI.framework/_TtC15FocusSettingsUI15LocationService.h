@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FocusSettingsUI/CLLocationManagerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC15FocusSettingsUI15LocationService : NSObject <CLLocationManagerDelegate>
+@interface _TtC15FocusSettingsUI15LocationService : NSObject
 {
     MISSING_TYPE *_queryFragment;
     MISSING_TYPE *_status;

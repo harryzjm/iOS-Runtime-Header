@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <CoreKnowledge/CKVDatabaseValue-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (CKVDatabaseValue) <CKVDatabaseValue>
+@interface NSNumber (CKVDatabaseValue)
 - (long long)databaseValue_integerRepresentation;
 - (double)databaseValue_doubleRepresentation;
 - (long long)databaseValue_type;

@@ -6,11 +6,9 @@
 
 #import <UIKit/UITapGestureRecognizer.h>
 
-#import <AnnotationKit/AKPenDetectionGestureRecognizerProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AKTapGestureRecognizer : UITapGestureRecognizer <AKPenDetectionGestureRecognizerProtocol>
+@interface AKTapGestureRecognizer : UITapGestureRecognizer
 {
     _Bool _penGestureDetected;
 }

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSMutableDictionary.h>
 
-#import <Photos/PHMutableFetchDictionaryAccessing-Protocol.h>
-
 @class NSString;
 
-@interface NSMutableDictionary (PHMutableFetchDictionaryAccessing) <PHMutableFetchDictionaryAccessing>
+@interface NSMutableDictionary (PHMutableFetchDictionaryAccessing)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

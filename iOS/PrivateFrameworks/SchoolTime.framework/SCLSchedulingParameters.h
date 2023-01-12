@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SchoolTime/NSCopying-Protocol.h>
-#import <SchoolTime/SCLSchedulingParameters-Protocol.h>
-
 @class NSCalendar, NSDate, NSString, SCLScheduleSettings;
 
 __attribute__((visibility("hidden")))
-@interface SCLSchedulingParameters : NSObject <SCLSchedulingParameters, NSCopying>
+@interface SCLSchedulingParameters : NSObject
 {
     _Bool _suppressed;
     NSCalendar *_calendar;

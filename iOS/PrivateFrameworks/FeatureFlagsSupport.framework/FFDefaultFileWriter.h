@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FeatureFlagsSupport/FFFileWriter-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FFDefaultFileWriter : NSObject <FFFileWriter>
+@interface FFDefaultFileWriter : NSObject
 {
     NSDictionary *_fileAttributes;
     NSDictionary *_dirAttributes;

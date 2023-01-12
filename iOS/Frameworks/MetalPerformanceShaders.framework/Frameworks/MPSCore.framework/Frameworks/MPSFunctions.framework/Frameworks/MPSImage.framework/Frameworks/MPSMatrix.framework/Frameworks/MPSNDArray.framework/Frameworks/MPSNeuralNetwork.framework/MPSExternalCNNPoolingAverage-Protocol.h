@@ -12,7 +12,7 @@
 @protocol MPSExternalCNNPoolingAverage <MPSExternalCNNUnary>
 
 @optional
-- (unsigned long long)encodeBatchToCommandBuffer:(id <MTLCommandBuffer>)arg1 computeCommandEncoder:(id <MTLComputeCommandEncoder>)arg2 options:(unsigned long long)arg3 sourceTextures:(NSArray *)arg4 sourceInfo:(const CDStruct_12100558 *)arg5 destinationTextures:(NSArray *)arg6 destinationInfo:(const CDStruct_5948169e *)arg7 zeroPadSizeX:(unsigned long long)arg8 zeroPadSizeY:(unsigned long long)arg9 predicationBuffer:(id <MTLBuffer>)arg10 predicationOffset:(unsigned long long)arg11;
-- (unsigned long long)encodeToCommandBuffer:(id <MTLCommandBuffer>)arg1 computeCommandEncoder:(id <MTLComputeCommandEncoder>)arg2 options:(unsigned long long)arg3 sourceTexture:(id <MTLTexture>)arg4 sourceInfo:(const CDStruct_12100558 *)arg5 destinationTexture:(id <MTLTexture>)arg6 destinationInfo:(const CDStruct_5948169e *)arg7 zeroPadSizeX:(unsigned long long)arg8 zeroPadSizeY:(unsigned long long)arg9;
+- (unsigned long long)encodeBatchToCommandBuffer:(id <MTLCommandBuffer>)arg1 computeCommandEncoder:(id <MTLComputeCommandEncoder>)arg2 options:(unsigned long long)arg3 sourceTextures:(NSArray *)arg4 sourceInfo:(const CDStruct_37840a1a *)arg5 destinationTextures:(NSArray *)arg6 destinationInfo:(const CDStruct_1cd378eb *)arg7 zeroPadSizeX:(unsigned long long)arg8 zeroPadSizeY:(unsigned long long)arg9 predicationBuffer:(id <MTLBuffer>)arg10 predicationOffset:(unsigned long long)arg11;
+- (unsigned long long)encodeToCommandBuffer:(id <MTLCommandBuffer>)arg1 computeCommandEncoder:(id <MTLComputeCommandEncoder>)arg2 options:(unsigned long long)arg3 sourceTexture:(id <MTLTexture>)arg4 sourceInfo:(const CDStruct_37840a1a *)arg5 destinationTexture:(id <MTLTexture>)arg6 destinationInfo:(const CDStruct_1cd378eb *)arg7 zeroPadSizeX:(unsigned long long)arg8 zeroPadSizeY:(unsigned long long)arg9;
 @end
 

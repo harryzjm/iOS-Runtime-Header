@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface TSCH3DLightShaderEffectState : NSObject <NSCopying>
+@interface TSCH3DLightShaderEffectState : NSObject
 {
     NSMutableArray *_lights;
     struct LightingPackageShaderEffectState _packageState;

@@ -6,13 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <EventKitUI/EKCurrentTimeMarkerViewUpdating-Protocol.h>
-#import <EventKitUI/EKUITintColorUpdateDelegate-Protocol.h>
-
 @class EKCurrentTimeMarkerView, NSMutableArray, NSMutableDictionary, NSString, UIColor, UIImageView, UIVisualEffect;
 
 __attribute__((visibility("hidden")))
-@interface EKDayGridView : UIView <EKUITintColorUpdateDelegate, EKCurrentTimeMarkerViewUpdating>
+@interface EKDayGridView : UIView
 {
     double _timeInset;
     double _hourHeight;

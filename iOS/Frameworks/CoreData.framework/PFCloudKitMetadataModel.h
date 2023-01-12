@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/_PFAncillaryModelFactory-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PFCloudKitMetadataModel : NSObject <_PFAncillaryModelFactory>
+@interface PFCloudKitMetadataModel : NSObject
 {
 }
 
++ (id)createMapOfEntityIDToPrimaryKeySetForObjectIDs:(id)arg1 fromStore:(id)arg2;
++ (id)createMapOfEntityIDToPrimaryKeySetForObjectIDs:(id)arg1;
 + (unsigned long long)ancillaryEntityOffset;
 + (id)ancillaryModelNamespace;
 + (unsigned long long)ancillaryEntityCount;

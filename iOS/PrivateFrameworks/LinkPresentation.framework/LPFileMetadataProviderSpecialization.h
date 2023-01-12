@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPMetadataProviderSpecializationDelegate-Protocol.h>
-
 @class LPFileMetadata, LPImage, LPLinkMetadata, NSObject, NSString, NSURL;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface LPFileMetadataProviderSpecialization <LPMetadataProviderSpecializationDelegate>
+@interface LPFileMetadataProviderSpecialization
 {
     _Bool _cancelled;
     NSURL *_temporaryFileURL;

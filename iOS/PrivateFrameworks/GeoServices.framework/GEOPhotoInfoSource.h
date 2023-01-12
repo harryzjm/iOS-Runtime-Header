@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOPhotoInfoSource-Protocol.h>
-
 @class GEOAMPPhotoInfoProvider, GEODefaultPhotoInfoProvider, NSArray, NSString;
 @protocol GEOPhotoInfoProvider;
 
 __attribute__((visibility("hidden")))
-@interface GEOPhotoInfoSource : NSObject <GEOPhotoInfoSource>
+@interface GEOPhotoInfoSource : NSObject
 {
     NSArray *_originalPhotoContent;
     GEOAMPPhotoInfoProvider *_ampPhotoInfoProvider;

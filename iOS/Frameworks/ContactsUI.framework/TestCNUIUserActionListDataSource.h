@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNUIUserActionListDataSource-Protocol.h>
-
 @class CNContact, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface TestCNUIUserActionListDataSource : NSObject <CNUIUserActionListDataSource>
+@interface TestCNUIUserActionListDataSource : NSObject
 {
     _Bool _tracksChanges;
     NSDictionary *_userActionListModelResultBlocksByActionTypeAskedFor;

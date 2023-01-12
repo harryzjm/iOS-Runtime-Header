@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ProxCardKit/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSString;
 @protocol PRXPullDismissalProvider;
 
 __attribute__((visibility("hidden")))
-@interface PRXTransitioningController : NSObject <UIViewControllerTransitioningDelegate>
+@interface PRXTransitioningController : NSObject
 {
     id <PRXPullDismissalProvider> _pullDismissalProvider;
 }

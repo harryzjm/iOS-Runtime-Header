@@ -4,50 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
+    double _field1;
+    double _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
-};
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
+    double _field1;
+    double _field2;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned long long leftRate;
-    unsigned long long rightRate;
-} CDStruct_4fab6026;
-
-typedef struct {
-    double startFadeInset;
-    double startFadeLength;
-    double endFadeLength;
-    double endFadeInset;
-} CDStruct_54402055;
-
-typedef struct {
-    double startInset;
-    double endInset;
-} CDStruct_ae5a35ae;
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
 

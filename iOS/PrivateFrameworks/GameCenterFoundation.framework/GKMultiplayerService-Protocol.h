@@ -9,6 +9,9 @@
 @class GKInviteInternal, GKMatchRequestInternal, GKPlayerInternal, NSArray, NSData, NSDictionary, NSString;
 
 @protocol GKMultiplayerService <NSObject>
+- (oneway void)isGameCenterMultiplayerGameForBundleID:(NSString *)arg1 handler:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)fetchOnDeviceMultiplayerBundleIDsWithHandler:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)fetchDevicePushToken:(void (^)(NSData *))arg1;
 - (oneway void)nearbyInviteWasCancelled:(NSDictionary *)arg1;
 - (oneway void)presentNearbyInvite:(NSDictionary *)arg1;
 - (oneway void)sendDataToParticipant:(NSString *)arg1 deviceID:(NSString *)arg2 data:(NSData *)arg3 handler:(void (^)(NSError *))arg4;
@@ -34,9 +37,10 @@
 - (oneway void)putMultiPlayerGroup:(NSString *)arg1 participants:(NSArray *)arg2 playedAt:(long long)arg3 bundleID:(NSString *)arg4 numberOfAutomatched:(long long)arg5 handler:(void (^)(NSError *))arg6;
 - (oneway void)cancelGameInviteWithHandler:(void (^)(void))arg1;
 - (oneway void)removePlayersFromGameInviteV2:(NSArray *)arg1 handler:(void (^)(void))arg2;
+- (oneway void)hasExistingInviteSessionWithHandler:(void (^)(_Bool))arg1;
 - (oneway void)setShareInvitees:(NSArray *)arg1;
 - (oneway void)loadURLWithData:(NSData *)arg1 player:(GKPlayerInternal *)arg2 matchRequest:(GKMatchRequestInternal *)arg3 handler:(void (^)(NSURL *, NSError *))arg4;
-- (oneway void)invitePlayersForMatchRequest:(GKMatchRequestInternal *)arg1 onlineConnectionData:(NSData *)arg2 nearbyConnectionData:(NSData *)arg3 handler:(void (^)(NSDictionary *, NSError *))arg4;
+- (oneway void)invitePlayersForMatchRequest:(GKMatchRequestInternal *)arg1 onlineConnectionData:(NSData *)arg2 nearbyConnectionData:(NSData *)arg3 devicePushToken:(NSData *)arg4 handler:(void (^)(NSDictionary *, NSError *))arg5;
 - (oneway void)getCompatibilityMatrix:(NSDictionary *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getOverallFlowRateWithHandler:(void (^)(unsigned long long, NSError *))arg1;
 - (oneway void)getFlowRateForPlayerGroup:(long long)arg1 handler:(void (^)(unsigned long long, NSError *))arg2;

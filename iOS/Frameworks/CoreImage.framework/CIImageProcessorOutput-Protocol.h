@@ -7,6 +7,7 @@
 @protocol MTLCommandBuffer, MTLTexture;
 
 @protocol CIImageProcessorOutput
+@property(readonly, nonatomic) unsigned long long digest;
 @property(readonly, nonatomic) id <MTLCommandBuffer> metalCommandBuffer;
 @property(readonly, nonatomic) id <MTLTexture> metalTexture;
 @property(readonly, nonatomic) struct __CVBuffer *pixelBuffer;

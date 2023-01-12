@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *sceneDelegateBox;
     MISSING_TYPE *sceneStorageValues;
     MISSING_TYPE *presentedID;
+    MISSING_TYPE *presentationDataType;
+    MISSING_TYPE *presentationDataValue;
 }
 
 - (void).cxx_destruct;

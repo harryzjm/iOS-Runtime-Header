@@ -17,6 +17,8 @@
 + (id)valueWithCGVector:(struct CGVector)arg1;
 + (id)valueWithCGPoint:(struct CGPoint)arg1;
 + (id)valueWithUIKBHandwritingPoint:(struct)arg1;
++ (id)ui_valueWithPlatformPoint:(struct CGPoint)arg1;
++ (id)ui_valueWithPlatformSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) struct UIOffset UIOffsetValue;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets directionalEdgeInsetsValue;
 @property(readonly, nonatomic) struct UIEdgeInsets UIEdgeInsetsValue;
@@ -26,6 +28,8 @@
 @property(readonly, nonatomic) struct CGVector CGVectorValue;
 @property(readonly, nonatomic) struct CGPoint CGPointValue;
 @property(readonly) CDStruct_19cde01f UIKBHandwritingPointValue;
+- (struct CGPoint)ui_platformPointValue;
 - (struct _UIPressTrigger)_UIPressTriggerValue;
+- (struct CGSize)ui_platformSizeValue;
 @end
 

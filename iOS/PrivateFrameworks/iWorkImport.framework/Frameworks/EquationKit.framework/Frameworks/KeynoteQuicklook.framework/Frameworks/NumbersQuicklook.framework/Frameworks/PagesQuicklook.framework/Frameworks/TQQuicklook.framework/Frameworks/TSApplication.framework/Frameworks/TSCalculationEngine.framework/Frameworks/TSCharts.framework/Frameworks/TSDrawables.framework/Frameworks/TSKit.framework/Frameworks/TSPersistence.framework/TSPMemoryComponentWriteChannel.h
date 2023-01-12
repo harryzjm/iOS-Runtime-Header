@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPComponentWriteChannel-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_data, OS_dispatch_queue;
 
-@interface TSPMemoryComponentWriteChannel : NSObject <TSPComponentWriteChannel>
+@interface TSPMemoryComponentWriteChannel : NSObject
 {
     NSObject<OS_dispatch_queue> *_streamQueue;
     NSObject<OS_dispatch_data> *_streamData;

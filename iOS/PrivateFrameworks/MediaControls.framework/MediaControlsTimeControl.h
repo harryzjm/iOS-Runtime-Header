@@ -6,13 +6,10 @@
 
 #import <UIKit/UIControl.h>
 
-#import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
-#import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
-
 @class AVTimeFormatter, CADisplayLink, CAGradientLayer, MPCPlayerResponse, MPCPlayerResponseItem, MTVisualStylingProvider, NSArray, NSLayoutConstraint, NSString, UILabel, UILayoutGuide, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsTimeControl : UIControl <MTVisualStylingProviderObservingPrivate, UIGestureRecognizerDelegate>
+@interface MediaControlsTimeControl : UIControl
 {
     NSArray *_defaultConstraints;
     NSArray *_trackingConstraints;

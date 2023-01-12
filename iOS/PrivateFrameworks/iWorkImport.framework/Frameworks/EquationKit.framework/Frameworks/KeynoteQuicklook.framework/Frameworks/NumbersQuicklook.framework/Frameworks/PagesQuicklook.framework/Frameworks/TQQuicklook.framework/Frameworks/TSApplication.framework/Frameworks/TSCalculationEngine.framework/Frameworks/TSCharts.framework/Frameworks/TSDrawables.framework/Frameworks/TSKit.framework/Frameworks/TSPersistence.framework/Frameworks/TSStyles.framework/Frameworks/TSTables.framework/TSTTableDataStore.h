@@ -6,12 +6,10 @@
 
 #import <TSPersistence/TSPContainedObject.h>
 
-#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
-
-@class NSMutableDictionary, NSObject, TSKCustomFormatList, TSPLazyReference, TSTMergeRegionMap, TSTTableDataList, TSTTableHeaderStorage, TSTTableTileStorage;
+@class NSMutableDictionary, NSObject, TSPLazyReference, TSTMergeRegionMap, TSTTableDataList, TSTTableHeaderStorage, TSTTableTileStorage;
 @protocol TSDContainerInfo><TSWPStorageParent;
 
-@interface TSTTableDataStore : TSPContainedObject <TSTCompatibilityVersionProviding>
+@interface TSTTableDataStore : TSPContainedObject
 {
     _Atomic int _iteratorRunningCount;
     vector_fad096c6 _mergedRects;
@@ -32,7 +30,6 @@
     unsigned char _storageVersionPreBNC;
     _Bool _missingPostBNCDatalists;
     unsigned int _cellCount;
-    TSKCustomFormatList *_pasteboardCustomFormatList;
     TSTTableTileStorage *_tileStorage;
     TSTTableHeaderStorage *_rowHeaderStorage;
     TSTTableHeaderStorage *_columnHeaderStorage;
@@ -78,7 +75,6 @@
 @property(retain, nonatomic) TSTTableHeaderStorage *rowHeaderStorage; // @synthesize rowHeaderStorage=_rowHeaderStorage;
 @property(retain, nonatomic) TSTTableTileStorage *tileStorage; // @synthesize tileStorage=_tileStorage;
 @property(nonatomic) _Bool upgrading; // @synthesize upgrading=_upgrading;
-@property(retain, nonatomic) TSKCustomFormatList *pasteboardCustomFormatList; // @synthesize pasteboardCustomFormatList=_pasteboardCustomFormatList;
 - (void)tsceValueForCellStorageRef:(struct TSTCellStorage *)arg1 cellCoord:(const struct TSUCellCoord *)arg2 hostTableUID:(const struct TSKUIDStruct *)arg3 outValue:(struct TSCEValue *)arg4;
 - (struct TSCEValue)tsceValueFromCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
 - (vector_cdf5f6a1)accumulateCurrentCellsConcurrentlyInRow:(struct TSUModelRowIndex)arg1 rowInfo:(id)arg2 atColumns:(void *)arg3 usingCellCreationBlock:(CDUnknownBlockType)arg4;
@@ -102,23 +98,23 @@
 - (id)p_cellMapForUpgradingToBraveNewCell;
 - (void)upgradeDataStoreCellStorageIfNeededWithTableUID:(const struct TSKUIDStruct *)arg1 conditionalStyleOwner:(id)arg2;
 - (_Bool)_needToUpgradeCellStorage;
+- (void)loadLazyReferencesForUpgrade;
 - (void)setStorageParentToInfo:(id)arg1;
 - (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
 - (id)initWithOwner:(id)arg1;
 - (void)replaceConditionalStyleSetsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)replaceFormulasUsingBlock:(CDUnknownBlockType)arg1;
 - (id)mapReassigningPasteboardCustomFormatKeys:(id)arg1;
-- (id)setupEmptyPasteboardCustomFormatList;
-- (void)makePasteboardCustomFormatList;
 - (void)clearPasteboardCustomFormatMap;
 - (void)copyPasteboardCustomFormatsFromDataStore:(id)arg1;
 - (id)p_pasteboardCustomFormatMap;
-- (id)p_pasteboardCustomFormatList;
-@property(readonly, nonatomic) _Bool hasPasteboardCustomFormats; // @dynamic hasPasteboardCustomFormats;
-- (id)addPasteboardCustomFormat:(id)arg1 toDocument:(id)arg2 updatingPasteboardFormat:(_Bool)arg3;
-- (void)addPasteboardCustomFormatFromCell:(id)arg1;
+- (_Bool)mightHaveCustomFormats;
+- (id)cellMapForAddingPasteboardCustomFormats;
+- (id)p_addPasteboardCustomFormat:(id)arg1 key:(id)arg2 toDocument:(id)arg3;
 - (void)resetAlmostEverything;
 - (void)resetAllColumnRowSizes;
+- (id)i_styleForDataListKey:(unsigned int)arg1;
+- (id)i_formatForDataListKey:(unsigned int)arg1;
 - (id)p_makeALazyDatalistOfType:(int)arg1 isNewForBNC:(_Bool)arg2;
 - (id)p_makeALazyDatalistOfType:(int)arg1;
 - (_Bool)auditTilesForRowOverlapAndExtensionPastTableBounds:(struct TSUCellCoord)arg1 result:(id *)arg2;
@@ -150,12 +146,12 @@
 - (void)insertRows:(struct _NSRange)arg1;
 - (void)p_clearDataListEntriesForStorageRef:(struct TSTCellStorage *)arg1 cellID:(struct TSUCellCoord)arg2;
 - (void)p_clearDataListEntriesInRange:(struct TSUCellRect)arg1;
-- (void)resolveDataListKeysForCell:(id)arg1 suppressTransmutation:(_Bool)arg2 sourceStorageVersion:(unsigned char)arg3;
+- (void)resolveDataListKeysForCell:(id)arg1 cache:(id)arg2 suppressTransmutation:(_Bool)arg3 sourceStorageVersion:(unsigned char)arg4;
 - (void)resolveDataListKeysForPreBNCCell:(id)arg1 suppressTransmutation:(_Bool)arg2 sourceStorageVersion:(unsigned char)arg3;
 - (void)p_stashBadKey:(unsigned long long)arg1 forList:(id)arg2;
 - (id)p_populatedMultipleChoiceListFormat:(id)arg1;
-- (id)populatedCustomFormat:(id)arg1 value:(double)arg2;
 - (id)p_preBNCpopulatedCustomFormat:(id)arg1 value:(double)arg2;
+- (void)updateCustomFormatsAtKey:(id)arg1;
 - (void)upgradeCellFormatsU2_0;
 - (CDStruct_c8ca99d5)p_preBNCKeysForCell:(id)arg1 oldPreBNCStorageRef:(CDStruct_106f10ff *)arg2 callWillModify:(_Bool)arg3;
 - (CDStruct_c8ca99d5)p_preBNCKeysForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
@@ -196,6 +192,8 @@
 - (void)decrementCellCountsAtCellID:(struct TSUCellCoord)arg1;
 - (void)decrementColumnCellCount:(unsigned short)arg1 byAmount:(unsigned long long)arg2;
 @property(readonly, nonatomic) _Bool hasMigratableStylesInCells;
+- (unsigned long long)defaultStylesOfColumnAtIndex:(unsigned short)arg1 outCellStyle:(id *)arg2 outTextStyle:(id *)arg3;
+- (unsigned long long)defaultStylesOfRowAtIndex:(unsigned int)arg1 outCellStyle:(id *)arg2 outTextStyle:(id *)arg3;
 - (void)setTextStyle:(id)arg1 ofColumnAtIndex:(unsigned short)arg2;
 - (void)setTextStyle:(id)arg1 ofRowAtIndex:(unsigned int)arg2;
 - (id)textStyleOfColumnAtIndex:(unsigned short)arg1;

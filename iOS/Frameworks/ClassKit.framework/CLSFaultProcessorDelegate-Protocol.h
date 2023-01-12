@@ -6,11 +6,9 @@
 
 #import <ClassKit/NSObject-Protocol.h>
 
-@class CLSFaultProcessor, CLSRelation, NSObject;
-@protocol CLSDataServerInterface, CLSRelationable;
+@protocol CLSDataServerInterface;
 
 @protocol CLSFaultProcessorDelegate <NSObject>
 - (id <CLSDataServerInterface>)dataServer:(void (^)(NSError *))arg1;
-- (_Bool)faultProcessor:(CLSFaultProcessor *)arg1 shouldFaultRelation:(CLSRelation *)arg2 fromObject:(NSObject<CLSRelationable> *)arg3;
 @end
 

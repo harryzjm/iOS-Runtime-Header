@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPComponentWriteChannel-Protocol.h>
-
 @class NSString, TSUZipFileWriter;
 
-@interface TSPPackageWriterComponentWriteChannel : NSObject <TSPComponentWriteChannel>
+@interface TSPPackageWriterComponentWriteChannel : NSObject
 {
     TSUZipFileWriter *_archiveWriter;
     _Atomic _Bool _isClosed;

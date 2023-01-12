@@ -6,18 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/ICEnvironmentMonitorObserver-Protocol.h>
-
-@class MPAssistantAnalyticsReportingController, MPCJinglePlayActivityReportingController, MPCLyricsReportingController, MPCPlaybackEngine, MPCPlaybackHistoryController, MPCReportingPlaybackObserver, MPRTCReportingController, NSString;
+@class MPCLyricsReportingController, MPCPlaybackEngine, MPCPlaybackHistoryController;
 
 __attribute__((visibility("hidden")))
-@interface _MPCReportingController : NSObject <ICEnvironmentMonitorObserver>
+@interface _MPCReportingController : NSObject
 {
     MPCPlaybackEngine *_playbackEngine;
-    MPAssistantAnalyticsReportingController *_assistantAnalyticsController;
-    MPCJinglePlayActivityReportingController *_jinglePlayActivityReportingController;
-    MPCReportingPlaybackObserver *_reportingPlaybackObserver;
-    MPRTCReportingController *_rtcReportingController;
     MPCPlaybackHistoryController *_playbackHistoryController;
     MPCLyricsReportingController *_lyricsReportingController;
 }
@@ -25,22 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) MPCLyricsReportingController *lyricsReportingController; // @synthesize lyricsReportingController=_lyricsReportingController;
 @property(retain, nonatomic) MPCPlaybackHistoryController *playbackHistoryController; // @synthesize playbackHistoryController=_playbackHistoryController;
-@property(retain, nonatomic) MPRTCReportingController *rtcReportingController; // @synthesize rtcReportingController=_rtcReportingController;
-@property(retain, nonatomic) MPCReportingPlaybackObserver *reportingPlaybackObserver; // @synthesize reportingPlaybackObserver=_reportingPlaybackObserver;
-@property(retain, nonatomic) MPCJinglePlayActivityReportingController *jinglePlayActivityReportingController; // @synthesize jinglePlayActivityReportingController=_jinglePlayActivityReportingController;
-@property(retain, nonatomic) MPAssistantAnalyticsReportingController *assistantAnalyticsController; // @synthesize assistantAnalyticsController=_assistantAnalyticsController;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-- (void)environmentMonitorDidChangeNetworkType:(id)arg1;
-- (void)reportUserSeekFromTime:(double)arg1 toTime:(double)arg2;
 - (void)recordLyricsViewEvent:(id)arg1;
-- (void)dealloc;
 - (id)initWithPlaybackEngine:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

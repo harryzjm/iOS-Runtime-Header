@@ -6,11 +6,9 @@
 
 #import <Intents/INInteraction.h>
 
-#import <Cards/CRContent-Protocol.h>
-
 @class NSString;
 
-@interface INInteraction (CRContent) <CRContent>
+@interface INInteraction (CRContent)
 - (id)underlyingInteraction;
 
 // Remaining properties

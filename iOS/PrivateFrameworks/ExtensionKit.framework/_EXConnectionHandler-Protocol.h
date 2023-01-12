@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ExtensionKit/NSXPCListenerDelegate-Protocol.h>
-
 @class NSXPCConnection;
 
-@protocol _EXConnectionHandler <NSXPCListenerDelegate>
+@protocol _EXConnectionHandler
 - (_Bool)shouldAcceptXPCConnection:(NSXPCConnection *)arg1;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/NSURLAuthenticationChallengeSender-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebCoreAuthenticationClientAsChallengeSender : NSObject <NSURLAuthenticationChallengeSender>
+@interface WebCoreAuthenticationClientAsChallengeSender : NSObject
 {
     struct AuthenticationClient *m_client;
 }

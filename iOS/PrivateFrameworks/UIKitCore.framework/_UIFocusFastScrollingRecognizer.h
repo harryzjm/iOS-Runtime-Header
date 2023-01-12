@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFocusEnginePanGestureTouchObserver-Protocol.h>
-
-@class NSMapTable, NSString, NSTimer, UIScrollView, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingTouchSequence;
+@class NSMapTable, NSString, NSTimer, UIScrollView, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingTouchSequence, _UIRotaryGestureRecognizer;
 @protocol _UIFocusFastScrollingRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusFastScrollingRecognizer : NSObject <_UIFocusEnginePanGestureTouchObserver>
+@interface _UIFocusFastScrollingRecognizer : NSObject
 {
     _UIFocusEnginePanGestureRecognizer *_panGesture;
+    _UIRotaryGestureRecognizer *_rotaryGesture;
     _UIFocusFastScrollingTouchSequence *_currentTouch;
     NSMapTable *_swipeSequences;
     NSTimer *_swipeIntervalTimer;
@@ -53,10 +52,16 @@ __attribute__((visibility("hidden")))
 - (void)_touchSequenceDidEnd:(id)arg1;
 - (void)reset;
 - (void)_handlePanGesture:(id)arg1;
+- (_Bool)attemptToImmediatelyRecognizeRotaryGesture;
+- (_Bool)canImmediatelyRecognizeRotaryGesture;
+- (void)deactivateRotaryGesturePreviewingScrollViewIfNecessary;
+- (void)activateRotaryGesturePreviewingScrollViewWithEmphasisAnimation:(_Bool)arg1;
+- (void)pageButtonPressWithHeading:(unsigned long long)arg1 didRepeat:(unsigned long long)arg2;
 - (void)joystickMovementWithHeading:(unsigned long long)arg1 didRepeat:(unsigned long long)arg2;
 - (void)directionalPressWithHeading:(unsigned long long)arg1 didRepeat:(unsigned long long)arg2;
 - (void)_focusDidUpate:(id)arg1;
 - (void)dealloc;
+- (id)initWithPanGesture:(id)arg1 rotaryGesture:(id)arg2;
 - (id)initWithPanGesture:(id)arg1;
 
 // Remaining properties

@@ -6,13 +6,10 @@
 
 #import <UIKit/UIDropInteraction.h>
 
-#import <MobileSafariUI/UIDropInteractionDelegate-Protocol.h>
-#import <MobileSafariUI/UIDropInteractionDelegate_Private-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UserNavigationDropInteraction : UIDropInteraction <UIDropInteractionDelegate, UIDropInteractionDelegate_Private>
+@interface UserNavigationDropInteraction : UIDropInteraction
 {
     CDUnknownBlockType _navigationHandler;
     _Bool _opensNewTab;

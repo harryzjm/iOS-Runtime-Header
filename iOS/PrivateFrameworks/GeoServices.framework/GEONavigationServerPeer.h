@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEONavigationServerRequestStateXPCInterface-Protocol.h>
+#import "GEONavdPeer.h"
 
 @class GEONavigationServer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEONavigationServerPeer <GEONavigationServerRequestStateXPCInterface>
+@interface GEONavigationServerPeer : GEONavdPeer
 {
     GEONavigationServer *_delegate;
     _Bool _hasEntitlement;
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)requestGuidanceState;
 - (void)requestTransitSummary;
 - (void)requestRouteSummary;
+- (void)requestETAUpdate;
 - (void)requestRoute;
 
 // Remaining properties

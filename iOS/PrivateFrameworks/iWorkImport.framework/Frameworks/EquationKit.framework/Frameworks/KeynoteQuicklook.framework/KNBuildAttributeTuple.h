@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
 @class KNBuild, KNBuildAttributeValue, KNBuildChunk, KNBuildChunkIdentifier, NSString, NSUUID;
 
-@interface KNBuildAttributeTuple : TSPObject <NSCopying>
+@interface KNBuildAttributeTuple : TSPObject
 {
     NSString *_property;
     KNBuildAttributeValue *_attributeValue;

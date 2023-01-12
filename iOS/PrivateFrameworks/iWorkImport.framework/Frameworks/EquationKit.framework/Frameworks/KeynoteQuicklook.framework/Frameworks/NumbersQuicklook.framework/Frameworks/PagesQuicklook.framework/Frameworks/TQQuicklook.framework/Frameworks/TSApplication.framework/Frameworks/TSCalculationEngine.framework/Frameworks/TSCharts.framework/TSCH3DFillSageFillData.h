@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DSageFillData-Protocol.h>
-
 @class NSMutableArray, TSCH3DFill;
 
-@interface TSCH3DFillSageFillData : NSObject <TSCH3DSageFillData>
+@interface TSCH3DFillSageFillData : NSObject
 {
     TSCH3DFill *_fill;
     NSMutableArray *_textures;

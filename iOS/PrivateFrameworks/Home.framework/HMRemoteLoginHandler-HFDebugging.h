@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMRemoteLoginHandler.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString;
 
-@interface HMRemoteLoginHandler (HFDebugging) <HFStateDumpBuildable>
+@interface HMRemoteLoginHandler (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties

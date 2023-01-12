@@ -6,9 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBAppLayout, SBRecentAppLayouts;
+@class NSSet, SBAppLayout, SBRecentAppLayouts;
 
 @protocol SBRecentAppLayoutsDelegate <NSObject>
+- (SBAppLayout *)recentAppLayouts:(SBRecentAppLayouts *)arg1 willAddAppLayout:(SBAppLayout *)arg2 replacingAppLayouts:(NSSet *)arg3 removingAppLayouts:(NSSet *)arg4;
+- (SBAppLayout *)recentAppLayouts:(SBRecentAppLayouts *)arg1 willReplaceAppLayout:(SBAppLayout *)arg2 proposedReplacementAppLayout:(SBAppLayout *)arg3;
 - (void)recentAppLayouts:(SBRecentAppLayouts *)arg1 didRemoveAppLayoutForFallingOffList:(SBAppLayout *)arg2;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailDaemon/MLFeatureProvider-Protocol.h>
-
 @class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDImportantMLModelInput : NSObject <MLFeatureProvider>
+@interface EDImportantMLModelInput : NSObject
 {
     double _cc_contains_contact;
     double _cc_is_top_direct_addresses_based_on_respond;

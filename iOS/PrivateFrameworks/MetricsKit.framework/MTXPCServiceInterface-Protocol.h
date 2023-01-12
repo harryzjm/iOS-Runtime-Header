@@ -9,6 +9,7 @@
 @class MTIDScheme, NSArray, NSDictionary;
 
 @protocol MTXPCServiceInterface <NSObject>
+- (void)syncForSchemes:(NSArray *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)doClearLocalData;
 - (oneway void)doMaintainSchemes:(NSArray *)arg1 options:(NSDictionary *)arg2;
 - (void)doResetSchemes:(NSArray *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;

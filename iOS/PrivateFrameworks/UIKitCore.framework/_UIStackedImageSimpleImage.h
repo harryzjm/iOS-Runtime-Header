@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UINamedLayerImage-Protocol.h>
-
 @class NSString, UIImage;
 @protocol UINamedLayerContentProvider;
 
 __attribute__((visibility("hidden")))
-@interface _UIStackedImageSimpleImage : NSObject <UINamedLayerImage>
+@interface _UIStackedImageSimpleImage : NSObject
 {
     int _blendMode;
     NSString *_name;

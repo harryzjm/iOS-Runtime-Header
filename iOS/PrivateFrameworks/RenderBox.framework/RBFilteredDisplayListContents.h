@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RenderBox/RBDisplayListContents-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface RBFilteredDisplayListContents : NSObject <RBDisplayListContents>
+@interface RBFilteredDisplayListContents : NSObject
 {
     struct objc_ptr<id<RBDisplayListContents>> _base;
     struct Invertible _predicate;

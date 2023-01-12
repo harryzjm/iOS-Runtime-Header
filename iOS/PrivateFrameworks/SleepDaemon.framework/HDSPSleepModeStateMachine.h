@@ -6,15 +6,11 @@
 
 #import <Sleep/HKSPPersistentStateMachine.h>
 
-#import <SleepDaemon/HDSPSleepModeStateMachineDelegate-Protocol.h>
-#import <SleepDaemon/HDSPSleepModeStateMachineEventHandler-Protocol.h>
-#import <SleepDaemon/HDSPSleepModeStateMachineInfoProvider-Protocol.h>
-
 @class HDSPSleepModeAutomatedOffFromManualState, HDSPSleepModeAutomatedOffState, HDSPSleepModeBedtimeState, HDSPSleepModeManualBedtimeState, HDSPSleepModeManualOffState, HDSPSleepModeOffState, HDSPSleepModeWindDownState, HKSPSleepScheduleModel, NSDate, NSString;
 @protocol HDSPSleepModeStateMachineDelegate, HDSPSleepModeStateMachineInfoProvider, NAScheduler;
 
 __attribute__((visibility("hidden")))
-@interface HDSPSleepModeStateMachine : HKSPPersistentStateMachine <HDSPSleepModeStateMachineDelegate, HDSPSleepModeStateMachineInfoProvider, HDSPSleepModeStateMachineEventHandler>
+@interface HDSPSleepModeStateMachine : HKSPPersistentStateMachine
 {
     HDSPSleepModeOffState *_offState;
     HDSPSleepModeWindDownState *_windDownState;
@@ -35,11 +31,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) HDSPSleepModeOffState *offState; // @synthesize offState=_offState;
 @property(readonly, nonatomic) _Bool hasSleepFocusMode;
 - (_Bool)shouldGoIntoSleepModeDuringState:(unsigned long long)arg1;
+@property(readonly, nonatomic) _Bool sleepFeaturesEnabled;
+@property(readonly, nonatomic) _Bool isAppleWatch;
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) NSDate *currentDate;
 - (void)sleepModeDidChange:(long long)arg1 previousMode:(long long)arg2 reason:(unsigned long long)arg3;
-- (void)sleepFocusModeDidChange;
+- (void)sleepModeTurnedOffForUnknownReason;
+- (void)sleepModeTurnedOnForUnknownReason;
 - (void)automationTurnedOffSleepModeWithReason:(unsigned long long)arg1;
 - (void)automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
 - (void)userTurnedOnSleepModeWithReason:(unsigned long long)arg1;

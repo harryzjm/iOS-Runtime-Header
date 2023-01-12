@@ -9,9 +9,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)enterMigrationOrReadyState;
 - (void)systemDidBecomeReady;
-- (void)updateState;
+- (id)_nextSystemReadyState;
+- (id)nextStateWithContext:(id *)arg1;
 - (id)stateName;
 
 @end

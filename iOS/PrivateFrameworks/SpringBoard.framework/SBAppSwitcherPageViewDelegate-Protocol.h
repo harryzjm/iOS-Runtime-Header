@@ -6,7 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
+@class SBAppSwitcherPageView, UIWindow;
+
 @protocol SBAppSwitcherPageViewDelegate <NSObject>
+- (_Bool)appSwitcherPageView:(SBAppSwitcherPageView *)arg1 shouldBeginPointerInteractionAtLocation:(struct CGPoint)arg2 window:(UIWindow *)arg3;
+- (void)pointerIsHoveringOverEdge:(unsigned long long)arg1;
 - (double)currentStatusBarHeight;
 @end
 

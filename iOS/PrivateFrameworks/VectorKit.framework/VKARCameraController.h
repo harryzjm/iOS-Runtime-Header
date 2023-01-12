@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/VKGesturingCameraController-Protocol.h>
-
 @class NSString, VKTimedAnimation;
 
 __attribute__((visibility("hidden")))
-@interface VKARCameraController <VKGesturingCameraController>
+@interface VKARCameraController
 {
     shared_ptr_e963992e _taskContext;
     void *_globeView;
@@ -18,9 +16,9 @@ __attribute__((visibility("hidden")))
     double _maxZoomLevel;
     double _height;
     double _altitudeOffset;
-    Unit_3d259e8a _fovy;
+    Unit_5669e52e _fovy;
     RigidTransform_b9386d13 _offsetTransform;
-    CameraFrame_406dbd31 _cameraFrame;
+    CameraFrame_b765d6d7 _cameraFrame;
     RigidTransform_b9386d13 _baseTransform;
     RigidTransform_b9386d13 _arTransform;
     RigidTransform_b9386d13 _currentARTransform;
@@ -29,14 +27,14 @@ __attribute__((visibility("hidden")))
     VKTimedAnimation *_transitionAnimation;
     long long _interfaceOrientation;
     struct Quaternion<double> _interfaceOrientationRotation;
-    Coordinate2D_579e76bf _currentCoordinate;
+    Coordinate2D_cb341d5f _currentCoordinate;
     _Bool _overrideARFieldOfView;
-    Unit_57582783 _fieldOfView;
+    Unit_6d5b752b _fieldOfView;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) Unit_57582783 fieldOfView; // @synthesize fieldOfView=_fieldOfView;
+@property(nonatomic) Unit_6d5b752b fieldOfView; // @synthesize fieldOfView=_fieldOfView;
 @property(nonatomic) RigidTransform_b9386d13 offsetTransform; // @synthesize offsetTransform=_offsetTransform;
 @property(nonatomic) _Bool overrideARFieldOfView; // @synthesize overrideARFieldOfView=_overrideARFieldOfView;
 @property(nonatomic) void *mapEngine; // @synthesize mapEngine=_mapEngine;
@@ -46,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) float heightScale;
 - (RigidTransform_b9386d13)arCameraTransform;
 - (void)trasitionToARModeFromCameraFrame:(const void *)arg1 withDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
-- (CameraFrame_406dbd31)cameraFrame;
+- (CameraFrame_b765d6d7)cameraFrame;
 - (void)trasitionToARModeAtCoordinate:(CDStruct_c3b9c2ee)arg1 withDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setupPounceAnimation:(const void *)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_updateBaseTransform;

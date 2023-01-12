@@ -6,17 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPArchiverManagerDelegate-Protocol.h>
-#import <TSPersistence/TSPComponentWriterDelegate-Protocol.h>
-#import <TSPersistence/TSPDataArchiver-Protocol.h>
-#import <TSPersistence/TSPObjectModifyDelegate-Protocol.h>
-#import <TSPersistence/TSPProxyObjectMapping-Protocol.h>
-#import <TSPersistence/TSPProxyObjectWriting-Protocol.h>
-
 @class NSMutableArray, NSString, NSURL, TSPArchiverManager, TSPObjectContext, TSPReferenceOrderedSet, TSURetainedPointerKeyDictionary;
 @protocol OS_dispatch_queue, TSPEncoder, TSPEncoderWriteCoordinatorDelegate;
 
-@interface TSPEncoderWriteCoordinator : NSObject <TSPArchiverManagerDelegate, TSPComponentWriterDelegate, TSPDataArchiver, TSPObjectModifyDelegate, TSPProxyObjectWriting, TSPProxyObjectMapping>
+@interface TSPEncoderWriteCoordinator : NSObject
 {
     id <TSPEncoder> _encoder;
     TSPArchiverManager *_archiverManager;

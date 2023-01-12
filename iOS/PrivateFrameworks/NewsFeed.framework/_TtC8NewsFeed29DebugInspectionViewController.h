@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *tableView;
     MISSING_TYPE *sections;
     MISSING_TYPE *coverViewManager;
+    MISSING_TYPE *cloudContext;
 }
 
 - (void).cxx_destruct;

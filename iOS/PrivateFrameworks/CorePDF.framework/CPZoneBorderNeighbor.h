@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPCopying-Protocol.h>
-#import <CorePDF/NSCopying-Protocol.h>
-
 @class CPShape;
 
 __attribute__((visibility("hidden")))
-@interface CPZoneBorderNeighbor : NSObject <NSCopying, CPCopying>
+@interface CPZoneBorderNeighbor : NSObject
 {
     CPShape *neighborShape;
     int shapeSide;

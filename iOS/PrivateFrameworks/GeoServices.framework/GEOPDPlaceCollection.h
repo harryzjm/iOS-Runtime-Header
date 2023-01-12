@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDCaptionedPhoto, GEOPDMapsIdentifier, GEOPDPublisher, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDPlaceCollection : PBCodable <NSCopying>
+@interface GEOPDPlaceCollection : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -29,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_itemIds;
     NSMutableArray *_longSpokenTitles;
     NSMutableArray *_longTitles;
+    NSMutableArray *_mediaLinks;
     double _modifiedTime;
     NSMutableArray *_photos;
     NSMutableArray *_placeCollectionItems;
@@ -62,6 +61,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_itemIds:1;
         unsigned int read_longSpokenTitles:1;
         unsigned int read_longTitles:1;
+        unsigned int read_mediaLinks:1;
         unsigned int read_photos:1;
         unsigned int read_placeCollectionItems:1;
         unsigned int read_publisherId:1;

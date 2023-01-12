@@ -14,6 +14,7 @@
 @property(nonatomic) _Bool singleAvatarMode;
 @property(nonatomic) double decelerationRate;
 @property(readonly, nonatomic) id <AVTAvatarRecord> focusedRecord;
+@property(nonatomic) _Bool isPostponingBeginSession;
 - (id <AVTUIViewSnapshotProvider>)snapshotProviderFocusedOnRecordWithIdentifier:(NSString *)arg1 size:(struct CGSize)arg2;
 - (void)presentActionsForAvatar:(id <AVTAvatarRecord>)arg1;
 - (void)presentEditorForCreatingAvatar:(id)arg1;

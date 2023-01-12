@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <KeychainCircle/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface OTApplicantToSponsorRound2M1 : PBCodable <NSCopying>
+@interface OTApplicantToSponsorRound2M1 : PBCodable
 {
     NSString *_peerID;
     NSData *_permanentInfo;

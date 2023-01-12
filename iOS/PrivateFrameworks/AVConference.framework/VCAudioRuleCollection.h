@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioRuleCollection : NSObject <NSCopying>
+@interface VCAudioRuleCollection : NSObject
 {
     NSMutableArray *_rules;
     int _deviceRole;

@@ -21,6 +21,8 @@
     MISSING_TYPE *reportedResumePlaybackTime;
     MISSING_TYPE *preSetQueueItem;
     MISSING_TYPE *pendingSeek;
+    MISSING_TYPE *preferredRate;
+    MISSING_TYPE *hasPrerolled;
 }
 
 @property(nonatomic, readonly) NSDictionary *stateDictionary;

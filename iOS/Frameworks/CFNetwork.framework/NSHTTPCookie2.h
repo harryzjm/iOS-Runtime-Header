@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSCopying-Protocol.h>
-#import <CFNetwork/NSMutableCopying-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface NSHTTPCookie2 : NSObject <NSCopying, NSMutableCopying>
+@interface NSHTTPCookie2 : NSObject
 {
     NSString *_name;
     NSString *_value;

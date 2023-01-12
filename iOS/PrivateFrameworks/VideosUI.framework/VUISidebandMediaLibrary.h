@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIDeviceMediaLibrary.h"
+
 @class NSManagedObjectContext, NSObject, NSPersistentContainer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VUISidebandMediaLibrary
+@interface VUISidebandMediaLibrary : VUIDeviceMediaLibrary
 {
     NSPersistentContainer *_persistentContainer;
     NSManagedObjectContext *_backgroundManagedObjectContext;
@@ -21,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(retain, nonatomic) NSManagedObjectContext *backgroundManagedObjectContext; // @synthesize backgroundManagedObjectContext=_backgroundManagedObjectContext;
 @property(retain, nonatomic) NSPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
+- (id)performFetch:(id)arg1;
 - (void)_dumpDatabaseToLogIfEnabled;
 - (void)_activeAccountDidChange:(id)arg1;
 - (void)_removeDownloadsForNonSignedInUsers;

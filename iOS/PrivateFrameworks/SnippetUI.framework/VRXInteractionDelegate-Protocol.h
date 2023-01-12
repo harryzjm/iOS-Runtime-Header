@@ -6,12 +6,16 @@
 
 #import <SnippetUI/NSObject-Protocol.h>
 
-@class AceObject, NSData, NSDictionary, NSString, SFCommand;
+@class AceObject, NSData, NSDictionary, NSString, PBCodable, SFCommand, VRXInstrumentationEvent;
 @protocol SAAceCommand;
 
 @protocol VRXInteractionDelegate <NSObject>
 
 @optional
+- (void)restartSpeechSynthesis;
+- (void)cancelSpeechSynthesis;
+- (void)emitInstrumentationEvent:(VRXInstrumentationEvent *)arg1;
+- (void)emitInstrumentationEvent:(PBCodable *)arg1 requiresNewTurn:(_Bool)arg2;
 - (void)didEndEditing;
 - (void)willBeginEditing;
 - (void)sharedStateDidUpdate:(NSDictionary *)arg1;

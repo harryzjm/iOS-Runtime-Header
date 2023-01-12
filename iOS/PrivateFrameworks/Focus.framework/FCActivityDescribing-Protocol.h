@@ -13,7 +13,9 @@
 @property(readonly, nonatomic, getter=isPlaceholder) _Bool placeholder;
 @property(readonly, copy, nonatomic) NSURL *activitySetupURL;
 @property(readonly, copy, nonatomic) NSURL *activitySettingsURL;
+@property(readonly, copy, nonatomic) NSString *activityLifetimesAlternativeDescription;
 @property(readonly, copy, nonatomic) NSArray *activityLifetimeDescriptions;
+@property(readonly, copy, nonatomic) NSString *activityDetailText;
 @property(readonly, copy, nonatomic) NSDate *activityCreationDate;
 @property(readonly, copy, nonatomic) NSString *activityColorName;
 @property(readonly, copy, nonatomic) NSString *activitySymbolImageName;

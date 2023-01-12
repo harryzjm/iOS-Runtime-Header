@@ -4,10 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsAds/UITableViewDataSource-Protocol.h>
-#import <NewsAds/UITableViewDelegate-Protocol.h>
-
-@interface (null) (NewsAds) <UITableViewDelegate, UITableViewDataSource>
+@interface (null) (NewsAds)
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;

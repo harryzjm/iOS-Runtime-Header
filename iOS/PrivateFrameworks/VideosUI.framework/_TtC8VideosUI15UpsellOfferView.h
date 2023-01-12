@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *layout;
     MISSING_TYPE *debugUIOverlay;
     MISSING_TYPE *currentPrefersUberLayout;
+    MISSING_TYPE *currentIsAXEnabled;
     MISSING_TYPE *upsellViewModel;
     MISSING_TYPE *coverArtImageView;
     MISSING_TYPE *tagsView;

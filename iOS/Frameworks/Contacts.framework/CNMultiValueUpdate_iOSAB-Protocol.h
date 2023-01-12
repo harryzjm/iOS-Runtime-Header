@@ -10,6 +10,6 @@
 @protocol CNContactsLogger;
 
 @protocol CNMultiValueUpdate_iOSAB <CNMultiValueUpdate>
-- (_Bool)applyToABPerson:(void *)arg1 abmultivalue:(void *)arg2 propertyDescription:(CNMultiValuePropertyDescription *)arg3 logger:(id <CNContactsLogger>)arg4 error:(id *)arg5;
+- (_Bool)applyToABPerson:(void *)arg1 abmultivalue:(void *)arg2 propertyDescription:(CNMultiValuePropertyDescription *)arg3 isUnified:(_Bool)arg4 logger:(id <CNContactsLogger>)arg5 error:(id *)arg6;
 @end
 

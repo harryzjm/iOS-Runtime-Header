@@ -7,6 +7,6 @@
 #import <Vision/VNClustererBuilder.h>
 
 @interface VNClustererBuilder (BackwardCompatability)
-- (id)vcp_updateModelByAddingFaces:(id)arg1;
+- (id)vcp_updateModelByAddingFaces:(id)arg1 error:(id *)arg2;
 @end
 

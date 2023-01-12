@@ -11,6 +11,7 @@
 
 @protocol _UIPointerInteractionDriver <NSObject>
 @property(nonatomic) __weak UIView *view;
+- (_Bool)isActive;
 - (void)invalidate;
 - (struct CGPoint)locationInView:(UIView *)arg1;
 - (id)initWithSink:(id <_UIPointerInteractionDriverSink>)arg1;

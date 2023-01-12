@@ -6,11 +6,9 @@
 
 #import <IMCore/IMBalloonPlugin.h>
 
-#import <ChatKit/CKAppMenuItem-Protocol.h>
-
 @class NSString;
 
-@interface IMBalloonPlugin (CKAppMenuItem) <CKAppMenuItem>
+@interface IMBalloonPlugin (CKAppMenuItem)
 + (id)__ck_appIconFromPayloadDictionary:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (id)__ck_imageForTraitCollection:(id)arg1;
 @property(readonly, nonatomic) NSString *__ck_displayName;

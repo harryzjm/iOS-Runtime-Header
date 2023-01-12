@@ -11,9 +11,13 @@
 @protocol TUScreenShareAttributes;
 
 @protocol TUConversationManagerXPCClient <TUConversationMediaControllerXPCClient, TUConversationMessagesGroupProviderXPCClient>
+- (oneway void)screenSharingAvailableChanged:(_Bool)arg1;
+- (oneway void)sharePlayAvailableChanged:(_Bool)arg1;
 - (oneway void)remoteScreenShareEndedWithReason:(NSError *)arg1;
 - (oneway void)remoteScreenShareAttributesChanged:(id <TUScreenShareAttributes>)arg1 isLocallySharing:(_Bool)arg2;
+- (oneway void)conversation:(TUConversation *)arg1 didChangeSceneAssociationForActivitySession:(TUConversationActivitySession *)arg2;
 - (oneway void)conversation:(TUConversation *)arg1 didChangeStateForActivitySession:(TUConversationActivitySession *)arg2;
+- (oneway void)conversation:(TUConversation *)arg1 screenSharingChangedForParticipant:(TUConversationParticipant *)arg2;
 - (oneway void)receivedTrackedPendingMember:(TUConversationMember *)arg1 forConversationLink:(TUConversationLink *)arg2;
 - (oneway void)updateIncomingPendingConversationsByGroupUUID:(NSDictionary *)arg1;
 - (oneway void)conversationUpdatedMessagesGroupPhoto:(TUConversation *)arg1;
@@ -25,9 +29,7 @@
 - (oneway void)conversation:(TUConversation *)arg1 remoteParticipantWithIdentifier:(unsigned long long)arg2 updatedVideoEnabled:(_Bool)arg3;
 - (oneway void)conversation:(TUConversation *)arg1 remoteParticipantWithIdentifier:(unsigned long long)arg2 updatedAudioEnabled:(_Bool)arg3;
 - (oneway void)conversation:(TUConversation *)arg1 receivedActivitySessionEvent:(TUConversationActivityEvent *)arg2;
-- (oneway void)conversation:(TUConversation *)arg1 requestedScreenShareForParticipant:(TUConversationParticipant *)arg2;
 - (oneway void)updateActivatedConversationLinks:(NSArray *)arg1;
 - (oneway void)updateConversationsByGroupUUID:(NSDictionary *)arg1;
-- (oneway void)updateActivitySuggestions:(NSSet *)arg1;
 @end
 

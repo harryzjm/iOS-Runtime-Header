@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIStorePageSection.h"
+
 @class SKUISpacePageComponent;
 
 __attribute__((visibility("hidden")))
-@interface SKUISpacePageSection
+@interface SKUISpacePageSection : SKUIStorePageSection
 {
 }
 

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideoSubscriberAccountUI/VSLogoImageViewModel-Protocol.h>
-
 @class NSItemProvider, NSString, UIImage, VSOptional;
 
 __attribute__((visibility("hidden")))
-@interface VSCuratedViewModel <VSLogoImageViewModel>
+@interface VSCuratedViewModel
 {
     _Bool _beginValidationButtonEnabled;
     _Bool _showFooter;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQWrapPointGenerator-Protocol.h>
-
 @class GQDRoot, GQDSStylesheet, GQPProcessor, GQSTable, NSString, SFUZipArchive;
 @protocol GQUOutputBundle, GQWrapPointGenerator;
 
-__attribute__((visibility("hidden")))
-@interface GQSDocument : NSObject <GQWrapPointGenerator>
+@interface GQSDocument : NSObject
 {
     GQPProcessor *mProcessor;
     GQDRoot *mRoot;

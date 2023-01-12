@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "COMeshAddOn.h"
+
 @class NSDictionary, NSMutableArray;
 @protocol COStateAddOnDelegate;
 
-@interface COStateAddOn
+__attribute__((visibility("hidden")))
+@interface COStateAddOn : COMeshAddOn
 {
     struct os_unfair_lock_s _lock;
     unsigned long long _outstandingMeshContructions;

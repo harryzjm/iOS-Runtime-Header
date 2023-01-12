@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/UITextFieldDelegate-Protocol.h>
-
 @class NSString, UISwitch, UITextField, VUIDebugViewDefaults, VUILabel, VUISeparatorView, VUITextLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIDebugCollectionViewDefaultsCell <UITextFieldDelegate>
+@interface VUIDebugCollectionViewDefaultsCell
 {
     VUITextLayout *_titleLayout;
     VUILabel *_titleLabel;

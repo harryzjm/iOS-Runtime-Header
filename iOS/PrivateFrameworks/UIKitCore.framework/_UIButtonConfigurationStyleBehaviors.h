@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _calculateBackgroundColor;
     long long _selectionStyle;
     long long _automaticMacIdiomStyle;
+    long long _cornerStyle;
 }
 
 - (void).cxx_destruct;

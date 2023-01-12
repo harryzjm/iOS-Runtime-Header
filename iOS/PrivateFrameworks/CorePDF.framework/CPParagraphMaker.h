@@ -22,10 +22,11 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)line:(id)arg1 alignsWith:(id)arg2;
 - (void)makeParagraphsIn:(id)arg1;
+- (void)addIntersectingParagraph:(id)arg1;
 - (void)addCompoundedShapesOn:(id)arg1 to:(id)arg2;
 - (void)addLinesTo:(id)arg1;
 - (int)paragraph:(id)arg1 splits:(id)arg2;
-- (id)newInitialParagraph;
+- (id)newInitialParagraphIn:(id)arg1;
 - (_Bool)fitsBelow:(id)arg1 alignment:(unsigned long long)arg2 spacing:(double)arg3 from:(int)arg4;
 - (_Bool)line:(id)arg1 isAlignedWith:(id)arg2;
 - (unsigned long long)alignmentOf:(id)arg1 and:(id)arg2 and:(id)arg3;

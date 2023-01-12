@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *_timestamp;
     MISSING_TYPE *_value;
+    MISSING_TYPE *_crdt;
+    MISSING_TYPE *_partialCrdt;
 }
 
 @end

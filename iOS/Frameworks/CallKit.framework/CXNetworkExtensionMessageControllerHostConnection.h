@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CallKit/CXNetworkExtensionMessageControllerHostProtocol-Protocol.h>
-
 @class NSSet, NSString, NSXPCConnection;
 @protocol CXNetworkExtensionMessageControllerHostConnectionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CXNetworkExtensionMessageControllerHostConnection : NSObject <CXNetworkExtensionMessageControllerHostProtocol>
+@interface CXNetworkExtensionMessageControllerHostConnection : NSObject
 {
     struct os_unfair_lock_s _accessorLock;
     id <CXNetworkExtensionMessageControllerHostConnectionDelegate> _delegate;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <PDFKit/PDFThumbnailCollectionViewInterface-Protocol.h>
-
 @class NSMutableArray, PDFPageIconLayer, PDFThumbnailView;
 
 __attribute__((visibility("hidden")))
-@interface PDFIconsView : UIView <PDFThumbnailCollectionViewInterface>
+@interface PDFIconsView : UIView
 {
     PDFThumbnailView *_thumbnailView;
     NSMutableArray *_icons;

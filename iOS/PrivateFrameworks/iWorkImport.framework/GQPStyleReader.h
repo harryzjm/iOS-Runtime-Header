@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQPObjectHandler-Protocol.h>
-#import <iWorkImport/GQPObjectReader-Protocol.h>
-
 @class GQDSStyle, GQDSStylesheet, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQPStyleReader : NSObject <GQPObjectReader, GQPObjectHandler>
+@interface GQPStyleReader : NSObject
 {
     int mStyleType;
     struct __CFArray *mEntries;

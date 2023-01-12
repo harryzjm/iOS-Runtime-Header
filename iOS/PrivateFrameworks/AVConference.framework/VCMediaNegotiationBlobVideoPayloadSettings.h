@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobVideoPayloadSettings : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobVideoPayloadSettings : PBCodable
 {
     NSString *_featureString;
     unsigned int _parameterSet;

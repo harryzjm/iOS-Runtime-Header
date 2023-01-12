@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class PDFAnnotation, PDFPageView, PDFView, UITextView;
+@class PDFAnnotation, PDFPageView, PDFTextWidgetTextView, PDFView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface PDFKitTextViewPrivate : NSObject
 {
-    UITextView *textView;
+    UIView *topLevelView;
+    PDFTextWidgetTextView *textView;
     PDFView *pdfView;
     PDFPageView *pdfPageView;
     PDFAnnotation *annotation;

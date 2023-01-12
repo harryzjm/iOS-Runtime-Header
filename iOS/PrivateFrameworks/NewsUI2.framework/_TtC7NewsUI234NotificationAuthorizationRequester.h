@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI234NotificationAuthorizationRequester : NSObject
 {
     MISSING_TYPE *notificationService;
+    MISSING_TYPE *uid;
 }
 
 - (void).cxx_destruct;

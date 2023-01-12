@@ -6,11 +6,10 @@
 
 #import <Foundation/NSUserDefaults.h>
 
-#import <Sleep/HKSPUserDefaults-Protocol.h>
-
 @class NSString;
 
-@interface NSUserDefaults (HKSPSleep) <HKSPUserDefaults>
+@interface NSUserDefaults (HKSPSleep)
++ (id)hksp_springBoardUserDefaults;
 + (id)hksp_analyticsUserDefaults;
 + (id)hksp_internalUserDefaults;
 + (id)hksp_sleepdUserDefaults;
@@ -18,10 +17,13 @@
 - (float)hksp_debugSleepModeAlpha:(_Bool *)arg1;
 - (void)hksp_setDebugSleepModeEnabled:(_Bool)arg1;
 - (_Bool)hksp_debugSleepModeEnabled;
+- (void)hksp_setLockScreenDebugMode:(_Bool)arg1;
+- (_Bool)hksp_lockScreenDebugMode;
 - (void)hksp_setLockScreenBlockHomeGesture:(_Bool)arg1;
 - (_Bool)hksp_lockScreenBlockHomeGesture;
 - (void)hksp_setLockScreenUnlockToHome:(_Bool)arg1;
 - (_Bool)hksp_lockScreenUnlockToHome;
+- (void)hksp_reset;
 - (void)hksp_synchronizeKeys:(id)arg1;
 - (void)hksp_synchronize;
 - (void)hksp_removeObjectsForKeys:(id)arg1;

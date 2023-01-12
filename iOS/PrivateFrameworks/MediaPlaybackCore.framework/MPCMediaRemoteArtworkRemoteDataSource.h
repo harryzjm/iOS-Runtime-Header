@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPArtworkDataSource-Protocol.h>
-
 @class MPCMediaRemoteController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCMediaRemoteArtworkRemoteDataSource : NSObject <MPArtworkDataSource>
+@interface MPCMediaRemoteArtworkRemoteDataSource : NSObject
 {
     MPCMediaRemoteController *_controller;
 }

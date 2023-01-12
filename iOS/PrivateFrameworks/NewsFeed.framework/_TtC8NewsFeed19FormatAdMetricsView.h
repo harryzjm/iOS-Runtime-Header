@@ -8,8 +8,10 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed19FormatAdMetricsView : UIView
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *contentView;
     MISSING_TYPE *metricsView;
     MISSING_TYPE *privacyMarker;

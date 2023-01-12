@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <HomeUI/HUQuickControlInteractiveView-Protocol.h>
-
 @class HUQuickControlViewProfile, MTMaterialView, NSString;
 @protocol HUQuickControlViewInteractionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _HUQuickControlControllableHostView : UIView <HUQuickControlInteractiveView>
+@interface _HUQuickControlControllableHostView : UIView
 {
     _Bool _userInteractionActive;
     HUQuickControlViewProfile *_profile;

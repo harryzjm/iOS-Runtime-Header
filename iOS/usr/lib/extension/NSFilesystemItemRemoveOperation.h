@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSOperation.h"
+
 @class NSError, NSFileManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSFilesystemItemRemoveOperation
+@interface NSFilesystemItemRemoveOperation : NSOperation
 {
     NSFileManager *_fm;
     NSString *_removePath;

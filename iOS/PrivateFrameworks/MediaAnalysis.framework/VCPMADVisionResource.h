@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VCPMADResource.h"
+
 @class NSObject, VNSession;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCPMADVisionResource
+@interface VCPMADVisionResource : VCPMADResource
 {
     NSObject<OS_dispatch_queue> *_queue;
     VNSession *_session;

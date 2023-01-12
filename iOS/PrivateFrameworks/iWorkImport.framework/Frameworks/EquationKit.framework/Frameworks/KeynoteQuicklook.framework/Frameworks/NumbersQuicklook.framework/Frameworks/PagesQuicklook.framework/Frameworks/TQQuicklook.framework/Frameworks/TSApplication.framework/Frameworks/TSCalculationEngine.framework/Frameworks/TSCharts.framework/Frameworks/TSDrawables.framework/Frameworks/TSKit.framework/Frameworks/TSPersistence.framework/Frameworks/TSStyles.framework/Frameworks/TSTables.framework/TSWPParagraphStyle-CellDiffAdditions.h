@@ -6,9 +6,7 @@
 
 #import <TSText/TSWPParagraphStyle.h>
 
-#import <TSTables/TSTCellDiffing-Protocol.h>
-
-@interface TSWPParagraphStyle (CellDiffAdditions) <TSTCellDiffing>
+@interface TSWPParagraphStyle (CellDiffAdditions)
 + (id)cellDiffProperties;
 + (id)defaultStyleWithDefaultPropertiesInContext:(id)arg1;
 - (id)objectByRemovingPropertiesInMap:(id)arg1 addingPropertiesInMap:(id)arg2 updateInverseResetPropertyMap:(id)arg3 updateInverseSetPropertyMap:(id)arg4 optionalConcurrentStylesheet:(id)arg5;

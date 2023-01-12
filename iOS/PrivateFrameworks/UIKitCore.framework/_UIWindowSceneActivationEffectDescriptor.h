@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIContentEffectDescriptor-Protocol.h>
-
 @class NSArray, NSString, UITargetedPreview;
 
 __attribute__((visibility("hidden")))
-@interface _UIWindowSceneActivationEffectDescriptor : NSObject <_UIContentEffectDescriptor>
+@interface _UIWindowSceneActivationEffectDescriptor : NSObject
 {
     UITargetedPreview *_targetedPreview;
 }

@@ -18,6 +18,7 @@
 - (id)hk_codableError;
 - (id)hd_persistentMessage;
 - (double)hd_cloudKitRetryDelay;
+- (void)hd_enumerateCloudKitPartialErrorsByKeyWithHandler:(CDUnknownBlockType)arg1;
 - (void)hd_enumerateCloudKitPartialErrorsWithHandler:(CDUnknownBlockType)arg1;
 - (id)hd_errorForAnalytics;
 - (id)hd_errorSurfacingFatalCloudKitPartialFailureForAnalytics;

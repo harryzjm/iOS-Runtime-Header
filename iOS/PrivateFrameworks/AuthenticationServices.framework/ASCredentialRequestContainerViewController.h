@@ -6,46 +6,38 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AuthenticationServices/UINavigationControllerDelegate-Protocol.h>
-#import <AuthenticationServices/UIViewControllerTransitioningDelegate-Protocol.h>
-
-@class NSString, UITapGestureRecognizer, UIVisualEffectView;
+@class NSLayoutConstraint, NSString, UITapGestureRecognizer, UIVisualEffectView;
 @protocol ASCredentialRequestContainerViewControllerDelegate, ASCredentialRequestPaneViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface ASCredentialRequestContainerViewController : UIViewController <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
+@interface ASCredentialRequestContainerViewController : UIViewController
 {
     UITapGestureRecognizer *_tapGestureRecognizer;
+    NSLayoutConstraint *_sheetHeightConstraint;
+    NSLayoutConstraint *_sheetPresentedConstraint;
     UIViewController *_rootViewController;
     id <ASCredentialRequestContainerViewControllerDelegate> _delegate;
     id <ASCredentialRequestPaneViewControllerDelegate> _paneDelegate;
     UIVisualEffectView *_blurBackgroundView;
-    struct CGSize _containerContentSize;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) struct CGSize containerContentSize; // @synthesize containerContentSize=_containerContentSize;
 @property(retain, nonatomic) UIVisualEffectView *blurBackgroundView; // @synthesize blurBackgroundView=_blurBackgroundView;
 @property(nonatomic) __weak id <ASCredentialRequestPaneViewControllerDelegate> paneDelegate; // @synthesize paneDelegate=_paneDelegate;
 @property(nonatomic) __weak id <ASCredentialRequestContainerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
+@property(readonly, nonatomic) UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
-- (void)setContainerContentSize:(struct CGSize)arg1 animated:(_Bool)arg2;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)_setPaneDelegate:(id)arg1 forViewController:(id)arg2;
 - (void)_clearPaneDelegateForViewController:(id)arg1;
 - (void)_setPaneDelegateForViewController:(id)arg1;
 - (void)_setPaneDelegateForTopViewController;
-- (struct CGRect)_dismissalFrameForContentSize:(struct CGSize)arg1;
-- (struct CGRect)_layoutFrameForContentSize:(struct CGSize)arg1;
-- (void)_layoutContainerView:(_Bool)arg1;
 - (_Bool)_shouldDismiss;
 - (void)_handleTapGesture:(id)arg1;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithRootViewController:(id)arg1;

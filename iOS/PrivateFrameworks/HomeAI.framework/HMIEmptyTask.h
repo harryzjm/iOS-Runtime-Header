@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HMITask.h"
+
 __attribute__((visibility("hidden")))
-@interface HMIEmptyTask
+@interface HMIEmptyTask : HMITask
 {
+    double _duration;
 }
 
-- (void)main;
+@property(readonly) double duration; // @synthesize duration=_duration;
+- (void)mainInsideAutoreleasePool;
+- (id)initWithTaskID:(int)arg1 duration:(double)arg2;
 
 @end
 

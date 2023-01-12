@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/NSCopying-Protocol.h>
-
 @class HDDataOriginProvenance, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HDDataProvenanceKey : NSObject <NSCopying>
+@interface _HDDataProvenanceKey : NSObject
 {
     unsigned long long _hash;
     HDDataOriginProvenance *_dataProvenance;

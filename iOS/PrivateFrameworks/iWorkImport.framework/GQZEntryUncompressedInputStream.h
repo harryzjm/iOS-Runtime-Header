@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQZEntryInputStream-Protocol.h>
-
 @class NSString;
 @protocol GQZArchiveInputStream;
 
-__attribute__((visibility("hidden")))
-@interface GQZEntryUncompressedInputStream : NSObject <GQZEntryInputStream>
+@interface GQZEntryUncompressedInputStream : NSObject
 {
     long long mOffset;
     long long mEnd;

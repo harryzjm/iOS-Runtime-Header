@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/NSParagraphStyle.h>
+#import "NSParagraphStyle.h"
 
 @interface NSParagraphStyle (UIKitAdditions)
 - (long long)_ui_resolvedWritingDirectionForUserInterfaceLayoutDirection:(long long)arg1;

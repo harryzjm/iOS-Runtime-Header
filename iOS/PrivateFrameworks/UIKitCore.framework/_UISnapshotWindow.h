@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIWindow.h"
+
 __attribute__((visibility("hidden")))
-@interface _UISnapshotWindow
+@interface _UISnapshotWindow : UIWindow
 {
+    _Bool __extendsScreenSceneLifetime;
 }
 
 + (_Bool)_isSystemWindow;
+@property _Bool _extendsScreenSceneLifetime; // @synthesize _extendsScreenSceneLifetime=__extendsScreenSceneLifetime;
+- (_Bool)_shouldAdjustSizeClassesAndResizeWindow;
 - (_Bool)_alwaysGetsContexts;
 - (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (_Bool)_canActAsKeyWindowForScreen:(id)arg1;

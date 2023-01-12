@@ -10,7 +10,7 @@
 
 @interface CKXStructProxyChildCache : NSObject
 {
-    struct unordered_map<unsigned long, CKXProxyBase *, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<const unsigned long, CKXProxyBase *>>> fieldToProxy;
+    struct unordered_map<unsigned long long, CKXProxyBase *, std::hash<unsigned long long>, std::equal_to<unsigned long long>, std::allocator<std::pair<const unsigned long long, CKXProxyBase *>>> fieldToProxy;
     CKXStructProxyBase *_proxy;
 }
 

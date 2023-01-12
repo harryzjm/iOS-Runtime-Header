@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIEventObserver-Protocol.h>
+#import "UIView.h"
 
 @class NSString, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface UIEditingOverlayGestureView <_UIEventObserver>
+@interface UIEditingOverlayGestureView : UIView
 {
     UIWindow *_previousWindow;
 }

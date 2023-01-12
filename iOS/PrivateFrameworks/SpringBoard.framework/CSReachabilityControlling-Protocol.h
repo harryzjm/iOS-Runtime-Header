@@ -7,6 +7,7 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @protocol CSReachabilityControlling <NSObject>
+- (double)effectiveReachabilityYOffset;
 - (void)deactivateReachability;
 @end
 

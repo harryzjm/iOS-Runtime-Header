@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-#import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
-
 @class NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface MPCPrivateListeningStateSource : NSObject <NSCopying, NSSecureCoding>
+@interface MPCPrivateListeningStateSource : NSObject
 {
     NSNumber *_overrideValue;
     NSNumber *_currentValue;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MKCompassDirectionImageKey : NSObject <NSCopying>
+@interface _MKCompassDirectionImageKey : NSObject
 {
     NSString *_headingString;
     long long _compassViewStyle;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-#import <UIKitCore/_UIStatusBarPersistentAnimation-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, _UIStatusBarCycleLayerAnimation;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarCycleAnimation : NSObject <CAAnimationDelegate, _UIStatusBarPersistentAnimation>
+@interface _UIStatusBarCycleAnimation : NSObject
 {
     _Bool _stopsAfterReversing;
     _Bool _visible;

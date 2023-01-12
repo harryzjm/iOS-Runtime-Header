@@ -6,11 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCPProtoLivePhotoVariationParams : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoLivePhotoVariationParams : PBCodable
 {
     int _errorCode;
     int _loopFadeLen;

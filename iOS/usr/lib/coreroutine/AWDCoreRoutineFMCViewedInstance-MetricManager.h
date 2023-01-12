@@ -6,11 +6,9 @@
 
 #import <AWDSupportFramework/AWDCoreRoutineFMCViewedInstance.h>
 
-#import <coreroutine/RTMetricManagerMetricIdProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AWDCoreRoutineFMCViewedInstance (MetricManager) <RTMetricManagerMetricIdProtocol>
+@interface AWDCoreRoutineFMCViewedInstance (MetricManager)
 @property(readonly, copy) NSString *description;
 - (_Bool)valid:(id *)arg1;
 - (id)_init;

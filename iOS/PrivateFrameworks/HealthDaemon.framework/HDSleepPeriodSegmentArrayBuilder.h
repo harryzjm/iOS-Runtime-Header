@@ -6,24 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class HKDateIntervalTree, NSDate, NSMutableArray;
+@class HDProfile, HKCalendarCache, NSString;
+@protocol HDStatisticsCollectionCalculatorSourceOrderProvider;
 
 __attribute__((visibility("hidden")))
 @interface HDSleepPeriodSegmentArrayBuilder : NSObject
 {
-    NSMutableArray *_segments;
-    long long _category;
-    double _minimumInterSegmentTimeInterval;
-    NSDate *_minDate;
-    NSDate *_maxDate;
-    HKDateIntervalTree *_sampleIntervals;
-    _Bool _containsAppleSleepTrackingData;
+    HDProfile *_profile;
+    long long _morningIndex;
+    unsigned long long _options;
+    HKCalendarCache *_calendarCache;
+    id <HDStatisticsCollectionCalculatorSourceOrderProvider> _sourceOrderProvider;
 }
 
 - (void).cxx_destruct;
-- (id)finish;
-- (void)addOrderedSample:(id)arg1;
-- (id)initWithCategory:(long long)arg1;
+- (id)sleepPeriodSegmentsFromSamples:(id)arg1;
+- (id)initProfile:(id)arg1 morningIndex:(long long)arg2 options:(unsigned long long)arg3 calendarCache:(id)arg4 sourceOrderProvider:(id)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

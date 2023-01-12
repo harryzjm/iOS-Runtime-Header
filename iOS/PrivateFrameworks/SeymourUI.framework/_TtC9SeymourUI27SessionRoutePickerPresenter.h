@@ -16,12 +16,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *remoteParticipantClient;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *systemRoutingController;
+    MISSING_TYPE *systemOutputControlDeviceDiscovery;
     MISSING_TYPE *sessionOrigin;
     MISSING_TYPE *discoveredParticipants;
     MISSING_TYPE *passwordController;
     MISSING_TYPE *currentSelection;
     MISSING_TYPE *targetSelection;
-    MISSING_TYPE *hideAirPlayRoutes;
     MISSING_TYPE *display;
 }
 

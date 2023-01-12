@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GCKeyboardEventData : NSObject <NSSecureCoding>
+@interface GCKeyboardEventData : NSObject
 {
     _Bool _pressed;
     unsigned short _keyCode;

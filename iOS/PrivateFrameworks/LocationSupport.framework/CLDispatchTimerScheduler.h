@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LocationSupport/CLTimerScheduler-Protocol.h>
-
 @class CLTimer;
 @protocol OS_dispatch_source;
 
-@interface CLDispatchTimerScheduler : NSObject <CLTimerScheduler>
+@interface CLDispatchTimerScheduler : NSObject
 {
     CLTimer *timer;
     NSObject<OS_dispatch_source> *_source;

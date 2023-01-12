@@ -11,8 +11,7 @@
 - (void)didOpenStickersAppFromRecents;
 - (void)didTapStickerFromRecents:(NSString *)arg1 withAvatarIdentifier:(NSString *)arg2;
 - (void)didChangeCurrentAvatarInStickers:(id <AVTAvatarRecord>)arg1;
-- (void)didTapStickerFromStickersApp:(NSString *)arg1 withAvatar:(id <AVTAvatarRecord>)arg2;
-- (void)didPeelOffStickerFromStickersApp:(NSString *)arg1 withAvatar:(id <AVTAvatarRecord>)arg2;
+- (void)didSelectStickerFromStickersApp:(NSString *)arg1 withAvatar:(id <AVTAvatarRecord>)arg2;
 - (void)didStopFaceTrackingInCarousel;
 - (void)didChangeCurrentAvatarInCarousel:(id <AVTAvatarRecord>)arg1;
 - (void)didStartFaceTrackingInCarouselWithAvatar:(id <AVTAvatarRecord>)arg1;

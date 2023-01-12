@@ -10,6 +10,7 @@
 @property(readonly, nonatomic) unsigned long long unsatisfiedConstraints;
 @property(readonly, nonatomic) unsigned long long representedConstraints;
 @property(nonatomic) id <SUInstallationConstraintMonitorDelegate> delegate;
+- (unsigned long long)unsatisfiedConstraintsWithIgnorableConstraints:(unsigned long long)arg1;
 - (_Bool)isSatisfied;
 @end
 

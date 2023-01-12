@@ -8,6 +8,10 @@
 
 @interface UNMutableNotificationContent (EmergencyAlerts)
 - (void)ea_setPropertiesForCellBroadcastMessage:(id)arg1 withActivePhoneCall:(_Bool)arg2;
+- (void)ea_updateUserInfo:(id)arg1 withMessageDictionary:(id)arg2;
+- (id)ea_getUpdatedBodyString:(id)arg1 withMessageDictionary:(id)arg2;
+- (void)ea_setAlertCategory:(id)arg1;
+- (void)ea_updateAlertCategory:(id)arg1;
 - (id)ea_bundleForBundleIdentifier:(id)arg1;
 - (id)ea_externalVibrationPatternFileURLForVibration:(id)arg1 inBundle:(id)arg2;
 - (id)ea_externalToneFileURLForTone:(id)arg1 inBundle:(id)arg2;

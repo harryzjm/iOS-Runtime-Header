@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDKeyedObject-Protocol.h>
-
 @class CHDChart, CHDChartType, CHDData, CHDDataLabel, CHDDataValue, CHDErrorBar, CHDFormula, EDCollection, EDKeyedCollection, NSString, OADGraphicProperties;
 
 __attribute__((visibility("hidden")))
-@interface CHDSeries : NSObject <EDKeyedObject>
+@interface CHDSeries : NSObject
 {
     CHDChart *mChart;
     CHDChartType *mChartType;

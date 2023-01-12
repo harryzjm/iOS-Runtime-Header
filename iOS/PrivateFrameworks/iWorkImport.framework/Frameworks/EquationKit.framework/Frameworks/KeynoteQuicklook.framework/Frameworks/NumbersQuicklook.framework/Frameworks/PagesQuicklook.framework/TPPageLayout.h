@@ -6,15 +6,10 @@
 
 #import <TSText/TSWPPageLayout.h>
 
-#import <PagesQuicklook/TPAttachmentLayoutParent-Protocol.h>
-#import <PagesQuicklook/TSWPAttachmentNumberProviding-Protocol.h>
-#import <PagesQuicklook/TSWPColumnMetrics-Protocol.h>
-#import <PagesQuicklook/TSWPLayoutParent-Protocol.h>
-
 @class NSString, TPBodyLayout, TPiOSMarginAdjustLayout, TSDFill, TSWPPadding;
 @protocol TPSectionTemplateDrawableProvider;
 
-@interface TPPageLayout : TSWPPageLayout <TSWPLayoutParent, TSWPAttachmentNumberProviding, TSWPColumnMetrics, TPAttachmentLayoutParent>
+@interface TPPageLayout : TSWPPageLayout
 {
     _Bool _validating;
     TPiOSMarginAdjustLayout *_marginAdjustLayout;
@@ -43,12 +38,13 @@
 - (void)validate;
 - (unsigned long long)pageCountForAttachment:(id)arg1;
 - (unsigned long long)pageNumberForAttachment:(id)arg1;
-- (int)naturalAlignmentForTextLayout:(id)arg1;
+- (long long)naturalAlignmentForTextLayout:(id)arg1;
 - (double)maxAutoGrowBlockHeightForTextLayout:(id)arg1;
 - (double)maxAutoGrowLineWidthForTextLayout:(id)arg1;
 - (Class)repClassForTextLayout:(id)arg1;
 - (id)dependentsOfTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
+- (_Bool)forceParentAutosizedFrameForTextLayout:(id)arg1;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
 - (void)invalidateForAutosizingTextLayout:(id)arg1;
 - (int)verticalAlignmentForTextLayout:(id)arg1;

@@ -6,10 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <Intents/INCodableAttributeRelationComparing-Protocol.h>
-#import <Intents/INJSONSerializable-Protocol.h>
-
-@interface NSString (Readable) <INJSONSerializable, INCodableAttributeRelationComparing>
+@interface NSString (Readable)
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (id)deferredLocalizedIntentsStringWithFormat:(id)arg1 fromTable:(id)arg2 bundle:(id)arg3;
 + (id)deferredLocalizedIntentsStringWithFormat:(id)arg1 fromTable:(id)arg2 arguments:(char *)arg3;
@@ -19,6 +16,7 @@
 - (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)localizeForLanguage:(id)arg1;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_allowedUnarchiverClassesForProto;
 - (id)_intents_decodeFromProto;
 - (id)_intents_encodeForProto;
 - (_Bool)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;

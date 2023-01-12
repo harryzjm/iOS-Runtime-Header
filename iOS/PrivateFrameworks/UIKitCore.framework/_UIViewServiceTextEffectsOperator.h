@@ -6,18 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIHostedWindowDelegate-Protocol.h>
-#import <UIKitCore/_UIViewServiceDeputy-Protocol.h>
-#import <UIKitCore/_UIViewServiceDeputyRotationDelegate-Protocol.h>
-#import <UIKitCore/_UIViewServiceTextEffectsOperator_RemoteViewControllerInterface-Protocol.h>
-
 @class NSArray, NSString, _UIAsyncInvocation, _UIHostedWindow;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceTextEffectsOperator : NSObject <_UIHostedWindowDelegate, _UIViewServiceTextEffectsOperator_RemoteViewControllerInterface, _UIViewServiceDeputy, _UIViewServiceDeputyRotationDelegate>
+@interface _UIViewServiceTextEffectsOperator : NSObject
 {
-    int __automatic_invalidation_retainCount;
-    _Bool __automatic_invalidation_invalidated;
     id _remoteViewControllerProxy;
     _Bool _wasInvalidated;
     _UIAsyncInvocation *_prepareForDisconnectionInvocation;
@@ -34,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)XPCInterface;
++ (void)initialize;
 + (_Bool)_shouldAddServiceOperator;
 + (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2;
 - (void).cxx_destruct;
@@ -45,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)forceSyncToStatusBarOrientation;
 - (id)invalidate;
 - (void)__prepareForDisconnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)__hostDidReceiveGestureDirection:(long long)arg1 authenticationMessage:(id)arg2;
 - (void)__hostViewWillDisappear:(_Bool)arg1;
 - (void)__hostViewWillAppear:(_Bool)arg1;
 - (void)_viewServiceHostWillEnterForeground:(id)arg1;
@@ -63,16 +58,10 @@ __attribute__((visibility("hidden")))
 - (void)hostedWindow:(id)arg1 didSetFirstResponder:(id)arg2;
 - (void)makeHostWindowKey;
 - (void)dealloc;
+- (void)_objc_initiateDealloc;
 - (void)_invalidateUnconditionallyThen:(CDUnknownBlockType)arg1;
 - (void)_prepareForDisconnectionUnconditionallyThen:(CDUnknownBlockType)arg1;
 - (id)_queue;
-- (id)autorelease;
-- (_Bool)_isDeallocating;
-- (_Bool)_tryRetain;
-- (unsigned long long)retainCount;
-- (oneway void)release;
-- (id)retain;
-- (int)__automatic_invalidation_logic;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

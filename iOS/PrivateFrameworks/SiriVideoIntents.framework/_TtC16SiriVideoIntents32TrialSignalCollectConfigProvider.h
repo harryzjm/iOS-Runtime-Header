@@ -10,10 +10,7 @@
 
 @interface _TtC16SiriVideoIntents32TrialSignalCollectConfigProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *currentConfig;
-    MISSING_TYPE *currentConfigLock;
-    MISSING_TYPE *trialClient;
-    MISSING_TYPE *trialNamespace;
+    MISSING_TYPE *trialProvider;
 }
 
 @end

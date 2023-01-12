@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitIncident-Protocol.h>
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 @class GEOPBTransitIncident, NSArray, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitIncident : NSObject <GEOTransitIncident, NSSecureCoding>
+@interface _GEOTransitIncident : NSObject
 {
     GEOPBTransitIncident *_incident;
 }

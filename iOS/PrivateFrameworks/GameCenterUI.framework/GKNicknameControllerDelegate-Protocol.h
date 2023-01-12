@@ -14,6 +14,7 @@
 - (void)nicknameUpdateAvatarImage:(NSString *)arg1;
 - (void)nicknameTextDidChangeWithMessage:(NSString *)arg1;
 - (void)nicknameUpdateRequestCompletedWithStatus:(NSString *)arg1 error:(NSError *)arg2;
+- (void)nicknameWillbeginUpdating;
 - (void)nicknameDidResignFirstResponder;
 - (void)nicknameDidBecomeFirstResponder;
 - (_Bool)nicknameShouldBeginEditing;

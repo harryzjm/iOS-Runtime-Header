@@ -15,6 +15,7 @@
 @property(readonly, nonatomic, getter=isClientEntitled) _Bool clientEntitled;
 @property(readonly, nonatomic) NSManagedObjectID *objectID;
 @property(readonly, nonatomic) NSString *managedEntityName;
+- (void)didSendChangeToServiceHandlerWithResult:(_Bool)arg1;
 - (_Bool)prepareForPhotoLibraryCheck:(PHPhotoLibrary *)arg1 error:(id *)arg2;
 - (_Bool)prepareForServicePreflightCheck:(id *)arg1;
 - (id)initWithXPCDict:(NSObject<OS_xpc_object> *)arg1 request:(PHPerformChangesRequest *)arg2 clientAuthorization:(id <PLClientAuthorization>)arg3;

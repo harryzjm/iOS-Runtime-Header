@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSKit/NSCopying-Protocol.h>
-
 @class NSArray, PKInk, PKStroke;
 
-@interface TSKPKStroke : NSObject <NSCopying>
+@interface TSKPKStroke : NSObject
 {
     unsigned long long _hash;
     double _pencilAnnotationDrawingScale;

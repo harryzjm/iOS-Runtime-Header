@@ -6,11 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class CKShare, NSError, NSString;
+@class CKShare, FPSandboxingURLWrapper, NSError, NSString;
 
 @protocol _UIShareInvitationViewControllerHost <NSObject>
 - (void)_cloudSharingControllerDidChooseTransport:(NSString *)arg1;
+- (void)_cloudSharingControllerDidActivateAddPeopleWithRemoteSourceX:(double)arg1 y:(double)arg2 width:(double)arg3 height:(double)arg4;
+- (void)_cloudSharingControllerDidActivateShowActivityController;
 - (void)_cloudSharingControllerDidActivateShowSharedFolder;
+- (void)_cloudSharingControllerDidUpdateRootFolderURL:(FPSandboxingURLWrapper *)arg1;
 - (void)_cloudSharingControllerDidModifyPrimarySwitch:(_Bool)arg1;
 - (void)_cloudSharingControllerDidModifySecondarySwitch:(_Bool)arg1;
 - (void)_requestContentSize:(struct CGSize)arg1;

@@ -18,12 +18,19 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool supportsBusinessChat; // @synthesize supportsBusinessChat=_supportsBusinessChat;
+@property(readonly, nonatomic) _Bool supportsSharing;
+@property(readonly, nonatomic) _Bool supportsInlineRatings;
+@property(readonly, nonatomic) _Bool canShowDirections;
+@property(readonly, nonatomic) _Bool supportsPlaceEnrichment;
 @property(readonly, nonatomic) _Bool showEditAddressForHome;
+@property(readonly, nonatomic) _Bool supportsPhotoOnlyDataCollection;
+@property(readonly, nonatomic) _Bool supportsAddingPhotos;
 @property(readonly, nonatomic) _Bool supportsCallToAction;
-@property(readonly, nonatomic) _Bool supportsQuickLinks;
 @property(readonly, nonatomic) _Bool supportsPlaceDescription;
 @property(readonly, nonatomic) _Bool supportsMessageHours;
 @property(readonly, nonatomic) _Bool supportsShowingCoordinates;
+@property(readonly, nonatomic) _Bool supportsReportsInReview;
+@property(readonly, nonatomic) _Bool supportsInlineReportAnIssue;
 @property(readonly, nonatomic) _Bool supportsReportAnIssue;
 @property(readonly, nonatomic) _Bool hasRatingsOrReviews;
 @property(readonly, nonatomic) _Bool allowTransitLineSelection;
@@ -33,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsPlaceAttribution;
 @property(readonly, nonatomic) _Bool supportsBrowseCategory;
 @property(readonly, nonatomic) _Bool shouldShowRatingsAndReviewsModule;
-@property(readonly, nonatomic) _Bool supportsAppleRatingsCategories;
+- (_Bool)_hasAppleRatingsCategories;
 @property(readonly, nonatomic) _Bool supportsAnnotatedTextList;
 @property(readonly, nonatomic) _Bool supportsAnnotatedPhotos;
 @property(readonly, nonatomic) _Bool supportsVenueTextInfo;
@@ -44,7 +51,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool suportsOfficialApp;
 @property(readonly, nonatomic) _Bool supportsHeaderContainment;
 @property(readonly, nonatomic) _Bool supportsRelatedPlaces;
-@property(readonly, nonatomic) _Bool supportsAppleRatings;
 @property(readonly, nonatomic) _Bool supportsAmenities;
 @property(readonly, nonatomic) _Bool supportsPhotoSlider;
 - (id)initWithMapItem:(id)arg1 options:(unsigned long long)arg2;

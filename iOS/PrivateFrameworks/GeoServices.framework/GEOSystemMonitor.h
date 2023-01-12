@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)removeSystemSleepObserver:(id)arg1;
 - (void)addSystemSleepObserver:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
+- (_Bool)isBackgroundAppRefreshEnabledForBundleIdentifier:(id)arg1 isDisabledGlobally:(_Bool *)arg2;
 - (id)init;
 
 @end

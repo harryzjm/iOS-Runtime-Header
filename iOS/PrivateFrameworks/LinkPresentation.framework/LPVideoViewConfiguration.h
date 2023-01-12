@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface LPVideoViewConfiguration : NSObject <NSCopying>
+@interface LPVideoViewConfiguration : NSObject
 {
     _Bool _disablePlayback;
     _Bool _disablePlaybackControls;

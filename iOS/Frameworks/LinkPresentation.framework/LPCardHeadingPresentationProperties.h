@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "LPWebLinkPresentationProperties.h"
+
 __attribute__((visibility("hidden")))
-@interface LPCardHeadingPresentationProperties
+@interface LPCardHeadingPresentationProperties : LPWebLinkPresentationProperties
 {
 }
 

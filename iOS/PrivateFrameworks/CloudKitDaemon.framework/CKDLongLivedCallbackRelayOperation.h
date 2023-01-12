@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/CKDOperationInfoDelegate-Protocol.h>
+#import "CKDOperation.h"
 
 @class NSString;
 
-@interface CKDLongLivedCallbackRelayOperation <CKDOperationInfoDelegate>
+@interface CKDLongLivedCallbackRelayOperation : CKDOperation
 {
 }
 

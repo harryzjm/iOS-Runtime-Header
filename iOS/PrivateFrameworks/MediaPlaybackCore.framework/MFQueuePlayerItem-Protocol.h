@@ -5,8 +5,11 @@
 //
 
 #import <MediaPlaybackCore/MFPlayerItem-Protocol.h>
+#import <MediaPlaybackCore/MFTransitionInformationProviding-Protocol.h>
 
-@protocol MFQueuePlayerItem <MFPlayerItem>
+@protocol MFQueuePlayerItem <MFPlayerItem, MFTransitionInformationProviding>
+@property(readonly, nonatomic) _Bool isAlwaysLive;
+@property(readonly, nonatomic) double playbackStartTime;
 @property(nonatomic) double playbackStartTimeOverride;
 @property(readonly, nonatomic) _Bool isMovieOrTVShow;
 - (void)reset;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class ICPBDGSFinishDelegationRequest, ICPBDGSStartDelegationRequest;
 
 __attribute__((visibility("hidden")))
-@interface ICPBDGSRequest : PBRequest <NSCopying>
+@interface ICPBDGSRequest : PBRequest
 {
     ICPBDGSFinishDelegationRequest *_finishDelegationRequest;
     ICPBDGSStartDelegationRequest *_startDelegationRequest;

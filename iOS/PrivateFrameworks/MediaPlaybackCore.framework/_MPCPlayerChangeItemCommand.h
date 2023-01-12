@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlaybackCore/MPCPlayerChangeItemCommand-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCPlayerChangeItemCommand <MPCPlayerChangeItemCommand>
+@interface _MPCPlayerChangeItemCommand
 {
     unsigned long long _changeItemSupport;
 }

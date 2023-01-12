@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreLocation/NSCopying-Protocol.h>
-
-@interface CLVehicleHeadingInternal : NSObject <NSCopying>
+@interface CLVehicleHeadingInternal : NSObject
 {
     struct {
         double trueHeading;

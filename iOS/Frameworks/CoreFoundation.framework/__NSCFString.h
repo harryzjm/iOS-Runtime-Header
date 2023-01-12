@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)replaceOccurrencesOfString:(id)arg1 withString:(id)arg2 options:(unsigned long long)arg3 range:(struct _NSRange)arg4;
 - (void)appendCharacters:(const unsigned short *)arg1 length:(unsigned long long)arg2;
 - (void)setString:(id)arg1;

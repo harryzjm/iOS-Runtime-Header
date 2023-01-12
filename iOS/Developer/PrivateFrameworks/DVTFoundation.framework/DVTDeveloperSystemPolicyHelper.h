@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTStackBacktrace, NSString, NSXPCConnection;
 
-@interface DVTDeveloperSystemPolicyHelper : NSObject <DVTInvalidation>
+@interface DVTDeveloperSystemPolicyHelper : NSObject
 {
     NSXPCConnection *_connection;
 }

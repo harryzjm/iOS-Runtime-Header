@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UISpringLoadedInteractionEffect-Protocol.h>
-
 @class NSString;
 @protocol UISpringLoadedInteractionEffect;
 
 __attribute__((visibility("hidden")))
-@interface UIInterfaceActionRepresentationViewSpringLoadedEffect : NSObject <UISpringLoadedInteractionEffect>
+@interface UIInterfaceActionRepresentationViewSpringLoadedEffect : NSObject
 {
     id <UISpringLoadedInteractionEffect> _blinkEffect;
 }

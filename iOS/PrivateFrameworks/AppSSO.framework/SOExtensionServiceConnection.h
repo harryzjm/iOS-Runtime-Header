@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppSSO/SORemoteExtensionServiceProtocol-Protocol.h>
-
 @class NSString, NSXPCConnection, NSXPCListenerEndpoint;
 
 __attribute__((visibility("hidden")))
-@interface SOExtensionServiceConnection : NSObject <SORemoteExtensionServiceProtocol>
+@interface SOExtensionServiceConnection : NSObject
 {
     NSXPCConnection *_xpcConnection;
     NSXPCListenerEndpoint *_serviceXpcEndpoint;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/NSSecureCoding-Protocol.h>
-
 @class DDScannerResult, NSArray, VKQuad;
 
 __attribute__((visibility("hidden")))
-@interface VKCMRCMADWrappedDataDetectorElement <NSSecureCoding>
+@interface VKCMRCMADWrappedDataDetectorElement
 {
     NSArray *_boundingQuads;
     DDScannerResult *_scannerResult;

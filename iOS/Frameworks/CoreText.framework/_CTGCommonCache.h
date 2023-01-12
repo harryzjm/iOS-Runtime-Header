@@ -9,11 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface _CTGCommonCache : NSObject
 {
-    struct type _cacheBytes;
+    struct GCommonCache _cache;
 }
 
-- (void)dealloc;
-- (id)init;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 
 @end
 

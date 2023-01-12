@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSString, UIImage;
 @protocol MRURoutingSubtitleControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -22,12 +22,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MRURoutingSubtitleControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
 - (long long)nextAvailableTextState;
+- (void)setText:(id)arg1 icon:(id)arg2 forState:(long long)arg3 accessory:(long long)arg4;
 - (void)setText:(id)arg1 forState:(long long)arg2 accessory:(long long)arg3;
+- (void)setText:(id)arg1 icon:(id)arg2 forState:(long long)arg3;
 - (void)setText:(id)arg1 forState:(long long)arg2;
 - (void)transitionToNextAvailableState;
 - (void)prepareForReuse;
 @property(readonly, nonatomic) _Bool canTransitionToNextState;
 @property(readonly, nonatomic) long long accessory;
+@property(readonly, nonatomic) UIImage *icon;
 @property(readonly, copy, nonatomic) NSString *text;
 @property(readonly, nonatomic) _Bool hasText;
 - (id)description;

@@ -9,6 +9,8 @@
 @interface UIImage (LPExtras)
 + (id)_lp_systemImageNamed:(id)arg1;
 + (id)_lp_createImageWithCGImage:(struct CGImage *)arg1;
+- (_Bool)_lp_isSymbolImage;
+- (_Bool)_lp_isTemplate;
 - (_Bool)_lp_hasTransparency;
 - (struct CGSize)_lp_pixelSize;
 - (id)_lp_imageByApplyingSymbolConfiguration:(id)arg1;

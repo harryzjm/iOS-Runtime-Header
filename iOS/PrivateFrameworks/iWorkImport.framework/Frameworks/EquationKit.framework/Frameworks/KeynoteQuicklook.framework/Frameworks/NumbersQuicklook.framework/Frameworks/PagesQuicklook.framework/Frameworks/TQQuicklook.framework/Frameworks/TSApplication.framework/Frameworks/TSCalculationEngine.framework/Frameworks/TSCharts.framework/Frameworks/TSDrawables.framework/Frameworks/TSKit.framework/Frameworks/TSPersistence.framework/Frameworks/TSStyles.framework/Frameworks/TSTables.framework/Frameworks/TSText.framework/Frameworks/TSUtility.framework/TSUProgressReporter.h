@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/NSProgressReporting-Protocol.h>
-
 @class NSProgress, NSString;
 
-@interface TSUProgressReporter : NSObject <NSProgressReporting>
+@interface TSUProgressReporter : NSObject
 {
     NSProgress *_progress;
 }

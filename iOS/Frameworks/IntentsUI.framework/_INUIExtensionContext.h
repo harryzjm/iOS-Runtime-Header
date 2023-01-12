@@ -6,13 +6,11 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <IntentsUI/_INUIExtensionContextVending-Protocol.h>
-
 @class NSString, _INUIExtensionContextState;
 @protocol _INUIRemoteViewControllerServing;
 
 __attribute__((visibility("hidden")))
-@interface _INUIExtensionContext : NSExtensionContext <_INUIExtensionContextVending>
+@interface _INUIExtensionContext : NSExtensionContext
 {
     _INUIExtensionContextState *_currentExtensionContextState;
     id <_INUIRemoteViewControllerServing> _viewController;

@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class VKImage;
+
 __attribute__((visibility("hidden")))
 @interface VKRoadSignArtwork : NSObject
 {
@@ -21,16 +23,23 @@ __attribute__((visibility("hidden")))
     struct vector<std::pair<CGPoint, geo::Color<float, 4, geo::ColorSpace::Linear>>, std::allocator<std::pair<CGPoint, geo::Color<float, 4, geo::ColorSpace::Linear>>>> _debugPoints;
     struct vector<std::pair<CGRect, geo::Color<float, 4, geo::ColorSpace::Linear>>, std::allocator<std::pair<CGRect, geo::Color<float, 4, geo::ColorSpace::Linear>>>> _debugRects;
     struct mutex _imageLock;
+    struct _retain_ptr<VKImage *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> {
+        CDUnknownFunctionPointerType *_vptr$_retain_ptr;
+        VKImage *_obj;
+        struct _retain_objc_arc _retain;
+        struct _release_objc_arc _release;
+    } _image;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addDebugRect:(struct CGRect)arg1 color:(Color_b7a9e7da)arg2;
 - (void)addDebugPoint:(struct CGPoint)arg1 color:(Color_b7a9e7da)arg2;
+- (const void *)textMetrics;
 - (const struct RoadSignGeneratedMetrics *)generatedMetrics;
-- (Box_8bd38d92)localCollisionBounds;
-- (Box_8bd38d92)localSignBounds;
-- (Box_8bd38d92)localRenderBounds;
+- (Box_3fb92e00)localCollisionBounds;
+- (Box_3fb92e00)localSignBounds;
+- (Box_3fb92e00)localRenderBounds;
 - (Matrix_8746f91e)offsetPixelForPixel:(Matrix_8746f91e)arg1;
 - (const void *)glyph;
 - (id)image;

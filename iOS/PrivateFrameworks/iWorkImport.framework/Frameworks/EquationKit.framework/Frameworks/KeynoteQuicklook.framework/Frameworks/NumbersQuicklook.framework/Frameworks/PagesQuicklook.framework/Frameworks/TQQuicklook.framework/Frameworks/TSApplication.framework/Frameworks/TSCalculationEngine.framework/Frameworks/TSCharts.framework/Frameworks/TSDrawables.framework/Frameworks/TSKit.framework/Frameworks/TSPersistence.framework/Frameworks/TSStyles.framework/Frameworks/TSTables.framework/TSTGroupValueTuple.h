@@ -6,18 +6,17 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <TSTables/NSCopying-Protocol.h>
+@class NSArray;
 
-@class NSArray, NSString;
-
-@interface TSTGroupValueTuple : TSKSosBase <NSCopying>
+@interface TSTGroupValueTuple : TSKSosBase
 {
     NSArray *_groupValues;
     struct TSKUIDStruct _groupValueUid;
-    NSString *_combinedCanonicalKeysString;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _combinedCanonicalKeyStringAsUtf8;
 }
 
 + (struct TSKUIDStruct)groupValueUidForTuple:(id)arg1 appendingTuple:(id)arg2;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
@@ -33,7 +32,7 @@
 - (id)groupValueTupleByAppendingValue:(id)arg1;
 - (id)groupValueTupleByReplacingValue:(id)arg1 atLevel:(unsigned char)arg2;
 - (struct TSKUIDStruct)groupValueUid;
-@property(readonly, nonatomic) NSString *combinedCanonicalKeysString;
+- (const char *)combinedCanonicalKeyStringAsUtf8;
 @property(readonly, nonatomic) unsigned char numberOfLevels;
 - (void)updateWithDocumentRoot:(id)arg1;
 - (id)locale;

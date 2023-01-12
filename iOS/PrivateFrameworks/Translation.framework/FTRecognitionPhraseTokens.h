@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTRecognitionPhraseTokens : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTRecognitionPhraseTokens : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_8140066c)addObjectToBuffer:(void *)arg1;
+- (void)tokens_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)tokens_count;
+- (id)tokens_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *tokens;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct RecognitionPhraseTokens *)arg2 verify:(_Bool)arg3;

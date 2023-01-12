@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
-
 @class AVLayoutItemAttributes, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVTouchIgnoringView : UIView <AVPlaybackControlsViewItem>
+@interface AVTouchIgnoringView : UIView
 {
     _Bool _hasAlternateAppearance;
     _Bool _hasFullScreenAppearance;

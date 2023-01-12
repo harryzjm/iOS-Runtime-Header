@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ML3PersistentIDGenerator.h"
+
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface ML3ImportPersistentIDGenerator
+@interface ML3ImportPersistentIDGenerator : ML3PersistentIDGenerator
 {
     NSMutableDictionary *_pregeneratedIdMappings;
 }

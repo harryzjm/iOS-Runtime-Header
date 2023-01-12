@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Vision/VNDetectorKeyProviding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VNFaceLandmarkDetector <VNDetectorKeyProviding>
+@interface VNFaceLandmarkDetector
 {
     struct shared_ptr<vision::mod::LandmarkAttributes> _faceAttributesPupilRefiner;
     _Bool _requireFaceAttributesPupilRefiner;

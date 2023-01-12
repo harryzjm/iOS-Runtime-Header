@@ -20,6 +20,12 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) ASCLockup *lockup; // @synthesize lockup=_lockup;
 @property(readonly, nonatomic) id <ASCAdLockupPresenterView> view; // @synthesize view=_view;
 - (_Bool)shouldDisplayDescriptionForLockup:(id)arg1;
+- (void)setDeveloperName:(id)arg1;
+- (void)setProductDescription:(id)arg1;
+- (void)setProductRatingBadge:(id)arg1;
+- (void)setProductRating:(float)arg1;
+- (void)setEditorsChoice:(_Bool)arg1;
+- (void)setAdTransparencyButtonHidden:(_Bool)arg1;
 - (void)lockupPresenterDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithView:(id)arg1 lockupPresenter:(id)arg2;

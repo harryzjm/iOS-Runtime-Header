@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)applyToString:(id)arg1;
 - (id)renamedWith:(id)arg1;
 - (void)updateInsertTopoIDRange:(struct TopoIDRange)arg1 toNewRangeID:(struct TopoIDRange)arg2;
-- (void)retainTemporaryIDsInManager:(id)arg1 copyingFrom:(id)arg2;
+- (void)retainTemporaryIDs;
 - (_Bool)hasTemporaryIDs;
 - (id)temporaryIDs;
 - (void)updateTopoIDRange:(struct TopoIDRange)arg1 toNewRangeID:(struct TopoIDRange)arg2;

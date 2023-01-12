@@ -12,7 +12,7 @@
 @property(readonly, nonatomic) MPPropertySet *queueSectionProperties;
 @property(readonly, nonatomic) MPPropertySet *queueItemProperties;
 @property(readonly, nonatomic) MPPropertySet *playingItemProperties;
-@property(readonly) CDStruct_339ad95e tracklistRange;
+@property(readonly) CDStruct_912cb5d2 tracklistRange;
 @property(readonly, nonatomic) MPCPlayerPath *playerPath;
 
 @optional

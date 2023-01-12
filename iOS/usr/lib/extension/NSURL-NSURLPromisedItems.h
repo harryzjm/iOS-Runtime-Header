@@ -6,12 +6,9 @@
 
 #import <Foundation/NSURL.h>
 
-#import <Foundation/NSItemProviderReading-Protocol.h>
-#import <Foundation/NSItemProviderWriting-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSURL (NSURLPromisedItems) <NSItemProviderReading, NSItemProviderWriting>
+@interface NSURL (NSURLPromisedItems)
 + (id)URLByResolvingAliasFileAtURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 + (id)URLByResolvingBookmarkData:(id)arg1 options:(unsigned long long)arg2 relativeToURL:(id)arg3 bookmarkDataIsStale:(_Bool *)arg4 error:(id *)arg5;
 + (id)fileURLWithFileSystemRepresentation:(const char *)arg1 isDirectory:(_Bool)arg2 relativeToURL:(id)arg3;

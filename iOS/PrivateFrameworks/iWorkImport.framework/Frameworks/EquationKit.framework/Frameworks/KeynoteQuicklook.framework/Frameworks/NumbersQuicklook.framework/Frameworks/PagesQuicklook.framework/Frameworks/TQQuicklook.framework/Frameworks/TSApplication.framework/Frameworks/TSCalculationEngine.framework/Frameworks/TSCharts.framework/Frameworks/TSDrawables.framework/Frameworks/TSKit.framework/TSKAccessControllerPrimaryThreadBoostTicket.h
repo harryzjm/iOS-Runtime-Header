@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSKit/TSKAccessControllerPrimaryThreadBoostTicket-Protocol.h>
-
 @class NSString, TSKAccessController, TSKAccessControllerRunLoop;
 
-@interface TSKAccessControllerPrimaryThreadBoostTicket : NSObject <TSKAccessControllerPrimaryThreadBoostTicket>
+@interface TSKAccessControllerPrimaryThreadBoostTicket : NSObject
 {
     TSKAccessController *_accessController;
     TSKAccessControllerRunLoop *_accessControllerRunLoop;

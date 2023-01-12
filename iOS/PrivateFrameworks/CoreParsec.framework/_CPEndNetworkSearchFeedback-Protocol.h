@@ -10,6 +10,8 @@
 
 @protocol _CPEndNetworkSearchFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) unsigned long long decompressedResponseSize;
+@property(nonatomic) unsigned long long rawResponseSize;
 @property(nonatomic) int endpointType;
 @property(retain, nonatomic) _CPNetworkTimingData *timingData;
 @property(copy, nonatomic) NSString *partialClientIp;

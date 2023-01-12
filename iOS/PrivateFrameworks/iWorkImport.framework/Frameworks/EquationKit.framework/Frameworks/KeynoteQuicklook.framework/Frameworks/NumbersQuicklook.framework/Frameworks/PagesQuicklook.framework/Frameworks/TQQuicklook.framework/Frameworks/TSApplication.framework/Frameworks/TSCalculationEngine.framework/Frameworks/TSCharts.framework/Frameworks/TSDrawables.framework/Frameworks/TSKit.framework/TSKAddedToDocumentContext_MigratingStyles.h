@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface TSKAddedToDocumentContext_MigratingStyles
+#import "TSKAddedToDocumentContext.h"
+
+@interface TSKAddedToDocumentContext_MigratingStyles : TSKAddedToDocumentContext
 {
 }
 

@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySupplementaryFooterViews;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityCustomContent;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 

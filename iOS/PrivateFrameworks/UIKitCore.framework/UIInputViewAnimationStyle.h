@@ -18,17 +18,20 @@ __attribute__((visibility("hidden")))
     _Bool _isLegacy;
     _Bool force;
     _Bool _dontMerge;
+    _Bool _forAssertion;
 }
 
 + (id)animationStyleAnimated:(_Bool)arg1 duration:(double)arg2;
 + (id)animationStyleDefault;
 + (id)animationStyleImmediate;
+@property(nonatomic) _Bool forAssertion; // @synthesize forAssertion=_forAssertion;
 @property(nonatomic) _Bool dontMerge; // @synthesize dontMerge=_dontMerge;
 @property(nonatomic) _Bool interactivelyCancelled; // @synthesize interactivelyCancelled;
 @property(nonatomic) unsigned long long extraOptions; // @synthesize extraOptions;
 @property(nonatomic) _Bool force; // @synthesize force;
 @property(nonatomic) double duration; // @synthesize duration;
 @property(nonatomic) _Bool animated; // @synthesize animated;
+@property(readonly, nonatomic) _Bool canTakeSnapshot;
 @property(readonly, nonatomic) _Bool canDismissWithScrollView;
 - (id)endPlacementForInputViewSet:(id)arg1 windowScene:(id)arg2;
 - (id)startPlacementForInputViewSet:(id)arg1 currentPlacement:(id)arg2 windowScene:(id)arg3;

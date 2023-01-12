@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTMacroExpansion-Protocol.h>
-
 @class NSString;
 
-@interface DVTMacroExpansionBlock : NSObject <DVTMacroExpansion>
+@interface DVTMacroExpansionBlock : NSObject
 {
     CDUnknownBlockType _block;
 }

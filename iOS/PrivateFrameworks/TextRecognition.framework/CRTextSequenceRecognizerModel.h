@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TextRecognition/CRTextRecognizerModel-Protocol.h>
-
 @class CRNeuralRecognizerConfiguration, NSDictionary, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface CRTextSequenceRecognizerModel : NSObject <CRTextRecognizerModel>
+@interface CRTextSequenceRecognizerModel : NSObject
 {
     int *_codemapArray;
     unsigned long long _codemapSize;
@@ -31,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long ctcBlankLabelIndex; // @synthesize ctcBlankLabelIndex=_ctcBlankLabelIndex;
 @property(nonatomic) unsigned long long codemapSize; // @synthesize codemapSize=_codemapSize;
 @property(nonatomic) int *codemapArray; // @synthesize codemapArray=_codemapArray;
+- (void)releaseIntermediateBuffers;
 - (_Bool)preheatWithError:(id *)arg1;
 - (id)inputBatchFromTextFeatures:(id)arg1 image:(id)arg2 featureWidth:(double)arg3 configuration:(id)arg4;
 - (id)predictFromInputs:(id)arg1 error:(id *)arg2;

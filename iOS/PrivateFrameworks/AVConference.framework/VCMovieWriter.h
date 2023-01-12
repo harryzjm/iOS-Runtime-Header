@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCMovieWriterProtocol-Protocol.h>
-
 @class AVAssetWriter, AVAssetWriterInput, AVAssetWriterInputMetadataAdaptor, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCMovieWriter : NSObject <VCMovieWriterProtocol>
+@interface VCMovieWriter : NSObject
 {
     NSString *_transactionID;
     CDStruct_1b6d18a9 _lastVideoPresentationTime;

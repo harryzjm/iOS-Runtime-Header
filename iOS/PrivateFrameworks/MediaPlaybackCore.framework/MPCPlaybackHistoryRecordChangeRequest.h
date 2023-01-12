@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class MPModelGenericObject, MPModelPlayEvent;
 
 __attribute__((visibility("hidden")))
-@interface MPCPlaybackHistoryRecordChangeRequest : NSObject <NSCopying>
+@interface MPCPlaybackHistoryRecordChangeRequest : NSObject
 {
     _Bool _allowsStoreContainerImport;
     MPModelPlayEvent *_playEvent;

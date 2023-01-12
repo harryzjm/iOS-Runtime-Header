@@ -7,6 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (HKSPSleep)
+- (unsigned long long)hksp_hash;
 - (id)hksp_computeDiffFromDictionary:(id)arg1 keysToDiff:(id)arg2;
 - (id)hksp_computeDiffFromDictionary:(id)arg1;
 - (id)hksp_dictionaryByFilteringKeys:(id)arg1;

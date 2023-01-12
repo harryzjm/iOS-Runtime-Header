@@ -4,22 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/NSURLSessionDataDelegate-Protocol.h>
-#import <CFNetwork/NSURLSessionDataDelegatePrivate-Protocol.h>
-#import <CFNetwork/NSURLSessionDelegate_Internal-Protocol.h>
-#import <CFNetwork/NSURLSessionSubclass-Protocol.h>
-#import <CFNetwork/NSURLSessionTaskDelegatePrivate-Protocol.h>
-#import <CFNetwork/__NSURLSessionTaskGroupForConfiguration-Protocol.h>
+#import "NSURLSession.h"
 
-@class NSMutableArray, NSMutableDictionary, NSObject, NSString, NSURLSession, NSURLSessionConfiguration;
+@class NSHashTable, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
 
-@interface __NSURLSessionLocal <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDelegate_Internal, NSURLSessionSubclass, __NSURLSessionTaskGroupForConfiguration>
+@interface __NSURLSessionLocal : NSURLSession
 {
     unsigned long long _identSeed;
     void *_tubeManager;
     NSMutableDictionary *_connectionsToTasks;
     NSMutableArray *_outstandingTasks;
+    NSHashTable *_unownedUnresumedTasks;
     NSObject<OS_dispatch_queue> *_invalidateQueue;
     CDUnknownBlockType _invalidateCallback;
     const struct XCookieStorage *_xCookies;
@@ -33,12 +29,12 @@
     NSURLSession *_proxySession;
     _Bool _shouldRecreateProxySession;
     NSURLSession *_sessionForCacheLookups;
+    struct os_unfair_lock_s _unownedUnresumedTasksLock;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
-- (void)_URLSession:(id)arg1 companionAvailabilityChanged:(_Bool)arg2;
 - (void)_onqueue_completeInvalidation:(_Bool)arg1;
 - (void)_onqueue_getTasksWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_onqueue_flushWithCompletionHandler:(CDUnknownBlockType)arg1;

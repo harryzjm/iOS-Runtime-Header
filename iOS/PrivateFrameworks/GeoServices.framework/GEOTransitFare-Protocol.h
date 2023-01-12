@@ -10,6 +10,8 @@
 
 @protocol GEOTransitFare <NSObject>
 @property(readonly, nonatomic) _Bool cashOnly;
+@property(readonly, nonatomic) unsigned int *supportedPaymentMethodIndexs;
+@property(readonly, nonatomic) unsigned long long supportedPaymentMethodIndexsCount;
 @property(readonly, nonatomic) NSArray *supportedICCardProviders;
 @property(readonly, nonatomic) long long type;
 @property(readonly, copy, nonatomic) NSString *currencyCode;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthToolbox/NSCopying-Protocol.h>
-#import <HealthToolbox/WDTimePeriod-Protocol.h>
-
 @class NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WDTimePeriod : NSObject <WDTimePeriod, NSCopying>
+@interface WDTimePeriod : NSObject
 {
     NSDate *_startDate;
     NSDate *_endDate;
@@ -20,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (id)timePeriodWithSample:(id)arg1;
 + (id)timePeriodWithStartDate:(id)arg1 endDate:(id)arg2;
++ (id)sleep_timePeriodForSample:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;

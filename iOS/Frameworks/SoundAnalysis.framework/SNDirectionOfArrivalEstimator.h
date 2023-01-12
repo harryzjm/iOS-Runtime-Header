@@ -6,25 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
-@class NSArray, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNDirectionOfArrivalEstimator : NSObject <SNAnalyzing>
+@interface SNDirectionOfArrivalEstimator : NSObject
 {
     shared_ptr_f6ac7592 _graph;
+    NSString *_tuningPrefix;
+    float _azimuth;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *spatialSpectrum;
-@property(readonly, nonatomic) float azimuth;
 @property(readonly, nonatomic) void *resultsBox;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)sharedProcessorConfiguration;
 - (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
+- (id)initWithTuningPrefix:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

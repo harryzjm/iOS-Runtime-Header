@@ -6,11 +6,9 @@
 
 #import <SleepHealth/HKSleepHealthStore.h>
 
-#import <SleepDaemon/HDSPSleepSessionPersistence-Protocol.h>
-
 @class NSString;
 
-@interface HKSleepHealthStore (HDSPSleep) <HDSPSleepSessionPersistence>
+@interface HKSleepHealthStore (HDSPSleep)
 - (id)hdsp_persistSessions:(id)arg1;
 - (void)hdsp_stopSession;
 - (void)hdsp_startSession;

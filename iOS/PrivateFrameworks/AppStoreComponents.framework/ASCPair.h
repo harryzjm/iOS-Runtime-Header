@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface ASCPair : NSObject <NSCopying>
+@interface ASCPair : NSObject
 {
     id _first;
     id _second;

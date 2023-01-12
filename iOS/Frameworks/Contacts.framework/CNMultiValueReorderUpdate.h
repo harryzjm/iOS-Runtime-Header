@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (long long)compareIndexOfIdentifier:(id)arg1 toIndexOfIdentifier:(id)arg2;
 - (void)applyToMutableMultiValue:(id)arg1 withIdentifierMap:(id)arg2;
 - (id)initWithValues:(id)arg1;
-- (_Bool)applyToABPerson:(void *)arg1 abmultivalue:(void *)arg2 propertyDescription:(id)arg3 logger:(id)arg4 error:(id *)arg5;
+- (_Bool)applyToABPerson:(void *)arg1 abmultivalue:(void *)arg2 propertyDescription:(id)arg3 isUnified:(_Bool)arg4 logger:(id)arg5 error:(id *)arg6;
 
 @end
 

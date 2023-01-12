@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlayerResponseBuilder-Protocol.h>
-#import <MediaPlaybackCore/MPCPlayerSessionResponseBuilder-Protocol.h>
-#import <MediaPlaybackCore/MPCResponseMediaRemoteControllerChaining-Protocol.h>
-#import <MediaPlaybackCore/MPMiddleware-Protocol.h>
-
 @class MPCFuture, MPCMediaRemoteController, MPSectionedCollection, NSArray, NSIndexPath, NSString;
 @protocol MPCSupportedCommands;
 
 __attribute__((visibility("hidden")))
-@interface MPCMediaRemoteMiddleware : NSObject <MPCPlayerResponseBuilder, MPCPlayerSessionResponseBuilder, MPCResponseMediaRemoteControllerChaining, MPMiddleware>
+@interface MPCMediaRemoteMiddleware : NSObject
 {
     _Bool _skippedMetadata;
     NSArray *_invalidationObservers;
@@ -44,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)operationsForSessionRequest:(id)arg1;
 - (id)operationsForPlayerRequest:(id)arg1;
 - (id)operationsForRequest:(id)arg1;
+- (id)controller:(id)arg1 chain:(id)arg2;
 - (float)_playbackRateForContentItem:(id)arg1;
 - (id)_supportedCommands:(unsigned int)arg1 infoValueForKey:(id)arg2;
 - (id)audioRoute:(id)arg1 chain:(id)arg2;
@@ -62,13 +58,14 @@ __attribute__((visibility("hidden")))
 - (id)playerItemLanguageOptionGroups:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (long long)playerGlobalItemCount:(long long)arg1 chain:(id)arg2;
 - (long long)playerPlayingItemGlobalIndex:(long long)arg1 chain:(id)arg2;
+- (_Bool)playerItemShouldDisableJumpToItem:(_Bool)arg1 atIndexPath:(id)arg2 boundsCheck:(_Bool)arg3 chain:(id)arg4;
 - (id)playerPlayingItemIndexPath:(id)arg1 chain:(id)arg2;
 - (id)playerModelObject:(id)arg1 propertySet:(id)arg2 atIndexPath:(id)arg3 chain:(id)arg4;
 - (_Bool)playerItemIsPlaceholder:(_Bool)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (long long)playerItemEditingStyleFlags:(long long)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (id)playerItemExplicitBadge:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (id)playerItemLocalizedDurationString:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
-- (CDStruct_fce57115)playerItemDuration:(CDStruct_fce57115)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
+- (CDStruct_1c9ae071)playerItemDuration:(CDStruct_1c9ae071)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (unsigned long long)playerNumberOfItems:(unsigned long long)arg1 inSection:(unsigned long long)arg2 chain:(id)arg3;
 - (unsigned long long)playerNumberOfSections:(unsigned long long)arg1 chain:(id)arg2;
 - (long long)playerExplicitContentState:(long long)arg1 chain:(id)arg2;
@@ -82,7 +79,6 @@ __attribute__((visibility("hidden")))
 - (id)sessionPlayerPath:(id)arg1 atIndex:(long long)arg2 chain:(id)arg3;
 - (long long)sessionNumberOfSessions:(long long)arg1 forPlayerPathAtIndex:(long long)arg2 chain:(id)arg3;
 - (long long)sessionNumberOfPlayerPaths:(long long)arg1 chain:(id)arg2;
-- (id)controller:(id)arg1 chain:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

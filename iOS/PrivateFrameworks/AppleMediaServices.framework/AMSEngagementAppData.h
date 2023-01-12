@@ -12,13 +12,13 @@ __attribute__((visibility("hidden")))
 @interface AMSEngagementAppData : NSObject
 {
     NSArray *_cachedResponses;
+    NSArray *_eventFilters;
     NSString *_identifier;
-    NSArray *_whitelist;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *whitelist; // @synthesize whitelist=_whitelist;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(retain, nonatomic) NSArray *eventFilters; // @synthesize eventFilters=_eventFilters;
 @property(retain, nonatomic) NSArray *cachedResponses; // @synthesize cachedResponses=_cachedResponses;
 - (id)exportObject;
 - (id)initWithIdentifier:(id)arg1 cacheObject:(id)arg2;

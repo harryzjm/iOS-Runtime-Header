@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     SCNMTLResourceManager *_resourceManager;
     CDStruct_9b587744 _cachedTessellator;
     id <MTLBuffer> _tessellationFactorBuffer;
+    id <MTLBuffer> _lastFramePositionBuffer;
 }
 
 - (void)subdivisionSurfaceTessellationDraw:(CDStruct_8a6a5118)arg1;

@@ -6,12 +6,10 @@
 
 #import <Foundation/NSProxy.h>
 
-#import <Catalyst/CATArbitratorProxy-Protocol.h>
-
 @class NSString, _CATArbitratorRegistrationEntry;
 
 __attribute__((visibility("hidden")))
-@interface _CATArbitratorResourceProxy : NSProxy <CATArbitratorProxy>
+@interface _CATArbitratorResourceProxy : NSProxy
 {
     id mResource;
     _CATArbitratorRegistrationEntry *mRegistration;

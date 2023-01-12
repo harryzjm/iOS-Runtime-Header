@@ -9,7 +9,7 @@
 @protocol NUDevice, NUImageStorage, NUSurfaceStorage;
 
 @protocol NUMutableImage <NUImage>
-- (_Bool)copyBufferStorage:(id <NUImageStorage>)arg1 fromRect:(CDStruct_996ac03c)arg2 toPoint:(CDStruct_912cb5d2)arg3;
-- (_Bool)copySurfaceStorage:(id <NUSurfaceStorage>)arg1 fromRect:(CDStruct_996ac03c)arg2 toPoint:(CDStruct_912cb5d2)arg3 device:(id <NUDevice>)arg4;
+- (_Bool)copyBufferStorage:(id <NUImageStorage>)arg1 fromRect:(CDStruct_0973877e)arg2 toPoint:(CDStruct_912cb5d2)arg3;
+- (_Bool)copySurfaceStorage:(id <NUSurfaceStorage>)arg1 fromRect:(CDStruct_0973877e)arg2 toPoint:(CDStruct_912cb5d2)arg3 device:(id <NUDevice>)arg4;
 @end
 

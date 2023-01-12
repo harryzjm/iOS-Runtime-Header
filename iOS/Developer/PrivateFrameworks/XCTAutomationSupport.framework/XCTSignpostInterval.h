@@ -27,10 +27,12 @@
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) NSString *category; // @synthesize category=_category;
 @property(readonly, copy, nonatomic) NSString *subsystem; // @synthesize subsystem=_subsystem;
+- (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSignpostInterval:(id)arg1;
+- (id)initWithSubsystem:(id)arg1 category:(id)arg2 name:(id)arg3 beginEvent:(id)arg4 endEvent:(id)arg5;
 
 @end
 

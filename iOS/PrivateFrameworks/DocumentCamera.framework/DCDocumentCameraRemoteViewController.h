@@ -6,13 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <DocumentCamera/DCDocumentCameraRemoteViewController-Protocol.h>
-
 @class UIViewController;
 @protocol DCDocumentCameraPublicViewController, DCDocumentCameraViewServiceViewController;
 
 __attribute__((visibility("hidden")))
-@interface DCDocumentCameraRemoteViewController : _UIRemoteViewController <DCDocumentCameraRemoteViewController>
+@interface DCDocumentCameraRemoteViewController : _UIRemoteViewController
 {
     UIViewController<DCDocumentCameraPublicViewController> *_publicViewController;
 }
@@ -21,8 +19,9 @@ __attribute__((visibility("hidden")))
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIViewController<DCDocumentCameraPublicViewController> *publicViewController; // @synthesize publicViewController=_publicViewController;
+- (void)didFailWithError:(id)arg1;
 - (void)didFinishWithDocumentInfoCollection:(id)arg1;
-- (void)didCancel:(id)arg1;
+- (void)didCancel;
 - (void)viewControllerWasDismissed;
 - (void)dismiss;
 - (void)viewServicePreferredSizeDidChange:(struct CGSize)arg1;

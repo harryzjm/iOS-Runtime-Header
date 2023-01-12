@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRequestedFields;
 
-@interface CKDPRecordRetrieveRequestRetrieveAssetURL : PBCodable <NSCopying>
+@interface CKDPRecordRetrieveRequestRetrieveAssetURL : PBCodable
 {
     long long _requestedTTL;
     CKDPRequestedFields *_assetFields;

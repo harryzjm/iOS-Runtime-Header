@@ -10,7 +10,7 @@
 
 @interface _TtC7NewsUI233AudioFeedBlueprintModifierFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *audioFeedSectionFactory;
+    MISSING_TYPE *sectionFactory;
 }
 
 @end

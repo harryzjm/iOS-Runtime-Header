@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/ODRClientProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSBundleOnDemandResourceClientExportedObject : NSObject <ODRClientProtocol>
+@interface _NSBundleOnDemandResourceClientExportedObject : NSObject
 {
 }
 

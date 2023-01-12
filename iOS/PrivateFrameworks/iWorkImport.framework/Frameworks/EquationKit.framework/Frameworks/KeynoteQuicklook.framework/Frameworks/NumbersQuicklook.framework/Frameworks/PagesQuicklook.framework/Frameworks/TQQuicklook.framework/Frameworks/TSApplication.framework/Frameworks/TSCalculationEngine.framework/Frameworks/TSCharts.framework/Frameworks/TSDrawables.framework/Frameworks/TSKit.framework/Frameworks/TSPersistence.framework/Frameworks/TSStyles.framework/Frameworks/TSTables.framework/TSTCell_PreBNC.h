@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSDate, NSString, TSCEFormulaObject, TSDCommentStorage, TSDFill, TSKFormat, TSTCellBorder, TSTCellSpec, TSTCellStyle, TSTConditionalStyleSet, TSTImportWarningSet, TSULocale, TSWPParagraphStyle, TSWPStorage;
 
-@interface TSTCell_PreBNC : NSObject <NSCopying>
+@interface TSTCell_PreBNC : NSObject
 {
     double _valueDouble;
     unsigned int _valueID;

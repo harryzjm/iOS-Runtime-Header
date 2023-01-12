@@ -10,6 +10,6 @@
 
 @protocol STDynamicActivityAttributionClientHandle <NSObject>
 - (void)currentAttributionsDidChange:(NSArray *)arg1;
-- (CDStruct_4c969caf)auditToken;
+- (CDStruct_6ad76789)auditToken;
 @end
 

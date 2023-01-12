@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <PersistentConnection/PCGrowthAlgorithm-Protocol.h>
-
 @class NSDate, NSDictionary, NSString;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
-@interface PCMultiStageGrowthAlgorithm : NSObject <PCGrowthAlgorithm>
+@interface PCMultiStageGrowthAlgorithm : NSObject
 {
     double _currentKeepAliveInterval;
     double _minimumKeepAliveInterval;

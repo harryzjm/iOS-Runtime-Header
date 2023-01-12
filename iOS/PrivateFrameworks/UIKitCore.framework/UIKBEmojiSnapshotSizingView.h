@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
+#import "UIView.h"
 
 __attribute__((visibility("hidden")))
-@interface UIKBEmojiSnapshotSizingView
+@interface UIKBEmojiSnapshotSizingView : UIView
 {
     struct CGSize _snapshotSize;
     UIView *_snapshotView;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
 - (struct CGSize)intrinsicContentSize;
-- (void)dealloc;
 - (id)initWithSnapshotView:(id)arg1;
 
 @end

@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)sharedLockedModelWithKey:(id)arg1 orCreateNewModelWithWithFunction:(CDUnknownBlockType)arg2;
 - (id)init;
 
 @end

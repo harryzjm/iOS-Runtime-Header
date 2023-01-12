@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface PFHistoryAnalyzerOptions : NSObject <NSCopying>
+@interface PFHistoryAnalyzerOptions : NSObject
 {
     _Bool _automaticallyPruneTransientRecords;
     unsigned long long _transactionLimit;

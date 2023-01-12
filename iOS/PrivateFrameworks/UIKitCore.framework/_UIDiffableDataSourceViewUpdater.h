@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionViewUpdateItemApplying-Protocol.h>
-
 @class NSString, UICollectionView, UITableView;
 @protocol _UICollectionViewUpdateItemApplying, _UIDataSourceSnapshotTranslating;
 
 __attribute__((visibility("hidden")))
-@interface _UIDiffableDataSourceViewUpdater : NSObject <_UICollectionViewUpdateItemApplying>
+@interface _UIDiffableDataSourceViewUpdater : NSObject
 {
     _Bool _hasPerformedInitialUpdate;
     long long _tableViewRowAnimation;

@@ -6,13 +6,10 @@
 
 #import <IBAutolayoutFoundation/IBAutolayoutGuide.h>
 
-#import <IBCocoaTouchToolFoundation/IBAutolayoutItem-Protocol.h>
-#import <IBCocoaTouchToolFoundation/IBCTTAutolayoutItem-Protocol.h>
-
 @class NSArray, NSObject, NSSet, NSString;
 @protocol IBAutolayoutItem, IBCollection, IBOrderedCollection, IBUIViewControllerAutolayoutGuideDelegate;
 
-@interface IBUIViewControllerAutolayoutGuide : IBAutolayoutGuide <IBCTTAutolayoutItem, IBAutolayoutItem>
+@interface IBUIViewControllerAutolayoutGuide : IBAutolayoutGuide
 {
     struct CGRect _cachedLayoutFrame;
     long long _type;
@@ -55,7 +52,7 @@
 @property(retain, nonatomic) id <IBOrderedCollection> ibCandidateConstraints;
 - (unsigned long long)ibAllowedSiblingEdgesForGuidesToSelectedItems:(id)arg1;
 - (_Bool)ibAllowsSiblingGuidesToSelectedItems:(id)arg1 ofType:(long long)arg2;
-- (_Bool)ibAllowsConstraintSpacingFromInsideEdgesForSiblings;
+- (_Bool)ibAllowsConstraintSpacingFromInsideEdgesForSiblingsForOrientation:(unsigned long long)arg1;
 - (_Bool)ibShouldConsiderGuidesToEdgeWithAttribute:(unsigned long long)arg1 fromEdgeWithAttribute:(unsigned long long)arg2 ofSelectedItems:(id)arg3;
 - (id)ibViewForAncestorViewEdgeMovementQuestionsOfSubview:(id)arg1;
 - (struct CGRect)ibBoundsForLayoutBounds:(struct CGRect)arg1;

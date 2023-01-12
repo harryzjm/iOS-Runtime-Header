@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNContactAction.h"
+
 @class CNContactStore, CNContainer;
 
 __attribute__((visibility("hidden")))
-@interface CNContactEnableGuardianRestrictionsAction
+@interface CNContactEnableGuardianRestrictionsAction : CNContactAction
 {
     CNContainer *_container;
     CNContactStore *_contactStore;

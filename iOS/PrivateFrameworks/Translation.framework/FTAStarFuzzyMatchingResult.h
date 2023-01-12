@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTAStarFuzzyMatchingResult : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTAStarFuzzyMatchingResult : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -23,6 +20,9 @@ __attribute__((visibility("hidden")))
 - (id)flatbuffData;
 - (Offset_b48045e5)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *debug_information;
+- (void)match_ids_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)match_ids_count;
+- (id)match_ids_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *match_ids;
 @property(readonly, nonatomic) int tm_score;
 @property(readonly, nonatomic) long long total_score;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIThemeRendition.h"
+
 @class CUIThemeGradient;
 
 __attribute__((visibility("hidden")))
-@interface _CUIThemeGradientRendition
+@interface _CUIThemeGradientRendition : CUIThemeRendition
 {
     CUIThemeGradient *gradient;
     double gradientAngle;

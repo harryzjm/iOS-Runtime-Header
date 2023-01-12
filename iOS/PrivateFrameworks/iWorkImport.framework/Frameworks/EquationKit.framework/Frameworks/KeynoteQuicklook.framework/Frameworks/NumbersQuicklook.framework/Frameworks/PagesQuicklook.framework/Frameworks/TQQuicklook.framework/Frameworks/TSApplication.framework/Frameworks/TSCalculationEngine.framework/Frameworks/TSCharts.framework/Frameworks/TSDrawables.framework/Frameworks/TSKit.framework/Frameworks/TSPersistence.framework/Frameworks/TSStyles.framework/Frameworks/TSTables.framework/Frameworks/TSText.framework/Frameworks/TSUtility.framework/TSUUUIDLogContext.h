@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/TSULogContext-Protocol.h>
-
 @class NSString;
 
-@interface TSUUUIDLogContext : NSObject <TSULogContext>
+@interface TSUUUIDLogContext : NSObject
 {
     NSString *_publicString;
     NSString *_privateString;

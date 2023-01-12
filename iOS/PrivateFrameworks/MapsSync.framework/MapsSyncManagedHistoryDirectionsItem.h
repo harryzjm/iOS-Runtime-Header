@@ -11,11 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (Class)wrapperClass;
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 
 // Remaining properties
 @property(nonatomic) _Bool navigationInterrupted; // @dynamic navigationInterrupted;
 @property(nonatomic, copy) NSData *routeRequestStorage; // @dynamic routeRequestStorage;
+@property(nonatomic, copy) NSData *sharedETAData; // @dynamic sharedETAData;
 
 @end
 

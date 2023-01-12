@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKPlaceCardActionSectionViewDelegate-Protocol.h>
-#import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
-#import <MapKit/_MKStackViewDelegate-Protocol.h>
+#import "MKPlaceSectionViewController.h"
 
 @class MKPlaceActionManager, NSArray, NSString;
 @protocol _MKPlaceViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceCardActionsViewController <MKPlaceCardActionSectionViewDelegate, _MKStackViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate>
+@interface MKPlaceCardActionsViewController : MKPlaceSectionViewController
 {
     _Bool _haveTwoColumns;
     _Bool _useSmallFonts;

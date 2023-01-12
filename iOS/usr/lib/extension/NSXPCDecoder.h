@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSXPCConnection;
+#import "NSXPCCoder.h"
+
+@class NSObject, NSXPCConnection, NSXPCInterface;
 @protocol OS_xpc_object;
 
 __attribute__((visibility("hidden")))
-@interface NSXPCDecoder
+@interface NSXPCDecoder : NSXPCCoder
 {
     unsigned long long _genericIndex;
     struct {
@@ -19,17 +21,18 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_connection;
     struct *_collections[272];
     CDStruct_1b1be194 _rootObject;
-    _Bool expectsUnnestedCollection;
-    _Bool decodedCollection;
+    Class expectedUnnestedCollectionType;
     _Bool _strictSecureDecodingEnabled;
     _Bool _enforceSubclassesMustBeExplicitlyMentionedWhenDecoded;
     unsigned int _collectionPointer;
     id _allowedClassesList[272];
     long long _allowedClassesIndex;
     NSObject<OS_xpc_object> *_oolObjects;
+    NSXPCInterface *_interface;
 }
 
 @property NSXPCConnection *_connection; // @synthesize _connection;
+- (_Bool)_testClass:(Class)arg1 isAllowedByAllowList:(id)arg2;
 - (id)decodeDictionaryWithKeysOfClasses:(id)arg1 objectsOfClasses:(id)arg2 forKey:(id)arg3;
 - (id)decodeArrayOfObjectsOfClasses:(id)arg1 forKey:(id)arg2;
 - (id)_decodeCollectionOfClass:(Class)arg1 allowedClasses:(id)arg2 forKey:(id)arg3;
@@ -47,15 +50,16 @@ __attribute__((visibility("hidden")))
 - (_Bool)decodeBoolForKey:(id)arg1;
 - (id)_decodeArrayOfObjectsForKey:(id)arg1;
 - (id)allowedClasses;
-- (int)__decodeXPCObject:(id)arg1 allowingSimpleMessageSend:(_Bool)arg2 outInvocation:(id *)arg3 outArguments:(id *)arg4 outArgumentsMaxCount:(unsigned long long)arg5 outMethodSignature:(id *)arg6 outSelector:(SEL *)arg7 isReply:(_Bool)arg8 replySelector:(SEL)arg9 interface:(id)arg10;
-- (id)_decodeReplyFromXPCObject:(id)arg1 forSelector:(SEL)arg2 interface:(id)arg3;
-- (int)_decodeMessageFromXPCObject:(id)arg1 allowingSimpleMessageSend:(_Bool)arg2 outInvocation:(id *)arg3 outArguments:(id *)arg4 outArgumentsMaxCount:(unsigned long long)arg5 outMethodSignature:(id *)arg6 outSelector:(SEL *)arg7 interface:(id)arg8;
+- (int)__decodeXPCObject:(id)arg1 allowingSimpleMessageSend:(_Bool)arg2 outInvocation:(id *)arg3 outArguments:(id *)arg4 outArgumentsMaxCount:(unsigned long long)arg5 outMethodSignature:(id *)arg6 outSelector:(SEL *)arg7 isReply:(_Bool)arg8 replySelector:(SEL)arg9;
+- (id)_decodeReplyFromXPCObject:(id)arg1 forSelector:(SEL)arg2;
+- (int)_decodeMessageFromXPCObject:(id)arg1 allowingSimpleMessageSend:(_Bool)arg2 outInvocation:(id *)arg3 outArguments:(id *)arg4 outArgumentsMaxCount:(unsigned long long)arg5 outMethodSignature:(id *)arg6 outSelector:(SEL *)arg7;
 - (id)decodeObjectOfClasses:(id)arg1 forKey:(id)arg2;
 - (id)decodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)_decodeObjectOfClasses:(id)arg1 atObject:(CDStruct_1b1be194 *)arg2;
 - (id)decodeObjectForKey:(id)arg1;
 - (_Bool)containsValueForKey:(id)arg1;
 - (id)decodeObject;
+- (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2 size:(unsigned long long)arg3;
 - (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2;
 - (void)_validateAllowedXPCType:(struct _xpc_type_s *)arg1 forKey:(id)arg2;
 - (void)_validateAllowedClass:(Class)arg1 forKey:(id)arg2 allowingInvocations:(_Bool)arg3;
@@ -65,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (id)debugDescription;
 - (void)dealloc;
 - (void)_startReadingFromXPCObject:(id)arg1;
-- (id)init;
+- (id)initWithInterface:(id)arg1;
 - (id)connection;
 
 @end

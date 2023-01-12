@@ -19,11 +19,10 @@
 - (void)safari_dismissPresentedAlert;
 - (_Bool)safari_isEventuallyPresentedByViewControllerClass:(Class)arg1;
 @property(readonly, nonatomic) _Bool safari_isPresentedByActivityViewController;
+@property(readonly, nonatomic) _Bool safari_prefersHalfHeightSheetPresentationWithLoweredBar;
 @property(readonly, nonatomic) _UISheetPresentationController *safari_sheetPresentationController;
 @property(readonly, nonatomic) _Bool safari_wantsDoneButtonInModalBookmarksPanel;
 - (void)safari_updateApplicationBackgroundStyle;
 @property(readonly, nonatomic) _Bool safari_wantsTransparentApplicationBackground;
-@property(readonly, nonatomic) _Bool safari_isHorizontallyConstrainedFallingBackToRootViewControllerIfNecessary;
-@property(readonly, nonatomic) _Bool safari_isHorizontallyConstrained;
 @end
 

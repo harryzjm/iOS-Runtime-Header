@@ -6,13 +6,9 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <AnnotationKit/AKInkIsUpdatable-Protocol.h>
-#import <AnnotationKit/AKLineWidthChooserUserInterfaceItem-Protocol.h>
-#import <AnnotationKit/AKUserInterfaceItem-Protocol.h>
-
 @class NSString, UIImageView;
 
-@interface AKUserInterfaceItemTableViewCell : UITableViewCell <AKUserInterfaceItem, AKLineWidthChooserUserInterfaceItem, AKInkIsUpdatable>
+@interface AKUserInterfaceItemTableViewCell : UITableViewCell
 {
     UIImageView *_imageView;
     double _lineWidth;

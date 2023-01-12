@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSProgressSubscriber-Protocol.h>
-
 @class NSFileAccessNode, NSString, NSXPCConnection;
 @protocol NSProgressSubscriber;
 
 __attribute__((visibility("hidden")))
-@interface NSProgressSubscriberProxy : NSObject <NSProgressSubscriber>
+@interface NSProgressSubscriberProxy : NSObject
 {
     id <NSProgressSubscriber> _forwarder;
     id _subscriberID;

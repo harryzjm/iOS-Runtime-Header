@@ -4,13 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KeynoteQuicklook/KNAnimationPluginAlternateArchiving-Protocol.h>
-#import <KeynoteQuicklook/KNAnimationPluginArchiving-Protocol.h>
-#import <KeynoteQuicklook/KNAnimationPluginObsoleteNames-Protocol.h>
-
 @class NSString;
 
-@interface KNBuildAppearByCharacter <KNAnimationPluginArchiving, KNAnimationPluginObsoleteNames, KNAnimationPluginAlternateArchiving>
+@interface KNBuildAppearByCharacter
 {
 }
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSArray, NSMutableArray, UIImageView, UILabel, UINavigationBar, UISnapshotView, UITabBar, UITabBarItem, UITabBarItemProxy;
 
 __attribute__((visibility("hidden")))
-@interface UITabBarCustomizeView
+@interface UITabBarCustomizeView : UIView
 {
     UITabBar *_tabBar;
     NSMutableArray *_proxies;

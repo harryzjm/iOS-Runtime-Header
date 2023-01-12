@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VMURuntimeMetadataChunkInfo : NSObject
 {
-    _Bool forMetaclass;
+    _Bool isMetaclass;
     unsigned int type;
     VMUClassInfo *owningClassInfo;
 }

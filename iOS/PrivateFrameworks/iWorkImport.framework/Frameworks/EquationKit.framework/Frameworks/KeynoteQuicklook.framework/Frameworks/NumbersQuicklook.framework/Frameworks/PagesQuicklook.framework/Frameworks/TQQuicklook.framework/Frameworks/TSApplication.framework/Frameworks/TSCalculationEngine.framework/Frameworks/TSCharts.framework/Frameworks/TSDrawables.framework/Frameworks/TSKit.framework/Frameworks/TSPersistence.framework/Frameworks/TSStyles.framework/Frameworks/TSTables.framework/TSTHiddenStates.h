@@ -6,18 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTAdditionalHiddenRowColumnProviding-Protocol.h>
-#import <TSTables/TSTTableHiddenRowColumnProviding-Protocol.h>
+@class NSString, TSTHiddenStateExtent, TSTHiddenStatesOwner, TSTTableFilterSet;
 
-@class NSString, TSTHiddenStateExtent, TSTHiddenStatesOwner, TSTTableFilterSet, TSTTableTranslator;
-
-@interface TSTHiddenStates : NSObject <TSTTableHiddenRowColumnProviding, TSTAdditionalHiddenRowColumnProviding>
+@interface TSTHiddenStates : NSObject
 {
     TSTHiddenStateExtent *_rowHiddenStateExtent;
     TSTHiddenStateExtent *_columnHiddenStateExtent;
     TSTHiddenStatesOwner *_hiddenStatesOwner;
     _Bool _loadedIndexesAfterUnarchive;
-    TSTTableTranslator *_translator;
 }
 
 + (void)invalidateForChangingIndexes:(id)arg1 isRow:(_Bool)arg2 forTable:(id)arg3;
@@ -30,8 +26,8 @@
 + (struct TSUCellCoord)filterFormulaCoordinateForType:(unsigned short)arg1 columnOrRowIndex:(unsigned int)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool loadedIndexesAfterUnarchive; // @synthesize loadedIndexesAfterUnarchive=_loadedIndexesAfterUnarchive;
-@property(readonly, retain, nonatomic) TSTHiddenStateExtent *columnHiddenStateExtent; // @synthesize columnHiddenStateExtent=_columnHiddenStateExtent;
-@property(readonly, retain, nonatomic) TSTHiddenStateExtent *rowHiddenStateExtent; // @synthesize rowHiddenStateExtent=_rowHiddenStateExtent;
+@property(readonly, nonatomic) TSTHiddenStateExtent *columnHiddenStateExtent; // @synthesize columnHiddenStateExtent=_columnHiddenStateExtent;
+@property(readonly, nonatomic) TSTHiddenStateExtent *rowHiddenStateExtent; // @synthesize rowHiddenStateExtent=_rowHiddenStateExtent;
 @property(nonatomic) __weak TSTHiddenStatesOwner *hiddenStatesOwner; // @synthesize hiddenStatesOwner=_hiddenStatesOwner;
 - (_Bool)verifyConnectionsWithTableModel:(id)arg1;
 - (void)copyFromHiddenStates:(id)arg1 forRange:(struct TSUCellRect)arg2 withContext:(id)arg3 isWholeTableCopy:(_Bool)arg4;
@@ -143,6 +139,7 @@
 - (unsigned char)hidingActionForBaseRowAtIndex:(struct TSUModelRowIndex)arg1;
 - (unsigned char)hidingActionForRowAtIndex:(unsigned int)arg1;
 - (_Bool)hasHiddenRowAtIndex:(unsigned int)arg1 forAction:(unsigned char)arg2;
+- (void)invalidateViewGeometry;
 - (void)invalidateAllCollapsed;
 - (void)clearAllFiltered;
 - (void)clearAllPivotHiddenAndInvalidate:(_Bool)arg1;
@@ -161,7 +158,7 @@
 - (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2 forHiddenStatesOwner:(id)arg3;
 - (void)loadIndexesFromTable:(id)arg1;
-@property(readonly, retain, nonatomic) TSTTableTranslator *translator; // @synthesize translator=_translator;
+- (id)translator;
 - (id)initWithHiddenStatesOwner:(id)arg1;
 - (id)initWithHiddenStatesOwner:(id)arg1 shouldRegister:(_Bool)arg2;
 

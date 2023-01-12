@@ -4,22 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSObject-Protocol.h>
+#import <UIKitCore/UIMenuLeaf-Protocol.h>
 
-@class NSArray, NSString, UIImage, _UIMenuLeafValidation;
-@protocol _UIMenuLeaf, _UIMenuLeafAlternate;
+@class NSArray, NSAttributedString, NSString, _UIMenuLeafValidation;
+@protocol UIPopoverPresentationControllerSourceItem, _UIMenuLeaf, _UIMenuLeafAlternate;
 
-@protocol _UIMenuLeaf <NSObject>
+@protocol _UIMenuLeaf <UIMenuLeaf>
+@property(readonly, nonatomic) id <UIPopoverPresentationControllerSourceItem> presentationSourceItem;
 @property(readonly, nonatomic) _Bool keepsMenuPresented;
 @property(readonly, nonatomic) _Bool requiresAuthenticatedInput;
-@property(nonatomic) long long state;
-@property(nonatomic) unsigned long long attributes;
-@property(copy, nonatomic) NSString *discoverabilityTitle;
-@property(copy, nonatomic) UIImage *image;
-@property(copy, nonatomic) NSString *title;
+@property(copy, nonatomic) NSAttributedString *attributedTitle;
 - (id <_UIMenuLeaf>)_validatedLeafWithAlternate:(id <_UIMenuLeafAlternate>)arg1 target:(id)arg2 validation:(_UIMenuLeafValidation *)arg3;
-- (id)_resolvedTargetFromFirstTarget:(id)arg1;
-- (void)_performWithTarget:(id)arg1;
+- (id)_resolvedTargetFromFirstTarget:(id)arg1 sender:(id)arg2;
 - (_Bool)_isDefaultCommand;
 - (long long)_leafKeyModifierFlags;
 - (NSString *)_leafKeyInput;

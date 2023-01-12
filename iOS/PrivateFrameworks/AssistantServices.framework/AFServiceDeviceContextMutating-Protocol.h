@@ -6,12 +6,11 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSUUID;
+@class NSDictionary, NSString, NSUUID;
 
 @protocol AFServiceDeviceContextMutating <NSObject>
 - (void)setMetricsContext:(NSDictionary *)arg1;
 - (void)setSerializedContextByKey:(NSDictionary *)arg1;
-- (void)setContextSnapshots:(NSArray *)arg1;
 - (void)setProximity:(long long)arg1;
 - (void)setRoomName:(NSString *)arg1;
 - (void)setSharedUserID:(NSString *)arg1;

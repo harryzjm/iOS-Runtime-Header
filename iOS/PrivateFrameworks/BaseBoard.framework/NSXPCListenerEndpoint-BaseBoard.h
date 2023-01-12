@@ -6,22 +6,11 @@
 
 #import <Foundation/NSXPCListenerEndpoint.h>
 
-#import <BaseBoard/BSXPCCoding-Protocol.h>
-#import <BaseBoard/BSXPCSecureCoding-Protocol.h>
-
-@class NSString;
-
-@interface NSXPCListenerEndpoint (BaseBoard) <BSXPCSecureCoding, BSXPCCoding>
+@interface NSXPCListenerEndpoint (BaseBoard)
 + (_Bool)supportsBSXPCSecureCoding;
 - (id)initWithBSXPCCoder:(id)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 @end
 

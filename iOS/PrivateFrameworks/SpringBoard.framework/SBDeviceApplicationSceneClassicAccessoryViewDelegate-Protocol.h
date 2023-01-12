@@ -7,7 +7,7 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @protocol SBDeviceApplicationSceneClassicAccessoryViewDelegate <NSObject>
-- (void)noteApplicationClassicPhoneSceneOrientationPreferenceChanging;
+- (void)noteApplicationClassicPhoneSceneOrientationPreferenceChangingForUserAction:(_Bool)arg1;
 - (void)applicationSceneCompatibilityModeAnimatingChangeTo:(long long)arg1;
 @end
 

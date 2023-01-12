@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 + (id)compositionWithMediaObject:(id)arg1 subject:(id)arg2;
 - (_Bool)isSendAnimated;
+- (_Bool)isAudioComposition;
 
 @end
 

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeCore/NSCopying-Protocol.h>
-#import <ScreenTimeCore/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface STVersionVectorNode : NSObject <NSCopying, NSSecureCoding>
+@interface STVersionVectorNode : NSObject
 {
     NSString *_identifier;
     unsigned long long _count;

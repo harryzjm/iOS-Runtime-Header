@@ -6,11 +6,9 @@
 
 #import <DoNotDisturb/DNDModeAssertionSource.h>
 
-#import <DoNotDisturbServer/DNDSModernAssertionSourceResolution-Protocol.h>
-
 @class NSString;
 
-@interface DNDModeAssertionSource (Resolution) <DNDSModernAssertionSourceResolution>
+@interface DNDModeAssertionSource (Resolution)
 - (id)resolveWithExpectedRemoteDeviceIdentifier:(id)arg1 localDeviceIdentifier:(id)arg2 remoteDeviceIdentifier:(id)arg3;
 
 // Remaining properties

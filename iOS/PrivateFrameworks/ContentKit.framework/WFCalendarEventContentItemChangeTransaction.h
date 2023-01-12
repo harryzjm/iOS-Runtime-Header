@@ -9,13 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface WFCalendarEventContentItemChangeTransaction
 {
-    EKEvent *_mutableEvent;
 }
 
-- (void).cxx_destruct;
-@property(readonly, nonatomic) EKEvent *mutableEvent; // @synthesize mutableEvent=_mutableEvent;
 - (void)saveWithCompletionHandler:(CDUnknownBlockType)arg1 isNew:(_Bool)arg2;
-- (id)initWithContentItem:(id)arg1;
+
+// Remaining properties
+@property(readonly, nonatomic) EKEvent *mutableEvent; // @dynamic mutableEvent;
 
 @end
 

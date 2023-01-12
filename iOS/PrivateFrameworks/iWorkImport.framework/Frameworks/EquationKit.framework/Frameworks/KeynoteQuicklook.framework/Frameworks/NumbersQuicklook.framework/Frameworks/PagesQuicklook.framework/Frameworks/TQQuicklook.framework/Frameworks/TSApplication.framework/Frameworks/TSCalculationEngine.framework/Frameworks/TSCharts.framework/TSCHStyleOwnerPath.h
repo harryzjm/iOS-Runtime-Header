@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSArray;
 
-@interface TSCHStyleOwnerPath : NSObject <NSCopying>
+@interface TSCHStyleOwnerPath : NSObject
 {
     NSArray *_uuids;
 }

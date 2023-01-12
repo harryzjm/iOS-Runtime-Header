@@ -6,20 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MediaControls/MRUViewServiceViewController-Protocol.h>
-
 @class MPMediaControlsConfiguration, NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MRUViewServiceUpNextViewController : UIViewController <MRUViewServiceViewController>
+@interface MRUViewServiceUpNextViewController : UIViewController
 {
     MPMediaControlsConfiguration *configuration;
     CDUnknownBlockType dismissalBlock;
+    CDUnknownBlockType customRowTappedBlock;
     UILabel *_placeholderLabel;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *placeholderLabel; // @synthesize placeholderLabel=_placeholderLabel;
+@property(copy, nonatomic) CDUnknownBlockType customRowTappedBlock; // @synthesize customRowTappedBlock;
 @property(copy, nonatomic) CDUnknownBlockType dismissalBlock; // @synthesize dismissalBlock;
 @property(retain, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration;
 - (void)transitionToVisible:(_Bool)arg1 animated:(_Bool)arg2;

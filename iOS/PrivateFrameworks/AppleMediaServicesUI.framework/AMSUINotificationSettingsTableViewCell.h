@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AMSNotificationSettingsItem *item; // @synthesize item=_item;
 @property(nonatomic) __weak id <AMSUINotificationInAppSettingsTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)switchToggled:(id)arg1;
-- (void)layoutSubviews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

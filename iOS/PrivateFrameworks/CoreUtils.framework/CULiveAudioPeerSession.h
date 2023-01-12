@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreUtils/CUActivatable-Protocol.h>
-
 @class RPCompanionLinkClient, RPCompanionLinkDevice;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CULiveAudioPeerSession : NSObject <CUActivatable>
+@interface CULiveAudioPeerSession : NSObject
 {
     RPCompanionLinkClient *_clinkClient;
     NSObject<OS_dispatch_queue> *_dispatchQueue;

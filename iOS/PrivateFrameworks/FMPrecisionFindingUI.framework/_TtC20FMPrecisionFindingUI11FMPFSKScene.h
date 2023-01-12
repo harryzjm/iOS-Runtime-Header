@@ -6,12 +6,9 @@
 
 #import <SpriteKit/SKScene.h>
 
-#import <FMPrecisionFindingUI/CLLocationManagerDelegate-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
-__attribute__((visibility("hidden")))
-@interface _TtC20FMPrecisionFindingUI11FMPFSKScene : SKScene <CLLocationManagerDelegate>
+@interface _TtC20FMPrecisionFindingUI11FMPFSKScene : SKScene
 {
     MISSING_TYPE *style;
     MISSING_TYPE *config;

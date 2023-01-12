@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
-
 @class AMSDialogRequest, AMSURLTaskInfo, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceDialogResponse : NSObject <AMSFinancePerformable>
+@interface AMSFinanceDialogResponse : NSObject
 {
     _Bool _containsCommerceUIURL;
     NSDictionary *_dialogDictionary;

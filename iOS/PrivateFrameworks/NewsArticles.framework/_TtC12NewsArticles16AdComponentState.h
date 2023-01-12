@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsArticles/SXComponentState-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12NewsArticles16AdComponentState : NSObject <SXComponentState>
+@interface _TtC12NewsArticles16AdComponentState : NSObject
 {
     MISSING_TYPE *identifier;
     MISSING_TYPE *bannerState;

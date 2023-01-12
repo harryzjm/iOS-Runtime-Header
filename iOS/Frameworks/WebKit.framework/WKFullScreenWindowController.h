@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <WebKit/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSString, UIView, WKWebView;
 
 __attribute__((visibility("hidden")))
-@interface WKFullScreenWindowController : NSObject <UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate>
+@interface WKFullScreenWindowController : NSObject
 {
     struct RetainPtr<WKFullScreenPlaceholderView> _webViewPlaceholder;
     long long _fullScreenState;
@@ -25,13 +22,14 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIPanGestureRecognizer> _interactivePanDismissGestureRecognizer;
     struct RetainPtr<UIPinchGestureRecognizer> _interactivePinchDismissGestureRecognizer;
     struct RetainPtr<WKFullScreenInteractiveTransition> _interactiveDismissTransitionCoordinator;
-    struct WKFullScreenWindowControllerVideoFullscreenManagerProxyClient _videoFullscreenManagerProxyClient;
+    struct unique_ptr<WTF::Observer<void (bool)>, std::default_delete<WTF::Observer<void (bool)>>> _pipObserver;
     _Bool _shouldReturnToFullscreenFromPictureInPicture;
     _Bool _enterFullscreenNeedsExitPictureInPicture;
     _Bool _returnToFullscreenFromPictureInPicture;
     _Bool _blocksReturnToFullscreenFromPictureInPicture;
     struct CGRect _initialFrame;
     struct CGRect _finalFrame;
+    struct CGRect _originalWindowFrame;
     struct RetainPtr<NSString> _EVOrganizationName;
     _Bool _EVOrganizationNameIsValid;
     _Bool _inInteractiveDismiss;
@@ -68,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)webViewDidRemoveFromSuperviewWhileInFullscreen;
 - (void)close;
 - (void)_completedExitFullScreen;
+- (void)_reinsertWebViewUnderPlaceholder;
 - (void)beganExitFullScreenWithInitialFrame:(struct CGRect)arg1 finalFrame:(struct CGRect)arg2;
 - (void)exitFullScreen;
 - (void)requestExitFullScreen;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIActivityContinuationManagerApplicationContext-Protocol.h>
-#import <UIKitCore/_UISceneComponentProviding-Protocol.h>
-
 @class NSDictionary, NSSet, NSString, NSUserActivity, UIActivityContinuationManager, UIScene;
 
 __attribute__((visibility("hidden")))
-@interface _UICanvasUserActivityManager : NSObject <UIActivityContinuationManagerApplicationContext, _UISceneComponentProviding>
+@interface _UICanvasUserActivityManager : NSObject
 {
     UIScene *_weakScene;
     NSUserActivity *_restorationActivity;
@@ -23,7 +20,7 @@ __attribute__((visibility("hidden")))
     _Bool _isDisplayingActivityContinuationUI;
 }
 
-+ (id)_activityContinuationDictionaryWithAction:(id)arg1 sourceApplication:(id)arg2;
++ (id)_activityContinuationDictionaryWithAction:(id)arg1 sourceApplication:(id)arg2 originatingProcess:(id)arg3;
 + (id)_getRestorationUserActivityForPersistentIdentifier:(id)arg1 error:(id *)arg2;
 + (id)_getUserInfoForPersistentIdentifier:(id)arg1 error:(id *)arg2;
 + (void)_scheduleDataSaveForSceneSession:(id)arg1 saveRestorationActivity:(_Bool)arg2;

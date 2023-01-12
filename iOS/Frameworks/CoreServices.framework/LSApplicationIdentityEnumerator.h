@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "LSEnumerator.h"
+
 @class LSApplicationRecord, NSEnumerator, NSError, _LSApplicationRecordEnumerator;
 
 __attribute__((visibility("hidden")))
-@interface LSApplicationIdentityEnumerator
+@interface LSApplicationIdentityEnumerator : LSEnumerator
 {
     NSError *_ctxError;
     _LSApplicationRecordEnumerator *_recordEnumerator;

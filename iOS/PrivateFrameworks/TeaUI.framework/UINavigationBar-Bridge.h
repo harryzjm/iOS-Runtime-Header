@@ -14,6 +14,7 @@
 - (void)ts_setBackgroundEffects:(id)arg1;
 - (id)ts_contentView;
 - (id)ts_barButtonViews;
+- (id)ts_backdropViewLayerGroupName;
 - (void)ts_setBlurthroughBackground;
 - (void)ts_clearAccessibilityElementsCache;
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _LSJournalledNotification : NSObject <NSSecureCoding>
+@interface _LSJournalledNotification : NSObject
 {
     int _notification;
     NSArray *_bundleIDs;

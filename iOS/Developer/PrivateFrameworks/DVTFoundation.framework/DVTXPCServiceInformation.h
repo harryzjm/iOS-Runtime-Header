@@ -19,10 +19,12 @@
     NSString *_fullPath;
     NSString *_containerAppID;
     NSString *_appContainerPath;
+    NSString *_appExtensionHoldContainerBundleID;
 }
 
 - (void).cxx_destruct;
 @property _Bool needsRoot; // @synthesize needsRoot=_needsRoot;
+@property(retain) NSString *appExtensionHoldContainerBundleID; // @synthesize appExtensionHoldContainerBundleID=_appExtensionHoldContainerBundleID;
 @property(retain) NSString *appContainerPath; // @synthesize appContainerPath=_appContainerPath;
 @property(retain) NSString *containerAppID; // @synthesize containerAppID=_containerAppID;
 @property(retain) NSString *fullPath; // @synthesize fullPath=_fullPath;

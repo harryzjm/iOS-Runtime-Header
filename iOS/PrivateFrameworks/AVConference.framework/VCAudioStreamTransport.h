@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/WRMClientDelegate-Protocol.h>
-
 @class WRMClient;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioStreamTransport <WRMClientDelegate>
+@interface VCAudioStreamTransport
 {
     WRMClient *_wrmClient;
     struct _VCAudioStreamTransportRealtimeContext _realtimeContext;

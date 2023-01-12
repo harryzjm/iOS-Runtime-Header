@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIItemRequestDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString, SKUIResourceLoader;
 @protocol SKUIMissingItemDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMissingItemLoader : NSObject <SKUIItemRequestDelegate>
+@interface SKUIMissingItemLoader : NSObject
 {
     long long _batchSize;
     id <SKUIMissingItemDelegate> _delegate;

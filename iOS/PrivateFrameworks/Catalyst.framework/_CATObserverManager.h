@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATOperationObserver-Protocol.h>
-
 @class CATOperation, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface _CATObserverManager : NSObject <CATOperationObserver>
+@interface _CATObserverManager : NSObject
 {
     NSMutableSet *mObservers;
     int mState;

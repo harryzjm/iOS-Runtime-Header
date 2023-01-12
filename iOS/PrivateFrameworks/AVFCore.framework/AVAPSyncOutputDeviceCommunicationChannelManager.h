@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceCommunicationChannelManager-Protocol.h>
-
 @class AVOutputDevice, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVAPSyncOutputDeviceCommunicationChannelManager : NSObject <AVOutputDeviceCommunicationChannelManager>
+@interface AVAPSyncOutputDeviceCommunicationChannelManager : NSObject
 {
     AVOutputDevice *_parentOutputDevice;
     NSString *_deviceID;

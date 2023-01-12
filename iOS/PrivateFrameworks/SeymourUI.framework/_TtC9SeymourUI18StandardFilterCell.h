@@ -13,13 +13,13 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *itemInfo;
-    MISSING_TYPE *layout;
-    MISSING_TYPE *titleLabel;
     MISSING_TYPE *platter;
+    MISSING_TYPE *titleLabel;
+    MISSING_TYPE *styleProvider;
 }
 
 - (void).cxx_destruct;
-- (void)textSizeChanged:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)prepareForReuse;
 - (void)layoutSubviews;

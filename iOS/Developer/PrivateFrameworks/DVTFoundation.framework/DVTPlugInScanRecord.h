@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTPropertyListEncoding-Protocol.h>
+@class DVTPlugIn, DVTPlugInBundleMetadata, DVTVersion, NSArray, NSBundle, NSDictionary, NSSet, NSString;
 
-@class DVTPlugIn, DVTVersion, NSArray, NSBundle, NSDictionary, NSSet, NSString;
-
-@interface DVTPlugInScanRecord : NSObject <DVTPropertyListEncoding>
+@interface DVTPlugInScanRecord : NSObject
 {
     NSString *_path;
     NSString *_bundlePath;
@@ -26,10 +24,12 @@
     DVTPlugIn *_plugIn;
     NSSet *_plugInCompatibilityUUIDs;
     NSArray *_modificationDates;
+    DVTPlugInBundleMetadata *_bundleMetadata;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
+@property(readonly) DVTPlugInBundleMetadata *bundleMetadata; // @synthesize bundleMetadata=_bundleMetadata;
 @property(retain) DVTPlugIn *plugIn; // @synthesize plugIn=_plugIn;
 @property(readonly, copy) NSDictionary *plugInPlist; // @synthesize plugInPlist=_plugInPlist;
 @property(readonly, copy) NSSet *plugInCompatibilityUUIDs; // @synthesize plugInCompatibilityUUIDs=_plugInCompatibilityUUIDs;
@@ -44,19 +44,22 @@
 @property(readonly, copy) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property(readonly, copy) NSString *path; // @synthesize path=_path;
 - (_Bool)loadRequiredCapabilities:(id *)arg1;
+@property(readonly) _Bool isMalformedPlugIn;
 - (_Bool)_loadBundleRawInfoPlist:(id *)arg1;
 - (_Bool)loadPlugInPlist:(id *)arg1;
 - (id)_contentsOfPlistAtURL:(id)arg1 error:(id *)arg2;
 @property(readonly) _Bool hasPlugInPlist;
 @property(readonly, getter=isFramework) _Bool framework;
 - (id)_plugInPlistURL;
-- (void)_instantiateBundleIfNecessary;
+@property(readonly) NSBundle *initializedBundle;
+- (void)initializeBundleIfNeeded;
 - (_Bool)isEquivalentToPlistRepresentation:(id)arg1;
 - (void)encodeIntoPropertyList:(id)arg1;
+- (void)awakeFromPropertyList;
 - (id)initWithPropertyList:(id)arg1 owner:(id)arg2;
 @property(readonly, copy) NSString *description;
 - (long long)compare:(id)arg1;
-- (id)initWithPath:(id)arg1 bundle:(id)arg2 plugInPlist:(id)arg3;
+- (id)initWithPath:(id)arg1 bundleMetadata:(id)arg2 plugInPlist:(id)arg3;
 - (id)initWithPath:(id)arg1 bundlePath:(id)arg2 plugInPlist:(id)arg3;
 - (void)recordModificationDates:(id)arg1;
 

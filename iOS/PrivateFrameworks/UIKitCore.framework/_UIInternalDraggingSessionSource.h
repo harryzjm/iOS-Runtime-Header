@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIDraggingInfo-Protocol.h>
-
 @class NSArray, NSString, NSTimer, PBItemCollection, UIDragEvent, UIDraggingBeginningSessionConfiguration, UIDraggingSystemTouchRoutingPolicy, UIView, UIWindow, _UIDragSetDownAnimation, _UIDruidSourceConnection;
 @protocol _UIDraggingSessionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIInternalDraggingSessionSource <_UIDraggingInfo>
+@interface _UIInternalDraggingSessionSource
 {
-    struct CGPoint _lastNotifiedCentroid;
+    struct CAPoint3D _lastNotifiedCentroid;
     _Bool _didHandOffDragImage;
     PBItemCollection *_pbItemCollection;
     UIDraggingSystemTouchRoutingPolicy *_touchRoutingPolicy;
@@ -36,7 +34,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _withinAppSourceOperationMask;
     unsigned long long _outsideAppSourceOperationMask;
     _UIDruidSourceConnection *_druidConnection;
-    struct CGPoint _centroid;
+    struct CAPoint3D _centroid;
 }
 
 - (void).cxx_destruct;
@@ -46,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(readonly, nonatomic) __weak UIWindow *weakCentroidWindow; // @synthesize weakCentroidWindow=_weakCentroidWindow;
 @property(readonly, nonatomic) UIWindow *centroidWindow; // @synthesize centroidWindow=_centroidWindow;
-@property(readonly, nonatomic) struct CGPoint centroid; // @synthesize centroid=_centroid;
+@property(readonly, nonatomic) struct CAPoint3D centroid; // @synthesize centroid=_centroid;
 @property(nonatomic) long long dataOwner; // @synthesize dataOwner=_dataOwner;
 @property(copy, nonatomic) NSArray *internalItems; // @synthesize internalItems=_internalItems;
 @property(nonatomic) unsigned long long resultOperation; // @synthesize resultOperation=_resultOperation;

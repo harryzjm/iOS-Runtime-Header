@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UIIdentifierDifferMovePair-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIIdentifierDifferMovePair : NSObject <_UIIdentifierDifferMovePair, NSCopying>
+@interface _UIIdentifierDifferMovePair : NSObject <NSCopying>
 {
     long long _fromIndex;
     long long _toIndex;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *menuController;
     MISSING_TYPE *genres;
     MISSING_TYPE *selectedGenre;
+    MISSING_TYPE *serviceRequest;
 }
 
 - (void).cxx_destruct;

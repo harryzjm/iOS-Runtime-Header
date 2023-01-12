@@ -15,6 +15,9 @@
 - (_Bool)ef_any:(CDUnknownBlockType)arg1;
 - (id)ef_anyPassingTest:(CDUnknownBlockType)arg1;
 - (id)ef_subarrayWithRange:(struct _NSRange)arg1;
+- (id)ef_subsetWithRange:(struct _NSRange)arg1;
+- (id)ef_suffix:(unsigned long long)arg1;
+- (id)ef_prefix:(unsigned long long)arg1;
 - (id)ef_filter:(CDUnknownBlockType)arg1;
 - (id)ef_flatMap:(CDUnknownBlockType)arg1;
 - (id)ef_compactMap:(CDUnknownBlockType)arg1;

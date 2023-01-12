@@ -6,11 +6,9 @@
 
 #import <AWDSupportFramework/AWDCoreRoutineLMPResponseInstance.h>
 
-#import <coreroutine/RTMetricManagerMetricIdProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AWDCoreRoutineLMPResponseInstance (MetricManager) <RTMetricManagerMetricIdProtocol>
+@interface AWDCoreRoutineLMPResponseInstance (MetricManager)
 @property(readonly, copy) NSString *description;
 - (_Bool)valid:(id *)arg1;
 - (id)_init;

@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class DVTExtension, DVTExtensionElementDescription, NSMutableDictionary;
+@class DVTExtension, DVTExtensionElementDescription, NSDictionary;
 
 @interface DVTExtensionParameter : NSObject
 {
-    NSMutableDictionary *_parameterData;
+    NSDictionary *_parameterData;
     DVTExtensionElementDescription *_schema;
     DVTExtension *_extension;
 }
 
 - (void).cxx_destruct;
 @property(readonly) DVTExtension *extension; // @synthesize extension=_extension;
+- (id)extensionParametersForKey:(id)arg1;
 - (long long)integerForKey:(id)arg1;
 - (double)doubleForKey:(id)arg1;
 - (_Bool)boolForKey:(id)arg1;

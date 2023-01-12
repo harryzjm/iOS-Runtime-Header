@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSOrderedSet;
 
 __attribute__((visibility("hidden")))
-@interface _UICommandDiffv1 : NSObject <NSCopying, NSSecureCoding>
+@interface _UICommandDiffv1 : NSObject <NSCopying>
 {
     NSOrderedSet *_changes;
 }

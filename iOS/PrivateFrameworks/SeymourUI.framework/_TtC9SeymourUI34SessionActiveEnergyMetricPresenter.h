@@ -14,6 +14,7 @@
     MISSING_TYPE *lastUpdatedValue;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *externalOverlayDisplay;
     MISSING_TYPE *display;
 }
 

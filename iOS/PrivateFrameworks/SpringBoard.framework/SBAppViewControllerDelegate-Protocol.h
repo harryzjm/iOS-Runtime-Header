@@ -11,6 +11,8 @@
 @protocol SBAppViewControllerDelegate <NSObject>
 
 @optional
+- (_Bool)appViewControllerShouldHideHomeGrabberView:(SBAppViewController *)arg1;
+- (_Bool)appViewControllerShouldReactivateApplicationOnDestruction:(SBAppViewController *)arg1;
 - (_Bool)appViewControllerShouldBackgroundApplicationOnDeactivate:(SBAppViewController *)arg1;
 - (void)appViewControllerDidBecomeReady:(SBAppViewController *)arg1;
 - (void)appViewControllerDidDeactivateApplication:(SBAppViewController *)arg1;

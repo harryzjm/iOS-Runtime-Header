@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNPermissivePolicy.h"
+
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CNDictionaryPolicy
+@interface CNDictionaryPolicy : CNPermissivePolicy
 {
     NSDictionary *_policyDictionary;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (_Bool)isContactPropertySupported:(id)arg1;
 - (unsigned long long)maximumCountOfValuesForContactProperty:(id)arg1 label:(id)arg2;
 - (id)supportedLabelsForContactProperty:(id)arg1;

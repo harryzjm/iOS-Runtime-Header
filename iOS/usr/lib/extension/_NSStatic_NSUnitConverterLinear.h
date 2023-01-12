@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSUnitConverterLinear.h"
+
 __attribute__((visibility("hidden")))
-@interface _NSStatic_NSUnitConverterLinear
+@interface _NSStatic_NSUnitConverterLinear : NSUnitConverterLinear
 {
 }
 

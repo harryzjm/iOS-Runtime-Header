@@ -6,11 +6,13 @@
 
 #import <iCloudQuotaUI/NSObject-Protocol.h>
 
-@class ICQUpgradeFlowManager, UIViewController;
+@class ICQUpgradeFlowManager, NSError, UIViewController;
 
 @protocol ICQUpgradeFlowManagerDelegate <NSObject>
 
 @optional
+- (void)upgradeFlowManagerDidFail:(ICQUpgradeFlowManager *)arg1 error:(NSError *)arg2;
+- (void)manager:(ICQUpgradeFlowManager *)arg1 loadDidFailWithError:(NSError *)arg2;
 - (void)upgradeFlowManager:(ICQUpgradeFlowManager *)arg1 didPresentViewController:(UIViewController *)arg2;
 - (void)upgradeFlowManagerDidComplete:(ICQUpgradeFlowManager *)arg1;
 - (void)upgradeFlowManagerDidCancel:(ICQUpgradeFlowManager *)arg1;

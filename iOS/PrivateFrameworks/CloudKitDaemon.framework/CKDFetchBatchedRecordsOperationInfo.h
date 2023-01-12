@@ -6,11 +6,9 @@
 
 #import <CloudKit/CKDatabaseOperationInfo.h>
 
-#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSDictionary;
 
-@interface CKDFetchBatchedRecordsOperationInfo : CKDatabaseOperationInfo <NSSecureCoding>
+@interface CKDFetchBatchedRecordsOperationInfo : CKDatabaseOperationInfo
 {
     _Bool _shouldFetchAssetContents;
     _Bool _fetchAllChanges;
@@ -18,6 +16,7 @@
     NSArray *_recordZoneIDs;
     NSDictionary *_configurationsByRecordZoneID;
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
+    NSDictionary *_supplementalChangeTokenByZoneID;
     long long _errorReportingStyle;
 }
 
@@ -25,6 +24,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool forcePCSDecryptionAttempt; // @synthesize forcePCSDecryptionAttempt=_forcePCSDecryptionAttempt;
 @property(nonatomic) long long errorReportingStyle; // @synthesize errorReportingStyle=_errorReportingStyle;
+@property(retain, nonatomic) NSDictionary *supplementalChangeTokenByZoneID; // @synthesize supplementalChangeTokenByZoneID=_supplementalChangeTokenByZoneID;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property(nonatomic) _Bool fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
 @property(nonatomic) _Bool shouldFetchAssetContents; // @synthesize shouldFetchAssetContents=_shouldFetchAssetContents;

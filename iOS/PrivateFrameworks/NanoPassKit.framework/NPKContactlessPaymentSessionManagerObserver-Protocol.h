@@ -10,8 +10,5 @@
 
 @protocol NPKContactlessPaymentSessionManagerObserver <NSObject>
 - (void)contactlessPaymentSessionManager:(NPKContactlessPaymentSessionManager *)arg1 didChangeSessionState:(NPKContactlessPaymentSessionState *)arg2;
-
-@optional
-- (_Bool)shouldReceiveSessionUpdatesWithPriority;
 @end
 

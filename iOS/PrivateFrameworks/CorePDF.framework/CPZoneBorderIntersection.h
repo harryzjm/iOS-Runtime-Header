@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPCopying-Protocol.h>
-#import <CorePDF/NSCopying-Protocol.h>
-
 @class CPZoneBorder;
 
 __attribute__((visibility("hidden")))
-@interface CPZoneBorderIntersection : NSObject <NSCopying, CPCopying>
+@interface CPZoneBorderIntersection : NSObject
 {
     struct CGRect intersectionRect;
     CPZoneBorder *intersectingBorder;

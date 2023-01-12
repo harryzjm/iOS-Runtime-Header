@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IMAssistantCore/IMAssistantMessageHandlerDataSource-Protocol.h>
-
 @class CNContactStore, NSCache, NSString;
-@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantContactsDataSource, IMAssistantCoreTelephonySubscriptionsDataSource, IMAssistantFileManager, IMFileTransferCenter, IMLocationManager;
+@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantCommSafetyManager, IMAssistantContactsDataSource, IMAssistantCoreTelephonySubscriptionsDataSource, IMAssistantFileManager, IMFileTransferCenter, IMLocationManager;
 
-@interface IMAssistantMessageHandlerDefaultDataSource : NSObject <IMAssistantMessageHandlerDataSource>
+@interface IMAssistantMessageHandlerDefaultDataSource : NSObject
 {
     _Bool _didRegisterForContactStoreChangeNotifications;
     CNContactStore *_contactStore;
@@ -28,6 +26,7 @@
 @property(readonly, nonatomic) NSCache *contactIdentifierToUnifiedContactIdentifierCache;
 @property(readonly, nonatomic) NSCache *spiHandleToPersonCache;
 @property(readonly, nonatomic) NSCache *handleToContactIdentifierCache;
+@property(readonly, nonatomic) id <IMAssistantCommSafetyManager> commSafetyDataSource;
 @property(readonly, nonatomic) id <IMFileTransferCenter> fileTransferCenterDataSource;
 @property(readonly, nonatomic) id <IMAssistantFileManager> fileManagerDataSource;
 @property(readonly, nonatomic) id <IMLocationManager> locationManagerDataSource;

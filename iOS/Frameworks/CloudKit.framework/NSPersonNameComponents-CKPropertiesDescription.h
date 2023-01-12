@@ -6,11 +6,9 @@
 
 #import <Foundation/NSPersonNameComponents.h>
 
-#import <CloudKit/CKPropertiesDescription-Protocol.h>
-
 @class NSString;
 
-@interface NSPersonNameComponents (CKPropertiesDescription) <CKPropertiesDescription>
+@interface NSPersonNameComponents (CKPropertiesDescription)
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (void)CKDescribePropertiesUsing:(id)arg1;
 - (id)CKShortDescriptionRedact:(_Bool)arg1;

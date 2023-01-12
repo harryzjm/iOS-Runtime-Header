@@ -4,24 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/_SFPopoverSizingTableViewController.h>
+#import <MobileSafari/SFPopoverSizingTableViewController.h>
 
 @class UITableViewHeaderFooterView, UIView, _UIVisualEffectBackdropView;
 
 __attribute__((visibility("hidden")))
-@interface CompletionListTableViewController : _SFPopoverSizingTableViewController
+@interface CompletionListTableViewController : SFPopoverSizingTableViewController
 {
     _UIVisualEffectBackdropView *_headerBackdropCaptureView;
     double _keyboardBottomInset;
+    UIView *_defaultHeaderFooterBackgroundView;
 }
 
 + (id)tableViewCellForSizeEstimation;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIView *defaultHeaderFooterBackgroundView; // @synthesize defaultHeaderFooterBackgroundView=_defaultHeaderFooterBackgroundView;
 - (void)updateKeyboardBottomInsetFromKeyboardFrame:(struct CGRect)arg1;
 - (void)keyboardDidChangeFrame:(id)arg1;
 - (long long)maximumNumberOfRows;
 - (long long)minimumNumberOfRows;
-@property(readonly, nonatomic) UIView *defaultHeaderFooterBackgroundView;
+- (void)updateContentInsets;
 @property(readonly, nonatomic) UITableViewHeaderFooterView *defaultHeaderFooterView;
 - (void)viewIsAppearing:(_Bool)arg1;
 - (void)viewDidLoad;

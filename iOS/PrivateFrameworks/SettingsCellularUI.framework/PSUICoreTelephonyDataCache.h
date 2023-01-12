@@ -6,23 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/CoreTelephonyClientDataDelegate-Protocol.h>
-#import <SettingsCellularUI/RadiosPreferencesDelegate-Protocol.h>
-
-@class CoreTelephonyClient, Logger, NSMutableDictionary, NSString, RadiosPreferences;
-@protocol OS_dispatch_queue;
+@class CoreTelephonyClient, NSMutableDictionary, NSString, RadiosPreferences;
 
 __attribute__((visibility("hidden")))
-@interface PSUICoreTelephonyDataCache : NSObject <CoreTelephonyClientDataDelegate, RadiosPreferencesDelegate>
+@interface PSUICoreTelephonyDataCache : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    Logger *_logger;
     _Bool _cellularDataSetting;
     _Bool _cellularDataSettingInitialized;
     _Bool _privacyProxySettingsFetched;
     CDStruct_7152cabe _privacyProxySetting;
-    struct __CTServerConnection *_ctConnection;
     CoreTelephonyClient *_client;
+    struct __CTServerConnection *_ctConnection;
     NSMutableDictionary *_dataStatusDict;
     NSMutableDictionary *_intlDataAccessStatus;
     RadiosPreferences *_radioPreferences;
@@ -37,12 +31,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) RadiosPreferences *radioPreferences; // @synthesize radioPreferences=_radioPreferences;
 @property(retain) NSMutableDictionary *intlDataAccessStatus; // @synthesize intlDataAccessStatus=_intlDataAccessStatus;
 @property(retain) NSMutableDictionary *dataStatusDict; // @synthesize dataStatusDict=_dataStatusDict;
-@property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
 @property struct __CTServerConnection *ctConnection; // @synthesize ctConnection=_ctConnection;
+@property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
 - (id)getLogger;
+- (void)eraseCellularDataUsageRecords;
+- (struct __CFDate *)copyStartDateOfCellularDataUsageRecords;
 - (void)setPrivacyProxy:(id)arg1 enabled:(_Bool)arg2;
 - (_Bool)isPrivacyProxyEnabled:(id)arg1;
-- (_Bool)canSetPrivacyProxy:(id)arg1;
+- (_Bool)isUserSubscribedToPrivacyProxy:(id)arg1;
 - (void)fetchPrivacyProxyStatus:(id)arg1;
 - (void)airplaneModeChanged;
 - (void)setDataFallbackEnabled:(_Bool)arg1;

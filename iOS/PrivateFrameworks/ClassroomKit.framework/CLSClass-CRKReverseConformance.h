@@ -6,11 +6,9 @@
 
 #import <ClassKit/CLSClass.h>
 
-#import <ClassroomKit/CRKClassKitClass-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface CLSClass (CRKReverseConformance) <CRKClassKitClass>
+@interface CLSClass (CRKReverseConformance)
 @property(readonly, nonatomic, getter=isEditable) _Bool editable;
 
 // Remaining properties

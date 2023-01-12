@@ -12,8 +12,8 @@
 
 @optional
 @property(readonly, nonatomic) WKWebView *extensionHostWebView;
-- (void)close;
+- (void)showExtensionTabWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)unregisterExtension:(_WKInspectorExtension *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)registerExtensionWithID:(NSString *)arg1 displayName:(NSString *)arg2 completionHandler:(void (^)(NSError *, _WKInspectorExtension *))arg3;
+- (void)registerExtensionWithID:(NSString *)arg1 extensionBundleIdentifier:(NSString *)arg2 displayName:(NSString *)arg3 completionHandler:(void (^)(NSError *, _WKInspectorExtension *))arg4;
 @end
 

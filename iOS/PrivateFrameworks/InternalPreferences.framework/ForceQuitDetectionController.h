@@ -6,12 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-#import <InternalPreferences/UITextFieldDelegate-Protocol.h>
-
 @class NSString, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface ForceQuitDetectionController : PSListController <UITextFieldDelegate>
+@interface ForceQuitDetectionController : PSListController
 {
     float _detectionThresholdMS;
     PSSpecifier *_forceQuitDetectionExplanation;

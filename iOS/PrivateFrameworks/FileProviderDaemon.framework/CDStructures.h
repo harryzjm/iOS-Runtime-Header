@@ -11,18 +11,18 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
-struct timespec {
-    long long tv_sec;
-    long long tv_nsec;
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 

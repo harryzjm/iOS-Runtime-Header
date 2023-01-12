@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSString, NSURL, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface SKUIOnboardingAffiliationItem : NSObject <NSCopying>
+@interface SKUIOnboardingAffiliationItem : NSObject
 {
     UIColor *_fillColor;
     NSString *_identifier;

@@ -9,6 +9,7 @@
 @class NSArray, NSUUID;
 
 @protocol HKWorkoutBuilderSampleQueryClientInterface <HKQueryClientInterface>
+- (void)client_deliverQuantities:(NSArray *)arg1 hasFinishedHistoricalFetch:(_Bool)arg2 queryUUID:(NSUUID *)arg3;
 - (void)client_deliverSamples:(NSArray *)arg1 hasFinishedHistoricalFetch:(_Bool)arg2 queryUUID:(NSUUID *)arg3;
 @end
 

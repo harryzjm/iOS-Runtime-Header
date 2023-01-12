@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNPhotoPickerProvider-Protocol.h>
-
 @class NSString;
 @protocol AVTAvatarStore;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerAnimojiProvider : NSObject <CNPhotoPickerProvider>
+@interface CNPhotoPickerAnimojiProvider : NSObject
 {
     NSString *identifier;
     id <AVTAvatarStore> _avatarStore;

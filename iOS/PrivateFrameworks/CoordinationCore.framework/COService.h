@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/NSXPCListenerDelegate-Protocol.h>
-
 @class NSArray, NSDictionary, NSString, NSXPCListener;
 @protocol COServiceAddOnProvider, COServiceDelegate, COServiceListenerProvider, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface COService : NSObject <NSXPCListenerDelegate>
+@interface COService : NSObject
 {
     id <COServiceListenerProvider> _listenerProvider;
     id <COServiceAddOnProvider> _addOnProvider;

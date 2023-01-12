@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <boringssl/OS_boringssl_session_cache-Protocol.h>
-
 @class NSString;
 @protocol OS_nw_association;
 
 __attribute__((visibility("hidden")))
-@interface boringssl_concrete_boringssl_session_cache : NSObject <OS_boringssl_session_cache>
+@interface boringssl_concrete_boringssl_session_cache : NSObject
 {
     NSObject<OS_nw_association> *association;
 }

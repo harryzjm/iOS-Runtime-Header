@@ -11,12 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface VSAccountAuthentication : NSObject
 {
+    _Bool _synchronizable;
     NSString *_username;
     VSOptional *_authenticationToken;
     NSString *_appBundleIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isSynchronizable) _Bool synchronizable; // @synthesize synchronizable=_synchronizable;
 @property(copy, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property(retain, nonatomic) VSOptional *authenticationToken; // @synthesize authenticationToken=_authenticationToken;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;

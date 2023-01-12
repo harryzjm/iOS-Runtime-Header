@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATSharingContentMessage-Protocol.h>
-
 @class NSData, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CATSharingSentMessage : NSObject <CATSharingContentMessage>
+@interface CATSharingSentMessage : NSObject
 {
     NSData *_content;
 }

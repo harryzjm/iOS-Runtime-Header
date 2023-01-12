@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <_StoreKit_SwiftUI/SKOverlayDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC17_StoreKit_SwiftUIP33_7A1CD05574219937BB53A614E2FE018426AppStoreOverlayCoordinator : NSObject <SKOverlayDelegate>
+@interface _TtC17_StoreKit_SwiftUIP33_7A1CD05574219937BB53A614E2FE018426AppStoreOverlayCoordinator : NSObject
 {
     MISSING_TYPE *isPresented;
     MISSING_TYPE *overlayState;

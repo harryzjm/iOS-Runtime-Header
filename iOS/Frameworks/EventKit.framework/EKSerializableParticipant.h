@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EKSerializableObject.h"
+
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface EKSerializableParticipant
+@interface EKSerializableParticipant : EKSerializableObject
 {
     NSString *_name;
     NSString *_emailAddress;

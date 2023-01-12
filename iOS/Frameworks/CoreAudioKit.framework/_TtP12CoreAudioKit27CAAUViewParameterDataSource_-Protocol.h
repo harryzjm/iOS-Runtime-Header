@@ -9,6 +9,7 @@
 @protocol _TtP12CoreAudioKit27CAAUViewParameterDataSource_
 - (void)setWithParameter:(unsigned int)arg1 value:(float)arg2;
 - (const struct CGPath *)curveIn:(struct CGRect)arg1;
+- (NSString *)accessibilityValueFor:(unsigned int)arg1;
 - (NSArray *)stringValuesFor:(unsigned int)arg1;
 - (long long)widthTypeFor:(unsigned int)arg1;
 - (float)maxValueFor:(unsigned int)arg1;

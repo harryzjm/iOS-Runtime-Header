@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/CAAction-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface UIViewBlockBasedCAAction : NSObject <CAAction>
+@interface UIViewBlockBasedCAAction : NSObject
 {
     CDUnknownBlockType _block;
 }

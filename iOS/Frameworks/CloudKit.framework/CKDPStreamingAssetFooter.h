@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKit/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface CKDPStreamingAssetFooter : PBCodable <NSCopying>
+@interface CKDPStreamingAssetFooter : PBCodable
 {
     NSData *_md5;
     int _status;

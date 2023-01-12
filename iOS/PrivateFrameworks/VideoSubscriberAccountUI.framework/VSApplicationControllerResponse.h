@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
     NSSet *_accountChannelIDs;
     NSArray *_subscriptionsToAdd;
     NSArray *_subscriptionsToRemoveByBundleID;
+    NSArray *_userAccounts;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *userAccounts; // @synthesize userAccounts=_userAccounts;
 @property(copy, nonatomic) NSArray *subscriptionsToRemoveByBundleID; // @synthesize subscriptionsToRemoveByBundleID=_subscriptionsToRemoveByBundleID;
 @property(copy, nonatomic) NSArray *subscriptionsToAdd; // @synthesize subscriptionsToAdd=_subscriptionsToAdd;
 @property(copy, nonatomic) NSSet *accountChannelIDs; // @synthesize accountChannelIDs=_accountChannelIDs;

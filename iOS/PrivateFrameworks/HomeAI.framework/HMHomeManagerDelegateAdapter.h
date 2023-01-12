@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeAI/HMHomeManagerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMHomeManagerDelegateAdapter : NSObject <HMHomeManagerDelegate>
+@interface HMHomeManagerDelegateAdapter : NSObject
 {
     CDUnknownBlockType _didUpdateHomes;
 }

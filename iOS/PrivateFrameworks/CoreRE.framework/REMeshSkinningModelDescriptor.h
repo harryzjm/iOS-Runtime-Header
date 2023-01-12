@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSSecureCoding-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface REMeshSkinningModelDescriptor : NSObject <NSSecureCoding>
+@interface REMeshSkinningModelDescriptor : NSObject
 {
     NSArray *_inverseBindPoseAttributes;
     NSArray *_skinningParts;
@@ -25,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInverseBindPoseAttributes:(id)arg1 skinningParts:(id)arg2;
+- (id)initWithSkinningData:(const void *)arg1 inverseBindPoseAttributes:(id)arg2 payloadBuilder:(void *)arg3;
 - (id)initWithMeshSkinningData:(const void *)arg1 inverseBindPoseAttributes:(id)arg2 payloadBuilder:(void *)arg3 deformationModelData:(void *)arg4;
 
 @end

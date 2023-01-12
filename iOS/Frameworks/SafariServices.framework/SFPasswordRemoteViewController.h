@@ -6,13 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <SafariServices/SFPasswordRemoteViewControllerProtocol-Protocol.h>
-
 @class NSString;
 @protocol SFPasswordRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFPasswordRemoteViewController : _UIRemoteViewController <SFPasswordRemoteViewControllerProtocol>
+@interface SFPasswordRemoteViewController : _UIRemoteViewController
 {
     id <SFPasswordRemoteViewControllerDelegate> _delegate;
 }

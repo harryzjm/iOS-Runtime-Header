@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineEventHandler-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineEventHandler-Protocol.h>
 
 @class HKSPSleepScheduleModel;
 
-@protocol HDSPSleepWidgetStateMachineEventHandler <HKSPStateMachineEventHandler>
-- (void)upcomingChangeEventDue;
-- (void)greetingExpiredEventDue;
-- (void)bedtimeExpiredEventDue;
+@protocol HDSPSleepWidgetStateMachineEventHandler <HKSPPersistentStateMachineEventHandler>
 - (void)significantTimeChangeOccurred;
 - (void)sleepScheduleStateDidChange:(unsigned long long)arg1;
 - (void)sleepScheduleModelDidChange:(HKSPSleepScheduleModel *)arg1;

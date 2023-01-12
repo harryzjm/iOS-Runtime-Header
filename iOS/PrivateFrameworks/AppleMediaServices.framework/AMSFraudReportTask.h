@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSTask.h"
+
 __attribute__((visibility("hidden")))
-@interface AMSFraudReportTask
+@interface AMSFraudReportTask : AMSTask
 {
 }
 
-+ (id)performFraudReportRefreshWithTransactionID:(id)arg1 nameSpace:(id)arg2 reportedScore:(long long)arg3;
++ (id)performFraudReportRefreshWithAccount:(id)arg1 transactionID:(id)arg2 nameSpace:(id)arg3 fsrData:(id)arg4 keyID:(id)arg5;
 
 @end
 

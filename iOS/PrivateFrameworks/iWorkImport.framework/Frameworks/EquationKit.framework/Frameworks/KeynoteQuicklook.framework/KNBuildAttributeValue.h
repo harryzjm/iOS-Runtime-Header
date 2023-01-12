@@ -6,12 +6,10 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
 @class NSString, TSDPathSource, TSUColor;
 @protocol NSObject;
 
-@interface KNBuildAttributeValue : TSKSosBase <NSCopying>
+@interface KNBuildAttributeValue : TSKSosBase
 {
     int _integerValue;
     double _doubleValue;

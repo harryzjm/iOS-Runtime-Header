@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface EDProtection : NSObject <NSCopying>
+@interface EDProtection : NSObject
 {
     _Bool mHidden;
     _Bool mLocked;

@@ -13,6 +13,7 @@
 
 - (void).cxx_destruct;
 - (_Bool)readOnly;
+- (unsigned long long)materializedLength;
 - (unsigned long long)encodedLength;
 - (_Bool)isReadable;
 - (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(void *)arg3 preferredFilename:(id)arg4 shouldRemoveData:(_Bool)arg5 error:(id *)arg6;

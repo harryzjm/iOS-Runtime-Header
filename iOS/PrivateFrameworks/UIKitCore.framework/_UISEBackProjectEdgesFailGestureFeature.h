@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISETouchedEdgesProvider-Protocol.h>
-
 @protocol _UISEGestureFeatureSettings;
 
 __attribute__((visibility("hidden")))
-@interface _UISEBackProjectEdgesFailGestureFeature <_UISETouchedEdgesProvider>
+@interface _UISEBackProjectEdgesFailGestureFeature
 {
     id <_UISEGestureFeatureSettings> _settings;
     _Bool _hasDoneTest;
     struct CGPoint _initialLocation;
+    double _initialTimestamp;
     unsigned long long _touchedEdges;
 }
 

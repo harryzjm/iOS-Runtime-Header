@@ -20,8 +20,11 @@
 - (void)setBatchInputElementHandler:(CDUnknownBlockType)arg1;
 - (void)setInputElementHandler:(CDUnknownBlockType)arg1;
 - (void)setInputElementMatching:(id)arg1;
+- (_Bool)commitElements:(id)arg1 direction:(long long)arg2 error:(out id *)arg3 timeout:(long long)arg4 callback:(CDUnknownBlockType)arg5;
 - (_Bool)commitElements:(id)arg1 direction:(long long)arg2 error:(out id *)arg3;
+- (_Bool)getReport:(void *)arg1 reportLength:(long long *)arg2 withIdentifier:(long long)arg3 forType:(long long)arg4 error:(out id *)arg5 timeout:(long long)arg6 callback:(CDUnknownBlockType)arg7;
 - (_Bool)getReport:(void *)arg1 reportLength:(long long *)arg2 withIdentifier:(long long)arg3 forType:(long long)arg4 error:(out id *)arg5;
+- (_Bool)setReport:(const void *)arg1 reportLength:(long long)arg2 withIdentifier:(long long)arg3 forType:(long long)arg4 error:(out id *)arg5 timeout:(long long)arg6 callback:(CDUnknownBlockType)arg7;
 - (_Bool)setReport:(const void *)arg1 reportLength:(long long)arg2 withIdentifier:(long long)arg3 forType:(long long)arg4 error:(out id *)arg5;
 - (id)elementsMatching:(id)arg1;
 - (_Bool)conformsToUsagePage:(long long)arg1 usage:(long long)arg2;

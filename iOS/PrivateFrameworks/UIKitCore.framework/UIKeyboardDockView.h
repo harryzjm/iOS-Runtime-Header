@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIViewRepresentingKeyboardLayout-Protocol.h>
+#import "UIView.h"
 
 @class UIKeyboardDockItem;
 @protocol UIKeyboardDockViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardDockView <_UIViewRepresentingKeyboardLayout>
+@interface UIKeyboardDockView : UIView
 {
     id <UIKeyboardDockViewDelegate> _delegate;
     UIKeyboardDockItem *_leftDockItem;

@@ -21,7 +21,6 @@
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithResourceName:(id)arg1 traits:(id)arg2 minimumPixelSize:(struct CGSize)arg3 maximumPixelSize:(struct CGSize)arg4 renderInset:(CDStruct_c519178c)arg5 scale:(double)arg6;
 - (id)processResult;
-- (id)fallbackTraitCollection;
 
 @end
 

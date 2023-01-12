@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSIndexPath;
 
 __attribute__((visibility("hidden")))
-@interface _UIDragDestinationIndicatorView
+@interface _UIDragDestinationIndicatorView : UIView
 {
     _Bool _isSourceList;
     NSIndexPath *_currentIndexPath;

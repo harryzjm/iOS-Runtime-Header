@@ -75,10 +75,12 @@ __attribute__((visibility("hidden")))
 - (void)updatePacketCountAndByteCountWithIndex:(unsigned char)arg1 packetSize:(int)arg2 numOfStreamId:(int)arg3 isPriorityIncluded:(_Bool)arg4 isOutgoing:(_Bool)arg5;
 - (int)removeConnection:(id)arg1;
 - (void)handleSecondaryConnectionRemoved;
+- (void)reselectPrimaryConnection;
 - (void)handlePrimaryConnectionRemoved;
 - (int)addConnection:(id)arg1;
 - (unsigned int)downlinkBitrateCapForConnection:(id)arg1;
 - (unsigned int)uplinkBitrateCapForConnection:(id)arg1;
+- (unsigned int)oneToOneBitrateCapForConnectionWithType:(unsigned int)arg1;
 - (unsigned int)uplinkBitrateCapOneToOne:(id)arg1;
 - (unsigned int)uplinkAudioOnlyBitrateCapOneToOne:(id)arg1;
 - (void)reportFirstActiveConnectionOneToOne:(id)arg1 remoteOSVersion:(id)arg2 redState:(_Bool)arg3 isAudioOnly:(_Bool)arg4;

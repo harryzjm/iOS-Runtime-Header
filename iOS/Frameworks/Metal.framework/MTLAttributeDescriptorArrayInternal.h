@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLAttributeDescriptorArray.h"
+
 @class MTLAttributeDescriptorInternal;
 
 __attribute__((visibility("hidden")))
-@interface MTLAttributeDescriptorArrayInternal
+@interface MTLAttributeDescriptorArrayInternal : MTLAttributeDescriptorArray
 {
     MTLAttributeDescriptorInternal *_descriptors[31];
 }

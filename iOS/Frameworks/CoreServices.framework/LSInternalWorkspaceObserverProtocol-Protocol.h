@@ -9,6 +9,8 @@
 @class NSArray;
 
 @protocol LSInternalWorkspaceObserverProtocol <NSObject>
+- (void)databaseWasRebuilt;
+- (void)applicationsDidChangePersonas:(NSArray *)arg1;
 - (void)deviceManagementPolicyDidChange:(NSArray *)arg1;
 - (void)networkUsageChanged:(_Bool)arg1;
 - (void)applicationIconDidChange:(NSArray *)arg1;

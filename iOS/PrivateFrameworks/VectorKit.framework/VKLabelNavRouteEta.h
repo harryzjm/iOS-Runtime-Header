@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKLabelNavFeature-Protocol.h>
-
 @class NSString, VKLabelNavRoadLabel, VKRouteEtaDescription, VKRouteInfo;
 
 __attribute__((visibility("hidden")))
-@interface VKLabelNavRouteEta : NSObject <VKLabelNavFeature>
+@interface VKLabelNavRouteEta : NSObject
 {
     VKLabelNavRoadLabel *_etaLabel;
     unsigned long long _etaLabelArtworkKey;
@@ -27,15 +25,19 @@ __attribute__((visibility("hidden")))
     optional_51deb342 _when;
     double _worldUnitsPerMeterAtPoint;
     _Bool _didStyleChange;
+    CDStruct_071ac149 _coordinate;
+    optional_f92fc060 _routeLegWhen;
 }
 
 + (unsigned char)toStyleNavLabelType:(long long)arg1;
 + (unsigned char)toStyleEtaComparison:(unsigned char)arg1;
-+ (struct RoadSignStyleGroup)styleForNavContext:(const struct NavContext *)arg1 selected:(_Bool)arg2 focused:(_Bool)arg3 etaComparison:(unsigned char)arg4 transportType:(unsigned char)arg5 navLabelType:(unsigned char)arg6 when:(optional_51deb342)arg7 additionalAttributes:(id)arg8;
-+ (vector_20f0823a)baseAttributesForEtaLabel:(_Bool)arg1 focused:(_Bool)arg2 etaComparison:(unsigned char)arg3 transportType:(unsigned char)arg4 navLabelType:(unsigned char)arg5 when:(optional_51deb342)arg6 additionalAttributes:(id)arg7;
++ (struct RoadSignStyleGroup)styleForNavContext:(const struct NavContext *)arg1 selected:(_Bool)arg2 focused:(_Bool)arg3 etaComparison:(unsigned char)arg4 transportType:(unsigned char)arg5 navLabelType:(unsigned char)arg6 when:(optional_51deb342)arg7 routeLegWhen:(optional_f92fc060)arg8 additionalAttributes:(id)arg9;
++ (vector_20f0823a)baseAttributesForEtaLabel:(_Bool)arg1 focused:(_Bool)arg2 etaComparison:(unsigned char)arg3 transportType:(unsigned char)arg4 navLabelType:(unsigned char)arg5 when:(optional_51deb342)arg6 routeLegWhen:(optional_f92fc060)arg7 additionalAttributes:(id)arg8;
 + (id)artworkForEtaDescription:(id)arg1 navContext:(const struct NavContext *)arg2 roadSignStyleGroup:(const void *)arg3 mercatorPoint:(const void *)arg4 orientation:(unsigned char)arg5 isSelected:(_Bool)arg6 artworkCache:(void *)arg7;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool didStyleChange; // @synthesize didStyleChange=_didStyleChange;
+@property(nonatomic) optional_f92fc060 routeLegWhen; // @synthesize routeLegWhen=_routeLegWhen;
 @property(readonly, nonatomic) double worldUnitsPerMeterAtPoint; // @synthesize worldUnitsPerMeterAtPoint=_worldUnitsPerMeterAtPoint;
 @property(nonatomic) optional_51deb342 when; // @synthesize when=_when;
 @property(nonatomic) _Bool isRepositioning; // @synthesize isRepositioning=_isRepositioning;
@@ -48,25 +50,31 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isAwayFromRoute; // @synthesize isAwayFromRoute=_isAwayFromRoute;
 @property(readonly, nonatomic) _Bool isOnRoute; // @synthesize isOnRoute=_isOnRoute;
 - (void)repositionAtRouteCoord:(struct PolylineCoordinate)arg1;
+@property(readonly, nonatomic) _Bool isValid;
 @property(readonly, nonatomic) _Bool isTrafficCameraFeature;
 @property(readonly, nonatomic) _Bool isEtaFeature;
-@property(readonly, nonatomic) long long intraRoadPriority;
+@property(readonly, nonatomic) long long intraRoadPriorityForShieldLabel;
+@property(readonly, nonatomic) long long intraRoadPriorityForRoadLabel;
 @property(readonly, nonatomic) _Bool isGuidanceStepStart;
 @property(readonly, nonatomic) _Bool isInGuidance;
 @property(readonly, nonatomic) _Bool isStartOfRoadName;
 @property(readonly, nonatomic) NSString *shieldDisplayGroup;
 @property(readonly, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool isRamp;
-- (_retain_ptr_86da96eb)updateRoadSignWithNavContext:(const struct NavContext *)arg1 artworkCache:(void *)arg2;
+- (_retain_ptr_408ec453)updateRoadSignWithNavContext:(const struct NavContext *)arg1 artworkCache:(void *)arg2;
 - (void)prepareStyleVarsWithContext:(struct NavContext *)arg1;
-- (void)createLabelWithNavContext:(const struct NavContext *)arg1 orientation:(unsigned char)arg2 etaDescription:(id)arg3 selected:(_Bool)arg4 when:(optional_51deb342)arg5 artworkCache:(void *)arg6;
+- (void)updateAnchorWithContext:(const struct NavContext *)arg1;
+- (void)createLabelWithNavContext:(const struct NavContext *)arg1 orientation:(unsigned char)arg2 etaDescription:(id)arg3 selected:(_Bool)arg4 when:(optional_51deb342)arg5 routeLegWhen:(optional_f92fc060)arg6 artworkCache:(void *)arg7;
 - (void)layoutWithNavContext:(struct NavContext *)arg1;
-- (void)_clearLabel;
+- (void)clearLabel;
 - (void)dealloc;
 @property(readonly, nonatomic) unsigned char etaComparisonToMain;
 - (id)initWithRouteInfo:(id)arg1 routeCoord:(struct PolylineCoordinate)arg2;
+- (_Bool)hasLabelWithAnchor;
+- (_Bool)hasAnchor;
+- (_Bool)hasLabel;
 @property(nonatomic) unsigned char orientation;
-@property(readonly, nonatomic) Matrix_6e1d3589 worldPoint;
+- (Matrix_6e1d3589)worldPointForStaging;
 
 @end
 

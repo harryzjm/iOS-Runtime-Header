@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneSettingsDiffAction-Protocol.h>
-
 @class NSString, UIApplicationSceneSettingsDiffInspector;
 
 __attribute__((visibility("hidden")))
-@interface _UIScenePointerLockDiffAction : NSObject <_UISceneSettingsDiffAction>
+@interface _UIScenePointerLockDiffAction : NSObject
 {
     UIApplicationSceneSettingsDiffInspector *_sceneSettingsPointerLockedDiffInspector;
 }

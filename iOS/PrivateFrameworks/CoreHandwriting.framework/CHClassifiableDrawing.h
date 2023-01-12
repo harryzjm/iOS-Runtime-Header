@@ -11,23 +11,19 @@
 @interface CHClassifiableDrawing : NSObject
 {
     _Bool _expandCodePoints;
-    _Bool _firstPointIsSubstrokeCut;
-    _Bool _lastPointIsSubstrokeCut;
     CHDrawing *_drawing;
     NSCharacterSet *_characterSet;
     unsigned long long _maxCandidateCount;
     struct CGRect _normalizationContext;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long maxCandidateCount; // @synthesize maxCandidateCount=_maxCandidateCount;
-@property(readonly, nonatomic) _Bool lastPointIsSubstrokeCut; // @synthesize lastPointIsSubstrokeCut=_lastPointIsSubstrokeCut;
-@property(readonly, nonatomic) _Bool firstPointIsSubstrokeCut; // @synthesize firstPointIsSubstrokeCut=_firstPointIsSubstrokeCut;
 @property(readonly, nonatomic) struct CGRect normalizationContext; // @synthesize normalizationContext=_normalizationContext;
 @property(readonly, nonatomic) _Bool expandCodePoints; // @synthesize expandCodePoints=_expandCodePoints;
-@property(readonly, retain, nonatomic) NSCharacterSet *characterSet; // @synthesize characterSet=_characterSet;
-@property(readonly, retain, nonatomic) CHDrawing *drawing; // @synthesize drawing=_drawing;
-- (void)dealloc;
-- (id)initWithDrawing:(id)arg1 characterSet:(id)arg2 expandCodePoints:(_Bool)arg3 normalizationContext:(struct CGRect)arg4 firstPointIsSubstrokeCut:(_Bool)arg5 lastPointIsSubstrokeCut:(_Bool)arg6 maxCandidateCount:(unsigned long long)arg7;
+@property(readonly, nonatomic) NSCharacterSet *characterSet; // @synthesize characterSet=_characterSet;
+@property(readonly, nonatomic) CHDrawing *drawing; // @synthesize drawing=_drawing;
+- (id)initWithDrawing:(id)arg1 characterSet:(id)arg2 expandCodePoints:(_Bool)arg3 normalizationContext:(struct CGRect)arg4 maxCandidateCount:(unsigned long long)arg5;
 
 @end
 

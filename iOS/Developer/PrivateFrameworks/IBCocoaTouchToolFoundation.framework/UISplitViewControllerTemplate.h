@@ -23,9 +23,11 @@
     long long _primaryEdge;
     long long _preferredDisplayMode;
     long long _preferredSplitBehavior;
+    long long _primaryBackgroundStyle;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long primaryBackgroundStyle; // @synthesize primaryBackgroundStyle=_primaryBackgroundStyle;
 @property(nonatomic) long long preferredSplitBehavior; // @synthesize preferredSplitBehavior=_preferredSplitBehavior;
 @property(nonatomic) long long preferredDisplayMode; // @synthesize preferredDisplayMode=_preferredDisplayMode;
 @property(nonatomic) long long primaryEdge; // @synthesize primaryEdge=_primaryEdge;

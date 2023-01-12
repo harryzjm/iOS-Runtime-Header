@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVMediaSelectionGroup.h"
+
 @class AVAsset, AVMediaSelectionOption, NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetMediaSelectionGroup
+@interface AVAssetMediaSelectionGroup : AVMediaSelectionGroup
 {
     AVAsset *_asset;
     NSDictionary *_dictionary;

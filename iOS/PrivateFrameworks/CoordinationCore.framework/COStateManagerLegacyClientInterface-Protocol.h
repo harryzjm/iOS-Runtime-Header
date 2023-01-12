@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoordinationCore/COClusterRoleMonitorClientInterface-Protocol.h>
-
-@protocol COStateManagerLegacyClientInterface <COClusterRoleMonitorClientInterface>
+@protocol COStateManagerLegacyClientInterface
 - (void)mediaSystemLeaderDidChangeTo:(_Bool)arg1 callback:(void (^)(NSError *))arg2;
 @end
 

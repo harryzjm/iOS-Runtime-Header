@@ -13,9 +13,5 @@ __attribute__((visibility("hidden")))
     CDStruct_e83c9415 _timeRange;
 }
 
-@property(readonly, nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
-@property(readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
-- (id)initWithConfidence:(double)arg1 timeRange:(CDStruct_e83c9415)arg2;
-
 @end
 

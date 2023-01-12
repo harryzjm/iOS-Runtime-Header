@@ -6,11 +6,9 @@
 
 #import <CoreML/MLModel.h>
 
-#import <SoundAnalysis/SNMLModel-Protocol.h>
-
 @class MLModelDescription, NSString;
 
-@interface MLModel (SNMLModel) <SNMLModel>
+@interface MLModel (SNMLModel)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

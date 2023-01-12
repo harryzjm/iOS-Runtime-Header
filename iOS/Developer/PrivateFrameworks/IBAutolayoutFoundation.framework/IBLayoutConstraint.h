@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBAutolayoutFoundation/IBLayoutConstraintRepresentation-Protocol.h>
-#import <IBAutolayoutFoundation/NSCoding-Protocol.h>
-#import <IBAutolayoutFoundation/NSCopying-Protocol.h>
-
 @class IBLayoutConstant, IBLayoutConstraintMultiplier, NSString;
 @protocol IBAutolayoutItem;
 
-@interface IBLayoutConstraint : NSObject <NSCopying, NSCoding, IBLayoutConstraintRepresentation, IBBinaryArchiving>
+@interface IBLayoutConstraint : NSObject
 {
     _Bool _contentTypeNeedsToBeInferred;
     _Bool _scoringTypeNeedsToBeInferred;

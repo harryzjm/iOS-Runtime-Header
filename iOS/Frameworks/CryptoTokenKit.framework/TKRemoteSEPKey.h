@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TKSEPKey.h"
+
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface TKRemoteSEPKey
+@interface TKRemoteSEPKey : TKSEPKey
 {
     id _keyType;
     long long _keySize;

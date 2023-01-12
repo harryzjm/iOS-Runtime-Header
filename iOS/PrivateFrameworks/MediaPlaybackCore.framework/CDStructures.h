@@ -53,32 +53,22 @@ struct DSPSplitComplex {
     float *imagp;
 };
 
-struct MPCAudioSpectrumAnalyzerBand {
-    float _field1;
-    float _field2;
+struct _MPCLoggingConsumerChartState {
+    long long command;
+    long long session;
+    long long container;
+    long long item;
+    long long asset;
 };
 
-struct MPCModelStorePlaybackItemsRequestAccumulatorResult {
-    _Bool _field1;
-    _Bool _field2;
-};
-
-struct _MPCAudioSpectrumAnalyzerBandInternal {
-    struct MPCAudioSpectrumAnalyzerBand _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-    unsigned long long _field5;
-};
-
-struct _MPCModelStorePlaybackItemEligibility {
-    _Bool _field1;
-    long long _field2;
+struct _MPCLoggingConsumerChartStatus {
+    _Bool userExpectsAudio;
+    long long timeControlStatus;
 };
 
 struct _MSVSignedRange {
-    long long location;
-    long long length;
+    long long _field1;
+    long long _field2;
 };
 
 struct _NSRange {
@@ -93,38 +83,24 @@ struct os_unfair_lock_s {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-} CDStruct_8024420c;
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    double _field5;
+} CDStruct_aee2c4da;
 
 typedef struct {
-    unsigned long long flags;
-    unsigned long long machAbsoluteTime;
-    unsigned long long rawNanoSeconds;
-    unsigned long long timebase;
-    double userSecondsSinceReferenceDate;
-} CDStruct_aeb9a598;
-
-typedef struct {
-    double snapshotTime;
-    double startTime;
-    double endTime;
-    double duration;
-    double elapsedDuration;
-    float rate;
-    float defaultRate;
-    _Bool isLiveContent;
-    _Bool isLoading;
-} CDStruct_fce57115;
-
-typedef struct {
-    long long _field1;
-    int _field2;
-    unsigned int _field3;
-    long long _field4;
-} CDStruct_198678f7;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    float _field6;
+    float _field7;
+    _Bool _field8;
+    _Bool _field9;
+} CDStruct_1c9ae071;
 
 typedef struct {
     long long _field1;
@@ -135,12 +111,13 @@ typedef struct {
     long long _field6;
     long long _field7;
     long long _field8;
-} CDStruct_4a9aa5a8;
+    long long _field9;
+} CDStruct_c6d350ec;
 
 typedef struct {
-    long long reverseCount;
-    long long forwardCount;
-} CDStruct_339ad95e;
+    long long _field1;
+    long long _field2;
+} CDStruct_912cb5d2;
 
 // Ambiguous groups
 typedef struct {

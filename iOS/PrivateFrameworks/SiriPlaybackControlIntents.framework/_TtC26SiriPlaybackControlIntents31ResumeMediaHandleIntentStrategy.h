@@ -14,6 +14,8 @@
     MISSING_TYPE *dialogProvider;
     MISSING_TYPE *userDefaultsProvider;
     MISSING_TYPE *analyticsService;
+    MISSING_TYPE *featureFlagProvider;
+    MISSING_TYPE *playbackController;
 }
 
 @end

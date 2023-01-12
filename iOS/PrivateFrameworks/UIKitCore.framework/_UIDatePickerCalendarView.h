@@ -4,30 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIDatePickerCalendarDateViewDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerCalendarHeaderViewDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerCalendarMonthYearSelectorDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerCalendarTimeViewDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerViewComponent-Protocol.h>
+#import "UIView.h"
 
-@class NSLayoutConstraint, NSString, UIColor, UIDatePicker, UIStackView, _UIDatePickerCalendarDateView, _UIDatePickerCalendarHeaderView, _UIDatePickerCalendarMonthYearSelector, _UIDatePickerCalendarTimeView, _UIDatePickerDataModel, _UIDatePickerDateRange;
+@class NSString, UICalendarSelectionSingleDate, UICalendarView, UIDatePicker, _UIDatePickerCalendarTimeView, _UIDatePickerDataModel;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerCalendarView <_UIDatePickerCalendarHeaderViewDelegate, _UIDatePickerCalendarDateViewDelegate, _UIDatePickerCalendarTimeViewDelegate, _UIDatePickerCalendarMonthYearSelectorDelegate, _UIDatePickerViewComponent>
+@interface _UIDatePickerCalendarView : UIView
 {
     struct {
         unsigned int needsUpdateDate:1;
+        unsigned int animateUpdateDate:1;
         unsigned int isEnabled:1;
     } _flags;
-    UIStackView *_contentView;
-    _UIDatePickerCalendarHeaderView *_headerView;
-    _UIDatePickerCalendarDateView *_dateView;
+    UICalendarView *_calendarView;
+    UICalendarSelectionSingleDate *_selection;
     _UIDatePickerCalendarTimeView *_timeView;
-    _UIDatePickerDateRange *_dateRange;
-    long long _viewState;
-    _UIDatePickerCalendarMonthYearSelector *_monthYearSelector;
-    NSLayoutConstraint *_minimumWidthConstraint;
-    NSLayoutConstraint *_maximumWidthConstraint;
     struct CGSize _lastSize;
     unsigned long long _stateUpdatesInFlight;
     UIDatePicker *_datePicker;
@@ -43,74 +34,53 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)defaultSize;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1;
 - (_Bool)usesAutoLayout;
-- (struct UIEdgeInsets)_appliedInsetsToEdgeOfContent;
-- (void)_setHidesLabels:(_Bool)arg1;
-@property(readonly, nonatomic, getter=_isTimeIntervalMode) _Bool isTimeIntervalMode;
-@property(nonatomic, getter=_allowsZeroTimeInterval, setter=_setAllowsZeroTimeInterval:) _Bool allowsZeroTimeInterval;
-@property(nonatomic, getter=_allowsZeroCountDownDuration, setter=_setAllowsZeroCountDownDuration:) _Bool allowsZeroCountDownDuration;
-- (void)didChangeCustomFontDescriptor;
+@property(readonly, nonatomic) struct UIEdgeInsets appliedInsetsToEdgeOfContent;
+- (void)didChangeCustomFontDesign;
 - (void)didChangeToday;
 - (void)didReset;
 - (void)didChangeRoundsToMinuteInterval;
 - (void)didChangeMinuteInterval;
 - (void)didChangeMaximumDate;
 - (void)didChangeMinimumDate;
+- (void)displaySelectedDateAnimated:(_Bool)arg1;
 - (void)didChangeDateFrom:(id)arg1 animated:(_Bool)arg2;
 - (void)didChangeCalendar;
 - (void)didChangeTimeZone;
 - (void)didChangeLocale;
 - (void)didChangeMode;
 @property(readonly, nonatomic) long long datePickerStyle;
-- (void)monthYearSelector:(id)arg1 didSelectMonth:(id)arg2;
 - (id)createDatePickerForTimeView:(id)arg1;
 - (void)timeViewDidEndEditing:(id)arg1;
 - (void)timeViewDidBeginEditing:(id)arg1;
 - (void)timeViewWillBecomeFirstResponder:(id)arg1;
 - (void)timeView:(id)arg1 didSelectTime:(id)arg2;
-- (void)dateView:(id)arg1 didShowMonth:(id)arg2;
-- (void)dateView:(id)arg1 didSelectDate:(id)arg2;
-- (void)headerViewDidSelect:(id)arg1;
-- (void)headerViewDidStepBackward:(id)arg1;
-- (void)headerViewDidStepForward:(id)arg1;
-- (void)_headerViewWantsToMoveToMonth:(id)arg1;
-- (void)_updateVisibleMonth:(id)arg1 animated:(_Bool)arg2;
-- (void)_updateDateViewForVisibleMonth:(id)arg1 animated:(_Bool)arg2;
-- (_Bool)_shouldUpdateDateViewForVisibleMonth:(id)arg1;
-- (void)_updateHeaderViewForVisibleMonth:(id)arg1;
-- (_Bool)_shouldUpdateHeaderViewForVisibleMonth:(id)arg1;
-- (void)_updateSelectedDayToDayInMonth:(id)arg1 animated:(_Bool)arg2 notify:(_Bool)arg3;
+- (_Bool)dateSelection:(id)arg1 canSelectDate:(id)arg2;
+- (void)dateSelection:(id)arg1 didSelectDate:(id)arg2;
 - (void)_updateSelectedTime:(id)arg1 notify:(_Bool)arg2;
 - (void)_updateSelectedDay:(id)arg1 animated:(_Bool)arg2 notify:(_Bool)arg3;
 - (void)_updateSelectedDay:(id)arg1 time:(id)arg2 animated:(_Bool)arg3 notify:(_Bool)arg4;
 - (void)_updateTimeViewForSelectedDate:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_shouldUpdateTimeViewForSelectedTime:(id)arg1;
-- (void)_updateMonthYearSelectorForSelectedDay:(id)arg1 animated:(_Bool)arg2;
-- (_Bool)_shouldUpdateMonthYearSelectorForSelectedDay:(id)arg1;
-- (void)_updateDateViewForSelectedDay:(id)arg1 animated:(_Bool)arg2;
-- (_Bool)_shouldUpdateDateViewForSelectedDay:(id)arg1;
-- (void)_updateHeaderViewForSelectedDay:(id)arg1;
-- (_Bool)_shouldUpdateHeaderViewForSelectedDay:(id)arg1;
 - (void)_updateDataForComponents:(id)arg1;
 - (_Bool)_shouldUpdateDataForComponents:(id)arg1 date:(id)arg2;
 - (void)_updateCustomFonts;
 - (void)_updateModuleVisibility;
+- (_Bool)_shouldDisplayTimeView;
+- (_Bool)_shouldDisplayCalendarView;
 - (void)_updateEnabledStyling;
 - (void)_reload;
-- (void)_reloadMonthYearSelector;
+- (void)_reloadCalendarView;
 - (void)_reloadTimeView;
-- (void)_reloadDateView;
-- (void)_reloadHeaderView;
 - (void)_reloadDateRange;
 - (void)_updateDate;
 - (void)_updateDateIfNeeded;
-- (void)_setNeedsUpdateDate;
-- (void)_destroyMonthYearSelector;
-- (void)_setupMonthYearSelector;
-- (void)_updateViewState:(long long)arg1 animated:(_Bool)arg2;
+- (void)_setNeedsUpdateDateAnimated:(_Bool)arg1;
 - (void)_updateContentSizeLimitations;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (struct CGSize)intrinsicContentSize;
+- (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (unsigned long long)_axesForDerivingIntrinsicContentSizeFromLayoutSize;
 - (void)layoutSubviews;
 - (void)layoutMarginsDidChange;
 - (void)_updateLayoutMargins;
@@ -122,11 +92,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(retain, nonatomic, getter=_highlightColor, setter=_setHighlightColor:) UIColor *highlightColor;
-@property(retain, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor;
 @property(readonly) Class superclass;
-@property(retain, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;
-@property(retain, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
 @property(nonatomic) double timeInterval;
 
 @end

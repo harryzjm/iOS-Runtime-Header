@@ -6,15 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <PagesQuicklook/TSDReducibleImageContainer-Protocol.h>
-#import <PagesQuicklook/TSDReplaceableMediaContainer-Protocol.h>
-#import <PagesQuicklook/TSKDocumentObject-Protocol.h>
-#import <PagesQuicklook/TSKModel-Protocol.h>
-#import <PagesQuicklook/TSWPSection-Protocol.h>
-
 @class NSArray, NSString, NSURL, NSUUID, TPPageTemplate, TPSectionTemplatePage, TSDFill, TSWPStorage;
 
-@interface TPSection : TSPObject <TSDReducibleImageContainer, TSDReplaceableMediaContainer, TSKDocumentObject, TSKModel, TSWPSection>
+@interface TPSection : TSPObject
 {
     TPSectionTemplatePage *_sectionTemplatePages[3];
     TSWPStorage *_parentStorage;
@@ -38,6 +32,7 @@
 @property(nonatomic) _Bool sectionTemplateFirstPageDifferent; // @synthesize sectionTemplateFirstPageDifferent=_sectionTemplateFirstPageDifferent;
 - (id)allDrawables;
 - (void)p_addAllDrawablesFromInfo:(id)arg1 toMutableArray:(id)arg2;
+- (id)sectionTemplatePageOwningInfo:(id)arg1;
 - (id)sectionTemplatePageOwningModel:(id)arg1;
 - (id)sectionTemplatePageForType:(long long)arg1;
 @property(readonly, nonatomic) NSArray *sectionTemplatePages;

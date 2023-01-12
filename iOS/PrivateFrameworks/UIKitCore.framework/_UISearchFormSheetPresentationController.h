@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISearchControllerPresenting-Protocol.h>
+#import "UIPresentationController.h"
 
-@class NSString, UIPresentationController, UIView, _UISearchPresentationAssistant;
+@class NSString, UIView, _UISearchPresentationAssistant;
 @protocol _UISearchControllerPresenting;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchFormSheetPresentationController <_UISearchControllerPresenting>
+@interface _UISearchFormSheetPresentationController : UIPresentationController
 {
     _UISearchPresentationAssistant *_assistant;
     UIView *_wrapperView;

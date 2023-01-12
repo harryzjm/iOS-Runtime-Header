@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKActivityCache.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKActivityCache (HDCodingSupport) <HDCoding>
+@interface HKActivityCache (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (_Bool)addCodableRepresentationToCollectionForSync:(id)arg1;

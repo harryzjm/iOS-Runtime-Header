@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/QLPreviewControllerDataSource-Protocol.h>
-#import <QuickLook/QLPreviewItemProvider-Protocol.h>
-
 @class NSPointerArray, QLDataSource;
 @protocol QLPreviewItemProvider, QLPreviewItemStoreDelegate;
 
 __attribute__((visibility("hidden")))
-@interface QLPreviewItemStore : NSObject <QLPreviewItemProvider, QLPreviewControllerDataSource>
+@interface QLPreviewItemStore : NSObject
 {
     NSPointerArray *_cache;
     id <QLPreviewItemProvider> _itemProvider;
@@ -32,12 +29,13 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
 - (long long)indexOfPreviewItem:(id)arg1;
 - (void)previewItemAtIndex:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)loadedItemsMatching:(CDUnknownBlockType)arg1;
+- (_Bool)hasLoadedItemsMatching:(CDUnknownBlockType)arg1;
 @property(readonly) unsigned long long numberOfItems;
 - (void)clearCache;
 - (void)clearItems;
 - (void)dealloc;
 - (void)reloadWithNumberOfPreviewItems:(unsigned long long)arg1;
-- (void)_commonInit;
 - (id)initWithItemsOfDirectoryAtURL:(id)arg1;
 - (id)initWithPreviewItems:(id)arg1;
 - (id)init;

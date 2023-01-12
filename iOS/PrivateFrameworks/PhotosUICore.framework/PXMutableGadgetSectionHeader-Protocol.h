@@ -13,6 +13,7 @@
 @property(copy, nonatomic) CDUnknownBlockType accessoryButtonPressed;
 @property(copy, nonatomic) NSString *customButtonTitle;
 @property(nonatomic) unsigned long long buttonType;
+@property(nonatomic) _Bool wantsMultilineTitle;
 @property(copy, nonatomic) NSString *headerTitle;
 @property(nonatomic) unsigned long long headerStyle;
 @end

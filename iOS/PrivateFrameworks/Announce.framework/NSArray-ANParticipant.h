@@ -6,8 +6,6 @@
 
 #import <Foundation/NSArray.h>
 
-@class NSDictionary;
-
 @interface NSArray (ANParticipant)
 @property(readonly, nonatomic) NSArray *messages;
 @property(readonly, nonatomic) NSArray *rapportIDs;
@@ -15,17 +13,5 @@
 @property(readonly, nonatomic) NSArray *identifiers;
 @property(readonly, nonatomic) NSArray *playedAnnouncements;
 @property(readonly, nonatomic) NSArray *unplayedAnnouncements;
-- (id)homesWithHomeLocationStatus:(long long)arg1;
-- (id)homesWithZoneNames:(id)arg1;
-- (id)homesWithRoomNames:(id)arg1;
-- (id)personalDevicesForUser:(id)arg1;
-- (id)devicesByRemovingNonAccessoryDevicesNotBelongingToUsers:(id)arg1;
-- (id)devicesInHome:(id)arg1;
-@property(readonly, nonatomic) id pairedCompanion;
-@property(readonly, nonatomic) NSArray *activePersonalDevicesSupportingAnnounce;
-@property(readonly, nonatomic) NSArray *activeDevicesSupportingAnnounce;
-@property(readonly, nonatomic) NSDictionary *activeAccessoryDevicesSupportingAnnounce;
-@property(readonly, nonatomic) NSArray *userIdentifiers;
-@property(readonly, nonatomic) NSArray *an_homesSupportingAnnounce;
 @end
 

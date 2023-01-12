@@ -6,9 +6,10 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDAppleMediaAccessoryMessageRouter, HMDDevice;
+@class HMDAppleMediaAccessoryMessageRouter, HMDDevice, HMFMessage;
 
 @protocol HMDAppleMediaAccessoryMessageRouterDataSource <NSObject>
-- (HMDDevice *)deviceForAppleMediaAccessoryMessageRouter:(HMDAppleMediaAccessoryMessageRouter *)arg1;
+- (_Bool)isCurrentDevicePrimaryResident;
+- (HMDDevice *)deviceForAppleMediaAccessoryMessageRouter:(HMDAppleMediaAccessoryMessageRouter *)arg1 message:(HMFMessage *)arg2;
 @end
 

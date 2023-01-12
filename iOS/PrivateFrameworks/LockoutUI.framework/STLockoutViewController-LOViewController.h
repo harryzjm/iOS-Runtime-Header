@@ -6,12 +6,10 @@
 
 #import <ScreenTimeUI/STLockoutViewController.h>
 
-#import <LockoutUI/LOViewController-Protocol.h>
-
 @class NSString;
 @protocol LOViewControllerDelegate;
 
-@interface STLockoutViewController (LOViewController) <LOViewController>
+@interface STLockoutViewController (LOViewController)
 
 // Remaining properties
 @property(copy, nonatomic) NSString *bundleIdentifier;

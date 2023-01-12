@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIFocusSystem, _UIFocusRegion, _UIFocusRegionContentAttributes, _UIFocusSearchInfo;
+@class UIFocusSystem, _UIFocusMovementInfo, _UIFocusRegion, _UIFocusRegionContentAttributes, _UIFocusSearchInfo;
 @protocol UICoordinateSpace, _UIFocusRegionContainer;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     _UIFocusRegion *_focusedRegion;
     id <_UIFocusRegionContainer> _regionsContainer;
     _UIFocusSearchInfo *_searchInfo;
+    _UIFocusMovementInfo *_movementInfo;
     struct CGRect _snapshotFrame;
 }
 
@@ -29,9 +30,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool ignoresRootContainerClippingRect; // @synthesize ignoresRootContainerClippingRect=_ignoresRootContainerClippingRect;
 @property(nonatomic) _Bool clipToSnapshotRect; // @synthesize clipToSnapshotRect=_clipToSnapshotRect;
 @property(nonatomic) struct CGRect snapshotFrame; // @synthesize snapshotFrame=_snapshotFrame;
+@property(retain, nonatomic) _UIFocusMovementInfo *movementInfo; // @synthesize movementInfo=_movementInfo;
 @property(retain, nonatomic) _UIFocusSearchInfo *searchInfo; // @synthesize searchInfo=_searchInfo;
 @property(nonatomic) __weak id <_UIFocusRegionContainer> regionsContainer; // @synthesize regionsContainer=_regionsContainer;
-@property(copy, nonatomic) _UIFocusRegion *focusedRegion; // @synthesize focusedRegion=_focusedRegion;
+@property(retain, nonatomic) _UIFocusRegion *focusedRegion; // @synthesize focusedRegion=_focusedRegion;
 @property(readonly, copy, nonatomic) _UIFocusRegionContentAttributes *contentAttributes; // @synthesize contentAttributes=_contentAttributes;
 @property(readonly, nonatomic) __weak id <UICoordinateSpace> coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
 @property(readonly, nonatomic) __weak id <_UIFocusRegionContainer> rootContainer; // @synthesize rootContainer=_rootContainer;

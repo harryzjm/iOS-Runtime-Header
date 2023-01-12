@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOURLOptions, NSMutableArray, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOURLPresent : PBCodable <NSCopying>
+@interface GEOURLPresent : PBCodable
 {
     PBDataReader *_reader;
     NSMutableArray *_items;

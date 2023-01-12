@@ -6,36 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class MPSImageBilinearScale;
-@protocol MTLCommandQueue, MTLComputePipelineState, MTLDevice, MTLTexture;
+@class MPSImageBilinearScale, MTLTextureDescriptor, NSDictionary;
+@protocol MTLCommandQueue, MTLComputePipelineState, MTLDevice;
 
 @interface VCPSpillmapMetalSession : NSObject
 {
     id <MTLDevice> _device;
     id <MTLCommandQueue> _commandQueue;
-    id <MTLComputePipelineState> _colorspaceConversion;
     MPSImageBilinearScale *_bilinearScale;
-    unsigned int _sourceFormat;
-    unsigned long long _sourceWidth;
-    unsigned long long _sourceHeight;
-    unsigned long long _sourceProtectionOption;
-    unsigned int _spillWidth;
-    unsigned int _spillHeight;
-    struct CF<__CFDictionary *> _spillBufferAttributes;
+    struct CF<__CVPixelBufferPool *> _spillBufferPoolUnprotected;
+    struct CF<__CVPixelBufferPool *> _spillBufferPoolScreenScrapingProtected;
+    struct CF<__CVPixelBufferPool *> _spillBufferPoolHDCPType0;
+    struct CF<__CVPixelBufferPool *> _spillBufferPoolHDCPType1;
+    struct CF<__CFDictionary *> _spillmapBufferProperties;
+    struct CF<__CVMetalTextureCache *> _textureCacheBGRA;
+    struct CF<__CVMetalTextureCache *> _textureCacheSpillmap;
+    NSDictionary *_readAttributes;
+    NSDictionary *_readWriteAttributes;
+    MTLTextureDescriptor *_bgraTextureDescriptor;
+    id <MTLComputePipelineState> _colorspaceConversion;
     struct CF<__CVMetalTextureCache *> _textureCacheLuma;
     struct CF<__CVMetalTextureCache *> _textureCacheChroma;
-    id <MTLTexture> _textureBGRA;
-    id <MTLTexture> _textureSpillmap;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (int)createPixelBuffer:(struct __CVBuffer **)arg1;
-- (int)calculateDrmSpillmapMetal:(struct __CVBuffer *)arg1;
-- (int)convertYuv420:(struct __CVBuffer *)arg1 withCommandBuffer:(id)arg2;
-- (id)loadTexture:(struct __CVBuffer *)arg1 withAttributes:(id)arg2 forPlane:(unsigned int)arg3;
-- (int)configureTexturesAndAttributes:(struct __IOSurface *)arg1 Width:(int)arg2 Height:(int)arg3;
-- (int)loadSurfaceInfo:(struct __IOSurface *)arg1;
+- (int)calculateDrmSpillmapMetal:(struct __CVBuffer *)arg1 emitSpillmap:(struct __CVBuffer **)arg2 setLayout:(int)arg3;
+- (int)convertYuv420:(struct __CVBuffer *)arg1 withCommandBuffer:(id)arg2 outTexture:(id)arg3;
+- (id)loadTexture:(struct __CVBuffer *)arg1 withAttributes:(id)arg2 forPlane:(unsigned int)arg3 withCache:(struct __CVMetalTextureCache *)arg4 withFormat:(unsigned long long)arg5;
+- (int)configureSession:(struct __IOSurface *)arg1 setWidth:(int)arg2 setHeight:(int)arg3;
 - (int)configureGPU;
 - (id)init;
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLCustomModel-Protocol.h>
-
 @class MLModelDescription;
 
 __attribute__((visibility("hidden")))
-@interface _MLNLPSentenceClassifierModel : NSObject <MLCustomModel>
+@interface _MLNLPSentenceClassifierModel : NSObject
 {
     void *_sentenceClassifierModel;
     MLModelDescription *_modelDescription;

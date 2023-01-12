@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreBookkeeperClient/NSSecureCoding-Protocol.h>
-
 @class SBCPlaybackPositionDomain;
 
 __attribute__((visibility("hidden")))
-@interface SBCClientConfiguration : NSObject <NSSecureCoding>
+@interface SBCClientConfiguration : NSObject
 {
     SBCPlaybackPositionDomain *_playbackPositionDomain;
 }

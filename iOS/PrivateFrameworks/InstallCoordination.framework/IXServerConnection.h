@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <InstallCoordination/IXClientDelegateProtocol-Protocol.h>
-
 @class NSMutableDictionary, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface IXServerConnection : NSObject <IXClientDelegateProtocol>
+__attribute__((visibility("hidden")))
+@interface IXServerConnection : NSObject
 {
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_internalQueue;
@@ -30,14 +29,15 @@
 - (oneway void)_client_promiseDidCompleteSuccessfullyWithUUID:(id)arg1;
 - (oneway void)_client_coordinatorWithUUID:(id)arg1 didUpdateProgress:(double)arg2 forPhase:(unsigned long long)arg3 overallProgress:(double)arg4;
 - (oneway void)_client_coordinatorWithUUID:(id)arg1 didCancelWithReason:(id)arg2 client:(unsigned long long)arg3;
-- (oneway void)_client_coordinatorDidCompleteSuccessfullyWithUUID:(id)arg1;
-- (oneway void)_client_coordinatorDidInstallPlaceholderWithUUID:(id)arg1;
+- (oneway void)_client_coordinatorDidCompleteSuccessfullyWithUUID:(id)arg1 forRecordPromise:(id)arg2;
+- (oneway void)_client_coordinatorDidInstallPlaceholderWithUUID:(id)arg1 forRecordPromise:(id)arg2;
 - (oneway void)_client_coordinatorShouldBeginRestoringUserDataWithUUID:(id)arg1;
 - (oneway void)_client_coordinatorWithUUID:(id)arg1 configuredPromiseDidBeginFulfillment:(unsigned long long)arg2;
 - (oneway void)_client_coordinatorShouldPauseWithUUID:(id)arg1;
 - (oneway void)_client_coordinatorShouldResumeWithUUID:(id)arg1;
 - (oneway void)_client_coordinatorShouldPrioritizeWithUUID:(id)arg1;
 - (oneway void)_client_coordinatorDidRegisterForObservationWithUUID:(id)arg1;
+- (void)resetDaemonConnection;
 - (void)unregisterForUpdatesForDataPromiseWithUUID:(id)arg1;
 - (void)registerDataPromiseForUpdates:(id)arg1 notifyDaemon:(_Bool)arg2;
 - (void)unregisterForUpdatesForAppInstallCoordinatorWithUUID:(id)arg1;

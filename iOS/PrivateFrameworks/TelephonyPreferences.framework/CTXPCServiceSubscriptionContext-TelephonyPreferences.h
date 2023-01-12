@@ -6,11 +6,9 @@
 
 #import <CoreTelephony/CTXPCServiceSubscriptionContext.h>
 
-#import <TelephonyPreferences/TPSTelephonySubscription-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface CTXPCServiceSubscriptionContext (TelephonyPreferences) <TPSTelephonySubscription>
+@interface CTXPCServiceSubscriptionContext (TelephonyPreferences)
 + (id)telephonyClient;
 - (_Bool)tps_isEquivalentToSubscriptionContext:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *tps_localizedPhoneNumber;

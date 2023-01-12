@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI223FollowingViewController : TUViewController
 {
     MISSING_TYPE *searchProvider;
-    MISSING_TYPE *lazySearchViewController;
+    MISSING_TYPE *lazySearchController;
     MISSING_TYPE *lazySearchResultsViewController;
     MISSING_TYPE *lazySearchHomeViewController;
     MISSING_TYPE *styler;
@@ -21,10 +21,13 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *blueprintSelectionProvider;
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *searchBarCanEndEditing;
     MISSING_TYPE *previousSelectedIndexPath;
+    MISSING_TYPE *previousSelectedItem;
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *commands;
     MISSING_TYPE *newsActivityManager;
+    MISSING_TYPE *onAppear;
     MISSING_TYPE *$__lazy_storage_$_sidebarBarButtonItem;
 }
 

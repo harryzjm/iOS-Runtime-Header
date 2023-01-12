@@ -7,6 +7,8 @@
 #import <PencilKit/NSObject-Protocol.h>
 
 @protocol PKToolPickerSelectionContext <NSObject>
+@property(nonatomic) _Bool prefersLargeContextualEditingUI;
+@property(nonatomic) _Bool colorSwatchesVisible;
 @property(nonatomic) unsigned long long selectionMask;
 @end
 

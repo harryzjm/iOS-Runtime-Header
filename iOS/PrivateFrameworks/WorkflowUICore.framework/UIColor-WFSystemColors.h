@@ -7,6 +7,7 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (WFSystemColors)
++ (id)wf_accentColor;
 + (id)wf_quaternarySystemFillColor;
 + (id)wf_tertiarySystemFillColor;
 + (id)wf_secondarySystemFillColor;

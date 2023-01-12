@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-#import <MapsUI/MUPlaceVerticalCardContainerViewDelegate-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceVerticalCardContainerView, NSDictionary, NSString, UIView, UIViewController;
+@class MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceVerticalCardContainerView, NSArray, NSDictionary, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUPersonalGuidesViewProvider;
 
 __attribute__((visibility("hidden")))
-@interface MUPersonalGuidesSectionController <MUPlaceVerticalCardContainerViewDelegate, MUPlaceSectionControlling>
+@interface MUPersonalGuidesSectionController : MUPlaceSectionController
 {
     id <MUPersonalGuidesViewProvider> _viewProvider;
     MUPlaceVerticalCardContainerView *_containerView;
     MUPlaceSectionView *_sectionView;
     NSDictionary *_collectionViews;
+    NSDictionary *_wrappedSectionViewsByIdentifier;
     _Bool _active;
     MUPlaceSectionHeaderViewModel *_sectionHeaderViewModel;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (void)verticalCardContainerView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
 @property(readonly, nonatomic) _Bool hasContent;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

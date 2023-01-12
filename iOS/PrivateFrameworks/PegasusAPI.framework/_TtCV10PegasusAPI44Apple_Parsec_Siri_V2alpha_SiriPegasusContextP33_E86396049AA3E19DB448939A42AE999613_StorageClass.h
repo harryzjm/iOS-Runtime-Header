@@ -11,6 +11,14 @@
 @interface _TtCV10PegasusAPI44Apple_Parsec_Siri_V2alpha_SiriPegasusContextP33_E86396049AA3E19DB448939A42AE999613_StorageClass : _TtCs12_SwiftObject
 {
     MISSING_TYPE *_deviceState;
+    MISSING_TYPE *_siriInteractionType;
+    MISSING_TYPE *_isNavigationMode;
+    MISSING_TYPE *_assistantID;
+    MISSING_TYPE *_person;
+    MISSING_TYPE *_interactionID;
+    MISSING_TYPE *_restrictions;
+    MISSING_TYPE *_contentRatingRestrictions;
+    MISSING_TYPE *_conversationContext;
 }
 
 @end

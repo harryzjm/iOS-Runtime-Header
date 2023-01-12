@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SYSession.h"
+
 @class NSMutableIndexSet, NSObject, _SYCountedSemaphore, _SYMessageTimerTable;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
 __attribute__((visibility("hidden")))
-@interface SYOutgoingBatchSyncSession
+@interface SYOutgoingBatchSyncSession : SYSession
 {
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     NSObject<OS_dispatch_source> *_sessionTimer;

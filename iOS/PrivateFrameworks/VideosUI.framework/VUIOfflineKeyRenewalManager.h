@@ -6,37 +6,36 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/TVPDownloadDelegate-Protocol.h>
-#import <VideosUI/VUIStoreFPSKeyLoaderDelegate-Protocol.h>
-
-@class NSMutableArray, NSString, NSTimer, TVPStateMachine;
+@class NSMutableArray, NSMutableDictionary, NSString, NSTimer, TVPStateMachine;
 
 __attribute__((visibility("hidden")))
-@interface VUIOfflineKeyRenewalManager : NSObject <VUIStoreFPSKeyLoaderDelegate, TVPDownloadDelegate>
+@interface VUIOfflineKeyRenewalManager : NSObject
 {
     _Bool _networkErrorOccurredDuringInvalidation;
     TVPStateMachine *_stateMachine;
-    NSMutableArray *_keyLoaders;
+    NSMutableDictionary *_keyLoaders;
     NSTimer *_keyRenewalTimer;
     NSTimer *_expirationTimer;
-    NSMutableArray *_contentKeySessions;
+    NSMutableDictionary *_contentKeySessions;
     unsigned long long _backgroundTaskIdentifier;
     NSMutableArray *_downloadsForRepairingKeys;
 }
 
++ (id)_keyInfosForVideo:(id)arg1 outKeyIdentifiers:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *downloadsForRepairingKeys; // @synthesize downloadsForRepairingKeys=_downloadsForRepairingKeys;
 @property(nonatomic) unsigned long long backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
-@property(retain, nonatomic) NSMutableArray *contentKeySessions; // @synthesize contentKeySessions=_contentKeySessions;
+@property(retain, nonatomic) NSMutableDictionary *contentKeySessions; // @synthesize contentKeySessions=_contentKeySessions;
 @property(retain, nonatomic) NSTimer *expirationTimer; // @synthesize expirationTimer=_expirationTimer;
 @property(retain, nonatomic) NSTimer *keyRenewalTimer; // @synthesize keyRenewalTimer=_keyRenewalTimer;
 @property(nonatomic) _Bool networkErrorOccurredDuringInvalidation; // @synthesize networkErrorOccurredDuringInvalidation=_networkErrorOccurredDuringInvalidation;
-@property(retain, nonatomic) NSMutableArray *keyLoaders; // @synthesize keyLoaders=_keyLoaders;
+@property(retain, nonatomic) NSMutableDictionary *keyLoaders; // @synthesize keyLoaders=_keyLoaders;
 @property(retain, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 - (void)_registerStateMachineHandlers;
 - (void)_fetchNewKeysForVideosWithBrokenKeys:(id)arg1;
-- (void)_sendRenewalRequestForFirstArray:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_renewKeysForVideos:(id)arg1 outCompletedKeyRequests:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_renewKeysForVideosGroupedByCertURL:(id)arg1 outCompletedKeyRequests:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_expirationTimerDidFire:(id)arg1;
 - (void)_renewalTimerDidFire:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;

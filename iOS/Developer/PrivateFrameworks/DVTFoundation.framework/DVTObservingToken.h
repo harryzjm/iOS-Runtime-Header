@@ -6,20 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTCancellable-Protocol.h>
-
 @class DVTStackBacktrace, NSString;
 
-@interface DVTObservingToken : NSObject <DVTCancellable>
+@interface DVTObservingToken : NSObject
 {
     DVTStackBacktrace *_creationBacktrace;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
-@property(retain) DVTStackBacktrace *creationBacktrace; // @synthesize creationBacktrace=_creationBacktrace;
+@property(readonly) DVTStackBacktrace *creationBacktrace; // @synthesize creationBacktrace=_creationBacktrace;
 @property(readonly, getter=isCancelled) _Bool cancelled;
 - (void)cancel;
+- (id)initWithCreationBacktrace:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

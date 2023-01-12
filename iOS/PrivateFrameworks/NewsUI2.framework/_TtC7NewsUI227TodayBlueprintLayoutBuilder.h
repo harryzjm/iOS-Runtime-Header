@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI227TodayBlueprintLayoutBuilder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *feedLayoutSolver;
-    MISSING_TYPE *assetManager;
+    MISSING_TYPE *decorationProviderFactory;
     MISSING_TYPE *baseStyler;
 }
 

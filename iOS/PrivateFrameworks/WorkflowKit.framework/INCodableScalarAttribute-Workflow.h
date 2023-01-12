@@ -9,7 +9,7 @@
 @interface INCodableScalarAttribute (Workflow)
 - (id)wf_contentItemForValue:(id)arg1;
 - (id)wf_parameterStateForIntentValue:(id)arg1 parameterDefinition:(id)arg2;
-- (void)wf_updateParameterDictionary:(id)arg1 parameterClass:(Class)arg2;
+- (void)wf_updateParameterDictionary:(id)arg1 parameterClass:(Class)arg2 localizer:(id)arg3;
 - (Class)wf_parameterClass;
 - (Class)wf_objectClass;
 @end

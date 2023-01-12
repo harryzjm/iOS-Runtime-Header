@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface PFHistoryAnalyzerContext : NSObject
 {
-    NSMutableDictionary *_objectIDToState;
-    NSMutableSet *_processedTransactionIDs;
-    NSArray *_sortedStates;
     _Bool _isFinished;
-    NSPersistentHistoryToken *_finalHistoryToken;
     PFHistoryAnalyzerOptions *_options;
+    NSMutableDictionary *_objectIDToState;
+    NSArray *_sortedStates;
+    NSMutableSet *_processedTransactionIDs;
+    NSPersistentHistoryToken *_finalHistoryToken;
 }
 
 - (id)fetchSortedStates:(id *)arg1;

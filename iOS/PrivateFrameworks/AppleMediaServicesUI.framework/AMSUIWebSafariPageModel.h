@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebPageProvider-Protocol.h>
-
 @class AMSMetricsEvent, AMSUIWebClientContext, AMSUIWebLoadingPageModel, AMSUIWebNavigationBarModel, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebSafariPageModel <AMSUIWebPageProvider>
+@interface AMSUIWebSafariPageModel
 {
     _Bool _hideToolBar;
     _Bool _showShareButton;
@@ -36,13 +34,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property(readonly, nonatomic) AMSMetricsEvent *impressionEvent; // @synthesize impressionEvent=_impressionEvent;
 @property(readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+- (id)loadPage;
 @property(readonly, nonatomic) _Bool disableReappearPlaceholder;
-- (id)createViewController;
+- (id)createViewControllerForContainer:(id)arg1;
+@property(readonly, copy) NSString *description;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

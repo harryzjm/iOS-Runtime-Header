@@ -14,6 +14,7 @@
     MISSING_TYPE *eventHub;
     MISSING_TYPE *handshakeRegistry;
     MISSING_TYPE *localDeviceProvider;
+    MISSING_TYPE *platform;
     MISSING_TYPE *timestampOffsetCalculator;
     MISSING_TYPE *lock;
     MISSING_TYPE *activeBrokers;

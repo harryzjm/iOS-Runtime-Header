@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSXPCConnection;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -18,27 +16,7 @@ struct BtProxData {
     unsigned int _field3;
 };
 
-struct DaemonBackedService {
-    NSXPCConnection *_connection;
-};
-
 struct Estimator;
-
-struct GetPowerStatsResponse {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    unsigned short _field10;
-    unsigned short _field11;
-    unsigned int _field12;
-    unsigned int _field13;
-};
 
 struct NeighborMeasurements {
     basic_string_05660eb3 _field1;
@@ -60,7 +38,7 @@ struct ResponderSuperframeCompleteEvent {
     unsigned short _field2;
     unsigned char _field3;
     double _field4;
-    struct array<unsigned char, 8> _field5;
+    struct array<unsigned char, 8UL> _field5;
     unsigned short _field6;
     unsigned short _field7;
     unsigned short _field8;
@@ -93,7 +71,7 @@ struct SharingImportanceMeasurements {
     struct vector<NeighborMeasurements, std::allocator<NeighborMeasurements>> userSharingInput;
 };
 
-struct array<unsigned char, 8> {
+struct array<unsigned char, 8UL> {
     unsigned char _field1[8];
 };
 

@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <DocumentCamera/ICDocCamImageQuadEditPanGestureRecognizerDelegate-Protocol.h>
-
 @class CALayer, CAShapeLayer, ICDocCamImageQuad, ICDocCamImageQuadEditPanGestureRecognizer, NSArray, NSMutableArray, NSString, UIBezierPath, UIColor, UIImage;
 @protocol ICDocCamImageQuadEditOverlayDelegate;
 
 __attribute__((visibility("hidden")))
-@interface ICDocCamImageQuadEditOverlay : UIView <ICDocCamImageQuadEditPanGestureRecognizerDelegate>
+@interface ICDocCamImageQuadEditOverlay : UIView
 {
     _Bool _isTempOverlay;
     _Bool _tempOverlayQuadIsValid;

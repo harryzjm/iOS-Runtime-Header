@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <dispatch/OS_dispatch_data-Protocol.h>
-
 @class NSString;
 
-@interface OS_dispatch_data : NSObject <OS_dispatch_data>
+@interface OS_dispatch_data : NSObject
 {
 }
 

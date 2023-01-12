@@ -6,10 +6,8 @@
 
 #import <Foundation/NSUserActivity.h>
 
-@class NFCNDEFMessage;
-
 @interface NSUserActivity (CoreNFC)
 - (void)setNdefMessagePayload:(id)arg1;
-@property(readonly, nonatomic) NFCNDEFMessage *ndefMessagePayload;
+- (id)ndefMessagePayload;
 @end
 

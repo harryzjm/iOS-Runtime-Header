@@ -6,10 +6,13 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MKMapItem, MKMapItemIdentifier, MUPlaceHeaderView;
+@class MKMapItem, MKMapItemIdentifier, MUPlaceHeaderView, MUPresentationOptions;
 
 @protocol MUPlaceHeaderViewDelegate <NSObject>
 - (void)headerView:(MUPlaceHeaderView *)arg1 didSelectEnclosingMapItemIdentifier:(MKMapItemIdentifier *)arg2;
 - (void)headerView:(MUPlaceHeaderView *)arg1 didSelectEnclosingMapItem:(MKMapItem *)arg2;
+
+@optional
+- (void)headerView:(MUPlaceHeaderView *)arg1 didSelectShareWithPresentationOptions:(MUPresentationOptions *)arg2;
 @end
 

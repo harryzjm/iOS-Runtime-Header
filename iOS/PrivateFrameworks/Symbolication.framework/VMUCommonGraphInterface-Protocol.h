@@ -9,6 +9,7 @@
 @class NSString, VMUClassInfoMap, VMUScanOverlay, VMUVMRegion;
 
 @protocol VMUCommonGraphInterface <NSObject>
+@property(readonly, nonatomic) unsigned int idleExitStatus;
 @property(readonly, nonatomic) unsigned long long physicalFootprintPeak;
 @property(readonly, nonatomic) unsigned long long physicalFootprint;
 @property(readonly, nonatomic) NSString *binaryImagesDescription;
@@ -19,6 +20,7 @@
 @property(readonly, nonatomic) unsigned int nodeCount;
 @property(readonly, nonatomic) unsigned int regionCount;
 @property(readonly, nonatomic) unsigned int zoneCount;
+@property(readonly, nonatomic) _Bool hasClassInfosDerivedFromStackBacktraces;
 @property(readonly, nonatomic) VMUClassInfoMap *realizedClasses;
 @property(readonly, nonatomic) unsigned int kernelPageSize;
 @property(readonly, nonatomic) unsigned int vmPageSize;

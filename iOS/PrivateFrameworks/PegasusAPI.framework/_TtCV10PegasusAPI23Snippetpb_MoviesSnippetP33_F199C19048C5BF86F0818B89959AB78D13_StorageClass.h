@@ -42,6 +42,13 @@
     MISSING_TYPE *_voiceOnlyActors;
     MISSING_TYPE *_localizedGenres;
     MISSING_TYPE *_characterNames;
+    MISSING_TYPE *_siribaseID;
+    MISSING_TYPE *_writers;
+    MISSING_TYPE *_producers;
+    MISSING_TYPE *_trailersV2;
+    MISSING_TYPE *_castAndCrew;
+    MISSING_TYPE *_boost;
+    MISSING_TYPE *_engTokens;
 }
 
 @end

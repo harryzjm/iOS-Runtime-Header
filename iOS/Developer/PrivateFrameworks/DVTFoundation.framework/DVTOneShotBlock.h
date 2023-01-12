@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTStackBacktrace, NSString;
 
-@interface DVTOneShotBlock : NSObject <DVTInvalidation>
+@interface DVTOneShotBlock : NSObject
 {
     CDUnknownBlockType _callbackBlock;
 }

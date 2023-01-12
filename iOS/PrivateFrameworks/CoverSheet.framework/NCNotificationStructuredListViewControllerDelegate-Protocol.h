@@ -6,7 +6,7 @@
 
 #import <CoverSheet/UIScrollViewDelegate-Protocol.h>
 
-@class BSAnimationSettings, NCNotificationAction, NCNotificationRequest, NCNotificationSectionSettings, NCNotificationStructuredListViewController, NCNotificationSystemSettings, NCNotificationViewController, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID, UIViewController, UIWindow, _UILegibilitySettings;
+@class BSAnimationSettings, NCNotificationAction, NCNotificationRequest, NCNotificationSectionSettings, NCNotificationStructuredListViewController, NCNotificationSystemSettings, NCNotificationViewController, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID, UIView, UIViewController, UIWindow, _UILegibilitySettings;
 @protocol NCContainerViewProviding, PLKeyboardHomeAffordanceAssertion, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol NCNotificationStructuredListViewControllerDelegate <UIScrollViewDelegate>
@@ -18,6 +18,10 @@
 - (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 requestPermissionToExecuteAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withParameters:(NSDictionary *)arg4 completion:(void (^)(_Bool))arg5;
 
 @optional
+- (void)notificationStructuredListViewControllerWillExpandNotificationListCount:(NCNotificationStructuredListViewController *)arg1;
+- (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 requestsPresentingFocusActivityPickerFromView:(UIView *)arg2;
+- (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 didUpdateOverlayFooterContentVisibility:(_Bool)arg2;
+- (struct UIEdgeInsets)notificationStructuredListViewControllerRequestsEdgeInsetsForOverlayFooterView:(NCNotificationStructuredListViewController *)arg1;
 - (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 requestsPresentingDigestOnboardingSuggestionViewController:(UIViewController *)arg2;
 - (id <UIViewSpringAnimationBehaviorDescribing>)settleHomeAffordanceAnimationBehaviorDescriptionForNotificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1;
 - (BSAnimationSettings *)unhideHomeAffordanceAnimationSettingsForNotificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1;
@@ -41,13 +45,15 @@
 - (_Bool)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 shouldFilterNotificationRequest:(NCNotificationRequest *)arg2;
 - (_Bool)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 shouldAllowInteractionsForNotificationRequest:(NCNotificationRequest *)arg2;
 - (NSDictionary *)notificationUsageTrackingStateForNotificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1;
+- (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 setNotificationSystemSettings:(NCNotificationSystemSettings *)arg2;
 - (NCNotificationSystemSettings *)notificationStructuredListViewControllerRequestsSystemSettings:(NCNotificationStructuredListViewController *)arg1;
 - (NCNotificationSectionSettings *)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 requestsSectionSettingsForSectionIdentifier:(NSString *)arg2;
+- (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 requestsClearingSupplementaryViewControllers:(NSSet *)arg2;
 - (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 requestsClearingNotificationRequests:(NSSet *)arg2;
 - (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 requestsClearingNotificationRequestsInSections:(NSSet *)arg2;
 - (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 isPresentingLongLookForViewController:(NCNotificationViewController *)arg2;
-- (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 didEndUserInteractionWithNotificationViewController:(NCNotificationViewController *)arg2;
-- (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 didBeginUserInteractionWithNotificationViewController:(NCNotificationViewController *)arg2;
+- (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 didEndUserInteractionWithViewController:(UIViewController *)arg2;
+- (void)notificationStructuredListViewController:(NCNotificationStructuredListViewController *)arg1 didBeginUserInteractionWithViewController:(UIViewController *)arg2;
 - (void)notificationStructuredListViewControllerDidEndScrolling:(NCNotificationStructuredListViewController *)arg1;
 - (void)notificationStructuredListViewControllerDidScroll:(NCNotificationStructuredListViewController *)arg1;
 - (void)notificationStructuredListViewControllerDidEndUserInteraction:(NCNotificationStructuredListViewController *)arg1;

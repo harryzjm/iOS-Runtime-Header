@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIUpdateCompletionObserving-Protocol.h>
-
 @class UIScrollView, _UIScrollViewFPSHUD;
 
 __attribute__((visibility("hidden")))
-@interface _UIScrollViewVFD : NSObject <_UIUpdateCompletionObserving>
+@interface _UIScrollViewVFD : NSObject
 {
     UIScrollView *_scrollView;
     _UIScrollViewFPSHUD *_debugOverlay;

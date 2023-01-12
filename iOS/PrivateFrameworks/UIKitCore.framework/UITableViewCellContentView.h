@@ -4,34 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UILayoutEngineSuspending-Protocol.h>
-
-@class NSString;
+#import "UIView.h"
 
 __attribute__((visibility("hidden")))
-@interface UITableViewCellContentView <_UILayoutEngineSuspending>
+@interface UITableViewCellContentView : UIView
 {
     struct {
         unsigned int edgesForOverridingDefaultLayoutMargins:4;
     } _contentViewFlags;
-    _Bool _isLayoutEngineSuspended;
     struct NSDirectionalEdgeInsets _overriddenDefaultLayoutMargins;
 }
 
 + (id)classFallbacksForKeyedArchiver;
 @property(nonatomic, getter=_overriddenDefaultLayoutMargins, setter=_setOverriddenDefaultLayoutMargins:) struct NSDirectionalEdgeInsets overriddenDefaultLayoutMargins; // @synthesize overriddenDefaultLayoutMargins=_overriddenDefaultLayoutMargins;
-@property(nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) _Bool _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
 - (struct UIEdgeInsets)_concreteDefaultLayoutMargins;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_tableViewCellContentViewCommonSetup;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -7,6 +7,7 @@
 #import <UIKit/UIDevice.h>
 
 @interface UIDevice (SFAdditions)
+- (_Bool)sf_inRetailKioskMode;
 @property(readonly, nonatomic, getter=sf_isDeveloperModeEnabled) _Bool sf_developerModeEnabled;
 - (id)sf_serialNumberQRImage;
 - (id)sf_regulatoryDeviceVariant;

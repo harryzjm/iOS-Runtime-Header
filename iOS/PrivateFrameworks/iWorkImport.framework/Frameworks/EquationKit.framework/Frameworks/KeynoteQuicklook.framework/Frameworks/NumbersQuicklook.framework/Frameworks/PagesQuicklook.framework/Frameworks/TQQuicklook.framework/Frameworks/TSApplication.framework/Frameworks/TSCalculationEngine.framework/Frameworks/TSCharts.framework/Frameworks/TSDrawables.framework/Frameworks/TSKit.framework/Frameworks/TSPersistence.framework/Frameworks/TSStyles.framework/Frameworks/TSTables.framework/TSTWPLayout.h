@@ -13,10 +13,10 @@
     _Bool _cachedCellWraps;
     _Bool _cacheIsValid;
     int _cachedVerticalAlignment;
-    int _cachedParagraphAlignment;
     struct TSUCellCoord _cachedCellID;
     TSTCellStyle *_cachedCellStyle;
     TSWPParagraphStyle *_cachedTextStyle;
+    long long _cachedParagraphAlignment;
     unsigned long long _cachedAutoSizeFlags;
     TSWPPadding *_cachedPadding;
     struct TSUCellRect _cachedMergeRange;
@@ -33,7 +33,7 @@
 @property(nonatomic) struct CGRect cachedMaskRect; // @synthesize cachedMaskRect=_cachedMaskRect;
 @property(nonatomic) unsigned long long cachedAutoSizeFlags; // @synthesize cachedAutoSizeFlags=_cachedAutoSizeFlags;
 @property(nonatomic) struct TSUCellRect cachedMergeRange; // @synthesize cachedMergeRange=_cachedMergeRange;
-@property(nonatomic) int cachedParagraphAlignment; // @synthesize cachedParagraphAlignment=_cachedParagraphAlignment;
+@property(nonatomic) long long cachedParagraphAlignment; // @synthesize cachedParagraphAlignment=_cachedParagraphAlignment;
 @property(nonatomic) int cachedVerticalAlignment; // @synthesize cachedVerticalAlignment=_cachedVerticalAlignment;
 @property(nonatomic) _Bool cachedCellWraps; // @synthesize cachedCellWraps=_cachedCellWraps;
 @property(retain, nonatomic) TSWPParagraphStyle *cachedTextStyle; // @synthesize cachedTextStyle=_cachedTextStyle;

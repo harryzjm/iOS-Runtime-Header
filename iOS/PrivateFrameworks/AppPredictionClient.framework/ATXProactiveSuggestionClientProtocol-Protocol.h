@@ -6,9 +6,10 @@
 
 #import <AppPredictionClient/NSObject-Protocol.h>
 
-@class ATXSuggestionLayout;
+@class ATXSpotlightSuggestionLayout, ATXSuggestionLayout;
 
 @protocol ATXProactiveSuggestionClientProtocol <NSObject>
+- (ATXSpotlightSuggestionLayout *)spotlightSuggestionLayoutFromCache;
 - (ATXSuggestionLayout *)suggestionLayoutFromCache;
 @end
 

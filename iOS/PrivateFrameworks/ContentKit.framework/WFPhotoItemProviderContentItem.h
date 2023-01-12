@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContentKit/WFContentItemClass-Protocol.h>
+#import "WFNSItemProviderContentItem.h"
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFPhotoItemProviderContentItem <WFContentItemClass>
+@interface WFPhotoItemProviderContentItem : WFNSItemProviderContentItem
 {
 }
 
@@ -19,6 +21,12 @@ __attribute__((visibility("hidden")))
 + (id)itemWithItemProviderItem:(id)arg1 photoMediaFileRepresentation:(id)arg2 assetIdentifier:(id)arg3;
 - (id)defaultSourceForRepresentation:(id)arg1;
 - (id)outputTypes;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,11 +6,9 @@
 
 #import <AWDSupportFramework/AWDCoreRoutineLearnedLocationTrainingMetrics.h>
 
-#import <coreroutine/RTMetricManagerMetricIdProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AWDCoreRoutineLearnedLocationTrainingMetrics (MetricManager) <RTMetricManagerMetricIdProtocol>
+@interface AWDCoreRoutineLearnedLocationTrainingMetrics (MetricManager)
 @property(readonly, copy) NSString *description;
 - (_Bool)valid:(id *)arg1;
 - (id)_init;

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSAttributedString.h>
 
-#import <RelevanceEngine/REContentEncodable-Protocol.h>
-
 @class NSString;
 
-@interface NSAttributedString (ContentRanking) <REContentEncodable>
+@interface NSAttributedString (ContentRanking)
 @property(readonly, nonatomic) NSString *contentEncodedString;
 
 // Remaining properties

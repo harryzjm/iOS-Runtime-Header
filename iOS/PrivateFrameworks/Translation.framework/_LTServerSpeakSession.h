@@ -19,8 +19,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)cancel;
-- (void)speak:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_playback:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)speak:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3 audioStartHandler:(CDUnknownBlockType)arg4;
+- (void)_playback:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3 audioStartHandler:(CDUnknownBlockType)arg4;
+- (id)_createTemporaryOutputFileWithURL:(id)arg1;
 - (id)initWithEngine:(id)arg1;
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/MCProfileConnectionObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSPrivacyInfoCenter : NSObject <MCProfileConnectionObserver>
+@interface VSPrivacyInfoCenter : NSObject
 {
     int _registrationToken;
     long long _accountAccessStatus;
@@ -20,7 +18,8 @@ __attribute__((visibility("hidden")))
 + (id)sharedPrivacyInfoCenter;
 @property(nonatomic) int registrationToken; // @synthesize registrationToken=_registrationToken;
 @property(nonatomic) long long accountAccessStatus; // @synthesize accountAccessStatus=_accountAccessStatus;
-- (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
+- (void)profileConnectionSettingsChanged:(id)arg1;
+- (void)profileConnectionProfileChanged:(id)arg1;
 - (id)updateAccountAccessStatusWithError:(id)arg1;
 - (void)updateAccountAccessStatusWithResponse:(id)arg1;
 - (void)_invalidateAccountAccessStatus;

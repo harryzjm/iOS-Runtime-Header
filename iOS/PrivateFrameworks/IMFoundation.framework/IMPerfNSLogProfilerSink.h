@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IMFoundation/IMPerfProfilerSink-Protocol.h>
-
 @class NSString;
 
-@interface IMPerfNSLogProfilerSink : NSObject <IMPerfProfilerSink>
+@interface IMPerfNSLogProfilerSink : NSObject
 {
 }
 

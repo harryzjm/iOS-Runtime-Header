@@ -10,6 +10,7 @@
 
 @protocol _SFPBShowAppStoreSheetCommand <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *applicationBundleIdentifier;
 @property(copy, nonatomic) NSString *storeIdentifier;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

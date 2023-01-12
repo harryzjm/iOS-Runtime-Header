@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/NSCopying-Protocol.h>
-
-@interface IDSNegativeInfo : NSObject <NSCopying>
+@interface IDSNegativeInfo : NSObject
 {
     double _time;
     long long _count;

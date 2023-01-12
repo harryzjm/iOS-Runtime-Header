@@ -6,9 +6,9 @@
 
 #import <AppleMediaServices/NSObject-Protocol.h>
 
-@class NSString;
+@class ACAccount, NSString;
 
 @protocol AMSFraudReportServiceInterface <NSObject>
-- (void)performFraudReportRefreshWithTransactionID:(NSString *)arg1 nameSpace:(NSString *)arg2 reportedScore:(long long)arg3 completion:(void (^)(AMSFraudReportResponse *, NSError *))arg4;
+- (void)performFraudReportRefreshWithAccount:(ACAccount *)arg1 transactionID:(NSString *)arg2 nameSpace:(NSString *)arg3 fsrData:(NSString *)arg4 keyID:(NSString *)arg5 completion:(void (^)(AMSFraudReportResponse *, NSError *))arg6;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSDate, NSURL, TSKStructuredTextImportSettings, TSTCellRegion;
 
-@interface TSTStructuredTextImportRecord : NSObject <NSCopying>
+@interface TSTStructuredTextImportRecord : NSObject
 {
     _Bool _pasteWasUpdate;
     TSKStructuredTextImportSettings *_importSettings;

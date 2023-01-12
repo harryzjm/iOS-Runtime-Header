@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMAccessoryCollectionSettingItem.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString;
 
-@interface HMAccessoryCollectionSettingItem (HFDebugging) <HFStateDumpBuildable>
+@interface HMAccessoryCollectionSettingItem (HFDebugging)
 + (id)hf_alarmItemsMatchingAlarmId:(id)arg1 withinItemArray:(id)arg2;
 + (id)hf_collectionSettingItemForAlarm:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;

@@ -6,10 +6,8 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIJSColor-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SKUIJSColor : IKJSObject <SKUIJSColor>
+@interface SKUIJSColor : IKJSObject
 {
     unsigned long long _red;
     unsigned long long _green;

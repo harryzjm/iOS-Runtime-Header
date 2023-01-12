@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNPhotoPickerProviderGroupDelegate-Protocol.h>
-
 @class CNContactViewCache, CNPhotoPickerVariantsManager, CNVisualIdentity, NSArray, NSIndexPath, NSMutableArray, NSString;
 @protocol AVTAvatarStore, CNPhotoPickerProviderGroupDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerDataSource : NSObject <CNPhotoPickerProviderGroupDelegate>
+@interface CNPhotoPickerDataSource : NSObject
 {
     _Bool _allowsPhotoLibraryAccess;
     CNVisualIdentity *_visualIdentity;

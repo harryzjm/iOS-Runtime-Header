@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, copy) NSString *artworkURLFormat; // @dynamic artworkURLFormat;
 @property(nonatomic, copy) NSDate *cacheDate; // @dynamic cacheDate;
 @property(nonatomic, retain) NSNumber *clearedForPhotosMemoriesExport; // @dynamic clearedForPhotosMemoriesExport;
+@property(nonatomic, copy) NSString *contentProvider; // @dynamic contentProvider;
 @property(nonatomic, retain) NSNumber *duration; // @dynamic duration;
 @property(nonatomic, copy) NSData *flexMLAnalysisAsData; // @dynamic flexMLAnalysisAsData;
 @property(nonatomic, copy) NSString *introPreviewPath; // @dynamic introPreviewPath;

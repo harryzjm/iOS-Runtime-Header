@@ -10,17 +10,10 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct _C3Base {
-    struct __CFRuntimeBase {
-        unsigned long long _field1;
-        _Atomic unsigned long long _field2;
-    } _field1;
-};
+struct Chunkserver__ErrorResponse;
 
-struct _Chunkserver__ErrorResponse;
-
-struct _Metricsinfo__HTTPMetricsInfo {
-    struct _ProtobufCMessage _field1;
+struct Metricsinfo__HTTPMetricsInfo {
+    struct ProtobufCMessage _field1;
     char *_field2;
     int _field3;
     int _field4;
@@ -45,30 +38,37 @@ struct _Metricsinfo__HTTPMetricsInfo {
     long long _field23;
     int _field24;
     long long _field25;
-    struct _Chunkserver__ErrorResponse *_field26;
+    struct Chunkserver__ErrorResponse *_field26;
     int _field27;
     double _field28;
     int _field29;
     double _field30;
 };
 
-struct _Metricsinfo__SocketInfo {
-    struct _ProtobufCMessage _field1;
+struct Metricsinfo__SocketInfo {
+    struct ProtobufCMessage _field1;
     char *_field2;
     char *_field3;
     unsigned int _field4;
     int _field5;
 };
 
-struct _ProtobufCMessage {
-    struct _ProtobufCMessageDescriptor *_field1;
+struct ProtobufCMessage {
+    struct ProtobufCMessageDescriptor *_field1;
     unsigned int _field2;
-    struct _ProtobufCMessageUnknownField *_field3;
+    struct ProtobufCMessageUnknownField *_field3;
 };
 
-struct _ProtobufCMessageDescriptor;
+struct ProtobufCMessageDescriptor;
 
-struct _ProtobufCMessageUnknownField;
+struct ProtobufCMessageUnknownField;
+
+struct _C3Base {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+};
 
 struct __CFData;
 
@@ -87,7 +87,7 @@ struct mmcs_curl_http_context;
 struct mmcs_http_context {
     struct _C3Base _field1;
     int _field2;
-    struct _Metricsinfo__HTTPMetricsInfo _field3;
+    struct Metricsinfo__HTTPMetricsInfo _field3;
     struct __CFString *_field4;
     long long _field5;
     double _field6;
@@ -116,7 +116,7 @@ struct mmcs_http_context {
     unsigned char _field29;
     struct __sFILE *_field30;
     struct __sFILE *_field31;
-    struct _Metricsinfo__SocketInfo _field32;
+    struct Metricsinfo__SocketInfo _field32;
     struct mmcs_metrics_http_info *_field33;
     CDUnknownFunctionPointerType _field34;
     CDUnknownFunctionPointerType _field35;
@@ -132,15 +132,14 @@ struct mmcs_http_context {
     struct os_activity_s *_field45;
     struct voucher_s *_field46;
     struct mmcs_read_stream_pool *_field47;
-    struct __CFRunLoop *_field48;
-    struct __CFArray *_field49;
-    struct __CFData *_field50;
+    struct _mmcs_perform_target *_field48;
+    struct __CFData *_field49;
     union {
         struct mmcs_cfnetwork_http_context *_field1;
         struct mmcs_nsurlsession_http_context *_field2;
         struct mmcs_curl_http_context *_field3;
         void *_field4;
-    } _field51;
+    } _field50;
 };
 
 struct mmcs_http_context_options {

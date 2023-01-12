@@ -4,41 +4,57 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class GEOPlaceDetailsModuleConfiguration, MKUGCCallToActionViewAppearance, MUPlaceDataAvailability, MUPlaceInfoSectionView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSString, UIView, UIViewController;
-@protocol MKPlaceActionManagerProtocol, MUInfoCardAnalyticsDelegate, MUPlaceInfoSectionControllerDelegate, _MKPlaceItem;
+@class GEOPlaceDetailsModuleConfiguration, MKUGCCallToActionViewAppearance, MUPlaceDataAvailability, MUPlaceFooterAttributionController, MUPlaceHoursSectionViewConfiguration, MUPlaceInfoSectionView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
+@protocol MKPlaceActionManagerProtocol, MUInfoCardAnalyticsDelegate, MUPlaceInfoSectionControllerDelegate, MUUserInformationProvider, _MKPlaceItem;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceInfoSectionController <MUPlaceSectionControlling>
+@interface MUPlaceInfoSectionController : MUPlaceSectionController
 {
     id <_MKPlaceItem> _placeItem;
     id <MKPlaceActionManagerProtocol> _actionDelegate;
     MUPlaceDataAvailability *_availability;
     GEOPlaceDetailsModuleConfiguration *_moduleConfig;
     MUPlaceInfoSectionView *_sectionStackView;
-    UIView *_sectionView;
+    NSArray *_sectionViews;
+    MUPlaceFooterAttributionController *_footerAttributionController;
+    MUPlaceSectionFooterViewModel *_sectionFooterViewModel;
     id <MUPlaceInfoSectionControllerDelegate> _placeInfoDelegate;
+    id <MUUserInformationProvider> _userInfoProvider;
+    MUPlaceHoursSectionViewConfiguration *_hoursConfig;
+    unsigned long long _placeNumberOfReportsInReview;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long placeNumberOfReportsInReview; // @synthesize placeNumberOfReportsInReview=_placeNumberOfReportsInReview;
+@property(readonly, nonatomic) MUPlaceHoursSectionViewConfiguration *hoursConfig; // @synthesize hoursConfig=_hoursConfig;
+@property(nonatomic) __weak id <MUUserInformationProvider> userInfoProvider; // @synthesize userInfoProvider=_userInfoProvider;
 @property(nonatomic) __weak id <MUPlaceInfoSectionControllerDelegate> placeInfoDelegate; // @synthesize placeInfoDelegate=_placeInfoDelegate;
-@property(readonly, nonatomic) UIView *sectionView; // @synthesize sectionView=_sectionView;
+- (_Bool)isImpressionable;
+- (void)_populateRevealedAnalyticsModule:(id)arg1;
 - (int)analyticsModuleType;
 - (id)draggableContent;
 @property(readonly, nonatomic) _Bool hasContent;
-- (void)_tappedAddToMapWithSourceView:(id)arg1;
-- (void)_tappedReportAnIssueWithSourceView:(id)arg1;
+- (void)hoursSectionView:(id)arg1 didExpand:(_Bool)arg2 forConfiguration:(id)arg3;
+- (void)_performActionItem:(id)arg1 withOptions:(id)arg2;
+- (void)_rapEditPlaceDetailsButtonTapped;
+- (id)_rapEditPlaceDetailsMenu;
+- (void)_tappedViewRAPReport;
 - (void)_tappedAddressItem;
 - (void)_tappedMessageType;
 - (void)_tappedContactOfType:(long long)arg1 withLabeledValue:(id)arg2;
 - (id)labeledValuesForContactValues:(id)arg1 type:(long long)arg2;
+- (int)_attributionStyle;
+@property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel; // @synthesize sectionFooterViewModel=_sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 - (void)_refineMapItemForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleFactoidTap:(id)arg1 withReference:(id)arg2;
 - (id)_createAddressItem;
+@property(readonly, nonatomic) NSArray *sectionViews;
 - (void)_setupRowItems;
-- (id)initWithPlaceItem:(id)arg1 moduleConfiguration:(id)arg2 availability:(id)arg3 actionDelegate:(id)arg4;
+- (void)refreshContents;
+- (id)initWithPlaceItem:(id)arg1 moduleConfiguration:(id)arg2 availability:(id)arg3 actionDelegate:(id)arg4 hoursConfiguration:(id)arg5;
 
 // Remaining properties
 @property(nonatomic, getter=isActive) _Bool active;
@@ -46,7 +62,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
+@property(readonly, nonatomic) UIView *sectionView;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;

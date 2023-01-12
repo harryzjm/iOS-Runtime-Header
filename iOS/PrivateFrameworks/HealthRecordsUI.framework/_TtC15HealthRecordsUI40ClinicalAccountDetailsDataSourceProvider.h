@@ -14,6 +14,7 @@
     MISSING_TYPE *manager;
     MISSING_TYPE *accountSourceDataSource;
     MISSING_TYPE *accountLoginDataSource;
+    MISSING_TYPE *downloadDetailsDataSource;
     MISSING_TYPE *sharingDataSource;
     MISSING_TYPE *didMakeSharingDataSource;
 }

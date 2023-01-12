@@ -6,12 +6,9 @@
 
 #import <Photos/PHMomentShare.h>
 
-#import <PhotosUICore/PXDisplayMomentShare-Protocol.h>
-#import <PhotosUICore/PXMediaTypeAggregating-Protocol.h>
-
 @class NSArray, NSDate, NSString, NSURL;
 
-@interface PHMomentShare (PXDisplayMomentShareAdoption) <PXDisplayMomentShare, PXMediaTypeAggregating>
+@interface PHMomentShare (PXDisplayMomentShareAdoption)
 @property(readonly, nonatomic) long long px_momentShareType;
 @property(readonly, nonatomic) long long aggregateMediaType;
 
@@ -38,14 +35,18 @@
 @property(readonly, nonatomic) unsigned long long photosCount;
 @property(readonly, nonatomic) double promotionScore;
 @property(readonly, nonatomic) _Bool px_allowsImplicitSelectionForProjectOrSharingAction;
+@property(readonly, nonatomic) _Bool px_allowsMoveToPersonalLibrary;
+@property(readonly, nonatomic) _Bool px_allowsMoveToSharedLibrary;
 @property(readonly, nonatomic) _Bool px_canAddContent;
 @property(readonly, nonatomic) _Bool px_canCreateContent;
 @property(readonly, nonatomic) _Bool px_canDeleteContent;
 @property(readonly, nonatomic) _Bool px_canRearrangeContent;
 @property(readonly, nonatomic) _Bool px_canRemoveContent;
 @property(readonly, nonatomic) id px_cheapLogIdentifier;
+@property(readonly, nonatomic) _Bool px_containsPrivateContent;
 @property(readonly, nonatomic) unsigned short px_highlightEnrichmentState;
 @property(readonly, nonatomic) long long px_highlightKind;
+@property(readonly, nonatomic) _Bool px_isAllLibraryDuplicatesSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isAllPhotosSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isAnimatedSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isBurstsSmartAlbum;
@@ -57,7 +58,6 @@
 @property(readonly, nonatomic) _Bool px_isContentSyndicationVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isDeletable;
 @property(readonly, nonatomic) _Bool px_isDepthEffectSmartAlbum;
-@property(readonly, nonatomic) _Bool px_isFavoriteMemoriesSmartFolder;
 @property(readonly, nonatomic) _Bool px_isFavoritesSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isFolder;
 @property(readonly, nonatomic) _Bool px_isForYouVirtualCollection;
@@ -77,16 +77,20 @@
 @property(readonly, nonatomic) _Bool px_isMediaTypeSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isMediaTypesFolder;
 @property(readonly, nonatomic) _Bool px_isMemoriesVirtualCollection;
+@property(readonly, nonatomic) _Bool px_isMemory;
 @property(readonly, nonatomic) _Bool px_isMoment;
 @property(readonly, nonatomic) _Bool px_isMomentShare;
 @property(readonly, nonatomic) _Bool px_isMomentsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMyAlbumsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMyPhotoStreamAlbum;
+@property(readonly, nonatomic) _Bool px_isNotUploadedSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isOwnedSharedAlbum;
 @property(readonly, nonatomic) _Bool px_isPanoramasSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isPeopleVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isPhotosVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isPlacesSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isPrivacySensitiveAlbum;
+@property(readonly, nonatomic) _Bool px_isProResSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isProject;
 @property(readonly, nonatomic) _Bool px_isProjectsFolder;
 @property(readonly, nonatomic) _Bool px_isRAWSmartAlbum;
@@ -106,6 +110,9 @@
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsAndActivityFolder;
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsFolder;
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsVirtualCollection;
+@property(readonly, nonatomic) _Bool px_isSharedLibrarySharingSuggestion;
+@property(readonly, nonatomic) _Bool px_isSharedLibrarySharingSuggestionsSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isSharedLibrarySmartAlbum;
 @property(readonly, nonatomic) _Bool px_isSlomoVideosSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isSmartFolder;

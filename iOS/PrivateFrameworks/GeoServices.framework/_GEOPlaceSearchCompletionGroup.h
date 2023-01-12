@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOCompletionGroup-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceSearchCompletionGroup : NSObject <GEOCompletionGroup>
+@interface _GEOPlaceSearchCompletionGroup : NSObject
 {
     NSString *_localizedSectionHeader;
     NSArray *_items;

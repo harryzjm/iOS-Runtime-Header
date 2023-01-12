@@ -6,11 +6,9 @@
 
 #import <Foundation/NSUUID.h>
 
-#import <HMFoundation/HMFObject-Protocol.h>
-
 @class NSArray, NSData, NSString;
 
-@interface NSUUID (HMFoundation) <HMFObject>
+@interface NSUUID (HMFoundation)
 + (id)shortDescription;
 + (id)hmf_UUIDWithBytesAsData:(id)arg1;
 + (id)zeroUUID;

@@ -12,6 +12,7 @@
 
 + (Class)archivedSelectionClass;
 + (id)tableNameSelection;
+- (_Bool)providesActivityDescription;
 - (_Bool)isEqualToSelection:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 

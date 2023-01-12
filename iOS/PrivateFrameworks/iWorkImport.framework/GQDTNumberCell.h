@@ -6,7 +6,6 @@
 
 @class GQDTComputedFormatSpec;
 
-__attribute__((visibility("hidden")))
 @interface GQDTNumberCell
 {
     double mValue;

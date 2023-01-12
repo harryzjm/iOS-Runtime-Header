@@ -22,7 +22,7 @@
 - (void)handleMailOrganizerActionWithSourceClientIdentifier:(NSString *)arg1 hypothesis:(EKTravelEngineHypothesis *)arg2;
 - (void)handleConferenceCallActionWithSourceClientIdentifier:(NSString *)arg1;
 - (void)handleDirectionsActionWithSourceClientIdentifier:(NSString *)arg1 hypothesis:(EKTravelEngineHypothesis *)arg2 lastFireTimeOfAlertOffsetFromTravelTime:(NSDate *)arg3;
-- (void)snoozeEventWithSourceClientIdentifier:(NSString *)arg1;
+- (void)snoozeEventWithSourceClientIdentifier:(NSString *)arg1 snoozeType:(unsigned long long)arg2;
 - (void)acknowledgeEventWithSourceClientIdentifier:(NSString *)arg1 shouldMarkAsHavingReceivedLocation:(_Bool)arg2;
 - (NSDate *)notificationExpirationDateForEventID:(NSString *)arg1 alarmID:(NSString *)arg2;
 - (_Bool)shouldRemoveTimeToLeaveRefreshTimerWithRefreshDate:(NSDate *)arg1 eventID:(NSString *)arg2;

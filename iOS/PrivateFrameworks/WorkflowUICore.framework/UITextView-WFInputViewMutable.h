@@ -6,11 +6,9 @@
 
 #import <UIKit/UITextView.h>
 
-#import <WorkflowUICore/WFInputViewMutable-Protocol.h>
-
 @class NSString, UIView;
 
-@interface UITextView (WFInputViewMutable) <WFInputViewMutable>
+@interface UITextView (WFInputViewMutable)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

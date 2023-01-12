@@ -9,6 +9,7 @@
 @class NSArray, NSNumber, NSSet, NSString, NSURL;
 
 @protocol PLAssetsdDebugServiceProtocol <NSObject>
+- (void)syndicationIngestMutexStateDescriptionWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)updateSiriVocabulary;
 - (void)coalesceJournalsForPayloadClassIDs:(NSSet *)arg1 withChangeJournalOverThreshold:(float)arg2 reply:(void (^)(void))arg3;
 - (void)snapshotJournalsForPayloadClassIDs:(NSSet *)arg1 reply:(void (^)(NSError *))arg2;
@@ -27,6 +28,7 @@
 - (void)enqueuePrefetch;
 - (void)clearPrefetchState;
 - (void)getCPLStateForDebug:(_Bool)arg1 withReply:(void (^)(NSString *))arg2;
+- (void)getTaskConstraintStatusWithReply:(void (^)(NSString *))arg1;
 - (void)getXPCTransactionStatusWithReply:(void (^)(NSString *))arg1;
 - (void)rebuildTableThumbsWithReply:(void (^)(NSString *))arg1;
 - (void)rebuildAllThumbnails;

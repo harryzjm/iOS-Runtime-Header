@@ -6,10 +6,14 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
+@class UIButton;
+
 @protocol TLKDescriptionViewDelegate <NSObject>
 
 @optional
-- (void)didPressTrailingFootnoteButton;
+- (_Bool)configureMenuForTrailingFootnoteButton:(UIButton *)arg1;
+- (_Bool)configureMenuForFootnoteButton:(UIButton *)arg1;
+- (void)didPressTrailingFootnoteButton:(id)arg1;
 - (void)didPressFootnoteButton;
 - (void)didPressMoreButton;
 @end

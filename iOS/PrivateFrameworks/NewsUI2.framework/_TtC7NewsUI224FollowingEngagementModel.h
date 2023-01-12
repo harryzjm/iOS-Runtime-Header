@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *banner;
     MISSING_TYPE *title;
-    MISSING_TYPE *identifier;
 }
 
 @end

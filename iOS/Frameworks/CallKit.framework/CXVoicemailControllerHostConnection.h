@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CallKit/CXVoicemailControllerHostProtocol-Protocol.h>
-#import <CallKit/CXVoicemailControllerVendorProtocol-Protocol.h>
-
 @class NSSet, NSString, NSURL, NSXPCConnection;
 @protocol CXVoicemailControllerHostConnectionDelegate, CXVoicemailControllerVendorProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CXVoicemailControllerHostConnection : NSObject <CXVoicemailControllerHostProtocol, CXVoicemailControllerVendorProtocol>
+@interface CXVoicemailControllerHostConnection : NSObject
 {
     NSString *_applicationIdentifier;
     NSURL *_bundleURL;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSPersistence/TSPDatabaseUnarchiverDelegate-Protocol.h>
-
 @class NSHashTable, NSObject, NSString, TSPComponent, TSPDatabase;
 @protocol OS_dispatch_queue;
 
-@interface TSPDatabaseReader <TSPDatabaseUnarchiverDelegate>
+@interface TSPDatabaseReader
 {
     NSObject<OS_dispatch_queue> *_databaseQueue;
     TSPDatabase *_database;

@@ -11,7 +11,7 @@
 @interface _TtC15SeymourServices10SyncServer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *endpoint;
-    MISSING_TYPE *serviceSubscriptionObserver;
+    MISSING_TYPE *serviceSubscriptionProviderBroker;
     MISSING_TYPE *accountProvider;
     MISSING_TYPE *subscriptionToken;
 }

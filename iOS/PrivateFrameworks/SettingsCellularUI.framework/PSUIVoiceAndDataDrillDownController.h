@@ -6,20 +6,16 @@
 
 #import <Preferences/PSListItemsController.h>
 
-#import <SettingsCellularUI/CoreTelephonyClientCapabilitiesDelegate-Protocol.h>
-#import <SettingsCellularUI/UIAlertViewDelegate-Protocol.h>
-
-@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, Logger, NSString, PSUIVoiceAndDataDrillDownSwitchSpecifiersFactory;
+@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSString, PSUIVoiceAndDataDrillDownSwitchSpecifiersFactory;
 
 __attribute__((visibility("hidden")))
-@interface PSUIVoiceAndDataDrillDownController : PSListItemsController <CoreTelephonyClientCapabilitiesDelegate, UIAlertViewDelegate>
+@interface PSUIVoiceAndDataDrillDownController : PSListItemsController
 {
     CTXPCServiceSubscriptionContext *_subscriptionContext;
     PSUIVoiceAndDataDrillDownSwitchSpecifiersFactory *_switchFactory;
     int _currentRATMode;
     CoreTelephonyClient *_ctClient;
     CTServiceDescriptor *_serviceDescriptor;
-    Logger *_logger;
 }
 
 - (void).cxx_destruct;
@@ -32,8 +28,9 @@ __attribute__((visibility("hidden")))
 - (id)identifierForRATMode:(int)arg1;
 - (int)RATModeForSpecifier:(id)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
-- (_Bool)shouldShow5GSASwitch:(id)arg1;
+- (_Bool)shouldShow5GSASwitch;
 - (_Bool)shouldShowFooterTextWithVoiceExplanation;
+- (_Bool)shouldShowVoNRSwitch;
 - (_Bool)shouldShowVoLTESwitch;
 - (id)getSwitchSpecifiers;
 - (void)updateCurrentRATModeFromSpecifier:(id)arg1;

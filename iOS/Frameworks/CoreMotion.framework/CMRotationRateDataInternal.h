@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMotion/NSCopying-Protocol.h>
-
-@interface CMRotationRateDataInternal : NSObject <NSCopying>
+@interface CMRotationRateDataInternal : NSObject
 {
     CDStruct_03942939 fRotationRate;
 }

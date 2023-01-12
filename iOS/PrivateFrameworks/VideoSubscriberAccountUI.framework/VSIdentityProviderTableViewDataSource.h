@@ -6,33 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccountUI/UITableViewDataSource-Protocol.h>
-
 @class NSArray, NSDictionary, NSString, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface VSIdentityProviderTableViewDataSource : NSObject <UITableViewDataSource>
+@interface VSIdentityProviderTableViewDataSource : NSObject
 {
-    NSString *_titleForTableHeader;
     UITableView *_tableView;
     NSArray *_identityProviders;
     unsigned long long _additionalProvidersMode;
     NSString *_requestedStorefrontCountryCode;
     NSArray *_tvProviderSupportedStorefronts;
-    NSArray *_sections;
+    NSArray *_providerSections;
+    NSArray *_storefrontSections;
     NSDictionary *_destinationsBySectionIndexTitle;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *destinationsBySectionIndexTitle; // @synthesize destinationsBySectionIndexTitle=_destinationsBySectionIndexTitle;
-@property(copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property(copy, nonatomic) NSArray *storefrontSections; // @synthesize storefrontSections=_storefrontSections;
+@property(copy, nonatomic) NSArray *providerSections; // @synthesize providerSections=_providerSections;
 @property(copy, nonatomic) NSArray *tvProviderSupportedStorefronts; // @synthesize tvProviderSupportedStorefronts=_tvProviderSupportedStorefronts;
 @property(nonatomic) NSString *requestedStorefrontCountryCode; // @synthesize requestedStorefrontCountryCode=_requestedStorefrontCountryCode;
 @property(nonatomic) unsigned long long additionalProvidersMode; // @synthesize additionalProvidersMode=_additionalProvidersMode;
 @property(copy, nonatomic) NSArray *identityProviders; // @synthesize identityProviders=_identityProviders;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-@property(copy, nonatomic) NSString *titleForTableHeader; // @synthesize titleForTableHeader=_titleForTableHeader;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -46,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (long long)_cellStyleForRowAtIndexPath:(id)arg1;
 - (id)_cellReuseIdentifierForRowAtIndexPath:(id)arg1;
 - (id)_additionalProvidersRowTitle;
+- (_Bool)hasStorefrontOrIdentityProviderAtIndexPath:(id)arg1;
 - (id)storefrontAtIndexPath:(id)arg1;
 - (id)identityProviderForRowAtIndexPath:(id)arg1;
 - (unsigned long long)_minimumProviderCountForIndexes;

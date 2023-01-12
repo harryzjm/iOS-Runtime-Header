@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFAudio/Endpointer-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SpeexEndpointer : NSObject <Endpointer>
+@interface SpeexEndpointer : NSObject
 {
     double mStartWaitTime;
     double mInterspeechWaitTime;
@@ -19,7 +17,7 @@ __attribute__((visibility("hidden")))
     int mEndpointMode;
     unsigned int mFrameRate;
     int mLastStatus;
-    void *_impl;
+    struct Impl *_impl;
 }
 
 @property double endWaitTime;

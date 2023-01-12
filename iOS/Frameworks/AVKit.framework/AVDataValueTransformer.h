@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVAirTransportTransformationProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVDataValueTransformer : NSObject <AVAirTransportTransformationProtocol>
+@interface AVDataValueTransformer : NSObject
 {
 }
 

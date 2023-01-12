@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTCellIterating-Protocol.h>
-#import <TSTables/TSTCellRegionIterating-Protocol.h>
-#import <TSTables/TSTMutableCellIteratorDataUpdating-Protocol.h>
-
-@class NSIndexSet, NSString, TSTCategoryTranslator, TSTCell, TSTCellRegion, TSTColumnRowUIDMap, TSTGroupBy, TSTSummaryCellVendor, TSTTableDataStore, TSTTableInfo, TSTTableTile, TSTTableTileRowInfo;
+@class NSIndexSet, NSString, TSTCategoryTranslator, TSTCell, TSTCellRegion, TSTColumnRowUIDMap, TSTGroupBy, TSTSummaryCellVendor, TSTTableDataListCache, TSTTableDataStore, TSTTableInfo, TSTTableTile, TSTTableTileRowInfo;
 @protocol TSTCellRegionIterating;
 
-@interface TSTCategoryStoreIterator : NSObject <TSTMutableCellIteratorDataUpdating, TSTCellIterating, TSTCellRegionIterating>
+@interface TSTCategoryStoreIterator : NSObject
 {
     struct unordered_map<TSUViewColumnIndex, TSUModelColumnIndex, std::hash<TSUViewColumnIndex>, std::equal_to<TSUViewColumnIndex>, std::allocator<std::pair<const TSUViewColumnIndex, TSUModelColumnIndex>>> _mapFromViewToBaseColumnInCurrentRow;
     TSTCell *_tempSummaryCell;
@@ -31,6 +27,7 @@
     TSTGroupBy *_groupBy;
     TSTCategoryTranslator *_translator;
     TSTTableDataStore *_baseDataStore;
+    TSTTableDataListCache *_baseDataListCache;
     TSTColumnRowUIDMap *_baseMap;
     TSTColumnRowUIDMap *_viewMap;
     TSTSummaryCellVendor *_summaryCellVendor;
@@ -77,6 +74,7 @@
 @property(readonly, nonatomic) __weak TSTSummaryCellVendor *summaryCellVendor; // @synthesize summaryCellVendor=_summaryCellVendor;
 @property(readonly, nonatomic) __weak TSTColumnRowUIDMap *viewMap; // @synthesize viewMap=_viewMap;
 @property(readonly, nonatomic) __weak TSTColumnRowUIDMap *baseMap; // @synthesize baseMap=_baseMap;
+@property(readonly, nonatomic) TSTTableDataListCache *baseDataListCache; // @synthesize baseDataListCache=_baseDataListCache;
 @property(readonly, nonatomic) __weak TSTTableDataStore *baseDataStore; // @synthesize baseDataStore=_baseDataStore;
 @property(readonly, nonatomic) TSTCategoryTranslator *translator; // @synthesize translator=_translator;
 @property(readonly, nonatomic) __weak TSTGroupBy *groupBy; // @synthesize groupBy=_groupBy;

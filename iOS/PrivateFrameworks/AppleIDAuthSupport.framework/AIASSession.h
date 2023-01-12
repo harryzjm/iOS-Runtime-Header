@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleIDAuthSupport/NSURLSessionDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString, NSURLSession;
 
 __attribute__((visibility("hidden")))
-@interface AIASSession : NSObject <NSURLSessionDelegate>
+@interface AIASSession : NSObject
 {
     _Bool _invalidated;
     NSMutableDictionary *_taskMap;

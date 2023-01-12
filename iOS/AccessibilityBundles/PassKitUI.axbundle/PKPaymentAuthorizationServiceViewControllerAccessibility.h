@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_updatePhysicalButtonState;
 - (void)biometricAttemptFailed;
 - (void)_removePassphraseViewFromHierarchyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_addPassphraseViewControllerToHierarchy:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -19,7 +18,6 @@
 - (void)setFooterState:(long long)arg1 string:(id)arg2 animated:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axUpdatePassViewLayout;
 - (_Bool)_axPaymentViewIsVisible;
 - (_Bool)_axPhysicalButtonIsVisible;
 - (void)_accessibilitySetTotalMetaLabel;

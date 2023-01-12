@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIKBRenderEffect-Protocol.h>
-
 @class NSString, UIKBGradient;
 
 __attribute__((visibility("hidden")))
-@interface UIKBNullEffect : NSObject <UIKBRenderEffect>
+@interface UIKBNullEffect : NSObject
 {
 }
 
@@ -21,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIKBGradient *gradient;
 @property(readonly, nonatomic) _Bool usesRGBColors;
 @property(nonatomic) double weight;
-@property(readonly, nonatomic) SEL renderSelector;
+- (void)renderEffectWithRenderer:(id)arg1 traits:(id)arg2;
 @property(readonly, nonatomic) _Bool renderUnder;
 @property(readonly, nonatomic) _Bool isValid;
 

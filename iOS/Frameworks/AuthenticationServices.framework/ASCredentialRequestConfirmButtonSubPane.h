@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AuthenticationServices/LAUIAuthenticationDelegate-Protocol.h>
-
 @class ASCredentialRequestButton, ASCredentialRequestPaneContext, LAUIAuthenticationView, NSObject, NSString, UILabel, UIStackView, UIView;
 @protocol ASCredentialRequestSubPaneConfirmButtonDelegate, OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
-@interface ASCredentialRequestConfirmButtonSubPane <LAUIAuthenticationDelegate>
+@interface ASCredentialRequestConfirmButtonSubPane
 {
     UIStackView *_mainStackView;
     UIView *_containerView;
@@ -57,11 +55,13 @@ __attribute__((visibility("hidden")))
 - (void)_authorizationWithPasscodeOrPasswordButtonSelected:(id)arg1;
 - (void)_authorizationButtonBioSelected:(id)arg1;
 - (void)showAuthenticationMechanismForExternalPasswordCredential;
+- (void)showContinueButtonWithTitle:(id)arg1;
 - (void)showContinueButton;
 - (void)setUpButtonInPaneContext:(id)arg1;
 - (void)showAlertContinuingWithPassword:(_Bool)arg1;
 - (void)showContinueWithPasswordButton;
 @property(nonatomic) _Bool authorizationCapabilityEnabled;
+- (unsigned long long)_authenticationMechanism;
 - (void)_enableLAUIAuthenticationMechanism;
 - (void)_windowDidBecomeKey:(id)arg1;
 - (void)_initializeAuthorizationButton;

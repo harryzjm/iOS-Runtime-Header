@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSSecureCoding-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPImageDescriptor_LegacySupportDoNotChange : NSObject <NSSecureCoding>
+@interface MPImageDescriptor_LegacySupportDoNotChange : NSObject
 {
     float _quality;
     float _nextLeafDescriptorDistance;

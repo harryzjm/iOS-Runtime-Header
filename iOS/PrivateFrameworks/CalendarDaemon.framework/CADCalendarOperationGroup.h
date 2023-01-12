@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADCalendarInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 __attribute__((visibility("hidden")))
-@interface CADCalendarOperationGroup <CADCalendarInterface>
+@interface CADCalendarOperationGroup : CADOperationGroup
 {
 }
 
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
 - (int)_tryPerformBlockWithCalendarID:(id)arg1 forAction:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)CADCalendar:(id)arg1 hasReminders:(CDUnknownBlockType)arg2;
 - (void)CADCalendar:(id)arg1 hasEvents:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetCalendarsWithFaultedProperties:(id)arg1 reply:(CDUnknownBlockType)arg2;
 

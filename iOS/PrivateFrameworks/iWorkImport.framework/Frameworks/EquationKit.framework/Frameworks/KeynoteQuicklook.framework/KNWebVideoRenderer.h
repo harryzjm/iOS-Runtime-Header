@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KeynoteQuicklook/KNAmbientBuildRenderer-Protocol.h>
-
 @class KNBuildRenderer, NSString, TSDTextureSet;
 
-@interface KNWebVideoRenderer <KNAmbientBuildRenderer>
+@interface KNWebVideoRenderer
 {
     double _startTime;
     _Bool _needsVideoAtStartTime;

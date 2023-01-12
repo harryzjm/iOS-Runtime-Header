@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameplayKit/NSKeyedUnarchiverDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GKCustomClassUnarchiver : NSObject <NSKeyedUnarchiverDelegate>
+@interface GKCustomClassUnarchiver : NSObject
 {
     NSMutableDictionary *_cache;
 }

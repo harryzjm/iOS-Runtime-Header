@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-#import <AssetCatalogFoundation/NSObject-Protocol.h>
-
 @class NSSet, NSString;
 
-@interface IBICDetailAreaGroupPathComponent : NSObject <NSObject, NSCopying>
+@interface IBICDetailAreaGroupPathComponent : NSObject
 {
     NSSet *_slotComponents;
 }

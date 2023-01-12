@@ -6,8 +6,6 @@
 
 #import <Foundation/NSData.h>
 
-#import <AppStoreDaemon/ASDNotificationType-Protocol.h>
-
-@interface NSData (ASDNotificationType) <ASDNotificationType>
+@interface NSData (ASDNotificationType)
 @end
 

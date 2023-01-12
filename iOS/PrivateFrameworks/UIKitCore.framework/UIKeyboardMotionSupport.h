@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIScreenBasedObject-Protocol.h>
-
 @class NSDictionary, NSString, UIScreen, UIWindowScene;
 @protocol UISplitKeyboardSource;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardMotionSupport : NSObject <_UIScreenBasedObject>
+@interface UIKeyboardMotionSupport : NSObject
 {
     UIScreen *_screen;
     UIWindowScene *_canvas;
@@ -21,14 +19,14 @@ __attribute__((visibility("hidden")))
 
 + (id)supportForUIScene:(id)arg1;
 + (id)supportForScreen:(id)arg1;
+- (void).cxx_destruct;
 - (_Bool)generateSplitNotificationForNewPlacement:(id)arg1;
 - (void)translateToPlacement:(id)arg1 animated:(_Bool)arg2;
 - (void)translateToPlacement:(id)arg1 quietly:(_Bool)arg2 animated:(_Bool)arg3;
-@property(nonatomic) id <UISplitKeyboardSource> masterController;
+@property(nonatomic) __weak id <UISplitKeyboardSource> masterController;
 - (void)_updatedController;
 - (void)_connectController:(id)arg1;
 - (void)_disconnectingController:(id)arg1;
-- (void)dealloc;
 - (id)_intendedCanvas;
 @property(readonly) UIScreen *_intendedScreen;
 @property(readonly) NSDictionary *_options;

@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_SFAppAutoFillPasswordViewControllerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardHiddenViewController_Autofill <_SFAppAutoFillPasswordViewControllerDelegate>
+@interface UIKeyboardHiddenViewController_Autofill
 {
 }
 
+- (void)passwordViewController:(id)arg1 selectedCredential:(id)arg2;
+- (id)customInfoFromCredential:(id)arg1;
+- (_Bool)isValidedString:(id)arg1;
 - (void)presentViewController:(_Bool)arg1;
 - (void)setAutofillVC:(id)arg1;
 

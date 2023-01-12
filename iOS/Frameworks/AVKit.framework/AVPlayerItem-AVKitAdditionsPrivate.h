@@ -13,6 +13,11 @@
 - (id)avkit_dataOrNil;
 - (void)setExternalMetadata:(id)arg1;
 - (id)externalMetadata;
+- (id)interstitialTimeRanges;
+- (_Bool)translatesPlayerInterstitialEvents;
+- (void)setInterstitialTimeRanges:(id)arg1;
+- (long long)interstitialPolicyEnforcement;
+- (long long)defaultInterstitialPolicyEnforcement;
 - (void)avkit_airMessageSendToAppleTV;
 - (void)avkit_airMessageSendExternalMetadata;
 - (id)avkit_valueForAVKitProperty:(id)arg1;

@@ -22,6 +22,7 @@
 + (id)nwm_localizedDescriptionKeyForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
 + (id)nwm_localizedDescriptionShortForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
 + (id)nwm_localizedDescriptionForConditionCode:(unsigned long long)arg1 timeOfDay:(unsigned long long)arg2;
++ (id)nwc_ultravioletIndexCategoryColorForNumber:(id)arg1;
 + (id)nwc_ultravioletIndexCategoryColorUnknown;
 + (id)nwc_ultravioletIndexCategoryColorSpectrum;
 - (double)_speedByConverting:(double)arg1 toUnit:(int)arg2;
@@ -50,6 +51,7 @@
 @property(readonly, nonatomic) NSDate *nwc_date;
 @property(readonly, nonatomic) unsigned long long simplifiedPrecipitationCondition;
 @property(readonly, nonatomic, getter=isTypeOfPrecipitation) _Bool typeOfPrecipitation;
+- (unsigned long long)_code;
 @property(readonly, nonatomic) unsigned long long nwm_ultravioletIndexCategory;
 @property(readonly, nonatomic) NSString *nwm_localizedUltravioletIndexRiskDescription;
 @end

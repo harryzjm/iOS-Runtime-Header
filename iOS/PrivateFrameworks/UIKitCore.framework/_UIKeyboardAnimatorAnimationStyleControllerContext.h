@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIKeyboardAnimatorState-Protocol.h>
-
 @class NSString, UIInputViewSetPlacement, UIView;
 @protocol UIInputViewAnimationHost;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyboardAnimatorAnimationStyleControllerContext : NSObject <_UIKeyboardAnimatorState>
+@interface _UIKeyboardAnimatorAnimationStyleControllerContext : NSObject
 {
     id <UIInputViewAnimationHost> _host;
     UIInputViewSetPlacement *_start;

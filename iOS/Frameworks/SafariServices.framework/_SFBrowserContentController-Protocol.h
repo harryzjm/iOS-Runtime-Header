@@ -15,8 +15,11 @@
 @property(readonly, nonatomic) _Bool supportsPrivacyReport;
 @property(readonly, nonatomic) _SFPageZoomPreferenceManager *pageZoomManager;
 @property(readonly, nonatomic) _SFPerSitePreferencesVendor *perSitePreferencesVendor;
+@property(readonly, nonatomic) UIViewController *viewControllerToPresentFrom;
+@property(readonly, nonatomic) _Bool hasDedicatedExtensionsButton;
 @property(readonly, nonatomic) id <WBSWebExtensionTab> activeTabForExtensions;
 @property(readonly, nonatomic) unsigned long long downloadsCount;
+@property(readonly, nonatomic) _Bool hasUnviewedDownloads;
 @property(nonatomic) _Bool keepBarsMinimized;
 @property(readonly, nonatomic, getter=isShowingReader) _Bool showingReader;
 @property(readonly, nonatomic) id <_SFBrowserDocument> activeDocument;

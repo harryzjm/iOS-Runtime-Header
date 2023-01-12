@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCH3DScene, TSCHChartInfo, TSCHChartSeriesType, TSCHChartType;
 @protocol TSWPStyleProviding;
 
-@interface TSCH3DChartSceneInfo : NSObject <NSCopying>
+@interface TSCH3DChartSceneInfo : NSObject
 {
     TSCH3DScene *_scene;
     TSCHChartInfo *_chartInfo;

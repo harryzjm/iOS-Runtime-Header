@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTCancellable-Protocol.h>
-
 @class DVTStackBacktrace, NSNotificationCenter, NSString, _DVTNotificationReceiver;
 
-@interface DVTNotificationToken : NSObject <DVTCancellable>
+@interface DVTNotificationToken : NSObject
 {
     NSNotificationCenter *_notificationCenter;
     id _observedObject;

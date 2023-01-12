@@ -6,12 +6,12 @@
 
 #import <StoreKitUI/NSObject-Protocol.h>
 
-@class MFComposeRecipient, SKUIGiftContactSearchController;
+@class CNComposeRecipient, SKUIGiftContactSearchController;
 
 @protocol SKUIGiftContactSearchDelegate <NSObject>
 
 @optional
 - (void)searchControllerDidFinishSearch:(SKUIGiftContactSearchController *)arg1;
-- (void)searchController:(SKUIGiftContactSearchController *)arg1 didSelectRecipient:(MFComposeRecipient *)arg2;
+- (void)searchController:(SKUIGiftContactSearchController *)arg1 didSelectRecipient:(CNComposeRecipient *)arg2;
 @end
 

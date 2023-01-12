@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSArray, NSHashTable;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarPersistentAnimationView
+@interface _UIStatusBarPersistentAnimationView : UIView
 {
     NSHashTable *_animations;
 }

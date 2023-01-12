@@ -11,8 +11,10 @@
 @property(readonly, nonatomic) _Bool dataSeparated;
 @property(readonly, nonatomic) _Bool defaultToInteractive;
 @property(readonly, copy, nonatomic) NSString *accountIdentifier;
+@property(readonly, copy, nonatomic) NSURL *enrollmentURL;
 @property(readonly, copy, nonatomic) NSString *storeDescription;
 @property(readonly, copy, nonatomic) NSString *name;
+@property(readonly, nonatomic) long long scope;
 @property(readonly, nonatomic) long long type;
 @property(readonly, copy, nonatomic) NSString *identifier;
 - (void)fetchDataAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;

@@ -17,6 +17,7 @@
 - (NSString *)bundleIdentifierForContainerViewController:(SBPIPContainerViewController *)arg1;
 
 @optional
+@property(readonly, nonatomic) _Bool shouldSuppressAssociatedElementsInSystemAperture;
 - (void)containerViewController:(SBPIPContainerViewController *)arg1 didUpdateContentViewFrame:(struct CGRect)arg2 reason:(NSString *)arg3;
 - (_Bool)containerViewController:(SBPIPContainerViewController *)arg1 shouldHandleStashingForTransitionContext:(SBLayoutStateTransitionContext *)arg2;
 - (void)containerViewController:(SBPIPContainerViewController *)arg1 didUpdateStashProgress:(double)arg2;

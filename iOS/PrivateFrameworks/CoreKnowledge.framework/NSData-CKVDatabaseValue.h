@@ -6,11 +6,9 @@
 
 #import <Foundation/NSData.h>
 
-#import <CoreKnowledge/CKVDatabaseValue-Protocol.h>
-
 @class NSString;
 
-@interface NSData (CKVDatabaseValue) <CKVDatabaseValue>
+@interface NSData (CKVDatabaseValue)
 - (const void *)databaseValue_blobRepresentationWithLength:(unsigned long long *)arg1;
 - (long long)databaseValue_type;
 - (id)databaseValue_toData;

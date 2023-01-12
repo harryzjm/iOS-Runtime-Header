@@ -9,6 +9,7 @@
 @class NSArray, NSData, NSDictionary, NSString;
 
 @protocol SOSControlProtocol <NSObject>
+- (void)setBypass:(_Bool)arg1 reply:(void (^)(_Bool, NSError *))arg2;
 - (NSString *)sosIsEnabledString;
 - (_Bool)sosIsEnabled;
 - (void)sosIsEnabledCB:(void (^)(_Bool))arg1;
@@ -26,6 +27,8 @@
 - (void)circleJoiningBlob:(NSData *)arg1 complete:(void (^)(NSData *, NSError *))arg2;
 - (void)circleHash:(void (^)(NSString *, NSError *))arg1;
 - (void)myPeerInfo:(void (^)(NSData *, NSError *))arg1;
+- (void)keyStatusFor:(int)arg1 complete:(void (^)(int, NSError *))arg2;
+- (void)accountStatus:(void (^)(NSData *, NSError *))arg1;
 - (void)iCloudIdentityStatus:(void (^)(NSData *, NSError *))arg1;
 - (void)iCloudIdentityStatus_internal:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)ghostBustInfo:(void (^)(NSData *, NSError *))arg1;

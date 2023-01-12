@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <webrtc/NSCoding-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WK_RTCVideoCodecInfo : NSObject <NSCoding>
+@interface WK_RTCVideoCodecInfo : NSObject
 {
     NSString *_name;
     NSDictionary *_parameters;

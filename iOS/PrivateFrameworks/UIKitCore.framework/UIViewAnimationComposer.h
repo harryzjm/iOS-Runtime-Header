@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewAnimationComposing-Protocol.h>
-
 @class NSString;
 @protocol UIVectorOperatable;
 
 __attribute__((visibility("hidden")))
-@interface UIViewAnimationComposer : NSObject <UIViewAnimationComposing>
+@interface UIViewAnimationComposer : NSObject
 {
     double _previousInteractiveUpdateTimestamp;
     id _previousInteractiveUpdateValue;

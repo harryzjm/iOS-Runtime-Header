@@ -11,23 +11,31 @@
 __attribute__((visibility("hidden")))
 @interface VUINowPlayingConfig : NSObject
 {
-    _Bool _showsLozengeForLivePlayback;
+    _Bool _showsUpNextInHUDForVOD;
+    _Bool _refetchesUpNextDataForLive;
+    _Bool _refetchesUpNextDataForVOD;
+    _Bool _showsUpNextInHUDForLive;
     _Bool _showsStillWatchingAlert;
     _Bool _allowQOSReportingForiTunesLibraryPlayback;
     _Bool _convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero;
-    double _stillWatchingAlertDuration;
+    _Bool _showsLozengeForLivePlayback;
     double _alertIdleTimeout;
     NSArray *_mediaTypesExcludedFromReporting;
+    double _stillWatchingAlertDuration;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double stillWatchingAlertDuration; // @synthesize stillWatchingAlertDuration=_stillWatchingAlertDuration;
+@property(nonatomic) _Bool showsLozengeForLivePlayback; // @synthesize showsLozengeForLivePlayback=_showsLozengeForLivePlayback;
 @property(nonatomic) _Bool convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero; // @synthesize convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero=_convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero;
 @property(nonatomic) _Bool allowQOSReportingForiTunesLibraryPlayback; // @synthesize allowQOSReportingForiTunesLibraryPlayback=_allowQOSReportingForiTunesLibraryPlayback;
 @property(copy, nonatomic) NSArray *mediaTypesExcludedFromReporting; // @synthesize mediaTypesExcludedFromReporting=_mediaTypesExcludedFromReporting;
 @property(nonatomic) double alertIdleTimeout; // @synthesize alertIdleTimeout=_alertIdleTimeout;
-@property(nonatomic) double stillWatchingAlertDuration; // @synthesize stillWatchingAlertDuration=_stillWatchingAlertDuration;
 @property(nonatomic) _Bool showsStillWatchingAlert; // @synthesize showsStillWatchingAlert=_showsStillWatchingAlert;
-@property(nonatomic) _Bool showsLozengeForLivePlayback; // @synthesize showsLozengeForLivePlayback=_showsLozengeForLivePlayback;
+@property(nonatomic) _Bool showsUpNextInHUDForLive; // @synthesize showsUpNextInHUDForLive=_showsUpNextInHUDForLive;
+@property(nonatomic) _Bool refetchesUpNextDataForVOD; // @synthesize refetchesUpNextDataForVOD=_refetchesUpNextDataForVOD;
+@property(nonatomic) _Bool refetchesUpNextDataForLive; // @synthesize refetchesUpNextDataForLive=_refetchesUpNextDataForLive;
+@property(nonatomic) _Bool showsUpNextInHUDForVOD; // @synthesize showsUpNextInHUDForVOD=_showsUpNextInHUDForVOD;
 - (id)init;
 
 @end

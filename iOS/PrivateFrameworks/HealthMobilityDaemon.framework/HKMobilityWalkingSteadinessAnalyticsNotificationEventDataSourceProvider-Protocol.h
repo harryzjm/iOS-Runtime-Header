@@ -9,6 +9,7 @@
 @class NSNumber, NSString;
 
 @protocol HKMobilityWalkingSteadinessAnalyticsNotificationEventDataSourceProvider <NSObject>
+- (NSNumber *)areHealthNotificationsAuthorizedWithError:(id *)arg1;
 - (NSNumber *)daysSinceLastNotificationWithError:(id *)arg1;
 - (NSNumber *)biologicalSexWithError:(id *)arg1;
 - (NSNumber *)ageWithError:(id *)arg1;

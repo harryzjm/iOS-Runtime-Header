@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NLLanguageModel.h"
+
 @class NLLMTokenIDConverter;
 
 __attribute__((visibility("hidden")))
-@interface NLLMLanguageModel
+@interface NLLMLanguageModel : NLLanguageModel
 {
     NLLMTokenIDConverter *_tokenIDConverter;
 }

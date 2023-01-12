@@ -7,6 +7,7 @@
 #import <PencilKit/PKTextAttachmentDrawingViewProvider.h>
 
 @interface PKTextAttachmentDrawingViewProvider (PaperKit)
++ (Class)inlineDrawingTiledViewClassForPaper;
 + (Class)inlineDrawingViewClassForPaper;
 + (Class)tiledViewClassForPaper;
 + (Class)drawingViewClassForPaper;

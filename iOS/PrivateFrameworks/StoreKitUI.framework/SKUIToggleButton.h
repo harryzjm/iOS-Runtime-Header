@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIToggleItemStateCenterObserver-Protocol.h>
-
 @class NSString, SKUIAttributedStringLayout, SKUIButtonViewElement;
 @protocol SKUIToggleButtonDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIToggleButton <SKUIToggleItemStateCenterObserver>
+@interface SKUIToggleButton
 {
     _Bool _autoIncrement;
     long long _autoIncrementCount;

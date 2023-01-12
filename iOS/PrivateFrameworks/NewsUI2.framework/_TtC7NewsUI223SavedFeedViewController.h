@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *userInfo;
     MISSING_TYPE *toolbarManager;
     MISSING_TYPE *newsActivityManager;
+    MISSING_TYPE *commandContainer;
 }
 
 - (void).cxx_destruct;

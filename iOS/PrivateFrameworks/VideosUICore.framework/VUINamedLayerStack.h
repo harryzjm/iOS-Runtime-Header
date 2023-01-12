@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUICore/UINamedLayerStack-Protocol.h>
-
 @class NSArray, NSString, UIImage;
 @protocol UINamedLayerStack;
 
 __attribute__((visibility("hidden")))
-@interface VUINamedLayerStack : NSObject <UINamedLayerStack>
+@interface VUINamedLayerStack : NSObject
 {
     id <UINamedLayerStack> _layerStack;
     UIImage *_cornerRadiusFlatImage;

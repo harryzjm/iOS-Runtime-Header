@@ -16,14 +16,18 @@
     NSString *_identifier;
     long long _indentLevel;
     double _displayOrder;
+    NSString *_subtitle;
+    NSString *_infoDescription;
     NSSet *_actions;
 }
 
 + (id)suggestionSetWithIdentifier:(id)arg1 addingSlots:(id)arg2 groupID:(id)arg3 title:(id)arg4 displayOrder:(double)arg5;
-+ (id)suggestionSetWithIdentifier:(id)arg1 slotClass:(Class)arg2 groupID:(id)arg3 title:(id)arg4 displayOrder:(double)arg5 indentLevel:(long long)arg6 actions:(id)arg7;
++ (id)suggestionSetWithIdentifier:(id)arg1 slotClass:(Class)arg2 groupID:(id)arg3 title:(id)arg4 displayOrder:(double)arg5 indentLevel:(long long)arg6 subtitle:(id)arg7 infoDescription:(id)arg8 actions:(id)arg9;
 + (id)suggestionSetWithIdentifier:(id)arg1 slotClass:(Class)arg2 groupID:(id)arg3 title:(id)arg4 displayOrder:(double)arg5 actions:(id)arg6;
 - (void).cxx_destruct;
 @property(readonly) NSSet *actions; // @synthesize actions=_actions;
+@property(readonly) NSString *infoDescription; // @synthesize infoDescription=_infoDescription;
+@property(readonly) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly) double displayOrder; // @synthesize displayOrder=_displayOrder;
 @property(readonly) long long indentLevel; // @synthesize indentLevel=_indentLevel;
 @property(readonly) NSString *identifier; // @synthesize identifier=_identifier;
@@ -34,7 +38,7 @@
 - (void)ibic_generateSubNodes:(CDUnknownBlockType)arg1;
 - (long long)compareDisplayOrder:(id)arg1;
 - (id)description;
-- (id)initWithIdentifier:(id)arg1 slotClass:(Class)arg2 groupID:(id)arg3 title:(id)arg4 displayOrder:(double)arg5 indentLevel:(long long)arg6 actions:(id)arg7;
+- (id)initWithIdentifier:(id)arg1 slotClass:(Class)arg2 groupID:(id)arg3 title:(id)arg4 displayOrder:(double)arg5 indentLevel:(long long)arg6 subtitle:(id)arg7 infoDescription:(id)arg8 actions:(id)arg9;
 
 @end
 

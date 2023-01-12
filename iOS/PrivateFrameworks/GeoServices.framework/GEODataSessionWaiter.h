@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOCancellable-Protocol.h>
-#import <GeoServices/GEODataSessionTaskDelegate-Protocol.h>
-
 @class GEODataSession, GEODataSessionTask, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEODataSessionWaiter : NSObject <GEOCancellable, GEODataSessionTaskDelegate>
+@interface GEODataSessionWaiter : NSObject
 {
     GEODataSession *_session;
     GEODataSessionTask *_task;

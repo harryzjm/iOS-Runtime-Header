@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Vision/VNClustererModelQuerying-Protocol.h>
-
 @protocol VNClusteringReadOnly><VNClusteringCancelling;
 
 __attribute__((visibility("hidden")))
-@interface VNClustererReadOnlyContext <VNClustererModelQuerying>
+@interface VNClustererReadOnlyContext
 {
     id <VNClusteringReadOnly><VNClusteringCancelling> _clusterer;
 }

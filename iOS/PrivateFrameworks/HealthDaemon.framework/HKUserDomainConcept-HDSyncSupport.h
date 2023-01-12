@@ -8,6 +8,6 @@
 
 @interface HKUserDomainConcept (HDSyncSupport)
 + (id)createWithCodableConcept:(id)arg1 profile:(id)arg2;
-- (void)applyCodableSubclassData:(id)arg1;
+- (void)applyCodableSubclassData:(id)arg1 mutableUserDomainConceptProperties:(id)arg2;
 @end
 

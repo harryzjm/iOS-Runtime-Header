@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSString, WDCharacterProperties, WDParagraphProperties, WDStyleSheet, WDTableCellProperties, WDTableRowProperties, WDTableStyleOverride;
 
 __attribute__((visibility("hidden")))
-@interface WDStyle : NSObject <NSCopying>
+@interface WDStyle : NSObject
 {
     WDParagraphProperties *mParagraphProperties;
     WDCharacterProperties *mCharacterProperties;

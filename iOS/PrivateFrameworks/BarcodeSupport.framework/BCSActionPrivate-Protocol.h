@@ -9,6 +9,9 @@
 @class CPSClipMetadataRequest, NSArray, NSDictionary, NSString;
 
 @protocol BCSActionPrivate <BCSAction>
+@property(readonly, nonatomic) _Bool isPasskeyRegistrationAction;
+@property(readonly, nonatomic) _Bool isPasskeyAssertionAction;
+@property(readonly, nonatomic) _Bool isPasskeyAction;
 @property(readonly, nonatomic) _Bool isAMSAction;
 @property(retain, nonatomic) CPSClipMetadataRequest *clipMetadataRequest;
 @property(readonly, nonatomic) _Bool hasSensitiveURL;

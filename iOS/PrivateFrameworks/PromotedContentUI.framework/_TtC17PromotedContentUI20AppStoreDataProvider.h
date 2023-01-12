@@ -6,19 +6,17 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <PromotedContentUI/APClientInfoDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC17PromotedContentUI20AppStoreDataProvider : _TtCs12_SwiftObject <APClientInfoDelegate>
+@interface _TtC17PromotedContentUI20AppStoreDataProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *metadataExpirationTimer;
     MISSING_TYPE *storeFront;
     MISSING_TYPE *storeFrontLocale;
+    MISSING_TYPE *theLock;
     MISSING_TYPE *subsequentRequestsDisabled;
     MISSING_TYPE *session;
     MISSING_TYPE *fetchingSession;
-    MISSING_TYPE *theLock;
     MISSING_TYPE *lastFetch;
     MISSING_TYPE *searchAdsFacade;
     MISSING_TYPE *sessionPersistence;
@@ -27,9 +25,8 @@
     MISSING_TYPE *nextRequestContextId;
     MISSING_TYPE *initializedAt;
     MISSING_TYPE *previousGetAdAt;
+    MISSING_TYPE *waitForClientInfo;
 }
-
-- (void)activeClientInfoUpdated:(id)arg1;
 
 @end
 

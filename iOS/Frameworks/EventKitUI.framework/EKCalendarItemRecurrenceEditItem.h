@@ -4,50 +4,53 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKCellShortener-Protocol.h>
-#import <EventKitUI/EKRecurrenceTypeEditItemViewControllerDelegate-Protocol.h>
-
-@class EKCalendarItemRecurrenceEndCell, EKRecurrenceTypeEditItemViewController, NSDate, NSString, PreferencesValueCell;
+@class EKDateTimeCell, EKUITableViewCell, NSDate, NSString, UIDatePicker, UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface EKCalendarItemRecurrenceEditItem <EKRecurrenceTypeEditItemViewControllerDelegate, EKCellShortener>
+@interface EKCalendarItemRecurrenceEditItem
 {
     long long _repeatType;
     long long _originalRepeatType;
     NSDate *_repeatEnd;
+    NSDate *_minRecurrenceEndDate;
     NSDate *_originalRepeatEnd;
     NSString *_customRepeatDescription;
-    unsigned long long _disclosedSubitem;
-    int _shorteningStatus;
-    PreferencesValueCell *_repeatEndDateCell;
-    EKRecurrenceTypeEditItemViewController *_recurrenceTypeVC;
-    EKCalendarItemRecurrenceEndCell *_repeatEndPickerCell;
+    UITableViewCell *_customCell;
+    EKDateTimeCell *_endDateCell;
+    EKUITableViewCell *_endDatePickerCell;
+    UIDatePicker *_endDatePicker;
+    _Bool _showingDatePicker;
 }
 
 + (id)_neverLocalizedString;
 - (void).cxx_destruct;
-- (long long)repeatTypeForRecurrenceRule:(id)arg1;
-- (id)_recurrenceTypeVC;
-- (void)_neverRepeatButtonTapped:(id)arg1;
-- (void)_repeatEndDateChanged:(id)arg1;
-- (id)_repeatEndPickerCell;
+- (void)dateTimeCellEndedEditing:(id)arg1;
+- (void)dateTimeCellBeganEditing:(id)arg1;
+- (void)dateTimeCell:(id)arg1 dateChanged:(id)arg2;
+- (void)dateTimeCellTimeTapped:(id)arg1;
+- (void)dateTimeCellDateTapped:(id)arg1;
 - (_Bool)forceRefreshStartAndEndDatesOnSave;
+- (id)bestInitialEndDate;
 - (id)minRecurrenceEndDate;
 - (id)stringForDate:(id)arg1;
 - (id)recurrenceTimeZone;
 - (id)recurrenceDate;
-- (void)shortenCell:(id)arg1;
+- (void)editor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
+- (void)presentCustomRecurrenceVC;
 - (_Bool)_validateRecurrenceType:(id)arg1;
-- (_Bool)editItemViewControllerSave:(id)arg1 notify:(_Bool)arg2;
-- (_Bool)editItemViewControllerSave:(id)arg1;
-- (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (void)_updateRepeatEndDateCell;
+- (void)saveNewRepeatEndDate:(id)arg1;
+- (void)_datePickerChanged:(id)arg1;
+- (id)recurrenceRuleFromRepeatType:(long long)arg1;
+- (id)_newDatePicker;
+- (id)endRepeatPopupMenu;
+- (id)repeatPopupMenu;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfSubitems;
+- (unsigned long long)indexForSubitem:(unsigned long long)arg1;
+- (unsigned long long)subitemAtIndex:(unsigned long long)arg1;
 - (_Bool)saveAndDismissWithForce:(_Bool)arg1;
 - (void)refreshFromCalendarItemAndStore;
 - (_Bool)canBeConfiguredForCalendarConstraints:(id)arg1;
-- (void)reset;
 - (void)_contentSizeCategoryChanged:(id)arg1;
 - (void)dealloc;
 - (id)init;

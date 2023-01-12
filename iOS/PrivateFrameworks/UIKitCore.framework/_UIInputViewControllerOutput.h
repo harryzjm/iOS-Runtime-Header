@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIInputViewControllerOutput : NSObject <NSCopying, NSSecureCoding>
+@interface _UIInputViewControllerOutput : NSObject <NSCopying>
 {
     _Bool _shouldDismiss;
     _Bool _proceedShouldReturn;
@@ -35,6 +34,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldPostReturnKeyNotification; // @synthesize shouldPostReturnKeyNotification=_shouldPostReturnKeyNotification;
 @property(nonatomic) _Bool shouldAdvanceResponder; // @synthesize shouldAdvanceResponder=_shouldAdvanceResponder;
 @property(nonatomic) _Bool requiresInputManagerSync; // @synthesize requiresInputManagerSync=_requiresInputManagerSync;
@@ -64,7 +64,6 @@ __attribute__((visibility("hidden")))
 - (void)insertText:(id)arg1;
 - (id)_currentKeyboardOutput;
 - (void)_pushNewKeyboardOutput;
-- (void)dealloc;
 
 @end
 

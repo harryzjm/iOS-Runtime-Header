@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPLocale : PBCodable <NSCopying>
+@interface FCCKPLocale : PBCodable
 {
     NSString *_activeKeyboard;
     NSMutableArray *_enabledKeyboards;

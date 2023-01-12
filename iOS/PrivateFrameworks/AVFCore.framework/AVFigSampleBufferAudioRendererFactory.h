@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVFigSampleBufferAudioRendererFactory-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVFigSampleBufferAudioRendererFactory : NSObject <AVFigSampleBufferAudioRendererFactory>
+@interface AVFigSampleBufferAudioRendererFactory : NSObject
 {
 }
 

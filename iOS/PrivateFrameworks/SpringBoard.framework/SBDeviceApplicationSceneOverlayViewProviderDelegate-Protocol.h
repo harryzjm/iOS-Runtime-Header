@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBDeviceApplicationSceneOverlayViewProvider;
+@class SBDeviceApplicationSceneOverlayViewProvider, SBFTraitsParticipant, SBWindowScene;
 
 @protocol SBDeviceApplicationSceneOverlayViewProviderDelegate
+- (SBFTraitsParticipant *)initialTraitsParticipantForOverlayViewProvider:(SBDeviceApplicationSceneOverlayViewProvider *)arg1;
+- (SBWindowScene *)windowSceneForOverlayViewProvider:(SBDeviceApplicationSceneOverlayViewProvider *)arg1;
 - (_Bool)overlayViewProviderRendersWhileLocked:(SBDeviceApplicationSceneOverlayViewProvider *)arg1;
 - (void)deactivateOverlayForViewProvider:(SBDeviceApplicationSceneOverlayViewProvider *)arg1;
 - (void)activateOverlayForViewProvider:(SBDeviceApplicationSceneOverlayViewProvider *)arg1;

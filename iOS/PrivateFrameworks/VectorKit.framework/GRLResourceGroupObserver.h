@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/GEOResourceManifestTileGroupObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GRLResourceGroupObserver : NSObject <GEOResourceManifestTileGroupObserver>
+@interface GRLResourceGroupObserver : NSObject
 {
     void *_resourceProvider;
+    struct mutex _resourceProviderLock;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)clearProvider;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 - (id)initWithResourceProvider:(void *)arg1;
 

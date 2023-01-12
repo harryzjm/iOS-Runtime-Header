@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIStatusBarItem.h"
+
 @class _UIStatusBarImageView, _UIStatusBarStringView, _UIStatusBarWifiSignalView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarWifiItem
+@interface _UIStatusBarWifiItem : _UIStatusBarItem
 {
     _UIStatusBarWifiSignalView *_signalView;
     _UIStatusBarImageView *_networkIconView;

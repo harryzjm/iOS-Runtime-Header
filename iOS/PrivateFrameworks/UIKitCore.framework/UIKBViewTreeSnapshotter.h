@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)snapshotterForKeyboardView:(id)arg1 afterScreenUpdates:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
 - (void)dealloc;
 

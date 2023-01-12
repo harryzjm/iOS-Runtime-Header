@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/NSObject-Protocol.h>
+#import <SpringBoard/SBUILegibility-Protocol.h>
 
 @class UIScrollView;
 
-@protocol CSCoverSheetSpotlightPresenting <NSObject>
+@protocol CSCoverSheetSpotlightPresenting <SBUILegibility>
 - (void)dismissSpotlightAnimated:(_Bool)arg1;
 - (void)presentSpotlightAnimated:(_Bool)arg1;
 - (_Bool)isSpotlightPresented;

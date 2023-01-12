@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTStrokeLayerStrokeAndRange-Protocol.h>
-
 @class NSString, TSDStroke;
 
-@interface TSTStrokeLayerToken : NSObject <TSTStrokeLayerStrokeAndRange>
+@interface TSTStrokeLayerToken : NSObject
 {
     int _order;
     TSDStroke *_stroke;

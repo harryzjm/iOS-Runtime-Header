@@ -6,11 +6,9 @@
 
 #import <CoreData/NSManagedObject.h>
 
-#import <KeyboardServices/_KSTIUserDictionaryEntry-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface NSManagedObject (TIUserDictionaryWordServer) <_KSTIUserDictionaryEntry>
+@interface NSManagedObject (TIUserDictionaryWordServer)
 - (void)_copyAttributeValuesFromObject:(id)arg1;
 
 // Remaining properties

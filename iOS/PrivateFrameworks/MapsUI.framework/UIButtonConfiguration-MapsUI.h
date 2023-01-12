@@ -7,6 +7,7 @@
 #import <UIKit/UIButtonConfiguration.h>
 
 @interface UIButtonConfiguration (MapsUI)
++ (id)_mapsui_textButtonConfiguration;
 + (id)_mapsui_filledButtonConfiguration;
 + (id)_mapsui_grayButtonConfiguration;
 + (id)_setupButtonConfiguration:(id)arg1;

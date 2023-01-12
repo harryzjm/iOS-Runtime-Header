@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIPanGestureRecognizer.h"
+
 @class UIEvent, UITouch;
 @protocol _UIMultiSelectOneFingerPanGestureDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIMultiSelectOneFingerPanGesture
+@interface _UIMultiSelectOneFingerPanGesture : UIPanGestureRecognizer
 {
     UITouch *_activeTouch;
     UIEvent *_activeEvent;

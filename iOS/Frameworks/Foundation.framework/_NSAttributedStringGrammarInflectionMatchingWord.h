@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCopying-Protocol.h>
-#import <Foundation/_NSAttributedStringGrammarInflecting-Protocol.h>
-
 @class NSString, _NSAttributedStringGrammar;
 
 __attribute__((visibility("hidden")))
-@interface _NSAttributedStringGrammarInflectionMatchingWord : NSObject <NSCopying, _NSAttributedStringGrammarInflecting>
+@interface _NSAttributedStringGrammarInflectionMatchingWord : NSObject
 {
     NSString *_wordToken;
     _NSAttributedStringGrammar *_matchingGrammar;

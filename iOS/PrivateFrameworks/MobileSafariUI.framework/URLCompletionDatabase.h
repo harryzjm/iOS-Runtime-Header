@@ -6,13 +6,11 @@
 
 #import <SafariSharedUI/WBSURLCompletionDatabase.h>
 
-#import <MobileSafariUI/WBSURLCompletionDataSource-Protocol.h>
-
 @class CloudTabStore, NSArray, NSCache, NSObject, NSString;
 @protocol OS_dispatch_queue, WBBookmarkProvider;
 
 __attribute__((visibility("hidden")))
-@interface URLCompletionDatabase : WBSURLCompletionDatabase <WBSURLCompletionDataSource>
+@interface URLCompletionDatabase : WBSURLCompletionDatabase
 {
     CloudTabStore *_cloudTabStore;
     NSArray *_cloudDevices;

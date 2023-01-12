@@ -7,22 +7,22 @@
 #import <SiriUI/NSObject-Protocol.h>
 
 @class AFUserUtteranceSelectionResults, NSLocale, NSString, UIViewController;
-@protocol SiriUIViewController;
+@protocol SiriSharedUIViewControlling;
 
 @protocol SiriUISnippetViewControllerDelegatePrivate <NSObject>
-- (NSLocale *)localeForSiriViewController:(id <SiriUIViewController>)arg1;
-- (void)removeSiriViewController:(id <SiriUIViewController>)arg1;
-- (void)siriViewController:(id <SiriUIViewController>)arg1 startCorrectedSpeechRequestWithText:(NSString *)arg2 correctionIdentifier:(id)arg3 userSelectionResults:(AFUserUtteranceSelectionResults *)arg4;
-- (void)siriViewControllerRequestTearDownEditingViewController:(id <SiriUIViewController>)arg1;
-- (void)siriViewControllerDidEndEditing:(id <SiriUIViewController>)arg1;
-- (void)siriViewControllerWillBeginEditing:(id <SiriUIViewController>)arg1;
-- (_Bool)siriViewControllerShouldPreventUserInteraction:(id <SiriUIViewController>)arg1;
-- (void)cancelSpeakingForSiriViewController:(id <SiriUIViewController>)arg1;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 didRequestKeyboardWithVisibility:(_Bool)arg2;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 didDismissViewController:(UIViewController *)arg2;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 willDismissViewController:(UIViewController *)arg2;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 didPresentViewController:(UIViewController *)arg2;
-- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 willPresentViewController:(UIViewController *)arg2;
-- (void)siriViewController:(id <SiriUIViewController>)arg1 speakText:(NSString *)arg2 completion:(void (^)(void))arg3;
+- (NSLocale *)localeForSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (void)removeSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 startCorrectedSpeechRequestWithText:(NSString *)arg2 correctionIdentifier:(id)arg3 userSelectionResults:(AFUserUtteranceSelectionResults *)arg4;
+- (void)siriViewControllerRequestTearDownEditingViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriViewControllerDidEndEditing:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriViewControllerWillBeginEditing:(id <SiriSharedUIViewControlling>)arg1;
+- (_Bool)siriViewControllerShouldPreventUserInteraction:(id <SiriSharedUIViewControlling>)arg1;
+- (void)cancelSpeakingForSiriViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 didRequestKeyboardWithVisibility:(_Bool)arg2;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 didDismissViewController:(UIViewController *)arg2;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 willDismissViewController:(UIViewController *)arg2;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 didPresentViewController:(UIViewController *)arg2;
+- (void)siriSnippetViewController:(id <SiriSharedUIViewControlling>)arg1 willPresentViewController:(UIViewController *)arg2;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 speakText:(NSString *)arg2 completion:(void (^)(void))arg3;
 @end
 

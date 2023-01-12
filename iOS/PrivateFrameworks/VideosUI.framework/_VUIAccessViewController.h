@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSDictionary, NSMutableArray, OBPrivacyLinkController, VUIAccessView_iOS, VUIAppSpinnerView;
+@class NSArray, NSDictionary, NSMutableArray, VUIAccessView_iOS, VUIAppSpinnerView;
 
 __attribute__((visibility("hidden")))
 @interface _VUIAccessViewController : UIViewController
@@ -14,14 +14,12 @@ __attribute__((visibility("hidden")))
     VUIAccessView_iOS *_accessView;
     VUIAppSpinnerView *_loadingView;
     NSArray *_channels;
-    OBPrivacyLinkController *_privacyController;
     NSMutableArray *_bundleIDs;
     NSDictionary *_options;
     _Bool _hasCalledCompletion;
     NSArray *_appInfos;
     NSArray *_appChannels;
     NSMutableArray *_channelIds;
-    _Bool _hasOptedIn;
     _Bool _shouldDenyOnCancel;
     CDUnknownBlockType _completionHandler;
 }

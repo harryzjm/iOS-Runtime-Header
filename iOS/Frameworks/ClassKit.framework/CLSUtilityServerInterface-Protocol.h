@@ -6,12 +6,19 @@
 
 #import <ClassKit/NSObject-Protocol.h>
 
-@class CLSAdminRequestor, CLSOrganization, NSArray, NSPredicate, NSString, NSURL;
+@class CLSAbstractAsset, CLSAdminRequestor, CLSAsset, CLSObject, CLSOrganization, NSArray, NSPredicate, NSString, NSURL;
+@protocol CLSAssetDownloadProgressNotifiable, CLSAssetUploadProgressNotifiable;
 
 @protocol CLSUtilityServerInterface <NSObject>
+- (oneway void)remote_currentUserContentStoreCacheDirectoryURLWithCompletion:(void (^)(id, NSError *))arg1;
+- (oneway void)remote_topLevelContentStoreCacheDirectoryURLWithCompletion:(void (^)(id, NSError *))arg1;
+- (oneway void)remote_uploadAsset:(CLSAsset *)arg1 uploadObserver:(CLSObject<CLSAssetUploadProgressNotifiable> *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)remote_createShareIfNeededForURL:(NSURL *)arg1 completion:(void (^)(long long, NSString *, CKRecordID *, NSError *))arg2;
-- (oneway void)remote_deleteFileAtExpectedURL:(NSURL *)arg1 containerURL:(NSURL *)arg2 itemID:(NSString *)arg3 ownerName:(NSString *)arg4 zoneName:(NSString *)arg5 completion:(void (^)(_Bool, NSError *))arg6;
-- (oneway void)remote_urlSuitableForOpeningForExpectedURL:(NSURL *)arg1 containerURL:(NSURL *)arg2 itemID:(NSString *)arg3 ownerName:(NSString *)arg4 zoneName:(NSString *)arg5 completion:(void (^)(id, NSError *))arg6;
+- (oneway void)remote_deleteBackingStoreForAsset:(CLSAsset *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)remote_cloudKitUrlSuitableForStreamingAsset:(CLSAbstractAsset *)arg1 downloadObserver:(CLSObject<CLSAssetDownloadProgressNotifiable> *)arg2 completion:(void (^)(id, id, NSError *))arg3;
+- (oneway void)remote_cloudKitUrlSuitableForOpeningForAsset:(CLSAbstractAsset *)arg1 downloadObserver:(CLSObject<CLSAssetDownloadProgressNotifiable> *)arg2 completion:(void (^)(id, NSError *))arg3;
+- (oneway void)remote_cloudKitThumbnailUrlSuitableForOpeningForAsset:(CLSAbstractAsset *)arg1 completion:(void (^)(id, NSError *))arg2;
+- (oneway void)remote_urlSuitableForOpeningForExpectedURL:(NSURL *)arg1 itemID:(NSString *)arg2 ownerName:(NSString *)arg3 zoneName:(NSString *)arg4 completion:(void (^)(id, NSError *))arg5;
 - (oneway void)remote_renewCredentialsWithCompletion:(void (^)(_Bool, long long, NSError *))arg1;
 - (oneway void)remote_deleteOrganization:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)remote_addOrganization:(CLSOrganization *)arg1 withLocations:(NSArray *)arg2 completion:(void (^)(id, NSError *))arg3;

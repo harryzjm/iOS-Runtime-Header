@@ -20,6 +20,9 @@
 + (void)checkForIncompatibleDevicesForAttachment:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)prefKeyForKey:(id)arg1 accountIdentifier:(id)arg2;
 + (id)compatibilityCheckQueue;
+- (void)_announceAttachmentChangeWithString:(id)arg1;
+- (_Bool)_checkIsVoiceOverRunning;
+- (void)accessibilityAnnounceDeletionWithVoiceOver;
 - (void)accessibilityAnnounceCreationWithVoiceOver;
 @property(readonly, nonatomic) ICInlineAttachmentUIModel *uiModel;
 @end

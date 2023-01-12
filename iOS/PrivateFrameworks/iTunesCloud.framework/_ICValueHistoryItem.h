@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _ICValueHistoryItem : NSObject <NSSecureCoding>
+@interface _ICValueHistoryItem : NSObject
 {
     unsigned long long _timestamp;
     id _value;

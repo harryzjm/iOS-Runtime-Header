@@ -7,14 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/UIInterfaceActionConcreteVisualStyleImpl-Protocol.h>
-#import <UIKitCore/UIInterfaceActionConcreteVisualStyleImplInternal-Protocol.h>
 
 @class NSString, UIInterfaceActionConcreteVisualStyle, UIInterfaceActionGroupViewState, UIInterfaceActionOverrideVisualStyle;
 @protocol UIInterfaceActionConcreteVisualStyleImpl;
 
 __attribute__((visibility("hidden")))
-@interface UIInterfaceActionVisualStyle : NSObject <UIInterfaceActionConcreteVisualStyleImplInternal, UIInterfaceActionConcreteVisualStyleImpl, NSCopying>
+@interface UIInterfaceActionVisualStyle : NSObject <NSCopying>
 {
     UIInterfaceActionGroupViewState *_groupViewState;
     UIInterfaceActionConcreteVisualStyle<UIInterfaceActionConcreteVisualStyleImpl> *_concreteVisualStyle;

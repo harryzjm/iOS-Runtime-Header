@@ -11,11 +11,14 @@
 @interface _TtC7SwiftUIP33_8825076C2763A50452A210CBE1FA4AF020PagingCollectionView : UICollectionView
 {
     MISSING_TYPE *pendingIndexPath;
+    MISSING_TYPE *lastScrolledIndexPath;
+    MISSING_TYPE *lastLayoutSize;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
+- (void)scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (void)layoutSubviews;
 
 @end

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MobileSafariUI/_SFTranslationTargetLocaleAlertControllerDelegate-Protocol.h>
-
 @class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface TranslationToChosenLocaleActivity <_SFTranslationTargetLocaleAlertControllerDelegate>
+@interface TranslationToChosenLocaleActivity
 {
     UIViewController *_activityViewController;
 }
@@ -21,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)translationAlertController:(id)arg1 didSelectLocale:(id)arg2;
 - (_Bool)canPerformWithTranslationContext:(id)arg1;
 - (void)prepareWithTranslationContext:(id)arg1;
+- (long long)actionType;
 - (id)activityTitle;
 
 // Remaining properties

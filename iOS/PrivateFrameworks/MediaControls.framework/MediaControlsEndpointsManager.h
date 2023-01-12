@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaControls/MPAVOutputDevicePlaybackDataSource-Protocol.h>
-#import <MediaControls/MPAVRoutingControllerDelegate-Protocol.h>
-#import <MediaControls/MediaControlsHomeObserverDelegate-Protocol.h>
-
 @class MPAVEndpointRoute, MPAVRoutingController, MPMediaControlsConfiguration, MediaControlsHomeObserver, NSArray, NSMutableDictionary, NSString;
 @protocol MediaControlsEndpointsManagerDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsEndpointsManager : NSObject <MPAVRoutingControllerDelegate, MediaControlsHomeObserverDelegate, MPAVOutputDevicePlaybackDataSource>
+@interface MediaControlsEndpointsManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableDictionary *_endpointControllersMap;

@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIAnimatorDOMFeatureDelegate-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSMapTable, NSString, UIResponder;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPanelView <SKUIAnimatorDOMFeatureDelegate, SKUIViewElementView>
+@interface SKUIPanelView
 {
     NSMapTable *_animators;
     UIResponder *_inputResponder;

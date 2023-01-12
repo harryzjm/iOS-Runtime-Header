@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLComputePassSampleBufferAttachmentDescriptor.h"
+
 __attribute__((visibility("hidden")))
-@interface MTLComputePassSampleBufferAttachmentDescriptorInternal
+@interface MTLComputePassSampleBufferAttachmentDescriptorInternal : MTLComputePassSampleBufferAttachmentDescriptor
 {
     struct MTLComputePassSampleBufferAttachmentDescriptorPrivate _private;
 }

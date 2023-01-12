@@ -6,12 +6,12 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class WFDialogAttributions, WFDialogRequest, WFWorkflowRunningContext;
+@class WFDialogAttribution, WFDialogRequest, WFWorkflowRunningContext;
 
 @protocol WFDialogXPCProtocol <NSObject>
-- (void)dismissPersistentChromeWithSuccess:(_Bool)arg1 customAttributions:(WFDialogAttributions *)arg2 completionHandler:(void (^)(void))arg3;
+- (void)dismissPersistentChromeWithSuccess:(_Bool)arg1 customAttribution:(WFDialogAttribution *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)dismissPresentedContentWithCompletionHandler:(void (^)(void))arg1;
 - (void)showDialogRequest:(WFDialogRequest *)arg1 completionHandler:(void (^)(WFDialogResponse *))arg2;
-- (void)preparePersistentChromeWithContext:(WFWorkflowRunningContext *)arg1 attributions:(WFDialogAttributions *)arg2;
+- (void)preparePersistentChromeWithContext:(WFWorkflowRunningContext *)arg1 attribution:(WFDialogAttribution *)arg2;
 @end
 

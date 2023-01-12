@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEORPUserCredentials, NSData, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEORPProblemOptInRequest : PBRequest <NSCopying>
+@interface GEORPProblemOptInRequest : PBRequest
 {
     PBDataReader *_reader;
     NSData *_devicePushToken;

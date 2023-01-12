@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
 @class MISSING_TYPE, TSUColor;
 
-@interface _TtC16KeynoteQuicklook35KNLiveVideoSourceSymbolTintColorSet : NSObject <NSCopying>
+@interface _TtC16KeynoteQuicklook35KNLiveVideoSourceSymbolTintColorSet : NSObject
 {
     MISSING_TYPE *storage;
 }

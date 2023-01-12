@@ -9,6 +9,8 @@
 @class CSCoverSheetViewControllerBase, SBCoverSheetSpotlightPresenter;
 
 @protocol SBCoverSheetSpotlightPresenterDelegate <NSObject>
+- (void)spotlightPresenterRemoveContentView:(SBCoverSheetSpotlightPresenter *)arg1;
+- (void)spotlightPresenterAddContentView:(SBCoverSheetSpotlightPresenter *)arg1;
 - (void)spotlightPresenter:(SBCoverSheetSpotlightPresenter *)arg1 dismissDismissableModalViewController:(CSCoverSheetViewControllerBase *)arg2 animated:(_Bool)arg3 completion:(void (^)(void))arg4;
 - (void)spotlightPresenter:(SBCoverSheetSpotlightPresenter *)arg1 presentDismissableModalViewController:(CSCoverSheetViewControllerBase *)arg2 completion:(void (^)(void))arg3;
 - (_Bool)spotlightPresenterAllowsPullToSearch:(SBCoverSheetSpotlightPresenter *)arg1;

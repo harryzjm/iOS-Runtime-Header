@@ -12,13 +12,15 @@
 {
     MISSING_TYPE *sectionHeadlinesService;
     MISSING_TYPE *personalizer;
-    MISSING_TYPE *heroSelector;
+    MISSING_TYPE *channelHeroService;
     MISSING_TYPE *weatherService;
     MISSING_TYPE *formatService;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *locationManager;
     MISSING_TYPE *localAreasManager;
     MISSING_TYPE *suggestionStatusProvider;
+    MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *bundleSubscriptionManager;
 }
 
 @end

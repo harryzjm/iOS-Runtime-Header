@@ -6,17 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MobileSafariUI/AutomationOverlayWindowDelegate-Protocol.h>
-
 @class NSString;
 @protocol AutomationOverlayViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AutomationOverlayViewController : UIViewController <AutomationOverlayWindowDelegate>
+@interface AutomationOverlayViewController : UIViewController
 {
     id <AutomationOverlayViewControllerDelegate> _delegate;
     _Bool _allowsUserInteraction;
-    _Bool _showDebugUI;
     CDUnknownBlockType _resetTemporaryUserInteractionAllowedBlock;
 }
 

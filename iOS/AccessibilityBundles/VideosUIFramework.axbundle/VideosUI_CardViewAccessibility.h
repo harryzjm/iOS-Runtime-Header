@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityAttributedValue;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityLabel;
 - (long long)_axCompareStyle:(long long)arg1 toStyle:(long long)arg2;
 - (unsigned long long)_accessibilityDownloadState;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiatorAudioConfiguration : NSObject <NSCopying>
+@interface VCMediaNegotiatorAudioConfiguration : NSObject
 {
     unsigned int _ssrc;
     _Bool _allowAudioSwitching;

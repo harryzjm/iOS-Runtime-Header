@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CallKit/CXVoicemailObserverDataSource-Protocol.h>
-
 @class NSDictionary, NSHashTable, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CXVoicemailObserverXPCClient : NSObject <CXVoicemailObserverDataSource>
+@interface CXVoicemailObserverXPCClient : NSObject
 {
     int _notifyToken;
     NSObject<OS_dispatch_queue> *_queue;

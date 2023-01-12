@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSProgress.h"
+
 @class NSOperationQueue;
 
 __attribute__((visibility("hidden")))
-@interface _NSOperationQueueProgress
+@interface _NSOperationQueueProgress : NSProgress
 {
     NSOperationQueue *_queue;
     struct os_unfair_lock_s _queueLock;

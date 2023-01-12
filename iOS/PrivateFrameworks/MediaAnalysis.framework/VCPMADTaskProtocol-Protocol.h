@@ -11,6 +11,7 @@
 - (float)resourceRequirement;
 
 @optional
+- (void)resetInterruption;
 - (void)interrupt;
 - (_Bool)cachesResources;
 @end

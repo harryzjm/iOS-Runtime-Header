@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOBusinessResolutionResponse : PBCodable <NSCopying>
+@interface GEOBusinessResolutionResponse : PBCodable
 {
     NSString *_businessName;
     unsigned long long _businessUID;

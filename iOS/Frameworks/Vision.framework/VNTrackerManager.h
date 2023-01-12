@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMapTable, NSMutableDictionary;
+@class NSDictionary, NSMapTable, NSMutableDictionary, VNRPNTrackerEspressoResourcesCache;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -19,17 +19,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_trackersCollectionManagementQueue;
     NSDictionary *_liveTrackerCounterLimit;
     NSMutableDictionary *_trackers;
+    VNRPNTrackerEspressoResourcesCache *_trackerResourceCache;
 }
 
-+ (void)releaseAllTrackers;
-+ (void)releaseManager;
-+ (id)manager;
 - (void).cxx_destruct;
-- (void)releaseTracker:(id)arg1;
+- (void)_releaseTracker_NO_LOCK_DO_NOT_EXECUTE_DIRECTLY:(id)arg1;
 - (id)_createTracker:(id)arg1 type:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)_getTracker:(id)arg1;
 - (long long)_maximumTrackersOfType:(id)arg1;
-- (id)trackerWithOptions:(id)arg1 error:(id *)arg2;
 - (id)init;
 
 @end

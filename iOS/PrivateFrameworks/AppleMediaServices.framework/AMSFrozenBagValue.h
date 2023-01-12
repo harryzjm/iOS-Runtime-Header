@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSBagValue.h"
+
 @protocol AMSBagDataSourceProtocol;
 
 __attribute__((visibility("hidden")))
-@interface AMSFrozenBagValue
+@interface AMSFrozenBagValue : AMSBagValue
 {
     id <AMSBagDataSourceProtocol> _dataSource;
 }

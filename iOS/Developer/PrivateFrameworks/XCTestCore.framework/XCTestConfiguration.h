@@ -8,11 +8,10 @@
 
 #import <XCTestCore/NSCopying-Protocol.h>
 #import <XCTestCore/NSSecureCoding-Protocol.h>
-#import <XCTestCore/XCTReportingSessionConfiguration-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, NSURL, NSUUID, XCTAggregateSuiteRunStatistics, XCTCapabilities, XCTRepetitionPolicy, XCTRerunPolicy, XCTTestIdentifierSet;
+@class NSArray, NSDictionary, NSNumber, NSString, NSURL, NSUUID, XCTAggregateSuiteRunStatistics, XCTCapabilities, XCTRepetitionPolicy, XCTTestIdentifierSet;
 
-@interface XCTestConfiguration : NSObject <XCTReportingSessionConfiguration, NSSecureCoding, NSCopying>
+@interface XCTestConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _reportResultsToIDE;
     _Bool _testsDrivenByIDE;
@@ -21,6 +20,8 @@
     _Bool _reportActivities;
     _Bool _testsMustRunOnMainThread;
     _Bool _initializeForUITesting;
+    _Bool _initializeForMultiDevice;
+    _Bool _shouldExtractMultiDeviceRequirements;
     _Bool _gatherLocalizableStringsData;
     _Bool _emitOSLogs;
     _Bool _testTimeoutsEnabled;
@@ -37,6 +38,7 @@
     NSDictionary *_testApplicationDependencies;
     NSDictionary *_testApplicationUserOverrides;
     NSString *_productModuleName;
+    NSString *_multiDeviceRequirementsFilePath;
     NSNumber *_traceCollectionEnabled;
     NSDictionary *_performanceTestConfiguration;
     NSNumber *_enablePerformanceTestsDiagnostics;
@@ -49,13 +51,13 @@
     long long _testExecutionOrdering;
     NSNumber *_randomExecutionOrderingSeed;
     XCTRepetitionPolicy *_repetitionPolicy;
-    XCTRerunPolicy *_rerunPolicy;
     NSNumber *_defaultTestExecutionTimeAllowance;
     NSNumber *_maximumTestExecutionTimeAllowance;
     CDUnknownBlockType _randomNumberGenerator;
     NSString *_basePathForTestBundleResolution;
     XCTCapabilities *_IDECapabilities;
     NSDictionary *_applicationBundleInfos;
+    NSDictionary *_multiDevicePlatformVersionMap;
 }
 
 + (id)defaultBasePathForTestBundleResolution;
@@ -64,6 +66,7 @@
 + (void)setActiveTestConfiguration:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy) NSDictionary *multiDevicePlatformVersionMap; // @synthesize multiDevicePlatformVersionMap=_multiDevicePlatformVersionMap;
 @property(copy) NSDictionary *applicationBundleInfos; // @synthesize applicationBundleInfos=_applicationBundleInfos;
 @property _Bool shouldEncodeLegacyTestIdentifiers; // @synthesize shouldEncodeLegacyTestIdentifiers=_shouldEncodeLegacyTestIdentifiers;
 @property(retain) XCTCapabilities *IDECapabilities; // @synthesize IDECapabilities=_IDECapabilities;
@@ -72,7 +75,6 @@
 @property(copy, nonatomic) NSNumber *maximumTestExecutionTimeAllowance; // @synthesize maximumTestExecutionTimeAllowance=_maximumTestExecutionTimeAllowance;
 @property(copy, nonatomic) NSNumber *defaultTestExecutionTimeAllowance; // @synthesize defaultTestExecutionTimeAllowance=_defaultTestExecutionTimeAllowance;
 @property _Bool testTimeoutsEnabled; // @synthesize testTimeoutsEnabled=_testTimeoutsEnabled;
-@property(retain) XCTRerunPolicy *rerunPolicy; // @synthesize rerunPolicy=_rerunPolicy;
 @property(retain) XCTRepetitionPolicy *repetitionPolicy; // @synthesize repetitionPolicy=_repetitionPolicy;
 @property(retain) NSNumber *randomExecutionOrderingSeed; // @synthesize randomExecutionOrderingSeed=_randomExecutionOrderingSeed;
 @property long long testExecutionOrdering; // @synthesize testExecutionOrdering=_testExecutionOrdering;
@@ -87,6 +89,9 @@
 @property(copy) NSNumber *enablePerformanceTestsDiagnostics; // @synthesize enablePerformanceTestsDiagnostics=_enablePerformanceTestsDiagnostics;
 @property(copy) NSDictionary *performanceTestConfiguration; // @synthesize performanceTestConfiguration=_performanceTestConfiguration;
 @property(copy) NSNumber *traceCollectionEnabled; // @synthesize traceCollectionEnabled=_traceCollectionEnabled;
+@property(copy) NSString *multiDeviceRequirementsFilePath; // @synthesize multiDeviceRequirementsFilePath=_multiDeviceRequirementsFilePath;
+@property _Bool shouldExtractMultiDeviceRequirements; // @synthesize shouldExtractMultiDeviceRequirements=_shouldExtractMultiDeviceRequirements;
+@property _Bool initializeForMultiDevice; // @synthesize initializeForMultiDevice=_initializeForMultiDevice;
 @property _Bool initializeForUITesting; // @synthesize initializeForUITesting=_initializeForUITesting;
 @property _Bool testsMustRunOnMainThread; // @synthesize testsMustRunOnMainThread=_testsMustRunOnMainThread;
 @property _Bool reportActivities; // @synthesize reportActivities=_reportActivities;

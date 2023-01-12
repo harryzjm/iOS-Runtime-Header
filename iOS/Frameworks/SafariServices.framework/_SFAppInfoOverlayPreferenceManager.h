@@ -6,14 +6,10 @@
 
 #import <SafariSharedUI/WBSPerSitePreferenceManager.h>
 
-#import <SafariServices/WBSPerSitePreferenceBinaryToggleItemManager-Protocol.h>
-#import <SafariServices/WBSPerSitePreferenceManagerDefaultsDelegate-Protocol.h>
-#import <SafariServices/WBSPerSitePreferenceManagerStorageDelegate-Protocol.h>
-
 @class NSString, WBSPerSitePreference, WBSPerSitePreferencesSQLiteStore;
 
 __attribute__((visibility("hidden")))
-@interface _SFAppInfoOverlayPreferenceManager : WBSPerSitePreferenceManager <WBSPerSitePreferenceManagerStorageDelegate, WBSPerSitePreferenceManagerDefaultsDelegate, WBSPerSitePreferenceBinaryToggleItemManager>
+@interface _SFAppInfoOverlayPreferenceManager : WBSPerSitePreferenceManager
 {
     WBSPerSitePreferencesSQLiteStore *_perSitePreferencesStore;
     WBSPerSitePreference *_appInfoOverlayPreference;
@@ -24,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)offValueForPreference:(id)arg1;
 - (id)onValueForPreference:(id)arg1;
 - (id)defaultPreferenceValueForPreferenceIfNotCustomized:(id)arg1;
-- (long long)preferencesStoreKeyForPreference:(id)arg1;
+- (id)preferenceNameForPreference:(id)arg1;
 @property(readonly, nonatomic) WBSPerSitePreferencesSQLiteStore *perSitePreferencesStore;
 - (id)localizedStringForValue:(id)arg1 inPreference:(id)arg2;
 - (id)valuesForPreference:(id)arg1;

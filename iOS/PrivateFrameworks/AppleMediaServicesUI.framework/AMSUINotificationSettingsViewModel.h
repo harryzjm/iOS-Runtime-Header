@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/AMSUINotificationInAppSettingsTableViewCellDelegate-Protocol.h>
-#import <AppleMediaServicesUI/UITableViewDataSource-Protocol.h>
-
 @class NSArray, NSString;
 @protocol AMSUINotificationSettingsViewModelDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUINotificationSettingsViewModel : NSObject <AMSUINotificationInAppSettingsTableViewCellDelegate, UITableViewDataSource>
+@interface AMSUINotificationSettingsViewModel : NSObject
 {
     _Bool _showAllowNotificationsButton;
     id <AMSUINotificationSettingsViewModelDelegate> _delegate;

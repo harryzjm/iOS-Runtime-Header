@@ -9,7 +9,6 @@
 @class NSMutableDictionary, NSString;
 @protocol GQZArchiveInputStream;
 
-__attribute__((visibility("hidden")))
 @interface GQZArchive : NSObject
 {
     NSMutableDictionary *mEntries;

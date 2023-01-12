@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "DDAction.h"
+
 __attribute__((visibility("hidden")))
-@interface DDCreateReminderAction
+@interface DDCreateReminderAction : DDAction
 {
 }
 
++ (_Bool)isAvailable;
 - (void)prepareViewControllerForActionController:(id)arg1;
 - (_Bool)canBePerformedByOpeningURL;
 - (int)interactionType;

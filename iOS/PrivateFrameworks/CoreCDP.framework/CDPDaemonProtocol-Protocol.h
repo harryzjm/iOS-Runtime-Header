@@ -10,6 +10,7 @@
 @protocol CDPDaemonProtocol
 - (void)fetchTermsAcceptanceForAccount:(ACAccount *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)saveTermsAcceptance:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)fetchEscrowRecordDevicesWithContext:(CDPContext *)arg1 usingCache:(_Bool)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (oneway void)updateDataPrivacyWithContext:(CDPUpdateDataPrivacyContext *)arg1 completion:(void (^)(CDPUpdateDataPrivacyContext *, NSError *))arg2;
 - (oneway void)statusForDataPrivacyWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
 - (void)postFollowUpWithContext:(CDPFollowUpContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
@@ -25,6 +26,7 @@
 - (void)deleteRecoveryKeyWithContext:(CDPContext *)arg1 uiProvider:(id <CDPStateUIProviderInternal>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)generateNewRecoveryKeyWithContext:(CDPContext *)arg1 uiProvider:(id <CDPStateUIProviderInternal>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)finishCyrusFlowAfterTermsAgreementWithContext:(CDPContext *)arg1 uiProvider:(id <CDPStateUIProviderInternal>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)verifyRecoveryKeyWithContext:(CDPContext *)arg1 uiProvider:(id <CDPStateUIProviderInternal>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)finishOfflineLocalSecretChangeWithContext:(CDPContext *)arg1 uiProvider:(id <CDPStateUIProviderInternal>)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)attemptToEscrowPreRecord:(NSString *)arg1 context:(CDPContext *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)localSecretChangedTo:(NSString *)arg1 secretType:(unsigned long long)arg2 context:(CDPContext *)arg3 uiProvider:(id <CDPStateUIProviderInternal>)arg4 completion:(void (^)(_Bool, NSError *))arg5;

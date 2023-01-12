@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreServices/NSCopying-Protocol.h>
+#import "LSEnumerator.h"
 
 __attribute__((visibility("hidden")))
-@interface _LSDBEnumerator <NSCopying>
+@interface _LSDBEnumerator : LSEnumerator
 {
     struct Context _context;
     unsigned long long _index;

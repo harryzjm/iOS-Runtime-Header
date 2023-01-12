@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNClusteringCancelling-Protocol.h>
-#import <Vision/VNClusteringReadOnly-Protocol.h>
-
 @class NSData, NSString, VNClusteringLogger, VNSuggestionsLogger;
 
 __attribute__((visibility("hidden")))
-@interface VNGreedyClusteringReadOnly : NSObject <VNClusteringReadOnly, VNClusteringCancelling>
+@interface VNGreedyClusteringReadOnly : NSObject
 {
     VNClusteringLogger *_clusteringLogger;
     VNSuggestionsLogger *_suggestionsLogger;

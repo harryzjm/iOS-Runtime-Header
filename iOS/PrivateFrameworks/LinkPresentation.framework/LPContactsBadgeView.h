@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CAShapeLayer, CNAvatarView, LPContactsBadgeStyle, UIImageView, UIView;
+@class CAShapeLayer, LPContactsBadgeStyle, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface LPContactsBadgeView
 {
     LPContactsBadgeStyle *_style;
-    CNAvatarView *_avatarView;
+    UIView *_avatarView;
     UIImageView *_highlightIndicatorView;
     UIView *_highlightShadowView;
     CAShapeLayer *_maskLayer;

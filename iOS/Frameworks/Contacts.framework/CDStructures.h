@@ -10,15 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
-};
-
 struct CGPoint {
     double x;
     double y;
@@ -39,10 +30,6 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -51,8 +38,4 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
-
-typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
 

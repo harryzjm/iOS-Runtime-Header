@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface _TtC10ChronoCore20TaskSessionQueuePool : NSObject
 {
     MISSING_TYPE *_queuePool;
-    MISSING_TYPE *_defaults;
 }
 
 - (void).cxx_destruct;

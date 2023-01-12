@@ -10,6 +10,7 @@
 @protocol SFReaderContext;
 
 @protocol _SFBrowserDocument <NSObject>
+@property(readonly, nonatomic) _Bool isSecure;
 @property(readonly, nonatomic) WBSTranslationContext *translationContext;
 @property(readonly, nonatomic) unsigned long long mediaStateIcon;
 @property(readonly, nonatomic) _Bool canChangeSearchFieldPosition;

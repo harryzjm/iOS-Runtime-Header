@@ -6,13 +6,10 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSTCellWillChangeProtocol-Protocol.h>
-#import <TSTables/TSTMergeChangeProtocol-Protocol.h>
-
 @class NSArray, NSMutableArray, TSCECalculationEngine, TSTTableModel;
 @protocol TSCEFormulaReplacing;
 
-@interface TSTCategoryOwner : TSPObject <TSTCellWillChangeProtocol, TSTMergeChangeProtocol>
+@interface TSTCategoryOwner : TSPObject
 {
     TSTTableModel *_tableModel;
     TSCECalculationEngine *_calcEngine;

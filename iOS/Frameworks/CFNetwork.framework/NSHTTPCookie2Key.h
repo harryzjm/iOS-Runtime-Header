@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface NSHTTPCookie2Key : NSObject <NSCopying>
+@interface NSHTTPCookie2Key : NSObject
 {
     NSString *_name;
     NSString *_domain;

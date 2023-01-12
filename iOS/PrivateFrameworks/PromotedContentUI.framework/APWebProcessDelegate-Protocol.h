@@ -24,6 +24,7 @@
 - (void)webProcessVideoAdJSODidCallPlayPaused:(float)arg1 volume:(float)arg2;
 - (void)webProcessVideoAdJSODidCallPlayResumed:(float)arg1 volume:(float)arg2;
 - (void)webProcessVideoAdJSODidCallPlayStarted:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSOMediaPlaybackFailedWithErrorDescription:(NSString *)arg1;
 - (void)webProcessVideoAdJSOCreativeViewLoaded;
 - (void)webProcessVideoAdJSOGetVideoInfo:(void (^)(NSString *, _Bool, NSDictionary *))arg1;
 - (void)webProcessMRAIDJSODidCallOpen:(NSURL *)arg1;

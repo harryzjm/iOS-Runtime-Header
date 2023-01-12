@@ -16,10 +16,14 @@
     MISSING_TYPE *churnPropensityLevel;
     MISSING_TYPE *followedNewsPlusChannelIDs;
     MISSING_TYPE *trialEligibility;
+    MISSING_TYPE *familySharingSetupStatus;
+    MISSING_TYPE *isFamilySharingEligible;
+    MISSING_TYPE *isFamilySharingOrganizer;
     MISSING_TYPE *tagController;
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *bundlePurchasePrewarmer;
+    MISSING_TYPE *familySharingStatusManager;
 }
 
 @end

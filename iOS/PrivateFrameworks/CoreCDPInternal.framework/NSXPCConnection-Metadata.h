@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface NSXPCConnection (Metadata)
+@property(readonly, copy, nonatomic) NSString *bundleID;
 @property(readonly, copy, nonatomic) NSString *processName;
 @end
 

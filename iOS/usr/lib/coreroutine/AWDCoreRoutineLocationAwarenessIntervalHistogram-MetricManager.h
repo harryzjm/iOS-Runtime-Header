@@ -6,11 +6,9 @@
 
 #import <AWDSupportFramework/AWDCoreRoutineLocationAwarenessIntervalHistogram.h>
 
-#import <coreroutine/RTMetricManagerMetricIdProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AWDCoreRoutineLocationAwarenessIntervalHistogram (MetricManager) <RTMetricManagerMetricIdProtocol>
+@interface AWDCoreRoutineLocationAwarenessIntervalHistogram (MetricManager)
 + (_Bool)checkIntervalHistogramDimensions:(id)arg1;
 + (id)_defaultIntervalHistogram;
 - (_Bool)valid:(id *)arg1;

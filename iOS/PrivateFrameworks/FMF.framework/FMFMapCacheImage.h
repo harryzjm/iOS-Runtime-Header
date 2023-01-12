@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FMF/NSSecureCoding-Protocol.h>
-
 @class NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FMFMapCacheImage : NSObject <NSSecureCoding>
+@interface FMFMapCacheImage : NSObject
 {
     long long _count;
     NSString *_path;

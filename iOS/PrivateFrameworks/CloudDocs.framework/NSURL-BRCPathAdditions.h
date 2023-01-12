@@ -16,6 +16,8 @@
 + (void)br_documentURLFromBookmarkableString:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)br_documentURLFromFileObjectID:(id)arg1 error:(id *)arg2;
 - (id)brc_issueSandboxExtensionOfClass:(const char *)arg1 error:(id *)arg2;
+- (void)_br_fetchItemServiceSyncProxy:(CDUnknownBlockType)arg1;
+- (id)_br_itemServiceSyncProxy;
 - (_Bool)br_setTagNames:(id)arg1 error:(id *)arg2;
 - (_Bool)br_getTagNames:(id *)arg1 error:(id *)arg2;
 - (id)br_addFakeConflictLoserFromItemAtURL:(id)arg1 lastEditorDeviceName:(id)arg2 error:(id *)arg3;
@@ -34,7 +36,6 @@
 - (void)br_addPhysicalProperty;
 - (_Bool)br_isPromiseURL;
 - (id)br_logicalURL;
-- (id)br_physicalURL;
 - (id)br_documentRecordIDWithError:(id *)arg1;
 - (id)br_itemID;
 - (id)br_URLByResolvingExternalDocumentReferenceWithError:(id *)arg1;
@@ -53,6 +54,7 @@
 - (_Bool)br_isInCloudDocsPrivateStorages;
 - (_Bool)_br_isInSyncedLocationStrictly:(_Bool)arg1;
 - (_Bool)_br_isInSyncedLocationWithCurrentPersonaID:(id)arg1 strictly:(_Bool)arg2 foundHomeDirectory:(_Bool)arg3 adoptionError:(id)arg4;
+- (_Bool)_br_mightBeInSyncedLocationUnderCurrentPersonaID:(id)arg1 strictly:(_Bool)arg2;
 - (_Bool)br_isStrictlyInSyncedLocation;
 - (_Bool)br_isInSyncedLocation;
 - (_Bool)br_isInSyncedDocuments;
@@ -66,17 +68,21 @@
 - (void)br_bookmarkableStringForRemoteOpeningAppWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)br_bookmarkableStringWithEtag:(_Bool)arg1 onlyAllowItemKnowByServer:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)br_bookmarkableStringWithEtag:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_br_bookmarkableStringForRemoteOpeningAppWithBundleID:(id)arg1 onlyAllowItemKnowByServer:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)br_cachedBookmarkData;
 - (void)br_preCacheBookmarkData:(id)arg1 versionEtag:(id)arg2;
 - (_Bool)br_isParentOfURL:(id)arg1;
 - (_Bool)br_isParentOfURL:(id)arg1 strictly:(_Bool)arg2;
 - (_Bool)br_isInLocalHomeDirectory;
 - (id)br_realpathURL;
+- (id)_br_getAttributeValue:(id)arg1 withSecondaryConnection:(_Bool)arg2 withError:(id *)arg3;
+- (_Bool)br_mightBeOnDataSeparatedVolume;
 - (id)br_containerIDWithCurrentPersonaID:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
 - (id)br_containerIDWithCurrentPersonaID:(id)arg1;
 - (id)br_pathRelativeToSyncedRootURL:(id)arg1 currentPersonaID:(id)arg2;
 - (_Bool)_br_isInLocalHomeDirectoryUnderCurrentPersona;
 - (_Bool)_br_isInLocalHomeDirectoryUnderPersona:(id)arg1 needsPersonaSwitch:(_Bool)arg2;
 - (_Bool)_br_isInPersonaRoot:(id)arg1;
+- (id)br_physicalURL;
 @end
 

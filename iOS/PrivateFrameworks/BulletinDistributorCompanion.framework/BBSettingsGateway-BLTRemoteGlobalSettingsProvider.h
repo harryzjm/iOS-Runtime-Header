@@ -6,11 +6,9 @@
 
 #import <BulletinBoard/BBSettingsGateway.h>
 
-#import <BulletinDistributorCompanion/BLTRemoteGlobalSettingsProvider-Protocol.h>
-
 @class NSString;
 
-@interface BBSettingsGateway (BLTRemoteGlobalSettingsProvider) <BLTRemoteGlobalSettingsProvider>
+@interface BBSettingsGateway (BLTRemoteGlobalSettingsProvider)
 @property(readonly, nonatomic) long long globalScheduledDeliverySetting;
 
 // Remaining properties

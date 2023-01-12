@@ -13,8 +13,8 @@
     NSMutableDictionary *_derivedInfoDict;
     NSPointerArray *_filePaths;
     DVTFilePath *_filePath;
-    struct os_unfair_lock_s _derivedInfoDictLock;
-    struct os_unfair_lock_s _derivationLock;
+    struct DVTUnfairLock _derivedInfoDictLock;
+    struct DVTUnfairLock _derivationLock;
     unsigned long long _inodeNumber;
     long long _fileSize;
     unsigned long long _statFlags;

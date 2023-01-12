@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI17VUIViewControllerCN.h"
+
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI23ErrorTemplateController
+@interface _TtC8VideosUI23ErrorTemplateController : _$s8VideosUI17VUIViewControllerCN
 {
 }
 
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)vui_loadView;
 
 @end
 

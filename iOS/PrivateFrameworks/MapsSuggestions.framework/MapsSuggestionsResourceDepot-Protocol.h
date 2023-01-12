@@ -6,14 +6,14 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class MapsSuggestionsContacts, MapsSuggestionsEventKit, MapsSuggestionsFlightUpdater, MapsSuggestionsInsights, MapsSuggestionsMapsSync, MapsSuggestionsPortrait, MapsSuggestionsRoutine, MapsSuggestionsShortcutManager, MapsSuggestionsUser, MapsSuggestionsVirtualGarage;
-@protocol MapsSuggestionsNetworkRequester, MapsSuggestionsSourceDelegate;
+@class MapsSuggestionsContacts, MapsSuggestionsEventKit, MapsSuggestionsFlightUpdater, MapsSuggestionsMapsSync, MapsSuggestionsPortrait, MapsSuggestionsRoutine, MapsSuggestionsShortcutManager, MapsSuggestionsUser, MapsSuggestionsVirtualGarage;
+@protocol MapsSuggestionsInsights, MapsSuggestionsNetworkRequester, MapsSuggestionsSourceDelegate;
 
 @protocol MapsSuggestionsResourceDepot <MapsSuggestionsObject>
 - (MapsSuggestionsVirtualGarage *)oneVirtualGarage;
 - (MapsSuggestionsPortrait *)onePortrait;
 - (MapsSuggestionsFlightUpdater *)oneFlightUpdater;
-- (MapsSuggestionsInsights *)oneInsights;
+- (id <MapsSuggestionsInsights>)oneInsights;
 - (MapsSuggestionsUser *)oneUser;
 - (MapsSuggestionsShortcutManager *)oneFavorites;
 - (MapsSuggestionsContacts *)oneContacts;

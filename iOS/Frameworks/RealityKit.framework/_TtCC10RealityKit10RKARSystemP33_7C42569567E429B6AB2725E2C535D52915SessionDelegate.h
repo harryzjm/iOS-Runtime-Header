@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <RealityKit/ARInternalSessionObserver-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtCC10RealityKit10RKARSystemP33_7C42569567E429B6AB2725E2C535D52915SessionDelegate : NSObject <ARInternalSessionObserver>
+@interface _TtCC10RealityKit10RKARSystemP33_7C42569567E429B6AB2725E2C535D52915SessionDelegate : NSObject
 {
     MISSING_TYPE *system;
 }

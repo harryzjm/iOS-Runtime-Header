@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCAppOfferStateMachineDelegate-Protocol.h>
-
 @class ASCAppOfferStateMachine, ASCOfferPresenterViewState, ASCPresenterContext, NSString;
 @protocol ASCOffer, ASCOfferPresenterObserver, ASCOfferPresenterView;
 
 __attribute__((visibility("hidden")))
-@interface ASCOfferPresenter : NSObject <ASCAppOfferStateMachineDelegate>
+@interface ASCOfferPresenter : NSObject
 {
     id <ASCOfferPresenterObserver> _observer;
     id <ASCOffer> _offer;

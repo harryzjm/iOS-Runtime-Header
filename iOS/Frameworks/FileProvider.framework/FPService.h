@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/FPDLifetimeServicing-Protocol.h>
-
 @class NSXPCConnection, NSXPCInterface;
 @protocol FPDLifetimeServicing, NSXPCProxyCreating;
 
 __attribute__((visibility("hidden")))
-@interface FPService : NSObject <FPDLifetimeServicing>
+@interface FPService : NSObject
 {
     id <FPDLifetimeServicing> _extender;
     NSXPCConnection *_connection;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKConstraint.h"
+
 @class SKRange;
 
 __attribute__((visibility("hidden")))
-@interface SKPositionConstraint
+@interface SKPositionConstraint : SKConstraint
 {
     SKRange *_xRange;
     SKRange *_yRange;

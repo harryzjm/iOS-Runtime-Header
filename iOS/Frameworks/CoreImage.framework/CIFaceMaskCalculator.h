@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class CIImage, CIVector, NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CIFaceMaskCalculator
+@interface CIFaceMaskCalculator : CIFilter
 {
     CIImage *inputImage;
     CIVector *inputFacesLeftEyeX;

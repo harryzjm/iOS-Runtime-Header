@@ -10,6 +10,7 @@
 @property(readonly, nonatomic) unsigned long long pixelFormat;
 
 @optional
+@property(readonly) unsigned long long gpuHandle;
 @property(readonly) unsigned long long uniqueIdentifier;
 @property(readonly, nonatomic) unsigned long long gpuAddress;
 @property(readonly, nonatomic) unsigned long long resourceIndex;

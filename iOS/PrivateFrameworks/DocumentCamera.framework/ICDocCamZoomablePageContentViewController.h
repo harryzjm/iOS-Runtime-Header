@@ -6,21 +6,18 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <DocumentCamera/ICDocCamZoomablePageContentViewDelegate-Protocol.h>
-#import <DocumentCamera/UIScrollViewDelegate-Protocol.h>
-
-@class NSString, UIImage, UIImageView, UIScrollView, VKImageAnalysisInteraction;
+@class NSString, UIImage, UIImageView, UIScrollView, VKCImageAnalysisInteraction;
 @protocol ICDocCamZoomablePageContentDelegate;
 
 __attribute__((visibility("hidden")))
-@interface ICDocCamZoomablePageContentViewController : UIViewController <UIScrollViewDelegate, ICDocCamZoomablePageContentViewDelegate>
+@interface ICDocCamZoomablePageContentViewController : UIViewController
 {
     _Bool _shouldSetupScalesInViewDidLayoutSubviews;
     id <ICDocCamZoomablePageContentDelegate> _pageContentDelegate;
     UIImage *_image;
     UIImageView *_imageView;
     unsigned long long _pageIndex;
-    VKImageAnalysisInteraction *_analysisInteraction;
+    VKCImageAnalysisInteraction *_analysisInteraction;
     UIScrollView *_scrollView;
     struct CGSize _prevScrollViewSize;
 }
@@ -29,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize prevScrollViewSize; // @synthesize prevScrollViewSize=_prevScrollViewSize;
 @property(nonatomic) _Bool shouldSetupScalesInViewDidLayoutSubviews; // @synthesize shouldSetupScalesInViewDidLayoutSubviews=_shouldSetupScalesInViewDidLayoutSubviews;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property(retain, nonatomic) VKImageAnalysisInteraction *analysisInteraction; // @synthesize analysisInteraction=_analysisInteraction;
+@property(retain, nonatomic) VKCImageAnalysisInteraction *analysisInteraction; // @synthesize analysisInteraction=_analysisInteraction;
 @property(nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;

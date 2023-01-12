@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ITMLKit/IKDOMBindingStrategy-Protocol.h>
-
 @class IKChangeSet, IKDOMBindingController, IKJSDataSourceView, NSArray, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface IKDOMBindingStrategy : NSObject <IKDOMBindingStrategy>
+@interface IKDOMBindingStrategy : NSObject
 {
     IKDOMBindingController *_domBindingController;
     NSString *_itemsBindingKey;

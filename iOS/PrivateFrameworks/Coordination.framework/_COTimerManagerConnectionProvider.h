@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Coordination/COTimerManagerConnectionProvider-Protocol.h>
-
 @class NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface _COTimerManagerConnectionProvider : NSObject <COTimerManagerConnectionProvider>
+@interface _COTimerManagerConnectionProvider : NSObject
 {
     NSXPCConnection *_timerManagerServiceConnection;
 }

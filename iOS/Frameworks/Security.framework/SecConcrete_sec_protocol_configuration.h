@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Security/OS_sec_protocol_configuration-Protocol.h>
-
 @class NSString;
 @protocol OS_xpc_object;
 
 __attribute__((visibility("hidden")))
-@interface SecConcrete_sec_protocol_configuration : NSObject <OS_sec_protocol_configuration>
+@interface SecConcrete_sec_protocol_configuration : NSObject
 {
     NSObject<OS_xpc_object> *dictionary;
 }

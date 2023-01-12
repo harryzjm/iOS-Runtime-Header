@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSMutableDictionary, NSString, UIPercentDrivenInteractiveTransition, UIView, UIViewController, _UIViewControllerOneToOneTransitionContext;
 
 __attribute__((visibility("hidden")))
-@interface _UIAnimationCoordinator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface _UIAnimationCoordinator : NSObject
 {
     NSMutableDictionary *_stash;
     _UIViewControllerOneToOneTransitionContext *_transitionContext;

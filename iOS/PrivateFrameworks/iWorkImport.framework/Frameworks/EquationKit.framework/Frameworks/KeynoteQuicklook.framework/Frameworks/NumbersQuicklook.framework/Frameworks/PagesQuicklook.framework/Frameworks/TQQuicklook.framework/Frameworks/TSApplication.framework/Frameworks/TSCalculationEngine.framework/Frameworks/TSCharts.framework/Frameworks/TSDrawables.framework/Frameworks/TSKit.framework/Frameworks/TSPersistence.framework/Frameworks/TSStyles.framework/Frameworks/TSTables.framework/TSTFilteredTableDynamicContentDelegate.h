@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTLayoutDynamicContentProtocol-Protocol.h>
-
 @class NSString, TSTTableInfo;
 
-@interface TSTFilteredTableDynamicContentDelegate : NSObject <TSTLayoutDynamicContentProtocol>
+@interface TSTFilteredTableDynamicContentDelegate : NSObject
 {
     TSTTableInfo *_tableInfo;
 }

@@ -57,6 +57,8 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 timeToPausePlayback;
     CDStruct_1b6d18a9 advanceTimeForOverlappedPlayback;
     _Bool advanceTimeForOverlappedPlaybackWasSet;
+    CDStruct_1b6d18a9 maximumTimePlayedToDuringOverlappedPlayback;
+    _Bool snapTimeToPausePlayback;
     _Bool preservesTimeOffsetFromLive;
     CDStruct_1b6d18a9 configuredTimeOffsetFromLive;
     CDStruct_1b6d18a9 recommendedTimeOffsetFromLive;
@@ -97,11 +99,13 @@ __attribute__((visibility("hidden")))
     _Bool minimumIntervalForIFrameOnlyPlaybackWasSet;
     float speedThresholdForIFrameOnlyPlayback;
     _Bool speedThresholdForIFrameOnlyPlaybackWasSet;
+    _Bool refreshesClosedCaptionsImmediatelyAfterSeeking;
     NSDate *initialDate;
     NSDate *initialEstimatedDate;
     _Bool requiresAccessLog;
     _Bool suppressesAudioOnlyVariants;
     _Bool prefersOfflinePlayableVariants;
+    _Bool autoSwitchAtmosStreamVariants;
     unsigned long long variantPreferences;
     double preferredMaximumAudioSampleRate;
     NSArray *imageQueueInterpolationCurve;
@@ -153,6 +157,8 @@ __attribute__((visibility("hidden")))
     _Bool isRenderingSpatialAudio;
     AVPlayerPlaybackCoordinator *playerPlaybackCoordinator;
     id coordinatedPlaybackIdentifierChangeNotificationToken;
+    _Bool timeJumpedNotificationIncludesExtendedDiagnosticPayload;
+    NSString *serviceIdentifier;
     _Bool needToSeekAfterCreatingFigPlaybackItem;
     CDStruct_1b6d18a9 initialTime;
     unsigned int initialSetTimeFlags;
@@ -176,7 +182,6 @@ __attribute__((visibility("hidden")))
     long long initialVariantIndex;
     NSString *currentStableVariantID;
     NSMutableDictionary *mediaOptionsSelectedByClient;
-    NSString *serviceIdentifier;
     NSArray *timedMetadata;
     NSMutableArray *handlersToCallWhenReadyForEnqueueing;
     _Bool haveInitialSamples;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebJSRequest : NSObject <NSSecureCoding>
+@interface AMSUIWebJSRequest : NSObject
 {
     NSString *_logKey;
     NSDictionary *_options;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVKeyPathDependencyHost-Protocol.h>
-#import <AVFCore/AVWeakObservable-Protocol.h>
-
 @class AVKeyPathDependencyManager, AVTwoPartKeyPath, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVKeyPathFlattener : NSObject <AVKeyPathDependencyHost, AVWeakObservable>
+@interface AVKeyPathFlattener : NSObject
 {
     AVKeyPathDependencyManager *_dependencyManager;
     AVTwoPartKeyPath *_dependencyKeyPath;

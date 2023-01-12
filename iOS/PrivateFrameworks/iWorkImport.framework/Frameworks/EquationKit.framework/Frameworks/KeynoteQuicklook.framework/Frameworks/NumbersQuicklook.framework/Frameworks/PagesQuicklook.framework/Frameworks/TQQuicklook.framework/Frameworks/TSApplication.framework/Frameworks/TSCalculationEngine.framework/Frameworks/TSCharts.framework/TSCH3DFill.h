@@ -58,7 +58,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithLightingModel:(id)arg1 identifier:(id)arg2;
 - (id)init;
-@property(readonly) TSDFill *swatchFill; // @synthesize swatchFill=_swatchFill;
+- (id)swatchFillWithSize:(struct CGSize)arg1 scaleFactor:(double)arg2;
 - (id)convertForChartSeriesType:(id)arg1 context:(id)arg2;
 - (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;

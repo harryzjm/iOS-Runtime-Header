@@ -6,20 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTCellIterating-Protocol.h>
-#import <TSTables/TSTCellRegionIterating-Protocol.h>
-#import <TSTables/TSTMutableCellIteratorDataUpdating-Protocol.h>
-
-@class NSString, TSTCell, TSTCellRegion, TSTTableDataStore, TSTTableInfo, TSTTableModel, TSTTableTile, TSTTableTileRowInfo;
+@class NSString, TSTCell, TSTCellRegion, TSTTableDataListCache, TSTTableDataStore, TSTTableInfo, TSTTableModel, TSTTableTile, TSTTableTileRowInfo;
 @protocol TSTCellRegionIterating;
 
-@interface TSTDataStoreIterator : NSObject <TSTCellIterating, TSTCellRegionIterating, TSTMutableCellIteratorDataUpdating>
+@interface TSTDataStoreIterator : NSObject
 {
     _Bool _columnOrderReversed;
     _Bool _terminated;
     unsigned int _curRowIndex;
     TSTTableModel *_tableModel;
     TSTTableDataStore *_dataStore;
+    TSTTableDataListCache *_dataListCache;
     TSTCellRegion *_region;
     NSObject<TSTCellRegionIterating> *_regionIterator;
     unsigned long long _searchMask;
@@ -28,9 +25,12 @@
     TSTTableTileRowInfo *_curRow;
     TSTCell *_cell;
     struct _NSRange _curTileRange;
+    struct TSTPerformanceLoggingToken _logToken;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) struct TSTPerformanceLoggingToken logToken; // @synthesize logToken=_logToken;
 @property(nonatomic) _Bool terminated; // @synthesize terminated=_terminated;
 @property(nonatomic) _Bool columnOrderReversed; // @synthesize columnOrderReversed=_columnOrderReversed;
 @property(readonly, nonatomic) TSTCell *cell; // @synthesize cell=_cell;
@@ -42,6 +42,7 @@
 @property(nonatomic) unsigned long long searchMask; // @synthesize searchMask=_searchMask;
 @property(readonly, nonatomic) NSObject<TSTCellRegionIterating> *regionIterator; // @synthesize regionIterator=_regionIterator;
 @property(readonly, nonatomic) TSTCellRegion *region; // @synthesize region=_region;
+@property(readonly, nonatomic) TSTTableDataListCache *dataListCache; // @synthesize dataListCache=_dataListCache;
 @property(readonly, nonatomic) TSTTableDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property(readonly, nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
 - (void)terminate;

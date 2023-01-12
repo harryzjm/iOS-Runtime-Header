@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDate.h>
 
-#import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
-
 @class NSString;
 
-@interface NSDate (FCKVSCoding) <FCKeyValueStoreCoding>
+@interface NSDate (FCKVSCoding)
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 + (id)_fr_sharedYearAndMonthDateFormatter;

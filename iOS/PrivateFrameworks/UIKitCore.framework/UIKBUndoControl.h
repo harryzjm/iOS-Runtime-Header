@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIControl.h"
+
 @class NSLayoutConstraint, UIImageView, UIKBUndoStyling, UILabel, UIView, _UISlotView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBUndoControl
+@interface UIKBUndoControl : UIControl
 {
     long long _type;
     UIKBUndoStyling *_style;
@@ -36,9 +38,9 @@ __attribute__((visibility("hidden")))
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (unsigned int)_secureName;
 - (void)layoutControlForType:(long long)arg1 andStyling:(id)arg2;
 - (id)controlImageByType:(long long)arg1;
-- (id)imageSymbolConfiguration;
 - (id)controlLabelImageNameByType:(long long)arg1 isRTL:(_Bool)arg2;
 - (void)updateCoverWithTavelProcess:(double)arg1 isRTL:(_Bool)arg2;
 - (void)updateUndoControlStyle;

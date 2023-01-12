@@ -6,10 +6,15 @@
 
 #import <UIKit/UIColor.h>
 
-#import <LinkPresentation/LPCSSText-Protocol.h>
-#import <LinkPresentation/LPHTMLAttributeText-Protocol.h>
-
-@interface UIColor (LPExtras) <LPCSSText, LPHTMLAttributeText>
+@interface UIColor (LPExtras)
++ (id)_lp_linkColor;
++ (id)_lp_secondarySystemFillColor;
++ (id)_lp_systemFillColor;
++ (id)_lp_quinaryLabelColor;
++ (id)_lp_quaternaryLabelColor;
++ (id)_lp_tertiaryLabelColor;
++ (id)_lp_secondaryLabelColor;
++ (id)_lp_labelColor;
 + (id)_lp_colorNamed:(id)arg1;
 + (id)_lp_colorWithDynamicProvider:(CDUnknownBlockType)arg1;
 - (id)_lp_HTMLAttributeText;

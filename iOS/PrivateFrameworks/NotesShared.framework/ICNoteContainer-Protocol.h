@@ -10,12 +10,22 @@
 @protocol ICNoteVisibilityTesting;
 
 @protocol ICNoteContainer <ICNoteVisibilityTesting>
-@property(retain, nonatomic) NSData *subFolderOrderMergeableData;
+@property(readonly, nonatomic, getter=isDeleted) _Bool deleted;
+@property(copy, nonatomic) NSData *subFolderOrderMergeableData;
 @property(readonly, nonatomic) NSArray *visibleSubFolders;
+@property(readonly, copy, nonatomic) NSString *accountName;
+@property(readonly, copy, nonatomic) NSString *titleForTableViewCell;
+@property(readonly, copy, nonatomic) NSString *titleForNavigationBar;
+@property(readonly, nonatomic) unsigned long long visibleNotesCount;
+@property(readonly, nonatomic) _Bool isShowingDateHeaders;
+@property(readonly, nonatomic) int dateHeadersType;
+@property(readonly, nonatomic) _Bool supportsDateHeaders;
 @property(readonly, nonatomic) NSArray *visibleNotes;
 @property(readonly, nonatomic) NSString *containerIdentifier;
+@property(readonly, nonatomic) _Bool isModernCustomFolder;
 @property(readonly, nonatomic) _Bool isTrashFolder;
 @property(readonly, nonatomic) _Bool supportsEditingNotes;
+@property(readonly, nonatomic) _Bool canBeSharedViaICloud;
 @property(readonly, nonatomic) _Bool isAllNotesContainer;
 @property(readonly, nonatomic) _Bool isSharedReadOnly;
 @property(readonly, nonatomic) _Bool isSharedViaICloud;
@@ -23,18 +33,12 @@
 @property(readonly) NSManagedObjectContext *managedObjectContext;
 @property(readonly, nonatomic) ICAccount *noteContainerAccount;
 - (id <ICNoteVisibilityTesting>)noteVisibilityTestingForSearchingAccount;
-- (_Bool)isDeleted;
 - (void)updateSubFolderMergeableDataChangeCount;
 - (_Bool)mergeWithSubFolderMergeableData:(NSData *)arg1;
 - (void)saveSubFolderMergeableDataIfNeeded;
-- (_Bool)isModernCustomFolder;
-@property(readonly, nonatomic) _Bool canBeSharedViaICloud;
 - (NSPredicate *)predicateForPinnedNotes;
 - (NSPredicate *)predicateForVisibleNotes;
-- (NSString *)accountName;
-- (NSString *)titleForTableViewCell;
-- (NSString *)titleForNavigationBar;
-- (unsigned long long)visibleNotesCount;
 - (_Bool)noteIsVisible:(ICNote *)arg1;
+- (void)applyDateHeadersType:(int)arg1;
 @end
 

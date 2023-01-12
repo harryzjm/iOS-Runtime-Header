@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/LSInstallationServiceProtocol-Protocol.h>
-
 @class NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _LSInstaller : NSObject <LSInstallationServiceProtocol>
+@interface _LSInstaller : NSObject
 {
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_databaseQueue;
@@ -21,6 +19,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *databaseQueue; // @synthesize databaseQueue=_databaseQueue;
 @property(nonatomic) __weak NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+- (void)performShimmedUninstallOfApplicationWithIdentifier:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)performShimmedInstallOfArtifact:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendCallbackDeliveryComplete;
 - (void)sendCallbackWithDictionary:(id)arg1;
 - (void)performInstallCall:(id)arg1 withOptions:(id)arg2 installType:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;

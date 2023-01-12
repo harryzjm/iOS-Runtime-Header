@@ -7,6 +7,7 @@
 @class UIView;
 
 @protocol SBIconDragPreviewContaining
-@property(readonly, nonatomic) UIView *iconDragPreviewContainerView;
+- (void)stopTrackingPlatterView:(UIView *)arg1;
+- (void)beginTrackingPlatterView:(UIView *)arg1;
 @end
 

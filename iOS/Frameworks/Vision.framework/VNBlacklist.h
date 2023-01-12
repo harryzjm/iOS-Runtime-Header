@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSCopying-Protocol.h>
-
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface VNBlacklist : NSObject <NSCopying>
+@interface VNBlacklist : NSObject
 {
     NSSet *_identifiers;
 }

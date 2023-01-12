@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameController/_GCIPCConnection-Protocol.h>
+#import <GameController/GCIPCConnection-Protocol.h>
 
 @protocol _GCIPCProcess;
 
-@protocol _GCIPCIncomingConnection <_GCIPCConnection>
+@protocol _GCIPCIncomingConnection <GCIPCConnection>
 @property(readonly, nonatomic) __weak id <_GCIPCProcess> process;
 @end
 

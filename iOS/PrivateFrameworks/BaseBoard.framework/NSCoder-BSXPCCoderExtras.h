@@ -6,12 +6,9 @@
 
 #import <Foundation/NSCoder.h>
 
-#import <BaseBoard/BSXPCDecoding-Protocol.h>
-#import <BaseBoard/BSXPCEncoding-Protocol.h>
-
 @class NSString;
 
-@interface NSCoder (BSXPCCoderExtras) <BSXPCEncoding, BSXPCDecoding>
+@interface NSCoder (BSXPCCoderExtras)
 - (unsigned long long)decodeUInt64ForKey:(id)arg1;
 - (struct CGRect)decodeCGRectForKey:(id)arg1;
 - (struct CGSize)decodeCGSizeForKey:(id)arg1;

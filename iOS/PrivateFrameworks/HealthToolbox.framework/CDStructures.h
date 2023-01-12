@@ -25,42 +25,9 @@ struct CGSize {
     double _field2;
 };
 
-struct UIEdgeInsets {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-};
-
-struct WDElectrocardiogramOverviewSectionInfo {
-    long long _field1;
-    long long _field2;
-    long long _field3;
-    long long _field4;
-    long long _field5;
-    long long _field6;
-    long long _field7;
-    long long _field8;
-};
-
-struct WDElectrocardiogramOverviewUserConfigurationRowInfo {
-    long long _field1;
-    long long _field2;
-    long long _field3;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-struct os_unfair_recursive_lock_s {
-    struct os_unfair_lock_s _field1;
-    unsigned int _field2;
 };
 
 #pragma mark Typedef'd Structures

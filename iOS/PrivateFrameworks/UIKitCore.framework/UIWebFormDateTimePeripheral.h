@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIFormPeripheral-Protocol.h>
-
 @class DOMHTMLInputElement;
 @protocol UIWebFormControl;
 
 __attribute__((visibility("hidden")))
-@interface UIWebFormDateTimePeripheral : NSObject <UIFormPeripheral>
+@interface UIWebFormDateTimePeripheral : NSObject
 {
     DOMHTMLInputElement *_inputElement;
     id <UIWebFormControl> _control;

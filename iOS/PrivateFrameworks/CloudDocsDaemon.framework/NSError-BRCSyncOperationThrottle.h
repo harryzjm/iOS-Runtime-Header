@@ -11,12 +11,15 @@
 + (id)brc_daemonAccessDisabledError;
 + (id)brc_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3;
 - (int)brc_syncOperationErrorKind;
+- (_Bool)brc_isExpectedErrorForTelemetry;
 - (id)brc_telemetryReportableErrorWithRecordName:(id *)arg1;
 - (id)brc_cloudKitErrorMessage;
 - (id)brc_description;
 - (id)brc_wrappedError;
 - (id)brc_strippedError;
+- (_Bool)brc_isIgnorableListDirectoryError;
 - (_Bool)brc_isCloudKitPCSDecryptionFailure;
+- (_Bool)brc_isReferenceValidationError;
 - (_Bool)brc_isStaleRecordUpdateError;
 - (_Bool)brc_isCloudKitErrorNeedsPCSPrep;
 - (_Bool)brc_isCloudKitErrorZoneMigrated;
@@ -61,7 +64,6 @@
 - (_Bool)brc_isUserInitiatedRetriable;
 - (_Bool)brc_isRetriable;
 - (double)br_suggestedRetryTimeInterval;
-- (_Bool)brc_isCloudKitErrorRequiringBackoff;
 - (unsigned long long)brc_containerResetErrorForSharedZone:(_Bool)arg1 resetReason:(id *)arg2;
 - (_Bool)brc_isResetError;
 @end

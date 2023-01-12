@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeCore/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSNumber, NSString, UNNotificationTrigger;
 
 __attribute__((visibility("hidden")))
-@interface STUserNotificationContext : NSObject <NSSecureCoding>
+@interface STUserNotificationContext : NSObject
 {
     NSString *_identifier;
     NSArray *_localizedUserNotificationBodyArguments;

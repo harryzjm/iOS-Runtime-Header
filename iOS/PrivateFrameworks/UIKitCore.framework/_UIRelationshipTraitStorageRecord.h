@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class NSSet, UITraitCollection;
 
 __attribute__((visibility("hidden")))
-@interface _UIRelationshipTraitStorageRecord : NSObject <NSCoding>
+@interface _UIRelationshipTraitStorageRecord : NSObject
 {
     UITraitCollection *_traitCollection;
     NSSet *_addedObjects;

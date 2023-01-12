@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSIndexSet, NSLayoutManager, NSLock, NSMutableDictionary, NSString, NSTextStorage, NSUUID, PDFAKAnnotationAdaptor, PDFAccessibilityNode, PDFAnnotation, PDFPage, UIColor;
+@class NSArray, NSDictionary, NSIndexSet, NSLayoutManager, NSLock, NSMutableDictionary, NSString, NSTextStorage, NSUUID, PDFAKAnnotationAdaptor, PDFAccessibilityNode, PDFAnnotation, PDFPage;
 @protocol NSCopying;
 
 __attribute__((visibility("hidden")))
@@ -46,10 +46,15 @@ __attribute__((visibility("hidden")))
     _Bool shouldBurnIn;
     NSString *widgetOnStateString;
     id control;
-    UIColor *mouseHoverBackgroundColor;
+    _Bool pointerIsOverAnnotation;
+    _Bool shouldHideInteractiveBackgroundColor;
     NSLayoutManager *layoutManager;
     NSTextStorage *textStorage;
     struct UIEdgeInsets textInsets;
+    struct {
+        _Bool didGenerate;
+        NSString *contentType;
+    } textContentType;
     _Bool restoreLinePoints;
     _Bool restoreQuadPoints;
     struct CGPoint startPoint;

@@ -6,7 +6,6 @@
 
 @class GQDChart;
 
-__attribute__((visibility("hidden")))
 @interface GQDChartLegend
 {
     GQDChart *mChart;

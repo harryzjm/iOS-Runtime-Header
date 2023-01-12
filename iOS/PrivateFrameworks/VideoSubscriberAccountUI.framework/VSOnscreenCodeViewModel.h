@@ -4,40 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideoSubscriberAccountUI/VSLogoImageViewModel-Protocol.h>
-
-@class NSItemProvider, NSString, NSURL, UIImage, VSMessageQueue;
+@class NSItemProvider, NSString, NSURL, UIImage;
+@protocol VSOnscreenCodeViewModelDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSOnscreenCodeViewModel <VSLogoImageViewModel>
+@interface VSOnscreenCodeViewModel
 {
-    _Bool _shouldShowRegenerateCodeButton;
+    _Bool _showButtonLockup;
     NSItemProvider *_logoProvider;
     UIImage *_logo;
     NSString *_logoAccessibilityLabel;
-    NSString *_webPagePreamble;
-    NSURL *_webPageURL;
-    NSString *_webPagePostamble;
+    id <VSOnscreenCodeViewModelDelegate> _delegate;
+    UIImage *_qrCode;
     NSString *_onscreenCode;
-    NSString *_regenerateCodeButtonTitle;
-    VSMessageQueue *_regenerateCodeEventQueue;
-    NSString *_footerText;
+    NSString *_webPageLabel;
+    NSURL *_webPageURL;
+    NSString *_buttonLockupTitle;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *footerText; // @synthesize footerText=_footerText;
-@property(retain, nonatomic) VSMessageQueue *regenerateCodeEventQueue; // @synthesize regenerateCodeEventQueue=_regenerateCodeEventQueue;
-@property(copy, nonatomic) NSString *regenerateCodeButtonTitle; // @synthesize regenerateCodeButtonTitle=_regenerateCodeButtonTitle;
-@property(nonatomic) _Bool shouldShowRegenerateCodeButton; // @synthesize shouldShowRegenerateCodeButton=_shouldShowRegenerateCodeButton;
-@property(copy, nonatomic) NSString *onscreenCode; // @synthesize onscreenCode=_onscreenCode;
-@property(copy, nonatomic) NSString *webPagePostamble; // @synthesize webPagePostamble=_webPagePostamble;
+@property(copy, nonatomic) NSString *buttonLockupTitle; // @synthesize buttonLockupTitle=_buttonLockupTitle;
+@property(nonatomic) _Bool showButtonLockup; // @synthesize showButtonLockup=_showButtonLockup;
 @property(copy, nonatomic) NSURL *webPageURL; // @synthesize webPageURL=_webPageURL;
-@property(copy, nonatomic) NSString *webPagePreamble; // @synthesize webPagePreamble=_webPagePreamble;
+@property(retain, nonatomic) NSString *webPageLabel; // @synthesize webPageLabel=_webPageLabel;
+@property(copy, nonatomic) NSString *onscreenCode; // @synthesize onscreenCode=_onscreenCode;
+@property(retain, nonatomic) UIImage *qrCode; // @synthesize qrCode=_qrCode;
+@property(nonatomic) __weak id <VSOnscreenCodeViewModelDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *logoAccessibilityLabel; // @synthesize logoAccessibilityLabel=_logoAccessibilityLabel;
 @property(retain, nonatomic) UIImage *logo; // @synthesize logo=_logo;
 @property(retain, nonatomic) NSItemProvider *logoProvider; // @synthesize logoProvider=_logoProvider;
+- (id)formattedWebsiteURL;
+- (id)websiteURLWithQueryParameters;
+- (void)generateQRCode;
 - (void)configureWithRequest:(id)arg1;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

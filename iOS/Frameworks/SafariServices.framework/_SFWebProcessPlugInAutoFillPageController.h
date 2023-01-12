@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/SFFormAutoFiller-Protocol.h>
-#import <SafariServices/SFInjectedJavaScriptWebProcessController-Protocol.h>
-
 @class NSString, WKWebProcessPlugInScriptWorld, _SFFormMetadataController, _WKRemoteObjectInterface;
 
 __attribute__((visibility("hidden")))
-@interface _SFWebProcessPlugInAutoFillPageController <SFFormAutoFiller, SFInjectedJavaScriptWebProcessController>
+@interface _SFWebProcessPlugInAutoFillPageController
 {
     _WKRemoteObjectInterface *_activityControllerInterface;
     _WKRemoteObjectInterface *_autoFillerInterface;
@@ -20,6 +17,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) _SFFormMetadataController *formMetadataController; // @synthesize formMetadataController=_formMetadataController;
+- (void)setAutoFillSpinnerVisibility:(_Bool)arg1 textFieldMetadata:(id)arg2 frame:(id)arg3;
+- (void)makeAutomaticStrongPasswordElementViewable:(_Bool)arg1 frame:(id)arg2 passwordControlUniqueIDs:(id)arg3;
 - (void)automaticPasswordSheetDimissedInFrame:(id)arg1 focusedPasswordControlUniqueID:(id)arg2;
 - (void)removeAutomaticPasswordVisualTreatmentInFrame:(id)arg1 passwordControlUniqueIDs:(id)arg2;
 - (void)removeAutomaticPasswordElementsInFrame:(id)arg1 focusedPasswordControlUniqueID:(id)arg2 passwordControlUniqueIDs:(id)arg3;
@@ -36,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)annotateForm:(long long)arg1 inFrame:(id)arg2 withValues:(id)arg3;
 - (void)autoFillForm:(long long)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;
 - (void)autoFillFormSynchronouslyInFrame:(id)arg1 withValues:(id)arg2;
+- (void)autoFillFormAsynchronouslyInFrame:(id)arg1 withValues:(id)arg2 setAutoFilled:(_Bool)arg3 focusFieldAfterFilling:(_Bool)arg4 fieldToFocus:(id)arg5 fieldsToObscure:(id)arg6 submitForm:(_Bool)arg7;
 - (void)autoFillFormAsynchronouslyInFrame:(id)arg1 withValues:(id)arg2 setAutoFilled:(_Bool)arg3 focusFieldAfterFilling:(_Bool)arg4 fieldToFocus:(id)arg5 submitForm:(_Bool)arg6;
 - (void)autoFillFormAsynchronouslyInFrame:(id)arg1 withValues:(id)arg2 setAutoFilled:(_Bool)arg3 focusFieldAfterFilling:(_Bool)arg4 fieldToFocus:(id)arg5;
 - (void)autoFillFormAsynchronouslyInFrame:(id)arg1 withValues:(id)arg2 setAutoFilled:(_Bool)arg3 selectFieldAfterFilling:(id)arg4;

@@ -15,6 +15,8 @@
 @property(readonly) long long accessoryWriteMaxRetryCount;
 @property(readonly) _Bool isWatch;
 @property(readonly, getter=isResidentCapable) _Bool residentCapable;
+- (void)canNotifyAboutExpressModeWithCompletion:(void (^)(_Bool))arg1;
+- (void)showExpressEnabledUserNotificationForWalletKeyWithPassUniqueID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (NSNumber *)numberValueFromNoBackupStoreWithKey:(NSString *)arg1;
 - (void)persistNumberValueToNoBackupStore:(NSNumber *)arg1 withKey:(NSString *)arg2;
 - (_Bool)registerForPasscodeChangeNotificationWithQueue:(NSObject<OS_dispatch_queue> *)arg1 callback:(void (^)(void))arg2;

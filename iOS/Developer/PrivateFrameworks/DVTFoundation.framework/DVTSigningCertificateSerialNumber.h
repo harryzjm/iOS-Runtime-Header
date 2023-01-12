@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface DVTSigningCertificateSerialNumber : NSObject <NSCopying>
+@interface DVTSigningCertificateSerialNumber : NSObject
 {
     NSString *_serialNumberString;
 }

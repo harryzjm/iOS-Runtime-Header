@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthToolbox/HRElectrocardiogramReportDataSource-Protocol.h>
-
 @class HKElectrocardiogram, HKHealthStore, NSDateComponents, NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface WDElectrocardiogramReportDataSource : NSObject <HRElectrocardiogramReportDataSource>
+@interface WDElectrocardiogramReportDataSource : NSObject
 {
     HKElectrocardiogram *_sample;
     UIColor *_tintColor;

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQLassoGenerator-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQHLasso : NSObject <GQLassoGenerator>
+@interface GQHLasso : NSObject
 {
 }
 

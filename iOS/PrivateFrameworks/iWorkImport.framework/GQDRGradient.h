@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDRGradient : NSObject <GQDNameMappable>
+@interface GQDRGradient : NSObject
 {
     struct __CFArray *mStops;
     int mType;

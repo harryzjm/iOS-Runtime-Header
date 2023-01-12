@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, SKUINavigationBarViewElement, SKUIViewElement;
+#import "SKUIViewElement.h"
+
+@class NSArray, SKUINavigationBarViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUIExploreTemplateElement
+@interface SKUIExploreTemplateElement : SKUIViewElement
 {
     _Bool _usesSplits;
 }

@@ -6,13 +6,15 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class AMSAuthenticateRequest, AMSDialogRequest, AMSEngagementRequest;
+@class AMSAuthenticateRequest, AMSDialogRequest, AMSEngagementRequest, AMSPurchaseSIWA, ASDViewPresentationRequest;
 
 @protocol ASDNotificationCenterDialogObserver <NSObject>
 - (void)handleDialogRequest:(AMSDialogRequest *)arg1 resultHandler:(void (^)(AMSDialogResult *, NSError *))arg2;
 - (void)handleAuthenticateRequest:(AMSAuthenticateRequest *)arg1 resultHandler:(void (^)(AMSAuthenticateResult *, NSError *))arg2;
 
 @optional
+- (void)handleViewPresentationRequest:(ASDViewPresentationRequest *)arg1 resultHandler:(void (^)(ASDViewPresentationResult *, NSError *))arg2;
+- (void)handlePurchase:(AMSPurchaseSIWA *)arg1 resultHandler:(void (^)(AMSPurchaseSIWAResult *, NSError *))arg2;
 - (void)handleEngagementRequest:(AMSEngagementRequest *)arg1 resultHandler:(void (^)(AMSEngagementResult *, NSError *))arg2;
 @end
 

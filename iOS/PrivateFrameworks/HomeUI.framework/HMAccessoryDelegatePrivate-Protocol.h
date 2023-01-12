@@ -6,11 +6,12 @@
 
 #import <HomeUI/HMAccessoryDelegate-Protocol.h>
 
-@class ACAccount, HMAccessory, HMAccessorySettings, HMCharacteristic, HMDevice, HMFPairingIdentity, HMFSoftwareVersion, HMService, HMSymptomsHandler, NSString;
+@class ACAccount, HMAccessory, HMAccessorySettings, HMCharacteristic, HMDevice, HMFPairingIdentity, HMFSoftwareVersion, HMFWiFiNetworkInfo, HMService, HMSymptomsHandler, NSString;
 
 @protocol HMAccessoryDelegatePrivate <HMAccessoryDelegate>
 
 @optional
+- (void)accessory:(HMAccessory *)arg1 didUpdateWifiNetworkInfo:(HMFWiFiNetworkInfo *)arg2;
 - (void)accessoryDidUpdatePendingConfigurationIdentifier:(HMAccessory *)arg1;
 - (void)accessory:(HMAccessory *)arg1 didUpdateSupportsWalletKey:(_Bool)arg2;
 - (void)accessoryDidUpdatePreferredMediaUser:(HMAccessory *)arg1;
@@ -26,6 +27,7 @@
 - (void)accessory:(HMAccessory *)arg1 didUpdateLastKnownSleepDiscoveryModeForService:(HMService *)arg2;
 - (void)accessoryDidUpdateSupportsDoorbellChime:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsThirdPartyMusic:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateSupportsMediaActions:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsAnnounce:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsMusicAlarm:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsCompanionInitiatedRestart:(HMAccessory *)arg1;

@@ -17,7 +17,6 @@
 @property(readonly, copy, nonatomic) NSString *safari_userVisibleTitleIgnoringFullURLString;
 @property(readonly, copy, nonatomic) NSString *safari_stringByRemovingParenthesizedDomain;
 - (_Bool)safari_looksLikeObscuredPassword;
-@property(readonly, copy, nonatomic) NSString *safari_stringByRemovingExcessWhitespace;
 - (id)safari_containedURLs;
 @property(readonly, nonatomic) _Bool safari_isPDFMIMEType;
 - (id)safari_sha256Hash;
@@ -44,8 +43,6 @@
 - (id)safari_stringByDeletingTrailingSlash;
 - (id)safari_stringByDeletingStartingSlash;
 - (id)safari_fixedStringByExpandingTildeInPathToUserHomeDirectory;
-- (id)safari_stringByRemovingUnnecessaryCharactersFromUserTypedURLString;
 - (id)safari_stringByRemovingTopLevelDomainFromHost;
-- (id)safari_possibleTopLevelDomainCorrectionForUserTypedString;
 @end
 

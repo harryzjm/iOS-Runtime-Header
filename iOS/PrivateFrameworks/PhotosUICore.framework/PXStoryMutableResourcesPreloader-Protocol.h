@@ -8,7 +8,7 @@
 
 @protocol PXStoryMutableResourcesPreloader
 @property(nonatomic) long long currentSegmentIdentifier;
-@property(nonatomic) CDStruct_1b6d18a9 currentPlaybackTime;
+@property(nonatomic) CDStruct_198678f7 currentPlaybackTime;
 - (void)cancelProcessingAllRequests;
 - (void)startProcessingRequest:(PXStoryResourcesPreloadingRequest *)arg1;
 @end

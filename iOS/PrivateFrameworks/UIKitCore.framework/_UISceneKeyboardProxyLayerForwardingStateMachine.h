@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIScenePresentationViewObserver-Protocol.h>
-#import <UIKitCore/_UIWindowLevelObserver-Protocol.h>
-
 @class FBSScene, FBSSceneIdentityToken, FBScene, NSSet, NSString, UIWindow, _UIScenePresenter;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneKeyboardProxyLayerForwardingStateMachine : NSObject <_UIScenePresentationViewObserver, _UIWindowLevelObserver>
+@interface _UISceneKeyboardProxyLayerForwardingStateMachine : NSObject
 {
     FBScene *_scene;
     FBSSceneIdentityToken *_identityToken;

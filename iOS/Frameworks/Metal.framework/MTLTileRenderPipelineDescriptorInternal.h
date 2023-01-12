@@ -4,12 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLTileRenderPipelineDescriptor.h"
+
 __attribute__((visibility("hidden")))
-@interface MTLTileRenderPipelineDescriptorInternal
+@interface MTLTileRenderPipelineDescriptorInternal : MTLTileRenderPipelineDescriptor
 {
     struct MTLTileRenderPipelineDescriptorPrivate _private;
+    struct FlatBufferBuilder _builder;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (const void *)getPipelineScript;
 - (id)newSerializedTileDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)validateWithDevice:(id)arg1;
 - (_Bool)validateWithDevice:(id)arg1 error:(id *)arg2;
@@ -40,6 +46,8 @@ __attribute__((visibility("hidden")))
 - (void)setLabel:(id)arg1;
 - (id)label;
 - (void)reset;
+- (void)setProfileControl:(id)arg1;
+- (id)profileControl;
 - (id)tileBuffers;
 - (void)setColorSampleCount:(unsigned long long)arg1;
 - (unsigned long long)colorSampleCount;

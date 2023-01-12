@@ -8,34 +8,3 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
-#pragma mark Named Structures
-
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
-struct IMPreviewConstraints {
-    double _field1;
-    struct CGSize _field2;
-    double _field3;
-    _Bool _field4;
-    _Bool _field5;
-};
-
-struct _FZChatRoomValidity {
-    int _field1;
-    unsigned short _field2;
-};
-
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
-

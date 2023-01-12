@@ -6,17 +6,16 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class NSString, _MPCProtoDelegateInfo, _MPCProtoRadioContentReference;
 
 __attribute__((visibility("hidden")))
-@interface _MPCProtoRadioCreationProperties : PBCodable <NSCopying>
+@interface _MPCProtoRadioCreationProperties : PBCodable
 {
     _MPCProtoDelegateInfo *_accountInfo;
     _MPCProtoRadioContentReference *_nowPlayingContentReference;
     NSString *_playActivityFeatureName;
     NSString *_playActivityQueueGroupingID;
+    NSString *_playbackAuthorizationToken;
     NSString *_radioStationID;
     NSString *_radioStationURLString;
     _MPCProtoRadioContentReference *_seedContentReference;

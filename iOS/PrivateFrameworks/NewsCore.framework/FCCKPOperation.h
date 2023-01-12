@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPOperation : PBCodable <NSCopying>
+@interface FCCKPOperation : PBCodable
 {
     NSString *_operationUUID;
     int _type;

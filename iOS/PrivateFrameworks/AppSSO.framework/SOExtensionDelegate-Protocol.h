@@ -12,6 +12,7 @@
 - (void)authorizationDidCompleteWithCredential:(SOAuthorizationCredential *)arg1 error:(NSError *)arg2;
 
 @optional
+- (void)requestReauthenticationWithCompletion:(void (^)(unsigned long long))arg1;
 - (void)presentAuthorizationViewControllerWithHints:(NSDictionary *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 @end
 

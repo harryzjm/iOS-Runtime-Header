@@ -75,6 +75,7 @@
 - (_Bool)_accessibilityIsInFolder;
 - (long long)accessibilityContainerType;
 - (unsigned int)_accessibilityMediaAnalysisOptions;
+- (struct CGRect)accessibilityBrailleMapRenderRegion;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)_accessibilityIsCategoryIconView;
 - (_Bool)_accessibilityIsWidgetInAddWidgetSheet;

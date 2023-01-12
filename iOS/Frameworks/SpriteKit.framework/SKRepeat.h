@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SKAction;
+#import "SKAction.h"
 
 __attribute__((visibility("hidden")))
-@interface SKRepeat
+@interface SKRepeat : SKAction
 {
     struct SKCRepeat *_mycaction;
     SKAction *_repeatedAction;

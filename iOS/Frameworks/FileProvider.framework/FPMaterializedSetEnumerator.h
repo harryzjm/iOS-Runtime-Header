@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/NSFileProviderEnumerator-Protocol.h>
-
 @class NSFileProviderManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPMaterializedSetEnumerator : NSObject <NSFileProviderEnumerator>
+@interface FPMaterializedSetEnumerator : NSObject
 {
     NSFileProviderManager *_manager;
 }

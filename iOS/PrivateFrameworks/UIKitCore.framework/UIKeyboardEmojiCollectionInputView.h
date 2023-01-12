@@ -4,21 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/TUIEmojiSearchInputViewControllerDelegate-Protocol.h>
-#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
-#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
-#import <UIKitCore/UIKeyboardMediaControllerDelegate-Protocol.h>
-
 @class NSArray, NSIndexPath, NSString, TUIEmojiSearchInputViewController, TUIEmojiSearchTextField, UICollectionViewFlowLayout, UIKBTree, UIKeyboardEmojiCategory, UIKeyboardEmojiCollectionView, UIKeyboardEmojiGraphicsTraits, UIResponder;
 @protocol UIKBEmojiHitTestResponder;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiCollectionInputView <UIKeyboardMediaControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TUIEmojiSearchInputViewControllerDelegate>
+@interface UIKeyboardEmojiCollectionInputView
 {
     UIKeyboardEmojiCollectionView *_collectionView;
     UICollectionViewFlowLayout *_flowLayout;
-    UIKeyboardEmojiCategory *_category;
-    NSIndexPath *_tappedSkinToneEmoji;
     UIKeyboardEmojiGraphicsTraits *_emojiGraphicsTraits;
     _Bool _isDraggingInputView;
     unsigned long long _currentSection;
@@ -36,8 +29,10 @@ __attribute__((visibility("hidden")))
     _Bool _hasCheckedMemojiPreference;
     _Bool _currentlyCheckingMemojiPreference;
     _Bool _isSearching;
+    UIKeyboardEmojiCategory *_category;
     CDUnknownBlockType _completionBlock;
     UIResponder<UIKBEmojiHitTestResponder> *_hitTestResponder;
+    NSIndexPath *_tappedSkinToneEmoji;
     TUIEmojiSearchInputViewController *_emojiSearchInputViewController;
     TUIEmojiSearchTextField *_emojiSearchField;
     NSIndexPath *_selectedIndexPath;
@@ -46,6 +41,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)shouldHighlightEmoji:(id)arg1;
 + (_Bool)wantsScreenTraits;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *searchResults; // @synthesize searchResults=_searchResults;
 @property _Bool isSearching; // @synthesize isSearching=_isSearching;
 @property _Bool currentlyCheckingMemojiPreference; // @synthesize currentlyCheckingMemojiPreference=_currentlyCheckingMemojiPreference;
@@ -54,11 +50,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property(retain, nonatomic) TUIEmojiSearchTextField *emojiSearchField; // @synthesize emojiSearchField=_emojiSearchField;
 @property(retain, nonatomic) TUIEmojiSearchInputViewController *emojiSearchInputViewController; // @synthesize emojiSearchInputViewController=_emojiSearchInputViewController;
-@property(nonatomic) NSIndexPath *tappedSkinToneEmoji; // @synthesize tappedSkinToneEmoji=_tappedSkinToneEmoji;
-@property(nonatomic) UIResponder<UIKBEmojiHitTestResponder> *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
+@property(nonatomic) __weak NSIndexPath *tappedSkinToneEmoji; // @synthesize tappedSkinToneEmoji=_tappedSkinToneEmoji;
+@property(nonatomic) __weak UIResponder<UIKBEmojiHitTestResponder> *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(readonly) _Bool isDraggingInputView; // @synthesize isDraggingInputView=_isDraggingInputView;
-@property UIKeyboardEmojiCategory *category; // @synthesize category=_category;
+@property __weak UIKeyboardEmojiCategory *category; // @synthesize category=_category;
 - (long long)updateToCategoryWithOffsetPercentage:(double)arg1;
 - (void)updateOffsetForSearchResults;
 - (void)updateToCategory:(long long)arg1;
@@ -102,6 +98,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)handleKeyInputForCollectionViewNavigation:(id)arg1;
 - (_Bool)handleKeyInputForVariantSelector:(id)arg1;
 - (_Bool)handleKeyEvent:(id)arg1;
+- (long long)emojiCategoryTypeForSection:(long long)arg1;
+- (_Bool)showingRecents;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
@@ -111,7 +109,6 @@ __attribute__((visibility("hidden")))
 - (void)didInsertMediaForKeyboardMediaController:(id)arg1;
 - (void)didTearDownRecentsViewForKeyboardMediaController:(id)arg1;
 - (_Bool)_shouldShowRecentlyUsedMedia;
-- (_Bool)memojiSettingEnabled;
 - (void)willDisplayModalActionView:(id)arg1 withSubTreeKeyView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)shouldDismissModalDisplayView:(id)arg1;
 - (long long)didInputSubTree:(id)arg1;

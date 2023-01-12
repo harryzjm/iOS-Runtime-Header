@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNEntityIdentificationModelTrainedModelDataProvider-Protocol.h>
-
 @class NSString, VNEntityIdentificationModel;
 @protocol VNEntityIdentificationModelDataSource;
 
 __attribute__((visibility("hidden")))
-@interface _VNEntityIdentificationModelDataSourceBasedTrainedModelDataProvider : NSObject <VNEntityIdentificationModelTrainedModelDataProvider>
+@interface _VNEntityIdentificationModelDataSourceBasedTrainedModelDataProvider : NSObject
 {
     VNEntityIdentificationModel *_entityIdentificationModel;
     id <VNEntityIdentificationModelDataSource> _dataSource;

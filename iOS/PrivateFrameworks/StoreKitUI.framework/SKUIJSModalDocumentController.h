@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIJSModalDocumentController-Protocol.h>
-
 @class NSArray, SKUIModalDocumentController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSModalDocumentController : IKJSObject <SKUIJSModalDocumentController>
+@interface SKUIJSModalDocumentController : IKJSObject
 {
     SKUIModalDocumentController *_modalDocumentController;
 }

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCH3DSceneObject;
 
-@interface TSCH3DPickedPoint : NSObject <NSCopying>
+@interface TSCH3DPickedPoint : NSObject
 {
     tvec2_3b141483 _element;
     TSCH3DSceneObject *_sceneObject;

@@ -6,13 +6,11 @@
 
 #import <VideosUICore/VUIAsynchronousOperation.h>
 
-#import <VideosUI/VUIImageLoadingOperation-Protocol.h>
-
 @class NSError, NSString, TVImage;
 @protocol VUIImageLoadParams;
 
 __attribute__((visibility("hidden")))
-@interface VUIImageLoadParamsOperation : VUIAsynchronousOperation <VUIImageLoadingOperation>
+@interface VUIImageLoadParamsOperation : VUIAsynchronousOperation
 {
     _Bool _cropToFit;
     TVImage *_image;

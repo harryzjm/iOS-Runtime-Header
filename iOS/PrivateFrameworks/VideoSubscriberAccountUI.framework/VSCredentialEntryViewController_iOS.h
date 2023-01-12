@@ -6,14 +6,11 @@
 
 #import <AccountsUI/ACUIViewController.h>
 
-#import <VideoSubscriberAccountUI/VSCredentialEntryViewController-Protocol.h>
-#import <VideoSubscriberAccountUI/VSPSPickerTableViewCellDelegate-Protocol.h>
-
 @class NSArray, NSString, PSSpecifier, UIButton, UIView, VSCredentialEntryPicker, VSCredentialEntryViewModel, VSIdentityProviderLogoView;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSCredentialEntryViewController_iOS : ACUIViewController <VSCredentialEntryViewController, VSPSPickerTableViewCellDelegate>
+@interface VSCredentialEntryViewController_iOS : ACUIViewController
 {
     _Bool _cancellationAllowed;
     VSCredentialEntryViewModel *_viewModel;

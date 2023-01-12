@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface OADColor : NSObject <NSCopying>
+@interface OADColor : NSObject
 {
     NSMutableArray *mTransforms;
 }

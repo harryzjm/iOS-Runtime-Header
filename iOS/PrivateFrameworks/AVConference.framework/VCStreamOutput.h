@@ -4,32 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCStreamSychronizationDelegate-Protocol.h>
-
-@class NSString;
+@class NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCStreamOutput <VCStreamSychronizationDelegate>
+@interface VCStreamOutput
 {
     long long _streamToken;
+    struct opaqueVCRemoteImageQueue *_remoteQueue;
+    NSObject<OS_dispatch_queue> *_xpcCommandQueue;
     int _clientProcessID;
     struct __CFDictionary *_attributes;
-    id _delegate;
     id _synchronizationDelegate;
+    id _delegate;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    _Bool _isClientInProcess;
+    _Bool _useFigRemoteQueue;
+    const struct __CFAllocator *_backingBufferAllocator;
 }
 
+@property(readonly) const struct __CFAllocator *backingBufferAllocator; // @synthesize backingBufferAllocator=_backingBufferAllocator;
+@property(readonly) _Bool isClientInProcess; // @synthesize isClientInProcess=_isClientInProcess;
 @property(readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
+- (int)processID;
+- (void)didUpdateAttachments:(struct __CFDictionary *)arg1;
+- (void)didSuspend:(_Bool)arg1;
+- (void)didStall:(_Bool)arg1;
+- (void)didReceiveSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)didInvalidate;
+- (void)didDegrade:(_Bool)arg1;
+- (void)didPause:(_Bool)arg1;
 @property(nonatomic) float synchronizationTimeOffset;
-- (_Bool)enqueueSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (_Bool)initXPCCommandQueue;
 - (_Bool)enqueueAttributes:(struct __CFDictionary *)arg1;
-- (id)delegate;
-- (id)xpcSenderQueue;
+- (id)copyXpcSenderQueue;
 - (_Bool)createRemoteQueue;
 - (void)setSynchronizationDelegate:(id)arg1;
 - (id)synchronizationDelegate;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
-- (id)initWithStreamToken:(long long)arg1 clientProcessID:(int)arg2 synchronizationDelegate:(id)arg3;
+- (void)invalidate;
+- (id)initWithStreamToken:(long long)arg1 clientProcessID:(int)arg2 synchronizationDelegate:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

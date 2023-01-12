@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IconServices/NSSecureCoding-Protocol.h>
-
 @class ISIcns, NSData;
 
 __attribute__((visibility("hidden")))
-@interface ISIcnsIcon <NSSecureCoding>
+@interface ISIcnsIcon
 {
     NSData *_icnsData;
     ISIcns *_internalICNS;

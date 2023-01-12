@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)play;
 - (void)prepareToPlayWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isPreparedToPlay;
+@property(readonly, nonatomic) long long audioFormatBadging;
 @property(nonatomic) long long shuffleMode;
 @property(nonatomic) long long repeatMode;
 @property(readonly, nonatomic) long long playbackState;

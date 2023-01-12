@@ -48,8 +48,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CNTransportButton *transportIcon2;
 @property(readonly, nonatomic) CNTransportButton *transportIcon1;
 @property(readonly, nonatomic) CNTransportButton *standardTransportIcon;
-- (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)layoutSubviews;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)prepareForReuse;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

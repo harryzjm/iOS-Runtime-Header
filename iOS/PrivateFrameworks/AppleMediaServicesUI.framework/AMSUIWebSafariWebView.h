@@ -6,14 +6,11 @@
 
 #import <WebKit/WKWebView.h>
 
-#import <AppleMediaServicesUI/WKScriptMessageHandlerWithReply-Protocol.h>
-#import <AppleMediaServicesUI/WKURLSchemeHandler-Protocol.h>
-
 @class NSString;
 @protocol WKNavigationDelegate><WKScriptMessageHandlerWithReply><WKURLSchemeHandler><AMSUIWebSafariWebDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebSafariWebView : WKWebView <WKURLSchemeHandler, WKScriptMessageHandlerWithReply>
+@interface AMSUIWebSafariWebView : WKWebView
 {
     NSString *_logKey;
     id <WKNavigationDelegate><WKScriptMessageHandlerWithReply><WKURLSchemeHandler><AMSUIWebSafariWebDelegate> _safariDelegate;

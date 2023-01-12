@@ -20,6 +20,7 @@
 - (void)navigationBarMetricsDidChange:(id <_SFNavigationBarCommon>)arg1;
 - (void)navigationBar:(id <_SFNavigationBarCommon>)arg1 multipleExtensionsButtonTapped:(UIButton *)arg2;
 - (void)navigationBar:(id <_SFNavigationBarCommon>)arg1 extensionButtonTapped:(UIButton *)arg2 extension:(WBSWebExtensionData *)arg3;
+- (void)navigationBar:(id <_SFNavigationBarCommon>)arg1 didFinishShowingAvailabilityLabelOfType:(long long)arg2;
 - (void)navigationBarFormatMenuButtonBecameUnavailable:(id <_SFNavigationBarCommon>)arg1;
 - (void)navigationBarFormatMenuButtonStartedInteraction:(id <_SFNavigationBarCommon>)arg1;
 - (void)navigationBarURLWasTapped:(id <_SFNavigationBarCommon>)arg1 completionHandler:(void (^)(void))arg2;

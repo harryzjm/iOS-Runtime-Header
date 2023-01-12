@@ -12,12 +12,15 @@
 + (id)performSilentEscrowRecovery:(id)arg1 cdpContext:(id)arg2 allRecords:(id)arg3 error:(id *)arg4;
 + (id)recordMatchingLabel:(id)arg1 allRecords:(id)arg2;
 + (id)performEscrowRecovery:(id)arg1 cdpContext:(id)arg2 escrowRecord:(id)arg3 error:(id *)arg4;
-+ (id)handleRecoveryResults:(id)arg1 recoveredInformation:(id)arg2 sosViability:(int)arg3 performedSilentBurn:(_Bool)arg4 recoverError:(id)arg5 error:(id *)arg6;
++ (id)handleRecoveryResults:(id)arg1 recoveredInformation:(id)arg2 record:(id)arg3 performedSilentBurn:(_Bool)arg4 recoverError:(id)arg5 error:(id *)arg6;
 + (id)fetchEscrowRecords:(id)arg1 error:(id *)arg2;
 + (id)fetchAllEscrowRecords:(id)arg1 error:(id *)arg2;
 + (id)fetchAndHandleEscrowRecords:(id)arg1 shouldFilter:(_Bool)arg2 error:(id *)arg3;
 + (id)filterRecords:(id)arg1;
++ (id)sortListPrioritizingiOSRecords:(id)arg1;
 + (id)filterViableSOSRecords:(id)arg1;
+- (_Bool)deliverAKDeviceListDelta:(id)arg1 error:(id *)arg2;
+- (id)tlkRecoverabilityForEscrowRecord:(id)arg1 error:(id *)arg2;
 - (_Bool)waitForPriorityViewKeychainDataRecovery:(id *)arg1;
 - (id)fetchAccountSettings:(id *)arg1;
 - (id)fetchTrustedSecureElementIdentities:(id *)arg1;

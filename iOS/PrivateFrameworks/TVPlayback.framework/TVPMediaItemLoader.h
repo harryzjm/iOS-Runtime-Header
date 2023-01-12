@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TVPlayback/AVAssetResourceLoaderDelegate-Protocol.h>
-
 @class AVURLAsset, NSError, NSNotification, NSString, NSTimer, TVPContentKeySession, TVPMediaItemTimingData, TVPStateMachine;
 @protocol OS_dispatch_queue, TVPMediaItem;
 
 __attribute__((visibility("hidden")))
-@interface TVPMediaItemLoader : NSObject <AVAssetResourceLoaderDelegate>
+@interface TVPMediaItemLoader : NSObject
 {
     _Bool _allowsCellularUsage;
     _Bool _allowsConstrainedNetworkUsage;

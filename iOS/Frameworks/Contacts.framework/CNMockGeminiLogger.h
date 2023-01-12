@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNGeminiLogger-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNMockGeminiLogger : NSObject <CNGeminiLogger>
+@interface CNMockGeminiLogger : NSObject
 {
 }
 

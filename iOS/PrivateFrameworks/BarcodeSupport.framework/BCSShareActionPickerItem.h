@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "BCSActionPickerItem.h"
+
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface BCSShareActionPickerItem
+@interface BCSShareActionPickerItem : BCSActionPickerItem
 {
     NSMutableArray *_itemsToShare;
 }
 
 - (void).cxx_destruct;
+- (_Bool)canGroupInSubmenu;
 - (void)performActionWithFBOptions:(id)arg1;
 - (id)icon;
 - (id)label;

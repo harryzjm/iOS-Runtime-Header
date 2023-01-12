@@ -6,8 +6,6 @@
 
 #import <XCTAutomationSupport/XCTCapabilitiesProviding-Protocol.h>
 
-@class NSString;
-
 @interface XCTElementDisclosedChildRowsTransformer <XCTCapabilitiesProviding>
 {
 }
@@ -19,12 +17,6 @@
 - (_Bool)canBeRemotelyEvaluatedWithCapabilities:(id)arg1;
 - (id)iteratorForInput:(id)arg1;
 - (id)transform:(id)arg1 relatedElements:(id *)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -15,12 +15,12 @@
 @property _Bool hideInputAssistantBackdrop;
 @property(readonly) long long inputViewBackdropStyle;
 @property _Bool hideInputViewBackdrops;
-@property(readonly, retain) UIView *containerView;
-@property(readonly, retain) UIView *hostView;
+@property(readonly) UIView *containerView;
+@property(readonly) UIView *hostView;
 @property(readonly) struct UIEdgeInsets inputViewPadding;
-@property(readonly, retain) UIInputViewSet *inputViewSet;
-@property(readonly, retain, nonatomic) id <UIInputViewSetPlacementApplicator> applicator;
-@property(readonly, retain) UIInputViewSetPlacement *placement;
+@property(readonly) UIInputViewSet *inputViewSet;
+@property(readonly, nonatomic) id <UIInputViewSetPlacementApplicator> applicator;
+@property(readonly) UIInputViewSetPlacement *placement;
 @property(readonly) _Bool keyboardController;
 @end
 

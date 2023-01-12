@@ -6,17 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-#import <ContactsUI/ABText-Protocol.h>
-#import <ContactsUI/CNCountryPickerControllerDelegate-Protocol.h>
-#import <ContactsUI/UITableViewDataSource-Protocol.h>
-#import <ContactsUI/UITableViewDelegate-Protocol.h>
-#import <ContactsUI/UITextFieldDelegate-Protocol.h>
-
 @class CNMutablePostalAddress, CNPostalAddress, CNPostalAddressEditorTableView, CNPostalAddressFormattingSpecification, NSArray, NSDictionary, NSMutableDictionary, NSString, UIColor;
 @protocol CNPresenterDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPostalAddressEditorView : UIControl <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CNCountryPickerControllerDelegate, ABText>
+@interface CNPostalAddressEditorView : UIControl
 {
     CNMutablePostalAddress *_address;
     NSDictionary *_valueTextAttributes;

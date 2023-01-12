@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIContextMenuInteractionAnimating-Protocol.h>
-#import <UIKitCore/UIContextMenuInteractionCommitAnimating-Protocol.h>
-
 @class NSMutableArray, NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuAnimator : NSObject <UIContextMenuInteractionCommitAnimating, UIContextMenuInteractionAnimating>
+@interface _UIContextMenuAnimator : NSObject
 {
     long long _preferredCommitStyle;
     UIViewController *_previewViewController;

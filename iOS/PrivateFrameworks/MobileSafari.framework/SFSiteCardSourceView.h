@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIVisualEffectView.h>
 
 @class NSLayoutConstraint, NSString, UIImage, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface SFSiteCardSourceView : UIView
+@interface SFSiteCardSourceView : UIVisualEffectView
 {
     UIImageView *_imageView;
     UILabel *_label;

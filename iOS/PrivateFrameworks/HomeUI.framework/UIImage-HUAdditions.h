@@ -7,8 +7,9 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (HUAdditions)
++ (id)hu_imageForDescriptionBadgeType:(unsigned long long)arg1 tintColor:(id)arg2;
 + (id)hu_walletAppIconImage;
-+ (id)hu_mutedMicrophoneImageInCircleWithTintColor:(id)arg1 backgroundColor:(id)arg2 scale:(long long)arg3;
++ (id)hu_mutedMicrophoneImageInCircleWithTintColor:(id)arg1 backgroundColor:(id)arg2;
 + (id)hu_mutedMicrophoneImageWithTintColor:(id)arg1;
 + (id)hu_circleImageWithDiameter:(double)arg1;
 + (id)hu_avatarImageWithSymbolNamed:(id)arg1 textStyle:(id)arg2 scale:(long long)arg3 diameter:(double)arg4;

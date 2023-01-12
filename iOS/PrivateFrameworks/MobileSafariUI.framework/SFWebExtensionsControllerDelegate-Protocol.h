@@ -10,6 +10,7 @@
 @protocol WBSWebExtensionTab, WBSWebExtensionWindow;
 
 @protocol SFWebExtensionsControllerDelegate <WBSWebExtensionsControllerDelegate>
+- (void)sfWebExtensionsController:(SFWebExtensionsController *)arg1 showPopupForExtension:(WBSWebExtensionData *)arg2 inWindow:(id <WBSWebExtensionWindow>)arg3 completionHandler:(void (^)(void))arg4;
 - (void)sfWebExtensionsControllerDidChangeExtensionForPermissionBanner:(SFWebExtensionsController *)arg1;
 - (void)sfWebExtensionsControllerContentBlockerListDidChange:(SFWebExtensionsController *)arg1;
 - (void)sfWebExtensionsControllerCompileContentBlocker:(SFWebExtensionsController *)arg1 identifier:(NSString *)arg2 rules:(NSArray *)arg3 completionHandler:(void (^)(_Bool))arg4;

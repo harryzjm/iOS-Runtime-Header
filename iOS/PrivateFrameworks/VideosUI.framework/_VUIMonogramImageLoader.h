@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIImageLoader-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _VUIMonogramImageLoader : NSObject <VUIImageLoader>
+@interface _VUIMonogramImageLoader : NSObject
 {
     NSDictionary *_generatorByType;
 }

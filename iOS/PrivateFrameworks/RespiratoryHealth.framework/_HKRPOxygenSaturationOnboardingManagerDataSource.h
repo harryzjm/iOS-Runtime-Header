@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RespiratoryHealth/HKRPOxygenSaturationOnboardingManagerDataSource-Protocol.h>
-
 @class HKFeatureAvailabilityStore, HKMobileCountryCodeManager, HKRPOxygenSaturationAvailability, HKRPOxygenSaturationOnboardingCache, HKRPOxygenSaturationSettings, NRDevice, NSString;
 @protocol HKFeatureAvailabilityProviding;
 
 __attribute__((visibility("hidden")))
-@interface _HKRPOxygenSaturationOnboardingManagerDataSource : NSObject <HKRPOxygenSaturationOnboardingManagerDataSource>
+@interface _HKRPOxygenSaturationOnboardingManagerDataSource : NSObject
 {
     struct os_unfair_lock_s _lock;
     HKFeatureAvailabilityStore *_featureAvailabilityProvider;

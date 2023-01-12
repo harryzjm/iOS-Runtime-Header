@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMotion/NSCopying-Protocol.h>
-
 @class CMAttitude;
 
-@interface CMDeviceMotionInternal : NSObject <NSCopying>
+@interface CMDeviceMotionInternal : NSObject
 {
     CDStruct_31142d93 fGravity;
     CDStruct_31142d93 fUserAcceleration;

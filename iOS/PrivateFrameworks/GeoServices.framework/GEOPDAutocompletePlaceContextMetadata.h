@@ -6,17 +6,16 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDAutocompletePlaceContextMetadata : PBCodable <NSCopying>
+@interface GEOPDAutocompletePlaceContextMetadata : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _clientizationFeatures;
     NSMutableArray *_alternateSearchableNames;
+    NSString *_inferredCategory;
     NSString *_matchedDisplayNameLanguageCode;
     NSString *_matchedDisplayName;
     unsigned int _readerMarkPos;
@@ -46,6 +45,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_clientizationFeatures:1;
         unsigned int read_alternateSearchableNames:1;
+        unsigned int read_inferredCategory:1;
         unsigned int read_matchedDisplayNameLanguageCode:1;
         unsigned int read_matchedDisplayName:1;
         unsigned int wrote_anyField:1;

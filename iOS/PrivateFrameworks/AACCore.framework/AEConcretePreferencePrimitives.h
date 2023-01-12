@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEPreferencePrimitives-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AEConcretePreferencePrimitives : NSObject <AEPreferencePrimitives>
+@interface AEConcretePreferencePrimitives : NSObject
 {
     NSString *_domain;
 }

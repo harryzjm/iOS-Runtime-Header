@@ -10,6 +10,7 @@
 
 @protocol _SFPBPerformIntentCommand <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool isRunnableWorkflow;
 @property(copy, nonatomic) NSData *intentMessageData;
 @property(copy, nonatomic) NSString *applicationBundleIdentifier;
 @property(copy, nonatomic) NSString *intentMessageName;

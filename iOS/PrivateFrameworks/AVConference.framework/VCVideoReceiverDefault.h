@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool receivedFirstRemoteFrame;
     _Bool _shouldEnableFaceZoom;
     _Bool _shouldEnableMLEnhance;
+    _Bool _shouldUpdateRemoteScreenAttributes;
     double _lastKeyFrameRequestTime;
     unsigned short _lastKeyFrameRequestStreamID;
     VCVideoStreamRateAdaptationFeedbackOnly *_rateAdaptation;
@@ -33,15 +34,17 @@ __attribute__((visibility("hidden")))
     _Bool _canLocalResizePIP;
     _Bool _canRemoteResizePIP;
     unsigned long long _cvoExtensionID;
+    _Bool _forceZeroRegionOfInterestOrigin;
 }
 
 @property struct tagVCVideoReceiverConfig videoReceiverConfig; // @synthesize videoReceiverConfig=_videoReceiverConfig;
+@property(nonatomic) _Bool shouldUpdateRemoteScreenAttributes; // @synthesize shouldUpdateRemoteScreenAttributes=_shouldUpdateRemoteScreenAttributes;
 @property(nonatomic) _Bool shouldEnableMLEnhance; // @synthesize shouldEnableMLEnhance=_shouldEnableMLEnhance;
 @property(nonatomic) _Bool shouldEnableFaceZoom; // @synthesize shouldEnableFaceZoom=_shouldEnableFaceZoom;
 @property(retain) VideoAttributes *remoteVideoAttributes; // @synthesize remoteVideoAttributes;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)setSynchronizer:(id)arg1;
-- (void)collectChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_b671a7c4 *)arg1 interval:(float)arg2;
 - (void)didSwitchFromStreamID:(unsigned short)arg1 toStreamID:(unsigned short)arg2;
 - (void)handleKeyFrameRequestWithSizeAndFistMBs:(unsigned short *)arg1 count:(int)arg2 didReceiveRTCPFB:(_Bool)arg3 didReceiveFIR:(_Bool)arg4;
 - (void)handleRequestingKeyFrameGenerationWithStreamID:(unsigned short)arg1 firType:(int)arg2;

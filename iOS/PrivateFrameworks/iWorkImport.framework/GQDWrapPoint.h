@@ -8,7 +8,6 @@
 
 @class GQDDrawable;
 
-__attribute__((visibility("hidden")))
 @interface GQDWrapPoint : NSObject
 {
     struct CGPoint mPoint;

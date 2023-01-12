@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKJSUIAnimatorDOMFeature-Protocol.h>
-
 @class SKUIAnimatorDOMFeature;
 
 __attribute__((visibility("hidden")))
-@interface SKJSUIAnimatorDOMFeature : IKJSObject <SKJSUIAnimatorDOMFeature>
+@interface SKJSUIAnimatorDOMFeature : IKJSObject
 {
     SKUIAnimatorDOMFeature *_feature;
 }

@@ -16,6 +16,9 @@ __attribute__((visibility("hidden")))
     UILabel *_titleLabel;
     MUBadgeView *_vendorBadge;
     MUGradientView *_titleGradientView;
+    UIView *_yourPhotosView;
+    MUImageView *_yourPhotosImageView;
+    UILabel *_yourPhotosViewLabel;
     MUPhotoTileOverlay *_photoOverlay;
     id <MUPhotoTileViewModel> _viewModel;
     CDUnknownBlockType _actionHandler;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUITableViewCell.h"
+
 @class SKUITextBoxView;
 
 __attribute__((visibility("hidden")))
-@interface SKUITextBoxTableViewCell
+@interface SKUITextBoxTableViewCell : SKUITableViewCell
 {
     SKUITextBoxView *_textBoxView;
     struct UIEdgeInsets _textBoxInsets;

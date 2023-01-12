@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *_songCollections;
     MISSING_TYPE *_selectedSong;
     MISSING_TYPE *songCollectionLoadingState;
+    MISSING_TYPE *songCollectionLoadedCompletionHandler;
     MISSING_TYPE *actionPerformerDelegate;
 }
 

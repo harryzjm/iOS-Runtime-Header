@@ -10,6 +10,9 @@
 @class NSData, NSDictionary, NSString, TabDocument, UIViewController, _SFDownload, _SFPageZoomPreferenceManager;
 
 @protocol TabDocumentDelegate <TabDocumentNavigationObserving, TabDocumentRenderingProgressEventObserving>
+- (_Bool)tabDocumentCanFindNextOrPrevious:(TabDocument *)arg1;
+- (_Bool)tabDocumentShouldFillStringForFind:(TabDocument *)arg1;
+- (void)tabDocumentDidUpdatePinned:(TabDocument *)arg1;
 - (void)tabDocumentDidChangeCanStopLoadingState:(TabDocument *)arg1;
 - (void)tabDocumentDidUpdateThemeColor:(TabDocument *)arg1;
 - (_SFPageZoomPreferenceManager *)pageZoomPreferenceManagerForTabDocument:(TabDocument *)arg1;
@@ -22,6 +25,7 @@
 - (long long)tabDocumentOrderIndex:(TabDocument *)arg1;
 - (void)tabDocument:(TabDocument *)arg1 dismissViewControllerAnimated:(UIViewController *)arg2;
 - (void)tabDocument:(TabDocument *)arg1 presentViewControllerAnimated:(UIViewController *)arg2;
+- (void)tabDocumentDidClearLibraryType:(TabDocument *)arg1;
 - (void)tabDocumentWillDismissInlineDialog:(TabDocument *)arg1;
 - (void)tabDocumentWillShowInlineDialog:(TabDocument *)arg1;
 - (_Bool)tabDocumentCanBeginInputSessionForStreamlinedLogin:(TabDocument *)arg1;
@@ -36,7 +40,6 @@
 - (void)tabDocumentShouldCloseAndSwitchToParentTab:(TabDocument *)arg1;
 - (void)tabDocument:(TabDocument *)arg1 didCreateNewTabDocument:(TabDocument *)arg2;
 - (void)tabDocumentDidUpdateShowingContinuous:(TabDocument *)arg1;
-- (NSString *)blankTabTitleForTabDocument:(TabDocument *)arg1;
 - (void)setAppBannerPinnedToTop:(_Bool)arg1 forTabDocument:(TabDocument *)arg2;
 - (void)removeAppBannerFromTabDocument:(TabDocument *)arg1 animated:(_Bool)arg2;
 - (_Bool)tabDocumentShouldDeferAppBannerRemoval:(TabDocument *)arg1;

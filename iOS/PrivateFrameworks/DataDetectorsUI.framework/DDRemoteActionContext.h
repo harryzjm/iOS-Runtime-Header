@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DataDetectorsUI/NSCoding-Protocol.h>
-#import <DataDetectorsUI/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface DDRemoteActionContext : NSObject <NSCoding, NSSecureCoding>
+@interface DDRemoteActionContext : NSObject
 {
     NSURL *_URL;
     struct __DDResult *_result;

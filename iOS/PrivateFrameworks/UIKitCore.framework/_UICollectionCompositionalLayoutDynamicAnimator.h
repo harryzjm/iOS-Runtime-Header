@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIDynamicAnimator.h"
+
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionCompositionalLayoutDynamicAnimator
+@interface _UICollectionCompositionalLayoutDynamicAnimator : UIDynamicAnimator
 {
     CDUnknownBlockType _invalidationHandler;
     NSMutableDictionary *_itemBehaviors;

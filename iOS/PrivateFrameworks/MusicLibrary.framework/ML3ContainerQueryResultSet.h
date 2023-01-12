@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ML3QueryResultSet.h"
+
 @class ML3QueryResultSet_BackingStore;
 
 __attribute__((visibility("hidden")))
-@interface ML3ContainerQueryResultSet
+@interface ML3ContainerQueryResultSet : ML3QueryResultSet
 {
     _Bool _needsSorting;
     _Bool _needsReversing;

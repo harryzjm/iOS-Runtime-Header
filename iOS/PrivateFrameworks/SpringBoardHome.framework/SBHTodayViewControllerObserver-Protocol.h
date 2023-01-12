@@ -11,8 +11,8 @@
 @protocol SBHTodayViewControllerObserver <NSObject>
 
 @optional
-- (void)todayViewController:(id <SBHTodayViewController>)arg1 occlusionDidChange:(_Bool)arg2;
-- (void)todayViewController:(id <SBHTodayViewController>)arg1 occlusionWillChange:(_Bool)arg2;
+- (void)todayViewController:(id <SBHTodayViewController>)arg1 contentVisibilityDidChange:(unsigned long long)arg2;
+- (void)todayViewController:(id <SBHTodayViewController>)arg1 contentVisibilityWillChange:(unsigned long long)arg2;
 - (void)todayViewControllerDidEndScrolling:(id <SBHTodayViewController>)arg1;
 - (void)todayViewControllerDidDisappear:(id <SBHTodayViewController>)arg1;
 - (void)todayViewControllerWillDisappear:(id <SBHTodayViewController>)arg1;

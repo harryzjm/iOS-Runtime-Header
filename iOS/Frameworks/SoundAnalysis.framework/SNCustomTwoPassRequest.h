@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNTwoPassRequest-Protocol.h>
-
 @class NSString, SNTwoPassConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface SNCustomTwoPassRequest : NSObject <SNTwoPassRequest>
+@interface SNCustomTwoPassRequest : NSObject
 {
     CDUnknownBlockType _createSecondPassControllerFunction;
     SNTwoPassConfiguration *_twoPassConfiguration;
@@ -20,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly) SNTwoPassConfiguration *twoPassConfiguration; // @synthesize twoPassConfiguration=_twoPassConfiguration;
 - (id)createSecondPassController;
-- (id)initWithTwoPassConfiguration:(id)arg1 createSecondPassControllerFunction:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

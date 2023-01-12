@@ -22,5 +22,6 @@
 
 @optional
 @property(readonly, nonatomic) UISearchController *searchController;
+- (void)setRequestedStorefrontCountryCode:(NSString *)arg1 defaultToDeveloperProviders:(_Bool)arg2;
 @end
 

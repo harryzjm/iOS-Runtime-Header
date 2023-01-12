@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_commandDictionary;
     NSMutableArray *_orderedIdentifiers;
     NSBundle *_bundle;
+    NSString *_productName;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *productName; // @synthesize productName=_productName;
 @property(retain, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property(retain, nonatomic) NSMutableArray *orderedIdentifiers; // @synthesize orderedIdentifiers=_orderedIdentifiers;
 @property(retain, nonatomic) NSMutableDictionary *commandDictionary; // @synthesize commandDictionary=_commandDictionary;

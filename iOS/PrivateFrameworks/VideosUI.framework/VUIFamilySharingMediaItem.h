@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIMediaItem.h"
+
 @class NSString, VUIExtrasInfo, VUIFamilySharingEntity, VUIFamilySharingMediaItemAssetController, VUIFamilySharingRelationships, VUIVideosPlayable;
 
 __attribute__((visibility("hidden")))
-@interface VUIFamilySharingMediaItem
+@interface VUIFamilySharingMediaItem : VUIMediaItem
 {
     NSString *_artworkURL;
     NSString *_previewArtworkURL;

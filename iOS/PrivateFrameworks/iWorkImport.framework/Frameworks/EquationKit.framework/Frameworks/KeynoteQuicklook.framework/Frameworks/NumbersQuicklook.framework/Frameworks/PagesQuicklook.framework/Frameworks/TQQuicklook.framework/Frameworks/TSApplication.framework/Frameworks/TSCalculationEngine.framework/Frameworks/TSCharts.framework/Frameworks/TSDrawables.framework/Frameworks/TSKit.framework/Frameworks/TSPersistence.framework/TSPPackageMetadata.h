@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSPObject.h"
+
 @class TSPDataMetadataMap;
 
-@interface TSPPackageMetadata
+@interface TSPPackageMetadata : TSPObject
 {
     struct PackageMetadata _message;
     TSPDataMetadataMap *_identifierToDataMetadataMap;

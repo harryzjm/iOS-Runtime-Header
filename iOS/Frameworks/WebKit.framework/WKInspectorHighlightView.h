@@ -10,14 +10,13 @@ __attribute__((visibility("hidden")))
 @interface WKInspectorHighlightView : UIView
 {
     struct RetainPtr<NSMutableArray<CAShapeLayer *>> _layers;
-    struct RetainPtr<NSMutableArray<CALayer *>> _gridOverlayLayers;
+    struct optional<WebCore::InspectorOverlay::Highlight> _highlight;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)update:(const void *)arg1 scale:(double)arg2;
-- (id)_createGridOverlayLayer:(const void *)arg1 scale:(double)arg2;
-- (void)_createGridOverlayLayers:(const void *)arg1 scale:(double)arg2;
+- (void)update:(const void *)arg1 scale:(double)arg2 frame:(const struct FloatRect *)arg3;
+- (void)drawRect:(struct CGRect)arg1;
 - (void)_layoutForRectsHighlight:(const void *)arg1;
 - (void)_layoutForNodeListHighlight:(const void *)arg1;
 - (void)_layoutForNodeHighlight:(const void *)arg1 offset:(unsigned int)arg2;

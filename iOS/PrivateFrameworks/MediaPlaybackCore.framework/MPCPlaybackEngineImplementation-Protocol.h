@@ -6,8 +6,7 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@class MPAVItem, MPCPlaybackEngine, MPPlaybackContext, MPQueuePlayer, NSString;
-@protocol MPAVQueueController;
+@class MPAVItem, MPCPlaybackEngine, MPCQueueController, MPPlaybackContext, NSString;
 
 @protocol MPCPlaybackEngineImplementation <NSObject>
 @property(readonly, nonatomic, getter=isReloadingPlaybackContext) _Bool reloadingPlaybackContext;
@@ -18,13 +17,12 @@
 @property(readonly, nonatomic) long long state;
 @property(readonly, nonatomic) float currentRate;
 @property(readonly, nonatomic) double currentTime;
-@property(readonly, nonatomic) MPQueuePlayer *queuePlayer;
 @property(readonly, nonatomic) MPAVItem *currentItem;
-@property(retain, nonatomic) id <MPAVQueueController> queueController;
+@property(retain, nonatomic) MPCQueueController *queueController;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine;
 - (void)updateAudioSession;
 - (void)becomeActiveWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)loadSessionWithQueueController:(id <MPAVQueueController>)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)loadSessionWithQueueController:(MPCQueueController *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)replaceCurrentItemWithPlaybackContext:(MPPlaybackContext *)arg1 identifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)reloadWithPlaybackContext:(MPPlaybackContext *)arg1 identifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (id)initWithPlaybackEngine:(MPCPlaybackEngine *)arg1;

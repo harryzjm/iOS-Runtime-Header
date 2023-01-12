@@ -6,13 +6,10 @@
 
 #import <WorkflowUICore/WFActionUserInterface.h>
 
-#import <ActionKitUI/UIDocumentInteractionControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFOpenInActionUserInterface-Protocol.h>
-
 @class NSString, UIDocumentInteractionController;
 
 __attribute__((visibility("hidden")))
-@interface WFOpenInActionUIKitUserInterface : WFActionUserInterface <UIDocumentInteractionControllerDelegate, WFOpenInActionUserInterface>
+@interface WFOpenInActionUIKitUserInterface : WFActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
     UIDocumentInteractionController *_documentController;

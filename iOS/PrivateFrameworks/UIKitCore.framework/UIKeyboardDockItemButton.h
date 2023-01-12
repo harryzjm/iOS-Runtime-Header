@@ -4,16 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIButton.h"
+
+@class CAShapeLayer, NSString;
+
 __attribute__((visibility("hidden")))
-@interface UIKeyboardDockItemButton
+@interface UIKeyboardDockItemButton : UIButton
 {
+    NSString *_identifier;
+    CAShapeLayer *_shapeLayer;
     struct CGRect _tapActionRegion;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) CAShapeLayer *shapeLayer; // @synthesize shapeLayer=_shapeLayer;
+@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) struct CGRect tapActionRegion; // @synthesize tapActionRegion=_tapActionRegion;
+- (void)addAnimatitionIfNeeded;
+- (void)setupDictationAnimationButtonIfNeeded;
+- (void)layoutSubviews;
+- (void)updateFillColor;
+- (void)setTintColor:(id)arg1;
+- (void)didMoveToSuperview;
 - (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
-- (struct CGRect)rectWithSize:(struct CGSize)arg1 forContentRect:(struct CGRect)arg2;
+- (struct CGRect)rectWithSize:(struct CGSize)arg1 forContentRect:(struct CGRect)arg2 withAlignmentRectInsets:(struct UIEdgeInsets)arg3;
 
 @end
 

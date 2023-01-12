@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNAPITriageLogger-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNMockAPITriageLogger : NSObject <CNAPITriageLogger>
+@interface CNMockAPITriageLogger : NSObject
 {
 }
 

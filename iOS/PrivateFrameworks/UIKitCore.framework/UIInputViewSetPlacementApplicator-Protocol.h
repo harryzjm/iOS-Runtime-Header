@@ -15,9 +15,9 @@
 @property(readonly) struct UIEdgeInsets inputAssistantPadding;
 @property(readonly) struct CGRect popoverFrame;
 @property(readonly) struct UIEdgeInsets contentInsets;
-@property(readonly, retain) UIView *twoFingerDraggableView;
-@property(readonly, retain) UIView *draggableView;
-@property(readonly, retain) NSArray *constraints;
+@property(readonly) UIView *twoFingerDraggableView;
+@property(readonly) UIView *draggableView;
+@property(readonly) NSArray *constraints;
 @property(readonly) struct CGPoint origin;
 - (void)invalidate;
 - (void)prepare;

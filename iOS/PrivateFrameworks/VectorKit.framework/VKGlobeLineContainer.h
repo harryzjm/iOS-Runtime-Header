@@ -13,35 +13,36 @@ __attribute__((visibility("hidden")))
 {
     id <VKRouteMatchedAnnotationPresentation> _routeLineSplitAnnotation;
     id <VKGlobeLineContainerDelegate> _delegate;
-    struct set<id<VKRouteOverlay>, std::less<id<VKRouteOverlay>>, std::allocator<id<VKRouteOverlay>>> _overlays;
-    struct set<id<VKRouteOverlay>, std::less<id<VKRouteOverlay>>, std::allocator<id<VKRouteOverlay>>> _persistentOverlays;
-    struct set<id<VKRouteOverlay>, std::less<id<VKRouteOverlay>>, std::allocator<id<VKRouteOverlay>>> _nonPersistentOverlays;
+    struct set<id<VKRouteOverlay>, std::less<id<VKRouteOverlay>>, std::allocator<id<VKRouteOverlay>>> _retainedOverlays;
+    struct set<__unsafe_unretained id<VKRouteOverlay>, std::less<__unsafe_unretained id<VKRouteOverlay>>, std::allocator<__unsafe_unretained id<VKRouteOverlay>>> _overlays;
+    struct set<__unsafe_unretained id<VKRouteOverlay>, std::less<__unsafe_unretained id<VKRouteOverlay>>, std::allocator<__unsafe_unretained id<VKRouteOverlay>>> _persistentOverlays;
+    struct set<__unsafe_unretained id<VKRouteOverlay>, std::less<__unsafe_unretained id<VKRouteOverlay>>, std::allocator<__unsafe_unretained id<VKRouteOverlay>>> _nonPersistentOverlays;
     void *_routeRenderLayer;
-    struct map<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::weak_ptr<altitude::RouteLineData>, std::less<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::allocator<std::pair<const geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::weak_ptr<altitude::RouteLineData>>>> _polylinesToRoutes;
-    _retain_ptr_7ea4e41c _selectedPolyline;
+    struct map<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc>, std::weak_ptr<altitude::RouteLineData>, std::less<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc>>, std::allocator<std::pair<const geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc>, std::weak_ptr<altitude::RouteLineData>>>> _polylinesToRoutes;
+    _retain_ptr_816b7ffd _selectedPolyline;
     struct VKGlobeRouteSplit *_routeSplit;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) id <VKGlobeLineContainerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <VKGlobeLineContainerDelegate> delegate; // @synthesize delegate=_delegate;
 - (float)halfWidthForLine:(id)arg1 styleZ:(float)arg2;
 - (void)update;
 - (void)_destroyLinesIfNeeded;
 - (void)_recreateLinesIfNeeded;
 - (void)_updateRouteSplit;
 @property(retain, nonatomic) id <VKRouteMatchedAnnotationPresentation> routeLineSplitAnnotation;
-- (void)setSelected:(_retain_ptr_7ea4e41c)arg1 selected:(_Bool)arg2;
+- (void)setSelected:(_retain_ptr_816b7ffd)arg1 selected:(_Bool)arg2;
 - (void)clearLineSelection;
-- (void)removeLine:(_retain_ptr_7ea4e41c)arg1;
-- (void)addLine:(_retain_ptr_7ea4e41c)arg1;
+- (void)removeLine:(_retain_ptr_816b7ffd)arg1;
+- (void)addLine:(_retain_ptr_816b7ffd)arg1;
 - (const void *)nonPersistentOverlays;
 - (const void *)persistentOverlays;
 - (const void *)overlays;
 - (void)removeNonPersistentOverlay:(id)arg1;
 - (void)removePersistentOverlay:(id)arg1;
-- (_Bool)hasPersistentOverlay:(id *)arg1;
-- (_Bool)hasNonPersistentOverlay:(id *)arg1;
+- (_Bool)hasPersistentOverlay:(id)arg1;
+- (_Bool)hasNonPersistentOverlay:(id)arg1;
 - (void)_removeOverlay:(id)arg1;
 - (void)addNonPersistentOverlay:(id)arg1;
 - (void)addPersistentOverlay:(id)arg1;

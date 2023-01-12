@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <MPSNeuralNetwork/NSSecureCoding-Protocol.h>
-
-@interface FilterNodeWrapper : NSObject <NSSecureCoding>
+@interface FilterNodeWrapper : NSObject
 {
     void *node;
 }

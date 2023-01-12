@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLTransform3DJSExports-Protocol.h>
-
 @class TMLAffineTransform;
 
-@interface TMLTransform3D : NSObject <TMLTransform3DJSExports>
+@interface TMLTransform3D : NSObject
 {
     struct CATransform3D _transform;
 }

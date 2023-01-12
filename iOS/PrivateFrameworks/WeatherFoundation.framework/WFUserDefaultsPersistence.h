@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WeatherFoundation/WeatherPreferencesPersistence-Protocol.h>
-
 @class NSString, NSUserDefaults;
 
 __attribute__((visibility("hidden")))
-@interface WFUserDefaultsPersistence : NSObject <WeatherPreferencesPersistence>
+@interface WFUserDefaultsPersistence : NSObject
 {
     NSUserDefaults *_userDefaults;
 }

@@ -6,10 +6,8 @@
 
 #import <TeaSnappy/SNTestSuite.h>
 
-#import <NewsUI2/SNTestSetup-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI221MagazineFeedTestSuite : SNTestSuite <SNTestSetup>
+@interface _TtC7NewsUI221MagazineFeedTestSuite : SNTestSuite
 {
 }
 

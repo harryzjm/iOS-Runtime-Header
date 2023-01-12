@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SwiftUI/NSUserActivityDelegate-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI24UserActivityTrackingInfo : NSObject <NSUserActivityDelegate>
+@interface _TtC7SwiftUI24UserActivityTrackingInfo : NSObject
 {
     MISSING_TYPE *userActivity;
     MISSING_TYPE *handlers;

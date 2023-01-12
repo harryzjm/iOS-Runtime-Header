@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIIndirectScribbleInteractionDelegate-Protocol.h>
-#import <UIKitCore/UIKeyInput-Protocol.h>
-#import <UIKitCore/UITextInputTraits_Private-Protocol.h>
+#import "UIView.h"
 
-@class NSAttributedString, NSIndexSet, NSNumberFormatter, NSString, UIColor, UIFont, UIImage, UIIndirectScribbleInteraction, UIInputContextHistory, UITextField, UITextInputPasswordRules, UITextRange, UIView, _UIDatePickerCalendarTimeFormat, _UIDatePickerCalendarTimeLabelStateMachineContext, _UIDatePickerCalendarTimeValueStore, _UISupplementalLexicon;
+@class NSAttributedString, NSIndexSet, NSNumberFormatter, NSString, UIColor, UIFont, UIImage, UIIndirectScribbleInteraction, UIInputContextHistory, UITextField, UITextInputPasswordRules, UITextRange, _UIDatePickerCalendarTimeFormat, _UIDatePickerCalendarTimeLabelStateMachineContext, _UIDatePickerCalendarTimeValueStore, _UISupplementalLexicon;
 @protocol _UIDatePickerCalendarTimeLabelDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerCalendarTimeLabel <UIIndirectScribbleInteractionDelegate, UITextInputTraits_Private, UIKeyInput>
+@interface _UIDatePickerCalendarTimeLabel : UIView
 {
     UIIndirectScribbleInteraction *_scribbleInteraction;
     UITextField *_hiddenField;
@@ -98,6 +96,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct CGRect hourRect;
 - (_Bool)resignFirstResponder;
 - (_Bool)becomeFirstResponder;
+- (void)_uiTest_resignFirstResponder;
+- (void)_uiTest_becomeFirstResponder;
 - (long long)editingInteractionConfiguration;
 - (_Bool)canBecomeFirstResponder;
 - (id)focusGroupIdentifier;
@@ -136,6 +136,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool forceDisableDictation;
 @property(nonatomic) _Bool forceEnableDictation;
 @property(nonatomic) _Bool forceFloatingKeyboard;
+@property(nonatomic) _Bool forceSpellingDictation;
 @property(nonatomic) _Bool hasDefaultContents;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hidePrediction;

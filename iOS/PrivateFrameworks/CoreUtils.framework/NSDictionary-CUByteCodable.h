@@ -6,9 +6,7 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <CoreUtils/CUByteCodable-Protocol.h>
-
-@interface NSDictionary (CUByteCodable) <CUByteCodable>
+@interface NSDictionary (CUByteCodable)
 + (id)createWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
 - (id)encodedDataAndReturnError:(id *)arg1;
 - (const char *)encodedBytesAndReturnLength:(unsigned long long *)arg1 error:(id *)arg2;

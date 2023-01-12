@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthKit/HKWristDetectionSettingManagerObserver-Protocol.h>
-
 @class HKObserverBridgeHandle;
 
 __attribute__((visibility("hidden")))
-@interface _HKWristDetectionSettingManagerObserverBridge : NSObject <HKWristDetectionSettingManagerObserver>
+@interface _HKWristDetectionSettingManagerObserverBridge : NSObject
 {
     HKObserverBridgeHandle *_handle;
 }

@@ -6,7 +6,11 @@
 
 #import <Foundation/NSLocale.h>
 
+@class NSString;
+
 @interface NSLocale (IsGerman)
 + (_Bool)isGerman;
+- (id)wf_subname;
+@property(readonly, copy, nonatomic) NSString *wf_displayName;
 @end
 

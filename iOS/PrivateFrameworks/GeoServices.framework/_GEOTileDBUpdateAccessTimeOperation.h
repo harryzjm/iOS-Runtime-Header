@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/_GEOTileDBWriteOperation-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTileDBUpdateAccessTimeOperation : NSObject <_GEOTileDBWriteOperation>
+@interface _GEOTileDBUpdateAccessTimeOperation : NSObject
 {
     struct _GEOTileKey _key;
     double _timestamp;

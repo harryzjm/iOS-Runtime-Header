@@ -6,23 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/CHHapticServerInterface-Protocol.h>
-
-@class GCControllerSettings, NSArray, NSMutableDictionary, NSString, _GCControllerManagerServer;
-@protocol NSCopying><NSObject><NSSecureCoding, _GCIPCIncomingConnection;
+@class GCSProfile, NSArray, NSMutableDictionary, NSString, _GCControllerManagerServer;
+@protocol GCSSettingsStoreService, NSCopying><NSObject><NSSecureCoding, _GCIPCIncomingConnection;
 
 __attribute__((visibility("hidden")))
-@interface _GCHapticClientProxy : NSObject <CHHapticServerInterface>
+@interface _GCHapticClientProxy : NSObject
 {
     _Bool _playersPlayedHapticsThisSlice;
     _GCControllerManagerServer *_server;
     struct HapticSharedMemory _sharedMemory;
-    GCControllerSettings *_bundleSettings;
-    GCControllerSettings *_globalSettings;
+    id <GCSSettingsStoreService> _settingsStore;
+    GCSProfile *_activeProfile;
     _Bool _dirtyMuteState;
     _Bool _muted;
     _Bool _neverMute;
     int _muteReasons[5];
+    float _hapticStrength;
     _Atomic _Bool _invalid;
     _Bool _running;
     _Bool _stopping;
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _clientID;
     NSString *_bundleIdentifier;
     id <NSCopying><NSObject><NSSecureCoding> _identifier;
+    NSString *_persistentControllerIdentifier;
     NSString *_controllerProductCategory;
     NSArray *_actuators;
     NSMutableDictionary *_hapticPlayers;
@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSMutableDictionary *hapticPlayers; // @synthesize hapticPlayers=_hapticPlayers;
 @property(readonly, copy, nonatomic) NSArray *actuators; // @synthesize actuators=_actuators;
 @property(readonly, copy, nonatomic) NSString *controllerProductCategory; // @synthesize controllerProductCategory=_controllerProductCategory;
+@property(readonly, copy, nonatomic) NSString *persistentControllerIdentifier; // @synthesize persistentControllerIdentifier=_persistentControllerIdentifier;
 @property(readonly, copy, nonatomic) id <NSCopying><NSObject><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(nonatomic) unsigned long long clientID; // @synthesize clientID=_clientID;
@@ -65,6 +66,8 @@ __attribute__((visibility("hidden")))
 - (void)notifyClientCompletedWithError:(id)arg1;
 - (_Bool)isMuted;
 - (_Bool)isMutedForReason:(unsigned long long)arg1;
+- (float)hapticStrength;
+- (void)setHapticStrength:(float)arg1;
 - (void)setMute:(_Bool)arg1 forReason:(unsigned long long)arg2;
 - (void)notifyClientOnStopWithReason:(long long)arg1 error:(id)arg2;
 - (void *)sharedMemory;

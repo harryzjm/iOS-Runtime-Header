@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSLayoutConstraint, NSString, QLOverlayPlayButton, QLVideoScrubberView, QLWaveformScrubberViewProvider, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface QLAudioItemViewController <UIGestureRecognizerDelegate>
+@interface QLAudioItemViewController
 {
     QLOverlayPlayButton *_playButton;
     UIView *_scrubberContainer;

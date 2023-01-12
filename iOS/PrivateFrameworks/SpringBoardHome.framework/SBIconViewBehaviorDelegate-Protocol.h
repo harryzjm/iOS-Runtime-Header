@@ -12,6 +12,7 @@
 @protocol SBIconViewBehaviorDelegate <NSObject>
 
 @optional
+- (void)iconViewWasDiscarded:(SBIconView *)arg1;
 - (void)iconViewWasRecycled:(SBIconView *)arg1;
 - (long long)iconViewComponentBackgroundViewTypeForIconView:(SBIconView *)arg1;
 - (UIColor *)accessibilityTintColorForIconView:(SBIconView *)arg1;

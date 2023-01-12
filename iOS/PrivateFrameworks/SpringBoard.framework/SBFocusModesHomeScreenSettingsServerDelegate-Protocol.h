@@ -9,7 +9,9 @@
 @class SBFocusModesHomeScreenSettingsServer, SBSFocusModesHomeScreenSettingsRequest;
 
 @protocol SBFocusModesHomeScreenSettingsServerDelegate <NSObject>
+- (void)settingsServer:(SBFocusModesHomeScreenSettingsServer *)arg1 addSuggestedHomeScreenPageWithRequest:(SBSFocusModesHomeScreenSettingsRequest *)arg2;
 - (void)settingsServer:(SBFocusModesHomeScreenSettingsServer *)arg1 updateFocusModeHomeScreenSettingsWithRequest:(SBSFocusModesHomeScreenSettingsRequest *)arg2;
+- (void)settingsServer:(SBFocusModesHomeScreenSettingsServer *)arg1 homeScreenSnapshotsForSuggestedPagesWithRequest:(SBSFocusModesHomeScreenSettingsRequest *)arg2 completion:(void (^)(SBSFocusModesHomeScreenSettingsResponse *, NSError *))arg3;
 - (void)settingsServer:(SBFocusModesHomeScreenSettingsServer *)arg1 homeScreenSnapshotsWithRequest:(SBSFocusModesHomeScreenSettingsRequest *)arg2 completion:(void (^)(SBSFocusModesHomeScreenSettingsResponse *, NSError *))arg3;
 @end
 

@@ -6,24 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCAdaptiveTriggersServiceClientInterface-Protocol.h>
-#import <GameController/GCBatteryServiceClientInterface-Protocol.h>
-#import <GameController/GCGameIntentServiceClientInterface-Protocol.h>
-#import <GameController/_GCDeviceAdaptiveTriggersComponent-Protocol.h>
-#import <GameController/_GCDeviceBatteryComponent-Protocol.h>
-#import <GameController/_GCDeviceGameIntentComponent-Protocol.h>
-#import <GameController/_GCDeviceGamepadComponent-Protocol.h>
-#import <GameController/_GCDeviceHapticCapabilitiesComponent-Protocol.h>
-#import <GameController/_GCDeviceLightComponent-Protocol.h>
-#import <GameController/_GCDeviceMotionComponent-Protocol.h>
-#import <GameController/_GCDevicePlayerIndexIndicatorComponent-Protocol.h>
-#import <GameController/_GCPhysicalDevice-Protocol.h>
-
-@class GCDeviceBattery, GCDeviceLight, GCHapticCapabilityGraph, NSArray, NSSet, NSString, _GCCControllerHIDServiceInfo;
+@class GCDeviceBattery, GCDeviceLight, GCHapticCapabilityGraph, NSArray, NSSet, NSString, _GCHIDServiceInfo;
 @protocol GCAdaptiveTriggersServiceServerInterface, GCBatteryServiceServerInterface, GCGameIntentServiceServerInterface, GCLightServiceServerInterface, GCMotionServiceServerInterface, NSObject><NSCopying><NSSecureCoding, _GCDefaultPhysicalDeviceDelegate, _GCDeviceDriverConnection, _GCDeviceManager, _GCGamepadEventSourceDescription, _GCMotionEventSourceDescription;
 
 __attribute__((visibility("hidden")))
-@interface _GCDefaultPhysicalDevice : NSObject <_GCDeviceGamepadComponent, _GCDeviceMotionComponent, _GCDevicePlayerIndexIndicatorComponent, _GCDeviceLightComponent, _GCDeviceAdaptiveTriggersComponent, GCAdaptiveTriggersServiceClientInterface, _GCDeviceBatteryComponent, GCBatteryServiceClientInterface, _GCDeviceHapticCapabilitiesComponent, _GCDeviceGameIntentComponent, GCGameIntentServiceClientInterface, _GCPhysicalDevice>
+@interface _GCDefaultPhysicalDevice : NSObject
 {
     id <_GCDeviceDriverConnection> _driverConnection;
     id _driverConnectionInvalidationRegistration;
@@ -37,6 +24,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _batteryComponentBatteryUpdatedHandler;
     long long _cachedIntentEvent;
     CDUnknownBlockType _gameIntentComponentGameIntentTriggeredHandler;
+    long long _cachedGlyphSet;
     id <NSObject><NSCopying><NSSecureCoding> _identifier;
     id <_GCDeviceManager> _manager;
     id <_GCDefaultPhysicalDeviceDelegate> _delegate;
@@ -45,12 +33,12 @@ __attribute__((visibility("hidden")))
     id <GCMotionServiceServerInterface> _motionServiceServer;
     id <GCBatteryServiceServerInterface> _batteryServiceServer;
     id <GCGameIntentServiceServerInterface> _gameIntentServiceServer;
-    _GCCControllerHIDServiceInfo *_serviceInfo;
+    _GCHIDServiceInfo *_serviceInfo;
 }
 
 + (id)identifierForService:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _GCCControllerHIDServiceInfo *serviceInfo; // @synthesize serviceInfo=_serviceInfo;
+@property(readonly, nonatomic) _GCHIDServiceInfo *serviceInfo; // @synthesize serviceInfo=_serviceInfo;
 @property(readonly, nonatomic) id <GCGameIntentServiceServerInterface> gameIntentServiceServer; // @synthesize gameIntentServiceServer=_gameIntentServiceServer;
 @property(readonly, nonatomic) id <GCBatteryServiceServerInterface> batteryServiceServer; // @synthesize batteryServiceServer=_batteryServiceServer;
 @property(readonly, nonatomic) id <GCMotionServiceServerInterface> motionServiceServer; // @synthesize motionServiceServer=_motionServiceServer;
@@ -59,6 +47,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_GCDefaultPhysicalDeviceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) __weak id <_GCDeviceManager> manager; // @synthesize manager=_manager;
 @property(readonly, copy) id <NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
+- (void)updateGlyphSetOverride;
+- (void)eaAccessoriesDidChange;
 - (id)propertyForKey:(id)arg1;
 @property(readonly) NSSet *components;
 - (id)driverConnection;
@@ -68,7 +58,9 @@ __attribute__((visibility("hidden")))
 - (id)redactedDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)conformsToProtocol:(id)arg1;
+- (void)dealloc;
 - (id)init;
+- (void)_workaround_backbone_97462229:(id)arg1;
 - (id)initWithHIDDevice:(id)arg1 manager:(id)arg2;
 @property(readonly) id <_GCGamepadEventSourceDescription> gamepadEventSource;
 - (_Bool)supportsGamepad;
@@ -98,6 +90,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType deviceGameIntentComponentGameIntentTriggeredHandler;
 - (void)setEnableGlobalGameControllerFunctionality:(_Bool)arg1;
 - (void)triggerGameIntentWithEvent:(long long)arg1;
+- (long long)getGlyphSetOverride;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

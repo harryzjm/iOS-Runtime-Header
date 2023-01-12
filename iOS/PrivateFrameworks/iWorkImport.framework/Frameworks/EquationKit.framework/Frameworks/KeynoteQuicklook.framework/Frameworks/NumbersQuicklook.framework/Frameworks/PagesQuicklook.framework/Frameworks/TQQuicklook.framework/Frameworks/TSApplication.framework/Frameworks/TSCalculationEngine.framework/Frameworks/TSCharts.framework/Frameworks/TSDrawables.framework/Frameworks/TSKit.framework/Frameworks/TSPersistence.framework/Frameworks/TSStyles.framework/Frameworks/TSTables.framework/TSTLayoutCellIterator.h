@@ -12,6 +12,10 @@
     _Bool _queriedModel;
     _Bool _modelIteratorHasCell;
     _Bool _columnOrderReversed;
+    _Bool _isDynamicallyChangingContent;
+    _Bool _isDynamicallyChangingRowOrColumnCount;
+    _Bool _isDynamicallyHidingRowsCols;
+    _Bool _isDynamicallyRemovingText;
     unsigned int _numberOfLayoutColumns;
     unsigned int _numberOfColumns;
     unsigned int _numberOfRows;
@@ -25,6 +29,10 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSTMutableCellIteratorData *layoutCellData; // @synthesize layoutCellData=_layoutCellData;
+@property(nonatomic) _Bool isDynamicallyRemovingText; // @synthesize isDynamicallyRemovingText=_isDynamicallyRemovingText;
+@property(nonatomic) _Bool isDynamicallyHidingRowsCols; // @synthesize isDynamicallyHidingRowsCols=_isDynamicallyHidingRowsCols;
+@property(nonatomic) _Bool isDynamicallyChangingRowOrColumnCount; // @synthesize isDynamicallyChangingRowOrColumnCount=_isDynamicallyChangingRowOrColumnCount;
+@property(nonatomic) _Bool isDynamicallyChangingContent; // @synthesize isDynamicallyChangingContent=_isDynamicallyChangingContent;
 @property(nonatomic) unsigned int numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 @property(nonatomic) unsigned int numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
 @property(nonatomic) unsigned int numberOfLayoutColumns; // @synthesize numberOfLayoutColumns=_numberOfLayoutColumns;
@@ -35,7 +43,7 @@
 @property(readonly, nonatomic) TSTCell *layoutCell; // @synthesize layoutCell=_layoutCell;
 @property(readonly, nonatomic) struct TSUCellCoord layoutCellID; // @synthesize layoutCellID=_layoutCellID;
 @property(readonly, nonatomic) struct TSUCellRect layoutRange; // @synthesize layoutRange=_layoutRange;
-@property(readonly, retain, nonatomic) TSTLayoutEngine *layoutEngine; // @synthesize layoutEngine=_layoutEngine;
+@property(readonly, nonatomic) TSTLayoutEngine *layoutEngine; // @synthesize layoutEngine=_layoutEngine;
 - (_Bool)getNextCellData:(id *)arg1;
 - (id)initWithLayoutEngine:(id)arg1 range:(struct TSUCellRect)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;
 - (id)initWithLayout:(id)arg1 range:(struct TSUCellRect)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;

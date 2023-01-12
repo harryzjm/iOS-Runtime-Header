@@ -7,10 +7,12 @@
 #import <MIME/NSCopying-Protocol.h>
 #import <MIME/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSData, NSString;
 
 @protocol ECMessageHeaders <NSCopying, NSObject>
-- (NSArray *)listUnsubscribeCommands;
+@property(readonly, nonatomic) NSData *encodedHeaders;
+@property(readonly, nonatomic) NSString *listUnsubscribePostContent;
+@property(readonly, nonatomic) NSArray *listUnsubscribeCommands;
 - (NSString *)firstSenderAddress;
 - (NSString *)firstAddressForKey:(NSString *)arg1;
 - (id)firstHeaderForKey:(NSString *)arg1;

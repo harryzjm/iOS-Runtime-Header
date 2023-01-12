@@ -9,9 +9,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)streamGroupIDsWithMediaBlob:(id)arg1;
 + (unsigned int)capabilitiesWithMomentSettings:(id)arg1;
 + (void)dumpRemoteNegotiationData:(id)arg1 forceFileDump:(_Bool)arg2;
 + (_Bool)initializeLocalConfiguration:(id)arg1 negotiationData:(id)arg2 deviceRole:(int)arg3 preferredAudioPayload:(int)arg4;
++ (id)newUnserializedMediaBlob:(id)arg1;
 + (id)newDecompressedBlob:(id)arg1;
 + (id)newCompressedBlob:(id)arg1;
 - (void)setupNegotiatedFaceTimeSettingsWithRemoteMediaBlob:(id)arg1;

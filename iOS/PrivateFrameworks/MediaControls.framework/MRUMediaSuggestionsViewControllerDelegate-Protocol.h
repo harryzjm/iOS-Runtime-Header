@@ -6,12 +6,9 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class MRUMediaSuggestion, MRUMediaSuggestionsViewController, NSArray;
+@class MRMediaSuggestion, MRUMediaSuggestionsViewController;
 
 @protocol MRUMediaSuggestionsViewControllerDelegate <NSObject>
-- (void)mediaSuggestionsViewController:(MRUMediaSuggestionsViewController *)arg1 didSelectSuggestion:(MRUMediaSuggestion *)arg2 completion:(void (^)(void))arg3;
-
-@optional
-- (void)mediaSuggestionsViewController:(MRUMediaSuggestionsViewController *)arg1 didChangeSuggestions:(NSArray *)arg2;
+- (void)mediaSuggestionsViewController:(MRUMediaSuggestionsViewController *)arg1 didSelectSuggestion:(MRMediaSuggestion *)arg2 completion:(void (^)(void))arg3;
 @end
 

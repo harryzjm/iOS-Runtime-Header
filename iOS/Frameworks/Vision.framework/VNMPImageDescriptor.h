@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSSecureCoding-Protocol.h>
-#import <Vision/VNSerializingInternal-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VNMPImageDescriptor : NSObject <NSSecureCoding, VNSerializingInternal>
+@interface VNMPImageDescriptor : NSObject
 {
     long long _internalNonSerializedDescriptorId;
     float _quality;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *dependencies;
     MISSING_TYPE *dataProvider;
     MISSING_TYPE *eventHub;
+    MISSING_TYPE *localeAnalyzer;
     MISSING_TYPE *resignActiveObserver;
     MISSING_TYPE *navigationBarTintColor;
     MISSING_TYPE *lastNavigationBarTintColor;

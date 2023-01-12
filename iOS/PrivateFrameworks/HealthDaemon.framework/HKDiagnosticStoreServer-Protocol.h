@@ -9,6 +9,7 @@
 @class NSArray, NSString;
 
 @protocol HKDiagnosticStoreServer <NSObject>
+- (void)remote_fetchSQLPragma:(long long)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)remote_fetchURLForAnalyticsFileWithName:(NSString *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (void)remote_fetchDiagnosticsWithKeys:(NSArray *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 @end

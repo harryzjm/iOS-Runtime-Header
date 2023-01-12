@@ -11,6 +11,7 @@
 @interface _TtC8VideosUI34EpisodeCollectionViewModelFragment : _TtCs12_SwiftObject
 {
     MISSING_TYPE *children;
+    MISSING_TYPE *prototypeItemViewModel;
 }
 
 @end

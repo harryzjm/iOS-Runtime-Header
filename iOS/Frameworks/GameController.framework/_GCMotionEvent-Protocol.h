@@ -21,5 +21,6 @@
 @property(readonly) double gyroYaw;
 @property(readonly) double gyroPitch;
 @property(readonly) _Bool hasGyro;
+@property(readonly) unsigned long long timestamp;
 @end
 

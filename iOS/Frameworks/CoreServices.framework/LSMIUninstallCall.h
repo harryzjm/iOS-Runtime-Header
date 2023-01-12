@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/LSMIUninstallCall-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface LSMIUninstallCall : NSObject <LSMIUninstallCall>
+@interface LSMIUninstallCall : NSObject
 {
     NSString *_bundleID;
 }

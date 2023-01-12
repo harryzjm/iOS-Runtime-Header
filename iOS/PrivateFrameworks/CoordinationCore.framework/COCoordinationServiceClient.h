@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/NSCopying-Protocol.h>
-
-@class NSXPCConnection;
+@class NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface COCoordinationServiceClient : NSObject <NSCopying>
+@interface COCoordinationServiceClient : NSObject
 {
     NSXPCConnection *_connection;
 }
 
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property(readonly, copy, nonatomic) NSString *clientBundleIdentifier;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

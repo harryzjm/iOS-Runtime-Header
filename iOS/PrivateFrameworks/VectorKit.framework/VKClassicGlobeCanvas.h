@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/GEOResourceManifestTileGroupObserver-Protocol.h>
-#import <VectorKit/VKInteractiveMap-Protocol.h>
-
 @class NSArray, NSString, VKARCameraController, VKGlobeCameraController;
 @protocol VKInteractiveMapDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKClassicGlobeCanvas <GEOResourceManifestTileGroupObserver, VKInteractiveMap>
+@interface VKClassicGlobeCanvas
 {
     VKGlobeCameraController *_globeCameraController;
     int _mapType;
@@ -19,7 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _disableRoads;
     _Bool _disableLabels;
     struct AltitudeDebugSettings _debugSettings;
-    void *_globeAdapter;
+    struct unique_ptr<md::GlobeAdapter, std::default_delete<md::GlobeAdapter>> _globeAdapter;
     void *_renderer;
     struct shared_ptr<md::GlobeOverlayContainer> _overlayContainer;
     struct shared_ptr<ggl::FlyoverLibrary> _flyoverLibrary;
@@ -52,7 +49,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VKGlobeCameraController *globeCameraController; // @synthesize globeCameraController=_globeCameraController;
 @property(copy, nonatomic) CDUnknownBlockType sceneDidLoadCallback; // @synthesize sceneDidLoadCallback=_sceneDidLoadCallback;
 @property(readonly, nonatomic) _Bool flyoverAvailable; // @synthesize flyoverAvailable=_canShowFlyover;
-@property(nonatomic) id <VKInteractiveMapDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <VKInteractiveMapDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)didBecomeInActive;
 - (void)didBecomeActive;
 - (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
@@ -110,6 +107,7 @@ __attribute__((visibility("hidden")))
 - (void)_reloadStylesheet;
 - (id)consoleString:(_Bool)arg1;
 - (void)dealloc;
+- (void)willDealloc;
 - (id)initWithMapEngine:(void *)arg1 inBackground:(_Bool)arg2;
 - (void)stopLoading;
 - (void)setMapType:(int)arg1 animated:(_Bool)arg2;

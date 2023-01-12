@@ -6,15 +6,10 @@
 
 #import <UIKitCore/UIFocusItem-Protocol.h>
 
-@class UIBezierPath, _UIFocusStyle;
-
 @protocol _UIFocusItemPrivate <UIFocusItem>
 
 @optional
-@property(readonly, nonatomic) UIBezierPath *_focusRingPath;
-@property(readonly, nonatomic) _Bool _wantsFocusRing;
 @property(readonly, nonatomic) long long _focusItemDeferralMode;
-@property(readonly, nonatomic) _UIFocusStyle *_focusEffectStyle;
-- (_Bool)_isTransparentFocusItem;
+- (long long)_focusedSound;
 @end
 

@@ -7,6 +7,8 @@
 @class NSString, SFDeviceDiscovery;
 
 @protocol SDXPCDeviceDiscoveryInterface
+- (void)deviceDiscoveryTriggerEnhancedDiscovery:(NSString *)arg1 useCase:(unsigned int)arg2 completion:(void (^)(NSError *))arg3;
+- (void)deviceDiscoveryTriggerEnhancedDiscovery:(NSString *)arg1;
 - (void)deviceDiscoveryFastScanCancel:(NSString *)arg1;
 - (void)deviceDiscoveryFastScanTrigger:(NSString *)arg1;
 - (void)deviceDiscoveryUpdate:(SFDeviceDiscovery *)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPMiddleware-Protocol.h>
-
 @class MPModelResponse, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPModelShimRequestMiddleware : NSObject <MPMiddleware>
+@interface _MPModelShimRequestMiddleware : NSObject
 {
     NSArray *_invalidationObservers;
     MPModelResponse *_modelResponse;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WatchKit/NSCopying-Protocol.h>
-#import <WatchKit/NSSecureCoding-Protocol.h>
-
 @class UIColor;
 
 __attribute__((visibility("hidden")))
-@interface SPColorWrapper : NSObject <NSSecureCoding, NSCopying>
+@interface SPColorWrapper : NSObject
 {
     UIColor *_color;
 }

@@ -15,6 +15,7 @@
 - (void)setShowMentionSuggestions:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_postSentAnnouncementIfNeeded;
 - (void)touchUpInsideSendButton:(id)arg1;
+- (void)keyCommandSend:(id)arg1;
 - (void)collapsedPlaceholderLabelTapped:(id)arg1;
 - (void)browserButtonTapped:(id)arg1;
 - (void)arrowButtonTapped:(id)arg1;
@@ -27,7 +28,7 @@
 - (void)presentAudioActionMenu;
 - (void)configureAudioActionMenuControllerForPlayback:(_Bool)arg1;
 - (void)audioMenuItemAction:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(_Bool)arg3 shouldShowSendButton:(_Bool)arg4 shouldShowSubject:(_Bool)arg5 shouldShowPluginButtons:(_Bool)arg6 shouldShowCharacterCount:(_Bool)arg7 traitCollection:(id)arg8 shouldDisableAttachments:(_Bool)arg9;
+- (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(_Bool)arg3 shouldShowSendButton:(_Bool)arg4 shouldShowSubject:(_Bool)arg5 shouldShowPluginButtons:(_Bool)arg6 shouldShowCharacterCount:(_Bool)arg7 traitCollection:(id)arg8 shouldDisableAttachments:(_Bool)arg9 shouldUseNonEmojiKeyboard:(_Bool)arg10;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityApplyEmojiButtonLabel;
 - (void)_accessibilityApplyCancelButtonLabel;

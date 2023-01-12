@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITextInteraction.h"
+
 @class UITextGestureTuning;
 @protocol UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
-@interface UITextPhraseBoundaryInteraction
+@interface UITextPhraseBoundaryInteraction : UITextInteraction
 {
     UITextGestureTuning *_gestureTuning;
     id <UITextCursorAssertion> _blinkAssertion;

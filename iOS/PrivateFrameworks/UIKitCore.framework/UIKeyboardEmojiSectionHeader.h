@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionReusableView.h"
+
 @class NSString, UIColor, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiSectionHeader
+@interface UIKeyboardEmojiSectionHeader : UICollectionReusableView
 {
     UILabel *_emojiSectionHeader;
 }

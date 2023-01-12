@@ -45,10 +45,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AWSampleLogger *sampleLogger; // @synthesize sampleLogger=_sampleLogger;
 - (id)initWithMask:(unsigned long long)arg1;
 - (void)setSmartCoverClosed:(_Bool)arg1;
-- (void)shouldSample:(_Bool)arg1 withDeadline:(unsigned long long)arg2;
+- (void)shouldSample:(_Bool)arg1 withDeadline:(unsigned long long)arg2 withOptions:(union)arg3;
 - (unsigned long long)minimumAttentionSamplerErrorRetryTime;
 - (unsigned long long)nextSampleTimeForSamplingInterval:(unsigned long long)arg1;
-- (void)finishDeadlineComputation;
+- (void)finishDeadlineComputationWithOptions:(union)arg1;
 - (void)updateSamplingDeadline:(unsigned long long)arg1 forClient:(id)arg2;
 - (void)startDeadlineComputation;
 - (void)setUnitTestMode;

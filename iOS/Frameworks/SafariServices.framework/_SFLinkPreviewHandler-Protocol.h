@@ -21,7 +21,7 @@
 - (void)linkPreviewHelperWillDisableLinkPreview;
 - (_Bool)isAutomationEnabledForLinkPreviewHelper:(_SFLinkPreviewHelper *)arg1;
 - (_Bool)isPrivateBrowsingEnabledForPreviewHelper:(_SFLinkPreviewHelper *)arg1;
-- (void)linkPreviewHelperWillOpenUniveralLinkLocally:(_SFLinkPreviewHelper *)arg1;
+- (void)linkPreviewHelperWillOpenUniversalLinkLocally:(_SFLinkPreviewHelper *)arg1;
 - (void)linkPreviewHelper:(_SFLinkPreviewHelper *)arg1 addURLToReadingList:(NSURL *)arg2;
 - (void)linkPreviewHelperWillBeginDownload:(_SFLinkPreviewHelper *)arg1;
 @end

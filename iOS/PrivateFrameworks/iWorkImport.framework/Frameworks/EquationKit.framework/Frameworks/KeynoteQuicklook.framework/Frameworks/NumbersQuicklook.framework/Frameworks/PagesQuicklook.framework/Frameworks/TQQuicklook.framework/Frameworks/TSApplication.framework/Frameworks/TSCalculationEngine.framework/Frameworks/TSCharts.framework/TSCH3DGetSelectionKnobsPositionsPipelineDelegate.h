@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DChartAllSceneObjectDelegate-Protocol.h>
-#import <TSCharts/TSCH3DChartElementSceneObjectGeometryDelegate-Protocol.h>
-#import <TSCharts/TSCH3DSceneDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString, TSCH3DChartRep, TSCH3DGeometry, TSCH3DScene;
 
-@interface TSCH3DGetSelectionKnobsPositionsPipelineDelegate : NSObject <TSCH3DSceneDelegate, TSCH3DChartAllSceneObjectDelegate, TSCH3DChartElementSceneObjectGeometryDelegate>
+@interface TSCH3DGetSelectionKnobsPositionsPipelineDelegate : NSObject
 {
     TSCH3DChartRep *_rep;
     NSArray *_selection;

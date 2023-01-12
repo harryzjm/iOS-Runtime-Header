@@ -9,6 +9,7 @@
 @class CKKSExternalKey, NSArray, NSDictionary, NSString;
 
 @protocol CKKSControlProtocol <NSObject>
+- (void)pcsMirrorKeysForServices:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)toggleHavoc:(void (^)(_Bool, NSError *))arg1;
 - (void)deleteSEView:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)modifyTLKSharesForSEView:(NSString *)arg1 adding:(NSArray *)arg2 deleting:(NSArray *)arg3 reply:(void (^)(NSError *))arg4;
@@ -18,8 +19,7 @@
 - (void)rpcGetCKDeviceIDWithReply:(void (^)(NSString *))arg1;
 - (void)rpcPushOutgoingChanges:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)rpcFetchAndProcessChanges:(NSString *)arg1 classA:(_Bool)arg2 onlyIfNoRecentFetch:(_Bool)arg3 reply:(void (^)(NSError *))arg4;
-- (void)rpcFastStatus:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
-- (void)rpcStatus:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
+- (void)rpcStatus:(NSString *)arg1 fast:(_Bool)arg2 waitForNonTransientState:(unsigned long long)arg3 reply:(void (^)(NSArray *, NSError *))arg4;
 - (void)rpcResyncLocal:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)rpcResync:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)rpcResetCloudKit:(NSString *)arg1 reason:(NSString *)arg2 reply:(void (^)(NSError *))arg3;

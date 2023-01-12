@@ -11,10 +11,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (_Bool)applyPropertyStrip:(id)arg1 toGraph:(id)arg2;
-+ (_Bool)applyAUStrip:(id)arg1 toGraph:(id)arg2;
-+ (id)graphWithGraphInfo:(id)arg1;
-+ (id)graphWithConfiguration:(id)arg1;
-
 @end
 

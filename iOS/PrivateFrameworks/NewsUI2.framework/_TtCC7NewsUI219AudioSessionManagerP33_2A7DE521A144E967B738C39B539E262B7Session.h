@@ -15,6 +15,8 @@
     MISSING_TYPE *lastPlaybackPosition;
     MISSING_TYPE *totalTimePlayed;
     MISSING_TYPE *deltaTimePlayed;
+    MISSING_TYPE *hasPassedUpsellStartTime;
+    MISSING_TYPE *hasPassedUpsellEndTime;
 }
 
 @end

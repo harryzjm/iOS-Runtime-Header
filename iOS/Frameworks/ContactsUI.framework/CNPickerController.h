@@ -6,18 +6,11 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <ContactsUI/CNPickerControllerDelegate-Protocol.h>
-#import <ContactsUI/UISearchControllerDelegate-Protocol.h>
-#import <ContactsUI/UISearchResultsUpdating-Protocol.h>
-#import <ContactsUI/UITableViewDataSource-Protocol.h>
-#import <ContactsUI/UITableViewDelegate-Protocol.h>
-#import <ContactsUI/UITextFieldDelegate-Protocol.h>
-
 @class NSArray, NSIndexPath, NSString, UISearchController, UITextField;
 @protocol CNPickerControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPickerController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UISearchResultsUpdating, UISearchControllerDelegate, CNPickerControllerDelegate>
+@interface CNPickerController : UITableViewController
 {
     _Bool _allowsDiscoveredItems;
     _Bool _searchIncludesSupplementalItems;

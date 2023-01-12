@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, TSPDigest;
+@class NSNumber, NSString, TSPDigest;
 @protocol TSPCryptoInfo;
 
 @interface TSPPackageMetadataDataInfo : NSObject
@@ -16,12 +16,14 @@
     TSPDigest *_digest;
     NSString *_preferredFilename;
     NSString *_filename;
+    NSNumber *_materializedLength;
     id <TSPCryptoInfo> _decryptionInfo;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <TSPCryptoInfo> decryptionInfo; // @synthesize decryptionInfo=_decryptionInfo;
 @property(readonly, nonatomic) _Bool isUnmaterializedRemoteData; // @synthesize isUnmaterializedRemoteData=_isUnmaterializedRemoteData;
+@property(readonly, nonatomic) NSNumber *materializedLength; // @synthesize materializedLength=_materializedLength;
 @property(readonly, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property(readonly, nonatomic) NSString *preferredFilename; // @synthesize preferredFilename=_preferredFilename;
 @property(readonly, nonatomic) TSPDigest *digest; // @synthesize digest=_digest;

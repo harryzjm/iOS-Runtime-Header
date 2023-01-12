@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <ClassKit/CLSGraphVertex-Protocol.h>
-
-@interface NSString (CLSGraphVertex) <CLSGraphVertex>
+@interface NSString (CLSGraphVertex)
 @property(readonly, nonatomic) id vertexID;
 - (unsigned long long)_cls_stableHash;
 @property(readonly, nonatomic) NSString *sha224;

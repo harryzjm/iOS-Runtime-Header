@@ -6,12 +6,10 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <MediaFoundation/MFUserAction-Protocol.h>
-
 @class MISSING_TYPE, NSDictionary, NSString;
 @protocol MFTimeStamp;
 
-@interface _TtC15MediaFoundation15VideoUserAction : _TtCs12_SwiftObject <MFUserAction>
+@interface _TtC15MediaFoundation15VideoUserAction : _TtCs12_SwiftObject
 {
     MISSING_TYPE *identifier;
     MISSING_TYPE *type;

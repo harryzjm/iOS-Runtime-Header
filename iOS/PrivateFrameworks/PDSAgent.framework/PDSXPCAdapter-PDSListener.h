@@ -6,11 +6,9 @@
 
 #import <PDS/PDSXPCAdapter.h>
 
-#import <PDSAgent/PDSXPCListenerVendor-Protocol.h>
-
 @class NSString;
 
-@interface PDSXPCAdapter (PDSListener) <PDSXPCListenerVendor>
+@interface PDSXPCAdapter (PDSListener)
 + (id)defaultListenerVendor;
 - (id)listenerForMachService:(id)arg1;
 

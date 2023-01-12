@@ -15,7 +15,7 @@
 @property(readonly, nonatomic) long long status;
 @property(readonly, nonatomic) NSError *error;
 @property(readonly, nonatomic) float volume;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 duration;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 currentTime;
+@property(readonly, nonatomic) CDStruct_198678f7 duration;
+@property(readonly, nonatomic) CDStruct_198678f7 currentTime;
 @end
 

@@ -54,11 +54,13 @@ __attribute__((visibility("hidden")))
 @property float interestingnessScore; // @synthesize interestingnessScore=_interestingnessScore;
 @property float actionScore; // @synthesize actionScore=_actionScore;
 @property float qualityScore; // @synthesize qualityScore=_qualityScore;
+- (id)clipResults:(CDStruct_e83c9415)arg1;
 - (float)computeExposureScoreOfFrame:(void *)arg1;
 - (void)reviseFrameTrackScore:(void *)arg1 saliencyRegions:(id)arg2;
 - (void)setNextCaptureFrame:(struct __CVBuffer *)arg1;
 - (float)getSceneSwichFrequency;
 - (int)addResult:(struct __CFArray *)arg1 to:(id)arg2 forKey:(id)arg3 optional:(_Bool)arg4;
+- (int)addSceneAnalysisResult:(id)arg1 to:(id)arg2 clipRange:(CDStruct_e83c9415)arg3;
 - (int)addSceneAnalysisResult:(id)arg1 to:(id)arg2 optional:(_Bool)arg3;
 - (id)privateResults;
 - (id)results;
@@ -68,8 +70,8 @@ __attribute__((visibility("hidden")))
 - (int)finishAnalysisPass:(CDStruct_e83c9415)arg1;
 - (float)estimateExpressionScore:(id)arg1 encodeStats:(struct EncodeStats *)arg2 frameWidth:(int)arg3 frameHeight:(int)arg4;
 - (int)isStableMetaMotion:(CDStruct_1b6d18a9)arg1;
-- (int)analyzeFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 properties:(id)arg4 flags:(unsigned long long *)arg5;
-- (int)analyzeFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 flags:(unsigned long long *)arg4;
+- (int)analyzeFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 properties:(id)arg4 flags:(unsigned long long *)arg5 cancel:(CDUnknownBlockType)arg6;
+- (int)analyzeFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 flags:(unsigned long long *)arg4 cancel:(CDUnknownBlockType)arg5;
 - (void)prepareLivePhotoAnalysisByScenes:(id)arg1;
 - (void)prepareVideoAnalysisByScenes:(id)arg1;
 - (int)seedAnalyzersWithPixelBuffer:(struct __CVBuffer *)arg1 startTime:(CDStruct_1b6d18a9)arg2;

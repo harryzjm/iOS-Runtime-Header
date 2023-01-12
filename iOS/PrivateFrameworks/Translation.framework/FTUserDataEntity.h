@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTUserDataEntity : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTUserDataEntity : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_0b2b2f48)addObjectToBuffer:(void *)arg1;
+- (void)attributes_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)attributes_count;
+- (id)attributes_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *attributes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct UserDataEntity *)arg2 verify:(_Bool)arg3;

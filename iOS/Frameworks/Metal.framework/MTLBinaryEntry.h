@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_data> *_data;
     NSArray *_importedLibraries;
     NSArray *_importedSymbols;
+    NSObject<OS_dispatch_data> *_airntData;
 }
 
 @property(readonly) NSArray *importedLibraries; // @synthesize importedLibraries=_importedLibraries;
 @property(readonly) NSArray *importedSymbols; // @synthesize importedSymbols=_importedSymbols;
 @property(readonly) NSObject<OS_dispatch_data> *data; // @synthesize data=_data;
+@property NSObject<OS_dispatch_data> *airntData; // @synthesize airntData=_airntData;
 - (id)description;
 - (void)dealloc;
 - (id)initWithData:(id)arg1 importedSymbols:(id)arg2 importedLibraries:(id)arg3;

@@ -22,5 +22,7 @@
 + (id)dnds_metricsBackingStoreFileURL;
 + (id)dnds_settingsBackingStoreFileURL;
 + (id)dnds_localAssertionBackingStoreFileURL;
++ (id)dnds_backingStoreRootDirectoryURL;
++ (id)dnds_rootDirectoryURL;
 @end
 

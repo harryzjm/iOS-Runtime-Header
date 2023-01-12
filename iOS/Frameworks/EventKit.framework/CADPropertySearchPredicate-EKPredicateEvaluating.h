@@ -6,9 +6,7 @@
 
 #import <CalendarDaemon/CADPropertySearchPredicate.h>
 
-#import <EventKit/EKPredicateEvaluating-Protocol.h>
-
-@interface CADPropertySearchPredicate (EKPredicateEvaluating) <EKPredicateEvaluating>
+@interface CADPropertySearchPredicate (EKPredicateEvaluating)
 - (_Bool)ekPredicateEvaluateWithObject:(id)arg1;
 @end
 

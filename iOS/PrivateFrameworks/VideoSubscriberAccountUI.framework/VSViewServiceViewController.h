@@ -6,15 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideoSubscriberAccountUI/VSIdentityProviderPickerViewControllerDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/VSIdentityProviderViewControllerDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/VSRemoteNotifierDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/VSViewServiceProtocol-Protocol.h>
-
-@class NSOperationQueue, NSString, UINavigationController, VSAuditToken, VSOptional, VSPersistentStorage, VSPreferences, VSRemoteNotifier, VSRestrictionsCenter;
+@class NSOperationQueue, NSString, UINavigationController, VSAuditToken, VSOptional, VSPersistentStorage, VSPreferences, VSRemoteNotifier, VSRestrictionsCenter, VSTopShelfPurger;
 
 __attribute__((visibility("hidden")))
-@interface VSViewServiceViewController : UIViewController <VSViewServiceProtocol, VSIdentityProviderPickerViewControllerDelegate, VSIdentityProviderViewControllerDelegate, VSRemoteNotifierDelegate>
+@interface VSViewServiceViewController : UIViewController
 {
     _Bool _presentedInHost;
     _Bool _identityProviderPickerRequired;
@@ -23,6 +18,7 @@ __attribute__((visibility("hidden")))
     VSRestrictionsCenter *_restrictionsCenter;
     VSRemoteNotifier *_remoteNotifier;
     VSPreferences *_preferences;
+    VSTopShelfPurger *_topShelfPurger;
     NSOperationQueue *_privateQueue;
     VSOptional *_currentRequest;
     VSOptional *_currentRequestID;
@@ -41,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VSOptional *currentRequestID; // @synthesize currentRequestID=_currentRequestID;
 @property(copy, nonatomic) VSOptional *currentRequest; // @synthesize currentRequest=_currentRequest;
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
+@property(retain, nonatomic) VSTopShelfPurger *topShelfPurger; // @synthesize topShelfPurger=_topShelfPurger;
 @property(retain, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
 @property(retain, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
 @property(retain, nonatomic) VSRestrictionsCenter *restrictionsCenter; // @synthesize restrictionsCenter=_restrictionsCenter;

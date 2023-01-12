@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNKeyDescriptor_Private-Protocol.h>
-
 @class CNContactKeyVector, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNAggregateKeyDescriptor : NSObject <CNKeyDescriptor_Private>
+@interface CNAggregateKeyDescriptor : NSObject
 {
     NSArray *_keyDescriptors;
     NSString *_privateDescription;
     CNContactKeyVector *_unauthorizedKeys;
 }
 
-+ (id)keyDescriptorWithKeyDescriptors:(id)arg1 description:(id)arg2;
 + (_Bool)supportsSecureCoding;
++ (id)keyDescriptorWithKeyDescriptors:(id)arg1 description:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CNContactKeyVector *unauthorizedKeys; // @synthesize unauthorizedKeys=_unauthorizedKeys;
 @property(copy, nonatomic) NSString *privateDescription; // @synthesize privateDescription=_privateDescription;
@@ -32,8 +30,8 @@ __attribute__((visibility("hidden")))
 - (id)_cn_requiredKeys;
 - (id)_cn_recursiveDescriptionWithPrefix:(id)arg1;
 - (id)_recursiveDescription;
-@property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

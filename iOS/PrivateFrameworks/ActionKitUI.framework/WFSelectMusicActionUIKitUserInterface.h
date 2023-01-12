@@ -6,13 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/MPMediaPickerControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFSelectMusicActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFSelectMusicActionUIKitUserInterface : WFEmbeddableActionUserInterface <MPMediaPickerControllerDelegate, WFSelectMusicActionUserInterface>
+@interface WFSelectMusicActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

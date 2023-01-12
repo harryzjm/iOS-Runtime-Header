@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "IKJSObject.h"
+
 @class IKHandle, IKJSDataObservable, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface _IKJSDataDictionaryExporter
+@interface _IKJSDataDictionaryExporter : IKJSObject
 {
     IKHandle *_dataDictionaryHandle;
     NSMutableArray *_touchedPropertyPaths;

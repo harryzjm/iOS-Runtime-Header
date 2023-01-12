@@ -6,12 +6,9 @@
 
 #import <Foundation/NSSet.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/IBCollection-Protocol.h>
-
 @class NSString;
 
-@interface NSSet (IBBinaryArchivingAdditions) <IBBinaryArchiving, IBCollection>
+@interface NSSet (IBBinaryArchivingAdditions)
 + (id)ib_setByIntersectingSets:(id)arg1;
 + (id)ib_setByUnioningCollections:(id)arg1;
 + (id)ib_setByUnioningCollection:(id)arg1 withCollection:(id)arg2;

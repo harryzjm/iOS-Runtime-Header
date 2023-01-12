@@ -7,9 +7,11 @@
 #import <UIKitCore/_UIViewServiceDeputy_UIViewServiceInterface-Protocol.h>
 #import <UIKitCore/_UIViewServiceUIBehaviorInterface-Protocol.h>
 
-@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSString, UIColor, UITraitCollection, _UIBoundingPath, _UISheetPresentationControllerConfiguration, _UIViewControllerTransitionCoordinatorContextDescription, _UIViewServiceViewControllerOperatorCreateOptions;
+@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSDate, NSDateInterval, NSString, UIColor, UITraitCollection, _UIBoundingPath, _UISheetPresentationControllerConfiguration, _UIViewControllerTransitionCoordinatorContextDescription, _UIViewServiceViewControllerOperatorCreateOptions;
 
 @protocol _UIViewServiceViewControllerOperator_RemoteViewControllerInterface <_UIViewServiceDeputy_UIViewServiceInterface, _UIViewServiceUIBehaviorInterface>
+- (void)__updateWithFrameSpecifierDate:(NSDate *)arg1 completion:(void (^)(void))arg2;
+- (void)__timelinesForDateInterval:(NSDateInterval *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)__cancelAlertActionWithToken:(long long)arg1;
 - (void)__redoActionWithToken:(long long)arg1;
 - (void)__undoActionWithToken:(long long)arg1;
@@ -33,7 +35,7 @@
 - (void)__hostDidRotateFromInterfaceOrientation:(long long)arg1 skipSelf:(_Bool)arg2;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
 - (void)__hostWillRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
-- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(_UIViewControllerTransitionCoordinatorContextDescription *)arg2 boundingPath:(_UIBoundingPath *)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 fence:(BKSAnimationFenceHandle *)arg6 hostPresentationTime:(unsigned long long)arg7 whenDone:(void (^)(struct CGSize, double))arg8;
+- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(_UIViewControllerTransitionCoordinatorContextDescription *)arg2 boundingPath:(_UIBoundingPath *)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 fence:(BKSAnimationFenceHandle *)arg6 timing:(struct _UIUpdateTiming)arg7 whenDone:(void (^)(struct CGSize, double))arg8;
 - (void)__hostDidChangeStatusBarHeight:(double)arg1;
 - (void)__hostDidChangeStatusBarOrientationToInterfaceOrientation:(long long)arg1;
 - (void)__hostDidBecomeActive;
@@ -54,6 +56,7 @@
 - (void)__hostViewDidDisappear:(_Bool)arg1;
 - (void)__hostViewWillDisappear:(_Bool)arg1;
 - (void)__hostViewDidAppear:(_Bool)arg1;
+- (void)__hostViewWillMoveToWindowInInterfaceOrientation:(long long)arg1 withStatusBarHeight:(double)arg2 underlapsStatusBar:(_Bool)arg3;
 - (void)__hostViewWillAppear:(_Bool)arg1 inInterfaceOrientation:(long long)arg2 traitCollection:(UITraitCollection *)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 completionHandler:(void (^)(struct CGSize))arg6;
 - (void)__hostReadyToReceiveMessagesFromServiceViewController;
 - (void)__createViewControllerWithOptions:(_UIViewServiceViewControllerOperatorCreateOptions *)arg1 completionBlock:(void (^)(_UIViewServiceControllerOperatorCreateResult *, NSError *))arg2;

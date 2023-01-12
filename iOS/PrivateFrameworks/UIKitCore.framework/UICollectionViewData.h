@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     } _collectionViewDataFlags;
     struct vector<long, std::allocator<long>> _sectionItemCounts;
     struct unordered_map<long, UICollectionViewLayoutAttributes *, std::hash<long>, std::equal_to<long>, std::allocator<std::pair<const long, UICollectionViewLayoutAttributes *>>> _globalItemMap;
+    NSMutableIndexSet *_indexesOfUnmappedItems;
     long long _totalItemCount;
 }
 

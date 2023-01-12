@@ -7,8 +7,10 @@
 #import <MobileSafariUI/_SFActivityDelegate-Protocol.h>
 
 @class _SFActivity;
+@protocol TabGroupProvider;
 
 @protocol AddBookmarkActivityDelegate <_SFActivityDelegate>
+- (id <TabGroupProvider>)addBookmarkActivityTabGroupProvider;
 - (_Bool)addBookmarkActivityCanSaveBookmarkChanges:(_SFActivity *)arg1;
 - (void)addBookmarkActivityFailedToAcquireBookmarkLock:(_SFActivity *)arg1;
 @end

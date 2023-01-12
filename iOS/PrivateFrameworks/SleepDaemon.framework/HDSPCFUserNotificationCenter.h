@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
-#import <SleepDaemon/HDSPSleepNotificationPublisher-Protocol.h>
-#import <SleepDaemon/HDSPSource-Protocol.h>
-
 @class HDSPEnvironment, NSMutableDictionary, NSString;
-@protocol HDSPSource;
 
 __attribute__((visibility("hidden")))
-@interface HDSPCFUserNotificationCenter : NSObject <HDSPSource, HDSPSleepNotificationPublisher, HDSPEnvironmentAware>
+@interface HDSPCFUserNotificationCenter : NSObject
 {
     struct os_unfair_lock_s _notificationLock;
     HDSPEnvironment *_environment;
@@ -29,7 +24,9 @@ __attribute__((visibility("hidden")))
 - (void)tearDownNotifications;
 - (void)tearDownNotificationForEventIdentifier:(id)arg1;
 - (void)handleResponse:(unsigned long long)arg1 forUserNotification:(id)arg2;
-- (void)_publishNotificationWithIdentifier:(id)arg1 title:(id)arg2 message:(id)arg3 defaultButtonTitle:(id)arg4 otherButtonTitle:(id)arg5 bypassDND:(_Bool)arg6 actionHandler:(CDUnknownBlockType)arg7;
+- (void)_publishNotificationWithIdentifier:(id)arg1 title:(id)arg2 message:(id)arg3 defaultButtonTitle:(id)arg4 otherButtonTitle:(id)arg5 bypassDND:(_Bool)arg6 aboveLockScreen:(_Bool)arg7 actionHandler:(CDUnknownBlockType)arg8;
+- (id)_ignoreTextForForAlarmEnabled:(_Bool)arg1 sleepModeOn:(_Bool)arg2;
+- (id)_confirmTextForForAlarmEnabled:(_Bool)arg1 sleepModeOn:(_Bool)arg2;
 - (id)_wakeDetectionAlertBodyForAlarmEnabled:(_Bool)arg1 sleepModeOn:(_Bool)arg2;
 - (id)_wakeDetectionAlertTitleForAlarmEnabled:(_Bool)arg1 sleepModeOn:(_Bool)arg2;
 - (void)_publishWakeDetectionNotificationForUserInfo:(id)arg1;
@@ -45,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool dontSync;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) id <HDSPSource> targetSource;
 
 @end
 

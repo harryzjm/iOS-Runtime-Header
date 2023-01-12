@@ -6,12 +6,9 @@
 
 #import <HomeKit/HMZone.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface HMZone (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
+@interface HMZone (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties

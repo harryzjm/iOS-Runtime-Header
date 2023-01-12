@@ -6,10 +6,7 @@
 
 #import <AVFAudio/AVAudioPCMBuffer.h>
 
-#import <VoiceMemos/NSCoding-Protocol.h>
-#import <VoiceMemos/NSSecureCoding-Protocol.h>
-
-@interface AVAudioPCMBuffer (RCAdditions) <NSSecureCoding, NSCoding>
+@interface AVAudioPCMBuffer (RCAdditions)
 + (_Bool)supportsSecureCoding;
 - (id)extractChannels:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

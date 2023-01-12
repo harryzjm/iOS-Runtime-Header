@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/IDSXPCConnectionProtocol-Protocol.h>
-
 @class NSString;
 @protocol OS_xpc_object;
 
-@interface IDSXPCConnectionWrapper : NSObject <IDSXPCConnectionProtocol>
+@interface IDSXPCConnectionWrapper : NSObject
 {
     NSObject<OS_xpc_object> *_connection;
 }

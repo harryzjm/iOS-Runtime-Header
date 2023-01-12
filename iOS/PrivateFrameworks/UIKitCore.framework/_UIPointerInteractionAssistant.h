@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UIViewSubtreeMonitor-Protocol.h>
+#import "UIPointerInteraction.h"
 
 @class NSMutableDictionary, NSString, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface _UIPointerInteractionAssistant <_UIViewSubtreeMonitor, UIPointerInteractionDelegate>
+@interface _UIPointerInteractionAssistant : UIPointerInteraction
 {
     UIView *_previewContainer;
     UIWindow *_monitoredWindow;

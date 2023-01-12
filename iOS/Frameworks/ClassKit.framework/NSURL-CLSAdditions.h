@@ -27,6 +27,11 @@
 @property(readonly, nonatomic) _Bool cls_isUploaded;
 @property(readonly, nonatomic) _Bool cls_isUbiquitous;
 - (id)cls_pathRelativeToURL:(id)arg1;
+- (id)deleteContent;
+- (long long)totalAllocatedSizeIncludingSubDirectories:(_Bool)arg1 error:(id *)arg2;
+- (void)attachSandboxExtensionToken:(id)arg1;
+- (id)sandboxExtensionTokenForProcess:(CDStruct_6ad76789)arg1;
+- (id)sandboxExtensionTokenForAnyProcess;
 - (void)cls_performWithSandboxAccess:(CDUnknownBlockType)arg1;
 - (void)cls_checkForCKShareWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cls_createShareIfNeededWithOrgAdminUserRecordID:(id)arg1 userRecordID:(id)arg2 completion:(CDUnknownBlockType)arg3;

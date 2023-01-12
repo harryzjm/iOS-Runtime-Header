@@ -23,5 +23,8 @@
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didRemoveAccessoryServer:(HAPAccessoryServer *)arg2 error:(NSError *)arg3;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didFindAccessoryServer:(HAPAccessoryServer *)arg2 stateChanged:(_Bool)arg3 stateNumber:(NSNumber *)arg4;
 - (_Bool)isServerLinkTypeBrowseable:(long long)arg1;
+
+@optional
+- (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 getThreadNetworkCredentialsForAccessoryWithIdentifier:(NSString *)arg2 withCompletion:(void (^)(HAPThreadNetworkMetadata *, NSError *))arg3;
 @end
 

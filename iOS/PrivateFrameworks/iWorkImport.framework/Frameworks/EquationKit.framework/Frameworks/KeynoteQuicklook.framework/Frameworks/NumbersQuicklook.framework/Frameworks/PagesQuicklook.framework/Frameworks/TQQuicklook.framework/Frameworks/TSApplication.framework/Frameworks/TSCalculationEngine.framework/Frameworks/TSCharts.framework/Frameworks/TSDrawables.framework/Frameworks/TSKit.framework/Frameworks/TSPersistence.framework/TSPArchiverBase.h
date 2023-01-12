@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPArchivableContent-Protocol.h>
-
 @class NSDictionary, NSHashTable, NSMutableDictionary, NSString, TSPObject, TSPReferenceOrderedSet, _TtC13TSPersistence23TSPMutableIdentifierSet;
 
-@interface TSPArchiverBase : NSObject <TSPArchivableContent>
+@interface TSPArchiverBase : NSObject
 {
     unique_ptr_f0def102 _message;
     void *_fieldRules;

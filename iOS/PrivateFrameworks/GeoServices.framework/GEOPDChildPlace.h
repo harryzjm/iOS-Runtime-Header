@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDMapsIdentifier, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDChildPlace : PBCodable <NSCopying>
+@interface GEOPDChildPlace : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;

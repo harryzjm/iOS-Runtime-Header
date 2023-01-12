@@ -6,18 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapsUI/MUPlaceTileTemplateView-Protocol.h>
-
-@class MUPlaceTileCellConfiguration, NSString, UIImageView, UILayoutGuide;
+@class MUPlaceTileCellConfiguration, NSString, UIImageView;
 @protocol MULabelViewProtocol, MUPlaceTileViewModel;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceCompactTileContentView : UIView <MUPlaceTileTemplateView>
+@interface MUPlaceCompactTileContentView : UIView
 {
     UIImageView *_iconView;
     UIView<MULabelViewProtocol> *_primaryLabel;
     UIView<MULabelViewProtocol> *_secondaryLabel;
-    UILayoutGuide *_contentLayoutGuide;
     MUPlaceTileCellConfiguration *_configuration;
     id <MUPlaceTileViewModel> _viewModel;
 }

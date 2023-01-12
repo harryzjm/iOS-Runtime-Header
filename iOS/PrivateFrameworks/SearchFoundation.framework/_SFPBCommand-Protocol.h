@@ -6,12 +6,16 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _SFPBAddToPhotosLibraryCommand, _SFPBBeginMapsRoutingCommand, _SFPBCallCommand, _SFPBCopyCommand, _SFPBEmailCommand, _SFPBIndexedUserActivityCommand, _SFPBInvokeSiriCommand, _SFPBLaunchAppCommand, _SFPBOpenAppClipCommand, _SFPBOpenCalculationCommand, _SFPBOpenCoreSpotlightItemCommand, _SFPBOpenFileProviderItemCommand, _SFPBOpenMediaCommand, _SFPBOpenPunchoutCommand, _SFPBOpenWebClipCommand, _SFPBPerformContactActionCommand, _SFPBPerformContactQueryCommand, _SFPBPerformEntityQueryCommand, _SFPBPerformIntentCommand, _SFPBPerformPersonEntityQueryCommand, _SFPBPlayMediaCommand, _SFPBPlayVideoCommand, _SFPBRequestAppClipInstallCommand, _SFPBRequestUserReportCommand, _SFPBRunVoiceShortcutCommand, _SFPBSearchInAppCommand, _SFPBSearchWebCommand, _SFPBShareCommand, _SFPBShowAppStoreSheetCommand, _SFPBShowContactCardCommand, _SFPBShowPhotosOneUpViewCommand, _SFPBShowPurchaseRequestSheetCommand, _SFPBShowSFCardCommand, _SFPBShowScreenTimeRequestSheetCommand, _SFPBToggleAudioCommand, _SFPBToggleWatchListStatusCommand, _SFPBUpdateSearchQueryCommand;
+@class NSData, NSDictionary, NSString, _SFPBAddToPhotosLibraryCommand, _SFPBBeginMapsRoutingCommand, _SFPBCallCommand, _SFPBCopyCommand, _SFPBEmailCommand, _SFPBExpandInlineCommand, _SFPBIndexedUserActivityCommand, _SFPBInvokeSiriCommand, _SFPBLaunchAppCommand, _SFPBOpenAppClipCommand, _SFPBOpenCalculationCommand, _SFPBOpenCoreSpotlightItemCommand, _SFPBOpenFileProviderItemCommand, _SFPBOpenMediaCommand, _SFPBOpenPunchoutCommand, _SFPBOpenWebClipCommand, _SFPBPerformContactActionCommand, _SFPBPerformContactQueryCommand, _SFPBPerformEntityQueryCommand, _SFPBPerformIntentCommand, _SFPBPerformPersonEntityQueryCommand, _SFPBPlayMediaCommand, _SFPBPlayVideoCommand, _SFPBRejectPeopleInPhotoCommand, _SFPBRequestAppClipInstallCommand, _SFPBRequestUserReportCommand, _SFPBRunVoiceShortcutCommand, _SFPBSearchInAppCommand, _SFPBSearchWebCommand, _SFPBShareCommand, _SFPBShowAppStoreSheetCommand, _SFPBShowContactCardCommand, _SFPBShowPhotosOneUpViewCommand, _SFPBShowPurchaseRequestSheetCommand, _SFPBShowSFCardCommand, _SFPBShowScreenTimeRequestSheetCommand, _SFPBSubscribeForUpdatesCommand, _SFPBToggleAudioCommand, _SFPBToggleWatchListStatusCommand, _SFPBUpdateSearchQueryCommand, _SFPBViewEmailCommand;
 
 @protocol _SFPBCommand <NSObject>
 @property(readonly, nonatomic) unsigned long long whichValue;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(copy, nonatomic) NSString *commandDetail;
+@property(retain, nonatomic) _SFPBRejectPeopleInPhotoCommand *rejectPeopleInPhotoCommand;
+@property(retain, nonatomic) _SFPBViewEmailCommand *viewEmailCommand;
+@property(retain, nonatomic) _SFPBSubscribeForUpdatesCommand *subscribeForUpdatesCommand;
+@property(retain, nonatomic) _SFPBExpandInlineCommand *expandInlineCommand;
 @property(retain, nonatomic) _SFPBPerformContactActionCommand *performContactActionCommand;
 @property(retain, nonatomic) _SFPBAddToPhotosLibraryCommand *addToPhotosLibraryCommand;
 @property(retain, nonatomic) _SFPBOpenMediaCommand *openMediaCommand;

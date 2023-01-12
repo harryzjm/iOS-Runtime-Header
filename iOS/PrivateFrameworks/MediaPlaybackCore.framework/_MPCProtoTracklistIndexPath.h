@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _MPCProtoTracklistIndexPath : PBCodable <NSCopying>
+@interface _MPCProtoTracklistIndexPath : PBCodable
 {
     long long _containerIndex;
     long long _itemIndex;

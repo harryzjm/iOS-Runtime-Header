@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/NSLayoutManager.h>
+#import <UIKit/NSLayoutManager.h>
+
+@class UIView;
 
 @interface NSLayoutManager (WFSizing)
+@property(nonatomic, setter=wf_setControlView:) __weak UIView *wf_controlView;
 - (double)wf_calculateIntrinsicHeightForWidth:(double)arg1 textContainer:(id)arg2;
 @end
 

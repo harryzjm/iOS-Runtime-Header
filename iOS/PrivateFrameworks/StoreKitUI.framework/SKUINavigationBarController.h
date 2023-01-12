@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUILayoutCacheDelegate-Protocol.h>
-
 @class NSArray, NSMapTable, NSMutableArray, NSString, SKUIButtonViewElement, SKUIClientContext, SKUINavigationBarButtonsController, SKUINavigationBarContext, SKUINavigationBarViewElement, SKUINavigationPaletteController, UIView, UIViewController;
 @protocol SKUINavigationBarControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUINavigationBarController : NSObject <SKUILayoutCacheDelegate>
+@interface SKUINavigationBarController : NSObject
 {
     SKUINavigationBarButtonsController *_buttonsController;
     SKUIClientContext *_clientContext;

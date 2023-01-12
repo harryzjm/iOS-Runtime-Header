@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     PSUIAppDescription *_appDescription;
     NSURL *_installURL;
     NSURL *_moreAppsURL;
+    CDUnknownBlockType _loadingCompletionBlock;
 }
 
 + (id)tryLoadAppDescriptionFromCache;
@@ -27,13 +28,15 @@ __attribute__((visibility("hidden")))
 + (void)lookupAppFromStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)lookupAppDescriptionForInstalledApp:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType loadingCompletionBlock; // @synthesize loadingCompletionBlock=_loadingCompletionBlock;
 @property(retain, nonatomic) NSURL *moreAppsURL; // @synthesize moreAppsURL=_moreAppsURL;
 @property(retain) NSURL *installURL; // @synthesize installURL=_installURL;
 @property(retain) PSUIAppDescription *appDescription; // @synthesize appDescription=_appDescription;
 @property(readonly) int installState; // @synthesize installState=_installState;
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(readonly, nonatomic) NSString *appID; // @synthesize appID=_appID;
-- (id)specifier;
+- (id)getLogger;
+- (id)specifierWithAppLoadCompletion:(CDUnknownBlockType)arg1;
 - (void)moreAppsButtonTapped:(id)arg1;
 - (_Bool)moreAppsAvailable;
 - (void)installButtonTapped:(id)arg1;

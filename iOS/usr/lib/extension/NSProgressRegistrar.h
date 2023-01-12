@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSProgressRegistrar-Protocol.h>
-#import <Foundation/NSXPCListenerDelegate-Protocol.h>
-
 @class NSFileAccessNode, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface NSProgressRegistrar : NSObject <NSXPCListenerDelegate, NSProgressRegistrar>
+@interface NSProgressRegistrar : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_publishersByID;

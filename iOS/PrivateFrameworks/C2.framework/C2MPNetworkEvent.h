@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <C2/NSCopying-Protocol.h>
-
 @class C2MPError, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface C2MPNetworkEvent : PBCodable <NSCopying>
+@interface C2MPNetworkEvent : PBCodable
 {
     unsigned long long _networkRequestBodyBytesSent;
     unsigned long long _networkResponseBodyBytesReceived;

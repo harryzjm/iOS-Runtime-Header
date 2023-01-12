@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIRemoteView.h"
+
 @class _UIRemoteViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UITextEffectsRemoteView
+@interface _UITextEffectsRemoteView : _UIRemoteView
 {
     _UIRemoteViewController *_remoteViewController;
 }

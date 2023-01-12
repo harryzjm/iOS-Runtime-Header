@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BLDownloadManifestRequest, BLPurchaseRequest, NSArray, NSDictionary, NSString, NSURL;
+@class BLDownloadManifestRequest, BLPurchaseRequest, NSArray, NSDictionary, NSSet, NSString, NSURL, NSUUID;
 @protocol BLUIHostServiceProtocol;
 
 @protocol BLServiceProtocol
@@ -16,6 +16,17 @@
 - (void)setValueSimulateCrashAtInstallDuringUnzip:(_Bool)arg1 withReply:(void (^)(NSError *))arg2;
 - (void)setValueSimulateCrashAtInstallDuringDecrypt:(_Bool)arg1 withReply:(void (^)(NSError *))arg2;
 - (void)setValueSimulateCrashAtInstallStart:(_Bool)arg1 withReply:(void (^)(NSError *))arg2;
+- (void)prepareForRemoveAppWithReply:(void (^)(NSError *))arg1;
+- (void)removeAllMigrationInfosExcludingStates:(NSSet *)arg1 withReply:(void (^)(NSError *))arg2;
+- (void)removeMigrationInfoForStoreID:(long long)arg1 withReply:(void (^)(NSError *))arg2;
+- (void)migrationInfosWithStates:(NSSet *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
+- (void)migrationInfosWithStoreIDs:(NSSet *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
+- (void)migrationInfoWithStoreID:(long long)arg1 withReply:(void (^)(BLBookletMigrationInfo *, NSError *))arg2;
+- (void)setMigrationState:(long long)arg1 forStoreIDs:(NSSet *)arg2 withReply:(void (^)(NSError *))arg3;
+- (void)removeRacGUIDForStoreID:(long long)arg1 withReply:(void (^)(NSError *))arg2;
+- (void)racGUIDForStoreID:(long long)arg1 withReply:(void (^)(NSUUID *, NSError *))arg2;
+- (void)setRacGUID:(NSUUID *)arg1 forStoreID:(long long)arg2 withReply:(void (^)(NSError *))arg3;
+- (void)monitorProgressWithReply:(void (^)(NSError *))arg1;
 - (void)flushMetricsWithReply:(void (^)(NSError *))arg1;
 - (void)reloadFromServerWithReply:(void (^)(NSError *))arg1;
 - (void)restartDownloadWithID:(NSString *)arg1 withReply:(void (^)(NSError *))arg2;

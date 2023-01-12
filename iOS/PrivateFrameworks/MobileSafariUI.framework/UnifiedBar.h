@@ -6,15 +6,11 @@
 
 #import <MobileSafari/SFUnifiedBar.h>
 
-#import <MobileSafariUI/SFUnifiedTabBarNavigationDelegate-Protocol.h>
-#import <MobileSafariUI/_SFBarRegistrationObserving-Protocol.h>
-#import <MobileSafariUI/_SFNavigationBarCommon-Protocol.h>
-
 @class NSArray, NSString, UITextField;
 @protocol _SFBarRegistrationToken, _SFNavigationBarDelegateCommon, _SFPopoverSourceInfo;
 
 __attribute__((visibility("hidden")))
-@interface UnifiedBar : SFUnifiedBar <SFUnifiedTabBarNavigationDelegate, _SFNavigationBarCommon, _SFBarRegistrationObserving>
+@interface UnifiedBar : SFUnifiedBar
 {
     id <_SFBarRegistrationToken> _barRegistrationToken;
     id <_SFNavigationBarDelegateCommon> _delegate;
@@ -25,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)didCompleteBarRegistrationWithToken:(id)arg1;
 @property(readonly, nonatomic) id <_SFPopoverSourceInfo> URLOutlinePopoverSourceInfo;
 @property(readonly, nonatomic) id <_SFPopoverSourceInfo> formatMenuButtonPopoverSourceInfo;
+- (struct CGRect)urlOutlineFrameRelativeToView:(id)arg1;
 @property(readonly, nonatomic) struct CGRect URLOutlineFrameInNavigationBarSpace;
 @property(readonly, copy, nonatomic) NSArray *popoverPassthroughViews;
 @property(readonly, nonatomic) UITextField *textField;
@@ -33,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)animateSafariIconLinkFromPoint:(struct CGPoint)arg1 inView:(id)arg2;
 - (void)unifiedTabBar:(id)arg1 multipleExtensionButtonTapped:(id)arg2;
 - (void)unifiedTabBar:(id)arg1 extensionButtonTapped:(id)arg2 extension:(id)arg3;
+- (void)unifiedTabBar:(id)arg1 didFinishShowingAvailabilityLabelOfType:(long long)arg2;
 - (void)unifiedTabBarURLTapped:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unifiedTabBarMediaStateMuteButtonTapped:(id)arg1;
 - (void)unifiedTabBarTranslationButtonTapped:(id)arg1;

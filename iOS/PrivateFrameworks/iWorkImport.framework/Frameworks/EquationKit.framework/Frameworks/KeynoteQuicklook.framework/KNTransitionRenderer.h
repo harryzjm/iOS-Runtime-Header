@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KeynoteQuicklook/CAAnimationDelegate-Protocol.h>
-
 @class CALayer, KNAnimatedSlideView, NSDictionary, NSMapTable, NSMutableArray, NSString, TSDFPSCounter;
 
-@interface KNTransitionRenderer <CAAnimationDelegate>
+@interface KNTransitionRenderer
 {
     CALayer *_backgroundLayer;
     NSMutableArray *_textures;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class AKASAuthorizationProvider, ASCAuthorizationPresentationContext, NSString, UIImage, UIImageView, UILabel;
+@class AKASAuthorizationProvider, ASCAuthorizationPresentationContext, NSString, UIImage, UIImageView, UILabel, UIStackView;
 @protocol ASCLoginChoiceProtocol;
 
 __attribute__((visibility("hidden")))
@@ -18,25 +18,34 @@ __attribute__((visibility("hidden")))
     UILabel *_titleLabel;
     UILabel *_detailLabel;
     UIImageView *_iconImageView;
+    UIStackView *_iconAndTextStackView;
+    _Bool _isSelectedLoginChoice;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isSelectedLoginChoice; // @synthesize isSelectedLoginChoice=_isSelectedLoginChoice;
+- (double)_additionalLeadingSeparatorInset;
+- (void)_updateLayoutForCurrentContentSizeCategory;
+- (void)traitCollectionDidChange:(id)arg1;
+- (id)_selectedRadioButtonImage;
+- (id)_emptyRadioButtonImage;
+- (void)_updateAccessoryImageView;
+- (void)_setUpAccessoryImageView;
+- (id)_defaultSecurityKeyIcon;
+- (id)_defaultPasskeyIcon;
+- (id)_cableIcon;
 - (id)_detailTextForExternalPasswordLoginChoice:(id)arg1;
 - (id)_detailTextForPasswordLoginChoiceFromKeychain:(id)arg1;
 - (id)_detailTextForPasswordLoginChoice:(id)arg1;
-@property(nonatomic) _Bool isSelectedLoginChoice;
 @property(retain, nonatomic) NSString *detailText;
 @property(retain, nonatomic) NSString *title;
 - (id)_subtitleForPublicKeyCredentialAssertion;
-- (id)_titleForPublicKeyCredentialAssertionWithName:(id)arg1 userHandle:(id)arg2;
+- (id)_titleForPublicKeyCredentialAssertionWithName:(id)arg1 identifier:(id)arg2;
 - (id)_publicKeyCredentialImageForPresentationContext:(id)arg1;
 - (void)_setUpContent;
-- (id)_cellLabelFontWithStyle:(id)arg1 traits:(unsigned int)arg2;
-- (void)_showIconBorder;
-- (void)_hideIconBorder;
+- (void)_configureImageViewForAppIcon;
+- (void)_configureImageViewForSymbolImage;
 @property(retain, nonatomic) UIImage *iconImage;
-- (double)_leadingIconImageOffset;
-- (void)_setUpConstraints;
 - (void)_setUpFormat;
 - (id)initWithLoginChoice:(id)arg1 presentationContext:(id)arg2 authorizationProvider:(id)arg3;
 

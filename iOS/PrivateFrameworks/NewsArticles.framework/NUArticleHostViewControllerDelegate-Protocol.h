@@ -11,6 +11,7 @@
 @protocol NUArticleHostViewControllerDelegate <NSObject>
 
 @optional
+- (void)articleHostViewControllerDidScrollToBottomOfPrimaryContent:(NUArticleHostViewController *)arg1;
 - (void)articleHostViewController:(NUArticleHostViewController *)arg1 didScrollToPosition:(SXScrollPosition *)arg2;
 @end
 

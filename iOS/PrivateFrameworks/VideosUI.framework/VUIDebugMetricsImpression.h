@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VUIDebugMetricsImpression : NSObject
 {
+    NSString *_idType;
     NSArray *_orderedOtherKeys;
     NSDictionary *_mainValues;
     NSDictionary *_otherValues;
@@ -20,11 +21,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *otherValues; // @synthesize otherValues=_otherValues;
 @property(retain, nonatomic) NSDictionary *mainValues; // @synthesize mainValues=_mainValues;
 @property(retain, nonatomic) NSArray *orderedOtherKeys; // @synthesize orderedOtherKeys=_orderedOtherKeys;
+@property(readonly, nonatomic) NSString *idType; // @synthesize idType=_idType;
 - (id)objectForKeyedSubscript:(id)arg1;
 @property(readonly, nonatomic) NSString *parentId;
 @property(readonly, nonatomic) NSString *impressionIndex;
 @property(readonly, nonatomic) NSString *impressionId;
-@property(readonly, nonatomic) NSString *idType;
 @property(readonly, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) NSString *type;
 @property(readonly, nonatomic) NSString *name;

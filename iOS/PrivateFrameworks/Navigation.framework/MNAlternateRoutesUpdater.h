@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)alternateRouteForLocation:(id)arg1;
 - (_Bool)updateForReroute:(id)arg1 rerouteReason:(unsigned long long)arg2;
 - (_Bool)updateForLocation:(id)arg1;
 - (_Bool)setAlternateRoutes:(id)arg1 forMainRoute:(id)arg2;

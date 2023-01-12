@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)_propertyTranslatorForKeyPath:(id)arg1;
 - (map_4ef4d36e)propertiesToFetchForPropertyKey:(id)arg1;
 - (Class)classForRelationshipKey:(id)arg1;
+- (vector_05d2ab2a)MLCorePredicateForModelPropertyFilters:(id)arg1;
 - (vector_9ebba6ab)MLCoreSortDescriptorsForModelSortDescriptors:(id)arg1;
 - (vector_2194507e)MLCorePropertiesForPropertySet:(id)arg1;
 - (shared_ptr_889ae36a)propertiesQueryForPropertySet:(id)arg1 scopedContainers:(id)arg2 allowedItemIdentifiers:(id)arg3 view:(id)arg4;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)mapRelationshipKey:(id)arg1 toModelClass:(Class)arg2 transient:(_Bool)arg3 usingForeignPropertyBase:(void *)arg4 relationshipValidationProperties:(const void *)arg5 isValidRelationshipHandler:(CDUnknownBlockType)arg6;
 - (void)mapRelationshipKey:(id)arg1 toModelClass:(Class)arg2 transient:(_Bool)arg3 usingForeignPropertyBase:(void *)arg4;
 - (void)mapRelationshipKey:(id)arg1 toModelClass:(Class)arg2 usingForeignPropertyBase:(void *)arg3;
+- (void)mapPropertyKey:(id)arg1 withPropertiesToFetch:(const void *)arg2 propertiesToSort:(const void *)arg3 sortTransformer:(CDUnknownBlockType)arg4 filterTransformer:(CDUnknownBlockType)arg5 valueTransformer:(CDUnknownBlockType)arg6;
 - (void)mapPropertyKey:(id)arg1 withPropertiesToFetch:(const void *)arg2 propertiesToSort:(const void *)arg3 sortTransformer:(CDUnknownBlockType)arg4 valueTransformer:(CDUnknownBlockType)arg5;
 - (void)mapPropertyKey:(id)arg1 withPropertiesToFetch:(const void *)arg2 valueTransformer:(CDUnknownBlockType)arg3;
 - (void)mapPropertyKey:(id)arg1 toMLProperty:(void *)arg2;

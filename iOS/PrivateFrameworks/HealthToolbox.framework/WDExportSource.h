@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthToolbox/UIActivityItemSource-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface WDExportSource : NSObject <UIActivityItemSource>
+@interface WDExportSource : NSObject
 {
     NSURL *_url;
     NSString *_subject;

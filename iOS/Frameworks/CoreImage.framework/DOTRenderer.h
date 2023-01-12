@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreImage/CIGVRenderer-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface DOTRenderer : NSObject <CIGVRenderer>
+@interface DOTRenderer : NSObject
 {
     struct __sFILE *file;
     NSURL *fileURL;

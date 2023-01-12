@@ -7,7 +7,7 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @class NSDictionary, NSString, NSURL, SBAlertItem;
-@protocol SBUIActiveOrientationObserver, SBUIIdleTimerHandler;
+@protocol SBUIActiveOrientationObserver;
 
 @protocol SBUIUserAgent <NSObject>
 - (NSString *)topSuspendedEventsOnlyDisplayID;
@@ -29,8 +29,6 @@
 - (void)lockAndDimDeviceDisconnectingCallIfNecessary:(_Bool)arg1 andDimScreen:(_Bool)arg2;
 - (void)lockAndDimDeviceDisconnectingCallIfNecessary:(_Bool)arg1;
 - (void)lockAndDimDevice;
-- (void)removeIdleTimerHandler:(id <SBUIIdleTimerHandler>)arg1;
-- (void)addIdleTimerHandler:(id <SBUIIdleTimerHandler>)arg1;
 - (_Bool)isIdleTimerDisabledForReason:(NSString *)arg1;
 - (void)setIdleTimerDisabled:(_Bool)arg1 forReason:(NSString *)arg2;
 - (void)undimScreen;

@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)splitTrafficSegmentationAndAddTo:(id)arg1 with:(void *)arg2 shouldSnap:(_Bool)arg3 isGradientTraffic:(_Bool)arg4;
 - (void)splitGradientTrafficSegmentationAndAddTo:(id)arg1 with:(void *)arg2 shouldSnap:(_Bool)arg3;
-- (void)assignPoints:(void *)arg1 laneHalfWidths:(float *)arg2 gradientTraffics:(struct GradientTraffic *)arg3 count:(unsigned long long)arg4;
+- (void)assignPoints:(void *)arg1 laneHalfWidths:(float *)arg2 gradientTraffics:(struct GradientTraffic *)arg3 polylineCoordinates:(struct PolylineCoordinate *)arg4 count:(unsigned long long)arg5;
 - (void)assignPoints:(void *)arg1 count:(unsigned long long)arg2;
 - (void)assignTo:(id)arg1 withSegment:(const struct TrafficSegment *)arg2;
 - (const struct GradientTraffic *)gradientTrafficAtIndex:(unsigned int)arg1;

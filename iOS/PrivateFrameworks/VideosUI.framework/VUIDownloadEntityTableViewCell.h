@@ -6,14 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <VideosUI/VUIDownloadEntityDelegate-Protocol.h>
-#import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
-
 @class NSString, VUIDownloadButton, VUIDownloadEntity, VUIImageView, VUILabel, VUILibraryEpisodeFrameView, VUISeparatorView, VUIVideosImageView;
 @protocol VUIDownloadEntityTableViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadEntityTableViewCell : UITableViewCell <VUIRentalExpirationLabelDelegate, VUIDownloadEntityDelegate>
+@interface VUIDownloadEntityTableViewCell : UITableViewCell
 {
     id <VUIDownloadEntityTableViewCellDelegate> _delegate;
     VUIDownloadButton *_downloadButton;
@@ -31,7 +28,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_generateMetaDataHeaderFirstLabelForDownloadEntity:(id)arg1;
-+ (id)_entityPlaceholderImageForDownloadEntity:(id)arg1;
 + (void)configureVUIDownloadEntityTableViewCell:(id)arg1 withDownloadEntity:(id)arg2 forMetrics:(_Bool)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long previousDownloadState; // @synthesize previousDownloadState=_previousDownloadState;

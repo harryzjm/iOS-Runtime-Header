@@ -13,9 +13,12 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
+    MISSING_TYPE *featureAvailability;
     MISSING_TYPE *lazySearchViewController;
+    MISSING_TYPE *lazySearchResultsViewController;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *recentSearchManager;
+    MISSING_TYPE *preservedSearchText;
     MISSING_TYPE *afterLoad;
 }
 

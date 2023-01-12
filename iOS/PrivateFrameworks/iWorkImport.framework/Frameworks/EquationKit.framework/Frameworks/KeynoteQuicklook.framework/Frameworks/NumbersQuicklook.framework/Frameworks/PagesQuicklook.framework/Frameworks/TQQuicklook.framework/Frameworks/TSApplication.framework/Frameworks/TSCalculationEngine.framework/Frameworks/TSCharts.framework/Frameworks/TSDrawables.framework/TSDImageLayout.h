@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSDMediaLayout.h"
+
 @class TSDImageAdjustments, TSDImageInfo, TSDInfoGeometry, TSDLayoutGeometry, TSDMaskLayout;
 
-@interface TSDImageLayout
+@interface TSDImageLayout : TSDMediaLayout
 {
     TSDLayoutGeometry *mImageGeometry;
     TSDMaskLayout *mMaskLayout;

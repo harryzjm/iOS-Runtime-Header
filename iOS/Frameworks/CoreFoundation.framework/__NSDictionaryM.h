@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSMutableDictionary.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSDictionaryM
+@interface __NSDictionaryM : NSMutableDictionary
 {
     CDStruct_bc24fd1e storage;
     _Atomic struct __cow_state_t *cow;
@@ -27,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)keysOfEntriesWithOptions:(unsigned long long)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)keyOfEntryWithOptions:(unsigned long long)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (void)enumerateKeysAndObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)__apply:(CDUnknownFunctionPointerType)arg1 context:(void *)arg2;
 - (void)setObservationInfo:(void *)arg1;
 - (void)_mutate;

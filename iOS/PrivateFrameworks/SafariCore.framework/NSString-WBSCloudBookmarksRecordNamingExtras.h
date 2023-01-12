@@ -13,9 +13,17 @@
 + (id)safari_stringAsHexWithData:(id)arg1;
 + (void)safari_reverseEnumerateComponents:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) _Bool safari_isSpecialFolderRecordName;
+- (id)safari_bestURLForUserTypedString;
+@property(readonly, copy, nonatomic) NSString *safari_highLevelDomainForUserTypedStringWhenAddingPasswordInPasswordManager;
+@property(readonly, copy, nonatomic) NSString *safari_highLevelDomainForPasswordManager;
 - (id)safari_bundleIdentifierFromApplicationIdentifier:(id *)arg1;
+- (unsigned long long)safari_numberOfComposedCharacters;
 - (_Bool)safari_looksLikeWillRedirectToURLStringAfterLogin:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *safari_suggestedFilenameFromTitleString;
+@property(readonly, copy, nonatomic) NSString *safari_monogramString;
+@property(readonly, copy, nonatomic) NSString *safari_stringByRemovingExcessWhitespace;
+@property(readonly, copy, nonatomic) NSString *safari_possibleTopLevelDomainCorrectionForUserTypedString;
+@property(readonly, copy, nonatomic) NSString *safari_stringByRemovingUnnecessaryCharactersFromUserTypedURLString;
 @property(readonly, copy, nonatomic) NSString *safari_stringByRemovingWwwAndWildcardDotPrefixes;
 @property(readonly, copy, nonatomic) NSString *safari_stringByRemovingWwwDotPrefix;
 - (long long)safari_localizedCompareSortingEmptyStringAndNumericPrefixToEnd:(id)arg1;
@@ -44,7 +52,9 @@
 - (_Bool)safari_isCaseAndDiacriticInsensitiveEqualToString:(id)arg1;
 - (_Bool)safari_isCaseInsensitiveEqualToString:(id)arg1;
 - (_Bool)safari_isHostOrSubdomainOfHost:(id)arg1;
+- (id)safari_substringFromPrefix:(id)arg1;
 - (_Bool)safari_hasPrefix:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *safari_separateResourceForkPath;
 @property(readonly, copy, nonatomic) NSString *safari_simplifiedSiteNameForCredentialLookup;
 @property(readonly, copy, nonatomic) NSString *safari_simplifiedUserVisibleURLString;
 - (id)safari_simplifiedUserVisibleURLStringWithSimplifications:(unsigned long long)arg1 forDisplayOnly:(_Bool)arg2 simplifiedStringOffset:(unsigned long long *)arg3;

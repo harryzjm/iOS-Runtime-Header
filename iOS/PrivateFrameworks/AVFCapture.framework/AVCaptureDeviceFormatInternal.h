@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class FigCaptureSourceFormat, NSArray;
+@class FigCaptureSourceFormat, NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface AVCaptureDeviceFormatInternal : NSObject
@@ -15,8 +15,13 @@ __attribute__((visibility("hidden")))
     NSArray *videoSupportedFrameRateRanges;
     CDStruct_1b6d18a9 defaultActiveMinFrameDuration;
     CDStruct_1b6d18a9 defaultActiveMaxFrameDuration;
+    NSDictionary *fcSourceAttributes;
+    struct opaqueCMFormatDescription *formatDescription;
     NSArray *supportedDepthDataFormats;
     _Bool backgroundBlurSupported;
+    NSArray *supportedMaxPhotoDimensions;
+    _Bool studioLightingSupported;
+    _Bool isDepthDataFormat;
 }
 
 @end

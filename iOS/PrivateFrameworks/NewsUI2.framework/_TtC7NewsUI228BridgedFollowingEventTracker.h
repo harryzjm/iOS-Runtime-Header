@@ -6,18 +6,17 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsUI2/TSFollowingEventTracker-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI228BridgedFollowingEventTracker : _TtCs12_SwiftObject <TSFollowingEventTracker>
+@interface _TtC7NewsUI228BridgedFollowingEventTracker : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tracker;
+    MISSING_TYPE *didComplete;
     MISSING_TYPE *$__lazy_storage_$_viewSessionId;
 }
 
 - (void)followingBrowserDidCompleteWith:(long long)arg1;
-- (void)followingBrowserDidTapOnItemWithTagID:(id)arg1 selected:(_Bool)arg2 sceneType:(long long)arg3;
+- (void)followingBrowserDidTapOnItemWithTag:(id)arg1 selected:(_Bool)arg2 sceneType:(long long)arg3;
 
 @end
 

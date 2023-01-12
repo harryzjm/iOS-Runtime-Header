@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <EmailFoundation/EFSQLValueCollectionExpressable-Protocol.h>
-
 @class NSNumber, NSString;
 
-@interface NSArray (EmailFoundationAdditions) <EFSQLValueCollectionExpressable>
+@interface NSArray (EmailFoundationAdditions)
 @property(readonly, nonatomic) NSNumber *ef_standardDeviation;
 @property(readonly, copy, nonatomic) NSArray *ef_mode;
 @property(readonly, nonatomic) NSNumber *ef_median;
@@ -18,6 +16,7 @@
 @property(readonly, nonatomic) NSNumber *ef_max;
 @property(readonly, nonatomic) NSNumber *ef_min;
 @property(readonly, nonatomic) NSNumber *ef_sum;
+@property(readonly, nonatomic) _Bool ef_isEmpty;
 @property(readonly, nonatomic) NSArray *ef_reverse;
 @property(readonly, nonatomic) NSArray *ef_permutations;
 - (id)ef_subarraysOfSize:(unsigned long long)arg1;
@@ -53,12 +52,14 @@
 - (id)ef_prefix:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *ef_tail;
 @property(readonly, nonatomic) NSArray *ef_notEmpty;
+- (id)ef_subarrayWithRange:(struct _NSRange)arg1;
 - (id)ef_SQLIsolatedExpression;
 - (void)ef_renderSQLExpressionInto:(id)arg1;
 - (void)ef_renderSQLExpressionInto:(id)arg1 conjoiner:(id)arg2;
 @property(readonly, copy, nonatomic) NSString *ef_SQLExpression;
 
 // Remaining properties
+@property(readonly, nonatomic) unsigned long long count;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

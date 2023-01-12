@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoMoviePreEncodeResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoMoviePreEncodeResult : PBCodable
 {
     NSData *_statisticsBlob;
 }

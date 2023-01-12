@@ -6,20 +6,10 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/TSDCompatibilityAwareMediaContainer-Protocol.h>
-#import <KeynoteQuicklook/TSDDrawableContainerInfo-Protocol.h>
-#import <KeynoteQuicklook/TSDMutableContainerInfo-Protocol.h>
-#import <KeynoteQuicklook/TSDReducibleImageContainer-Protocol.h>
-#import <KeynoteQuicklook/TSDReplaceableMediaContainer-Protocol.h>
-#import <KeynoteQuicklook/TSKDocumentObject-Protocol.h>
-#import <KeynoteQuicklook/TSKTransformableObject-Protocol.h>
-#import <KeynoteQuicklook/TSSPropertySource-Protocol.h>
-#import <KeynoteQuicklook/TSSStyleClient-Protocol.h>
-
-@class KNBodyPlaceholderInfo, KNObjectPlaceholderInfo, KNSlideBackgroundInfo, KNSlideNode, KNSlideNumberPlaceholderInfo, KNSlideStyle, KNTitlePlaceholderInfo, KNTransition, NSArray, NSDictionary, NSIndexSet, NSMapTable, NSObject, NSOrderedSet, NSSet, NSString, TSDFill, TSDInfoGeometry, TSUMutablePointerSet, TSUPointerKeyDictionary;
+@class KNBodyPlaceholderInfo, KNMotionBackground, KNMotionBackgroundStyle, KNObjectPlaceholderInfo, KNSlideBackgroundInfo, KNSlideNode, KNSlideNumberPlaceholderInfo, KNSlideStyle, KNTitlePlaceholderInfo, KNTransition, NSArray, NSDictionary, NSIndexSet, NSMapTable, NSObject, NSOrderedSet, NSSet, NSString, TSDFill, TSDInfoGeometry, TSUMutablePointerSet, TSUPointerKeyDictionary;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface KNAbstractSlide : TSPObject <TSSPropertySource, TSKDocumentObject, TSDDrawableContainerInfo, TSDMutableContainerInfo, TSKTransformableObject, TSSStyleClient, TSDReplaceableMediaContainer, TSDReducibleImageContainer, TSDCompatibilityAwareMediaContainer>
+@interface KNAbstractSlide : TSPObject
 {
     KNSlideBackgroundInfo *_background;
     NSOrderedSet *_childInfos;
@@ -28,6 +18,7 @@
     TSUPointerKeyDictionary *_drawableToGhostInfosMap;
     TSUMutablePointerSet *_drawablesWithInvalidatedGhosts;
     _Bool _shouldConsiderAllChunksActive;
+    KNMotionBackground *_motionBackground;
     _Bool _inDocument;
     KNSlideStyle *_style;
     KNTransition *_transition;
@@ -61,6 +52,7 @@
 @property(retain, nonatomic) KNTitlePlaceholderInfo *titlePlaceholder; // @synthesize titlePlaceholder=_titlePlaceholder;
 @property(retain, nonatomic) KNTransition *transition; // @synthesize transition=_transition;
 @property(retain, nonatomic) KNSlideStyle *style; // @synthesize style=_style;
+@property(readonly, nonatomic) KNMotionBackground *motionBackground; // @synthesize motionBackground=_motionBackground;
 @property(readonly, nonatomic) NSMapTable *instructionalTextForInfos; // @synthesize instructionalTextForInfos=_instructionalTextForInfos;
 @property(readonly, nonatomic) NSIndexSet *paragraphIndexesOfTopLevelBullets;
 - (void)p_updateChartBuildChunksImmediatelyWithoutUndoHistory;
@@ -73,6 +65,7 @@
 - (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)p_updateBuildsReplacingPlaceholder:(id)arg1 withPlaceholder:(id)arg2;
 - (void)setSlideNode:(id)arg1;
+- (void)referencedStyleWasUpdated:(id)arg1;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSSet *referencedStyles;
 - (double)CGFloatValueForProperty:(int)arg1;
@@ -179,6 +172,7 @@
 @property(readonly, nonatomic) _Bool hasFreeformTextPlaceholders;
 - (void)removeTagForDrawable:(id)arg1;
 - (_Bool)infoIsPlaceholder:(id)arg1;
+- (_Bool)hasTagForInfo:(id)arg1;
 - (id)tagForInfo:(id)arg1;
 - (_Bool)infoExistsForTag:(id)arg1;
 - (id)infoForTag:(id)arg1;
@@ -219,7 +213,9 @@
 - (void)setChildInfosWithoutDOLC:(id)arg1;
 @property(copy, nonatomic) NSArray *childInfos;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
-@property(readonly, nonatomic) _Bool hasBackgroundAlpha;
+@property(retain, nonatomic) KNMotionBackgroundStyle *motionBackgroundStyle; // @dynamic motionBackgroundStyle;
+- (void)updateMotionBackground;
+@property(readonly, nonatomic) _Bool backgroundIsNoFillOrColorFillWithAlpha;
 @property(readonly, nonatomic) TSDFill *backgroundFill;
 - (id)objectUUIDPath;
 - (void)didInitFromSOS;

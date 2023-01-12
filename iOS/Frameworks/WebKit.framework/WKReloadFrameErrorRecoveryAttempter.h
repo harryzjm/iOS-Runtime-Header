@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/NSSecureCoding-Protocol.h>
-#import <WebKit/_WKErrorRecoveryAttempting-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKReloadFrameErrorRecoveryAttempter : NSObject <_WKErrorRecoveryAttempting, NSSecureCoding>
+@interface WKReloadFrameErrorRecoveryAttempter : NSObject
 {
     struct WeakObjCPtr<WKWebView> _webView;
     struct RetainPtr<_WKFrameHandle> _frameHandle;

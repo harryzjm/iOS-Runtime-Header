@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/GEOExperimentConfigurationObserver-Protocol.h>
-#import <VectorKit/GEOResourceManifestTileGroupObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VKManifestTileGroupObserverProxy : NSObject <GEOResourceManifestTileGroupObserver, GEOExperimentConfigurationObserver>
+@interface VKManifestTileGroupObserverProxy : NSObject
 {
     function_3b023522 _willChangeActiveTileGroup;
     function_feb27e2a _didChangeActiveTileGroup;

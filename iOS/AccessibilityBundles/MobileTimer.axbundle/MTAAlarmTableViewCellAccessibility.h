@@ -11,9 +11,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_axIsEditing;
+- (id)_axEnabledSwitch;
 - (void)refreshUI:(id)arg1 animated:(_Bool)arg2;
-- (struct CGPoint)accessibilityActivationPoint;
+- (id)accessibilityCustomActions;
 - (void)_axSetDetailLabelForAlarm:(id)arg1;
+- (id)accessibilityValue;
+- (id)accessibilityHint;
+- (unsigned long long)accessibilityTraits;
+- (_Bool)isAccessibilityElement;
+- (struct CGPoint)accessibilityActivationPoint;
 
 @end
 

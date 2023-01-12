@@ -6,11 +6,15 @@
 
 #import <SpringBoard/SBChainableModifierContext-Protocol.h>
 
-@class NSArray, NSSet, NSString, SBAppLayout, SBAppSwitcherSettings, SBDisplayItem, SBEntityRemovalAnimationSettings, SBFHomeGrabberSettings, SBHomeGestureSettings, SBMedusaSettings, SBSwitcherModifier, SBSwitcherShelf, SBTransitionSwitcherModifierEvent;
+@class NSArray, NSOrderedSet, NSSet, NSString, SBAppLayout, SBAppSwitcherSettings, SBDisplayItem, SBDisplayItemLayoutAttributesCalculator, SBEntityRemovalAnimationSettings, SBFHomeGrabberSettings, SBHomeGestureSettings, SBMedusaSettings, SBSwitcherChamoisLayoutAttributes, SBSwitcherModifier, SBSwitcherShelf, SBTransitionSwitcherModifierEvent;
 @protocol SBSwitcherLayoutElementProviding;
 
 @protocol SBSwitcherContextProviding <SBChainableModifierContext>
+- (SBAppLayout *)appLayoutByBringingItemToFront:(SBDisplayItem *)arg1 inAppLayout:(SBAppLayout *)arg2;
+- (long long)displayOrdinal;
+- (_Bool)isDisplayEmbedded;
 - (double)presentationValueForAnimatableProperty:(NSString *)arg1;
+- (long long)userInterfaceStyle;
 - (NSSet *)shelfFocusedDisplayItems;
 - (SBAppLayout *)leafAppLayoutForKeyboardFocusedScene;
 - (SBAppLayout *)keyboardFocusedAppLayout;
@@ -19,6 +23,9 @@
 - (struct CGPoint)scrollableQueryModifier:(SBSwitcherModifier *)arg1 contentOffsetVelocityConsideringNextContentOffset:(struct CGPoint)arg2;
 - (struct CGPoint)gestureHandlingModifier:(SBSwitcherModifier *)arg1 averageVelocityOverDuration:(double)arg2;
 - (void)gestureHandlingModifierRequestsUpdate:(SBSwitcherModifier *)arg1;
+- (struct CGRect)systemApertureDefaultFrame;
+- (_Bool)isSystemApertureTransitionTargetForSceneIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 isPortrait:(_Bool)arg3;
+- (_Bool)isJindoEnabled;
 - (double)morphToPIPTargetScale;
 - (struct CGPoint)morphToPIPTargetCenter;
 - (double)morphToPIPClippingCornerRadius;
@@ -29,8 +36,7 @@
 - (double)switcherWindowLevel;
 - (struct CGRect)centerWindowFrameInInterfaceOrientation:(long long)arg1 centerConfiguration:(long long)arg2;
 - (struct CGRect)floatingApplicationFrameInInterfaceOrientation:(long long)arg1 floatingConfiguration:(long long)arg2;
-- (struct CGRect)defaultFrameForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2 interfaceOrientation:(long long)arg3;
-- (struct CGRect)defaultBoundsForAppLayout:(SBAppLayout *)arg1 interfaceOrientation:(long long)arg2;
+- (struct CGRect)preferredFrameForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2 bounds:(struct CGRect)arg3 interfaceOrientation:(long long)arg4;
 - (double)shelfItemCornerRadiusForAppLayout:(SBAppLayout *)arg1 inShelf:(SBSwitcherShelf *)arg2;
 - (double)shelfItemScaleForAppLayout:(SBAppLayout *)arg1 inShelf:(SBSwitcherShelf *)arg2;
 - (struct CGRect)shelfItemFrameForAppLayout:(SBAppLayout *)arg1 inShelf:(SBSwitcherShelf *)arg2;
@@ -42,6 +48,9 @@
 - (struct CGRect)homeScreenIconFrameForAppLayout:(SBAppLayout *)arg1;
 - (NSArray *)appLayoutsToEnsureExistForMainTransitionEvent:(SBTransitionSwitcherModifierEvent *)arg1;
 - (_Bool)isLayoutRoleContentReady:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
+- (_Bool)isSoftwareKeyboardVisible;
+- (_Bool)prefersDockHidden;
+- (_Bool)prefersStripHidden;
 - (_Bool)isInMedusaCapableSpace;
 - (_Bool)isSplitViewSupported;
 - (_Bool)isMedusaEnabled;
@@ -49,11 +58,18 @@
 - (_Bool)isFloatingDockSupported;
 - (_Bool)isRTLEnabled;
 - (_Bool)isReduceMotionEnabled;
+- (_Bool)isChamoisWindowingUIEnabled;
 - (_Bool)hasHomeButton;
 - (_Bool)isDevicePad;
+- (_Bool)anyHighlightedAppLayoutsForContinuousExposeIdentifier:(NSString *)arg1;
+- (NSArray *)appLayoutsForContinuousExposeIdentifier:(NSString *)arg1;
+- (NSOrderedSet *)continuousExposeIdentifiers;
+- (unsigned long long)numberOfVisibleContinuousExposeIdentifiersWhileInApp;
 - (long long)numberOfHiddenAppLayoutsForBundleIdentifier:(NSString *)arg1;
 - (long long)numberOfVisibleAppLayoutsForBundleIdentifier:(NSString *)arg1;
 - (long long)numberOfVisibleCards;
+- (SBDisplayItemLayoutAttributesCalculator *)displayItemLayoutAttributesCalculator;
+- (SBSwitcherChamoisLayoutAttributes *)chamoisLayoutAttributes;
 - (SBEntityRemovalAnimationSettings *)entityRemovalSettings;
 - (SBMedusaSettings *)medusaSettings;
 - (SBFHomeGrabberSettings *)homeGrabberSettings;
@@ -68,27 +84,38 @@
 - (_Bool)homeScreenHasWidgetCenterOrLibraryOpen;
 - (_Bool)homeScreenHasOpenFolder;
 - (_Bool)isFloatingDockGesturePossible;
+- (double)continuousExposeAppStripUnoccludedProgress;
+- (double)shelfPresentedHeight;
 - (_Bool)isFloatingDockFullyPresented;
 - (double)floatingDockViewTopMargin;
+- (double)floatingDockPresentedHeight;
 - (double)floatingDockHeight;
 - (double)displayCornerRadius;
+- (double)statusBarHeight;
+- (unsigned long long)numberOfRowsInGridSwitcher;
 - (struct CGPoint)scrollViewContentOffset;
 - (id <SBSwitcherLayoutElementProviding>)genericSwitcherAccessoryLayoutElement;
 - (id <SBSwitcherLayoutElementProviding>)slideOverTongueLayoutElement;
 - (id <SBSwitcherLayoutElementProviding>)switcherBackdropLayoutElement;
 - (id <SBSwitcherLayoutElementProviding>)switcherDimmingViewLayoutElement;
+- (unsigned long long)supportedSizingPoliciesForItem:(SBDisplayItem *)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)appLayoutRequiresLegacyRotationSupport:(SBAppLayout *)arg1;
+- (_Bool)displayItemSupportsMultipleWindowsIndicator:(SBDisplayItem *)arg1;
 - (_Bool)displayItemSupportsCenterRole:(SBDisplayItem *)arg1;
 - (_Bool)displayItemIsClassic:(SBDisplayItem *)arg1;
 - (_Bool)displayItemSupportsMedusa:(SBDisplayItem *)arg1;
+- (_Bool)isAppLayoutMostRecentRepresentationOfDisplayItems:(SBAppLayout *)arg1;
 - (double)splitViewInnerCornerRadius;
 - (double)separatorViewWidth;
+- (double)screenScale;
 - (long long)homeScreenInterfaceOrientation;
 - (long long)switcherInterfaceOrientation;
 - (struct CGRect)switcherViewBounds;
 - (struct CGRect)containerViewBounds;
 - (unsigned long long)newAppLayoutsGenCount;
 - (unsigned long long)appLayoutsGenerationCount;
+- (_Bool)appLayoutContainsAnUnoccludedMaximizedDisplayItem:(SBAppLayout *)arg1;
+- (_Bool)appLayoutContainsOnlyResizableApps:(SBAppLayout *)arg1;
 - (NSArray *)appLayoutsContainedWithinAppLayout:(SBAppLayout *)arg1;
 - (SBAppLayout *)appLayoutContainingAppLayout:(SBAppLayout *)arg1;
 - (NSArray *)appLayouts;

@@ -18,6 +18,7 @@
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *newsletterManager;
+    MISSING_TYPE *emailSignupModelFactory;
 }
 
 @end

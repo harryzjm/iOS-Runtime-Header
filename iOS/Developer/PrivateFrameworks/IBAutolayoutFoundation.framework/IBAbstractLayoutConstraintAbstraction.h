@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class IBLayoutConstraint, NSString;
 
-@interface IBAbstractLayoutConstraintAbstraction : NSObject <IBBinaryArchiving>
+@interface IBAbstractLayoutConstraintAbstraction : NSObject
 {
 }
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/_WKFullscreenDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface LPYouTubePlayerViewFullScreenDelegate : NSObject <_WKFullscreenDelegate>
+@interface LPYouTubePlayerViewFullScreenDelegate : NSObject
 {
 }
 

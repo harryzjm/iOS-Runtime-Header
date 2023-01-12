@@ -10,31 +10,31 @@
 
 @interface TSTWPTokenAttachment : TSWPUIGraphicalAttachment
 {
-    TSTExpressionNode *mExpressionNode;
-    _Bool mActive;
-    _Bool mSelected;
-    _Bool mHighlighted;
-    _Bool mNeverShowsMenu;
-    struct CGSize mTextSize;
-    struct CGRect mMenuRect;
-    struct CGImage *mCachedImage;
-    double mCachedImageScreenScale;
-    _Bool mInInvalidate;
+    _Bool _active;
+    _Bool _selected;
+    _Bool _highlighted;
+    _Bool _neverShowsMenu;
+    _Bool _inInvalidate;
+    TSTExpressionNode *_expressionNode;
+    struct CGImage *_cachedImage;
+    double _cachedImageScreenScale;
 }
 
-@property(nonatomic) double cachedImageScreenScale; // @synthesize cachedImageScreenScale=mCachedImageScreenScale;
-@property(nonatomic, getter=neverShowsMenu) _Bool neverShowsMenu; // @synthesize neverShowsMenu=mNeverShowsMenu;
-@property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=mHighlighted;
-@property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=mSelected;
-@property(nonatomic, getter=isActive) _Bool active; // @synthesize active=mActive;
-@property(retain, nonatomic) TSTExpressionNode *expressionNode; // @synthesize expressionNode=mExpressionNode;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool inInvalidate; // @synthesize inInvalidate=_inInvalidate;
+@property(nonatomic) double cachedImageScreenScale; // @synthesize cachedImageScreenScale=_cachedImageScreenScale;
+@property(nonatomic) struct CGImage *cachedImage; // @synthesize cachedImage=_cachedImage;
+@property(nonatomic, getter=neverShowsMenu) _Bool neverShowsMenu; // @synthesize neverShowsMenu=_neverShowsMenu;
+@property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
+@property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
+@property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+@property(retain, nonatomic) TSTExpressionNode *expressionNode; // @synthesize expressionNode=_expressionNode;
 - (id)description;
 - (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)invalidate;
-@property(nonatomic) struct CGImage *cachedImage;
 - (void)requestRedraw;
 - (id)detokenizedText;
 - (id)formulaPlainText;

@@ -6,14 +6,13 @@
 
 #import <Photos/PHPerson.h>
 
-#import <PhotosUICore/PXPerson-Protocol.h>
+@class NSDate, NSPersonNameComponents, NSString;
 
-@class NSDate, NSString;
-
-@interface PHPerson (PhotosUICore) <PXPerson>
+@interface PHPerson (PhotosUICore)
 + (id)px_localizedNameFromContact:(id)arg1;
 + (void)px_loadRepresentativeFacesForPersons:(id)arg1;
 + (id)px_fetchPersonsForSuggestion:(id)arg1 options:(id)arg2;
+@property(readonly, nonatomic) NSPersonNameComponents *px_nameComponents;
 - (id)_px_localizedNameWithStyle:(long long)arg1;
 @property(readonly) NSString *px_longStyleLocalizedName;
 @property(readonly) NSString *px_localizedName;
@@ -22,6 +21,7 @@
 @property(readonly) NSString *px_localIdentifier;
 @property(readonly) unsigned long long numberOfAssets;
 - (void)requestFaceTileImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 style:(unsigned long long)arg3 cacheResult:(_Bool)arg4 boundFaceRect:(_Bool)arg5 completionBlock:(CDUnknownBlockType)arg6;
+@property(readonly, nonatomic) _Bool px_isEmpty;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

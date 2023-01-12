@@ -6,14 +6,13 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneDefinition, FBSSceneSpecification, FBSSceneTransitionContext, NSSet, NSString;
+@class FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneDefinition, FBSSceneIdentityToken, FBSSceneSpecification, FBSSceneTransitionContext, NSSet;
 @protocol FBSceneClient;
 
 @protocol FBSceneHost <NSObject>
 @property(readonly, copy, nonatomic) FBSSceneSpecification *specification;
 @property(readonly, copy, nonatomic) FBSSceneDefinition *definition;
-@property(readonly, copy, nonatomic) NSString *group;
-@property(readonly, copy, nonatomic) NSString *identifier;
+@property(readonly, copy, nonatomic) FBSSceneIdentityToken *identityToken;
 - (void)client:(id <FBSceneClient>)arg1 didReceiveActions:(NSSet *)arg2;
 - (void)client:(id <FBSceneClient>)arg1 didUpdateClientSettings:(FBSSceneClientSettings *)arg2 withDiff:(FBSSceneClientSettingsDiff *)arg3 transitionContext:(FBSSceneTransitionContext *)arg4;
 @end

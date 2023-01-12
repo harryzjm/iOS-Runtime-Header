@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUOutputStream-Protocol.h>
-
 @class NSString, OISFUCryptor;
 @protocol SFUOutputStream;
 
 __attribute__((visibility("hidden")))
-@interface OISFUCryptoOutputStream : NSObject <SFUOutputStream>
+@interface OISFUCryptoOutputStream : NSObject
 {
     id <SFUOutputStream> mBaseStream;
     OISFUCryptor *mCryptor;

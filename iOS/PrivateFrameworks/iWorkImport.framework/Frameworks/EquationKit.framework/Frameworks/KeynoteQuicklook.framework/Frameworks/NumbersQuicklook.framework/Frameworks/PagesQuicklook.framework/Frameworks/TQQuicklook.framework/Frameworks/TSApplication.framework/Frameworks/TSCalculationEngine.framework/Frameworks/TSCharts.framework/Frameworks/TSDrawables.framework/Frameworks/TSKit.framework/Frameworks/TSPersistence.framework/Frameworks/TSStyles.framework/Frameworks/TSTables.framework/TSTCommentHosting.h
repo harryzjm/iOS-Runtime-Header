@@ -6,21 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSDComment-Protocol.h>
-
 @class NSDate, NSString, TSDCommentStorage, TSKAnnotationAuthor, TSTTableInfo;
 
-@interface TSTCommentHosting : NSObject <TSDComment>
+@interface TSTCommentHosting : NSObject
 {
     TSDCommentStorage *mStorage;
     TSTTableInfo *_tableInfo;
-    NSString *_annotationUUID;
     struct TSKUIDStructCoord _cellUID;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *annotationUUID; // @synthesize annotationUUID=_annotationUUID;
-@property(retain, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property(readonly, nonatomic) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property(readonly, nonatomic) struct TSKUIDStructCoord cellUID; // @synthesize cellUID=_cellUID;
 - (_Bool)isInDocument;
 - (void)commentWillBeAddedToDocumentRoot;
@@ -31,11 +27,12 @@
 @property(retain, nonatomic) TSKAnnotationAuthor *author;
 @property(readonly, nonatomic) struct TSUModelCellCoord baseCellCoord;
 @property(readonly, nonatomic) struct TSUViewCellCoord viewCellCoord;
+@property(readonly, nonatomic) NSString *parentUUID;
 - (_Bool)isFloatingComment;
 - (Class)editorClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) NSString *annotationUUID;
 @property(copy, nonatomic) TSDCommentStorage *storage;
-- (void)p_updateAnnotationUUID;
 - (id)initWithStorage:(id)arg1 forTableInfo:(id)arg2 baseCellCoord:(struct TSUModelCellCoord)arg3;
 - (id)initWithStorage:(id)arg1 forTableInfo:(id)arg2 cellUID:(struct TSKUIDStructCoord)arg3;
 

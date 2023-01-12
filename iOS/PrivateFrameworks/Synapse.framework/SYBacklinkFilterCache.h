@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Synapse/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSData, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface SYBacklinkFilterCache : NSObject <NSSecureCoding>
+@interface SYBacklinkFilterCache : NSObject
 {
     NSArray *_activityTypes;
     NSMutableArray *_entries;

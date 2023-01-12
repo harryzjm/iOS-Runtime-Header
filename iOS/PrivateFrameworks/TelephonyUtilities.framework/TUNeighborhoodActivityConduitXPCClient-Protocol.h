@@ -6,7 +6,7 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSUUID, TUConversationActivity, TUNearbyDeviceHandle;
+@class NSUUID, TUNearbyDeviceHandle;
 
 @protocol TUNeighborhoodActivityConduitXPCClient <NSObject>
 - (oneway void)splitSessionEnded:(TUNearbyDeviceHandle *)arg1;
@@ -16,6 +16,6 @@
 
 @optional
 - (void)cancelSplitSessionApproval;
-- (void)approveSplitSessionForConversation:(NSUUID *)arg1 requestedFromDevice:(TUNearbyDeviceHandle *)arg2 proposedActivityInfo:(TUConversationActivity *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
+- (void)approveSplitSessionForConversation:(NSUUID *)arg1 requestedFromDevice:(TUNearbyDeviceHandle *)arg2 pullContext:(long long)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 @end
 

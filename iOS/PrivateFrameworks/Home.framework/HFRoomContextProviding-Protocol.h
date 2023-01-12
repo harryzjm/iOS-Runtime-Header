@@ -9,6 +9,6 @@
 @class HMRoom;
 
 @protocol HFRoomContextProviding <NSObject>
-@property(readonly, nonatomic) __weak HMRoom *hf_parentRoom;
+@property(nonatomic, readonly) HMRoom *hf_parentRoom;
 @end
 

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/NUIContainerViewDelegate-Protocol.h>
-
 @class CNRepeatingGradientSeparatorView, NSString, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface CNAddressComponentSplitTextFieldCell <NUIContainerViewDelegate>
+@interface CNAddressComponentSplitTextFieldCell
 {
     UITextField *_textFieldLeft;
     UITextField *_textFieldRight;

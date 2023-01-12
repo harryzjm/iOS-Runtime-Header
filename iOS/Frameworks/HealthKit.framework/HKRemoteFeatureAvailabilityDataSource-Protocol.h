@@ -14,6 +14,7 @@
 - (CDStruct_f6aba300)watchAtrialFibrillationDetectionVersion;
 - (NSString *)watchCompanionDevicePlatform;
 - (NSString *)watchOSBuildVersion;
+- (NSString *)watchRegionInfo;
 - (NSString *)watchRegion;
 - (NSString *)watchBuildType;
 - (NSString *)watchProductType;

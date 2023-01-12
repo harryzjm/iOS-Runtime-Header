@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSTables/TSCEFormulaReturning-Protocol.h>
-
 @class NSString, TSCEFormulaObject, TSTStockDetails, TSULocale;
 
-@interface TSTCellFormulaSpec <TSCEFormulaReturning>
+@interface TSTCellFormulaSpec
 {
     TSCEFormulaObject *_formulaObject;
     TSULocale *_locale;

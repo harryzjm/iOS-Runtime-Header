@@ -6,14 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <MobileSafariUI/SFDeferrableUpdateView-Protocol.h>
-#import <MobileSafariUI/_SFDownloadIconCacheObserver-Protocol.h>
-
 @class UIButton, UIImageView, UILabel, UIProgressView, _SFDownload, _SFDownloadIconCache;
 @protocol DownloadTableViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface DownloadTableViewCell : UITableViewCell <SFDeferrableUpdateView, _SFDownloadIconCacheObserver>
+@interface DownloadTableViewCell : UITableViewCell
 {
     UILabel *_nameLabel;
     UILabel *_statusLabel;

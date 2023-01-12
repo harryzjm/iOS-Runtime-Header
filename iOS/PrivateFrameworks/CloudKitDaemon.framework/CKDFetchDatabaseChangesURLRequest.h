@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/CKDURLRequestPipelining-Protocol.h>
+#import "CKDURLRequest.h"
 
 @class CKRecordZoneID, NSArray, NSData, NSMutableArray, NSString;
 
-@interface CKDFetchDatabaseChangesURLRequest <CKDURLRequestPipelining>
+@interface CKDFetchDatabaseChangesURLRequest : CKDURLRequest
 {
     NSMutableArray *_changedZoneIDs;
     NSMutableArray *_deletedZoneIDs;

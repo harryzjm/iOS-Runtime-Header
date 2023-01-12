@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <FTServices/FTMessageDeliveryRemoteURLConnectionFactory-Protocol.h>
-
 @class NSString;
 
-@interface FTMessageDeliveryRemoteURLConnectionFactory : NSObject <FTMessageDeliveryRemoteURLConnectionFactory>
+@interface FTMessageDeliveryRemoteURLConnectionFactory : NSObject
 {
 }
 

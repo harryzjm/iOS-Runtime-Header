@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCPositionalInfo : NSObject <NSSecureCoding>
+@interface VCPositionalInfo : NSObject
 {
     _Bool _isInCanvas;
     struct CGSize _size;

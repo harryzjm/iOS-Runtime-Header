@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *viewController;
     MISSING_TYPE *navigationProxy;
+    MISSING_TYPE *pageMetricsPresenter;
     MISSING_TYPE *didFailBlock;
     MISSING_TYPE *didFinishBootstrappingBlock;
 }

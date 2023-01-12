@@ -10,7 +10,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (unsigned long long)focusableVariantCount;
+- (void)refreshSelectedCandidateAnimated:(_Bool)arg1;
 - (void)refreshSelectedCandidate;
+- (id)getConfiguration;
 - (void)updateCandidateKey;
 
 @end

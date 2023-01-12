@@ -6,16 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <UIKitCore/UIDictationConnectionDelegate-Protocol.h>
-#import <UIKitCore/UIDictationConnectionTokenFilterProtocol-Protocol.h>
-#import <UIKitCore/_UIDictationPrivacySheetControllerDelegate-Protocol.h>
-#import <UIKitCore/_UITouchPhaseChangeDelegate-Protocol.h>
-
-@class AFAnalyticsTurnBasedInstrumentationContext, CADisplayLink, NSArray, NSDictionary, NSMutableArray, NSNumber, NSString, NSTimer, UIDictationConnection, UIDictationConnectionPreferences, UIDictationInputModeOptions, UIDictationStreamingOperations, UIKeyboardInputMode, UIWindow, _UIDictationPrivacySheetController, _UIDictationTelephonyMonitor, _UITapTapHoldGestureRecognizer, _UIVoiceCommandButtonTapGestureRecognizer;
+@class AFAnalyticsTurnBasedInstrumentationContext, CADisplayLink, NSArray, NSDictionary, NSMutableArray, NSNumber, NSString, NSTimer, UIDictationConnection, UIDictationConnectionPreferences, UIDictationInputModeOptions, UIDictationSerializableResults, UIDictationStreamingOperations, UIDictationTipController, UIKeyboardInputMode, UIWindow, _UIDictationPrivacySheetController, _UIDictationTelephonyMonitor, _UITapTapHoldGestureRecognizer, _UIVoiceCommandButtonTapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationController : NSObject <UIDictationConnectionDelegate, UIDictationConnectionTokenFilterProtocol, UIAdaptivePresentationControllerDelegate, _UIDictationPrivacySheetControllerDelegate, _UITouchPhaseChangeDelegate>
+@interface UIDictationController : NSObject
 {
     UIDictationConnection *_dictationConnection;
     UIDictationConnectionPreferences *_preferences;
@@ -30,6 +24,7 @@ __attribute__((visibility("hidden")))
     CADisplayLink *_streamingAnimationDisplayLink;
     _Bool cancelledByWaitingForLocalResults;
     long long _updatingDocument;
+    long long _ignoreRTIChanges;
     _Bool _deferredCancellationRequested;
     _Bool _isOfflineMetricsSessionActive;
     _Bool _didUseOfflineDictation;
@@ -46,10 +41,16 @@ __attribute__((visibility("hidden")))
     _UITapTapHoldGestureRecognizer *_hardwareShortcutRecognizer;
     _UIVoiceCommandButtonTapGestureRecognizer *_hardwareVoiceCommandKeyRecognizer;
     _Bool _prevForceDisplayOverridePlaceholder;
+    long long _lastKeyboardMetricEvent;
+    struct _NSRange _relativeRangeBefore;
+    _Bool _dictationInputModeSwitchStarted;
     _Bool _performingStreamingEditingOperation;
     _Bool _discardNextHypothesis;
     _Bool _hasPreheated;
     _Bool _logAppEnterBackground;
+    _Bool _modelessUsedAtLeastOnce;
+    _Bool __shouldUseDictationSearchFieldBehavior;
+    _Bool _shouldSuppressSoftwareKeyboard;
     _Bool _shouldStayInDictationInputMode;
     _Bool _sendButtonPressedDuringDictation;
     _Bool _hasInsertedAtLeastOneSerializedDictationResult;
@@ -60,10 +61,14 @@ __attribute__((visibility("hidden")))
     _Bool _localSpeechRecognitionForced;
     _Bool _secureOfflineOnlySpeechRecognition;
     _Bool _ignoreFinalizePhrases;
+    _Bool _shouldResumeDictation;
+    _Bool _ignoreIdleDetectionCallback;
+    _Bool _canUndoOrRedo;
     _Bool _detectingUtterances;
     _Bool _finalizingRecognizedUtterance;
     _Bool _hasCheckedForLeadingSpaceOnce;
     _Bool _selectionStartIsStartOfParagraph;
+    _Bool _suppressDelegateTextInputDidChangeNotifications;
     unsigned short _initialPreviousCharacterForAsyncDelegate;
     unsigned short _initialCharacterAfterSelectionForAsyncDelegate;
     unsigned short _previousCharacter;
@@ -79,9 +84,11 @@ __attribute__((visibility("hidden")))
     id _lastCorrectionIdentifier;
     NSString *_interactionIdentifier;
     NSString *_lastMessageKeyboardLanguage;
+    NSString *__inputDelegateClassName;
     UIKeyboardInputMode *_currentInputModeForDictation;
     UIKeyboardInputMode *_keyboardInputModeToReturn;
     NSTimer *_idleTimerResetTimer;
+    UIDictationSerializableResults *_candidateDictationSerializableResults;
     _UIDictationPrivacySheetController *_dictationPrivacySheetController;
     UIDictationInputModeOptions *_inputModeOptions;
     NSString *_detectedLanguage;
@@ -93,11 +100,17 @@ __attribute__((visibility("hidden")))
     unsigned long long _stateHandler;
     NSString *_modelInfo;
     AFAnalyticsTurnBasedInstrumentationContext *_currentInstrumentationContext;
+    UIDictationTipController *_dictationTipController;
     struct _NSRange _insertionRange;
+    struct _NSRange _preCommandExecutionPositionRange;
 }
 
++ (unsigned long long)commandIdentifierWithStringIdentifier:(id)arg1;
++ (id)secondParameterTextWithParameters:(id)arg1;
++ (id)firstParameterTextWithParameters:(id)arg1;
 + (unsigned long long)specificReasonTypeMicButtonOnKeyboardWithInputSwitcher;
 + (unsigned long long)specificReasonTypeMicButtonOnKeyboard;
++ (_Bool)isEventFromMessagesSendButton:(id)arg1 inspectResponderChain:(_Bool)arg2;
 + (_Bool)isInputDelegateSafariAddressBar;
 + (_Bool)shouldPreferOnDeviceRecognition;
 + (_Bool)shouldPreferOnlineRecognition;
@@ -120,18 +133,19 @@ __attribute__((visibility("hidden")))
 + (id)textRelatedMetadataKeys;
 + (_Bool)isDictationSearchBarButtonVisible;
 + (void)poppedLastStreamingOperation;
-+ (_Bool)usingTypeAndTalk;
 + (id)stringForViewMode:(int)arg1;
 + (id)stringForState:(int)arg1;
 + (void)logDictationString:(id)arg1;
 + (void)didBeginEditingInTextView:(id)arg1;
 + (id)streamingHypothesisForPhrases:(id)arg1;
 + (_Bool)dictationInfoIsOnScreen;
++ (_Bool)shouldForwardEventsToInputSystemUI;
 + (id)slsDictationLanguages;
 + (_Bool)_applicationIsActive;
 + (id)activeConnection;
++ (_Bool)shouldForwardInInputSystemUI;
 + (int)viewMode;
-+ (_Bool)starkScreenExists;
++ (_Bool)starkSceneExists;
 + (_Bool)remoteCanDictateCurrentInputMode;
 + (void)updateLandingView;
 + (void)performOperations:(CDUnknownBlockType)arg1 keyboardShifted:(_Bool)arg2;
@@ -143,6 +157,7 @@ __attribute__((visibility("hidden")))
 + (void)viewServiceWillResignActive;
 + (void)applicationWillResignActive;
 + (void)onWillResignActive;
++ (void)keyboardDidShow;
 + (void)applicationDidBecomeActive;
 + (void)viewServiceDidBecomeActive;
 + (void)onDidBecomeActive;
@@ -157,10 +172,14 @@ __attribute__((visibility("hidden")))
 + (_Bool)shouldHideSelectionUIForTextView:(id)arg1;
 + (_Bool)isTextViewOnStarkScreen:(id)arg1;
 + (void)keyboardDidUpdateOnScreenStatus;
-+ (void)keyboardWillChangeFromDelegate:(id)arg1 toDelegate:(id)arg2;
++ (void)keyboardWillChangeFromDelegate:(id)arg1 toDelegate:(id)arg2 shouldPause:(_Bool)arg3;
 + (id)UIDictationLanguageSourceType:(unsigned long long)arg1;
 + (id)UIDictationStartStopReasonTypeDescription:(unsigned long long)arg1;
 + (void)logCorrectionStatisticsForDelegate:(id)arg1 reason:(unsigned long long)arg2;
++ (id)convertEditValuesToHashByPosition:(id)arg1 dictationResultEditType:(id)arg2;
++ (id)mergePunctuationInsertAndDeleteIntoSubstituteTypeForSameStartEnd:(id)arg1 deleteEditValues:(id)arg2;
++ (id)stripNonPunctuationEditValues:(id)arg1;
++ (id)logAutoPunctuationEdit:(id)arg1 deletionValues:(id)arg2 substitutionValues:(id)arg3 withContext:(id)arg4;
 + (_Bool)canPerformDictation;
 + (_Bool)dictationIsFunctional;
 + (_Bool)fetchCurrentInputModeSupportsDictation;
@@ -168,20 +187,27 @@ __attribute__((visibility("hidden")))
 + (_Bool)_checkTraitsSupportDictation:(id)arg1;
 + (id)serializedInterpretationFromTokens:(id)arg1 transform:(struct __CFString *)arg2 autocapitalization:(long long)arg3 capitalization:(unsigned long long)arg4;
 + (id)serializedInterpretationFromTokens:(id)arg1 transform:(struct __CFString *)arg2 capitalization:(unsigned long long)arg3;
++ (_Bool)isRunningInTypeAndTalkMode;
 + (_Bool)isRunning;
-+ (_Bool)skipUndo;
++ (_Bool)isListening;
++ (_Bool)canUndoOrRedo;
 + (id)sharedInstance;
 + (id)activeInstance;
 + (double)serverManualEndpointingThreshold;
 + (_Bool)usingServerManualEndpointingThreshold;
 + (id)_dictationLog;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIDictationTipController *dictationTipController; // @synthesize dictationTipController=_dictationTipController;
+@property(nonatomic) _Bool suppressDelegateTextInputDidChangeNotifications; // @synthesize suppressDelegateTextInputDidChangeNotifications=_suppressDelegateTextInputDidChangeNotifications;
 @property(retain, nonatomic) AFAnalyticsTurnBasedInstrumentationContext *currentInstrumentationContext; // @synthesize currentInstrumentationContext=_currentInstrumentationContext;
 @property(nonatomic) _Bool selectionStartIsStartOfParagraph; // @synthesize selectionStartIsStartOfParagraph=_selectionStartIsStartOfParagraph;
 @property(nonatomic) unsigned short previousCharacter; // @synthesize previousCharacter=_previousCharacter;
 @property(nonatomic) _Bool hasCheckedForLeadingSpaceOnce; // @synthesize hasCheckedForLeadingSpaceOnce=_hasCheckedForLeadingSpaceOnce;
 @property(nonatomic, getter=isFinalizingRecognizedUtterance) _Bool finalizingRecognizedUtterance; // @synthesize finalizingRecognizedUtterance=_finalizingRecognizedUtterance;
 @property(nonatomic, getter=isDetectingUtterances) _Bool detectingUtterances; // @synthesize detectingUtterances=_detectingUtterances;
+@property(nonatomic) _Bool canUndoOrRedo; // @synthesize canUndoOrRedo=_canUndoOrRedo;
+@property(nonatomic) _Bool ignoreIdleDetectionCallback; // @synthesize ignoreIdleDetectionCallback=_ignoreIdleDetectionCallback;
+@property(nonatomic) _Bool shouldResumeDictation; // @synthesize shouldResumeDictation=_shouldResumeDictation;
 @property(nonatomic) _Bool ignoreFinalizePhrases; // @synthesize ignoreFinalizePhrases=_ignoreFinalizePhrases;
 @property(copy, nonatomic) NSString *modelInfo; // @synthesize modelInfo=_modelInfo;
 @property(nonatomic) _Bool secureOfflineOnlySpeechRecognition; // @synthesize secureOfflineOnlySpeechRecognition=_secureOfflineOnlySpeechRecognition;
@@ -201,12 +227,18 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIDictationInputModeOptions *inputModeOptions; // @synthesize inputModeOptions=_inputModeOptions;
 @property(nonatomic) _Bool didToggleSoftwareKeyboardVisibleForDictation; // @synthesize didToggleSoftwareKeyboardVisibleForDictation=_didToggleSoftwareKeyboardVisibleForDictation;
 @property(retain, nonatomic) _UIDictationPrivacySheetController *dictationPrivacySheetController; // @synthesize dictationPrivacySheetController=_dictationPrivacySheetController;
+@property(retain, nonatomic) UIDictationSerializableResults *candidateDictationSerializableResults; // @synthesize candidateDictationSerializableResults=_candidateDictationSerializableResults;
+@property(nonatomic) struct _NSRange preCommandExecutionPositionRange; // @synthesize preCommandExecutionPositionRange=_preCommandExecutionPositionRange;
 @property(retain, nonatomic) NSTimer *idleTimerResetTimer; // @synthesize idleTimerResetTimer=_idleTimerResetTimer;
 @property(nonatomic) _Bool hasInsertedAtLeastOneSerializedDictationResult; // @synthesize hasInsertedAtLeastOneSerializedDictationResult=_hasInsertedAtLeastOneSerializedDictationResult;
 @property(nonatomic, getter=isSendButtonPressedDuringDictation) _Bool sendButtonPressedDuringDictation; // @synthesize sendButtonPressedDuringDictation=_sendButtonPressedDuringDictation;
 @property(nonatomic) _Bool shouldStayInDictationInputMode; // @synthesize shouldStayInDictationInputMode=_shouldStayInDictationInputMode;
 @property(retain, nonatomic) UIKeyboardInputMode *keyboardInputModeToReturn; // @synthesize keyboardInputModeToReturn=_keyboardInputModeToReturn;
 @property(retain, nonatomic) UIKeyboardInputMode *currentInputModeForDictation; // @synthesize currentInputModeForDictation=_currentInputModeForDictation;
+@property(nonatomic) _Bool shouldSuppressSoftwareKeyboard; // @synthesize shouldSuppressSoftwareKeyboard=_shouldSuppressSoftwareKeyboard;
+@property(nonatomic) _Bool _shouldUseDictationSearchFieldBehavior; // @synthesize _shouldUseDictationSearchFieldBehavior=__shouldUseDictationSearchFieldBehavior;
+@property(copy, nonatomic) NSString *_inputDelegateClassName; // @synthesize _inputDelegateClassName=__inputDelegateClassName;
+@property(nonatomic) _Bool modelessUsedAtLeastOnce; // @synthesize modelessUsedAtLeastOnce=_modelessUsedAtLeastOnce;
 @property(nonatomic) _Bool logAppEnterBackground; // @synthesize logAppEnterBackground=_logAppEnterBackground;
 @property(copy, nonatomic) NSString *lastMessageKeyboardLanguage; // @synthesize lastMessageKeyboardLanguage=_lastMessageKeyboardLanguage;
 @property(copy, nonatomic) NSString *interactionIdentifier; // @synthesize interactionIdentifier=_interactionIdentifier;
@@ -224,6 +256,29 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *pendingEdits; // @synthesize pendingEdits=_pendingEdits;
 @property(copy) NSString *smartLanguageSelectionOverrideLanguage; // @synthesize smartLanguageSelectionOverrideLanguage=_smartLanguageSelectionOverrideLanguage;
 @property(copy, nonatomic) NSString *activationIdentifier; // @synthesize activationIdentifier=_activationIdentifier;
+- (_Bool)handleASRVoiceCommandRecognizedWithUtterance:(id)arg1 commandIdentifier:(id)arg2 parameters:(id)arg3;
+- (_Bool)handleCommandRecognizedWithPhrases:(id)arg1 locale:(id)arg2;
+- (_Bool)didRecognizeCommandWithIdentifier:(id)arg1 strings:(id)arg2 parameters:(id)arg3;
+- (_Bool)supportsSendVoiceCommand;
+- (id)commandTargetStringWithDictationCommandIdentifier:(unsigned long long)arg1 parameters:(id)arg2;
+- (void)notifyDocumentStateChangedOrResumeDictation:(id)arg1;
+- (void)_requestDocumentContextWithAsyncDelegate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_restoreInsertionPointPositionWithKeyboard:(id)arg1 originalPositionRange:(struct _NSRange)arg2 targetRange:(struct _NSRange)arg3 payloadRange:(struct _NSRange)arg4 contextBefore:(_Bool)arg5;
+- (_Bool)canHandleCommandIdentifier:(unsigned long long)arg1;
+- (void)searchString:(id)arg1 contextBefore:(id)arg2 contextAfter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)searchString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)clearSelectedTextAndLastDictationResult;
+- (void)removeSelectedText;
+- (void)clearKeyboardTrackpadModeIfNeeded;
+- (void)resumeSpeechRecognitionWithPrefixText:(id)arg1 postfixText:(id)arg2 selectedText:(id)arg3;
+- (void)endUserInteraction;
+- (void)beginUserInteraction:(long long)arg1;
+- (void)resetDictation;
+- (void)resetSpeechRecognition;
+- (void)resumeDictation;
+- (void)pauseDictation;
+- (_Bool)isDictationPaused;
+- (void)insertLastHypothesisAsFinalResultLocally;
 - (unsigned long long)specificReasonTypeFromApplicationDuringDictation;
 - (void)sendButtonPressedInMessages:(id)arg1;
 - (void)keyboardInputModeChanged:(id)arg1;
@@ -237,6 +292,10 @@ __attribute__((visibility("hidden")))
 - (void)overrideSmartLanguageSelection:(id)arg1;
 - (void)markKeyboardDidReset;
 - (void)markKeyboardDeleteMetricEvent;
+- (long long)consecutiveKeyboardDeleteEventCount;
+- (void)markDictationTipKeyboardEventReset;
+- (void)markDictationTipDeletionEvent:(id)arg1 deletedTextRange:(struct _NSRange)arg2;
+- (void)markDictationTipInputEvent;
 - (void)markKeyboardInputMetricEvent;
 - (void)_markOfflineDictationInputMetricEvent;
 - (id)_currentLanguageForOfflineDictationMetrics;
@@ -257,6 +316,7 @@ __attribute__((visibility("hidden")))
 - (id)language;
 - (void)preheatIfNecessary;
 - (_Bool)isRecievingResults;
+- (void)dictationConnection:(id)arg1 didReceiveCandidateDictationSerializableResults:(id)arg2;
 - (void)dictationConnectionDidFinish:(id)arg1;
 - (void)dictationConnectionDidCancel:(id)arg1;
 - (void)dictationConnection:(id)arg1 didDetectLanguage:(id)arg2;
@@ -279,9 +339,10 @@ __attribute__((visibility("hidden")))
 - (id)dictationConnection:(id)arg1 willFilterTokensWithLanguageModel:(id)arg2 forFinalize:(_Bool)arg3;
 - (void)dictationConnection:(id)arg1 receivedInterpretation:(id)arg2 languageModel:(id)arg3 secureInput:(_Bool)arg4;
 - (void)setupToInsertResultForNewHypothesis:(id)arg1;
-- (void)_updateFromSelectedTextRange:(id)arg1 withNewHypothesis:(id)arg2;
-- (id)_getBestHypothesisRangeGivenHintRange:(id)arg1 inputDelegate:(id)arg2 hypothesisRange:(struct _NSRange *)arg3 documentTextInRange:(id *)arg4;
-- (id)_hypothesisRangeFromSelectionRange:(id)arg1 inputDelegate:(id)arg2;
+- (void)_updateLastHypothesis:(id)arg1 WithNewHypothesis:(id)arg2;
+- (void)updateLastHypothesis:(id)arg1 WithNewHypothesis:(id)arg2;
+- (id)_getBestHypothesisRangeGivenHintRange:(id)arg1 inputDelegate:(id)arg2 hypothesisRange:(struct _NSRange *)arg3 documentTextInRange:(id *)arg4 forHypothesis:(id)arg5;
+- (id)_hypothesisRangeFromSelectionRange:(id)arg1 inputDelegate:(id)arg2 forHypothesis:(id)arg3;
 - (id)_rangeByExtendingRange:(id)arg1 backward:(long long)arg2 forward:(long long)arg3 inputDelegate:(id)arg4;
 - (void)_displayLinkFired:(id)arg1;
 - (void)_startStreamingAnimations;
@@ -291,6 +352,7 @@ __attribute__((visibility("hidden")))
 - (void)finalizeDictationRecognitionWithPhrases:(id)arg1 languageModel:(id)arg2 correctionIdentifier:(id)arg3 secureInput:(_Bool)arg4 finalResult:(_Bool)arg5;
 - (void)_clearExistingText;
 - (void)_deleteBackwardIntoText;
+- (void)_insertSerializedDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (void)insertSerializedDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (id)resultWithTrailingSpace:(id)arg1;
 - (void)logAlternativeSelected:(id)arg1 correctionIdentifier:(id)arg2 interactionIdentifier:(id)arg3;
@@ -298,14 +360,16 @@ __attribute__((visibility("hidden")))
 - (void)logDidAcceptReplacement:(id)arg1 replacementLanguageCode:(id)arg2 originalText:(id)arg3 correctionIdentifier:(id)arg4 interactionIdentifier:(id)arg5;
 - (void)logDidAcceptDictationResult:(id)arg1 reasonType:(unsigned long long)arg2;
 - (struct __CFString *)resultTransformForLanguageModel:(id)arg1;
-- (void)restartDictationForTypeAndTalk;
 - (_Bool)dictationIsModifyingText;
+- (void)performIgnoringRTIChanges:(CDUnknownBlockType)arg1;
+- (_Bool)isIgnoringRTIChanges;
 - (void)performIgnoringDocumentChanges:(CDUnknownBlockType)arg1;
 - (_Bool)isIgnoringDocumentChanges;
 - (void)forceDictationReturnToKeyboardInputMode;
 - (void)stopDictationAndResignFirstResponder;
 - (void)stopDictation;
 - (void)stopAndCancelDictationIfNeededWithReasonType:(unsigned long long)arg1;
+- (void)cancelDictationForResponderIfNeeded:(id)arg1 wantsKeyboard:(_Bool)arg2 isPencil:(_Bool)arg3;
 - (void)stopAndCancelDictationWithReasonType:(unsigned long long)arg1;
 - (void)stopDictationIgnoreFinalizePhrases;
 - (void)stopDictation:(_Bool)arg1;
@@ -330,21 +394,24 @@ __attribute__((visibility("hidden")))
 - (void)_createDictationPresenterWindowIfNecessary;
 - (void)setDictationInfoOnScreenNotifyKey:(_Bool)arg1;
 - (void)stopHelpMessageDisplay;
-- (_Bool)_systemLanguageSupportsDictation;
 - (void)startHelpMessageDisplay;
 - (void)restoreTextFieldPlaceholder;
 - (void)clearTextFieldPlaceholder;
 - (void)_displaySecureContentsAsPlainText:(_Bool)arg1 afterDelay:(double)arg2;
 - (void)dismissSoftwareKeyboardIfNeeded;
 - (void)showSoftwareKeyboardIfNeeded;
+- (void)postUIDictationControllerDictationDidFinish;
+- (void)postUIKeyboardDictationAvailabilityDidChangeNotification;
 - (void)switchToDictationInputModeWithTouch:(id)arg1 options:(id)arg2;
 - (void)switchToDictationInputModeWithTouch:(id)arg1;
 - (void)switchToDictationInputModeWithTouch:(id)arg1 withKeyboardInputMode:(id)arg2 options:(id)arg3;
 - (void)switchToDictationLanguage:(id)arg1;
+- (void)startDictationWithContinuation:(CDUnknownBlockType)arg1;
 - (void)startDictation;
 - (_Bool)isFallingBackToMonolingualDictation;
-- (void)_startDictation;
+- (void)_startDictationWithContinuation:(CDUnknownBlockType)arg1;
 - (void)setupForDictationStart;
+- (void)setupForAsyncDelegate;
 - (void)setupForStreamingDictationStart;
 - (void)dismissDictationView:(id)arg1;
 - (_Bool)dictationSearchFieldUISupportsTraitCollection:(id)arg1;
@@ -360,6 +427,7 @@ __attribute__((visibility("hidden")))
 - (id)dictationConnection;
 - (void)stopIdleTimerResetTimer;
 - (void)resetIdleTimer;
+- (void)setIdleTimerDisabled:(_Bool)arg1 forReason:(id)arg2;
 - (void)startRecordingLimitTimer;
 - (void)stopDictationByTimer;
 - (void)cancelRecordingLimitTimer;
@@ -367,6 +435,9 @@ __attribute__((visibility("hidden")))
 - (int)state;
 - (void)errorAnimationDidFinish;
 - (void)setState:(int)arg1;
+- (void)setShadowState:(int)arg1;
+- (void)resignFirstResponderWhenIdleIfNeeded;
+- (void)switchToKeyboardInputModeIfNeeded;
 - (void)endSessionIfNecessaryForTransitionFromState:(int)arg1 toState:(int)arg2;
 - (void)_runFinalizeOperation:(_Bool)arg1;
 - (void)_runFinalizeOperation;
@@ -375,12 +446,13 @@ __attribute__((visibility("hidden")))
 - (void)_completeStartDictationWithContinuation:(CDUnknownBlockType)arg1;
 - (void)completeStartConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)startDictationForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
-- (void)startConnection;
+- (void)startConnectionWithContinuation:(CDUnknownBlockType)arg1;
 - (void)completeStartConnection;
 - (void)dictationConnection:(id)arg1 updateOptions:(id)arg2;
+- (_Bool)useAutomaticEndpointing;
 - (id)selectedTextForInputDelegate:(id)arg1;
-- (id)postfixTextForInputDelegate:(id)arg1;
-- (id)prefixTextForInputDelegate:(id)arg1;
+- (id)postfixTextForInputDelegate:(id)arg1 wordCount:(unsigned long long)arg2;
+- (id)prefixTextForInputDelegate:(id)arg1 wordCount:(unsigned long long)arg2;
 - (id)fieldIdentifierInputDelegate:(id)arg1;
 @property(readonly, retain, nonatomic) NSNumber *dictationRequestOrigin;
 - (_Bool)shouldOverrideManualEndpointing;

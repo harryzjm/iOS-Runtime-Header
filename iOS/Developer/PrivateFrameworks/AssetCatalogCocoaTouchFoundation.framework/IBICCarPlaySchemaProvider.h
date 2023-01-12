@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogCocoaTouchFoundation/IBICSchemaProvider-Protocol.h>
-
 @class IBICColorSpace, IBICContrastAppearance, IBICIdiom, IBICLanguageDirection, IBICLocale, IBICLuminosityAppearance, IBICPlatform, IBICScale, NSString;
 
-@interface IBICCarPlaySchemaProvider : NSObject <IBICSchemaProvider>
+@interface IBICCarPlaySchemaProvider : NSObject
 {
     IBICPlatform *_carPlayPlatform;
     IBICIdiom *_universalIdiom;

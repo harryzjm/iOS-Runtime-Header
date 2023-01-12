@@ -9,6 +9,7 @@
 @interface _TtCV7SwiftUIP33_796E60B90620AEB0B6972B2798FF4F4228UIKitDatePickerRepresentable11Coordinator
 {
     MISSING_TYPE *configuration;
+    MISSING_TYPE *style;
 }
 
 - (void).cxx_destruct;

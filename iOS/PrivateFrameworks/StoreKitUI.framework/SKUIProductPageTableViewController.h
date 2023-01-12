@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UITableViewDataSource-Protocol.h>
-#import <StoreKitUI/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSString, SKUIClientContext, SKUIColorScheme, SKUILayoutCache, SKUIProductPageHeaderViewController, SKUIProductPageTableView, UIColor, UITableView;
 @protocol SKUIProductPageChildViewController, SKUIProductPageChildViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIProductPageTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SKUIProductPageTableViewController : UIViewController
 {
     SKUIClientContext *_clientContext;
     SKUIColorScheme *_colorScheme;

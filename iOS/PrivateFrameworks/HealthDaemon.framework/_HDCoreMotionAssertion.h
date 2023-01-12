@@ -6,14 +6,16 @@
 
 #import <HealthDaemonFoundation/HDAssertion.h>
 
-@class CMWorkout, HKWorkoutConfiguration, NSUUID;
+@class CMWorkout, HKWorkoutConfiguration, NSArray, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface _HDCoreMotionAssertion : HDAssertion
 {
+    _Bool _enableWorkoutChangeDetection;
     HKWorkoutConfiguration *_workoutConfiguration;
     NSUUID *_sessionUUID;
     CMWorkout *_cmWorkout;
+    NSArray *_activityConfigurations;
 }
 
 - (void).cxx_destruct;

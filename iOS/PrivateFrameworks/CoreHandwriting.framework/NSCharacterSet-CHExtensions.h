@@ -7,12 +7,20 @@
 #import <Foundation/NSCharacterSet.h>
 
 @interface NSCharacterSet (CHExtensions)
++ (id)ch_neutralQuotationMarkSet;
++ (id)ch_thaiExtraSpaceAfterSymbolsSet;
++ (id)ch_thaiMathSymbolsNeedingSpaceSet;
++ (id)ch_basicClosingParenthesesSet;
++ (id)ch_basicOpeningParenthesesSet;
 + (id)ch_katakanaCharacterSet;
 + (id)ch_hiraganaCharacterSet;
 + (id)ch_kanjiCompCharacterSet;
 + (id)ch_kanjiCharacterSet;
++ (id)ch_russianOnlyCharacterSet;
++ (id)ch_basicCyrillicCharacterSet;
 + (id)ch_latinCharacterSet;
 + (id)ch_basicAlphanumericCharacterSet;
++ (id)ch_basicAlphabeticCharacterSet;
 + (id)ch_sentenceStartPunctuationCharacterSet;
 + (id)ch_sentenceEndPunctuationCharacterSet;
 + (id)ch_emptyCharacterSet;

@@ -7,6 +7,7 @@
 #import <AppleMediaServices/AMSSnapshotBag.h>
 
 @class MISSING_TYPE, NSDate, NSString;
+@protocol AMSBagProtocol;
 
 __attribute__((visibility("hidden")))
 @interface _TtC9JetEngine16OverriddenAMSBag : AMSSnapshotBag
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 - (id)init;
+@property(nonatomic, readonly) id <AMSBagProtocol> replacingSnapshotIfNeeded;
 - (void)createSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (id)dictionaryForKey:(id)arg1;
 - (id)URLForKey:(id)arg1;

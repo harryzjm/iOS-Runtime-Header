@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AXMediaUtilities/MLFeatureProvider-Protocol.h>
-
 @class NSDictionary, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SelectedCheckboxFromIcon__generated__Output : NSObject <MLFeatureProvider>
+@interface SelectedCheckboxFromIcon__generated__Output : NSObject
 {
     NSDictionary *_labelProbability;
     NSString *_label;

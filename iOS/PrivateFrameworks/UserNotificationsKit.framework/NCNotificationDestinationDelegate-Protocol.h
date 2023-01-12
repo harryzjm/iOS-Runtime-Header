@@ -7,7 +7,7 @@
 #import <UserNotificationsKit/NCNotificationSectionSettingsProvider-Protocol.h>
 #import <UserNotificationsKit/NCNotificationSystemSettingsProvider-Protocol.h>
 
-@class NCNotificationAction, NCNotificationRequest, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID;
+@class NCNotificationAction, NCNotificationRequest, NCNotificationSystemSettings, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID;
 @protocol NCNotificationDestination;
 
 @protocol NCNotificationDestinationDelegate <NCNotificationSectionSettingsProvider, NCNotificationSystemSettingsProvider>
@@ -19,6 +19,7 @@
 - (void)destination:(id <NCNotificationDestination>)arg1 requestPermissionToExecuteAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withParameters:(NSDictionary *)arg4 completion:(void (^)(_Bool))arg5;
 
 @optional
+- (void)destination:(id <NCNotificationDestination>)arg1 setNotificationSystemSettings:(NCNotificationSystemSettings *)arg2;
 - (NCNotificationRequest *)destination:(id <NCNotificationDestination>)arg1 notificationRequestForUUID:(NSUUID *)arg2;
 - (void)destination:(id <NCNotificationDestination>)arg1 setSystemScheduledDeliveryEnabled:(_Bool)arg2 scheduledDeliveryTimes:(NSArray *)arg3;
 - (void)destination:(id <NCNotificationDestination>)arg1 setScheduledDelivery:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;

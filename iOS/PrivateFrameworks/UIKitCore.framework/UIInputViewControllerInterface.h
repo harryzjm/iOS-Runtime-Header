@@ -6,19 +6,18 @@
 
 #import <TextInput/TIKeyboardInputManagerStub.h>
 
-#import <UIKitCore/_UIIVCInterface-Protocol.h>
-
 @class NSString, _UIInputViewControllerState;
 @protocol _UIIVCInterface, _UIIVCResponseDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewControllerInterface : TIKeyboardInputManagerStub <_UIIVCInterface>
+@interface UIInputViewControllerInterface : TIKeyboardInputManagerStub
 {
     id <_UIIVCResponseDelegate> _responseDelegate;
     id <_UIIVCInterface> _forwardingInterface;
     _UIInputViewControllerState *_cachedState;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_cachedState, setter=_setCachedState:) _UIInputViewControllerState *cachedState; // @synthesize cachedState=_cachedState;
 @property(retain, nonatomic) id <_UIIVCInterface> forwardingInterface; // @synthesize forwardingInterface=_forwardingInterface;
 @property(retain, nonatomic) id <_UIIVCResponseDelegate> responseDelegate; // @synthesize responseDelegate=_responseDelegate;

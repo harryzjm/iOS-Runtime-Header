@@ -7,6 +7,7 @@
 #import <EventKit/EKAlarm.h>
 
 @interface EKAlarm (MobileCal)
++ (id)defaultDesignator;
 - (id)localizedAllDayDescription;
 - (id)localizedDescription;
 - (id)longLocalizedAllDayDescription;

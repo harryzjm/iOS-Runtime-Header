@@ -46,7 +46,7 @@
 - (void)_testSuite:(id)arg1 didRecordIssue:(id)arg2;
 - (void)_testSuiteDidStop:(id)arg1;
 - (void)_testSuiteDidStart:(id)arg1;
-- (void)_handleException:(id)arg1 thrownBy:(id)arg2 inMethod:(SEL)arg3;
+- (void)_handleExceptionThrownBy:(id)arg1 inMethod:(SEL)arg2;
 - (void)_suspendObservationForBlock:(CDUnknownBlockType)arg1;
 - (void)_suspendObservation;
 - (void)_resumeObservation;

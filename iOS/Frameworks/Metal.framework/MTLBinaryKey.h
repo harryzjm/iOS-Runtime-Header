@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <Metal/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface MTLBinaryKey : NSObject <NSCopying>
+@interface MTLBinaryKey : NSObject
 {
-    CDStruct_41a22ec7 _hash;
+    struct MTLFunctionId *_id;
 }
 
 - (id)description;
 @property(readonly) const CDStruct_41a22ec7 *value;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
+- (void)dealloc;
+- (const struct MTLFunctionId *)getFunctionId;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToKey:(id)arg1;
-- (id)initWithHash:(const CDStruct_41a22ec7 *)arg1;
+- (id)initWithHash:(const struct MTLMultiHashKey *)arg1;
 
 @end
 

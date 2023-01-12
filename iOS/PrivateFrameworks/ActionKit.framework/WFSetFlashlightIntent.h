@@ -6,13 +6,10 @@
 
 #import <Intents/INIntent.h>
 
-#import <ActionKit/WFBooleanSettingIntent-Protocol.h>
-#import <ActionKit/WFDecimalSettingIntent-Protocol.h>
-
 @class NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface WFSetFlashlightIntent : INIntent <WFBooleanSettingIntent, WFDecimalSettingIntent>
+@interface WFSetFlashlightIntent : INIntent
 {
 }
 

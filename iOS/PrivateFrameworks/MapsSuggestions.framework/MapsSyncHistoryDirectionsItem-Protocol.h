@@ -6,9 +6,10 @@
 
 #import <MapsSuggestions/MapsSyncHistoryItem-Protocol.h>
 
-@class GEOStorageRouteRequestStorage;
+@class GEOStorageRouteRequestStorage, NSData;
 
 @protocol MapsSyncHistoryDirectionsItem <MapsSyncHistoryItem>
+@property(readonly, nonatomic) NSData *sharedETAData;
 @property(readonly, nonatomic) GEOStorageRouteRequestStorage *routeRequestStorage;
 @property(readonly, nonatomic) _Bool navigationInterrupted;
 @end

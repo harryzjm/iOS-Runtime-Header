@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RespiratoryHealthUI/HKRPWatchInstallAppsProviding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HKRPDefaultWatchAppsInstallProvider : NSObject <HKRPWatchInstallAppsProviding>
+@interface _HKRPDefaultWatchAppsInstallProvider : NSObject
 {
 }
 

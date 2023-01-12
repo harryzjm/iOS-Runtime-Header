@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ICRequestOperation.h"
+
 @class ICStoreRequestContext;
 
 __attribute__((visibility("hidden")))
-@interface ICMusicSubscriptionRequest
+@interface ICMusicSubscriptionRequest : ICRequestOperation
 {
     ICStoreRequestContext *_storeRequestContext;
     long long _requestType;

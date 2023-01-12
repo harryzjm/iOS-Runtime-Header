@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
-@protocol PXAnonymousViewController, PXAssetCollectionActionPerformerDelegate, PXStoryFeedViewActionPerformer;
+@class NSObject, NSString;
+@protocol PXAnonymousViewController, PXAssetCollectionActionPerformerDelegate, PXFeedViewActionPerformer;
 
 @protocol PXStoryMutableFeedViewModel
 @property(nonatomic) __weak NSObject<PXAnonymousViewController> *presentingViewController;
 @property(nonatomic) __weak id <PXAssetCollectionActionPerformerDelegate> assetCollectionActionPerformerDelegate;
-@property(nonatomic) __weak id <PXStoryFeedViewActionPerformer> actionPerformer;
+@property(nonatomic) __weak id <PXFeedViewActionPerformer> actionPerformer;
+@property(copy, nonatomic) NSString *subtitle;
 @property(nonatomic) _Bool isActive;
 @end
 

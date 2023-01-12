@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/SFCertificateWarningJSControllerMethods-Protocol.h>
-
 @class SFWebProcessPlugInCertificateWarningController;
 
 __attribute__((visibility("hidden")))
-@interface SFCertificateWarningJSController : NSObject <SFCertificateWarningJSControllerMethods>
+@interface SFCertificateWarningJSController : NSObject
 {
     SFWebProcessPlugInCertificateWarningController *_certificateWarningController;
 }

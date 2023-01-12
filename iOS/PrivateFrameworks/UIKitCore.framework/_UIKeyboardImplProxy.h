@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/TIKeyboardInputManagerToImplProtocol-Protocol.h>
-
 @class NSString;
 @protocol TIKeyboardInputManagerToImplProtocol;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyboardImplProxy : NSObject <TIKeyboardInputManagerToImplProtocol>
+@interface _UIKeyboardImplProxy : NSObject
 {
     id <TIKeyboardInputManagerToImplProtocol> _delegate;
 }
 
-@property(nonatomic) id <TIKeyboardInputManagerToImplProtocol> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <TIKeyboardInputManagerToImplProtocol> delegate; // @synthesize delegate=_delegate;
 - (void)pushAutocorrections:(id)arg1 requestToken:(id)arg2;
 - (void)processPayloadInfo:(id)arg1;
 

@@ -8,11 +8,12 @@
 #import <PagesQuicklook/TSDFlowInfo-Protocol.h>
 #import <PagesQuicklook/TSKDocumentObject-Protocol.h>
 #import <PagesQuicklook/TSKModel-Protocol.h>
+#import <PagesQuicklook/TSWPStorageContainer-Protocol.h>
 #import <PagesQuicklook/TSWPTextBoxNesting-Protocol.h>
 
 @class NSArray, NSString, TSUColor, TSWPShapeInfo, TSWPStorage;
 
-@protocol TSWPFlowInfo <NSObject, TSKDocumentObject, TSKModel, TSDFlowInfo, TSWPTextBoxNesting>
+@protocol TSWPFlowInfo <NSObject, TSKDocumentObject, TSKModel, TSDFlowInfo, TSWPTextBoxNesting, TSWPStorageContainer>
 + (TSUColor *)strokeColorForUserInterfaceIdentifier:(unsigned long long)arg1;
 + (TSUColor *)fillColorForUserInterfaceIdentifier:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool containsRotatedOrFlippedTextBox;

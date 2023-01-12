@@ -24,7 +24,6 @@
 + (void)reportSummarized:(char *)arg1;
 + (void)reportHit:(char *)arg1;
 + (void)reportForDomain:(char *)arg1 summarize:(_Bool)arg2 collecting:(CDUnknownBlockType)arg3;
-+ (double)delay:(double)arg1;
 + (void)initialize;
 
 @end

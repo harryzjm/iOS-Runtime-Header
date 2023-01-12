@@ -7,7 +7,7 @@
 #import <BackBoardServices/NSObject-Protocol.h>
 
 @class BKSContextRelativePoint, BKSMousePointerDevice, BKSMousePointerDevicePreferences, BSAnimationSettings, NSNumber, NSSet, NSString, NSUUID, NSValue;
-@protocol __BKSHIDEventHitTestClientContext__, __BKSMousePointerDevice__, __NSNumber__;
+@protocol __BKSHIDEventHitTestClientContext__, __BKSMousePointerDevice__, __BKSMousePointerEventGlobalRoute__;
 
 @protocol BKSMousePointerServiceClientToServerInterface <NSObject>
 - (oneway void)setGlobalDevicePreferences:(BKSMousePointerDevicePreferences *)arg1;
@@ -15,7 +15,7 @@
 - (oneway void)setPreferences:(BKSMousePointerDevicePreferences *)arg1 forDevice:(BKSMousePointerDevice *)arg2;
 - (BKSMousePointerDevicePreferences *)preferencesForDevice:(BKSMousePointerDevice *)arg1;
 - (oneway void)getHitTestContextsAtPoint:(BKSContextRelativePoint *)arg1 withAdditionalContexts:(NSSet<__BKSHIDEventHitTestClientContext__> *)arg2 onDisplay:(NSString *)arg3 withCompletion:(void (^)(NSArray<__BKSHIDEventHitTestClientContext__> *, NSArray<__NSValue__> *, NSError *))arg4;
-- (oneway void)setGlobalPointerEventContextIDsForDisplay:(NSString *)arg1 targetContextIDs:(NSSet<__NSNumber__> *)arg2;
+- (oneway void)setGlobalPointerEventRoutes:(NSSet<__BKSMousePointerEventGlobalRoute__> *)arg1 forDisplay:(NSString *)arg2;
 - (oneway void)invalidateButtonDownPointerRepositionAssertionWithUniqueIdentifier:(NSUUID *)arg1 onDisplay:(NSString *)arg2;
 - (oneway void)acquireButtonDownPointerRepositionAssertionWithUniqueIdentifier:(NSUUID *)arg1 forReason:(NSString *)arg2 contextRelativePointerPosition:(BKSContextRelativePoint *)arg3 onDisplay:(NSString *)arg4 restrictingToPID:(NSNumber *)arg5;
 - (oneway void)applyAssertionParametersOnDisplay:(NSString *)arg1 withOptionsMask:(NSNumber *)arg2;

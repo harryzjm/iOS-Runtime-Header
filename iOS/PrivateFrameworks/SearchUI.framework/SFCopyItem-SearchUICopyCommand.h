@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFCopyItem.h>
 
 @interface SFCopyItem (SearchUICopyCommand)
-- (void)searchUI_copyItem;
+- (void)searchUI_copyItemToPasteboard;
 @end
 

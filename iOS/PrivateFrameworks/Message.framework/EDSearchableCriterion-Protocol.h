@@ -6,10 +6,10 @@
 
 #import <Message/NSObject-Protocol.h>
 
-@class NSString;
+@class EMSearchableIndexQueryExpression;
 
 @protocol EDSearchableCriterion <NSObject>
-@property(readonly, nonatomic) NSString *spotlightQueryString;
 @property(readonly, nonatomic, getter=isFullTextSearchableCriterion) _Bool fullTextSearchableCriterion;
+- (EMSearchableIndexQueryExpression *)spotlightQueryExpression;
 @end
 

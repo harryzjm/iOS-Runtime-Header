@@ -6,11 +6,9 @@
 
 #import <TVUIKit/_TVCarouselView.h>
 
-#import <TVMLKit/TVRowHosting-Protocol.h>
-
 @class NSString;
 
-@interface _TVCarouselView (TVMLKitAdditions) <TVRowHosting>
+@interface _TVCarouselView (TVMLKitAdditions)
 - (id)rowMetricsForExpectedWidth:(double)arg1 firstItemRowIndex:(long long *)arg2;
 
 // Remaining properties

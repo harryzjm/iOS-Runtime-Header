@@ -6,7 +6,6 @@
 
 @class GQDSStylesheet;
 
-__attribute__((visibility("hidden")))
 @interface GQDLSDocument
 {
     GQDSStylesheet *mStylesheet;

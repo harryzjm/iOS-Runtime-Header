@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <prequelite/PQLValuable-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (PQLValuable) <PQLValuable>
+@interface NSNumber (PQLValuable)
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;

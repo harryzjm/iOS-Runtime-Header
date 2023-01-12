@@ -7,6 +7,8 @@
 #import <HealthDaemon/HDKeyValueDomain.h>
 
 @interface HDKeyValueDomain (HKHeartRhythm)
++ (id)hdhr_aFibBurdenProtectedSyncedDomainForProfile:(id)arg1;
++ (id)hdhr_aFibBurdenProtectedLocalDomainForProfile:(id)arg1;
 + (id)hdhr_heartRhythmProtectedLocalDomainForProfile:(id)arg1;
 + (id)hdhr_heartRhythmProtectedSyncedDomainForProfile:(id)arg1;
 - (_Bool)hdhr_resetAtrialFibrillationDetectionOnboardingWithError:(id *)arg1;
@@ -15,5 +17,12 @@
 - (id)hdhr_atrialFibrillationOnboardingCompletionVersionWithError:(id *)arg1;
 - (id)hdhr_irregularRhythmNotificationsOnboardingCompletionForFeatureIdentifier:(id)arg1 error:(id *)arg2;
 - (id)hdhr_atrialFibrillationOnboardingCountryCodeWithError:(id *)arg1;
+- (void)setNotificationSentDate:(id)arg1;
+- (_Bool)hdhr_resetElectrocardiogramRecordingFirstOnboardingCompletedDateWithError:(id *)arg1;
+- (id)hdhr_electrocardiogramRecordingOnboardingCountryCodeWithError:(id *)arg1;
+- (id)hdhr_electrocardiogramRecordingOnboardingCompletionVersionWithError:(id *)arg1;
+- (_Bool)hdhr_setElectrocardiogramRecordingFirstOnboardingCompletedDate:(id)arg1 error:(id *)arg2;
+- (id)hdhr_electrocardiogramRecordingFirstOnboardingCompletedDateWithError:(id *)arg1;
+- (id)hdhr_electrocardiogramRecordingOnboardingHistoryWithError:(id *)arg1;
 @end
 

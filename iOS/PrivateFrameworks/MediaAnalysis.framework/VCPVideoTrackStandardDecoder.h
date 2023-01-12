@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVAssetReader, AVAssetReaderTrackOutput;
+@class AVAssetReader, AVAssetReaderTrackOutput, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface VCPVideoTrackStandardDecoder
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     AVAssetReaderTrackOutput *_trackOutput;
     struct opaqueCMSampleBuffer *_nextSample;
     long long _status;
+    NSDictionary *_decoderSettings;
 }
 
 - (void).cxx_destruct;

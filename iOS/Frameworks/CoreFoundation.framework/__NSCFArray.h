@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSMutableArray.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSCFArray
+@interface __NSCFArray : NSMutableArray
 {
 }
 
++ (id)allocWithZone:(struct _NSZone *)arg1;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -26,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)removeLastObject;
 - (void)addObject:(id)arg1;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;

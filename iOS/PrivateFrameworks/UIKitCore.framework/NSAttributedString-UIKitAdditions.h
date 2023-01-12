@@ -6,12 +6,10 @@
 
 #import <Foundation/NSAttributedString.h>
 
-#import <UIKitCore/UIItemProviderReading-Protocol.h>
-#import <UIKitCore/UIItemProviderWriting-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSAttributedString (UIKitAdditions) <UIItemProviderReading, UIItemProviderWriting>
+@interface NSAttributedString (UIKitAdditions)
++ (id)_systemTextSearchTextAttributesForStyle:(unsigned long long)arg1;
 + (long long)_preferredRepresentationForItemProviderWritableTypeIdentifier:(id)arg1;
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)_objectWithItemProviderFileURL:(id)arg1 typeIdentifier:(id)arg2 isInPlace:(_Bool)arg3 error:(id *)arg4;
@@ -24,7 +22,9 @@
 - (id)_ui_attributedStringWithOriginalFontAttributes;
 - (long long)_ui_resolvedWritingDirectionForUserInterfaceLayoutDirection:(long long)arg1;
 - (long long)_ui_resolvedWritingDirection;
+- (long long)_ui_resolvedTextAlignmentForParagraphStyle:(id)arg1;
 - (long long)_ui_resolvedTextAlignmentForUserInterfaceLayoutDirection:(long long)arg1;
+- (long long)_ui_resolvedTextAlignmentForParagraphStyle:(id)arg1 userInterfaceLayoutDirection:(long long)arg2;
 - (long long)_ui_resolvedTextAlignment;
 - (id)_ui_attributedStringAdjustedToTraitCollection:(id)arg1;
 - (id)_ui_rtfDataError:(id *)arg1;

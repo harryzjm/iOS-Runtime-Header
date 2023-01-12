@@ -9,6 +9,7 @@
 @class NSURL, TSUSandboxedURL;
 
 @protocol TSUURLWrapper <NSObject>
+@property(readonly) NSURL *URLIfAvailable;
 @property(readonly) TSUSandboxedURL *sandboxedURL;
 @property(readonly) NSURL *URL;
 @end

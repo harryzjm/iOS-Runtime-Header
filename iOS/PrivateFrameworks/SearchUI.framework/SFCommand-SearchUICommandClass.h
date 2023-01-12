@@ -7,8 +7,7 @@
 #import <SearchFoundation/SFCommand.h>
 
 @interface SFCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
-- (Class)_searchUI_actionProviderClassWithRowModel:(id)arg1;
+- (Class)_searchUICommandHandlerClass;
 - (id)_searchUI_actionType;
 - (id)_searchUI_contact;
 @end

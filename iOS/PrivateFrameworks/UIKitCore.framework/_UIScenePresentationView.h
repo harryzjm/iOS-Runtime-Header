@@ -4,17 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/BSDescriptionProviding-Protocol.h>
-#import <UIKitCore/BSInvalidatable-Protocol.h>
-#import <UIKitCore/FBSceneObserver-Protocol.h>
-#import <UIKitCore/UIScenePresentation-Protocol.h>
-#import <UIKitCore/_UISceneLayerHostContainerViewDataSource-Protocol.h>
-
 @class FBSSceneSettings, FBSSceneSettingsDiffInspector, FBScene, NSHashTable, NSString, UIScenePresentationContext, UIView, _UISceneLayerHostContainerView, _UIScenePresenter;
 @protocol UIScenePresenter;
 
 __attribute__((visibility("hidden")))
-@interface _UIScenePresentationView <FBSceneObserver, _UISceneLayerHostContainerViewDataSource, BSDescriptionProviding, UIScenePresentation, BSInvalidatable>
+@interface _UIScenePresentationView
 {
     _UIScenePresenter *_presenter;
     FBScene *_scene;

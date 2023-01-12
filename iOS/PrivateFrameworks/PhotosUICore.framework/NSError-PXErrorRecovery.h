@@ -18,5 +18,6 @@
 + (id)px_audioSessionErrorWithCode:(long long)arg1;
 - (id)px_errorWithRecoveryOptions:(id)arg1 preferredOptionIndex:(long long)arg2;
 - (id)px_errorWithRecoveryOptions:(id)arg1;
+- (_Bool)px_isDomain:(id)arg1 code:(long long)arg2;
 @end
 

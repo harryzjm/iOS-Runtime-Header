@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class _UIKeyShortcutHUDShortcutInputView;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDShortcutInputAccessoryView
+@interface _UIKeyShortcutHUDShortcutInputAccessoryView : UIView
 {
     _UIKeyShortcutHUDShortcutInputView *_shortcutInputView;
 }

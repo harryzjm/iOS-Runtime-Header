@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "DDCallAction.h"
+
 @class TUCallProvider;
 
 __attribute__((visibility("hidden")))
-@interface DDCallKitAction
+@interface DDCallKitAction : DDCallAction
 {
     TUCallProvider *_callProvider;
 }

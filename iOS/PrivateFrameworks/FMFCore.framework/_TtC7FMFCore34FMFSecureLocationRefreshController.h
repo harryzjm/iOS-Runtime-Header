@@ -11,20 +11,26 @@
 @interface _TtC7FMFCore34FMFSecureLocationRefreshController : _TtCs12_SwiftObject
 {
     MISSING_TYPE *dataManager;
-    MISSING_TYPE *secureLocationManager;
+    MISSING_TYPE *secureLocationsManager;
     MISSING_TYPE *shallowHandles;
+    MISSING_TYPE *shallowHandlesClientApp;
     MISSING_TYPE *liveHandles;
+    MISSING_TYPE *liveHandlesClientApp;
+    MISSING_TYPE *pendingIdentifiers;
+    MISSING_TYPE *fallenbackIdentifiers;
     MISSING_TYPE *liveTimers;
+    MISSING_TYPE *shallowTimeoutTimers;
+    MISSING_TYPE *secureRecoveryTimers;
+    MISSING_TYPE *subscribeTimer;
     MISSING_TYPE *locationShifter;
     MISSING_TYPE *subscribeQueue;
-    MISSING_TYPE *operationQueue;
     MISSING_TYPE *delegateQueue;
     MISSING_TYPE *expiryTimers;
     MISSING_TYPE *errorRetryInterval;
     MISSING_TYPE *delegate;
     MISSING_TYPE *liveDelegate;
     MISSING_TYPE *overrideLiveAnimationTimeoutDuration;
-    MISSING_TYPE *publishedCount;
+    MISSING_TYPE *dateFormatter;
 }
 
 @end

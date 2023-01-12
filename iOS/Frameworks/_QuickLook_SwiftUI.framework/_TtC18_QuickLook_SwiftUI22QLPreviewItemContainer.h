@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <_QuickLook_SwiftUI/QLPreviewItem-Protocol.h>
-
-@class MISSING_TYPE, NSURL;
+@class NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18_QuickLook_SwiftUI22QLPreviewItemContainer : NSObject <QLPreviewItem>
+@interface _TtC18_QuickLook_SwiftUI22QLPreviewItemContainer : NSObject
 {
-    MISSING_TYPE *previewItemURL;
 }
 
 - (void).cxx_destruct;

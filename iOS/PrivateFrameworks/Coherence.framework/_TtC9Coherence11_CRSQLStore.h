@@ -13,6 +13,12 @@
     MISSING_TYPE *path;
     MISSING_TYPE *dbPointer;
     MISSING_TYPE *closed;
+    MISSING_TYPE *isExclusive;
+    MISSING_TYPE *immutable;
+    MISSING_TYPE *allowedAppFormats;
+    MISSING_TYPE *encodingFormatVersions;
+    MISSING_TYPE *fileEncodingFormatVersion;
+    MISSING_TYPE *fileAppFormatVersion;
     MISSING_TYPE *SQLITE_STATIC;
     MISSING_TYPE *SQLITE_TRANSIENT;
 }

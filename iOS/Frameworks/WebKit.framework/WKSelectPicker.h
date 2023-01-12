@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/UIContextMenuInteractionDelegate-Protocol.h>
-#import <WebKit/WKFormControl-Protocol.h>
-
 @class NSString, WKContentView;
 
 __attribute__((visibility("hidden")))
-@interface WKSelectPicker : NSObject <WKFormControl, UIContextMenuInteractionDelegate>
+@interface WKSelectPicker : NSObject
 {
     WKContentView *_view;
     struct CGPoint _interactionPoint;
@@ -31,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
-- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configuration:(id)arg2 highlightPreviewForItemWithIdentifier:(id)arg3;
 - (id)actionForOptionIndex:(long long)arg1;
 - (id)actionForOptionItem:(const void *)arg1 withIndex:(long long)arg2;
 - (id)createMenu;

@@ -22,6 +22,7 @@
 + (id)mtui_stopwatchMinorTickMarkColor;
 + (id)mtui_stopwatchMajorTickMarkColor;
 + (id)mtui_disabledTextColor;
++ (id)mtui_tertiaryTextColor;
 + (id)mtui_secondaryTextColor;
 + (id)mtui_primaryTextColor;
 + (id)mtui_worldClockMapLandColor;

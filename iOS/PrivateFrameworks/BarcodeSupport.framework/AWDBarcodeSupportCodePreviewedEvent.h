@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BarcodeSupport/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AWDBarcodeSupportCodePreviewedEvent : PBCodable <NSCopying>
+@interface AWDBarcodeSupportCodePreviewedEvent : PBCodable
 {
     unsigned long long _timestamp;
     int _previewContentType;

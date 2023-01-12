@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-
 @class NSManagedObjectID, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _PFObjectCKRecordZoneLink : NSObject <NSCopying>
+@interface _PFObjectCKRecordZoneLink : NSObject
 {
     NSManagedObjectID *_objectID;
     NSString *_recordName;

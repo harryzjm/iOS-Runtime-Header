@@ -6,12 +6,10 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSKSelection;
 @protocol TSDCanvasSelection;
 
-@interface KNArchivedCanvasSelection : TSPObject <TSKArchivedSelection>
+@interface KNArchivedCanvasSelection : TSPObject
 {
     TSKSelection<TSDCanvasSelection> *_selection;
 }

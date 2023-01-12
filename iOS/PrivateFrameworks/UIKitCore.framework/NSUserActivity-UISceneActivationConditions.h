@@ -6,20 +6,19 @@
 
 #import <Foundation/NSUserActivity.h>
 
-#import <UIKitCore/UIItemProviderReading-Protocol.h>
-#import <UIKitCore/UIItemProviderWriting-Protocol.h>
+@class BSProcessHandle, NSArray, NSString;
 
-@class NSArray, NSString;
-
-@interface NSUserActivity (UISceneActivationConditions) <UIItemProviderReading, UIItemProviderWriting>
+@interface NSUserActivity (UISceneActivationConditions)
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
 @property(copy, nonatomic) NSString *targetContentIdentifier;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
+- (void)_setOriginatingProcess:(id)arg1;
 - (void)_setSourceApplication:(id)arg1;
-@property(readonly, nonatomic) NSString *_sourceApplication; // @dynamic _sourceApplication;
+@property(readonly, nonatomic) BSProcessHandle *_originatingProcess;
+@property(readonly, nonatomic) NSString *_sourceApplication;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CKRecordID, NSData, NSString;
+@class CKMergeableDeltaID, CKRecordID, NSData, NSString;
 
 @interface CKDWrappingContext : NSObject
 {
     CKRecordID *_recordID;
     NSString *_fieldName;
+    CKMergeableDeltaID *_mergeableDeltaID;
     NSData *_fileSignature;
     NSData *_referenceSignature;
 }
@@ -19,11 +20,12 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSData *referenceSignature; // @synthesize referenceSignature=_referenceSignature;
 @property(retain, nonatomic) NSData *fileSignature; // @synthesize fileSignature=_fileSignature;
+@property(retain, nonatomic) CKMergeableDeltaID *mergeableDeltaID; // @synthesize mergeableDeltaID=_mergeableDeltaID;
 @property(retain, nonatomic) NSString *fieldName; // @synthesize fieldName=_fieldName;
 @property(retain, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 - (id)encryptedDataContextString;
 - (id)assetContextString;
-- (id)initWithRecordID:(id)arg1 fieldName:(id)arg2 fileSignature:(id)arg3 referenceSignature:(id)arg4;
+- (id)initWithRecordID:(id)arg1 fieldName:(id)arg2 mergeableDeltaID:(id)arg3 fileSignature:(id)arg4 referenceSignature:(id)arg5;
 
 @end
 

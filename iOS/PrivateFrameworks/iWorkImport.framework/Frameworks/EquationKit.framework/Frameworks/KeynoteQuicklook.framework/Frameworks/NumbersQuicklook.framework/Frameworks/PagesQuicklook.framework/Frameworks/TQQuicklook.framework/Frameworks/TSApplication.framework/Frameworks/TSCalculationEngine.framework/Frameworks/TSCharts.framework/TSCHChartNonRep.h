@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHSupportsRendering-Protocol.h>
-
 @class NSArray, NSString, TSCHChartInfo, TSCHChartLayout;
 
-@interface TSCHChartNonRep : NSObject <TSCHSupportsRendering>
+@interface TSCHChartNonRep : NSObject
 {
     TSCHChartInfo *_chartInfo;
     NSArray *_renderers;

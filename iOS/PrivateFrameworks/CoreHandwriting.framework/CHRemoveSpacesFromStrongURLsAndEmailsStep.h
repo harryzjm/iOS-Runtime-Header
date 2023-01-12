@@ -11,9 +11,9 @@
     CHPatternNetwork *_patternFST;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CHPatternNetwork *patternFST; // @synthesize patternFST=_patternFST;
-- (void)dealloc;
-- (id)process:(id)arg1;
+- (id)process:(id)arg1 options:(id)arg2;
 - (id)initWithPatternFst:(id)arg1;
 
 @end

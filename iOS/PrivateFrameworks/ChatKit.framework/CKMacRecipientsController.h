@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKDetailsContactsManagerDelegate-Protocol.h>
-#import <ChatKit/CNComposeRecipientTextViewDelegate-Protocol.h>
+#import "CKViewController.h"
 
 @class CKConversation, CKDetailsContactsManager, CKManualUpdater, CNComposeRecipientTextView, NSString, STConversationContext, UIScrollView, UIView;
 @protocol CKMacRecipientsControllerDelegate;
 
-@interface CKMacRecipientsController <CNComposeRecipientTextViewDelegate, CKDetailsContactsManagerDelegate>
+__attribute__((visibility("hidden")))
+@interface CKMacRecipientsController : CKViewController
 {
     _Bool _allowedByScreenTime;
     CKConversation *_conversation;
@@ -38,6 +38,8 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)updateScreenTimePolicy;
 - (id)handlesForScreenTimePolicyCheck;
+- (void)_showContactCardForEntity:(id)arg1 sourceView:(id)arg2;
+- (void)composeRecipientView:(id)arg1 disambiguateRecipientForAtom:(id)arg2;
 - (id)composeRecipientView:(id)arg1 contextMenuConfigurationForAtom:(id)arg2;
 - (unsigned long long)_atomPresentationOptionsForRecipient:(id)arg1;
 - (unsigned long long)presentationOptionsForRecipient:(id)arg1;

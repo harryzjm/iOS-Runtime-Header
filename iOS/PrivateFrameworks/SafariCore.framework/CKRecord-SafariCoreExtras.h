@@ -6,9 +6,11 @@
 
 #import <CloudKit/CKRecord.h>
 
-@protocol CKRecordKeyValueSetting;
+@class NSData;
+@protocol CKRecordKeyValueSetting, NSSecureCoding;
 
 @interface CKRecord (SafariCoreExtras)
+@property(readonly, nonatomic) _Bool safari_isInPrivateDatabase;
 - (id)safari_referenceForKey:(id)arg1;
 - (id)safari_encryptedDataForKey:(id)arg1;
 - (id)safari_arrayForKey:(id)arg1;
@@ -19,5 +21,8 @@
 - (_Bool)safari_boolForKey:(id)arg1;
 @property(readonly, copy, nonatomic) id <CKRecordKeyValueSetting> safari_encryptedValues;
 @property(readonly, nonatomic) _Bool safari_hasAtLeastOneChangedField;
+@property(readonly, nonatomic) NSData *safari_encodedSystemFieldsData;
+- (id)safari_initWithEncodedRecordData:(id)arg1;
+@property(readonly, nonatomic) id <NSSecureCoding> safari_systemFieldsEncoder;
 @end
 

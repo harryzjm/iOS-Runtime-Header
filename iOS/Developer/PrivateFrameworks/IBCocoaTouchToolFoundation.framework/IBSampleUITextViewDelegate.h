@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/UITextFieldDelegate-Protocol.h>
-#import <IBCocoaTouchToolFoundation/UITextViewDelegate-Protocol.h>
-
 @class NSString;
 
-@interface IBSampleUITextViewDelegate : NSObject <UITextViewDelegate, UITextFieldDelegate>
+@interface IBSampleUITextViewDelegate : NSObject
 {
 }
 

@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
     AVURLAsset *asset;
     struct CMBaseObject *assetDownloader;
     NSObject<OS_dispatch_source> *fileDownloadProgressTimer;
-    _Bool fileDownloadProgressTimerRunning;
 }
 
 @end

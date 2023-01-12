@@ -19,8 +19,10 @@
 @property(readonly, nonatomic) _Bool showExtraLineBeforeFirstRow;
 @property(readonly, nonatomic) _Bool showsIndex;
 @property(readonly, nonatomic) _Bool allowCandidateGridExpanding;
+@property(readonly, nonatomic) _Bool dragGestureDisabled;
 @property(readonly, nonatomic) _Bool scrollDisabled;
 @property(readonly, nonatomic) _Bool darkBackdrop;
+@property(nonatomic) long long lineBreakMode;
 @property(readonly, nonatomic) long long alternativeTextAlignment;
 @property(readonly, nonatomic) long long cellTextAlignment;
 @property(readonly, nonatomic) struct UIEdgeInsets sortControlPadding;
@@ -31,6 +33,7 @@
 @property(readonly, nonatomic) struct UIEdgeInsets extraCellPadding;
 @property(readonly, nonatomic) double singleSlottedCellMargin;
 @property(readonly, nonatomic) double maximumIconWidth;
+@property(readonly, nonatomic) double minimumInterItemSpacing;
 @property(readonly, nonatomic) double minimumCellWidth;
 @property(readonly, nonatomic) double minimumCellPadding;
 @property(readonly, nonatomic) unsigned long long maxNumberOfProactiveCells;
@@ -41,6 +44,7 @@
 @property(readonly, nonatomic) double foregroundOpacity;
 @property(readonly, nonatomic) unsigned long long gridMaskedCorners;
 @property(readonly, nonatomic) unsigned long long maskedCorners;
+@property(readonly, nonatomic) double cellCornerRadius;
 @property(readonly, nonatomic) double cornerRadius;
 @property(readonly, nonatomic) double arrowButtonHeight;
 @property(readonly, nonatomic) double rowHeight;

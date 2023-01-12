@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIMissingItemDelegate-Protocol.h>
-#import <StoreKitUI/SKUIProductPageOverlayDelegate-Protocol.h>
-#import <StoreKitUI/SKUISwooshViewControllerDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSString, SKUILockupSwooshArtworkLoader, SKUILockupSwooshViewController, SKUIMissingItemLoader, SKUIProductPageOverlayController, SKUISwooshPageComponent;
 
 __attribute__((visibility("hidden")))
-@interface SKUILockupSwooshPageSection <SKUIMissingItemDelegate, SKUIProductPageOverlayDelegate, SKUISwooshViewControllerDelegate>
+@interface SKUILockupSwooshPageSection : SKUIStorePageSection
 {
     SKUILockupSwooshArtworkLoader *_artworkLoader;
     SKUIMissingItemLoader *_missingItemLoader;

@@ -6,12 +6,10 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeAI/HMFLogging-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMIVideoAnalyzerSchedulerJSONLogger : HMFObject <HMFLogging>
+@interface HMIVideoAnalyzerSchedulerJSONLogger : HMFObject
 {
 }
 

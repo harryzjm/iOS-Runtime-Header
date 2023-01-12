@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)handleError:(id)arg1 forRequest:(id)arg2;
 - (void)handleRequest:(id)arg1;

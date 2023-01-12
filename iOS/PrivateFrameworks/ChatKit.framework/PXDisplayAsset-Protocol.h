@@ -10,6 +10,7 @@
 @protocol PXAssetdestinationAssetCopyProperties, PXDisplayAsset;
 
 @protocol PXDisplayAsset <PXDisplayThumbnailAsset>
+@property(readonly, nonatomic) float audioScore;
 @property(readonly, nonatomic) struct CGRect faceAreaRect;
 @property(readonly, nonatomic) struct CGRect acceptableCropRect;
 @property(readonly, nonatomic) struct CGRect preferredCropRect;
@@ -17,6 +18,7 @@
 @property(readonly, nonatomic) unsigned long long pixelHeight;
 @property(readonly, nonatomic) unsigned long long pixelWidth;
 @property(readonly, nonatomic) _Bool isEligibleForAutoPlayback;
+@property(readonly, nonatomic) _Bool isInSharedLibrary;
 @property(readonly, nonatomic) _Bool isInCloud;
 @property(readonly, nonatomic) _Bool representsBurst;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
@@ -40,6 +42,7 @@
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
 @property(readonly, nonatomic) double duration;
+@property(readonly, nonatomic) long long originalFileSize;
 - (id <PXAssetdestinationAssetCopyProperties>)destinationAssetCopyProperties;
 - (NSString *)localizedDetailedGeoDescriptionForRTL:(_Bool)arg1;
 - (struct CGRect)suggestedCropForTargetSize:(struct CGSize)arg1 withOcclusionRegion:(struct CGRect)arg2 andOutputCropScore:(double *)arg3;

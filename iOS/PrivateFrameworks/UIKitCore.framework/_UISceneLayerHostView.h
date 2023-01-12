@@ -4,18 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIDirectionalRotationView.h"
+
 @class FBSceneLayer, UIScenePresentationContext, UITransformer;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneLayerHostView
+@interface _UISceneLayerHostView : _UIDirectionalRotationView
 {
     FBSceneLayer *_sceneLayer;
     UITransformer *_transformer;
     UIScenePresentationContext *_presentationContext;
+    _Bool _inheritsSecurity;
+    _Bool _resizesHostedContext;
+    _Bool _stopsHitTestTransformAccumulation;
     UIScenePresentationContext *_currentPresentationContext;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool stopsHitTestTransformAccumulation; // @synthesize stopsHitTestTransformAccumulation=_stopsHitTestTransformAccumulation;
+@property(nonatomic) _Bool resizesHostedContext; // @synthesize resizesHostedContext=_resizesHostedContext;
+@property(nonatomic) _Bool inheritsSecurity; // @synthesize inheritsSecurity=_inheritsSecurity;
 @property(readonly, nonatomic) FBSceneLayer *sceneLayer; // @synthesize sceneLayer=_sceneLayer;
 @property(retain, nonatomic) UITransformer *transformer; // @synthesize transformer=_transformer;
 @property(retain, nonatomic) UIScenePresentationContext *currentPresentationContext; // @synthesize currentPresentationContext=_currentPresentationContext;

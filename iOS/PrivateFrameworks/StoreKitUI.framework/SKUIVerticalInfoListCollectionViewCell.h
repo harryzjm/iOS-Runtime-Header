@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSHashTable, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIVerticalInfoListCollectionViewCell <SKUIViewElementView>
+@interface SKUIVerticalInfoListCollectionViewCell
 {
     NSMapTable *_imageViewToImageResourceCacheKey;
     NSHashTable *_titleViews;

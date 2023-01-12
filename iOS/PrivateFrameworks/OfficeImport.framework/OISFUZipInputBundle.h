@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUInputBundle-Protocol.h>
-
 @class NSString, OISFUZipArchive;
 
 __attribute__((visibility("hidden")))
-@interface OISFUZipInputBundle : NSObject <SFUInputBundle>
+@interface OISFUZipInputBundle : NSObject
 {
     OISFUZipArchive *_zipArchive;
 }

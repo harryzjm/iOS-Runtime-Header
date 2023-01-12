@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UserManagement/NSXPCListenerDelegate-Protocol.h>
-#import <UserManagement/UMUserSwitchManagement-Protocol.h>
-#import <UserManagement/UMUserSwitchManagement_Private-Protocol.h>
-
 @class NSData, NSDictionary, NSMutableArray, NSString, NSXPCConnection, NSXPCListener;
 @protocol UMSideEffectsProviding;
 
-__attribute__((visibility("hidden")))
-@interface UMXPCServer : NSObject <NSXPCListenerDelegate, UMUserSwitchManagement, UMUserSwitchManagement_Private>
+@interface UMXPCServer : NSObject
 {
     _Bool _currentlyBroadcastingWillSwitchToUser;
     _Bool _didRegisterStakeholder;
@@ -94,6 +89,21 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long stakeholderType; // @synthesize stakeholderType=_stakeholderType;
 @property(nonatomic) __weak id stakeholder; // @synthesize stakeholder=_stakeholder;
 @property(retain, nonatomic) NSObject<UMSideEffectsProviding> *se; // @synthesize se=_se;
+- (_Bool)dataMigrationSetup:(id)arg1 WithPasscode:(id)arg2 withError:(id *)arg3;
+- (_Bool)switchUserSession:(id)arg1 withOpaqueData:(id)arg2 withreturnedError:(id *)arg3;
+- (id)userSessionAttributesForSession:(id)arg1 WithReturnedError:(id *)arg2;
+- (_Bool)isDeviceInLoginSessionWithReturnedError:(id *)arg1;
+- (id)listSyncServicesWithReturnedError:(id)arg1 withError:(id *)arg2;
+- (int)currentSyncBubbledIDWithReturnedError:(id *)arg1;
+- (id)loadUserSession:(id)arg1 WithPasscode:(id)arg2 withError:(id *)arg3;
+- (id)foregroundUserSessionAtrributesWithReturnedError:(id *)arg1;
+- (int)foreGroundUserIDWithError:(id *)arg1;
+- (_Bool)isLoginWindowWithError:(id *)arg1;
+- (_Bool)switchToLoginWindowWithError:(id *)arg1;
+- (id)configureLoginWindow:(int)arg1 withError:(id *)arg2;
+- (_Bool)deleteSecureBackupBlobwithError:(id *)arg1;
+- (id)retrieveSecureBackupBlobwithError:(id *)arg1;
+- (_Bool)setSecureBackupBlob:(id)arg1 withError:(id *)arg2;
 - (id)grantSandboxExtensionForPersonaWithUniqueString:(id)arg1;
 - (int)personaSynchronousLogoutWithODuuid:(id)arg1 withUid:(unsigned int)arg2;
 - (int)personaSynchronousLoginWithODuuid:(id)arg1 withUid:(unsigned int)arg2;
@@ -136,7 +146,7 @@ __attribute__((visibility("hidden")))
 - (void)_sendXPCMessageToServerOfType:(unsigned long long)arg1;
 - (void)_tearDownConnectionToUMServer;
 - (void)_setUpXPCConnectionToUMServerIfNeeded;
-- (void)_setUpUMServerXPCConnectionIfNeeded:(id)arg1;
+- (void)_setUpUMServerXPCConnectionIfNeeded:(id)arg1 isOutgoingConnection:(_Bool)arg2;
 - (int)_pid;
 - (void)_registerStakeholder:(id)arg1;
 - (void)userInteractionIsEnabled;

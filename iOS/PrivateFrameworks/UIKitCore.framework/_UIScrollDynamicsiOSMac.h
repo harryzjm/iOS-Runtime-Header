@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     double _durationUntilRubberband;
     struct CGPoint _initialRubberbandingOrigin;
     struct CGVector _initialRubberbandingVelocity;
+    unsigned long long _rubberBandingAxis;
     double _decelerationRate;
 }
 

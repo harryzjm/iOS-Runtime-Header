@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UISwipeActionHost_Internal-Protocol.h>
-
 @class NSString, UICollectionViewLayout, UISwipeActionController;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewLayoutSwipeActionsModule : NSObject <UISwipeActionHost_Internal>
+@interface _UICollectionViewLayoutSwipeActionsModule : NSObject
 {
-    _Bool _layoutUpdateOrRefreshPending;
+    struct {
+        unsigned int layoutUpdateOrRefreshPending:1;
+        unsigned int preserveExistingLayoutAttributesForSwipedViews:1;
+    } _flags;
     UICollectionViewLayout *_host;
     UISwipeActionController *_swipeActionController;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool layoutUpdateOrRefreshPending; // @synthesize layoutUpdateOrRefreshPending=_layoutUpdateOrRefreshPending;
 @property(retain, nonatomic) UISwipeActionController *swipeActionController; // @synthesize swipeActionController=_swipeActionController;
 @property(nonatomic) __weak UICollectionViewLayout *host; // @synthesize host=_host;
 - (id)swipeViewManipulatorForSwipeActionController:(id)arg1;
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)transformCellLayoutAttributes:(id)arg1 isDisappearing:(_Bool)arg2;
 - (void)updateWithUpdateItems:(id)arg1;
 - (void)_invalidateSwipeActionsLayoutRefreshingActiveConfigurations:(_Bool)arg1;
+- (_Bool)_canIgnoreInvalidationContext:(id)arg1;
 - (void)processLayoutInvalidationWithContext:(id)arg1 updateConfigurations:(_Bool)arg2;
 - (void)editingStateDidChange;
 - (_Bool)hasActiveSwipe;
@@ -37,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)swipeActionController:(id)arg1 didBeginSwipeForItemAtIndexPath:(id)arg2;
 - (void)swipeActionController:(id)arg1 willBeginSwipeForItemAtIndexPath:(id)arg2;
 - (void)swipeActionController:(id)arg1 cleanupActionsView:(id)arg2 forItemAtIndexPath:(id)arg3;
-- (void)swipeActionController:(id)arg1 insertActionsView:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (_Bool)swipeActionController:(id)arg1 insertActionsView:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (_Bool)swipeActionController:(id)arg1 mayBeginSwipeForItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)swipeActionController:(id)arg1 extraInsetsForItemAtIndexPath:(id)arg2;
 - (id)swipeActionController:(id)arg1 viewForItemAtIndexPath:(id)arg2;
@@ -49,9 +50,11 @@ __attribute__((visibility("hidden")))
 - (id)swipeActionController:(id)arg1 leadingSwipeConfigurationForItemAtIndexPath:(id)arg2;
 - (id)itemContainerViewForSwipeActionController:(id)arg1;
 - (id)gestureRecognizerViewForSwipeActionController:(id)arg1;
+- (id)indexPathsWithActiveSwipes;
 - (void)revealTrailingSwipeActionsForIndexPath:(id)arg1;
 - (void)swipeItemAtIndexPath:(id)arg1 direction:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)_canSwipeItemAtIndexPath:(id)arg1;
+- (void)_performForcedCollectionViewLayoutPreservingExistingLayoutAttributes;
 - (void)teardown;
 - (id)initWithHost:(id)arg1;
 

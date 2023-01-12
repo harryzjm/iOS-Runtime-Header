@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPRecordFieldIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPQuerySort : PBCodable <NSCopying>
+@interface FCCKPQuerySort : PBCodable
 {
     FCCKPRecordFieldIdentifier *_fieldName;
     int _order;

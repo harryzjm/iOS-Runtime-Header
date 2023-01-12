@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <C2/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface C2MPGenericEventMetricValue : PBCodable <NSCopying>
+@interface C2MPGenericEventMetricValue : PBCodable
 {
     unsigned long long _dateValue;
     double _doubleValue;

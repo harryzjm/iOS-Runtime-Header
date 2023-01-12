@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/HKMedicalIDViewControllerDelegate-Protocol.h>
-
 @class CNContact, CNHealthStoreManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNMedicalIDAction <HKMedicalIDViewControllerDelegate>
+@interface CNMedicalIDAction
 {
     long long _medicalIDActionType;
     CNHealthStoreManager *_healthStoreManager;

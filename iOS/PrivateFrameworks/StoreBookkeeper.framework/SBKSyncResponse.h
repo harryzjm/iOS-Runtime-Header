@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SBKResponse.h"
+
 @class SBKSyncResponseData;
 
 __attribute__((visibility("hidden")))
-@interface SBKSyncResponse
+@interface SBKSyncResponse : SBKResponse
 {
     SBKSyncResponseData *_syncResponseData;
 }

@@ -4,8 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol SBDeviceApplicationSceneOverlayViewObserver;
+
 @protocol SBDeviceApplicationSceneOverlayView
 @property(nonatomic) _Bool shouldLayoutOverlayImmediatelyForContainerGeometryChange;
 @property(nonatomic) long long hostOrientation;
+- (void)removeObserver:(id <SBDeviceApplicationSceneOverlayViewObserver>)arg1;
+- (void)addObserver:(id <SBDeviceApplicationSceneOverlayViewObserver>)arg1;
 @end
 

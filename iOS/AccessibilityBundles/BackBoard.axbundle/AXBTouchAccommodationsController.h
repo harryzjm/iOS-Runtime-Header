@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import "AXUIClientDelegate-Protocol.h"
-
 @class AXUIClient, NSString;
 @protocol OS_dispatch_queue;
 
-@interface AXBTouchAccommodationsController : NSObject <AXUIClientDelegate>
+@interface AXBTouchAccommodationsController : NSObject
 {
     _Bool _areTouchAccommodationsInEffect;
     NSObject<OS_dispatch_queue> *_touchAccommodationsQueue;

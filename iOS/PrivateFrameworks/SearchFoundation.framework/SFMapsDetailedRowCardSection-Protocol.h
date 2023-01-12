@@ -11,6 +11,7 @@
 @protocol SFMapsDetailedRowCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSString *pinText;
 @property(copy, nonatomic) NSData *mapsData;
 @property(retain, nonatomic) SFColor *backgroundColor;
 @property(nonatomic) int separatorStyle;

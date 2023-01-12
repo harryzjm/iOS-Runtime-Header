@@ -6,6 +6,6 @@
 
 @protocol SFDeferrableUpdateView
 - (void)updateContents;
-- (CDStruct_4e0a34f2 *)deferrableUpdateViewState;
+- (CDStruct_c3d9a8d3 *)deferrableUpdateViewState;
 @end
 

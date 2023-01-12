@@ -69,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)setTintColor:(id)arg1;
 - (void)dealloc;
 - (void)layoutSubviews;
+- (void)restartWithAnimation:(_Bool)arg1;
 - (void)didMoveToSuperview;
 - (id)initWithFrame:(struct CGRect)arg1 duration:(double)arg2;
 

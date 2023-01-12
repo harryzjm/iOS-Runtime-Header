@@ -6,19 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIFenceProviding-Protocol.h>
-
-@class BSAtomicFlag, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISimpleFenceProvider : NSObject <UIFenceProviding>
+@interface _UISimpleFenceProvider : NSObject
 {
-    BSAtomicFlag *_trackingAny;
+    _Bool _trackingAny;
     _Bool _synchronizing;
 }
 
 + (id)sharedInstance;
-- (void).cxx_destruct;
 - (void)synchronizeSystemAnimationFencesWithCleanUpBlock:(CDUnknownBlockType)arg1;
 - (_Bool)trackSystemAnimationFence:(id)arg1;
 - (_Bool)isTrackingAnySystemAnimationFence;

@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSKSelection, TSTAutofillSelection;
 
-@interface TSTArchivedAutofillSelection : TSPObject <TSKArchivedSelection>
+@interface TSTArchivedAutofillSelection : TSPObject
 {
     TSTAutofillSelection *_autofillSelection;
 }

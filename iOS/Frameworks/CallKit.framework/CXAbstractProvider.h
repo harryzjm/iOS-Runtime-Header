@@ -6,40 +6,40 @@
 
 #import <objc/NSObject.h>
 
-#import <CallKit/CXAbstractProviderVendorProtocol-Protocol.h>
-#import <CallKit/CXActionDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString;
-@protocol CXAbstractProviderDelegate, CXAbstractProviderHostProtocol, OS_dispatch_queue;
+@protocol CXAbstractProviderDelegate, CXActionDelegateInternal, OS_dispatch_queue;
 
-@interface CXAbstractProvider : NSObject <CXActionDelegate, CXAbstractProviderVendorProtocol>
+__attribute__((visibility("hidden")))
+@interface CXAbstractProvider : NSObject
 {
-    NSMutableArray *_mutablePendingTransactions;
-    NSObject<OS_dispatch_queue> *_queue;
+    CDUnknownBlockType _connectionInterruptionHandler;
+    id <CXActionDelegateInternal> _internalActionDelegate;
     id <CXAbstractProviderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSMutableArray *_mutablePendingTransactions;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableArray *mutablePendingTransactions; // @synthesize mutablePendingTransactions=_mutablePendingTransactions;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(nonatomic) __weak id <CXAbstractProviderDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(readonly, nonatomic) NSMutableArray *mutablePendingTransactions; // @synthesize mutablePendingTransactions=_mutablePendingTransactions;
-- (oneway void)handleActionTimeout:(id)arg1;
-- (oneway void)commitTransaction:(id)arg1;
-- (void)actionCompleted:(id)arg1;
-- (void)_handleConnectionInterruption;
-- (void)handleConnectionInterruption;
-- (void)sendProviderDidBegin;
-- (void)_performAction:(id)arg1;
+@property(nonatomic) __weak id <CXActionDelegateInternal> internalActionDelegate; // @synthesize internalActionDelegate=_internalActionDelegate;
+@property(copy) CDUnknownBlockType connectionInterruptionHandler; // @synthesize connectionInterruptionHandler=_connectionInterruptionHandler;
+- (void)provider:(id)arg1 handleTimeoutForAction:(id)arg2;
+- (void)provider:(id)arg1 commitTransaction:(id)arg2;
+- (void)handleConnectionInterruptionForProvider:(id)arg1;
+- (void)sendDidBeginForProvider:(id)arg1;
 - (void)_performDelegateCallback:(CDUnknownBlockType)arg1;
 - (void)performDelegateCallback:(CDUnknownBlockType)arg1;
 - (id)_pendingActionWithUUID:(id)arg1;
 - (void)_updatePendingTransactions;
 @property(readonly, copy, nonatomic) NSArray *pendingTransactions;
 - (void)invalidate;
+- (void)_syncSetDelegate:(id)arg1 queue:(id)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
-@property(readonly, nonatomic) id <CXAbstractProviderHostProtocol> hostProtocolDelegate;
+- (void)actionCompleted:(id)arg1;
 - (id)init;
 
 // Remaining properties

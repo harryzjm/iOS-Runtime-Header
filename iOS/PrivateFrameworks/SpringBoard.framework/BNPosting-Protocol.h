@@ -7,10 +7,10 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
-@protocol BNPresentable, BNPresentableUniquelyIdentifying;
+@protocol BNPresentable, BNPresentableIdentifying><BNPresentableUniquelyIdentifying;
 
 @protocol BNPosting <NSObject>
-- (NSArray *)revokePresentablesWithIdentification:(id <BNPresentableUniquelyIdentifying>)arg1 reason:(NSString *)arg2 options:(unsigned long long)arg3 userInfo:(NSDictionary *)arg4 error:(out id *)arg5;
+- (NSArray *)revokePresentablesWithIdentification:(id <BNPresentableIdentifying><BNPresentableUniquelyIdentifying>)arg1 reason:(NSString *)arg2 options:(unsigned long long)arg3 userInfo:(NSDictionary *)arg4 error:(out id *)arg5;
 - (_Bool)postPresentable:(id <BNPresentable>)arg1 withOptions:(unsigned long long)arg2 userInfo:(NSDictionary *)arg3 error:(out id *)arg4;
 
 @optional

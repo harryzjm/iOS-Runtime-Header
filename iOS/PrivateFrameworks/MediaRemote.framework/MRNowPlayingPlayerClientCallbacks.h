@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MSVMultiCallback *_createItemForOffsetCallbacks;
     MSVMultiCallback *_createItemForIdentifierCallbacks;
     MSVMultiCallback *_createChildItemCallbacks;
+    MSVMultiCallback *_createParticipantsCallbacks;
     MSVMultiCallback *_metadataCallbacks;
     MSVMultiCallback *_languageOptionsCallbacks;
     MSVMultiCallback *_infoCallbacks;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MSVMultiCallback *infoCallbacks; // @synthesize infoCallbacks=_infoCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *languageOptionsCallbacks; // @synthesize languageOptionsCallbacks=_languageOptionsCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *metadataCallbacks; // @synthesize metadataCallbacks=_metadataCallbacks;
+@property(readonly, nonatomic) MSVMultiCallback *createParticipantsCallbacks; // @synthesize createParticipantsCallbacks=_createParticipantsCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *createChildItemCallbacks; // @synthesize createChildItemCallbacks=_createChildItemCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *createItemForIdentifierCallbacks; // @synthesize createItemForIdentifierCallbacks=_createItemForIdentifierCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *createItemForOffsetCallbacks; // @synthesize createItemForOffsetCallbacks=_createItemForOffsetCallbacks;

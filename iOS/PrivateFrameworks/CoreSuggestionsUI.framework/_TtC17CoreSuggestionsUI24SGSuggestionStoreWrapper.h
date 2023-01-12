@@ -11,6 +11,7 @@
 @interface _TtC17CoreSuggestionsUI24SGSuggestionStoreWrapper : _TtCs12_SwiftObject
 {
     MISSING_TYPE *_store;
+    MISSING_TYPE *updateSectionHeaders;
 }
 
 @end

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOMapRegion, GEOPDDirectionIntent, GEOPDPlaceSummaryLayoutMetadata, GEOPDRelatedSearchSuggestion, GEOPDResolvedItem, GEOPDResultRefinementGroup, GEOPDSSearchAutoRedoThreshold, GEOPDSearchClientBehavior, GEOPDSearchSectionList, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDSearchResult : PBCodable <NSCopying>
+@interface GEOPDSearchResult : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -39,16 +37,20 @@ __attribute__((visibility("hidden")))
     unsigned int _dymSuggestionVisibleTime;
     unsigned int _retainSearchTime;
     int _searchResultType;
+    int _searchResultViewType;
     _Bool _disableAddingAdditionalPaddingOnViewport;
     _Bool _enablePartialClientization;
+    _Bool _enableStructuredRapAffordance;
     _Bool _isChainResultSet;
     _Bool _showDymSuggestionCloseButton;
     struct {
         unsigned int has_dymSuggestionVisibleTime:1;
         unsigned int has_retainSearchTime:1;
         unsigned int has_searchResultType:1;
+        unsigned int has_searchResultViewType:1;
         unsigned int has_disableAddingAdditionalPaddingOnViewport:1;
         unsigned int has_enablePartialClientization:1;
+        unsigned int has_enableStructuredRapAffordance:1;
         unsigned int has_isChainResultSet:1;
         unsigned int has_showDymSuggestionCloseButton:1;
         unsigned int read_unknownFields:1;

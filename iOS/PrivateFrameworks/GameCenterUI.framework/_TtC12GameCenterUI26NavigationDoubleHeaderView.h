@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
+    MISSING_TYPE *$__lazy_storage_$_layout;
 }
 
 - (void).cxx_destruct;

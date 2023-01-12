@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIJSTabBarItem-Protocol.h>
-
 @class IKJSNavigationDocument, JSManagedValue, NSString, SKUITabBarItem;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSTabBarItem : IKJSObject <SKUIJSTabBarItem>
+@interface SKUIJSTabBarItem : IKJSObject
 {
     JSManagedValue *_managedNavigationDocument;
     IKJSNavigationDocument *_navigationDocument;

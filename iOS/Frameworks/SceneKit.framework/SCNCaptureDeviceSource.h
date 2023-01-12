@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SceneKit/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
+#import "SCNTextureSource.h"
 
 @class AVCaptureDevice, AVCaptureSession, NSString;
 @protocol MTLTexture;
 
 __attribute__((visibility("hidden")))
-@interface SCNCaptureDeviceSource <AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface SCNCaptureDeviceSource : SCNTextureSource
 {
     AVCaptureDevice *_captureDevice;
     AVCaptureSession *_captureSession;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
-- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
+- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3 status:(CDStruct_3d581f42 *)arg4;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)connectToProxy:(struct __C3DImageProxy *)arg1;
 @property(retain, nonatomic) AVCaptureDevice *captureDevice;

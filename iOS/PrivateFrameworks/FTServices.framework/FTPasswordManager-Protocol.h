@@ -6,7 +6,7 @@
 
 #import <FTServices/NSObject-Protocol.h>
 
-@class ACAccount, ACAccountStore, NSArray, NSNumber, NSString;
+@class ACAccount, ACAccountStore, IDSGameCenterData, NSArray, NSNumber, NSString;
 
 @protocol FTPasswordManager <NSObject>
 - (void)updatePreviousUsername:(NSString *)arg1 toNewUsername:(NSString *)arg2;
@@ -14,6 +14,7 @@
 - (void)cleanUpAccountsBasedOnInUseUsernamesBlock:(NSArray * (^)(void))arg1 profileIDBlock:(NSArray * (^)(void))arg2 completionBlock:(void (^)(_Bool))arg3;
 - (void)cleanUpAccountsWithUsername:(NSString *)arg1 orProfileID:(NSString *)arg2 basedOnInUseUsernames:(NSArray *)arg3 profileIDs:(NSArray *)arg4 completionBlock:(void (^)(_Bool))arg5;
 - (NSString *)profileIDForACAccount:(ACAccount *)arg1;
+- (IDSGameCenterData *)gameCenterPropertiesFromAccountWithUsername:(NSString *)arg1;
 - (ACAccount *)acAccountWithProfileID:(NSString *)arg1 username:(NSString *)arg2 accountStore:(ACAccountStore *)arg3;
 - (void)cancelRequestID:(NSString *)arg1 serviceIdentifier:(NSString *)arg2;
 - (void)setAccountStatus:(NSNumber *)arg1 forProfileID:(NSString *)arg2 username:(NSString *)arg3 service:(NSString *)arg4;

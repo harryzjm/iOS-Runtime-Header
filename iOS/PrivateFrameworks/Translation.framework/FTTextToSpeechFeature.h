@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTTextToSpeechFeature : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTTextToSpeechFeature : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,10 +19,25 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_fc1e4a4a)addObjectToBuffer:(void *)arg1;
+- (void)neural_phoneme_sequence_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)neural_phoneme_sequence_count;
+- (id)neural_phoneme_sequence_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *neural_phoneme_sequence;
+- (void)replacement_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)replacement_count;
+- (id)replacement_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *replacement;
+- (void)prompts_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)prompts_count;
+- (id)prompts_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *prompts;
+- (void)phoneme_sequence_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)phoneme_sequence_count;
+- (id)phoneme_sequence_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *phoneme_sequence;
+- (void)normalized_text_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)normalized_text_count;
+- (id)normalized_text_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *normalized_text;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct TextToSpeechFeature *)arg2 verify:(_Bool)arg3;

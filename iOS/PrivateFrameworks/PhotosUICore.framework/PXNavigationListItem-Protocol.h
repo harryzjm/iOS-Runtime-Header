@@ -19,12 +19,14 @@
 @property(readonly, nonatomic) long long indentationLevel;
 @property(readonly, nonatomic, getter=isExpanded) _Bool expanded;
 @property(readonly, nonatomic, getter=isGroup) _Bool group;
+@property(readonly, nonatomic) unsigned long long lockState;
 @property(readonly, nonatomic, getter=isExpandable) _Bool expandable;
 @property(readonly, nonatomic, getter=isDeletable) _Bool deletable;
 @property(readonly, nonatomic, getter=isRenamable) _Bool renamable;
 @property(readonly, nonatomic, getter=isRemovable) _Bool removable;
 @property(readonly, nonatomic, getter=isReorderable) _Bool reorderable;
 @property(readonly, nonatomic, getter=isDraggable) _Bool draggable;
+@property(readonly, nonatomic) NSString *accessoryGlyphImageName;
 @property(readonly, nonatomic) NSString *glyphImageName;
 @property(readonly, nonatomic) NSString *accessoryTitle;
 @property(readonly, nonatomic) NSString *title;

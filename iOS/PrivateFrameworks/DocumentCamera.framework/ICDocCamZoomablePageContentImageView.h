@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (id)_accessibilityScrollAncestorForSelector:(SEL)arg1;
+- (_Bool)_accessibilityRespondsToUserInteraction;
 
 @end
 

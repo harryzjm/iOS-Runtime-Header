@@ -6,11 +6,9 @@
 
 #import <UIKit/UIImage.h>
 
-#import <TouchML/UIImageJSExports-Protocol.h>
-
 @class NSString, TMLRect;
 
-@interface UIImage (TouchML) <UIImageJSExports>
+@interface UIImage (TouchML)
 + (void)initializeJSContext:(id)arg1;
 @property(readonly, nonatomic) double width;
 @property(readonly, nonatomic) double height;

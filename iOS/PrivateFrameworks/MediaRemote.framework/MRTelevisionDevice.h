@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaRemote/RTIInputSystemPayloadDelegate-Protocol.h>
+#import "MRExternalDevice.h"
 
 @class NSObject, NSString, RTIInputSystemSourceSession;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MRTelevisionDevice <RTIInputSystemPayloadDelegate>
+@interface MRTelevisionDevice : MRExternalDevice
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     _Bool _hiliteMode;
@@ -63,14 +63,12 @@ __attribute__((visibility("hidden")))
 - (void)sendTouchEvent:(struct _MRHIDTouchEvent)arg1 toVirtualDeviceWithID:(unsigned long long)arg2;
 - (void)registerTouchDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)currentClientUpdatesConfigMessage;
-- (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)setHiliteModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setVoiceRecordingStateCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setRTICallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setTextEditingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setGameControllerPropertiesCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setGameControllerInputModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
-- (id)initWithTransport:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

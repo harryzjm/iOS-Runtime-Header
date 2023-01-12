@@ -10,12 +10,12 @@
 @class HFHomeKitSettingsAdapterManager, HFHomeKitSettingsValueManager, HMHome, HMSettings, NSSet;
 
 @protocol HFHomeKitSettingsVendor <HFHomeKitObject, HFGroupableItemProtocol>
-@property(readonly, nonatomic) NSSet *homekitObjectIdentifiers;
-@property(readonly) HMSettings *settings;
-@property(readonly, nonatomic) _Bool hasValidSettings;
-@property(readonly, nonatomic) HFHomeKitSettingsValueManager *hf_settingsValueManager;
-@property(readonly, nonatomic) HFHomeKitSettingsAdapterManager *hf_settingsAdapterManager;
-@property(readonly, nonatomic) NSSet *hf_dependentHomeKitObjectsForDownstreamItems;
-@property(readonly, nonatomic) HMHome *hf_home;
+@property(nonatomic, readonly) NSSet *homekitObjectIdentifiers;
+@property(nonatomic, readonly) HMSettings *settings;
+@property(nonatomic, readonly) _Bool hasValidSettings;
+@property(nonatomic, readonly) HFHomeKitSettingsValueManager *hf_settingsValueManager;
+@property(nonatomic, readonly) HFHomeKitSettingsAdapterManager *hf_settingsAdapterManager;
+@property(nonatomic, readonly) NSSet *hf_dependentHomeKitObjectsForDownstreamItems;
+@property(nonatomic, readonly) HMHome *hf_home;
 @end
 

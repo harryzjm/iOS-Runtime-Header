@@ -6,12 +6,10 @@
 
 #import <MediaPlayer/MPQueueFeeder.h>
 
-#import <MediaPlaybackCore/MPCQueueControllerDataSource-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCNullQueueFeeder : MPQueueFeeder <MPCQueueControllerDataSource>
+@interface _MPCNullQueueFeeder : MPQueueFeeder
 {
     NSString *_uniqueIdentifier;
 }

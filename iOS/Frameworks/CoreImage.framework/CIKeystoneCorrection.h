@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIFilter, CIImage, CIVector, NSNumber;
+#import "CIFilter.h"
+
+@class CIImage, CIVector, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CIKeystoneCorrection
+@interface CIKeystoneCorrection : CIFilter
 {
     struct float3x3 K;
     struct float3x3 invK;

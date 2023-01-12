@@ -9,9 +9,11 @@
 @interface PHAssetResource (MediaAnalysis)
 + (CDUnknownBlockType)vcp_descendingSizeComparator;
 + (CDUnknownBlockType)vcp_ascendingSizeComparator;
++ (id)vcp_allAcceptableResourcesForAsset:(id)arg1;
 + (id)vcp_allResourcesForAsset:(id)arg1;
 - (struct CGSize)vcp_size;
 - (unsigned long long)vcp_fileSize;
+- (_Bool)vcp_hasExtremeAbnormalDimensionForScene;
 - (_Bool)vcp_isLocallyAvailable;
 - (_Bool)vcp_isDecodable;
 - (_Bool)vcp_isPhotoResourceUsable:(_Bool)arg1;

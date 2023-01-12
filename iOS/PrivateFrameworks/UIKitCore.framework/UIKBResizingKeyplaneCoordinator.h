@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UIColor, UIPanGestureRecognizer, UIView, _UIDynamicAnimationGroup;
 @protocol UIKBResizingKeyplaneCoordinatorCoordinatorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKBResizingKeyplaneCoordinator : NSObject <UIGestureRecognizerDelegate>
+@interface UIKBResizingKeyplaneCoordinator : NSObject
 {
     double _prevResizingOffset;
     double _resizingOffset;

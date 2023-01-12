@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPDecoder-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 @protocol OS_dispatch_data;
 
-@interface TSPObjectSerializationDecoder : NSObject <TSPDecoder>
+@interface TSPObjectSerializationDecoder : NSObject
 {
     NSObject<OS_dispatch_data> *_encodedData;
     unsigned long long _encodedDataLength;

@@ -34,32 +34,8 @@ struct CGSize {
     double _field2;
 };
 
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    long long _field1;
-    long long _field2;
-} CDStruct_912cb5d2;
-
-typedef struct {
-    CDStruct_912cb5d2 _field1;
-    long long _field2;
-} CDStruct_5052baec;
-
-typedef struct {
-    CDStruct_5052baec _field1;
-    CDStruct_5052baec _field2;
-} CDStruct_662257c6;
 

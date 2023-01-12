@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, NSArray, UIColor, UITraitCollection;
+@class CALayer, NSArray, NSString, UIColor, UITraitCollection;
 
 @interface UIView (VideosUICore)
 + (id)_timingFuctionWithOptions:(unsigned long long)arg1;
@@ -17,6 +17,7 @@
 + (void)vui_animateWithDuration:(double)arg1 delay:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)vui_performByPreventingAdditiveAnimations:(CDUnknownBlockType)arg1;
 @property(nonatomic, getter=vuiIsUserInteractionEnabled) _Bool vuiUserInteractionEnabled;
+- (void)vui_applyToolbarSemanticContext;
 - (_Bool)vui_isInAWindow;
 - (void)vui_traitCollectionDidChange:(id)arg1;
 - (void)vui_setSelected:(_Bool)arg1 animated:(_Bool)arg2 withAnimationCoordinator:(id)arg3;
@@ -50,6 +51,7 @@
 @property(readonly, nonatomic) unsigned long long vuiOverrideUserInterfaceStyle;
 @property(readonly, nonatomic) unsigned long long vuiUserInterfaceStyle;
 @property(retain, nonatomic) UIColor *vuiTintColor;
+@property(retain, nonatomic) NSString *vuiAccessibilityIdentifier;
 @property(readonly, nonatomic) CALayer *vuiLayer;
 @property(nonatomic) double vuiAlpha;
 @property(nonatomic) _Bool vuiClipsToBounds;

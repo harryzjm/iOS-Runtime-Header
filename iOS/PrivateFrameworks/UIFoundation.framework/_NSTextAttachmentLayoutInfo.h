@@ -20,21 +20,22 @@ __attribute__((visibility("hidden")))
     NSTextAttachmentViewProvider *_textAttachmentViewProvider;
     NSTextLayoutFragment *_textLayoutFragment;
     struct __CTRunDelegate *_runDelegate;
-    struct CGRect _resolvedAttachmentFrame;
     struct CGRect _bounds;
     struct CGRect _proposedLineFragment;
     double _baselineOffset;
     double _horizontalOffset;
     _Bool _isBoundsValid;
     _Bool _isLineFragmentLayout;
+    struct CGRect _resolvedAttachmentFrame;
 }
 
+@property(readonly) struct CGRect resolvedAttachmentFrame; // @synthesize resolvedAttachmentFrame=_resolvedAttachmentFrame;
 @property(readonly) _NSTextAttachmentLayoutContext *layoutContext; // @synthesize layoutContext=_layoutContext;
 @property(readonly) NSTextAttachment *textAttachment; // @synthesize textAttachment=_textAttachment;
 @property(readonly, copy) NSDictionary *attributes; // @synthesize attributes=_attributes;
 - (void)invalidateAttachmentMeasurements;
 - (void)_invalidateLocations;
-@property struct CGRect resolvedAttachmentFrame; // @dynamic resolvedAttachmentFrame;
+@property struct CGPoint attachmentFrameOrigin; // @dynamic attachmentFrameOrigin;
 @property(readonly) const struct __CTRunDelegate *runDelegate; // @dynamic runDelegate;
 @property(retain) NSTextAttachmentViewProvider *textAttachmentViewProvider; // @dynamic textAttachmentViewProvider;
 - (id)textLayoutFragment;

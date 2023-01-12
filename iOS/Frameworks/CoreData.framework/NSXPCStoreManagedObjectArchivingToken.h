@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCoding-Protocol.h>
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSURL;
 
 __attribute__((visibility("hidden")))
-@interface NSXPCStoreManagedObjectArchivingToken : NSObject <NSCoding, NSSecureCoding>
+@interface NSXPCStoreManagedObjectArchivingToken : NSObject
 {
     NSURL *_managedObjectReferenceURI;
 }

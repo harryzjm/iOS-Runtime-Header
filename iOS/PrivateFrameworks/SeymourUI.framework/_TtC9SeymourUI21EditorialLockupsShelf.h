@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *identifier;
+    MISSING_TYPE *canSuggestFocus;
     MISSING_TYPE *descriptor;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *lazyLockups;
@@ -20,6 +21,7 @@
     MISSING_TYPE *lazyLockupFetcher;
     MISSING_TYPE *row;
     MISSING_TYPE *storefrontLocalizer;
+    MISSING_TYPE *titleDisplayStyle;
 }
 
 @end

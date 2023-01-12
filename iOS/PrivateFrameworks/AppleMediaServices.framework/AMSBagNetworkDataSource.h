@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSBagDataSourceProtocol-Protocol.h>
-
-@class AMSBagNetworkTask, AMSBagNetworkTaskResult, AMSObserver, AMSProcessInfo, NSDate, NSError, NSString;
+@class AMSBagNetworkTask, AMSBagNetworkTaskResult, AMSObserver, AMSProcessInfo, AMSTimeout, NSDate, NSError, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AMSBagNetworkDataSource : NSObject <AMSBagDataSourceProtocol>
+@interface AMSBagNetworkDataSource : NSObject
 {
     NSError *_activeFailure;
+    NSString *_cachedStorefront;
     CDUnknownBlockType _dataSourceChangedHandler;
     CDUnknownBlockType _dataSourceDataInvalidatedHandler;
     AMSProcessInfo *_processInfo;
@@ -23,11 +22,10 @@ __attribute__((visibility("hidden")))
     AMSObserver *_accountsChangedObserver;
     AMSBagNetworkTaskResult *_cachedResult;
     struct os_unfair_recursive_lock_s _cachedDataAccessLock;
-    NSString *_cachedStorefront;
-    struct os_unfair_recursive_lock_s _cachedStorefrontAccessLock;
     NSObject<OS_dispatch_queue> *_completionQueue;
     AMSBagNetworkTask *_currentLoadTask;
-    NSDate *_activeFailureExpiration;
+    NSMutableDictionary *_defaultValues;
+    AMSTimeout *_activeFailureTimeout;
     NSObject<OS_dispatch_queue> *_processAccountStoreDidChangeNotificationQueue;
 }
 
@@ -36,11 +34,10 @@ __attribute__((visibility("hidden")))
 + (id)valueForURLVariable:(id)arg1 account:(id)arg2 clientInfo:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *processAccountStoreDidChangeNotificationQueue; // @synthesize processAccountStoreDidChangeNotificationQueue=_processAccountStoreDidChangeNotificationQueue;
-@property(readonly, nonatomic) NSDate *activeFailureExpiration; // @synthesize activeFailureExpiration=_activeFailureExpiration;
+@property(readonly, nonatomic) AMSTimeout *activeFailureTimeout; // @synthesize activeFailureTimeout=_activeFailureTimeout;
+@property(retain, nonatomic) NSMutableDictionary *defaultValues; // @synthesize defaultValues=_defaultValues;
 @property(retain, nonatomic) AMSBagNetworkTask *currentLoadTask; // @synthesize currentLoadTask=_currentLoadTask;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
-@property(readonly, nonatomic) struct os_unfair_recursive_lock_s cachedStorefrontAccessLock; // @synthesize cachedStorefrontAccessLock=_cachedStorefrontAccessLock;
-@property(retain, nonatomic) NSString *cachedStorefront; // @synthesize cachedStorefront=_cachedStorefront;
 @property(readonly, nonatomic) struct os_unfair_recursive_lock_s cachedDataAccessLock; // @synthesize cachedDataAccessLock=_cachedDataAccessLock;
 @property(retain, nonatomic) AMSBagNetworkTaskResult *cachedResult; // @synthesize cachedResult=_cachedResult;
 @property(retain, nonatomic) AMSObserver *accountsChangedObserver; // @synthesize accountsChangedObserver=_accountsChangedObserver;
@@ -54,10 +51,12 @@ __attribute__((visibility("hidden")))
 - (id)_fetchBag;
 - (void)_accountStoreDidChange;
 - (id)valueForURLVariable:(id)arg1 account:(id)arg2;
+- (void)setDefaultValue:(id)arg1 forKey:(id)arg2;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
-- (id)bagKeyInfoForKey:(id)arg1;
+- (id)defaultValueForKey:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSString *descriptionExtended;
+@property(retain, nonatomic) NSString *cachedStorefront; // @synthesize cachedStorefront=_cachedStorefront;
 @property(retain, nonatomic) NSError *activeFailure; // @synthesize activeFailure=_activeFailure;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
 @property(readonly, nonatomic) NSDate *expirationDate;

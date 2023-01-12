@@ -4,16 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
-#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
-#import <UIKitCore/UIDebuggingInformationViewController-Protocol.h>
-#import <UIKitCore/UIImagePickerControllerDelegate-Protocol.h>
-#import <UIKitCore/UINavigationControllerDelegate-Protocol.h>
+#import "UIViewController.h"
 
 @class NSMutableArray, NSString, UICollectionView, UICollectionViewFlowLayout, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingSpecViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIDebuggingInformationViewController>
+@interface UIDebuggingSpecViewController : UIViewController
 {
     UIView *_spec;
     NSMutableArray *_specImages;

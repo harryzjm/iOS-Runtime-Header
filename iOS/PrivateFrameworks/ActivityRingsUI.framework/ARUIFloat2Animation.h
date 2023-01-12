@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ActivityRingsUI/ARUIRingGroupAnimation-Protocol.h>
-
 @class CAMediaTimingFunction, MISSING_TYPE, NSString;
 @protocol ARUIRingGroupAnimationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface ARUIFloat2Animation : NSObject <ARUIRingGroupAnimation>
+@interface ARUIFloat2Animation : NSObject
 {
     double _percent;
     CDUnknownBlockType _applier;

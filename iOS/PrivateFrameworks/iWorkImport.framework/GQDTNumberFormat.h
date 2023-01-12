@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class NSArray, NSIndexSet, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDTNumberFormat : NSObject <GQDNameMappable>
+@interface GQDTNumberFormat : NSObject
 {
     char *mUid;
     struct __CFString *mFormatString;

@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/UICollectionViewDataSource-Protocol.h>
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-
 @class IKGridElement, NSArray, NSString, UICollectionView, UIView, VideosExtrasGridViewControllerStyle, _VideosExtrasGridHeaderView, _VideosExtrasShelfCollectionViewLayout;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasGridElementViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface VideosExtrasGridElementViewController
 {
     UIView *_titleRule;
     NSArray *_titleRuleConstraints;

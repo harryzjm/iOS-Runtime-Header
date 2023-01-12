@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_globalTestRelatedActivationActionsForFirstActivation:(_Bool)arg1 foreground:(_Bool)arg2 interfaceStyle:(long long)arg3 transitionContext:(id)arg4;
 - (_Bool)_prepareForClientSuspensionWithScene:(id)arg1;
 - (void)_scheduleFirstCommit;
-- (void)_evalTransitionToSettings:(id)arg1 fromSettings:(id)arg2 forceExit:(_Bool)arg3 withTransitionStore:(CDStruct_d58a15aa)arg4;
+- (void)_evalTransitionToSettings:(id)arg1 fromSettings:(id)arg2 forceExit:(_Bool)arg3 withTransitionStore:(CDStruct_a70f6672)arg4;
 - (void)_performBlock:(CDUnknownBlockType)arg1 withApplicationOfDeactivationReasons:(unsigned long long)arg2 fromReasons:(unsigned long long)arg3;
 - (void)collectBackingStores;
 - (void)forceExitWithTransitionContext:(id)arg1 scene:(id)arg2;

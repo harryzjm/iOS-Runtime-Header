@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIEventFetcherSink-Protocol.h>
-
 @class UIEventEnvironment, UIEventFetcher;
 
 __attribute__((visibility("hidden")))
-@interface UIEventDispatcher : NSObject <UIEventFetcherSink>
+@interface UIEventDispatcher : NSObject
 {
     UIEventEnvironment *_mainEnvironment;
     UIEventFetcher *_eventFetcher;

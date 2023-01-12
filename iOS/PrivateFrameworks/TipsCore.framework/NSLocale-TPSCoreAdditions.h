@@ -8,6 +8,7 @@
 
 @interface NSLocale (TPSCoreAdditions)
 + (id)tps_userLanguageCode;
++ (id)tps_userPreferredLocalizationsForLanguages:(id)arg1;
 + (id)tps_userPreferredLocalizations;
 @end
 

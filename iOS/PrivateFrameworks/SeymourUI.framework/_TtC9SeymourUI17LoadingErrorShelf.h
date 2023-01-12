@@ -17,6 +17,7 @@
     MISSING_TYPE *errorTitle;
     MISSING_TYPE *platform;
     MISSING_TYPE *storefrontLocalizer;
+    MISSING_TYPE *retryAction;
 }
 
 @end

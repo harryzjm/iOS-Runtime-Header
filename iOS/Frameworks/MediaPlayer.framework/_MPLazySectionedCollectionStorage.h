@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache;
+@class NSCache, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _MPLazySectionedCollectionStorage : NSObject
@@ -22,6 +22,13 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)_stateDumpObject;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

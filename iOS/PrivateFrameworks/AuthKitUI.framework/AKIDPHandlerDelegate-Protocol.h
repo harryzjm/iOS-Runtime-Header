@@ -6,11 +6,12 @@
 
 #import <AuthKitUI/NSObject-Protocol.h>
 
-@class AKIDPHandler, WKWebView;
+@class AKIDPHandler, NSError, WKWebView;
 
 @protocol AKIDPHandlerDelegate <NSObject>
 
 @optional
+- (NSError *)IDPHandler:(AKIDPHandler *)arg1 sanitizeError:(NSError *)arg2;
 - (void)IDPHandler:(AKIDPHandler *)arg1 didFinishLoadingPageInWebView:(WKWebView *)arg2;
 - (void)IDPHandler:(AKIDPHandler *)arg1 didStartLoadingPageInWebView:(WKWebView *)arg2;
 @end

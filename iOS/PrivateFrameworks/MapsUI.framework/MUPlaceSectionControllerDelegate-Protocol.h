@@ -6,9 +6,11 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MUPlaceSectionController;
+@class MUPlaceSectionController, UIView;
 
 @protocol MUPlaceSectionControllerDelegate <NSObject>
+- (UIView *)placeSectionControllerRequestsRootView:(MUPlaceSectionController *)arg1;
+- (void)placeSectionControllerRequestsLayoutChange:(MUPlaceSectionController *)arg1;
 - (void)placeSectionControllerDidUpdateContent:(MUPlaceSectionController *)arg1;
 @end
 

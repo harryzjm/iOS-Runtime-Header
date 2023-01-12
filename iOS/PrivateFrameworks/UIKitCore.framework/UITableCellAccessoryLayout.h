@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UICellAccessoryLayout-Protocol.h>
-
 @class NSDictionary, NSMutableDictionary, NSString, UICellAccessoryManager;
 
 __attribute__((visibility("hidden")))
-@interface UITableCellAccessoryLayout : NSObject <UICellAccessoryLayout>
+@interface UITableCellAccessoryLayout : NSObject
 {
     UICellAccessoryManager *_manager;
     unsigned long long _edge;

@@ -6,13 +6,10 @@
 
 #import <UIKit/_UIFloatingContentView.h>
 
-#import <VideosUI/VUIAuxiliaryViewSelecting-Protocol.h>
-#import <VideosUI/_UIFloatingContentViewDelegate-Protocol.h>
-
 @class NSString, UIImage, UIView, VUIBaseView, VUIImageProxy, VUIImageView, VUIMonogramDescription, VUIMonogramViewConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface VUIMonogramView : _UIFloatingContentView <_UIFloatingContentViewDelegate, VUIAuxiliaryViewSelecting>
+@interface VUIMonogramView : _UIFloatingContentView
 {
     VUIBaseView *_placeholderView;
     _Bool _isSelected;

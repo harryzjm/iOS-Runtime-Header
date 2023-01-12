@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSDateHelperProtocol-Protocol.h>
-
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface BCSDateHelper : NSObject <BCSDateHelperProtocol>
+@interface BCSDateHelper : NSObject
 {
 }
 

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOWaypointTyped, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDTransitNearbyScheduleLookupOrigin : PBCodable <NSCopying>
+@interface GEOPDTransitNearbyScheduleLookupOrigin : PBCodable
 {
     PBUnknownFields *_unknownFields;
     GEOWaypointTyped *_waypointTyped;

@@ -9,6 +9,7 @@
 #import <XCTestCore/XCTActivityRecordContext-Protocol.h>
 
 @class NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, XCTActivityRecordStack, XCTestCase;
+@protocol XCTContextDelegate;
 
 @interface XCTContext : NSObject <XCTActivityRecordContext>
 {
@@ -19,12 +20,14 @@
     NSMutableArray *_tearDownBlocks;
     XCTContext *_parent;
     XCTestCase *_testCase;
+    id <XCTContextDelegate> _delegate;
     XCTActivityRecordStack *_activityRecordStack;
 }
 
 + (_Bool)hasContextInThread:(id)arg1;
 + (id)currentContextInThread:(id)arg1;
 + (id)_currentContextInThread:(id)arg1;
++ (void)_runInChildOfContext:(id)arg1 forTestCase:(id)arg2 markAsReportingBase:(_Bool)arg3 block:(CDUnknownBlockType)arg4;
 + (void)runInContextForTestCase:(id)arg1 markAsReportingBase:(_Bool)arg2 block:(CDUnknownBlockType)arg3;
 + (void)runInContextForTestCase:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (_Bool)shouldReportActivityWithType:(id)arg1 inTestMode:(long long)arg2;
@@ -38,6 +41,7 @@
 - (void).cxx_destruct;
 @property(readonly) XCTActivityRecordStack *activityRecordStack; // @synthesize activityRecordStack=_activityRecordStack;
 @property(readonly) _Bool isReportingBase; // @synthesize isReportingBase=_isReportingBase;
+@property __weak id <XCTContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) __weak XCTestCase *testCase; // @synthesize testCase=_testCase;
 @property(readonly) XCTContext *parent; // @synthesize parent=_parent;
 @property(readonly, getter=isValid) _Bool valid; // @synthesize valid=_valid;
@@ -49,20 +53,25 @@
 - (id)associatedObjectForKey:(id)arg1;
 @property(readonly) NSDictionary *aggregationRecords;
 - (id)topActivity;
-- (void)_pushOnToCurrentThreadContextStack;
+- (void)runInContextForTestCase:(id)arg1 markAsReportingBase:(_Bool)arg2 block:(CDUnknownBlockType)arg3;
+- (void)runInContextForTestCase:(id)arg1 block:(CDUnknownBlockType)arg2;
 @property(readonly) unsigned long long activityRecordStackDepth;
 - (void)unwindRemainingActivities;
 - (void)_reportEmptyActivityWithType:(id)arg1 format:(id)arg2;
 - (void)_runActivityNamed:(id)arg1 type:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)didFinishActivity:(id)arg1;
 - (id)willStartActivityWithTitle:(id)arg1 type:(id)arg2;
+- (id)observationCenter;
+- (id)associatedContexts;
+- (_Bool)isBoundToCurrentThread;
 @property(readonly) unsigned long long transitiveActivityRecordStackDepth;
 @property(readonly) XCTContext *reportingBaseContext;
 - (id)initWithParent:(id)arg1 testCase:(id)arg2;
 - (void)invalidate;
+- (void)_recordActivityMessageWithFormat:(id)arg1;
 - (void)_runActivityNamed:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)runInternalActivityNamed:(id)arg1 block:(CDUnknownBlockType)arg2;
 @property(readonly) NSDictionary *testRunConfiguration;
-@property(readonly) NSMutableArray *interruptionHandlers;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

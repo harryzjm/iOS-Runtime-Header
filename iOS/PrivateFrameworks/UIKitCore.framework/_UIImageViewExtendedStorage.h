@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-
 @class CIContext, NSArray, NSMapTable, NSString, UIImage, UIImageSymbolConfiguration, UIImageView, UILayoutGuide, UIView, _UIImageLoader;
 @protocol _UIImageViewLoadingDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIImageViewExtendedStorage : NSObject <CAAnimationDelegate>
+@interface _UIImageViewExtendedStorage : NSObject
 {
     UIImageView *_imageView;
     UIImage *_image;

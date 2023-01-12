@@ -14,6 +14,7 @@
     MISSING_TYPE *layoutDirection;
     MISSING_TYPE *renderRegion;
     MISSING_TYPE *currentIndex;
+    MISSING_TYPE *rendersToCGContext;
 }
 
 @end

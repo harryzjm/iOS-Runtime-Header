@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSMutableArray, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOLPRWorld : PBCodable <NSCopying>
+@interface GEOLPRWorld : PBCodable
 {
     PBDataReader *_reader;
     NSMutableArray *_powerTypes;
@@ -20,7 +18,12 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
-    CDStruct_4ca0835f _flags;
+    struct {
+        unsigned int read_powerTypes:1;
+        unsigned int read_regions:1;
+        unsigned int read_vehicleTypes:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
 - (void).cxx_destruct;

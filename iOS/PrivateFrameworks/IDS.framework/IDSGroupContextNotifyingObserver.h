@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSGroupContextObserverDaemonProtocol-Protocol.h>
-
 @class NSMutableSet;
 
-@interface IDSGroupContextNotifyingObserver : NSObject <IDSGroupContextObserverDaemonProtocol>
+@interface IDSGroupContextNotifyingObserver : NSObject
 {
     NSMutableSet *_delegates;
 }

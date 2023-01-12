@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 + (struct RoutingPathLeg)compress:(const void *)arg1;
 + (void)decompressInPlace:(void *)arg1;
 + (void)compressInPlace:(void *)arg1;
++ (id)descriptionForRoutingPathLeg:(const void *)arg1;
 + (id)dataForRoutingPathLeg:(const void *)arg1;
 + (struct RoutingPathLeg)routingPathLegForData:(id)arg1;
 

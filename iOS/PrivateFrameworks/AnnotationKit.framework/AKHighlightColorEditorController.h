@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AnnotationKit/UIPopoverControllerDelegate-Protocol.h>
-
 @class AKCalloutBar, NSString, UIAlertController, UIButton, UIView;
 
-@interface AKHighlightColorEditorController <UIPopoverControllerDelegate>
+@interface AKHighlightColorEditorController
 {
     AKCalloutBar *mCalloutBar;
     UIView *mColorControls;

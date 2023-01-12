@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPMediaLibraryView, MPModelObject, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibraryKeepLocalStatusRequestOperation
+@interface MPModelLibraryKeepLocalStatusRequestOperation : MPAsyncOperation
 {
     CDUnknownBlockType _downloadablePlaylistItemEntityQueryBlock;
     long long _enableState;

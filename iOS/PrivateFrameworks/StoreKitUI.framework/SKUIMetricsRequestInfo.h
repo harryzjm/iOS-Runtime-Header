@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMetricsRequestInfo : NSObject <NSCopying>
+@interface SKUIMetricsRequestInfo : NSObject
 {
     _Bool _responseWasCached;
     _Bool _hasResponseWasCachedValue;

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPUserPrivacySettings, NSString;
 
-@interface CKDPUserPrivacySettingsUpdateRequest : PBRequest <NSCopying>
+@interface CKDPUserPrivacySettingsUpdateRequest : PBRequest
 {
     NSString *_bundleIdentifier;
     CKDPUserPrivacySettings *_userPrivacySettings;

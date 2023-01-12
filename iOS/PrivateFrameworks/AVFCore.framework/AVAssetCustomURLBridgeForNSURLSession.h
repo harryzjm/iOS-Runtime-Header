@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/NSURLSessionDataDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString, NSURLSession;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetCustomURLBridgeForNSURLSession : NSObject <NSURLSessionDataDelegate>
+@interface AVAssetCustomURLBridgeForNSURLSession : NSObject
 {
     NSMutableDictionary *_taskToRequest;
     NSURLSession *_session;

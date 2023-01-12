@@ -6,17 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIInputViewSetPlacementDelegate-Protocol.h>
-#import <UIKitCore/UIInputViewSetPlacementOwner-Protocol.h>
-#import <UIKitCore/UISplitKeyboardSource-Protocol.h>
-#import <UIKitCore/_UIRemoteKeyboardDistributedViewSource-Protocol.h>
-#import <UIKitCore/_UIRemoteKeyboardViewSource-Protocol.h>
-
 @class NSLayoutConstraint, NSMutableDictionary, NSString, TUIInputAssistantHostView, UIFlickingAssistantViewSupport, UIInputSetHostView, UIInputViewSet, UIInputViewSetPlacement, UIInputWindowController, UIInputWindowControllerHosting, UIKBInputBackdropView, UIScrollToDismissSupport, UISplitKeyboardSupport, UISystemKeyboardDockController, UIView, UIViewController;
 @protocol UIInputViewSetPlacementApplicator, _UIRemoteKeyboardControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIInputWindowControllerHostingItem : NSObject <UIInputViewSetPlacementOwner, UISplitKeyboardSource, _UIRemoteKeyboardViewSource, UIInputViewSetPlacementDelegate, _UIRemoteKeyboardDistributedViewSource>
+@interface UIInputWindowControllerHostingItem : NSObject
 {
     UISplitKeyboardSupport *_cachedSplitKeyboardController;
     UIScrollToDismissSupport *_cachedScrollDismissController;
@@ -90,10 +84,10 @@ __attribute__((visibility("hidden")))
 - (void)_fillInNotificationInfo:(id)arg1 forDismissMode:(unsigned long long)arg2;
 - (id)constructNotificationInfoForScrollWithMode:(unsigned long long)arg1;
 - (void)setInterfaceAutorotationDisabled:(_Bool)arg1;
-@property(readonly, retain, nonatomic) UIViewController *_inputViewController;
+@property(readonly, nonatomic) UIViewController *_inputViewController;
 @property(readonly, nonatomic) struct CGPoint positionConstraintConstant;
 @property(readonly, nonatomic) _Bool isChangingPlacement;
-@property(readonly, retain, nonatomic) UIView *view;
+@property(readonly, nonatomic) UIView *view;
 - (void)updateForKeyplaneChangeWithContext:(id)arg1;
 - (void)checkPlaceholdersForRemoteKeyboards;
 @property(nonatomic) _Bool dontDismissReachability;
@@ -103,7 +97,7 @@ __attribute__((visibility("hidden")))
 @property _Bool hideInputView;
 @property _Bool hideInputViewBackdrops;
 @property(readonly) struct UIEdgeInsets inputViewPadding;
-@property(readonly, retain) UIView *containerView;
+@property(readonly) UIView *containerView;
 @property(readonly) _Bool keyboardController;
 - (void)updateProgress:(double)arg1 startHeight:(double)arg2 endHeight:(double)arg3;
 - (void)didFinishTranslation;
@@ -140,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (void)disableViewSizingConstraints:(unsigned long long)arg1 forNewView:(id)arg2;
 - (struct UIEdgeInsets)_aligningInsetsForChildInputViewController:(id)arg1 includeSceneBounds:(_Bool)arg2;
 - (void)updateConstraintInsets;
+- (void)removeInputAssistantHostView;
 @property(readonly) TUIInputAssistantHostView *inputAssistantHostView;
 - (id)inputAccessoryViewController;
 - (id)inputAssistantViewController;
@@ -147,11 +142,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) UIView *inputAccessoryView;
 @property(nonatomic) UIView *inputAssistantView;
 @property(nonatomic) UIView *inputView;
-@property(readonly, retain) UIInputViewSet *inputViewSet;
+@property(readonly) UIInputViewSet *inputViewSet;
 - (void)setPlacement:(id)arg1;
-@property(readonly, retain) UIInputViewSetPlacement *placement;
+@property(readonly) UIInputViewSetPlacement *placement;
 - (void)dealloc;
 - (id)initWithContainer:(id)arg1;
+- (id)ownerView;
 @property(readonly, nonatomic) __weak UIInputWindowController *owner;
 - (void)setPlacement;
 - (void)resetPlacement;

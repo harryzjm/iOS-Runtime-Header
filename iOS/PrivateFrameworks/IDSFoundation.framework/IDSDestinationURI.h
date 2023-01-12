@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "IDSDestination.h"
+
 @class IDSURI;
 
-@interface IDSDestinationURI
+@interface IDSDestinationURI : IDSDestination
 {
     IDSURI *_uri;
 }
@@ -15,6 +17,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) IDSURI *uri; // @synthesize uri=_uri;
 - (id)description;
+- (id)destinationLightweightStatus;
 - (id)destinationURIs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthKit/_HKFactor-Protocol.h>
-
 @class HKBaseUnit, HKUnit, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HKBaseDimension <_HKFactor>
+@interface _HKBaseDimension
 {
     NSString *_name;
     HKBaseUnit *_reducibleBaseUnit;
@@ -20,6 +18,10 @@ __attribute__((visibility("hidden")))
 + (id)_uniquedDefinedDimensionWithName:(id)arg1;
 + (id)_uniquedDimensionWithName:(id)arg1 configuration:(CDUnknownBlockType)arg2;
 + (id)nullDimension;
++ (id)angle;
++ (id)prismDiopter;
++ (id)diopter;
++ (id)power;
 + (id)electricPotentialDifference;
 + (id)titer;
 + (id)soundPressureLevel;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)nonConvertibleMole;
 + (id)frequency;
 + (id)conductance;
++ (id)changeInTemperature;
 + (id)temperature;
 + (id)time;
 + (id)energy;

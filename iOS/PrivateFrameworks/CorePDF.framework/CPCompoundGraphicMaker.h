@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPDisposable-Protocol.h>
-
 @class CPChunk, CPCluster;
 
 __attribute__((visibility("hidden")))
-@interface CPCompoundGraphicMaker : NSObject <CPDisposable>
+@interface CPCompoundGraphicMaker : NSObject
 {
     CPChunk *parentChunk;
     _Bool shapesAreVectorGraphics;

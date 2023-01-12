@@ -12,6 +12,8 @@
 + (id)_geo_mirroredProgressFromReceivingXPCEndpoint:(id)arg1;
 + (id)_geo_newReportingXPCEndpointMirroringProgress:(id)arg1;
 + (id)_geo_progressMirroringProgress:(id)arg1;
+- (void)_geo_configureFromMirroredProgressXPCDictionary:(id)arg1;
+- (id)_geo_mirroredProgressXPCDictionary;
 - (void)_geo_mirroredProgressReplaceObservedProgressWith:(id)arg1;
 @end
 

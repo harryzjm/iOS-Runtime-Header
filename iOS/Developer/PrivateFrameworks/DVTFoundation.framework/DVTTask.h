@@ -26,7 +26,7 @@
     NSRunLoop *_waitLoop;
     NSString *_waitRunLoopMode;
     CDUnknownBlockType _runLoopSignaler;
-    struct os_unfair_lock_s _runLoopSetupLock;
+    struct DVTUnfairLock _runLoopSetupLock;
     _Atomic int _runLoopSignal;
     NSMutableSet *_fileHandlesToCloseAfterLaunching;
     NSNumber *_argumentEncoding;
@@ -63,13 +63,15 @@
 - (void)addFileHandleToCloseAfterLaunch:(id)arg1;
 - (_Bool)runLoggingOutputWithLogAspect:(id)arg1 error:(id *)arg2;
 - (_Bool)runReturningStandardOutput:(id *)arg1 standardError:(id *)arg2 error:(id *)arg3;
-- (void)runReturningWithOptionalStandardInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_runWithQualityOfService:(long long)arg1 optionalStandardInput:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)runWithOptionalStandardInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)runReturningStandardOutput:(id *)arg1 standardError:(id *)arg2 standardInput:(id)arg3 error:(id *)arg4;
 - (_Bool)sendSignal:(int)arg1 error:(id *)arg2;
 - (void)waitUntilExit;
 - (void)waitUntilExitRunningRunLoopInWaitMode;
 - (_Bool)launchReturningError:(id *)arg1;
 - (id)installRunLoopSignal;
+- (_Bool)_launchWithQualityOfService:(long long)arg1 runningTerminationHandlerOnQueue:(id)arg2 error:(id *)arg3 terminationHandler:(CDUnknownBlockType)arg4;
 - (_Bool)launchRunningTerminationHandlerOnQueue:(id)arg1 error:(id *)arg2 terminationHandler:(CDUnknownBlockType)arg3;
 - (id)applyFileDescriptorMappingsToFileActions:(void **)arg1;
 - (void)warnAboutBogusFileDescriptors;

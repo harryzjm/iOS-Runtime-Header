@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
+#import "UIView.h"
 
-@class NSString, UIAccessibilityHUDItem, UIView, _UIPortalView;
+@class NSString, UIAccessibilityHUDItem, _UIPortalView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarSensorActivityView <_UIStatusBarDisplayable>
+@interface _UIStatusBarSensorActivityView : UIView
 {
+    long long _iconSize;
     _UIPortalView *_portalView;
     UIView *_sensorActivityView;
 }
@@ -18,8 +19,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *sensorActivityView; // @synthesize sensorActivityView=_sensorActivityView;
 @property(retain, nonatomic) _UIPortalView *portalView; // @synthesize portalView=_portalView;
+@property(nonatomic) long long iconSize; // @synthesize iconSize=_iconSize;
 - (struct CGSize)intrinsicContentSize;
+- (void)applyStyleAttributes:(id)arg1;
 - (void)configurePortalViewIfNeeded;
+- (void)layoutSubviews;
 - (void)configureSensorViewWithoutPortalIfNeeded;
 
 // Remaining properties
@@ -29,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) long long overriddenVerticalAlignment;
 @property(readonly, nonatomic) _Bool prefersBaselineAlignment;
+@property(readonly, nonatomic) _Bool prefersCenterVerticalAlignment;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool wantsCrossfade;
 

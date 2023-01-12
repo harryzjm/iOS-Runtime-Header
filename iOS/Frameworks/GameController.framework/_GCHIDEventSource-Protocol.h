@@ -6,10 +6,10 @@
 
 #import <GameController/NSObject-Protocol.h>
 
-@class _GCCControllerHIDServiceInfo;
+@class _GCHIDServiceInfo;
 
 @protocol _GCHIDEventSource <NSObject>
 - (id)observeHIDEvents:(void (^)(struct __IOHIDEvent *))arg1;
-- (id)observeHIDEvents:(void (^)(struct __IOHIDEvent *))arg1 forService:(_GCCControllerHIDServiceInfo *)arg2;
+- (id)observeHIDEvents:(void (^)(struct __IOHIDEvent *))arg1 forService:(_GCHIDServiceInfo *)arg2;
 @end
 

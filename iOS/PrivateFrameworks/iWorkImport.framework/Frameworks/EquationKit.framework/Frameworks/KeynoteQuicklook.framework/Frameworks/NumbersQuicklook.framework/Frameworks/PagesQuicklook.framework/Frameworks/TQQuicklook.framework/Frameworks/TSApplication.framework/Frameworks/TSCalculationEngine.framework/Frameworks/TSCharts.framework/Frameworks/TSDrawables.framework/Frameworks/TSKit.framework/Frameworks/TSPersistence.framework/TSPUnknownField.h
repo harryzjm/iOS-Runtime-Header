@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPForwardsCompatibleField-Protocol.h>
-
-@interface TSPUnknownField : NSObject <TSPForwardsCompatibleField>
+@interface TSPUnknownField : NSObject
 {
     struct shared_ptr<google::protobuf::UnknownFieldSet> _fieldSet;
     struct FieldInfo _fieldInfo;

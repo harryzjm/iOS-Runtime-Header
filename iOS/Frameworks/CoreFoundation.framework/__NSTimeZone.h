@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSTimeZone.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSTimeZone
+@interface __NSTimeZone : NSTimeZone
 {
     struct __CFString *_name;
     struct __CFData *_data;
     void **_ucal;
-    struct _opaque_pthread_mutex_t _lock;
+    struct os_unfair_lock_s _lock;
     int _secondsFromGMT;
 }
 

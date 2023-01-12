@@ -8,6 +8,8 @@
 
 @interface CTDisplayPlan (SimSetup)
 - (unsigned long long)transferCapability;
+- (_Bool)isWebsheetTransferablePlan;
+- (_Bool)isOneClickTransferablePlan;
 - (_Bool)isNotEligibleActivationPolicyMismatchPlan;
 - (_Bool)isTransferablePlan;
 - (_Bool)isOnDeviceTransferredPlan;

@@ -20,10 +20,3 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-

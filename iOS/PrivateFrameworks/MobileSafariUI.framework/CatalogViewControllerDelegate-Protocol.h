@@ -6,14 +6,18 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class CatalogViewController, NSString, NSURL, UIViewController;
-@protocol CompletionItem;
+@class CatalogViewController, NSString, NSURL, SFStartPageCustomizationViewController, UIViewController;
+@protocol CompletionItem, SFStartPageVisualStyleProviding;
 
 @protocol CatalogViewControllerDelegate <NSObject>
+- (void)catalogViewController:(CatalogViewController *)arg1 didFinishVoiceSearchWithNavigation:(_Bool)arg2;
+- (void)catalogViewController:(CatalogViewController *)arg1 willPresentCustomizationViewController:(SFStartPageCustomizationViewController *)arg2;
+- (void)catalogViewController:(CatalogViewController *)arg1 willPresentDetailViewController:(UIViewController *)arg2;
+- (_Bool)catalogViewControllerPresentingInPortraitAspectRatio:(CatalogViewController *)arg1;
 - (void)catalogViewControllerWillUnfocusUnifiedField:(CatalogViewController *)arg1;
 - (void)dismissCatalogViewController:(CatalogViewController *)arg1;
-- (_Bool)catalogViewController:(CatalogViewController *)arg1 shouldBeginDismissGestureUsingStyle:(long long)arg2;
 - (void)catalogViewControllerDidScroll:(CatalogViewController *)arg1 animated:(_Bool)arg2;
+- (id <SFStartPageVisualStyleProviding>)catalogViewControllerStartPageVisualStyleProvider:(CatalogViewController *)arg1;
 - (void)catalogViewController:(CatalogViewController *)arg1 didPasteText:(NSString *)arg2;
 - (_Bool)catalogViewControllerShouldSuppressPopover:(CatalogViewController *)arg1;
 - (double)catalogViewControllerPopoverWidth:(CatalogViewController *)arg1;

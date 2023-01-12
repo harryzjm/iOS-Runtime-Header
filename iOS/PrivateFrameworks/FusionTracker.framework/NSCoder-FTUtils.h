@@ -9,7 +9,7 @@
 @interface NSCoder (FTUtils)
 - (struct CGRect)fusionTracker_decodeCGRectForKey:(id)arg1;
 - (void)fusionTracker_encodeCGRect:(struct CGRect)arg1 forKey:(id)arg2;
-- (CDStruct_1b6d18a9)fusionTracker_decodeCMTimeForKey:(id)arg1;
-- (void)fusionTracker_encodeCMTime:(CDStruct_1b6d18a9)arg1 forKey:(id)arg2;
+- (CDStruct_198678f7)fusionTracker_decodeCMTimeForKey:(id)arg1;
+- (void)fusionTracker_encodeCMTime:(CDStruct_198678f7)arg1 forKey:(id)arg2;
 @end
 

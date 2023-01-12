@@ -6,11 +6,11 @@
 
 #import <QuickLook/NSObject-Protocol.h>
 
-@class NSString;
+@class UTType;
 
 @protocol QLTExtensionThumbnailItem <NSObject>
 @property _Bool needsAccessToExternalResources;
-@property(readonly, copy, nonatomic) NSString *contentType;
+@property(readonly, nonatomic) UTType *contentType;
 - (void)provideURLWrapper:(void (^)(FPSandboxingURLWrapper *, FPSandboxingURLWrapper *, NSError *))arg1;
 @end
 

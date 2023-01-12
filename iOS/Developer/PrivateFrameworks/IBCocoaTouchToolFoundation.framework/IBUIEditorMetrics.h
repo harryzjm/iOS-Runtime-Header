@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface IBUIEditorMetrics : NSObject <IBBinaryArchiving>
+@interface IBUIEditorMetrics : NSObject
 {
     long long _horizontalSizeClass;
     long long _verticalSizeClass;

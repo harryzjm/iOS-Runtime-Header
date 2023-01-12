@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "STCoreOrganizationSettings.h"
+
 @class NSString, STLocalOrganization;
 
 __attribute__((visibility("hidden")))
-@interface STLocalOrganizationSettings
+@interface STLocalOrganizationSettings : STCoreOrganizationSettings
 {
 }
 

@@ -11,6 +11,7 @@
 @protocol NCNotificationOptionsMenuSettingsDelegate <NSObject>
 - (void)notificationOptionsMenu:(NCNotificationOptionsMenu *)arg1 setModeConfiguration:(DNDModeConfiguration *)arg2;
 - (DNDModeConfiguration *)notificationOptionsMenuRequestsCurrentModeConfiguration:(NCNotificationOptionsMenu *)arg1;
+- (void)notificationOptionsMenu:(NCNotificationOptionsMenu *)arg1 requestsClearingSectionWithIdentifier:(NSString *)arg2;
 - (void)notificationOptionsMenu:(NCNotificationOptionsMenu *)arg1 addSenderToContactsForNotificationRequest:(NCNotificationRequest *)arg2 withSectionIdentifier:(NSString *)arg3;
 - (void)notificationOptionsMenu:(NCNotificationOptionsMenu *)arg1 setScheduledDelivery:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
 - (void)notificationOptionsMenu:(NCNotificationOptionsMenu *)arg1 setAllowsTimeSensitive:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
@@ -19,5 +20,6 @@
 - (void)notificationOptionsMenu:(NCNotificationOptionsMenu *)arg1 setAllowsNotifications:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
 - (NCNotificationSystemSettings *)notificationOptionsMenuRequestsSystemSettings:(NCNotificationOptionsMenu *)arg1;
 - (NCNotificationSectionSettings *)notificationOptionsMenu:(NCNotificationOptionsMenu *)arg1 sectionSettingsForSectionIdentifier:(NSString *)arg2;
+- (void)notificationOptionsMenuWillDismiss:(NCNotificationOptionsMenu *)arg1;
 @end
 

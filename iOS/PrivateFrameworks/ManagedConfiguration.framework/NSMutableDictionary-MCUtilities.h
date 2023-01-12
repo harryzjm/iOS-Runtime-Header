@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableDictionary.h>
 
 @interface NSMutableDictionary (MCUtilities)
+- (void)MCSanitizeRestrictions;
 - (void)MCFixUpRestrictionsDictionaryForMDMReporting;
 - (void)MCFilterRestrictionPayloadKeys:(id)arg1;
 - (void)MCSetUnionSetting:(id)arg1 values:(id)arg2;

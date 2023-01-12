@@ -29,57 +29,24 @@ struct CATransform3D {
     double _field16;
 };
 
-struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
-};
-
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct CLLocationCoordinate2D {
     double _field1;
     double _field2;
-};
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
-struct _OFLRUCacheList {
-    unsigned long long _field1;
-    struct _OFLRUCacheListElement *_field2;
-    struct _OFLRUCacheListElement *_field3;
-};
-
-struct _OFLRUCacheListElement {
-    id _field1;
-    struct _OFLRUCacheListElement *_field2;
-    struct _OFLRUCacheListElement *_field3;
 };
 
 struct _xmlDoc {
@@ -131,18 +98,6 @@ struct _xmlNode {
 };
 
 struct _xmlNs;
-
-struct in_addr {
-    unsigned int _field1;
-};
-
-struct sockaddr_in {
-    unsigned char _field1;
-    unsigned char _field2;
-    unsigned short _field3;
-    struct in_addr _field4;
-    char _field5[8];
-};
 
 #pragma mark Typedef'd Structures
 

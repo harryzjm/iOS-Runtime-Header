@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIJSAnalyzedImageColors-Protocol.h>
-
 @class SKUIJSColor;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSAnalyzedImageColors : IKJSObject <SKUIJSAnalyzedImageColors>
+@interface SKUIJSAnalyzedImageColors : IKJSObject
 {
     SKUIJSColor *_backgroundColor;
     SKUIJSColor *_textPrimaryColor;

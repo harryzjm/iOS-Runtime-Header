@@ -8,6 +8,7 @@
 
 @interface IBICVectorGlyphSet
 {
+    long long _symbolRenderingIntent;
 }
 
 + (id)importPriority;
@@ -19,8 +20,14 @@
 + (id)defaultName;
 + (Class)assetRepClass;
 + (id)createDefaultInstancesForUnitTesting;
+@property(nonatomic) long long symbolRenderingIntent; // @synthesize symbolRenderingIntent=_symbolRenderingIntent;
 - (_Bool)isEqualForUnitTests:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (_Bool)shouldMutateChild:(id)arg1 byCopyingContentToNewSlot:(id)arg2;
+- (void)manifestArchivist:(id)arg1 populateManifest:(id)arg2;
+- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2 manifestFileData:(id)arg3;
+- (void)enumerateDescriptionAttributeComponents:(CDUnknownBlockType)arg1;
 - (CDStruct_2a4d9400)taggingSupport;
 - (id)initializeManifestArchivist;
 @property(readonly, nonatomic) NSOrderedSet *intrinsicallyOrderedChildren;

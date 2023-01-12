@@ -6,22 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/MSPSharedTripRelayDelegate-Protocol.h>
-#import <MapsSupport/MSPSharedTripStorageDelegate-Protocol.h>
-
-@class MSPSharedTripBlacklist, MSPSharedTripRelay, MapsNotificationCenter, NSArray, NSMutableDictionary, NSString, NSTimer;
+@class MDNotificationCenter, MSPSharedTripBlocklist, MSPSharedTripRelay, NSArray, NSMutableDictionary, NSString, NSTimer;
 @protocol MSPReceiverETAControllerDelegate, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
-@interface MSPReceiverETAController : NSObject <MSPSharedTripStorageDelegate, MSPSharedTripRelayDelegate>
+@interface MSPReceiverETAController : NSObject
 {
     NSObject<OS_os_transaction> *_transaction;
     NSMutableDictionary *_sharedSessions;
     NSMutableDictionary *_sharedNavStates;
-    NSMutableDictionary *_temporaryNavStates;
-    MapsNotificationCenter *_mapsNotificationCenter;
+    NSMutableDictionary *_waitingNavStates;
+    MDNotificationCenter *_mapsNotificationCenter;
     MSPSharedTripRelay *_idsRelay;
-    MSPSharedTripBlacklist *_blockedList;
+    MSPSharedTripBlocklist *_blockedList;
     NSTimer *_cleanupTimer;
     id <MSPReceiverETAControllerDelegate> _delegate;
 }

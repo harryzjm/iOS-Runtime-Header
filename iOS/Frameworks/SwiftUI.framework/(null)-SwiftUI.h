@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SwiftUI/UIAccessibilityReadingContent-Protocol.h>
-
-@interface (null) (SwiftUI) <UIAccessibilityReadingContent>
+@interface (null) (SwiftUI)
 - (id)accessibilityAttributedPageContent;
 - (id)accessibilityAttributedContentForLineNumber:(long long)arg1;
 - (id)accessibilityPageContent;

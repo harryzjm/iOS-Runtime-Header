@@ -7,8 +7,10 @@
 #import <SafariServices/NSObject-Protocol.h>
 
 @class _SFBookmarkInfoViewController;
+@protocol TabGroupProvider;
 
 @protocol _SFBookmarkInfoViewControllerDelegate <NSObject>
+- (id <TabGroupProvider>)tabGroupProviderForBookmarkInfoViewController:(_SFBookmarkInfoViewController *)arg1;
 
 @optional
 - (_Bool)bookmarkInfoViewControllerCanSaveBookmarkChanges:(_SFBookmarkInfoViewController *)arg1;

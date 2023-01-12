@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <AnnotationKit/PKCanvasViewDelegate-Protocol.h>
-
 @class AKPageController, NSHashTable, NSString, PKCanvasView, PKInk, UIGestureRecognizer;
 @protocol AKInkOverlayViewDelegate, PKRulerHostingDelegate;
 
-@interface AKInkOverlayView : UIView <PKCanvasViewDelegate>
+@interface AKInkOverlayView : UIView
 {
     PKInk *_ink;
     NSHashTable *_reportedStrokes;

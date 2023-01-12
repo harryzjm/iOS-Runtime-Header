@@ -6,14 +6,10 @@
 
 #import <UIKit/UIPickerView.h>
 
-#import <WebKit/UIPickerViewDataSource-Protocol.h>
-#import <WebKit/UIPickerViewDelegate-Protocol.h>
-#import <WebKit/WKFormControl-Protocol.h>
-
 @class NSString, WKContentView;
 
 __attribute__((visibility("hidden")))
-@interface WKMultipleSelectPicker : UIPickerView <WKFormControl, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface WKMultipleSelectPicker : UIPickerView
 {
     WKContentView *_view;
     long long _textAlignment;

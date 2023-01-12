@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSString, UIColor, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPageDividerCollectionViewCell : UICollectionViewCell <SKUIViewElementView>
+@interface SKUIPageDividerCollectionViewCell : UICollectionViewCell
 {
     struct UIEdgeInsets _contentInset;
     UIView *_topDividerLine;

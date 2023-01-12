@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/IKEntityValueProviding-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUISizingEntityValueProvider : NSObject <IKEntityValueProviding>
+@interface SKUISizingEntityValueProvider : NSObject
 {
     NSMutableDictionary *_tallestValues;
 }

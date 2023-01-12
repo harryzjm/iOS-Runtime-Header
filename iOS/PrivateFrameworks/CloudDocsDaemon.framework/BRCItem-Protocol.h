@@ -31,6 +31,7 @@
 @property(readonly, nonatomic) _Bool isSymLink;
 @property(readonly, nonatomic) _Bool isZoneRoot;
 @property(readonly, nonatomic) _Bool isFSRoot;
+@property(readonly, nonatomic) _Bool isDirectoryFault;
 @property(readonly, nonatomic) _Bool isDirectory;
 @property(readonly, nonatomic) _Bool isDocument;
 @property(readonly, nonatomic) _Bool isPackage;

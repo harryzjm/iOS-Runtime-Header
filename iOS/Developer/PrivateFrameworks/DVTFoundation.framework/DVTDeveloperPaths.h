@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class DVTFilePath, DVTSearchPath, NSString;
 
 @interface DVTDeveloperPaths : NSObject
 {
@@ -15,27 +15,29 @@
 }
 
 + (id)pathsWithDeveloperFolderPath:(id)arg1 developerUsrPath:(id)arg2;
++ (id)defaultPathsIfAvailableWithError:(id *)arg1;
 + (id)defaultPaths;
 + (_Bool)areDefaultPathsAvailable;
 + (void)setDefaultDeveloperPathsClass:(Class)arg1;
++ (id)absoluteDyldFrameworkPaths;
 + (void)initializeApplicationDirectoryName:(id)arg1;
 + (id)applicationDirectoryName;
 - (void).cxx_destruct;
 - (id)cacheDirectoryForXcodeServerApplication;
-- (id)developerPlatformsDirectory;
-- (id)toolchainSearchPath;
-- (id)embeddedApplicationsDirectory;
-- (id)xcodeApplicationFilePath;
-- (id)sharedFrameworksDirectory;
-- (id)developerAppleInternalApplicationsDirectory;
-- (id)developerAppleInternalXcodeDirectory;
-- (id)developerApplicationsDirectory;
-- (id)userDataDirectoryForCurrentApplication;
-- (id)documentationIndexDirectoryForCurrentApplication;
-- (id)documentationCacheDirectoryForCurrentApplication;
-- (id)dataDirectoryForCurrentApplication;
+@property(readonly) DVTFilePath *developerPlatformsDirectory;
+@property(readonly) DVTSearchPath *toolchainSearchPath;
+@property(readonly) DVTFilePath *embeddedApplicationsDirectory;
+@property(readonly) DVTFilePath *xcodeApplicationFilePath;
+@property(readonly) DVTFilePath *sharedFrameworksDirectory;
+@property(readonly) DVTFilePath *developerAppleInternalApplicationsDirectory;
+@property(readonly) DVTFilePath *developerAppleInternalXcodeDirectory;
+@property(readonly) DVTFilePath *developerApplicationsDirectory;
+@property(readonly) DVTFilePath *userDataDirectoryForCurrentApplication;
+@property(readonly) DVTFilePath *documentationIndexDirectoryForCurrentApplication;
+@property(readonly) DVTFilePath *documentationCacheDirectoryForCurrentApplication;
+@property(readonly) DVTFilePath *dataDirectoryForCurrentApplication;
 - (id)cacheDirectoryWithOptions:(unsigned long long)arg1;
-- (id)binSearchPathForSystem;
+@property(readonly) DVTSearchPath *binSearchPathForSystem;
 - (id)binSearchPathForPlatform:(id)arg1;
 - (id)usrSearchPathForPlatform:(id)arg1;
 - (id)developerInstallationInfoDirectoryForPlatform:(id)arg1;
@@ -46,7 +48,7 @@
 - (id)developerFrameworksDirectoryPlatform:(id)arg1;
 - (id)developerLibraryDirectoryPlatform:(id)arg1;
 - (id)developerDirectoryForPlatform:(id)arg1;
-- (id)developerDirectory;
+@property(readonly) DVTFilePath *developerDirectory;
 - (id)searchPathForDirectory:(unsigned long long)arg1 inDomains:(unsigned long long)arg2 forPlatforms:(id)arg3 withNonPlatformPaths:(_Bool)arg4 appendingPathComponents:(id)arg5;
 - (id)_pathForDirectory:(unsigned long long)arg1 inDomain:(unsigned long long)arg2 forPlatform:(id)arg3;
 - (id)_rootPathForPlatform:(id)arg1 inDomain:(unsigned long long)arg2;

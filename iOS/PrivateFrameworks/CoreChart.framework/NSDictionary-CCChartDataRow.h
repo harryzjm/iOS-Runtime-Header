@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <CoreChart/CCChartDataRow-Protocol.h>
-
 @class NSString;
 
-@interface NSDictionary (CCChartDataRow) <CCChartDataRow>
+@interface NSDictionary (CCChartDataRow)
 - (id)chartViewDataRowID;
 - (id)chartViewDataValueForColumn:(id)arg1;
 - (id)columnsInChartView;

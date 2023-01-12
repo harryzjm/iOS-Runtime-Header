@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void)previewDidChange:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)imageBalloon;
-- (void)dealloc;
 - (id)initWithPluginPayload:(id)arg1;
 
 @end

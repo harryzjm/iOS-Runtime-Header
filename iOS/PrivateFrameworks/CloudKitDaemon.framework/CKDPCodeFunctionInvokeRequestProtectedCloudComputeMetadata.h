@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadata : PBCodable <NSCopying>
+@interface CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadata : PBCodable
 {
     NSMutableArray *_cryptoSessions;
 }

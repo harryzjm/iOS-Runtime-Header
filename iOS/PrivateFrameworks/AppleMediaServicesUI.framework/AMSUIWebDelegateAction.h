@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebDelegateAction <AMSUIWebActionRunnable>
+@interface AMSUIWebDelegateAction
 {
     NSDictionary *_delegateData;
 }
@@ -19,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)_didResolveWithResult:(id)arg1 error:(id)arg2;
 - (id)_handleActionObject:(id)arg1;
 - (id)_infoWithBuyParams:(id)arg1 additionalInfo:(id)arg2;
-- (id)_handleResolveAction;
+- (id)_handleResolveActionWithData:(id)arg1;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 

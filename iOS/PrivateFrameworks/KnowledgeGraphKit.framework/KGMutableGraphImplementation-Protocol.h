@@ -13,9 +13,7 @@
 - (void)commitTransaction;
 - (void)beginTransaction;
 - (_Bool)updateEdgeForIdentifier:(unsigned long long)arg1 withProperties:(NSDictionary *)arg2 error:(id *)arg3;
-- (_Bool)updateEdgeForIdentifier:(unsigned long long)arg1 withWeight:(float)arg2 error:(id *)arg3;
 - (_Bool)updateNodeForIdentifier:(unsigned long long)arg1 withProperties:(NSDictionary *)arg2 error:(id *)arg3;
-- (_Bool)updateNodeForIdentifier:(unsigned long long)arg1 withWeight:(float)arg2 error:(id *)arg3;
 - (_Bool)removeEdgesForIdentifiers:(KGElementIdentifierSet *)arg1 error:(id *)arg2;
 - (_Bool)removeNodesForIdentifiers:(KGElementIdentifierSet *)arg1 error:(id *)arg2;
 - (_Bool)removeEdgeForIdentifier:(unsigned long long)arg1 error:(id *)arg2;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIShareInvitationViewControllerHost-Protocol.h>
+#import "_UIRemoteViewController.h"
 
 @class NSString, UIViewController;
 @protocol _UISharingPublicController;
 
 __attribute__((visibility("hidden")))
-@interface _UIShareInvitationRemoteViewController <_UIShareInvitationViewControllerHost>
+@interface _UIShareInvitationRemoteViewController : _UIRemoteViewController
 {
     UIViewController<_UISharingPublicController> *_publicController;
 }
@@ -29,7 +29,10 @@ __attribute__((visibility("hidden")))
 - (void)_dismissAndRepresentForActivity:(CDUnknownBlockType)arg1;
 - (void)_performHeaderActionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_cloudSharingControllerDidChooseTransport:(id)arg1;
+- (void)_cloudSharingControllerDidActivateAddPeopleWithRemoteSourceX:(double)arg1 y:(double)arg2 width:(double)arg3 height:(double)arg4;
+- (void)_cloudSharingControllerDidActivateShowActivityController;
 - (void)_cloudSharingControllerDidActivateShowSharedFolder;
+- (void)_cloudSharingControllerDidUpdateRootFolderURL:(id)arg1;
 - (void)_cloudSharingControllerDidModifySecondarySwitch:(_Bool)arg1;
 - (void)_cloudSharingControllerDidModifyPrimarySwitch:(_Bool)arg1;
 - (void)_performAuxiliaryActionWithCompletion:(CDUnknownBlockType)arg1;

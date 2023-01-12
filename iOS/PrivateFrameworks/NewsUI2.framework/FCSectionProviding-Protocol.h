@@ -9,6 +9,7 @@
 @class FCSectionSupergroupKnobs, NSString;
 
 @protocol FCSectionProviding <FCTagProviding>
+@property(nonatomic, readonly) NSString *supergroupConfigJson;
 @property(nonatomic, readonly) FCSectionSupergroupKnobs *supergroupKnobs;
 @property(nonatomic, readonly) NSString *supergroupKnobsJson;
 @property(nonatomic, readonly) NSString *parentID;

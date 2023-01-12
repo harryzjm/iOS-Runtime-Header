@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/CompletionItem-Protocol.h>
-
 @class NSString, NSURL, SFSearchResult, WBSCompletionQuery, WBSQuerySuggestion;
 @protocol CompletionItemActionHandler;
 
 __attribute__((visibility("hidden")))
-@interface PencilInputCompletionItem : NSObject <CompletionItem>
+@interface PencilInputCompletionItem : NSObject
 {
     WBSCompletionQuery *_userQuery;
     NSURL *_navigationURL;

@@ -22,22 +22,24 @@
 + (id)_improvedSingleCharacterOneColumnTextResult:(id)arg1 targetContentInfo:(id)arg2 insertionRange:(struct _NSRange)arg3 locale:(id)arg4 affectedRange:(struct _NSRange *)arg5;
 + (id)_modifiedTextResult:(id)arg1 replacingString:(id)arg2;
 + (struct _NSRange)defaultTextAffectedRangeForTargetContentInfo:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) CHCornerDetector *_cornerDetector; // @synthesize _cornerDetector=__cornerDetector;
 @property(readonly, nonatomic) CHRecognizer *_shapeRecognizer; // @synthesize _shapeRecognizer=__shapeRecognizer;
 @property(readonly, nonatomic) id <CHRecognizing> _textRecognizer; // @synthesize _textRecognizer=__textRecognizer;
 @property(readonly, nonatomic) _Bool isRemoteRecognition; // @synthesize isRemoteRecognition=_isRemoteRecognition;
 @property(readonly, copy, nonatomic) NSArray *locales; // @synthesize locales=_locales;
+- (_Bool)_isInNoSpaceRegionNextToTextFromTargetContentInfo:(id)arg1 drawingBounds:(struct CGRect)arg2 localTypedContextBounds:(struct CGRect)arg3 insertionRange:(struct _NSRange)arg4 outIsWhiteSpace:(_Bool *)arg5 outDistance:(double *)arg6 outSpaceDistanceThreshold:(double *)arg7;
 - (id)_textAfterStringForTargetContentInfo:(id)arg1 insertionRange:(struct _NSRange)arg2;
 - (id)_textBeforeStringForTargetContentInfo:(id)arg1 insertionRange:(struct _NSRange)arg2;
 - (long long)_precedingSpaceBehaviorFromTargetContentInfo:(id)arg1 drawingBounds:(struct CGRect)arg2 localTypedContextBounds:(struct CGRect)arg3 insertionRange:(struct _NSRange)arg4 lastCharacterBefore:(id)arg5;
 - (unsigned long long)_precedingLineBreakCountForAutoLineBreak:(id)arg1 targetContentInfo:(id)arg2;
+- (id)_verticalBarGestureCloseToTextForDrawing:(id)arg1 originalDrawing:(id)arg2 targetContentInfo:(id)arg3 localTypedContextBounds:(struct CGRect)arg4;
 - (id)_verticalBarGestureOnBlankAreaResultForDrawing:(id)arg1 originalDrawing:(id)arg2 targetContentInfo:(id)arg3;
 - (id)_gestureOnBlankAreaResultForDrawing:(id)arg1 originalDrawing:(id)arg2 targetContentInfo:(id)arg3;
 - (id)_refinedGestureResultForPreviousResult:(id)arg1 originalDrawing:(id)arg2 lastStroke:(id)arg3 targetContentInfo:(id)arg4;
 - (id)_textInsertionResultForDrawing:(id)arg1 targetContentInfo:(id)arg2 originalDrawing:(id)arg3 localTypedContextBounds:(struct CGRect)arg4 normalizedDrawingScaleFactor:(double)arg5 insertionRange:(struct _NSRange)arg6;
 - (id)_editingGestureResultForDrawing:(id)arg1 originalDrawing:(id)arg2 lastStroke:(id)arg3 targetContentInfo:(id)arg4 previousResult:(id)arg5;
 - (id)textCorrectionResultForDrawing:(id)arg1 targetContentInfo:(id)arg2 originalDrawing:(id)arg3 lastStroke:(id)arg4 localTypedContextBounds:(struct CGRect)arg5 normalizedDrawingScaleFactor:(double)arg6 previousCorrectionResult:(id)arg7;
-- (void)dealloc;
 - (id)initWithLocales:(id)arg1 remoteRecognition:(_Bool)arg2 priority:(long long)arg3;
 
 @end

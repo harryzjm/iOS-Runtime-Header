@@ -9,8 +9,6 @@
 @class EKEvent, UITraitCollection;
 
 @protocol EKMutableDayOccurrenceState <NSObject>
-@property(nonatomic) _Bool includesDropoff;
-@property(nonatomic) _Bool includesPickup;
 @property(retain, nonatomic) UITraitCollection *traitCollection;
 @property(nonatomic) double topYBoundaryForText;
 @property(nonatomic) double visibleHeight;

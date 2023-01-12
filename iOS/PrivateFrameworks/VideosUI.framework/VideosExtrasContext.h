@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VideosExtrasPlaybackDelegate-Protocol.h>
-#import <VideosUI/VideosExtrasRootViewControllerDelegate-Protocol.h>
-
 @class MPMediaItem, MPPlaybackContext, NSArray, NSString, NSURL, UIViewController, VideosExtrasRootViewController;
-@protocol VideosExtrasContextDelegate;
+@protocol TVPMediaItem, VideosExtrasContextDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasContext : NSObject <VideosExtrasRootViewControllerDelegate, VideosExtrasPlaybackDelegate>
+@interface VideosExtrasContext : NSObject
 {
     _Bool _isStarted;
     id <VideosExtrasContextDelegate> _delegate;
@@ -21,6 +18,7 @@ __attribute__((visibility("hidden")))
     MPPlaybackContext *_featurePlaybackContext;
     VideosExtrasRootViewController *_extrasRootViewController;
     MPMediaItem *_mediaItem;
+    NSObject<TVPMediaItem> *_tvpMediaItem;
     NSURL *_javascriptURL;
     NSString *_buyParameters;
     long long _storeID;
@@ -36,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long storeID; // @synthesize storeID=_storeID;
 @property(readonly, copy, nonatomic) NSString *buyParameters; // @synthesize buyParameters=_buyParameters;
 @property(readonly, copy, nonatomic) NSURL *javascriptURL; // @synthesize javascriptURL=_javascriptURL;
+@property(readonly, nonatomic) NSObject<TVPMediaItem> *tvpMediaItem; // @synthesize tvpMediaItem=_tvpMediaItem;
 @property(readonly, nonatomic) MPMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property(readonly, nonatomic) VideosExtrasRootViewController *extrasRootViewController; // @synthesize extrasRootViewController=_extrasRootViewController;
 @property(retain, nonatomic) MPPlaybackContext *featurePlaybackContext; // @synthesize featurePlaybackContext=_featurePlaybackContext;
@@ -60,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)extrasRequestsMediaPlayback:(id)arg1 isBackground:(_Bool)arg2;
 - (void)_configureForMediaItem:(id)arg1;
 - (id)initWithApplicationJavascriptURL:(id)arg1 storeID:(long long)arg2 buyParameters:(id)arg3;
+- (id)initWithTVPMediaItem:(id)arg1;
 - (id)initWithMediaItem:(id)arg1;
 - (id)init;
 

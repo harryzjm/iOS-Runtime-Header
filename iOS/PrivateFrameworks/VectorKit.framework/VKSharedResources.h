@@ -6,22 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/GEOResourceManifestTileGroupObserver-Protocol.h>
-
 @class NSString, VKInternalIconManager, VKResourceManager;
 
 __attribute__((visibility("hidden")))
-@interface VKSharedResources : NSObject <GEOResourceManifestTileGroupObserver>
+@interface VKSharedResources : NSObject
 {
-    struct _retain_ptr<VKInternalIconManager *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+    struct _retain_ptr<VKInternalIconManager *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_vptr$_retain_ptr;
         VKInternalIconManager *_obj;
-        struct _retain_objc _retain;
-        struct _release_objc _release;
+        struct _retain_objc_arc _retain;
+        struct _release_objc_arc _release;
     } _iconManager;
     shared_ptr_f2399894 _textureManager;
     shared_ptr_3c073566 _materialTextureManager;
-    struct _retain_ptr<VKResourceManager *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _resourceManager;
+    struct _retain_ptr<VKResourceManager *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> _resourceManager;
     shared_ptr_dd2d1f5e _stylesheetVendor;
     struct shared_ptr<md::DataOverrideManager> _dataOverrideManager;
     shared_ptr_64671d97 _standardCommandBufferSelector;
@@ -65,7 +63,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) void *alphaAtlas;
 @property(readonly, nonatomic) shared_ptr_0711ef20 realisticCommandBufferSelector;
 @property(readonly, nonatomic) shared_ptr_64671d97 standardCommandBufferSelector;
-@property(readonly, nonatomic) struct Device *gglDevice;
+@property(readonly, nonatomic) void *gglDevice;
 @property(readonly, nonatomic) void *device;
 @property(readonly, nonatomic) VKResourceManager *resourceManager;
 @property(readonly, nonatomic) shared_ptr_3c073566 materialTextureManager;

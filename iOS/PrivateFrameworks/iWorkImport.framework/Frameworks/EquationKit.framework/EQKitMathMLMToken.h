@@ -4,13 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EquationKit/EQKitFontStyling-Protocol.h>
-#import <EquationKit/EQKitLayoutSchemataToken-Protocol.h>
-#import <EquationKit/EQKitMathMLNode-Protocol.h>
-
 @class EQKitMathMLTokenContent, NSString;
 
-@interface EQKitMathMLMToken <EQKitMathMLNode, EQKitFontStyling, EQKitLayoutSchemataToken>
+@interface EQKitMathMLMToken
 {
     struct {
         unsigned int mType:2;

@@ -6,46 +6,58 @@
 
 #import <UIKit/UIView.h>
 
-@class MPCPlayerResponse, MRUTransportButton, MRUVisualStylingProvider;
+@class MRUTransportButton, MRUTransportControls, MRUVisualStylingProvider, NSTimer;
 @protocol MRUNowPlayingTransportControlsViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MRUNowPlayingTransportControlsView : UIView
 {
-    _Bool _showTVButtons;
+    _Bool _showTVRemoteButton;
+    _Bool _showRoutingButton;
+    _Bool _dimmed;
     id <MRUNowPlayingTransportControlsViewDelegate> _delegate;
-    MPCPlayerResponse *_response;
+    MRUTransportControls *_transportControls;
+    MRUTransportButton *_routingButton;
     MRUVisualStylingProvider *_stylingProvider;
     long long _layout;
-    MRUTransportButton *_tvRemoteButton;
+    MRUTransportButton *_leadingButton;
     MRUTransportButton *_leftButton;
-    MRUTransportButton *_middleButton;
+    MRUTransportButton *_centerButton;
     MRUTransportButton *_rightButton;
-    MRUTransportButton *_languageOptionsButton;
+    unsigned long long _leftButtonState;
+    NSTimer *_leftButtonAnimationTimer;
+    unsigned long long _rightButtonState;
+    NSTimer *_rightButtonAnimationTimer;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) MRUTransportButton *languageOptionsButton; // @synthesize languageOptionsButton=_languageOptionsButton;
+@property(retain, nonatomic) NSTimer *rightButtonAnimationTimer; // @synthesize rightButtonAnimationTimer=_rightButtonAnimationTimer;
+@property(nonatomic) unsigned long long rightButtonState; // @synthesize rightButtonState=_rightButtonState;
+@property(retain, nonatomic) NSTimer *leftButtonAnimationTimer; // @synthesize leftButtonAnimationTimer=_leftButtonAnimationTimer;
+@property(nonatomic) unsigned long long leftButtonState; // @synthesize leftButtonState=_leftButtonState;
 @property(retain, nonatomic) MRUTransportButton *rightButton; // @synthesize rightButton=_rightButton;
-@property(retain, nonatomic) MRUTransportButton *middleButton; // @synthesize middleButton=_middleButton;
+@property(retain, nonatomic) MRUTransportButton *centerButton; // @synthesize centerButton=_centerButton;
 @property(retain, nonatomic) MRUTransportButton *leftButton; // @synthesize leftButton=_leftButton;
-@property(retain, nonatomic) MRUTransportButton *tvRemoteButton; // @synthesize tvRemoteButton=_tvRemoteButton;
-@property(nonatomic) _Bool showTVButtons; // @synthesize showTVButtons=_showTVButtons;
+@property(retain, nonatomic) MRUTransportButton *leadingButton; // @synthesize leadingButton=_leadingButton;
+@property(nonatomic, getter=isDimmed) _Bool dimmed; // @synthesize dimmed=_dimmed;
+@property(nonatomic) _Bool showRoutingButton; // @synthesize showRoutingButton=_showRoutingButton;
+@property(nonatomic) _Bool showTVRemoteButton; // @synthesize showTVRemoteButton=_showTVRemoteButton;
 @property(nonatomic) long long layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
-@property(retain, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
+@property(readonly, nonatomic) MRUTransportButton *routingButton; // @synthesize routingButton=_routingButton;
+@property(retain, nonatomic) MRUTransportControls *transportControls; // @synthesize transportControls=_transportControls;
 @property(nonatomic) __weak id <MRUNowPlayingTransportControlsViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)updateVisibility;
 - (void)updateImageConfiguration;
-- (void)updateResponse;
-- (void)currentLocaleDidChangeNotification:(id)arg1;
-- (void)buttonHoldReleased:(id)arg1;
-- (void)buttonHoldBegan:(id)arg1;
-- (void)didSelectLanguageOptionsButton:(id)arg1;
-- (void)didSelectedRightButton:(id)arg1;
-- (void)didSelectedMiddleButton:(id)arg1;
-- (void)didSelectedLeftButton:(id)arg1;
-- (void)didSelectTVRemoteButton:(id)arg1;
+- (void)didSelectRoutingButton:(id)arg1;
+- (void)releasedHoldRightButton:(id)arg1;
+- (void)beganHoldRightButton:(id)arg1;
+- (void)didSelectRightButton:(id)arg1;
+- (void)didSelectCenterButton:(id)arg1;
+- (void)releasedHoldLeftButton:(id)arg1;
+- (void)beganHoldLeftButton:(id)arg1;
+- (void)didSelectLeftButton:(id)arg1;
+- (void)didSelectLeadingButton:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

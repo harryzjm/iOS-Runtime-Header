@@ -9,6 +9,6 @@
 @protocol PKForegroundActiveArbiter;
 
 @protocol PKForegroundActiveArbiterObserver <NSObject>
-- (void)foregroundActiveArbiter:(id <PKForegroundActiveArbiter>)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
+- (void)foregroundActiveArbiter:(id <PKForegroundActiveArbiter>)arg1 didUpdateForegroundActiveState:(CDStruct_3d581f42)arg2;
 @end
 

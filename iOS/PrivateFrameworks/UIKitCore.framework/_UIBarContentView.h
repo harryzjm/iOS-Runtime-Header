@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIButtonBarAppearanceDelegate-Protocol.h>
+#import "UIView.h"
 
 @class NSString, UIColor, UIImage, UIImageSymbolConfiguration, _UIBarButtonItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
-@interface _UIBarContentView <_UIButtonBarAppearanceDelegate>
+@interface _UIBarContentView : UIView
 {
-    _Bool _barIsBlack;
     _Bool _centerTextButtons;
     Class _appearanceGuideClass;
     _UIBarButtonItemAppearanceStorage *_appearanceStorage;
@@ -23,8 +22,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _UIBarButtonItemAppearanceStorage *appearanceStorage; // @synthesize appearanceStorage=_appearanceStorage;
 @property(nonatomic) _Bool centerTextButtons; // @synthesize centerTextButtons=_centerTextButtons;
 @property(retain, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
-@property(nonatomic) _Bool barIsBlack; // @synthesize barIsBlack=_barIsBlack;
-- (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
+- (unsigned long long)_edgesPropagatingSafeAreaInsetsToSubviews;
 @property(retain, nonatomic) UIImage *backIndicatorImage;
 - (id)_titleTextAttributesForState:(unsigned long long)arg1;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;

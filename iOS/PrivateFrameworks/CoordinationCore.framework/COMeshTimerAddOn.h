@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "COMeshAddOn.h"
+
 @class COHomeHubAdapter, COHomeKitAdapter, COTimerReadRequest, MTTimerManager, NSArray, NSDictionary;
 @protocol COMeshTimerAddOnDelegate;
 
-@interface COMeshTimerAddOn
+__attribute__((visibility("hidden")))
+@interface COMeshTimerAddOn : COMeshAddOn
 {
     struct os_unfair_lock_s _lock;
     id <COMeshTimerAddOnDelegate> _delegate;
@@ -20,9 +23,11 @@
     COTimerReadRequest *_mergeRequest;
     NSDictionary *_mergeResponses;
     NSArray *_queuedCommands;
+    CDUnknownBlockType _recorder;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType recorder; // @synthesize recorder=_recorder;
 @property(copy, nonatomic) NSArray *queuedCommands; // @synthesize queuedCommands=_queuedCommands;
 @property(retain, nonatomic) NSDictionary *mergeResponses; // @synthesize mergeResponses=_mergeResponses;
 @property(retain, nonatomic) COTimerReadRequest *mergeRequest; // @synthesize mergeRequest=_mergeRequest;

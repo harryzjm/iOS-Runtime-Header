@@ -6,12 +6,10 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <WebKit/WKObject-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKNSDictionary : NSDictionary <WKObject>
+@interface WKNSDictionary : NSDictionary
 {
     struct ObjectStorage<API::Dictionary> _dictionary;
 }

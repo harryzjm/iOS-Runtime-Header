@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIPreviewInteractionHighlighting-Protocol.h>
-
 @class NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionSystemHighlighter : NSObject <_UIPreviewInteractionHighlighting>
+@interface _UIPreviewInteractionSystemHighlighter : NSObject
 {
     _Bool _blinderViewEnabled;
     UIView *_initialSnapshotView;

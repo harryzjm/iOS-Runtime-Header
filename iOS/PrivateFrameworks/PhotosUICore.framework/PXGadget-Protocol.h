@@ -23,6 +23,7 @@
 @property(readonly, nonatomic) unsigned long long headerStyle;
 @property(readonly, nonatomic) NSString *accessoryButtonTitle;
 @property(readonly, nonatomic) unsigned long long accessoryButtonType;
+@property(readonly, nonatomic) _Bool wantsMultilineTitle;
 @property(readonly, nonatomic) NSString *localizedTitle;
 - (void)commitPreviewView:(UIView *)arg1;
 - (void)didDismissPreviewWithPreviewView:(UIView *)arg1 committing:(_Bool)arg2;
@@ -35,6 +36,7 @@
 - (NSObject<PXAnonymousViewController> *)contentViewController;
 - (NSObject<PXAnonymousView> *)contentView;
 - (void)prefetchDuringScrollingForWidth:(double)arg1;
+- (void)gadgetWasDismissed;
 - (void)gadgetControllerHasDisappeared;
 - (void)gadgetControllerHasAppeared;
 - (void)contentHasBeenSeen;

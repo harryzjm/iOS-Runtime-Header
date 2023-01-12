@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AVKit/PGPictureInPictureViewController-Protocol.h>
-
 @class AVPictureInPicturePlayerLayerView, AVPlayerController, NSString;
 @protocol AVPictureInPictureViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVPictureInPictureViewController : UIViewController <PGPictureInPictureViewController>
+@interface AVPictureInPictureViewController : UIViewController
 {
     _Bool _shouldShowAlternateActionButtonImage;
     AVPictureInPicturePlayerLayerView *_pictureInPicturePlayerLayerView;

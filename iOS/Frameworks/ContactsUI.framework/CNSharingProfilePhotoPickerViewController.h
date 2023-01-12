@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/UICollectionViewDataSource-Protocol.h>
-#import <ContactsUI/UICollectionViewDelegate-Protocol.h>
-
 @class CNContact, CNPhotoPickerColorVariant, CNPhotoPickerVariantsManager, CNSharingProfileAvatarItemProvider, CNSharingProfileAvatarItemProviderConfiguration, CNSharingProfileLogger, CNSharingProfilePhotoPickerItem, NSArray, NSData, NSString, PRMonogramColor, UIButton, UICollectionView, UICollectionViewFlowLayout, UIImageView;
 @protocol AVTAvatarRecord, CNSharingProfilePhotoPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNSharingProfilePhotoPickerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface CNSharingProfilePhotoPickerViewController : UIViewController
 {
     _Bool _isSmallScreenDevice;
     id <CNSharingProfilePhotoPickerViewControllerDelegate> _delegate;

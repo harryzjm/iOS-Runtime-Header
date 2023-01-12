@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNChangeHistoryEventVisitorPrivate-Protocol.h>
-
 @class NSString;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
-@interface CNChangeHistoryTriageLogger : NSObject <CNChangeHistoryEventVisitorPrivate>
+@interface CNChangeHistoryTriageLogger : NSObject
 {
     unsigned char _defaultLogType;
     unsigned char _destructiveLogType;

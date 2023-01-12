@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSText/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSKSelection, TSWPHyperlinkSelection;
 
-@interface TSWPArchivedHyperlinkSelection : TSPObject <TSKArchivedSelection>
+@interface TSWPArchivedHyperlinkSelection : TSPObject
 {
     TSWPHyperlinkSelection *_hyperlinkSelection;
 }

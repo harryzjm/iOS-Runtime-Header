@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-
 @class NSHashTable, NSMapTable, NSString, SKUIImageDataConsumer, SKUIResourceLoader, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SKUIContentRatingArtworkResourceLoader : NSObject <SKUIArtworkRequestDelegate>
+@interface SKUIContentRatingArtworkResourceLoader : NSObject
 {
     NSMapTable *_artworkRequestIDs;
     SKUIImageDataConsumer *_imageDataConsumer;

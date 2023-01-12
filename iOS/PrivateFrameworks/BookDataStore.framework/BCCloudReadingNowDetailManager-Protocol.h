@@ -9,6 +9,7 @@
 @class BCMutableCloudSyncVersions, NSArray, NSDictionary, NSString;
 
 @protocol BCCloudReadingNowDetailManager <NSObject>
+- (void)needsReadingNowAssetTypePopulation:(void (^)(_Bool, NSError *))arg1;
 - (void)getReadingNowDetailChangesSince:(BCMutableCloudSyncVersions *)arg1 completion:(void (^)(NSSet *, NSSet *, BCMutableCloudSyncVersions *, NSError *, _Bool))arg2;
 - (void)readingNowDetailsForAssetIDs:(NSArray *)arg1 completion:(void (^)(NSArray *, BCMutableCloudSyncVersions *, NSError *))arg2;
 - (void)deleteReadingNowDetailForAssetID:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

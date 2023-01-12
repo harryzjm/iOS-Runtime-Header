@@ -6,9 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class PKPeerPaymentActionController, UIViewController;
+@class NSString, PKPeerPaymentActionController, UIViewController;
 
 @protocol PKPeerPaymentActionControllerDelegate <NSObject>
+- (NSString *)presentationSceneIdentifierForPeerPaymentActionController:(PKPeerPaymentActionController *)arg1;
 - (void)peerPaymentActionController:(PKPeerPaymentActionController *)arg1 requestPresentViewController:(UIViewController *)arg2 withTransition:(int)arg3;
 - (void)peerPaymentActionController:(PKPeerPaymentActionController *)arg1 requestPresentViewController:(UIViewController *)arg2;
 - (void)peerPaymentActionController:(PKPeerPaymentActionController *)arg1 hasChangedState:(unsigned long long)arg2;

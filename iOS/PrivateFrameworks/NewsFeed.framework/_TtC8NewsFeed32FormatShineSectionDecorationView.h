@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-#import <NewsFeed/_TtP5TeaUI24GutterViewBoundsObserver_-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8NewsFeed32FormatShineSectionDecorationView : UICollectionReusableView <_TtP5TeaUI24GutterViewBoundsObserver_>
+@interface _TtC8NewsFeed32FormatShineSectionDecorationView : UICollectionReusableView
 {
     MISSING_TYPE *shineView;
     MISSING_TYPE *model;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <Accounts/NSCopying-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface ACProtobufURL : PBCodable <NSCopying>
+@interface ACProtobufURL : PBCodable
 {
     NSString *_value;
 }

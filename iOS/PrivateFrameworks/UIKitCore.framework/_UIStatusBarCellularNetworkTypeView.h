@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
+#import "UIView.h"
 
 @class NSString, UIAccessibilityHUDItem, UIVectorLabel, _UIStatusBarStringView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarCellularNetworkTypeView <_UIStatusBarDisplayable>
+@interface _UIStatusBarCellularNetworkTypeView : UIView
 {
     _Bool _animatingUpdate;
     long long _type;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) long long overriddenVerticalAlignment;
 @property(readonly, nonatomic) _Bool prefersBaselineAlignment;
+@property(readonly, nonatomic) _Bool prefersCenterVerticalAlignment;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool wantsCrossfade;
 

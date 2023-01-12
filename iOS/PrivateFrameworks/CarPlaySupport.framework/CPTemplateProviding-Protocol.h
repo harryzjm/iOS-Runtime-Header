@@ -24,7 +24,7 @@
 - (void)pushListTemplate:(CPListTemplate *)arg1 withProxyDelegate:(id <CPListClientTemplateDelegate>)arg2 animated:(NSNumber *)arg3 presentationStyle:(unsigned long long)arg4 reply:(void (^)(id <CPListTemplateProviding>))arg5;
 - (void)pushGridTemplate:(CPGridTemplate *)arg1 withProxyDelegate:(id <CPGridTemplateClientDelegate>)arg2 animated:(NSNumber *)arg3 presentationStyle:(unsigned long long)arg4 reply:(void (^)(id <CPGridTemplateProviding>))arg5;
 - (void)requestBannerProviderWithReply:(void (^)(id <CPBannerProviding>))arg1;
-- (void)presentAlertTemplate:(CPAlertTemplate *)arg1 withProxyDelegate:(id <CPAlertDelegate>)arg2 reply:(void (^)(void))arg3;
+- (void)presentAlertTemplate:(CPAlertTemplate *)arg1 withProxyDelegate:(id <CPAlertDelegate>)arg2 animated:(NSNumber *)arg3 reply:(void (^)(void))arg4;
 - (void)presentActionSheetTemplate:(CPActionSheetTemplate *)arg1 withProxyDelegate:(id <CPAlertDelegate>)arg2 animated:(NSNumber *)arg3 reply:(void (^)(void))arg4;
 - (void)getPresentedTemplateWithReply:(void (^)(NSUUID *))arg1;
 - (void)getTemplatesWithReply:(void (^)(NSArray *))arg1;

@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIStatusBarCellularItemTypeStringProvider-Protocol.h>
-#import <UIKitCore/_UIStatusBarPillRegionVisualProvider-Protocol.h>
-#import <UIKitCore/_UIStatusBarVisualProvider-Protocol.h>
-
-@class NSString, _UIStatusBar, _UIStatusBarRegion, _UIStatusBarVisualProvider_PillRegionCoordinator;
+@class NSString, UIFont, _UIStatusBar, _UIStatusBarRegion, _UIStatusBarVisualProvider_PillRegionCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_CarPlay : NSObject <_UIStatusBarCellularItemTypeStringProvider, _UIStatusBarVisualProvider, _UIStatusBarPillRegionVisualProvider>
+@interface _UIStatusBarVisualProvider_CarPlay : NSObject
 {
     _Bool _showingSensorActivityIndicator;
     _Bool _showingPill;
@@ -23,6 +19,8 @@ __attribute__((visibility("hidden")))
     _UIStatusBarRegion *_radarRegion;
 }
 
++ (_Bool)requiresIterativeOverflowLayout;
++ (_Bool)scalesWithScreenNativeScale;
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
 + (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
 - (void).cxx_destruct;
@@ -50,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsIndirectPointerTouchActions;
 @property(nonatomic) _Bool expanded;
 - (id)init;
+@property(readonly, nonatomic) UIFont *clockFont;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool canFixupDisplayItemAttributes;

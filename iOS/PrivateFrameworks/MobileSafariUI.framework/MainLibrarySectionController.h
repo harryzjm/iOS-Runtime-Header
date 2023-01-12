@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "LibrarySectionController.h"
+
 @class BookmarkFolderLibraryItemController, HistoryLibraryItemController, ReadingListLibraryItemController;
 
 __attribute__((visibility("hidden")))
-@interface MainLibrarySectionController
+@interface MainLibrarySectionController : LibrarySectionController
 {
     HistoryLibraryItemController *_historyController;
     ReadingListLibraryItemController *_readingListController;

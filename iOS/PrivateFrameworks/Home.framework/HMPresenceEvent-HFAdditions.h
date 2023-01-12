@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMPresenceEvent.h>
 
-#import <Home/HFLocationBasedEvent-Protocol.h>
-
 @class NSString;
 
-@interface HMPresenceEvent (HFAdditions) <HFLocationBasedEvent>
+@interface HMPresenceEvent (HFAdditions)
 + (unsigned long long)hf_presenceDisableReasonsForHome:(id)arg1;
 + (unsigned long long)hf_locationEventTypeForPresenceEventType:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long hf_eventType;

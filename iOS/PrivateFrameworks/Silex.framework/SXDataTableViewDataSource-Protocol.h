@@ -9,7 +9,7 @@
 @class SXDataTableDrawView, SXDataTableView, UIView;
 
 @protocol SXDataTableViewDataSource <NSObject>
-- (UIView *)dataTableView:(SXDataTableView *)arg1 viewForCellAtIndexPath:(CDStruct_2fea82da)arg2 constraintToSize:(struct CGSize)arg3;
+- (UIView *)dataTableView:(SXDataTableView *)arg1 viewForCellAtIndexPath:(CDStruct_4bcfbbae)arg2 constraintToSize:(struct CGSize)arg3;
 
 @optional
 - (SXDataTableDrawView *)dataTableView:(SXDataTableView *)arg1 drawViewForColumnAtIndex:(unsigned long long)arg2;

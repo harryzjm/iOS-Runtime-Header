@@ -26,6 +26,10 @@
     MISSING_TYPE *_safetyConfig;
     MISSING_TYPE *_imageResizeConfig;
     MISSING_TYPE *_parseCachingConfig;
+    MISSING_TYPE *_boxScorerConfig;
+    MISSING_TYPE *_maxNumOfRegionsWithDomainSignals;
+    MISSING_TYPE *_enableDomainSelectionOnlyForE5;
+    MISSING_TYPE *_regionSelectionConfig;
 }
 
 @end

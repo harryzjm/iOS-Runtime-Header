@@ -35,14 +35,8 @@ struct CGSize {
 };
 
 struct CLLocationCoordinate2D {
-    double latitude;
-    double longitude;
-};
-
-struct ICDeviceHardwareInfo {
-    unsigned long long modelName;
-    long long version;
-    long long subVersion;
+    double _field1;
+    double _field2;
 };
 
 struct NSDirectionalEdgeInsets {
@@ -53,10 +47,10 @@ struct NSDirectionalEdgeInsets {
 };
 
 struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct _NSRange {
@@ -72,16 +66,9 @@ typedef struct {
 } CDStruct_4bcfbbae;
 
 typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-} CDStruct_d2b197d1;
-
-typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
 

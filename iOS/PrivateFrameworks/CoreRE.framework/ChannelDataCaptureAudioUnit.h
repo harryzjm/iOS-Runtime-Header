@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     AUAudioUnitBusArray *_inputBusArray;
     AUAudioUnitBus *_outputBus;
     AUAudioUnitBusArray *_outputBusArray;
-    struct array<std::vector<float>, 2> _buffers;
+    struct array<std::vector<float>, 2UL> _buffers;
     struct vector<int, std::allocator<int>> capturedPositions;
     AVAudioPCMBuffer *capturedBuffer;
 }

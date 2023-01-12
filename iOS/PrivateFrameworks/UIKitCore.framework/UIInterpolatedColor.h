@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIVectorOperatable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIInterpolatedColor : NSObject <UIVectorOperatable>
+@interface UIInterpolatedColor : NSObject
 {
     struct {
         double r;
@@ -19,21 +17,20 @@ __attribute__((visibility("hidden")))
         double b;
         double a;
     } _color;
-    double _epsilon;
 }
 
-+ (id)zero;
-+ (id)epsilon;
++ (id)zeroCompatibleWithVector:(id)arg1;
++ (id)epsilonCompatibleWithVector:(id)arg1;
 + (id)valueWithCGColor:(struct CGColor *)arg1;
 + (id)valueWithUIColor:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) NSString *conciseDescription;
 - (struct CGColor *)getCGColor;
 - (id)getUIColor;
-- (id)getNSValue;
 - (id)getValue;
 - (_Bool)isUndefined;
+- (_Bool)isCompatibleWith:(id)arg1;
 - (_Bool)isApproximatelyEqualTo:(id)arg1 withinEpsilon:(id)arg2;
-- (_Bool)isApproximatelyEqualTo:(id)arg1;
 - (id)multiplyByVector:(id)arg1;
 - (id)multiplyByScalar:(double)arg1;
 - (id)addVector:(id)arg1;
@@ -41,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (id)interpolateTo:(id)arg1 progress:(double)arg2;
 - (void)reinitWithVector:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithDecomposedColor:(CDStruct_d2b197d1)arg1 epsilon:(double)arg2;
 - (id)initWithDecomposedColor:(CDStruct_d2b197d1)arg1;
 
 // Remaining properties

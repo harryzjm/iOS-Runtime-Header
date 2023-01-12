@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FocusSettingsUI/CNContactPickerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCV15FocusSettingsUI22CNContactPickerAdaptor11Coordinator : NSObject <CNContactPickerDelegate>
+@interface _TtCV15FocusSettingsUI22CNContactPickerAdaptor11Coordinator : NSObject
 {
     MISSING_TYPE *adaptor;
     MISSING_TYPE *viewController;

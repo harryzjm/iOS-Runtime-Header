@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class ICPAAudioQualityDictionary, ICPAPlayActivityEnqueuerProperties, ICPAPlayModeDictionary, NSData, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICPAPlayActivityEvent : PBCodable <NSCopying>
+@interface ICPAPlayActivityEvent : PBCodable
 {
     long long _characterDisplayedCount;
     unsigned long long _cloudPlaylistID;

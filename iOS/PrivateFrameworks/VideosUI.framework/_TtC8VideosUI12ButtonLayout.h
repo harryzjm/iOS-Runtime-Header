@@ -10,6 +10,7 @@
 {
     MISSING_TYPE *isRounded;
     MISSING_TYPE *$__lazy_storage_$_titleLayout;
+    MISSING_TYPE *$__lazy_storage_$_subtitleLayout;
     MISSING_TYPE *$__lazy_storage_$_imageLayout;
 }
 

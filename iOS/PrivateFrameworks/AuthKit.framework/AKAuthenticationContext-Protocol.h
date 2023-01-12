@@ -9,12 +9,14 @@
 @class AKDevice, NSDictionary, NSString;
 
 @protocol AKAuthenticationContext <NSObject>
-@property(nonatomic) long long authenticationMode;
+@property(nonatomic) _Bool cliMode;
 @property(copy, nonatomic) AKDevice *companionDevice;
 @property(copy, nonatomic) AKDevice *proxiedDevice;
 @property(copy, nonatomic) NSString *appProvidedContext;
 @property(copy, nonatomic) NSDictionary *appProvidedData;
 @property(copy, nonatomic, setter=_setProxiedAppName:) NSString *_proxiedAppName;
+@property(nonatomic) unsigned long long authenticationMode;
+@property(nonatomic) unsigned long long authenticationType;
 @property(nonatomic) long long serviceType;
 @property(copy, nonatomic) NSString *altDSID;
 @end

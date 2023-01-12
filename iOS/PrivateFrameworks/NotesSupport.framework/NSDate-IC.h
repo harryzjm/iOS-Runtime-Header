@@ -9,15 +9,21 @@
 @class NSString;
 
 @interface NSDate (IC)
+- (_Bool)ic_isWithinSameYear:(id)arg1;
+- (_Bool)ic_isWithinSameMonth:(id)arg1;
+- (_Bool)ic_isWithinInclusiveDayIntervalBeginning:(id)arg1 ending:(id)arg2;
 - (_Bool)ic_isLaterThanUnitsAgo:(unsigned long long)arg1 value:(unsigned long long)arg2;
 - (_Bool)ic_isLaterThanDate:(id)arg1;
 - (_Bool)ic_isEarlierThanDate:(id)arg1;
+- (_Bool)ic_isSameDayAsDate:(id)arg1;
 @property(readonly, nonatomic) NSDate *ic_truncated;
 - (id)ic_briefFormattedDate:(_Bool)arg1;
 @property(readonly, nonatomic) NSString *ic_briefFormattedDateForAccessibility;
 @property(readonly, nonatomic) NSString *ic_briefFormattedDate;
 @property(readonly, nonatomic) NSString *ic_shortFormattedDate;
 @property(readonly, nonatomic) NSString *ic_iso8601Date;
+@property(readonly, nonatomic) NSDate *ic_endOfDay;
+@property(readonly, nonatomic) NSDate *ic_startOfDay;
 @property(readonly, nonatomic) NSString *ic_localDateWithSeconds;
 @property(readonly, nonatomic) _Bool ic_isYesterday;
 @property(readonly, nonatomic) _Bool ic_isToday;

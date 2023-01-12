@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFToggleWatchListStatusCommand.h>
 
 @interface SFToggleWatchListStatusCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <CoreDuet/_DKDeduping-Protocol.h>
-
-@interface NSString (_DKDeduping) <_DKDeduping>
+@interface NSString (_DKDeduping)
 - (id)dedup;
 - (id)dk_dedup;
 @end

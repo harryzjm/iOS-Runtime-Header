@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIKBRenderEffect-Protocol.h>
-
 @class NSString, UIKBGradient;
 
 __attribute__((visibility("hidden")))
-@interface UIKBShadowEffect : NSObject <UIKBRenderEffect>
+@interface UIKBShadowEffect : NSObject
 {
     NSString *_colorName;
     double _weight;
@@ -21,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)effectWithColor:(id)arg1 offset:(struct CGSize)arg2 insets:(struct UIEdgeInsets)arg3 weight:(double)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) double weight; // @synthesize weight=_weight;
 @property(nonatomic) struct UIEdgeInsets concaveInsets; // @synthesize concaveInsets=_concaveInsets;
 @property(nonatomic) struct UIEdgeInsets insets; // @synthesize insets=_insets;
@@ -29,9 +28,8 @@ __attribute__((visibility("hidden")))
 - (struct CGColor *)CGColor;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (id)initWithColor:(id)arg1 offset:(struct CGSize)arg2 insets:(struct UIEdgeInsets)arg3 weight:(double)arg4;
-@property(readonly, nonatomic) SEL renderSelector;
+- (void)renderEffectWithRenderer:(id)arg1 traits:(id)arg2;
 @property(readonly, nonatomic) _Bool renderUnder;
 @property(readonly, nonatomic) UIKBGradient *gradient;
 @property(readonly, nonatomic) _Bool usesRGBColors;

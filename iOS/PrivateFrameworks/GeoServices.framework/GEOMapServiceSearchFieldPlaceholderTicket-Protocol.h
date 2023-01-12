@@ -6,10 +6,9 @@
 
 #import <GeoServices/GEOMapServiceCancellableTicket-Protocol.h>
 
-@class GEOMapServiceTraits, NSDictionary;
+@class GEOMapServiceTraits;
 
 @protocol GEOMapServiceSearchFieldPlaceholderTicket <GEOMapServiceCancellableTicket>
-@property(readonly, nonatomic) NSDictionary *responseUserInfo;
 @property(readonly, nonatomic) GEOMapServiceTraits *traits;
 - (void)cancel;
 - (void)submitWithHandler:(void (^)(NSString *, NSError *))arg1 networkActivity:(void (^)(_Bool))arg2;

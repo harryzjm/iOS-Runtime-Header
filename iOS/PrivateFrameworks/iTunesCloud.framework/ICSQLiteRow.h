@@ -8,6 +8,7 @@
 
 @class ICSQLiteStatement, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface ICSQLiteRow : NSObject
 {
     NSDictionary *_columnIndexByName;

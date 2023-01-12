@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-@property(nonatomic) _Bool is_final_result;
+@property(nonatomic) _Bool is_final;
 @property(copy, nonatomic) NSArray *n_best_translated_phrases;
 @property(copy, nonatomic) FTTranslationLocalePair *translation_locale_pair;
 @property(copy, nonatomic) NSString *return_str;

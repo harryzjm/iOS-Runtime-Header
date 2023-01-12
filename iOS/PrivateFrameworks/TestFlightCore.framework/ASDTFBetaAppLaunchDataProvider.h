@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TestFlightCore/TFBetaAppLaunchDataProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ASDTFBetaAppLaunchDataProvider : NSObject <TFBetaAppLaunchDataProvider>
+@interface ASDTFBetaAppLaunchDataProvider : NSObject
 {
 }
 

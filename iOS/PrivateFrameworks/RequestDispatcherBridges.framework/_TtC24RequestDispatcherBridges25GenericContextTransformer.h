@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <RequestDispatcherBridges/AFContextSnapshotTransforming-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _TtC24RequestDispatcherBridges25GenericContextTransformer : NSObject <AFContextSnapshotTransforming>
+@interface _TtC24RequestDispatcherBridges25GenericContextTransformer : NSObject
 {
 }
 

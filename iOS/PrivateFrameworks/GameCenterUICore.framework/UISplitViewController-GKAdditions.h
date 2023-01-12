@@ -6,12 +6,9 @@
 
 #import <UIKit/UISplitViewController.h>
 
-#import <GameCenterUICore/GKContentRefresh-Protocol.h>
-#import <GameCenterUICore/GKURLHandling-Protocol.h>
-
 @class NSString;
 
-@interface UISplitViewController (GKAdditions) <GKContentRefresh, GKURLHandling>
+@interface UISplitViewController (GKAdditions)
 - (void)_gkHandleURLPathComponents:(id)arg1 query:(id)arg2;
 - (void)_gkForceNextContentUpdate;
 - (void)_gkUpdateContentsWithCompletionHandlerAndError:(CDUnknownBlockType)arg1;

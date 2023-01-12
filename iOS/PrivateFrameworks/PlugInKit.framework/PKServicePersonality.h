@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PlugInKit/PKCorePlugInProtocol-Protocol.h>
-#import <PlugInKit/PKSubsystemServicePersonality-Protocol.h>
+#import "PKPlugInCore.h"
 
 @class NSDictionary, NSString, NSURL, NSUUID, NSUserDefaults, NSXPCConnection;
 
-@interface PKServicePersonality <PKCorePlugInProtocol, PKSubsystemServicePersonality>
+@interface PKServicePersonality : PKPlugInCore
 {
     id _plugInPrincipal;
     id _hostPrincipal;
@@ -36,7 +35,7 @@
 - (void)prepareUsingPlugIn:(id)arg1 hostProtocol:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)prepareUsing:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)setupWithIdentifier:(id)arg1 extensionPointPlatform:(unsigned int)arg2;
-- (id)initWithConnection:(id)arg1;
+- (id)initWithConnection:(id)arg1 proxyFactory:(id)arg2;
 
 // Remaining properties
 @property(copy) NSDictionary *_userInfo; // @dynamic _userInfo;

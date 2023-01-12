@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *packages;
     MISSING_TYPE *columnOptions;
+    MISSING_TYPE *layoutOptions;
     MISSING_TYPE *sections;
     MISSING_TYPE *tableView;
     MISSING_TYPE *groupViewController;

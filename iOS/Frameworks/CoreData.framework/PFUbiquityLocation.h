@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PFUbiquityLocation : NSObject <NSCopying>
+@interface PFUbiquityLocation : NSObject
 {
     PFUbiquityLocation *_ubiquityRootLocation;
     NSString *_ubiquityRootLocationPath;

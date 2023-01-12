@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SetupAssistant/LAUIDelegate-Protocol.h>
-
 @class LAContext, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BYAuthenticationContext : NSObject <LAUIDelegate>
+@interface BYAuthenticationContext : NSObject
 {
     NSString *_secret;
     LAContext *_underlyingContext;

@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
-#import <TemplateKit/TLKObservable-Protocol.h>
-#import <TemplateKit/TLKObserver-Protocol.h>
+#import "TLKStackView.h"
 
 @class NSString, TLKIconsView, TLKLabel, TLKRichText, TLKRoundedCornerLabels, TLKStarsView, UIFont;
 @protocol TLKObserver;
 
 __attribute__((visibility("hidden")))
-@interface TLKRichTextField <NUIContainerViewDelegate, TLKObservable, TLKObserver>
+@interface TLKRichTextField : TLKStackView
 {
     _Bool _useCompactMode;
     id <TLKObserver> observer;

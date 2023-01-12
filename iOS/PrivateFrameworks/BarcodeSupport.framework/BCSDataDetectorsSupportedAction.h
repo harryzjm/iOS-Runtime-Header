@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BarcodeSupport/BCSActionDelegate-Protocol.h>
+#import "BCSAction.h"
 
 @class CNContact, DDScannerResult, DDUIAction, NSArray, NSString, UIMenu;
 
 __attribute__((visibility("hidden")))
-@interface BCSDataDetectorsSupportedAction <BCSActionDelegate>
+@interface BCSDataDetectorsSupportedAction : BCSAction
 {
     NSArray *_actions;
     UIMenu *_ddUIMenu;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)contentPreviewString;
 - (unsigned long long)menuElementsCount;
 - (id)menuElements;
+- (_Bool)preferItemsInSubmenu;
 - (void)_setUpActionMenuIfNeeded;
 - (id)_hostingViewForAction;
 - (id)shortDescription;

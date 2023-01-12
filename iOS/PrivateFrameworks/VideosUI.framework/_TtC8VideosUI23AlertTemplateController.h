@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI17VUIViewControllerCN.h"
+
 @class MISSING_TYPE, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI23AlertTemplateController
+@interface _TtC8VideosUI23AlertTemplateController : _$s8VideosUI17VUIViewControllerCN
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *templateViewModel;

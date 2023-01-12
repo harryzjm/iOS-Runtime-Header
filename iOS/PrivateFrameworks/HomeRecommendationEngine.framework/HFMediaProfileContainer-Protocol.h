@@ -7,9 +7,11 @@
 #import <HomeRecommendationEngine/HFAccessoryVendor-Protocol.h>
 #import <HomeRecommendationEngine/HFFavoritable-Protocol.h>
 #import <HomeRecommendationEngine/HFHomeKitSettingsVendor-Protocol.h>
+#import <HomeRecommendationEngine/HFHomeStatusVisible-Protocol.h>
 #import <HomeRecommendationEngine/HFReorderableHomeKitObject-Protocol.h>
 #import <HomeRecommendationEngine/HFRoomContextProviding-Protocol.h>
 #import <HomeRecommendationEngine/HFServiceNameComponentsProviding-Protocol.h>
+#import <HomeRecommendationEngine/HFShowInHomeDashboard-Protocol.h>
 #import <HomeRecommendationEngine/HFStateDumpBuildable-Protocol.h>
 #import <HomeRecommendationEngine/HFSymptomFixableObject-Protocol.h>
 #import <HomeRecommendationEngine/HFSymptomsHandlerVendor-Protocol.h>
@@ -19,7 +21,7 @@
 @class ACAccount, HMAccessory, HMMediaSession, HMUser, NAFuture, NSSet, NSString;
 @protocol HFMediaValueSource, HMMediaDestination;
 
-@protocol HFMediaProfileContainer <HMMediaObject, HFHomeKitSettingsVendor, HFAccessoryVendor, HFStateDumpBuildable, HFReorderableHomeKitObject, HFFavoritable, HFRoomContextProviding, HFSymptomsVendor, HFSymptomsHandlerVendor, HFSymptomFixableObject, HFServiceNameComponentsProviding>
+@protocol HFMediaProfileContainer <HMMediaObject, HFHomeKitSettingsVendor, HFAccessoryVendor, HFStateDumpBuildable, HFReorderableHomeKitObject, HFFavoritable, HFHomeStatusVisible, HFShowInHomeDashboard, HFRoomContextProviding, HFSymptomsVendor, HFSymptomsHandlerVendor, HFSymptomFixableObject, HFServiceNameComponentsProviding>
 @property(readonly, nonatomic) _Bool hf_supportsPreferredMediaUser;
 @property(readonly, nonatomic) _Bool hf_supportsHomeTheater;
 @property(readonly, copy, nonatomic) NSString *hf_mediaRouteIdentifier;
@@ -28,6 +30,7 @@
 @property(readonly, nonatomic) NSSet *hf_fakeDebugSymptoms;
 @property(readonly, nonatomic) _Bool hf_homePodIsCapableOfShowingSplitAccountError;
 @property(readonly, nonatomic) _Bool hf_homePodSupportsMultiUser;
+@property(readonly, nonatomic) _Bool hf_supportsMediaActions;
 @property(readonly, nonatomic) _Bool hf_supportsMultiUser;
 @property(readonly, nonatomic) HMAccessory *hf_backingAccessory;
 @property(readonly, copy, nonatomic) NSString *hf_categoryCapitalizedLocalizedDescription;
@@ -35,6 +38,8 @@
 @property(readonly, nonatomic) NSString *hf_prettyDescription;
 @property(readonly, nonatomic) _Bool hf_supportsMusicAlarm;
 @property(readonly, nonatomic) _Bool hf_showsAudioSettings;
+@property(readonly, nonatomic) _Bool hf_isSpeakerGrouped;
+@property(readonly, nonatomic) _Bool hf_supportsSpeakerGrouping;
 @property(readonly, nonatomic) _Bool hf_supportsStereoPairing;
 @property(readonly, nonatomic) _Bool hf_supportsSoftwareUpdate;
 @property(readonly, nonatomic) _Bool hf_isReachable;

@@ -6,13 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <StoreKit/SKCloudServiceSetupExtensionClientInterface-Protocol.h>
-
 @class NSString;
 @protocol SKCloudServiceSetupRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKCloudServiceSetupRemoteViewController : _UIRemoteViewController <SKCloudServiceSetupExtensionClientInterface>
+@interface SKCloudServiceSetupRemoteViewController : _UIRemoteViewController
 {
     id <SKCloudServiceSetupRemoteViewControllerDelegate> _delegate;
 }

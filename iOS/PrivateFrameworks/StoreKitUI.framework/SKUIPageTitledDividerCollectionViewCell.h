@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSNumber, NSString, SKUIButtonViewElement, UIButton, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPageTitledDividerCollectionViewCell : UICollectionViewCell <SKUIViewElementView>
+@interface SKUIPageTitledDividerCollectionViewCell : UICollectionViewCell
 {
     double _buttonContentHorizontalPadding;
     SKUIButtonViewElement *_buttonViewElement;

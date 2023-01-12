@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
     id <AVControlOverflowButtonDelegate> _delegate;
 }
 
++ (id)secondGenerationButton;
++ (id)firstGenerationButton;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <AVControlOverflowButtonDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)updateContextMenu;
-- (id)init;
 
 @end
 

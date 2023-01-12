@@ -22,7 +22,6 @@
 - (id)_gkArrayByTokenizingString;
 - (id)_gkStringByUnescapingFromURLQuery;
 - (id)_gkLocaleSensitiveUppercaseString;
-- (id)_gkTruncationSymbolWithFormat:(id)arg1;
 - (_Bool)_gkSearchMatchesItem:(id)arg1 withSearchTerms:(id)arg2;
 - (_Bool)_gkIsMixedDirection;
 - (_Bool)_gkIsNaturallyRTL;

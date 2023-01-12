@@ -6,26 +6,21 @@
 
 #import <Sleep/HKSPPersistentStateMachineState.h>
 
-#import <SleepDaemon/HDSPSleepLockScreenStateMachineEventHandler-Protocol.h>
-
 @class HDSPSleepLockScreenStateMachine, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDSPSleepLockScreenStateMachineState : HKSPPersistentStateMachineState <HDSPSleepLockScreenStateMachineEventHandler>
+@interface HDSPSleepLockScreenStateMachineState : HKSPPersistentStateMachineState
 {
 }
 
-- (void)bedtimeExpiredEventDue;
 - (_Bool)_isSleepLockScreenDisabled;
 @property(readonly, nonatomic) long long sleepLockScreenState;
-- (void)_updateStateForSleepMode:(long long)arg1 reason:(unsigned long long)arg2 context:(id)arg3;
 - (void)sleepModeDidChange:(long long)arg1 reason:(unsigned long long)arg2;
 - (void)environmentDidBecomeReady;
-- (void)updateState;
+- (id)_nextStateForSleepMode:(long long)arg1 reason:(unsigned long long)arg2 context:(id *)arg3;
+- (id)nextStateWithContext:(id *)arg1;
 - (void)dismissAlertForGoodMorning;
 - (void)presentAlertForGoodMorning;
-@property(readonly, nonatomic) _Bool schedulesLockScreenStateChange;
-- (void)didExitWithNextState:(id)arg1 context:(id)arg2;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
 
 // Remaining properties

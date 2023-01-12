@@ -9,8 +9,6 @@
 @class NSArray, UIBarButtonItem, UIBarButtonItemGroup;
 
 @protocol _UIBarButtonItemGroupOwner <NSObject>
-- (void)_groupDidChangePriority:(UIBarButtonItemGroup *)arg1;
-- (void)_groupDidChangeGeometry:(UIBarButtonItemGroup *)arg1;
 - (void)_groupDidUpdateVisibility:(UIBarButtonItemGroup *)arg1;
 - (void)_groupDidUpdateRepresentative:(UIBarButtonItemGroup *)arg1 fromRepresentative:(UIBarButtonItem *)arg2;
 - (void)_groupDidUpdateItems:(UIBarButtonItemGroup *)arg1 removedItems:(NSArray *)arg2;

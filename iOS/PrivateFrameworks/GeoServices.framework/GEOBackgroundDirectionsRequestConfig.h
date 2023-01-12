@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)usesBackgroundURL;
 - (unsigned long long)urlType;
 - (id)initWithRequest:(id)arg1 requestPriority:(id)arg2;
 

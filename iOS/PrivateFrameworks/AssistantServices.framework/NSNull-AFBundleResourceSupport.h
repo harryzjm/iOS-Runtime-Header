@@ -6,12 +6,9 @@
 
 #import <Foundation/NSNull.h>
 
-#import <AssistantServices/AFSecurityDigestibleChunksProviding-Protocol.h>
-#import <AssistantServices/_AFBundleResourceURLProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSNull (AFBundleResourceSupport) <_AFBundleResourceURLProviding, AFSecurityDigestibleChunksProviding>
+@interface NSNull (AFBundleResourceSupport)
 - (id)af_getBundleResourceURL;
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 

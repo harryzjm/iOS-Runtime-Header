@@ -6,12 +6,13 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, PHAsset;
 @protocol NSFastEnumeration, PGHighlightItem;
 
 @protocol PGHighlightItemModelReader <NSObject>
-- (unsigned short)visibilityStateForHighlightItem:(id <PGHighlightItem>)arg1;
+- (PHAsset *)contextualKeyAssetForHighlightItem:(id <PGHighlightItem>)arg1 sharingFilter:(unsigned short)arg2;
+- (unsigned short)visibilityStateForHighlightItem:(id <PGHighlightItem>)arg1 sharingFilter:(unsigned short)arg2;
 - (NSArray *)fetchParentHighlightItemsForHighlightItems:(id <NSFastEnumeration>)arg1;
-- (NSArray *)fetchChildHighlightItemsForHighlightItem:(id <PGHighlightItem>)arg1;
+- (NSArray *)fetchChildHighlightItemsForHighlightItem:(id <PGHighlightItem>)arg1 sharingFilter:(unsigned short)arg2;
 @end
 

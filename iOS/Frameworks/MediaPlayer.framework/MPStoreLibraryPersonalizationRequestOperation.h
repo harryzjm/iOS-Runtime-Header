@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPStoreLibraryPersonalizationRequest, NSOperationQueue;
 
 __attribute__((visibility("hidden")))
-@interface MPStoreLibraryPersonalizationRequestOperation
+@interface MPStoreLibraryPersonalizationRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;
     MPStoreLibraryPersonalizationRequest *_request;

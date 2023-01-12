@@ -6,10 +6,11 @@
 
 #import <QuickLookThumbnailing/QLThumbnailItem.h>
 
-@class NSString;
+@class UTType;
 
 @interface QLThumbnailItem (ContentType)
-@property(readonly, nonatomic) NSString *contentType;
+@property(readonly, nonatomic) UTType *contentType;
+- (id)contentTypeIdentifier;
 @property(readonly, nonatomic) unsigned long long itemType;
 @end
 

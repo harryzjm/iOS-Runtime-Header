@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/_UIClickPresentationTransition-Protocol.h>
-
 @class CNAvatarCardViewController, CNContactOrbHeaderView, NSString, UITargetedPreview, UIView, UIViewPropertyAnimator, UIVisualEffectView;
 @protocol CNAvatarCardControllerOrbTransitionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNAvatarCardControllerOrbTransition : NSObject <_UIClickPresentationTransition>
+@interface CNAvatarCardControllerOrbTransition : NSObject
 {
     _Bool _isDismissing;
     CNContactOrbHeaderView *_headerView;

@@ -12,6 +12,9 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI30PhoneSessionWatchDiscoveryView : UIView
 {
     MISSING_TYPE *presenter;
+    MISSING_TYPE *landscapeConstraints;
+    MISSING_TYPE *portraitConstraints;
+    MISSING_TYPE *previousBounds;
     MISSING_TYPE *stackView;
     MISSING_TYPE *spinnerView;
     MISSING_TYPE *lookingLabel;
@@ -25,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)didTapStartStandaloneButton:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

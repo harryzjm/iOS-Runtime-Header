@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MKCustomSeparatorCell.h"
+
 @class MKTransitInfoLabelView, NSLayoutConstraint, UIButton, _MKUILabel;
 @protocol GEOTransitConnectionInfo, _MKTransitConnectionCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _MKTransitConnectionCell
+@interface _MKTransitConnectionCell : MKCustomSeparatorCell
 {
     _MKUILabel *_nameLabel;
     MKTransitInfoLabelView *_transitInfoLabel;

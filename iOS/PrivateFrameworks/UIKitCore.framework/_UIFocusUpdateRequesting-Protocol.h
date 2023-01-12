@@ -12,12 +12,13 @@
 @property(readonly, nonatomic) UIFocusAnimationCoordinator *animationCoordinator;
 @property(readonly, nonatomic) _UIFocusInputDeviceInfo *inputDeviceInfo;
 @property(readonly, nonatomic) _Bool shouldPerformHapticFeedback;
-@property(readonly, nonatomic) _Bool allowsFocusRestoration;
+@property(readonly, nonatomic) _Bool allowsOverridingPreferedFocusEnvironments;
 @property(readonly, nonatomic) _Bool allowsDeferral;
 @property(readonly, nonatomic) _Bool allowsFocusingCurrentItem;
 @property(readonly, nonatomic) _Bool requiresEnvironmentValidation;
 @property(readonly, nonatomic) _Bool requiresNextFocusedItem;
 @property(readonly, nonatomic) _Bool shouldPlayFocusSound;
+@property(readonly, nonatomic, getter=shouldScrollIfNecessary) _Bool scrollIfNecessary;
 @property(readonly, nonatomic, getter=isMovementRequest) _Bool movementRequest;
 @property(readonly, nonatomic) __weak UIFocusSystem *focusSystem;
 @end

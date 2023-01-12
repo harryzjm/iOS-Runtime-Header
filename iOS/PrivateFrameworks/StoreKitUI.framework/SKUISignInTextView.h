@@ -6,12 +6,10 @@
 
 #import <UIKit/UITextField.h>
 
-#import <StoreKitUI/UITextInputTraits-Protocol.h>
-
 @class NSString, UITextInputPasswordRules;
 
 __attribute__((visibility("hidden")))
-@interface SKUISignInTextView : UITextField <UITextInputTraits>
+@interface SKUISignInTextView : UITextField
 {
     long long _keyboardType;
 }

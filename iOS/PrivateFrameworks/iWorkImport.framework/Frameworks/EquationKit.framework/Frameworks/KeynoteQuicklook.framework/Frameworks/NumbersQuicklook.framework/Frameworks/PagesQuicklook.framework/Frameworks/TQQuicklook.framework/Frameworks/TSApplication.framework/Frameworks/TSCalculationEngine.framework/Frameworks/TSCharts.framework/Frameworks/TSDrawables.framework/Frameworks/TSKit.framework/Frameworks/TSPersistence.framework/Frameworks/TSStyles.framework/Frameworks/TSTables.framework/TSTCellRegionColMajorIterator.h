@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTCellRegionIterating-Protocol.h>
-
 @class NSString;
 
-@interface TSTCellRegionColMajorIterator : NSObject <TSTCellRegionIterating>
+@interface TSTCellRegionColMajorIterator : NSObject
 {
     struct set<TSUCellRect, TSTCellRangeColumnMajorLess, std::allocator<TSUCellRect>> mCellRangeSet;
     struct TSUCellCoord mCellID;

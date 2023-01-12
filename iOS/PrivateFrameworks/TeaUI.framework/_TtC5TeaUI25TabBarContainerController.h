@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s5TeaUI20NavigationControllerCN.h"
+
 @class MISSING_TYPE, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface _TtC5TeaUI25TabBarContainerController
+@interface _TtC5TeaUI25TabBarContainerController : _$s5TeaUI20NavigationControllerCN
 {
     MISSING_TYPE *rootViewController;
     MISSING_TYPE *$__lazy_storage_$_intrinsicTabBar;

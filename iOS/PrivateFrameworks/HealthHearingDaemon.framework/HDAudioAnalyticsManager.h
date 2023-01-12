@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthHearingDaemon/HDHealthDaemonReadyObserver-Protocol.h>
-#import <HealthHearingDaemon/HDPeriodicActivityDelegate-Protocol.h>
-
 @class HDPeriodicActivity, HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HDAudioAnalyticsManager : NSObject <HDHealthDaemonReadyObserver, HDPeriodicActivityDelegate>
+@interface HDAudioAnalyticsManager : NSObject
 {
     HDProfile *_profile;
     double _calculationPeriod;

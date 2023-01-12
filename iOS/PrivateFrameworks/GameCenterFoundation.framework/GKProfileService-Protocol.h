@@ -6,9 +6,11 @@
 
 #import <GameCenterFoundation/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @protocol GKProfileService <NSObject>
+- (oneway void)refreshGameCenterRelationshipsForHandles:(NSArray *)arg1 nonUnifiedContactIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
+- (oneway void)getGameCenterRelationshipsForHandles:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getFriendSupportPageURLWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)getOcelotStateForCurrentAppWithHandler:(void (^)(_Bool))arg1;
 - (oneway void)setOcelotStateForCurrentApp;

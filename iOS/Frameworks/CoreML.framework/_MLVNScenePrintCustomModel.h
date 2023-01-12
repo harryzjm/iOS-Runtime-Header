@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLCustomModel-Protocol.h>
-
 @class MLModelConfiguration, MLModelDescription;
 
 __attribute__((visibility("hidden")))
-@interface _MLVNScenePrintCustomModel : NSObject <MLCustomModel>
+@interface _MLVNScenePrintCustomModel : NSObject
 {
     MLModelDescription *_modelDescription;
     unsigned long long _scenePrintRequestRevision;

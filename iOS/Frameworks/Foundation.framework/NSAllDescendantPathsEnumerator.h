@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSDirectoryEnumerator.h"
+
 @class NSArray, NSFileAttributes, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSAllDescendantPathsEnumerator
+@interface NSAllDescendantPathsEnumerator : NSDirectoryEnumerator
 {
     NSString *path;
     NSArray *contents;

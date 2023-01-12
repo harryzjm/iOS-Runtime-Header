@@ -6,12 +6,10 @@
 
 #import <Sleep/HKSPDNDConfigurationService.h>
 
-#import <SleepDaemon/HDSPSleepFocusModeBridge-Protocol.h>
-
 @class NSString;
 @protocol HKSPSleepFocusModeBridgeDelegate;
 
-@interface HKSPDNDConfigurationService (Editing) <HDSPSleepFocusModeBridge>
+@interface HKSPDNDConfigurationService (Editing)
 - (_Bool)removeSleepFocusMode:(id *)arg1;
 - (_Bool)createSleepFocusMode:(id *)arg1;
 

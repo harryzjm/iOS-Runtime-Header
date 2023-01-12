@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/NSCopying-Protocol.h>
-#import <VideoSubscriberAccount/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSString, VSAccountMetadataRequest, VSOptional;
 
 __attribute__((visibility("hidden")))
-@interface VSViewServiceRequest : NSObject <NSCopying, NSSecureCoding>
+@interface VSViewServiceRequest : NSObject
 {
     _Bool _allowsPrivacyUI;
     _Bool _requiresPrivacyUI;

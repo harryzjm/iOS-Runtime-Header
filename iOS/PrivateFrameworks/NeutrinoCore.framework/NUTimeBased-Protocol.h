@@ -7,6 +7,6 @@
 #import <NeutrinoCore/NSObject-Protocol.h>
 
 @protocol NUTimeBased <NSObject>
-@property(nonatomic) CDStruct_1b6d18a9 time;
+@property(nonatomic) CDStruct_198678f7 time;
 @end
 

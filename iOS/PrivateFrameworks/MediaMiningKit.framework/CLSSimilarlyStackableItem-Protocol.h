@@ -9,6 +9,7 @@
 @class NSDate, NSString, VNSceneprint;
 
 @protocol CLSSimilarlyStackableItem <NSObject>
+@property(readonly) unsigned long long clsBaseSceneprintVersion;
 @property(readonly) NSDate *cls_universalDate;
 @property(readonly) NSString *clsIdentifier;
 @property(readonly) VNSceneprint *clsSceneprint;

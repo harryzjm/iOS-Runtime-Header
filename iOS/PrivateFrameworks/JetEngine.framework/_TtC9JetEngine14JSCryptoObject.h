@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <JetEngine/_TtP9JetEngineP33_77A0B45B5CF86BA5E5FFC0A45083285E21JSCryptoObjectExports_-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _TtC9JetEngine14JSCryptoObject : NSObject <_TtP9JetEngineP33_77A0B45B5CF86BA5E5FFC0A45083285E21JSCryptoObjectExports_>
+@interface _TtC9JetEngine14JSCryptoObject : NSObject
 {
 }
 

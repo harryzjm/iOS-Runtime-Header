@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LoggingSupport/_OSLogIndexTimeRangable-Protocol.h>
-
 @class NSMutableDictionary, NSString, _OSLogEnumeratorCatalog;
 
 __attribute__((visibility("hidden")))
-@interface _OSLogEnumeratorCatalogSubchunk : NSObject <_OSLogIndexTimeRangable>
+@interface _OSLogEnumeratorCatalogSubchunk : NSObject
 {
     NSMutableDictionary *_decompressedChunks;
     struct catalog_subchunk_s *_subchunk;

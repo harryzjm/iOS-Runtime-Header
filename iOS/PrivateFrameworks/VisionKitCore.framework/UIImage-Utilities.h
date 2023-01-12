@@ -12,6 +12,7 @@
 + (id)vk_fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2;
 + (id)vk_orientationMetadataFromImageOrientation:(long long)arg1;
 + (id)vk_imageWithData:(id)arg1;
++ (id)vk_imageWithCVPixelBuffer:(struct __CVBuffer *)arg1;
 + (id)vk_imageWithCGImage:(struct CGImage *)arg1;
 + (id)vk_imageWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 + (id)vk_orientedImageFromImage:(id)arg1 toOrientation:(long long)arg2;
@@ -22,7 +23,6 @@
 + (id)vk_imageNamed:(id)arg1 withTint:(id)arg2 size:(struct CGSize)arg3;
 + (id)vk_imageNamed:(id)arg1 withTint:(id)arg2;
 + (id)vk_imageWithContentsOfURL:(id)arg1;
-- (struct CGContext *)vk_newARGB8BitmapContextFromImage:(struct CGImage *)arg1;
 - (struct CGRect)vk_cropRectZeroAlpha;
 - (id)vk_decodeInBackground;
 - (void)vk_decodeWithCompletion:(CDUnknownBlockType)arg1;
@@ -35,6 +35,8 @@
 - (unsigned int)vk_cgImagePropertyOrientation;
 - (id)vk_horizontallyMirroredImage;
 - (long long)vk_imageOrientation;
+- (id)vk_ciImage;
+- (struct CGImage *)vk_cgImageGeneratingIfNecessary;
 - (struct CGImage *)vk_cgImage;
 - (id)vk_imageFromRect:(struct CGRect)arg1;
 - (id)vk_scaledImageWithSize:(struct CGSize)arg1 scale:(double)arg2;

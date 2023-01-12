@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AXPTranslator.h"
+
 @class AXUIElement, NSMutableArray, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface AXPTranslator_iOS
+@interface AXPTranslator_iOS : AXPTranslator
 {
     NSMutableDictionary *_translationCache;
     NSMutableDictionary *_backTranslationCache;
@@ -73,11 +75,13 @@ __attribute__((visibility("hidden")))
 - (id)_processPreviousLineRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processNextLineRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processLineRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
+- (id)_processIndexForTextMarkerAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processLinkedUIElementsAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processElementHelpAttributeResquest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processCellWithIndexPathAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processClassNameAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processChildrenAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processBrailleOverrideForAttributeRequest:(id)arg1 error:(unsigned long long *)arg2 attribute:(unsigned long long)arg3;
 - (id)_processUserInputLabelsAttributeRequest:(id)arg1 error:(unsigned long long *)arg2 axpAttribute:(unsigned long long)arg3;
 - (id)_processIsEnabledAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processIsRemoteElementAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;

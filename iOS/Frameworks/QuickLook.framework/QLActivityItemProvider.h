@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/UIActivityItemSource-Protocol.h>
-
 @class NSString, QLItem, QLPreviewPrinter;
 
 __attribute__((visibility("hidden")))
-@interface QLActivityItemProvider : NSObject <UIActivityItemSource>
+@interface QLActivityItemProvider : NSObject
 {
     QLPreviewPrinter *_printer;
     QLItem *_activityPreviewItem;

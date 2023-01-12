@@ -8,6 +8,7 @@
 
 @interface HMCharacteristicWriteAction (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_affectedAccessoryRepresentables;
 - (id)hf_affectedAccessoryProfiles;
 - (id)hf_affectedCharacteristic;
 @end

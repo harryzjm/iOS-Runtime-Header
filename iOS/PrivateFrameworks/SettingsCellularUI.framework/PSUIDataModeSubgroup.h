@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
-
 @class CTXPCServiceSubscriptionContext, NSString, PSListController, PSSpecifier, PSUICoreTelephonyDataCache, PSUIDataModeSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface PSUIDataModeSubgroup : NSObject <PSSpecifierGroup>
+@interface PSUIDataModeSubgroup : NSObject
 {
     PSListController *_hostController;
     PSSpecifier *_parentSpecifier;

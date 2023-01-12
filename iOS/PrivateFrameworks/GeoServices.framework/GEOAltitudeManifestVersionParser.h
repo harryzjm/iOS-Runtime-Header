@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSXMLParserDelegate-Protocol.h>
-
 @class GEOFlyoverRegionVersions, NSError, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface GEOAltitudeManifestVersionParser : NSObject <NSXMLParserDelegate>
+@interface GEOAltitudeManifestVersionParser : NSObject
 {
     struct GEOOnce_s _parsed;
     NSURL *_fileURL;

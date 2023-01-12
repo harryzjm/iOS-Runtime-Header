@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTLmScorerToken : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTLmScorerToken : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;

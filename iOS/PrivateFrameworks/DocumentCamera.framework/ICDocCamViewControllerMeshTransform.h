@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DocumentCamera/CAAnimationDelegate-Protocol.h>
-
 @class ICDocCamImageQuad, NSString, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface ICDocCamViewControllerMeshTransform : NSObject <CAAnimationDelegate>
+@interface ICDocCamViewControllerMeshTransform : NSObject
 {
     UIImageView *_animationImageView;
     UIView *_scrimView;

@@ -6,23 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <PreviewsInjection/UVAgentPreviewServiceProtocol-Protocol.h>
-
-@class MISSING_TYPE;
-
 __attribute__((visibility("hidden")))
-@interface _TtC17PreviewsInjection14UVPreviewAgent : NSObject <UVAgentPreviewServiceProtocol>
+@interface _TtC17PreviewsInjection14UVPreviewAgent : NSObject
 {
-    MISSING_TYPE *connection;
-    MISSING_TYPE *scene;
-    MISSING_TYPE *messageResponder;
-    MISSING_TYPE *sceneMessenger;
 }
 
-- (void).cxx_destruct;
 - (id)init;
-- (void)sendMessageType:(id)arg1 messagePayload:(id)arg2 fence:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)sendMessageType:(id)arg1 messagePayload:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)sendEndpoint:(id)arg1 context:(id)arg2 contentIdentifier:(id)arg3;
 
 @end
 

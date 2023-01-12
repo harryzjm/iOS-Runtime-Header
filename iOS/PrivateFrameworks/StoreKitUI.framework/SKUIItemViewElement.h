@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class SKUIViewElementText;
 
 __attribute__((visibility("hidden")))
-@interface SKUIItemViewElement
+@interface SKUIItemViewElement : SKUIViewElement
 {
     SKUIViewElementText *_itemText;
     _Bool _selected;

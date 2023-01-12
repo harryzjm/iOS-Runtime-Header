@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOActionComponentMapEntry : PBCodable <NSCopying>
+@interface GEOActionComponentMapEntry : PBCodable
 {
     CDStruct_95bda58d _placeDataComponents;
     int _actionComponent;

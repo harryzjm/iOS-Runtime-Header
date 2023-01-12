@@ -12,7 +12,9 @@
 {
     MISSING_TYPE *resultCandidateId;
     MISSING_TYPE *utterance;
+    MISSING_TYPE *userId;
     MISSING_TYPE *nlUserParses;
+    MISSING_TYPE *pommesResultCandidateMessage;
     MISSING_TYPE *processingStatus;
     MISSING_TYPE *flowOutputList;
     MISSING_TYPE *serverContextUpdateCandidate;
@@ -21,9 +23,11 @@
     MISSING_TYPE *preExcutionRuleType;
     MISSING_TYPE *mitigatedByURS;
     MISSING_TYPE *nlResponseStatusCode;
-    MISSING_TYPE *rankedNLResponse;
     MISSING_TYPE *overrideFTMAsPerServer;
+    MISSING_TYPE *serverFallback;
     MISSING_TYPE *loggingMetadata;
+    MISSING_TYPE *voiceIdScore;
+    MISSING_TYPE *voiceIdClassication;
 }
 
 @end

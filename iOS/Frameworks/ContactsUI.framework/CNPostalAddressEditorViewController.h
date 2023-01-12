@@ -6,13 +6,10 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <ContactsUI/CNPresenterDelegate-Protocol.h>
-#import <ContactsUI/CNPropertyCellDelegate-Protocol.h>
-
 @class CNCardPropertyGroup, CNMutableContact, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNPostalAddressEditorViewController : UITableViewController <CNPresenterDelegate, CNPropertyCellDelegate>
+@interface CNPostalAddressEditorViewController : UITableViewController
 {
     NSMutableArray *_propertyItems;
     NSString *_propertyKey;

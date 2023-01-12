@@ -9,7 +9,6 @@
 @class CLSNotificationBannerViewController, NSObject;
 @protocol OS_dispatch_semaphore;
 
-__attribute__((visibility("hidden")))
 @interface CLSNotificationBannerWindow : UIWindow
 {
     CLSNotificationBannerViewController *_currentBannerViewController;

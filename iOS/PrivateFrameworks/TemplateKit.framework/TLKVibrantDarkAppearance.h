@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 - (id)textColorForColor:(long long)arg1;
 - (double)accessibilityContrastColorBoost;
 - (id)compositingFilter;
-- (id)platterColor;
 - (id)quaternaryColor;
 - (id)tertiaryColor;
 - (id)secondaryColor;
 - (id)primaryColor;
+- (id)platterColor;
 - (_Bool)isVibrant;
 - (id)name;
 - (unsigned long long)style;

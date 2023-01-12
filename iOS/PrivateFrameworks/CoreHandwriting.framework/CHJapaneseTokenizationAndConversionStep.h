@@ -4,27 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CHRecognizer;
+@class CHMecabraWrapper, CHStringOVSChecker;
 
 @interface CHJapaneseTokenizationAndConversionStep
 {
     _Bool _promoteKanaConversion;
-    struct __Mecabra *_mecabra;
+    CHMecabraWrapper *_mecabraWrapper;
     struct __MecabraContext *_mecabraContextRef;
-    CHRecognizer *_recognizer;
-    void *_languageModel;
+    void *_wordLanguageModel;
+    CHStringOVSChecker *_ovsStringChecker;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) CHStringOVSChecker *ovsStringChecker; // @synthesize ovsStringChecker=_ovsStringChecker;
 @property(readonly, nonatomic) _Bool promoteKanaConversion; // @synthesize promoteKanaConversion=_promoteKanaConversion;
-@property(readonly, nonatomic) void *languageModel; // @synthesize languageModel=_languageModel;
-@property(readonly, nonatomic) CHRecognizer *recognizer; // @synthesize recognizer=_recognizer;
+@property(readonly, nonatomic) void *wordLanguageModel; // @synthesize wordLanguageModel=_wordLanguageModel;
 @property(readonly, nonatomic) struct __MecabraContext *mecabraContextRef; // @synthesize mecabraContextRef=_mecabraContextRef;
-@property(readonly, nonatomic) struct __Mecabra *mecabra; // @synthesize mecabra=_mecabra;
+@property(readonly, nonatomic) CHMecabraWrapper *mecabraWrapper; // @synthesize mecabraWrapper=_mecabraWrapper;
 - (void)dealloc;
-- (id)process:(id)arg1;
+- (id)process:(id)arg1 options:(id)arg2;
 - (id)_extendedConversionCandidates:(id)arg1 withPhraseCandidates:(id)arg2;
 - (id)_updatedTokenFromToken:(id)arg1 withString:(id)arg2;
-- (id)initWithMecabra:(struct __Mecabra *)arg1 recognizer:(id)arg2 languageModel:(void *)arg3 promoteKanaConversion:(_Bool)arg4;
+- (id)initWithMecabra:(id)arg1 wordLanguageModel:(void *)arg2 ovsStringChecker:(id)arg3 promoteKanaConversion:(_Bool)arg4;
 
 @end
 

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudServices/NSCopying-Protocol.h>
-
 @class SecureBackupTermsInfo;
 
-@interface StoredTermsInfo : PBCodable <NSCopying>
+@interface StoredTermsInfo : PBCodable
 {
     unsigned long long _storageVersion;
     SecureBackupTermsInfo *_termsInfo;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class _MPCProtoRadioContentReferenceLibraryAlbumContentReference, _MPCProtoRadioContentReferenceLibraryArtistContentReference, _MPCProtoRadioContentReferenceLibraryItemContentReference, _MPCProtoRadioContentReferenceStoreContentReference;
 
 __attribute__((visibility("hidden")))
-@interface _MPCProtoRadioContentReference : PBCodable <NSCopying>
+@interface _MPCProtoRadioContentReference : PBCodable
 {
     _MPCProtoRadioContentReferenceLibraryAlbumContentReference *_libraryAlbumContentReference;
     _MPCProtoRadioContentReferenceLibraryArtistContentReference *_libraryArtistContentReference;

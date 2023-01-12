@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIItemOfferButtonDelegate-Protocol.h>
-#import <StoreKitUI/SKUIPerspectiveView-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSHashTable, NSMapTable, NSString, SKUILockupViewElement, SKUISizeValue, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIVerticalLockupView <SKUIItemOfferButtonDelegate, SKUIPerspectiveView, SKUIViewElementView>
+@interface SKUIVerticalLockupView
 {
     NSHashTable *_artworkRelatedChildViewElementViews;
     struct UIEdgeInsets _contentInset;

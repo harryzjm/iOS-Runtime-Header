@@ -9,6 +9,8 @@
 @class VCStreamInput;
 
 @protocol VCStreamInputDelegate <NSObject>
+- (void)didResumeStreamInput:(VCStreamInput *)arg1;
+- (void)didSuspendStreamInput:(VCStreamInput *)arg1;
 - (void)didStopStreamInput:(VCStreamInput *)arg1;
 - (void)didStartStreamInput:(VCStreamInput *)arg1;
 @end

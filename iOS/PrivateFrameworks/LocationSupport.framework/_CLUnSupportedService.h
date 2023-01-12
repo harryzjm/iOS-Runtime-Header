@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <LocationSupport/CLIntersiloServiceProtocol-Protocol.h>
-
 @class NSString;
 
-@interface _CLUnSupportedService : NSObject <CLIntersiloServiceProtocol>
+@interface _CLUnSupportedService : NSObject
 {
     _Bool _valid;
 }

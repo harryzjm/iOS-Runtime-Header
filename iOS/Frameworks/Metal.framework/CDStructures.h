@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTLBlitPassSampleBufferAttachmentDescriptorArrayInternal, MTLComputePassSampleBufferAttachmentDescriptorArrayInternal, MTLFunctionConstantValues, MTLLinkedFunctions, MTLPipelineBufferDescriptorArrayInternal, MTLRenderPassColorAttachmentDescriptorArrayInternal, MTLRenderPassSampleBufferAttachmentDescriptorArrayInternal, MTLRenderPipelineColorAttachmentDescriptorArrayInternal, MTLResourceList, MTLResourceStatePassSampleBufferAttachmentDescriptorArrayInternal, MTLStageInputOutputDescriptor, MTLStencilDescriptorInternal, MTLTileRenderPipelineColorAttachmentDescriptorArrayInternal, MTLVertexDescriptorInternal, NSArray, NSData, NSDictionary, NSObject, NSString;
+@class MTLBlitPassSampleBufferAttachmentDescriptorArrayInternal, MTLComputePassSampleBufferAttachmentDescriptorArrayInternal, MTLLinkedFunctions, MTLPipelineBufferDescriptorArrayInternal, MTLProfileControl, MTLRenderPassColorAttachmentDescriptorArrayInternal, MTLRenderPassSampleBufferAttachmentDescriptorArrayInternal, MTLRenderPipelineColorAttachmentDescriptorArrayInternal, MTLResourceStatePassSampleBufferAttachmentDescriptorArrayInternal, MTLStageInputOutputDescriptor, MTLStencilDescriptorInternal, MTLTileRenderPipelineColorAttachmentDescriptorArrayInternal, MTLVertexDescriptorInternal, NSArray, NSData, NSDictionary, NSObject, NSString;
 
 #pragma mark Blocks
 
@@ -82,46 +82,6 @@ struct MTLBlitPassSampleBufferAttachmentDescriptorPrivate {
     unsigned long long endOfEncoderSampleIndex;
 };
 
-struct MTLCompileLibraryRequestData {
-    _Bool _field1;
-    id _field2;
-    unsigned int _field3;
-    id _field4;
-    id _field5;
-};
-
-struct MTLCompilerCache {
-    CDUnknownFunctionPointerType *_field1;
-    id _field2;
-    int _field3;
-    int _field4;
-};
-
-struct MTLCompilerConnectionManager {
-    CDUnknownFunctionPointerType *_field1;
-};
-
-struct MTLCompilerFunctionRequest {
-    CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    id _field3;
-    id _field4;
-    id _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    id _field9;
-    id _field10;
-    unsigned long long _field11;
-    id _field12;
-    id _field13;
-    id _field14;
-    id _field15;
-    int _field16;
-    _Bool _field17;
-    unsigned int _field18;
-};
-
 struct MTLComputePassDescriptorPrivate {
     unsigned long long dispatchType;
     MTLComputePassSampleBufferAttachmentDescriptorArrayInternal *sampleBufferAttachments;
@@ -158,10 +118,10 @@ struct MTLComputePipelineDescriptorPrivate {
     unsigned int openCLMode:1;
     unsigned int reserved:30;
     NSArray *functionPointers;
-    NSDictionary *functionPointerGroups;
     MTLLinkedFunctions *linkedFunctions;
     unsigned long long maxStackCallDepth;
     _Bool supportAddingBinaryFunctions;
+    MTLProfileControl *profileControl;
 };
 
 struct MTLDepthStencilDescriptorPrivate {
@@ -170,11 +130,6 @@ struct MTLDepthStencilDescriptorPrivate {
     unsigned long long depthCompareFunction;
     _Bool depthWriteEnabled;
     NSString *label;
-};
-
-struct MTLDispatch {
-    struct MTLDispatch *_field1;
-    CDUnknownBlockType _field2;
 };
 
 struct MTLFunctionData {
@@ -196,52 +151,36 @@ struct MTLFunctionData {
     NSObject *functionInputs;
 };
 
-struct MTLFunctionDescriptorPrivate {
-    NSString *name;
-    NSString *specializedName;
-    unsigned long long options;
-    MTLFunctionConstantValues *constantValues;
-    NSArray *binaryArchives;
-    _Bool applyFunctionConstants;
+struct MTLFunctionId {
+    CDStruct_41a22ec7 _field1;
+    CDStruct_41a22ec7 _field2[4];
+    unsigned int _field3;
 };
 
 struct MTLHeapDescriptorPrivate {
     unsigned long long _field1;
     unsigned long long _field2;
     unsigned long long _field3;
-    unsigned long long _field4;
+    long long _field4;
     _Bool _field5;
     long long _field6;
     unsigned long long _field7;
     unsigned long long _field8;
+    unsigned long long _field9;
 };
 
-struct MTLIndirectCommandBufferDescriptorState {
-    unsigned long long commandTypes;
-    _Bool inheritPipelineState;
-    _Bool inheritBuffers;
-    unsigned long long maxVertexBufferBindCount;
-    unsigned long long maxFragmentBufferBindCount;
-    unsigned long long maxKernelBufferBindCount;
-    unsigned long long resourceIndex;
+struct MTLIOScratchBufferPrivate {
+    CDStruct_51606cd7 _field1;
+    id _field2;
+    id _field3;
+    unsigned long long _field4;
+    _Bool _field5;
 };
 
 struct MTLIntersectionFunctionTableDescriptorPrivate {
     unsigned long long functionCount;
     _Bool forceResourceIndex;
     unsigned long long resourceIndex;
-};
-
-struct MTLLibraryContainer {
-    struct MTLPipelineCollection *_field1;
-    _Atomic int _field2;
-    CDStruct_41a22ec7 _field3;
-    struct MTLLibraryData *_field4;
-    id _field5;
-    id _field6;
-    id _field7;
-    id _field8;
-    id _field9;
 };
 
 struct MTLLibraryData {
@@ -259,9 +198,10 @@ struct MTLLinkedFunctionsPrivate {
     NSDictionary *groups;
 };
 
-struct MTLLoaderSliceIdentifier {
-    int _field1;
-    int _field2;
+struct MTLMultiHashKey {
+    CDStruct_41a22ec7 _field1;
+    CDStruct_41a22ec7 _field2[4];
+    unsigned int _field3;
 };
 
 struct MTLPipelineBufferDescriptorPrivate {
@@ -271,13 +211,6 @@ struct MTLPipelineBufferDescriptorPrivate {
         } ;
         CDStruct_914d909e ;
     } ;
-};
-
-struct MTLPipelineCollection;
-
-struct MTLPipelineLibraryBuilder {
-    id _field1;
-    id _field2;
 };
 
 struct MTLRenderPassAttachmentDescriptorPrivate {
@@ -309,6 +242,7 @@ struct MTLRenderPassDescriptorPrivate {
     unsigned long long renderTargetHeight;
     unsigned long long defaultColorSampleCount;
     _Bool fineGrainedBackgroundVisibilityEnabled;
+    _Bool skipEmptyTilesOnClearEnabled;
     _Bool ditherEnabled;
     _Bool openGLModeEnabled;
     unsigned long long renderTargetArrayLength;
@@ -401,7 +335,8 @@ struct MTLRenderPipelineDescriptorPrivate {
             unsigned int logicOpEnabled:1;
             unsigned int forceResourceIndex:1;
             unsigned int forceSoftwareVertexFetch:1;
-            unsigned int private6:2;
+            unsigned int objectThreadgroupSizeIsMultipleOfThreadExecutionWidth:1;
+            unsigned int meshThreadgroupSizeIsMultipleOfThreadExecutionWidth:1;
         } ;
     } ;
     unsigned int vertexDepthCompareClampMask;
@@ -411,6 +346,16 @@ struct MTLRenderPipelineDescriptorPrivate {
     id vertexFunction;
     id fragmentFunction;
     MTLVertexDescriptorInternal *vertexDescriptor;
+    id objectFunction;
+    id meshFunction;
+    CDStruct_da2e99ad objectThreadsPerThreadgroup_DO_NOT_USE_WILL_BE_REMOVED;
+    CDStruct_da2e99ad meshThreadsPerThreadgroup_DO_NOT_USE_WILL_BE_REMOVED;
+    CDStruct_da2e99ad maxPipelineChildren;
+    unsigned long long pipelineMemoryLength;
+    MTLPipelineBufferDescriptorArrayInternal *objectBuffers;
+    MTLPipelineBufferDescriptorArrayInternal *meshBuffers;
+    unsigned long long maxTotalThreadsPerObjectThreadgroup;
+    unsigned long long maxTotalThreadsPerMeshThreadgroup;
     MTLPipelineBufferDescriptorArrayInternal *vertexBuffers;
     MTLPipelineBufferDescriptorArrayInternal *fragmentBuffers;
     NSDictionary *driverCompilerOptions;
@@ -423,18 +368,26 @@ struct MTLRenderPipelineDescriptorPrivate {
     NSArray *binaryArchives;
     MTLLinkedFunctions *vertexLinkedFunctions;
     MTLLinkedFunctions *fragmentLinkedFunctions;
+    MTLLinkedFunctions *objectLinkedFunctions;
+    MTLLinkedFunctions *meshLinkedFunctions;
     NSArray *vertexPreloadedLibraries;
     NSArray *fragmentPreloadedLibraries;
+    NSArray *objectPreloadedLibraries;
+    NSArray *meshPreloadedLibraries;
     unsigned long long maxVertexStackCallDepth;
     unsigned long long maxFragmentStackCallDepth;
     _Bool supportAddingVertexBinaryFunctions;
     _Bool supportAddingFragmentBinaryFunctions;
+    unsigned long long maxMeshStackCallDepth;
+    unsigned long long maxObjectStackCallDepth;
+    _Bool supportAddingMeshBinaryFunctions;
+    _Bool supportAddingObjectBinaryFunctions;
+    MTLProfileControl *profileControl;
+    unsigned int explicitVisibilityGroupID;
 };
 
-struct MTLResourceListChunk {
-    int currentEntry;
-    void **entries;
-    struct MTLResourceListChunk *nextChunk;
+struct MTLResourceID {
+    unsigned long long _field1;
 };
 
 struct MTLResourceStatePassDescriptorPrivate {
@@ -485,12 +438,6 @@ struct MTLSamplerDescriptorPrivate {
     unsigned long long pixelFormat;
 };
 
-struct MTLSharedEventHandlePrivate {
-    unsigned int _field1;
-    id _field2;
-    unsigned long long _field3;
-};
-
 struct MTLStencilDescriptorPrivate {
     unsigned long long stencilCompareFunction;
     unsigned long long stencilFailureOperation;
@@ -498,11 +445,6 @@ struct MTLStencilDescriptorPrivate {
     unsigned long long depthStencilPassOperation;
     unsigned int readMask;
     unsigned int writeMask;
-};
-
-struct MTLSyncDispatch {
-    struct MTLSyncDispatch *_field1;
-    CDUnknownBlockType _field2;
 };
 
 struct MTLTargetDeviceArch {
@@ -572,6 +514,7 @@ struct MTLTileRenderPipelineDescriptorPrivate {
     NSArray *preloadedLibraries;
     unsigned long long maxStackCallDepth;
     _Bool supportAddingBinaryFunctions;
+    MTLProfileControl *profileControl;
 };
 
 struct MTLVisibleFunctionTableDescriptorPrivate {
@@ -580,116 +523,13 @@ struct MTLVisibleFunctionTableDescriptorPrivate {
     unsigned long long resourceIndex;
 };
 
-struct MultiLevelPipelineCache {
-    _Bool _field1;
-    id _field2;
-    id _field3;
-    struct MTLCompilerCache *_field4;
-    struct MTLCompilerCache *_field5;
-    struct MTLCompilerCache *_field6;
-    _Bool _field7;
-    _Bool _field8;
-};
-
-struct PipelineCache<PipelineKey> {
-    struct unordered_map<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>, PipelineCache<PipelineKey>::Hasher, std::equal_to<PipelineCache<PipelineKey>::HashKey>, std::allocator<std::pair<const PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>>> map;
-};
-
-struct PipelineKey {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    _Bool _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    float _field10;
-    float _field11;
-    float _field12;
-    _Bool _field13;
-    _Bool _field14;
-    _Bool _field15;
-    unsigned int _field16;
-    _Bool _field17;
-};
-
-struct VariantEntry {
-    char *_field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    id _field5;
-    id _field6;
-    unsigned long long _field7;
-    id _field8;
-};
-
-struct VariantKey {
-    void *_field1;
-    void *_field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    id _field5;
-    void *_field6;
-    unsigned long long _field7;
-};
-
-struct _MTLResourceListPoolPrivate {
-    struct resourceListQueue queue;
-    struct os_unfair_lock_s lock;
-    int count;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
 
-struct __CFString;
-
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
-};
-
-struct map<MTLUINT256_t, std::pair<unsigned int, unsigned long long>, CompareHash, std::allocator<std::pair<const MTLUINT256_t, std::pair<unsigned int, unsigned long long>>>> {
-    struct __tree<std::__value_type<MTLUINT256_t, std::pair<unsigned int, unsigned long long>>, std::__map_value_compare<MTLUINT256_t, std::__value_type<MTLUINT256_t, std::pair<unsigned int, unsigned long long>>, CompareHash, true>, std::allocator<std::__value_type<MTLUINT256_t, std::pair<unsigned int, unsigned long long>>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<MTLUINT256_t, std::pair<unsigned int, unsigned long long>>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> {
-                void *__left_;
-            } __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<MTLUINT256_t, std::__value_type<MTLUINT256_t, std::pair<unsigned int, unsigned long long>>, CompareHash, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
-struct once_flag {
-    unsigned long long __state_;
-};
-
 struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-struct resourceListQueue {
-    MTLResourceList *tqh_first;
-    id *tqh_last;
-};
-
-struct shared_ptr<MTLCompilerCache> {
-    struct MTLCompilerCache *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct unique_ptr<MTLPipelineCollection, std::default_delete<MTLPipelineCollection>> {
-    struct __compressed_pair<MTLPipelineCollection *, std::default_delete<MTLPipelineCollection>> {
-        struct MTLPipelineCollection *__value_;
-    } __ptr_;
+    unsigned int _field1;
 };
 
 struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLLoadedFile *, id>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLLoadedFile *, id>, void *>*>*>>> {
@@ -697,39 +537,6 @@ struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<
         void **__value_;
         struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLLoadedFile *, id>, void *>*>*>> {
             struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLLoadedFile *, id>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*>>> {
-        void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>*>*>>> {
-        void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*>>> {
-    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*>>> {
-        void **__value_;
-        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
@@ -753,95 +560,12 @@ struct unordered_map<MTLLoadedFile *, id, std::hash<MTLLoadedFile *>, std::equal
     } __table_;
 };
 
-struct unordered_map<MTLUINT256_t, MTLProgramObject *, UnorderedContainerHash, UnorderedContainerHash, std::allocator<std::pair<const MTLUINT256_t, MTLProgramObject *>>> {
-    struct __hash_table<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, std::__unordered_map_hasher<MTLUINT256_t, std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, UnorderedContainerHash, UnorderedContainerHash, true>, std::__unordered_map_equal<MTLUINT256_t, std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, UnorderedContainerHash, UnorderedContainerHash, true>, std::allocator<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*> {
-                void *__next_;
-            } __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<MTLUINT256_t, std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, UnorderedContainerHash, UnorderedContainerHash, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<MTLUINT256_t, std::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, UnorderedContainerHash, UnorderedContainerHash, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-};
-
-struct unordered_map<MTLUINT256_t, NSObject<OS_dispatch_data>*, UnorderedContainerHash, UnorderedContainerHash, std::allocator<std::pair<const MTLUINT256_t, NSObject<OS_dispatch_data>*>>> {
-    struct __hash_table<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, std::__unordered_map_hasher<MTLUINT256_t, std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, UnorderedContainerHash, UnorderedContainerHash, true>, std::__unordered_map_equal<MTLUINT256_t, std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, UnorderedContainerHash, UnorderedContainerHash, true>, std::allocator<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, void *>*> {
-                void *__next_;
-            } __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<MTLUINT256_t, std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, UnorderedContainerHash, UnorderedContainerHash, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<MTLUINT256_t, std::__hash_value_type<MTLUINT256_t, NSObject<OS_dispatch_data>*>, UnorderedContainerHash, UnorderedContainerHash, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-};
-
-struct unordered_map<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>, PipelineCache<PipelineKey>::Hasher, std::equal_to<PipelineCache<PipelineKey>::HashKey>, std::allocator<std::pair<const PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>>> {
-    struct __hash_table<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, std::__unordered_map_hasher<PipelineCache<PipelineKey>::HashKey, std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, PipelineCache<PipelineKey>::Hasher, std::equal_to<PipelineCache<PipelineKey>::HashKey>, true>, std::__unordered_map_equal<PipelineCache<PipelineKey>::HashKey, std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, std::equal_to<PipelineCache<PipelineKey>::HashKey>, PipelineCache<PipelineKey>::Hasher, true>, std::allocator<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>>> {
-        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>>> {
-            struct __hash_node_base<std::__hash_node<std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*> {
-                void *__next_;
-            } __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<PipelineCache<PipelineKey>::HashKey, std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, PipelineCache<PipelineKey>::Hasher, std::equal_to<PipelineCache<PipelineKey>::HashKey>, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__unordered_map_equal<PipelineCache<PipelineKey>::HashKey, std::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, std::equal_to<PipelineCache<PipelineKey>::HashKey>, PipelineCache<PipelineKey>::Hasher, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-};
-
-struct vector<MTLDebugLocation *, std::allocator<MTLDebugLocation *>> {
-    id *__begin_;
-    id *__end_;
-    struct __compressed_pair<MTLDebugLocation **, std::allocator<MTLDebugLocation *>> {
-        id *__value_;
-    } __end_cap_;
-};
-
-struct vector<MTLDebugSubProgram *, std::allocator<MTLDebugSubProgram *>> {
-    id *__begin_;
-    id *__end_;
-    struct __compressed_pair<MTLDebugSubProgram **, std::allocator<MTLDebugSubProgram *>> {
-        id *__value_;
-    } __end_cap_;
-};
-
 struct vector<MTLRasterizationRateLayerDescriptor *, std::allocator<MTLRasterizationRateLayerDescriptor *>> {
     id *__begin_;
     id *__end_;
     struct __compressed_pair<MTLRasterizationRateLayerDescriptor **, std::allocator<MTLRasterizationRateLayerDescriptor *>> {
         id *__value_;
     } __end_cap_;
-};
-
-struct vector<const __CFString *, std::allocator<const __CFString *>> {
-    struct __CFString **__begin_;
-    struct __CFString **__end_;
-    struct __compressed_pair<const __CFString **, std::allocator<const __CFString *>> {
-        struct __CFString **__value_;
-    } __end_cap_;
-};
-
-struct vector<std::pair<CompilerOutputType, MTLBinaryKey *>, std::allocator<std::pair<CompilerOutputType, MTLBinaryKey *>>> {
-    void *_field1;
-    void *_field2;
-    struct __compressed_pair<std::pair<CompilerOutputType, MTLBinaryKey *>*, std::allocator<std::pair<CompilerOutputType, MTLBinaryKey *>>> {
-        void *_field1;
-    } _field3;
 };
 
 struct vector_downward {
@@ -858,21 +582,6 @@ struct vector_downward {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    _Bool _field1;
-    _Bool _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    _Bool _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    _Bool _field10;
-    unsigned long long _field11;
-    unsigned long long _field12;
-} CDStruct_ea203f10;
-
-typedef struct {
     unsigned char _field1;
     unsigned char _field2;
     unsigned char _field3;
@@ -880,70 +589,71 @@ typedef struct {
 } CDStruct_a06f635e;
 
 typedef struct {
-    unsigned int maxFramebufferStorageBits;
-    unsigned int linearTextureArrayAlignmentBytes;
-    unsigned int linearTextureArrayAlignmentSlice;
-    unsigned int maxTileBuffers;
-    unsigned int maxTileTextures;
-    unsigned int maxTileSamplers;
-    unsigned int maxTileInlineDataSize;
-    unsigned int minTilePixels;
-    unsigned int maxColorAttachments;
-    unsigned int maxVertexAttributes;
-    unsigned int maxVertexBuffers;
-    unsigned int maxVertexTextures;
-    unsigned int maxVertexSamplers;
-    unsigned int maxVertexInlineDataSize;
-    unsigned int maxInterpolants;
-    unsigned int maxFragmentBuffers;
-    unsigned int maxFragmentTextures;
-    unsigned int maxFragmentSamplers;
-    unsigned int maxFragmentInlineDataSize;
-    unsigned int maxComputeBuffers;
-    unsigned int maxComputeTextures;
-    unsigned int maxComputeSamplers;
-    unsigned int maxComputeInlineDataSize;
-    unsigned int maxComputeLocalMemorySizes;
-    unsigned int maxTotalComputeThreadsPerThreadgroup;
-    unsigned int maxComputeThreadgroupMemory;
-    float maxLineWidth;
-    float maxPointSize;
-    unsigned int maxVisibilityQueryOffset;
-    unsigned int padmaxBufferLength;
-    unsigned int minConstantBufferAlignmentBytes;
-    unsigned int minBufferNoCopyAlignmentBytes;
-    unsigned int maxTextureWidth1D;
-    unsigned int maxTextureWidth2D;
-    unsigned int maxTextureHeight2D;
-    unsigned int maxTextureWidth3D;
-    unsigned int maxTextureHeight3D;
-    unsigned int maxTextureDepth3D;
-    unsigned int maxTextureDimensionCube;
-    unsigned int maxTextureLayers;
-    unsigned int linearTextureAlignmentBytes;
-    unsigned int iosurfaceTextureAlignmentBytes;
-    unsigned int iosurfaceReadOnlyTextureAlignmentBytes;
-    unsigned int deviceLinearTextureAlignmentBytes;
-    unsigned int deviceLinearReadOnlyTextureAlignmentBytes;
-    unsigned int maxFunctionConstantIndices;
-    unsigned int maxComputeThreadgroupMemoryAlignmentBytes;
-    unsigned int maxInterpolatedComponents;
-    unsigned int maxTessellationFactor;
-    unsigned int maxIndirectBuffers;
-    unsigned int maxIndirectTextures;
-    unsigned int maxIndirectSamplers;
-    unsigned int maxIndirectSamplersPerDevice;
-    unsigned int maxFenceInstances;
-    unsigned int maxViewportCount;
-    unsigned int maxCustomSamplePositions;
-    unsigned int maxVertexAmplificationFactor;
-    unsigned int maxVertexAmplificationCount;
-    unsigned int maxTextureBufferWidth;
-    unsigned int maxComputeAttributes;
-    unsigned int maxPredicatedNestingDepth;
-    unsigned int maxConstantBufferArguments;
-    unsigned long long maxBufferLength;
-} CDStruct_b63df89e;
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    unsigned int _field10;
+    unsigned int _field11;
+    unsigned int _field12;
+    unsigned int _field13;
+    unsigned int _field14;
+    unsigned int _field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    unsigned int _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    unsigned int _field21;
+    unsigned int _field22;
+    unsigned int _field23;
+    unsigned int _field24;
+    unsigned int _field25;
+    unsigned int _field26;
+    float _field27;
+    float _field28;
+    unsigned int _field29;
+    unsigned int _field30;
+    unsigned int _field31;
+    unsigned int _field32;
+    unsigned int _field33;
+    unsigned int _field34;
+    unsigned int _field35;
+    unsigned int _field36;
+    unsigned int _field37;
+    unsigned int _field38;
+    unsigned int _field39;
+    unsigned int _field40;
+    unsigned int _field41;
+    unsigned int _field42;
+    unsigned int _field43;
+    unsigned int _field44;
+    unsigned int _field45;
+    unsigned int _field46;
+    unsigned int _field47;
+    unsigned int _field48;
+    unsigned int _field49;
+    unsigned int _field50;
+    unsigned int _field51;
+    unsigned int _field52;
+    unsigned int _field53;
+    unsigned int _field54;
+    unsigned int _field55;
+    unsigned int _field56;
+    unsigned int _field57;
+    unsigned int _field58;
+    unsigned int _field59;
+    unsigned int _field60;
+    unsigned int _field61;
+    unsigned int _field62;
+    unsigned int _field63;
+    unsigned long long _field64;
+} CDStruct_e1c34685;
 
 typedef struct {
     unsigned int _field1;
@@ -976,6 +686,10 @@ typedef struct {
 } CDStruct_41a22ec7;
 
 typedef struct {
+    unsigned int _field1[3];
+} CDStruct_22c8f40a;
+
+typedef struct {
     unsigned int fragmentUsesDiscard:1;
     unsigned int fragmentWritesSampleMask:1;
     unsigned int fragmentWritesDepth:1;
@@ -997,14 +711,6 @@ typedef struct {
 } CDStruct_596dc0d1;
 
 typedef struct {
-    unsigned int :8;
-    unsigned int :24;
-    unsigned int _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-} CDStruct_4af8c268;
-
-typedef struct {
     double red;
     double green;
     double blue;
@@ -1023,25 +729,16 @@ typedef struct {
 } CDStruct_dbc1e4aa;
 
 typedef struct {
+    struct MTLIOScratchBufferPrivate *tqh_first;
+    struct MTLIOScratchBufferPrivate **tqh_last;
+} CDStruct_51606cd7;
+
+typedef struct {
     CDStruct_da2e99ad _field1;
     CDStruct_da2e99ad _field2;
 } CDStruct_caaed6bc;
 
-// Template types
-typedef struct vector<std::pair<CompilerOutputType, MTLBinaryKey *>, std::allocator<std::pair<CompilerOutputType, MTLBinaryKey *>>> {
-    void *_field1;
-    void *_field2;
-    struct __compressed_pair<std::pair<CompilerOutputType, MTLBinaryKey *>*, std::allocator<std::pair<CompilerOutputType, MTLBinaryKey *>>> {
-        void *_field1;
-    } _field3;
-} vector_2bd519e0;
-
 #pragma mark Typedef'd Unions
-
-typedef union {
-    CDStruct_4af8c268 _field1;
-    CDStruct_4af8c268 _field2;
-} CDUnion_c6e49ed4;
 
 // Ambiguous groups
 typedef union {

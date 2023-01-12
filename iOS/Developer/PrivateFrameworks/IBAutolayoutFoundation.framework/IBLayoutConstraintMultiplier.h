@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBAutolayoutFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface IBLayoutConstraintMultiplier : NSObject <NSCopying, IBBinaryArchiving>
+@interface IBLayoutConstraintMultiplier : NSObject
 {
     double _value;
     NSString *_stringValue;

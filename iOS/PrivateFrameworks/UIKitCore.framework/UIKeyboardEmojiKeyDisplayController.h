@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIKeyboardEmojiCategoryUpdateDelegate-Protocol.h>
-
 @class NSString, UIKeyboardEmojiCategory, UIKeyboardEmojiKeyView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiKeyDisplayController : NSObject <UIKeyboardEmojiCategoryUpdateDelegate>
+@interface UIKeyboardEmojiKeyDisplayController : NSObject
 {
     UIKeyboardEmojiKeyView *_inputView;
     UIKeyboardEmojiKeyView *_categoryView;
@@ -21,10 +19,11 @@ __attribute__((visibility("hidden")))
 + (void)writeEmojiDefaultsAndReleaseActiveInputView;
 + (Class)classForCategoryControl:(long long)arg1;
 + (Class)classForInputView:(long long)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIKeyboardEmojiKeyView *categoryView; // @synthesize categoryView=_categoryView;
 @property(retain, nonatomic) UIKeyboardEmojiKeyView *inputView; // @synthesize inputView=_inputView;
 - (long long)lastVisibleFirstEmojiIndexforCategory:(id)arg1;
-@property UIKeyboardEmojiCategory *lastViewedCategory;
+@property __weak UIKeyboardEmojiCategory *lastViewedCategory;
 - (id)lastUsedVariantEmojiForEmojiString:(id)arg1;
 - (_Bool)hasLastUsedVariantForEmojiString:(id)arg1;
 - (id)skinToneBaseKeyPreferences;

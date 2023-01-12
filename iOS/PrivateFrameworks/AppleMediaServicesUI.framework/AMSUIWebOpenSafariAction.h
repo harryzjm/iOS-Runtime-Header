@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
-
-@class NSDictionary, NSString, NSURL, UIViewController;
+@class AMSUIWebSafariViewController, NSDictionary, NSString, NSURL, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebOpenSafariAction <AMSUIWebActionRunnable>
+@interface AMSUIWebOpenSafariAction
 {
     NSURL *_URL;
     NSString *_callbackScheme;
     NSDictionary *_data;
     UIViewController *_presentedViewController;
+    AMSUIWebSafariViewController *_safariViewController;
 }
 
 + (id)resultFromURL:(id)arg1 error:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) __weak AMSUIWebSafariViewController *safariViewController; // @synthesize safariViewController=_safariViewController;
 @property(nonatomic) __weak UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property(retain, nonatomic) NSDictionary *data; // @synthesize data=_data;
 @property(retain, nonatomic) NSString *callbackScheme; // @synthesize callbackScheme=_callbackScheme;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+- (void)_safariDataUpdate:(id)arg1;
 - (_Bool)_presentViewContoller:(id)arg1;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;

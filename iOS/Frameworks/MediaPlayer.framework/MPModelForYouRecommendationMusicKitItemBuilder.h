@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPModelForYouRecommendationMusicKitGroupBuilder, MPModelStoreBrowseContentItemBuilder, MPMutableSectionedCollection, MPPropertySet, NSDictionary;
+@class ICURLBag, MPModelForYouRecommendationMusicKitGroupBuilder, MPModelStoreBrowseContentItemBuilder, MPMutableSectionedCollection, MPPropertySet, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MPModelForYouRecommendationMusicKitItemBuilder : NSObject
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
         _Bool itemType;
         _Bool url;
         _Bool reason;
+        _Bool utterance;
         _Bool backedByStoreItemMetadata;
         _Bool album;
         _Bool playlist;
@@ -24,7 +25,7 @@ __attribute__((visibility("hidden")))
     } _requestedItemProperties;
     MPModelStoreBrowseContentItemBuilder *_contentItemBuilder;
     MPModelForYouRecommendationMusicKitGroupBuilder *_subgroupBuilder;
-    NSDictionary *_storeBagDictionary;
+    ICURLBag *_storeURLBag;
     _Bool _isListenNow;
     MPPropertySet *_requestedPropertySet;
     NSDictionary *_storeItemMetadataResults;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)convertToStoreItemMetadataDictionary:(id)arg1;
 - (id)storeItemMetadataWithMusicAPIMetadataDictionary:(id)arg1;
 - (id)modelObjectForRecommendationChildDictionary:(id)arg1 parentGroup:(id)arg2 subgroupsAccumulator:(id)arg3 userIdentity:(id)arg4;
-- (id)initWithRequestedPropertySet:(id)arg1 storeItemMetadataResults:(id)arg2 flatSectionedItems:(id)arg3 storeBagDictionary:(id)arg4 isListenNow:(_Bool)arg5;
+- (id)initWithRequestedPropertySet:(id)arg1 storeItemMetadataResults:(id)arg2 flatSectionedItems:(id)arg3 storeURLBag:(id)arg4 isListenNow:(_Bool)arg5;
 
 @end
 

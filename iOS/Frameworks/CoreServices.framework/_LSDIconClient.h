@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreServices/_LSDIconServiceProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _LSDIconClient <_LSDIconServiceProtocol>
+@interface _LSDIconClient
 {
 }
 

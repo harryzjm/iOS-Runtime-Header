@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSDate, NSString, TSCEFormulaObject, TSTFormulaPredArg;
 
-@interface TSTFormulaPredicate : NSObject <NSCopying>
+@interface TSTFormulaPredicate : NSObject
 {
     TSCEFormulaObject *_formula;
     unsigned char _predicateType;

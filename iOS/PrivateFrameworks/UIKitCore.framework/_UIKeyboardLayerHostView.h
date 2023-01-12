@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/FBSceneObserver-Protocol.h>
-
 @class FBSSceneClientSettingsDiffInspector, FBSSceneIdentityToken, FBScene, NSString;
 @protocol BSInvalidatable, UIScenePresenter;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyboardLayerHostView <FBSceneObserver>
+@interface _UIKeyboardLayerHostView
 {
     CDUnknownBlockType _sceneLayerMatchingPredicate;
     FBScene *_owningScene;

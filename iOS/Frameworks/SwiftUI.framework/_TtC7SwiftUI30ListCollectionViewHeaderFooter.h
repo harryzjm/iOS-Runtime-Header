@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI30ListCollectionViewHeaderFooter : UICollectionReusableView
 {
     MISSING_TYPE *host;
+    MISSING_TYPE *isDisplaying;
 }
 
 - (void).cxx_destruct;

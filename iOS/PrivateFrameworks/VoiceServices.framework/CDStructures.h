@@ -10,38 +10,28 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct AudioStreamBasicDescription {
-    double mSampleRate;
-    unsigned int mFormatID;
-    unsigned int mFormatFlags;
-    unsigned int mBytesPerPacket;
-    unsigned int mFramesPerPacket;
-    unsigned int mBytesPerFrame;
-    unsigned int mChannelsPerFrame;
-    unsigned int mBitsPerChannel;
-    unsigned int mReserved;
-};
+struct VoiceResource;
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
+struct shared_ptr<SiriTTS::VoiceResource> {
+    struct VoiceResource *__ptr_;
+    struct __shared_weak_count *__cntrl_;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    CDUnknownFunctionPointerType _field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-} CDStruct_90f67059;
-
-typedef struct {
     long long _field1;
     long long _field2;
 } CDStruct_912cb5d2;
+
+// Template types
+typedef struct shared_ptr<SiriTTS::VoiceResource> {
+    struct VoiceResource *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_9145cca4;
 

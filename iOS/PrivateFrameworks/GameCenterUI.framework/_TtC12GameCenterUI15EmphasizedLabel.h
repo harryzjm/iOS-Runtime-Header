@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s12GameCenterUI16DynamicTypeLabelCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12GameCenterUI15EmphasizedLabel
+@interface _TtC12GameCenterUI15EmphasizedLabel : _$s12GameCenterUI16DynamicTypeLabelCN
 {
     MISSING_TYPE *fullText;
     MISSING_TYPE *emphasizedLabelSegments;

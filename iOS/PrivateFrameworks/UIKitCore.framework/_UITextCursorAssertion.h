@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextCursorAssertion-Protocol.h>
-
 @class NSString, UITextCursorAssertionController;
 
 __attribute__((visibility("hidden")))
-@interface _UITextCursorAssertion : NSObject <UITextCursorAssertion>
+@interface _UITextCursorAssertion : NSObject
 {
     NSString *_reason;
     unsigned long long _options;

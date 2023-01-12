@@ -9,7 +9,7 @@
 @class ICCameraDevice, ICCameraFile, ICDevice, NSArray, NSData, NSDictionary;
 
 @protocol ICDeviceManagerProtocol <NSObject>
-- (long long)eject:(ICCameraDevice *)arg1;
+- (long long)ejectDevice:(ICCameraDevice *)arg1 completion:(void (^)(id, NSMutableDictionary *))arg2;
 - (long long)unregisterDevice:(ICCameraDevice *)arg1 forImageCaptureEventNotifications:(NSArray *)arg2;
 - (long long)registerDevice:(ICCameraDevice *)arg1 forImageCaptureEventNotifications:(NSArray *)arg2;
 - (long long)sendDevice:(ICCameraDevice *)arg1 ptpCommand:(NSData *)arg2 andPayload:(NSData *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;

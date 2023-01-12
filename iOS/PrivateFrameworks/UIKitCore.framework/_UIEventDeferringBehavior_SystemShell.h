@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/BSDebugDescriptionProviding-Protocol.h>
-
 @class NSString;
 @protocol _UIEventDeferringSystemShellBehaviorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIEventDeferringBehavior_SystemShell <BSDebugDescriptionProviding>
+@interface _UIEventDeferringBehavior_SystemShell
 {
     struct {
         unsigned int hasSystemShellBehaviorDelegate:1;

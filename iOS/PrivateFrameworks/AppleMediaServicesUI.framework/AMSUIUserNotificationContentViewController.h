@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AppleMediaServicesUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class AMSMetrics, AMSUserNotification, AVPlayerViewController, NSString, UIImageView, UILabel;
 @protocol AMSUIUserNotificationContentDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIUserNotificationContentViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface AMSUIUserNotificationContentViewController : UIViewController
 {
     _Bool _hasAppeared;
     _Bool _hasPlayedVideo;
@@ -24,11 +22,13 @@ __attribute__((visibility("hidden")))
     AMSMetrics *_metrics;
     UILabel *_textLabel;
     UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
     AVPlayerViewController *_videoPlayerController;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AVPlayerViewController *videoPlayerController; // @synthesize videoPlayerController=_videoPlayerController;
+@property(readonly, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property(readonly, nonatomic) AMSMetrics *metrics; // @synthesize metrics=_metrics;
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillLayoutSubviews;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (void)loadView;
+- (void)dealloc;
 - (id)initWithNotification:(id)arg1 delegate:(id)arg2;
 
 // Remaining properties

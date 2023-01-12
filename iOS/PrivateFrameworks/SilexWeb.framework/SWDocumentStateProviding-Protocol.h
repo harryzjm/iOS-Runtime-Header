@@ -7,6 +7,7 @@
 #import <SilexWeb/NSObject-Protocol.h>
 
 @protocol SWDocumentStateProviding <NSObject>
+- (_Bool)isDocumentReady;
 - (void)onUnload:(void (^)(void))arg1;
 - (void)onReady:(void (^)(void))arg1;
 - (void)onLoad:(void (^)(void))arg1;

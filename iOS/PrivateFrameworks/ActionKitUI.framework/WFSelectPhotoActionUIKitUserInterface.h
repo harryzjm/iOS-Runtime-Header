@@ -6,14 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/PHPickerViewControllerDelegate-Protocol.h>
-#import <ActionKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFSelectPhotoActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFSelectPhotoActionUIKitUserInterface : WFEmbeddableActionUserInterface <PHPickerViewControllerDelegate, UIAdaptivePresentationControllerDelegate, WFSelectPhotoActionUserInterface>
+@interface WFSelectPhotoActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSArray, NSItemProvider, NSObject, NSSet, PXAssetReference, PXPhotosDragController, PXRegionOfInterest, UIScrollView;
+@class NSArray, NSItemProvider, NSObject, NSSet, NSUndoManager, PXAssetReference, PXPhotosDragController, PXRegionOfInterest, UIScrollView;
 @protocol PXAnonymousViewController;
 
 @protocol PXPhotosDragControllerDelegate <NSObject>
@@ -15,6 +15,7 @@
 - (void)dragController:(PXPhotosDragController *)arg1 draggedAssetReferencesDidChange:(NSSet *)arg2;
 - (_Bool)dragController:(PXPhotosDragController *)arg1 shouldResizeCancelledPreviewForAssetReference:(PXAssetReference *)arg2;
 - (_Bool)dragController:(PXPhotosDragController *)arg1 shouldSelectRearrangedAssetReferences:(NSArray *)arg2;
+- (NSUndoManager *)dragControllerUndoManager:(PXPhotosDragController *)arg1;
 - (NSObject<PXAnonymousViewController> *)dragControllerViewControllerForPresentation:(PXPhotosDragController *)arg1;
 - (UIScrollView *)dragController:(PXPhotosDragController *)arg1 scrollViewForAssetReference:(PXAssetReference *)arg2;
 - (PXAssetReference *)dragController:(PXPhotosDragController *)arg1 dropTargetAssetReferenceForLocation:(struct CGPoint)arg2;

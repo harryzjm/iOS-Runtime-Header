@@ -6,12 +6,12 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class GEOAutomobileOptions, GEOComposedWaypoint, GEODirectionsRequestFeedback, GEOLocation, GEORouteAttributes, NSData, NSString;
+@class GEOAutomobileOptions, GEOComposedWaypoint, GEODirectionsRequestFeedback, GEOLocation, GEORouteAttributes, NSArray, NSData, NSString;
 @protocol GEOMapItem, GEOVenueIdentifier, MapsSuggestionsResourceDepot;
 
 @protocol MapsSuggestionsNetworkRequester <MapsSuggestionsObject>
 + (id)new;
-- (_Bool)routeFromWaypoint:(GEOComposedWaypoint *)arg1 destination:(GEOComposedWaypoint *)arg2 currentLocation:(GEOLocation *)arg3 routeAttributes:(GEORouteAttributes *)arg4 feedback:(GEODirectionsRequestFeedback *)arg5 completion:(void (^)(GEODirectionsResponse *, NSError *, GEODirectionsError *))arg6;
+- (_Bool)routeForWaypoints:(NSArray *)arg1 currentLocation:(GEOLocation *)arg2 routeAttributes:(GEORouteAttributes *)arg3 feedback:(GEODirectionsRequestFeedback *)arg4 completion:(void (^)(GEODirectionsRequest *, GEODirectionsResponse *, NSError *, GEODirectionsError *))arg5;
 - (_Bool)ETAFromWaypoint:(GEOComposedWaypoint *)arg1 toWaypoint:(GEOComposedWaypoint *)arg2 transportType:(int)arg3 automobileOptions:(GEOAutomobileOptions *)arg4 completion:(void (^)(MapsSuggestionsTrafficAndETAResult *, NSError *))arg5;
 - (_Bool)composedWaypointForAddressString:(NSString *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
 - (_Bool)composedWaypointForCurrentLocation:(GEOLocation *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;

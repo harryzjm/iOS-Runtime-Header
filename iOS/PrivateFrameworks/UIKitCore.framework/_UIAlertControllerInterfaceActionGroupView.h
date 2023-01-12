@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIInterfaceActionGroupView.h"
+
 @class UIAlertController;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerInterfaceActionGroupView
+@interface _UIAlertControllerInterfaceActionGroupView : UIInterfaceActionGroupView
 {
     _Bool _scrollableHeaderViewHasRealContent;
     UIAlertController *_alertController;

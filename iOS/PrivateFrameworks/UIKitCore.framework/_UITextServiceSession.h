@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
-
 @class NSString, UIKeyboardSceneDelegate, UIResponder, UIView, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UITextServiceSession : NSObject <UIPopoverPresentationControllerDelegate>
+@interface _UITextServiceSession : NSObject
 {
     long long _type;
     UIViewController *_modalViewController;

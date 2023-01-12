@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVBehavior-Protocol.h>
-#import <AVKit/AVBehaviorInternal-Protocol.h>
-
 @class AVZoomingBehaviorContext, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVZoomingBehavior : NSObject <AVBehaviorInternal, AVBehavior>
+@interface AVZoomingBehavior : NSObject
 {
     AVZoomingBehaviorContext *_behaviorContext;
 }

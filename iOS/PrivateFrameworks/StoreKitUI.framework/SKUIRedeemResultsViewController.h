@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIRedeemStepViewController.h"
+
 @class SKUIRedeem;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemResultsViewController
+@interface SKUIRedeemResultsViewController : SKUIRedeemStepViewController
 {
     SKUIRedeem *_redeem;
     long long _redeemCategory;

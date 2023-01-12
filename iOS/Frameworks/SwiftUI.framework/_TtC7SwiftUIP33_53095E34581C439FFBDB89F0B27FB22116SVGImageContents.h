@@ -9,7 +9,6 @@
 @interface _TtC7SwiftUIP33_53095E34581C439FFBDB89F0B27FB22116SVGImageContents
 {
     MISSING_TYPE *document;
-    MISSING_TYPE *size;
 }
 
 @end

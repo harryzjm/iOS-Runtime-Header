@@ -9,17 +9,17 @@
 __attribute__((visibility("hidden")))
 @interface TimingInstance : NSObject
 {
-    float startTiming;
-    float stopTiming;
-    float totalTime;
+    double startTiming;
+    double stopTiming;
+    double totalTime;
     _Bool isRunning;
 }
 
-+ (id)createTimingInstanceWithStartTime:(float)arg1;
++ (id)createTimingInstanceWithStartTime:(double)arg1;
 @property(nonatomic) _Bool isRunning; // @synthesize isRunning;
-@property(nonatomic) float totalTime; // @synthesize totalTime;
-@property(nonatomic) float stopTiming; // @synthesize stopTiming;
-@property(nonatomic) float startTiming; // @synthesize startTiming;
+@property(nonatomic) double totalTime; // @synthesize totalTime;
+@property(nonatomic) double stopTiming; // @synthesize stopTiming;
+@property(nonatomic) double startTiming; // @synthesize startTiming;
 - (id)description;
 
 @end

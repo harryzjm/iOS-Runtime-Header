@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/SKUIMenuViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/UIPopoverControllerDelegate-Protocol.h>
-
 @class NSArray, NSString, SKUIMenuViewController, UIButton, UILabel, UIPopoverController;
 @protocol SKUIPopupMenuDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPopupMenuHeaderView : UIView <SKUIMenuViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SKUIPopupMenuHeaderView : UIView
 {
     id <SKUIPopupMenuDelegate> _delegate;
     UIButton *_menuButton;

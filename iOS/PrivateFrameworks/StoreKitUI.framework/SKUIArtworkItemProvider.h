@@ -6,12 +6,10 @@
 
 #import <Foundation/NSItemProvider.h>
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-
 @class NSData, NSMutableArray, NSProgress, NSString, NSURL, SKUIResourceLoader;
 
 __attribute__((visibility("hidden")))
-@interface SKUIArtworkItemProvider : NSItemProvider <SKUIArtworkRequestDelegate>
+@interface SKUIArtworkItemProvider : NSItemProvider
 {
     NSURL *_url;
     SKUIResourceLoader *_resourceLoader;

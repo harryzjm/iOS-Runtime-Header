@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKit/NSCopying-Protocol.h>
-
 @class NSError, NSNumber, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface SKDownloadChangeset : NSObject <NSCopying>
+@interface SKDownloadChangeset : NSObject
 {
     NSNumber *_contentLength;
     NSURL *_contentURL;

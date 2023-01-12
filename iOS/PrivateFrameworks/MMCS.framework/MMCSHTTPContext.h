@@ -6,18 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MMCS/C2RequestDelegate-Protocol.h>
-#import <MMCS/NSStreamDelegate-Protocol.h>
-#import <MMCS/NSURLSessionDataDelegate-Protocol.h>
-#import <MMCS/NSURLSessionDataDelegatePrivate-Protocol.h>
-#import <MMCS/NSURLSessionDelegate-Protocol.h>
-#import <MMCS/NSURLSessionTaskDelegate-Protocol.h>
-#import <MMCS/NSURLSessionTaskDelegatePrivate-Protocol.h>
-
 @class NSDictionary, NSInputStream, NSOutputStream, NSString, NSURLSession, NSURLSessionDataTask;
 
 __attribute__((visibility("hidden")))
-@interface MMCSHTTPContext : NSObject <C2RequestDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegatePrivate, NSStreamDelegate>
+@interface MMCSHTTPContext : NSObject
 {
     _Bool _didOpen;
     _Bool _isValid;

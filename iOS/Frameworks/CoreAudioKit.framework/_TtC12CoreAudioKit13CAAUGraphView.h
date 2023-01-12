@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *fill;
     MISSING_TYPE *border;
+    MISSING_TYPE *animateChanges;
+    MISSING_TYPE *hideLabels;
     MISSING_TYPE *gridPoint;
     MISSING_TYPE *gridPointSelected;
     MISSING_TYPE *gridPointHighlighted;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)configureWithData:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic) _Bool hideLabels; // @synthesize hideLabels;
 
 @end
 

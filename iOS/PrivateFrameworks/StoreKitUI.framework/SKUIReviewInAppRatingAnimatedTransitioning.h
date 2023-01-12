@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIReviewInAppRatingAnimatedTransitioning : NSObject <UIViewControllerAnimatedTransitioning>
+@interface SKUIReviewInAppRatingAnimatedTransitioning : NSObject
 {
     _Bool _presentation;
     UIViewController *_viewController;

@@ -6,9 +6,10 @@
 
 #import <SpringBoard/SBProximitySensorManagerObserver-Protocol.h>
 
-@class SBIdleTimerGlobalCoordinator;
+@class SBIdleTimerGlobalCoordinator, UIWindowScene;
 
 @protocol SBProximityBacklightPolicy <SBProximitySensorManagerObserver>
 @property(retain, nonatomic) SBIdleTimerGlobalCoordinator *idleTimerGlobalCoordinator;
+- (void)windowSceneDidConnect:(UIWindowScene *)arg1;
 @end
 

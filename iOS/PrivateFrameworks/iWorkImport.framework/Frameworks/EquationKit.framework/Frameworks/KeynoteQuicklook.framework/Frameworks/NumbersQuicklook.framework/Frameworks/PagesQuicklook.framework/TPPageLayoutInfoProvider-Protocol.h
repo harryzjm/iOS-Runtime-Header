@@ -11,6 +11,7 @@
 
 @protocol TPPageLayoutInfoProvider <NSObject>
 @property(readonly, nonatomic) TPPageController *pageController;
+- (_Bool)shouldUseFacingPagesForPageIndex:(unsigned long long)arg1;
 - (NSString *)displayPageNumberForPageIndex:(unsigned long long)arg1;
 - (NSString *)displayPageNumberForCharIndex:(unsigned long long)arg1;
 - (_Bool)shouldHeaderFooterBeVisibleForPageIndex:(unsigned long long)arg1;

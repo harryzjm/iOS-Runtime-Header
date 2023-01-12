@@ -14,6 +14,7 @@
     MISSING_TYPE *dropbox;
     MISSING_TYPE *config;
     MISSING_TYPE *batchIdentifiers;
+    MISSING_TYPE *lock;
     MISSING_TYPE *flushQueue;
 }
 

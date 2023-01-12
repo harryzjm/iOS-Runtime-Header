@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 + (int)connectedSocketWithIPAddress:(id)arg1 srcPort:(short)arg2 error:(id *)arg3;
 + (int)socketWithIPAddress:(id)arg1 srcPort:(short)arg2 error:(id *)arg3;
 + (id)newNWConnectionWithIPAddress:(id)arg1 srcPort:(short)arg2;
-+ (_Bool)createNWPathEvaluator:(id *)arg1 withIPAddress:(id)arg2 localPort:(int *)arg3 remotePort:(int)arg4 shouldRunInProcess:(_Bool)arg5;
++ (_Bool)createNWPathEvaluator:(id *)arg1 withIPAddress:(id)arg2 localPort:(int *)arg3 remotePort:(int)arg4 shouldRunInProcess:(_Bool)arg5 useBackingSocket:(_Bool)arg6;
 + (void)setUniquePIDOnParameters:(id)arg1 shouldRunInProcess:(_Bool)arg2;
 + (_Bool)createAndStartListener:(id *)arg1 withParameters:(id)arg2;
 

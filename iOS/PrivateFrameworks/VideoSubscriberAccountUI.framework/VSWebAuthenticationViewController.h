@@ -6,15 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideoSubscriberAccountUI/VSMessageQueueDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/VSWebAuthenticationViewController-Protocol.h>
-#import <VideoSubscriberAccountUI/WKNavigationDelegate-Protocol.h>
-
 @class NSString, UIActivityIndicatorView, VSWebAuthenticationViewModel, WKWebView;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSWebAuthenticationViewController : UIViewController <WKNavigationDelegate, VSMessageQueueDelegate, VSWebAuthenticationViewController>
+@interface VSWebAuthenticationViewController : UIViewController
 {
     _Bool _cancellationAllowed;
     id <VSAuthenticationViewControllerDelegate> _delegate;

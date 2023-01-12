@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUINowPlayingWindowDelegate-Protocol.h>
-
 @class NSString;
 @protocol VUINowPlayingWindowDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUINowPlayingWindowDelegateProvider : NSObject <VUINowPlayingWindowDelegate>
+@interface VUINowPlayingWindowDelegateProvider : NSObject
 {
     id <VUINowPlayingWindowDelegate> _delegate;
 }

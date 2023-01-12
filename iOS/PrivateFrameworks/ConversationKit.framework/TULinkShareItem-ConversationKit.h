@@ -6,9 +6,7 @@
 
 #import <TelephonyUtilities/TULinkShareItem.h>
 
-#import <ConversationKit/UIActivityItemSource-Protocol.h>
-
-@interface TULinkShareItem (ConversationKit) <UIActivityItemSource>
+@interface TULinkShareItem (ConversationKit)
 - (id)activityViewControllerLinkMetadata:(id)arg1;
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;

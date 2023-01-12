@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFCore/AVDecodedAudioSettingsForFig-Protocol.h>
-#import <AVFCore/AVReencodedAudioSettingsForFig-Protocol.h>
+#import "AVAudioOutputSettings.h"
 
 __attribute__((visibility("hidden")))
-@interface AVAVAudioSettingsAudioOutputSettings <AVReencodedAudioSettingsForFig, AVDecodedAudioSettingsForFig>
+@interface AVAVAudioSettingsAudioOutputSettings : AVAudioOutputSettings
 {
 }
 

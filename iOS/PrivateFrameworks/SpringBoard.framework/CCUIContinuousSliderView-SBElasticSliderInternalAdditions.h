@@ -6,11 +6,9 @@
 
 #import <ControlCenterUIKit/CCUIContinuousSliderView.h>
 
-#import <SpringBoard/SBElasticGlyphView-Protocol.h>
-
 @class NSString;
 
-@interface CCUIContinuousSliderView (SBElasticSliderInternalAdditions) <SBElasticGlyphView>
+@interface CCUIContinuousSliderView (SBElasticSliderInternalAdditions)
 - (id)_createElasticBackgroundView;
 - (void)_updateGlyphScaleForAdditiveScaleOrAxisUpdate;
 - (struct CGPoint)_elasticGlyphCenterForDefaultGlyphCenter:(struct CGPoint)arg1;

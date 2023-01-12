@@ -8,8 +8,8 @@
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 #import <SpringBoard/SBSwitcherAnimatedTransitioning-Protocol.h>
 
-@class NSArray, NSString, SBAppLayout, SBApplicationSceneHandle, SBBestAppSuggestion, SBFluidSwitcherAnimationController, SBFluidSwitcherGesture, SBHomeGrabberView, SBIcon, SBMainWorkspaceTransitionRequest, SBTransientOverlayViewController, SBWorkspaceApplicationSceneTransitionContext, UIStatusBarStyleRequest;
-@protocol SBSwitcherContentViewControllerDataSource, SBSwitcherContentViewControllerDelegate;
+@class FBSSceneIdentityToken, NSArray, NSSet, NSString, SBAppLayout, SBApplicationSceneHandle, SBBestAppSuggestion, SBFluidSwitcherAnimationController, SBFluidSwitcherGesture, SBHomeGrabberView, SBIcon, SBMainWorkspaceTransitionRequest, SBSceneHandle, SBTransientOverlayViewController, SBWorkspaceApplicationSceneTransitionContext, UIStatusBarStyleRequest;
+@protocol SBSwitcherContentViewControllerDataSource, SBSwitcherContentViewControllerDelegate, SBSwitcherLiveContentOverlay;
 
 @protocol SBSwitcherContentViewControlling <SBButtonEventsHandler, SBLayoutStateTransitionObserver, SBSwitcherAnimatedTransitioning>
 @property(nonatomic, getter=isAsyncRenderingDisabled) _Bool asyncRenderingDisabled;
@@ -18,6 +18,12 @@
 @property(retain, nonatomic) SBBestAppSuggestion *bestAppSuggestion;
 @property(nonatomic) __weak id <SBSwitcherContentViewControllerDataSource> dataSource;
 @property(nonatomic) __weak id <SBSwitcherContentViewControllerDelegate> delegate;
+- (void)invalidate;
+- (NSArray *)liveScenesIdentityTokens;
+- (void)sceneLayoutTransitionWillStartWithTransitionContext:(SBWorkspaceApplicationSceneTransitionContext *)arg1;
+- (BOOL)activityModeForAppLayout:(SBAppLayout *)arg1;
+- (BOOL)jetsamModeForAppLayout:(SBAppLayout *)arg1;
+- (NSSet *)foregroundAppLayouts;
 - (void)tapReceivedForGrabberTongueAtEdge:(unsigned long long)arg1;
 - (void)clickReceivedForHomeGrabberView:(SBHomeGrabberView *)arg1;
 - (SBIcon *)iconForAppLayout:(SBAppLayout *)arg1;
@@ -36,9 +42,6 @@
 - (void)noteModelDidMutateForInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 willAnimate:(_Bool)arg3;
 - (void)prepareAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
 - (_Bool)shouldAnimateInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
-- (long long)switcherPreferredInterfaceOrientation;
-- (unsigned long long)_debugSwitcherPostModernRotationSupportedSupportedInterfaceOrientations;
-- (unsigned long long)switcherSupportedInterfaceOrientations;
 - (UIStatusBarStyleRequest *)trailingStatusBarStyleRequest;
 - (UIStatusBarStyleRequest *)leadingStatusBarStyleRequest;
 - (_Bool)isStatusBarHiddenForAppLayout:(SBAppLayout *)arg1;
@@ -49,7 +52,8 @@
 - (_Bool)isWindowVisible;
 - (_Bool)shouldAddAppLayoutToFront:(SBAppLayout *)arg1 forTransitionWithContext:(SBWorkspaceApplicationSceneTransitionContext *)arg2 transitionCompleted:(_Bool)arg3;
 - (double)minimumHomeScreenScale;
-- (struct CGRect)applicationSceneSettingsFrameForInterfaceOrientation:(long long)arg1 centerConfiguration:(long long)arg2;
+- (id <SBSwitcherLiveContentOverlay>)liveOverlayForSceneIdentityToken:(FBSSceneIdentityToken *)arg1;
+- (id <SBSwitcherLiveContentOverlay>)liveOverlayForSceneHandle:(SBSceneHandle *)arg1;
 - (double)snapshotScaleForSceneHandle:(SBApplicationSceneHandle *)arg1;
 @end
 

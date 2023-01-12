@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCMediaControlInfoDelegate-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaControlInfoGenerator : NSObject <VCMediaControlInfoDelegate>
+@interface VCMediaControlInfoGenerator : NSObject
 {
     unsigned int _type;
     struct __CFDictionary *_callbacksDict;

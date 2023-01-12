@@ -8,6 +8,7 @@
 
 @interface NSCoder (ObjectCache)
 - (id)hm_decodeHMAccessoryCategoryAndCacheForKey:(id)arg1;
+- (id)hm_decodeAndCacheTruncatedNameStringForKey:(id)arg1;
 - (id)hm_decodeAndCacheStringForKey:(id)arg1;
 - (id)hm_decodeAndCacheUUIDFromStringForKey:(id)arg1;
 - (id)hm_decodeAndCacheUUIDForKey:(id)arg1;

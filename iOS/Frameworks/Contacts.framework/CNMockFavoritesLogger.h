@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNFavoritesLogger-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNMockFavoritesLogger : NSObject <CNFavoritesLogger>
+@interface CNMockFavoritesLogger : NSObject
 {
 }
 

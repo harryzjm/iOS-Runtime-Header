@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)copyDecryptedDataFromEncryptedPayload:(id)arg1;
 - (id)allocEncryptedPayloadFromPayloadData:(id)arg1;
 - (void)dealloc;
-- (id)initWithSessionID:(unsigned int)arg1 participantID:(id)arg2 participantConfig:(CDStruct_c24deb19 *)arg3 transactionDelegate:(id)arg4;
+- (id)initWithSessionID:(unsigned int)arg1 participantID:(id)arg2 participantUUID:(id)arg3 participantConfig:(CDStruct_c24deb19 *)arg4 transactionDelegate:(id)arg5;
 
 @end
 

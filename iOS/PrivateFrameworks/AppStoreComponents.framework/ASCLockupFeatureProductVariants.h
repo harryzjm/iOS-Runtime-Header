@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCLockupFeature-Protocol.h>
-
 @class NSString;
 
-@interface ASCLockupFeatureProductVariants : NSObject <ASCLockupFeature>
+__attribute__((visibility("hidden")))
+@interface ASCLockupFeatureProductVariants : NSObject
 {
     NSString *_productVariantID;
 }

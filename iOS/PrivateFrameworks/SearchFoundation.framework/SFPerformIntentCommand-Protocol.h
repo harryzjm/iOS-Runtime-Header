@@ -11,6 +11,7 @@
 @protocol SFPerformIntentCommand <SFCommand>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) _Bool isRunnableWorkflow;
 @property(copy, nonatomic) NSData *intentMessageData;
 @property(copy, nonatomic) NSString *applicationBundleIdentifier;
 @property(copy, nonatomic) NSString *intentMessageName;

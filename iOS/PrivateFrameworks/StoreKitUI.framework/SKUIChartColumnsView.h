@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/SKUIFlexibleSegmentedControlDelegate-Protocol.h>
-
 @class NSArray, NSString, SKUIFlexibleSegmentedControl, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIChartColumnsView : UIView <SKUIFlexibleSegmentedControlDelegate>
+@interface SKUIChartColumnsView : UIView
 {
     NSArray *_allViewControllers;
     long long _animatingToNumberOfVisibleColumns;

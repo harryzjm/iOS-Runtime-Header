@@ -6,23 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @class AKAppleIDSession, NSDictionary, NSString, NSURLCredential;
 
-@interface DVTDeveloperAccountCredentials : NSObject <NSCopying>
+@interface DVTDeveloperAccountCredentials : NSObject
 {
     _Bool __optOutOfTokenRequirement;
     NSString *_username;
     NSURLCredential *_URLCredential;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)accountCredentialsFromUsername:(id)arg1 alternateDSID:(id)arg2 token:(id)arg3;
 + (id)accountCredentialsFromUsername:(id)arg1 password:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property _Bool _optOutOfTokenRequirement; // @synthesize _optOutOfTokenRequirement=__optOutOfTokenRequirement;
 @property(readonly, nonatomic) NSURLCredential *URLCredential; // @synthesize URLCredential=_URLCredential;
 @property(readonly, nonatomic) NSString *username; // @synthesize username=_username;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)applyAuthenticationHeadersToRequest:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *authenticationHeaders;
 - (id)authenticationHeadersForRequest:(id)arg1;

@@ -6,22 +6,19 @@
 
 #import <Sleep/HKSPPersistentStateMachineState.h>
 
-#import <SleepDaemon/HDSPWakeDetectionStateMachineEventHandler-Protocol.h>
-
 @class HDSPWakeDetectionStateMachine, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDSPWakeDetectionStateMachineState : HKSPPersistentStateMachineState <HDSPWakeDetectionStateMachineEventHandler>
+@interface HDSPWakeDetectionStateMachineState : HKSPPersistentStateMachineState
 {
 }
 
 - (void)earlyWakeUpWasNotifiedRemotely;
-- (void)wakeupEventDetected:(id)arg1;
+- (void)wakeupEventDetected:(unsigned long long)arg1 date:(id)arg2;
 - (void)wakeDetectionEventDue;
 - (_Bool)isWakeDetectionDisabled;
-- (id)determineNextState;
-- (void)updateState;
-@property(readonly, nonatomic) _Bool schedulesWakeDetection;
+- (id)nextStateWithContext:(id *)arg1;
+@property(readonly, nonatomic) _Bool isDetectingState;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

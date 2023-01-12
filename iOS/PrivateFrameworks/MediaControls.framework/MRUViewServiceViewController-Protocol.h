@@ -9,6 +9,7 @@
 @class MPMediaControlsConfiguration;
 
 @protocol MRUViewServiceViewController <NSObject>
+@property(copy, nonatomic) CDUnknownBlockType customRowTappedBlock;
 @property(copy, nonatomic) CDUnknownBlockType dismissalBlock;
 @property(retain, nonatomic) MPMediaControlsConfiguration *configuration;
 - (void)transitionToVisible:(_Bool)arg1 animated:(_Bool)arg2;

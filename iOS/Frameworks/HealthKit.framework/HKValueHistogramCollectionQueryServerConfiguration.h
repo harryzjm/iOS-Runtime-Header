@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class NSArray, NSDate, NSDateComponents;
 
 __attribute__((visibility("hidden")))
-@interface HKValueHistogramCollectionQueryServerConfiguration
+@interface HKValueHistogramCollectionQueryServerConfiguration : HKQueryServerConfiguration
 {
     NSDate *_anchorDate;
     NSDateComponents *_intervalComponents;

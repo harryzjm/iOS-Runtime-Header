@@ -22,7 +22,6 @@
 - (void)remote_getFeatureAvailabilityRequirementsWithCompletion:(void (^)(HKFeatureAvailabilityRequirementSet *, NSError *))arg1;
 - (void)remote_getPairedFeatureAttributesWithCompletion:(void (^)(HKPairedFeatureAttributes *, NSError *))arg1;
 - (void)remote_earliestDateLowestOnboardingVersionCompletedWithCompletion:(void (^)(NSDate *, NSError *))arg1;
-- (void)remote_highestOnboardingVersionCompletedWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)remote_getIsFeatureCapabilitySupportedOnActivePairedDeviceWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)remote_onboardedCountryCodeSupportedStateWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)remote_onboardingEligibilityForCountryCode:(NSString *)arg1 completion:(void (^)(HKFeatureAvailabilityOnboardingEligibility *, NSError *))arg2;

@@ -6,14 +6,16 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class MNArrivalUpdater;
+@class GEOComposedWaypoint, MNArrivalUpdater;
 
 @protocol MNArrivalUpdaterDelegate <NSObject>
 
 @optional
 - (void)arrivalUpdaterDidTimeoutInArrivalRegion:(MNArrivalUpdater *)arg1;
+- (void)arrivalUpdater:(MNArrivalUpdater *)arg1 shouldShowChargingInfoForWaypoint:(GEOComposedWaypoint *)arg2;
+- (void)arrivalUpdater:(MNArrivalUpdater *)arg1 didTimeoutAtLegIndex:(unsigned long long)arg2 withReason:(unsigned long long)arg3;
+- (void)arrivalUpdater:(MNArrivalUpdater *)arg1 didDepartFromLegIndex:(unsigned long long)arg2 withReason:(unsigned long long)arg3;
 - (void)arrivalUpdater:(MNArrivalUpdater *)arg1 didEnterPreArrivalStateForLegIndex:(unsigned long long)arg2;
-- (void)arrivalUpdater:(MNArrivalUpdater *)arg1 didArriveAtEndOfLegAtIndex:(unsigned long long)arg2;
-- (void)arrivalUpdater:(MNArrivalUpdater *)arg1 isApproachingEndOfLegAtIndex:(unsigned long long)arg2;
+- (void)arrivalUpdater:(MNArrivalUpdater *)arg1 didArriveAtEndOfLegIndex:(unsigned long long)arg2;
 @end
 

@@ -13,6 +13,7 @@
     MISSING_TYPE *identifier;
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
+    MISSING_TYPE *secureLocationsManager;
     MISSING_TYPE *interactionController;
     MISSING_TYPE *systemStateController;
 }

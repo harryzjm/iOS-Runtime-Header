@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class NSDictionary, _UINavigationBarTitleFontProvider;
 
 __attribute__((visibility("hidden")))
 @interface _UINavTitleAppearanceData
@@ -12,9 +12,12 @@ __attribute__((visibility("hidden")))
     NSDictionary *_titleTextAttributes;
     NSDictionary *_largeTitleTextAttributes;
     struct UIOffset _titlePositionAdjustment;
+    _UINavigationBarTitleFontProvider *_titleFontProvider;
+    long long _titleFontProviderIdiom;
 }
 
 + (id)decodeFromCoder:(id)arg1 prefix:(id)arg2;
++ (id)standardTitleDataForIdiom:(long long)arg1;
 + (id)standardTitleData;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *largeTitleTextAttributes;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineDelegate-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineDelegate-Protocol.h>
 
 @class NSDate;
 
-@protocol HDSPTimeAsleepTrackerStateMachineDelegate <HKSPStateMachineDelegate>
+@protocol HDSPTimeAsleepTrackerStateMachineDelegate <HKSPPersistentStateMachineDelegate>
 - (void)notifyForActivityDetectedOnDate:(NSDate *)arg1;
 - (void)stopAppLaunchDetection;
 - (void)startAppLaunchDetection;
@@ -16,7 +16,5 @@
 - (void)startActivityDetection;
 - (void)endSleepTrackingSessionWithReason:(unsigned long long)arg1;
 - (void)startSleepTrackingSessionWithReason:(unsigned long long)arg1;
-- (void)unscheduleSleepTracking;
-- (void)scheduleSleepTracking;
 @end
 

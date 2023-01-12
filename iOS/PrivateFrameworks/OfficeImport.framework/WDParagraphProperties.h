@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class WDCharacterProperties, WDDocument, WDParagraphPropertiesValues;
 
 __attribute__((visibility("hidden")))
-@interface WDParagraphProperties : NSObject <NSCopying>
+@interface WDParagraphProperties : NSObject
 {
     WDCharacterProperties *mCharacterProperties;
     _Bool mCharacterPropertiesOverridden;

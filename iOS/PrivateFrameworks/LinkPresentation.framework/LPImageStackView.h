@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_imageViews;
 }
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_layoutImagesForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;

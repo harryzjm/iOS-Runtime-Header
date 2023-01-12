@@ -7,13 +7,10 @@
 #import <objc/NSObject.h>
 
 @class ARUIRingUniformsCache;
-@protocol MTLBuffer;
 
 __attribute__((visibility("hidden")))
 @interface ARUIRingsRenderer : NSObject
 {
-    id <MTLBuffer> _vertexPositionsBuffer;
-    id <MTLBuffer> _indexBuffer;
     unsigned long long _indexCount;
     ARUIRingUniformsCache *_cache;
 }

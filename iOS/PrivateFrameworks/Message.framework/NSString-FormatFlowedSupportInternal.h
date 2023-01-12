@@ -16,6 +16,14 @@
 - (unsigned long long)mf_nextWordFromIndex:(unsigned long long)arg1 forward:(_Bool)arg2;
 - (unsigned long long)mf_lineBreakBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2;
 - (id)mf_convertFromFlowedText:(unsigned int)arg1 visuallyEmpty:(_Bool *)arg2;
+- (id)mf_decodedIMAPMailboxName;
+- (id)mf_encodedIMAPMailboxName;
+@property(readonly) _Bool mf_isHorizontalSeparator;
+- (_Bool)mf_isSignature;
+- (_Bool)mf_isForwardSeparator;
+- (_Bool)mf_isAttributionPrefix;
+- (_Bool)mf_isAttribution;
+- (_Bool)mf_isWhitespace;
 - (id)mf_prefixToString:(id)arg1;
 - (id)mf_stringByTrimmingWhitespaceAndNewlineCharacters;
 - (_Bool)mf_containsSubstring:(id)arg1;

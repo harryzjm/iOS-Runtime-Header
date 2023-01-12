@@ -21,8 +21,10 @@ __attribute__((visibility("hidden")))
 - (void)_didReceiveResponse:(id)arg1 response:(struct _CFURLResponse *)arg2;
 - (_Bool)_willSendRequest:(id)arg1 request:(struct _CFURLRequest *)arg2 redirectionResponse:(struct _CFURLResponse *)arg3;
 - (void)_didFinish:(id)arg1 error:(struct __CFError *)arg2;
+- (void)_cancelAndFinishRequest:(id)arg1 error:(struct __CFError *)arg2;
 - (void)_cancelRequestID:(unsigned long long)arg1;
 - (int)_handleRequest:(struct __CFDictionary *)arg1 requestID:(unsigned long long)arg2;
+- (void)_cancelPendingRequests;
 - (void)dealloc;
 - (id)initWithFigAsset:(struct OpaqueFigAsset *)arg1;
 

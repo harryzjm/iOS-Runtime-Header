@@ -6,17 +6,16 @@
 
 #import <UIKit/UIControl.h>
 
-#import <AppStoreComponents/ASCLockupPresenterView-Protocol.h>
-#import <AppStoreComponents/ASCOfferButtonDelegate-Protocol.h>
-#import <AppStoreComponents/ASCOfferPresenterView-Protocol.h>
-
-@class ASCArtworkView, ASCOfferButton, ASCOfferTheme, ASCSkeletonLabel, NSString, UIColor, UILabel;
+@class ASCArtworkView, ASCLockupDisplayContext, ASCOfferButton, ASCOfferTheme, ASCSkeletonLabel, NSString, UIColor, UILabel;
+@protocol ASCLockupTheme;
 
 __attribute__((visibility("hidden")))
-@interface ASCLockupContentView : UIControl <ASCOfferButtonDelegate, ASCLockupPresenterView, ASCOfferPresenterView>
+@interface ASCLockupContentView : UIControl
 {
     NSString *_size;
     ASCOfferTheme *_offerTheme;
+    id <ASCLockupTheme> _lockupTheme;
+    ASCLockupDisplayContext *_displayContext;
     ASCArtworkView *_iconArtworkView;
     ASCSkeletonLabel *_titleLabel;
     ASCSkeletonLabel *_subtitleLabel;
@@ -25,7 +24,11 @@ __attribute__((visibility("hidden")))
     UILabel *_offerStatusLabelIfLoaded;
 }
 
-+ (_Bool)isOfferButtonOnlyLockupForSize:(id)arg1;
++ (_Bool)offerButtonShouldExpandBackgroundForSize:(id)arg1;
++ (double)offerButtonTopPaddingForSize:(id)arg1;
++ (_Bool)offerButtonShouldTopAlignForSize:(id)arg1;
++ (_Bool)isOfferButtonFixedHeightForSize:(id)arg1;
++ (_Bool)isSmallOfferButtonLockupForSize:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *offerStatusLabelIfLoaded; // @synthesize offerStatusLabelIfLoaded=_offerStatusLabelIfLoaded;
 @property(readonly, nonatomic) UILabel *headingLabelIfLoaded; // @synthesize headingLabelIfLoaded=_headingLabelIfLoaded;
@@ -33,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) ASCSkeletonLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(readonly, nonatomic) ASCSkeletonLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(readonly, nonatomic) ASCArtworkView *iconArtworkView; // @synthesize iconArtworkView=_iconArtworkView;
+@property(readonly, copy, nonatomic) ASCLockupDisplayContext *displayContext; // @synthesize displayContext=_displayContext;
+@property(retain, nonatomic) id <ASCLockupTheme> lockupTheme; // @synthesize lockupTheme=_lockupTheme;
 @property(copy, nonatomic) ASCOfferTheme *offerTheme; // @synthesize offerTheme=_offerTheme;
 @property(retain, nonatomic) NSString *size; // @synthesize size=_size;
 @property(readonly, copy) NSString *description;
@@ -44,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)setOfferEnabled:(_Bool)arg1;
 - (void)setOfferMetadata:(id)arg1;
 - (id)saveOfferState;
+- (void)setDisplayContext:(id)arg1;
 - (void)setLoading:(_Bool)arg1;
 - (void)setPrefersRightToLeftLayout:(_Bool)arg1;
 - (void)setSubtitle:(id)arg1;
@@ -57,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)invalidateIntrinsicContentSize;
+- (double)minimumLockupHeight;
 - (id)makeLayout;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setHighlighted:(_Bool)arg1;
@@ -67,6 +74,14 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)shouldHideOfferStatus;
+- (_Bool)shouldHideSubtitle;
+- (_Bool)shouldHideTitle;
+- (_Bool)shouldHideHeading;
+- (_Bool)shouldHideIconArtwork;
+- (_Bool)isMiniLockup;
+- (_Bool)isSmallOfferButtonOnlyLockup;
+@property(readonly, nonatomic) _Bool isOfferButtonOnlyLockup;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

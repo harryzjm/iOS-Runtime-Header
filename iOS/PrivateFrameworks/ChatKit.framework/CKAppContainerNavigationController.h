@@ -6,14 +6,11 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <ChatKit/CKBrowserViewControllerSendDelegate-Protocol.h>
-#import <ChatKit/_UISheetPresentationControllerDelegate-Protocol.h>
-
 @class NSString, UIViewController;
 @protocol CKBrowserViewControllerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface CKAppContainerNavigationController : UINavigationController <_UISheetPresentationControllerDelegate, CKBrowserViewControllerSendDelegate>
+@interface CKAppContainerNavigationController : UINavigationController
 {
     UIViewController<CKBrowserViewControllerProtocol> *_browserVC;
 }

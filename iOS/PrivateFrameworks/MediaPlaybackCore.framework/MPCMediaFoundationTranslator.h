@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MFQueueControlling-Protocol.h>
-
 @class NSMutableDictionary;
 @protocol MPCQueueItemProviding;
 
 __attribute__((visibility("hidden")))
-@interface MPCMediaFoundationTranslator : NSObject <MFQueueControlling>
+@interface MPCMediaFoundationTranslator : NSObject
 {
     NSMutableDictionary *_mapping;
     id <MPCQueueItemProviding> _queueController;

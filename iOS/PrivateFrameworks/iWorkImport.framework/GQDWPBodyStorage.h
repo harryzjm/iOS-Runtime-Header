@@ -6,7 +6,6 @@
 
 @class GQDWPLayoutStorage;
 
-__attribute__((visibility("hidden")))
 @interface GQDWPBodyStorage
 {
     GQDWPLayoutStorage *mFootnotes;

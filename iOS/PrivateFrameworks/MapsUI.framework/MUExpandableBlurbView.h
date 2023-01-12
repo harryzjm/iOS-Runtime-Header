@@ -6,16 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class MKExpandingLabel, NSString;
+@class MUExpandingLabel, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MUExpandableBlurbView : UIView
 {
-    MKExpandingLabel *_expandingLabel;
+    MUExpandingLabel *_expandingLabel;
     CDUnknownBlockType _moreAction;
+    CDUnknownBlockType _resizeBlock;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType resizeBlock; // @synthesize resizeBlock=_resizeBlock;
 @property(copy, nonatomic) CDUnknownBlockType moreAction; // @synthesize moreAction=_moreAction;
 - (void)infoCardThemeChanged;
 - (void)_expand;

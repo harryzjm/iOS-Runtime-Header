@@ -6,13 +6,11 @@
 
 #import <UIKit/UIPercentDrivenInteractiveTransition.h>
 
-#import <ProxCardKit/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface PRXPurelyInteractiveTransition : UIPercentDrivenInteractiveTransition <UIViewControllerAnimatedTransitioning>
+@interface PRXPurelyInteractiveTransition : UIPercentDrivenInteractiveTransition
 {
     id <UIViewControllerContextTransitioning> _transitionContext;
 }

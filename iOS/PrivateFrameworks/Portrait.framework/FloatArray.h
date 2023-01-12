@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Portrait/NSCopying-Protocol.h>
-#import <Portrait/NSMutableCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface FloatArray : NSObject <NSCopying, NSMutableCopying>
+@interface FloatArray : NSObject
 {
     float *_buffer;
     unsigned long long _count;

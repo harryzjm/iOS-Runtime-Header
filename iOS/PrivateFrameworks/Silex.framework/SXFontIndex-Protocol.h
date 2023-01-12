@@ -7,10 +7,11 @@
 #import <Silex/NSObject-Protocol.h>
 
 @class NSString;
-@protocol SXFontAttributes;
+@protocol SXFontAttributes, SXFontFace;
 
 @protocol SXFontIndex <NSObject>
 - (id <SXFontAttributes>)fontAttributesForFontName:(NSString *)arg1;
+- (id <SXFontFace>)fontFaceForFontAttributes:(id <SXFontAttributes>)arg1 size:(long long)arg2;
 - (NSString *)fontNameForFontAttributes:(id <SXFontAttributes>)arg1 size:(long long)arg2;
 @end
 

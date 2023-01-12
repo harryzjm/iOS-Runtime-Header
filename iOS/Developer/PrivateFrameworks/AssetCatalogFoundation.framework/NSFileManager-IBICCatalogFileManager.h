@@ -6,11 +6,9 @@
 
 #import <Foundation/NSFileManager.h>
 
-#import <AssetCatalogFoundation/IBICCatalogFileManager-Protocol.h>
-
 @class NSString;
 
-@interface NSFileManager (IBICCatalogFileManager) <IBICCatalogFileManager>
+@interface NSFileManager (IBICCatalogFileManager)
 + (id)ib_defaultManager;
 - (void)ib_endBatchEdits;
 - (void)ib_startBatchEdits;

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSCoding-Protocol.h>
-#import <CoreAutoLayout/NSCopying-Protocol.h>
-
 @class NSLayoutDimension, NSLayoutPoint, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString;
 
-@interface NSLayoutRect : NSObject <NSCopying, NSCoding>
+@interface NSLayoutRect : NSObject
 {
     NSLayoutXAxisAnchor *_leadingAnchor;
     NSLayoutYAxisAnchor *_topAnchor;

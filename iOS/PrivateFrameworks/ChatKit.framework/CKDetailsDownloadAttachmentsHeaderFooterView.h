@@ -6,13 +6,11 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <ChatKit/CKDetailsHeaderFooterView-Protocol.h>
-
 @class NSLayoutConstraint, NSString, UIColor, UIImageView, UITextView;
 @protocol CKDetailsDownloadAttachmentsHeaderFooterViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKDetailsDownloadAttachmentsHeaderFooterView : UITableViewHeaderFooterView <CKDetailsHeaderFooterView>
+@interface CKDetailsDownloadAttachmentsHeaderFooterView : UITableViewHeaderFooterView
 {
     _Bool _logoHidden;
     NSString *_titleText;
@@ -40,6 +38,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <CKDetailsDownloadAttachmentsHeaderFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *buttonText; // @synthesize buttonText=_buttonText;
 @property(copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateiCloudImageViewAppearance;
 - (void)handleUserTap:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithReuseIdentifier:(id)arg1;

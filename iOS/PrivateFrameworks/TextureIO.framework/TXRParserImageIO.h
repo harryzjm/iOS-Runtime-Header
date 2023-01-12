@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TextureIO/TXRParser-Protocol.h>
-
 @class NSString, TXRImageInfo, TXRTextureInfo;
 
 __attribute__((visibility("hidden")))
-@interface TXRParserImageIO : NSObject <TXRParser>
+@interface TXRParserImageIO : NSObject
 {
     TXRTextureInfo *_textureInfo;
     TXRImageInfo *_imageInfo;

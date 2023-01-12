@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIFocusAnimationContext-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusAnimationContext : NSObject <UIFocusAnimationContext>
+@interface _UIFocusAnimationContext : NSObject
 {
     double _duration;
 }

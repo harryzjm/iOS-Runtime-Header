@@ -6,13 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <IntentsUI/INUIVoiceShortcutRemoteHostingInterface-Protocol.h>
-
 @class INUIVoiceShortcutHostContext, NSString;
 @protocol INUIVoiceShortcutRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface INUIVoiceShortcutHostViewController : _UIRemoteViewController <INUIVoiceShortcutRemoteHostingInterface>
+@interface INUIVoiceShortcutHostViewController : _UIRemoteViewController
 {
     id <INUIVoiceShortcutRemoteViewControllerDelegate> _delegate;
     INUIVoiceShortcutHostContext *_serviceContext;

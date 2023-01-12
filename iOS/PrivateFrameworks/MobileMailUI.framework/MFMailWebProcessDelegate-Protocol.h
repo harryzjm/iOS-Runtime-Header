@@ -10,7 +10,7 @@
 
 @protocol MFMailWebProcessDelegate <NSObject>
 - (void)webProcessDidCreateBrowserContextControllerLoadDelegate;
-- (void)webProcessFailedToLoadResourceWithProxyForURL:(NSURL *)arg1;
+- (void)webProcessFailedToLoadResourceWithProxyForURL:(NSURL *)arg1 failureReason:(long long)arg2;
 - (void)webProcessDidBlockLoadingResourceWithURL:(NSURL *)arg1;
 - (void)webProcessDidFinishLoadForURL:(NSURL *)arg1;
 - (void)webProcessDidFinishDocumentLoadForURL:(NSURL *)arg1 andRequestedRemoteURLs:(NSArray *)arg2;

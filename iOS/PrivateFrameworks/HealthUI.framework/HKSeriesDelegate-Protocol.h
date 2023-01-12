@@ -8,15 +8,8 @@
 
 @protocol HKSeriesDelegate
 - (void)nonemptyDrawComplete;
-- (_Bool)measuringStartupTime;
-- (double)snapScreenCoordinateToXAxisResolution:(double)arg1;
 - (_Bool)rangeIsVisible:(HKValueRange *)arg1;
-- (struct CGRect)screenRectForSeries:(HKGraphSeries *)arg1;
-- (struct CGPoint)seriesContentOffset;
-- (_Bool)seriesDrawingDuringTiling;
-- (_Bool)seriesDrawingDuringAutoscale;
-- (_Bool)seriesDrawingDuringScrolling;
-- (struct UIEdgeInsets)virtualMarginInsets;
+- (double)snapScreenCoordinateToXAxisResolution:(double)arg1;
 - (void)seriesDidInvalidatePaths:(HKGraphSeries *)arg1 newDataArrived:(_Bool)arg2;
 @end
 

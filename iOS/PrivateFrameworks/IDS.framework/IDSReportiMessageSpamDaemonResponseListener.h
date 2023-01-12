@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-
 @class IDSDaemonRequestTimer, NSString;
 
-@interface IDSReportiMessageSpamDaemonResponseListener : NSObject <IDSDaemonListenerProtocol>
+@interface IDSReportiMessageSpamDaemonResponseListener : NSObject
 {
     IDSDaemonRequestTimer *_requestTimer;
 }

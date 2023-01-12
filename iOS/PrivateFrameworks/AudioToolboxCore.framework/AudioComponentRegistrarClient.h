@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/AudioComponentRegistrarCallbackProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AudioComponentRegistrarClient : NSObject <AudioComponentRegistrarCallbackProtocol>
+@interface AudioComponentRegistrarClient : NSObject
 {
 }
 
-- (void)registrationsChanged:(id)arg1 fsHash:(id)arg2;
+- (void)registrationsChanged:(id)arg1 includesExtensions:(_Bool)arg2 fsHash:(id)arg3;
 
 @end
 

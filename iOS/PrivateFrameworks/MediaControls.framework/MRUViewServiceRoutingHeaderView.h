@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
 @class MRUVisualStylingProvider, NSString, UIImage, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MRUViewServiceRoutingHeaderView : UIView <MRUVisualStylingProviderObserver>
+@interface MRUViewServiceRoutingHeaderView : UIView
 {
     NSString *_title;
     UIImage *_image;

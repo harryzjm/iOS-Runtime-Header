@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     GEOServer *_server;
 }
 
++ (id)proxyForServer:(id)arg1 daemon:(id)arg2;
 + (id)proxyForClass:(Class)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) GEOServer *server; // @synthesize server=_server;
@@ -24,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqualToServerProxy:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)startServerWithDaemon:(id)arg1;
-- (void)_setServer:(id)arg1 daemon:(id)arg2;
+- (void)_setServer:(id)arg1;
 
 @end
 

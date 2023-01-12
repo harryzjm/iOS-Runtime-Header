@@ -7,6 +7,7 @@
 @class CRVehicle, NSArray, NSData, NSDictionary, NSString, NSURL;
 
 @protocol CRCarKitService
+- (void)postBannerToPhone:(NSString *)arg1 notificationMessage:(NSString *)arg2 reply:(void (^)(void))arg3;
 - (void)fetchScaledDisplaysWithReply:(NSArray *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchSessionInstrumentClusterURLsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchInstrumentClusterURLsWithReply:(void (^)(NSArray *, NSError *))arg1;

@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSDrawables/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSKSelection;
 
-@interface TSDArchivedPathSelection : TSPObject <TSKArchivedSelection>
+@interface TSDArchivedPathSelection : TSPObject
 {
     TSKSelection *_pathSelection;
 }

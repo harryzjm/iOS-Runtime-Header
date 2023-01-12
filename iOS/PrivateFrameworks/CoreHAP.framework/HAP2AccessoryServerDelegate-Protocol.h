@@ -6,9 +6,17 @@
 
 #import <CoreHAP/NSObject-Protocol.h>
 
+@class HAPAccessoryPairingRequest, HAPPairingIdentity, NSData, NSError, NSString;
 @protocol HAP2AccessoryServer;
 
 @protocol HAP2AccessoryServerDelegate <NSObject>
+@property(readonly) HAPAccessoryPairingRequest *pairingRequest;
+- (_Bool)onDemandConnectionsAreEnabled;
+- (HAPPairingIdentity *)currentIdentity;
+- (void)associateAccessoryWithControllerKeyUsingAccessoryIdentifier:(NSString *)arg1;
+- (void)associateAccessoryWithControllerKeyUsingAccessoryPublicKey:(NSData *)arg1;
+- (_Bool)shouldRetryPVDueToAuthenticationError:(NSError *)arg1;
+- (void)initializeKeyBagIfNecessary;
 
 @optional
 - (void)accessoryServerDidUpdateCategory:(id <HAP2AccessoryServer>)arg1;

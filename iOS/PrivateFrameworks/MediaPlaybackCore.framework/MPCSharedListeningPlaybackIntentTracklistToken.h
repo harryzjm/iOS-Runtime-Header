@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
-
 @class ICLiveLinkIdentity, MPCPlaybackSharedListeningProperties;
 
 __attribute__((visibility("hidden")))
-@interface MPCSharedListeningPlaybackIntentTracklistToken : NSObject <NSSecureCoding>
+@interface MPCSharedListeningPlaybackIntentTracklistToken : NSObject
 {
     MPCPlaybackSharedListeningProperties *_sharedListeningProperties;
     ICLiveLinkIdentity *_identity;

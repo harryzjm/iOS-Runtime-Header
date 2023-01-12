@@ -10,6 +10,7 @@
 @protocol MTLBuffer;
 
 @protocol MTLAccelerationStructureSPI <MTLAccelerationStructure>
+@property(readonly) unsigned long long gpuHandle;
 @property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly, nonatomic) unsigned long long bufferOffset;
 @property(readonly, nonatomic) id <MTLBuffer> buffer;

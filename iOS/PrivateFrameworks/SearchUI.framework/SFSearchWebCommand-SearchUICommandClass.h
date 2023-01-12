@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFSearchWebCommand.h>
 
 @interface SFSearchWebCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

@@ -6,9 +6,12 @@
 
 #import <WatchListKit/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, WLKPlaybackSummary;
+@class NSArray, NSDictionary, NSString, WLKFederatedPunchout, WLKPlaybackSummary;
 
 @protocol WLKConnectionServerProtocol <NSObject>
+- (void)performSportsFavoritesAction:(unsigned long long)arg1 favoritesSyncEnabled:(_Bool)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)performSportsFavoritesAction:(unsigned long long)arg1 ids:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)reportFederatedPunchout:(WLKFederatedPunchout *)arg1;
 - (void)refreshSubscriptionData:(_Bool)arg1;
 - (void)fetchSubscriptionData:(_Bool)arg1 callerProcessID:(int)arg2 completion:(void (^)(WLKSubscriptionData *, NSError *))arg3;
 - (void)clearOffers:(void (^)(NSError *))arg1;

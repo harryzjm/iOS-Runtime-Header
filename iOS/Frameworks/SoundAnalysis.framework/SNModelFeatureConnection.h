@@ -16,9 +16,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly) NSString *destinationFeatureName; // @synthesize destinationFeatureName=_destinationFeatureName;
-@property(readonly) NSString *sourceFeatureName; // @synthesize sourceFeatureName=_sourceFeatureName;
-- (id)initWithSourceFeatureName:(id)arg1 destinationFeatureName:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)init;
 
 @end
 

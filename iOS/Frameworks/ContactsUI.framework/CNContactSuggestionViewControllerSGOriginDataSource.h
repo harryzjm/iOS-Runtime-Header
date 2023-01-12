@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNContactSuggestionViewControllerDataSource-Protocol.h>
-
 @class NSAttributedString, NSString, NSURL, SGOrigin;
 
 __attribute__((visibility("hidden")))
-@interface CNContactSuggestionViewControllerSGOriginDataSource : NSObject <CNContactSuggestionViewControllerDataSource>
+@interface CNContactSuggestionViewControllerSGOriginDataSource : NSObject
 {
     SGOrigin *_origin;
 }

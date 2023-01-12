@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <JetEngine/NSNetServiceBrowserDelegate-Protocol.h>
-#import <JetEngine/NSNetServiceDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9JetEngine23MetricsInspectorScanner : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
+@interface _TtC9JetEngine23MetricsInspectorScanner : NSObject
 {
     MISSING_TYPE *serviceBrowser;
     MISSING_TYPE *stateLock;

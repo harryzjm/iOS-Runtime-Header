@@ -8,10 +8,12 @@
 @protocol APMetricPrimitiveCreating, APPCJourneyMetricsHelping, APPCPromotableContent;
 
 @protocol APPCJourneyMetricsHelping
+- (void)addUnfilledReason:(long long)arg1;
+- (void)adDidImpress;
 - (void)contentLoadFailure;
 - (void)exceededContainer;
 - (void)getAppWithButtonState:(long long)arg1 timeToPreviousInstall:(long long)arg2;
-- (void)unloaded;
+- (void)unloadedWithReason:(long long)arg1;
 - (void)adMarkerInteracted;
 - (void)userReturnedFromInteraction;
 - (void)interactedWithElementID:(unsigned char)arg1 atXPos:(float)arg2 yPos:(float)arg3;
@@ -22,6 +24,9 @@
 - (void)visibleWithPercent:(long long)arg1 starting:(NSDate *)arg2 duration:(double)arg3 collapsed:(_Bool)arg4;
 - (void)onScreenWithCollapsed:(_Bool)arg1;
 - (void)ready;
+- (void)placedWithPlacementType:(long long)arg1 placement:(long long)arg2 position:(long long)arg3;
+- (void)placedWithPlacementType:(long long)arg1 placement:(long long)arg2 unfilledReason:(long long)arg3;
+- (void)placedWithPlacementType:(long long)arg1 placement:(long long)arg2;
 - (void)placedWithPlacementType:(long long)arg1 wasNativeSlot:(_Bool)arg2;
 - (void)placedWithPlacementType:(long long)arg1;
 - (void)loaded;
@@ -32,6 +37,8 @@
 - (void)delivered;
 @property(nonatomic) __weak id <APPCPromotableContent> promotedContent;
 @property(nonatomic, readonly) _TtC15PromotedContent31JourneyMetricsHelperDiagnostics *diagnostics;
+@property(nonatomic, readonly) _Bool didUnload;
+@property(nonatomic, readonly) _Bool didImpress;
 @property(nonatomic, readonly) _Bool isCurrentlyOnScreen;
 @property(nonatomic, readonly) _Bool hasBeenOnScreen;
 @property(nonatomic, readonly) id <APMetricPrimitiveCreating> primitiveCreator;

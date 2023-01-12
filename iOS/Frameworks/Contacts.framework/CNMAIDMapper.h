@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNDataMapper-Protocol.h>
-
 @class CLSDataStore, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNMAIDMapper : NSObject <CNDataMapper>
+@interface CNMAIDMapper : NSObject
 {
     CLSDataStore *_dataStore;
 }
@@ -19,11 +17,13 @@ __attribute__((visibility("hidden")))
 + (id)os_log;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CLSDataStore *dataStore; // @synthesize dataStore=_dataStore;
+- (id)contactCountForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)authorizedKeysForContactKeys:(id)arg1 error:(id *)arg2;
 - (id)defaultContainerIdentifier;
 - (id)subgroupsOfGroupWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)groupsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
+- (id)policyWithDescription:(id)arg1 error:(id *)arg2;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)serverSearchContainersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
@@ -31,11 +31,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)executeSaveRequest:(id)arg1 error:(id *)arg2;
 - (id)meContactIdentifiers:(id *)arg1;
 - (id)contactObservableForFetchRequest:(id)arg1;
+@property(readonly) _Bool shouldLogContactsAccess;
 - (_Bool)requestAccessForEntityType:(long long)arg1 error:(id *)arg2;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy) NSString *description;
 - (id)initWithDataStore:(id)arg1 environment:(id)arg2;
-- (id)initWithContactsEnvironment:(id)arg1 managedConfiguration:(id)arg2;
+- (id)initWithConfiguration:(id)arg1;
 - (id)init;
 
 // Remaining properties
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) NSString *legacyTetheredSyncComputerAnchor;
 @property(retain, nonatomic) NSString *legacyTetheredSyncDeviceAnchor;
+@property(readonly, nonatomic) _Bool shouldLogPrivacyAccountingAccessEvents;
 @property(readonly) Class superclass;
 
 @end

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCAppOfferStateDelegate-Protocol.h>
-
 @class AMSPromise, ASCJitterBackoff, ASCPendingPromises, ASCWorkspace, NSMapTable, NSString;
 @protocol ASCServices;
 
 __attribute__((visibility("hidden")))
-@interface ASCAppOfferStateCenter : NSObject <ASCAppOfferStateDelegate>
+@interface ASCAppOfferStateCenter : NSObject
 {
     id <ASCServices> _connection;
     ASCWorkspace *_workspace;
@@ -36,9 +34,9 @@ __attribute__((visibility("hidden")))
 - (void)offer:(id)arg1 didChangeState:(id)arg2 withMetadata:(id)arg3 flags:(long long)arg4;
 - (id)reinstallWatchSystemAppWithBundleID:(id)arg1;
 - (id)reinstallWatchAppWithID:(id)arg1;
-- (id)performActionOfOffer:(id)arg1 withActivity:(id)arg2;
+- (id)performActionOfOffer:(id)arg1 withActivity:(id)arg2 inContext:(id)arg3;
 - (id)performFallbackActionForOffer:(id)arg1;
-- (id)performActionOfOffer:(id)arg1 withActivity:(id)arg2 usingService:(id)arg3;
+- (id)performActionOfOffer:(id)arg1 withActivity:(id)arg2 inContext:(id)arg3 usingService:(id)arg4;
 - (void)stopObservingStateForOffer:(id)arg1;
 - (id)stateMachineForOffer:(id)arg1;
 - (void)daemonDidRebootstrap:(id)arg1;

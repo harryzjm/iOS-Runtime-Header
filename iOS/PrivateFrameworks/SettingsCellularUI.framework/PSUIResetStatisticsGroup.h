@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 @property(nonatomic) __weak id <PSUIResetStatisticsGroupDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long policy; // @synthesize policy=_policy;
+- (id)getLogger;
 - (void)clearStats:(id)arg1;
 - (void)_updateLastResetText;
 - (id)_lastUpdateDate;

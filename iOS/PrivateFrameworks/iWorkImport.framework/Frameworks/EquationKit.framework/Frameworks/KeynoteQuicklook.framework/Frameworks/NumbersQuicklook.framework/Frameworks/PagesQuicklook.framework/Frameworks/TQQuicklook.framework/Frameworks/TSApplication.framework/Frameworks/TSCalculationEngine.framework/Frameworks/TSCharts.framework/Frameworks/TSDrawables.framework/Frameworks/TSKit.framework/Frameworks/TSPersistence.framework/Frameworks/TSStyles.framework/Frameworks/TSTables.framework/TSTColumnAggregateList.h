@@ -6,16 +6,15 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSArray;
 
-@interface TSTColumnAggregateList : TSKSosBase <NSCopying>
+@interface TSTColumnAggregateList : TSKSosBase
 {
     NSArray *_columnAggregates;
 }
 
 - (void).cxx_destruct;
+- (_Bool)isFunctionallyEquivalent:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const void *)arg1;

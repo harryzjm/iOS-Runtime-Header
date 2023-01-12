@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/CAAnimationDelegate-Protocol.h>
-#import <LinkPresentation/UIGestureRecognizerDelegate-Protocol.h>
-
 @class LPTapToLoadViewStyle, LPTextView, NSString, UILongPressGestureRecognizer, UIView;
 @protocol LPTapToLoadViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface LPTapToLoadView <CAAnimationDelegate, UIGestureRecognizerDelegate>
+@interface LPTapToLoadView
 {
     LPTextView *_captionView;
     UIView *_progressView;

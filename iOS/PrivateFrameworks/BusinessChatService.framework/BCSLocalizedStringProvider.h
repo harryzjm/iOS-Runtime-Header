@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSLocalizedStringProviding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSLocalizedStringProvider : NSObject <BCSLocalizedStringProviding>
+@interface BCSLocalizedStringProvider : NSObject
 {
 }
 

@@ -6,25 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class TSPObjectContext, TSPTemporaryObjectContextDelegate;
+@class NSMutableIndexSet, TSPObjectContext, TSPTemporaryObjectContextDelegate;
 
 @interface TSTCellDictionary : NSObject
 {
     struct os_unfair_lock_s _lock;
-    struct map<TSUCellCoord, TSTCell *, std::less<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, TSTCell *>>> _cellsByCoord;
+    struct unordered_map<TSUCellCoord, TSTCell *, std::hash<TSUCellCoord>, std::equal_to<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, TSTCell *>>> _cellsByCoord;
+    struct TSCECellCoordSet _cellCoordsToStyleUpgradeForFormulatext;
+    _Bool _hasAnyRichTextCells;
+    unsigned short _minColumn;
+    unsigned short _maxColumn;
     TSPTemporaryObjectContextDelegate *_temporaryObjectContextDelegate;
     TSPObjectContext *_temporaryContext;
-    struct TSCECellCoordSet _cellCoordsToStyleUpgradeForFormulatext;
+    NSMutableIndexSet *_rowIndexes;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned short maxColumn; // @synthesize maxColumn=_maxColumn;
+@property(nonatomic) unsigned short minColumn; // @synthesize minColumn=_minColumn;
+@property(retain, nonatomic) NSMutableIndexSet *rowIndexes; // @synthesize rowIndexes=_rowIndexes;
+@property(readonly, nonatomic) TSPObjectContext *temporaryContext; // @synthesize temporaryContext=_temporaryContext;
+@property(readonly, nonatomic) TSPTemporaryObjectContextDelegate *temporaryObjectContextDelegate; // @synthesize temporaryObjectContextDelegate=_temporaryObjectContextDelegate;
+@property(nonatomic) _Bool hasAnyRichTextCells; // @synthesize hasAnyRichTextCells=_hasAnyRichTextCells;
 - (_Bool)noLockShouldUpgradeStyleForFormulatextForCellCoord:(const struct TSUCellCoord *)arg1;
 - (_Bool)shouldUpgradeStyleForFormulatextForCellCoord:(const struct TSUCellCoord *)arg1;
 - (void)upgradeStyleForFormulatextForCellCoord:(const struct TSUCellCoord *)arg1;
 - (void)applyBlockToAllCells:(CDUnknownBlockType)arg1;
 - (struct TSCECellCoordSet)allCellCoords;
-- (id)allCells;
+- (id)concurrentCellMapForTable:(id)arg1;
+- (id)cellMap;
 - (void)removeAllCells;
 - (_Bool)hasCellAtCellID:(struct TSUCellCoord)arg1;
 - (id)cellAtCellID:(struct TSUCellCoord)arg1;

@@ -6,18 +6,16 @@
 
 #import <CoreServices/LSApplicationRecord.h>
 
-@class LSApplicationExtensionRecord, NSString, NSUUID;
+@class LSApplicationExtensionRecord, NSNumber, NSString;
 
 @interface LSApplicationRecord (AppConduitAdditions)
-@property(readonly) _Bool supportsAlwaysOnDisplay;
-@property(readonly, nonatomic) NSUUID *cacheGUID;
-@property(readonly, nonatomic) unsigned long long sequenceNumber;
-@property(readonly) NSString *wkTeamID;
-@property(readonly) LSApplicationExtensionRecord *watchKitExtension;
-@property(readonly, copy) NSString *watchKitAppExtensionBundleID;
-@property(readonly) _Bool isHidden;
-@property(readonly) _Bool shouldBeTrackedByLaunchServicesWatcher;
-@property(readonly) _Bool shouldBeTrackedByAppConduit;
-@property(readonly) _Bool isBuiltIn;
+@property(readonly, nonatomic) NSNumber *ACX_externalVersionIdentifier;
+@property(readonly) NSString *ACX_wkTeamID;
+@property(readonly) LSApplicationExtensionRecord *ACX_watchKitExtension;
+@property(readonly, copy) NSString *ACX_watchKitAppExtensionBundleID;
+@property(readonly) _Bool ACX_isHidden;
+@property(readonly) _Bool ACX_shouldBeTrackedByLaunchServicesWatcher;
+@property(readonly) _Bool ACX_shouldBeTrackedByAppConduit;
+@property(readonly) _Bool ACX_isBuiltIn;
 @end
 

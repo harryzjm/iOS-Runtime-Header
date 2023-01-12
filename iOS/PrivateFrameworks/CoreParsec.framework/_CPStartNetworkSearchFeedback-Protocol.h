@@ -11,6 +11,8 @@
 @protocol _CPStartNetworkSearchFeedback <NSObject>
 @property(readonly, nonatomic) unsigned long long whichTrigger;
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) unsigned long long compressedRequestSize;
+@property(nonatomic) unsigned long long rawRequestSize;
 @property(nonatomic) int searchType;
 @property(copy, nonatomic) NSString *treatmentId;
 @property(copy, nonatomic) NSString *experimentId;

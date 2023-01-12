@@ -4,24 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKDDiscoverUserIdentitiesURLRequest, NSArray, NSMutableArray;
+#import <objc/NSObject.h>
 
-@interface CKDPublicIdentityLookupRequest
+@class CKDOperation, NSArray, NSMutableArray;
+
+@interface CKDPublicIdentityLookupRequest : NSObject
 {
+    CKDOperation *_operation;
+    NSArray *_lookupInfosToFetch;
+    NSMutableArray *_missingLookupInfos;
+    _Bool _isCancelled;
+    unsigned long long _fetchBatchSize;
     CDUnknownBlockType _perLookupInfoProgressBlock;
     CDUnknownBlockType _lookupCompletionBlock;
-    NSArray *_originalLookupInfosToFetch;
-    NSMutableArray *_lookupInfosToFetch;
-    CKDDiscoverUserIdentitiesURLRequest *_request;
 }
 
-+ (void)removeCacheForLookupInfos:(id)arg1 inCache:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) CKDDiscoverUserIdentitiesURLRequest *request; // @synthesize request=_request;
-@property(retain, nonatomic) NSMutableArray *lookupInfosToFetch; // @synthesize lookupInfosToFetch=_lookupInfosToFetch;
-@property(retain, nonatomic) NSArray *originalLookupInfosToFetch; // @synthesize originalLookupInfosToFetch=_originalLookupInfosToFetch;
 @property(copy, nonatomic) CDUnknownBlockType lookupCompletionBlock; // @synthesize lookupCompletionBlock=_lookupCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType perLookupInfoProgressBlock; // @synthesize perLookupInfoProgressBlock=_perLookupInfoProgressBlock;
+@property(nonatomic) unsigned long long fetchBatchSize; // @synthesize fetchBatchSize=_fetchBatchSize;
+@property _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
 - (id)ckShortDescription;
 - (id)description;
 - (id)CKPropertiesDescription;
@@ -32,6 +34,7 @@
 - (void)performRequest;
 - (void)_receivedUserIdentity:(id)arg1 forLookupInfo:(id)arg2 error:(id)arg3;
 - (void)_saveUserIdentity:(id)arg1 forLookupInfo:(id)arg2;
+- (void)cancel;
 - (id)initWithOperation:(id)arg1 lookupInfos:(id)arg2;
 
 @end

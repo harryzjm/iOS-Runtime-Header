@@ -7,6 +7,9 @@
 @class CTServiceDescriptor, CTSubscriberAuthDataHolder, CTSubscriberAuthRequest, CTXPCServiceSubscriptionContext, NSObject, NSString;
 
 @protocol CTXPCServiceSubscriberInterface
+- (void)supportsEmbeddedSIMWithCompletion:(void (^)(_Bool))arg1;
+- (void)checkEmbeddedSimHealthWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)copyMobileSubscriberIso3CountryCode:(NSString *)arg1 MNC:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getLastKnownSimDeactivationInfoFor:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSimDeactivationInfo *, NSError *))arg2;
 - (void)getUserDefaultVoiceSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
 - (void)refreshUserAuthToken:(CTServiceDescriptor *)arg1 completion:(void (^)(NSError *))arg2;
@@ -49,6 +52,7 @@
 - (void)copyFirmwareUpdateInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getTypeAllocationCode:(CTServiceDescriptor *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyMobileEquipmentInfo:(void (^)(CTMobileEquipmentInfoList *, NSError *))arg1;
+- (void)isEmbeddedSIMOnlyConfig:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getSIMTrayStatus:(void (^)(NSString *, NSError *))arg1;
 - (void)getSIMStatus:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 @end

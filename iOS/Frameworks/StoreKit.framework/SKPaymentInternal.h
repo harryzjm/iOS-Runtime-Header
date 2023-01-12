@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKit/NSCopying-Protocol.h>
-
-@class NSData, NSDictionary, NSString, SKPaymentDiscount;
+@class NSData, NSDictionary, NSString, SKPaymentAppleIDAuthorizationRequest, SKPaymentDiscount;
 
 __attribute__((visibility("hidden")))
-@interface SKPaymentInternal : NSObject <NSCopying>
+@interface SKPaymentInternal : NSObject
 {
     NSString *_applicationUsername;
     NSString *_partnerIdentifier;
@@ -23,6 +21,7 @@ __attribute__((visibility("hidden")))
     _Bool _simulatesAskToBuyInSandbox;
     _Bool _isStoreOriginated;
     SKPaymentDiscount *_paymentDiscount;
+    SKPaymentAppleIDAuthorizationRequest *_appleIDAuthorizationClientInfo;
 }
 
 - (void).cxx_destruct;

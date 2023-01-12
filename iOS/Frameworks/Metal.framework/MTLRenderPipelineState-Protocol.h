@@ -10,6 +10,12 @@
 @protocol MTLDevice, MTLFunction, MTLFunctionHandle, MTLIntersectionFunctionTable, MTLRenderPipelineState, MTLVisibleFunctionTable;
 
 @protocol MTLRenderPipelineState <NSObject>
+@property(readonly) struct MTLResourceID gpuResourceID;
+@property(readonly) unsigned long long maxTotalThreadgroupsPerMeshGrid;
+@property(readonly) unsigned long long meshThreadExecutionWidth;
+@property(readonly) unsigned long long objectThreadExecutionWidth;
+@property(readonly) unsigned long long maxTotalThreadsPerMeshThreadgroup;
+@property(readonly) unsigned long long maxTotalThreadsPerObjectThreadgroup;
 @property(readonly) _Bool supportIndirectCommandBuffers;
 @property(readonly) unsigned long long imageblockSampleLength;
 @property(readonly) _Bool threadgroupSizeMatchesTileSize;

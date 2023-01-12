@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/UIFontDescriptor.h>
+#import <UIKit/UIFontDescriptor.h>
 
 @interface UIFontDescriptor (NewsFeed)
 + (id)ts_fontSystemFontDesignTraitKey;

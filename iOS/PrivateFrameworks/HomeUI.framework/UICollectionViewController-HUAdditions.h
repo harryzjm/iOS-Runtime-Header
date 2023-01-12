@@ -6,9 +6,7 @@
 
 #import <UIKit/UICollectionViewController.h>
 
-#import <HomeUI/HUViewControllerNavigationBarStateUpdateDelegate-Protocol.h>
-
-@interface UICollectionViewController (HUAdditions) <HUViewControllerNavigationBarStateUpdateDelegate>
+@interface UICollectionViewController (HUAdditions)
 - (_Bool)hu_shouldScrollToTop;
 - (id)hu_actionSheetWithTitle:(id)arg1 message:(id)arg2 indexPath:(id)arg3;
 @end

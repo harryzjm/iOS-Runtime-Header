@@ -7,6 +7,6 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 @interface PBCodable (ADCoreExtensions)
-- (id)jsonString;
+- (id)AD_jsonString;
 @end
 

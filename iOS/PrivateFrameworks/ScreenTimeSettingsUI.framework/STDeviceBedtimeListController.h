@@ -6,13 +6,11 @@
 
 #import <Preferences/PSListController.h>
 
-#import <ScreenTimeSettingsUI/PSDateTimePickerCellDelegate-Protocol.h>
-
 @class NSArray, NSObject, NSTimer, PSSpecifier, STDeviceBedtime, STUIUser;
 @protocol STDeviceBedtimeListControllerDelegate, STRootViewModelCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface STDeviceBedtimeListController : PSListController <PSDateTimePickerCellDelegate>
+@interface STDeviceBedtimeListController : PSListController
 {
     _Bool _canAskForMoreTime;
     _Bool _isEditingSimple;

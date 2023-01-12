@@ -12,6 +12,7 @@
 @property(nonatomic) _Bool revealsGainMapImage;
 @property(nonatomic) float gainMapValue;
 @property(nonatomic) struct CGImage *gainMapImage;
+@property(nonatomic) _Bool displayingOpaqueContent;
 @property(nonatomic) _Bool displayingVideoComplement;
 @property(retain, nonatomic) CALayer *layer;
 - (void)removeFilterFromUnownedLayer:(CALayer *)arg1;

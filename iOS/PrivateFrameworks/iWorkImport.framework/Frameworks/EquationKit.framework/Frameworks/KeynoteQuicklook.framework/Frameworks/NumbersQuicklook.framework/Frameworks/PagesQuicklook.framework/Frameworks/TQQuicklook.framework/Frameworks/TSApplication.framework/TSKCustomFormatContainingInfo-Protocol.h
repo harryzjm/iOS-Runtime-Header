@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSUCustomFormat;
+@class NSUUID, TSUCustomFormat;
 
 @protocol TSKCustomFormatContainingInfo
 - (void)reassignPasteboardCustomFormatKeys;
 - (void)upgradeFormatsForCustomFormatListU2_0;
-- (id)changeDetailsForCustomFormatListDidUpdateToCustomFormat:(TSUCustomFormat *)arg1;
+- (id)changeDetailsForCustomFormatListDidUpdateToCustomFormat:(TSUCustomFormat *)arg1 key:(NSUUID *)arg2;
 @end
 

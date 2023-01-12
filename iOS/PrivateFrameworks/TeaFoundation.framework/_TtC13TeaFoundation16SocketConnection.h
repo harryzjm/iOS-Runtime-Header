@@ -13,6 +13,7 @@
     MISSING_TYPE *nwConnection;
     MISSING_TYPE *connectionHandlingQueue;
     MISSING_TYPE *maximumTransmissionSize;
+    MISSING_TYPE *uuid;
     MISSING_TYPE *dataHandler;
 }
 

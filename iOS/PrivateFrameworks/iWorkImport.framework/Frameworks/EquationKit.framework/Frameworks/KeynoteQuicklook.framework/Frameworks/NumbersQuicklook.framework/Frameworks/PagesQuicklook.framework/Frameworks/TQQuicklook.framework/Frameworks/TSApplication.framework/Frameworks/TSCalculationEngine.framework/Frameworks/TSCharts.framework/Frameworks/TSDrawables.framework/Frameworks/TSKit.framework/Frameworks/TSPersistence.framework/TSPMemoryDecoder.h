@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPDecoder-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_data, TSPMemoryDecoderDelegate;
 
-@interface TSPMemoryDecoder : NSObject <TSPDecoder>
+@interface TSPMemoryDecoder : NSObject
 {
     id <TSPMemoryDecoderDelegate> _delegate;
     NSObject<OS_dispatch_data> *_metadataDispatchData;

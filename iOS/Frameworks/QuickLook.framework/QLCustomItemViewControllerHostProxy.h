@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/QLCustomItemViewControllerHost-Protocol.h>
-
 @class NSString;
 @protocol QLCustomItemViewControllerHost;
 
 __attribute__((visibility("hidden")))
-@interface QLCustomItemViewControllerHostProxy : NSObject <QLCustomItemViewControllerHost>
+@interface QLCustomItemViewControllerHostProxy : NSObject
 {
     id <QLCustomItemViewControllerHost> _delegate;
 }

@@ -11,8 +11,7 @@
 @interface _TtC14CoreChartSwift12StateContext : _TtCs12_SwiftObject
 {
     MISSING_TYPE *currentID;
-    MISSING_TYPE *makeSignalClosures;
-    MISSING_TYPE *updateSignalClosures;
+    MISSING_TYPE *containers;
 }
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppSSOCore/SOServiceProtocol-Protocol.h>
-
 @class NSString, SOServiceConnection;
 
 __attribute__((visibility("hidden")))
-@interface SOClient : NSObject <SOServiceProtocol>
+@interface SOClient : NSObject
 {
     SOServiceConnection *_serviceConnection;
 }
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)_queue;
 - (void).cxx_destruct;
 @property(retain) SOServiceConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
+- (void)profilesWithExtensionBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isExtensionProcessWithAuditToken:(CDStruct_6ad76789)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)finishAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)debugHintsWithCompletion:(CDUnknownBlockType)arg1;

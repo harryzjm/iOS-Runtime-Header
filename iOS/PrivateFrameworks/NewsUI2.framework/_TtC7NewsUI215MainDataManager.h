@@ -11,9 +11,6 @@
 @interface _TtC7NewsUI215MainDataManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *emailSignupDetectionManager;
-    MISSING_TYPE *subscriptionDetectionManager;
-    MISSING_TYPE *familySharingDetectionManager;
 }
 
 @end

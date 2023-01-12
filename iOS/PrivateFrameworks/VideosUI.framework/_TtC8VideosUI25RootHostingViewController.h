@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic, readonly) UIViewController *childViewControllerForStatusBarStyle;
 @property(nonatomic, retain) UITabBarItem *tabBarItem;
 
 @end

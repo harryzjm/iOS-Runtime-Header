@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSTCustomStrokeProviding-Protocol.h>
-
 @class NSPointerArray, NSString;
 
-@interface TSTStrokeSidecar : TSPObject <TSTCustomStrokeProviding>
+@interface TSTStrokeSidecar : TSPObject
 {
     int _maxOrder;
     NSPointerArray *_leftColumnStrokes;
@@ -30,8 +28,12 @@
 - (void)setStrokeLayer:(id)arg1 forLeftOfColumn:(unsigned short)arg2;
 - (void)setStrokeLayer:(id)arg1 forBottomOfRow:(unsigned int)arg2;
 - (void)setStrokeLayer:(id)arg1 forTopOfRow:(unsigned int)arg2;
-- (void)accumulateCellBordersConcurrently:(vector_cdf5f6a1)arg1 inRow:(struct TSUModelRowIndex)arg2 atColumns:(void *)arg3;
+- (vector_0f188a65)accumulateCellBordersConcurrentlyInRow:(struct TSUModelRowIndex)arg1 atColumns:(void *)arg2;
 - (void)setBordersWithConcurrentCellMap:(id)arg1 forTableInfo:(id)arg2;
+- (id)unretainedStrokeLayerForBottomOfRow:(unsigned int)arg1;
+- (id)unretainedStrokeLayerForTopOfRow:(unsigned int)arg1;
+- (id)unretainedStrokeLayerForRightSideOfColumn:(unsigned short)arg1;
+- (id)unretainedStrokeLayerForLeftSideOfColumn:(unsigned short)arg1;
 - (id)strokeLayerForBottomOfRow:(unsigned int)arg1;
 - (id)strokeLayerForTopOfRow:(unsigned int)arg1;
 - (id)strokeLayerForRightSideOfColumn:(unsigned short)arg1;

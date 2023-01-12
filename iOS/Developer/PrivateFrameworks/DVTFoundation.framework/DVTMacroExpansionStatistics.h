@@ -10,7 +10,7 @@
 
 @interface DVTMacroExpansionStatistics : NSObject
 {
-    struct os_unfair_lock_s _lock;
+    struct DVTUnfairLock _lock;
     unsigned long long _numMacroDefinitionLookups;
     NSCountedSet *_macroNameLookupCounts;
     unsigned long long _numMacroLookupCursorsCreated;
@@ -20,6 +20,7 @@
 }
 
 + (id)defaultStatistics;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly) NSCountedSet *macroNameFirstDefnRetrievalCounts; // @synthesize macroNameFirstDefnRetrievalCounts=_macroNameFirstDefnRetrievalCounts;
 @property(readonly) unsigned long long numFirstDefinitionRetrievals; // @synthesize numFirstDefinitionRetrievals=_numFirstDefinitionRetrievals;

@@ -6,12 +6,11 @@
 
 #import <FileProvider/FPItem.h>
 
-@class NSDate, NSString;
+@class NSString;
 
 @interface FPItem (DocumentManagerExecutables)
+@property(nonatomic, readonly) NSString *effectiveParentItemIdentifier;
 @property(nonatomic, readonly) NSString *sourceIdentifier;
-- (long long)doc_sharedByCompareWithItem:(id)arg1;
-- (long long)_doc_fileTypeCompareWithItem:(id)arg1;
-@property(nonatomic, readonly) NSDate *doc_dateForSortingRecents;
+@property(nonatomic, readonly) _Bool docIsCollaborationInvitation;
 @end
 

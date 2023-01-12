@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Network/NWURLSessionRequestBodyProvider-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_io, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface NWURLSessionRequestBodyFile : NSObject <NWURLSessionRequestBodyProvider>
+@interface NWURLSessionRequestBodyFile : NSObject
 {
     int _error;
     NSObject<OS_dispatch_io> *_io;
@@ -20,7 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)readMinimumLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)readMinimumIncompleteLength:(unsigned long long)arg1 maximumLength:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

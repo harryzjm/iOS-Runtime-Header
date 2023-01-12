@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MessageProtection/NSCopying-Protocol.h>
-
 @class NGMPBP256Key, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface NGMPBFullDeviceIdentity : PBCodable <NSCopying>
+@interface NGMPBFullDeviceIdentity : PBCodable
 {
     NSMutableArray *_prekeys;
     NGMPBP256Key *_signingKey;

@@ -6,14 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFGiphyActionUserInterface-Protocol.h>
-#import <ActionKitUI/WFGiphyViewControllerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFGiphyActionUIKitUserInterface : WFEmbeddableActionUserInterface <UIAdaptivePresentationControllerDelegate, WFGiphyActionUserInterface, WFGiphyViewControllerDelegate>
+@interface WFGiphyActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

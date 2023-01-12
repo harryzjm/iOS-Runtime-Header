@@ -6,13 +6,11 @@
 
 #import <UIKit/UITableView.h>
 
-#import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSIndexPath, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UISelectionFeedbackGenerator, _CNUINavigationListViewPermissiveGestureRecognizerDelegate;
 @protocol CNUINavigationListViewDataSource, CNUINavigationListViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNUINavigationListView : UITableView <UIGestureRecognizerDelegate>
+@interface CNUINavigationListView : UITableView
 {
     id <CNUINavigationListViewDataSource> _navigationListViewDataSource;
     id <CNUINavigationListViewDelegate> _navigationListViewDelegate;

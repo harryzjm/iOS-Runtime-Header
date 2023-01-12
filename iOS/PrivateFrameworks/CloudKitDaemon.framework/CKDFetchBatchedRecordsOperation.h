@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/CKDOperationPipelining-Protocol.h>
-
-@class CKDRecordCache, CKDRecordFetchAggregator, NSArray, NSDictionary, NSMutableArray, NSObject, NSSet, NSString;
+@class CKDRecordFetchAggregator, NSArray, NSDictionary, NSObject, NSSet, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface CKDFetchBatchedRecordsOperation <CKDOperationPipelining>
+@interface CKDFetchBatchedRecordsOperation
 {
-    CKDRecordCache *_recordCache;
     _Bool _shouldFetchAssetContents;
     _Bool _fetchAllChanges;
     _Bool _forcePCSDecryptionAttempt;
@@ -21,7 +18,6 @@
     NSDictionary *_configurationsByRecordZoneID;
     unsigned long long _numRequestsSent;
     CKDRecordFetchAggregator *_recordFetcher;
-    NSMutableArray *_requestInfos;
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
     long long _errorReportingStyle;
 }
@@ -30,7 +26,6 @@
 @property(nonatomic) long long errorReportingStyle; // @synthesize errorReportingStyle=_errorReportingStyle;
 @property(nonatomic) _Bool forcePCSDecryptionAttempt; // @synthesize forcePCSDecryptionAttempt=_forcePCSDecryptionAttempt;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
-@property(retain, nonatomic) NSMutableArray *requestInfos; // @synthesize requestInfos=_requestInfos;
 @property(retain, nonatomic) CKDRecordFetchAggregator *recordFetcher; // @synthesize recordFetcher=_recordFetcher;
 @property(nonatomic) unsigned long long numRequestsSent; // @synthesize numRequestsSent=_numRequestsSent;
 @property(retain, nonatomic) NSDictionary *configurationsByRecordZoneID; // @synthesize configurationsByRecordZoneID=_configurationsByRecordZoneID;
@@ -50,6 +45,7 @@
 - (void)_noteChangedRecordWithID:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (id)activityCreate;
 @property(readonly, nonatomic) NSString *pipeliningDescription;
+- (int)operationType;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (id)_possiblyWrapError:(id)arg1 forRecordWithID:(id)arg2 withCode:(long long)arg3 format:(id)arg4;
@@ -57,7 +53,6 @@
 - (void)_handleRecordDelete:(id)arg1 recordType:(id)arg2 perRequestSchedulerInfo:(id)arg3;
 - (void)_handleChangedRecords:(id)arg1 perRequestSchedulerInfo:(id)arg2;
 - (void)_handleFetchChangesRequestFinishedWithSchedulerInfo:(id)arg1;
-- (id)recordCache:(id *)arg1;
 - (id)relevantZoneIDs;
 - (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDLifetimeExtender-Protocol.h>
-#import <FileProviderDaemon/FPXEnumeratorObserver-Protocol.h>
-
 @class FPDDomain, FPDExtensionManager, FPItem, FPItemID, NSData, NSString, NSURL;
 @protocol FPXEnumerator, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface FPDFilePresenter : NSObject <FPXEnumeratorObserver, FPDLifetimeExtender>
+@interface FPDFilePresenter : NSObject
 {
     FPDExtensionManager *_manager;
     id <FPXEnumerator> _enumerator;
@@ -69,6 +66,8 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) Class superclass;
+@property(readonly) double timeout;
+@property unsigned long long timeoutState;
 
 @end
 

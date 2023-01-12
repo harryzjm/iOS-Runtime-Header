@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIItemStateCenterObserver-Protocol.h>
-#import <StoreKitUI/SKUILayoutCacheDelegate-Protocol.h>
-#import <StoreKitUI/UIGestureRecognizerDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class IKAppDocument, NSString, SKUIHorizontalLockupView, SKUILayoutCache, SKUIViewElementLayoutContext, SUPlayerStatus, UITapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPreviewOverlayViewController <SKUIItemStateCenterObserver, SKUIArtworkRequestDelegate, SKUILayoutCacheDelegate, UIGestureRecognizerDelegate>
+@interface SKUIPreviewOverlayViewController : SKUIViewController
 {
     long long _backgroundStyle;
     IKAppDocument *_document;

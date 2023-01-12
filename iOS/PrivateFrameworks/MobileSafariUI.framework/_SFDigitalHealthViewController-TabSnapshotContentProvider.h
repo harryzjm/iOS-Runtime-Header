@@ -6,11 +6,9 @@
 
 #import <SafariServices/_SFDigitalHealthViewController.h>
 
-#import <MobileSafariUI/TabSnapshotContentProvider-Protocol.h>
-
 @class NSString, UIColor, UIImage, UIView;
 
-@interface _SFDigitalHealthViewController (TabSnapshotContentProvider) <TabSnapshotContentProvider>
+@interface _SFDigitalHealthViewController (TabSnapshotContentProvider)
 - (struct CGRect)snapshotContentRectInBounds:(struct CGRect)arg1;
 @property(readonly, nonatomic) UIView *snapshotContentView;
 @property(readonly, nonatomic) UIColor *snapshotBackgroundColor;

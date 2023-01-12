@@ -6,12 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <DataDetectorsUI/DDRemoteActionHostProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface DDRemoteActionHostContext : NSExtensionContext <DDRemoteActionHostProtocol>
+@interface DDRemoteActionHostContext : NSExtensionContext
 {
 }
 

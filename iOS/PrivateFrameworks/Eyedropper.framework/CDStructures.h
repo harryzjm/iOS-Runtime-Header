@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
@@ -26,20 +22,8 @@ struct CGSize {
 };
 
 struct EDColor {
-    double r;
-    double g;
-    double b;
+    double _field1;
+    double _field2;
+    double _field3;
 };
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    _Bool _field5;
-    double _field6;
-    int _field7;
-} CDStruct_e950349b;
 

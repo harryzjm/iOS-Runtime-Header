@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property _Bool forceNetworkCellular; // @synthesize forceNetworkCellular=_forceNetworkCellular;
 @property _Bool toneInjectionEnabled; // @synthesize toneInjectionEnabled=_toneInjectionEnabled;
 - (void)registerBlocksForService;
-- (void)reportMemoryUsage:(id)arg1;
+- (void)reportSessionMediaDaemonStats:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

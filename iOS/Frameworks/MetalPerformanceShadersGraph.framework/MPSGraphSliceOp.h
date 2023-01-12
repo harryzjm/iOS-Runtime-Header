@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSGraphSliceOp
+#import "MPSGraphOperation.h"
+
+@interface MPSGraphSliceOp : MPSGraphOperation
 {
     long long _dimensionIndex;
     long long _start;

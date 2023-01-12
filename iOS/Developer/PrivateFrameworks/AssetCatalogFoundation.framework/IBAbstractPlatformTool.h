@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBAbstractPlatformTool-Protocol.h>
-#import <AssetCatalogFoundation/IBMessageReceiveChannelTarget-Protocol.h>
-
 @class NSMutableArray, NSString;
 
-@interface IBAbstractPlatformTool : NSObject <IBAbstractPlatformTool, IBMessageReceiveChannelTarget>
+@interface IBAbstractPlatformTool : NSObject
 {
     NSMutableArray *_messageContext;
     _Bool _canceled;

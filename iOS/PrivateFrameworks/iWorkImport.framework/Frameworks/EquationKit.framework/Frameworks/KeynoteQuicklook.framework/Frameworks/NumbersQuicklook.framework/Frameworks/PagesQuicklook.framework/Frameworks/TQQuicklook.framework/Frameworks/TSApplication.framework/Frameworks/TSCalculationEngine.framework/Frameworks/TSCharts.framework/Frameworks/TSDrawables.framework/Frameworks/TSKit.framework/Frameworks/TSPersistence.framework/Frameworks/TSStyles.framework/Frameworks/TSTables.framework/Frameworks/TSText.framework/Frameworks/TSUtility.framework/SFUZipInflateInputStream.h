@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUInputStream-Protocol.h>
-
 @class NSString;
 @protocol SFUBufferedInputStream;
 
-@interface SFUZipInflateInputStream : NSObject <SFUInputStream>
+@interface SFUZipInflateInputStream : NSObject
 {
     struct z_stream_s mStream;
     long long mOffset;

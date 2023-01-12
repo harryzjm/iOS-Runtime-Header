@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKVerifiableClinicalRecord.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKVerifiableClinicalRecord (HDCodingSupport) <HDCoding>
+@interface HKVerifiableClinicalRecord (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;

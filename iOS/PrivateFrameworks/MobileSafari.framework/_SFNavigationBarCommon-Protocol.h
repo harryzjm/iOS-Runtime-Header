@@ -6,7 +6,7 @@
 
 #import <MobileSafari/_SFBarCommon-Protocol.h>
 
-@class NSArray, UITextField;
+@class NSArray, UITextField, UIView;
 @protocol _SFPopoverSourceInfo;
 
 @protocol _SFNavigationBarCommon <_SFBarCommon>
@@ -15,5 +15,8 @@
 @property(readonly, nonatomic) struct CGRect URLOutlineFrameInNavigationBarSpace;
 @property(readonly, copy, nonatomic) NSArray *popoverPassthroughViews;
 @property(readonly, nonatomic) UITextField *textField;
+- (struct CGRect)urlOutlineFrameRelativeToView:(UIView *)arg1;
+- (void)resignFirstResponder;
+- (void)layoutIfNeeded;
 @end
 

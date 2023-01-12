@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UIVectorTextLayoutParameters-Protocol.h>
 
 @class NSAttributedString, NSString, UITraitCollection;
 
 __attribute__((visibility("hidden")))
-@interface _UIVectorTextLayoutParameters : NSObject <_UIVectorTextLayoutParameters, NSCopying>
+@interface _UIVectorTextLayoutParameters : NSObject <NSCopying>
 {
     NSAttributedString *_attributedText;
     unsigned long long _numberOfLines;

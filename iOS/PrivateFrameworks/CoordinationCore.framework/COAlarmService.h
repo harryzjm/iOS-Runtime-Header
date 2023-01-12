@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoordinationCore/COAlarmManagerServiceInterface-Protocol.h>
-#import <CoordinationCore/COMeshAlarmAddOnDelegate-Protocol.h>
-
 @class COClientObserverSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COAlarmService <COAlarmManagerServiceInterface, COMeshAlarmAddOnDelegate>
+@interface COAlarmService
 {
     COClientObserverSet *_observers;
 }

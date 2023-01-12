@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIDynamicViewControllerDelegate-Protocol.h>
-#import <AppleMediaServicesUI/AMSUIWebPagePresenter-Protocol.h>
+#import "AMSUIDynamicViewController.h"
 
 @class AMSUIWebClientContext, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebDynamicViewController <AMSUIWebPagePresenter, AMSUIDynamicViewControllerDelegate>
+@interface AMSUIWebDynamicViewController : AMSUIDynamicViewController
 {
     AMSUIWebClientContext *_context;
 }

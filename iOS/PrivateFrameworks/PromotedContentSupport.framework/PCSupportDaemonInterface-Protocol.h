@@ -7,7 +7,8 @@
 @class NSArray, NSString;
 
 @protocol PCSupportDaemonInterface
-- (void)policyForPlacement:(NSString *)arg1 placementType:(NSString *)arg2 bannerType:(NSString *)arg3 completion:(void (^)(NSArray *))arg4;
+- (void)policiesToEnforce:(void (^)(NSArray *))arg1;
+- (void)policiesForContainerType:(NSString *)arg1 adType:(NSString *)arg2 adFormatType:(NSString *)arg3 completion:(void (^)(NSArray *))arg4;
 - (void)fetchGenderAndAgeGroupData:(void (^)(NSDictionary *))arg1;
 - (void)addClientToSegments:(NSArray *)arg1 replaceExisting:(_Bool)arg2 privateSegment:(_Bool)arg3;
 @end

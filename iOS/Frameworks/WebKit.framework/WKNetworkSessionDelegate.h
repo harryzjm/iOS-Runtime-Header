@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/NSURLSessionDataDelegate-Protocol.h>
-#import <WebKit/NSURLSessionWebSocketDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKNetworkSessionDelegate : NSObject <NSURLSessionDataDelegate, NSURLSessionWebSocketDelegate>
+@interface WKNetworkSessionDelegate : NSObject
 {
     struct WeakPtr<WebKit::NetworkSessionCocoa, WTF::EmptyCounter> _session;
     struct WeakPtr<WebKit::SessionWrapper, WTF::EmptyCounter> _sessionWrapper;
@@ -25,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 webSocketTask:(id)arg2 didOpenWithProtocol:(id)arg3;
 - (void *)existingWebSocketTask:(id)arg1;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didBecomeDownloadTask:(id)arg3;
-- (void)URLSession:(id)arg1 downloadTask:(id)arg2 didResumeAtOffset:(long long)arg3 expectedTotalBytes:(long long)arg4;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didWriteData:(long long)arg3 totalBytesWritten:(long long)arg4 totalBytesExpectedToWrite:(long long)arg5;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;

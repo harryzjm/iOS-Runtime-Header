@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PaperKit/SYLinkableContentItemFinderDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8PaperKit20SynapseLinkingEngine : NSObject <SYLinkableContentItemFinderDelegate>
+@interface _TtC8PaperKit20SynapseLinkingEngine : NSObject
 {
     MISSING_TYPE *engine;
     MISSING_TYPE *delegate;

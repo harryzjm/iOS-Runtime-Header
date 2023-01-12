@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIThemeRendition.h"
+
 @class MDLAsset, NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface _CUIThemeModelAssetRendition
+@interface _CUIThemeModelAssetRendition : CUIThemeRendition
 {
     MDLAsset *_asset;
     NSMutableArray *_meshKeys;

@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
+- (unsigned long long)_edgesPropagatingSafeAreaInsetsToSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

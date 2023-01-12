@@ -7,8 +7,8 @@
 #import <Foundation/NSValue.h>
 
 @interface NSValue (NUDigest)
-+ (id)nu_valueWithPixelRect:(CDStruct_996ac03c)arg1;
++ (id)nu_valueWithPixelRect:(CDStruct_0973877e)arg1;
 - (void)nu_updateDigest:(id)arg1;
-@property(readonly) CDStruct_996ac03c nu_pixelRect;
+@property(readonly) CDStruct_0973877e nu_pixelRect;
 @end
 

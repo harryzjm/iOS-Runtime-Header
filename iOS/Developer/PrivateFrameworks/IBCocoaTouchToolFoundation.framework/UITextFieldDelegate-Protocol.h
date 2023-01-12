@@ -6,11 +6,12 @@
 
 #import <IBCocoaTouchToolFoundation/NSObject-Protocol.h>
 
-@class NSString, UITextField;
+@class NSArray, NSString, UIMenu, UITextField;
 
 @protocol UITextFieldDelegate <NSObject>
 
 @optional
+- (UIMenu *)textField:(UITextField *)arg1 editMenuForCharactersInRange:(struct _NSRange)arg2 suggestedActions:(NSArray *)arg3;
 - (_Bool)textFieldShouldReturn:(UITextField *)arg1;
 - (_Bool)textFieldShouldClear:(UITextField *)arg1;
 - (void)textFieldDidChangeSelection:(UITextField *)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSKeychainItemAttribute : NSObject <NSCopying>
+@interface VSKeychainItemAttribute : NSObject
 {
     NSString *_name;
     unsigned long long _attributeType;

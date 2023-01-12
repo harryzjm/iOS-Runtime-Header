@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 @protocol IBBinaryArchivableColor;
 
-@interface IBCustomViewDrawingDescription : NSObject <IBBinaryArchiving>
+@interface IBCustomViewDrawingDescription : NSObject
 {
     NSObject<IBBinaryArchivableColor> *_customViewOuterBorderColor;
     NSObject<IBBinaryArchivableColor> *_customViewInnerBorderColor;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface GEOPOIEventInvalidationData : PBCodable <NSCopying>
+@interface GEOPOIEventInvalidationData : PBCodable
 {
     NSData *_cacheInvalidationData;
 }

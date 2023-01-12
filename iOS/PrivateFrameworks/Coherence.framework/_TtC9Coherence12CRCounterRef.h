@@ -10,7 +10,6 @@
 
 @interface _TtC9Coherence12CRCounterRef : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *context;
     MISSING_TYPE *replicaState;
     MISSING_TYPE *positive;
     MISSING_TYPE *negative;

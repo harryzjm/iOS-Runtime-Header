@@ -6,9 +6,7 @@
 
 #import <Contacts/CNContactStore.h>
 
-#import <ConversationKit/CNKContactProvider-Protocol.h>
-
-@interface CNContactStore (ConversationKit) <CNKContactProvider>
+@interface CNContactStore (ConversationKit)
 - (id)contactsByHandleForHandles:(id)arg1 keyDescriptors:(id)arg2;
 - (id)contactsByContactHandleForContactHandles:(id)arg1 keyDescriptors:(id)arg2;
 @end

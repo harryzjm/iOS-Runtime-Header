@@ -9,14 +9,11 @@
 @class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString;
 
 @interface ACAccount (ICAccountAdditions)
-- (_Bool)_updateAutomaticDownloadKindsByAddingMediaKindMusic:(_Bool)arg1 error:(id *)arg2;
 @property(readonly, copy, nonatomic) NSDictionary *ic_privacyAcknowledgementVersions;
 @property(readonly, nonatomic) _Bool ic_isITunesAccount;
 @property(readonly, copy, nonatomic) NSArray *ic_activeMediaTypes;
 @property(copy, nonatomic, setter=ic_setPrivateListeningEnabledForHomeUsers:) NSDictionary *ic_privateListeningEnabledForHomeUsers;
 @property(copy, nonatomic, setter=ic_setPrivateListeningEnabled:) NSNumber *ic_privateListeningEnabled;
-- (void)ic_updateAutomaticDownloadKindsByAddingMediaKindMusic:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)ic_updateAutomaticDownloadKindsByAddingMediaKindMusic:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)ic_isAutomaticDownloadsEnabledForMediaKindMusic;
 @property(copy, nonatomic, setter=ic_setAutomaticDownloadKinds:) NSSet *ic_automaticDownloadKinds;
 @property(readonly, nonatomic, getter=ic_isManageable) _Bool ic_manageable;
@@ -36,5 +33,6 @@
 @property(copy, nonatomic, setter=ic_setFirstName:) NSString *ic_firstName;
 @property(copy, nonatomic, setter=ic_setAltDSID:) NSString *ic_altDSID;
 @property(copy, nonatomic, setter=ic_setDSID:) NSNumber *ic_DSID;
+@property(readonly, copy, nonatomic) NSString *ic_description;
 @end
 

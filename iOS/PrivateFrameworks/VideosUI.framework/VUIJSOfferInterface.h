@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIJSOfferManageInterface-Protocol.h>
+#import "VUIJSObject.h"
 
 __attribute__((visibility("hidden")))
-@interface VUIJSOfferInterface <VUIJSOfferManageInterface>
+@interface VUIJSOfferInterface : VUIJSObject
 {
 }
 

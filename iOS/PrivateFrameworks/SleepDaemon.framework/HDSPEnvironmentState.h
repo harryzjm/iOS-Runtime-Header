@@ -6,12 +6,10 @@
 
 #import <Sleep/HKSPStateMachineState.h>
 
-#import <SleepDaemon/HDSPEnvironmentStateMachineEventHandler-Protocol.h>
-
 @class HDSPEnvironmentStateMachine, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDSPEnvironmentState : HKSPStateMachineState <HDSPEnvironmentStateMachineEventHandler>
+@interface HDSPEnvironmentState : HKSPStateMachineState
 {
 }
 

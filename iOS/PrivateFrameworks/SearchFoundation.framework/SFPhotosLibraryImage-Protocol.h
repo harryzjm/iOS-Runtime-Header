@@ -6,11 +6,13 @@
 
 #import <SearchFoundation/SFImage-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @protocol SFPhotosLibraryImage <SFImage>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSString *applicationBundleIdentifier;
+@property(copy, nonatomic) NSArray *peopleInPhoto;
 @property(nonatomic) _Bool isSyndicated;
 @property(copy, nonatomic) NSString *photoIdentifier;
 @end

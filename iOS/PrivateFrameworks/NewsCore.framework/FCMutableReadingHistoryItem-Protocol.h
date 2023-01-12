@@ -11,6 +11,7 @@
 @protocol FCMutableReadingHistoryItem <FCReadingHistoryItem>
 @property(nonatomic, getter=isPruningDisabled) _Bool pruningDisabled;
 @property(nonatomic) unsigned long long articleLikingStatus;
+@property(nonatomic) _Bool hasArticleBeenRemovedFromAudio;
 @property(nonatomic) _Bool hasArticleBeenConsumed;
 @property(nonatomic) _Bool hasArticleBeenMarkedOffensive;
 @property(nonatomic) _Bool hasArticleCompletedReading;
@@ -23,6 +24,7 @@
 @property(copy, nonatomic) NSDate *lastListenedAt;
 @property(copy, nonatomic) NSDate *listeningProgressSavedAt;
 @property(nonatomic) double listeningProgress;
+@property(nonatomic) long long listenedCount;
 @property(nonatomic) long long maxVersionSeen;
 @property(copy, nonatomic) NSDate *firstSeenAtOfMaxVersionSeen;
 @property(copy, nonatomic) NSDate *firstSeenAt;

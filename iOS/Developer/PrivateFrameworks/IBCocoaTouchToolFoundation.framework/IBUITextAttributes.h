@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCoding-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCopying-Protocol.h>
-
 @class IBOffsetWrapper, IBUIFontDescription, NSString, UIColor;
 
-@interface IBUITextAttributes : NSObject <NSCopying, NSCoding, IBBinaryArchiving>
+@interface IBUITextAttributes : NSObject
 {
     IBUIFontDescription *_fontDescription;
     UIColor *_textColor;

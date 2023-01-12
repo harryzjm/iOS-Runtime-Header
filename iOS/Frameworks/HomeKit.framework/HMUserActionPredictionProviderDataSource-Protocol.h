@@ -7,6 +7,7 @@
 @class HMUserActionPredictionProvider, NSArray;
 
 @protocol HMUserActionPredictionProviderDataSource
-- (NSArray *)homesForUserActionPredictionProviderDataSource:(HMUserActionPredictionProvider *)arg1;
+- (_Bool)deviceUnlockedSinceBootForUserActionPredictionProvider:(HMUserActionPredictionProvider *)arg1;
+- (NSArray *)homesForUserActionPredictionProvider:(HMUserActionPredictionProvider *)arg1;
 @end
 

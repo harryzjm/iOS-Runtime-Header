@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreUI/MDLMeshBuffer-Protocol.h>
-
 @class NSMutableData, NSString;
 @protocol MDLMeshBufferAllocator, MDLMeshBufferZone;
 
 __attribute__((visibility("hidden")))
-@interface CUIMeshBuffer : NSObject <MDLMeshBuffer>
+@interface CUIMeshBuffer : NSObject
 {
     NSMutableData *_data;
     unsigned long long _type;

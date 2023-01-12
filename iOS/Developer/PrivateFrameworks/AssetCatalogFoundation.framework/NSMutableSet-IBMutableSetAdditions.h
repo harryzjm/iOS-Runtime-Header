@@ -6,11 +6,9 @@
 
 #import <Foundation/NSMutableSet.h>
 
-#import <AssetCatalogFoundation/IBMutableCollection-Protocol.h>
-
 @class NSString;
 
-@interface NSMutableSet (IBMutableSetAdditions) <IBMutableCollection>
+@interface NSMutableSet (IBMutableSetAdditions)
 + (id)ib_setWithCollection:(id)arg1;
 - (void)ib_removeObjectsInCollection:(id)arg1;
 - (void)ib_addObjectIfNonNil:(id)arg1;

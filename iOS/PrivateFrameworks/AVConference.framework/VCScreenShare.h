@@ -22,13 +22,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) NSString *selectiveScreenUUID; // @synthesize selectiveScreenUUID=_selectiveScreenUUID;
-@property(nonatomic) unsigned int selectiveSharingPort; // @synthesize selectiveSharingPort=_selectiveSharingPort;
-@property(nonatomic) _Bool isWindowed; // @synthesize isWindowed=_isWindowed;
+@property(readonly, nonatomic) unsigned int selectiveSharingPort; // @synthesize selectiveSharingPort=_selectiveSharingPort;
+@property(readonly, nonatomic) _Bool isWindowed; // @synthesize isWindowed=_isWindowed;
 @property(retain, nonatomic) NSNumber *clientPID; // @synthesize clientPID=_clientPID;
-@property(nonatomic) unsigned int screenCaptureDisplayID; // @synthesize screenCaptureDisplayID=_screenCaptureDisplayID;
-@property(nonatomic) unsigned int frameRate; // @synthesize frameRate=_frameRate;
-@property(nonatomic) unsigned int width; // @synthesize width=_width;
-@property(nonatomic) unsigned int height; // @synthesize height=_height;
+@property(readonly, nonatomic) unsigned int screenCaptureDisplayID; // @synthesize screenCaptureDisplayID=_screenCaptureDisplayID;
+@property(readonly, nonatomic) unsigned int frameRate; // @synthesize frameRate=_frameRate;
+@property(readonly, nonatomic) unsigned int width; // @synthesize width=_width;
+@property(readonly, nonatomic) unsigned int height; // @synthesize height=_height;
 - (void)setConfig:(id)arg1 pid:(id)arg2;
 - (void)updateScreenShareWith:(id)arg1 pid:(id)arg2;
 - (void)dealloc;

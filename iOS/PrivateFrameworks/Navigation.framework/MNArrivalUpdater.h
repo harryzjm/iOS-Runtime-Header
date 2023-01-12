@@ -6,45 +6,49 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNArrivalRegionTimerDelegate-Protocol.h>
-
-@class GEOComposedRoute, MNLocation, MNObserverHashTable, NSDate, NSMutableArray, NSString;
+@class GEOComposedRoute, MNDepartureUpdater, MNEVChargingStateMonitor, MNLocation, MNObserverHashTable, NSMutableArray, NSString, NSTimer;
 
 __attribute__((visibility("hidden")))
-@interface MNArrivalUpdater : NSObject <MNArrivalRegionTimerDelegate>
+@interface MNArrivalUpdater : NSObject
 {
     MNObserverHashTable *_safeDelegate;
     GEOComposedRoute *_route;
     MNLocation *_lastLocation;
-    _Bool _useLegacyArrival;
-    unsigned long long _arrivalState;
     unsigned long long _arrivalLegIndex;
-    NSDate *_arrivalDate;
-    double _closestDistanceToWaypoint;
-    _Bool _isApproachingWaypoint;
     NSMutableArray *_timeoutRegions;
+    MNEVChargingStateMonitor *_evChargingStateMonitor;
     _Bool _isCharging;
+    MNDepartureUpdater *_departureUpdater;
+    NSTimer *_departureTimer;
+    unsigned long long _stateCaptureHandle;
+    _Bool _isApproachingWaypoint;
+    unsigned long long _arrivalState;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long arrivalState; // @synthesize arrivalState=_arrivalState;
+@property(nonatomic) _Bool isApproachingWaypoint; // @synthesize isApproachingWaypoint=_isApproachingWaypoint;
+- (id)captureStatePlistWithHints:(struct os_state_hints_s *)arg1;
+- (void)evChargingStateMonitor:(id)arg1 didChangeChargingState:(_Bool)arg2;
+- (void)evChargingStateMonitor:(id)arg1 didReachTargetBatteryCharge:(id)arg2;
+- (void)evChargingStateMonitorShouldShowChargingInfo:(id)arg1;
 - (void)arrivalRegionTimerDidFire:(id)arg1;
-- (_Bool)_legacyCheckNonDrivingArrivalForLocation:(id)arg1;
-- (_Bool)_legacyCheckDrivingArrivalForLocation:(id)arg1;
-- (_Bool)_legacyCheckArrivalForLocation:(id)arg1;
+- (void)_startMonitoringBatteryChargeForLegIndex:(unsigned long long)arg1;
 - (void)_setArrivalForLegIndex:(unsigned long long)arg1;
 - (double)_distanceToEndOfLeg:(id)arg1 fromLocation:(id)arg2;
 - (_Bool)_checkArrival:(id)arg1 forLocation:(id)arg2;
 - (_Bool)_checkPreArrival:(id)arg1 forLocation:(id)arg2;
 - (_Bool)_checkApproachingForLocation:(id)arg1;
-- (_Bool)_shouldUseNewArrivalLogic;
 @property(readonly, nonatomic) _Bool isInPreArrivalRegion;
-- (void)updateForDepartureFromWaypoint;
+- (void)_updateForDepartureFromWaypointWithReason:(unsigned long long)arg1;
+- (void)forceDepartureForCurrentLeg:(unsigned long long)arg1;
 - (_Bool)allowDepartureForLocation:(id)arg1;
 - (void)setIsCharging:(_Bool)arg1 location:(id)arg2;
 - (void)updateForRoute:(id)arg1;
 - (void)updateForLocation:(id)arg1;
 - (void)setDelegate:(id)arg1;
-- (id)initWithRoute:(id)arg1 useLegacyArrival:(_Bool)arg2;
+- (void)dealloc;
+- (id)initWithRoute:(id)arg1;
 - (id)init;
 
 // Remaining properties

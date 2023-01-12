@@ -20,11 +20,19 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)handleVPPAPresented:(id)arg1;
+- (void)handleVPPADismissed:(id)arg1;
+- (void)handleAppDidEnterBackground:(id)arg1;
+- (void)handleAppWillEnterForeground:(id)arg1;
+- (void)handlePlaybackDidEnd:(id)arg1;
+- (void)handlePlaybackWillStart:(id)arg1;
+- (void)dealloc;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)vui_viewDidLayoutSubviews;
 - (void)vui_viewWillLayoutSubviews;
 - (void)vui_viewDidDisappear:(_Bool)arg1;
 - (void)vui_viewDidAppear:(_Bool)arg1;
+- (void)vui_willMoveToParentViewController:(id)arg1;
 - (void)vui_loadView;
 
 @end

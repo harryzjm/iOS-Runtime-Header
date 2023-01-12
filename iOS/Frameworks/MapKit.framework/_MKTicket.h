@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapServiceTicket-Protocol.h>
-
 @class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDPlaceSummaryLayoutMetadata, GEORelatedSearchSuggestion, GEOResolvedItem, GEOResultRefinementGroup, GEOSearchAutoRedoThreshold, GEOSearchSectionList, NSArray, NSError, NSString;
 @protocol GEOMapServiceTicket;
 
 __attribute__((visibility("hidden")))
-@interface _MKTicket : NSObject <MKMapServiceTicket>
+@interface _MKTicket : NSObject
 {
     id <GEOMapServiceTicket> _ticket;
     NSArray *_exactMapItems;
@@ -21,6 +19,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool enableStructuredRAPAffordance;
+@property(readonly, nonatomic) int searchResultViewType;
 @property(readonly, nonatomic) _Bool disableAdditionalViewportPadding;
 @property(readonly, nonatomic) GEOSearchSectionList *searchSectionList;
 @property(readonly, nonatomic) GEOResultRefinementGroup *resultRefinementGroup;
@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection;
 @property(readonly, nonatomic) NSArray *searchResultSections;
 @property(readonly, nonatomic) NSString *sectionHeader;
-@property(readonly, nonatomic) double requestResponseTime;
 @property(readonly, nonatomic) _Bool showDymSuggestionCloseButton;
 @property(readonly, nonatomic) unsigned int dymSuggestionVisibleTime;
 @property(readonly, nonatomic) NSError *error;

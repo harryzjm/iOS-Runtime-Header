@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 - (long long)compare:(id)arg1;
 - (long long)_reverseCompare:(id)arg1;
 - (unsigned char)_getValue:(void *)arg1 forType:(long long)arg2;

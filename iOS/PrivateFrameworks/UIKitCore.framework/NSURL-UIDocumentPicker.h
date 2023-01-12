@@ -6,12 +6,9 @@
 
 #import <Foundation/NSURL.h>
 
-#import <UIKitCore/UIItemProviderReading-Protocol.h>
-#import <UIKitCore/UIItemProviderWriting-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSURL (UIDocumentPicker) <UIItemProviderReading, UIItemProviderWriting>
+@interface NSURL (UIDocumentPicker)
 + (id)ui_incomingDirectory:(_Bool)arg1;
 + (id)ui_URLFromExportBookmark:(id)arg1;
 + (id)ui_cloudDocsContainerURL;

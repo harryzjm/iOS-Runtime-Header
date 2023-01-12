@@ -7,6 +7,7 @@
 @class TSNewsActivityData;
 
 @protocol TSNewsActivityManagerType
+- (void)clearAllSavedUserActivities;
 - (void)deregisterActivityWithData:(TSNewsActivityData *)arg1;
 - (void)registerCurrentActivityWithData:(TSNewsActivityData *)arg1;
 @end

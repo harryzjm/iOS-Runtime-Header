@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSPointerFunctions.h"
+
 __attribute__((visibility("hidden")))
-@interface NSConcretePointerFunctions
+@interface NSConcretePointerFunctions : NSPointerFunctions
 {
     struct NSSlice slice;
 }
 
 + (_Bool)initializeSlice:(struct NSSlice *)arg1 withOptions:(unsigned long long)arg2;
-+ (void)initializeBackingStore:(struct NSSlice *)arg1 sentinel:(_Bool)arg2;
++ (void)initializeBackingStore:(struct NSSlice *)arg1 sentinel:(_Bool)arg2 dynamic:(_Bool)arg3;
 - (_Bool)usesWeakReadAndWriteBarriers;
 - (_Bool)usesStrongWriteBarrier;
 - (CDUnknownFunctionPointerType)relinquishFunction;
@@ -31,7 +33,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)initWithOptions:(unsigned long long)arg1;
+- (id)init;
 
 @end
 

@@ -14,6 +14,8 @@
 - (id)vui_cellForItemAtIndexPath:(id)arg1;
 - (id)vui_indexPathForCell:(id)arg1;
 - (_Bool)vui_isIndexPathValid:(id)arg1;
+- (id)_preciseIndexPathsForVisibleItems:(_Bool)arg1;
+@property(readonly, nonatomic) NSArray *vuiPreciseIndexPathsForFullyVisibleItems;
 @property(readonly, nonatomic) NSArray *vuiPreciseIndexPathsForVisibleItems;
 @property(readonly, nonatomic) NSArray *vuiIndexPathsForVisibleItems;
 @property(readonly, nonatomic) NSArray *vuiVisibleCells;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/TSUStreamReadChannel-Protocol.h>
-
 @class NSString, TSUBufferedReadChannel;
 
 __attribute__((visibility("hidden")))
-@interface TSUBufferedReadChannelHelper : NSObject <TSUStreamReadChannel>
+@interface TSUBufferedReadChannelHelper : NSObject
 {
     TSUBufferedReadChannel *_bufferedReadChannel;
 }

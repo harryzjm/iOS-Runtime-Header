@@ -6,11 +6,9 @@
 
 #import "_UIFocusEnvironmentPrivate-Protocol.h"
 
-@class _UIFocusRegion;
-@protocol UICoordinateSpace, UIFocusItem, _UIFocusRegionSearchContext;
+@protocol UICoordinateSpace, _UIFocusRegionSearchContext;
 
 @protocol _UIFocusRegionContainer <_UIFocusEnvironmentPrivate>
-- (_UIFocusRegion *)_regionForFocusedItem:(id <UIFocusItem>)arg1 inCoordinateSpace:(id <UICoordinateSpace>)arg2;
 - (void)_searchForFocusRegionsInContext:(id <_UIFocusRegionSearchContext>)arg1;
 - (id <UICoordinateSpace>)_preferredFocusRegionCoordinateSpace;
 

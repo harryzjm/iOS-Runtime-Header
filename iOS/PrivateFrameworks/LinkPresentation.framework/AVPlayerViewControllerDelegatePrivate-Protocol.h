@@ -12,6 +12,7 @@
 @protocol AVPlayerViewControllerDelegatePrivate <AVPlayerViewControllerDelegate>
 
 @optional
+- (void)playerViewControllerWillPerformAnalysisCalloutAction:(AVPlayerViewController *)arg1;
 - (_Bool)playerViewControllerShouldMuteVolumeForFullScreenDismissalTransition:(AVPlayerViewController *)arg1;
 - (void)playerViewController:(AVPlayerViewController *)arg1 contentViewWillTransitionToSize:(struct CGSize)arg2 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg3;
 - (UIView *)playerViewController:(AVPlayerViewController *)arg1 targetViewForDismissalAnimationWithProposedTargetView:(UIView *)arg2;

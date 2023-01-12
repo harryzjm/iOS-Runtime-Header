@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, VCHistogram;
+@class NSDate, NSMutableDictionary, NSString, VCHistogram;
 @protocol OS_nw_activity, SegmentStatsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     NSString *_previousSegmentName;
     unsigned int _segmentStreamGroups;
     unsigned int _previousSegmentStreamGroups;
+    NSMutableDictionary *_activeTemporalTiersBitmapStreams;
     _Bool _is5GHz;
     _Bool _hasReported;
     NSDate *_conversationTimeBase;
@@ -41,8 +42,11 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_activity> *_nwActivity;
     unsigned int _localSwitches;
     _Bool _isNWActivityReportingEnabled;
+    _Bool _isApplePersonalHotspot;
 }
 
+@property _Bool isApplePersonalHotspot; // @synthesize isApplePersonalHotspot=_isApplePersonalHotspot;
+@property(readonly) NSMutableDictionary *activeTemporalTiersBitmapStreams; // @synthesize activeTemporalTiersBitmapStreams=_activeTemporalTiersBitmapStreams;
 @property unsigned int localSwitches; // @synthesize localSwitches=_localSwitches;
 @property(readonly) VCHistogram *TBR; // @synthesize TBR=_TBR;
 @property(readonly) VCHistogram *PLR; // @synthesize PLR=_PLR;

@@ -6,17 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ScreenTimeSettingsUI/BFFPasscodeInputViewDelegate-Protocol.h>
-
-@class NSString, STIntroductionModel;
+@class NSString, STIntroductionViewModel;
 
 __attribute__((visibility("hidden")))
-@interface STIntroPasscodeViewController : UIViewController <BFFPasscodeInputViewDelegate>
+@interface STIntroPasscodeViewController : UIViewController
 {
     _Bool _askForRecoveryAppleID;
     _Bool _childOrNotSignedIntoiCloud;
     _Bool _numeric;
-    STIntroductionModel *_model;
+    STIntroductionViewModel *_model;
     NSString *_altDSID;
     CDUnknownBlockType _continueHandler;
     long long _passcodeState;
@@ -33,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, getter=isChildOrNotSignedIntoiCloud) _Bool childOrNotSignedIntoiCloud; // @synthesize childOrNotSignedIntoiCloud=_childOrNotSignedIntoiCloud;
 @property(readonly, copy) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property(readonly) _Bool askForRecoveryAppleID; // @synthesize askForRecoveryAppleID=_askForRecoveryAppleID;
-@property(readonly) STIntroductionModel *model; // @synthesize model=_model;
+@property(readonly) STIntroductionViewModel *model; // @synthesize model=_model;
 - (void)passcodeInput:(id)arg1 enteredPasscode:(id)arg2;
 - (void)updatePasscodeType;
 - (void)_transitionToFirstPasscodePaneWithState:(long long)arg1;

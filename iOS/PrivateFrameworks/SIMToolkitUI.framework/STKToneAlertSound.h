@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SIMToolkitUI/STKSound-Protocol.h>
-
 @class NSString, TLAlert;
 
 __attribute__((visibility("hidden")))
-@interface STKToneAlertSound <STKSound>
+@interface STKToneAlertSound
 {
     TLAlert *_alert;
     long long _alertType;

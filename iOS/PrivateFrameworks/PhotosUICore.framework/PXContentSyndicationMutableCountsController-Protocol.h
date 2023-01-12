@@ -7,7 +7,7 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @protocol PXContentSyndicationMutableCountsController <NSObject>
-@property(nonatomic) CDStruct_aa0b146f detailedCounts;
+@property(nonatomic) CDStruct_14f26992 detailedCounts;
 @property(nonatomic) long long savedCount;
 @end
 

@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasUserSpecifiedZoomLevel; // @synthesize hasUserSpecifiedZoomLevel=_hasUserSpecifiedZoomLevel;
 @property(nonatomic) long long headingAnimationDisplayRate; // @synthesize headingAnimationDisplayRate=_headingAnimationDisplayRate;
 @property(nonatomic) CDStruct_211b8904 behavior; // @synthesize behavior=_behavior;

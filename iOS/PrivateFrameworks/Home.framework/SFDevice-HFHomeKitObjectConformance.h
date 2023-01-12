@@ -6,11 +6,9 @@
 
 #import <Sharing/SFDevice.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface SFDevice (HFHomeKitObjectConformance) <HFHomeKitObject>
+@interface SFDevice (HFHomeKitObjectConformance)
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 // Remaining properties

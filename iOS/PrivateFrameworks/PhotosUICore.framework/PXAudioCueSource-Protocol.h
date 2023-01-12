@@ -9,10 +9,10 @@
 @class NSString;
 
 @protocol PXAudioCueSource <NSObject>
-@property(readonly, nonatomic) CDStruct_e83c9415 timeRange;
+@property(readonly, nonatomic) CDStruct_3c1748cc timeRange;
 @property(readonly, nonatomic) _Bool isEmpty;
-- (NSString *)diagnosticStringForTimeRange:(CDStruct_e83c9415)arg1 indicatorTime:(CDStruct_1b6d18a9)arg2 rangeIndicatorTimeRange:(CDStruct_e83c9415)arg3 stringLength:(long long)arg4;
-- (void)enumerateCuesInRange:(CDStruct_e83c9415)arg1 withBlock:(void (^)(struct, _Bool *))arg2;
-- (CDStruct_14e04ed5)bestCueInRange:(CDStruct_e83c9415)arg1 preferredTime:(CDStruct_1b6d18a9)arg2;
+- (NSString *)diagnosticStringForTimeRange:(CDStruct_3c1748cc)arg1 indicatorTime:(CDStruct_198678f7)arg2 rangeIndicatorTimeRange:(CDStruct_3c1748cc)arg3 stringLength:(long long)arg4;
+- (void)enumerateCuesInRange:(CDStruct_3c1748cc)arg1 withBlock:(void (^)(struct, _Bool *))arg2;
+- (CDStruct_6b7fdb93)bestCueInRange:(CDStruct_3c1748cc)arg1 preferredTime:(CDStruct_198678f7)arg2;
 @end
 

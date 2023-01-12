@@ -6,9 +6,7 @@
 
 #import <UserNotifications/UNNotification.h>
 
-#import <AssistantServices/AFOpportuneSpeakable-Protocol.h>
-
-@interface UNNotification (AFOpportuneSpeakable) <AFOpportuneSpeakable>
+@interface UNNotification (AFOpportuneSpeakable)
 - (id)speakableDate;
 - (id)speakableDescription;
 - (id)speakableContent;

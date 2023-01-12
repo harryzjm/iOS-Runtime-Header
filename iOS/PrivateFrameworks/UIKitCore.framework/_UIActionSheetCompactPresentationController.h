@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIPresentationController.h"
+
 @class NSString, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView, _UIAnimationCoordinator, _UIDimmingKnockoutBackdropView;
 @protocol UIActionSheetPresentationControllerDismissActionView, UIActionSheetPresentationControllerVisualStyle, _UIActionSheetCompactPresentationControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIActionSheetCompactPresentationController
+@interface _UIActionSheetCompactPresentationController : UIPresentationController
 {
     _Bool _avoidsKeyboardDisabled;
     _Bool _shouldAdoptPresentedAppearance;

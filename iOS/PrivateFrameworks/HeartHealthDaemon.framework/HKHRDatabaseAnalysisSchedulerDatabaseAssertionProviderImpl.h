@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HeartHealthDaemon/HKHRDatabaseAnalysisSchedulerDatabaseAssertionProvider-Protocol.h>
-
 @class HDProfile, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HKHRDatabaseAnalysisSchedulerDatabaseAssertionProviderImpl : NSObject <HKHRDatabaseAnalysisSchedulerDatabaseAssertionProvider>
+@interface HKHRDatabaseAnalysisSchedulerDatabaseAssertionProviderImpl : NSObject
 {
     HDProfile *_profile;
     NSString *_identifier;

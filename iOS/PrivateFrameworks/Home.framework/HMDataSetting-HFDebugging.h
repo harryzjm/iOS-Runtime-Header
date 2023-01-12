@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMDataSetting.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString;
 
-@interface HMDataSetting (HFDebugging) <HFStateDumpBuildable>
+@interface HMDataSetting (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_debugValueForData:(unsigned long long *)arg1;
 

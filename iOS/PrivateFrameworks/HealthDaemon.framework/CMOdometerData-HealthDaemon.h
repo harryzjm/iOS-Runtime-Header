@@ -6,11 +6,9 @@
 
 #import <CoreMotion/CMOdometerData.h>
 
-#import <HealthDaemon/HDCoreMotionDatum-Protocol.h>
-
 @class NSString;
 
-@interface CMOdometerData (HealthDaemon) <HDCoreMotionDatum>
+@interface CMOdometerData (HealthDaemon)
 - (id)hd_unitForType:(id)arg1;
 - (id)hd_epochDatestamp;
 - (id)hd_datestamp;

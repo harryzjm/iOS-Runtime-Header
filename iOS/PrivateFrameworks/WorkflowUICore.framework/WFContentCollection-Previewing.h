@@ -6,9 +6,7 @@
 
 #import <ContentKit/WFContentCollection.h>
 
-#import <WorkflowUICore/QLPreviewControllerDataSource-Protocol.h>
-
-@interface WFContentCollection (Previewing) <QLPreviewControllerDataSource>
+@interface WFContentCollection (Previewing)
 - (id)previewProxyItemAtIndex:(long long)arg1 refreshBlock:(id)arg2;
 - (void)generatePreviewControllerDataSource:(CDUnknownBlockType)arg1;
 - (id)previewController:(id)arg1 previewItemAtIndex:(long long)arg2;

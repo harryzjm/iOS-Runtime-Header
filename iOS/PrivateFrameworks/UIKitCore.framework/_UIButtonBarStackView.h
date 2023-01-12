@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
+#import "UIStackView.h"
 
 @class NSString, _UIButtonBar;
 
 __attribute__((visibility("hidden")))
-@interface _UIButtonBarStackView <UIPointerInteractionDelegate>
+@interface _UIButtonBarStackView : UIStackView
 {
     _UIButtonBar *_buttonBar;
 }
@@ -24,10 +24,6 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)updateConstraints;
-- (id)initWithButtonBar:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,11 +7,13 @@
 #import <ClockKit/NSObject-Protocol.h>
 
 @class CLKComplication, NSArray, NSDate;
+@protocol CLKComplicationWidgetMigrator;
 
 @protocol CLKComplicationDataSource <NSObject>
 - (void)getCurrentTimelineEntryForComplication:(CLKComplication *)arg1 withHandler:(void (^)(CLKComplicationTimelineEntry *))arg2;
 
 @optional
+@property(readonly, nonatomic) id <CLKComplicationWidgetMigrator> widgetMigrator;
 - (void)requestedUpdateBudgetExhausted;
 - (void)requestedUpdateDidBegin;
 - (void)getNextRequestedUpdateDateWithHandler:(void (^)(NSDate *))arg1;

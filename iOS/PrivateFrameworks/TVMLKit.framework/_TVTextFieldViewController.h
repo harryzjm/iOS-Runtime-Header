@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <TVMLKit/IKAppKeyboardDelegate-Protocol.h>
-#import <TVMLKit/_TVSearchBarDelegate-Protocol.h>
-
 @class IKTextFieldElement, NSString, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface _TVTextFieldViewController : UIViewController <IKAppKeyboardDelegate, _TVSearchBarDelegate>
+@interface _TVTextFieldViewController : UIViewController
 {
     IKTextFieldElement *_viewElement;
 }

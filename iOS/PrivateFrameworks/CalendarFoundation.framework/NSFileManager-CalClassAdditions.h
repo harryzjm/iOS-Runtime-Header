@@ -8,6 +8,7 @@
 
 @interface NSFileManager (CalClassAdditions)
 + (id)mimeTypeForFile:(id)arg1;
+- (id)CalTemporaryDirectoryAppropriateForURL:(id)arg1;
 - (_Bool)archivePathToFile:(id)arg1 toFile:(id)arg2 createPKZipArchive:(_Bool)arg3;
 - (_Bool)archivePathToFile:(id)arg1 toFile:(id)arg2 createPKZipArchive:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)archiveURLToFile:(id)arg1 toFile:(id)arg2 createPKZipArchive:(_Bool)arg3;

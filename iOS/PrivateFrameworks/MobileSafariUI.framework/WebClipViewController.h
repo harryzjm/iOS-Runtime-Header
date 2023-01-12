@@ -6,14 +6,11 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <MobileSafariUI/UITextFieldDelegate-Protocol.h>
-#import <MobileSafariUI/_SFBookmarkTextEntryTableViewControllerDelegate-Protocol.h>
-
 @class NSObject, NSString, TabDocument, UIImageView, UITableViewCell, UIWebClip;
 @protocol WebClipViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WebClipViewController : UITableViewController <UITextFieldDelegate, _SFBookmarkTextEntryTableViewControllerDelegate>
+@interface WebClipViewController : UITableViewController
 {
     TabDocument *_tabDocument;
     UITableViewCell *_titleCell;

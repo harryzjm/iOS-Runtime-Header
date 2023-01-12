@@ -6,8 +6,8 @@
 
 #import <MTLSimDriver/NSObject-Protocol.h>
 
-@class MTLTextureDescriptor, NSString;
-@protocol MTLBuffer, MTLDevice, MTLTexture;
+@class MTLAccelerationStructureDescriptor, MTLTextureDescriptor, NSString;
+@protocol MTLAccelerationStructure, MTLBuffer, MTLDevice, MTLTexture;
 
 @protocol MTLHeap <NSObject>
 @property(readonly) long long type;
@@ -20,6 +20,10 @@
 @property(readonly) unsigned long long storageMode;
 @property(readonly) id <MTLDevice> device;
 @property(copy) NSString *label;
+- (id <MTLAccelerationStructure>)newAccelerationStructureWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1 offset:(unsigned long long)arg2;
+- (id <MTLAccelerationStructure>)newAccelerationStructureWithSize:(unsigned long long)arg1 offset:(unsigned long long)arg2;
+- (id <MTLAccelerationStructure>)newAccelerationStructureWithDescriptor:(MTLAccelerationStructureDescriptor *)arg1;
+- (id <MTLAccelerationStructure>)newAccelerationStructureWithSize:(unsigned long long)arg1;
 - (id <MTLTexture>)newTextureWithDescriptor:(MTLTextureDescriptor *)arg1 offset:(unsigned long long)arg2;
 - (id <MTLBuffer>)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 offset:(unsigned long long)arg3;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSDContainerInfo-Protocol.h>
-#import <PagesQuicklook/TSKModelRootIndexProvider-Protocol.h>
-
 @class NSArray, NSString, TPPageHint, TSDInfoGeometry, TSPObject, TSWPStorage;
 @protocol TSDHint, TSDInfo, TSDOwningAttachment, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
-@interface TPBodyInfo : NSObject <TSDContainerInfo, TSKModelRootIndexProvider>
+@interface TPBodyInfo : NSObject
 {
     NSObject<TSDInfo> *_parentInfo;
     TSWPStorage *_bodyStorage;

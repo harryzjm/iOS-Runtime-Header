@@ -6,11 +6,9 @@
 
 #import <UIKit/UILabel.h>
 
-#import <NewsUI/NUCrossFadeViewAnimatable-Protocol.h>
-
 @class NSString;
 
-@interface UILabel (NUCrossFadeViewAnimatable) <NUCrossFadeViewAnimatable>
+@interface UILabel (NUCrossFadeViewAnimatable)
 - (void)nu_crossFadeViewSetValue:(id)arg1;
 - (void)nu_crossFadeViewClearVisibleState;
 

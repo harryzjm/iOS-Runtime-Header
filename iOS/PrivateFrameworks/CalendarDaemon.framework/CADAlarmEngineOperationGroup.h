@@ -4,22 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADAlarmEngineInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 __attribute__((visibility("hidden")))
-@interface CADAlarmEngineOperationGroup <CADAlarmEngineInterface>
+@interface CADAlarmEngineOperationGroup : CADOperationGroup
 {
 }
 
 + (id)whitelistedBundles;
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
-- (void)CADDatabaseGetVehicleTriggerAlarmsWithReply:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseGetLocationBasedAlarmsWithReply:(CDUnknownBlockType)arg1;
+- (id)_getAlarmOccurrencesInRangeFromStart:(id)arg1 toEnd:(id)arg2 inCalendars:(id)arg3 forDatabase:(struct CalDatabase *)arg4 databaseID:(int)arg5 calendarIDsForThisDatabase:(id)arg6 accessLogger:(CDUnknownBlockType)arg7;
 - (void)CADDatabaseGetAlarmOccurrencesInRangeFromStart:(id)arg1 toEnd:(id)arg2 inCalendars:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseGetAlarmWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (_Bool)_hasAccessToAlarmsOnCalendar:(void *)arg1;
 
 @end
 

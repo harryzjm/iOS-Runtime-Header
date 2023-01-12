@@ -6,13 +6,11 @@
 
 #import <Metal/_MTLCommandQueue.h>
 
-#import <MTLSimDriver/MTLCommandQueueSPI-Protocol.h>
-
 @class MTLSimBufferStoragePool, MTLSimCommandStoragePool, NSObject, NSString;
 @protocol MTLDevice, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimCommandQueue : _MTLCommandQueue <MTLCommandQueueSPI>
+@interface MTLSimCommandQueue : _MTLCommandQueue
 {
     MTLSimCommandStoragePool *commandPool;
     MTLSimBufferStoragePool *bufferPool;

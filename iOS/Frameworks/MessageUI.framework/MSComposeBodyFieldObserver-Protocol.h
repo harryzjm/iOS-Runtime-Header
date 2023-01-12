@@ -6,10 +6,11 @@
 
 #import <MessageUI/NSObject-Protocol.h>
 
-@class NSException;
+@class NSData, NSException, NSString;
 
 @protocol MSComposeBodyFieldObserver <NSObject>
 - (void)composeBodyFieldDidThrowException:(NSException *)arg1;
 - (void)composeBodyFieldDidChange;
+- (void)composeBodyFieldAddAttachmentWithData:(NSData *)arg1 filename:(NSString *)arg2 mimeType:(NSString *)arg3 uniqueID:(NSString *)arg4;
 @end
 

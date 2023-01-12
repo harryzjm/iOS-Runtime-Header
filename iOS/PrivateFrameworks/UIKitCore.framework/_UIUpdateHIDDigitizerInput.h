@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIUpdateHIDAbstractInput-Protocol.h>
-
 @class NSMutableArray, NSMutableSet;
 
 __attribute__((visibility("hidden")))
-@interface _UIUpdateHIDDigitizerInput : NSObject <_UIUpdateHIDAbstractInput>
+@interface _UIUpdateHIDDigitizerInput : NSObject
 {
     struct _UIUpdateInputInternal _input;
     NSMutableArray *_events;
     NSMutableSet *_touches;
-    long long _eventModelTimeDifference;
     long long _eventModelTimeDifferenceMin;
     long long _eventModelTimeDifferenceMax;
+    unsigned long long _latencyDuration;
     unsigned long long _periodDuration;
     unsigned long long _sendPeriodDuration;
     _Bool _nextEventExpected;

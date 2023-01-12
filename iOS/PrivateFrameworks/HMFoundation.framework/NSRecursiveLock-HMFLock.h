@@ -6,9 +6,7 @@
 
 #import <Foundation/NSRecursiveLock.h>
 
-#import <HMFoundation/HMFLocking-Protocol.h>
-
-@interface NSRecursiveLock (HMFLock) <HMFLocking>
+@interface NSRecursiveLock (HMFLock)
 - (void)performBlock:(CDUnknownBlockType)arg1;
 @end
 

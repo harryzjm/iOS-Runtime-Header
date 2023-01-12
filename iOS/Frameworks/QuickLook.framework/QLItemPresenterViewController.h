@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuickLook/QLDownloadingItemViewControllerDelegate-Protocol.h>
-#import <QuickLook/QLItemViewControllerPresentingDelegate-Protocol.h>
+#import "QLItemAggregatedViewController.h"
 
 @class DMFApplicationPolicyMonitor, DMFCategoryPolicyMonitor, NSObject, NSString, QLDownloadingItemViewController, QLErrorItemViewController, QLItem, QLItemViewController, QLLoadingItemViewController, QLPreviewContext, QLScreenTimeItemViewController;
 @protocol OS_dispatch_queue, QLItemPresenterViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface QLItemPresenterViewController <QLDownloadingItemViewControllerDelegate, QLItemViewControllerPresentingDelegate>
+@interface QLItemPresenterViewController : QLItemAggregatedViewController
 {
     _Bool _shouldDeferAppearanceUpdates;
     _Bool _isPeekingSession;
@@ -65,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupScreenTimeApplicationHandling;
 - (void)_setupScreenTimeCategoryHandling;
 - (void)_setupScreenTimeHandling;
+- (void)updatePreviewItemDisplayState:(id)arg1;
 - (id)additionalItemViewControllerDescription;
 @property(readonly) QLItemPresenterViewController *itemPresenterViewController;
 - (void)previewItemViewController:(id)arg1 didFailWithError:(id)arg2;

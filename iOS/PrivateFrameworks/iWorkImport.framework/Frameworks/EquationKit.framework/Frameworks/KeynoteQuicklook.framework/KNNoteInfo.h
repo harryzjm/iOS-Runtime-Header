@@ -6,15 +6,10 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/TSDContainerInfo-Protocol.h>
-#import <KeynoteQuicklook/TSKDocumentObject-Protocol.h>
-#import <KeynoteQuicklook/TSKTransformableObject-Protocol.h>
-#import <KeynoteQuicklook/TSWPStorageParent-Protocol.h>
-
 @class NSArray, NSObject, NSString, TSDInfoGeometry, TSWPStorage;
 @protocol TSDContainerInfo, TSDInfo, TSDOwningAttachment;
 
-@interface KNNoteInfo : TSPObject <TSDContainerInfo, TSWPStorageParent, TSKDocumentObject, TSKTransformableObject>
+@interface KNNoteInfo : TSPObject
 {
     NSObject<TSDContainerInfo> *_parentInfo;
     _Bool _shrinkTextForPrinting;
@@ -33,6 +28,7 @@
 @property(nonatomic) NSObject<TSDInfo> *parentInfo; // @synthesize parentInfo;
 - (id)objectUUIDPath;
 @property(readonly, nonatomic) int verticalAlignment;
+@property(readonly, nonatomic) TSWPStorage *textStorage;
 @property(readonly, nonatomic) _Bool supportsMultipleColumns;
 @property(readonly, nonatomic) long long contentWritingDirection;
 @property(readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;

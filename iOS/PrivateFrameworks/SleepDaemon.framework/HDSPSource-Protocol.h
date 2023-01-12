@@ -7,13 +7,11 @@
 #import <SleepDaemon/NSObject-Protocol.h>
 
 @class NSString;
-@protocol HDSPSource;
 
 @protocol HDSPSource <NSObject>
 @property(readonly, nonatomic) NSString *sourceIdentifier;
 
 @optional
-@property(readonly, nonatomic) id <HDSPSource> targetSource;
 @property(readonly, nonatomic) _Bool dontSync;
 @property(readonly, nonatomic) _Bool dontNotify;
 @end

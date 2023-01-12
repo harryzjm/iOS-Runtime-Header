@@ -8,7 +8,7 @@
 
 #import <XCTestCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSSet, NSString, XCTVariationOptions;
+@class NSDictionary, NSSet, NSString;
 
 @interface XCTApplicationBundleInfo : NSObject <NSSecureCoding>
 {
@@ -36,7 +36,6 @@
 - (id)initWithLocalizations:(id)arg1 infoDictionary:(id)arg2;
 - (id)initWithBundleURL:(id)arg1 deferInfoDictionaryProcessing:(_Bool)arg2;
 - (id)initWithBundleURL:(id)arg1;
-@property(readonly) XCTVariationOptions *automaticVariationOptions;
 
 @end
 

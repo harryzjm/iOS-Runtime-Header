@@ -7,6 +7,7 @@
 @protocol MTLTexture;
 
 @protocol CIImageProcessorInput
+@property(readonly, nonatomic) unsigned long long digest;
 @property(readonly, nonatomic) id <MTLTexture> metalTexture;
 @property(readonly, nonatomic) struct __CVBuffer *pixelBuffer;
 @property(readonly, nonatomic) struct __IOSurface *surface;

@@ -6,18 +6,16 @@
 
 #import <VoiceMemos/NSFetchRequestResult-Protocol.h>
 
-@class NSSet, NSString, RCSavedRecordingsController;
+@class NSString;
 @protocol RCFolderIdentifier, RCRecording;
 
 @protocol RCFolder <NSFetchRequestResult>
-@property(readonly, nonatomic) RCSavedRecordingsController *contentsController;
-@property(readonly, nonatomic) NSSet *recordings;
-@property(readonly, nonatomic) unsigned long long playableCount;
+@property(readonly, nonatomic) _Bool isEncrypted;
 @property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) long long folderType;
 @property(readonly, nonatomic) long long rank;
 @property(readonly, copy, nonatomic) NSString *name;
-@property(readonly, nonatomic) id <RCFolderIdentifier> uniqueID;
+@property(readonly, nonatomic) id <RCFolderIdentifier> folderControllerID;
 - (_Bool)containsRecording:(id <RCRecording>)arg1;
 @end
 

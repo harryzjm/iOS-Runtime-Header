@@ -9,7 +9,6 @@
 @protocol PPSocialHighlightServerProtocol
 - (void)feedbackForAttribution:(NSString *)arg1 type:(unsigned long long)arg2 client:(NSString *)arg3 variant:(NSString *)arg4 completion:(void (^)(_Bool, NSError *))arg5;
 - (void)feedbackForHighlight:(NSString *)arg1 type:(unsigned long long)arg2 client:(NSString *)arg3 variant:(NSString *)arg4 completion:(void (^)(_Bool, NSError *))arg5;
-- (void)attributionForIdentifier:(NSString *)arg1 completion:(void (^)(PPSocialAttribution *, NSError *))arg2;
 - (void)rankedHighlightsForSyncedItems:(NSArray *)arg1 client:(NSString *)arg2 variant:(NSString *)arg3 queryId:(unsigned long long)arg4;
 - (void)rankedHighlightsWithLimit:(unsigned long long)arg1 client:(NSString *)arg2 variant:(NSString *)arg3 queryId:(unsigned long long)arg4;
 - (void)decayIntervalWithCompletion:(void (^)(double, NSError *))arg1;

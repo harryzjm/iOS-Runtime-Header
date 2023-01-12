@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOMapRegion, GEOPDPlaceSummaryLayoutMetadata, GEOPDRelatedSearchSuggestion, GEOPDResultRefinementGroup, GEOPDSCategorySearchResultSection, GEOPDSSearchAutoRedoThreshold, GEOPDSearchClientBehavior, GEOPDSearchSectionList, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDCategorySearchResult : PBCodable <NSCopying>
+@interface GEOPDCategorySearchResult : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -31,12 +29,16 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    int _searchResultViewType;
     _Bool _disableAddingAdditionalPaddingOnViewport;
     _Bool _enablePartialClientization;
+    _Bool _enableStructuredRapAffordance;
     _Bool _isChainResultSet;
     struct {
+        unsigned int has_searchResultViewType:1;
         unsigned int has_disableAddingAdditionalPaddingOnViewport:1;
         unsigned int has_enablePartialClientization:1;
+        unsigned int has_enableStructuredRapAffordance:1;
         unsigned int has_isChainResultSet:1;
         unsigned int read_unknownFields:1;
         unsigned int read_autoRedoSearchThreshold:1;

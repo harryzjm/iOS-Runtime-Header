@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSKeyValueProxyCaching-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSKeyValueProxyShareKey : NSObject <NSKeyValueProxyCaching>
+@interface NSKeyValueProxyShareKey : NSObject
 {
     NSObject *_container;
     NSString *_key;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVContentKeySessionDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebCDMSessionAVContentKeySessionDelegate : NSObject <AVContentKeySessionDelegate>
+@interface WebCDMSessionAVContentKeySessionDelegate : NSObject
 {
     void *m_parent;
 }

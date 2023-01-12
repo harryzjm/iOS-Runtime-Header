@@ -5,8 +5,10 @@
 //
 
 @protocol PXGMutableScrollViewModel
+@property(nonatomic) _Bool draggingPerformsScroll;
 @property(nonatomic) _Bool showsVerticalScrollIndicator;
 @property(nonatomic) _Bool showsHorizontalScrollIndicator;
+@property(nonatomic) _Bool clipsToBounds;
 @property(nonatomic) long long scrollDecelerationRate;
 @property(nonatomic) long long scrollRegime;
 @property(nonatomic) struct CGPoint contentOffset;

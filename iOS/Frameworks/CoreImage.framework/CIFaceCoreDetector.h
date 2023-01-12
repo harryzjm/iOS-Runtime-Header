@@ -4,22 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIContext, FCRFaceDetector, NSMutableDictionary;
+#import "CIDetector.h"
+
+@class CIContext, VNDetectFaceRectanglesRequest, VNTrackLegacyFaceCoreObjectRequest;
 
 __attribute__((visibility("hidden")))
-@interface CIFaceCoreDetector
+@interface CIFaceCoreDetector : CIDetector
 {
     CIContext *context;
-    NSMutableDictionary *featureOptions;
     _Bool _tracking;
-    FCRFaceDetector *faceCoreDetector;
+    VNDetectFaceRectanglesRequest *visionRequest;
+    VNTrackLegacyFaceCoreObjectRequest *visionTrackingRequest;
 }
 
-@property(retain) FCRFaceDetector *faceCoreDetector; // @synthesize faceCoreDetector;
+@property(retain) VNTrackLegacyFaceCoreObjectRequest *visionTrackingRequest; // @synthesize visionTrackingRequest;
+@property(retain) VNDetectFaceRectanglesRequest *visionRequest; // @synthesize visionRequest;
 @property(retain, nonatomic) CIContext *context; // @synthesize context;
 - (id)featuresInImage:(id)arg1;
 - (id)featuresInImage:(id)arg1 options:(id)arg2;
-- (void)finalize;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1 options:(id)arg2;
 - (id)createFaceCoreDataFromCIImage:(id)arg1 width:(unsigned long long *)arg2 height:(unsigned long long *)arg3;

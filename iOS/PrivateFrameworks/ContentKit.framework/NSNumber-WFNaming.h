@@ -6,15 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <ContentKit/WFJSONObject-Protocol.h>
-#import <ContentKit/WFJavaScriptCoreBridgeableObject-Protocol.h>
-#import <ContentKit/WFNaming-Protocol.h>
-#import <ContentKit/WFPropertyListObject-Protocol.h>
-#import <ContentKit/WFSerializableContent-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (WFNaming) <WFNaming, WFPropertyListObject, WFSerializableContent, WFJavaScriptCoreBridgeableObject, WFJSONObject>
+@interface NSNumber (WFNaming)
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *wfName;
 - (id)wfSerializedRepresentation;

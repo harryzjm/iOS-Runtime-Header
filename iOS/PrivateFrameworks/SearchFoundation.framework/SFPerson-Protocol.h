@@ -11,6 +11,7 @@
 @protocol SFPerson <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSString *photosIdentifier;
 @property(copy, nonatomic) NSArray *emailAddresses;
 @property(copy, nonatomic) NSArray *phoneNumbers;
 @property(copy, nonatomic) NSString *displayName;

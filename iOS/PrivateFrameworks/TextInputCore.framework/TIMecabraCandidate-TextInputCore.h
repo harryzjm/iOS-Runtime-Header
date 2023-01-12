@@ -11,7 +11,9 @@
 + (id)displayReadingFromMecabraCandidate:(void *)arg1;
 + (id)dictionaryReadingFromMecabraCandidate:(void *)arg1;
 + (id)convertedInputFromMecabraCandidate:(void *)arg1;
+- (id)initWithMecabraCandidate:(const void *)arg1 input:(id)arg2 cursorMovement:(long long)arg3;
 - (id)initWithMecabraCandidate:(const void *)arg1 cursorMovement:(long long)arg2;
+- (id)initWithMecabraCandidate:(const void *)arg1 input:(id)arg2;
 - (id)initWithMecabraCandidate:(const void *)arg1;
 @end
 

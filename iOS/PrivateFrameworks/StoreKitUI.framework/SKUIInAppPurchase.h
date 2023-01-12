@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUICacheCoding-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIInAppPurchase : NSObject <SKUICacheCoding>
+@interface SKUIInAppPurchase : NSObject
 {
     NSString *_formattedPrice;
     NSString *_name;

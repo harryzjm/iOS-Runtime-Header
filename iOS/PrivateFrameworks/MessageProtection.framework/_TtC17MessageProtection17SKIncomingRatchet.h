@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)signingKeyIdentifier;
 - (id)serializedData;
 - (id)openStatusWithIndex:(unsigned long long)arg1 encryptedMessage:(id)arg2 authenticating:(id)arg3 signature:(id)arg4 error:(id *)arg5;
 - (id)initWithKey:(id)arg1 index:(unsigned short)arg2 signingKey:(id)arg3 error:(id *)arg4;

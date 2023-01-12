@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CellularPlanManager/CTCellularPlanValidating-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CTCellularPlanSubscriptionAccountStatusParser : NSObject <CTCellularPlanValidating>
+@interface CTCellularPlanSubscriptionAccountStatusParser : NSObject
 {
 }
 

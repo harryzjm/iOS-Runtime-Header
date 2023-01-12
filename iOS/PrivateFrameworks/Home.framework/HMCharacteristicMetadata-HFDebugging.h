@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMCharacteristicMetadata.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class HFNumberValueConstraints, NSString;
 
-@interface HMCharacteristicMetadata (HFDebugging) <HFStateDumpBuildable>
+@interface HMCharacteristicMetadata (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_percentageForCharacteristicValue:(id)arg1;
 - (id)hf_characteristicValueForPercentage:(double)arg1;

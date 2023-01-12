@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @class DVTFilePath, NSArray, NSString;
 
-@interface DVTSearchPath : NSObject <NSCopying>
+@interface DVTSearchPath : NSObject
 {
     NSArray *_searchDirectoryFilePaths;
     NSString *_unixShellSearchPathRepresentation;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8NewsFeed23FormatBaseCompilerScopeCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC8NewsFeed25FormatOptionCompilerScope
+@interface _TtC8NewsFeed25FormatOptionCompilerScope : _$s8NewsFeed23FormatBaseCompilerScopeCN
 {
     MISSING_TYPE *option;
 }

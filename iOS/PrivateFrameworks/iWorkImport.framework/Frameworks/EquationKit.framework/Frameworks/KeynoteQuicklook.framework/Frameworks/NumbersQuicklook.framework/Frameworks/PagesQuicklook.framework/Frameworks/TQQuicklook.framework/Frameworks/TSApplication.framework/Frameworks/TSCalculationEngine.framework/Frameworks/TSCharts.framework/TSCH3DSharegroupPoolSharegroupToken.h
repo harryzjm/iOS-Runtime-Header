@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/NSCopying-Protocol.h>
-
-@interface TSCH3DSharegroupPoolSharegroupToken <NSCopying>
+@interface TSCH3DSharegroupPoolSharegroupToken
 {
 }
 

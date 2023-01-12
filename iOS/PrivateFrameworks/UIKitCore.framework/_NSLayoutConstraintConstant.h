@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/NSCopying-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSLayoutConstraintConstant : NSObject <NSCoding, NSCopying>
+@interface _NSLayoutConstraintConstant : NSObject <NSCopying>
 {
     NSString *_symbolicValue;
     double _numericValue;

@@ -6,12 +6,10 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSArray;
 @protocol GEOServerFormattedString;
 
 @protocol GEOComposedRouteTransitDisplayStrings <NSObject>
 @property(readonly, nonatomic) id <GEOServerFormattedString> transitRouteBadge;
-@property(readonly, nonatomic) NSArray *transitAdvisories;
 @property(readonly, nonatomic) id <GEOServerFormattedString> transitDescriptionFormatString;
 @property(readonly, nonatomic) id <GEOServerFormattedString> planningDescriptionFormatString;
 @property(readonly, nonatomic) id <GEOServerFormattedString> pickingDurationFormatString;

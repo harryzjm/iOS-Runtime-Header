@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIKeyboardMediaServiceRemoteViewControllerDelegate-Protocol.h>
-
 @class NSString, UIView, UIViewController, _UIAsyncInvocation, _UITextDragCaretView;
 @protocol UIKeyboardMediaControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardMediaController : NSObject <UIKeyboardMediaServiceRemoteViewControllerDelegate>
+@interface UIKeyboardMediaController : NSObject
 {
     UIViewController *_remoteCardViewController;
     _UIAsyncInvocation *_remoteCardViewControllerRequest;

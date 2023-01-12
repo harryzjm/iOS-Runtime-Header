@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_imageSizeForBannerStyle:(unsigned long long)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (struct CGSize)imageSizeForBannerStyle:(unsigned long long)arg1 sizeClass:(long long)arg2;
+- (struct CGSize)maxImageSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)_layoutSubviewsWithSize:(struct CGSize)arg1 computationOnly:(_Bool)arg2;

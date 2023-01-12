@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionReusableView.h"
+
 @class _UITableViewCellSeparatorView;
 
 __attribute__((visibility("hidden")))
-@interface UICollectionViewTableSeparatorView
+@interface UICollectionViewTableSeparatorView : UICollectionReusableView
 {
     _UITableViewCellSeparatorView *_separatorView;
 }

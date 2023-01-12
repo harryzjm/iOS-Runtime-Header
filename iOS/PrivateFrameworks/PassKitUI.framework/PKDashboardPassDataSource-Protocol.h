@@ -12,6 +12,7 @@
 - (id)initWithGroupView:(PKPassGroupView *)arg1 context:(PKPassPresentationContext *)arg2;
 
 @optional
+@property(readonly, nonatomic) PKPassGroupView *groupView;
 - (void)groupViewDidChangeFrontmostPassView:(PKPassView *)arg1 withContext:(PKPassPresentationContext *)arg2;
 - (void)groupViewDidUpdatePassView:(PKPassView *)arg1;
 @end

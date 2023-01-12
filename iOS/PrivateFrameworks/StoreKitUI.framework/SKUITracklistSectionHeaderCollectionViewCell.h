@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIItemOfferButtonDelegate-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSMutableArray, NSString, SKUIButtonViewElement, SKUIBuyButtonDescriptor, SKUITracklistColumnData, UIControl, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUITracklistSectionHeaderCollectionViewCell <SKUIItemOfferButtonDelegate, SKUIViewElementView>
+@interface SKUITracklistSectionHeaderCollectionViewCell
 {
     UIControl *_button;
     SKUIButtonViewElement *_buttonViewElement;

@@ -23,11 +23,13 @@
     MISSING_TYPE *instrumentationUtil;
     MISSING_TYPE *requestType;
     MISSING_TYPE *requestQueue;
+    MISSING_TYPE *userId;
     MISSING_TYPE *outputCounter;
     MISSING_TYPE *loggedStartOfCall;
     MISSING_TYPE *resultCandidateId;
     MISSING_TYPE *requestFinished;
     MISSING_TYPE *flowPluginInfo;
+    MISSING_TYPE *rskeProcessorExecutionDelegate;
 }
 
 @end

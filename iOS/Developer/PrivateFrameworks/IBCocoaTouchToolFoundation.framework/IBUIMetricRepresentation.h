@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface IBUIMetricRepresentation : NSObject <IBBinaryArchiving>
+@interface IBUIMetricRepresentation : NSObject
 {
     NSDictionary *_keyValues;
 }

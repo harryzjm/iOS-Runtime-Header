@@ -7,7 +7,7 @@
 #import <UIKit/UITableViewCell.h>
 
 @interface UITableViewCell (SafariExtras)
-- (void)_safari_setLinkedPageTitle:(id)arg1 description:(id)arg2 isParentItem:(_Bool)arg3;
-- (void)_safari_setLinkedPageTitle:(id)arg1 URL:(id)arg2 isParentItem:(_Bool)arg3;
+- (void)_safari_setLinkedPageTitle:(id)arg1 description:(id)arg2;
+- (void)_safari_setLinkedPageTitle:(id)arg1 URL:(id)arg2;
 @end
 

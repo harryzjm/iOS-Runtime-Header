@@ -10,7 +10,6 @@
 - (void)setEndpointerOperationMode:(long long)arg1;
 - (void)resetForVoiceTriggerTwoShotWithSampleRate:(unsigned long long)arg1;
 - (void)getEndPointAnalyzerTypeWithReply:(void (^)(NSError *, unsigned long long))arg1;
-- (void)getTrailingSilenceDurationAtEndpointWithReply:(void (^)(NSError *, double))arg1;
 - (void)getElapsedTimeNoSpeechWithReply:(void (^)(NSError *, double))arg1;
 - (void)setAutomaticEndpointingSuspensionEndTime:(double)arg1;
 - (void)setEndWaitTime:(double)arg1;
@@ -21,5 +20,6 @@
 - (void)getEndpointerModelVersionWithReply:(void (^)(NSError *, NSString *))arg1;
 - (void)processServerFeaturesWithWordCount:(long long)arg1 trailingSilenceDuration:(long long)arg2 eosLikelihood:(double)arg3 pauseCounts:(NSArray *)arg4 silencePosterior:(double)arg5 taskName:(NSString *)arg6 processedAudioDurationInMilliseconds:(long long)arg7;
 - (void)setActiveChannel:(unsigned long long)arg1;
+- (void)setupConnection;
 @end
 

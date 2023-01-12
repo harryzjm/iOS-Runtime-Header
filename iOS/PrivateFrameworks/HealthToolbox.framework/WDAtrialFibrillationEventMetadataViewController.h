@@ -6,13 +6,11 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthToolbox/HKHeartbeatSequenceListMetadataSectionDelegate-Protocol.h>
-
 @class HKCategorySample, NSMutableArray;
 @protocol HKDataMetadataViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WDAtrialFibrillationEventMetadataViewController : HKTableViewController <HKHeartbeatSequenceListMetadataSectionDelegate>
+@interface WDAtrialFibrillationEventMetadataViewController : HKTableViewController
 {
     _Bool _firstViewDidLayoutSubviews;
     HKCategorySample *_event;

@@ -25,8 +25,8 @@
 - (id)ams_iTunesAccountForHomeWithIdentifier:(id)arg1;
 - (id)_saveAccount:(id)arg1 verifyCredentials:(_Bool)arg2;
 - (id)_iTunesAccountsForAccountType:(id)arg1;
-- (_Bool)_isAccountNew:(id)arg1;
-- (id)_fetchLocaliTunesAccountForAccountType:(id)arg1;
+- (void)_updateStorefrontInLocalAccount:(id)arg1;
+- (id)_fetchLocaliTunesAccountForAccountType:(id)arg1 shouldUpdateStorefront:(_Bool)arg2;
 - (id)_createLocaliTunesAccountForAccountType:(id)arg1;
 - (id)_correspondingAccountWithAccountTypeIdentifier:(id)arg1 forAccount:(id)arg2;
 - (_Bool)_addUserCookiesForResponse:(id)arg1 account:(id)arg2 error:(id *)arg3;
@@ -41,9 +41,10 @@
 - (id)ams_secureTokenForAccount:(id)arg1;
 - (id)ams_saveAccount:(id)arg1 verifyCredentials:(_Bool)arg2;
 - (id)ams_saveAccount:(id)arg1;
-- (id)ams_localiTunesAccountForAccountType:(id)arg1;
+- (id)ams_localiTunesAccountForAccountMediaType:(id)arg1 updateStorefront:(_Bool)arg2;
 - (id)ams_localiTunesAccountForAccountMediaType:(id)arg1;
 - (id)ams_mediaAccountForHomeWithIdentifier:(id)arg1;
+- (id)ams_localiTunesAccountForAccountType:(id)arg1;
 - (id)ams_iTunesAccountsForMediaTypes:(id)arg1;
 - (id)ams_iTunesAccountsForMediaType:(id)arg1;
 - (id)ams_iTunesAccountWithUsername:(id)arg1 forMediaType:(id)arg2;
@@ -58,6 +59,7 @@
 - (id)ams_IDSAccountForAccount:(id)arg1;
 - (id)ams_IDMSAccountForAccount:(id)arg1;
 - (id)ams_iCloudAccountForAccount:(id)arg1;
+- (id)ams_cookiesForURL:(id)arg1 bag:(id)arg2;
 - (id)ams_cookiesForURL:(id)arg1;
 - (id)ams_fetchGrandSlamTokenForAccount:(id)arg1 withIdentifier:(id)arg2 error:(id *)arg3;
 - (id)ams_activeiTunesAccountForMediaType:(id)arg1;
@@ -78,8 +80,11 @@
 - (id)_ams_accountsWithAccountTypeIdentifier:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_ams_accountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_ams_accountTypeWithAccountTypeIdentifier:(id)arg1 error:(id *)arg2;
+- (id)_ams_localiTunesAccountForAccountType:(id)arg1 shouldUpdateStorefront:(_Bool)arg2;
 - (id)ams_saveAccount:(id)arg1 withOptions:(long long)arg2;
+- (_Bool)ams_isAccountNew:(id)arg1;
 - (id)ams_demoAccount;
+- (id)_ams_localiTunesAccountAfterUpdatingStorefront:(_Bool)arg1;
 @property(readonly, nonatomic) ACAccount *_ams_localiTunesAccount;
 @end
 

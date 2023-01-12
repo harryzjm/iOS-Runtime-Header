@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UISearchTextField.h"
+
 @class _UIKeyShortcutHUDSearchButton, _UIKeyShortcutHUDShortcutInputView;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDSearchTextField
+@interface _UIKeyShortcutHUDSearchTextField : UISearchTextField
 {
     _UIKeyShortcutHUDSearchButton *_searchButton;
     _UIKeyShortcutHUDShortcutInputView *_shortcutInputView;

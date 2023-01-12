@@ -6,11 +6,9 @@
 
 #import <CoreDAV/CoreDAVTask.h>
 
-#import <DACoreDAVGlue/DATask-Protocol.h>
-
 @class NSString;
 
-@interface CoreDAVTask (DACoreDAVGlueExtensions) <DATask>
+@interface CoreDAVTask (DACoreDAVGlueExtensions)
 - (void)cancelTaskWithReason:(int)arg1 underlyingError:(id)arg2;
 - (void)finishWithError:(id)arg1;
 - (void)performTask;

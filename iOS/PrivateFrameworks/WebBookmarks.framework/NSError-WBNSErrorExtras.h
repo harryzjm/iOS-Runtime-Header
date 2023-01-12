@@ -7,6 +7,9 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (WBNSErrorExtras)
++ (id)wb_lockError;
++ (id)wb_featureDisabledError;
++ (id)wb_databaseOpenError;
 - (id)wb_privacyPreservingDescription;
 @end
 

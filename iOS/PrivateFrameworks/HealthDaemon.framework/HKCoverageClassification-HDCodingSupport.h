@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKCoverageClassification.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKCoverageClassification (HDCodingSupport) <HDCoding>
+@interface HKCoverageClassification (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

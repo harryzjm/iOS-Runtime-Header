@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIALAPropertySource-Protocol.h>
-
 @class NSMutableDictionary, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlignedLayoutArrangement <_UIALAPropertySource>
+@interface _UIAlignedLayoutArrangement
 {
     NSMutableDictionary *_alignmentConstraints;
     unsigned long long _alignment;
@@ -47,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool layoutFillsCanvas;
 @property(nonatomic) long long axis;
 - (id)initWithItems:(id)arg1;
+- (void)dealloc;
 
 // Remaining properties
 @property(readonly, nonatomic) NSSet *_newlyHiddenItems;

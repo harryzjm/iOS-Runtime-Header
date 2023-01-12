@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDragAnimating-Protocol.h>
-
 @class NSIndexPath, NSString, UIDragItem, UIDragPreviewTarget, _UIDropAnimationHandlers;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewDropCoordinatorItem : NSObject <UIDragAnimating>
+@interface _UICollectionViewDropCoordinatorItem : NSObject
 {
     _Bool _shouldRemainInHierarchy;
     int _kind;

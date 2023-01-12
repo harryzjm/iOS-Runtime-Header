@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTLocking-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
-@interface DVTDispatchLock : NSObject <DVTLocking>
+@interface DVTDispatchLock : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
 }

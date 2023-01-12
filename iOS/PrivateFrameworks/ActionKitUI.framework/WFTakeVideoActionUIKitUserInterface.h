@@ -6,14 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/UIImagePickerControllerDelegate-Protocol.h>
-#import <ActionKitUI/UINavigationControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFTakeVideoActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFTakeVideoActionUIKitUserInterface : WFEmbeddableActionUserInterface <UIImagePickerControllerDelegate, UINavigationControllerDelegate, WFTakeVideoActionUserInterface>
+@interface WFTakeVideoActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

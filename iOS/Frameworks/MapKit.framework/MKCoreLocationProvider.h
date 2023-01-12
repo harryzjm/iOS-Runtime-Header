@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/CLLocationManagerVehicleDelegate-Protocol.h>
-#import <MapKit/MKLocationProvider-Protocol.h>
-
 @class CLLocation, CLLocationManager, NSBundle, NSString, geo_isolater;
 @protocol MKLocationProviderDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MKCoreLocationProvider : NSObject <CLLocationManagerVehicleDelegate, MKLocationProvider>
+@interface MKCoreLocationProvider : NSObject
 {
     CLLocationManager *_clLocationManager;
     id <MKLocationProviderDelegate> _delegate;

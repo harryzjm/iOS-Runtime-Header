@@ -4,32 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/VKGesturingCameraController-Protocol.h>
-#import <VectorKit/VKNavContextObserver-Protocol.h>
-#import <VectorKit/VKNavigationCameraController-Protocol.h>
-
 @class GEOMapRegion, NSString, VKAttachedNavGestureCameraBehavior, VKDaVinciGestureCameraController, VKDetachedNavGestureCameraBehavior, VKGestureCameraBehavior, VKNavContext, VKSceneConfiguration, VKScreenCanvas, VKTimedAnimation;
 @protocol VKInteractiveMap;
 
 __attribute__((visibility("hidden")))
-@interface VKNavCameraController <VKNavigationCameraController, VKGesturingCameraController, VKNavContextObserver>
+@interface VKNavCameraController
 {
     unsigned char _cameraType;
     unsigned char _headingType;
-    Unit_3d259e8a _puckCourse;
-    Coordinate3D_bc242218 _puckCoordinate;
-    Unit_3d259e8a _headingDelta;
-    Unit_3d259e8a _headingMinDelta;
-    CameraFrame_406dbd31 _lastCalculatedCameraFrame;
-    CameraFrame_406dbd31 _cameraFrame;
+    Unit_5669e52e _puckCourse;
+    Coordinate3D_332c2c3b _puckCoordinate;
+    Unit_5669e52e _headingDelta;
+    Unit_5669e52e _headingMinDelta;
+    CameraFrame_b765d6d7 _lastCalculatedCameraFrame;
+    CameraFrame_b765d6d7 _cameraFrame;
     _Bool _needsUpdate;
     struct Spring<double, 1, gdc::SpringType::Linear> _pitchSpring;
     struct Spring<double, 1, gdc::SpringType::Angular> _headingSpring;
     struct Spring<double, 1, gdc::SpringType::Linear> _distanceFromTargetSpring;
     struct Spring<double, 2, gdc::SpringType::Linear> _screenPositionSpring;
-    Unit_09325524 _cameraDistanceFromTarget;
-    Unit_3d259e8a _cameraPitch;
+    Unit_e1574806 _cameraDistanceFromTarget;
+    Unit_5669e52e _cameraPitch;
     double _previousUpdateTime;
+    double _ignoreStyleChangeStartTime;
+    double _lastSARUpdateTime;
     double _maxZoomScale;
     double _minZoomScale;
     VKGestureCameraBehavior *_gestureBehavior;
@@ -37,6 +35,7 @@ __attribute__((visibility("hidden")))
     VKDetachedNavGestureCameraBehavior *_detachedGestureBehavior;
     VKDaVinciGestureCameraController *_davinciGestureCameraController;
     _Bool _isDetached;
+    _Bool _isIgnoringStyleChange;
     _Bool _panning;
     _Bool _rotating;
     _Bool _pitching;
@@ -44,17 +43,17 @@ __attribute__((visibility("hidden")))
     VKTimedAnimation *_transitionAnimation;
     VKTimedAnimation *_snapPitchAnimation;
     VKTimedAnimation *_snapHeadingAnimation;
-    CameraFrame_406dbd31 _transitionFrame;
+    CameraFrame_b765d6d7 _transitionFrame;
     struct basic_string<char, std::char_traits<char>, std::allocator<char>> _currentStyleName;
-    struct vector<geo::Coordinate3D<Radians, double>, std::allocator<geo::Coordinate3D<Radians, double>>> _coordinatesToFrame;
+    struct vector<geo::Coordinate3D<geo::Radians, double>, std::allocator<geo::Coordinate3D<geo::Radians, double>>> _coordinatesToFrame;
     unsigned char _styleManeuversToFrame;
     unsigned char _maneuversToFrame;
     unsigned char _styleLegsToFrame;
     unsigned char _segmentsToFrame;
     double _minCameraHeight;
     double _maxCameraHeight;
-    Unit_3d259e8a _minCameraPitch;
-    Unit_3d259e8a _maxCameraPitch;
+    Unit_5669e52e _minCameraPitch;
+    Unit_5669e52e _maxCameraPitch;
     struct VKEdgeInsets _previousMapEdgeInsets;
     struct VKEdgeInsets _framingEdgeInset;
     struct VKEdgeInsets _framingEdgeInsetProportional;
@@ -84,8 +83,9 @@ __attribute__((visibility("hidden")))
     _Bool _frameAllGroupedManeuvers;
     unsigned char _maxManeuversToFrame;
     _Bool _ignorePointsBehind;
-    Coordinate3D_bc242218 _routeFocusCoordinate;
+    Coordinate3D_332c2c3b _routeFocusCoordinate;
     unsigned long long _lastTargetStyleIdentifier;
+    unsigned long long _previousSearchItemCount;
     double _desiredZoomScale;
     float _animationTime;
     _Bool _isTracking;
@@ -94,15 +94,17 @@ __attribute__((visibility("hidden")))
     _Bool _leftHanded;
     _Bool _sentZoomNotification;
     _Bool _enableDynamicFrameRate;
-    Coordinate3D_bc242218 _cornerCoordinates[4];
-    struct WindowedSampler<60> _pixelSamples;
+    Coordinate3D_332c2c3b _cornerCoordinates[4];
+    struct WindowedSampler<60UL> _pixelSamples;
     struct Sampler _requesteDisplayRateSampler;
     long long _requestedDisplayRate;
     _Bool _isElevatedRoute;
-    double _elevationScale;
     void *_cameraManager;
     long long _defaultMaxDisplayRate;
     struct vector<NavCameraPixelFrameRate, std::allocator<NavCameraPixelFrameRate>> _pixelChangeFrameRate;
+    Matrix_6e1d3589 _lastProjectedPosition;
+    double _farClipPlaneFactor;
+    struct shared_ptr<gss::StylesheetQuery<gss::ScenePropertyID>> _sceneQuery;
     VKScreenCanvas<VKInteractiveMap> *_screenCanvas;
     VKSceneConfiguration *_sceneConfiguration;
     long long _baseDisplayRate;
@@ -112,8 +114,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) long long baseDisplayRate; // @synthesize baseDisplayRate=_baseDisplayRate;
 @property(nonatomic) struct VKEdgeInsets clientFramingInsets; // @synthesize clientFramingInsets=_clientFramingInsets;
-@property(nonatomic) VKSceneConfiguration *sceneConfiguration; // @synthesize sceneConfiguration=_sceneConfiguration;
-@property(nonatomic) VKScreenCanvas<VKInteractiveMap> *screenCanvas; // @synthesize screenCanvas=_screenCanvas;
+@property(nonatomic) __weak VKSceneConfiguration *sceneConfiguration; // @synthesize sceneConfiguration=_sceneConfiguration;
+@property(nonatomic) __weak VKScreenCanvas<VKInteractiveMap> *screenCanvas; // @synthesize screenCanvas=_screenCanvas;
 - (float)maxPitchForNormalizedZoomLevel:(float)arg1;
 - (float)idealPitchForNormalizedZoomLevel:(float)arg1;
 - (float)minPitchForNormalizedZoomLevel:(float)arg1;
@@ -126,20 +128,21 @@ __attribute__((visibility("hidden")))
 - (_Bool)snapMapIfNecessary:(_Bool)arg1;
 - (_Bool)usesVKCamera;
 - (float)_currentRoadSignOffset;
+- (void)_setNavCameraAnimationComplete:(_Bool)arg1;
 - (void)_setNavCameraIsDetached:(_Bool)arg1;
 - (unsigned char)cameraHeadingType;
 - (void)canvasDidLayout;
 - (void)setCamera:(shared_ptr_46708168)arg1;
 - (void)setVkCamera:(id)arg1;
 - (void)stopAnimations;
-- (void)setCameraFrame:(CameraFrame_406dbd31)arg1;
-- (CameraFrame_406dbd31)cameraFrame;
+- (void)setCameraFrame:(CameraFrame_b765d6d7)arg1;
+- (CameraFrame_b765d6d7)cameraFrame;
 - (void)_snapHeading;
 - (void)_snapPitch;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
 - (void)setEdgeInsetsAnimating:(_Bool)arg1;
-- (Unit_3d259e8a)maxCameraPitch;
-- (Unit_3d259e8a)minCameraPitch;
+- (Unit_5669e52e)maxCameraPitch;
+- (Unit_5669e52e)minCameraPitch;
 - (double)maxZoomHeight;
 - (double)minZoomHeight;
 - (double)maxZoomScale;
@@ -154,17 +157,17 @@ __attribute__((visibility("hidden")))
 - (void)updateSpringsForFramingCamera;
 - (void)_updateRouteSinuosity;
 - (void)_addAdditionalRoutePointsToFrameToList:(void *)arg1;
-- (Coordinate3D_bc242218)_coordinateForGeoLocation:(CDStruct_071ac149)arg1;
+- (Coordinate3D_332c2c3b)_coordinateForGeoLocation:(CDStruct_071ac149)arg1;
 - (void)updatePointsToFrame;
 - (_Bool)_addStepToFraming:(unsigned long long)arg1 forRoute:(id)arg2;
 - (void)updateManeuversToFrame;
-- (Coordinate3D_bc242218)routeCoordinateAtDistance:(double)arg1;
-- (Coordinate3D_bc242218)routeLocationAtDistance:(double)arg1 fromManeuver:(unsigned long long)arg2;
+- (Coordinate3D_332c2c3b)routeCoordinateAtDistance:(double)arg1;
+- (Coordinate3D_332c2c3b)routeLocationAtDistance:(double)arg1 fromManeuver:(unsigned long long)arg2;
 - (double)distanceToManeuver:(unsigned long long)arg1;
 - (void)updateSpringsForTrackingCamera;
 - (Box_3d7e3c2c)calculateViewableScreenRect;
 - (Box_3d7e3c2c)calculateViewableScreenRectForEdgeInsets:(struct VKEdgeInsets)arg1;
-- (Unit_3d259e8a)calculateHeading;
+- (Unit_5669e52e)calculateHeading;
 - (void)stop;
 - (_Bool)isRotateEnabled;
 - (_Bool)isPitchEnabled;
@@ -183,8 +186,8 @@ __attribute__((visibility("hidden")))
 - (void)returnToPuck;
 - (void)returnToTrackingWithDelay:(double)arg1 resetZoom:(_Bool)arg2;
 - (void)animateCameraWithDuration:(float)arg1 fromFrame:(const void *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (CameraFrame_406dbd31)restingCameraFrame;
-- (CameraFrame_406dbd31)currentCameraFrame;
+- (CameraFrame_b765d6d7)restingCameraFrame;
+- (CameraFrame_b765d6d7)currentCameraFrame;
 @property(nonatomic) double pitch;
 @property(nonatomic) double heading;
 @property(readonly, nonatomic) double altitude;
@@ -192,9 +195,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_c3b9c2ee centerCoordinate;
 - (void)_updateStyles;
 - (void)_updateSceneStyles:(_Bool)arg1;
+- (void)_updateSceneQuery;
 - (void)stylesheetDidReload;
 - (void)stylesheetDidChange;
-- (_Bool)_updateSprings:(double)arg1;
+- (_Bool)_springsNeedUpdate;
+- (void)_updateSprings:(double)arg1;
 - (Matrix_2bdd42a3)puckScreenPoint;
 - (void)_updateDebugOverlay;
 - (void)_updateDebugText;
@@ -212,8 +217,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)wantsTimerTick;
 - (void)puckAnimator:(id)arg1 updatedTargetPosition:(const void *)arg2;
 - (void)puckAnimatorDidStop:(id)arg1;
+- (void)projectCoordinate:(CDStruct_c3b9c2ee)arg1 toPoint:(struct CGPoint *)arg2;
 - (void)updateLocation:(const void *)arg1 andCourse:(const void *)arg2;
-- (void)puckAnimator:(id)arg1 getElevation:(double *)arg2 withCoordinate:(const void *)arg3;
+- (struct optional<double>)puckAnimator:(id)arg1 getElevationWithCoordinate:(const void *)arg2;
 - (void)puckAnimator:(id)arg1 updatedPosition:(const void *)arg2 course:(const void *)arg3;
 - (void)puckAnimator:(id)arg1 runAnimation:(id)arg2;
 - (_Bool)isGesturing;
@@ -233,6 +239,8 @@ __attribute__((visibility("hidden")))
 - (void)stopPinchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)updatePinchWithFocusPoint:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
 - (void)startPinchingWithFocusPoint:(struct CGPoint)arg1;
+- (void)stopIgnoreStyleChange;
+- (void)startIgnoreStyleChangeTimer;
 - (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setDetached:(_Bool)arg1;
 - (id)_detachedGestureController;

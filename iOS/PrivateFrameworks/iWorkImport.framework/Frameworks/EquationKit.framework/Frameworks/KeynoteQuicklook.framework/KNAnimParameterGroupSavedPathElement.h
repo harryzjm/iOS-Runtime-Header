@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSSecureCoding-Protocol.h>
-
-@interface KNAnimParameterGroupSavedPathElement : NSObject <NSSecureCoding>
+@interface KNAnimParameterGroupSavedPathElement : NSObject
 {
     unsigned long long _elementType;
     struct CGPoint _toPoint;

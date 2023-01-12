@@ -18,6 +18,7 @@
 - (_Bool)previewControllerIsInGroupConversation:(CKQLPreviewController *)arg1;
 - (CKChatItem *)chatItemForMediaObject:(CKMediaObject *)arg1 previewController:(CKQLPreviewController *)arg2;
 - (void)replyButtonTappedForMediaObject:(CKMediaObject *)arg1 previewController:(CKQLPreviewController *)arg2;
+- (_Bool)shouldHideInteractionOptions;
 - (NSArray *)previewActionsForPreviewController:(CKQLPreviewController *)arg1;
 @end
 

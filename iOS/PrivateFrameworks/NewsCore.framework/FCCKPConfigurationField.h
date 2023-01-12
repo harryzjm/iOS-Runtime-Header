@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPConfigurationFieldValue, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPConfigurationField : PBCodable <NSCopying>
+@interface FCCKPConfigurationField : PBCodable
 {
     NSString *_name;
     FCCKPConfigurationFieldValue *_value;

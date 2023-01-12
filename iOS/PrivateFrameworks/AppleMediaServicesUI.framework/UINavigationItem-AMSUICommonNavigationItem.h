@@ -8,6 +8,7 @@
 
 @interface UINavigationItem (AMSUICommonNavigationItem)
 - (void)ams_configureWithTransparentBackground;
+- (void)ams_configureWithTranslucentWhileScrollingBackground;
 - (void)ams_configureWithDefaultBackground;
 @end
 

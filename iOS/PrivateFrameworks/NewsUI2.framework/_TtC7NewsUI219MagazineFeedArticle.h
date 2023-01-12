@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/FCHeadlineMetadata-Protocol.h>
-
 @class MISSING_TYPE, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI219MagazineFeedArticle : NSObject <FCHeadlineMetadata>
+@interface _TtC7NewsUI219MagazineFeedArticle : NSObject
 {
     MISSING_TYPE *articleID;
     MISSING_TYPE *title;

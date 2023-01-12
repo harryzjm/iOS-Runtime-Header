@@ -6,14 +6,12 @@
 
 #import <Photos/PHFetchResult.h>
 
-#import <PhotosUICore/PXDisplayAssetFetchResult-Protocol.h>
-#import <PhotosUICore/PXPeopleFetchResult-Protocol.h>
-
 @class NSString;
 @protocol PXDisplayAsset;
 
-@interface PHFetchResult (PXDisplayAssetAdoption) <PXDisplayAssetFetchResult, PXPeopleFetchResult>
+@interface PHFetchResult (PXDisplayAssetAdoption)
 - (id)thumbnailAssetAtIndex:(unsigned long long)arg1;
+- (void)px_safelyPrefetchObjectAtIndex:(long long)arg1;
 - (id)px_fetchedObjectIDsSortedByLocalIdentifiers:(id)arg1;
 - (id)px_fetchAssetSortDatesWithDateRangeEliminationBlock:(CDUnknownBlockType)arg1;
 - (long long)px_indexOfSortedAssetNearestToAsset:(id)arg1;

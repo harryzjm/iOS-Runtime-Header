@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackIntentDataSource-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCRadioPlaybackIntentDataSource : NSObject <MPCPlaybackIntentDataSource>
+@interface MPCRadioPlaybackIntentDataSource : NSObject
 {
 }
 

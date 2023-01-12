@@ -9,6 +9,8 @@
 @class NSDictionary;
 
 @interface NSCoder (MSVAdditions)
+- (id)decodeTCCIdentityForKey:(id)arg1;
+- (void)encodeTCCIdentity:(id)arg1 forKey:(id)arg2;
 @property(copy, nonatomic, setter=msv_setUserInfo:) NSDictionary *msv_userInfo;
 @end
 

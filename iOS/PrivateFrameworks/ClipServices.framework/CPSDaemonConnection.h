@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ClipServices/CPSSessionObserving-Protocol.h>
-
 @class CPSSessionProxy, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CPSDaemonConnection : NSObject <CPSSessionObserving>
+@interface CPSDaemonConnection : NSObject
 {
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSXPCConnection *_xpcConnection;
@@ -23,6 +21,8 @@ __attribute__((visibility("hidden")))
 + (id)sharedConnection;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CPSSessionProxy *sessionProxy; // @synthesize sessionProxy=_sessionProxy;
+- (void)fetchABRMetadataForDiagnosticsWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchAMPMetadataForDiagnosticsWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performValidationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)confirmLocationWithURL:(id)arg1 inRegion:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)checkAndConsumeShowsAppAttributionBannerForBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MKAnnotationView.h"
+
 @class MKMapView;
 
 __attribute__((visibility("hidden")))
-@interface _MKLabelMarkerView
+@interface _MKLabelMarkerView : MKAnnotationView
 {
     MKMapView *_mapView;
 }

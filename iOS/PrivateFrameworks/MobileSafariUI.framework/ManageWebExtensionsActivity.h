@@ -6,12 +6,10 @@
 
 #import <UIKit/UIActivity.h>
 
-#import <MobileSafariUI/WBSExtensionsControllerObserver-Protocol.h>
-
 @class NSString, UIActivityViewController, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface ManageWebExtensionsActivity : UIActivity <WBSExtensionsControllerObserver>
+@interface ManageWebExtensionsActivity : UIActivity
 {
     NSString *_numberOfNewlyInstalledExtensions;
     UIViewController *_activityViewController;

@@ -4,17 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/NSObject-Protocol.h>
+#import <HomeUI/DMCProfileViewControllerDelegate-Protocol.h>
 
-@class MCProfileViewController;
-
-@protocol MCProfileViewControllerDelegate <NSObject>
-- (void)profileViewControllerDidSelectRemoveProfile:(MCProfileViewController *)arg1;
-- (_Bool)profileViewControllerIsProfileInstalled;
-
-@optional
-- (void)profileViewControllerDidSelectPoll:(MCProfileViewController *)arg1;
-- (_Bool)profileViewControllerShouldDisplayPoll:(MCProfileViewController *)arg1;
-- (void)profileViewControllerDidSelectUpdateProfile:(MCProfileViewController *)arg1;
+@protocol MCProfileViewControllerDelegate <DMCProfileViewControllerDelegate>
 @end
 

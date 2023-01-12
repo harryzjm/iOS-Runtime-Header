@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class IBICImageResizingBehavior, NSData, NSString;
 
-@interface IBImageRepInfo : NSObject <IBBinaryArchiving>
+@interface IBImageRepInfo : NSObject
 {
     NSString *_cacheKey;
     long long _imageRepType;

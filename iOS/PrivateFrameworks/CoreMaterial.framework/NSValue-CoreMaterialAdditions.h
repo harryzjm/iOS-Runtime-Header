@@ -6,12 +6,9 @@
 
 #import <Foundation/NSValue.h>
 
-#import <CoreMaterial/MTFilterIdentityValueProviding-Protocol.h>
-#import <CoreMaterial/MTMaterialSettingsPropertyIdentityValueProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSValue (CoreMaterialAdditions) <MTFilterIdentityValueProviding, MTMaterialSettingsPropertyIdentityValueProviding>
+@interface NSValue (CoreMaterialAdditions)
 + (id)mt_identityValueForMaterialSettingsProperty:(id)arg1;
 + (id)mt_identityValueForFilter:(id)arg1;
 - (_Bool)mt_isIdentityValueForMaterialSettingsProperty:(id)arg1;

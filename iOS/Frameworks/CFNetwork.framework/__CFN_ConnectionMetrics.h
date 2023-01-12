@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSSecureCoding-Protocol.h>
-
-@class NSDictionary, NSString, NSUUID, __CFN_SessionMetrics;
+@class NSDictionary, NSString, NSUUID;
 @protocol OS_nw_connection, OS_nw_endpoint, OS_nw_establishment_report;
 
-@interface __CFN_ConnectionMetrics : NSObject <NSSecureCoding>
+@interface __CFN_ConnectionMetrics : NSObject
 {
     struct os_unfair_lock_s connectionLock;
     _Bool _needsCachedTCPInfoAtEnd;
@@ -30,7 +28,6 @@
     unsigned short _negotiatedTLSCipherSuite;
     int _privacyStance;
     NSObject<OS_nw_connection> *_connection;
-    __CFN_SessionMetrics *_sessionMetrics;
     NSDictionary *_cachedTCPInfoAtEnd;
     NSDictionary *_cachedSubflowCounts;
     NSUUID *_UUID;

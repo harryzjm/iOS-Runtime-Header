@@ -6,13 +6,10 @@
 
 #import <WorkflowUICore/WFActionUserInterface.h>
 
-#import <ActionKitUI/UIPrintInteractionControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFPrintActionUserInterface-Protocol.h>
-
 @class NSString, UIPrintInteractionController;
 
 __attribute__((visibility("hidden")))
-@interface WFPrintActionUIKitUserInterface : WFActionUserInterface <UIPrintInteractionControllerDelegate, WFPrintActionUserInterface>
+@interface WFPrintActionUIKitUserInterface : WFActionUserInterface
 {
     UIPrintInteractionController *_printController;
     CDUnknownBlockType _completionHandler;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-
 @class NSString;
 @protocol CAAnimationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewWeakCAAnimationDelegate : NSObject <CAAnimationDelegate>
+@interface _UIViewWeakCAAnimationDelegate : NSObject
 {
     id <CAAnimationDelegate> _animationDelegate;
     struct {

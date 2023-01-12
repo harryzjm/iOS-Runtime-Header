@@ -6,32 +6,33 @@
 
 #import <objc/NSObject.h>
 
-#import <SchoolTime/SCLSchoolModeXPCClient-Protocol.h>
-
 @class NSString, NSXPCConnection, SCLScheduleSettings, SCLSchoolModeConfiguration, SCLSchoolModeServerSettings, SCLState;
 @protocol SCLSchoolModeXPCClientDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SCLSchoolModeXPCClient : NSObject <SCLSchoolModeXPCClient>
+@interface SCLSchoolModeXPCClient : NSObject
 {
     struct os_unfair_lock_s _lock;
     struct os_unfair_lock_s _connectionLock;
     SCLSchoolModeServerSettings *_serverSettings;
     int _restartNotificationToken;
-    _Bool _running;
     id <SCLSchoolModeXPCClientDelegate> _delegate;
     NSXPCConnection *_connection;
     SCLSchoolModeConfiguration *_configuration;
+    long long _connectionState;
+    long long _clientState;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
+@property(nonatomic) long long clientState; // @synthesize clientState=_clientState;
+@property(nonatomic) long long connectionState; // @synthesize connectionState=_connectionState;
 @property(retain, nonatomic) SCLSchoolModeConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(nonatomic) __weak id <SCLSchoolModeXPCClientDelegate> delegate; // @synthesize delegate=_delegate;
 - (oneway void)didChangeUnlockHistory;
 - (oneway void)applyServerSettings:(id)arg1;
-- (void)_dropConnection;
+- (void)_connectionDidInterrupt;
+- (void)_connectionDidInvalidate;
 - (id)serverWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)dumpState;
 - (void)triggerRemoteSync;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)deleteHistoryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addUnlockHistoryItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchRecentUnlockHistoryItemsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setActive:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setActive:(_Bool)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)applyScheduleSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)invalidate;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;

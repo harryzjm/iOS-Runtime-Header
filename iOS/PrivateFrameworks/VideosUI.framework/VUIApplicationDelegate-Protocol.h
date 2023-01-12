@@ -7,5 +7,6 @@
 #import <VideosUI/UIApplicationDelegate-Protocol.h>
 
 @protocol VUIApplicationDelegate <UIApplicationDelegate>
+@property(nonatomic) _Bool overrideOrientation;
 @end
 

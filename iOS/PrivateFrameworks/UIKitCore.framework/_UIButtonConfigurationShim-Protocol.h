@@ -42,6 +42,10 @@
 - (_Bool)_hasMultilineTitle;
 - (UIColor *)_resolvedActivityIndicatorColor;
 - (double)_resolvedActivityIndicatorSize;
+- (double)_resolvedIndicatorPadding;
+- (UIImageSymbolConfiguration *)_resolvedIndicatorSymbolConfiguration;
+- (UIColor *)_resolvedIndicatorColor;
+- (UIImage *)_resolvedIndicator;
 - (double)_resolvedImageReservation;
 - (UIImageSymbolConfiguration *)_resolvedSymbolConfiguration;
 - (UIColor *)_resolvedImageColor;

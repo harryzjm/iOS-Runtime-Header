@@ -11,21 +11,25 @@
 @interface _TtC8VideosUI18DocumentInteractor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *state;
-    MISSING_TYPE *viewWillAppearAfterTabSwitch;
-    MISSING_TYPE *documentViewIsVisible;
-    MISSING_TYPE *paginator;
     MISSING_TYPE *document;
+    MISSING_TYPE *documentId;
+    MISSING_TYPE *viewWillAppearAfterTabSwitch;
+    MISSING_TYPE *inAppBannerNotificationPending;
+    MISSING_TYPE *paginator;
+    MISSING_TYPE *pagePerformanceReporter;
+    MISSING_TYPE *_documentViewIsVisible;
     MISSING_TYPE *documentType;
     MISSING_TYPE *initialControllerRef;
     MISSING_TYPE *initialRequestSent;
     MISSING_TYPE *inAppBannerAllowed;
-    MISSING_TYPE *inAppBannerNotificationPending;
     MISSING_TYPE *activeServiceRequest;
     MISSING_TYPE *activeFragmentServiceRequest;
     MISSING_TYPE *eventMonitorController;
-    MISSING_TYPE *shouldHideLoadingView;
+    MISSING_TYPE *supportsAnimatedStateTransitions;
+    MISSING_TYPE *performsUpdatesInBackground;
     MISSING_TYPE *paginationSubscriber;
     MISSING_TYPE *hasPendingViewUpdates;
+    MISSING_TYPE *initialRequestContext;
 }
 
 @end

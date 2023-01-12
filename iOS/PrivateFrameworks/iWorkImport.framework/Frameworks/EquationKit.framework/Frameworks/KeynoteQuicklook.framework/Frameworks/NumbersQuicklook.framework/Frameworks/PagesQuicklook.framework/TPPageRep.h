@@ -6,12 +6,9 @@
 
 #import <TSText/TSWPPageRep.h>
 
-#import <PagesQuicklook/TSDMasterDrawableDelegate-Protocol.h>
-#import <PagesQuicklook/TSKChangeSourceObserver-Protocol.h>
-
 @class CALayer, NSString, TPiOSMarginAdjustRep, TSDFill;
 
-@interface TPPageRep : TSWPPageRep <TSKChangeSourceObserver, TSDMasterDrawableDelegate>
+@interface TPPageRep : TSWPPageRep
 {
     CALayer *_horizontalSeparatorLayer;
     CALayer *_verticalSeparatorLayer;

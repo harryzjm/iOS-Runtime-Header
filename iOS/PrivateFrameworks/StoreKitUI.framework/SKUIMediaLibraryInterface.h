@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUILibraryInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMediaLibraryInterface : NSObject <SKUILibraryInterface>
+@interface SKUIMediaLibraryInterface : NSObject
 {
 }
 

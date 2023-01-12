@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSCopying-Protocol.h>
-
-@interface NSURLRequestInternal : NSObject <NSCopying>
+@interface NSURLRequestInternal : NSObject
 {
     struct URLRequest _request;
 }

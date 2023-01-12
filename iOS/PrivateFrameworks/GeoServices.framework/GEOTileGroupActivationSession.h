@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOPListStateCapturing-Protocol.h>
-#import <GeoServices/NSProgressReporting-Protocol.h>
-
 @class GEOActiveTileGroup, GEODataSetDescription, GEOResourceManifestConfiguration, GEOResources, GEOTileGroup, NSArray, NSProgress, NSSet, NSString;
 @protocol GEOTileGroupActivationSessionDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface GEOTileGroupActivationSession : NSObject <GEOPListStateCapturing, NSProgressReporting>
+@interface GEOTileGroupActivationSession : NSObject
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     struct GEOOnce_s _started;

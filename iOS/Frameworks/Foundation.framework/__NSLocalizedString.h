@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSSecureCoding-Protocol.h>
+#import "NSMutableString.h"
 
-@class NSDictionary, NSMutableString;
+@class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface __NSLocalizedString <NSSecureCoding>
+@interface __NSLocalizedString : NSMutableString
 {
     NSMutableString *original;
     NSDictionary *config;

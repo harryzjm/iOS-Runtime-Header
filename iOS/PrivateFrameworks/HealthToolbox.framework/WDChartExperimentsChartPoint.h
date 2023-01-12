@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthToolbox/HKChartPoint-Protocol.h>
-
 @class NSDate, NSNumber, NSString;
 @protocol HKGraphSeriesBlockCoordinateInfo;
 
 __attribute__((visibility("hidden")))
-@interface WDChartExperimentsChartPoint : NSObject <HKChartPoint>
+@interface WDChartExperimentsChartPoint : NSObject
 {
     NSDate *_xValue;
     NSNumber *_yValue;

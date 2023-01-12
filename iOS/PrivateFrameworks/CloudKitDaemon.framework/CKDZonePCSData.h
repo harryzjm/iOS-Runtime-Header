@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
-
 @class CKDSharePCSData, CKRecordID, CKRecordZoneID, NSData, NSDate;
 
-@interface CKDZonePCSData <NSSecureCoding, NSCopying>
+@interface CKDZonePCSData
 {
     struct _OpaquePCSShareProtection *_zoneishPCS;
     CKRecordZoneID *_zoneID;

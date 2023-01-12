@@ -6,13 +6,10 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-#import <MediaPlaybackCore/MPCStoreFrontLocalEquivalencyMiddlewarePlayingItemProviding-Protocol.h>
-#import <MediaPlaybackCore/MPMiddlewareAutomaticDependencyOperation-Protocol.h>
-
 @class MPCPlayerRequest, MPCStoreFrontLocalEquivalencyMiddleware, MPModelGenericObject, NSArray, NSError, NSIndexPath, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCStoreFrontLocalEquivalencyMiddlewareOperation : MPAsyncOperation <MPCStoreFrontLocalEquivalencyMiddlewarePlayingItemProviding, MPMiddlewareAutomaticDependencyOperation>
+@interface MPCStoreFrontLocalEquivalencyMiddlewareOperation : MPAsyncOperation
 {
     NSMapTable *_inputOperations;
     CDUnknownBlockType _invalidationHandler;

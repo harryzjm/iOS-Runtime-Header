@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIGestureStudyParticipating-Protocol.h>
+#import "UIGestureRecognizer.h"
 
 @class NSString, UITouch;
 
 __attribute__((visibility("hidden")))
-@interface _UIGestureStudyMetricsGestureRecognizer <_UIGestureStudyParticipating>
+@interface _UIGestureStudyMetricsGestureRecognizer : UIGestureRecognizer
 {
     long long _observedTouchCount;
     double _startTimestamp;

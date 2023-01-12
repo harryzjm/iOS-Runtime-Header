@@ -16,6 +16,8 @@
 
 @optional
 @property(retain, nonatomic) UICollectionViewCellRegistration *cellRegistration;
+- (void)willDisplayItem:(id)arg1;
+- (_Bool)shouldHighlightItem:(id)arg1;
 - (void)didSelectItem:(id)arg1;
 - (void)configureSupplementaryRegistration:(UICollectionReusableView *)arg1 elementKind:(NSString *)arg2 sectionIdentifier:(NSString *)arg3;
 - (Class)supplementaryRegistrationClassForKind:(NSString *)arg1 sectionIdentifier:(NSString *)arg2;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/NSCoding-Protocol.h>
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NBPhoneNumber : NSObject <NSCopying, NSCoding>
+@interface _NBPhoneNumber : NSObject
 {
     _Bool _italianLeadingZero;
     NSNumber *_countryCode;

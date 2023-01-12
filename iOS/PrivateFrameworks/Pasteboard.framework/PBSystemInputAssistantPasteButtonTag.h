@@ -4,16 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "PBPasteButtonTag.h"
+
 __attribute__((visibility("hidden")))
-@interface PBSystemInputAssistantPasteButtonTag
+@interface PBSystemInputAssistantPasteButtonTag : PBPasteButtonTag
 {
+    long long _site;
 }
 
 + (_Bool)supportsSecureCoding;
-- (id)_acceptCalloutBarPasteButtonTagVisit:(CDUnknownBlockType)arg1 systemInputAssistantPasteButtonTagVisit:(CDUnknownBlockType)arg2 undoInteractionHUDIconPasteButtonTagVisit:(CDUnknownBlockType)arg3 undoInteractionHUDTextPasteButtonTagVisit:(CDUnknownBlockType)arg4 contextMenuPasteButtonTagVisit:(CDUnknownBlockType)arg5;
+@property(readonly) long long site; // @synthesize site=_site;
+- (id)_acceptCalloutBarPasteButtonTagVisit:(CDUnknownBlockType)arg1 systemInputAssistantPasteButtonTagVisit:(CDUnknownBlockType)arg2 undoInteractionHUDIconPasteButtonTagVisit:(CDUnknownBlockType)arg3 undoInteractionHUDTextPasteButtonTagVisit:(CDUnknownBlockType)arg4 contextMenuPasteButtonTagVisit:(CDUnknownBlockType)arg5 editMenuPasteButtonTagVisit:(CDUnknownBlockType)arg6;
+- (unsigned int)secureNameForStyle:(id)arg1;
 - (id)resolvedStyleForStyle:(id)arg1;
+- (_Bool)isValid;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)authenticationMessageContextForStyle:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithSite:(long long)arg1;
 
 @end
 

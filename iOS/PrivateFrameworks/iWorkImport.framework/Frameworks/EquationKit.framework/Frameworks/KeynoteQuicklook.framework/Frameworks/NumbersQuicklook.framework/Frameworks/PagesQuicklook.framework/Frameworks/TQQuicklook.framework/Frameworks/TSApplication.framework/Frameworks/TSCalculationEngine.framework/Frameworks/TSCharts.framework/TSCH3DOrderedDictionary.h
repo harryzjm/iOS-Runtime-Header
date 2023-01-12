@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSFastEnumeration-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary;
 
-@interface TSCH3DOrderedDictionary : NSObject <NSFastEnumeration>
+@interface TSCH3DOrderedDictionary : NSObject
 {
     NSMutableDictionary *_store;
     NSMutableArray *_keyOrder;

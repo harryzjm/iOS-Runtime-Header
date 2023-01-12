@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSTables/TSTGroupByChangeProtocol-Protocol.h>
-
 @class NSIndexSet, NSMapTable;
 
-@interface TSTCategoryTranslator <TSTGroupByChangeProtocol>
+@interface TSTCategoryTranslator
 {
     unsigned long long _groupingsChangingLevel;
     _Bool _sawGroupingChangeNeedingReset;
@@ -40,8 +38,6 @@
 @property(nonatomic) struct os_unfair_lock_s cachedIndexesUnfairLock; // @synthesize cachedIndexesUnfairLock=_cachedIndexesUnfairLock;
 @property(nonatomic) _Bool cachedIndexSetsAreValid; // @synthesize cachedIndexSetsAreValid=_cachedIndexSetsAreValid;
 @property(nonatomic) _Bool suspendNotify; // @synthesize suspendNotify=_suspendNotify;
-- (void)setGroupSortOrder:(id)arg1;
-- (id)groupSortOrder;
 - (_Bool)areMapsStale;
 - (_Bool)checkMapsAndAssert:(_Bool)arg1;
 - (Class)iteratorClass;
@@ -108,7 +104,7 @@
 - (void)removeColumnsAtIndexes:(id)arg1;
 - (void)removeRowsAtIndexes:(id)arg1;
 - (id)commentHostingAtCellID:(struct TSUViewCellCoord)arg1;
-- (id)commentHostingAtCellID:(struct TSUViewCellCoord)arg1 forCommentStorage:(id)arg2;
+- (id)commentHostingAtCellID:(struct TSUViewCellCoord)arg1 forCommentStorage:(id)arg2 updateCommentMaps:(_Bool)arg3;
 - (void)postCommentNotificationForStorage:(id)arg1 atViewCellCoord:(struct TSUViewCellCoord)arg2 notificationKey:(id)arg3;
 - (void)removeColumnsAtIndex:(struct TSUViewColumnIndex)arg1 count:(struct TSUViewColumnIndex)arg2;
 - (void)removeRowsAtIndex:(struct TSUViewRowIndex)arg1 count:(struct TSUViewRowIndex)arg2;
@@ -132,6 +128,7 @@
 - (id)metadataForColumnIndex:(struct TSUViewColumnIndex)arg1;
 - (id)metadataForRowIndex:(struct TSUViewRowIndex)arg1;
 - (id)conditionalStyleSetAtCellID:(struct TSUViewCellCoord)arg1;
+- (void)defaultStylesForCellID:(struct TSUViewCellCoord)arg1 useSoftDefault:(_Bool)arg2 outCellStyle:(id *)arg3 outTextStyle:(id *)arg4;
 - (id)textStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out _Bool *)arg2;
 - (id)cellStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out _Bool *)arg2;
 - (id)textStyleAtCellUID:(const struct TSKUIDStructCoord *)arg1 isDefault:(out _Bool *)arg2;
@@ -144,6 +141,7 @@
 - (int)setCellStyle:(id)arg1 ofColumnAtIndex:(struct TSUViewColumnIndex)arg2;
 - (id)textStyleOfRowAtIndex:(struct TSUViewRowIndex)arg1 isDefault:(out _Bool *)arg2;
 - (id)cellStyleOfRowAtIndex:(struct TSUViewRowIndex)arg1 isDefault:(out _Bool *)arg2;
+- (void)p_defaultStylesOfSummaryOrLabelRowAtLevel:(unsigned char)arg1 isLabel:(_Bool)arg2 outCellStyle:(id *)arg3 outTextStyle:(id *)arg4;
 - (id)p_defaultTextStyleOfSummaryOrLabelRowAtLevel:(unsigned char)arg1 isLabel:(_Bool)arg2;
 - (id)p_defaultCellStyleOfSummaryOrLabelRowAtLevel:(unsigned char)arg1 isLabel:(_Bool)arg2;
 - (int)setTextStyle:(id)arg1 ofRowAtIndex:(struct TSUViewRowIndex)arg2;

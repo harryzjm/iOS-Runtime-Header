@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPDecoderDataInfo-Protocol.h>
-
 @class NSString, TSPDataMetadata, TSPDigest;
 
-@interface TSPDecoderDataInfo : NSObject <TSPDecoderDataInfo>
+@interface TSPDecoderDataInfo : NSObject
 {
     TSPDigest *_digest;
     NSString *_preferredFilename;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthKit/HKRemoteFeatureAvailabilityRule-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HKRemoteFeatureAvailabilityActiveWatchAtrialFibrillationDetectionVersionLessThanRule <HKRemoteFeatureAvailabilityRule>
+@interface HKRemoteFeatureAvailabilityActiveWatchAtrialFibrillationDetectionVersionLessThanRule
 {
     CDStruct_f6aba300 _targetVersion;
 }

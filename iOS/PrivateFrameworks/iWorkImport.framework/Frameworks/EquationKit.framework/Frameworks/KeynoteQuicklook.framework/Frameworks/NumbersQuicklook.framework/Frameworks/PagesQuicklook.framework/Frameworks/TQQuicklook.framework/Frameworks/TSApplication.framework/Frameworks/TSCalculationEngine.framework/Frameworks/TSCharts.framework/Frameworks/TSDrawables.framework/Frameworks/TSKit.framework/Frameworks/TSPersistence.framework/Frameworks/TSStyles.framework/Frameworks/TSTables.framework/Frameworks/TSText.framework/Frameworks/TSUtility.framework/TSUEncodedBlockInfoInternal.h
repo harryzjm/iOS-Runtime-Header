@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/TSUEncodedBlockInfo-Protocol.h>
-
 @class NSString;
 
-@interface TSUEncodedBlockInfoInternal : NSObject <TSUEncodedBlockInfo>
+@interface TSUEncodedBlockInfoInternal : NSObject
 {
     unsigned long long _encodedLength;
 }

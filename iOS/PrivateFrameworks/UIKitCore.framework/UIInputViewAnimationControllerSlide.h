@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIInputViewAnimationController-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewAnimationControllerSlide : NSObject <UIInputViewAnimationController>
+@interface UIInputViewAnimationControllerSlide : NSObject
 {
     int _slide;
 }

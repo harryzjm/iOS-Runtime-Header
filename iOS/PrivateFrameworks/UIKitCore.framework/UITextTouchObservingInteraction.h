@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/UIInteraction-Protocol.h>
-
 @class NSString, UILongPressGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UITextTouchObservingInteraction : NSObject <UIGestureRecognizerDelegate, UIInteraction>
+@interface UITextTouchObservingInteraction : NSObject
 {
     UIView *_view;
     UILongPressGestureRecognizer *_longPressGesture;

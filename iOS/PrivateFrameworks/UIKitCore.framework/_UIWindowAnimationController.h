@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface _UIWindowAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
+@interface _UIWindowAnimationController : NSObject
 {
     _Bool _shouldCrossfade;
     UIWindow *_window;

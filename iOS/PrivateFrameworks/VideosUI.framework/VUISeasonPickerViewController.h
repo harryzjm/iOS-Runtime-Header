@@ -6,15 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <VideosUI/VUIFamilySharingContentProtocol-Protocol.h>
-#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
-
 @class NSString, UICollectionViewDiffableDataSource, VUIFamilyMember, VUIMediaEntitiesDataSource, VUISeasonPickerCollectionViewCell, VUIViewControllerContentPresenter, _VUISeasonPickerView;
 
 __attribute__((visibility("hidden")))
-@interface VUISeasonPickerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, VUILibraryDataSourceDelegate, VUIFamilySharingContentProtocol>
+@interface VUISeasonPickerViewController : UIViewController
 {
     VUISeasonPickerCollectionViewCell *_sizingCell;
     _Bool _lastViewedSeasonWasManuallyDeleted;

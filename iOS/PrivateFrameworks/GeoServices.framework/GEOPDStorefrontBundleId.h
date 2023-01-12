@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOPDStorefrontBundleId : PBCodable <NSCopying>
+@interface GEOPDStorefrontBundleId : PBCodable
 {
     unsigned long long _identifier;
     unsigned long long _timestamp;

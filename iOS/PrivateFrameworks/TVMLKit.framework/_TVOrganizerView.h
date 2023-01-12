@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
+#import "_TVFocusRedirectView.h"
 
 @class NSArray, NSDictionary, NSString, UIColor, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _TVOrganizerView <TVAppTemplateImpressionable>
+@interface _TVOrganizerView : _TVFocusRedirectView
 {
     UIView *_lastFocusedView;
     UIView *_rightColumnDivider;

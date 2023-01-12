@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadJSONValue-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (MPCPlaybackEngineEventPayload) <MPCPlaybackEngineEventPayloadJSONValue>
+@interface NSArray (MPCPlaybackEngineEventPayload)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,9 +6,7 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <HealthExperienceUI/UIInterfaceOrientationMaskOverride-Protocol.h>
-
-@interface UINavigationController (HealthExperienceUI) <UIInterfaceOrientationMaskOverride>
+@interface UINavigationController (HealthExperienceUI)
 - (unsigned long long)overrideMask;
 - (void)restoreUserActivityState:(id)arg1;
 @end

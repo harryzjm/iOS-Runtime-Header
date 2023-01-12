@@ -7,7 +7,7 @@
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 #import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
 
-@class NSDate, NSSet, NSString;
+@class NSDate, NSSet, NSString, PLMomentShare;
 
 @protocol PLSyncableAsset <NSObject, PLSyncableObject>
 @property(readonly, nonatomic) _Bool hasAdjustments;
@@ -20,6 +20,7 @@
 @property(retain, nonatomic) NSSet *detectedFaces;
 @property(readonly, retain, nonatomic) NSString *cloudIdentifier;
 - (NSString *)syncDescription;
+- (PLMomentShare *)momentShare;
 - (void)markForNeedingFaceDetection;
 @end
 

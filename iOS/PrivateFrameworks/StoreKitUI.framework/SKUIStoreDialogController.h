@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/UIAlertViewDelegate-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStoreDialogController : NSObject <UIAlertViewDelegate>
+@interface SKUIStoreDialogController : NSObject
 {
     NSMutableArray *_alerts;
     NSMutableArray *_dialogs;

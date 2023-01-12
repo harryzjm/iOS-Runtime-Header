@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFRequestUserReportCommand.h>
 
 @interface SFRequestUserReportCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

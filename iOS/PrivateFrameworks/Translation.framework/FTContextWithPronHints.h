@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTContextWithPronHints : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTContextWithPronHints : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_b036dfee)addObjectToBuffer:(void *)arg1;
+- (void)pron_hints_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)pron_hints_count;
+- (id)pron_hints_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *pron_hints;
 @property(readonly, nonatomic) NSString *contextual_text;
 - (id)copyWithZone:(struct _NSZone *)arg1;

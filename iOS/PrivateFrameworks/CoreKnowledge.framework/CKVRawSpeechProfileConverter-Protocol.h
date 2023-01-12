@@ -6,11 +6,10 @@
 
 #import <CoreKnowledge/NSObject-Protocol.h>
 
-@class CKVRawSpeechProfileEntityMetadata, NSArray, NSObject, NSString;
-@protocol CKVocabularyItem;
+@class CKVRawSpeechProfileEntityMetadata, KVItem, NSArray, NSString;
 
 @protocol CKVRawSpeechProfileConverter <NSObject>
-+ (NSObject<CKVocabularyItem> *)vocabularyItemFromSpeechWords:(NSArray *)arg1 metadata:(CKVRawSpeechProfileEntityMetadata *)arg2 speechNamespace:(NSString *)arg3 error:(id *)arg4;
-+ (NSString *)speechCategoryId;
+- (KVItem *)vocabularyItemFromSpeechWords:(NSArray *)arg1 metadata:(CKVRawSpeechProfileEntityMetadata *)arg2 speechNamespace:(NSString *)arg3 error:(id *)arg4;
+- (NSString *)speechCategoryId;
 @end
 

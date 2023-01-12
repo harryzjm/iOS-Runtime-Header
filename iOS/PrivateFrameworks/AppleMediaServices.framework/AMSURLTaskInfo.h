@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     NSMutableData *_data;
     NSMutableSet *_retryIdentifiers;
+    _Bool _performingBlockWithDataAccess;
     CDUnknownBlockType _completionBlock;
     NSError *_error;
     NSURLSessionTaskMetrics *_metrics;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSURLResponse *_response;
     long long _retryCount;
     AMSURLSession *_session;
+    unsigned long long _signpostID;
     NSURLSessionTask *_task;
     struct os_unfair_recursive_lock_s _taskLock;
     NSObject<OS_dispatch_queue> *_taskQueue;
@@ -37,8 +39,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *taskQueue; // @synthesize taskQueue=_taskQueue;
 @property(readonly, nonatomic) struct os_unfair_recursive_lock_s taskLock; // @synthesize taskLock=_taskLock;
 @property(readonly, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
+@property(nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 - (void)performSyncBlockWithExclusiveAccess:(CDUnknownBlockType)arg1;
 - (void)performSyncBlock:(CDUnknownBlockType)arg1;
+- (void)performAsyncBlockWithData:(CDUnknownBlockType)arg1;
 - (void)performAsyncBlock:(CDUnknownBlockType)arg1;
 - (void)migrateFromTaskInfo:(id)arg1;
 - (id)createMetricsContextForDecodedObject:(id)arg1;

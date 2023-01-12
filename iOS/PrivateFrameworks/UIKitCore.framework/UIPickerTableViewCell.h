@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITableViewCell.h"
+
 @class UIPickerTableView, UITapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface UIPickerTableViewCell
+@interface UIPickerTableViewCell : UITableViewCell
 {
     UITapGestureRecognizer *_tap;
     UIPickerTableView *pickerTable;
@@ -17,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)_centerCellDigitFont;
 + (id)_nonCenterCellFont;
 + (id)_centerCellFont;
++ (void)_resetFontCacheForLegitbilityWeight:(long long)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) UIPickerTableView *pickerTable; // @synthesize pickerTable;
 - (void)_tapAction:(id)arg1;

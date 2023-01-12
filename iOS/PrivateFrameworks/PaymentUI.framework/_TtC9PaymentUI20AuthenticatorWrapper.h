@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *_authenticatorModel;
     MISSING_TYPE *authenticator;
+    MISSING_TYPE *delegate;
 }
 
 - (void).cxx_destruct;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingInformationOverlayInvokeGestureHandler : NSObject <UIGestureRecognizerDelegate>
+@interface UIDebuggingInformationOverlayInvokeGestureHandler : NSObject
 {
     _Bool _didCreateTools;
 }

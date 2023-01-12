@@ -10,6 +10,7 @@
 
 @protocol SFFormMetadataObserver <NSObject>
 - (void)didRemoveAutomaticStrongPasswordInForm:(WBSFormMetadata *)arg1 inputSessionUserObject:(NSDictionary *)arg2 inFrame:(SFFormAutoFillFrameHandle *)arg3;
+- (void)didCompleteWithPasskey;
 - (void)didUpdateUnsubmittedForm:(WBSFormMetadata *)arg1 inFrame:(SFFormAutoFillFrameHandle *)arg2;
 - (void)didFillOneTimeCodeAndShouldSubmit:(_Bool)arg1;
 - (void)autoFillDidFinishWithUpdatedFormMetadata:(WBSFormMetadata *)arg1 inFrame:(SFFormAutoFillFrameHandle *)arg2 shouldSubmit:(_Bool)arg3;
@@ -18,6 +19,6 @@
 - (void)textDidChangeInTextField:(WBSFormControlMetadata *)arg1 inForm:(WBSFormMetadata *)arg2 inFrame:(SFFormAutoFillFrameHandle *)arg3;
 - (void)didCollectFormMetadataForPageLevelAutoFill:(NSDictionary *)arg1 atURL:(NSURL *)arg2;
 - (void)didCollectFormMetadataForPreFilling:(NSDictionary *)arg1 atURL:(NSURL *)arg2;
-- (void)didCollectURLsForPreFilling:(NSArray *)arg1 atURL:(NSURL *)arg2;
+- (void)didCollectURLsForPreFilling:(NSArray *)arg1 atURL:(NSURL *)arg2 inFrame:(SFFormAutoFillFrameHandle *)arg3;
 @end
 

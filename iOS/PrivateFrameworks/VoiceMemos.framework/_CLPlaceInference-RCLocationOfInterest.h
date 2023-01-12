@@ -6,11 +6,9 @@
 
 #import <CoreLocation/_CLPlaceInference.h>
 
-#import <VoiceMemos/RCLocationOfInterest-Protocol.h>
-
 @class CLLocation, NSString;
 
-@interface _CLPlaceInference (RCLocationOfInterest) <RCLocationOfInterest>
+@interface _CLPlaceInference (RCLocationOfInterest)
 + (void)initialize;
 @property(readonly, nonatomic) NSString *preferredName;
 @property(readonly, nonatomic) CLLocation *location;

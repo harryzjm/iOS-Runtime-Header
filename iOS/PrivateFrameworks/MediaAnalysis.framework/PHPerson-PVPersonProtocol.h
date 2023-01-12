@@ -6,12 +6,10 @@
 
 #import <Photos/PHPerson.h>
 
-#import <MediaAnalysis/PVPersonProtocol-Protocol.h>
-
 @class NSString;
 @protocol PVFaceProtocol;
 
-@interface PHPerson (PVPersonProtocol) <PVPersonProtocol>
+@interface PHPerson (PVPersonProtocol)
 - (id)personLocalIdentifiers;
 - (void)pv_addMergeCandidatePersons:(id)arg1;
 @property(retain, nonatomic) id <PVFaceProtocol> keyFace;

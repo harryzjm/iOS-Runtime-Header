@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WebContentAnalysis/WFWebPageProtocol-Protocol.h>
-
 @class NSString, WFImgArrayCache;
 @protocol WFWebPageProtocol;
 
 __attribute__((visibility("hidden")))
-@interface WFWebPageDecorator : NSObject <WFWebPageProtocol>
+@interface WFWebPageDecorator : NSObject
 {
     NSObject<WFWebPageProtocol> *webPageStripper;
     WFImgArrayCache *pageImagesPropertyCache;

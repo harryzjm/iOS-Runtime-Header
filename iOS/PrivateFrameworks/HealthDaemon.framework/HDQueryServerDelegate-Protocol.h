@@ -11,6 +11,7 @@
 @protocol HDQueryServerDelegate <HDTaskServerDelegate>
 - (void)queryServerDidFinish:(HDQueryServer *)arg1;
 - (void)queryServer:(HDQueryServer *)arg1 shouldStartWithCompletion:(void (^)(_Bool, NSError *))arg2;
+- (void)queryServer:(HDQueryServer *)arg1 requestsAuthorizationWithContext:(HDObjectAuthorizationRequestContext *)arg2 promptIfNeeded:(_Bool)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 - (void)queryServer:(HDQueryServer *)arg1 requestsAuthorizationWithContext:(HDObjectAuthorizationRequestContext *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 @end
 

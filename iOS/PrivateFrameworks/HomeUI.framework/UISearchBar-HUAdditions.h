@@ -6,11 +6,9 @@
 
 #import <UIKit/UISearchBar.h>
 
-#import <HomeUI/HUSearchBar-Protocol.h>
-
 @class NSString, UITextField;
 
-@interface UISearchBar (HUAdditions) <HUSearchBar>
+@interface UISearchBar (HUAdditions)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

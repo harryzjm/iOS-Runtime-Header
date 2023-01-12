@@ -6,12 +6,9 @@
 
 #import <HealthKit/HKSample.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-#import <HealthDaemon/HDDistinctableObject-Protocol.h>
-
 @class NSString;
 
-@interface HKSample (HDDistinctableObject) <HDDistinctableObject, HDCoding>
+@interface HKSample (HDDistinctableObject)
 + (_Bool)supportsDistinctByKeyPath:(id)arg1;
 + (id)createWithCodable:(id)arg1;
 + (id)hd_sampleTypesForObjects:(id)arg1;

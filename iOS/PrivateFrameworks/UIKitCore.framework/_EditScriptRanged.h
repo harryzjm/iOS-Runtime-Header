@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)editScriptForSmallestSingleEditFromString:(id)arg1 toString:(id)arg2;
 + (id)editScriptFromString:(id)arg1 toString:(id)arg2 chunkSize:(long long)arg3 orderAtomsAscending:(_Bool)arg4 operationPrecedence:(long long)arg5 options:(long long)arg6;
 + (id)editScriptFromString:(id)arg1 toString:(id)arg2;
+- (void).cxx_destruct;
 - (void)computeSmallestSingleEdit;
 - (void)removeAnyOverlapBetweenIndexOfFirstDifference:(long long *)arg1 andReverseIndexOfLastDifference:(long long *)arg2 shouldShortenFirstDifference:(_Bool)arg3;
 - (void)finalizeCurrentScriptAtom;
@@ -25,7 +26,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *stringB;
 @property(readonly, nonatomic) NSString *stringA;
 - (id)initWithOperationPrecedence:(long long)arg1 dataClass:(Class)arg2 chunkSize:(long long)arg3 stringA:(id)arg4 stringB:(id)arg5 orderAtomsAscending:(_Bool)arg6 options:(long long)arg7;
-- (void)dealloc;
 
 @end
 

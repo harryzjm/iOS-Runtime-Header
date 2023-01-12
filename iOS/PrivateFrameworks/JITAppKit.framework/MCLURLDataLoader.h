@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <JITAppKit/NSURLSessionDataDelegate-Protocol.h>
-#import <JITAppKit/NSURLSessionDownloadDelegate-Protocol.h>
-
 @class NSArray, NSHTTPCookieStorage, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSOperationQueue, NSRecursiveLock, NSSet, NSString, NSURLCache, NSURLSession;
 
 __attribute__((visibility("hidden")))
-@interface MCLURLDataLoader : NSObject <NSURLSessionDataDelegate, NSURLSessionDownloadDelegate>
+@interface MCLURLDataLoader : NSObject
 {
     NSString *_cachePath;
     NSURLCache *_cache;

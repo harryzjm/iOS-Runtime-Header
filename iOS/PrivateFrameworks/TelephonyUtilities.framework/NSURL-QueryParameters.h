@@ -6,19 +6,20 @@
 
 #import <Foundation/NSURL.h>
 
-#import <TelephonyUtilities/TUSanitizedCopying-Protocol.h>
-
 @class NSString;
 
-@interface NSURL (QueryParameters) <TUSanitizedCopying>
+@interface NSURL (QueryParameters)
 + (id)screenSharingAppURL;
 + (id)faceTimeAppJoinConversationURLForConversationLinkURL:(id)arg1;
 + (id)faceTimeAppViewLinkDetailsURLForPseudonym:(id)arg1;
 + (id)faceTimeAnswerURLWithSourceIdentifier:(id)arg1;
 + (id)faceTimeUpdateForegroundAppURLForBundleIdentifier:(id)arg1 applicationType:(long long)arg2;
 + (id)faceTimeAppJoinConversationLinkURL;
++ (id)faceTimeNeedsBackgroundLaunchURL;
 + (id)faceTimeAppViewLinkDetailsURL;
 + (id)faceTimeUpdateForegroundAppURL;
++ (id)faceTimeShowIncomingTransmissionNoticeUIURL;
++ (id)faceTimeShowHandoffEligibleNearbyURL;
 + (id)faceTimeShowSystemCallControlsURL;
 + (id)faceTimeShowCarPlayInCallUIURL;
 + (id)faceTimeShowInCallUIURL;
@@ -37,10 +38,6 @@
 + (id)_faceTimeURLWithDestinationID:(id)arg1 addressBookUID:(int)arg2 audioOnly:(_Bool)arg3;
 + (id)faceTimeURLWithPhoneNumber:(id)arg1 addressBookUID:(int)arg2 audioOnly:(_Bool)arg3 forceAssist:(_Bool)arg4 suppressAssist:(_Bool)arg5 wasAssisted:(_Bool)arg6;
 + (id)faceTimeURLWithPhoneNumber:(id)arg1 addressBookUID:(int)arg2 forceAssist:(_Bool)arg3 suppressAssist:(_Bool)arg4 wasAssisted:(_Bool)arg5;
-+ (id)URLWithTelephoneNumber:(id)arg1 addressBookUID:(int)arg2 forceAssist:(_Bool)arg3 suppressAssist:(_Bool)arg4 wasAssisted:(_Bool)arg5;
-+ (id)URLWithTelephoneNumber:(id)arg1 addressBookUID:(int)arg2;
-+ (id)URLWithTelephoneNumber:(id)arg1 promptUser:(_Bool)arg2;
-+ (id)URLWithTelephoneNumber:(id)arg1;
 + (id)telephonyURLForTelEmergencyCall;
 + (id)telephonyURLForVoicemail;
 + (id)telephonyURLWithDestinationID:(id)arg1 addressBookUID:(int)arg2 forceAssist:(_Bool)arg3 suppressAssist:(_Bool)arg4 wasAssisted:(_Bool)arg5;
@@ -54,12 +51,15 @@
 - (id)queryParameters;
 - (id)answerRequestSourceIdentifier;
 - (_Bool)isAnswerRequestURL;
+- (_Bool)isFaceTimeNeedsBackgroundLaunchURL;
 - (long long)foregroundAppApplicationType;
 - (id)foregroundAppBundleIdentifier;
 - (_Bool)isUpdateForegroundAppURL;
 - (_Bool)isShowScreenSharingURL;
+- (_Bool)isShowHandoffEligibleNearbyURL;
 - (_Bool)isShowSystemCallControlsURL;
 - (_Bool)isShowCarPlayInCallUIURL;
+- (_Bool)isShowIncomingTransmissionNoticeURL;
 - (_Bool)isShowInCallUIURL;
 - (_Bool)isLaunchForOutgoingConversationURL;
 - (_Bool)isLaunchForIncomingCallURL;
@@ -88,7 +88,6 @@
 @property(readonly, nonatomic, getter=isBasebandLogURL) _Bool basebandLogURL;
 - (id)webSafeTelephoneURL;
 - (_Bool)isWebSafeTelephoneURL;
-@property(readonly, copy, nonatomic) NSString *numberQualifiedForAddressBook;
 @property(readonly, copy, nonatomic) NSString *formattedPhoneNumber;
 - (_Bool)_hasScheme:(id)arg1;
 - (_Bool)hasTelephonyScheme;

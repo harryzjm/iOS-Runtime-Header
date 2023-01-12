@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTTextToSpeechVoiceResource : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTTextToSpeechVoiceResource : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;

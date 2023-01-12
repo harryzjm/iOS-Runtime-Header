@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UISpringLoadedInteractionEffect-Protocol.h>
-
 @class CALayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISpringLoadedBlinkingEffect : NSObject <UISpringLoadedInteractionEffect>
+@interface _UISpringLoadedBlinkingEffect : NSObject
 {
     CALayer *_blinkLayer;
 }

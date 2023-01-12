@@ -4,23 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKit/UIView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
-@class AVTimeFormatter, CADisplayLink, CAGradientLayer, MPCPlayerResponseItem, MRUVisualStylingProvider, NSString, UILabel, UIView;
+@class AVTimeFormatter, CADisplayLink, CAGradientLayer, MRUSlider, MRUTimeControls, MRUVisualStylingProvider, NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MRUNowPlayingTimeControlsView : UIControl <MRUVisualStylingProviderObserver>
+@interface MRUNowPlayingTimeControlsView : UIView
 {
     _Bool _onScreen;
+    _Bool _dimmed;
+    _Bool _leftAlignLive;
     _Bool _debugPreviousDisplayLinkPaused;
-    MPCPlayerResponseItem *_playerResponseItem;
+    MRUTimeControls *_timeControls;
     MRUVisualStylingProvider *_stylingProvider;
-    long long _context;
-    UIView *_elapsedTrack;
-    UIView *_remainingTrack;
-    UIView *_knobView;
+    long long _layout;
+    MRUSlider *_slider;
     UILabel *_elapsedTimeLabel;
     UILabel *_remainingTimeLabel;
     UILabel *_liveLabel;
@@ -29,14 +27,10 @@ __attribute__((visibility("hidden")))
     CADisplayLink *_displayLink;
     AVTimeFormatter *_elapsedTimeFormatter;
     AVTimeFormatter *_remainingTimeFormatter;
-    double _elapsedTimeFactor;
-    CDStruct_fce57115 _durationSnapshot;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool debugPreviousDisplayLinkPaused; // @synthesize debugPreviousDisplayLinkPaused=_debugPreviousDisplayLinkPaused;
-@property(nonatomic) double elapsedTimeFactor; // @synthesize elapsedTimeFactor=_elapsedTimeFactor;
-@property(nonatomic) CDStruct_fce57115 durationSnapshot; // @synthesize durationSnapshot=_durationSnapshot;
 @property(retain, nonatomic) AVTimeFormatter *remainingTimeFormatter; // @synthesize remainingTimeFormatter=_remainingTimeFormatter;
 @property(retain, nonatomic) AVTimeFormatter *elapsedTimeFormatter; // @synthesize elapsedTimeFormatter=_elapsedTimeFormatter;
 @property(retain, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
@@ -45,18 +39,18 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *liveLabel; // @synthesize liveLabel=_liveLabel;
 @property(retain, nonatomic) UILabel *remainingTimeLabel; // @synthesize remainingTimeLabel=_remainingTimeLabel;
 @property(retain, nonatomic) UILabel *elapsedTimeLabel; // @synthesize elapsedTimeLabel=_elapsedTimeLabel;
-@property(retain, nonatomic) UIView *knobView; // @synthesize knobView=_knobView;
-@property(retain, nonatomic) UIView *remainingTrack; // @synthesize remainingTrack=_remainingTrack;
-@property(retain, nonatomic) UIView *elapsedTrack; // @synthesize elapsedTrack=_elapsedTrack;
+@property(retain, nonatomic) MRUSlider *slider; // @synthesize slider=_slider;
+@property(nonatomic) _Bool leftAlignLive; // @synthesize leftAlignLive=_leftAlignLive;
+@property(nonatomic, getter=isDimmed) _Bool dimmed; // @synthesize dimmed=_dimmed;
 @property(nonatomic, getter=isOnScreen) _Bool onScreen; // @synthesize onScreen=_onScreen;
-@property(nonatomic) long long context; // @synthesize context=_context;
+@property(nonatomic) long long layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
-@property(retain, nonatomic) MPCPlayerResponseItem *playerResponseItem; // @synthesize playerResponseItem=_playerResponseItem;
-- (void)animateLayout;
+@property(retain, nonatomic) MRUTimeControls *timeControls; // @synthesize timeControls=_timeControls;
 - (void)updateVisibility;
 - (void)updateContentSizeCategory;
 - (void)updateBackgroundMask;
 - (void)updateElapsedTimeWithElapsedTime:(double)arg1;
+- (void)updateElapsedTimeForDate:(id)arg1;
 - (void)updateElapsedTime;
 - (void)updateElapsedTimeOnDisplayLinkTick:(id)arg1;
 - (void)updateDisplayLinkPaused;
@@ -65,14 +59,10 @@ __attribute__((visibility("hidden")))
 - (double)accessibilityElapsedDuration;
 - (double)accessibilityTotalDuration;
 - (void)visualStylingProviderDidChange:(id)arg1;
-- (void)cancelTrackingWithEvent:(id)arg1;
-- (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)setEnabled:(_Bool)arg1;
-- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)sliderTouchCancel:(id)arg1;
+- (void)sliderValueChanged:(id)arg1;
+- (void)sliderTouchDown:(id)arg1;
+- (void)setTimeControls:(id)arg1 forPresentationInterval:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

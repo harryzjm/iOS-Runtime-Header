@@ -7,7 +7,7 @@
 #import <Foundation/NSDateFormatter.h>
 
 @interface NSDateFormatter (HKMenstrualCycles)
-+ (id)hkmc_stringForUpdateFertileWindowNotification:(id)arg1;
++ (id)hkmc_notificationBodyFromRelativeBodyString:(id)arg1 fullBodyString:(id)arg2 updatedFertileWindowEndDate:(id)arg3;
 + (id)hkmc_longNonRelativeDateFormatter;
 + (id)hkmc_longRelativeDateFormatter;
 @end

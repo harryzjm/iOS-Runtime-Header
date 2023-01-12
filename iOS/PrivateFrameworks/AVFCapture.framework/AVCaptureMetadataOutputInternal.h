@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     long long faceTrackingMaxFaces;
     _Bool faceTrackingUsesFaceRecognition;
     _Bool faceTrackingPlusEnabled;
+    float faceTrackingNetworkFailureThresholdMultiplier;
     _Bool videoPreviewHistogramMetadataObjectTypesAvailable;
     _Bool appClipCodeObjectTypeAvailable;
     _Bool textRegionObjectTypeAvailable;

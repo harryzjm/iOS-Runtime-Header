@@ -6,11 +6,14 @@
 
 #import <CoreTelephony/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class NSData, NSDictionary;
 
 @protocol CoreTelephonyClientCellularPlanManagementDelegateInternal <NSObject>
 
 @optional
+- (void)transferEventUpdate:(NSDictionary *)arg1;
+- (void)proxSetupAuthEventUpdate:(NSDictionary *)arg1;
+- (void)launchSecureIntentUI:(NSData *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)launchWebsheet:(NSDictionary *)arg1 completion:(void (^)(_Bool))arg2;
 @end
 

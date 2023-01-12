@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CAShapeLayer, UIColor, UIImage, UIImageSymbolConfiguration, UIImageView, UIView, UIViewController, VUIAlertController, VUICircularProgress, VUIDownloadButtonViewModel, VUITextLayout;
+@class CAShapeLayer, UIColor, UIImage, UIImageSymbolConfiguration, UIImageView, UIView, UIViewController, VUICircularProgress, VUIDownloadButtonActionHandler, VUIDownloadButtonViewModel, VUITextLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUIDownloadButton
@@ -24,9 +24,9 @@ __attribute__((visibility("hidden")))
     UIImage *_expiredDownloadImage;
     VUIDownloadButtonViewModel *_viewModel;
     VUICircularProgress *_progressIndicator;
-    VUIAlertController *_deleteConfirmationAlertController;
     VUITextLayout *_textLayout;
     UIImageSymbolConfiguration *_primarySymbolConfiguration;
+    VUIDownloadButtonActionHandler *_actionHandler;
     UIView *_backgroundView;
     UIColor *_keyBackgroundColor;
     UIColor *_saturatedTintColor;
@@ -44,9 +44,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *saturatedTintColor; // @synthesize saturatedTintColor=_saturatedTintColor;
 @property(retain, nonatomic) UIColor *keyBackgroundColor; // @synthesize keyBackgroundColor=_keyBackgroundColor;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(retain, nonatomic) VUIDownloadButtonActionHandler *actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(retain, nonatomic) UIImageSymbolConfiguration *primarySymbolConfiguration; // @synthesize primarySymbolConfiguration=_primarySymbolConfiguration;
 @property(retain, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
-@property(retain, nonatomic) VUIAlertController *deleteConfirmationAlertController; // @synthesize deleteConfirmationAlertController=_deleteConfirmationAlertController;
 @property(nonatomic) _Bool isForLibrary; // @synthesize isForLibrary=_isForLibrary;
 @property(nonatomic) _Bool wasCanceled; // @synthesize wasCanceled=_wasCanceled;
 @property(nonatomic) _Bool wasDeleted; // @synthesize wasDeleted=_wasDeleted;
@@ -90,16 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)_setBadgeImage:(id)arg1;
 - (void)_setImage:(id)arg1;
 - (void)_setTitleWithProperties:(id)arg1;
-- (void)_checkForAccountSignInWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_startDownloadIfPossibleRemovingFromUIOnCancellationOrFailure:(_Bool)arg1;
-- (void)_dismissConfirmationAlertController;
-- (void)_handleAppDidEnterBackgroundNotification:(id)arg1;
-- (_Bool)_shouldShowRenewalOption;
-- (id)_renewalAlertAction;
-- (void)_askUserAndDeleteIfNeeded;
 - (void)_layoutProgressIndicator;
-- (void)_downloadButtonTapped:(id)arg1;
-- (id)_localize:(id)arg1 token:(id)arg2 value:(id)arg3;
 - (void)_clearMasks;
 - (void)_updateMaskForProgressLayer;
 - (void)_updateLayoutForBadge;
@@ -116,6 +107,7 @@ __attribute__((visibility("hidden")))
 - (void)saturateTintColorAndBackgroundColor;
 - (void)setTintColor:(id)arg1;
 - (void)configureWithLayoutProperties;
+- (void)configureActionHandler;
 - (void)dealloc;
 - (id)initWithMediaEntity:(id)arg1 type:(unsigned long long)arg2;
 - (id)initWithAssetController:(id)arg1 type:(unsigned long long)arg2;

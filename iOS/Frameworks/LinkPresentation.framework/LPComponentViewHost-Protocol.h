@@ -11,11 +11,13 @@
 
 @protocol LPComponentViewHost <NSObject>
 - (id <LPAudioPlayer>)componentView:(LPComponentView *)arg1 playerForAudio:(LPAudio *)arg2;
+- (_Bool)showingDisclosureViewForComponentView:(UIView *)arg1;
 - (_Bool)allowsBadgingIconEdgeForComponentView:(UIView *)arg1;
 - (_Bool)allowsVibrancyForComponentView:(UIView *)arg1;
 - (long long)rendererStyleForComponentView:(UIView *)arg1;
 - (NSArray *)layoutExclusionsForView:(UIView *)arg1;
 - (long long)componentView:(LPComponentView *)arg1 allowedImageFilterForFilter:(long long)arg2;
+- (void)componentViewDidTapCaptionButton:(UIView *)arg1 buttonType:(long long)arg2;
 - (void)componentViewDidChangeMediaState:(LPComponentView *)arg1;
 - (void)componentViewDidChangeIntrinsicContentSize:(LPComponentView *)arg1;
 @end

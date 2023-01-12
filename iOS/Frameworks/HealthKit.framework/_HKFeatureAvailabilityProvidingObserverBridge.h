@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthKit/HKFeatureAvailabilityProvidingObserver-Protocol.h>
-
 @class HKObserverBridgeHandle, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HKFeatureAvailabilityProvidingObserverBridge : NSObject <HKFeatureAvailabilityProvidingObserver>
+@interface _HKFeatureAvailabilityProvidingObserverBridge : NSObject
 {
     HKObserverBridgeHandle *_handle;
 }

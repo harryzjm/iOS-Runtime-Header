@@ -6,9 +6,14 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSData, NSDate, NSDecimalNumber, NSNumber, NSString, NSURL, PKCurrencyAmount, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentPreferences, PKPeerPaymentWebServiceContext, PKRemoteRegistrationRequest;
+@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSString, NSURL, PKCurrencyAmount, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentPreferences, PKPeerPaymentWebServiceContext, PKRemoteRegistrationRequest;
 
 @protocol PDPeerPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)deletePeerPaymentPendingRequestsForPeerPaymentAccountWithCompletion:(void (^)(void))arg1;
+- (void)deletePeerPaymentPendingRequestsForRequestTokens:(NSArray *)arg1 completion:(void (^)(void))arg2;
+- (void)insertOrUpdatePeerPaymentPendingRequests:(NSArray *)arg1 shouldScheduleNotifications:(_Bool)arg2 completion:(void (^)(void))arg3;
+- (void)peerPaymentPendingRequestsForPeerPaymentAccountWithCompletion:(void (^)(NSArray *))arg1;
+- (void)peerPaymentPendingRequestsForRequestTokens:(NSArray *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)remoteRegistrationRequest:(PKRemoteRegistrationRequest *)arg1 forHandle:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)resetApplePayManateeViewWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)checkTLKsMissingWithCompletion:(void (^)(_Bool, NSError *))arg1;

@@ -6,11 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <IBCocoaTouchToolFoundation/IBUIViewControllerAutolayoutGuideDelegate-Protocol.h>
-
 @class IBPlaceholderDrawingAttributes, IBUISimulatedMetricsContainerRepresentation, NSArray, NSString;
 
-@interface UIViewController (IBCocoaTouchToolAutolayoutEngineAdditions) <IBUIViewControllerAutolayoutGuideDelegate>
+@interface UIViewController (IBCocoaTouchToolAutolayoutEngineAdditions)
 + (void)ibInstallFrameworkHooks;
 - (id)ibRootHostingViewWithCopiedViewHierarchySnapshotForLayoutEngine:(id)arg1 returningWindowForRepresentedViews:(id *)arg2 returningSimulatedMetricsContext:(id *)arg3 returningAddedRepresentedConstraintsForRepresentedViews:(id *)arg4;
 - (void)ibSwizzled_setView:(id)arg1;

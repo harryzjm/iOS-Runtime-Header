@@ -4,25 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MobileSafariUI/BookmarksTableViewControllerDelegate-Protocol.h>
-#import <MobileSafariUI/_SFBookmarkInfoViewControllerDelegate-Protocol.h>
-#import <MobileSafariUI/_SFNavigationIntentHandling-Protocol.h>
-
 @class BookmarksTableViewController, NSObject, NSString, UIBarButtonItem, WebBookmark, WebBookmarkCollection;
 @protocol LinkPreviewProvider, OS_dispatch_queue, TabGroupProvider, WBBookmarkProvider, _SFNavigationIntentHandling;
 
 __attribute__((visibility("hidden")))
-@interface BookmarkFolderLibraryItemController <BookmarksTableViewControllerDelegate, _SFNavigationIntentHandling, _SFBookmarkInfoViewControllerDelegate>
+@interface BookmarkFolderLibraryItemController
 {
     BookmarksTableViewController *_viewController;
     UIBarButtonItem *_createFolderButtonItem;
     UIBarButtonItem *_editButtonItem;
     UIBarButtonItem *_editingDoneButtonItem;
     UIBarButtonItem *_flexibleSpaceItem;
-    UIBarButtonItem *_doneButtonItem;
     _Bool _allowsEditing;
     _Bool _isEditing;
-    _Bool _doneButtonHidden;
     WebBookmark *_folder;
     WebBookmarkCollection *_collection;
     id <WBBookmarkProvider> _bookmarkProvider;
@@ -40,31 +34,35 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <WBBookmarkProvider> bookmarkProvider; // @synthesize bookmarkProvider=_bookmarkProvider;
 @property(retain, nonatomic) WebBookmarkCollection *collection; // @synthesize collection=_collection;
 @property(readonly, nonatomic) WebBookmark *folder; // @synthesize folder=_folder;
-- (_Bool)isSelected;
+- (void)tabGroupManager:(id)arg1 didUpdateScopedBookmarkList:(id)arg2;
+- (void)tabGroupManager:(id)arg1 didUpdateTabGroup:(id)arg2;
+- (void)tabGroupManager:(id)arg1 didRemoveTabGroup:(id)arg2;
+- (void)tabGroupManagerDidUpdateTabGroups:(id)arg1;
 - (void)performDropWithProposal:(id)arg1 session:(id)arg2;
 - (long long)dropIntentForSession:(id)arg1;
 - (unsigned long long)dropOperationForSession:(id)arg1;
 - (_Bool)isSpringLoaded;
 - (void)dispatchNavigationIntent:(id)arg1;
 - (void)handleNavigationIntent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)tabGroupProviderForBookmarkInfoViewController:(id)arg1;
+- (void)bookmarksTableViewControllerWillDisappear:(id)arg1;
+- (_Bool)bookmarksTableViewIsReadOnly:(id)arg1;
+- (_Bool)bookmarksTableViewShouldDispatchNavigationIntent:(id)arg1 forSelectedBookmark:(id)arg2;
 - (void)bookmarksTableViewControllerDidEndEditing:(id)arg1;
 - (void)bookmarksTableViewControllerDidBeginEditing:(id)arg1;
 - (struct UIEdgeInsets)contentInsetForBookmarksTableViewController:(id)arg1;
 - (struct UIEdgeInsets)separatorInsetForBookmarksTableViewController:(id)arg1;
 - (_Bool)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;
-- (void)setDoneButtonHidden:(_Bool)arg1;
-- (void)_updateDoneButtonItemForViewController:(id)arg1;
 - (void)_setEditingFromToolbarButton:(_Bool)arg1;
 - (void)_updateToolbarItemsForViewController:(id)arg1 animated:(_Bool)arg2;
 - (id)_toolbarItemsForViewController:(id)arg1;
 - (void)_createToolbarItemsIfNecessary;
-- (void)reloadBookmarksForFolder:(id)arg1;
 - (void)_didPressNewFolderButton;
 - (void)toggleEditBookmarks;
 - (void)_didPressEditButton;
 - (void)_didPressEditingDoneButton;
+- (void)_reloadFolderContentsForFolderIDIfNeeded:(int)arg1;
 - (void)_folderContentsDidChange:(id)arg1;
-- (void)bookmarkInfoViewController:(id)arg1 didFinishWithResult:(_Bool)arg2;
 - (id)topViewController;
 - (void)updateToolbarIfNeeded;
 - (_Bool)selectionFollowsFocus;

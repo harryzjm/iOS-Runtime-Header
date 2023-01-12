@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKMedicalDateInterval.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKMedicalDateInterval (HDCodingSupport) <HDCoding>
+@interface HKMedicalDateInterval (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

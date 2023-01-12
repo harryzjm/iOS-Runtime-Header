@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (BLAdditions)
+@property(readonly, nonatomic) _Bool bl_isAMSStatusCode401;
 @property(readonly, nonatomic) _Bool bl_isUserCancelError;
 - (void)logRecursively;
 @end

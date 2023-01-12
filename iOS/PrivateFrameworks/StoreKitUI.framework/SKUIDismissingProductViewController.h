@@ -6,12 +6,10 @@
 
 #import <StoreKit/SKStoreProductViewController.h>
 
-#import <StoreKitUI/SKStoreProductViewControllerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIDismissingProductViewController : SKStoreProductViewController <SKStoreProductViewControllerDelegate>
+@interface SKUIDismissingProductViewController : SKStoreProductViewController
 {
 }
 

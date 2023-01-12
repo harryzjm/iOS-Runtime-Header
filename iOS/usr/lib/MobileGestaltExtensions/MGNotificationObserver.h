@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileGestaltExtensions/MCProfileConnectionObserver-Protocol.h>
-#import <MobileGestaltExtensions/NSCopying-Protocol.h>
-
 @class CADisplay, MCProfileConnection, MGFileWatcher, NSMutableArray, NSMutableSet, NSString;
 
-@interface MGNotificationObserver : NSObject <NSCopying, MCProfileConnectionObserver>
+@interface MGNotificationObserver : NSObject
 {
     NSMutableSet *_blocks;
     int _type;

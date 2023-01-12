@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSKit/TSULogContext-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue, TSULogContext;
 
-@interface TSKCustomLogContext : NSObject <TSULogContext>
+@interface TSKCustomLogContext : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     id <TSULogContext> _parentLogContext;

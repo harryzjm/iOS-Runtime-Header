@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreML/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ModelKeyServerAPIResultError : PBCodable <NSCopying>
+@interface ModelKeyServerAPIResultError : PBCodable
 {
     NSString *_message;
 }

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapServiceCategoriesTicket-Protocol.h>
-
 @class GEOMapServiceTraits, NSString;
 @protocol GEOMapServiceCategoriesTicket;
 
 __attribute__((visibility("hidden")))
-@interface _MKCategoriesTicket : NSObject <MKMapServiceCategoriesTicket>
+@interface _MKCategoriesTicket : NSObject
 {
     id <GEOMapServiceCategoriesTicket> _ticket;
 }

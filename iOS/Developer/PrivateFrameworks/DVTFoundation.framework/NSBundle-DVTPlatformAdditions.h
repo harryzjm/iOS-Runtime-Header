@@ -10,8 +10,16 @@
 
 @interface NSBundle (DVTPlatformAdditions)
 + (id)dvt_platformForBundleAtPath:(id)arg1 error:(id *)arg2;
++ (id)dvt_platformFamilyForBundleAtPath:(id)arg1 error:(id *)arg2;
 + (void)dvt_installBundleForClassCheckerUsingClassFromMainBundle:(Class)arg1;
 + (id)dvt_swizzledBundleForClass:(Class)arg1;
++ (void)dvt_setMovedWhileRunningChecker:(CDUnknownBlockType)arg1;
++ (id)dvt_rawInfoDictionaryForUncachedBundleAtPath:(id)arg1 error:(id *)arg2;
++ (id)dvt_rawInfoDictionaryForBundleAtPath:(id)arg1 error:(id *)arg2;
++ (id)extractInfoPlistForInfoPlistURL:(id)arg1 localError:(id)arg2 outError:(id *)arg3 path:(id)arg4;
++ (id)dvt_infoPlistURLForBundleAtPath:(id)arg1;
++ (id)dvt_filteredInfoDictionaryForBundleAtPath:(id)arg1 error:(id *)arg2;
++ (id)dvt_uncachedPathForResource:(id)arg1 ofType:(id)arg2 atBundlePath:(id)arg3;
 + (id)dvt_uncachedInfoAtPath:(id)arg1;
 + (id)dvt_uncachedInfoAtURL:(id)arg1;
 + (id)_uncachedValueForKey:(const struct __CFString *)arg1 atURL:(id)arg2;
@@ -31,8 +39,6 @@
 + (id)dvt_executablePathForUncachedBundleAtPath:(id)arg1;
 + (id)dvt_executablePathForBundleAtPath:(id)arg1;
 + (id)dvt_handleIrregularBundlePathAtPath:(id)arg1;
-+ (id)dvt_platformFamilyForBundleAtPath:(id)arg1 error:(id *)arg2;
-- (_Bool)__DVTMainThreadLatencyChecker__loadAndReturnError:(id *)arg1;
 @property(readonly, nonatomic) NSString *dvt_contentsPath;
 @end
 

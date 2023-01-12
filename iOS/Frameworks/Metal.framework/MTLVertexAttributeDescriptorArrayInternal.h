@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLVertexAttributeDescriptorArray.h"
+
 @class MTLVertexAttributeDescriptorInternal;
 
 __attribute__((visibility("hidden")))
-@interface MTLVertexAttributeDescriptorArrayInternal
+@interface MTLVertexAttributeDescriptorArrayInternal : MTLVertexAttributeDescriptorArray
 {
     MTLVertexAttributeDescriptorInternal *_descriptors[31];
 }

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSAttributedString.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface NSAttributedString (IBBinaryArchivingAdditions) <IBBinaryArchiving>
+@interface NSAttributedString (IBBinaryArchivingAdditions)
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 

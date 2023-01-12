@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKBrowserCell.h"
+
 @class CKAppInstallation, CKBrowserIconView;
 
 __attribute__((visibility("hidden")))
-@interface CKBrowserAppInstallCell
+@interface CKBrowserAppInstallCell : CKBrowserCell
 {
     CKAppInstallation *_installation;
     CKBrowserIconView *_browserIconView;

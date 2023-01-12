@@ -8,9 +8,9 @@
 
 @protocol TSTLayoutDynamicContentProtocol <NSObject>
 - (_Bool)dynamicContentMustDrawOnMainThread;
-- (_Bool)cell:(id *)arg1 forCellID:(CDStruct_0441cfb5)arg2;
+- (_Bool)cell:(id *)arg1 forCellID:(CDStruct_bd4d8e6b)arg2;
 
 @optional
-- (_Bool)mergeRange:(CDStruct_5f1f7aa9 *)arg1 forCellID:(CDStruct_0441cfb5)arg2;
+- (_Bool)mergeRange:(CDStruct_f5d1269f *)arg1 forCellID:(CDStruct_bd4d8e6b)arg2;
 @end
 

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TestFlightCore/TFFeedbackDataContainerObserver-Protocol.h>
-#import <TestFlightCore/TFFeedbackDataUpdateProxy-Protocol.h>
-
 @class NSString, TFFeedbackDataContainer, TFFeedbackForm, TFFeedbackSession;
 @protocol TFFeedbackDataSource, TFFeedbackFormPresenterView;
 
 __attribute__((visibility("hidden")))
-@interface TFFeedbackFormPresenter : NSObject <TFFeedbackDataContainerObserver, TFFeedbackDataUpdateProxy>
+@interface TFFeedbackFormPresenter : NSObject
 {
     id <TFFeedbackFormPresenterView> _presenterView;
     TFFeedbackSession *_session;

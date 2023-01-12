@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPDisposable-Protocol.h>
-
 @class CPLayoutArea, CPList, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface CPListMaker : NSObject <CPDisposable>
+@interface CPListMaker : NSObject
 {
     CPLayoutArea *area;
     NSArray *spacers;

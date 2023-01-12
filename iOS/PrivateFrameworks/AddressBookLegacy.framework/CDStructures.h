@@ -4,28 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
-struct CPSqliteConnection {
-    struct CPSqliteDatabase *_field1;
-    struct sqlite3 *_field2;
-    struct __CFDictionary *_field3;
-    struct __CFDictionary *_field4;
-    void *_field5;
-    CDUnknownFunctionPointerType _field6;
-    CDUnknownFunctionPointerType _field7;
-    void *_field8;
-    unsigned int _field9;
-    _Bool _field10;
-};
-
-struct CPSqliteDatabase;
+struct CPSqliteConnection;
 
 struct CPSqliteStatement {
     struct CPSqliteConnection *_field1;
@@ -39,22 +20,5 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct __CFDictionary;
-
-struct sqlite3;
-
 struct sqlite3_stmt;
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    char *internationalCallingCode;
-    char *nationalPrefix;
-    char *carrierCode;
-    unsigned int carrierCodeLen;
-    char *areaCode;
-    unsigned int areaCodeLen;
-    char *number;
-    unsigned int numberLen;
-} CDStruct_a759635d;
 

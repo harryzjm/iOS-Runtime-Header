@@ -14,7 +14,9 @@
 - (void)addInterruptionHandler:(void (^)(void))arg1;
 - (AMSPromise *)securityServiceProxyWithDelegate:(id <AMSSecurityClientInterface>)arg1;
 - (AMSPromise *)pushNotificationService;
+- (AMSPromise *)purchaseServiceProxy;
 - (AMSPromise *)fraudReportServiceProxy;
 - (AMSPromise *)deviceMessengerProxyWithDelegate:(id <AMSDeviceMessengerClientInterface>)arg1;
+- (AMSPromise *)cookieServiceProxy;
 @end
 

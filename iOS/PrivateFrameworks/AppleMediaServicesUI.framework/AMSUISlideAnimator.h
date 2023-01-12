@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class CASpringAnimation, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUISlideAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface AMSUISlideAnimator : NSObject
 {
     CASpringAnimation *_animation;
 }

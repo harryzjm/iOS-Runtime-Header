@@ -8,8 +8,8 @@
 
 @protocol WKKeyboardScrollableInternal <NSObject>
 - (void)didFinishScrolling;
-- (RectEdges_76d77e37)rubberbandableDirections;
-- (RectEdges_76d77e37)scrollableDirectionsFromOffset:(struct CGPoint)arg1;
+- (RectEdges_e190dc78)rubberbandableDirections;
+- (RectEdges_e190dc78)scrollableDirectionsFromOffset:(struct CGPoint)arg1;
 - (struct CGPoint)boundedContentOffset:(struct CGPoint)arg1;
 - (struct CGSize)interactiveScrollVelocity;
 - (struct CGPoint)contentOffset;

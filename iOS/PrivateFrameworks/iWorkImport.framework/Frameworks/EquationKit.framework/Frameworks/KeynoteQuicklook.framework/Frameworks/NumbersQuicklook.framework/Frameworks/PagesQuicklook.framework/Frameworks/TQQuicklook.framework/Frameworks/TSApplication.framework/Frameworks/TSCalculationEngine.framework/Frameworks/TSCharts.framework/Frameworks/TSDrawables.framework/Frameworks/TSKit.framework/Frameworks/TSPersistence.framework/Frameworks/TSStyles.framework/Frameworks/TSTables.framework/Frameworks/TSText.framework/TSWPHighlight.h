@@ -6,15 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSText/TSDComment-Protocol.h>
-#import <TSText/TSKDocumentObject-Protocol.h>
-#import <TSText/TSPCopying-Protocol.h>
-#import <TSText/TSWPOverlappingField-Protocol.h>
-#import <TSText/TSWPTextSpanningObject-Protocol.h>
-
 @class NSDate, NSString, TSDCommentStorage, TSKAnnotationAuthor, TSWPStorage;
 
-@interface TSWPHighlight : TSPObject <TSDComment, TSPCopying, TSKDocumentObject, TSWPTextSpanningObject, TSWPOverlappingField>
+@interface TSWPHighlight : TSPObject
 {
     TSDCommentStorage *_commentStorage;
     TSWPStorage *_parentStorage;
@@ -39,6 +33,7 @@
 @property(readonly, nonatomic) int annotationType;
 @property(readonly, nonatomic) NSDate *date;
 @property(retain, nonatomic) TSKAnnotationAuthor *author;
+@property(readonly, nonatomic) NSString *parentUUID;
 @property(readonly, nonatomic) NSString *annotationUUID;
 - (_Bool)isFloatingComment;
 @property(copy, nonatomic) TSDCommentStorage *storage;

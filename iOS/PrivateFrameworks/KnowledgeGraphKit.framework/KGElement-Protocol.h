@@ -7,12 +7,11 @@
 #import <KnowledgeGraphKit/NSCopying-Protocol.h>
 #import <KnowledgeGraphKit/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary;
+@class NSDictionary, NSSet;
 
 @protocol KGElement <NSObject, NSCopying>
 @property(readonly, copy, nonatomic) NSDictionary *properties;
-@property(readonly, copy, nonatomic) NSArray *labels;
-@property(readonly, nonatomic) float weight;
+@property(readonly, copy, nonatomic) NSSet *labels;
 @property(readonly, nonatomic) unsigned long long identifier;
 - (void)resolveIdentifier:(unsigned long long)arg1;
 @end

@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCopying-Protocol.h>
-#import <SpriteKit/NSFastEnumeration-Protocol.h>
-#import <SpriteKit/NSMutableCopying-Protocol.h>
-#import <SpriteKit/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface SKThreadSafeMutableArray : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, NSFastEnumeration>
+@interface SKThreadSafeMutableArray : NSObject
 {
     struct _opaque_pthread_mutex_t _storageLock;
     NSMutableArray *_storage;

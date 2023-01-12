@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, RBSAssertion;
 @protocol OS_os_transaction;
 
 __attribute__((visibility("hidden")))
@@ -16,26 +16,37 @@ __attribute__((visibility("hidden")))
     NSString *_logKey;
     NSString *_name;
     long long _style;
+    RBSAssertion *_rbsAssertion;
 }
 
 + (void)_handleAssertionExpiration;
 + (void)_accessAssertionCache:(CDUnknownBlockType)arg1;
++ (void)rbs_keepAliveWithName:(id)arg1 style:(long long)arg2 block:(CDUnknownBlockType)arg3;
++ (id)rbs_keepAliveWithName:(id)arg1 style:(long long)arg2;
++ (id)rbs_keepAliveWithName:(id)arg1;
 + (void)keepAliveWithName:(id)arg1 style:(long long)arg2 block:(CDUnknownBlockType)arg3;
 + (id)keepAliveWithName:(id)arg1 style:(long long)arg2;
 + (id)keepAliveWithName:(id)arg1;
 + (id)keepAliveWithFormat:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) RBSAssertion *rbsAssertion; // @synthesize rbsAssertion=_rbsAssertion;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+- (void)_takeRBSAssertion;
 - (void)_takeProcessAssertion;
 - (void)_takeOSTransaction;
+- (void)_startRBSLogTimer;
 - (void)_startLogTimer;
+- (void)_removeRBSAssertion;
 - (void)_removeProcessAssertion;
 - (void)_removeOSTransaction;
 - (id)_cacheKey;
 - (id)_assertionName;
+- (void)rbs_invalidate;
 - (void)invalidate;
 - (void)dealloc;
+- (id)initRBSWithName:(id)arg1 style:(long long)arg2;
+- (id)initRBSWithName:(id)arg1;
 - (id)initWithName:(id)arg1 style:(long long)arg2;
 - (id)initWithName:(id)arg1;
 

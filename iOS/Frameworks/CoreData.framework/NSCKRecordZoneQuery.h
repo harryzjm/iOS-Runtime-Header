@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSManagedObject.h"
+
 @class CKQueryCursor, NSCKRecordZoneMetadata, NSDate, NSPredicate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSCKRecordZoneQuery
+@interface NSCKRecordZoneQuery : NSManagedObject
 {
 }
 

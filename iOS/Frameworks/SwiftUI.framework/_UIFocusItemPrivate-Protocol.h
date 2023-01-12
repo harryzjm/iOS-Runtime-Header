@@ -6,14 +6,10 @@
 
 #import <SwiftUI/UIFocusItem-Protocol.h>
 
-@class UIBezierPath;
-
 @protocol _UIFocusItemPrivate <UIFocusItem>
 
 @optional
-@property(nonatomic, readonly) UIBezierPath *_focusRingPath;
-@property(nonatomic, readonly) _Bool _wantsFocusRing;
+- (long long)_focusedSound;
 @property(nonatomic, readonly) long long _focusItemDeferralMode;
-- (_Bool)_isTransparentFocusItem;
 @end
 

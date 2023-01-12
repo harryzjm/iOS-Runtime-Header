@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIPreviewInteractionTouchForceProviding-Protocol.h>
-
 @class NSString, UITouchForceGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionGestureRecognizerTouchForceProvider : NSObject <UIGestureRecognizerDelegate, _UIPreviewInteractionTouchForceProviding>
+@interface _UIPreviewInteractionGestureRecognizerTouchForceProvider : NSObject
 {
     _Bool _active;
     UITouchForceGestureRecognizer *_gestureRecognizer;

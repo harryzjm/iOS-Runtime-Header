@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIDebuggingInformationViewController-Protocol.h>
+#import "UITableViewController.h"
 
 @class NSObject;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingIvarViewController <UIDebuggingInformationViewController>
+@interface UIDebuggingIvarViewController : UITableViewController
 {
     NSObject *_inspectedObject;
 }

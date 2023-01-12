@@ -9,5 +9,6 @@
 @interface UIAccessibilityLocationDescriptor (AXAdditions)
 - (_Bool)matchesDictionaryRepresentation:(id)arg1;
 - (id)dictionaryRepresentation;
+- (id)_auxiliaryDataAsDictionaryRepresentation;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOLatLng, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOSpatialLookupRequest : PBCodable <NSCopying>
+@interface GEOSpatialLookupRequest : PBCodable
 {
     PBDataReader *_reader;
     CDStruct_95bda58d _categorys;

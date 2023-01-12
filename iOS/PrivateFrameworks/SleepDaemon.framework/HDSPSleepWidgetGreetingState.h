@@ -9,12 +9,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)greetingExpiredEventDue;
+- (void)stateDidExpireWithContext:(id)arg1;
 - (_Bool)reloadsWidgetOnTimeChange;
 - (_Bool)reloadsWidgetOnModelChange;
-- (_Bool)schedulesWidgetStateChange;
+- (_Bool)schedulesExpiration;
 - (long long)widgetState;
 - (id)stateName;
+- (double)expirationDuration;
 
 @end
 

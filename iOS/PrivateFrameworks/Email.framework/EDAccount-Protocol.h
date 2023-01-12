@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) _Bool primaryiCloudAccount;
 @property(readonly, copy, nonatomic) NSString *statisticsKind;
 @property(readonly, nonatomic) ACAccount *systemAccount;
+@property(readonly, copy, nonatomic) NSString *altDSID;
 @property(readonly, copy, nonatomic) NSString *identifier;
 - (void)savePersistentAccount;
 - (_Bool)hasPasswordCredential;

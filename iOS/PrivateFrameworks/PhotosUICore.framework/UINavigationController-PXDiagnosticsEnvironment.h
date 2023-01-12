@@ -7,10 +7,6 @@
 #import <UIKit/UINavigationController.h>
 
 @interface UINavigationController (PXDiagnosticsEnvironment)
-+ (id)px_defaultDelegateForNavigationController:(id)arg1;
-+ (id)px_navigationControllerShouldUseBuiltinInteractionController:(id)arg1;
-+ (id)px_navigationController:(id)arg1 interactionControllerForAnimationController:(id)arg2;
-+ (id)px_navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (double)px_imageModulationIntensity;
 - (double)px_HDRFocus;
@@ -30,6 +26,5 @@
 - (CDUnknownBlockType)_ppt_transitionAnimationCompletionHandler;
 - (void)ppt_notifyTransitionAnimationDidComplete;
 - (void)ppt_installTransitionAnimationCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)px_endPointForTransition:(id)arg1;
 @end
 

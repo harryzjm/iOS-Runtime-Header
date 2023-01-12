@@ -6,11 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <SearchUI/SearchUIAutoLayoutItem-Protocol.h>
-
 @class NSString;
 
-@interface UIView (SearchUIAutoLayout) <SearchUIAutoLayoutItem>
+@interface UIView (SearchUIAutoLayout)
 - (_Bool)searchui_isContainedByItem:(id)arg1;
 - (id)searchui_containingView;
 - (id)searchui_view;

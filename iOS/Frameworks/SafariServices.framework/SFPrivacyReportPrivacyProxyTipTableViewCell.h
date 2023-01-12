@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <SFPrivacyReportPrivacyProxyTipTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool usesInsetStyle; // @synthesize usesInsetStyle=_usesInsetStyle;
 - (void)_dismiss:(id)arg1;
-- (void)_learnMore:(id)arg1;
+- (void)_openICloudPrivateRelaySettingsToLearnMore:(id)arg1;
 - (void)_setPrivacyProxyStateToTrackers:(id)arg1;
 - (void)_setPrivacyProxyStateToTrackersAndWebsites:(id)arg1;
 - (void)_turnOnCrossSiteTrackingProtectionIfNeeded;

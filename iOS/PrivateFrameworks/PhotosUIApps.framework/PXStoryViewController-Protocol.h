@@ -6,6 +6,16 @@
 
 #import <PhotosUIApps/NSObject-Protocol.h>
 
+@protocol PXStoryExportActivityHelper, PXStoryViewControllerDismissalDelegate, PXStoryViewControllerNavigationItemHelper, PXStoryViewControllerShareActionDelegate, PXStoryViewEnvironmentActionPerformer;
+
 @protocol PXStoryViewController <NSObject>
+@property(nonatomic, retain) id <PXStoryViewControllerNavigationItemHelper> navigationItemHelper;
+- (_Bool)prepareForPopTransition;
+@property(nonatomic, readonly) id <PXStoryExportActivityHelper> exportActivityHelper;
+@property(nonatomic) __weak id <PXStoryViewEnvironmentActionPerformer> viewEnvironmentActionPerformer;
+@property(nonatomic) __weak id <PXStoryViewControllerDismissalDelegate> dismissalDelegate;
+@property(nonatomic) __weak id <PXStoryViewControllerShareActionDelegate> shareActionDelegate;
+@property(nonatomic) Class gridDecorationViewClass;
+@property(nonatomic) _Bool remainsActiveWhileApplicationIsHidden;
 @end
 

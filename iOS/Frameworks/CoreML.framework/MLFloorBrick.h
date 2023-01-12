@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/EspressoBrick-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MLFloorBrick : NSObject <EspressoBrick>
+@interface MLFloorBrick : NSObject
 {
     NSArray *_inputRanks;
     NSArray *_outputRanks;

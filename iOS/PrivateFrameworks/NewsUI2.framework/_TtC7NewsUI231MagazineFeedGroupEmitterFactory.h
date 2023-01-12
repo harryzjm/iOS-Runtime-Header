@@ -25,7 +25,6 @@
     MISSING_TYPE *issueModelFactory;
     MISSING_TYPE *issueService;
     MISSING_TYPE *sectionHeadlinesService;
-    MISSING_TYPE *channelPromotedArticlesService;
     MISSING_TYPE *newspaperGroupService;
     MISSING_TYPE *formatService;
     MISSING_TYPE *feedPaywallConfigFactory;

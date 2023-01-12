@@ -17,6 +17,7 @@
 - (_Bool)_axIsGrouped;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (id)_axNCNotificationViewController;
+- (id)_accessibilityListViewParent;
 - (_Bool)_accessibilityResetBannerTimer;
 - (void)accessibilityElementDidLoseFocus;
 - (void)accessibilityElementDidBecomeFocused;

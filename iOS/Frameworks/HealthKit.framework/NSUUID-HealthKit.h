@@ -6,11 +6,9 @@
 
 #import <Foundation/NSUUID.h>
 
-#import <HealthKit/HKUUIDProvider-Protocol.h>
-
 @class NSString;
 
-@interface NSUUID (HealthKit) <HKUUIDProvider>
+@interface NSUUID (HealthKit)
 + (id)hk_v3UUIDWithNameSpace:(id)arg1 name:(id)arg2;
 + (id)hk_UUIDWithData:(id)arg1;
 - (id)hk_shortRepresentation;

@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSCharts/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSCHSelection, TSKSelection;
 
-@interface TSCHArchivedSelection : TSPObject <TSKArchivedSelection>
+@interface TSCHArchivedSelection : TSPObject
 {
     TSCHSelection *_selection;
 }

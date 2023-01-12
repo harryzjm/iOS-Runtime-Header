@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <PersonalIntelligenceCore/IIMetricEnrichmentProvider-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC24PersonalIntelligenceCore16AppLaunchCounter : _TtCs12_SwiftObject <IIMetricEnrichmentProvider>
+@interface _TtC24PersonalIntelligenceCore16AppLaunchCounter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *$__lazy_storage_$_countsByBundleId;
 }

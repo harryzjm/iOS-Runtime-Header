@@ -6,11 +6,9 @@
 
 #import <Foundation/NSUUID.h>
 
-#import <HomeKitBackingStore/HMBQueryableModelFieldCoder-Protocol.h>
-
 @class NSString;
 
-@interface NSUUID (HMB) <HMBQueryableModelFieldCoder>
+@interface NSUUID (HMB)
 + (id)hmbUUIDFromData:(id)arg1;
 + (id)hmbDescriptionForEncodedQueryableVariable:(id)arg1;
 + (id)hmbDecodeQueryableParameter:(id)arg1;

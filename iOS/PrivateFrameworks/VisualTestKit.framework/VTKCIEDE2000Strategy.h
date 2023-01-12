@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/VTKColorDifferenceStrategy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VTKCIEDE2000Strategy : NSObject <VTKColorDifferenceStrategy>
+@interface VTKCIEDE2000Strategy : NSObject
 {
 }
 

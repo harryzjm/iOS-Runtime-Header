@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIDragInteractionDriver.h"
+
 @class NSSet, UIDelayedAction;
 
 __attribute__((visibility("hidden")))
-@interface _UIDragInteractionClickPresentationDriver
+@interface _UIDragInteractionClickPresentationDriver : _UIDragInteractionDriver
 {
     NSSet *_touches;
     CDUnknownBlockType _itemIterator;

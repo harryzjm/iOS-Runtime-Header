@@ -11,8 +11,6 @@
 
 @protocol SNSystemAudioAnalyzerXPCProtocol <NSObject>
 - (void)xpcSetAudioConfiguration:(SNAudioConfiguration *)arg1 completionHandler:(void (^)(void))arg2;
-- (void)xpcStopWithCompletionHandler:(void (^)(void))arg1;
-- (void)xpcStartWithCompletionHandler:(void (^)(void))arg1;
 - (void)xpcRemoveAllRequestsWithCompletionHandler:(void (^)(void))arg1;
 - (void)xpcRemoveRequest:(id <SNRequest>)arg1 completionHandler:(void (^)(void))arg2;
 - (void)xpcAddRequest:(id <SNRequest>)arg1 withObserver:(id <SNResultsObservingXPCProtocol>)arg2 completionHandler:(void (^)(NSError *))arg3;

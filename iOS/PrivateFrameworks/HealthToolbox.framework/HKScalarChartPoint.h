@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthToolbox/HKChartPoint-Protocol.h>
-
 @class NSNumber, NSString;
 @protocol HKGraphSeriesBlockCoordinateInfo;
 
 __attribute__((visibility("hidden")))
-@interface HKScalarChartPoint : NSObject <HKChartPoint>
+@interface HKScalarChartPoint : NSObject
 {
     NSNumber *_xValue;
     NSNumber *_yValue;

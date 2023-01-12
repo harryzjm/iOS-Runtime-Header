@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSOperation.h"
+
 @class NSError, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSDirectoryTraversalOperation
+@interface NSDirectoryTraversalOperation : NSOperation
 {
     id _delegate;
     NSString *_sourcePath;

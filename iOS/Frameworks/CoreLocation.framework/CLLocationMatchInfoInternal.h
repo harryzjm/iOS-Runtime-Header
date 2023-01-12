@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreLocation/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface CLLocationMatchInfoInternal : NSObject <NSCopying>
+@interface CLLocationMatchInfoInternal : NSObject
 {
     long long fMatchQuality;
     struct CLLocationCoordinate2D fMatchCoordinate;

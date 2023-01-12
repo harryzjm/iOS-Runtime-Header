@@ -6,14 +6,11 @@
 
 #import <CoreKnowledge/NSObject-Protocol.h>
 
-@class CKVDonateTask, NSString;
+@class CKVDonateTask, CKVSettings, NSSet;
 
 @protocol CKVDonateTaskProvider <NSObject>
-- (CKVDonateTask *)mediaDonateTask;
-- (CKVDonateTask *)homeKitDonateTask;
-- (CKVDonateTask *)appInfoDonateTaskWithLanguageCode:(NSString *)arg1;
-- (CKVDonateTask *)contactsDonateTask;
-- (CKVDonateTask *)intentVocabularyDonateTask;
+- (CKVDonateTask *)derivativeTaskForId:(unsigned short)arg1 usingSettings:(CKVSettings *)arg2 modifiedItemIds:(NSSet *)arg3 deletedItemIds:(NSSet *)arg4;
+- (CKVDonateTask *)taskForId:(unsigned short)arg1 usingSettings:(CKVSettings *)arg2;
 - (void)enableSimulatedTasks:(_Bool)arg1;
 @end
 

@@ -7,13 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
-@protocol CATIDSServiceConnectionInvitationInboxDelegate, CATNetworkPowerPrimitives, CATTimerSource, OS_dispatch_queue;
+@protocol CATAssertionProviding, CATIDSServiceConnectionInvitationInboxDelegate, CATTimerSource, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CATIDSServiceConnectionInvitationInbox : NSObject
 {
     id <CATTimerSource> mTimerSource;
-    id <CATNetworkPowerPrimitives> mNetworkPowerPrimitives;
+    id <CATAssertionProviding> mAssertionProvider;
     NSObject<OS_dispatch_queue> *mWorkQueue;
     double mAcknowledgeTimeout;
     NSMutableDictionary *mInvitationsByInvitationID;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)acknowledgeTimerFiredWithInvitationIdentifier:(id)arg1;
 - (void)receiveAcknowledgeForInvitationIdentifier:(id)arg1 connectionIdentifier:(id)arg2;
 - (void)receiveInvitationWithIdentifier:(id)arg1 senderAppleID:(id)arg2 senderAddress:(id)arg3 messagingVersion:(unsigned long long)arg4 userInfo:(id)arg5;
-- (id)initWithTimerSource:(id)arg1 networkPowerPrimitives:(id)arg2 workQueue:(id)arg3 acknowledgeTimeout:(double)arg4;
+- (id)initWithTimerSource:(id)arg1 assertionProvider:(id)arg2 workQueue:(id)arg3 acknowledgeTimeout:(double)arg4;
 - (void)dealloc;
 
 @end

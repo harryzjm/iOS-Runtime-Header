@@ -6,11 +6,9 @@
 
 #import <WorkflowKit/WFShowContentDialogRequest.h>
 
-#import <WorkflowUI/WFDialogRequestViewControllerSupport-Protocol.h>
-
 @class NSString;
 
-@interface WFShowContentDialogRequest (WFDialogRequestViewControllerSupport) <WFDialogRequestViewControllerSupport>
+@interface WFShowContentDialogRequest (WFDialogRequestViewControllerSupport)
 - (Class)wf_dialogViewControllerClass;
 
 // Remaining properties

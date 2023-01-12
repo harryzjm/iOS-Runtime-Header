@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionLayoutAuxillaryHosting-Protocol.h>
-#import <UIKitCore/_UICollectionLayoutSectionSolver-Protocol.h>
-
-@class NSCollectionLayoutSection, NSIndexSet, NSString, UITraitCollection, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutSolutionState, _UICollectionLayoutSupplementaryRegistrar;
+@class NSCollectionLayoutSection, NSIndexSet, NSString, UITraitCollection, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutSolutionState, _UICollectionLayoutSupplementaryEnroller;
 @protocol NSCollectionLayoutContainer, _UICollectionPreferredSizes;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutSectionEstimatedSolver : NSObject <_UICollectionLayoutSectionSolver, _UICollectionLayoutAuxillaryHosting>
+@interface _UICollectionLayoutSectionEstimatedSolver : NSObject
 {
     _Bool _layoutRTL;
     _Bool _shouldAdjustContentSizeForPartialLastGroupSolution;
@@ -24,17 +21,21 @@ __attribute__((visibility("hidden")))
     long long _frameCount;
     id <_UICollectionPreferredSizes> _preferredSizes;
     NSString *_errorDescription;
+    unsigned long long _containerSizeDependentAxes;
     _UICollectionLayoutAuxillaryItemSolver *_sectionSupplementarySolution;
-    _UICollectionLayoutSupplementaryRegistrar *_sectionSupplementaryRegistrar;
+    _UICollectionLayoutSupplementaryEnroller *_sectionSupplementaryEnroller;
     id <NSCollectionLayoutContainer> _memoizedSupplementaryHostContainer;
     _UICollectionLayoutSolutionState *_solutionState;
     unsigned long long _containerLayoutAxis;
+    id <NSCollectionLayoutContainer> _supplementaryContainer;
     struct CGPoint _orthogonalOffset;
     struct CGVector _orthogonalScrollingPrefetchingUnitVector;
     struct CGRect _overrideContentRectForPinning;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <NSCollectionLayoutContainer> supplementaryContainer; // @synthesize supplementaryContainer=_supplementaryContainer;
+@property(readonly, nonatomic) unsigned long long containerSizeDependentAxes; // @synthesize containerSizeDependentAxes=_containerSizeDependentAxes;
 @property(readonly, nonatomic) NSString *errorDescription; // @synthesize errorDescription=_errorDescription;
 @property(nonatomic) _Bool shouldAdjustContentSizeForPartialLastGroupSolution; // @synthesize shouldAdjustContentSizeForPartialLastGroupSolution=_shouldAdjustContentSizeForPartialLastGroupSolution;
 @property(nonatomic) struct CGVector orthogonalScrollingPrefetchingUnitVector; // @synthesize orthogonalScrollingPrefetchingUnitVector=_orthogonalScrollingPrefetchingUnitVector;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <NSCollectionLayoutContainer> container; // @synthesize container=_container;
 @property(readonly, nonatomic) NSCollectionLayoutSection *layoutSection; // @synthesize layoutSection=_layoutSection;
 - (double)auxillaryHostPaddingBeforeBoundarySupplementaries;
+- (id)auxillaryHostTraitCollection;
 - (id)auxillaryHostPreferredSizes;
 - (id)auxillaryHostSupplementaryEnroller;
 - (long long)auxillaryHostAuxillaryKind;
@@ -80,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1 overrideContentRectForPinning:(struct CGRect)arg2;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;
 - (id)resolveWithParameters:(id)arg1 preferredSizes:(id)arg2;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5 layoutRTL:(_Bool)arg6;
+- (void)solveForContainer:(id)arg1 supplementaryContainer:(id)arg2 traitCollection:(id)arg3 layoutAxis:(unsigned long long)arg4 frameCount:(long long)arg5 preferredSizes:(id)arg6 layoutRTL:(_Bool)arg7;
 - (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5;
 - (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4;
 

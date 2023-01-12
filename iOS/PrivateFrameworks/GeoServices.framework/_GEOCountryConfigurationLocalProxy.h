@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/_GEOCountryConfigurationServerProxy-Protocol.h>
-
 @class NSString;
 @protocol GEOCancellable, OS_dispatch_queue, OS_dispatch_source, _GEOCountryConfigurationServerProxyDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _GEOCountryConfigurationLocalProxy : NSObject <_GEOCountryConfigurationServerProxy>
+@interface _GEOCountryConfigurationLocalProxy : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     id <_GEOCountryConfigurationServerProxyDelegate> _delegate;
@@ -24,10 +22,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)updateCountryCodeWithCallbackQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)_postNotificationsForOldInfo:(id)arg1 newInfo:(id)arg2;
 - (void)_updateCountryCodeWithCallbackQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (_Bool)_checkThrottlerOrScheduleUpdate:(id *)arg1;
 - (void)_determineGeoIPCountryCode:(CDUnknownBlockType)arg1;
 - (void)_determineCurrentCountryCode:(CDUnknownBlockType)arg1;
-- (void)_scheduleUpdate;
+- (void)_scheduleUpdate:(double)arg1;
 - (void)_reachabilityChanged:(id)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2;

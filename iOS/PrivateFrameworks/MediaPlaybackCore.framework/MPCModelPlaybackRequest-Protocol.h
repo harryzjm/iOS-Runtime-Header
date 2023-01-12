@@ -9,6 +9,7 @@
 @protocol MPCModelPlaybackRequest <NSObject>
 
 @optional
+@property(nonatomic) _Bool disableImplicitSectioning;
 @property(nonatomic) _Bool shouldBatchResultsWithPlaceholderObjects;
 @end
 

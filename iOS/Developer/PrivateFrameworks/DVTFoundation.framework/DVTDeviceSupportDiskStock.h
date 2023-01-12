@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTDiskStock-Protocol.h>
-
 @class DVTPlatform, NSString;
 
-@interface DVTDeviceSupportDiskStock : NSObject <DVTDiskStock>
+@interface DVTDeviceSupportDiskStock : NSObject
 {
     DVTPlatform *_platform;
 }

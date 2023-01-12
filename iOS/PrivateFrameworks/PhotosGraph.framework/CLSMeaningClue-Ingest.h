@@ -6,12 +6,9 @@
 
 #import <MediaMiningKit/CLSMeaningClue.h>
 
-#import <PhotosGraph/PGGraphIngestPlace-Protocol.h>
-#import <PhotosGraph/PGGraphIngestScene-Protocol.h>
-
 @class NSString;
 
-@interface CLSMeaningClue (Ingest) <PGGraphIngestScene, PGGraphIngestPlace>
+@interface CLSMeaningClue (Ingest)
 @property(readonly, nonatomic) NSString *placeInterestType;
 @property(readonly, nonatomic) _Bool isReliable;
 @property(readonly, nonatomic) unsigned long long numberOfDominantSceneAssets;

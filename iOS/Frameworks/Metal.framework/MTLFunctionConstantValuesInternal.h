@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Metal/MTLFunctionConstantSPI-Protocol.h>
+#import "MTLFunctionConstantValues.h"
 
 __attribute__((visibility("hidden")))
-@interface MTLFunctionConstantValuesInternal <MTLFunctionConstantSPI>
+@interface MTLFunctionConstantValuesInternal : MTLFunctionConstantValues
 {
     void *_constantStorage;
 }

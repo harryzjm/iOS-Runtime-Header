@@ -6,7 +6,8 @@
 
 #import <AppleMediaServices/NSObject-Protocol.h>
 
-@class ACAccount, AMSBagKeyInfo, AMSProcessInfo, NSDate, NSString;
+@class ACAccount, AMSProcessInfo, NSDate, NSString;
+@protocol NSObject;
 
 @protocol AMSBagDataSourceProtocol <NSObject>
 @property(readonly, copy, nonatomic) NSString *profileVersion;
@@ -15,8 +16,9 @@
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
 @property(readonly, nonatomic) NSDate *expirationDate;
 - (NSString *)valueForURLVariable:(NSString *)arg1 account:(ACAccount *)arg2;
+- (void)setDefaultValue:(id <NSObject>)arg1 forKey:(NSString *)arg2;
 - (void)loadWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
-- (AMSBagKeyInfo *)bagKeyInfoForKey:(NSString *)arg1;
+- (id <NSObject>)defaultValueForKey:(NSString *)arg1;
 
 @optional
 @property(copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler;

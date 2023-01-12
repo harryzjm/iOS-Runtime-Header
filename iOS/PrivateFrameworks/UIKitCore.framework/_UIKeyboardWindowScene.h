@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)autoinvalidates;
 + (_Bool)shouldAllowComponents;
 + (_Bool)alwaysKeepContexts;
+- (_Bool)_affectsScreenOrientation;
 - (id)_fixupInheritedSettings:(id)arg1;
 - (id)initWithScreen:(id)arg1 session:(id)arg2 lookupKey:(id)arg3;
 

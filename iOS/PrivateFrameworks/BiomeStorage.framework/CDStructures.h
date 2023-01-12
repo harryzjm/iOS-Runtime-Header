@@ -4,35 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int size;
-    unsigned int state;
-} CDStruct_2942c33b;
-
-typedef struct {
-    unsigned long long _field1;
-    double _field2;
-    unsigned int _field3;
-    char _field4[32];
-    char _field5[4];
-} CDStruct_26848fb4;
-
-typedef struct {
-    union {
-        CDStruct_2942c33b frameStatus;
-        unsigned long long frameStatusData;
-    } ;
-    struct {
-        double creationTimestamp;
-        double modifiedTimestamp;
-        unsigned int checksum;
-        unsigned int dataVersion;
-    } otherInfo;
-} CDStruct_73a58082;
-

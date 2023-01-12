@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSMutableArray, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDRestaurantReservationLink : PBCodable <NSCopying>
+@interface GEOPDRestaurantReservationLink : PBCodable
 {
     PBUnknownFields *_unknownFields;
     NSMutableArray *_restaurantLinks;

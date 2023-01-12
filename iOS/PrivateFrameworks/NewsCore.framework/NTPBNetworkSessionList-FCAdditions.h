@@ -6,11 +6,9 @@
 
 #import <NewsTransport/NTPBNetworkSessionList.h>
 
-#import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
-
 @class NSString;
 
-@interface NTPBNetworkSessionList (FCAdditions) <FCKeyValueStoreCoding>
+@interface NTPBNetworkSessionList (FCAdditions)
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 - (void)writeToKeyValuePair:(id)arg1;

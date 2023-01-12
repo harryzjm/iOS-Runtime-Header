@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSString, SKUIAttributedStringView, SKUIButtonViewElement, SKUIImageView, SKUIImageViewElement, UIControl;
 
 __attribute__((visibility("hidden")))
-@interface SKUIContentUnavailableView <SKUIViewElementView>
+@interface SKUIContentUnavailableView
 {
     UIControl *_button;
     SKUIButtonViewElement *_buttonElement;

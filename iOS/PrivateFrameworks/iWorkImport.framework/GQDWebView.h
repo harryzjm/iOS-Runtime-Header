@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class GQDImageBinary, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDWebView <GQDNameMappable>
+@interface GQDWebView
 {
     GQDImageBinary *mImageBinary;
 }

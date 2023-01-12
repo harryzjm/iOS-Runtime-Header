@@ -16,5 +16,6 @@
 - (void)messageSender:(AXUIMessageSender *)arg1 processCustomDataFromXPCReply:(void *)arg2;
 - (void *)messageSender:(AXUIMessageSender *)arg1 extractCustomDataFromXPCReply:(NSObject<OS_xpc_object> *)arg2 numberOfKeyValuePairsForCustomData:(unsigned long long *)arg3;
 - (void)messageSender:(AXUIMessageSender *)arg1 willSendXPCMessage:(NSObject<OS_xpc_object> *)arg2 context:(void *)arg3;
+- (void)messageSender:(AXUIMessageSender *)arg1 accessLaunchAngelConnectionForMessageWithContext:(void *)arg2 usingBlock:(void (^)(id <AccessibilityBoardServices_ServerProtocol>))arg3;
 @end
 

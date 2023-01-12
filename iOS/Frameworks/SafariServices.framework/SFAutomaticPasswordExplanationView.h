@@ -6,14 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <SafariServices/SFAutomaticPasswordScrollViewContentViewLayoutObserver-Protocol.h>
-#import <SafariServices/UIScrollViewDelegate-Protocol.h>
-#import <SafariServices/_UIScrollViewLayoutObserver-Protocol.h>
-
 @class NSArray, NSLayoutConstraint, NSString, SFAutomaticPasswordScrollViewContentView, UIButton, UIImageView, UILabel, UILayoutGuide, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface SFAutomaticPasswordExplanationView : UIView <_UIScrollViewLayoutObserver, SFAutomaticPasswordScrollViewContentViewLayoutObserver, UIScrollViewDelegate>
+@interface SFAutomaticPasswordExplanationView : UIView
 {
     _Bool _isPad;
     long long _keyboardType;
@@ -65,7 +61,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateStrongPasswordHeightConstraint;
 - (void)_updateWideAppearanceRequirement;
 - (void)_createLayoutConstraints;
-- (void)_updateTextAndButtonColor;
 - (void)_createSubviews;
 - (id)initWithKeyboardType:(long long)arg1;
 

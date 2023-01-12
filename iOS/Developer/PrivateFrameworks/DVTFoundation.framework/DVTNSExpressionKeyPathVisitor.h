@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSPredicateVisitor-Protocol.h>
-
 @class NSMutableOrderedSet, NSOrderedSet;
 
-@interface DVTNSExpressionKeyPathVisitor : NSObject <NSPredicateVisitor>
+@interface DVTNSExpressionKeyPathVisitor : NSObject
 {
     NSMutableOrderedSet *_keyPaths;
 }

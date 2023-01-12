@@ -6,12 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <PagesQuicklook/TSKDocumentObject-Protocol.h>
-#import <PagesQuicklook/TSKModel-Protocol.h>
-
 @class NSArray, NSIndexSet, NSMapTable, NSMutableDictionary, NSSet, NSString, TPDocumentRoot;
 
-@interface TPFloatingDrawables : TSPObject <TSKDocumentObject, TSKModel>
+@interface TPFloatingDrawables : TSPObject
 {
     NSMutableDictionary *_drawablesByPageIndex;
     NSMapTable *_pageIndexByDrawable;

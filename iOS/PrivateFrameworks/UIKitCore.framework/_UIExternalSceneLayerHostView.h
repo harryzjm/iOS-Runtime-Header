@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIExternalScenePairingObserverDelegate-Protocol.h>
-
 @class FBScene, NSString, UIExternalScenePairingObserver, UIScenePresentationManager;
 @protocol UIScenePresenter;
 
 __attribute__((visibility("hidden")))
-@interface _UIExternalSceneLayerHostView <UIExternalScenePairingObserverDelegate>
+@interface _UIExternalSceneLayerHostView
 {
     FBScene *_parentScene;
     FBScene *_targetScene;

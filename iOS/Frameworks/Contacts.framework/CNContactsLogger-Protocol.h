@@ -35,8 +35,8 @@
 - (void)fetchEncodedContactsMatchingPredicate:(NSPredicate *)arg1 unifyResults:(_Bool)arg2 keysToFetch:(NSArray *)arg3;
 - (void)fetchContactsProgressivelyMatchingPredicate:(NSPredicate *)arg1 unifyResults:(_Bool)arg2 keysToFetch:(NSArray *)arg3;
 - (void)fetchContactsMatchingPredicate:(NSPredicate *)arg1 unifyResults:(_Bool)arg2 keysToFetch:(NSArray *)arg3;
-- (void)noAccessToContactsWithError:(NSError *)arg1;
-- (void)contactsAccessWasGranted:(_Bool)arg1;
+- (void)contactsAccessWasDeniedWithError:(NSError *)arg1;
+- (void)contactsAccessWasGranted;
 - (void)requestAuthorizationWasDenied;
 - (void)accessAuthorizationStatusWasDenied;
 - (void)postingNotification:(void (^)(void (^)(void)))arg1;

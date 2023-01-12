@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/UICollectionViewDataSource-Protocol.h>
-
 @class NSString;
 
-@interface IBUICollectionViewPrototypeDataSource : NSObject <UICollectionViewDataSource>
+@interface IBUICollectionViewPrototypeDataSource : NSObject
 {
 }
 

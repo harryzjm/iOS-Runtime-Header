@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSSecureCoding-Protocol.h>
+@class NSMutableArray, NSString, NSUUID, __CFN_TransactionMetrics;
 
-@class NSMutableArray, NSUUID, __CFN_SessionMetrics, __CFN_TransactionMetrics;
-
-@interface __CFN_TaskMetrics : NSObject <NSSecureCoding>
+@interface __CFN_TaskMetrics : NSObject
 {
     struct os_unfair_lock_s _lock;
     _Bool _ignoreNextRedirection;
     int _pidForHAR;
-    __CFN_SessionMetrics *_sessionMetrics;
     NSUUID *_UUID;
     unsigned long long _identifier;
     NSMutableArray *_transactionMetrics;
@@ -23,6 +20,7 @@
     double _firstResumeTime;
     double _completeTime;
     long long _options;
+    NSString *_sourceApplicationBundleIdentifier;
     long long _schedulingTier;
     __CFN_TransactionMetrics *_currentTransactionMetrics;
 }

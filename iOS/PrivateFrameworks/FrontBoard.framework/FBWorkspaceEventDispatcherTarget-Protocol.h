@@ -6,9 +6,10 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class FBSceneClientHandshake;
+@class FBSceneClientHandshake, NSString;
 
 @protocol FBWorkspaceEventDispatcherTarget <NSObject>
+@property(readonly, copy, nonatomic) NSString *workspaceIdentifier;
 - (void)didReceiveHandshake:(FBSceneClientHandshake *)arg1;
 @end
 

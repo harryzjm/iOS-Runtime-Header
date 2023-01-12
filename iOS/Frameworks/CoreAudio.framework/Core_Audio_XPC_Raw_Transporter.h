@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAudio/NSSecureCoding-Protocol.h>
-
 @protocol OS_xpc_object;
 
 __attribute__((visibility("hidden")))
-@interface Core_Audio_XPC_Raw_Transporter : NSObject <NSSecureCoding>
+@interface Core_Audio_XPC_Raw_Transporter : NSObject
 {
     NSObject<OS_xpc_object> *_object;
 }

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFAudioRecorderDelegate-Protocol.h>
-
 @class NSString, UIButton, WFAudioRecorder;
 
 __attribute__((visibility("hidden")))
-@interface WFAudioRecorderViewController <WFAudioRecorderDelegate>
+@interface WFAudioRecorderViewController
 {
     _Bool _startImmediately;
     _Bool _isFinishing;

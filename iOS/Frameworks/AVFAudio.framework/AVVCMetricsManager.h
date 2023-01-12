@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface AVVCMetricsManager : NSObject
 {
+    _Bool mProfileAVVC;
     unsigned long long _voiceTriggerStartHostTime;
     unsigned long long _callToStartRecordHostTime;
     NSMutableDictionary *_publicMetrics;
@@ -27,8 +28,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long callToStartRecordHostTime; // @synthesize callToStartRecordHostTime=_callToStartRecordHostTime;
 @property(nonatomic) unsigned long long voiceTriggerStartHostTime; // @synthesize voiceTriggerStartHostTime=_voiceTriggerStartHostTime;
 - (void)logProfileMetrics:(id)arg1;
-- (void)logRecordRoute:(id)arg1 andPlaybackRoute:(id)arg2;
-- (void)logRecordAudioFormat:(struct CAStreamBasicDescription)arg1;
 - (int)resetADAM;
 - (int)adamAnalyzeBuffer:(struct AudioBufferList)arg1 numFrames:(unsigned int)arg2 timeStamp:(const struct AudioTimeStamp *)arg3 shouldAnalyze:(_Bool)arg4;
 - (int)setADAMFormat:(struct CAStreamBasicDescription)arg1 numFrames:(unsigned int)arg2;

@@ -9,7 +9,9 @@
 @class NSArray;
 
 @protocol CRCarPlayNavigationOwnerClient <NSObject>
-- (void)activeNavigationIdentifiersChangedTo:(NSArray *)arg1;
 - (void)navigationOwnershipChangedTo:(unsigned long long)arg1;
+
+@optional
+- (void)activeNavigationIdentifiersChangedTo:(NSArray *)arg1;
 @end
 

@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
-#import <TSCharts/TSCHStyleOwnerCollaborationSupport-Protocol.h>
-#import <TSCharts/TSCHStyleOwning-Protocol.h>
-
 @class NSString, TSCHChartGridAdapter, TSCHChartModel, TSCHChartSeriesType, TSCHDownsampleData, TSCHErrorBarData, TSCHTrendLineData, TSUFastReadInvalidatingCache, TSUIntegerKeyDictionary;
 @protocol TSCHStyleActAlike;
 
-@interface TSCHChartSeries : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHStyleOwning>
+@interface TSCHChartSeries : NSObject
 {
     _Bool _styleIsPrivate;
     _Bool _isFakeSeriesForHiddenDataExport;
@@ -117,6 +113,7 @@
 - (unsigned long long)multiDataSetIndex;
 - (_Bool)isMultiData;
 @property(readonly, nonatomic) NSString *trendLineLegendText;
+@property(readonly, nonatomic) _Bool supportsNegativeStyle;
 @property(readonly, nonatomic) _Bool showTrendLineLegendText;
 - (id)p_axisStorageForType:(int)arg1 create:(_Bool)arg2;
 @property(nonatomic) int seriesElementType;

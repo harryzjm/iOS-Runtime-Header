@@ -6,9 +6,11 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFDictationOptions, AFSpeechAudioAnalytics, AFSpeechPackage, AFXPCWrapper, NSArray, NSDictionary, NSError, NSFileHandle, NSString, SASMultilingualSpeechRecognized, SASSpeechPartialResult;
+@class AFDictationNLUResult, AFDictationOptions, AFSpeechAudioAnalytics, AFSpeechPackage, AFXPCWrapper, NSArray, NSDictionary, NSError, NSFileHandle, NSString, SASMultilingualSpeechRecognized, SASSpeechPartialResult;
 
 @protocol AFDictationServiceDelegate <NSObject>
+- (oneway void)speechDidPauseRecognition;
+- (oneway void)speechDidRecognizeFinalResultCandidatePackage:(AFSpeechPackage *)arg1;
 - (oneway void)languageDetectorFailedWithError:(NSError *)arg1;
 - (oneway void)speechDidRecognizeMultilingualSpeech:(SASMultilingualSpeechRecognized *)arg1;
 - (oneway void)speechDidDetectLanguage:(NSString *)arg1 confidenceScores:(NSDictionary *)arg2 isConfident:(_Bool)arg3;
@@ -18,9 +20,9 @@
 - (oneway void)speechRecognitionDidFinishWithError:(NSError *)arg1;
 - (oneway void)speechDidRecognizeTranscriptionObjects:(NSArray *)arg1 usingSpeechModel:(NSString *)arg2;
 - (oneway void)speechDidProcessAudioDuration:(double)arg1;
-- (oneway void)speechDidRecognizeTokens:(NSArray *)arg1 usingSpeechModel:(NSString *)arg2;
+- (oneway void)speechDidRecognizeTokens:(NSArray *)arg1 nluResult:(AFDictationNLUResult *)arg2 usingSpeechModel:(NSString *)arg3;
 - (oneway void)speechDidRecognizePartialResult:(SASSpeechPartialResult *)arg1;
-- (oneway void)speechDidRecognizePhrases:(NSArray *)arg1 utterances:(NSArray *)arg2 usingSpeechModel:(NSString *)arg3 correctionContext:(NSDictionary *)arg4 audioAnalytics:(AFSpeechAudioAnalytics *)arg5;
+- (oneway void)speechDidRecognizePhrases:(NSArray *)arg1 utterances:(NSArray *)arg2 nluResult:(AFDictationNLUResult *)arg3 usingSpeechModel:(NSString *)arg4 correctionContext:(NSDictionary *)arg5 audioAnalytics:(AFSpeechAudioAnalytics *)arg6;
 - (oneway void)speechRecordingDidFail:(NSError *)arg1;
 - (oneway void)speechRecordingDidCancel;
 - (oneway void)speechRecordingDidEnd;

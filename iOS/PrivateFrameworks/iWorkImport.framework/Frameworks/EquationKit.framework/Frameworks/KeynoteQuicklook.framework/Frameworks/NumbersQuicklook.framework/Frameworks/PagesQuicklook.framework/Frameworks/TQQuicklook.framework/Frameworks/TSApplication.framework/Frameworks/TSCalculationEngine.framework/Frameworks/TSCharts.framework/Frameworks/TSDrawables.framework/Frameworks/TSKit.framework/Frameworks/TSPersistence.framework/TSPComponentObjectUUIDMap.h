@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSCopying-Protocol.h>
-#import <TSPersistence/NSMutableCopying-Protocol.h>
-
-@interface TSPComponentObjectUUIDMap : NSObject <NSCopying, NSMutableCopying>
+@interface TSPComponentObjectUUIDMap : NSObject
 {
     void *_identifierToUUIDMap;
     void *_uuidToIdentifierMap;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebContentAnalysis/WFWebPageProtocol-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFTreeXMLDocumentStripper : NSObject <WFWebPageProtocol>
+@interface WFTreeXMLDocumentStripper : NSObject
 {
     struct _xmlDoc *xmlDocument;
     NSString *pageTitle;

@@ -6,9 +6,11 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, SFFormAutoFillFrameHandle;
+@class NSArray, NSDictionary, NSString, NSURL, SFFormAutoFillFrameHandle, WBSFormControlMetadata;
 
 @protocol SFFormAutoFiller <NSObject>
+- (void)setAutoFillSpinnerVisibility:(_Bool)arg1 textFieldMetadata:(WBSFormControlMetadata *)arg2 frame:(SFFormAutoFillFrameHandle *)arg3;
+- (void)makeAutomaticStrongPasswordElementViewable:(_Bool)arg1 frame:(SFFormAutoFillFrameHandle *)arg2 passwordControlUniqueIDs:(NSArray *)arg3;
 - (void)automaticPasswordSheetDimissedInFrame:(SFFormAutoFillFrameHandle *)arg1 focusedPasswordControlUniqueID:(NSString *)arg2;
 - (void)removeAutomaticPasswordVisualTreatmentInFrame:(SFFormAutoFillFrameHandle *)arg1 passwordControlUniqueIDs:(NSArray *)arg2;
 - (void)removeAutomaticPasswordElementsInFrame:(SFFormAutoFillFrameHandle *)arg1 focusedPasswordControlUniqueID:(NSString *)arg2 passwordControlUniqueIDs:(NSArray *)arg3;
@@ -25,6 +27,7 @@
 - (void)annotateForm:(long long)arg1 inFrame:(SFFormAutoFillFrameHandle *)arg2 withValues:(NSDictionary *)arg3;
 - (void)autoFillForm:(long long)arg1 inFrame:(SFFormAutoFillFrameHandle *)arg2 withGeneratedPassword:(NSString *)arg3;
 - (void)autoFillFormSynchronouslyInFrame:(SFFormAutoFillFrameHandle *)arg1 withValues:(NSDictionary *)arg2;
+- (void)autoFillFormAsynchronouslyInFrame:(SFFormAutoFillFrameHandle *)arg1 withValues:(NSDictionary *)arg2 setAutoFilled:(_Bool)arg3 focusFieldAfterFilling:(_Bool)arg4 fieldToFocus:(NSString *)arg5 fieldsToObscure:(NSArray *)arg6 submitForm:(_Bool)arg7;
 - (void)autoFillFormAsynchronouslyInFrame:(SFFormAutoFillFrameHandle *)arg1 withValues:(NSDictionary *)arg2 setAutoFilled:(_Bool)arg3 focusFieldAfterFilling:(_Bool)arg4 fieldToFocus:(NSString *)arg5 submitForm:(_Bool)arg6;
 - (void)autoFillFormAsynchronouslyInFrame:(SFFormAutoFillFrameHandle *)arg1 withValues:(NSDictionary *)arg2 setAutoFilled:(_Bool)arg3 focusFieldAfterFilling:(_Bool)arg4 fieldToFocus:(NSString *)arg5;
 - (void)autoFillFormAsynchronouslyInFrame:(SFFormAutoFillFrameHandle *)arg1 withValues:(NSDictionary *)arg2 setAutoFilled:(_Bool)arg3 selectFieldAfterFilling:(NSString *)arg4;

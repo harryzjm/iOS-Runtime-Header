@@ -9,6 +9,7 @@
 @class NSData, NSManagedObjectContext, NSManagedObjectID;
 
 @protocol PHResourceChooserAsset <PLAssetID>
+@property(readonly, nonatomic) _Bool isLocalVideoKeyFrameValid;
 @property(readonly, nonatomic) unsigned long long originalResourceChoice;
 @property(readonly, nonatomic) _Bool isRAWPlusJPEG;
 @property(readonly, nonatomic) unsigned short deferredProcessingNeeded;

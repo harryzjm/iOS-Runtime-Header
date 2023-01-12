@@ -9,7 +9,7 @@
 @class NSIndexPath, UIView, UIViewPropertyAnimator;
 
 @protocol _UISwipeViewManipulator <NSObject>
-- (void)moveSwipedView:(UIView *)arg1 atIndexPath:(NSIndexPath *)arg2 withSwipeInfo:(CDStruct_9b6dff2a)arg3 animator:(UIViewPropertyAnimator *)arg4;
+- (void)moveSwipedView:(UIView *)arg1 atIndexPath:(NSIndexPath *)arg2 withSwipeInfo:(CDStruct_b06b0113)arg3 animator:(UIViewPropertyAnimator *)arg4;
 
 @optional
 - (struct CGRect)restingFrameForSwipedView:(UIView *)arg1 atIndexPath:(NSIndexPath *)arg2;

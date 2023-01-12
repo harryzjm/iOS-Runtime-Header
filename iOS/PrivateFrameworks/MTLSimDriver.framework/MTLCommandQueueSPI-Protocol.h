@@ -35,6 +35,7 @@
 @property(nonatomic, getter=getStatLocations) unsigned long long StatLocations;
 @property(nonatomic, getter=getStatOptions) unsigned long long StatOptions;
 @property(nonatomic, getter=isStatEnabled) _Bool StatEnabled;
+- (void)dispatchAvailableCompletionNotifications;
 - (NSDictionary *)counterInfo;
 - (void)addPerfSampleHandler:(void (^)(id <MTLCommandBuffer>, NSData *, unsigned long long))arg1;
 - (NSArray *)subdivideCounterList:(NSArray *)arg1;

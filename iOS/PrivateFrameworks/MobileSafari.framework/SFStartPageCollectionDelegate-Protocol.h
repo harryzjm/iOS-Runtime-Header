@@ -16,5 +16,9 @@
 - (void)startPageCollectionViewController:(SFStartPageCollectionViewController *)arg1 didSelectItemWithIdentifier:(id)arg2;
 - (void)startPageCollectionViewControllerDidChangeBackgroundStyle:(SFStartPageCollectionViewController *)arg1;
 - (_Bool)startPageCollectionViewControllerShouldInstallCustomBackdrops:(SFStartPageCollectionViewController *)arg1;
+- (double)startPageCollectionViewControllerTopPadding:(SFStartPageCollectionViewController *)arg1;
+
+@optional
+- (void)startPageCollectionViewControllerDidUpdateContent:(SFStartPageCollectionViewController *)arg1;
 @end
 

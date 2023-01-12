@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface TSCHSelectionPathType : NSObject <NSCopying>
+@interface TSCHSelectionPathType : NSObject
 {
     NSString *_type;
     NSString *_name;

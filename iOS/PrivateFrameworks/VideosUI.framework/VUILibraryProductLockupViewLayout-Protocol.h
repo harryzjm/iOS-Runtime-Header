@@ -6,11 +6,14 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class UIFont, UITraitCollection;
+@class UIFont, UITraitCollection, VUITextLayout;
 
 @protocol VUILibraryProductLockupViewLayout <NSObject>
 - (UIFont *)contentDescriptionFontForSizeClass:(long long)arg1;
 - (int)contentDescriptionNumberOfLinesForTraitCollection:(UITraitCollection *)arg1;
+- (VUITextLayout *)playLabelTextLayout;
+- (VUITextLayout *)subtitleTextLayoutForWindowWidth:(double)arg1;
+- (VUITextLayout *)descriptionTextLayoutForTraitCollection:(UITraitCollection *)arg1 isExpanded:(_Bool)arg2;
 - (long long)downloadButtonPosition;
 - (double)buttonModuleTopMarginForWindowWidth:(double)arg1;
 - (double)contentDescriptionBottomMarginForWindowWidth:(double)arg1;

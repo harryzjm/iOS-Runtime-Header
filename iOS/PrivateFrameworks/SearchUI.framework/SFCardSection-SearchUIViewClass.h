@@ -13,6 +13,7 @@
 - (double)searchUIGridSectionModel_interItemSpacing;
 - (_Bool)searchUIGridSectionModel_useBackground;
 - (id)searchUIGridSectionModel_heightDimensionWithColumnCount:(unsigned long long)arg1;
+- (double)searchUIHorizontallyScrollingSectionModel_interItemSpacing;
 - (_Bool)searchUIHorizontallyScrollingSectionModel_useBackground;
 - (id)searchUIHorizontallyScrollingSectionModel_heightDimension;
 - (id)searchUIHorizontallyScrollingSectionModel_widthDimension;

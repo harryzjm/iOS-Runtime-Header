@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <MobileSafariUI/UIDropInteractionDelegate_Private-Protocol.h>
-
 @class NSString;
 @protocol TabBarDropExpansionViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TabBarDropExpansionView : UIView <UIDropInteractionDelegate_Private>
+@interface TabBarDropExpansionView : UIView
 {
     id <TabBarDropExpansionViewDelegate> _delegate;
 }

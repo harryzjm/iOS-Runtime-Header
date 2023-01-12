@@ -6,14 +6,17 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class WFDialogAttributions, WFOutOfProcessWorkflowController, WFWorkflowReference, WFWorkflowRunResult;
+@class NSString, WFDialogAttribution, WFDialogRequest, WFOutOfProcessWorkflowController, WFWorkflowReference, WFWorkflowRunResult, WFWorkflowRunningContext;
 @protocol WFUserInterfaceHost;
 
 @protocol WFOutOfProcessWorkflowControllerDelegate <NSObject>
-- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didFinishWithResult:(WFWorkflowRunResult *)arg2 reference:(WFWorkflowReference *)arg3 dialogAttributions:(WFDialogAttributions *)arg4;
+- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didFinishWithResult:(WFWorkflowRunResult *)arg2 dialogAttribution:(WFDialogAttribution *)arg3;
 
 @optional
 - (id <WFUserInterfaceHost>)userInterfaceForOutOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1;
-- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didStartFromWorkflowReference:(WFWorkflowReference *)arg2 dialogAttributions:(WFDialogAttributions *)arg3;
+- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 presenterRequestedWorkflowPauseWithContext:(WFWorkflowRunningContext *)arg2 dialogRequest:(WFDialogRequest *)arg3;
+- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 wantsToToastSessionKitSessionWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
+- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didDecideRunningProgressIsAllowed:(_Bool)arg2 dialogAttribution:(WFDialogAttribution *)arg3;
+- (void)outOfProcessWorkflowController:(WFOutOfProcessWorkflowController *)arg1 didStartFromWorkflowReference:(WFWorkflowReference *)arg2;
 @end
 

@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFConfirmInteractionDialogRequest.h>
-
-#import <WorkflowUI/WFDialogRequestViewControllerSupport-Protocol.h>
+#import <VoiceShortcutClient/WFConfirmInteractionDialogRequest.h>
 
 @class NSString;
 
-@interface WFConfirmInteractionDialogRequest (WFDialogRequestViewControllerSupport) <WFDialogRequestViewControllerSupport>
+@interface WFConfirmInteractionDialogRequest (WFDialogRequestViewControllerSupport)
 - (Class)wf_dialogViewControllerClass;
 
 // Remaining properties

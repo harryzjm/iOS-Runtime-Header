@@ -4,17 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
-
-struct CAFrameRateRange {
-    float minimum;
-    float maximum;
-    float preferred;
-};
 
 struct CCUILayoutPoint {
     unsigned long long _field1;
@@ -27,8 +17,8 @@ struct CCUILayoutRect {
 };
 
 struct CCUILayoutSize {
-    unsigned long long width;
-    unsigned long long height;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct CCUIModuleLayoutSize {
@@ -36,34 +26,25 @@ struct CCUIModuleLayoutSize {
     unsigned long long _field2;
 };
 
-struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
-};
-
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 

@@ -16,12 +16,15 @@ __attribute__((visibility("hidden")))
     UIBezierPath *_path;
     double _cornerRadius;
     NSString *_cornerCurve;
+    unsigned long long _cornerMask;
     struct CGRect _rect;
 }
 
++ (id)shapeWithRoundedRect:(struct CGRect)arg1 cornerRadius:(double)arg2 cornerCurve:(id)arg3 cornerMask:(unsigned long long)arg4;
 + (id)shapeWithRoundedRect:(struct CGRect)arg1 cornerRadius:(double)arg2 cornerCurve:(id)arg3;
 + (id)shapeWithPath:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long cornerMask; // @synthesize cornerMask=_cornerMask;
 @property(readonly, nonatomic) NSString *cornerCurve; // @synthesize cornerCurve=_cornerCurve;
 @property(readonly, nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(readonly, nonatomic) struct CGRect rect; // @synthesize rect=_rect;

@@ -6,14 +6,11 @@
 
 #import <GLKit/GLKView.h>
 
-#import <DrawingKit/DKInkRenderer-Protocol.h>
-#import <DrawingKit/DKOpenGLRendererDelegate-Protocol.h>
-
 @class DKOpenGLRenderer, NSMutableArray, NSString, UIColor;
 @protocol DKInkRendererDelegate;
 
 __attribute__((visibility("hidden")))
-@interface DKInkRendererGL : GLKView <DKOpenGLRendererDelegate, DKInkRenderer>
+@interface DKInkRendererGL : GLKView
 {
     UIColor *_inkColor;
     NSMutableArray *_brushPointQueue;

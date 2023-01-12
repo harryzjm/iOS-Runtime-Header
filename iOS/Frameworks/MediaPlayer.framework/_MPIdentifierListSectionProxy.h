@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPMutableIdentifierListSection-Protocol.h>
-
 @class MPSectionedIdentifierList, NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPIdentifierListSectionProxy : NSObject <MPMutableIdentifierListSection>
+@interface _MPIdentifierListSectionProxy : NSObject
 {
     NSString *_sectionIdentifier;
     MPSectionedIdentifierList *_sectionedIdentifierList;

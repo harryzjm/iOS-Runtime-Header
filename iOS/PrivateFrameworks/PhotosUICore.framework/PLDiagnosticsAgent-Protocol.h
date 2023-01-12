@@ -7,6 +7,7 @@
 @class NSString, NSURL;
 
 @protocol PLDiagnosticsAgent
+- (void)setContentPrivacyState:(long long)arg1 resultHandler:(void (^)(NSString *))arg2;
 - (void)timelineForWidgetSize:(NSString *)arg1 jsonFormat:(_Bool)arg2 resultHandler:(void (^)(NSString *))arg3;
 - (void)captureDescriptionOfPhotoAnalysisWithResultHandler:(void (^)(NSString *))arg1;
 - (void)captureDescriptionOfCloudPhotoLibraryWithResultHandler:(void (^)(NSString *))arg1;

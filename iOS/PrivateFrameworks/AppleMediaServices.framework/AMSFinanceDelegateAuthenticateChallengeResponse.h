@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
-
 @class AMSURLTaskInfo, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceDelegateAuthenticateChallengeResponse : NSObject <AMSFinancePerformable>
+@interface AMSFinanceDelegateAuthenticateChallengeResponse : NSObject
 {
     NSDictionary *_responseDictionary;
     AMSURLTaskInfo *_taskInfo;

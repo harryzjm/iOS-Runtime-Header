@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VisionKitCore/UIContextMenuInteractionDelegate-Protocol.h>
-
 @class NSString, UIContextMenuInteraction;
 @protocol VKAnalysisDebugInfoProvider;
 
 __attribute__((visibility("hidden")))
-@interface VKCAnalysisDebugMenuProvider : NSObject <UIContextMenuInteractionDelegate>
+@interface VKCAnalysisDebugMenuProvider : NSObject
 {
     UIContextMenuInteraction *_contextMenuInteraction;
     id <VKAnalysisDebugInfoProvider> _provider;

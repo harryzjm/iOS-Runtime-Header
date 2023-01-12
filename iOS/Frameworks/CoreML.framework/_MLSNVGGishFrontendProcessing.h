@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLCustomModel-Protocol.h>
-
 @class MLModelDescription;
 @protocol MLCustomModel;
 
 __attribute__((visibility("hidden")))
-@interface _MLSNVGGishFrontendProcessing : NSObject <MLCustomModel>
+@interface _MLSNVGGishFrontendProcessing : NSObject
 {
     id <MLCustomModel> _frontendProcessingModel;
     MLModelDescription *_modelDescription;

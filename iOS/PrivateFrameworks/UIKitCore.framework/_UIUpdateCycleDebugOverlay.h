@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIUpdateCompletionObserving-Protocol.h>
-
 @class UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface _UIUpdateCycleDebugOverlay : NSObject <_UIUpdateCompletionObserving>
+@interface _UIUpdateCycleDebugOverlay : NSObject
 {
     UIWindow *_windowWithBorder;
 }

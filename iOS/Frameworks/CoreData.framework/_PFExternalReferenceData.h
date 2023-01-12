@@ -6,13 +6,10 @@
 
 #import <Foundation/NSData.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-#import <CoreData/NSMutableCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _PFExternalReferenceData : NSData <NSCopying, NSMutableCopying>
+@interface _PFExternalReferenceData : NSData
 {
     NSData *_originalData;
     void *_bytesPtrForStore;

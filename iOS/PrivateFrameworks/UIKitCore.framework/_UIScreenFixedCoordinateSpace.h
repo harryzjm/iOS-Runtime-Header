@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UICoordinateSpace-Protocol.h>
-
 @class NSString, UIScreen;
 
 __attribute__((visibility("hidden")))
-@interface _UIScreenFixedCoordinateSpace : NSObject <UICoordinateSpace>
+@interface _UIScreenFixedCoordinateSpace : NSObject
 {
     UIScreen *_screen;
 }

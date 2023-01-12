@@ -6,12 +6,13 @@
 
 #import <SPOwner/CBPeripheralManagerDelegate-Protocol.h>
 
-@class CBCentral, CBPeripheralManager, NSArray, NSError, NSNumber;
+@class CBCentral, CBPeripheralManager, NSArray, NSDictionary, NSError, NSNumber;
 
 @protocol CBPeripheralManagerPrivateDelegate <CBPeripheralManagerDelegate>
 
 @optional
 - (void)peripheralManager:(CBPeripheralManager *)arg1 offlineAdvPayloadRequestedWithReason:(long long)arg2;
+- (void)peripheralManager:(CBPeripheralManager *)arg1 didUpdateControllerBTClockDict:(NSDictionary *)arg2;
 - (void)peripheralManager:(CBPeripheralManager *)arg1 didUpdateControllerBTClock:(NSNumber *)arg2 seconds:(NSNumber *)arg3 microseconds:(NSNumber *)arg4 localClock:(NSNumber *)arg5 remoteClock:(NSNumber *)arg6;
 - (void)peripheralManager:(CBPeripheralManager *)arg1 didStopPeriodicAdvertising:(NSError *)arg2;
 - (void)peripheralManager:(CBPeripheralManager *)arg1 didStartPeriodicAdvertising:(NSError *)arg2;

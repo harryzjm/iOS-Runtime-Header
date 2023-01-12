@@ -14,6 +14,7 @@
     MISSING_TYPE *notificationPrompter;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *shortcutService;
     MISSING_TYPE *editorialService;
     MISSING_TYPE *tagReorderService;
     MISSING_TYPE *followingBadgingCoordinator;
@@ -21,6 +22,8 @@
     MISSING_TYPE *userNotificationCenter;
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *familySharingStatusManager;
+    MISSING_TYPE *sportsOnboardingManager;
+    MISSING_TYPE *shortcutsOnboardingManager;
 }
 
 @end

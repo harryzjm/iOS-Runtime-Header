@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/CAMLWriterDelegate-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CACodingCAMLWriterDelegate : NSObject <CAMLWriterDelegate>
+@interface CACodingCAMLWriterDelegate : NSObject
 {
     NSString *_resourceDir;
     int _serial;

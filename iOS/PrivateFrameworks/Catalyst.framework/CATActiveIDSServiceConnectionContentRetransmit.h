@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATActiveIDSServiceConnectionMessageContent-Protocol.h>
-
 @class NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CATActiveIDSServiceConnectionContentRetransmit : NSObject <CATActiveIDSServiceConnectionMessageContent>
+@interface CATActiveIDSServiceConnectionContentRetransmit : NSObject
 {
     NSArray *_sequenceNumbers;
 }

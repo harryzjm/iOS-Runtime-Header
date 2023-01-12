@@ -6,14 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFChooseFromListActionUserInterface-Protocol.h>
-#import <ActionKitUI/WFChooseImageViewControllerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFChooseFromListActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFChooseFromListActionUserInterface, WFChooseImageViewControllerDelegate, UIPopoverPresentationControllerDelegate>
+@interface WFChooseFromListActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

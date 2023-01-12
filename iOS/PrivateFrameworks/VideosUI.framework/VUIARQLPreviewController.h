@@ -6,12 +6,10 @@
 
 #import <QuickLook/QLPreviewController.h>
 
-#import <VideosUI/QLPreviewControllerDataSource-Protocol.h>
-
 @class ARQuickLookPreviewItem, ARQuickLookWebKitItem;
 
 __attribute__((visibility("hidden")))
-@interface VUIARQLPreviewController : QLPreviewController <QLPreviewControllerDataSource>
+@interface VUIARQLPreviewController : QLPreviewController
 {
     ARQuickLookWebKitItem *_quickLookWebKitItem;
     ARQuickLookPreviewItem *_quickLookPreviewItem;

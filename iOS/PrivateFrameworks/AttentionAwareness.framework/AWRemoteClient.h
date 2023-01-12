@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AttentionAwareness/AWRemoteClient-Protocol.h>
-
 @class AWAttentionAwarenessConfiguration, AWAttentionEvent, AWScheduler, NSArray, NSSet, NSString, NSXPCConnection;
 @protocol AWFrameworkClient, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AWRemoteClient : NSObject <AWRemoteClient>
+@interface AWRemoteClient : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     AWScheduler *_scheduler;
@@ -24,6 +22,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _attentionLostEventMask;
     _Bool _sampleWhileAbsent;
     _Bool _retroactiveTimeoutMode;
+    _Bool _continuousFaceDetectMode;
+    _Bool _samplingSuppressedNotificationSent;
     NSArray *_attentionLostTimeoutsSec;
     NSSet *_allowedHIDEventsForRemoteEvent;
     int _clientIndex;
@@ -34,14 +34,23 @@ __attribute__((visibility("hidden")))
     NSString *_identifier;
     unsigned long long _samplingInterval;
     unsigned long long _samplingDelay;
+    unsigned long long _streamingStartTime;
+    double _streamingDuration;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double streamingDuration; // @synthesize streamingDuration=_streamingDuration;
+@property(nonatomic) unsigned long long streamingStartTime; // @synthesize streamingStartTime=_streamingStartTime;
 @property(readonly, nonatomic) int clientIndex; // @synthesize clientIndex=_clientIndex;
 @property(readonly, nonatomic) _Bool invalid; // @synthesize invalid=_invalid;
 @property(readonly, nonatomic) unsigned long long samplingDelay; // @synthesize samplingDelay=_samplingDelay;
 @property(readonly, nonatomic) unsigned long long samplingInterval; // @synthesize samplingInterval=_samplingInterval;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (void)cancelFaceDetectStreamWithReply:(CDUnknownBlockType)arg1;
+- (void)streamFaceDetectEventsWithReply:(CDUnknownBlockType)arg1;
+- (_Bool)isStreamingClient;
+- (void)notifyStreamingClientOfInterruption:(unsigned long long)arg1;
+- (void)notifyClientOfStreamingEvent:(id)arg1;
 - (void)pingWithReply:(CDUnknownBlockType)arg1;
 - (unsigned long long)nextTimerForTime:(unsigned long long)arg1;
 - (void)updateDeadlinesForTime:(unsigned long long)arg1;

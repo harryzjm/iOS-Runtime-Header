@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSDate, NSNumber, NSString;
 
-@interface TSTFormulaPredArgData : NSObject <NSCopying>
+@interface TSTFormulaPredArgData : NSObject
 {
     struct TSUDecimal _decimal;
     NSString *_string;

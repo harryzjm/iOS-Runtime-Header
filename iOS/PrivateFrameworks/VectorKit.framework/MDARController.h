@@ -20,8 +20,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)isSupported;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) ARSession *session; // @synthesize session=_session;
-@property(nonatomic) id <MDARControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <MDARControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long sessionInterruptedReason; // @synthesize sessionInterruptedReason=_sessionInterruptedReason;
 - (void)pause;
 - (void)run:(_Bool)arg1;

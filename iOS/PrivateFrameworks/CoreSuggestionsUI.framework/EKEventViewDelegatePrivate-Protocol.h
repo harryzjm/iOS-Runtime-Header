@@ -6,11 +6,12 @@
 
 #import <CoreSuggestionsUI/EKEventViewDelegate-Protocol.h>
 
-@class EKEventEditViewController, EKEventViewController, UIAlertController;
+@class EKEventEditViewController, EKEventViewController, EKUIPasteboardManager, UIAlertController;
 
 @protocol EKEventViewDelegatePrivate <EKEventViewDelegate>
 
 @optional
+- (EKUIPasteboardManager *)pasteboardManager;
 - (long long)editorPresentationStyle;
 - (void)eventViewController:(EKEventViewController *)arg1 requestsDisplayOfDeleteAlert:(UIAlertController *)arg2;
 - (_Bool)eventViewDelegateShouldHandlePresentationOfDeleteAlert:(EKEventViewController *)arg1;

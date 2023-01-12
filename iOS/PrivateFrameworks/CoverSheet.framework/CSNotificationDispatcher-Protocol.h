@@ -14,6 +14,7 @@
 - (NSSet *)notificationSectionSettingsForDestination:(id <CSNotificationDestination>)arg1;
 - (NCNotificationSectionSettings *)destination:(id <CSNotificationDestination>)arg1 settingsForSectionIdentifier:(NSString *)arg2;
 - (id <CSNotificationAlertingController>)alertingControllerForDestination:(id <CSNotificationDestination>)arg1;
+- (void)destination:(id <CSNotificationDestination>)arg1 setNotificationSystemSettings:(NCNotificationSystemSettings *)arg2;
 - (NCNotificationRequest *)destination:(id <CSNotificationDestination>)arg1 notificationRequestForUUID:(NSUUID *)arg2;
 - (void)destination:(id <CSNotificationDestination>)arg1 setSystemScheduledDeliveryEnabled:(_Bool)arg2 scheduledDeliveryTimes:(NSArray *)arg3;
 - (void)destination:(id <CSNotificationDestination>)arg1 setScheduledDelivery:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;

@@ -6,12 +6,10 @@
 
 #import <ContactsUI/CNContactPickerViewController.h>
 
-#import <ChatKit/CKAdaptivePresentedControllerProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKCNContactPickerViewController : CNContactPickerViewController <CKAdaptivePresentedControllerProtocol>
+@interface CKCNContactPickerViewController : CNContactPickerViewController
 {
     _Bool _wantsWindowedPresentation;
     _Bool _preserveModalPresentationStyle;

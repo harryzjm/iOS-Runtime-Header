@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <HomeKit/HMUserManagementRemoteHost-Protocol.h>
-
 @class HMHome, HMUserListRemoteViewController, _UIAsyncInvocation;
 
 __attribute__((visibility("hidden")))
-@interface HMUserListViewController : UIViewController <HMUserManagementRemoteHost>
+@interface HMUserListViewController : UIViewController
 {
     _Bool _shouldPresentWhenLoaded;
     HMHome *_home;
@@ -36,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)_requestRemoteViewController;
 - (void)viewDidLoad;
 - (unsigned long long)supportedInterfaceOrientations;
-- (_Bool)shouldAutorotate;
 - (void)presentWhenLoaded;
 - (id)initWithHome:(id)arg1 loadHandler:(CDUnknownBlockType)arg2;
 

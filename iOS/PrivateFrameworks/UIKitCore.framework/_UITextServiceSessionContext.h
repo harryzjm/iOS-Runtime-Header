@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
-@class NSString, UIResponder, UIView;
+@class NSString, RVItem, UIResponder, UIView;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
-@interface _UITextServiceSessionContext : NSObject <NSSecureCoding>
+@interface _UITextServiceSessionContext : NSObject
 {
     UIResponder<UITextInput> *_textInput;
     UIView *_view;
     NSString *_textWithContext;
+    RVItem *_rvItemWithContext;
     struct _NSRange _selectedRange;
     struct CGRect _presentationRect;
 }
 
++ (struct CGRect)selectionBoundingBoxForTextInput:(id)arg1;
 + (id)selectedTextRangeForTextInput:(id)arg1;
 + (id)sessionContextForType:(long long)arg1 withTextInput:(id)arg2;
 + (id)sessionContextWithText:(id)arg1 withRect:(struct CGRect)arg2 withRange:(struct _NSRange)arg3 withView:(id)arg4;
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGRect presentationRect; // @synthesize presentationRect=_presentationRect;
 @property(readonly, nonatomic) struct _NSRange selectedRange; // @synthesize selectedRange=_selectedRange;
+@property(readonly, copy, nonatomic) RVItem *rvItemWithContext; // @synthesize rvItemWithContext=_rvItemWithContext;
 @property(readonly, copy, nonatomic) NSString *textWithContext; // @synthesize textWithContext=_textWithContext;
 @property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 @property(readonly, nonatomic) UIResponder<UITextInput> *textInput; // @synthesize textInput=_textInput;

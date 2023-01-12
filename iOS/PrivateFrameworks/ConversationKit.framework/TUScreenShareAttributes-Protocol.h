@@ -7,7 +7,7 @@
 #import <ConversationKit/NSObject-Protocol.h>
 #import <ConversationKit/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSValue;
+@class NSNumber, NSUUID, NSValue;
 @protocol TUScreenShareAttributes;
 
 @protocol TUScreenShareAttributes <NSObject, NSSecureCoding>
@@ -16,6 +16,11 @@
 + (NSNumber *)defaultDisplayScale;
 + (long long)currentDeviceFamily;
 - (_Bool)isSignificantChangeFromAttributes:(id <TUScreenShareAttributes>)arg1;
+@property(nonatomic, copy) NSUUID *windowUUID;
+@property(nonatomic) _Bool windowed;
+- (_Bool)isWindowed;
+@property(nonatomic, retain) NSNumber *displayID;
+@property(nonatomic, retain) NSNumber *frameRate;
 @property(nonatomic, retain) NSValue *originalResolution;
 @property(nonatomic, retain) NSNumber *scaleFactor;
 @property(nonatomic, retain) NSNumber *displayScale;

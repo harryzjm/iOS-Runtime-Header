@@ -10,7 +10,7 @@
 - (void)moveActionsFrom:(NSIndexSet *)arg1 to:(NSIndexSet *)arg2;
 - (void)insertActions:(NSArray *)arg1 at:(long long)arg2;
 - (void)insertAction:(WFAction *)arg1 at:(long long)arg2;
-- (void)appendAction:(WFAction *)arg1;
-- (void)removeActions:(NSArray *)arg1;
+- (void)appendAction:(WFAction *)arg1 selectionAware:(_Bool)arg2;
+- (void)removeActions:(NSArray *)arg1 mode:(long long)arg2;
 @end
 

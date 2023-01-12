@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     double _progressLineWidth;
     double _oneFullRotation;
+    _Bool _usesRoundedLineCap;
     _Bool _showProgressTray;
     long long _progressStartPoint;
     UIColor *_progressColor;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)needsDisplayForKey:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showProgressTray; // @synthesize showProgressTray=_showProgressTray;
+@property(nonatomic) _Bool usesRoundedLineCap; // @synthesize usesRoundedLineCap=_usesRoundedLineCap;
 @property(nonatomic) double progressLineWidth; // @synthesize progressLineWidth=_progressLineWidth;
 @property(retain, nonatomic) UIColor *progressBackgroundColor; // @synthesize progressBackgroundColor=_progressBackgroundColor;
 @property(retain, nonatomic) UIColor *progressColor; // @synthesize progressColor=_progressColor;

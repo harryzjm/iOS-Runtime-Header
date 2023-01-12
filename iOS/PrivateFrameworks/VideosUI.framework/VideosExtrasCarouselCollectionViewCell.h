@@ -6,13 +6,10 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <VideosUI/VideosExtrasCarouselCollectionViewCell-Protocol.h>
-
 @class MPUContentSizeLayoutConstraint, NSArray, NSLayoutConstraint, NSString, UILabel, UIPinchGestureRecognizer, UIView, VideosExtrasConstrainedArtworkContainerView, VideosExtrasZoomingImageInteractiveTransitionSourceContext;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasCarouselCollectionViewCell : UICollectionViewCell <UIGestureRecognizerDelegate, VideosExtrasCarouselCollectionViewCell>
+@interface VideosExtrasCarouselCollectionViewCell : UICollectionViewCell
 {
     _Bool _allowsPinchingThumbnailImageForInteractiveZoomingImageTransition;
     VideosExtrasConstrainedArtworkContainerView *_thumbnailImageContainerView;

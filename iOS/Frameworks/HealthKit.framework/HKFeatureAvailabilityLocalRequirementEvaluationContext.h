@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKFeatureAvailabilityRequirementEvaluationDataSource.h"
+
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface HKFeatureAvailabilityLocalRequirementEvaluationContext
+@interface HKFeatureAvailabilityLocalRequirementEvaluationContext : HKFeatureAvailabilityRequirementEvaluationDataSource
 {
     long long __unitTest_cacheHits;
     NSMutableDictionary *_eligibilityByFeatureIdentifier;

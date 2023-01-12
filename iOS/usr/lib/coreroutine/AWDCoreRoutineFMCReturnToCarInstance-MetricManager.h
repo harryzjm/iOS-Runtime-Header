@@ -6,11 +6,9 @@
 
 #import <AWDSupportFramework/AWDCoreRoutineFMCReturnToCarInstance.h>
 
-#import <coreroutine/RTMetricManagerMetricIdProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AWDCoreRoutineFMCReturnToCarInstance (MetricManager) <RTMetricManagerMetricIdProtocol>
+@interface AWDCoreRoutineFMCReturnToCarInstance (MetricManager)
 @property(readonly, copy) NSString *description;
 - (_Bool)valid:(id *)arg1;
 - (id)_init;

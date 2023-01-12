@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <EventKitUI/EKEditItemViewControllerDelegate-Protocol.h>
-
 @class EKCalendarItem, EKEventStore, NSString, UIResponder, UIViewController;
 @protocol EKCalendarItemEditItemDelegate, EKEditItemViewControllerProtocol, EKStyleProvider;
 
 __attribute__((visibility("hidden")))
-@interface EKCalendarItemEditItem : NSObject <EKEditItemViewControllerDelegate>
+@interface EKCalendarItemEditItem : NSObject
 {
     EKEventStore *_store;
     UIViewController<EKEditItemViewControllerProtocol> *_viewController;

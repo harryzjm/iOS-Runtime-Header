@@ -6,18 +6,20 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLParticipant : PBCodable <NSCopying>
+@interface _ICLLParticipant : PBCodable
 {
     long long _participantId;
     NSString *_externalId;
     NSString *_participantUUID;
+    int _storefront;
+    int _unreliablePlaybackSyncStatus;
     struct {
         unsigned int participantId:1;
+        unsigned int storefront:1;
+        unsigned int unreliablePlaybackSyncStatus:1;
     } _has;
 }
 

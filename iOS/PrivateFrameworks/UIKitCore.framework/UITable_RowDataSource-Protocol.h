@@ -23,7 +23,7 @@
 @property(readonly, nonatomic, getter=_heightForTableHeader) double heightForTableHeader;
 @property(readonly, nonatomic, getter=_isTableHeaderAutohiding) _Bool isTableHeaderAutohiding;
 @property(readonly, nonatomic, getter=_rowSpacing) double rowSpacing;
-@property(readonly, nonatomic, getter=_useChromelessSectionHeaderFooterPinningBehavior) _Bool useChromelessSectionHeaderFooterPinningBehavior;
+@property(readonly, nonatomic, getter=_headerFooterPinningBehavior) long long headerFooterPinningBehavior;
 @property(readonly, nonatomic, getter=_sectionFooterToLastRowPadding) double sectionFooterToLastRowPadding;
 @property(readonly, nonatomic, getter=_sectionHeaderToFirstRowPadding) double sectionHeaderToFirstRowPadding;
 @property(readonly, nonatomic, getter=_paddingAboveSectionHeaders) double paddingAboveSectionHeaders;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/ICLiveLinkDelegate-Protocol.h>
-#import <MediaPlaybackCore/MPCPlaybackIntentDataSource-Protocol.h>
-
 @class ICLiveLink, ICLiveLinkIdentity, MPCPlaybackIntent, MSVBlockGuard, MSVSectionedCollection, NSIndexPath, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCSharedListeningPlaybackIntentDataSource : NSObject <ICLiveLinkDelegate, MPCPlaybackIntentDataSource>
+@interface MPCSharedListeningPlaybackIntentDataSource : NSObject
 {
     struct os_unfair_lock_s _lock;
     MSVBlockGuard *_guard;

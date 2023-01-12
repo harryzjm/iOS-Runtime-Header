@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPEncoder-Protocol.h>
-
 @class NSError, NSString, TSPMemoryComponentWriteChannel;
 @protocol OS_dispatch_data, OS_dispatch_queue;
 
-@interface TSPObjectSerializationEncoder : NSObject <TSPEncoder>
+@interface TSPObjectSerializationEncoder : NSObject
 {
     NSError *_error;
     _Bool _isFinished;

@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)configureWithWorkout:(id)arg1 dataCalculator:(id)arg2;
+- (void)configureWithWorkout:(id)arg1 workoutActivity:(id)arg2 dataCalculator:(id)arg3;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

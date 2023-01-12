@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/Loggable-Protocol.h>
-
-@class CHManager, Logger, NSString, PSListController, PSSpecifier;
+@class CHManager, NSString, PSListController, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface PSUICallTimeGroup : NSObject <Loggable>
+@interface PSUICallTimeGroup : NSObject
 {
-    Logger *_logger;
     PSListController *_hostController;
     CHManager *_callHistoryManager;
     PSSpecifier *_groupSpecifier;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WeatherFoundation/WFForecastDataParser-Protocol.h>
-
 @class NSCalendar, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFWeatherChannelParserV2 : NSObject <WFForecastDataParser>
+@interface WFWeatherChannelParserV2 : NSObject
 {
     NSCalendar *_calendar;
 }

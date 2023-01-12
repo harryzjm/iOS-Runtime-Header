@@ -6,10 +6,10 @@
 
 #import <ConversationKit/NSObject-Protocol.h>
 
-@class TUConversation, TUConversationActivity, TUNearbyDeviceHandle;
+@class TUConversation, TUNearbyDeviceHandle;
 
 @protocol TUNeighborhoodActivityConduitApprovalDelegate <NSObject>
 - (void)cancelSplitSessionApproval;
-- (void)approveSplitSessionForConversation:(TUConversation *)arg1 requestedFromDevice:(TUNearbyDeviceHandle *)arg2 proposedActivityInfo:(TUConversationActivity *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
+- (void)approveSplitSessionForConversation:(TUConversation *)arg1 requestedFromDevice:(TUNearbyDeviceHandle *)arg2 pullContext:(long long)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 @end
 

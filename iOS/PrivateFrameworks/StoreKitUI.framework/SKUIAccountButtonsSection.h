@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIAccountButtonsDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSString, SKUIAccountButtonsComponent, SKUIAccountButtonsViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIAccountButtonsSection <SKUIAccountButtonsDelegate>
+@interface SKUIAccountButtonsSection : SKUIStorePageSection
 {
     SKUIAccountButtonsViewController *_accountButtonsViewController;
 }

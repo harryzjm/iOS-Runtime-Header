@@ -6,15 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideoSubscriberAccountUI/UIScrollViewDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/VSTwoFactorDigitViewDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/VSTwoFactorEntryViewController-Protocol.h>
-
 @class NSArray, NSString, UIBarButtonItem, UIScrollView, VSFontCenter, VSIdentityProviderLogoView, VSTwoFactorDigitView, VSTwoFactorEntryViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSTwoFactorEntryViewController_iOS : UIViewController <UIScrollViewDelegate, VSTwoFactorDigitViewDelegate, VSTwoFactorEntryViewController>
+@interface VSTwoFactorEntryViewController_iOS : UIViewController
 {
     _Bool _cancellationAllowed;
     id <VSAuthenticationViewControllerDelegate> _delegate;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/CKAddressBookMonogrammerProvider-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _CKAddressBookMonogrammerProvider : NSObject <CKAddressBookMonogrammerProvider>
+@interface _CKAddressBookMonogrammerProvider : NSObject
 {
 }
 

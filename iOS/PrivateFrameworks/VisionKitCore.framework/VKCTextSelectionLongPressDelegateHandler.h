@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VisionKitCore/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UIGestureRecognizer;
 @protocol VKCTextSelectionLongPressHandlerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCTextSelectionLongPressDelegateHandler : NSObject <UIGestureRecognizerDelegate>
+@interface VKCTextSelectionLongPressDelegateHandler : NSObject
 {
     UIGestureRecognizer *_gestureRecognizer;
     id <VKCTextSelectionLongPressHandlerDelegate> _delegate;
@@ -22,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <VKCTextSelectionLongPressHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,8 +9,8 @@
 @protocol CSCoverSheetViewTransitionSource;
 
 @protocol CSCoverSheetViewTransitioning <CSCoverSheetParticipating>
-- (void)transitionSource:(id <CSCoverSheetViewTransitionSource>)arg1 didEndWithContext:(CDStruct_7238a68f)arg2;
-- (void)transitionSource:(id <CSCoverSheetViewTransitionSource>)arg1 didUpdateTransitionWithContext:(CDStruct_7238a68f)arg2;
+- (void)transitionSource:(id <CSCoverSheetViewTransitionSource>)arg1 didEndWithContext:(CDStruct_e8e6f28d)arg2;
+- (void)transitionSource:(id <CSCoverSheetViewTransitionSource>)arg1 didUpdateTransitionWithContext:(CDStruct_e8e6f28d)arg2;
 - (void)transitionSource:(id <CSCoverSheetViewTransitionSource>)arg1 willBeginWithType:(long long)arg2;
 @end
 

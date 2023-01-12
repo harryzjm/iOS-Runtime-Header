@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionViewCell.h"
+
 @class UITapGestureRecognizer, _UIAlertControllerTextFieldView;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerTextFieldViewCollectionCell
+@interface _UIAlertControllerTextFieldViewCollectionCell : UICollectionViewCell
 {
     _UIAlertControllerTextFieldView *_textField;
     UITapGestureRecognizer *_selectButtonGesture;

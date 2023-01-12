@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UserActivity/UAPasteboardItemProviding-Protocol.h>
-
 @class NSFileHandle, NSNumber, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface UAPasteboardFileChunkItemProvider : NSObject <UAPasteboardItemProviding>
+@interface UAPasteboardFileChunkItemProvider : NSObject
 {
     NSString *_type;
     NSUUID *_uuid;

@@ -4,21 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate;
+#import "EKSerializableObject.h"
+
+@class NSDate, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface EKSerializableAlarm
+@interface EKSerializableAlarm : EKSerializableObject
 {
     _Bool _isAbsolute;
-    double _relativeOffset;
+    _Bool _isDefaultAlarm;
+    NSNumber *_relativeOffset;
     NSDate *_absoluteDate;
 }
 
 + (id)classesForKey;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isDefaultAlarm; // @synthesize isDefaultAlarm=_isDefaultAlarm;
 @property(nonatomic) _Bool isAbsolute; // @synthesize isAbsolute=_isAbsolute;
 @property(copy, nonatomic) NSDate *absoluteDate; // @synthesize absoluteDate=_absoluteDate;
-@property(nonatomic) double relativeOffset; // @synthesize relativeOffset=_relativeOffset;
+@property(retain, nonatomic) NSNumber *relativeOffset; // @synthesize relativeOffset=_relativeOffset;
 - (id)createAlarm:(id *)arg1;
 - (id)initWithAlarm:(id)arg1;
 

@@ -6,20 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <FMFUI/MKMapViewDelegate-Protocol.h>
-#import <FMFUI/UIGestureRecognizerDelegate-Protocol.h>
-
-@class FMAnnotationView, FMFWildcardGestureRecognizer, MKMapView, NSString;
+@class FMFAnnotationView, FMFWildcardGestureRecognizer, MKMapView, NSString;
 @protocol FMFMapViewDelegateInternalDelegate;
 
 __attribute__((visibility("hidden")))
-@interface FMFMapViewDelegateInternal : NSObject <UIGestureRecognizerDelegate, MKMapViewDelegate>
+@interface FMFMapViewDelegateInternal : NSObject
 {
     _Bool _isMapCenteringDisabled;
     _Bool _respondingToUserTouch;
     id <FMFMapViewDelegateInternalDelegate> _delegate;
     FMFWildcardGestureRecognizer *_gr;
-    FMAnnotationView *_selectedAnnotationView;
+    FMFAnnotationView *_selectedAnnotationView;
     MKMapView *_mapView;
     struct CLLocationCoordinate2D _lastUserLocationCoordinate;
 }
@@ -27,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) struct CLLocationCoordinate2D lastUserLocationCoordinate; // @synthesize lastUserLocationCoordinate=_lastUserLocationCoordinate;
 @property(nonatomic) MKMapView *mapView; // @synthesize mapView=_mapView;
-@property(nonatomic) FMAnnotationView *selectedAnnotationView; // @synthesize selectedAnnotationView=_selectedAnnotationView;
+@property(nonatomic) FMFAnnotationView *selectedAnnotationView; // @synthesize selectedAnnotationView=_selectedAnnotationView;
 @property(retain, nonatomic) FMFWildcardGestureRecognizer *gr; // @synthesize gr=_gr;
 @property(nonatomic) _Bool respondingToUserTouch; // @synthesize respondingToUserTouch=_respondingToUserTouch;
 @property(nonatomic) __weak id <FMFMapViewDelegateInternalDelegate> delegate; // @synthesize delegate=_delegate;
@@ -35,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)regionIsValid:(CDStruct_26e8d939)arg1;
 - (struct UIEdgeInsets)edgeInsetsWithMinApplied:(struct UIEdgeInsets)arg1;
 - (CDStruct_90e2a262)mapRectMakeWithRadialDistanceForCoordinate:(struct CLLocationCoordinate2D)arg1 andRadius:(double)arg2;
-- (void)zoomToFitAnnotationsForMapView:(id)arg1 includeMe:(_Bool)arg2 disallowAnimation:(_Bool)arg3;
+- (void)zoomToFitAnnotationsForMapView:(id)arg1 includeMe:(_Bool)arg2 duration:(double)arg3;
 - (void)zoomToFitLocation:(id)arg1 forMapView:(id)arg2;
 - (void)_moveCenterByOffset:(struct CGPoint)arg1 from:(struct CLLocationCoordinate2D)arg2 mapView:(id)arg3;
 - (void)slideAnnotation:(id)arg1 intoViewIfNeededForMapView:(id)arg2;

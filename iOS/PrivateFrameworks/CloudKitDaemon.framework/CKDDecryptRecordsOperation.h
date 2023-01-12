@@ -36,6 +36,7 @@
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (id)_unwrapEncryptedPropertiesOnRecord:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (id)_unwrapEncryptedPropertiesForRecordValueStore:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
+- (id)_unwrapMergeableRecordValue:(id)arg1 inRecordWithID:(id)arg2 forField:(id)arg3 withPCS:(struct _OpaquePCSShareProtection *)arg4;
 - (id)_unwrapPackageAssets:(id)arg1 inRecordWithID:(id)arg2 forField:(id)arg3 withPCS:(struct _OpaquePCSShareProtection *)arg4;
 - (id)_unwrapAssetKeyForAsset:(id)arg1 inRecordWithID:(id)arg2 forField:(id)arg3 withPCS:(struct _OpaquePCSShareProtection *)arg4;
 - (void)_handleProtectionDataForRecordInfo:(id)arg1;
@@ -47,7 +48,6 @@
 - (void)_decryptRecordInfo:(id)arg1 usingWebSharingIdentityData:(id)arg2;
 - (void)_decryptRecordInfo:(id)arg1;
 - (void)_clearProtectionDataForRecordInfo:(id)arg1;
-- (_Bool)operationShouldBeFlowControlled;
 - (_Bool)shouldCheckAppVersion;
 - (void)_recordInfoWasDecrypted:(id)arg1 nextSteps:(CDUnknownBlockType)arg2;
 - (void)decryptRecord:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

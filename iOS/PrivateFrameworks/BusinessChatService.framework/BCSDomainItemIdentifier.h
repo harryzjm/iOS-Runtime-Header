@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSDomainItemIdentifying-Protocol.h>
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSDomainItemIdentifier : NSObject <BCSDomainItemIdentifying, NSCopying>
+@interface BCSDomainItemIdentifier : NSObject
 {
     long long _type;
     NSString *_domain;

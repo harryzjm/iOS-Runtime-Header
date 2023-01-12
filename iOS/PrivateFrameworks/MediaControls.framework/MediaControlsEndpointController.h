@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaControls/MPAVRoutingControllerDelegate-Protocol.h>
-#import <MediaControls/MPRequestResponseControllerDelegate-Protocol.h>
-#import <MediaControls/_MCStateDumpPropertyListTransformable-Protocol.h>
-
 @class MPAVEndpointRoute, MPAVRoutingController, MPCPlayerPath, MPCPlayerResponse, MPMediaControlsConfiguration, MPRequestResponseController, NSArray, NSString;
 @protocol MediaControlsEndpointControllerConnectionDelegate, MediaControlsEndpointControllerDelegate, MediaControlsEndpointObserverDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsEndpointController : NSObject <MPRequestResponseControllerDelegate, MPAVRoutingControllerDelegate, _MCStateDumpPropertyListTransformable>
+@interface MediaControlsEndpointController : NSObject
 {
     _Bool _allowsAutomaticResponseLoading;
     _Bool _onScreen;
@@ -32,12 +28,14 @@ __attribute__((visibility("hidden")))
     NSString *_specifiedPlayer;
     MPAVRoutingController *_routingController;
     NSObject<OS_dispatch_queue> *_routingControllerQueue;
+    NSString *_predictedDeviceUID;
     id <MediaControlsEndpointControllerConnectionDelegate> _connectionDelegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MediaControlsEndpointControllerConnectionDelegate> connectionDelegate; // @synthesize connectionDelegate=_connectionDelegate;
 @property(nonatomic, getter=isAutomaticResponseLoading) _Bool automaticResponseLoading; // @synthesize automaticResponseLoading=_automaticResponseLoading;
+@property(readonly, copy, nonatomic) NSString *predictedDeviceUID; // @synthesize predictedDeviceUID=_predictedDeviceUID;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *routingControllerQueue; // @synthesize routingControllerQueue=_routingControllerQueue;
 @property(retain, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
 @property(readonly, nonatomic) NSString *specifiedPlayer; // @synthesize specifiedPlayer=_specifiedPlayer;
@@ -54,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSArray *routeNames; // @synthesize routeNames=_routeNames;
 @property(retain, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
 - (id)_stateDumpObject;
+- (void)_routeDidChange:(id)arg1;
 - (void)_connectionDidAttemptConnection:(id)arg1;
 - (void)_connectionDidConnect:(id)arg1;
 - (void)_connectionDidInvalidate:(id)arg1;

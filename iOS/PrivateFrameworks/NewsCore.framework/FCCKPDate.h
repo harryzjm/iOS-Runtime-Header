@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface FCCKPDate : PBCodable <NSCopying>
+@interface FCCKPDate : PBCodable
 {
     double _time;
     struct {

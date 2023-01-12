@@ -6,19 +6,16 @@
 
 #import <CloudKit/CKSyncEngineDataSource-Protocol.h>
 
-@class CKRecordZoneID, CKSchedulerActivity, CKSyncEngine, CKSyncEngineBatch, NSArray, NSError, NSOperation;
+@class CKSchedulerActivity, CKSyncEngine, NSError, NSOperation;
 
 @protocol CKSyncEngineDataSourceInternal <CKSyncEngineDataSource>
 
 @optional
-- (void)syncEngine:(CKSyncEngine *)arg1 didCompleteModifyRecordsBatch:(CKSyncEngineBatch *)arg2 withSavedRecords:(NSArray *)arg3 deletedRecordIDs:(NSArray *)arg4 error:(NSError *)arg5;
-- (CKSyncEngineBatch *)syncEngine:(CKSyncEngine *)arg1 nextBatchOfRecordsToModifyWithRecordIDsPendingSave:(NSArray *)arg2 recordIDsPendingDelete:(NSArray *)arg3;
 - (void)syncEngine:(CKSyncEngine *)arg1 didHandleSchedulerActivity:(CKSchedulerActivity *)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 willEnqueueOperation:(NSOperation *)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 didUpdateAccountStatus:(long long)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 didSaveSubscriptionWithError:(NSError *)arg2;
 - (void)syncEngineDidScheduleInitialWork:(CKSyncEngine *)arg1;
 - (void)syncEngineDidFetchDatabaseChanges:(CKSyncEngine *)arg1;
-- (void)syncEngine:(CKSyncEngine *)arg1 didFetchChangesForRecordZoneID:(CKRecordZoneID *)arg2 error:(NSError *)arg3;
 @end
 

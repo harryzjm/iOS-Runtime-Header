@@ -15,11 +15,13 @@
     MISSING_TYPE *shape;
     MISSING_TYPE *fill;
     MISSING_TYPE *environment;
+    MISSING_TYPE *colorSpace;
     MISSING_TYPE *_textProperties;
     MISSING_TYPE *_resolvedForeground;
     MISSING_TYPE *_foregroundIsMultiLevel;
     MISSING_TYPE *_keyColorPredicate;
     MISSING_TYPE *_sharedTransform;
+    MISSING_TYPE *_fillStyle;
 }
 
 @end

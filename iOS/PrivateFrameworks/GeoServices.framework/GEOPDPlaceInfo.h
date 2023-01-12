@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOLatLng, GEOPDBasemapRegionMetadata, GEOTimezone, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDPlaceInfo : PBCodable <NSCopying>
+@interface GEOPDPlaceInfo : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
     GEOPDBasemapRegionMetadata *_basemapRegionMetadata;
     GEOLatLng *_center;
     GEOLatLng *_enhancedCenter;
+    GEOLatLng *_labelPoint;
     GEOTimezone *_timezone;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -33,6 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_basemapRegionMetadata:1;
         unsigned int read_center:1;
         unsigned int read_enhancedCenter:1;
+        unsigned int read_labelPoint:1;
         unsigned int read_timezone:1;
         unsigned int wrote_anyField:1;
     } _flags;

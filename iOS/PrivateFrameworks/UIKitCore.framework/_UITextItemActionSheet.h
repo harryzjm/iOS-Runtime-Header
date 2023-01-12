@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIRotatingAlertControllerDelegate-Protocol.h>
-
 @class NSArray, NSString, UIView, UIWindow, _UIRotatingAlertController;
 
 __attribute__((visibility("hidden")))
-@interface _UITextItemActionSheet : NSObject <_UIRotatingAlertControllerDelegate>
+@interface _UITextItemActionSheet : NSObject
 {
     NSString *_title;
     UIView *_view;

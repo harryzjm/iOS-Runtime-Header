@@ -31,7 +31,6 @@
 + (id)_displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(_Bool)arg4;
 + (id)_displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
 + (id)minimizedLanguagesFromLanguages:(id)arg1;
-+ (id)_generateMinimizedLanguages;
 + (id)languageFromLanguage:(id)arg1 byReplacingRegion:(id)arg2;
 + (id)scriptCodeFromLanguage:(id)arg1;
 + (id)baseLanguageFromLanguage:(id)arg1;
@@ -46,12 +45,13 @@
 + (id)languagesForRegion:(id)arg1 subdivision:(id)arg2 withThreshold:(long long)arg3 filter:(long long)arg4;
 + (id)exemplarForLanguage:(id)arg1;
 + (id)supportedLanguages;
-+ (id)deviceLanguages;
++ (id)_deviceLanguages;
 + (id)baseSystemLanguages;
 + (id)_globalPreferredLanguages;
 + (id)deviceLanguage;
 - (id)displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(_Bool)arg4;
 - (id)displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
+- (long long)positionOfDayPeriodInFormattedTime;
 - (id)countryCodeTopLevelDomainsUsingPunycode:(_Bool)arg1;
 - (id)localizedStringForNumberingSystem:(id)arg1 short:(_Bool)arg2;
 @property(readonly, copy) NSArray *availableNumberingSystems;

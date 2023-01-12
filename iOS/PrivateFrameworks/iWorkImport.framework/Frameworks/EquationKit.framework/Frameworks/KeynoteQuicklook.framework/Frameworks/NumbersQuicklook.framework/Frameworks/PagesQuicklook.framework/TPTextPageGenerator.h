@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TPPageGenerator-Protocol.h>
-
 @class NSString;
 
-@interface TPTextPageGenerator : NSObject <TPPageGenerator>
+@interface TPTextPageGenerator : NSObject
 {
 }
 

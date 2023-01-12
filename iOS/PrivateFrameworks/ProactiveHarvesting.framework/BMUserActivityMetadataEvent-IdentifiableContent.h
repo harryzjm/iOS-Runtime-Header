@@ -6,11 +6,9 @@
 
 #import <BiomeStreams/BMUserActivityMetadataEvent.h>
 
-#import <ProactiveHarvesting/BMIdentifiableContentEvent-Protocol.h>
-
 @class NSString;
 
-@interface BMUserActivityMetadataEvent (IdentifiableContent) <BMIdentifiableContentEvent>
+@interface BMUserActivityMetadataEvent (IdentifiableContent)
 - (void)forwardInvocation:(id)arg1;
 - (id)hv_bundleId;
 - (id)hv_uniqueId;

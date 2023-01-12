@@ -11,7 +11,6 @@
 @interface _TtC7NewsUI218HistoryFeedTracker : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tracker;
-    MISSING_TYPE *contentPrefetchManager;
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *channelDataFactory;
 }

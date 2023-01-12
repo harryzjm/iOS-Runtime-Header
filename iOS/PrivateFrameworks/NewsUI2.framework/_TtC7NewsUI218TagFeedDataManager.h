@@ -14,11 +14,15 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
     MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *feedService;
+    MISSING_TYPE *feedPluginManager;
     MISSING_TYPE *headlineService;
-    MISSING_TYPE *pluginManager;
-    MISSING_TYPE *pluginFactory;
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *appConfigManager;
+    MISSING_TYPE *tagService;
+    MISSING_TYPE *subscriptionService;
+    MISSING_TYPE *feedDescriptor;
+    MISSING_TYPE *backgroundPluginFactory;
+    MISSING_TYPE *backgroundPlugin;
 }
 
 - (void).cxx_destruct;

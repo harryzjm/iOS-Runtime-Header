@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISEGestureFeatureDelegate-Protocol.h>
-#import <UIKitCore/_UISETouchedEdgesProvider-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISEPerTypeEdgesFailGestureFeature <_UISEGestureFeatureDelegate, _UISETouchedEdgesProvider>
+@interface _UISEPerTypeEdgesFailGestureFeature
 {
     NSDictionary *_edgeTypeSubfeatures;
 }

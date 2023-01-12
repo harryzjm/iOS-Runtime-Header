@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTBatchTranslationRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTBatchTranslationRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -26,6 +23,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *url;
 @property(readonly, nonatomic) NSString *session_id;
 @property(readonly, nonatomic) NSString *app_id;
+- (void)paragraphs_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)paragraphs_count;
+- (id)paragraphs_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *paragraphs;
 @property(readonly, nonatomic) NSString *target_language;
 @property(readonly, nonatomic) NSString *source_language;

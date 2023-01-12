@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Proximity/PRProximityDeviceProtocol-Protocol.h>
-
 @class NSString, NSUUID;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
-@interface PRProximitySingleThresholdDevice : NSObject <PRProximityDeviceProtocol>
+@interface PRProximitySingleThresholdDevice : NSObject
 {
     NSObject<OS_os_log> *_logger;
     NSString *_model;

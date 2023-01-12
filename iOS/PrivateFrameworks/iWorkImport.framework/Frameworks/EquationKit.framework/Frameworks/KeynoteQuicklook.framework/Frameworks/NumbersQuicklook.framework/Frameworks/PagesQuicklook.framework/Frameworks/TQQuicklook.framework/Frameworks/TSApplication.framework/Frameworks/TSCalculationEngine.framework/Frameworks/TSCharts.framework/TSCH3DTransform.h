@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
-@interface TSCH3DTransform : NSObject <NSCopying>
+@interface TSCH3DTransform : NSObject
 {
     tvec3_17f03ce0 _translation;
     tvec3_17f03ce0 _scaleFactor;

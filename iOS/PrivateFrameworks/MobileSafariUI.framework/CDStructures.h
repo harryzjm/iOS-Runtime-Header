@@ -10,25 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CATransform3D {
-    double m11;
-    double m12;
-    double m13;
-    double m14;
-    double m21;
-    double m22;
-    double m23;
-    double m24;
-    double m31;
-    double m32;
-    double m33;
-    double m34;
-    double m41;
-    double m42;
-    double m43;
-    double m44;
-};
-
 struct CGPoint {
     double x;
     double y;
@@ -44,9 +25,16 @@ struct CGSize {
     double height;
 };
 
+struct NSDirectionalEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+};
+
 struct SFScrollIndicatorInsets {
-    struct UIEdgeInsets horizontal;
-    struct UIEdgeInsets vertical;
+    struct UIEdgeInsets _field1;
+    struct UIEdgeInsets _field2;
 };
 
 struct UIEdgeInsets {
@@ -80,37 +68,9 @@ typedef struct {
 } CDStruct_4e0a34f2;
 
 typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    long long _field4;
-} CDStruct_7c65fc50;
-
-typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
-
-typedef struct {
     int nodes;
     int bytes;
 } CDStruct_81cc75c8;
-
-typedef struct {
-    CDStruct_7c65fc50 _field1;
-    CDStruct_7c65fc50 _field2;
-    CDStruct_7c65fc50 _field3;
-    _Bool _field4;
-    _Bool _field5;
-    _Bool _field6;
-} CDStruct_026d43e4;
-
-typedef struct {
-    CDStruct_c3b9c2ee _field1;
-    CDStruct_c3b9c2ee _field2;
-    double _field3;
-    double _field4;
-} CDStruct_21a1f582;
 
 typedef struct {
     struct CGPoint offset;
@@ -119,14 +79,14 @@ typedef struct {
 } CDStruct_5ca50560;
 
 typedef struct {
-    struct CGRect frame;
-    struct UIEdgeInsets unobscuredSafeAreaInsets;
-    struct UIEdgeInsets obscuredInsets;
-    struct SFScrollIndicatorInsets scrollIndicatorInsets;
-    struct CGSize minimumLayoutSize;
-    struct CGSize maximumUnobscuredLayoutSize;
-    struct UIEdgeInsets scrollViewContentInsetAdjustments;
-    _Bool inElementFullscreen;
-    _Bool shouldApplyMinimumEffectiveDeviceWidth;
-} CDStruct_bd09fee7;
+    struct CGRect _field1;
+    struct UIEdgeInsets _field2;
+    struct UIEdgeInsets _field3;
+    struct SFScrollIndicatorInsets _field4;
+    struct CGSize _field5;
+    struct CGSize _field6;
+    struct UIEdgeInsets _field7;
+    _Bool _field8;
+    double _field9;
+} CDStruct_998372b6;
 

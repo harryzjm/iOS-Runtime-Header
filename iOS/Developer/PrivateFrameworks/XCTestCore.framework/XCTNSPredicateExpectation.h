@@ -22,6 +22,7 @@
     double _pollingInterval;
 }
 
++ (double)initialPollingInterval;
 - (void).cxx_destruct;
 @property double pollingInterval; // @synthesize pollingInterval=_pollingInterval;
 @property _Bool shouldEvaluate; // @synthesize shouldEvaluate=_shouldEvaluate;

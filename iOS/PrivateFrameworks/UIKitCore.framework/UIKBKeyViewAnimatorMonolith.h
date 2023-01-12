@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIFloatingContentViewDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKBKeyViewAnimatorMonolith <_UIFloatingContentViewDelegate>
+@interface UIKBKeyViewAnimatorMonolith
 {
     NSMutableDictionary *_selectedKeyTimestamps;
     NSMutableDictionary *_transitionCompletions;
 }
 
+- (void).cxx_destruct;
 - (void)reset;
 - (void)transitionOutKeyView:(id)arg1 fromState:(int)arg2 toState:(int)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)transitionKeyView:(id)arg1 fromState:(int)arg2 toState:(int)arg3 completion:(CDUnknownBlockType)arg4;
@@ -29,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)controlStateForKeyState:(int)arg1;
 - (Class)keyViewClassForKey:(id)arg1 renderTraits:(id)arg2 screenTraits:(id)arg3;
 - (_Bool)shouldPurgeKeyViews;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

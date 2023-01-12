@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned int _internalBundleFactor;
     unsigned int _bundleHeaderBytes;
     NSArray *_supportedBitrates;
+    NSArray *_supportedBandwidths;
     unsigned int _bitrate;
     _Bool _forcingBitrate;
     _Bool _useSBR;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool payloadOctetAligned; // @synthesize payloadOctetAligned=_payloadOctetAligned;
 @property(readonly, nonatomic) unsigned int internalBundleFactor; // @synthesize internalBundleFactor=_internalBundleFactor;
 @property(readonly, nonatomic) int format; // @synthesize format=_format;
+@property(readonly, nonatomic) NSArray *supportedBandwidths; // @synthesize supportedBandwidths=_supportedBandwidths;
 @property(readonly, nonatomic) unsigned int bitrate; // @synthesize bitrate=_bitrate;
 @property(readonly, nonatomic) NSArray *supportedBitrates; // @synthesize supportedBitrates=_supportedBitrates;
 @property(readonly, nonatomic) unsigned int bundleHeaderBytes; // @synthesize bundleHeaderBytes=_bundleHeaderBytes;

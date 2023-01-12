@@ -7,6 +7,6 @@
 #import <AVConference/NSObject-Protocol.h>
 
 @protocol VCRedundancyControllerProtocol <NSObject>
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_7df19fcb)arg1;
 @end
 

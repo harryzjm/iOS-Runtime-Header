@@ -15,7 +15,6 @@
 - (void)registerSplitSessionApprovalEnabled:(_Bool)arg1;
 - (void)disconnectTVDevice:(TUNearbyDeviceHandle *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)inviteTVDevice:(TUNearbyDeviceHandle *)arg1 toConversation:(NSUUID *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)participantHandleForTVDevice:(TUNearbyDeviceHandle *)arg1 completion:(void (^)(TUHandle *, NSError *))arg2;
 - (void)activeSplitSessionTVDeviceWithCompletion:(void (^)(TUNearbyDeviceHandle *, NSError *))arg1;
 - (void)nearbyTVDevicesWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 @end

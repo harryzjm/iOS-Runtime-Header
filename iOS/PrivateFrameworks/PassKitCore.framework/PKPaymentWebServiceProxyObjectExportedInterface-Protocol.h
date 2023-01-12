@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSMapTable, NSString, NSURL, PKApplePayTrustKeyRequest, PKPass, PKPaymentPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
+@class NSArray, NSData, NSDictionary, NSMapTable, NSString, NSURL, PKAccount, PKApplePayTrustKeyRequest, PKPass, PKPaymentPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext, PKPushProvisioningTarget, PKSecureElementPass;
 
 @protocol PKPaymentWebServiceProxyObjectExportedInterface <NSObject>
 - (void)invalidateRemoteProxyTargetDevice;
@@ -14,6 +14,9 @@
 - (void)archiveContext:(PKPaymentWebServiceContext *)arg1;
 - (void)passOwnershipTokenWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)storePassOwnershipToken:(NSString *)arg1 withIdentifier:(NSString *)arg2;
+- (void)prepareProvisioningTarget:(PKPushProvisioningTarget *)arg1 checkFamilyCircle:(_Bool)arg2 completion:(void (^)(PKEncryptedPushProvisioningTarget *, _Bool, NSError *))arg3;
+- (void)statusForShareableCredentials:(NSArray *)arg1 completion:(void (^)(unsigned long long, NSArray *, NSError *))arg2;
+- (void)longTermPrivacyKeyForCredentialGroupIdentifier:(NSString *)arg1 reuseExisting:(_Bool)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (void)addISO18013Blobs:(NSMapTable *)arg1 cardType:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (_Bool)areUnifiedAccessPassesSupported;
 - (void)generateISOEncryptionCertificateForSubCredentialId:(NSString *)arg1 completion:(void (^)(NSArray *, NSData *, NSError *))arg2;
@@ -31,6 +34,7 @@
 - (void)createApplePayTrustKeyWithRequest:(PKApplePayTrustKeyRequest *)arg1 completion:(void (^)(PKApplePayTrustKey *, NSError *))arg2;
 - (void)applePayTrustKeyForIdentifier:(NSString *)arg1 completion:(void (^)(PKApplePayTrustKey *))arg2;
 - (void)deviceMetadataWithFields:(unsigned long long)arg1 completion:(void (^)(PKPaymentDeviceMetadata *))arg2;
+- (void)triggerCloudStoreZoneCreationForAccount:(PKAccount *)arg1 withCompletion:(void (^)(_Bool))arg2;
 - (void)featureApplicationsForProvisioningWithCompletion:(void (^)(NSArray *))arg1;
 - (void)cachedFeatureApplicationsForProvisioningWithCompletion:(void (^)(NSArray *))arg1;
 - (void)updatedAccountsForProvisioningWithCompletion:(void (^)(NSArray *, NSArray *))arg1;
@@ -65,14 +69,15 @@
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningUserInterfaceDidDisappear;
 - (void)noteProvisioningUserInterfaceDidAppear;
-- (void)registrationSupportedInCurrentRegionWithCompletion:(void (^)(int))arg1;
-- (void)paymentSupportedInCurrentRegion:(void (^)(int))arg1;
+- (void)registrationSupportedInCurrentRegionWithCompletion:(void (^)(unsigned long long))arg1;
+- (void)paymentSupportedInCurrentRegion:(void (^)(unsigned long long))arg1;
 - (void)didRegisterWithRegionMap:(NSDictionary *)arg1 primaryRegionTopic:(NSString *)arg2;
 - (void)deleteKeyMaterialForSubCredentialId:(NSString *)arg1;
 - (void)deleteApplicationWithAID:(NSString *)arg1;
 - (void)getProvisioningDataIncludingDeviceMetadata:(_Bool)arg1 withCompletion:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg2;
 - (void)signData:(NSData *)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(void (^)(NSData *, PKSecureElementSignatureInfo *, NSError *))arg3;
 - (void)getTrustedDeviceEnrollmentInfoWithCompletion:(void (^)(PKTrustedDeviceEnrollmentInfo *))arg1;
+- (void)getEncryptedServiceProviderDataForSecureElementPass:(PKSecureElementPass *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getRegistrationDataWithCompletion:(void (^)(PKPaymentDeviceRegistrationData *, NSError *))arg1;
 - (void)getConfigurationDataWithCompletion:(void (^)(PKPaymentDeviceConfigurationData *, NSError *))arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(NSString *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;

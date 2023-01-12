@@ -7,8 +7,10 @@
 @class NSData, NSDate, NSError, NSString;
 
 @protocol ICContentKeyStoreProtocol
-- (void)enumerateKeysUsingBlock:(void (^)(NSString *, NSData *, NSDate *, _Bool *))arg1;
+- (void)enumerateKeysUsingBlock:(void (^)(NSString *, NSData *, NSDate *, unsigned long long, _Bool *))arg1;
+- (NSError *)removeAllKeys;
 - (NSError *)removeKeyForIdentifier:(NSString *)arg1;
+- (NSError *)incrementFailureCountForKeyWithIdentifier:(NSString *)arg1;
 - (NSError *)saveKey:(NSData *)arg1 forIdentifier:(NSString *)arg2 withRenewalDate:(NSDate *)arg3;
 - (NSData *)loadKeyForIdentifier:(NSString *)arg1 renewalDate:(id *)arg2 error:(id *)arg3;
 - (_Bool)containsKeyForIdentifier:(NSString *)arg1 error:(id *)arg2;

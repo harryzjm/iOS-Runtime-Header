@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *decoder;
     MISSING_TYPE *appConfigManager;
-    MISSING_TYPE *contentContext;
+    MISSING_TYPE *resourceService;
 }
 
 @end

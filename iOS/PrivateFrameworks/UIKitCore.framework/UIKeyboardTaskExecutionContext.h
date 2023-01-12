@@ -13,14 +13,16 @@ __attribute__((visibility("hidden")))
 {
     UIKeyboardTaskExecutionContext *_parentExecutionContext;
     CDUnknownBlockType _continuation;
-    id _info;
     CDUnknownBlockType _pendingCompletionBlock;
+    id _info;
     UIKeyboardTaskQueue *_executionQueue;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIKeyboardTaskQueue *executionQueue; // @synthesize executionQueue=_executionQueue;
-@property(copy, nonatomic) CDUnknownBlockType pendingCompletionBlock; // @synthesize pendingCompletionBlock=_pendingCompletionBlock;
 @property(retain, nonatomic) id info; // @synthesize info=_info;
+- (CDUnknownBlockType)takeOwnershipOfPendingCompletionBlock;
+- (void)setPendingCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)transferExecutionToMainThreadWithTask:(CDUnknownBlockType)arg1;
 - (void)returnExecutionToParentWithInfo:(id)arg1;
 - (void)returnExecutionToParent;
@@ -28,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithParentContext:(id)arg1 continuation:(CDUnknownBlockType)arg2;
 - (id)initWithExecutionQueue:(id)arg1;
 - (id)init;
-- (void)dealloc;
 
 @end
 

@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *feedPaywallConfigFactory;
     MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *bundlePurchasePrewarmer;
-    MISSING_TYPE *heightChangeRelayoutThreshold;
-    MISSING_TYPE *viewportFromLastRelayout;
     MISSING_TYPE *commandContainer;
     MISSING_TYPE *newsActivityManager;
     MISSING_TYPE *isBeingUsedAsPlugin;

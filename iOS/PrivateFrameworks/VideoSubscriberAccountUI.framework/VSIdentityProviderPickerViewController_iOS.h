@@ -6,18 +6,13 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <VideoSubscriberAccountUI/UISearchControllerDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/VSIdentityProviderPickerViewController-Protocol.h>
-#import <VideoSubscriberAccountUI/VSTableHeaderFooterViewDelegate-Protocol.h>
-
 @class NSArray, NSDictionary, NSString, UISearchController, VSFontCenter, VSIdentityProvider, VSIdentityProviderFilter, VSIdentityProviderTableViewDataSource, VSOnboardingInfoCenter, VSSearchBarDelegate, VSStorefrontFilter;
 @protocol VSIdentityProviderPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSIdentityProviderPickerViewController_iOS : UITableViewController <UISearchControllerDelegate, VSTableHeaderFooterViewDelegate, VSIdentityProviderPickerViewController>
+@interface VSIdentityProviderPickerViewController_iOS : UITableViewController
 {
     _Bool _cancellationAllowed;
-    _Bool _dismissingSearchDueToSelection;
     _Bool _sectionContentInsetInitialized;
     id <VSIdentityProviderPickerViewControllerDelegate> _delegate;
     NSArray *_identityProviders;
@@ -49,7 +44,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *providersByStorefrontCountryCode; // @synthesize providersByStorefrontCountryCode=_providersByStorefrontCountryCode;
 @property(nonatomic) _Bool sectionContentInsetInitialized; // @synthesize sectionContentInsetInitialized=_sectionContentInsetInitialized;
 @property(retain, nonatomic) VSIdentityProvider *selectedIdentityProvider; // @synthesize selectedIdentityProvider=_selectedIdentityProvider;
-@property(nonatomic, getter=isDismissingSearchDueToSelection) _Bool dismissingSearchDueToSelection; // @synthesize dismissingSearchDueToSelection=_dismissingSearchDueToSelection;
 @property(retain, nonatomic) VSFontCenter *fontCenter; // @synthesize fontCenter=_fontCenter;
 @property(retain, nonatomic) VSIdentityProviderTableViewDataSource *filteredDataSource; // @synthesize filteredDataSource=_filteredDataSource;
 @property(retain, nonatomic) VSIdentityProviderTableViewDataSource *unfilteredDataSource; // @synthesize unfilteredDataSource=_unfilteredDataSource;
@@ -65,7 +59,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *identityProviders; // @synthesize identityProviders=_identityProviders;
 @property(nonatomic, getter=isCancellationAllowed) _Bool cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
 @property(nonatomic) __weak id <VSIdentityProviderPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (_Bool)_isRegularWidth;
+- (_Bool)_shouldInsetListView;
 - (void)_updateSectionContentInsetWithAnimation:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)willMoveToParentViewController:(id)arg1;
@@ -73,13 +67,14 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)didInvalidateIntrinsicContentSizeForTableHeaderFooterView:(id)arg1;
 - (void)deselectSelectedProviderAnimated:(_Bool)arg1;
+- (void)tableViewDidFinishReload:(id)arg1;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (void)didDismissSearchController:(id)arg1;
 - (void)_performSelectionForIdentityProvider:(id)arg1;
 - (void)_showAboutPrivacy:(id)arg1;
 - (void)_cancelButtonPressed:(id)arg1;
+- (void)_dismissSearchController;
 - (void)_didPickStorefront:(id)arg1;
 - (void)_didPickAdditionalIdentityProviders;
 - (void)_didPickIdentityProvider:(id)arg1;
@@ -87,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (id)titleForTableFooterView;
 - (id)_titleForTableHeaderView;
 - (void)_updateTableHeaderTitle;
+- (void)setRequestedStorefrontCountryCode:(id)arg1 defaultToDeveloperProviders:(_Bool)arg2;
 - (id)initWithStyle:(long long)arg1;
 
 // Remaining properties

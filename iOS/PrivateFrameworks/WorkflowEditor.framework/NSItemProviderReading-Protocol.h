@@ -9,7 +9,7 @@
 @class NSArray, NSData, NSString;
 
 @protocol NSItemProviderReading <NSObject>
-+ (id)objectWithItemProviderData:(NSData *)arg1 typeIdentifier:(NSString *)arg2 error:(id *)arg3;
 + (NSArray *)readableTypeIdentifiersForItemProvider;
++ (id)objectWithItemProviderData:(NSData *)arg1 typeIdentifier:(NSString *)arg2 error:(id *)arg3;
 @end
 

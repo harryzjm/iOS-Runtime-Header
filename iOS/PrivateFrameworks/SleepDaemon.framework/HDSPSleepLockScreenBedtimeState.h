@@ -9,10 +9,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)bedtimeExpiredEventDue;
-- (_Bool)schedulesLockScreenStateChange;
+- (void)stateDidExpireWithContext:(id)arg1;
+- (_Bool)schedulesExpiration;
 - (long long)sleepLockScreenState;
 - (id)stateName;
+- (double)expirationDuration;
 
 @end
 

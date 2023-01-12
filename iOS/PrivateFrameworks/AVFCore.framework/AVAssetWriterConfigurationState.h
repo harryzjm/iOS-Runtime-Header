@@ -33,9 +33,11 @@ __attribute__((visibility("hidden")))
     NSString *_outputFileTypeProfile;
     long long _initialMovieFragmentSequenceNumber;
     _Bool _producesCombinableFragments;
+    _Bool _usesVirtualCaptureCard;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool usesVirtualCaptureCard; // @synthesize usesVirtualCaptureCard=_usesVirtualCaptureCard;
 @property(nonatomic) _Bool producesCombinableFragments; // @synthesize producesCombinableFragments=_producesCombinableFragments;
 @property(nonatomic) long long initialMovieFragmentSequenceNumber; // @synthesize initialMovieFragmentSequenceNumber=_initialMovieFragmentSequenceNumber;
 @property(copy, nonatomic) NSString *outputFileTypeProfile; // @synthesize outputFileTypeProfile=_outputFileTypeProfile;

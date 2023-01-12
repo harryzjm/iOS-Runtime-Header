@@ -16,10 +16,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *alarmConfigurationObserver;
     MISSING_TYPE *modelEditObserver;
     MISSING_TYPE *significantTimeChangeObserver;
-    MISSING_TYPE *eventRecordChangeObserver;
+    MISSING_TYPE *nextOccurrenceChangeObserver;
     MISSING_TYPE *scheduleChangeObserver;
     MISSING_TYPE *sleepDurationGoalObserver;
     MISSING_TYPE *validScheduleRangeObserver;
+    MISSING_TYPE *willResignActiveObserver;
     MISSING_TYPE *sleepScheduleProvider;
     MISSING_TYPE *modelHasChanged;
     MISSING_TYPE *tonePickerStyleProvider;
@@ -39,9 +40,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
-- (void)dealloc;
 - (_Bool)_canShowWhileLocked;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)handleAppWillResignActive;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;

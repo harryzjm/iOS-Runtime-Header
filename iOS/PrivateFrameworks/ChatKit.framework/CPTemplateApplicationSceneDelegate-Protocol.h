@@ -11,6 +11,7 @@
 @protocol CPTemplateApplicationSceneDelegate <UISceneDelegate>
 
 @optional
+- (void)contentStyleDidChange:(long long)arg1;
 - (void)templateApplicationScene:(CPTemplateApplicationScene *)arg1 didSelectManeuver:(CPManeuver *)arg2;
 - (void)templateApplicationScene:(CPTemplateApplicationScene *)arg1 didSelectNavigationAlert:(CPNavigationAlert *)arg2;
 - (void)templateApplicationScene:(CPTemplateApplicationScene *)arg1 didDisconnectInterfaceController:(CPInterfaceController *)arg2;

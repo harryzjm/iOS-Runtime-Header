@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPShareIdentifier, NSData, NSString;
 
-@interface CKDPShareVettingInitiateRequest : PBRequest <NSCopying>
+@interface CKDPShareVettingInitiateRequest : PBRequest
 {
     NSString *_baseToken;
     NSData *_encryptedKey;

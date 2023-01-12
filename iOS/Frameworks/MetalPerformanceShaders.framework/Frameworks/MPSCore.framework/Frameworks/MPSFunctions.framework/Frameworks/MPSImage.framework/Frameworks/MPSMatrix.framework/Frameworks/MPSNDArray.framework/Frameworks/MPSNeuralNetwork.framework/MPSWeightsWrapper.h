@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MPSNeuralNetwork/MPSCNNConvolutionDataSource-Protocol.h>
-
 @class MISSING_TYPE, MPSCNNConvolutionDescriptor, NSString;
 @protocol MPSCNNBatchNormalizationDataSource, MPSCNNConvolutionDataSource;
 
-@interface MPSWeightsWrapper : NSObject <MPSCNNConvolutionDataSource>
+@interface MPSWeightsWrapper : NSObject
 {
     id <MPSCNNBatchNormalizationDataSource> _dataSource;
     id <MPSCNNConvolutionDataSource> _source;

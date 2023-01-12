@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCRedundancyControllerDelegate-Protocol.h>
-
-@class NSNumber, TimingCollection, VCRedundancyControllerVideo;
+@class NSNumber, VCRedundancyControllerVideo;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStreamReceiveGroup <VCRedundancyControllerDelegate>
+@interface VCVideoStreamReceiveGroup
 {
     _Atomic unsigned char _videoPriority;
     unsigned char _lastVideoPriority;
@@ -17,8 +15,8 @@ __attribute__((visibility("hidden")))
     _Bool _remoteVideoPaused;
     _Bool _isRemoteMediaStalled;
     _Bool _isVideoDegraded;
+    double _isVideoDegradedStartTime;
     unsigned int _visibilityIndex;
-    TimingCollection *_perfTimers;
     _Bool _haveReportedPerfTimers;
     _Bool _isProcessingVideoOptIn;
     NSNumber *_previousOptedInStreamID;
@@ -28,7 +26,9 @@ __attribute__((visibility("hidden")))
     double _lastVideoExpectationSwitch;
     _Bool _isVideoExpected;
     _Bool _shouldEnableMLEnhance;
+    _Bool _didReportExtendedPoorConnection;
     _Bool _shouldConvertSourceRTPTimestamp;
+    unsigned long long _syncUpdateCalled;
     _Bool _remoteVideoEnabled;
 }
 
@@ -39,9 +39,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned char videoQuality; // @synthesize videoQuality=_videoQuality;
 @property(nonatomic, getter=isRemoteVideoPaused) _Bool remoteVideoPaused; // @synthesize remoteVideoPaused=_remoteVideoPaused;
 - (void)mediaStream:(id)arg1 didReceiveNewMediaKeyIndex:(id)arg2;
-- (void)collectAndLogChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectAndLogChannelMetrics:(CDStruct_b671a7c4 *)arg1;
 - (void)reportParticipantsPerfTimingsOnce;
-- (void)checkForExtendedPoorConnection:(double)arg1;
+- (void)checkForExtendedPoorConnection;
 - (void)vcMediaStream:(id)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2 firType:(int)arg3;
 - (void)vcMediaStream:(id)arg1 remoteMediaStalled:(_Bool)arg2 duration:(double)arg3;
 - (void)updateVideoExpected;

@@ -6,11 +6,12 @@
 
 #import <Foundation/NSAttributedString.h>
 
-@class NSParagraphStyle;
-
 @interface NSAttributedString (VideosExtras)
 + (id)attributedStringWithTextElement:(id)arg1 baseFont:(id)arg2;
-- (struct CGRect)boundingRectWithWidth:(double)arg1 lines:(unsigned long long)arg2;
-@property(readonly, nonatomic) NSParagraphStyle *vui_currentParagraphStyle;
++ (id)empty;
+- (long long)strongBaseWritingDirectionOfParagraphAtOrBeforeIndex:(long long)arg1;
+- (id)paragraphStyleAtIndex:(long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+@property(nonatomic, readonly) struct _NSRange fullRange;
+- (long long)baseWritingDirectionForCharacterAtIndex:(long long)arg1 unknownStyle:(_Bool *)arg2;
 @end
 

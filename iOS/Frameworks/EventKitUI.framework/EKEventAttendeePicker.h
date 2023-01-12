@@ -6,17 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <EventKitUI/CNAutocompleteResultsTableViewControllerDelegate-Protocol.h>
-#import <EventKitUI/CNAutocompleteSearchConsumer-Protocol.h>
-#import <EventKitUI/CNComposeRecipientTextViewDelegate-Protocol.h>
-#import <EventKitUI/CNContactPickerDelegate-Protocol.h>
-#import <EventKitUI/CNContactViewControllerPrivateDelegate-Protocol.h>
-
 @class CNAutocompleteFetchContext, CNAutocompleteResultsTableViewController, CNAutocompleteSearchManager, CNComposeRecipient, CNComposeRecipientTextView, EKEvent, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, UIKeyboard, UIScrollView, UITableView;
 @protocol EKEventAttendeePickerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeePicker : UIViewController <CNComposeRecipientTextViewDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNContactPickerDelegate, CNContactViewControllerPrivateDelegate, CNAutocompleteSearchConsumer>
+@interface EKEventAttendeePicker : UIViewController
 {
     NSArray *_recipients;
     CNComposeRecipientTextView *_composeRecipientView;
@@ -60,6 +54,12 @@ __attribute__((visibility("hidden")))
 - (void)_updateFetchContextChosenAddresses;
 - (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)autocompleteResultsController:(id)arg1 didRequestInfoAboutRecipient:(id)arg2;
+- (_Bool)chooseSelectedSearchResultForComposeRecipientView:(id)arg1 context:(unsigned long long)arg2;
+- (void)selectPreviousSearchResultForComposeRecipientView:(id)arg1;
+- (_Bool)collapseSelectedSearchResultForComposeRecipientView:(id)arg1;
+- (_Bool)expandSelectedSearchResultForComposeRecipientView:(id)arg1;
+- (void)selectNextSearchResultForComposeRecipientView:(id)arg1;
+- (_Bool)composeRecipientViewShowingSearchResults:(id)arg1;
 - (unsigned long long)presentationOptionsForRecipient:(id)arg1;
 - (_Bool)recipientViewShouldIgnoreFirstResponderChanges:(id)arg1;
 - (id)composeRecipientView:(id)arg1 composeRecipientForAddress:(id)arg2;

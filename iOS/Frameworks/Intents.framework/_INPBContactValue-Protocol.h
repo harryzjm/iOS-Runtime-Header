@@ -14,6 +14,8 @@
 @property(retain, nonatomic) _INPBValueMetadata *valueMetadata;
 @property(nonatomic) _Bool hasSuggestionType;
 @property(nonatomic) int suggestionType;
+@property(nonatomic) _Bool hasSearchProvider;
+@property(nonatomic) int searchProvider;
 @property(readonly, nonatomic) _Bool hasRelationship;
 @property(copy, nonatomic) NSString *relationship;
 @property(readonly, nonatomic) _Bool hasPhoneticNameSuffix;
@@ -58,6 +60,8 @@
 @property(copy, nonatomic) NSArray *aliases;
 - (int)StringAsSuggestionType:(NSString *)arg1;
 - (NSString *)suggestionTypeAsString:(int)arg1;
+- (int)StringAsSearchProvider:(NSString *)arg1;
+- (NSString *)searchProviderAsString:(int)arg1;
 - (_INPBContactHandle *)aliasesAtIndex:(unsigned long long)arg1;
 - (void)addAliases:(_INPBContactHandle *)arg1;
 - (void)clearAliases;

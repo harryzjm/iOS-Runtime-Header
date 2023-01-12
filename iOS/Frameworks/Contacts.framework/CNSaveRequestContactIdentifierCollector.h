@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNChangeHistoryEventVisitorPrivate-Protocol.h>
-
 @class CNSaveRequest, NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNSaveRequestContactIdentifierCollector : NSObject <CNChangeHistoryEventVisitorPrivate>
+@interface CNSaveRequestContactIdentifierCollector : NSObject
 {
     CNSaveRequest *_request;
     NSMutableArray *_allIdentifiers;

@@ -6,13 +6,10 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <VideosUI/VUIDownloadEntityTableViewCellDelegate-Protocol.h>
-#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, UIBarButtonItem, VUIDownloadShowDataSource, VUIDownloadShowTableHeaderView, VUIMediaEntitiesDataSource;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadShowTableViewController : UITableViewController <VUILibraryDataSourceDelegate, VUIDownloadEntityTableViewCellDelegate>
+@interface VUIDownloadShowTableViewController : UITableViewController
 {
     VUIDownloadShowDataSource *_downloadDataSource;
     VUIMediaEntitiesDataSource *_seasonsDataSource;

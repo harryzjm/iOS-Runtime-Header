@@ -18,6 +18,7 @@
 - (unsigned long long)__ck_indexOfChatItemWithGUID:(id)arg1;
 - (id)__ck_indexesOfPartsOfMessages:(id)arg1;
 - (id)__ck_indexesOfPartsOfNonAttachmentMessages:(id)arg1;
+- (unsigned long long)__ck_indexOfPartOfMessage:(id)arg1 withMessagePartIndex:(unsigned long long)arg2;
 - (id)__ck_indexesOfPartsOfMessage:(id)arg1;
 - (id)__ck_messageForChatItemAtIndex:(unsigned long long)arg1;
 - (id)__ck_IMChatItemsAtIndexes:(id)arg1;

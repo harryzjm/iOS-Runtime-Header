@@ -14,6 +14,9 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *database;
     MISSING_TYPE *collectionsResult;
+    MISSING_TYPE *autoShortcutsDataSource;
+    MISSING_TYPE *_autoShortcutApps;
+    MISSING_TYPE *cancellables;
 }
 
 - (void).cxx_destruct;

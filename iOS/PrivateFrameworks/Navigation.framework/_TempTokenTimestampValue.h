@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/GEOServerFormatTokenTimeStampValue-Protocol.h>
-
 @class NSString, NSTimeZone;
 
 __attribute__((visibility("hidden")))
-@interface _TempTokenTimestampValue : NSObject <GEOServerFormatTokenTimeStampValue>
+@interface _TempTokenTimestampValue : NSObject
 {
     double _timeStamp;
     NSTimeZone *_timeZone;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSSPropertyValueArchiving-Protocol.h>
-
 @class TSCH3DFillSetIdentifier, TSCH3DLightingModel, TSDFill;
 
-@interface TSCHDEPRECATED3DFill : NSObject <TSSPropertyValueArchiving>
+@interface TSCHDEPRECATED3DFill : NSObject
 {
     TSDFill *_fill;
     TSCH3DLightingModel *_lightingModel;

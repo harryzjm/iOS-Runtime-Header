@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCConnectionProtocol-Protocol.h>
-
 @class NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface VCConnectionLegacy <VCConnectionProtocol>
+@interface VCConnectionLegacy
 {
     unsigned int _type;
     int _priority;

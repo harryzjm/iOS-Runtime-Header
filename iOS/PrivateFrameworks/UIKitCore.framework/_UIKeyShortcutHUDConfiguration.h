@@ -6,20 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class UIEvent;
+@class _UIKeyShortcutHUDClientTraits, _UIKeyShortcutHUDModel;
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyShortcutHUDConfiguration : NSObject
 {
     _Bool _searching;
-    long long _shortcutType;
-    UIEvent *_event;
+    _UIKeyShortcutHUDModel *_model;
+    long long _presentedModifierFlag;
+    long long _initialHeldModifierFlags;
+    _UIKeyShortcutHUDClientTraits *_clientTraits;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIEvent *event; // @synthesize event=_event;
-@property(nonatomic) long long shortcutType; // @synthesize shortcutType=_shortcutType;
+@property(retain, nonatomic) _UIKeyShortcutHUDClientTraits *clientTraits; // @synthesize clientTraits=_clientTraits;
+@property(nonatomic) long long initialHeldModifierFlags; // @synthesize initialHeldModifierFlags=_initialHeldModifierFlags;
+@property(nonatomic) long long presentedModifierFlag; // @synthesize presentedModifierFlag=_presentedModifierFlag;
 @property(nonatomic, getter=isSearching) _Bool searching; // @synthesize searching=_searching;
+@property(retain, nonatomic) _UIKeyShortcutHUDModel *model; // @synthesize model=_model;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 
 @end
 

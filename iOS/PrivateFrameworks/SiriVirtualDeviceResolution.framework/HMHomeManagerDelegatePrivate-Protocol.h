@@ -6,11 +6,15 @@
 
 #import <SiriVirtualDeviceResolution/HMHomeManagerDelegate-Protocol.h>
 
-@class HMHomeManager, NSArray, NSString;
+@class HMHomeManager, NSArray, NSSet, NSString;
 
 @protocol HMHomeManagerDelegatePrivate <HMHomeManagerDelegate>
 
 @optional
+- (void)homeManager:(HMHomeManager *)arg1 didUpdateHH2MigrationInProgressState:(_Bool)arg2;
+- (void)homeManager:(HMHomeManager *)arg1 didUpdateDevices:(NSSet *)arg2;
+- (void)homeManager:(HMHomeManager *)arg1 didUpdateHH2MigrationAvailableState:(_Bool)arg2;
+- (void)homeManager:(HMHomeManager *)arg1 didUpdateHH2State:(_Bool)arg2;
 - (void)homeManagerDidRemoveCurrentAccessory:(HMHomeManager *)arg1;
 - (void)homeManagerDidUpdateAssistantIdentifiers:(HMHomeManager *)arg1;
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateMultiUserStatus:(long long)arg2 reason:(NSString *)arg3;

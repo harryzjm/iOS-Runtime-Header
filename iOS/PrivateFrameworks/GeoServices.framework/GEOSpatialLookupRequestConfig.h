@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOServiceRequestDefaultConfig.h"
+
 __attribute__((visibility("hidden")))
-@interface GEOSpatialLookupRequestConfig
+@interface GEOSpatialLookupRequestConfig : GEOServiceRequestDefaultConfig
 {
     double _timeout;
 }
 
 - (CDStruct_d1a7ebee)dataRequestKindForRequest:(id)arg1 traits:(id)arg2;
 - (unsigned long long)urlType;
-- (id)initWithTimeout:(double)arg1;
 
 @end
 

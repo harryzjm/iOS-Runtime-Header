@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
-
 @class CTCellularPlanManager, CTCellularPlanPendingTransfer, NSString, PSListController, PSSpecifier, PSUICellularPlanManagerCache;
 
 __attribute__((visibility("hidden")))
-@interface PSUIPlanPendingTransferMenusGroup : NSObject <PSSpecifierGroup>
+@interface PSUIPlanPendingTransferMenusGroup : NSObject
 {
     PSSpecifier *_parentSpecifier;
     CTCellularPlanPendingTransfer *_planPendingTransfer;
@@ -28,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 @property(retain, nonatomic) CTCellularPlanPendingTransfer *planPendingTransfer; // @synthesize planPendingTransfer=_planPendingTransfer;
 @property(retain, nonatomic) PSSpecifier *parentSpecifier; // @synthesize parentSpecifier=_parentSpecifier;
+- (id)getLogger;
 - (void)addSpecifierForHeaderString:(id)arg1;
 - (id)cancelConsentRequestSpecifier;
 - (id)activatePlanSpecifier;

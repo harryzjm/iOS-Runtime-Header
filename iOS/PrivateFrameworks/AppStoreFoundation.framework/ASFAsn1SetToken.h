@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSData;
+
 __attribute__((visibility("hidden")))
 @interface ASFAsn1SetToken
 {
-    const char *mReadPointer;
+    NSData *mReadData;
 }
 
-- (id)nextToken;
-- (void)reset;
+- (void).cxx_destruct;
 - (id)description;
-- (id)_initWithID:(unsigned long long)arg1 class:(unsigned char)arg2 length:(unsigned long long)arg3 content:(const char *)arg4 opaque:(_Bool)arg5;
 
 @end
 

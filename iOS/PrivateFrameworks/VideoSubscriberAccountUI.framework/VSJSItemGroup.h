@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <VideoSubscriberAccountUI/VSJSItemGroup-Protocol.h>
-
 @protocol VSJSItemGroupBridge;
 
 __attribute__((visibility("hidden")))
-@interface VSJSItemGroup : IKJSObject <VSJSItemGroup>
+@interface VSJSItemGroup : IKJSObject
 {
     long long _selectedItem;
     id <VSJSItemGroupBridge> _bridge;

@@ -10,6 +10,7 @@
 
 @protocol PHUpdateChangeRequest <PHChangeRequest>
 @property(readonly, getter=isMutated) _Bool mutated;
+- (void)performTransactionCompletionHandlingInPhotoLibrary:(PLPhotoLibrary *)arg1;
 - (_Bool)applyMutationsToManagedObject:(NSManagedObject *)arg1 photoLibrary:(PLPhotoLibrary *)arg2 error:(id *)arg3;
 - (_Bool)validateMutationsToManagedObject:(NSManagedObject *)arg1 error:(id *)arg2;
 - (_Bool)allowMutationToManagedObject:(NSManagedObject *)arg1 propertyKey:(NSString *)arg2 error:(id *)arg3;

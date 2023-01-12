@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/NSCopying-Protocol.h>
-
-@interface TSUIndexSetObj : NSObject <NSCopying>
+@interface TSUIndexSetObj : NSObject
 {
     struct TSUIndexSet _indexSet;
 }

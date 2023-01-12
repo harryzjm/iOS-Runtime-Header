@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class MKPlaceReviewAvatarGenerator, NSDate, NSString;
+@class MUPlaceReviewAvatarGenerator, NSDate, NSString;
 @protocol MKMapItemProviderRatingSnippet;
 
 __attribute__((visibility("hidden")))
 @interface MUPlaceReviewViewModel : NSObject
 {
     id <MKMapItemProviderRatingSnippet> _ratingSnippet;
-    MKPlaceReviewAvatarGenerator *_avatarGenerator;
+    MUPlaceReviewAvatarGenerator *_avatarGenerator;
 }
 
 - (void).cxx_destruct;

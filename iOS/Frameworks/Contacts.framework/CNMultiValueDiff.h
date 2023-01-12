@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEmpty;
 - (id)multiValueByApplyToMultiValue:(id)arg1 withIdentifierMap:(id)arg2;
 - (id)initWithUpdates:(id)arg1;
-- (_Bool)applyToABPerson:(void *)arg1 propertyDescription:(id)arg2 logger:(id)arg3 error:(id *)arg4;
+- (_Bool)applyToABPerson:(void *)arg1 propertyDescription:(id)arg2 isUnified:(_Bool)arg3 logger:(id)arg4 error:(id *)arg5;
 
 @end
 

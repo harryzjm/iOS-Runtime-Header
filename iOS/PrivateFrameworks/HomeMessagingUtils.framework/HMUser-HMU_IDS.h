@@ -9,6 +9,7 @@
 @protocol IDSDestinationProtocol;
 
 @interface HMUser (HMU_IDS)
++ (id)hmu_uniqueIdentifiersFromUsers:(id)arg1;
 @property(readonly, nonatomic) id <IDSDestinationProtocol> hmu_idsDestination;
 @end
 

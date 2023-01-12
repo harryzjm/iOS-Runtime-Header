@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDAccessControlServicing-Protocol.h>
-
 @class FPDAccessControlStore;
 
 __attribute__((visibility("hidden")))
-@interface FPDAccessControlServicer : NSObject <FPDAccessControlServicing>
+@interface FPDAccessControlServicer : NSObject
 {
     FPDAccessControlStore *_accessStore;
 }

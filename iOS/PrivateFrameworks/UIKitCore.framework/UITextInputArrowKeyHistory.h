@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     _Bool affinityDownstream;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long amount; // @synthesize amount;
 @property(nonatomic) _Bool affinityDownstream; // @synthesize affinityDownstream;
 @property(retain, nonatomic) UITextPosition *end; // @synthesize end;
@@ -27,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UITextPosition *cursor; // @synthesize cursor;
 @property(nonatomic) int anchor; // @synthesize anchor;
 @property(retain, nonatomic) UITextPosition *startPosition; // @synthesize startPosition;
-- (void)dealloc;
 
 @end
 

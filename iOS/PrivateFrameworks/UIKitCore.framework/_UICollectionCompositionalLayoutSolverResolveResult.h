@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionCompositionalLayoutSolverResolveResult-Protocol.h>
-
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionCompositionalLayoutSolverResolveResult : NSObject <_UICollectionCompositionalLayoutSolverResolveResult>
+@interface _UICollectionCompositionalLayoutSolverResolveResult : NSObject
 {
     NSMutableDictionary *_insertedSupplementaryElementKindIndexPathsDict;
     NSMutableDictionary *_insertedDecorationElementKindIndexPathsDict;
@@ -19,24 +17,13 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_deletedDecorationElementKindIndexPathsDict;
     _Bool _sectionsWereRequeried;
     struct CGPoint _contentOffsetAdjustment;
-    struct CGSize _contentSizeAdjustment;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool sectionsWereRequeried; // @synthesize sectionsWereRequeried=_sectionsWereRequeried;
-@property(nonatomic) struct CGSize contentSizeAdjustment; // @synthesize contentSizeAdjustment=_contentSizeAdjustment;
 @property(nonatomic) struct CGPoint contentOffsetAdjustment; // @synthesize contentOffsetAdjustment=_contentOffsetAdjustment;
-@property(readonly, copy) NSString *description;
-- (id)indexPathsForInsertedDecorationsForElementKind:(id)arg1;
-- (id)indexPathsForInsertedSupplememtariesForElementKind:(id)arg1;
-- (id)indexPathsForDeletedDecorationsForElementKind:(id)arg1;
-- (id)indexPathsForDeletedSupplememtariesForElementKind:(id)arg1;
+- (id)description;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

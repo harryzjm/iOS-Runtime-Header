@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
     AVSemanticStyle *semanticStyle;
     _Bool previewPhotoFormatDimensionsLimitedToDisplayDimensions;
     _Bool prefersStillImageShiftedToMatchSpatialOverCapturePreview;
+    CDStruct_79c71658 maxPhotoDimensions;
     NSString *livePhotoContentIdentifier;
     NSString *livePhotoContentIdentifierForOriginalPhoto;
 }

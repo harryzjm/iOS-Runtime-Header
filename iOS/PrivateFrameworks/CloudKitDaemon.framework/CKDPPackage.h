@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPAsset, NSMutableArray;
 
-@interface CKDPPackage : PBCodable <NSCopying>
+@interface CKDPPackage : PBCodable
 {
     CKDPAsset *_manifest;
     NSMutableArray *_sections;

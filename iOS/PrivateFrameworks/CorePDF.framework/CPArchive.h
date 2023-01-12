@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPDisposable-Protocol.h>
-
 @class NSData, NSMutableString;
 
 __attribute__((visibility("hidden")))
-@interface CPArchive : NSObject <CPDisposable>
+@interface CPArchive : NSObject
 {
     struct __CFArray *selections;
     struct __CFArray *imageNodes;

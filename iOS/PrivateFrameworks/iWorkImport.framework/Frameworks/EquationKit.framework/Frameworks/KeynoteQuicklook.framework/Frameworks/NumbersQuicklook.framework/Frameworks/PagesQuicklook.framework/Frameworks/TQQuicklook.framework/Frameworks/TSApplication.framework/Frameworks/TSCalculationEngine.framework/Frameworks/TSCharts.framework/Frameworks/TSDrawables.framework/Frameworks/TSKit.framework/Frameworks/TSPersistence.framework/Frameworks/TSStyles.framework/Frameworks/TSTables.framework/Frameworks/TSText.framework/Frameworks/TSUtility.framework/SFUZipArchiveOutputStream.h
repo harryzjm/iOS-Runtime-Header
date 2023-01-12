@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUSimpleOutputStream-Protocol.h>
-
 @class NSData, NSMutableArray, NSString, SFUCryptoKey, SFUMoveableFileOutputStream, SFUZipFreeSpaceEntry, SFUZipOutputEntry;
 @protocol SFUOutputStream;
 
-@interface SFUZipArchiveOutputStream : NSObject <SFUSimpleOutputStream>
+@interface SFUZipArchiveOutputStream : NSObject
 {
     SFUMoveableFileOutputStream *mOutputStream;
     SFUCryptoKey *mCryptoKey;

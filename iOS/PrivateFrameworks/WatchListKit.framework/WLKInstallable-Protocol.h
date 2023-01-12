@@ -12,6 +12,7 @@
 @property(readonly, copy, nonatomic) NSURL *appStoreURL;
 @property(readonly, copy, nonatomic) NSArray *appAdamIDs;
 @property(readonly, copy, nonatomic) NSArray *appBundleIDs;
+@property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, copy, nonatomic) NSString *name;
 - (NSURL *)appIconURLForSize:(struct CGSize)arg1;
 

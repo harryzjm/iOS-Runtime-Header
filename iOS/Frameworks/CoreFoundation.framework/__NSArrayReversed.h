@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSArray.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSArrayReversed
+@interface __NSArrayReversed : NSArray
 {
     id _array;
     unsigned long long _cnt;

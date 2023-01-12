@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIButton, UIContextMenuInteraction;
+@class CNContactActionDropdownMenuButton, UIContextMenuInteraction;
 
 __attribute__((visibility("hidden")))
 @interface CNContactActionDropdownMenuCell
 {
     CDUnknownBlockType _menuProvider;
-    UIButton *_button;
+    CNContactActionDropdownMenuButton *_button;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIButton *button; // @synthesize button=_button;
+@property(retain, nonatomic) CNContactActionDropdownMenuButton *button; // @synthesize button=_button;
 @property(copy, nonatomic) CDUnknownBlockType menuProvider; // @synthesize menuProvider=_menuProvider;
 - (void)prepareForReuse;
 @property(readonly, nonatomic) UIContextMenuInteraction *contextMenuInteraction;

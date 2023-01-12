@@ -6,16 +6,10 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthToolbox/HKInteractiveChartViewObserver-Protocol.h>
-#import <HealthToolbox/UITableViewDataSource-Protocol.h>
-#import <HealthToolbox/UITableViewDelegate-Protocol.h>
-#import <HealthToolbox/WDSourceOrderObserver-Protocol.h>
-#import <HealthToolbox/WDUserActivityResponder-Protocol.h>
-
 @class HKDisplayCategory, HKDisplayType, HKInteractiveChartViewController, HKNavigationController, HKTimeScopeControl, NSDate, NSMutableArray, NSSet, NSString, UIFont, WDProfile, _UINavigationControllerPalette;
 
 __attribute__((visibility("hidden")))
-@interface WDDisplayTypeDetailViewController : HKTableViewController <UITableViewDataSource, UITableViewDelegate, HKInteractiveChartViewObserver, WDSourceOrderObserver, WDUserActivityResponder>
+@interface WDDisplayTypeDetailViewController : HKTableViewController
 {
     HKDisplayType *_displayType;
     HKDisplayCategory *_displayCategory;

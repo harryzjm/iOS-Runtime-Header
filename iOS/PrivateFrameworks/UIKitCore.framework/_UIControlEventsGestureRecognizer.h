@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 @class UITouch;
 @protocol _UIControlEventsGestureRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIControlEventsGestureRecognizer
+@interface _UIControlEventsGestureRecognizer : UIGestureRecognizer
 {
     struct {
         unsigned int touchInside:1;

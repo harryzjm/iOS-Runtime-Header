@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedConstants;
+- (struct _UITableConstantsBackgroundProperties)defaultSidebarCellBackgroundPropertiesWithState:(id)arg1 traitCollection:(id)arg2 isAccompanied:(_Bool)arg3;
 - (struct _UITableConstantsBackgroundProperties)defaultCellBackgroundPropertiesForTableViewStyle:(long long)arg1 state:(id)arg2;
 - (struct UIEdgeInsets)defaultLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
 - (double)minimumContentViewHeightForFont:(id)arg1 traitCollection:(id)arg2;

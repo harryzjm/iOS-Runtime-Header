@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ScreenTimeSettingsUI/PSHeaderFooterView-Protocol.h>
-
 @class PSSpecifier, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface STSingleLineHeaderView <PSHeaderFooterView>
+@interface STSingleLineHeaderView
 {
     UILabel *_titleLabel;
     PSSpecifier *_specifier;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNVCardParsedResultBuilderFactory-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactVCardParsedResultBuilderFactory : NSObject <CNVCardParsedResultBuilderFactory>
+@interface CNContactVCardParsedResultBuilderFactory : NSObject
 {
 }
 

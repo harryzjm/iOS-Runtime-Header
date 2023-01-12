@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-#import <MapsUI/_MKInfoCardAnalyticsDelegate-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKTransitDeparturesViewController, MKUGCCallToActionViewAppearance, MUFixedHeightAwareViewController, MUPlaceFooterAttributionController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSString, UIView, UIViewController;
+@class MKTransitDeparturesViewController, MKUGCCallToActionViewAppearance, MUFixedHeightAwareViewController, MUPlaceFooterAttributionController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUTransitDeparturesSectionController <_MKInfoCardAnalyticsDelegate, MUPlaceSectionControlling>
+@interface MUTransitDeparturesSectionController : MUPlaceSectionController
 {
     MUFixedHeightAwareViewController *_fixedHeightVC;
     MKTransitDeparturesViewController *_departuresVC;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 moduleMetadata:(id)arg4 feedbackDelegateSelector:(int)arg5;
 - (void)infoCardTransitAnalyticsDidSelectionAction:(int)arg1 resultIndex:(long long)arg2 targetID:(unsigned long long)arg3 transitSystem:(id)arg4 transitDepartureSequence:(id)arg5 transitCardCategory:(int)arg6 transitIncident:(id)arg7 feedbackDelegateSelector:(int)arg8;
@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 eventValue:(id)arg2 feedbackDelegateSelector:(int)arg3;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
-- (_Bool)_newStationCardUIEnabled;
 - (void)_handleAttributionTap;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 - (id)draggableContent;
@@ -45,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasContent;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

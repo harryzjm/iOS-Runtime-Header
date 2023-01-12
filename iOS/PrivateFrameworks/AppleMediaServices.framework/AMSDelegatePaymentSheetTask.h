@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSPaymentSheetTask.h"
+
 @class AMSDelegatePaymentSheetRequest, AMSPromise;
 
 __attribute__((visibility("hidden")))
-@interface AMSDelegatePaymentSheetTask
+@interface AMSDelegatePaymentSheetTask : AMSPaymentSheetTask
 {
     AMSDelegatePaymentSheetRequest *_request;
 }

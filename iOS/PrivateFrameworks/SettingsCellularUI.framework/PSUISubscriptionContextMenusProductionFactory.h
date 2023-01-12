@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/PSUISubscriptionContextMenusFactory-Protocol.h>
-
 @class PSListController, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface PSUISubscriptionContextMenusProductionFactory : NSObject <PSUISubscriptionContextMenusFactory>
+@interface PSUISubscriptionContextMenusProductionFactory : NSObject
 {
     _Bool _popViewControllerOnPlanRemoval;
     PSListController *_hostController;
@@ -24,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 @property(nonatomic) __weak PSSpecifier *parentSpecifier; // @synthesize parentSpecifier=_parentSpecifier;
 @property(nonatomic) __weak PSListController *hostController; // @synthesize hostController=_hostController;
-- (id)createRoamingSpecifiersSubgroup;
+- (id)createRoamingSpecifiersSubgroupWithServiceDescriptor:(id)arg1;
 - (id)createDataModeSubgroupWithContext:(id)arg1;
 - (id)createPasscodeStatusCache;
 - (id)createCellularPlanManager;

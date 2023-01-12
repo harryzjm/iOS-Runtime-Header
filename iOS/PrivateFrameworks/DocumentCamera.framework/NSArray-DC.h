@@ -7,6 +7,9 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (DC)
+- (id)dc_flatMap:(CDUnknownBlockType)arg1;
+- (id)dc_map:(CDUnknownBlockType)arg1;
+- (id)dc_compactMap:(CDUnknownBlockType)arg1;
 - (id)dc_objectAfter:(id)arg1 wrap:(_Bool)arg2;
 - (id)dc_objectBefore:(id)arg1 wrap:(_Bool)arg2;
 - (id)dc_objectAfter:(id)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPComponentWriteChannel-Protocol.h>
-
 @class NSError, NSString, TSUFileIOChannel;
 @protocol OS_dispatch_queue;
 
-@interface TSPComponentWriteChannelAdapter : NSObject <TSPComponentWriteChannel>
+@interface TSPComponentWriteChannelAdapter : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     TSUFileIOChannel *_channel;

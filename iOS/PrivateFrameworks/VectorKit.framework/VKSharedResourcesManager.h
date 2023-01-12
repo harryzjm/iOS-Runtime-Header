@@ -17,16 +17,14 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)removeResourceUser;
-+ (void)addResourceUser;
++ (id)sharedResourcesCreateIfNil:(_Bool)arg1 addResourceUser:(_Bool)arg2;
 + (id)sharedResources;
 + (id)sharedManager;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_removeResourceUser;
-- (void)_addResourceUser;
-- (id)resources;
+- (id)resourcesCreateIfNil:(_Bool)arg1 addResourceUser:(_Bool)arg2;
 - (_Bool)hasResources;
-- (void)dealloc;
 - (id)init;
 
 @end

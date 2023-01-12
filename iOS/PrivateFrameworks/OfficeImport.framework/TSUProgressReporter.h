@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSProgressReporting-Protocol.h>
-
 @class NSProgress, NSString;
 
 __attribute__((visibility("hidden")))
-@interface TSUProgressReporter : NSObject <NSProgressReporting>
+@interface TSUProgressReporter : NSObject
 {
     NSProgress *_progress;
 }

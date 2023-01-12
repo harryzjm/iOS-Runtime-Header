@@ -7,6 +7,7 @@
 #import <DataAccessExpress/DAContactSearchResultElement.h>
 
 @interface DAContactSearchResultElement (ABAdditions)
+- (id)localizedStringForKey:(id)arg1 formatArg:(id)arg2;
 - (void *)newAddressBookRecordWithSource:(void *)arg1;
 @end
 

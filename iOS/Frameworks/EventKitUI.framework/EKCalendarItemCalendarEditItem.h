@@ -10,10 +10,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _entityType;
 }
 
-- (_Bool)editItemViewControllerSave:(id)arg1;
-- (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
+- (id)popupMenu:(id)arg1;
+- (id)eligibleCalendars;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
-- (_Bool)_shouldShowSourceForCalendar:(id)arg1;
 - (_Bool)requiresReconfigurationOnSave;
 - (_Bool)shouldAppearWithVisibility:(int)arg1;
 - (_Bool)canBeConfiguredForCalendarConstraints:(id)arg1;

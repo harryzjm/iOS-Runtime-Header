@@ -6,27 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/NSCopying-Protocol.h>
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UITextInputSessionAccumulator : NSObject
+@interface _UITextInputSessionAccumulator : NSObject <NSCopying>
 {
     unsigned long long _values[8];
     NSString *_name;
     long long _type;
-    unsigned long long _depth;
     CDUnknownBlockType _block;
+    struct _NSRange _depthRange;
 }
 
++ (id)accumulatorWithName:(id)arg1 type:(long long)arg2 depthRange:(struct _NSRange)arg3 block:(CDUnknownBlockType)arg4;
 + (id)accumulatorWithName:(id)arg1 type:(long long)arg2 depth:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
-@property(readonly, nonatomic) unsigned long long depth; // @synthesize depth=_depth;
-@property(readonly, nonatomic) long long type; // @synthesize type=_type;
-@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(nonatomic) struct _NSRange depthRange; // @synthesize depthRange=_depthRange;
+@property(nonatomic) long long type; // @synthesize type=_type;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)enumerateAnalytics:(CDUnknownBlockType)arg1;
 - (void)reset;
+- (void)_increaseWithCount:(unsigned long long)arg1 source:(long long)arg2;
+- (_Bool)_increaseWithActions:(id)arg1;
 - (void)increaseWithActions:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 
 @end
 

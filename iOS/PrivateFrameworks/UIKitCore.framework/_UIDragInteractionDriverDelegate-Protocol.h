@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSSet, UIGestureRecognizer;
+@class NSSet, UIGestureRecognizer, UITouch;
 @protocol _UIDragInteractionDriving;
 
 @protocol _UIDragInteractionDriverDelegate <NSObject>
@@ -20,5 +20,6 @@
 - (_Bool)dragDriverBeginLift:(id <_UIDragInteractionDriving>)arg1;
 - (_Bool)dragDriver:(id <_UIDragInteractionDriving>)arg1 prepareToLiftWithCompletion:(void (^)(void))arg2;
 - (_Bool)dragDriver:(id <_UIDragInteractionDriving>)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
+- (_Bool)dragDriver:(id <_UIDragInteractionDriving>)arg1 shouldReceiveTouch:(UITouch *)arg2;
 @end
 

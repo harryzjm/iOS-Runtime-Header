@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIDynamicShelfViewElement-Protocol.h>
-
 @class NSString, SKUIViewElement;
 @protocol SKUIEntityProviding;
 
 __attribute__((visibility("hidden")))
-@interface SKUIDynamicShelfViewElement <SKUIDynamicShelfViewElement>
+@interface SKUIDynamicShelfViewElement
 {
     SKUIViewElement *_cellTemplateViewElement;
 }

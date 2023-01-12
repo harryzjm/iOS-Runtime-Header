@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthMenstrualCycles/HKMCViewModelProviderDataSource-Protocol.h>
-
 @class HKCalendarCache, HKHealthStore, HKMCDaySummaryObserverQuery, HKSampleIteratorQuery, NSMutableIndexSet, NSMutableSet, NSString, _HKDatabaseChangesQuery;
 @protocol HKMCViewModelProviderDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HKMCViewModelProviderDataSource : NSObject <HKMCViewModelProviderDataSource>
+@interface HKMCViewModelProviderDataSource : NSObject
 {
     HKHealthStore *_healthStore;
     id <HKMCViewModelProviderDataSourceDelegate> _delegate;
@@ -32,10 +30,10 @@ __attribute__((visibility("hidden")))
 - (void)_startObservingCycleFactorsUpdates;
 - (void)_handleDaySummaryObserverUpdateWithError:(id)arg1;
 - (void)_startObservingDaySummaryUpdates;
-- (void)fetchCycleFactorsInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
-- (void)cancelFetchForDaySummariesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
-- (void)fetchDaySummariesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
-- (id)initWithHealthStore:(id)arg1 calendarCache:(id)arg2 queue:(id)arg3;
+- (void)fetchCycleFactorsInDayIndexRange:(CDStruct_912cb5d2)arg1;
+- (void)cancelFetchForDaySummariesInDayIndexRange:(CDStruct_912cb5d2)arg1;
+- (void)fetchDaySummariesInDayIndexRange:(CDStruct_912cb5d2)arg1;
+- (id)initWithHealthStore:(id)arg1 shouldFetchCycleFactors:(_Bool)arg2 calendarCache:(id)arg3 queue:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

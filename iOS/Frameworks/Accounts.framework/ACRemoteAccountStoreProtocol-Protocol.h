@@ -10,9 +10,10 @@
 
 @protocol ACRemoteAccountStoreProtocol <NSObject>
 - (void)resetDatabaseToVersion:(NSNumber *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
-- (void)registerMonitorForAccountsOfTypes:(NSSet *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)registerMonitorForAccountsOfTypes:(NSSet *)arg1 propertiesToPrefetch:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)shutdownAccountsD:(void (^)(_Bool, NSError *))arg1;
 - (void)scheduleBackupIfNonexistent:(void (^)(_Bool, NSError *))arg1;
+- (void)runAccountMigrationPlugins:(void (^)(_Bool, NSError *))arg1;
 - (void)triggerKeychainMigrationIfNecessary:(void (^)(_Bool, NSError *))arg1;
 - (void)removeAccountFromPairedDevice:(ACAccount *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)removeAccountsFromPairedDeviceWithOptions:(NSDictionary *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

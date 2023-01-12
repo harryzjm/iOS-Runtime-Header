@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)initWithBar:(id)arg1 barManager:(id)arg2 layout:(long long)arg3 persona:(unsigned long long)arg4;
+- (id)initWithBar:(id)arg1 barManager:(id)arg2 layout:(long long)arg3 persona:(long long)arg4;
 - (id)_UIBarButtonItemForBarItem:(long long)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 

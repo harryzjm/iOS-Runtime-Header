@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIWebSelectedItemPrivate-Protocol.h>
-
 @class DOMHTMLOptGroupElement;
 
 __attribute__((visibility("hidden")))
-@interface UIDOMHTMLOptGroupSelectedItem : NSObject <UIWebSelectedItemPrivate>
+@interface UIDOMHTMLOptGroupSelectedItem : NSObject
 {
     DOMHTMLOptGroupElement *_node;
 }

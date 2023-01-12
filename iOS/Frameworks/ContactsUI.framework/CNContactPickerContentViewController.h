@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/CNContactNavigationControllerDelegate-Protocol.h>
-#import <ContactsUI/CNContactPickerContentViewController-Protocol.h>
-
 @class CNContactNavigationController, CNContactStoreDataSource, CNContainer, CNManagedConfiguration, FAFamilyMember, NSArray, NSMutableArray, NSPredicate, NSString, UIBarButtonItem, UINavigationController;
 @protocol CNContactPickerContentDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNContactPickerContentViewController : UIViewController <CNContactNavigationControllerDelegate, CNContactPickerContentViewController>
+@interface CNContactPickerContentViewController : UIViewController
 {
     _Bool _clientWantsSingleContact;
     _Bool _clientWantsSingleProperty;
@@ -28,7 +25,10 @@ __attribute__((visibility("hidden")))
     _Bool _allowsDeletion;
     _Bool _allowsDone;
     _Bool _allowsSearchForMultiSelect;
+    _Bool _shouldDisplayAddNewContactRow;
     _Bool _hidesPromptInLandscape;
+    _Bool _shouldDisplaySuggestionsController;
+    _Bool _shouldHideDuplicates;
     id <CNContactPickerContentDelegate> _delegate;
     CNContactNavigationController *_contactNavigationController;
     CNContactStoreDataSource *_dataSource;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     CNContainer *_parentContainer;
     NSArray *_displayedPropertyKeys;
     long long _cardActions;
+    NSString *_targetGroupIdentifier;
     NSString *_prompt;
     NSString *_bannerTitle;
     NSString *_bannerValue;
@@ -45,10 +46,18 @@ __attribute__((visibility("hidden")))
     CNManagedConfiguration *_managedConfiguration;
     FAFamilyMember *_familyMember;
     NSArray *_prohibitedPropertyKeys;
+    NSArray *_suggestionsIgnoredContactIdentifiers;
+    NSArray *_suggestionsInteractionDomains;
+    NSArray *_suggestedContacts;
 }
 
 + (id)descriptorForContactPropertiesSupportingPredicateEvaluation;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldHideDuplicates; // @synthesize shouldHideDuplicates=_shouldHideDuplicates;
+@property(retain, nonatomic) NSArray *suggestedContacts; // @synthesize suggestedContacts=_suggestedContacts;
+@property(retain, nonatomic) NSArray *suggestionsInteractionDomains; // @synthesize suggestionsInteractionDomains=_suggestionsInteractionDomains;
+@property(retain, nonatomic) NSArray *suggestionsIgnoredContactIdentifiers; // @synthesize suggestionsIgnoredContactIdentifiers=_suggestionsIgnoredContactIdentifiers;
+@property(nonatomic) _Bool shouldDisplaySuggestionsController; // @synthesize shouldDisplaySuggestionsController=_shouldDisplaySuggestionsController;
 @property(retain, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 @property(retain, nonatomic) FAFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 @property(retain, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
@@ -59,6 +68,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *bannerTitle; // @synthesize bannerTitle=_bannerTitle;
 @property(nonatomic) _Bool hidesPromptInLandscape; // @synthesize hidesPromptInLandscape=_hidesPromptInLandscape;
 @property(copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
+@property(copy, nonatomic) NSString *targetGroupIdentifier; // @synthesize targetGroupIdentifier=_targetGroupIdentifier;
+@property(nonatomic) _Bool shouldDisplayAddNewContactRow; // @synthesize shouldDisplayAddNewContactRow=_shouldDisplayAddNewContactRow;
 @property(nonatomic) _Bool allowsSearchForMultiSelect; // @synthesize allowsSearchForMultiSelect=_allowsSearchForMultiSelect;
 @property(nonatomic) _Bool allowsDone; // @synthesize allowsDone=_allowsDone;
 @property(nonatomic) _Bool allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
@@ -85,12 +96,15 @@ __attribute__((visibility("hidden")))
 - (void)_selectedContact:(id)arg1;
 - (id)descriptorsForKeysRequiredByDelegate;
 - (void)contactNavigationControllerDidCancel:(id)arg1;
+- (void)contactNavigationController:(id)arg1 didCompleteWithNewContact:(id)arg2;
 - (void)contactNavigationControllerDidComplete:(id)arg1;
 - (_Bool)contactNavigationController:(id)arg1 presentViewController:(id)arg2 animated:(_Bool)arg3;
+- (_Bool)contactNavigationControllerShouldDismissSearchOnSelection:(id)arg1;
 - (_Bool)contactNavigationController:(id)arg1 shouldPerformDefaultActionForContactProperty:(id)arg2;
 - (_Bool)contactNavigationControllerShouldShowContactsOnKeyCommands:(id)arg1;
 - (_Bool)contactNavigationController:(id)arg1 shouldShowCardForContact:(id)arg2;
 - (_Bool)contactNavigationController:(id)arg1 shouldSelectContact:(id)arg2 atIndexPath:(id)arg3;
+- (_Bool)contactSuggestionViewController:(id)arg1 shouldSelectContact:(id)arg2 atIndexPath:(id)arg3;
 - (_Bool)contactNavigationController:(id)arg1 canSelectContact:(id)arg2;
 - (_Bool)contactNavigationControllerShouldAddNewContact:(id)arg1;
 - (void)invalidate;

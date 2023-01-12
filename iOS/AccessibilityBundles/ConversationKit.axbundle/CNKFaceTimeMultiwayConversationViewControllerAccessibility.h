@@ -12,8 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axParticipantShutters;
+- (void)setDeviceOrientation:(long long)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)restartAutoHideInCallControlsTimer;
+- (_Bool)axShouldDisableAutoHidingControls;
 - (void)setControlsState:(long long)arg1 animated:(_Bool)arg2;
 - (void)_accessibilityExpandControls;
 - (void)_axSetExpectedExpandedState:(long long)arg1;

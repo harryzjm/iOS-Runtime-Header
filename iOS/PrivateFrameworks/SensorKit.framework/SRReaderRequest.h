@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/SRRequestReading-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SRReaderRequest : NSObject <SRRequestReading>
+@interface SRReaderRequest : NSObject
 {
     NSString *_sensor;
     NSString *_bundleIdentifier;

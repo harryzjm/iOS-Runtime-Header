@@ -6,14 +6,11 @@
 
 #import <UIKit/UITableView.h>
 
-#import <StoreKitUI/UITableViewDataSource-Protocol.h>
-#import <StoreKitUI/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSString;
 @protocol SKUIRedeemResultsViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemResultsView : UITableView <UITableViewDelegate, UITableViewDataSource>
+@interface SKUIRedeemResultsView : UITableView
 {
     NSArray *_sections;
     struct UIEdgeInsets _contentInsetAdjustments;

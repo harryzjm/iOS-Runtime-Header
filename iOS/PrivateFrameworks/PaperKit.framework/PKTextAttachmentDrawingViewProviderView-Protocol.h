@@ -7,6 +7,7 @@
 @class NSArray, NSTextAttachment, PKAttachmentView;
 
 @protocol PKTextAttachmentDrawingViewProviderView
+- (struct CGRect)drawingTextAttachmentBounds;
 - (PKAttachmentView *)topLevelAttachmentView;
 - (NSArray *)tiledViewAttachmentViews;
 - (id)initWithAttachment:(NSTextAttachment *)arg1 drawingClass:(Class)arg2 inserted:(_Bool)arg3;

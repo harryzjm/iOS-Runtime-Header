@@ -6,25 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNLocationProvider-Protocol.h>
-
-@class CLSimulationManager, MNSimulatedLocationGenerator, NSBundle, NSMutableArray, NSString, NSTimer;
+@class MNSimulatedLocationGenerator, NSBundle, NSMutableArray, NSString, NSTimer;
 @protocol MNLocationProviderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MNSimulationLocationProvider : NSObject <MNLocationProvider>
+@interface MNSimulationLocationProvider : NSObject
 {
     id <MNLocationProviderDelegate> _delegate;
     NSTimer *_locationUpdateTimer;
     long long _simulationType;
     MNSimulatedLocationGenerator *_locationGenerator;
     _Bool _simulateGeoFences;
-    CLSimulationManager *_simulationManager;
     NSMutableArray *_monitoredGeoFences;
     NSMutableArray *_currentGeoFences;
+    double _speedMultiplier;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double speedMultiplier; // @synthesize speedMultiplier=_speedMultiplier;
 @property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) unsigned long long traceVersion;
@@ -46,10 +45,14 @@ __attribute__((visibility("hidden")))
 - (void)startUpdatingHeading;
 - (void)stopUpdatingLocation;
 - (void)startUpdatingLocation;
+- (void)_resetLocationUpdateInterval;
 - (void)_sendLocationUpdate:(id)arg1;
+@property(nonatomic) double speedOverride;
+- (void)updatePosition:(double)arg1;
 - (void)updateWithRouteInfo:(id)arg1;
 - (void)dealloc;
 - (id)initWithSimulationType:(long long)arg1 routeInfo:(id)arg2;
+- (id)initWithSimulationType:(long long)arg1 routeInfo:(id)arg2 alternateRouteInfos:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

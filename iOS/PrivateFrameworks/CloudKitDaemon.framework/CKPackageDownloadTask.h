@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/CKDCancelling-Protocol.h>
-
 @class CKAsset, CKDCancelTokenGroup, CKDMMCSRequestOptions, CKDProgressTracker, CKPackage, NSArray, NSError, NSIndexSet;
 @protocol OS_dispatch_group;
 
-@interface CKPackageDownloadTask : NSObject <CKDCancelling>
+@interface CKPackageDownloadTask : NSObject
 {
     NSError *_error;
     CKPackage *_package;

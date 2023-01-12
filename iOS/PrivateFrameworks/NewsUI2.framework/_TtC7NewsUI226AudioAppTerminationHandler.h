@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *currentlyPlayingObservable;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *terminationObserver;
 }
 
 @end

@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
 @property(readonly) LSRecord *record; // @synthesize record=_record;
 @property(retain) NSString *fileExtension; // @synthesize fileExtension=_fileExtension;
 @property(retain) NSString *templateType; // @synthesize templateType=_templateType;
+- (_Bool)onlySupportsGraphicIcons;
+- (_Bool)supportsGraphicIcons;
 - (_Bool)_isAppleResource;
 - (id)symbol;
 - (unsigned long long)iconShape;

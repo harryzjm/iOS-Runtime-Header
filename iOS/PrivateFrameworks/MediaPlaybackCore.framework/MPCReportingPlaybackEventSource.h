@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double eventDuration; // @synthesize eventDuration=_eventDuration;
 @property(nonatomic) long long equivalencySourceAdamID; // @synthesize equivalencySourceAdamID=_equivalencySourceAdamID;
 @property(retain, nonatomic) id <MPCReportingIdentityPropertiesLoading> identityPropertiesLoader; // @synthesize identityPropertiesLoader=_identityPropertiesLoader;
-- (id)initWithAVItem:(id)arg1;
 - (id)init;
 
 @end

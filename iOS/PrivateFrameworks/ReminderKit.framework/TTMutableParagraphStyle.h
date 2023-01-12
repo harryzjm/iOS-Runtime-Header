@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TTParagraphStyle.h"
+
 __attribute__((visibility("hidden")))
-@interface TTMutableParagraphStyle
+@interface TTMutableParagraphStyle : TTParagraphStyle
 {
 }
 
@@ -13,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
-@property(nonatomic) unsigned long long alignment; // @dynamic alignment;
+@property(nonatomic) long long alignment; // @dynamic alignment;
 @property(nonatomic) unsigned int hints; // @dynamic hints;
 @property(nonatomic) unsigned long long indent; // @dynamic indent;
 @property(nonatomic) _Bool needsListCleanup; // @dynamic needsListCleanup;

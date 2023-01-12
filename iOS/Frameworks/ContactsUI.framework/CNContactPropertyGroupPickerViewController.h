@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/UITableViewDataSource-Protocol.h>
-#import <ContactsUI/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSString, UITableView;
 @protocol CNContactGroupPickerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNContactPropertyGroupPickerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CNContactPropertyGroupPickerViewController : UIViewController
 {
     NSArray *_pickableGroups;
     UITableView *_tableView;

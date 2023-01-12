@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StreamingZip/StreamingUnzipProtocol-Protocol.h>
-
 @class NSXPCConnection, StreamingUnzipState;
 @protocol OS_dispatch_queue, OS_os_transaction, StreamingUnzipDelegateProtocol;
 
 __attribute__((visibility("hidden")))
-@interface StreamingUnzipper : NSObject <StreamingUnzipProtocol>
+@interface StreamingUnzipper : NSObject
 {
     long long _sandboxToken;
     void *_decompressionOutputBuffer;

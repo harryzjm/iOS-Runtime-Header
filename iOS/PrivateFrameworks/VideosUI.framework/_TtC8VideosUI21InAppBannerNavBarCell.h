@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import "VUIBaseCollectionViewCell.h"
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI21InAppBannerNavBarCell : UICollectionViewCell
+@interface _TtC8VideosUI21InAppBannerNavBarCell : VUIBaseCollectionViewCell
 {
     MISSING_TYPE *layout;
     MISSING_TYPE *titleLabel;

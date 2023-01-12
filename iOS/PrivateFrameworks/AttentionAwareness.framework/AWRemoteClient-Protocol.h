@@ -7,6 +7,8 @@
 @class AWAttentionAwarenessConfiguration;
 
 @protocol AWRemoteClient
+- (void)cancelFaceDetectStreamWithReply:(void (^)(NSError *))arg1;
+- (void)streamFaceDetectEventsWithReply:(void (^)(NSError *))arg1;
 - (void)pingWithReply:(void (^)(_Bool))arg1;
 - (void)pollWithTimeout:(unsigned long long)arg1 reply:(void (^)(NSError *))arg2;
 - (void)resetAttentionLostTimerWithReply:(void (^)(NSError *))arg1;

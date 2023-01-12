@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "QLItemAggregatedViewController.h"
+
 @class QLItemViewController;
 
 __attribute__((visibility("hidden")))
-@interface QLMovieItemAggregatedViewController
+@interface QLMovieItemAggregatedViewController : QLItemAggregatedViewController
 {
     QLItemViewController *_previewController;
 }

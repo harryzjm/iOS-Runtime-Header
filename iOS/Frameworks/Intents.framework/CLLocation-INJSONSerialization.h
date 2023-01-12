@@ -6,11 +6,9 @@
 
 #import <CoreLocation/CLLocation.h>
 
-#import <Intents/INJSONSerializable-Protocol.h>
-
 @class NSString;
 
-@interface CLLocation (INJSONSerialization) <INJSONSerializable>
+@interface CLLocation (INJSONSerialization)
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 

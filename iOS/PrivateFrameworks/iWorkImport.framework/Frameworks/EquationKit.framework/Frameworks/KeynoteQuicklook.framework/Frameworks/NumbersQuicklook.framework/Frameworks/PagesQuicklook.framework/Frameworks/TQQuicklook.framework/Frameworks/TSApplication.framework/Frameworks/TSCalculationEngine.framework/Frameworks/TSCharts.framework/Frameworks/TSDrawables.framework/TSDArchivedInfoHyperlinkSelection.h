@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSDrawables/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSDInfoHyperlinkSelection, TSKSelection;
 
-@interface TSDArchivedInfoHyperlinkSelection : TSPObject <TSKArchivedSelection>
+@interface TSDArchivedInfoHyperlinkSelection : TSPObject
 {
     TSDInfoHyperlinkSelection *_hyperlinkSelection;
 }

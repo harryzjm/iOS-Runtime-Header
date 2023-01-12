@@ -4,30 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class DVTDispatchLock, NSArray, NSError, NSMutableArray, NSOperationQueue;
+@class NSArray, NSMutableArray, NSOperationQueue;
 
 @interface DVTOperationGroup
 {
     NSOperationQueue *_queue;
-    DVTDispatchLock *_lock;
     NSMutableArray *_suboperations;
-    NSError *_error;
-    CDUnknownBlockType _signpost;
 }
 
-+ (id)new;
-+ (id)operationGroupWithSuboperations:(id)arg1 signpost:(CDUnknownBlockType)arg2;
 + (id)operationGroupWithSuboperations:(id)arg1;
++ (id)operationGroupWithSuboperations:(id)arg1 signpost:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)notFinishedReasonWithDepth:(unsigned long long)arg1;
-- (id)description;
-- (void)enumerateUsingBlock:(CDUnknownBlockType)arg1;
+- (id)debugDescription;
 - (void)_enumerateWithStop:(_Bool *)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)warnings;
 - (id)error;
-- (void)setError:(id)arg1;
-- (void)cancel;
-- (void)main;
+- (void)_postflightMain;
+- (void)mainWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)start;
+- (void)cancel;
 - (void)addSuboperation:(id)arg1;
 - (void)addSuboperations:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
@@ -35,8 +31,8 @@
 @property long long maxConcurrentOperationCount;
 @property(readonly) NSArray *suboperations;
 - (void)setName:(id)arg1;
-- (id)initWithSignpost:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithSignpost:(CDUnknownBlockType)arg1;
 
 @end
 

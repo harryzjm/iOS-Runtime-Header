@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKGeoJSONCoverageRegion-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MKMultiPolygonGeoRegion : NSObject <MKGeoJSONCoverageRegion>
+@interface _MKMultiPolygonGeoRegion : NSObject
 {
     NSArray *_polygons;
 }

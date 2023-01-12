@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/WebItemProviderRegistrar-Protocol.h>
-
 @class NSData, NSString;
 @protocol NSItemProviderWriting;
 
 __attribute__((visibility("hidden")))
-@interface WebItemProviderPromisedFileRegistrar : NSObject <WebItemProviderRegistrar>
+@interface WebItemProviderPromisedFileRegistrar : NSObject
 {
     struct RetainPtr<NSString> _typeIdentifier;
     struct BlockPtr<void (void (^)(NSURL *, NSError *))> _callback;

@@ -12,7 +12,7 @@
 @protocol PXLibrarySummaryDataSource <NSObject>
 
 @optional
-@property(readonly, nonatomic) id <PXDisplayAssetCollection> topmostAssetCollection;
+@property(readonly, nonatomic) id <PXDisplayAssetCollection> topMostAssetCollection;
 @property(readonly, nonatomic) id <PXBrowserVisibleContentSnapshot> visibleContentSnapshot;
 - (_Bool)curatedLibrarySummaryHelperShouldUpdateImmediately:(PXCuratedLibrarySummaryHelper *)arg1;
 @end

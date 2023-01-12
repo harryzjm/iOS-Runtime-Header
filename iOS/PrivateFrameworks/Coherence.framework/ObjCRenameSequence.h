@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ObjCRenameSequence : NSObject
 {
     MISSING_TYPE *renameSequence;

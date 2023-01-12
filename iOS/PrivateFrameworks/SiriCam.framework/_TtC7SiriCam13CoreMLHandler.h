@@ -13,7 +13,6 @@
     MISSING_TYPE *modelName;
     MISSING_TYPE *modelInstance;
     MISSING_TYPE *modelMetadata;
-    MISSING_TYPE *trialProvider;
 }
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OABPropertiesManager-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OABDefaultsManager : NSObject <OABPropertiesManager>
+@interface OABDefaultsManager : NSObject
 {
 }
 

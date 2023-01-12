@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebOpenURLAction <AMSUIWebActionRunnable>
+@interface AMSUIWebOpenURLAction
 {
     NSURL *_URL;
     long long _type;
 }
 
++ (id)_openIgnoringOverrides:(id)arg1;
 + (id)_openUniversalLink:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) long long type; // @synthesize type=_type;

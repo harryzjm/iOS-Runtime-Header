@@ -10,5 +10,6 @@
 - (id)initWithCPLArchiver:(id)arg1;
 - (id)plistArchiveWithCPLArchiver:(id)arg1;
 - (id)cplDeepCopy;
+- (id)cplFullDescription;
 @end
 

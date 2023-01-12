@@ -21,6 +21,8 @@
 - (void)getAttributesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
 - (void)resolveNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolRuntimeRemoteObject *))arg2 nodeId:(int)arg3 objectGroup:(id *)arg4;
 - (void)pushNodeByPathToFrontendWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 path:(NSString *)arg3;
+- (void)hideFlexOverlayWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int *)arg3;
+- (void)showFlexOverlayWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 flexColor:(RWIProtocolDOMRGBAColor *)arg4 showOrderNumbers:(_Bool *)arg5;
 - (void)hideGridOverlayWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int *)arg3;
 - (void)showGridOverlayWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 gridColor:(RWIProtocolDOMRGBAColor *)arg4 showLineNames:(_Bool *)arg5 showLineNumbers:(_Bool *)arg6 showExtendedGridLines:(_Bool *)arg7 showTrackSizes:(_Bool *)arg8 showAreaNames:(_Bool *)arg9;
 - (void)highlightFrameWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 frameId:(NSString *)arg3 contentColor:(id *)arg4 contentOutlineColor:(id *)arg5;
@@ -51,7 +53,7 @@
 - (void)setNodeValueWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 value:(NSString *)arg4;
 - (void)setNodeNameWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 nodeId:(int)arg3 name:(NSString *)arg4;
 - (void)querySelectorAllWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3 selector:(NSString *)arg4;
-- (void)querySelectorWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 nodeId:(int)arg3 selector:(NSString *)arg4;
+- (void)querySelectorWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int *))arg2 nodeId:(int)arg3 selector:(NSString *)arg4;
 - (void)requestChildNodesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 depth:(int *)arg4;
 - (void)getDocumentWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolDOMNode *))arg2;
 @end

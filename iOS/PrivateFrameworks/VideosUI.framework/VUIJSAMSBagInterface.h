@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIJSAMSBagDelegate-Protocol.h>
+#import "VUIJSObject.h"
 
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface VUIJSAMSBagInterface <VUIJSAMSBagDelegate>
+@interface VUIJSAMSBagInterface : VUIJSObject
 {
 }
 
 + (id)convertNSErrorIntoDict:(id)arg1;
 + (id)generateResponseDictionary:(id)arg1 withError:(id)arg2;
-- (void)registerBagKey:(id)arg1 withValueType:(unsigned long long)arg2;
 - (void)dictionaryForKeyWithCompletion:(id)arg1:(id)arg2;
 - (void)URLForKeyWithCompletion:(id)arg1:(id)arg2;
 - (void)stringForKeyWithCompletion:(id)arg1:(id)arg2;

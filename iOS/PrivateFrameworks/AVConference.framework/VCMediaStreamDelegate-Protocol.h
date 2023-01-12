@@ -10,6 +10,7 @@
 @protocol VCMediaStreamProtocol;
 
 @protocol VCMediaStreamDelegate <NSObject>
+- (void)vcMediaStreamServerDidDie:(id <VCMediaStreamProtocol>)arg1;
 
 @optional
 - (void)vcMediaStream:(id <VCMediaStreamProtocol>)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2 firType:(int)arg3;

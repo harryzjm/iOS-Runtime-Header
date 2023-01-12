@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPArtworkDataSourceVisualIdenticality-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPAbstractNetworkArtworkDataSourceVisualIdenticalityIdentifier : NSObject <MPArtworkDataSourceVisualIdenticality>
+@interface _MPAbstractNetworkArtworkDataSourceVisualIdenticalityIdentifier : NSObject
 {
     NSString *_imageArtworkIdentifier;
     NSString *_videoArtworkIdentifier;

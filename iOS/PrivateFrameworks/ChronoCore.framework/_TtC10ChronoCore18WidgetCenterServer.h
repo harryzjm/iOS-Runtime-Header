@@ -12,7 +12,9 @@ __attribute__((visibility("hidden")))
 @interface _TtC10ChronoCore18WidgetCenterServer : NSObject
 {
     MISSING_TYPE *listener;
+    MISSING_TYPE *extensionManager;
     MISSING_TYPE *timelineService;
+    MISSING_TYPE *descriptorService;
 }
 
 - (void).cxx_destruct;

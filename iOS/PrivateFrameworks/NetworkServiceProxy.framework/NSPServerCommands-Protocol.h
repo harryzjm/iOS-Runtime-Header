@@ -6,17 +6,32 @@
 
 #import <NetworkServiceProxy/NSObject-Protocol.h>
 
-@class NPUsageReport, NPWaldo, NSData, NSDate, NSDictionary, NSPAppRule, NSPConfiguration, NSString, PrivacyProxyNetworkStatus;
+@class NPUsageReport, NPWaldo, NSData, NSDate, NSDictionary, NSPAppRule, NSPConfiguration, NSPPrivateAccessTokenFetcher, NSString, PrivacyProxyNetworkStatus;
 
 @protocol NSPServerCommands <NSObject>
 
 @optional
+- (void)getPrivacyProxyDomainFilters:(void (^)(NSDictionary *))arg1;
+- (void)setPreferredPathRoutingEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)privateAccessTokensAllowTools:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)stopProxyToMPTCPConverterProxyWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)startProxyToMPTCPConverterProxyWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)getPrivateAccessTokensEnabledWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
+- (void)setPrivateAccessTokensEnabled:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)fetchPrivateAccessTokenWithFetcher:(NSPPrivateAccessTokenFetcher *)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
 - (void)sendRTCReport:(long long)arg1 errorCode:(long long)arg2 url:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)getPrivacyProxyEffectiveUserTierWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
 - (void)getPrivacyProxyAccountTypeWithCompletionHandler:(void (^)(unsigned long long, NSError *))arg1;
+- (void)setGeohashOverride:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)getGeohashSharingPreferenceWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
 - (void)setGeohashSharingPreference:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)getForceFallbackWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
+- (void)setForceFallback:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)getOverrideIngressProxyWithCompletionHandler:(void (^)(NSString *, NSString *, NSData *, NSError *))arg1;
+- (void)overrideIngressProxy:(NSString *)arg1 fallbackProxy:(NSString *)arg2 key:(NSData *)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)getPreferredResolverWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (void)overridePreferredResolver:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)getPreferredProxyWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (void)overridePreferredProxy:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)getPrivacyProxyInfoWithCompletionHandler:(void (^)(PrivacyProxyInfo *, NSError *))arg1;
 - (void)stopLocationMonitor;

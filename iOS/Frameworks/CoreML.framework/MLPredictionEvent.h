@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/CUTCoreAnalyticsMetric-Protocol.h>
-
 @class NSDictionary, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MLPredictionEvent : NSObject <CUTCoreAnalyticsMetric>
+@interface MLPredictionEvent : NSObject
 {
     unsigned long long _featuresPredictionCountSoFar;
     double _featuresPredictionDuration;

@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/UILayoutContainerViewDelegate-Protocol.h>
-#import <UIKitCore/UISplitViewControllerImpl-Protocol.h>
-
 @class NSArray, NSString, UIBarButtonItem, UIFocusContainerGuide, UIGestureRecognizer, UIPopoverController, UIResponder, UISnapshotView, UISplitViewController, UISplitViewControllerDisplayModeBarButtonItem, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController;
 @protocol UISplitViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UISplitViewControllerClassicImpl : NSObject <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, UISplitViewControllerImpl>
+@interface UISplitViewControllerClassicImpl : NSObject
 {
     UISplitViewController *_svc;
     id _delegate;
@@ -114,8 +110,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isAnimating;
 @property(readonly, nonatomic) _Bool lockedForDelegateCallback;
 @property(readonly, nonatomic) long long style;
+- (_Bool)_shouldShowNSToolbarSidebarToggle;
 @property(nonatomic) long long primaryBackgroundStyle;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
+- (id)_effectiveActivityItemsConfiguration;
 - (id)_additionalViewControllersToCheckForUserActivity;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
@@ -155,6 +153,7 @@ __attribute__((visibility("hidden")))
 - (id)_multitaskingDragExclusionRects;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
+- (id)_overridingPreferredFocusEnvironment;
 - (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;
 @property(readonly, nonatomic, getter=_lastFocusedChildViewControllerIndex) unsigned long long lastFocusedChildViewControllerIndex; // @synthesize lastFocusedChildViewControllerIndex=_lastFocusedChildViewControllerIndex;
@@ -232,6 +231,7 @@ __attribute__((visibility("hidden")))
 - (id)_childContainingSender:(id)arg1;
 - (void)_setMasterOverrideTraitCollectionActive:(_Bool)arg1;
 @property(copy, nonatomic) NSArray *viewControllers;
+@property(readonly, nonatomic) _Bool inExpandingToProposedDisplayModeCallback;
 @property(readonly, nonatomic) _Bool inCollapsingToProposedTopColumnCallback;
 - (_Bool)_isBasicallyHorizontallyCompact;
 - (_Bool)_canDisplayHostedMaster;
@@ -243,9 +243,11 @@ __attribute__((visibility("hidden")))
 - (void)_setCollapsedState:(long long)arg1;
 - (_Bool)_isCollapsed;
 @property(readonly, nonatomic, getter=isCollapsed) _Bool collapsed;
+- (_Bool)_isExpanding;
 - (double)_primaryColumnWidthForSize:(struct CGSize)arg1 isCompact:(_Bool)arg2;
 - (double)_primaryColumnWidthForSize:(struct CGSize)arg1;
 - (double)_defaultMaximumPrimaryColumnWidthForSize:(struct CGSize)arg1;
+- (struct CGSize)_preferredContentSize;
 @property(nonatomic, getter=_usesExtraWidePrimaryColumn, setter=_setUsesExtraWidePrimaryColumn:) _Bool usesExtraWidePrimaryColumn;
 - (struct CGSize)_screenSizeInMainScene:(_Bool)arg1;
 - (double)primaryColumnWidth;

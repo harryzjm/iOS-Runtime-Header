@@ -4,17 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIBaseCollectionViewCell.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI25SportsCanonicalBannerCell
+@interface _TtC8VideosUI25SportsCanonicalBannerCell : VUIBaseCollectionViewCell
 {
     MISSING_TYPE *bannerViewModel;
     MISSING_TYPE *layout;
+    MISSING_TYPE *isReloadingAfterSwiftUIHeightChange;
     MISSING_TYPE *uberBackgroundView;
     MISSING_TYPE *uberBackgroundImageViewModel;
     MISSING_TYPE *previousViewSize;
+    MISSING_TYPE *accessibilityPreviouslyEnabled;
     MISSING_TYPE *transitionBackgroundView;
+    MISSING_TYPE *sportsCanonicalBannerOpacityProxy;
+    MISSING_TYPE *newBannerView;
+    MISSING_TYPE *newBannerAccessoryView;
     MISSING_TYPE *bannerView;
     MISSING_TYPE *scoreboardUpdateTimer;
     MISSING_TYPE *scoreboardUpdateRequest;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIContentSizeCategoryPreference;
+#import "UIContentSizeCategoryPreference.h"
 
 __attribute__((visibility("hidden")))
-@interface _UIContentSizeCategoryPreferenceSystem
+@interface _UIContentSizeCategoryPreferenceSystem : UIContentSizeCategoryPreference
 {
     _Bool _observingNotification;
     _Bool _didCheckForPreferredContentSizeCategoryOverride;

@@ -9,8 +9,8 @@
 @class NAFuture, NSDate, NSString;
 
 @protocol HFReorderableHomeKitObject <HFHomeKitObject>
-@property(readonly, copy, nonatomic) NSString *hf_displayName;
-@property(readonly, copy, nonatomic) NSDate *hf_dateAdded;
 - (NAFuture *)hf_updateDateAdded:(NSDate *)arg1;
+@property(nonatomic, readonly) NSString *hf_displayName;
+@property(nonatomic, readonly) NSDate *hf_dateAdded;
 @end
 

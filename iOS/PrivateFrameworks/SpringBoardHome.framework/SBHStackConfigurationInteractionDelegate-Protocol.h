@@ -6,10 +6,12 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class NSString, SBHStackConfigurationInteraction, SBIcon, SBIconView, SBWidgetIcon, UIView, UIViewController;
-@protocol SBHWidgetSheetViewControllerPresenter, SBIconDragPreview, UIDropSession;
+@class NSString, SBHStackConfigurationInteraction, SBIcon, SBIconView, SBWidgetIcon, UIView, UIViewController, UIWindow, UIWindowScene;
+@protocol SBHWidgetSheetViewControllerPresenter, SBIconDragPreview, SBIconDragPreviewContaining, SBLeafIconDataSource, UIDropSession;
 
 @protocol SBHStackConfigurationInteractionDelegate <NSObject>
+- (id <SBLeafIconDataSource>)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 promoteSuggestedWidget:(id <SBLeafIconDataSource>)arg2 withinStack:(SBWidgetIcon *)arg3;
+- (UIWindow<SBIconDragPreviewContaining> *)windowForIconDragPreviewsForStackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 forWindowScene:(UIWindowScene *)arg2;
 - (UIView<SBIconDragPreview> *)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 dragPreviewForIconView:(SBIconView *)arg2;
 - (void)stackConfigurationInteractionWillAnimateWidgetInsertion:(SBHStackConfigurationInteraction *)arg1;
 - (void)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 noteDidRemoveSuggestedWidgetIcon:(SBWidgetIcon *)arg2;

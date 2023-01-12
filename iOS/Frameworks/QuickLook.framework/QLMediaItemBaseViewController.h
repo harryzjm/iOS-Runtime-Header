@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuickLook/QLToolbarButtonAction-Protocol.h>
+#import "QLScrollableContentItemViewController.h"
 
 @class AVAsset, AVPlayer, AVPlayerLayer, NSError, NSObject, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface QLMediaItemBaseViewController <QLToolbarButtonAction>
+@interface QLMediaItemBaseViewController : QLScrollableContentItemViewController
 {
     NSObject *_playbackTimeObserver;
     _Bool _playing;

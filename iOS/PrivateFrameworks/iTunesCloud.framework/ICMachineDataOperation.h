@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ICAsyncOperation.h"
+
 @class ICStoreRequestContext, NSData;
 
 __attribute__((visibility("hidden")))
-@interface ICMachineDataOperation
+@interface ICMachineDataOperation : ICAsyncOperation
 {
     NSData *_data;
     ICStoreRequestContext *_requestContext;

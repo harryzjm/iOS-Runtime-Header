@@ -6,13 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/KNInspectableAnimation-Protocol.h>
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-#import <KeynoteQuicklook/TSKModel-Protocol.h>
-
 @class KNBuild, KNBuildChunkIdentifier, KNSlide, NSArray, NSSet, NSString, NSUUID, TSPLazyReference;
 
-@interface KNBuildChunk : TSPObject <KNInspectableAnimation, NSCopying, TSKModel>
+@interface KNBuildChunk : TSPObject
 {
     NSUUID *_buildId;
     KNBuildChunkIdentifier *_buildChunkIdentifier;

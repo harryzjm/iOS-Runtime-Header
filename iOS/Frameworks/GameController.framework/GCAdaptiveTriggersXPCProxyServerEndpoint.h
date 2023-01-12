@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCAdaptiveTriggersXPCProxyRemoteServerEndpointInterface-Protocol.h>
-#import <GameController/_GCIPCEndpointServer-Protocol.h>
-
 @class GCDeviceAdaptiveTriggersPayload, NSArray, NSString;
 @protocol GCAdaptiveTriggersXPCProxyRemoteClientEndpointInterface, GCAdaptiveTriggersXPCProxyServerEndpointDelegate, NSObject><NSCopying><NSSecureCoding, _GCControllerComponentDescription, _GCIPCEndpointConnection;
 
 __attribute__((visibility("hidden")))
-@interface GCAdaptiveTriggersXPCProxyServerEndpoint : NSObject <_GCIPCEndpointServer, GCAdaptiveTriggersXPCProxyRemoteServerEndpointInterface>
+@interface GCAdaptiveTriggersXPCProxyServerEndpoint : NSObject
 {
     id <GCAdaptiveTriggersXPCProxyRemoteClientEndpointInterface> _clientEndpoint;
     id <_GCIPCEndpointConnection> _connection;

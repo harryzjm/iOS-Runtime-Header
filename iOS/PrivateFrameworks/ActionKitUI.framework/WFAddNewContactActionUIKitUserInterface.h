@@ -6,14 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/CNContactViewControllerDelegate-Protocol.h>
-#import <ActionKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFAddNewContactActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFAddNewContactActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFAddNewContactActionUserInterface, CNContactViewControllerDelegate, UIAdaptivePresentationControllerDelegate>
+@interface WFAddNewContactActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

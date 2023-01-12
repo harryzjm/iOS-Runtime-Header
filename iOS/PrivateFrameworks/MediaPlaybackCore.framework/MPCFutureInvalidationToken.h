@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class MPCFuture;
 
 __attribute__((visibility("hidden")))
-@interface MPCFutureInvalidationToken : NSObject <NSCopying>
+@interface MPCFutureInvalidationToken : NSObject
 {
     MPCFuture *_future;
 }
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) MPCFuture *future; // @synthesize future=_future;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 
 @end
 

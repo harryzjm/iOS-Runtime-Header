@@ -4,16 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/VKInteractiveMap-Protocol.h>
-#import <VectorKit/VKMapModelDelegate-Protocol.h>
-
-@class NSArray, NSString, VKMapModel, VKTimedAnimation;
+@class NSArray, NSString, VKTimedAnimation;
 @protocol VKInteractiveMapDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKMapCanvas <VKMapModelDelegate, VKInteractiveMap>
+@interface VKMapCanvas
 {
-    VKMapModel *_map;
     struct CGSize _lastCanvasSize;
     optional_44235073 _lastValidCanvasSizeZoomLevel;
     VKTimedAnimation *_horizontalOffsetAnimation;
@@ -28,12 +24,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) _Bool trafficEnabled; // @synthesize trafficEnabled=_trafficEnabled;
 @property(nonatomic) double canonicalSkyHeight; // @synthesize canonicalSkyHeight=_canonicalSkyHeight;
-@property(nonatomic) id <VKInteractiveMapDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) VKMapModel *map; // @synthesize map=_map;
+@property(nonatomic) __weak id <VKInteractiveMapDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)didBecomeInActive;
 - (void)didBecomeActive;
 - (void)populateDebugNode:(void *)arg1 withOptions:(const void *)arg2;
-- (id)navigationPuck;
 - (long long)tileSize;
 - (void)setCameraHorizontalOffset:(double)arg1 duration:(double)arg2 timingFunction:(id)arg3;
 - (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
@@ -41,11 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)clearScene;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
 - (void)goToTileX:(int)arg1 Y:(int)arg2 Z:(int)arg3 tileSize:(int)arg4;
-- (void)mapModelDidUpdateMinMaxZoomLevel:(id)arg1;
-- (void)mapModelDidReloadStylesheet:(id)arg1;
-- (void)mapModelLabelsDidLayout:(id)arg1;
-- (void)mapModel:(id)arg1 labelMarkerDidChangeState:(const void *)arg2;
-- (void)mapModel:(id)arg1 selectedLabelMarkerWillDisappear:(const void *)arg2;
 - (_Bool)isPointValidForGesturing:(struct CGPoint)arg1;
 - (_Bool)shouldHideOffscreenSelectedAnnotation;
 - (CDUnknownBlockType)globeAnnotationCoordinateTest;
@@ -73,11 +62,11 @@ __attribute__((visibility("hidden")))
 - (id)initWithMapEngine:(void *)arg1 inBackground:(_Bool)arg2;
 - (void)transferStateFromCanvas:(id)arg1;
 - (void)setContentsScale:(double)arg1;
-- (void)reloadStylesheet;
 - (void)setMapType:(int)arg1 animated:(_Bool)arg2;
 - (void)setMapType:(int)arg1;
 - (id)attributionsForCurrentRegion;
 @property(readonly, nonatomic) NSArray *visibleTileSets;
+- (_Bool)_isGlobeEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

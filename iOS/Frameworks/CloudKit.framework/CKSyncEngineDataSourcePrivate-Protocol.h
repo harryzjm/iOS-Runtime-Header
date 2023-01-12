@@ -6,13 +6,15 @@
 
 #import <CloudKit/CKSyncEngineDataSource-Protocol.h>
 
-@class CKRecordZoneID, CKSyncEngine;
+@class CKRecordZoneID, CKSyncEngine, NSArray;
 
 @protocol CKSyncEngineDataSourcePrivate <CKSyncEngineDataSource>
 
 @optional
+- (NSArray *)syncEngine:(CKSyncEngine *)arg1 relatedApplicationBundleIdentifiersForZoneIDs:(NSArray *)arg2 recordIDs:(NSArray *)arg3;
+- (_Bool)syncEngine:(CKSyncEngine *)arg1 shouldFetchAssetContentsForZoneID:(CKRecordZoneID *)arg2;
+- (_Bool)syncEngine:(CKSyncEngine *)arg1 shouldFetchChangesForZoneID:(CKRecordZoneID *)arg2;
 - (void)syncEngineDidEndFetchingChanges:(CKSyncEngine *)arg1;
 - (void)syncEngineDidBeginFetchingChanges:(CKSyncEngine *)arg1;
-- (_Bool)syncEngine:(CKSyncEngine *)arg1 shouldFetchChangesForZoneID:(CKRecordZoneID *)arg2;
 @end
 

@@ -9,6 +9,7 @@
 @class MUPlaceSectionController, MUPresentationOptions;
 
 @protocol MUPlaceRibbonSectionControllerDelegate <NSObject>
+- (void)ribbonSectionControllerDidTapHours:(MUPlaceSectionController *)arg1;
 - (void)ribbonSectionControllerDidTapAddRatings:(MUPlaceSectionController *)arg1 initialRatingState:(long long)arg2 withPresentationOptions:(MUPresentationOptions *)arg3;
 @end
 

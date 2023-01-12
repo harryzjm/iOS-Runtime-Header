@@ -6,6 +6,9 @@
 
 @protocol BMSyncServiceServerProtocol
 - (void)peerInformationWithReply:(void (^)(NSArray *, NSError *))arg1;
-- (void)triggerSyncWithReply:(void (^)(NSError *))arg1;
+- (void)cloudKitSyncWithReply:(void (^)(NSArray *, NSArray *))arg1;
+- (void)rapportSyncWithReply:(void (^)(NSArray *, NSArray *))arg1;
+- (void)triggerCloudKitSyncWithReply:(void (^)(NSError *))arg1;
+- (void)triggerRapportSyncWithReply:(void (^)(NSError *))arg1;
 @end
 

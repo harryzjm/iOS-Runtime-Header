@@ -8,12 +8,12 @@
 
 @interface _TtCC14CoreChartSwift21OpChartGestureHandler7Handler
 {
-    MISSING_TYPE *gestures;
-    MISSING_TYPE *xScale;
-    MISSING_TYPE *yScale;
-    MISSING_TYPE *plotWidth;
-    MISSING_TYPE *plotHeight;
+    MISSING_TYPE *state;
+    MISSING_TYPE *nextState;
     MISSING_TYPE *isHovering;
+    MISSING_TYPE *isDragging;
+    MISSING_TYPE *draggingStartLocation;
+    MISSING_TYPE *mutex;
 }
 
 @end

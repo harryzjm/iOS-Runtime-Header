@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIFeedbackPlayer_Internal-Protocol.h>
+#import "_UIFeedbackEngine.h"
 
 @class NSCountedSet;
 
 __attribute__((visibility("hidden")))
-@interface _UIFeedbackSystemSoundEngine <_UIFeedbackPlayer_Internal>
+@interface _UIFeedbackSystemSoundEngine : _UIFeedbackEngine
 {
     CDUnknownBlockType _invalidationBlock;
     NSCountedSet *_warmSSIDs;

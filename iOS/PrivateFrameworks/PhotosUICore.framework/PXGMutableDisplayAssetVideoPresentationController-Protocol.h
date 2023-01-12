@@ -7,22 +7,25 @@
 @class NSString, PXMediaProvider;
 
 @protocol PXGMutableDisplayAssetVideoPresentationController
-@property(nonatomic) CDStruct_1b6d18a9 desiredTime;
+@property(nonatomic) CDStruct_198678f7 desiredTime;
 @property(nonatomic) _Bool isMixingAudioWithOthersEnabled;
 @property(nonatomic) _Bool isDuckingOtherAudioEnabled;
 @property(copy, nonatomic) NSString *audioSessionCategory;
+@property(nonatomic) _Bool resetsDesiredPlayStateOnHide;
+@property(nonatomic) struct CGSize targetSize;
 @property(nonatomic) _Bool isVisible;
 @property(nonatomic) _Bool isCleanApertureCompensationEnabled;
 @property(nonatomic) _Bool isCrossfadingFromStillToVideoEnabled;
 @property(nonatomic) _Bool isLoopingEnabled;
-@property(nonatomic) CDStruct_e83c9415 playbackTimeRange;
+@property(nonatomic) CDStruct_198678f7 playbackStartTime;
+@property(nonatomic) CDStruct_3c1748cc playbackTimeRange;
 @property(nonatomic) long long desiredPlayState;
 @property(nonatomic) _Bool shouldDisableAutomaticPixelBufferUpdates;
 @property(nonatomic) _Bool shouldDisplayPreviousNonnullPixelBuffer;
-- (void)stopObservingBoundaryTime:(CDStruct_1b6d18a9)arg1;
-- (void)startObservingBoundaryTime:(CDStruct_1b6d18a9)arg1;
-- (void)synchronouslySeekToDesiredTime:(CDStruct_1b6d18a9)arg1 updatePixelBufferSource:(_Bool)arg2;
-- (void)setDesiredTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3;
+- (void)stopObservingBoundaryTime:(CDStruct_198678f7)arg1;
+- (void)startObservingBoundaryTime:(CDStruct_198678f7)arg1;
+- (void)synchronouslySeekToDesiredTime:(CDStruct_198678f7)arg1 updatePixelBufferSource:(_Bool)arg2;
+- (void)setDesiredTime:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3;
 - (void)seekToBeginning;
 - (void)setVolume:(float)arg1 withFade:(_Bool)arg2;
 - (void)prerollForImmediatePlaybackAtRate:(float)arg1 withMediaProvider:(PXMediaProvider *)arg2;

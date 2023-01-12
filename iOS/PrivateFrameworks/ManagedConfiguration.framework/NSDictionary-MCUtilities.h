@@ -17,6 +17,11 @@
 - (id)MCRemovedKeysFromDictionary:(id)arg1;
 - (id)MCDictionarySubtractiveDeltaToCreateDictionary:(id)arg1;
 - (id)MCDictionaryAdditiveDeltaToCreateDictionary:(id)arg1;
+- (_Bool)MCValidateUnionRestriction:(id)arg1 inRestrictions:(id)arg2 defaultRestrictions:(id)arg3;
+- (_Bool)MCValidateIntersectionRestriction:(id)arg1 inRestrictions:(id)arg2 defaultRestrictions:(id)arg3;
+- (_Bool)MCValidateValueRestriction:(id)arg1 inRestrictions:(id)arg2 defaultRestrictions:(id)arg3;
+- (_Bool)MCValidateBoolRestriction:(id)arg1 inRestrictions:(id)arg2 defaultRestrictions:(id)arg3;
+- (_Bool)MCValidateRestrictions;
 - (id)MCShortenedPlistDescription;
 - (id)MCRetainOptionalNonZeroLengthStringKey:(id)arg1 errorDomain:(id)arg2 invalidDataCode:(long long)arg3 invalidDataErrorString:(id)arg4 outError:(id *)arg5;
 - (id)MCRetainRequiredNonZeroLengthStringKey:(id)arg1 errorDomain:(id)arg2 missingDataCode:(long long)arg3 missingDataErrorString:(id)arg4 invalidDataCode:(long long)arg5 invalidDataErrorString:(id)arg6 outError:(id *)arg7;

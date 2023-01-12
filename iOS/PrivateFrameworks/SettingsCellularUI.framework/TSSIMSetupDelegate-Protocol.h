@@ -11,6 +11,7 @@
 @protocol TSSIMSetupDelegate <NSObject>
 
 @optional
+- (void)simSetupFlowCellularServiceChanged:(unsigned long long)arg1;
 - (void)receivedResponse;
 - (void)waitForResponse:(UIViewController *)arg1;
 - (long long)userConsentResponse;

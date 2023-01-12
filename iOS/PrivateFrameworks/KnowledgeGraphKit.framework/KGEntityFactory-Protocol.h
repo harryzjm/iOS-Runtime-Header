@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary;
+@class NSDictionary, NSSet;
 @protocol KGEdge, KGNode;
 
 @protocol KGEntityFactory
-- (id <KGEdge>)edgeWithIdentifier:(unsigned long long)arg1 labels:(NSArray *)arg2 weight:(float)arg3 properties:(NSDictionary *)arg4 sourceNode:(id <KGNode>)arg5 targetNode:(id <KGNode>)arg6;
-- (id <KGNode>)nodeWithIdentifier:(unsigned long long)arg1 labels:(NSArray *)arg2 weight:(float)arg3 properties:(NSDictionary *)arg4;
+- (id <KGEdge>)edgeWithIdentifier:(unsigned long long)arg1 labels:(NSSet *)arg2 properties:(NSDictionary *)arg3 sourceNode:(id <KGNode>)arg4 targetNode:(id <KGNode>)arg5;
+- (id <KGNode>)nodeWithIdentifier:(unsigned long long)arg1 labels:(NSSet *)arg2 properties:(NSDictionary *)arg3;
 @end
 

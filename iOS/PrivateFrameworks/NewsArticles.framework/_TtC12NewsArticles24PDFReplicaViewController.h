@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *pdfView;
     MISSING_TYPE *coverViewManager;
     MISSING_TYPE *keyCommandManager;
+    MISSING_TYPE *commands;
     MISSING_TYPE *loadingIndicatorProvider;
     MISSING_TYPE *pinchRecognizer;
     MISSING_TYPE *loadingStateMachine;

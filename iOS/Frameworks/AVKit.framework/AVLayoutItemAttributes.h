@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVLayoutItemAttributes : NSObject <NSCopying>
+@interface AVLayoutItemAttributes : NSObject
 {
     _Bool _hasFlexibleContentSize;
     _Bool _prefersSecondaryMaterialOverlay;

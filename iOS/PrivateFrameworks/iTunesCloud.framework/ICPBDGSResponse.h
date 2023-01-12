@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class ICPBDGSFinishDelegationResponse, ICPBDGSStartDelegationResponse;
 
 __attribute__((visibility("hidden")))
-@interface ICPBDGSResponse : PBCodable <NSCopying>
+@interface ICPBDGSResponse : PBCodable
 {
     ICPBDGSFinishDelegationResponse *_finishDelegationResponse;
     unsigned int _requestUniqueID;

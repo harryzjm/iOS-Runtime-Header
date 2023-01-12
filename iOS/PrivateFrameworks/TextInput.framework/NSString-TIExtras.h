@@ -23,9 +23,12 @@
 + (struct USet *)_nonHiraganaKatakanaOrBopomofoSet;
 + (struct USet *)_nonKatakanaOrKanjiSet;
 + (struct USet *)_nonHiraganaOrKatakanaSet;
++ (struct USet *)_nonKoreanCharacterSet;
 + (struct USet *)_nonIdeographicCharacterSet;
 + (struct USet *)_characterSetWithPattern:(id)arg1;
 + (id)_stringWithUnichar:(unsigned int)arg1;
+- (_Bool)smartQuoteInsensitiveStringEquivalent:(id)arg1 forLocale:(id)arg2;
+- (id)normalizeSmartQuotedStringForLocale:(id)arg1;
 - (unsigned long long)_indexFromStartingIndex:(unsigned long long)arg1 byIncrementingComposedCharacterSequenceCount:(unsigned long long)arg2;
 - (unsigned long long)editDistanceFrom:(id)arg1;
 - (_Bool)containsSubstring:(id)arg1;
@@ -81,6 +84,7 @@
 - (_Bool)_containsHiraganaOnly;
 - (_Bool)_containsJapaneseOnly;
 - (_Bool)_containsJapanese;
+- (_Bool)_containsKorean;
 - (_Bool)_containsIdeographicCharacters;
 - (unsigned long long)_graphemeCount;
 - (id)_graphemeAtIndex:(unsigned long long)arg1;
@@ -108,6 +112,7 @@
 - (struct _NSRange)_rangeOfString:(id)arg1 fromLocation:(unsigned long long)arg2;
 - (struct _NSRange)_rangeOfCharacterClusterAtIndex:(unsigned long long)arg1 withClusterOffset:(long long)arg2;
 - (struct _NSRange)_rangeOfBackwardDeletionClusterAtIndex:(unsigned long long)arg1;
+- (id)_stringWithLongestWhitespaceDelimitedSuffixOfMaxLength:(unsigned long long)arg1;
 - (id)_stringByReplacingCharacter:(unsigned int)arg1 withCharacter:(unsigned int)arg2;
 - (id)_stringByReplacingCharactersInSet:(struct __CFCharacterSet *)arg1 withCharacter:(unsigned int)arg2;
 - (id)_stringByTrimmingLastCharacter;

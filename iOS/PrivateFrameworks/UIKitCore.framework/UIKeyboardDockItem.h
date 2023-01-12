@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool active;
 @property(nonatomic) _Bool enabled;
 - (id)imageWithRenderConfig:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithImageName:(id)arg1 identifier:(id)arg2;
 
 @end

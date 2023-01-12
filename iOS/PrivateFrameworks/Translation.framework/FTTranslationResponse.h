@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTTranslationResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTTranslationResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,9 +19,16 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_eb48cfa2)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) _Bool final_message;
 @property(readonly, nonatomic) NSString *sequence_id;
+- (void)engine_output_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)engine_output_count;
+- (id)engine_output_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *engine_output;
 @property(readonly, nonatomic) NSString *engine_input;
+- (void)n_best_translated_phrases_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)n_best_translated_phrases_count;
+- (id)n_best_translated_phrases_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *n_best_translated_phrases;
 @property(readonly, nonatomic) NSString *return_string;
 @property(readonly, nonatomic) int return_code;

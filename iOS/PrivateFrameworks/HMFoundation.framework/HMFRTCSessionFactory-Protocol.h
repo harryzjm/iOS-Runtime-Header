@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, RTCReporting;
+@class NSString, NSUUID, RTCReporting;
 
 @protocol HMFRTCSessionFactory
-- (RTCReporting *)sessionWithServiceName:(NSString *)arg1;
+- (RTCReporting *)sessionWithServiceName:(NSString *)arg1 samplingUUID:(NSUUID *)arg2 containsRealtime:(_Bool)arg3;
 @end
 

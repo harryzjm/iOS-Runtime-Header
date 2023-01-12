@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNFeaturePrintExtractorProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNVGGishExtractor : NSObject <SNFeaturePrintExtractorProtocol>
+@interface SNVGGishExtractor : NSObject
 {
     shared_ptr_f6ac7592 _graph;
     unsigned int _blockSize;

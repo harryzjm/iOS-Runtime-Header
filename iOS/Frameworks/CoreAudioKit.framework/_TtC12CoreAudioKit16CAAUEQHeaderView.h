@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <CoreAudioKit/UITextFieldDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12CoreAudioKit16CAAUEQHeaderView : UIView <UITextFieldDelegate>
+@interface _TtC12CoreAudioKit16CAAUEQHeaderView : UIView
 {
     MISSING_TYPE *appleLogo;
     MISSING_TYPE *auLabel;
@@ -28,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)adjustViewIfHorizontallyCompressed:(struct CGSize)arg1;
+- (void)setConstraintsWith:(id)arg1;
 - (void)endEditingWithId:(unsigned int)arg1;
 - (void)startEditingWithId:(unsigned int)arg1;
 - (void)endTouchWithNotification:(id)arg1;
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)setParameterWithId:(unsigned int)arg1 value:(float)arg2;
 - (void)setColorForParameterWithId:(unsigned int)arg1 color:(id)arg2;
 - (void)setTitle:(id)arg1 abbreviated:(id)arg2;
+- (void)addParameterWithId:(unsigned int)arg1 name:(id)arg2 shortName:(id)arg3 symbolName:(id)arg4 value:(float)arg5 min:(float)arg6 max:(float)arg7 logBase:(float)arg8 formatter:(id)arg9 unit:(id)arg10 additionalPad:(double)arg11;
 - (void)addParameterWithId:(unsigned int)arg1 name:(id)arg2 shortName:(id)arg3 value:(float)arg4 min:(float)arg5 max:(float)arg6 logBase:(float)arg7 formatter:(id)arg8 unit:(id)arg9 additionalPad:(double)arg10;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (_Bool)textFieldShouldReturn:(id)arg1;

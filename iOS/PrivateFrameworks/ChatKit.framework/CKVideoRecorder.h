@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ChatKit/AVCaptureFileOutputRecordingDelegate-Protocol.h>
-
 @class AVCaptureDevice, AVCaptureDeviceInput, AVCaptureMovieFileOutput, AVCaptureSession, AVCaptureStillImageOutput, AVCaptureVideoPreviewLayer, NSObject, NSString, NSURL;
 @protocol CKVideoRecorderDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CKVideoRecorder : UIViewController <AVCaptureFileOutputRecordingDelegate>
+@interface CKVideoRecorder : UIViewController
 {
     long long _currentDevice;
     _Bool _previousStatusBarHidden;

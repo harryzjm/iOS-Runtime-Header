@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFCore/AVAsynchronousKeyValueLoading-Protocol.h>
-
 @class AVDispatchOnce, AVWeakReference, NSArray, NSDictionary, NSLocale, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVAssetTrackInspector <AVAsynchronousKeyValueLoading>
+@interface AVAssetTrackInspector
 {
     AVWeakReference *_weakReference;
     AVDispatchOnce *_synthesizeMediaCharacteristicsOnce;
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)makeSampleCursorAtFirstSampleInDecodeOrder;
 - (id)makeSampleCursorWithPresentationTimeStamp:(CDStruct_1b6d18a9)arg1;
 @property(readonly, nonatomic) _Bool canProvideSampleCursors;
+@property(readonly, nonatomic) _Bool hasSeamSamples;
 @property(readonly, nonatomic) _Bool isAudibleBooksContentAuthorized;
 @property(readonly, nonatomic) _Bool hasAudibleBooksContent;
 @property(readonly, nonatomic) _Bool hasProtectedContent;

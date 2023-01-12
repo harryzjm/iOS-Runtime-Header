@@ -13,7 +13,7 @@
 - (float)hitTestResultDistanceFromCamera:(id)arg1;
 - (_Bool)hitTestResult:(id)arg1 isPlaneOfType:(unsigned long long)arg2;
 @property(readonly, nonatomic) MISSING_TYPE *cameraPosition;
-- (id)hitTestOnPlaneWithWorldTransform:(CDStruct_14d5dc5e)arg1 forImagePoint:(float)arg2 maxDistance: /* Error: Ran out of types for this method. */;
+- (id)hitTestOnPlaneWithWorldTransform:(CDStruct_f1db2b5e)arg1 forImagePoint:(float)arg2 maxDistance: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)normalizedImagePointForScreenPoint:(struct CGSize)arg1 viewportSize:(long long)arg2 orientation: /* Error: Ran out of types for this method. */;
 @end
 

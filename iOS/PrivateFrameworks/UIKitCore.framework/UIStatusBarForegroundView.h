@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIAccessibilityHUDGestureDelegate-Protocol.h>
+#import "UIView.h"
 
 @class NSMutableArray, NSString, UIAccessibilityHUDGestureManager, UIStatusBar, UIStatusBarComposedData, UIStatusBarForegroundStyleAttributes, UIStatusBarLayoutManager;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarForegroundView <UIAccessibilityHUDGestureDelegate>
+@interface UIStatusBarForegroundView : UIView
 {
     _Bool _usesVerticalLayout;
-    _Bool _itemIsEnabled[50];
+    _Bool _itemIsEnabled[51];
     UIStatusBarLayoutManager *_layoutManagers[3];
     int _ignoreDataLevel;
     NSMutableArray *_actionAnimationStack;

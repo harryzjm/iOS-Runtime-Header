@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/GLKViewDelegate-Protocol.h>
-
 @class EAGLContext, GLKBaseEffect, GLKView, MISSING_TYPE, NSString, UIDynamicAnimator;
 
 __attribute__((visibility("hidden")))
-@interface UIDynamicsDebug : NSObject <GLKViewDelegate>
+@interface UIDynamicsDebug : NSObject
 {
     unsigned int _vertexBuffer;
     struct {

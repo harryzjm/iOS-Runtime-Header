@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _AUStaticParameterInfo : NSObject <NSSecureCoding>
+@interface _AUStaticParameterInfo : NSObject
 {
     float _minValue;
     float _maxValue;

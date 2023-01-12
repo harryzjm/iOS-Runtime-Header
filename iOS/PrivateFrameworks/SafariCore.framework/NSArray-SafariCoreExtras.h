@@ -7,18 +7,24 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (SafariCoreExtras)
++ (id)safari_arrayWithObjectsUnlessNil:(id)arg1;
 + (id)safari_arrayWithPropertyListData:(id)arg1 options:(unsigned long long)arg2;
 + (id)safari_arrayFromDictionaryOfObjectsByIndex:(id)arg1;
+- (id)safari_dictionaryByMappingObjectsAsKeysToObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)safari_dictionaryByMappingObjectsToKeysUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_longestIncreasingSubsequenceUsingValues:(CDUnknownBlockType)arg1;
+- (id)safari_partionedArrayUsingCondition:(CDUnknownBlockType)arg1;
 - (id)safari_splitArrayUsingCondition:(CDUnknownBlockType)arg1;
 - (id)safari_objectAfter:(id)arg1;
 - (id)safari_objectBefore:(id)arg1;
 - (id)safari_prefixWithMaxLength:(unsigned long long)arg1;
 - (id)safari_flattenedArray;
+- (id)safari_arrayByRemovingObject:(id)arg1;
 - (id)safari_arrayByAddingObjectsFromArrayIfNotDuplicates:(id)arg1;
 - (_Bool)safari_noObjectsPassTest:(CDUnknownBlockType)arg1;
 - (_Bool)safari_allObjectsPassTest:(CDUnknownBlockType)arg1;
 - (_Bool)safari_containsObjectPassingTest:(CDUnknownBlockType)arg1;
+- (id)safari_lastObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)safari_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)_safari_generateDiffWithLongestCommonSubsequenceLengths:(id)arg1 array:(id)arg2 indexIntoSelf:(unsigned long long)arg3 indexIntoArray:(unsigned long long)arg4;
 - (id)_safari_computeLengthsOfLongestSubsequencesCommonWithArray:(id)arg1;

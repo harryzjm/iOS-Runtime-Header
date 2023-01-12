@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EKEventDetailCell.h"
+
 @class EKEventDetailAttendeesListView, NSArray, NSLayoutConstraint, NSObject, UIImageView, UILabel, UIViewController;
-@protocol EKEventDetailAttendeeCellDelegate;
+@protocol EKEventDetailAttendeeCellDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDetailAttendeesCell
+@interface EKEventDetailAttendeesCell : EKEventDetailCell
 {
     UILabel *_titleLabel;
     UILabel *_countLabel;
@@ -16,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_listHeight;
     EKEventDetailAttendeesListView *_attendeesListView;
     NSArray *_cachedAttendeesWithoutOrganizerAndLocations;
+    NSObject<OS_dispatch_queue> *_sortAttendeesQueue;
     UIViewController *_viewController;
     NSObject<EKEventDetailAttendeeCellDelegate> *_attendeeCellDelegate;
 }

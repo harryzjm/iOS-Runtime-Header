@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewController.h"
+
 @class NSArray, NSMutableArray, UIScrollView, UISegment, UISegmentedControl;
 
 __attribute__((visibility("hidden")))
-@interface UIAccessibilityLargeTextSegmentedViewController
+@interface UIAccessibilityLargeTextSegmentedViewController : UIViewController
 {
     UISegmentedControl *_segmentedControl;
     NSMutableArray *_segmentButtons;

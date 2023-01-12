@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDWPExternalTextWrap : NSObject <GQDNameMappable>
+@interface GQDWPExternalTextWrap : NSObject
 {
     _Bool mFloatingWrapEnabled;
     _Bool mInlineWrapEnabled;

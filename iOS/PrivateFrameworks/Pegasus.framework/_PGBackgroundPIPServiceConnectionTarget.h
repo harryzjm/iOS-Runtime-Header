@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Pegasus/PGBackgroundPIPClientToServerInterface-Protocol.h>
-
 @class BSServiceConnection, NSString;
 @protocol _PGBackgroundPIPServiceConnectionTargetDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _PGBackgroundPIPServiceConnectionTarget : NSObject <PGBackgroundPIPClientToServerInterface>
+@interface _PGBackgroundPIPServiceConnectionTarget : NSObject
 {
     struct os_unfair_lock_s _lock;
     NSString *_lock_activitySessionIdentifier;

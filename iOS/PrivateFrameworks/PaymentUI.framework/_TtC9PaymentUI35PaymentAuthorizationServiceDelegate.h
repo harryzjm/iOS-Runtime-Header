@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PaymentUI/PKPaymentAuthorizationServiceProtocol-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9PaymentUI35PaymentAuthorizationServiceDelegate : NSObject <PKPaymentAuthorizationServiceProtocol>
+@interface _TtC9PaymentUI35PaymentAuthorizationServiceDelegate : NSObject
 {
     MISSING_TYPE *stateMachine;
     MISSING_TYPE *context;

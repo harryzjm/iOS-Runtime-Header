@@ -6,6 +6,8 @@
 
 #import <Foundation/NSDictionary.h>
 
+@class NSString;
+
 @interface NSDictionary (HomeLocation)
 + (id)dictionaryByCombiningNonOverlappingDictionaries:(id)arg1;
 + (id)hmd_dictionaryWithActionExecutionError:(id)arg1;
@@ -14,5 +16,11 @@
 - (id)hmd_responseByRemovingEntriesForCharacteristics:(id)arg1;
 - (id)hmd_valueOfCharacteristic:(id)arg1 error:(id *)arg2;
 - (_Bool)hmd_isValidResponseForWriteRequest:(id)arg1 naturalLightingEnabled:(_Bool)arg2 error:(id *)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

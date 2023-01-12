@@ -6,16 +6,14 @@
 
 #import <Portrait/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, PTRenderRequest;
-@protocol MTLCommandBuffer, MTLDeviceSPI, MTLHeap, MTLLibrary, MTLPipelineLibrary, PTRenderState;
+@class NSDictionary, PTRenderRequest;
+@protocol MTLCommandBuffer, MTLDeviceSPI, MTLHeap, MTLLibrary, MTLPipelineLibrary;
 
 @protocol RenderingIntegration <NSObject>
-- (NSArray *)intermediateTextures;
 - (void)setResourceHeap:(id <MTLHeap>)arg1;
 - (unsigned long long)minimumResourceHeapSize;
-- (id <PTRenderState>)createRenderStateWithQuality:(int)arg1;
 - (int)prewarm;
 - (int)renderContinuousWithSource:(id <MTLCommandBuffer>)arg1 renderRequest:(PTRenderRequest *)arg2;
-- (id)initWithDevice:(id <MTLDeviceSPI>)arg1 library:(id <MTLLibrary>)arg2 pipelineLibrary:(id <MTLPipelineLibrary>)arg3 colorSize:(struct CGSize)arg4 disparitySize:(struct CGSize)arg5 debugRendering:(long long)arg6 verbose:(_Bool)arg7 gpuProfiling:(_Bool)arg8 config:(NSDictionary *)arg9;
+- (id)initWithDevice:(id <MTLDeviceSPI>)arg1 library:(id <MTLLibrary>)arg2 pipelineLibrary:(id <MTLPipelineLibrary>)arg3 colorSize:(struct CGSize)arg4 disparitySize:(struct CGSize)arg5 debugRendering:(long long)arg6 verbose:(_Bool)arg7 gpuProfiling:(_Bool)arg8 config:(NSDictionary *)arg9 quality:(int)arg10;
 @end
 

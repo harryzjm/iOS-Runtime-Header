@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIViewServiceImplicitAnimationDecodingProxy_EncodingProxyInterface-Protocol.h>
-
 @class NSString, _UIViewAnimationAttributes;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceImplicitAnimationDecodingProxy <_UIViewServiceImplicitAnimationDecodingProxy_EncodingProxyInterface>
+@interface _UIViewServiceImplicitAnimationDecodingProxy
 {
     SEL _implicitAnimationSelector;
     _UIViewAnimationAttributes *_animationAttributes;

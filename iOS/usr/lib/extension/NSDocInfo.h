@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface NSDocInfo : NSObject <NSCopying>
+@interface NSDocInfo : NSObject
 {
     long long time;
     unsigned short mode;

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeSettingsUI/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface STCommunicationLimits : NSObject <NSCopying>
+@interface STCommunicationLimits : NSObject
 {
     _Bool _contactsEditable;
     long long _screenTimeCommunicationLimit;

@@ -11,11 +11,32 @@
 __attribute__((visibility("hidden")))
 @interface WebAVMediaSelectionOption : NSObject
 {
-    NSString *_localizedDisplayName;
+    struct RetainPtr<NSString> _localizedDisplayName;
+    NSString *_mediaType;
 }
 
-@property(retain) NSString *localizedDisplayName; // @synthesize localizedDisplayName=_localizedDisplayName;
-- (void)dealloc;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
+- (id)track;
+- (id)languageCode;
+- (_Bool)_isDesignatedDefault;
+- (id)outOfBandIdentifier;
+- (id)outOfBandSource;
+- (id)mediaCharacteristics;
+- (id)displayNameWithLocale:(id)arg1;
+- (id)propertyList;
+- (id)associatedMediaSelectionOptionInMediaSelectionGroup:(id)arg1;
+- (id)metadataForFormat:(id)arg1;
+- (id)availableMetadataFormats;
+- (id)commonMetadata;
+- (id)locale;
+- (id)extendedLanguageTag;
+- (_Bool)isPlayable;
+- (_Bool)hasMediaCharacteristic:(id)arg1;
+- (id)mediaSubTypes;
+@property(readonly, nonatomic) NSString *localizedDisplayName;
+- (id)initWithMediaType:(id)arg1 displayName:(id)arg2;
 
 @end
 

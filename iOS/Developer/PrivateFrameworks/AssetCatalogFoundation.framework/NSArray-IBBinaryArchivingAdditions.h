@@ -6,12 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/IBOrderedCollection-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (IBBinaryArchivingAdditions) <IBBinaryArchiving, IBOrderedCollection>
+@interface NSArray (IBBinaryArchivingAdditions)
 + (id)ib_arrayByCopyingObject:(id)arg1 numberOfTimes:(long long)arg2;
 + (id)ib_arrayWithIndicesInRange:(struct _NSRange)arg1;
 + (id)ib_arrayWithCollection:(id)arg1;

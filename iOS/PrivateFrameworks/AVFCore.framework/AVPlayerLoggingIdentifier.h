@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVLoggingIdentifier-Protocol.h>
-
 @class AVPlayerLoggingIdentifierInternal, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVPlayerLoggingIdentifier : NSObject <AVLoggingIdentifier>
+@interface AVPlayerLoggingIdentifier : NSObject
 {
     AVPlayerLoggingIdentifierInternal *_priv;
 }

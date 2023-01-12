@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RecapPerformanceTesting/RPTTestParameters-Protocol.h>
-#import <RecapPerformanceTesting/_RPTCoordinateSpaces-Protocol.h>
-
 @class NSString, RPTCoordinateSpaceConverter;
 
 __attribute__((visibility("hidden")))
-@interface RPTOscillationScrollTestParameters : NSObject <_RPTCoordinateSpaces, RPTTestParameters>
+@interface RPTOscillationScrollTestParameters : NSObject
 {
     _Bool _shouldFlick;
     _Bool _preventDismissalGestures;
@@ -45,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)initialFingerPosition;
 - (void)scrollWithComposer:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 duration:(double)arg4;
 - (CDUnknownBlockType)composerBlock;
+- (struct CGPoint)_incrementPoint:(struct CGPoint)arg1 final:(_Bool)arg2;
 - (id)initWithTestName:(id)arg1 iterations:(unsigned long long)arg2 scrollingBounds:(struct CGRect)arg3 useFlicks:(_Bool)arg4 preventDismissalGestures:(_Bool)arg5 initialAmplitude:(double)arg6 amplitudeVariationPerIteration:(double)arg7 initialDirection:(long long)arg8 iterationDuration:(double)arg9 finishWithHalfIteration:(_Bool)arg10 completionHandler:(CDUnknownBlockType)arg11;
 - (id)initWithTestName:(id)arg1 iterations:(unsigned long long)arg2 scrollingBounds:(struct CGRect)arg3 useFlicks:(_Bool)arg4 preventDismissalGestures:(_Bool)arg5 initialAmplitude:(double)arg6 amplitudeVariationPerIteration:(double)arg7 initialDirection:(long long)arg8 iterationDuration:(double)arg9 finishWithHalfIteration:(_Bool)arg10;
 - (void)prepareWithComposer:(id)arg1;

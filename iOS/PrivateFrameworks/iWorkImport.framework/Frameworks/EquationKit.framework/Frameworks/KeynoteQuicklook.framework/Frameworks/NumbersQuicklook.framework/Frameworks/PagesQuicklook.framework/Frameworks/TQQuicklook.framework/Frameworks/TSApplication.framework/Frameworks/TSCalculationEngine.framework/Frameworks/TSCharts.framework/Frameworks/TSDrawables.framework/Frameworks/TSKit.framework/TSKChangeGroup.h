@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSKit/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface TSKChangeGroup : NSObject <NSCopying>
+@interface TSKChangeGroup : NSObject
 {
     NSMutableArray *_changesArray;
 }

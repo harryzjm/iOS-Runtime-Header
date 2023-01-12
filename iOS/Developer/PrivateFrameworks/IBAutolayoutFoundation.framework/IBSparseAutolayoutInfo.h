@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBAutolayoutInfoProvider-Protocol.h>
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class IBMutableIdentityDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
-@interface IBSparseAutolayoutInfo : NSObject <IBAutolayoutInfoProvider, IBBinaryArchiving>
+@interface IBSparseAutolayoutInfo : NSObject
 {
     IBMutableIdentityDictionary *_parentByObjectMap;
     IBMutableIdentityDictionary *_childrenByObjectMap;

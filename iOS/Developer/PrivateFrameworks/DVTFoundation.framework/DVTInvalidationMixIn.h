@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTStackBacktrace, NSString;
 
-@interface DVTInvalidationMixIn <DVTInvalidation>
+@interface DVTInvalidationMixIn
 {
 }
 
@@ -20,6 +18,7 @@
 - (void)DVTInvalidationMixIn_SoftAssertDidInvalidateDealloc;
 - (void)DVTInvalidationMixIn_HardAssertDidInvalidateDealloc;
 - (void)DVTInvalidationMixIn_DeZombifyDealloc;
+- (void)addAutoCancelledObject:(id)arg1;
 - (void)addAutoInvalidatedObject:(id)arg1;
 - (void)invalidate;
 - (void)primitiveInvalidate;

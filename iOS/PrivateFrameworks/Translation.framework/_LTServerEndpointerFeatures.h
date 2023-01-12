@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/NSSecureCoding-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _LTServerEndpointerFeatures : NSObject <NSSecureCoding>
+@interface _LTServerEndpointerFeatures : NSObject
 {
     long long _wordCount;
     long long _trailingSilenceDuration;

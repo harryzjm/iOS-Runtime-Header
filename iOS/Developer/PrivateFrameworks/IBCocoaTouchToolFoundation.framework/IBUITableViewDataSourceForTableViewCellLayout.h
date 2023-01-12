@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/UITableViewDataSource-Protocol.h>
-#import <IBCocoaTouchToolFoundation/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSIndexPath, NSString;
 
-@interface IBUITableViewDataSourceForTableViewCellLayout : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface IBUITableViewDataSourceForTableViewCellLayout : NSObject
 {
     NSArray *_cells;
     double _defaultHeight;

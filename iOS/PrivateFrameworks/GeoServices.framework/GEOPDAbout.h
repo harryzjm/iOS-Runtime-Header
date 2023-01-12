@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSMutableArray, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDAbout : PBCodable <NSCopying>
+@interface GEOPDAbout : PBCodable
 {
     PBUnknownFields *_unknownFields;
     NSMutableArray *_texts;

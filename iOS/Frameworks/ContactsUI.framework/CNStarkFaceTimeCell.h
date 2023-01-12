@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNStarkActionViewDelegate-Protocol.h>
+#import "CNContactCell.h"
 
 @class CNStarkActionView, NSDictionary, NSString, UILabel;
 @protocol CNPropertyCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNStarkFaceTimeCell <CNStarkActionViewDelegate>
+@interface CNStarkFaceTimeCell : CNContactCell
 {
     id <CNPropertyCellDelegate> _delegate;
     NSDictionary *_labelTextAttributes;

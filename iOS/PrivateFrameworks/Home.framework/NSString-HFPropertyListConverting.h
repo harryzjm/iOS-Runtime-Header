@@ -6,10 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <Home/HFPropertyListConvertible-Protocol.h>
-#import <Home/HFStringGenerator-Protocol.h>
-
-@interface NSString (HFPropertyListConverting) <HFPropertyListConvertible, HFStringGenerator>
+@interface NSString (HFPropertyListConverting)
 + (id)hf_stringWithFormat:(id)arg1 arguments:(id)arg2;
 + (id)hf_formattedPersonNameForFirstName:(id)arg1 lastName:(id)arg2;
 - (id)hf_stringByTrimmingTrailingHexCode;

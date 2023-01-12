@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITextInteraction.h"
+
 @class _UIKeyboardTextSelectionGestureController;
 
 __attribute__((visibility("hidden")))
-@interface UITextIndirectEditableInteraction
+@interface UITextIndirectEditableInteraction : UITextInteraction
 {
     _UIKeyboardTextSelectionGestureController *_textSelectionGestureController;
 }

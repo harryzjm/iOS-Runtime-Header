@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI16SessionRingsView : UIView
 {
     MISSING_TYPE *presenter;
+    MISSING_TYPE *notchInset;
     MISSING_TYPE *onNotchSide;
     MISSING_TYPE *shouldTuckToSide;
     MISSING_TYPE *contentView;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *ringClosureLabelPlatter;
     MISSING_TYPE *metricBuilder;
     MISSING_TYPE *stringBuilder;
+    MISSING_TYPE *platform;
     MISSING_TYPE *layoutGuideConstraints;
     MISSING_TYPE *metricsViewExpandedConstraints;
     MISSING_TYPE *metricsViewContractedConstraints;

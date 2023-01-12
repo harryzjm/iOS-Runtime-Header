@@ -6,9 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UITraitCollection;
-
 @protocol _UIFallbackEnvironment <NSObject>
-- (UITraitCollection *)_fallbackTraitCollection;
+- (void *)_fallbackTraitCollection;
 @end
 

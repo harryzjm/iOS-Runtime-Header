@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *aceServiceInvoker;
     MISSING_TYPE *deviceState;
+    MISSING_TYPE *rchExecutor;
 }
 
 @end

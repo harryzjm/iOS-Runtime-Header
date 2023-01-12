@@ -13,9 +13,9 @@
 @property(readonly, nonatomic) double ratioOfTrackedFirstPartiesToAllVisited;
 @property(readonly, nonatomic) NSSet *trackerOwnerNames;
 @property(readonly, nonatomic) WBSKnownTrackingThirdParty *mostSeenKnownTracker;
-@property(retain, nonatomic) NSArray *trackedFirstPartiesSortDescriptors;
+@property(copy, nonatomic) NSArray *trackedFirstPartiesSortDescriptors;
 @property(readonly, nonatomic) NSArray *trackedFirstParties;
-@property(retain, nonatomic) NSArray *knownTrackersSortDescriptors;
+@property(copy, nonatomic) NSArray *knownTrackersSortDescriptors;
 @property(readonly, nonatomic) NSArray *knownTrackers;
 - (void)loadDataFromStartDate:(NSDate *)arg1 toEndDate:(NSDate *)arg2 withCompletionHandler:(void (^)(void))arg3;
 - (void)loadDataWithCompletionHandler:(void (^)(void))arg1;

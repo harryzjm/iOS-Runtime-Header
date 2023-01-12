@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSKit/TSKLayerMediaPlayerController-Protocol.h>
-
 @class AVAsset, AVPlayerItem, AVPlayerLooper, AVQueuePlayer, NSArray, NSMutableSet, NSString;
 @protocol TSKAVPlayerControllerPlayerItemMediating, TSKMediaPlayerControllerDelegate;
 
-@interface TSKAVPlayerController : NSObject <TSKLayerMediaPlayerController>
+@interface TSKAVPlayerController : NSObject
 {
     AVQueuePlayer *mPlayer;
     id <TSKMediaPlayerControllerDelegate> mDelegate;

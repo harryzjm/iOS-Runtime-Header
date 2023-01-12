@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class NSPersistentStoreCoordinator, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -13,7 +14,8 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_queue;
     int _token;
-    id _store;
+    NSPersistentStoreCoordinator *_psc;
+    NSString *_storeID;
 }
 
 - (void).cxx_destruct;

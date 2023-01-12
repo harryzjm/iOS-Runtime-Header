@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPEncoderWriteCoordinatorDelegate-Protocol.h>
-
 @class NSString, TSPDeepCopyObjectMap, TSPObjectContext;
 
-@interface TSPDeepCopyWriteAssistant : NSObject <TSPEncoderWriteCoordinatorDelegate>
+@interface TSPDeepCopyWriteAssistant : NSObject
 {
     TSPObjectContext *_context;
     TSPDeepCopyObjectMap *_objectMap;

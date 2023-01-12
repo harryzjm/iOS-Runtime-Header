@@ -6,10 +6,16 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class SHSheetSession;
+@class SFCollaborationCloudSharingResult, SHSheetSession, UIActivity;
+@protocol SFCollaborationService;
 
 @protocol SHSheetSessionDelegate <NSObject>
-- (void)wantsObjectManipulationDidChangeForSession:(SHSheetSession *)arg1;
+- (id <SFCollaborationService>)collaborationServiceForSession:(SHSheetSession *)arg1;
+- (SFCollaborationCloudSharingResult *)collaborationSharingResultForActivity:(UIActivity *)arg1;
+- (void)collaborationFooterViewModelDidChangeForSession:(SHSheetSession *)arg1;
+- (void)isCollaborativeDidChangeForSession:(SHSheetSession *)arg1;
+- (void)headerMetadataDidChangeForSession:(SHSheetSession *)arg1;
+- (void)showOptionsDidChangeForSession:(SHSheetSession *)arg1;
 - (void)sessionConfigurationDidChangeForSession:(SHSheetSession *)arg1;
 @end
 

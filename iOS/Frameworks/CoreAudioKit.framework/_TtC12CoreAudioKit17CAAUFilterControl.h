@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAudioKit/CALayerDelegate-Protocol.h>
-
 @class CALayer, MISSING_TYPE;
 @protocol _TtP12CoreAudioKit27CAAUViewParameterDataSource_;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12CoreAudioKit17CAAUFilterControl : NSObject <CALayerDelegate>
+@interface _TtC12CoreAudioKit17CAAUFilterControl : NSObject
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataSource;
@@ -25,8 +23,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *enabled;
     MISSING_TYPE *bypassed;
     MISSING_TYPE *highlighted;
+    MISSING_TYPE *color;
     MISSING_TYPE *drawVerticalGuide;
     MISSING_TYPE *drawHorizontalGuide;
+    MISSING_TYPE *drawTrianglesOnEdges;
     MISSING_TYPE *type;
     MISSING_TYPE *widthType;
     MISSING_TYPE *location;
@@ -37,6 +37,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)init;
 - (void)layoutSublayersOfLayer:(id)arg1;
+- (void)setWithColor:(id)arg1;
+@property(nonatomic) _Bool bypassed; // @synthesize bypassed;
+@property(nonatomic) _Bool enabled; // @synthesize enabled;
 @property(nonatomic, retain) CALayer *controlLayer; // @synthesize controlLayer;
 @property(nonatomic, readonly) id <_TtP12CoreAudioKit27CAAUViewParameterDataSource_> dataSource; // @synthesize dataSource;
 

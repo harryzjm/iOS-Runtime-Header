@@ -7,6 +7,7 @@
 #import <Foundation/NSRegularExpression.h>
 
 @interface NSRegularExpression (IC)
++ (id)ic_uuidRegex;
 + (id)ic_regexForPrefixMatchingTokens:(id)arg1 substringMatchingTokens:(id)arg2;
 + (id)ic_patternForTokens:(id)arg1 matchWordBoundaries:(_Bool)arg2;
 + (id)ic_regexForSearchStrings:(id)arg1 matchWordBoundaries:(_Bool)arg2;

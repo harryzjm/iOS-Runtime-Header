@@ -6,7 +6,7 @@
 
 #import <Email/NSObject-Protocol.h>
 
-@class EMMailboxObjectID, EMMessageObjectID, EMObjectID, EMOutgoingMessage, NSString;
+@class EMMailboxObjectID, EMMessage, EMMessageObjectID, EMObjectID, EMOutgoingMessage, NSDate, NSString;
 @protocol EMOutgoingMessageRepositoryInterfaceObserver;
 
 @protocol EMOutgoingMessageRepositoryInterface <NSObject>
@@ -18,8 +18,12 @@
 - (void)resumeDeliveryQueue;
 - (void)suspendDeliveryQueue;
 - (void)outboxContainsMessageFromAccountObjectID:(EMObjectID *)arg1 completion:(void (^)(_Bool))arg2;
-- (void)deliverMessage:(EMOutgoingMessage *)arg1 usingMailDrop:(_Bool)arg2 completion:(void (^)(EMMessageDeliveryResult *))arg3;
+- (void)cancelLastDelayedMessage:(void (^)(_Bool))arg1;
+- (void)deliverMessage:(EMOutgoingMessage *)arg1 usingMailDrop:(_Bool)arg2 isCancelable:(_Bool)arg3 completion:(void (^)(EMMessageDeliveryResult *))arg4;
 - (void)deleteDraftsInMailboxID:(EMMailboxObjectID *)arg1 documentID:(NSString *)arg2 previousDraftObjectID:(EMMessageObjectID *)arg3;
+- (void)scheduleAlarmForSendLaterDate:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)updateSendLaterDate:(NSDate *)arg1 message:(EMMessage *)arg2 completion:(void (^)(EMMessage *))arg3;
+- (void)saveSendLaterMessage:(EMOutgoingMessage *)arg1 sendLaterDate:(NSDate *)arg2 completion:(void (^)(EMMessage *))arg3;
 - (void)saveDraftMessage:(EMOutgoingMessage *)arg1 mailboxID:(EMMailboxObjectID *)arg2 previousDraftObjectID:(EMMessageObjectID *)arg3 completion:(void (^)(EMMessage *))arg4;
 @end
 

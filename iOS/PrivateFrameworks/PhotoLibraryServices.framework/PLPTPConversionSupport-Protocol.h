@@ -6,12 +6,12 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class PLPTPAsset, PLPTPConversionResult;
+@class NSString, PLPTPAsset, PLPTPConversionResult, PLPTPConversionSourceHints;
 
 @protocol PLPTPConversionSupport <NSObject>
 @property(readonly, nonatomic) _Bool peerSupportsAdjustmentBaseResources;
 @property(readonly, nonatomic) _Bool peerSupportsTranscodeChoice;
 @property(readonly, nonatomic) _Bool penultimateIsPublic;
-- (PLPTPConversionResult *)conversionResultForAsset:(PLPTPAsset *)arg1 isVideo:(_Bool)arg2 isRender:(_Bool)arg3 forceLegacyConversion:(_Bool)arg4;
+- (PLPTPConversionResult *)conversionResultForAsset:(PLPTPAsset *)arg1 sourceHints:(PLPTPConversionSourceHints *)arg2 forceLegacyConversion:(_Bool)arg3 assetTypeLabel:(NSString *)arg4;
 @end
 

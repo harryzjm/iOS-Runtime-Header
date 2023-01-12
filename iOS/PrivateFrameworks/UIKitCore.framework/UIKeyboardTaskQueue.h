@@ -20,12 +20,14 @@ __attribute__((visibility("hidden")))
     NSArray *_activeOriginator;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *activeOriginator; // @synthesize activeOriginator=_activeOriginator;
 @property(retain, nonatomic) UIKeyboardTaskExecutionContext *executionContext; // @synthesize executionContext=_executionContext;
 - (_Bool)isMainThreadExecutingTask;
 - (void)performSingleTask:(CDUnknownBlockType)arg1;
 - (void)waitUntilTaskIsFinished:(id)arg1;
 - (void)performTask:(CDUnknownBlockType)arg1;
+- (_Bool)isEmpty;
 - (void)waitUntilAllTasksAreFinished;
 - (void)addDeferredTask:(CDUnknownBlockType)arg1;
 - (id)addAndReturnTask:(CDUnknownBlockType)arg1;
@@ -40,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)lockWhenReadyForMainThread;
 - (void)lock;
 - (id)init;
-- (void)dealloc;
 - (id)scheduleTask:(CDUnknownBlockType)arg1 timeInterval:(double)arg2 repeats:(_Bool)arg3;
 
 @end

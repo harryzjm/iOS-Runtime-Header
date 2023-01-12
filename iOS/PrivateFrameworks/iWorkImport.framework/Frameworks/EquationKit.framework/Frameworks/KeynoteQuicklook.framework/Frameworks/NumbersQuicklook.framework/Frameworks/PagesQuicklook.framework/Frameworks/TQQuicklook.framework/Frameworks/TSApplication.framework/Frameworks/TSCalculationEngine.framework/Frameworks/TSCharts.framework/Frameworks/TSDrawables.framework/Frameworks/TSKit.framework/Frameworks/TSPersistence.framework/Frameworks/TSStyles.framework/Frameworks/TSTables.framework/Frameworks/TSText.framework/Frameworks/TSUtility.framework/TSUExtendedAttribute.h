@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface TSUExtendedAttribute : NSObject <NSCopying>
+@interface TSUExtendedAttribute : NSObject
 {
     NSString *_name;
     NSData *_value;

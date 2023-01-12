@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSLayoutRule-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSStackLayoutRule : NSObject <NSLayoutRule>
+@interface NSStackLayoutRule : NSObject
 {
     NSArray *_stackedRects;
     double _spacing;

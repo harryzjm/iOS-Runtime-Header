@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class PSPointerClientController;
+@class NSSet, PSPointerClientController;
 
 @protocol PSPointerClientControllerDelegate <NSObject>
 
@@ -15,6 +15,7 @@
 - (void)pointerClientControllerWillDecelerate:(PSPointerClientController *)arg1 targetPointerPosition:(inout struct CGPoint *)arg2 velocity:(struct CGPoint)arg3 inContextID:(unsigned int)arg4 cursorRegionLookupRadius:(double)arg5 cursorRegionLookupResolution:(double)arg6 lookupConeAngle:(double)arg7;
 - (void)pointerClientControllerClientInteractionEnabledDidChange:(PSPointerClientController *)arg1;
 - (void)pointerClientControllerClientInteractionStateDidChange:(PSPointerClientController *)arg1;
+- (void)pointerClientController:(PSPointerClientController *)arg1 didInvalidatePortalSourceCollections:(NSSet *)arg2 matchMoveSources:(NSSet *)arg3;
 - (void)pointerClientControllerDidInvalidateRemoteSources:(PSPointerClientController *)arg1;
 @end
 

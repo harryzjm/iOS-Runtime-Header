@@ -6,13 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <ManagedSettings/_TtP15ManagedSettings25ShieldActionExtensionHost_-Protocol.h>
-#import <ManagedSettings/_TtP15ManagedSettings27ShieldActionExtensionVendor_-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC15ManagedSettings28ShieldActionExtensionContext : NSExtensionContext <_TtP15ManagedSettings25ShieldActionExtensionHost_, _TtP15ManagedSettings27ShieldActionExtensionVendor_>
+@interface _TtC15ManagedSettings28ShieldActionExtensionContext : NSExtensionContext
 {
     MISSING_TYPE *$__lazy_storage_$_shieldActionDelegate;
 }

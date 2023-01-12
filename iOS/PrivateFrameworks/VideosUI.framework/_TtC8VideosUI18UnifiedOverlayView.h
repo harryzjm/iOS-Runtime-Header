@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIScorecardViewDelegate-Protocol.h>
-#import <VideosUI/VUISportsScoreboardManagerDelegate-Protocol.h>
-
 @class MISSING_TYPE, VUIBaseView, VUIImageView, VUILabel, VUIScorecardView, VUITextBadgeView, _TtC8VideosUI21StyledProgressBarView;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI18UnifiedOverlayView <VUIScorecardViewDelegate, VUISportsScoreboardManagerDelegate>
+@interface _TtC8VideosUI18UnifiedOverlayView
 {
     MISSING_TYPE *overlayLayout;
     MISSING_TYPE *progressView;
@@ -20,13 +17,15 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *badgeView;
     MISSING_TYPE *textBadge;
-    MISSING_TYPE *gradientView;
-    MISSING_TYPE *gradientLayer;
+    MISSING_TYPE *protectionView;
+    MISSING_TYPE *unfocusedProtectionView;
     MISSING_TYPE *scorecardView;
     MISSING_TYPE *cornerRadius;
     MISSING_TYPE *logoSize;
     MISSING_TYPE *backgroundImageForMaterial;
-    MISSING_TYPE *hasTextBadge;
+    MISSING_TYPE *isFilteredUpNext;
+    MISSING_TYPE *forcesProtectionOnFocus;
+    MISSING_TYPE *wantsUnfocusedCornerBlur;
     MISSING_TYPE *scoreboardViewModel;
     MISSING_TYPE *originalScoreboardViewModel;
     MISSING_TYPE *backgroundImageHasChanged;
@@ -58,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, readonly) _Bool vuiDebugUI;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic, retain) VUILabel *textLabel; // @synthesize textLabel;
 - (int)backgroundBlendModeForScoreValueInRow:(long long)arg1 atIndex:(long long)arg2;
 - (id)backgroundImageForScorecardViewMaterial:(id)arg1;
 - (double)maximumWidthForScorecardView:(id)arg1;

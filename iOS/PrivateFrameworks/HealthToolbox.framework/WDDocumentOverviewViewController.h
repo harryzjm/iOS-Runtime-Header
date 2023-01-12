@@ -6,12 +6,10 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthToolbox/WDUserActivityResponder-Protocol.h>
-
 @class HKDisplayType, NSMutableArray, NSString, UIFont, WDDocumentListDataProvider, WDProfile;
 
 __attribute__((visibility("hidden")))
-@interface WDDocumentOverviewViewController : HKTableViewController <WDUserActivityResponder>
+@interface WDDocumentOverviewViewController : HKTableViewController
 {
     HKDisplayType *_displayType;
     WDProfile *_profile;

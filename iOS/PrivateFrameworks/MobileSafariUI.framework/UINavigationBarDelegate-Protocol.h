@@ -11,6 +11,7 @@
 @protocol UINavigationBarDelegate <UIBarPositioningDelegate>
 
 @optional
+- (long long)navigationBarNSToolbarSection:(UINavigationBar *)arg1;
 - (void)navigationBar:(UINavigationBar *)arg1 didPopItem:(UINavigationItem *)arg2;
 - (_Bool)navigationBar:(UINavigationBar *)arg1 shouldPopItem:(UINavigationItem *)arg2;
 - (void)navigationBar:(UINavigationBar *)arg1 didPushItem:(UINavigationItem *)arg2;

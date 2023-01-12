@@ -6,12 +6,9 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <ClassKitUI/CLSRemoteViewControllerInterface-Protocol.h>
-
 @class NSString, UIWindow;
 
-__attribute__((visibility("hidden")))
-@interface CLSRemoteViewController : _UIRemoteViewController <CLSRemoteViewControllerInterface>
+@interface CLSRemoteViewController : _UIRemoteViewController
 {
     UIWindow *_previousKeyWindow;
     UIWindow *_window;

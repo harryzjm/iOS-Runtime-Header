@@ -6,18 +6,17 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCProtoContainerIdentifierSet : PBCodable <NSCopying>
+@interface _MPCProtoContainerIdentifierSet : PBCodable
 {
     long long _cloudID;
     long long _delegateInfoID;
     long long _storeAdamID;
     NSString *_cloudCollectionID;
     NSString *_cloudUniversalLibraryID;
+    NSString *_playbackAuthorizationToken;
     NSString *_radioStationID;
     NSString *_storePlaylistGlobalID;
     NSString *_storePlaylistVersionHash;

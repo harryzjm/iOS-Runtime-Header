@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSString, VideosExtrasContext;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasPresenter : NSObject <UIViewControllerTransitioningDelegate>
+@interface VideosExtrasPresenter : NSObject
 {
     VideosExtrasContext *_extrasContext;
     struct CGRect _extrasMenuBarFrame;

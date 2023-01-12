@@ -18,8 +18,8 @@
     id <XCTestExpectationDelegate> _delegate;
     unsigned long long _fulfillmentToken;
     NSArray *_fulfillCallStackReturnAddresses;
-    unsigned long long _expectedFulfillmentCount;
     NSString *_expectationDescription;
+    unsigned long long _expectedFulfillmentCount;
     unsigned long long _numberOfFulfillments;
     unsigned long long _creationToken;
     NSArray *_creationCallStackReturnAddresses;
@@ -32,7 +32,7 @@
 @property(readonly, copy) NSArray *creationCallStackReturnAddresses; // @synthesize creationCallStackReturnAddresses=_creationCallStackReturnAddresses;
 @property(readonly) unsigned long long creationToken; // @synthesize creationToken=_creationToken;
 @property unsigned long long numberOfFulfillments; // @synthesize numberOfFulfillments=_numberOfFulfillments;
-@property(copy) NSString *expectationDescription; // @synthesize expectationDescription=_expectationDescription;
+@property(copy, setter=_setExpectationDescription:) NSString *_expectationDescription; // @synthesize _expectationDescription;
 - (void)cleanup;
 @property _Bool hasBeenWaitedOn; // @synthesize hasBeenWaitedOn=_hasBeenWaitedOn;
 - (void)on_queue_setHasBeenWaitedOn:(_Bool)arg1;
@@ -50,6 +50,8 @@
 @property(readonly) unsigned long long fulfillmentToken; // @synthesize fulfillmentToken=_fulfillmentToken;
 - (_Bool)_queue_fulfillWithCallStackReturnAddresses:(id)arg1;
 - (void)fulfill;
+- (id)_generateExpectationDescription;
+@property(copy) NSString *expectationDescription;
 - (id)description;
 - (id)initWithDescription:(id)arg1;
 - (id)init;

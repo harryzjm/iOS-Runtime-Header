@@ -6,9 +6,7 @@
 
 #import <SAObjects/SAUISayIt.h>
 
-#import <AssistantServices/AFAceCommandClientFeedbackEnumerating-Protocol.h>
-
-@interface SAUISayIt (ClientFeedbackPresented) <AFAceCommandClientFeedbackEnumerating>
+@interface SAUISayIt (ClientFeedbackPresented)
 - (void)_af_enumerateClientFeedbackDetails:(CDUnknownBlockType)arg1;
 - (id)af_dialogIdentifiersForAnalyticsContext;
 - (void)af_addEntriesToAnalyticsContext:(id)arg1;

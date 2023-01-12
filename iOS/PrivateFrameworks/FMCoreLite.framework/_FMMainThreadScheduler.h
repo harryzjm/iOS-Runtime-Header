@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FMCoreLite/FMScheduler-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _FMMainThreadScheduler : NSObject <FMScheduler>
+@interface _FMMainThreadScheduler : NSObject
 {
 }
 

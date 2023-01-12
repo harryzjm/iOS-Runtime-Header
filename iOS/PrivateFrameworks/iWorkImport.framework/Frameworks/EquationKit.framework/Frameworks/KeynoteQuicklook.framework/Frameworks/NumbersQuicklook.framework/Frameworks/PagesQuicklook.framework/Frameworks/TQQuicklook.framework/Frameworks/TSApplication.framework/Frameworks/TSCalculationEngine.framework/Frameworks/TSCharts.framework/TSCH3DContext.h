@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSSet;
 
-@interface TSCH3DContext : NSObject <NSCopying>
+@interface TSCH3DContext : NSObject
 {
     struct FramebufferAttributes _currentFramebufferAttributes;
 }

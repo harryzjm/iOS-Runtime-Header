@@ -6,17 +6,11 @@
 
 #import <UIKit/UICollectionViewController.h>
 
-#import <CloudDocsUI/UICollectionViewDataSource-Protocol.h>
-#import <CloudDocsUI/UICollectionViewDelegate-Protocol.h>
-#import <CloudDocsUI/UICollectionViewDelegateTableLayout-Protocol.h>
-#import <CloudDocsUI/UIViewControllerPreviewingDelegate-Protocol.h>
-#import <CloudDocsUI/_UIDocumentPickerContainedViewController-Protocol.h>
-
 @class NSArray, NSString, UIActivityIndicatorView, UIScrollView, UIView, _UIDocumentPickerContainerModel, _UIDocumentPickerFlowLayout, _UIDocumentPickerSortOrderView, _UIDocumentPickerTableLayout;
 @protocol UIViewControllerPreviewing, _UIDocumentPickerServiceViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerDocumentCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateTableLayout, UIViewControllerPreviewingDelegate, _UIDocumentPickerContainedViewController>
+@interface _UIDocumentPickerDocumentCollectionViewController : UICollectionViewController
 {
     _Bool _editing;
     id <UIViewControllerPreviewing> _viewControllerPreviewContext;

@@ -12,6 +12,7 @@
 
 @interface XCTApplicationStateSnapshot : NSObject <NSSecureCoding>
 {
+    _Bool _trackingPID;
     int _processID;
     NSString *_bundleID;
     NSString *_path;
@@ -22,6 +23,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(getter=isTrackingPID) _Bool trackingPID; // @synthesize trackingPID=_trackingPID;
 @property(readonly) unsigned long long eventID; // @synthesize eventID=_eventID;
 @property(readonly) unsigned long long activationPolicy; // @synthesize activationPolicy=_activationPolicy;
 @property(readonly) int processID; // @synthesize processID=_processID;

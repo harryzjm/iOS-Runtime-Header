@@ -17,6 +17,7 @@
 - (_Bool)safari_boolForKey:(id)arg1 defaultValue:(_Bool)arg2;
 - (_Bool)safari_toggleBoolAndNotifyForKey:(id)arg1;
 - (void)safari_setObject:(id)arg1 andNotifyForKey:(id)arg2;
+- (void)safari_setBool:(_Bool)arg1 forKey:(id)arg2 andNotifyWithUserInfo:(id)arg3;
 - (void)safari_setBool:(_Bool)arg1 andNotifyForKey:(id)arg2;
 - (void)safari_setInteger:(long long)arg1 andNotifyForKey:(id)arg2;
 - (_Bool)safari_toggleBoolForKey:(id)arg1;

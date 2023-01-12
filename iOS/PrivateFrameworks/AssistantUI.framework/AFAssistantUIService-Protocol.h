@@ -44,6 +44,7 @@
 - (void)assistantConnection:(AFConnection *)arg1 requestFailedWithError:(NSError *)arg2 requestClass:(NSString *)arg3;
 - (void)assistantConnection:(AFConnection *)arg1 receivedCommand:(AceObject<SAAceCommand> *)arg2 completion:(void (^)(AceObject<SAAceCommand> *))arg3;
 - (void)assistantConnectionRequestFinished:(AFConnection *)arg1;
+- (void)assistantConnection:(AFConnection *)arg1 dismissAssistantWithReason:(long long)arg2;
 - (void)assistantConnectionDismissAssistant:(AFConnection *)arg1;
 - (void)assistantConnectionRequestWillStart:(AFConnection *)arg1;
 @end

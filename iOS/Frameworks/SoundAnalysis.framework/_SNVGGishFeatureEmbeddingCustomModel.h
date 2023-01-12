@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/MLCustomModel-Protocol.h>
-
 @class MLModel, MLModelDescription;
 
 __attribute__((visibility("hidden")))
-@interface _SNVGGishFeatureEmbeddingCustomModel : NSObject <MLCustomModel>
+@interface _SNVGGishFeatureEmbeddingCustomModel : NSObject
 {
     MLModelDescription *_modelDescription;
     MLModel *_model;

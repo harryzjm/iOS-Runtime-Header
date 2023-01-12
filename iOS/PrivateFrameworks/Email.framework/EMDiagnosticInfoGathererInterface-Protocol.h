@@ -9,7 +9,7 @@
 @protocol EMDiagnosticInfoProvidingXPC;
 
 @protocol EMDiagnosticInfoGathererInterface <NSObject>
-- (void)indexStatusWithCompletionHandler:(void (^)(NSString *))arg1;
+- (void)databaseStatisticsWithCompletionHandler:(void (^)(NSDictionary *))arg1;
 - (void)fetchControllerStatusWithCompletionHandler:(void (^)(NSString *))arg1;
 - (void)gatherDiagnosticsWithOptions:(unsigned long long)arg1 completionHandler:(void (^)(EFSandboxedURLWrapper *))arg2;
 - (void)registerDiagnosticInfoProvider:(id <EMDiagnosticInfoProvidingXPC>)arg1 completionHandler:(void (^)(id <EFCancelable>))arg2;

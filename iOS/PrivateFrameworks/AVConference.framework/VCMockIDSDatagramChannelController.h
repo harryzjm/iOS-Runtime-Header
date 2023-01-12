@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)setWriteDatagramsBlock:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (void)dealloc;
+- (id)datagramChannelRequiresOptions:(_Bool)arg1 dataPath:(int)arg2;
 - (id)datagramChannelRequiresOptions:(_Bool)arg1;
 
 @end

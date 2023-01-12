@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-#import <TSTables/TSSPropertyCommandSerializing-Protocol.h>
-#import <TSTables/TSTCellDiffing-Protocol.h>
-
 @class NSString, TSDStroke;
 
-@interface TSTCellBorder : NSObject <TSTCellDiffing, TSSPropertyCommandSerializing, NSCopying>
+@interface TSTCellBorder : NSObject
 {
     TSDStroke *_topStroke;
     int _topStrokeOrder;
@@ -49,6 +45,7 @@
 @property(readonly, nonatomic) int topStrokeOrder; // @synthesize topStrokeOrder=_topStrokeOrder;
 @property(readonly, nonatomic) TSDStroke *topStroke; // @synthesize topStroke=_topStroke;
 - (void)didInitFromSOS;
+- (_Bool)hasEqualStrokes:(id)arg1;
 - (id)objectByRemovingPropertiesInMap:(id)arg1 addingPropertiesInMap:(id)arg2 updateInverseResetPropertyMap:(id)arg3 updateInverseSetPropertyMap:(id)arg4;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;

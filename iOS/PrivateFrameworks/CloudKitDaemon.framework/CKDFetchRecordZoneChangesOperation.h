@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKServerChangeToken, NSData;
+@class CKServerChangeToken, NSData, NSDictionary;
 
 @interface CKDFetchRecordZoneChangesOperation
 {
@@ -16,9 +16,11 @@
     NSData *_resultClientChangeTokenData;
     long long _resultStatus;
     long long _changeTypes;
+    NSDictionary *_supplementalChangeTokenByZoneID;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *supplementalChangeTokenByZoneID; // @synthesize supplementalChangeTokenByZoneID=_supplementalChangeTokenByZoneID;
 @property(nonatomic) _Bool clientIsUsingLegacyCKFetchRecordChangesOperationAPI; // @synthesize clientIsUsingLegacyCKFetchRecordChangesOperationAPI=_clientIsUsingLegacyCKFetchRecordChangesOperationAPI;
 @property(nonatomic) long long changeTypes; // @synthesize changeTypes=_changeTypes;
 @property(nonatomic) long long resultStatus; // @synthesize resultStatus=_resultStatus;

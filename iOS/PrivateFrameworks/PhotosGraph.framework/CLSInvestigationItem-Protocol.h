@@ -8,9 +8,10 @@
 #import <PhotosGraph/NSObject-Protocol.h>
 #import <PhotosGraph/PLRegionsClusteringItem-Protocol.h>
 
-@class CLLocation, CLSAssetScoringContext, NSArray, NSDate, NSDateComponents, NSSet, NSString, VNSceneprint;
+@class CLLocation, CLSAssetScoringContext, CLSCurationModel, NSArray, NSDate, NSDateComponents, NSSet, NSString, VNSceneprint;
 
 @protocol CLSInvestigationItem <NSObject, PLRegionsClusteringItem, CLSSimilarlyStackableItem>
+@property(readonly, nonatomic) _Bool clsIsInSharedLibrary;
 @property(readonly, nonatomic) double clsSquareCropScore;
 @property(readonly) _Bool clsHasInterestingScenes;
 @property(readonly) _Bool clsHasPoorResolution;
@@ -20,6 +21,7 @@
 @property(readonly, nonatomic) NSDateComponents *cls_localDateComponents;
 @property(readonly, nonatomic) VNSceneprint *clsSceneprint;
 @property(readonly, copy, nonatomic) NSSet *clsSceneClassifications;
+@property(readonly) CLSCurationModel *curationModel;
 @property(readonly, nonatomic) _Bool clsIsInterestingReframe;
 @property(readonly, nonatomic) double clsDuration;
 @property(readonly, nonatomic) _Bool clsIsNonMemorable;
@@ -58,6 +60,7 @@
 @property(readonly, nonatomic) NSArray *clsPersonLocalIdentifiers;
 @property(readonly, nonatomic) CLLocation *clsLocation;
 - (_Bool)clsAvoidIfPossibleAsKeyItemForMemories:(_Bool)arg1 allowGuestAsset:(_Bool)arg2;
+- (_Bool)clsAvoidIfPossibleAsKeyItemForMemories:(_Bool)arg1 allowGuestAsset:(_Bool)arg2 reason:(id *)arg3;
 - (double)scoreInContext:(CLSAssetScoringContext *)arg1;
 @end
 

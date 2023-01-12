@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMotion/NSCopying-Protocol.h>
-
 @class CMAttitude;
 
-@interface CMPoseInternal : NSObject <NSCopying>
+@interface CMPoseInternal : NSObject
 {
     CMAttitude *fAttitude;
     CDStruct_31142d93 fTranslation;

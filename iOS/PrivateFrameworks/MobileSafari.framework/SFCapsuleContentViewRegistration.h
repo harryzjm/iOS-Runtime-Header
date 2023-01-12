@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)discardView:(id)arg1;
 - (void)enqueueView:(id)arg1;
 - (id)createOrDequeueViewWithExistingView:(id)arg1;
 - (id)initWithCreateViewBlock:(CDUnknownBlockType)arg1;

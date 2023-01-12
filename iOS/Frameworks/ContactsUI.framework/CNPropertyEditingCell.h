@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNPickerControllerDelegate-Protocol.h>
-
 @class CNRepeatingGradientSeparatorView, NSString, UIButton;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyEditingCell <CNPickerControllerDelegate>
+@interface CNPropertyEditingCell
 {
     UIButton *_labelButton;
     CNRepeatingGradientSeparatorView *_vseparator;

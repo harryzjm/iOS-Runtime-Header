@@ -6,10 +6,10 @@
 
 #import <MailKit/NSObject-Protocol.h>
 
-@class MEMessage;
+@class MEComposeContext, MEMessage;
 
 @protocol MEMessageEncoder <NSObject>
-- (void)encodeMessage:(MEMessage *)arg1 shouldSign:(_Bool)arg2 shouldEncrypt:(_Bool)arg3 completionHandler:(void (^)(MEMessageEncodingResult *))arg4;
-- (void)getEncodingStatusForMessage:(MEMessage *)arg1 completionHandler:(void (^)(MEOutgoingMessageEncodingStatus *))arg2;
+- (void)encodeMessage:(MEMessage *)arg1 composeContext:(MEComposeContext *)arg2 completionHandler:(void (^)(MEMessageEncodingResult *))arg3;
+- (void)getEncodingStatusForMessage:(MEMessage *)arg1 composeContext:(MEComposeContext *)arg2 completionHandler:(void (^)(MEOutgoingMessageEncodingStatus *))arg3;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceCommunicationChannelImpl-Protocol.h>
-
 @class AVOutputDeviceCommunicationChannel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVFigEndpointRemoteControlSessionOutputDeviceCommunicationChannelImpl : NSObject <AVOutputDeviceCommunicationChannelImpl>
+@interface AVFigEndpointRemoteControlSessionOutputDeviceCommunicationChannelImpl : NSObject
 {
     struct OpaqueFigEndpointRemoteControlSession *_remoteControlSession;
     AVOutputDeviceCommunicationChannel *_parentChannel;

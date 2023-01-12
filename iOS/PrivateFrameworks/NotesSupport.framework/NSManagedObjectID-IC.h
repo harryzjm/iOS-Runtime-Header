@@ -6,9 +6,11 @@
 
 #import <CoreData/NSManagedObjectID.h>
 
+@class NSString;
+
 @interface NSManagedObjectID (IC)
-- (_Bool)ic_isEntityContainedInClasses:(id)arg1;
 - (_Bool)ic_isEntityOfClass:(Class)arg1;
+@property(readonly, nonatomic) NSString *ic_uriString;
 @property(readonly, nonatomic) Class ic_entityClass;
 @end
 

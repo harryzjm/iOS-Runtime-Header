@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface SNVGGishCheeringModelInput : NSObject <MLFeatureProvider>
+@interface SNVGGishCheeringModelInput : NSObject
 {
     MLMultiArray *_input1;
 }

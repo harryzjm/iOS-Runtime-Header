@@ -6,12 +6,10 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <StoreKit/SKUIClientComposeReviewViewController-Protocol.h>
-
 @class NSString, SKComposeReviewViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKRemoteComposeReviewViewController : _UIRemoteViewController <SKUIClientComposeReviewViewController>
+@interface SKRemoteComposeReviewViewController : _UIRemoteViewController
 {
     SKComposeReviewViewController *_composeReviewViewController;
 }

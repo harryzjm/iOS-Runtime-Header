@@ -6,21 +6,19 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
+@class CKCDPCodeServiceResponseAttestationResponse, CKCDPError, NSData, NSMutableArray;
 
-@class CKCDPError, NSData, NSMutableArray;
-
-@interface CKCDPCodeServiceResponse : PBCodable <NSCopying>
+@interface CKCDPCodeServiceResponse : PBCodable
 {
     NSMutableArray *_assetAuthorizationResponses;
+    CKCDPCodeServiceResponseAttestationResponse *_attestationResponse;
     CKCDPError *_error;
-    NSData *_routingToken;
     NSData *_serializedResult;
 }
 
 + (Class)assetAuthorizationResponsesType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSData *routingToken; // @synthesize routingToken=_routingToken;
+@property(retain, nonatomic) CKCDPCodeServiceResponseAttestationResponse *attestationResponse; // @synthesize attestationResponse=_attestationResponse;
 @property(retain, nonatomic) NSMutableArray *assetAuthorizationResponses; // @synthesize assetAuthorizationResponses=_assetAuthorizationResponses;
 @property(retain, nonatomic) CKCDPError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSData *serializedResult; // @synthesize serializedResult=_serializedResult;
@@ -33,7 +31,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasRoutingToken;
+@property(readonly, nonatomic) _Bool hasAttestationResponse;
 - (id)assetAuthorizationResponsesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)assetAuthorizationResponsesCount;
 - (void)addAssetAuthorizationResponses:(id)arg1;

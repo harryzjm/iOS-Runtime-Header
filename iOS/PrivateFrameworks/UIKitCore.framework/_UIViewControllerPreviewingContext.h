@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerPreviewing_Internal-Protocol.h>
-#import <UIKitCore/_UIPreviewInteractionControllerDelegate-Protocol.h>
-
 @class NSString, UIGestureRecognizer, UIView, UIViewController, _UIPreviewInteractionController;
 @protocol UIViewControllerPreviewingDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewControllerPreviewingContext : NSObject <_UIPreviewInteractionControllerDelegate, UIViewControllerPreviewing_Internal>
+@interface _UIViewControllerPreviewingContext : NSObject
 {
     id <UIViewControllerPreviewingDelegate> _delegate;
     UIView *_customViewForInteractiveHighlight;

@@ -4,24 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIBackdropView.h>
-
-#import <WebKit/WKContentControlled-Protocol.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface WKBackdropView : _UIBackdropView <WKContentControlled>
+@interface WKBackdropView
 {
 }
 
-@property(readonly, copy) NSString *description;
-- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
++ (Class)layerClass;
 
 @end
 

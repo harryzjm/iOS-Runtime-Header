@@ -7,6 +7,7 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (TADateFormat)
+- (long long)getMinutesSinceStartOfDay;
 - (id)getNextDateAtHour:(unsigned long long)arg1;
 - (id)getDateString;
 @end

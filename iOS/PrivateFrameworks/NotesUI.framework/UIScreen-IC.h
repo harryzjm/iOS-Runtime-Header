@@ -7,7 +7,7 @@
 #import <UIKit/UIScreen.h>
 
 @interface UIScreen (IC)
-+ (double)scale;
++ (double)ic_scale;
 @property(readonly, nonatomic) _Bool ic_isSecure;
 @end
 

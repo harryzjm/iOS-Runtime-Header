@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVSampleBufferDisplayLayer, AVWeakReference, NSMutableArray, NSString;
+@class AVSampleBufferVideoRenderer, AVWeakReference, NSMutableArray, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
     NSMutableArray *timedRenderRemovals;
     NSObject<OS_dispatch_queue> *figSynchronizerAccessQueue;
     struct OpaqueFigSampleBufferRenderSynchronizer *figSynchronizer;
-    NSString *STSLabel;
-    AVSampleBufferDisplayLayer *layerTrackedBySTS;
+    AVSampleBufferVideoRenderer *rendererTrackedBySTS;
+    NSMutableDictionary *STSLabelSinks;
 }
 
 @end

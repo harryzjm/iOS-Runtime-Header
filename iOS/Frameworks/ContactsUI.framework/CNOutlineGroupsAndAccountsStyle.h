@@ -9,12 +9,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)parentCellTrailingAccessoryConfigurations;
-- (CDUnknownBlockType)cellBackgroundViewConfigurationProvider;
-- (id)cellConfigurationForSelectedState:(_Bool)arg1;
+- (CDUnknownBlockType)cellConfigurationUpdateHandler;
+- (long long)buttonBehavior;
 - (id)parentCellConfigurationWithText:(id)arg1;
-- (id)sectionConfigurationForLayoutEnvironment:(id)arg1;
+- (id)sectionConfigurationForLayoutEnvironment:(id)arg1 withLeadingActionsProvider:(CDUnknownBlockType)arg2 withTrailingActionsProvider:(CDUnknownBlockType)arg3 hasHeader:(_Bool)arg4;
 - (id)backgroundColor;
+- (_Bool)isInset;
 
 @end
 

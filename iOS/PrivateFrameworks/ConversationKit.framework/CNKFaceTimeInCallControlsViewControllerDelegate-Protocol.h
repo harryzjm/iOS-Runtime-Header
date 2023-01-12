@@ -12,6 +12,7 @@
 - (void)resetEffectsState;
 - (void)didCreateCollectionViewForInCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1;
 - (void)inCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1 didTap:(long long)arg2 from:(UIView *)arg3;
+- (_Bool)isCaptioningEnabled:(CNKFaceTimeInCallControlsViewController *)arg1;
 @property(nonatomic, readonly) _Bool isPresentingEffectsBrowser;
 
 @optional

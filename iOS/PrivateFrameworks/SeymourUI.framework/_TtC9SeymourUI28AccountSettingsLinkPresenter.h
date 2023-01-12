@@ -11,6 +11,7 @@
 @interface _TtC9SeymourUI28AccountSettingsLinkPresenter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *dependencies;
+    MISSING_TYPE *navigationController;
 }
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneSettingsDiffAction-Protocol.h>
-
 @class NSString, UIApplicationSceneSettingsDiffInspector;
 
 __attribute__((visibility("hidden")))
-@interface _UIWindowSceneOcclusionSettingsDiffAction : NSObject <_UISceneSettingsDiffAction>
+@interface _UIWindowSceneOcclusionSettingsDiffAction : NSObject
 {
     UIApplicationSceneSettingsDiffInspector *_sceneSettingsBackgroundAndOcclusionDiffInspector;
 }

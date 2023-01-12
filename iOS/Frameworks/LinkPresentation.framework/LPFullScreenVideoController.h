@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/AVPlayerViewControllerDelegatePrivate-Protocol.h>
-
 @class AVPlayer, AVPlayerController, LPAVPlayerViewController, LPVideoView, NSString, __AVPlayerLayerView;
 
 __attribute__((visibility("hidden")))
-@interface LPFullScreenVideoController : NSObject <AVPlayerViewControllerDelegatePrivate>
+@interface LPFullScreenVideoController : NSObject
 {
     LPVideoView *_sourceView;
     LPAVPlayerViewController *_playerViewController;

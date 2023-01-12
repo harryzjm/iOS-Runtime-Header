@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SKUIJSDOMFeatureNavigationDocument, SKUIViewElement;
+#import "SKUIViewElement.h"
+
+@class SKUIJSDOMFeatureNavigationDocument;
 
 __attribute__((visibility("hidden")))
-@interface SKUISplitViewTemplateElement
+@interface SKUISplitViewTemplateElement : SKUIViewElement
 {
     SKUIJSDOMFeatureNavigationDocument *_leftNavigationDocument;
     long long _preferredDisplayMode;

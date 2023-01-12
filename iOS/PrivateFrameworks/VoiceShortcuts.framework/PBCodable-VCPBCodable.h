@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <VoiceShortcuts/VCPBCodable-Protocol.h>
-
 @class NSString;
 
-@interface PBCodable (VCPBCodable) <VCPBCodable>
+@interface PBCodable (VCPBCodable)
 - (_Bool)readFrom:(id)arg1 error:(id *)arg2;
 - (_Bool)writeTo:(id)arg1 error:(id *)arg2;
 

@@ -15,6 +15,7 @@
 - (void)timeLabelDidFailToBecomeFirstResponder:(_UIDatePickerCalendarTimeLabel *)arg1;
 - (void)timeLabelDidBecomeFirstResponder:(_UIDatePickerCalendarTimeLabel *)arg1;
 - (void)timeLabelWillBecomeFirstResponder:(_UIDatePickerCalendarTimeLabel *)arg1;
+- (_Bool)timeLabelCanBecomeFirstResponder:(_UIDatePickerCalendarTimeLabel *)arg1;
 - (_Bool)timeLabelShouldSuppressSoftwareKeyboard:(_UIDatePickerCalendarTimeLabel *)arg1;
 - (long long)keyboardTypeForTimeLabel:(_UIDatePickerCalendarTimeLabel *)arg1;
 - (void)timeLabel:(_UIDatePickerCalendarTimeLabel *)arg1 didUpdateText:(NSString *)arg2;

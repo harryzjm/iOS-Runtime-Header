@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface GEOSpatialLookupBatchResponse : PBCodable <NSCopying>
+@interface GEOSpatialLookupBatchResponse : PBCodable
 {
     NSMutableArray *_responses;
     int _statusCode;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-
 @class NSString, SKUIClientContext, SKUICountdownComponent, SKUIResourceLoader;
 
 __attribute__((visibility("hidden")))
-@interface SKUICountdownViewController : UIViewController <SKUIArtworkRequestDelegate>
+@interface SKUICountdownViewController : UIViewController
 {
     SKUIResourceLoader *_artworkLoader;
     SKUICountdownComponent *_countdownComponent;

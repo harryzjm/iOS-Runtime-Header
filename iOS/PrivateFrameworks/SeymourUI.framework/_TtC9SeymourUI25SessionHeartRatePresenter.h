@@ -11,7 +11,7 @@
 @interface _TtC9SeymourUI25SessionHeartRatePresenter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *display;
-    MISSING_TYPE *highlightDisplay;
+    MISSING_TYPE *externalOverlayDisplay;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *uiState;
     MISSING_TYPE *lastReceivedMetric;

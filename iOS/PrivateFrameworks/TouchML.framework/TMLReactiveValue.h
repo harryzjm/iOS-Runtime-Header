@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLBinder-Protocol.h>
-#import <TouchML/TMLValue-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface TMLReactiveValue : NSObject <TMLBinder, TMLValue>
+@interface TMLReactiveValue : NSObject
 {
     NSArray *_bindings;
     id _targetWeak;

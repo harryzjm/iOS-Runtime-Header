@@ -6,21 +6,16 @@
 
 #import <MediaPlayer/MPQueueFeeder.h>
 
-#import <MediaPlaybackCore/ICEnvironmentMonitorObserver-Protocol.h>
-#import <MediaPlaybackCore/MPAVItemObserver-Protocol.h>
-#import <MediaPlaybackCore/MPCQueueControllerDataSource-Protocol.h>
-#import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
+@class ICPlayActivityController, ICStoreRequestContext, ICUserIdentityStore, MPAVItem, MPCModelRadioPersonalizationResponse, MPCModelRadioPlaybackContext, MPCModelRadioPlaybackQueue, MPCPlaybackRequestEnvironment, NSDictionary, NSString;
+@protocol MPMutableIdentifierListSection;
 
-@class ICPlayActivityController, ICStoreRequestContext, ICUserIdentityStore, MPAVItem, MPCModelRadioPersonalizationResponse, MPCModelRadioPlaybackContext, MPCModelRadioPlaybackQueue, MPCPlaybackRequestEnvironment, NSDictionary, NSObject, NSString;
-@protocol MPMutableIdentifierListSection, OS_dispatch_queue;
-
-@interface MPCModelRadioQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining, MPAVItemObserver, ICEnvironmentMonitorObserver, MPCQueueControllerDataSource>
+__attribute__((visibility("hidden")))
+@interface MPCModelRadioQueueFeeder : MPQueueFeeder
 {
     id <MPMutableIdentifierListSection> _section;
     MPCModelRadioPlaybackQueue *_playbackQueue;
     MPCModelRadioPlaybackContext *_playbackContext;
     _Bool _needsSectionUpdate;
-    NSObject<OS_dispatch_queue> *_diffQueue;
     unsigned long long _backgroundTaskIdentifier;
     unsigned long long _backgroundTasks;
     MPAVItem *_currentItem;
@@ -37,6 +32,7 @@
     ICStoreRequestContext *_storeRequestContext;
     ICPlayActivityController *_playActivityController;
     CDUnknownBlockType _finalTracklistLoadingCompletionHandler;
+    _Bool _hasSignedOut;
 }
 
 + (id)sharedQueue;
@@ -45,6 +41,7 @@
 - (void)_repersonalizeCurrentTracks;
 - (void)_responseDidInvalidate;
 - (void)_removeRestrictedTracks;
+- (void)_removeAllTracks;
 - (void)_observePersonalizationResponse:(id)arg1;
 - (void)_loadTracksWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_isTransientLoadingError:(id)arg1;
@@ -82,7 +79,8 @@
 - (void)didSignificantlyChangeItem:(id)arg1;
 - (id)supplementalPlaybackContextWithReason:(long long)arg1;
 - (long long)supplementalPlaybackContextBehavior;
-- (_Bool)canSkipItem:(id)arg1;
+- (_Bool)canSkipItem:(id)arg1 reason:(id *)arg2;
+- (_Bool)canJumpToItem:(id)arg1 reason:(id *)arg2;
 - (void)itemDidBeginPlayback:(id)arg1;
 - (long long)itemCount;
 - (void)getRepresentativeMetadataForPlaybackContext:(id)arg1 properties:(id)arg2 completion:(CDUnknownBlockType)arg3;

@@ -11,7 +11,7 @@
 @interface NSURLCredentialStorage (SafariCoreExtras)
 - (void)safari_deleteSynchronizableSidecarForCredential:(id)arg1 forHTMLFormProtectionSpace:(id)arg2;
 - (void)safari_setSynchronizableSidecar:(id)arg1 credential:(id)arg2 forHTMLFormProtectionSpace:(id)arg3;
-@property(readonly, nonatomic) NSArray *safari_allPasswordManagerSidecarEntries;
+@property(readonly, nonatomic) NSArray *safari_allPasswordManagerSidecarEntriesInPersonalKeychain;
 @property(readonly, nonatomic) NSDictionary *safari_allSafariCredentials;
 - (void)safari_setDefaultCredential:(id)arg1 forHTMLFormProtectionSpace:(id)arg2;
 - (id)_formattedLabelWithHost:(id)arg1 user:(id)arg2;

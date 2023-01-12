@@ -8,6 +8,7 @@
 
 @interface HKSample (HKMenstrualCycles)
 + (id)hkmc_defaultMetadata;
+- (_Bool)hkmc_isSleepDependentSample;
 - (_Bool)hkmc_isCycleFactorSample;
 - (_Bool)hkmc_isNotPresentSymptom;
 - (_Bool)hkmc_wasEnteredFromCycleTracking;

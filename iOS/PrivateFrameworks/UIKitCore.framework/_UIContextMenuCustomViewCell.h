@@ -12,8 +12,10 @@ __attribute__((visibility("hidden")))
     UIView *_customContentView;
 }
 
++ (Class)_contentViewClass;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *customContentView; // @synthesize customContentView=_customContentView;
+- (id)actionView;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

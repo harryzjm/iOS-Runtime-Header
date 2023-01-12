@@ -6,9 +6,17 @@
 
 #import <CoreEmbeddedSpeechRecognition/NSObject-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDictionary, NSString, NSURL;
+@class AFPowerContextPolicy, CLLocation, NSArray, NSData, NSDictionary, NSString, NSURL;
 
 @protocol CESRSpeechParametersMutating <NSObject>
+- (void)setPowerContext:(AFPowerContextPolicy *)arg1;
+- (void)setSelectedText:(NSString *)arg1;
+- (void)setPostfixText:(NSString *)arg1;
+- (void)setPrefixText:(NSString *)arg1;
+- (void)setSharedUserInfos:(NSArray *)arg1;
+- (void)setEnableVoiceCommands:(_Bool)arg1;
+- (void)setEnableAutoPunctuation:(_Bool)arg1;
+- (void)setEnableEmojiRecognition:(_Bool)arg1;
 - (void)setDisableDeliveringAsrFeatures:(_Bool)arg1;
 - (void)setDeliverEagerPackage:(_Bool)arg1;
 - (void)setJitGrammar:(NSArray *)arg1;

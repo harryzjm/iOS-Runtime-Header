@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVCaptureDevice, AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVCaptureSystemPressureState, AVWeakReference, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+#import "AVCaptureDevice.h"
+
+@class AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVCaptureSystemPressureState, AVWeakReference, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVCaptureFigVideoDevice
+@interface AVCaptureFigVideoDevice : AVCaptureDevice
 {
     NSObject<OS_dispatch_queue> *_fcsQueue;
     struct OpaqueFigCaptureSource *_fcs;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
     _Bool _adjustingFocus;
     long long _autoFocusRangeRestriction;
     _Bool _smoothAutoFocusEnabled;
+    _Bool _automaticallyAdjustsFaceDrivenAutoFocusEnabled;
     _Bool _cameraOption9;
     _Bool _cameraOption10;
     struct CGRect _cameraFaceResult29;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
     float _exposureTargetBias;
     float _exposureTargetOffsetKVO;
     struct CGPoint _exposurePointOfInterest;
+    _Bool _automaticallyAdjustsFaceDrivenAutoExposureEnabled;
     CDStruct_1b6d18a9 _activeMaxExposureDuration;
     CDStruct_1b6d18a9 _activeMaxExposureDurationClientOverride;
     _Bool _adjustingExposure;
@@ -84,7 +88,7 @@ __attribute__((visibility("hidden")))
     _Bool _isConnected;
     _Bool _isSuspended;
     _Bool _subjectMonitoringEnabled;
-    _Bool _faceDetectionDrivenImageProcessingEnabled;
+    int _faceDrivenAEAFMode;
     struct CGRect _faceRectangle;
     int _faceRectangleAngle;
     _Bool _automaticallyAdjustsVideoHDREnabled;
@@ -110,6 +114,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _primaryConstituentDeviceRestrictedSwitchingBehaviorConditions;
     NSArray *_supportedFallbackPrimaryConstituentDevices;
     NSArray *_fallbackPrimaryConstituentDevices;
+    AVCaptureDevice *_preferredPrimaryConstituentDevice;
     AVWeakReference *_weakReference;
     NSMutableArray *_captureSourceSupportedMetadata;
     NSDictionary *_supportedOptionalFaceDetectionFeatures;
@@ -133,6 +138,7 @@ __attribute__((visibility("hidden")))
     _Bool _geometricDistortionCorrectionEnabled;
     _Bool _globalToneMappingEnabled;
     _Bool _variableFrameRateVideoCaptureEnabled;
+    long long _videoStabilizationStrength;
     long long _timeOfFlightProjectorMode;
     NSData *_cameraPoseMatrix;
     unsigned long long _degradedCaptureQualityFactors;
@@ -145,6 +151,11 @@ __attribute__((visibility("hidden")))
     _Bool _backgroundBlurSupported;
     _Bool _backgroundBlurActive;
     _Bool _backgroundBlurAllowedByClient;
+    _Bool _studioLightingSupported;
+    _Bool _studioLightingActive;
+    _Bool _studioLightingAllowedByClient;
+    long long _deskViewCameraMode;
+    long long _portraitEffectStudioLightQuality;
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
@@ -154,6 +165,14 @@ __attribute__((visibility("hidden")))
 + (id)_devices;
 + (id)_newFigCaptureSources;
 + (void)initialize;
+- (_Bool)isDeskViewCameraModeSupported:(long long)arg1;
+- (long long)deskViewCameraMode;
+- (void)setDeskViewCameraMode:(long long)arg1;
+- (_Bool)isOverheadCameraModeSupported:(long long)arg1;
+- (long long)overheadCameraMode;
+- (void)setOverheadCameraMode:(long long)arg1;
+- (id)companionDeskViewCamera;
+- (_Bool)isContinuityCamera;
 - (void)setCinematicVideoFocusAtPoint:(struct CGPoint)arg1 objectID:(long long)arg2 isHardFocus:(_Bool)arg3 isFixedPlaneFocus:(_Bool)arg4;
 - (_Bool)isCinematicVideoFocusAtPointSupported;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -184,6 +203,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isFocusedAtMacro;
 - (void)_populateSupportedFallbackPrimaryConstituentDevices;
 - (void)_setActivePrimaryConstituentDeviceSwitchingBehavior:(long long)arg1 restrictedSwitchingBehaviorConditions:(unsigned long long)arg2;
+- (id)preferredPrimaryConstituentDevice;
 - (void)setFallbackPrimaryConstituentDevices:(id)arg1;
 - (id)fallbackPrimaryConstituentDevices;
 - (id)supportedFallbackPrimaryConstituentDevices;
@@ -196,6 +216,7 @@ __attribute__((visibility("hidden")))
 - (void)setPrimaryConstituentDeviceSwitchingBehavior:(long long)arg1 restrictedSwitchingBehaviorConditions:(unsigned long long)arg2;
 - (id)bravoCameraSelectionBehavior;
 - (_Bool)isHEIFSupported;
+- (_Bool)isProResSupported;
 - (_Bool)isHEVCPreferred;
 - (_Bool)isHEVCSupported;
 - (_Bool)isHEVCRelaxedAverageBitRateTargetSupported;
@@ -222,6 +243,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isSmileDetectionSupported;
 - (_Bool)isEyeClosedDetectionSupported;
 - (_Bool)isEyeDetectionSupported;
+- (id)supportedVisionDataProperties;
 - (id)supportedMetadataObjectIdentifiers;
 - (void)_setBackgroundBlurAllowed:(_Bool)arg1;
 - (void)_setCameraCalibrationDataDeliveryEnabled:(_Bool)arg1;
@@ -249,6 +271,12 @@ __attribute__((visibility("hidden")))
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(_Bool)arg1;
 - (_Bool)automaticallyAdjustsVideoHDREnabled;
 - (_Bool)isAutoRedEyeReductionSupported;
+- (void)_setStudioLightingAllowed:(_Bool)arg1;
+- (void)_updateStudioLightingActiveForEnabled:(_Bool)arg1;
+- (_Bool)_isStudioLightingActiveForEnabled:(_Bool)arg1;
+- (_Bool)isStudioLightingActive;
+- (_Bool)isStudioLightActive;
+- (void)_updatePortraitEffectStudioLightQuality:(long long)arg1;
 - (void)_updateBackgroundBlurActiveForEnabled:(_Bool)arg1;
 - (_Bool)_isBackgroundBlurActiveForEnabled:(_Bool)arg1;
 - (_Bool)isBackgroundBlurActive;
@@ -270,7 +298,8 @@ __attribute__((visibility("hidden")))
 - (double)dualCameraSwitchOverVideoZoomFactor;
 - (void)cancelVideoZoomRamp;
 - (_Bool)isRampingVideoZoom;
-- (void)_rampToVideoZoomFactor:(double)arg1 withRate:(float)arg2 duration:(double)arg3 rampType:(int)arg4;
+- (void)_rampToVideoZoomFactor:(double)arg1 withRate:(float)arg2 duration:(double)arg3 rampType:(int)arg4 rampTuning:(int)arg5;
+- (void)rampToVideoZoomFactor:(float)arg1 withTuning:(long long)arg2;
 - (void)rampExponentiallyToVideoZoomFactor:(float)arg1 withDuration:(double)arg2;
 - (void)rampToVideoZoomFactor:(double)arg1 withRate:(float)arg2;
 - (void)_setVideoZoomFactor:(double)arg1;
@@ -294,6 +323,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isHDRSceneDetectedForPhotoOutput;
 - (int)faceRectangleAngle;
 - (struct CGRect)faceRectangle;
+- (int)faceDrivenAEAFMode;
 - (void)setFaceDetectionDrivenImageProcessingEnabled:(_Bool)arg1;
 - (_Bool)isFaceDetectionDrivenImageProcessingEnabled;
 - (_Bool)isFaceDetectionDuringVideoPreviewSupported;
@@ -363,6 +393,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)isGlobalToneMappingEnabled;
 - (void)setActiveMaxExposureDuration:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)activeMaxExposureDuration;
+- (void)setFaceDrivenAutoExposureEnabled:(_Bool)arg1;
+- (_Bool)isFaceDrivenAutoExposureEnabled;
+- (void)setAutomaticallyAdjustsFaceDrivenAutoExposureEnabled:(_Bool)arg1;
+- (_Bool)automaticallyAdjustsFaceDrivenAutoExposureEnabled;
 - (void)setExposurePointOfInterest:(struct CGPoint)arg1;
 - (struct CGPoint)exposurePointOfInterest;
 - (_Bool)isExposurePointOfInterestSupported;
@@ -383,6 +417,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)isAdjustingExposure;
 - (float)lensAperture;
 - (float)focalLength;
+- (void)setFaceDrivenAutoFocusEnabled:(_Bool)arg1;
+- (_Bool)isFaceDrivenAutoFocusEnabled;
+- (void)setAutomaticallyAdjustsFaceDrivenAutoFocusEnabled:(_Bool)arg1;
+- (_Bool)automaticallyAdjustsFaceDrivenAutoFocusEnabled;
 - (void)setSmoothAutoFocusEnabled:(_Bool)arg1;
 - (_Bool)isSmoothAutoFocusEnabled;
 - (_Bool)isSmoothAutoFocusSupported;
@@ -406,11 +444,14 @@ __attribute__((visibility("hidden")))
 - (void)_setDigitalFlashModeInternal:(long long)arg1;
 - (void)setDigitalFlashMode:(long long)arg1;
 - (long long)digitalFlashMode;
+- (void)setVideoStabilizationStrength:(long long)arg1;
+- (long long)videoStabilizationStrength;
 - (void)setVariableFrameRateVideoCaptureEnabled:(_Bool)arg1;
 - (_Bool)isVariableFrameRateVideoCaptureEnabled;
 - (void)setLowLightVideoCaptureEnabled:(_Bool)arg1;
 - (_Bool)isLowLightVideoCaptureEnabled;
 - (int)powerConsumptionAt30FPSForOISMode:(int)arg1;
+- (_Bool)isVideoZoomSmoothingSupported;
 - (_Bool)isConstituentPhotoCalibrationDataSupported;
 - (id)constituentDeviceWithDeviceType:(id)arg1;
 - (_Bool)supportsMultiCamCaptureWithDevice:(id)arg1;

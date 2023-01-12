@@ -17,5 +17,8 @@
 - (void)action:(CNContactAction *)arg1 dismissViewController:(UIViewController *)arg2 sender:(id)arg3;
 - (void)action:(CNContactAction *)arg1 presentViewController:(UIViewController *)arg2 sender:(id)arg3;
 - (void)action:(CNContactAction *)arg1 prepareChildContactViewController:(CNContactContentViewController *)arg2 sender:(id)arg3;
+
+@optional
+- (void)action:(CNContactAction *)arg1 presentViewController:(UIViewController *)arg2 modalPresentationStyle:(long long)arg3 sender:(id)arg4;
 @end
 

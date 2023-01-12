@@ -13,7 +13,7 @@
 @property(nonatomic) struct CGRect videoContentFrame;
 @property(nonatomic) _Bool canShowStatusBarBackgroundGradientWhenStatusBarVisible;
 @property(readonly, nonatomic) AVPlaybackContentContainerView *activeContentView;
-- (void)setVideoGravity:(long long)arg1 removingAllSubayerTransformAnimations:(_Bool)arg2;
+- (void)setVideoGravity:(long long)arg1 removingAllSublayerTransformAnimations:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 activeContentView:(AVPlaybackContentContainerView *)arg2;
 @end
 

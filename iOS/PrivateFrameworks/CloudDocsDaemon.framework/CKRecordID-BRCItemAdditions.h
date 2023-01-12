@@ -6,11 +6,9 @@
 
 #import <CloudKit/CKRecordID.h>
 
-#import <CloudDocsDaemon/PQLValuable-Protocol.h>
-
 @class NSString;
 
-@interface CKRecordID (BRCItemAdditions) <PQLValuable>
+@interface CKRecordID (BRCItemAdditions)
 + (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (id)brc_fetchShareIDWithSharedItem:(id)arg1;
@@ -26,6 +24,7 @@
 - (id)brc_appLibraryRootZoneName;
 - (_Bool)brc_isAppLibraryRootRecordID;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
+- (id)brc_collaborationIdentifierWithCachedCurrentUserRecordName:(id)arg1;
 - (id)brc_shareItemID;
 - (id)brc_shareZoneName;
 - (id)initShareIDWithRecordID:(id)arg1 zoneID:(id)arg2 session:(id)arg3;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreFoundation/UAPasteboardItemProviding-Protocol.h>
-
 @class NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface _NSRemotePasteboardDataProvider : NSObject <UAPasteboardItemProviding>
+@interface _NSRemotePasteboardDataProvider : NSObject
 {
     long long _generation;
     long long _itemIdentifier;

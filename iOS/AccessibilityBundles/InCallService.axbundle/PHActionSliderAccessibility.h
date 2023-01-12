@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)_accessibilityScannerShouldUseActivateInPointMode;
 - (_Bool)accessibilityActivate;
 - (id)accessibilityLabel;

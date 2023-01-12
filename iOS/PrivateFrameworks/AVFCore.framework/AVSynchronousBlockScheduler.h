@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVBlockScheduler-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVSynchronousBlockScheduler : NSObject <AVBlockScheduler>
+@interface AVSynchronousBlockScheduler : NSObject
 {
 }
 

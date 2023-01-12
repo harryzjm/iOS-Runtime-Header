@@ -15,6 +15,7 @@
 - (void)sender:(id)arg1 presentViewController:(UIViewController *)arg2;
 
 @optional
+- (void)sender:(id)arg1 presentViewController:(UIViewController *)arg2 modalPresentationStyle:(long long)arg3;
 - (void)viewController:(UIViewController *)arg1 presentationControllerWillDismiss:(UIPresentationController *)arg2;
 @end
 

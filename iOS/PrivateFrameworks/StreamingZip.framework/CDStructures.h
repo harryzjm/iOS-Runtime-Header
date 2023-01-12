@@ -10,24 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CC_MD2state_st {
-    int num;
-    unsigned char data[16];
-    unsigned int cksm[16];
-    unsigned int state[16];
-};
-
-struct CC_MD4state_st {
-    unsigned int A;
-    unsigned int B;
-    unsigned int C;
-    unsigned int D;
-    unsigned int Nl;
-    unsigned int Nh;
-    unsigned int data[16];
-    unsigned int num;
-};
-
 struct CC_MD5state_st {
     unsigned int A;
     unsigned int B;
@@ -90,14 +72,12 @@ typedef struct {
     union {
         struct CC_MD5state_st md5;
         struct CC_SHA1state_st sha1;
-        struct CC_MD2state_st md2;
-        struct CC_MD4state_st md4;
         struct CC_SHA256state_st sha224;
         struct CC_SHA256state_st sha256;
         struct CC_SHA512state_st sha384;
         struct CC_SHA512state_st sha512;
     } context;
-} CDStruct_3b890e00;
+} CDStruct_6e7ce3cd;
 
 typedef struct {
     unsigned char _field1[4];

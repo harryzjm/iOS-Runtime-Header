@@ -6,20 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCRedundancyControllerProtocol-Protocol.h>
-
 @class AVCStatisticsCollector, NSArray, NSString;
 @protocol VCRedundancyControlAlgorithm;
 
 __attribute__((visibility("hidden")))
-@interface VCRedundancyControllerVideo : NSObject <VCRedundancyControllerProtocol>
+@interface VCRedundancyControllerVideo : NSObject
 {
     id _redundancyControllerDelegate;
     AVCStatisticsCollector *_statisticsCollector;
     unsigned int _mode;
     id <VCRedundancyControlAlgorithm> _algorithm;
     unsigned int _currentRedundancyPercentage;
-    _Bool _isRSUOptimizationEnabled;
     int _forceRedundancyPercentage;
     double _lastDefaultSettingLoadingTime;
     unsigned char _mediaControlInfoFECFeedbackVersion;
@@ -37,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)setBtNotificationMonitor;
 - (void)loadDefaultSettings;
 - (void)reportRedundancyPercentage:(unsigned int)arg1 redundancyInterval:(double)arg2;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_7df19fcb)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 mode:(unsigned int)arg2 parameters:(struct VCRedundancyControllerVideoParameters_t)arg3;
 

@@ -6,19 +6,16 @@
 
 #import <Photos/PHAssetCollection.h>
 
-#import <PhotosUICore/PXDisplayAssetCollection-Protocol.h>
-#import <PhotosUICore/PXMediaTypeAggregating-Protocol.h>
-
 @class NSArray, NSDate, NSString;
 
-@interface PHAssetCollection (PXDisplayAssetAdoption) <PXDisplayAssetCollection, PXMediaTypeAggregating>
+@interface PHAssetCollection (PXDisplayAssetAdoption)
 + (id)px_fetchAssetCollectionsWithAlbumSubtypes:(id)arg1 photoLibrary:(id)arg2;
 + (id)px_fetchSmartAlbumCollectionsBySubtypeForAlbumSubtypes:(id)arg1 photoLibrary:(id)arg2;
 + (id)px_contentSyndicationVirtualCollection;
-+ (id)px_searchResultsVirtualCollection;
 + (id)px_importHistoryAssetCollection;
 + (id)px_sharedActivityVirtualCollection;
 + (id)px_completeMyMomentVirtualCollection;
++ (id)px_prototypeVirtualCollection;
 + (id)px_searchVirtualCollection;
 + (id)px_sharedAlbumsVirtualCollection;
 + (id)px_myAlbumsVirtualCollection;
@@ -30,8 +27,11 @@
 + (id)px_momentsVirtualCollection;
 + (id)px_fetchSmartAlbumWithSubtype:(long long)arg1;
 + (id)px_smartAlbumWithSubtype:(long long)arg1;
++ (id)px_regularAlbumWithTitle:(id)arg1;
 + (id)px_otherAlbumsSubtypes;
 + (id)px_mediaTypeSmartAlbumSubtypes;
++ (void)px_getType:(long long *)arg1 subtype:(long long *)arg2 forBuiltInAlbumName:(id)arg3;
++ (id)px_builtInAlbumNameForSubtype:(long long)arg1;
 @property(readonly, nonatomic) _Bool px_isMacSyncedFacesAlbum;
 @property(readonly, nonatomic) _Bool px_isMacSyncedRegularAlbum;
 @property(readonly, nonatomic) _Bool px_isMacSyncedAlbum;
@@ -43,8 +43,16 @@
 @property(readonly, nonatomic) _Bool px_isSuggestion;
 @property(readonly, nonatomic) _Bool px_isHighlight;
 @property(readonly, nonatomic) _Bool px_isMoment;
+@property(readonly, nonatomic) _Bool px_isSharedLibrarySharingSuggestion;
+@property(readonly, nonatomic) _Bool px_isSharedLibrarySharingSuggestionsSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isSharedLibrarySmartAlbum;
+@property(readonly, nonatomic) _Bool px_isNotUploadedSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isUnableToUploadSmartAlbum;
+@property(readonly, nonatomic) _Bool px_containsPrivateContent;
+@property(readonly, nonatomic) _Bool px_isPrivacySensitiveAlbum;
+@property(readonly, nonatomic) _Bool px_isAllLibraryDuplicatesSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isPanoramasSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isProResSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isCinematicSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isRAWSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isLongExposuresSmartAlbum;
@@ -87,6 +95,7 @@
 @property(readonly, nonatomic) _Bool px_isRegularAlbum;
 @property(readonly, nonatomic) _Bool px_isStandInAlbum;
 @property(readonly, nonatomic) _Bool px_allowsImplicitSelectionForProjectOrSharingAction;
+@property(readonly, nonatomic) _Bool px_isMemory;
 @property(readonly, nonatomic) NSString *localizedDebugDescription;
 @property(readonly, nonatomic) NSString *localizedSmartDescription;
 - (id)localizedDateDescriptionWithOptions:(unsigned long long)arg1;
@@ -106,8 +115,7 @@
 - (id)px_debugDictionary;
 - (unsigned long long)px_assetsDropMode;
 - (_Bool)px_shouldUseFacesRectForSmartCropping;
-- (_Bool)px_fetchContainsAnyAssets;
-- (_Bool)px_fetchIsEmpty;
+- (_Bool)px_fetchIsEmptyWithOptions:(id)arg1;
 @property(readonly, nonatomic) _Bool px_supportsFastCuration;
 
 // Remaining properties
@@ -121,6 +129,8 @@
 @property(readonly, nonatomic) NSArray *localizedLocationNames;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
 @property(readonly, nonatomic) NSString *localizedTitle;
+@property(readonly, nonatomic) _Bool px_allowsMoveToPersonalLibrary;
+@property(readonly, nonatomic) _Bool px_allowsMoveToSharedLibrary;
 @property(readonly, nonatomic) _Bool px_canAddContent;
 @property(readonly, nonatomic) _Bool px_canCreateContent;
 @property(readonly, nonatomic) _Bool px_canDeleteContent;
@@ -129,7 +139,6 @@
 @property(readonly, nonatomic) id px_cheapLogIdentifier;
 @property(readonly, nonatomic) _Bool px_isContentSyndicationFolder;
 @property(readonly, nonatomic) _Bool px_isDeletable;
-@property(readonly, nonatomic) _Bool px_isFavoriteMemoriesSmartFolder;
 @property(readonly, nonatomic) _Bool px_isFolder;
 @property(readonly, nonatomic) _Bool px_isInReadWriteCloudLibrary;
 @property(readonly, nonatomic) _Bool px_isMacSyncedEventsFolder;

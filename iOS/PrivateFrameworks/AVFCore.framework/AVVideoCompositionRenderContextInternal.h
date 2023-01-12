@@ -16,8 +16,16 @@ __attribute__((visibility("hidden")))
     struct CGSize _size;
     struct CGAffineTransform _renderTransform;
     float _renderScale;
-    CDStruct_43f4b5b8 _pixelAspectRatio;
-    CDStruct_1edcc8d7 _edgeWidths;
+    struct {
+        long long horizontalSpacing;
+        long long verticalSpacing;
+    } _pixelAspectRatio;
+    struct {
+        double left;
+        double top;
+        double right;
+        double bottom;
+    } _edgeWidths;
     _Bool _highQualityRendering;
     NSDictionary *_clientRequiredPixelBufferAttributes;
     NSDictionary *_destinationDesiredPixelBufferAttributes;
@@ -28,10 +36,7 @@ __attribute__((visibility("hidden")))
     int pixelFormatFamily;
     struct __CFDictionary *_pixelAspectRatioDict;
     struct __CFDictionary *_cleanApertureDict;
-    struct {
-        int width;
-        int height;
-    } _destinationPixelBufferDimensions;
+    CDStruct_79c71658 _destinationPixelBufferDimensions;
     struct OpaqueFigSimpleMutex *_bufferPoollInitMutex;
     NSObject<OS_dispatch_queue> *_pixelBufferPoolQ;
     struct __CVPixelBufferPool *_pixelBufferPool;

@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuickLook/PHLivePhotoViewDelegate-Protocol.h>
-#import <QuickLook/QLImageAnalysisManagerDelegate-Protocol.h>
-#import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
+#import "QLScrollableContentItemViewController.h"
 
 @class NSDate, NSDictionary, NSLayoutConstraint, NSNumber, NSString, PHLivePhotoView, QLImageAnalysisManager, UIImage, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface QLLivePhotoItemViewController <PHLivePhotoViewDelegate, UIGestureRecognizerDelegate, QLImageAnalysisManagerDelegate>
+@interface QLLivePhotoItemViewController : QLScrollableContentItemViewController
 {
     struct CGSize _imageSize;
     PHLivePhotoView *_livePhotoView;
@@ -27,11 +25,16 @@ __attribute__((visibility("hidden")))
     NSNumber *_savedFullScreenState;
     _Bool _shouldPlayHint;
     QLImageAnalysisManager *_imageAnalysisManager;
+    UIView *_analysisButtonContainer;
+    NSLayoutConstraint *_analysisButtonContainerRightConstraint;
+    NSLayoutConstraint *_analysisButtonContainerBottomConstraint;
 }
 
 - (void).cxx_destruct;
+- (_Bool)_isPointInNonImageSubjectItems:(struct CGPoint)arg1;
 - (_Bool)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (_Bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
@@ -40,14 +43,17 @@ __attribute__((visibility("hidden")))
 - (void)didZoom:(id)arg1;
 - (void)adjustImageInteractionForScrollEvent:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)_updateImageAnalysisViewsConstraints;
-- (void)_setupAndStartImageAnalysis;
+- (void)_updateAnalysisButtonsContainerConstraints;
+- (void)_setupAndStartImageAnalysisIfNeeded;
 - (void)imageAnalysisInteractionDidDismissVisualSearchController;
 - (void)imageAnalysisInteractionWillPresentVisualSearchController;
 - (void)imageAnalyzerWantsUpdateInfoButtonWithAnimation:(_Bool)arg1;
+- (void)imageAnalyzerWantsUpdateOverlayViews;
 @property(readonly, nonatomic) NSDictionary *clientPreviewOptions;
 @property(readonly, nonatomic) UIView *imageAnalysisView;
-@property(readonly, nonatomic) UIImage *image;
+@property(readonly, nonatomic) UIImage *imageForAnalysis;
+- (double)livePhotoView:(id)arg1 extraMinimumTouchDurationForTouch:(id)arg2 withStyle:(long long)arg3;
+- (_Bool)livePhotoView:(id)arg1 canBeginPlaybackWithStyle:(long long)arg2;
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
 - (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -63,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)previewBecameFullScreen:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)previewDidDisappear:(_Bool)arg1;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;
+- (void)previewWillDisappear:(_Bool)arg1;
 - (void)previewDidAppear:(_Bool)arg1;
 - (void)previewWillFinishAppearing;
 - (void)previewWillAppear:(_Bool)arg1;

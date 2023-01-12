@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NWCHourlyForecastView.h"
+
 __attribute__((visibility("hidden")))
-@interface NWCHourlyForecastWindView
+@interface NWCHourlyForecastWindView : NWCHourlyForecastView
 {
 }
 
+- (void)applyNonAccentFilters:(id)arg1;
+- (void)applyAccentFilters:(id)arg1;
 - (void)applyStyle;
+- (void)applySimpleEntryModel:(id)arg1;
 - (void)applyEntryModel:(id)arg1 date:(id)arg2 timeZone:(id)arg3;
 
 @end

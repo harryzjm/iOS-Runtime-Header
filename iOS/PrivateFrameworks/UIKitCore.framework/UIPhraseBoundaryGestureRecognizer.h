@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UILongPressGestureRecognizer.h"
+
 @class UIDelayedAction, UIResponder;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
-@interface UIPhraseBoundaryGestureRecognizer
+@interface UIPhraseBoundaryGestureRecognizer : UILongPressGestureRecognizer
 {
     UIDelayedAction *_secondDelayTimer;
     _Bool _secondDelayElapsed;

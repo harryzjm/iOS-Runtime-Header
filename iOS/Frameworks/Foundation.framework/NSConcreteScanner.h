@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSScanner.h"
+
 @class NSCharacterSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSConcreteScanner
+@interface NSConcreteScanner : NSScanner
 {
     NSString *scanString;
     NSCharacterSet *skipSet;

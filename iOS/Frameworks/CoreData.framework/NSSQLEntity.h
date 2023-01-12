@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSArray *_propertiesAllToManysCache;
     NSArray *_propertyManyToManyCache;
     NSMutableArray *_columnsToFetch;
+    NSMutableArray *_columnsToFetchNoSubentities;
     NSMutableArray *_ekColumns;
     NSMutableArray *_fkColumns;
     NSMutableArray *_fokColumns;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
     } _sqlentityFlags;
 }
 
++ (void)initialize;
 - (void)copyValuesForReadOnlyFetch:(id)arg1;
 - (id)description;
 - (id)rootEntity;

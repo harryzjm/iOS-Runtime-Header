@@ -6,17 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <TelephonyUtilities/AVConferencePreviewClientDelegate-Protocol.h>
-#import <TelephonyUtilities/TUVideoDeviceControllerProvider-Protocol.h>
-#import <TelephonyUtilities/TUVideoEffectsProvider-Protocol.h>
-
 @class AVConferencePreview, NSArray, NSString, TUVideoEffect, VideoAttributes;
 @protocol TUVideoDeviceControllerProviderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TUVideoDeviceControllerProvider : NSObject <AVConferencePreviewClientDelegate, TUVideoDeviceControllerProvider, TUVideoEffectsProvider>
+@interface TUVideoDeviceControllerProvider : NSObject
 {
-    _Bool _isAVCaptureDeviceReady;
     id <TUVideoDeviceControllerProviderDelegate> _delegate;
     TUVideoEffect *_currentVideoEffect;
     AVConferencePreview *_preview;
@@ -31,15 +26,17 @@ __attribute__((visibility("hidden")))
 - (id)thumbnailImageForVideoEffectName:(id)arg1;
 @property(readonly, nonatomic) NSArray *availableVideoEffects;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)cameraCinematicFramingAvailabilityDidChange:(_Bool)arg1;
+- (void)didGetSnapshot:(id)arg1;
 - (void)cameraZoomAvailabilityDidChange:(_Bool)arg1;
 - (void)didPausePreview;
 - (void)didStopPreview;
 - (void)didChangeLocalVideoAttributes:(id)arg1;
+- (void)didChangeLocalCameraUID:(id)arg1;
 - (void)didReceiveFirstPreviewFrameFromCameraUniqueID:(id)arg1;
 - (void)didStartPreview;
 - (void)cameraDidBecomeAvailableForUniqueID:(id)arg1;
 - (void)didReceiveErrorFromCameraUniqueID:(id)arg1 error:(id)arg2;
+@property(readonly, nonatomic) _Bool hasAvailableDeskViewCameras;
 - (void)setCameraZoomFactor:(double)arg1;
 - (void)rampCameraZoomFactor:(double)arg1 withRate:(double)arg2;
 - (void)endPIPToPreviewAnimation;
@@ -49,10 +46,9 @@ __attribute__((visibility("hidden")))
 - (void)setLocalScreenAttributes:(id)arg1;
 - (id)localScreenAttributesForVideoAttributes:(id)arg1;
 @property(nonatomic, getter=isCameraBlurEnabled) _Bool cameraBlurEnabled;
-@property(nonatomic) _Bool allowsCameraBlurToggling;
+@property(nonatomic) long long currentBackgroundBlurControlMode;
 - (_Bool)supportsCameraBlurForDevice:(id)arg1;
-@property(nonatomic, getter=isCinematicFramingEnabled) _Bool cinematicFramingEnabled;
-- (void)queryAVCaptureDeviceIfNeeded;
+- (void)getSnapshot;
 - (void)stopPreview;
 - (void)pausePreview;
 - (void)startPreview;
@@ -63,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSArray *inputDevices;
 @property(readonly, copy, nonatomic) NSString *localCameraUID;
 @property(readonly, nonatomic, getter=isPreviewRunning) _Bool previewRunning;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

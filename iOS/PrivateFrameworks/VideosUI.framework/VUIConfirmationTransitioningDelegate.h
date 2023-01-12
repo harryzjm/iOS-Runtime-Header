@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <VideosUI/VUIConfirmationAnimatedTransitioningDelegate-Protocol.h>
-
 @class NSString, VUIConfirmationAnimatedTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface VUIConfirmationTransitioningDelegate : NSObject <VUIConfirmationAnimatedTransitioningDelegate, UIViewControllerTransitioningDelegate>
+@interface VUIConfirmationTransitioningDelegate : NSObject
 {
     VUIConfirmationAnimatedTransitioning *_presentTransition;
     VUIConfirmationAnimatedTransitioning *_dismissTransition;

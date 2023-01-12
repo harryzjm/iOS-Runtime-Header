@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSRequestPresentationDelegate-Protocol.h>
-
 @class AMSURLSession, NSString, NSURLSessionTask;
 
 __attribute__((visibility("hidden")))
-@interface AMSBiometricsPresentationProxy : NSObject <AMSRequestPresentationDelegate>
+@interface AMSBiometricsPresentationProxy : NSObject
 {
     AMSURLSession *_session;
     NSURLSessionTask *_task;

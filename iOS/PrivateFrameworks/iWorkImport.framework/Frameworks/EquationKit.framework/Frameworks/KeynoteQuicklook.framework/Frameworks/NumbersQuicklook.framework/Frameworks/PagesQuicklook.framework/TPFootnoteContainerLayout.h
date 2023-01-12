@@ -6,14 +6,10 @@
 
 #import <TSDrawables/TSDLayout.h>
 
-#import <PagesQuicklook/TSWPColumnMetrics-Protocol.h>
-#import <PagesQuicklook/TSWPFootnoteMarkProvider-Protocol.h>
-#import <PagesQuicklook/TSWPLayoutParent-Protocol.h>
-
 @class NSString, TSWPPadding;
 @protocol TSWPFootnoteMarkProvider;
 
-@interface TPFootnoteContainerLayout : TSDLayout <TSWPColumnMetrics, TSWPLayoutParent, TSWPFootnoteMarkProvider>
+@interface TPFootnoteContainerLayout : TSDLayout
 {
     _Bool _vertical;
     double _lineWidth;

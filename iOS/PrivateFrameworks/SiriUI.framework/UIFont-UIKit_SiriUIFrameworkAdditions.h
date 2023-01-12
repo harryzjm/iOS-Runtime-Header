@@ -7,6 +7,8 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (UIKit_SiriUIFrameworkAdditions)
++ (id)siriUI_dynamicSubHeadlineEmphasizedSizeFont;
++ (id)siriUI_dynamicSubHeadlineMediumSizeFont;
 + (id)siriui_dynamicMediumWeightBodySubtextSizeFont;
 + (id)siriui_dynamicThinWeightBodySubtextSizeFont;
 + (id)siriui_dynamicLightWeightBodySubtextSizeFont;

@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI42CompoundDataSourceCollectionViewControllerCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI47SummarySharingRelationshipDetailsViewController
+@interface _TtC18HealthExperienceUI47SummarySharingRelationshipDetailsViewController : _$s18HealthExperienceUI42CompoundDataSourceCollectionViewControllerCN
 {
     MISSING_TYPE *navigationBarTitleView;
+    MISSING_TYPE *healthStore;
     MISSING_TYPE *healthExperienceStore;
     MISSING_TYPE *selectedDataTypesContext;
     MISSING_TYPE *relationshipDetailsDataSource;
     MISSING_TYPE *sharingEntryStore;
     MISSING_TYPE *sharingProfileInformation;
+    MISSING_TYPE *flow;
+    MISSING_TYPE *pausedStateChanged;
     MISSING_TYPE *$__lazy_storage_$_doneButtonItem;
     MISSING_TYPE *$__lazy_storage_$_activitySpinnerItem;
     MISSING_TYPE *updateAuthorizationsCancellable;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 @class NSArray, NSDictionary, NSValue, UIDelayedAction;
 
 __attribute__((visibility("hidden")))
-@interface _UISimplePressGestureRecognizer
+@interface _UISimplePressGestureRecognizer : UIGestureRecognizer
 {
     UIDelayedAction *_delayedAction;
     NSValue *_activeTrigger;

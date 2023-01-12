@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPLazyReferenceDelegate-Protocol.h>
-#import <TSPersistence/TSPReaderDelegate-Protocol.h>
-
 @class NSError, NSHashTable, NSMutableArray, NSString, NSUUID, TSPCancellationState;
 @protocol OS_dispatch_queue;
 
-@interface TSPReadCoordinatorBase : NSObject <TSPReaderDelegate, TSPLazyReferenceDelegate>
+@interface TSPReadCoordinatorBase : NSObject
 {
     NSObject<OS_dispatch_queue> *_errorQueue;
     NSError *_error;

@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
 @protocol MUPlaceRibbonItemViewModelUpdateDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +16,9 @@ __attribute__((visibility("hidden")))
     id <MUPlaceRibbonItemViewModelUpdateDelegate> _updateDelegate;
     CDUnknownBlockType _titleStringProvider;
     CDUnknownBlockType _valueStringProvider;
+    NSString *_preferredAccessibilityValue;
+    NSString *_typeStringForAX;
+    long long _type;
 }
 
 + (id)ratingSubmissionStatusViewModelForRatingState:(long long)arg1;
@@ -25,8 +29,10 @@ __attribute__((visibility("hidden")))
 + (id)costItemViewForMapItem:(id)arg1;
 + (id)hoursItemViewModelForMapItem:(id)arg1;
 + (id)guidesItemViewModelForMapItem:(id)arg1;
-+ (id)ratingItemViewModelForMapItem:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) long long type; // @synthesize type=_type;
+@property(retain, nonatomic) NSString *typeStringForAX; // @synthesize typeStringForAX=_typeStringForAX;
+@property(copy, nonatomic) NSString *preferredAccessibilityValue; // @synthesize preferredAccessibilityValue=_preferredAccessibilityValue;
 @property(copy, nonatomic) CDUnknownBlockType valueStringProvider; // @synthesize valueStringProvider=_valueStringProvider;
 @property(copy, nonatomic) CDUnknownBlockType titleStringProvider; // @synthesize titleStringProvider=_titleStringProvider;
 @property(nonatomic, getter=isTappable) _Bool tappable; // @synthesize tappable=_tappable;

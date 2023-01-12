@@ -20,6 +20,9 @@
 - (void)getPresentationContextForRequestContext:(AKCredentialRequestContext *)arg1 completion:(void (^)(AKAuthorizationPresentationContext *, NSError *))arg2;
 - (void)getCredentialStateForClientID:(NSString *)arg1 completion:(void (^)(long long, NSError *))arg2;
 - (void)getCredentialStateForRequest:(AKAuthorizationCredentialStateRequest *)arg1 completion:(void (^)(long long, NSError *))arg2;
+- (void)cancelAuthorizationWithContext:(AKCredentialRequestContext *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)continueAuthorizationWithContext:(AKCredentialRequestContext *)arg1 completion:(void (^)(AKAuthorization *, NSError *))arg2;
+- (void)beginAuthorizationWithContext:(AKCredentialRequestContext *)arg1 completion:(void (^)(AKAuthorizationUserResponse *, NSError *))arg2;
 - (void)performAuthorizationWithContext:(AKCredentialRequestContext *)arg1 withUserProvidedInformation:(AKAuthorizationUserResponse *)arg2 completion:(void (^)(AKAuthorization *, NSError *))arg3;
 - (void)performAuthorization:(AKCredentialRequestContext *)arg1 completion:(void (^)(AKAuthorization *, NSError *))arg2;
 @end

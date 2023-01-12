@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/CAAction-Protocol.h>
-
 @class CAAnimation, UIView, UIViewPropertyAnimator;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewAdditiveAnimationAction : NSObject <CAAction>
+@interface _UIViewAdditiveAnimationAction : NSObject
 {
     CAAnimation *_pendingAnimation;
     UIViewPropertyAnimator *_animationObject;

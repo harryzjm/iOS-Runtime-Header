@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "BRCLocalItem.h"
+
 @class BRCAppLibrary, BRCClientZone, BRCDirectoryItem, BRCDocumentItem, BRCItemID;
 
 __attribute__((visibility("hidden")))
-@interface BRCAliasItem
+@interface BRCAliasItem : BRCLocalItem
 {
 }
 

@@ -5,12 +5,12 @@
 //
 
 #import <MetalTools/MTLAccelerationStructureCommandEncoder-Protocol.h>
+#import <MetalTools/MTLCommandEncoderSPI-Protocol.h>
 
-@class MTLAccelerationStructureDescriptor, NSArray;
+@class MTLAccelerationStructureDescriptor, MTLGenericBVHBufferSizesSPI, MTLGenericBVHBuffersSPI, NSArray;
 @protocol MTLAccelerationStructure, MTLBuffer;
 
-@protocol MTLAccelerationStructureCommandEncoderSPI <MTLAccelerationStructureCommandEncoder>
-- (void)writeGenericBVHStructureSizesOfAccelerationStructure:(id <MTLAccelerationStructure>)arg1 toBuffer:(id <MTLBuffer>)arg2 sizesBufferOffset:(unsigned long long)arg3;
+@protocol MTLAccelerationStructureCommandEncoderSPI <MTLCommandEncoderSPI, MTLAccelerationStructureCommandEncoder>
 - (void)writeGeometryOfAccelerationStructure:(id <MTLAccelerationStructure>)arg1 toBuffer:(id <MTLBuffer>)arg2 geometryBufferOffset:(unsigned long long)arg3;
 - (void)writeGeometrySizeOfAccelerationStructure:(id <MTLAccelerationStructure>)arg1 toBuffer:(id <MTLBuffer>)arg2 sizeBufferOffset:(unsigned long long)arg3;
 - (void)deserializeAccelerationStructure:(id <MTLAccelerationStructure>)arg1 primitiveAccelerationStructures:(NSArray *)arg2 fromBuffer:(id <MTLBuffer>)arg3 serializedBufferOffset:(unsigned long long)arg4;
@@ -25,8 +25,11 @@
 - (void)writeSerializedAccelerationStructureSize:(id <MTLAccelerationStructure>)arg1 toBuffer:(id <MTLBuffer>)arg2 sizeBufferOffset:(unsigned long long)arg3;
 
 @optional
-- (void)writeGenericBVHStructureOfAccelerationStructure:(id <MTLAccelerationStructure>)arg1 headerBuffer:(id <MTLBuffer>)arg2 headerBufferOffset:(unsigned long long)arg3 innerNodeBuffer:(id <MTLBuffer>)arg4 innerNodeBufferOffset:(unsigned long long)arg5 leafNodeBuffer:(id <MTLBuffer>)arg6 leafNodeBufferOffset:(unsigned long long)arg7 primitiveBuffer:(id <MTLBuffer>)arg8 primitiveBufferOffset:(unsigned long long)arg9;
+- (void)writeAccelerationStructureSerializationData:(id <MTLAccelerationStructure>)arg1 toBuffer:(id <MTLBuffer>)arg2 offset:(unsigned long long)arg3;
 - (void)writeGenericBVHStructureOfAccelerationStructure:(id <MTLAccelerationStructure>)arg1 headerBuffer:(id <MTLBuffer>)arg2 headerBufferOffset:(unsigned long long)arg3 innerNodeBuffer:(id <MTLBuffer>)arg4 innerNodeBufferOffset:(unsigned long long)arg5 leafNodeBuffer:(id <MTLBuffer>)arg6 leafNodeBufferOffset:(unsigned long long)arg7 primitiveBuffer:(id <MTLBuffer>)arg8 primitiveBufferOffset:(unsigned long long)arg9 geometryBuffer:(id <MTLBuffer>)arg10 geometryOffset:(unsigned long long)arg11 instanceTransformBuffer:(id <MTLBuffer>)arg12 instanceTransformOffset:(unsigned long long)arg13;
+- (void)writeGenericBVHStructureSizesOfAccelerationStructure:(id <MTLAccelerationStructure>)arg1 toBuffer:(id <MTLBuffer>)arg2 sizesBufferOffset:(unsigned long long)arg3;
+- (_Bool)writeGenericBVHStructureOfAccelerationStructure:(id <MTLAccelerationStructure>)arg1 into:(MTLGenericBVHBuffersSPI *)arg2;
+- (_Bool)writeGenericBVHStructureSizesOfAccelerationStructure:(id <MTLAccelerationStructure>)arg1 into:(MTLGenericBVHBufferSizesSPI *)arg2;
 - (void)deserializeInstanceAccelerationStructure:(id <MTLAccelerationStructure>)arg1 primitiveAccelerationStructures:(NSArray *)arg2 fromBuffer:(id <MTLBuffer>)arg3 serializedBufferOffset:(unsigned long long)arg4 withDescriptor:(MTLAccelerationStructureDescriptor *)arg5;
 - (void)deserializePrimitiveAccelerationStructure:(id <MTLAccelerationStructure>)arg1 fromBuffer:(id <MTLBuffer>)arg2 serializedBufferOffset:(unsigned long long)arg3 withDescriptor:(MTLAccelerationStructureDescriptor *)arg4;
 @end

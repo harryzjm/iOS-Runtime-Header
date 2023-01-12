@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDCaptionedPhoto, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDGuideLocationImage : PBCodable <NSCopying>
+@interface GEOPDGuideLocationImage : PBCodable
 {
     PBUnknownFields *_unknownFields;
     GEOPDCaptionedPhoto *_image;

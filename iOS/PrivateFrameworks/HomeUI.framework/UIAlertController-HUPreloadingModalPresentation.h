@@ -6,11 +6,9 @@
 
 #import <UIKit/UIAlertController.h>
 
-#import <HomeUI/HUPreloadableViewController-Protocol.h>
-
 @class NSString;
 
-@interface UIAlertController (HUPreloadingModalPresentation) <HUPreloadableViewController>
+@interface UIAlertController (HUPreloadingModalPresentation)
 + (id)hu_actionSheetWithTitle:(id)arg1 message:(id)arg2 anchorView:(id)arg3;
 + (id)hu_alertControllerForAcknowledgementWithTitle:(id)arg1 message:(id)arg2;
 + (id)hu_alertControllerWithActivityIndicatorAndTitle:(id)arg1;

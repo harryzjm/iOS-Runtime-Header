@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "FPDDomainIndexer.h"
+
 __attribute__((visibility("hidden")))
-@interface FPDExtensionIndexer
+@interface FPDExtensionIndexer : FPDDomainIndexer
 {
 }
 
+- (void)dropIndexWithCompletion:(CDUnknownBlockType)arg1;
 - (void)indexOneBatchWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

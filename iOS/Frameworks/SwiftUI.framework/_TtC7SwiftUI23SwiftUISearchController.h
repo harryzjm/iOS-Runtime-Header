@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *searchItem;
     MISSING_TYPE *$__lazy_storage_$__searchBar;
     MISSING_TYPE *coordinator;
+    MISSING_TYPE *suggestions;
 }
 
 - (void).cxx_destruct;
@@ -21,6 +22,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithSearchResultsController:(id)arg1;
 @property(nonatomic, readonly) UISearchBar *searchBar;
 - (id)initWithCoder:(id)arg1;
+- (void)updateSearchResultsForSearchController:(id)arg1 selectingSearchSuggestion:(id)arg2;
+- (void)updateSearchResultsForSearchController:(id)arg1;
+- (void)searchController:(id)arg1 willChangeToSearchBarPlacement:(long long)arg2;
 - (id)init;
 
 @end

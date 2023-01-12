@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)automationCustomProperties;
+- (id)accessibilityValue;
+- (id)accessibilityLabel;
 
 @end
 

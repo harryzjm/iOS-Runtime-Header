@@ -6,12 +6,14 @@
 
 #import <SeymourUI/NSObject-Protocol.h>
 
-@class AVPlayerViewController, NSError;
+@class AVInterstitialTimeRange, AVPlayerViewController, NSError;
 @protocol UIViewControllerTransitionCoordinator;
 
 @protocol AVPlayerViewControllerDelegate <NSObject>
 
 @optional
+- (void)playerViewController:(AVPlayerViewController *)arg1 didPresentInterstitialTimeRange:(AVInterstitialTimeRange *)arg2;
+- (void)playerViewController:(AVPlayerViewController *)arg1 willPresentInterstitialTimeRange:(AVInterstitialTimeRange *)arg2;
 - (void)playerViewController:(AVPlayerViewController *)arg1 restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^)(_Bool))arg2;
 - (_Bool)playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart:(AVPlayerViewController *)arg1;
 - (void)playerViewControllerDidStopPictureInPicture:(AVPlayerViewController *)arg1;

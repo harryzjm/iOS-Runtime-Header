@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface GQUProgressiveHelper : NSObject
 {
     const void *mClient;

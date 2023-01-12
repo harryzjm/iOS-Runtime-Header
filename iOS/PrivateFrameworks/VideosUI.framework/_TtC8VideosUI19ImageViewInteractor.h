@@ -11,13 +11,13 @@
 @interface _TtC8VideosUI19ImageViewInteractor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *imageViewModel;
+    MISSING_TYPE *layoutEnvironment;
     MISSING_TYPE *isResourceOrSymbolImage;
     MISSING_TYPE *_image;
-    MISSING_TYPE *remoteImageURL;
+    MISSING_TYPE *_symbolName;
     MISSING_TYPE *placeholderColor;
     MISSING_TYPE *placeholderImage;
     MISSING_TYPE *boundingBoxSize;
-    MISSING_TYPE *preferredSize;
     MISSING_TYPE *isLoaded;
     MISSING_TYPE *imageProxy;
 }

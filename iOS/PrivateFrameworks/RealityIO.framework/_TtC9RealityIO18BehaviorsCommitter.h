@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *rootEntity;
     MISSING_TYPE *interactionSpecificationByPrimPath;
-    MISSING_TYPE *accessQueue;
 }
 
 @end

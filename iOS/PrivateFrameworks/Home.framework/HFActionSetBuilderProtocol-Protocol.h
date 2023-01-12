@@ -6,17 +6,21 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class HFActionBuilder, HFMediaPlaybackActionBuilder, NAFuture, NSArray;
+@class HFActionBuilder, HFMediaPlaybackActionBuilder, HMHome, NAFuture, NSArray;
 
 @protocol HFActionSetBuilderProtocol <NSObject>
-@property(readonly, nonatomic) HFMediaPlaybackActionBuilder *mediaAction;
-@property(readonly, nonatomic, getter=isAffectedByEndEvents) _Bool affectedByEndEvents;
-@property(readonly, nonatomic) _Bool requiresDeviceUnlock;
-@property(readonly, nonatomic) NSArray *actions;
 - (NAFuture *)deleteActionSet;
 - (void)removeAllActions;
 - (void)removeAction:(HFActionBuilder *)arg1;
 - (void)updateAction:(HFActionBuilder *)arg1;
 - (void)addAction:(HFActionBuilder *)arg1;
+@property(nonatomic, readonly) HFMediaPlaybackActionBuilder *mediaAction;
+- (_Bool)isAffectedByEndEvents;
+@property(nonatomic, readonly) _Bool requiresDeviceUnlock;
+@property(nonatomic, readonly) NSArray *actions;
+@property(nonatomic, readonly) HMHome *home;
+
+// Remaining properties
+@property(nonatomic, readonly) _Bool affectedByEndEvents;
 @end
 

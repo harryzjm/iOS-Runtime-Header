@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPShare;
 
-@interface CKDPShareAcceptResponse : PBCodable <NSCopying>
+@interface CKDPShareAcceptResponse : PBCodable
 {
     CKDPShare *_share;
 }

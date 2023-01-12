@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/MCProfileConnectionObserver-Protocol.h>
-#import <SafariServices/_SFPageFormatMenuItemController-Protocol.h>
-
 @class MCProfileConnection, NSString, UIViewController, _SFSettingsAlertItem;
 @protocol _SFBrowserDocument, _SFPageFormatMenuItemControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _SFPageFormatMenuPrivacyReportController : NSObject <MCProfileConnectionObserver, _SFPageFormatMenuItemController>
+@interface _SFPageFormatMenuPrivacyReportController : NSObject
 {
     MCProfileConnection *_profileConnection;
     UIViewController *_enableTrackerProtectionViewController;

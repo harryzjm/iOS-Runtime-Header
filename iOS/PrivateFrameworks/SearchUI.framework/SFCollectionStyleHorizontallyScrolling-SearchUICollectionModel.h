@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFCollectionStyleHorizontallyScrolling.h>
 
 @interface SFCollectionStyleHorizontallyScrolling (SearchUICollectionModel)
-- (id)searchUISectionModelForCardRowModels:(id)arg1 section:(id)arg2;
+- (id)searchUISectionModelForCardRowModels:(id)arg1 section:(id)arg2 expandedCollectionSections:(id)arg3;
 @end
 

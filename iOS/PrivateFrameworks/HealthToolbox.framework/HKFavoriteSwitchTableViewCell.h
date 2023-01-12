@@ -6,13 +6,10 @@
 
 #import <HealthUI/HKSwitchTableViewCell.h>
 
-#import <HealthToolbox/HKSwitchTableViewCellDelegate-Protocol.h>
-#import <HealthToolbox/WDFavoriteDisplayTypesControllerObserver-Protocol.h>
-
 @class HKDisplayType, NSString, WDFavoriteDisplayTypesController;
 
 __attribute__((visibility("hidden")))
-@interface HKFavoriteSwitchTableViewCell : HKSwitchTableViewCell <HKSwitchTableViewCellDelegate, WDFavoriteDisplayTypesControllerObserver>
+@interface HKFavoriteSwitchTableViewCell : HKSwitchTableViewCell
 {
     WDFavoriteDisplayTypesController *_favoriteDisplayTypesController;
     HKDisplayType *_displayType;

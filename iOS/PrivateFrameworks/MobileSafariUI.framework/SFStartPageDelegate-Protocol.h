@@ -6,19 +6,20 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class NSArray, SFSectionModel, SFStartPageCustomizationViewController, SFStartPageViewController;
+@class NSArray, NSString, SFSectionModel, SFStartPageCustomizationViewController, SFStartPageViewController;
 
 @protocol SFStartPageDelegate <NSObject>
 
 @optional
+- (void)startPageViewControllerDidUpdateContent:(SFStartPageViewController *)arg1;
+- (double)startPageViewControllerTopPadding:(SFStartPageViewController *)arg1;
 - (_Bool)startPageViewControllerShouldDeferLoadingContentUntilKeyboardAnimatesIn:(SFStartPageViewController *)arg1;
 - (void)startPageViewController:(SFStartPageViewController *)arg1 willPresentCustomizationViewController:(SFStartPageCustomizationViewController *)arg2;
 - (void)startPageControllerDidCompleteUnfocusGesture:(SFStartPageViewController *)arg1;
 - (void)startPageControllerDidCompleteDismissGesture:(SFStartPageViewController *)arg1;
-- (_Bool)startPageViewController:(SFStartPageViewController *)arg1 shouldBeginDismissGestureUsingStyle:(long long)arg2;
 - (void)startPageViewControllerDidScroll:(SFStartPageViewController *)arg1 animated:(_Bool)arg2;
-- (void)startPageViewControllerDidChangeNavigationBarHeight:(SFStartPageViewController *)arg1;
 - (NSArray *)startPageViewController:(SFStartPageViewController *)arg1 trailingBarItemsForSection:(SFSectionModel *)arg2;
 - (NSArray *)startPageViewController:(SFStartPageViewController *)arg1 leadingBarItemsForSection:(SFSectionModel *)arg2;
+- (NSString *)startPageViewControllerTitleForRootView:(SFStartPageViewController *)arg1;
 @end
 

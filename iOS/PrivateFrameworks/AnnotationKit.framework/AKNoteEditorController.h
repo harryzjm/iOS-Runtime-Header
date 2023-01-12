@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/AKNoteEditorViewControllerDelegate-Protocol.h>
-#import <AnnotationKit/UIPopoverPresentationControllerDelegate-Protocol.h>
-
 @class AKNoteEditorViewController, AKPopupAnnotation, NSString;
 @protocol AKNoteEditorControllerDelegate;
 
-@interface AKNoteEditorController : NSObject <AKNoteEditorViewControllerDelegate, UIPopoverPresentationControllerDelegate>
+@interface AKNoteEditorController : NSObject
 {
     AKPopupAnnotation *_annotation;
     id <AKNoteEditorControllerDelegate> _delegate;

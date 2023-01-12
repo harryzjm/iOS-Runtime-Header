@@ -14,6 +14,7 @@
 @property(readonly, nonatomic) NSArray *accessories;
 @property(readonly, nonatomic) id <HAP2Accessory> primaryAccessory;
 @property(readonly, nonatomic, getter=isPaired) _Bool paired;
+- (void)closeSession;
 - (void)handleNetworkChanged;
 - (void)stopConfirming;
 - (void)startConfirming;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepHealthUI/HKSHQuickScheduleManagementViewControllerDelegateInternal-Protocol.h>
-
 @class HKSHQuickScheduleManagementViewController;
 @protocol HKSHQuickScheduleManagementViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface HKSHQuickScheduleManagementViewControllerDelegateWrapper : NSObject <HKSHQuickScheduleManagementViewControllerDelegateInternal>
+@interface HKSHQuickScheduleManagementViewControllerDelegateWrapper : NSObject
 {
     id <HKSHQuickScheduleManagementViewControllerDelegate> _wrappedDelegate;
     HKSHQuickScheduleManagementViewController *_viewController;

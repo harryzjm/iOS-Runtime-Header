@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, NSPredicate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSBatchUpdateRequestEncodingToken : NSObject <NSSecureCoding>
+@interface NSBatchUpdateRequestEncodingToken : NSObject
 {
     NSString *_entityName;
     NSPredicate *_predicate;

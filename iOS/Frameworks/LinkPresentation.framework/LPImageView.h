@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)installDarkeningViewIfNeeded;
 - (_Bool)shouldApplyBackground;
 - (void)layoutComponentView;
+- (void)updateBorder;
 - (void)updateShadowPath;
 - (void)updateCornerRadius;
 - (void)traitCollectionDidChange:(id)arg1;

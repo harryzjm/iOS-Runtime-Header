@@ -6,11 +6,9 @@
 
 #import <GeoServices/GEOFactoid.h>
 
-#import <MapsUI/MUAmenityItemViewModel-Protocol.h>
-
 @class NSString;
 
-@interface GEOFactoid (MUAmenityItemViewModel) <MUAmenityItemViewModel>
+@interface GEOFactoid (MUAmenityItemViewModel)
 - (id)symbolImageForFont:(id)arg1;
 - (_Bool)isApplePay;
 @property(readonly, nonatomic) NSString *displayTitle;

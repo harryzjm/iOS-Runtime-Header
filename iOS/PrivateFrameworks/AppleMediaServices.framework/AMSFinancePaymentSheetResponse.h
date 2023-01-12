@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
-
 @class AMSFinanceAuthenticateResponse, AMSPaymentSheetRequest, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinancePaymentSheetResponse : NSObject <AMSFinancePerformable>
+@interface AMSFinancePaymentSheetResponse : NSObject
 {
     AMSFinanceAuthenticateResponse *_authenticateResponse;
     NSDictionary *_metricsDictionary;
@@ -19,15 +17,17 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_greyAttributedStringForAttributedString:(id)arg1 range:(struct _NSRange)arg2;
++ (id)_attributedStringWithString:(id)arg1 styles:(id)arg2;
 + (id)_attributedStringForStringArray:(id)arg1 useGrey:(_Bool)arg2 account:(id)arg3 shouldUppercase:(_Bool)arg4;
 + (id)_attributedStringForSalableInfoStringArray:(id)arg1 account:(id)arg2 shouldUppercase:(_Bool)arg3;
 + (id)_attributedStringForAttributedDictionary:(id)arg1 account:(id)arg2;
 + (id)_attributedStringForAttributedArray:(id)arg1 account:(id)arg2;
++ (id)_styleDictionaryWithName:(id)arg1 styles:(id)arg2;
 + (long long)_salableIconForString:(id)arg1;
 + (long long)_payeeInferredFromEnumeratedTitle:(id)arg1;
 + (long long)_payeeForRequestorValue:(id)arg1;
 + (long long)_confirmationTitleForString:(id)arg1;
-+ (id)_flexListDictionaryForValues:(id)arg1 account:(id)arg2 shouldUppercaseText:(_Bool)arg3;
++ (id)_flexListDictionaryForValues:(id)arg1 styles:(id)arg2 account:(id)arg3 shouldUppercaseText:(_Bool)arg4;
 + (id)_attributedListDictionaryForValues:(id)arg1 account:(id)arg2;
 + (id)_createMerchantSessionFromDictionary:(id)arg1;
 + (id)_createRequestFromDictionary:(id)arg1 confirmationOnly:(_Bool)arg2 delegateAuthenticationRequired:(_Bool)arg3 biometricSignatureRequired:(_Bool)arg4 authenticateResponse:(id)arg5 taskInfo:(id)arg6;

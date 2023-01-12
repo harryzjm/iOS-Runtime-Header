@@ -6,15 +6,11 @@
 
 #import <Foundation/NSString.h>
 
-#import <ContentKit/WFJSONObject-Protocol.h>
-#import <ContentKit/WFJavaScriptCoreBridgeableObject-Protocol.h>
-#import <ContentKit/WFNaming-Protocol.h>
-#import <ContentKit/WFPropertyListObject-Protocol.h>
-
-@interface NSString (WFContentProperty) <WFPropertyListObject, WFNaming, WFJavaScriptCoreBridgeableObject, WFJSONObject>
+@interface NSString (WFContentProperty)
 + (id)wf_datedFilenameWithTypeString:(id)arg1 fileExtension:(id)arg2;
 + (id)wf_stringWithData:(id)arg1;
 - (id)stringByAppendingAsNewLine:(id)arg1;
+- (id)wf_filenameTruncatedToMaximumLengthWithFormat:(id)arg1;
 - (id)wf_filenameTruncatedToMaximumLength;
 - (id)wf_filenameTruncatedToMaximumLengthWithSuffix:(id)arg1;
 - (id)gtm_stringByUnescapingFromHTML;
@@ -22,7 +18,10 @@
 - (id)gtm_stringByEscapingForHTML;
 - (id)gtm_stringByEscapingHTMLUsingTable:(CDStruct_6a59ab51 *)arg1 ofSize:(unsigned long long)arg2 escapingUnicode:(_Bool)arg3;
 - (_Bool)wf_hasStrongRTLCharacter;
-@property(readonly, copy, nonatomic) NSString *wfName;
+- (id)wf_stringByReplacingNewlinesWithSpaces;
+- (_Bool)wf_stringContainsNewlineCharacters;
+- (id)wf_stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
+- (_Bool)wf_stringContainsCharacterInSet:(id)arg1;
 - (id)wf_stringByTrimmingTrailingWhitespaceAndNewlineCharacters;
 - (id)wf_stringByTrimmingLeadingWhitespaceAndNewlineCharacters;
 - (id)wf_stringByTrimmingTrailingCharactersInSet:(id)arg1;

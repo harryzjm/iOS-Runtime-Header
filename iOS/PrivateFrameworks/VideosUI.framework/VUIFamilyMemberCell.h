@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIFamilyMemberDelegate-Protocol.h>
-
 @class NSString, TVImageLayout, VUIFamilyMember, VUILabel, VUISeparatorView, VUIVideosImageView, _TVImageView, _TVMonogramView;
 
 __attribute__((visibility("hidden")))
-@interface VUIFamilyMemberCell <VUIFamilyMemberDelegate>
+@interface VUIFamilyMemberCell
 {
     VUIFamilyMember *_familyMember;
     VUILabel *_nameLabel;

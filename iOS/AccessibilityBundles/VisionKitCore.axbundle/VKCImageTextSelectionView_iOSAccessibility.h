@@ -11,7 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setRecognitionResult:(id)arg1;
+- (_Bool)_axHighlightSelectableItems;
+- (void)setHighlightSelectableItems:(_Bool)arg1 animated:(_Bool)arg2;
+- (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (long long)accessibilityContainerType;

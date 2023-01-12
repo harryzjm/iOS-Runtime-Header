@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _NSCFTranslatedFileURLProtocol
+#import "NSURLProtocol.h"
+
+@interface _NSCFTranslatedFileURLProtocol : NSURLProtocol
 {
     const struct CFURLProtocolInstanceCallbacks *_callbacks;
     struct CFURLProtocolClient _cfurlClient;

@@ -6,7 +6,8 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, UIImageView, UILabel, UIView;
+@class NSDate, NSString, SKUIGiftConfiguration, UIDatePicker, UIImageView, UILabel, UIView;
+@protocol SKUIGiftDateTableViewCellDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SKUIGiftDateTableViewCell : UITableViewCell
@@ -14,22 +15,29 @@ __attribute__((visibility("hidden")))
     UIView *_bottomBorderView;
     _Bool _checked;
     UIImageView *_checkmarkView;
-    UILabel *_dateLabel;
+    UIDatePicker *_datePicker;
     UILabel *_labelLabel;
     UILabel *_placeholderLabel;
     UIView *_topBorderView;
     _Bool _leftToRight;
+    id <SKUIGiftDateTableViewCellDelegate> _delegate;
+    SKUIGiftConfiguration *_giftConfiguration;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool leftToRight; // @synthesize leftToRight=_leftToRight;
+@property(retain, nonatomic) SKUIGiftConfiguration *giftConfiguration; // @synthesize giftConfiguration=_giftConfiguration;
+@property(nonatomic) __weak id <SKUIGiftDateTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isChecked) _Bool checked; // @synthesize checked=_checked;
 - (id)_newLabel;
+- (id)_labelForDate:(id)arg1;
 - (id)_labelColor;
+- (void)_datePickerEditingDidBegin;
+- (void)_datePickerDateDidChange;
 - (void)layoutSubviews;
 @property(copy, nonatomic) NSString *placeholder;
 @property(copy, nonatomic) NSString *label;
-@property(copy, nonatomic) NSString *dateString;
+@property(retain, nonatomic) NSDate *date;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

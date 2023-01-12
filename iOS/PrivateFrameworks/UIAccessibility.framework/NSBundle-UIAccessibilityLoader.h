@@ -7,7 +7,9 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (UIAccessibilityLoader)
++ (id)accessibilityMacCalystBundleWithLastPathComponent:(id)arg1;
 + (id)accessibilityBundleWithLastPathComponent:(id)arg1;
++ (id)_accessibilityBundleWithBundlePath:(id)arg1;
 + (id)accessibilityInternalBundleWithLastPathComponent:(id)arg1;
 + (id)accessibilityLocalBundleWithLastPathComponent:(id)arg1;
 - (void)_loadAXBundleForBundleOffMainThread;

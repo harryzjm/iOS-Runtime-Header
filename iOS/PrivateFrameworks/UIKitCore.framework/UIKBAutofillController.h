@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UIColor *_textFieldOrigColor;
 }
 
++ (long long)translateToUIAutofillMode:(unsigned long long)arg1;
 + (unsigned long long)translateToTextInputAutofillMode:(long long)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldSaveAutofill; // @synthesize shouldSaveAutofill=_shouldSaveAutofill;

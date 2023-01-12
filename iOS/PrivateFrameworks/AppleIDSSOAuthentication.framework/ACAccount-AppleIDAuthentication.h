@@ -7,10 +7,13 @@
 #import <Accounts/ACAccount.h>
 
 @interface ACAccount (AppleIDAuthentication)
+- (void)_performSilentReauthForAccount:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_expirationCheckedTokenForCredential:(id)arg1;
 - (id)aida_deviceProvisioningInfo;
 - (id)aida_dsid;
 - (id)aida_alternateDSID;
 - (id)aida_tokenWithExpirationCheck;
+- (void)aida_tokenForService:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)aida_tokenWithExpiryCheckForService:(id)arg1;
 - (id)aida_tokenForService:(id)arg1;
 @end

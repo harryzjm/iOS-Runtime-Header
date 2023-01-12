@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIContextMenuInteraction.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIVariableGestureContextMenuInteraction
+@interface _UIVariableGestureContextMenuInteraction : UIContextMenuInteraction
 {
     struct {
         unsigned int presentOnTouchDown:1;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setPresentOnTouchDown:) _Bool _presentOnTouchDown;
 - (long long)menuAppearance;
 - (id)_interactionDrivers;
+- (void)didMoveToView:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 
 @end

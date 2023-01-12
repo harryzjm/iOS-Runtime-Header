@@ -6,15 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView, UILabel;
+@class SFUnreadIndicator, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface TabIconAndTitleView : UIView
 {
-    _Bool _horizontallyCenterTitle;
     UIImageView *_iconImageView;
     UILabel *_titleLabel;
     _Bool _usesAccessibilityContentSizeCategory;
+    SFUnreadIndicator *_unreadIndicator;
+    _Bool _showsUnreadIndicator;
+    long long _alignment;
 }
 
 - (void).cxx_destruct;

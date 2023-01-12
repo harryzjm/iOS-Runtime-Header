@@ -10,7 +10,7 @@
 
 @protocol NULivePhotoRenderResult <NURenderResult>
 @property(readonly) NUImageGeometry *videoGeometry;
-@property(readonly) CDStruct_1b6d18a9 photoTime;
+@property(readonly) CDStruct_198678f7 photoTime;
 @property(readonly) struct CGImage *photo;
 @property(readonly) AVVideoComposition *videoComposition;
 @property(readonly) AVAsset *video;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSHTTPCookieStorage.h"
+
 @class NSHTTPCookie2Storage;
 
-@interface NSHTTPCookieStorageToCookie2Storage
+@interface NSHTTPCookieStorageToCookie2Storage : NSHTTPCookieStorage
 {
     unsigned long long _acceptPolicy;
     _Bool _behavesLikeNS;

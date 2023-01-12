@@ -6,13 +6,14 @@
 
 #import <PaymentUI/NSObject-Protocol.h>
 
-@class CNContact, NSError, NSString, PKAccountServicePaymentMethod, PKApplePayTrustSignature, PKAuthorizedPeerPaymentQuote, PKPayment, PKPaymentMethod, PKShippingMethod;
+@class CNContact, NSError, NSString, PKAccountServicePaymentMethod, PKApplePayTrustSignature, PKAuthorizedPeerPaymentQuote, PKDisbursementVoucher, PKPayment, PKPaymentMethod, PKServiceProviderPurchase, PKShippingMethod;
 
 @protocol PKPaymentAuthorizationHostProtocol <NSObject>
 - (void)authorizationDidChangeCouponCode:(NSString *)arg1;
 - (void)authorizationDidSelectPaymentMethod:(PKPaymentMethod *)arg1;
 - (void)authorizationDidSelectShippingAddress:(CNContact *)arg1;
 - (void)authorizationDidSelectShippingMethod:(PKShippingMethod *)arg1;
+- (void)authorizationDidAuthorizePurchase:(PKServiceProviderPurchase *)arg1;
 - (void)authorizationDidAuthorizePayment:(PKPayment *)arg1;
 - (void)authorizationDidFinishWithError:(NSError *)arg1;
 - (void)authorizationDidRequestMerchantSession;
@@ -24,6 +25,7 @@
 - (void)authorizationDidPresent;
 - (void)authorizationDidUpdateAccountServicePaymentMethod:(PKAccountServicePaymentMethod *)arg1;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(PKApplePayTrustSignature *)arg1;
+- (void)authorizationDidAuthorizeDisbursement:(PKDisbursementVoucher *)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuote:(PKAuthorizedPeerPaymentQuote *)arg1;
 - (void)authorizationDidAuthorizeContext;
 @end

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPSGraphOperation.h"
+
 @class MPSGraphDepthwiseConvolution3DOpDescriptor;
 
-@interface MPSGraphDepthwiseConvolution3DBaseOp
+@interface MPSGraphDepthwiseConvolution3DBaseOp : MPSGraphOperation
 {
     MPSGraphDepthwiseConvolution3DOpDescriptor *_desc;
 }

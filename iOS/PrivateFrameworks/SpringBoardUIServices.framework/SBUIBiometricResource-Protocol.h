@@ -10,6 +10,7 @@
 @protocol BSInvalidatable, SBUIBiometricResourceObserver;
 
 @protocol SBUIBiometricResource <NSObject>
+@property(readonly, nonatomic, getter=isPeriocularMatchingEnabled) _Bool periocularMatchingEnabled;
 @property(readonly, nonatomic) unsigned long long biometricLockoutState;
 @property(readonly, nonatomic, getter=isMatchingAllowed) _Bool matchingAllowed;
 @property(readonly, nonatomic, getter=isMatchingEnabled) _Bool matchingEnabled;

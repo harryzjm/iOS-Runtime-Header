@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKEventAttachmentCellControllerDelegate-Protocol.h>
-#import <EventKitUI/UITableViewDataSource-Protocol.h>
-#import <EventKitUI/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSString, UITableView;
 @protocol EKEventAttachmentEditViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttachmentEditViewController <UITableViewDataSource, UITableViewDelegate, EKEventAttachmentCellControllerDelegate>
+@interface EKEventAttachmentEditViewController
 {
     UITableView *_table;
     NSArray *_cellControllers;

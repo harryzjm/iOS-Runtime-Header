@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import "UIFocusItem-Protocol.h"
 #import "UIFocusItemContainer-Protocol.h"
-#import "_UIFocusEnvironmentPrivate-Protocol.h"
-#import "_UIFocusRegionContainer-Protocol.h"
 
 @class NSArray, NSString, UIFocusEffect, UIView;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
-@interface CompactMonthWeekDayNumberAccessibility <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer>
+@interface CompactMonthWeekDayNumberAccessibility <UIFocusItemContainer>
 {
 }
 
@@ -33,7 +30,6 @@
 - (_Bool)conformsToProtocol:(id)arg1;
 @property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
 - (id)focusItemsInRect:(struct CGRect)arg1;
-- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (id)_preferredFocusRegionCoordinateSpace;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 @property(readonly, nonatomic) _Bool canBecomeFocused;

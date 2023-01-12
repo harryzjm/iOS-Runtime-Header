@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSArray, NSIndexSet;
 
-@interface TSTTableSortOrder : NSObject <NSCopying>
+@interface TSTTableSortOrder : NSObject
 {
     int _type;
     NSArray *_rules;

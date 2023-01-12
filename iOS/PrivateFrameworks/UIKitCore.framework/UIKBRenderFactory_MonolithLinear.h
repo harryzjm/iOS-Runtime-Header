@@ -9,16 +9,17 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
-- (struct CGRect)_insetRectForSpaceKeyRect:(struct CGRect)arg1 yOffset:(double)arg2;
+- (id)_highlightedTraitsForControlKey:(id)arg1;
+- (id)_enabledTraitsForControlKey:(id)arg1;
+- (void)configureSymbolStyle:(id)arg1 forControlKey:(id)arg2;
+- (void)configureGeometry:(id)arg1 forControlKey:(id)arg2;
 - (_Bool)forceVariantsInsideKeyplane;
-- (_Bool)smallTextForSpaceAndClear;
-- (_Bool)spaceKeyIsPressed;
-- (_Bool)preferGlyphForClear;
-- (_Bool)preferGlyphForDelete;
-- (_Bool)includeDeleteInVariants;
 - (double)tldKeyFontWeight;
 - (double)tldKeyFontSize;
+- (struct CGSize)pillControlKeyFocusIncreaseSize;
+- (id)pillControlKeyPillBackgroundColor;
+- (double)pillControlKeyHeight;
+- (double)pillControlKeyFontSize;
 
 @end
 

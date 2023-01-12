@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSManagedObjectContext, NSMutableDictionary, NSSet;
+@class NSManagedObjectContext, NSMutableDictionary, NSMutableSet, NSSQLCore, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface PFCloudKitHistoryAnalyzerContext
 {
-    NSMutableDictionary *_objectIDToAnalyzerStateCache;
     NSManagedObjectContext *_managedObjectContext;
     NSSet *_configuredEntityNames;
+    NSMutableSet *_resetChangedObjectIDs;
+    NSMutableDictionary *_entityIDToChangedPrimaryKeySet;
+    NSSQLCore *_store;
 }
 
 - (id)newAnalyzerStateForChange:(id)arg1 error:(id *)arg2;
-- (id)analyzerStateForChangedObjectID:(id)arg1 error:(id *)arg2;
 - (id)fetchSortedStates:(id *)arg1;
 - (_Bool)finishProcessing:(id *)arg1;
-- (_Bool)resetStateForObjectID:(id)arg1 error:(id *)arg2;
 - (_Bool)reset:(id *)arg1;
+- (_Bool)resetStateForObjectID:(id)arg1 error:(id *)arg2;
 - (_Bool)processChange:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)initWithOptions:(id)arg1 managedObjectContext:(id)arg2 store:(id)arg3;

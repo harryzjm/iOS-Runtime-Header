@@ -6,19 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVContentKeySessionDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebCoreFPSContentKeySessionDelegate : NSObject <AVContentKeySessionDelegate>
+@interface WebCoreFPSContentKeySessionDelegate : NSObject
 {
     struct AVContentKeySessionDelegateClient *_parent;
 }
 
 - (void)contentKeySession:(id)arg1 externalProtectionStatusDidChangeForContentKeyRequest:(id)arg2;
-- (void)contentKeySession:(id)arg1 contentProtectionSessionIdentifierDidChangeForReportGroup:(id)arg2;
-- (void)contentKeySession:(id)arg1 contentProtectionSessionIdentifierDidChangeForKeyGroup:(id)arg2;
 - (void)contentKeySessionContentProtectionSessionIdentifierDidChange:(id)arg1;
 - (_Bool)contentKeySession:(id)arg1 shouldRetryContentKeyRequest:(id)arg2 reason:(id)arg3;
 - (void)contentKeySession:(id)arg1 contentKeyRequestDidSucceed:(id)arg2;

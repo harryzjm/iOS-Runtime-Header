@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIIdentifierDiffer-Protocol.h>
-
 @class NSIndexSet, NSOrderedCollectionDifference, NSOrderedSet, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIIdentifierDiffer : NSObject <_UIIdentifierDiffer>
+@interface _UIIdentifierDiffer : NSObject
 {
     NSOrderedSet *_beforeIdentifiers;
     NSOrderedSet *_afterIdentifiers;

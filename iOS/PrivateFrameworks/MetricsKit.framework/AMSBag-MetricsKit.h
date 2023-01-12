@@ -6,13 +6,10 @@
 
 #import <AppleMediaServices/AMSBag.h>
 
-#import <MetricsKit/AMSMescalBagContract-Protocol.h>
-#import <MetricsKit/AMSMetricsBagContract-Protocol.h>
-
 @class AMSBagValue, NSString;
 @protocol AMSMescalBagContract, AMSMetricsBagContract;
 
-@interface AMSBag (MetricsKit) <AMSMetricsBagContract, AMSMescalBagContract>
+@interface AMSBag (MetricsKit)
 + (id)metricsAMSBagWithProfileName:(id)arg1 profileVersion:(id)arg2;
 @property(readonly, nonatomic) AMSBagValue *mescalSignSapResponses;
 @property(readonly, nonatomic) AMSBagValue *mescalSignSapRequests;

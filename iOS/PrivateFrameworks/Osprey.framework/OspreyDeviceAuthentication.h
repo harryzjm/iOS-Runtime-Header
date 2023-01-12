@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Osprey/OspreyDeviceAuthenticating-Protocol.h>
-
 @class NSDictionary, NSString, OspreyConnectionPreferences, OspreyPreferences;
 
 __attribute__((visibility("hidden")))
-@interface OspreyDeviceAuthentication : NSObject <OspreyDeviceAuthenticating>
+@interface OspreyDeviceAuthentication : NSObject
 {
     OspreyConnectionPreferences *_connectionPreferences;
     OspreyPreferences *_allPreferences;

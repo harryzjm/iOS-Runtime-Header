@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSHashable-Protocol.h>
-
 @class ACAccount, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSAccountsChangedResult : NSObject <AMSHashable>
+@interface AMSAccountsChangedResult : NSObject
 {
     ACAccount *_account;
 }

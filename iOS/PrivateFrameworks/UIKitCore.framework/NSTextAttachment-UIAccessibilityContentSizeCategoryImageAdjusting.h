@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/NSTextAttachment.h>
-
-#import <UIKitCore/UIAccessibilityContentSizeCategoryImageAdjusting-Protocol.h>
+#import "NSTextAttachment.h"
 
 @class NSString;
 
-@interface NSTextAttachment (UIAccessibilityContentSizeCategoryImageAdjusting) <UIAccessibilityContentSizeCategoryImageAdjusting>
+@interface NSTextAttachment (UIAccessibilityContentSizeCategoryImageAdjusting)
 + (id)textAttachmentWithImage:(id)arg1;
 + (id)_imageFromAttachment:(id)arg1;
 + (_Bool)_attachmentHasImage:(id)arg1;

@@ -30,7 +30,9 @@
     NSMutableDictionary *_slotCollectionsByIdentifier;
     NSMutableSet *_deprecatedSlots;
     NSMutableSet *_slotsToIgnoreSubtype;
-    NSMutableDictionary *_defaultAppIconSlotsByPlatform;
+    NSMutableDictionary *_defaultAppIconSlotsByPlatformByConfiguration;
+    NSMutableDictionary *_autoScaledAppIconSlotsByPlatform;
+    NSMutableDictionary *_autoScaledAppIconSourceSlotFilterByPlatform;
     NSMutableSet *_slotFiltersForSlotsToContinueWriting;
     NSMutableSet *_slotFiltersForAlternateAppIconStandaloneFiles;
     NSMutableDictionary *_hiddenSlotsFilterPerSlotClass;
@@ -110,7 +112,6 @@
 - (id)deviceOrientationWithIdentifier:(id)arg1;
 - (id)graphicsFeatureSetsWithIdentifier:(id)arg1;
 - (id)roles;
-- (id)sizes;
 - (id)scales;
 - (id)allPossibleValidIdiomIdentifiers;
 - (id)idioms;
@@ -173,8 +174,15 @@
 - (void)registerMarketingIdiom:(id)arg1 forIdiom:(id)arg2;
 - (void)addBundleIconSlotsRequiringIdiomSuffixInFileName:(id)arg1;
 - (_Bool)bundleIconSlotShouldIncludeIdiomSuffixInFileName:(id)arg1;
-- (id)defaultAppIconSlotsForPlatformIdentifier:(id)arg1;
+- (_Bool)isAutoScaledAppIconSourceSlot:(id)arg1 forPlatformIdentifier:(id)arg2;
+- (void)unionAutoScaledAppIconSourceSlotFilter:(id)arg1 forPlatformIdentifier:(id)arg2;
+- (id)autoScaledAppIconSlotsForPlatformIdentifier:(id)arg1;
+- (void)registerAutoScaledAppIconSlots:(id)arg1 forPlatformIdentifier:(id)arg2;
+- (void)registerDefaultLegacyAppIconSlots:(id)arg1 forPlatformIdentifier:(id)arg2;
 - (void)registerDefaultAppIconSlots:(id)arg1 forPlatformIdentifier:(id)arg2;
+- (id)defaultAppIconSlotsForPlatformIdentifier:(id)arg1 forConfiguration:(long long)arg2;
+- (void)registerDefaultAppIconSlots:(id)arg1 forConfiguration:(long long)arg2 platformIdentifier:(id)arg3;
+- (id)_defaultAppIconSlotsByPlatformForConfiguration:(long long)arg1;
 - (id)childSlotsForBrandAssetCollectionSlot:(id)arg1;
 - (void)setChildSlots:(id)arg1 forBrandAssetCollectionSlot:(id)arg2;
 - (void)setChildClass:(Class)arg1 forBrandAssetCollectionSlot:(id)arg2;

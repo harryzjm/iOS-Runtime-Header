@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIEventObserver-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 @protocol _UIRemoteKeyboardsEventObserverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIRemoteKeyboardsEventObserver : NSObject <_UIEventObserver>
+@interface _UIRemoteKeyboardsEventObserver : NSObject
 {
     NSMutableDictionary *_touchTracker;
     _Bool _keyboardIsVisible;

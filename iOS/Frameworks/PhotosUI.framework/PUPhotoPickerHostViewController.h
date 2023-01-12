@@ -6,14 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <PhotosUI/PUPhotoPickerHostExtensionProvider-Protocol.h>
-#import <PhotosUI/PUPhotoPickerTestSupportHandler-Protocol.h>
-
 @class NSExtensionContext, NSString;
 @protocol PUPhotoPickerHostService, PUPhotoPickerHostViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUPhotoPickerHostViewController : _UIRemoteViewController <PUPhotoPickerHostExtensionProvider, PUPhotoPickerTestSupportHandler>
+@interface PUPhotoPickerHostViewController : _UIRemoteViewController
 {
     _Bool __invalidated;
     NSExtensionContext *_hostExtensionContext;

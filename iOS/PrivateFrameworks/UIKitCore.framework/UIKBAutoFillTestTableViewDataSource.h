@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface UIKBAutoFillTestTableViewDataSource : NSObject <NSCoding>
+@interface UIKBAutoFillTestTableViewDataSource : NSObject
 {
     NSMutableDictionary *_rowCountMap;
     NSMutableDictionary *_visibleCellDataMap;

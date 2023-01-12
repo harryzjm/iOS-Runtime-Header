@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Metal/MTLCommandEncoder-Protocol.h>
+#import <Metal/MTLCommandEncoderSPI-Protocol.h>
 
 @class NSString;
 @protocol MTLBuffer, MTLTexture;
 
-@protocol MTLDebugCommandEncoder <MTLCommandEncoder>
+@protocol MTLDebugCommandEncoder <MTLCommandEncoderSPI>
 - (void)IOLogBytes:(const char *)arg1 length:(unsigned long long)arg2;
 - (void)kprintfBytes:(const char *)arg1 length:(unsigned long long)arg2;
 - (void)IOLog:(NSString *)arg1;

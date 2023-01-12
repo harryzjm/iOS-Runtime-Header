@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long valueType; // @synthesize valueType=_valueType;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
+- (id)description;
 
 @end
 

@@ -11,6 +11,7 @@
 @interface _TtC9SeymourUI21SessionRingsPresenter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *display;
+    MISSING_TYPE *externalOverlayDisplay;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *activityRings;
     MISSING_TYPE *ringCompletionObserver;

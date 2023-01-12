@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface LSBundleRecordUpdater
 {
@@ -13,19 +11,20 @@ __attribute__((visibility("hidden")))
     _Bool _hasContext;
     unsigned int _bundleID;
     struct LSBundleData _bundleData;
-    NSString *_bundleIdentifier;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+- (_Bool)checkNeedsUpdateForiTunesMetadata:(id)arg1 SINFo:(id)arg2 placeholderMetadata:(id)arg3;
 - (_Bool)updateBundleRecord:(id *)arg1;
-- (void)parseManagedPersonaIDs:(id)arg1 containsSystemPersona:(_Bool)arg2;
+- (_Bool)parsePersonas:(id)arg1 error:(id *)arg2;
 - (void)parsePlaceholderMetadata:(id)arg1;
 - (void)parseSINFDictionary:(id)arg1;
 - (void)parseiTunesMetadata:(id)arg1;
 - (void)dealloc;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 preferPlaceholder:(_Bool)arg2;
+- (id)initWithDatabase:(id)arg1 bundleUnit:(unsigned int)arg2 bundleData:(const struct LSBundleData *)arg3;
 
 @end
 

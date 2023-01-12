@@ -8,7 +8,7 @@
 
 @protocol DKCloudProvider <NSObject>
 - (void)cancelUpload;
-- (void)beginUploadAllowingExpensiveCellular:(_Bool)arg1 progressHandler:(void (^)(float, double))arg2 completion:(void (^)(unsigned long long))arg3;
+- (void)beginUploadAllowingExpensiveCellular:(_Bool)arg1 progressHandler:(void (^)(float, double))arg2 completion:(void (^)(DKCloudUploadResults *))arg3;
 - (_Bool)isRestoring;
 - (void)hasDataToUpload:(void (^)(_Bool))arg1;
 - (unsigned long long)isUploadSupportedForCurrentNetwork;

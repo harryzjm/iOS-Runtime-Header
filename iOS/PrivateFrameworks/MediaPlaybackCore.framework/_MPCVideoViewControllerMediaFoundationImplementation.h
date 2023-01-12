@@ -6,15 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MediaPlaybackCore/AVPlayerViewControllerDelegate-Protocol.h>
-#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
-#import <MediaPlaybackCore/MPCVideoOutput-Protocol.h>
-
 @class AVPlayerViewController, MPCPlaybackEngine, NSString;
 @protocol MPCVideoOutputDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _MPCVideoViewControllerMediaFoundationImplementation : UIViewController <AVPlayerViewControllerDelegate, MPCPlaybackEngineEventObserving, MPCVideoOutput>
+@interface _MPCVideoViewControllerMediaFoundationImplementation : UIViewController
 {
     int _videoDebugToken;
     unsigned long long _stateHandle;

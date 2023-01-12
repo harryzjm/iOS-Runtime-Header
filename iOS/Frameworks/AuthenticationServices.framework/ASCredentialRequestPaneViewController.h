@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AuthenticationServices/UITableViewDelegate-Protocol.h>
-
 @class ASCredentialRequestPaneContext, NSLayoutConstraint, NSString, UIStackView, UITableView, UIVisualEffectView;
 @protocol ASCredentialRequestPaneViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface ASCredentialRequestPaneViewController : UIViewController <UITableViewDelegate>
+@interface ASCredentialRequestPaneViewController : UIViewController
 {
     _Bool _isTableViewRequired;
     UIVisualEffectView *_blurryTray;

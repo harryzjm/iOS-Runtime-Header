@@ -6,9 +6,7 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <TSDrawables/TSDContentsScaleProviding-Protocol.h>
-
-@interface CALayer (TSDAdditions) <TSDContentsScaleProviding>
+@interface CALayer (TSDAdditions)
 - (void)resumeAtTime:(double)arg1;
 - (void)resume;
 - (void)pauseAtTime:(double)arg1;

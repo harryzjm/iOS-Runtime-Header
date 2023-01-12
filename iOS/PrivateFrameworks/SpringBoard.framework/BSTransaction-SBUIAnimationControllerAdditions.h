@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoard/BSTransaction.h>
-
-#import <SpringBoard/SBUIAnimationControllerCoordinating-Protocol.h>
+#import <BaseBoard/BSTransaction.h>
 
 @class NSString;
 
-@interface BSTransaction (SBUIAnimationControllerAdditions) <SBUIAnimationControllerCoordinating>
+@interface BSTransaction (SBUIAnimationControllerAdditions)
 - (id)coordinatingAnimationControllers;
 
 // Remaining properties

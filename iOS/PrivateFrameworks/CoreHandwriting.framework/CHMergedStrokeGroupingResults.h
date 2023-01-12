@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CHStrokeGroupingResult.h"
+
 @class NSDictionary;
 
-@interface CHMergedStrokeGroupingResults
+@interface CHMergedStrokeGroupingResults : CHStrokeGroupingResult
 {
     NSDictionary *_groupingResultsByStrategyIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, retain, nonatomic) NSDictionary *groupingResultsByStrategyIdentifier; // @synthesize groupingResultsByStrategyIdentifier=_groupingResultsByStrategyIdentifier;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *groupingResultsByStrategyIdentifier; // @synthesize groupingResultsByStrategyIdentifier=_groupingResultsByStrategyIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
 - (id)initWithStrokeGroups:(id)arg1 createdStrokeGroups:(id)arg2 deletedStrokeGroups:(id)arg3 groupingResultsByStrategyIdentifier:(id)arg4;
 
 @end

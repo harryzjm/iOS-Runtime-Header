@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _HKDocumentQueryServerConfiguration
+@interface _HKDocumentQueryServerConfiguration : HKQueryServerConfiguration
 {
     _Bool _includeDocumentData;
     NSArray *_sortDescriptors;

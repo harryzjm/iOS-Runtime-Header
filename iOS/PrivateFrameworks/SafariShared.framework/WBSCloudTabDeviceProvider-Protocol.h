@@ -6,11 +6,9 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSArray, NSDate;
+@class NSArray;
 
 @protocol WBSCloudTabDeviceProvider <NSObject>
-@property(readonly, copy, nonatomic) NSDate *dateOfLastCloudTabDevicesUpdate;
 @property(readonly, copy, nonatomic) NSArray *syncedCloudTabDevices;
-- (void)synchronizeCloudTabDevicesWithCompletionHandler:(void (^)(NSError *))arg1;
 @end
 

@@ -10,9 +10,12 @@
 @protocol SKAClientConnectionRepresentable;
 
 @protocol SKAStatusSubscriptionManaging <NSObject>
-- (void)allSubscriptionIdentifiersWithActiveSubscriptionsForStatusTypeIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
+- (void)allStatusSubscriptionIdentifiersWithActiveSubscriptionsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)allSubscriptionIdentifiersWithActiveAssertionsForStatusTypeIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)updateRegisteredSubscriptionsForActiveAssertionsWithCompletion:(void (^)(NSError *))arg1;
+- (void)releaseAllPresenceSubscriptionAssertionsAssociatedWithClient:(id <SKAClientConnectionRepresentable>)arg1 completion:(void (^)(NSError *))arg2;
+- (void)releasePresenceSubscriptionAssertionForSubscriptionIdentifier:(NSString *)arg1 client:(id <SKAClientConnectionRepresentable>)arg2 completion:(void (^)(NSError *))arg3;
+- (void)retainPresenceSubscriptionAssertionForSubscriptionIdentifier:(NSString *)arg1 client:(id <SKAClientConnectionRepresentable>)arg2 completion:(void (^)(NSError *))arg3;
 - (void)releasePersistentSubscriptionAssertionForSubscriptionIdentifier:(NSString *)arg1 statusTypeIdentifier:(NSString *)arg2 applicationIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)retainPersistentSubscriptionAssertionForSubscriptionIdentifier:(NSString *)arg1 statusTypeIdentifier:(NSString *)arg2 applicationIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)releaseAllTransientSubscriptionAssertionsAssociatedWithClient:(id <SKAClientConnectionRepresentable>)arg1 completion:(void (^)(NSError *))arg2;

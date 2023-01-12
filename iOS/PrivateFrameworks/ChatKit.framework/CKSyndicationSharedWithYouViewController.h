@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ChatKit/UICollectionViewDataSource-Protocol.h>
-#import <ChatKit/UICollectionViewDelegateFlowLayout-Protocol.h>
-
 @class NSArray, NSString, UICollectionView;
 
 __attribute__((visibility("hidden")))
-@interface CKSyndicationSharedWithYouViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface CKSyndicationSharedWithYouViewController : UIViewController
 {
     UICollectionView *_collectionView;
     NSArray *_constraints;

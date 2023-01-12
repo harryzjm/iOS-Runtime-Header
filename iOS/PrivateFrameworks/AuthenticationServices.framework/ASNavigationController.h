@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 @interface ASNavigationController : UINavigationController
 {
     UIVisualEffectView *_backdropView;
-    long long _currentStyle;
 }
 
 - (void).cxx_destruct;
+- (struct CGSize)_adjustedContentSizeForPopover:(struct CGSize)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)viewDidLoad;
 

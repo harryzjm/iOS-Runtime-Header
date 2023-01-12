@@ -21,11 +21,13 @@ __attribute__((visibility("hidden")))
     unsigned int _customVideoHeight;
     unsigned int _tilesPerFrame;
     NSMutableSet *_pixelFormats;
+    NSMutableSet *_hdrModesNegotiated;
     _Bool _ltrpEnabled;
 }
 
 @property(nonatomic) _Bool ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
 @property(nonatomic) unsigned int tilesPerFrame; // @synthesize tilesPerFrame=_tilesPerFrame;
+@property(readonly, nonatomic) NSSet *hdrModesNegotiated; // @synthesize hdrModesNegotiated=_hdrModesNegotiated;
 @property(readonly, nonatomic) NSSet *pixelFormats; // @synthesize pixelFormats=_pixelFormats;
 @property(nonatomic) unsigned int customVideoWidth; // @synthesize customVideoWidth=_customVideoWidth;
 @property(nonatomic) unsigned int customVideoHeight; // @synthesize customVideoHeight=_customVideoHeight;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VCVideoRuleCollections *videoRuleCollections; // @synthesize videoRuleCollections=_videoRuleCollections;
 @property(nonatomic) _Bool isRTCPFBEnabled; // @synthesize isRTCPFBEnabled=_isRTCPFBEnabled;
 @property(nonatomic) unsigned int remoteSSRC; // @synthesize remoteSSRC=_remoteSSRC;
+- (void)addNegotiatedHDRMode:(id)arg1;
 - (void)addPixelFormatSet:(id)arg1;
 - (void)addParameterSet:(id)arg1 payload:(int)arg2;
 - (void)addFeatureString:(id)arg1 payload:(int)arg2;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/PTSettingsKeyObserver-Protocol.h>
+#import "UIView.h"
 
 @class NSString, UIColor, UITraitCollection, _UIShape, _UIShapeView;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusHaloView <PTSettingsKeyObserver>
+@interface _UIFocusHaloView : UIView
 {
     _Bool _geometryFrozen;
     _UIShape *_shape;
@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToSuperview;
 @property(readonly, nonatomic) double totalConsumedSpace;
 - (void)_updateHalo;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

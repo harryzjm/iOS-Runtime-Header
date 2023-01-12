@@ -16,6 +16,7 @@
 - (id)CKMapKeysAndValues:(CDUnknownBlockType)arg1;
 - (id)CKCompactMapValues:(CDUnknownBlockType)arg1;
 - (id)CKMapValues:(CDUnknownBlockType)arg1;
+- (id)CKFlatMap:(CDUnknownBlockType)arg1;
 - (id)CKCompactMap:(CDUnknownBlockType)arg1;
 - (id)CKMap:(CDUnknownBlockType)arg1;
 @end

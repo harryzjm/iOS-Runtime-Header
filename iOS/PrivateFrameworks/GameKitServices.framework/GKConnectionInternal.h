@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameKitServices/CDXClientDelegate-Protocol.h>
-#import <GameKitServices/CDXClientSessionDelegate-Protocol.h>
+#import "GKConnection.h"
 
 @class CDXClient, NSData, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, TimingCollection;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface GKConnectionInternal <CDXClientDelegate, CDXClientSessionDelegate>
+@interface GKConnectionInternal : GKConnection
 {
     unsigned int _gckPID;
     NSString *_pidGUID;

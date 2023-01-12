@@ -12,6 +12,7 @@
 - (id)ls_parseQueryForIdentifiers:(id)arg1;
 - (unsigned long long)_LS_integerForKey:(id)arg1;
 - (_Bool)_LS_BoolForKey:(id)arg1;
+- (id)_ls_normalizedPluginPlist;
 - (id)ls_insertExtensionPointVersion:(id)arg1;
 - (id)ls_fixupExtensionPointIdentifierKey;
 @end

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SKUIMutableIntegerValue : NSObject <NSCopying>
+@interface SKUIMutableIntegerValue : NSObject
 {
     long long _integerValue;
 }

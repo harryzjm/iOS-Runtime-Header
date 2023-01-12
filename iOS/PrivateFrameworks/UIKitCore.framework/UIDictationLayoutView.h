@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
+#import "UIDictationView.h"
 
-@class NSString, UIButton, UILabel;
+@class NSString, UIButton, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationLayoutView <UIPointerInteractionDelegate>
+@interface UIDictationLayoutView : UIDictationView
 {
     _Bool _hideSwitcher;
     UIButton *_globeButton;
     UIButton *_keyboardButton;
     UILabel *_languageLabel;
     NSString *_currentDictationLanguage;
-    UIButton *_waveTapEndpointButton;
+    UIView *_waveTapEndpointButtonView;
     _Bool _blackTextColor;
 }
 
+- (void).cxx_destruct;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (_Bool)isShowing;
 - (void)returnToKeyboard;
@@ -33,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)keyboardButtonPressed:(id)arg1;
 - (id)darkGrayColor;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

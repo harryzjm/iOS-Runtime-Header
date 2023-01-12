@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSFileAccessClientLocalArbiterInterface-Protocol.h>
-#import <Foundation/NSXPCConnectionDelegate-Protocol.h>
-#import <Foundation/NSXPCListenerDelegate-Protocol.h>
-
 @class NSMapTable, NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface NSFileAccessArbiterProxy : NSObject <NSFileAccessClientLocalArbiterInterface, NSXPCListenerDelegate, NSXPCConnectionDelegate>
+@interface NSFileAccessArbiterProxy : NSObject
 {
     NSXPCConnection *_server;
     NSObject<OS_dispatch_queue> *_queue;

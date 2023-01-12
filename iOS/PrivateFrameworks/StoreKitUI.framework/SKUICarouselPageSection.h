@@ -4,16 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIMissingItemDelegate-Protocol.h>
-#import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
-#import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSArray, NSIndexPath, NSObject, NSString, SKUICarouselPageComponent, SKUIMissingItemLoader, SKUIProgressIndicatorViewElement, SKUIViewElementLayoutContext, UICollectionView;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface SKUICarouselPageSection <SKUIArtworkRequestDelegate, SKUIMissingItemDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SKUICarouselPageSection : SKUIStorePageSection
 {
     UICollectionView *_carouselCollectionView;
     long long _cellCount;

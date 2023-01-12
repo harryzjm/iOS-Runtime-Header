@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTCodesignableDevice-Protocol.h>
-
 @class DVTPlatform, NSSet, NSString;
 
-@interface DVTCodesignableDeviceSnapshot : NSObject <DVTCodesignableDevice>
+@interface DVTCodesignableDeviceSnapshot : NSObject
 {
     _Bool _supportsProvisioning;
     NSString *_name;

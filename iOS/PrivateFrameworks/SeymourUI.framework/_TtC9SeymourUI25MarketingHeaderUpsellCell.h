@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *itemInfo;
+    MISSING_TYPE *onElementAppearance;
+    MISSING_TYPE *onElementDisappearance;
+    MISSING_TYPE *onVisibleBoundsChange;
+    MISSING_TYPE *onImpressionableBoundsChange;
     MISSING_TYPE *marketingView;
 }
 

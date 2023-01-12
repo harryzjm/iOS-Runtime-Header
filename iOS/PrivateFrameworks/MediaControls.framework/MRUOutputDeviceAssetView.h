@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
 @class BSUIEmojiLabelView, CCUICAPackageView, MRUOutputDeviceAsset, MRUVisualStylingProvider, NSString, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface MRUOutputDeviceAssetView : UIView <MRUVisualStylingProviderObserver>
+@interface MRUOutputDeviceAssetView : UIView
 {
     MRUOutputDeviceAsset *_asset;
     NSString *_title;

@@ -6,32 +6,44 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTLayoutDynamicResizeInfoProtocol-Protocol.h>
-
 @class NSString, TSTCellRegion;
 
-@interface TSTLayoutDynamicResizeInfo : NSObject <TSTLayoutDynamicResizeInfoProtocol>
+@interface TSTLayoutDynamicResizeInfo : NSObject
 {
-    _Bool mValid;
-    int mTableRowsBehavior;
-    TSTCellRegion *mRowRegion;
-    unsigned int mStartRowIndex;
-    unsigned int mNumberOfRows;
-    unsigned int mNumberOfResizableRows;
-    double *mCapturedRowHeights;
-    double *mCurrentRowHeights;
-    double *mMinimumRowHeights;
-    double mCapturedRowHeightTotal;
-    TSTCellRegion *mColumnRegion;
-    unsigned short mStartColumnIndex;
-    unsigned int mNumberOfColumns;
-    unsigned int mNumberOfResizableColumns;
-    double *mCapturedColumnWidths;
-    double *mCurrentColumnWidths;
-    double *mMinimumColumnWidths;
-    double mCapturedColumnWidthTotal;
+    struct vector<double, std::allocator<double>> _capturedRowHeights;
+    struct vector<double, std::allocator<double>> _currentRowHeights;
+    struct vector<double, std::allocator<double>> _minimumRowHeights;
+    struct vector<double, std::allocator<double>> _capturedColumnWidths;
+    struct vector<double, std::allocator<double>> _currentColumnWidths;
+    struct vector<double, std::allocator<double>> _minimumColumnWidths;
+    _Bool _valid;
+    unsigned short _startColumnIndex;
+    int _tableRowsBehavior;
+    unsigned int _startRowIndex;
+    unsigned int _numberOfRows;
+    unsigned int _numberOfResizableRows;
+    unsigned int _numberOfColumns;
+    unsigned int _numberOfResizableColumns;
+    double _capturedRowHeightTotal;
+    double _capturedColumnWidthTotal;
+    TSTCellRegion *_rowRegion;
+    TSTCellRegion *_columnRegion;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSTCellRegion *columnRegion; // @synthesize columnRegion=_columnRegion;
+@property(retain, nonatomic) TSTCellRegion *rowRegion; // @synthesize rowRegion=_rowRegion;
+@property(readonly, nonatomic) double capturedColumnWidthTotal; // @synthesize capturedColumnWidthTotal=_capturedColumnWidthTotal;
+@property(readonly, nonatomic) unsigned int numberOfResizableColumns; // @synthesize numberOfResizableColumns=_numberOfResizableColumns;
+@property(readonly, nonatomic) unsigned int numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
+@property(readonly, nonatomic) unsigned short startColumnIndex; // @synthesize startColumnIndex=_startColumnIndex;
+@property(readonly, nonatomic) double capturedRowHeightTotal; // @synthesize capturedRowHeightTotal=_capturedRowHeightTotal;
+@property(readonly, nonatomic) unsigned int numberOfResizableRows; // @synthesize numberOfResizableRows=_numberOfResizableRows;
+@property(readonly, nonatomic) unsigned int numberOfRows; // @synthesize numberOfRows=_numberOfRows;
+@property(readonly, nonatomic) unsigned int startRowIndex; // @synthesize startRowIndex=_startRowIndex;
+@property(readonly, nonatomic) int tableRowsBehavior; // @synthesize tableRowsBehavior=_tableRowsBehavior;
+@property(readonly, nonatomic) _Bool valid; // @synthesize valid=_valid;
 - (double)totalMinimumColumnWidths;
 - (double)totalMinimumRowHeights;
 - (double)totalCurrentColumnWidths;
@@ -59,9 +71,7 @@
 - (_Bool)hasWidthForColumn:(unsigned short)arg1;
 - (_Bool)hasHeightForRow:(unsigned int)arg1;
 - (void)invalidate;
-- (_Bool)valid;
 - (void)p_captureRowColumnInformation:(id)arg1 columnRegion:(id)arg2 rowRegion:(id)arg3;
-- (void)dealloc;
 - (id)initWithDynamicResizeInfo:(id)arg1;
 - (id)initWithLayoutEngine:(id)arg1 rowRegion:(id)arg2;
 - (id)initWithLayoutEngine:(id)arg1 columnRegion:(id)arg2;

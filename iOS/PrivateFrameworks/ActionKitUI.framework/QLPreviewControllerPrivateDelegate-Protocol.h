@@ -33,6 +33,7 @@
 - (_Bool)previewController:(QLPreviewController *)arg1 shouldSaveEditedItem:(id <QLPreviewItem>)arg2;
 - (_Bool)previewController:(QLPreviewController *)arg1 canEditItem:(id <QLPreviewItem>)arg2;
 - (_Bool)previewController:(QLPreviewController *)arg1 canShareItem:(id <QLPreviewItem>)arg2;
+- (void)previewController:(QLPreviewController *)arg1 didUpdateDisplayStateOfPreviewItem:(id <QLPreviewItem>)arg2;
 - (UIView *)previewController:(QLPreviewController *)arg1 transitionViewForPreviewItem:(id <QLPreviewItem>)arg2 uncroppedSourceFrame:(struct CGRect *)arg3;
 - (void)previewController:(QLPreviewController *)arg1 customActionButtonWasTappedForPreviewItem:(id <QLPreviewItem>)arg2;
 - (NSString *)previewController:(QLPreviewController *)arg1 customActionButtonTittleForPreviewItem:(id <QLPreviewItem>)arg2;

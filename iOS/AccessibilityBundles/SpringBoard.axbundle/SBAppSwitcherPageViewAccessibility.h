@@ -16,7 +16,7 @@
 - (id)_viewToAddFocusLayer;
 - (_Bool)canBecomeFocused;
 - (_Bool)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
-- (id)_scroller;
+- (id)_providedFocusFallbackScroller;
 - (id)_accessibilityPreferredScrollActions;
 - (_Bool)_accessibilityElementVisibilityAffectsLayout;
 - (struct CGRect)_accessibilityVisibleFrame;

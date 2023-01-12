@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PagesQuicklook/TSKModelRootIndexProvider-Protocol.h>
-
 @class NSArray, TPDrawablesZOrder;
 @protocol TPPageLayoutInfoProvider;
 
-@interface TPPaginatedPageInfo <TSKModelRootIndexProvider>
+@interface TPPaginatedPageInfo
 {
     id <TPPageLayoutInfoProvider> _layoutInfoProvider;
 }

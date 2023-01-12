@@ -6,12 +6,10 @@
 
 #import <StoreServices/SSMetricsBaseEvent.h>
 
-#import <StoreKitUI/SKUIInspectableObject-Protocol.h>
-
 @class NSDictionary, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMetricsAppLaunchEvent : SSMetricsBaseEvent <SKUIInspectableObject>
+@interface SKUIMetricsAppLaunchEvent : SSMetricsBaseEvent
 {
     NSMutableDictionary *_templateMetrics;
 }

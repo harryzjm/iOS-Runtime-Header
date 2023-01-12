@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmojiKit/NSCopying-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface EMKEmojiTokenList : NSObject <NSCopying>
+@interface EMKEmojiTokenList : NSObject
 {
     NSArray *_emojiTokenArray;
 }

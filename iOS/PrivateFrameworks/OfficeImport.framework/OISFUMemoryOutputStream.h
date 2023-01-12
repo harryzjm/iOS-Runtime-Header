@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUOutputStream-Protocol.h>
-
 @class NSMutableData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface OISFUMemoryOutputStream : NSObject <SFUOutputStream>
+@interface OISFUMemoryOutputStream : NSObject
 {
     NSMutableData *mData;
 }

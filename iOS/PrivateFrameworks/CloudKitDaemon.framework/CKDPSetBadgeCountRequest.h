@@ -6,9 +6,7 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
-@interface CKDPSetBadgeCountRequest : PBRequest <NSCopying>
+@interface CKDPSetBadgeCountRequest : PBRequest
 {
     unsigned int _badgeCount;
     _Bool _forDevice;

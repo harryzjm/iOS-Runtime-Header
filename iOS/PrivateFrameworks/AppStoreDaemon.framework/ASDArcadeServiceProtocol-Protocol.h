@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSNumber;
 
 @protocol ASDArcadeServiceProtocol
+- (void)showUpsellForItemID:(NSNumber *)arg1 replyHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)removeHardwareOfferMetricsforOfferIDs:(NSArray *)arg1 replyHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)removeHardwareOfferIDs:(NSArray *)arg1 replyHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)removeAllHardwareOfferIDsWithReplyHandler:(void (^)(_Bool, NSError *))arg1;

@@ -6,13 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIJSImageColorAnalyzer-Protocol.h>
-
 @class NSMutableDictionary, NSOperationQueue, NSString, SKUIClientContext, SKUIResourceLoader;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSImageColorAnalyzer : IKJSObject <SKUIArtworkRequestDelegate, SKUIJSImageColorAnalyzer>
+@interface SKUIJSImageColorAnalyzer : IKJSObject
 {
     SKUIClientContext *_clientContext;
     NSMutableDictionary *_artworkRequestIDsToManagedCallbacks;

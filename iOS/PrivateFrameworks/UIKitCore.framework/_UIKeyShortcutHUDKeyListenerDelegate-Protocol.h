@@ -6,10 +6,10 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIPhysicalKeyboardEvent, _UIKeyShortcutHUDModifierKeyListener;
+@class _UIKeyShortcutHUDModifierKeyListener;
 
 @protocol _UIKeyShortcutHUDKeyListenerDelegate <NSObject>
 - (void)modifierKeyListenerDidPressNonModifierKey:(_UIKeyShortcutHUDModifierKeyListener *)arg1;
-- (void)modifierKeyListener:(_UIKeyShortcutHUDModifierKeyListener *)arg1 didUpdateModifierFlag:(long long)arg2 withEvent:(UIPhysicalKeyboardEvent *)arg3;
+- (void)modifierKeyListener:(_UIKeyShortcutHUDModifierKeyListener *)arg1 didUpdateModifierFlag:(long long)arg2;
 @end
 

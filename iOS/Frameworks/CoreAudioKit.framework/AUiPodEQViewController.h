@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreAudioKit/UIPickerViewDataSource-Protocol.h>
-#import <CoreAudioKit/UIPickerViewDelegate-Protocol.h>
-
 @class NSString, UIPickerView;
 
 __attribute__((visibility("hidden")))
-@interface AUiPodEQViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface AUiPodEQViewController
 {
     UIPickerView *picker;
 }

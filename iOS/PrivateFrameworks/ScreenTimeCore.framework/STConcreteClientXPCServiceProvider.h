@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeCore/NSXPCListenerDelegate-Protocol.h>
-#import <ScreenTimeCore/STClientXPCServiceProvider-Protocol.h>
-
 @class NSString, NSXPCInterface, NSXPCListener;
 
 __attribute__((visibility("hidden")))
-@interface STConcreteClientXPCServiceProvider : NSObject <NSXPCListenerDelegate, STClientXPCServiceProvider>
+@interface STConcreteClientXPCServiceProvider : NSObject
 {
     NSXPCListener *_activeListener;
     id _providedService;

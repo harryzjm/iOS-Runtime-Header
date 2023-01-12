@@ -6,18 +6,18 @@
 
 #import <OnBoardingKit/OBWelcomeController.h>
 
-@class STIntroductionModel;
+@class STIntroductionViewModel;
 
 __attribute__((visibility("hidden")))
 @interface STIntroIdentityViewController : OBWelcomeController
 {
-    STIntroductionModel *_model;
+    STIntroductionViewModel *_model;
     CDUnknownBlockType _continueHandler;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
-@property(readonly) STIntroductionModel *model; // @synthesize model=_model;
+@property(readonly) STIntroductionViewModel *model; // @synthesize model=_model;
 - (void)_myChildsDevice:(id)arg1;
 - (void)_myDevice:(id)arg1;
 - (void)loadView;

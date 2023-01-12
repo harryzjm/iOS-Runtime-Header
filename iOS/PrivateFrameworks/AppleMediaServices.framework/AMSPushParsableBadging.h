@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSPushParsable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSPushParsableBadging : NSObject <AMSPushParsable>
+@interface AMSPushParsableBadging : NSObject
 {
 }
 
++ (void)_performLegacyCallbackWithRequest:(id)arg1 payload:(id)arg2 config:(id)arg3 bag:(id)arg4 error:(id *)arg5;
 + (_Bool)shouldSkipAccountCheck;
 + (void)handleNotificationPayload:(id)arg1 config:(id)arg2 bag:(id)arg3;
 

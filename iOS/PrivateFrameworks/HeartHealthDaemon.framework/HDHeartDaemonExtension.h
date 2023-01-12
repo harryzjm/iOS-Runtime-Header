@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HeartHealthDaemon/HDHealthDaemonExtension-Protocol.h>
-#import <HeartHealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
-#import <HeartHealthDaemon/HDPostInstallUpdateTaskHandler-Protocol.h>
-
 @class NSString, NSUserDefaults;
 @protocol HDHealthDaemon;
 
 __attribute__((visibility("hidden")))
-@interface HDHeartDaemonExtension : NSObject <HDHealthDaemonReadyObserver, HDPostInstallUpdateTaskHandler, HDHealthDaemonExtension>
+@interface HDHeartDaemonExtension : NSObject
 {
     id <HDHealthDaemon> _healthDaemon;
     NSUserDefaults *_heartNotificationsUserDefaults;

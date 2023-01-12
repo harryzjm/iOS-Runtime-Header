@@ -8,5 +8,6 @@
 
 @protocol AMSPushNotificationServiceInterface <NSObject>
 - (void)registerTokensIfNeeded;
+- (void)registerAllTokens;
 @end
 

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQWrapPointGenerator-Protocol.h>
-
 @class GQDAffineGeometry, GQDBezierPath, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDDrawable : NSObject <GQWrapPointGenerator>
+@interface GQDDrawable : NSObject
 {
     GQDAffineGeometry *mGeometry;
     struct __CFURL *mUrl;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ADOdmlResponseV2, NSString;
+@class APOdmlServerResponse, NSString;
 
 @protocol APOdmlRankable
 @property(readonly, nonatomic) NSString *adamID;
-@property(readonly, nonatomic) ADOdmlResponseV2 *odmlResponse;
+@property(readonly, nonatomic) APOdmlServerResponse *odmlResponse;
 @end
 

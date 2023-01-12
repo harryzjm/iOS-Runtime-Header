@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <HealthToolbox/UITextViewDelegate-Protocol.h>
-
 @class NSAttributedString, NSLayoutConstraint, NSString, NSURL, UILabel, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface WDHeartRhythmHeaderView : UITableViewHeaderFooterView <UITextViewDelegate>
+@interface WDHeartRhythmHeaderView : UITableViewHeaderFooterView
 {
     UILabel *_titleLabel;
     UITextView *_bodyTextView;

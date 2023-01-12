@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSDrawables/NSCopying-Protocol.h>
-
-@interface TSDSizedImageDescription : NSObject <NSCopying>
+@interface TSDSizedImageDescription : NSObject
 {
     _Bool _isWideGamut;
     _Bool _hasBakedMask;

@@ -4,25 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/MDSnapshotMap-Protocol.h>
-#import <VectorKit/VKMapModelDelegate-Protocol.h>
-
-@class NSString, VKMapModel;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VKMapImageCanvas <VKMapModelDelegate, MDSnapshotMap>
+@interface VKMapImageCanvas
 {
-    VKMapModel *_mapModel;
     void *_mapEngine;
-    struct _retain_ptr<VKManifestTileGroupObserverProxy *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _manifestTileGroupObserverProxy;
+    struct _retain_ptr<VKManifestTileGroupObserverProxy *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc> _manifestTileGroupObserverProxy;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)mapModelDidUpdateMinMaxZoomLevel:(id)arg1;
-- (void)mapModelLabelsDidLayout:(id)arg1;
-- (void)mapModel:(id)arg1 labelMarkerDidChangeState:(const void *)arg2;
-- (void)mapModel:(id)arg1 selectedLabelMarkerWillDisappear:(const void *)arg2;
 - (void)tileGroupDidChange;
 - (void)cancelTileRequests;
 - (void)clearScene;

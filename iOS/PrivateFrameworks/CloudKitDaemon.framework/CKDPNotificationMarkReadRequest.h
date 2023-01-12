@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKDPNotificationMarkReadRequest : PBRequest <NSCopying>
+@interface CKDPNotificationMarkReadRequest : PBRequest
 {
     NSString *_uuid;
 }

@@ -6,7 +6,7 @@
 
 #import <AuthKit/NSObject-Protocol.h>
 
-@class FLFollowUpItem, NSArray, NSString;
+@class FLFollowUpItem, NSArray, NSDictionary, NSString;
 
 @protocol AKFollowUpItemFactory <NSObject>
 @property(copy, nonatomic) NSString *bundleIconName;
@@ -14,6 +14,6 @@
 @property(copy, nonatomic) NSString *extensionIdentifier;
 - (_Bool)IsFollowUpItemNotificationForced:(FLFollowUpItem *)arg1;
 - (NSArray *)itemIdentifiersRequiringNotificationClearFromPayload:(NSArray *)arg1;
-- (NSArray *)itemsForAltDSID:(NSString *)arg1 fromIDMSPayload:(NSArray *)arg2;
+- (NSArray *)itemsForAltDSID:(NSString *)arg1 pushMessageInfo:(NSDictionary *)arg2 fromIDMSPayload:(NSArray *)arg3;
 @end
 

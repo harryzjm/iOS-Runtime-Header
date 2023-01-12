@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIDOMFeature-Protocol.h>
-
 @class IKAppContext, NSString;
 @protocol SKUIAnimatorDOMFeatureDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIAnimatorDOMFeature : NSObject <SKUIDOMFeature>
+@interface SKUIAnimatorDOMFeature : NSObject
 {
     id <SKUIAnimatorDOMFeatureDelegate> _delegate;
     IKAppContext *_appContext;

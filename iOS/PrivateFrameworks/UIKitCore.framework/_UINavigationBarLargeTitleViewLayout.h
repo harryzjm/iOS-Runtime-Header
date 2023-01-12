@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) long long titleType; // @synthesize titleType=_titleType;
 @property(readonly, nonatomic) _UINavigationBarLargeTitleView *contentView; // @synthesize contentView=_contentView;
+- (void)updateLayoutData:(id)arg1 layoutWidth:(double)arg2;
 - (void)removeContent;
 - (struct CGSize)sizeFittingSize:(struct CGSize)arg1 titleType:(long long)arg2;
 - (struct CGSize)_cachedTitleHeightSizeAndUpdateRestingSizeForWidth:(double)arg1;

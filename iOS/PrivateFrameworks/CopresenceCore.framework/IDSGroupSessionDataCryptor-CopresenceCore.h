@@ -6,11 +6,9 @@
 
 #import <IDS/IDSGroupSessionDataCryptor.h>
 
-#import <CopresenceCore/CPDataCryptor-Protocol.h>
-
 @class NSArray, NSString, NSUUID;
 
-@interface IDSGroupSessionDataCryptor (CopresenceCore) <CPDataCryptor>
+@interface IDSGroupSessionDataCryptor (CopresenceCore)
 - (id)decryptData:(id)arg1 keyID:(id)arg2 seqNum:(unsigned long long)arg3 error:(id *)arg4;
 - (id)encryptData:(id)arg1 seqNum:(unsigned long long)arg2 error:(id *)arg3;
 @property(readonly, nonatomic) NSArray *decryptionKeyIDSet;

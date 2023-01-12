@@ -50,7 +50,7 @@
 - (void)setAllowsBackgroundLocationUpdates:(_Bool)arg1;
 - (int)PausesLocationUpdatesAutomatically;
 - (void)setPausesLocationUpdatesAutomatically:(int)arg1;
-- (id)initWithInfo:(id)arg1 bundleIdentifier:(id)arg2 bundle:(id)arg3 delegate:(id)arg4 silo:(id)arg5;
+- (id)initWithInfo:(id)arg1 bundleIdentifier:(id)arg2 bundlePath:(id)arg3 websiteIdentifier:(id)arg4 delegate:(id)arg5 silo:(id)arg6;
 
 @end
 

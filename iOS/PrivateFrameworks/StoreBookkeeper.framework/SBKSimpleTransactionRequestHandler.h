@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SBKRequestHandler.h"
+
 @class SBKTransactionController;
 
 __attribute__((visibility("hidden")))
-@interface SBKSimpleTransactionRequestHandler
+@interface SBKSimpleTransactionRequestHandler : SBKRequestHandler
 {
     _Bool _canceled;
     SBKTransactionController *_transactionController;

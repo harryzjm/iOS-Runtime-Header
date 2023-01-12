@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPLazySectionedCollectionDataSource-Protocol.h>
-
 @class MPMediaLibraryEntityTranslationContext, MPMediaLibraryEntityTranslator, MPModelLibraryDownloadQueueRequest, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPModelLibraryDownloadQueueDataSource : NSObject <MPLazySectionedCollectionDataSource>
+@interface _MPModelLibraryDownloadQueueDataSource : NSObject
 {
     MPModelLibraryDownloadQueueRequest *_request;
     MPMediaLibraryEntityTranslator *_entityTranslator;

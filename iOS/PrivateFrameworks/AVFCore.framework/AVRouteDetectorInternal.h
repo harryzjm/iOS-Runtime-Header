@@ -6,16 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class AVOutputDeviceDiscoverySession;
+@class AVOutputDeviceDiscoverySession, DADiscovery;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVRouteDetectorInternal : NSObject
 {
+    _Bool routeDetectionEnabled;
     _Bool multipleRoutesDetected;
+    _Bool detectsCustomRoutes;
     NSObject<OS_dispatch_queue> *ivarAccessQueue;
     AVOutputDeviceDiscoverySession *outputDeviceDiscoverySession;
     id outputDevicesChangeNotificationToken;
+    id didEnterBackgroundNotificationToken;
+    id didEnterForegroundNotificationToken;
+    DADiscovery *customRouteDiscoverySession;
+    _Bool customRoutesPresent;
+    _Bool routeDetectionSuspended;
 }
 
 @end

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/ASDAppQueryResultsObserver-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 @protocol AMSUIWebJSAppQueryManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebJSAppQueryManager : NSObject <ASDAppQueryResultsObserver>
+@interface AMSUIWebJSAppQueryManager : NSObject
 {
     id <AMSUIWebJSAppQueryManagerDelegate> _delegate;
     NSMutableDictionary *_observingQueries;

@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
-
 @class NSData, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _ACPluginDB : NSObject <NSSecureCoding>
+@interface _ACPluginDB : NSObject
 {
     NSMutableDictionary *mSearchDirectories;
     _Bool mDirty;
     NSObject<OS_dispatch_queue> *mDispatchQueue;
     struct function<void (AudioComponentVector &, AudioComponentVector &)> mNotificationCallback;
-    function_ffe40f9b mScanHashCallback;
+    struct function<void ()> mScanHashCallback;
     NSData *mCarbonComponentHash;
 }
 

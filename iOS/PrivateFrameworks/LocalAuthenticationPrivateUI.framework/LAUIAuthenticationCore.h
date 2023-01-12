@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <LocalAuthenticationPrivateUI/LAUIAuthentication-Protocol.h>
-#import <LocalAuthenticationPrivateUI/LAUIDelegate-Protocol.h>
-
 @class LAContext, NSDictionary, UIView;
 @protocol LAUIAuthenticationCoreDelegate;
 
 __attribute__((visibility("hidden")))
-@interface LAUIAuthenticationCore : NSObject <LAUIDelegate, LAUIAuthentication>
+@interface LAUIAuthenticationCore : NSObject
 {
     _Bool _doneMatching;
     _Bool _doneWatch;
+    _Bool _usesInternalContext;
+    _Bool _mirroringToDefaultUI;
+    long long _lastState;
     _Bool _applicationActive;
     _Bool _keyWindow;
     _Bool _uiActive;
@@ -26,12 +26,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _enabledMechanisms;
     unsigned long long _activeMechanisms;
     LAContext *_context;
-    NSDictionary *_authenticationResult;
+    NSDictionary *_faceIdResult;
 }
 
 + (void)performBlockOnMainThread:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDictionary *authenticationResult; // @synthesize authenticationResult=_authenticationResult;
+@property(readonly, nonatomic) NSDictionary *faceIdResult; // @synthesize faceIdResult=_faceIdResult;
 @property(retain, nonatomic) LAContext *context; // @synthesize context=_context;
 @property(nonatomic, getter=isUiActive) _Bool uiActive; // @synthesize uiActive=_uiActive;
 @property(nonatomic, getter=isKeyWindow) _Bool keyWindow; // @synthesize keyWindow=_keyWindow;
@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)notificationNames;
 - (void)_stopBackgroundMechanisms;
 - (void)_handleBackgroundMechanismsResult:(id)arg1 error:(id)arg2 context:(id)arg3;
+- (id)_optionsForBackgroundMechanism;
 - (void)_startBackgroundMechanisms;
 - (long long)_policyForBackgroundMechanisms;
 - (void)startOrStopBackgroundMechanisms;
@@ -63,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupNotifications:(_Bool)arg1;
 - (void)_enableAvailableMechanisms:(unsigned long long)arg1;
 - (void)_setupMechanisms:(unsigned long long)arg1;
+- (id)initWithMechanisms:(unsigned long long)arg1 context:(id)arg2;
 - (id)initWithMechanisms:(unsigned long long)arg1;
 
 @end

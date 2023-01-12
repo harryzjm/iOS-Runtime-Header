@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuickLook/AVEditBehaviorDelegate-Protocol.h>
-#import <QuickLook/AVPictureInPictureControllerDelegate-Protocol.h>
-
 @class AVEditBehavior, AVPlayerViewController, NSLayoutConstraint, NSNumber, NSString, PHPlaceholderView, PXUIAssetBadgeView, QLMovieEdits, QLOverlayPlayButton, QLVideoScrubberView, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface QLMovieItemViewController <AVPictureInPictureControllerDelegate, AVEditBehaviorDelegate>
+@interface QLMovieItemViewController
 {
     _Bool _previewIsVisisble;
     _Bool _isObservingPlayerExternalPlaybackActive;
@@ -52,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property(retain) QLVideoScrubberView *scrubber; // @synthesize scrubber=_scrubber;
 @property(retain) QLOverlayPlayButton *playButton; // @synthesize playButton=_playButton;
 @property(retain, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
+- (void)playerViewControllerWillPerformAnalysisCalloutAction:(id)arg1;
 - (void)_updateHDRBadgeViewVisibilityForFullscreenMode:(_Bool)arg1;
 - (void)_updateHDRBadgeViewVisibilityWithNewPlayingStatus:(long long)arg1;
 - (void)_hideHDRBadgeViewIfVisible;
@@ -97,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)transitionDidFinish:(_Bool)arg1 didComplete:(_Bool)arg2;
 - (void)transitionDidStart:(_Bool)arg1;
 - (long long)preferredWhitePointAdaptivityStyle;
+- (_Bool)_isInteractingWithAnalysis;
 - (_Bool)_videoIsPlaying;
 - (void)didChangePlayingStatus;
 - (void)_updatePlayButtonVisibility;

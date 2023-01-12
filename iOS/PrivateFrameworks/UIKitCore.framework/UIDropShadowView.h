@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, UIView, _UIGrabber, _UIRoundedRectShadowView;
+#import "UIView.h"
+
+@class NSArray, _UIGrabber, _UIRoundedRectShadowView;
 @protocol UIDropShadowViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIDropShadowView
+@interface UIDropShadowView : UIView
 {
     _Bool __hasGrabber;
     _Bool _masksTopCornersOnly;

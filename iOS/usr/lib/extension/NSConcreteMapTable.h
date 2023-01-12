@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSMapTable.h"
+
 __attribute__((visibility("hidden")))
-@interface NSConcreteMapTable
+@interface NSConcreteMapTable : NSMapTable
 {
     struct NSSlice keys;
     struct NSSlice values;
@@ -16,6 +18,7 @@ __attribute__((visibility("hidden")))
     unsigned long long mutations;
     struct os_unfair_lock_s growLock;
     _Bool shouldRehash;
+    _Bool hasDynamicSlices;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -31,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)removeAllItems;
 - (void)removeObjectForKey:(id)arg1;
+- (void)_reclaim;
 - (void)rehash;
 - (unsigned long long)rehashAround:(unsigned long long)arg1;
 - (void)replaceItem:(const void *)arg1 forExistingKey:(const void *)arg2;

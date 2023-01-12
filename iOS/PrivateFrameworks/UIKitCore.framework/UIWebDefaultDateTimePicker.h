@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIWebFormControl-Protocol.h>
-
 @class DOMHTMLInputElement, NSString, UIDatePicker;
 
 __attribute__((visibility("hidden")))
-@interface UIWebDefaultDateTimePicker : NSObject <UIWebFormControl>
+@interface UIWebDefaultDateTimePicker : NSObject
 {
     DOMHTMLInputElement *_inputElement;
     UIDatePicker *_datePicker;

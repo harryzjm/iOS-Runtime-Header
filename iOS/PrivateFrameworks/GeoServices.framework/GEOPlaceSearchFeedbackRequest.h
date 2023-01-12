@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOPlaceSearchFeedbackRequest : PBRequest <NSCopying>
+@interface GEOPlaceSearchFeedbackRequest : PBRequest
 {
     struct GEOSessionID _sessionGUID;
     long long _businessID;

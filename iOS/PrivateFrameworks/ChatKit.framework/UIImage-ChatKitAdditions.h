@@ -6,9 +6,8 @@
 
 #import <UIKit/UIImage.h>
 
-#import <ChatKit/NSDiscardableContent-Protocol.h>
-
-@interface UIImage (ChatKitAdditions) <NSDiscardableContent>
+@interface UIImage (ChatKitAdditions)
++ (id)__ck_actionImageForSubscriptionShortName:(id)arg1 maxSubscriptionLabelWidth:(double)arg2 isFilled:(_Bool)arg3;
 + (id)__ck_actionImageForSubscriptionShortName:(id)arg1 maxSubscriptionLabelWidth:(double)arg2;
 + (id)ckTemplateImageNamed:(id)arg1;
 + (id)ckImageNamed:(id)arg1 withTintColor:(id)arg2;

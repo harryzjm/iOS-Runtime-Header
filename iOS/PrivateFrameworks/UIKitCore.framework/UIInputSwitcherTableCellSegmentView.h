@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIImageView, UIInputSwitcherTableCellBackgroundView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface UIInputSwitcherTableCellSegmentView
+@interface UIInputSwitcherTableCellSegmentView : UIView
 {
     _Bool _selected;
     _Bool _usesDarkTheme;

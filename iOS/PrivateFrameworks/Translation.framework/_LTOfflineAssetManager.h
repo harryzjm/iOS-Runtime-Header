@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_downloadPassthroughAssetForLocale:(id)arg1 userInitiated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateSpeechTranslationAssetSymLinks:(id)arg1;
 - (void)updateAllAssets:(CDUnknownBlockType)arg1;
+- (void)_updateAsset:(id)arg1 catalogAssets:(id)arg2 downloadGroup:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)debugDumpAssets:(id)arg1;
 - (void)purgeAllAssetsExcludingConfig:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)purgeAssetForLanguagePair:(id)arg1 userInitiated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;

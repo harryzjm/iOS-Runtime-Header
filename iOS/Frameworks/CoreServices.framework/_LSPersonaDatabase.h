@@ -6,38 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/UMUserPersonaUpdateObserver-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LSPersonaDatabase : NSObject <UMUserPersonaUpdateObserver>
+@interface _LSPersonaDatabase : NSObject
 {
     struct os_unfair_lock_s _ivarLock;
     struct os_unfair_lock_s _uncachedCalloutLock;
-    _Bool _registered;
     NSDictionary *_cachedBundleIDToPersonasMap;
-    NSString *_cachedSystemPersonaIdentifier;
+    NSString *_cachedSystemPersonaUniqueString;
+    NSString *_cachedPersonalPersonaUniqueString;
+    unsigned long long _userManagementGenerationNumber;
 }
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
-- (_Bool)personaListContainsSystemPersona:(id)arg1;
-- (id)personaIdentifiersForBundleIdentifier:(id)arg1;
-- (id)getSystemPersonaIdentifier;
-- (id)getBundleIDToPersonasMap;
-- (void)getCachedBundleIDToPersonasMap:(id *)arg1 systemPersonaIdentifier:(id *)arg2;
+- (id)getBundleIDToPersonasWithAttributesMap;
+- (void)getCachedBundleIDToPersonasWithAttributesMap:(id *)arg1 systemPersonaUniqueString:(id *)arg2 personalPersonaUniqueString:(id *)arg3;
+- (void)refreshFromUserManagementIfNecessary;
 - (void)personaListDidUpdate;
-- (void)getUncachedBundleIDToPersonasMap:(id *)arg1 systemPersonaIdentifier:(id *)arg2;
+- (void)getUncachedBundleIDToPersonasWithAttributesMap:(id *)arg1 systemPersonaUniqueString:(id *)arg2 personalPersonaUniqueString:(id *)arg3;
 - (id)initPrivately;
-- (void)registerWithUserManagerForAttempt:(unsigned long long)arg1 maxAttempts:(unsigned long long)arg2;
-- (void)registerWithUserManager;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

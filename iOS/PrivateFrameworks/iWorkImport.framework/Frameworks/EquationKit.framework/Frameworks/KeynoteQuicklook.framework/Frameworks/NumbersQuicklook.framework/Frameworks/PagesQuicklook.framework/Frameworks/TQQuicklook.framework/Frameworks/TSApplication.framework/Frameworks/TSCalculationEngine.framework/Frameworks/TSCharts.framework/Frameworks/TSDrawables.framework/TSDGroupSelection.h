@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSDDrawableSelection.h"
+
 @class NSSet;
 
-@interface TSDGroupSelection
+@interface TSDGroupSelection : TSDDrawableSelection
 {
     _Bool _hasSelectedInfosInNonGroupContainer;
 }

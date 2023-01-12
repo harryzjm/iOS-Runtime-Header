@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     UIView *_bgColorView;
     double _logoHeight;
     double _height;
+    double _subscribeButtonHeight;
     VUISeparatorView *_separatorView;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
+@property(nonatomic) double subscribeButtonHeight; // @synthesize subscribeButtonHeight=_subscribeButtonHeight;
 @property(nonatomic) double height; // @synthesize height=_height;
 @property(nonatomic) _Bool isDescriptionPreferredOnPhoneSizeClass; // @synthesize isDescriptionPreferredOnPhoneSizeClass=_isDescriptionPreferredOnPhoneSizeClass;
 @property(nonatomic) double logoHeight; // @synthesize logoHeight=_logoHeight;

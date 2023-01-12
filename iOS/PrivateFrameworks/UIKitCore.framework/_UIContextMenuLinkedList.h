@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *nodes; // @synthesize nodes=_nodes;
+@property(readonly, nonatomic) NSMutableArray *nodes; // @synthesize nodes=_nodes;
 - (id)description;
 - (void)_enumerateNodes:(CDUnknownBlockType)arg1 inReverse:(_Bool)arg2;
 - (void)reverseEnumerateNodes:(CDUnknownBlockType)arg1;

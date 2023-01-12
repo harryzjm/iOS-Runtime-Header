@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPArtworkDataSource-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPArtworkCatalogStaticDataSource : NSObject <MPArtworkDataSource>
+@interface _MPArtworkCatalogStaticDataSource : NSObject
 {
 }
 

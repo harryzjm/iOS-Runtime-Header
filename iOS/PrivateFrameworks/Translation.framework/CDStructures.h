@@ -34,7 +34,51 @@ struct AcousticFeaturesEntry {
     unsigned char _field1[1];
 };
 
+struct AfmAStarFuzzyMatchingMessage {
+    unsigned char _field1[1];
+};
+
 struct Alignment {
+    unsigned char _field1[1];
+};
+
+struct ApgBatchRecoverMessage {
+    unsigned char _field1[1];
+};
+
+struct ApgPronGuessMessage {
+    unsigned char _field1[1];
+};
+
+struct AsrCorrectionsValidatorMessage {
+    unsigned char _field1[1];
+};
+
+struct AsrErrorBlamerMessage {
+    unsigned char _field1[1];
+};
+
+struct AsrGraphemeToPhonemeMessage {
+    unsigned char _field1[1];
+};
+
+struct AsrItnMessage {
+    unsigned char _field1[1];
+};
+
+struct AsrKeywordFinderMessage {
+    unsigned char _field1[1];
+};
+
+struct AsrPostItnHammerMessage {
+    unsigned char _field1[1];
+};
+
+struct AsrRecognitionMessage {
+    unsigned char _field1[1];
+};
+
+struct AsrTextNormalizationMessage {
     unsigned char _field1[1];
 };
 
@@ -90,6 +134,10 @@ struct BatchTranslationFeedbackRequest {
     unsigned char _field1[1];
 };
 
+struct BatchTranslationLoggingRequest {
+    unsigned char _field1[1];
+};
+
 struct BatchTranslationRequest {
     unsigned char _field1[1];
 };
@@ -107,6 +155,34 @@ struct BatchTranslationStreamingResponse {
 };
 
 struct BeginTextToSpeechStreamingResponse {
+    unsigned char _field1[1];
+};
+
+struct BlazarBatchTranslationMessage {
+    unsigned char _field1[1];
+};
+
+struct BlazarMultiUserMessage {
+    unsigned char _field1[1];
+};
+
+struct BlazarMultilingualMessage {
+    unsigned char _field1[1];
+};
+
+struct BlazarServiceDiscoveryMessage {
+    unsigned char _field1[1];
+};
+
+struct BlazarSpeechTranslationMessage {
+    unsigned char _field1[1];
+};
+
+struct BlazarTextToSpeechRouterMessage {
+    unsigned char _field1[1];
+};
+
+struct BlazarTextToSpeechRouterStreamingMessage {
     unsigned char _field1[1];
 };
 
@@ -166,6 +242,10 @@ struct CreateLanguageProfileResponse {
     unsigned char _field1[1];
 };
 
+struct DisableSessionLog {
+    unsigned char _field1[1];
+};
+
 struct DoubleStat {
     unsigned char _field1[1];
 };
@@ -183,6 +263,10 @@ struct ErrorBlamerRequest {
 };
 
 struct ErrorBlamerResponse {
+    unsigned char _field1[1];
+};
+
+struct ErrorMessage {
     unsigned char _field1[1];
 };
 
@@ -278,6 +362,18 @@ struct LmScorerToken {
     unsigned char _field1[1];
 };
 
+struct LmtLmScorerMessage {
+    unsigned char _field1[1];
+};
+
+struct MtStreamingTranslationMessage {
+    unsigned char _field1[1];
+};
+
+struct MtTranslationMessage {
+    unsigned char _field1[1];
+};
+
 struct MultiUserStartSpeechRequest {
     unsigned char _field1[1];
 };
@@ -298,12 +394,64 @@ struct MultilingualStreamingResponse {
     unsigned char _field1[1];
 };
 
+struct NapgCreateLanguageProfileMessage {
+    unsigned char _field1[1];
+};
+
+struct NlShortcutFuzzyMatchMessage {
+    unsigned char _field1[1];
+};
+
 struct NormalizedToken {
     unsigned char _field1[1];
 };
 
 struct NormalizedTokenVariant {
     unsigned char _field1[1];
+};
+
+struct Offset<siri::speech::qss_fb::AfmAStarFuzzyMatchingMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::ApgBatchRecoverMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::ApgPronGuessMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::AsrCorrectionsValidatorMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::AsrErrorBlamerMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::AsrGraphemeToPhonemeMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::AsrItnMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::AsrKeywordFinderMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::AsrPostItnHammerMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::AsrRecognitionMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::AsrTextNormalizationMessage> {
+    unsigned int _field1;
 };
 
 struct Offset<siri::speech::qss_fb::BatchRecoverStreamingRequest> {
@@ -322,11 +470,59 @@ struct Offset<siri::speech::qss_fb::BatchTranslationStreamingResponse> {
     unsigned int _field1;
 };
 
+struct Offset<siri::speech::qss_fb::BlazarBatchTranslationMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::BlazarMultiUserMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::BlazarMultilingualMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::BlazarServiceDiscoveryMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::BlazarSpeechTranslationMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::BlazarTextToSpeechRouterMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::BlazarTextToSpeechRouterStreamingMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::DisableSessionLog> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::ErrorMessage> {
+    unsigned int _field1;
+};
+
 struct Offset<siri::speech::qss_fb::LanguageDetectionStreamingRequest> {
     unsigned int _field1;
 };
 
 struct Offset<siri::speech::qss_fb::LanguageDetectionStreamingResponse> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::LmtLmScorerMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::MtStreamingTranslationMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::MtTranslationMessage> {
     unsigned int _field1;
 };
 
@@ -346,11 +542,23 @@ struct Offset<siri::speech::qss_fb::MultilingualStreamingResponse> {
     unsigned int _field1;
 };
 
+struct Offset<siri::speech::qss_fb::NapgCreateLanguageProfileMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::NlShortcutFuzzyMatchMessage> {
+    unsigned int _field1;
+};
+
 struct Offset<siri::speech::qss_fb::PronGuessStreamingRequest> {
     unsigned int _field1;
 };
 
 struct Offset<siri::speech::qss_fb::PronGuessStreamingResponse> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::QssMessage> {
     unsigned int _field1;
 };
 
@@ -362,11 +570,23 @@ struct Offset<siri::speech::qss_fb::RecognitionStreamingResponse> {
     unsigned int _field1;
 };
 
+struct Offset<siri::speech::qss_fb::SlsLanguageDetectionMessage> {
+    unsigned int _field1;
+};
+
 struct Offset<siri::speech::qss_fb::SpeechTranslationStreamingRequest> {
     unsigned int _field1;
 };
 
 struct Offset<siri::speech::qss_fb::SpeechTranslationStreamingResponse> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::StreamingTranslationStreamingRequest> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::StreamingTranslationStreamingResponse> {
     unsigned int _field1;
 };
 
@@ -383,6 +603,18 @@ struct Offset<siri::speech::qss_fb::TextToSpeechStreamingStreamingRequest> {
 };
 
 struct Offset<siri::speech::qss_fb::TextToSpeechStreamingStreamingResponse> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::TtsTextToSpeechMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::TtsTextToSpeechSpeechFeatureMessage> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::qss_fb::TtsTextToSpeechStreamingMessage> {
     unsigned int _field1;
 };
 
@@ -450,6 +682,10 @@ struct Offset<siri::speech::schema_fb::BatchTranslationFeedbackRequest> {
     unsigned int _field1;
 };
 
+struct Offset<siri::speech::schema_fb::BatchTranslationLoggingRequest> {
+    unsigned int _field1;
+};
+
 struct Offset<siri::speech::schema_fb::BatchTranslationRequest> {
     unsigned int _field1;
 };
@@ -459,6 +695,14 @@ struct Offset<siri::speech::schema_fb::BatchTranslationRequest_::Paragraph> {
 };
 
 struct Offset<siri::speech::schema_fb::BatchTranslationResponse> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::BatchTranslationResponse_::TranslatedSentence> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::BatchTranslationResponse_::TranslationPhrase> {
     unsigned int _field1;
 };
 
@@ -654,6 +898,10 @@ struct Offset<siri::speech::schema_fb::Pronunciation> {
     unsigned int _field1;
 };
 
+struct Offset<siri::speech::schema_fb::QSSVersionInfo> {
+    unsigned int _field1;
+};
+
 struct Offset<siri::speech::schema_fb::QssAckResponse> {
     unsigned int _field1;
 };
@@ -731,6 +979,14 @@ struct Offset<siri::speech::schema_fb::SanitizedPronToken> {
 };
 
 struct Offset<siri::speech::schema_fb::ServerEndpointFeatures> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::ServiceDiscoveryRequest> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::ServiceDiscoveryResponse> {
     unsigned int _field1;
 };
 
@@ -850,6 +1106,10 @@ struct Offset<siri::speech::schema_fb::StartTextToSpeechStreamingRequest_::Conte
     unsigned int _field1;
 };
 
+struct Offset<siri::speech::schema_fb::StreamingTranslationRequest> {
+    unsigned int _field1;
+};
+
 struct Offset<siri::speech::schema_fb::TTSNeuralPhonemeSequence> {
     unsigned int _field1;
 };
@@ -922,11 +1182,19 @@ struct Offset<siri::speech::schema_fb::TextToSpeechRequestDebug> {
     unsigned int _field1;
 };
 
+struct Offset<siri::speech::schema_fb::TextToSpeechRequestDevConfig> {
+    unsigned int _field1;
+};
+
 struct Offset<siri::speech::schema_fb::TextToSpeechRequestExperiment> {
     unsigned int _field1;
 };
 
 struct Offset<siri::speech::schema_fb::TextToSpeechRequestMeta> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TextToSpeechRequestProsodyTransferConfig> {
     unsigned int _field1;
 };
 
@@ -942,7 +1210,43 @@ struct Offset<siri::speech::schema_fb::TextToSpeechResponse> {
     unsigned int _field1;
 };
 
+struct Offset<siri::speech::schema_fb::TextToSpeechResponseDevData> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureInputText> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureInputWave> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureInputWord> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureModelIdentifier> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureOutputFeature> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureRequest> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureResponse> {
+    unsigned int _field1;
+};
+
 struct Offset<siri::speech::schema_fb::TextToSpeechUserProfile> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TextToSpeechUserVoiceProfile> {
     unsigned int _field1;
 };
 
@@ -1062,7 +1366,15 @@ struct Pronunciation {
     unsigned char _field1[1];
 };
 
+struct QSSVersionInfo {
+    unsigned char _field1[1];
+};
+
 struct QssAckResponse {
+    unsigned char _field1[1];
+};
+
+struct QssMessage {
     unsigned char _field1[1];
 };
 
@@ -1146,6 +1458,14 @@ struct ServerFeatureLatencyDistributionEntry {
     unsigned char _field1[1];
 };
 
+struct ServiceDiscoveryRequest {
+    unsigned char _field1[1];
+};
+
+struct ServiceDiscoveryResponse {
+    unsigned char _field1[1];
+};
+
 struct SetAlternateRecognitionSausage {
     unsigned char _field1[1];
 };
@@ -1183,6 +1503,10 @@ struct SiriPayloadTranslationInfo {
 };
 
 struct SiriTranslationInfo {
+    unsigned char _field1[1];
+};
+
+struct SlsLanguageDetectionMessage {
     unsigned char _field1[1];
 };
 
@@ -1262,6 +1586,18 @@ struct StartTextToSpeechStreamingRequest {
     unsigned char _field1[1];
 };
 
+struct StreamingTranslationRequest {
+    unsigned char _field1[1];
+};
+
+struct StreamingTranslationStreamingRequest {
+    unsigned char _field1[1];
+};
+
+struct StreamingTranslationStreamingResponse {
+    unsigned char _field1[1];
+};
+
 struct StringTokenPair {
     unsigned char _field1[1];
 };
@@ -1334,11 +1670,19 @@ struct TextToSpeechRequestDebug {
     unsigned char _field1[1];
 };
 
+struct TextToSpeechRequestDevConfig {
+    unsigned char _field1[1];
+};
+
 struct TextToSpeechRequestExperiment {
     unsigned char _field1[1];
 };
 
 struct TextToSpeechRequestMeta {
+    unsigned char _field1[1];
+};
+
+struct TextToSpeechRequestProsodyTransferConfig {
     unsigned char _field1[1];
 };
 
@@ -1350,11 +1694,43 @@ struct TextToSpeechResponse {
     unsigned char _field1[1];
 };
 
+struct TextToSpeechResponseDevData {
+    unsigned char _field1[1];
+};
+
 struct TextToSpeechRouterStreamingStreamingRequest {
     unsigned char _field1[1];
 };
 
 struct TextToSpeechRouterStreamingStreamingResponse {
+    unsigned char _field1[1];
+};
+
+struct TextToSpeechSpeechFeatureInputText {
+    unsigned char _field1[1];
+};
+
+struct TextToSpeechSpeechFeatureInputWave {
+    unsigned char _field1[1];
+};
+
+struct TextToSpeechSpeechFeatureInputWord {
+    unsigned char _field1[1];
+};
+
+struct TextToSpeechSpeechFeatureModelIdentifier {
+    unsigned char _field1[1];
+};
+
+struct TextToSpeechSpeechFeatureOutputFeature {
+    unsigned char _field1[1];
+};
+
+struct TextToSpeechSpeechFeatureRequest {
+    unsigned char _field1[1];
+};
+
+struct TextToSpeechSpeechFeatureResponse {
     unsigned char _field1[1];
 };
 
@@ -1370,6 +1746,10 @@ struct TextToSpeechUserProfile {
     unsigned char _field1[1];
 };
 
+struct TextToSpeechUserVoiceProfile {
+    unsigned char _field1[1];
+};
+
 struct TextToSpeechVoice {
     unsigned char _field1[1];
 };
@@ -1379,6 +1759,10 @@ struct TextToSpeechVoiceResource {
 };
 
 struct TokenProns {
+    unsigned char _field1[1];
+};
+
+struct TranslatedSentence {
     unsigned char _field1[1];
 };
 
@@ -1399,6 +1783,18 @@ struct TranslationResponse {
 };
 
 struct TranslationToken {
+    unsigned char _field1[1];
+};
+
+struct TtsTextToSpeechMessage {
+    unsigned char _field1[1];
+};
+
+struct TtsTextToSpeechSpeechFeatureMessage {
+    unsigned char _field1[1];
+};
+
+struct TtsTextToSpeechStreamingMessage {
     unsigned char _field1[1];
 };
 
@@ -1456,6 +1852,50 @@ struct atomic<bool> {
 #pragma mark Typedef'd Structures
 
 // Template types
+typedef struct Offset<siri::speech::qss_fb::AfmAStarFuzzyMatchingMessage> {
+    unsigned int _field1;
+} Offset_705c3edd;
+
+typedef struct Offset<siri::speech::qss_fb::ApgBatchRecoverMessage> {
+    unsigned int _field1;
+} Offset_260c6bf3;
+
+typedef struct Offset<siri::speech::qss_fb::ApgPronGuessMessage> {
+    unsigned int _field1;
+} Offset_39cb6be4;
+
+typedef struct Offset<siri::speech::qss_fb::AsrCorrectionsValidatorMessage> {
+    unsigned int _field1;
+} Offset_f727901a;
+
+typedef struct Offset<siri::speech::qss_fb::AsrErrorBlamerMessage> {
+    unsigned int _field1;
+} Offset_e1cbed1c;
+
+typedef struct Offset<siri::speech::qss_fb::AsrGraphemeToPhonemeMessage> {
+    unsigned int _field1;
+} Offset_4a4cfd90;
+
+typedef struct Offset<siri::speech::qss_fb::AsrItnMessage> {
+    unsigned int _field1;
+} Offset_992b4f0d;
+
+typedef struct Offset<siri::speech::qss_fb::AsrKeywordFinderMessage> {
+    unsigned int _field1;
+} Offset_7acf425c;
+
+typedef struct Offset<siri::speech::qss_fb::AsrPostItnHammerMessage> {
+    unsigned int _field1;
+} Offset_ce6f1626;
+
+typedef struct Offset<siri::speech::qss_fb::AsrRecognitionMessage> {
+    unsigned int _field1;
+} Offset_b5e03a40;
+
+typedef struct Offset<siri::speech::qss_fb::AsrTextNormalizationMessage> {
+    unsigned int _field1;
+} Offset_649e23cd;
+
 typedef struct Offset<siri::speech::qss_fb::BatchRecoverStreamingRequest> {
     unsigned int _field1;
 } Offset_74b58d8f;
@@ -1472,6 +1912,42 @@ typedef struct Offset<siri::speech::qss_fb::BatchTranslationStreamingResponse> {
     unsigned int _field1;
 } Offset_149a05be;
 
+typedef struct Offset<siri::speech::qss_fb::BlazarBatchTranslationMessage> {
+    unsigned int _field1;
+} Offset_794b004f;
+
+typedef struct Offset<siri::speech::qss_fb::BlazarMultiUserMessage> {
+    unsigned int _field1;
+} Offset_86cece31;
+
+typedef struct Offset<siri::speech::qss_fb::BlazarMultilingualMessage> {
+    unsigned int _field1;
+} Offset_a99fc554;
+
+typedef struct Offset<siri::speech::qss_fb::BlazarServiceDiscoveryMessage> {
+    unsigned int _field1;
+} Offset_e361e3f1;
+
+typedef struct Offset<siri::speech::qss_fb::BlazarSpeechTranslationMessage> {
+    unsigned int _field1;
+} Offset_a55c7777;
+
+typedef struct Offset<siri::speech::qss_fb::BlazarTextToSpeechRouterMessage> {
+    unsigned int _field1;
+} Offset_e049ffc0;
+
+typedef struct Offset<siri::speech::qss_fb::BlazarTextToSpeechRouterStreamingMessage> {
+    unsigned int _field1;
+} Offset_74fab676;
+
+typedef struct Offset<siri::speech::qss_fb::DisableSessionLog> {
+    unsigned int _field1;
+} Offset_8dc9e736;
+
+typedef struct Offset<siri::speech::qss_fb::ErrorMessage> {
+    unsigned int _field1;
+} Offset_bec099c5;
+
 typedef struct Offset<siri::speech::qss_fb::LanguageDetectionStreamingRequest> {
     unsigned int _field1;
 } Offset_f9a9e10b;
@@ -1479,6 +1955,18 @@ typedef struct Offset<siri::speech::qss_fb::LanguageDetectionStreamingRequest> {
 typedef struct Offset<siri::speech::qss_fb::LanguageDetectionStreamingResponse> {
     unsigned int _field1;
 } Offset_1d53fa02;
+
+typedef struct Offset<siri::speech::qss_fb::LmtLmScorerMessage> {
+    unsigned int _field1;
+} Offset_dbb877ef;
+
+typedef struct Offset<siri::speech::qss_fb::MtStreamingTranslationMessage> {
+    unsigned int _field1;
+} Offset_e2b6082e;
+
+typedef struct Offset<siri::speech::qss_fb::MtTranslationMessage> {
+    unsigned int _field1;
+} Offset_e55db081;
 
 typedef struct Offset<siri::speech::qss_fb::MultiUserStreamingRequest> {
     unsigned int _field1;
@@ -1496,6 +1984,14 @@ typedef struct Offset<siri::speech::qss_fb::MultilingualStreamingResponse> {
     unsigned int _field1;
 } Offset_f0c4c3ad;
 
+typedef struct Offset<siri::speech::qss_fb::NapgCreateLanguageProfileMessage> {
+    unsigned int _field1;
+} Offset_0544be67;
+
+typedef struct Offset<siri::speech::qss_fb::NlShortcutFuzzyMatchMessage> {
+    unsigned int _field1;
+} Offset_4ff85b81;
+
 typedef struct Offset<siri::speech::qss_fb::PronGuessStreamingRequest> {
     unsigned int _field1;
 } Offset_3f389c08;
@@ -1503,6 +1999,10 @@ typedef struct Offset<siri::speech::qss_fb::PronGuessStreamingRequest> {
 typedef struct Offset<siri::speech::qss_fb::PronGuessStreamingResponse> {
     unsigned int _field1;
 } Offset_47dc73e1;
+
+typedef struct Offset<siri::speech::qss_fb::QssMessage> {
+    unsigned int _field1;
+} Offset_eabeea59;
 
 typedef struct Offset<siri::speech::qss_fb::RecognitionStreamingRequest> {
     unsigned int _field1;
@@ -1512,6 +2012,10 @@ typedef struct Offset<siri::speech::qss_fb::RecognitionStreamingResponse> {
     unsigned int _field1;
 } Offset_48f69b49;
 
+typedef struct Offset<siri::speech::qss_fb::SlsLanguageDetectionMessage> {
+    unsigned int _field1;
+} Offset_b09626c2;
+
 typedef struct Offset<siri::speech::qss_fb::SpeechTranslationStreamingRequest> {
     unsigned int _field1;
 } Offset_c5a53c72;
@@ -1519,6 +2023,14 @@ typedef struct Offset<siri::speech::qss_fb::SpeechTranslationStreamingRequest> {
 typedef struct Offset<siri::speech::qss_fb::SpeechTranslationStreamingResponse> {
     unsigned int _field1;
 } Offset_3523418e;
+
+typedef struct Offset<siri::speech::qss_fb::StreamingTranslationStreamingRequest> {
+    unsigned int _field1;
+} Offset_bce37aaf;
+
+typedef struct Offset<siri::speech::qss_fb::StreamingTranslationStreamingResponse> {
+    unsigned int _field1;
+} Offset_8c5a2d43;
 
 typedef struct Offset<siri::speech::qss_fb::TextToSpeechRouterStreamingStreamingRequest> {
     unsigned int _field1;
@@ -1535,6 +2047,18 @@ typedef struct Offset<siri::speech::qss_fb::TextToSpeechStreamingStreamingReques
 typedef struct Offset<siri::speech::qss_fb::TextToSpeechStreamingStreamingResponse> {
     unsigned int _field1;
 } Offset_cacc603c;
+
+typedef struct Offset<siri::speech::qss_fb::TtsTextToSpeechMessage> {
+    unsigned int _field1;
+} Offset_62dd8be2;
+
+typedef struct Offset<siri::speech::qss_fb::TtsTextToSpeechSpeechFeatureMessage> {
+    unsigned int _field1;
+} Offset_6edbed89;
+
+typedef struct Offset<siri::speech::qss_fb::TtsTextToSpeechStreamingMessage> {
+    unsigned int _field1;
+} Offset_6cadd334;
 
 typedef struct Offset<siri::speech::schema_fb::AStarFuzzyMatchingConfig> {
     unsigned int _field1;
@@ -1600,6 +2124,10 @@ typedef struct Offset<siri::speech::schema_fb::BatchTranslationFeedbackRequest> 
     unsigned int _field1;
 } Offset_94ef6cc9;
 
+typedef struct Offset<siri::speech::schema_fb::BatchTranslationLoggingRequest> {
+    unsigned int _field1;
+} Offset_aa30fd21;
+
 typedef struct Offset<siri::speech::schema_fb::BatchTranslationRequest> {
     unsigned int _field1;
 } Offset_670edf35;
@@ -1611,6 +2139,14 @@ typedef struct Offset<siri::speech::schema_fb::BatchTranslationRequest_::Paragra
 typedef struct Offset<siri::speech::schema_fb::BatchTranslationResponse> {
     unsigned int _field1;
 } Offset_b7e0ff9f;
+
+typedef struct Offset<siri::speech::schema_fb::BatchTranslationResponse_::TranslatedSentence> {
+    unsigned int _field1;
+} Offset_a5ac96ee;
+
+typedef struct Offset<siri::speech::schema_fb::BatchTranslationResponse_::TranslationPhrase> {
+    unsigned int _field1;
+} Offset_1d53e784;
 
 typedef struct Offset<siri::speech::schema_fb::BeginTextToSpeechStreamingResponse> {
     unsigned int _field1;
@@ -1804,6 +2340,10 @@ typedef struct Offset<siri::speech::schema_fb::Pronunciation> {
     unsigned int _field1;
 } Offset_5121ad8d;
 
+typedef struct Offset<siri::speech::schema_fb::QSSVersionInfo> {
+    unsigned int _field1;
+} Offset_5c0de950;
+
 typedef struct Offset<siri::speech::schema_fb::QssAckResponse> {
     unsigned int _field1;
 } Offset_eb305189;
@@ -1883,6 +2423,14 @@ typedef struct Offset<siri::speech::schema_fb::SanitizedPronToken> {
 typedef struct Offset<siri::speech::schema_fb::ServerEndpointFeatures> {
     unsigned int _field1;
 } Offset_0434d32c;
+
+typedef struct Offset<siri::speech::schema_fb::ServiceDiscoveryRequest> {
+    unsigned int _field1;
+} Offset_6bb12d97;
+
+typedef struct Offset<siri::speech::schema_fb::ServiceDiscoveryResponse> {
+    unsigned int _field1;
+} Offset_25163a58;
 
 typedef struct Offset<siri::speech::schema_fb::SetAlternateRecognitionSausage> {
     unsigned int _field1;
@@ -2000,6 +2548,10 @@ typedef struct Offset<siri::speech::schema_fb::StartTextToSpeechStreamingRequest
     unsigned int _field1;
 } Offset_0dc7c184;
 
+typedef struct Offset<siri::speech::schema_fb::StreamingTranslationRequest> {
+    unsigned int _field1;
+} Offset_079272fb;
+
 typedef struct Offset<siri::speech::schema_fb::TTSNeuralPhonemeSequence> {
     unsigned int _field1;
 } Offset_350cea8b;
@@ -2072,6 +2624,10 @@ typedef struct Offset<siri::speech::schema_fb::TextToSpeechRequestDebug> {
     unsigned int _field1;
 } Offset_62b9d662;
 
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechRequestDevConfig> {
+    unsigned int _field1;
+} Offset_8a6daecd;
+
 typedef struct Offset<siri::speech::schema_fb::TextToSpeechRequestExperiment> {
     unsigned int _field1;
 } Offset_46f492f5;
@@ -2079,6 +2635,10 @@ typedef struct Offset<siri::speech::schema_fb::TextToSpeechRequestExperiment> {
 typedef struct Offset<siri::speech::schema_fb::TextToSpeechRequestMeta> {
     unsigned int _field1;
 } Offset_ad483e0b;
+
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechRequestProsodyTransferConfig> {
+    unsigned int _field1;
+} Offset_386ca18f;
 
 typedef struct Offset<siri::speech::schema_fb::TextToSpeechRequest_::ContextInfoEntry> {
     unsigned int _field1;
@@ -2092,9 +2652,45 @@ typedef struct Offset<siri::speech::schema_fb::TextToSpeechResponse> {
     unsigned int _field1;
 } Offset_84bb9af3;
 
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechResponseDevData> {
+    unsigned int _field1;
+} Offset_55cc2b5b;
+
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureInputText> {
+    unsigned int _field1;
+} Offset_800d2c34;
+
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureInputWave> {
+    unsigned int _field1;
+} Offset_efc89d55;
+
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureInputWord> {
+    unsigned int _field1;
+} Offset_2cae1929;
+
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureModelIdentifier> {
+    unsigned int _field1;
+} Offset_ad19837f;
+
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureOutputFeature> {
+    unsigned int _field1;
+} Offset_d29e03ef;
+
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureRequest> {
+    unsigned int _field1;
+} Offset_72003114;
+
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechSpeechFeatureResponse> {
+    unsigned int _field1;
+} Offset_dd056026;
+
 typedef struct Offset<siri::speech::schema_fb::TextToSpeechUserProfile> {
     unsigned int _field1;
 } Offset_4fc92dd1;
+
+typedef struct Offset<siri::speech::schema_fb::TextToSpeechUserVoiceProfile> {
+    unsigned int _field1;
+} Offset_0c4f1d74;
 
 typedef struct Offset<siri::speech::schema_fb::TextToSpeechVoice> {
     unsigned int _field1;

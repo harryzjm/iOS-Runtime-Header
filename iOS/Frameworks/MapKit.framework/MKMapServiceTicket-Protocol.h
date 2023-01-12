@@ -10,6 +10,8 @@
 @protocol OS_dispatch_queue;
 
 @protocol MKMapServiceTicket <NSObject>
+@property(readonly, nonatomic) _Bool enableStructuredRAPAffordance;
+@property(readonly, nonatomic) int searchResultViewType;
 @property(readonly, nonatomic) _Bool disableAdditionalViewportPadding;
 @property(readonly, nonatomic) GEOSearchSectionList *searchSectionList;
 @property(readonly, nonatomic) GEOResultRefinementGroup *resultRefinementGroup;
@@ -22,7 +24,6 @@
 @property(readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection;
 @property(readonly, nonatomic) NSArray *searchResultSections;
 @property(readonly, nonatomic) NSString *sectionHeader;
-@property(readonly, nonatomic) double requestResponseTime;
 @property(readonly, nonatomic) _Bool showDymSuggestionCloseButton;
 @property(readonly, nonatomic) unsigned int dymSuggestionVisibleTime;
 @property(readonly, nonatomic) GEODirectionIntent *directionIntent;

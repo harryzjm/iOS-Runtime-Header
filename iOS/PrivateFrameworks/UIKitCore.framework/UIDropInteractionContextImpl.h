@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDropInteractionContext-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIDropInteractionContextImpl : NSObject <UIDropInteractionContext>
+@interface UIDropInteractionContextImpl : NSObject
 {
     long long _state;
     NSArray *_items;

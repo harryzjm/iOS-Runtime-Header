@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCVideoReceiverFeedbackDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoTransmitterDefault <VCVideoReceiverFeedbackDelegate>
+@interface VCVideoTransmitterDefault
 {
     struct tagHANDLE *_videoTransmitterHandle;
     unsigned int _audioTimestampRate;
@@ -21,6 +19,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _remoteScreenLandscapeAspectRatio;
     struct CGSize _remoteExpectedPortraitAspectRatio;
     struct CGSize _remoteExpectedLandscapeAspectRatio;
+    double _lastSentVideoHostTime;
 }
 
 + (void)setupBandwidthEstimationOptions:(struct tagBWEOPTION *)arg1 featureString:(id)arg2;
@@ -31,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)handleThermalLevelChange:(int)arg1;
 - (_Bool)setEncodingMode:(int)arg1;
 - (void)setMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1;
-- (void)collectChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_b671a7c4 *)arg1 interval:(float)arg2;
 - (void)setIsServerBasedBandwidthProbingEnabled:(_Bool)arg1;
 - (void)computeTimestamp:(unsigned int *)arg1 hostTime:(double *)arg2 forFrame:(struct opaqueCMSampleBuffer *)arg3;
 - (void)setFECRedundancyVector:(const CDStruct_d7e2e0ee *)arg1;
@@ -39,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)setStreamIDs:(unsigned short *)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short *)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
 - (void)setKeyFrameOnlyStreamID:(unsigned short)arg1;
 - (_Bool)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;
+- (void)setHighestActiveQualityIndex:(unsigned int)arg1;
 - (void)setTemporalBitrateArray:(id)arg1;
 - (void)setTargetBitrate:(unsigned int)arg1;
 - (unsigned int)setTemporaryMaximumBitrate:(unsigned int)arg1;

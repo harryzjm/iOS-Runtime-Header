@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIJSBlob-Protocol.h>
+#import "VUIJSObject.h"
 
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface VUIJSBlob <VUIJSBlob>
+@interface VUIJSBlob : VUIJSObject
 {
     NSData *_data;
 }

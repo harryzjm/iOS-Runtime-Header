@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *baseStyler;
     MISSING_TYPE *titleViewStyler;
+    MISSING_TYPE *titleViewAnimator;
 }
 
 @end

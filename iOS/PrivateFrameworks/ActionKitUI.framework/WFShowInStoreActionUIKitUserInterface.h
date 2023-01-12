@@ -6,13 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/SKStoreProductViewControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFShowInStoreActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFShowInStoreActionUIKitUserInterface : WFEmbeddableActionUserInterface <SKStoreProductViewControllerDelegate, WFShowInStoreActionUserInterface>
+@interface WFShowInStoreActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

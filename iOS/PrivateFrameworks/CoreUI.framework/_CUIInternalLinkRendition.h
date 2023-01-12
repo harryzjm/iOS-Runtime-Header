@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIThemeRendition.h"
+
 @class CUIRenditionKey, CUIRenditionMetrics, CUIRenditionSliceInformation, CUIStructuredThemeStore;
 
 __attribute__((visibility("hidden")))
-@interface _CUIInternalLinkRendition
+@interface _CUIInternalLinkRendition : CUIThemeRendition
 {
     unsigned int _nimages;
     struct CGRect _imageRect[16];

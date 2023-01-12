@@ -14,6 +14,9 @@
 - (void)chatController:(CKChatController *)arg1 forwardComposition:(CKComposition *)arg2;
 
 @optional
+- (void)stopForcingOrientation;
+- (void)updateSupportedInterfaceOrientations:(unsigned long long)arg1;
+- (void)keyCommandDeleteConversation:(id)arg1;
 - (void)keyCommandToggleDetails;
 - (_Bool)isDetailsNavigationControllerDetached;
 - (void)dismissAndReopenDetailsNavigationController;

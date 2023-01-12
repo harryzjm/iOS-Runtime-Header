@@ -10,8 +10,8 @@
 
 @protocol HKMCViewModelProviderDataSource <NSObject>
 @property(nonatomic) __weak id <HKMCViewModelProviderDataSourceDelegate> delegate;
-- (void)fetchCycleFactorsInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
-- (void)cancelFetchForDaySummariesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
-- (void)fetchDaySummariesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
+- (void)fetchCycleFactorsInDayIndexRange:(CDStruct_912cb5d2)arg1;
+- (void)cancelFetchForDaySummariesInDayIndexRange:(CDStruct_912cb5d2)arg1;
+- (void)fetchDaySummariesInDayIndexRange:(CDStruct_912cb5d2)arg1;
 @end
 

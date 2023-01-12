@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <ImageCaptureCore/ICDeviceManagerProtocol-Protocol.h>
-
 @class NSDictionary, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface ICDeviceManager : NSObject <ICDeviceManagerProtocol>
+@interface ICDeviceManager : NSObject
 {
     NSXPCConnection *_managerConnection;
     NSMutableArray *_deviceHandles;
-    NSMutableArray *_disabledHandles;
     struct os_unfair_lock_s _deviceHandlesLock;
     NSDictionary *_deviceMatchingInfo;
     NSMutableDictionary *_devices;
@@ -23,13 +20,13 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _deviceOperationQueueLock;
     _Bool _deviceOperationQueueSuspended;
     _Bool _managerIsRunning;
-    struct os_unfair_lock_s _deviceConnectionLock;
-    _Bool _controlAuthorizedStatus;
+    unsigned int _managerInvalidationCount;
+    _Bool _controlAuthorizedOnce;
 }
 
 @property(retain, nonatomic) NSXPCConnection *managerConnection; // @synthesize managerConnection=_managerConnection;
-@property(nonatomic) _Bool controlAuthorizedStatus; // @synthesize controlAuthorizedStatus=_controlAuthorizedStatus;
 @property(retain) NSOperationQueue *deviceOperations; // @synthesize deviceOperations=_deviceOperationQueue;
+- (void)setDeviceOperationQueueName:(id)arg1;
 - (void)resumeOperations;
 - (void)suspendOperations;
 - (void)addInteractiveOperation:(id)arg1;
@@ -48,13 +45,12 @@ __attribute__((visibility("hidden")))
 - (void)getFileThumbnailImp:(id)arg1;
 - (void)syncClockImp:(id)arg1;
 - (void)openDeviceImp:(id)arg1;
-- (long long)eject:(id)arg1;
+- (long long)ejectDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)unregisterDevice:(id)arg1 forImageCaptureEventNotifications:(id)arg2;
 - (long long)registerDevice:(id)arg1 forImageCaptureEventNotifications:(id)arg2;
 - (long long)sendDevice:(id)arg1 ptpCommand:(id)arg2 andPayload:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (long long)downloadFile:(id)arg1 fromDevice:(id)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (long long)deleteFile:(id)arg1 fromDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)extracted:(id)arg1;
 - (long long)syncClock:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)closeSession:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (long long)openSession:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -63,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (long long)getFileThumbnail:(id)arg1 fromDevice:(id)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (long long)closeDevice:(id)arg1 contextInfo:(void *)arg2;
 - (long long)openDevice:(id)arg1 contextInfo:(void *)arg2;
-- (_Bool)controlAuthorized;
 - (id)deviceForUUID:(id)arg1;
 - (id)deviceForConnection:(id)arg1;
 - (void)dealloc;

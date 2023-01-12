@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class NSArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface _UITraitStorageList : NSObject <NSCoding>
+@interface _UITraitStorageList : NSObject
 {
     id _topLevelObject;
     NSArray *_traitStorages;

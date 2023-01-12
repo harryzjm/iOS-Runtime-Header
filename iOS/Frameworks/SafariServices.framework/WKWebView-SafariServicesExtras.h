@@ -6,11 +6,9 @@
 
 #import <WebKit/WKWebView.h>
 
-#import <SafariServices/WBUFormAutoFillWebView-Protocol.h>
-
 @class NSString, UIView, UIViewController, _SFSecurityInfo;
 
-@interface WKWebView (SafariServicesExtras) <WBUFormAutoFillWebView>
+@interface WKWebView (SafariServicesExtras)
 @property(readonly, nonatomic) NSString *_sf_suggestedFilename;
 - (void)_sf_saveUnsubmittedGeneratedPasswordAndRemoveFormMetadata;
 - (void)_sf_applicationDidEnterBackgroundOrWillTerminate:(id)arg1;

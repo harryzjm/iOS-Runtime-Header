@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSTextViewportLayoutControllerDelegate-Protocol.h>
-#import <UIKitCore/_UITextCanvas-Protocol.h>
+#import "UIView.h"
 
 @class NSMapTable, NSMutableSet, NSString, NSTextContainer, NSTextLayoutManager, NSTextViewportLayoutController;
 @protocol _UITextCanvasContext;
 
 __attribute__((visibility("hidden")))
-@interface _UITextLayoutCanvasView <NSTextViewportLayoutControllerDelegate, _UITextCanvas>
+@interface _UITextLayoutCanvasView : UIView
 {
     NSTextViewportLayoutController *_viewportLayoutController;
     NSMutableSet *_viewportElementsToRemove;
@@ -19,7 +18,8 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_textAttachmentViews;
     NSMutableSet *_newTextAttachmentViews;
     unsigned long long _textContainerIndex;
-    struct CGRect _usageBounds;
+    struct CGSize _contentSize;
+    _Bool _inLayout;
     NSTextLayoutManager *_textLayoutManager;
     id <_UITextCanvasContext> _context;
     NSTextContainer *_textContainer;
@@ -29,9 +29,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSTextContainer *textContainer; // @synthesize textContainer=_textContainer;
 @property(nonatomic) __weak id <_UITextCanvasContext> context; // @synthesize context=_context;
 @property(readonly, nonatomic) NSTextLayoutManager *textLayoutManager; // @synthesize textLayoutManager=_textLayoutManager;
+- (void)updateContentSizeIfNeeded;
+- (void)viewportBoundsDidChange;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (void)textViewportLayoutController:(id)arg1 configureRenderingSurfaceForTextLayoutFragment:(id)arg2;
 - (struct CGRect)viewportBoundsForTextViewportLayoutController:(id)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (void)setNeedsDisplay;
 - (id)textRangeForBounds:(struct CGRect)arg1 layoutIfNeeded:(_Bool)arg2;

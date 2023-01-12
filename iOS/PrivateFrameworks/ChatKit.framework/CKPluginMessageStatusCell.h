@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKTranscriptMultilineLabelCell.h"
+
 @class IMBalloonPluginDataSource, NSString, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface CKPluginMessageStatusCell
+@interface CKPluginMessageStatusCell : CKTranscriptMultilineLabelCell
 {
     NSString *_balloonBundleID;
     IMBalloonPluginDataSource *_dataSource;

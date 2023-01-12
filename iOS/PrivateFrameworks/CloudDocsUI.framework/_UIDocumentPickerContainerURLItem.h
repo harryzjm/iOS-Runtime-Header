@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIDocumentPickerContainerItem.h"
+
 @class NSArray, NSDate, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerContainerURLItem
+@interface _UIDocumentPickerContainerURLItem : _UIDocumentPickerContainerItem
 {
     NSURL *_url;
     long long _cachedType;

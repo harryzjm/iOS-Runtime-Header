@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoard/FBSExtensionInfo.h>
+#import <FrontBoardServices/FBSExtensionInfo.h>
 
 @interface FBSExtensionInfo (SpringBoard)
 - (long long)sb_type;

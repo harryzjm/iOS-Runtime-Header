@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/SWURLSchemeHandler-Protocol.h>
-
 @class MISSING_TYPE;
 @protocol WKURLSchemeTask;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI230NewsWebArchiveURLSchemeHandler : NSObject <SWURLSchemeHandler>
+@interface _TtC7NewsUI230NewsWebArchiveURLSchemeHandler : NSObject
 {
     MISSING_TYPE *task;
     MISSING_TYPE *webArchiveService;

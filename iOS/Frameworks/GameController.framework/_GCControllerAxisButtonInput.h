@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GCControllerButtonInput.h"
+
 @class GCControllerAxisInput;
 
 __attribute__((visibility("hidden")))
-@interface _GCControllerAxisButtonInput
+@interface _GCControllerAxisButtonInput : GCControllerButtonInput
 {
     _Bool _positive;
     GCControllerAxisInput *_axis;
@@ -16,6 +18,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isPositive) _Bool positive; // @synthesize positive=_positive;
 @property(nonatomic) __weak GCControllerAxisInput *axis; // @synthesize axis=_axis;
+- (id)unmappedLocalizedName;
+- (id)localizedName;
 - (float)value;
 - (_Bool)_setValue:(float)arg1 queue:(id)arg2;
 - (_Bool)_setValue:(float)arg1;

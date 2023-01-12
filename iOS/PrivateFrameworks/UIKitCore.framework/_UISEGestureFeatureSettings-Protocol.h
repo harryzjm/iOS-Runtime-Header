@@ -7,6 +7,7 @@
 @protocol _UISEGestureFeatureSettings
 @property(readonly, nonatomic) unsigned long long targetEdges;
 @property(readonly, nonatomic) double maximumSwipeDuration;
+@property(readonly, nonatomic) double maximumBackProjectTimeFactor;
 @property(readonly, nonatomic) unsigned long long minimumNumberOfSubfeatures;
 @property(readonly, nonatomic) unsigned long long interfaceBottomEdge;
 @property(readonly, nonatomic) double hysteresis;
@@ -17,5 +18,6 @@
 @property(readonly, nonatomic) struct CGRect bounds;
 @property(readonly, nonatomic) double bottomEdgeRegionSize;
 @property(readonly, nonatomic) double bottomEdgeAngleWindow;
+@property(readonly, nonatomic) double backProjectTime;
 @end
 

@@ -11,6 +11,8 @@
 @property(readonly, nonatomic) NSError *safari_errorByAddingRequestUUIDInPrivacyPreservingUserInfo;
 - (id)safari_errorByAddingCloudKitPrivacyPreservingUserInfoForItemID:(id)arg1;
 - (_Bool)_safari_isOrContainsCloudKitErrorOfCodes:(id)arg1 checkInternalErrorCode:(_Bool)arg2;
+- (_Bool)safari_containsCloudKitMissingZoneErrorForRecordZoneID:(id)arg1;
+@property(readonly, nonatomic) _Bool safari_isOrContainsCloudKitMissingZoneError;
 @property(readonly, nonatomic) _Bool safari_isCloudKitMissingZoneError;
 @property(readonly, nonatomic) _Bool safari_isCloudKitNonExistentRecordError;
 @property(readonly, nonatomic) _Bool safari_isCloudKitBatchTooLargeError;

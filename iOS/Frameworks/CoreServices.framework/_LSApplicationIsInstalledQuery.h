@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_LSQuery.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LSApplicationIsInstalledQuery
+@interface _LSApplicationIsInstalledQuery : _LSQuery
 {
     NSString *_bundleIdentifier;
 }

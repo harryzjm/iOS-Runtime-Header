@@ -12,28 +12,9 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CATransform3D {
+struct CGPoint {
     double _field1;
     double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
-    double _field8;
-    double _field9;
-    double _field10;
-    double _field11;
-    double _field12;
-    double _field13;
-    double _field14;
-    double _field15;
-    double _field16;
-};
-
-struct CGPoint {
-    double x;
-    double y;
 };
 
 struct CGRect {
@@ -42,78 +23,11 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
-};
-
-struct FLCompoundSpring {
-    struct FLSimpleSpringState state;
-    struct FLSimpleSpring stiffness;
-    struct FLSimpleSpring damping;
-    struct FLSimpleSpring dampingRatio;
-    struct FLSimpleSpring response;
-    struct FLSimpleSpring anchor;
-    _Bool usesDampingRatioResponse;
-};
-
-struct FLSimpleSpring {
-    struct FLSimpleSpringState state;
-    double mass;
-    double stiffness;
-    double damping;
-    double anchor;
-    double stablePositionThreshold;
-    double stableVelocityThreshold;
-};
-
-struct FLSimpleSpringState {
-    double position;
-    double velocity;
-};
-
-struct FLSpringParameters {
-    double dampingRatio;
-    double dampingRatioSmoothing;
-    double response;
-    double responseSmoothing;
-};
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
-struct vector<ASVControlPoint, std::allocator<ASVControlPoint>> {
-    CDStruct_183601bc *__begin_;
-    CDStruct_183601bc *__end_;
-    struct __compressed_pair<ASVControlPoint *, std::allocator<ASVControlPoint>> {
-        CDStruct_183601bc *__value_;
-    } __end_cap_;
-};
-
-struct vector<ASVPatchData, std::allocator<ASVPatchData>> {
-    CDStruct_183601bc *__begin_;
-    CDStruct_183601bc *__end_;
-    struct __compressed_pair<ASVPatchData *, std::allocator<ASVPatchData>> {
-        CDStruct_183601bc *__value_;
-    } __end_cap_;
-};
-
-struct vector<unsigned short, std::allocator<unsigned short>> {
-    unsigned short *__begin_;
-    unsigned short *__end_;
-    struct __compressed_pair<unsigned short *, std::allocator<unsigned short>> {
-        unsigned short *__value_;
-    } __end_cap_;
+    double _field1;
+    double _field2;
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    MISSING_TYPE *vector;
-} CDStruct_0e8a9a91;
 
 typedef struct {
     unsigned long long _field1;
@@ -122,29 +36,18 @@ typedef struct {
 } CDStruct_14f26992;
 
 typedef struct {
-    unsigned long long footprint;
-    unsigned long long peak;
-} CDStruct_ba838cea;
+    unsigned long long _field1;
+    unsigned long long _field2;
+} CDStruct_4bcfbbae;
 
 typedef struct {
-    MISSING_TYPE *columns[4];
-} CDStruct_14d5dc5e;
+    MISSING_TYPE *_field1[4];
+} CDStruct_f1db2b5e;
 
 typedef struct {
     float _field1;
     float _field2;
 } CDStruct_b2fbf00d;
-
-typedef struct {
-    float _field1;
-} CDStruct_37a3040a;
-
-typedef struct {
-    long long colorModel;
-    long long pixelEncoding;
-} CDStruct_e791d03f;
-
-typedef struct CDStruct_183601bc;
 
 typedef struct {
     CDStruct_14f26992 _field1;

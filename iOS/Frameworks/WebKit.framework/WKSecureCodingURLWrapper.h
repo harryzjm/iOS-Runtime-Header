@@ -6,10 +6,8 @@
 
 #import <Foundation/NSURL.h>
 
-#import <WebKit/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface WKSecureCodingURLWrapper : NSURL <NSSecureCoding>
+@interface WKSecureCodingURLWrapper : NSURL
 {
     struct RetainPtr<NSURL> m_wrappedURL;
 }

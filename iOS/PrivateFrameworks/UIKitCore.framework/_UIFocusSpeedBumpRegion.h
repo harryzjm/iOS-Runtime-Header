@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _UIFocusSpeedBumpRegion
+#import "_UIFocusRegion.h"
+
+__attribute__((visibility("hidden")))
+@interface _UIFocusSpeedBumpRegion : _UIFocusRegion
 {
     unsigned long long _speedBumpEdges;
 }
@@ -14,8 +17,10 @@
 - (_Bool)_shouldCropRegionToSearchArea;
 - (_Bool)_canBeOccludedByRegionsAbove;
 - (_Bool)_canOccludeRegionsBelow;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 speedBumpEdges:(unsigned long long)arg2;
+- (_Bool)isEqual:(id)arg1;
+- (id)_focusRegionWithAdjustedFrame:(struct CGRect)arg1 coordinateSpace:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 coordinateSpace:(id)arg2 speedBumpEdges:(unsigned long long)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 coordinateSpace:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

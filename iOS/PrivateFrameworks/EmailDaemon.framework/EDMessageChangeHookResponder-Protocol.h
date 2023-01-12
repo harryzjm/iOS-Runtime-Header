@@ -6,12 +6,13 @@
 
 #import <EmailDaemon/NSObject-Protocol.h>
 
-@class ECMessageFlagChange, EDPersistenceDatabaseGenerationWindow, NSArray, NSData, NSSet, NSURL;
+@class ECMessageFlagChange, EDPersistenceDatabaseGenerationWindow, NSArray, NSData, NSDate, NSSet, NSURL;
 @protocol ECMessage, EDPersistedMessage;
 
 @protocol EDMessageChangeHookResponder <NSObject>
 
 @optional
+- (void)persistenceDidAddDataDetectionResults:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceWillTransferMessages:(NSArray *)arg1 transferType:(long long)arg2 destinationMailboxURL:(NSURL *)arg3 userInitiated:(_Bool)arg4;
 - (void)persistenceDidChangeGlobalMessageID:(long long)arg1 orConversationID:(long long)arg2 message:(id <EDPersistedMessage>)arg3 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg4;
 - (void)persistenceIsChangingConversationID:(long long)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
@@ -19,6 +20,13 @@
 - (void)persistenceDidAddLabels:(NSSet *)arg1 removeLabels:(NSSet *)arg2 messages:(NSArray *)arg3 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg4;
 - (void)persistenceDidChangeConversationNotificationLevel:(long long)arg1 conversationID:(long long)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceDidChangeVIPStatus:(_Bool)arg1 messages:(NSArray *)arg2;
+- (void)persistenceDidUpdateDisplayDateForMessages:(NSArray *)arg1 changeIsRemote:(_Bool)arg2 generation:(long long)arg3;
+- (void)persistenceIsUpdatingDisplayDateForMessage:(id <EDPersistedMessage>)arg1 fromDate:(NSDate *)arg2 generation:(long long)arg3;
+- (void)persistenceWillUpdateDisplayDateForMessages:(NSArray *)arg1;
+- (void)persistenceDidUpdateFollowUpForMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
+- (void)persistenceDidUpdateSendLaterDate:(NSDate *)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
+- (void)persistenceDidChangeReadLaterDate:(NSDate *)arg1 messages:(NSArray *)arg2 changeIsRemote:(_Bool)arg3 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg4;
+- (void)persistenceWillChangeReadLaterDate:(NSDate *)arg1 messages:(NSArray *)arg2;
 - (void)persistenceDidChangeFlags:(ECMessageFlagChange *)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceIsChangingFlags:(ECMessageFlagChange *)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceWillChangeFlags:(ECMessageFlagChange *)arg1 messages:(NSArray *)arg2;

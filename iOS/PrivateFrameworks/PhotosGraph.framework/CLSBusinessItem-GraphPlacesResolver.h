@@ -6,11 +6,9 @@
 
 #import <MediaMiningKit/CLSBusinessItem.h>
 
-#import <PhotosGraph/PGGraphPlaceItem-Protocol.h>
-
 @class CLCircularRegion, NSArray, NSString;
 
-@interface CLSBusinessItem (GraphPlacesResolver) <PGGraphPlaceItem>
+@interface CLSBusinessItem (GraphPlacesResolver)
 @property(readonly, nonatomic) NSArray *categoryNames;
 
 // Remaining properties

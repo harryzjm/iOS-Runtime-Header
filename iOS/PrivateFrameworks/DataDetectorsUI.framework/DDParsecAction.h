@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DataDetectorsUI/DDParsecCollectionDelegate-Protocol.h>
+#import "DDPreviewAction.h"
 
 @class DDParsecCollectionViewController;
 
 __attribute__((visibility("hidden")))
-@interface DDParsecAction <DDParsecCollectionDelegate>
+@interface DDParsecAction : DDPreviewAction
 {
     DDParsecCollectionViewController *_parsecViewController;
     _Bool _previewMode;
 }
 
++ (_Bool)isAvailable;
 - (void).cxx_destruct;
 - (void)interactionDidFinishAndRequiresDismissal:(_Bool)arg1;
 - (id)createViewController;

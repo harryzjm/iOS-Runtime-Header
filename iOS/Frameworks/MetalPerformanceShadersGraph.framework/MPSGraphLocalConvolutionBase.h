@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPSGraphOperation.h"
+
 @class NSArray;
 
-@interface MPSGraphLocalConvolutionBase
+@interface MPSGraphLocalConvolutionBase : MPSGraphOperation
 {
     unsigned long long _dataLayout;
     NSArray *_kernelShape;

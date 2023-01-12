@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITableViewCell.h"
+
 @class UIInputSwitcherTableCellBackgroundView;
 
 __attribute__((visibility("hidden")))
-@interface UIInputSwitcherTableCell
+@interface UIInputSwitcherTableCell : UITableViewCell
 {
     _Bool _usesDarkTheme;
     _Bool _usesStraightLeftEdge;

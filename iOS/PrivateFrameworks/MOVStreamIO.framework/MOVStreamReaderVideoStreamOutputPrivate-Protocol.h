@@ -7,8 +7,11 @@
 #import <MOVStreamIO/NSObject-Protocol.h>
 
 @class NSDictionary;
+@protocol MOVStreamPostProcessor;
 
 @protocol MOVStreamReaderVideoStreamOutputPrivate <NSObject>
+@property(retain) id <MOVStreamPostProcessor> postProcessor;
+- (NSDictionary *)customTrackMetadata;
 - (NSDictionary *)nextAttachmentWithError:(id *)arg1;
 @end
 

@@ -6,40 +6,77 @@
 
 #import <UIKit/UIView.h>
 
-@class MRUEmbeddingView, MRUNowPlayingContainerView, MRUNowPlayingControlsView, MRUVisualStylingProvider;
+@class MRUArtworkView, MRUNowPlayingContainerView, MRUNowPlayingHeaderView, MRUNowPlayingTimeControlsView, MRUNowPlayingTransportControlsView, MRUNowPlayingVolumeControlsView, MRUVisualStylingProvider, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MRUNowPlayingView : UIView
 {
-    _Bool _supportsHorizontalLayout;
+    _Bool _onScreen;
+    _Bool _dimmed;
+    _Bool _showArtworkView;
+    _Bool _showTimeControlsView;
+    _Bool _showTransportControlsView;
+    _Bool _showVolumeControlsView;
     _Bool _showSuggestionsView;
-    MRUNowPlayingControlsView *_controlsView;
-    MRUEmbeddingView *_collapsedEmbeddingView;
+    _Bool _supportsHorizontalLayout;
+    _Bool _useArtworkOverrideSize;
+    MRUArtworkView *_artworkView;
+    MRUNowPlayingHeaderView *_headerView;
+    MRUNowPlayingTimeControlsView *_timeControlsView;
+    MRUNowPlayingTransportControlsView *_transportControlsView;
+    MRUNowPlayingVolumeControlsView *_volumeControlsView;
     UIView *_suggestionsView;
     MRUVisualStylingProvider *_stylingProvider;
     long long _layout;
     long long _context;
     MRUNowPlayingContainerView *_containerView;
+    struct CGSize _artworkOverrideSize;
     struct UIEdgeInsets _contentEdgeInsets;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MRUNowPlayingContainerView *containerView; // @synthesize containerView=_containerView;
+@property(nonatomic) struct CGSize artworkOverrideSize; // @synthesize artworkOverrideSize=_artworkOverrideSize;
+@property(nonatomic) _Bool useArtworkOverrideSize; // @synthesize useArtworkOverrideSize=_useArtworkOverrideSize;
 @property(nonatomic) struct UIEdgeInsets contentEdgeInsets; // @synthesize contentEdgeInsets=_contentEdgeInsets;
-@property(nonatomic) _Bool showSuggestionsView; // @synthesize showSuggestionsView=_showSuggestionsView;
 @property(nonatomic) _Bool supportsHorizontalLayout; // @synthesize supportsHorizontalLayout=_supportsHorizontalLayout;
+@property(nonatomic) _Bool showSuggestionsView; // @synthesize showSuggestionsView=_showSuggestionsView;
+@property(nonatomic) _Bool showVolumeControlsView; // @synthesize showVolumeControlsView=_showVolumeControlsView;
+@property(nonatomic) _Bool showTransportControlsView; // @synthesize showTransportControlsView=_showTransportControlsView;
+@property(nonatomic) _Bool showTimeControlsView; // @synthesize showTimeControlsView=_showTimeControlsView;
+@property(nonatomic) _Bool showArtworkView; // @synthesize showArtworkView=_showArtworkView;
+@property(nonatomic, getter=isDimmed) _Bool dimmed; // @synthesize dimmed=_dimmed;
+@property(nonatomic, getter=isOnScreen) _Bool onScreen; // @synthesize onScreen=_onScreen;
 @property(nonatomic) long long context; // @synthesize context=_context;
 @property(nonatomic) long long layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property(retain, nonatomic) UIView *suggestionsView; // @synthesize suggestionsView=_suggestionsView;
-@property(readonly, nonatomic) MRUEmbeddingView *collapsedEmbeddingView; // @synthesize collapsedEmbeddingView=_collapsedEmbeddingView;
-@property(readonly, nonatomic) MRUNowPlayingControlsView *controlsView; // @synthesize controlsView=_controlsView;
+@property(readonly, nonatomic) MRUNowPlayingVolumeControlsView *volumeControlsView; // @synthesize volumeControlsView=_volumeControlsView;
+@property(readonly, nonatomic) MRUNowPlayingTransportControlsView *transportControlsView; // @synthesize transportControlsView=_transportControlsView;
+@property(readonly, nonatomic) MRUNowPlayingTimeControlsView *timeControlsView; // @synthesize timeControlsView=_timeControlsView;
+@property(readonly, nonatomic) MRUNowPlayingHeaderView *headerView; // @synthesize headerView=_headerView;
+@property(readonly, nonatomic) MRUArtworkView *artworkView; // @synthesize artworkView=_artworkView;
+- (struct CGRect)suggestionsFrame;
 - (void)updateVisibility;
+- (void)updateDimmed;
+- (void)updateOnScreen;
+- (void)updateTextAlignment;
+- (void)updateArtworkStyle;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+@property(retain, nonatomic) UIView *contentView;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviewsHorizontal;
 - (void)layoutSubviewsVertical;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithWaveformView:(id)arg1;
+- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

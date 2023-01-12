@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFShowPhotosOneUpViewCommand.h>
 
 @interface SFShowPhotosOneUpViewCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

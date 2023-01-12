@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LoggingSupport/NSPredicateVisitor-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableSet, NSPredicate;
 
 __attribute__((visibility("hidden")))
-@interface _OSLogPredicateMapper : NSObject <NSPredicateVisitor>
+@interface _OSLogPredicateMapper : NSObject
 {
     int _pass;
     NSMutableArray *_validationErrors;

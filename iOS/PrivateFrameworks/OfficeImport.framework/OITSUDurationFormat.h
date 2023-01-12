@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-#import <OfficeImport/TSUDataFormat-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OITSUDurationFormat : NSObject <NSCopying, TSUDataFormat>
+@interface OITSUDurationFormat : NSObject
 {
     NSString *mFormat;
     NSString *mName;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSXPCListenerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface REResourceFetchServer : NSObject <NSXPCListenerDelegate>
+@interface REResourceFetchServer : NSObject
 {
     void *_resourceFetchManager;
 }

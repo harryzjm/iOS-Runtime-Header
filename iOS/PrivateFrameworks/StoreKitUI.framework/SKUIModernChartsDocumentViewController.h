@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUIModalSourceViewProvider-Protocol.h>
-#import <StoreKitUI/SKUIResourceLoaderDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSMutableArray, NSString, SKUIActivityIndicatorView, SKUIChartsTemplateViewElement, SKUILayoutCache, SKUIModernChartsView, SKUIResourceLoader, SKUIViewElementLayoutContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIModernChartsDocumentViewController <SKUIResourceLoaderDelegate, SKUIDocumentViewController, SKUIModalSourceViewProvider>
+@interface SKUIModernChartsDocumentViewController : SKUIViewController
 {
     SKUIActivityIndicatorView *_activityIndicatorView;
     SKUIModernChartsView *_chartsView;

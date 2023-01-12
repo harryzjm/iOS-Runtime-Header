@@ -6,9 +6,7 @@
 
 #import <EmailCore/ECHTMLStringAndMIMECharset.h>
 
-#import <MessageUI/NSSecureCoding-Protocol.h>
-
-@interface ECHTMLStringAndMIMECharset (MessageUIAdditions) <NSSecureCoding>
+@interface ECHTMLStringAndMIMECharset (MessageUIAdditions)
 + (_Bool)supportsSecureCoding;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

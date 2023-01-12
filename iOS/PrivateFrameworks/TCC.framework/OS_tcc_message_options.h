@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TCC/OS_tcc_message_options-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OS_tcc_message_options <OS_tcc_message_options>
+@interface OS_tcc_message_options
 {
 }
 

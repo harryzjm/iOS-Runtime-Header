@@ -6,10 +6,14 @@
 
 #import <NetworkServiceProxy/NSPProxyPathDelegate-Protocol.h>
 
-@class NSData, NSPQuicProxyPath;
+@class NSData, NSPQuicProxyPath, NSString, NSUUID;
 
 @protocol NSPQUICProxyPathDelegate <NSPProxyPathDelegate>
+- (NSData *)obliviousHopFallbackProxyConfigHashForHostname:(NSString *)arg1;
+- (NSUUID *)obliviousHopFallbackProxyAgentUUIDForHostname:(NSString *)arg1;
 - (NSData *)multiHopFallbackProxyConfigHash:(NSPQuicProxyPath *)arg1;
 - (NSData *)singleHopFallbackProxyConfigHash:(NSPQuicProxyPath *)arg1;
+- (NSData *)multiHopQUICProxyConfigHash:(NSPQuicProxyPath *)arg1;
+- (NSData *)singleHopQUICProxyConfigHash:(NSPQuicProxyPath *)arg1;
 @end
 

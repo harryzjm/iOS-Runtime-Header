@@ -11,8 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityCustomActions;
 - (unsigned int)_accessibilityMediaAnalysisOptions;
 - (unsigned long long)accessibilityTraits;
+- (id)_accessibilityViewModel;
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityLabel;
 

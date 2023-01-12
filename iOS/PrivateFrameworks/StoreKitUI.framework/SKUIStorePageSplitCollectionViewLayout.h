@@ -6,12 +6,10 @@
 
 #import <UIKit/_UICollectionViewCompositionLayout.h>
 
-#import <StoreKitUI/SKUIStorePageCollectionViewLayout-Protocol.h>
-
 @class NSArray, NSMapTable, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStorePageSplitCollectionViewLayout : _UICollectionViewCompositionLayout <SKUIStorePageCollectionViewLayout>
+@interface SKUIStorePageSplitCollectionViewLayout : _UICollectionViewCompositionLayout
 {
     NSString *_backdropGroupName;
     NSArray *_indexPathsForGradientItems;

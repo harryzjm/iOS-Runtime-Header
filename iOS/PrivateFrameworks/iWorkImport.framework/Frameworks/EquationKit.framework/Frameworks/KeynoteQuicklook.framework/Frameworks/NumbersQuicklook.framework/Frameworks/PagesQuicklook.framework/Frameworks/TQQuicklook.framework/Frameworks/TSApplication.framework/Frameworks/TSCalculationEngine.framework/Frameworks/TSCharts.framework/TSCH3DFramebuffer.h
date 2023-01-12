@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DPipelineLinkable-Protocol.h>
-
 @class NSString;
 
-@interface TSCH3DFramebuffer : NSObject <TSCH3DPipelineLinkable>
+@interface TSCH3DFramebuffer : NSObject
 {
     struct FramebufferAttributes _framebufferAttributes;
     unsigned long long _uniqueIdentifier;

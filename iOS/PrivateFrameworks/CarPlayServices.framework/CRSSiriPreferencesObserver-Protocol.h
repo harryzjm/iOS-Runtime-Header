@@ -11,6 +11,9 @@
 @protocol CRSSiriPreferencesObserver <NSObject>
 
 @optional
+- (void)preferences:(CRSSiriPreferences *)arg1 mainAutoSendEnabledChanged:(_Bool)arg2;
+- (void)preferences:(CRSSiriPreferences *)arg1 autoSendInHeadphonesEnabledChanged:(_Bool)arg2;
+- (void)preferences:(CRSSiriPreferences *)arg1 autoSendInCarPlayEnabledChanged:(_Bool)arg2;
 - (void)preferences:(CRSSiriPreferences *)arg1 announceNotificationsInCarPlayTemporarilyDisabledChanged:(_Bool)arg2;
 - (void)preferences:(CRSSiriPreferences *)arg1 carPlayAnnounceEnablementTypeChanged:(long long)arg2;
 @end

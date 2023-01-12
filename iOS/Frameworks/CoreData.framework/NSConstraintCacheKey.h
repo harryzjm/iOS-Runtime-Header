@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface NSConstraintCacheKey : NSObject <NSCopying>
+@interface NSConstraintCacheKey : NSObject
 {
     NSArray *_values;
 }

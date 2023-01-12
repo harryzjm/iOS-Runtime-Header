@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIDocumentPickerViewControllerExtensionHost-Protocol.h>
+#import "_UIDocumentPickerRemoteViewController.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerExtensionRemoteViewController <_UIDocumentPickerViewControllerExtensionHost>
+@interface _UIDocumentPickerExtensionRemoteViewController : _UIDocumentPickerRemoteViewController
 {
 }
 

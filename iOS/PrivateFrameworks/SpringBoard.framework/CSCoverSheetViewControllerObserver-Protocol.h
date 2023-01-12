@@ -11,6 +11,8 @@
 @protocol CSCoverSheetViewControllerObserver <NSObject>
 
 @optional
+- (void)coverSheetViewControllerDidAddNewSceneHostEnvironment:(CSCoverSheetViewController *)arg1;
+- (void)coverSheetViewControllerWillPresentPosterSwitcher:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewControllerDidDismissPasscodeLockView:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewControllerDidPresentModalView:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewControllerExternalLockProviderStateDidChange:(CSCoverSheetViewController *)arg1;

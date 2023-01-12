@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UIControlEventsGestureRecognizerDelegate-Protocol.h>
+#import "UIView.h"
 
-@class NSArray, NSDictionary, NSString, UIView, _UIDatePickerLinkedLabel, _UIDatePickerOverlayPresentation;
+@class NSArray, NSDictionary, NSString, _UIDatePickerLinkedLabel, _UIDatePickerOverlayPresentation;
 @protocol _UIDatePickerCompactDateLabelDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerCompactDateLabel <_UIControlEventsGestureRecognizerDelegate, UIPointerInteractionDelegate>
+@interface _UIDatePickerCompactDateLabel : UIView
 {
     _Bool _tapInteractionControlledExternally;
     _Bool _highlightedForTouch;

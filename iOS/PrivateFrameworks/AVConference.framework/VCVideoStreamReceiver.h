@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCMediaStreamSyncDestination-Protocol.h>
-
 @class NSObject, NSString, VCMediaStreamStats, VCVideoStreamRateAdaptation, VideoAttributes;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStreamReceiver <VCMediaStreamSyncDestination>
+@interface VCVideoStreamReceiver
 {
     struct tagHANDLE *_hRTP;
     struct OpaqueCMMemoryPool *_blockBufferMemoryPool;
     struct __CFAllocator *_blockBufferMemoryPoolAllocator;
     struct OpaqueVTDecompressionSession *_decompressionSession;
+    struct _opaque_pthread_mutex_t _decompressionSessionMutex;
     _Bool _receivedFirstPacket;
     _Bool _receivedFirstRemoteFrame;
     unsigned short _lastSequenceNumber;

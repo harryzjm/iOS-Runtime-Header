@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceGroupImpl-Protocol.h>
-
 @class AVOutputDevice, AVOutputDeviceGroup, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVAPSyncControllerRemoteOutputDeviceGroupImpl : NSObject <AVOutputDeviceGroupImpl>
+@interface AVAPSyncControllerRemoteOutputDeviceGroupImpl : NSObject
 {
     AVOutputDeviceGroup *_parentOutputDeviceGroup;
     struct OpaqueAPSyncController *_syncController;

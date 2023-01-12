@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaControls/NSCopying-Protocol.h>
-
 @class NSIndexSet, NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsCollectionViewCountData : NSObject <NSCopying>
+@interface MediaControlsCollectionViewCountData : NSObject
 {
     NSMutableIndexSet *_insertedIndexes;
     NSMutableIndexSet *_deletedIndexes;

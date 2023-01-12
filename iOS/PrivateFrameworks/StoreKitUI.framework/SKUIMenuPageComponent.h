@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIPageComponent.h"
+
 @class NSArray, NSMutableArray, NSString, SKUISegmentedControlViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMenuPageComponent
+@interface SKUIMenuPageComponent : SKUIPageComponent
 {
     NSMutableArray *_childrenComponents;
     long long _defaultSelectedIndex;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDResultRefinementQuery, GEOPDSSearchEvChargingParameters, GEOPDViewportInfo, NSData, PBDataReader, PBUnknownFields;
+@class GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDResultRefinementQuery, GEOPDSSearchEvChargingParameters, GEOPDSearchOriginationInfo, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDCategorySearchParameters : PBCodable <NSCopying>
+@interface GEOPDCategorySearchParameters : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -20,11 +18,13 @@ __attribute__((visibility("hidden")))
     CDStruct_95bda58d _supportedRelatedEntitySectionTypes;
     CDStruct_95bda58d _supportedSearchSectionTypes;
     CDStruct_95bda58d _supportedSearchTierTypes;
+    NSString *_enrichmentCampaignNamespace;
     GEOPDETAFilter *_etaFilter;
     GEOPDSSearchEvChargingParameters *_evChargingParameters;
     GEOPDViewportInfo *_previousSearchViewport;
     GEOPDRecentRouteInfo *_recentRouteInfo;
     GEOPDResultRefinementQuery *_resultRefinementQuery;
+    GEOPDSearchOriginationInfo *_searchOriginationInfo;
     NSData *_suggestionEntryMetadata;
     GEOPDViewportInfo *_viewportInfo;
     unsigned int _readerMarkPos;
@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
     int _placeSummaryRevision;
     int _searchType;
     _Bool _supportCategorySearchResultSection;
+    _Bool _supportSearchEnrichment;
+    _Bool _supportStructuredRapAffordance;
     struct {
         unsigned int has_auxiliaryTierNumResults:1;
         unsigned int has_blurredHourOfDay:1;
@@ -45,17 +47,21 @@ __attribute__((visibility("hidden")))
         unsigned int has_placeSummaryRevision:1;
         unsigned int has_searchType:1;
         unsigned int has_supportCategorySearchResultSection:1;
+        unsigned int has_supportSearchEnrichment:1;
+        unsigned int has_supportStructuredRapAffordance:1;
         unsigned int read_unknownFields:1;
         unsigned int read_knownRefinementTypes:1;
         unsigned int read_supportedPlaceSummaryFormatTypes:1;
         unsigned int read_supportedRelatedEntitySectionTypes:1;
         unsigned int read_supportedSearchSectionTypes:1;
         unsigned int read_supportedSearchTierTypes:1;
+        unsigned int read_enrichmentCampaignNamespace:1;
         unsigned int read_etaFilter:1;
         unsigned int read_evChargingParameters:1;
         unsigned int read_previousSearchViewport:1;
         unsigned int read_recentRouteInfo:1;
         unsigned int read_resultRefinementQuery:1;
+        unsigned int read_searchOriginationInfo:1;
         unsigned int read_suggestionEntryMetadata:1;
         unsigned int read_viewportInfo:1;
         unsigned int wrote_anyField:1;

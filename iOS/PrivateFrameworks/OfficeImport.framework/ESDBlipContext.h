@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OCDDelayedMediaContext-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ESDBlipContext : NSObject <OCDDelayedMediaContext>
+@interface ESDBlipContext : NSObject
 {
     struct SsrwOOStream *mStream;
     unsigned int mStreamID;

@@ -14,6 +14,7 @@
     MISSING_TYPE *instrumentationUtil;
     MISSING_TYPE *executionOutputSubmitter;
     MISSING_TYPE *preferences;
+    MISSING_TYPE *dialogHandler;
 }
 
 @end

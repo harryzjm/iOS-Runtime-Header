@@ -6,9 +6,7 @@
 
 #import <CalendarDaemon/CADUnacknowledgedEventsPredicate.h>
 
-#import <EventKit/EKPredicateEvaluating-Protocol.h>
-
-@interface CADUnacknowledgedEventsPredicate (EKPredicateEvaluating) <EKPredicateEvaluating>
+@interface CADUnacknowledgedEventsPredicate (EKPredicateEvaluating)
 - (_Bool)ekPredicateEvaluateWithObject:(id)arg1;
 @end
 

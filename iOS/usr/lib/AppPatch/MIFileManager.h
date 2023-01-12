@@ -38,7 +38,8 @@ __attribute__((visibility("hidden")))
 - (id)realPathForURL:(id)arg1 ifChildOfURL:(id)arg2;
 - (_Bool)_validateSymlink:(id)arg1 withStartingDepth:(unsigned int)arg2 andEndingDepth:(unsigned int *)arg3;
 - (id)_realPathForURL:(id)arg1 allowNonExistentPathComponents:(_Bool)arg2;
-- (id)_realPathWhatExistsInPath:(id)arg1;
+- (id)realPathForURL:(id)arg1 allowNonExistentPathComponents:(_Bool)arg2 isDirectory:(_Bool)arg3 error:(id *)arg4;
+- (id)_realPathWhatExistsInPath:(id)arg1 isDirectory:(_Bool)arg2;
 - (_Bool)captureStoreDataFromDirectory:(id)arg1 toDirectory:(id)arg2 doCopy:(_Bool)arg3 failureIsFatal:(_Bool)arg4 withError:(id *)arg5;
 - (_Bool)setPermissionsForURL:(id)arg1 toMode:(unsigned short)arg2 error:(id *)arg3;
 - (_Bool)setOwnerOfURL:(id)arg1 toUID:(unsigned int)arg2 gid:(unsigned int)arg3 error:(id *)arg4;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)itemIsSymlinkAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)itemIsFileAtURL:(id)arg1 error:(id *)arg2;
 - (_Bool)_itemIsType:(unsigned short)arg1 withDescription:(id)arg2 atURL:(id)arg3 error:(id *)arg4;
+- (_Bool)itemDoesNotExistOrIsNotDirectoryAtURL:(id)arg1;
 - (_Bool)itemDoesNotExistAtURL:(id)arg1;
 - (_Bool)itemExistsAtURL:(id)arg1;
 - (_Bool)itemExistsAtURL:(id)arg1 error:(id *)arg2;

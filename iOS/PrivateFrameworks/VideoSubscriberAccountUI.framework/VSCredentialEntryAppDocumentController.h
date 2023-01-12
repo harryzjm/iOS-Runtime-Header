@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideoSubscriberAccountUI/VSCredentialEntryViewModelDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/VSIKItemGroupDelegate-Protocol.h>
-
 @class NSArray, NSString, VSIKItemGroupElement;
 
 __attribute__((visibility("hidden")))
-@interface VSCredentialEntryAppDocumentController <VSCredentialEntryViewModelDelegate, VSIKItemGroupDelegate>
+@interface VSCredentialEntryAppDocumentController
 {
     VSIKItemGroupElement *_pickerElement;
     NSArray *_buttonElements;

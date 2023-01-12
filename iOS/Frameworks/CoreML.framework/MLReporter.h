@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/CUTMetricLogger-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MLReporter : NSObject <CUTMetricLogger>
+@interface MLReporter : NSObject
 {
 }
 

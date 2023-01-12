@@ -6,13 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/EKEventEditViewDelegate-Protocol.h>
-#import <ActionKitUI/WFAddNewEventActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFAddNewEventActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFAddNewEventActionUserInterface, EKEventEditViewDelegate>
+@interface WFAddNewEventActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

@@ -11,12 +11,21 @@
 
 @protocol SKAPushManaging <NSObject>
 @property(nonatomic) __weak id <SKAPushManagingDelegate> delegate;
+- (NSData *)pushToken;
 - (NSDate *)serverTime;
-- (void)switchFilterToEnabled;
-- (void)switchFilterToNonwaking;
-- (void)subscribedChannelsWithCompletion:(void (^)(NSArray *))arg1;
-- (void)unsubscribeFromChannels:(NSArray *)arg1;
-- (void)subscribeToChannels:(NSArray *)arg1;
+- (void)disableActivityTracking;
+- (void)enableActivityTracking;
+- (void)switchPresenceFilterToEnabled;
+- (void)switchPresenceFilterToNonwaking;
+- (void)switchStatusFilterToEnabled;
+- (void)switchStatusFilterToNonwaking;
+- (void)subscribedPresenceChannelsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)unsubscribeFromPresenceChannels:(NSArray *)arg1;
+- (void)subscribeToPresenceChannels:(NSArray *)arg1;
+- (void)subscribedStatusChannelsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)unsubscribeFromStatusChannels:(NSArray *)arg1;
+- (void)subscribeToStatusChannels:(NSArray *)arg1;
+- (void)sendPresenceMessage:(NSData *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)publishStatus:(NSData *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)createChannelWithProtoData:(NSData *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 @end

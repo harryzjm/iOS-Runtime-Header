@@ -9,8 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface _TtCC8VideosUI16FlowcaseViewCell19FlowcaseOverlayView
 {
+    MISSING_TYPE *transitionAnimationDuration;
     MISSING_TYPE *overlayLayout;
     MISSING_TYPE *gradientColor;
+    MISSING_TYPE *disableGradient;
     MISSING_TYPE *titleView;
     MISSING_TYPE *badgeView;
     MISSING_TYPE *verticalStackView;
@@ -21,7 +23,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *$__lazy_storage_$_logoGradientView;
     MISSING_TYPE *$__lazy_storage_$_visualEffectContainerView;
     MISSING_TYPE *$__lazy_storage_$_visualEffectView;
-    MISSING_TYPE *$__lazy_storage_$_gradientView;
+    MISSING_TYPE *nonPlaybackGradientView;
+    MISSING_TYPE *$__lazy_storage_$_playbackGradientView;
     MISSING_TYPE *$__lazy_storage_$_opacityMaskLayer;
 }
 

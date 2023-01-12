@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSPortCoder.h"
+
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface NSConcretePortCoder
+@interface NSConcretePortCoder : NSPortCoder
 {
-    NSSet *whitelist;
+    NSSet *allowlist;
 }
 
 - (void)dealloc;
 - (_Bool)_classAllowed:(Class)arg1;
-- (void)_setWhitelist:(id)arg1;
+- (void)_setAllowList:(id)arg1;
 
 @end
 

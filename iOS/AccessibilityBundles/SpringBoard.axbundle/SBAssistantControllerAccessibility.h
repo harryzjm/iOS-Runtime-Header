@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_dismissForMainScreenWithFactory:(id)arg1 dismissalOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_dismissAssistantViewIfNecessaryWithAnimation:(long long)arg1 factory:(id)arg2 dismissalOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

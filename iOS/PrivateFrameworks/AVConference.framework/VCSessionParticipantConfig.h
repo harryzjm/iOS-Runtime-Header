@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, VCNetworkFeedbackController, VCSecurityKeyManager, VCSessionMediaNegotiator;
+@class NSData, NSDictionary, NSString, VCAudioCaptionsCoordinator, VCNetworkFeedbackController, VCSecurityKeyManager, VCSessionMediaNegotiator;
 @protocol OS_nw_activity;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _idsParticipantID;
     _Bool _audioEnabled;
     _Bool _videoEnabled;
-    _Bool _screeEnabled;
+    _Bool _screenEnabled;
     _Bool _frequencyMeteringEnabled;
     _Bool _audioMuted;
     float _volume;
@@ -28,6 +28,9 @@ __attribute__((visibility("hidden")))
     unsigned int _visibilityIndex;
     unsigned int _prominenceIndex;
     NSData *_positionalInfo;
+    struct __CFDictionary *_spatialMetadataEntryMap;
+    NSDictionary *_mediaStates;
+    _Bool _isServerRTxEnabled;
     void *_spatialMetadata;
     VCSessionMediaNegotiator *_mediaNegotiator;
     VCSecurityKeyManager *_securityKeyManager;
@@ -40,10 +43,12 @@ __attribute__((visibility("hidden")))
     long long _sessionMode;
     _Bool _isOneToOneModeEnabled;
     VCNetworkFeedbackController *_networkFeedbackController;
-    _Bool _screenEnabled;
+    VCAudioCaptionsCoordinator *_captionsCoordinator;
     NSObject<OS_nw_activity> *_nwActivity;
 }
 
+@property(nonatomic) _Bool isServerRTxEnabled; // @synthesize isServerRTxEnabled=_isServerRTxEnabled;
+@property(retain, nonatomic) VCAudioCaptionsCoordinator *captionsCoordinator; // @synthesize captionsCoordinator=_captionsCoordinator;
 @property(retain, nonatomic) VCNetworkFeedbackController *networkFeedbackController; // @synthesize networkFeedbackController=_networkFeedbackController;
 @property(nonatomic) _Bool isOneToOneModeEnabled; // @synthesize isOneToOneModeEnabled=_isOneToOneModeEnabled;
 @property(nonatomic) long long sessionMode; // @synthesize sessionMode=_sessionMode;
@@ -55,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int processId; // @synthesize processId=_processId;
 @property(retain, nonatomic) VCSecurityKeyManager *securityKeyManager; // @synthesize securityKeyManager=_securityKeyManager;
 @property(retain, nonatomic) VCSessionMediaNegotiator *mediaNegotiator; // @synthesize mediaNegotiator=_mediaNegotiator;
+@property(retain, nonatomic) NSDictionary *mediaStates; // @synthesize mediaStates=_mediaStates;
 @property(nonatomic) NSObject<OS_nw_activity> *nwActivity; // @synthesize nwActivity=_nwActivity;
 @property(retain, nonatomic) NSData *positionalInfo; // @synthesize positionalInfo=_positionalInfo;
 @property(nonatomic) unsigned int prominenceIndex; // @synthesize prominenceIndex=_prominenceIndex;
@@ -72,6 +78,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long idsParticipantID; // @synthesize idsParticipantID=_idsParticipantID;
 @property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) NSData *participantData; // @synthesize participantData=_participantData;
+@property(nonatomic) struct __CFDictionary *spatialMetadataEntryMap;
 - (void)cleanupNwActivity;
 @property(nonatomic) void *spatialMetadata;
 - (id)description;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/SNTestCaseRun-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI223CloseWebArticleTestCase : NSObject <SNTestCaseRun>
+@interface _TtC7NewsUI223CloseWebArticleTestCase : NSObject
 {
     MISSING_TYPE *testName;
     MISSING_TYPE *timeoutInSeconds;

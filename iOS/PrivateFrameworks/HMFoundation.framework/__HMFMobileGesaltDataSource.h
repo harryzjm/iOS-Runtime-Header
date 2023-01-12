@@ -4,19 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HMFoundation/HMFSystemInfoBluetoothLEDataSource-Protocol.h>
-#import <HMFoundation/HMFSystemInfoMarketingInformationDataSource-Protocol.h>
-#import <HMFoundation/HMFSystemInfoNameDataSource-Protocol.h>
-#import <HMFoundation/HMFSystemInfoProductInfoDataSource-Protocol.h>
-#import <HMFoundation/HMFSystemInfoSerialNumberDataSource-Protocol.h>
-#import <HMFoundation/HMFSystemInfoSoftwareVersionDataSource-Protocol.h>
-#import <HMFoundation/HMFSystemInfoWiFiDataSource-Protocol.h>
+#import "HMFObject.h"
 
 @class HMFMACAddress, HMFSoftwareVersion, NSObject, NSString;
 @protocol HMFSystemInfoNameDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface __HMFMobileGesaltDataSource <HMFSystemInfoNameDataSource, HMFSystemInfoMarketingInformationDataSource, HMFSystemInfoSerialNumberDataSource, HMFSystemInfoProductInfoDataSource, HMFSystemInfoSoftwareVersionDataSource, HMFSystemInfoWiFiDataSource, HMFSystemInfoBluetoothLEDataSource>
+@interface __HMFMobileGesaltDataSource : HMFObject
 {
     struct os_unfair_lock_s _lock;
     _Bool _supportsBLE;
@@ -31,6 +25,7 @@ __attribute__((visibility("hidden")))
     long long _productVariant;
     HMFSoftwareVersion *_softwareVersion;
     HMFMACAddress *_WiFiInterfaceMACAddress;
+    long long _productColor;
     NSObject<OS_dispatch_queue> *_queue;
     struct MGNotificationTokenStruct *_notificationToken;
 }
@@ -38,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly) struct MGNotificationTokenStruct *notificationToken; // @synthesize notificationToken=_notificationToken;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly) long long productColor; // @synthesize productColor=_productColor;
 @property(readonly) _Bool supportsBLE; // @synthesize supportsBLE=_supportsBLE;
 @property(readonly, copy) HMFMACAddress *WiFiInterfaceMACAddress; // @synthesize WiFiInterfaceMACAddress=_WiFiInterfaceMACAddress;
 @property(readonly, copy, nonatomic) HMFSoftwareVersion *softwareVersion; // @synthesize softwareVersion=_softwareVersion;
@@ -50,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
 @property __weak id <HMFSystemInfoNameDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (_Bool)shouldFetchUserAssignedDeviceName;
 - (void)dealloc;
 - (id)init;
 

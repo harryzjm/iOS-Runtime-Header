@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "IDSDestination.h"
+
 @class NSArray;
 
-@interface IDSDestinationComposite
+@interface IDSDestinationComposite : IDSDestination
 {
     NSArray *_destinations;
 }
@@ -16,6 +18,7 @@
 @property(readonly, nonatomic) NSArray *destinations; // @synthesize destinations=_destinations;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)destinationLightweightStatus;
 - (id)destinationURIs;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

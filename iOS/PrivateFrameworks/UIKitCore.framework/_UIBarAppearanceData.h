@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)decodeFromCoder:(id)arg1 prefix:(id)arg2;
-- (void)markReadOnly;
+- (id)markReadOnly;
 - (void)assertMutable:(SEL)arg1;
 - (id)replicate;
 - (_Bool)checkEqualTo:(id)arg1;

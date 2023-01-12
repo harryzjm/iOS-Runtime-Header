@@ -6,7 +6,7 @@
 
 #import <MessageUI/NSObject-Protocol.h>
 
-@class EMCollection, NSArray;
+@class EMCollection, NSArray, NSDictionary;
 @protocol EMCollectionItemID;
 
 @protocol EMCollectionChangeObserver <NSObject>
@@ -19,6 +19,7 @@
 - (void)collection:(EMCollection *)arg1 addedItemIDs:(NSArray *)arg2 before:(id <EMCollectionItemID>)arg3;
 
 @optional
+- (void)collection:(EMCollection *)arg1 shouldHighlightSnippetHints:(NSDictionary *)arg2;
 - (void)didFinishRemoteSearchForCollection:(EMCollection *)arg1;
 - (void)didFinishRecoveryForCollection:(EMCollection *)arg1;
 - (void)collectionDidFinishInitialLoad:(EMCollection *)arg1;

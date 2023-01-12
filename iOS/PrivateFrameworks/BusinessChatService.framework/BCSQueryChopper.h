@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSQueryChopperProtocol-Protocol.h>
-
 @class NSString;
 @protocol BCSMetricFactoryProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface BCSQueryChopper : NSObject <BCSQueryChopperProtocol>
+@interface BCSQueryChopper : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
     id <BCSMetricFactoryProtocol> _metricFactory;

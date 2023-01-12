@@ -13,6 +13,7 @@
 - (UIViewController *)popToBuddyControllerWithClass:(Class)arg1 withOffset:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (UIViewController *)popToBuddyControllerWithClass:(Class)arg1 animated:(_Bool)arg2;
 - (void)removeViewControllersOnNextPush:(NSArray *)arg1;
+- (void)pushFlowItem:(id <BFFFlowItem>)arg1 inFlow:(BFFFlow *)arg2 withExtendedInitialization:(_Bool)arg3 animated:(_Bool)arg4 willPushFlowItem:(void (^)(_Bool))arg5;
 - (void)pushFlowItem:(id <BFFFlowItem>)arg1 inFlow:(BFFFlow *)arg2 withExtendedInitialization:(_Bool)arg3 animated:(_Bool)arg4;
 - (void)pushFlowItem:(id <BFFFlowItem>)arg1 inFlow:(BFFFlow *)arg2 animated:(_Bool)arg3;
 - (void)pushFlowItem:(id <BFFFlowItem>)arg1 animated:(_Bool)arg2;

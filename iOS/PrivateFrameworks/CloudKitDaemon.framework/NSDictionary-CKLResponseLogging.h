@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <CloudKitDaemon/CKLParsedObject-Protocol.h>
-
 @class NSString;
 
-@interface NSDictionary (CKLResponseLogging) <CKLParsedObject>
+@interface NSDictionary (CKLResponseLogging)
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 - (id)CKPercentEscapedQueryString;
 

@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ProactiveExperiments/NSObject-Protocol.h>
+
 @class NSString, TRIExperimentIdentifiers, TRIRolloutIdentifiers;
 
-@protocol PREResponsesTrialProtocol
+@protocol PREResponsesTrialProtocol <NSObject>
 @property(readonly, nonatomic) _Bool isMLModelEnabled;
 @property(readonly, nonatomic) TRIExperimentIdentifiers *experimentIdentifiers;
 @property(readonly, nonatomic) TRIRolloutIdentifiers *rolloutIdentifiers;
+@property(readonly, nonatomic) NSString *vocabFilePath;
 @property(readonly, nonatomic) NSString *espressoBinFilePath;
 @property(readonly, nonatomic) NSString *inferenceModelConfigPath;
 @property(readonly, nonatomic) NSString *inferenceModelFilePath;

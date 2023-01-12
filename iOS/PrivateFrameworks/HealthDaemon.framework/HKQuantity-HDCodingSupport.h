@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKQuantity.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKQuantity (HDCodingSupport) <HDCoding>
+@interface HKQuantity (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

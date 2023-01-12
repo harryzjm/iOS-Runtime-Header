@@ -6,19 +6,19 @@
 
 #import <MediaPlayer/MPModelRequest.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class MPSectionedCollection;
 
 __attribute__((visibility("hidden")))
-@interface MPCModelRadioPersonalizationRequest : MPModelRequest <NSCopying>
+@interface MPCModelRadioPersonalizationRequest : MPModelRequest
 {
     MPSectionedCollection *_radioStationTracks;
+    _Bool _analyticsSignpostsEnabled;
 }
 
 + (_Bool)requiresNetwork;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool analyticsSignpostsEnabled; // @synthesize analyticsSignpostsEnabled=_analyticsSignpostsEnabled;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
 - (id)initWithRadioStationTracks:(id)arg1;

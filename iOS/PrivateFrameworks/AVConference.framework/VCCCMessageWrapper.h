@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class VCCCMessage, VCCCMessageAcknowledgment;
 
 __attribute__((visibility("hidden")))
-@interface VCCCMessageWrapper : PBCodable <NSCopying>
+@interface VCCCMessageWrapper : PBCodable
 {
     VCCCMessageAcknowledgment *_acknowledgement;
     int _content;

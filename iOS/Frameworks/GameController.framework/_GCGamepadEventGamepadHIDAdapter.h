@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCGamepadEventSource-Protocol.h>
-
 @class NSArray, NSString;
 @protocol _GCHIDEventSource;
 
 __attribute__((visibility("hidden")))
-@interface _GCGamepadEventGamepadHIDAdapter : NSObject <_GCGamepadEventSource>
+@interface _GCGamepadEventGamepadHIDAdapter : NSObject
 {
     id <_GCHIDEventSource> _HIDEventSource;
     id _HIDEventObservation;

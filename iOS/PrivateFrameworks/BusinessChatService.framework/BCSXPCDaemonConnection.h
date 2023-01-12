@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSXPCDaemonConnectionProtocol-Protocol.h>
-
 @class NSString, NSXPCConnection;
 @protocol BCSXPCDaemonProtocol;
 
 __attribute__((visibility("hidden")))
-@interface BCSXPCDaemonConnection : NSObject <BCSXPCDaemonConnectionProtocol>
+@interface BCSXPCDaemonConnection : NSObject
 {
     NSXPCConnection *_connection;
 }

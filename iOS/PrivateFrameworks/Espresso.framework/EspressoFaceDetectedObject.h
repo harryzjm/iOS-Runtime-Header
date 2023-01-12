@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Espresso/ExternalDetectedObject-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface EspressoFaceDetectedObject : NSObject <ExternalDetectedObject>
+@interface EspressoFaceDetectedObject : NSObject
 {
     float confidence;
     long long objectType;

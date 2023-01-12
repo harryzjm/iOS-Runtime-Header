@@ -154,7 +154,7 @@ struct ElementRenderPass {
 };
 
 struct EnableClipDistances {
-    struct array<bool, 8> states;
+    struct array<bool, 8UL> states;
 };
 
 struct FlushResult {
@@ -197,7 +197,7 @@ struct LabelTransform {
 };
 
 struct LightingPackageShaderEffectState {
-    struct array<glm::detail::tmat4x4<float>, 2> transforms;
+    struct array<glm::detail::tmat4x4<float>, 2UL> transforms;
 };
 
 struct Message {
@@ -260,19 +260,19 @@ struct ResizingSize {
 
 struct ResourceAttributeState;
 
-struct StateStack<TSCH3D::ObjectState, 6> {
+struct StateStack<TSCH3D::ObjectState, 6L> {
     unsigned long long _index;
     struct ObjectState _current;
     struct ObjectState _stack[6];
 };
 
-struct StateStack<TSCH3D::RenderState, 10> {
+struct StateStack<TSCH3D::RenderState, 10L> {
     unsigned long long _index;
     struct RenderState _current;
     struct RenderState _stack[10];
 };
 
-struct StateStack<glm::detail::tmat4x4<float>, 8> {
+struct StateStack<glm::detail::tmat4x4<float>, 8L> {
     unsigned long long _index;
     tmat4x4_3074befe _current;
     tmat4x4_3074befe _stack[8];
@@ -307,7 +307,7 @@ struct TSCH3DShaderVariableScopeType {
 };
 
 struct TSCH3DShaderVariableScopes {
-    struct array<TSCH3DShaderVariableScopeType, 2> _scopes;
+    struct array<TSCH3DShaderVariableScopeType, 2UL> _scopes;
 };
 
 struct TSCHBaseFormatProperties {
@@ -377,12 +377,6 @@ struct TSCHNumericFormatProperties {
     _Bool _field3;
 };
 
-struct TSCHTextLayoutResults {
-    struct CGRect _field1;
-    double _field2;
-    _Bool _field3;
-};
-
 struct TextureAttributeState;
 
 struct TextureAttributes {
@@ -437,23 +431,23 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct array<TSCH3D::BarExtrusionDetails, 2> {
+struct array<TSCH3D::BarExtrusionDetails, 2UL> {
     struct BarExtrusionDetails __elems_[2];
 };
 
-struct array<TSCH3DShaderVariableScopeType, 2> {
+struct array<TSCH3DShaderVariableScopeType, 2UL> {
     struct TSCH3DShaderVariableScopeType __elems_[2];
 };
 
-struct array<bool, 8> {
+struct array<bool, 8UL> {
     _Bool __elems_[8];
 };
 
-struct array<glm::detail::tmat4x4<float>, 2> {
+struct array<glm::detail::tmat4x4<float>, 2UL> {
     tmat4x4_3074befe __elems_[2];
 };
 
-struct bitset<5> {
+struct bitset<5UL> {
     unsigned long long __first_;
 };
 
@@ -730,12 +724,6 @@ typedef struct {
     long long maxDepthRatioType;
     unsigned long long max3DLimitingSeries;
 } CDStruct_c48db077;
-
-typedef struct {
-    unsigned long long _field1;
-    CDUnknownFunctionPointerType _field2;
-    void *_field3;
-} CDStruct_188655c5;
 
 typedef struct {
     unsigned long long _field1;

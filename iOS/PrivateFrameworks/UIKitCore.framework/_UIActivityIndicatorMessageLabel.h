@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UILabel.h"
+
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _UIActivityIndicatorMessageLabel
+@interface _UIActivityIndicatorMessageLabel : UILabel
 {
     NSDictionary *_regularTextAttributes;
     NSDictionary *_effectiveTextAttributes;

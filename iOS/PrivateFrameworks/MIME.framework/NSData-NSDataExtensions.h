@@ -16,7 +16,6 @@
 - (id)mf_decodeModifiedBase64;
 - (id)mf_decodeBase64InRange:(struct _NSRange *)arg1;
 - (id)mf_decodeBase64;
-- (id)mf_decodeUuencoded;
 - (id)mf_decodeQuotedPrintableForText:(_Bool)arg1;
 - (id)mf_dataByConvertingUnixNewlinesToNetwork;
 - (id)mf_locationsOfUnixNewlinesNeedingConversion;
@@ -27,5 +26,6 @@
 - (id)mf_subdataFromIndex:(unsigned long long)arg1;
 - (id)mf_subdataToIndex:(unsigned long long)arg1;
 - (struct _NSRange)mf_rangeOfRFC822HeaderData;
+- (id)mf_decodeUuencoded;
 @end
 

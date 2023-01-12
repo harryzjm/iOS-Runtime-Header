@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCKeyboardEventSource-Protocol.h>
-
 @class NSArray, NSString;
 @protocol _GCHIDEventSource;
 
 __attribute__((visibility("hidden")))
-@interface _GCKeyboardEventHIDAdapter : NSObject <_GCKeyboardEventSource>
+@interface _GCKeyboardEventHIDAdapter : NSObject
 {
     id <_GCHIDEventSource> _HIDEventSource;
     id _HIDEventObservation;

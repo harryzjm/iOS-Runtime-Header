@@ -6,42 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCControllerSettingsComponent-Protocol.h>
-#import <GameController/GCSettingsXPCProxyRemoteClientEndpointInterface-Protocol.h>
-#import <GameController/_GCIPCEndpointClient-Protocol.h>
-
-@class GCController, GCControllerSettings, NSString;
+@class GCController, GCSProfile, NSString;
 @protocol GCSettingsXPCProxyRemoteServerEndpointInterface, NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface GCSettingsXPCProxyClientEndpoint : NSObject <_GCIPCEndpointClient, GCControllerSettingsComponent, GCSettingsXPCProxyRemoteClientEndpointInterface>
+@interface GCSettingsXPCProxyClientEndpoint : NSObject
 {
     GCController *_controller;
     id <GCSettingsXPCProxyRemoteServerEndpointInterface> _serverEndpoint;
     id _connectionInterruptionRegistration;
     id _connectionInvalidationRegistration;
     id <NSObject><NSCopying><NSSecureCoding> _identifier;
-    GCControllerSettings *_settingsDefault;
-    GCControllerSettings *_settingsForBundleID;
+    GCSProfile *_settingsProfile;
     CDUnknownBlockType _changedHandler;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType changedHandler; // @synthesize changedHandler=_changedHandler;
-@property(readonly, nonatomic) GCControllerSettings *settingsForBundleID; // @synthesize settingsForBundleID=_settingsForBundleID;
-@property(readonly, nonatomic) GCControllerSettings *settingsDefault; // @synthesize settingsDefault=_settingsDefault;
+@property(readonly, nonatomic) GCSProfile *settingsProfile; // @synthesize settingsProfile=_settingsProfile;
 @property(readonly) id <NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
 - (void)fetchObjectIdentifierWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidateConnection;
-- (void)refreshSettings;
-- (void)newSettingsForBundleID:(id)arg1 defaultSettings:(id)arg2;
-- (void)_remoteEndpointHasSetSettingsForBundleID:(id)arg1 defaultSettings:(id)arg2;
+- (void)refreshProfile;
+- (void)newProfile:(id)arg1;
+- (void)_remoteEndpointHasSetProfile:(id)arg1;
 - (void)setController:(id)arg1;
 - (void)setRemoteEndpoint:(id)arg1 connection:(id)arg2;
-- (void)stopObservingChangesForSettings:(id)arg1;
-- (void)observeChangesForSettings:(id)arg1;
 - (id)init;
-- (id)initWithIdentifier:(id)arg1 initialValueForBundleID:(id)arg2 defaultSettings:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 initialValueForProfile:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

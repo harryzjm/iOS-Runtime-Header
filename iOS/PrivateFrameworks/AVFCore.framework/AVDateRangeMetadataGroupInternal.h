@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSArray *metadataItems;
     NSString *classifyingLabel;
     NSString *uniqueID;
+    NSString *cueingOptions;
     NSDate *discoveryTimestamp;
     NSDate *modificationTimestamp;
     NSDictionary *extraFigProperties;

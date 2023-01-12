@@ -6,11 +6,12 @@
 
 #import <WorkflowEditor/NSObject-Protocol.h>
 
-@class NSTextAttachment, WFModuleSummaryEditor, WFVariable;
+@class NSTextAttachment, WFModuleSummaryEditor, WFSlotIdentifier, WFVariable;
 @protocol WFParameterState;
 
 @protocol WFModuleSummaryEditorDelegate <NSObject>
 - (void)summaryEditorDidFinish:(WFModuleSummaryEditor *)arg1 returnToKeyboard:(_Bool)arg2 withTextAttachmentToEdit:(NSTextAttachment *)arg3;
+- (void)summaryEditor:(WFModuleSummaryEditor *)arg1 didRequestEditingSlotWithIdentifier:(WFSlotIdentifier *)arg2;
 - (void)summaryEditorDidRequestTextEntry:(WFModuleSummaryEditor *)arg1;
 - (void)summaryEditor:(WFModuleSummaryEditor *)arg1 didCommitParameterState:(id <WFParameterState>)arg2;
 

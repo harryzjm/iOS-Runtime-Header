@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSURLPatternControllerProtocol-Protocol.h>
-
 @class BCSURLPatternMatchResult, NSString;
 @protocol BCSDomainItemCaching, BCSMetricFactoryProtocol;
 
 __attribute__((visibility("hidden")))
-@interface BCSURLPatternController : NSObject <BCSURLPatternControllerProtocol>
+@interface BCSURLPatternController : NSObject
 {
     id <BCSMetricFactoryProtocol> _metricFactory;
     id <BCSDomainItemCaching> _cacheManager;

@@ -6,12 +6,15 @@
 
 #import <TSText/TSWPStorage.h>
 
+@class TSWPPageCountAttachment, TSWPPageNumberAttachment;
+
 @interface TSWPStorage (TSWPStorage_MainBody)
 - (id)defaultSectionForContext:(id)arg1;
 - (id)uuidPathPrefixComponentsProvider;
+- (id)mergeSmartFields;
 - (id)sectionFillForAttachment:(id)arg1;
-- (id)firstPageCountAttachment;
-- (id)firstPageNumberAttachment;
+@property(readonly, nonatomic) TSWPPageCountAttachment *firstPageCountAttachment;
+@property(readonly, nonatomic) TSWPPageNumberAttachment *firstPageNumberAttachment;
 - (struct TPSectionEnumerator)sectionEnumeratorAtSectionIndex:(unsigned long long)arg1;
 - (struct TPSectionEnumerator)sectionEnumeratorForCharRange:(struct _NSRange)arg1;
 - (struct TPSectionEnumerator)sectionEnumeratorAtCharIndex:(unsigned long long)arg1;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ShazamKit/SHJSONLFileReaderDelegate-Protocol.h>
-
 @class NSDictionary, NSError, NSString;
 @protocol SHJSONLCustomCatalogTransformerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SHJSONLCustomCatalogTransformer : NSObject <SHJSONLFileReaderDelegate>
+@interface SHJSONLCustomCatalogTransformer : NSObject
 {
     id <SHJSONLCustomCatalogTransformerDelegate> _delegate;
     NSError *_error;
@@ -20,10 +18,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)outputFileHeader;
-+ (id)catalogFileRepresentationOfMediaItems:(id)arg1 withID:(id)arg2;
++ (id)catalogFileRepresentationOfMediaItems:(id)arg1 withID:(id)arg2 error:(id *)arg3;
 + (id)catalogFileRepresentationOfSignature:(id)arg1 withID:(id)arg2;
 + (id)signatureFromFileRow:(id)arg1 error:(id *)arg2;
-+ (id)mediaItemFromFileRow:(id)arg1;
++ (id)mediaItemFromFileRow:(id)arg1 error:(id *)arg2;
 + (id)headerFromFileRow:(id)arg1;
 + (id)IDFromFileRow:(id)arg1;
 + (_Bool)objectIsSignature:(id)arg1;

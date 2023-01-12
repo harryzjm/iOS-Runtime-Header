@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIPageComponent.h"
+
 @class NSMutableArray, SKUIExpandViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUIExpandPageComponent
+@interface SKUIExpandPageComponent : SKUIPageComponent
 {
     NSMutableArray *_childComponents;
     SKUIExpandViewElement *_viewElement;

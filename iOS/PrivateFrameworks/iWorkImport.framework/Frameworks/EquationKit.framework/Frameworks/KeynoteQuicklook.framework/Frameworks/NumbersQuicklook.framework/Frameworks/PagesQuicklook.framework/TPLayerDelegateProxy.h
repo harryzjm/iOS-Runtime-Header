@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/CALayerDelegate-Protocol.h>
-
 @class NSString;
 @protocol TPLayerDelegateProxyDelegate;
 
-@interface TPLayerDelegateProxy : NSObject <CALayerDelegate>
+@interface TPLayerDelegateProxy : NSObject
 {
     id <TPLayerDelegateProxyDelegate> _delegate;
 }

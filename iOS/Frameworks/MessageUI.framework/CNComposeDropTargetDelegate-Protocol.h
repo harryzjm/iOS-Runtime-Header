@@ -6,12 +6,16 @@
 
 #import <MessageUI/NSObject-Protocol.h>
 
-@class CNComposeDropTarget, NSArray;
+@class CNComposeDropTarget, NSArray, NSString, UIView;
 @protocol UIDropSession;
 
 @protocol CNComposeDropTargetDelegate <NSObject>
 
 @optional
+- (NSArray *)dropTarget:(CNComposeDropTarget *)arg1 proposedRecipientsForDroppedContacts:(NSArray *)arg2 forSession:(id <UIDropSession>)arg3;
+- (unsigned long long)addressKindForDropTarget:(CNComposeDropTarget *)arg1 withTargetView:(UIView *)arg2;
+- (NSString *)sendingAddressForDropTarget:(CNComposeDropTarget *)arg1 withTargetView:(UIView *)arg2;
+- (_Bool)dropTarget:(CNComposeDropTarget *)arg1 shouldAddDroppedContactsToTargetView:(UIView *)arg2 forSession:(id <UIDropSession>)arg3;
 - (long long)dropTarget:(CNComposeDropTarget *)arg1 dataOwnerForSession:(id <UIDropSession>)arg2;
 - (void)dropTargetDragExited:(CNComposeDropTarget *)arg1;
 - (void)dropTarget:(CNComposeDropTarget *)arg1 dragEnteredAtPoint:(struct CGPoint)arg2;

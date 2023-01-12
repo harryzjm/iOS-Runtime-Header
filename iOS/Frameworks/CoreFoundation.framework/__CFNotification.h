@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreFoundation/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface __CFNotification : NSObject <NSCopying>
+@interface __CFNotification : NSObject
 {
     id _name;
     id _object;

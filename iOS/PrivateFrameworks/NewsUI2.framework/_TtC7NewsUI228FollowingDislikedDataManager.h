@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *subscriptionService;
-    MISSING_TYPE *feedService;
+    MISSING_TYPE *tagService;
 }
 
 @end

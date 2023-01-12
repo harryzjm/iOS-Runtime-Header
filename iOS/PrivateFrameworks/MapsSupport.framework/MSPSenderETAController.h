@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/MSPNavigationListenerDelegate-Protocol.h>
-#import <MapsSupport/MSPSenderMessageStrategyDelegate-Protocol.h>
-#import <MapsSupport/MSPSharedTripGroupSessionDelegate-Protocol.h>
-
-@class MSPGroupSessionStorage, MSPNavigationListener, MSPSenderLiveStrategy, MSPSenderMessageStrategy, MSPSenderMinimalStrategy, MSPSharedTripGroupSession, MSPSharedTripRelay, MSPSharedTripStorageController, NSArray, NSMutableSet, NSString;
+@class MSPGroupSessionStorage, MSPNavigationListener, MSPSenderLiveStrategy, MSPSenderMessageStrategy, MSPSenderMinimalStrategy, MSPSharedTripGroupSession, MSPSharedTripRelay, MSPSharedTripStorageController, MSPSharingRestorationStorage, NSArray, NSMutableSet, NSString;
 @protocol MSPSenderETAControllerDelegate, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
-@interface MSPSenderETAController : NSObject <MSPNavigationListenerDelegate, MSPSharedTripGroupSessionDelegate, MSPSenderMessageStrategyDelegate>
+@interface MSPSenderETAController : NSObject
 {
     NSObject<OS_os_transaction> *_transaction;
     MSPNavigationListener *_navigationListener;
@@ -35,12 +31,13 @@ __attribute__((visibility("hidden")))
 - (void)groupSession:(id)arg1 participantDidLeave:(id)arg2;
 - (void)groupSession:(id)arg1 participantDidJoin:(id)arg2;
 - (void)navigationListenerStopped:(id)arg1;
+- (void)navigationListenerResumed:(id)arg1;
 - (void)navigationListenerArrived:(id)arg1;
 - (void)navigationListenerTrafficUpdated:(id)arg1;
 - (void)navigationListenerRouteUpdated:(id)arg1;
 - (void)navigationListenerETAUpdated:(id)arg1;
 - (void)navigationListenerIsReady:(id)arg1;
-- (void)navigationListenerDestinationUpdated:(id)arg1;
+- (void)navigationListenerWaypointsUpdated:(id)arg1;
 - (void)touchedRules;
 - (id)rulesForParticipant:(id)arg1;
 - (_Bool)_validateNavigationState:(id *)arg1;
@@ -61,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_createGroupSessionIfNeededWithIdentifier:(id)arg1;
 - (void)_restoreLastSession;
 - (void)_updateStorage;
+@property(readonly, copy, nonatomic) MSPSharingRestorationStorage *archivedSharingState;
 - (void)dealloc;
 - (id)initWithRelay:(id)arg1;
 

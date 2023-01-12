@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
     UILabel *_subtitleLabel;
     UITextField *_usernameField;
     UITextField *_secureTextField;
-    ASCredentialRequestButtonContinue *_signInButton;
     UIActivityIndicatorView *_signInButtonActivityIndicator;
+    ASCredentialRequestButtonContinue *_signInButton;
     NSLayoutConstraint *_paneHeaderStackViewBottomKeyboardConstraint;
     id <ASPasswordAuthenticationPaneViewControllerDelegate> _authenticationDelegate;
 }
@@ -35,9 +35,9 @@ __attribute__((visibility("hidden")))
 - (double)_intrinsicContentHeight;
 - (void)_stopAnimatingActivityIndicator;
 - (void)_startAnimatingActivityIndicator;
-- (void)dealloc;
+- (id)_activateSecurityKeySubtitleText;
+- (id)_subtitleTextForPINValidationError:(id)arg1;
 - (void)_pinValidationFailedWithError:(id)arg1;
-- (void)_pinValidationSucceededWithCredential:(id)arg1;
 - (void)_signInButtonTapped;
 - (double)_secureTextFieldInsetMargin;
 - (double)_signInButtonInsetMargin;
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (double)_topViewMargin;
 - (id)_secureTextFieldPlaceholderText;
 - (id)_manualPasswordEntryTitleLabelText;
+- (id)_securityKeyTitleLabelText;
 - (id)_titleLabelText;
 - (void)_setUpUsernameLabel;
 - (void)_setUpSubtitleLabel;

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSMutableSet.h>
 
-#import <HMFoundation/HMFMerging-Protocol.h>
-
 @class NSString;
 
-@interface NSMutableSet (HMFMerging) <HMFMerging>
+@interface NSMutableSet (HMFMerging)
 - (_Bool)mergeObject:(id)arg1;
 - (_Bool)shouldMergeObject:(id)arg1;
 

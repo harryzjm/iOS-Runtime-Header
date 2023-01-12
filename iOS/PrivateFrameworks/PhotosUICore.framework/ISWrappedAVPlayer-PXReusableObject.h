@@ -6,9 +6,7 @@
 
 #import <PhotosPlayer/ISWrappedAVPlayer.h>
 
-#import <PhotosUICore/PXReusableObject-Protocol.h>
-
-@interface ISWrappedAVPlayer (PXReusableObject) <PXReusableObject>
+@interface ISWrappedAVPlayer (PXReusableObject)
 - (void)prepareForReuse;
 - (void)becomeReusable;
 @end

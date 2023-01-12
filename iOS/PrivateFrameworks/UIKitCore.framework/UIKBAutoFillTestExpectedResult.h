@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface UIKBAutoFillTestExpectedResult : NSObject <NSCoding>
+@interface UIKBAutoFillTestExpectedResult : NSObject
 {
     NSMutableDictionary *_textFieldTagToTextFieldType;
     long long _formType;

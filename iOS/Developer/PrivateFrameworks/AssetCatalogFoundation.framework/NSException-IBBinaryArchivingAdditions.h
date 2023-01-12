@@ -6,11 +6,9 @@
 
 #import <Foundation/NSException.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface NSException (IBBinaryArchivingAdditions) <IBBinaryArchiving>
+@interface NSException (IBBinaryArchivingAdditions)
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)ib_exceptionByModifyingUserInfo:(CDUnknownBlockType)arg1;

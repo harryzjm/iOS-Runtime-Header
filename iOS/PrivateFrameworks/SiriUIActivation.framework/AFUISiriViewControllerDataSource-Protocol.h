@@ -13,6 +13,7 @@
 - (NSArray *)contextAppInfosForSiriViewController:(AFUISiriViewController *)arg1;
 - (unsigned long long)lockStateForSiriViewController:(AFUISiriViewController *)arg1;
 - (AFBulletin *)siriViewController:(AFUISiriViewController *)arg1 bulletinWithIdentifier:(NSString *)arg2;
+- (NSArray *)getDeviceEngagementEvents:(AFUISiriViewController *)arg1 forDeviceEngagementTimeWindow:(double)arg2;
 - (NSArray *)bulletinsForSiriViewController:(AFUISiriViewController *)arg1;
 
 @optional

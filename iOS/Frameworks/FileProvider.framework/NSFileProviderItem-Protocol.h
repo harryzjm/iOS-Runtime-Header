@@ -14,6 +14,7 @@
 @property(readonly, copy, nonatomic) NSString *itemIdentifier;
 
 @optional
+@property(readonly, nonatomic) long long contentPolicy;
 @property(readonly, nonatomic) NSDictionary *userInfo;
 @property(readonly, copy, nonatomic) NSString *symlinkTargetPath;
 @property(readonly, nonatomic) NSFileProviderItemVersion *itemVersion;

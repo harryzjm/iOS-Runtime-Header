@@ -6,14 +6,20 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationGroupList, NCNotificationRequest, NCNotificationSummaryOrderProvider, NSArray, NSString;
+@class NCNotificationGroupList, NCNotificationRequest, NCNotificationSummaryOrderProvider, NSArray, NSString, UIView;
+@protocol NCNotificationListComponentDelegate;
 
 @protocol NCNotificationSummaryOrderProviderDelegate <NSObject>
+- (unsigned long long)notificationCountForSummaryOrderProvider:(NCNotificationSummaryOrderProvider *)arg1;
+- (id <NCNotificationListComponentDelegate>)listComponentDelegateForSummaryPlatterViewForNotificationSummaryOrderProvider:(NCNotificationSummaryOrderProvider *)arg1;
 - (NSArray *)titlesForSectionListsInSummaryForSummaryOrderProvider:(NCNotificationSummaryOrderProvider *)arg1;
 - (void)notificationSummaryOrderProvider:(NCNotificationSummaryOrderProvider *)arg1 didUpdateOrderedNotificationGroupLists:(NSArray *)arg2;
 - (void)notificationSummaryOrderProvider:(NCNotificationSummaryOrderProvider *)arg1 requestsPerformingDefaultActionForNotificationRequest:(NCNotificationRequest *)arg2 inGroupList:(NCNotificationGroupList *)arg3;
 - (NSString *)materialGroupNameBaseForNotificationSummaryOrderProvider:(NCNotificationSummaryOrderProvider *)arg1;
 - (void)notificationSummaryOrderProviderDidTapOnLeadingSummaryPlatterView:(NCNotificationSummaryOrderProvider *)arg1;
 - (void)notificationSummaryOrderProviderRequestsReloadingLeadingSummaryPlatterView:(NCNotificationSummaryOrderProvider *)arg1;
+
+@optional
+- (UIView *)clearControlViewForLeadingSummaryPlatterViewForSummaryOrderProvider:(NCNotificationSummaryOrderProvider *)arg1;
 @end
 

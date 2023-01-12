@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -13,29 +11,27 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
 };
 
-struct CGImage;
-
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct CGVector {
@@ -44,83 +40,11 @@ struct CGVector {
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-struct shared_ptr<CGImage> {
-    struct CGImage *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-struct vImage_Buffer {
-    void *_field1;
+    unsigned long long _field1;
     unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-};
-
-struct vector<NSString *, std::allocator<NSString *>> {
-    id *__begin_;
-    id *__end_;
-    struct __compressed_pair<NSString *__strong *, std::allocator<NSString *>> {
-        id *__value_;
-    } __end_cap_;
-};
-
-struct vector<float, std::allocator<float>> {
-    float *__begin_;
-    float *__end_;
-    struct __compressed_pair<float *, std::allocator<float>> {
-        float *__value_;
-    } __end_cap_;
-};
-
-struct vector<int, std::allocator<int>> {
-    int *__begin_;
-    int *__end_;
-    struct __compressed_pair<int *, std::allocator<int>> {
-        int *__value_;
-    } __end_cap_;
-};
-
-struct vector<std::shared_ptr<espresso_buffer_t>, std::allocator<std::shared_ptr<espresso_buffer_t>>> {
-    void *__begin_;
-    void *__end_;
-    struct __compressed_pair<std::shared_ptr<espresso_buffer_t>*, std::allocator<std::shared_ptr<espresso_buffer_t>>> {
-        void *__value_;
-    } __end_cap_;
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    id _field1;
-    id _field2;
-    unsigned long long _field3;
-} CDStruct_695c46a3;
-
-typedef struct {
-    MISSING_TYPE *columns[4];
-} CDStruct_14d5dc5e;
-
-typedef struct {
-    double *values;
-    double scaleMinimum;
-    double scaleMaximum;
-    double valueMinimum;
-    double valueMaximum;
-    double count;
-} CDStruct_79de6ffd;
-
-typedef struct {
-    int _field1;
-    int _field2;
-} CDStruct_1ef3fb1f;
 
 typedef struct {
     long long _field1;
@@ -128,10 +52,4 @@ typedef struct {
     unsigned int _field3;
     long long _field4;
 } CDStruct_198678f7;
-
-// Template types
-typedef struct shared_ptr<CGImage> {
-    struct CGImage *_field1;
-    struct __shared_weak_count *_field2;
-} shared_ptr_34708d24;
 

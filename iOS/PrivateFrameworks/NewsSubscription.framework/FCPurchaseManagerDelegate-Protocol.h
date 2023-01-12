@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCOngoingPurchaseEntry, NSError, NSString;
+@class FCCompletedPaymentTransaction, FCOngoingPurchaseEntry, NSError, NSString;
 
 @protocol FCPurchaseManagerDelegate
-- (void)purchaseSuccessWithProductID:(NSString *)arg1 purchaseReceipt:(NSString *)arg2 chargeCurrencyCode:(NSString *)arg3 ongoingPurchaseEntry:(FCOngoingPurchaseEntry *)arg4;
+- (void)purchaseSuccessWithProductID:(NSString *)arg1 transaction:(FCCompletedPaymentTransaction *)arg2 chargeCurrencyCode:(NSString *)arg3 ongoingPurchaseEntry:(FCOngoingPurchaseEntry *)arg4;
 - (void)purchaseFailedForInvalidPurchaseReceiptWithProductID:(NSString *)arg1 ongoingPurchaseEntry:(FCOngoingPurchaseEntry *)arg2;
 - (void)purchaseFailedWithProductID:(NSString *)arg1 transactionState:(long long)arg2 transactionError:(NSError *)arg3 ongoingPurchaseEntry:(FCOngoingPurchaseEntry *)arg4;
 @end

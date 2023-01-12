@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSSQLAttributeExtension-Protocol.h>
-
 @class NSArray, NSSQLAttribute, NSSQLEntity, NSSQLRelationship, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSSQLKeypathTriggerAttributeExtension : NSObject <NSSQLAttributeExtension>
+@interface NSSQLKeypathTriggerAttributeExtension : NSObject
 {
     id _objectFromUserInfo;
     NSString *_keypath;

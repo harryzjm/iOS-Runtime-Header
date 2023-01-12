@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/TSUStreamReadChannel-Protocol.h>
-
 @class NSString, TSUBufferedReadChannel;
 
-@interface TSUBufferedReadChannelHelper : NSObject <TSUStreamReadChannel>
+@interface TSUBufferedReadChannelHelper : NSObject
 {
     TSUBufferedReadChannel *_bufferedReadChannel;
 }

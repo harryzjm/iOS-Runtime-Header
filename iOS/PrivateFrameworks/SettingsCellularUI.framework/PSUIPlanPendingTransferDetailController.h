@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) PSUIPlanPendingTransferMenusGroup *planPendingTransferMenus; // @synthesize planPendingTransferMenus=_planPendingTransferMenus;
+- (id)getLogger;
 - (id)specifiers;
 - (void)cellularPlanChanged;
 - (id)init;

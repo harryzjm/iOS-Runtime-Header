@@ -6,15 +6,15 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions : PBCodable <NSCopying>
+@interface CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions : PBCodable
 {
     unsigned long long _contentRequestAuthorizeGetOptions;
     NSMutableArray *_contentRequestHeaders;
-    CDStruct_3f29eb26 _has;
+    struct {
+        unsigned int contentRequestAuthorizeGetOptions:1;
+    } _has;
 }
 
 + (Class)contentRequestHeadersType;

@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNPickerControllerDelegate-Protocol.h>
-#import <ContactsUI/UITextFieldDelegate-Protocol.h>
-
 @class CNDatePickerContainerView, NSString, UIDatePicker, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyDateEditingCell <UITextFieldDelegate, CNPickerControllerDelegate>
+@interface CNPropertyDateEditingCell
 {
     _Bool _shouldEditDatesTextually;
     UIDatePicker *_datePicker;

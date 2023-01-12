@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/_GEONetworkDefaultsServerProxy-Protocol.h>
-
 @class NSMutableArray, NSString, geo_isolater;
 @protocol _GEONetworkDefaultsServerProxyDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _GEONetworkDefaultsRemoteProxy : NSObject <_GEONetworkDefaultsServerProxy>
+@interface _GEONetworkDefaultsRemoteProxy : NSObject
 {
     id <_GEONetworkDefaultsServerProxyDelegate> _delegate;
     geo_isolater *_isolation;
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_GEONetworkDefaultsServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)updateNetworkDefaultsWithReason:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateNetworkDefaults:(CDUnknownBlockType)arg1;
 - (void)_networkDefaultsDidChange;
 - (void)dealloc;

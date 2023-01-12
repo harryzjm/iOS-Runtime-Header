@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMIVideoFrameSelector, NSArray;
+@class HMIVideoFrameSelector;
 
 @protocol HMIVideoFrameSelectorDelegate
-- (void)frameSelector:(HMIVideoFrameSelector *)arg1 didDetectMotion:(NSArray *)arg2 inFrame:(struct opaqueCMSampleBuffer *)arg3;
-- (void)frameSelector:(HMIVideoFrameSelector *)arg1 didSelectFrame:(struct opaqueCMSampleBuffer *)arg2 motionDetections:(NSArray *)arg3 motionScore:(double)arg4;
+- (struct opaqueCMSampleBuffer *)frameSelector:(HMIVideoFrameSelector *)arg1 prepareFrame:(struct opaqueCMSampleBuffer *)arg2;
+- (void)frameSelector:(HMIVideoFrameSelector *)arg1 didSkipFrame:(struct opaqueCMSampleBuffer *)arg2;
+- (void)frameSelector:(HMIVideoFrameSelector *)arg1 didSelectFrame:(struct opaqueCMSampleBuffer *)arg2 reference:(struct opaqueCMSampleBuffer *)arg3;
 @end
 

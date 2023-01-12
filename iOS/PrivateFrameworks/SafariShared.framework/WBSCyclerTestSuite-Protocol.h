@@ -6,7 +6,7 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, WBSCyclerIterationCounter;
 @protocol WBSCyclerTestTarget;
 
 @protocol WBSCyclerTestSuite <NSObject>
@@ -15,6 +15,7 @@
 
 @optional
 + (_Bool)setValue:(NSString *)arg1 forConfigurationKey:(NSString *)arg2;
+@property(retain, nonatomic) WBSCyclerIterationCounter *iterationCounter;
 @property(readonly, nonatomic, getter=isFinished) _Bool finished;
 - (void)handleRequest:(NSString *)arg1 withTarget:(id <WBSCyclerTestTarget>)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (_Bool)canHandleRequest:(NSString *)arg1;

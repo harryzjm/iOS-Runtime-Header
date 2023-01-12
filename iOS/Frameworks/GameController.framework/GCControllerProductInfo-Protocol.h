@@ -6,9 +6,10 @@
 
 #import <GameController/GCControllerComponent-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSDictionary, NSNumber, NSString;
 
 @protocol GCControllerProductInfo <GCControllerComponent>
+@property(copy, nonatomic) NSDictionary *miscellaneous;
 @property(readonly, copy, getter=isAttachedToDevice) NSNumber *attachedToDevice;
 @property(readonly, copy) NSString *anonymizedIdentifier;
 @property(readonly, copy) NSString *vendorName;

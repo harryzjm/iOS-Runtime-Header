@@ -6,11 +6,9 @@
 
 #import <CoverSheet/CSCoverSheetViewController.h>
 
-#import <SpringBoard/SBCoverSheetSlidingViewControllerContentViewController-Protocol.h>
-
 @class NSString;
 
-@interface CSCoverSheetViewController (SpringBoardGlue) <SBCoverSheetSlidingViewControllerContentViewController>
+@interface CSCoverSheetViewController (SpringBoardGlue)
 - (void)conformsToSBCoverSheetSlidingViewControllerContentViewController;
 
 // Remaining properties

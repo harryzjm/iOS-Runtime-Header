@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIPointerInteractionAnimating-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIPointerInteractionAnimator : NSObject <UIPointerInteractionAnimating>
+@interface UIPointerInteractionAnimator : NSObject
 {
     NSString *_debugName;
     NSMutableArray *_animations;

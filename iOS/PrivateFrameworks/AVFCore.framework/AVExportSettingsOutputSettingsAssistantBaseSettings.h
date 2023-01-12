@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputSettingsAssistantBaseSettingsProvider-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVExportSettingsOutputSettingsAssistantBaseSettings : NSObject <AVOutputSettingsAssistantBaseSettingsProvider>
+@interface AVExportSettingsOutputSettingsAssistantBaseSettings : NSObject
 {
     NSDictionary *_exportSettings;
 }

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSMutableIndexSet;
 
-@interface TSTHiddenStateIndexSet : NSObject <NSCopying>
+@interface TSTHiddenStateIndexSet : NSObject
 {
     NSMutableIndexSet *_visibleIndexSet;
 }
@@ -22,6 +20,7 @@
 - (void)insertRange:(struct _NSRange)arg1;
 - (void)deleteRange:(struct _NSRange)arg1;
 - (void)moveRangeFrom:(struct _NSRange)arg1 toIndex:(unsigned long long)arg2;
+- (void)enumerateVisibleIndexesInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (unsigned long long)findNthNextVisibleIndex:(unsigned long long)arg1 fromIndex:(unsigned long long)arg2;
 - (unsigned long long)findNthPreviousVisibleIndex:(unsigned long long)arg1 fromIndex:(unsigned long long)arg2;
 - (unsigned long long)visibleIndexBeforeAndIncludingIndex:(unsigned long long)arg1;

@@ -7,9 +7,9 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (ADCoreExtensions)
-- (id)jsonString;
-- (id)jsonStringWithPrettyPrint:(_Bool)arg1;
-- (id)arrayForJSON;
+- (id)AD_jsonString;
+- (id)AD_jsonStringWithPrettyPrint:(_Bool)arg1;
+- (id)AD_arrayForJSON;
 - (id)arrayCappedToMaxItems:(unsigned long long)arg1;
 @end
 

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIPlistMediaEntityImageLoadParamsCreating-Protocol.h>
+#import "VUIMediaItem.h"
 
 @class VUIPlistMediaDatabaseItem;
 
 __attribute__((visibility("hidden")))
-@interface VUIPlistMediaItem <VUIPlistMediaEntityImageLoadParamsCreating>
+@interface VUIPlistMediaItem : VUIMediaItem
 {
     VUIPlistMediaDatabaseItem *_databaseItem;
 }

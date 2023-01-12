@@ -6,13 +6,10 @@
 
 #import <UIKit/UIControl.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
-
 @class MRUVisualStylingProvider, NSString, UIImage, UIImageView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MRUControlCenterButton : UIControl <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
+@interface MRUControlCenterButton : UIControl
 {
     UIImage *_image;
     NSString *_title;

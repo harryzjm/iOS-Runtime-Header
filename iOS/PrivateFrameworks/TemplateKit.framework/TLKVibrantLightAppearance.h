@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 - (id)textColorForColor:(long long)arg1;
 - (double)accessibilityContrastColorBoost;
 - (id)compositingFilter;
-- (id)platterColor;
 - (id)quaternaryColor;
 - (id)tertiaryColor;
 - (id)secondaryColor;

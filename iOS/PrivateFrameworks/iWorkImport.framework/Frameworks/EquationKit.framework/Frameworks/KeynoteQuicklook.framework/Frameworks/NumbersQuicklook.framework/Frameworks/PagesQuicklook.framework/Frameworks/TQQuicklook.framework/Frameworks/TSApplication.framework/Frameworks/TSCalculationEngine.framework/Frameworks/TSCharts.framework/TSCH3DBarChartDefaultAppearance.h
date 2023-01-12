@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DBarChartAppearance-Protocol.h>
-
 @class TSCH3DChartBarElementProperties;
 
-@interface TSCH3DBarChartDefaultAppearance : NSObject <TSCH3DBarChartAppearance>
+@interface TSCH3DBarChartDefaultAppearance : NSObject
 {
     TSCH3DChartBarElementProperties *_properties;
 }

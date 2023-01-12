@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HMFObject.h"
+
 @class NSObject, NSThread;
 @protocol OS_voucher;
 
 __attribute__((visibility("hidden")))
-@interface __HMFThreadContext
+@interface __HMFThreadContext : HMFObject
 {
     _Bool _shouldRestoreVoucher;
     NSThread *_thread;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString, SFSQLite;
+@class NSDictionary, NSMutableArray, NSString, SFSQLite;
 
 __attribute__((visibility("hidden")))
 @interface SFSQLiteStatement : NSObject
@@ -16,14 +16,17 @@ __attribute__((visibility("hidden")))
     struct sqlite3_stmt *_handle;
     _Bool _reset;
     NSMutableArray *_temporaryBoundObjects;
+    NSDictionary *_indexesByColumnName;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *indexesByColumnName; // @synthesize indexesByColumnName=_indexesByColumnName;
 @property(retain, nonatomic) NSMutableArray *temporaryBoundObjects; // @synthesize temporaryBoundObjects=_temporaryBoundObjects;
 @property(nonatomic, getter=isReset) _Bool reset; // @synthesize reset=_reset;
 @property(readonly, nonatomic) struct sqlite3_stmt *handle; // @synthesize handle=_handle;
 @property(readonly, nonatomic) NSString *SQL; // @synthesize SQL=_SQL;
 @property(readonly, nonatomic) __weak SFSQLite *SQLite; // @synthesize SQLite=_SQLite;
+- (void)enumerateColumnsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)allObjectsByColumnName;
 - (id)allObjects;
 - (id)objectAtIndex:(unsigned long long)arg1;
@@ -32,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (double)doubleAtIndex:(unsigned long long)arg1;
 - (long long)int64AtIndex:(unsigned long long)arg1;
 - (int)intAtIndex:(unsigned long long)arg1;
+- (unsigned long long)indexForColumnName:(id)arg1;
 - (id)columnNameAtIndex:(unsigned long long)arg1;
 - (int)columnTypeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)columnCount;
@@ -49,6 +53,12 @@ __attribute__((visibility("hidden")))
 - (void)resetAfterStepError;
 - (void)finalizeStatement;
 - (id)initWithSQLite:(id)arg1 SQL:(id)arg2 handle:(struct sqlite3_stmt *)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

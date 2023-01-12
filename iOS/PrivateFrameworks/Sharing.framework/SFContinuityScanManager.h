@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Sharing/SFContinuityScannerClient-Protocol.h>
+#import "SFXPCClient.h"
 
 @class NSHashTable, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SFContinuityScanManager <SFContinuityScannerClient>
+@interface SFContinuityScanManager : SFXPCClient
 {
     NSMutableSet *_foundDevices;
     NSHashTable *_observers;

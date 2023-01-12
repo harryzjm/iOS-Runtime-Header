@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthToolbox/UIActivityItemSource-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface WDElectrocardiogramActivityItemSource : NSObject <UIActivityItemSource>
+@interface WDElectrocardiogramActivityItemSource : NSObject
 {
     NSURL *_pdfTemporaryFileURL;
     unsigned long long _provenance;
@@ -23,7 +21,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
-- (id)initWithPDFData:(id)arg1 sampleDate:(id)arg2 provenance:(unsigned long long)arg3;
+- (id)initWithPDFData:(id)arg1 sampleDate:(id)arg2 firstName:(id)arg3 lastName:(id)arg4 provenance:(unsigned long long)arg5;
+- (id)pdfFileNameForSampleDate:(id)arg1 firstName:(id)arg2 lastName:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

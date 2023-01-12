@@ -6,21 +6,19 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MKMapItem, MKMapItemPhoto, MKMuninContainerView, MKMuninView, MKPlacePhotoGalleryViewController, MUPlacePhotoSectionController, MUPresentationOptions, NSString, UIViewController, _MKMapItemPhotosAttribution;
+@class MKMapItemPhoto, MUPlacePhotoGalleryViewController, MUPlacePhotoSectionController, MUPresentationOptions, NSString, UIViewController, _MKMapItemPhotosAttribution;
 @protocol GEOMapItemPhoto;
 
 @protocol MUPlacePhotoSectionControllerDelegate <NSObject>
 
 @optional
-- (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 enterMuninForMapItem:(MKMapItem *)arg2 muninView:(MKMuninView *)arg3;
-- (MKMuninContainerView *)muninContainerForPlacePhotoSectionController:(MUPlacePhotoSectionController *)arg1;
-- (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 requestsSceneActivationForPhotoGalleryViewController:(MKPlacePhotoGalleryViewController *)arg2;
-- (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 requestsAddPhotosToMapsWithOptions:(MUPresentationOptions *)arg2;
+- (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 requestsSceneActivationForPhotoGalleryViewController:(MUPlacePhotoGalleryViewController *)arg2;
+- (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 requestsAddPhotosToMapsWithEntryPoint:(long long)arg2 options:(MUPresentationOptions *)arg3;
 - (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 requestsToOpenPhotoAttribution:(_MKMapItemPhotosAttribution *)arg2 presentationOptions:(MUPresentationOptions *)arg3;
 - (void)placePhotoSectionControllerRequestsToOpenThumbnailGallery:(MUPlacePhotoSectionController *)arg1 withStartingIndex:(unsigned long long)arg2;
 - (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 didSelectPhotoCategoryAtIndex:(unsigned long long)arg2;
-- (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 photoGalleryDidScroll:(MKPlacePhotoGalleryViewController *)arg2;
-- (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 didSelectPhotoToReport:(id <GEOMapItemPhoto>)arg2 withPhotoGalleryViewController:(MKPlacePhotoGalleryViewController *)arg3;
+- (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 photoGalleryDidScroll:(MUPlacePhotoGalleryViewController *)arg2;
+- (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 didSelectPhotoToReport:(id <GEOMapItemPhoto>)arg2 withPhotoGalleryViewController:(MUPlacePhotoGalleryViewController *)arg3;
 - (void)placePhotoSectionControllerDidCloseFullscreenPhotos:(MUPlacePhotoSectionController *)arg1;
 - (void)placePhotoSectionControllerDidOpenFullscreenPhotos:(MUPlacePhotoSectionController *)arg1;
 - (void)placePhotoSectionController:(MUPlacePhotoSectionController *)arg1 didSelectViewPhoto:(MKMapItemPhoto *)arg2 withID:(NSString *)arg3 presentingViewController:(UIViewController *)arg4;

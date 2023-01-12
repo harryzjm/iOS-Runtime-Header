@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreHaptics/CHHapticAdvancedPatternPlayerExtended-Protocol.h>
-
 @class AVHapticSequence, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AdvancedPatternPlayer <CHHapticAdvancedPatternPlayerExtended>
+@interface AdvancedPatternPlayer
 {
     AVHapticSequence *_sequence;
     double _loopEnd;
@@ -20,8 +18,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property double seekOffset; // @synthesize seekOffset=_seekOffset;
+- (_Bool)earlyUnduckAudioAtTime:(double)arg1 error:(id *)arg2;
 - (_Bool)setVolume:(float)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (_Bool)activateChannelByIndex:(unsigned long long)arg1 atTime:(double)arg2 error:(id *)arg3;
+- (id)initWithVibePatternDictionary:(id)arg1 engine:(id)arg2 error:(id *)arg3;
 - (id)initWithRingtoneData:(id)arg1 engine:(id)arg2 error:(id *)arg3;
 @property(copy) CDUnknownBlockType completionHandler;
 @property _Bool isMuted;

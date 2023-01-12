@@ -6,7 +6,7 @@
 
 #import <TSDrawables/TSDStyledLayout.h>
 
-@class KNLiveVideoInfo;
+@class KNLiveVideoInfo, TSDFill;
 
 @interface KNLiveVideoLayout : TSDStyledLayout
 {
@@ -18,6 +18,8 @@
 
 @property(readonly, nonatomic) _Bool shouldRenderFrameStroke; // @synthesize shouldRenderFrameStroke=_shouldRenderFrameStroke;
 @property(readonly, nonatomic) struct CGRect videoMaskBounds; // @synthesize videoMaskBounds=_videoMaskBounds;
+@property(readonly, nonatomic) TSDFill *backgroundFill;
+@property(readonly, nonatomic) long long backgroundKind;
 - (id)p_makeRoundedRectangleMaskPathSource;
 - (id)videoMaskPathForBounds:(struct CGRect)arg1;
 @property(readonly, nonatomic) _Bool isVideoMaskPathRectangular;
@@ -28,10 +30,13 @@
 - (id)stroke;
 - (_Bool)isStrokeBeingManipulated;
 - (_Bool)supportsRotation;
+- (id)pathForClippingConnectionLines;
 - (struct CGRect)videoBoundsForNaturalSize:(struct CGSize)arg1;
+- (struct CGRect)p_computeAlignmentFrameWithTransform:(struct CGAffineTransform)arg1;
 - (struct CGRect)p_computeAlignmentFrameInRoot:(_Bool)arg1;
-- (void)p_invalidateAlignmentFrame;
+- (struct CGRect)baseFrameForFrameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
 - (struct CGRect)alignmentFrameInRoot;
+- (void)p_invalidateAlignmentFrame;
 - (struct CGRect)alignmentFrame;
 - (double)scaleForInlineClampingUnrotatedSize:(struct CGSize)arg1 withTransform:(struct CGAffineTransform)arg2;
 - (struct CGRect)boundsForStandardKnobs;

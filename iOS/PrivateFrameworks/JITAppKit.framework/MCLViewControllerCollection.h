@@ -6,12 +6,10 @@
 
 #import <UIKit/UIScrollView.h>
 
-#import <JITAppKit/UIScrollViewDelegate-Protocol.h>
-
 @class NSArray, NSLayoutConstraint, NSString, UIStackView, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface MCLViewControllerCollection : UIScrollView <UIScrollViewDelegate>
+@interface MCLViewControllerCollection : UIScrollView
 {
     UIStackView *_contentView;
     NSLayoutConstraint *_widthConstraint;

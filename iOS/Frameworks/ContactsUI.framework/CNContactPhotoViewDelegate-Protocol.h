@@ -6,12 +6,12 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class CNContactPhotoView, CNContactViewCache, CNMutableContact, UIViewController;
+@class CNContactPhotoView, CNContactViewCache, NSData, UIViewController;
 
 @protocol CNContactPhotoViewDelegate <NSObject>
 - (CNContactViewCache *)contactViewCache;
+- (void)photoView:(CNContactPhotoView *)arg1 didAcceptDropOfImageData:(NSData *)arg2;
 - (UIViewController *)viewControllerForPhotoView:(CNContactPhotoView *)arg1;
-- (void)photoView:(CNContactPhotoView *)arg1 didSaveImageDropToContact:(CNMutableContact *)arg2;
 - (void)photoViewDidUpdate:(CNContactPhotoView *)arg1;
 @end
 

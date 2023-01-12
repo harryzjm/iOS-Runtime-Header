@@ -4,16 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIDownloadDataSourceDelegate-Protocol.h>
-#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
-#import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
-
 @class NSArray, NSDictionary, NSString, VUIDownloadDataSource, VUILibraryFamilyMembersDataSource, VUIMediaEntitiesFetchController, VUIMediaLibrary;
 
 __attribute__((visibility("hidden")))
-@interface VUIMPMenuDataSource <VUIMediaEntitiesFetchControllerDelegate, VUILibraryDataSourceDelegate, VUIDownloadDataSourceDelegate>
+@interface VUIMPMenuDataSource
 {
     _Bool _hasMediaEntitiesFetchCompleted;
+    _Bool _hasGenresDataForCheckHasItemsOption;
     _Bool _hasDownloadDataSourceFetchCompleted;
     VUIMediaLibrary *_mediaLibrary;
     NSArray *_homeShares;
@@ -32,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIDownloadDataSource *downloadDataSource; // @synthesize downloadDataSource=_downloadDataSource;
 @property(retain, nonatomic) VUILibraryFamilyMembersDataSource *familyDataSource; // @synthesize familyDataSource=_familyDataSource;
 @property(retain, nonatomic) VUIMediaEntitiesFetchController *rentalsUpdateFetchController; // @synthesize rentalsUpdateFetchController=_rentalsUpdateFetchController;
+@property(nonatomic) _Bool hasGenresDataForCheckHasItemsOption; // @synthesize hasGenresDataForCheckHasItemsOption=_hasGenresDataForCheckHasItemsOption;
 @property(retain, nonatomic) NSArray *genreGroupings; // @synthesize genreGroupings=_genreGroupings;
 @property(nonatomic) _Bool hasMediaEntitiesFetchCompleted; // @synthesize hasMediaEntitiesFetchCompleted=_hasMediaEntitiesFetchCompleted;
 @property(retain, nonatomic) NSDictionary *mediaEntitiesByCategoryType; // @synthesize mediaEntitiesByCategoryType=_mediaEntitiesByCategoryType;
@@ -43,13 +41,17 @@ __attribute__((visibility("hidden")))
 - (void)_notifyDelegateFetchDidComplete;
 - (void)_accountsChanged:(id)arg1;
 - (_Bool)_allFetchesHaveCompleted;
-- (void)_populateViewModel:(id)arg1;
+- (void)_populateViewModelFromMeidaLibraryCategoryTypes:(id)arg1;
 - (void)_updateRentalShelf;
 - (CDUnknownBlockType)_categoryTypesSortComparator;
+- (void)_updateFetchRequest:(id)arg1 isInitialFetch:(_Bool)arg2;
+- (id)_categoryTypesWithOptimizedMenuDataMap:(id)arg1 categoryTypeComparator:(CDUnknownBlockType)arg2;
 - (id)_categoryTypesWithMediaEntitiesMap:(id)arg1 categoryTypeComparator:(CDUnknownBlockType)arg2;
 - (id)_constructCategoryList;
-- (id)_fetchRequestsWithMediaLibrary:(id)arg1 categoryTypeMap:(id *)arg2;
-- (void)_loadMediaEntityShelves;
+- (id)_fetchRequestsWithMediaLibrary:(id)arg1 categoryTypeMap:(id *)arg2 isInitialFetch:(_Bool)arg3;
+- (void)_loadMediaEntityShelvesWithInitialFetch:(_Bool)arg1;
+- (void)_refetchMediaEntityShelves;
+- (void)_loadInitialMediaEntityShelves;
 - (void)_homeShareMediaLibrariesDidChange:(id)arg1;
 - (void)_removeAccountChangedNotificationObserver;
 - (void)_addAccountChangedNotificationObserver;
@@ -67,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_addOrRemoveDownloadCategoryIfNeeded;
 - (void)downloadManager:(id)arg1 downloadsDidChange:(id)arg2;
 - (void)downloadManager:(id)arg1 downloadedFetchDidFinishWithEntities:(id)arg2;
+- (void)refetch;
 - (void)startFetch;
 - (void)dealloc;
 - (id)initWithValidCategories:(id)arg1;

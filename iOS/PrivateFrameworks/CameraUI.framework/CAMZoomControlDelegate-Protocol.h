@@ -11,6 +11,8 @@
 @protocol CAMZoomControlDelegate <NSObject>
 
 @optional
+- (void)zoomControlDidTapZoomButtonAccessory:(CAMZoomControl *)arg1;
+- (void)zoomControlDidChangePlatterExpanded:(CAMZoomControl *)arg1;
 - (_Bool)zoomControlCanPlayHaptics:(CAMZoomControl *)arg1;
 - (_Bool)zoomControlShouldSnapDialToSwitchOverZoomFactors:(CAMZoomControl *)arg1;
 - (void)zoomControlDidChangeShowingZoomDial:(CAMZoomControl *)arg1;

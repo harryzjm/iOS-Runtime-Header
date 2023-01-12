@@ -15,6 +15,9 @@
     MISSING_TYPE *_subsequence;
     MISSING_TYPE *_version;
     MISSING_TYPE *_addedByVersion;
+    MISSING_TYPE *_attributeRuns;
+    MISSING_TYPE *_fromVersion;
+    MISSING_TYPE *_fromAddedByVersion;
 }
 
 @end

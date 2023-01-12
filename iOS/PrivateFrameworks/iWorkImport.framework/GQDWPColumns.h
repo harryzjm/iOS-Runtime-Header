@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDWPColumns : NSObject <GQDNameMappable>
+@interface GQDWPColumns : NSObject
 {
     struct __CFArray *mColumns;
     _Bool mEqualColumns;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPDataManaging-Protocol.h>
-
 @class NSArray, NSDictionary, NSIndexSet, NSSet, NSString, TSPObjectContext, TSUPathSet, TSUTemporaryDirectory;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface TSPDataManager : NSObject <TSPDataManaging>
+@interface TSPDataManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_datasQueue;
     long long _nextNewIdentifier;

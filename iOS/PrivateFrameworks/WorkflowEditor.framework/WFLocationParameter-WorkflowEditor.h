@@ -6,9 +6,7 @@
 
 #import <WorkflowKit/WFLocationParameter.h>
 
-#import <WorkflowEditor/WFModuleSummarySupporting-Protocol.h>
-
-@interface WFLocationParameter (WorkflowEditor) <WFModuleSummarySupporting>
+@interface WFLocationParameter (WorkflowEditor)
 - (id)moduleSummarySlotForState:(id)arg1;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <WorkflowEditor/WFWorkflowRunnerClientDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC14WorkflowEditorP33_D3B5BE58827CE83B51740B96DEF4AF9020EditorShortcutRunner : NSObject <WFWorkflowRunnerClientDelegate>
+@interface _TtC14WorkflowEditorP33_D3B5BE58827CE83B51740B96DEF4AF9020EditorShortcutRunner : NSObject
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *workflow;

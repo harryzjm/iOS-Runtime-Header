@@ -6,30 +6,33 @@
 
 #import <Preferences/PSSpecifier.h>
 
-#import <SettingsCellularUI/TSSIMSetupDelegate-Protocol.h>
-
-@class CTCellularPlanManager, Logger, NSString, PSListController, TSSIMSetupFlow, UIActivityIndicatorView;
+@class CTCellularPlanManager, NSString, PSListController, TSSIMSetupFlow, UIActivityIndicatorView, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface PSUIAddCellularPlanSpecifier : PSSpecifier <TSSIMSetupDelegate>
+@interface PSUIAddCellularPlanSpecifier : PSSpecifier
 {
     CTCellularPlanManager *_planManager;
-    Logger *_logger;
     id _originAccessoryView;
     UIActivityIndicatorView *_spinner;
+    _Bool _isRequestingFirstViewController;
     PSListController *_hostController;
+    UIViewController *_firstViewController;
     TSSIMSetupFlow *_flow;
 }
 
 - (void).cxx_destruct;
+@property _Bool isRequestingFirstViewController; // @synthesize isRequestingFirstViewController=_isRequestingFirstViewController;
 @property(retain) TSSIMSetupFlow *flow; // @synthesize flow=_flow;
+@property __weak UIViewController *firstViewController; // @synthesize firstViewController=_firstViewController;
 @property(nonatomic) __weak PSListController *hostController; // @synthesize hostController=_hostController;
 - (id)getLogger;
+- (void)_showWifiAlert;
 - (void)setProperty:(id)arg1 forKey:(id)arg2;
 - (void)showSpinner:(_Bool)arg1;
 - (long long)userConsentResponse;
 - (void)simSetupFlowCompleted:(unsigned long long)arg1;
 - (void)addCellularPlanCellPressed:(id)arg1;
+- (void)setUpeSIMNeeded;
 - (id)initWithHostController:(id)arg1 isEmbeddedInCarrierList:(_Bool)arg2 planManager:(id)arg3;
 - (id)initWithHostController:(id)arg1 isEmbeddedInCarrierList:(_Bool)arg2;
 

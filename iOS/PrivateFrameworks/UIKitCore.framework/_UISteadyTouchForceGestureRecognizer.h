@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 @class CADisplayLink, NSDate, _UIVelocityIntegrator;
 
 __attribute__((visibility("hidden")))
-@interface _UISteadyTouchForceGestureRecognizer
+@interface _UISteadyTouchForceGestureRecognizer : UIGestureRecognizer
 {
     CADisplayLink *_continuousEvaluationDisplayLink;
     _UIVelocityIntegrator *_velocityIntegrator;

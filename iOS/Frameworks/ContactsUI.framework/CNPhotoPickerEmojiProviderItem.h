@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNVisualIdentityPickerTextEditableProviderItem-Protocol.h>
-
 @class CNPhotoPickerColorVariant, NSData, NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerEmojiProviderItem <CNVisualIdentityPickerTextEditableProviderItem>
+@interface CNPhotoPickerEmojiProviderItem
 {
     NSString *_stringRepresentation;
     NSData *_dataRepresentation;

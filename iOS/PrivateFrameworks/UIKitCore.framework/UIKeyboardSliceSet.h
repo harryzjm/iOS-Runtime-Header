@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sliceSetWithDictionaryRepresenation:(id)arg1;
+- (void).cxx_destruct;
 @property(retain) NSMutableDictionary *controlKeys; // @synthesize controlKeys=_controlKeys;
 @property double mergePoint; // @synthesize mergePoint=_mergePoint;
 @property double rightWidth; // @synthesize rightWidth=_rightWidth;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property(retain) NSString *sliceSetID; // @synthesize sliceSetID=_ssid;
 @property(readonly) NSMutableSet *slices; // @synthesize slices=_slices;
 - (id)description;
-- (void)dealloc;
 - (void)addSlice:(id)arg1;
 - (id)initWithSliceID:(id)arg1;
 

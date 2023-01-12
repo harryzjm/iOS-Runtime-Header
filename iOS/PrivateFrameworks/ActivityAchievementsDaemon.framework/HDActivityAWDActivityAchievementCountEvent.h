@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <ActivityAchievementsDaemon/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface HDActivityAWDActivityAchievementCountEvent : PBCodable <NSCopying>
+@interface HDActivityAWDActivityAchievementCountEvent : PBCodable
 {
     unsigned long long _timestamp;
     int _totalAchievementCount;

@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <MessagesSupport/CKInboxModelDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC15MessagesSupport10InboxModel : _TtCs12_SwiftObject <CKInboxModelDelegate>
+@interface _TtC15MessagesSupport10InboxModel : _TtCs12_SwiftObject
 {
     MISSING_TYPE *objcModel;
     MISSING_TYPE *_isCollapsed;

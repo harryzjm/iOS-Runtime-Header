@@ -6,11 +6,9 @@
 
 #import <UIKit/UIScreen.h>
 
-#import <CardKit/_CRKImageLoaderDelegate-Protocol.h>
-
 @class NSString;
 
-@interface UIScreen (_CRKImageLoaderDelegate) <_CRKImageLoaderDelegate>
+@interface UIScreen (_CRKImageLoaderDelegate)
 - (id)traitCollectionForImageLoader:(id)arg1 image:(id)arg2;
 
 // Remaining properties

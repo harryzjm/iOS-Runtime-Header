@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewFloatAnimatableProperty.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIMorphingPlatterAnimatableFloat
+@interface _UIMorphingPlatterAnimatableFloat : UIViewFloatAnimatableProperty
 {
     _Bool _lastModelValueChangeWasPositive;
 }

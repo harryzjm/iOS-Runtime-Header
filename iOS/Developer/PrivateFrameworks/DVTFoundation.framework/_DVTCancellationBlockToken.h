@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTCancellationBlockCompletion-Protocol.h>
-
 @class NSCondition, NSString;
 
-@interface _DVTCancellationBlockToken : NSObject <DVTCancellationBlockCompletion>
+@interface _DVTCancellationBlockToken : NSObject
 {
     NSCondition *_condition;
     CDUnknownBlockType _cancellationBlock;

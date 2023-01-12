@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEXPCConnectionOrigin-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AEMachServiceXPCConnectionOrigin : NSObject <AEXPCConnectionOrigin>
+@interface AEMachServiceXPCConnectionOrigin : NSObject
 {
     NSString *_machServiceName;
     unsigned long long _options;

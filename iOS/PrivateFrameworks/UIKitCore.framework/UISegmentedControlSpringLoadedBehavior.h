@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UISpringLoadedInteractionBehavior-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UISegmentedControlSpringLoadedBehavior : NSObject <UISpringLoadedInteractionBehavior>
+@interface UISegmentedControlSpringLoadedBehavior : NSObject
 {
 }
 

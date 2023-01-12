@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSDiscardableContent-Protocol.h>
-
 @class NSArray, NSDate, NSIndexSet, NSMapTable, NSString, TSPComponentDataReferenceMap, TSPComponentExternalReferenceMap, TSPComponentObjectUUIDMap, TSPObject, TSPObjectReferenceMap;
 @protocol OS_dispatch_queue, TSPComponentDelegate;
 
-@interface TSPComponent : NSObject <NSDiscardableContent>
+@interface TSPComponent : NSObject
 {
     _Atomic int _accessCount;
     id <TSPComponentDelegate> _delegate;

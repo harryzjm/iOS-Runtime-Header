@@ -6,9 +6,7 @@
 
 @class TSDTexturedRectangle;
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -89,21 +87,14 @@ struct UIEdgeInsets {
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct _TSDContentBlend {
     TSDTexturedRectangle *fromTR;
     TSDTexturedRectangle *toTR;
     double blendPercent;
-};
-
-struct _TSDStrokeOutsets {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
 };
 
 struct _xmlDoc {
@@ -221,23 +212,12 @@ typedef struct {
     _Bool _field8;
     struct _NSRange _field9;
     unsigned long long _field10;
-} CDStruct_64113493;
+} CDStruct_c8fb1f71;
 
 typedef struct {
     CDStruct_198678f7 _field1;
     CDStruct_198678f7 _field2;
 } CDStruct_3c1748cc;
-
-typedef struct {
-    struct CGPoint _field1;
-    struct CGPoint _field2;
-} CDStruct_e3b9714e;
-
-typedef struct {
-    struct CGRect cachedRect;
-    struct CGRect originalCachedRect;
-    unsigned int isValid;
-} CDStruct_5bfcb38a;
 
 // Ambiguous groups
 typedef struct {

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetCatalogFoundation/IBICCompilableSticker-Protocol.h>
-
 @class IBICManifestArchivist, NSString;
 
-@interface IBICStickerPack <IBICCompilableSticker>
+@interface IBICStickerPack
 {
     IBICManifestArchivist *_manifestArchivist;
     long long _gridSize;

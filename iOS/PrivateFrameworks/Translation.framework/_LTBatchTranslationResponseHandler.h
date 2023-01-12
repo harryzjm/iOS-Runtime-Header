@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FTBatchTranslationResponseDelegate-Protocol.h>
-
-@class FTMutableBatchTranslationRequest, LTSchemaBatchTranslationEvent, NSDate, NSLocale, NSMutableDictionary, NSString, NSURL, _LTTranslationParagraph;
+@class FTMutableBatchTranslationRequest, NSLocale, NSMutableDictionary, NSString, NSURL, _LTBatchEventLog, _LTTranslationParagraph;
 
 __attribute__((visibility("hidden")))
-@interface _LTBatchTranslationResponseHandler : NSObject <FTBatchTranslationResponseDelegate>
+@interface _LTBatchTranslationResponseHandler : NSObject
 {
     _Bool _hasFinalServerResponse;
     _Bool _completionHandlerCalled;
     FTMutableBatchTranslationRequest *_request;
     NSLocale *_toLocale;
-    LTSchemaBatchTranslationEvent *_metricEvent;
+    _LTBatchEventLog *_batchLog;
     _LTTranslationParagraph *_paragraph;
     NSMutableDictionary *_batchedParagraphs;
     long long _taskHint;
@@ -28,15 +26,15 @@ __attribute__((visibility("hidden")))
     NSString *_sessionID;
     NSString *_clientHeader;
     NSString *_clientIdentifier;
-    NSDate *_startTime;
     NSURL *_sourceURL;
+    NSString *_logIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property(nonatomic) _Bool completionHandlerCalled; // @synthesize completionHandlerCalled=_completionHandlerCalled;
 @property(nonatomic) _Bool hasFinalServerResponse; // @synthesize hasFinalServerResponse=_hasFinalServerResponse;
 @property(retain, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
-@property(retain, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(retain, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(copy, nonatomic) NSString *clientHeader; // @synthesize clientHeader=_clientHeader;
 @property(retain, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
@@ -47,7 +45,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long taskHint; // @synthesize taskHint=_taskHint;
 @property(retain, nonatomic) NSMutableDictionary *batchedParagraphs; // @synthesize batchedParagraphs=_batchedParagraphs;
 @property(retain, nonatomic) _LTTranslationParagraph *paragraph; // @synthesize paragraph=_paragraph;
-@property(retain, nonatomic) LTSchemaBatchTranslationEvent *metricEvent; // @synthesize metricEvent=_metricEvent;
+@property(retain, nonatomic) _LTBatchEventLog *batchLog; // @synthesize batchLog=_batchLog;
 @property(retain, nonatomic) NSLocale *toLocale; // @synthesize toLocale=_toLocale;
 @property(retain, nonatomic) FTMutableBatchTranslationRequest *request; // @synthesize request=_request;
 - (void)callCompletionHandlersWithError:(id)arg1;

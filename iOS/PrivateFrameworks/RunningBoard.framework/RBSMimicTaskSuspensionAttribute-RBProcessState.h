@@ -8,6 +8,7 @@
 
 @interface RBSMimicTaskSuspensionAttribute (RBProcessState)
 - (_Bool)isValidForContext:(id)arg1 withError:(id *)arg2;
+- (void)applyToProcessState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;
 - (void)applyToAssertionIntransientState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;
 @end
 

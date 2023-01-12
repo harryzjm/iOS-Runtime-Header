@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface OADColorScheme : NSObject <NSCopying>
+@interface OADColorScheme : NSObject
 {
     NSString *mName;
     NSMutableDictionary *mColors;

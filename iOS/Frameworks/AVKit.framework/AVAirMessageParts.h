@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVAirTransportReverseTransformationResultProtocol-Protocol.h>
-
 @class NSArray, NSData, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVAirMessageParts : NSObject <AVAirTransportReverseTransformationResultProtocol>
+@interface AVAirMessageParts : NSObject
 {
     NSDictionary *_uniqueHeaders;
     NSArray *_repeatedHeaders;

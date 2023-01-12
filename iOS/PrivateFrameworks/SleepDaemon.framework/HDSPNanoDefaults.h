@@ -6,26 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/HDSPNotificationObserver-Protocol.h>
-#import <SleepDaemon/HDSPSyncedUserDefaults-Protocol.h>
-
-@class HDSPEnvironment, HDSPSyncedDefaultsConfiguration, HKSPThrottler, NPSDomainAccessor, NPSManager, NSString;
+@class HDSPEnvironment, HDSPSyncedDefaultsConfiguration, HKSPAccumulator, NPSDomainAccessor, NPSManager, NSString;
 @protocol HDSPSyncedUserDefaultsExternalChangeDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HDSPNanoDefaults : NSObject <HDSPNotificationObserver, HDSPSyncedUserDefaults>
+@interface HDSPNanoDefaults : NSObject
 {
     HDSPEnvironment *_environment;
     HDSPSyncedDefaultsConfiguration *_configuration;
     NPSManager *_npsManager;
     NSObject<OS_dispatch_queue> *_npsDomainAccessorQueue;
-    HKSPThrottler *_notifyThrottler;
+    HKSPAccumulator *_notifyAccumulator;
     NPSDomainAccessor *_npsDomainAccessor;
     id <HDSPSyncedUserDefaultsExternalChangeDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <HDSPSyncedUserDefaultsExternalChangeDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)hksp_reset;
 - (void)hksp_synchronizeKeys:(id)arg1;
 - (void)hksp_synchronize;
 - (void)hksp_removeObjectsForKeys:(id)arg1;
@@ -45,11 +43,12 @@ __attribute__((visibility("hidden")))
 - (void)_registerForNotifications;
 - (void)hdsp_setExternalChangeDelegate:(id)arg1;
 - (void)hdsp_forceSynchronizeWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_handleNanoPreferencesSync;
+- (void)_handleNanoPreferencesSync:(id)arg1;
 - (void)_handleActivePairedDeviceDidChange:(id)arg1;
 - (id)notificationListener:(id)arg1 didReceiveNotificationWithName:(id)arg2;
 - (void)_resetNPSDomainAccessor;
 @property(readonly, nonatomic) NPSDomainAccessor *npsDomainAccessor; // @synthesize npsDomainAccessor=_npsDomainAccessor;
+- (id)_keysForChangeNotification:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 configuration:(id)arg2;
 
 // Remaining properties

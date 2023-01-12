@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSDate, NSString, TSCEFormulaObject, TSDCommentStorage, TSDFill, TSKFormat, TSTCellBorder, TSTCellSpec, TSTCellStyle, TSTConditionalStyleSet, TSTImportWarningSet, TSTStockDetails, TSULocale, TSWPParagraphStyle, TSWPStorage;
 
-@interface TSTCell : NSObject <NSCopying>
+@interface TSTCell : NSObject
 {
     struct TSUDecimal _valueBigNumber;
     double _valueDouble;
@@ -53,7 +51,7 @@
 + (id)stringForCellValueType:(unsigned char)arg1;
 + (_Bool)mismatchBetweenValueType:(unsigned char)arg1 andFormatType:(unsigned int)arg2;
 + (_Bool)p_mismatchBetweenValueType:(unsigned char)arg1 andCellFormatKind:(unsigned char)arg2;
-+ (unsigned char)p_cellFormatKindForValueType:(unsigned char)arg1;
++ (unsigned char)cellFormatKindForValueType:(unsigned char)arg1;
 + (_Bool)formatType:(unsigned int)arg1 isSameCellFormatKindAs:(unsigned int)arg2 allowNumberCurrencyMismatch:(_Bool)arg3;
 + (_Bool)formatType:(unsigned int)arg1 isSameCellFormatKindAs:(unsigned int)arg2;
 + (_Bool)formatTypeIsExpected:(unsigned int)arg1;
@@ -76,7 +74,7 @@
 @property(nonatomic) unsigned int cellStyleID; // @synthesize cellStyleID=_cellStyleID;
 @property(readonly, nonatomic) unsigned char cellFormatKind; // @synthesize cellFormatKind=_cellFormatKind;
 @property(retain, nonatomic) TSDCommentStorage *commentStorage; // @synthesize commentStorage=_commentStorage;
-@property(retain, nonatomic) TSULocale *locale; // @synthesize locale=_locale;
+@property(nonatomic) TSULocale *locale; // @synthesize locale=_locale;
 @property(nonatomic) unsigned short cellFlags; // @synthesize cellFlags=_cellFlags;
 @property(retain, nonatomic) TSTImportWarningSet *importWarningSet; // @synthesize importWarningSet=_importWarningSet;
 @property(readonly, nonatomic) TSKFormat *booleanFormat; // @synthesize booleanFormat=_booleanFormat;
@@ -150,7 +148,7 @@
 - (void)setCurrentFormat:(id)arg1 isExplicit:(_Bool)arg2 forExcel:(_Bool)arg3;
 - (void)setFormat:(id)arg1 shouldSetExplFlags:(_Bool)arg2 isExplicit:(_Bool)arg3 makeCurrent:(_Bool)arg4 clearingID:(_Bool)arg5;
 @property(readonly, nonatomic) TSKFormat *currentFormat;
-- (id)p_formatOfCellFormatKind:(unsigned char)arg1 create:(_Bool)arg2 created:(_Bool *)arg3;
+- (id)p_formatOfCellFormatKind:(unsigned char)arg1 create:(_Bool)arg2 outCreated:(_Bool *)arg3;
 @property(readonly, nonatomic) unsigned int formatType;
 - (void)suggestCellFormatKind:(unsigned char)arg1;
 @property(readonly, nonatomic) _Bool hasControl;
@@ -187,6 +185,7 @@
 @property(readonly, nonatomic) _Bool dataIsReplaceable;
 @property(readonly, nonatomic) _Bool valueRepresentsDateWithoutTime;
 @property(readonly, nonatomic) _Bool hasContentBreakingMergeFragment;
+@property(readonly, nonatomic) _Bool hasValue;
 @property(readonly, nonatomic) _Bool hasValueOrError;
 @property(readonly, nonatomic) _Bool valueIsNumberOrTime;
 @property(readonly, nonatomic) _Bool valueIsStringOrNumber;
@@ -235,7 +234,9 @@
 - (_Bool)hasEqualContentToCell:(id)arg1 usingRichTextObjectComparisonBlock:(CDUnknownBlockType)arg2;
 - (_Bool)hasEqualContentToCell:(id)arg1;
 - (_Bool)p_currentFormatIsEqualToOtherCellFormat:(id)arg1;
+- (void)inflateFromStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2 cache:(id)arg3 suppressingTransmutation:(_Bool)arg4;
 - (void)inflateFromStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2 suppressingTransmutation:(_Bool)arg3;
+- (void)inflateFromStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2 cache:(id)arg3;
 - (void)inflateFromStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2;
 - (void)copyValueAndFormatToCell:(id)arg1;
 - (void)copyJustValueToCell:(id)arg1;

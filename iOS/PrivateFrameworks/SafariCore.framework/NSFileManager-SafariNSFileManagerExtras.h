@@ -30,5 +30,8 @@
 - (id)safari_subdirectoryWithName:(id)arg1 inUserDomainOfDirectory:(unsigned long long)arg2;
 - (id)safari_ensureDirectoryExists:(id)arg1;
 - (void)_safari_getMobileSafariContainerDirectoryURL:(id *)arg1 isContainerized:(_Bool *)arg2;
+- (id)safari_startPageBackgroundImageFolderURL;
+- (id)safari_startPageBackgroundImageFileURLForIdentifier:(id)arg1;
+- (id)safari_startPageBackgroundImageFileURL;
 @end
 

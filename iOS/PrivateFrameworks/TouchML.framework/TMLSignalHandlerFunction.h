@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TouchML/TMLModelSerialize-Protocol.h>
-
 @class NSString;
 
-@interface TMLSignalHandlerFunction <TMLModelSerialize>
+@interface TMLSignalHandlerFunction
 {
     NSString *_signalName;
 }

@@ -6,18 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKComposeReviewDelegate-Protocol.h>
-#import <StoreKitUI/SKUILayoutCacheDelegate-Protocol.h>
-#import <StoreKitUI/SKUIProductPageChildViewController-Protocol.h>
-#import <StoreKitUI/SKUIReviewsFacebookViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/UITableViewDataSource-Protocol.h>
-#import <StoreKitUI/UITableViewDelegate-Protocol.h>
-
 @class NSMutableIndexSet, NSOperationQueue, NSString, SKComposeReviewViewController, SKUIClientContext, SKUIFacebookLikeStatus, SKUIIPadCustomerReviewsHeaderView, SKUILayoutCache, SKUIProductPage, SKUIProductPageHeaderViewController, SKUIProductPageTableView, SKUIReviewList, SKUIReviewsFacebookViewController, SKUIReviewsHistogramViewController, SKUIStarRatingQueue, SSVLoadURLOperation, UIScrollView;
 @protocol SKUIProductPageChildViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIProductPageReviewsViewController : UIViewController <SKUILayoutCacheDelegate, SKComposeReviewDelegate, SKUIReviewsFacebookViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, SKUIProductPageChildViewController>
+@interface SKUIProductPageReviewsViewController : UIViewController
 {
     SKUIClientContext *_clientContext;
     SKComposeReviewViewController *_composeViewController;

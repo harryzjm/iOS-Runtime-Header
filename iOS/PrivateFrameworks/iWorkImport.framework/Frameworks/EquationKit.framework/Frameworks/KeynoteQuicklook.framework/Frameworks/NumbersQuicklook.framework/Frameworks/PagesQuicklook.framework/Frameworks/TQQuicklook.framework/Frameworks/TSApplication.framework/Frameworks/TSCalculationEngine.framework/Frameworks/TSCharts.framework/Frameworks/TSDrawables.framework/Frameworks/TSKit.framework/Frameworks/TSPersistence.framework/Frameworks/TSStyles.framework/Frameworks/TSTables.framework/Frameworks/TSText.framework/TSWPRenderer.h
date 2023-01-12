@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSWPRendering-Protocol.h>
-
 @class NSString, TSUBezierPath;
 
-@interface TSWPRenderer : NSObject <TSWPRendering>
+@interface TSWPRenderer : NSObject
 {
     _Bool _flipShadows;
     struct CGContext *_context;

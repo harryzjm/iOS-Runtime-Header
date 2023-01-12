@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <ChatKit/CKDetailsHeaderFooterView-Protocol.h>
-
 @class CKBusinessInfoView, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKDetailsBusinessInfoHeaderFooterView : UITableViewHeaderFooterView <CKDetailsHeaderFooterView>
+@interface CKDetailsBusinessInfoHeaderFooterView : UITableViewHeaderFooterView
 {
     CKBusinessInfoView *_businessInfoView;
 }

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSBaseSocketPairConnectionDelegate-Protocol.h>
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-
 @class CUTWeakReference, IDSBaseSocketPairConnection, NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface _IDSSession : NSObject <IDSDaemonListenerProtocol, IDSBaseSocketPairConnectionDelegate>
+@interface _IDSSession : NSObject
 {
     id _delegateContext;
     id _boostContext;

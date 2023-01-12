@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIDebugIssueReporting-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDebugIssueReport : NSObject <_UIDebugIssueReporting>
+@interface _UIDebugIssueReport : NSObject
 {
     NSMutableArray *_mutableIssues;
 }

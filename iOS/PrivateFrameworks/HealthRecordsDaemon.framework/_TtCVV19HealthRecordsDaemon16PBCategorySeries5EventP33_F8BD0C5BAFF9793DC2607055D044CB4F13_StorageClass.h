@@ -13,6 +13,7 @@
     MISSING_TYPE *_raw;
     MISSING_TYPE *_value;
     MISSING_TYPE *_recordedTime;
+    MISSING_TYPE *_source;
     MISSING_TYPE *_additionalData;
 }
 

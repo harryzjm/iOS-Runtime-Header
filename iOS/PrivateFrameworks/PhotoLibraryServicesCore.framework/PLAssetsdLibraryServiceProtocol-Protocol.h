@@ -9,7 +9,8 @@
 @class NSArray, NSDictionary, NSProgress, NSSecurityScopedURLWrapper, NSSet, NSString, NSURL, PLDelayedSaveActionsDetail, PLInterLibraryTransferOptions, PLPhotoLibraryOptions, PLXPCDictionary;
 
 @protocol PLAssetsdLibraryServiceProtocol <NSObject>
-- (NSProgress *)copyAssetsWithUuids:(NSSet *)arg1 fromLibraryURL:(NSSecurityScopedURLWrapper *)arg2 transferOptions:(PLInterLibraryTransferOptions *)arg3 reply:(void (^)(NSError *))arg4;
+- (NSProgress *)transferPersonsWithUuids:(NSSet *)arg1 fromLibraryURL:(NSSecurityScopedURLWrapper *)arg2 transferOptions:(PLInterLibraryTransferOptions *)arg3 reply:(void (^)(NSError *))arg4;
+- (NSProgress *)transferAssetsWithUuids:(NSSet *)arg1 fromLibraryURL:(NSSecurityScopedURLWrapper *)arg2 transferOptions:(PLInterLibraryTransferOptions *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)pendingEventsForRequest:(PLXPCDictionary *)arg1 reply:(void (^)(PLXPCDictionary *))arg2;
 - (void)publishRemoteChangeEvent:(PLXPCDictionary *)arg1 delayedSaveActionsDetail:(PLDelayedSaveActionsDetail *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)automaticallyDeleteEmptyAlbumWithObjectURI:(NSURL *)arg1 reply:(void (^)(_Bool, NSError *))arg2;

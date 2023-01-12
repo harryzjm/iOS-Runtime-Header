@@ -6,7 +6,7 @@
 
 #import <iCloudQuotaUI/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSURL, UINavigationController;
+@class ACAccount, NSData, NSDictionary, NSString, NSURL, UINavigationController;
 @protocol DelayedPushDelegate;
 
 @protocol PreferencesRemoteUIDelegateProtocol <NSObject>
@@ -18,6 +18,7 @@
 - (void)popAndReloadFromRemoteUI:(_Bool)arg1 additionalHeaders:(NSDictionary *)arg2;
 - (void)loadURL:(NSURL *)arg1 postBody:(NSData *)arg2;
 - (void)loadURL:(NSURL *)arg1 postBody:(NSData *)arg2 additionalHeaders:(NSDictionary *)arg3;
+- (id)initWithNavigationController:(UINavigationController *)arg1 initialAction:(NSString *)arg2 account:(ACAccount *)arg3;
 - (id)initWithNavigationController:(UINavigationController *)arg1 initialAction:(NSString *)arg2;
 - (id)initWithNavigationController:(UINavigationController *)arg1;
 @end

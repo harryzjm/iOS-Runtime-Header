@@ -6,18 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WebKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <WebKit/UIToolbarDelegate-Protocol.h>
-
 @class NSString, WKWebView;
 
 __attribute__((visibility("hidden")))
-@interface WKFullScreenViewController : UIViewController <UIGestureRecognizerDelegate, UIToolbarDelegate>
+@interface WKFullScreenViewController : UIViewController
 {
     _Bool _valid;
     struct RetainPtr<UILongPressGestureRecognizer> _touchGestureRecognizer;
-    RetainPtr_1ac284e4 _animatingView;
-    struct RetainPtr<WKFullscreenStackView> _stackView;
+    struct RetainPtr<UIView> _animatingView;
+    struct RetainPtr<UIStackView> _stackView;
     struct RetainPtr<_WKExtrinsicButton> _cancelButton;
     struct RetainPtr<_WKExtrinsicButton> _pipButton;
     struct RetainPtr<UIButton> _locationButton;
@@ -53,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_touchDetected:(id)arg1;
 - (void)_togglePiPAction:(id)arg1;
 - (void)_cancelAction:(id)arg1;
-@property(readonly, nonatomic) RectEdges_0629eaa8 _effectiveFullscreenInsets; // @dynamic _effectiveFullscreenInsets;
+@property(readonly, nonatomic) RectEdges_84c51beb _effectiveFullscreenInsets; // @dynamic _effectiveFullscreenInsets;
 @property(readonly, nonatomic) void *_manager; // @dynamic _manager;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

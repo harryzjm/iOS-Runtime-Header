@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UILongPressGestureRecognizer, UITapGestureRecognizer, _UITextInteractableItem;
+@class UIContextMenuInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer, _UITextInteractableItem;
 
 __attribute__((visibility("hidden")))
 @interface _UITextSimpleLinkInteraction
@@ -13,9 +13,13 @@ __attribute__((visibility("hidden")))
     UILongPressGestureRecognizer *_highlighter;
     _UITextInteractableItem *_highlightedItem;
     _Bool _presentingFromSimpleTap;
+    _Bool _shouldProxyContextMenuDelegate;
+    UIContextMenuInteraction *_contextMenuInteraction;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
+@property(readonly, nonatomic) _Bool shouldProxyContextMenuDelegate; // @synthesize shouldProxyContextMenuDelegate=_shouldProxyContextMenuDelegate;
 - (_Bool)_allowItemInteractions;
 - (_Bool)_beginInteractionSessionForLinkAtPoint:(struct CGPoint)arg1 asTap:(_Bool)arg2 precision:(unsigned long long)arg3;
 - (_Bool)_canBeginInteractionSessionForLinkAtPoint:(struct CGPoint)arg1 asTap:(_Bool)arg2 precision:(unsigned long long)arg3;
@@ -27,7 +31,8 @@ __attribute__((visibility("hidden")))
 - (id)textLinkInteractableView;
 - (id)itemInteractableView;
 - (id)gesturesForFailureRequirements;
-- (id)init;
+- (id)contextMenuDelegateProxy;
+- (id)initWithShouldProxyContextMenuDelegate:(_Bool)arg1;
 
 @end
 

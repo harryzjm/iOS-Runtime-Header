@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AuthenticationServices/ASPublicKeyCredential-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ASPublicKeyCredentialBase : NSObject <ASPublicKeyCredential>
+@interface ASPublicKeyCredentialBase : NSObject
 {
     NSData *_rawClientDataJSON;
     NSData *_credentialID;

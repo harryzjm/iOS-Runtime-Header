@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSWPTextDelegate-Protocol.h>
-
 @class TSULocale, TSWPPadding;
 @protocol TSWPStyleProviding;
 
-@interface TSCHTSWPTextDelegate : NSObject <TSWPTextDelegate>
+@interface TSCHTSWPTextDelegate : NSObject
 {
     _Bool shouldHyphenate;
     _Bool forceWesternLineBreaking;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <webrtc/RTCVideoEncoderFactory-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WK_RTCDefaultVideoEncoderFactory : NSObject <RTCVideoEncoderFactory>
+@interface WK_RTCDefaultVideoEncoderFactory : NSObject
 {
     _Bool _supportsH265;
     _Bool _supportsVP9Profile0;

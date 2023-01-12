@@ -7,6 +7,10 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (HKMenstrualCyclesUI)
++ (id)hkmc_ovulationEstimateImage;
++ (id)hkmc_ovulationDayReversedImageHighContrast;
++ (id)hkmc_ovulationDayReversedImage;
++ (id)hkmc_ovulationDayImage;
 + (id)hkmc_menstruationProjectionLowReversedImageHighContrast;
 + (id)hkmc_menstruationProjectionLowReversedImage;
 + (id)hkmc_menstruationProjectionLowImage;

@@ -18,6 +18,7 @@
     NSURL *_URL;
 }
 
++ (id)regularRexpressionsForCachedCollaborationData;
 + (id)newPackageConverterWithURL:(id)arg1 preserveExtendedAttributes:(_Bool)arg2 error:(id *)arg3;
 + (id)newPackageConverterWithURL:(id)arg1 error:(id *)arg2;
 + (_Bool)convertDocumentAtURL:(id)arg1 toPackageType:(long long)arg2 removeEntriesMatchingFilter:(id)arg3 error:(id *)arg4;

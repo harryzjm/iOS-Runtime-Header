@@ -6,12 +6,9 @@
 
 #import <TSDrawables/TSDDrawableLayout.h>
 
-#import <TSApplication/TSWPColumnMetrics-Protocol.h>
-#import <TSApplication/TSWPLayoutParent-Protocol.h>
-
 @class NSArray, NSMapTable, NSString, TSAGalleryItem, TSDLayoutGeometry, TSUBezierPath, TSWPLayout, TSWPPadding;
 
-@interface TSAGalleryLayout : TSDDrawableLayout <TSWPLayoutParent, TSWPColumnMetrics>
+@interface TSAGalleryLayout : TSDDrawableLayout
 {
     struct CGRect _imageRectInImageContainer;
     TSWPLayout *_galleryCaptionLayout;

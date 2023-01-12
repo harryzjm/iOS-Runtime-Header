@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)updateStateWithChangeReason:(unsigned long long)arg1;
+- (id)nextStateWithContext:(id *)arg1 forceUpdate:(_Bool)arg2;
 - (unsigned long long)scheduleState;
 - (id)stateName;
 

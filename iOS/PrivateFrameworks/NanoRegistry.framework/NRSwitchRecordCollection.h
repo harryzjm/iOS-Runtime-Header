@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NanoRegistry/NSSecureCoding-Protocol.h>
+#import "NRPBSwitchRecordCollection.h"
 
 __attribute__((visibility("hidden")))
-@interface NRSwitchRecordCollection <NSSecureCoding>
+@interface NRSwitchRecordCollection : NRPBSwitchRecordCollection
 {
 }
 

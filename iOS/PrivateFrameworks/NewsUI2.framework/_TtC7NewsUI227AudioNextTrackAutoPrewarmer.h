@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI227AudioNextTrackAutoPrewarmer : NSObject
 {
-    MISSING_TYPE *audioDataManager;
+    MISSING_TYPE *audioPlaybackQueue;
     MISSING_TYPE *articleAudioPrewarmer;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *prewarming;

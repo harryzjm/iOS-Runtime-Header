@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AttentionAwareness/AWUnitTestSampler-Protocol.h>
-
 @protocol NSXPCProxyCreating, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AWUnitTestSampler : NSObject <AWUnitTestSampler>
+@interface AWUnitTestSampler : NSObject
 {
     id <NSXPCProxyCreating> _remoteSamplerProxy;
     NSObject<OS_dispatch_queue> *_queue;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSWPTextWrap-Protocol.h>
-
 @class TPDocumentRoot;
 
-@interface TPTextWrapController : NSObject <TSWPTextWrap>
+@interface TPTextWrapController : NSObject
 {
     struct CGAffineTransform _canvasSpaceToWrapSpace;
     struct CGAffineTransform _wrapSpaceToCanvasSpace;

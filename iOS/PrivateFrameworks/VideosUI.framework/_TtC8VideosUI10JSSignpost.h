@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/_TtP8VideosUI19JSSignpostInterface_-Protocol.h>
+#import "VUIJSObject.h"
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI10JSSignpost <_TtP8VideosUI19JSSignpostInterface_>
+@interface _TtC8VideosUI10JSSignpost : VUIJSObject
 {
 }
 

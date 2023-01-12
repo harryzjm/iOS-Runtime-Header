@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MLMultiArray;
+#import "MLMultiArray.h"
 
 __attribute__((visibility("hidden")))
-@interface MLMultiArrayView
+@interface MLMultiArrayView : MLMultiArray
 {
     MLMultiArray *_parent;
 }

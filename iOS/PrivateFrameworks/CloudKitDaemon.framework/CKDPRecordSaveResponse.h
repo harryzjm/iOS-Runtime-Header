@@ -6,18 +6,18 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
+@class CKDPDate, CKDPDateStatistics, CKDPRecord, NSString;
 
-@class CKDPDateStatistics, CKDPRecord, NSString;
-
-@interface CKDPRecordSaveResponse : PBCodable <NSCopying>
+@interface CKDPRecordSaveResponse : PBCodable
 {
     NSString *_etag;
+    CKDPDate *_expirationTime;
     CKDPRecord *_serverFields;
     CKDPDateStatistics *_timeStatistics;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDPDate *expirationTime; // @synthesize expirationTime=_expirationTime;
 @property(retain, nonatomic) CKDPRecord *serverFields; // @synthesize serverFields=_serverFields;
 @property(retain, nonatomic) CKDPDateStatistics *timeStatistics; // @synthesize timeStatistics=_timeStatistics;
 @property(retain, nonatomic) NSString *etag; // @synthesize etag=_etag;
@@ -30,6 +30,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasExpirationTime;
 @property(readonly, nonatomic) _Bool hasServerFields;
 @property(readonly, nonatomic) _Bool hasTimeStatistics;
 @property(readonly, nonatomic) _Bool hasEtag;

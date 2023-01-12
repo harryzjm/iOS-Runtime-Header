@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
-@class NSString, NSURL, UIColor, UIFont, UIImage;
+@class NSDictionary, NSString, NSURL, UIColor, UIFont, UIImage;
 @protocol VUINetworkRequestLoader;
 
 __attribute__((visibility("hidden")))
-@interface VUIMonogramDescription : NSObject <NSCopying>
+@interface VUIMonogramDescription : NSObject
 {
     _Bool _shouldFallBackToSilhouette;
     _Bool _optimizedImageRendering;
@@ -21,17 +19,21 @@ __attribute__((visibility("hidden")))
     NSString *_text;
     NSURL *_imageURL;
     UIFont *_font;
+    NSDictionary *_specialOffsetByFirstLetter;
     long long _scaleMode;
     UIColor *_backgroundColor;
     UIColor *_textColor;
     double _upscaleAdjustment;
     double _cornerRadius;
     UIColor *_fillColor;
+    UIColor *_gradientStartColor;
+    UIColor *_gradientEndColor;
     double _borderWidth;
     UIColor *_borderColor;
     id <VUINetworkRequestLoader> _requestLoader;
     UIImage *_placeholderImage;
     struct CGSize _size;
+    struct CGSize _defaultImageSize;
     struct UIEdgeInsets _padding;
 }
 
@@ -42,6 +44,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
 @property(nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
 @property(nonatomic) _Bool shouldFallBackToSilhouette; // @synthesize shouldFallBackToSilhouette=_shouldFallBackToSilhouette;
+@property(retain, nonatomic) UIColor *gradientEndColor; // @synthesize gradientEndColor=_gradientEndColor;
+@property(retain, nonatomic) UIColor *gradientStartColor; // @synthesize gradientStartColor=_gradientStartColor;
 @property(retain, nonatomic) UIColor *fillColor; // @synthesize fillColor=_fillColor;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) double upscaleAdjustment; // @synthesize upscaleAdjustment=_upscaleAdjustment;
@@ -49,6 +53,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) long long scaleMode; // @synthesize scaleMode=_scaleMode;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
+@property(retain, nonatomic) NSDictionary *specialOffsetByFirstLetter; // @synthesize specialOffsetByFirstLetter=_specialOffsetByFirstLetter;
+@property(nonatomic) struct CGSize defaultImageSize; // @synthesize defaultImageSize=_defaultImageSize;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(readonly, copy, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(readonly, copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
@@ -57,6 +63,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 - (unsigned long long)preferedMonogramType;
 - (unsigned long long)hash;
+- (struct CGPoint)specialOffsetForString:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithType:(unsigned long long)arg1;

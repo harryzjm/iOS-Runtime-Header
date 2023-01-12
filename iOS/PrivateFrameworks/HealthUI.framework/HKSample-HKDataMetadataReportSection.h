@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKSample.h>
 
-#import <HealthUI/HKDataMetadataObject-Protocol.h>
-
 @class NSDictionary;
 
-@interface HKSample (HKDataMetadataReportSection) <HKDataMetadataObject>
+@interface HKSample (HKDataMetadataReportSection)
 + (id)createWithCodableNotificationSample:(id)arg1;
 + (id)createWithCodableChartData:(id)arg1;
 - (id)detailedReportName;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreData/PFCloudKitSerializerDelegate-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSString, NSUUID, PFCloudKitFetchedAssetBytesMetric, PFCloudKitFetchedRecordBytesMetric;
 
 __attribute__((visibility("hidden")))
-@interface PFCloudKitImportRecordsWorkItem <PFCloudKitSerializerDelegate>
+@interface PFCloudKitImportRecordsWorkItem
 {
     NSMutableDictionary *_assetPathToSafeSaveURL;
     NSUUID *_importOperationIdentifier;

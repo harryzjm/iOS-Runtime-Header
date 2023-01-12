@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLCommandQueueDescriptor.h"
+
 @class NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MTLCommandQueueDescriptorInternal
+@interface MTLCommandQueueDescriptorInternal : MTLCommandQueueDescriptor
 {
     unsigned long long _maxCommandBufferCount;
     unsigned long long _qosLevel;
@@ -16,13 +18,22 @@ __attribute__((visibility("hidden")))
     _Bool _commitSynchronously;
     NSObject<OS_dispatch_queue> *_completionQueue;
     _Bool _disableCrossQueueHazardTracking;
+    _Bool _disableAsyncCompletionDispatch;
     _Bool _openGLQueue;
     unsigned long long _devicePartition;
+    _Bool _disableIOFencing;
+    _Bool _enableLowLatencySignalSharedEvent;
+    _Bool _enableLowLatencyWaitSharedEvent;
 }
 
+@property(nonatomic) _Bool enableLowLatencyWaitSharedEvent; // @synthesize enableLowLatencyWaitSharedEvent=_enableLowLatencyWaitSharedEvent;
+@property(nonatomic) _Bool enableLowLatencySignalSharedEvent; // @synthesize enableLowLatencySignalSharedEvent=_enableLowLatencySignalSharedEvent;
+@property(nonatomic) _Bool disableIOFencing; // @synthesize disableIOFencing=_disableIOFencing;
 - (void)setDevicePartition:(unsigned long long)arg1;
 - (unsigned long long)devicePartition;
 @property _Bool isOpenGLQueue; // @synthesize isOpenGLQueue=_openGLQueue;
+- (void)setDisableAsyncCompletionDispatch:(_Bool)arg1;
+- (_Bool)disableAsyncCompletionDispatch;
 - (void)setDisableCrossQueueHazardTracking:(_Bool)arg1;
 - (_Bool)disableCrossQueueHazardTracking;
 - (void)setCompletionQueue:(id)arg1;

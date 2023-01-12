@@ -27,6 +27,7 @@
 @property(readonly, copy, nonatomic) NSString *feedID;
 
 @optional
+@property(readonly, nonatomic) unsigned long long role;
 @property(readonly, copy, nonatomic) id <FCChannelProviding> sourceChannel;
 @end
 

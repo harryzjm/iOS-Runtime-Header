@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI38OnboardingViewControllerWithNextButtonCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI57SummarySharingOnboardingChooseSelectionFlowViewController
+@interface _TtC18HealthExperienceUI57SummarySharingOnboardingChooseSelectionFlowViewController : _$s18HealthExperienceUI38OnboardingViewControllerWithNextButtonCN
 {
     MISSING_TYPE *healthExperienceStore;
     MISSING_TYPE *healthStore;
@@ -15,13 +17,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *selectedContactPhotoPublisher;
     MISSING_TYPE *selectionFlowContext;
     MISSING_TYPE *selectedItems;
-    MISSING_TYPE *setUpManuallyButton;
+    MISSING_TYPE *$__lazy_storage_$_setUpManuallyButton;
 }
 
 - (void).cxx_destruct;
 - (void)cancelButtonTapped:(id)arg1;
 - (void)manualFlowButtonTapped:(id)arg1;
 - (void)nextButtonTapped:(id)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 
 @end
 

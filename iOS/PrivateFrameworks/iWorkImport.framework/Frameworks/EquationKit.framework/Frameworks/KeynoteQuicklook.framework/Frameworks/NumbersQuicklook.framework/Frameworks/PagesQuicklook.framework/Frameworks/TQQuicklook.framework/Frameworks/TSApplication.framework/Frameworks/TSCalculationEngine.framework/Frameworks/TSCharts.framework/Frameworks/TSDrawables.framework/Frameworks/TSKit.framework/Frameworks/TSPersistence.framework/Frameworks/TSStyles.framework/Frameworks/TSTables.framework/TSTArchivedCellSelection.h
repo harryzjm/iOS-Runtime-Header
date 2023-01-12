@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSKSelection, TSTCellRegion, TSTCellSelection;
 
-@interface TSTArchivedCellSelection : TSPObject <TSKArchivedSelection>
+@interface TSTArchivedCellSelection : TSPObject
 {
     TSTCellSelection *_cellSelection;
     _Bool _isLegacyBasedIDSelection;

@@ -9,7 +9,7 @@
 @class NSUUID;
 
 @protocol WBReusableTab <NSObject>
-@property(retain, nonatomic) NSUUID *uuid;
+@property(copy, nonatomic) NSUUID *uuid;
 - (void)evictFromTabReuse;
 @end
 

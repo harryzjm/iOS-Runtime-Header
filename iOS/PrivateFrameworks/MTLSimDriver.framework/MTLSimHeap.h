@@ -6,20 +6,19 @@
 
 #import <Metal/_MTLHeap.h>
 
-#import <MTLSimDriver/MTLHeap-Protocol.h>
-#import <MTLSimDriver/MTLSerializerHeap-Protocol.h>
-
 @class MTLSimDevice, NSString;
 @protocol MTLDevice;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimHeap : _MTLHeap <MTLHeap, MTLSerializerHeap>
+@interface MTLSimHeap : _MTLHeap
 {
     MTLSimDevice *_device;
     unsigned int _heapRef;
     unsigned long long _purgeableState;
 }
 
+@property(readonly, nonatomic) unsigned long long protectionOptions;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 - (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 offset:(unsigned long long)arg3;
@@ -49,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long storageMode;
 @property(readonly) Class superclass;
 @property(readonly) long long type;
+@property(readonly) unsigned long long unfilteredResourceOptions;
 
 @end
 

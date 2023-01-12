@@ -6,28 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, SHSignature;
+@class NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface SHSignatureBuffer : NSObject
 {
-    long long _qos;
+    double _minimumSignatureDuration;
     double _maximumSignatureDuration;
-    NSMutableArray *_allSignatures;
+    double _bufferMaxSize;
+    NSMutableArray *_slots;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *allSignatures; // @synthesize allSignatures=_allSignatures;
+@property(readonly, nonatomic) NSMutableArray *slots; // @synthesize slots=_slots;
+@property(nonatomic) double bufferMaxSize; // @synthesize bufferMaxSize=_bufferMaxSize;
 @property(nonatomic) double maximumSignatureDuration; // @synthesize maximumSignatureDuration=_maximumSignatureDuration;
-@property(readonly, nonatomic) long long qos; // @synthesize qos=_qos;
-- (void)discardOldestSignatureWithID:(id)arg1;
-- (void)discardAllSignaturesExceptTheLatestAfterMatchingID:(id)arg1;
-- (void)finishedMatchingSignatureWithID:(id)arg1;
+@property(nonatomic) double minimumSignatureDuration; // @synthesize minimumSignatureDuration=_minimumSignatureDuration;
+- (void)discardSignatureWithID:(id)arg1;
 - (double)duration;
-- (_Bool)checkFlowError:(id)arg1;
-- (_Bool)flow:(id)arg1 time:(id)arg2 error:(id *)arg3;
-@property(readonly, nonatomic) SHSignature *nextSignature;
-- (id)initWithMaximumSignatureDuration:(double)arg1 qos:(long long)arg2;
+- (void)flow:(id)arg1 time:(id)arg2;
+@property(readonly, nonatomic) double currentSignatureDuration;
+- (id)generateCurrentSignature;
+- (void)reset;
+- (id)initWithMinimumSignatureDuration:(double)arg1 maximumSignatureDuration:(double)arg2 bufferDuration:(double)arg3;
 
 @end
 

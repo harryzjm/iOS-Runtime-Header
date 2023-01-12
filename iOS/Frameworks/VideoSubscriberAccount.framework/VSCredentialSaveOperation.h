@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VSAsyncOperation.h"
+
 @class NSArray, VSAccountStore, VSOptional;
 
 __attribute__((visibility("hidden")))
-@interface VSCredentialSaveOperation
+@interface VSCredentialSaveOperation : VSAsyncOperation
 {
     VSOptional *_result;
     NSArray *_unsavedAccounts;

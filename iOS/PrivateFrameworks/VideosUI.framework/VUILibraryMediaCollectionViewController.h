@@ -4,17 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/TVShelfViewLayoutDelegate-Protocol.h>
-#import <VideosUI/UICollectionViewDelegate-Protocol.h>
-#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
-#import <VideosUI/VUILibraryEpisodeFooterCellDelegate-Protocol.h>
-#import <VideosUI/VUILibraryEpisodeShelfViewControllerDelegate-Protocol.h>
-#import <VideosUI/VUIProductLockupViewDelegate-Protocol.h>
-
 @class NSArray, NSString, UICollectionViewDiffableDataSource, VUILibraryMediaCollectionViewModel, VUIMediaCollection, VUIMediaEntitiesDataSource, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryMediaCollectionViewController <UICollectionViewDelegate, VUIProductLockupViewDelegate, TVShelfViewLayoutDelegate, VUILibraryEpisodeFooterCellDelegate, VUILibraryEpisodeShelfViewControllerDelegate, VUILibraryDataSourceDelegate>
+@interface VUILibraryMediaCollectionViewController
 {
     _Bool _canShowMultipleSeasons;
     _Bool _seasonsFetchHasCompleted;

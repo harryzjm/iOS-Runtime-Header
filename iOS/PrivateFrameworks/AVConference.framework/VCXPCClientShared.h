@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVConferenceXPCClient.h"
+
 @class NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCXPCClientShared
+@interface VCXPCClientShared : AVConferenceXPCClient
 {
     NSMutableDictionary *_registeredUUIDServiceBlocks;
     NSObject<OS_dispatch_queue> *_registeredBlocksQueue;
 }
 
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *registeredBlocksQueue; // @synthesize registeredBlocksQueue=_registeredBlocksQueue;
 @property(readonly, nonatomic) NSMutableDictionary *registeredUUIDServiceBlocks; // @synthesize registeredUUIDServiceBlocks=_registeredUUIDServiceBlocks;
 - (void)deregisterWithUUID:(id)arg1 service:(char *)arg2;
 - (void)registerBlockWithUUID:(id)arg1 service:(char *)arg2 block:(CDUnknownBlockType)arg3;

@@ -6,9 +6,11 @@
 
 #import <MobileMailUI/MessageItemViewModelBuilder-Protocol.h>
 
-@class ECSubject, MFAddressAtomStatusManager, MFMailboxUid, NSArray, NSDate;
+@class ECSubject, EFFuture, MFAddressAtomStatusManager, MFMailboxUid, NSArray, NSDate;
+@protocol EMCollectionItemID;
 
 @protocol MessageHeaderViewModelBuilder <MessageItemViewModelBuilder>
+@property(retain, nonatomic) EFFuture *brandIndicatorFuture;
 @property(retain, nonatomic) MFAddressAtomStatusManager *atomManager;
 @property(copy, nonatomic) NSArray *bccList;
 @property(copy, nonatomic) NSArray *ccList;
@@ -17,5 +19,6 @@
 @property(copy, nonatomic) MFMailboxUid *mailbox;
 @property(copy, nonatomic) ECSubject *subject;
 @property(copy, nonatomic) NSDate *dateSent;
+@property(copy, nonatomic) id <EMCollectionItemID> itemID;
 @end
 

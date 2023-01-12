@@ -6,11 +6,9 @@
 
 #import <AvatarPersistence/AVTAvatarRecord.h>
 
-#import <AvatarUI/UIActivityItemSource-Protocol.h>
-
 @class NSString;
 
-@interface AVTAvatarRecord (UIActivityItemSource) <UIActivityItemSource>
+@interface AVTAvatarRecord (UIActivityItemSource)
 - (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;

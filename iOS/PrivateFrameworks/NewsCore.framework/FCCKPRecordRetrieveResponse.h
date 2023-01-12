@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPRecord;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPRecordRetrieveResponse : PBCodable <NSCopying>
+@interface FCCKPRecordRetrieveResponse : PBCodable
 {
     FCCKPRecord *_record;
     _Bool _clientVersionETagMatch;

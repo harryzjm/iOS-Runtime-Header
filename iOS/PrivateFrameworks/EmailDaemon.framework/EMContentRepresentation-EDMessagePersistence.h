@@ -6,11 +6,9 @@
 
 #import <Email/EMContentRepresentation.h>
 
-#import <EmailDaemon/_EMDistantContentRepresentation-Protocol.h>
-
 @class NSString;
 
-@interface EMContentRepresentation (EDMessagePersistence) <_EMDistantContentRepresentation>
+@interface EMContentRepresentation (EDMessagePersistence)
 - (id)requestUpdatedRepresentationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)requestRepresentationForItemWithObjectID:(id)arg1 options:(id)arg2 delegate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 

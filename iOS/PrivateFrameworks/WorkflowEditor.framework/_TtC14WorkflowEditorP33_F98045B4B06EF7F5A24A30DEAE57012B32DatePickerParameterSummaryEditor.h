@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "WFModuleSummaryEditor.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC14WorkflowEditorP33_F98045B4B06EF7F5A24A30DEAE57012B32DatePickerParameterSummaryEditor
+@interface _TtC14WorkflowEditorP33_F98045B4B06EF7F5A24A30DEAE57012B32DatePickerParameterSummaryEditor : WFModuleSummaryEditor
 {
     MISSING_TYPE *modal;
 }

@@ -5,10 +5,11 @@
 //
 
 #import <AVConference/VCBasebandCodecNotifications-Protocol.h>
+#import <AVConference/VCServerDelegate-Protocol.h>
 
 @class NSError;
 
-@protocol VCAudioIOControllerDelegate <VCBasebandCodecNotifications>
+@protocol VCAudioIOControllerDelegate <VCBasebandCodecNotifications, VCServerDelegate>
 - (void)didResume;
 - (void)didSuspend;
 - (void)controllerFormatChanged:(const struct tagVCAudioFrameFormat *)arg1;

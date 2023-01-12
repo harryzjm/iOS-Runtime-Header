@@ -6,11 +6,12 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSError, PKAuthorizedPeerPaymentQuote, PKDisbursementVoucher, PKPaymentAuthorizationController, PKServiceProviderPurchase;
+@class NSError, NSString, PKAuthorizedPeerPaymentQuote, PKDisbursementVoucher, PKPaymentAuthorizationController, PKServiceProviderPurchase;
 
 @protocol PKPaymentAuthorizationControllerPrivateDelegate <NSObject>
 
 @optional
+- (NSString *)presentationSceneIdentifierForPaymentAuthorizationController:(PKPaymentAuthorizationController *)arg1;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didAuthorizeContextWithHandler:(void (^)(PKPaymentAuthorizationResult *))arg2;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didAuthorizeDisbursementVoucher:(PKDisbursementVoucher *)arg2 handler:(void (^)(PKPaymentAuthorizationResult *))arg3;
 - (void)paymentAuthorizationController:(PKPaymentAuthorizationController *)arg1 didAuthorizePeerPaymentQuote:(PKAuthorizedPeerPaymentQuote *)arg2 handler:(void (^)(PKPaymentAuthorizationResult *))arg3;

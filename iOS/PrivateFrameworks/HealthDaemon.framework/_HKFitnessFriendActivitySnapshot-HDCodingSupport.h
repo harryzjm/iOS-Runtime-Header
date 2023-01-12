@@ -6,11 +6,9 @@
 
 #import <HealthKit/_HKFitnessFriendActivitySnapshot.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface _HKFitnessFriendActivitySnapshot (HDCodingSupport) <HDCoding>
+@interface _HKFitnessFriendActivitySnapshot (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;

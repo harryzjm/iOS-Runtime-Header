@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) LPTextViewStyle *caption; // @synthesize caption=_caption;
 @property(retain, nonatomic) UIColor *tapHighlightColor; // @synthesize tapHighlightColor=_tapHighlightColor;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-- (id)initWithPlatform:(long long)arg1 fontScalingFactor:(double)arg2;
+- (id)initWithPlatform:(long long)arg1 sizeClass:(unsigned long long)arg2 fontScalingFactor:(double)arg3;
 
 @end
 

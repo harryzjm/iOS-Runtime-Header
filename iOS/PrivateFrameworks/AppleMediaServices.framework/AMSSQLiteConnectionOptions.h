@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/NSCopying-Protocol.h>
-#import <AppleMediaServices/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSSQLiteConnectionOptions : NSObject <NSCopying, NSSecureCoding>
+@interface AMSSQLiteConnectionOptions : NSObject
 {
     _Bool _readOnly;
     NSString *_databasePath;

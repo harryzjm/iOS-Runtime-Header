@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTRecognitionSausage, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTSiriTranslationInfo : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTSiriTranslationInfo : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,10 +19,22 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_aedd1960)addObjectToBuffer:(void *)arg1;
+- (void)translation_phrase_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)translation_phrase_count;
+- (id)translation_phrase_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *translation_phrase;
+- (void)itn_alignments_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)itn_alignments_count;
+- (id)itn_alignments_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *itn_alignments;
 @property(readonly, nonatomic) NSString *post_itn_recognition;
+- (void)post_itn_tokens_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)post_itn_tokens_count;
+- (id)post_itn_tokens_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *post_itn_tokens;
+- (void)raw_nbest_choices_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)raw_nbest_choices_count;
+- (id)raw_nbest_choices_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *raw_nbest_choices;
 @property(readonly, nonatomic) FTRecognitionSausage *raw_sausage;
 - (id)copyWithZone:(struct _NSZone *)arg1;

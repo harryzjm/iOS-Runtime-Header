@@ -11,10 +11,10 @@
 @property(readonly, nonatomic) NSString *diagnosticDescription;
 @property(readonly, nonatomic) long long transition;
 @property(readonly, nonatomic) long long motionStyle;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 videoCueOffset;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 maximumDuration;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 idealDuration;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 minimumDuration;
+@property(readonly, nonatomic) CDStruct_198678f7 videoCueOffset;
+@property(readonly, nonatomic) CDStruct_198678f7 maximumDuration;
+@property(readonly, nonatomic) CDStruct_198678f7 idealDuration;
+@property(readonly, nonatomic) CDStruct_198678f7 minimumDuration;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) NSString *assetIdentifier;
 - (_Bool)isEqualToClip:(id <PFStoryRecipeClip>)arg1;

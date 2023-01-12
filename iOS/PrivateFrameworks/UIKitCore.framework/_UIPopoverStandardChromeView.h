@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIPopoverBackgroundView.h"
+
 @class UIColor, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPopoverStandardChromeView
+@interface _UIPopoverStandardChromeView : UIPopoverBackgroundView
 {
     _Bool useShortMode;
     _Bool _debugMode;
@@ -20,6 +22,7 @@ __attribute__((visibility("hidden")))
     UIColor *_contentBlendingColor;
 }
 
++ (double)arrowHeight;
 + (struct UIEdgeInsets)contentViewInsets;
 + (Class)legacyChromeViewClass;
 + (Class)standardChromeViewClass;

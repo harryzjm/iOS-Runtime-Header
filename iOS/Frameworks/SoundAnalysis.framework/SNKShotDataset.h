@@ -16,8 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(copy) NSArray *labels; // @synthesize labels=_labels;
-@property(copy) NSArray *embeddings; // @synthesize embeddings=_embeddings;
 
 @end
 

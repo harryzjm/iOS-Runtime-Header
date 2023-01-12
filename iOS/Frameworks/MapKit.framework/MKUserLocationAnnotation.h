@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKAnnotationPrivate-Protocol.h>
-
 @class CLLocation, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKUserLocationAnnotation : NSObject <MKAnnotationPrivate>
+@interface MKUserLocationAnnotation : NSObject
 {
     struct CLLocationCoordinate2D _coordinate;
     CLLocation *_location;

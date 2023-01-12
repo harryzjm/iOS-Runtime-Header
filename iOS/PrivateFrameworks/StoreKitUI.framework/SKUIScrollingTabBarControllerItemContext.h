@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUINavigationStackObserver-Protocol.h>
-
 @class NSString, SKUIViewControllerContainerCollectionViewCell, UIScrollView, UIViewController;
 @protocol SKUIScrollingTabBarControllerItemContextDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIScrollingTabBarControllerItemContext : NSObject <SKUINavigationStackObserver>
+@interface SKUIScrollingTabBarControllerItemContext : NSObject
 {
     _Bool _adjustingNestedPagingScrollViewContentOffset;
     struct UIEdgeInsets _appliedContentInsetsAdjustment;

@@ -20,7 +20,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *inventory;
     MISSING_TYPE *tableView;
-    MISSING_TYPE *headineService;
+    MISSING_TYPE *headlineService;
+    MISSING_TYPE *tagService;
 }
 
 - (void).cxx_destruct;

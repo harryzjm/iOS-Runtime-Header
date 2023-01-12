@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCoding-Protocol.h>
-
 @class NSData, NSString;
 
-@interface DVTRegularExpressionMatch : NSObject <NSCoding>
+@interface DVTRegularExpressionMatch : NSObject
 {
     struct _NSRange _searchRange;
     NSString *_candidateString;

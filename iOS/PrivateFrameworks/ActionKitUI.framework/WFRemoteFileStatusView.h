@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <WFRemoteFileStatusViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)setError:(id)arg1;
 - (void)setLoading;
-- (void)setEmpty;
+- (void)setEmptyWithLabel:(_Bool)arg1;
 - (void)recoveryButtonTapped;
 - (id)initWithFrame:(struct CGRect)arg1;
 

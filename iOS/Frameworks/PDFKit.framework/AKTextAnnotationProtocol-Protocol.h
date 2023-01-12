@@ -9,11 +9,13 @@
 @class NSDictionary, NSTextStorage;
 
 @protocol AKTextAnnotationProtocol <NSObject>
+@property(getter=isHighlighted) _Bool highlighted;
 @property _Bool shouldUsePlaceholderText;
 @property _Bool textIsClipped;
 @property _Bool textIsFixedHeight;
 @property _Bool textIsFixedWidth;
 @property _Bool isEditingText;
+@property unsigned long long maximumNumberOfCharacters;
 @property(copy) NSDictionary *typingAttributes;
 @property(retain) NSTextStorage *annotationText;
 @end

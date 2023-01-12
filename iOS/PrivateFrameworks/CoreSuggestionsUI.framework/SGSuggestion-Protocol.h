@@ -6,8 +6,8 @@
 
 #import <CoreSuggestionsUI/NSObject-Protocol.h>
 
-@class NSAttributedString, NSString, SGSuggestionAction, UIImage, UIViewController;
-@protocol SGSuggestionCategory, SGSuggestionDelegate;
+@class NSAttributedString, NSString, SGBannerDividerParameter, SGSuggestionAction, UIColor, UIImage, UIView, UIViewController, UIVisualEffectView;
+@protocol SGSuggestionCategory, SGSuggestionDelegate, SGSuggestionList;
 
 @protocol SGSuggestion <NSObject>
 - (SGSuggestionAction *)suggestionPrimaryAction;
@@ -16,6 +16,12 @@
 @property(nonatomic) __weak id <SGSuggestionDelegate> suggestionDelegate;
 
 @optional
+- (SGBannerDividerParameter *)suggestionDivider;
+- (UIVisualEffectView *)suggestionBackgroundVisualEffectView;
+- (UIColor *)suggestionBackgroundColor;
+- (_Bool)suggestionProminentActionButton;
+- (id <SGSuggestionList>)suggestionList;
+- (UIView *)suggestionImageSGView;
 - (UIViewController *)suggestionPrimaryActionViewController;
 - (long long)suggestionActionButtonType;
 - (UIImage *)suggestionImage;

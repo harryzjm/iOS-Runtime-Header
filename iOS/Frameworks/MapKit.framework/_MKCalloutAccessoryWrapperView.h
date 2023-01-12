@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapKit/_MKCalloutAccessoryView-Protocol.h>
-
 @class NSString;
 @protocol _MKCalloutAccessoryView;
 
 __attribute__((visibility("hidden")))
-@interface _MKCalloutAccessoryWrapperView : UIView <_MKCalloutAccessoryView>
+@interface _MKCalloutAccessoryWrapperView : UIView
 {
     UIView<_MKCalloutAccessoryView> *_view;
 }

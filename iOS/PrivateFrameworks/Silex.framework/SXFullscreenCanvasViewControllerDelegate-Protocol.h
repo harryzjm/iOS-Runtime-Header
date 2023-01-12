@@ -13,6 +13,8 @@
 - (void)fullScreenCanvasViewControllerWantsToDismiss:(SXFullscreenCanvasViewController *)arg1;
 
 @optional
+- (void)handlePreviousCommand;
+- (void)handleNextCommand;
 - (void)fullscreenCanvasViewController:(SXFullscreenCanvasViewController *)arg1 willTransitionToSize:(struct CGSize)arg2 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg3;
 @end
 

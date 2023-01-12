@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BMPublishers, NSArray;
+@class BMPublishers, NSArray, NSNumber;
 
 @protocol BMSyncableStream
 - (NSArray *)remoteDevices;
+- (BMPublishers *)publishersForRemoteDevices:(NSArray *)arg1 startTime:(NSNumber *)arg2 endTime:(NSNumber *)arg3 maxEvents:(NSNumber *)arg4 lastN:(NSNumber *)arg5 reversed:(_Bool)arg6 includeLocal:(_Bool)arg7 pipeline:(id <BPSPublisher> (^)(BMBookmarkablePublisher *))arg8;
 - (BMPublishers *)publishersForRemoteDevices:(NSArray *)arg1 startTime:(double)arg2 includeLocal:(_Bool)arg3 pipeline:(id <BPSPublisher> (^)(BMBookmarkablePublisher *))arg4;
 @end
 

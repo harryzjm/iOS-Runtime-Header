@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBAutolayoutFoundation/NSCopying-Protocol.h>
-#import <IBAutolayoutFoundation/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
-@interface IBUserDefinedRuntimeAttribute : NSObject <NSSecureCoding, NSCopying, IBBinaryArchiving>
+@interface IBUserDefinedRuntimeAttribute : NSObject
 {
     _Bool _localized;
     NSString *_typeIdentifier;

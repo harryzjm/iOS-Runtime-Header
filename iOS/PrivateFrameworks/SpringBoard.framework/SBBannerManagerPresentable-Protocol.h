@@ -12,7 +12,7 @@
 
 @optional
 - (_Bool)shouldDismissForReason:(NSString *)arg1;
-- (_Bool)shouldDismissForReason:(NSString *)arg1 outReason:(id *)arg2;
+- (_Bool)shouldDismissForReason:(NSString *)arg1 outReason:(out id *)arg2;
 - (_Bool)shouldAcquireWindowLevelAssertion;
 @end
 

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIPerspectiveView-Protocol.h>
-
 @class NSString, SKUIImageView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIParallaxImageView <SKUIPerspectiveView>
+@interface SKUIParallaxImageView
 {
     struct UIEdgeInsets _imagePadding;
     struct CGSize _imageSize;

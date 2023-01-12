@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI237SuggestionTodayFeedGroupEmitterCursor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *suggestions;
+    MISSING_TYPE *ignoredTagIDs;
 }
 
 @end

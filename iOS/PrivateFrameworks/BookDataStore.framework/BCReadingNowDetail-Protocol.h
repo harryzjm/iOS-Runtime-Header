@@ -9,6 +9,7 @@
 @class NSDate, NSString;
 
 @protocol BCReadingNowDetail <BCCloudData>
+@property(readonly, copy, nonatomic) NSString *cloudAssetType;
 @property(readonly, copy, nonatomic) NSDate *lastEngagedDate;
 @property(readonly, nonatomic) _Bool isTrackedAsRecent;
 @property(readonly, copy, nonatomic) NSString *assetID;

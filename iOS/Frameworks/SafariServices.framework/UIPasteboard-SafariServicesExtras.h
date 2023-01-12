@@ -10,9 +10,8 @@
 - (void)safari_setSensitiveString:(id)arg1;
 @property(readonly, nonatomic) _Bool safari_canPasteAndNavigate;
 - (id)safari_pasteAndNavigateCommand;
-- (id)safari_pasteAndNavigateMenuItem;
 - (id)safari_pasteAndNavigateButtonTitle;
 - (unsigned long long)safari_bestInputTypeForPastingIntoURLField;
-- (id)safari_bestStringForPastingIntoURLField;
+- (void)safari_bestStringForPastingIntoURLFieldCompletionHandler:(CDUnknownBlockType)arg1;
 @end
 

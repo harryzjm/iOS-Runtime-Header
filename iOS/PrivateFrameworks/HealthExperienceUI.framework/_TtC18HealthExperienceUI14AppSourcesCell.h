@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI16IconWithNameCellCN.h"
+
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI14AppSourcesCell
+@interface _TtC18HealthExperienceUI14AppSourcesCell : _$s18HealthExperienceUI16IconWithNameCellCN
 {
+    MISSING_TYPE *iconPublisher;
 }
 
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

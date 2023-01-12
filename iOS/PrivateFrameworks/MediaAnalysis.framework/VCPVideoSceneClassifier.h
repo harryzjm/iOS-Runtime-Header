@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, VCPSceneTaxonomy;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface VCPVideoSceneClassifier
@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _start;
     NSMutableArray *_results;
     NSMutableDictionary *_existingScenes;
-    VCPSceneTaxonomy *_sceneTaxomy;
     NSMutableDictionary *_internalFrameScenes;
     NSArray *_sceneResults;
 }

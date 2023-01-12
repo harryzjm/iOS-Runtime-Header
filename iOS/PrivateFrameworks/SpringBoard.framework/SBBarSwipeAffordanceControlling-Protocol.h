@@ -5,15 +5,13 @@
 //
 
 #import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
-#import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 
-@class SBBarSwipeAffordanceView, SBFZStackParticipant, SBHomeGestureParticipant;
+@class SBBarSwipeAffordanceView, SBFZStackParticipant;
 @protocol SBBarSwipeAffordanceControllingDelegate, SBHomeGrabberPointerClickDelegate;
 
-@protocol SBBarSwipeAffordanceControlling <SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate>
+@protocol SBBarSwipeAffordanceControlling <SBFZStackParticipantDelegate>
 @property(nonatomic) __weak id <SBHomeGrabberPointerClickDelegate> pointerClickDelegate;
 @property(readonly, nonatomic) SBFZStackParticipant *zStackParticipant;
-@property(readonly, nonatomic) SBHomeGestureParticipant *homeGestureParticipant;
 @property(nonatomic) long long activationPolicyForParticipantsBelow;
 @property(nonatomic) _Bool suppressAffordance;
 @property(nonatomic) _Bool wantsToBeActiveAffordance;

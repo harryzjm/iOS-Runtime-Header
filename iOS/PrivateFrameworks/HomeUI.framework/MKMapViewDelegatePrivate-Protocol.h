@@ -6,7 +6,7 @@
 
 #import <HomeUI/MKMapViewDelegate-Protocol.h>
 
-@class GEORouteMatch, MKAnnotationView, MKMapView, NSError, NSString, UIControl, UITouch, VKLabelMarker, VKVenueBuildingFeatureMarker, VKVenueFeatureMarker;
+@class GEORouteMatch, MKAnnotationView, MKMapView, NSError, NSString, UIControl, UITouch, VKLabelMarker, VKNavigationPuckLocationTracingEvent, VKVenueBuildingFeatureMarker, VKVenueFeatureMarker;
 
 @protocol MKMapViewDelegatePrivate <MKMapViewDelegate>
 
@@ -14,7 +14,6 @@
 - (void)mapView:(MKMapView *)arg1 didStopRespondingToGesture:(long long)arg2 zoomDirection:(long long)arg3 didDecelerate:(_Bool)arg4 tiltDirection:(long long)arg5;
 - (void)mapView:(MKMapView *)arg1 didUpdateYaw:(double)arg2;
 - (void)mapView:(MKMapView *)arg1 didChangeDisplayedFloorOrdinal:(short)arg2 forVenue:(VKVenueFeatureMarker *)arg3;
-- (void)mapView:(MKMapView *)arg1 venueCreated:(VKVenueFeatureMarker *)arg2 venueCreatedBuilding:(VKVenueBuildingFeatureMarker *)arg3;
 - (void)mapView:(MKMapView *)arg1 didChangeFocusedVenue:(VKVenueFeatureMarker *)arg2 focusedBuilding:(VKVenueBuildingFeatureMarker *)arg3;
 - (void)mapView:(MKMapView *)arg1 calloutPrimaryActionTriggeredForAnnotationView:(MKAnnotationView *)arg2;
 - (void)mapView:(MKMapView *)arg1 calloutPrimaryActionTriggeredForLabelMarker:(VKLabelMarker *)arg2;
@@ -31,7 +30,7 @@
 - (void)mapView:(MKMapView *)arg1 willStartRespondingToGesture:(long long)arg2 animated:(_Bool)arg3;
 - (void)mapViewDidStopUserInteraction:(MKMapView *)arg1;
 - (void)mapViewDidStartUserInteraction:(MKMapView *)arg1;
-- (void)mapView:(MKMapView *)arg1 didChangeMuninAvailability:(long long)arg2;
+- (void)mapView:(MKMapView *)arg1 didChangeLookAroundAvailability:(long long)arg2;
 - (void)mapView:(MKMapView *)arg1 flyoverModeWillChange:(int)arg2;
 - (void)mapView:(MKMapView *)arg1 flyoverModeDidChange:(int)arg2;
 - (void)mapView:(MKMapView *)arg1 flyoverTourLabelDidChange:(NSString *)arg2;
@@ -58,6 +57,7 @@
 - (double)mapView:(MKMapView *)arg1 shouldDelayTapResponse:(UITouch *)arg2 onAnnotationView:(MKAnnotationView *)arg3 forDuration:(double)arg4;
 - (void)mapViewDidFinishInitialUserTrackingModeAnimation:(MKMapView *)arg1;
 - (_Bool)_mapViewCanChangeUserTrackingModeWhenRegionDidChange:(MKMapView *)arg1;
+- (void)mapView:(MKMapView *)arg1 puckLocationTracingEvent:(VKNavigationPuckLocationTracingEvent *)arg2;
 - (void)mapView:(MKMapView *)arg1 arTrackingStateDidChange:(unsigned long long)arg2 reason:(unsigned long long)arg3;
 - (void)mapViewARSessionInterruptionEnded:(MKMapView *)arg1;
 - (void)mapView:(MKMapView *)arg1 arSessionWasInterrupted:(unsigned long long)arg2;

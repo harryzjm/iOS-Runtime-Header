@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationToken : NSObject <NSSecureCoding>
+@interface UIDictationToken : NSObject
 {
     _Bool _removeSpaceBefore;
     _Bool _removeSpaceAfter;

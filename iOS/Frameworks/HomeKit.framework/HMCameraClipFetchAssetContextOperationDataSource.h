@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMCameraClipFetchAssetContextOperationDataSource-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMCameraClipFetchAssetContextOperationDataSource : NSObject <HMCameraClipFetchAssetContextOperationDataSource>
+@interface HMCameraClipFetchAssetContextOperationDataSource : NSObject
 {
 }
 

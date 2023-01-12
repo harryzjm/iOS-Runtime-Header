@@ -10,6 +10,7 @@
 
 @interface _TtC18VisualIntelligence14FeatureExactor : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *mlEngineType;
     MISSING_TYPE *modelInfo;
     MISSING_TYPE *coreMLModelProvider;
 }

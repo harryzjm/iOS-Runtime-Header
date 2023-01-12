@@ -6,14 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTSimpleSerialization-Protocol.h>
-#import <DVTFoundation/DVTStringRepresentationPersistable-Protocol.h>
-#import <DVTFoundation/NSCopying-Protocol.h>
-#import <DVTFoundation/NSSecureCoding-Protocol.h>
-
 @class NSNumber, NSString, NSURL;
 
-@interface DVTDocumentLocation : NSObject <NSSecureCoding, NSCopying, DVTStringRepresentationPersistable, DVTSimpleSerialization>
+@interface DVTDocumentLocation : NSObject
 {
     NSURL *_documentURL;
     NSNumber *_timestamp;

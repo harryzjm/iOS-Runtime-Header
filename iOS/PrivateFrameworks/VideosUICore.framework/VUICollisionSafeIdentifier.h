@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUICore/NSCopying-Protocol.h>
-
 @protocol NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface VUICollisionSafeIdentifier : NSObject <NSCopying>
+@interface VUICollisionSafeIdentifier : NSObject
 {
     NSObject<NSCopying> *_rootIdentifier;
     unsigned long long _collisionCount;

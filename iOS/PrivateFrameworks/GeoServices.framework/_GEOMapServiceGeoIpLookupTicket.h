@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceGeoIpLookupTicket-Protocol.h>
+#import "GEOAbstractTicket.h"
 
 @class GEOPDPlaceRequest, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOMapServiceGeoIpLookupTicket <GEOMapServiceGeoIpLookupTicket>
+@interface _GEOMapServiceGeoIpLookupTicket : GEOAbstractTicket
 {
     GEOPDPlaceRequest *_placeRequest;
     id _requestToken;

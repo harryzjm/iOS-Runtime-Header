@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)containsBinaryPromise:(id)arg1;
 @property(readonly, nonatomic) NSMutableArray *promises;
 @property(readonly, nonatomic) NSMutableArray *binaryPromises;
+- (void)withLock:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

@@ -11,7 +11,9 @@
 @interface _TtC17PromotedContentUI15SearchAdsFacade : _TtCs12_SwiftObject
 {
     MISSING_TYPE *lock;
-    MISSING_TYPE *freqCapProvider;
+    MISSING_TYPE *runMode;
+    MISSING_TYPE *notificationQueue;
+    MISSING_TYPE *frequencyCapServiceItems;
 }
 
 @end

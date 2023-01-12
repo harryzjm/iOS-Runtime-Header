@@ -19,8 +19,11 @@
 - (void).cxx_destruct;
 - (void)calculateTextureClipBounds:(struct CGRect *)arg1 andOffset:(struct CGPoint *)arg2 withTransform:(struct CGAffineTransform *)arg3 andRectOnCanvas:(struct CGRect *)arg4 textureDescription:(id)arg5 isUsingImageTexture:(_Bool)arg6;
 - (_Bool)p_shouldUseImageTexture;
+- (id)newVideoBackgroundFillTextureWithClipBounds:(struct CGRect)arg1 offset:(struct CGPoint)arg2 transform:(struct CGAffineTransform)arg3 contentRect:(struct CGRect)arg4;
 - (struct CGImage *)newTextureMaskImageForViewScale:(double)arg1 includeFrameMask:(_Bool)arg2 maskRect:(struct CGRect *)arg3;
 - (id)textureForDescription:(id)arg1;
+- (void)p_drawBackgroundFillRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
+- (_Bool)p_hasBackgroundFill;
 - (_Bool)p_shouldRenderStroke:(id)arg1;
 - (_Bool)p_shouldRenderFrameStroke;
 - (void)p_updateFrameRep;

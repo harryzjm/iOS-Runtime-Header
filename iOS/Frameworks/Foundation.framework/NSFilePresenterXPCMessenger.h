@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSFilePresenterXPCInterface-Protocol.h>
-
 @class NSFilePresenterProxy, NSString;
 @protocol NSFilePresenter, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface NSFilePresenterXPCMessenger : NSObject <NSFilePresenterXPCInterface>
+@interface NSFilePresenterXPCMessenger : NSObject
 {
     id <NSFilePresenter> _filePresenter;
     NSObject<OS_dispatch_queue> *_queue;

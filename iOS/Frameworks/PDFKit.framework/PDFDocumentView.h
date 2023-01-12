@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PDFKit/PDFDocumentPageChangeDelegate-Protocol.h>
-#import <PDFKit/PDFPageBackgroundManagerDelegate-Protocol.h>
-#import <PDFKit/PDFTextInputDelegate-Protocol.h>
-
 @class NSString, PDFDocumentViewPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFDocumentView <PDFPageBackgroundManagerDelegate, PDFDocumentPageChangeDelegate, PDFTextInputDelegate>
+@interface PDFDocumentView
 {
     PDFDocumentViewPrivate *_private;
 }

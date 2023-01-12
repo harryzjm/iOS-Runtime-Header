@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <ClipUIServices/UITextViewDelegate-Protocol.h>
-
 @class CPSButton, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CPSPermissionView : UIView <UITextViewDelegate>
+@interface CPSPermissionView : UIView
 {
     CPSButton *_permissionButton;
     NSString *_appName;

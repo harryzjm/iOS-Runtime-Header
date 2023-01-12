@@ -6,42 +6,31 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSMutableIndexSet, NSUUID;
+@class HMIFaceprint, HMITorsoprint, NSMutableIndexSet, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface HMIPersonBlob : HMFObject
 {
-    float _personIouMax;
-    unsigned long long _personIndex;
+    HMIFaceprint *_faceprint;
+    HMITorsoprint *_torsoprint;
     NSMutableIndexSet *_personIndices;
     NSUUID *_blobID;
-    struct CGSize _frameDimensions;
-    struct CGPoint _position;
-    struct CGVector _motionMean;
-    struct CGRect _regionOfInterest;
-    struct CGRect _torsoBoundingBox;
+    CDStruct_1b6d18a9 _timeStamp;
+    struct CGRect _boundingBox;
 }
 
 - (void).cxx_destruct;
-@property(readonly) NSUUID *blobID; // @synthesize blobID=_blobID;
-@property float personIouMax; // @synthesize personIouMax=_personIouMax;
+@property(retain) NSUUID *blobID; // @synthesize blobID=_blobID;
 @property(retain) NSMutableIndexSet *personIndices; // @synthesize personIndices=_personIndices;
-@property unsigned long long personIndex; // @synthesize personIndex=_personIndex;
-@property struct CGVector motionMean; // @synthesize motionMean=_motionMean;
-@property struct CGPoint position; // @synthesize position=_position;
-@property struct CGRect torsoBoundingBox; // @synthesize torsoBoundingBox=_torsoBoundingBox;
-@property(readonly) struct CGRect regionOfInterest; // @synthesize regionOfInterest=_regionOfInterest;
-@property(readonly) struct CGSize frameDimensions; // @synthesize frameDimensions=_frameDimensions;
-- (void)_computeBlobPropertiesWithBoundingBox:(struct CGRect)arg1 dx:(float)arg2 dy:(float)arg3 motionVectors:(id)arg4 isDetection:(_Bool)arg5;
-- (_Bool)isLost;
-- (_Bool)isBijectiveToPersonBlob:(id)arg1;
-- (_Bool)isMoving;
+@property(readonly) HMITorsoprint *torsoprint; // @synthesize torsoprint=_torsoprint;
+@property(readonly) HMIFaceprint *faceprint; // @synthesize faceprint=_faceprint;
+@property(readonly) struct CGRect boundingBox; // @synthesize boundingBox=_boundingBox;
+@property(readonly) CDStruct_1b6d18a9 timeStamp; // @synthesize timeStamp=_timeStamp;
+- (id)shortDescription;
+- (_Bool)isExpiredAtTimeStamp:(CDStruct_1b6d18a9)arg1;
 - (float)similarityToPersonBlob:(id)arg1;
-- (float)sizeDistanceToPersonBlob:(id)arg1;
-- (float)boxDistanceToPersonBlob:(id)arg1;
-- (id)initWithPersonBlob:(id)arg1 motionVectors:(id)arg2 personIndex:(unsigned long long)arg3 regionOfInterest:(struct CGRect)arg4 frameDimensions:(struct CGSize)arg5;
-- (id)initWithUnrecognizablePersonEvent:(id)arg1 personIndex:(unsigned long long)arg2 regionOfInterest:(struct CGRect)arg3 frameDimensions:(struct CGSize)arg4;
-- (id)initWithNewPersonEvent:(id)arg1 motionVectors:(id)arg2 personIndex:(unsigned long long)arg3 regionOfInterest:(struct CGRect)arg4 frameDimensions:(struct CGSize)arg5;
+- (void)trackPersonBlob:(id)arg1;
+- (id)initWithNewPersonEvent:(id)arg1 timeStamp:(CDStruct_1b6d18a9)arg2;
 
 @end
 

@@ -6,16 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIObjectInspector-Protocol.h>
-#import <StoreKitUI/UITableViewDataSource-Protocol.h>
-#import <StoreKitUI/UITableViewDelegate-Protocol.h>
-#import <StoreKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, UINavigationBar, UITableView, UIView, UIVisualEffectView, _SKUIInspectablePropertySection;
 @protocol SKUIInspectableObject;
 
 __attribute__((visibility("hidden")))
-@interface SKUIObjectInspectorViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate, SKUIObjectInspector>
+@interface SKUIObjectInspectorViewController : UIViewController
 {
     id <SKUIInspectableObject> _inspectableObject;
     UIView *_contentView;

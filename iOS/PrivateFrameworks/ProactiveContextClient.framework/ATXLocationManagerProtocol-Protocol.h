@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ATXLocationOfInterest, CLLocation, CLRegion, NSDate, NSString;
+@class ATXLocationOfInterest, CLLocation, CLRegion, NSDate, NSDateInterval, NSString;
 
 @protocol ATXLocationManagerProtocol
 + (NSString *)stringForLOIType:(long long)arg1;
@@ -22,6 +22,7 @@
 - (CLLocation *)getCurrentLocation;
 - (void)invalidateLocationOfInterestCache;
 - (void)clearLocationOfInterest;
+- (void)fetchLocationsOfInterestVisitedDuring:(NSDateInterval *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchAllLocationsOfInterest:(void (^)(NSArray *, NSError *))arg1;
 - (double)distanceFromGymOfCurrentLocationInMeters;
 - (double)distanceFromSchoolOfCurrentLocationInMeters;

@@ -10,7 +10,7 @@
 
 @protocol SVDDeviceResolutionXPCInterfacing <NSObject>
 - (void)logCrossDeviceCommandFailed:(NSString *)arg1 action:(NSNumber *)arg2 reason:(NSNumber *)arg3;
-- (void)_logCrossDeviceCommandEnded:(NSString *)arg1 action:(NSNumber *)arg2 actionResult:(NSNumber *)arg3 homeKitTarget:(NSNumber *)arg4 contextProximityPairs:(NSDictionary *)arg5;
+- (void)logCrossDeviceCommandEnded:(NSString *)arg1 action:(NSNumber *)arg2 actionResult:(NSNumber *)arg3 homeKitTarget:(NSNumber *)arg4 contextProximityPairs:(NSDictionary *)arg5;
 - (void)logCrossDeviceCommandEnded:(NSString *)arg1 action:(NSNumber *)arg2 homeKitTarget:(NSNumber *)arg3 contextProximityPairs:(NSDictionary *)arg4;
 - (void)logCrossDeviceCommandEnded:(NSString *)arg1 action:(NSNumber *)arg2 contextProximityPairs:(NSDictionary *)arg3;
 - (void)logCrossDeviceCommandStarted:(NSString *)arg1 action:(NSNumber *)arg2;

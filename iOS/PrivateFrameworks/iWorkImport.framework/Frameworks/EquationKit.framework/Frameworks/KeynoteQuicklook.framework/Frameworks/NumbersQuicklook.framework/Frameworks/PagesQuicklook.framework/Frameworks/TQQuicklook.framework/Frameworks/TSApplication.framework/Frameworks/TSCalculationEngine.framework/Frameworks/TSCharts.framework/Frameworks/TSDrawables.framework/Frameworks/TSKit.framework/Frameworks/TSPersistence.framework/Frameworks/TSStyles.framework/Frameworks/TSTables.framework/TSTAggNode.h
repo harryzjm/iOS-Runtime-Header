@@ -13,11 +13,13 @@
     struct TSUCellCoord _formulaCoord;
     TSTAccumulator *_accumulator;
     NSMutableArray *_children;
+    struct TSCECellCoordSet _childrenCoordSet;
     TSTGroupNode *_groupNode;
     TSTAggregator *_aggregator;
     unsigned char _groupLevel;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned char groupLevel; // @synthesize groupLevel=_groupLevel;
 @property(readonly, nonatomic) __weak TSTAggregator *aggregator; // @synthesize aggregator=_aggregator;
@@ -25,6 +27,7 @@
 @property(retain, nonatomic) NSMutableArray *children; // @synthesize children=_children;
 @property(retain, nonatomic) TSTAccumulator *accumulator; // @synthesize accumulator=_accumulator;
 @property(readonly, nonatomic) struct TSUCellCoord formulaCoord; // @synthesize formulaCoord=_formulaCoord;
+- (void)unpackAfterUnarchiveForGroupBy:(id)arg1;
 - (void)encodeToArchive:(void *)arg1;
 - (id)initWithArchive:(const void *)arg1 aggregator:(id)arg2;
 - (void)enumerateDirectChildren:(CDUnknownBlockType)arg1;
@@ -32,6 +35,7 @@
 - (id)description;
 - (void)upgradeForNewAggregateTypes:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
 - (void)clearAggFormulas:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
+- (void)addChild:(id)arg1 skipWillModify:(_Bool)arg2;
 - (void)addChild:(id)arg1;
 - (id)initWithFormulaCoord:(struct TSUCellCoord)arg1 groupNode:(id)arg2 aggregator:(id)arg3;
 

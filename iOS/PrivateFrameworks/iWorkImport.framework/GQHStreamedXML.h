@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQHXMLOutput-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQHStreamedXML : NSObject <GQHXMLOutput>
+@interface GQHStreamedXML : NSObject
 {
     struct _xmlOutputBuffer {
         void *_field1;

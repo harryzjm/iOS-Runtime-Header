@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKitLegacy/NSURLDownloadDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebDownloadInternal : NSObject <NSURLDownloadDelegate>
+@interface WebDownloadInternal : NSObject
 {
     struct RetainPtr<id> realDelegate;
 }

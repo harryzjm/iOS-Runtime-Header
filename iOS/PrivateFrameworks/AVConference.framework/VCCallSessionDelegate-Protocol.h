@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDictionary, NSError, NSString, VCCallSession, VCCaptionsTranscription, VCVideoRule, VideoAttributes;
+@class NSData, NSDictionary, NSError, NSString, VCCallSession, VCVideoRule, VideoAttributes;
 
 @protocol VCCallSessionDelegate
 - (void)session:(VCCallSession *)arg1 didReceiveMomentsRequest:(NSDictionary *)arg2;
@@ -13,7 +13,6 @@
 - (void)session:(VCCallSession *)arg1 setRemoteBasebandCodecType:(unsigned int)arg2 sampleRate:(double)arg3;
 - (void)session:(VCCallSession *)arg1 stopAudioWithCompletionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)session:(VCCallSession *)arg1 startAudioWithFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo *)arg2 internalFrameFormat:(const struct tagVCAudioFrameFormat *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
-- (void)didReceiveCaptions:(VCCaptionsTranscription *)arg1 remoteClient:(unsigned int)arg2;
 - (_Bool)session:(VCCallSession *)arg1 stopVideoReceive:(id *)arg2 isPausing:(_Bool)arg3;
 - (_Bool)stopVideoSend:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)session:(VCCallSession *)arg1 startVideoReceive:(id *)arg2;

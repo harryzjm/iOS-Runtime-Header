@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)schedulesExpiration;
 - (long long)widgetState;
 - (id)stateName;
 

@@ -6,24 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSSecureCoding-Protocol.h>
-
-@class NSArray, VNRequestSpecifier;
-
 __attribute__((visibility("hidden")))
-@interface VNEntityIdentificationModelTrainedModel : NSObject <NSSecureCoding>
+@interface VNEntityIdentificationModelTrainedModel : NSObject
 {
-    shared_ptr_8c39738b _faceIDModel;
-    VNRequestSpecifier *_entityPrintOriginatingRequestSpecifier;
-    int _maximumElementsPerID;
-    NSArray *_entityUniqueIdentifiers;
-    NSArray *_entityPrintCounts;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)trainedModelBuiltFromConfiguration:(id)arg1 dataProvider:(id)arg2 canceller:(id)arg3 error:(id *)arg4;
-- (id).cxx_construct;
-- (void).cxx_destruct;
++ (_Bool)getStoredRepresentationTag:(unsigned int *)arg1 forModelVersion:(unsigned long long)arg2 error:(id *)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)printCountsForAllEntities;
@@ -36,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (id)predictionsForObservation:(id)arg1 limit:(unsigned long long)arg2 canceller:(id)arg3 error:(id *)arg4;
 - (id)trainingEntityPrintsForEntityWithUniqueIdentifier:(id)arg1 error:(id *)arg2;
 - (id)entityPrintOriginatingRequestSpecifier;
-- (id)initWithFaceIDModel:(shared_ptr_8c39738b)arg1 entityPrintOriginatingRequestSpecifier:(id)arg2 maximumElementsPerID:(unsigned long long)arg3 entityUniqueIdentifiers:(id)arg4 entityPrintCounts:(id)arg5;
 
 @end
 

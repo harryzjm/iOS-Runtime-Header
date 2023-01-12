@@ -7,10 +7,12 @@
 #import <EventKitUI/NSObject-Protocol.h>
 
 @class EKDayOccurrenceView, EKEvent, EKEventGestureController, UIView, UIViewController;
+@protocol CUIKEditor;
 
 @protocol EKEventGestureControllerDelegate <NSObject>
+- (id <CUIKEditor>)editorForEventGestureController:(EKEventGestureController *)arg1;
 - (_Bool)didScrollWhenEventGestureController:(EKEventGestureController *)arg1 scrollTimerFiredToMoveLeft:(_Bool)arg2 right:(_Bool)arg3 vertically:(_Bool)arg4 towardPoint:(struct CGPoint)arg5;
-- (void)eventGestureController:(EKEventGestureController *)arg1 didSingleTapOccurrence:(EKEvent *)arg2;
+- (void)eventGestureController:(EKEventGestureController *)arg1 didSingleTapOccurrence:(EKEvent *)arg2 shouldExtendSelection:(_Bool)arg3;
 - (void)eventGestureController:(EKEventGestureController *)arg1 didCancelEditingOccurrence:(EKEvent *)arg2 fadedOut:(_Bool)arg3;
 - (_Bool)eventGestureController:(EKEventGestureController *)arg1 didCommitOccurrence:(EKEvent *)arg2 toDate:(double)arg3 isAllDay:(_Bool)arg4 span:(long long)arg5;
 - (void)eventGestureController:(EKEventGestureController *)arg1 didMoveToDate:(double)arg2 isAllDay:(_Bool)arg3;
@@ -27,6 +29,7 @@
 - (EKEvent *)createEventForEventGestureController:(EKEventGestureController *)arg1;
 - (void)eventGestureController:(EKEventGestureController *)arg1 adjustDraggingView:(EKDayOccurrenceView *)arg2 forAllDay:(_Bool)arg3;
 - (EKDayOccurrenceView *)createOccurrenceViewForEventGestureController:(EKEventGestureController *)arg1;
+- (_Bool)becomeFirstResponder;
 - (void)eventGestureController:(EKEventGestureController *)arg1 requestsPresentationOfViewController:(UIViewController *)arg2;
 - (UIViewController *)currentPresentationController;
 - (double)timedRegionOriginForEventGestureController:(EKEventGestureController *)arg1;

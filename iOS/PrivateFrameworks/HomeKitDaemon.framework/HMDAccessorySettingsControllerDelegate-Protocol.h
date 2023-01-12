@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemon/NSObject-Protocol.h>
+
 @class HMDAccessorySettingsController, HMDBackingStoreModelObject, HMDRemoteDeviceMessageDestination, NSArray, NSString, NSUUID;
 
-@protocol HMDAccessorySettingsControllerDelegate
+@protocol HMDAccessorySettingsControllerDelegate <NSObject>
 - (void)languagesChangedForAccessorySettingsController:(HMDAccessorySettingsController *)arg1;
 - (HMDBackingStoreModelObject *)assistantAccessControlModelWithRemovedAccessoriesForAccessorySettingsController:(HMDAccessorySettingsController *)arg1;
 - (_Bool)isMultiUserEnabledForAccessorySettingsController:(HMDAccessorySettingsController *)arg1;

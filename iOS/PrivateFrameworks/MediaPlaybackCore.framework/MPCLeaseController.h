@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MFLeaseControlling-Protocol.h>
-
 @class MPCMediaFoundationTranslator, _MPCLeaseManager;
+@protocol MFPlaybackStackController;
 
 __attribute__((visibility("hidden")))
-@interface MPCLeaseController : NSObject <MFLeaseControlling>
+@interface MPCLeaseController : NSObject
 {
+    id <MFPlaybackStackController> _stackController;
     MPCMediaFoundationTranslator *_translator;
     _MPCLeaseManager *_leaseManager;
 }
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _MPCLeaseManager *leaseManager; // @synthesize leaseManager=_leaseManager;
 @property(readonly, nonatomic) MPCMediaFoundationTranslator *translator; // @synthesize translator=_translator;
+@property(nonatomic) __weak id <MFPlaybackStackController> stackController; // @synthesize stackController=_stackController;
 - (void)relinquishLeaseForItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestLeaseForItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithTranslator:(id)arg1 leaseManager:(id)arg2;

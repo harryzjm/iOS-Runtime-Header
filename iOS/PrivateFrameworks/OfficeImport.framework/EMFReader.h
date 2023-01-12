@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/MFReader-Protocol.h>
-
 @class EMFPlayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EMFReader : NSObject <MFReader>
+@interface EMFReader : NSObject
 {
     EMFPlayer *m_player;
 }

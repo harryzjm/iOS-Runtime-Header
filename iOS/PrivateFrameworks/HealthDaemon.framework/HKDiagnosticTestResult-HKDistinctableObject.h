@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKDiagnosticTestResult.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKDiagnosticTestResult (HKDistinctableObject) <HDCoding>
+@interface HKDiagnosticTestResult (HKDistinctableObject)
 + (_Bool)supportsDistinctByKeyPath:(id)arg1;
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;

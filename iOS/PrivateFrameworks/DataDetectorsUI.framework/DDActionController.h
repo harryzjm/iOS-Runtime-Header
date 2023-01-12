@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <DataDetectorsUI/DDActionDelegate-Protocol.h>
-#import <DataDetectorsUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-
 @class DDAction, NSString, UIAlertController, UIView, UIViewController, UIWindow;
 @protocol DDDetectionControllerInteractionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface DDActionController : NSObject <DDActionDelegate, UIPopoverPresentationControllerDelegate>
+@interface DDActionController : NSObject
 {
     UIViewController *_presentedViewController;
     UIView *_baseView;
@@ -25,6 +22,7 @@ __attribute__((visibility("hidden")))
     UIAlertController *_alertController;
 }
 
++ (_Bool)presentingBaseView:(id)arg1 isLargeEnoughForAction:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property(retain) DDAction *currentAction; // @synthesize currentAction=_currentAction;
@@ -41,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (void)action:(id)arg1 presentationShouldBeModal:(_Bool)arg2;
 - (void)action:(id)arg1 viewControllerReady:(id)arg2;
 - (void)performAction:(id)arg1;
-- (_Bool)presentingAreaIsLargeEnough;
 - (void)_dismissCurrentViewControllerOurselves;
 - (void)_presentCurrentViewControllerOurselves;
 - (void)prepareForPopoverPresentation:(id)arg1;

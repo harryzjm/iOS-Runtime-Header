@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (id)lightKeycapsFontName;
 - (_Bool)isTallPopup;
+- (double)symbolImageControlKeyFontSize;
 - (double)popupFontSize;
 - (struct CGPoint)popupSymbolTextOffset;
 - (struct CGPoint)variantAnnotationTextOffset;

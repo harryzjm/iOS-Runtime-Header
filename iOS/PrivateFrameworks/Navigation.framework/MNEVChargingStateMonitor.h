@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/VGVirtualGarageObserver-Protocol.h>
-
-@class NSDate, NSMeasurement, NSTimer;
+@class NSDate, NSMeasurement, NSString, NSTimer;
 @protocol MNEVChargingStateMonitorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MNEVChargingStateMonitor : NSObject <VGVirtualGarageObserver>
+@interface MNEVChargingStateMonitor : NSObject
 {
     id <MNEVChargingStateMonitorDelegate> _delegate;
     _Bool _isCharging;
@@ -25,14 +23,20 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MNEVChargingStateMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSMeasurement *targetBatteryCharge; // @synthesize targetBatteryCharge=_targetBatteryCharge;
-- (void)_consumeUpdatedVirtualGarage:(id)arg1 forceDelegateCallback:(_Bool)arg2;
-- (void)virtualGarageDidUpdate:(id)arg1;
+- (void)_updateForVehicle:(id)arg1 forceDelegateCallback:(_Bool)arg2;
+- (void)virtualGarageManager:(id)arg1 didUpdateSelectedVehicle:(id)arg2;
 - (void)_notifyShouldShowChargingInfo;
 - (void)_startTimer;
 - (void)updateForArrival;
 - (void)updateForLocation:(id)arg1;
 - (void)dealloc;
 - (id)initWithTargetBatteryCharge:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

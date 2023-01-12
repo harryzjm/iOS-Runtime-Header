@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/TVCarouselViewDataSource-Protocol.h>
-
 @class NSArray, NSString, UIButton, UILabel, UILayoutGuide, UIScrollView, UIStackView, _TVCarouselView;
 
 __attribute__((visibility("hidden")))
-@interface VUIAccessView_iOS : UIView <TVCarouselViewDataSource>
+@interface VUIAccessView_iOS : UIView
 {
     NSArray *_apps;
     UILayoutGuide *_titlePlacementGuide;
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
     UILabel *_titleLabel;
     UIScrollView *_bodyScroll;
     UILabel *_bodyLabel;
+    UILabel *_secondaryBodyLabel;
     UIStackView *_logoStack;
     UIStackView *_bottomStack;
     UIButton *_allowButton;
@@ -26,12 +25,10 @@ __attribute__((visibility("hidden")))
     UIButton *_seeAllButton;
     _TVCarouselView *_carouselView;
     _Bool _didLayout;
-    UIView *_privacyView;
 }
 
 + (struct CGSize)iconSize;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIView *privacyView; // @synthesize privacyView=_privacyView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)_imageViewForIndex:(unsigned long long)arg1;
 - (id)_buildLogoStack;
@@ -40,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfItemsInCarouselView:(id)arg1;
 - (void)layoutSubviews;
 - (void)showNackScreen;
+- (void)setSecondaryBody:(id)arg1;
 - (void)setBody:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (id)bodyScroll;
@@ -47,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)seeAllButton;
 - (id)allowButton;
 - (void)dealloc;
+- (void)setupView;
 - (id)initWithApps:(id)arg1;
 
 // Remaining properties

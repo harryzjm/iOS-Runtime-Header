@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDCollectionSuggestionParameters, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDMapsHomeParameters : PBCodable <NSCopying>
+@interface GEOPDMapsHomeParameters : PBCodable
 {
     PBUnknownFields *_unknownFields;
     GEOPDCollectionSuggestionParameters *_collectionSuggestionParameters;

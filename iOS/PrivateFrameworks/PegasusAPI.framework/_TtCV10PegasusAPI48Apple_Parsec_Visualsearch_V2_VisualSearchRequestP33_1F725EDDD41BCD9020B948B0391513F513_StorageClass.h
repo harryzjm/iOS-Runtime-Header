@@ -17,6 +17,7 @@
     MISSING_TYPE *_debugTweaks;
     MISSING_TYPE *_thirdPartyTeamID;
     MISSING_TYPE *_thirdPartyCatalogIds;
+    MISSING_TYPE *_queryID;
 }
 
 @end

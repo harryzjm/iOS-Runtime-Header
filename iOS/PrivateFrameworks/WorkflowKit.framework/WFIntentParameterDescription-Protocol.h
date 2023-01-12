@@ -20,7 +20,7 @@
 - (WFContentItem *)wf_contentItemForValue:(id)arg1;
 - (id <WFParameterState>)wf_parameterStateForIntentValue:(id)arg1 parameterDefinition:(NSDictionary *)arg2;
 - (void)wf_getProcessedIntentValueForParameterValue:(id)arg1 parameter:(WFParameter *)arg2 parameterState:(id <WFParameterState>)arg3 completionHandler:(void (^)(id, NSError *))arg4;
-- (void)wf_updateParameterDictionary:(NSMutableDictionary *)arg1 parameterClass:(Class)arg2;
+- (void)wf_updateParameterDictionary:(NSMutableDictionary *)arg1 parameterClass:(Class)arg2 localizer:(INStringLocalizer *)arg3;
 - (NSString *)wf_outputDisplayNameWithLocalizer:(INStringLocalizer *)arg1;
 @end
 

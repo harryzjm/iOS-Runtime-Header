@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFocusEnvironmentPreferenceEnumerationContext-Protocol.h>
-
-@class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSString, UIFocusSystem, _UIDebugLogReport;
+@class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSString, UIFocusSystem, _UIDebugLogStack;
 @protocol UIFocusEnvironment, _UIFocusEnvironmentPreferenceEnumerationContextDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusEnvironmentPreferenceEnumerationContext : NSObject <_UIFocusEnvironmentPreferenceEnumerationContext>
+@interface _UIFocusEnvironmentPreferenceEnumerationContext : NSObject
 {
     UIFocusSystem *_focusSystem;
     id <UIFocusEnvironment> _preferredSubtree;
@@ -27,14 +25,16 @@ __attribute__((visibility("hidden")))
     _Bool _cachedPrefersNothingFocused;
     id <UIFocusEnvironment> _environment;
     id <_UIFocusEnvironmentPreferenceEnumerationContextDelegate> _delegate;
-    _UIDebugLogReport *_debugReport;
+    _UIDebugLogStack *_debugStack;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _UIDebugLogReport *debugReport; // @synthesize debugReport=_debugReport;
+@property(retain, nonatomic) _UIDebugLogStack *debugStack; // @synthesize debugStack=_debugStack;
 @property(nonatomic) __weak id <_UIFocusEnvironmentPreferenceEnumerationContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) id <UIFocusEnvironment> environment; // @synthesize environment=_environment;
 - (void)_reportInferredPreferredFocusEnvironment:(id)arg1;
+- (void)_stopLogging;
+- (id)_startLogging;
 - (void)popEnvironment;
 - (void)pushEnvironment:(id)arg1;
 - (_Bool)_isAllowedToPreferEnvironment:(id)arg1;

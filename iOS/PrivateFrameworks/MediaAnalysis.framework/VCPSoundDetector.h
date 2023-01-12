@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/SNResultsObserving-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCPSoundDetector : NSObject <SNResultsObserving>
+@interface VCPSoundDetector : NSObject
 {
     NSMutableArray *_results;
     CDStruct_1b6d18a9 _activeStart;

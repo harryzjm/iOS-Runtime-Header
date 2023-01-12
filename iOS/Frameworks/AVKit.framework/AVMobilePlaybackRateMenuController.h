@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVObservationController, AVPlaybackRate, AVPlaybackRateCollection, NSArray, UIMenu;
+@class AVObservationController, AVPlaybackSpeed, AVPlaybackSpeedCollection, NSArray, UIMenu;
 
 __attribute__((visibility("hidden")))
 @interface AVMobilePlaybackRateMenuController : NSObject
@@ -14,15 +14,15 @@ __attribute__((visibility("hidden")))
     AVObservationController *_observationController;
     UIMenu *_playbackRateMenu;
     NSArray *_activeMenuItems;
-    AVPlaybackRateCollection *_activePlaybackRateCollection;
-    AVPlaybackRate *_activeSelectedPlaybackRate;
+    AVPlaybackSpeedCollection *_activePlaybackRateCollection;
+    AVPlaybackSpeed *_activeSelectedPlaybackSpeed;
     _Bool _activeMenuHasImage;
-    AVPlaybackRateCollection *_playbackRateCollection;
+    AVPlaybackSpeedCollection *_playbackSpeedCollection;
 }
 
 + (void)_loadPlaybackSpeedControlImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) AVPlaybackRateCollection *playbackRateCollection; // @synthesize playbackRateCollection=_playbackRateCollection;
+@property(retain, nonatomic) AVPlaybackSpeedCollection *playbackSpeedCollection; // @synthesize playbackSpeedCollection=_playbackSpeedCollection;
 - (void)_updatePlaybackRateMenuItemStatesIfNeeded;
 - (void)_updatePlaybackRateMenuIfNeeded;
 - (void)_reconstructPlaybackRateMenuItems;

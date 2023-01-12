@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/ICSuzeLeaseSessionDelegate-Protocol.h>
-
 @class NSMapTable, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPCSuzeLeaseSessionController : NSObject <ICSuzeLeaseSessionDelegate>
+@interface MPCSuzeLeaseSessionController : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;

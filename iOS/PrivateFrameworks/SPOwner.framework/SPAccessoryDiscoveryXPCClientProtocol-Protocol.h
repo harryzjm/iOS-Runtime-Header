@@ -9,8 +9,8 @@
 @class NSError, SPDiscoveredAccessory;
 
 @protocol SPAccessoryDiscoveryXPCClientProtocol <NSObject>
-- (oneway void)accessoryDiscoveryError:(NSError *)arg1;
-- (oneway void)lostAccessory:(SPDiscoveredAccessory *)arg1;
-- (oneway void)discoveredAccessory:(SPDiscoveredAccessory *)arg1;
+- (void)accessoryDiscoveryError:(NSError *)arg1;
+- (void)lostAccessory:(SPDiscoveredAccessory *)arg1;
+- (void)discoveredAccessory:(SPDiscoveredAccessory *)arg1;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CryptoTokenKit/TKTokenAccessUserPrompt-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface TKTokenAccessUserPromptNoop : NSObject <TKTokenAccessUserPrompt>
+@interface TKTokenAccessUserPromptNoop : NSObject
 {
     long long _preflightStatus;
 }

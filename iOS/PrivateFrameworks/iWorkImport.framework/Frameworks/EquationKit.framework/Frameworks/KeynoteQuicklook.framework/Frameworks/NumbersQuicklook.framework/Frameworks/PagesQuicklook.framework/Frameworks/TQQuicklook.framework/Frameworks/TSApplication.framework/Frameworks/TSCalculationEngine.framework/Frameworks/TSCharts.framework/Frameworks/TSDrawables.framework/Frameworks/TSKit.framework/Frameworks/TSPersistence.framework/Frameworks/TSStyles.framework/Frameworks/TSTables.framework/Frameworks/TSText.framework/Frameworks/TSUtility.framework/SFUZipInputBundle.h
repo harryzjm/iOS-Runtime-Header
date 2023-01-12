@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUInputBundle-Protocol.h>
-
 @class NSString, SFUZipArchive;
 
-@interface SFUZipInputBundle : NSObject <SFUInputBundle>
+@interface SFUZipInputBundle : NSObject
 {
     SFUZipArchive *_zipArchive;
 }

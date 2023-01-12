@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AbstractCatalogViewController.h"
+
 @class CatalogViewController;
 
 __attribute__((visibility("hidden")))
-@interface PopoverCatalogViewController
+@interface PopoverCatalogViewController : AbstractCatalogViewController
 {
     double _startPagePreferredHeight;
     CatalogViewController *_primaryCatalogViewController;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)completionsViewControllerIfLoaded;
 - (id)completionsViewController;
 - (double)requiredContentWidth;
+- (double)_preferredHeightForStartPage;
 - (void)resetStartPagePreferredHeight;
 - (void)updateStartPagePreferredContentSize;
 - (void)viewWillLayoutSubviews;

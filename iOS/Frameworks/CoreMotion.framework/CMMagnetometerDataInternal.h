@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMotion/NSCopying-Protocol.h>
-
-@interface CMMagnetometerDataInternal : NSObject <NSCopying>
+@interface CMMagnetometerDataInternal : NSObject
 {
     CDStruct_03942939 fMagneticField;
 }

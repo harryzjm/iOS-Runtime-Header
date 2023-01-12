@@ -6,14 +6,17 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSIndexSet;
+@class NSIndexSet, UIFocusMovementHint, UIFocusUpdateContext;
 @protocol PXGAXInfo;
 
 @protocol PXGAXInfoSource <NSObject>
 @property(readonly, nonatomic) NSIndexSet *axSelectedSpriteIndexes;
 @property(readonly, nonatomic) NSIndexSet *axVisibleSpriteIndexes;
 @property(readonly, nonatomic) NSIndexSet *axSpriteIndexes;
-- (_Bool)axCanFocusOnSpriteAtIndex:(unsigned int)arg1;
+- (void)axDidReceiveFocusMovementHint:(UIFocusMovementHint *)arg1 forSpriteAtIndex:(unsigned int)arg2;
+- (void)axDidUpdateFocusInContext:(UIFocusUpdateContext *)arg1;
+- (void)axDidUpdateFocusFromSpriteAtIndex:(unsigned int)arg1 toSpriteAtIndex:(unsigned int)arg2;
+- (unsigned long long)axFocusabilityForSpriteAtIndex:(unsigned int)arg1;
 - (NSIndexSet *)axSpriteIndexesInRect:(struct CGRect)arg1;
 - (unsigned int)axSpriteIndexClosestToSpriteIndex:(unsigned int)arg1 inDirection:(unsigned long long)arg2;
 - (id <PXGAXInfo>)axContentInfoAtSpriteIndex:(unsigned int)arg1;

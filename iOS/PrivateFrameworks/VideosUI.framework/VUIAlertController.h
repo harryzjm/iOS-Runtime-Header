@@ -6,12 +6,18 @@
 
 #import <UIKit/UIAlertController.h>
 
+@class NSMutableArray;
+
 __attribute__((visibility("hidden")))
 @interface VUIAlertController : UIAlertController
 {
+    NSMutableArray *_alertActions;
 }
 
 + (id)vui_alertControllerWithTitle:(id)arg1 message:(id)arg2 preferredStyle:(long long)arg3;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *alertActions; // @synthesize alertActions=_alertActions;
+- (void)vui_dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)vui_presentAlertFromPresentingController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)vui_addAction:(id)arg1;
 - (void)vui_addAction:(id)arg1 isPreferred:(_Bool)arg2;

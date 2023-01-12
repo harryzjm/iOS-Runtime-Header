@@ -6,24 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNSystemAudioAnalyzerProtocol-Protocol.h>
-
 @protocol SNSystemAudioAnalyzerXPCProtocol><NSXPCProxyCreating;
 
 __attribute__((visibility("hidden")))
-@interface SNSystemAudioAnalyzerXPCPublisher : NSObject <SNSystemAudioAnalyzerProtocol>
+@interface SNSystemAudioAnalyzerXPCPublisher : NSObject
 {
     id <SNSystemAudioAnalyzerXPCProtocol><NSXPCProxyCreating> _subscriber;
 }
 
 - (void).cxx_destruct;
 - (void)setAudioConfiguration:(id)arg1;
-- (void)stop;
-- (void)start;
 - (void)removeAllRequests;
 - (void)removeRequest:(id)arg1;
 - (_Bool)addRequest:(id)arg1 withObserver:(id)arg2 error:(id *)arg3;
-- (id)initWithSubscriber:(id)arg1;
 - (id)init;
 
 @end

@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     NSDictionary *_routeGrouping;
     NSArray *_localDevicesAndHeadphones;
     NSArray *_speakersAndTVs;
+    NSArray *_customRows;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *customRows; // @synthesize customRows=_customRows;
 @property(copy, nonatomic) NSArray *speakersAndTVs; // @synthesize speakersAndTVs=_speakersAndTVs;
 @property(copy, nonatomic) NSArray *localDevicesAndHeadphones; // @synthesize localDevicesAndHeadphones=_localDevicesAndHeadphones;
 @property(copy, nonatomic) NSDictionary *routeGrouping; // @synthesize routeGrouping=_routeGrouping;

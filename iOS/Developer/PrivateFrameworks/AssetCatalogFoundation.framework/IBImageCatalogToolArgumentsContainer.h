@@ -8,7 +8,7 @@
 
 @interface IBImageCatalogToolArgumentsContainer
 {
-    NSMutableArray *_targetDevices;
+    NSMutableArray *_targetDeviceStrings;
     NSMutableArray *_alternateAppIconNames;
     _Bool _printVersion;
     _Bool _includeDebugOutput;
@@ -22,6 +22,7 @@
     _Bool _enableOnDemandResources;
     _Bool _includeStickerContent;
     _Bool _includeAllAppIcons;
+    _Bool _skipAppStoreDeployment;
     _Bool _dumpAssets;
     _Bool _enableIncrementalDistill;
     _Bool _printSearchDescription;
@@ -39,6 +40,7 @@
     NSString *_exportDependencyInfoPath;
     NSString *_commonAssetRepositoryFileName;
     NSString *_filterForDeviceModel;
+    NSString *_filterForThinningDeviceConfiguration;
     NSString *_filterForDeviceOSVersion;
     NSString *_optimization;
     NSString *_targetName;
@@ -48,6 +50,7 @@
     NSMutableDictionary *_stringFilesByStickerPackAndLanguage;
     NSMutableDictionary *_additionalEnvironment;
     NSString *_waitDuration;
+    NSString *_agentWaitDuration;
     NSDictionary *_assetPackOutputSpecifications;
     NSString *_productType;
 }
@@ -55,6 +58,7 @@
 - (void).cxx_destruct;
 @property(copy) NSString *productType; // @synthesize productType=_productType;
 @property(copy) NSDictionary *assetPackOutputSpecifications; // @synthesize assetPackOutputSpecifications=_assetPackOutputSpecifications;
+@property(copy) NSString *agentWaitDuration; // @synthesize agentWaitDuration=_agentWaitDuration;
 @property(copy) NSString *waitDuration; // @synthesize waitDuration=_waitDuration;
 @property(retain, nonatomic) NSMutableDictionary *additionalEnvironment; // @synthesize additionalEnvironment=_additionalEnvironment;
 @property(retain, nonatomic) NSMutableDictionary *stringFilesByStickerPackAndLanguage; // @synthesize stringFilesByStickerPackAndLanguage=_stringFilesByStickerPackAndLanguage;
@@ -62,10 +66,11 @@
 @property(copy) NSString *developmentLanguage; // @synthesize developmentLanguage=_developmentLanguage;
 @property long long stickersIconRole; // @synthesize stickersIconRole=_stickersIconRole;
 @property(copy) NSString *stickerPackIdentifierPrefix; // @synthesize stickerPackIdentifierPrefix=_stickerPackIdentifierPrefix;
-@property(copy) NSArray *targetDevices; // @synthesize targetDevices=_targetDevices;
+@property(copy) NSArray *targetDeviceStrings; // @synthesize targetDeviceStrings=_targetDeviceStrings;
 @property(copy) NSString *targetName; // @synthesize targetName=_targetName;
 @property(copy) NSString *optimization; // @synthesize optimization=_optimization;
 @property(copy) NSString *filterForDeviceOSVersion; // @synthesize filterForDeviceOSVersion=_filterForDeviceOSVersion;
+@property(copy) NSString *filterForThinningDeviceConfiguration; // @synthesize filterForThinningDeviceConfiguration=_filterForThinningDeviceConfiguration;
 @property(copy) NSString *filterForDeviceModel; // @synthesize filterForDeviceModel=_filterForDeviceModel;
 @property(copy) NSString *commonAssetRepositoryFileName; // @synthesize commonAssetRepositoryFileName=_commonAssetRepositoryFileName;
 @property(copy) NSString *exportDependencyInfoPath; // @synthesize exportDependencyInfoPath=_exportDependencyInfoPath;
@@ -82,6 +87,7 @@
 @property _Bool printSearchDescription; // @synthesize printSearchDescription=_printSearchDescription;
 @property _Bool enableIncrementalDistill; // @synthesize enableIncrementalDistill=_enableIncrementalDistill;
 @property _Bool dumpAssets; // @synthesize dumpAssets=_dumpAssets;
+@property _Bool skipAppStoreDeployment; // @synthesize skipAppStoreDeployment=_skipAppStoreDeployment;
 @property _Bool includeAllAppIcons; // @synthesize includeAllAppIcons=_includeAllAppIcons;
 @property _Bool includeStickerContent; // @synthesize includeStickerContent=_includeStickerContent;
 @property long long standaloneIconBehavior; // @synthesize standaloneIconBehavior=_standaloneIconBehavior;

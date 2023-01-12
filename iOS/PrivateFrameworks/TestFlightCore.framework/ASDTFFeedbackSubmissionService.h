@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TestFlightCore/TFFeedbackSubmissionService-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ASDTFFeedbackSubmissionService : NSObject <TFFeedbackSubmissionService>
+@interface ASDTFFeedbackSubmissionService : NSObject
 {
 }
 

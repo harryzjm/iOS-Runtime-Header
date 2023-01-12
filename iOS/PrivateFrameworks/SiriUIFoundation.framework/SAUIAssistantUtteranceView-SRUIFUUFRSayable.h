@@ -6,9 +6,7 @@
 
 #import <SAObjects/SAUIAssistantUtteranceView.h>
 
-#import <SiriUIFoundation/SRUIFUUFRSayable-Protocol.h>
-
-@interface SAUIAssistantUtteranceView (SRUIFUUFRSayable) <SRUIFUUFRSayable>
+@interface SAUIAssistantUtteranceView (SRUIFUUFRSayable)
 - (id)sruif__uufrSaid;
 - (id)_uufrShownRequestedByInstrumentationManager:(id)arg1;
 - (id)sruif_insertionContext;

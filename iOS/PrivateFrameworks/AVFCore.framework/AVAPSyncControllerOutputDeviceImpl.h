@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceImpl-Protocol.h>
-
 @class NSArray, NSData, NSDictionary, NSNumber, NSString;
 @protocol AVOutputDeviceImpl, AVOutputDeviceImplSupport;
 
 __attribute__((visibility("hidden")))
-@interface AVAPSyncControllerOutputDeviceImpl : NSObject <AVOutputDeviceImpl>
+@interface AVAPSyncControllerOutputDeviceImpl : NSObject
 {
     struct OpaqueAPSyncController *_syncController;
     id <AVOutputDeviceImpl> _secondaryImpl;
@@ -25,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) id <AVOutputDeviceImpl> secondaryImpl; // @synthesize secondaryImpl=_secondaryImpl;
 @property __weak id <AVOutputDeviceImplSupport> implEventListener; // @synthesize implEventListener=_implEventListener;
 - (void)configureUsingBlock:(CDUnknownBlockType)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)supportsFitnessDataDestination;
 @property(readonly, nonatomic) _Bool canRelayCommunicationChannel;
 @property(readonly, nonatomic) _Bool canCommunicateWithAllLogicalDeviceMembers;
 @property(readonly, nonatomic) _Bool isLogicalDeviceLeader;
@@ -37,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *proposedGroupID;
 @property(readonly, copy, nonatomic) NSString *groupID;
 @property(readonly, nonatomic) _Bool canBeGrouped;
+- (void)decreaseVolumeByCount:(long long)arg1;
+- (void)increaseVolumeByCount:(long long)arg1;
 - (void)setVolume:(float)arg1;
 - (void)_volumeControlTypeDidChangeForEndpointWithID:(struct __CFString *)arg1;
 @property(readonly) long long volumeControlType;
@@ -78,8 +79,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSNumber *caseBatteryLevel;
 @property(readonly, nonatomic) NSNumber *batteryLevel;
 @property(readonly, nonatomic) NSString *clusterID;
+@property(readonly, nonatomic, getter=isEligibleToBePredictedOutputDevice) _Bool eligibleToBePredictedOutputDevice;
+@property(readonly, nonatomic, getter=isAppleAccessory) _Bool appleAccessory;
 @property(readonly, nonatomic) _Bool producesLowFidelityAudio;
 @property(readonly, nonatomic) _Bool isClusterLeader;
+@property(readonly, nonatomic) NSArray *allClusterMembers;
+@property(readonly, nonatomic) NSArray *activatedDeviceClusterMembers;
 @property(readonly, nonatomic) NSArray *clusteredDeviceDescriptions;
 @property(readonly, copy, nonatomic) NSData *identifyingMACAddress;
 @property(readonly, nonatomic) NSString *firmwareVersion;

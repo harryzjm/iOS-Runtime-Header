@@ -23,7 +23,8 @@ __attribute__((visibility("hidden")))
     struct CGRect _caretRectForCursorPosition;
 }
 
-@property(readonly, nonatomic) UIResponder<UITextInput> *inputDelegate; // @synthesize inputDelegate=_inputDelegate;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak UIResponder<UITextInput> *inputDelegate; // @synthesize inputDelegate=_inputDelegate;
 @property(retain, nonatomic) UITextRange *selectionBase; // @synthesize selectionBase=_selectionBase;
 @property(nonatomic) struct CGRect caretRectForCursorPosition; // @synthesize caretRectForCursorPosition=_caretRectForCursorPosition;
 @property(nonatomic) long long selectionGranularity; // @synthesize selectionGranularity=_selectionGranularity;
@@ -90,7 +91,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <UISelectionInteractionAssistant> selectionInteractionAssistant;
 @property(readonly, nonatomic) UITextInteractionAssistant *interactionAssistant;
 - (id)initWithInputDelegate:(id)arg1;
-- (void)dealloc;
 
 @end
 

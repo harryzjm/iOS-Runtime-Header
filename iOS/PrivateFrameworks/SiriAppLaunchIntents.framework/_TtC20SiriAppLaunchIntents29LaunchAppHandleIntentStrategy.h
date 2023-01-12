@@ -16,6 +16,9 @@
     MISSING_TYPE *analyticsService;
     MISSING_TYPE *contextService;
     MISSING_TYPE *deviceResolutionAnalytics;
+    MISSING_TYPE *appLaunchFeatureFlags;
+    MISSING_TYPE *responseGenerator;
+    MISSING_TYPE *dialogResponseUtil;
     MISSING_TYPE *remoteDevice;
 }
 

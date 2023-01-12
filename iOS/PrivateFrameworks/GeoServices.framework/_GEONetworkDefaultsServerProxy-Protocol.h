@@ -10,6 +10,6 @@
 
 @protocol _GEONetworkDefaultsServerProxy <NSObject>
 @property(nonatomic) __weak id <_GEONetworkDefaultsServerProxyDelegate> delegate;
-- (void)updateNetworkDefaults:(void (^)(NSError *))arg1;
+- (void)updateNetworkDefaultsWithReason:(unsigned long long)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end
 

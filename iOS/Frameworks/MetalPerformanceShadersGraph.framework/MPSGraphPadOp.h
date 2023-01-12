@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSGraphPadOp
+#import "MPSGraphOperation.h"
+
+@interface MPSGraphPadOp : MPSGraphOperation
 {
     long long _paddingMode;
 }

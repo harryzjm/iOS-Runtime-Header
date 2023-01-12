@@ -6,11 +6,9 @@
 
 #import <CloudKit/CKRecord.h>
 
-#import <HomeKitBackingStore/HMBModelObjectStorage-Protocol.h>
-
 @class NSString;
 
-@interface CKRecord (HMB) <HMBModelObjectStorage>
+@interface CKRecord (HMB)
 + (id)recordFromExternalData:(id)arg1 error:(id *)arg2;
 + (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
 - (id)hmbObjectForKey:(id)arg1 encrypted:(_Bool)arg2;

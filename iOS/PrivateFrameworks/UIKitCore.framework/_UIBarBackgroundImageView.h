@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView, UIView;
+#import "UIImageView.h"
+
+@class UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIBarBackgroundImageView
+@interface _UIBarBackgroundImageView : UIImageView
 {
     UIView *_topStripView;
     UIImageView *_customImageContainer;

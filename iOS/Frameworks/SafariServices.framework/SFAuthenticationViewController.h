@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/UIViewControllerTransitioningDelegate-Protocol.h>
+#import "SFSafariViewController.h"
 
 @class NSString, UIWindow, _UIFallbackPresentationViewController;
 @protocol SFAuthenticationViewControllerPresentationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFAuthenticationViewController <UIViewControllerTransitioningDelegate>
+@interface SFAuthenticationViewController : SFSafariViewController
 {
     _UIFallbackPresentationViewController *_fallbackPresentationViewController;
     NSString *_callbackURLScheme;
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentViewController;
 - (void)setDefersAddingRemoteViewController:(_Bool)arg1;
+- (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2 usingEphemeralSession:(_Bool)arg3 jitEnabled:(_Bool)arg4 presentationContextWindow:(id)arg5;
 - (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2 usingEphemeralSession:(_Bool)arg3 presentationContextWindow:(id)arg4;
 
 // Remaining properties

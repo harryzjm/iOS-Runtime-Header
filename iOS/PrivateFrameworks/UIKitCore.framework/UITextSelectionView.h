@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CAKeyframeAnimation, NSArray, UITextInteractionAssistant, UITextRangeView, UITextSelection, UIView;
+#import "UIView.h"
+
+@class CAKeyframeAnimation, NSArray, UITextContextMenuInteraction, UITextInteractionAssistant, UITextRangeView, UITextSelection, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface UITextSelectionView
+@interface UITextSelectionView : UIView
 {
     UITextInteractionAssistant *m_interactionAssistant;
     UITextSelection *m_selection;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
     _Bool m_forceRangeView;
     _Bool m_isInstalledInSelectionContainerView;
     _Bool _isIndirectFloatingCaret;
+    UITextContextMenuInteraction *_menuInteraction;
     struct CGRect _stashedCaretRect;
     struct CGRect _previousGhostCaretRect;
 }
@@ -48,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect previousGhostCaretRect; // @synthesize previousGhostCaretRect=_previousGhostCaretRect;
 @property(nonatomic) _Bool isIndirectFloatingCaret; // @synthesize isIndirectFloatingCaret=_isIndirectFloatingCaret;
 @property(nonatomic) struct CGRect stashedCaretRect; // @synthesize stashedCaretRect=_stashedCaretRect;
+@property(retain, nonatomic) UITextContextMenuInteraction *menuInteraction; // @synthesize menuInteraction=_menuInteraction;
 @property(readonly, nonatomic) _Bool isInstalledInSelectionContainerView; // @synthesize isInstalledInSelectionContainerView=m_isInstalledInSelectionContainerView;
 @property(retain, nonatomic) NSArray *replacements; // @synthesize replacements=m_replacements;
 @property(nonatomic) _Bool forceRangeView; // @synthesize forceRangeView=m_forceRangeView;
@@ -64,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)doneMagnifying;
 - (void)prepareForMagnification;
 - (void)layoutChangedByScrolling:(_Bool)arg1;
+- (struct CGRect)selectionBoundingBoxForRects:(id)arg1;
 - (struct CGRect)selectionBoundingBox;
 @property(readonly, nonatomic) UITextSelection *selection;
 @property(readonly, nonatomic) UITextRangeView *rangeView;
@@ -76,7 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)endFloatingCursor;
 - (void)endFloatingCaretView;
 - (void)animateCaret:(id)arg1 toPosition:(struct CGPoint)arg2 withSize:(struct CGSize)arg3;
-- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (struct CGPoint)floatingCursorPositionForPoint:(struct CGPoint)arg1 lineSnapping:(_Bool)arg2;
 - (struct CGPoint)floatingCursorPositionForPoint:(struct CGPoint)arg1;
@@ -119,10 +124,19 @@ __attribute__((visibility("hidden")))
 - (void)showCalloutBarAfterDelay:(double)arg1;
 - (void)cancelDelayedCommandRequests;
 - (void)updateSelectionCommands;
-- (void)_showCommandsWithReplacements:(id)arg1 isForContextMenu:(_Bool)arg2 forDictation:(_Bool)arg3 rectsToEvade:(id)arg4;
+@property(readonly, nonatomic) NSArray *replacementMenuElements;
+@property(readonly, nonatomic) _Bool _hasTextReplacements;
+- (_Bool)_editMenuDismissedByActionSelection;
+- (_Bool)_editMenuRecentlyFaded;
+- (_Bool)_editMenuIsVisible;
+@property(readonly, nonatomic) _Bool _editMenuIsVisibleOrDismissedRecently;
+@property(readonly, nonatomic) struct CGRect _editMenuTargetRect;
+- (id)_editMenuConfigurationForCurrentSelectionWithPreferredArrowDirection:(long long)arg1;
+@property(readonly, nonatomic) UIWindow *_editMenuSourceWindow;
+- (void)_showCommandsWithReplacements:(id)arg1 isForContextMenu:(_Bool)arg2 forDictation:(_Bool)arg3 arrowDirection:(long long)arg4;
 - (void)_showCommandsWithReplacements:(id)arg1 forDictation:(_Bool)arg2 afterDelay:(double)arg3;
 - (void)showCommandsWithReplacements:(id)arg1;
-- (_Bool)updateCalloutBarRects:(id)arg1 effectsWindow:(id)arg2 rectsToEvade:(id)arg3;
+- (_Bool)updateCalloutBarRects:(id)arg1 effectsWindow:(id)arg2 arrowDirection:(long long)arg3;
 @property(nonatomic) _Bool ghostAppearance;
 @property(nonatomic) _Bool caretVisible;
 @property(nonatomic) _Bool caretBlinks; // @synthesize caretBlinks=m_caretBlinks;
@@ -134,7 +148,7 @@ __attribute__((visibility("hidden")))
 - (void)deferredUpdateSelectionCommands;
 - (void)setEmphasisOnNextSelectionRects;
 - (void)deferredUpdateSelectionRects;
-- (void)wilLResume:(id)arg1;
+- (void)willResume:(id)arg1;
 - (void)didSuspend:(id)arg1;
 - (void)tintColorDidChange;
 - (void)updateSelectionRects;
@@ -145,6 +159,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_viewUsesAsynchronousProtocol;
 - (void)clearRangeAnimated:(_Bool)arg1;
 - (void)removeFromSuperview;
+- (void)willMoveToWindow:(id)arg1;
 - (void)textSelectionViewActivated:(id)arg1;
 - (void)selectionDidTranslateForReachability:(id)arg1;
 - (void)selectionWillTranslateForReachability:(id)arg1;

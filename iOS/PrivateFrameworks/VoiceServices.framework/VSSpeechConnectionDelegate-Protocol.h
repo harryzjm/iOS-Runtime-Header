@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSError, NSString, VSAudioData, VSInstrumentMetrics, VSPresynthesizedAudioRequest, VSSpeechConnection, VSSpeechRequest;
+@class NSArray, NSError, NSString, VSAudioData, VSInstrumentMetrics, VSPresynthesizedAudioRequest, VSPreviewRequest, VSSpeechConnection, VSSpeechRequest;
 
 @protocol VSSpeechConnectionDelegate
 - (void)connection:(VSSpeechConnection *)arg1 invalidatedWithError:(NSError *)arg2;
+- (void)connection:(VSSpeechConnection *)arg1 previewRequestDidStartPlaying:(VSPreviewRequest *)arg2;
 - (void)connection:(VSSpeechConnection *)arg1 presynthesizedAudioRequest:(VSPresynthesizedAudioRequest *)arg2 successWithInstrumentMetrics:(VSInstrumentMetrics *)arg3 error:(NSError *)arg4;
 - (void)connection:(VSSpeechConnection *)arg1 presynthesizedAudioRequest:(VSPresynthesizedAudioRequest *)arg2 didStopAtEnd:(_Bool)arg3 error:(NSError *)arg4;
 - (void)connection:(VSSpeechConnection *)arg1 presynthesizedAudioRequestDidStart:(VSPresynthesizedAudioRequest *)arg2;

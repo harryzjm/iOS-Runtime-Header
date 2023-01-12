@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSFastEnumeration-Protocol.h>
-
 @class NSISEngine;
 
-@interface NSISLinearExpression : NSObject <NSFastEnumeration>
+@interface NSISLinearExpression : NSObject
 {
     NSISEngine *engine;
     CDStruct_9ac54d62 linExp;

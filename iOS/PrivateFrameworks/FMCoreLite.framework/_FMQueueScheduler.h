@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FMCoreLite/FMScheduler-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _FMQueueScheduler : NSObject <FMScheduler>
+@interface _FMQueueScheduler : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
 }

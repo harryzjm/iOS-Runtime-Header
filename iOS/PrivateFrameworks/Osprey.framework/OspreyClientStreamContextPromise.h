@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Osprey/OspreyClientStreamingContext-Protocol.h>
-
 @class NSString, OspreyDeferredObject;
 
 __attribute__((visibility("hidden")))
-@interface OspreyClientStreamContextPromise : NSObject <OspreyClientStreamingContext>
+@interface OspreyClientStreamContextPromise : NSObject
 {
     OspreyDeferredObject *_deferredContext;
 }

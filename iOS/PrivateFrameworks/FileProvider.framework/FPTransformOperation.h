@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "FPActionOperation.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface FPTransformOperation
+@interface FPTransformOperation : FPActionOperation
 {
     NSArray *_items;
     CDUnknownBlockType _transformCompletionBlock;

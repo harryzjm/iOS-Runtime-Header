@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class _UINavigationBarVisualProviderLegacyIOS;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarLegacyContentView
+@interface _UINavigationBarLegacyContentView : UIView
 {
     _UINavigationBarVisualProviderLegacyIOS *_visualProvider;
 }

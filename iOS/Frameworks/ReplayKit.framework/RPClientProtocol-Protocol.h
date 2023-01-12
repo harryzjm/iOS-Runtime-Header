@@ -9,6 +9,8 @@
 @class NSData, NSDictionary, NSError, NSString, NSURL, RPIOSurfaceObject;
 
 @protocol RPClientProtocol <NSObject>
+
+@optional
 - (oneway void)recordingTimerDidUpdate:(NSString *)arg1;
 - (oneway void)recordingDidPause;
 - (oneway void)shouldResumeSessionType:(NSString *)arg1;

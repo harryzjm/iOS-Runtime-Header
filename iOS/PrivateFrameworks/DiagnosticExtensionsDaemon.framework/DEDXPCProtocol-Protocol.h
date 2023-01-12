@@ -6,9 +6,10 @@
 
 #import <DiagnosticExtensionsDaemon/NSObject-Protocol.h>
 
-@class DEDBugSessionConfiguration, DEDDevice, NSArray, NSDate, NSDictionary, NSError, NSString;
+@class DEDBugSessionConfiguration, DEDDevice, NSArray, NSData, NSDate, NSDictionary, NSError, NSSet, NSString;
 
 @protocol DEDXPCProtocol <NSObject>
+- (void)xpc_forceRemoveNotificationOfType:(long long)arg1 identifier:(NSString *)arg2 hostIdentifier:(NSString *)arg3;
 - (void)xpc_listClientXPCConnectionsReply:(NSArray *)arg1;
 - (void)xpc_listClientXPCConnections;
 - (void)xpc_didStartBugSessionWithInfo:(NSDictionary *)arg1;
@@ -27,6 +28,9 @@
 - (void)xpc_ping;
 
 @optional
+- (void)xpc_didLoadTextDataForExtensions:(NSSet *)arg1 localization:(NSString *)arg2 sessionID:(NSString *)arg3;
+- (void)xpc_loadTextDataForExtensions:(NSSet *)arg1 localization:(NSString *)arg2 sessionID:(NSString *)arg3;
+- (void)xpc_addData:(NSData *)arg1 withFilename:(NSString *)arg2 forSession:(NSString *)arg3;
 - (void)xpc_cancelNotifySession:(NSString *)arg1;
 - (void)xpc_notifySession:(NSString *)arg1;
 - (void)xpc_didCancelSession:(NSString *)arg1;

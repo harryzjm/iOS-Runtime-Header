@@ -8,7 +8,6 @@
 
 @protocol TSTStrokeLayerEnumerating
 @property(readonly) unsigned long long strokeLayerCount;
-- (void)replaceStrokeLayerAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (TSTStrokeLayer *)strokeLayerAtIndex:(unsigned long long)arg1;
 @end
 

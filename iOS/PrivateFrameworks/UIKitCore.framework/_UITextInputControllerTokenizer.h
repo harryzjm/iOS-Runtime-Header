@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITextInputStringTokenizer.h"
+
 @class UITextInputController;
 
 __attribute__((visibility("hidden")))
-@interface _UITextInputControllerTokenizer
+@interface _UITextInputControllerTokenizer : UITextInputStringTokenizer
 {
     UITextInputController *_textInput;
     struct __CFStringTokenizer *_tokenizer;
-    struct {
-        long long location;
-        long long length;
-    } _tokenizerRange;
+    CDStruct_627e0f85 _tokenizerRange;
     int _tokenizerType;
     _Bool _tokenizerIsInvalid;
+    struct __CFStringTokenizer *_wordTokenizer;
+    CDStruct_627e0f85 _wordTokenizerRange;
+    _Bool _wordTokenizerIsInvalid;
 }
 
 - (void).cxx_destruct;

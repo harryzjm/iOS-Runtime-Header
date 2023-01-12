@@ -4,14 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNPolicy.h"
+
 __attribute__((visibility("hidden")))
-@interface CNiOSABPolicy
+@interface CNiOSABPolicy : CNPolicy
 {
     void *_iOSABPolicy;
     void *_fakePerson;
     _Bool _abSourceIsContentReadonly;
 }
 
++ (_Bool)supportsSecureCoding;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (_Bool)isEqualToPolicy:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (_Bool)shouldRemoveContact:(id)arg1;
 - (_Bool)shouldAddContact:(id)arg1;
 - (_Bool)shouldSetValue:(id)arg1 property:(id)arg2 contact:(id)arg3 replacementValue:(id *)arg4;

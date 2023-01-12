@@ -6,11 +6,11 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 #import <SpringBoardHome/SBHLegibility-Protocol.h>
-#import <SpringBoardHome/SBHOccludable-Protocol.h>
+#import <SpringBoardHome/SBHVisibleContentPresenter-Protocol.h>
 
 @protocol SBIconListViewQuerying, SBIconLocationPresenting, SBIconViewQuerying;
 
-@protocol SBHRootFolderCustomViewPresenting <NSObject, SBHLegibility, SBHOccludable>
+@protocol SBHRootFolderCustomViewPresenting <NSObject, SBHLegibility, SBHVisibleContentPresenter>
 
 @optional
 @property(readonly) id <SBIconListViewQuerying> iconListViewQueryable;

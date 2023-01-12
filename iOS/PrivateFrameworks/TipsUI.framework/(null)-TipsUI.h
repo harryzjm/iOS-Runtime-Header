@@ -5,7 +5,8 @@
 //
 
 @interface (null) (TipsUI)
-+ (id)sharedInstance;
-+ (id)shared;
+- (void)appControllerNetworkStateDidChangeToReachable:(id)arg1;
+- (void)appController:(id)arg1 loadingContent:(_Bool)arg2;
+- (void)appControllerContentUpdated:(id)arg1;
 @end
 

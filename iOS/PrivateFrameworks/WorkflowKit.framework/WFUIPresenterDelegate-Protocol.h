@@ -6,13 +6,15 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class WFDialogRequest, WFWorkflowRunningContext;
+@class NSNumber, WFDialogRequest, WFWorkflowRunningContext;
 
 @protocol WFUIPresenterDelegate <NSObject>
 
 @optional
 - (void)presenterWillDismissPresentedContent;
-- (void)presenterDidReceiveSuspendedResponseForRequest:(WFDialogRequest *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 withCompletionHandler:(void (^)(WFDialogResponse *))arg3;
-- (void)presenterWillShowRequest:(WFDialogRequest *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 withCompletionHandler:(void (^)(WFDialogResponse *))arg3;
+- (void)presenterRequestedWorkflowPauseForContext:(WFWorkflowRunningContext *)arg1 dialogRequest:(WFDialogRequest *)arg2;
+- (void)presenterDidResumeDialogPresentationWithQueuedDialogs:(NSNumber *)arg1;
+- (void)presenterDidReceiveSuspendedResponseForRequest:(WFDialogRequest *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 withCompletionHandler:(void (^)(WFDialogResponse *, NSError *))arg3;
+- (_Bool)presenterWillShowRequest:(WFDialogRequest *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 withCompletionHandler:(void (^)(WFDialogResponse *, NSError *))arg3;
 @end
 

@@ -4,8 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSData, NSObject;
+
 @protocol _TtP14FamilyControls19FamilyControlsAgent_
+- (void)getRemoteContentForActivitySlotWithSlotID:(long long)arg1 slotStyle:(NSObject *)arg2 slotType:(long long)arg3 tokenToPresent:(NSData *)arg4 tokenType:(long long)arg5:(void (^)(NSObject *, NSError *))arg6;
 - (void)revokeAuthorization:(void (^)(NSNumber *, NSError *))arg1;
-- (void)requestAuthorization:(void (^)(NSNumber *, NSError *))arg1;
+- (void)requestAuthorizationFor:(long long)arg1:(void (^)(NSNumber *, NSError *))arg2;
 @end
 

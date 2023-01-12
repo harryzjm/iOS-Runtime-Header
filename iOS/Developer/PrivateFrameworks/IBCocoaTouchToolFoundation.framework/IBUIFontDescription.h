@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCoding-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface IBUIFontDescription : NSObject <NSCopying, NSCoding, IBBinaryArchiving>
+@interface IBUIFontDescription : NSObject
 {
     long long _type;
     long long _size;
@@ -34,6 +30,7 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)isSystemFont;
 - (id)displayName;
+@property(readonly, nonatomic) unsigned int symbolicTraits;
 @property(readonly) NSString *textStyle;
 @property(readonly) double pointSize;
 @property(readonly) NSString *family;

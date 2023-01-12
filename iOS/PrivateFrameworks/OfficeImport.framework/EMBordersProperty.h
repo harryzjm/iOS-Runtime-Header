@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class OITSUColor;
 
 __attribute__((visibility("hidden")))
-@interface EMBordersProperty <NSCopying>
+@interface EMBordersProperty
 {
     OITSUColor *mBorderColor;
     OITSUColor *mBorderTopColor;

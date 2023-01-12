@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UITextEffectsOrdering-Protocol.h>
+#import "UIView.h"
 
 @class _UIPopoverView;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyboardPopover <UITextEffectsOrdering>
+@interface _UIKeyboardPopover : UIView
 {
     _UIPopoverView *_popoverView;
 }

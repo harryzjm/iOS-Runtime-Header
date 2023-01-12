@@ -7,8 +7,9 @@
 @class CKVSearchCriteria, CKVTokenChain, NSArray, NSString;
 
 @protocol CKVSearchService
-- (NSArray *)matchSpansWithString:(NSString *)arg1;
+- (NSArray *)matchSpansOfString:(NSString *)arg1;
 - (NSArray *)matchSpansWithTokenChain:(CKVTokenChain *)arg1;
 - (NSArray *)searchFTSWithCriteria:(CKVSearchCriteria *)arg1 error:(id *)arg2;
+- (void)prewarmSpanMatcher;
 @end
 

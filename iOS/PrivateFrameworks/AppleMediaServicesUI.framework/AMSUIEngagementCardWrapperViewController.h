@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/PRXCardContentProviding-Protocol.h>
+#import "AMSUICommonViewController.h"
 
 @class NSString, UINavigationController, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIEngagementCardWrapperViewController <PRXCardContentProviding>
+@interface AMSUIEngagementCardWrapperViewController : AMSUICommonViewController
 {
     long long _presentationStyle;
     UIViewController *_viewController;

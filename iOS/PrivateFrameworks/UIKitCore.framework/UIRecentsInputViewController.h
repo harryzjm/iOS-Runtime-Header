@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITableViewController.h"
+
 @class NSLayoutConstraint, NSString, UILexicon, UIView, UIViewController;
 @protocol UIRecentsInputViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIRecentsInputViewController
+@interface UIRecentsInputViewController : UITableViewController
 {
     _Bool _canManageList;
     id <UIRecentsInputViewControllerDelegate> _recentInputDelegate;

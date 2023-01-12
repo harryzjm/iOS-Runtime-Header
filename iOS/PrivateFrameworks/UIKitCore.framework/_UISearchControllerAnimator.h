@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchControllerAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface _UISearchControllerAnimator : NSObject
 {
 }
 
+- (_Bool)wantsKeyboardFocusGuides;
 - (void)willFocusOffscreenViewForController:(id)arg1 withHeading:(unsigned long long)arg2;
 - (void)didUnfocusSearchBarForController:(id)arg1;
 - (void)didFocusSearchBarForController:(id)arg1;

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _group;
     _Bool _updatingState;
     _Bool _stateUpdateCancelled;
+    _Bool _fitsInCache;
     NSUUID *_identifier;
     NSMutableSet *_groupMembers;
     UIImage *_snapshot;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool fitsInCache; // @synthesize fitsInCache=_fitsInCache;
 @property(nonatomic) _Bool stateUpdateCancelled; // @synthesize stateUpdateCancelled=_stateUpdateCancelled;
 @property(nonatomic, getter=isUpdatingState) _Bool updatingState; // @synthesize updatingState=_updatingState;
 @property(nonatomic) long long state; // @synthesize state=_state;

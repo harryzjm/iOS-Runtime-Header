@@ -10,7 +10,7 @@
 
 @interface _TtC15SeymourServices11AdminSystem : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *credentialsStore;
+    MISSING_TYPE *persistenceStore;
     MISSING_TYPE *privateServerEndpoint;
     MISSING_TYPE *publicServerEndpoint;
     MISSING_TYPE *scoreServer;

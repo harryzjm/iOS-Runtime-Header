@@ -11,11 +11,12 @@ __attribute__((visibility("hidden")))
 
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)_drawInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 effect:(id)arg3;
-- (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
+- (void)_drawWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3 effect:(id)arg4;
+- (void)_prepareForDrawingWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3;
 - (id)renditionWithSize:(struct CGSize)arg1 scale:(double)arg2 applyingEffect:(id)arg3;
 - (struct CGSize)size;
 - (struct CGSize)sizeInPixels;
+- (_Bool)canEmitDrawingCommands;
 - (_Bool)canScaleImageToTargetResolution;
 - (_Bool)canDrawImage;
 

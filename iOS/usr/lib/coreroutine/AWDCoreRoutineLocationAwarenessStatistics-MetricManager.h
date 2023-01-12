@@ -6,11 +6,9 @@
 
 #import <AWDSupportFramework/AWDCoreRoutineLocationAwarenessStatistics.h>
 
-#import <coreroutine/RTMetricManagerMetricIdProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AWDCoreRoutineLocationAwarenessStatistics (MetricManager) <RTMetricManagerMetricIdProtocol>
+@interface AWDCoreRoutineLocationAwarenessStatistics (MetricManager)
 - (_Bool)valid:(id *)arg1;
 - (long long)metricId;
 - (id)_init;

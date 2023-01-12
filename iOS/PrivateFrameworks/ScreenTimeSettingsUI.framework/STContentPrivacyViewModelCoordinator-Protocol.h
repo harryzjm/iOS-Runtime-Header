@@ -10,6 +10,7 @@
 
 @protocol STContentPrivacyViewModelCoordinator <NSObject>
 @property(readonly, nonatomic) STContentPrivacyViewModel *viewModel;
+- (void)loadValuesByRestrictionWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)saveCommunicationLimits:(STCommunicationLimits *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)saveRestrictionValue:(id)arg1 forItem:(STRestrictionItem *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)saveValuesForRestrictions:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;

@@ -6,15 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class CPSVibrantLabel, NSString;
+@class CPSButton, CPSVibrantLabel, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CPSAppClipUnavailableView : UIView
 {
     CPSVibrantLabel *_reasonLabel;
+    CPSButton *_fallbackOpenButton;
+    CDUnknownBlockType _fallbackURLAction;
 }
 
 - (void).cxx_destruct;
+- (void)_openButtonTapped:(id)arg1;
+- (void)enableURLFallbackWithAction:(CDUnknownBlockType)arg1;
 @property(nonatomic) NSString *reasonString;
 - (void)_setUpViews;
 - (id)initWithFrame:(struct CGRect)arg1;

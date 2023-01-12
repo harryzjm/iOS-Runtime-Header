@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCAppOfferStateDelegate-Protocol.h>
-
 @class NSString;
 @protocol ASCAppOfferStateDelegate;
 
 __attribute__((visibility("hidden")))
-@interface ASCAppOfferStateDelegateProxy : NSObject <ASCAppOfferStateDelegate>
+@interface ASCAppOfferStateDelegateProxy : NSObject
 {
     id <ASCAppOfferStateDelegate> _target;
 }

@@ -17,12 +17,15 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_updateTimer;
     _Bool _googleConfigurationDidChange;
     _Bool _tencentConfigurationDidChange;
+    _Bool _appleConfigurationDidChange;
     ProviderConfiguration *_googleProviderConfiguration;
     ProviderConfiguration *_tencentProviderConfiguration;
+    ProviderConfiguration *_appleProviderConfiguration;
 }
 
 + (id)sharedController;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) ProviderConfiguration *appleProviderConfiguration; // @synthesize appleProviderConfiguration=_appleProviderConfiguration;
 @property(readonly, nonatomic) ProviderConfiguration *tencentProviderConfiguration; // @synthesize tencentProviderConfiguration=_tencentProviderConfiguration;
 @property(readonly, nonatomic) ProviderConfiguration *googleProviderConfiguration; // @synthesize googleProviderConfiguration=_googleProviderConfiguration;
 - (_Bool)forceUpdateConfigurationFromServer;

@@ -10,7 +10,11 @@
 {
 }
 
++ (_Bool)shouldEnableDynamicBackgroundMultisampling;
++ (_Bool)shouldEnableFullSpeedDynamicBackgrounds;
 + (_Bool)shouldEnableAnimationPluginDevelopment;
++ (_Bool)isRandomNumberSeedAlwaysZero;
++ (_Bool)isRandomNumberSeedAlwaysRandom;
 + (_Bool)shouldDisableViewScaling;
 + (_Bool)isDiscreteGPUAquisitionDisabled;
 + (_Bool)isDiscreteGPUNeededInShow:(id)arg1;
@@ -20,6 +24,8 @@
 + (id)CAAccelerationFromSFXActionAcceleration:(unsigned long long)arg1;
 + (_Bool)isMotionBlurCapableWithAnimationContext:(id)arg1;
 + (id)videoControllerSignpostLog;
++ (_Bool)willPluginClassAllowBlendingMotionBackgrounds:(Class)arg1;
++ (_Bool)allowBlendingMotionBackgroundsDefaultValue;
 + (_Bool)isCustomEffectTimingCurveEditingEnabled;
 + (_Bool)shouldForceDisplayPreferredMode;
 + (_Bool)isSOATSImageExportTestEnabled;

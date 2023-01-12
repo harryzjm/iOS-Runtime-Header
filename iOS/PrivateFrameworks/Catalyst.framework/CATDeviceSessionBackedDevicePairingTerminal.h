@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATSharingDevicePairingTerminal-Protocol.h>
-
 @class CATSharingDevice, NSString;
 @protocol CATSharingDeviceSession;
 
 __attribute__((visibility("hidden")))
-@interface CATDeviceSessionBackedDevicePairingTerminal : NSObject <CATSharingDevicePairingTerminal>
+@interface CATDeviceSessionBackedDevicePairingTerminal : NSObject
 {
     id <CATSharingDeviceSession> mDeviceSession;
     CDUnknownBlockType mVerifyPairingCompletion;

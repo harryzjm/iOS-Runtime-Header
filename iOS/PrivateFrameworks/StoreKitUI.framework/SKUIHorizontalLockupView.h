@@ -4,19 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIItemOfferButtonDelegate-Protocol.h>
-#import <StoreKitUI/SKUIMediaPlayerObserver-Protocol.h>
-#import <StoreKitUI/SKUIOfferViewDelegate-Protocol.h>
-#import <StoreKitUI/SKUIPerspectiveView-Protocol.h>
-#import <StoreKitUI/SKUIPreviewContainerView-Protocol.h>
-#import <StoreKitUI/SKUIToggleButtonDelegate-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-#import <StoreKitUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSHashTable, NSMapTable, NSMutableArray, NSString, SKUIBadgeViewElement, SKUIGradientView, SKUIHorizontalLockupLayout, SKUILockupViewElement, SKUIPlayButton, SKUIPreviewProgressIndicator, SUPlayerStatus, UIColor, UITapGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIHorizontalLockupView <SKUIItemOfferButtonDelegate, SKUIOfferViewDelegate, SKUIMediaPlayerObserver, SKUIToggleButtonDelegate, UIGestureRecognizerDelegate, SKUIPerspectiveView, SKUIPreviewContainerView, SKUIViewElementView>
+@interface SKUIHorizontalLockupView
 {
     NSHashTable *_artworkRelatedChildViewElementViews;
     SKUIBadgeViewElement *_badge;

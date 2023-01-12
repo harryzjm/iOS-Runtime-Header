@@ -18,11 +18,6 @@ struct CC_SHA256state_st {
     unsigned int wbuf[16];
 };
 
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -33,6 +28,6 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 

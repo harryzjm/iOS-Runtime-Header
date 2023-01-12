@@ -10,6 +10,8 @@
 @protocol ASCCredentialProtocol, ASCLoginChoiceProtocol;
 
 @protocol ASCredentialRequestPaneViewControllerDelegate <NSObject>
+- (void)requestPaneViewControllerStartCABLEAuthentication:(ASCredentialRequestPaneViewController *)arg1;
+- (void)requestPaneViewControllerPresentExpandedLoginChoiceInterface:(ASCredentialRequestPaneViewController *)arg1;
 - (void)requestPaneViewControllerPresentManualPasswordEntryInterface:(ASCredentialRequestPaneViewController *)arg1;
 - (void)requestPaneViewControllerRequiresPINEntryInterface:(ASCredentialRequestPaneViewController *)arg1;
 - (void)requestPaneViewController:(ASCredentialRequestPaneViewController *)arg1 didRequestCredentialForLoginChoice:(id <ASCLoginChoiceProtocol>)arg2 authenticatedContext:(LAContext *)arg3 completionHandler:(void (^)(id <ASCCredentialProtocol>, NSError *))arg4;

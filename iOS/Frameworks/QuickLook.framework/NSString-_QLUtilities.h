@@ -8,6 +8,5 @@
 
 @interface NSString (_QLUtilities)
 + (unsigned long long)ql_pdfSearchOptions;
-+ (id)formattedStringForByteCount:(long long)arg1;
 @end
 

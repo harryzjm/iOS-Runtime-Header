@@ -11,6 +11,7 @@
 @protocol QLRemotePopoverTracker;
 
 @protocol QLPreviewItemViewControllerDelegate <NSObject, UIGestureRecognizerDelegate>
+- (void)previewItemViewController:(QLItemViewController *)arg1 wantsToUpdatePreviewItemDisplayState:(NSDictionary *)arg2;
 - (void)previewItemViewController:(QLItemViewController *)arg1 wantsToUpdateStateRestorationWithUserInfo:(NSDictionary *)arg2;
 - (long long)dragDataOwnerForPreviewItemViewController:(QLItemViewController *)arg1;
 - (void)previewItemViewControllerDidHandOverLock:(QLItemViewController *)arg1;
@@ -32,6 +33,7 @@
 - (void)previewItemViewControllerWantsUpdateOverlay:(QLItemViewController *)arg1 animated:(_Bool)arg2;
 - (void)previewItemViewController:(QLItemViewController *)arg1 wantsToShowShareSheetWithPopoverTracker:(id <QLRemotePopoverTracker>)arg2 customSharedURL:(NSURL *)arg3 dismissCompletion:(void (^)(void))arg4;
 - (void)previewItemViewControllerWantsToShowShareSheet:(QLItemViewController *)arg1;
+- (void)previewItemViewController:(QLItemViewController *)arg1 wantsToSetRemoteEdgePanGestureWidth:(double)arg2;
 - (void)previewItemViewController:(QLItemViewController *)arg1 wantsFullScreen:(_Bool)arg2;
 - (void)previewItemViewController:(QLItemViewController *)arg1 didFailWithError:(NSError *)arg2;
 @end

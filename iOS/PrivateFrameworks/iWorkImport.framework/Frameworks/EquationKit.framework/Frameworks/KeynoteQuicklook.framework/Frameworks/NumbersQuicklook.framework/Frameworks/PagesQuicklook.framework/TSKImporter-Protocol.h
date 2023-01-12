@@ -7,7 +7,7 @@
 #import <PagesQuicklook/NSObject-Protocol.h>
 
 @class NSArray, NSString, NSURL, NSUUID, TSKDocumentRoot, TSUImage, TSUProgressContext;
-@protocol TSDImportExportDelegate;
+@protocol TSKImportExportDelegate;
 
 @protocol TSKImporter <NSObject>
 - (void)setProgressContext:(TSUProgressContext *)arg1;
@@ -16,7 +16,7 @@
 - (NSString *)initialTemplateName;
 - (void)quit;
 - (void)cancel;
-- (_Bool)importToDocumentRoot:(TSKDocumentRoot *)arg1 delegate:(id <TSDImportExportDelegate>)arg2 error:(id *)arg3;
+- (_Bool)importToDocumentRoot:(TSKDocumentRoot *)arg1 delegate:(id <TSKImportExportDelegate>)arg2 error:(id *)arg3;
 - (void)setURL:(NSURL *)arg1;
 - (id)initWithURL:(NSURL *)arg1;
 
@@ -27,7 +27,7 @@
 - (NSArray *)buildVersionHistory;
 - (void)willStartThemeOnlyImportWithDocumentRoot:(TSKDocumentRoot *)arg1;
 - (_Bool)importStartsWithThemeOnly;
-- (_Bool)postprocessRegularDocumentRoot:(TSKDocumentRoot *)arg1 delegate:(id <TSDImportExportDelegate>)arg2;
+- (_Bool)postprocessRegularDocumentRoot:(TSKDocumentRoot *)arg1 delegate:(id <TSKImportExportDelegate>)arg2;
 - (unsigned long long)initialVariantIndex;
 @end
 

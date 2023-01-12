@@ -35,6 +35,7 @@
 
 + (id)createCSR:(id)arg1 email:(id)arg2 error:(id *)arg3;
 + (id)_dateFromCertificateValues:(id)arg1 forOID:(id)arg2;
++ (id)DVTSigningCertificateKindsForDevelopment;
 + (id)serialNumberFromCertificate:(struct __SecCertificate *)arg1;
 + (id)issueDateForCertificate:(struct __SecCertificate *)arg1;
 + (id)iOS_certificateKindsFromCertificate:(struct __SecCertificate *)arg1;

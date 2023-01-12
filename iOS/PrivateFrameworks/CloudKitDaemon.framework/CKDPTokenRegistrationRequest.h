@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPTokenRegistrationBody;
 
-@interface CKDPTokenRegistrationRequest : PBRequest <NSCopying>
+@interface CKDPTokenRegistrationRequest : PBRequest
 {
     CKDPTokenRegistrationBody *_tokenRegistrationBody;
 }

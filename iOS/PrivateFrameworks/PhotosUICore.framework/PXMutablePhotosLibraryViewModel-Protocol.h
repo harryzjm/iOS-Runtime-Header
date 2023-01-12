@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSMutableSet, NSNumber, NSSet, PXAssetCollectionReference, PXAssetReference, PXContentFilterState, PXCuratedLibraryAssetCollectionSkimmingInfo, PXGView;
+@class NSMutableSet, NSNumber, NSSet, PXAssetCollectionReference, PXAssetReference, PXContentFilterState, PXCuratedLibraryAssetCollectionSkimmingInfo, PXGView, PXLibraryFilterState;
 @protocol PXCuratedLibraryViewModelPresenter;
 
 @protocol PXMutablePhotosLibraryViewModel <NSObject>
@@ -16,7 +16,7 @@
 @property(retain, nonatomic) Class cplActionManagerClass;
 @property(nonatomic) _Bool wantsDarkStatusBar;
 @property(nonatomic) _Bool wantsOptionalChromeVisible;
-@property(copy, nonatomic) PXContentFilterState *allPhotosContentFilterState;
+@property(copy, nonatomic) PXLibraryFilterState *libraryFilterState;
 @property(nonatomic) long long zoomLevel;
 @property(copy, nonatomic) NSSet *draggedAssetReferences;
 @property(retain, nonatomic) PXCuratedLibraryAssetCollectionSkimmingInfo *skimmingInfo;
@@ -31,6 +31,8 @@
 - (void)toggleSelectionForAssetReference:(PXAssetReference *)arg1 updateCursorIndexPath:(_Bool)arg2;
 - (void)toggleSelectionForAssetReference:(PXAssetReference *)arg1;
 - (void)toggleSelectionForIndexPath:(struct PXSimpleIndexPath)arg1;
+- (void)userDidSetAllPhotosContentFilterState:(PXContentFilterState *)arg1;
+- (void)resetAllPhotosContentFilterState;
 - (void)removeView:(PXGView *)arg1;
 - (void)addView:(PXGView *)arg1;
 - (void)removePresenter:(id <PXCuratedLibraryViewModelPresenter>)arg1;

@@ -31,7 +31,6 @@
 @property(readonly, nonatomic) UIColor *headerBackgroundColor;
 @property(readonly, nonatomic) _Bool cellIsVibrant;
 @property(readonly, nonatomic) _Bool cellIsOpaque;
-@property(readonly, nonatomic) struct UIEdgeInsets cellSeparatorInset;
 @property(readonly, nonatomic) UIFont *cellNameTextEmphasisedFont;
 @property(readonly, nonatomic) UIFont *cellNameTextFont;
 @property(readonly, nonatomic) UIColor *cellSearchBackgroundColor;

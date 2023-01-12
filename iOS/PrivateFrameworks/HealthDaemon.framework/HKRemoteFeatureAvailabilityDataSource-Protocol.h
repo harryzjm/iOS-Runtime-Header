@@ -10,16 +10,17 @@
 
 @protocol HKRemoteFeatureAvailabilityDataSource <NSObject>
 - (NSString *)onboardingCountryCode;
-- (CDStruct_2ec95fd7)watchElectrocardiogramVersion;
-- (CDStruct_2ec95fd7)watchAtrialFibrillationDetectionVersion;
+- (CDStruct_f6aba300)watchElectrocardiogramVersion;
+- (CDStruct_f6aba300)watchAtrialFibrillationDetectionVersion;
 - (NSString *)watchCompanionDevicePlatform;
 - (NSString *)watchOSBuildVersion;
+- (NSString *)watchRegionInfo;
 - (NSString *)watchRegion;
 - (NSString *)watchBuildType;
 - (NSString *)watchProductType;
 - (NSString *)watchModelNumber;
-- (CDStruct_2ec95fd7)watchOSVersion;
+- (CDStruct_f6aba300)watchOSVersion;
 - (NSString *)iOSBuildVersion;
-- (CDStruct_2ec95fd7)iOSVersion;
+- (CDStruct_f6aba300)iOSVersion;
 @end
 

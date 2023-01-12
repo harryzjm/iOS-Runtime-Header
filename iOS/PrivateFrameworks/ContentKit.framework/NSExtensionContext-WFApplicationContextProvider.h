@@ -6,12 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <ContentKit/WFApplicationContextProvider-Protocol.h>
-
 @class NSString;
 @protocol WFExtensionApplicationContextProviderDelegate;
 
-@interface NSExtensionContext (WFApplicationContextProvider) <WFApplicationContextProvider>
+@interface NSExtensionContext (WFApplicationContextProvider)
 - (_Bool)shouldReverseLayoutDirection;
 - (id)applicationForWFApplicationContext:(id)arg1;
 - (id)keyWindowForWFApplicationContext:(id)arg1;

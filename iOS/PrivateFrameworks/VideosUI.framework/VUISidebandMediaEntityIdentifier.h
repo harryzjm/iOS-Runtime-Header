@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIMediaEntityIdentifierInternal-Protocol.h>
-
 @class NSManagedObjectID, NSString, VUIMediaEntityType;
 
 __attribute__((visibility("hidden")))
-@interface VUISidebandMediaEntityIdentifier : NSObject <VUIMediaEntityIdentifierInternal>
+@interface VUISidebandMediaEntityIdentifier : NSObject
 {
     NSManagedObjectID *_managedObjectID;
     VUIMediaEntityType *_mediaEntityType;

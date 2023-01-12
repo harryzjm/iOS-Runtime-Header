@@ -11,6 +11,7 @@
 @protocol MRUNowPlayingViewControllerDelegate <NSObject>
 
 @optional
+- (_Bool)nowPlayingViewControllerDidSelectArtworkView:(MRUNowPlayingViewController *)arg1;
 - (void)nowPlayingViewController:(MRUNowPlayingViewController *)arg1 showViewController:(UIViewController *)arg2;
 - (void)nowPlayingViewController:(MRUNowPlayingViewController *)arg1 applyLayout:(long long)arg2;
 - (void)nowPlayingViewController:(MRUNowPlayingViewController *)arg1 didChangeSizeWithAnimations:(void (^)(void))arg2 completion:(void (^)(void))arg3;

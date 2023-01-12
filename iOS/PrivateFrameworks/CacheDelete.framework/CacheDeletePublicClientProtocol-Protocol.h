@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSDictionary;
 
 @protocol CacheDeletePublicClientProtocol
-- (void)publicClientAvailableSpaceForVolume:(NSString *)arg1 availableSpaceClass:(int)arg2 reply:(void (^)(NSNumber *, NSError *))arg3;
+- (void)clientUnifiedPurgeableSpace:(NSDictionary *)arg1 queryType:(int)arg2 replyBlock:(void (^)(CDRecentInfo *))arg3;
 @end
 

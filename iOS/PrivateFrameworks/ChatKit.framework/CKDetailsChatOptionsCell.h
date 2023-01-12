@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKDetailsCell-Protocol.h>
+#import "CKDetailsCell.h"
 
 @class NSString, UISwitch;
 
 __attribute__((visibility("hidden")))
-@interface CKDetailsChatOptionsCell <CKDetailsCell>
+@interface CKDetailsChatOptionsCell : CKDetailsCell
 {
     UISwitch *_controlSwitch;
 }

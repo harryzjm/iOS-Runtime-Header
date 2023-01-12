@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/UIFont.h>
+#import <UIKit/UIFont.h>
 
 @interface UIFont (TipsUIAdditions)
 + (id)tps_preferredFontForTextStyle:(id)arg1 symoblicTraits:(unsigned int)arg2 weight:(double)arg3 size:(double)arg4 languageCode:(id)arg5;

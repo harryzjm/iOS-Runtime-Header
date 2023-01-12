@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPConfigurationFieldValue, NSString;
 
-@interface CKDPConfigurationField : PBCodable <NSCopying>
+@interface CKDPConfigurationField : PBCodable
 {
     NSString *_name;
     CKDPConfigurationFieldValue *_value;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSFastEnumeration-Protocol.h>
-
 @class NSMutableDictionary;
 
-@interface TSCH3DDictionaryOfSet : NSObject <NSFastEnumeration>
+@interface TSCH3DDictionaryOfSet : NSObject
 {
     NSMutableDictionary *_sets;
 }

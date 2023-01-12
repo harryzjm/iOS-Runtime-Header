@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChronoCore/_UISceneComponentProviding-Protocol.h>
+#import <ChronoCore/_UIWindowHostingSceneComponentProviding-Protocol.h>
 
 @class UITraitCollection;
 
-@protocol _UIWindowSceneComponentProviding <_UISceneComponentProviding>
+@protocol _UIWindowSceneComponentProviding <_UIWindowHostingSceneComponentProviding>
 
 @optional
 @property(nonatomic, readonly) UITraitCollection *_traitOverrides;

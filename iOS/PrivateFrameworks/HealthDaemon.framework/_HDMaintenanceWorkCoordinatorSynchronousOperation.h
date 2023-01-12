@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HDMaintenanceOperation.h"
+
 @class NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _HDMaintenanceWorkCoordinatorSynchronousOperation
+@interface _HDMaintenanceWorkCoordinatorSynchronousOperation : HDMaintenanceOperation
 {
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _block;

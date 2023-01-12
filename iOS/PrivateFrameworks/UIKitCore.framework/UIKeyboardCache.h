@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)enabled;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) _UIActionWhenIdle *idleAction; // @synthesize idleAction=_idleAction;
 - (void)decrementExpectedRender:(id)arg1;
 - (void)incrementExpectedRender:(id)arg1;

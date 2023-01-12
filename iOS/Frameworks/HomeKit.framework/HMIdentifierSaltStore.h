@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HMFUnfairLock, NSData;
+@class NSData;
 
 __attribute__((visibility("hidden")))
 @interface HMIdentifierSaltStore : NSObject
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSData *_identifierSalt;
     NSData *_assistantIdentifierSalt;
 }
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSData *assistantIdentifierSalt; // @synthesize assistantIdentifierSalt=_assistantIdentifierSalt;
 @property(retain, nonatomic) NSData *identifierSalt; // @synthesize identifierSalt=_identifierSalt;
-- (id)init;
 
 @end
 

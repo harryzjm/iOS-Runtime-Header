@@ -6,16 +6,13 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <MobileSafari/SFRichLinkModel-Protocol.h>
-
-@class LPLinkMetadata, LPLinkView, NSLayoutConstraint, NSString, UIView, UIVisualEffectView;
+@class LPLinkMetadata, LPLinkView, NSString, UIView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface SFRichLinkCell : UICollectionViewCell <SFRichLinkModel>
+@interface SFRichLinkCell : UICollectionViewCell
 {
     UIVisualEffectView *_linkBackgroundView;
     UIView *_linkViewContainer;
-    NSLayoutConstraint *_attributionViewHeightConstraint;
     LPLinkView *_linkView;
 }
 

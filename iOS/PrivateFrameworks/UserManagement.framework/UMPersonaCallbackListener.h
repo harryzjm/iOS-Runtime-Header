@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <UserManagement/NSXPCListenerDelegate-Protocol.h>
-
 @class NSMutableSet, NSString, NSXPCListener;
 
-__attribute__((visibility("hidden")))
-@interface UMPersonaCallbackListener : NSObject <NSXPCListenerDelegate>
+@interface UMPersonaCallbackListener : NSObject
 {
     NSString *_machServiceName;
     NSMutableSet *_xpcConnections;

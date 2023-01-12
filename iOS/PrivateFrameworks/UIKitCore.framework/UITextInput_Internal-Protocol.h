@@ -53,6 +53,7 @@
 - (_Bool)_range:(UITextRange *)arg1 containsRange:(UITextRange *)arg2;
 - (UITextRange *)_rangeOfSmartSelectionIncludingRange:(UITextRange *)arg1;
 - (UITextPosition *)_findPleasingWordBoundaryFromPosition:(UITextPosition *)arg1;
+- (UITextPosition *)_findBoundaryPositionClosestToPosition:(UITextPosition *)arg1 withGranularity:(long long)arg2;
 - (UITextRange *)_rangeSpanningTextUnit:(long long)arg1 andPosition:(UITextPosition *)arg2;
 - (UITextRange *)_fullRange;
 - (UITextRange *)_rangeFromCurrentRangeWithDelta:(struct _NSRange)arg1;
@@ -70,7 +71,7 @@
 - (void)_setCaretSelectionAtEndOfSelection;
 - (void)_expandSelectionToStartOfWordsBeforeCaretSelection:(int)arg1;
 - (void)_expandSelectionToStartOfWordBeforeCaretSelection;
-- (void)_expandSelectionToBackwardDeletionCluster;
+- (void)_expandSelectionToBackwardDeletionClusterWithReinsertionOut:(id *)arg1;
 - (void)_moveCurrentSelection:(int)arg1;
 - (void)_extendCurrentSelection:(int)arg1;
 - (_Bool)_hasMarkedTextOrRangedSelection;
@@ -94,6 +95,8 @@
 @property(readonly, nonatomic) UIView<UITextInputPrivate> *_textSelectingContainer;
 - (id <UIPointerInteractionDelegate>)_pointerInteractionDelegate;
 - (void)_setInternalGestureRecognizers;
+- (void)_logWarningForMenuControllerUsage;
+- (_Bool)_implementsEditMenu;
 - (_Bool)_shouldShowEditMenu;
 - (_Bool)_shouldSuppressSelectionHandles;
 - (_Bool)_isInteractiveTextSelectionDisabled;

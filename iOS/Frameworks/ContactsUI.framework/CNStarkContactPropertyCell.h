@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNStarkActionViewDelegate-Protocol.h>
-
 @class CNStarkActionView, NSLayoutConstraint, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNStarkContactPropertyCell <CNStarkActionViewDelegate>
+@interface CNStarkContactPropertyCell
 {
     _Bool _allowsFocus;
     CNStarkActionView *_actionView1;

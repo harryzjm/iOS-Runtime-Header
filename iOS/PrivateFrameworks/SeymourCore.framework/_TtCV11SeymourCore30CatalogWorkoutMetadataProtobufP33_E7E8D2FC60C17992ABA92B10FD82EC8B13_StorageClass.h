@@ -30,6 +30,8 @@
     MISSING_TYPE *_accessibilityFeatures;
     MISSING_TYPE *_bodyFocuses;
     MISSING_TYPE *_skillLevels;
+    MISSING_TYPE *_languageDisclaimers;
+    MISSING_TYPE *_coachingEvents;
 }
 
 @end

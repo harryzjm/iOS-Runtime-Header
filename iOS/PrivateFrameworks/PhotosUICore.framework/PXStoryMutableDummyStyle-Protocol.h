@@ -7,7 +7,7 @@
 @class NSArray;
 
 @protocol PXStoryMutableDummyStyle
-@property(nonatomic) CDStruct_08b93379 transitionInfo;
+@property(nonatomic) CDStruct_316aa24c transitionInfo;
 @property(nonatomic) double separatorRotationAngle;
 @property(nonatomic) double separatorPanDistance;
 @property(nonatomic) long long threeUpSeparatorEffectKind;
@@ -24,7 +24,7 @@
 @property(copy, nonatomic) NSArray *allowedClipCompositionsInPortrait;
 @property(nonatomic) long long cropMode;
 @property(nonatomic) long long cropVerticalContentMode;
-@property(nonatomic) CDStruct_1b6d18a9 outroDuration;
+@property(nonatomic) CDStruct_198678f7 outroDuration;
 @property(nonatomic) double defaultSegmentDuration;
 @end
 

@@ -6,39 +6,51 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, STIntroductionModel, UINavigationController, UIViewController;
+@class NSNumber, NSString, STIntroductionViewModel, UINavigationController, UIViewController;
+@protocol STContentPrivacyViewModelCoordinator;
 
 __attribute__((visibility("hidden")))
 @interface STIntroductionController : NSObject
 {
+    _Bool _updateExistingSettings;
+    _Bool _skipAppLimitsPane;
+    _Bool _showCommunicationSafetyPane;
     _Bool _allowParentalControls;
     _Bool _forceParentalControls;
     _Bool _askForRecoveryAppleID;
     _Bool _childOrNotSignedIntoiCloud;
-    _Bool _skipWelcome;
     _Bool _isModalPresentation;
     NSString *_childName;
+    NSNumber *_childAge;
     NSString *_altDSID;
+    NSNumber *_dsid;
+    NSObject<STContentPrivacyViewModelCoordinator> *_contentPrivacyCoordinator;
     CDUnknownBlockType _completionBlock;
-    STIntroductionModel *_introductionModel;
+    STIntroductionViewModel *_introductionModel;
     UINavigationController *_navigationController;
 }
 
 - (void).cxx_destruct;
 @property(retain) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property(nonatomic) _Bool isModalPresentation; // @synthesize isModalPresentation=_isModalPresentation;
-@property(readonly) STIntroductionModel *introductionModel; // @synthesize introductionModel=_introductionModel;
+@property(readonly) STIntroductionViewModel *introductionModel; // @synthesize introductionModel=_introductionModel;
 @property(copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
-@property _Bool skipWelcome; // @synthesize skipWelcome=_skipWelcome;
+@property(retain) NSObject<STContentPrivacyViewModelCoordinator> *contentPrivacyCoordinator; // @synthesize contentPrivacyCoordinator=_contentPrivacyCoordinator;
+@property(copy) NSNumber *dsid; // @synthesize dsid=_dsid;
 @property(copy) NSString *altDSID; // @synthesize altDSID=_altDSID;
+@property(copy) NSNumber *childAge; // @synthesize childAge=_childAge;
 @property(copy) NSString *childName; // @synthesize childName=_childName;
 @property(getter=isChildOrNotSignedIntoiCloud) _Bool childOrNotSignedIntoiCloud; // @synthesize childOrNotSignedIntoiCloud=_childOrNotSignedIntoiCloud;
 @property _Bool askForRecoveryAppleID; // @synthesize askForRecoveryAppleID=_askForRecoveryAppleID;
 @property _Bool forceParentalControls; // @synthesize forceParentalControls=_forceParentalControls;
 @property _Bool allowParentalControls; // @synthesize allowParentalControls=_allowParentalControls;
+@property _Bool showCommunicationSafetyPane; // @synthesize showCommunicationSafetyPane=_showCommunicationSafetyPane;
+@property _Bool skipAppLimitsPane; // @synthesize skipAppLimitsPane=_skipAppLimitsPane;
+@property _Bool updateExistingSettings; // @synthesize updateExistingSettings=_updateExistingSettings;
 - (id)_viewControllerFollowingViewController:(id)arg1;
+- (void)_endIntroductionFlowWithEnablingScreenTime;
+- (void)_endIntroductionFlowWithoutEnablingScreenTime;
 - (void)_viewControllerCompleted:(id)arg1;
-- (void)_cancel:(id)arg1;
 @property(readonly) UIViewController *initialViewController;
 - (void)presentOverViewController:(id)arg1;
 - (id)init;

@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSUnitIlluminance.h"
+
 __attribute__((visibility("hidden")))
-@interface _NSStatic_NSUnitIlluminance
+@interface _NSStatic_NSUnitIlluminance : NSUnitIlluminance
 {
 }
 

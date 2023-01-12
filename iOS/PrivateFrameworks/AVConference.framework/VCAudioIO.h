@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCAudioIOControllerDelegate-Protocol.h>
-
-@class NSString, VCAudioIOControllerClient;
+@class NSDictionary, NSString, VCAudioIOControllerClient;
 @protocol VCAudioIOControllerControl;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioIO : NSObject <VCAudioIOControllerDelegate>
+@interface VCAudioIO : NSObject
 {
     id <VCAudioIOControllerControl> _audioIOController;
     VCAudioIOControllerClient *_controllerClient;
@@ -34,7 +32,8 @@ __attribute__((visibility("hidden")))
     unsigned int _audioType;
 }
 
-+ (id)newControllerForDeviceRole:(int)arg1 forAudioType:(unsigned int)arg2 forDirection:(unsigned char)arg3;
++ (id)controllerForDeviceRole:(int)arg1 audioType:(unsigned int)arg2 direction:(unsigned char)arg3 streamInputID:(long long)arg4 streamToken:(long long)arg5 networkClockID:(unsigned long long)arg6;
++ (id)defaultControllerForAudioType:(unsigned int)arg1 forDirection:(unsigned char)arg2;
 @property(readonly, nonatomic) unsigned int state; // @synthesize state=_state;
 @property(nonatomic) _Bool isGKVoiceChat; // @synthesize isGKVoiceChat=_isGKVoiceChat;
 - (id)stop;
@@ -43,11 +42,13 @@ __attribute__((visibility("hidden")))
 - (id)start;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
+- (void)didServerDie;
 - (void)didResume;
 - (void)didSuspend;
 - (void)controllerFormatChanged:(const struct tagVCAudioFrameFormat *)arg1;
 - (void)didStop:(_Bool)arg1 error:(id)arg2;
 - (void)didStart:(_Bool)arg1 error:(id)arg2;
+- (int)operatingMode;
 - (void)setClientFormat:(const struct tagVCAudioFrameFormat *)arg1;
 - (void)releaseConverters;
 - (void)destroyBuffers;
@@ -65,7 +66,8 @@ __attribute__((visibility("hidden")))
 - (id)delegate;
 - (void)forceCleanup;
 - (void)dealloc;
-- (_Bool)reconfigureWithOperatingMode:(int)arg1 deviceRole:(int)arg2 direction:(unsigned char)arg3 allowAudioRecording:(_Bool)arg4;
+@property(readonly, nonatomic) NSDictionary *reportingStats;
+- (_Bool)reconfigureWithOperatingMode:(int)arg1 deviceRole:(int)arg2 direction:(unsigned char)arg3 streamInputID:(long long)arg4 streamToken:(long long)arg5 allowAudioRecording:(_Bool)arg6 networkClockID:(unsigned long long)arg7;
 - (void)setupClientFormatWithConfiguration:(struct _VCAudioIOInitConfiguration *)arg1;
 - (id)initWithConfiguration:(struct _VCAudioIOInitConfiguration *)arg1;
 

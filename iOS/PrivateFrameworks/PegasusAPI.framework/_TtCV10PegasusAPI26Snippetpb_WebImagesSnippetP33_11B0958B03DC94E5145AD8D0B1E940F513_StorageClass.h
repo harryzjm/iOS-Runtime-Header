@@ -28,6 +28,8 @@
     MISSING_TYPE *_thumbnailID;
     MISSING_TYPE *_isE2I;
     MISSING_TYPE *_disableRelatedImagesSearch;
+    MISSING_TYPE *_originalDomainInfo;
+    MISSING_TYPE *_dedupEmbedding;
 }
 
 @end

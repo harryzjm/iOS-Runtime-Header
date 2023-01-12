@@ -6,12 +6,13 @@
 
 #import <ContactsUI/CNContactPickerDelegate-Protocol.h>
 
-@class CNContactPickerViewController, UIViewController;
+@class CNContact, CNContactPickerViewController, UIViewController;
 
 @protocol CNContactPickerPrivateDelegate <CNContactPickerDelegate>
 
 @optional
 - (UIViewController *)contactPickerPresentedViewController:(CNContactPickerViewController *)arg1;
+- (void)contactPicker:(CNContactPickerViewController *)arg1 didCompleteWithNewContact:(CNContact *)arg2;
 - (void)pickerDidSelectAddNewContact:(CNContactPickerViewController *)arg1;
 @end
 

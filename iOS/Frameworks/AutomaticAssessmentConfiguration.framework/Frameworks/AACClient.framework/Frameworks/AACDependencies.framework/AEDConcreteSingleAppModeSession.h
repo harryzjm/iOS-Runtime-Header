@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AACDependencies/AEDSingleAppModeSession-Protocol.h>
-
 @class UIAutonomousSingleAppModeSession;
 
 __attribute__((visibility("hidden")))
-@interface AEDConcreteSingleAppModeSession : NSObject <AEDSingleAppModeSession>
+@interface AEDConcreteSingleAppModeSession : NSObject
 {
     UIAutonomousSingleAppModeSession *_session;
 }

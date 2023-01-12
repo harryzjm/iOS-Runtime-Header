@@ -15,6 +15,7 @@
     MISSING_TYPE *catalogScriptClient;
     MISSING_TYPE *deviceRegistry;
     MISSING_TYPE *persistenceStore;
+    MISSING_TYPE *platform;
 }
 
 @end

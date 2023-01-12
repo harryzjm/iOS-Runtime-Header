@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIImageView, UILabel, UIPreviewAction;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewQuickActionView
+@interface _UIPreviewQuickActionView : UIView
 {
     _Bool _selected;
     UIPreviewAction *_quickAction;

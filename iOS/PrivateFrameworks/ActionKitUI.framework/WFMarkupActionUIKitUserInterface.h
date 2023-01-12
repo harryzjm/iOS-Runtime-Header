@@ -6,14 +6,10 @@
 
 #import <WorkflowUICore/WFActionUserInterface.h>
 
-#import <ActionKitUI/QLPreviewControllerDataSource-Protocol.h>
-#import <ActionKitUI/QLPreviewControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFMarkupActionUserInterface-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFMarkupActionUIKitUserInterface : WFActionUserInterface <QLPreviewControllerDataSource, QLPreviewControllerDelegate, WFMarkupActionUserInterface>
+@interface WFMarkupActionUIKitUserInterface : WFActionUserInterface
 {
     NSArray *_previewItems;
     NSMutableDictionary *_editedPreviewItems;

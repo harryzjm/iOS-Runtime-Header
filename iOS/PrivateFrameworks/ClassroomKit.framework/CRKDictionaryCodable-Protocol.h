@@ -7,6 +7,10 @@
 #import <ClassroomKit/CRKDictionaryDecodable-Protocol.h>
 #import <ClassroomKit/CRKDictionaryEncodable-Protocol.h>
 
+@class NSDictionary;
+
 @protocol CRKDictionaryCodable <CRKDictionaryEncodable, CRKDictionaryDecodable>
++ (id)instanceWithDictionary:(NSDictionary *)arg1;
+@property(readonly, copy, nonatomic) NSDictionary *dictionaryValue;
 @end
 

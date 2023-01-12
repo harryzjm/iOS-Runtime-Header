@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Contacts/CNCDContainerPredicate-Protocol.h>
+#import "CNPredicate.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNCDAllContainersPredicate <CNCDContainerPredicate>
+@interface CNCDAllContainersPredicate : CNPredicate
 {
     _Bool _includeDisabledContainers;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool includeDisabledContainers; // @synthesize includeDisabledContainers=_includeDisabledContainers;
 - (id)cn_persistenceFilterRequest;
 - (id)cn_topLevelFilter;

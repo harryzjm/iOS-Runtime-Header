@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/_WKFocusedElementInfo-Protocol.h>
-
 @class NSString;
 @protocol NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface WKFocusedElementInfo : NSObject <_WKFocusedElementInfo>
+@interface WKFocusedElementInfo : NSObject
 {
     long long _type;
     struct RetainPtr<NSString> _value;

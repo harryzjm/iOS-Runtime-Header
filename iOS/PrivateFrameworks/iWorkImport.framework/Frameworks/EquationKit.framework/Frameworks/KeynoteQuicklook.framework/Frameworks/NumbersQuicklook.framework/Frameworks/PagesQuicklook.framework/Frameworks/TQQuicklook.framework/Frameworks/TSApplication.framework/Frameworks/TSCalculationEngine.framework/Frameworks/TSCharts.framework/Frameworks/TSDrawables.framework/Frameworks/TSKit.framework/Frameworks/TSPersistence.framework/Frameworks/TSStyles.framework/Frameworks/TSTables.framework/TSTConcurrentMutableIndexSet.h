@@ -10,10 +10,12 @@
 
 @interface TSTConcurrentMutableIndexSet : NSObject
 {
-    struct _opaque_pthread_rwlock_t mRWLock;
-    NSMutableIndexSet *mMutableIndexSet;
+    struct _opaque_pthread_rwlock_t _rwLock;
+    NSMutableIndexSet *_mutableIndexSet;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableIndexSet *mutableIndexSet; // @synthesize mutableIndexSet=_mutableIndexSet;
 - (void)removeAllIndexes;
 - (void)addIndex:(unsigned long long)arg1;
 - (void)enumerateIndexesUsingBlock:(CDUnknownBlockType)arg1;

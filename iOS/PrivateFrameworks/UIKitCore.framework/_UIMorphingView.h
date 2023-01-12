@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableOrderedSet, UIView;
+#import "UIView.h"
+
+@class NSMutableOrderedSet;
 
 __attribute__((visibility("hidden")))
-@interface _UIMorphingView
+@interface _UIMorphingView : UIView
 {
     _Bool _useOpacityPairFilter;
     double _progress;

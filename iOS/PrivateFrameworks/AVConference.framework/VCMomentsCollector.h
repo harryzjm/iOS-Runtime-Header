@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCMomentsCollectorDelegate-Protocol.h>
-
 @class NSString, VCMoments;
 
 __attribute__((visibility("hidden")))
-@interface VCMomentsCollector : NSObject <VCMomentsCollectorDelegate>
+@interface VCMomentsCollector : NSObject
 {
     long long _streamToken;
     VCMoments *_moments;

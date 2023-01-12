@@ -6,12 +6,10 @@
 
 #import <iTunesStore/ISOperation.h>
 
-#import <StoreKitUI/ISDialogOperationDelegate-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemIdValidateOperation : ISOperation <ISDialogOperationDelegate>
+@interface SKUIRedeemIdValidateOperation : ISOperation
 {
     CDUnknownBlockType _resultBlock;
     NSDictionary *_dictionary;

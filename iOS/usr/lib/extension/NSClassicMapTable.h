@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSMapTable.h"
+
 __attribute__((visibility("hidden")))
-@interface NSClassicMapTable
+@interface NSClassicMapTable : NSMapTable
 {
     struct {
         CDUnknownFunctionPointerType hash;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)allValues;
 - (id)allKeys;
 - (id)description;
+- (void)_reclaim;
 - (unsigned long long)count;
 - (void)removeObjectForKey:(id)arg1;
 - (void *)existingItemForSetItem:(const void *)arg1 forAbsentKey:(const void *)arg2;

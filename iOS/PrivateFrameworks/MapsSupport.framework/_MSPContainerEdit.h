@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/MSPContainerEdit-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MSPContainerEdit : NSObject <MSPContainerEdit>
+@interface _MSPContainerEdit : NSObject
 {
 }
 

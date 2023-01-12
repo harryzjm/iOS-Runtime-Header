@@ -6,15 +6,11 @@
 
 #import <UIKit/UICollectionViewController.h>
 
-#import <DocumentCamera/ICDocCamThumbnailViewLayoutDelegate-Protocol.h>
-#import <DocumentCamera/UICollectionViewDataSource-Protocol.h>
-#import <DocumentCamera/UICollectionViewDelegate-Protocol.h>
-
 @class ICDocCamImageCache, ICDocCamThumbnailCollectionViewLayout, NSMutableArray, NSString;
 @protocol ICDocCamThumbnailViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface ICDocCamThumbnailCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, ICDocCamThumbnailViewLayoutDelegate>
+@interface ICDocCamThumbnailCollectionViewController : UICollectionViewController
 {
     _Bool _isPerformingBatchUpdates;
     _Bool _needReloadAfterBatchUpdates;

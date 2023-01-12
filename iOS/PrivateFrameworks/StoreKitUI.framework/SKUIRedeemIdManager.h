@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIRedeemIdTableViewCellDelegate-Protocol.h>
-#import <StoreKitUI/UITableViewDataSource-Protocol.h>
-#import <StoreKitUI/UITableViewDelegate-Protocol.h>
-
 @class NSIndexPath, NSString, SKUIClientContext, SKUIPinnedFooterView, UITableView;
 @protocol SKUIRedeemIdManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemIdManager : NSObject <SKUIRedeemIdTableViewCellDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SKUIRedeemIdManager : NSObject
 {
     id <SKUIRedeemIdManagerDelegate> _delegate;
     UITableView *_tableView;

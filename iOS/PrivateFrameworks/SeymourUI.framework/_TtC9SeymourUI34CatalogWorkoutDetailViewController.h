@@ -23,11 +23,13 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *marketingMetricFieldsProvider;
     MISSING_TYPE *marketingSubscriptionStatusProvider;
     MISSING_TYPE *platform;
+    MISSING_TYPE *purchaseCoordinator;
+    MISSING_TYPE *purchaseHandler;
     MISSING_TYPE *resignActiveObserver;
     MISSING_TYPE *storefrontLocalizer;
+    MISSING_TYPE *webUserInterfaceCoordinator;
     MISSING_TYPE *navigationBarTintColor;
     MISSING_TYPE *lastNavigationBarTintColor;
-    MISSING_TYPE *purchaseHandler;
 }
 
 - (void).cxx_destruct;
@@ -37,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewSafeAreaInsetsDidChange;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;

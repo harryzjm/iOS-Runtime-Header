@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OISFUBufferedInputStream-Protocol.h>
-
 @class NSString;
 @protocol SFUInputStream;
 
 __attribute__((visibility("hidden")))
-@interface OISFUBufferedInputStream : NSObject <OISFUBufferedInputStream>
+@interface OISFUBufferedInputStream : NSObject
 {
     id <SFUInputStream> mStream;
     char *mBuffer;

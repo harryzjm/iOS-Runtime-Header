@@ -47,7 +47,7 @@
 - (void)prepareForDocumentReplacementWithSuccess:(_Bool)arg1 forSafeSave:(_Bool)arg2 originalURL:(id)arg3;
 - (id)newDocumentPropertiesWithURL:(id)arg1 zipProvider:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)newRawDataReadChannelAtRelativePath:(id)arg1;
-- (id)newDataStorageAtRelativePath:(id)arg1 decryptionInfo:(id)arg2 packageURL:(id)arg3 lastModificationDate:(out id *)arg4;
+- (id)newDataStorageAtRelativePath:(id)arg1 decryptionInfo:(id)arg2 materializedLength:(unsigned long long)arg3 packageURL:(id)arg4 lastModificationDate:(out id *)arg5;
 - (_Bool)checkPassword:(id)arg1;
 - (id)keyFromPassword:(id)arg1 passwordVerifier:(id)arg2;
 - (id)keyFromPassword:(id)arg1;

@@ -6,11 +6,9 @@
 
 #import <HMFoundation/HMFScheduler.h>
 
-#import <Home/NAScheduler-Protocol.h>
-
 @class NSString;
 
-@interface HMFScheduler (NAScheduler) <NAScheduler>
+@interface HMFScheduler (NAScheduler)
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
 

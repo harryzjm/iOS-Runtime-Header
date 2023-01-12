@@ -21,7 +21,7 @@
 @property(readonly, nonatomic) const struct RenderTargetFormat *format;
 @property(readonly, nonatomic) _Bool supportsFramebufferFetch;
 @property(readonly, nonatomic) _Bool multiSample;
-@property(nonatomic) id <GGLRenderQueueSource> renderSource;
+@property(nonatomic) __weak id <GGLRenderQueueSource> renderSource;
 @property(nonatomic) struct CGRect bounds;
 @property(nonatomic) double contentScale;
 @property(nonatomic) struct CGSize size;
@@ -34,7 +34,7 @@
 
 @optional
 @property(readonly, nonatomic) float averageFPS;
-- (struct DebugConsole *)debugConsoleForId:(int)arg1;
+- (void *)debugConsoleForId:(int)arg1;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toLayer:(CALayer *)arg2;
 - (void)didDrawView;
 - (void)willDrawView;

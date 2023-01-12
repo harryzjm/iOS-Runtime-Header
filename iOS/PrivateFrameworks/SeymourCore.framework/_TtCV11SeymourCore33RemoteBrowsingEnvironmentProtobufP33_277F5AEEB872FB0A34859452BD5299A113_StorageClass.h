@@ -30,6 +30,7 @@
     MISSING_TYPE *_metricsPreferences;
     MISSING_TYPE *_progressPreferences;
     MISSING_TYPE *_completedMarketingVideoIdentifiers;
+    MISSING_TYPE *_activityRings;
 }
 
 @end

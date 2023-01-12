@@ -6,9 +6,10 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@class CAMStillImageCaptureRequest, CAMStillImageCaptureResponse, CAMViewfinderViewController, NSError;
+@class CAMCaptureRequest, CAMStillImageCaptureRequest, CAMStillImageCaptureResponse, CAMViewfinderViewController, NSError;
 
 @protocol CAMViewfinderViewControllerStillImageCaptureRequestTestingDelegate <NSObject>
+- (void)viewfinderViewController:(CAMViewfinderViewController *)arg1 didUpdateImageWellWithRequest:(CAMCaptureRequest *)arg2 response:(CAMStillImageCaptureResponse *)arg3 error:(NSError *)arg4;
 - (void)viewfinderViewController:(CAMViewfinderViewController *)arg1 didGenerateCaptureRequest:(CAMStillImageCaptureRequest *)arg2;
 - (void)viewfinderViewController:(CAMViewfinderViewController *)arg1 didReceiveStillImageRequestDidCompleteCapture:(CAMStillImageCaptureRequest *)arg2 error:(NSError *)arg3;
 - (void)viewfinderViewController:(CAMViewfinderViewController *)arg1 didReceiveStillImageRequestDidCompleteStillImageCapture:(CAMStillImageCaptureRequest *)arg2 withResponse:(CAMStillImageCaptureResponse *)arg3 error:(NSError *)arg4;

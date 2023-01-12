@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
     _Bool _forcesDefaultFocusAppearance;
     _Bool _focusSystemEnabled;
     _Bool _supportsPrintCommand;
+    _Bool _supportsAlwaysOnDisplay;
+    _Bool _supportsBacklightEnvironment;
     long long _requestedStatusBarStyle;
     long long _interfaceOrientation;
     long long _launchingInterfaceOrientationForSpringBoard;
@@ -47,6 +49,8 @@ __attribute__((visibility("hidden")))
 
 + (id)mainBundleInfoParser;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool supportsBacklightEnvironment; // @synthesize supportsBacklightEnvironment=_supportsBacklightEnvironment;
+@property(readonly, nonatomic) _Bool supportsAlwaysOnDisplay; // @synthesize supportsAlwaysOnDisplay=_supportsAlwaysOnDisplay;
 @property(readonly, nonatomic) _Bool supportsPrintCommand; // @synthesize supportsPrintCommand=_supportsPrintCommand;
 @property(readonly, nonatomic) _Bool focusSystemEnabled; // @synthesize focusSystemEnabled=_focusSystemEnabled;
 @property(readonly, nonatomic) _Bool forcesDefaultFocusAppearance; // @synthesize forcesDefaultFocusAppearance=_forcesDefaultFocusAppearance;

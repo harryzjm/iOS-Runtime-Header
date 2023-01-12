@@ -6,9 +6,10 @@
 
 #import <ContactsUICore/NSObject-Protocol.h>
 
-@class CNUIUserActionItem;
+@class CNUIUserActionItem, NSArray;
 
 @protocol CNUIUserActionCurator <NSObject>
+- (CNUIUserActionItem *)curateUserAction:(CNUIUserActionItem *)arg1 withKeysToFetch:(NSArray *)arg2;
 - (CNUIUserActionItem *)curateUserAction:(CNUIUserActionItem *)arg1;
 @end
 

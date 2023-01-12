@@ -6,37 +6,39 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTPropertyListEncoding-Protocol.h>
+@class DVTExtension, DVTExtensionElementDescription, DVTPlugIn, DVTPlugInManager, NSBundle, NSDictionary, NSMutableSet, NSSet, NSString;
 
-@class DVTExtensionElementDescription, DVTPlugIn, DVTPlugInManager, NSBundle, NSDictionary, NSMutableSet, NSSet, NSString;
-
-@interface DVTExtensionPoint : NSObject <DVTPropertyListEncoding>
+@interface DVTExtensionPoint : NSObject
 {
     NSDictionary *_extensionPointData;
     DVTPlugInManager *_plugInManager;
+    DVTExtensionElementDescription *_extensionSchema;
+    DVTExtensionPoint *_parentExtensionPoint;
+    NSMutableSet *_directExtensions;
+    NSMutableSet *_childExtensionPoints;
     NSString *_identifier;
     NSString *_name;
     DVTPlugIn *_plugIn;
-    DVTExtensionElementDescription *_extensionSchema;
-    DVTExtensionPoint *_parentExtensionPoint;
-    NSMutableSet *_extensions;
-    NSMutableSet *_childExtensionPoints;
 }
 
 + (id)requiredExtensionsForExtensionPointWithIdentifier:(id)arg1;
 + (id)requiredExtensionPointForIdentifier:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy) NSSet *childExtensionPoints; // @synthesize childExtensionPoints=_childExtensionPoints;
-@property(readonly, copy) NSSet *extensions; // @synthesize extensions=_extensions;
 @property(readonly) DVTPlugIn *plugIn; // @synthesize plugIn=_plugIn;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)_registerChildExtensionPoint:(id)arg1;
 - (void)_registerExtension:(id)arg1;
+- (id)_directExtensions;
+@property(readonly, copy) NSSet *extensions;
+@property(readonly) DVTExtension *expectedSingleExtension;
+- (id)expectSingleExtensionPassingTest:(CDUnknownBlockType)arg1;
+- (id)extensionsPassingTest:(CDUnknownBlockType)arg1;
 - (id)extensionsMatchingPredicate:(id)arg1;
 @property(readonly) NSBundle *bundle;
-@property(readonly) DVTExtensionPoint *parentExtensionPoint; // @dynamic parentExtensionPoint;
-@property(readonly, copy) DVTExtensionElementDescription *extensionSchema; // @dynamic extensionSchema;
+@property(readonly) DVTExtensionPoint *parentExtensionPoint;
+@property(readonly, copy) DVTExtensionElementDescription *extensionSchema;
 - (void)_setUpParentExtensionPoint;
 @property(readonly, copy) NSString *version;
 @property(readonly, copy) NSString *description;

@@ -6,11 +6,9 @@
 
 #import <UIKit/_UIHyperregionUnion.h>
 
-#import <SpringBoard/SBDebuggableUIHyperregion-Protocol.h>
-
 @class NSString;
 
-@interface _UIHyperregionUnion (SBHyperregionDebugging) <SBDebuggableUIHyperregion>
+@interface _UIHyperregionUnion (SBHyperregionDebugging)
 - (struct CGRect)sb_debugFrameForView:(id)arg1;
 - (id)sb_debugView;
 

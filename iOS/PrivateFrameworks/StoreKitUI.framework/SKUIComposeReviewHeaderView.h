@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/SKUIComposeTextFieldListViewDelegate-Protocol.h>
-
 @class NSString, SKStarRatingControl, SKUIComposeTextFieldListView, SKUIReviewMetadata, UIResponder;
 @protocol SKUIComposeReviewHeaderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIComposeReviewHeaderView : UIView <SKUIComposeTextFieldListViewDelegate>
+@interface SKUIComposeReviewHeaderView : UIView
 {
     id <SKUIComposeReviewHeaderDelegate> _delegate;
     SKStarRatingControl *_ratingControl;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneSettingsDiffAction-Protocol.h>
-
 @class NSString, UIApplicationSceneSettingsDiffInspector;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneTargetOfEventDeferringEnvironmentsDiffAction : NSObject <_UISceneSettingsDiffAction>
+@interface _UISceneTargetOfEventDeferringEnvironmentsDiffAction : NSObject
 {
     UIApplicationSceneSettingsDiffInspector *_sceneSettingsTargetOfEventDeferringEnvironmentsDiffInspector;
 }

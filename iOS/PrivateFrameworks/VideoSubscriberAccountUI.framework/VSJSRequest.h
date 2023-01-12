@@ -6,13 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <VideoSubscriberAccountUI/NSCopying-Protocol.h>
-#import <VideoSubscriberAccountUI/VSJSRequest-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSJSRequest : IKJSObject <VSJSRequest, NSCopying>
+@interface VSJSRequest : IKJSObject
 {
     NSString *_requestType;
     NSString *_requestBody;

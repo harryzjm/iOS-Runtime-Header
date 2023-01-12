@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitDepartureSequence-Protocol.h>
-
 @class GEOPDDepartureSequence, GEOPDDepartureSequenceContainer, GEOPDStopInfo, NSArray, NSSet, NSString, NSTimeZone;
 @protocol GEOTransitLine;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitDepartureSequence : NSObject <GEOTransitDepartureSequence>
+@interface _GEOTransitDepartureSequence : NSObject
 {
     GEOPDDepartureSequence *_sequence;
     id <GEOTransitLine> _line;

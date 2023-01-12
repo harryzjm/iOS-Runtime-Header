@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <UIKitCore/_UIClickPresentationAssisting-Protocol.h>
-
 @class NSString, UITargetedPreview, UIView, UIViewController, UIViewPropertyAnimator, _UIClickPresentation, _UIPortalView;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface _UIClickPresentationAssistant : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning, _UIClickPresentationAssisting>
+@interface _UIClickPresentationAssistant : NSObject
 {
     id <UIViewControllerContextTransitioning> _currentContext;
     unsigned long long _currentState;

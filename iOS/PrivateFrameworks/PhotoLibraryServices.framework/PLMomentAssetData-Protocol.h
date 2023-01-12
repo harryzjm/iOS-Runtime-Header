@@ -7,7 +7,7 @@
 #import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 #import <PhotoLibraryServices/PLRegionsClusteringItem-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSObject, NSString, PLRevGeoLocationInfo, PLRevGeoPlaceAnnotation;
+@class CLLocation, NSArray, NSData, NSDate, NSObject, NSString, PLRevGeoLocationInfo, PLRevGeoPlaceAnnotation, PLSharedAssetsContainerIncrementalChange;
 @protocol NSCopying, PLMomentAssetData, PLMomentData, PLPhotosHighlightData;
 
 @protocol PLMomentAssetData <PLMomentRefreshable, PLRegionsClusteringItem>
@@ -21,16 +21,22 @@
 @property(nonatomic) double curationScore;
 @property(nonatomic) _Bool favorite;
 @property(readonly, nonatomic) unsigned char shareState;
-@property(nonatomic) id <PLPhotosHighlightData> yearHighlightBeingKeyAsset;
-@property(nonatomic) id <PLPhotosHighlightData> monthHighlightBeingFirstAsset;
-@property(nonatomic) id <PLPhotosHighlightData> monthHighlightBeingKeyAsset;
-@property(nonatomic) id <PLPhotosHighlightData> dayGroupHighlightBeingExtendedAssets;
-@property(nonatomic) id <PLPhotosHighlightData> dayGroupHighlightBeingKeyAsset;
-@property(nonatomic) id <PLPhotosHighlightData> dayGroupHighlightBeingAssets;
-@property(nonatomic) id <PLPhotosHighlightData> highlightBeingExtendedAssets;
-@property(nonatomic) id <PLPhotosHighlightData> highlightBeingSummaryAssets;
-@property(nonatomic) id <PLPhotosHighlightData> highlightBeingKeyAsset;
-@property(nonatomic) id <PLPhotosHighlightData> highlightBeingAssets;
+@property(retain, nonatomic) id <PLPhotosHighlightData> yearHighlightBeingKeyAssetShared;
+@property(retain, nonatomic) id <PLPhotosHighlightData> monthHighlightBeingKeyAssetShared;
+@property(retain, nonatomic) id <PLPhotosHighlightData> highlightBeingKeyAssetShared;
+@property(retain, nonatomic) id <PLPhotosHighlightData> dayGroupHighlightBeingKeyAssetShared;
+@property(readonly, nonatomic) _Bool isSuggestedForSharingByPhotos;
+@property(readonly, nonatomic) _Bool hasLibraryScope;
+@property(retain, nonatomic) id <PLPhotosHighlightData> yearHighlightBeingKeyAssetPrivate;
+@property(retain, nonatomic) id <PLPhotosHighlightData> monthHighlightBeingKeyAssetPrivate;
+@property(retain, nonatomic) id <PLPhotosHighlightData> dayGroupHighlightBeingSummaryAssets;
+@property(retain, nonatomic) id <PLPhotosHighlightData> dayGroupHighlightBeingExtendedAssets;
+@property(retain, nonatomic) id <PLPhotosHighlightData> dayGroupHighlightBeingKeyAssetPrivate;
+@property(retain, nonatomic) id <PLPhotosHighlightData> dayGroupHighlightBeingAssets;
+@property(retain, nonatomic) id <PLPhotosHighlightData> highlightBeingExtendedAssets;
+@property(retain, nonatomic) id <PLPhotosHighlightData> highlightBeingSummaryAssets;
+@property(retain, nonatomic) id <PLPhotosHighlightData> highlightBeingKeyAssetPrivate;
+@property(retain, nonatomic) id <PLPhotosHighlightData> highlightBeingAssets;
 @property(readonly, retain, nonatomic) PLRevGeoLocationInfo *locationInfo;
 @property(readonly, retain, nonatomic) PLRevGeoPlaceAnnotation *placeAnnotation;
 @property(nonatomic) _Bool shiftedLocationIsValid;
@@ -44,6 +50,7 @@
 @property(readonly, retain, nonatomic) NSDate *localDateCreated;
 @property(retain, nonatomic) NSDate *dateCreated;
 @property(retain, nonatomic) CLLocation *location;
+- (void)reportSharedAssetIncrementalChange:(PLSharedAssetsContainerIncrementalChange *)arg1;
 - (NSString *)globalUUID;
 - (_Bool)isDeleted;
 - (_Bool)visibilityStateIsEqualToState:(short)arg1;

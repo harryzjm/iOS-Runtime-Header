@@ -6,12 +6,10 @@
 
 #import <UIKit/UIPresentationController.h>
 
-#import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString, UITapGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
-@interface CKAppMenuPresentationController : UIPresentationController <UIGestureRecognizerDelegate>
+@interface CKAppMenuPresentationController : UIPresentationController
 {
     UITapGestureRecognizer *_tapRecognizer;
 }

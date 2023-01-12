@@ -14,7 +14,7 @@
 - (void)clientDidResetForUserAttention:(id)arg1;
 - (void)_axSetupShelfSwitcherViewController;
 - (void)viewWillAppear:(_Bool)arg1;
-- (id)initWithShelf:(id)arg1 mainSwitcherViewController:(id)arg2 sceneManager:(id)arg3 delegate:(id)arg4;
+- (id)initWithSwitcherController:(id)arg1 shelf:(id)arg2 delegate:(id)arg3;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

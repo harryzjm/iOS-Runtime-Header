@@ -7,6 +7,7 @@
 #import <Foundation/NSAttributedString.h>
 
 @interface NSAttributedString (AppStoreComponents)
++ (id)asc_attributedStringWithLockupTextContainingSymbols:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)asc_attributedStringWithLockupHeading:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 @end
 

@@ -18,6 +18,13 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
+- (_Bool)_menuButtonShowsSingleImage;
+- (_Bool)_menuButtonShowsChevron;
+- (_Bool)_menuButtonShowsIndicator;
+- (_Bool)_menuButtonShowsImages;
+- (id)_createMenu;
+- (void)_configureMenuButton:(id)arg1;
+- (void)_configurePillButton:(id)arg1;
 - (id)_createCollapsedButton;
 - (id)_createButton;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2;

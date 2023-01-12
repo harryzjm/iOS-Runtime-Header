@@ -29,6 +29,7 @@
 @property(readonly) _Bool hasColorSpace;
 - (id)detailAreaPath;
 - (id)shortDisplayNameConsideringCounterparts:(id)arg1;
+- (id)effectivePlatformForDisplayOrder;
 - (long long)compareDisplayOrder:(id)arg1;
 - (void)captureComponents;
 

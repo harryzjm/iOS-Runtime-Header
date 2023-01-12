@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreDaemon/AMSResponseDecoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface ASDMediaClipTaskResponseDecoder : NSObject <AMSResponseDecoding>
+@interface ASDMediaClipTaskResponseDecoder : NSObject
 {
 }
 

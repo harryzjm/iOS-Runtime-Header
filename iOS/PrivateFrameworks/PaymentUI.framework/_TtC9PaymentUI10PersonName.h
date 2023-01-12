@@ -15,6 +15,8 @@
     MISSING_TYPE *_phoneticNameErrors;
     MISSING_TYPE *requiresPhoneticName;
     MISSING_TYPE *context;
+    MISSING_TYPE *defaults;
+    MISSING_TYPE *recents;
 }
 
 @end

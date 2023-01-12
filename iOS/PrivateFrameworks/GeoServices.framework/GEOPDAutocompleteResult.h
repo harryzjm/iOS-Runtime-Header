@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDAutocompleteSessionData, GEOPDParsecQueryRankingFeatures, GEOPDPlaceSummaryLayoutMetadata, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDAutocompleteResult : PBCodable <NSCopying>
+@interface GEOPDAutocompleteResult : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -28,6 +26,7 @@ __attribute__((visibility("hidden")))
     int _highlightType;
     unsigned int _retainSearchTime;
     _Bool _enableRap;
+    _Bool _enableStructuredRapAffordance;
     _Bool _isNoResultFromNegativeCache;
     _Bool _isTopSectionTypeQuery;
     _Bool _shouldDifferentiateClientAndServerResults;
@@ -39,6 +38,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_highlightType:1;
         unsigned int has_retainSearchTime:1;
         unsigned int has_enableRap:1;
+        unsigned int has_enableStructuredRapAffordance:1;
         unsigned int has_isNoResultFromNegativeCache:1;
         unsigned int has_isTopSectionTypeQuery:1;
         unsigned int has_shouldDifferentiateClientAndServerResults:1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WatchKit/SPCompanionAppServerProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SPCompanionAppServerProtocolStub : NSObject <SPCompanionAppServerProtocol>
+@interface SPCompanionAppServerProtocolStub : NSObject
 {
 }
 

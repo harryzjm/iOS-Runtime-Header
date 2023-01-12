@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 @protocol _UIExclusiveTouchGestureRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIExclusiveTouchGestureRecognizer
+@interface _UIExclusiveTouchGestureRecognizer : UIGestureRecognizer
 {
     _Bool _achievedMaximumAbsoluteAccumulatedMovement;
     struct CGPoint _maximumAbsoluteAccumulatedMovement;

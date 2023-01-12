@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIScreenRoutePickerRemoteViewControllerHost-Protocol.h>
+#import "_UIRemoteViewController.h"
 
 @class NSExtension, NSString, _UIScreenRoutePickerViewController;
 @protocol NSCopying><NSObject;
 
 __attribute__((visibility("hidden")))
-@interface _UIScreenRoutePickerRemoteViewController <_UIScreenRoutePickerRemoteViewControllerHost>
+@interface _UIScreenRoutePickerRemoteViewController : _UIRemoteViewController
 {
     _UIScreenRoutePickerViewController *_publicController;
     NSExtension *_extension;

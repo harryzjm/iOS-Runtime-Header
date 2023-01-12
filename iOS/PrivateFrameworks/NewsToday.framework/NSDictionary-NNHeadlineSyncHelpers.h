@@ -6,13 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <NewsToday/NNSyncableHeadline-Protocol.h>
-#import <NewsToday/NNSyncableResult-Protocol.h>
-#import <NewsToday/NNSyncableSection-Protocol.h>
-
 @class NSArray, NSData, NSDate, NSString;
 
-@interface NSDictionary (NNHeadlineSyncHelpers) <NNSyncableResult, NNSyncableSection, NNSyncableHeadline>
+@interface NSDictionary (NNHeadlineSyncHelpers)
 @property(readonly, nonatomic) NSString *sync_NewsURLString;
 @property(readonly, nonatomic) NSString *sync_webURLString;
 @property(readonly, nonatomic) NSData *sync_publisherLogoImageData;

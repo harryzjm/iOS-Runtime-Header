@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSWPOffscreenColumn-Protocol.h>
-
 @class NSString, TPPaginatedPageController;
 @protocol TSWPFlowInfo;
 
-@interface TPVisibleColumnProxy : NSObject <TSWPOffscreenColumn>
+@interface TPVisibleColumnProxy : NSObject
 {
     unsigned long long _pageIndex;
     id <TSWPFlowInfo> _flowInfo;

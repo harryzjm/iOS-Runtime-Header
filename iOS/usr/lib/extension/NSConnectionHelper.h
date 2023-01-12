@@ -14,12 +14,12 @@ __attribute__((visibility("hidden")))
     double reqLim;
     double repLim;
     _Bool remoteUsesKeyedDO;
-    NSSet *whitelist;
+    NSSet *allowlist;
     _Bool useKeyedDO;
     NSConnection *parent;
 }
 
-- (void)setWhitelist:(id)arg1;
+- (void)setAllowList:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

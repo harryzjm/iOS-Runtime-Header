@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <IconServices/ISCompositorElement-Protocol.h>
-#import <IconServices/ISCompositorResourceProvider-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 @protocol ISCompositorRecipe, ISCompositorResourceProvider;
 
 __attribute__((visibility("hidden")))
-@interface _ISCompositorElement : NSObject <ISCompositorElement, ISCompositorResourceProvider>
+@interface _ISCompositorElement : NSObject
 {
     id <ISCompositorRecipe> _recipe;
     NSMutableDictionary *_resourceByName;

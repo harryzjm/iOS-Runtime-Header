@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class CHRecentCall, NSDate, NSNumber, NSSet, NSString, NSUUID;
+@class CHRecentCall, NSDate, NSNumber, NSSet, NSString, NSURL, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface CallRecord : NSManagedObject
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsOutgoingLocalParticipantUUID;
 @property(readonly, nonatomic) _Bool supportsLocalParticipantUUID;
 - (_Bool)supportsJunkConfidence;
+@property(readonly, nonatomic) _Bool supportsImageURL;
 @property(readonly, nonatomic) _Bool supportsHandleType;
 @property(readonly, nonatomic) _Bool supportsCallCategory;
 - (id)compositeVerificationStatusForContext:(id)arg1;
@@ -38,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int chCallStatus;
 
 // Remaining properties
-@property(retain, nonatomic) NSString *address; // @dynamic address;
+@property(copy, nonatomic) NSString *address; // @dynamic address;
 @property(copy, nonatomic) NSNumber *answered; // @dynamic answered;
 @property(copy, nonatomic) NSNumber *call_category; // @dynamic call_category;
 @property(copy, nonatomic) NSNumber *calltype; // @dynamic calltype;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSNumber *face_time_data; // @dynamic face_time_data;
 @property(copy, nonatomic) NSNumber *filtered_out_reason; // @dynamic filtered_out_reason;
 @property(copy, nonatomic) NSNumber *handle_type; // @dynamic handle_type;
+@property(copy, nonatomic) NSURL *imageURL; // @dynamic imageURL;
 @property(copy, nonatomic) NSString *iso_country_code; // @dynamic iso_country_code;
 @property(copy, nonatomic) NSNumber *junkConfidence; // @dynamic junkConfidence;
 @property(copy, nonatomic) NSUUID *localParticipantUUID; // @dynamic localParticipantUUID;

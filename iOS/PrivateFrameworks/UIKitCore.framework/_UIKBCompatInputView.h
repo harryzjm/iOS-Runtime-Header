@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
+#import "UIView.h"
 
 __attribute__((visibility("hidden")))
-@interface _UIKBCompatInputView
+@interface _UIKBCompatInputView : UIView
 {
     UIView *_touchableView;
     UIView *_snapshotView;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property(retain, nonatomic) UIView *touchableView; // @synthesize touchableView=_touchableView;
 - (_Bool)_hasAutolayoutHeightConstraint;

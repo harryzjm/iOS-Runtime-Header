@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/VCPDistanceDescriptorProtocol-Protocol.h>
-
 @class VNSceneprint;
 
 __attribute__((visibility("hidden")))
-@interface VCPSceneprintDescriptor : NSObject <VCPDistanceDescriptorProtocol>
+@interface VCPSceneprintDescriptor : NSObject
 {
     VNSceneprint *_sceneprint;
 }

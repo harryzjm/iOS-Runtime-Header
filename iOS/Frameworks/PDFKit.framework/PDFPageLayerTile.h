@@ -6,12 +6,10 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <PDFKit/PDFTilePoolDelegate-Protocol.h>
-
 @class PDFPageLayer, PDFTileSurface;
 
 __attribute__((visibility("hidden")))
-@interface PDFPageLayerTile : CALayer <PDFTilePoolDelegate>
+@interface PDFPageLayerTile : CALayer
 {
     PDFPageLayer *pageLayer;
     struct CGAffineTransform renderingTransform;

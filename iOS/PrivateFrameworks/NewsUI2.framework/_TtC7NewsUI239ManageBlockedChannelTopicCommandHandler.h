@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *navigator;
     MISSING_TYPE *tracker;
-    MISSING_TYPE *followingDataManager;
 }
 
 @end

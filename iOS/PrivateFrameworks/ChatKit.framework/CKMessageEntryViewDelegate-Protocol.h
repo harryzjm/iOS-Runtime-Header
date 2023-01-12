@@ -28,6 +28,8 @@
 - (void)messageEntryViewPopulatePreviousSentMessage:(CKMessageEntryView *)arg1;
 - (void)sendCurrentLocationMessage:(CKMessageEntryView *)arg1;
 - (UITextView *)textViewOnscreenWithEntryView;
+- (void)enableRotationAfterRecording;
+- (void)disableRotationWhileRecordingAudioMessage;
 - (void)messageEntryViewDidBeginEditing:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewWantsEffectPicker:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSwipeDownGestureRecognized:(CKMessageEntryView *)arg1;

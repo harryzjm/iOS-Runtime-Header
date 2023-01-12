@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlaybackCore/MPCPlayerResetTracklistCommand-Protocol.h>
-
 @class NSArray, NSDictionary, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCPlayerResetTracklistCommand <MPCPlayerResetTracklistCommand>
+@interface _MPCPlayerResetTracklistCommand
 {
     _Bool _supportsSetQueueCommand;
     NSArray *_devices;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSFilePresenter-Protocol.h>
-
 @class NSData, NSError, NSOperationQueue, NSSet, NSString, NSURL;
 @protocol OS_dispatch_queue, TSUURLTrackerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSUURLTrackerFilePresenter : NSObject <NSFilePresenter>
+@interface TSUURLTrackerFilePresenter : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     _Bool _hasStarted;

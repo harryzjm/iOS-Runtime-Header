@@ -5,10 +5,11 @@
 //
 
 #import <AVConference/VCBasebandCodecNotifications-Protocol.h>
+#import <AVConference/VCServerDelegate-Protocol.h>
 
 @class VCAudioIO;
 
-@protocol VCAudioIODelegate <VCBasebandCodecNotifications>
+@protocol VCAudioIODelegate <VCBasebandCodecNotifications, VCServerDelegate>
 - (void)didResumeAudioIO:(VCAudioIO *)arg1;
 - (void)didSuspendAudioIO:(VCAudioIO *)arg1;
 @end

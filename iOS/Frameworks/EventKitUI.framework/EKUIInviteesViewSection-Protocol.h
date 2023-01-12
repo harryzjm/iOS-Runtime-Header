@@ -6,9 +6,11 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, UITableView, UITableViewCell, UITableViewHeaderFooterView;
+@class EKUIInviteeContextMenuData, NSArray, NSIndexPath, NSString, UIContextMenuInteraction, UITableView, UITableViewCell, UITableViewHeaderFooterView;
 
 @protocol EKUIInviteesViewSection <NSObject>
+- (EKUIInviteeContextMenuData *)contextMenuDataForIndexPath:(NSIndexPath *)arg1 interaction:(UIContextMenuInteraction *)arg2;
+- (_Bool)supportsContextMenuForIndexPath:(NSIndexPath *)arg1;
 - (NSArray *)actionsForRow:(NSIndexPath *)arg1;
 - (void)cancelOutstandingOperations;
 - (void)setTableViewCellHook:(UITableViewCell * (^)(unsigned long long))arg1;

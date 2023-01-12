@@ -13,7 +13,7 @@
 + (_Bool)supportsMapType:(int)arg1 scale:(int)arg2;
 @property(readonly, nonatomic) NSArray *visibleTileSets;
 @property(readonly, nonatomic) NSArray *overlays;
-@property(nonatomic) id <VKInteractiveMapDelegate> delegate;
+@property(nonatomic) __weak id <VKInteractiveMapDelegate> delegate;
 - (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(VKCameraController<VKNavigationCameraController> *)arg5 pounceCompletionHandler:(void (^)(_Bool))arg6;
 - (_Bool)isPointValidForGesturing:(struct CGPoint)arg1;
 - (NSArray *)attributionsForCurrentRegion;

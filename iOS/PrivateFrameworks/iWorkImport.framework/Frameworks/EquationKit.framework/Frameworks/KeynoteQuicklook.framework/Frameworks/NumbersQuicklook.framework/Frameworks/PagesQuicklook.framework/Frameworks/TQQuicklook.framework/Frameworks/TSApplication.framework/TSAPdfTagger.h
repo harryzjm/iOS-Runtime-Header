@@ -6,15 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSApplication/TSAPdfTagger-Protocol.h>
-#import <TSApplication/TSCHPdfTagger-Protocol.h>
-#import <TSApplication/TSDPdfTagger-Protocol.h>
-#import <TSApplication/TSTPdfTagger-Protocol.h>
-#import <TSApplication/TSWPPdfTagger-Protocol.h>
-
 @class NSMutableArray, NSString, TSARenderingExporter;
 
-@interface TSAPdfTagger : NSObject <TSDPdfTagger, TSWPPdfTagger, TSTPdfTagger, TSCHPdfTagger, TSAPdfTagger>
+@interface TSAPdfTagger : NSObject
 {
     _Bool _stateIsValid;
     NSMutableArray *_contextStack;

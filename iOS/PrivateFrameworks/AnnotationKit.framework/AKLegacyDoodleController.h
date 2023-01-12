@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/AKShapeDetectionControllerDelegate-Protocol.h>
-#import <AnnotationKit/AKSmoothPathViewDelegate-Protocol.h>
-
 @class AKAnnotation, AKController, AKShapeDetectionController, AKSmoothPathView, NSMutableArray, NSString;
 
-@interface AKLegacyDoodleController : NSObject <AKSmoothPathViewDelegate, AKShapeDetectionControllerDelegate>
+@interface AKLegacyDoodleController : NSObject
 {
     _Bool _preferDoodle;
     _Bool _coalescesDoodles;

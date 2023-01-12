@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSSecureCoding-Protocol.h>
-
 @class KNBuildAttributes, NSArray, NSDictionary, NSString;
 
-@interface KNAnimatedBuild : NSObject <NSSecureCoding>
+@interface KNAnimatedBuild : NSObject
 {
     KNAnimatedBuild *_parentBuild;
     _Bool _automatic;

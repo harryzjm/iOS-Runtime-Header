@@ -10,6 +10,7 @@
 @protocol CRKIDSLocalPrimitives
 @property(readonly, copy, nonatomic) NSArray *accounts;
 @property(readonly, copy, nonatomic) NSDictionary *debugInfo;
+- (void)fetchFirewallWithCompletion:(void (^)(id <CRKIDSFirewall>, NSError *))arg1;
 - (id <CRKCancelable><CRKResumable>)subscribeToMessageReceivesWithHandler:(void (^)(NSDictionary *, NSString *, NSString *))arg1;
 - (id <CRKCancelable><CRKResumable>)subscribeToMessageSendsWithHandler:(void (^)(NSString *, _Bool, NSError *))arg1;
 - (_Bool)sendMessage:(NSDictionary *)arg1 toAddress:(NSString *)arg2 fromID:(NSString *)arg3 options:(CRKIDSMessageOptions *)arg4 identifier:(id *)arg5 error:(id *)arg6;

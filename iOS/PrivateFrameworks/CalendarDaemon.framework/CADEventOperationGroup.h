@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADEventInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 __attribute__((visibility("hidden")))
-@interface CADEventOperationGroup <CADEventInterface>
+@interface CADEventOperationGroup : CADOperationGroup
 {
 }
 
 + (void)monitorLocationAuthorizationStatusChanges:(unsigned long long)arg1;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
-+ (_Bool)requiresEventOrReminderAccess;
 - (void)CADDatabaseGetTTLLocationAuthorizationStatus:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseGetSecurityScopedLocalURLWrapperForAttachment:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseGetAttachmentUUIDWithExternalID:(id)arg1 store:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetAttachmentWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseShouldPermitOrganizerPhoneNumberFromJunkChecks:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseShouldPermitOrganizerEmailFromJunkChecks:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -25,17 +23,12 @@ __attribute__((visibility("hidden")))
 - (void)CADOccurrenceCacheSearchLocationsWithTerm:(id)arg1 inCalendars:(id)arg2 responseToken:(int)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADOccurrenceCacheSearchWithTerm:(id)arg1 inCalendars:(id)arg2 responseToken:(int)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADOccurrenceCacheDoEvents:(id)arg1 haveOccurrencesAfterDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)CADOccurrenceCacheGetOccurrenceDateOfEventWithRowID:(int)arg1 nearestDate:(id)arg2 prefersForwardSearch:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)CADOccurrenceCacheGetOccurrenceForCalendars:(id)arg1 onDay:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADOccurrenceCacheGetOccurrenceDateOfEventWithObjectID:(id)arg1 nearestDate:(id)arg2 prefersForwardSearch:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)CADOccurrenceCacheGetOccurrencesForCalendars:(id)arg1 onDay:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADOccurrenceCacheGetOccurrenceCountsForCalendars:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADOccurrenceCacheAreOccurrencesBeingGenerated:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseActOnSuggestedEvent:(id)arg1 action:(int)arg2 validator:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)CADDatabaseActOnSuggestedEvent:(id)arg1 action:(int)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)_mergeDaysAndOccurrenceCounts:(id)arg1 withCounts:(id)arg2;
 - (_Bool)_CADDatabaseCanModifySuggestedEventCalendar;
 - (void)CADDatabaseCanModifySuggestedEventCalendar:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseSetShowsDeclinedEvents:(_Bool)arg1;
-- (void)CADDatabaseGetCountOfNotifiableEvents:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseGetCountOfUnacknowledgedEvents:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetAllEventsWithUniqueID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetEventWithUniqueID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetEventWithEventIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -47,9 +40,9 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseGetBirthdayCalendarEnabledWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetOrCreateBirthdayCalendar:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetOrCreateSubscribedCalendarsSource:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseSetDefaultCalendarForNewEvents:(id)arg1 delegateSource:(id)arg2;
+- (void)CADDatabaseSetDefaultCalendarForNewEvents:(id)arg1 delegateSource:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetDefaultCalendarForNewEventsInDelegateSource:(id)arg1 withReply:(CDUnknownBlockType)arg2;
-- (id)_getDefaultCalendarIDForNewEventsInStoreWithID:(id)arg1;
+- (id)_getDefaultCalendarIDForNewEventsInStoreWithID:(id)arg1 inDatabase:(struct CalDatabase *)arg2 defaultExists:(_Bool *)arg3;
 - (void)CADDatabaseGetDefaultLocalCalendarWithReply:(CDUnknownBlockType)arg1;
 
 @end

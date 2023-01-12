@@ -10,10 +10,12 @@
 {
 }
 
++ (id)scriptHistogramForString:(id)arg1;
 + (_Bool)isCharacterEmoji:(id)arg1;
 + (_Bool)shouldRelaxCharacterBoundsPercentageOverlapForScript:(int)arg1;
 + (_Bool)isRightToLeftScriptForCharacter:(id)arg1;
 + (_Bool)isCharacterFullWidth:(id)arg1;
++ (int)scriptCodeForCodepoint:(unsigned int)arg1;
 + (int)singleScriptCodeForString:(id)arg1;
 + (_Bool)isSkippableScriptCode:(int)arg1;
 + (_Bool)shouldCorrectionGesturesSnapToTokensForScriptCode:(int)arg1;

@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKRouteContextObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface LabelNavRouteContextObserverProxy : NSObject <VKRouteContextObserver>
+@interface LabelNavRouteContextObserverProxy : NSObject
 {
     struct RouteContextChangeObserver *_observer;
-    struct vector<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, geo::StdAllocator<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, mdm::Allocator>> _observedContexts;
+    struct vector<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc>, geo::StdAllocator<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc>, mdm::Allocator>> _observedContexts;
 }
 
 - (id).cxx_construct;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIJSNetworkInterface-Protocol.h>
+#import "VUIJSObject.h"
 
 __attribute__((visibility("hidden")))
-@interface VUIJSNetworkInterface <VUIJSNetworkInterface>
+@interface VUIJSNetworkInterface : VUIJSObject
 {
     int _playbackReportToken;
     _Bool _suppressServerConfigNotifications;

@@ -10,8 +10,6 @@
 
 @interface _TtC18VisualIntelligence33NatureClassificationPostProcessor : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *postProcessThreshold;
-    MISSING_TYPE *genusFileMapper;
     MISSING_TYPE *labelFileMapper;
 }
 

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIContextMenuScrollObservationInteractionDelegate-Protocol.h>
-
 @class NSArray, NSString, UIBezierPath, UIPanGestureRecognizer, UIView, UIViewSpringAnimationBehavior, _UIVelocityIntegrator;
 @protocol _UIContextMenuPanControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuPanController : NSObject <UIGestureRecognizerDelegate, _UIContextMenuScrollObservationInteractionDelegate>
+@interface _UIContextMenuPanController : NSObject
 {
     unsigned long long _currentDetentIndex;
     double _initialYTranslation;

@@ -30,10 +30,16 @@
 - (void)enumerateIntegerPropertyValuesForKey:(NSString *)arg1 ofNodesWithIdentifiers:(KGElementIdentifierSet *)arg2 usingBlock:(void (^)(unsigned long long, long long, _Bool *))arg3;
 - (void)enumerateEdgesMatchingFilter:(MAEdgeFilter *)arg1 usingBlock:(void (^)(MAEdge *, _Bool *))arg2;
 - (void)enumerateNodesMatchingFilter:(MANodeFilter *)arg1 usingBlock:(void (^)(MANode *, _Bool *))arg2;
+- (void)enumerateNodesWithIdentifiers:(KGElementIdentifierSet *)arg1 sortedByFloatPropertyForName:(NSString *)arg2 usingBlock:(void (^)(MANode *, _Bool *))arg3;
+- (void)enumerateNodesWithIdentifiers:(KGElementIdentifierSet *)arg1 sortedByIntegerPropertyForName:(NSString *)arg2 usingBlock:(void (^)(MANode *, _Bool *))arg3;
+- (void)enumerateNodesWithIdentifiers:(KGElementIdentifierSet *)arg1 sortedByStringPropertyForName:(NSString *)arg2 usingBlock:(void (^)(MANode *, _Bool *))arg3;
 - (void)enumerateEdgesWithIdentifiers:(KGElementIdentifierSet *)arg1 usingBlock:(void (^)(MAEdge *, _Bool *))arg2;
 - (void)enumerateNodesWithIdentifiers:(KGElementIdentifierSet *)arg1 usingBlock:(void (^)(MANode *, _Bool *))arg2;
 - (_Bool)findAndResolveUniqueEdge:(MAEdge<MAUniquelyIdentifiableEdge> *)arg1;
 - (_Bool)findAndResolveUniqueNode:(MANode<MAUniquelyIdentifiableNode> *)arg1;
+- (void)labelsAndDomainsOfEdgesForIdentifiers:(KGElementIdentifierSet *)arg1 labels:(id *)arg2 domains:(id *)arg3;
+- (void)labelsAndDomainsOfNodesForIdentifiers:(KGElementIdentifierSet *)arg1 labels:(id *)arg2 domains:(id *)arg3;
+- (KGElementIdentifierSet *)transitiveClosureNeighborNodeIdentifiersWithStartNodeIdentifiers:(KGElementIdentifierSet *)arg1 edgeType:(unsigned long long)arg2 edgeFilter:(MAEdgeFilter *)arg3;
 - (KGElementIdentifierSet *)neighborNodeIdentifiersWithStartNodeIdentifiers:(KGElementIdentifierSet *)arg1 edgeType:(unsigned long long)arg2 edgeFilter:(MAEdgeFilter *)arg3;
 - (unsigned long long)numberOfEdgesMatchingFilter:(MAEdgeFilter *)arg1;
 - (MAEdge *)anyEdgeMatchingFilter:(MAEdgeFilter *)arg1;

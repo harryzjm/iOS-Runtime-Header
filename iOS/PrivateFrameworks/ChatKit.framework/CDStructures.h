@@ -34,25 +34,6 @@ struct AudioStreamBasicDescription {
 
 struct AudioStreamPacketDescription;
 
-struct CATransform3D {
-    double m11;
-    double m12;
-    double m13;
-    double m14;
-    double m21;
-    double m22;
-    double m23;
-    double m24;
-    double m31;
-    double m32;
-    double m33;
-    double m34;
-    double m41;
-    double m42;
-    double m43;
-    double m44;
-};
-
 struct CGAffineTransform {
     double _field1;
     double _field2;
@@ -104,21 +85,17 @@ struct CLLocationCoordinate2D {
 };
 
 struct IMAssociatedMessageGeometryDescriptor {
-    unsigned long long layoutIntent;
-    unsigned long long associatedLayoutIntent;
-    float parentPreviewWidth;
-    float xScalar;
-    float yScalar;
-    float scale;
-    float rotation;
+    unsigned long long _field1;
+    unsigned long long _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+    float _field7;
 };
 
-struct IMPreviewConstraints {
-    double _field1;
-    struct CGSize _field2;
-    double _field3;
-    _Bool _field4;
-    _Bool _field5;
+struct MTLResourceID {
+    unsigned long long _field1;
 };
 
 struct NSDirectionalEdgeInsets {
@@ -147,13 +124,6 @@ struct PXMediaProviderThumbnailDataSpec {
     unsigned short _field8;
 };
 
-struct PXSimpleIndexPath {
-    long long _field1;
-    long long _field2;
-    long long _field3;
-    long long _field4;
-};
-
 struct UIEdgeInsets {
     double top;
     double left;
@@ -162,33 +132,18 @@ struct UIEdgeInsets {
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct _Spec {
-    struct CGSize _field1;
-    struct CGSize _field2;
-    double _field3;
-    double _field4;
-    long long _field5;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    _Bool _field5;
-    double _field6;
-    int _field7;
-} CDStruct_e950349b;
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+} CDStruct_a06f635e;
 
 typedef struct {
     unsigned long long photosCount;
@@ -206,23 +161,25 @@ typedef struct {
 
 typedef struct {
     unsigned long long _field1;
+    unsigned long long _field2;
+} CDStruct_4bcfbbae;
+
+typedef struct {
+    unsigned long long _field1;
     id *_field2;
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
 
 typedef struct {
-    unsigned long long count;
-    long long type;
-} CDStruct_15189878;
+    unsigned long long _field1;
+    long long _field2;
+} CDStruct_3f164e09;
 
 typedef struct {
-    double currentDragDistance;
-    double previousProposedWidth;
-    _Bool proposedPreviouslyIncreasing;
-    _Bool previouslyAtSnap;
-    _Bool previouslyAtMin;
-} CDStruct_644752d7;
+    float _field1;
+    float _field2;
+} CDStruct_b2fbf00d;
 
 typedef struct {
     long long value;
@@ -238,4 +195,9 @@ typedef struct {
     _Bool hasCaption;
     _Bool isBatchStart;
 } CDStruct_1417b155;
+
+typedef struct {
+    CDStruct_aa0b146f _field1;
+    CDStruct_aa0b146f _field2;
+} CDStruct_4c96eda1;
 

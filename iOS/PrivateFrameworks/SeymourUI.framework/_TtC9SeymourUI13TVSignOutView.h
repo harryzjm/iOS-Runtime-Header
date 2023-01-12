@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *monogramLabel;
     MISSING_TYPE *imageView;
     MISSING_TYPE *titleLabel;
-    MISSING_TYPE *watchBadgeView;
+    MISSING_TYPE *deviceBadgeView;
     MISSING_TYPE *imageTopConstraint;
     MISSING_TYPE *imageLeadingConstraint;
     MISSING_TYPE *imageBottomConstraint;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppAttestInternal/NSURLSessionDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PinnedUrlDelegate : NSObject <NSURLSessionDelegate>
+@interface PinnedUrlDelegate : NSObject
 {
     NSString *m_host;
 }

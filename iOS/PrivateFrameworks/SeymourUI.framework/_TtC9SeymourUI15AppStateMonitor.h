@@ -14,8 +14,6 @@
     MISSING_TYPE *eventHub;
 }
 
-- (void)publishAppAttentionGained;
-- (void)publishAppAttentionLost;
 - (void)publishAppWillTerminate;
 - (void)publishAppDidEnterBackground;
 - (void)publishAppWillResignActive;

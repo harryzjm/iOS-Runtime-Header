@@ -4,19 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/UICollectionViewDataSource-Protocol.h>
-#import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <VideosUI/VUIFamilyMembersViewControllerDelegate-Protocol.h>
-#import <VideosUI/VUIFamilySharingContentProtocol-Protocol.h>
-#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
-#import <VideosUI/VUILibraryShelfCollectionViewControllerDelegate-Protocol.h>
-#import <VideosUI/VUIMenuCollectionViewControllerDelegate-Protocol.h>
-#import <VideosUI/VUIShelvesDataSourceDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, UIBarButtonItem, VUIDownloadTableViewController, VUIFamilyMember, VUILibraryBannerCollectionViewCell, VUILibraryMenuDataSource, VUILibraryMenuItemViewCell, VUILibraryShelvesDataSource, VUIMediaLibrary, VUIViewControllerContentPresenter, _VUILibrarySeeAllController;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryViewController <UICollectionViewDataSource, VUILibraryShelfCollectionViewControllerDelegate, UIGestureRecognizerDelegate, VUIShelvesDataSourceDelegate, VUILibraryDataSourceDelegate, VUIMenuCollectionViewControllerDelegate, VUIFamilyMembersViewControllerDelegate, VUIFamilySharingContentProtocol>
+@interface VUILibraryViewController
 {
     _Bool _ppt_isLoaded;
     _Bool _viewHasAppearedAtLeastOnce;
@@ -81,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)_accountsChanged:(id)arg1;
 - (long long)_categoryForShelfType:(long long)arg1;
 - (long long *)_categoryForCellType:(long long)arg1;
+- (id)_symbolNameForCellType:(long long)arg1;
 - (id)_localizedTitleForCellType:(long long)arg1;
 - (void)_constructShelves;
 - (void)_configureShelfViewController:(id)arg1 withShelfType:(long long)arg2;
@@ -88,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeMediaLibraryNotificationObservers;
 - (void)_addNotificationObserversWithDeviceLibrary:(id)arg1;
 - (void)_addMediaLibraryNotificationObservers;
+- (void)_didGDPRConsented;
 - (void)_deviceMediaLibraryUpdateStateDidChange:(id)arg1;
 - (void)_stopMonitoringDeviceMediaLibraryInitialUpdate;
 - (void)_startMonitoringDeviceMediaLibraryInitialUpdate;
@@ -99,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (id)_viewControllerWithCellType:(long long)arg1;
 - (void)_selectLibraryCellType:(long long)arg1;
 - (void)_resetNavigationBar;
+- (void)_setupNavigationItemAccessoryView;
 - (void)_updateNavigationTitle;
 - (void)_showContentOrNoContentView;
 - (_Bool)_shouldShowContentView;

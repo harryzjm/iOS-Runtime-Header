@@ -11,42 +11,17 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned long long lastEventTimestamp;
-} CDStruct_a7b080c6;
-
-// Ambiguous groups
-typedef struct {
-    unsigned int date:1;
-    unsigned int eventType:1;
-} CDStruct_7fb26528;
-
-typedef struct {
-    unsigned int timestamp:1;
-    unsigned int eventType:1;
-} CDStruct_7e36e431;
-
-typedef struct {
-    unsigned int engagementType:1;
-} CDStruct_c054b854;
-
-typedef struct {
-    unsigned int timestamp:1;
-} CDStruct_b5306035;
 

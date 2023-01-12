@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UISceneLayerTarget-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneLayerTargetWithContext : NSObject <UISceneLayerTarget>
+@interface _UISceneLayerTargetWithContext : NSObject
 {
     id _context;
     unsigned long long _equalityType;

@@ -13,16 +13,16 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *minValue;
     MISSING_TYPE *maxValue;
-    MISSING_TYPE *currentValue;
     MISSING_TYPE *peakValue;
+    MISSING_TYPE *currentValue;
     MISSING_TYPE *$__lazy_storage_$_meterFillLayer;
 }
 
 - (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 @property(nonatomic, retain) UIColor *tintColor;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSPCopying-Protocol.h>
-
 @class NSString, TSDCommentStorage, TSKFormat, TSSStyle, TSTCellSpec, TSTConditionalStyleSet, TSTImportWarningSet, TSTPopUpMenuModel, TSUCustomFormat, TSWPStorage;
 @protocol TSTTableDataPayloadHashing;
 
-@interface TSTTableDataObject : NSObject <TSPCopying>
+@interface TSTTableDataObject : NSObject
 {
     NSObject<TSTTableDataPayloadHashing> *_payload;
     unsigned int _key;

@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *lastAnimate;
     MISSING_TYPE *angle;
     MISSING_TYPE *defaultColor;
-    MISSING_TYPE *displayLink;
     MISSING_TYPE *staticAngle;
+    MISSING_TYPE *$__lazy_storage_$_displayLink;
 }
 
 + (Class)layerClass;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)didMoveToSuperview;
-- (void)update;
+- (void)updateGradient;
 
 @end
 

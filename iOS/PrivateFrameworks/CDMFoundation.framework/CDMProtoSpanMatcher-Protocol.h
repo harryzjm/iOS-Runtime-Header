@@ -13,6 +13,6 @@
 
 @optional
 + (NSString *)trialFactorName;
-+ (NSString *)assetFolderName;
++ (NSArray *)assetFolderNames;
 @end
 

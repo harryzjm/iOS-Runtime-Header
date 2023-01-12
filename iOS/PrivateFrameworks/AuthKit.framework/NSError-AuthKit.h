@@ -11,6 +11,7 @@
 + (id)ak_errorWithCode:(long long)arg1 underlyingError:(id)arg2;
 + (id)ak_errorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)ak_errorWithCode:(long long)arg1;
+- (_Bool)ak_isAuthenticationError;
 - (_Bool)ak_isAuthenticationErrorWithCode:(long long)arg1;
 - (_Bool)ak_isIncompatibleDevicesError;
 - (_Bool)ak_isSurrogateAuthAlreadyInProgressError;

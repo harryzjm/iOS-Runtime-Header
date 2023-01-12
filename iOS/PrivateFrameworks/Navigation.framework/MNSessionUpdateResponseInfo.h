@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class GEOETATrafficUpdateRequest, GEOETATrafficUpdateResponse, NSError;
+@class GEOETATrafficUpdateRequest, GEOETATrafficUpdateResponse, NSArray, NSError;
 
 __attribute__((visibility("hidden")))
 @interface MNSessionUpdateResponseInfo : NSObject
 {
+    NSArray *_waypoints;
     GEOETATrafficUpdateRequest *_request;
     GEOETATrafficUpdateResponse *_response;
     NSError *_error;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) GEOETATrafficUpdateResponse *response; // @synthesize response=_response;
 @property(retain, nonatomic) GEOETATrafficUpdateRequest *request; // @synthesize request=_request;
+@property(retain, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 
 @end
 

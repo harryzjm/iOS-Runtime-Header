@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSArray *_accessoryViews;
     struct CGSize _preferredPreviewSize;
     struct CGSize _preferredMenuSize;
+    struct CGPoint _preferredMenuAttachmentPoint;
     struct UIEdgeInsets _preferredEdgeInsets;
     CDStruct_17a0fc55 _preferredAnchor;
 }
@@ -30,11 +31,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_17a0fc55 preferredAnchor; // @synthesize preferredAnchor=_preferredAnchor;
 @property(nonatomic) double preferredContentSpacing; // @synthesize preferredContentSpacing=_preferredContentSpacing;
 @property(nonatomic) struct UIEdgeInsets preferredEdgeInsets; // @synthesize preferredEdgeInsets=_preferredEdgeInsets;
+@property(nonatomic) struct CGPoint preferredMenuAttachmentPoint; // @synthesize preferredMenuAttachmentPoint=_preferredMenuAttachmentPoint;
 @property(nonatomic) struct CGSize preferredMenuSize; // @synthesize preferredMenuSize=_preferredMenuSize;
 @property(nonatomic) struct CGSize preferredPreviewSize; // @synthesize preferredPreviewSize=_preferredPreviewSize;
 @property(nonatomic) _Bool shouldAvoidInputViews; // @synthesize shouldAvoidInputViews=_shouldAvoidInputViews;
 @property(nonatomic) _Bool shouldUpdateAttachment; // @synthesize shouldUpdateAttachment=_shouldUpdateAttachment;
 - (_Bool)_hasVisibleMenu;
+- (id)init;
 
 @end
 

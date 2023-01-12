@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPSectionedIdentifierListEnumerationResult-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPSectionedIdentifierListProxyEntry : NSObject <MPSectionedIdentifierListEnumerationResult>
+@interface _MPSectionedIdentifierListProxyEntry : NSObject
 {
     long long _entryType;
 }

@@ -12,6 +12,7 @@
 
 @optional
 - (void)globalConfigurationService:(DNDGlobalConfigurationService *)arg1 didReceiveUpdatedPhoneCallBypassSettings:(DNDBypassSettings *)arg2;
+- (void)globalConfigurationService:(DNDGlobalConfigurationService *)arg1 didEditCloudSyncPreference:(_Bool)arg2;
 - (void)globalConfigurationService:(DNDGlobalConfigurationService *)arg1 didReceiveUpdatedPreventAutoReplySetting:(_Bool)arg2;
 - (void)globalConfigurationService:(DNDGlobalConfigurationService *)arg1 didReceiveUpdatedPairSyncState:(unsigned long long)arg2;
 @end

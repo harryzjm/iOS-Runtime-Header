@@ -4,20 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SoundAnalysis/MLCustomModel-Protocol.h>
-
-@class MLModelDescription, NSArray, NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _SNSoundPrintAFeatureEmbeddingCustomModel <MLCustomModel>
+@interface _SNSoundPrintAFeatureEmbeddingCustomModel
 {
-    MLModelDescription *_modelDescription;
     NSString *_inputFeatureName;
     NSString *_outputFeatureName;
     NSArray *_outputShape;
 }
 
-+ (_Bool)validateModelDescription:(id)arg1 underlyingModelDescription:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)initWithModelDescription:(id)arg1 parameterDictionary:(id)arg2 error:(id *)arg3;

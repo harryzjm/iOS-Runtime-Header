@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <AVKit/UIMovieScrubberDataSource-Protocol.h>
-#import <AVKit/UIMovieScrubberDelegate-Protocol.h>
-
 @class NSString, UIMovieScrubber;
 @protocol AVEditViewDataSource, AVEditViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVEditView : UIView <UIMovieScrubberDataSource, UIMovieScrubberDelegate>
+@interface AVEditView : UIView
 {
     _Bool _prefersThumbVisible;
     _Bool _scrubbing;

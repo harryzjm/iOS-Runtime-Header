@@ -16,14 +16,17 @@
 - (NSArray *)_extendedAttributesQueryIncludingOrthogonalScrollingRegions:(struct CGRect)arg1;
 - (_Bool)_shouldOrthogonalScrollingSectionDecorationScrollWithContentForIndexPath:(NSIndexPath *)arg1 elementKind:(NSString *)arg2;
 - (_Bool)_shouldOrthogonalScrollingSectionSupplementaryScrollWithContentForIndexPath:(NSIndexPath *)arg1 elementKind:(NSString *)arg2;
+- (double)_orthogonalScrollingSectionCornerRadius:(long long)arg1;
+- (_Bool)_orthogonalScrollingSectionShouldClipContentToBounds:(long long)arg1;
 - (struct NSDirectionalEdgeInsets)_orthogonalScrollingContentInsetsForSection:(long long)arg1;
 - (struct CGRect)_orthogonalScrollingContentRectForSection:(long long)arg1;
 - (struct CGRect)_orthogonalScrollingLayoutRectForSection:(long long)arg1;
 - (double)_orthogonalScrollingDecelerationRateForSection:(long long)arg1;
 - (unsigned long long)_orthogonalScrollingAxis;
-- (struct CGPoint)_orthogonalScrollingTargetContentOffsetForOffset:(struct CGPoint)arg1 section:(long long)arg2 item:(long long)arg3;
+- (struct CGPoint)_orthogonalScrollingTargetContentOffsetForOffset:(struct CGPoint)arg1 section:(long long)arg2 itemFrame:(struct CGRect)arg3;
 - (_Bool)_orthogonalScrollingUsesTargetContentOffsetForSection:(long long)arg1;
 - (_Bool)_orthogonalScrollingShouldCenterCustomPagingSizeForSection:(long long)arg1;
+- (double)_orthogonalScrollingInterPageDimensionForSection:(long long)arg1;
 - (double)_orthogonalScrollingPagingDimensionForSection:(long long)arg1;
 - (_Bool)_shouldConfigureForPagingForOrthogonalScrollingSection:(long long)arg1;
 - (struct CGVector)_scrollingUnitVectorForOrthogonalScrollingSection:(long long)arg1;

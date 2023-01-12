@@ -6,11 +6,9 @@
 
 #import <CloudKit/CKRecordZoneID.h>
 
-#import <NotesShared/ICHasDatabaseScope-Protocol.h>
-
 @class NSString;
 
-@interface CKRecordZoneID (IC) <ICHasDatabaseScope>
+@interface CKRecordZoneID (IC)
 - (_Bool)ic_isOwnedByCurrentUser;
 - (long long)databaseScope;
 - (id)ic_loggingDescription;

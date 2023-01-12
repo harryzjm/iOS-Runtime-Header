@@ -7,9 +7,10 @@
 #import <AppStoreDaemon/ASDExtensionRequestCleanupXPCInterface-Protocol.h>
 #import <AppStoreDaemon/ASDTestFlightServiceExtensionXPCInterface-Protocol.h>
 
-@class ASDBundle, NSArray, NSData, NSError;
+@class ASDBundle, NSArray, NSData, NSDictionary, NSError, NSString;
 
 @protocol ASDTestFlightServiceExtensionRemoteXPCInterface <ASDTestFlightServiceExtensionXPCInterface, ASDExtensionRequestCleanupXPCInterface>
+- (void)invokeCommand:(NSString *)arg1 withArguments:(NSDictionary *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)reloadAppsFromServerWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)didReachTerminalPhaseWithBetaBundle:(ASDBundle *)arg1 terminalPhase:(long long)arg2 error:(NSError *)arg3 reply:(void (^)(_Bool, NSError *))arg4;
 - (void)didReceivePushMessages:(NSArray *)arg1 reply:(void (^)(_Bool, NSError *))arg2;

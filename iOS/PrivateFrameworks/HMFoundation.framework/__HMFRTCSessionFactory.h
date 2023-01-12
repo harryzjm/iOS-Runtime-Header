@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <HMFoundation/HMFRTCSessionFactory-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface __HMFRTCSessionFactory : NSObject <HMFRTCSessionFactory>
+@interface __HMFRTCSessionFactory : NSObject
 {
 }
 
-- (id)sessionWithServiceName:(id)arg1;
+- (id)sessionWithServiceName:(id)arg1 samplingUUID:(id)arg2 containsRealtime:(_Bool)arg3;
 
 @end
 

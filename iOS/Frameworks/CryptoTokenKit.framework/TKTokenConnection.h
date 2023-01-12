@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CryptoTokenKit/NSXPCListenerDelegate-Protocol.h>
-
 @class NSMapTable, NSString, NSXPCListener, TKToken;
 
 __attribute__((visibility("hidden")))
-@interface TKTokenConnection : NSObject <NSXPCListenerDelegate>
+@interface TKTokenConnection : NSObject
 {
     TKToken *_token;
     NSXPCListener *_listener;

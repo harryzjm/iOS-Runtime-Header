@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDragInteractionDelegate_Private-Protocol.h>
-#import <UIKitCore/_UICollectionViewShadowUpdatesRebaseApplicable-Protocol.h>
-
 @class NSArray, NSIndexPath, NSString, UICollectionView, UIDragInteraction, _UICollectionViewDragSourceControllerDragState, _UICollectionViewDragSourceControllerSessionState;
 @protocol UIDragSession, _UICollectionViewDragSourceControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewDragSourceController : NSObject <UIDragInteractionDelegate_Private, _UICollectionViewShadowUpdatesRebaseApplicable>
+@interface _UICollectionViewDragSourceController : NSObject
 {
     UICollectionView *_collectionView;
     UIDragInteraction *_dragInteraction;

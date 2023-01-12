@@ -6,29 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class NSUserDefaults;
-
 __attribute__((visibility("hidden")))
 @interface SNUserDefaults : NSObject
 {
-    NSUserDefaults *_userDefaults;
 }
-
-+ (id)userDefaults;
-+ (id)instance;
-+ (_Bool)enableVerboseLogging;
-+ (unsigned int)builtInMicrophoneAnalysisChannelNumberOrDefault:(unsigned int)arg1;
-+ (id)builtInMicrophoneAnalysisChannelNumber;
-+ (id)fileServerRootDirectory;
-+ (_Bool)enableFileServer;
-+ (_Bool)deleteRecordingsWithoutDetection;
-+ (double)recordingTimeToLiveSeconds;
-+ (long long)recordingDirectoryMaximumSizeBytes;
-+ (id)daemonRecordingPath;
-+ (_Bool)enableSecondPassRecordingInDaemon;
-- (void).cxx_destruct;
-@property(retain, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
-- (id)init;
 
 @end
 

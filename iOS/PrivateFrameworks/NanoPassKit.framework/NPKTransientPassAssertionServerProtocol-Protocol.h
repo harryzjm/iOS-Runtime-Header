@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol NPKTransientPassAssertionServerProtocol <NSObject>
+- (void)requestPassSelectionFieldDetectorDelegationAssertion;
 - (void)setDoublePressDelegationRequested:(_Bool)arg1;
 - (void)setDisableCardSelection:(_Bool)arg1;
 - (void)setServiceModeRequested:(_Bool)arg1;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HMBSQLQueryIterator.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMBLocalZoneQueryResultAllOfTypeRaw
+@interface HMBLocalZoneQueryResultAllOfTypeRaw : HMBSQLQueryIterator
 {
     int _zoneRowBindOffset;
     int _modelTypeBindOffset;

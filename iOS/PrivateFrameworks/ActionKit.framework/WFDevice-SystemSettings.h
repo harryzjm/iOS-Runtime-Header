@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContentKit/WFDevice.h>
+#import <VoiceShortcutClient/WFDevice.h>
 
 @interface WFDevice (SystemSettings)
 - (void)getBrightnessWithCompletion:(CDUnknownBlockType)arg1;

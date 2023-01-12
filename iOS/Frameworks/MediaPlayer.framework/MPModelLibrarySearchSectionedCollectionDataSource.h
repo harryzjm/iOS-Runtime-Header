@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPLazySectionedCollectionDataSource-Protocol.h>
-
 @class MPModelLibrarySearchRequest, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibrarySearchSectionedCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
+@interface MPModelLibrarySearchSectionedCollectionDataSource : NSObject
 {
     NSArray *_resultContainers;
     MPModelLibrarySearchRequest *_request;

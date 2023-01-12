@@ -9,6 +9,7 @@
 @class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSData, NSDictionary, NSString;
 
 @protocol UIApplicationSceneClientSettings <NSObject>
+@property(readonly, nonatomic) _Bool discardSessionOnUserDisconnect;
 @property(readonly, nonatomic) long long playbackControlsState;
 @property(readonly, nonatomic) unsigned long long _debugValidationOrientationMask;
 @property(readonly, nonatomic) NSArray *multitaskingDragExclusionRects;
@@ -31,6 +32,7 @@
 @property(readonly, nonatomic) _Bool idleModeVisualEffectsEnabled;
 @property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, nonatomic) struct UIEdgeInsets primaryWindowOverlayInsets;
+@property(readonly, nonatomic) long long editingInteractionConfiguration;
 @property(readonly, nonatomic) long long notificationCenterRevealMode;
 @property(readonly, nonatomic) long long controlCenterRevealMode;
 @property(readonly, nonatomic) double controlCenterAmbiguousActivationMargin;

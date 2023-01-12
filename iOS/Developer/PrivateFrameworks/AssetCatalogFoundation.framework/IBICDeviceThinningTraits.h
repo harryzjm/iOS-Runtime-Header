@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface IBICDeviceThinningTraits : NSObject <IBBinaryArchiving, NSCopying>
+@interface IBICDeviceThinningTraits : NSObject
 {
     NSString *_productType;
     NSString *_artworkDeviceIdiom;
@@ -26,7 +23,7 @@
     NSString *_deploymentTargetVersion;
 }
 
-+ (id)deviceThinningTraitsForDeviceProductType:(id)arg1 osVersion:(id)arg2 firstVersionForOSVariants:(id)arg3 fromPlatform:(id)arg4 error:(id *)arg5;
++ (id)deviceThinningTraitsForDeviceThinningDeviceConfiguration:(id)arg1 osVersion:(id)arg2 firstVersionForOSVariants:(id)arg3 fromPlatform:(id)arg4 error:(id *)arg5;
 + (void)registerThinningTraitsProvider:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(readonly) NSString *deploymentTargetVersion; // @synthesize deploymentTargetVersion=_deploymentTargetVersion;
@@ -41,6 +38,9 @@
 @property(readonly) NSString *artworkDeviceIdiom; // @synthesize artworkDeviceIdiom=_artworkDeviceIdiom;
 @property(readonly) NSString *productType; // @synthesize productType=_productType;
 @property(readonly, copy) NSString *description;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToDeviceThinningTraits:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
@@ -48,7 +48,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

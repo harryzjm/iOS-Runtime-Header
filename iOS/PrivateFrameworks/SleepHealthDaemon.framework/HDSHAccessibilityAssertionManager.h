@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepHealthDaemon/HDContentProtectionObserver-Protocol.h>
-
 @class HDAssertion, HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HDSHAccessibilityAssertionManager : NSObject <HDContentProtectionObserver>
+@interface HDSHAccessibilityAssertionManager : NSObject
 {
     HDAssertion *_accessibilityAssertion;
     NSObject<OS_dispatch_queue> *_queue;
@@ -29,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)beginObservingContentProtectionState;
 - (void)_restoreContentProtectionObservingState;
 @property(nonatomic) _Bool shouldBeObservingContentProtectionState;
+- (void)profileDidBecomeReady:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 
 // Remaining properties

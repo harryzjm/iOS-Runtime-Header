@@ -17,6 +17,7 @@
     MISSING_TYPE *_tokenChain;
     MISSING_TYPE *_embeddingTensor;
     MISSING_TYPE *_maxCandidates;
+    MISSING_TYPE *_cdmRequestID;
 }
 
 @end

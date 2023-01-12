@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIDataSourceSnapshot-Protocol.h>
-
 @class NSString, _UIDataSourceSnapshotter;
 
 __attribute__((visibility("hidden")))
-@interface _UIDataSourceSnapshot : NSObject <_UIDataSourceSnapshot>
+@interface _UIDataSourceSnapshot : NSObject
 {
     _UIDataSourceSnapshotter *_snapshotter;
 }

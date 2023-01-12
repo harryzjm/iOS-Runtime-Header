@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (LocalizedFormat)
++ (id)fp_coordinatorReadingOptions:(unsigned long long)arg1;
 + (id)fp_hashForToken:(id)arg1;
 + (struct __CFStringTokenizer *)fp_wordTokenizer;
 + (id)fp_representableHFSFileNameWithBase:(id)arg1 suffix:(id)arg2 extension:(id)arg3 makeDotFile:(_Bool)arg4;
@@ -26,15 +27,19 @@
 - (id)fp_stringByDeletingPathExtension;
 - (id)fp_pathExtension;
 - (id)fp_representableHFSFileNameWithNumber:(id)arg1 addedExtension:(id)arg2 makeDotFile:(_Bool)arg3;
-- (id)fp_representableHFSFileNameWithSuffix:(id)arg1 addedExtension:(id)arg2 makeDotFile:(_Bool)arg3;
+- (id)fp_representableHFSFileNameWithNumber:(id)arg1 addedExtension:(id)arg2 makeDotFile:(_Bool)arg3 isDir:(_Bool)arg4;
+- (id)fp_representableHFSFileNameWithSuffix:(id)arg1 addedExtension:(id)arg2 makeDotFile:(_Bool)arg3 isDir:(_Bool)arg4;
 - (const char *)fp_fileSystemRepresentation;
 - (id)fp_bouncedNameWithIndex:(long long)arg1;
+- (id)fp_bouncedNameWithIndex:(long long)arg1 isDir:(_Bool)arg2;
+@property(readonly, nonatomic) NSString *fp_obfuscatedProviderDomainID;
 - (id)fp_obfuscatedPath;
 - (id)fp_alwaysObfuscatedPath;
 - (id)fp_prettyPath;
 - (id)fp_prettyPathWithObfuscation:(_Bool)arg1;
 - (id)fp_alwaysObfuscatedFilename;
 - (id)fp_obfuscatedFilename;
+- (id)fp_stringByDeletingPathBounceNo:(id *)arg1 andPathExtension:(id *)arg2 isFolder:(_Bool)arg3;
 - (id)fp_stringByDeletingPathBounceNo:(id *)arg1 andPathExtension:(id *)arg2;
 - (id)fp_filenameFromDisplayNameWithExtension:(id)arg1;
 - (id)fp_displayNameFromFilenameWithHiddenPathExtension:(_Bool)arg1 isFolder:(_Bool)arg2;

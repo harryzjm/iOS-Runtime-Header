@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKDPResponseOperationHeader : PBCodable <NSCopying>
+@interface CKDPResponseOperationHeader : PBCodable
 {
     NSMutableArray *_assetAuthorizationResponses;
     NSMutableArray *_throttleConfigs;

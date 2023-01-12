@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)actionAvailableForContact:(id)arg1;
++ (_Bool)isAvailable;
 - (id)notificationURL;
 - (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;

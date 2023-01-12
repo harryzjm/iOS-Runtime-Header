@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UserAlerts/URTAlertClientToServerInterface-Protocol.h>
-
 @class NSString, URTAlertService;
 
 __attribute__((visibility("hidden")))
-@interface URTAlertServiceDelegateProxy : NSObject <URTAlertClientToServerInterface>
+@interface URTAlertServiceDelegateProxy : NSObject
 {
     URTAlertService *_service;
 }

@@ -6,11 +6,9 @@
 
 #import <GeoServices/GEOStorageRouteRequestStorage.h>
 
-#import <MapsSupport/MSPRouteInformationSource-Protocol.h>
-
 @class NSString;
 
-@interface GEOStorageRouteRequestStorage (MSPRouteInformationSource) <MSPRouteInformationSource>
+@interface GEOStorageRouteRequestStorage (MSPRouteInformationSource)
 - (id)ifGEOStorageRouteRequestStorage;
 - (id)ifRidesharingInformationSource;
 

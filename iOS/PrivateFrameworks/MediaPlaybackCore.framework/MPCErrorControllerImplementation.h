@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MFErrorController-Protocol.h>
-
 @class MPAVItem, MPCMediaFoundationTranslator, MPCPlaybackEngine, NSMutableSet, NSString;
 @protocol MPCExternalPlaybackRouter;
 
 __attribute__((visibility("hidden")))
-@interface MPCErrorControllerImplementation : NSObject <MFErrorController>
+@interface MPCErrorControllerImplementation : NSObject
 {
     _Bool itemsHavePlayed;
     NSString *preferredFirstContentItemID;
@@ -31,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(nonatomic) _Bool itemsHavePlayed; // @synthesize itemsHavePlayed;
 @property(copy, nonatomic) NSString *preferredFirstContentItemID; // @synthesize preferredFirstContentItemID;
+- (_Bool)isLeaseTakenError:(id)arg1;
 - (_Bool)shouldHandleFirstItemFailure:(id)arg1 item:(id)arg2;
 - (_Bool)isAssetUnavailableFailure:(id)arg1;
 - (_Bool)isUnrecoverableAssetLoadingError:(id)arg1;

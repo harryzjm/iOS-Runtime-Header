@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CMImaging/MTLDeviceSPI-Protocol.h>
-
-@class FigMetalExecutionStatus, InterceptConfig, MTLGPUBVHBuilder, MTLTargetDeviceArchitecture, NSArray, NSDictionary, NSString;
+@class FigMetalExecutionStatus, InterceptConfig, MTLArchitecture, MTLGPUBVHBuilder, MTLTargetDeviceArchitecture, NSArray, NSDictionary, NSString;
 @protocol MTLDeviceSPI;
 
 __attribute__((visibility("hidden")))
-@interface CMMTLDevice : NSObject <MTLDeviceSPI>
+@interface CMMTLDevice : NSObject
 {
     id <MTLDeviceSPI> _device;
     InterceptConfig *_interceptConfig;
@@ -38,8 +36,10 @@ __attribute__((visibility("hidden")))
 @property(readonly) MTLGPUBVHBuilder *GPUBVHBuilder;
 @property(readonly, getter=isRGB10A2GammaSupported) _Bool RGB10A2GammaSupported;
 @property(readonly, getter=isRTZRoundingSupported) _Bool RTZRoundingSupported;
+@property(readonly) MTLArchitecture *architecture;
 @property(readonly) unsigned long long argumentBuffersSupport;
 @property(readonly, getter=areBarycentricCoordsSupported) _Bool barycentricCoordsSupported;
+@property(readonly) unsigned long long bufferRobustnessSupport;
 @property(nonatomic) unsigned long long commandBufferErrorOptions;
 @property(readonly) NSArray *counterSets;
 @property(readonly) unsigned long long currentAllocatedSize;
@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long iosurfaceReadOnlyTextureAlignmentBytes;
 @property(readonly) unsigned long long iosurfaceTextureAlignmentBytes;
 @property(readonly, getter=isLargeMRTSupported) _Bool largeMRTSupported;
-@property(readonly) const CDStruct_1825b841 *limits;
+@property(readonly) const CDStruct_e1c34685 *limits;
 @property(readonly) unsigned long long linearTextureAlignmentBytes;
 @property(readonly) unsigned long long linearTextureArrayAlignmentBytes;
 @property(readonly) unsigned long long linearTextureArrayAlignmentSlice;
@@ -88,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long maxFragmentTextures;
 @property(readonly) unsigned long long maxFramebufferStorageBits;
 @property(readonly) unsigned long long maxFunctionConstantIndices;
+@property(readonly) unsigned long long maxIOCommandsInFlight;
 @property(readonly) unsigned long long maxIndirectBuffers;
 @property(readonly) unsigned long long maxIndirectSamplers;
 @property(readonly) unsigned long long maxIndirectSamplersPerDevice;
@@ -142,6 +143,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool requiresRaytracingEmulation;
 @property _Bool shaderDebugInfoCaching;
 @property(readonly) unsigned long long sharedMemorySize;
+@property(readonly) unsigned long long simulatorHostFeatureProfile;
 @property(readonly) unsigned long long singleFPConfig;
 @property(readonly) unsigned long long sparseTexturesSupport;
 @property(readonly) unsigned long long sparseTileSizeInBytes;
@@ -160,8 +162,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsArgumentBuffersTier2;
 @property(readonly, nonatomic) _Bool supportsArrayOfSamplers;
 @property(readonly, nonatomic) _Bool supportsArrayOfTextures;
-@property(readonly, nonatomic) _Bool supportsAtomicUlongVoidMinMax;
 @property(readonly, nonatomic) _Bool supportsBCTextureCompression;
+@property(readonly, nonatomic) _Bool supportsBGR10A2;
 @property(readonly, nonatomic) _Bool supportsBaseVertexInstanceDrawing;
 @property(readonly, nonatomic) _Bool supportsBfloat16Format;
 @property(readonly, nonatomic) _Bool supportsBinaryArchives;
@@ -180,15 +182,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsConcurrentComputeDispatch;
 @property(readonly, nonatomic) _Bool supportsCountingOcclusionQuery;
 @property(readonly, nonatomic) _Bool supportsCustomBorderColor;
+@property(readonly, nonatomic) _Bool supportsDeadlineProfile;
 @property(readonly, nonatomic) _Bool supportsDepthClipMode;
 @property(readonly, nonatomic) _Bool supportsDepthClipModeClampExtended;
 @property(readonly, nonatomic) _Bool supportsDevicePartitioning;
 @property(readonly, nonatomic) _Bool supportsDynamicControlPointCount;
 @property(readonly, nonatomic) _Bool supportsDynamicLibraries;
+@property(readonly, nonatomic) _Bool supportsExplicitVisibilityGroups;
 @property(readonly, nonatomic) _Bool supportsExtendedXR10Formats;
 @property(readonly, nonatomic) _Bool supportsExtendedYUVFormats;
 @property(readonly, nonatomic) _Bool supportsFP32TessFactors;
 @property(readonly, nonatomic) _Bool supportsFastMathInfNaNPropagation;
+@property(readonly, nonatomic) _Bool supportsFillTexture;
 @property(readonly, nonatomic) _Bool supportsFixedLinePointFillDepthGradient;
 @property(readonly, nonatomic) _Bool supportsFloat16BCubicFiltering;
 @property(readonly, nonatomic) _Bool supportsFloat16InfNanFiltering;
@@ -197,12 +202,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsFragmentBufferWrites;
 @property(readonly, nonatomic) _Bool supportsFragmentOnlyEncoders;
 @property(readonly, nonatomic) _Bool supportsFunctionPointers;
+@property(readonly, nonatomic) _Bool supportsFunctionPointersFromMesh;
 @property(readonly, nonatomic) _Bool supportsFunctionPointersFromRender;
 @property(readonly, nonatomic) _Bool supportsGFXIndirectCommandBuffers;
 @property(readonly, nonatomic) _Bool supportsGPUStatistics;
 @property(readonly, nonatomic) _Bool supportsGlobalVariableRelocation;
 @property(readonly, nonatomic) _Bool supportsGlobalVariableRelocationCompute;
 @property(readonly, nonatomic) _Bool supportsGlobalVariableRelocationRender;
+@property(readonly, nonatomic) _Bool supportsHeapAccelerationStructureAllocation;
 @property(readonly, nonatomic) _Bool supportsIABHashForTools;
 @property(readonly, nonatomic) _Bool supportsImageBlockSampleCoverageControl;
 @property(readonly, nonatomic) _Bool supportsImageBlocks;
@@ -227,6 +234,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsMSAAStencilResolveFilter;
 @property(readonly, nonatomic) _Bool supportsMemoryOrderAtomics;
 @property(readonly, nonatomic) _Bool supportsMemorylessRenderTargets;
+@property(readonly, nonatomic) _Bool supportsMeshShaders;
+@property(readonly, nonatomic) _Bool supportsMeshShadersInICB;
 @property(readonly, nonatomic) _Bool supportsMipLevelsSmallerThanBlockSize;
 @property(readonly, nonatomic) _Bool supportsMirrorClampToEdgeSamplerMode;
 @property(readonly, nonatomic) _Bool supportsMutableTier1ArgumentBuffers;
@@ -256,6 +265,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsRTZRounding;
 @property(readonly, nonatomic) _Bool supportsRasterOrderGroups;
 @property(readonly, nonatomic) _Bool supportsRasterOrderGroupsColorAttachment;
+@property(readonly, nonatomic) _Bool supportsRayTracingAccelerationStructureCPUDeserialization;
+@property(readonly, nonatomic) _Bool supportsRayTracingBuffersFromTables;
+@property(readonly, nonatomic) _Bool supportsRayTracingExtendedVertexFormats;
+@property(readonly, nonatomic) _Bool supportsRayTracingICBs;
+@property(readonly, nonatomic) _Bool supportsRayTracingPerPrimitiveData;
 @property(readonly) _Bool supportsRaytracing;
 @property(readonly, nonatomic) _Bool supportsRaytracingFromRender;
 @property(readonly, nonatomic) _Bool supportsReadWriteBufferArguments;
@@ -279,6 +293,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsSamplerCompareFunction;
 @property(readonly, nonatomic) _Bool supportsSeparateDepthStencil;
 @property(readonly, nonatomic) _Bool supportsSeparateVisibilityAndShadingRate;
+@property(readonly, nonatomic) _Bool supportsSetThreadgroupPackingDisabled;
 @property(readonly, nonatomic) _Bool supportsShaderBarycentricCoordinates;
 @property(readonly, nonatomic) _Bool supportsShaderLODAverage;
 @property(readonly, nonatomic) _Bool supportsShaderMinLODClamp;

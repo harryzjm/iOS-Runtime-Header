@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCHChartSeries;
 
-@interface TSCHChartPieWedgeElement : NSObject <NSCopying>
+@interface TSCHChartPieWedgeElement : NSObject
 {
     struct TSCHChartPieWedgeElementLayoutSystem _layoutSystem;
     double _radius;

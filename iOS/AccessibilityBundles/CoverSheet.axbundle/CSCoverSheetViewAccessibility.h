@@ -11,7 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
+- (id)_axNotificationsMasterList;
+- (id)_accessibilityAdditionalElements;
+- (_Bool)_axHandleShowNotificationsAction;
+- (id)_axShowNotificationsElement;
+- (void)__axSetShowNotificationsElement:(id)arg1;
+- (id)__axShowNotificationsElement;
+- (id)_childFocusViews;
 - (_Bool)resetScrollViewToMainPageAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)accessibilityScrollUpPage;
 - (_Bool)accessibilityScroll:(long long)arg1;

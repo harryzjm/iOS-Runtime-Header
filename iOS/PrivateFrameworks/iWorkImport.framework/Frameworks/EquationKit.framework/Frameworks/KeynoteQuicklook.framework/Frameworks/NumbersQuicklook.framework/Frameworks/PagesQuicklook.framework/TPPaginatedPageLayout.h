@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PagesQuicklook/TSDWrapInvalidationParent-Protocol.h>
-
 @class NSArray, NSMutableSet, NSSet, TPBodyLayout, TPFootnoteContainerLayout, TPiOSMarginAdjustLayout, TSDFill, TSURetainedPointerKeyDictionary;
 @protocol NSFastEnumeration, TPMasterDrawableProvider, TPSectionTemplateDrawableProvider, TSWPHeaderFooterProvider;
 
-@interface TPPaginatedPageLayout <TSDWrapInvalidationParent>
+@interface TPPaginatedPageLayout
 {
     id <TSWPHeaderFooterProvider> _headerFooterProvider;
     TPFootnoteContainerLayout *_footnoteContainerLayout;
@@ -68,7 +66,7 @@
 - (void)validate;
 - (unsigned long long)pageCountForAttachment:(id)arg1;
 - (unsigned long long)pageNumberForAttachment:(id)arg1;
-- (int)naturalAlignmentForTextLayout:(id)arg1;
+- (long long)naturalAlignmentForTextLayout:(id)arg1;
 - (double)maxAutoGrowBlockHeightForTextLayout:(id)arg1;
 - (double)maxAutoGrowLineWidthForTextLayout:(id)arg1;
 - (Class)repClassForTextLayout:(id)arg1;

@@ -9,7 +9,6 @@
 @interface NSData (OFNSDataCryptoExtensions)
 + (_Bool)AES128CheckVerifier:(id)arg1 withPassword:(id)arg2;
 + (id)AES128GenerateVerifierWithPassword:(id)arg1;
-- (id)AES128DecryptWithPassword:(id)arg1;
 - (id)AES128EncryptWithPassword:(id)arg1;
 - (id)hexaStringRepresentation;
 - (id)hmacSha1Hash:(id)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKGlobeLineContainerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GlobeLineContainerDelegate : NSObject <VKGlobeLineContainerDelegate>
+@interface GlobeLineContainerDelegate : NSObject
 {
     void *_renderer;
 }

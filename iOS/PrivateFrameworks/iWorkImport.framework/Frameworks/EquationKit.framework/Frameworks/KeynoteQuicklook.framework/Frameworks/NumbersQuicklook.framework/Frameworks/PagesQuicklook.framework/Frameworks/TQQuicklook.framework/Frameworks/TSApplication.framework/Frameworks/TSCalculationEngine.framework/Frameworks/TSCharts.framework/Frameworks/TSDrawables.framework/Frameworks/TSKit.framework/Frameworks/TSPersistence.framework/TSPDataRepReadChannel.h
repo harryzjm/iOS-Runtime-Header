@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSUStreamReadChannel-Protocol.h>
-
 @class NSString, SFUDataRepresentation;
 @protocol OS_dispatch_queue, SFUInputStream;
 
-@interface TSPDataRepReadChannel : NSObject <TSUStreamReadChannel>
+@interface TSPDataRepReadChannel : NSObject
 {
     SFUDataRepresentation *_representation;
     id <SFUInputStream> _inputStream;

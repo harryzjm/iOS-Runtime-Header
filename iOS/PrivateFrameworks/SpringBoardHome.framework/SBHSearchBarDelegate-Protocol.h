@@ -11,6 +11,7 @@
 @protocol SBHSearchBarDelegate <NSObject>
 
 @optional
+- (struct UIEdgeInsets)safeAreaInsetsForSearchBar:(SBHSearchBar *)arg1;
 - (void)searchBarDidInvalidateIntrinsicContentSize:(SBHSearchBar *)arg1;
 - (void)searchBarCancelButtonClicked:(SBHSearchBar *)arg1;
 - (_Bool)searchBarShouldReturn:(SBHSearchBar *)arg1;

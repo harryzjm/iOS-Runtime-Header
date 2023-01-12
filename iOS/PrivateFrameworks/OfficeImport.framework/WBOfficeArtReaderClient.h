@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OABReaderClient-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface WBOfficeArtReaderClient : NSObject <OABReaderClient>
+@interface WBOfficeArtReaderClient : NSObject
 {
 }
 

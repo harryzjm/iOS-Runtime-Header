@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <SiriVirtualDeviceResolution/_TtP27SiriVirtualDeviceResolution18DeviceUnitMutating_-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
-@interface _TtC27SiriVirtualDeviceResolutionP33_74E156C9C6E4952D4B26C294E7454D5E17MutableDeviceUnit : _TtCs12_SwiftObject <_TtP27SiriVirtualDeviceResolution18DeviceUnitMutating_>
+@interface _TtC27SiriVirtualDeviceResolutionP33_74E156C9C6E4952D4B26C294E7454D5E17MutableDeviceUnit : _TtCs12_SwiftObject
 {
     MISSING_TYPE *name;
     MISSING_TYPE *roomName;

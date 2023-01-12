@@ -29,6 +29,7 @@
 - (NSString *)logDir;
 - (NSString *)databaseDir;
 - (NSString *)trialRootVolume;
+- (NSString *)trialRootDirUsingGlobal:(_Bool)arg1;
 - (NSString *)trialRootDir;
 @end
 

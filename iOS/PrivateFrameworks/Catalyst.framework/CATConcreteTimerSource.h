@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATTimerSource-Protocol.h>
-
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CATConcreteTimerSource : NSObject <CATTimerSource>
+@interface CATConcreteTimerSource : NSObject
 {
     NSObject<OS_dispatch_queue> *mWorkQueue;
 }

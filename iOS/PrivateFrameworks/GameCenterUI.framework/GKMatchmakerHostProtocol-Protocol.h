@@ -15,6 +15,7 @@
 - (void)cancelMatching;
 - (void)sendData:(NSData *)arg1;
 - (void)cancelPendingInviteToPlayer:(GKPlayerInternal *)arg1;
+- (void)startMatchingWithRequest:(GKMatchRequestInternal *)arg1 devicePushToken:(NSData *)arg2;
 - (void)startMatchingWithRequest:(GKMatchRequestInternal *)arg1;
 - (void)setShareInvitees:(NSArray *)arg1;
 - (void)shareMatchWithRequest:(GKMatchRequestInternal *)arg1 handler:(void (^)(NSURL *, NSError *))arg2;

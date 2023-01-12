@@ -6,6 +6,9 @@
 
 #import <DiagnosticExtensions/NSObject-Protocol.h>
 
+@class DECollectionProgress;
+
 @protocol DEExtensionHostProtocol <NSObject>
+- (void)collectionDidUpdateWithProgress:(DECollectionProgress *)arg1;
 @end
 

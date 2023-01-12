@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UISettings.h"
+
 @class NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface _UITextSelectionSettings
+@interface _UITextSelectionSettings : _UISettings
 {
     double _minPinkWidth;
     double _maxPinkWidth;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *enableDeepPress; // @synthesize enableDeepPress=_enableDeepPress;
 @property(retain, nonatomic) NSNumber *allowExtendingSelections; // @synthesize allowExtendingSelections=_allowExtendingSelections;
 @property(retain, nonatomic) NSNumber *shouldPreferEndOfWord; // @synthesize shouldPreferEndOfWord=_shouldPreferEndOfWord;
@@ -37,7 +40,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double maxPinkWidth; // @synthesize maxPinkWidth=_maxPinkWidth;
 @property(nonatomic) double minPinkWidth; // @synthesize minPinkWidth=_minPinkWidth;
 - (void)setDefaultValues;
-- (void)dealloc;
 
 @end
 

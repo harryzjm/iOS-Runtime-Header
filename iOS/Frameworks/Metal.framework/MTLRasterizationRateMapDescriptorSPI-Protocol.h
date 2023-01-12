@@ -7,6 +7,9 @@
 @class NSString;
 
 @protocol MTLRasterizationRateMapDescriptorSPI
+@property(nonatomic) float minFactor;
+@property(nonatomic) unsigned long long mutability;
+@property(nonatomic) _Bool skipSampleValidationAndApplySampleAtTileGranularity;
 @property(nonatomic) _Bool skipSampleValidationAndInterpolation;
 - (NSString *)formattedDescription:(unsigned long long)arg1;
 - (const id *)layerPointer:(unsigned long long *)arg1;

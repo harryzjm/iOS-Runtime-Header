@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSAttributedString, NSString, UIImage, UIMenu;
 
 __attribute__((visibility("hidden")))
 @interface _SFBarItemConfiguration : NSObject
@@ -14,15 +14,19 @@ __attribute__((visibility("hidden")))
     _Bool _enabled;
     _Bool _hidden;
     _Bool _selected;
-    CDUnknownBlockType _menuProvider;
+    _Bool _hasImage;
+    UIMenu *_menu;
     NSString *_title;
-    long long _badge;
+    UIImage *_image;
+    NSAttributedString *_attributedTitle;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long badge; // @synthesize badge=_badge;
+@property(copy, nonatomic) NSAttributedString *attributedTitle; // @synthesize attributedTitle=_attributedTitle;
+@property(readonly, nonatomic) _Bool hasImage; // @synthesize hasImage=_hasImage;
+@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property(copy, nonatomic) CDUnknownBlockType menuProvider; // @synthesize menuProvider=_menuProvider;
+@property(copy, nonatomic) UIMenu *menu; // @synthesize menu=_menu;
 @property(nonatomic, getter=isSelected) _Bool selected; // @synthesize selected=_selected;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;

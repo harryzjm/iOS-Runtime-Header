@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKDPAnonymousZoneInfo : PBCodable <NSCopying>
+@interface CKDPAnonymousZoneInfo : PBCodable
 {
     NSData *_anonymousZoneInfoData;
     NSString *_anonymousZoneInfoID;

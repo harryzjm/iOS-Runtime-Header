@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/_SKUIStatusBarAlertViewControllerDelegate-Protocol.h>
-
 @class NSString, _SKUIClickThroughWindow, _SKUIStatusBarAlertViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStatusBarAlertCenter : NSObject <_SKUIStatusBarAlertViewControllerDelegate>
+@interface SKUIStatusBarAlertCenter : NSObject
 {
     double _duration;
     CDUnknownBlockType _actionBlock;

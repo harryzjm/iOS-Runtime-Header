@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBICSchemaProvider-Protocol.h>
-
 @class IBICColorSpace, IBICContrastAppearance, IBICFileType, IBICIdiom, IBICLanguageDirection, IBICLocale, IBICLuminosityAppearance, IBICPlatform, IBICScale, IBICSize, IBICVibrancyAppearance, NSArray, NSString;
 
-@interface IBICCocoaSchemaProvider : NSObject <IBICSchemaProvider>
+@interface IBICCocoaSchemaProvider : NSObject
 {
     IBICPlatform *_universalPlatform;
     IBICPlatform *_OSXPlatform;
@@ -48,7 +46,6 @@
 
 - (void).cxx_destruct;
 - (void)registerSystemCatalogColors:(id)arg1;
-- (void)registerSuggestionSets:(id)arg1;
 - (void)registerVectorGlyphSetSlots:(id)arg1;
 - (void)registerColorSetSlots:(id)arg1;
 - (void)registerTextureSetSlots:(id)arg1;

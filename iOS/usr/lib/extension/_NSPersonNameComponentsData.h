@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCopying-Protocol.h>
-#import <Foundation/NSSecureCoding-Protocol.h>
-
 @class NSPersonNameComponents, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSPersonNameComponentsData : NSObject <NSCopying, NSSecureCoding>
+@interface _NSPersonNameComponentsData : NSObject
 {
     NSString *_givenName;
     NSString *_familyName;

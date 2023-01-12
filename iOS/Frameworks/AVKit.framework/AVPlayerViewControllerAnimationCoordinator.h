@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVPlayerViewControllerAnimationCoordinator-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVPlayerViewControllerAnimationCoordinator : NSObject <AVPlayerViewControllerAnimationCoordinator>
+@interface AVPlayerViewControllerAnimationCoordinator : NSObject
 {
     NSMutableArray *_animations;
     NSMutableArray *_completions;

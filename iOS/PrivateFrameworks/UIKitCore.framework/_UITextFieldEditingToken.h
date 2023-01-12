@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITextFieldEditingToken-Protocol.h>
-
 @class NSArray, NSString, _UICascadingTextStorage;
 
 __attribute__((visibility("hidden")))
-@interface _UITextFieldEditingToken : NSObject <_UITextFieldEditingToken>
+@interface _UITextFieldEditingToken : NSObject
 {
     struct {
         unsigned int restoreTextAttributes:1;

@@ -6,7 +6,6 @@
 
 @class GQDRoot;
 
-__attribute__((visibility("hidden")))
 @interface GQDWPAttachmentRef
 {
     GQDRoot *mRoot;

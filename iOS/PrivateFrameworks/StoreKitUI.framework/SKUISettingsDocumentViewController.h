@@ -4,18 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUISettingsDocumentViewDelegate-Protocol.h>
-#import <StoreKitUI/SKUISettingsEditTransactionDelegate-Protocol.h>
-#import <StoreKitUI/SKUISettingsGroupsDescriptionDelegate-Protocol.h>
-#import <StoreKitUI/UITableViewDataSource-Protocol.h>
-#import <StoreKitUI/UITableViewDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSString, SKUIResourceLoader, SKUISettingsContext, SKUISettingsEditTransaction, SKUISettingsGroupsDescription, SKUISettingsTemplateViewElement, SKUIViewElementLayoutContext, SKUIViewElementTextLayoutCache, UIBarButtonItem, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface SKUISettingsDocumentViewController <SKUIArtworkRequestDelegate, SKUISettingsDocumentViewDelegate, SKUISettingsEditTransactionDelegate, SKUISettingsGroupsDescriptionDelegate, UITableViewDataSource, UITableViewDelegate, SKUIDocumentViewController>
+@interface SKUISettingsDocumentViewController : SKUIViewController
 {
     UIBarButtonItem *_barButtonItemCancel;
     UIBarButtonItem *_barButtonItemDone;

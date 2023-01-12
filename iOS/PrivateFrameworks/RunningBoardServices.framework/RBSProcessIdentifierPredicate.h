@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "RBSProcessPredicateImpl.h"
+
 @protocol RBSProcessIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface RBSProcessIdentifierPredicate
+@interface RBSProcessIdentifierPredicate : RBSProcessPredicateImpl
 {
     id <RBSProcessIdentifier> _identifier;
 }

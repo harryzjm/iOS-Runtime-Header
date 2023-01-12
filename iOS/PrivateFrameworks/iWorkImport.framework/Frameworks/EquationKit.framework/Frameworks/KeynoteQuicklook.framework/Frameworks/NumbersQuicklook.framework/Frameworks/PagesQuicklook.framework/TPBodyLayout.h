@@ -6,14 +6,10 @@
 
 #import <TSDrawables/TSDLayout.h>
 
-#import <PagesQuicklook/TPAttachmentLayoutParent-Protocol.h>
-#import <PagesQuicklook/TPFootnotePageDelegate-Protocol.h>
-#import <PagesQuicklook/TSWPLayoutTarget-Protocol.h>
-
 @class NSMutableArray, NSMutableSet, NSObject, NSString, TPFootnoteHeightMeasurer, TSDCanvas, TSPObject, TSWPStorage;
 @protocol TSDHint, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
-@interface TPBodyLayout : TSDLayout <TSWPLayoutTarget, TPAttachmentLayoutParent, TPFootnotePageDelegate>
+@interface TPBodyLayout : TSDLayout
 {
     NSMutableArray *_columns;
     TPFootnoteHeightMeasurer *_footnoteHeightMeasurer;
@@ -60,7 +56,7 @@
 - (void)setNeedsDisplayInTargetRect:(struct CGRect)arg1;
 @property(readonly, nonatomic) _Bool wantsLineFragments;
 @property(readonly, nonatomic) int naturalDirection;
-@property(readonly, nonatomic) int naturalAlignment;
+@property(readonly, nonatomic) long long naturalAlignment;
 @property(readonly, nonatomic) int verticalAlignment;
 @property(readonly, nonatomic) unsigned long long autosizeFlags;
 @property(readonly, nonatomic) struct CGPoint anchorPoint;

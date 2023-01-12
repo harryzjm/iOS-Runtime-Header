@@ -10,30 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-
-struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct hmf_unfair_data_lock_s {
-    struct os_unfair_lock_s lock;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -46,9 +22,4 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
-
-// Ambiguous groups
-typedef struct {
-    unsigned int value:1;
-} CDStruct_01ef6375;
 

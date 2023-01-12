@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIImageView, UILabel, UIPreviewAction;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewActionSheetItemView
+@interface _UIPreviewActionSheetItemView : UIView
 {
     _Bool _selected;
     UIPreviewAction *_action;

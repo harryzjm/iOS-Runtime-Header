@@ -64,8 +64,8 @@ __attribute__((visibility("hidden")))
     struct vector<md::AvoidanceRectWithPriority, geo::StdAllocator<md::AvoidanceRectWithPriority, mdm::Allocator>> _avoidanceRects;
     _Bool _hasPendingTilesInSnappingRegion;
     _Bool _needsDebugConsoleClear;
-    struct range_map<geo::Unit<RadianUnitDescription, float>, md::OrientationAction, std::less<geo::Unit<RadianUnitDescription, float>>, std::allocator<std::pair<const gm::Range<geo::Unit<RadianUnitDescription, float>>, md::OrientationAction>>> _onRouteOrientations;
-    struct range_map<geo::Unit<RadianUnitDescription, float>, md::OrientationAction, std::less<geo::Unit<RadianUnitDescription, float>>, std::allocator<std::pair<const gm::Range<geo::Unit<RadianUnitDescription, float>>, md::OrientationAction>>> _relatedRouteOrientations;
+    struct range_map<geo::Unit<geo::RadianUnitDescription, float>, md::OrientationAction, std::less<geo::Unit<geo::RadianUnitDescription, float>>, std::allocator<std::pair<const gm::Range<geo::Unit<geo::RadianUnitDescription, float>>, md::OrientationAction>>> _leftTurnOrientations;
+    struct range_map<geo::Unit<geo::RadianUnitDescription, float>, md::OrientationAction, std::less<geo::Unit<geo::RadianUnitDescription, float>>, std::allocator<std::pair<const gm::Range<geo::Unit<geo::RadianUnitDescription, float>>, md::OrientationAction>>> _rightTurnOrientations;
 }
 
 - (id).cxx_construct;
@@ -99,7 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutWithNavContext:(struct NavContext *)arg1 avoidanceRects:(const void *)arg2;
 - (unsigned char)orientationForRoadSign:(id)arg1 roadLabel:(id)arg2 navContext:(struct NavContext *)arg3;
 - (unsigned char)resolveOrientation:(struct NavContext *)arg1 road:(id)arg2 currentOrientation:(unsigned char)arg3;
-- (optional_5843fc5a)createRoadSignOrientationResolver:(id)arg1 navContext:(struct NavContext *)arg2;
+- (struct RoadSignOrientationResolver)createRoadSignOrientationResolver:(id)arg1 navContext:(struct NavContext *)arg2;
 - (void)_generateCurrentRoadSignWithContext:(struct NavContext *)arg1;
 - (void)styleManagerDidFinishAnimating;
 - (void)styleManagerDidStartAnimating;
@@ -114,7 +114,6 @@ __attribute__((visibility("hidden")))
 - (void)_reloadRouteJunctions;
 - (void)clearSceneIsMemoryWarning:(_Bool)arg1;
 - (_Bool)isNavMode;
-- (void)dealloc;
 - (void)setMaxVisibleRoadsigns:(unsigned int)arg1;
 - (void)setStyleManager:(shared_ptr_3e3c7f86)arg1;
 - (id)init;

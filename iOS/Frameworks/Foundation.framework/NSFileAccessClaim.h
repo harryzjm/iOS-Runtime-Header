@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSCountedSet, NSError, NSFileAccessProcessManager, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface NSFileAccessClaim : NSObject <NSSecureCoding>
+@interface NSFileAccessClaim : NSObject
 {
     NSXPCConnection *_client;
     NSString *_claimID;

@@ -7,6 +7,6 @@
 #import <UserNotifications/UNMutableNotificationContent.h>
 
 @interface UNMutableNotificationContent (HKMenstrualCycles)
-+ (id)_hkmc_contentWithCategory:(id)arg1 body:(id)arg2 title:(id)arg3 expirationDate:(id)arg4;
++ (id)_hkmc_contentWithCategory:(id)arg1 body:(id)arg2 title:(id)arg3 expirationDate:(id)arg4 fertileWindowEndDayIndex:(long long)arg5;
 @end
 

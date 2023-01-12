@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKBRenderFactory.h"
+
 __attribute__((visibility("hidden")))
-@interface UIKBRenderFactoryiPhone
+@interface UIKBRenderFactoryiPhone : UIKBRenderFactory
 {
 }
 
@@ -40,19 +42,12 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)wideShadowPaddleInsets;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
+- (_Bool)needsSmallerFontSizeForKey:(id)arg1;
 - (_Bool)iPadSansHomeButtonLayout;
 - (_Bool)iPadFudgeLayout;
 - (double)skinnyKeyThreshold;
-- (id)shiftLockImageName;
-- (id)shiftOnKeyImageName;
-- (id)shiftKeyImageName;
-- (id)deleteOnKeyImageName;
-- (id)deleteKeyImageName;
 - (id)muttitapReverseKeyImageName;
 - (id)multitapCompleteKeyImageName;
-- (id)dictationKeyImageName;
-- (id)globalEmojiKeyImageName;
-- (id)globalKeyImageName;
 - (struct CGPoint)symbolImageControlKeyOffset;
 - (struct CGPoint)ZWNJKeyOffset;
 - (struct CGPoint)secondaryShiftKeyOffset;
@@ -75,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)leftArrowKeyOffset;
 - (struct CGPoint)returnKeyOffset;
 - (struct CGPoint)stringKeyOffset;
+- (double)smallSymbolImageFontSize;
 - (double)symbolImageControlKeyFontSize;
 - (double)zhuyinFirstToneKeyFontSize;
 - (double)moreABCKeyWideCellFontSize;

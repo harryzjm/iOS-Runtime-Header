@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewLayoutAttributes.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStorePagePinnedBackdropLayoutAttributes : UICollectionViewLayoutAttributes <NSCopying>
+@interface SKUIStorePagePinnedBackdropLayoutAttributes : UICollectionViewLayoutAttributes
 {
     UIColor *_backdropColor;
     NSString *_backdropGroupName;

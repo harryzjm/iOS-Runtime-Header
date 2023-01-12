@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
-@class FTAudioDescription, FTTextToSpeechFeature, FTTextToSpeechMeta, NSArray, NSData, NSMutableDictionary, NSString;
+@class FTAudioDescription, FTTextToSpeechFeature, FTTextToSpeechMeta, FTTextToSpeechResponseDevData, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTTextToSpeechResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTTextToSpeechResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,8 +19,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_84bb9af3)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) FTTextToSpeechResponseDevData *dev_data;
 @property(readonly, nonatomic) FTTextToSpeechFeature *feature;
 @property(readonly, nonatomic) FTTextToSpeechMeta *meta_info;
+- (void)word_timing_info_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)word_timing_info_count;
+- (id)word_timing_info_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *word_timing_info;
 @property(readonly, nonatomic) FTAudioDescription *playback_description;
 @property(readonly, nonatomic) FTAudioDescription *decoder_description;

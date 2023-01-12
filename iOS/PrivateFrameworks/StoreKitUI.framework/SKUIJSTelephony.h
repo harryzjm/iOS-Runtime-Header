@@ -6,13 +6,11 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIJSTelephony-Protocol.h>
-
 @class NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSTelephony : IKJSObject <SKUIJSTelephony>
+@interface SKUIJSTelephony : IKJSObject
 {
     _Bool _isObserving;
     NSObject<OS_dispatch_queue> *_telephonyQueue;

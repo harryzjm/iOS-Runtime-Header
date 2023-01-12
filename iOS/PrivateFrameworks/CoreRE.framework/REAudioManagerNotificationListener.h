@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 - (void)engineInterrupted:(id)arg1;
 - (void)sessionInterrupted:(id)arg1;
+- (void)servicesReset:(id)arg1;
 - (id)initWithOwner:(void *)arg1;
 - (void)stop;
 

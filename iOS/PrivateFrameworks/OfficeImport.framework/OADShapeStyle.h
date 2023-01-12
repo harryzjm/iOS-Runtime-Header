@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class OADFontReference, OADStyleMatrixReference;
 
 __attribute__((visibility("hidden")))
-@interface OADShapeStyle : NSObject <NSCopying>
+@interface OADShapeStyle : NSObject
 {
     OADStyleMatrixReference *mLineReference;
     OADStyleMatrixReference *mFillReference;

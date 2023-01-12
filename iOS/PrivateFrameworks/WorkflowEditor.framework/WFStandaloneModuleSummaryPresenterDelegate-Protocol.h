@@ -12,5 +12,8 @@
 @protocol WFStandaloneModuleSummaryPresenterDelegate <NSObject>
 - (void)moduleSummaryPresenterDidFinish:(WFStandaloneModuleSummaryPresenter *)arg1;
 - (void)moduleSummaryPresenter:(WFStandaloneModuleSummaryPresenter *)arg1 didCommitParameterState:(id <WFParameterState>)arg2;
+
+@optional
+- (void)moduleSummaryPresenter:(WFStandaloneModuleSummaryPresenter *)arg1 didStageParameterState:(id <WFParameterState>)arg2;
 @end
 

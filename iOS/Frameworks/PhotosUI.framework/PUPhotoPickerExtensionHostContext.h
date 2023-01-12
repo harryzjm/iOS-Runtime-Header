@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUI/PUPhotoPickerHostService-Protocol.h>
+#import "PUPhotoPickerAbstractExtensionContext.h"
 
 @class NSNumber, NSString, NSUUID;
 @protocol PUPhotoPickerHostService;
 
 __attribute__((visibility("hidden")))
-@interface PUPhotoPickerExtensionHostContext <PUPhotoPickerHostService>
+@interface PUPhotoPickerExtensionHostContext : PUPhotoPickerAbstractExtensionContext
 {
     _Bool _cachedDidDisplayPhotoPickerPreview;
     NSString *_photoPickerViewControllerTitle;
@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (id)_JPEGDataFromImage:(id)arg1;
 - (id)_JPEGDataFromImageData:(id)arg1;
 - (_Bool)_isHEIFImageFormatFromData:(id)arg1 url:(id)arg2;
-- (id)_resizeImage:(id)arg1 toMaximumDimension:(double)arg2;
 - (id)_createURLFromPath:(id)arg1 token:(id)arg2;
 - (id)_UIImagePickerControllerInfoDictionaryFromPhotoPickerInfoDictionary:(id)arg1;
 - (void)performTraitCollectionUpdateUsingData:(id)arg1 completion:(CDUnknownBlockType)arg2;

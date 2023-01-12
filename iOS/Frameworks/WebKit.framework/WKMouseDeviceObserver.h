@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/BKSMousePointerDeviceObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKMouseDeviceObserver : NSObject <BKSMousePointerDeviceObserver>
+@interface WKMouseDeviceObserver : NSObject
 {
     _Bool _hasMouseDevice;
     unsigned long long _startCount;

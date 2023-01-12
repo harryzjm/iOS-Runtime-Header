@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TVMLKit/NSCopying-Protocol.h>
-
 @class IKViewElement, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TVShadowViewElementID : NSObject <NSCopying>
+@interface _TVShadowViewElementID : NSObject
 {
     IKViewElement *_viewElement;
     NSString *_itemID;

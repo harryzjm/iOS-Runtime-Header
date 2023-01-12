@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/OSADiagnosticObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AUCrashHandler : NSObject <OSADiagnosticObserver>
+@interface AUCrashHandler : NSObject
 {
     int _watchedPid;
     CDUnknownBlockType _crashCallback;

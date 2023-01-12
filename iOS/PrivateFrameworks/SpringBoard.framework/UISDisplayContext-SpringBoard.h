@@ -7,6 +7,7 @@
 #import <UIKitServices/UISDisplayContext.h>
 
 @interface UISDisplayContext (SpringBoard)
-+ (id)sb_defaultContext;
++ (id)sb_defaultContextForDisplayConfiguration:(id)arg1;
++ (id)sb_embeddedDisplayDefaultContext;
 @end
 

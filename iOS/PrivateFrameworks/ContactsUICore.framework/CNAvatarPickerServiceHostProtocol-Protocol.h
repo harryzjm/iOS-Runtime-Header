@@ -9,6 +9,8 @@
 @class CNMemojiMetadata, NSData, NSString;
 
 @protocol CNAvatarPickerServiceHostProtocol <NSObject>
+- (void)avatarPickerExtensionDidDeleteAvatarWithIdentifier:(NSString *)arg1;
+- (void)avatarPickerExtensionDidCreateAvatarWithRecordData:(NSData *)arg1 identifier:(NSString *)arg2;
 - (void)avatarPickerExtensionDidRequestMemojiEditorPresentationForRecordIdentifier:(NSString *)arg1;
 - (void)avatarPickerExtensionDidCancel;
 - (void)avatarPickerExtensionDidFinishWithImageData:(NSData *)arg1 memojiMetadata:(CNMemojiMetadata *)arg2;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewController.h"
+
 @class _UIDefinitionValue;
 
 __attribute__((visibility("hidden")))
-@interface _UILongDefinitionViewController
+@interface _UILongDefinitionViewController : UIViewController
 {
     _UIDefinitionValue *_definitionValue;
 }

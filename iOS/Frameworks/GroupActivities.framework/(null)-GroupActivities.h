@@ -4,16 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GroupActivities/CPConnectionProviding-Protocol.h>
-#import <GroupActivities/CPLinkDelegate-Protocol.h>
-#import <GroupActivities/CPParticipantDelegate-Protocol.h>
-
-@interface (null) (GroupActivities) <CPConnectionProviding, CPLinkDelegate, CPParticipantDelegate>
-- (void)requestConnectionObjectForRemoteParticipantSync:(id)arg1 linkType:(unsigned char)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)didBecomeReady:(id)arg1;
-- (void)didReceiveData:(id)arg1 from:(id)arg2;
-- (void)didFailWithError:(id)arg1;
-- (void)didReceiveData:(id)arg1 ofType:(unsigned char)arg2 from:(id)arg3;
-- (void)participant:(id)arg1 didBecomeAvailable:(_Bool)arg2;
+@interface (null) (GroupActivities)
+- (void)playbackCoordinator:(id)arg1 promptForLeaveOrEndSessionAllowingCancellation:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @end
 

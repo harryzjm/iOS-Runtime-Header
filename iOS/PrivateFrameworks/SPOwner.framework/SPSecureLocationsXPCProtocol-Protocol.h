@@ -9,18 +9,18 @@
 @class NSArray, NSData, NSString, SPSecureLocation, SPSecureLocationsSubscriptionContext;
 
 @protocol SPSecureLocationsXPCProtocol <NSObject>
-- (oneway void)simulateFeatureDisabled:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)fetchConfigFromServerWithCompletion:(void (^)(NSError *))arg1;
-- (oneway void)isLocationPublishingDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (oneway void)performKeyRollWithCompletion:(void (^)(NSError *))arg1;
-- (oneway void)shareCurrentKeyWithId:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)shouldStartLocationMonitorWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (oneway void)receivedLocationCommand:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)receivedLocationPayload:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)publishLocation:(SPSecureLocation *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)updateLocationCacheWith:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)latestLocationFromCacheForId:(NSString *)arg1 completion:(void (^)(SPSecureLocation *, NSError *))arg2;
-- (oneway void)unsubscribeForIds:(NSArray *)arg1 context:(SPSecureLocationsSubscriptionContext *)arg2 completion:(void (^)(NSError *))arg3;
-- (oneway void)subscribeAndFetchLocationForIds:(NSArray *)arg1 context:(SPSecureLocationsSubscriptionContext *)arg2 completion:(void (^)(SPSecureLocationsSubscriptionResult *, NSError *))arg3;
+- (void)simulateFeatureDisabled:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)fetchConfigFromServerWithCompletion:(void (^)(NSError *))arg1;
+- (void)isLocationPublishingDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)performKeyRollWithCompletion:(void (^)(NSError *))arg1;
+- (void)shareCurrentKeyWithId:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)shouldStartLocationMonitorWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)receivedLocationCommand:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)receivedLocationPayload:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)publishLocation:(SPSecureLocation *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)updateLocationCacheWith:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)latestLocationFromCacheForId:(NSString *)arg1 completion:(void (^)(SPSecureLocation *, NSError *))arg2;
+- (void)unsubscribeForIds:(NSArray *)arg1 context:(SPSecureLocationsSubscriptionContext *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)subscribeAndFetchLocationForIds:(NSArray *)arg1 context:(SPSecureLocationsSubscriptionContext *)arg2 completion:(void (^)(SPSecureLocationsSubscriptionResult *, NSError *))arg3;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPDecoderReadCoordinatorDelegate-Protocol.h>
-
 @class NSDictionary, NSString, TSPComponent, TSPDeepCopyObjectMap, TSPObject, TSPObjectContext;
 
-@interface TSPDeepCopyReadAssistant : NSObject <TSPDecoderReadCoordinatorDelegate>
+@interface TSPDeepCopyReadAssistant : NSObject
 {
     TSPObjectContext *_context;
     TSPDeepCopyObjectMap *_objectMap;

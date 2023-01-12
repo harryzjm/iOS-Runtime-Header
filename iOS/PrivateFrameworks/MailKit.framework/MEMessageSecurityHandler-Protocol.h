@@ -7,9 +7,11 @@
 #import <MailKit/MEMessageDecoder-Protocol.h>
 #import <MailKit/MEMessageEncoder-Protocol.h>
 
-@class MEExtensionViewController, NSArray;
+@class MEExtensionViewController, NSArray, NSData;
 
 @protocol MEMessageSecurityHandler <MEMessageEncoder, MEMessageDecoder>
+- (void)primaryActionClickedForMessageContext:(NSData *)arg1 completionHandler:(void (^)(MEExtensionViewController *))arg2;
+- (MEExtensionViewController *)extensionViewControllerForMessageContext:(NSData *)arg1;
 - (MEExtensionViewController *)extensionViewControllerForMessageSigners:(NSArray *)arg1;
 @end
 

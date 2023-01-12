@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <Intents/INJSONSerializable-Protocol.h>
-
 @class NSString;
 
-@interface NSDictionary (Intents) <INJSONSerializable>
+@interface NSDictionary (Intents)
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (id)_intents_indexingRepresentation;
 - (id)descriptionAtIndent:(unsigned long long)arg1;

@@ -16,6 +16,8 @@
 - (void)notifyStateManagerSpeakingBegan;
 - (void)notifyStateManagerPresentationTransitionEnded;
 - (void)notifyStateManagerPresentationTransitionBegan;
+- (void)didLoseAttentionWithEvent:(long long)arg1;
+- (void)didGainAttentionWithEvent:(long long)arg1;
 - (void)speechSynthesisDidUpdatePowerLevelTo:(float)arg1;
 - (void)speechSynthesisDidFinish:(AFSpeechSynthesisRecord *)arg1;
 - (void)audioRoutePickerWillDismiss;
@@ -28,13 +30,14 @@
 - (void)resultDidChangeForAceCommand:(AceObject<SAAceCommand> *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)resultDidChangeForAceCommand:(AceObject<SAAceCommand> *)arg1;
 - (void)siriUIDidPresentDynamicSnippetWithInfo:(NSDictionary *)arg1;
-- (void)performAceCommand:(AceObject<SAAceCommand> *)arg1 turnIdentifier:(NSUUID *)arg2;
-- (void)startCorrectedRequestWithText:(NSString *)arg1 correctionIdentifier:(id)arg2 userSelectionResults:(AFUserUtteranceSelectionResults *)arg3 turnIdentifier:(NSUUID *)arg4;
+- (void)performAceCommand:(AceObject<SAAceCommand> *)arg1 turnIdentifier:(NSUUID *)arg2 machAbsoluteTime:(double)arg3;
+- (void)startCorrectedRequestWithText:(NSString *)arg1 correctionIdentifier:(id)arg2 userSelectionResults:(AFUserUtteranceSelectionResults *)arg3 turnIdentifier:(NSUUID *)arg4 machAbsoluteTime:(double)arg5;
 - (void)cancelSpeechRequest;
 - (void)stopRecordingSpeech;
 - (void)telephonyRequestCompleted;
 - (void)endForReason:(long long)arg1;
 - (void)end;
+- (void)launchedIntoListeningAtTime:(double)arg1;
 - (void)updateRequestOptions:(SASRequestOptions *)arg1;
 - (void)stopRequestWithOptions:(SASRequestOptions *)arg1;
 - (void)startRequestWithOptions:(SASRequestOptions *)arg1 completion:(void (^)(NSError *))arg2;

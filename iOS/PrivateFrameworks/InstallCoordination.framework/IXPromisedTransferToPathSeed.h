@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <InstallCoordination/NSCopying-Protocol.h>
-#import <InstallCoordination/NSSecureCoding-Protocol.h>
-
 @class NSURL;
 
-@interface IXPromisedTransferToPathSeed <NSSecureCoding, NSCopying>
+__attribute__((visibility("hidden")))
+@interface IXPromisedTransferToPathSeed
 {
     _Bool _shouldCopy;
     _Bool _tryDeltaCopy;

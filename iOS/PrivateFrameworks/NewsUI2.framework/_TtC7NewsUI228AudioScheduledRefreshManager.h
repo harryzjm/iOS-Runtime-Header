@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI228AudioScheduledRefreshManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *dataManager;
+    MISSING_TYPE *feedConfigManager;
     MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *offlineContentManager;

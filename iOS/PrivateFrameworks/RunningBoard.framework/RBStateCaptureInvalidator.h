@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/RBSInvalidatable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface RBStateCaptureInvalidator : NSObject <RBSInvalidatable>
+@interface RBStateCaptureInvalidator : NSObject
 {
     unsigned long long _handle;
     _Bool _invalidated;

@@ -13,6 +13,7 @@
     unsigned char _packageIdentifier;
     _Atomic _Bool _didCalculateEncodedLength;
     _Atomic unsigned long long _encodedLength;
+    _Atomic unsigned long long _materializedLength;
     _Atomic _Bool _isMissingData;
     _Bool _isUnmaterializedDueToPartiallyDownloadedDocument;
     id <TSPCryptoInfo> _decryptionInfo;
@@ -33,13 +34,14 @@
 - (void)setEncodedLength:(unsigned long long)arg1 isMissingData:(_Bool)arg2;
 - (_Bool)isMissingData;
 - (id)decryptionInfo;
+- (unsigned long long)materializedLength;
 - (unsigned long long)encodedLength;
 - (unsigned long long)length;
 - (unsigned char)packageIdentifier;
 - (id)packageLocator;
 - (void)didInitializeFromDocumentURL:(id)arg1;
 - (id)init;
-- (id)initWithPath:(id)arg1 package:(id)arg2 decryptionInfo:(id)arg3;
+- (id)initWithPath:(id)arg1 package:(id)arg2 decryptionInfo:(id)arg3 materializedLength:(unsigned long long)arg4;
 
 @end
 

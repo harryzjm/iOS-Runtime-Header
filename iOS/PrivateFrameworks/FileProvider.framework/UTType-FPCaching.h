@@ -7,6 +7,6 @@
 #import <UniformTypeIdentifiers/UTType.h>
 
 @interface UTType (FPCaching)
-+ (id)fp_cachedTypeWithIdentifer:(id)arg1;
++ (id)fp_cachedTypeWithIdentifier:(id)arg1;
 @end
 

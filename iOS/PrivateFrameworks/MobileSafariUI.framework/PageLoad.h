@@ -44,9 +44,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic, getter=isTooShortToScroll) _Bool tooShortToScroll; // @synthesize tooShortToScroll=_tooShortToScroll;
 @property(nonatomic) struct CGSize contentSizeAtPageLoad; // @synthesize contentSizeAtPageLoad=_contentSizeAtPageLoad;
-@property(retain, nonatomic) NSDate *allSubresourcesLoadedDate; // @synthesize allSubresourcesLoadedDate=_allSubresourcesLoadedDate;
-@property(retain, nonatomic) NSDate *firstMeaningfulPaintDate; // @synthesize firstMeaningfulPaintDate=_firstMeaningfulPaintDate;
-@property(retain, nonatomic) NSDate *domContentLoadedDate; // @synthesize domContentLoadedDate=_domContentLoadedDate;
 @property(retain, nonatomic) NSDate *redirectDate; // @synthesize redirectDate=_redirectDate;
 @property(nonatomic) _Bool swapProcess; // @synthesize swapProcess=_swapProcess;
 @property(nonatomic) unsigned long long memoryAfterWarning; // @synthesize memoryAfterWarning=_memoryAfterWarning;
@@ -54,6 +51,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_81cc75c8 heapAfter; // @synthesize heapAfter=_heapAfter;
 @property(nonatomic) CDStruct_81cc75c8 heapBefore; // @synthesize heapBefore=_heapBefore;
 @property(retain, nonatomic) NSDate *startRenderDate; // @synthesize startRenderDate=_startRenderDate;
+@property(retain, nonatomic) NSDate *allSubresourcesLoadedDate; // @synthesize allSubresourcesLoadedDate=_allSubresourcesLoadedDate;
+@property(retain, nonatomic) NSDate *firstMeaningfulPaintDate; // @synthesize firstMeaningfulPaintDate=_firstMeaningfulPaintDate;
+@property(retain, nonatomic) NSDate *domContentLoadedDate; // @synthesize domContentLoadedDate=_domContentLoadedDate;
 @property(retain, nonatomic) NSDate *firstVisualLayoutDate; // @synthesize firstVisualLayoutDate=_firstVisualLayoutDate;
 @property(retain, nonatomic) NSDate *endLoadDate; // @synthesize endLoadDate=_endLoadDate;
 @property(retain, nonatomic) NSDate *webContentProcessStartLoadDate; // @synthesize webContentProcessStartLoadDate=_webContentProcessStartLoadDate;

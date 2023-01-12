@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPFieldActionDeleteListRange, CKDPFieldActionInsertIntoList, CKDPFieldActionReplaceListRange;
 
-@interface CKDPFieldAction : PBCodable <NSCopying>
+@interface CKDPFieldAction : PBCodable
 {
     CKDPFieldActionDeleteListRange *_deleteListRange;
     CKDPFieldActionInsertIntoList *_insertIntoList;

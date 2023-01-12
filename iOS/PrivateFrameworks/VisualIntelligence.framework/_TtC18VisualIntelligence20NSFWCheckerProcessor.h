@@ -10,7 +10,8 @@
 
 @interface _TtC18VisualIntelligence20NSFWCheckerProcessor : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_cvnlpCommSafetyHandler;
+    MISSING_TYPE *cvnlpCommSafetyHandler;
+    MISSING_TYPE *lock;
     MISSING_TYPE *metalDevice;
 }
 

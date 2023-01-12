@@ -35,6 +35,7 @@
 - (_Bool)isSubsetOfMeCard;
 @property(nonatomic) unsigned long long contactSource;
 @property(retain, nonatomic) CRRecentContact *recentContact;
+- (id)pkSingleLineFormattedContactAddressIncludingCountryName:(_Bool)arg1;
 - (id)pkSingleLineFormattedContactAddress;
 - (id)pkFormattedContactAddressIncludingPhoneticName:(_Bool)arg1 showName:(_Bool)arg2;
 - (id)pkFormattedContactAddressIncludingPhoneticName:(_Bool)arg1;

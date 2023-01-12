@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IconServices/ISResourceMetadata-Protocol.h>
-
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ISResourceMetaData : NSObject <ISResourceMetadata>
+@interface ISResourceMetaData : NSObject
 {
     _Bool _selectedVariant;
     NSString *_name;

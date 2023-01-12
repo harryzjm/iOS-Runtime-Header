@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
-@interface KNAnimationScreenEnvironment : NSObject <NSCopying>
+@interface KNAnimationScreenEnvironment : NSObject
 {
     struct CGColorSpace *_colorSpace;
     double _pixelAspectRatio;

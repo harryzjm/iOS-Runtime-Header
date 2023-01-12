@@ -11,5 +11,8 @@
 - (id)rem_hashtagAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2 wantsLongestEffectiveRange:(_Bool)arg3 inRange:(struct _NSRange)arg4;
 - (id)rem_hashtagAtIndex:(unsigned long long)arg1 longestEffectiveRange:(struct _NSRange *)arg2 inRange:(struct _NSRange)arg3;
 - (id)rem_hashtagAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (_Bool)rem_isUnderlinedAtIndex:(long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (unsigned long long)rem_fontHintAtIndex:(long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (id)rem_paragraphStyleAtIndex:(long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 @end
 

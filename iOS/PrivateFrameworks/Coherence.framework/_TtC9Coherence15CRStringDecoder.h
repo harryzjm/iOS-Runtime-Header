@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Coherence/CRStringDecoderProtocol-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9Coherence15CRStringDecoder : NSObject <CRStringDecoderProtocol>
+@interface _TtC9Coherence15CRStringDecoder : NSObject
 {
     MISSING_TYPE *encoded;
     MISSING_TYPE *subsequence;
@@ -22,7 +20,11 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (unsigned int)substringChild:(long long)arg1;
 - (long long)substringChildCount;
+- (long long)substringContentOptions;
 - (unsigned int)substringLength;
+- (unsigned int)substringRemovedAddedByCounter:(long long)arg1;
+- (id)substringRemovedAddedByReplica:(long long)arg1 withError:(id *)arg2;
+- (long long)substringRemovedAddedByCount;
 - (unsigned int)substringAddedByCounter:(long long)arg1;
 - (id)substringAddedByReplica:(long long)arg1 withError:(id *)arg2;
 - (long long)substringAddedByCount;
@@ -30,9 +32,10 @@ __attribute__((visibility("hidden")))
 - (id)substringCharReplicaWithError:(id *)arg1;
 - (void)decodeSubstring:(long long)arg1;
 - (long long)substringCount;
+- (id)fromAddedByVersionWithError:(id *)arg1;
+- (id)fromVersionWithError:(id *)arg1;
 - (id)addedByVersionWithError:(id *)arg1;
 - (id)versionWithError:(id *)arg1;
-- (id)context;
 - (id)storageWithError:(id *)arg1;
 
 @end

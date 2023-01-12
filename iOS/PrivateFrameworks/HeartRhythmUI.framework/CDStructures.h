@@ -4,10 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CGPoint {
@@ -15,14 +11,9 @@ struct CGPoint {
     double _field2;
 };
 
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
-
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct NSDirectionalEdgeInsets {
@@ -32,15 +23,8 @@ struct NSDirectionalEdgeInsets {
     double _field4;
 };
 
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 

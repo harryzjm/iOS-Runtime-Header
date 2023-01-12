@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class IBCustomViewDrawingDescription, NSString;
 
-@interface IBPlaceholderDrawingAttributes : NSObject <IBBinaryArchiving>
+@interface IBPlaceholderDrawingAttributes : NSObject
 {
     _Bool _drawTopEdgeShadow;
     NSString *_title;

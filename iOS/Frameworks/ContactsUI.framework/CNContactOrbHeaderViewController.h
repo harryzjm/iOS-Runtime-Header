@@ -6,17 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray;
+@class CNContactOrbHeaderView, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface CNContactOrbHeaderViewController : UIViewController
 {
+    CNContactOrbHeaderView *_headerView;
     NSArray *_contacts;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
+@property(retain, nonatomic) CNContactOrbHeaderView *headerView; // @synthesize headerView=_headerView;
 - (double)suggestedHeaderWidth;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithContacts:(id)arg1;
 

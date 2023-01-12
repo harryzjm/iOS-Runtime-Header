@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCControllerComponentDescription-Protocol.h>
-
 @class GCPlayerIndicatorXPCProxyClientEndpoint, NSString;
 @protocol NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface GCPlayerIndicatorXPCProxyClientEndpointDescription : NSObject <_GCControllerComponentDescription>
+@interface GCPlayerIndicatorXPCProxyClientEndpointDescription : NSObject
 {
     long long _initialPlayerIndex;
     GCPlayerIndicatorXPCProxyClientEndpoint *_materializedObject;

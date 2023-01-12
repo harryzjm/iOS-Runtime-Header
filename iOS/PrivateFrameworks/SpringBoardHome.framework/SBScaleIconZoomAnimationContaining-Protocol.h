@@ -7,12 +7,14 @@
 #import <SpringBoardHome/SBIconZoomAnimationContaining-Protocol.h>
 
 @class SBIcon, SBIconView, SBScaleIconZoomAnimator, SBSearchGesture, UIView;
+@protocol SBHSearchPresenting;
 
 @protocol SBScaleIconZoomAnimationContaining <SBIconZoomAnimationContaining>
 - (void)returnScalingView;
 - (UIView *)borrowScalingView;
 
 @optional
+- (id <SBHSearchPresenting>)searchPresenter;
 - (SBSearchGesture *)searchGesture;
 - (void)prepareForAnimation:(SBScaleIconZoomAnimator *)arg1 withTargetIcon:(SBIcon *)arg2;
 - (void)setContentAlpha:(double)arg1;

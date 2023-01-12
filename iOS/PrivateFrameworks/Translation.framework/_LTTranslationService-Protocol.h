@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Translation/_LTTextTranslationService-Protocol.h>
+
 @class NSArray, NSData, NSLocale, NSString, _LTInstallRequest, _LTLocalePair, _LTTaskContext, _LTTranslationContext, _LTTranslationFeedback, _LTTranslationParagraph;
 
-@protocol _LTTranslationService
+@protocol _LTTranslationService <_LTTextTranslationService>
 - (void)logWithRequestData:(NSData *)arg1;
 - (void)configInfoForLocale:(NSLocale *)arg1 otherLocale:(NSLocale *)arg2 completion:(void (^)(NSDictionary *))arg3;
 - (void)additionalLikelyPreferredLocalesForLocale:(NSLocale *)arg1 completion:(void (^)(NSArray *))arg2;
@@ -23,8 +25,7 @@
 - (void)_downloadAssetForLanguagePair:(_LTLocalePair *)arg1 userInitiated:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_offlineLanguageStatus:(void (^)(NSArray *))arg1;
 - (void)cleanup;
-- (void)speak:(NSString *)arg1 withContext:(_LTTranslationContext *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)languagesForText:(NSArray *)arg1 usingModel:(unsigned long long)arg2 completion:(void (^)(_LTTextLanguageDetectionResult *))arg3;
+- (void)speak:(NSString *)arg1 withContext:(_LTTranslationContext *)arg2 completion:(void (^)(NSURL *, NSError *))arg3;
 - (void)languagesForText:(NSArray *)arg1 completion:(void (^)(_LTTextLanguageDetectionResult *))arg2;
 - (void)languageForText:(NSString *)arg1 completion:(void (^)(_LTLanguageDetectionResult *))arg2;
 - (void)clearCaches;

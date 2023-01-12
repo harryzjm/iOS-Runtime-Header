@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/AVAssetDownloadDelegate-Protocol.h>
-#import <CFNetwork/AVAssetDownloadDelegatePrivate-Protocol.h>
-
 @class AVURLAsset, NSArray, NSData, NSDictionary, NSString, NSURLSession;
 
-@interface __NSCFBackgroundAVAggregateAssetDownloadTask <AVAssetDownloadDelegate, AVAssetDownloadDelegatePrivate>
+@interface __NSCFBackgroundAVAggregateAssetDownloadTask
 {
     _Bool _sentWillDownloadToURL;
     _Bool _sentWillBeginDelayedRequest;

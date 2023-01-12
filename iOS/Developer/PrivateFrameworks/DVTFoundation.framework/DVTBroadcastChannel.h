@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSCopying-Protocol.h>
-
 @protocol DVTBroadcastName;
 
-@interface DVTBroadcastChannel : NSObject <NSCopying>
+@interface DVTBroadcastChannel : NSObject
 {
     id <DVTBroadcastName> _name;
     id _source;

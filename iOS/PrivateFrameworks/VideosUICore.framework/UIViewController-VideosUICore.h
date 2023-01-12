@@ -10,6 +10,8 @@
 @protocol UIViewControllerTransitioningDelegate;
 
 @interface UIViewController (VideosUICore)
+- (void)vui_setContentScrollView:(id)arg1 forEdge:(unsigned long long)arg2;
+- (id)vui_contentScrollViewForEdge:(unsigned long long)arg1;
 - (_Bool)vui_addSubview:(id)arg1 oldView:(id)arg2;
 - (void)vui_updateViewConstraints;
 - (void)vui_didMoveToParentViewController:(id)arg1;
@@ -37,6 +39,7 @@
 @property(retain, nonatomic) UIScrollView *vuiTabBarObservedScrollView;
 @property(readonly, nonatomic) UITabBarController *vuiTabBarController;
 @property(retain, nonatomic) UITabBarItem *vuiTabBarItem;
+@property(readonly, nonatomic) _Bool vuiIsNavigationRoot;
 @property(readonly, nonatomic) UINavigationController *vuiNavigationController;
 @property(readonly, nonatomic) UINavigationItem *vuiNavigationItem;
 @property(nonatomic, getter=vuiIsModalInPresentation) _Bool vuiModalInPresentation;
@@ -63,5 +66,14 @@
 @property(copy, nonatomic) NSString *vuiTitle;
 @property(readonly, nonatomic, getter=vuiIsViewLoaded) _Bool vuiViewLoaded;
 @property(retain, nonatomic) UIView *vuiView;
+@property(nonatomic) _Bool vui_requiresLegacyPresentation;
+- (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 actions:(id)arg3 animated:(_Bool)arg4;
+- (void)presentViewController:(id)arg1 modalPresentationStyle:(long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

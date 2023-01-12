@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSUITextViewCommonMethods-Protocol.h>
-#import <UIKitCore/_UITextViewCanvasViewContext-Protocol.h>
+#import "UIView.h"
 
-@class NSDictionary, NSLayoutManager, NSString, NSTextContainer, UIColor, UITextView, _UITextLayoutController, _UITextViewCanvasView;
-@protocol _UITextContainerViewDelegate;
+@class NSDictionary, NSLayoutManager, NSString, NSTextContainer, UIColor, UIScrollView, UITextView, _UITextLayoutControllerBase;
+@protocol _UITextCanvas, _UITextContainerViewDelegate, _UITextLayoutController;
 
 __attribute__((visibility("hidden")))
-@interface _UITextContainerView <NSUITextViewCommonMethods, _UITextViewCanvasViewContext>
+@interface _UITextContainerView : UIView
 {
     struct UIEdgeInsets _textContainerInset;
     struct CGPoint _textContainerOrigin;
@@ -30,22 +29,18 @@ __attribute__((visibility("hidden")))
         unsigned int usesStandardTextScaling:1;
     } _tcvFlags;
     UITextView *_textView;
-    _UITextViewCanvasView *_canvasView;
-    _UITextLayoutController *_textLayoutController;
+    _UITextLayoutControllerBase<_UITextLayoutController> *_textLayoutController;
     id <_UITextContainerViewDelegate> _delegate;
+    UIView<_UITextCanvas> *_canvasView;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _UITextViewCanvasView *canvasView; // @synthesize canvasView=_canvasView;
+@property(readonly, nonatomic) UIView<_UITextCanvas> *canvasView; // @synthesize canvasView=_canvasView;
 @property(nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
 @property(nonatomic) struct CGSize minSize; // @synthesize minSize=_minSize;
 @property(nonatomic) __weak id <_UITextContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak NSTextContainer *textContainer; // @synthesize textContainer=_textContainer;
-@property(readonly, nonatomic) _UITextLayoutController *textLayoutController; // @synthesize textLayoutController=_textLayoutController;
-- (void)removeAllGhostedRanges;
-- (void)addGhostedRange:(struct _NSRange)arg1;
-@property(nonatomic) double maxTileHeight;
-@property(nonatomic) _Bool usesTiledViews;
+@property(readonly, nonatomic) _UITextLayoutControllerBase<_UITextLayoutController> *textLayoutController; // @synthesize textLayoutController=_textLayoutController;
 - (struct CGRect)visibleRect;
 @property(readonly, copy) NSString *description;
 - (id)attributedSubstringForMarkedRange;
@@ -57,13 +52,21 @@ __attribute__((visibility("hidden")))
 - (void)_ensureLayoutCompleteForRect:(struct CGRect)arg1;
 - (void)_ensureLayoutCompleteToEndOfCharacterRange:(struct _NSRange)arg1;
 - (void)layoutSubviews;
+- (_Bool)drawTextInRectIfNeeded:(struct CGRect)arg1;
+- (void)didRemoveTextAttachmentViews:(id)arg1;
+- (void)didLayoutTextAttachmentView:(id)arg1 inFragmentRect:(struct CGRect)arg2;
+- (void)didAddTextAttachmentViews:(id)arg1;
+- (void)textContainerUsageDidChangeToSize:(struct CGSize)arg1;
+@property(readonly, nonatomic) struct CGRect _clipRectForFadedEdges;
 @property(readonly, nonatomic) struct CGPoint drawingScale;
 @property(readonly, nonatomic, getter=isEditable) _Bool editable;
+@property(readonly, nonatomic) UIScrollView *enclosingScrollView;
 @property(readonly, nonatomic) UIColor *textColor;
 - (void)willMoveToSuperview:(id)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1 avoidAdditionalLayout:(_Bool)arg2;
 - (void)updateInsertionPointStateAndRestartTimer:(_Bool)arg1;
 @property(nonatomic) _Bool usesStandardTextScaling;
+- (_Bool)_ensureLayoutForCappedSize;
 - (_Bool)_shouldCapSizeToFitLayoutRange:(out struct _NSRange *)arg1;
 - (void)sizeToFit;
 - (void)_sizeToConstrainedContainerUsedRect;
@@ -78,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)_setFrameOrBounds:(struct CGRect)arg1 oldRect:(struct CGRect)arg2 isFrameRect:(_Bool)arg3 settingAction:(CDUnknownBlockType)arg4;
 - (void)_ensureMinAndMaxSizesConsistentWithBounds;
 - (void)invalidateTextContainerOrigin;
+- (_Bool)reconfigureWithLayoutManager:(id)arg1 triggeredBySelector:(SEL)arg2;
 @property(readonly, nonatomic) struct CGPoint textContainerOrigin;
 @property(nonatomic) struct UIEdgeInsets textContainerInset;
 @property(nonatomic, getter=_freezeTextContainerSize, setter=_setFreezeTextContainerSize:) _Bool freezeTextContainerSize;
@@ -85,13 +89,11 @@ __attribute__((visibility("hidden")))
 - (void)tintColorDidChange;
 - (id)linkAttributesForLink:(id)arg1 forCharacterAtIndex:(unsigned long long)arg2;
 - (id)linkTextAttributes;
-- (id)textStorage;
 @property(readonly, nonatomic) NSLayoutManager *layoutManager;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 textLayoutController:(id)arg2 textContainer:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties
-@property(readonly, nonatomic) struct CGRect _clipRectForFadedEdges;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

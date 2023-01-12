@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccountUI/IKDOMFeature-Protocol.h>
-#import <VideoSubscriberAccountUI/VSJSItemGroupBridge-Protocol.h>
-
 @class IKAppContext, NSString;
 @protocol VSIKItemGroupDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSIKItemGroup : NSObject <VSJSItemGroupBridge, IKDOMFeature>
+@interface VSIKItemGroup : NSObject
 {
     IKAppContext *_appContext;
     NSString *_featureName;

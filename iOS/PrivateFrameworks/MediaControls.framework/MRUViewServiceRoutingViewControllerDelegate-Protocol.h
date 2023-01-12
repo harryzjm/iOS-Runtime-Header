@@ -6,9 +6,10 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class MRUViewServiceRoutingViewController;
+@class MRUViewServiceRoutingViewController, NSString;
 
 @protocol MRUViewServiceRoutingViewControllerDelegate <NSObject>
+- (void)viewServiceRoutingViewControllerDidDismiss:(MRUViewServiceRoutingViewController *)arg1 withCustomRowTapped:(NSString *)arg2;
 - (void)viewServiceRoutingViewControllerDidDismiss:(MRUViewServiceRoutingViewController *)arg1;
 - (void)viewServiceRoutingViewControllerDidChangeSize:(MRUViewServiceRoutingViewController *)arg1;
 @end

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKDPRecordRetrieveVersionsResponse : PBCodable <NSCopying>
+@interface CKDPRecordRetrieveVersionsResponse : PBCodable
 {
     NSMutableArray *_recordVersions;
     _Bool _isDeleted;

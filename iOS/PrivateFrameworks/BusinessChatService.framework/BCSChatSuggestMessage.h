@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSChatSuggestMessage : PBCodable <NSCopying>
+@interface BCSChatSuggestMessage : PBCodable
 {
     long long _phoneHash;
     NSString *_backgroundColor;

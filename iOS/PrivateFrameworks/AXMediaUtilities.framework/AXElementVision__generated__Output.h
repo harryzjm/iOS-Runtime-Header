@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AXMediaUtilities/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface AXElementVision__generated__Output : NSObject <MLFeatureProvider>
+@interface AXElementVision__generated__Output : NSObject
 {
     MLMultiArray *_confidence;
     MLMultiArray *_coordinates;

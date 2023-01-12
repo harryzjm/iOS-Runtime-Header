@@ -7,7 +7,9 @@
 #import <QuartzCore/CALayer.h>
 
 @interface CALayer (AVPictureInPictureContentSourceExtensions)
+- (id)avkit_window;
 - (struct CGRect)avkit_visibleRectForRect:(struct CGRect)arg1 inLayer:(id)arg2;
+- (id)avkit_findFirstCALayerHost;
 - (void)avkit_removeAllSublayerTransformAnimations;
 - (id)avkit_sbdlpip_findFirstCALayerHost;
 @end

@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSUIWebClientContext : NSObject
 {
+    _Bool _bootstrapComplete;
     _Bool _loadUsingWebKit;
     _Bool _signatureResumption;
     AMSSnapshotBag *_bag;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
     AMSUIWebPluginLoader *_pluginLoader;
     AMSURLSession *_URLSession;
     AMSUIWebPageViewController *_webPage;
+    NSString *_URL;
     id <AMSBagProtocol> _backingBag;
 }
 
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)_boolForKey:(id)arg1 defaultValue:(_Bool)arg2 domain:(struct __CFString *)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <AMSBagProtocol> backingBag; // @synthesize backingBag=_backingBag;
+@property(nonatomic) __weak NSString *URL; // @synthesize URL=_URL;
 @property(nonatomic) __weak AMSUIWebPageViewController *webPage; // @synthesize webPage=_webPage;
 @property(retain, nonatomic) AMSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property(nonatomic) _Bool signatureResumption; // @synthesize signatureResumption=_signatureResumption;
@@ -49,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AMSUIWebJSDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property(retain, nonatomic) NSDictionary *clientOptions; // @synthesize clientOptions=_clientOptions;
 @property(readonly, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+@property(nonatomic) _Bool bootstrapComplete; // @synthesize bootstrapComplete=_bootstrapComplete;
 @property(retain, nonatomic) NSDictionary *additionalHeaders; // @synthesize additionalHeaders=_additionalHeaders;
 @property(nonatomic) __weak id <AMSUIWebActionRunnerDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 @property(readonly, nonatomic) ACAccount *account; // @synthesize account=_account;

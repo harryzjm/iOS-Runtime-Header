@@ -6,9 +6,7 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
-@interface TSTPivotGroupingColumnOptionsMap : TSPObject <NSCopying>
+@interface TSTPivotGroupingColumnOptionsMap : TSPObject
 {
     struct map<TSKUIDStruct, TSTPivotGroupingColumnOptions *, std::less<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, TSTPivotGroupingColumnOptions *>>> _optionsForUidMap;
 }

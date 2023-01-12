@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MLAssetIO/MIOModeling-Protocol.h>
-
 @class MIOModelDescription, MIOVersionInfo, NSArray, NSDictionary, NSString, NSURL;
 @protocol MIOModeling;
 
 __attribute__((visibility("hidden")))
-@interface MIOPackagedFileModel : NSObject <MIOModeling>
+@interface MIOPackagedFileModel : NSObject
 {
     MIOModelDescription *_modelDescription;
     NSURL *_packageURL;
@@ -26,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) void *irProgram;
 @property(readonly, copy, nonatomic) NSDictionary *layerHistogram;
 @property(readonly, copy, nonatomic) NSArray *subModels;
 @property(readonly, copy, nonatomic) NSArray *layers;

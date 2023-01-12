@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITableViewController.h"
+
 @class NSArray, NSMutableDictionary, _UIDictionaryManager;
 
 __attribute__((visibility("hidden")))
-@interface _UIRemoteDictionaryViewController
+@interface _UIRemoteDictionaryViewController : UITableViewController
 {
     NSArray *_availableDictionaries;
     _UIDictionaryManager *_dictionaryAssetManager;
@@ -25,9 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)_startDownloadForDictionary:(id)arg1;
 - (void)_handleDownloadButton:(id)arg1;
 - (id)_downloadButton;
-- (id)_downloadImageWithTintColor:(id)arg1;
-- (id)_cloudBackgroundImage;
-- (id)_downloadArrowImage;
 - (void)viewDidLoad;
 - (id)initWithStyle:(long long)arg1;
 

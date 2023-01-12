@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCHardwareSettingsMacProtocol-Protocol.h>
-
 @class NSArray, NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCHardwareSettingsMac <VCHardwareSettingsMacProtocol>
+@interface VCHardwareSettingsMac
 {
     _Bool _hiDefEncoding;
     _Bool _isGVAEncoderAvailableInitialized;
@@ -33,6 +31,8 @@ __attribute__((visibility("hidden")))
 
 + (long long)deviceClass;
 + (id)sharedInstance;
+@property(readonly, nonatomic) _Bool isCellularTappingSupported;
+- (_Bool)preferPresentationTimestamp;
 - (_Bool)supportsPortraitCameraCapture;
 @property(readonly, nonatomic) long long screenShareCapabilities;
 - (_Bool)disableMLScalarDuringSharing;
@@ -40,11 +40,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)limitCameraDownlinkBitrateDuringSharing;
 @property(readonly, nonatomic) NSArray *supportedVideoPayloads;
 - (id)queryBoardId;
+@property(readonly, nonatomic) _Bool shouldEnforceScreenFrameRateLimit;
 @property(readonly, nonatomic) unsigned int maxFrameRateSupportedScreenShare;
 @property(readonly, nonatomic) unsigned int maxActiveScreenEncoders;
 @property(readonly, nonatomic) unsigned long long maxScreenEncodingSizeSupported;
-- (float)previewPreferredAspectRatio;
+- (double)previewPreferredAspectRatio;
+- (unsigned int)screenHeightForDisplayID:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned int screenHeight;
+@property(readonly, nonatomic) _Bool shouldOverrideGPUMuxing;
+- (unsigned int)screenWidthForDisplayID:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned int screenWidth;
 - (void)_initializeScreenDimension;
 @property(readonly, nonatomic) _Bool supportsAVFCapture;
@@ -56,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isDeviceLargeScreen;
 @property(readonly, nonatomic) unsigned int maxActiveVideoDecoders;
 - (unsigned int)maxMultiwayFramerateSupported;
+@property(readonly, nonatomic) _Bool isCaptionsSupported;
 - (unsigned int)maxOneToOneFramerateSupported;
 @property(readonly, nonatomic) _Bool supportsMultiway720pStream;
 @property(readonly, nonatomic) unsigned int maxActiveVideoEncoders;
@@ -65,6 +70,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *machineName;
 @property(readonly, nonatomic) unsigned int hwEncoderEnterBitrate;
 @property(readonly, nonatomic) unsigned int hwEncoderExitBitrate;
+- (_Bool)isAppleSiliconMac;
+@property(readonly, nonatomic) _Bool isMacmini;
+- (_Bool)isMacBookAir;
 - (_Bool)isIMacPro;
 @property(readonly, nonatomic) _Bool isIMac;
 @property(readonly, nonatomic) _Bool isMacPro;
@@ -88,6 +96,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isSiriVoicePlayoutSupported;
+@property(readonly, nonatomic) _Bool isSiriVoiceTapSupported;
 @property(readonly) Class superclass;
 
 @end

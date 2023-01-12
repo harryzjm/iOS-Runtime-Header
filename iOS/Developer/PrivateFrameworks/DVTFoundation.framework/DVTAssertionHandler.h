@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTAssertionHandling-Protocol.h>
-
 @class NSString;
 
-@interface DVTAssertionHandler : NSObject <DVTAssertionHandling>
+@interface DVTAssertionHandler : NSObject
 {
 }
 

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import "UIKBKeyView.h"
 
-@class NSMutableArray, NSMutableSet, NSString, UIBezierPath, UIDelayedAction, UIImageView, UIKBHandwritingBezierPathPointFIFO, UIKBHandwritingBoxcarFilterPointFIFO, UIKBHandwritingInputSpeedModel, UIKBHandwritingQuadCurvePointFIFO, UIKBHandwritingStrokePointFIFO, UIKBHandwritingStrokeView;
+@class NSMutableArray, NSMutableSet, NSString, UIBezierPath, UIDelayedAction, UIKBHandwritingBezierPathPointFIFO, UIKBHandwritingBoxcarFilterPointFIFO, UIKBHandwritingInputSpeedModel, UIKBHandwritingQuadCurvePointFIFO, UIKBHandwritingStrokePointFIFO, UIKBHandwritingStrokeView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBHandwritingView <UIGestureRecognizerDelegate>
+@interface UIKBHandwritingView : UIKBKeyView
 {
     _Bool _initialPointPosted;
     double _inkWidth;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     UIKBHandwritingQuadCurvePointFIFO *_interpolatingFIFO;
     UIKBHandwritingBezierPathPointFIFO *_bezierPathFIFO;
     UIKBHandwritingStrokeView *_strokeView;
-    UIImageView *_snapshotView;
+    UIView *_snapshotView;
     NSMutableSet *_activeTouches;
     double _pageOffset;
     UIDelayedAction *_nextPageTimer;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_19cde01f previousPoint; // @synthesize previousPoint=_previousPoint;
 @property(nonatomic) _Bool initialPointPosted; // @synthesize initialPointPosted=_initialPointPosted;
 @property(retain, nonatomic) NSMutableSet *activeTouches; // @synthesize activeTouches=_activeTouches;
-@property(retain, nonatomic) UIImageView *snapshotView; // @synthesize snapshotView=_snapshotView;
+@property(retain, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property(retain, nonatomic) UIKBHandwritingStrokeView *strokeView; // @synthesize strokeView=_strokeView;
 @property(retain, nonatomic) UIKBHandwritingBezierPathPointFIFO *bezierPathFIFO; // @synthesize bezierPathFIFO=_bezierPathFIFO;
 @property(retain, nonatomic) UIKBHandwritingQuadCurvePointFIFO *interpolatingFIFO; // @synthesize interpolatingFIFO=_interpolatingFIFO;

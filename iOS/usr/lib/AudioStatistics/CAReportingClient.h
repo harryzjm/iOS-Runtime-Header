@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(retain) NSMutableDictionary *clientReporters; // @synthesize clientReporters=_clientReporters;
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)dealloc;
-- (void)destoryService;
+- (void)destroyService;
 - (id)getConfigurationForReporterID:(long long)arg1;
 - (void)setConfiguration:(id)arg1 reporterID:(long long)arg2;
 - (unsigned short)getServiceTypeForReporterID:(long long)arg1;

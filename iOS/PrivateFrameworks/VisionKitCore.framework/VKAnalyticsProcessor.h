@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface VKAnalyticsProcessor : NSObject
 {
+    _Bool _isPublicAPI;
     VKAnalyticsSessionAccumulator *_sessionAccumulator;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) VKAnalyticsSessionAccumulator *sessionAccumulator; // @synthesize sessionAccumulator=_sessionAccumulator;
+@property(nonatomic) _Bool isPublicAPI; // @synthesize isPublicAPI=_isPublicAPI;
 - (void)sendCoreAnalyticsEvent:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)processAndSendSession:(id)arg1;
 - (void)processAndSendEvent:(id)arg1;

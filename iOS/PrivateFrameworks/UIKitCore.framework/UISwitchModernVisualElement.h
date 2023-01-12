@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-#import <UIKitCore/UISwitchMVEGestureTrackingSessionElement-Protocol.h>
+#import "UISwitchVisualElement.h"
 
 @class NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISwitchMVEGestureTrackingSession, UITapGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UISwitchModernVisualElement <UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement, CAAnimationDelegate, UIPointerInteractionDelegate>
+@interface UISwitchModernVisualElement : UISwitchVisualElement
 {
     UIView *_switchWellView;
     UIView *_leftSwitchWellView;

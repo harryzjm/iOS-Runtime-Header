@@ -6,17 +6,19 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, _ICLLAutoPlaySource, _ICLLRadioSource;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLReplaceQueueItemsCommand : PBCodable <NSCopying>
+@interface _ICLLReplaceQueueItemsCommand : PBCodable
 {
+    _ICLLAutoPlaySource *_autoPlay;
     NSMutableArray *_items;
     NSString *_preferredPlayItemId;
+    NSString *_queueContext;
+    _ICLLRadioSource *_radio;
     int _revision;
-    CDStruct_3e022450 _has;
+    int _trackGenerationSource;
+    CDStruct_4af0550e _has;
 }
 
 - (void).cxx_destruct;

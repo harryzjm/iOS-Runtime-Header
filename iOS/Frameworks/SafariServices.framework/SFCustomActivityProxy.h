@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/NSCopying-Protocol.h>
-#import <SafariServices/NSSecureCoding-Protocol.h>
-
 @class NSString, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SFCustomActivityProxy : NSObject <NSCopying, NSSecureCoding>
+@interface SFCustomActivityProxy : NSObject
 {
     NSString *_activityType;
     NSString *_activityTitle;

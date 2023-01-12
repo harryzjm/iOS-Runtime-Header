@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UserAlerts/URTAlertServerToClientInterface-Protocol.h>
-#import <UserAlerts/URTDestinationPresenting-Protocol.h>
-
 @class BSServiceConnection, NSString, URTAlert;
 @protocol OS_dispatch_queue, URTDestinationPresentationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface URTServiceDestinationPresentation : NSObject <URTAlertServerToClientInterface, URTDestinationPresenting>
+@interface URTServiceDestinationPresentation : NSObject
 {
     URTAlert *_alert;
     long long _destination;

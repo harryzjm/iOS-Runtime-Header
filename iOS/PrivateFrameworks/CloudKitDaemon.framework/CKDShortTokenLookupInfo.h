@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKDShortTokenLookupInfo : NSObject <NSCopying>
+@interface CKDShortTokenLookupInfo : NSObject
 {
     _Bool _shouldFetchRootRecord;
     _Bool _forceDSRefetch;
     NSString *_routingKey;
     NSData *_shortSharingTokenHashData;
+    NSString *_participantID;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *participantID; // @synthesize participantID=_participantID;
 @property(nonatomic) _Bool forceDSRefetch; // @synthesize forceDSRefetch=_forceDSRefetch;
 @property(nonatomic) _Bool shouldFetchRootRecord; // @synthesize shouldFetchRootRecord=_shouldFetchRootRecord;
 @property(retain, nonatomic) NSData *shortSharingTokenHashData; // @synthesize shortSharingTokenHashData=_shortSharingTokenHashData;

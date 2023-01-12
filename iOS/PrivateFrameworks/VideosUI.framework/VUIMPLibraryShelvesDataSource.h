@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, VUIMediaLibrary;
 
 __attribute__((visibility("hidden")))
-@interface VUIMPLibraryShelvesDataSource <VUILibraryDataSourceDelegate>
+@interface VUIMPLibraryShelvesDataSource
 {
     VUIMediaLibrary *_mediaLibrary;
     NSMutableArray *_fetchedDataSources;

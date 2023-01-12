@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSDeviceOffersTracking-Protocol.h>
-
-@class AMSStorageDatabase, NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSDeviceOffersStore : NSObject <AMSDeviceOffersTracking>
+@interface AMSDeviceOffersStore : NSObject
 {
-    AMSStorageDatabase *_database;
 }
 
-- (void).cxx_destruct;
-@property(readonly, nonatomic) AMSStorageDatabase *database; // @synthesize database=_database;
++ (id)serialsFromGroups:(id)arg1;
++ (id)serialsBySubtractingAGroups:(id)arg1 fromBGroups:(id)arg2;
++ (id)splitGroups:(id)arg1 byItem:(id)arg2;
 - (void)removeCachedRegistrationItem:(id)arg1;
 - (void)_dbSetNullableValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 @property(retain, nonatomic) NSArray *deviceRegistrationBlacklist;
@@ -25,8 +23,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *deviceOfferEligibility;
 @property(retain, nonatomic) NSArray *cachedRegistrationGroups;
 @property(readonly, nonatomic) NSArray *companionSerialNumbers;
-- (id)_initWithDatabase:(id)arg1;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMCameraClipDownloadAssetDataTaskHandling-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMCameraClipDownloadAssetDataTaskHandler : NSObject <HMCameraClipDownloadAssetDataTaskHandling>
+@interface HMCameraClipDownloadAssetDataTaskHandler : NSObject
 {
 }
 

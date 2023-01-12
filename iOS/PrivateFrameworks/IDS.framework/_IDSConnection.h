@@ -6,14 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSAccountDelegate-Protocol.h>
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-#import <IDS/IDSDirectMessageConnectionDelegate-Protocol.h>
-#import <IDS/IDSSendXPCProtocol-Protocol.h>
-
 @class IDSAccount, IDSDirectMessageConnection, IMOrderedMutableDictionary, NSDictionary, NSMapTable, NSSet, NSString;
 
-@interface _IDSConnection : NSObject <IDSDaemonListenerProtocol, IDSAccountDelegate, IDSDirectMessageConnectionDelegate, IDSSendXPCProtocol>
+@interface _IDSConnection : NSObject
 {
     id _messageContext;
     id _delegateContext;
@@ -41,7 +36,7 @@
 - (void)updateDeviceIdentity:(id)arg1 error:(id)arg2;
 - (void)groupShareReceived:(id)arg1 withGUID:(id)arg2 forTopic:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (void)receivedGroupSessionParticipantDataUpdate:(id)arg1 forTopic:(id)arg2 toIdentifier:(id)arg3 fromID:(id)arg4;
-- (void)receivedGroupSessionParticipantUpdate:(id)arg1 forTopic:(id)arg2 toIdentifier:(id)arg3 fromID:(id)arg4;
+- (void)receivedGroupSessionParticipantUpdate:(id)arg1 forTopic:(id)arg2 toIdentifier:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)sessionInvitationReceivedWithPayload:(id)arg1 forTopic:(id)arg2 sessionID:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 transportType:(id)arg6;
 - (void)pendingIncomingMessageWithGUID:(id)arg1 forTopic:(id)arg2 toIdentifier:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)didFlushCacheForService:(id)arg1 remoteURI:(id)arg2 fromURI:(id)arg3 guid:(id)arg4;

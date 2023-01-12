@@ -57,11 +57,13 @@ __attribute__((visibility("hidden")))
     MTKTextureLoader *_mtkTextureLoader;
 }
 
++ (void)_fillVertexDescriptor:(id)arg1 withMeshSource:(struct __C3DMeshSource *)arg2 semantic:(BOOL)arg3 inputSet:(long long)arg4 bufferIndex:(long long)arg5;
 + (void)unregisterManagerForDevice:(id)arg1;
 + (id)resourceManagerForDevice:(id)arg1;
 @property(readonly, nonatomic) id <MTLCommandQueue> commandQueue; // @synthesize commandQueue=_commandQueue;
 @property(readonly, nonatomic) id <MTLDevice> device; // @synthesize device=_device;
 @property(retain, nonatomic) SCNMTLLibraryManager *libraryManager; // @synthesize libraryManager=_libraryManager;
+- (void)commandBufferDidCompleteWithError:(id)arg1;
 - (id)depthAndStencilStateWithReadWriteDepthDisabled;
 - (struct __C3DEngineStats *)stats;
 - (void)flush;
@@ -71,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)renderResourceForMaterial:(struct __C3DMaterial *)arg1 geometry:(struct __C3DGeometry *)arg2 renderPipeline:(id)arg3 engineContext:(struct __C3DEngineContext *)arg4;
 - (id)newIndexBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
+- (id)newPrivateBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2 blitEncoder:(id)arg3;
 - (id)newBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)newConstantBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)wireframeResourceForRendererElement:(struct __C3DRendererElement *)arg1 engineContext:(struct __C3DEngineContext *)arg2 passInstance:(struct __C3DFXPassInstance *)arg3 hashPass:(unsigned long long)arg4;
@@ -92,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)_programWillDie:(id)arg1;
 - (void)_removeMatchingProgram:(struct __C3DFXMetalProgram *)arg1 pass:(struct __C3DFXPass *)arg2;
 - (void)_rasterizerStateDidDie:(const void *)arg1;
+- (void)_precomputedLightingEnvironmentWillDie:(id)arg1;
 - (void)_imageProxyWillDie:(id)arg1;
 - (void)_imageWillDie:(id)arg1;
 - (void)_skinWillDie:(id)arg1;
@@ -106,15 +110,16 @@ __attribute__((visibility("hidden")))
 - (id)defaultTexture3D;
 - (id)defaultCubeTexture;
 - (id)defaultTexture;
-- (id)renderResourceForImage:(struct __C3DImage *)arg1 sampler:(struct __C3DTextureSampler *)arg2 options:(int)arg3 engineContext:(struct __C3DEngineContext *)arg4;
-- (id)renderResourceForImageProxy:(struct __C3DImageProxy *)arg1 sampler:(struct __C3DTextureSampler *)arg2 engineContext:(struct __C3DEngineContext *)arg3;
-- (id)renderResourcesForEffectSlot:(struct __C3DEffectSlot *)arg1 withEngineContext:(struct __C3DEngineContext *)arg2;
+- (id)renderResourceForImage:(struct __C3DImage *)arg1 sampler:(struct __C3DTextureSampler *)arg2 options:(int)arg3 engineContext:(struct __C3DEngineContext *)arg4 didFallbackToDefaultTexture:(_Bool *)arg5;
+- (id)renderResourceForImageProxy:(struct __C3DImageProxy *)arg1 sampler:(struct __C3DTextureSampler *)arg2 engineContext:(struct __C3DEngineContext *)arg3 didFallbackToDefaultTexture:(_Bool *)arg4;
+- (id)renderResourceForEffectSlot:(struct __C3DEffectSlot *)arg1 withEngineContext:(struct __C3DEngineContext *)arg2 didFallbackToDefaultTexture:(_Bool *)arg3;
 - (id)unstageTexture:(id)arg1 commandBuffer:(id)arg2;
 - (id)latlongTextureForCubemap:(id)arg1 pixelFormat:(unsigned long long)arg2 renderContext:(id)arg3 needsMipmap:(_Bool)arg4;
 - (id)newCubemapTextureForLatlongTexture:(id)arg1 pixelFormat:(unsigned long long)arg2 engineContext:(struct __C3DEngineContext *)arg3 needsMipmap:(_Bool)arg4;
 - (_Bool)_copyImage:(struct __C3DImage *)arg1 toTexture:(id)arg2 desc:(id)arg3 textureOptions:(int)arg4 needsMipMapGeneration:(_Bool)arg5;
 - (id)_textureDescriptorFromImage:(struct __C3DImage *)arg1 needsMipMap:(_Bool)arg2 textureOptions:(int)arg3;
 - (void)_enqueueCopyFromTexture:(id)arg1 toTexture:(id)arg2 blitEncoder:(struct SCNMTLBlitCommandEncoder *)arg3 generateMipMaps:(_Bool)arg4;
+- (id)newTextureUsingMTKTextureLoaderWithData:(id)arg1 options:(id)arg2;
 - (id)newTextureUsingMTKTextureLoaderWithURL:(id)arg1 options:(id)arg2;
 - (id)newTextureWithDescriptor:(id)arg1;
 - (id)copyTextureByConvertingToCubeMapIfApplicable:(id)arg1 engineContext:(struct __C3DEngineContext *)arg2 needsMipmap:(_Bool)arg3;
@@ -126,6 +131,8 @@ __attribute__((visibility("hidden")))
 - (void)_bakeSphericalHamonicsBasedIrradianceTexture:(id)arg1 forEnvironmentTexture:(id)arg2 renderContext:(id)arg3 applySH:(CDUnknownBlockType)arg4;
 - (void)_bakeStochasticIrradianceTexture:(id)arg1 forEnvironmentTexture:(id)arg2 mipmapLevelForSampling:(unsigned long long)arg3 useTextureView:(_Bool)arg4 renderContext:(id)arg5;
 - (id)irradianceTextureForEnvironmentTexture:(id)arg1 renderContext:(id)arg2 applySH:(CDUnknownBlockType)arg3;
+- (id)radianceTextureForPrecomputedLightingEnvironment:(id)arg1;
+- (id)irradianceTextureForPrecomputedLightingEnvironment:(id)arg1;
 - (id)defaultLightingEnvironmentRadianceTexture;
 - (id)defaultLightingEnvironmentIrradianceTexture;
 - (id)sphericalHarmonicsForEnvironmentTexture:(id)arg1 order:(unsigned long long)arg2 commandBuffer:(id)arg3;
@@ -143,10 +150,10 @@ __attribute__((visibility("hidden")))
 - (id)newComputePipelineStateForDesc:(CDStruct_4cea7480)arg1 library:(id)arg2;
 - (void)_configureComputePipeline:(id)arg1 withDescriptor:(id)arg2;
 - (id)_newComputeDescriptorForPipelineDesc:(CDStruct_4cea7480)arg1 library:(id)arg2;
-- (id)newRenderPipelineStateWithDesc:(CDStruct_8dd16330)arg1;
-- (void)_createPipelineStateWithDescriptor:(id)arg1 desc:(CDStruct_8dd16330)arg2 pipeline:(id)arg3;
+- (id)newRenderPipelineStateWithDesc:(CDStruct_a2a27fda)arg1;
+- (void)_createPipelineStateWithDescriptor:(id)arg1 desc:(CDStruct_a2a27fda)arg2 pipeline:(id)arg3;
 - (struct __C3DFXMetalProgram *)defaultProgramUsingTessellation:(_Bool)arg1;
-- (id)renderResourceForProgramDesc:(CDStruct_db84f6ff)arg1 renderPassDescriptor:(id)arg2;
+- (id)renderResourceForProgramDesc:(CDStruct_8a516eb8)arg1 renderPassDescriptor:(id)arg2;
 
 @end
 

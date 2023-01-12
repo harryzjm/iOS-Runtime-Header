@@ -6,12 +6,10 @@
 
 #import <UIKit/UIResponder.h>
 
-#import <SafariServices/_SFBarRegistrationToken-Protocol.h>
-
-@class NSMutableSet, NSOrderedSet, NSString, SFDownloadsBarButtonItem, UIBarButtonItem, UIToolbar, _SFBarManager;
+@class NSMutableSet, NSOrderedSet, NSString, SFDownloadsBarButtonItem, UIBarButtonItem, UIButton, UIToolbar, _SFBarManager, _SWCollaborationButtonView;
 
 __attribute__((visibility("hidden")))
-@interface SFBarRegistration : UIResponder <_SFBarRegistrationToken>
+@interface SFBarRegistration : UIResponder
 {
     NSOrderedSet *_arrangedBarItems;
     UIToolbar *_bar;
@@ -41,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_arrangedBarItemsNeedUpdate;
 - (void)pulseBarItem:(long long)arg1;
 - (void)setProgress:(double)arg1 forBarItem:(long long)arg2;
-- (void)setMenuProvider:(CDUnknownBlockType)arg1 forBarItem:(long long)arg2;
+- (void)setBarItem:(long long)arg1 menu:(id)arg2;
 - (void)setBarItem:(long long)arg1 selected:(_Bool)arg2;
 - (void)updateBarAnimated:(_Bool)arg1;
 - (id)popoverSourceInfoForItem:(long long)arg1;
@@ -50,18 +48,22 @@ __attribute__((visibility("hidden")))
 - (void)updateArrangedUIBarButtonItemsIfNeeded;
 - (void)setBarItem:(long long)arg1 hidden:(_Bool)arg2;
 - (void)setBarItem:(long long)arg1 enabled:(_Bool)arg2;
+- (void)setImage:(id)arg1 forBarItem:(long long)arg2;
 - (void)pulseDownloadsItem;
 - (void)setDownloadsItemProgress:(double)arg1;
 - (void)setCustomActivityImage:(id)arg1 accessibilityLabel:(id)arg2;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)_newBarButtonItemForSFBarItem:(long long)arg1;
-- (id)initWithBar:(id)arg1 barManager:(id)arg2 layout:(long long)arg3 persona:(unsigned long long)arg4;
+- (void)_updateTitlesAndMenus;
+- (id)initWithBar:(id)arg1 barManager:(id)arg2 layout:(long long)arg3 persona:(long long)arg4;
 
 // Remaining properties
+@property(retain, nonatomic) _SWCollaborationButtonView *collaborationButton;
 @property(nonatomic) long long contentMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) UIButton *microphoneButton;
 @property(nonatomic) unsigned long long pageFormatItemState;
 @property(nonatomic) long long state;
 @property(readonly) Class superclass;

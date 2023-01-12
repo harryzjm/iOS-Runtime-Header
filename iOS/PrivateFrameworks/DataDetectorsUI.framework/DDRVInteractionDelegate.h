@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DataDetectorsUI/DDDetectionControllerInteractionDelegate-Protocol.h>
-
 @class NSString, RVItem;
 
 __attribute__((visibility("hidden")))
-@interface DDRVInteractionDelegate : NSObject <DDDetectionControllerInteractionDelegate>
+@interface DDRVInteractionDelegate : NSObject
 {
     RVItem *_item;
 }

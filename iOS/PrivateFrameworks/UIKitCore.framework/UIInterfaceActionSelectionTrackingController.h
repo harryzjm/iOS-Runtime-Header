@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIFocusedInterfaceActionPressDelegate-Protocol.h>
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSArray, NSMutableSet, NSPointerArray, NSString, UIGestureRecognizer, UIHoverGestureRecognizer, UILongPressGestureRecognizer, UIScrollView, UISelectionFeedbackGenerator, UIView, _UIInterfaceActionSelectByPressGestureRecognizer, _UIInterfaceActionSelectionDelayGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface UIInterfaceActionSelectionTrackingController : NSObject <UIGestureRecognizerDelegate, UIFocusedInterfaceActionPressDelegate>
+@interface UIInterfaceActionSelectionTrackingController : NSObject
 {
     _Bool _scrubbingEnabled;
     _Bool _selectByPressGestureEnabled;

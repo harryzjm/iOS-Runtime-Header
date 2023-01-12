@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNUIUserActionContext-Protocol.h>
-
 @class BSServiceConnectionEndpoint, NSString;
 @protocol CNUIUserActionCurator, CNUIUserActionDialRequestOpener, CNUIUserActionRecorder, CNUIUserActionURLOpener, CNUIUserActionUserActivityOpener;
 
 __attribute__((visibility("hidden")))
-@interface TestCNUIUserActionContext : NSObject <CNUIUserActionContext>
+@interface TestCNUIUserActionContext : NSObject
 {
     _Bool _actionExecutionWasAttemted;
     NSString *_channelIdentifier;
@@ -33,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) _Bool isOriginatingFromFavorites;
 @property(readonly) Class superclass;
 
 @end

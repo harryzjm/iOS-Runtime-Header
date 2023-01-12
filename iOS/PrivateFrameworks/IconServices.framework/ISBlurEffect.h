@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IconServices/ISEffect-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ISBlurEffect : NSObject <ISEffect>
+@interface ISBlurEffect : NSObject
 {
     double _radius;
 }

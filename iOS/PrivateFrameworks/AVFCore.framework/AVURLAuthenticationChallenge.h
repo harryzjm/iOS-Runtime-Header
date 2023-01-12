@@ -6,12 +6,10 @@
 
 #import <CFNetwork/NSURLAuthenticationChallenge.h>
 
-#import <AVFCore/AVAssetResourceLoaderRequest-Protocol.h>
-
 @class AVWeakReference, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVURLAuthenticationChallenge : NSURLAuthenticationChallenge <AVAssetResourceLoaderRequest>
+@interface AVURLAuthenticationChallenge : NSURLAuthenticationChallenge
 {
     AVWeakReference *_weakReference;
     unsigned long long _requestID;

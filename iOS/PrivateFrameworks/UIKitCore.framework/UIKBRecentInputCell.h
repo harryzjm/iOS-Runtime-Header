@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionViewCell.h"
+
 @class UILabel;
 
 __attribute__((visibility("hidden")))
-@interface UIKBRecentInputCell
+@interface UIKBRecentInputCell : UICollectionViewCell
 {
     UILabel *_label;
 }
 
 + (id)titleAttributesForRenderConfig:(id)arg1;
 + (id)textColorForRenderConfig:(id)arg1 isSelected:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
 - (void)setInputText:(id)arg1;
 - (void)layoutSubviews;
 - (void)setSelected:(_Bool)arg1;
 - (_Bool)isFocused;
 - (_Bool)_canFocusProgrammatically;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

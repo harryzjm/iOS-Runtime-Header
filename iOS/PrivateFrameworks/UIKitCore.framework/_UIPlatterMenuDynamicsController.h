@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIPlatterMenuPanningTransformerDelegate-Protocol.h>
-
 @class NSString, UIAttachmentBehavior, UICollisionBehavior, UIDynamicAnimator, UIDynamicItemBehavior, UIView, _UIDynamicItemObservingBehavior, _UIPlatterMenuPanningTransformer, _UIPlatterMenuSnapBehavior, _UIStatesFeedbackGenerator;
 @protocol UIDynamicItem, _UIPlatterMenuDynamicsControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIPlatterMenuDynamicsController : NSObject <_UIPlatterMenuPanningTransformerDelegate>
+@interface _UIPlatterMenuDynamicsController : NSObject
 {
     _Bool _leadingSwipeActionViewSelected;
     _Bool _trailingSwipeActionViewSelected;

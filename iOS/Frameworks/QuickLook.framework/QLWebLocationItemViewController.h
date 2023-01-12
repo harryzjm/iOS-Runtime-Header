@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <QuickLookUICore/QLItemViewController.h>
+
 @class NSLayoutConstraint, WKWebView;
 
 __attribute__((visibility("hidden")))
-@interface QLWebLocationItemViewController
+@interface QLWebLocationItemViewController : QLItemViewController
 {
     WKWebView *_webView;
     CDUnknownBlockType _loadingHandler;

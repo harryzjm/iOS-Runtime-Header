@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPDataStorage-Protocol.h>
-
 @class NSString, TSUColor;
 @protocol TSPCryptoInfo;
 
-@interface TSPStreamDataStorage : NSObject <TSPDataStorage>
+@interface TSPStreamDataStorage : NSObject
 {
 }
 
 - (_Bool)isInPackage:(id)arg1;
 @property(readonly, nonatomic) _Bool readOnly;
 @property(readonly, nonatomic) unsigned long long reservedLength;
+@property(readonly, nonatomic) unsigned long long materializedLength;
 @property(readonly, nonatomic) unsigned long long encodedLength;
 @property(readonly, nonatomic) unsigned long long length;
 - (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(void *)arg3 preferredFilename:(id)arg4 shouldRemoveData:(_Bool)arg5 error:(id *)arg6;

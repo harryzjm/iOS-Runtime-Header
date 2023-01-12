@@ -6,12 +6,11 @@
 
 #import <HealthDaemon/HDStandardTaskServer.h>
 
-#import <HealthMenstrualCyclesDaemon/HDMenstrualCyclesDiagnosticsServerInterface-Protocol.h>
-
 @class HDHealthStoreClient, HDMCProfileExtension, HDProfile, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDMCDiagnosticsServer : HDStandardTaskServer <HDMenstrualCyclesDiagnosticsServerInterface>
+__attribute__((visibility("hidden")))
+@interface HDMCDiagnosticsServer : HDStandardTaskServer
 {
     HDProfile *_profile;
     HDMCProfileExtension *_profileExtension;

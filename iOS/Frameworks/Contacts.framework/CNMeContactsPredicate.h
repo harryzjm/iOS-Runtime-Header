@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNPredicate.h"
+
 __attribute__((visibility("hidden")))
-@interface CNMeContactsPredicate
+@interface CNMeContactsPredicate : CNPredicate
 {
 }
 
@@ -13,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)contactsFromDonationStore:(id)arg1;
 

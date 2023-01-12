@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
 @class IBICSlot, NSString;
 
-@interface IBICSlottedAssetRepIdentifier : NSObject <NSCopying>
+@interface IBICSlottedAssetRepIdentifier : NSObject
 {
     IBICSlot *_slot;
     NSString *_fileName;

@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *bookmarkButtonBottomConstraint;
     MISSING_TYPE *thumbnailWidthConstraint;
     MISSING_TYPE *thumbnailHeightConstraint;
-    MISSING_TYPE *lastBounds;
     MISSING_TYPE *onBookmarkTapped;
 }
 

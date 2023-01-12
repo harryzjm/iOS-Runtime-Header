@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITextInteraction.h"
+
 __attribute__((visibility("hidden")))
-@interface UITextItemInteractionInteraction
+@interface UITextItemInteractionInteraction : UITextInteraction
 {
 }
 
 + (_Bool)mightResponder:(id)arg1 haveInteractableTextItemAtPoint:(struct CGPoint)arg2 precision:(unsigned long long)arg3;
 + (_Bool)mightResponderHaveTextItemInteractions:(id)arg1;
-- (id)_contextMenuInteraction;
 - (_Bool)_allowItemInteractions;
 
 @end

@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
 {
     _Bool _canStopScreenTimeWithoutPasscode;
     _Bool _isCloudSyncEnabled;
+    _Bool _isCommunicationSafetyReceivingRestricted;
+    _Bool _isCommunicationSafetySendingRestricted;
+    _Bool _isCommunicationSafetyNotificationEnabled;
+    _Bool _isCommunicationSafetyAnalyticsEnabled;
     NSSet *_installedBundleIDs;
     NSDictionary *_installedBundleIDsByCategoryIdentifier;
     STUIUser *_me;
@@ -37,6 +41,10 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingScreenTimeEnabled;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *devices; // @synthesize devices=_devices;
+@property(readonly, nonatomic) _Bool isCommunicationSafetyAnalyticsEnabled; // @synthesize isCommunicationSafetyAnalyticsEnabled=_isCommunicationSafetyAnalyticsEnabled;
+@property(readonly, nonatomic) _Bool isCommunicationSafetyNotificationEnabled; // @synthesize isCommunicationSafetyNotificationEnabled=_isCommunicationSafetyNotificationEnabled;
+@property(readonly, nonatomic) _Bool isCommunicationSafetySendingRestricted; // @synthesize isCommunicationSafetySendingRestricted=_isCommunicationSafetySendingRestricted;
+@property(readonly, nonatomic) _Bool isCommunicationSafetyReceivingRestricted; // @synthesize isCommunicationSafetyReceivingRestricted=_isCommunicationSafetyReceivingRestricted;
 @property(copy, nonatomic) NSArray *children; // @synthesize children=_children;
 @property(copy, nonatomic) STUIUser *me; // @synthesize me=_me;
 @property(copy, nonatomic) NSDictionary *installedBundleIDsByCategoryIdentifier; // @synthesize installedBundleIDsByCategoryIdentifier=_installedBundleIDsByCategoryIdentifier;

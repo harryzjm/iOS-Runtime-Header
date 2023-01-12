@@ -6,7 +6,7 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAudioPlaylist, FCIssueReadingHistory, FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
+@class FCAudioPlaylist, FCIssueReadingHistory, FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCShortcutList, FCSubscriptionList, FCTagSettings, FCUserEventHistory, FCUserInfo, NSString;
 @protocol FCPrivateDataContextInternal, FCPushNotificationHandling;
 
 @protocol FCPrivateDataContext <NSObject>
@@ -18,7 +18,9 @@
 @property(readonly, nonatomic) FCTagSettings *tagSettings;
 @property(readonly, nonatomic) FCUserInfo *userInfo;
 @property(readonly, nonatomic) FCSubscriptionList *subscriptionList;
+@property(readonly, nonatomic) FCUserEventHistory *userEventHistory;
 @property(readonly, nonatomic) FCAudioPlaylist *audioPlaylist;
+@property(readonly, nonatomic) FCShortcutList *shortcutList;
 @property(readonly, nonatomic) FCReadingList *readingList;
 @property(readonly, nonatomic) FCReadingHistory *readingHistory;
 @property(readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController;

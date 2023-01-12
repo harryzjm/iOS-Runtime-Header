@@ -6,7 +6,7 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class CTXPCServiceSubscriptionContext, Logger, PSConfirmationSpecifier, PSListController, PSUICoreTelephonyCallCache, PSUICoreTelephonyCapabilitiesCache, PSUICoreTelephonyCarrierBundleCache;
+@class CTXPCServiceSubscriptionContext, PSConfirmationSpecifier, PSListController, PSSimStatusCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyCapabilitiesCache, PSUICoreTelephonyCarrierBundleCache;
 
 __attribute__((visibility("hidden")))
 @interface PSUIVoLTESwitchSpecifier : PSSpecifier
@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
     PSUICoreTelephonyCallCache *_callCache;
     PSUICoreTelephonyCapabilitiesCache *_capabilitiesCache;
     PSUICoreTelephonyCarrierBundleCache *_carrierBundleCache;
+    PSSimStatusCache *_simStatusCache;
     PSSpecifier *_parentSpecifier;
-    Logger *_logger;
 }
 
 - (void).cxx_destruct;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)getVoLTEEnabled;
 - (_Bool)shouldEnableVoLTESwitchCell;
 - (id)initWithHostController:(id)arg1 parentSpecifier:(id)arg2;
-- (id)initWithHostController:(id)arg1 parentSpecifier:(id)arg2 callCache:(id)arg3 capabilitiesCache:(id)arg4 carrierBundleCache:(id)arg5;
+- (id)initWithHostController:(id)arg1 parentSpecifier:(id)arg2 callCache:(id)arg3 capabilitiesCache:(id)arg4 carrierBundleCache:(id)arg5 simStatusCache:(id)arg6;
 
 @end
 

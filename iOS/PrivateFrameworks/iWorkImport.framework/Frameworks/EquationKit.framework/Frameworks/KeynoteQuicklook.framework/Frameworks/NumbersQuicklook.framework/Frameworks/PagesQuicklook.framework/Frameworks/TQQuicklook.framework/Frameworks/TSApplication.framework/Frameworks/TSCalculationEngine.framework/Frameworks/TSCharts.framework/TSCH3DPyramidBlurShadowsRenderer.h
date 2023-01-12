@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DShadowsRenderer-Protocol.h>
-
 @class NSArray, TSCH3DPyramidBlurFBOResource;
 
-@interface TSCH3DPyramidBlurShadowsRenderer : NSObject <TSCH3DShadowsRenderer>
+@interface TSCH3DPyramidBlurShadowsRenderer : NSObject
 {
     NSArray *_pyramidResources;
     TSCH3DPyramidBlurFBOResource *_finalShadowResource;

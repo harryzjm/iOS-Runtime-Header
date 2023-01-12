@@ -6,24 +6,33 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSPredicate;
+@class CADPredicate, ClientConnection, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _CADFetchCalendarItemsWithPredicateOperation : NSOperation
 {
-    NSPredicate *_predicate;
+    CADPredicate *_predicate;
     int _entityType;
-    struct CalDatabase *_database;
+    ClientConnection *_connection;
     int _fetchIdentifier;
     CDUnknownBlockType _completion;
 }
 
++ (_Bool)isJunkEvent:(void *)arg1;
++ (void)queryDatabase:(struct CalDatabase *)arg1 withID:(int)arg2 predicate:(id)arg3 connection:(id)arg4 serializer:(id)arg5 cancellationToken:(id)arg6;
++ (id)performSynchronouslyWithPredicate:(id)arg1 entityType:(int)arg2 connection:(id)arg3 fetchIdentifier:(int)arg4 cancellationToken:(id)arg5;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int fetchIdentifier; // @synthesize fetchIdentifier=_fetchIdentifier;
 - (void)cancel;
 - (void)main;
-- (void)dealloc;
-- (id)initWithPredicate:(id)arg1 entityType:(int)arg2 database:(struct CalDatabase *)arg3 fetchIdentifier:(int)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)initWithPredicate:(id)arg1 entityType:(int)arg2 connection:(id)arg3 fetchIdentifier:(int)arg4 completionHandler:(CDUnknownBlockType)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isCancelled;
+@property(readonly) Class superclass;
 
 @end
 

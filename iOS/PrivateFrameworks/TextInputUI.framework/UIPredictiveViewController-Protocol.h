@@ -10,9 +10,14 @@
 @protocol UIKeyInput;
 
 @protocol UIPredictiveViewController <NSObject>
-@property(readonly, nonatomic) NSArray *displayedCandidates;
-- (_Bool)hidesExpandableButton;
 - (double)preferredHeightForTraitCollection:(UITraitCollection *)arg1;
 - (_Bool)isVisibleForInputDelegate:(id <UIKeyInput>)arg1 inputViews:(UIInputViewSet *)arg2;
+
+@optional
+@property(readonly, nonatomic) NSArray *displayedCandidates;
+- (void)setAssistantBarStyle:(long long)arg1;
+- (_Bool)allowsCompactAssistantBar;
+- (_Bool)hidesExpandableButton;
+- (double)preferredWidthForTraitCollection:(UITraitCollection *)arg1;
 @end
 

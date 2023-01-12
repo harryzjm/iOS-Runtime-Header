@@ -6,25 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class CRContext;
-
 __attribute__((visibility("hidden")))
 @interface CRTTMergeableStringIndex : NSObject
 {
-    CRContext *_context;
+    long long _renameGeneration;
+    long long _maxCounter;
     unsigned long long _affinity;
     struct TopoID _index;
 }
 
 - (id).cxx_construct;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) struct TopoID index; // @synthesize index=_index;
 @property(readonly, nonatomic) unsigned long long affinity; // @synthesize affinity=_affinity;
-@property(readonly, nonatomic) CRContext *context; // @synthesize context=_context;
+@property(readonly, nonatomic) long long maxCounter; // @synthesize maxCounter=_maxCounter;
+@property(nonatomic) long long renameGeneration; // @synthesize renameGeneration=_renameGeneration;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)_objCRenameSequence;
+- (id)timestamp;
+- (id)renamed:(id)arg1;
+- (id)finalizedInContext:(id)arg1;
+- (_Bool)needToFinalizeTimestamps;
 - (void)dealloc;
-- (id)initWithContext:(id)arg1 topoID:(struct TopoID)arg2 affinity:(unsigned long long)arg3;
+- (id)initWithTimestamp:(id)arg1 affinity:(unsigned long long)arg2 renameGeneration:(long long)arg3;
+- (id)initWithTopoID:(struct TopoID)arg1 affinity:(unsigned long long)arg2 renameGeneration:(long long)arg3 maxCounter:(long long)arg4;
 
 @end
 

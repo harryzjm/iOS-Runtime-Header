@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSPointerArray.h"
+
 __attribute__((visibility("hidden")))
-@interface NSConcretePointerArray
+@interface NSConcretePointerArray : NSPointerArray
 {
     struct NSSlice slice;
     unsigned long long count;
@@ -13,6 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned long long options;
     unsigned long long mutations;
     _Bool needsCompaction;
+    _Bool hasDynamicSlice;
 }
 
 + (_Bool)supportsSecureCoding;

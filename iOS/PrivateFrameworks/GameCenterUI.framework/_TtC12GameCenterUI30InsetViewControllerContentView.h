@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
+- (unsigned long long)_edgesPropagatingSafeAreaInsetsToSubviews;
 @property(nonatomic) unsigned long long edgesInsettingLayoutMarginsFromSafeArea;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

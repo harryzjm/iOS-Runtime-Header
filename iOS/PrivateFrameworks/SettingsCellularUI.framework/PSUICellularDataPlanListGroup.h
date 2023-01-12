@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
-
 @class NSString, PSListController, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface PSUICellularDataPlanListGroup : NSObject <PSSpecifierGroup>
+@interface PSUICellularDataPlanListGroup : NSObject
 {
     PSSpecifier *_groupSpecifier;
     PSListController *_listController;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
 @property(nonatomic) __weak PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
+- (id)getLogger;
 - (void)selectPlanWithSpecifier:(id)arg1;
 - (void)addNewPlanPressed:(id)arg1;
 - (void)listController:(id)arg1 didSelectSpecifier:(id)arg2;

@@ -6,13 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <StoreKit/SKUIClientReviewViewController-Protocol.h>
-
 @class NSString, SKStoreReviewViewController;
 @protocol SKRemoteReviewViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKRemoteReviewViewController : _UIRemoteViewController <SKUIClientReviewViewController>
+@interface SKRemoteReviewViewController : _UIRemoteViewController
 {
     id <SKRemoteReviewViewControllerDelegate> _delegate;
     SKStoreReviewViewController *_reviewViewController;

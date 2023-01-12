@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNContactAction.h"
+
 @class CNPropertyGroupItem, NSArray;
 @protocol CNPropertyActionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyAction
+@interface CNPropertyAction : CNContactAction
 {
     NSArray *_propertyItems;
 }

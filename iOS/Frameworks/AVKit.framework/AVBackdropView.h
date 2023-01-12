@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (void)applyCompletedTrackTintToView:(id)arg1;
 + (void)applyBaseTrackTintToView:(id)arg1;
 + (void)configureSlider:(id)arg1 thumbView:(id)arg2 loadedTrackView:(id)arg3;
++ (void)configureSlider:(id)arg1 thumbView:(id)arg2 loadedTrackView:(id)arg3 withTimelineMarkers:(id)arg4;
 + (void)applyGlyphTintColor:(id)arg1 toView:(id)arg2;
 + (void)applySecondaryGlyphTintToView:(id)arg1;
 + (void)applyPrimaryGlyphTintToView:(id)arg1;

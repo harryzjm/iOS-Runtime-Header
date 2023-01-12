@@ -9,6 +9,8 @@
 @class CPSClipLaunchOptions, CPSSessionConfiguration, CPSValidationRequest, NSArray, NSString, NSURL;
 
 @protocol CPSDaemonProtocol <CPSDaemonProtocolNonEntitled>
+- (void)fetchAMPMetadataForDiagnosticsWithBundleID:(NSString *)arg1 reply:(void (^)(CPSClipMetadata *, NSError *))arg2;
+- (void)fetchABRMetadataForDiagnosticsWithURL:(NSURL *)arg1 reply:(void (^)(CPSClipMetadata *, NSError *))arg2;
 - (void)performValidationWithRequest:(CPSValidationRequest *)arg1 reply:(void (^)(CPSValidationResult *))arg2;
 - (void)checkAndConsumeShowsAppAttributionBannerForBundleID:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)getLastLaunchOptionsWithBundleID:(NSString *)arg1 reply:(void (^)(CPSClipLaunchOptions *))arg2;

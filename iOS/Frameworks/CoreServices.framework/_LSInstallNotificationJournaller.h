@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LSInstallNotificationJournaller : NSObject <NSSecureCoding>
+@interface _LSInstallNotificationJournaller : NSObject
 {
     _Bool _preliminary;
     NSString *_primaryBundleID;

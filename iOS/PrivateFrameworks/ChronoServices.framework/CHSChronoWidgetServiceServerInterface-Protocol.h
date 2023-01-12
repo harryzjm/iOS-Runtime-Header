@@ -6,22 +6,21 @@
 
 #import <ChronoServices/NSObject-Protocol.h>
 
-@class CHSTimelineReloadRequest, CHSURLSessionToken, CHSWidget, CHSWidgetConfiguration, CHSWidgetMetrics, NSArray, NSData, NSDictionary, NSString;
+@class CHSArrayBox, CHSTimelineReloadRequest, CHSURLSessionToken, CHSWidget, CHSWidgetConfiguration, CHSWidgetMetrics, NSData, NSDictionary, NSString;
 
 @protocol CHSChronoWidgetServiceServerInterface <NSObject>
 - (NSData *)widgetEnvironmentDataForBundleIdentifier:(NSString *)arg1;
 - (CHSURLSessionToken *)_URLSessionDidCompleteForExtensionWithBundleIdentifier:(NSString *)arg1 info:(NSDictionary *)arg2;
-- (void)reloadTimelineForAvocadoWithIdentifier:(NSString *)arg1 inBundleWithIdentifier:(NSString *)arg2 error:(id *)arg3;
-- (oneway void)applicationWithBundleIdentifierEnteredForeground:(NSString *)arg1;
 - (oneway void)flushPowerlog;
 
 @optional
-- (void)descriptors:(void (^)(CHSAvocadoDescriptorsBox *, NSError *))arg1;
-- (oneway void)suggestionBudgetsForStackIdentifiers:(NSArray *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)descriptors:(void (^)(CHSWidgetDescriptorsBox *, NSError *))arg1;
+- (oneway void)suggestionBudgetsForStackIdentifiers:(CHSArrayBox *)arg1 completion:(void (^)(CHSDictionaryBox *, NSError *))arg2;
 - (oneway void)loadSuggestedWidget:(CHSWidget *)arg1 metrics:(CHSWidgetMetrics *)arg2 stackIdentifier:(NSString *)arg3 reason:(NSString *)arg4 completion:(void (^)(BSAction *, NSArray<__ATXInfoTimelineEntry__> *, NSError *))arg5;
 - (oneway void)allWidgetConfigurationsByHostWithCompletion:(void (^)(CHSWidgetConfigurationHostsBox *, NSError *))arg1;
 - (void)reloadTimeline:(CHSTimelineReloadRequest *)arg1 error:(id *)arg2;
 - (oneway void)setWidgetConfiguration:(CHSWidgetConfiguration *)arg1 forWidgetHostWithIdentifier:(NSString *)arg2;
 - (oneway void)removeWidgetHostWithIdentifier:(NSString *)arg1;
+- (oneway void)cacheDescriptorsForContainerBundleIdentifier:(NSString *)arg1 completion:(void (^)(CHSWidgetDescriptorsBox *, NSError *))arg2;
 @end
 

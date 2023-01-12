@@ -6,12 +6,10 @@
 
 #import <QuartzCore/CAMetalLayer.h>
 
-#import <VectorKit/GGLLayer-Protocol.h>
-
 @protocol GGLLayerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MetalLayer : CAMetalLayer <GGLLayer>
+@interface MetalLayer : CAMetalLayer
 {
     id <GGLLayerDelegate> _delegate;
     shared_ptr_94286ce0 _device;
@@ -25,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool sRGB; // @synthesize sRGB=_sRGB;
 @property(readonly, nonatomic) struct CGSize backingSize; // @synthesize backingSize=_backingSize;
-@property id <GGLLayerDelegate> renderDelegate; // @synthesize renderDelegate=_delegate;
+@property __weak id <GGLLayerDelegate> renderDelegate; // @synthesize renderDelegate=_delegate;
 - (void)display;
 - (void)didEnterBackground;
 - (void)onTimerFired:(double)arg1 presentAtTime:(double)arg2;

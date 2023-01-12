@@ -7,6 +7,7 @@
 #import <Foundation/NSOperationQueue.h>
 
 @interface NSOperationQueue (CloudKit)
+- (id)iterativelyCancelDependentOperations:(id)arg1;
 - (_Bool)containsOperationToSaveRecordID:(id)arg1;
 - (id)existingOperationToSaveRecordID:(id)arg1;
 - (_Bool)containsOperationToFetchRecordID:(id)arg1;

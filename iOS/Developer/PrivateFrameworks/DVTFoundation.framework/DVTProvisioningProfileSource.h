@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTDispatchLock, DVTLogAspect, DVTStackBacktrace, NSArray, NSDictionary, NSMutableDictionary, NSString;
 @protocol DVTProvisioningProfileSourceDelegate, OS_dispatch_queue;
 
-@interface DVTProvisioningProfileSource : NSObject <DVTInvalidation>
+@interface DVTProvisioningProfileSource : NSObject
 {
     NSDictionary *_searchPathToProfilePathCache;
     NSMutableDictionary *_filePathToProfileCache;
@@ -40,6 +38,7 @@
 - (void)uninstallProfiles:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)installProfiles:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)profileWithData:(id)arg1 platform:(id)arg2 error:(id *)arg3;
+- (id)profileWithData:(id)arg1 provider:(id)arg2 error:(id *)arg3;
 - (id)profileWithURL:(id)arg1 error:(id *)arg2;
 - (void)_stopObservingFSEvents;
 - (void)_startObservingFSEvents;

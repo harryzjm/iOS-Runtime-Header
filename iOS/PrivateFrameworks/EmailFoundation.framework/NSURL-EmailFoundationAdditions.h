@@ -19,6 +19,8 @@
 - (id)ef_urlByAddingPrefixToScheme:(id)arg1;
 - (id)ef_urlByReplacingSchemeWithScheme:(id)arg1;
 - (id)ef_hostNilForEmpty;
+@property(readonly, nonatomic) NSURL *ef_urlByAddingSchemeIfNeeded;
+@property(readonly, nonatomic) _Bool ef_isEligibleForRichLink;
 - (_Bool)ef_isHTTPOrHTTPSURL;
 - (_Bool)ef_hasHost:(id)arg1;
 - (_Bool)ef_hasScheme:(id)arg1;

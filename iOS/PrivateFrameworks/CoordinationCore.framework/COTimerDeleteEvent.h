@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/NSSecureCoding-Protocol.h>
-
 @class NSDate, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface COTimerDeleteEvent : NSObject <NSSecureCoding>
+@interface COTimerDeleteEvent : NSObject
 {
     NSUUID *_identifier;
     NSDate *_date;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SeymourUI/IAMApplicationContextProvider-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9SeymourUI33EngagementPresentationCoordinator : NSObject <IAMApplicationContextProvider>
+@interface _TtC9SeymourUI33EngagementPresentationCoordinator : NSObject
 {
     MISSING_TYPE *engagementClient;
     MISSING_TYPE *eventHub;

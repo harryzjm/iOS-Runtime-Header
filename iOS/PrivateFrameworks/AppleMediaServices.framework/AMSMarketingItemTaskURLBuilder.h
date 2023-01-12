@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSMarketingItemTaskURLBuilder : NSObject <AMSBagConsumer>
+@interface AMSMarketingItemTaskURLBuilder : NSObject
 {
 }
 
++ (id)bagKeySet;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
-+ (id)bagKeySet;
 - (id)_formattedURLPathWithBag:(id)arg1;
 - (id)_urlPathFromBag:(id)arg1;
 - (id)_stringForKey:(id)arg1 fromBag:(id)arg2;

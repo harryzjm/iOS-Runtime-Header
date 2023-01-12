@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSMutableArray, VCMediaNegotiationBlobV2BandwidthSettings, VCMediaNegotiationBlobV2CameraSettingsU1, VCMediaNegotiationBlobV2CodecFeatures, VCMediaNegotiationBlobV2GeneralInfo, VCMediaNegotiationBlobV2MicrophoneSettingsU1, VCMediaNegotiationBlobV2MomentsSettings;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobV2 : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobV2 : PBCodable
 {
     VCMediaNegotiationBlobV2BandwidthSettings *_bandwidthSettings;
     VCMediaNegotiationBlobV2CameraSettingsU1 *_cameraU1;

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSUserDefaults.h>
 
-#import <coreroutine/RTUserDefaults-Protocol.h>
-
 @class NSString;
 
-@interface NSUserDefaults (RTUserDefaults) <RTUserDefaults>
+@interface NSUserDefaults (RTUserDefaults)
 - (void)rt_synchronizeDomain:(id)arg1;
 - (void)rt_synchronize;
 - (id)rt_copyKeyListForDomain:(id)arg1;

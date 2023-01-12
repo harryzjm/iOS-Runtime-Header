@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaRemote/MREndpointObserver-Protocol.h>
+#import "MRAVRoutingDiscoverySession.h"
 
 @class MRAVEndpoint, MRAVRoutingDiscoverySessionConfiguration, MRExternalDevice, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRAVExternalRoutingDiscoverySession <MREndpointObserver>
+@interface MRAVExternalRoutingDiscoverySession : MRAVRoutingDiscoverySession
 {
     unsigned int _discoveryMode;
     MRAVRoutingDiscoverySessionConfiguration *_configuration;
+    id _externalDeviceDiscoveryToken;
     MRAVEndpoint *_destination;
     MRExternalDevice *_externalDevice;
 }
@@ -21,12 +22,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MRExternalDevice *externalDevice; // @synthesize externalDevice=_externalDevice;
 @property(retain, nonatomic) MRAVEndpoint *destination; // @synthesize destination=_destination;
 - (void)endpointDidDisconnect:(id)arg1;
+- (id)destinationOutputDeviceUID;
 - (id)availableOutputDevices;
 - (id)availableEndpoints;
 - (_Bool)devicePresenceDetected;
 - (unsigned int)endpointFeatures;
 - (void)setDiscoveryMode:(unsigned int)arg1;
 - (unsigned int)discoveryMode;
+- (void)dealloc;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (id)initWithConfiguration:(id)arg1;

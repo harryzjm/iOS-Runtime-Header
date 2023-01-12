@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIStatusBarImageView.h"
+
 @class UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarFocusableImageView
+@interface _UIStatusBarFocusableImageView : _UIStatusBarImageView
 {
     UIColor *_unfocusedTintColor;
     UIColor *_focusedImageTintColor;

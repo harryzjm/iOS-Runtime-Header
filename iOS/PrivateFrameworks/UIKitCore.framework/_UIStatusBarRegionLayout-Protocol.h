@@ -7,14 +7,16 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, _UIStatusBarRegion;
+@protocol UILayoutItem;
 
 @protocol _UIStatusBarRegionLayout <NSObject>
+@property(readonly, nonatomic) _Bool canOverflowItems;
 @property(readonly, nonatomic) _Bool fitsAllItems;
 @property(copy, nonatomic) NSArray *displayItems;
 @property(nonatomic) __weak _UIStatusBarRegion *region;
 - (void)invalidate;
 
 @optional
-- (_Bool)mayFitDisplayItems:(NSArray *)arg1;
+- (_Bool)mayFitDisplayItems:(NSArray *)arg1 inContainerItem:(id <UILayoutItem>)arg2;
 @end
 

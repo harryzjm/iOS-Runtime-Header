@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DChartAllSceneObjectDelegate-Protocol.h>
-
 @class NSString, TSCH3DSceneObject;
 
-@interface TSCH3DRayPickPipelineDelegate : NSObject <TSCH3DChartAllSceneObjectDelegate>
+@interface TSCH3DRayPickPipelineDelegate : NSObject
 {
     TSCH3DSceneObject *_currentSceneObject;
     tvec2_3b141483 _currentElement;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TCC/OS_tcc_credential-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OS_tcc_credential <OS_tcc_credential>
+@interface OS_tcc_credential
 {
 }
 

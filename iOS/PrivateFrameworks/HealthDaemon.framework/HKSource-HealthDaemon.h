@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKSource.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKSource (HealthDaemon) <HDCoding>
+@interface HKSource (HealthDaemon)
 + (_Bool)hd_isSpartanDeviceBundleIdentifier:(id)arg1;
 + (id)hd_currentDeviceSourceName;
 + (id)hd_getNameForSource:(id)arg1;

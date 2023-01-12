@@ -21,10 +21,7 @@
 - (UIViewController *)libraryContainerViewControllerForFloatingDockRootViewController:(SBFloatingDockRootViewController *)arg1;
 - (double)minimumHomeScreenScaleForFloatingDockRootViewController:(SBFloatingDockRootViewController *)arg1;
 - (void)floatingDockRootViewControllerDidEndPresentationTransition:(SBFloatingDockRootViewController *)arg1;
-- (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 didUpdateContentEligibilityForAsynchronousRendering:(_Bool)arg2;
 - (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 willPerformTransitionWithFolder:(SBFolderController *)arg2 presenting:(_Bool)arg3 withTransitionCoordinator:(id <SBViewControllerTransitionCoordinator>)arg4;
-- (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 didCompleteTransitionWithLibraryToPresented:(_Bool)arg2;
-- (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 willPerformTransitionWithLibraryToPresented:(_Bool)arg2;
 - (void)floatingDockRootViewController:(SBFloatingDockRootViewController *)arg1 modifyProgress:(double)arg2 interactive:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
 - (_Bool)floatingDockRootViewControllerShouldHandlePanGestureRecognizer:(SBFloatingDockRootViewController *)arg1;
 @end

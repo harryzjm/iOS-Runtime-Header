@@ -6,9 +6,7 @@
 
 #import <TSText/TSWPShapeInfo.h>
 
-#import <KeynoteQuicklook/TSDMixing-Protocol.h>
-
-@interface TSWPShapeInfo (TemplatesEquivalentForCrossDocumentPaste) <TSDMixing>
+@interface TSWPShapeInfo (TemplatesEquivalentForCrossDocumentPaste)
 + (unsigned long long)numberOfDifferencesBetweenStyleProperties:(id)arg1 betweenOutgoingStorage:(id)arg2 outgoingRange:(struct _NSRange)arg3 incomingStorage:(id)arg4 incomingRange:(struct _NSRange)arg5 maxDifferencesBeforeReturning:(unsigned long long)arg6;
 + (_Bool)shouldDisableTextMorphsFromPropertiesBetweenOutgoingStorage:(id)arg1 outgoingRange:(struct _NSRange)arg2 incomingStorage:(id)arg3 incomingRange:(struct _NSRange)arg4;
 + (_Bool)stylesAreEqualWithOutgoingStorage:(id)arg1 outgoingRange:(struct _NSRange)arg2 incomingStorage:(id)arg3 incomingRange:(struct _NSRange)arg4;

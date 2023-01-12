@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-
 @class MKUGCCallToActionViewAppearance, MUActionGroupSectionView, MUPlaceActionManager, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUFooterActionsSectionController : NSObject <MUPlaceSectionControlling>
+@interface MUFooterActionsSectionController : NSObject
 {
     MUPlaceSectionView *_sectionView;
     MUPlaceActionManager *_actionManager;
@@ -29,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel; // @synthesize sectionHeaderViewModel=_sectionHeaderViewModel;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+- (id)revealedAnalyticsModule;
 - (id)analyticsModule;
 - (int)analyticsModuleType;
 - (id)infoCardChildUnactionableUIElements;
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)draggableContent;
 - (void)reloadData;
 @property(readonly, nonatomic) _Bool hasContent;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(readonly, nonatomic) UIView *sectionView;
 - (void)_setupFooterView;
 - (id)initWithActionManager:(id)arg1;

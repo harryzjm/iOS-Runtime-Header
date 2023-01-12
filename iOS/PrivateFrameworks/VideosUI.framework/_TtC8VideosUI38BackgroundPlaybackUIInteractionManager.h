@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *hostingView;
     MISSING_TYPE *overridesUserInterfaceStyleWhenPlaying;
     MISSING_TYPE *supportsFullScreenTransition;
+    MISSING_TYPE *providesFullscreenTransitionUI;
     MISSING_TYPE *swipeUpView;
     MISSING_TYPE *playbackState;
     MISSING_TYPE *fullscreenTransitionHandler;
     MISSING_TYPE *playbackStateChangeHandler;
+    MISSING_TYPE *updateUICompletionHandler;
     MISSING_TYPE *hostingViewController;
     MISSING_TYPE *menuGestureRecognizer;
     MISSING_TYPE *userInterfaceStyleToRestore;
@@ -30,7 +32,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)dealloc;
 
 @end
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreUtils/CUMessageSessionXPCServerInterface-Protocol.h>
-
 @class CUMessageSessionServer, NSMutableSet, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CUMessageSessionXPCConnection : NSObject <CUMessageSessionXPCServerInterface>
+@interface CUMessageSessionXPCConnection : NSObject
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     _Bool _invalidated;

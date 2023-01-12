@@ -11,7 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)disablePullToUnlockSettings;
+- (void)_nudgeScrollViewToPoint:(struct CGPoint)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (_Bool)_accessibilityIgnoreSettingsDetailScrollLockIn;
 
 @end
 

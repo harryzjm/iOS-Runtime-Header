@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OfficeImport/OADEffectsParent-Protocol.h>
-#import <OfficeImport/OADProperties3DParent-Protocol.h>
-
 @class NSArray, NSString, OADFill, OADScene3D, OADShape3D, OADStroke;
 
 __attribute__((visibility("hidden")))
-@interface OADGraphicProperties <OADEffectsParent, OADProperties3DParent>
+@interface OADGraphicProperties
 {
     OADFill *mFill;
     NSArray *mEffects;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TLKStackView.h"
+
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface TLKRoundedCornerLabels
+@interface TLKRoundedCornerLabels : TLKStackView
 {
     NSMutableArray *_roundedLabels;
     unsigned long long _prominence;

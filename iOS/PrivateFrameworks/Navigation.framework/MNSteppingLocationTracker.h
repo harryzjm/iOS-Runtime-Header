@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Navigation/MNArrivalUpdaterDelegate-Protocol.h>
+#import "MNLocationTracker.h"
 
 @class GEORouteMatcher, MNArrivalUpdater, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MNSteppingLocationTracker <MNArrivalUpdaterDelegate>
+@interface MNSteppingLocationTracker : MNLocationTracker
 {
     GEORouteMatcher *_routeMatcher;
     MNArrivalUpdater *_arrivalUpdater;
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)updateLocation:(id)arg1;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (void)stopTracking;
-- (void)startTracking;
+- (void)startTrackingWithInitialLocation:(id)arg1;
 - (id)matchedLocationForLocation:(id)arg1;
 - (void)resetForTracePlayerAtLocation:(id)arg1;
 - (int)transportType;

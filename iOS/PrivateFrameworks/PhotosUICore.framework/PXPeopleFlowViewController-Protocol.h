@@ -14,9 +14,9 @@
 @property(readonly, nonatomic) PXPeopleBootstrapContext *bootstrapContext;
 
 @optional
+@property(readonly, nonatomic) _Bool shouldConfirmAdvancement;
 @property(nonatomic) __weak id <PXPeopleFlowViewControllerActionDelegate> actionDelegate;
 @property(readonly, nonatomic) struct CGSize preferredSize;
-@property(readonly, nonatomic) _Bool controlsAdvancementInternally;
 - (void)willTransitionToPreviousInFlow;
 - (void)willTransitionIn;
 - (void)willTransitionToNextInFlow;

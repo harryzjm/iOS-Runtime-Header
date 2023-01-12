@@ -7,6 +7,8 @@
 #import <EventKit/NSObject-Protocol.h>
 
 @protocol CADInternalInterface <NSObject>
+- (void)CADInternalRemoveConferenceLinkRenewalDate:(void (^)(int))arg1;
+- (void)CADInternalSetNextConferenceLinkRenewalToNow:(void (^)(int))arg1;
 - (void)CADInternalForceStatCollection:(void (^)(int))arg1;
 @end
 

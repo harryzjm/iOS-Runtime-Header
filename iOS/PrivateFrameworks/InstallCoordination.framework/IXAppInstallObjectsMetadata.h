@@ -8,6 +8,7 @@
 
 @class NSHashTable;
 
+__attribute__((visibility("hidden")))
 @interface IXAppInstallObjectsMetadata : NSObject
 {
     unsigned long long _count;

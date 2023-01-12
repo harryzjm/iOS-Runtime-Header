@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol _UIFocusRegionContainer;
+#import "_UIFocusRegion.h"
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusPromiseRegion
+@interface _UIFocusPromiseRegion : _UIFocusRegion
 {
-    id <_UIFocusRegionContainer> _contentFocusRegionContainer;
+    id _identifier;
+    unsigned long long _fullfillmentCount;
     CDUnknownBlockType _contentFulfillmentHandler;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType contentFulfillmentHandler; // @synthesize contentFulfillmentHandler=_contentFulfillmentHandler;
-- (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
-- (_Bool)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;
-- (long long)_visualRepresentationPatternType;
-- (id)_visualRepresentationColor;
-- (id)_loadContentFocusRegionContainer;
+- (id)_descriptionBuilder;
+- (id)_debugDrawingConfigurationWithDebugInfo:(id)arg1;
 - (unsigned long long)_focusableBoundaries;
-- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2 withSnapshot:(id)arg3;
+- (_Bool)isEqual:(id)arg1;
+- (id)_focusRegionWithAdjustedFrame:(struct CGRect)arg1 coordinateSpace:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 coordinateSpace:(id)arg2 identifier:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 coordinateSpace:(id)arg2;
 
 @end
 

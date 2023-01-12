@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUIApps/PXPhotosDetailsLocationSearchResult-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12PhotosUIApps33PhotosDetailsLocationSearchResult : NSObject <PXPhotosDetailsLocationSearchResult>
+@interface _TtC12PhotosUIApps33PhotosDetailsLocationSearchResult : NSObject
 {
     MISSING_TYPE *id;
     MISSING_TYPE *title;

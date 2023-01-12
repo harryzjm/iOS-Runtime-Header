@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/ICEnvironmentMonitorObserver-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIPlaybackSettings : NSObject <ICEnvironmentMonitorObserver>
+@interface VUIPlaybackSettings : NSObject
 {
     int _preferencesNotifyToken;
     _Bool _preferencesNotifyTokenIsValid;
@@ -49,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_externalScreenTypeDidChange:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_updateNetworkStatus;
+- (void)updateSupplementaryAvailableAudioLanguageCodes:(id)arg1;
 @property(nonatomic) _Bool preferAVAdapterCompatibility; // @synthesize preferAVAdapterCompatibility=_preferAVAdapterCompatibility;
 @property(retain, nonatomic) NSString *preferredAudioLanguageCode; // @synthesize preferredAudioLanguageCode=_preferredAudioLanguageCode;
 @property(nonatomic) _Bool cellularDataDownloadEnabled; // @synthesize cellularDataDownloadEnabled=_cellularDataDownloadEnabled;

@@ -11,12 +11,15 @@
 @protocol CBCentralManagerPrivateDelegate <CBCentralManagerDelegate>
 
 @optional
+- (void)centralManager:(CBCentralManager *)arg1 didUpdateFindMyPeripherals:(NSArray *)arg2;
 - (NSArray *)retrieveConnectingPeripherals;
+- (void)centralManager:(CBCentralManager *)arg1 didUpdateUsageStatisticEvent:(CBPeripheral *)arg2 results:(NSDictionary *)arg3 error:(NSError *)arg4;
 - (void)centralManager:(CBCentralManager *)arg1 didUpdateRSSIStatisticsDetectionForPeripheral:(CBPeripheral *)arg2 results:(NSDictionary *)arg3 error:(NSError *)arg4;
+- (void)centralManager:(CBCentralManager *)arg1 didUpdateControllerBTClockDictForPeripheral:(CBPeripheral *)arg2 results:(NSDictionary *)arg3;
 - (void)centralManager:(CBCentralManager *)arg1 didUpdateControllerBTClockForPeripheral:(CBPeripheral *)arg2 eventType:(NSNumber *)arg3 seconds:(NSNumber *)arg4 microseconds:(NSNumber *)arg5 localClock:(NSNumber *)arg6 remoteClock:(NSNumber *)arg7;
+- (void)centralManager:(CBCentralManager *)arg1 didUpdateScanParams:(NSDictionary *)arg2;
 - (void)centralManager:(CBCentralManager *)arg1 didUpdateMTUForPeripheral:(CBPeripheral *)arg2;
 - (void)centralManager:(CBCentralManager *)arg1 didFailToScanWithError:(NSError *)arg2;
-- (void)centralManager:(CBCentralManager *)arg1 connectionEventDidOccur:(long long)arg2 forPeripheral:(CBPeripheral *)arg3;
 - (void)centralManager:(CBCentralManager *)arg1 canSendDataToPeripheral:(CBPeripheral *)arg2;
 - (void)centralManager:(CBCentralManager *)arg1 didDiscoverMultiplePeripherals:(NSArray *)arg2;
 - (void)centralManager:(CBCentralManager *)arg1 didReceiveData:(NSData *)arg2 fromPeripheral:(CBPeripheral *)arg3;

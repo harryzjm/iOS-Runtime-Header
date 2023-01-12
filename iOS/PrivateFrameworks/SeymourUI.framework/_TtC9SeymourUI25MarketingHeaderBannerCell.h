@@ -22,9 +22,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *playButton;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *titleLabel;
+    MISSING_TYPE *labelFontUpdater;
+    MISSING_TYPE *oldSize;
 }
 
 - (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)prepareForReuse;
 - (void)layoutSubviews;

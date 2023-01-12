@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLCustomLayer-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface InternalCustomTileLike : NSObject <MLCustomLayer>
+@interface InternalCustomTileLike : NSObject
 {
     unsigned long long _inputRank;
     vector_2056c7c2 _multiples;

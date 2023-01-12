@@ -6,20 +6,19 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/SFSafariViewControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFShowWebPageActionUserInterface-Protocol.h>
-#import <ActionKitUI/WFWebViewControllerDelegate-Protocol.h>
-
-@class NSString;
+@class NSString, WFFileRepresentation;
 
 __attribute__((visibility("hidden")))
-@interface WFShowWebPageActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFWebViewControllerDelegate, SFSafariViewControllerDelegate, WFShowWebPageActionUserInterface>
+@interface WFShowWebPageActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
+    WFFileRepresentation *_richTextFile;
     CDUnknownBlockType _completionHandler;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(retain, nonatomic) WFFileRepresentation *richTextFile; // @synthesize richTextFile=_richTextFile;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)webViewControllerDidFinish:(id)arg1;
 - (void)safariViewControllerDidFinish:(id)arg1;
 - (void)finishWithError:(id)arg1;

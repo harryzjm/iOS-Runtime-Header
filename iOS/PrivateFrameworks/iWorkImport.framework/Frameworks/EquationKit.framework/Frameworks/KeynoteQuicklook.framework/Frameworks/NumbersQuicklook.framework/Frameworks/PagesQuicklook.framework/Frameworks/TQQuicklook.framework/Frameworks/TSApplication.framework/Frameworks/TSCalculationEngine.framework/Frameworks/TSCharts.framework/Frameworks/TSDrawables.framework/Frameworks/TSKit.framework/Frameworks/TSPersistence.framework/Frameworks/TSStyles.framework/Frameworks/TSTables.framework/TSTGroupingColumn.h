@@ -6,11 +6,9 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSKFormat, TSULocale;
 
-@interface TSTGroupingColumn : TSKSosBase <NSCopying>
+@interface TSTGroupingColumn : TSKSosBase
 {
     struct UUIDData<TSP::UUIDData> _groupingColumnUid;
     struct UUIDData<TSP::UUIDData> _columnUid;

@@ -6,11 +6,9 @@
 
 #import <Intents/INRideStatus.h>
 
-#import <ActionKit/WFNaming-Protocol.h>
-
 @class NSString;
 
-@interface INRideStatus (WFNaming) <WFNaming>
+@interface INRideStatus (WFNaming)
 @property(readonly, copy, nonatomic) NSString *wfName;
 @end
 

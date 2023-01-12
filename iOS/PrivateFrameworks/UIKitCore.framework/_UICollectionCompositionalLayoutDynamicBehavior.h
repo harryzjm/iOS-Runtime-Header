@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIDynamicBehavior.h"
+
 @protocol _NSCollectionLayoutVisibleItem;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionCompositionalLayoutDynamicBehavior
+@interface _UICollectionCompositionalLayoutDynamicBehavior : UIDynamicBehavior
 {
     id <_NSCollectionLayoutVisibleItem> _visibleItem;
 }

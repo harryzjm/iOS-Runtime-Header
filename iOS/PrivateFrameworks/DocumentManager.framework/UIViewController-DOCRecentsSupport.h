@@ -7,6 +7,7 @@
 #import <UIKitCore/UIViewController.h>
 
 @interface UIViewController (DOCRecentsSupport)
-- (id)doc_appLocationLargeNavigationTitlesForLocation:(id)arg1 configuration:(id)arg2;
++ (_Bool)_prefersLargeTitlesForLocation:(id)arg1 whenHasFinderStyleBars:(_Bool)arg2;
+- (id)doc_largeNavigationTitleOptionsForLocation:(id)arg1 configuration:(id)arg2 hasFinderStyleBars:(_Bool)arg3;
 @end
 

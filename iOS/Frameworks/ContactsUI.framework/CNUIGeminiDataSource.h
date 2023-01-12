@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNGeminiManagerDelegate-Protocol.h>
-
 @class CNContact, CNGeminiManager, CNGeminiResult, NSString;
 @protocol CNUIGeminiDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNUIGeminiDataSource : NSObject <CNGeminiManagerDelegate>
+@interface CNUIGeminiDataSource : NSObject
 {
     CNContact *_contact;
     CNGeminiResult *_geminiResult;

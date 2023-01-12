@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface IBUISimulatedMetricsModifier : NSObject <IBBinaryArchiving>
+@interface IBUISimulatedMetricsModifier : NSObject
 {
 }
 

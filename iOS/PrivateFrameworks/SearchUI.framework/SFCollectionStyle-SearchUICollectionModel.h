@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFCollectionStyle.h>
 
 @interface SFCollectionStyle (SearchUICollectionModel)
-- (id)searchUISectionModelForCardRowModels:(id)arg1 section:(id)arg2;
+- (id)searchUISectionModelForCardRowModels:(id)arg1 section:(id)arg2 expandedCollectionSections:(id)arg3;
 @end
 

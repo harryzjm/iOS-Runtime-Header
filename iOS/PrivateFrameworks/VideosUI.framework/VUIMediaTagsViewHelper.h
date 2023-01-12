@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (id)tagsViewDictionary;
 - (id)initWithVUIMediaEntity:(id)arg1;
 - (id)initWithVUIMediaItem:(id)arg1;
-- (id)initWithMediaItem:(id)arg1;
 - (id)initWithContentMetadata:(id)arg1 additionalMetadata:(id)arg2;
 
 @end

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSString, UIPageControl;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPageControlCollectionViewCell <SKUIViewElementView>
+@interface SKUIPageControlCollectionViewCell
 {
     struct UIEdgeInsets _contentInset;
     UIPageControl *_pageControl;

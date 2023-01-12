@@ -6,14 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <MediaFoundation/MFPlayerConfigurable-Protocol.h>
-
 @class MISSING_TYPE, NSDictionary;
 
-@interface _TtC15MediaFoundation16PlayerController : _TtCs12_SwiftObject <MFPlayerConfigurable>
+@interface _TtC15MediaFoundation16PlayerController : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *setQueueBehavior;
     MISSING_TYPE *mode;
     MISSING_TYPE *userActionTimeout;
     MISSING_TYPE *currentItemTransition;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUIApps/UISearchBarDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCV12PhotosUIApps22PhotosDetailsSearchBar11Coordinator : NSObject <UISearchBarDelegate>
+@interface _TtCV12PhotosUIApps22PhotosDetailsSearchBar11Coordinator : NSObject
 {
     MISSING_TYPE *_text;
     MISSING_TYPE *placeholderText;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDDomainServicing-Protocol.h>
-#import <FileProviderDaemon/FPDLifetimeServicing-Protocol.h>
-
 @class FPDDomain, FPDExtensionSession, FPDProvider, FPDServer, FPDXPCDomainServicerLifetimeExtender, NSString, NSXPCConnection;
 @protocol FPProgressProtocol, OS_dispatch_queue, OS_os_log, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
-@interface FPDXPCDomainServicer : NSObject <FPDDomainServicing, FPDLifetimeServicing>
+@interface FPDXPCDomainServicer : NSObject
 {
     FPDServer *_server;
     FPDProvider *__provider;
@@ -36,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *providerDomainID; // @synthesize providerDomainID=_providerDomainID;
 - (void)_t_setFilePresenterObserver:(id)arg1;
 - (id)description;
+- (void)startAccessingServiceWithName:(id)arg1 itemID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)subscribeToDownloadProgressUpdates:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)subscribeToUploadProgressUpdates:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)runTestingOperations:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -48,11 +46,10 @@ __attribute__((visibility("hidden")))
 - (void)enumeratePendingSetFromSyncAnchor:(id)arg1 suggestedBatchSize:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)currentMaterializedSetSyncAnchorWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enumerateMaterializedSetFromSyncAnchor:(id)arg1 suggestedBatchSize:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)materializeItemWithIdentifier:(id)arg1 requestedRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)evictItemWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setDownloadPolicy:(unsigned long long)arg1 forItemWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)reimportItemsBelowItemWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)ingestFromCacheItemWithIdentifier:(id)arg1 requestedFields:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)fetchAndStartEnumeratingWithSettings:(id)arg1 observer:(id)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setDomainEjectable:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)didChangeItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

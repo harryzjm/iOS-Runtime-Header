@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextLoupeInteractionBehaviorDelegate-Protocol.h>
-
 @class NSString, UITextModernLoupeSession, UITextRange, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
-@interface UITextLoupeTouchBehavior : NSObject <UITextLoupeInteractionBehaviorDelegate>
+@interface UITextLoupeTouchBehavior : NSObject
 {
     _Bool _isShiftKeyBeingHeld;
     UITextRange *_originalTextRange;

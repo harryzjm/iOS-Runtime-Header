@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)errorWithNFCDError:(id)arg1 defaultNFCErrorCode:(long long)arg2;
 + (id)errorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)errorWithCode:(long long)arg1;
 - (id)initWithCode:(long long)arg1 userInfo:(id)arg2;

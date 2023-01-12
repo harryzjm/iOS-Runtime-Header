@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIBarButtonItem.h"
+
 @protocol UISplitViewControllerImpl;
 
 __attribute__((visibility("hidden")))
-@interface UISplitViewControllerDisplayModeBarButtonItem
+@interface UISplitViewControllerDisplayModeBarButtonItem : UIBarButtonItem
 {
     _Bool _hasBeenUsed;
     id <UISplitViewControllerImpl> _impl;

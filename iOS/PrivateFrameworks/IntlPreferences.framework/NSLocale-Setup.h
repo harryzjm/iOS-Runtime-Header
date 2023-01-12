@@ -23,16 +23,22 @@
 + (id)_sanitizedLanguageIdentifierFromKeyboardLanguage:(id)arg1 currentLocale:(id)arg2;
 + (id)_sanitizedLanguageIdentifierFromKeyboardLanguage:(id)arg1;
 + (void)enableDefaultKeyboardForPreferredLanguages;
++ (void)_setUsesTwelveHourClock:(_Bool)arg1;
++ (_Bool)_defaultUsesTwelveHourClock;
++ (_Bool)_usesTwelveHourClock;
++ (void)setLanguageAndRegion:(id)arg1;
++ (id)_preferencesForSetLanguageAndRegion:(id)arg1;
 + (void)setLanguageToPreferredLanguages:(id)arg1 fallback:(id)arg2;
 + (void)setPreferredLanguageAndUpdateLocale:(id)arg1;
 + (id)languageArrayAfterSettingLanguage:(id)arg1 fallback:(id)arg2 toLanguageArray:(id)arg3;
-+ (_Bool)shouldShowPreferredLanguages;
-+ (void)updateShouldShowPreferredLanguages:(_Bool)arg1;
 + (id)canonicalLocaleIdentifierWithValidCalendarForComponents:(id)arg1;
 + (void)setLocaleAfterRegionChange:(id)arg1;
++ (void)_insertFallbackLanguageIfNecessaryForRegion:(id)arg1;
 + (id)localeIdentifierForRegionChange:(id)arg1;
 + (void)setLocaleAfterLanguageChange:(id)arg1;
 + (id)validateLocale:(id)arg1;
++ (void)resetCustomFormats;
++ (void)setLocaleAndResetCustomFormat:(id)arg1;
 + (void)resetTimeFormat;
 + (void)setLocaleAndResetTimeFormat:(id)arg1;
 + (void)setLocaleOnly:(id)arg1;
@@ -55,7 +61,6 @@
 @property(readonly, copy) NSString *optionNameWithColonForSelectableScripts;
 @property(readonly, copy) NSString *optionNameForSelectableScripts;
 @property(readonly, copy) NSArray *selectableScriptCodes;
-@property(readonly, nonatomic) NSString *languageIdentifier;
 - (id)localeByChangingLanguageTo:(id)arg1;
 @end
 

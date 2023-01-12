@@ -4,22 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowUICore/WFActionUserInterface.h>
-
-#import <ActionKitUI/WFGetDropboxFileActionUserInterface-Protocol.h>
+#import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFGetDropboxFileActionUIKitUserInterface : WFActionUserInterface <WFGetDropboxFileActionUserInterface>
+@interface WFGetDropboxFileActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)finishWithResults:(id)arg1 contentAttributionSet:(id)arg2 error:(id)arg3;
+- (void)finishWithResults:(id)arg1 error:(id)arg2;
 - (void)showWithServiceName:(id)arg1 directoryPath:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)selectedStorageServiceForName:(id)arg1;
 

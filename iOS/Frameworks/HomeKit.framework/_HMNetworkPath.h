@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/_HMNetworkPath-Protocol.h>
-
 @class NSString;
 @protocol OS_nw_path;
 
 __attribute__((visibility("hidden")))
-@interface _HMNetworkPath : NSObject <_HMNetworkPath>
+@interface _HMNetworkPath : NSObject
 {
     NSObject<OS_nw_path> *_nwPath;
 }

@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     double _referenceLineOffset;
 }
 
-@property(nonatomic) double referenceLineOffset; // @synthesize referenceLineOffset=_referenceLineOffset;
-- (id)init;
+@property(readonly, nonatomic) double referenceLineOffset; // @synthesize referenceLineOffset=_referenceLineOffset;
+- (id)initWithReferenceLineOffset:(double)arg1;
 
 @end
 

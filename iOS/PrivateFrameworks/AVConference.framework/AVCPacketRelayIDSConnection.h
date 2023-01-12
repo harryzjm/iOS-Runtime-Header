@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/AVCPacketRelayConnectionProtocol-Protocol.h>
-
 @class AVCPacketFilter, IDSDatagramChannel, IDSService;
 
 __attribute__((visibility("hidden")))
-@interface AVCPacketRelayIDSConnection : NSObject <AVCPacketRelayConnectionProtocol>
+@interface AVCPacketRelayIDSConnection : NSObject
 {
     unsigned char _type;
     CDUnknownBlockType _readHandler;

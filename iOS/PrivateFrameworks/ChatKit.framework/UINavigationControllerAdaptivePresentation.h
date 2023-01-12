@@ -6,12 +6,10 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <ChatKit/CKAdaptivePresentedControllerProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UINavigationControllerAdaptivePresentation : UINavigationController <CKAdaptivePresentedControllerProtocol>
+@interface UINavigationControllerAdaptivePresentation : UINavigationController
 {
     _Bool _wantsWindowedPresentation;
     _Bool _preserveModalPresentationStyle;

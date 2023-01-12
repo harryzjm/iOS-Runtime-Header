@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, UIColor, UIControl, UITapGestureRecognizer;
 @protocol SKUIOverlayContainerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIOverlayContainerViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface SKUIOverlayContainerViewController : UIViewController
 {
     UIControl *_backstopView;
     _Bool _isAdjustingViewsForDismiss;

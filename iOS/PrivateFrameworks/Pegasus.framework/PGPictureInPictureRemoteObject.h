@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Pegasus/PGCommandHandler-Protocol.h>
-#import <Pegasus/PGPictureInPictureRemoteObjectInterface-Protocol.h>
-#import <Pegasus/PGPictureInPictureViewControllerDelegate-Protocol.h>
-
 @class FBScene, NSArray, NSString, NSTimer, NSUUID, NSXPCConnection, PGInterruptionAssistant, PGPictureInPictureApplication, PGPictureInPictureViewController, PGPlaybackState, PGProcessAssertion, UIImage;
 @protocol BSInvalidatable, OS_dispatch_queue, PGPictureInPictureAnalyticsDelegate, PGPictureInPictureRemoteObjectDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PGPictureInPictureRemoteObject : NSObject <PGPictureInPictureRemoteObjectInterface, PGPictureInPictureViewControllerDelegate, PGCommandHandler>
+@interface PGPictureInPictureRemoteObject : NSObject
 {
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
@@ -28,7 +24,7 @@ __attribute__((visibility("hidden")))
     NSUUID *_finishTaskInvalidationUUID;
     NSTimer *_timerForInvalidatingIfStopOrCancelFails;
     NSUUID *_analyticsSourceUUID;
-    _Bool _shouldNoteStartedAutomaticallyForAnalytics;
+    _Bool _pictureInPictureStartedAutomatically;
     _Bool _isPictureInPicturePossible;
     _Bool _hasPendingCancellationRequest;
     _Bool _hasPendingStopRequest;
@@ -125,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)_setCurrentState:(long long)arg1;
 - (_Bool)_isUnderLock;
 - (void)_stopTethering;
+- (_Bool)canActivateUntetheredAlongsideOtherObject:(id)arg1;
 - (_Bool)canTetherRemoteObjectAsMicroPIP:(id)arg1;
 - (_Bool)canStartMicroPIP;
 - (_Bool)supportsMicroPIP;
@@ -147,7 +144,6 @@ __attribute__((visibility("hidden")))
 - (void)stopPictureInPictureAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)startPictureInPictureEnteringBackgroundAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic, getter=isVideoCall) _Bool videoCall;
-@property(readonly, nonatomic, getter=isPIPAllowedForCurrentContentType) _Bool pipAllowedForCurrentContentType;
 @property(readonly, nonatomic) long long contentType;
 - (void)setSourceSceneSessionPersistentIdentifier:(id)arg1;
 @property(nonatomic, getter=isPictureInPicturePossible) _Bool pictureInPicturePossible;

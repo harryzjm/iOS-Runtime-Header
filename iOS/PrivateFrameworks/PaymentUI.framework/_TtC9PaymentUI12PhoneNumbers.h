@@ -15,6 +15,8 @@
     MISSING_TYPE *_errors;
     MISSING_TYPE *_isValid;
     MISSING_TYPE *context;
+    MISSING_TYPE *defaults;
+    MISSING_TYPE *recents;
 }
 
 @end

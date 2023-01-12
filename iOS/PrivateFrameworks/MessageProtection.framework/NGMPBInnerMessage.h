@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MessageProtection/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface NGMPBInnerMessage : PBCodable <NSCopying>
+@interface NGMPBInnerMessage : PBCodable
 {
     unsigned int _counter;
     NSData *_debugInfo;

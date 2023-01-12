@@ -7,16 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UINavigationBarTransitionContextParticipant-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, UILabel, UISearchBar, UIView, _UIBarBackground, _UIBarBackgroundLayout, _UIBarInsertLayoutData, _UINavigationBarContentView, _UINavigationBarContentViewLayout, _UINavigationBarLargeTitleView, _UINavigationBarLargeTitleViewLayout, _UINavigationBarModernPromptView, _UINavigationBarPalette, _UINavigationControllerRefreshControlHost;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarLayout : NSObject <NSCopying, _UINavigationBarTransitionContextParticipant>
+@interface _UINavigationBarLayout : NSObject <NSCopying>
 {
     _UIBarInsertLayoutData *_promptLayoutData;
     _UIBarInsertLayoutData *_contentLayoutData;
-    _UIBarInsertLayoutData *_canvasViewLayoutData;
     _UIBarInsertLayoutData *_largeTitleLayoutData;
     _UIBarInsertLayoutData *_refreshControlLayoutData;
     _UIBarInsertLayoutData *_searchBarLayoutData;
@@ -30,6 +28,7 @@ __attribute__((visibility("hidden")))
     _Bool _useManualScrollEdgeAppearance;
     _Bool _clientUsesManualScrollEdgeAppearanceProgressSPI;
     _Bool _clientCanUpdateChromelessTransitionProgress;
+    _Bool _hasInlineSearchBar;
     _Bool _clientWantsToPreserveSearchBarAcrossTransitions;
     _Bool _hidesSearchBarWhenScrolling;
     _UINavigationBarModernPromptView *_promptView;
@@ -46,7 +45,6 @@ __attribute__((visibility("hidden")))
     double _manualScrollEdgeAppearanceProgress;
     _UINavigationControllerRefreshControlHost *_refreshControlHost;
     UILabel *_weeTitleLabel;
-    UIView *_canvasView;
     UISearchBar *_searchBar;
     long long _representedSearchLayoutState;
     _UINavigationBarPalette *_bottomPalette;
@@ -68,8 +66,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long representedSearchLayoutState; // @synthesize representedSearchLayoutState=_representedSearchLayoutState;
 @property(nonatomic) _Bool hidesSearchBarWhenScrolling; // @synthesize hidesSearchBarWhenScrolling=_hidesSearchBarWhenScrolling;
 @property(nonatomic) _Bool clientWantsToPreserveSearchBarAcrossTransitions; // @synthesize clientWantsToPreserveSearchBarAcrossTransitions=_clientWantsToPreserveSearchBarAcrossTransitions;
+@property(nonatomic) _Bool hasInlineSearchBar; // @synthesize hasInlineSearchBar=_hasInlineSearchBar;
 @property(retain, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
-@property(retain, nonatomic) UIView *canvasView; // @synthesize canvasView=_canvasView;
 @property(retain, nonatomic) UILabel *weeTitleLabel; // @synthesize weeTitleLabel=_weeTitleLabel;
 @property(retain, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost; // @synthesize refreshControlHost=_refreshControlHost;
 @property(nonatomic) _Bool clientCanUpdateChromelessTransitionProgress; // @synthesize clientCanUpdateChromelessTransitionProgress=_clientCanUpdateChromelessTransitionProgress;
@@ -98,7 +96,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 - (_Bool)isBackgroundForScrollEdge;
 @property(readonly, nonatomic, getter=isVariableHeight) _Bool variableHeight;
-@property(readonly, nonatomic) CDStruct_cf303044 layoutHeights;
+@property(readonly, nonatomic) CDStruct_39925896 layoutHeights;
 @property(readonly, copy, nonatomic) NSArray *restingHeights;
 - (id)layoutForMeasuringWidth:(double)arg1;
 - (void)removeViewsNotInLayout:(id)arg1;
@@ -117,9 +115,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct CGRect largeTitleViewLayoutFrame;
 - (struct CGRect)_largeTitleViewLayoutFrameWithContentOrCanvasOrRefreshControlMaxY:(double)arg1;
 @property(readonly, nonatomic) struct CGRect refreshControlLayoutFrame;
-- (struct CGRect)_refreshControlLayoutFrameWithContentOrCanvasMaxY:(double)arg1;
-@property(readonly, nonatomic) struct CGRect canvasViewLayoutFrame;
-- (struct CGRect)_canvasViewLayoutFrameWithPromptMaxY:(double)arg1;
+- (struct CGRect)_refreshControlLayoutFrameWithContentMaxY:(double)arg1;
 @property(readonly, nonatomic) struct CGRect contentViewLayoutFrame;
 - (struct CGRect)_contentViewLayoutFrameWithPromptMaxY:(double)arg1;
 @property(readonly, nonatomic) struct CGRect promptViewLayoutFrame;
@@ -128,7 +124,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateLayoutParametersForWidth:(double)arg1;
 - (void)_updateRefreshControlLayoutData;
 - (void)_updateLargeTitleViewLayoutItem;
-- (void)_resolveContentAndCanvasLayouts;
+- (void)_updateContentViewLayoutItem;
 - (void)_reprioritizeLayoutItem:(id)arg1 toPriority:(long long)arg2;
 - (void)_removeLayoutItem:(id)arg1;
 - (void)_addLayoutItem:(id)arg1;

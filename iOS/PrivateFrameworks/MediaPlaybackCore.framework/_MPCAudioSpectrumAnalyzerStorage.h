@@ -10,23 +10,26 @@ __attribute__((visibility("hidden")))
 @interface _MPCAudioSpectrumAnalyzerStorage : NSObject
 {
     float *_intermediateBuffer;
-    float *_window;
-    unsigned long long _windowSize;
     struct DSPSplitComplex _fftBuffer;
     struct OpaqueFFTSetup *_fftSetup;
     _Bool _processing;
     float _sampleRate;
-    unsigned long long _maxNumberOfFrames;
+    long long _maxNumberOfFrames;
+    long long _halfN;
+    long long _log2N;
 }
 
-@property(nonatomic) unsigned long long maxNumberOfFrames; // @synthesize maxNumberOfFrames=_maxNumberOfFrames;
+@property(nonatomic) long long log2N; // @synthesize log2N=_log2N;
+@property(nonatomic) long long halfN; // @synthesize halfN=_halfN;
+@property(nonatomic) long long maxNumberOfFrames; // @synthesize maxNumberOfFrames=_maxNumberOfFrames;
 @property(nonatomic) float sampleRate; // @synthesize sampleRate=_sampleRate;
+- (void)analyzeAudioData:(void *)arg1 numberFrames:(unsigned int)arg2 observers:(id)arg3;
 - (void)analyzeFrequencies:(struct AudioBufferList *)arg1 numberFrames:(unsigned long long)arg2 observers:(id)arg3;
 - (void)_freeBuffers;
 - (void)_destroyFFTSetup;
 - (void)_prepareBuffers;
 - (void)dealloc;
-- (id)initWithMaximumNumberOfFrames:(unsigned long long)arg1 sampleRate:(float)arg2;
+- (id)initWithMaximumNumberOfFrames:(long long)arg1 sampleRate:(float)arg2;
 
 @end
 

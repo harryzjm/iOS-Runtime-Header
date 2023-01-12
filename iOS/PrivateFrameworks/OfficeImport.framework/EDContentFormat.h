@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDKeyedObject-Protocol.h>
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDString, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDContentFormat : NSObject <EDKeyedObject, NSCopying>
+@interface EDContentFormat : NSObject
 {
     EDString *mFormatString;
     unsigned long long mFormatId;

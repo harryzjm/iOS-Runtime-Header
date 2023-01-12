@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNImageBufferProviding-Protocol.h>
-
 @class NSMapTable, VNImageBuffer, VNObservationsCache, VNRequestForensics, VNRequestPerformer, VNSession;
 
 __attribute__((visibility("hidden")))
-@interface VNRequestPerformingContext : NSObject <VNImageBufferProviding>
+@interface VNRequestPerformingContext : NSObject
 {
     unsigned long long _serialNumber;
     VNSession *_session;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
     VNImageBuffer *_imageBuffer_DO_NOT_DIRECTLY_ACCESS;
     NSMapTable *_requestToObservationsCacheKeyMap;
     VNObservationsCache *_observationsCache;
+    struct os_unfair_lock_s _observationsCacheLock;
     VNRequestForensics *_requestForensics;
 }
 

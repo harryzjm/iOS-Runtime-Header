@@ -13,6 +13,7 @@
 @optional
 - (void)unifiedTabBar:(SFUnifiedTabBar *)arg1 multipleExtensionButtonTapped:(UIButton *)arg2;
 - (void)unifiedTabBar:(SFUnifiedTabBar *)arg1 extensionButtonTapped:(UIButton *)arg2 extension:(WBSWebExtensionData *)arg3;
+- (void)unifiedTabBar:(SFUnifiedTabBar *)arg1 didFinishShowingAvailabilityLabelOfType:(long long)arg2;
 - (void)unifiedTabBarURLTapped:(SFUnifiedTabBar *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)unifiedTabBarMediaStateMuteButtonTapped:(SFUnifiedTabBar *)arg1;
 - (void)unifiedTabBarTranslationButtonTapped:(SFUnifiedTabBar *)arg1;

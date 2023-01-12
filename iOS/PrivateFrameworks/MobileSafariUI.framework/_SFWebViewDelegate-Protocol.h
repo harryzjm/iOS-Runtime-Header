@@ -6,12 +6,14 @@
 
 #import <MobileSafariUI/NSObject-Protocol.h>
 
-@class UIGestureRecognizer, _SFDownload, _SFWebView, _WKDownload;
+@class NSUndoManager, _SFDownload, _SFWebView, _WKDownload;
 
 @protocol _SFWebViewDelegate <NSObject>
 
 @optional
-- (_Bool)sfWebView:(_SFWebView *)arg1 shouldAllowGestureToRecognizeSimultaneoulsyWithTouchEvents:(UIGestureRecognizer *)arg2;
+- (_Bool)sfWebViewCanFindNextOrPrevious:(_SFWebView *)arg1;
+- (_Bool)sfWebViewShouldFillStringForFind:(_SFWebView *)arg1;
+- (NSUndoManager *)overrideUndoManagerForSFWebView:(_SFWebView *)arg1;
 - (_Bool)sfWebViewCanPromptForAccountSecurityRecommendation;
 - (_SFDownload *)sfWebView:(_SFWebView *)arg1 didStartDownload:(_WKDownload *)arg2;
 - (void)sfWebViewDidEndFormControlInteraction:(_SFWebView *)arg1;

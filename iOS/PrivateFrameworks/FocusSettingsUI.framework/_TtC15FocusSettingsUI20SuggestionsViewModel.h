@@ -11,9 +11,12 @@
 @interface _TtC15FocusSettingsUI20SuggestionsViewModel : _TtCs12_SwiftObject
 {
     MISSING_TYPE *modeUUID;
+    MISSING_TYPE *exceptionType;
     MISSING_TYPE *logging;
     MISSING_TYPE *_suggestedApps;
+    MISSING_TYPE *_suggestedAppCandidates;
     MISSING_TYPE *_suggestedPeople;
+    MISSING_TYPE *_suggestedPeopleCandidates;
 }
 
 @end

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/ML3MusicLibraryResourcesProviding-Protocol.h>
-#import <MusicLibrary/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ML3BaseMusicLibraryResourcesManager : NSObject <ML3MusicLibraryResourcesProviding, NSSecureCoding>
+@interface _ML3BaseMusicLibraryResourcesManager : NSObject
 {
     NSString *_libraryContainerIdentifier;
 }

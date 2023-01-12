@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPDate, CKDPRecordZoneIdentifier;
 
-@interface CKDPZoneDeleteRequest : PBRequest <NSCopying>
+@interface CKDPZoneDeleteRequest : PBRequest
 {
     CKDPDate *_lastMissingManateeIdentityErrorDate;
     CKDPRecordZoneIdentifier *_zoneIdentifier;

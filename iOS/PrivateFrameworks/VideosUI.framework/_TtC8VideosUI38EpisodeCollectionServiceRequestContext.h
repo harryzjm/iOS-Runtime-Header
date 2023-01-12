@@ -14,6 +14,7 @@
     MISSING_TYPE *appContext;
     MISSING_TYPE *contextDataRef;
     MISSING_TYPE *parent;
+    MISSING_TYPE *contextData;
     MISSING_TYPE *requestContextData;
 }
 

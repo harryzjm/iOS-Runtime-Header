@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNScheduler-Protocol.h>
-
 @class NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CNContactDataSourceLIFOScheduler : NSObject <CNScheduler>
+@interface CNContactDataSourceLIFOScheduler : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_stack;

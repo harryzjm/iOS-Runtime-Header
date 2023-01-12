@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityLabelFallback;
-- (_Bool)_accessibilityContainsNestedCollectionView;
+- (_Bool)_accessibilityContainsNestedAccessibilityView;
 - (_Bool)_accessibilityContainsCombinedView;
 - (id)_accessibilitySupplementaryFooterViews;
 - (_Bool)_accessibilityHasAccessibleSubviews;

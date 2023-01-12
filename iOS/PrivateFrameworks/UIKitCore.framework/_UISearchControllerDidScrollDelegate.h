@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIScrollViewScrollObserver_Internal-Protocol.h>
-
 @class NSString, UIScrollView;
 @protocol _UIScrollViewScrollObserver_Internal;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchControllerDidScrollDelegate : NSObject <_UIScrollViewScrollObserver_Internal>
+@interface _UISearchControllerDidScrollDelegate : NSObject
 {
     id <_UIScrollViewScrollObserver_Internal> _controller;
     UIScrollView *_scrollView;

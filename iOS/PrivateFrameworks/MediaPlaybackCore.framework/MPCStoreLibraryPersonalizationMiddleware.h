@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlayerResponseBuilder-Protocol.h>
-#import <MediaPlaybackCore/MPMiddleware-Protocol.h>
-
 @class MPSectionedCollection, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCStoreLibraryPersonalizationMiddleware : NSObject <MPCPlayerResponseBuilder, MPMiddleware>
+@interface MPCStoreLibraryPersonalizationMiddleware : NSObject
 {
     NSArray *_invalidationObservers;
     MPSectionedCollection *_personalizedModelObjects;

@@ -23,13 +23,12 @@ __attribute__((visibility("hidden")))
     BKSProcessAssertion *_serviceProcessAssertion;
     NSXPCConnection *_serviceSessionConnection;
     _Bool _serviceSessionConnectionResumed;
-    int __automatic_invalidation_retainCount;
-    _Bool __automatic_invalidation_invalidated;
 }
 
 + (id)connectToViewService:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
 + (id)_connectToViewServiceWithBundleIdentifier:(id)arg1 service:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
 + (id)connectToViewServiceWithBundleIdentifier:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
++ (void)initialize;
 - (void)_cancelUnconditionallyThen:(CDUnknownBlockType)arg1;
 - (void)_cancelWithError:(id)arg1;
 - (void)_didConnectToService;
@@ -40,12 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_createProcessAssertion;
 - (void)_launchService;
 - (void)dealloc;
-- (_Bool)_isDeallocating;
-- (_Bool)_tryRetain;
-- (unsigned long long)retainCount;
-- (oneway void)release;
-- (id)retain;
-- (int)__automatic_invalidation_logic;
+- (void)_objc_initiateDealloc;
 
 @end
 

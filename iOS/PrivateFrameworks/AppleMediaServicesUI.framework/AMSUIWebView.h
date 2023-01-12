@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebViewClientInterface-Protocol.h>
-#import <AppleMediaServicesUI/WKNavigationDelegatePrivate-Protocol.h>
-#import <AppleMediaServicesUI/WKUIDelegate-Protocol.h>
+#import "AMSUICommonView.h"
 
-@class AMSBinaryPromise, AMSUIWebClientContext, AMSUIWebDelegateProxy, NSArray, NSString, WKWebView, _WKRemoteObjectInterface;
-@protocol AMSUIWebViewPluginInterface;
+@class AMSBinaryPromise, AMSUIWebClientContext, NSArray, NSString, WKWebView;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebView <AMSUIWebViewClientInterface, WKUIDelegate, WKNavigationDelegatePrivate>
+@interface AMSUIWebView : AMSUICommonView
 {
     _Bool _contentLoaded;
     double _topInset;
@@ -21,29 +18,24 @@ __attribute__((visibility("hidden")))
     AMSBinaryPromise *_contentRulesPromise;
     AMSUIWebClientContext *_context;
     AMSBinaryPromise *_currentLoadPromise;
-    _WKRemoteObjectInterface *_exportedInterface;
-    AMSUIWebDelegateProxy *_exportedObjectProxy;
-    id <AMSUIWebViewPluginInterface> _remoteProxy;
 }
 
-+ (id)_sharedProcessPool;
 + (id)_getSetCookiesForResponse:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <AMSUIWebViewPluginInterface> remoteProxy; // @synthesize remoteProxy=_remoteProxy;
-@property(retain, nonatomic) AMSUIWebDelegateProxy *exportedObjectProxy; // @synthesize exportedObjectProxy=_exportedObjectProxy;
-@property(retain, nonatomic) _WKRemoteObjectInterface *exportedInterface; // @synthesize exportedInterface=_exportedInterface;
 @property(retain, nonatomic) AMSBinaryPromise *currentLoadPromise; // @synthesize currentLoadPromise=_currentLoadPromise;
 @property(nonatomic) __weak AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) AMSBinaryPromise *contentRulesPromise; // @synthesize contentRulesPromise=_contentRulesPromise;
 @property(retain, nonatomic) NSArray *baseScripts; // @synthesize baseScripts=_baseScripts;
 @property(readonly, nonatomic) WKWebView *underlyingWebView; // @synthesize underlyingWebView=_underlyingWebView;
 @property(readonly, nonatomic) _Bool contentLoaded; // @synthesize contentLoaded=_contentLoaded;
-- (void)_unregisterProxies;
 - (id)_setupContentRulesForWebView:(id)arg1 context:(id)arg2;
+- (void)_receiveJSObject:(id)arg1 logKey:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
 - (id)_prepareWithURL:(id)arg1 loadBlock:(CDUnknownBlockType)arg2;
+- (id)_parseRequestError:(id)arg1 logKey:(id)arg2;
+- (void)_openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_jsonLogStringWithDictionary:(id)arg1;
+- (void)_finishedLoading;
 - (void)_addScriptsToContentController:(id)arg1 additionalScripts:(id)arg2;
-- (void)_webView:(id)arg1 didFailToInitializePlugInWithInfo:(id)arg2;
-- (void)_webView:(id)arg1 webContentProcessDidTerminateWithReason:(long long)arg2;
 - (void)_webView:(id)arg1 contentRuleListWithIdentifier:(id)arg2 performedAction:(id)arg3 forURL:(id)arg4;
 - (void)_webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3 userInfo:(id)arg4;
 - (void)_webView:(id)arg1 navigation:(id)arg2 didFailProvisionalLoadInSubframe:(id)arg3 withError:(id)arg4;
@@ -54,17 +46,15 @@ __attribute__((visibility("hidden")))
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
 - (void)webView:(id)arg1 didCommitNavigation:(id)arg2;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
-- (void)webPlugInWillDestroyContext;
-- (void)webPlugInDidCreateContext;
+- (void)userContentController:(id)arg1 didReceiveScriptMessage:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)receiveJSObject:(id)arg1 logKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)frameFinishedLoading;
 - (void)updateUserScriptsWithScripts:(id)arg1;
 - (void)takeSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (id)sendJSRequest:(id)arg1;
 - (id)loadRequest:(id)arg1;
 - (id)loadRequest:(id)arg1 response:(id)arg2 responseData:(id)arg3;
 @property(nonatomic) double topInset; // @synthesize topInset=_topInset;
+@property(nonatomic) double bottomInset;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (id)initWithContext:(id)arg1 additionalScripts:(id)arg2;

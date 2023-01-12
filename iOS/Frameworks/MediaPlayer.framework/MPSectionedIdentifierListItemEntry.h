@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlayer/MPSectionedIdentifierListEnumerationItem-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPSectionedIdentifierListItemEntry <MPSectionedIdentifierListEnumerationItem>
+@interface MPSectionedIdentifierListItemEntry
 {
     _Bool _hasClones;
     _Bool _dataSourceCloned;
@@ -52,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)stringRepresentation;
 @property(readonly, nonatomic) long long entryType;
 @property(readonly, copy) NSString *description;
+- (id)_stateDumpObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

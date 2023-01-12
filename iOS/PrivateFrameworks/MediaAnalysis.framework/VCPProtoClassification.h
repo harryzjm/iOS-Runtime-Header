@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCPProtoClassification : PBCodable <NSCopying>
+@interface VCPProtoClassification : PBCodable
 {
     float _confidence;
     unsigned int _identifier;

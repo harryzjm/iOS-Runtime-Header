@@ -6,11 +6,9 @@
 
 #import <AWDSupportFramework/AWDCoreRoutineLMPScoreBoardInstance.h>
 
-#import <coreroutine/RTMetricManagerMetricIdProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AWDCoreRoutineLMPScoreBoardInstance (MetricManager) <RTMetricManagerMetricIdProtocol>
+@interface AWDCoreRoutineLMPScoreBoardInstance (MetricManager)
 @property(readonly, copy) NSString *description;
 - (_Bool)valid:(id *)arg1;
 - (id)_init;

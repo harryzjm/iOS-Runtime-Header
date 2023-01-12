@@ -4,23 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CHStrokeClassificationResult.h"
+
 @class NSMutableDictionary, NSMutableSet;
 
-@interface CHMutableStrokeClassificationResult
+@interface CHMutableStrokeClassificationResult : CHStrokeClassificationResult
 {
     NSMutableDictionary *_strokeClassificationsByStrokeIdentifier;
     NSMutableDictionary *_substrokesByStrokeIdentifier;
     NSMutableSet *_nontextCandidates;
 }
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)updateByAddingClutterStroke:(id)arg1;
 - (void)updateByAddingNonClutterStroke:(id)arg1 withClassification:(long long)arg2;
+- (id)nontextCandidates;
+- (id)substrokesByStrokeIdentifier;
+- (id)strokeClassificationsByStrokeIdentifier;
 - (void)updateByAddingNonClutterStroke:(id)arg1 withAllStrokes:(id)arg2 forceText:(_Bool)arg3;
 - (void)updateByTransitionedClutterStrokeIdentifier:(id)arg1 withRemovedAndClutterStrokeIDs:(id)arg2;
 - (void)updateByRemovingStrokeIdentifier:(id)arg1 withRemovedAndClutterStrokeIDs:(id)arg2;
 - (void)updateNonTextCandidatesByRemovingSupportFromStrokeIdentifier:(id)arg1 skippingCandidatesWithStrokeIdentifier:(id)arg2;
-- (void)dealloc;
 - (id)initWithStrokeClassificationsByStrokeIdentifier:(id)arg1 substrokesByStrokeIdentifier:(id)arg2 nontextCandidates:(id)arg3;
 - (id)init;
 

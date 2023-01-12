@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSMutableDictionary, NSString, SKUITracklistColumnData, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUITracklistHeaderCollectionViewCell <SKUIViewElementView>
+@interface SKUITracklistHeaderCollectionViewCell
 {
     UIView *_bottomSeparatorView;
     SKUITracklistColumnData *_columnData;

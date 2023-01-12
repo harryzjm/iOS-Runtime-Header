@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Espresso/ETDataSource-Protocol.h>
-
 @protocol ETDataSource;
 
 __attribute__((visibility("hidden")))
-@interface ETDataSourceWithCache : NSObject <ETDataSource>
+@interface ETDataSourceWithCache : NSObject
 {
     id <ETDataSource> _source;
     struct map<int, ETDataPoint *, std::less<int>, std::allocator<std::pair<const int, ETDataPoint *>>> _cache;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/CABackdropLayerDelegate-Protocol.h>
+#import "UIView.h"
 
 @class CABackdropLayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIBackdropEffectView <CABackdropLayerDelegate>
+@interface _UIBackdropEffectView : UIView
 {
     CABackdropLayer *_backdropLayer;
     double _zoom;

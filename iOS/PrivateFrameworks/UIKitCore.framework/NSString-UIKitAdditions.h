@@ -6,13 +6,9 @@
 
 #import <Foundation/NSString.h>
 
-#import <UIKitCore/UIItemProviderReading-Protocol.h>
-#import <UIKitCore/UIItemProviderWriting-Protocol.h>
-#import <UIKitCore/_UIMenuImageOrName-Protocol.h>
-
 @class NSArray, UIImage;
 
-@interface NSString (UIKitAdditions) <UIItemProviderReading, UIItemProviderWriting, _UIMenuImageOrName>
+@interface NSString (UIKitAdditions)
 - (id)queryKeysAndValues;
 - (id)_uikit_unescapedQueryValue;
 - (struct CGSize)drawAtPoint:(struct CGPoint)arg1 forWidth:(double)arg2 withFont:(id)arg3 minFontSize:(double)arg4 actualFontSize:(double *)arg5 lineBreakMode:(long long)arg6 baselineAdjustment:(long long)arg7;

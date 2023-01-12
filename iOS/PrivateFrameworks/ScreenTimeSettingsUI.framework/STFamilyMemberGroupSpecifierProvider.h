@@ -4,19 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ScreenTimeSettingsUI/MCProfileConnectionObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface STFamilyMemberGroupSpecifierProvider <MCProfileConnectionObserver>
+@interface STFamilyMemberGroupSpecifierProvider
 {
     _Bool _presentedAsModal;
 }
 
 + (id)providerWithCoordinator:(id)arg1 presentedAsModal:(_Bool)arg2;
 @property(nonatomic) _Bool presentedAsModal; // @synthesize presentedAsModal=_presentedAsModal;
-- (void)showChildViewController:(id)arg1;
 - (id)totalChildUsageTime:(id)arg1;
 - (void)imageDidUpdate:(id)arg1;
 - (id)familySpecifiers;

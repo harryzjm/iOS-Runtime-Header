@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKConversation, CKRecipientSelectionController, CNComposeRecipient, NSString;
+@class CKConversation, CKRecipientSelectionController, CNComposeRecipient, NSString, UIView;
 
 @protocol CKRecipientSelectionControllerDelegate <NSObject>
 - (void)recipientSelectionControllerShouldResignFirstResponder:(CKRecipientSelectionController *)arg1;
@@ -22,6 +22,9 @@
 - (void)recipientSelectionControllerDidBecomeFirstResponder:(CKRecipientSelectionController *)arg1;
 
 @optional
+- (struct UIEdgeInsets)additionalSearchResultsEdgeInsetsForRecipientSelectionController:(CKRecipientSelectionController *)arg1;
+- (long long)userInterfaceStyleOverrideForRecipientSelectionConroller:(CKRecipientSelectionController *)arg1;
+- (UIView *)headerDecorationViewForRecipientSelectionConroller:(CKRecipientSelectionController *)arg1;
 - (void)showConversation:(CKConversation *)arg1 animate:(_Bool)arg2;
 @end
 

@@ -13,6 +13,6 @@
 @property(readonly, nonatomic) long long questionOptions;
 - (NSArray *)generateQuestionsWithLimit:(unsigned long long)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
 - (id)init;
-- (id)initWithWorkingContext:(PGManagerWorkingContext *)arg1;
+- (id)initWithWorkingContext:(PGManagerWorkingContext *)arg1 questionVersion:(short)arg2;
 @end
 

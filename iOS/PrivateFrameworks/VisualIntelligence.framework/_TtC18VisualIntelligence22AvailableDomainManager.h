@@ -11,12 +11,10 @@
 @interface _TtC18VisualIntelligence22AvailableDomainManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *availableDomains;
-    MISSING_TYPE *enableStatusPublisher;
+    MISSING_TYPE *enableListener;
     MISSING_TYPE *queue;
+    MISSING_TYPE *domainProvider;
     MISSING_TYPE *enableStatusCancellable;
-    MISSING_TYPE *enableState;
-    MISSING_TYPE *publisherCompletion;
-    MISSING_TYPE *queuedActions;
 }
 
 @end

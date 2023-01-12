@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICSQLitePreparedStatement : NSObject
 {
     const void *_connectionPointer;

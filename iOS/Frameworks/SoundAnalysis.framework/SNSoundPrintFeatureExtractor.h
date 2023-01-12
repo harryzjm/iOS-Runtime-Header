@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNProcessing-Protocol.h>
-
 @class NSString, SNSoundPrintFeatureExtractorConfiguration, SNSystemConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface SNSoundPrintFeatureExtractor : NSObject <SNProcessing>
+@interface SNSoundPrintFeatureExtractor : NSObject
 {
     shared_ptr_f6ac7592 _graph;
     SNSystemConfiguration *_systemConfiguration;
@@ -22,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (id)initWithConfiguration:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

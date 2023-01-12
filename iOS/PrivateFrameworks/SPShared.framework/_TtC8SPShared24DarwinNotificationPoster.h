@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <swiftCore/_TtCs12_SwiftObject.h>
+
 @class MISSING_TYPE;
 
-@interface _TtC8SPShared24DarwinNotificationPoster
+@interface _TtC8SPShared24DarwinNotificationPoster : _TtCs12_SwiftObject
 {
     MISSING_TYPE *name;
     MISSING_TYPE *publisher;
     MISSING_TYPE *serialQueue;
+    MISSING_TYPE *subscriptions;
 }
 
 @end

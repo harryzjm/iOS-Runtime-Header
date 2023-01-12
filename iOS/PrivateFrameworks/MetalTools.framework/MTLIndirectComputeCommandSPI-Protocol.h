@@ -13,7 +13,7 @@
 - (unsigned long long)getOptimizedStatus;
 - (_MTLImageBlockArguments *)getImageBlockSize;
 - (_Bool)hasBarrier;
-- (CDStruct_1e3be3a8)getStageInRegion;
+- (CDStruct_4c83c94d)getStageInRegion;
 - (unsigned long long)getThreadgroupMemoryLengthAtIndex:(unsigned long long)arg1;
 - (_MTLIndirectDispatchThreadsArguments *)dispatchThreadsArguments;
 - (_MTLIndirectDispatchThreadgroupsArguments *)dispatchThreadgroupsArguments;

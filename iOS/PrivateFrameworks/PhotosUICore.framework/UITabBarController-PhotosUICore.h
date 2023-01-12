@@ -6,11 +6,7 @@
 
 #import <UIKit/UITabBarController.h>
 
-#import <PhotosUICore/PXProgrammaticNavigationUpdateTarget-Protocol.h>
-
-@class NSString;
-
-@interface UITabBarController (PhotosUICore) <PXProgrammaticNavigationUpdateTarget>
+@interface UITabBarController (PhotosUICore)
 - (void)_px_selectTabForKeyCommand:(id)arg1;
 - (id)px_defaultKeyCommandsWithDelegate:(id)arg1;
 - (struct CGRect)px_frameForTabItem:(unsigned long long)arg1 inCoordinateSpace:(id)arg2;
@@ -18,7 +14,6 @@
 @property(readonly, nonatomic) _Bool px_hidesTabBarForCurrentHorizontalSizeClass;
 @property(readonly, nonatomic) _Bool px_hidesTabBarForRegularHorizontalSizeClass;
 - (_Bool)px_canPerformAddToTabAnimationForTab:(unsigned long long)arg1;
-- (id)px_navigateToMemoryWithLocalIdentifier:(id)arg1 dismissAnyPresentedViewController:(_Bool)arg2;
 @property(readonly, nonatomic, getter=px_isTabBarHidden) _Bool px_tabBarHidden;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (double)px_imageModulationIntensity;
@@ -32,12 +27,5 @@
 - (void)_px_prepareNavigationFromViewController:(id)arg1 routingOptions:(unsigned long long)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
 - (unsigned long long)routingOptionsForDestination:(id)arg1;
-- (id)px_endPointForTransition:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 @end
 

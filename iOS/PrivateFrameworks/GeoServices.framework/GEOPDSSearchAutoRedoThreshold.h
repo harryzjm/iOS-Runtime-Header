@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDSSearchAutoRedoThreshold : PBCodable <NSCopying>
+@interface GEOPDSSearchAutoRedoThreshold : PBCodable
 {
     PBUnknownFields *_unknownFields;
     double _panDeltaThresholdInMeters;

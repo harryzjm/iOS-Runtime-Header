@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKeyboardDockViewDelegate-Protocol.h>
+#import "UIViewController.h"
 
 @class NSString, UIButton, UIKeyboardDockItem, UIKeyboardDockView;
 
 __attribute__((visibility("hidden")))
-@interface UISystemKeyboardDockController <UIKeyboardDockViewDelegate>
+@interface UISystemKeyboardDockController : UIViewController
 {
     _Bool _dictationHasUsedServerManualEndpointing;
     _Bool _dictationUsingServerManualEndpointing;
     _Bool _isSuppressingDockItemTouch;
     UIKeyboardDockItem *_globeDockItem;
     UIKeyboardDockItem *_dictationDockItem;
+    UIKeyboardDockItem *_dictationRunningDockItem;
     UIKeyboardDockItem *_keyboardDockItem;
     UIButton *_stopDictationButton;
     UIKeyboardDockView *_dockView;
@@ -27,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)keyboardDockView:(id)arg1 didPressDockItem:(id)arg2 withEvent:(id)arg3;
 - (void)keyboardItemButtonWasTapped:(id)arg1 withEvent:(id)arg2;
 - (void)globeItemButtonWasPressed:(id)arg1 withEvent:(id)arg2;
-- (void)dictationItemButtonWasPressed:(id)arg1 withEvent:(id)arg2;
+- (void)dictationItemButtonWasPressed:(id)arg1 withEvent:(id)arg2 isRunningButton:(_Bool)arg3;
 - (void)_dictationDidBeginNotification:(id)arg1;
 - (void)setKeyboardDockItem;
 - (void)viewDidLoad;

@@ -44,13 +44,3 @@ struct unique_ptr<language_modeling::LanguageModelSession, std::default_delete<l
     } __ptr_;
 };
 
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    struct {
-        long long _field1;
-        long long _field2;
-    } _field1;
-    unsigned long long _field2;
-} CDStruct_b1a60774;
-

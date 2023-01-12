@@ -6,11 +6,9 @@
 
 #import <Foundation/NSMutableString.h>
 
-#import <ActionKit/KSWriter-Protocol.h>
-
 @class NSString;
 
-@interface NSMutableString (KSWriter) <KSWriter>
+@interface NSMutableString (KSWriter)
 - (void)close;
 - (void)writeString:(id)arg1;
 

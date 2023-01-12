@@ -6,11 +6,9 @@
 
 #import <Foundation/NSData.h>
 
-#import <EmailFoundation/EFSQLBindable-Protocol.h>
-
 @class EFSQLBinding, NSString;
 
-@interface NSData (EmailFoundationAdditions) <EFSQLBindable>
+@interface NSData (EmailFoundationAdditions)
 + (id)ef_crlfData;
 - (_Bool)ef_containsData:(id)arg1;
 - (_Bool)ef_hasSuffix:(id)arg1;

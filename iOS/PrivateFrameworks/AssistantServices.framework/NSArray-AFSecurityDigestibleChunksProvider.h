@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <AssistantServices/AFSecurityDigestibleChunksProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding>
+@interface NSArray (AFSecurityDigestibleChunksProvider)
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)af_objectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)af_firstObjectPassingTest:(CDUnknownBlockType)arg1;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/EQKitLayoutContext-Protocol.h>
-
 @class NSString, TSUColor;
 
-@interface TSWPEquationLayoutContext : NSObject <EQKitLayoutContext>
+@interface TSWPEquationLayoutContext : NSObject
 {
     NSString *_fontName;
     TSUColor *_fontColor;

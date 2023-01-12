@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CoreML/CKCodeOperationMessageMutation-Protocol.h>
-#import <CoreML/NSCopying-Protocol.h>
-
 @class ModelKeyServerAPIFetchKeyResult, ModelKeyServerAPIResultError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ModelKeyServerAPIFetchKeyResponse : PBCodable <CKCodeOperationMessageMutation, NSCopying>
+@interface ModelKeyServerAPIFetchKeyResponse : PBCodable
 {
     ModelKeyServerAPIResultError *_error;
     int _result;

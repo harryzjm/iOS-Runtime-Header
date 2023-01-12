@@ -13,7 +13,12 @@
     MISSING_TYPE *id;
     MISSING_TYPE *configuration;
     MISSING_TYPE *lastAudioPlayedDate;
+    MISSING_TYPE *lastAudioPlayedFromInConversationsDate;
+    MISSING_TYPE *lastAudioPlayedFromBusinessDate;
     MISSING_TYPE *lastDailyBriefingPlayedDate;
+    MISSING_TYPE *$__lazy_storage_$_inConversationsAudioTagID;
+    MISSING_TYPE *$__lazy_storage_$_businessAudioTagID;
+    MISSING_TYPE *configurationManager;
 }
 
 @end

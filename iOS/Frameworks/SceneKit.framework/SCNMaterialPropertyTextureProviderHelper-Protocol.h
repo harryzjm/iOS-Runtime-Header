@@ -10,6 +10,7 @@
 @protocol MTLTexture;
 
 @protocol SCNMaterialPropertyTextureProviderHelper <NSObject>
+- (id <MTLTexture>)cachedTextureWithURL:(NSURL *)arg1 token:(id *)arg2 didFallbackToDefaultTexture:(_Bool *)arg3;
 - (id <MTLTexture>)cachedTextureWithURL:(NSURL *)arg1 token:(id *)arg2;
 @end
 

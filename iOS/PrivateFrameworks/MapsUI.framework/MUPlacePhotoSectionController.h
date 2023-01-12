@@ -4,38 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MKPhotoGalleryTransitionAnimator-Protocol.h>
-#import <MapsUI/MKPlacePhotoGalleryViewControllerDelegate-Protocol.h>
-#import <MapsUI/MUPlacePhotoSliderDataSource-Protocol.h>
-#import <MapsUI/MUPlacePhotoSliderDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-#import <MapsUI/MUScrollAnalyticActionObserving-Protocol.h>
-#import <MapsUI/UIViewControllerTransitioningDelegate-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKMuninContainerView, MKPlacePhotoGalleryViewController, MKUGCCallToActionViewAppearance, MUPhotoSliderTileProvider, MUPlacePhotoSectionControllerConfiguration, MUPlacePhotoSliderView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPunchoutViewModel, NSString, UIButton, UIImageView, UIView, UIViewController;
-@protocol MUInfoCardAnalyticsDelegate, MUPlacePhotoSectionControllerDelegate;
+@class MKLookAroundContainerView, MKLookAroundView, MKUGCCallToActionViewAppearance, MUPhotoSliderTileProvider, MUPlacePhotoGalleryViewController, MUPlacePhotoSectionControllerConfiguration, MUPlacePhotoSliderView, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPunchoutViewModel, MUUserSubmittedPhoto, NSArray, NSString, UIImageView, UIView, UIViewController;
+@protocol MUInfoCardAnalyticsDelegate, MUPlacePhotoSectionControllerDelegate, MUPlacePhotoSectionControllerLookAroundDelegate, MUUserInformationProvider;
 
 __attribute__((visibility("hidden")))
-@interface MUPlacePhotoSectionController <MUPlacePhotoSliderDataSource, MUPlacePhotoSliderDelegate, MKPlacePhotoGalleryViewControllerDelegate, UIViewControllerTransitioningDelegate, MKPhotoGalleryTransitionAnimator, MUScrollAnalyticActionObserving, MUPlaceSectionControlling>
+@interface MUPlacePhotoSectionController : MUPlaceSectionController
 {
     MUPhotoSliderTileProvider *_photoTileProvider;
     MUPlacePhotoSliderView *_photoSliderView;
-    MKPlacePhotoGalleryViewController *_photoGalleryViewController;
+    MUPlacePhotoGalleryViewController *_photoGalleryViewController;
     UIImageView *_imageViewForTransition;
     MUPunchoutViewModel *_attributionViewModel;
     MUPunchoutViewModel *_addPhotoViewModel;
     MUPlaceSectionView *_sectionView;
-    UIButton *_floatingAttributionView;
-    MKMuninContainerView *_muninContainerView;
+    MKLookAroundContainerView *_lookAroundContainerView;
     MUPlacePhotoSectionControllerConfiguration *_configuration;
     _Bool _active;
+    id <MUPlacePhotoSectionControllerLookAroundDelegate> _lookAroundDelegate;
     id <MUPlacePhotoSectionControllerDelegate> _photoSectionControllerDelegate;
+    id <MUUserInformationProvider> _userInfoProvider;
+    MUUserSubmittedPhoto *_userSubmittedPhoto;
+    long long _numberOfUserSubmittedPhotos;
+    long long _contentVisibility;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long contentVisibility; // @synthesize contentVisibility=_contentVisibility;
+@property(nonatomic) long long numberOfUserSubmittedPhotos; // @synthesize numberOfUserSubmittedPhotos=_numberOfUserSubmittedPhotos;
+@property(retain, nonatomic) MUUserSubmittedPhoto *userSubmittedPhoto; // @synthesize userSubmittedPhoto=_userSubmittedPhoto;
+@property(nonatomic) __weak id <MUUserInformationProvider> userInfoProvider; // @synthesize userInfoProvider=_userInfoProvider;
 @property(nonatomic) __weak id <MUPlacePhotoSectionControllerDelegate> photoSectionControllerDelegate; // @synthesize photoSectionControllerDelegate=_photoSectionControllerDelegate;
+@property(nonatomic) __weak id <MUPlacePhotoSectionControllerLookAroundDelegate> lookAroundDelegate; // @synthesize lookAroundDelegate=_lookAroundDelegate;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+- (id)infoCardChildPossibleActions;
+- (void)lookAroundContainerView:(id)arg1 didAddLookAroundView:(id)arg2;
+- (void)_setContentVisibility:(long long)arg1;
+- (void)updateWithContentVisibility:(long long)arg1;
+- (void)_populateRevealedAnalyticsModule:(id)arg1;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
+- (void)_capturePhotoGallerySwipeUserAction:(int)arg1 atIndex:(unsigned long long)arg2;
+- (void)_captureSliderInstrumentationWithAction:(int)arg1 eventValue:(id)arg2;
 - (void)_captureSliderInstrumentationWithAction:(int)arg1;
 - (void)performInstrumentationForScrollRight;
 - (void)performInstrumentationForScrollLeft;
@@ -45,33 +56,35 @@ __attribute__((visibility("hidden")))
 - (void)updateForAttributionChange;
 - (id)draggableContent;
 - (id)placePhotoGalleryImageViewForPhotoAtIndex:(unsigned long long)arg1;
-- (void)placePhotoGalleryDidSelectAddPhoto:(id)arg1;
+- (void)placePhotoGallery:(id)arg1 selectedAddPhotoWithEntryPoint:(long long)arg2 usingPresentationOptions:(id)arg3;
 - (void)placePhotoGallery:(id)arg1 didSelectReportImageAtIndex:(unsigned long long)arg2;
 - (void)placePhotoGallery:(id)arg1 openButtonTappedAtIndex:(unsigned long long)arg2;
 - (void)placePhotoGallery:(id)arg1 attributionViewTappedAtIndex:(unsigned long long)arg2;
 - (void)placePhotoGalleryAdditionalViewTapped:(id)arg1;
 - (void)placePhotoGalleryDidCloseAtIndex:(unsigned long long)arg1;
 - (void)placePhotoGallery:(id)arg1 willCloseAtIndex:(unsigned long long)arg2;
+- (void)placePhotoGalleryDidScrollRightToIndex:(unsigned long long)arg1;
+- (void)placePhotoGalleryDidScrollLeftToIndex:(unsigned long long)arg1;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (void)_addPhotoButtonTappedWithPresentationOptions:(id)arg1;
-- (void)_addPhotoButtonTapped;
+- (void)_addPhotoButtonTappedWithEntryPoint:(long long)arg1 presentationOptions:(id)arg2;
+@property(readonly, nonatomic) MKLookAroundView *lookAroundView;
 - (id)photoSliderViewHeaderViewForPhotoSlider:(id)arg1;
-- (id)floatingViewForPhotoSliderView:(id)arg1;
 - (void)photoSliderViewDidTapHeaderView:(id)arg1;
 - (void)photoSliderView:(id)arg1 didTapAttribution:(id)arg2;
 - (unsigned long long)numberOfAttributionsForPhotoSliderView:(id)arg1;
 - (id)attributionViewModelsForPhotoSliderView:(id)arg1;
-- (unsigned long long)numberOfTilesForPhotoSliderView:(id)arg1;
-- (id)photoSliderView:(id)arg1 photoOverlayAtIndex:(unsigned long long)arg2;
-- (id)photoSliderView:(id)arg1 photoViewModelAtIndex:(unsigned long long)arg2;
+- (id)photoSliderView:(id)arg1 photoOverlayForModel:(id)arg2;
+- (void)updateWithUserSubmittedPhotos:(_Bool)arg1;
+- (id)photoSliderViewRequestsViewModels:(id)arg1;
 - (void)photoSliderViewDidScroll:(id)arg1;
 - (void)_update;
 - (void)_routeAlbumTapWithIndex:(unsigned long long)arg1;
-- (void)_routeFlatListTapWithIndex:(unsigned long long)arg1;
-- (void)photoSliderView:(id)arg1 didTapPhotoAtIndex:(unsigned long long)arg2;
+- (void)_routeFlatListTapWithViewModel:(id)arg1 index:(unsigned long long)arg2;
+- (void)photoSliderView:(id)arg1 didTapViewModel:(id)arg2 atIndex:(unsigned long long)arg3;
 @property(readonly, nonatomic) UIViewController *presentingViewController;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
+@property(readonly, nonatomic) _Bool hasContent;
 @property(readonly, nonatomic) UIView *sectionView;
 - (void)_setupSectionView;
 - (id)initWithMapItem:(id)arg1 configuration:(id)arg2;
@@ -80,10 +93,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MUInfoCardAnalyticsDelegate> analyticsDelegate;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) _Bool hasContent;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

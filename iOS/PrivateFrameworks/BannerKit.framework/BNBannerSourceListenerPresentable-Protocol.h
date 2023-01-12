@@ -8,16 +8,22 @@
 #import <BannerKit/BNPresentableObservable-Protocol.h>
 #import <BannerKit/BNPresentableUniquelyIdentifying-Protocol.h>
 #import <BannerKit/BSInvalidatable-Protocol.h>
-#import <BannerKit/FBSceneDelegate-Protocol.h>
 
-@class FBScene;
-@protocol BNPresentableSpecifying;
+@class FBScene, NSString;
+@protocol BNBannerSourceListenerPresentableDelegate, BNPresentable, BNPresentableSpecifying;
 
-@protocol BNBannerSourceListenerPresentable <BSInvalidatable, BNPresentable, BNPresentableUniquelyIdentifying, BNPresentableObservable, FBSceneDelegate>
+@protocol BNBannerSourceListenerPresentable <BSInvalidatable, BNPresentable, BNPresentableUniquelyIdentifying, BNPresentableObservable>
+@property(nonatomic) __weak id <BNBannerSourceListenerPresentableDelegate> delegate;
 @property(readonly, nonatomic) int bannerAppearState;
 @property(readonly, nonatomic, getter=isReady) _Bool ready;
-@property(readonly, nonatomic, getter=isContentHosted) _Bool contentHosted;
+@property(readonly, nonatomic) id <BNPresentable> presentable;
+- (void)handleTemplateContentEvent:(long long)arg1;
+- (void)makeReadyIfPossible;
+- (id)initWithWithPresentable:(id <BNPresentable>)arg1;
+- (id)initWithWithSpecification:(id <BNPresentableSpecifying>)arg1 serviceDomain:(NSString *)arg2 readyCompletion:(void (^)(id <BNBannerSourceListenerPresentable>, NSError *))arg3;
+
+@optional
 @property(readonly, nonatomic) FBScene *scene;
-- (id)initWithWithSpecification:(id <BNPresentableSpecifying>)arg1 scene:(FBScene *)arg2 readyCompletion:(void (^)(id <BNBannerSourceListenerPresentable>, NSError *))arg3;
+@property(readonly, nonatomic, getter=isContentHosted) _Bool contentHosted;
 @end
 

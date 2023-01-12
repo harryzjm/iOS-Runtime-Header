@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
-
 @class AMSUIWebLoadingPageModel, AMSUIWebNavigationBarModel, NSDictionary, NSString;
 @protocol AMSUIWebPageProvider;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebFlowAction <AMSUIWebActionRunnable>
+@interface AMSUIWebFlowAction
 {
     _Bool _deferredPresentation;
     id _actionData;

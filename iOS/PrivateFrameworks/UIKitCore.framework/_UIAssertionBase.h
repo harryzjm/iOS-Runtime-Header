@@ -6,27 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIAssertion-Protocol.h>
-
 @class NSString, _UIAssertionController;
 
 __attribute__((visibility("hidden")))
-@interface _UIAssertionBase : NSObject <_UIAssertion>
+@interface _UIAssertionBase : NSObject
 {
     _Bool _initialState;
+    _Bool _invalidated;
+    _Bool _requiresExplicitInvalidation;
     unsigned long long _type;
     NSString *_reason;
     _UIAssertionController *_parentController;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool requiresExplicitInvalidation; // @synthesize requiresExplicitInvalidation=_requiresExplicitInvalidation;
+@property(readonly, nonatomic) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(nonatomic) __weak _UIAssertionController *parentController; // @synthesize parentController=_parentController;
 @property(readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) _Bool initialState; // @synthesize initialState=_initialState;
 - (void)dealloc;
 @property(readonly, copy) NSString *description;
-- (id)_initWithType:(unsigned long long)arg1 initialState:(_Bool)arg2 reason:(id)arg3;
+- (void)_invalidate;
+- (id)_initWithType:(unsigned long long)arg1 initialState:(_Bool)arg2 reason:(id)arg3 requiresExplicitInvalidation:(_Bool)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

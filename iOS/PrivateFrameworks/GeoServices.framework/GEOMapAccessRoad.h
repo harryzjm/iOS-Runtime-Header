@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapRoad-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapAccessRoad <GEOMapRoad>
+@interface GEOMapAccessRoad
 {
     shared_ptr_92bc9970 _roadEdge;
     unsigned long long _roadID;

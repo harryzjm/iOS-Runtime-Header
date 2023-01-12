@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NLP/NLParsecNamedEntity-Protocol.h>
-
 @class NLPOIEntryImpl, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NLPOIEntry : NSObject <NLParsecNamedEntity>
+@interface NLPOIEntry : NSObject
 {
     NLPOIEntryImpl *m_impl;
 }

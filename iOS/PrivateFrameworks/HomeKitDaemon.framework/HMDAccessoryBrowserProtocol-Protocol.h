@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HAPAccessoryServer, HAPAccessoryServerBrowserRelay, HMDMediaBrowser, HMDUnassociatedAccessory, HMDUnpairedHAPAccessory, HMDUnpairedHAPAccessoryConfiguration, HMFMessageTransport, HMSetupAccessoryDescription, NSArray, NSData, NSDictionary, NSError, NSObject, NSSet, NSString, NSUUID;
+#import <HomeKitDaemon/NSObject-Protocol.h>
+
+@class HAPAccessoryServer, HMDMediaBrowser, HMDUnassociatedAccessory, HMDUnpairedHAPAccessory, HMDUnpairedHAPAccessoryConfiguration, HMFMessageTransport, HMSetupAccessoryDescription, NSArray, NSData, NSDictionary, NSError, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDAccessoryBrowserDelegate, HMDAccessoryBrowserHapProtocol, NSObject, OS_dispatch_queue;
 
-@protocol HMDAccessoryBrowserProtocol
+@protocol HMDAccessoryBrowserProtocol <NSObject>
 @property(readonly, nonatomic) HMDMediaBrowser *mediaBrowser;
-@property(readonly, nonatomic) HAPAccessoryServerBrowserRelay *relayAccessoryServerBrowser;
 @property(readonly, nonatomic) _Bool active;
 @property(readonly, copy) NSArray *unassociatedAccessories;
 - (void)setBrowseableLinkTypes:(NSArray *)arg1;
@@ -47,9 +48,12 @@
 - (void)pairAccessoryWithDescription:(HMSetupAccessoryDescription *)arg1 configuration:(HMDUnpairedHAPAccessoryConfiguration *)arg2 progressHandler:(void (^)(long long, HMDAddAccessoryProgressState *))arg3 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, _Bool, _Bool, NSError *))arg4;
 - (void)pairAccessory:(HMDUnpairedHAPAccessory *)arg1 configuration:(HMDUnpairedHAPAccessoryConfiguration *)arg2 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, _Bool, _Bool, NSError *))arg3;
 - (void)registerProgressHandler:(void (^)(long long, HMDAddAccessoryProgressState *))arg1 unpairedAccessoryUUID:(NSUUID *)arg2;
+- (void)restartBrowsers;
+- (void)evaluateAccessoryDiscoveryState;
 - (void)startDiscoveringAccessoriesNeedingReprovisioning;
 - (void)startDiscoveringPairedAccessoriesWithLinkType:(long long)arg1;
 - (void)startDiscoveringPairedAccessories;
+- (void)stopDiscoveringForUnpairedAccessoriesWithLinkType:(long long)arg1;
 - (void)stopDiscoveringAccessoriesWithLinkType:(long long)arg1;
 - (void)stopDiscoveringAccessories;
 - (void)startDiscoveringAccessoriesWithLinkType:(long long)arg1;
@@ -60,5 +64,6 @@
 - (HMDUnpairedHAPAccessory *)unpairedAccessoryWithUUID:(NSUUID *)arg1;
 - (void)activate:(_Bool)arg1;
 - (void)setQOS:(long long)arg1;
+- (void)updateRemoteAccessoryBrowsing:(_Bool)arg1 whbScan:(_Bool)arg2;
 @end
 

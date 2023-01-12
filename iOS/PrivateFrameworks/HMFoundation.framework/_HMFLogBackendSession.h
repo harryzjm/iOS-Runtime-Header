@@ -6,31 +6,33 @@
 
 #import <objc/NSObject.h>
 
-#import <HMFoundation/HMFLogBackendSession-Protocol.h>
-#import <HMFoundation/HMFLogging-Protocol.h>
-
-@class NSMutableArray, NSString, RTCReporting;
+@class NSMutableArray, NSString, NSUUID, RTCReporting;
 @protocol _HMFLogBackendSessionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _HMFLogBackendSession : NSObject <HMFLogBackendSession, HMFLogging>
+@interface _HMFLogBackendSession : NSObject
 {
     struct os_unfair_lock_s _lock;
     NSMutableArray *_queuedEvents;
     RTCReporting *_session;
+    _Bool _isRealtime;
     NSString *_serviceName;
+    NSUUID *_samplingUUID;
     id <_HMFLogBackendSessionDelegate> _delegate;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_HMFLogBackendSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) _Bool isRealtime; // @synthesize isRealtime=_isRealtime;
+@property(readonly, nonatomic) NSUUID *samplingUUID; // @synthesize samplingUUID=_samplingUUID;
 @property(readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 - (void)dealloc;
 - (void)_flushQueuedEvents;
 - (void)activateWithSession:(id)arg1;
 - (_Bool)sendMessage:(id)arg1;
-- (id)initWithSession:(id)arg1 serviceName:(id)arg2 delegate:(id)arg3;
+- (_Bool)_sendMessagePayload:(id)arg1;
+- (id)initWithSession:(id)arg1 serviceName:(id)arg2 samplingUUID:(id)arg3 isRealtime:(_Bool)arg4 delegate:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

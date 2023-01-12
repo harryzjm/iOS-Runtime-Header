@@ -8,18 +8,11 @@
 
 @class NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AMDHistory : NSManagedObject
 {
 }
 
-+ (short)daysSince2000;
-+ (id)deleteHistoryOlderThan:(short)arg1 inDomain:(id)arg2 error:(id *)arg3;
-+ (id)deleteAllHistory:(id *)arg1;
-+ (id)fetchPreTodayHistoryForUser:(id)arg1 inDomain:(id)arg2 forUseCase:(id)arg3 error:(id *)arg4;
-+ (id)fetchHistoryForUser:(id)arg1 inDomain:(id)arg2 forUseCase:(id)arg3 error:(id *)arg4;
-+ (id)fetchAllHistory:(id *)arg1;
-+ (_Bool)saveResultsToHistory:(id)arg1 forUser:(id)arg2 inDomain:(id)arg3 forUseCase:(id)arg4 error:(id *)arg5;
-+ (id)sha2256HashFor:(id)arg1;
 + (id)fetchRequest;
 
 // Remaining properties

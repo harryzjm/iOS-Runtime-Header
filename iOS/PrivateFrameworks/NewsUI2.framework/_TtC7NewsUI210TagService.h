@@ -15,6 +15,7 @@
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *notificationConfiguration;
     MISSING_TYPE *suggestedTagScoreProvider;
+    MISSING_TYPE *shortcutList;
 }
 
 @end

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-
 @class NSString, _IDSGenericCompletionHandler;
 
-@interface IDSHomeKitManager : NSObject <IDSDaemonListenerProtocol>
+@interface IDSHomeKitManager : NSObject
 {
     _IDSGenericCompletionHandler *_getServiceUserIDsCompletion;
     _IDSGenericCompletionHandler *_getAdminAccessTokensCompletion;

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKCodeRecordTransport, NSData;
 
-@interface CKDPTranscodeRequest : PBRequest <NSCopying>
+@interface CKDPTranscodeRequest : PBRequest
 {
     NSData *_constructedAssetDownloadParameters;
     CKCodeRecordTransport *_record;

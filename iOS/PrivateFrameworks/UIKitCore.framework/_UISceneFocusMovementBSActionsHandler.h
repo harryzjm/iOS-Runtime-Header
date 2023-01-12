@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneBSActionHandler-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneFocusMovementBSActionsHandler : NSObject <_UISceneBSActionHandler>
+@interface _UISceneFocusMovementBSActionsHandler : NSObject
 {
     NSMutableDictionary *_pendingFocusMovementActions;
 }

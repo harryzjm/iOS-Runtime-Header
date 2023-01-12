@@ -10,7 +10,10 @@
 @protocol ASCOffer;
 
 @protocol ASCOfferPresenterObserver <NSObject>
-- (void)offerPresenterWillPerformActionOfOffer:(id <ASCOffer>)arg1 inState:(NSString *)arg2 withActivity:(inout id *)arg3;
+- (void)offerPresenterWillPerformActionOfOffer:(id <ASCOffer>)arg1 inState:(NSString *)arg2 withActivity:(inout id *)arg3 inContext:(inout id *)arg4;
 - (void)offerPresenterDidObserveChangeToState:(NSString *)arg1;
+
+@optional
+- (void)offerPresenterPreprocessOffer:(id <ASCOffer>)arg1 inState:(NSString *)arg2 completionBlock:(void (^)(void))arg3;
 @end
 

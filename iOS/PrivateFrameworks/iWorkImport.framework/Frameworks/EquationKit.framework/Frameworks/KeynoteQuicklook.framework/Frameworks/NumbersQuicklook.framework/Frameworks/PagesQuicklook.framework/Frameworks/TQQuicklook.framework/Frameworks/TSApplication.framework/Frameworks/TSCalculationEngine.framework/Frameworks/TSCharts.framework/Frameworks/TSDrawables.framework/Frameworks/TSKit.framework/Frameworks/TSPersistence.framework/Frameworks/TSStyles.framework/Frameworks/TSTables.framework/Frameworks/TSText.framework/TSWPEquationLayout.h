@@ -6,12 +6,10 @@
 
 #import <TSDrawables/TSDMediaLayout.h>
 
-#import <TSText/TSKChangeSourceObserver-Protocol.h>
-
 @class NSString, TSDLayoutGeometry, TSDShadow, TSWPEquationInfo;
 @protocol EQKitLayout, EQKitLayoutContext;
 
-@interface TSWPEquationLayout : TSDMediaLayout <TSKChangeSourceObserver>
+@interface TSWPEquationLayout : TSDMediaLayout
 {
     _Bool _equationIsValid;
     TSDLayoutGeometry *_equationGeometry;

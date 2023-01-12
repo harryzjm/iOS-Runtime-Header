@@ -6,19 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, UIColor, VUITextLayout;
+@class NSArray, NSShadow, NSString, UIColor, VUITextLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUIMediaTagsViewLayout : NSObject
 {
+    _Bool _orphanAvoidance;
+    _Bool _centerAlign;
+    _Bool _wrappingAllowed;
     _Bool _alignBadgeVertically;
     _Bool _groupActivityTagEnabled;
     unsigned long long _type;
     VUITextLayout *_textLayout;
     VUITextLayout *_rentalExpirationTextLayout;
     UIColor *_backgroundColor;
+    NSShadow *_shadow;
     NSArray *_groupedKeys;
     NSString *_compositingFilter;
+    double _maxWidth;
     double _badgeMaxHeight;
     UIColor *_badgeTintColor;
     struct UIEdgeInsets _margin;
@@ -34,11 +39,16 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct UIEdgeInsets badgeMargin; // @synthesize badgeMargin=_badgeMargin;
 @property(nonatomic) double badgeMaxHeight; // @synthesize badgeMaxHeight=_badgeMaxHeight;
 @property(nonatomic) _Bool alignBadgeVertically; // @synthesize alignBadgeVertically=_alignBadgeVertically;
+@property(readonly, nonatomic, getter=isWrappingAllowed) _Bool wrappingAllowed; // @synthesize wrappingAllowed=_wrappingAllowed;
+@property(nonatomic) _Bool centerAlign; // @synthesize centerAlign=_centerAlign;
+@property(readonly, nonatomic) _Bool orphanAvoidance; // @synthesize orphanAvoidance=_orphanAvoidance;
+@property(nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
 @property(retain, nonatomic) NSString *compositingFilter; // @synthesize compositingFilter=_compositingFilter;
 @property(readonly, nonatomic) struct UIEdgeInsets tomatoMeterMargin; // @synthesize tomatoMeterMargin=_tomatoMeterMargin;
 @property(readonly, nonatomic) struct UIEdgeInsets commonSenseMargin; // @synthesize commonSenseMargin=_commonSenseMargin;
 @property(readonly, nonatomic) struct UIEdgeInsets groupMargin; // @synthesize groupMargin=_groupMargin;
 @property(readonly, nonatomic) NSArray *groupedKeys; // @synthesize groupedKeys=_groupedKeys;
+@property(retain, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;
 @property(readonly, nonatomic) VUITextLayout *rentalExpirationTextLayout; // @synthesize rentalExpirationTextLayout=_rentalExpirationTextLayout;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHChartGridValue-Protocol.h>
-
 @class NSString;
 
-@interface TSCHChartGridDurationValue : NSObject <TSCHChartGridValue>
+@interface TSCHChartGridDurationValue : NSObject
 {
     double _duration;
 }

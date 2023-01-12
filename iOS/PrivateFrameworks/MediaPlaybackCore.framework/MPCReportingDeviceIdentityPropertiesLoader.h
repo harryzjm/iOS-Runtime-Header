@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCReportingIdentityPropertiesLoading-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPCReportingDeviceIdentityPropertiesLoader : NSObject <MPCReportingIdentityPropertiesLoading>
+@interface MPCReportingDeviceIdentityPropertiesLoader : NSObject
 {
     NSObject<OS_dispatch_queue> *_calloutQueue;
     NSObject<OS_dispatch_queue> *_serialWorkQueue;

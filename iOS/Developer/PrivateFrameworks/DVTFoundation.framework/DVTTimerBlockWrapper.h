@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTCancellable-Protocol.h>
-
 @class NSString, NSTimer;
 
-@interface DVTTimerBlockWrapper : NSObject <DVTCancellable>
+@interface DVTTimerBlockWrapper : NSObject
 {
     NSTimer *_timer;
     CDUnknownBlockType _handler;

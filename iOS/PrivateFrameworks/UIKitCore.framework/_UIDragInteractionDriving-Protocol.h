@@ -7,7 +7,7 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, UIGestureRecognizer, UIView;
-@protocol _UIDragInteractionDriverDelegate;
+@protocol UIDragInteractionEffect, _UIDragInteractionDriverDelegate;
 
 @protocol _UIDragInteractionDriving <NSObject>
 @property(readonly, nonatomic, getter=isActive) _Bool active;
@@ -28,5 +28,8 @@
 @property(nonatomic) __weak id <_UIDragInteractionDriverDelegate> delegate;
 - (_Bool)isGestureRecognizerForDragInitiation:(UIGestureRecognizer *)arg1;
 - (void)cancel;
+
+@optional
+@property(readonly, nonatomic) id <UIDragInteractionEffect> interactionEffect;
 @end
 

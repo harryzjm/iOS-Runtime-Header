@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/MDSnapshotMap-Protocol.h>
-
 @class NSString, VKCamera;
 
 __attribute__((visibility("hidden")))
-@interface VKGlobeImageCanvas <MDSnapshotMap>
+@interface VKGlobeImageCanvas
 {
     void *_globeView;
     VKCamera *_vkCamera;
@@ -25,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (void)setMapType:(int)arg1;
 - (void)dealloc;
+- (void)willDealloc;
 - (id)initWithMapEngine:(void *)arg1;
 
 // Remaining properties

@@ -6,11 +6,9 @@
 
 #import <Intents/INIntent.h>
 
-#import <RelevanceEngine/REIntentProperties-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface INIntent (RELogging) <REIntentProperties>
+@interface INIntent (RELogging)
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *_categoryVerb;

@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIRelationshipGestureRecognizer
+@interface _UIRelationshipGestureRecognizer : UIGestureRecognizer
 {
+    _Bool _succeedsOnTouchesEnded;
 }
 
+@property(nonatomic) _Bool succeedsOnTouchesEnded; // @synthesize succeedsOnTouchesEnded=_succeedsOnTouchesEnded;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_succeed;

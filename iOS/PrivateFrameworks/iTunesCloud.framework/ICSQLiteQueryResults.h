@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/ICSQLiteBinding-Protocol.h>
-
 @class ICSQLiteStatement, NSNumber, NSString;
 
-@interface ICSQLiteQueryResults : NSObject <ICSQLiteBinding>
+__attribute__((visibility("hidden")))
+@interface ICSQLiteQueryResults : NSObject
 {
     ICSQLiteStatement *_statement;
 }

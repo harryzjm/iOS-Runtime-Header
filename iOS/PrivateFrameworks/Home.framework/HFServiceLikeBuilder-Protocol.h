@@ -20,6 +20,7 @@
 @optional
 @property(readonly, nonatomic) NSArray *availableIconDescriptors;
 @property(retain, nonatomic) id <HFIconDescriptor> iconDescriptor;
+@property(nonatomic) _Bool showInHomeDashboard;
 @property(nonatomic) _Bool isFavorite;
 @end
 

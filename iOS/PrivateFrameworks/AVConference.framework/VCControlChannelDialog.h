@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSMutableDictionary, NSNumber, NSObject;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSObject, NSString;
 @protocol OS_dispatch_queue, VCControlChannelTransactionDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,14 +15,16 @@ __attribute__((visibility("hidden")))
     _Bool _isHandshakeCommenced;
     unsigned int _sessionID;
     id <VCControlChannelTransactionDelegate> _weakTransactionDelegate;
+    NSMutableDictionary *_transactions;
     _Bool _shouldFinishHandshake;
     double _handshakeStartTime;
     NSNumber *_participantID;
-    NSMutableDictionary *_transactions;
+    NSString *_participantUUID;
     NSMutableArray *_cachedMessages;
     NSObject<OS_dispatch_queue> *_handshakeOperationQueue;
 }
 
+@property(readonly) NSDictionary *transactions; // @synthesize transactions=_transactions;
 - (void)confirmTransaction:(id)arg1;
 - (id)newDataFromMessage:(id)arg1 topic:(id)arg2 transactionID:(unsigned long long)arg3 isReliable:(_Bool)arg4 transactionDelegate:(id)arg5;
 - (_Bool)sendUnreliableMessage:(id)arg1 withTopic:(id)arg2 sessionID:(unsigned int)arg3 participantID:(id)arg4 transactionDelegate:(id)arg5;
@@ -38,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)flushActiveTransactions;
 - (void)resetHandshake;
 - (void)dealloc;
-- (id)initWithSessionID:(unsigned int)arg1 participantID:(id)arg2 participantConfig:(CDStruct_c24deb19 *)arg3 transactionDelegate:(id)arg4;
+- (id)initWithSessionID:(unsigned int)arg1 participantID:(id)arg2 participantUUID:(id)arg3 participantConfig:(CDStruct_c24deb19 *)arg4 transactionDelegate:(id)arg5;
 
 @end
 

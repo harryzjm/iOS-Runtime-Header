@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/TSDAnimationRandomGenerator-Protocol.h>
-
 @class NSString;
 
-@interface KNAnimationRandomGenerator : NSObject <TSDAnimationRandomGenerator>
+@interface KNAnimationRandomGenerator : NSObject
 {
     struct TSCERandGenerator *_randGenerator;
     unsigned long long _seed;
 }
 
 + (unsigned int)generateNewSeed;
++ (id)randomGeneratorWithSeed:(id)arg1;
 + (id)randomGeneratorFromPluginContext:(id)arg1;
 @property(nonatomic) unsigned long long seed; // @synthesize seed=_seed;
 - (CDStruct_818bb265)GLPoint4DRandomPoint;

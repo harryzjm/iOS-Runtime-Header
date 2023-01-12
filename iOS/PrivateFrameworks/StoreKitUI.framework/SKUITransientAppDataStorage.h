@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/IKAppDataStoring-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SKUITransientAppDataStorage : NSObject <IKAppDataStoring>
+@interface SKUITransientAppDataStorage : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSMutableDictionary *_storage;

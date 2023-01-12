@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNPhotoPickerProvider-Protocol.h>
-
 @class CNVisualIdentity, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerAccountPhotoProvider : NSObject <CNPhotoPickerProvider>
+@interface CNPhotoPickerAccountPhotoProvider : NSObject
 {
     _Bool _includeUnifiedContactImages;
     NSString *identifier;

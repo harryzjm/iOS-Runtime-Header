@@ -18,6 +18,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityHint;
 - (id)accessibilityCustomContent;
+- (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (id)_axArtworkView;
 - (_Bool)isAccessibilityElement;

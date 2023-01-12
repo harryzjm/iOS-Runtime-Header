@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIKBDelegateAwareInputController-Protocol.h>
+#import "UIInputViewController.h"
 
 @class NSArray, NSString, UIKeyboard, UIKeyboardInputMode, UILayoutGuide, UIViewController;
 @protocol UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
-@interface UICompatibilityInputViewController <_UIKBDelegateAwareInputController>
+@interface UICompatibilityInputViewController : UIInputViewController
 {
     UIKeyboardInputMode *_inputMode;
     UIKeyboard *_deferredSystemView;
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)_requiresProxyInterface;
 + (id)deferredInputModeControllerWithKeyboard:(id)arg1;
 + (id)inputViewControllerWithView:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <UITextCursorAssertion> blinkAssertion; // @synthesize blinkAssertion=_blinkAssertion;
 @property(retain, nonatomic) NSArray *internalEdgeMatchConstraints; // @synthesize internalEdgeMatchConstraints=_internalEdgeMatchConstraints;
 @property(retain, nonatomic) UIViewController *inputController; // @synthesize inputController=_inputController;

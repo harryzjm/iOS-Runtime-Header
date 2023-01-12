@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) OBBoldTrayButton *continueButton; // @synthesize continueButton=_continueButton;
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
 @property(copy, nonatomic) CDUnknownBlockType continueButtonAction; // @synthesize continueButtonAction=_continueButtonAction;
+- (id)getLogger;
 - (void)continueButtonPressed;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

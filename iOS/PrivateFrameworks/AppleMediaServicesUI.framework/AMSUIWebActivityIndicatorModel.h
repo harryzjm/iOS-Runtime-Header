@@ -6,21 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/AMSUIWebModelInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebActivityIndicatorModel : NSObject <AMSUIWebModelInterface>
+@interface AMSUIWebActivityIndicatorModel : NSObject
 {
     _Bool _animate;
 }
 
 @property(nonatomic) _Bool animate; // @synthesize animate=_animate;
+@property(readonly, copy) NSString *debugDescription;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

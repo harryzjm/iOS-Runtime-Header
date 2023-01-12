@@ -6,44 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
-@class MPVolumeController, MRUButton, MRUVisualStylingProvider, NSString;
+@class CCUIButtonModuleView;
 
 __attribute__((visibility("hidden")))
-@interface MRUVolumeStepperView : UIView <MRUVisualStylingProviderObserver>
+@interface MRUVolumeStepperView : UIView
 {
-    MPVolumeController *_volumeController;
-    MRUVisualStylingProvider *_stylingProvider;
-    UIView *_decreaseBackground;
-    UIView *_increaseBackground;
-    MRUButton *_decreaseButton;
-    MRUButton *_increaseButton;
+    CCUIButtonModuleView *_increaseButton;
+    CCUIButtonModuleView *_decreaseButton;
+    double _continuousButtonCornerRadius;
+    UIView *_increaseMaterialView;
+    UIView *_decreaseMaterialView;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) MRUButton *increaseButton; // @synthesize increaseButton=_increaseButton;
-@property(retain, nonatomic) MRUButton *decreaseButton; // @synthesize decreaseButton=_decreaseButton;
-@property(retain, nonatomic) UIView *increaseBackground; // @synthesize increaseBackground=_increaseBackground;
-@property(retain, nonatomic) UIView *decreaseBackground; // @synthesize decreaseBackground=_decreaseBackground;
-@property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
-@property(retain, nonatomic) MPVolumeController *volumeController; // @synthesize volumeController=_volumeController;
-- (void)updateVisualStyling;
-- (void)visualStylingProviderDidChange:(id)arg1;
-- (void)increaseButtonHoldReleased:(id)arg1;
-- (void)increaseButtonHoldBegan:(id)arg1;
-- (void)increaseTouchUpInside:(id)arg1;
-- (void)decreaseButtonHoldReleased:(id)arg1;
-- (void)decreaseButtonHoldBegan:(id)arg1;
-- (void)decreaseTouchUpInside:(id)arg1;
+@property(retain, nonatomic) UIView *decreaseMaterialView; // @synthesize decreaseMaterialView=_decreaseMaterialView;
+@property(retain, nonatomic) UIView *increaseMaterialView; // @synthesize increaseMaterialView=_increaseMaterialView;
+@property(nonatomic) double continuousButtonCornerRadius; // @synthesize continuousButtonCornerRadius=_continuousButtonCornerRadius;
+@property(readonly, nonatomic) CCUIButtonModuleView *decreaseButton; // @synthesize decreaseButton=_decreaseButton;
+@property(readonly, nonatomic) CCUIButtonModuleView *increaseButton; // @synthesize increaseButton=_increaseButton;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

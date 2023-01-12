@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class NSMutableArray, NSString, VCPProtoBounds, VCPProtoTimeRange;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoLivePhotoHumanActionClassificationResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoLivePhotoHumanActionClassificationResult : PBCodable
 {
     VCPProtoBounds *_bounds;
     NSMutableArray *_classifications;

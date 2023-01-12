@@ -7,6 +7,6 @@
 @class NSString;
 
 @protocol TRIAssetExtracting
-- (_Bool)extractArchiveFromFile:(NSString *)arg1 withArchiveName:(NSString *)arg2 toEmptyDirectory:(NSString *)arg3 postExtractionCompression:(CDStruct_69d7cc99)arg4 error:(id *)arg5;
+- (CDStruct_6b48f683)extractArchiveFromFile:(NSString *)arg1 withArchiveName:(NSString *)arg2 toEmptyDirectory:(NSString *)arg3 postExtractionCompression:(CDStruct_69d7cc99)arg4 error:(id *)arg5;
 @end
 

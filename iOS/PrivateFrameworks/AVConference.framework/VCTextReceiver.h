@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCTextFrameReceiver-Protocol.h>
-
 @class NSArray, VCTextJitterBuffer;
 @protocol VCTextReceiverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCTextReceiver : NSObject <VCTextFrameReceiver>
+@interface VCTextReceiver : NSObject
 {
     struct tagHANDLE *_rtpHandle;
     unsigned int _sampleRate;

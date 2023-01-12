@@ -8,6 +8,7 @@
 
 @protocol REMReminderCreationViewServiceViewController
 - (void)viewHostDidDismiss;
+- (void)screenOriginOffsetWillChange:(struct CGPoint)arg1;
 - (void)displayWithContext:(REMReminderCreationContext *)arg1 completion:(void (^)(struct CGSize))arg2;
 @end
 

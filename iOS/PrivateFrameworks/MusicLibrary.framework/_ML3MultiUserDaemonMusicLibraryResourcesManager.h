@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MusicLibrary/_ML3MultiUserDaemonAccountChangeOperationDelegate-Protocol.h>
-
 @class ACAccountStore, NSObject, NSOperationQueue, NSString;
 @protocol MLMediaLibraryAccountChangeObserver, OS_dispatch_queue, _MSVAccountInformationProviding;
 
 __attribute__((visibility("hidden")))
-@interface _ML3MultiUserDaemonMusicLibraryResourcesManager <_ML3MultiUserDaemonAccountChangeOperationDelegate>
+@interface _ML3MultiUserDaemonMusicLibraryResourcesManager
 {
     NSString *_currentActiveAccountDSID;
     NSObject<OS_dispatch_queue> *_serialQueue;

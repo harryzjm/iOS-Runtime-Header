@@ -7,6 +7,7 @@
 #import <UIKit/UIAlertController.h>
 
 @interface UIAlertController (HealthRecordsUI)
++ (id)basicAlertControllerWithTitle:(id)arg1 message:(id)arg2 internalError:(id)arg3;
 + (id)basicAlertControllerWithTitle:(id)arg1 message:(id)arg2;
 @end
 

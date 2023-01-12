@@ -12,6 +12,10 @@
 - (void)setDelegate:(id <TSSIMSetupFlowDelegate>)arg1;
 
 @optional
+- (long long)backOption;
+- (_Bool)isStartOverRequiredOnBackButtonTapped;
+- (_Bool)customizeSpinner;
+- (_Bool)userInteractionEnabled;
 - (void)prepare:(void (^)(_Bool))arg1;
 @end
 

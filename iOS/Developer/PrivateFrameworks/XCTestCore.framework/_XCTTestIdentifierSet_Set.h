@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (_Bool)containsTestIdentifier:(id)arg1;
+- (_Bool)containsTestIdentifier:(id)arg1 includingParents:(_Bool)arg2;
 - (id)anyTestIdentifier;
 - (unsigned long long)count;
 - (id)initWithTestIdentifiers:(const id *)arg1 count:(unsigned long long)arg2;

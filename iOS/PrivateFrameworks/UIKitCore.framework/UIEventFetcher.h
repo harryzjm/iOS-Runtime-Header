@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class CADisplayLink, NSMutableArray, NSMutableDictionary, NSMutableSet, _UIHIDEventSynchronizer;
 @protocol UIEventFetcherSink;
 
 __attribute__((visibility("hidden")))
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
     struct __CFRunLoopTimer *_resendDragEventsTimer;
     NSMutableSet *_contextIDsNeedingHoverEventResend;
     NSMutableDictionary *_latestHoverEventsByContextID;
+    _UIHIDEventSynchronizer *_synchronizer;
     id <UIEventFetcherSink> _eventFetcherSink;
 }
 

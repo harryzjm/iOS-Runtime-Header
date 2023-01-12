@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDate.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface NSDate (IBBinaryArchivingAdditions) <IBBinaryArchiving>
+@interface NSDate (IBBinaryArchivingAdditions)
 + (double)ib_secondsSinceDate:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;

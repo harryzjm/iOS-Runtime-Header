@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKit/HMRemoteLoginMessageProtocol-Protocol.h>
-
 @class AKAnisetteData, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMLegacyAnisetteDataResponse <HMRemoteLoginMessageProtocol>
+@interface HMLegacyAnisetteDataResponse
 {
     AKAnisetteData *_anisetteData;
 }

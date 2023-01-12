@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/CLLocationManagerDelegate-Protocol.h>
-#import <Navigation/CLLocationManagerVehicleDelegate-Protocol.h>
-#import <Navigation/MNLocationProvider-Protocol.h>
-
 @class CLLocationManager, MNLocationProviderCLParameters, NSBundle, NSRunLoop, NSString;
 @protocol MNLocationProviderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MNCoreLocationProvider : NSObject <CLLocationManagerDelegate, CLLocationManagerVehicleDelegate, MNLocationProvider>
+@interface MNCoreLocationProvider : NSObject
 {
     _Bool _hasQueriedAuthorization;
     CLLocationManager *_clLocationManager;

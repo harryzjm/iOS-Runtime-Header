@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/WBSFormAutoFillNode-Protocol.h>
-
 @class NSString, WKWebProcessPlugInNodeHandle;
 
 __attribute__((visibility("hidden")))
-@interface SFFormAutoFillNode : NSObject <WBSFormAutoFillNode>
+@interface SFFormAutoFillNode : NSObject
 {
     WKWebProcessPlugInNodeHandle *_nodeHandle;
 }
@@ -19,11 +17,14 @@ __attribute__((visibility("hidden")))
 + (id)autoFillNodeWithNodeHandle:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WKWebProcessPlugInNodeHandle *nodeHandle; // @synthesize nodeHandle=_nodeHandle;
+- (void)setSpinnerVisibilityOnHTMLInputElement:(_Bool)arg1;
 - (long long)htmlInputElementLastAutoFillButtonType;
 - (long long)htmlInputElementAutoFillButtonType;
 - (void)setHTMLInputElementAutoFilledWithAutomaticStrongPassword:(_Bool)arg1;
 - (_Bool)isHTMLTextAreaElementUserEdited;
 - (_Bool)isHTMLInputElementUserEdited;
+- (void)setHTMLInputElementAutoFilledAndObscured:(_Bool)arg1;
+- (void)setHTMLInputElementAutoFilledAndViewable:(_Bool)arg1;
 - (void)setHTMLInputElementAutofilled:(_Bool)arg1;
 - (struct CGRect)elementBounds;
 - (id)initWithJSWrapper:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;

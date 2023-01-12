@@ -6,13 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-#import <SafariServices/SFSettingsAlertItemView-Protocol.h>
-
 @class NSString, _SFSettingsAlertItem, _SFSettingsAlertItemBackgroundView;
 @protocol SFSettingsAlertItemViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _SFSettingsAlertControl : UIControl <SFSettingsAlertItemView>
+@interface _SFSettingsAlertControl : UIControl
 {
     _Bool _hidesSeparator;
     id <SFSettingsAlertItemViewDelegate> _delegate;
@@ -35,6 +33,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(nonatomic, getter=isEnabled) _Bool enabled;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

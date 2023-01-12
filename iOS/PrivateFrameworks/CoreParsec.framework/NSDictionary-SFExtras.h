@@ -40,6 +40,7 @@
 - (void)sf_baseCardSection:(id)arg1 reply:(id)arg2;
 - (id)sf_asSuggestion:(id)arg1;
 - (id)sf_asFlight;
+- (id)sf_asTopic;
 - (id)sf_asAirport;
 - (id)sf_asActionItem:(id)arg1;
 - (id)sf_asPunchout;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-
-@class MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSString, UIView, UIViewController;
+@class MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
 @protocol GEOTransitLineItem, MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUTransitLineItemSectionController : NSObject <MUPlaceSectionControlling>
+@interface MUTransitLineItemSectionController : NSObject
 {
     _Bool _active;
     UIView *_sectionView;
@@ -26,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MUInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus; // @synthesize submissionStatus=_submissionStatus;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+- (id)revealedAnalyticsModule;
 - (id)analyticsModule;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 - (id)draggableContent;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(readonly, nonatomic) UIView *sectionView; // @synthesize sectionView=_sectionView;
 - (id)initWithTransitLineItem:(id)arg1;
 

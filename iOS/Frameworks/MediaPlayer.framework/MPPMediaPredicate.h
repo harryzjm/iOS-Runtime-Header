@@ -6,11 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlayer/NSCopying-Protocol.h>
-
 @class MPPCompoundPredicate, MPPConditionalPredicate, MPPPersistentIDsPredicate, MPPPropertyPredicate, MPPSearchStringPredicate;
 
-@interface MPPMediaPredicate : PBCodable <NSCopying>
+__attribute__((visibility("hidden")))
+@interface MPPMediaPredicate : PBCodable
 {
     MPPCompoundPredicate *_compoundPredicate;
     MPPConditionalPredicate *_conditionalPredicate;

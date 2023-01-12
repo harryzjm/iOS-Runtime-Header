@@ -8,6 +8,8 @@
 
 @protocol SGReverseTemplateJS
 - (void)parseHTML:(NSString *)arg1 reply:(void (^)(SGDOMParserResult *))arg2;
+- (void)flightInformationWithAirlineCode:(NSString *)arg1 flightNumber:(NSString *)arg2 flightDate:(NSString *)arg3 reply:(void (^)(NSArray *))arg4;
+- (void)getFlightReferencesAndReservationId:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)privacyAwareLogsForMLExtractions:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)mergeSchemas:(NSArray *)arg1 withExpectedSchemas:(NSArray *)arg2 reply:(void (^)(NSDictionary *))arg3;
 - (void)diffSchemas:(NSArray *)arg1 withExpectedSchemas:(NSArray *)arg2 reply:(void (^)(NSDictionary *))arg3;

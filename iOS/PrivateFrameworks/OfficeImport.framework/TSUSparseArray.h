@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface TSUSparseArray : NSObject <NSCopying>
+@interface TSUSparseArray : NSObject
 {
     struct tsuSaPage *_topPage;
     unsigned long long _nonNilCount;

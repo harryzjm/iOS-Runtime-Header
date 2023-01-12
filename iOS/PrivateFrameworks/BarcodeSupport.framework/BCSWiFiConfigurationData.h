@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSParsedDataPrivate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSWiFiConfigurationData : NSObject <BCSParsedDataPrivate>
+@interface BCSWiFiConfigurationData : NSObject
 {
     _Bool _WEP;
     _Bool _hidden;

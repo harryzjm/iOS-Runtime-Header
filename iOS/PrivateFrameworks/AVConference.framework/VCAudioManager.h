@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <AVConference/VCAudioIOControllerControl-Protocol.h>
-#import <AVConference/VCAudioSessionDelegate-Protocol.h>
-
-@class ATSpatialStreamDescriptions, AVAudioDevice, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, VCAudioRelay, VCAudioRelayIO, VCAudioSessionMediaProperties, VCAudioUnitProperties, VCAudioUnitSpatialContext;
+@class ATSpatialStreamDescriptions, AVAudioDevice, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, VCAudioRelay, VCAudioRelayIO, VCAudioSessionMediaProperties, VCAudioUnitProperties, VCAudioUnitSpatialContext;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioManager : NSObject <VCAudioIOControllerControl, VCAudioSessionDelegate>
+@interface VCAudioManager
 {
     struct tagHANDLE *_hAUIO;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -42,6 +37,8 @@ __attribute__((visibility("hidden")))
     VCAudioRelayIO *_interruptThreadClient;
     _Bool _isInterrupting;
     struct _opaque_pthread_mutex_t _interruptingMutex;
+    struct _opaque_pthread_mutex_t _inputDeviceMutex;
+    struct _opaque_pthread_mutex_t _outputDeviceMutex;
     _Bool _spatialAudioDisabled;
     void **_audioSession;
     int _playbackMode;
@@ -51,6 +48,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _mutedTalkerNotificationHandler;
     NSArray *_stateStrings;
     ATSpatialStreamDescriptions *_spatialStreamDescriptions;
+    _Bool _isMediaPlaybackOnExternalDevice;
 }
 
 + (id)sharedSystemAudioInstance;
@@ -60,18 +58,17 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VCAudioUnitProperties *currentAudioUnitProperties; // @synthesize currentAudioUnitProperties=_currentAudioUnitProperties;
 @property(retain, nonatomic) VCAudioSessionMediaProperties *currentAudioSessionMediaProperties; // @synthesize currentAudioSessionMediaProperties=_currentAudioSessionMediaProperties;
 @property(nonatomic, getter=isSpeakerPhoneEnabled) _Bool speakerPhoneEnabled; // @synthesize speakerPhoneEnabled=_isSpeakerPhoneEnabled;
-@property(retain, nonatomic) AVAudioDevice *currentOutputDevice; // @synthesize currentOutputDevice=_outputDevice;
-@property(retain, nonatomic) AVAudioDevice *currentInputDevice; // @synthesize currentInputDevice=_inputDevice;
 @property(nonatomic, getter=isMixingVoiceWithMediaEnabled) _Bool mixingVoiceWithMediaEnabled; // @synthesize mixingVoiceWithMediaEnabled=_isMixingVoiceWithMediaEnabled;
 @property(nonatomic, getter=isMicrophoneMuted) _Bool microphoneMuted; // @synthesize microphoneMuted=_isMicrophoneMuted;
 @property(nonatomic) _Bool isGKVoiceChat; // @synthesize isGKVoiceChat=_isGKVoiceChat;
 - (int)setVolume:(float)arg1 withRampTime:(float)arg2;
 - (void)setupDynamicDuckingVolumeHandlerForAUIO:(struct tagHANDLE *)arg1;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
-- (void)didSessionEnd;
-- (void)didSessionStop;
+- (void)didServerDie;
 - (void)didSessionResume;
 - (void)didSessionPause;
+- (void)didSessionEnd;
+- (void)didSessionStop;
 - (void)stopInterruptThread;
 - (void)startInterruptThread;
 - (void)cleanupInterruptThread;
@@ -100,10 +97,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)stateSessionStartedWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int *)arg4;
 - (void)enterStateStarted;
 - (_Bool)stateIdleWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int *)arg4;
-- (void)activateSpatialContext:(id)arg1;
+- (void)activateSpatialContext:(id)arg1 shouldApplySpatialMetadata:(_Bool)arg2;
 - (void)applySpatialMetadata:(struct OpaqueCMBlockBuffer *)arg1;
 - (void)applySessionContextToAudioUnitProperties:(id)arg1 preferredClient:(id)arg2;
-- (int)setSpatialMetadata:(struct OpaqueCMBlockBuffer *)arg1 audioSessionId:(unsigned int)arg2;
+- (void)setSpatialMetadata:(struct OpaqueCMBlockBuffer *)arg1 audioSessionId:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)unregisterAudioSessionId:(unsigned int)arg1;
 - (int)registerAudioSessionId:(unsigned int)arg1 maxChannelCountMic:(unsigned int)arg2 maxChannelCountSpeaker:(unsigned int)arg3 spatialMetadata:(struct OpaqueCMBlockBuffer *)arg4;
 - (int)unregisterFromMutedTalkerNotification;
@@ -121,8 +118,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldResetAudioSessionWithProperties:(id)arg1;
 - (_Bool)shouldResetAudioUnitWithProperties:(id)arg1;
 - (_Bool)startAUIOWithProperties:(id)arg1;
+- (void)setMediaPlaybackOnExternalDevice:(_Bool)arg1;
 - (void)updateCurrentOutputDevice:(id)arg1;
+@property(retain) AVAudioDevice *currentOutputDevice; // @synthesize currentOutputDevice=_outputDevice;
+- (void)setCurrentOutputDeviceInternal:(id)arg1;
+@property(retain) AVAudioDevice *currentInputDevice; // @synthesize currentInputDevice=_inputDevice;
 - (void)updateCurrentInputDevice:(id)arg1;
+- (void)setCurrentInputDeviceInternal:(id)arg1;
 - (void)setupIODevicesForAUIO:(struct tagHANDLE *)arg1;
 - (id)newAudioSessionMediaPropertiesWithPreferredClient:(id)arg1 audioUnitProperties:(id)arg2;
 - (id)newAudioSessionMediaPropertiesForSystemAudioWithPreferredClient:(id)arg1 audioUnitProperties:(id)arg2;
@@ -160,6 +162,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSDictionary *reportingStats;
 @property(readonly) Class superclass;
 
 @end

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/CKXPCContainerScopedDaemonSPI-Protocol.h>
+#import "CKDContainer.h"
 
-@interface CKDSPIContainer <CKXPCContainerScopedDaemonSPI>
+@interface CKDSPIContainer : CKDContainer
 {
 }
 
@@ -42,13 +42,18 @@
 - (void)serverPreferredPushEnvironmentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performFetchRegisteredBundleIDsOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)performFetchWhitelistedBundleIDsOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)performUploadMergeableDeltasOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)performReplaceMergeableDeltasOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)performFetchMergeableDeltaMetadataOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)performFetchMergeableDeltasOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)performFetchUserQuotaOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)performInitiateParticipantVettingOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)decryptPersonalInfoOnShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performFetchShareParticipantKeyOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)performCompleteParticipantVettingOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)performModifyRecordAccessOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)fetchXPCCriteriaWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)performDeserializeRecordModificationsOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)performSerializeRecordModificationsOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)getNewWebSharingIdentityDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getNewWebSharingIdentityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performModifyWebSharingOperation:(id)arg1 clientOperationCallbackProxy:(id)arg2 withBlock:(CDUnknownBlockType)arg3;

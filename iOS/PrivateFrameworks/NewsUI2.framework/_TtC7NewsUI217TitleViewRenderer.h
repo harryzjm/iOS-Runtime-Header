@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI217TitleViewRenderer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *styler;
+    MISSING_TYPE *moreButtonRenderer;
 }
 
 @end

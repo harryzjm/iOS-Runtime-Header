@@ -8,6 +8,7 @@
 #import <TextRecognition/NSSecureCoding-Protocol.h>
 
 @protocol CRQuad <NSCopying, NSSecureCoding>
+@property(readonly, nonatomic) struct CGSize size;
 @property(readonly, nonatomic) struct CGRect boundingBox;
 @property(readonly, nonatomic) struct CGPoint midPoint;
 @property(readonly, nonatomic) struct CGPoint bottomLeft;

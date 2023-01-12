@@ -6,10 +6,12 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HUDashboardNavigationButton, HUDashboardNavigationView, UIButton;
+@class HUDashboardNavigationView, UIButton;
 
 @protocol HUDashboardNavigationViewDelegate <NSObject>
-- (void)dashboardNavigationView:(HUDashboardNavigationView *)arg1 didTapHomeAppButton:(HUDashboardNavigationButton *)arg2;
+- (void)dashboardNavigationView:(HUDashboardNavigationView *)arg1 didTapHomeAppButton:(UIButton *)arg2;
+
+@optional
 - (void)dashboardNavigationView:(HUDashboardNavigationView *)arg1 didTapLargeTitleButton:(UIButton *)arg2;
 @end
 

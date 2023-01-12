@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SPOwner/SPPowerMonitorDelegate-Protocol.h>
-
 @class NSDate, NSString, SPNetworkMonitor;
 @protocol OS_dispatch_queue, SPMonitorsWrapperDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SPMonitorsWrapper : NSObject <SPPowerMonitorDelegate>
+@interface SPMonitorsWrapper : NSObject
 {
     _Bool _isRunning;
     id <SPMonitorsWrapperDelegate> _delegate;

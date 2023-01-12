@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideoSubscriberAccountUI/PSHeaderFooterView-Protocol.h>
-
 @class NSString, VSFontCenter;
 
 __attribute__((visibility("hidden")))
-@interface VSFooterMessageView : UIView <PSHeaderFooterView>
+@interface VSFooterMessageView : UIView
 {
     NSString *_primaryMessage;
     NSString *_secondaryMessage;

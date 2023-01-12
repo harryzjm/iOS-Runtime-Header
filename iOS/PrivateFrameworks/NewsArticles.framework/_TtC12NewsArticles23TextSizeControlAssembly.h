@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
-__attribute__((visibility("hidden")))
-@interface _TtC12NewsArticles23TextSizeControlAssembly : NSObject
+@interface _TtC12NewsArticles23TextSizeControlAssembly : _TtCs12_SwiftObject
 {
 }
-
-- (id)init;
 
 @end
 

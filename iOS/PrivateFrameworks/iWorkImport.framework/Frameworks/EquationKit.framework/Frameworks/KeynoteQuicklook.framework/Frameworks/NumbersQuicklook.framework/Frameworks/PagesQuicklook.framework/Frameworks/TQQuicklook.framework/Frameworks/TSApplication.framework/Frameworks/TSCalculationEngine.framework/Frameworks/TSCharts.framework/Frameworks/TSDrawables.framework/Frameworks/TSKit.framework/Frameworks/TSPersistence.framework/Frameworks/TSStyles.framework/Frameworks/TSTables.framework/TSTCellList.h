@@ -6,9 +6,7 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
-@interface TSTCellList : TSPObject <NSCopying>
+@interface TSTCellList : TSPObject
 {
     vector_cdf5f6a1 _cells;
     unsigned long long _trailingEmptyCellCount;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString, UIViewPropertyAnimator;
 
 __attribute__((visibility("hidden")))
-@interface CKBrowserFullscreenRevealAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
+@interface CKBrowserFullscreenRevealAnimationController : NSObject
 {
     _Bool _presenting;
     UIViewPropertyAnimator *_ascentDescentAnimator;

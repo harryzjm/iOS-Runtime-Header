@@ -6,13 +6,14 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class MKWalletMerchantLookupRequest, NSString;
+@class MKWalletMerchantLookupRequest, NSString, NSURL;
 
 @protocol PKMerchantLookupRequestSource <NSObject>
 - (long long)type;
 - (NSString *)identifier;
 - (_Bool)isRefund;
 - (_Bool)isSettlement;
+- (NSURL *)mapsURL;
 - (MKWalletMerchantLookupRequest *)mapsMerchantLookupRequest;
 @end
 

@@ -16,7 +16,7 @@
 @property(readonly, nonatomic) PFVideoAdjustments *px_storyResourceFetchVideoAdjustments;
 @property(readonly, nonatomic) NSData *px_storyResourceFetchNormalizationData;
 @property(readonly, nonatomic) struct CGRect px_storyResourceFetchBestPlaybackRect;
-@property(readonly, nonatomic) CDStruct_e83c9415 px_storyResourceFetchBestPlaybackRange;
+@property(readonly, nonatomic) CDStruct_3c1748cc px_storyResourceFetchBestPlaybackRange;
 @property(readonly, nonatomic) id <PXDisplayAsset> px_storyResourceDisplayAsset;
 @end
 

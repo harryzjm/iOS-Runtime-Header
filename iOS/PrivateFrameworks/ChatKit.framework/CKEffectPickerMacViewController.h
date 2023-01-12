@@ -6,15 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ChatKit/CKEffectPickerViewControllerProtocol-Protocol.h>
-#import <ChatKit/CKEffectPreviewCollectionViewControllerDelegate-Protocol.h>
-#import <ChatKit/CKEffectSelectionViewControllerDelegate-Protocol.h>
-
 @class CKBalloonView, CKChatControllerDummyAnimator, CKComposition, CKEffectPreviewCollectionViewController, CKEffectSelectionViewController, CKFullScreenEffectManager, NSLayoutConstraint, UIButton, UILabel, UIVibrancyEffect, UIView, UIVisualEffectView;
 @protocol CKEffectPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKEffectPickerMacViewController : UIViewController <CKEffectPreviewCollectionViewControllerDelegate, CKEffectSelectionViewControllerDelegate, CKEffectPickerViewControllerProtocol>
+@interface CKEffectPickerMacViewController : UIViewController
 {
     BOOL _color;
     _Bool _hasSelectedDefaultEffect;
@@ -56,7 +52,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKEffectSelectionViewController *selectionViewController; // @synthesize selectionViewController=_selectionViewController;
 @property(retain, nonatomic) CKEffectPreviewCollectionViewController *effectCollectionViewController; // @synthesize effectCollectionViewController=_effectCollectionViewController;
 @property(retain, nonatomic) CKBalloonView *balloonView; // @synthesize balloonView=_balloonView;
-@property(nonatomic) id <CKEffectPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <CKEffectPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)startAnimationPreviewForIdentifier:(id)arg1;
 - (id)_defaultSendAnimationContextForAnimationPreview;
 - (void)handleTouchMoved:(struct CGPoint)arg1;

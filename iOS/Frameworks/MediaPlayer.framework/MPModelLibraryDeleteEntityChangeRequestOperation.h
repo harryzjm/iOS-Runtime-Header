@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPModelLibraryDeleteEntityChangeRequest, NSOperationQueue;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibraryDeleteEntityChangeRequestOperation
+@interface MPModelLibraryDeleteEntityChangeRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;
     MPModelLibraryDeleteEntityChangeRequest *_request;

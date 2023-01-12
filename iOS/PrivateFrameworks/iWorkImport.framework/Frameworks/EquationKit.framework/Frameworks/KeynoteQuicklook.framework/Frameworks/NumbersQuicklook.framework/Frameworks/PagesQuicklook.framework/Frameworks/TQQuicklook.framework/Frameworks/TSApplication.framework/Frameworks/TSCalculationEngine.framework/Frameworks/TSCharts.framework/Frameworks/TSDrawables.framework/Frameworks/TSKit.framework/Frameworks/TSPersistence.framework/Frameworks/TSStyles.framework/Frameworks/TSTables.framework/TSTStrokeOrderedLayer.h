@@ -21,7 +21,9 @@
 - (void)insertStroke:(id)arg1 inRange:(struct TSTSimpleRange)arg2 order:(int)arg3;
 - (void)appendStroke:(id)arg1 inRange:(struct TSTSimpleRange)arg2 order:(int)arg3;
 - (void)enumerateStrokesUsingBlock:(CDUnknownBlockType)arg1;
+- (CDStruct_875b54ce)nextWidthAndRange:(CDStruct_875b54ce)arg1;
 - (id)nextStrokeAndRange:(id)arg1;
+- (CDStruct_875b54ce)findWidthAndRangeAtIndex:(long long)arg1;
 - (id)findStrokeAndRangeAtIndex:(long long)arg1;
 - (id)p_findStrokeAndRangeAtIndex:(long long)arg1 highOrderToken:(id)arg2 updatingLowOrderToken:(id *)arg3 lowOrderLayer:(id)arg4;
 - (long long)startingIndex;

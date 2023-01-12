@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/SXActionPreviewActivity-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI221ActionPreviewActivity : NSObject <SXActionPreviewActivity>
+@interface _TtC7NewsUI221ActionPreviewActivity : NSObject
 {
     MISSING_TYPE *router;
     MISSING_TYPE *handler;

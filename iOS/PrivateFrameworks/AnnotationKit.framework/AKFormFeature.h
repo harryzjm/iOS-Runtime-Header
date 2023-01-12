@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/NSCopying-Protocol.h>
-
 @class AKPageController;
 
-@interface AKFormFeature : NSObject <NSCopying>
+@interface AKFormFeature : NSObject
 {
     AKPageController *_page;
     struct CGRect _rect;

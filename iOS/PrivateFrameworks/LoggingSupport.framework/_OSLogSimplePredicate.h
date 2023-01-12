@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LoggingSupport/NSPredicateVisitor-Protocol.h>
-
 @class NSMutableArray, NSPredicate, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface _OSLogSimplePredicate : NSObject <NSPredicateVisitor>
+@interface _OSLogSimplePredicate : NSObject
 {
     NSSet *_keys;
     NSSet *_operators;

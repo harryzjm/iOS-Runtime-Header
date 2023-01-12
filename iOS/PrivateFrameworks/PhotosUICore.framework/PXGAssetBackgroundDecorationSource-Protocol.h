@@ -10,7 +10,7 @@
 
 @protocol PXGAssetBackgroundDecorationSource <PXGLayoutContentSource>
 - (_Bool)wantsBackgroundForZeroInset;
-- (CDStruct_2bd92d94)assetBackgroundCornerRadiusForSpriteIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
+- (CDStruct_c2259bfa)assetBackgroundCornerRadiusForSpriteIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 - (unsigned long long)assetBackgroundStyleForSpriteIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 @end
 

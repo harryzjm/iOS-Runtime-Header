@@ -6,9 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlayer/NSCopying-Protocol.h>
-
-@interface MPPPersistentIDsPredicate : PBCodable <NSCopying>
+__attribute__((visibility("hidden")))
+@interface MPPPersistentIDsPredicate : PBCodable
 {
     struct {
         long long *list;

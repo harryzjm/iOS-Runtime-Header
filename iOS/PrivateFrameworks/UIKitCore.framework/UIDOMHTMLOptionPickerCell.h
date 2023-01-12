@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIPickerContentView.h"
+
 __attribute__((visibility("hidden")))
-@interface UIDOMHTMLOptionPickerCell
+@interface UIDOMHTMLOptionPickerCell : UIPickerContentView
 {
     _Bool _disabled;
 }

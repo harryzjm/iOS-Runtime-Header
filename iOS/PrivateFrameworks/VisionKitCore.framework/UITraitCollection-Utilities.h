@@ -10,6 +10,7 @@
 + (id)appearanceClassForType:(long long)arg1;
 - (id)ic_traitCollectionByAppendingNonNilTraitCollection:(id)arg1;
 - (void)vk_performAsCurrent:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool vk_shouldUseLargeButtons;
 @property(readonly, nonatomic) double vk_contentSizeScaleFactor;
 - (id)vk_traitCollectionByAppendingNonNilTraitCollection:(id)arg1;
 - (id)vk_traitCollectionWithContentSize:(id)arg1;

@@ -6,10 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class CSCoverSheetViewControllerBase, NSString;
-@protocol CSApplicationHosting;
+@class CSCoverSheetViewControllerBase;
+@protocol CSAppHostContextProviding, SBApplicationHosting;
 
 @protocol CSAppHostConfiguring <NSObject>
-- (CSCoverSheetViewControllerBase<CSApplicationHosting> *)applicationHosterForBundleIdentifier:(NSString *)arg1;
+- (CSCoverSheetViewControllerBase<SBApplicationHosting> *)applicationHosterForHostContextProvider:(id <CSAppHostContextProviding>)arg1;
 @end
 

@@ -9,22 +9,22 @@
 __attribute__((visibility("hidden")))
 @interface VKARWalkingArrivalStoreFront : NSObject
 {
-    OrientedBox_c7d97395 _face;
-    Unit_09325524 _undulation;
+    OrientedBox_11e3d904 _face;
+    Unit_e1574806 _undulation;
     Matrix_8746f91e _dimensionsInMeters;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) Unit_09325524 appliedUndulation; // @synthesize appliedUndulation=_undulation;
-@property(readonly, nonatomic) OrientedBox_c7d97395 face; // @synthesize face=_face;
+@property(readonly, nonatomic) Unit_e1574806 appliedUndulation; // @synthesize appliedUndulation=_undulation;
+@property(readonly, nonatomic) OrientedBox_11e3d904 face; // @synthesize face=_face;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) Matrix_6e1d3589 normal;
-@property(readonly, nonatomic) Coordinate3D_c88e9767 bottomCenterCoordinate;
+@property(readonly, nonatomic) Coordinate3D_b0aa8be1 bottomCenterCoordinate;
 @property(readonly, nonatomic) Mercator3_d8bb135c bottomCenterPoint;
-@property(readonly, nonatomic) Unit_09325524 faceHeightInMeters;
-@property(readonly, nonatomic) Unit_09325524 faceWidthInMeters;
+@property(readonly, nonatomic) Unit_e1574806 faceHeightInMeters;
+@property(readonly, nonatomic) Unit_e1574806 faceWidthInMeters;
 - (id)initWithOrientedRect:(const void *)arg1 undulationProvider:(CDUnknownBlockType)arg2;
 - (id)initWithYaw:(float)arg1 pitch:(float)arg2 roll:(float)arg3 x:(double)arg4 y:(double)arg5 z:(double)arg6 w:(float)arg7 h:(float)arg8 undulationProvider:(CDUnknownBlockType)arg9;
 - (id)initWithGEOOrientedBox:(id)arg1 undulationProvider:(CDUnknownBlockType)arg2;

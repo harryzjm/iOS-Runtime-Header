@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIWindowScene.h"
+
 @class UIMutableApplicationSceneSettings, UIScreen;
 @protocol NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface _UIScreenBasedWindowScene
+@interface _UIScreenBasedWindowScene : UIWindowScene
 {
     UIScreen *_screen;
     UIMutableApplicationSceneSettings *_synthesizedSettings;

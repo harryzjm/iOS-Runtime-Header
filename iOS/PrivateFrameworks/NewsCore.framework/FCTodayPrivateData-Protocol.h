@@ -9,7 +9,7 @@
 #import <NewsCore/NFMutableCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCBundleSubscription, NSArray, NSDictionary, NSNumber, NSSet;
+@class FCBundleSubscription, NSArray, NSDictionary, NSNumber, NSSet, NSString;
 @protocol FCDerivedPersonalizationData><NSCoding;
 
 @protocol FCTodayPrivateData <NSObject, NFMutableCopying, FCPurchaseProviderType, FCBundleSubscriptionProviderType>
@@ -21,6 +21,7 @@
 @property(readonly, copy, nonatomic) NSSet *purchasedTagIDs;
 @property(readonly, copy, nonatomic) NSArray *autoFavoriteTagIDs;
 @property(readonly, copy, nonatomic) NSSet *mutedTagIDs;
+@property(readonly, copy, nonatomic) NSString *localNewsTagID;
 @property(readonly, copy, nonatomic) id <FCDerivedPersonalizationData><NSCoding> derivedPersonalizationData;
 @end
 

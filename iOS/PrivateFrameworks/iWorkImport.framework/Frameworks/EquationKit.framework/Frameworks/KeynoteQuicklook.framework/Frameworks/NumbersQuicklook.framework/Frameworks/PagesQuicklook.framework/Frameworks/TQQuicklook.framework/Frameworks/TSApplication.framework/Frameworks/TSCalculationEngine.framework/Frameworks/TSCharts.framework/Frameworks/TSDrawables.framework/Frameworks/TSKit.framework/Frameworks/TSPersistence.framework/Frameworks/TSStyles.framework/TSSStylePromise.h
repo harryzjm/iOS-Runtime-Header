@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSStyles/TSSStyleObject-Protocol.h>
-
 @class NSMutableArray, TSSStyle;
 
-@interface TSSStylePromise : NSObject <TSSStyleObject>
+@interface TSSStylePromise : NSObject
 {
     TSSStyle *_sourceStyle;
     NSMutableArray *_promisees;

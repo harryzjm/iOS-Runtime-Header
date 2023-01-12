@@ -21,15 +21,8 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
-};
-
-struct NSDirectionalEdgeInsets {
-    double top;
-    double leading;
-    double bottom;
-    double trailing;
+    double _field1;
+    double _field2;
 };
 
 struct _NSRange {

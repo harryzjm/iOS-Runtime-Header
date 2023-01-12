@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface CKCDPCodeServiceRequestProtectedCloudComputeMetadataCryptoSession : PBCodable <NSCopying>
+@interface CKCDPCodeServiceRequestProtectedCloudComputeMetadataCryptoSession : PBCodable
 {
     NSData *_wrappedInvocationKey;
 }

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPCopying-Protocol.h>
-#import <CorePDF/NSCopying-Protocol.h>
-
 @class CPDocument, CPPage, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface CPObject : NSObject <NSCopying, CPCopying>
+@interface CPObject : NSObject
 {
     CPObject *parent;
     NSMutableArray *children;

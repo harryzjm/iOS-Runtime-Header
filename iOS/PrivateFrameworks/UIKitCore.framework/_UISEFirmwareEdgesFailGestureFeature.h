@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISETouchedEdgesProvider-Protocol.h>
-
 @protocol _UISEGestureFeatureSettings;
 
 __attribute__((visibility("hidden")))
-@interface _UISEFirmwareEdgesFailGestureFeature <_UISETouchedEdgesProvider>
+@interface _UISEFirmwareEdgesFailGestureFeature
 {
     id <_UISEGestureFeatureSettings> _settings;
     _Bool _hasDoneTest;

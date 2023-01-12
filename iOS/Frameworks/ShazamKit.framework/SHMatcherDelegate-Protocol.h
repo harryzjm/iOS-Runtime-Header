@@ -10,9 +10,6 @@
 @protocol SHMatcher;
 
 @protocol SHMatcherDelegate <NSObject>
-- (void)matcher:(id <SHMatcher>)arg1 didFinishWithOutcome:(long long)arg2;
-- (void)matcher:(id <SHMatcher>)arg1 didFail:(SHMatcherResponse *)arg2;
-- (void)matcher:(id <SHMatcher>)arg1 didNotFindMatch:(SHMatcherResponse *)arg2;
-- (void)matcher:(id <SHMatcher>)arg1 didFindMatch:(SHMatcherResponse *)arg2;
+- (void)matcher:(id <SHMatcher>)arg1 didProduceResponse:(SHMatcherResponse *)arg2;
 @end
 

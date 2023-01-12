@@ -6,11 +6,9 @@
 
 #import <TSApplication/TSAWebVideoInfo.h>
 
-#import <KeynoteQuicklook/KNImplicitAmbientAnimating-Protocol.h>
-
 @class NSString;
 
-@interface TSAWebVideoInfo (KNImplicitAmbientAnimating) <KNImplicitAmbientAnimating>
+@interface TSAWebVideoInfo (KNImplicitAmbientAnimating)
 - (id)newImplicitAmbientBuildRendererWithAnimatedBuild:(id)arg1 buildChunk:(id)arg2 session:(id)arg3 animatedSlideView:(id)arg4;
 @property(readonly, nonatomic) _Bool shouldRemoveImplicitAmbientAnimationsAtEndOfNoneTransition;
 @property(readonly, nonatomic) _Bool supportsImplicitAmbientAnimationsAfterStartingActionBuilds;

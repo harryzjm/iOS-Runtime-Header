@@ -40,6 +40,8 @@
 @property(readonly, nonatomic) ACAccount *aa_fmfAccount;
 - (void)_aa_setBenefactorAccount:(_Bool)arg1;
 - (_Bool)_aa_benefactorAccount;
+- (void)_aa_setAppProvidedContext:(id)arg1;
+- (id)_aa_appProvidedContext;
 - (void)_aa_setLastAgreedTermsInfo:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *aa_lastAgreedTermsInfo;
 @property(readonly, nonatomic) _Bool aa_isFamilyEligible;

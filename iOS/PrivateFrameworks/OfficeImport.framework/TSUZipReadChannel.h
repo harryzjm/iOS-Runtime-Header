@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/TSUReadChannel-Protocol.h>
-
 @class NSString, TSUZipArchive, TSUZipEntry;
 @protocol TSUReadChannel;
 
 __attribute__((visibility("hidden")))
-@interface TSUZipReadChannel : NSObject <TSUReadChannel>
+@interface TSUZipReadChannel : NSObject
 {
     TSUZipEntry *_entry;
     TSUZipArchive *_archive;

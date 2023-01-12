@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/UIPreviewInteractionDelegate-Protocol.h>
-#import <VideosUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <VideosUI/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSIndexPath, NSString, UICollectionView, UICollectionViewCell, UIPreviewInteraction, UIViewController, UIViewPropertyAnimator, VUIDialogPresentationController, VUIPresentationContainerViewController;
 @protocol VUIPreviewInteractionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIPreviewInteractionController : NSObject <UIPreviewInteractionDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface VUIPreviewInteractionController : NSObject
 {
     UIPreviewInteraction *_previewInteraction;
     UICollectionView *_collectionView;

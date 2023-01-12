@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ScreenTimeSettingsUI/UIPageViewControllerDataSource-Protocol.h>
-#import <ScreenTimeSettingsUI/UIPageViewControllerDelegate-Protocol.h>
-
 @class NSLayoutConstraint, NSObject, NSString, STUsageGraphViewController, STUsageSummaryTitleView, UIPageViewController, UIView;
 @protocol STUsageDetailsViewModelCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface STHistoricalUsageViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface STHistoricalUsageViewController : UIViewController
 {
     NSObject<STUsageDetailsViewModelCoordinator> *_coordinator;
     STUsageSummaryTitleView *_titleView;

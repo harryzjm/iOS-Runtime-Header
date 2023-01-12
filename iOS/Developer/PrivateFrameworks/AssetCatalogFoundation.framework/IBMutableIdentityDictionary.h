@@ -18,6 +18,8 @@
 - (void).cxx_destruct;
 @property(copy) NSSortDescriptor *codingSortDescriptor; // @synthesize codingSortDescriptor=_codingSortDescriptor;
 - (void)removeObjectForKey:(id)arg1;
+- (id)ib_objectForKey:(id)arg1 inIdentityDictionaryForKey:(id)arg2 inIdentityDictionaryForKey:(id)arg3 creatingIfNecessaryWithBlock:(CDUnknownBlockType)arg4;
+- (id)ib_objectForKey:(id)arg1 inIdentityDictionaryForKey:(id)arg2 creatingIfNecessaryWithBlock:(CDUnknownBlockType)arg3;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;

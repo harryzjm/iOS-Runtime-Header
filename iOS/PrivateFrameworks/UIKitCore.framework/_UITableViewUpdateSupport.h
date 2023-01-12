@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, NSMutableIndexSet, UITableView, UITableViewRowData;
+@protocol _UITableViewIgnoreDragsToken;
 
 __attribute__((visibility("hidden")))
 @interface _UITableViewUpdateSupport : NSObject
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
     id *animatedFooters;
     long long globalReorderingRow;
     id _context;
+    id <_UITableViewIgnoreDragsToken> _ignoringDragsToken;
     NSMutableArray *viewAnimations;
     NSMutableArray *deletedSections;
     NSMutableArray *insertedSections;

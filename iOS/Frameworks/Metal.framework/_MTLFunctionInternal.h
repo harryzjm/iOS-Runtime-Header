@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_MTLFunction.h"
+
 @class NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _MTLFunctionInternal
+@interface _MTLFunctionInternal : _MTLFunction
 {
     struct MTLFunctionData _functionData;
     unsigned char _publicMetadataInitialized;
@@ -37,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)newFunctionWithPluginData:(id)arg1 bitcodeType:(unsigned char)arg2;
 - (id)newSpecializedFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 functionCache:(id)arg3 error:(id *)arg4;
 - (void)newSpecializedFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 functionCache:(id)arg3 sync:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (_Bool)specializedFunctionHash:(CDStruct_41a22ec7 *)arg1 requestData:(id *)arg2 constants:(id)arg3 specializedName:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)specializedFunctionHash:(CDStruct_41a22ec7 *)arg1 requestData:(id *)arg2 constants:(id)arg3 specializedName:(id)arg4 privateFunctions:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)setOptions:(unsigned long long)arg1;
 - (void)setSourceArchiveOffset:(unsigned long long)arg1;
 - (unsigned long long)sourceArchiveOffset;

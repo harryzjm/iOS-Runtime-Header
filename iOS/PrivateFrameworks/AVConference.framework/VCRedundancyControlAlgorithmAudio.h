@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCRedundancyControlAlgorithm-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCRedundancyControlAlgorithmAudio : NSObject <VCRedundancyControlAlgorithm>
+@interface VCRedundancyControlAlgorithmAudio : NSObject
 {
     unsigned int _redundancyPercentage;
     double _redundancyInterval;
@@ -30,9 +28,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int redundancyPercentage; // @synthesize redundancyPercentage=_redundancyPercentage;
 - (unsigned int)updateRedundancyPercentageWithPLRThresholds:(double *)arg1;
 - (void)computeRedundancyInfo;
-- (void)processRCNetworkStatistics:(CDStruct_c0785916)arg1;
-- (void)processNWConnectionStatistics:(CDStruct_c0785916)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
+- (void)processRCNetworkStatistics:(CDStruct_7df19fcb)arg1;
+- (void)processNWConnectionStatistics:(CDStruct_7df19fcb)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_7df19fcb)arg1;
 - (id)init;
 
 // Remaining properties

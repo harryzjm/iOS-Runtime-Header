@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <EventKitUI/EKEditItemViewControllerDelegate-Protocol.h>
-
 @class EKEvent, EKEventStore, EKUIRecurrenceAlertController, NSString, UIViewController;
 @protocol EKEditItemViewControllerProtocol, EKEventDetailItemDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDetailItem : NSObject <EKEditItemViewControllerDelegate>
+@interface EKEventDetailItem : NSObject
 {
     EKEventStore *_store;
     EKEvent *_event;

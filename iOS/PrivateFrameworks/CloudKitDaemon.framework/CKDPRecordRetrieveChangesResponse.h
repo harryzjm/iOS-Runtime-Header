@@ -6,17 +6,17 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData, NSMutableArray;
 
-@interface CKDPRecordRetrieveChangesResponse : PBCodable <NSCopying>
+@interface CKDPRecordRetrieveChangesResponse : PBCodable
 {
+    NSMutableArray *_changedDeltas;
     NSMutableArray *_changedRecords;
     NSMutableArray *_changedShares;
     NSData *_clientChangeToken;
     int _status;
     NSData *_syncContinuationToken;
+    NSMutableArray *_syncObligations;
     _Bool _pendingArchivedRecords;
     struct {
         unsigned int status:1;
@@ -24,9 +24,13 @@
     } _has;
 }
 
++ (Class)syncObligationsType;
++ (Class)changedDeltasType;
 + (Class)changedShareType;
 + (Class)changedRecordType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *syncObligations; // @synthesize syncObligations=_syncObligations;
+@property(retain, nonatomic) NSMutableArray *changedDeltas; // @synthesize changedDeltas=_changedDeltas;
 @property(nonatomic) _Bool pendingArchivedRecords; // @synthesize pendingArchivedRecords=_pendingArchivedRecords;
 @property(retain, nonatomic) NSMutableArray *changedShares; // @synthesize changedShares=_changedShares;
 @property(retain, nonatomic) NSData *clientChangeToken; // @synthesize clientChangeToken=_clientChangeToken;
@@ -41,6 +45,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)syncObligationsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)syncObligationsCount;
+- (void)addSyncObligations:(id)arg1;
+- (void)clearSyncObligations;
+- (id)changedDeltasAtIndex:(unsigned long long)arg1;
+- (unsigned long long)changedDeltasCount;
+- (void)addChangedDeltas:(id)arg1;
+- (void)clearChangedDeltas;
 @property(nonatomic) _Bool hasPendingArchivedRecords;
 - (id)changedShareAtIndex:(unsigned long long)arg1;
 - (unsigned long long)changedSharesCount;

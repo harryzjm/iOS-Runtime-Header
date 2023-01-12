@@ -6,11 +6,9 @@
 
 #import <HomeRecommendationEngine/HRERecommendationItem.h>
 
-#import <HomeUI/HUTriggerLikeItem-Protocol.h>
-
 @class HMTrigger, NSString;
 
-@interface HRERecommendationItem (HUTriggerLikeItem) <HUTriggerLikeItem>
+@interface HRERecommendationItem (HUTriggerLikeItem)
 @property(readonly, nonatomic) HMTrigger *trigger;
 @property(readonly, nonatomic) NSString *identifier;
 

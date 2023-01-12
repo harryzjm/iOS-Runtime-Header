@@ -15,19 +15,24 @@ __attribute__((visibility("hidden")))
     NSArray *_scaleFactors;
     struct CGSize _sizeInPixels;
     struct CGPoint _anchorPoint;
+    struct CGImage *_imageRef;
 }
 
 - (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (_Bool)_drawInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 effect:(id)arg3;
-- (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
+- (void)_drawWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3 effect:(id)arg4;
+- (void)_prepareForDrawingWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3;
+- (struct CGImage *)CGImage;
 - (double)vectorScale;
 - (struct CGSize)sizeInPixels;
+- (_Bool)containsNamedColorStyles;
 - (_Bool)isVectorGlyph;
+- (_Bool)canEmitDrawingCommands;
 - (_Bool)canScaleImageToTargetResolution;
 - (_Bool)canDrawImage;
 - (_Bool)isCGImage;
+- (void)dealloc;
 - (id)initWithScale:(double)arg1;
 - (id)initWithSize:(struct CGSize)arg1 glyphs:(id)arg2 colors:(id)arg3 offsets:(id)arg4 scaleFactors:(id)arg5 anchorPoint:(struct CGPoint)arg6;
 

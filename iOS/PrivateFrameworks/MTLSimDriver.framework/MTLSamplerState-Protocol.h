@@ -10,6 +10,7 @@
 @protocol MTLDevice;
 
 @protocol MTLSamplerState <NSObject>
+@property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) NSString *label;
 @end

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIInteraction-Protocol.h>
-#import <UIKitCore/_UIScrollViewScrollableAncestor-Protocol.h>
-
 @class NSString, UIView;
 @protocol _UIContextMenuScrollObservationInteractionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuScrollObservationInteraction : NSObject <_UIScrollViewScrollableAncestor, UIInteraction>
+@interface _UIContextMenuScrollObservationInteraction : NSObject
 {
     struct CGPoint _currentTranslation;
     struct CGPoint _consumedTranslation;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPDate;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPDateStatistics : PBCodable <NSCopying>
+@interface FCCKPDateStatistics : PBCodable
 {
     FCCKPDate *_creation;
     FCCKPDate *_modification;

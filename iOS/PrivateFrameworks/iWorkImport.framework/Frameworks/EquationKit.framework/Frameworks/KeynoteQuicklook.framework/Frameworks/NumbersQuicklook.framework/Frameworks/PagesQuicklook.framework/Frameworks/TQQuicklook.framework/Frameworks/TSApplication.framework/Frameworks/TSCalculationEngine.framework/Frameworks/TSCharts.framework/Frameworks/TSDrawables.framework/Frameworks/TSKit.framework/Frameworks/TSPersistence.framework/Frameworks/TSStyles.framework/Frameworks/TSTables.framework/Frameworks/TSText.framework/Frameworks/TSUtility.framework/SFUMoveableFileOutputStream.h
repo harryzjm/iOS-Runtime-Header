@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUOutputStream-Protocol.h>
-
 @class NSString;
 
-@interface SFUMoveableFileOutputStream : NSObject <SFUOutputStream>
+@interface SFUMoveableFileOutputStream : NSObject
 {
     int mFd;
     NSString *mPath;

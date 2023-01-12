@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@protocol UIFocusItemScrollableContainer, UIScrollViewDelegate;
+@class _UIFocusEnvironmentScrollableContainerTuple;
+@protocol UIScrollViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusEngineScrollableContainerOffsets : NSObject
 {
     _Bool _adjustsTargetsOnContentOffsetChanges;
-    id <UIFocusItemScrollableContainer> _scrollableContainer;
+    _UIFocusEnvironmentScrollableContainerTuple *_environmentScrollableContainer;
     id <UIScrollViewDelegate> _scrollDelegate;
     double _convergenceRate;
     CDUnknownBlockType _completion;
+    struct CGPoint _startContentOffset;
     struct CGPoint _lastContentOffset;
     struct CGPoint _lastRoundedOffset;
     struct CGPoint _targetContentOffset;
@@ -29,8 +31,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGPoint targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;
 @property(nonatomic) struct CGPoint lastRoundedOffset; // @synthesize lastRoundedOffset=_lastRoundedOffset;
 @property(nonatomic) struct CGPoint lastContentOffset; // @synthesize lastContentOffset=_lastContentOffset;
+@property(nonatomic) struct CGPoint startContentOffset; // @synthesize startContentOffset=_startContentOffset;
 @property(retain, nonatomic) id <UIScrollViewDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
-@property(retain, nonatomic) id <UIFocusItemScrollableContainer> scrollableContainer; // @synthesize scrollableContainer=_scrollableContainer;
+@property(retain, nonatomic) _UIFocusEnvironmentScrollableContainerTuple *environmentScrollableContainer; // @synthesize environmentScrollableContainer=_environmentScrollableContainer;
 @property(nonatomic) _Bool adjustsTargetsOnContentOffsetChanges; // @synthesize adjustsTargetsOnContentOffsetChanges=_adjustsTargetsOnContentOffsetChanges;
 
 @end

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSDictionary, NSMutableDictionary, NSString, UIColor, UILabel, _UIBadgeVisualStyle;
 
 __attribute__((visibility("hidden")))
-@interface _UIBadgeView
+@interface _UIBadgeView : UIView
 {
     UILabel *_label;
     NSMutableDictionary *_mergedTextAttributes;

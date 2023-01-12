@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TPPageGenerator-Protocol.h>
-
 @class NSString, TPFootnoteLayoutController;
 
-@interface TPEndnotePageGenerator : NSObject <TPPageGenerator>
+@interface TPEndnotePageGenerator : NSObject
 {
     TPFootnoteLayoutController *_footnoteLayoutController;
 }

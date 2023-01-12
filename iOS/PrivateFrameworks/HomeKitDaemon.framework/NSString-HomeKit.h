@@ -8,8 +8,16 @@
 
 @interface NSString (HomeKit)
 + (id)stringWithSQLite3Column:(struct sqlite3_stmt *)arg1 column:(int)arg2;
+- (_Bool)hm_containsAnyTextCheckingTypeInTypes:(unsigned long long)arg1;
+@property(readonly, copy) NSString *hm_truncatedNameString;
 @property(readonly, copy) NSString *stringByCapitalizingFirstWord;
 - (id)stringByTransformingFirstWordUsingBlock:(CDUnknownBlockType)arg1;
 - (id)hm_generateSHA1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

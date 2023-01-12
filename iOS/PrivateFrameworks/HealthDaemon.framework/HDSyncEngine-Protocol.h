@@ -13,6 +13,7 @@
 @property(copy, nonatomic) CDUnknownBlockType unitTest_didCompleteReadTransaction;
 @property(readonly, copy, nonatomic) NSDictionary *allSyncEntitiesByIdentifier;
 @property(readonly, copy, nonatomic) NSArray *allOrderedSyncEntities;
+- (_Bool)updateLocalVersionsForStore:(id <HDSyncStore>)arg1 profile:(HDProfile *)arg2 error:(id *)arg3;
 - (void)resetStore:(id <HDSyncStore>)arg1;
 - (_Bool)resetNextAnchorsForStore:(id <HDSyncStore>)arg1 profile:(HDProfile *)arg2 minimumElapsedTime:(double)arg3 error:(id *)arg4;
 - (_Bool)applyAcknowledgedAnchorMap:(id <HDSyncAnchorMap>)arg1 forStore:(id <HDSyncStore>)arg2 resetNext:(_Bool)arg3 resetInvalid:(_Bool)arg4 error:(id *)arg5;

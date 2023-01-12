@@ -6,11 +6,9 @@
 
 #import <SAObjects/SARDNativeFlowContextUpdate.h>
 
-#import <AssistantServices/AFContextSnapshot-Protocol.h>
-
 @class NSString;
 
-@interface SARDNativeFlowContextUpdate (ContextSnapshot) <AFContextSnapshot>
+@interface SARDNativeFlowContextUpdate (ContextSnapshot)
 - (id)initWithSerializedBackingStore:(id)arg1;
 - (id)serializedBackingStore;
 

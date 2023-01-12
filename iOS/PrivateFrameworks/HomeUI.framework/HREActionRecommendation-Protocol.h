@@ -12,7 +12,6 @@
 @property(retain, nonatomic) HREActionVarianceCollection *allowedVariance;
 @property(readonly, nonatomic) NSSet *addedActions;
 @property(readonly, nonatomic) NSSet *actions;
-- (HFActionBuilder *)existingActionBuilder:(HFActionBuilder *)arg1 inSet:(NSSet *)arg2;
 - (void)removeActions:(NSSet *)arg1;
 - (void)addActions:(NSSet *)arg1 allowEditingExistingActions:(_Bool)arg2;
 - (void)addActions:(NSSet *)arg1;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIContentEffect-Protocol.h>
-#import <UIKitCore/_UIViewSubtreeMonitor-Protocol.h>
-
 @class NSMutableArray, NSString, UIPointerInteractionAnimator, UIPointerRegion, UIPointerStyle, UIView, UIWindow, _UIPointerEffectPlatterView;
 @protocol _UIContentEffectDescriptor;
 
 __attribute__((visibility("hidden")))
-@interface _UIPointerContentEffect : NSObject <_UIViewSubtreeMonitor, _UIContentEffect>
+@interface _UIPointerContentEffect : NSObject
 {
     struct {
         _Bool isRearrangingEffectViews;

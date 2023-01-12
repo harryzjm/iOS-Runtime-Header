@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (id)tabGroupManager;
 - (id)windowStates;
 - (void)enumerateReusableTabDocuments:(CDUnknownBlockType)arg1;
+- (id)reusableTabDocumentWithUUID:(id)arg1;
 - (id)faviconForUUID:(id)arg1;
 
 @end

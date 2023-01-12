@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/NSFileProvider-Protocol.h>
-
 @class NSOperationQueue, NSString, NSURL;
 @protocol FPDFileCoordinationProviderDelegate;
 
 __attribute__((visibility("hidden")))
-@interface FPDFileCoordinationProvider : NSObject <NSFileProvider>
+@interface FPDFileCoordinationProvider : NSObject
 {
     NSURL *_providedItemsURL;
     _Bool _registered;
@@ -30,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_providedItemAtURL:(id)arg1 didGainPresenterWithID:(id)arg2;
 - (void)_writerWithID:(id)arg1 didFinishWritingForURL:(id)arg2;
 - (void)_cancelProvidingItemAtURL:(id)arg1 toReaderWithID:(id)arg2;
+- (void)_provideItemAtURL:(id)arg1 withInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_provideItemAtURL:(id)arg1 toReaderWithID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_provideItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_physicalURLForURL:(id)arg1;

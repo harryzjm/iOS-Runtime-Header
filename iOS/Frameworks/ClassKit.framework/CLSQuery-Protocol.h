@@ -10,6 +10,6 @@
 @class NSError;
 
 @protocol CLSQuery <CLSClientRemoteObject, CLSChangeNotifiable>
-- (oneway void)clientRemote_finishWithState:(unsigned long long)arg1 error:(NSError *)arg2;
+- (oneway void)clientRemote_finishWithOffset:(unsigned long long)arg1 error:(NSError *)arg2;
 @end
 

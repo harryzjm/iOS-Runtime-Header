@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIWebFindOnPageHighlighter-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, UIView, UIWebBrowserView, UIWebPDFViewHandler;
 @protocol UIWebFindOnPageHighlighterDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIWebBrowserFindOnPageHighlighter : NSObject <UIWebFindOnPageHighlighter>
+@interface UIWebBrowserFindOnPageHighlighter : NSObject
 {
     NSMutableArray *_highlightBubbleViews;
     NSArray *_pdfHighlightViews;

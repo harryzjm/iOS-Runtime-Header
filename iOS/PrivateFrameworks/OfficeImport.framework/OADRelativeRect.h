@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface OADRelativeRect : NSObject <NSCopying>
+@interface OADRelativeRect : NSObject
 {
     float mLeft;
     float mTop;

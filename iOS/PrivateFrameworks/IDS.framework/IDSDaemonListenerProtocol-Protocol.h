@@ -13,6 +13,8 @@
 
 @optional
 - (void)finishedReportingRequestUUID:(NSString *)arg1 withError:(NSError *)arg2;
+- (void)finishedVerifyingSignedDataForRequest:(NSString *)arg1 success:(_Bool)arg2 error:(NSError *)arg3;
+- (void)finishedSigningForRequest:(NSString *)arg1 signedData:(NSData *)arg2 error:(NSError *)arg3;
 - (void)finishedRevokingPseudonymWithSuccess:(_Bool)arg1 error:(NSError *)arg2 requestUUID:(NSString *)arg3;
 - (void)finishedRenewingPseudonym:(IDSPseudonym *)arg1 success:(_Bool)arg2 error:(NSError *)arg3 requestUUID:(NSString *)arg4;
 - (void)finishedProvisioningPseudonym:(IDSPseudonym *)arg1 success:(_Bool)arg2 error:(NSError *)arg3 forRequestUUID:(NSString *)arg4;
@@ -55,7 +57,10 @@
 - (void)openedSocket:(NSObject<OS_xpc_object> *)arg1 forHandlerID:(NSString *)arg2 error:(NSError *)arg3;
 - (void)allocationDone:(NSString *)arg1 sessionInfo:(NSDictionary *)arg2;
 - (void)receivedGroupSessionParticipantDataUpdate:(NSDictionary *)arg1 forTopic:(NSString *)arg2 toIdentifier:(NSString *)arg3 fromID:(NSString *)arg4;
-- (void)receivedGroupSessionParticipantUpdate:(NSDictionary *)arg1 forTopic:(NSString *)arg2 toIdentifier:(NSString *)arg3 fromID:(NSString *)arg4;
+- (void)receivedGroupSessionParticipantUpdate:(NSDictionary *)arg1 forTopic:(NSString *)arg2 toIdentifier:(NSString *)arg3 fromID:(NSString *)arg4 context:(NSDictionary *)arg5;
+- (void)session:(NSString *)arg1 didReceiveServerErrorCode:(unsigned int)arg2;
+- (void)session:(NSString *)arg1 didReceiveData:(NSData *)arg2 dataType:(unsigned short)arg3 forParticipant:(NSDictionary *)arg4;
+- (void)session:(NSString *)arg1 didReceiveDataBlob:(NSData *)arg2 forParticipant:(NSDictionary *)arg3;
 - (void)session:(NSString *)arg1 didReceiveParticipantID:(unsigned long long)arg2 forParticipantIDAlias:(unsigned long long)arg3 salt:(NSData *)arg4;
 - (void)session:(NSString *)arg1 didCreateParticipantIDAlias:(unsigned long long)arg2 forParticipantID:(unsigned long long)arg3 salt:(NSData *)arg4;
 - (void)session:(NSString *)arg1 hasOutdatedSKI:(NSUUID *)arg2;
@@ -63,8 +68,9 @@
 - (void)session:(NSString *)arg1 didReceiveKeyMaterial:(NSArray *)arg2;
 - (void)session:(NSString *)arg1 didUnregisterPluginAllocationInfo:(NSDictionary *)arg2;
 - (void)session:(NSString *)arg1 didRegisterPluginAllocationInfo:(NSDictionary *)arg2;
-- (void)session:(NSString *)arg1 didReceivePluginAllocationInfo:(NSDictionary *)arg2;
 - (void)participantUpdatedForSession:(NSString *)arg1;
+- (void)session:(NSString *)arg1 didReceiveParticipantIDs:(NSArray *)arg2 withCode:(unsigned int)arg3 managementType:(unsigned short)arg4;
+- (void)sessionDidReceiveParticipantUpgrade:(NSString *)arg1 participantType:(unsigned short)arg2 error:(NSError *)arg3;
 - (void)session:(NSString *)arg1 didRemoveParticipantIDs:(NSArray *)arg2 withCode:(unsigned int)arg3 isTruncated:(_Bool)arg4;
 - (void)session:(NSString *)arg1 didReceiveQueryBlockedParticipantIDs:(NSArray *)arg2 withCode:(unsigned int)arg3 isTruncated:(_Bool)arg4;
 - (void)session:(NSString *)arg1 didReceiveBlockedParticipantIDs:(NSArray *)arg2 withCode:(unsigned int)arg3 withType:(unsigned short)arg4 isTruncated:(_Bool)arg5;

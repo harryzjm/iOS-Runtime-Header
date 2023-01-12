@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int fallbackContextId; // @synthesize fallbackContextId=_fallbackContextId;
 @property(nonatomic) unsigned long long digitizerSenderID; // @synthesize digitizerSenderID=_digitizerSenderID;
 - (id)hidEventFromCurrentState;
+- (void)updateEventTimestamp:(unsigned long long)arg1;
 - (struct __IOHIDEvent *)_createCollectionEventForEvent:(struct __IOHIDEvent *)arg1;
 - (unsigned int)_collectionMask;
 - (void)updateWithHIDEvent:(struct __IOHIDEvent *)arg1;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PreviewsOSSupport/UVBSPipeServiceProtocol-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtCE17PreviewsOSSupportCSo25UVBSPipeServiceConnectionP33_6F6228FEB9D698677456E0B4E0512AD215InterfaceTarget : NSObject <UVBSPipeServiceProtocol>
+@interface _TtCE17PreviewsOSSupportCSo25UVBSPipeServiceConnectionP33_6F6228FEB9D698677456E0B4E0512AD215InterfaceTarget : NSObject
 {
     MISSING_TYPE *connection;
     MISSING_TYPE *receiver;

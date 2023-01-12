@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SCNTextureSource.h"
+
 @class AVPlayer, AVPlayerItemVideoOutput;
 @protocol MTLTexture;
 
 __attribute__((visibility("hidden")))
-@interface SCNAVPlayerSource
+@interface SCNAVPlayerSource : SCNTextureSource
 {
     AVPlayer *_player;
     AVPlayerItemVideoOutput *_videoOutput;
@@ -21,7 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _height;
 }
 
-- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
+- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3 status:(CDStruct_3d581f42 *)arg4;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)connectToProxy:(struct __C3DImageProxy *)arg1;
 @property(retain, nonatomic) AVPlayer *player;

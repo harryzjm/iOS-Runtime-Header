@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/RBSInvalidatable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _RBSExpirationWarningClient : NSObject <RBSInvalidatable>
+@interface _RBSExpirationWarningClient : NSObject
 {
     CDUnknownBlockType _block;
     CDUnknownBlockType _invalidationBlock;

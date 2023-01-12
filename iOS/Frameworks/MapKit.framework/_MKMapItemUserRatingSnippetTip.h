@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapItemProviderRatingSnippet-Protocol.h>
-
 @class GEOMapItemTip, MKMapItem, NSDate, NSString, NSURL;
 @protocol GEOMapItemReview;
 
 __attribute__((visibility("hidden")))
-@interface _MKMapItemUserRatingSnippetTip : NSObject <MKMapItemProviderRatingSnippet>
+@interface _MKMapItemUserRatingSnippetTip : NSObject
 {
     MKMapItem *_mapItem;
     GEOMapItemTip *_tip;

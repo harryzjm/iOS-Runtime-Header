@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIPerspectiveView-Protocol.h>
+#import "SKUICollectionViewCell.h"
 
 @class NSString, UICollectionView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIShelfCollectionViewCell <SKUIPerspectiveView>
+@interface SKUIShelfCollectionViewCell : SKUICollectionViewCell
 {
     UICollectionView *_collectionView;
     struct UIEdgeInsets _contentInset;

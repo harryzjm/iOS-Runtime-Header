@@ -9,7 +9,10 @@
 @class NSString;
 
 @protocol ASCAdLockupPresenterView <NSObject>
-- (void)setAdTranparencyButtonHidden:(_Bool)arg1;
+- (void)setAdTransparencyButtonHidden:(_Bool)arg1;
+
+@optional
+- (void)setDeveloperName:(NSString *)arg1;
 - (void)setProductDescription:(NSString *)arg1;
 - (void)setProductRatingBadge:(NSString *)arg1;
 - (void)setProductRating:(float)arg1;

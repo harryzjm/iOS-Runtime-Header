@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Vision/VNClustererModelBuilding-Protocol.h>
-#import <Vision/VNClustererModelQuerying-Protocol.h>
-
 @protocol VNClusteringReadOnly><VNClusteringWritable><VNClusteringCancelling;
 
 __attribute__((visibility("hidden")))
-@interface VNClustererReadWriteContext <VNClustererModelQuerying, VNClustererModelBuilding>
+@interface VNClustererReadWriteContext
 {
     id <VNClusteringReadOnly><VNClusteringWritable><VNClusteringCancelling> _clusterer;
 }

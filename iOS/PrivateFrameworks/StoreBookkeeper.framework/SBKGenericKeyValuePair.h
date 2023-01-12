@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreBookkeeper/NSObject-Protocol.h>
-#import <StoreBookkeeper/NSSecureCoding-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SBKGenericKeyValuePair : NSObject <NSObject, NSSecureCoding>
+@interface SBKGenericKeyValuePair : NSObject
 {
     NSString *_kvsKey;
     NSData *_kvsPayload;

@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/TSKModel-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface KNClassicStylesheetRecord : TSPObject <TSKModel>
+@interface KNClassicStylesheetRecord : TSPObject
 {
     NSDictionary *_identifierToStyleMap;
 }

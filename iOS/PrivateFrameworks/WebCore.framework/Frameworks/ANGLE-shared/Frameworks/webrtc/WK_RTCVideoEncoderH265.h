@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <webrtc/RTCVideoEncoder-Protocol.h>
-
 @class NSString, WK_RTCVideoCodecInfo;
 
 __attribute__((visibility("hidden")))
-@interface WK_RTCVideoEncoderH265 : NSObject <RTCVideoEncoder>
+@interface WK_RTCVideoEncoderH265 : NSObject
 {
     WK_RTCVideoCodecInfo *_codecInfo;
     struct unique_ptr<webrtc::BitrateAdjuster, std::default_delete<webrtc::BitrateAdjuster>> _bitrateAdjuster;

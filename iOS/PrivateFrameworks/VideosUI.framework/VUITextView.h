@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)_defaultParagraphStyle;
 - (void)setVuiBackgroundColor:(id)arg1;
 - (struct CGSize)vui_sizeThatFits:(struct CGSize)arg1;
 @property(nonatomic) long long vuiTextAlignment;

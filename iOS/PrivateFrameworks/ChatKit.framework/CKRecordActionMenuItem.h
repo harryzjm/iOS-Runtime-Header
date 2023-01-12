@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKActionMenuItem.h"
+
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface CKRecordActionMenuItem
+@interface CKRecordActionMenuItem : CKActionMenuItem
 {
     _Bool _wasSelected;
     NSDate *_dateSelected;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CAAnimationDelegate-Protocol.h>
+#import "CKInvisibleInkEffectView.h"
 
 @class CAEmitterLayer, CALayer, NSString, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface CKInvisibleInkEmojiEffectView <CAAnimationDelegate>
+@interface CKInvisibleInkEmojiEffectView : CKInvisibleInkEffectView
 {
     _Bool _blendingEnabled;
     UITextView *_textView;

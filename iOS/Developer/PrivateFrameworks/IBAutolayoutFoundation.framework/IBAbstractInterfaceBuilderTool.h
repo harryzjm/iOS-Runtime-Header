@@ -6,11 +6,9 @@
 
 #import <AssetCatalogFoundation/IBAbstractPlatformTool.h>
 
-#import <IBAutolayoutFoundation/IBAbstractInterfaceBuilderTool-Protocol.h>
-
 @class NSMutableSet, NSString;
 
-@interface IBAbstractInterfaceBuilderTool : IBAbstractPlatformTool <IBAbstractInterfaceBuilderTool>
+@interface IBAbstractInterfaceBuilderTool : IBAbstractPlatformTool
 {
     NSMutableSet *_loadedLiveViewBundlePaths;
     NSMutableSet *_loadedLiveViewEnvironmentProjectPaths;

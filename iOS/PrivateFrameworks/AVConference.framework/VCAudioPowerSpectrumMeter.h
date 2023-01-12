@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCAudioPowerSpectrumProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioPowerSpectrumMeter <VCAudioPowerSpectrumProtocol>
+@interface VCAudioPowerSpectrumMeter
 {
     unsigned short _audioSpectrumBinCount;
     struct _VCAudioPowerSpectrumMeterRealtimeContext _realtimeContext;
@@ -18,7 +16,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) void *realtimeContext;
 - (void)unregisterAllStreams;
 - (void)releaseAudioPowerSpectrumForStreamToken:(id)arg1;
-- (void)registerNewAudioPowerSpectrumForStreamToken:(id)arg1 spectrumSource:(id)arg2;
+- (void)registerNewAudioPowerSpectrumForStreamToken:(id)arg1 powerSpectrumKey:(id)arg2 spectrumSource:(id)arg3;
 - (void)dealloc;
 - (id)initWithBinCount:(unsigned short)arg1 refreshRate:(double)arg2 delegate:(id)arg3;
 

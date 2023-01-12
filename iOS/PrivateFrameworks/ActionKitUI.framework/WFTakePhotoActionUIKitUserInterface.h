@@ -6,15 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/AVCapturePhotoCaptureDelegate-Protocol.h>
-#import <ActionKitUI/UIImagePickerControllerDelegate-Protocol.h>
-#import <ActionKitUI/UINavigationControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFTakePhotoActionUserInterface-Protocol.h>
-
 @class AVCaptureSession, NSMutableArray, NSString, WFContentCollection;
 
 __attribute__((visibility("hidden")))
-@interface WFTakePhotoActionUIKitUserInterface : WFEmbeddableActionUserInterface <UIImagePickerControllerDelegate, UINavigationControllerDelegate, WFTakePhotoActionUserInterface, AVCapturePhotoCaptureDelegate>
+@interface WFTakePhotoActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     _Bool _showCameraPreview;
     CDUnknownBlockType _completionHandler;

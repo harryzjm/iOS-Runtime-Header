@@ -12,11 +12,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct GEOOnce_s {
-    struct os_unfair_lock_s lock;
-    _Bool didRun;
-};
-
 struct _GEOFlyoverKey {
     unsigned int z:6;
     unsigned int x:26;
@@ -170,70 +165,6 @@ struct _GEOVisualLocalizationTrackKey {
     unsigned int padding:22;
 };
 
-struct _opaque_pthread_mutex_t {
-    long long _field1;
-    char _field2[56];
-};
-
-struct _opaque_pthread_rwlock_t {
-    long long _field1;
-    char _field2[192];
-};
-
-struct _opaque_pthread_t;
-
-struct float_list_t {
-    long long _field1;
-    float *_field2;
-    long long _field3;
-};
-
-struct float_nn_list_t {
-    long long _field1;
-    float (*_field2)[2];
-    long long _field3;
-};
-
-struct g_coords_list_t {
-    long long _field1;
-    CDStruct_183601bc *_field2;
-    long long _field3;
-};
-
-struct g_pos2f_list_t {
-    long long _field1;
-    CDStruct_183601bc *_field2;
-    long long _field3;
-};
-
-struct g_pos3_t {
-    double _field1;
-    double _field2;
-    double _field3;
-};
-
-struct int_list_t {
-    long long _field1;
-    int *_field2;
-    long long _field3;
-};
-
-struct int_nn_list_t {
-    long long _field1;
-    int (*_field2)[2];
-    long long _field3;
-};
-
-struct int_pair_list_t {
-    long long _field1;
-    struct int_pair_t *_field2;
-    long long _field3;
-};
-
-struct int_pair_t;
-
-struct lbl_feature2d_t;
-
 struct list<VLLocalizationDataKey, std::allocator<VLLocalizationDataKey>> {
     struct __list_node_base<VLLocalizationDataKey, void *> {
         void *__prev_;
@@ -244,485 +175,27 @@ struct list<VLLocalizationDataKey, std::allocator<VLLocalizationDataKey>> {
     } __size_alloc_;
 };
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-struct timespec {
-    long long _field1;
-    long long _field2;
-};
-
-struct vl_dog_octave_list_t {
-    long long _field1;
-    CDStruct_183601bc *_field2;
-    long long _field3;
-};
-
-struct vl_dump_detail_ptr_list_t {
-    long long _field1;
-    CDStruct_183601bc **_field2;
-    long long _field3;
-};
-
-struct vl_dump_hash_list_t {
-    long long _field1;
-    CDStruct_183601bc *_field2;
-    long long _field3;
-};
-
-struct vl_dump_kpts_ptr_list_t {
-    long long _field1;
-    CDStruct_183601bc **_field2;
-    long long _field3;
-};
-
-struct vl_dump_locate_ptr_list_t {
-    long long _field1;
-    CDStruct_183601bc **_field2;
-    long long _field3;
-};
-
-struct vl_dump_result_ptr_list_t {
-    long long _field1;
-    CDStruct_183601bc **_field2;
-    long long _field3;
-};
-
-struct vl_dump_update_data_list_t {
-    long long _field1;
-    CDStruct_183601bc *_field2;
-    long long _field3;
-};
-
-struct vl_gnd_t {
-    CDStruct_2f30224d _field1;
-    double _field2;
-    double _field3;
-};
-
-struct vl_pose_fuse_t;
-
-struct vl_ps_hyp_list_t {
-    long long _field1;
-    CDStruct_183601bc *_field2;
-    long long _field3;
-};
-
-struct vl_t {
-    struct {
-        struct {
-            int _field1;
-            int _field2;
-            struct {
-                int _field1;
-                int _field2;
-                int _field3;
-                float _field4;
-                float _field5;
-                float _field6;
-                int _field7;
-            } _field3;
-            struct {
-                float _field1;
-                int _field2;
-                int _field3;
-                int _field4;
-                float _field5;
-                int _field6;
-                float _field7;
-                int _field8;
-                float _field9;
-                float _field10;
-                int _field11;
-                float _field12;
-                int _field13;
-            } _field4;
-            struct {
-                int _field1;
-                int _field2;
-                int _field3;
-                float _field4;
-            } _field5;
-            float _field6;
-            float _field7;
-            int _field8;
-        } _field1;
-        struct {
-            float _field1;
-            float _field2;
-            int _field3;
-            struct {
-                int _field1;
-                float _field2;
-                float _field3;
-            } _field4;
-            int _field5;
-        } _field2;
-        struct {
-            int _field1;
-            struct {
-                int _field1;
-            } _field2;
-            float _field3;
-        } _field3;
-        CDStruct_1ef3fb1f _field4;
-        struct {
-            int _field1;
-            struct {
-                int _field1;
-                float _field2;
-                float _field3;
-                float _field4;
-                int _field5;
-                float _field6;
-                int _field7;
-                int _field8;
-                int _field9;
-                int _field10;
-                int _field11;
-                int _field12;
-                float _field13;
-                int _field14;
-                struct {
-                    int _field1;
-                    int _field2;
-                    double _field3;
-                    float _field4;
-                } _field15;
-            } _field2;
-            struct {
-                int _field1;
-                float _field2;
-                float _field3;
-                float _field4;
-                float _field5;
-                float _field6;
-                float _field7;
-                int _field8;
-                float _field9;
-                float _field10;
-                float _field11;
-                float _field12;
-                int _field13;
-                int _field14;
-                int _field15;
-                float _field16;
-                int _field17;
-                int _field18;
-                float _field19;
-                int _field20;
-                int _field21;
-                float _field22[8];
-                int _field23;
-                int _field24;
-                int _field25;
-                int _field26;
-                float _field27;
-                float _field28;
-                int _field29;
-                float _field30;
-                int _field31;
-            } _field3;
-            struct {
-                struct {
-                    float _field1;
-                    float _field2;
-                    float _field3;
-                    int _field4;
-                    int _field5;
-                    int _field6;
-                    int _field7;
-                    float _field8;
-                    float _field9;
-                    float _field10;
-                    float _field11;
-                    float _field12;
-                    float _field13;
-                    int _field14;
-                    unsigned long long _field15;
-                    CDStruct_869f9c67 _field16;
-                } _field1;
-                float _field2;
-                float _field3;
-                float _field4;
-            } _field4;
-            int _field5;
-            float _field6;
-            int _field7;
-            int _field8;
-            float _field9;
-            float _field10;
-            float _field11;
-            struct {
-                int _field1;
-                float _field2;
-                float _field3;
-                float _field4;
-                float _field5;
-                int _field6;
-            } _field12;
-            CDStruct_1ef3fb1f _field13;
-            float _field14;
-        } _field5;
-        struct {
-            int _field1;
-            int _field2;
-            int _field3;
-            int _field4;
-            int _field5;
-            int _field6;
-            float _field7;
-            float _field8;
-            double _field9;
-            float _field10;
-            float _field11;
-            float _field12;
-            float _field13;
-        } _field6;
-        CDStruct_1ef3fb1f _field7;
-    } _field1;
-    int _field2;
-    CDStruct_183601bc *_field3;
-    struct {
-        struct {
-            char *_field1;
-            int _field2;
-            int _field3;
-            long long _field4;
-        } _field1;
-        struct {
-            float _field1[9];
-            float _field2[2];
-        } _field2;
-        struct {
-            int _field1;
-            double _field2;
-            double _field3;
-            double _field4;
-            double _field5;
-            double _field6;
-            double _field7;
-            double _field8;
-            double _field9;
-            double _field10;
-            double _field11;
-            double _field12;
-            int _field13;
-            int _field14;
-        } _field3;
-        struct g_pos3_t _field4;
-        float _field5;
-        float _field6;
-        CDStruct_869f9c67 _field7;
-        float _field8;
-        float _field9;
-        float _field10;
-        struct {
-            float _field1[3][3];
-            float _field2[3];
-        } _field11;
-    } _field4;
-    CDStruct_170c25c7 _field5;
-    CDStruct_ecb8e74c _field6;
-    CDStruct_77b38b1a _field7;
-    struct {
-        struct {
-            CDStruct_11450ebb _field1;
-            CDStruct_11450ebb _field2;
-            CDStruct_11450ebb _field3;
-            CDStruct_11450ebb _field4;
-            CDStruct_11450ebb _field5;
-            CDStruct_11450ebb _field6;
-            struct vl_dog_octave_list_t _field7;
-            struct {
-                struct int_pair_list_t _field1;
-            } _field8;
-            struct {
-                struct lbl_feature2d_t *_field1[3];
-                char _field2[512];
-                int _field3;
-                int _field4;
-            } _field9;
-        } _field1;
-        struct {
-            int _field1;
-            int _field2;
-            struct g_pos3_t _field3;
-            float _field4;
-            int _field5;
-            char _field6[512];
-            void *_field7;
-            CDUnknownFunctionPointerType _field8;
-            CDStruct_183601bc *_field9;
-            CDStruct_4c217994 _field10;
-            struct vl_gnd_t _field11;
-            struct _opaque_pthread_t *_field12;
-            struct _opaque_pthread_rwlock_t _field13;
-            struct _opaque_pthread_rwlock_t _field14;
-            CDStruct_11450ebb _field15;
-            CDStruct_11450ebb _field16;
-        } _field2;
-        struct {
-            CDStruct_11450ebb _field1;
-            CDStruct_11450ebb _field2;
-            CDStruct_11450ebb _field3;
-        } _field3;
-        CDStruct_7043ee1b _field4;
-        struct {
-            struct {
-                struct g_pos2f_list_t _field1;
-                CDStruct_1447599b _field2;
-                CDStruct_1447599b _field3;
-                CDStruct_11450ebb _field4;
-            } _field1;
-            struct {
-                struct int_list_t _field1;
-                CDStruct_170c25c7 _field2;
-            } _field2;
-            struct {
-                struct vl_gnd_t _field1;
-                int _field2;
-                struct {
-                    CDStruct_11450ebb _field1;
-                    CDStruct_11450ebb _field2;
-                    CDStruct_11450ebb _field3;
-                    CDStruct_11450ebb _field4;
-                    CDStruct_11450ebb _field5;
-                } _field3;
-                CDStruct_11450ebb _field4;
-                struct {
-                    double _field1;
-                    double _field2;
-                    unsigned long long _field3;
-                } _field5;
-                struct {
-                    CDStruct_2f30224d _field1;
-                    void *_field2;
-                } _field6;
-            } _field3;
-            CDStruct_7043ee1b _field4;
-            struct {
-                CDStruct_11450ebb _field1;
-                char _field2[512];
-            } _field5;
-            CDStruct_7043ee1b _field6;
-            CDStruct_11450ebb _field7;
-            struct vl_ps_hyp_list_t _field8;
-            struct float_list_t _field9;
-            struct float_list_t _field10;
-            struct vl_pose_fuse_t *_field11;
-            struct {
-                CDStruct_2f30224d _field1;
-            } _field12;
-        } _field5;
-        struct {
-            CDStruct_2f30224d _field1;
-            int _field2;
-            int _field3;
-        } _field6;
-        CDStruct_11450ebb _field7;
-    } _field8;
-    struct {
-        int _field1;
-        int _field2;
-        struct _opaque_pthread_t *_field3;
-        struct timespec _field4;
-        int _field5;
-        char _field6[512];
-        char _field7[512];
-        int _field8;
-        unsigned char _field9;
-        struct vl_dump_update_data_list_t _field10;
-        struct _opaque_pthread_mutex_t _field11;
-        struct vl_dump_locate_ptr_list_t _field12;
-        CDStruct_11450ebb _field13;
-        struct _opaque_pthread_mutex_t _field14;
-        struct vl_dump_kpts_ptr_list_t _field15;
-        CDStruct_11450ebb _field16;
-        struct _opaque_pthread_mutex_t _field17;
-        struct vl_dump_result_ptr_list_t _field18;
-        struct _opaque_pthread_mutex_t _field19;
-        struct {
-            double _field1;
-            struct vl_dump_hash_list_t _field2;
-            CDStruct_ecb8e74c _field3;
-            CDStruct_170c25c7 _field4;
-            CDStruct_ecb8e74c _field5;
-            struct g_coords_list_t _field6;
-            struct float_list_t _field7;
-            struct g_coords_list_t _field8;
-            struct float_list_t _field9;
-            struct g_coords_list_t _field10;
-            struct float_list_t _field11;
-            CDStruct_2f30224d _field12;
-            float _field13;
-            CDStruct_77b38b1a _field14;
-            struct vl_gnd_t _field15;
-        } _field20;
-        struct vl_dump_detail_ptr_list_t _field21;
-        struct _opaque_pthread_mutex_t _field22;
-    } _field9;
-    CDStruct_183601bc *_field10;
-    CDStruct_183601bc *_field11;
-    struct {
-        double _field1;
-        int _field2;
-    } _field12;
-    struct {
-        int _field1;
-        int _field2;
-        int _field3;
-    } _field13;
-};
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    MISSING_TYPE *columns[3];
-} CDStruct_8e0628e6;
-
-typedef struct {
-    double _field1[3][3];
-    double _field2[3];
-    float _field3;
-    float _field4[36];
-} CDStruct_bd2735fe;
-
-typedef struct {
-    double _field1[3][3];
-    double _field2[3];
-} CDStruct_2f30224d;
-
-typedef struct {
-    double pos_geoc[3];
-    float horz_accuracy;
-    int is_vl_fused;
-    int type;
-} CDStruct_6c6357c7;
-
-typedef struct {
-    MISSING_TYPE *columns[4];
-} CDStruct_14d5dc5e;
-
-typedef struct {
-    float v[6][6];
-} CDStruct_2972252c;
-
-typedef struct {
-    double trueHeading;
-    double accuracy;
-} CDStruct_160d0e14;
-
-typedef struct {
-    double coordinate__horizontalAccuracy;
-} CDStruct_c3074bf1;
-
-typedef struct {
-    float _field1;
+    double _field1[3];
     float _field2;
-    float _field3;
-} CDStruct_869f9c67;
+    int _field3;
+    int _field4;
+} CDStruct_03814764;
+
+typedef struct {
+    MISSING_TYPE *_field1[4];
+} CDStruct_f1db2b5e;
+
+typedef struct {
+    float _field1[6][6];
+} CDStruct_80ba4949;
+
+typedef struct {
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
 
 typedef struct {
     int level;
@@ -732,26 +205,19 @@ typedef struct {
 } CDStruct_4c217994;
 
 typedef struct {
-    int _field1;
-    int _field2;
-} CDStruct_1ef3fb1f;
-
-typedef struct CDStruct_183601bc;
-
-typedef struct {
-    struct timespec _field1[3];
-    struct timespec _field2[3];
-    long long _field3[3];
-    long long _field4[3];
-    int _field5;
-    char _field6[64];
-    int _field7;
-} CDStruct_11450ebb;
-
-typedef struct {
     double *points3d;
     float *points2d;
     int *inlier_indices;
+    double slam_origin[6];
+    float *slam_trks;
+    char *slam_trks_desc;
+    short *slam_trks_obs;
+    float *slam_trks_2d;
+    short *slam_trks_img_idx;
+    int *vio_status;
+    float *vio_poses;
+    float *K;
+    float *distortion;
     float *solver_conf;
     float *fused_conf;
     float gravity[3];
@@ -762,6 +228,9 @@ typedef struct {
     int num_inliers_gt;
     int num_solutions;
     int status_ps;
+    int num_slam_tracks;
+    int num_frame;
+    int desc_dim;
     double t_kpts;
     double t_kpts_pyr;
     double t_kpts_det;
@@ -787,34 +256,5 @@ typedef struct {
     CDStruct_4c217994 tile;
     long long tracks_file_size;
     int peak_mem_usage;
-} CDStruct_39a823be;
-
-typedef struct {
-    long long _field1;
-    CDStruct_183601bc *_field2;
-    long long _field3;
-    struct float_list_t _field4;
-} CDStruct_170c25c7;
-
-typedef struct {
-    long long _field1;
-    CDStruct_183601bc *_field2;
-    long long _field3;
-} CDStruct_1447599b;
-
-typedef struct {
-    struct int_nn_list_t _field1;
-    struct float_nn_list_t _field2;
-} CDStruct_ecb8e74c;
-
-typedef struct {
-    CDStruct_11450ebb _field1;
-} CDStruct_7043ee1b;
-
-typedef struct {
-    struct g_pos2f_list_t _field1;
-    CDStruct_1447599b _field2;
-    struct int_pair_list_t _field3;
-    int _field4;
-} CDStruct_77b38b1a;
+} CDStruct_8259f036;
 

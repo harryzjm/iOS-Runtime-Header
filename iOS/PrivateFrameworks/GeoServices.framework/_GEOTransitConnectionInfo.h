@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitConnectionInfo-Protocol.h>
-
 @class GEOPDTransitConnection, NSArray, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitConnectionInfo : NSObject <GEOTransitConnectionInfo>
+@interface _GEOTransitConnectionInfo : NSObject
 {
     GEOPDTransitConnection *_connection;
     int _providerID;

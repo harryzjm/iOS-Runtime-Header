@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *didAppearCompletions;
     MISSING_TYPE *didDisappearCompletions;
     MISSING_TYPE *mastheadViewProviderDelegate;
-    MISSING_TYPE *engagementMastheadViewProvider;
+    MISSING_TYPE *deferLoadingContent;
 }
 
 - (void).cxx_destruct;

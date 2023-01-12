@@ -6,11 +6,9 @@
 
 #import <GameCenterFoundation/GKLocalPlayer.h>
 
-#import <GameCenterUI/GKLocalPlayerAuthenticationUIPersonality-Protocol.h>
-
 @class NSString;
 
-@interface GKLocalPlayer (GKFaceTimeSupport) <GKLocalPlayerAuthenticationUIPersonality>
+@interface GKLocalPlayer (GKFaceTimeSupport)
 + (id)accountName;
 + (_Bool)hasAuthenticatedAccount;
 - (id)deleteAvatarAlertControllerWithHandler:(CDUnknownBlockType)arg1;
@@ -20,6 +18,7 @@
 - (void)deletePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deletePhoto;
 - (void)registerGameControllers;
+- (void)triggerAccessPoint;
 - (void)reloadAccessPoint;
 - (void)hideAccessPoint;
 - (void)showAccessPoint;
@@ -30,7 +29,8 @@
 - (void)authenticationShowGreenBuddyUIForLocalPlayer:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)showOnboardingUIFromViewController:(id)arg1;
 - (_Bool)shouldShowOnBoardingUI;
-- (void)showWelcomeBannerWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)isBannerVisible;
+- (void)showWelcomeBannerWithTitle:(id)arg1 message:(id)arg2 touchHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)presentFriendRequestCreatorFromViewController:(id)arg1 error:(id *)arg2;
 - (_Bool)isPresentingFriendRequestViewController;
 - (void)sendFriendInviteTo:(id)arg1 groupId:(id)arg2;

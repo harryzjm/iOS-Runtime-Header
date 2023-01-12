@@ -6,6 +6,8 @@
 
 #import <UIKit/UIHoverGestureRecognizer.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface WKMouseGestureRecognizer : UIHoverGestureRecognizer
 {
@@ -32,9 +34,15 @@ __attribute__((visibility("hidden")))
 - (void)reset;
 - (id)mouseTouch;
 - (optional_dc4c3092)lastMouseLocation;
-- (void *)lastMouseEvent;
+- (unique_ptr_8861e41c)takeLastMouseEvent;
 - (_Bool)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
 - (void)setEnabled:(_Bool)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

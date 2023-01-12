@@ -6,10 +6,10 @@
 
 #import <StoreKit/NSObject-Protocol.h>
 
-@class NSDictionary, NSError;
+@class NSData, NSDictionary, NSError;
 
 @protocol SKEngagementPresenterProtocol <NSObject>
 - (void)preferredContentSizeDidChange:(struct CGSize)arg1;
-- (void)engagementTaskDidFinishWithResult:(NSDictionary *)arg1 error:(NSError *)arg2 completion:(void (^)(void))arg3;
+- (void)engagementTaskDidFinishWithResult:(NSDictionary *)arg1 resultData:(NSData *)arg2 error:(NSError *)arg3 completion:(void (^)(void))arg4;
 @end
 

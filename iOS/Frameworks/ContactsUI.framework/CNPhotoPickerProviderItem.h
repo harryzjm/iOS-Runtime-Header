@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/NSCopying-Protocol.h>
-
 @class NSData, NSDate, NSString, UIImage;
 @protocol CNPhotoPickerProviderItemDelegate, CNScheduler;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerProviderItem : NSObject <NSCopying>
+@interface CNPhotoPickerProviderItem : NSObject
 {
     _Bool _allowsEditing;
     NSData *_thumbnailImageData;

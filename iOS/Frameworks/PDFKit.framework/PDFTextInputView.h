@@ -6,24 +6,33 @@
 
 #import <UIKit/UIView.h>
 
-#import <PDFKit/UIKeyInput-Protocol.h>
-#import <PDFKit/UITextInput-Protocol.h>
-#import <PDFKit/UITextInteractionDelegate-Protocol.h>
-
-@class NSDictionary, NSString, UITextInputPasswordRules, UITextInteraction, UITextPosition, UITextRange;
-@protocol PDFTextInputDelegate, UITextInputDelegate, UITextInputTokenizer;
+@class NSDictionary, NSMutableArray, NSString, PDFTextSearchAggregator, UITextHighlightView, UITextInputPasswordRules, UITextInteraction, UITextPosition, UITextRange, UITextSearchingDimmingView;
+@protocol NSObject><NSCopying, PDFTextInputDelegate, UITextInputDelegate, UITextInputTokenizer;
 
 __attribute__((visibility("hidden")))
-@interface PDFTextInputView : UIView <UITextInput, UIKeyInput, UITextInteractionDelegate>
+@interface PDFTextInputView : UIView
 {
     id <PDFTextInputDelegate> _delegate;
     UITextRange *_textSelectionRange;
     UITextInteraction *_textInteraction;
     id <UITextInputDelegate> _textInputDelegate;
     id <UITextInputTokenizer> _textInputTokenizer;
+    _Bool _dimmingViewVisible;
+    UITextHighlightView *_searchHighlightView;
+    UITextSearchingDimmingView *_searchDimmingView;
+    UITextRange *_highlightedTextRange;
+    NSMutableArray *_foundTextRanges;
+    PDFTextSearchAggregator *_activeSearch;
 }
 
 - (void).cxx_destruct;
+- (void)layoutSubviews;
+- (void)clearAllDecoratedFoundText;
+- (void)decorateFoundTextRange:(id)arg1 inDocument:(id)arg2 usingStyle:(long long)arg3;
+- (void)performTextSearchWithQueryString:(id)arg1 usingOptions:(id)arg2 resultAggregator:(id)arg3;
+- (long long)compareFoundRange:(id)arg1 toRange:(id)arg2 inDocument:(id)arg3;
+- (id)_targetedPreviewForRange:(id)arg1;
+- (void)_setDimmingViewVisible:(_Bool)arg1;
 - (id)linkRegionsConstrainedToLineAtPoint:(struct CGPoint)arg1;
 - (_Bool)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)deleteBackward;
@@ -80,12 +89,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long keyboardType;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) long long returnKeyType;
+@property(readonly) id <NSObject><NSCopying> selectedTextSearchDocument;
 @property(nonatomic) long long selectionAffinity;
 @property(nonatomic) long long smartDashesType;
 @property(nonatomic) long long smartInsertDeleteType;
 @property(nonatomic) long long smartQuotesType;
 @property(nonatomic) long long spellCheckingType;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsTextReplacement;
 @property(copy, nonatomic) NSString *textContentType;
 @property(readonly, nonatomic) UIView *textInputView;
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSParsedDataPrivate-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface BCSParsedURLData : NSObject <BCSParsedDataPrivate>
+@interface BCSParsedURLData : NSObject
 {
     long long _type;
     NSString *_extraPreviewText;

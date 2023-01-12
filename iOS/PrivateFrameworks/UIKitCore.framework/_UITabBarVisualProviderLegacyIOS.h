@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/PTSettingsKeyObserver-Protocol.h>
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UIBarAppearanceChangeObserver-Protocol.h>
+#import "_UITabBarVisualProvider.h"
 
 @class NSString, UIPointerInteraction, UIView, _UIBarBackground, _UIBarBackgroundLayout;
 
 __attribute__((visibility("hidden")))
-@interface _UITabBarVisualProviderLegacyIOS <_UIBarAppearanceChangeObserver, UIPointerInteractionDelegate, PTSettingsKeyObserver>
+@interface _UITabBarVisualProviderLegacyIOS : _UITabBarVisualProvider
 {
     UIPointerInteraction *_pointerInteraction;
     _UIBarBackground *_backgroundView;

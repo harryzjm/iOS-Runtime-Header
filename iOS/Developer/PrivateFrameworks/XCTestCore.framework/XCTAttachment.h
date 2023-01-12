@@ -23,7 +23,6 @@
     NSData *_payload;
 }
 
-+ (id)attachmentWithXCTImage:(id)arg1;
 + (id)_attachmentWithUniformTypeIdentifier:(id)arg1 name:(id)arg2 serializationBlock:(CDUnknownBlockType)arg3;
 + (id)attachmentWithUniformTypeIdentifier:(id)arg1 name:(id)arg2 payload:(id)arg3 userInfo:(id)arg4;
 + (_Bool)supportsSecureCoding;
@@ -31,8 +30,6 @@
 + (long long)userAttachmentLifetime;
 + (void)setSystemAttachmentLifetime:(long long)arg1;
 + (long long)systemAttachmentLifetime;
-+ (id)attachmentWithScreenshot:(id)arg1 quality:(long long)arg2;
-+ (id)attachmentWithScreenshot:(id)arg1;
 + (id)attachmentWithImage:(id)arg1 quality:(long long)arg2;
 + (id)attachmentWithImage:(id)arg1;
 + (id)_attachmentWithCompressedContentsOfDirectoryAtURL:(id)arg1;
@@ -47,6 +44,7 @@
 + (id)attachmentWithData:(id)arg1;
 + (id)attachmentWithData:(id)arg1 uniformTypeIdentifier:(id)arg2;
 + (id)_attachmentWithData:(id)arg1 uniformTypeIdentifier:(id)arg2;
++ (id)attachmentWithXCTImage:(id)arg1;
 + (id)attachmentWithCompressedContentsOfDirectoryAtURL:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly) _Bool hasPayload; // @synthesize hasPayload=_hasPayload;

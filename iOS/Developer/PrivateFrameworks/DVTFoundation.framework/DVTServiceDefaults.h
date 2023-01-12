@@ -11,10 +11,12 @@
 @interface DVTServiceDefaults : NSObject
 {
     NSString *_serviceXcodeVersionString;
+    NSString *_servicePlaygroundsVersionString;
 }
 
 + (id)sharedDefaults;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *servicePlaygroundsVersionString; // @synthesize servicePlaygroundsVersionString=_servicePlaygroundsVersionString;
 @property(readonly, copy, nonatomic) NSString *serviceXcodeVersionString; // @synthesize serviceXcodeVersionString=_serviceXcodeVersionString;
 @property(readonly, copy, nonatomic) NSString *serviceXcodeServerUserAgentString;
 @property(readonly, copy, nonatomic) NSString *serviceXcodeUserAgentString;

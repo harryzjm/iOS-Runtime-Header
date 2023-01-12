@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "IMItemChatContext.h"
+
 @class IMMessage;
 
-@interface IMMessageItemChatContext
+@interface IMMessageItemChatContext : IMItemChatContext
 {
-    IMMessage *_message;
     _Bool _invitation;
+    IMMessage *_message;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool invitation; // @synthesize invitation=_invitation;
+@property(retain, nonatomic) IMMessage *message; // @synthesize message=_message;
 - (void)dealloc;
 
 @end

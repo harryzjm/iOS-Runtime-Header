@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/UIFont.h>
+#import <UIKit/UIFont.h>
 
 @interface UIFont (AppStoreComponents)
 + (id)asc_preferredFontForTextStyle:(id)arg1 withTraits:(unsigned int)arg2 compatibleWithTraitCollection:(id)arg3;

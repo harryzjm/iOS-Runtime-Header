@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOMapBuilding-Protocol.h>
-
 @class GEOBuildingFootprintFeature, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapAccessBuilding : NSObject <GEOMapBuilding>
+@interface GEOMapAccessBuilding : NSObject
 {
     GEOBuildingFootprintFeature *_buildingFeature;
     NSArray *_sections;

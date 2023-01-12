@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <WorkflowUIServices/WFWidgetCellDelegate-Protocol.h>
-
 @class NSArray, NSObject, NSString;
 @protocol OS_os_log, WFWidgetGridViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WFWidgetGridView : UIView <WFWidgetCellDelegate>
+@interface WFWidgetGridView : UIView
 {
     id <WFWidgetGridViewDelegate> _delegate;
     NSArray *_workflows;

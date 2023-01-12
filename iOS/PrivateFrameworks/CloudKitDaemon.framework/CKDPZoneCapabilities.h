@@ -6,9 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
-@interface CKDPZoneCapabilities : PBCodable <NSCopying>
+@interface CKDPZoneCapabilities : PBCodable
 {
     int _sharingType;
     _Bool _atomicSaves;

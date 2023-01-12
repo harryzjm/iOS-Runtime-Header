@@ -6,14 +6,11 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <DataDetectorsUI/CNContactViewControllerDelegate-Protocol.h>
-#import <DataDetectorsUI/DDRemoteActionViewService-Protocol.h>
-
 @class CNContactViewController, DDAction, NSString;
 @protocol DDRemoteActionPresenter;
 
 __attribute__((visibility("hidden")))
-@interface DDAddToContactsViewController : UINavigationController <DDRemoteActionViewService, CNContactViewControllerDelegate>
+@interface DDAddToContactsViewController : UINavigationController
 {
     id <DDRemoteActionPresenter> _proxy;
     DDAction *_action;

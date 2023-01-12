@@ -4,16 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
-#import <AppStoreOverlays/ASORemoteContextProvider-Protocol.h>
-#import <AppStoreOverlays/ASORemoteViewControllerDelegate-Protocol.h>
+#import <UIKit/UIApplicationRotationFollowingController.h>
 
 @class ASOHostContext, ASOOverlayManager, ASORemoteOverlay, ASORemoteViewController, NSObject, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface ASOOverlayViewController : UIViewController <ASORemoteViewControllerDelegate, ASORemoteContextProvider>
+@interface ASOOverlayViewController : UIApplicationRotationFollowingController
 {
     _Bool _isViewServiceLoading;
     ASORemoteViewController *_remoteViewController;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCMetricsScrollObserverDelegate-Protocol.h>
-
 @class ASCMetrics, ASCMetricsActivity, ASCMetricsScrollObserver, NSString, UIView;
 @protocol ASCViewModel;
 
 __attribute__((visibility("hidden")))
-@interface ASCAppearMetricsPresenter : NSObject <ASCMetricsScrollObserverDelegate>
+@interface ASCAppearMetricsPresenter : NSObject
 {
     _Bool _enabled;
     _Bool _appeared;

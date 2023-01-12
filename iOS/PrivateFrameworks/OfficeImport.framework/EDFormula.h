@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDFormulaBuilding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDFormula : NSObject <EDFormulaBuilding>
+@interface EDFormula : NSObject
 {
     struct __CFData *mPackedData;
 }

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "LSPlugInQuery.h"
+
 @class NSArray, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface LSPlugInQueryWithUnits
+@interface LSPlugInQueryWithUnits : LSPlugInQuery
 {
     NSArray *_pluginUnits;
     NSUUID *_dbUUID;

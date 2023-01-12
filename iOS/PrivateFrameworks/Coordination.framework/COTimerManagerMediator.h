@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Coordination/COTimerManagerClientInterface-Protocol.h>
-
 @class COTimerManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COTimerManagerMediator : NSObject <COTimerManagerClientInterface>
+@interface COTimerManagerMediator : NSObject
 {
     COTimerManager *_manager;
 }

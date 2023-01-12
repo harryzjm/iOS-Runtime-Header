@@ -6,17 +6,15 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <ManagedSettings/_TtP15ManagedSettings29OverrideSettingsExtensionHost_-Protocol.h>
-#import <ManagedSettings/_TtP15ManagedSettings31OverrideSettingsExtensionVendor_-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC15ManagedSettings32OverrideSettingsExtensionContext : NSExtensionContext <_TtP15ManagedSettings29OverrideSettingsExtensionHost_, _TtP15ManagedSettings31OverrideSettingsExtensionVendor_>
+@interface _TtC15ManagedSettings32OverrideSettingsExtensionContext : NSExtensionContext
 {
     MISSING_TYPE *$__lazy_storage_$_overrideSettingsHandler;
 }
 
++ (id)_allowedItemPayloadClasses;
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
 - (void).cxx_destruct;

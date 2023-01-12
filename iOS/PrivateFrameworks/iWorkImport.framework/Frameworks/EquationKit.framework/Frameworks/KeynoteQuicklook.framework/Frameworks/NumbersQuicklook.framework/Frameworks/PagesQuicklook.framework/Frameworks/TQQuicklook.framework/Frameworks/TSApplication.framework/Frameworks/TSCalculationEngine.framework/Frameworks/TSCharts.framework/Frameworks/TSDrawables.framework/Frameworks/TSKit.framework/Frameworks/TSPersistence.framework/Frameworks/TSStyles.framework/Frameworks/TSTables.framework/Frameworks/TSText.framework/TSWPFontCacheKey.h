@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/NSCopying-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface TSWPFontCacheKey : NSObject <NSCopying>
+@interface TSWPFontCacheKey : NSObject
 {
     _Bool _hasExtraFields;
     _Bool _bold;

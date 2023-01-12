@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI32ProfileSharingBaseViewControllerCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI42ProfileSharingInvitationSentViewController
+@interface _TtC18HealthExperienceUI42ProfileSharingInvitationSentViewController : _$s18HealthExperienceUI32ProfileSharingBaseViewControllerCN
 {
     MISSING_TYPE *profileBeingShared;
     MISSING_TYPE *profileReceivingSharedProfile;

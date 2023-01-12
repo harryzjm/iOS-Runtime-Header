@@ -15,11 +15,6 @@ struct CGPoint {
     double _field2;
 };
 
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;

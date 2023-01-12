@@ -33,11 +33,9 @@
 - (void)keyboardsuimigrator;
 - (void)keyboardsmigrator;
 - (void)preferencesInternationalSupportMigrator;
-- (void)HealthMigrator;
 - (void)facetimemigrator;
 - (void)dataaccessmigrator;
 - (void)CookieDataMigratormigrator;
-- (void)CommCenterMigrator;
 - (void)CloudTabsMigratormigrator;
 - (void)cloudrecentsmigrator;
 - (void)certuimigrator;
@@ -62,8 +60,10 @@
 - (void)MobileInstallationAppUserDataMigrator;
 - (void)WiFiDataMigrator;
 - (void)MobileGestaltMobileGestaltMigrator;
+- (void)MobileActivationMigrator;
 - (void)MKBMigrator;
 - (void)managedconfigurationmigrator;
+- (void)securitydKeychainMigrator;
 - (void)timedmigrator;
 - (void)MobileInstallationSystemAppMigrator;
 - (void)MSUDataMigrator;

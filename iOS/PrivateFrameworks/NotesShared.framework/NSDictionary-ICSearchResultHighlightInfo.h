@@ -7,7 +7,6 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (ICSearchResultHighlightInfo)
-+ (unsigned long long)hashOfHighlighInfo:(id)arg1;
 + (id)decomposedHighlightInfo:(id)arg1;
 + (_Bool)highlightInfoContainsPrefixMatch:(id)arg1;
 + (id)mergeFieldElement:(id)arg1 withElement:(id)arg2;

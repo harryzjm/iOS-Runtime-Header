@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FocusSettingsUI/MKMapViewDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCV15FocusSettingsUI18LocationTriggerMap11MapDelegate : NSObject <MKMapViewDelegate>
+@interface _TtCV15FocusSettingsUI18LocationTriggerMap11MapDelegate : NSObject
 {
     MISSING_TYPE *slider;
     MISSING_TYPE *_radius;

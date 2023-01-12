@@ -36,6 +36,7 @@
 - (void)xpcInvalidateSwitchAssertionWithIdentifier:(NSString *)arg1 block:(void (^)(NSError *))arg2;
 - (void)xpcSwitchActiveDeviceWithDeviceID:(NSUUID *)arg1 withAssertionHandler:(void (^)(NSError *, NSString *))arg2;
 - (void)xpcSwitchActiveDeviceWithDeviceID:(NSUUID *)arg1 isMagicSwitch:(_Bool)arg2 operationHasCompleted:(void (^)(NSError *))arg3;
+- (void)xpcWatchBuddyCompletedSetupSteps:(void (^)(NSError *))arg1;
 - (void)xpcSetWatchNeedsGraduation:(void (^)(NSError *))arg1;
 - (void)xpcClearWatchNeedsGraduation:(void (^)(NSError *))arg1;
 - (void)xpcWatchNeedsGraduation:(void (^)(_Bool))arg1;

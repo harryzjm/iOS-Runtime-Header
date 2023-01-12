@@ -9,7 +9,6 @@
 @class NSArray, NSDictionary;
 
 @protocol TUContactProvider <NSObject>
-- (NSDictionary *)tu_contactsByHandleForHandles:(NSArray *)arg1 keyDescriptors:(NSArray *)arg2 error:(id *)arg3;
 - (NSDictionary *)tu_contactsByContactHandleForContactHandles:(NSArray *)arg1 keyDescriptors:(NSArray *)arg2 error:(id *)arg3;
 @end
 

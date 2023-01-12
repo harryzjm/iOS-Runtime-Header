@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/PSController-Protocol.h>
-
 @class NSString, PSRootController, PSSpecifier, UIViewController;
 @protocol PSController;
 
-@interface CKBlackholeConversationListViewController <PSController>
+__attribute__((visibility("hidden")))
+@interface CKBlackholeConversationListViewController
 {
     UIViewController<PSController> *_parentController;
     PSRootController *_rootController;

@@ -6,23 +6,22 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSKSelection, TSTTableNameSelection;
 
-@interface TSTArchivedTableNameSelection : TSPObject <TSKArchivedSelection>
+@interface TSTArchivedTableNameSelection : TSPObject
 {
-    TSTTableNameSelection *mTableNameSelection;
+    TSTTableNameSelection *_tableNameSelection;
 }
 
-@property(retain, nonatomic) TSKSelection *selection; // @synthesize selection=mTableNameSelection;
-@property(readonly, copy) NSString *description;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSTTableNameSelection *tableNameSelection; // @synthesize tableNameSelection=_tableNameSelection;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)dealloc;
+@property(retain, nonatomic) TSKSelection *selection;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

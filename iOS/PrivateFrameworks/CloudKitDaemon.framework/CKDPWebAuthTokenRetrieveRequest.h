@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKDPWebAuthTokenRetrieveRequest : PBRequest <NSCopying>
+@interface CKDPWebAuthTokenRetrieveRequest : PBRequest
 {
     NSString *_apiToken;
     _Bool _forceFetchToken;

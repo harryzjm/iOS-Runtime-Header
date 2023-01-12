@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 actionManager:(id)arg2;
 + (_Bool)canPerformOnImplicitSelection;
 + (_Bool)canPerformWithActionManager:(id)arg1;
-- (void)_presentDeleteConfirmationDialogForItemCount:(long long)arg1 mediaSuffix:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_presentDeleteConfirmationDialogForTypedCount:(CDStruct_3f164e09)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performUserInteractionTask;
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaRemote/NSMutableCopying-Protocol.h>
-
 @class MRAudioBuffer, NSData, _MRAudioDataBlockProtobuf;
 
 __attribute__((visibility("hidden")))
-@interface MRAudioDataBlock : NSObject <NSMutableCopying>
+@interface MRAudioDataBlock : NSObject
 {
     MRAudioBuffer *_buffer;
     CDStruct_ace97b7a _time;

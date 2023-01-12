@@ -7,7 +7,7 @@
 #import <BannerKit/NSObject-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
-@protocol BNConsidering, BNPosting, BNPresentable, BNPresentableUniquelyIdentifying;
+@protocol BNConsidering, BNPosting, BNPresentable, BNPresentableIdentifying><BNPresentableUniquelyIdentifying;
 
 @protocol BNPresenting <NSObject>
 @property(readonly, copy, nonatomic) NSArray *allPresentables;
@@ -15,8 +15,8 @@
 @property(readonly, copy, nonatomic) NSArray *topPresentables;
 @property(nonatomic) __weak id <BNPosting> poster;
 @property(readonly, nonatomic) id <BNConsidering> authority;
-- (NSArray *)dismissPresentablesWithIdentification:(id <BNPresentableUniquelyIdentifying>)arg1 reason:(NSString *)arg2 animated:(_Bool)arg3 userInfo:(NSDictionary *)arg4;
-- (NSArray *)dismissPresentablesWithIdentification:(id <BNPresentableUniquelyIdentifying>)arg1 reason:(NSString *)arg2 userInfo:(NSDictionary *)arg3;
+- (NSArray *)dismissPresentablesWithIdentification:(id <BNPresentableIdentifying><BNPresentableUniquelyIdentifying>)arg1 reason:(NSString *)arg2 animated:(_Bool)arg3 userInfo:(NSDictionary *)arg4;
+- (NSArray *)dismissPresentablesWithIdentification:(id <BNPresentableIdentifying><BNPresentableUniquelyIdentifying>)arg1 reason:(NSString *)arg2 userInfo:(NSDictionary *)arg3;
 - (void)presentPresentable:(id <BNPresentable>)arg1 withOptions:(unsigned long long)arg2 userInfo:(NSDictionary *)arg3;
 - (id)initWithAuthority:(id <BNConsidering>)arg1;
 

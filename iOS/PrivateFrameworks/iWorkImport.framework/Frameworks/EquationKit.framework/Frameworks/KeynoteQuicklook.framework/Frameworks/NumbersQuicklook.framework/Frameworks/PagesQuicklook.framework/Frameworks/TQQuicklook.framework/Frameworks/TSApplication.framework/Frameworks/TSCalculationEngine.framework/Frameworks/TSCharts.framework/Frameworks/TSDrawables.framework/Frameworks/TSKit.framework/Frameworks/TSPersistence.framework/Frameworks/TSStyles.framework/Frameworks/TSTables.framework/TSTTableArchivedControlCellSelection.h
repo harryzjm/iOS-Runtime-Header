@@ -6,20 +6,19 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSKArchivedSelection-Protocol.h>
-
 @class NSString, TSKSelection, TSTTableControlCellSelection;
 
-@interface TSTTableArchivedControlCellSelection : TSPObject <TSKArchivedSelection>
+@interface TSTTableArchivedControlCellSelection : TSPObject
 {
-    TSTTableControlCellSelection *mControlCellSelection;
+    TSTTableControlCellSelection *_controlCellSelection;
 }
 
-@property(retain, nonatomic) TSKSelection *selection; // @synthesize selection=mControlCellSelection;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSTTableControlCellSelection *controlCellSelection; // @synthesize controlCellSelection=_controlCellSelection;
 @property(readonly, copy) NSString *description;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)dealloc;
+@property(retain, nonatomic) TSKSelection *selection;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

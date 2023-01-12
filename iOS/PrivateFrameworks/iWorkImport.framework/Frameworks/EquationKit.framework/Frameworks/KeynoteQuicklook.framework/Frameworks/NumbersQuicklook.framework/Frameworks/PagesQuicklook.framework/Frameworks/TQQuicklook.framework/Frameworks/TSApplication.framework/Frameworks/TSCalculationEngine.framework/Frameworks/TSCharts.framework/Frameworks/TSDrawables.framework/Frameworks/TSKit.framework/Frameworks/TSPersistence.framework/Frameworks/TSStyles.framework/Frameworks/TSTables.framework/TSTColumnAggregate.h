@@ -6,9 +6,7 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
-@interface TSTColumnAggregate : TSKSosBase <NSCopying>
+@interface TSTColumnAggregate : TSKSosBase
 {
     struct UUIDData<TSP::UUIDData> _columnUid;
     unsigned char _aggregateType;

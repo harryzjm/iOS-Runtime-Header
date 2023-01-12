@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EFHelper-Protocol.h>
-
 @class ECMappingContext, EDWorkbook, EDWorksheet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDFormulaHelper : NSObject <EFHelper>
+@interface EDFormulaHelper : NSObject
 {
     EDWorkbook *mWorkbook;
     EDWorksheet *mWorksheet;

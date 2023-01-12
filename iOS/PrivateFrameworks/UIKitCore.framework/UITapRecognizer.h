@@ -6,22 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableSet, NSSet;
 @protocol UITapRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UITapRecognizer : NSObject <NSSecureCoding>
+@interface UITapRecognizer : NSObject
 {
     unsigned long long _numberOfTouchesRequired;
     unsigned long long _numberOfTapsRequired;
     long long _buttonMaskRequired;
-    _Bool _continuousTapRecognition;
     NSMutableSet *_activeTouches;
-    int _currentNumberOfTouches;
-    int _currentNumberOfTaps;
-    int _numberOfTouchesForCurrentTap;
     struct CGPoint _location;
     struct CGPoint _startPoint;
     struct CGPoint _digitizerLocation;
@@ -36,11 +30,15 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_touches;
     long long _strongestDirectionalAxis;
     double _strongestDirectionalForce;
+    int _currentNumberOfTouches;
+    int _currentNumberOfTaps;
+    int _numberOfTouchesForCurrentTap;
     unsigned int _timerOn:1;
     unsigned int _multitouchTimerOn:1;
     unsigned int _noNewTouches:1;
     unsigned int _hasPointerTouch:1;
     _Bool _countsOnlyActiveTouches;
+    _Bool _continuousTapRecognition;
     id <UITapRecognizerDelegate> _delegate;
     long long _exclusiveDirectionalAxis;
 }

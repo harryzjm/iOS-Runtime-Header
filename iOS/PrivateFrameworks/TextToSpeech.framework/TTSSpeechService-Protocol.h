@@ -6,7 +6,7 @@
 
 #import <TextToSpeech/NSObject-Protocol.h>
 
-@class NSDictionary, NSObject, NSSet, NSString, TTSSpeechRequest, TTSSpeechVoice;
+@class NSDictionary, NSNumber, NSObject, NSSet, NSString, TTSSpeechRequest, TTSSpeechVoice;
 @protocol OS_dispatch_queue;
 
 @protocol TTSSpeechService <NSObject>
@@ -14,7 +14,7 @@
 - (NSString *)speechMarkupStringForType:(long long)arg1 voice:(TTSSpeechVoice *)arg2 string:(NSString *)arg3;
 - (NSSet *)supportedIPAPhonemeLanguages;
 - (oneway void)getSpeechIsActiveForRequest:(TTSSpeechRequest *)arg1 reply:(void (^)(_Bool))arg2;
-- (oneway void)getVoicesForLanguage:(NSString *)arg1 reply:(void (^)(NSArray *))arg2;
+- (oneway void)getVoicesForLanguage:(NSString *)arg1 queryingMobileAssets:(_Bool)arg2 reply:(void (^)(NSArray *))arg3;
 - (oneway void)stopSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;
 - (oneway void)continueSpeechRequest:(TTSSpeechRequest *)arg1;
 - (oneway void)pauseSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;
@@ -29,6 +29,7 @@
 - (_Bool)isSiriService;
 - (NSString *)serviceIdentifier;
 - (NSDictionary *)audioFileSettingsForVoice:(TTSSpeechVoice *)arg1;
+- (NSString *)combinedProsodyMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 rate:(NSNumber *)arg3 pitch:(NSNumber *)arg4 volume:(NSNumber *)arg5;
 - (NSString *)embeddedVolumeMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 volume:(double)arg3;
 - (NSString *)embeddedPitchMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 pitch:(double)arg3;
 - (NSString *)embeddedRateMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 rate:(double)arg3;
@@ -39,6 +40,5 @@
 - (NSString *)phonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;
 - (NSString *)lhPhonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;
 - (_Bool)employSpeechMarkupForType:(long long)arg1 language:(NSString *)arg2;
-- (oneway void)getVoicesForLanguage:(NSString *)arg1 queryingMobileAssets:(_Bool)arg2 reply:(void (^)(NSArray *))arg3;
 @end
 

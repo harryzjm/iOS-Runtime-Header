@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *localizer;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *filterButton;
+    MISSING_TYPE *isFilterButtonEnabled;
 }
 
 - (void).cxx_destruct;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSString, NSURL, UIColor, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftTheme : NSObject <NSCopying>
+@interface SKUIGiftTheme : NSObject
 {
     UIColor *_backgroundColor;
     UIColor *_bodyTextColor;

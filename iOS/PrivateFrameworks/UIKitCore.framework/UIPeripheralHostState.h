@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)stateWithGeometry:(struct UIPeripheralAnimationGeometry)arg1 inPositionIsDestination:(_Bool)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool inPositionIsDestination; // @synthesize inPositionIsDestination=_inPositionIsDestination;
 @property(retain, nonatomic) NSDictionary *screenGeometry; // @synthesize screenGeometry=_screenGeometry;
 @property(nonatomic) struct UIPeripheralAnimationGeometry geometry; // @synthesize geometry=_geometry;

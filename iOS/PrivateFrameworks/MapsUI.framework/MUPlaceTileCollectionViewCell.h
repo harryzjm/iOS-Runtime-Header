@@ -6,13 +6,11 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <MapsUI/MUPlaceTileTemplateView-Protocol.h>
-
 @class MUPlaceTileCellConfiguration, NSString, UIImageView, UIView;
 @protocol MUPlaceTileTemplateView, MUPlaceTileViewModel;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceTileCollectionViewCell : UICollectionViewCell <MUPlaceTileTemplateView>
+@interface MUPlaceTileCollectionViewCell : UICollectionViewCell
 {
     UIView<MUPlaceTileTemplateView> *_tileContentView;
     MUPlaceTileCellConfiguration *_cellConfiguration;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeSharing/ICEnvironmentMonitorObserver-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HSWiFiManager : NSObject <ICEnvironmentMonitorObserver>
+@interface HSWiFiManager : NSObject
 {
     struct __SCPreferences *_wifiPreferences;
     NSObject<OS_dispatch_queue> *_accessQueue;

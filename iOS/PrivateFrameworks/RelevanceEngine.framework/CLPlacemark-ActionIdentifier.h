@@ -6,11 +6,9 @@
 
 #import <CoreLocation/CLPlacemark.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface CLPlacemark (ActionIdentifier) <REDonatedActionIdentifierProviding>
+@interface CLPlacemark (ActionIdentifier)
 - (unsigned long long)re_actionIdentifierHashValue;
 
 // Remaining properties

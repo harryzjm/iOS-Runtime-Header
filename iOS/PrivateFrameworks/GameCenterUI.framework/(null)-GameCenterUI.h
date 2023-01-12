@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameCenterUI/UITextFieldDelegate-Protocol.h>
-
-@interface (null) (GameCenterUI) <UITextFieldDelegate>
+@interface (null) (GameCenterUI)
 - (void)textFieldDidEndEditing:(id)arg1 reason:(long long)arg2;
 - (void)textFieldDidChangeSelection:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;

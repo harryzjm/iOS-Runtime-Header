@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/VTKStoreManagerItem-Protocol.h>
-#import <VisualTestKit/VTKTestAttachment-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VTKStoreManagerImageItem : NSObject <VTKStoreManagerItem, VTKTestAttachment>
+@interface VTKStoreManagerImageItem : NSObject
 {
     NSData *_itemData;
     unsigned long long _itemType;

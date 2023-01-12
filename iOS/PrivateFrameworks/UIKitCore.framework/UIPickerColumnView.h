@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIPickerTableViewContainerDelegate-Protocol.h>
-#import <UIKitCore/UITableViewDataSource-Protocol.h>
+#import "UIView.h"
 
-@class NSString, UIColor, UIPickerTableView, UIPickerView, UIView;
+@class NSString, UIColor, UIPickerTableView, UIPickerView;
 
 __attribute__((visibility("hidden")))
-@interface UIPickerColumnView <UIPickerTableViewContainerDelegate, UITableViewDataSource>
+@interface UIPickerColumnView : UIView
 {
     UIPickerTableView *_topTable;
     UIPickerTableView *_middleTable;
@@ -36,8 +35,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *_textColor; // @synthesize _textColor=__textColor;
 @property(nonatomic) struct CATransform3D perspectiveTransform; // @synthesize perspectiveTransform=_perspectiveTransform;
 @property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
+@property(readonly, nonatomic) UIView *highlightedRegion;
+@property(readonly, nonatomic) UIView *view;
 - (id)_viewToAddFocusLayer;
-- (id)_focusRingPath;
+- (id)_defaultFocusEffect;
 - (struct CGRect)accessibilityFrame;
 - (struct CGRect)_defaultFocusRegionFrame;
 - (id)_systemDefaultFocusGroupIdentifier;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GEOMapRequest.h"
+
 @class GEOMapAccess, GEOMapTileFinder;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapFeatureFinder
+@interface GEOMapFeatureFinder : GEOMapRequest
 {
     CDStruct_2c43369c _coordinate;
     GEOMapTileFinder *_tileFinder;
@@ -23,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType pointHandler; // @synthesize pointHandler=_pointHandler;
 @property(copy, nonatomic) CDUnknownBlockType roadHandler; // @synthesize roadHandler=_roadHandler;
 - (void)findFeatures:(CDUnknownBlockType)arg1 pointHandler:(CDUnknownBlockType)arg2 polygonHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_pickRoadInTile:(id)arg1 tileRect:(const CDStruct_90e2a262 *)arg2 localPoint:(const void *)arg3;
+- (void)_pickRoadInTile:(id)arg1 tileRect:(const CDStruct_02837cd9 *)arg2 localPoint:(const void *)arg3;
 @property(readonly, nonatomic) GEOMapAccess *map;
 - (void)cancel;
 - (id)initWithMap:(id)arg1 center:(CDStruct_c3b9c2ee)arg2;

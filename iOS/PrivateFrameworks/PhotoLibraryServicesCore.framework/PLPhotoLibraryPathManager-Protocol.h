@@ -12,6 +12,8 @@
 @protocol PLClientAuthorization;
 
 @protocol PLPhotoLibraryPathManager <PLPhotoLibraryPathManagerCore, PLPhotoLibraryPathManagerModel, PLPhotoLibraryPathManagerDCIM>
+- (_Bool)pathRelativeToBundle:(NSString *)arg1 isSubpathOfPhotoDirectoryWithType:(unsigned char)arg2;
+- (_Bool)path:(NSString *)arg1 isSubpathOfPhotoDirectoryWithType:(unsigned char)arg2;
 - (NSSet *)pathsForExternalWriters;
 - (_Bool)createPathsForNewLibrariesWithError:(id *)arg1;
 - (NSSet *)pathsForPermissionCheck;

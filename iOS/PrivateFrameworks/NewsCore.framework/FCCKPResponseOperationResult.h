@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPResponseOperationResultError;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPResponseOperationResult : PBCodable <NSCopying>
+@interface FCCKPResponseOperationResult : PBCodable
 {
     int _code;
     FCCKPResponseOperationResultError *_error;

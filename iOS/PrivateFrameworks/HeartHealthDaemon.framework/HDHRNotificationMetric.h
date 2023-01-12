@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     NSNumber *_doNotDisturbOn;
     NSNumber *_notificationThreshold;
     NSString *_cardioFitnessNotificationType;
+    long long _irregularRhythmNotificationsAlgorithmVersion;
 }
 
 + (id)eventName;
 - (void).cxx_destruct;
+@property(nonatomic) long long irregularRhythmNotificationsAlgorithmVersion; // @synthesize irregularRhythmNotificationsAlgorithmVersion=_irregularRhythmNotificationsAlgorithmVersion;
 @property(copy, nonatomic) NSString *cardioFitnessNotificationType; // @synthesize cardioFitnessNotificationType=_cardioFitnessNotificationType;
 @property(copy, nonatomic) NSNumber *notificationThreshold; // @synthesize notificationThreshold=_notificationThreshold;
 @property(copy, nonatomic, getter=isDoNotDisturbOn) NSNumber *doNotDisturbOn; // @synthesize doNotDisturbOn=_doNotDisturbOn;

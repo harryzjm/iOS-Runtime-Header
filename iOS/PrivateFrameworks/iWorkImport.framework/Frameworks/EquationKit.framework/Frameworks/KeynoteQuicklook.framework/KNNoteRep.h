@@ -6,14 +6,10 @@
 
 #import <TSDrawables/TSDRep.h>
 
-#import <KeynoteQuicklook/TSDContainerRep-Protocol.h>
-#import <KeynoteQuicklook/TSWPRepParent-Protocol.h>
-#import <KeynoteQuicklook/TSWPStorageObserver-Protocol.h>
-
 @class NSObject, NSString, TSWPRep;
 @protocol TSDContainerInfo;
 
-@interface KNNoteRep : TSDRep <TSWPRepParent, TSDContainerRep, TSWPStorageObserver>
+@interface KNNoteRep : TSDRep
 {
     TSWPRep *_containedRep;
 }

@@ -13,8 +13,6 @@
     MISSING_TYPE *analyticsService;
     MISSING_TYPE *deviceState;
     MISSING_TYPE *localizationProvider;
-    MISSING_TYPE *resumeLongWindowDuration;
-    MISSING_TYPE *resumeShortWindowDuration;
     MISSING_TYPE *autoResumableProximitiesInLongWindow;
     MISSING_TYPE *autoResumableProximitiesInShortWindow;
 }

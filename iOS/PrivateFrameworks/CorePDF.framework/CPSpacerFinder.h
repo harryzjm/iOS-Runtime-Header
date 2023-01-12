@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPDisposable-Protocol.h>
-
 @class CPZone, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface CPSpacerFinder : NSObject <CPDisposable>
+@interface CPSpacerFinder : NSObject
 {
     CPZone *contentZone;
     struct CGRect zoneBounds;

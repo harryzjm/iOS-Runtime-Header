@@ -13,6 +13,7 @@
     MISSING_TYPE *name;
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *configManager;
+    MISSING_TYPE *origination;
 }
 
 @end

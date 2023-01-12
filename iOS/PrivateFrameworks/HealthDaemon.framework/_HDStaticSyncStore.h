@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/HDSyncStore-Protocol.h>
-
 @class HDProfile, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface _HDStaticSyncStore : NSObject <HDSyncStore>
+@interface _HDStaticSyncStore : NSObject
 {
     long long _syncProvenance;
     HDProfile *_profile;

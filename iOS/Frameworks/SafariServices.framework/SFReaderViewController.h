@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SafariServices/WKUIDelegate-Protocol.h>
-
 @class NSString, WKWebView, _SFBrowserContentViewController;
 @protocol SFReaderViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFReaderViewController : UIViewController <WKUIDelegate>
+@interface SFReaderViewController : UIViewController
 {
     WKWebView *_originalWebView;
     _SFBrowserContentViewController *_containerViewController;

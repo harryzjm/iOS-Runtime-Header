@@ -5,6 +5,7 @@
 //
 
 @protocol TSPSizeEstimation
+@property(readonly, nonatomic) unsigned long long estimatedCost;
 @property(readonly, nonatomic) unsigned long long estimatedByteSize;
 @end
 

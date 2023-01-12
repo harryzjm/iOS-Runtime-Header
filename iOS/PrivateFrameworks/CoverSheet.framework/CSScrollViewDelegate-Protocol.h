@@ -6,9 +6,10 @@
 
 #import <CoverSheet/BSUIScrollViewDelegate-Protocol.h>
 
-@class CSScrollView;
+@class CSScrollView, UIGestureRecognizer;
 
 @protocol CSScrollViewDelegate <BSUIScrollViewDelegate>
+- (_Bool)coverSheetScrollView:(CSScrollView *)arg1 gestureRecognizerShouldBegin:(UIGestureRecognizer *)arg2;
 - (_Bool)coverSheetScrollView:(CSScrollView *)arg1 shouldSetContentOffset:(struct CGPoint)arg2 animated:(_Bool)arg3;
 @end
 

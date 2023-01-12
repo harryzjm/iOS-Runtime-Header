@@ -11,8 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (struct CGRect)vuiRectCenteredXInRect:(struct CGRect)arg1 boundsToCenterIn:(struct CGRect)arg2;
++ (_Bool)isSUIEnabled;
++ (struct CGRect)vuiRectCenteredXInRect:(struct CGRect)arg1 boundsToCenterIn:(struct CGRect)arg2 offset:(double)arg3;
 + (_Bool)isInRetailDemoMode;
++ (id)getCurrentQueueLabel;
 + (id)getOSVersion;
 + (double)imageCornerRadiusWithStyle:(long long)arg1;
 + (id)gradientLayerLocationsFromSpacings:(id)arg1 height:(double)arg2;
@@ -25,6 +27,7 @@ __attribute__((visibility("hidden")))
 + (id)placeholderImageResourceName:(long long)arg1;
 + (struct TVCornerRadii)imageCornerRadiiWithStyle:(long long)arg1;
 + (void)gradientConfigForCollection:(id)arg1 gradientMask:(long long)arg2 properties:(id)arg3 configuration:(CDStruct_fe9bf7bc *)arg4;
++ (_Bool)isPortraitIgnoringFlatOrientation:(long long)arg1 viewSize:(struct CGSize)arg2;
 + (_Bool)isInFullscreenOrPipPlayback;
 + (id)VideosUIBundle;
 + (_Bool)isTVApp;

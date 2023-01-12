@@ -9,7 +9,7 @@
 @class NSError, NSString, UIColor;
 
 @protocol _UIColorPickerRemoteViewControllerHost <NSObject>
-- (void)_colorPickerviewServiceDidTerminateWithError:(NSError *)arg1;
+- (void)_colorPickerViewServiceDidTerminateWithError:(NSError *)arg1;
 - (void)_colorPickerDidFinish;
 - (void)_pickerDidDismissEyedropper;
 - (void)_pickerDidFloatEyedropper;

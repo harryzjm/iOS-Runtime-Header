@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 @property(retain, nonatomic) UIImage *image;
 - (id)init;
+- (void)didMoveToWindow;
 
 @end
 

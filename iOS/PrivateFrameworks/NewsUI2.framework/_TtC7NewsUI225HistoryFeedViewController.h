@@ -17,7 +17,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *toolbarManager;
     MISSING_TYPE *newsActivityManager;
-    MISSING_TYPE *clearButton;
+    MISSING_TYPE *commandContainer;
+    MISSING_TYPE *$__lazy_storage_$_clearButton;
 }
 
 - (void).cxx_destruct;

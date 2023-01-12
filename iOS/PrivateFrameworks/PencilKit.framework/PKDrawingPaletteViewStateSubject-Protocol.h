@@ -6,9 +6,13 @@
 
 #import <PencilKit/PKPaletteViewStateSubject-Protocol.h>
 
-@class NSArray, PKTool;
+@class NSArray, PKTool, UIMenu;
 
 @protocol PKDrawingPaletteViewStateSubject <PKPaletteViewStateSubject>
+@property(readonly, nonatomic) double _toolsContainerWidth;
+@property(readonly, nonatomic) _Bool showsLassoToolEditingView;
+@property(readonly, nonatomic) _Bool prefersLargeContextualEditingUI;
+@property(readonly, nonatomic) _Bool colorSwatchesVisible;
 @property(readonly, nonatomic) _Bool wantsMulticolorSwatchShadowInCompactSize;
 @property(readonly, nonatomic) _Bool useEqualSpacingLayoutInCompactSize;
 @property(readonly, nonatomic) double interItemUndoRedoButtonsSpacingInCompactSize;
@@ -20,7 +24,10 @@
 @property(readonly, nonatomic) long long floatingKeyboardType;
 @property(readonly, nonatomic) _Bool enableKeyboardButtons;
 @property(readonly, nonatomic, getter=isVisible) _Bool visible;
-@property(readonly, copy, nonatomic) NSArray *inputAssistantItems;
+@property(readonly, nonatomic) NSArray *inputAssistantItems;
+@property(readonly, nonatomic) _Bool showsShapeButton;
+@property(readonly, nonatomic) _Bool showsTextButton;
+@property(readonly, nonatomic) UIMenu *plusButtonMenu;
 @property(readonly, nonatomic) _Bool showsPlusButton;
 @property(readonly, nonatomic) _Bool hasHandwritingTool;
 @property(readonly, nonatomic) PKTool *selectedTool;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ProofReader/NSCopying-Protocol.h>
-#import <ProofReader/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PRLanguage : NSObject <NSCopying, NSSecureCoding>
+@interface PRLanguage : NSObject
 {
     NSString *_identifier;
     NSString *_localization;
@@ -64,6 +61,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isPersian;
 - (_Bool)isNynorsk;
 - (_Bool)isNorwegian;
+- (_Bool)isMarathi;
+- (_Bool)isKazakh;
 - (_Bool)isKorean;
 - (_Bool)isItalian;
 - (_Bool)isIrishGaelic;
@@ -81,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isCzech;
 - (_Bool)isBulgarian;
 - (_Bool)isArabic;
+- (_Bool)usesSentencePieceModel;
 - (_Bool)usesOrdinalPeriod;
 - (_Bool)isSupportedAssetLexiconLanguage;
 - (_Bool)isBicameral;

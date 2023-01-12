@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIIndexBarEntry.h"
+
 @class UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SKUIImageIndexBarEntry
+@interface SKUIImageIndexBarEntry : SKUIIndexBarEntry
 {
     UIImage *_image;
 }

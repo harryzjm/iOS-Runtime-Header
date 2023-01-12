@@ -17,6 +17,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)setState:(long long)arg1;
+- (void)beginAfterExceedingForceThresholdIfNeeded:(id)arg1;
+- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (id)initWithImageAnalysisGestureDelegate:(id)arg1;
 
 @end

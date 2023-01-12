@@ -6,11 +6,9 @@
 
 #import <Foundation/NSValue.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSValue (RERectExtension) <REDonatedActionIdentifierProviding>
+@interface NSValue (RERectExtension)
 + (id)re_valueWithCGRect:(struct CGRect)arg1;
 - (struct CGRect)re_CGRectValue;
 - (unsigned long long)re_actionIdentifierHashValue;

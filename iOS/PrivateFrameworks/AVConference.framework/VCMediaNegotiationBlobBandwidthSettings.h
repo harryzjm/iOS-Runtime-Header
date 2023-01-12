@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobBandwidthSettings : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobBandwidthSettings : PBCodable
 {
     int _configuration;
     int _configurationExtension;

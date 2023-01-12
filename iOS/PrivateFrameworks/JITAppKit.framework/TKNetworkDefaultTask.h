@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <JITAppKit/TKNetworkTask-Protocol.h>
-
 @class MCLURLDataLoaderTask, NSString;
 
 __attribute__((visibility("hidden")))
-@interface TKNetworkDefaultTask : NSObject <TKNetworkTask>
+@interface TKNetworkDefaultTask : NSObject
 {
     MCLURLDataLoaderTask *_task;
 }

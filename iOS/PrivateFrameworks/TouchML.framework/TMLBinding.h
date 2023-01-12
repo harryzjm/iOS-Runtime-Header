@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLValue-Protocol.h>
-
 @class NSMutableArray, NSString;
 
-@interface TMLBinding : NSObject <TMLValue>
+@interface TMLBinding : NSObject
 {
     id _target;
     NSString *_keyPath;

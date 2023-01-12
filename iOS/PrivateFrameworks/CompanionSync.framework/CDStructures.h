@@ -10,32 +10,7 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct gzFile_s {
-    unsigned int _field1;
-    char *_field2;
-    long long _field3;
-};
-
-struct internal_state;
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
-};
-
-struct z_stream_s {
-    char *next_in;
-    unsigned int avail_in;
-    unsigned long long total_in;
-    char *next_out;
-    unsigned int avail_out;
-    unsigned long long total_out;
-    char *msg;
-    struct internal_state *state;
-    CDUnknownFunctionPointerType zalloc;
-    CDUnknownFunctionPointerType zfree;
-    void *opaque;
-    int data_type;
-    unsigned long long adler;
-    unsigned long long reserved;
 };
 

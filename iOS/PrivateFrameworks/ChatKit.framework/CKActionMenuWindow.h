@@ -8,6 +8,7 @@
 
 @class CKActionMenuView;
 
+__attribute__((visibility("hidden")))
 @interface CKActionMenuWindow : UIAutoRotatingWindow
 {
     _Bool _shouldDismissOnTap;

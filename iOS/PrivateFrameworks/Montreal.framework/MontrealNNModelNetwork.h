@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Montreal/MontrealNNDescriptionProtocol-Protocol.h>
-
 @class MontrealNNModelOptimizerParam, MontrealNNModelQuantization, NSArray, NSString;
 
-@interface MontrealNNModelNetwork <MontrealNNDescriptionProtocol>
+@interface MontrealNNModelNetwork
 {
     NSArray *_nodes;
     NSArray *_inputs;

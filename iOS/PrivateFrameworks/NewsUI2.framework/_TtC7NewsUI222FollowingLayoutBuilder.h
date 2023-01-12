@@ -16,6 +16,7 @@
     MISSING_TYPE *settingsButtonViewLayoutAttributesFactory;
     MISSING_TYPE *tagViewLayoutAttributesFactory;
     MISSING_TYPE *followingEngagementViewLayoutAttributesFactory;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

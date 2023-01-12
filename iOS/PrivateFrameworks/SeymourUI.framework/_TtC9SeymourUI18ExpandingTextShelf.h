@@ -15,7 +15,13 @@
     MISSING_TYPE *row;
     MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *storefrontLocalizer;
+    MISSING_TYPE *eventHub;
+    MISSING_TYPE *rootProperty;
+    MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *currentItem;
     MISSING_TYPE *displaysSeparatorBelow;
+    MISSING_TYPE *filter;
+    MISSING_TYPE *filterResult;
 }
 
 @end

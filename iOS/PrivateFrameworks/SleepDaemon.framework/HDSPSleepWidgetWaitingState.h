@@ -9,10 +9,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)upcomingChangeEventDue;
-- (_Bool)schedulesWidgetStateChange;
+- (void)stateDidExpireWithContext:(id)arg1;
+- (_Bool)schedulesExpiration;
 - (long long)widgetState;
 - (id)stateName;
+- (id)expirationDate;
 
 @end
 

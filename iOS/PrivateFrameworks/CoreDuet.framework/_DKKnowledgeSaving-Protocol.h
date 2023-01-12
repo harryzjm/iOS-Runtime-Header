@@ -8,6 +8,7 @@
 @protocol OS_dispatch_queue;
 
 @protocol _DKKnowledgeSaving
+- (void)saveObjects:(NSArray *)arg1 tracker:(void (^)(void (^)(void)))arg2 responseQueue:(NSObject<OS_dispatch_queue> *)arg3 withCompletion:(void (^)(_Bool, NSError *))arg4;
 - (void)saveObjects:(NSArray *)arg1 responseQueue:(NSObject<OS_dispatch_queue> *)arg2 withCompletion:(void (^)(_Bool, NSError *))arg3;
 - (_Bool)saveObjects:(NSArray *)arg1 error:(id *)arg2;
 @end

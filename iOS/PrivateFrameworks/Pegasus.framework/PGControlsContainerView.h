@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <Pegasus/PGControlsViewModelDelegate-Protocol.h>
-#import <Pegasus/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSMutableSet, NSString, NSTimer, PGControlsView, PGControlsViewModel, UIGestureRecognizer, UITapGestureRecognizer, UIViewPropertyAnimator;
 @protocol PGCommandHandler;
 
 __attribute__((visibility("hidden")))
-@interface PGControlsContainerView : UIView <PGControlsViewModelDelegate, UIGestureRecognizerDelegate>
+@interface PGControlsContainerView : UIView
 {
     PGControlsViewModel *_viewModel;
     PGControlsView *_controlsView;

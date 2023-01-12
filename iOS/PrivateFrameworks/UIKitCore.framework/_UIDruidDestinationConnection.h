@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_DUIClientDestination-Protocol.h>
-#import <UIKitCore/_DUIClientSessionDestination-Protocol.h>
-#import <UIKitCore/_UIDruidDestinationConnection-Protocol.h>
-
 @class NSString, NSXPCConnection;
 @protocol _DUIServerSessionDestination;
 
 __attribute__((visibility("hidden")))
-@interface _UIDruidDestinationConnection : NSObject <_DUIClientDestination, _DUIClientSessionDestination, _UIDruidDestinationConnection>
+@interface _UIDruidDestinationConnection : NSObject
 {
     NSXPCConnection *_connection;
     id <_DUIServerSessionDestination> _serverSession;

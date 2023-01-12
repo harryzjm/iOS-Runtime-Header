@@ -7,6 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (HealthRecordsUI)
++ (id)xmarkSymbol;
 + (id)checkmarkSymbol;
 - (id)scaledToTargetSize:(struct CGSize)arg1 padding:(struct CGPoint)arg2;
 - (id)scaledToTargetSize:(struct CGSize)arg1;

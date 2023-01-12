@@ -6,13 +6,11 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <MobileSafariUI/UniversalSearchSectionHeaderViewWithFeedbackDelegate-Protocol.h>
-
 @class NSString, NSURL, UIButton;
 @protocol UniversalSearchFeedbackDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UniversalSearchResultTableSectionHeaderView : UITableViewHeaderFooterView <UniversalSearchSectionHeaderViewWithFeedbackDelegate>
+@interface UniversalSearchResultTableSectionHeaderView : UITableViewHeaderFooterView
 {
     UIButton *_feedbackButton;
     NSString *_title;

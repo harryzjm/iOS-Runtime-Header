@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *persistanceStore;
     MISSING_TYPE *userDefaultsProvider;
+    MISSING_TYPE *siriRemembersProvider;
 }
 
 @end

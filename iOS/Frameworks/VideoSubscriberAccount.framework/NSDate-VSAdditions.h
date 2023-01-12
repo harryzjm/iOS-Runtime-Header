@@ -12,5 +12,10 @@
 + (void)vs_startRecordingDates;
 + (id)vs_recordedDates;
 + (id)vs_dateAccessQueue;
+- (_Bool)vs_isBefore:(id)arg1;
+- (_Bool)vs_isAfter:(id)arg1;
+- (id)vs_dateIncrementedByMinutes:(unsigned long long)arg1;
+- (id)vs_dateIncrementedByDays:(long long)arg1;
+- (id)vs_dateRoundedToDay;
 @end
 

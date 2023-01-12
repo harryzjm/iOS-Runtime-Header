@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIStatusBarItem.h"
+
 @class NSArray, NSString, _UIStatusBarImageView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarIndicatorItem
+@interface _UIStatusBarIndicatorItem : _UIStatusBarItem
 {
     NSArray *_currentImageNamePrefixes;
     _UIStatusBarImageView *_imageView;
@@ -21,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)imageViewForIdentifier:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 - (void)_create_imageView;
+- (_Bool)crossfadeForUpdate:(id)arg1;
 - (id)imageForUpdate:(id)arg1;
 - (id)imageNameForUpdate:(id)arg1;
 - (_Bool)useMultiColorSystemImageForUpdate:(id)arg1;

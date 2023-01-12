@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/IKAppScriptFallbackHandler-Protocol.h>
-
 @class NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SKUIBootstrapScriptFallback : NSObject <IKAppScriptFallbackHandler>
+@interface SKUIBootstrapScriptFallback : NSObject
 {
     NSURL *_cacheFolder;
     NSString *_cacheFilename;

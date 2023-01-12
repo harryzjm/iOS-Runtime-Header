@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI30EngagementBannerBackgroundView : UIView
 {
-    MISSING_TYPE *imageView;
-    MISSING_TYPE *imageViewWidthConstraint;
+    MISSING_TYPE *imageDisplay;
+    MISSING_TYPE *imageDisplayWidthConstraint;
 }
 
 - (void).cxx_destruct;

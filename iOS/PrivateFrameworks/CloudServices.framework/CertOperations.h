@@ -10,6 +10,8 @@
 {
 }
 
++ (id)knownICDPFederations;
++ (_Bool)moveToFederationAllowed:(id)arg1 altDSID:(id)arg2;
 + (void)fetchTermsWithAltDSID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (void)storeTerms:(id)arg1 withAltDSID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 + (_Bool)verifyCertData:(id)arg1 withCert:(struct __SecCertificate **)arg2 withPubKey:(struct __SecKey **)arg3 stingray:(_Bool)arg4 enroll:(_Bool)arg5 altDSID:(id)arg6 env:(id)arg7 duplicate:(_Bool)arg8 sigVerification:(_Bool)arg9 error:(id *)arg10;

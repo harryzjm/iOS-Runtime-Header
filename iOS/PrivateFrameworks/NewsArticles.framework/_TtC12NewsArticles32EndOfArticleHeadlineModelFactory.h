@@ -14,6 +14,7 @@
     MISSING_TYPE *savedStateProvider;
     MISSING_TYPE *sharedStateProvider;
     MISSING_TYPE *accessLevelProvider;
+    MISSING_TYPE *bundleSubscriptionManager;
 }
 
 @end

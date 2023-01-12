@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/VCPMADServiceImageProcessingSubtaskProtocol-Protocol.h>
-#import <MediaAnalysis/VCPMADTaskProtocol-Protocol.h>
-
 @class MADVIMachineReadableCodeDetectionRequest, NSString, VCPMADServiceImageAsset, VNImageBasedRequest;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCPMADVIMachineReadableCodeDetectionTask : NSObject <VCPMADServiceImageProcessingSubtaskProtocol, VCPMADTaskProtocol>
+@interface VCPMADVIMachineReadableCodeDetectionTask : NSObject
 {
     MADVIMachineReadableCodeDetectionRequest *_request;
     VCPMADServiceImageAsset *_imageAsset;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class TSCH3DEnvironmentPackage, TSCH3DLightingPackage, TSCH3DMaterialPackage;
 
-@interface TSCH3DLightingModel : NSObject <NSCopying>
+@interface TSCH3DLightingModel : NSObject
 {
     TSCH3DMaterialPackage *_materials;
     TSCH3DLightingPackage *_lightings;

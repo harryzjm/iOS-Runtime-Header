@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUIApps/UIContextMenuInteractionDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12PhotosUIApps40PUXStoryMusicFeedbackContextMenuDelegate : NSObject <UIContextMenuInteractionDelegate>
+@interface _TtC12PhotosUIApps40PUXStoryMusicFeedbackContextMenuDelegate : NSObject
 {
     MISSING_TYPE *storyViewModel;
     MISSING_TYPE *audioAssetProvider;

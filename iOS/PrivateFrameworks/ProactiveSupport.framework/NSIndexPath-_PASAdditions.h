@@ -6,11 +6,9 @@
 
 #import <Foundation/NSIndexPath.h>
 
-#import <ProactiveSupport/_PASDistilledString-Protocol.h>
-
 @class NSString;
 
-@interface NSIndexPath (_PASAdditions) <_PASDistilledString>
+@interface NSIndexPath (_PASAdditions)
 + (id)_pas_fromVersionString:(id)arg1 withExceptions:(_Bool)arg2;
 + (id)_pas_fromVersionStringIfPossible:(id)arg1;
 + (id)_pas_fromVersionString:(id)arg1;

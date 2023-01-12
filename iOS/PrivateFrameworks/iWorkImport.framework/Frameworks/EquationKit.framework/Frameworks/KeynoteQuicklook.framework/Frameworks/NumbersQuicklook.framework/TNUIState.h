@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <NumbersQuicklook/NSCopying-Protocol.h>
-#import <NumbersQuicklook/TSAUIState-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSString, TSDFreehandDrawingToolkitUIState, TSKSelectionPath;
 @protocol TNUIStateDelegate;
 
-@interface TNUIState : NSObject <NSCopying, TSAUIState>
+@interface TNUIState : NSObject
 {
     _Bool _editingDisabled;
     _Bool _removedAllQuickCalcFunctions;
     _Bool _showsComments;
     _Bool _showsRulers;
     _Bool _showCanvasGuides;
+    _Bool _sidebarVisible;
     _Bool _inspectorPaneIsVisible;
     _Bool _inspectorPaneIsAutoHidden;
     _Bool _isInPaginatedMode;
@@ -28,6 +26,7 @@
     long long _documentMode;
     NSArray *_selectedQuickCalcFunctions;
     TSDFreehandDrawingToolkitUIState *_freehandDrawingToolkitUIState;
+    double _sidebarWidth;
     NSMutableDictionary *_chartUIState;
     NSMutableDictionary *_sheetUIStates;
     NSMutableDictionary *_editModeSheetUIStates;
@@ -44,6 +43,8 @@
 @property(readonly, nonatomic) NSMutableDictionary *editModeSheetUIStates; // @synthesize editModeSheetUIStates=_editModeSheetUIStates;
 @property(readonly, nonatomic) NSMutableDictionary *sheetUIStates; // @synthesize sheetUIStates=_sheetUIStates;
 @property(readonly, nonatomic) NSMutableDictionary *chartUIState; // @synthesize chartUIState=_chartUIState;
+@property(nonatomic) _Bool sidebarVisible; // @synthesize sidebarVisible=_sidebarVisible;
+@property(nonatomic) double sidebarWidth; // @synthesize sidebarWidth=_sidebarWidth;
 @property(nonatomic) _Bool showCanvasGuides; // @synthesize showCanvasGuides=_showCanvasGuides;
 @property(nonatomic) struct CGSize desktopScreenSize; // @synthesize desktopScreenSize=_desktopScreenSize;
 @property(nonatomic) struct CGRect desktopWindowFrame; // @synthesize desktopWindowFrame=_desktopWindowFrame;

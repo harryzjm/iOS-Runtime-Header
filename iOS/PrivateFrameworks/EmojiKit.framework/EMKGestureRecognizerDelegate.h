@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmojiKit/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface EMKGestureRecognizerDelegate : NSObject <UIGestureRecognizerDelegate>
+@interface EMKGestureRecognizerDelegate : NSObject
 {
 }
 

@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/CNMeCardSharingAvatarProvider-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKMeCardSharingNicknameAvatarProvider : NSObject <CNMeCardSharingAvatarProvider>
+__attribute__((visibility("hidden")))
+@interface CKMeCardSharingNicknameAvatarProvider : NSObject
 {
     NSData *_imageData;
 }

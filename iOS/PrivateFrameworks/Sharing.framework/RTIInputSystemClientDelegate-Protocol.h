@@ -6,11 +6,15 @@
 
 #import <Sharing/NSObject-Protocol.h>
 
-@class RTITextOperations;
+@class NSString, RTIDocumentRequest, RTITextOperations;
 
 @protocol RTIInputSystemClientDelegate <NSObject>
 
 @optional
+- (void)connectionInterrupted:(NSString *)arg1;
+- (void)connectionInvalidated:(NSString *)arg1;
+- (void)performDocumentRequest:(RTIDocumentRequest *)arg1 completion:(void (^)(RTIDocumentState *))arg2;
+- (void)defaultDocumentRequestDidChange:(RTIDocumentRequest *)arg1;
 - (void)performTextOperations:(RTITextOperations *)arg1 resultHandler:(void (^)(unsigned long long))arg2;
 - (void)performTextOperations:(RTITextOperations *)arg1;
 @end

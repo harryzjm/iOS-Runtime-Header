@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSTCell, TSTLayoutContentCachedKey, TSWPColumn, TSWPParagraphStyle;
 
-@interface TSTCellStateForLayout : NSObject <NSCopying>
+@interface TSTCellStateForLayout : NSObject
 {
     _Bool _cellPropsRowHeight;
     _Bool _cellWraps;

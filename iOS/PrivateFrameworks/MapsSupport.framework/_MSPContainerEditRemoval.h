@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsSupport/MSPContainerEditRemoval-Protocol.h>
-
 @class NSArray, NSIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MSPContainerEditRemoval <MSPContainerEditRemoval>
+@interface _MSPContainerEditRemoval
 {
     NSArray *_originalObjects;
     NSArray *_removedImmutableObjects;

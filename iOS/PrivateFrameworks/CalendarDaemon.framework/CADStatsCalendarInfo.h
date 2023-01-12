@@ -9,10 +9,23 @@
 __attribute__((visibility("hidden")))
 @interface CADStatsCalendarInfo : NSObject
 {
-    _Bool sharedByMe;
-    unsigned long long totalSharees;
-    unsigned long long readOnlySharees;
-    unsigned long long readWriteSharees;
+    _Bool _isSelected;
+    _Bool _isHoliday;
+    _Bool _isSubscribed;
+    _Bool _isCalDAV;
+    _Bool _isAuthenticated;
+    _Bool _isShared;
+    _Bool _allowsEvents;
+    _Bool _isHidden;
+    _Bool _isBirthday;
+    _Bool _isFacebookBirthday;
+    _Bool _isFamily;
+    _Bool _isFoundInMail;
+    _Bool _isNaturalLanguageSuggestedEvents;
+    _Bool _isSharedByMe;
+    unsigned long long _numSharees;
+    unsigned long long _readOnlySharees;
+    unsigned long long _readWriteSharees;
 }
 
 @end

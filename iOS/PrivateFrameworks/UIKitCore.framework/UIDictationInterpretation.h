@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationInterpretation : NSObject <NSSecureCoding>
+@interface UIDictationInterpretation : NSObject
 {
     NSArray *_tokens;
     double _averageConfidenceScore;

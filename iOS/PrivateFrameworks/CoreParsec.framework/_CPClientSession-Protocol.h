@@ -6,12 +6,13 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _CPFeedbackPayload, _CPUsageEnvelope, _CPUsageSinceLookback;
+@class NSArray, NSData, NSDictionary, NSString, _CPExperimentInfo, _CPFeedbackPayload, _CPUsageEnvelope, _CPUsageSinceLookback;
 
 @protocol _CPClientSession <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(copy, nonatomic) NSArray *feedbacks;
 @property(copy, nonatomic) NSData *jsonFeedback;
+@property(copy, nonatomic) NSArray *experimentInfos;
 @property(nonatomic) _Bool isInternalCarry;
 @property(nonatomic) int privateRelayStatus;
 @property(nonatomic) unsigned int devicePersistentD20;
@@ -33,6 +34,10 @@
 - (unsigned long long)feedbackCount;
 - (void)addFeedback:(_CPFeedbackPayload *)arg1;
 - (void)clearFeedback;
+- (_CPExperimentInfo *)experimentInfoAtIndex:(unsigned long long)arg1;
+- (unsigned long long)experimentInfoCount;
+- (void)addExperimentInfo:(_CPExperimentInfo *)arg1;
+- (void)clearExperimentInfo;
 - (void)setResourceVersions:(NSString *)arg1 forKey:(NSString *)arg2;
 - (_Bool)getResourceVersions:(id *)arg1 forKey:(NSString *)arg2;
 @end

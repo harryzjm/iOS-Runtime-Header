@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/NSFileProviderEnumerator-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _FPXUnsupportedTrashEnumerator : NSObject <NSFileProviderEnumerator>
+@interface _FPXUnsupportedTrashEnumerator : NSObject
 {
 }
 

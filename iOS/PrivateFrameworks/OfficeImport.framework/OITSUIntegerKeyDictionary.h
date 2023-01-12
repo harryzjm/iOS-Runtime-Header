@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-#import <OfficeImport/NSMutableCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface OITSUIntegerKeyDictionary : NSObject <NSCopying, NSMutableCopying>
+@interface OITSUIntegerKeyDictionary : NSObject
 {
     struct __CFDictionary *mDictionary;
 }

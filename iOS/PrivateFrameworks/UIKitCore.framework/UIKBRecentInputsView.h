@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
-#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import "UIKBKeyView.h"
 
 @class NSArray, NSString, UICollectionView, UICollectionViewFlowLayout;
 
 __attribute__((visibility("hidden")))
-@interface UIKBRecentInputsView <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface UIKBRecentInputsView : UIKBKeyView
 {
     _Bool _verticalLayout;
     UICollectionView *_collectionView;
@@ -18,6 +17,7 @@ __attribute__((visibility("hidden")))
     UICollectionViewFlowLayout *_flowLayout;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UICollectionViewFlowLayout *flowLayout; // @synthesize flowLayout=_flowLayout;
 @property(retain, nonatomic) NSArray *recentInputStrings; // @synthesize recentInputStrings=_recentInputStrings;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)focusableVariantCount;
 - (id)selectedRecentInputString;
 - (void)refreshSelectedRecent;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 
 // Remaining properties

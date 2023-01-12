@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     VCIDRScheduler *_schedulerCell;
     _Bool _pendingStreamsUpdated;
     struct _opaque_pthread_mutex_t _mutex;
+    double _pendingKeyFrameGenerationStartTime;
     NSMutableArray *_streamsPendingKeyFrameGeneration;
     NSMutableArray *_streamResetIDR;
     NSArray *_streamIDsWifi;
@@ -34,6 +35,8 @@ __attribute__((visibility("hidden")))
     unsigned int _captureFrameRate;
     _Bool _dynamicVideoPriorityEnabled;
     _Bool _streamsUseRTCP;
+    NSDictionary *_cachedActiveVideoStreams;
+    struct opaqueRTCReporting *_reportingAgent;
 }
 
 @property(nonatomic) _Bool dynamicVideoPriorityEnabled; // @synthesize dynamicVideoPriorityEnabled=_dynamicVideoPriorityEnabled;
@@ -42,7 +45,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *streamIDsCell; // @synthesize streamIDsCell=_streamIDsCell;
 @property unsigned int captureFrameRate; // @synthesize captureFrameRate=_captureFrameRate;
 @property(copy, nonatomic) NSDictionary *pendingVideoStreams; // @synthesize pendingVideoStreams=_pendingVideoStreams;
-@property(readonly) NSMutableDictionary *activeVideoStreams; // @synthesize activeVideoStreams=_activeVideoStreams;
 - (_Bool)filterPendingTemporalStreams;
 - (void)restart;
 - (void)unlock;
@@ -62,9 +64,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)setStreamsUseRTCPWithStreamInfos:(id)arg1;
 - (void)generateKeyFrameWithStreamID:(id)arg1;
 - (void)setIsLocalOnCellular:(_Bool)arg1 cappedVideoStreamIDs:(id)arg2;
+- (void)printPendingKeyFrameWarningOnThresholdTimeElapsedWithCurrentFrameTime:(float)arg1;
 - (void)selectVideoStreamForVideoPriority;
+- (void)setCachedActiveVideoStreams:(id)arg1;
+@property(readonly) NSDictionary *activeVideoStreams;
 - (void)dealloc;
-- (id)initWithVideoStreams:(id)arg1 streamInfos:(id)arg2 delegate:(id)arg3;
+- (id)initWithVideoStreams:(id)arg1 streamInfos:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 delegate:(id)arg4;
 
 @end
 

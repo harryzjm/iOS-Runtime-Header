@@ -6,10 +6,10 @@
 
 #import <SystemStatus/NSObject-Protocol.h>
 
-@protocol STStatusDomainData, STStatusDomainDataDiff;
+@protocol STStatusDomainData, STStatusDomainDataChangeContext, STStatusDomainDataDiff;
 
 @protocol STStatusDomainXPCClient <NSObject>
-- (void)observeDiff:(id <STStatusDomainDataDiff>)arg1 forDomain:(unsigned long long)arg2;
-- (void)observeData:(id <STStatusDomainData>)arg1 forDomain:(unsigned long long)arg2;
+- (void)observeDiff:(id <STStatusDomainDataDiff>)arg1 forDomain:(unsigned long long)arg2 withChangeContext:(id <STStatusDomainDataChangeContext>)arg3;
+- (void)observeData:(id <STStatusDomainData>)arg1 forDomain:(unsigned long long)arg2 withChangeContext:(id <STStatusDomainDataChangeContext>)arg3;
 @end
 

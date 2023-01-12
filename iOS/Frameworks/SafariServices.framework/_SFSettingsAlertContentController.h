@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SafariServices/SFSettingsAlertItemViewDelegate-Protocol.h>
-#import <SafariServices/UIGestureRecognizerDelegate-Protocol.h>
-
-@class NSArray, NSLayoutConstraint, NSMutableArray, NSMutableIndexSet, NSString, UIControl, UIScrollView, UISelectionFeedbackGenerator, UIStackView, UIView, _SFSettingsAlertItem;
+@class NSArray, NSLayoutConstraint, NSMutableArray, NSMutableIndexSet, NSString, UIControl, UIScrollView, UISelectionFeedbackGenerator, UIStackView, UIView, _SFSettingsAlertController, _SFSettingsAlertItem;
 
 __attribute__((visibility("hidden")))
-@interface _SFSettingsAlertContentController : UIViewController <UIGestureRecognizerDelegate, SFSettingsAlertItemViewDelegate>
+@interface _SFSettingsAlertContentController : UIViewController
 {
     NSMutableArray *_items;
     NSMutableIndexSet *_groupStartIndices;
@@ -25,19 +22,21 @@ __attribute__((visibility("hidden")))
     UIControl *_controlHighlightedForPan;
     UISelectionFeedbackGenerator *_feedbackGenerator;
     _Bool _updatePreferredContentSizeAfterLayout;
+    _Bool _updateScrollPositionAfterLayout;
     _Bool _usesReverseOrder;
+    _SFSettingsAlertController *_alertController;
     _SFSettingsAlertItem *_focusedItem;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) _SFSettingsAlertItem *focusedItem; // @synthesize focusedItem=_focusedItem;
 @property(nonatomic) _Bool usesReverseOrder; // @synthesize usesReverseOrder=_usesReverseOrder;
+@property(nonatomic) __weak _SFSettingsAlertController *alertController; // @synthesize alertController=_alertController;
 - (void)alertItemViewContentSizeDidChange:(id)arg1;
 - (void)_panRecognized:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)_updateSeparators;
-- (id)_alertController;
 - (void)_tappedItemView:(id)arg1;
 - (void)_stepperValueChanged:(id)arg1;
 - (id)_createViewForItem:(id)arg1;
@@ -51,7 +50,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)canBecomeFirstResponder;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)_scrollToBottomIfNeeded;
 - (void)_updatePreferredContentSize;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

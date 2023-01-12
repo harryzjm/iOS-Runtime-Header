@@ -6,10 +6,11 @@
 
 #import <AuthKit/AKAnisetteProvisioningClientProtocol-Protocol.h>
 
-@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKServerRequestConfiguration, NSDictionary, NSError, NSString, NSUUID;
+@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKFidoContext, AKServerRequestConfiguration, NSDictionary, NSError, NSString, NSUUID;
 
 @protocol AKAppleIDAuthenticationClientProtocol <AKAnisetteProvisioningClientProtocol>
 - (void)shouldContinueWithAuthenticationResults:(NSDictionary *)arg1 error:(NSError *)arg2 forContextID:(NSUUID *)arg3 completion:(void (^)(_Bool, NSDictionary *))arg4;
+- (void)presentFidoAuthForContext:(AKAppleIDAuthenticationContext *)arg1 fidoContext:(AKFidoContext *)arg2 completion:(void (^)(AKFidoAuthenticationResponse *, NSError *))arg3;
 - (void)launchOutOfProcessAuthentication:(AKAppleIDAuthenticationContext *)arg1 surrogateID:(NSUUID *)arg2 withErrorHandler:(void (^)(NSError *))arg3;
 - (void)presentBiometricOrPasscodeValidationForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(unsigned long long, NSError *))arg2;
 - (void)dismissNativeRecoveryUIForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

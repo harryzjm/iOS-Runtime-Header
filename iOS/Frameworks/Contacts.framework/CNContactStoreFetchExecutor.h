@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNFetchRequestVisitor-Protocol.h>
-
 @class CNContactStore, CNResult, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactStoreFetchExecutor : NSObject <CNFetchRequestVisitor>
+@interface CNContactStoreFetchExecutor : NSObject
 {
     CNContactStore *_store;
     CNResult *_result;

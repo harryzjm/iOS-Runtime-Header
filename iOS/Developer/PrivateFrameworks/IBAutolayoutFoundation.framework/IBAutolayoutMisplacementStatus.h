@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 @protocol IBAutolayoutItem;
 
-@interface IBAutolayoutMisplacementStatus : NSObject <IBBinaryArchiving>
+@interface IBAutolayoutMisplacementStatus : NSObject
 {
     NSObject<IBAutolayoutItem> *_view;
     struct CGRect _expectedLayoutFrameOrBounds;

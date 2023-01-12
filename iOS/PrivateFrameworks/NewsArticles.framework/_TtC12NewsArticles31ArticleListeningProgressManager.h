@@ -12,9 +12,10 @@ __attribute__((visibility("hidden")))
 @interface _TtC12NewsArticles31ArticleListeningProgressManager : NSObject
 {
     MISSING_TYPE *readingHistory;
-    MISSING_TYPE *listeningProgressObservables;
+    MISSING_TYPE *listeningProgressObservations;
     MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *cachedArticleTextRanges;
+    MISSING_TYPE *commandCenter;
 }
 
 - (void).cxx_destruct;

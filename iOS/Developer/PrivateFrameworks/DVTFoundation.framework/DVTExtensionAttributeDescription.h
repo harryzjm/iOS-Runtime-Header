@@ -15,7 +15,7 @@
 @property long long extensionAttributeType; // @synthesize extensionAttributeType=_extensionAttributeType;
 - (id)adjustedValueForString:(id)arg1;
 - (void)encodeIntoPropertyList:(id)arg1;
-- (void)awakeWithPropertyList:(id)arg1;
+- (void)awakeFromPropertyList;
 - (id)initWithPropertyList:(id)arg1 owner:(id)arg2;
 - (id)initWithName:(id)arg1 extensionAttributeType:(long long)arg2 defaultValue:(id)arg3 isOptional:(_Bool)arg4;
 

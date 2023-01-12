@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *headerView;
-    MISSING_TYPE *initialFollowingTags;
+    MISSING_TYPE *prewarm;
 }
 
 - (void).cxx_destruct;

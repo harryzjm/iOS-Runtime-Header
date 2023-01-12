@@ -6,10 +6,12 @@
 
 #import <DiagnosticExtensionsDaemon/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSSet, NSString;
 
 @protocol DEDWorkerProtocol <NSObject>
-- (void)cancelNotificationForSession:(NSString *)arg1;
+- (void)loadTextDataForExtensions:(NSSet *)arg1 localization:(NSString *)arg2 sessionID:(NSString *)arg3;
+- (void)addSessionData:(NSData *)arg1 withFilename:(NSString *)arg2 forSession:(NSString *)arg3;
+- (void)unscheduleNotificationForSession:(NSString *)arg1;
 - (void)scheduleNotificationForSession:(NSString *)arg1;
 - (void)cancelSession:(NSString *)arg1;
 - (void)commitSession:(NSString *)arg1;

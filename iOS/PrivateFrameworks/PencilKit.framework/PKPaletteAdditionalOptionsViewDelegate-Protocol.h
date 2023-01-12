@@ -13,7 +13,6 @@
 - (void)additionalOptionsViewDidPressTapToRadarButton:(PKPaletteAdditionalOptionsView *)arg1;
 - (void)additionalOptionsViewDidPressReturnKeyButton:(PKPaletteAdditionalOptionsView *)arg1;
 - (void)additionalOptionsViewDidPressKeyboardButton:(PKPaletteAdditionalOptionsView *)arg1;
-- (void)additionalOptionsViewDidSelectPlusButton:(PKPaletteAdditionalOptionsView *)arg1;
 - (void)additionalOptionsView:(PKPaletteAdditionalOptionsView *)arg1 didToggleAutoHideOption:(_Bool)arg2;
 @end
 

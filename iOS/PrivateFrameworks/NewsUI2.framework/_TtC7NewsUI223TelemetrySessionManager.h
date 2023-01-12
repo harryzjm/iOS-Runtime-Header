@@ -4,21 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
-@interface _TtC7NewsUI223TelemetrySessionManager : NSObject
+@interface _TtC7NewsUI223TelemetrySessionManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *sessionManager;
     MISSING_TYPE *sessionObserver;
-    MISSING_TYPE *sceneSessionIdentifier;
+    MISSING_TYPE *sessionRestartingGroup;
 }
 
-- (void).cxx_destruct;
-- (id)init;
-@property(nonatomic, copy) NSString *sceneSessionIdentifier;
+- (void)networkEventMonitor:(id)arg1 loggedEvent:(id)arg2 inSession:(id)arg3;
 
 @end
 

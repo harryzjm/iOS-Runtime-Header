@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIEvent.h"
+
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface UIWheelEvent
+@interface UIWheelEvent : UIEvent
 {
     long long _recentScrollDistance;
     NSMutableArray *_recentScrollEvents;

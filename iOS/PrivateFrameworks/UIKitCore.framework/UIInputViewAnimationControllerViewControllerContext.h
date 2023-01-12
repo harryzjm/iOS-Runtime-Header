@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerKeyboardContextTransitioning-Protocol.h>
-
 @class NSString, UIKBViewTreeSnapshotter, UIView, _UIViewControllerTransitionContext;
 @protocol UIInputViewAnimationHost, UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewAnimationControllerViewControllerContext : NSObject <UIViewControllerKeyboardContextTransitioning>
+@interface UIInputViewAnimationControllerViewControllerContext : NSObject
 {
     _UIViewControllerTransitionContext *_context;
     id <UIInputViewAnimationHost> _host;
@@ -24,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)contextWithHost:(id)arg1 startPlacement:(id)arg2 endPlacement:(id)arg3 transitionContext:(id)arg4;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGRect toKeyboardFrame;
 @property(readonly, nonatomic) UIView *toKeyboard;
 @property(readonly, nonatomic) struct CGRect fromKeyboardFrame;

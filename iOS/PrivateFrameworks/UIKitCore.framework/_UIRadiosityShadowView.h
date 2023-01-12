@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class CALayer, UIBezierPath;
 
 __attribute__((visibility("hidden")))
-@interface _UIRadiosityShadowView
+@interface _UIRadiosityShadowView : UIView
 {
     _Bool _needsPunchout;
     UIBezierPath *_shadowPath;

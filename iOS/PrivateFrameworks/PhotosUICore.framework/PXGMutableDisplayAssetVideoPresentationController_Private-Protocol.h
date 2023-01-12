@@ -8,8 +8,8 @@
 
 @protocol PXGMutableDisplayAssetVideoPresentationController_Private <PXGMutableDisplayAssetVideoPresentationController>
 @property(nonatomic) _Bool isAtEnd;
-@property(nonatomic) CDStruct_1b6d18a9 videoDuration;
-@property(nonatomic) CDStruct_1b6d18a9 actualTime;
+@property(nonatomic) CDStruct_198678f7 videoDuration;
+@property(nonatomic) CDStruct_198678f7 actualTime;
 @property(nonatomic) long long actualPlayState;
 @property(nonatomic) _Bool isReadyForImmediatePlayback;
 @end

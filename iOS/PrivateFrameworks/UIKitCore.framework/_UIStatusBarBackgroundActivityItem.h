@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     _UIStatusBarPillView *_backgroundView;
     _UIStatusBarActivityIconView *_iconView;
     _UIStatusBarImageView *_secondaryIconView;
+    long long _previousType;
 }
 
 + (double)_fontSizeAdjustmentForActivityType:(long long)arg1;
@@ -21,9 +22,11 @@ __attribute__((visibility("hidden")))
 + (id)secondaryIconDisplayIdentifier;
 + (id)backgroundDisplayIdentifier;
 - (void).cxx_destruct;
+@property(nonatomic) long long previousType; // @synthesize previousType=_previousType;
 @property(retain, nonatomic) _UIStatusBarImageView *secondaryIconView; // @synthesize secondaryIconView=_secondaryIconView;
 @property(retain, nonatomic) _UIStatusBarActivityIconView *iconView; // @synthesize iconView=_iconView;
 @property(retain, nonatomic) _UIStatusBarPillView *backgroundView; // @synthesize backgroundView=_backgroundView;
+- (_Bool)crossfadeForUpdate:(id)arg1;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
@@ -44,11 +47,13 @@ __attribute__((visibility("hidden")))
 - (id)imageNameForUpdate:(id)arg1;
 - (id)systemImageNameForUpdate:(id)arg1;
 - (void)applyStyleAttributes:(id)arg1 toDisplayItem:(id)arg2;
+- (void)updatedDisplayItemsWithData:(id)arg1;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (_Bool)canEnableDisplayItem:(id)arg1 fromData:(id)arg2;
 - (id)_backgroundActivityViewForIdentifier:(id)arg1;
 - (id)createDisplayItemForIdentifier:(id)arg1;
 - (id)indicatorEntryKey;
+- (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2;
 
 @end
 

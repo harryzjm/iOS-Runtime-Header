@@ -11,7 +11,7 @@
 @interface _TtC15SeymourServices27SupportedDeviceAvailability : _TtCs12_SwiftObject
 {
     MISSING_TYPE *deviceRegistry;
-    MISSING_TYPE *accountSupportedWatchObserver;
+    MISSING_TYPE *accountDeviceObserver;
     MISSING_TYPE *platform;
 }
 

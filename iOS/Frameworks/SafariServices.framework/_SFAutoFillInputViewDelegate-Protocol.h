@@ -6,9 +6,10 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class _SFAutoFillInputView;
+@class _SFAutoFillInputView, _SFTextSuggestion;
 
 @protocol _SFAutoFillInputViewDelegate <NSObject>
+- (void)autoFillTextSuggestion:(_SFTextSuggestion *)arg1;
 
 @optional
 - (void)autoFillInputViewDidSelectMorePasswords:(_SFAutoFillInputView *)arg1;

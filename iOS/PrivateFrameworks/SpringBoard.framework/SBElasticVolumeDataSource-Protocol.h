@@ -6,11 +6,9 @@
 
 #import <SpringBoard/SBElasticValueDataSource-Protocol.h>
 
-@class NSArray, NSString, SBElasticVolumeViewController;
+@class NSString, SBElasticVolumeViewController;
 
 @protocol SBElasticVolumeDataSource <SBElasticValueDataSource>
-- (_Bool)elasticVolumeViewControllerShouldShowVolumeWarningForCurrentVolumeValue:(SBElasticVolumeViewController *)arg1;
-- (NSArray *)elasticVolumeViewControllerActiveAudioRouteTypes:(SBElasticVolumeViewController *)arg1;
 - (NSString *)elasticVolumeViewControllerActiveAudioCategory:(SBElasticVolumeViewController *)arg1;
 @end
 

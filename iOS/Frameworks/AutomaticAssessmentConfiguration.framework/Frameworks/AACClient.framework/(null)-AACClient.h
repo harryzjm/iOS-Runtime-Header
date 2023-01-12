@@ -4,10 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AACClient/AELifecycleEventHandling-Protocol.h>
-#import <AACClient/NSXPCListenerDelegate-Protocol.h>
-
-@interface (null) (AACClient) <AELifecycleEventHandling, NSXPCListenerDelegate>
+@interface (null) (AACClient)
 - (void)handleEventDidInvalidateWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleEventDidBeginWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

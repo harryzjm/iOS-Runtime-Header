@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/_TtP8TSCharts33TSCHChartGridLayoutItemBaseLayout_-Protocol.h>
+#import "_$s8TSCharts23TSCHChartGridLayoutItemCN.h"
 
 @class MISSING_TYPE;
 
-@interface _TtC8TSCharts28TSCHChartPolarGridLayoutItem <_TtP8TSCharts33TSCHChartGridLayoutItemBaseLayout_>
+@interface _TtC8TSCharts28TSCHChartPolarGridLayoutItem : _$s8TSCharts23TSCHChartGridLayoutItemCN
 {
     MISSING_TYPE *baseLayoutRect;
 }

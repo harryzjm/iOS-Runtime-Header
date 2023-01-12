@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/NSCopying-Protocol.h>
-
-@interface TPPageIndexPath : NSObject <NSCopying>
+@interface TPPageIndexPath : NSObject
 {
     unsigned long long _sectionIndex;
     unsigned long long _pageIndex;

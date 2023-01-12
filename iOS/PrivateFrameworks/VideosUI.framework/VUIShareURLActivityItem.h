@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/UIActivityItemLinkPresentationSource-Protocol.h>
-#import <VideosUI/UIActivityItemSource-Protocol.h>
-
 @class NSItemProvider, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface VUIShareURLActivityItem : NSObject <UIActivityItemSource, UIActivityItemLinkPresentationSource>
+@interface VUIShareURLActivityItem : NSObject
 {
     NSItemProvider *_itemProvider;
     NSString *_title;

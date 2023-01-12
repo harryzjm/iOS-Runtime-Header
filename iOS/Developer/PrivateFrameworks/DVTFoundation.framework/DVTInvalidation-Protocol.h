@@ -7,7 +7,7 @@
 #import <DVTFoundation/NSObject-Protocol.h>
 
 @class DVTStackBacktrace;
-@protocol DVTInvalidation;
+@protocol DVTCancellable, DVTInvalidation;
 
 @protocol DVTInvalidation <NSObject>
 - (void)primitiveInvalidate;
@@ -19,6 +19,7 @@
 @property(retain) DVTStackBacktrace *creationBacktrace;
 @property(readonly) DVTStackBacktrace *invalidationBacktrace;
 @property(readonly, nonatomic, getter=isValid) _Bool valid;
+- (void)addAutoCancelledObject:(id <DVTCancellable>)arg1;
 - (void)addAutoInvalidatedObject:(id <DVTInvalidation>)arg1;
 - (void)invalidate;
 @end

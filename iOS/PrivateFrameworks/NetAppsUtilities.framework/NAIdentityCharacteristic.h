@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NetAppsUtilities/NAEquatable-Protocol.h>
-#import <NetAppsUtilities/NAHashable-Protocol.h>
-#import <NetAppsUtilities/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface NAIdentityCharacteristic : NSObject <NAHashable, NAEquatable, NSCopying>
+@interface NAIdentityCharacteristic : NSObject
 {
     CDUnknownBlockType _retrievalBlock;
     CDUnknownBlockType _comparisonBlock;

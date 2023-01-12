@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) float continuousSharpness; // @synthesize continuousSharpness=_continuousSharpness;
 @property(readonly, nonatomic) float continuousIntensity; // @synthesize continuousIntensity=_continuousIntensity;
 - (_Bool)isMuted;
+- (float)hapticStrength;
 - (_Bool)isMutedForReason:(unsigned long long)arg1;
 - (void)setMute:(_Bool)arg1 forReason:(unsigned long long)arg2;
 - (void)processSliceForLogicalDevice:(id)arg1 startTime:(double)arg2 endTime:(double)arg3;

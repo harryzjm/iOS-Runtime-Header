@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTAudioAnalytics, FTLatnnMitigatorResult, FTRecognitionResult, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTRecognitionCandidate : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTRecognitionCandidate : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;

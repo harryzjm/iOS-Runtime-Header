@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MobileSafariUI/_SFDigitalHealthHostingViewController-Protocol.h>
-
 @class TabDocument, _SFBrowserView, _SFDigitalHealthViewController, _SFLinkPreviewHeader;
 
 __attribute__((visibility("hidden")))
-@interface LinkPreviewViewController : UIViewController <_SFDigitalHealthHostingViewController>
+@interface LinkPreviewViewController : UIViewController
 {
     _SFDigitalHealthViewController *_digitalHealthViewController;
     TabDocument *_previewTabDocument;

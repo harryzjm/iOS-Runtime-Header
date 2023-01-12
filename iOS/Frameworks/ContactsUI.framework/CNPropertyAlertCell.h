@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNPickerControllerDelegate-Protocol.h>
-
 @class CNPropertyGroupAlertItem, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyAlertCell <CNPickerControllerDelegate>
+@interface CNPropertyAlertCell
 {
 }
 

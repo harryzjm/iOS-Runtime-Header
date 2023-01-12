@@ -10,7 +10,7 @@
 
 @interface _TtC18VisualIntelligence16SignalsExtractor : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *knowledgeService;
+    MISSING_TYPE *domainModelRegistry;
     MISSING_TYPE *trialWrapper;
 }
 

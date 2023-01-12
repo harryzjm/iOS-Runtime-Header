@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, VKCTextRecognitionResult;
+@class NSString, VKCImageAnalysisResult, VKCTextRecognitionResult;
+@protocol VKCImageBaseOverlayViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VKCImageBaseOverlayView
 {
+    id <VKCImageBaseOverlayViewDelegate> _baseDelegate;
     VKCTextRecognitionResult *_recognitionResult;
     NSString *_customAnalyticsIdentifier;
     struct CGRect _contentsRect;
@@ -20,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
 @property(copy, nonatomic) NSString *customAnalyticsIdentifier; // @synthesize customAnalyticsIdentifier=_customAnalyticsIdentifier;
 @property(retain, nonatomic) VKCTextRecognitionResult *recognitionResult; // @synthesize recognitionResult=_recognitionResult;
+@property(nonatomic) __weak id <VKCImageBaseOverlayViewDelegate> baseDelegate; // @synthesize baseDelegate=_baseDelegate;
 - (void)updateSelectionRectsForWindowChange;
 - (void)normalizedVisibleRectDidChange;
 - (id)viewQuadFromNormalizedQuad:(id)arg1;
@@ -28,6 +31,8 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)normalizedRectFromViewRect:(struct CGRect)arg1;
 - (struct CGPoint)viewPointFromNormalizedPoint:(struct CGPoint)arg1;
 - (struct CGPoint)normalizedPointFromViewPoint:(struct CGPoint)arg1;
+@property(readonly, nonatomic) _Bool isPublicAPI;
+@property(readonly, nonatomic) VKCImageAnalysisResult *analysisResult;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

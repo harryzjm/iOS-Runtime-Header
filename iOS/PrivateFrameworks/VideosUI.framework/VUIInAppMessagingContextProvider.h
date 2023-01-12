@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/IAMApplicationContextProvider-Protocol.h>
-
 @class IAMPresentationPolicy, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIInAppMessagingContextProvider : NSObject <IAMApplicationContextProvider>
+@interface VUIInAppMessagingContextProvider : NSObject
 {
     IAMPresentationPolicy *_normalPolicy;
     IAMPresentationPolicy *_restrictedPolicy;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <PairedSync/PSYSyncStateObserverInterface-Protocol.h>
-
 @class NSString;
 @protocol PSYSyncStateObserverInterface;
 
 __attribute__((visibility("hidden")))
-@interface PSYSyncStateObserverExportedObject : NSObject <PSYSyncStateObserverInterface>
+@interface PSYSyncStateObserverExportedObject : NSObject
 {
     id <PSYSyncStateObserverInterface> _delegate;
 }

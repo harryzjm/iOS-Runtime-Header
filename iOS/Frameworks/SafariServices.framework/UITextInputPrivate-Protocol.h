@@ -8,7 +8,7 @@
 #import <SafariServices/UITextInputTokenizer-Protocol.h>
 #import <SafariServices/UITextInputTraits_Private-Protocol.h>
 
-@class NSArray, NSAttributedString, NSDictionary, NSString, RTIInputSystemSourceSession, UIColor, UIDictationSerializableResults, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent, _UISupplementalItem;
+@class NSArray, NSAttributedString, NSDictionary, NSString, NSTextAlternatives, RTIInputSystemSourceSession, UIColor, UIDictationSerializableResults, UIFont, UIMenu, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent, _UISupplementalItem;
 @protocol UISelectionInteractionAssistant, UITextInputSuggestionDelegate;
 
 @protocol UITextInputPrivate <UITextInput, UITextInputTokenizer, UITextInputTraits_Private>
@@ -51,6 +51,8 @@
 - (_Bool)_insertsSpaceAfterAcceptingPredictionForSupplementalItem:(_UISupplementalItem *)arg1;
 - (void)_insertSupplementalItem:(_UISupplementalItem *)arg1 forString:(NSString *)arg2 replacementRange:(UITextRange *)arg3;
 - (void)insertTextSuggestion:(UITextSuggestion *)arg1;
+- (void)removeEmojiAlternatives;
+- (void)addTextAlternatives:(NSTextAlternatives *)arg1;
 - (UITextRange *)rangeWithTextAlternatives:(id *)arg1 atPosition:(UITextPosition *)arg2;
 - (NSArray *)metadataDictionariesForDictationResults;
 - (void)insertDictationResult:(UIDictationSerializableResults *)arg1 withCorrectionIdentifier:(id)arg2;
@@ -66,7 +68,8 @@
 - (void)handleKeyWebEvent:(WebEvent *)arg1 withCompletionHandler:(void (^)(WebEvent *, _Bool))arg2;
 - (void)handleKeyWebEvent:(WebEvent *)arg1;
 - (_Bool)requiresKeyEvents;
-- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
+- (UIMenu *)_dci_editingMenuForSuggestedActions:(NSArray *)arg1 textRange:(UITextRange *)arg2;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)insertText:(NSString *)arg1 style:(long long)arg2 alternatives:(NSArray *)arg3;
 - (void)replaceRange:(UITextRange *)arg1 withAttributedText:(NSAttributedString *)arg2;
 - (NSAttributedString *)attributedTextInRange:(UITextRange *)arg1;

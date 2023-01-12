@@ -6,11 +6,9 @@
 
 #import <AXRuntime/AXElement.h>
 
-#import <AccessibilityFocusEngine/AXElementNamesItem-Protocol.h>
-
 @class NSString;
 
-@interface AXElement (AXFocusEngine) <AXElementNamesItem>
+@interface AXElement (AXFocusEngine)
 - (_Bool)moveFocusWithHeading:(unsigned long long)arg1 withQueryString:(id)arg2;
 - (_Bool)moveFocusWithHeading:(unsigned long long)arg1 byGroup:(_Bool)arg2;
 - (void)disableFocus;
@@ -20,9 +18,10 @@
 - (id)remoteSceneID;
 @property(readonly, nonatomic) AXElement *currentFocusElement;
 @property(readonly, nonatomic) AXElement *applicationForHostFocusSystem;
-@property(readonly, nonatomic) AXElement *applicationForRemoteFocusSystem;
+@property(readonly, nonatomic) AXElement *elementForRemoteFocusSystem;
 @property(readonly, nonatomic) _Bool applicationIsExtension;
 @property(readonly, nonatomic) _Bool hasRemoteFocusSystem;
+@property(readonly, nonatomic) _Bool isSpacer;
 @property(readonly, nonatomic) struct CGSize elementLabelContainerSize;
 @property(readonly, nonatomic) struct CGRect elementFrame;
 @property(readonly, nonatomic) NSString *elementName;

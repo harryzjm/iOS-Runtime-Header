@@ -8,7 +8,6 @@
 
 @class GQDTCell, GQDTOverlapCell, GQDTTable;
 
-__attribute__((visibility("hidden")))
 @interface GQSTable : NSObject
 {
     GQDTTable *mTable;

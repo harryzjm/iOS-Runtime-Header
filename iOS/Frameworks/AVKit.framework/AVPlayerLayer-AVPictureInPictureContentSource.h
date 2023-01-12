@@ -6,13 +6,12 @@
 
 #import <AVFoundation/AVPlayerLayer.h>
 
-#import <AVKit/AVPictureInPictureContentSource-Protocol.h>
-
 @class NSString, UIWindow;
 
-@interface AVPlayerLayer (AVPictureInPictureContentSource) <AVPictureInPictureContentSource>
+@interface AVPlayerLayer (AVPictureInPictureContentSource)
 - (long long)avkit_contentSourceType;
 - (id)avkit_makePictureInPicturePlatformAdapterContentPlaceholderLayer;
+- (_Bool)avkit_wantsManagedSecondScreenPlayback;
 - (id)avkit_pictureInPictureViewController;
 @property(readonly, nonatomic) struct CGRect avkit_videoRectInWindow;
 @property(readonly, nonatomic) UIWindow *avkit_window;

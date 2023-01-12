@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (struct CGPoint)_adjustFocusContentOffset:(struct CGPoint)arg1 toShowFocusItemWithInfo:(id)arg2;
+- (struct CGPoint)_ax_adjustedContentOffsetForDifferentialScrollingToShowFocusItemWithInfo:(id)arg1 proposedContentOffset:(struct CGPoint)arg2;
 
 @end
 

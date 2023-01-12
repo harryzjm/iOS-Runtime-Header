@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC18VisualIntelligence9BoxScorer : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *preSumHeatMap;
+    MISSING_TYPE *granularity;
 }
 
 @end

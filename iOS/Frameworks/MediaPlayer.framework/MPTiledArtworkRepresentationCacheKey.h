@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPArtworkDataSourceVisualIdenticality-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPTiledArtworkRepresentationCacheKey : NSObject <MPArtworkDataSourceVisualIdenticality>
+@interface MPTiledArtworkRepresentationCacheKey : NSObject
 {
     id _entityIdentifier;
     id _namespaceIdentifier;

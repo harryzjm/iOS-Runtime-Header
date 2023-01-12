@@ -6,12 +6,11 @@
 
 #import <MediaMiningKit/CLSSignalModel-Protocol.h>
 
-@class CLSSignalNode, NSArray, NSDictionary;
-@protocol CLSAssetProcessedSignals;
+@class CLSAssetProcessedSignals, CLSSignalNode, NSArray, NSDictionary;
 
 @protocol CLSClassificationBasedSignalModel <CLSSignalModel>
 - (NSArray *)modelInfo;
-- (void)processSignals:(NSDictionary *)arg1 intoProcessedSignals:(id <CLSAssetProcessedSignals>)arg2;
+- (void)processSignals:(NSDictionary *)arg1 intoProcessedSignals:(CLSAssetProcessedSignals *)arg2;
 - (_Bool)isResponsibleForSignalIdentifier:(unsigned long long)arg1;
 - (CLSSignalNode *)nodeForSignalIdentifier:(unsigned long long)arg1;
 @end

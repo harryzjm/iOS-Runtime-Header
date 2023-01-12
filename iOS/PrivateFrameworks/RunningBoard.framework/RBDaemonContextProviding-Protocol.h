@@ -7,10 +7,13 @@
 #import <RunningBoard/NSObject-Protocol.h>
 
 @class RBProcess;
-@protocol RBAssertionManaging, RBAssertionOriginatorPidPersisting, RBDomainAttributeManaging, RBEntitlementManaging, RBProcessManaging, RBProcessMonitoring, RBStateCaptureManaging;
+@protocol RBAssertionManaging, RBAssertionOriginatorPidPersisting, RBDomainAttributeManaging, RBEntitlementManaging, RBExtensionDataProviding, RBJetsamPropertyManaging, RBProcessManaging, RBProcessMonitoring, RBRequestManaging, RBStateCaptureManaging;
 
 @protocol RBDaemonContextProviding <NSObject>
 @property(readonly, nonatomic) RBProcess *process;
+@property(readonly, nonatomic) id <RBRequestManaging> requestManager;
+@property(readonly, nonatomic) id <RBExtensionDataProviding> extensionDataProvider;
+@property(readonly, nonatomic) id <RBJetsamPropertyManaging> jetsamPropertyManager;
 @property(readonly, nonatomic) id <RBAssertionOriginatorPidPersisting> assertionOriginatorPidStore;
 @property(readonly, nonatomic) id <RBDomainAttributeManaging> domainAttributeManager;
 @property(readonly, nonatomic) id <RBStateCaptureManaging> stateCaptureManager;

@@ -25,6 +25,7 @@
 - (_Bool)accessibilitySceneBelongsToTheSystemApp;
 - (_Bool)accessibilityIsSceneOnUnknownScreen;
 - (_Bool)accessibilityIsSceneOnCarScreen;
+- (_Bool)accessibilityIsSceneOnExternalScreen;
 - (_Bool)accessibilityIsSceneOnMainScreen;
 - (id)accessibilitySceneDescription;
 @end

@@ -6,9 +6,7 @@
 
 #import <Foundation/NSMutableArray.h>
 
-#import <NewsCore/FCOrderedMutableCollectionAdditions-Protocol.h>
-
-@interface NSMutableArray (FCAdditions) <FCOrderedMutableCollectionAdditions>
+@interface NSMutableArray (FCAdditions)
 - (void)fc_rotateRightWithCount:(unsigned long long)arg1;
 - (void)fc_reverseObjects;
 - (void)fc_replaceObjectIdenticalTo:(id)arg1 withObjects:(id)arg2;

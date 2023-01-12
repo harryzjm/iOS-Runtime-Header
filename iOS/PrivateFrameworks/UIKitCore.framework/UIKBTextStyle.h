@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface UIKBTextStyle : NSObject <NSCopying>
 {
     _Bool _ignoreTextMarginOnKey;
+    _Bool _isVertical;
     _Bool _usesSymbolImage;
     NSString *_fontName;
     double _fontSize;
@@ -28,13 +29,21 @@ __attribute__((visibility("hidden")))
     double _fontWeight;
     unsigned long long _anchorCorner;
     long long _selector;
+    double _fontSizeForSymbolImage;
+    double _fontWeightForSymbolImage;
+    long long _symbolScale;
     struct CGPoint _textOffset;
     struct CGPoint _etchOffset;
 }
 
 + (id)styleWithTextColor:(id)arg1;
 + (id)styleWithFontName:(id)arg1 withFontSize:(double)arg2;
+- (void).cxx_destruct;
+@property(nonatomic) long long symbolScale; // @synthesize symbolScale=_symbolScale;
 @property(nonatomic) _Bool usesSymbolImage; // @synthesize usesSymbolImage=_usesSymbolImage;
+@property(nonatomic) double fontWeightForSymbolImage; // @synthesize fontWeightForSymbolImage=_fontWeightForSymbolImage;
+@property(nonatomic) double fontSizeForSymbolImage; // @synthesize fontSizeForSymbolImage=_fontSizeForSymbolImage;
+@property(nonatomic) _Bool isVertical; // @synthesize isVertical=_isVertical;
 @property(nonatomic) _Bool ignoreTextMarginOnKey; // @synthesize ignoreTextMarginOnKey=_ignoreTextMarginOnKey;
 @property(nonatomic) long long selector; // @synthesize selector=_selector;
 @property(nonatomic) unsigned long long anchorCorner; // @synthesize anchorCorner=_anchorCorner;
@@ -55,7 +64,6 @@ __attribute__((visibility("hidden")))
 - (void)overlayWithStyle:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (void)dealloc;
 - (id)init;
 
 @end

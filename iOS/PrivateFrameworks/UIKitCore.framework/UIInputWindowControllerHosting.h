@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)visibleFrame;
 - (void)extendKeyboardBackdropHeight:(double)arg1 withDuration:(double)arg2;
 - (void)updateViewSizingConstraints;
+- (void)removeInputAssistantHostView;
 - (void)clearInputAssistantViewEdgeConstraints;
 - (void)clearInputAccessoryViewEdgeConstraints;
 - (void)resetInputViewVisibility;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)itemForPurpose:(unsigned long long)arg1;
 - (void)reloadForPlacement;
 - (void)unloadForPlacement;
+- (_Bool)useCrescendoHostingItem;
 @property(readonly, retain, nonatomic) NSArray *allHostingItems;
 - (id)initWithHost:(id)arg1;
 

@@ -24,6 +24,8 @@
     MISSING_TYPE *internalFriends;
     MISSING_TYPE *locatesInProgress;
     MISSING_TYPE *liveLocatesInProgress;
+    MISSING_TYPE *shallowLocatesInProgress;
+    MISSING_TYPE *fallbackToLegacyLocatesInProgress;
     MISSING_TYPE *intermediateLocations;
     MISSING_TYPE *internalLocations;
     MISSING_TYPE *internalUnshiftedLocations;
@@ -33,7 +35,6 @@
     MISSING_TYPE *locationAlertsOnFriendsByFriends;
     MISSING_TYPE *isSnapshotMode;
     MISSING_TYPE *following;
-    MISSING_TYPE *secureLocationCapableFollowing;
     MISSING_TYPE *internalLocationAlerts;
     MISSING_TYPE *permanentDataCache;
     MISSING_TYPE *_cacheBlob;

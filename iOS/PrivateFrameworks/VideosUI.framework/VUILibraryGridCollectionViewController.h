@@ -6,14 +6,11 @@
 
 #import <UIKit/UICollectionViewController.h>
 
-#import <VideosUI/VUIFamilySharingContentProtocol-Protocol.h>
-#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSString, UIBarButtonItem, UICollectionViewCell, UICollectionViewDiffableDataSource, VUICollectionHeaderView, VUIFamilyMember, VUIMediaEntitiesDataSource, VUIMediaEntityFetchRequest, VUIViewControllerContentPresenter;
 @protocol VUILibraryGridCollectionViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryGridCollectionViewController : UICollectionViewController <VUILibraryDataSourceDelegate, VUIFamilySharingContentProtocol>
+@interface VUILibraryGridCollectionViewController : UICollectionViewController
 {
     double _lastAppearWidth;
     _Bool _requiresRelayout;

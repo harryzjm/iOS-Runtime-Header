@@ -6,15 +6,11 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
-
 @class MRUArtworkView, MRUVisualStylingProvider, NSString, UIActivityIndicatorView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MRUMediaSuggestionCollectionViewCell : UICollectionViewCell <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
+@interface MRUMediaSuggestionCollectionViewCell : UICollectionViewCell
 {
-    _Bool _showActivityIndicator;
     MRUArtworkView *_artworkView;
     NSString *_title;
     NSString *_subtitle;
@@ -29,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIActivityIndicatorView *activityView; // @synthesize activityView=_activityView;
-@property(nonatomic) _Bool showActivityIndicator; // @synthesize showActivityIndicator=_showActivityIndicator;
 @property(nonatomic) long long layout; // @synthesize layout=_layout;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
@@ -41,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)visualStylingProviderDidChange:(id)arg1;
+- (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)prepareForReuse;
 - (void)layoutSubviews;

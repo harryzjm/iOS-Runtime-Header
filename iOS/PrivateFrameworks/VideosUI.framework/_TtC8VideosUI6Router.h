@@ -4,11 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
-@interface _TtC8VideosUI6Router : _TtCs12_SwiftObject
+@class MISSING_TYPE;
+
+__attribute__((visibility("hidden")))
+@interface _TtC8VideosUI6Router : NSObject
 {
+    MISSING_TYPE *topMostDocument;
+    MISSING_TYPE *currentTransaction;
+    MISSING_TYPE *_id;
+    MISSING_TYPE *presentingRoute;
+    MISSING_TYPE *managedRoutes;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

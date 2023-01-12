@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualTestKit/VTKDrawItem-Protocol.h>
-
 @class NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface VTKSquareDrawItem : NSObject <VTKDrawItem>
+@interface VTKSquareDrawItem : NSObject
 {
     UIColor *_color;
     struct CGRect _frame;

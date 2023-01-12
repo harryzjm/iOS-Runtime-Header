@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <CommunicationsSetupUI/RUIObjectModelDelegate-Protocol.h>
-#import <CommunicationsSetupUI/UIWebViewDelegate-Protocol.h>
-
 @class CNFRegController, CNFRegLoadingView, NSMutableArray, NSString, NSTimer, RUILoader, UIWebView;
 
 __attribute__((visibility("hidden")))
-@interface CNFRegServerWebViewController : UIViewController <UIWebViewDelegate, RUIObjectModelDelegate>
+@interface CNFRegServerWebViewController : UIViewController
 {
     CNFRegController *_regController;
     CNFRegLoadingView *_loadingView;

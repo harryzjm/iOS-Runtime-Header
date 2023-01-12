@@ -8,6 +8,7 @@
 
 @interface NSObject (AXUtilsPrivate)
 + (void)_accessibilityPerformValidations:(id)arg1;
+- (_Bool)_accessibilityInterposesAsOnboardingApp;
 - (_Bool)_accessibilityInterposesAsSystemApplication;
 - (id)_safeValidatedValueForKey:(id)arg1 expectedClass:(Class)arg2 possibleExpectedTypeEncodings:(const char *)arg3;
 - (id)_safeValidatedValueForKey:(id)arg1 expectedClass:(Class)arg2 expectedTypeEncoding:(const char *)arg3;

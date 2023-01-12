@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSInternalHTTPCookie2Storage-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
-@interface NSMemoryHTTPCookie2Storage : NSObject <NSInternalHTTPCookie2Storage>
+@interface NSMemoryHTTPCookie2Storage : NSObject
 {
     NSMutableDictionary *memoryCookies;
 }

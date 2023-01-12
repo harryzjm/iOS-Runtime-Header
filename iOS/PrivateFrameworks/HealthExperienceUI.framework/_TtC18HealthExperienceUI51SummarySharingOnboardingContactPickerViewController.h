@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <HealthExperienceUI/UISearchBarDelegate-Protocol.h>
-#import <HealthExperienceUI/UISearchControllerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI51SummarySharingOnboardingContactPickerViewController : UIViewController <UISearchControllerDelegate, UISearchBarDelegate>
+@interface _TtC18HealthExperienceUI51SummarySharingOnboardingContactPickerViewController : UIViewController
 {
     MISSING_TYPE *healthExperienceStore;
     MISSING_TYPE *healthStore;
@@ -23,6 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *$__lazy_storage_$_searchController;
     MISSING_TYPE *autocompleteResults;
     MISSING_TYPE *reachableContactIdentifiers;
+    MISSING_TYPE *meContactIdentifier;
     MISSING_TYPE *resultsTableViewController;
     MISSING_TYPE *$__lazy_storage_$_splashView;
     MISSING_TYPE *$__lazy_storage_$_splashContainerView;
@@ -32,7 +30,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *isInitialReachabilityQuery;
     MISSING_TYPE *foundSearchResults;
     MISSING_TYPE *cancellables;
-    MISSING_TYPE *selectedRecipient;
 }
 
 - (void).cxx_destruct;

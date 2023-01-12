@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiatorMultiwayMediaStream : NSObject <NSCopying>
+@interface VCMediaNegotiatorMultiwayMediaStream : NSObject
 {
     unsigned int _ssrc;
     unsigned int _maxNetworkBitrate;

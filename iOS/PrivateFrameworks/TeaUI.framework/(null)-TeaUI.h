@@ -5,6 +5,7 @@
 //
 
 @interface (null) (TeaUI)
-- (void)handleShareCommandWithSender:(id)arg1;
+- (void)didTapManage;
+- (void)didTapContinue;
 @end
 

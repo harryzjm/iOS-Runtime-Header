@@ -6,11 +6,9 @@
 
 #import <CoreServices/NSUserActivity.h>
 
-#import <RelevanceEngine/REUserActivityProperties-Protocol.h>
-
 @class NSString;
 
-@interface NSUserActivity (RELogging) <REUserActivityProperties>
+@interface NSUserActivity (RELogging)
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *activityType;

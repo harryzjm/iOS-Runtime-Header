@@ -7,10 +7,12 @@
 #import <UIKitCore/NSObject-Protocol.h>
 #import <UIKitCore/UITextAutoscrolling-Protocol.h>
 
-@class NSTextAlternatives, UIDragRecognizer, UIGestureRecognizer, UITextCursorAssertionController, UITextRange, UITextSelectionView, UITouch, UIView, _UIKeyboardTextSelectionController;
-@protocol UITextInput;
+@class NSString, NSTextAlternatives, UIContextMenuInteraction, UIDragRecognizer, UIGestureRecognizer, UITextCursorAssertionController, UITextRange, UITextSelectionView, UITouch, UIView, _UIKeyboardTextSelectionController;
+@protocol UIContextMenuInteractionDelegate, UITextInput;
 
 @protocol UITextInteraction_AssistantDelegate <UITextAutoscrolling, NSObject>
+@property(nonatomic) __weak id <UIContextMenuInteractionDelegate> externalContextMenuInteractionDelegate;
+@property(readonly, nonatomic) UIContextMenuInteraction *contextMenuInteraction;
 @property(retain, nonatomic) id keyboardSuppressionAssertion;
 @property(retain, nonatomic) id grabberSuppressionAssertion;
 @property(readonly, nonatomic) UITextCursorAssertionController *_assertionController;
@@ -23,12 +25,16 @@
 - (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3 forTouchType:(long long)arg4;
 - (_Bool)didPerformLoupeSelectionHandoff;
 - (void)endFloatingCursor;
-- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)willBeginFloatingCursor:(_Bool)arg1;
 - (void)resetWillHandoffLoupeMagnifier;
 - (_Bool)scheduleReplacementsForRange:(UITextRange *)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleDictationReplacementsForAlternatives:(NSTextAlternatives *)arg1 range:(UITextRange *)arg2;
+- (_Bool)isDisplayingMenu;
+- (_Bool)isDisplayingMenuForInputUI;
+- (void)dismissMenuForInputUI;
+- (void)presentMenuForInputUI:(NSString *)arg1;
 - (void)setAutomaticSelectionCommandsSuppressedForPointerTouchType:(_Bool)arg1;
 - (void)showSelectionCommandsForSecondaryClickAtPoint:(struct CGPoint)arg1;
 - (void)selectWordWithoutShowingCommands;

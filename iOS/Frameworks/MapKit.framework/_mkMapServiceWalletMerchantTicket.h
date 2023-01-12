@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapServiceWalletMerchantTicket-Protocol.h>
-
 @class NSString;
 @protocol GEOMapServiceTicket;
 
 __attribute__((visibility("hidden")))
-@interface _mkMapServiceWalletMerchantTicket : NSObject <MKMapServiceWalletMerchantTicket>
+@interface _mkMapServiceWalletMerchantTicket : NSObject
 {
     id <GEOMapServiceTicket> _ticket;
 }

@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIMissingItemDelegate-Protocol.h>
-
 @class NSArray, NSMapTable, NSString, SKUIMissingItemLoader, SKUIProductPageTableHeaderView, SKUIProductPageTableSeparatorView, SKUIResourceLoader, SKUIStyledImageDataConsumer, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface SKUIProductPageTableLockupsSection <SKUIArtworkRequestDelegate, SKUIMissingItemDelegate>
+@interface SKUIProductPageTableLockupsSection
 {
     NSMapTable *_artworkRequests;
     SKUIProductPageTableSeparatorView *_footerView;

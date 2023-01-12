@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutXAxisAnchor, UIImageView, UIView;
+#import "UIView.h"
+
+@class NSLayoutXAxisAnchor, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface _UIBackButtonMaskView
+@interface _UIBackButtonMaskView : UIView
 {
     UIView *_maskExtensionView;
     UIImageView *_maskImageView;

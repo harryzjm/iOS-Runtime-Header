@@ -13,7 +13,7 @@
 @property(readonly, nonatomic) long long numberOfItems;
 @property(readonly) NSSet *allItems;
 @property __weak id <PXPlacesGeotaggedItemDataSourceDelegate> delegate;
-- (CDStruct_02837cd9)minimalEncompassingMapRect;
-- (NSSet *)findItemsInMapRect:(CDStruct_02837cd9)arg1;
+- (CDStruct_90e2a262)minimalEncompassingMapRect;
+- (NSSet *)findItemsInMapRect:(CDStruct_90e2a262)arg1;
 @end
 

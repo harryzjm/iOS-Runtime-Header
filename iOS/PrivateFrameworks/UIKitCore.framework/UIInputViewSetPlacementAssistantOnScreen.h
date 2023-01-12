@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
+@class NSArray, UIInputViewSetPlacementAccessoryOnScreen;
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewSetPlacementAssistantOnScreen <NSSecureCoding>
+@interface UIInputViewSetPlacementAssistantOnScreen
 {
+    UIInputViewSetPlacementAccessoryOnScreen *_cachedSecondaryPlacement;
+    NSArray *_subPlacements;
 }
 
 + (id)infoWithPoint:(struct CGPoint)arg1 isCompact:(_Bool)arg2 frame:(struct CGRect)arg3 position:(unsigned long long)arg4;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 - (struct UIEdgeInsets)inputAccessoryViewPadding;
 - (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(_Bool)arg2;
 - (double)inputAssistantViewHeightForInputViewSet:(id)arg1;
@@ -25,6 +28,8 @@ __attribute__((visibility("hidden")))
 - (double)verticalOffset;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (Class)applicatorClassForKeyboard:(_Bool)arg1;
+- (unsigned long long)indexForPurpose:(unsigned long long)arg1;
+- (id)subPlacements;
 
 @end
 

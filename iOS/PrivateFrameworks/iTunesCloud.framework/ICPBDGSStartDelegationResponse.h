@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSData, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICPBDGSStartDelegationResponse : PBCodable <NSCopying>
+@interface ICPBDGSStartDelegationResponse : PBCodable
 {
     NSData *_playerAnisetteMID;
     NSData *_playerDeviceGUID;

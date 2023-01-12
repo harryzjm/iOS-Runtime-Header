@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UICollectionViewPlaceholderContext-Protocol.h>
-#import <UIKitCore/_UICollectionViewDropPlaceholderContext-Protocol.h>
-
 @class NSIndexPath, NSString, NSUUID, UIDragItem, _UIDropAnimationHandlers;
 @protocol _UICollectionViewPlaceholderContextDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewPlaceholderContext : NSObject <UICollectionViewPlaceholderContext, _UICollectionViewDropPlaceholderContext>
+@interface _UICollectionViewPlaceholderContext : NSObject
 {
     NSUUID *_shadowUpdateIdentifier;
     NSString *_reuseIdentifier;

@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol UIContextMenuInteractionDelegate;
+
 __attribute__((visibility("hidden")))
 @interface UITextLinkInteraction
 {
 }
 
-+ (id)alloc;
++ (id)interactionWithShouldProxyContextMenuDelegate:(_Bool)arg1;
+@property(readonly, nonatomic) __weak id <UIContextMenuInteractionDelegate> contextMenuDelegateProxy;
 
 @end
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/_LTTranslationEngine-Protocol.h>
-
 @class EMTTranslator, NSArray, NSDictionary, NSError, NSLocale, NSString, NSURL, _LTLanguageDetectionResult, _LTLocalePair, _LTMultilingualSpeechRecognizer, _LTOfflineSpeechSynthesizer, _LTSpeechTranslationAssetInfo, _LTTextToSpeechCache;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _LTOfflineTranslationEngine : NSObject <_LTTranslationEngine>
+@interface _LTOfflineTranslationEngine : NSObject
 {
     _LTSpeechTranslationAssetInfo *_assetInfo;
     _LTMultilingualSpeechRecognizer *_recognizer;

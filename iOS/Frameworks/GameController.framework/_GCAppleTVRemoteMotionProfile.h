@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GCMotion.h"
+
 @class CMMotionManager, GCController;
 
 __attribute__((visibility("hidden")))
-@interface _GCAppleTVRemoteMotionProfile
+@interface _GCAppleTVRemoteMotionProfile : GCMotion
 {
     CDStruct_31142d93 _gravity;
     CDStruct_31142d93 _prevGravity;

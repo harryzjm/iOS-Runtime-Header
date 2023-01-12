@@ -6,10 +6,11 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSObject, PXWidgetCompositionElement;
+@class NSObject, NSUndoManager, PXWidgetCompositionElement;
 @protocol PXAnonymousViewController;
 
 @protocol PXWidgetCompositionElementDelegate <NSObject>
+- (NSUndoManager *)elementUndoManager:(PXWidgetCompositionElement *)arg1;
 - (NSObject<PXAnonymousViewController> *)elementViewController:(PXWidgetCompositionElement *)arg1;
 
 @optional

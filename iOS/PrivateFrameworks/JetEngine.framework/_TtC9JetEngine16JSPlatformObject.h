@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <JetEngine/_TtP9JetEngineP33_24D55C9622911635E8CEB28E68A6A01F23JSPlatformObjectExports_-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9JetEngine16JSPlatformObject : NSObject <_TtP9JetEngineP33_24D55C9622911635E8CEB28E68A6A01F23JSPlatformObjectExports_>
+@interface _TtC9JetEngine16JSPlatformObject : NSObject
 {
     MISSING_TYPE *bag;
     MISSING_TYPE *process;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/REResourceFetchService-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface REResourceFetchClientObject : NSObject <REResourceFetchService>
+@interface REResourceFetchClientObject : NSObject
 {
     int _pid;
     int _pidversion;

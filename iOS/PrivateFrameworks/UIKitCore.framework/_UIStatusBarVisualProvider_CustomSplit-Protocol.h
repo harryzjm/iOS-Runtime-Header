@@ -6,11 +6,8 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIScreen;
-
 @protocol _UIStatusBarVisualProvider_CustomSplit <NSObject>
 + (double)nativeDisplayWidth;
 + (struct CGSize)notchSize;
-+ (double)referenceScaleForScreen:(UIScreen *)arg1;
 @end
 

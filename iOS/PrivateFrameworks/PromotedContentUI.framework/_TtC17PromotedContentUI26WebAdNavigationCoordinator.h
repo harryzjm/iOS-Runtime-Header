@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PromotedContentUI/WKNavigationDelegatePrivate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC17PromotedContentUI26WebAdNavigationCoordinator : NSObject <WKNavigationDelegatePrivate>
+@interface _TtC17PromotedContentUI26WebAdNavigationCoordinator : NSObject
 {
     MISSING_TYPE *navigationResponder;
 }

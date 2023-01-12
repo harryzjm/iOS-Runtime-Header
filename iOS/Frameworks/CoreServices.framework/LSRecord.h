@@ -6,14 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/LSDetachable-Protocol.h>
-#import <CoreServices/NSCopying-Protocol.h>
-#import <CoreServices/NSDiscardableContent-Protocol.h>
-#import <CoreServices/NSSecureCoding-Protocol.h>
+@class NSData, NSURL, NSUUID;
 
-@class NSData, NSURL;
-
-@interface LSRecord : NSObject <LSDetachable, NSSecureCoding, NSCopying, NSDiscardableContent>
+@interface LSRecord : NSObject
 {
     void *_resolvedProperties;
     struct LSContext _context;
@@ -63,6 +58,7 @@
 - (void)dealloc;
 - (id)init;
 @property(readonly, nonatomic) NSURL *visualizerURL;
+@property(readonly) NSUUID *databaseUUID;
 - (void)resolveAllPropertiesAndDetachOnQueue:(id)arg1;
 - (id)_replacementObjectForResolvedPropertyValue:(id)arg1 forGetter:(SEL)arg2 encoder:(id)arg3;
 - (void)_detachFromContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const void *)arg4;

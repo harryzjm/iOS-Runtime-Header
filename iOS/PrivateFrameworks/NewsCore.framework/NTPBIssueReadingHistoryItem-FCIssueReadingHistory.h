@@ -6,11 +6,9 @@
 
 #import <NewsTransport/NTPBIssueReadingHistoryItem.h>
 
-#import <NewsCore/FCMutableIssueReadingHistoryItem-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface NTPBIssueReadingHistoryItem (FCIssueReadingHistory) <FCMutableIssueReadingHistoryItem>
+@interface NTPBIssueReadingHistoryItem (FCIssueReadingHistory)
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 + (id)issueReadingHistoryItemWithCKRecord:(id)arg1;

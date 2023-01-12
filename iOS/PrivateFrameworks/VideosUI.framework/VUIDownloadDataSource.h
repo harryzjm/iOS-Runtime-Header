@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/SSDownloadManagerObserver-Protocol.h>
-#import <VideosUI/VUIDownloadManagerDelegate-Protocol.h>
-#import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSString, SSDownloadManager, VUIMediaEntitiesFetchController, VUIMediaLibrary;
 @protocol VUIDownloadDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadDataSource <VUIMediaEntitiesFetchControllerDelegate, VUIDownloadManagerDelegate, SSDownloadManagerObserver>
+@interface VUIDownloadDataSource
 {
     _Bool _hasFetchedAllDownloadEntities;
     _Bool _hasFetchedAllDownloadedEntities;

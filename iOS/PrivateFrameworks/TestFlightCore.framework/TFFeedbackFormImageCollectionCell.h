@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TestFlightCore/UITextFieldDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, TFFeedbackEntryImageCollection;
 
 __attribute__((visibility("hidden")))
-@interface TFFeedbackFormImageCollectionCell <UITextFieldDelegate>
+@interface TFFeedbackFormImageCollectionCell
 {
     TFFeedbackEntryImageCollection *_imageCollectionEntry;
     NSMutableArray *_imageViews;

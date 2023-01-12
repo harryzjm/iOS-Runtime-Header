@@ -7,9 +7,9 @@
 #import <VoiceMemos/NSFetchRequestResult-Protocol.h>
 
 @class AVAsset, CLLocation, NSDate, NSString, NSURL;
-@protocol RCFolder;
 
 @protocol RCRecording <NSFetchRequestResult>
+@property(readonly, nonatomic) _Bool isEncrypted;
 @property(readonly, nonatomic) AVAsset *avAsset;
 @property(readonly, nonatomic) _Bool uploaded;
 @property(readonly, nonatomic) _Bool musicMemo;
@@ -18,28 +18,24 @@
 @property(readonly, nonatomic) _Bool favorite;
 @property(nonatomic) _Bool recordedOnWatch;
 @property(readonly, nonatomic) _Bool downloading;
-@property(readonly, nonatomic) _Bool deleted;
 @property(readonly, nonatomic) _Bool manuallyRenamed;
 @property(readonly, nonatomic) _Bool playable;
 @property(readonly, nonatomic) _Bool pendingRestore;
-@property(readonly, nonatomic) _Bool synced;
-@property(readonly, nonatomic) long long iTunesPersistentID;
-@property(readonly, copy, nonatomic) NSString *uniqueID;
-@property(readonly, copy, nonatomic) NSString *customLabel;
+@property(readonly, copy, nonatomic) NSString *uuid;
 @property(readonly, copy, nonatomic) NSString *titleDisallowingEmptyString;
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, copy, nonatomic) CLLocation *location;
-@property(readonly, nonatomic) double duration;
+@property(readonly, nonatomic) double length;
 @property(readonly, copy, nonatomic) NSURL *URIRepresentation;
 @property(readonly, copy, nonatomic) NSURL *url;
 @property(readonly, copy, nonatomic) NSString *path;
-@property(readonly, copy, nonatomic) NSDate *evictionDate;
-@property(readonly, copy, nonatomic) NSDate *date;
+@property(readonly, copy, nonatomic) NSDate *deletionDate;
+@property(readonly, copy, nonatomic) NSDate *creationDate;
 @property(readonly, nonatomic) _Bool isContentBeingModified;
-- (id)itemForActivityType:(NSString *)arg1;
+- (NSURL *)copyResourcesForSharingIntoDirectory:(NSURL *)arg1;
 - (NSString *)subjectForActivityType:(NSString *)arg1;
 
 @optional
-@property(readonly, nonatomic) id <RCFolder> folder;
+@property(readonly, copy, nonatomic) NSString *userFolderUUID;
 @end
 

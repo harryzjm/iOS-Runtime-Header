@@ -6,14 +6,14 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class NSDictionary, NSIndexPath, NSSet, NSString, SBHIconGridPath, SBHIconModel, SBHIconRelativePath, SBIcon, SBLeafIcon, SBRootFolder;
+@class NSDictionary, NSIndexPath, NSString, SBHIconGridPath, SBHIconModel, SBHIconRelativePath, SBIcon, SBLeafIcon, SBRootFolder;
+@protocol SBHIconLaunchContext;
 
 @protocol SBHIconModelDelegate <NSObject>
 - (NSString *)iconModel:(SBHIconModel *)arg1 localizedFolderNameForDefaultDisplayName:(NSString *)arg2;
-- (void)iconModel:(SBHIconModel *)arg1 launchIcon:(SBIcon *)arg2 fromLocation:(NSString *)arg3 context:(id)arg4;
+- (void)iconModel:(SBHIconModel *)arg1 launchIcon:(SBIcon *)arg2 fromLocation:(NSString *)arg3 context:(id <SBHIconLaunchContext>)arg4;
 - (NSIndexPath *)iconModel:(SBHIconModel *)arg1 customInsertionIndexPathForIcon:(SBIcon *)arg2 inRootFolder:(SBRootFolder *)arg3;
 - (struct SBHIconGridSizeClassSizes)gridSizeClassSizesForIconModel:(SBHIconModel *)arg1;
-- (_Bool)supportsDockForIconModel:(SBHIconModel *)arg1;
 - (unsigned long long)iconModel:(SBHIconModel *)arg1 maxColumnCountForListInRootFolderWithInterfaceOrientation:(long long)arg2;
 - (unsigned long long)iconModel:(SBHIconModel *)arg1 maxRowCountForListInRootFolderWithInterfaceOrientation:(long long)arg2;
 - (unsigned long long)maxIconCountForDockForIconModel:(SBHIconModel *)arg1;
@@ -37,7 +37,6 @@
 - (void)iconModel:(SBHIconModel *)arg1 didAddIcon:(SBIcon *)arg2;
 - (_Bool)iconModel:(SBHIconModel *)arg1 shouldPlaceIconOnIgnoredList:(SBLeafIcon *)arg2;
 - (_Bool)iconModel:(SBHIconModel *)arg1 shouldAvoidPlacingIconOnFirstPage:(SBLeafIcon *)arg2;
-- (NSSet *)firstPageLeafIdentifiersForIconModel:(SBHIconModel *)arg1;
 - (NSDictionary *)defaultIconStateForIconModel:(SBHIconModel *)arg1;
 - (void)didDeleteIconState:(SBHIconModel *)arg1;
 - (void)didSaveIconState:(SBHIconModel *)arg1;

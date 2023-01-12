@@ -6,15 +6,11 @@
 
 #import <UIKit/UIPageViewController.h>
 
-#import <QuickLook/UIPageViewControllerDataSource-Protocol.h>
-#import <QuickLook/UIPageViewControllerDelegate-Protocol.h>
-#import <QuickLook/UIScrollViewDelegate-Protocol.h>
-
 @class NSMapTable, NSString, QLDelegateProxy, UIScrollView, UIViewController;
 @protocol QLPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface QLPageViewController : UIPageViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
+@interface QLPageViewController : UIPageViewController
 {
     NSMapTable *_pages;
     unsigned long long _nextPageIndex;

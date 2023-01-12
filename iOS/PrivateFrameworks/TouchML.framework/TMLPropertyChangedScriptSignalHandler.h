@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TouchML/TMLBinder-Protocol.h>
-
 @class NSString, TMLBinding;
 
-@interface TMLPropertyChangedScriptSignalHandler <TMLBinder>
+@interface TMLPropertyChangedScriptSignalHandler
 {
     TMLBinding *_binding;
 }

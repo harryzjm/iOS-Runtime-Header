@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/WBDatabaseLockAcquisitorDelegate-Protocol.h>
-#import <MobileSafariUI/WBSCyclerTestTarget-Protocol.h>
-
 @class NSMutableArray, NSString, WBDatabaseLockAcquisitor, WBSDistributedNotificationObserver, WebBookmarkCollection;
 
 __attribute__((visibility("hidden")))
-@interface CyclerCommandHandler : NSObject <WBDatabaseLockAcquisitorDelegate, WBSCyclerTestTarget>
+@interface CyclerCommandHandler : NSObject
 {
     WebBookmarkCollection *_bookmarkCollection;
     NSMutableArray *_blocksAwaitingDatabaseLock;

@@ -6,9 +6,11 @@
 
 #import <CarPlayUIServices/CRSUIInstrumentClusterSceneSettings-Protocol.h>
 
-@class NSString;
+@class NSObject, NSString;
+@protocol OS_xpc_object;
 
 @protocol CRSUITemplateInstrumentClusterSceneSettings <CRSUIInstrumentClusterSceneSettings>
+@property(readonly, copy, nonatomic) NSObject<OS_xpc_object> *templateEndpoint;
 @property(readonly, copy, nonatomic) NSString *proxiedApplicationBundleIdentifier;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSCopying-Protocol.h>
-
 @class NSString, TSPDigest;
 
-@interface TSPDataUniqueIdentifier : NSObject <NSCopying>
+@interface TSPDataUniqueIdentifier : NSObject
 {
     TSPDigest *_digest;
 }

@@ -6,15 +6,11 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <ContactsUI/CNContactViewHostAsyncProtocol-Protocol.h>
-#import <ContactsUI/CNContactViewHostProtocol-Protocol.h>
-#import <ContactsUI/CNContactViewServiceProtocol-Protocol.h>
-
 @class NSObject, NSString;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface CNContactViewExtensionContext : NSExtensionContext <CNContactViewHostAsyncProtocol, CNContactViewServiceProtocol, CNContactViewHostProtocol>
+@interface CNContactViewExtensionContext : NSExtensionContext
 {
     _Bool _asyncShouldPerformResponse;
     NSObject<OS_dispatch_semaphore> *_asyncShouldPerformSemaphore;

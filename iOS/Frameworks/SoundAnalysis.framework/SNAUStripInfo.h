@@ -13,10 +13,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_value;
 }
 
-+ (_Bool)containsOnlyAUStrips:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDictionary *value; // @synthesize value=_value;
-@property(readonly, nonatomic) NSString *path; // @synthesize path=_path;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithDictionary:(id)arg1 resourcePath:(id)arg2;

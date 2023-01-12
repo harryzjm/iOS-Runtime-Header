@@ -7,6 +7,7 @@
 #import <SPOwner/NSObject-Protocol.h>
 
 @protocol SPBeaconScanningXPCProtocol <NSObject>
-- (oneway void)startScanningIncludeServiceCharacterstics:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)stopScanningWithCompletion:(void (^)(NSError *))arg1;
+- (void)startScanningIncludeServiceCharacterstics:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

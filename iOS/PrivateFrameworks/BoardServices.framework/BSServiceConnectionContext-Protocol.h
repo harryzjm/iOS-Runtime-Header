@@ -5,10 +5,8 @@
 //
 
 @class BSProcessHandle;
-@protocol NSCopying;
 
 @protocol BSServiceConnectionContext
-@property(readonly, nonatomic) id <NSCopying> userInfo;
 @property(readonly, nonatomic) BSProcessHandle *remoteProcess;
 @end
 

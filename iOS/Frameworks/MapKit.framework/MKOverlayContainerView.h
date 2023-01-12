@@ -22,12 +22,20 @@ __attribute__((visibility("hidden")))
     MKMapView *_mapView;
 }
 
++ (long long)_defaultOverlayLevel;
 - (void).cxx_destruct;
 @property(nonatomic) __weak MKMapView *mapView; // @synthesize mapView=_mapView;
 @property(nonatomic) double mapZoomScale; // @synthesize mapZoomScale=_mapZoomScale;
 @property(nonatomic) __weak id <MKOverlayContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)_allOverlaysSupportElevation;
+- (_Bool)_anyOverlayRequiresModernMap;
+- (_Bool)_overlayRequiresModernMap:(id)arg1;
 - (_Bool)_overlaySpansGlobeAndReplacesMapContent;
 - (void)_updateShowsAppleLogoIfNeeded;
+- (void)_unFlexTerrainIfNeeded;
+- (void)_flexTerrainIfNeeded;
+@property(readonly, nonatomic) _Bool requiresModernMap;
+@property(readonly, nonatomic) _Bool supportsElevation;
 - (void)didMoveToWindow;
 - (void)_insertDrawable:(id)arg1 forOverlay:(id)arg2 atIndex:(long long)arg3 level:(long long)arg4;
 - (void)_updateContentScale:(id)arg1;
@@ -36,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)drawableForOverlay:(id)arg1;
 - (id)overlaysInLevel:(long long)arg1;
 @property(readonly, nonatomic) NSArray *overlays;
+- (unsigned long long)_overlayCount;
 - (void)insertOverlay:(id)arg1 belowOverlay:(id)arg2;
 - (void)insertOverlay:(id)arg1 aboveOverlay:(id)arg2;
 - (void)exchangeOverlay:(id)arg1 withOverlay:(id)arg2;

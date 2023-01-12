@@ -6,11 +6,9 @@
 
 #import <Intents/INShortcut.h>
 
-#import <RelevanceEngine/REShortcutProperties-Protocol.h>
-
 @class INIntent, NSUserActivity;
 
-@interface INShortcut (RELogging) <REShortcutProperties>
+@interface INShortcut (RELogging)
 
 // Remaining properties
 @property(readonly, nonatomic) INIntent *intent;

@@ -9,11 +9,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)batteryMonitoringEventDue;
+- (void)stateDidExpireWithContext:(id)arg1;
 - (id)stateName;
-- (void)didExitWithNextState:(id)arg1 context:(id)arg2;
-- (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
-- (void)willEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (_Bool)schedulesExpiration;
+- (id)expirationDate;
 
 @end
 

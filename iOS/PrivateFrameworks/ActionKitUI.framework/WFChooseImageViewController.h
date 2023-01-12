@@ -6,13 +6,11 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <ActionKitUI/WFImageContentItemCellDelegate-Protocol.h>
-
 @class NSMutableSet, NSString, WFContentCollection;
 @protocol WFChooseImageViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WFChooseImageViewController : UITableViewController <WFImageContentItemCellDelegate>
+@interface WFChooseImageViewController : UITableViewController
 {
     long long _itemsPerRow;
     NSMutableSet *_selectedItems;

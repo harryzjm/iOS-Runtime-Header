@@ -10,6 +10,9 @@
 @protocol SBSwitcherLayoutElementProviding;
 
 @protocol SBSwitcherQueryProviding <SBSwitcherQueryDefaultImplementationProviding>
+- (BOOL)activityModeForAppLayout:(SBAppLayout *)arg1;
+- (BOOL)jetsamModeForAppLayout:(SBAppLayout *)arg1;
+- (NSSet *)foregroundAppLayouts;
 - (SBAppLayout *)appLayoutToAttachSlideOverTongue;
 - (unsigned long long)slideOverTongueDirection;
 - (unsigned long long)slideOverTongueState;
@@ -25,6 +28,7 @@
 - (long long)dockUpdateMode;
 - (double)dockProgress;
 - (_Bool)wantsDockBehaviorAssertion;
+- (_Bool)shouldConfigureInAppDockVisibleAssertion;
 - (_Bool)shouldConfigureInAppDockHiddenAssertion;
 - (unsigned long long)indexToScrollToAfterInsertingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexToScrollToAfterRemovingIndex:(unsigned long long)arg1;
@@ -32,6 +36,7 @@
 - (_Bool)shouldAnimateInsertionOrRemovalOfAppLayout:(SBAppLayout *)arg1 atIndex:(unsigned long long)arg2;
 - (_Bool)isIndexRubberbandableForSwipeToKill:(unsigned long long)arg1;
 - (_Bool)isLayoutRoleKillable:(long long)arg1 inAppLayout:(SBAppLayout *)arg2 atIndex:(unsigned long long)arg3;
+- (_Bool)isLayoutRoleEligibleForContentDragSpringLoading:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)isLayoutRoleDraggable:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)isLayoutRoleSelectable:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)shouldPerformCrossfadeForReduceMotion;
@@ -79,6 +84,7 @@
 - (double)homeScreenAlpha;
 - (double)wallpaperScale;
 - (long long)shadowStyleForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
+- (long long)touchBehaviorForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)shouldAllowContentViewTouchesForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)shouldUseBackgroundWallpaperTreatmentForIndex:(unsigned long long)arg1;
 - (_Bool)shouldUseBrightMaterialForIndex:(unsigned long long)arg1;
@@ -96,6 +102,8 @@
 - (NSArray *)topMostLayoutElements;
 - (double)visibleMarginForItemContainerAtIndex:(unsigned long long)arg1;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
+- (_Bool)isItemResizingAllowedForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
+- (unsigned long long)activeCornersForTouchResizeForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)isResizeGrabberVisibleForAppLayout:(SBAppLayout *)arg1;
 - (_Bool)shouldAccessoryDrawShadowForAppLayout:(SBAppLayout *)arg1;
 - (struct CGRect)shelfBackgroundBlurFrame;
@@ -105,6 +113,7 @@
 - (NSSet *)visibleShelves;
 - (NSSet *)visibleHomeAffordanceLayoutElements;
 - (_Bool)isHomeAffordanceSupportedForAppLayout:(SBAppLayout *)arg1;
+- (long long)tintStyleForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (double)backgroundOpacityForIndex:(unsigned long long)arg1;
 - (SBSwitcherAnimationAttributes *)animationAttributesForLayoutElement:(id <SBSwitcherLayoutElementProviding>)arg1;
 - (double)contentViewScale;

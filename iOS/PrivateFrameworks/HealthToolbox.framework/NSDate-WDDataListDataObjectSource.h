@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDate.h>
 
-#import <HealthToolbox/WDDataListDataObjectSource-Protocol.h>
-
 @class NSString;
 
-@interface NSDate (WDDataListDataObjectSource) <WDDataListDataObjectSource>
+@interface NSDate (WDDataListDataObjectSource)
 - (id)startDate;
 - (id)device;
 - (id)source;

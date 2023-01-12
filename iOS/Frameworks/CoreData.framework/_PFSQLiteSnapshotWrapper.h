@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-#import <CoreData/NSMutableCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _PFSQLiteSnapshotWrapper : NSObject <NSCopying, NSMutableCopying>
+@interface _PFSQLiteSnapshotWrapper : NSObject
 {
     struct sqlite3_snapshot *_s;
     int _externalReferences;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextDragRequest-Protocol.h>
-
 @class NSArray, NSString, UITextRange;
 @protocol UIDragSession;
 
 __attribute__((visibility("hidden")))
-@interface UITextDragRequest : NSObject <UITextDragRequest>
+@interface UITextDragRequest : NSObject
 {
     _Bool _selected;
     UITextRange *_dragRange;

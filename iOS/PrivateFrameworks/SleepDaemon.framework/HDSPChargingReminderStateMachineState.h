@@ -6,21 +6,17 @@
 
 #import <Sleep/HKSPPersistentStateMachineState.h>
 
-#import <SleepDaemon/HDSPChargingReminderStateMachineEventHandler-Protocol.h>
-
 @class HDSPChargingReminderStateMachine, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDSPChargingReminderStateMachineState : HKSPPersistentStateMachineState <HDSPChargingReminderStateMachineEventHandler>
+@interface HDSPChargingReminderStateMachineState : HKSPPersistentStateMachineState
 {
 }
 
 - (void)batteryLevelChanged:(float)arg1;
-- (void)batteryMonitoringEventDue;
 - (_Bool)_inMonitoringWindow;
 - (_Bool)isChargingReminderDisabled;
-- (id)determineNextState;
-- (void)updateState;
+- (id)nextStateWithContext:(id *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

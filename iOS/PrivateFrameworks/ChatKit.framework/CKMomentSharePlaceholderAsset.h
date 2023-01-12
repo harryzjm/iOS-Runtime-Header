@@ -6,25 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/PXDisplayAsset-Protocol.h>
-
 @class NSData, NSDate, NSNumber, NSString, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface CKMomentSharePlaceholderAsset : NSObject <PXDisplayAsset>
+@interface CKMomentSharePlaceholderAsset : NSObject
 {
     UIImage *_cachedImage;
+    float _audioScore;
 }
 
 + (id)placeholderImage;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) float audioScore; // @synthesize audioScore=_audioScore;
 @property(readonly, nonatomic) double aspectRatio;
 - (struct CGSize)size;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 @property(readonly, nonatomic) UIImage *placeholderImage;
 @property(readonly, nonatomic) NSString *uuid;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) _Bool isInSharedLibrary;
 - (long long)isContentEqualTo:(id)arg1;
 @property(readonly, nonatomic) Class defaultImageProviderClass;
 @property(readonly, nonatomic) unsigned long long thumbnailIndex;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
+@property(readonly, nonatomic) long long originalFileSize;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long thumbnailVersion;
 

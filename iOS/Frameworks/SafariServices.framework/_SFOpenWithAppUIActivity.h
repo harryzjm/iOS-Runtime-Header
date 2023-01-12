@@ -6,12 +6,10 @@
 
 #import <UIKit/UIActivity.h>
 
-#import <SafariServices/LSOpenResourceOperationDelegate-Protocol.h>
-
 @class LSApplicationProxy, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _SFOpenWithAppUIActivity : UIActivity <LSOpenResourceOperationDelegate>
+@interface _SFOpenWithAppUIActivity : UIActivity
 {
     LSApplicationProxy *_appProxy;
     NSString *_filePath;

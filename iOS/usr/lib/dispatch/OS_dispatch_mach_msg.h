@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <dispatch/OS_dispatch_mach_msg-Protocol.h>
-
 @class NSString;
 
-@interface OS_dispatch_mach_msg <OS_dispatch_mach_msg>
+@interface OS_dispatch_mach_msg
 {
 }
 

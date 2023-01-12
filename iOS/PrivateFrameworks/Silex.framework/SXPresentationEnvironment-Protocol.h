@@ -9,6 +9,7 @@
 @class UITraitCollection;
 
 @protocol SXPresentationEnvironment <NSObject>
+@property(readonly, nonatomic) _Bool smartInvertColorsEnabled;
 @property(readonly, nonatomic) unsigned long long viewingLocation;
 @property(readonly, nonatomic) UITraitCollection *presentationTraitCollection;
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsets;

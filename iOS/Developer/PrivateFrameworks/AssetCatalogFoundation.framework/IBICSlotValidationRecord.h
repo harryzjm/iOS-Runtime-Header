@@ -11,6 +11,7 @@
 @interface IBICSlotValidationRecord : NSObject
 {
     _Bool _required;
+    _Bool _onlyForAppStoreDeployment;
     IBICSlot *_slot;
     NSString *_versionOfIntroduction;
     NSString *_versionOfObsolescence;
@@ -23,11 +24,13 @@
 @property(readonly, copy) NSString *missingRequiredMessage; // @synthesize missingRequiredMessage=_missingRequiredMessage;
 @property(readonly, copy) NSString *versionOfObsolescence; // @synthesize versionOfObsolescence=_versionOfObsolescence;
 @property(readonly, copy) NSString *versionOfIntroduction; // @synthesize versionOfIntroduction=_versionOfIntroduction;
+@property(readonly) _Bool onlyForAppStoreDeployment; // @synthesize onlyForAppStoreDeployment=_onlyForAppStoreDeployment;
 @property(readonly, getter=isRequired) _Bool required; // @synthesize required=_required;
 @property(readonly) IBICSlot *slot; // @synthesize slot=_slot;
 - (void)ibic_generateSubNodes:(CDUnknownBlockType)arg1;
 - (void)ibic_generateAttributes:(CDUnknownBlockType)arg1;
 - (_Bool)appliesToMinimumDeploymentTarget:(id)arg1;
+- (id)initWithSlot:(id)arg1 isRequired:(_Bool)arg2 onlyForAppStoreDeployment:(_Bool)arg3 versionOfIntroduction:(id)arg4 versionOfObsolescence:(id)arg5 missingRequiredMessage:(id)arg6 obsoleteMessage:(id)arg7;
 - (id)initWithSlot:(id)arg1 isRequired:(_Bool)arg2 versionOfIntroduction:(id)arg3 versionOfObsolescence:(id)arg4 missingRequiredMessage:(id)arg5 obsoleteMessage:(id)arg6;
 
 @end

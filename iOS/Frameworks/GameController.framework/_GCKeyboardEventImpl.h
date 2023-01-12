@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCKeyboardEvent-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GCKeyboardEventImpl : NSObject <_GCKeyboardEvent>
+@interface _GCKeyboardEventImpl : NSObject
 {
+    unsigned long long timestamp;
     long long usagePage;
     long long usage;
     long long down;
@@ -21,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long down; // @synthesize down;
 @property(nonatomic) long long usage; // @synthesize usage;
 @property(nonatomic) long long usagePage; // @synthesize usagePage;
+@property(nonatomic) unsigned long long timestamp; // @synthesize timestamp;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithKeyboardEvent:(id)arg1;
 

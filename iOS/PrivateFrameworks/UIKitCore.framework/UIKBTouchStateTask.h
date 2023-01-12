@@ -19,12 +19,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)touchStateTaskForTouchState:(id)arg1 andTask:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isBusy; // @synthesize isBusy=_isBusy;
 @property(readonly, copy, nonatomic) CDUnknownBlockType task; // @synthesize task=_task;
-@property(readonly, retain, nonatomic) UIKBTouchState *touchState; // @synthesize touchState=_touchState;
+@property(readonly, nonatomic) UIKBTouchState *touchState; // @synthesize touchState=_touchState;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithTouchState:(id)arg1 andTask:(CDUnknownBlockType)arg2;
 
 @end

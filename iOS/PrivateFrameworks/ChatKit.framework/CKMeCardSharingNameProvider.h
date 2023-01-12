@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/CNMeCardSharingNameProvider-Protocol.h>
-
 @class NSString;
 
-@interface CKMeCardSharingNameProvider : NSObject <CNMeCardSharingNameProvider>
+__attribute__((visibility("hidden")))
+@interface CKMeCardSharingNameProvider : NSObject
 {
     NSString *_givenName;
     NSString *_middleName;

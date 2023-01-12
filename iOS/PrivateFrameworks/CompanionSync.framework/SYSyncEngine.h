@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CompanionSync/SYStateLoggable-Protocol.h>
-
 @class NSString, PBCodable, SYService;
 @protocol OS_dispatch_queue, OS_os_activity, OS_os_transaction, SYSyncEngineResponder;
 
 __attribute__((visibility("hidden")))
-@interface SYSyncEngine : NSObject <SYStateLoggable>
+@interface SYSyncEngine : NSObject
 {
     id <SYSyncEngineResponder> _responder;
     NSObject<OS_os_transaction> *_transaction;

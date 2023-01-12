@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIItemStateCenterObserver-Protocol.h>
-
 @class NSDictionary, NSMutableArray, NSOperationQueue, NSString, SKUIBannerView, SKUIClientContext, SKUIItemArtworkContext, SKUIItemStateCenter, SSLookupItem, UIImage;
 @protocol SKUIBannerViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIBannerViewController : UIViewController <SKUIItemStateCenterObserver>
+@interface SKUIBannerViewController : UIViewController
 {
     SKUIBannerView *_bannerView;
     SKUIClientContext *_clientContext;

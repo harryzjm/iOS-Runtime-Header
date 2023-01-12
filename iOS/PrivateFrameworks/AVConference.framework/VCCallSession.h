@@ -6,18 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/AVCRateControllerDelegate-Protocol.h>
-#import <AVConference/VCAudioIOSink-Protocol.h>
-#import <AVConference/VCCaptionsReceiverDelegate-Protocol.h>
-#import <AVConference/VCRedundancyControllerDelegate-Protocol.h>
-#import <AVConference/VCSecureDataChannelDelegate-Protocol.h>
-#import <AVConference/VCTransportSessionLegacyDelegate-Protocol.h>
-
 @class AVCRateController, GKRingBuffer, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSString, TimingCollection, VCAudioPayload, VCAudioTransmitter, VCBitrateArbiter, VCCallInfo, VCCallLinkCongestionDetector, VCCapabilities, VCCaptionsReceiver, VCConnectionManager, VCControlChannel, VCControlChannelMultiWay, VCDisplayLink, VCImageAttributeRules, VCMediaNegotiator, VCRateControlMediaController, VCRedundancyControllerVideo, VCSecureDataChannel, VCSessionMessaging, VCSwitchManager, VCTransportSession, VCVideoRule, VCWCMClient, VideoAttributes, WRMClient;
 @protocol OS_dispatch_queue, OS_dispatch_source, VCCallSessionDelegate, VCConnectionProtocol, VideoConferenceChannelQualityDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCCallSession : NSObject <VCSecureDataChannelDelegate, VCCaptionsReceiverDelegate, VCTransportSessionLegacyDelegate, AVCRateControllerDelegate, VCAudioIOSink, VCRedundancyControllerDelegate>
+@interface VCCallSession : NSObject
 {
     NSObject<VCCallSessionDelegate> *delegate;
     VCCallInfo *localCallInfo;
@@ -216,6 +209,7 @@ __attribute__((visibility("hidden")))
     NSString *peerReportingID;
     _Bool _isWRMNotificationPending;
     CDStruct_cd8cfafa _savedWRMNotification;
+    double _initTime;
 }
 
 + (id)keyPathsForValuesAffectingNetworkQuality;
@@ -575,7 +569,7 @@ __attribute__((visibility("hidden")))
 - (void)rateController:(id)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 - (void)mediaController:(void *)arg1 mediaSuggestionDidChange:(struct VCRateControlMediaSuggestion)arg2;
 - (void)packMeters:(char *)arg1 withLength:(char *)arg2;
-- (void)updateStatistics:(CDStruct_c0785916)arg1;
+- (void)updateStatistics:(CDStruct_7df19fcb)arg1;
 - (void)callAlarmsWithRTPTimeStamp:(CDStruct_1b6d18a9 *)arg1;
 - (void)processResolutionChangeToVideoRule:(id)arg1 captureRule:(id)arg2 featureListString:(id)arg3;
 - (id)newRemoteScreenAttributesForOrientation:(int)arg1;

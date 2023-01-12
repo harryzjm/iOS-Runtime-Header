@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPDBusinessInfosModuleConfiguration, GEOPDButtonModuleConfiguration, GEOPDHeaderButtonsConfiguration, GEOPDPlaceInfosModuleConfiguration, GEOPDPlaceRibbonConfiguration, GEOPDRelatedPlaceModuleConfiguration, GEOPDTemplatePlaceModuleConfiguration, GEOPDWebModuleConfiguration, PBDataReader, PBUnknownFields;
+@class GEOPDBusinessInfosModuleConfiguration, GEOPDButtonModuleConfiguration, GEOPDHeaderButtonsConfiguration, GEOPDPlaceInfosModuleConfiguration, GEOPDPlaceRibbonConfiguration, GEOPDRelatedPlaceModuleConfiguration, GEOPDTemplatePlaceModuleConfiguration, GEOPDUnifiedActionModuleConfiguration, GEOPDWebModuleConfiguration, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDModuleConfigurationValue : PBCodable <NSCopying>
+@interface GEOPDModuleConfigurationValue : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
     GEOPDRelatedPlaceModuleConfiguration *_relatedPlaceModuleConfiguration;
     GEOPDPlaceRibbonConfiguration *_ribbonModuleConfiguration;
     GEOPDTemplatePlaceModuleConfiguration *_templatePlaceModuleConfiguration;
+    GEOPDUnifiedActionModuleConfiguration *_unifiedActionModuleConfiguration;
     GEOPDWebModuleConfiguration *_webModuleConfiguration;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -35,6 +34,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_relatedPlaceModuleConfiguration:1;
         unsigned int read_ribbonModuleConfiguration:1;
         unsigned int read_templatePlaceModuleConfiguration:1;
+        unsigned int read_unifiedActionModuleConfiguration:1;
         unsigned int read_webModuleConfiguration:1;
         unsigned int wrote_anyField:1;
     } _flags;

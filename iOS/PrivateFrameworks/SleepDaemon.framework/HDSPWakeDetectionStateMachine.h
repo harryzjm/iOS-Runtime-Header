@@ -6,45 +6,42 @@
 
 #import <Sleep/HKSPPersistentStateMachine.h>
 
-#import <SleepDaemon/HDSPWakeDetectionStateMachineDelegate-Protocol.h>
-#import <SleepDaemon/HDSPWakeDetectionStateMachineEventHandler-Protocol.h>
-#import <SleepDaemon/HDSPWakeDetectionStateMachineInfoProvider-Protocol.h>
-
-@class HDSPWakeDetectionDetectingState, HDSPWakeDetectionDisabledState, HDSPWakeDetectionNotifiedState, HDSPWakeDetectionWaitingState, HKSPSleepScheduleModel, HKSPSleepScheduleOccurrence, NSDate, NSString;
+@class HDSPWakeDetectionActivityDetectingState, HDSPWakeDetectionDisabledState, HDSPWakeDetectionExplicitDetectingState, HDSPWakeDetectionNotifiedState, HDSPWakeDetectionWaitingState, HKSPSleepScheduleModel, HKSPSleepScheduleOccurrence, NSDate, NSString;
 @protocol HDSPWakeDetectionStateMachineDelegate, HDSPWakeDetectionStateMachineInfoProvider, NAScheduler;
 
 __attribute__((visibility("hidden")))
-@interface HDSPWakeDetectionStateMachine : HKSPPersistentStateMachine <HDSPWakeDetectionStateMachineDelegate, HDSPWakeDetectionStateMachineInfoProvider, HDSPWakeDetectionStateMachineEventHandler>
+@interface HDSPWakeDetectionStateMachine : HKSPPersistentStateMachine
 {
     HDSPWakeDetectionDisabledState *_disabledState;
     HDSPWakeDetectionWaitingState *_waitingState;
-    HDSPWakeDetectionDetectingState *_detectingState;
+    HDSPWakeDetectionExplicitDetectingState *_explicitDetectingState;
+    HDSPWakeDetectionActivityDetectingState *_activityDetectingState;
     HDSPWakeDetectionNotifiedState *_notifiedState;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDSPWakeDetectionNotifiedState *notifiedState; // @synthesize notifiedState=_notifiedState;
-@property(readonly, nonatomic) HDSPWakeDetectionDetectingState *detectingState; // @synthesize detectingState=_detectingState;
+@property(readonly, nonatomic) HDSPWakeDetectionActivityDetectingState *activityDetectingState; // @synthesize activityDetectingState=_activityDetectingState;
+@property(readonly, nonatomic) HDSPWakeDetectionExplicitDetectingState *explicitDetectingState; // @synthesize explicitDetectingState=_explicitDetectingState;
 @property(readonly, nonatomic) HDSPWakeDetectionWaitingState *waitingState; // @synthesize waitingState=_waitingState;
 @property(readonly, nonatomic) HDSPWakeDetectionDisabledState *disabledState; // @synthesize disabledState=_disabledState;
-- (id)upcomingStartDetectionDateAfterDate:(id)arg1;
-- (id)nextWakeUpAfterDate:(id)arg1;
-@property(readonly, nonatomic) _Bool inDetectionWindow;
+- (id)detectionWindowForType:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSDate *upcomingStartDetection;
+@property(readonly, nonatomic) NSDate *nextWakeUp;
+@property(readonly, nonatomic) unsigned long long activeTypes;
 @property(readonly, nonatomic) _Bool isWatch;
 @property(readonly, nonatomic) _Bool sleepModeIsOff;
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) HKSPSleepScheduleOccurrence *relevantOccurrence;
 @property(readonly, nonatomic) NSDate *currentDate;
-- (void)postWakeDetectionNotification;
+- (void)postWakeDetectionNotification:(unsigned long long)arg1;
 - (void)stopWakeDetection;
-- (void)startWakeDetection;
-- (void)unscheduleWakeDetection;
-- (void)scheduleWakeDetection;
+- (void)startWakeDetection:(unsigned long long)arg1;
 - (void)earlyWakeUpWasNotifiedRemotely;
-- (void)wakeupEventDetected:(id)arg1;
-- (void)wakeDetectionEventDue;
+- (void)wakeupEventDetected:(unsigned long long)arg1 date:(id)arg2;
 - (unsigned long long)loggingCategory;
+- (id)allStates;
 - (id)initWithIdentifier:(id)arg1 persistence:(id)arg2 delegate:(id)arg3 infoProvider:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;
 
 // Remaining properties

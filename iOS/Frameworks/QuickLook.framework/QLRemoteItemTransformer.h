@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/QLItemTransformerProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface QLRemoteItemTransformer : NSObject <QLItemTransformerProtocol>
+@interface QLRemoteItemTransformer : NSObject
 {
 }
 

@@ -9,12 +9,12 @@
 @interface TSCH3DCombinationRenderProcessor
 {
     NSIndexSet *_enabled;
-    struct StateStack<glm::detail::tmat4x4<float>, 8> _transformStack;
+    struct StateStack<glm::detail::tmat4x4<float>, 8L> _transformStack;
     tmat4x4_3074befe _projection;
     _Bool _transformChanged;
     _Bool _projectionChanged;
-    struct StateStack<TSCH3D::ObjectState, 6> _objectStateStack;
-    struct StateStack<TSCH3D::RenderState, 10> _renderStateStack;
+    struct StateStack<TSCH3D::ObjectState, 6L> _objectStateStack;
+    struct StateStack<TSCH3D::RenderState, 10L> _renderStateStack;
     TSCH3DShaderEffects *_effects;
     NSMutableArray *_effectsStatesStack;
 }

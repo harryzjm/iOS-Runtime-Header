@@ -12,7 +12,6 @@
 @protocol TSKModel <NSObject>
 
 @optional
-- (void)checkDebug;
 - (void)acceptVisitor:(id <TSKModelVisitor>)arg1;
 - (NSString *)modelPathComponentForChild:(id <TSKModel>)arg1;
 - (NSEnumerator *)childEnumerator;

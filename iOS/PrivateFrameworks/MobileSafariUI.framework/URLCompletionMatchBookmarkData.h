@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/WBSURLCompletionMatchData-Protocol.h>
-
 @class NSString, WebBookmark;
 
 __attribute__((visibility("hidden")))
-@interface URLCompletionMatchBookmarkData : NSObject <WBSURLCompletionMatchData>
+@interface URLCompletionMatchBookmarkData : NSObject
 {
     _Bool _shouldPreload;
     WebBookmark *_bookmark;

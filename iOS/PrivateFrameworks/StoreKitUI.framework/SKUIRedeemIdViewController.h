@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIRedeemIdManagerDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString, SKUIClientContext, SKUIRedeemIdManager, UIBarButtonItem, UITableView;
 @protocol SKUIRedeemIdDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemIdViewController : UIViewController <SKUIRedeemIdManagerDelegate>
+@interface SKUIRedeemIdViewController : UIViewController
 {
     id <SKUIRedeemIdDelegate> _delegate;
     SKUIRedeemIdManager *_manager;

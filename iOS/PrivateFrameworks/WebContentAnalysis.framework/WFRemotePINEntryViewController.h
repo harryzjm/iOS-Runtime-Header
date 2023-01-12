@@ -6,13 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <WebContentAnalysis/WFPINEntryViewControllerProtocol-Protocol.h>
-
 @class NSObject;
 @protocol WFPINEntryViewControllerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface WFRemotePINEntryViewController : _UIRemoteViewController <WFPINEntryViewControllerProtocol>
+@interface WFRemotePINEntryViewController : _UIRemoteViewController
 {
     NSObject<WFPINEntryViewControllerProtocol> *_delegate;
 }

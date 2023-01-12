@@ -6,22 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFocusRegionSearchContext-Protocol.h>
-
-@class NSArray, NSHashTable, NSMutableArray, NSString, UIFocusSystem, UIScreen, _UIFocusMapSnapshotDebugInfo, _UIFocusRegion, _UIFocusSearchInfo;
-@protocol UICoordinateSpace, _UIFocusMapArea, _UIFocusRegionContainer;
+@class NSArray, NSHashTable, NSMutableArray, NSMutableSet, NSString, UIFocusSystem, UIScreen, _UIFocusMapRect, _UIFocusMapSnapshotDebugInfo, _UIFocusMovementInfo, _UIFocusRegion, _UIFocusSearchInfo;
+@protocol UICoordinateSpace, _UIFocusRegionContainer;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusMapSnapshot : NSObject <_UIFocusRegionSearchContext>
+@interface _UIFocusMapSnapshot : NSObject
 {
     NSMutableArray *_mutableUnoccludedRegions;
     NSHashTable *_filteredOriginalRegions;
-    NSMutableArray *_containersBeingAdded;
-    NSMutableArray *_containersBeingAddedFocusSystems;
-    NSMutableArray *_clippingRectsBeingAdded;
+    struct __CFDictionary *_subregionToRegionMap;
+    struct __CFDictionary *_regionToOccludingRegionsMap;
+    struct __CFDictionary *_regionToFocusItemCache;
+    struct __CFDictionary *_regionFrameCache;
+    NSMutableArray *_stateStack;
     NSHashTable *_eligibleEnvironments;
     NSHashTable *_ineligibleEnvironments;
+    NSHashTable *_uncachableEnvironments;
     NSArray *_regions;
+    NSMutableSet *_visitedRegionContainers;
     struct {
         unsigned int didCaptureSnapshot:1;
         unsigned int isSearchingRegionsOfInterestContainer:1;
@@ -30,19 +32,21 @@ __attribute__((visibility("hidden")))
     } _flags;
     UIFocusSystem *_focusSystem;
     id <_UIFocusRegionContainer> _rootContainer;
-    id <_UIFocusMapArea> _mapArea;
+    _UIFocusMapRect *_mapArea;
     _UIFocusRegion *_focusedRegion;
     id <_UIFocusRegionContainer> _regionsContainer;
     _UIFocusSearchInfo *_searchInfo;
-    id <_UIFocusMapArea> _searchArea;
+    _UIFocusMovementInfo *_movementInfo;
+    _UIFocusMapRect *_searchArea;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic, getter=_searchArea) id <_UIFocusMapArea> searchArea; // @synthesize searchArea=_searchArea;
+@property(readonly, nonatomic, getter=_searchArea) _UIFocusMapRect *searchArea; // @synthesize searchArea=_searchArea;
+@property(retain, nonatomic) _UIFocusMovementInfo *movementInfo; // @synthesize movementInfo=_movementInfo;
 @property(retain, nonatomic) _UIFocusSearchInfo *searchInfo; // @synthesize searchInfo=_searchInfo;
 @property(readonly, nonatomic) __weak id <_UIFocusRegionContainer> regionsContainer; // @synthesize regionsContainer=_regionsContainer;
 @property(readonly, copy, nonatomic) _UIFocusRegion *focusedRegion; // @synthesize focusedRegion=_focusedRegion;
-@property(readonly, nonatomic) id <_UIFocusMapArea> mapArea; // @synthesize mapArea=_mapArea;
+@property(readonly, nonatomic) _UIFocusMapRect *mapArea; // @synthesize mapArea=_mapArea;
 @property(readonly, nonatomic) __weak id <_UIFocusRegionContainer> rootContainer; // @synthesize rootContainer=_rootContainer;
 @property(readonly, nonatomic) __weak UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
 - (void)addRegionsInContainers:(id)arg1;
@@ -53,9 +57,19 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
 @property(readonly, nonatomic) __weak UIScreen *screen;
 - (void)_capture;
+@property(readonly, nonatomic) _Bool hasOnlyStaticContent;
+- (void)markContainerAsProvidingDynamicContent;
+- (struct CGRect)snapshotFrameForRegion:(id)arg1;
+- (id)_cachedNextFocusedItemForRegion:(id)arg1 withFocusMovementRequest:(id)arg2 inMap:(id)arg3;
+- (void)consumeRegionInformationForRegions:(id)arg1 fromSnapshot:(id)arg2;
+- (id)occludingRegionsForRegion:(id)arg1;
+- (void)_trackOccludingRegion:(id)arg1 forRegion:(id)arg2;
+- (id)originalRegionForRegion:(id)arg1;
+- (void)_trackSubregion:(id)arg1 forRegion:(id)arg2;
 - (id)regionsForOriginalRegion:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *originalRegions;
 @property(readonly, copy, nonatomic) NSArray *regions;
+- (void)dealloc;
 - (id)_initWithSnapshotter:(id)arg1 mapArea:(id)arg2 searchArea:(id)arg3;
 - (id)init;
 - (id)_debugInfoWithFocusMapSearchInfo:(id)arg1;

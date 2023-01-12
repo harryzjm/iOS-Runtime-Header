@@ -16,6 +16,6 @@
 @property(readonly, nonatomic) MPUTransportButtonEventHandler *transportButtonEventHandler;
 - (_Bool)wantsCustomHighlightAppearance;
 - (void)prepareForReuse;
-- (void)applyTransportButtonLayoutAttributes:(CDStruct_b7523c42)arg1;
+- (void)applyTransportButtonLayoutAttributes:(CDStruct_62e32a95)arg1;
 @end
 

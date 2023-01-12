@@ -10,9 +10,10 @@
 @protocol SecuritydXPCCallbackProtocol;
 
 @protocol SecuritydXPCProtocol <NSObject>
+- (void)secKeychainForceUpgradeIfNeeded:(void (^)(int))arg1;
 - (void)secItemPersistKeychainWritesAtHighPerformanceCost:(void (^)(int, NSError *))arg1;
+- (void)secItemPromoteItemsForAppClip:(NSString *)arg1 toParentApp:(NSString *)arg2 completion:(void (^)(int))arg3;
 - (void)secItemDeleteForAppClipApplicationIdentifier:(NSString *)arg1 completion:(void (^)(int))arg2;
-- (void)secItemVerifyBackupIntegrity:(_Bool)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)secKeychainDeleteMultiuser:(NSData *)arg1 complete:(void (^)(_Bool, NSError *))arg2;
 - (void)secItemDigest:(NSString *)arg1 accessGroup:(NSString *)arg2 complete:(void (^)(NSArray *, NSError *))arg3;
 - (void)secItemFetchCurrentItemAcrossAllDevices:(NSString *)arg1 identifier:(NSString *)arg2 viewHint:(NSString *)arg3 fetchCloudValue:(_Bool)arg4 complete:(void (^)(NSData *, NSError *))arg5;

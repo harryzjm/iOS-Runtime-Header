@@ -6,10 +6,11 @@
 
 #import <SetupKit/NSObject-Protocol.h>
 
-@class NSObject;
+@class NSObject, SKSetupBase;
 @protocol CUMessaging, OS_dispatch_queue;
 
 @protocol SKStepable <NSObject>
+@property(nonatomic) __weak SKSetupBase *skSetupObject;
 @property(retain, nonatomic) id <CUMessaging> skMessaging;
 @property(copy, nonatomic) CDUnknownBlockType skCompletionHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;

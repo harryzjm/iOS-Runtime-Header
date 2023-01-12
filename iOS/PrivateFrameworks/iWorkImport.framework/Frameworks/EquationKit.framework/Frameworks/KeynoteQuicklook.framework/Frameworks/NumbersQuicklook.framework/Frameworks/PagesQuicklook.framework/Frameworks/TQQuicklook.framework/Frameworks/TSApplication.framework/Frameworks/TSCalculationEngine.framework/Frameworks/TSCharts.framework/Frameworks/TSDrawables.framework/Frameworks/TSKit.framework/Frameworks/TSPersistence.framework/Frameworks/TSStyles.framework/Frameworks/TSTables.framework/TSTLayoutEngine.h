@@ -6,16 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSTTableHiddenRowColumnProviding-Protocol.h>
-#import <TSTables/TSTTableInternalGeometryProviding-Protocol.h>
-#import <TSTables/TSTTableMergeRangeProviding-Protocol.h>
-
-@class NSCountedSet, NSIndexSet, NSMutableArray, NSMutableDictionary, NSMutableSet, NSPointerArray, NSString, TSDFill, TSDInfoGeometry, TSDLayoutGeometry, TSKChangeNotifier, TSTCellRegion, TSTCellSelection, TSTConcurrentMutableIndexSet, TSTDupContentCache, TSTFontInfoCache, TSTHiddenRowsColumnsCache, TSTLayout, TSTLayoutDynamicResizeInfo, TSTMergeRangeSortedSet, TSTRWRetainedPointerKeyDictionary, TSTStrokeDefaultVendor, TSTStrokeWidthCache, TSTTableInfo, TSTTextEngineDelegate, TSTWPColumnCache, TSTWidthHeightCache, TSUColor, TSUWidthLimitedQueue, TSWPColumnStyle;
+@class NSCountedSet, NSIndexSet, NSMutableArray, NSMutableDictionary, NSMutableSet, NSPointerArray, NSString, TSDFill, TSDInfoGeometry, TSDLayoutGeometry, TSKChangeNotifier, TSTCellRegion, TSTCellSelection, TSTConcurrentMutableIndexSet, TSTDupContentCache, TSTFontInfoCache, TSTHiddenRowsColumnsCache, TSTLayout, TSTLayoutDynamicResizeInfo, TSTMergeRangeSortedSet, TSTStrokeDefaultVendor, TSTStrokeWidthCache, TSTTableInfo, TSTTextEngineDelegate, TSTTextStyleToFontHeightCache, TSTWPColumnCache, TSTWidthHeightCache, TSUColor, TSUWidthLimitedQueue, TSWPColumnStyle;
 @protocol OS_dispatch_group, OS_dispatch_queue, TSTLayoutDynamicCellFillProtocol, TSTLayoutDynamicContentProtocol, TSWPStyleProviding;
 
-@interface TSTLayoutEngine : NSObject <TSTTableHiddenRowColumnProviding, TSTTableInternalGeometryProviding, TSTTableMergeRangeProviding>
+@interface TSTLayoutEngine : NSObject
 {
-    double _tableDefaultFontHeightForArea[18];
+    struct vector<double, std::allocator<double>> _tableDefaultFontHeightForArea;
     NSObject<OS_dispatch_group> *_layoutInFlight;
     struct _opaque_pthread_rwlock_t _strokesRWLock;
     struct _opaque_pthread_rwlock_t _contentRWLock;
@@ -93,7 +89,7 @@
     TSTCellRegion *_cellRegionForClearedMergeStrokes;
     TSTStrokeWidthCache *_columnToStrokeWidthCache;
     TSTStrokeWidthCache *_rowToStrokeHeightCache;
-    TSTRWRetainedPointerKeyDictionary *_paraStyleToHeightCache;
+    TSTTextStyleToFontHeightCache *_paraStyleToHeightCache;
     double _cachedTableNameHeight;
     NSMutableDictionary *_tableNameHeightCache;
     unsigned long long _cachedMaxNumberOfColumns;
@@ -123,6 +119,7 @@
 
 + (int)tableRowsBehaviorForTable:(id)arg1 andEnvironment:(int)arg2;
 + (double)effectiveTableNameHeightForTable:(id)arg1;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSPointerArray *fixedColumnWidthStack; // @synthesize fixedColumnWidthStack=_fixedColumnWidthStack;
 @property(retain, nonatomic) NSPointerArray *styleProviderStack; // @synthesize styleProviderStack=_styleProviderStack;
@@ -165,7 +162,7 @@
 @property(nonatomic) _Bool headerColumnsRepeat; // @synthesize headerColumnsRepeat=_headerColumnsRepeat;
 @property(nonatomic) _Bool headerRowsFrozen; // @synthesize headerRowsFrozen=_headerRowsFrozen;
 @property(nonatomic) _Bool headerColumnsFrozen; // @synthesize headerColumnsFrozen=_headerColumnsFrozen;
-@property(retain, nonatomic) TSTRWRetainedPointerKeyDictionary *paraStyleToHeightCache; // @synthesize paraStyleToHeightCache=_paraStyleToHeightCache;
+@property(retain, nonatomic) TSTTextStyleToFontHeightCache *paraStyleToHeightCache; // @synthesize paraStyleToHeightCache=_paraStyleToHeightCache;
 @property(retain, nonatomic) TSTStrokeWidthCache *rowToStrokeHeightCache; // @synthesize rowToStrokeHeightCache=_rowToStrokeHeightCache;
 @property(retain, nonatomic) TSTStrokeWidthCache *columnToStrokeWidthCache; // @synthesize columnToStrokeWidthCache=_columnToStrokeWidthCache;
 @property(retain, nonatomic) TSTCellRegion *cellRegionForClearedMergeStrokes; // @synthesize cellRegionForClearedMergeStrokes=_cellRegionForClearedMergeStrokes;
@@ -261,8 +258,9 @@
 - (struct UIEdgeInsets)edgeInsetsFromPadding:(id)arg1;
 - (id)formattedDataParagraphStylePropertyMapForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (id)newTextEngineForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 textStyle:(id)arg3;
-- (id)newTextEngineForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 textStyle:(id)arg3 naturalAlignment:(int)arg4 cellDirection:(int)arg5;
-- (id)p_resolvedTextStyleForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 textStyle:(id)arg3 outNaturalAlignment:(int *)arg4 outCellDirection:(int *)arg5;
+- (id)newTextEngineForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 textStyle:(id)arg3 naturalAlignment:(long long)arg4 cellDirection:(int)arg5;
+- (id)p_resolvedTextStyleForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 textStyle:(id)arg3 outNaturalAlignment:(long long *)arg4 outCellDirection:(int *)arg5;
+- (void)enqueueBootstrapChangeDescriptors;
 - (id)p_validationBundleForRegionToValidate:(id)arg1;
 - (id)unwrappedFittingWidthsForColumnsInCellRegion:(id)arg1;
 - (double)unwrappedFittingWidthsForColumnInCellRegionWorker:(id)arg1;
@@ -323,6 +321,7 @@
 - (_Bool)isDynamicallyRevealingRowsCols:(long long)arg1 rowColIndex:(unsigned int)arg2;
 - (_Bool)isDynamicallyRevealingRowsCols;
 - (_Bool)isDynamicallyChangingInfoGeometry;
+- (_Bool)isDynamicallyRemovingText;
 - (_Bool)isDynamicallyRemovingTextOfCellID:(struct TSUCellCoord)arg1;
 - (_Bool)isDynamicallyHidingTextOfCellID:(struct TSUCellCoord)arg1;
 - (_Bool)isDynamicallyHidingContentOfCellID:(struct TSUCellCoord)arg1;
@@ -393,7 +392,10 @@
 - (double)strokeHeightOfGridRow:(unsigned int)arg1 atColumnIndex:(unsigned int)arg2;
 - (double)strokeHeightOfGridRow:(unsigned int)arg1 beginColumn:(unsigned int)arg2 endColumn:(unsigned int)arg3;
 - (double)strokeHeightOfGridRow:(unsigned int)arg1 inColumnRange:(struct TSTSimpleRange)arg2;
+- (void)p_validateStrokeWidthCachesForGridColumn:(unsigned int)arg1;
+- (void)p_validateStrokeWidthCachesForGridRow:(unsigned int)arg1;
 - (id)mergedStrokesForGridRow:(unsigned int)arg1;
+- (id)p_strokesForValidationOfGridRow:(unsigned int)arg1 isTop:(_Bool)arg2;
 - (id)p_strokesForGridRow:(unsigned int)arg1 isTop:(_Bool)arg2 takeStrokeWriteLock:(_Bool)arg3;
 - (_Bool)adjustGridRowForVisibility:(unsigned int *)arg1 isTop:(_Bool)arg2;
 - (void)p_setDynamicStroke:(id)arg1 strokeOrder:(int)arg2 forGridRow:(unsigned int)arg3 isTop:(_Bool)arg4 beginColumn:(unsigned int)arg5 endColumn:(unsigned int)arg6;
@@ -442,15 +444,17 @@
 @property(readonly, nonatomic) unsigned int numberOfHeaderColumns;
 @property(readonly, nonatomic) struct TSUCellRect cellRange;
 - (void)updateCellRange;
+- (void)validateTableNameEnabled;
 - (void)validateTableNameHeight;
 - (void)invalidateTableNameHeight;
 - (double)calculatedTableNameHeightIncludingDynamicResize:(_Bool)arg1;
 - (double)calculatedTableNameHeight;
 - (double)tableNameHeightForStorage:(id)arg1 withMaxWidth:(double)arg2;
 - (double)tableNameHeight;
-- (struct CGSize)tableNameTextSizeForTableName:(id)arg1 maxWidth:(double)arg2;
+- (struct CGSize)tableNameTextSizeForTableName:(id)arg1 maxWidth:(double)arg2 tableNameStyle:(id)arg3;
 - (struct CGSize)tableNameTextSize;
 - (id)tableNameTextEngine;
+- (id)tableNameTextEngineWithTableNameStyle:(id)arg1;
 - (void)clearModelHeightWidthCacheForCellRange:(struct TSUCellRect)arg1;
 - (void)resetModelHeightWidthCache;
 - (_Bool)validateLayoutHint:(id)arg1;

@@ -6,17 +6,16 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
-@class _ICLLAddQueueItemsCommand, _ICLLClientInfoCommand, _ICLLCurrentItemChangeCommand, _ICLLMoveQueueItemCommand, _ICLLPlayNowQueueItemsCommand, _ICLLPlaybackControlSettingsCommand, _ICLLPlaybackSyncCommand, _ICLLReactionCommand, _ICLLRemoveQueueItemCommand, _ICLLReplaceQueueItemsCommand, _ICLLSetExplicitModeCommand;
+@class _ICLLAddQueueItemsCommand, _ICLLClientInfoCommand, _ICLLCurrentItemChangeCommand, _ICLLCurrentItemTransitionCommand, _ICLLMoveQueueItemCommand, _ICLLPlayNowQueueItemsCommand, _ICLLPlaybackControlSettingsCommand, _ICLLPlaybackSyncCommand, _ICLLReactionCommand, _ICLLRemoveQueueItemCommand, _ICLLReplaceQueueItemsCommand;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLCommandMessage : PBCodable <NSCopying>
+@interface _ICLLCommandMessage : PBCodable
 {
     _ICLLAddQueueItemsCommand *_addItems;
     _ICLLClientInfoCommand *_clientInfo;
     int _command;
     _ICLLCurrentItemChangeCommand *_currentItemChange;
+    _ICLLCurrentItemTransitionCommand *_currentItemTransition;
     _ICLLMoveQueueItemCommand *_moveItem;
     _ICLLPlayNowQueueItemsCommand *_playNowQueueItems;
     _ICLLPlaybackControlSettingsCommand *_playbackControlSettings;
@@ -24,7 +23,6 @@ __attribute__((visibility("hidden")))
     _ICLLReactionCommand *_reaction;
     _ICLLRemoveQueueItemCommand *_removeItem;
     _ICLLReplaceQueueItemsCommand *_replaceQueueItems;
-    _ICLLSetExplicitModeCommand *_setExplicitMode;
     struct {
         unsigned int command:1;
     } _has;

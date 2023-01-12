@@ -21,6 +21,8 @@
 @property(readonly) XCTTestIdentifier *identifier; // @synthesize identifier=_identifier;
 - (void)finishWithStatus:(id)arg1 atDate:(id)arg2;
 - (id)reportActivityStartedWithName:(id)arg1 atDate:(id)arg2;
+- (void)reportExpectedFailure:(id)arg1;
+- (void)reportSkipWithDescription:(id)arg1 sourceCodeContext:(id)arg2;
 - (void)reportAttachment:(id)arg1 atDate:(id)arg2;
 - (void)reportIssue:(id)arg1 atDate:(id)arg2;
 

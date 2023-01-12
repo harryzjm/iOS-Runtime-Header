@@ -7,6 +7,7 @@
 #import <MetalTools/MTLResource-Protocol.h>
 
 @protocol MTLAccelerationStructure <MTLResource>
+@property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly, nonatomic) unsigned long long size;
 @end
 

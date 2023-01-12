@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSIdentityServiceProtocol-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 @protocol BCSIDSQueryControllerProtocol, BCSIDSServiceFactoryProtocol, BCSIdentityAccountProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface BCSIdentityService : NSObject <BCSIdentityServiceProtocol>
+@interface BCSIdentityService : NSObject
 {
     id <BCSIdentityAccountProtocol> _businessChatAccount;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;

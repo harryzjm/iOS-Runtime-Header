@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNPropertyGroupItem.h"
+
 __attribute__((visibility("hidden")))
-@interface CNPropertyGroupDateItem
+@interface CNPropertyGroupDateItem : CNPropertyGroupItem
 {
 }
 
++ (id)dateDisplayStringFromComponents:(id)arg1;
++ (id)localeAndCalendarPairFromDateComponents:(id)arg1;
 + (id)propertyGroupItemWithLabeledValue:(id)arg1 group:(id)arg2 contact:(id)arg3;
 + (_Bool)isEmptyDateComponents:(id)arg1;
 + (id)initialValueForLabel:(id)arg1 group:(id)arg2;
@@ -18,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (id)valueForDisplayString:(id)arg1;
 - (id)placeholderString;
 - (id)displayStringForValue:(id)arg1;
-- (id)localeAndCalendarPairFromDateComponents:(id)arg1;
 - (id)bestValue:(id)arg1;
 - (_Bool)isEquivalentToItem:(id)arg1;
 - (id)defaultActionURL;

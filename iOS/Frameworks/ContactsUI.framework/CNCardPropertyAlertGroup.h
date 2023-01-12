@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNCardPropertyGroup.h"
+
 @class CNLabeledValue;
 
 __attribute__((visibility("hidden")))
-@interface CNCardPropertyAlertGroup
+@interface CNCardPropertyAlertGroup : CNCardPropertyGroup
 {
     CNLabeledValue *_labeledValue;
 }

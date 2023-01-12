@@ -10,35 +10,26 @@ __attribute__((visibility("hidden")))
 }
 
 - (double)_row4ControlSegmentWidthRight;
-- (id)messagesWriteboardKeyImageName;
-- (id)shiftLockImageName;
-- (id)shiftOnKeyImageName;
-- (id)shiftKeyImageName;
-- (id)deleteOnKeyImageName;
-- (id)deleteKeyImageName;
-- (id)dismissKeyImageName;
-- (id)dictationKeyImageName;
-- (id)globalEmojiKeyImageName;
-- (id)globalKeyImageName;
-- (double)keyCornerRadius;
-- (struct CGSize)defaultVariantGeometrySize;
 - (struct CGPoint)dualStringKeyTopTextOffset:(unsigned long long)arg1;
 - (double)dualStringKeyTopFontSize:(unsigned long long)arg1;
 - (struct CGPoint)dualStringKeyBottomTextOffset:(unsigned long long)arg1;
 - (double)dualStringKeyBottomFontSize:(unsigned long long)arg1;
+- (struct CGPoint)deleteKeyOffset:(unsigned long long)arg1;
+- (struct CGPoint)iPadFudgeControlKeyOffset;
+- (double)stringKeyFontSize:(unsigned long long)arg1;
+- (id)messagesWriteboardKeyImageName;
+- (double)keyCornerRadius;
+- (struct CGSize)defaultVariantGeometrySize;
 - (struct CGPoint)dismissKeyOffset;
 - (struct CGPoint)dictationKeyOffset;
 - (struct CGPoint)moreKeyOffset;
 - (struct CGPoint)internationalKeyOffset;
-- (struct CGPoint)deleteKeyOffset:(unsigned long long)arg1;
-- (struct CGPoint)iPadFudgeControlKeyOffset;
 - (struct CGPoint)symbolImageControlKeyOffset;
 - (double)symbolImageControlKeyFontSize;
 - (double)controlKeyFontSize;
 - (double)deleteKeyFontSize;
 - (double)moreKeyFontSize;
 - (double)spaceKeyFontSize;
-- (double)stringKeyFontSize:(unsigned long long)arg1;
 
 @end
 

@@ -10,6 +10,7 @@
 
 @protocol CNContactPickerHostProtocol <NSObject>
 - (void)pickerDidCancel;
+- (void)pickerDidCompleteWithNewContact:(CNContact *)arg1;
 - (void)pickerDidSelectContacts:(NSArray *)arg1 properties:(NSArray *)arg2;
 - (void)pickerDidSelectContact:(CNContact *)arg1 property:(CNContactProperty *)arg2;
 - (void)pickerDidSelectAddNewContact;

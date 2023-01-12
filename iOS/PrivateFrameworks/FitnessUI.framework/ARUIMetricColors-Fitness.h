@@ -7,6 +7,7 @@
 #import <ActivityRingsUI/ARUIMetricColors.h>
 
 @interface ARUIMetricColors (Fitness)
++ (id)splitsColors;
 + (id)cadenceColors;
 + (id)stepColors;
 + (id)flightsClimbedColors;

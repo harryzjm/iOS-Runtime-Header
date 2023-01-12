@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AXMediaUtilities/MLFeatureProvider-Protocol.h>
-
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface iconclassificationInput : NSObject <MLFeatureProvider>
+@interface iconclassificationInput : NSObject
 {
     struct __CVBuffer *_image_Placeholder;
 }

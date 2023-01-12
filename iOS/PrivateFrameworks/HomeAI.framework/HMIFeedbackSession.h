@@ -6,13 +6,10 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeAI/HMFLogging-Protocol.h>
-#import <HomeAI/NSURLSessionDelegate-Protocol.h>
-
 @class HMIHomeKitClient, NSOperationQueue, NSString, NSURLSession;
 
 __attribute__((visibility("hidden")))
-@interface HMIFeedbackSession : HMFObject <NSURLSessionDelegate, HMFLogging>
+@interface HMIFeedbackSession : HMFObject
 {
     HMIHomeKitClient *_homeKitClient;
     NSOperationQueue *_operationQueue;

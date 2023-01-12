@@ -5,14 +5,15 @@
 //
 
 #import <Home/NAEquatable-Protocol.h>
+#import <Home/NAHashable-Protocol.h>
 #import <Home/NSObject-Protocol.h>
 
 @class NSString;
 @protocol HFIconDescriptor;
 
-@protocol HFIconDescriptor <NSObject, NAEquatable>
-@property(readonly, nonatomic) _Bool shouldForceLTR;
-@property(readonly, nonatomic) NSString *identifier;
+@protocol HFIconDescriptor <NSObject, NAEquatable, NAHashable>
+@property(nonatomic, readonly) _Bool shouldForceLTR;
+@property(nonatomic, readonly) NSString *identifier;
 
 @optional
 - (long long)compare:(id <HFIconDescriptor>)arg1;

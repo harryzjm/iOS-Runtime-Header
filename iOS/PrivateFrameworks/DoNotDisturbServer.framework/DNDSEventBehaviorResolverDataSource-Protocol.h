@@ -6,9 +6,10 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class DNDBypassSettings, DNDConfiguration, DNDSEventBehaviorResolver, DNDState, NSString;
+@class DNDApplicationIdentifier, DNDBypassSettings, DNDConfiguration, DNDSEventBehaviorResolver, DNDState, NSPredicate, NSString;
 
 @protocol DNDSEventBehaviorResolverDataSource <NSObject>
+- (NSPredicate *)eventBehaviorResolver:(DNDSEventBehaviorResolver *)arg1 appPredicateForApplicationIdentifier:(DNDApplicationIdentifier *)arg2 modeIdentifier:(NSString *)arg3;
 - (_Bool)eventBehaviorResolver:(DNDSEventBehaviorResolver *)arg1 isAvailabilityActiveForBundleIdentifier:(NSString *)arg2;
 - (DNDConfiguration *)eventBehaviorResolver:(DNDSEventBehaviorResolver *)arg1 configurationForModeIdentifier:(NSString *)arg2;
 - (DNDBypassSettings *)eventBehaviorResolver:(DNDSEventBehaviorResolver *)arg1 bypassSettingsForClientIdentifier:(NSString *)arg2;

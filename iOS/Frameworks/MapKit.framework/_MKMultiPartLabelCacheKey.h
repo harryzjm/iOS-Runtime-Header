@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/NSCopying-Protocol.h>
-
 @class NSAttributedString;
 
 __attribute__((visibility("hidden")))
-@interface _MKMultiPartLabelCacheKey : NSObject <NSCopying>
+@interface _MKMultiPartLabelCacheKey : NSObject
 {
     NSAttributedString *_attributedString;
     struct CGSize _size;

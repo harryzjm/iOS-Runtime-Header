@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <StoreKitUI/UITextViewDelegate-Protocol.h>
-
 @class NSString, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIReportAConcernDetailsCell : UITableViewCell <UITextViewDelegate>
+@interface SKUIReportAConcernDetailsCell : UITableViewCell
 {
     NSString *_placeholderText;
     UITextView *_textView;

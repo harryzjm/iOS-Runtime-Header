@@ -6,16 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionLayoutAuxillaryHosting-Protocol.h>
-#import <UIKitCore/_UIDynamicReferenceSystem-Protocol.h>
-
 @class NSArray, NSIndexSet, NSMutableDictionary, NSString, UITraitCollection, _UICollectionCompositionalLayoutDynamicAnimator, _UICollectionCompositionalLayoutSolverOptions, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutContainer, _UICollectionLayoutDynamicsConfiguration, _UICollectionLayoutSectionGeometryTranslator, _UICollectionPreferredSizes, _UIDataSourceSnapshotter, _UIRTree;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionCompositionalLayoutSolver : NSObject <_UICollectionLayoutAuxillaryHosting, _UIDynamicReferenceSystem>
+@interface _UICollectionCompositionalLayoutSolver : NSObject
 {
     _Bool _estimatesSizes;
     _Bool _hasOrthogonalScrollingSections;
+    _Bool _hasSectionsWithCustomContainers;
     _Bool _shouldPerformPhysicalRTLTransforms;
     _Bool _roundsToScreenScale;
     _Bool _layoutRTL;
@@ -28,6 +26,7 @@ __attribute__((visibility("hidden")))
     _UIDataSourceSnapshotter *_dataSourceSnapshot;
     double _interSectionSpacing;
     NSIndexSet *_orthogonalScrollingSectionIndexes;
+    NSIndexSet *_customContainerSectionIndexes;
     CDUnknownBlockType _dynamicsConfigurationHandler;
     _UICollectionCompositionalLayoutSolverOptions *_options;
     Class _layoutAttributeClass;
@@ -48,6 +47,7 @@ __attribute__((visibility("hidden")))
     _UICollectionLayoutAuxillaryItemSolver *_globalSupplementarySolver;
     _UICollectionPreferredSizes *_globalSupplementaryPreferredSizes;
     long long _numberOfSectionsWithTransformVisibleItemsHandler;
+    unsigned long long _containerSizeDependentAxes;
     struct CGSize _actualContentSize;
 }
 
@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct CGRect bounds;
 - (struct CGRect)_dynamicReferenceBounds;
 - (_Bool)auxillaryHostWantsOverlapAdjustmentForMatchingAlignmentsOnly;
+- (id)auxillaryHostTraitCollection;
 - (id)auxillaryHostPreferredSizes;
 - (id)auxillaryHostSupplementaryEnroller;
 - (long long)auxillaryHostAuxillaryKind;

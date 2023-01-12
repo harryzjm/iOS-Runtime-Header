@@ -6,9 +6,7 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <MapsSync/NSXPCStoreServerDelegate-Protocol.h>
-
-@interface _TtC8MapsSync32MapsSyncDataContainerXPCDelegate : _TtCs12_SwiftObject <NSXPCStoreServerDelegate>
+@interface _TtC8MapsSync32MapsSyncDataContainerXPCDelegate : _TtCs12_SwiftObject
 {
 }
 

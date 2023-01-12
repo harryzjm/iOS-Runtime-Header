@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapKit/VKCustomFeatureDataSource-Protocol.h>
-#import <MapKit/_MKPinAnnotationViewDelegate-Protocol.h>
-
 @class MKAnnotationView, MKPinAnnotationView, MKPriorityToIndexMap, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
 @protocol MKAnnotationContainerViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKAnnotationContainerView : UIView <VKCustomFeatureDataSource, _MKPinAnnotationViewDelegate>
+@interface MKAnnotationContainerView : UIView
 {
     NSMutableOrderedSet *_annotationViews;
     NSMutableDictionary *_clusteringAnnotationViews;

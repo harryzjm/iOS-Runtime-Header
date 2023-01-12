@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "OSLogEventProxy.h"
+
 @class NSDictionary, _OSLogEventSerializationMetadata;
 
 __attribute__((visibility("hidden")))
-@interface _OSLogDeserializedEventProxy
+@interface _OSLogDeserializedEventProxy : OSLogEventProxy
 {
     _Bool _unixDateNeedsLookup;
     _Bool _unixTimeZoneNeedsLookup;

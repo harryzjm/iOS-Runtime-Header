@@ -12,7 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_webView:(id)arg1 takeFocus:(long long)arg2;
-- (void)visibilityWillChangeForFindOnPageView:(id)arg1;
 - (void)setActive:(_Bool)arg1;
 
 @end

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKitDaemon/CKDOperationPipelining-Protocol.h>
-
 @class NSObject, NSString;
 @protocol CKFetchArchivedRecordsOperationCallbacks, OS_dispatch_queue;
 
-@interface CKDFetchArchivedRecordsOperation <CKDOperationPipelining>
+@interface CKDFetchArchivedRecordsOperation
 {
     CDUnknownBlockType _recordFetchedBlock;
     CDUnknownBlockType _serverChangeTokenUpdatedBlock;

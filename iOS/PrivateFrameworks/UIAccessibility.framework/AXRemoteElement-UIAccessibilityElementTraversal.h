@@ -12,7 +12,7 @@
 - (_Bool)accessibilityActivate;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
-- (id)_handleElementTraversalRequestMovingForward:(_Bool)arg1 count:(unsigned long long)arg2 shouldIncludeSelf:(_Bool)arg3;
+- (id)_handleElementTraversalRequestMovingForward:(_Bool)arg1 count:(unsigned long long)arg2 shouldIncludeSelf:(_Bool)arg3 wantsContainers:(_Bool)arg4;
 - (_Bool)_accessibilityIsRemoteElement;
 - (_Bool)accessibilityViewIsModal;
 - (void)platformCleanup;

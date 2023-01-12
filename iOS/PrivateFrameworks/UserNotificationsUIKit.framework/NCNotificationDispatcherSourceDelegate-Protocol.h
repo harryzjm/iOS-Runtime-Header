@@ -6,9 +6,10 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationAction, NCNotificationDispatcher, NCNotificationRequest, NSArray, NSDate, NSSet, NSString, NSUUID;
+@class NCNotificationAction, NCNotificationDispatcher, NCNotificationRequest, NCNotificationSystemSettings, NSArray, NSDate, NSSet, NSString, NSUUID;
 
 @protocol NCNotificationDispatcherSourceDelegate <NSObject>
+- (void)dispatcher:(NCNotificationDispatcher *)arg1 setNotificationSystemSettings:(NCNotificationSystemSettings *)arg2;
 - (NCNotificationRequest *)dispatcher:(NCNotificationDispatcher *)arg1 notificationRequestForUUID:(NSUUID *)arg2;
 - (void)dispatcher:(NCNotificationDispatcher *)arg1 setSystemScheduledDeliveryEnabled:(_Bool)arg2 scheduledDeliveryTimes:(NSArray *)arg3;
 - (void)dispatcher:(NCNotificationDispatcher *)arg1 setScheduledDelivery:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;

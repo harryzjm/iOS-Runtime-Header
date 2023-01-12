@@ -7,6 +7,8 @@
 #import <NotesShared/ICTable.h>
 
 @interface ICTable (UI)
+- (id)joinedAttributedStringForColumns:(id)arg1 rows:(id)arg2 deepCopyInlineAttachments:(_Bool)arg3 note:(id)arg4 parentAttachment:(id)arg5;
+- (id)joinedAttributedStringForColumns:(id)arg1 rows:(id)arg2;
 - (id)textStorageForColumn:(id)arg1;
 - (void)enumerateTextStoragesForColumnIndexes:(id)arg1 rowIndexes:(id)arg2 undoTarget:(id)arg3 undoManager:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (id)documentForCellAtColumnIndex:(unsigned long long)arg1 rowIndex:(unsigned long long)arg2;

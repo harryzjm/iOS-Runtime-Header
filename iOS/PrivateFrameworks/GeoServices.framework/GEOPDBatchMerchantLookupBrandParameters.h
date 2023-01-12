@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSMutableArray, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDBatchMerchantLookupBrandParameters : PBCodable <NSCopying>
+@interface GEOPDBatchMerchantLookupBrandParameters : PBCodable
 {
     PBUnknownFields *_unknownFields;
     NSMutableArray *_merchantLookupBrandParameters;

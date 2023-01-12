@@ -6,7 +6,7 @@
 
 #import <Email/EFPubliclyDescribable-Protocol.h>
 
-@class EMContentRequestOptions, EMMailDropMetadata, NSArray, NSProgress, NSString;
+@class EMContentRequestOptions, EMMailDropMetadata, NSArray, NSProgress, NSString, UTType;
 @protocol EMContentItemRequestDelegate;
 
 @protocol EMContentItem <EFPubliclyDescribable>
@@ -14,7 +14,8 @@
 @property(readonly, copy, nonatomic) EMMailDropMetadata *mailDropMetadata;
 @property(readonly, nonatomic) long long storageByteCount;
 @property(readonly, nonatomic) long long dataTransferByteCount;
-@property(readonly, copy, nonatomic) NSString *UTType;
+@property(readonly, copy, nonatomic) UTType *type;
+@property(readonly, copy, nonatomic) NSString *uniformTypeIdentifier;
 @property(readonly, copy, nonatomic) NSString *contentID;
 @property(readonly, copy, nonatomic) NSString *displayName;
 @property(readonly, nonatomic) _Bool isAvailableLocally;

@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)updateButton:(id)arg1 forSelectedState:(_Bool)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (long long)_securePasteButtonSite;
 
 @end
 

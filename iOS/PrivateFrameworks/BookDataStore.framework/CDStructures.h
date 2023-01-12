@@ -15,19 +15,3 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct in_addr {
-    unsigned int _field1;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-struct sockaddr_in {
-    unsigned char _field1;
-    unsigned char _field2;
-    unsigned short _field3;
-    struct in_addr _field4;
-    char _field5[8];
-};
-

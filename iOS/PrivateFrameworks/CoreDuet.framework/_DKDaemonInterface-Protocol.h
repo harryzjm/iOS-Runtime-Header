@@ -7,6 +7,7 @@
 @class NSArray, NSPredicate, NSString, _DKQuery;
 
 @protocol _DKDaemonInterface
+- (void)requestBiomeEndpoint:(_Bool)arg1 reply:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
 - (void)confirmDatabaseConnectionWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)deviceUUIDWithReply:(void (^)(NSObject *, NSError *))arg1;
 - (void)sourceDeviceIdentityWithReply:(void (^)(NSObject *, NSError *))arg1;

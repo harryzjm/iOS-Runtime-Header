@@ -29,6 +29,7 @@
 - (void)_accessibilityPerformLeadingActionWithCell:(id)arg1;
 - (id)_axMessageSubjectView;
 - (void)_axSimulateTapArrowButtonWithDirection:(int)arg1;
+- (id)_accessibilityScrollAncestor;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (id)_axFirstVisibleCell;
 - (id)_axFirstVisibleExpandedCell;

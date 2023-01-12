@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/HDSPBiomeInterface-Protocol.h>
-
 @class BMBiomeScheduler, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HDSPBiomeBridge : NSObject <HDSPBiomeInterface>
+@interface _HDSPBiomeBridge : NSObject
 {
     BMBiomeScheduler *_scheduler;
 }

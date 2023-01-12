@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/UIMenuBuilder-Protocol.h>
 
 @class NSArray, UIMenuSystem;
 
 __attribute__((visibility("hidden")))
-@interface _UIMenuBuilder : NSObject <NSCopying, UIMenuBuilder>
+@interface _UIMenuBuilder : NSObject <NSCopying>
 {
     CDStruct_de35aa0b _analysis;
     NSArray *_keyCommandsCache;

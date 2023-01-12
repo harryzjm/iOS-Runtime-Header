@@ -26,7 +26,6 @@
 - (id)copyWithCuratingAllSuggestionsAndBirthdaySuggestion;
 - (_Bool)hasImageOfType:(unsigned long long)arg1;
 - (unsigned long long)rawImageType;
-@property(readonly, nonatomic) NSArray *allLinkedIdentifiers;
 @property(readonly, nonatomic) NSData *vCardRepresentation;
 - (id)validPropertiesByEvaluatingPredicate:(id)arg1 onMultiValueProperties:(id)arg2;
 @property(readonly, nonatomic) NSArray *birthdays;

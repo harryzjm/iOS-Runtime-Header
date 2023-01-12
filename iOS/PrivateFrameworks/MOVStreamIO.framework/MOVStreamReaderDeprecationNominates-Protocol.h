@@ -12,7 +12,7 @@
 @protocol MOVStreamReaderDeprecationNominates <NSObject>
 @property _Bool l010OutputFormatRAW14L016;
 - (unsigned int)pixelFormatForStream:(NSString *)arg1;
-- (NSArray *)grabNextMetadataOfStream:(NSString *)arg1 timeRange:(CDStruct_5c5366e1 *)arg2;
+- (NSArray *)grabNextMetadataOfStream:(NSString *)arg1 timeRange:(CDStruct_3c1748cc *)arg2;
 - (NSArray *)getUnknownMetadataStreamsAssociatedTo:(NSString *)arg1;
 - (NSArray *)getMetadataStreamsAssociatedTo:(NSString *)arg1;
 - (id)initWithURL:(NSURL *)arg1 delegate:(id <MOVStreamReaderDelegate>)arg2 error:(id *)arg3;

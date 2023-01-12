@@ -7,6 +7,7 @@
 #import <Foundation/NSCharacterSet.h>
 
 @interface NSCharacterSet (IC)
++ (id)ic_uriIdentifierAllowedCharacterSet;
 + (id)ic_animatableMentionCharacterSet;
 + (id)ic_hashtagTokenizingCharacterSet;
 + (id)ic_hashtagAllowedCharacterSet;

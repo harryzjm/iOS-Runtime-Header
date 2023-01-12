@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/CTCarrierSpaceClientDelegate-Protocol.h>
-#import <SettingsCellularUI/CoreTelephonyClientSubscriberDelegate-Protocol.h>
-
 @class CTCarrierSpaceAppsInfo, CTCarrierSpaceCapabilities, CTCarrierSpaceClient, CTCarrierSpacePlansInfo, CTCarrierSpaceUsageInfo, CTCarrierSpaceUserConsentFlowInfo, CoreTelephonyClient, NSNumber, NSString, PSUIAppInstallController;
-@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface PSUICarrierSpaceManager : NSObject <CTCarrierSpaceClientDelegate, CoreTelephonyClientSubscriberDelegate>
+@interface PSUICarrierSpaceManager : NSObject
 {
-    NSObject<OS_dispatch_queue> *_carrierSpaceQueue;
     CTCarrierSpaceCapabilities *_capabilities;
     CTCarrierSpaceUsageInfo *_usageInfo;
     CTCarrierSpacePlansInfo *_plansInfo;
@@ -36,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedManager;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CTCarrierSpaceClient *carrierSpaceClient; // @synthesize carrierSpaceClient=_carrierSpaceClient;
+- (id)getLogger;
 - (void)userConsentFlowInfoDidChange;
 - (void)appsDidChange;
 - (void)plansDidChange;

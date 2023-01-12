@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIFocusEnvironment-Protocol.h>
-#import <UIKitCore/UIInterfaceActionDisplayPropertyObserver-Protocol.h>
-#import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
+#import "UIView.h"
 
-@class NSArray, NSLayoutConstraint, NSString, UIInterfaceAction, UIInterfaceActionVisualStyle, UISpringLoadedInteraction, UIView;
+@class NSArray, NSLayoutConstraint, NSString, UIInterfaceAction, UIInterfaceActionVisualStyle, UISpringLoadedInteraction;
 @protocol UIFocusEnvironment, UIFocusItemContainer, UIInterfaceActionVisualBackgroundDisplaying;
 
 __attribute__((visibility("hidden")))
-@interface UIInterfaceActionRepresentationView <UIFocusEnvironment, UISpringLoadedInteractionSupporting, UIInterfaceActionDisplayPropertyObserver>
+@interface UIInterfaceActionRepresentationView : UIView
 {
     _Bool _hasLoadedBackgroundView;
     _Bool _canKeepContentsInHierarchy;

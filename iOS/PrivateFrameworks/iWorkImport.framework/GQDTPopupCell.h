@@ -6,7 +6,6 @@
 
 @class GQDTCell;
 
-__attribute__((visibility("hidden")))
 @interface GQDTPopupCell
 {
     GQDTCell *mResultCell;

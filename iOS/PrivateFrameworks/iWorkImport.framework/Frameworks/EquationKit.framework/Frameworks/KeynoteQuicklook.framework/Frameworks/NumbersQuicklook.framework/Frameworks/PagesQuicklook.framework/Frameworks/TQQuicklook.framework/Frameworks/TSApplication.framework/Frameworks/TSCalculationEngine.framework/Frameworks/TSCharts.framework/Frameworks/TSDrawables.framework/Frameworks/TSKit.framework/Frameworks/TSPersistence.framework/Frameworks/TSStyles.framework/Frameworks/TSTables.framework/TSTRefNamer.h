@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCERefNamingProtocol-Protocol.h>
-
 @class NSCharacterSet, NSString, TSCECalculationEngine;
 
-@interface TSTRefNamer : NSObject <TSCERefNamingProtocol>
+@interface TSTRefNamer : NSObject
 {
     TSCECalculationEngine *_calcEngine;
     NSCharacterSet *_whitespaceAndNewlineCharSet;

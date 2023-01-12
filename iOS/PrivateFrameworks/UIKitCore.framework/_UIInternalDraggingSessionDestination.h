@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSProgressReporting-Protocol.h>
-#import <UIKitCore/_UIDataTransferMonitorDelegate-Protocol.h>
-#import <UIKitCore/_UIDraggingInfo-Protocol.h>
-
 @class NSArray, NSMutableSet, NSPointerArray, NSProgress, NSString, PBItemCollection, UIDragEvent, UIWindow, UIWindowScene, _DUIPotentialDrop, _UIApplicationModalProgressController, _UIDataTransferMonitor, _UIDragSetDownAnimation, _UIDropSessionImpl, _UIInternalDraggingSessionSource;
 @protocol _UIDropInteractionOwning, _UIDruidDestinationConnection;
 
 __attribute__((visibility("hidden")))
-@interface _UIInternalDraggingSessionDestination <_UIDataTransferMonitorDelegate, NSProgressReporting, _UIDraggingInfo>
+@interface _UIInternalDraggingSessionDestination
 {
     unsigned int _sessionIdentifier;
     unsigned int _touchRoutingPolicyContextID;
@@ -45,7 +41,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _progressIndicatorStyle;
     id <_UIDruidDestinationConnection> _druidConnection;
     NSProgress *_progress;
-    struct CGPoint _centroid;
+    struct CAPoint3D _centroid;
 }
 
 - (void).cxx_destruct;
@@ -60,7 +56,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *dropItemProviders; // @synthesize dropItemProviders=_dropItemProviders;
 @property(readonly, nonatomic) __weak UIWindow *weakCentroidWindow; // @synthesize weakCentroidWindow=_weakCentroidWindow;
 @property(readonly, nonatomic) UIWindow *centroidWindow; // @synthesize centroidWindow=_centroidWindow;
-@property(readonly, nonatomic) struct CGPoint centroid; // @synthesize centroid=_centroid;
+@property(readonly, nonatomic) struct CAPoint3D centroid; // @synthesize centroid=_centroid;
 @property(readonly, nonatomic) _UIDropSessionImpl *dropSession; // @synthesize dropSession=_dropSession;
 @property(readonly, nonatomic) unsigned int sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(readonly, nonatomic) unsigned long long draggingSourceOperationMask;

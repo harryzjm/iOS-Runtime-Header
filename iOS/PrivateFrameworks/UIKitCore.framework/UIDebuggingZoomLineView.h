@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UILabel;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingZoomLineView
+@interface UIDebuggingZoomLineView : UIView
 {
     unsigned long long _direction;
     UILabel *_lineLabel;

@@ -4,19 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUIHorizontalScrollingContainerViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/SKUIMenuBarViewElementConfigurationDelegate-Protocol.h>
-#import <StoreKitUI/SKUINavigationBarControllerProviding-Protocol.h>
-#import <StoreKitUI/SKUIScrollingSegmentedControllerDelegate-Protocol.h>
-#import <StoreKitUI/SKUIScrollingTabAppearanceStatusObserver-Protocol.h>
-#import <StoreKitUI/SKUIScrollingTabNestedPagedScrolling-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSMutableDictionary, NSString, SKUIDynamicPageSectionIndexMapper, SKUIHorizontalScrollingContainerViewController, SKUILoadingDocumentViewController, SKUIMenuBarSectionsViewController, SKUIMenuBarTemplateDocumentViewControllerEmbeddedPaletteHost, SKUIMenuBarTemplateElement, SKUIMenuBarViewElementConfiguration, SKUIMenuItemViewElement, SKUIScrollingSegmentedController, SKUIViewElement, UIScrollView, UIView;
 @protocol SKUIMenuBarViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMenuBarTemplateDocumentViewController <SKUIHorizontalScrollingContainerViewControllerDelegate, SKUIMenuBarViewElementConfigurationDelegate, SKUIScrollingSegmentedControllerDelegate, SKUIScrollingTabAppearanceStatusObserver, SKUIScrollingTabNestedPagedScrolling, SKUINavigationBarControllerProviding, SKUIDocumentViewController>
+@interface SKUIMenuBarTemplateDocumentViewController : SKUIViewController
 {
     SKUIMenuBarTemplateDocumentViewControllerEmbeddedPaletteHost *_embeddedPaletteHost;
     SKUIDynamicPageSectionIndexMapper *_dynamicPageSectionIndexMapper;

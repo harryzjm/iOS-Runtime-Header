@@ -17,10 +17,10 @@
 @property(readonly, nonatomic) unsigned long long supportedContentTypes;
 @property(readonly, nonatomic) int presentationType;
 - (PXGImageTexture *)createAtlasForTextureAtlasManager:(id <PXGTextureAtlasManager>)arg1;
-- (id <PXGTextureAtlasManager>)createTextureAtlasManagerForImageDataSpec:(CDStruct_6c943d2a)arg1;
+- (id <PXGTextureAtlasManager>)createTextureAtlasManagerForImageDataSpec:(CDStruct_8c2b7bb0)arg1;
 - (PXGPayloadTexture *)createPayloadTextureFromPayload:(id <NSCopying>)arg1;
 - (PXGImageTexture *)applyAdjustment:(id <PXGDisplayAssetAdjustment>)arg1 toTexture:(PXGImageTexture *)arg2 options:(CDStruct_6238c8e0)arg3;
-- (PXGImageTexture *)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(CDStruct_6238c8e0)arg2 options: /* Error: Ran out of types for this method. */;
+- (PXGImageTexture *)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(CDStruct_6238c8e0)arg2 options:(id *)arg3 error: /* Error: Ran out of types for this method. */;
 - (PXGImageTexture *)createTextureFromCGImage:(struct CGImage *)arg1 transform:(CDStruct_6238c8e0)arg2 options: /* Error: Ran out of types for this method. */;
 @end
 

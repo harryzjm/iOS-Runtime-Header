@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIWebSelectedItemPrivate-Protocol.h>
-
 @class DOMHTMLOptionElement;
 
 __attribute__((visibility("hidden")))
-@interface UIDOMHTMLOptionSelectedItem : NSObject <UIWebSelectedItemPrivate>
+@interface UIDOMHTMLOptionSelectedItem : NSObject
 {
     _Bool _selected;
     DOMHTMLOptionElement *_node;

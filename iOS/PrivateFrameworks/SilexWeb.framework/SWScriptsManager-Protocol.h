@@ -9,7 +9,7 @@
 @protocol SWScript;
 
 @protocol SWScriptsManager <NSObject>
-- (void)executeScript:(id <SWScript>)arg1;
+- (void)executeScript:(id <SWScript>)arg1 completion:(void (^)(void))arg2;
 - (void)removeScript:(id <SWScript>)arg1;
 - (void)removeAllScripts;
 - (void)addScript:(id <SWScript>)arg1;

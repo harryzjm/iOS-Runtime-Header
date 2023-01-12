@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import "MKLocationManagerObserver-Protocol.h"
-#import "VKMapViewTourGuideDelegate-Protocol.h"
-
 @class NSString, VKFeatureAccessibilityElement, VKMapView, VKMapViewAccessibilityElementManager, VKMapViewTourStatus;
 
-@interface VKMapViewTourGuideManager : NSObject <MKLocationManagerObserver, VKMapViewTourGuideDelegate>
+@interface VKMapViewTourGuideManager : NSObject
 {
     _Bool _running;
     VKMapViewAccessibilityElementManager *_elementManager;

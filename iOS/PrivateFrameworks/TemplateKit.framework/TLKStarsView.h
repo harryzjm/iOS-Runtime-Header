@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TLKStackView.h"
+
 @class UIFont;
 
 __attribute__((visibility("hidden")))
-@interface TLKStarsView
+@interface TLKStarsView : TLKStackView
 {
     _Bool _useCompactMode;
     double _starRating;

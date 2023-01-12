@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Osprey/OspreyDeviceAuthenticating-Protocol.h>
-
 @class NSData, NSDate, NSString, OspreyAuthService, OspreyConnectionPreferences, OspreyGRPCChannel, OspreyMescalSession;
 
 __attribute__((visibility("hidden")))
-@interface OspreyMescalAuthentication : NSObject <OspreyDeviceAuthenticating>
+@interface OspreyMescalAuthentication : NSObject
 {
     OspreyMescalSession *_mescalSession;
     OspreyAuthService *_authService;

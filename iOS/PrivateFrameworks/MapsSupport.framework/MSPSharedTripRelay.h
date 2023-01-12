@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/IDSServiceDelegate-Protocol.h>
-
 @class IDSService, MSPSharedTripGroupSession, MSPSharedTripSharingIdentity, MSPSharedTripStorageController, NSArray, NSMutableDictionary, NSString;
 @protocol MSPSharedTripAvailabiltyDelegate, MSPSharedTripRelayDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MSPSharedTripRelay : NSObject <IDSServiceDelegate>
+@interface MSPSharedTripRelay : NSObject
 {
     IDSService *_sharingService;
     NSString *_clientID;

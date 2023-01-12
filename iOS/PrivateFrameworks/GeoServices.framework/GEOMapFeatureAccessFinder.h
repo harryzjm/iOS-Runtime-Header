@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
+@class GEOTileLoader, _GEOMapFeatureAccessRequest;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface GEOMapFeatureAccessFinder : NSObject
 {
+    GEOTileLoader *_tileLoader;
+    _GEOMapFeatureAccessRequest *_existingRequest;
     _Bool _allowNetwork;
     _Bool _allowStaleData;
     NSObject<OS_dispatch_queue> *_queue;
@@ -20,6 +23,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) _Bool allowStaleData; // @synthesize allowStaleData=_allowStaleData;
 @property(nonatomic) _Bool allowNetwork; // @synthesize allowNetwork=_allowNetwork;
+- (void)setExistingRequest:(id)arg1;
+- (id)initWithTileLoader:(id)arg1;
 - (id)init;
 - (_Bool)_boundingCircle:(const void *)arg1 intersectsPoints:(struct GeoCodecsVectorTilePoint *)arg2 pointCount:(unsigned long long)arg3;
 - (_Bool)_boundingCircle:(const void *)arg1 intersectsTransitLink:(id)arg2;

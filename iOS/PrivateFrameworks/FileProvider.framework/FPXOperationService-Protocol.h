@@ -10,7 +10,7 @@
 @protocol FPXOperationService
 - (void)updateIgnoreStateOfItemWithIdentifiers:(NSArray *)arg1 ignoreState:(_Bool)arg2 completionHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg3;
 - (void)fetchTrashIdentifiersWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
-- (void)userInteractionErrorsForPerformingAction:(NSString *)arg1 sourceItems:(NSArray *)arg2 destinationItem:(FPItem *)arg3 fpProviderDomainId:(NSString *)arg4 sourceItemKeysAllowList:(NSSet *)arg5 completionHandler:(void (^)(NSArray *))arg6;
+- (void)userInteractionErrorsForPerformingAction:(NSString *)arg1 sourceItems:(NSArray *)arg2 destinationItem:(FPItem *)arg3 fpProviderDomainId:(NSString *)arg4 sourceItemKeysAllowList:(NSSet *)arg5 destinationItemKeysAllowList:(NSSet *)arg6 completionHandler:(void (^)(NSArray *))arg7;
 - (void)attemptRecoveryFromError:(NSError *)arg1 optionIndex:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)userCheckedSuppressionCheckboxForUserInteractionIdentifier:(NSString *)arg1 domainIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)wakeForSessionIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;

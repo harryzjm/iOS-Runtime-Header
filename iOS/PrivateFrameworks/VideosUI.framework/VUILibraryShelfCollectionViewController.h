@@ -30,8 +30,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool disableSeeAllButton; // @synthesize disableSeeAllButton=_disableSeeAllButton;
 @property(retain, nonatomic) NSString *headerSubtitle; // @synthesize headerSubtitle=_headerSubtitle;
 @property(retain, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
+- (void)_headerTapped:(id)arg1;
+- (id)_attributedHeaderTitle;
 - (void)_updateHeaderView;
-- (_Bool)_hideSeeAllButton;
+- (_Bool)_shouldHideDisclosureButton;
 - (double)_computeBottomMargin;
 - (struct CGSize)_configureSizingCellWithEntity:(id)arg1;
 - (void)_didPressSeeAllButton:(id)arg1;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITableViewCell.h"
+
 @class UILabel, UITextInputTraits, _UIFloatingContentView;
 
 __attribute__((visibility("hidden")))
-@interface UIRecentInputTableCell
+@interface UIRecentInputTableCell : UITableViewCell
 {
     UILabel *_floatingLabel;
     long long _blurEffectStyle;

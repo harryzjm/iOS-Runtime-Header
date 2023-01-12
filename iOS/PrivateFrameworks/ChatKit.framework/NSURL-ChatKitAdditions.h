@@ -6,7 +6,7 @@
 
 #import <Foundation/NSURL.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, NSUUID;
 
 @interface NSURL (ChatKitAdditions)
 + (id)ckSMSURLFromBusinessChatURL:(id)arg1;
@@ -23,6 +23,11 @@
 @property(readonly, nonatomic) NSString *ckLaunchURLBalloonPluginBundleID;
 - (_Bool)ckIsSMSPrivateURLScheme;
 @property(readonly, nonatomic) _Bool ckShouldShowDigitalTouchCanvas;
+@property(readonly, nonatomic) NSUUID *ckFaceTimeConversationUUID;
+@property(readonly, nonatomic) NSURL *ckURLByPercentEncodingFragment;
+@property(readonly, nonatomic) NSString *ckCollaborationSceneIdentifier;
+@property(readonly, nonatomic) _Bool ckShouldInitiateCollaborationWithSend;
+@property(readonly, nonatomic) _Bool ckShouldSendImmediately;
 @property(readonly, nonatomic) _Bool ckShouldShowComposeUI;
 - (id)ckWillNotLaunchComposeUIURL;
 @end

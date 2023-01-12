@@ -6,11 +6,9 @@
 
 #import <AssistantServices/AFDataStore.h>
 
-#import <AssistantUI/AFUIDataStoring-Protocol.h>
-
 @class NSString;
 
-@interface AFDataStore (AFUIDataStoring) <AFUIDataStoring>
+@interface AFDataStore (AFUIDataStoring)
 - (id)afui_dataStoringShim;
 - (id)imageForKey:(id)arg1;
 - (void)setImage:(id)arg1 forKey:(id)arg2;

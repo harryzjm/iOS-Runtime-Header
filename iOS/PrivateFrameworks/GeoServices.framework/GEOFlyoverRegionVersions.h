@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOFlyoverRegionVersions : PBCodable <NSCopying>
+@interface GEOFlyoverRegionVersions : PBCodable
 {
     struct GEOFlyoverRegion *_regions;
     unsigned long long _regionsCount;

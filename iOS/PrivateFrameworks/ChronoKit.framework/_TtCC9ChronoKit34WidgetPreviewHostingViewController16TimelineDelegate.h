@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <ChronoKit/TLTimelineDelegate-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _TtCC9ChronoKit34WidgetPreviewHostingViewController16TimelineDelegate : NSObject <TLTimelineDelegate>
+@interface _TtCC9ChronoKit34WidgetPreviewHostingViewController16TimelineDelegate : NSObject
 {
 }
 

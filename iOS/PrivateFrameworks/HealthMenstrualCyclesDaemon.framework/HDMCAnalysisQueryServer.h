@@ -6,11 +6,10 @@
 
 #import <HealthDaemon/HDQueryServer.h>
 
-#import <HealthMenstrualCyclesDaemon/HDMCAnalysisManagerObserver-Protocol.h>
-
 @class HDMCProfileExtension, HKMCAnalysis, HKMCAnalysisQueryConfiguration, NSString;
 
-@interface HDMCAnalysisQueryServer : HDQueryServer <HDMCAnalysisManagerObserver>
+__attribute__((visibility("hidden")))
+@interface HDMCAnalysisQueryServer : HDQueryServer
 {
     HDMCProfileExtension *_profileExtension;
     HKMCAnalysisQueryConfiguration *_configuration;

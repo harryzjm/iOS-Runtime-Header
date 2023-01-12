@@ -4,28 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, UIImage;
+#import <UIKit/UIView.h>
+
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9SeymourUI11ArtworkView
+@interface _TtC9SeymourUI11ArtworkView : UIView
 {
-    MISSING_TYPE *completedIconView;
-    MISSING_TYPE *iconConstraints;
-    MISSING_TYPE *recencyIconView;
     MISSING_TYPE *artwork;
+    MISSING_TYPE *completedIconView;
+    MISSING_TYPE *flipsContentForRightToLeftDirection;
+    MISSING_TYPE *iconConstraints;
     MISSING_TYPE *layoutHandler;
+    MISSING_TYPE *recencyIconView;
     MISSING_TYPE *shelfArtworkIconSafeAreaInsets;
     MISSING_TYPE *layout;
     MISSING_TYPE *style;
+    MISSING_TYPE *imageView;
+    MISSING_TYPE *oldBounds;
 }
 
 - (void).cxx_destruct;
-- (id)initWithImage:(id)arg1 highlightedImage:(id)arg2;
-- (id)initWithImage:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic, retain) UIImage *image;
 
 @end
 

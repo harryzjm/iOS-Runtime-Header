@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DSageFillData-Protocol.h>
-
 @class NSArray, NSDictionary, TSCH3DFillSetIdentifier;
 @protocol TSCH3DSageFillImageDataSource;
 
-@interface TSCH3DSageFillData : NSObject <TSCH3DSageFillData>
+@interface TSCH3DSageFillData : NSObject
 {
     NSDictionary *_properties;
     NSArray *_layersProperties;

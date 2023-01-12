@@ -7,6 +7,8 @@
 @class NSData;
 
 @protocol NFTagB
+@property(readonly, nonatomic) unsigned char sfgi;
+@property(readonly, nonatomic) double sfgt;
 @property(readonly, copy, nonatomic) NSData *selectedAID;
 @property(readonly, nonatomic) _Bool applicationDataCoding;
 @property(readonly, copy, nonatomic) NSData *applicationData;

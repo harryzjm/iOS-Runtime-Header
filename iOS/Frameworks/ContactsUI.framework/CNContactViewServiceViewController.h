@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNContactViewControllerPPTDelegate-Protocol.h>
-#import <ContactsUI/CNContactViewHostProtocol-Protocol.h>
+#import <UIKit/UIViewController.h>
 
-@class NSString;
+@class CNContactContentViewController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactViewServiceViewController <CNContactViewHostProtocol, CNContactViewControllerPPTDelegate>
+@interface CNContactViewServiceViewController : UIViewController
 {
+    CNContactContentViewController *_contactContentVC;
 }
 
++ (Class)classForContentViewControllerImpl;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CNContactContentViewController *contactContentVC; // @synthesize contactContentVC=_contactContentVC;
 - (void)viewDidAppearForContactViewController:(id)arg1;
 - (void)presentCancelConfirmationAlert;
 - (void)didExecuteDeleteFromDowntimeWhitelistAction;
@@ -26,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)didCompleteWithContact:(id)arg1;
 - (void)updateEditing:(_Bool)arg1 doneButtonEnabled:(_Bool)arg2 doneButtonText:(id)arg3;
 - (_Bool)shouldPerformDefaultActionForContact:(id)arg1 propertyKey:(id)arg2 propertyIdentifier:(id)arg3;
-- (_Bool)isOutOfProcess;
+- (void)viewDidLoad;
 - (id)init;
 
 // Remaining properties

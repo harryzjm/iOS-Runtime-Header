@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Symbolication/NSCopying-Protocol.h>
-
 @protocol NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface VMUDomtreeName : NSObject <NSCopying>
+@interface VMUDomtreeName : NSObject
 {
     NSObject<NSCopying> *_elements[6];
 }

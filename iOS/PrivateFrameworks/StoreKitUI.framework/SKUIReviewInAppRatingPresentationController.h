@@ -6,12 +6,10 @@
 
 #import <UIKit/UIPresentationController.h>
 
-#import <StoreKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-
 @class NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIReviewInAppRatingPresentationController : UIPresentationController <UIAdaptivePresentationControllerDelegate>
+@interface SKUIReviewInAppRatingPresentationController : UIPresentationController
 {
     _Bool _constraintsPrepared;
     UIView *_dimmingView;

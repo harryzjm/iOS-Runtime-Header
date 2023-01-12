@@ -10,7 +10,7 @@
 
 @protocol TSTCellRegionIterating <NSObject>
 - (void)terminate;
-- (CDStruct_0441cfb5)getNext;
+- (CDStruct_bd4d8e6b)getNext;
 - (id)initWithCellRegion:(TSTCellRegion *)arg1;
 @end
 

@@ -6,7 +6,11 @@
 
 #import <UIKit/UINavigationItem.h>
 
+@class UIBarButtonItem;
+
 @interface UINavigationItem (MobileSafariFrameworkExtras)
+@property(retain, nonatomic, setter=sf_setPreferredDismissOrDoneButtonItem:) UIBarButtonItem *sf_preferredDismissOrDoneButtonItem;
+- (_Bool)_sf_prefersDismissOrDoneButtonOnLeft;
 @property(readonly, nonatomic) _Bool sf_isEmpty;
 @end
 

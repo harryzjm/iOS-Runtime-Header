@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNPhotoPickerVariantListControllerDelegate-Protocol.h>
-
 @class CNPhotoPickerAnimojiProviderItem, CNPhotoPickerVariantListController, CNPhotoPickerVariantsManager;
 @protocol CNAvatarPosePickerControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNAvatarPosePickerController : NSObject <CNPhotoPickerVariantListControllerDelegate>
+@interface CNAvatarPosePickerController : NSObject
 {
     id <CNAvatarPosePickerControllerDelegate> _delegate;
     long long _numberOfItemsPerRow;

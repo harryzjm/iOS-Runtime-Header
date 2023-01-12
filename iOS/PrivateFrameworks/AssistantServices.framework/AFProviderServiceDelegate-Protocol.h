@@ -19,6 +19,7 @@
 - (oneway void)getStarkModeWithReply:(void (^)(_Bool))arg1;
 - (oneway void)getCarDNDModeWithReply:(void (^)(_Bool))arg1;
 - (oneway void)getLockStateWithReply:(void (^)(_Bool))arg1;
+- (oneway void)dismissAssistantWithReason:(long long)arg1;
 - (oneway void)dismissAssistant;
 - (oneway void)openURL:(NSURL *)arg1 reply:(void (^)(_Bool))arg2;
 - (oneway void)syncChunksWithPreAnchor:(NSString *)arg1 postAnchor:(NSString *)arg2 updates:(NSArray *)arg3 deletes:(NSArray *)arg4 validity:(NSString *)arg5 forRequestUUID:(NSUUID *)arg6 reply:(void (^)(_Bool))arg7;

@@ -6,12 +6,10 @@
 
 #import <NanoWeatherKitUICompanion/NWKUIColorIndex.h>
 
-#import <NanoWeatherComplicationsCompanion/NWKUIColorIndexable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface NWMUltravioletIndexColorIndex : NWKUIColorIndex <NWKUIColorIndexable>
+@interface NWMUltravioletIndexColorIndex : NWKUIColorIndex
 {
 }
 

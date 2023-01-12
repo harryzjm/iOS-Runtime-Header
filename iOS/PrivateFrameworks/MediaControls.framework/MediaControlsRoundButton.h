@@ -6,12 +6,10 @@
 
 #import <UIKit/UIControl.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
 @class CCUICAPackageView, MRUShadowView, MRUVisualStylingProvider, NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsRoundButton : UIControl <MRUVisualStylingProviderObserver>
+@interface MediaControlsRoundButton : UIControl
 {
     _Bool _labelHidden;
     NSString *_title;

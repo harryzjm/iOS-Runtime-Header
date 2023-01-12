@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)menuActions;
 - (void)performFromView:(id)arg1;
 - (id)iconName;
 - (id)localizedName;

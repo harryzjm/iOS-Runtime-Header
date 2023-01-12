@@ -9,6 +9,7 @@
 @class NSDictionary, NSUUID;
 
 @protocol HKSampleCountQueryClientInterface <HKQueryClientInterface>
+- (void)client_deliverSampleTypeCountDictionary:(NSDictionary *)arg1 forQuery:(NSUUID *)arg2;
 - (void)client_deliverSampleCountDictionary:(NSDictionary *)arg1 forQuery:(NSUUID *)arg2;
 @end
 

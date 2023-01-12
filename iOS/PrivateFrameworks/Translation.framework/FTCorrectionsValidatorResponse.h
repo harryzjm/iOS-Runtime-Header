@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTCorrectionsValidatorResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTCorrectionsValidatorResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_48315941)addObjectToBuffer:(void *)arg1;
+- (void)corrections_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)corrections_count;
+- (id)corrections_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *corrections;
 @property(readonly, nonatomic) NSString *return_str;
 @property(readonly, nonatomic) int return_code;

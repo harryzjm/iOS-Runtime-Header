@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/TSDAnimationSession-Protocol.h>
-
-@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationRegistryWithFallbacks, KNAnimationTestResultLogger, KNPlaybackSessionConfiguration, KNShow, KNSlide, KNSlideNode, NSArray, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMPSImageConversionStorage, TSKAccessController, TSULRUCache;
+@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationRegistryWithFallbacks, KNAnimationTestResultLogger, KNPlaybackSessionConfiguration, KNShow, KNSlide, KNSlideNode, NSArray, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMPSImageConversionStorage, TSKAccessController;
 @protocol KNPlaybackLayerHost, TSDCanvasDelegate, TSKAccessControllerReadTicket;
 
-@interface KNPlaybackSession : NSObject <TSDAnimationSession>
+@interface KNPlaybackSession : NSObject
 {
     KNPlaybackSessionConfiguration *_configuration;
     KNSlideNode *_currentSlideNode;
@@ -23,6 +21,7 @@
     _Bool _disableTransitionTextureCaching;
     _Bool _isExitingShow;
     _Bool _isMovieExport;
+    _Bool _isExportingToPDF;
     _Bool _isShowLayerVisible;
     _Bool _shouldAlwaysSetCurrentGLContextWhenDrawing;
     _Bool _shouldAnimateTransitionOnLastSlide;
@@ -56,7 +55,6 @@
     TSDMPSImageConversionStorage *_mpsImageConversionStorage;
     long long _floatingCommentBehavior;
     NSArray *_slideNodesWithinPlayableRange;
-    TSULRUCache *_movieAssetCache;
     NSMutableArray *_animationDurationArray;
     NSMutableArray *_eventDurationArray;
     NSMutableArray *_workDurationArray;
@@ -76,7 +74,6 @@
 @property(readonly, nonatomic) NSMutableArray *workDurationArray; // @synthesize workDurationArray=_workDurationArray;
 @property(readonly, nonatomic) NSMutableArray *eventDurationArray; // @synthesize eventDurationArray=_eventDurationArray;
 @property(readonly, nonatomic) NSMutableArray *animationDurationArray; // @synthesize animationDurationArray=_animationDurationArray;
-@property(readonly, nonatomic) TSULRUCache *movieAssetCache; // @synthesize movieAssetCache=_movieAssetCache;
 @property(copy, nonatomic) NSArray *slideNodesWithinPlayableRange; // @synthesize slideNodesWithinPlayableRange=_slideNodesWithinPlayableRange;
 @property(nonatomic) long long floatingCommentBehavior; // @synthesize floatingCommentBehavior=_floatingCommentBehavior;
 @property(nonatomic) _Bool shouldShowLiveVideos; // @synthesize shouldShowLiveVideos=_shouldShowLiveVideos;
@@ -100,6 +97,7 @@
 @property(nonatomic) double autoplayTransitionDelay; // @synthesize autoplayTransitionDelay=_autoplayTransitionDelay;
 @property(nonatomic) long long playMode; // @synthesize playMode=_playMode;
 @property(nonatomic) _Bool isShowLayerVisible; // @synthesize isShowLayerVisible=_isShowLayerVisible;
+@property(nonatomic) _Bool isExportingToPDF; // @synthesize isExportingToPDF=_isExportingToPDF;
 @property(nonatomic) _Bool isMovieExport; // @synthesize isMovieExport=_isMovieExport;
 @property(nonatomic) _Bool isExitingShow; // @synthesize isExitingShow=_isExitingShow;
 @property(nonatomic) _Bool disableTransitionTextureCaching; // @synthesize disableTransitionTextureCaching=_disableTransitionTextureCaching;
@@ -142,6 +140,7 @@
 @property(readonly, nonatomic) _Bool shouldIgnoreBuildVisibility;
 @property(readonly, nonatomic) double showScale;
 @property(readonly, nonatomic) _Bool isOffscreenPlayback;
+@property(readonly, nonatomic) _Bool isPrintingCanvas;
 @property(readonly, nonatomic) _Bool isPreview;
 - (unsigned long long)slideNumberForSlideNode:(id)arg1;
 - (id)animatedSlideViewFor:(id)arg1;

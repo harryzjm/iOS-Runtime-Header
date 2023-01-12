@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI217EmailSignupModule : NSObject
+@interface _TtC7NewsUI217EmailSignupModule : _TtCs12_SwiftObject
 {
     MISSING_TYPE *resolver;
 }
-
-- (void).cxx_destruct;
-- (id)init;
 
 @end
 

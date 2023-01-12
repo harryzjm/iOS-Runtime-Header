@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDetailsCell.h"
+
 @class UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface CKDetailsMacChangeGroupNameCell
+@interface CKDetailsMacChangeGroupNameCell : CKDetailsCell
 {
     UIImageView *_cellGlpyh;
     UILabel *_changeNameLabel;

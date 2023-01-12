@@ -4,14 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WallpaperKit/NSCopying-Protocol.h>
+#import <WallpaperKit/WKThumbnailRepresentable-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString, NSURL;
 
-@protocol WKWallpaper <NSCopying>
-@property(readonly, nonatomic) unsigned long long backingType;
-@property(readonly, nonatomic) unsigned long long type;
-@property(readonly, copy, nonatomic) NSString *name;
-@property(readonly, nonatomic) long long identifier;
+@protocol WKWallpaper <WKThumbnailRepresentable>
+- (_Bool)copyWallpaperContentsToDestinationDirectoryURL:(NSURL *)arg1 error:(id *)arg2;
+- (NSDictionary *)propertyListRepresentation;
+@property(nonatomic, readonly) _Bool supportsCopying;
+@property(nonatomic, readonly) _Bool supportsSerialization;
+@property(nonatomic, readonly) unsigned long long backingType;
+@property(nonatomic, readonly) unsigned long long representedType;
+@property(nonatomic, readonly) unsigned long long type;
+@property(nonatomic, readonly) NSString *name;
+@property(nonatomic, readonly) long long identifier;
 @end
 

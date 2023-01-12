@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
+#import "UIView.h"
 
 @class CADisplayLink, NSOperation, NSString, UITextRange;
 @protocol UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationLandingView <_UIBasicAnimationFactory>
+@interface UIDictationLandingView : UIView
 {
     UITextRange *_range;
     id _placeholder;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 + (double)widthForLineHeight:(double)arg1;
 + (double)diameterForLineHeight:(double)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <UITextCursorAssertion> blinkAssertion; // @synthesize blinkAssertion=_blinkAssertion;
 @property(nonatomic) _Bool willInsertResult; // @synthesize willInsertResult=_willInsertResult;
 - (id)_timingFunctionForAnimation;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasActivePlaceholder;
 - (void)stopLanding;
 - (void)startLandingIfNecessary;
+- (void)performRemoteSelector:(SEL)arg1;
 - (void)startDisplayLinkIfNecessary;
 - (void)showCursor;
 - (void)hideCursor;

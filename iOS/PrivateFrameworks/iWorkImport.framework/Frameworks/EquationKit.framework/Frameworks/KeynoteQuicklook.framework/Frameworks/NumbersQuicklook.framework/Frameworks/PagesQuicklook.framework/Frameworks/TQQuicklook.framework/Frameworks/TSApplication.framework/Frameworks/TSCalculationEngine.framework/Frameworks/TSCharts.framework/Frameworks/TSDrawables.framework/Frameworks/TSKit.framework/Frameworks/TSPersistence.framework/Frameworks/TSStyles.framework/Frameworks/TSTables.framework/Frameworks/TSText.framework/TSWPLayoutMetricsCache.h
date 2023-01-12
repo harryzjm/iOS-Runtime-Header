@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSWPStorageParagraphObserver-Protocol.h>
-
 @class NSString, TSWPStorage;
 
-@interface TSWPLayoutMetricsCache : NSObject <TSWPStorageParagraphObserver>
+@interface TSWPLayoutMetricsCache : NSObject
 {
     TSWPStorage *_storage;
     struct vector<TSWPParagraphMetrics, std::allocator<TSWPParagraphMetrics>> _paragraphMetrics;

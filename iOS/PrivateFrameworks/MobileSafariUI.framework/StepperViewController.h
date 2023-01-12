@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MobileSafariUI/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <MobileSafariUI/_SFSettingsAlertStepperConfiguration-Protocol.h>
-
 @class NSString, SFStepperView;
 @protocol _SFSettingsAlertStepperController;
 
 __attribute__((visibility("hidden")))
-@interface StepperViewController : UIViewController <_SFSettingsAlertStepperConfiguration, UIViewControllerTransitioningDelegate>
+@interface StepperViewController : UIViewController
 {
     SFStepperView *_stepperView;
     id <_SFSettingsAlertStepperController> _stepperController;

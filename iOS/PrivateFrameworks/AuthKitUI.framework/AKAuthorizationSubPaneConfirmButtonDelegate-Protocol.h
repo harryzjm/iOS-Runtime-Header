@@ -9,6 +9,7 @@
 @class AKAuthorizationSubPaneConfirmButton;
 
 @protocol AKAuthorizationSubPaneConfirmButtonDelegate <NSObject>
+- (void)subPaneConfirmButtonPerformExternalAuthentication:(AKAuthorizationSubPaneConfirmButton *)arg1;
 - (void)performAuthorization;
 - (void)performPasswordAuthentication;
 - (void)subpaneConfirmButtonDidFailBiometry:(AKAuthorizationSubPaneConfirmButton *)arg1;

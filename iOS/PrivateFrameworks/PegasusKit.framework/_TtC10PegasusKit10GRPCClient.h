@@ -13,11 +13,19 @@
     MISSING_TYPE *activityMonitor;
     MISSING_TYPE *baseURLString;
     MISSING_TYPE *gatewayURLString;
-    MISSING_TYPE *session;
-    MISSING_TYPE *shouldLogVerboseDebug;
+    MISSING_TYPE *defaults;
+    MISSING_TYPE *contextVendor;
+    MISSING_TYPE *verboseDebugEnabled;
     MISSING_TYPE *jsonEncodingOptions;
     MISSING_TYPE *defaultGrpcTimeout;
+    MISSING_TYPE *defaultMTUSizeInBytes;
+    MISSING_TYPE *compressionEnabled;
+    MISSING_TYPE *warmupInterval;
+    MISSING_TYPE *warmupSpans;
+    MISSING_TYPE *warmupQueue;
     MISSING_TYPE *debugParameters;
+    MISSING_TYPE *feedbackEventStream;
+    MISSING_TYPE *sharedSession;
 }
 
 @end

@@ -13,6 +13,7 @@
 @property(readonly, copy, nonatomic) NSString *applicationBundleIdentifier;
 
 @optional
+@property(readonly, nonatomic, getter=isNewAppInstallFromStore) _Bool newAppInstallFromStore;
 @property(readonly, nonatomic, getter=isAppClip) _Bool appClip;
 @property(readonly, nonatomic, getter=isCloudDemoted) _Bool cloudDemoted;
 @property(readonly, nonatomic, getter=isPrioritizable) _Bool prioritizable;

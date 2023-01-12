@@ -8,6 +8,11 @@
 
 @interface MLMultiArray (APOdmlExtensions)
 + (id)multiarrayFromFeature:(id)arg1;
++ (id)twoDimensionalMultiarrayFromFeature:(id)arg1;
++ (id)twoDimensionalMultiarrayFromArray:(id)arg1;
 + (id)multiarrayFromArray:(id)arg1;
++ (id)twoDimensionalMultiarrayFromFloatArray:(float *)arg1 withLength:(id)arg2;
++ (id)multiarrayFromFloatArray:(float *)arg1 withLength:(id)arg2;
+- (id)arrayFromMultiarray;
 @end
 

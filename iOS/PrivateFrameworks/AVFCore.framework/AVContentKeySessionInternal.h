@@ -25,8 +25,13 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *keyRequestsByRequestID;
     NSMutableArray *_contentKeyGroups;
     NSMapTable *cryptorUUIDToContentKeyRequestMap;
+    NSMutableDictionary *keyRequestParamsByRequestID;
+    NSMutableDictionary *keyRequestTrackerByRequestID;
+    NSMutableDictionary *cryptorsByIdentifer;
+    NSMapTable *contentKeyRequestByKeySpecifierMap;
     NSObject<OS_dispatch_queue> *_delegateReadWriteQueue;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    struct CMBaseObject *_contentKeyBoss;
 }
 
 @end

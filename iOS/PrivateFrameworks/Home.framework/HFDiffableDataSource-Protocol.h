@@ -6,12 +6,13 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class HFItem, NSDiffableDataSourceSnapshot, NSIndexPath;
+@class HFItem, HFItemSection, NSDiffableDataSourceSectionSnapshot, NSDiffableDataSourceSnapshot, NSIndexPath;
 
 @protocol HFDiffableDataSource <NSObject>
 @property(copy, nonatomic) CDUnknownBlockType supplementaryViewProvider;
 - (NSIndexPath *)indexPathForItemIdentifier:(HFItem *)arg1;
 - (HFItem *)itemIdentifierForIndexPath:(NSIndexPath *)arg1;
+- (void)applySnapshot:(NSDiffableDataSourceSectionSnapshot *)arg1 toSection:(HFItemSection *)arg2 animatingDifferences:(_Bool)arg3 completion:(void (^)(void))arg4;
 - (void)applySnapshot:(NSDiffableDataSourceSnapshot *)arg1 animatingDifferences:(_Bool)arg2 completion:(void (^)(void))arg3;
 - (NSDiffableDataSourceSnapshot *)snapshot;
 @end

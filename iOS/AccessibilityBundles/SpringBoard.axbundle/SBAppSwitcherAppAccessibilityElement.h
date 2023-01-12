@@ -6,14 +6,14 @@
 
 #import <UIKit/UIAccessibilityElement.h>
 
-@class SBAppLayoutAccessibility, SBFluidSwitcherContentViewAccessibility;
+@class SBAppLayoutAccessibility, SBFluidSwitcherContentViewAccessibility, SBFluidSwitcherItemContainerAccessibility;
 @protocol SBAppSwticherAppAccessibilityElementDelegate;
 
 @interface SBAppSwitcherAppAccessibilityElement : UIAccessibilityElement
 {
     _Bool _isControlCenter;
     SBAppLayoutAccessibility *_appLayout;
-    id _itemContainer;
+    SBFluidSwitcherItemContainerAccessibility *_itemContainer;
     SBFluidSwitcherContentViewAccessibility *_contentView;
     id <SBAppSwticherAppAccessibilityElementDelegate> _delegate;
 }
@@ -21,7 +21,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SBAppSwticherAppAccessibilityElementDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak SBFluidSwitcherContentViewAccessibility *contentView; // @synthesize contentView=_contentView;
-@property(retain, nonatomic) id itemContainer; // @synthesize itemContainer=_itemContainer;
+@property(nonatomic) __weak SBFluidSwitcherItemContainerAccessibility *itemContainer; // @synthesize itemContainer=_itemContainer;
 @property(retain, nonatomic) SBAppLayoutAccessibility *appLayout; // @synthesize appLayout=_appLayout;
 @property(readonly, nonatomic) _Bool isControlCenter; // @synthesize isControlCenter=_isControlCenter;
 - (_Bool)_accessibilitySetNativeFocus;

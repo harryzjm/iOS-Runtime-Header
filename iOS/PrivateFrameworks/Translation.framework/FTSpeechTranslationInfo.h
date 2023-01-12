@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTRecognitionSausage, NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTSpeechTranslationInfo : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTSpeechTranslationInfo : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_b4e49498)addObjectToBuffer:(void *)arg1;
+- (void)raw_nbest_choices_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)raw_nbest_choices_count;
+- (id)raw_nbest_choices_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *raw_nbest_choices;
 @property(readonly, nonatomic) FTRecognitionSausage *raw_sausage;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <ActionKitUI/UIDocumentInteractionControllerDelegate-Protocol.h>
-
 @class NSString, WFContentItem;
 
 __attribute__((visibility("hidden")))
-@interface WFContentItemViewController : UITableViewController <UIDocumentInteractionControllerDelegate>
+@interface WFContentItemViewController : UITableViewController
 {
     WFContentItem *_contentItem;
 }

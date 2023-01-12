@@ -6,7 +6,7 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class GEOMapServiceTraits, MKMapItem, MKTableViewCell, MKTransitDeparturesDataSource, NSArray, UIColor;
+@class GEOAttribution, GEOMapServiceTraits, MKMapItem, MKTableViewCell, MKTransitDeparturesDataSource, NSArray, UIColor;
 @protocol GEOTransitConnectionInfo, GEOTransitDepartureSequence, MKTransitLineMarker;
 
 @protocol MKTransitDeparturesDataSourceHosting <NSObject>
@@ -14,6 +14,7 @@
 - (GEOMapServiceTraits *)traitsForTransitDeparturesDataSource:(MKTransitDeparturesDataSource *)arg1;
 
 @optional
+- (void)transitDeparturesDataSource:(MKTransitDeparturesDataSource *)arg1 didSelectAttribution:(GEOAttribution *)arg2;
 - (void)transitDeparturesDataSourceDidToggleHiddenSystem:(MKTransitDeparturesDataSource *)arg1;
 - (_Bool)transitDeparturesDataSource:(MKTransitDeparturesDataSource *)arg1 canSelectDepartureSequence:(id <GEOTransitDepartureSequence>)arg2 transitStationMapItem:(MKMapItem *)arg3 transitLine:(id <MKTransitLineMarker>)arg4 fromCell:(MKTableViewCell *)arg5;
 - (void)transitDeparturesDataSource:(MKTransitDeparturesDataSource *)arg1 didSelectDepartureSequence:(id <GEOTransitDepartureSequence>)arg2 transitStationMapItem:(MKMapItem *)arg3 transitLine:(id <MKTransitLineMarker>)arg4 fromCell:(MKTableViewCell *)arg5;

@@ -9,9 +9,13 @@
 @class CSCoverSheetViewController, NSString, SBLockScreenUnlockRequest, SBSearchGesture;
 
 @protocol CSCoverSheetViewControllerDelegate <NSObject>
+- (_Bool)coverSheetViewControllerHasBeenDismissedSinceKeybagLock:(CSCoverSheetViewController *)arg1;
+- (_Bool)coverSheetViewControllerTraitsArbiterOrientationActuationEnabled:(CSCoverSheetViewController *)arg1;
 - (_Bool)coverSheetViewControllerIsShowingSecureApp:(CSCoverSheetViewController *)arg1;
 - (_Bool)coverSheetViewControllerHasSecureApp:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewController:(CSCoverSheetViewController *)arg1 startSpotlightInteractiveGestureTransactionForGesture:(SBSearchGesture *)arg2;
+- (void)coverSheetViewControllerDidDismissInlinePasscode:(CSCoverSheetViewController *)arg1;
+- (void)coverSheetViewControllerWillPresentInlinePasscode:(CSCoverSheetViewController *)arg1;
 - (_Bool)coverSheetViewControllerIsPasscodeVisible:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewControllerHandleUnlockAttemptSucceeded:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetWindowedAccessoryViewControllerDidPresent:(CSCoverSheetViewController *)arg1;

@@ -68,24 +68,8 @@ struct CAStreamBasicDescription {
     unsigned int _field9;
 };
 
-struct CF<OpaqueVTPixelTransferSession *> {
-    struct OpaqueVTPixelTransferSession *value_;
-};
-
 struct CF<__CVBuffer *> {
     struct __CVBuffer *value_;
-};
-
-struct CF<__CVPixelBufferPool *> {
-    struct __CVPixelBufferPool *value_;
-};
-
-struct CF<const opaqueCMFormatDescription *> {
-    struct opaqueCMFormatDescription *value_;
-};
-
-struct CF<opaqueCMSampleBuffer *> {
-    struct opaqueCMSampleBuffer *value_;
 };
 
 struct CGAffineTransform {
@@ -333,12 +317,12 @@ struct LkFsMeasure {
     struct DspLibBiquad *_field21;
 };
 
-struct Matrix<float, 12, 1, false> {
-    float m_data[12];
+struct Matrix<float, 12U, 12U, false> {
+    float m_data[144];
 };
 
-struct Matrix<float, 12, 12, false> {
-    float m_data[144];
+struct Matrix<float, 12U, 1U, false> {
+    float m_data[12];
 };
 
 struct MetaDataAnalysis {
@@ -370,6 +354,8 @@ struct MotionResult {
     int support_size_;
     float residual_var_;
     float gmv_[2];
+    array_bb4fff4b motion_param_;
+    array_bb4fff4b motion_param_diff_;
     CDStruct_1b6d18a9 duration_;
     float scene_delta_;
     float scene_delta_ratio_;
@@ -382,19 +368,9 @@ struct MotionVector;
 
 struct OpaqueVTCompressionSession;
 
-struct OpaqueVTImageRotationSession;
-
 struct OpaqueVTPixelTransferSession;
 
 struct RegressionTree;
-
-struct Rotator {
-    struct __CVPixelBufferPool *_field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    struct OpaqueVTImageRotationSession *_field5;
-};
 
 struct SMPTETime {
     short mSubframes;
@@ -432,8 +408,6 @@ struct __CFArray;
 
 struct __CVBuffer;
 
-struct __CVPixelBufferPool;
-
 struct __sFILE {
     char *_field1;
     int _field2;
@@ -462,13 +436,17 @@ struct __sbuf {
     int _field2;
 };
 
+struct array<float, 6UL> {
+    float __elems_[6];
+};
+
 struct atomic<bool> {
     struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
         _Atomic _Bool __a_value;
     } __a_;
 };
 
-struct layout<double, 6, 1, dlib::memory_manager_stateless_kernel_1<char>, 1> {
+struct layout<double, 6L, 1L, dlib::memory_manager_stateless_kernel_1<char>, 1> {
     double _field1[6];
 };
 
@@ -477,13 +455,9 @@ struct mach_timebase_info {
     unsigned int denom;
 };
 
-struct matrix<double, 6, 1, dlib::memory_manager_stateless_kernel_1<char>, dlib::row_major_layout> {
-    struct layout<double, 6, 1, dlib::memory_manager_stateless_kernel_1<char>, 1> _field1;
+struct matrix<double, 6L, 1L, dlib::memory_manager_stateless_kernel_1<char>, dlib::row_major_layout> {
+    struct layout<double, 6L, 1L, dlib::memory_manager_stateless_kernel_1<char>, 1> _field1;
 };
-
-struct opaqueCMFormatDescription;
-
-struct opaqueCMSampleBuffer;
 
 struct tplTracker_resampler_context;
 
@@ -524,14 +498,6 @@ struct vector<float, std::allocator<float>> {
     float *__end_;
     struct __compressed_pair<float *, std::allocator<float>> {
         float *__value_;
-    } __end_cap_;
-};
-
-struct vector<int, std::allocator<int>> {
-    int *__begin_;
-    int *__end_;
-    struct __compressed_pair<int *, std::allocator<int>> {
-        int *__value_;
     } __end_cap_;
 };
 
@@ -615,9 +581,13 @@ typedef struct {
 } CDStruct_e83c9415;
 
 // Template types
-typedef struct matrix<double, 6, 1, dlib::memory_manager_stateless_kernel_1<char>, dlib::row_major_layout> {
-    struct layout<double, 6, 1, dlib::memory_manager_stateless_kernel_1<char>, 1> _field1;
-} matrix_3c21c366;
+typedef struct array<float, 6UL> {
+    float __elems_[6];
+} array_bb4fff4b;
+
+typedef struct matrix<double, 6L, 1L, dlib::memory_manager_stateless_kernel_1<char>, dlib::row_major_layout> {
+    struct layout<double, 6L, 1L, dlib::memory_manager_stateless_kernel_1<char>, 1> _field1;
+} matrix_116be4a2;
 
 typedef struct vector<espresso_buffer_t, std::allocator<espresso_buffer_t>> {
     CDStruct_183601bc *__begin_;

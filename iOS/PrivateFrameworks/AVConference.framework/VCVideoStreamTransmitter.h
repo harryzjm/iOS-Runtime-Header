@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     struct tagVCRealTimeThread *_encoderThread;
     _Bool _terminateEncoderThread;
     NSObject<OS_dispatch_semaphore> *_bufferQueueSemaphore;
-    struct opaqueCMSampleBuffer *_savedSampleBuffer;
     struct opaqueCMBufferQueue *_bufferQueue;
     char *_buffer;
     unsigned long long _bufferSize;
@@ -63,7 +62,7 @@ __attribute__((visibility("hidden")))
 - (int)transmitEncodedVideoFrame:(char *)arg1 size:(unsigned long long)arg2 timestamp:(unsigned int)arg3 hostTime:(double)arg4 cameraStatusBits:(unsigned char)arg5;
 - (void)transmitEncodedVideoFrame:(struct opaqueCMSampleBuffer *)arg1 cameraStatusBits:(unsigned char)arg2;
 - (_Bool)isKeyFrame:(struct opaqueCMSampleBuffer *)arg1;
-- (_Bool)prependSPSPPS:(unsigned long long *)arg1 dataPointer:(char *)arg2;
+- (_Bool)prependSPSPPS:(unsigned long long *)arg1 dataPointer:(char *)arg2 sampleBuffer:(struct opaqueCMSampleBuffer *)arg3;
 - (void)encodeVideoFrame:(struct opaqueCMSampleBuffer *)arg1;
 - (struct __CFDictionary *)forceKeyFrameProperties;
 - (void)initVideoCompressionWithWidth:(unsigned int)arg1 height:(unsigned int)arg2 bitrate:(unsigned int)arg3 keyFrameIntervalDuration:(unsigned int)arg4;

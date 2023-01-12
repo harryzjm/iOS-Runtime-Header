@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
-#import <UIKitCore/_UIClickInteractionDriving-Protocol.h>
-
 @class NSString, UIGestureRecognizer, UIView, _UITouchDurationObservingGestureRecognizer;
 @protocol _UIClickInteractionDriverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UILongPressClickInteractionDriver : NSObject <UIGestureRecognizerDelegatePrivate, _UIClickInteractionDriving>
+@interface _UILongPressClickInteractionDriver : NSObject
 {
     unsigned long long _currentState;
     struct {

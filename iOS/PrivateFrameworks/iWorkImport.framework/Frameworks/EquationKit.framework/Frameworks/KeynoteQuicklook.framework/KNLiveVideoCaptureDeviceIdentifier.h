@@ -6,11 +6,9 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface KNLiveVideoCaptureDeviceIdentifier : TSKSosBase <NSCopying>
+@interface KNLiveVideoCaptureDeviceIdentifier : TSKSosBase
 {
     NSString *_uniqueID;
     NSString *_modelID;

@@ -9,6 +9,8 @@
 @class NSString;
 
 @interface NSBundle (SafariCoreExtras)
++ (_Bool)safari_isSafariFamilyBundleIdentifier:(id)arg1;
++ (_Bool)safari_isICloudAppWithBundleIdentifier:(id)arg1;
 + (id)safari_safariInjectedBundleURL;
 + (id)safari_safariApplicationPlatformBundleIdentifier;
 + (id)safari_safariCoreBundle;

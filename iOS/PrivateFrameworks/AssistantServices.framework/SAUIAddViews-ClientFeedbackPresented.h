@@ -6,9 +6,7 @@
 
 #import <SAObjects/SAUIAddViews.h>
 
-#import <AssistantServices/AFAceCommandClientFeedbackEnumerating-Protocol.h>
-
-@interface SAUIAddViews (ClientFeedbackPresented) <AFAceCommandClientFeedbackEnumerating>
+@interface SAUIAddViews (ClientFeedbackPresented)
 - (void)_af_enumerateClientFeedbackDetails:(CDUnknownBlockType)arg1;
 - (id)af_dialogPhase;
 - (id)af_dialogIdentifiersForAnalyticsContext;

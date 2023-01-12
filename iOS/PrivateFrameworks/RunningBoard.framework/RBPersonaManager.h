@@ -9,9 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface RBPersonaManager : NSObject
 {
-    long long _personalID;
+    _Bool _hasUserManagement;
+    _Bool _personasSupported;
+    struct os_unfair_lock_s _lock;
 }
 
+- (_Bool)isConcretePersona:(id)arg1;
+- (id)personalPersonaUniqueString;
+- (_Bool)personasAreSupported;
+- (_Bool)personaForIdentity:(id)arg1 context:(id)arg2 personaUID:(out unsigned int *)arg3 personaUniqueString:(out id *)arg4;
 - (id)init;
 
 @end

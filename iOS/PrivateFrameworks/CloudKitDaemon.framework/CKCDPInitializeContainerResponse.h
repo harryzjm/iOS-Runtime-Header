@@ -6,9 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
-@interface CKCDPInitializeContainerResponse : PBCodable <NSCopying>
+@interface CKCDPInitializeContainerResponse : PBCodable
 {
     _Bool _success;
     CDStruct_f2ecb737 _has;

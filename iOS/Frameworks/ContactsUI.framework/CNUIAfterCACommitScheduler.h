@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNScheduler-Protocol.h>
-
 @class CNSuspendableSchedulerDecorator, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNUIAfterCACommitScheduler : NSObject <CNScheduler>
+@interface CNUIAfterCACommitScheduler : NSObject
 {
     CNSuspendableSchedulerDecorator *_scheduler;
     struct __CFRunLoopObserver *_runLoopObserver;

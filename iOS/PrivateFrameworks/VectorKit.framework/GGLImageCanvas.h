@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/MDRenderTarget-Protocol.h>
-
 @class NSString;
 @protocol GGLRenderQueueSource;
 
 __attribute__((visibility("hidden")))
-@interface GGLImageCanvas : NSObject <MDRenderTarget>
+@interface GGLImageCanvas : NSObject
 {
+    struct shared_ptr<ggl::Device> _device;
     struct CGSize _size;
     double _contentScale;
     struct CGRect _bounds;
@@ -27,32 +26,35 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<(anonymous namespace)::YFlipPass, std::default_delete<(anonymous namespace)::YFlipPass>> _yFlipPass;
     struct RenderTargetFormat _sRGBFormat;
     struct RenderTargetFormat _resolvedRenderTargetFormat;
-    struct shared_ptr<ggl::Device> _device;
-    void *_renderer;
+    struct unique_ptr<ggl::Renderer, std::default_delete<ggl::Renderer>> _renderer;
     struct unique_ptr<ggl::RenderTarget, std::default_delete<ggl::RenderTarget>> _sRGBRenderTarget;
     struct shared_ptr<ggl::Texture2DAbstract> _sRGBColorBuffer;
     struct unique_ptr<ggl::RenderBuffer, std::default_delete<ggl::RenderBuffer>> _depthStencilBuffer;
-    struct array<std::shared_ptr<ggl::RenderBuffer>, 3> _sRGBColorTextures;
+    struct array<std::shared_ptr<ggl::RenderBuffer>, 3UL> _sRGBColorTextures;
     struct RenderTargetFormat _linearFormat;
     struct unique_ptr<ggl::RenderTarget, std::default_delete<ggl::RenderTarget>> _linearRenderTarget;
     struct shared_ptr<ggl::Texture2DAbstract> _linearColorBuffer;
-    struct array<std::shared_ptr<ggl::RenderBuffer>, 3> _linearColorTextures;
+    struct array<std::shared_ptr<ggl::RenderBuffer>, 3UL> _linearColorTextures;
     struct unique_ptr<ggl::RenderTarget, std::default_delete<ggl::RenderTarget>> _blitRenderTarget;
     struct RenderTargetFormat _blitFormat;
     _Bool _useMultisampling;
     struct shared_ptr<ggl::Texture> _msaaResolveBuffer;
     unsigned long long _signpostId;
+    void *_mdDevice;
+    struct mutex _debugConsoleManagerCreationLock;
+    struct unique_ptr<md::DebugConsoleManager, std::default_delete<md::DebugConsoleManager>> _debugConsoleManager;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool allowAlpha; // @synthesize allowAlpha=_allowAlpha;
 @property(readonly, nonatomic) _Bool multiSample; // @synthesize multiSample=_useMultisampling;
-@property(nonatomic) id <GGLRenderQueueSource> renderSource; // @synthesize renderSource=_renderSource;
+@property(nonatomic) __weak id <GGLRenderQueueSource> renderSource; // @synthesize renderSource=_renderSource;
 @property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(nonatomic) double contentScale; // @synthesize contentScale=_contentScale;
 @property(readonly, nonatomic) _Bool supportsFramebufferFetch; // @synthesize supportsFramebufferFetch=_supportsFramebufferFetch;
+- (void *)debugConsoleForId:(int)arg1;
 - (void)didDrawView;
 - (void)willDrawView;
 - (void)renderWithTimestamp:(double)arg1 completion:(function_ffe40f9b)arg2;
@@ -74,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void *)_internalRenderTarget;
 @property(readonly, nonatomic) void *finalRenderTarget;
 @property(readonly, nonatomic) struct CGSize sizeInPixels;
+- (void)willDealloc;
 - (void *)finalSurface;
 @property(readonly, nonatomic) void *renderTarget;
 

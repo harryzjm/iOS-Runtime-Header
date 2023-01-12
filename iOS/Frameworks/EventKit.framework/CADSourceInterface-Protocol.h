@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CADObjectID, CalGrantedDelegate, NSArray, NSDate;
+@class CADObjectID, CalGrantedDelegate, NSArray, NSDate, NSString;
 
 @protocol CADSourceInterface
-- (void)CADSourceGetManagedConfigurationAccountAccess:(CADObjectID *)arg1 reply:(void (^)(int, int))arg2;
+- (void)CADSourceRemoveExchangeDelegateWithID:(CADObjectID *)arg1 reply:(void (^)(int))arg2;
+- (void)CADSourceAddExchangeDelegateWithName:(NSString *)arg1 emailAddress:(NSString *)arg2 toSourceWithID:(CADObjectID *)arg3 reply:(void (^)(int, CADObjectID *, long long))arg4;
 - (void)CADSourceUpdateGrantedDelegate:(CalGrantedDelegate *)arg1 action:(long long)arg2 sourceID:(CADObjectID *)arg3 reply:(void (^)(int))arg4;
 - (void)CADSourceGetGrantedDelegatesList:(CADObjectID *)arg1 reply:(void (^)(int, NSArray *))arg2;
 - (void)CADRemoveCalendarItemsOlderThanDate:(NSDate *)arg1 ofType:(int)arg2 inSource:(CADObjectID *)arg3 reply:(void (^)(int))arg4;

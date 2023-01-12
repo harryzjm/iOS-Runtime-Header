@@ -12,13 +12,17 @@ __attribute__((visibility("hidden")))
     NSArray *_children;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)menuWithUIMenu:(id)arg1 children:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *children; // @synthesize children=_children;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 shortcutVisit:(CDUnknownBlockType)arg2;
 - (id)menuByReplacingChildren:(id)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 @property(readonly, nonatomic) UIMenu *uiMenu;
+- (id)init;
 
 @end
 

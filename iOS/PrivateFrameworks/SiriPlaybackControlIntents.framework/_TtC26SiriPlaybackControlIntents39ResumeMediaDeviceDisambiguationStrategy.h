@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *deviceState;
     MISSING_TYPE *dialogProvider;
+    MISSING_TYPE *featureFlagProvider;
+    MISSING_TYPE *encryptionProvider;
 }
 
 @end

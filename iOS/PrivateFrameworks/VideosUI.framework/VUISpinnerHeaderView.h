@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/PSHeaderFooterView-Protocol.h>
-
 @class PSSpecifier, UIActivityIndicatorView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface VUISpinnerHeaderView : UIView <PSHeaderFooterView>
+@interface VUISpinnerHeaderView : UIView
 {
     UIActivityIndicatorView *_spinner;
     UILabel *_text;

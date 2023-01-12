@@ -6,16 +6,21 @@
 
 #import <UIKit/UIControl.h>
 
-@class ASCModalViewInteraction, ASCOfferButtonBackgroundImageView, ASCOfferMetadata, ASCOfferTheme, CAAnimation, UILabel, UIViewPropertyAnimator;
+@class ASCModalViewInteraction, ASCOfferButtonBackgroundImageView, ASCOfferMetadata, ASCOfferTheme, CAAnimation, NSString, UILabel, UIViewPropertyAnimator;
 @protocol ASCOfferButtonDelegate;
 
 __attribute__((visibility("hidden")))
 @interface ASCOfferButton : UIControl
 {
-    long long _subtitlePosition;
+    _Bool _fixedHeight;
+    _Bool _shouldTopAlign;
+    _Bool _shouldExpandBackground;
     ASCOfferTheme *_theme;
     ASCOfferMetadata *_metadata;
     id <ASCOfferButtonDelegate> _delegate;
+    long long _subtitlePosition;
+    double _topPadding;
+    NSString *_size;
     ASCOfferButtonBackgroundImageView *_imageView;
     UILabel *_titleLabelIfLoaded;
     UILabel *_subtitleLabelIfLoaded;
@@ -23,16 +28,26 @@ __attribute__((visibility("hidden")))
     UIViewPropertyAnimator *_currentTransition;
 }
 
++ (id)progressStateImageFittingSize:(id)arg1 forTheme:(id)arg2 startPercent:(double)arg3 endPercent:(double)arg4 useFullImageSize:(_Bool)arg5;
++ (_Bool)adjustsTitleFontSizeToFitWidthForSize:(id)arg1;
++ (id)viewInAppStoreTitleFontForText:(id)arg1 compatibleWithTraitCollection:(id)arg2;
++ (id)mediumTitleFontForText:(id)arg1 compatibleWithTraitCollection:(id)arg2;
++ (id)smallTitleFontForText:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIViewPropertyAnimator *currentTransition; // @synthesize currentTransition=_currentTransition;
 @property(retain, nonatomic) ASCModalViewInteraction *modalInteraction; // @synthesize modalInteraction=_modalInteraction;
 @property(readonly, nonatomic) UILabel *subtitleLabelIfLoaded; // @synthesize subtitleLabelIfLoaded=_subtitleLabelIfLoaded;
 @property(readonly, nonatomic) UILabel *titleLabelIfLoaded; // @synthesize titleLabelIfLoaded=_titleLabelIfLoaded;
 @property(readonly, nonatomic) ASCOfferButtonBackgroundImageView *imageView; // @synthesize imageView=_imageView;
+@property(retain, nonatomic) NSString *size; // @synthesize size=_size;
+@property(nonatomic) _Bool shouldExpandBackground; // @synthesize shouldExpandBackground=_shouldExpandBackground;
+@property(nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
+@property(nonatomic) _Bool shouldTopAlign; // @synthesize shouldTopAlign=_shouldTopAlign;
+@property(nonatomic, getter=isFixedHeight) _Bool fixedHeight; // @synthesize fixedHeight=_fixedHeight;
+@property(nonatomic) long long subtitlePosition; // @synthesize subtitlePosition=_subtitlePosition;
 @property(nonatomic) __weak id <ASCOfferButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) ASCOfferMetadata *metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) ASCOfferTheme *theme; // @synthesize theme=_theme;
-@property(nonatomic) long long subtitlePosition; // @synthesize subtitlePosition=_subtitlePosition;
 - (id)description;
 - (void)layoutSubviews;
 - (struct UIEdgeInsets)alignmentRectInsets;
@@ -70,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)accessibilityIdentifier;
 - (_Bool)accessibilityActivate;
 - (id)accessibilityValue;
 - (id)accessibilityHint;

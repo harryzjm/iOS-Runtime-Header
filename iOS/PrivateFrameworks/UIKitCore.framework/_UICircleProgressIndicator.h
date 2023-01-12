@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class CADisplayLink, UIColor, UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface _UICircleProgressIndicator
+@interface _UICircleProgressIndicator : UIView
 {
     double _animatedValue;
     double _animationEndTime;

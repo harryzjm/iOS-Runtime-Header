@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CryptoTokenKit/TKTokenDriverProtocol-Protocol.h>
+#import "TKTokenBaseContext.h"
 
 @class NSString, NSXPCListenerEndpoint, TKTokenConfigurationConnection, TKTokenDriver;
 
 __attribute__((visibility("hidden")))
-@interface TKTokenDriverContext <TKTokenDriverProtocol>
+@interface TKTokenDriverContext : TKTokenBaseContext
 {
     TKTokenConfigurationConnection *_configurationConnection;
     id _initialKeepAlive;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)setConfigurationEndpoint:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setup;
 @property(readonly, nonatomic) double idleTimeout;
-- (void)auditAuthOperation:(id)arg1 auditToken:(CDStruct_4c969caf)arg2 success:(_Bool)arg3;
+- (void)auditAuthOperation:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 success:(_Bool)arg3;
 - (id)configurationForTokenID:(id)arg1;
 @property(readonly, nonatomic) TKTokenConfigurationConnection *configurationConnection;
 

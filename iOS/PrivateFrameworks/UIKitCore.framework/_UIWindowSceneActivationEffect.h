@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIContentEffect-Protocol.h>
-
 @class NSMutableArray, NSString, UITargetedPreview, UIView, _UIHighlightPlatterView;
 @protocol _UIContentEffectDescriptor;
 
 __attribute__((visibility("hidden")))
-@interface _UIWindowSceneActivationEffect : NSObject <_UIContentEffect>
+@interface _UIWindowSceneActivationEffect : NSObject
 {
     id <_UIContentEffectDescriptor> _descriptor;
     UIView *_platterContainer;

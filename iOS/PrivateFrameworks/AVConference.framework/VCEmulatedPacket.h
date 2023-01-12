@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     double _networkServiceTime;
     double _departureTime;
     _Bool _isLost;
+    _Bool _isDroppedByAQM;
     unsigned char _datagram[1500];
     void *_metaData;
     long long _type;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic) void *metaData; // @synthesize metaData=_metaData;
+@property(nonatomic) _Bool isDroppedByAQM; // @synthesize isDroppedByAQM=_isDroppedByAQM;
 @property(nonatomic) _Bool isLost; // @synthesize isLost=_isLost;
 @property(nonatomic) double departureTime; // @synthesize departureTime=_departureTime;
 @property(nonatomic) double networkServiceTime; // @synthesize networkServiceTime=_networkServiceTime;

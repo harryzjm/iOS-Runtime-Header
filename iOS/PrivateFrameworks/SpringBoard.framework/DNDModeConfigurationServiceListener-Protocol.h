@@ -6,9 +6,12 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class DNDModeConfigurationService, NSArray;
+@class DNDModeConfigurationService, NSArray, NSString;
 
 @protocol DNDModeConfigurationServiceListener <NSObject>
+
+@optional
+- (void)modeConfigurationService:(DNDModeConfigurationService *)arg1 didReceiveAppConfigurationContextUpdateForModeIdentifier:(NSString *)arg2;
 - (void)modeConfigurationService:(DNDModeConfigurationService *)arg1 didReceiveAvailableModesUpdate:(NSArray *)arg2;
 @end
 

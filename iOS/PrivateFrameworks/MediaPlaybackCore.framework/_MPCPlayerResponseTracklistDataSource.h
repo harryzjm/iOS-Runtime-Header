@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPLazySectionedCollectionDataSource-Protocol.h>
-
 @class MPCPlayerResponse, NSIndexPath, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCPlayerResponseTracklistDataSource : NSObject <MPLazySectionedCollectionDataSource>
+@interface _MPCPlayerResponseTracklistDataSource : NSObject
 {
     MPCPlayerResponse *_response;
     NSIndexPath *_playingItemIndexPath;

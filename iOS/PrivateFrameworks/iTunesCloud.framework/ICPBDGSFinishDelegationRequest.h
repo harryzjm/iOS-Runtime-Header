@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface ICPBDGSFinishDelegationRequest : PBRequest <NSCopying>
+@interface ICPBDGSFinishDelegationRequest : PBRequest
 {
     NSMutableArray *_playerDelegateInfoTokens;
 }

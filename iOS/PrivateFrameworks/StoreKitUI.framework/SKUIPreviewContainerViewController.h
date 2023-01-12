@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIViewControllerPreviewing-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPreviewContainerViewController : UIViewController <SKUIViewControllerPreviewing>
+@interface SKUIPreviewContainerViewController : UIViewController
 {
     UIViewController *_childViewController;
 }

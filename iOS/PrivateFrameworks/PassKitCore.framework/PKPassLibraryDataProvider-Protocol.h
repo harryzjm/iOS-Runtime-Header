@@ -16,5 +16,10 @@
 - (PKPass *)passWithUniqueID:(NSString *)arg1;
 - (NSArray *)paymentPasses;
 - (void)removePass:(PKPass *)arg1;
+
+@optional
+- (PKPass *)passForProvisioningCredentialHash:(NSString *)arg1;
+- (NSArray *)passes;
+- (unsigned long long)countOfPasses;
 @end
 

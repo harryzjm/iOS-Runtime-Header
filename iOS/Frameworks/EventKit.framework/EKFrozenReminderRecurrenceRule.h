@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (long long)ekWeekdayToREMWeekday:(long long)arg1;
 - (int)firstDayOfTheWeekRaw;
 - (long long)interval;
-- (int)frequency;
+- (int)frequencyRaw;
 - (unsigned long long)count;
 - (id)endDate;
 - (id)uuid;

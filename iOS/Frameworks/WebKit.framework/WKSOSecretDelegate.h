@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/WKNavigationDelegate-Protocol.h>
-#import <WebKit/WKUIDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKSOSecretDelegate : NSObject <WKNavigationDelegate, WKUIDelegate>
+@interface WKSOSecretDelegate : NSObject
 {
     struct WeakPtr<WebKit::PopUpSOAuthorizationSession, WTF::EmptyCounter> _session;
     _Bool _isFirstNavigation;

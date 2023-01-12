@@ -8,7 +8,7 @@
 
 @interface CHCTCRecognitionModel
 {
-    _Bool _hasBatchFirstFeatureArrayShape;
+    _Bool _normalizeFeatures;
     long long _sequenceCompression;
     long long _distanceFeatureIndex;
     long long _sinAlphaFeatureIndex;
@@ -19,26 +19,27 @@
     struct CHCodeMap *_codeMap;
     long long _blankIndex;
     long long _spaceIndex;
+    long long _pseudospaceIndex;
     double _distMean;
     double _distStd;
     double _interpointDistance;
-    long long _activationsDomain;
     NSOrderedSet *__stringCodeMap;
     struct CVNLPTextDecodingPruningPolicy _decodingPruningPolicy;
 }
 
-@property(readonly, retain) NSOrderedSet *_stringCodeMap; // @synthesize _stringCodeMap=__stringCodeMap;
+- (void).cxx_destruct;
+@property(readonly) NSOrderedSet *_stringCodeMap; // @synthesize _stringCodeMap=__stringCodeMap;
 @property(nonatomic) struct CVNLPTextDecodingPruningPolicy decodingPruningPolicy; // @synthesize decodingPruningPolicy=_decodingPruningPolicy;
-@property(nonatomic) long long activationsDomain; // @synthesize activationsDomain=_activationsDomain;
-@property(nonatomic) _Bool hasBatchFirstFeatureArrayShape; // @synthesize hasBatchFirstFeatureArrayShape=_hasBatchFirstFeatureArrayShape;
 @property(nonatomic) double interpointDistance; // @synthesize interpointDistance=_interpointDistance;
 @property(nonatomic) double distStd; // @synthesize distStd=_distStd;
 @property(nonatomic) double distMean; // @synthesize distMean=_distMean;
+@property(nonatomic) _Bool normalizeFeatures; // @synthesize normalizeFeatures=_normalizeFeatures;
+@property(readonly, nonatomic) long long pseudospaceIndex; // @synthesize pseudospaceIndex=_pseudospaceIndex;
 @property(readonly, nonatomic) long long spaceIndex; // @synthesize spaceIndex=_spaceIndex;
 @property(readonly, nonatomic) long long blankIndex; // @synthesize blankIndex=_blankIndex;
 @property(readonly, nonatomic) struct CHCodeMap *codeMap; // @synthesize codeMap=_codeMap;
-@property(readonly, retain, nonatomic) NSString *characterProbabilityOutputName; // @synthesize characterProbabilityOutputName=_characterProbabilityOutputName;
-@property(readonly, retain, nonatomic) NSString *directionalFeaturesInputName; // @synthesize directionalFeaturesInputName=_directionalFeaturesInputName;
+@property(readonly, nonatomic) NSString *characterProbabilityOutputName; // @synthesize characterProbabilityOutputName=_characterProbabilityOutputName;
+@property(readonly, nonatomic) NSString *directionalFeaturesInputName; // @synthesize directionalFeaturesInputName=_directionalFeaturesInputName;
 @property(readonly, nonatomic) long long gapFeatureIndex; // @synthesize gapFeatureIndex=_gapFeatureIndex;
 @property(readonly, nonatomic) long long cosAlphaFeatureIndex; // @synthesize cosAlphaFeatureIndex=_cosAlphaFeatureIndex;
 @property(readonly, nonatomic) long long sinAlphaFeatureIndex; // @synthesize sinAlphaFeatureIndex=_sinAlphaFeatureIndex;
@@ -46,10 +47,14 @@
 @property(readonly, nonatomic) long long sequenceCompression; // @synthesize sequenceCompression=_sequenceCompression;
 - (id)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 initialVectorAnchorPoint:(struct CGPoint)arg4 normalizeFeatures:(_Bool)arg5 padFeatures:(_Bool)arg6 error:(id *)arg7;
 - (id)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 error:(id *)arg4;
-- (id)recognizeDrawing:(id)arg1 minimumDrawingSize:(struct CGSize)arg2 initialVectorAnchorPoint:(struct CGPoint)arg3 activeCharacterSet:(id)arg4 outStrokeEndings:(void *)arg5;
+- (void)updateActivationsWithActiveCharacterSet:(id)arg1 resultArray:(id)arg2 indexArray:(id)arg3;
+- (double)highestSymbolActivationWithResultArray:(id)arg1 indexArray:(id)arg2 symbol:(id *)arg3;
+- (_Bool)reachesActivationThreshold:(double)arg1 inCharacterSet:(id)arg2 resultArray:(id)arg3 indexArray:(id)arg4;
+- (void)enumerateActivationsInResultArray:(id)arg1 indexArray:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (id)recognizeDrawing:(id)arg1 minimumDrawingSize:(struct CGSize)arg2 initialVectorAnchorPoint:(struct CGPoint)arg3 activeCharacterSet:(id)arg4 outStrokeEndings:(void *)arg5 outFallbackSymbol:(id *)arg6 outFallbackSymbolScore:(double *)arg7;
 - (id)featureProviderForDrawing:(id)arg1 initialVectorAnchorPoint:(struct CGPoint)arg2 normalizeFeatures:(_Bool)arg3 padFeatures:(_Bool)arg4 outStrokeEndings:(void *)arg5 outInputSequenceLength:(long long *)arg6 outOutputSequenceLength:(long long *)arg7;
 - (void)dealloc;
-- (id)initWithModelName:(id)arg1 decodingPruningPolicy:(struct CVNLPTextDecodingPruningPolicy)arg2 featureIndex:(long long)arg3;
+- (id)initWithModelName:(id)arg1 decodingPruningPolicy:(struct CVNLPTextDecodingPruningPolicy)arg2;
 
 @end
 

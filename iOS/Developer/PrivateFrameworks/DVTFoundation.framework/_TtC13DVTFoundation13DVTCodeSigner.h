@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *toolname;
     MISSING_TYPE *logAspect;
-    MISSING_TYPE *codesignAllocatePath;
 }
 
 @end

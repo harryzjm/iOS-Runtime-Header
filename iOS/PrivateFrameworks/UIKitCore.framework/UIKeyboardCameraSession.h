@@ -6,44 +6,50 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <UIKitCore/UIKeyboardCameraViewControllerDelegate-Protocol.h>
-#import <UIKitCore/UITextInputSessionActionAnalyticsDelegateSource-Protocol.h>
-#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
-
-@class NSString, UIKeyboardCameraViewController, UIResponder, UITextInputSessionActionAnalytics;
-@protocol UIKeyInput;
+@class NSString, UIKeyboardCameraBasePresentationController, UIKeyboardCameraViewController, UIResponder, UITextInputSessionActionAnalytics;
+@protocol UIKeyInput, UIViewControllerAnimatedTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCameraSession : NSObject <UIKeyboardCameraViewControllerDelegate, UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UITextInputSessionActionAnalyticsDelegateSource>
+@interface UIKeyboardCameraSession : NSObject
 {
     UIKeyboardCameraViewController *_keyboardCameraViewController;
-    _Bool _isPresentingOverKeyboard;
+    UIKeyboardCameraBasePresentationController *_presentationController;
+    id <UIViewControllerAnimatedTransitioning> _animationController;
     _Bool _didFindText;
     NSString *_keyboardCameraCandidateString;
     id _sender;
+    _Bool _presentingOverKeyboard;
     _Bool _isTextInputResponder;
     _Bool _isWebKitResponder;
     _Bool _respondsToKeyboardInputShouldInsertText;
     _Bool _isSingleLineDocument;
     _Bool _didCleanup;
+    _Bool _isSecureFieldEditor;
+    _Bool _shouldSuppressSoftwareKeyboard;
+    _Bool _shouldResignFirstResponderWhenDone;
     UITextInputSessionActionAnalytics *_sessionAnalytics;
     UIResponder<UIKeyInput> *_responder;
-    CDUnknownBlockType _dismissedHandler;
 }
 
-+ (id)showForResponder:(id)arg1 sender:(id)arg2;
 + (_Bool)shouldShowTextSuggestionForResponder:(id)arg1;
 + (id)keyboardCameraContentTypeForResponder:(id)arg1;
 + (id)_textContentTypesForDataDetection;
++ (_Bool)updatesGuideDuringRotation;
 + (_Bool)isEnabled;
++ (id)activeSession;
++ (id)sharedSession;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType dismissedHandler; // @synthesize dismissedHandler=_dismissedHandler;
 @property(readonly, nonatomic) UIResponder<UIKeyInput> *responder; // @synthesize responder=_responder;
+@property(nonatomic) _Bool shouldSuppressSoftwareKeyboard; // @synthesize shouldSuppressSoftwareKeyboard=_shouldSuppressSoftwareKeyboard;
+- (void)handleRemoteSelfDestruct;
+- (void)dimmingViewWasTapped:(id)arg1;
 - (long long)_overrideTextInputSource;
+- (id)_sessionIdentifier;
 - (id)_delegateAsResponder;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
+- (id)animationControllerForDismissedController:(id)arg1;
+- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)keyboardCameraDidCancel;
 - (void)keyboardCameraDidAccept;
 - (void)keyboardCameraDidUpdateString:(id)arg1;
@@ -51,7 +57,6 @@ __attribute__((visibility("hidden")))
 - (void)_cleanupKeyboardCameraAndShouldInsertText:(_Bool)arg1;
 - (void)_updatePreviewWithString:(id)arg1;
 - (id)_textInputResponder;
-- (id)_webKitResponder;
 - (void)_addObservers;
 - (void)_inputModeDidChange:(id)arg1;
 - (void)_firstResponderDidChange:(id)arg1;
@@ -59,8 +64,10 @@ __attribute__((visibility("hidden")))
 - (void)_didEnterBackground:(id)arg1;
 - (void)_keyboardCameraPreparationDidComplete;
 - (void)_show;
+- (void)_makeResponderEditableIfNecessary;
 @property(readonly) UITextInputSessionActionAnalytics *sessionAnalytics; // @synthesize sessionAnalytics=_sessionAnalytics;
 - (void)dealloc;
+- (void)showForResponder:(id)arg1 sender:(id)arg2 rtiConfiguration:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,6 +7,9 @@
 #import <UIKit/UINavigationItem.h>
 
 @interface UINavigationItem (IBCocoaTouchToolIntegration)
+- (void)setIbCustomizationIdentifier:(id)arg1;
+- (void)setIbCenterItemGroups:(id)arg1;
+- (void)setIbStyle:(long long)arg1;
 - (id)ibPromptEditableArea;
 - (id)ibLargeTitleEditableArea;
 - (id)ibTitleEditableArea;

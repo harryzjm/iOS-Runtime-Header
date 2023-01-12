@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SCRCMathExpression;
+#import "SCRCMathExpression.h"
 
 __attribute__((visibility("hidden")))
-@interface SCRCMathSubSuperscriptExpression
+@interface SCRCMathSubSuperscriptExpression : SCRCMathExpression
 {
     SCRCMathExpression *_base;
     SCRCMathExpression *_subscript;

@@ -11,7 +11,7 @@
 - (void)setAdditionalServiceDetailsForApplicationIdentifiers:(NSSet *)arg1 usingContentsOfDictionary:(NSDictionary *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)setDeveloperModeEnabled:(_Bool)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)getDeveloperModeEnabledWithCompletionHandler:(void (^)(NSNumber *, NSError *))arg1;
-- (void)getTrackingDomains:(NSSet *)arg1 completionHandler:(void (^)(NSDictionary *))arg2;
+- (void)getTrackingDomains:(NSSet *)arg1 sources:(unsigned long long)arg2 completionHandler:(void (^)(NSDictionary *))arg3;
 - (void)removeSettingsForKeys:(NSSet *)arg1 serviceSpecifier:(_SWCServiceSpecifier *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)removeSettingsForKeys:(NSSet *)arg1 serviceType:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)commitServiceSettings:(_SWCServiceSettings *)arg1 completionHandler:(void (^)(_SWCGeneration *, NSError *))arg2;

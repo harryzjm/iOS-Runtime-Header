@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIPointerInteractionDriver-Protocol.h>
-
 @class NSString, UIView, _UIPointerInteractionHoverGestureRecognizer, _UIPointerInteractionPressGestureRecognizer;
 @protocol _UIPointerInteractionDriverSink;
 
 __attribute__((visibility("hidden")))
-@interface _UIPointerInteractionHoverDriver : NSObject <_UIPointerInteractionDriver>
+@interface _UIPointerInteractionHoverDriver : NSObject
 {
     id <_UIPointerInteractionDriverSink> _sink;
     _UIPointerInteractionHoverGestureRecognizer *_hoverGestureRecognizer;
@@ -35,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateHover:(id)arg1 forced:(_Bool)arg2;
 - (void)_handleHoverGesture:(id)arg1;
 - (void)invalidate;
+- (_Bool)isActive;
 - (struct CGPoint)locationInView:(id)arg1;
 - (id)initWithSink:(id)arg1;
 

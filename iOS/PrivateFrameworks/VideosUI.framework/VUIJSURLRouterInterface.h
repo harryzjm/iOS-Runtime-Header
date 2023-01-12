@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIJSURLRouterInterface-Protocol.h>
+#import "VUIJSObject.h"
 
 __attribute__((visibility("hidden")))
-@interface VUIJSURLRouterInterface <VUIJSURLRouterInterface>
+@interface VUIJSURLRouterInterface : VUIJSObject
 {
 }
 

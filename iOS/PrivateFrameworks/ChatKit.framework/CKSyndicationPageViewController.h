@@ -6,15 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <ChatKit/UIPageViewControllerDataSource-Protocol.h>
-#import <ChatKit/UIPageViewControllerDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, UIPageControl, UIPageViewController;
 @protocol CKSyndicationOnboardingPageViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKSyndicationPageViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate>
+@interface CKSyndicationPageViewController : UIViewController
 {
     UIPageViewController *_pageViewController;
     UIPageControl *_pageControl;

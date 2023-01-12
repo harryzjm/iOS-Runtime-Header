@@ -10,6 +10,7 @@
 
 @interface _TtC15SeymourServices28SessionAppTerminationMonitor : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *$defaultActor;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *platform;

@@ -6,16 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <ContactsUI/CNQuickActionsManagerDelegate-Protocol.h>
-#import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <ContactsUI/UITableViewDataSource-Protocol.h>
-#import <ContactsUI/UITableViewDelegate-Protocol.h>
-
 @class CNAvatarCardActionsTableView, CNQuickActionsManager, NSArray, NSIndexPath, NSString, UIGestureRecognizer, UISelectionFeedbackGenerator;
 @protocol CNAvatarCardActionsViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNAvatarCardActionsView : UIView <UITableViewDataSource, UITableViewDelegate, CNQuickActionsManagerDelegate, UIGestureRecognizerDelegate>
+@interface CNAvatarCardActionsView : UIView
 {
     _Bool _actionsReversed;
     _Bool _bypassActionValidation;

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDTDateFormat : NSObject <GQDNameMappable>
+@interface GQDTDateFormat : NSObject
 {
     struct __CFString *mFormatString;
 }

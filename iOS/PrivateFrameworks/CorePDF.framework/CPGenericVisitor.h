@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPVisitor-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CPGenericVisitor : NSObject <CPVisitor>
+@interface CPGenericVisitor : NSObject
 {
 }
 

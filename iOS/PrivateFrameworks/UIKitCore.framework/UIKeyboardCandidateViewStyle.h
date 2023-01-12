@@ -7,16 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/TUICandidateViewStyle-Protocol.h>
 
 @class NSString, UIColor, UIFont, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateViewStyle : NSObject <NSCopying, TUICandidateViewStyle>
+@interface UIKeyboardCandidateViewStyle : NSObject <NSCopying>
 {
     _Bool _doNotClipToBounds;
+    _Bool _shouldJustifyRow;
     _Bool _darkBackdrop;
     _Bool _scrollDisabled;
+    _Bool _dragGestureDisabled;
     _Bool _allowCandidateGridExpanding;
     _Bool _showsIndex;
     _Bool _showExtraLineBeforeFirstRow;
@@ -63,6 +64,7 @@ __attribute__((visibility("hidden")))
     double _rowHeight;
     double _arrowButtonHeight;
     double _cornerRadius;
+    double _cellCornerRadius;
     unsigned long long _maskedCorners;
     unsigned long long _gridMaskedCorners;
     double _foregroundOpacity;
@@ -72,10 +74,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _maxNumberOfProactiveCells;
     double _minimumCellPadding;
     double _minimumCellWidth;
+    double _minimumInterItemSpacing;
     double _maximumIconWidth;
     double _singleSlottedCellMargin;
     long long _cellTextAlignment;
     long long _alternativeTextAlignment;
+    long long _lineBreakMode;
     long long _minimumNumberOfCandidates;
     struct CGPoint _gridLineOffset;
     struct UIEdgeInsets _extraCellPadding;
@@ -86,7 +90,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)resolveInstanceMethod:(SEL)arg1;
-+ (id)tvStyleForDarkKeyboard:(_Bool)arg1;
++ (id)tvGridStyleForDarkKeyboard:(_Bool)arg1;
++ (id)tvLinearStyleForDarkKeyboard:(_Bool)arg1;
 + (id)disambiguationStyleForDarkKeyboard:(_Bool)arg1;
 + (id)styleForDarkKeyboard:(_Bool)arg1;
 + (id)darkKeyboardStyleForDisambiguation;
@@ -104,8 +109,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showExtraLineBeforeFirstRow; // @synthesize showExtraLineBeforeFirstRow=_showExtraLineBeforeFirstRow;
 @property(nonatomic) _Bool showsIndex; // @synthesize showsIndex=_showsIndex;
 @property(nonatomic) _Bool allowCandidateGridExpanding; // @synthesize allowCandidateGridExpanding=_allowCandidateGridExpanding;
+@property(nonatomic) _Bool dragGestureDisabled; // @synthesize dragGestureDisabled=_dragGestureDisabled;
 @property(nonatomic) _Bool scrollDisabled; // @synthesize scrollDisabled=_scrollDisabled;
 @property(nonatomic) _Bool darkBackdrop; // @synthesize darkBackdrop=_darkBackdrop;
+@property(nonatomic) long long lineBreakMode; // @synthesize lineBreakMode=_lineBreakMode;
 @property(nonatomic) long long alternativeTextAlignment; // @synthesize alternativeTextAlignment=_alternativeTextAlignment;
 @property(nonatomic) long long cellTextAlignment; // @synthesize cellTextAlignment=_cellTextAlignment;
 @property(nonatomic) struct UIEdgeInsets sortControlPadding; // @synthesize sortControlPadding=_sortControlPadding;
@@ -115,7 +122,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct UIEdgeInsets arrowButtonPadding; // @synthesize arrowButtonPadding=_arrowButtonPadding;
 @property(nonatomic) struct UIEdgeInsets extraCellPadding; // @synthesize extraCellPadding=_extraCellPadding;
 @property(nonatomic) double singleSlottedCellMargin; // @synthesize singleSlottedCellMargin=_singleSlottedCellMargin;
+@property(nonatomic) _Bool shouldJustifyRow; // @synthesize shouldJustifyRow=_shouldJustifyRow;
 @property(nonatomic) double maximumIconWidth; // @synthesize maximumIconWidth=_maximumIconWidth;
+@property(nonatomic) double minimumInterItemSpacing; // @synthesize minimumInterItemSpacing=_minimumInterItemSpacing;
 @property(nonatomic) double minimumCellWidth; // @synthesize minimumCellWidth=_minimumCellWidth;
 @property(nonatomic) double minimumCellPadding; // @synthesize minimumCellPadding=_minimumCellPadding;
 @property(nonatomic) unsigned long long maxNumberOfProactiveCells; // @synthesize maxNumberOfProactiveCells=_maxNumberOfProactiveCells;
@@ -126,6 +135,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double foregroundOpacity; // @synthesize foregroundOpacity=_foregroundOpacity;
 @property(nonatomic) unsigned long long gridMaskedCorners; // @synthesize gridMaskedCorners=_gridMaskedCorners;
 @property(nonatomic) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
+@property(nonatomic) double cellCornerRadius; // @synthesize cellCornerRadius=_cellCornerRadius;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) double arrowButtonHeight; // @synthesize arrowButtonHeight=_arrowButtonHeight;
 @property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;

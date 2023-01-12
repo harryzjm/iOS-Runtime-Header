@@ -6,13 +6,11 @@
 
 #import <Foundation/NSOutputStream.h>
 
-#import <Osprey/NSStreamDelegate-Protocol.h>
-
 @class NSMutableData, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface OspreyBufferedOutputStream : NSOutputStream <NSStreamDelegate>
+@interface OspreyBufferedOutputStream : NSOutputStream
 {
     NSMutableData *_outputBuffer;
     NSOutputStream *_outputStream;

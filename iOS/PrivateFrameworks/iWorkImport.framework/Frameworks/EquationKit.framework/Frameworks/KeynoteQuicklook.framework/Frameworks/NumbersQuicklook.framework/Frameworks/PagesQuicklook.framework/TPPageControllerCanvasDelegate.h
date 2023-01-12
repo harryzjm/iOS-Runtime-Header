@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSDCanvasDelegate-Protocol.h>
-
 @class NSString, TPDocumentRoot, TSDCanvas;
 @protocol TSDCanvasProxyDelegate;
 
-@interface TPPageControllerCanvasDelegate : NSObject <TSDCanvasDelegate>
+@interface TPPageControllerCanvasDelegate : NSObject
 {
     TPDocumentRoot *_documentRoot;
     TSDCanvas *_canvas;
@@ -36,6 +34,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool verticalTextAllowed;
 
 @end
 

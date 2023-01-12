@@ -6,11 +6,12 @@
 
 #import <SearchFoundation/SFCommand-Protocol.h>
 
-@class NSData, NSDictionary, SFPhotosLibraryImage;
+@class NSData, NSDictionary, SFPerson, SFPhotosLibraryImage;
 
 @protocol SFShowPhotosOneUpViewCommand <SFCommand>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) SFPerson *matchedPerson;
 @property(retain, nonatomic) SFPhotosLibraryImage *photosLibraryImage;
 @end
 

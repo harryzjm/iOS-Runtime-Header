@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUIApps/PXChangeObserver-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12PhotosUIApps13PXObservation : NSObject <PXChangeObserver>
+@interface _TtC12PhotosUIApps13PXObservation : NSObject
 {
     MISSING_TYPE *observable;
     MISSING_TYPE *changeHandler;

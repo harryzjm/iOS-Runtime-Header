@@ -6,10 +6,12 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, _INPBAnnouncement, _INPBHomeFilter, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBAnnouncement, _INPBHomeFilter, _INPBIntentMetadata;
 
 @protocol _INPBSendAnnouncementIntent <NSObject>
 + (Class)recipientsType;
+@property(readonly, nonatomic) _Bool hasSharedUserID;
+@property(copy, nonatomic) NSString *sharedUserID;
 @property(readonly, nonatomic) unsigned long long recipientsCount;
 @property(copy, nonatomic) NSArray *recipients;
 @property(nonatomic) _Bool hasIsReply;

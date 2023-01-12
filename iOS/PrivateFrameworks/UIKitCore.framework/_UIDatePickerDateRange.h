@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (id)dateInRangeForDate:(id)arg1;
 - (_Bool)_containsDate:(id)arg1 withAccuracy:(unsigned long long)arg2 inCalendar:(id)arg3;
 - (_Bool)containsDate:(id)arg1;
+- (id)copyWithEndDate:(id)arg1;
+- (id)copyWithStartDate:(id)arg1;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2;
 - (id)init;
 - (_Bool)containsDay:(id)arg1;

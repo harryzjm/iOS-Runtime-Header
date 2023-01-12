@@ -6,15 +6,11 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <EventKitUI/EKCalendarItemEditItemDelegate-Protocol.h>
-#import <EventKitUI/UIActionSheetDelegate-Protocol.h>
-#import <EventKitUI/UIAlertViewDelegate-Protocol.h>
-
 @class EKCalendarItem, EKCalendarItemEditItem, EKChangeSet, EKEventStore, EKUIRecurrenceAlertController, NSArray, NSMutableSet, NSString, UIBarButtonItem, UIResponder, _UIAccessDeniedView;
 @protocol EKCalendarItemEditorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKCalendarItemEditor : UITableViewController <EKCalendarItemEditItemDelegate, UIActionSheetDelegate, UIAlertViewDelegate>
+@interface EKCalendarItemEditor : UITableViewController
 {
     NSArray *_editItems;
     NSArray *_orderedEditItems;
@@ -42,11 +38,13 @@ __attribute__((visibility("hidden")))
     _Bool _timeImplicitlySet;
     _Bool _isTextEditing;
     _Bool _pendingVideoConference;
+    _Bool _hasModifiedAttendeesFromSuggestion;
     id <EKCalendarItemEditorDelegate> _editorDelegate;
     EKEventStore *_store;
     EKCalendarItem *_calendarItem;
     UIResponder *_responderToRestoreOnAppearence;
     unsigned long long _visibleSectionToRestoreOnAppearence;
+    NSString *_calendarItemCreationMethod;
     _UIAccessDeniedView *_accessDeniedView;
     EKChangeSet *_originalChangeSet;
 }
@@ -57,6 +55,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) EKChangeSet *originalChangeSet; // @synthesize originalChangeSet=_originalChangeSet;
 @property(retain, nonatomic) _UIAccessDeniedView *accessDeniedView; // @synthesize accessDeniedView=_accessDeniedView;
+@property(retain, nonatomic) NSString *calendarItemCreationMethod; // @synthesize calendarItemCreationMethod=_calendarItemCreationMethod;
+@property(nonatomic) _Bool hasModifiedAttendeesFromSuggestion; // @synthesize hasModifiedAttendeesFromSuggestion=_hasModifiedAttendeesFromSuggestion;
 @property(nonatomic) _Bool pendingVideoConference; // @synthesize pendingVideoConference=_pendingVideoConference;
 @property(nonatomic) _Bool isTextEditing; // @synthesize isTextEditing=_isTextEditing;
 @property(nonatomic) _Bool timeImplicitlySet; // @synthesize timeImplicitlySet=_timeImplicitlySet;
@@ -102,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)_editItemAtIndexPath:(id)arg1 firstRowIndex:(long long *)arg2;
 - (void)editItemWantsFirstResponderResigned:(id)arg1;
+- (void)editItem:(id)arg1 wantsViewControllerPushed:(id)arg2;
 - (void)editItem:(id)arg1 wantsViewControllerPresented:(id)arg2;
 - (id)cellWithReuseIdentifier:(id)arg1 forEditItem:(id)arg2;
 - (id)defaultAlertTitleForEditItem:(id)arg1;

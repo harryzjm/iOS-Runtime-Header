@@ -20,6 +20,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *refreshStateMachine;
     MISSING_TYPE *refreshControl;
     MISSING_TYPE *sharingActivityProviderFactory;
+    MISSING_TYPE *backgroundContainerView;
+    MISSING_TYPE *debugButtonConfiguration;
+    MISSING_TYPE *lastGutterViewBounds;
+    MISSING_TYPE *backgroundPlugin;
     MISSING_TYPE *didAppearCompletions;
     MISSING_TYPE *impressionObservers;
 }

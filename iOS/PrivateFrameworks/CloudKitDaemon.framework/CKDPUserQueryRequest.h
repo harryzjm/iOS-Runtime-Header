@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPUserAlias, NSMutableArray, NSString;
 
-@interface CKDPUserQueryRequest : PBRequest <NSCopying>
+@interface CKDPUserQueryRequest : PBRequest
 {
     CKDPUserAlias *_alias;
     NSString *_oBSOLETEPcsServiceType;

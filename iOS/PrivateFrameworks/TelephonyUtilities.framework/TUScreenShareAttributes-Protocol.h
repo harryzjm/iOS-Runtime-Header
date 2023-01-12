@@ -7,7 +7,7 @@
 #import <TelephonyUtilities/NSObject-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSValue;
+@class NSNumber, NSUUID, NSValue;
 @protocol TUScreenShareAttributes;
 
 @protocol TUScreenShareAttributes <NSObject, NSSecureCoding>
@@ -15,6 +15,10 @@
 + (NSNumber *)defaultDisplayScale;
 + (long long)currentDeviceFamily;
 + (id)defaultAttributes;
+@property(retain, nonatomic) NSUUID *windowUUID;
+@property(nonatomic, getter=isWindowed) _Bool windowed;
+@property(retain, nonatomic) NSNumber *displayID;
+@property(retain, nonatomic) NSNumber *frameRate;
 @property(retain, nonatomic) NSValue *originalResolution;
 @property(retain, nonatomic) NSNumber *scaleFactor;
 @property(retain, nonatomic) NSNumber *displayScale;

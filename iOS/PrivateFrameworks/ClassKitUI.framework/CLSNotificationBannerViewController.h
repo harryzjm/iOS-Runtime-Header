@@ -8,7 +8,6 @@
 
 @class CLSNotificationBannerView, NSLayoutConstraint;
 
-__attribute__((visibility("hidden")))
 @interface CLSNotificationBannerViewController : UIViewController
 {
     _Bool _bannerVisible;

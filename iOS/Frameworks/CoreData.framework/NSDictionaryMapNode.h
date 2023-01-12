@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreData/NSCoding-Protocol.h>
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface NSDictionaryMapNode <NSCoding, NSSecureCoding>
+@interface NSDictionaryMapNode
 {
     id *_attributes;
     id _attributesAsEncoded;

@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -18,12 +16,12 @@ struct TopoID {
 };
 
 struct TopoIDRange {
-    struct TopoID _field1;
-    unsigned int _field2;
+    struct TopoID charID;
+    unsigned int length;
 };
 
 struct TopoReplica {
-    NSUUID *uuid;
+    unsigned char uuid[16];
     unsigned int index;
 };
 

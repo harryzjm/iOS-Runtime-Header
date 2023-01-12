@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <_UIIVCInterface> forwardingInterface; // @synthesize forwardingInterface=_forwardingInterface;
 - (void)dealloc;
 - (void)_handleInputViewControllerState:(id)arg1;

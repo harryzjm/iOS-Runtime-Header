@@ -12,6 +12,5 @@
 @property(retain, nonatomic) BCSFlagMeasurement *cacheHitMeasurement;
 @property(retain, nonatomic) BCSTimingMeasurement *timingMeasurement;
 @property(nonatomic) long long errorCode;
-@property(nonatomic) _Bool errorEncountered;
 @end
 

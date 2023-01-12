@@ -11,9 +11,9 @@
 @interface _TtC14WorkflowEditorP33_3208B61B6F59B5D9CD87F7AF53C8FED320ActionSuggestionList : _TtCs12_SwiftObject
 {
     MISSING_TYPE *workflow;
-    MISSING_TYPE *actionsObserver;
+    MISSING_TYPE *home;
     MISSING_TYPE *actionSuggester;
-    MISSING_TYPE *isHomeWorkflow;
+    MISSING_TYPE *actionsObserver;
     MISSING_TYPE *_suggestedActions;
 }
 

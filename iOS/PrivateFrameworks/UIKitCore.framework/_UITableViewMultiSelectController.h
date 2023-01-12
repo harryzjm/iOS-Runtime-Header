@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIMultiSelectInteractionDelegate-Protocol.h>
-
 @class NSString, UIMultiSelectInteraction, UIMultiSelectInteractionState, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewMultiSelectController : NSObject <UIMultiSelectInteractionDelegate>
+@interface _UITableViewMultiSelectController : NSObject
 {
     UITableView *_tableView;
     UIMultiSelectInteraction *_multiSelectInteraction;
@@ -22,18 +20,20 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIMultiSelectInteractionState *currentSelectionState; // @synthesize currentSelectionState=_currentSelectionState;
 @property(retain, nonatomic) UIMultiSelectInteraction *multiSelectInteraction; // @synthesize multiSelectInteraction=_multiSelectInteraction;
 @property(nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
+@property(readonly, nonatomic, getter=isInMultiselectInteraction) _Bool inMultiselectInteraction;
 - (void)didCancelMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (_Bool)multiSelectInteractionGestureShouldPreventDragLiftGesture:(id)arg1;
 - (void)multiSelectInteraction:(id)arg1 appendSelectionAtPoint:(struct CGPoint)arg2;
 - (void)multiSelectInteraction:(id)arg1 toggleSelectionStateUpToPoint:(struct CGPoint)arg2;
 - (void)toggleSelectionStateUpToIndexPath:(id)arg1;
 - (_Bool)shouldAllowSelectionExtensionAtIndexPath:(id)arg1;
+- (_Bool)shouldAllowSelectionAppendageAtPoint:(struct CGPoint)arg1;
 - (_Bool)shouldAllowSelectionExtensionAtPoint:(struct CGPoint)arg1;
 - (void)didEndMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (_Bool)shouldBeginMultiSelectInteraction:(id)arg1 ofType:(long long)arg2 atPoint:(struct CGPoint)arg3 withVelocity:(struct CGPoint)arg4;
 - (_Bool)supportsMultiSelectInteraction:(id)arg1;
-- (void)willBeginExtendingSelectionAtIndexPath:(id)arg1;
-- (void)willBeginMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (void)willBeginExtendingSelectionAtIndexPath:(id)arg1 keepingSelection:(_Bool)arg2;
+- (void)willBeginMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2 keepCurrentSelection:(_Bool)arg3;
 - (_Bool)interaction:(id)arg1 shouldAutomaticallyTransitionToMultiSelectModeAtPoint:(struct CGPoint)arg2 withVelocity:(struct CGPoint)arg3;
 - (_Bool)_shouldBeginInteractionAtIndexPath:(id)arg1;
 - (_Bool)_shouldBeginInteractionAtPoint:(struct CGPoint)arg1;

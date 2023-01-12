@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/NSCoding-Protocol.h>
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
-
 @class CKRecordID, CKRecordZoneID, NSString;
 
-@interface CKDAnonymousShareTuple : NSObject <NSSecureCoding, NSCoding, NSCopying>
+@interface CKDAnonymousShareTuple : NSObject
 {
     CKRecordZoneID *_zoneID;
     CKRecordID *_shareID;

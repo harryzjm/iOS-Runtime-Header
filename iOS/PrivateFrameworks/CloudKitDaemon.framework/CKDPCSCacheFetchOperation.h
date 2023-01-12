@@ -54,7 +54,6 @@
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (_Bool)canBeUsedForOperation:(id)arg1 withOptions:(unsigned long long)arg2;
-- (_Bool)_errorShouldImpactFlowControl:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties

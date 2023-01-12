@@ -21,48 +21,6 @@ struct Block_byref {
     unsigned int _field4;
 };
 
-struct CFMethodSignatureROMEntry {
-    struct NSMethodFrameDescriptor *_field1;
-    char *_field2;
-    unsigned long long _field3;
-};
-
-struct NSMethodFrameArgInfo {
-    struct NSMethodFrameArgInfo *_field1;
-    struct NSMethodFrameArgInfo *_field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned char _field7;
-    char _field8;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned char _field9;
-    char _field10[0];
-};
-
-struct NSMethodFrameDescriptor {
-    struct NSMethodFrameArgInfo *_field1;
-    struct NSMethodFrameArgInfo *_field2;
-    unsigned int _field3;
-    unsigned int _field4;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -70,30 +28,11 @@ struct _NSRange {
 
 struct __CFArray;
 
-struct __CFDateComponents {
-    struct __CFRuntimeBase _field1;
-    struct __CFCalendar *_field2;
-    struct __CFTimeZone *_field3;
-    long long _field4;
-    long long _field5;
-    long long _field6;
-    long long _field7;
-    long long _field8;
-    long long _field9;
-    long long _field10;
-    long long _field11;
-    long long _field12;
-    long long _field13;
-    long long _field14;
-    long long _field15;
-    long long _field16;
-    long long _field17;
-    long long _field18;
-    long long _field19;
-};
-
 struct __CFPasteboard {
-    struct __CFRuntimeBase _field1;
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
     struct __CFString *_field2;
     id _field3;
     struct __CFUUID *_field4;
@@ -108,19 +47,9 @@ struct __CFPasteboard {
     unsigned char _field13;
 };
 
-struct __CFRuntimeBase {
-    unsigned long long _field1;
-    _Atomic unsigned long long _field2;
-};
-
 struct __cfobservers_t {
     id slot;
     struct __cfobservers_t *next;
-};
-
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
 };
 
 struct edge {
@@ -142,11 +71,11 @@ struct vertex {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned long long state;
-    id *itemsPtr;
-    unsigned long long *mutationsPtr;
-    unsigned long long extra[5];
-} CDStruct_58648341;
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
 
 typedef struct {
     int _field1;
@@ -161,11 +90,6 @@ typedef struct {
     CDUnknownFunctionPointerType release;
     CDUnknownFunctionPointerType copyDescription;
 } CDStruct_4210025a;
-
-typedef struct {
-    long long _field1;
-    long long _field2;
-} CDStruct_912cb5d2;
 
 typedef struct {
     struct __CFBasicHash *set;

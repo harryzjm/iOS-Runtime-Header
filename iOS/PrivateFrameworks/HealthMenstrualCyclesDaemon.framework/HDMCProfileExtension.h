@@ -6,19 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthMenstrualCyclesDaemon/HDFeatureAvailabilityExtensionProvider-Protocol.h>
-#import <HealthMenstrualCyclesDaemon/HDHealthDaemonReadyObserver-Protocol.h>
-#import <HealthMenstrualCyclesDaemon/HDPostInstallUpdateTaskHandler-Protocol.h>
-#import <HealthMenstrualCyclesDaemon/HDProfileExtension-Protocol.h>
+@class HDAnalyticsDailyEventManager, HDBackgroundFeatureDeliveryManager, HDFeatureAvailabilityManager, HDMCAnalysisManager, HDMCAnalysisScheduler, HDMCAnalyticsManager, HDMCNotificationManager, HDPrimaryProfile, HKCalendarCache, HKMCSettingsManager, NSString;
 
-@class HDBackgroundFeatureDeliveryManager, HDFeatureAvailabilityManager, HDMCAnalysisManager, HDMCAnalysisScheduler, HDMCAnalyticsManager, HDMCNotificationManager, HDPrimaryProfile, HKCalendarCache, HKMCSettingsManager, NSString;
-
-@interface HDMCProfileExtension : NSObject <HDProfileExtension, HDFeatureAvailabilityExtensionProvider, HDHealthDaemonReadyObserver, HDPostInstallUpdateTaskHandler>
+__attribute__((visibility("hidden")))
+@interface HDMCProfileExtension : NSObject
 {
     HDMCAnalyticsManager *_analyticsManager;
     HDFeatureAvailabilityManager *_featureAvailabilityManager;
     HDFeatureAvailabilityManager *_heartRateFeatureAvailabilityManager;
     HDBackgroundFeatureDeliveryManager *_heartRateBackgroundFeatureDeliveryManager;
+    HDFeatureAvailabilityManager *_wristTemperatureInputAvailabilityManager;
+    HDBackgroundFeatureDeliveryManager *_wristTemperatureInputBackgroundFeatureDeliveryManager;
+    HDAnalyticsDailyEventManager *_wristTemperatureDailyEventManager;
+    HDFeatureAvailabilityManager *_deviationsFeatureAvailabilityManager;
+    HDBackgroundFeatureDeliveryManager *_deviationsBackgroundFeatureDeliveryManager;
     HDMCAnalysisScheduler *_analysisScheduler;
     HKCalendarCache *_calendarCache;
     HDPrimaryProfile *_profile;

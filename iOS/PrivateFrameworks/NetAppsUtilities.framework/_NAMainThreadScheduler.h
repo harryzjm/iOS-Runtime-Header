@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NetAppsUtilities/NAScheduler-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NAMainThreadScheduler : NSObject <NAScheduler>
+@interface _NAMainThreadScheduler : NSObject
 {
 }
 

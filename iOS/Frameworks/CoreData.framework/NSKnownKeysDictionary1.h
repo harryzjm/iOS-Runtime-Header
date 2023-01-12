@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSKnownKeysDictionary.h"
+
 @class NSKnownKeysMappingStrategy;
 
 __attribute__((visibility("hidden")))
-@interface NSKnownKeysDictionary1
+@interface NSKnownKeysDictionary1 : NSKnownKeysDictionary
 {
     int _cd_rc;
     int _count;

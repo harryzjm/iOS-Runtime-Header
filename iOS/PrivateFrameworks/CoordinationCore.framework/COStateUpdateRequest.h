@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoordinationCore/NSCopying-Protocol.h>
+#import "COMeshRequest.h"
 
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface COStateUpdateRequest <NSCopying>
+@interface COStateUpdateRequest : COMeshRequest
 {
     NSDictionary *_updates;
     NSDictionary *_removals;

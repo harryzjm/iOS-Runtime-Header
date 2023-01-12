@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNPhotoPickerProviderItem, CNVisualIdentityItemEditorViewController;
+@class CNPhotoPickerProviderItem, UIViewController;
 
 @protocol CNVisualIdentityItemEditorViewControllerDelegate
-- (void)visualIdentityEditorController:(CNVisualIdentityItemEditorViewController *)arg1 didFinishWithProviderItem:(CNPhotoPickerProviderItem *)arg2;
-- (void)visualIdentityEditorControllerDidCancel:(CNVisualIdentityItemEditorViewController *)arg1;
+- (void)visualIdentityEditorController:(UIViewController *)arg1 didFinishWithProviderItem:(CNPhotoPickerProviderItem *)arg2;
+- (void)visualIdentityEditorControllerDidCancel:(UIViewController *)arg1;
 @end
 

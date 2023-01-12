@@ -22,6 +22,7 @@
 @property(nonatomic, getter=isHoldingBoundsInvalidation) _Bool holdingBoundsInvalidation;
 @property(nonatomic) struct CGPoint targetContentOffset;
 @property(nonatomic) double anchorYPosition;
+- (void)reloadLayout;
 - (void)clearParentInitialIndexesAndFinalOffsets;
 - (void)setVerticalOffset:(double)arg1 forParentOfAssociatedItemDeletedAtIndex:(unsigned long long)arg2;
 - (void)setInitialIndex:(unsigned long long)arg1 forParentOfAssociatedItemInsertedAtIndex:(unsigned long long)arg2;

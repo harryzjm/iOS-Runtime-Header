@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTRecognitionSausage, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTKeywordFinderResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTKeywordFinderResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_c50d7949)addObjectToBuffer:(void *)arg1;
+- (void)n_best_list_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)n_best_list_count;
+- (id)n_best_list_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *n_best_list;
 @property(readonly, nonatomic) FTRecognitionSausage *corrected_sausage;
 @property(readonly, nonatomic) NSString *return_str;

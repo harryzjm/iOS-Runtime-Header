@@ -57,6 +57,7 @@
 - (id)traitStorageForKeyPath:(id)arg1 ofObject:(id)arg2;
 - (_Bool)usesTraitStorages;
 @property(readonly, nonatomic) NSArray *traitStorageLists;
+@property(readonly, nonatomic) NSDictionary *globalMarshallingContext;
 @property(readonly, nonatomic) NSArray *connections; // @synthesize connections=_processedConnections;
 @property(readonly, nonatomic) __weak id <IBCocoaTouchToolObjectPackageDelegate> delegate;
 - (void)encodeWithBinaryArchiver:(id)arg1;

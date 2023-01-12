@@ -6,16 +6,15 @@
 
 #import <Sleep/HKSPPersistentStateMachineState.h>
 
-#import <SleepDaemon/HDSPSleepModeStateMachineEventHandler-Protocol.h>
-
 @class HDSPSleepModeStateMachine, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDSPSleepModeStateMachineState : HKSPPersistentStateMachineState <HDSPSleepModeStateMachineEventHandler>
+@interface HDSPSleepModeStateMachineState : HKSPPersistentStateMachineState
 {
 }
 
-- (void)sleepFocusModeDidChange;
+- (void)sleepModeTurnedOffForUnknownReason;
+- (void)sleepModeTurnedOnForUnknownReason;
 - (void)automationTurnedOffSleepModeWithReason:(unsigned long long)arg1;
 - (void)automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
 - (void)userTurnedOffSleepModeWithReason:(unsigned long long)arg1;
@@ -26,8 +25,9 @@ __attribute__((visibility("hidden")))
 - (void)sleepScheduleStateChangedToWindDown:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
 @property(readonly, nonatomic) unsigned long long defaultChangeReason;
 @property(readonly, nonatomic) long long sleepMode;
-- (id)determineNextState;
-- (void)updateState;
+- (id)_nextSleepModeStateFromTimeline:(id *)arg1;
+- (id)_nextSleepModeStateCommon:(id *)arg1;
+- (id)nextStateWithContext:(id *)arg1;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
 
 // Remaining properties

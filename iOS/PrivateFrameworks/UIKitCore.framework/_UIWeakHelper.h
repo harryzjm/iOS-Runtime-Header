@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType deallocationBlock; // @synthesize deallocationBlock=_deallocationBlock;
 - (void)dealloc;
+- (void)invalidate;
 - (id)initWithDeallocationBlock:(CDUnknownBlockType)arg1;
 
 @end

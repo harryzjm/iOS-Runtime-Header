@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class OADColor;
 
 __attribute__((visibility("hidden")))
-@interface OADGradientFillStop : NSObject <NSCopying>
+@interface OADGradientFillStop : NSObject
 {
     OADColor *mColor;
     float mPosition;

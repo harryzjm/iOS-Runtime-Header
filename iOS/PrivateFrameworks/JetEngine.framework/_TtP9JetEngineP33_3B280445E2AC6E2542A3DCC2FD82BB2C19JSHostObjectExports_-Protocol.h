@@ -12,6 +12,8 @@
 - (_Bool)isOSAtLeast:(JSValue *)arg1:(JSValue *)arg2:(JSValue *)arg3;
 @property(nonatomic, readonly) NSString *clientVersion;
 @property(nonatomic, readonly) NSString *clientIdentifier;
+@property(nonatomic, readonly) NSString *deviceModelFamily;
+@property(nonatomic, readonly) NSString *devicePhysicalModel;
 @property(nonatomic, readonly) NSString *deviceLocalizedModel;
 @property(nonatomic, readonly) NSString *deviceModel;
 @property(nonatomic, readonly) NSString *osBuild;

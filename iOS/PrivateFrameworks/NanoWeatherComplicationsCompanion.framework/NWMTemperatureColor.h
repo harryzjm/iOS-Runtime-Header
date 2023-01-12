@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NanoWeatherComplicationsCompanion/NWMColorPalette-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface NWMTemperatureColor : NSObject <NWMColorPalette>
+@interface NWMTemperatureColor : NSObject
 {
 }
 

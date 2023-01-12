@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/NSSecureCoding-Protocol.h>
-
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CNSaveResponse : NSObject <NSSecureCoding>
+@interface CNSaveResponse : NSObject
 {
     NSMutableDictionary *_contactSnapshotsByIndexPath;
     NSMutableDictionary *_groupSnapshotsByIndexPath;

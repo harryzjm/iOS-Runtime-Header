@@ -4,20 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionViewCell.h"
+
 @class _UIContextMenuCellContentView;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuCell
+@interface _UIContextMenuCell : UICollectionViewCell
 {
 }
 
++ (_Bool)_wantsLegacyMenuGesture;
 + (_Bool)_isInternalCell;
 + (Class)_contentViewClass;
+- (_Bool)_wantsKeyCommandsWhenDeferred;
+- (long long)_focusItemDeferralMode;
 - (void)prepareForReuse;
+- (void)setDirectionalLayoutMargins:(struct NSDirectionalEdgeInsets)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 @property(readonly, nonatomic) _UIContextMenuCellContentView *actionView;
-- (_Bool)_wantsKeyEventsWhenDeferred;
-- (long long)_focusItemDeferralMode;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

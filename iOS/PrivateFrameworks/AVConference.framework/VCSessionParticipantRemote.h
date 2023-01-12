@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCSessionDownlinkBandwidthAllocatorClient-Protocol.h>
-
-@class NSArray, NSMutableDictionary, NSNumber, NSObject, NSString, TimingCollection, VCPositionalInfo, VCSessionBandwidthAllocationTable, VCSessionParticipantMediaStreamInfo;
-@protocol OS_nw_activity;
+@class NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSObject, NSString, TimingCollection, VCAudioCaptionsCoordinator, VCPositionalInfo, VCSessionBandwidthAllocationTable, VCSessionParticipantMediaStreamInfo;
+@protocol OS_dispatch_source, OS_nw_activity;
 
 __attribute__((visibility("hidden")))
-@interface VCSessionParticipantRemote <VCSessionDownlinkBandwidthAllocatorClient>
+@interface VCSessionParticipantRemote
 {
     NSNumber *_optedInAudioStreamID;
     _Bool _remoteVideoEnabled;
     _Bool _remoteScreenEnabled;
     _Bool _remoteVideoPaused;
+    _Bool _remoteSystemAudioPaused;
     _Bool _receivedFirstFrame;
     unsigned char _videoQuality;
     unsigned int _visibilityIndex;
@@ -31,11 +30,11 @@ __attribute__((visibility("hidden")))
     _Bool _haveReportedPerfTimers;
     _Bool _isMediaSuspended;
     _Bool _oneToOneVideoEnabled;
+    _Bool _isServerRTxEnabled;
     struct _VCSessionParticipantSourceIO _sourceIO;
     struct _VCSessionParticipantCapabilities _capabilities;
     VCPositionalInfo *_positionalInfo;
-    void *_spatialMetadataEntry;
-    unsigned int _audioChannelIndex;
+    struct __CFDictionary *_mediaTypeToSpatialAudioMetadataEntryMap;
     NSObject<OS_nw_activity> *_nwActivity;
     NSObject<OS_nw_activity> *_participantPoorConnectionNwActivity;
     NSObject<OS_nw_activity> *_participantMediaStallNwActivity;
@@ -46,11 +45,17 @@ __attribute__((visibility("hidden")))
     _Bool _remoteAudioPaused;
     _Bool _remoteScreenEnabledStateChanged;
     NSMutableDictionary *_jbSynchronizerPerSyncGroupID;
+    NSMutableDictionary *_remoteMediaStates;
+    NSObject<OS_dispatch_source> *_remoteStreamGroupStateUpdateTimer;
+    VCAudioCaptionsCoordinator *_captionsCoordinator;
 }
 
-+ (unsigned int)maxVideoNetworkBitrateForVideoQuality:(unsigned char)arg1 isLocalOnWiFi:(_Bool)arg2 isRedundancyRequested:(_Bool)arg3;
++ (unsigned int)maxNetworkBitrateForStreamGroupID:(unsigned int)arg1 videoQuality:(unsigned char)arg2 isLocalOnWiFi:(_Bool)arg3 isRedundancyRequested:(_Bool)arg4;
++ (unsigned int)maxFtxtNetworkBitrateForVideoQuality:(unsigned char)arg1 isLocalOnWiFi:(_Bool)arg2 isRedundancyRequested:(_Bool)arg3;
++ (unsigned int)maxCameraNetworkBitrateForVideoQuality:(unsigned char)arg1 isLocalOnWiFi:(_Bool)arg2 isRedundancyRequested:(_Bool)arg3;
 + (unsigned int)maxAudioNetworkBitrateForLocalInterfaceOnWiFi:(_Bool)arg1 isLowLatencyAudio:(_Bool)arg2;
 + (_Bool)isDeviceLargeScreen;
+@property(nonatomic) _Bool isServerRTxEnabled; // @synthesize isServerRTxEnabled=_isServerRTxEnabled;
 @property(readonly, nonatomic) VCPositionalInfo *positionalInfo; // @synthesize positionalInfo=_positionalInfo;
 @property(nonatomic) struct _VCSessionParticipantCapabilities capabilities; // @synthesize capabilities=_capabilities;
 @property(nonatomic, getter=isRemoteScreenEnabled) _Bool remoteScreenEnabled; // @synthesize remoteScreenEnabled=_remoteScreenEnabled;
@@ -66,6 +71,8 @@ __attribute__((visibility("hidden")))
 - (void)vcMediaStream:(id)arg1 remoteMediaStalled:(_Bool)arg2 duration:(double)arg3;
 - (void)updateVideoPriority:(unsigned char)arg1;
 - (void)debounceAudioPriority:(unsigned char)arg1;
+- (void)cancelAndReleaseFetchTimer;
+- (void)createAndResumeFetchTimer;
 - (_Bool)isSeamlessTransitionSupportedForStreamGroup:(id)arg1;
 - (void)updateSourcePlayoutTimestampWithSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)updateShouldEnableMLEnhance;
@@ -76,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)setupJBTargetSynchronizers;
 - (void)createJitterBufferTargetEstimatorSynchronizer:(struct tagVCJBTargetEstimatorSynchronizer **)arg1 syncGroupID:(unsigned int)arg2;
 - (_Bool)shouldSetupStreamGroupWithID:(unsigned int)arg1;
+- (_Bool)shouldEnablePacketRetransmissionForStreamGroupID:(unsigned int)arg1;
 - (_Bool)didNegotiateStreamGroupWithID:(unsigned int)arg1;
 - (id)newCameraStreamGroupWithStreamGroupConfig:(id)arg1;
 - (id)newVideoStreamGroupWithStreamGroupConfig:(id)arg1;
@@ -83,6 +91,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)updateStreamGroupWithOneToOneStreamConfig:(id)arg1;
 - (id)newMediaStreamWithNegotiationConfig:(id)arg1 streamToken:(long long)arg2;
 - (id)newStreamGroupConfigWithNegotiationConfig:(id)arg1;
+- (int)setupSpatialInfoForStreamGroupConfig:(id)arg1;
+- (int)spatialChannelIndex:(unsigned int *)arg1 spatialAudioSourceID:(unsigned long long *)arg2 forMediaType:(unsigned int)arg3;
 - (void)setupMediaStreamGroupConfig:(id)arg1 withNegotiationConfig:(id)arg2;
 - (id)newMediaStreamInfoWithNegotiationConfig:(id)arg1 streamToken:(long long)arg2;
 - (id)newMediaStreamConfigWithStreamConfig:(id)arg1 streamGroupConfig:(id)arg2 maxIDSStreamIDCount:(unsigned int)arg3;
@@ -100,12 +110,13 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSArray *mediaEntries;
 - (void)validateMediaEntries:(id)arg1;
 - (void)appendStreamGroupsMediaEntries:(id)arg1;
+- (unsigned char)cappedVideoQualityWithShouldLimitCameraQualityForPIP:(_Bool)arg1;
 - (void)appendStreamGroup:(id)arg1 maxBitrate:(unsigned int)arg2 mediaEntries:(id)arg3;
 - (void)setRemoteMediaStalled:(_Bool)arg1;
 - (void)setVideoDegraded:(_Bool)arg1;
 - (void)pushEventToNwActivity:(long long)arg1 started:(_Bool)arg2;
-- (void)collectAudioChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
-- (void)collectVideoChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectAudioChannelMetrics:(CDStruct_b671a7c4 *)arg1;
+- (void)collectVideoChannelMetrics:(CDStruct_b671a7c4 *)arg1;
 - (void)redundancyController:(id)arg1 redundancyIntervalDidChange:(double)arg2;
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
 - (void)didReceiveFirstFrameForStreamGroup:(id)arg1;
@@ -113,8 +124,9 @@ __attribute__((visibility("hidden")))
 - (unsigned int)actualNetworkBitrateForStreamGroup:(unsigned int)arg1;
 - (id)activeDownlinkStreamIDForStreamGroupID:(unsigned int)arg1;
 - (id)optedInStreamIDForStreamGroupID:(unsigned int)arg1;
+- (id)startScreenGroup;
 - (id)stopAudioStreams;
-- (void)startOneToOneStreams;
+- (id)startAudioIO;
 - (unsigned int)actualNetworkBitrateWithAudioBitrates:(id)arg1;
 - (void)setVideoStreamDelegate:(id)arg1;
 - (void)setVideoReceiverFeedbackDelegate:(id)arg1;
@@ -144,29 +156,47 @@ __attribute__((visibility("hidden")))
 - (id)checkSubstreams:(id)arg1 forLowerQualityIndex:(unsigned int)arg2;
 - (_Bool)setupAudioStreamConfiguration:(id)arg1 withStreamGroupConfig:(id)arg2 streamGroupStreamConfig:(id)arg3;
 - (_Bool)isStreamGroupActive:(id)arg1;
+- (_Bool)isActiveMediaType:(unsigned int)arg1;
 - (void)cleanupNwActivity;
 - (void)completeAndReleaseNwActivity:(id)arg1 withReason:(int)arg2;
 - (_Bool)configureAudioIOWithDeviceRole:(int)arg1 operatingMode:(int)arg2;
 - (id)setupStreamRTP:(id)arg1;
 - (_Bool)isParticipantPeace:(id)arg1;
+- (_Bool)supportsGFTSwitchToOneToOne;
+- (_Bool)supportsNegotiatedCoordinateSystem;
+- (id)getMajorVersionNumber;
 - (_Bool)processParticipantInfo;
 - (void)updateOneToOneAudioPositionalInfo:(const struct tagVCSpatialAudioMetadataPositionalInfo *)arg1;
 - (_Bool)isInCanvas;
 - (void)updatePositionalInfo:(id)arg1 shouldReapply:(_Bool)arg2;
 - (void)updateDownlinkBandwithAllocatorClientConfigurations:(id)arg1;
 - (id)applyVideoEnabledSetting:(_Bool)arg1;
-- (void)setRemoteStreamGroupState:(unsigned int)arg1 forStreamGroup:(unsigned int)arg2;
+- (void)dispatchedSetRemoteVideoPaused:(_Bool)arg1;
+- (unsigned int)remoteMediaStateForMediaType:(unsigned int)arg1;
+- (void)setRemoteMediaState:(unsigned int)arg1 forMediaType:(unsigned int)arg2;
+- (id)updateMediaState:(unsigned int)arg1 forStreamGroup:(id)arg2;
 - (void)setTransitionToDisabled:(unsigned int)arg1;
 - (void)setTransitionToPaused:(unsigned int)arg1;
 - (void)setTransitionToEnabled:(unsigned int)arg1;
+- (void)setRemoteSystemAudioPaused:(_Bool)arg1;
+- (void)dispatchedSetRemoteSystemAudioPaused:(_Bool)arg1;
+- (void)dispatchedSetRemoteScreenEnabled:(_Bool)arg1;
+- (void)dispatchedSetRemoteVideoEnabled:(_Bool)arg1;
 - (void)setVideoPaused:(_Bool)arg1;
+- (void)dispatchedSetRemoteAudioEnabled:(_Bool)arg1;
+- (void)dispatchedSetRemoteAudioPaused:(_Bool)arg1;
 - (void)setAudioPaused:(_Bool)arg1;
 - (void)onPauseAudioStreams;
 - (void)onDidResumeAudio;
 - (void)onStartAudioIO;
 - (void)stopAudioIOCompletion;
+@property(readonly, nonatomic) NSDictionary *participantSpatialAudioSourceIDs;
+- (int)storeSpatialAudioMetadataEntry:(void *)arg1 forMediaType:(unsigned int)arg2;
+- (void *)spatialMetadataEntryForMediaType:(unsigned int)arg1;
 - (void)cleanupSpatialAudio;
-- (int)setupSpatialAudioWithMetadata:(void *)arg1;
+- (int)setupSpatialAudioWithMetadata:(void *)arg1 spatialMetadataEntryMap:(struct __CFDictionary *)arg2;
+- (void)stop;
+- (void)start;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1 delegate:(id)arg2;
 

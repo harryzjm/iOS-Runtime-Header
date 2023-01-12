@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQHXMLOutput-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQHDOMXML : NSObject <GQHXMLOutput>
+@interface GQHDOMXML : NSObject
 {
     struct _xmlDoc *mXMLDoc;
     struct _xmlNode *mCurrentNode;

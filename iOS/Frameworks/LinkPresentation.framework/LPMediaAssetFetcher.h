@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/NSURLSessionDataDelegate-Protocol.h>
-
 @class AVURLAsset, NSMutableData, NSString, NSURL, NSURLSession;
 
 __attribute__((visibility("hidden")))
-@interface LPMediaAssetFetcher <NSURLSessionDataDelegate>
+@interface LPMediaAssetFetcher
 {
     CDUnknownBlockType _completionHandler;
     AVURLAsset *_asset;

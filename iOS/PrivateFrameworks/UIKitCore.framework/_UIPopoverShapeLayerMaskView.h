@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIPopoverShapeLayerMaskView
+@interface _UIPopoverShapeLayerMaskView : UIView
 {
-    _Bool _disablePathAnimation;
 }
 
 + (Class)layerClass;
-@property _Bool disablePathAnimation; // @synthesize disablePathAnimation=_disablePathAnimation;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 
 @end

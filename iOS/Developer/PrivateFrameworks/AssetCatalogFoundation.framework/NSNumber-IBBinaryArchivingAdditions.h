@@ -6,14 +6,13 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (IBBinaryArchivingAdditions) <IBBinaryArchiving>
+@interface NSNumber (IBBinaryArchivingAdditions)
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (long long)ib_valueType;
+- (double)CGFloatValue;
 - (Class)ib_immutableClassForPlistOverlay;
 
 // Remaining properties

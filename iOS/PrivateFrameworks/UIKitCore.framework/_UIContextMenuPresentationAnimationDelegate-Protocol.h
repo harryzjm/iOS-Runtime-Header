@@ -9,6 +9,7 @@
 @class UITargetedPreview, _UIContextMenuPresentationAnimation;
 
 @protocol _UIContextMenuPresentationAnimationDelegate <NSObject>
+- (UITargetedPreview *)animator:(_UIContextMenuPresentationAnimation *)arg1 previewForSecondaryItem:(id)arg2 dismissingWithStyle:(unsigned long long)arg3;
 - (UITargetedPreview *)targetedPreviewForAnimator:(_UIContextMenuPresentationAnimation *)arg1 dismissingWithStyle:(unsigned long long)arg2 clientReturnedPreview:(_Bool *)arg3;
 @end
 

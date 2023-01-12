@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/VKGesturingCameraController-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VKDaVinciCameraController <VKGesturingCameraController>
+@interface VKDaVinciCameraController
 {
     void *_mapEngine;
     void *_cameraManager;
@@ -47,18 +45,18 @@ __attribute__((visibility("hidden")))
 - (double)altitude;
 - (double)distanceFromCenterCoordinate;
 - (CDStruct_c3b9c2ee)centerCoordinate;
-- (Coordinate2D_579e76bf)centerCoordinateRad;
-- (Coordinate2D_579e76bf)_centerCoordinateForMapRegion:(id)arg1;
+- (Coordinate2D_cb341d5f)centerCoordinateRad;
+- (Coordinate2D_cb341d5f)_centerCoordinateForMapRegion:(id)arg1;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 timingCurve:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 - (double)durationToAnimateToMapRegion:(id)arg1;
 - (double)zoomForMapRegion:(id)arg1;
-- (Unit_3d259e8a)widestLatitudeForMapRegion:(id)arg1;
-- (Unit_3d259e8a)greatCircleMidPointLatitude:(Unit_3d259e8a)arg1 fromLongitude:(Unit_3d259e8a)arg2 toLongitude:(Unit_3d259e8a)arg3;
-- (double)earthRadiusAt:(Unit_3d259e8a)arg1;
-- (double)geocAngleBetween:(Coordinate2D_579e76bf)arg1 andCoordinate:(Coordinate2D_579e76bf)arg2;
+- (Unit_5669e52e)widestLatitudeForMapRegion:(id)arg1;
+- (Unit_5669e52e)greatCircleMidPointLatitude:(Unit_5669e52e)arg1 fromLongitude:(Unit_5669e52e)arg2 toLongitude:(Unit_5669e52e)arg3;
+- (double)earthRadiusAt:(Unit_5669e52e)arg1;
+- (double)geocAngleBetween:(Coordinate2D_cb341d5f)arg1 andCoordinate:(Coordinate2D_cb341d5f)arg2;
 - (id)mapRegionIgnoringEdgeInsets;
 - (id)mapRegion;
-- (vector_7e86210a)_getVisibleArea;
+- (vector_6baf6815)_getVisibleArea;
 - (void)setYaw:(double)arg1 animated:(_Bool)arg2;
 - (double)presentationYaw;
 - (void)updateCameraManager;
@@ -75,10 +73,10 @@ __attribute__((visibility("hidden")))
 - (void)exit3DMode;
 - (void)enter3DMode;
 - (void)stopGlobeAnimations;
-- (void)moveToZoomOutZoomInTransition:(Coordinate2D_579e76bf)arg1 height:(double)arg2 useHeight:(_Bool)arg3 zoom:(double)arg4 rotation:(double)arg5 tilt:(double)arg6 duration:(double)arg7 timingCurve:(CDUnknownBlockType)arg8 completion:(CDUnknownBlockType)arg9;
-- (CDUnknownBlockType)createMoveToZoomOutZoomInFrameFunction:(CameraFrame_406dbd31)arg1 toLatLon:(CameraFrame_406dbd31)arg2;
-- (void)moveTo:(Coordinate2D_579e76bf)arg1 height:(double)arg2 useHeight:(_Bool)arg3 zoom:(double)arg4 rotation:(double)arg5 tilt:(double)arg6 duration:(double)arg7 timingCurve:(CDUnknownBlockType)arg8 completion:(CDUnknownBlockType)arg9;
-- (void)moveTo:(Coordinate2D_579e76bf)arg1 zoom:(double)arg2 rotation:(double)arg3 tilt:(double)arg4 duration:(double)arg5 timingCurve:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)moveToZoomOutZoomInTransition:(Coordinate2D_cb341d5f)arg1 height:(double)arg2 useHeight:(_Bool)arg3 zoom:(double)arg4 rotation:(double)arg5 tilt:(double)arg6 duration:(double)arg7 timingCurve:(CDUnknownBlockType)arg8 completion:(CDUnknownBlockType)arg9;
+- (CDUnknownBlockType)createMoveToZoomOutZoomInFrameFunction:(CameraFrame_b765d6d7)arg1 toLatLon:(CameraFrame_b765d6d7)arg2;
+- (void)moveTo:(Coordinate2D_cb341d5f)arg1 height:(double)arg2 useHeight:(_Bool)arg3 zoom:(double)arg4 rotation:(double)arg5 tilt:(double)arg6 duration:(double)arg7 timingCurve:(CDUnknownBlockType)arg8 completion:(CDUnknownBlockType)arg9;
+- (void)moveTo:(Coordinate2D_cb341d5f)arg1 zoom:(double)arg2 rotation:(double)arg3 tilt:(double)arg4 duration:(double)arg5 timingCurve:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)panWithOffset:(struct CGPoint)arg1 relativeToScreenPoint:(struct CGPoint)arg2 animated:(_Bool)arg3 duration:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)zoomToDistance:(struct CGPoint)arg1 distance:(double)arg2 time:(double)arg3;
 - (void)zoomToDistance:(struct CGPoint)arg1 distance:(double)arg2 time:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;

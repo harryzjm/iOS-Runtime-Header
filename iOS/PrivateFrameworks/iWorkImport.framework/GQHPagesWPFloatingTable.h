@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQTableGenerator-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQHPagesWPFloatingTable : NSObject <GQTableGenerator>
+@interface GQHPagesWPFloatingTable : NSObject
 {
 }
 

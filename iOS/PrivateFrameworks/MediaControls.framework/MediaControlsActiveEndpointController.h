@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaControls/MPAVRoutingControllerDelegate-Protocol.h>
-#import <MediaControls/MediaControlsEndpointControllerConnectionDelegate-Protocol.h>
-#import <MediaControls/MediaControlsEndpointObserverDelegate-Protocol.h>
-
 @class MPCFuture, MSVPersistentTimer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsActiveEndpointController <MPAVRoutingControllerDelegate, MediaControlsEndpointObserverDelegate, MediaControlsEndpointControllerConnectionDelegate>
+@interface MediaControlsActiveEndpointController
 {
     _Bool _isDeferred;
     long long _routeType;
@@ -38,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_maybeRestoreDeferredPlayerPath;
 - (void)_restoreDeferredPlayerPath;
 - (void)_resetDeferredPlayerPath;
-- (id)_routeForEndpoint:(void *)arg1;
+- (id)_routeForEndpoint:(struct __MRAVEndpointRef *)arg1;
 - (void)activeSystemRouteDidChangeNotification:(id)arg1;
 - (void)endpointController:(id)arg1 willAttemptToConnectToRoute:(id)arg2;
 - (_Bool)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;

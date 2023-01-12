@@ -12,6 +12,8 @@
 @protocol CKSendAnimationManager <NSObject>
 @property(nonatomic) __weak id <CKSendAnimationBalloonProvider> sendAnimationBalloonProvider;
 @property(nonatomic) __weak id <CKSendAnimationManagerDelegate> sendAnimationManagerDelegate;
+- (void)playSoundForPopAnimation;
+- (void)popAnimationDidBegin;
 - (void)animateMessages:(NSArray *)arg1;
 - (void)animationDidFinishWithContext:(id <CKSendAnimationContext>)arg1;
 - (void)animationWillBeginWithContext:(id <CKSendAnimationContext>)arg1;

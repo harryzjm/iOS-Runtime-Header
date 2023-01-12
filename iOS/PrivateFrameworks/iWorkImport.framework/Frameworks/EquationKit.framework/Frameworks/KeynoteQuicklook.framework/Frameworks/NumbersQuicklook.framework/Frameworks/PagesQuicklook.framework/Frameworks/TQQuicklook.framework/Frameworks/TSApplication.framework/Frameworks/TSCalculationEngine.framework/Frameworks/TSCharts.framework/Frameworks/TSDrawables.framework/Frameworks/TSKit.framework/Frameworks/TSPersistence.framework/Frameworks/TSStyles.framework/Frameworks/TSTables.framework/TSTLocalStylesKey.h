@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSTCellStyle, TSWPParagraphStyle;
 
-@interface TSTLocalStylesKey : NSObject <NSCopying>
+@interface TSTLocalStylesKey : NSObject
 {
     TSTCellStyle *_cellStyle;
     TSWPParagraphStyle *_textStyle;

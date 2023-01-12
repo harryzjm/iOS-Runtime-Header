@@ -8,10 +8,11 @@
 
 @class FigCaptureFlatPlist;
 
+__attribute__((visibility("hidden")))
 @interface FigCaptureFlatPlistEnumerator : NSEnumerator
 {
     FigCaptureFlatPlist *_flatPlist;
-    const CDStruct_e993e376 *_bplist;
+    const CDStruct_80d302cf *_bplist;
     unsigned long long _offset;
     unsigned long long _count;
     unsigned long long _index;

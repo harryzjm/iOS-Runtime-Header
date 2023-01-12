@@ -6,21 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapsUI/MKActivityObserving-Protocol.h>
-
-@class MUPunchoutViewModel, NSString, UIActivityIndicatorView, UILabel, UILayoutGuide;
+@class MUPunchoutViewModel, NSString, UIActivityIndicatorView, UIButton, UILabel, UILayoutGuide;
 @protocol MULabelViewProtocol;
 
 __attribute__((visibility("hidden")))
-@interface MUPunchoutView : UIView <MKActivityObserving>
+@interface MUPunchoutView : UIView
 {
     UIView<MULabelViewProtocol> *_moreOnLabel;
     UILabel *_vendorNameLabel;
     UILayoutGuide *_layoutGuide;
     UIActivityIndicatorView *_spinner;
+    UIButton *_menuButton;
     MUPunchoutViewModel *_viewModel;
 }
 
++ (double)_intrinsicWidth;
 + (double)preferredWidth;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MUPunchoutViewModel *viewModel; // @synthesize viewModel=_viewModel;
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)endAnimatingActivityIndicatorWithError:(id)arg1;
 - (void)beginAnimatingActivityIndicator;
 - (struct CGSize)intrinsicContentSize;
+- (id)_attributedStringFromSymbol;
 - (void)_setupConstraints;
 - (void)_setupSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

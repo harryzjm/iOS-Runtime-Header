@@ -26,6 +26,7 @@
 @property(readonly) _Bool hmbIsCKPartialFailureError;
 @property(readonly) _Bool hmbIsCKChangeTokenExpiredError;
 @property(readonly) _Bool hmbIsCKZoneDeletedError;
+@property(readonly) double hmbDefaultCloudKitRetryDelay;
 @property(readonly) double hmbCloudKitRetryDelay;
 - (id)hmbCKInternalError;
 - (_Bool)hmbIsCloudKitInternalError;

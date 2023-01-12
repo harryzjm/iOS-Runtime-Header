@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoordinationCore/COCapabilityLegacyShimDelegate-Protocol.h>
+#import "COMeshAddOn.h"
 
 @class COCapabilityLegacyShim, NSDictionary, NSSet, NSString;
 @protocol COCapabilityAddOnDelegate;
 
-@interface COCapabilityAddOn <COCapabilityLegacyShimDelegate>
+__attribute__((visibility("hidden")))
+@interface COCapabilityAddOn : COMeshAddOn
 {
     struct os_unfair_lock_s _lock;
     NSSet *_supportedCapabilities;

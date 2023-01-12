@@ -12,6 +12,7 @@
 
 @optional
 - (_Bool)shouldRecordEvent:(NSDictionary *)arg1;
+- (NSSet *)allowlistedFields;
 - (NSSet *)whitelistedFields;
 @end
 

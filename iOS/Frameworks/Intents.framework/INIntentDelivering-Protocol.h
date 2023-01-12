@@ -11,7 +11,7 @@
 
 @protocol INIntentDelivering <NSObject>
 @property(nonatomic) __weak id <INIntentDeliveringDelegate> delegate;
-@property(readonly, nonatomic) CDStruct_4c969caf auditToken;
+@property(readonly, nonatomic) CDStruct_6ad76789 auditToken;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 - (void)handleIntent:(INIntent *)arg1 withCompletion:(void (^)(INIntentResponse *, NSData *, NSSet *, NSError *))arg2;
 - (void)confirmIntent:(INIntent *)arg1 withCompletion:(void (^)(INIntentResponse *, NSData *, NSSet *, NSError *))arg2;
@@ -19,7 +19,7 @@
 - (void)resolveIntentParameters:(NSArray *)arg1 forIntent:(INIntent *)arg2 completionBlock:(void (^)(_Bool, INIntent *, NSDictionary *))arg3;
 - (void)getIntentParameterDefaultValue:(NSString *)arg1 forIntent:(INIntent *)arg2 completionBlock:(void (^)(NSData *, NSError *))arg3;
 - (void)getIntentParameterOptions:(NSString *)arg1 forIntent:(INIntent *)arg2 searchTerm:(NSString *)arg3 completionBlock:(void (^)(NSData *, NSError *))arg4;
-- (id)initWithQueue:(NSObject<OS_dispatch_queue> *)arg1 auditToken:(CDStruct_4c969caf)arg2;
+- (id)initWithQueue:(NSObject<OS_dispatch_queue> *)arg1 auditToken:(CDStruct_6ad76789)arg2;
 
 @optional
 - (void)stopSendingUpdatesForIntent:(INIntent *)arg1 completionHandler:(void (^)(void))arg2;

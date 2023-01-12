@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXMediaProvider, UIColor;
+@class PXMediaProvider;
 
 @protocol PXStoryTungstenViewConfiguration
 @property(nonatomic) _Bool shouldEmbedContentLayout;
+@property(nonatomic) long long contentInsetAdjustmentBehavior;
 @property(nonatomic) _Bool showsVerticalScrollIndicator;
 @property(nonatomic) _Bool showsHorizontalScrollIndicator;
 @property(nonatomic) struct UIEdgeInsets insets;
-@property(retain, nonatomic) UIColor *backgroundColor;
 @property(retain, nonatomic) PXMediaProvider *mediaProvider;
 @end
 

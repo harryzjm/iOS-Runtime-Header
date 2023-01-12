@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ICDocCamDocumentInfoCollection, ICDocCamViewController;
+@class ICDocCamDocumentInfoCollection, NSError;
 
 @protocol DCDocumentCameraPublicViewController
+- (void)didFailWithError:(NSError *)arg1;
 - (void)didFinishWithDocumentInfoCollection:(ICDocCamDocumentInfoCollection *)arg1;
-- (void)didCancel:(ICDocCamViewController *)arg1;
+- (void)didCancel;
 - (void)dismiss;
 - (void)viewServicePreferredSizeDidChange:(struct CGSize)arg1;
 @end

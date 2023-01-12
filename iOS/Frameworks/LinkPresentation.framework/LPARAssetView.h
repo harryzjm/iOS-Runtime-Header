@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)layoutComponentView;
 - (id)initWithHost:(id)arg1 ARAsset:(id)arg2;
 - (id)initWithHost:(id)arg1;
 

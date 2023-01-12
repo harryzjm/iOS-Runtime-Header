@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIClickInteractionDriving-Protocol.h>
-
 @class NSString, UIGestureRecognizer, UIView, _UISecondaryClickDriverGestureRecognizer;
 @protocol _UIClickInteractionDriverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UISecondaryClickClickInteractionDriver : NSObject <UIGestureRecognizerDelegate, _UIClickInteractionDriving>
+@interface _UISecondaryClickClickInteractionDriver : NSObject
 {
     unsigned long long _currentState;
     _Bool _cancelsTouchesInView;

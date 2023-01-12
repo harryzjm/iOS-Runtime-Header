@@ -4,26 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/UITextViewDelegate-Protocol.h>
+#import "MKTableViewCell.h"
 
-@class GEOComposedAdvisoryItem, NSString, UIImageView, UIStackView;
+@class GEOComposedRouteAdvisoryItem, NSString, UIImageView, UIStackView;
 
 __attribute__((visibility("hidden")))
-@interface MKIncidentExtendedDetailCell <UITextViewDelegate>
+@interface MKIncidentExtendedDetailCell : MKTableViewCell
 {
     UIStackView *_stackView;
     UIImageView *_imageView;
-    GEOComposedAdvisoryItem *_advisoryItem;
+    GEOComposedRouteAdvisoryItem *_advisoryItem;
 }
 
 - (void).cxx_destruct;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)_setConstraints;
-- (id)aggregatedDetailsFor:(id)arg1;
 - (id)customBodyTextView;
 - (void)configureWithAdvisoryItem:(id)arg1;
-- (void)configureWithGEOAdvisoryCard:(id)arg1;
-- (void)configureWithGEORouteIncident:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 
 // Remaining properties

@@ -17,10 +17,11 @@ __attribute__((visibility("hidden")))
     long long _baseDirection;
     int _visualDirection;
     CDStruct_5b583d96 *_carets;
-    long long _numberOfCarets;
+    unsigned long long _numberOfCarets;
     NSMapTable *_primaryLocationTable;
     NSSet *_secondaryLocationTable;
     NSArray *_sortedLocations;
+    NSArray *_otherLocations;
 }
 
 @property(readonly) NSTextSelectionNavigation *textSelectionNavigation; // @synthesize textSelectionNavigation=_navigation;
@@ -40,8 +41,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithTextSelectionNavigation:(id)arg1 range:(id)arg2;
 - (void)_cache;
+- (void)_computeVisualDirection;
+- (void)_resolveTrailingEdges;
+- (void)_fetchCaretOffsets;
 - (id)_findNextCaretLocationForLocation:(id)arg1;
 - (long long)_sortedLocationIndexForLocation:(id)arg1;
+- (void)_invalidateSortedLocations;
 - (id)_sortedLocations;
 - (long long)_baseWritingDirection;
 - (id)description;

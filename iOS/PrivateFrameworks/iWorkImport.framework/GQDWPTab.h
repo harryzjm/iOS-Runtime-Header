@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDWPTab : NSObject <GQDNameMappable>
+@interface GQDWPTab : NSObject
 {
     float mPosition;
     int mAlignment;

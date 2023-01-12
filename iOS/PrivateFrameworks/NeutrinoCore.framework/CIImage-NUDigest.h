@@ -7,6 +7,7 @@
 #import <CoreImage/CIImage.h>
 
 @interface CIImage (NUDigest)
++ (id)imageWithNUImageBuffer:(id)arg1;
 - (void)nu_updateDigest:(id)arg1;
 @end
 

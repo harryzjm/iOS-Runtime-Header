@@ -11,7 +11,7 @@
 @interface _TtC12NewsArticles40ArticleViewerNavigationItemStyleProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *colorPaletteProvider;
-    MISSING_TYPE *paywallTypeProvider;
+    MISSING_TYPE *immersiveEffectChecker;
 }
 
 @end

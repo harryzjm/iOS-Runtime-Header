@@ -19,9 +19,6 @@ __attribute__((visibility("hidden")))
     double _lineSpacing;
     long long _lineBreakMode;
     long long _baselineAdjustment;
-    double _trackingAdjustment;
-    double _minimumTrackingAdjustment;
-    double _actualTrackingAdjustment;
     long long _alignment;
     _Bool _includeEmoji;
     struct CGRect _truncationRect;

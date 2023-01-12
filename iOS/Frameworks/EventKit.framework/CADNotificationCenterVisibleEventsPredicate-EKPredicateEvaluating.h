@@ -6,9 +6,7 @@
 
 #import <CalendarDaemon/CADNotificationCenterVisibleEventsPredicate.h>
 
-#import <EventKit/EKPredicateEvaluating-Protocol.h>
-
-@interface CADNotificationCenterVisibleEventsPredicate (EKPredicateEvaluating) <EKPredicateEvaluating>
+@interface CADNotificationCenterVisibleEventsPredicate (EKPredicateEvaluating)
 - (_Bool)ekPredicateEvaluateWithObject:(id)arg1;
 @end
 

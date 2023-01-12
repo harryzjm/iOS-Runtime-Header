@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/RTCPReportProvider-Protocol.h>
-#import <AVConference/VCConnectionChangedHandler-Protocol.h>
-#import <AVConference/VCMediaStreamProtocol-Protocol.h>
-#import <AVConference/VCSecurityEventHandler-Protocol.h>
-
 @class AVCBasebandCongestionDetector, AVCRateControlFeedbackController, AVCStatisticsCollector, NSArray, NSError, NSMutableArray, NSObject, NSString, VCCallInfoBlob, VCDatagramChannelIDS, VCMediaKeyIndex, VCMediaStreamConfig, VCMediaStreamTransport, VCNetworkFeedbackController, VCTransportSession, VCWeakObjectHolder;
 @protocol OS_dispatch_queue, OS_dispatch_source, RTCPReportProvider, VCMediaStreamDelegate, VCMediaStreamNotification, VCMomentsCollectorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaStream <VCMediaStreamProtocol, RTCPReportProvider, VCSecurityEventHandler, VCConnectionChangedHandler>
+@interface VCMediaStream
 {
     NSObject<OS_dispatch_queue> *_delegateNotificationQueue;
     struct _opaque_pthread_mutex_t _streamLock;
@@ -30,6 +25,7 @@ __attribute__((visibility("hidden")))
     double _decryptionTimeoutEnabledTime;
     NSObject<OS_dispatch_source> *_rtcpSendHeartbeat;
     NSObject<OS_dispatch_source> *_timeoutHeartbeat;
+    _Bool _rtcpHeartbeatCancelled;
     double _lastRTPTimeoutReportTime;
     double _lastRTCPTimeoutReportTime;
     double _lastDecryptionTimeoutReportTime;
@@ -62,14 +58,17 @@ __attribute__((visibility("hidden")))
     CDUnknownFunctionPointerType _statisticsHandler;
     VCNetworkFeedbackController *_networkFeedbackController;
     _Bool _isWRMinitialized;
-    NSArray *_compoundStreamIDs;
+    _Bool _isServerPacketRetransmissionEnabled;
     _Bool _isNWMonitorSignalEnabled;
+    NSArray *_compoundStreamIDs;
     _Bool _isRTTBasedFIRThrottlingEnabled;
     _Bool _areStatisticsRegistered;
     AVCStatisticsCollector *_statisticsCollector;
     int _nwMonitorHandlerIndex;
     int _rttMonitorHandlerIndex;
     int _state;
+    int _channelSequenceCountWithInactiveSlots;
+    struct os_unfair_lock_s _nwMonitorLock;
     AVCBasebandCongestionDetector *_basebandCongestionDetector;
 }
 
@@ -88,9 +87,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int localSSRC; // @synthesize localSSRC=_localSSRC;
 - (int)handleMediaCallbackNotification:(int)arg1 inData:(void *)arg2 outData:(void *)arg3;
 - (void)handleActiveConnectionChange:(id)arg1;
-- (void)collectTxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
+- (_Bool)shouldReportNetworkInterfaceType;
+- (void)collectTxChannelMetrics:(CDStruct_b671a7c4 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_b671a7c4 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_b671a7c4 *)arg1 interval:(float)arg2;
 @property(readonly, nonatomic) double rtcpHeartbeatLeeway;
 @property(readonly, nonatomic) double lastReceivedRTCPPacketTime;
 @property(readonly, nonatomic) double lastReceivedRTPPacketTime;
@@ -117,7 +117,6 @@ __attribute__((visibility("hidden")))
 - (void)resetTimeoutHeartbeatWithRTPTimeout:(double)arg1 rtcpTimeout:(double)arg2 decryptionTimeout:(double)arg3 currentTime:(double)arg4;
 - (void)resetTimeoutHeartbeatTimer:(unsigned long long)arg1;
 - (void)setStreamIDs:(id)arg1 repairStreamIDs:(id)arg2;
-- (void)destroyNWMonitorInternal;
 - (void)destroyNWMonitor;
 - (void)createNWMonitor;
 - (void)stopRTCPSendHeartbeat;
@@ -148,6 +147,7 @@ __attribute__((visibility("hidden")))
 - (void)setStreamDirection:(long long)arg1;
 - (id)setLocalParticipantInfo:(id)arg1 networkSockets:(id)arg2 withError:(id *)arg3;
 - (void)setPause:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)getInvalidParamErrorForSetPause:(_Bool)arg1 didSucceed:(_Bool)arg2;
 - (id)setPause:(_Bool)arg1;
 - (void)stopInternalWithHandler:(CDUnknownBlockType)arg1;
 - (id)stop;
@@ -162,6 +162,7 @@ __attribute__((visibility("hidden")))
 - (id)start;
 - (_Bool)setStreamConfig:(id)arg1 withError:(id *)arg2;
 - (_Bool)updateRemoteAddressWithConfig:(id)arg1 error:(id *)arg2;
+- (void)didEncryptionKeyRollTimeout;
 - (void)resetDecryptionTimeout;
 - (_Bool)handleEncryptionInfoChange:(id)arg1;
 - (void)unregisterMediaControlInfoGenerator;
@@ -169,6 +170,7 @@ __attribute__((visibility("hidden")))
 - (void)createLocalMediaControlInfoGeneratorWithType:(unsigned int)arg1 version:(unsigned char)arg2;
 - (id)getMediaStreamConfigForControlInfoGenerator:(id)arg1;
 - (void)registerMediaControlInfoGeneratorWithConfigs:(id)arg1;
+- (_Bool)shouldStopReportingTimer;
 - (void)unregisterWRMCallback;
 - (void)initializeWRMUsingRtpHandle:(struct tagHANDLE *)arg1;
 - (void)registerStatistics:(id)arg1;
@@ -184,6 +186,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithTransportSessionID:(unsigned int)arg1 localSSRC:(unsigned int)arg2;
 - (id)initWithTransportSessionID:(unsigned int)arg1;
 - (id)init;
+- (void)collectChannelSequenceMetrics:(id)arg1;
+- (void)reportTransportInfo;
 - (id)setupRTPWithIPInfo:(id)arg1 error:(id *)arg2;
 - (_Bool)initializeTransportSetupInfoWithIDSDestination:(id)arg1 error:(id *)arg2;
 - (_Bool)initializeTransportSessionWithIDSDestination:(id)arg1 error:(id *)arg2;
@@ -193,8 +197,9 @@ __attribute__((visibility("hidden")))
 - (void)setupCallbacksWithNWConnectionMonitor:(struct tagVCNWConnectionMonitor *)arg1;
 - (_Bool)setupNWConnectionWithID:(id)arg1;
 - (void)dupNWConnectionBackingSocket:(int *)arg1;
-- (id)setupRTPWithNWConnectionID:(id)arg1 error:(id *)arg2;
-- (_Bool)initializeTransportSessionWithNWConnectionID:(id)arg1 error:(id *)arg2;
+- (id)setupRTPWithNWConnection:(id)arg1 error:(id *)arg2;
+- (_Bool)initializeTransportSessionWithRTPNWConnectionID:(id)arg1 rtcpNWConnectionID:(id)arg2 error:(id *)arg3;
+- (_Bool)shouldUseNWConnectionBackingSocket;
 - (void)cleanupNWConnection:(id *)arg1;
 - (void)initializeTransportSetupInfoWithRTPSocket:(int)arg1 RTCPSocket:(int)arg2;
 - (void)initializeTransportSetupInfoWithSocketDictionary:(id)arg1;

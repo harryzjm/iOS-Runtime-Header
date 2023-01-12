@@ -6,11 +6,9 @@
 
 #import <Photos/PHAsset.h>
 
-#import <PhotoAnalysis/PVAssetProtocol-Protocol.h>
-
 @class NSData, NSDate, NSString;
 
-@interface PHAsset (PVAssetProtocol) <PVAssetProtocol>
+@interface PHAsset (PVAssetProtocol)
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *cloudIdentifier;

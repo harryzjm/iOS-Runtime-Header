@@ -11,18 +11,25 @@
 __attribute__((visibility("hidden")))
 @interface _TtC12PhotosUIApps42PUXStoryColorGradeEditorConcreteLayoutSpec : PXFeatureSpec
 {
-    MISSING_TYPE *layoutKind;
-    MISSING_TYPE *useIPadLayout;
+    MISSING_TYPE *useLargeLayout;
     MISSING_TYPE *numberOfFullyVisibleItemsPerRow;
     MISSING_TYPE *itemCornerRadius;
+    MISSING_TYPE *captionBackgroundRadius;
     MISSING_TYPE *thumbnailPadding;
     MISSING_TYPE *captionPadding;
+    MISSING_TYPE *captionContentPadding;
     MISSING_TYPE *captionAttributes;
     MISSING_TYPE *selectionBadgeSize;
     MISSING_TYPE *selectionBadgePadding;
     MISSING_TYPE *estimatedCaptionHeight;
-    MISSING_TYPE *itemLayoutStyle;
     MISSING_TYPE *centerContentVerticallyWhenNotScrollable;
+    MISSING_TYPE *itemSelectionStyle;
+    MISSING_TYPE *sheetSize;
+    MISSING_TYPE *minimumButtonWidth;
+    MISSING_TYPE *defaultSpacingBetweenElements;
+    MISSING_TYPE *buttonPadding;
+    MISSING_TYPE *sheetHeaderPadding;
+    MISSING_TYPE *fixedItemSize;
 }
 
 - (void).cxx_destruct;

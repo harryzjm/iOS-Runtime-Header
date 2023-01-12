@@ -10,189 +10,22 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGAffineTransform {
+struct CGSize {
     double _field1;
     double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-};
-
-struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
 };
 
 struct CLLocationCoordinate2D {
-    double latitude;
-    double longitude;
-};
-
-struct PLCartesianCoordinate3D {
-    float _field1;
-    float _field2;
-    float _field3;
-};
-
-struct PLImageTableEntryFooter_s {
-    struct {
-        unsigned char _field1;
-        unsigned char _field2;
-        unsigned char _field3;
-        unsigned char _field4;
-        unsigned char _field5;
-        unsigned char _field6;
-        unsigned char _field7;
-        unsigned char _field8;
-        unsigned char _field9;
-        unsigned char _field10;
-        unsigned char _field11;
-        unsigned char _field12;
-        unsigned char _field13;
-        unsigned char _field14;
-        unsigned char _field15;
-        unsigned char _field16;
-    } _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    int _field4;
-};
-
-struct PLPrimaryDataStoreKeyStrategy_FilePath_KeyStruct_V1 {
-    unsigned int strategy:8;
-    unsigned int version:2;
-    unsigned int relation:3;
-};
-
-struct PLPrimaryDataStore_ReferenceFileStrategy_KeyStruct_V1 {
-    unsigned int strategy:8;
-    unsigned int version:2;
-    unsigned int resourceType:5;
-};
-
-struct PLPrimaryDataStore_UniformFileStrategy_KeyStruct_V1 {
-    unsigned int strategy:8;
-    unsigned int version:2;
-    unsigned int resourceVersion:2;
-    unsigned int resourceType:5;
-    unsigned int recipeClass:4;
-    unsigned int recipeVariationID:15;
-    unsigned int isDerivative:1;
-    unsigned int extensionCasing:2;
-    unsigned int fileType:8;
-};
-
-struct PLThumbnailDataStoreKeyStruct_V1 {
-    unsigned int version:2;
-    unsigned int type:3;
-    unsigned int unused:1;
-    unsigned int index:27;
-};
-
-struct PL_KTXHeader {
-    unsigned char _field1[12];
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    unsigned int _field10;
-    unsigned int _field11;
-    unsigned int _field12;
-    unsigned int _field13;
-    unsigned int _field14;
+    double _field1;
+    double _field2;
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
-};
-
-struct atomic_flag {
-    _Atomic _Bool _Value;
-};
-
-struct fsid {
-    int val[2];
-};
-
-struct option {
-    char *_field1;
-    int _field2;
-    int *_field3;
-    int _field4;
-};
-
-struct os_state_data_decoder_s {
-    char _field1[64];
-    char _field2[64];
-};
-
-struct os_state_data_s {
-    unsigned int _field1;
-    union {
-        unsigned int :32;
-        unsigned int _field1;
-    } _field2;
-    struct os_state_data_decoder_s _field3;
-    char _field4[64];
-    unsigned char _field5[0];
-};
-
-struct os_state_hints_s {
-    unsigned int _field1;
-    char *_field2;
-    unsigned int _field3;
-    unsigned int _field4;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-struct os_unfair_recursive_lock_s {
-    struct os_unfair_lock_s ourl_lock;
-    unsigned int ourl_count;
-};
-
-struct tokenOutput_t {
-    id _field1;
-    id _field2;
-    id _field3;
-    CDStruct_183601bc *_field4;
-    long long _field5;
-    long long _field6;
-    CDStruct_183601bc *_field7;
-    long long _field8;
-    long long _field9;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    _Atomic unsigned int imageCacheHitCount;
-    _Atomic unsigned int imageCacheMissCount;
-    _Atomic unsigned int videoComplementCacheHitCount;
-    _Atomic unsigned int videoComplementCacheMissCount;
-} CDStruct_f4d52fe1;
-
-typedef struct {
-    _Bool _field1;
-} CDStruct_b31ca263;
 
 typedef struct {
     unsigned long long _field1;
@@ -202,18 +35,8 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
-
-typedef struct {
-    char *_field1;
-    int _field2;
-} CDStruct_530518fa;
-
-typedef struct {
-    int _field1;
-    int _field2;
-} CDStruct_1ef3fb1f;
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 
 typedef struct {
     long long _field1;
@@ -223,36 +46,7 @@ typedef struct {
 } CDStruct_198678f7;
 
 typedef struct {
-    long long location;
-    long long length;
-} CDStruct_627e0f85;
-
-typedef struct CDStruct_183601bc;
-
-typedef struct {
-    struct __CFString *_field1;
-    long long _field2;
-    struct tokenOutput_t *_field3;
-    unsigned short *_field4;
-    unsigned short *_field5;
-    long long _field6;
-} CDStruct_d5c410e0;
-
-typedef struct {
     CDStruct_198678f7 _field1;
     CDStruct_198678f7 _field2;
 } CDStruct_3c1748cc;
-
-typedef struct {
-    int _field1;
-    struct CGSize _field2;
-    struct CGRect _field3;
-    struct CGRect _field4;
-    unsigned int _field5;
-    int _field6;
-    int _field7;
-    double _field8[4];
-    double _field9[4];
-    unsigned int _field10;
-} CDStruct_0d559a47;
 

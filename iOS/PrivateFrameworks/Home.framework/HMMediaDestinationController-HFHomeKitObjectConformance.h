@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMMediaDestinationController.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface HMMediaDestinationController (HFHomeKitObjectConformance) <HFHomeKitObject>
+@interface HMMediaDestinationController (HFHomeKitObjectConformance)
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 // Remaining properties

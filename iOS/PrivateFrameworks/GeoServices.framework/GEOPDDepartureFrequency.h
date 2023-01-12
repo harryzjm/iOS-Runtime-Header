@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/GEOTransitDepartureFrequency-Protocol.h>
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSDate, NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDDepartureFrequency : PBCodable <GEOTransitDepartureFrequency, NSCopying>
+@interface GEOPDDepartureFrequency : PBCodable
 {
     PBUnknownFields *_unknownFields;
     unsigned int _displayDepartureFrequency;

@@ -6,11 +6,11 @@
 
 #import <StatusKitAgentCore/NSObject-Protocol.h>
 
-@class NSString, SKHandle;
+@class NSString, SKHandle, SKSubscriptionValidationTokens;
 
 @protocol SKStatusSubscriptionDaemonProtocol <NSObject>
-- (void)validatePersonalStatusSubscriptionMatchesSubscriptionValidationToken:(NSString *)arg1 fromSender:(SKHandle *)arg2 statusTypeIdentifier:(NSString *)arg3 completion:(void (^)(long long, NSError *))arg4;
-- (void)subscriptionValidationTokenForHandle:(SKHandle *)arg1 statusTypeIdentifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
+- (void)validatePersonalStatusSubscriptionMatchesSubscriptionValidationTokens:(SKSubscriptionValidationTokens *)arg1 fromSender:(SKHandle *)arg2 statusTypeIdentifier:(NSString *)arg3 completion:(void (^)(long long, NSError *))arg4;
+- (void)subscriptionValidationTokensForHandle:(SKHandle *)arg1 statusTypeIdentifier:(NSString *)arg2 completion:(void (^)(SKSubscriptionValidationTokens *, NSError *))arg3;
 - (void)deleteSubscriptionWithIdentifier:(NSString *)arg1 statusTypeIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)releasePersistentSubscriptionAssertionForSubscriptionIdentifier:(NSString *)arg1 statusTypeIdentifier:(NSString *)arg2 applicationIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)retainPersistentSubscriptionAssertionForSubscriptionIdentifier:(NSString *)arg1 statusTypeIdentifier:(NSString *)arg2 applicationIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;

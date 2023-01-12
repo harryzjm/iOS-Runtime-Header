@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/CKPinnedConversationContactItem-Protocol.h>
-
 @class CKEntity, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKPinnedConversationContactItemFromHandle : NSObject <CKPinnedConversationContactItem>
+@interface CKPinnedConversationContactItemFromHandle : NSObject
 {
     CKEntity *_entity;
     double _contentScale;

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/NSCoding-Protocol.h>
-#import <AssetCatalogFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface IBICCatalogContentReference : NSObject <NSCoding, NSCopying>
+@interface IBICCatalogContentReference : NSObject
 {
     NSString *_name;
     NSString *_type;

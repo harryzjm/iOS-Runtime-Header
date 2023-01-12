@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLRuntimeObject-Protocol.h>
-
 @class NSDictionary, NSMutableDictionary, NSNumber, NSParagraphStyle, NSShadow, NSString, NSTextAttachment, UIColor, UIFont;
 
-@interface TMLAttributedString_Attributes : NSObject <NSCopying, TMLRuntimeObject>
+@interface TMLAttributedString_Attributes : NSObject
 {
     NSMutableDictionary *_attributes;
     _Bool _created;

@@ -6,23 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class _UIDebugLogReport;
+@class _UIDebugLogNode;
 
 __attribute__((visibility("hidden")))
 @interface _UIDeepestPreferredEnvironmentSearch : NSObject
 {
-    _Bool _allowsFocusRestoration;
-    _UIDebugLogReport *_debugReport;
+    _Bool _allowsOverridingPreferedFocusEnvironments;
+    _UIDebugLogNode *_debugLog;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _UIDebugLogReport *debugReport; // @synthesize debugReport=_debugReport;
-@property(nonatomic) _Bool allowsFocusRestoration; // @synthesize allowsFocusRestoration=_allowsFocusRestoration;
+@property(retain, nonatomic) _UIDebugLogNode *debugLog; // @synthesize debugLog=_debugLog;
+@property(nonatomic) _Bool allowsOverridingPreferedFocusEnvironments; // @synthesize allowsOverridingPreferedFocusEnvironments=_allowsOverridingPreferedFocusEnvironments;
 - (void)_reportDidFindOverridingPreferredFocusEnvironment:(id)arg1 source:(id)arg2;
 - (void)_reportDidFinishEnumeratingPreferencesWithDeepestPreferredFocusableItem:(id)arg1;
 - (void)_reportFinishedEvaluatingAllPreferencesForEnvironmentInContext:(id)arg1 result:(long long)arg2;
-- (void)_reportFoundFocusableItem:(id)arg1;
-- (void)_reportSearchingEnvironment:(id)arg1;
+- (void)_reportFoundFocusableItem:(id)arg1 inContext:(id)arg2;
 - (void)_reportStartingSearch;
 - (id)_overridingPreferredFocusEnvironmentForPreferredEnvironment:(id)arg1 visitedFocusEnvironments:(id)arg2;
 - (id)deepestPreferredFocusEnvironmentForEnvironment:(id)arg1;

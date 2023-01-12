@@ -8,16 +8,18 @@
 #import <AssistantUI/NSObject-Protocol.h>
 #import <AssistantUI/SiriUIPresentationRemoteControlling-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString, NSValue, PBCodable, SASRequestOptions, SAUIDelayedActionCommand;
+@class NSDictionary, NSNumber, NSString, NSValue, PBCodable, SASRequestOptions, SAUIDelayedActionCommand, SiriDismissalOptions;
 @protocol AFUISiriSession;
 
 @protocol AFUIViewControllerServing <NSObject, AFUISiriSessionDelegate, SiriUIPresentationRemoteControlling>
 - (void)hostApplicationDidSuccessfullyHandleCommandsInDelayedActionCommand:(SAUIDelayedActionCommand *)arg1;
 - (void)hostApplicationPresentationStateUpdatedFromPresentationState:(long long)arg1 toPresentationState:(long long)arg2;
-- (void)siriWillBeginTearDownForDismissalReason:(unsigned long long)arg1;
+- (void)siriWillBeginTearDownForDismissalReason:(unsigned long long)arg1 withOriginalDismissalOptions:(SiriDismissalOptions *)arg2;
+- (void)setSystemContentEdgeInsets:(struct UIEdgeInsets)arg1;
 - (void)setBottomContentInset:(double)arg1;
 - (void)hasContentAtPoint:(NSValue *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)setWaitingForTelephonyToStart:(_Bool)arg1;
+- (void)invalidateAssertionOnOrientationChangeIfNeeded:(long long)arg1;
 - (void)hostApplicationRequestsScreenshotWithCompletion:(void (^)(_Bool))arg1;
 - (void)hostApplicationRequestsEmitInstrumentationEvent:(PBCodable *)arg1 atTime:(unsigned long long)arg2;
 - (void)hostApplicationRequestsEmitInstrumentationEvent:(PBCodable *)arg1;
@@ -31,7 +33,7 @@
 - (void)didReceiveHelpAction;
 - (void)didReceiveOrbViewTapToCancelRequest;
 - (void)setSession:(id <AFUISiriSession>)arg1;
-- (void)siriKeyboardViewDidChange:(CDStruct_a82615c4 *)arg1;
+- (void)siriKeyboardViewDidChange:(CDStruct_da2ccbb6 *)arg1;
 - (void)startRequestForText:(NSString *)arg1;
 - (void)siriDidHidePasscodeUnlock;
 - (void)siriWillHidePasscodeUnlockForResult:(long long)arg1;
@@ -44,6 +46,7 @@
 - (void)setRequestOptions:(SASRequestOptions *)arg1;
 - (void)siriDidActivateFromSource:(long long)arg1;
 - (void)siriWillActivateFromSource:(long long)arg1;
+- (void)invalidateProminentAssertion;
 - (void)setStatusViewHeightNumber:(NSNumber *)arg1;
 - (void)setStatusBarFrameValue:(NSValue *)arg1;
 - (void)setHostFrontMostAppOrientation:(long long)arg1;

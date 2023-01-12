@@ -6,9 +6,9 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MKPlacePhotoGalleryViewController, MUPlacePictureItemSectionController;
+@class MUPlacePhotoGalleryViewController, MUPlacePictureItemSectionController;
 
 @protocol MUPlacePictureItemSectionControllerDelegate <NSObject>
-- (void)pictureItemSectionController:(MUPlacePictureItemSectionController *)arg1 requestsSceneActivationWithPhotoGallery:(MKPlacePhotoGalleryViewController *)arg2;
+- (void)pictureItemSectionController:(MUPlacePictureItemSectionController *)arg1 requestsSceneActivationWithPhotoGallery:(MUPlacePhotoGalleryViewController *)arg2;
 @end
 

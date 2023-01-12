@@ -7,6 +7,7 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (HomeKit)
+- (id)hm_generateSHA256;
 - (id)hm_generateSHA1;
 - (id)hm_stringInHexFormat;
 @end

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITableViewPlaceholderContext-Protocol.h>
-
 @class NSString, NSUUID, UIDragItem;
 @protocol UIDragAnimating, _UITableViewPlaceholderContextDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewDropPlaceholderContextImpl : NSObject <_UITableViewPlaceholderContext>
+@interface _UITableViewDropPlaceholderContextImpl : NSObject
 {
     NSString *_reuseIdentifier;
     double _rowHeight;

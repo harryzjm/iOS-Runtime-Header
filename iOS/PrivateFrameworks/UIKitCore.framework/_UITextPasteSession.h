@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextDropPasteSession-Protocol.h>
-
 @class NSArray, NSAttributedString, NSString, UITextPasteController, UITextPasteCoordinator, UITextRange;
 @protocol UITextPasteSessionDelegate, _UITextPasteProgressSupport;
 
 __attribute__((visibility("hidden")))
-@interface _UITextPasteSession : NSObject <UITextDropPasteSession>
+@interface _UITextPasteSession : NSObject
 {
     _Bool _animating;
     id <UITextPasteSessionDelegate> _delegate;

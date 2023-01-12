@@ -23,6 +23,8 @@
 - (void)mapView:(MKMapView *)arg1 didUpdateUserLocation:(MKUserLocation *)arg2;
 - (void)mapViewDidStopLocatingUser:(MKMapView *)arg1;
 - (void)mapViewWillStartLocatingUser:(MKMapView *)arg1;
+- (void)mapView:(MKMapView *)arg1 didDeselectAnnotation:(id <MKAnnotation>)arg2;
+- (void)mapView:(MKMapView *)arg1 didSelectAnnotation:(id <MKAnnotation>)arg2;
 - (void)mapView:(MKMapView *)arg1 didDeselectAnnotationView:(MKAnnotationView *)arg2;
 - (void)mapView:(MKMapView *)arg1 didSelectAnnotationView:(MKAnnotationView *)arg2;
 - (void)mapView:(MKMapView *)arg1 annotationView:(MKAnnotationView *)arg2 calloutAccessoryControlTapped:(UIControl *)arg3;

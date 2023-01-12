@@ -7,5 +7,7 @@
 #import <HealthKit/HKKeyValueDomain.h>
 
 @interface HKKeyValueDomain (HeartHealth)
++ (id)hkhr_aFibBurdenSyncedDefaultsDomainWithHealthStore:(id)arg1;
++ (id)hkhr_aFibBurdenDefaultsDomainWithHealthStore:(id)arg1;
 @end
 

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct __IOHIDTransaction *_transaction;
 }
 
+- (_Bool)commitElements:(id)arg1 error:(out id *)arg2 timeout:(long long)arg3 callback:(CDUnknownBlockType)arg4;
 - (_Bool)commitElements:(id)arg1 error:(out id *)arg2;
 @property long long direction;
 - (id)description;

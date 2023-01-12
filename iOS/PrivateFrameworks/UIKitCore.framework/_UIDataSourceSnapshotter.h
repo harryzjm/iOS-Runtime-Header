@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UIDataSourceSnapshotTranslating-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDataSourceSnapshotter : NSObject <NSCopying, _UIDataSourceSnapshotTranslating>
+@interface _UIDataSourceSnapshotter : NSObject <NSCopying>
 {
     struct vector<_NSRange, std::allocator<_NSRange>> _sectionRanges;
 }

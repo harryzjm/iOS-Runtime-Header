@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CHRecognizer;
-
 @interface CHReorderSCTCConfusionStep
 {
     void **_icuTransliterator;
-    CHRecognizer *_recognizer;
+    long long _maxResultCount;
 }
 
-@property(nonatomic) CHRecognizer *recognizer; // @synthesize recognizer=_recognizer;
+@property(nonatomic) long long maxResultCount; // @synthesize maxResultCount=_maxResultCount;
 @property(nonatomic) void **icuTransliterator; // @synthesize icuTransliterator=_icuTransliterator;
 - (void)dealloc;
-- (id)process:(id)arg1;
-- (id)initWithRecognizer:(id)arg1;
+- (id)process:(id)arg1 options:(id)arg2;
+- (id)initWithMaxResultCount:(long long)arg1;
 
 @end
 

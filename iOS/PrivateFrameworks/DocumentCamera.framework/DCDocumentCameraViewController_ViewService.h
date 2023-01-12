@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DocumentCamera/BKSAccelerometerDelegate-Protocol.h>
-#import <DocumentCamera/DCDocumentCameraPublicViewController-Protocol.h>
+#import "DCDocumentCameraViewController.h"
 
 @class BKSAccelerometer, DCDocumentCameraRemoteViewController, DCDocumentCameraViewServiceSession, NSString;
 @protocol DCDocumentCameraViewServiceViewController;
 
 __attribute__((visibility("hidden")))
-@interface DCDocumentCameraViewController_ViewService <BKSAccelerometerDelegate, DCDocumentCameraPublicViewController>
+@interface DCDocumentCameraViewController_ViewService : DCDocumentCameraViewController
 {
     DCDocumentCameraViewServiceSession *_viewServiceSession;
     BKSAccelerometer *_accelerometer;
@@ -20,8 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) BKSAccelerometer *accelerometer; // @synthesize accelerometer=_accelerometer;
 @property(retain, nonatomic) DCDocumentCameraViewServiceSession *viewServiceSession; // @synthesize viewServiceSession=_viewServiceSession;
+- (void)didFailWithError:(id)arg1;
 - (void)didFinishWithDocumentInfoCollection:(id)arg1;
-- (void)didCancel:(id)arg1;
+- (void)didCancel;
 - (void)dismiss;
 - (void)viewServicePreferredSizeDidChange:(struct CGSize)arg1;
 @property(readonly, nonatomic, getter=remoteViewController) DCDocumentCameraRemoteViewController *remoteViewController;

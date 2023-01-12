@@ -16,6 +16,7 @@
 + (Class)slottedAssetClass;
 + (long long)validateCompressionType:(long long)arg1;
 + (_Bool)supportsCompression;
++ (id)validSourceFileUTIs;
 + (id)validSourceFileNameExtensions;
 + (id)assetRepWithSlot:(id)arg1 fileName:(id)arg2 explicitlyUnassigned:(_Bool)arg3;
 + (id)assetRepWithRepIdentifier:(id)arg1;

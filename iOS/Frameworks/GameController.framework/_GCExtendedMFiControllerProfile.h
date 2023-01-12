@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCControllerProfile-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GCExtendedMFiControllerProfile : NSObject <_GCControllerProfile>
+@interface _GCExtendedMFiControllerProfile : NSObject
 {
 }
 

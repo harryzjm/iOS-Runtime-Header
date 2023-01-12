@@ -8,7 +8,7 @@
 {
 }
 
-- (id)swatchFills;
+- (id)swatchFillsWithSwatchSize:(struct CGSize)arg1 scaleFactor:(double)arg2;
 - (id)fillsForDefaultSeriesType;
 - (id)fillForSeriesIndex:(unsigned long long)arg1 seriesType:(id)arg2 context:(id)arg3;
 - (unsigned long long)countOfDefinedSeriesForSeriesType:(id)arg1;

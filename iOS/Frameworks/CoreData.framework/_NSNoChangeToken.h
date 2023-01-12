@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCoding-Protocol.h>
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _NSNoChangeToken : NSObject <NSCoding, NSSecureCoding>
+@interface _NSNoChangeToken : NSObject
 {
 }
 

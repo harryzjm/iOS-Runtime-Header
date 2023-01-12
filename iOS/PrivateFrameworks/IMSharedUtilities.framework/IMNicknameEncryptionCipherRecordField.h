@@ -17,12 +17,12 @@
 }
 
 + (id)cipherRecordFieldWithFieldName:(id)arg1 dataRepresentation:(id)arg2 error:(id *)arg3;
-@property(readonly, nonatomic) IMNicknameEncryptionFieldTag *tag; // @synthesize tag=_tag;
-@property(readonly, nonatomic) NSData *IV; // @synthesize IV=_IV;
-@property(readonly, nonatomic) NSData *cipherData; // @synthesize cipherData=_cipherData;
-@property(readonly, nonatomic) NSString *fieldName; // @synthesize fieldName=_fieldName;
+- (void).cxx_destruct;
+@property(retain, nonatomic) IMNicknameEncryptionFieldTag *tag; // @synthesize tag=_tag;
+@property(retain, nonatomic) NSData *IV; // @synthesize IV=_IV;
+@property(retain, nonatomic) NSData *cipherData; // @synthesize cipherData=_cipherData;
+@property(retain, nonatomic) NSString *fieldName; // @synthesize fieldName=_fieldName;
 - (id)description;
-- (void)dealloc;
 - (id)dataRepresentationWithError:(id *)arg1;
 - (id)initWithFieldName:(id)arg1 cipherData:(id)arg2 IV:(id)arg3 tag:(id)arg4;
 

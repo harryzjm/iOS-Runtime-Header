@@ -6,18 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WebKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <WebKit/UIContextMenuInteractionDelegate-Protocol.h>
-#import <WebKit/UIDocumentPickerDelegate-Protocol.h>
-#import <WebKit/UIImagePickerControllerDelegate-Protocol.h>
-#import <WebKit/UINavigationControllerDelegate-Protocol.h>
-#import <WebKit/UIPopoverControllerDelegate-Protocol.h>
-
 @class NSString;
 @protocol WKFileUploadPanelDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WKFileUploadPanel : UIViewController <UIPopoverControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UIAdaptivePresentationControllerDelegate, UIContextMenuInteractionDelegate>
+@interface WKFileUploadPanel : UIViewController
 {
     struct WeakObjCPtr<WKContentView> _view;
     struct RefPtr<WebKit::WebOpenPanelResultListenerProxy, WTF::RawPtrTraits<WebKit::WebOpenPanelResultListenerProxy>, WTF::DefaultRefDerefTraits<WebKit::WebOpenPanelResultListenerProxy>> _listener;
@@ -26,10 +19,11 @@ __attribute__((visibility("hidden")))
     struct CGPoint _interactionPoint;
     _Bool _allowMultipleFiles;
     _Bool _usingCamera;
+    struct RetainPtr<WKFileUploadMediaTranscoder> _mediaTranscoder;
     struct RetainPtr<UIImagePickerController> _imagePicker;
     struct RetainPtr<UIViewController> _presentationViewController;
-    struct RetainPtr<UIPopoverController> _presentationPopover;
     _Bool _isPresentingSubMenu;
+    _Bool _isRepositioningContextMenu;
     struct RetainPtr<UIContextMenuInteraction> _documentContextMenuInteraction;
     struct RetainPtr<UIDocumentPickerViewController> _documentPickerController;
     int _mediaCaptureType;
@@ -38,12 +32,13 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) id <WKFileUploadPanelDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <WKFileUploadPanelDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)platformSupportsPickerViewController;
+- (void)_uploadMediaItemsTranscodingVideo:(id)arg1;
 - (void)_uploadItemFromMediaInfo:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)_uploadItemForJPEGRepresentationOfImage:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)_uploadItemForImageData:(id)arg1 imageName:(id)arg2 successBlock:(CDUnknownBlockType)arg3 failureBlock:(CDUnknownBlockType)arg4;
-- (void)_processMediaInfoDictionaries:(id)arg1 atIndex:(unsigned long long)arg2 processedResults:(id)arg3 processedImageCount:(unsigned long long)arg4 processedVideoCount:(unsigned long long)arg5 successBlock:(CDUnknownBlockType)arg6 failureBlock:(CDUnknownBlockType)arg7;
+- (void)_processMediaInfoDictionaries:(id)arg1 atIndex:(unsigned long long)arg2 processedResults:(id)arg3 successBlock:(CDUnknownBlockType)arg4 failureBlock:(CDUnknownBlockType)arg5;
 - (void)_processMediaInfoDictionaries:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;
@@ -51,22 +46,20 @@ __attribute__((visibility("hidden")))
 - (_Bool)_willMultipleSelectionDelegateBeCalled;
 - (void)documentPickerWasCancelled:(id)arg1;
 - (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
-- (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)_presentFullscreenViewController:(id)arg1 animated:(_Bool)arg2;
-- (void)_presentPopoverWithContentViewController:(id)arg1 animated:(_Bool)arg2;
-- (void)_presentMenuOptionForCurrentInterfaceIdiom:(id)arg1;
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (_Bool)_shouldMediaCaptureOpenMediaDevice;
 - (void)_adjustMediaCaptureType;
 - (void)showDocumentPickerMenu;
 - (void)showFilePickerMenu;
-- (void)ensureContextMenuInteraction;
+- (void)repositionContextMenuIfNeeded;
+- (id)ensureContextMenuInteraction;
 - (void)removeContextMenuInteraction;
 - (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
-- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configuration:(id)arg2 highlightPreviewForItemWithIdentifier:(id)arg3;
 - (id)_cameraButtonLabel;
 - (id)_photoLibraryButtonLabel;
 - (id)_chooseFilesButtonLabel;
@@ -77,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)dismiss;
 - (void)presentWithParameters:(void *)arg1 resultListener:(void *)arg2;
 - (void)_chooseFiles:(id)arg1 displayString:(id)arg2 iconImage:(id)arg3;
+- (void)_chooseMediaItems:(id)arg1;
 - (void)_cancel;
 - (void)_dispatchDidDismiss;
 - (void)dealloc;

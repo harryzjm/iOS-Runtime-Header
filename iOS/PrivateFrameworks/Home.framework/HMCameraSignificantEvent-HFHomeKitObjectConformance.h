@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMCameraSignificantEvent.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface HMCameraSignificantEvent (HFHomeKitObjectConformance) <HFHomeKitObject>
+@interface HMCameraSignificantEvent (HFHomeKitObjectConformance)
 - (id)hf_reasonKey;
 - (id)hf_faceClassificationName;
 

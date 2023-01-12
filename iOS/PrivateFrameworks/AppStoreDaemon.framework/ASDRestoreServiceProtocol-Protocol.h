@@ -6,7 +6,11 @@
 
 #import <AppStoreDaemon/NSObject-Protocol.h>
 
+@class NSArray, NSNumber;
+
 @protocol ASDRestoreServiceProtocol <NSObject>
+- (void)prioritizeBundleIDs:(NSArray *)arg1 userInitiated:(_Bool)arg2 replyHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)estimateTotalDownloadSizeWithReplyHandler:(void (^)(unsigned long long, NSError *))arg1;
+- (void)clearFollowupsForAccountID:(NSNumber *)arg1 replyHandler:(void (^)(_Bool, NSError *))arg2;
 @end
 

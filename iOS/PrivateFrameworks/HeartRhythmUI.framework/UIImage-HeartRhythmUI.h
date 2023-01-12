@@ -16,6 +16,7 @@
 + (id)hrui_warningImage;
 + (id)hrui_cannotDoImage;
 + (id)hrui_ECGOnboardingWristImage;
++ (id)_watchImageName;
 + (id)hrui_screenWidthImageWithName:(id)arg1;
 @end
 

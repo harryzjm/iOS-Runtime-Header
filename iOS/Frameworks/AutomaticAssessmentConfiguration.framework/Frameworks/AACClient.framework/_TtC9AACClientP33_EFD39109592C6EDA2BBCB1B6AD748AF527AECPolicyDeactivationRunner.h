@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <AACClient/AEPolicyDeactivation-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
-@interface _TtC9AACClientP33_EFD39109592C6EDA2BBCB1B6AD748AF527AECPolicyDeactivationRunner : _TtCs12_SwiftObject <AEPolicyDeactivation>
+@interface _TtC9AACClientP33_EFD39109592C6EDA2BBCB1B6AD748AF527AECPolicyDeactivationRunner : _TtCs12_SwiftObject
 {
     MISSING_TYPE *deactivation;
 }

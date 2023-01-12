@@ -7,6 +7,7 @@
 #import <UIKit/UIImageView.h>
 
 @interface UIImageView (NUIContainerView)
++ (id)imageViewWithImage:(id)arg1;
 - (long long)_nui_baselineViewType;
 @end
 

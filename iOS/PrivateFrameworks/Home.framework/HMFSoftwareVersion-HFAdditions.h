@@ -7,6 +7,7 @@
 #import <HMFoundation/HMFSoftwareVersion.h>
 
 @interface HMFSoftwareVersion (HFAdditions)
+@property(readonly, nonatomic) _Bool hf_canProvideWifiStrength;
 @property(readonly, nonatomic) _Bool hf_softwareUpdateWouldSupportHomePodPairing;
 @end
 

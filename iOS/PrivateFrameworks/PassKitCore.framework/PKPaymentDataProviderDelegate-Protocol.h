@@ -17,7 +17,7 @@
 - (void)featureApplicationAdded:(PKFeatureApplication *)arg1;
 - (void)transactionWithIdentifier:(NSString *)arg1 didDownloadTransactionReceipt:(PKTransactionReceipt *)arg2;
 - (void)credential:(PKAppletSubcredential *)arg1 forPaymentApplication:(PKPaymentApplication *)arg2 didUpdateRangingSuspensionReasons:(unsigned long long)arg3;
-- (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateCredential:(PKAppletSubcredential *)arg2;
+- (void)sharesDidUpdateWithPaymentPassWithUniqueIdentifier:(NSString *)arg1;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateWithFelicaPassProperties:(PKFelicaPassProperties *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateWithTransitPassProperties:(PKTransitPassProperties *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateBalanceReminder:(PKPaymentBalanceReminder *)arg2 forBalanceWithIdentifier:(NSString *)arg3;

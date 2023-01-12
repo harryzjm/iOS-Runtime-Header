@@ -6,10 +6,11 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MUPresentationOptions;
+@class MUCallToActionSectionController, MUPresentationOptions, UIView;
 
 @protocol MUPlaceCallToActionSectionControllerDelegate <NSObject>
+- (UIView *)suggestionViewForCallToActionSectionController:(MUCallToActionSectionController *)arg1;
 - (void)presentPOIEnrichmentWithPresentationOptions:(MUPresentationOptions *)arg1;
-- (void)presentAddPhotosWithPresentationOptions:(MUPresentationOptions *)arg1 skipToAddFromLibrary:(_Bool)arg2;
+- (void)presentAddPhotosWithPresentationOptions:(MUPresentationOptions *)arg1 entryPoint:(long long)arg2;
 @end
 

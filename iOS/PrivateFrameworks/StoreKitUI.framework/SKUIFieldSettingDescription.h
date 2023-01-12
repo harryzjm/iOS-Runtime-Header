@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIControllableSettingDescription-Protocol.h>
-
 @class NSMutableDictionary, NSString, SKUISettingsGroupController;
 
 __attribute__((visibility("hidden")))
-@interface SKUIFieldSettingDescription <SKUIControllableSettingDescription>
+@interface SKUIFieldSettingDescription
 {
     SKUISettingsGroupController *_controller;
     long long _fieldType;

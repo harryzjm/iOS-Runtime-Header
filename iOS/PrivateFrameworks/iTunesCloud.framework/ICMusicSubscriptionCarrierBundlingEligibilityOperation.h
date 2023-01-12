@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ICAsyncOperation.h"
+
 @class ICStoreRequestContext, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICMusicSubscriptionCarrierBundlingEligibilityOperation
+@interface ICMusicSubscriptionCarrierBundlingEligibilityOperation : ICAsyncOperation
 {
     NSString *_cellularProviderName;
     NSString *_mobileSubscriberCountryCode;

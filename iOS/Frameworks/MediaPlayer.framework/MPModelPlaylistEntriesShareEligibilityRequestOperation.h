@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPModelPlaylistEntriesShareEligibilityRequest;
 
 __attribute__((visibility("hidden")))
-@interface MPModelPlaylistEntriesShareEligibilityRequestOperation
+@interface MPModelPlaylistEntriesShareEligibilityRequestOperation : MPAsyncOperation
 {
     MPModelPlaylistEntriesShareEligibilityRequest *_request;
     CDUnknownBlockType _responseHandler;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSUReadChannel-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_data, OS_dispatch_queue;
 
-@interface TSPMemoryReadChannel : NSObject <TSUReadChannel>
+@interface TSPMemoryReadChannel : NSObject
 {
     NSObject<OS_dispatch_data> *_dispatchData;
     NSObject<OS_dispatch_queue> *_readQueue;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTNormalizedTokenVariant : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTNormalizedTokenVariant : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_f65efac6)addObjectToBuffer:(void *)arg1;
+- (void)normalized_tokens_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)normalized_tokens_count;
+- (id)normalized_tokens_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *normalized_tokens;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct NormalizedTokenVariant *)arg2 verify:(_Bool)arg3;

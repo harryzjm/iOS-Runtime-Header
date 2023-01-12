@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIDebuggingInformationViewController-Protocol.h>
-#import <UIKitCore/UIDebuggingZoomDelegate-Protocol.h>
+#import "UIViewController.h"
 
 @class NSObject, UIDebuggingZoomLineView, UIDebuggingZoomLoupeView, UILabel, UIPanGestureRecognizer, UISegmentedControl, UIView;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingZoomViewController <UIDebuggingZoomDelegate, UIDebuggingInformationViewController>
+@interface UIDebuggingZoomViewController : UIViewController
 {
     _Bool _useViewForEdges;
     unsigned long long _currentDirection;

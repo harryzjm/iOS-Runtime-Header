@@ -7,10 +7,10 @@
 @class NSArray, PXLayoutPerformerOutput;
 
 @protocol PXLayoutPerformer
-+ (struct CGSize)performLayoutWithLayoutInput:(CDStruct_392cfed4)arg1 layoutOutput:(PXLayoutPerformerOutput *)arg2 usingBlock:(void (^)(id <PXLayoutPerformer>))arg3;
++ (struct CGSize)performLayoutWithLayoutInput:(CDStruct_56d7d0d1)arg1 layoutOutput:(PXLayoutPerformerOutput *)arg2 usingBlock:(void (^)(id <PXLayoutPerformer>))arg3;
 @property(readonly, nonatomic) NSArray *children;
 @property(retain, nonatomic) PXLayoutPerformerOutput *layoutOutput;
-@property(nonatomic) CDStruct_392cfed4 layoutInput;
+@property(nonatomic) CDStruct_56d7d0d1 layoutInput;
 - (void)prepareForReuse;
 - (struct CGSize)performLayout;
 @end

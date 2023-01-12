@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFQueueingStrategy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _EFBoundedQueueStrategy : NSObject <EFQueueingStrategy>
+@interface _EFBoundedQueueStrategy : NSObject
 {
     CDUnknownBlockType _overflowHandler;
     unsigned long long _capacity;

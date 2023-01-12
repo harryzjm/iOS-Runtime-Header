@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOLPRPowerType, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOLPRPowerTypeMap : PBCodable <NSCopying>
+@interface GEOLPRPowerTypeMap : PBCodable
 {
     PBDataReader *_reader;
     NSString *_key;

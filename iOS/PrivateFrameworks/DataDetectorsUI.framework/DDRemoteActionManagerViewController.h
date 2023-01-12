@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <DataDetectorsUI/DDRemoteActionHostViewControllerDelegate-Protocol.h>
-
 @class DDRemoteAction, DDRemoteActionHostViewController, NSDate, NSExtension, NSLayoutConstraint, NSString, UINavigationController, UIView;
 @protocol DDRemoteActionViewServiceProtocol, NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface DDRemoteActionManagerViewController : UIViewController <DDRemoteActionHostViewControllerDelegate>
+@interface DDRemoteActionManagerViewController : UIViewController
 {
     DDRemoteActionHostViewController *_remoteViewController;
     id <DDRemoteActionViewServiceProtocol> _serviceContext;

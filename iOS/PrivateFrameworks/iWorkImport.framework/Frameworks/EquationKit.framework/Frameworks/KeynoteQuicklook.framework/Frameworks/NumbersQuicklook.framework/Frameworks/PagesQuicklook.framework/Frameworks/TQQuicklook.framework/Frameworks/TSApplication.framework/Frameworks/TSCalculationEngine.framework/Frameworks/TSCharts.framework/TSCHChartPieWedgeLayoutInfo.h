@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSArray, NSNumber, TSCHChartPieWedgeElement;
 
-@interface TSCHChartPieWedgeLayoutInfo : NSObject <NSCopying>
+@interface TSCHChartPieWedgeLayoutInfo : NSObject
 {
     TSCHChartPieWedgeElement *_wedgeElement;
     NSArray *_pieLabels;

@@ -10,7 +10,6 @@
 
 @interface _TtC8NewsFeed22CoverChannelViewStyler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *cornerRadius;
     MISSING_TYPE *fontBook;
     MISSING_TYPE *colorPalette;
     MISSING_TYPE *colorPaletteProvider;

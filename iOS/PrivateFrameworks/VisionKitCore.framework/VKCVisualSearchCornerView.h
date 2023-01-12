@@ -4,37 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/VKCCornerLookupButtonDelegate-Protocol.h>
-
-@class NSArray, NSMutableArray, NSString, VKImageAnalysis;
+@class NSArray, NSMutableArray, NSString, VKCImageAnalysis;
 @protocol VKCVisualSearchCornerViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCVisualSearchCornerView <VKCCornerLookupButtonDelegate>
+@interface VKCVisualSearchCornerView
 {
-    VKImageAnalysis *_analysis;
+    VKCImageAnalysis *_analysis;
     id <VKCVisualSearchCornerViewDelegate> _delegate;
     NSArray *_cornerResultItems;
     NSMutableArray *_cornerButtons;
     NSString *__customAnalyticsIdentifier;
-    struct CGRect _visibleScrollViewUnitRect;
+    struct CGRect _normalizedVisibleRect;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *_customAnalyticsIdentifier; // @synthesize _customAnalyticsIdentifier=__customAnalyticsIdentifier;
-@property(nonatomic) struct CGRect visibleScrollViewUnitRect; // @synthesize visibleScrollViewUnitRect=_visibleScrollViewUnitRect;
 @property(retain, nonatomic) NSMutableArray *cornerButtons; // @synthesize cornerButtons=_cornerButtons;
 @property(retain, nonatomic) NSArray *cornerResultItems; // @synthesize cornerResultItems=_cornerResultItems;
 @property(nonatomic) __weak id <VKCVisualSearchCornerViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) VKImageAnalysis *analysis; // @synthesize analysis=_analysis;
+@property(nonatomic) struct CGRect normalizedVisibleRect; // @synthesize normalizedVisibleRect=_normalizedVisibleRect;
+@property(retain, nonatomic) VKCImageAnalysis *analysis; // @synthesize analysis=_analysis;
 - (void)sendDismissedAnalyticsEventEventWithItem:(id)arg1;
 - (void)sendProcessingAnalyticsEventEventWithItem:(id)arg1 duration:(double)arg2;
 - (void)lookupButton:(id)arg1 didTapVisualSearchIndicatorWithNormalizedBoundingBox:(struct CGRect)arg2;
-- (void)scrollViewDidZoomToUnitRect:(struct CGRect)arg1;
 - (void)lookupButtonDidDismissController:(id)arg1;
 - (void)lookupButton:(id)arg1 didProcessResultWithDuration:(double)arg2;
 - (void)generateVisualSearchResultForItems:(id)arg1 queryID:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_updateButtonFrames;
+- (void)_updateButtonFramesWithScale:(double)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (_Bool)_itemObscuredByViewport:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -45,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_showCornerLookupButtonsForResults:(id)arg1;
 - (void)automaticallyShowVisualSearchResultsIfApplicable;
 - (id)_resultItems;
+@property(readonly, nonatomic) double windowScale;
 - (id)init;
 
 @end

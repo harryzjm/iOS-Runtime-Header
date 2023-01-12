@@ -23,6 +23,9 @@
     MISSING_TYPE *_usageSinceLookback;
     MISSING_TYPE *_cohortsFeedback;
     MISSING_TYPE *_devicePersistentD20;
+    MISSING_TYPE *_privateRelayStatus;
+    MISSING_TYPE *_isInternalCarry;
+    MISSING_TYPE *_experimentInfo;
     MISSING_TYPE *_jsonFeedback;
     MISSING_TYPE *_feedback;
 }

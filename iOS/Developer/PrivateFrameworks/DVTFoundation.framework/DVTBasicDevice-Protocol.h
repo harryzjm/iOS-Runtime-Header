@@ -6,12 +6,18 @@
 
 #import <DVTFoundation/DVTCodesignableDevice-Protocol.h>
 
-@class DVTPlatform, NSError, NSString, UTType;
+@class DVTCPUCount, DVTPlatform, NSError, NSString, UTType;
 @protocol DVTBasicDevice;
 
 @protocol DVTBasicDevice <DVTCodesignableDevice>
+@property(readonly) _Bool supportsSimulateVehicularCrash;
+@property(readonly) _Bool supportsPerformanceAntipatternChecker;
+@property(readonly) _Bool supportsMainThreadChecker;
+@property(readonly) long long developerMode;
+@property(readonly) _Bool supportsDeveloperMode;
 @property(readonly) _Bool deviceIsBusy;
 @property(readonly) NSError *unavailabilityError;
+@property(readonly) DVTCPUCount *cpuCountDescription;
 @property(readonly, getter=isAvailable) _Bool available;
 @property(readonly) __weak id <DVTBasicDevice> companionDevice;
 @property(readonly) _Bool isProxiedDevice;
@@ -24,6 +30,7 @@
 @property(readonly, copy) NSString *operatingSystemVersion;
 @property(readonly, copy, nonatomic) UTType *modelUTType;
 @property(readonly, copy, nonatomic) NSString *modelUTI;
+@property(readonly, copy, nonatomic) NSString *thinningProductType;
 @property(readonly, copy, nonatomic) NSString *modelCode;
 @property(readonly, copy, nonatomic) NSString *modelCodename;
 @property(readonly, copy, nonatomic) NSString *modelName;

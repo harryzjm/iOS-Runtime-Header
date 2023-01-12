@@ -12,6 +12,7 @@
 @protocol _UICollectionPreferredSizes <NSObject>
 @property(readonly, nonatomic) NSSet *elementKinds;
 @property(readonly, nonatomic) NSIndexSet *indexes;
+- (id)copyByDirtyingPreferredSizes;
 - (id <_UICollectionPreferredSizes>)preferredSizesApplyingFrameOffset:(long long)arg1 supplementaryBaseOffsets:(id <_UICollectionLayoutAuxillaryOffsets>)arg2;
 - (_Bool)containsSupplementaryOffsets:(id <_UICollectionLayoutAuxillaryOffsets>)arg1;
 - (id <_UICollectionPreferredSizes>)objectForKeyedSubscript:(NSString *)arg1;

@@ -13,6 +13,6 @@
 @property(readonly, nonatomic) SWDatastore *datastore;
 - (void)removeObserver:(id <SWDatastoreObserver>)arg1;
 - (void)addObserver:(id <SWDatastoreObserver>)arg1;
-- (void)updateDatastore:(SWDatastore *)arg1 originatingSession:(id <SWSession>)arg2;
+- (void)updateDatastore:(SWDatastore *)arg1 originatingSession:(id <SWSession>)arg2 completion:(void (^)(void))arg3;
 @end
 

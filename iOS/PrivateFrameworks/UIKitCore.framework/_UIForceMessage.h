@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIForceObservationMessageConstructing-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIForceMessage : NSObject <_UIForceObservationMessageConstructing>
+@interface _UIForceMessage : NSObject
 {
     _Bool _reset;
     double touchForce;

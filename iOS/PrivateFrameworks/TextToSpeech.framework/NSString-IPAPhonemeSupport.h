@@ -7,6 +7,8 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (IPAPhonemeSupport)
++ (id)binaryStringRepresentationOfInt:(long long)arg1 numberOfDigits:(unsigned int)arg2 chunkLength:(unsigned int)arg3;
++ (id)binaryStringRepresentationOfInt:(long long)arg1;
 @property(retain, nonatomic) NSString *IPASpeechPhonemes; // @dynamic IPASpeechPhonemes;
 @end
 

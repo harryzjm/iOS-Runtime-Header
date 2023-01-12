@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileSafariUI/ReadingListMetadataProvider-Protocol.h>
-
 @class LPMetadataProvider, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ReadingListMetadataProvider : NSObject <ReadingListMetadataProvider>
+@interface ReadingListMetadataProvider : NSObject
 {
     LPMetadataProvider *_lpMetadataProvider;
 }

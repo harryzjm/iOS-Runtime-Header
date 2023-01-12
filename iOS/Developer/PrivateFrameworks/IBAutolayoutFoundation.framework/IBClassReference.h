@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/NSCoding-Protocol.h>
-#import <IBAutolayoutFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface IBClassReference : NSObject <NSCopying, NSCoding>
+@interface IBClassReference : NSObject
 {
     NSString *_className;
     NSString *_moduleName;

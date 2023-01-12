@@ -6,18 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/BSDescriptionProviding-Protocol.h>
-#import <UIKitCore/UIScenePresenter-Protocol.h>
-
-@class BSMonotonicReferenceTime, FBScene, NSString, UIScenePresentationContext, UIView, _UIScenePresentationView, _UIScenePresenterOwner;
+@class FBScene, NSString, UIScenePresentationContext, UIView, _UIScenePresentationView, _UIScenePresenterOwner;
 @protocol NSCopying, NSCopying><_UIComparable, UIScenePresentation;
 
 __attribute__((visibility("hidden")))
-@interface _UIScenePresenter : NSObject <BSDescriptionProviding, UIScenePresenter>
+@interface _UIScenePresenter : NSObject
 {
     _UIScenePresenterOwner *_owner;
     UIScenePresentationContext *_presentationContext;
-    BSMonotonicReferenceTime *_initializeTime;
+    double _initializeTime;
     id <NSCopying><_UIComparable> _sortContext;
     NSString *_identifier;
     _Bool _invalidated;
@@ -33,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isActive) _Bool enabled; // @synthesize enabled=_enabled;
 @property(readonly, copy, nonatomic) UIScenePresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
 @property(readonly, copy, nonatomic) id <NSCopying> sortContext; // @synthesize sortContext=_sortContext;
-@property(retain, nonatomic) BSMonotonicReferenceTime *_initializeTime; // @synthesize _initializeTime;
+@property(nonatomic) double _initializeTime; // @synthesize _initializeTime;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;

@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSArray, UIKeyboardDicationBackgroundGradientView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardDicationBackground
+@interface UIKeyboardDicationBackground : UIView
 {
     NSArray *_shadows;
     UIKeyboardDicationBackgroundGradientView *_gradient;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIKeyboardDicationBackgroundGradientView *gradient; // @synthesize gradient=_gradient;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)shadows;

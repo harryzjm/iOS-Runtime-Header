@@ -6,11 +6,9 @@
 
 #import <TelephonyUtilities/TUCloudCallingDevice.h>
 
-#import <TelephonyPreferences/TPSCloudCallingDevice-Protocol.h>
-
 @class NSString;
 
-@interface TUCloudCallingDevice (TelephonyPreferences) <TPSCloudCallingDevice>
+@interface TUCloudCallingDevice (TelephonyPreferences)
 @property(readonly, copy, nonatomic) NSString *tps_modelName;
 
 // Remaining properties

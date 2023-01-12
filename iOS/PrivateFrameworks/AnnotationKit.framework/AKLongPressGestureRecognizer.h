@@ -6,11 +6,9 @@
 
 #import <UIKit/UILongPressGestureRecognizer.h>
 
-#import <AnnotationKit/AKPenDetectionGestureRecognizerProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AKLongPressGestureRecognizer : UILongPressGestureRecognizer <AKPenDetectionGestureRecognizerProtocol>
+@interface AKLongPressGestureRecognizer : UILongPressGestureRecognizer
 {
     _Bool _penGestureDetected;
 }

@@ -12,6 +12,7 @@
 @protocol CALNUserNotificationCenter <CalActivatable>
 @property(nonatomic) __weak id <CALNUserNotificationCenterDelegate> delegate;
 - (void)collectSettingsStats:(NSMutableDictionary *)arg1;
+- (void)removeAllPendingNotificationRequests;
 - (void)removeAllDeliveredNotifications;
 - (void)removeDeliveredNotificationsWithIdentifiers:(NSArray *)arg1;
 - (NSArray *)deliveredNotifications;

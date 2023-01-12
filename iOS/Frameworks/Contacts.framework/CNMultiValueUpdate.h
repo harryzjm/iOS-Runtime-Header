@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNMultiValueUpdate_iOSAB-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNMultiValueUpdate : NSObject <CNMultiValueUpdate_iOSAB>
+@interface CNMultiValueUpdate : NSObject
 {
     _Bool _ignoreIdentifiers;
 }
@@ -22,7 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)addValue:(id)arg1;
 @property(nonatomic) _Bool ignoreIdentifiers; // @synthesize ignoreIdentifiers=_ignoreIdentifiers;
 - (long long)multiValueIndexForValue:(id)arg1 inMultiValue:(void *)arg2 identifier:(id *)arg3;
-- (_Bool)applyToABPerson:(void *)arg1 abmultivalue:(void *)arg2 propertyDescription:(id)arg3 logger:(id)arg4 error:(id *)arg5;
+- (_Bool)applyToABPerson:(void *)arg1 abmultivalue:(void *)arg2 propertyDescription:(id)arg3 isUnified:(_Bool)arg4 logger:(id)arg5 error:(id *)arg6;
 - (void)applyToMutableMultiValue:(id)arg1 withIdentifierMap:(id)arg2;
 
 // Remaining properties

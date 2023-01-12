@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CalendarWidget/CUIKSingleDayTimelineGeometryDelegate-Protocol.h>
-#import <CalendarWidget/CUIKSingleDayTimelineLayoutScreenUtils-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC14CalendarWidget21SpatialLayoutDelegate : NSObject <CUIKSingleDayTimelineGeometryDelegate, CUIKSingleDayTimelineLayoutScreenUtils>
+@interface _TtC14CalendarWidget21SpatialLayoutDelegate : NSObject
 {
     MISSING_TYPE *displayedRect;
     MISSING_TYPE *startDate;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSMutableOrderedSet, NSOrderedSet;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiatorStreamGroupConfiguration : NSObject <NSCopying>
+@interface VCMediaNegotiatorStreamGroupConfiguration : NSObject
 {
     unsigned int _groupID;
     unsigned int _mediaType;

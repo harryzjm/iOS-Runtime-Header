@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <CloudKitDaemon/CKLParsedObject-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (CKDUploadAssetsOperationAdditions) <CKLParsedObject>
+@interface NSArray (CKDUploadAssetsOperationAdditions)
 - (id)CKSortedForUpload;
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 

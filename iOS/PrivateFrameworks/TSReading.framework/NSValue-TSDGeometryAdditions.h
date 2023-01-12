@@ -6,9 +6,7 @@
 
 #import <Foundation/NSValue.h>
 
-#import <TSReading/TSDMixing-Protocol.h>
-
-@interface NSValue (TSDGeometryAdditions) <TSDMixing>
+@interface NSValue (TSDGeometryAdditions)
 + (id)valueWithTSDEdgeInsets:(struct UIEdgeInsets)arg1;
 - (struct UIEdgeInsets)TSDEdgeInsetsValue;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;

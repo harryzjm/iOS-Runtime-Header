@@ -7,6 +7,7 @@
 #import <EmailCore/ECEmailAddress.h>
 
 @interface ECEmailAddress (EMECEmailAddressAdditions)
+- (id)em_person;
 - (id)em_displayableString;
 @end
 

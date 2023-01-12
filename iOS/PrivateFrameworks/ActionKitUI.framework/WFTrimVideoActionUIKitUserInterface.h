@@ -6,15 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/UINavigationControllerDelegate-Protocol.h>
-#import <ActionKitUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <ActionKitUI/UIVideoEditorControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFTrimVideoActionUserInterface-Protocol.h>
-
 @class NSString, WFFileRepresentation;
 
 __attribute__((visibility("hidden")))
-@interface WFTrimVideoActionUIKitUserInterface : WFEmbeddableActionUserInterface <UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate, WFTrimVideoActionUserInterface>
+@interface WFTrimVideoActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     _Bool _hasSaved;
     WFFileRepresentation *_copiedFile;

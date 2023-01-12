@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTPropertyListEncoding-Protocol.h>
-
 @class NSPredicate, NSString;
 
-@interface DVTActivationRule : NSObject <DVTPropertyListEncoding>
+@interface DVTActivationRule : NSObject
 {
     NSString *_kind;
     NSString *_identifier;
@@ -28,6 +26,7 @@
 @property(readonly) NSPredicate *predicate;
 - (id)_predicateWithIdentifier:(id)arg1 versionString:(id)arg2 query:(id)arg3;
 - (void)encodeIntoPropertyList:(id)arg1;
+- (void)awakeFromPropertyList;
 @property(readonly, copy) NSString *description;
 - (id)initWithPropertyList:(id)arg1 owner:(id)arg2;
 

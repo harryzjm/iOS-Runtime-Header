@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSUResourceFileURLProvider-Protocol.h>
-#import <TSPersistence/TSUResourceRequest-Protocol.h>
-#import <TSPersistence/TSUResourceRequestObservable-Protocol.h>
-
 @class NSProgress, NSSet, NSString, TSPDocumentResourceCache, TSUObserverNotifier;
 @protocol OS_dispatch_queue, TSUResourceRequest;
 
-@interface TSPDocumentResourceRequest : NSObject <TSUResourceFileURLProvider, TSUResourceRequest, TSUResourceRequestObservable>
+@interface TSPDocumentResourceRequest : NSObject
 {
     TSPDocumentResourceCache *_documentResourceCache;
     NSSet *_documentResourceInfos;

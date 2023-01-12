@@ -6,10 +6,11 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class NSArray, NSData, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorResults, VCMediaNegotiatorResultsAudio, VCMediaNegotiatorResultsFaceTimeSettings, VCMediaNegotiatorResultsMoments, VCMediaNegotiatorResultsVideo;
+@class NSArray, NSData, NSSet, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorResults, VCMediaNegotiatorResultsAudio, VCMediaNegotiatorResultsFaceTimeSettings, VCMediaNegotiatorResultsMoments, VCMediaNegotiatorResultsVideo;
 
 @protocol VCMediaNegotiatorProtocol <NSObject>
 + (_Bool)initializeLocalConfiguration:(VCMediaNegotiatorLocalConfiguration *)arg1 negotiationData:(NSData *)arg2 deviceRole:(int)arg3 preferredAudioPayload:(int)arg4;
++ (NSSet *)streamGroupIDsWithMediaBlob:(NSData *)arg1;
 @property(readonly, nonatomic) NSArray *negotiatedStreamGroups;
 @property(readonly, nonatomic) VCMediaNegotiatorResultsFaceTimeSettings *negotiatedFaceTimeSettings;
 @property(readonly, nonatomic) VCMediaNegotiatorResultsMoments *negotiatedMomentsSettings;

@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EspressoCustomPass.h"
+
 __attribute__((visibility("hidden")))
-@interface EspressoPass_remove_reshape_around_rank3_inner_product
+@interface EspressoPass_remove_reshape_around_rank3_inner_product : EspressoCustomPass
 {
 }
 

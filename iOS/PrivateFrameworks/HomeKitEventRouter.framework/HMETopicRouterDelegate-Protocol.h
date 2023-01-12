@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+#import <HomeKitEventRouter/NSObject-Protocol.h>
 
-@protocol HMETopicRouterDelegate
+@class NSArray, NSSet, NSString;
+
+@protocol HMETopicRouterDelegate <NSObject>
 - (void)didChangeRegistrationsWithTopicFilterAdditions:(NSArray *)arg1 removals:(NSArray *)arg2;
+
+@optional
+- (NSSet *)upstreamTopicsForTopic:(NSString *)arg1;
 @end
 

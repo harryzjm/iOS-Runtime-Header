@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLBatchProvider-Protocol.h>
-
 @class NSArray;
 @protocol MLBatchProvider;
 
 __attribute__((visibility("hidden")))
-@interface MLIndexedBatchProvider : NSObject <MLBatchProvider>
+@interface MLIndexedBatchProvider : NSObject
 {
     id <MLBatchProvider> _fullBatch;
     NSArray *_indices;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTServicesSessionProvider-Protocol.h>
-
 @class DVTDeveloperAccountCredentials, DVTDeveloperAccountPortalContext, DVTDeveloperAccountSession, DVTDispatchLock, DVTSigningCertificateSerialNumber, NSDictionary, NSString;
 @protocol DVTDeveloperPortalDefaultsProtocol;
 
-@interface DVTDeveloperAccount : NSObject <DVTServicesSessionProvider>
+@interface DVTDeveloperAccount : NSObject
 {
     DVTDispatchLock *_lock;
     _Bool _enabled;

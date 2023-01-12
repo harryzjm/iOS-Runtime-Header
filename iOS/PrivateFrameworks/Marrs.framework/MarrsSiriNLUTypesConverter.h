@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 + (id)fromPluginResponsePtr:(const void *)arg1;
 + (struct QRRequest)toPluginRequestObj:(id)arg1;
 + (unique_ptr_d07b5ea7)toPluginRequestPtr:(id)arg1;
++ (int)toPluginRequester:(int)arg1;
 + (id)fromPluginHypothesis:(struct QRHypothesis)arg1;
 + (id)fromPluginInteraction:(struct QRInteraction)arg1;
 + (struct QRInteraction)toPluginInteraction:(id)arg1;
@@ -26,12 +27,12 @@ __attribute__((visibility("hidden")))
 + (struct QRToken)toPluginToken:(id)arg1;
 + (id)fromPluginUuid:(struct Uuid)arg1;
 + (struct Uuid)toPluginUuid:(id)arg1;
-+ (int)fromPluginQRRewriteType:(int)arg1;
-+ (int)fromPluginQRRepetitionType:(int)arg1;
-+ (id)StdVectorStdString2NSMutableArrayNSString:(vector_bfe5b09a)arg1;
-+ (id)stdString2NSString:(basic_string_0ec669f3)arg1;
-+ (vector_bfe5b09a)NSMutableArrayNSString2StdVectorStdString:(id)arg1;
-+ (basic_string_0ec669f3)NSString2StdString:(id)arg1;
++ (int)fromPluginRewriteType:(int)arg1;
++ (int)fromPluginRepetitionType:(int)arg1;
++ (id)StdVectorStdString2NSMutableArrayNSString:(vector_74824a0a)arg1;
++ (id)stdString2NSString:(basic_string_05660eb3)arg1;
++ (vector_74824a0a)NSMutableArrayNSString2StdVectorStdString:(id)arg1;
++ (basic_string_05660eb3)NSString2StdString:(id)arg1;
 
 @end
 

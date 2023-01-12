@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <HeartHealthDaemon/HKFeatureStatusProvidingObserver-Protocol.h>
-
 @class HDProfile, HKFeatureStatusManager, NSString, NSUserDefaults;
 @protocol HDHeartbeatSeriesFeatureStatusManagerDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HDHeartbeatSeriesFeatureStatusManager : NSObject <HKFeatureStatusProvidingObserver>
+@interface HDHeartbeatSeriesFeatureStatusManager : NSObject
 {
     HDProfile *_profile;
     id <HDHeartbeatSeriesFeatureStatusManagerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSUserDefaults *_heartNotificationsUserDefaults;
+    HKFeatureStatusManager *_aFibBurdenFeatureStatusManager;
     HKFeatureStatusManager *_irregularRhythmNotificationsFeatureStatusManager;
 }
 
@@ -29,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)notifyDelegateOfCurrentState;
 - (void)stopObservingChanges;
 - (void)startObservingChangesWithDelegate:(id)arg1;
-- (id)initWithProfile:(id)arg1 irregularRhythmNotificationsFeatureStatusManager:(id)arg2 heartNotificationsUserDefaults:(id)arg3;
+- (id)initWithProfile:(id)arg1 aFibBurdenFeatureStatusManager:(id)arg2 irregularRhythmNotificationsFeatureStatusManager:(id)arg3 heartNotificationsUserDefaults:(id)arg4;
 - (id)initWithClient:(id)arg1;
 
 // Remaining properties

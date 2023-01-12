@@ -10,8 +10,9 @@
 {
     MISSING_TYPE *resumeOnEnter;
     MISSING_TYPE *isStalled;
-    MISSING_TYPE *playbackDidStopEvent;
-    MISSING_TYPE *disarmingTimer;
+    MISSING_TYPE *playbackStopReason;
+    MISSING_TYPE *playbackStopRecoveryTimer;
+    MISSING_TYPE *playbackStopRecoveryDelay;
 }
 
 @end

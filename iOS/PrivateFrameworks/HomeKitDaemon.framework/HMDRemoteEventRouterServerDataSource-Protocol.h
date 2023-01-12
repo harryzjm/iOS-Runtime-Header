@@ -6,12 +6,19 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDRemoteEventRouterServer, HMFMessage;
-@protocol HMDRemoteEventRouterUserAccessControlProvider;
+@class HMDDevice, HMDRemoteEventRouterServer, HMFMessage, NSArray, NSString, NSUUID;
+@protocol HMDRemoteEventAccessControlProvider, HMDRemoteEventRouterUserAccessControlProvider;
 
 @protocol HMDRemoteEventRouterServerDataSource <NSObject>
+- (NSArray *)expandedTopicsWithTopics:(NSArray *)arg1;
+- (HMDDevice *)messageTargetForDeviceIdentifier:(NSUUID *)arg1;
+- (_Bool)isDeviceIdentifierPrimaryResident:(NSUUID *)arg1;
 - (_Bool)isCurrentDevicePrimaryResident;
-- (id <HMDRemoteEventRouterUserAccessControlProvider>)routerServerUserAccessControlProvider:(HMFMessage *)arg1;
-- (id)routerServerResidentManager:(HMDRemoteEventRouterServer *)arg1;
+- (_Bool)canTopicBeForwardedToPrimaryFromResident:(NSString *)arg1;
+- (_Bool)shouldAllowTopic:(NSString *)arg1 forDeviceWithMessageIdentifier:(NSUUID *)arg2;
+- (id <HMDRemoteEventAccessControlProvider>)remoteEventAccessControlProvider;
+- (id <HMDRemoteEventRouterUserAccessControlProvider>)routerServerUserAccessControlProviderForIdentifier:(NSUUID *)arg1;
+- (NSUUID *)routerServerUserAccessControlProviderIdentifierForMessage:(HMFMessage *)arg1;
+- (id)primaryResidentChangeMonitorForRouterServer:(HMDRemoteEventRouterServer *)arg1;
 @end
 

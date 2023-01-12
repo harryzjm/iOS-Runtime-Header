@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIVisualEffectViewSubviewMonitoring-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, UIView, _UIVisualEffectBackdropView, _UIVisualEffectDescriptor, _UIVisualEffectViewBackdropCaptureGroup;
 @protocol _UIVisualEffectViewParticipating;
 
 __attribute__((visibility("hidden")))
-@interface _UIVisualEffectHost : NSObject <_UIVisualEffectViewSubviewMonitoring>
+@interface _UIVisualEffectHost : NSObject
 {
     NSMutableArray *_views;
     _Bool _autosetSubviewLabelTintColor;
@@ -33,6 +31,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool contentViewRequired; // @synthesize contentViewRequired=_contentViewRequired;
 @property(readonly, nonatomic) UIView<_UIVisualEffectViewParticipating> *contentView; // @synthesize contentView=_contentView;
 @property(readonly, copy) NSString *description;
+- (void)willLoseDescendent:(id)arg1;
+- (void)willGainDescendent:(id)arg1;
 - (void)_view:(id)arg1 willLoseDescendent:(id)arg2;
 - (void)_view:(id)arg1 willGainDescendent:(id)arg2;
 - (void)_view:(id)arg1 willMoveToWindow:(id)arg2;

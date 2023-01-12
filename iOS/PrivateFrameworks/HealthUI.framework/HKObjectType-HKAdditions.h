@@ -14,6 +14,7 @@
 - (id)hk_metadataValueDisplayTypeInStore:(id)arg1;
 - (id)hk_secondaryMetadataKey;
 - (id)hk_primaryMetadataKey;
+- (Class)hk_valueFormatterClassForUnit:(id)arg1;
 - (Class)hk_valueFormatterClass;
 - (id)hk_numberFormatterForUnit:(id)arg1 decimalPrecisionRule:(id)arg2 formattingContext:(long long)arg3;
 - (id)hk_numberFormatterForUnit:(id)arg1 decimalPrecisionRule:(id)arg2;

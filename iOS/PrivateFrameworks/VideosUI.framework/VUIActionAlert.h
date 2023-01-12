@@ -4,20 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, VUIAction;
+@class NSDictionary, NSMutableArray, NSString, VUIAction;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionAlert
 {
     NSString *_title;
     NSString *_descriptionString;
+    NSMutableArray *_actionItems;
     NSString *_dismissButtonTitle;
     VUIAction *_cancelAction;
+    long long _style;
+    NSDictionary *_dialogMetrics;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *dialogMetrics; // @synthesize dialogMetrics=_dialogMetrics;
+@property(nonatomic) long long style; // @synthesize style=_style;
 @property(retain, nonatomic) VUIAction *cancelAction; // @synthesize cancelAction=_cancelAction;
 @property(retain, nonatomic) NSString *dismissButtonTitle; // @synthesize dismissButtonTitle=_dismissButtonTitle;
+@property(retain, nonatomic) NSMutableArray *actionItems; // @synthesize actionItems=_actionItems;
 @property(retain, nonatomic) NSString *descriptionString; // @synthesize descriptionString=_descriptionString;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCH3DSceneObjectDelegator-Protocol.h>
-
 @class NSArray, NSMutableArray, TSCH3DChartRep, TSCH3DGetSelectionKnobsPositionsPipelineDelegate;
 
-@interface TSCH3DGetSelectionKnobsPositionsPipeline <TSCH3DSceneObjectDelegator>
+@interface TSCH3DGetSelectionKnobsPositionsPipeline
 {
     TSCH3DChartRep *_rep;
     TSCH3DGetSelectionKnobsPositionsPipelineDelegate *_sceneObjectDelegate;

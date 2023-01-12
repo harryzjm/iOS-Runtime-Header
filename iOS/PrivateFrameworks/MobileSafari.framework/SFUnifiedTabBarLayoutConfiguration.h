@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SFUnifiedBarMetrics, UIScrollView;
+@class SFUnifiedTabBarMetrics, UIScrollView;
 
 __attribute__((visibility("hidden")))
 @interface SFUnifiedTabBarLayoutConfiguration : NSObject
@@ -14,8 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _standalone;
     _Bool _flipped;
     UIScrollView *_scrollView;
-    SFUnifiedBarMetrics *_barMetrics;
-    unsigned long long _sizeClass;
+    SFUnifiedTabBarMetrics *_barMetrics;
     struct CGPoint _midpointForCenteredContent;
     struct CGRect _visibleRectOverride;
 }
@@ -25,8 +24,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool flipped; // @synthesize flipped=_flipped;
 @property(nonatomic, getter=isStandalone) _Bool standalone; // @synthesize standalone=_standalone;
 @property(nonatomic) struct CGPoint midpointForCenteredContent; // @synthesize midpointForCenteredContent=_midpointForCenteredContent;
-@property(nonatomic) unsigned long long sizeClass; // @synthesize sizeClass=_sizeClass;
-@property(retain, nonatomic) SFUnifiedBarMetrics *barMetrics; // @synthesize barMetrics=_barMetrics;
+@property(retain, nonatomic) SFUnifiedTabBarMetrics *barMetrics; // @synthesize barMetrics=_barMetrics;
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 - (id)initWithScrollView:(id)arg1;
 

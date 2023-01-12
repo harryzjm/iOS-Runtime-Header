@@ -7,6 +7,6 @@
 #import <GeoServices/GEOVLFLocation.h>
 
 @interface GEOVLFLocation (VLExtras)
-- (id)initWithCLLocation:(id)arg1 location:(const CDStruct_6c6357c7 *)arg2 heading:(double)arg3;
+- (id)initWithCLLocation:(id)arg1 location:(const CDStruct_03814764 *)arg2 heading:(double)arg3;
 @end
 

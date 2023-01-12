@@ -6,19 +6,24 @@
 
 #import <Preferences/PSListController.h>
 
-@class NSArray;
+@class NSArray, PSUICarrierSpaceMyAccountWebViewController, UINavigationController;
 
 __attribute__((visibility("hidden")))
 @interface PSUICarrierSpaceServicesController : PSListController
 {
+    UINavigationController *_navCon;
+    PSUICarrierSpaceMyAccountWebViewController *_myAccountWebViewController;
     NSArray *_appsList;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *appsList; // @synthesize appsList=_appsList;
+- (id)getLogger;
 - (void)moreAppsTapped:(id)arg1;
 - (_Bool)shouldShowMoreApps;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)launchMyAccountInSafari:(id)arg1;
+- (void)launchMyAccountInWebView:(id)arg1;
 - (id)primaryAppSpecifier;
 - (id)specifiers;
 - (void)viewDidAppear:(_Bool)arg1;

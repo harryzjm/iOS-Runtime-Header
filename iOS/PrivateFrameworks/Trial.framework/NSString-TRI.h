@@ -12,6 +12,7 @@
 - (_Bool)triIsPathSafe;
 - (id)triStringByResolvingSymlinksInPath;
 - (id)triTrim;
+- (id)triFilenameForFactorName;
 - (id)triSanitizedPathComponentWithMaxLength:(unsigned long long)arg1 addHash:(_Bool)arg2 error:(id *)arg3;
 - (unsigned long long)triJavaHash;
 - (id)triHashWithDataSalt:(id)arg1;

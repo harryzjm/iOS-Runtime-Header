@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSProxyConnectionDelegate-Protocol.h>
-
 @class NSDictionary, NSProxyConnection, NSString, __CFN_SocksHandshake;
 @protocol OS_dispatch_queue;
 
-@interface _NSCFSocksProxy : NSObject <NSProxyConnectionDelegate>
+@interface _NSCFSocksProxy : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     int _outPort;

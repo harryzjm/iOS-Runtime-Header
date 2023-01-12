@@ -7,6 +7,8 @@
 @class DUSchemaDUEvent, NSString, NSUUID, SISchemaTopLevelUnionType;
 
 @protocol SiriAnalyticsService
+- (void)sensitiveCondition:(int)arg1 endedAt:(unsigned long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)sensitiveCondition:(int)arg1 startedAt:(unsigned long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)enqueueLargeMessageObjectFromPath:(NSString *)arg1 dataUploadEvent:(DUSchemaDUEvent *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)barrierWithCompletion:(void (^)(void))arg1;
 - (void)resolvePartialMessage:(SISchemaTopLevelUnionType *)arg1 timestamp:(unsigned long long)arg2 isolatedStreamUUID:(NSUUID *)arg3 completion:(void (^)(void))arg4;

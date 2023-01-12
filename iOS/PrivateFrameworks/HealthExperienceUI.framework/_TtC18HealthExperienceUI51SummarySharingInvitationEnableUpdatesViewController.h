@@ -4,21 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI38OnboardingViewControllerWithNextButtonCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI51SummarySharingInvitationEnableUpdatesViewController
+@interface _TtC18HealthExperienceUI51SummarySharingInvitationEnableUpdatesViewController : _$s18HealthExperienceUI38OnboardingViewControllerWithNextButtonCN
 {
+    MISSING_TYPE *healthStore;
     MISSING_TYPE *sharingEntryStore;
     MISSING_TYPE *profileInformation;
-    MISSING_TYPE *inviteStreamCancellable;
-    MISSING_TYPE *notificationManager;
+    MISSING_TYPE *notificationAuthorizationStatus;
+    MISSING_TYPE *healthAppNotificationManager;
+    MISSING_TYPE *notificationSettingsManager;
     MISSING_TYPE *selectedContactPhotoPublisher;
-    MISSING_TYPE *disableUpdatesButton;
+    MISSING_TYPE *notificationAuthorizationCancellable;
+    MISSING_TYPE *$__lazy_storage_$_disableUpdatesButton;
 }
 
 - (void).cxx_destruct;
-- (void)disableButtonTapped;
+- (void)fetchNotificationAuthorizationStatus;
+- (void)disableButtonTapped:(id)arg1;
 - (void)nextButtonTapped:(id)arg1;
 
 @end

@@ -10,9 +10,9 @@
 
 @interface _TtC16SiriVideoIntents11AppSelector : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *recordStores;
-    MISSING_TYPE *signalCollectConfigProvider;
-    MISSING_TYPE *userDefaultsProvider;
+    MISSING_TYPE *analyticsLogger;
+    MISSING_TYPE *getTrialIdentifiers;
+    MISSING_TYPE *backgroundPlayableFetch;
 }
 
 @end

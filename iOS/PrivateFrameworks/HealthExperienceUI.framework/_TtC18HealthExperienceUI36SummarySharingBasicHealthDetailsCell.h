@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI41SectionedAdaptorCellWithHostingControllerCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI36SummarySharingBasicHealthDetailsCell
+@interface _TtC18HealthExperienceUI36SummarySharingBasicHealthDetailsCell : _$s18HealthExperienceUI41SectionedAdaptorCellWithHostingControllerCN
 {
     MISSING_TYPE *basicHealthDetailsView;
 }

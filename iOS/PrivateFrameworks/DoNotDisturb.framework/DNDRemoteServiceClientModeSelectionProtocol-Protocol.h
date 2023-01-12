@@ -6,10 +6,11 @@
 
 #import <DoNotDisturb/NSObject-Protocol.h>
 
-@class DNDModeAssertion, DNDStateUpdate, NSArray;
+@class DNDModeAssertion, DNDStateUpdate, NSArray, NSString;
 @protocol __DNDMode__, __NSString__;
 
 @protocol DNDRemoteServiceClientModeSelectionProtocol <NSObject>
+- (oneway void)signalAppConfigurationContextUpdateForModeIdentifier:(NSString *)arg1;
 - (oneway void)deliverAvailableModes:(NSArray<__DNDMode__> *)arg1;
 - (oneway void)deliverAllModes:(NSArray<__DNDMode__> *)arg1;
 - (oneway void)deliverActiveModeAssertion:(DNDModeAssertion *)arg1 stateUpdate:(DNDStateUpdate *)arg2 clientIdentifiers:(NSArray<__NSString__> *)arg3;

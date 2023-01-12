@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/NSDataAsset.h>
+#import "NSDataAsset.h"
 
 @interface NSDataAsset (UIAssetBundle)
 + (id)_namedDataPrivateAccessorWithName:(id)arg1 bundle:(id)arg2;

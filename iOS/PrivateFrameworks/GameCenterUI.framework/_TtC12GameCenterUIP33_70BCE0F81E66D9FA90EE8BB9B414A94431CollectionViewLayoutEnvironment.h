@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameCenterUI/NSCollectionLayoutEnvironment-Protocol.h>
-
 @class MISSING_TYPE, UITraitCollection;
 @protocol NSCollectionLayoutContainer;
 
-@interface _TtC12GameCenterUIP33_70BCE0F81E66D9FA90EE8BB9B414A94431CollectionViewLayoutEnvironment : NSObject <NSCollectionLayoutEnvironment>
+@interface _TtC12GameCenterUIP33_70BCE0F81E66D9FA90EE8BB9B414A94431CollectionViewLayoutEnvironment : NSObject
 {
     MISSING_TYPE *container;
     MISSING_TYPE *traitCollection;

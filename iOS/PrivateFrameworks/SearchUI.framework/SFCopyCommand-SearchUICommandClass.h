@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFCopyCommand.h>
 
 @interface SFCopyCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

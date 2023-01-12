@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCMomentsMessengerDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, VCMomentsMessengerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCMomentsManager : NSObject <VCMomentsMessengerDelegate>
+@interface VCMomentsManager : NSObject
 {
     NSMutableDictionary *_streamTokenList;
     id _delegate;

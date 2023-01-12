@@ -51,6 +51,7 @@
 - (void)removeFirstItemFromPlaylistWithIdentifier:(long long)arg1;
 - (void)removeAllItemsInPlaylistWithIdentifier:(long long)arg1;
 - (void)removeItemsAtIndexes:(NSIndexSet *)arg1 inPlaylistWithIdentifier:(long long)arg2 completionBlock:(void (^)(_Bool))arg3;
+- (void)sdk_addItemWithSagaIdentifier:(long long)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(void (^)(NSError *))arg3;
 - (void)sdk_addItemWithOpaqueIdentifier:(NSString *)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(void (^)(NSError *))arg3;
 - (void)addItemsWithIdentifiers:(NSArray *)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(void (^)(_Bool))arg3;
 - (void)addItemWithIdentifier:(long long)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(void (^)(_Bool))arg3;

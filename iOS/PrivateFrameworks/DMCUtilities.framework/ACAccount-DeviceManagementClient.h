@@ -6,13 +6,16 @@
 
 #import <Accounts/ACAccount.h>
 
-@class NSNumber, NSString;
+@class NSDictionary, NSNumber, NSString;
 
 @interface ACAccount (DeviceManagementClient)
 + (id)dmc_createManagementAccountWithStore:(id)arg1;
+- (_Bool)dmc_isAccountSchemeSharediPad;
 - (id)dmc_accountQuotaString;
 - (_Bool)dmc_isPrimaryAccount;
 - (_Bool)dmc_isVisibleRemoteManagementAccount;
+@property(readonly) NSString *dmc_mdmServerToken;
+@property(copy, setter=dmc_setSignInUserIdentifier:) NSString *dmc_signInUserIdentifier;
 @property(copy, setter=dmc_setPersonaIdentifier:) NSString *dmc_personaIdentifier;
 @property(readonly) ACAccount *dmc_remoteManagementAccount;
 @property(copy, setter=dmc_setRemoteManagingAccountIdentifier:) NSString *dmc_remoteManagingAccountIdentifier;
@@ -24,6 +27,7 @@
 @property(setter=dmc_setEnrollmentMethod:) unsigned long long dmc_enrollmentMethod;
 @property(copy, setter=dmc_setDSID:) NSNumber *dmc_DSID;
 @property(copy, setter=dmc_setBearerToken:) NSString *dmc_bearerToken;
+@property(copy, setter=dmc_setBearerReauthParams:) NSDictionary *dmc_bearerReauthParams;
 @property(copy, setter=dmc_setBearerReauthURL:) NSString *dmc_bearerReauthURL;
 @property(copy, setter=dmc_setAltDSID:) NSString *dmc_altDSID;
 @property(copy, setter=dmc_setAccountScheme:) NSString *dmc_accountScheme;

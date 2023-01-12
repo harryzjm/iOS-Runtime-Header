@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)detailText;
 - (id)primaryText;
 - (_Bool)canBeChecked;
+- (id)_cellularPlanItem;
 
 @end
 

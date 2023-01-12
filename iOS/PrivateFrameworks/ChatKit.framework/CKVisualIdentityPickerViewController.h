@@ -6,13 +6,11 @@
 
 #import <ContactsUI/CNVisualIdentityPickerViewController.h>
 
-#import <ChatKit/CNVisualIdentityPickerViewControllerDelegate-Protocol.h>
-
 @class CKConversation;
 @protocol CKVisualIdentityPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKVisualIdentityPickerViewController : CNVisualIdentityPickerViewController <CNVisualIdentityPickerViewControllerDelegate>
+@interface CKVisualIdentityPickerViewController : CNVisualIdentityPickerViewController
 {
     CKConversation *_conversation;
     id <CKVisualIdentityPickerViewControllerDelegate> _presentationDelegate;

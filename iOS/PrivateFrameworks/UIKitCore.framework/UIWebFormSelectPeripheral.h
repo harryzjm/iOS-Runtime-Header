@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIFormPeripheral-Protocol.h>
-
 @class DOMHTMLSelectElement;
 @protocol UIWebFormControl;
 
 __attribute__((visibility("hidden")))
-@interface UIWebFormSelectPeripheral : NSObject <UIFormPeripheral>
+@interface UIWebFormSelectPeripheral : NSObject
 {
     DOMHTMLSelectElement *_selectionNode;
     id <UIWebFormControl> _selectControl;

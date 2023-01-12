@@ -15,3 +15,8 @@ struct CGSize {
     double _field2;
 };
 
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
+};
+

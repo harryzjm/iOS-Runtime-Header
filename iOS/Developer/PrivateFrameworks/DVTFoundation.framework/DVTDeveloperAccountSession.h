@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTDeveloperAccountSessionProtocol-Protocol.h>
-
 @class DVTDeveloperAccount, NSData, NSString;
 
-@interface DVTDeveloperAccountSession : NSObject <DVTDeveloperAccountSessionProtocol>
+@interface DVTDeveloperAccountSession : NSObject
 {
     id _identity;
     DVTDeveloperAccount *_account;

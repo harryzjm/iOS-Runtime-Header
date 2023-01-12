@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCoding-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface IBDirectionalEdgeInsetsWrapper : NSObject <NSCopying, NSCoding, IBBinaryArchiving>
+@interface IBDirectionalEdgeInsetsWrapper : NSObject
 {
     struct NSDirectionalEdgeInsets _edgeInsetsValue;
 }

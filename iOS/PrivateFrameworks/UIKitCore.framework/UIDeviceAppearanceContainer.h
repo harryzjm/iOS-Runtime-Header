@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIAppearanceContainer-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIDeviceAppearanceContainer : NSObject <_UIAppearanceContainer>
+@interface UIDeviceAppearanceContainer : NSObject
 {
 }
 

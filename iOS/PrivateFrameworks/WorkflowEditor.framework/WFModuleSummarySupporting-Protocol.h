@@ -12,6 +12,7 @@
 @protocol WFModuleSummarySupporting <NSObject>
 
 @optional
++ (_Bool)supportsEditingMultipleValues;
 + (Class)moduleSummaryEditorClass;
 - (_Bool)moduleSummaryShowsAddButtonForState:(id <WFParameterState>)arg1;
 - (id <WFParameterState>)defaultStateForNewArrayElement;

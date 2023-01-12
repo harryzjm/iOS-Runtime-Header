@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIKeyboardKeyplaneTransformation-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardSupplementaryControlKeyTransformation : NSObject <UIKeyboardKeyplaneTransformation>
+@interface UIKeyboardSupplementaryControlKeyTransformation : NSObject
 {
 }
 
 + (id)transformKeyplane:(id)arg1 withTransformationContext:(id)arg2;
++ (void)transformKeysForVietnameseKeyPlane:(id)arg1 withTransformationContext:(id)arg2;
 + (void)transformLastRowKeysForKeyplane:(id)arg1 row:(unsigned long long)arg2 withTransformationContext:(id)arg3;
 + (void)transformKeysForHandwritingKeyplane:(id)arg1 withTransformationContext:(id)arg2;
 + (void)transformKeysForFiveRowKeyplane:(id)arg1 withTransformationContext:(id)arg2;
@@ -31,6 +30,8 @@ __attribute__((visibility("hidden")))
 + (id)_supplementaryControlKeyWithName:(id)arg1 context:(id)arg2;
 + (id)_supplementaryControlKeySetForOrientation:(long long)arg1 context:(id)arg2;
 + (double)_derivedTrailingControlKeyWidthForRow:(unsigned long long)arg1 orientation:(long long)arg2;
++ (double)_scaledDerivedLeadingControlKeyWidth:(double)arg1 forKeysForRow:(id)arg2 keyCount:(long long)arg3 numberOfKeysInSpecification:(long long)arg4 context:(id)arg5;
++ (double)_derivedFiveRowControlKeyWidthForRow:(unsigned long long)arg1 keysForRow:(id)arg2 context:(id)arg3;
 + (double)_derivedLeadingControlKeyWidthForRow:(unsigned long long)arg1 keysForRow:(id)arg2 context:(id)arg3;
 + (unsigned long long)_numberOfKeysInRow:(id)arg1 firstKey:(id *)arg2 lastKey:(id *)arg3;
 + (double)_keyplanePaddingForOrientation:(long long)arg1 row:(unsigned long long)arg2;

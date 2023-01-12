@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HeartHealthDaemon/HKHRDatabaseAnalysisSchedulerGatedActivityFactory-Protocol.h>
-
 @class NSString;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
-@interface HKHRDatabaseAnalysisSchedulerGatedActivityFactoryImpl : NSObject <HKHRDatabaseAnalysisSchedulerGatedActivityFactory>
+@interface HKHRDatabaseAnalysisSchedulerGatedActivityFactoryImpl : NSObject
 {
     NSString *_identifier;
     NSObject<OS_os_log> *_loggingCategory;

@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKChatInputController, CKInlineReplyChatController, NSArray, NSDictionary;
+@class CKChatInputController, CKInlineReplyChatController;
 
 @protocol CKInlineReplyInteractionDelegate <NSObject>
 - (void)inlineReplyController:(CKInlineReplyChatController *)arg1 setIsShowingPreview:(_Bool)arg2;
@@ -17,15 +17,7 @@
 - (void)inlineReplyController:(CKInlineReplyChatController *)arg1 setTargetFirstResponder:(long long)arg2;
 - (void)inlineReplyControllerRequestsReloadInputViews:(CKInlineReplyChatController *)arg1;
 - (_Bool)inlineReplyControllerBecomeFirstResponder:(CKInlineReplyChatController *)arg1;
-- (NSDictionary *)inlineReplyControllerUpdatedFrameMap:(CKInlineReplyChatController *)arg1;
-- (void)inlineReplyControllerDidAnimateOut:(CKInlineReplyChatController *)arg1;
-- (void)inlineReplyControllerDidAnimateIn:(CKInlineReplyChatController *)arg1;
-- (void)inlineReplyControllerIsAnimatingOut:(CKInlineReplyChatController *)arg1;
-- (void)inlineReplyControllerIsAnimatingIn:(CKInlineReplyChatController *)arg1;
-- (void)inlineReplyControllerWillAnimateOut:(CKInlineReplyChatController *)arg1;
-- (void)inlineReplyControllerWillAnimateIn:(CKInlineReplyChatController *)arg1;
 - (struct CGRect)inlineReplyController:(CKInlineReplyChatController *)arg1 gradientFrameWithInsets:(struct UIEdgeInsets)arg2;
-- (void)inlineReplyController:(CKInlineReplyChatController *)arg1 visibleGUIDsDidChange:(NSArray *)arg2;
 - (void)inlineReplyControllerRequestsDismissal:(CKInlineReplyChatController *)arg1 presentKeyboard:(_Bool)arg2;
 @end
 

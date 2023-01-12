@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CPLFeedbackMessage.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CPLResetFeedbackMessage
+@interface CPLResetFeedbackMessage : CPLFeedbackMessage
 {
     NSString *_resetType;
     NSString *_reason;

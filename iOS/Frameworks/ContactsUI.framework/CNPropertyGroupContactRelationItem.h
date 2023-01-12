@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNPropertyGroupItem.h"
+
 @class CNContactRelation;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyGroupContactRelationItem
+@interface CNPropertyGroupContactRelationItem : CNPropertyGroupItem
 {
 }
 

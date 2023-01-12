@@ -9,5 +9,7 @@
 @interface NSArray (BMDSLArray)
 - (id)dslWithValueClassName:(id)arg1;
 - (id)dslWithClass:(Class)arg1;
+- (id)_bmdsl_randomObjectForKey:(id)arg1;
+- (id)bmdsl_randomObject;
 @end
 

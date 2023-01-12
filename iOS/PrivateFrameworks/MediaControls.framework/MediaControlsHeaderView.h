@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/_UICursorInteractionDelegate-Protocol.h>
-
 @class MPButton, MPCPlayerPath, MPRouteLabel, MPUMarqueeView, MTMaterialView, MTVisualStylingProvider, MediaControlsRoutingButtonView, NSString, UIButton, UIImageView, UILabel, _UICursorInteraction;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsHeaderView : UIView <_UICursorInteractionDelegate>
+@interface MediaControlsHeaderView : UIView
 {
     _Bool _transitioning;
     _Bool _showPlaceholderString;

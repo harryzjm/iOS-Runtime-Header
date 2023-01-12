@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <CoreHAP/HAP2AccessoryCharacteristicEncodableBodyValue-Protocol.h>
-
-@interface NSString (HAPTLVHelpers) <HAP2AccessoryCharacteristicEncodableBodyValue>
+@interface NSString (HAPTLVHelpers)
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (id)serializeWithError:(id *)arg1;
 

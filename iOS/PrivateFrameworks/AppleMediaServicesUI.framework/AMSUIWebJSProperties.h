@@ -6,36 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class AMSUIWebClientContext, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSDictionary;
-@protocol AMSUIWebJSPropertiesDelegate, OS_dispatch_queue;
+@class AMSUIWebClientContext, NSDictionary;
+@protocol AMSUIWebJSPropertiesDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AMSUIWebJSProperties : NSObject
 {
-    _Bool _telephonySetupFailed;
     id <AMSUIWebJSPropertiesDelegate> _delegate;
     AMSUIWebClientContext *_context;
     NSDictionary *_lastAccountsExport;
-    CoreTelephonyClient *_telephonyClient;
-    CTXPCServiceSubscriptionContext *_telephonyContext;
-    NSObject<OS_dispatch_queue> *_telephonyQueue;
 }
 
-+ (_Bool)_hasRequiredTelephonyEntitlement;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *telephonyQueue; // @synthesize telephonyQueue=_telephonyQueue;
-@property(nonatomic) _Bool telephonySetupFailed; // @synthesize telephonySetupFailed=_telephonySetupFailed;
-@property(retain, nonatomic) CTXPCServiceSubscriptionContext *telephonyContext; // @synthesize telephonyContext=_telephonyContext;
-@property(retain, nonatomic) CoreTelephonyClient *telephonyClient; // @synthesize telephonyClient=_telephonyClient;
 @property(retain, nonatomic) NSDictionary *lastAccountsExport; // @synthesize lastAccountsExport=_lastAccountsExport;
 @property(nonatomic) __weak AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak id <AMSUIWebJSPropertiesDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_hexStringFromColor:(id)arg1;
-- (void)phoneNumberChanged:(id)arg1;
-- (void)phoneNumberAvailable:(id)arg1;
-- (void)operatorNameChanged:(id)arg1 name:(id)arg2;
-- (_Bool)_setupTelephonyIfNeeded;
-- (id)_telephoneProperties;
 - (id)_propertiesForClientInfo:(id)arg1;
 - (id)_processProperties;
 - (id)_pluginProperties;

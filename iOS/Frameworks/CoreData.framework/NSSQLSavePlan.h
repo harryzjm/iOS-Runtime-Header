@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_updatedByRequest;
     NSMutableSet *_updatedByForeignKey;
     NSMutableSet *_rowsToAddToRowCache;
+    NSMutableSet *_objectIDsToRemoveFromRowCache;
     struct __CFDictionary *_updatedFOKRowsInCurrentSave;
     struct __CFDictionary *_deletedFOKRowsInCurrentSave;
     NSMutableArray *_externalDataReferencesToSave;

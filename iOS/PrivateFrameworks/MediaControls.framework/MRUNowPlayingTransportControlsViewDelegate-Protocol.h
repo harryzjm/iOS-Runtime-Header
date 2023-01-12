@@ -6,11 +6,10 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class MPCPlayerResponseItem, MRUNowPlayingTransportControlsView, UIView;
+@class MRUNowPlayingTransportControlsView, MRUTransportButton;
 
 @protocol MRUNowPlayingTransportControlsViewDelegate <NSObject>
-- (void)transportControlsView:(MRUNowPlayingTransportControlsView *)arg1 presentLanguageOptionsFromSourceView:(UIView *)arg2;
-- (void)transportControlsView:(MRUNowPlayingTransportControlsView *)arg1 presentTVRemoteFromSourceView:(UIView *)arg2;
-- (void)transportControlsView:(MRUNowPlayingTransportControlsView *)arg1 presentActionSheetForItem:(MPCPlayerResponseItem *)arg2 sourceView:(UIView *)arg3;
+- (void)transportControlsView:(MRUNowPlayingTransportControlsView *)arg1 didSelectRoutingButton:(MRUTransportButton *)arg2;
+- (void)transportControlsView:(MRUNowPlayingTransportControlsView *)arg1 didSelectTVRemoteButton:(MRUTransportButton *)arg2;
 @end
 

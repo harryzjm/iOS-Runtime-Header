@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSError, NSString;
 @protocol IBCollection;
 
-@interface IBAutolayoutArbitrationResult : NSObject <IBBinaryArchiving>
+@interface IBAutolayoutArbitrationResult : NSObject
 {
     id <IBCollection> _constraintsToAdd;
     id <IBCollection> _constraintsToRemove;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSEntitlementVerifying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSEntitlementVerifier : NSObject <BCSEntitlementVerifying>
+@interface BCSEntitlementVerifier : NSObject
 {
 }
 

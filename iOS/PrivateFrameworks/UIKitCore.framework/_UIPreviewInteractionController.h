@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/UIPreviewInteractionDelegate-Protocol.h>
-#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <UIKitCore/_UIPreviewActionsControllerDelegate-Protocol.h>
-
 @class NSString, UIGestureRecognizer, UIPreviewInteraction, UIView, UIViewController, _UIInteractionEffect_deprecated, _UIPreviewActionsController, _UIPreviewInteractionCommitTransition, _UIPreviewInteractionDismissTransition, _UIPreviewInteractionGestureRecognizer, _UIPreviewInteractionPresentationTransition, _UIPreviewPresentationController2, _UISteadyTouchForceGestureRecognizer, _UITouchesObservingGestureRecognizer;
 @protocol UIViewControllerPreviewing_Internal, _UIPreviewInteractionControllerDelegate, _UIPreviewInteractionHighlighting, _UIPreviewInteractionTouchForceProviding;
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionController : NSObject <UIGestureRecognizerDelegate, UIPreviewInteractionDelegate, UIViewControllerTransitioningDelegate, _UIPreviewActionsControllerDelegate>
+@interface _UIPreviewInteractionController : NSObject
 {
     _Bool _performingPreviewTransition;
     _Bool _hasTransitionedToPreview;

@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class GQDPath, GQDWPLayoutFrame, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDShape <GQDNameMappable>
+@interface GQDShape
 {
     GQDPath *mPath;
     GQDWPLayoutFrame *mLayoutFrame;

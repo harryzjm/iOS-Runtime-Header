@@ -6,9 +6,10 @@
 
 #import <DiagnosticExtensionsDaemon/NSObject-Protocol.h>
 
-@class DEDBugSession, DEDBugSessionConfiguration, DEDDevice, NSDictionary, NSString;
+@class DEDBugSession, DEDBugSessionConfiguration, DEDDevice, NSArray, NSDictionary, NSString;
 
 @protocol DEDIDSInboundDelegate <NSObject>
+- (void)idsInbound_devicesChanged:(NSArray *)arg1;
 - (DEDBugSession *)idsInbound_sessionForIdentifier:(NSString *)arg1;
 - (void)idsInbound_didAbortSessionWithID:(NSString *)arg1;
 - (void)idsInbound_didStartBugSessionWithInfo:(NSDictionary *)arg1;

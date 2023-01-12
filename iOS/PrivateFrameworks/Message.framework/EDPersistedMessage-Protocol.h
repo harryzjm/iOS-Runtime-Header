@@ -4,15 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Message/EDIndexableMessage-Protocol.h>
+#import <Message/EDBaseMessage-Protocol.h>
 
-@class NSString;
+@class EMFollowUp, EMReadLater, NSData, NSDate, NSString, NSURL;
+@protocol EDAccount;
 
-@protocol EDPersistedMessage <EDIndexableMessage>
-@property(readonly) unsigned long long conversationFlags;
-@property(readonly, nonatomic) long long globalMessageID;
-@property(readonly, nonatomic) long long persistedMessageID;
-@property(readonly, copy, nonatomic) NSString *summary;
-@property(readonly, copy, nonatomic) NSString *persistentID;
+@protocol EDPersistedMessage <EDBaseMessage>
+- (void)setBrandIndicatorLocation:(NSURL *)arg1 andData:(NSData *)arg2;
+@property(nonatomic, readonly) NSURL *basePath;
+@property(nonatomic, readonly) long long unsubscribeType;
+@property(nonatomic, retain) EMFollowUp *followUp;
+@property(nonatomic, readonly) id <EDAccount> accountForSender;
+@property(nonatomic, copy) NSDate *sendLaterDate;
+@property(nonatomic, retain) EMReadLater *readLater;
+@property(nonatomic, copy) NSDate *displayDate;
+@property(nonatomic, readonly) long long senderBucket;
+@property(nonatomic, readonly) unsigned long long conversationFlags;
+@property(nonatomic, readonly) long long persistedMessageID;
+@property(nonatomic, readonly) NSString *summary;
+@property(nonatomic, readonly) NSString *persistentID;
 @end
 

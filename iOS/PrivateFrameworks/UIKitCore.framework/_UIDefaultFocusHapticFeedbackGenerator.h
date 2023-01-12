@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFocusHapticFeedbackGenerator-Protocol.h>
-
 @class CARInputDeviceTouchpad, CARSessionStatus, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDefaultFocusHapticFeedbackGenerator : NSObject <_UIFocusHapticFeedbackGenerator>
+@interface _UIDefaultFocusHapticFeedbackGenerator : NSObject
 {
     CARSessionStatus *_sessionStatus;
     CARInputDeviceTouchpad *_currentTouchpad;

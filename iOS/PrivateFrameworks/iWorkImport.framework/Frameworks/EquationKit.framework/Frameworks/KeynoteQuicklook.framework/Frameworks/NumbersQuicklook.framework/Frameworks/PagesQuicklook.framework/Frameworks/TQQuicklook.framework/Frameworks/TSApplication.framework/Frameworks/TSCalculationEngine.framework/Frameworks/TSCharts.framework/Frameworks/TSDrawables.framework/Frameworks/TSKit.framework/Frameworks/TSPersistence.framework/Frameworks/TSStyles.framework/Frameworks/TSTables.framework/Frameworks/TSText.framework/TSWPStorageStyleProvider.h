@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSWPStyleProvider-Protocol.h>
-
 @class NSString;
 
-@interface TSWPStorageStyleProvider : NSObject <TSWPStyleProvider>
+@interface TSWPStorageStyleProvider : NSObject
 {
 }
 

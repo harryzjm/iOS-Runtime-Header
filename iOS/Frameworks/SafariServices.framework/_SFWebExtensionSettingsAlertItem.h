@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_SFSettingsAlertItem.h"
+
 @class WBSWebExtensionData;
 
 __attribute__((visibility("hidden")))
-@interface _SFWebExtensionSettingsAlertItem
+@interface _SFWebExtensionSettingsAlertItem : _SFSettingsAlertItem
 {
     WBSWebExtensionData *_extension;
 }

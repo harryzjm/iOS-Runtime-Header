@@ -7,12 +7,17 @@
 @class CHKWidgetEnvironment, CHSWidget, NSArray, NSDictionary, NSFileHandle, NSString;
 
 @protocol _TtP9WidgetKit22WidgetExtensionSession_
-- (void)invalidate;
 - (void)getTimelineFor:(CHSWidget *)arg1 into:(NSFileHandle *)arg2 environment:(CHKWidgetEnvironment *)arg3 isPreview:(_Bool)arg4 completion:(void (^)(NSError *))arg5;
-- (void)getTimelinesWithRequests:(NSArray *)arg1 isPreview:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
-- (void)attachPreviewAgentWithFrameworkPath:(NSString *)arg1 endpoint:(id)arg2 handler:(void (^)(BSAuditToken *, NSError *))arg3;
-- (void)handleURLSessionEventsFor:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)getPlaceholdersForRequests:(NSDictionary *)arg1 inEnvironment:(CHKWidgetEnvironment *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)getPlaceholdersWithEnvironment:(CHKWidgetEnvironment *)arg1 for:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)getDescriptorsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)invalidate;
+- (void)getActivitiesWithRequests:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)getTimelinesWithRequests:(NSArray *)arg1 isPreview:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
+- (void)getPlaceholdersWithRequests:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)attachPreviewAgentWithFrameworkPath:(NSString *)arg1 endpoint:(id)arg2 handler:(void (^)(BSAuditToken *, NSError *))arg3;
+- (void)handleURLSessionEventsFor:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)getAllCurrentDescriptorsWithCompletion:(void (^)(_TtC9WidgetKit21DescriptorFetchResult *, NSError *))arg1;
+- (void)getCurrentDescriptorsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 @end
 

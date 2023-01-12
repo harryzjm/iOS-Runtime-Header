@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneComponentProviding-Protocol.h>
-
 @class NSString, UIScene;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyWindowSceneObserver : NSObject <_UISceneComponentProviding>
+@interface _UIKeyWindowSceneObserver : NSObject
 {
     struct {
         unsigned int sceneIsObservable:1;

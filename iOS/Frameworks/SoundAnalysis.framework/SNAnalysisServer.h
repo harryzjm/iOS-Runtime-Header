@@ -6,25 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/NSXPCListenerDelegate-Protocol.h>
-
 @class NSString, NSXPCListener, SNSystemServiceResourceCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface SNAnalysisServer : NSObject <NSXPCListenerDelegate>
+@interface SNAnalysisServer : NSObject
 {
     NSXPCListener *_listener;
     SNSystemServiceResourceCoordinator *_coordinator;
 }
 
-+ (id)launchWithResourceCoordinator:(id)arg1 onXPCListener:(id)arg2;
-+ (id)launchAsMachServiceWithName:(id)arg1;
-+ (id)launchDefaultServer;
 - (void).cxx_destruct;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (id)connectLocally;
-- (void)start;
-- (id)initWithResourceCoordinator:(id)arg1 onListener:(id)arg2;
 - (id)init;
 
 // Remaining properties

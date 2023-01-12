@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UILongPressGestureRecognizer.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIAccessibilityHUDLongPressGestureRecognizer
+@interface _UIAccessibilityHUDLongPressGestureRecognizer : UILongPressGestureRecognizer
 {
 }
 
 - (_Bool)_isGestureType:(long long)arg1;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 
 @end
 

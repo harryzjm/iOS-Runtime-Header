@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIScrollView.h"
+
 @class CALayer, DOMNode, UIWebBrowserView, UIWebOverflowContentView, UIWebOverflowScrollListener;
 
 __attribute__((visibility("hidden")))
-@interface UIWebOverflowScrollView
+@interface UIWebOverflowScrollView : UIScrollView
 {
     _Bool _beingRemoved;
     UIWebBrowserView *_webBrowserView;

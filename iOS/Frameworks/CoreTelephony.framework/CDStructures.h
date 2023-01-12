@@ -10,24 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct EmergencyMode {
-    int _field1;
-    int _field2;
-    int _field3;
-    _Bool _field4;
-    _Bool _field5;
-};
-
-struct MCC {
-    unsigned short _field1;
-    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field2;
-};
-
-struct MNC {
-    unsigned short _field1;
-    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field2;
-};
-
 struct __CTAssertionType {
     struct __CFRuntimeBase {
         unsigned long long _field1;
@@ -40,29 +22,6 @@ struct __CTAssertionType {
 
 struct __tree_end_node<std::__tree_node_base<void *>*> {
     void *__left_;
-};
-
-struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
-    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    char *_field1;
-                    unsigned long long _field2;
-                    unsigned long long _field3;
-                } _field1;
-                struct __short {
-                    char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
-                } _field2;
-                struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
 };
 
 struct dispatch_object_s;
@@ -105,9 +64,4 @@ typedef struct {
     _Bool _field1;
     _Bool _field2;
 } CDStruct_3d581f42;
-
-typedef struct {
-    int _field1;
-    int _field2;
-} CDStruct_1ef3fb1f;
 

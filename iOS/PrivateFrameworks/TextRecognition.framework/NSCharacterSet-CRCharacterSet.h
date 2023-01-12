@@ -8,5 +8,9 @@
 
 @interface NSCharacterSet (CRCharacterSet)
 + (id)customUnknownScriptCharacterSet;
++ (id)_crMOSCharacterSet;
++ (id)_crClosingPunctuationCharacterSet;
++ (id)_crEOSCharacterSet;
++ (id)_crBOSCharacterSet;
 @end
 

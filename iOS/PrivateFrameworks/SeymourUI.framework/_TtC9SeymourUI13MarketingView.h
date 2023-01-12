@@ -13,16 +13,24 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *isLoading;
+    MISSING_TYPE *onElementAppearance;
+    MISSING_TYPE *onElementDisappearance;
+    MISSING_TYPE *onVisibleBoundsChange;
+    MISSING_TYPE *onImpressionableBoundsChange;
     MISSING_TYPE *backgroundImageView;
     MISSING_TYPE *layout;
     MISSING_TYPE *logoImageView;
     MISSING_TYPE *stackView;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
+    MISSING_TYPE *supportingTextLabel;
+    MISSING_TYPE *actionItemSubtitles;
     MISSING_TYPE *actionItemTitles;
+    MISSING_TYPE *actionItemButtons;
     MISSING_TYPE *actionItemViews;
     MISSING_TYPE *offer;
     MISSING_TYPE *pendingOffer;
+    MISSING_TYPE *lastTappedActionItemButton;
 }
 
 - (void).cxx_destruct;

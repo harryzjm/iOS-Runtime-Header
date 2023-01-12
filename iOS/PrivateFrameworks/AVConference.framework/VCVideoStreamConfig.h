@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     long long _type;
     unsigned long long _sourceFramerate;
     int _encodingMode;
+    int _encoderUsage;
     _Atomic unsigned char *_videoPriorityPointer;
     unsigned int _screenDisplayID;
     unsigned long long _customWidth;
@@ -43,13 +44,22 @@ __attribute__((visibility("hidden")))
     _Bool _rtcpPSFB_FIREnabled;
     _Bool _resetSendRTPTimestampOnStop;
     id <VCMediaStreamSyncSource> _syncSource;
+    _Bool _useInBandFEC;
+    unsigned int _audioIOSampleRate;
     _Bool _useVideoJitterForVideoPlayout;
+    _Bool _forceZeroRegionOfInterestOrigin;
+    unsigned long long _maxEncoderPixels;
 }
 
 + (id)profileLevelStringForId:(unsigned int)arg1;
 + (unsigned int)profileLevelIdForString:(id)arg1;
 + (_Bool)validateClientDictionary:(id)arg1;
+@property(nonatomic) _Bool forceZeroRegionOfInterestOrigin; // @synthesize forceZeroRegionOfInterestOrigin=_forceZeroRegionOfInterestOrigin;
+@property(nonatomic) unsigned long long maxEncoderPixels; // @synthesize maxEncoderPixels=_maxEncoderPixels;
 @property(nonatomic) _Bool useVideoJitterForVideoPlayout; // @synthesize useVideoJitterForVideoPlayout=_useVideoJitterForVideoPlayout;
+@property(nonatomic) unsigned int audioIOSampleRate; // @synthesize audioIOSampleRate=_audioIOSampleRate;
+@property(nonatomic) _Bool useInBandFEC; // @synthesize useInBandFEC=_useInBandFEC;
+@property(nonatomic) int encoderUsage; // @synthesize encoderUsage=_encoderUsage;
 @property(nonatomic) _Bool resetSendRTPTimestampOnStop; // @synthesize resetSendRTPTimestampOnStop=_resetSendRTPTimestampOnStop;
 @property(nonatomic) id <VCMediaStreamSyncSource> syncSource; // @synthesize syncSource=_syncSource;
 @property(nonatomic) _Bool rtcpPSFB_FIREnabled; // @synthesize rtcpPSFB_FIREnabled=_rtcpPSFB_FIREnabled;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreServices/NSCopying-Protocol.h>
-
 @class NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface SSVCookieKey : NSObject <NSCopying>
+@interface SSVCookieKey : NSObject
 {
     NSNumber *_identifier;
     long long _scope;

@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *contentInsetInitialBehavior;
     MISSING_TYPE *currentContentInsetBehavior;
     MISSING_TYPE *visibility;
-    MISSING_TYPE *dependencies;
     MISSING_TYPE *dataProvider;
+    MISSING_TYPE *dependencies;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *resignActiveObserver;
     MISSING_TYPE *sortOptionsDataProvider;

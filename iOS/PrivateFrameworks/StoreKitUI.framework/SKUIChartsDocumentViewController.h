@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUIResourceLoaderDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSMutableArray, NSString, SKUIChartColumnsView, SKUIChartsTemplateViewElement, SKUIResourceLoader;
 
 __attribute__((visibility("hidden")))
-@interface SKUIChartsDocumentViewController <SKUIResourceLoaderDelegate, SKUIDocumentViewController>
+@interface SKUIChartsDocumentViewController : SKUIViewController
 {
     SKUIChartColumnsView *_chartsView;
     NSMutableArray *_columnViewControllers;

@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/SFPasswordSavingServiceViewControllerProtocol-Protocol.h>
-#import <SafariServices/_ASAccountAuthenticationModificationExtensionManagerObserver-Protocol.h>
-#import <SafariServices/_ASAccountAuthenticationModificationHostViewControllerDelegate-Protocol.h>
-
-@class NSArray, NSExtension, NSString, NSURLCredential, UIAlertController, WBSAutoFillQuirksManager, WBSPasswordWarning, WBSSavedPasswordStore, _ASAccountAuthenticationModificationHostViewController;
+@class NSArray, NSExtension, NSString, NSURLCredential, UIAlertController, WBSAutoFillQuirksManager, WBSPasswordWarning, WBSSavedAccountStore, _ASAccountAuthenticationModificationHostViewController;
 
 __attribute__((visibility("hidden")))
-@interface SFPasswordSavingServiceViewController <_ASAccountAuthenticationModificationExtensionManagerObserver, _ASAccountAuthenticationModificationHostViewControllerDelegate, SFPasswordSavingServiceViewControllerProtocol>
+@interface SFPasswordSavingServiceViewController
 {
     long long _action;
     NSArray *_protectionSpacesToUpdate;
@@ -23,7 +19,7 @@ __attribute__((visibility("hidden")))
     WBSPasswordWarning *_passwordWarning;
     NSExtension *_accountModificationExtension;
     _ASAccountAuthenticationModificationHostViewController *_accountModificationHostViewController;
-    WBSSavedPasswordStore *_savedPasswordStore;
+    WBSSavedAccountStore *_savedAccountStore;
     _Bool _supportsUpgradeToStrongPassword;
     _Bool _supportsUpgradeToSignInWithApple;
     _Bool _passwordIsWeakEnoughForActiveWarning;

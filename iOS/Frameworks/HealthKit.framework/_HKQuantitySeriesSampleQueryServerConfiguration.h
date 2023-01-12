@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class HKQuantitySample, NSDate, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface _HKQuantitySeriesSampleQueryServerConfiguration
+@interface _HKQuantitySeriesSampleQueryServerConfiguration : HKQueryServerConfiguration
 {
     HKQuantitySample *_quantitySample;
     long long _seriesAnchor;

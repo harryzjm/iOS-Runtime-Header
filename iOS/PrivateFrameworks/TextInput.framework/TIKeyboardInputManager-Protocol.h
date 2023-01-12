@@ -9,6 +9,8 @@
 @class NSArray, NSDictionary, NSString, TICandidateRequestToken, TIKeyboardCandidate, TIKeyboardInput, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent, TISupplementalLexicon;
 
 @protocol TIKeyboardInputManager <NSObject>
+- (void)changingContextWithTrigger:(NSString *)arg1;
+- (void)acceptingCandidateWithTrigger:(NSString *)arg1;
 - (void)removeSupplementalLexiconWithIdentifier:(unsigned long long)arg1;
 - (void)addSupplementalLexicon:(TISupplementalLexicon *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)writeTypologyLogWithCompletionHandler:(void (^)(NSURL *))arg1;

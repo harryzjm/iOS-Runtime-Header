@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DChartAllElementSceneObjectDelegate-Protocol.h>
-
 @class NSString;
 
-@interface TSCH3DChartSelectedElementSceneObjectDelegate : NSObject <TSCH3DChartAllElementSceneObjectDelegate>
+@interface TSCH3DChartSelectedElementSceneObjectDelegate : NSObject
 {
     unsigned long long _selectedSeriesIndex;
 }

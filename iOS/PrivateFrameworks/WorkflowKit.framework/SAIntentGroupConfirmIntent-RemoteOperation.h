@@ -6,9 +6,7 @@
 
 #import <SAObjects/SAIntentGroupConfirmIntent.h>
 
-#import <WorkflowKit/WFIntentGroupRemoteOperation-Protocol.h>
-
-@interface SAIntentGroupConfirmIntent (RemoteOperation) <WFIntentGroupRemoteOperation>
+@interface SAIntentGroupConfirmIntent (RemoteOperation)
 - (void)wf_setIntent:(id)arg1;
 @end
 

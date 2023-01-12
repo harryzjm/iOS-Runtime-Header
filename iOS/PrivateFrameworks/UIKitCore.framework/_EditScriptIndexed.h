@@ -14,12 +14,12 @@ __attribute__((visibility("hidden")))
 
 + (id)editScriptFromArray:(id)arg1 toArray:(id)arg2 orderAtomsAscending:(_Bool)arg3 operationPrecedence:(long long)arg4;
 + (id)editScriptFromArray:(id)arg1 toArray:(id)arg2;
+- (void).cxx_destruct;
 - (void)finalizeCurrentScriptAtom;
 - (void)addToCurrentScriptAtomEditOperation:(long long)arg1 editIndex:(unsigned long long)arg2 newText:(id)arg3 indexInArrayB:(unsigned long long)arg4;
 - (void)initializeCurrentScriptAtom;
 - (id)applyToArray:(id)arg1;
 - (id)initWithOperationPrecedence:(long long)arg1 dataClass:(Class)arg2 fromArray:(id)arg3 toArray:(id)arg4 orderAtomsAscending:(_Bool)arg5;
-- (void)dealloc;
 
 @end
 

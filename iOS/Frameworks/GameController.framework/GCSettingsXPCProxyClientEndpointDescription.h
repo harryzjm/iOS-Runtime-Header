@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCControllerComponentDescription-Protocol.h>
-
-@class GCControllerSettings, GCSettingsXPCProxyClientEndpoint, NSString;
+@class GCSProfile, GCSettingsXPCProxyClientEndpoint, NSString;
 @protocol NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface GCSettingsXPCProxyClientEndpointDescription : NSObject <_GCControllerComponentDescription>
+@interface GCSettingsXPCProxyClientEndpointDescription : NSObject
 {
-    GCControllerSettings *_initialSettingsForBundleID;
-    GCControllerSettings *_initialSettingsDefault;
+    GCSProfile *_initialProfile;
     GCSettingsXPCProxyClientEndpoint *_materializedObject;
     id <NSObject><NSCopying><NSSecureCoding> _identifier;
 }
@@ -27,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithIdentifier:(id)arg1 initialValueForBundleID:(id)arg2 defaultSettings:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 initialValueForProfile:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

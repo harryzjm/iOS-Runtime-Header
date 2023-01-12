@@ -9,6 +9,7 @@
 @class ACHEarnedInstanceStore, NSArray;
 
 @protocol ACHEarnedInstanceStoreObserving <NSObject>
+- (void)earnedInstanceStoreDidReceiveSyncNotification:(ACHEarnedInstanceStore *)arg1;
 - (void)earnedInstanceStore:(ACHEarnedInstanceStore *)arg1 didRemoveEarnedInstances:(NSArray *)arg2;
 - (void)earnedInstanceStore:(ACHEarnedInstanceStore *)arg1 didAddNewEarnedInstances:(NSArray *)arg2;
 

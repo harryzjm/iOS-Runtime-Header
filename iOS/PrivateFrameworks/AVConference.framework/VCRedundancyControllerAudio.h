@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCRedundancyControllerProtocol-Protocol.h>
-
 @class AVCStatisticsCollector, NSString;
 @protocol VCRedundancyControlAlgorithm;
 
 __attribute__((visibility("hidden")))
-@interface VCRedundancyControllerAudio : NSObject <VCRedundancyControllerProtocol>
+@interface VCRedundancyControllerAudio : NSObject
 {
     id _redundancyControllerDelegate;
     AVCStatisticsCollector *_statisticsCollector;
@@ -27,7 +25,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)reportRedundancyPercentage:(unsigned int)arg1 redundancyInterval:(double)arg2;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_7df19fcb)arg1;
 - (void)dealloc;
 - (void)unregisterStatistics;
 - (id)initWithDelegate:(id)arg1 statisticsCollector:(id)arg2 mode:(unsigned int)arg3;

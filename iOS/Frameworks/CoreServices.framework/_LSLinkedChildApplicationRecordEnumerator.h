@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_LSRecordEnumerator.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LSLinkedChildApplicationRecordEnumerator
+@interface _LSLinkedChildApplicationRecordEnumerator : _LSRecordEnumerator
 {
     struct vector<unsigned int, std::allocator<unsigned int>> _units;
     NSString *_parentBundleID;

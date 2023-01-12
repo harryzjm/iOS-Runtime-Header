@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIApplication-Protocol.h>
-
 @class NSDictionary, NSString, UIWindow, VUITVApplicationControllerContext;
 @protocol UITraitEnvironment;
 
 __attribute__((visibility("hidden")))
-@interface _VUICoreApplication : NSObject <VUIApplication>
+@interface _VUICoreApplication : NSObject
 {
     VUITVApplicationControllerContext *_launchContext;
     NSDictionary *_javaScriptLaunchOptions;

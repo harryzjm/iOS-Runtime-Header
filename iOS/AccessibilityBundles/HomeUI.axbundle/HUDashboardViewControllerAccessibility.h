@@ -11,11 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_setupLargeTitleButtonIfNecessary;
-- (void)_updateRightBarButtons;
+- (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_launchAnnounceRecordingServiceForCurrentHome:(id)arg1;
-- (void)_launchAnnounceRecordingServiceForCurrentRoom:(id)arg1;
 
 @end
 

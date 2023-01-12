@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_cancelRefreshTimer:(id)arg1;
 - (void)_startRefreshTimer:(id)arg1;
 - (id)_refreshTimerWithRefreshTimeEventDescriptor:(id)arg1;
+- (void)updateDescriptorsWithDescriptors:(id)arg1;
 - (void)invalidate;
 - (void)dealloc;
 

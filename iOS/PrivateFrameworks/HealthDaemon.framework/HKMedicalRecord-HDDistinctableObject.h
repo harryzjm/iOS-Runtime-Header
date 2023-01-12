@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKMedicalRecord.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKMedicalRecord (HDDistinctableObject) <HDCoding>
+@interface HKMedicalRecord (HDDistinctableObject)
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (id)uniqueIdentifierForDistinctByKeyPath:(id)arg1 error:(id *)arg2;

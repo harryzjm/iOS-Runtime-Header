@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/NSCopying-Protocol.h>
-#import <IDSFoundation/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
-@interface IDSCKRecordZoneID : NSObject <NSSecureCoding, NSCopying>
+@interface IDSCKRecordZoneID : NSObject
 {
     NSString *_zoneName;
     NSString *_ownerName;

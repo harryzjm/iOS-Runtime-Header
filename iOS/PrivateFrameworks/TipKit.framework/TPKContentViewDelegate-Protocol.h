@@ -6,17 +6,17 @@
 
 #import <TipKit/NSObject-Protocol.h>
 
-@class NSString, TPKContentView, TPSURLAction, UIImage;
+@class NSString, TPKBaseContentView, TPSURLAction, UIImage;
 
 @protocol TPKContentViewDelegate <NSObject>
-- (UIImage *)contentView:(TPKContentView *)arg1 iconForCustomizationID:(long long)arg2;
-- (NSString *)contentView:(TPKContentView *)arg1 personalizedStringForID:(long long)arg2;
-- (void)contentView:(TPKContentView *)arg1 needsLayoutForReason:(long long)arg2;
-- (void)contentView:(TPKContentView *)arg1 viewTappedForIdentifier:(NSString *)arg2;
-- (void)contentView:(TPKContentView *)arg1 actionTapped:(TPSURLAction *)arg2;
-- (void)contentViewCloseButtonTapped:(TPKContentView *)arg1;
-- (void)contentViewWillBeRemoved:(TPKContentView *)arg1;
-- (void)contentViewWillBeShown:(TPKContentView *)arg1;
-- (void)contentViewWasCreated:(TPKContentView *)arg1;
+- (UIImage *)contentView:(TPKBaseContentView *)arg1 iconForCustomizationID:(long long)arg2;
+- (NSString *)contentView:(TPKBaseContentView *)arg1 personalizedStringForID:(long long)arg2;
+- (void)contentView:(TPKBaseContentView *)arg1 needsLayoutForReason:(long long)arg2;
+- (void)contentView:(TPKBaseContentView *)arg1 viewTappedForIdentifier:(NSString *)arg2;
+- (void)contentView:(TPKBaseContentView *)arg1 actionTapped:(TPSURLAction *)arg2;
+- (void)contentViewCloseButtonTapped:(TPKBaseContentView *)arg1;
+- (void)contentViewWillBeRemoved:(TPKBaseContentView *)arg1;
+- (void)contentViewWillBeShown:(TPKBaseContentView *)arg1;
+- (void)contentViewWasCreated:(TPKBaseContentView *)arg1;
 @end
 

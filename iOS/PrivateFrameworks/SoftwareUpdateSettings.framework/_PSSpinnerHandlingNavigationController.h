@@ -6,12 +6,10 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <SoftwareUpdateSettings/UINavigationControllerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _PSSpinnerHandlingNavigationController : UINavigationController <UINavigationControllerDelegate>
+@interface _PSSpinnerHandlingNavigationController : UINavigationController
 {
 }
 

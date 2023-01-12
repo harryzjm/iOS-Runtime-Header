@@ -12,11 +12,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *syncTeamFavorites;
     MISSING_TYPE *templateUpdateObserver;
     MISSING_TYPE *teamsServiceRequest;
+    MISSING_TYPE *favoriteTeamsBefore;
 }
 
 - (void).cxx_destruct;
+- (void)vuiCollectionView:(id)arg1 willDisplay:(id)arg2 for:(id)arg3;
 - (void)vuiCollectionView:(id)arg1 didSelectItemAt:(id)arg2;
-- (void)dealloc;
+- (void)vui_viewDidDisappear:(_Bool)arg1;
+- (void)vui_viewDidAppear:(_Bool)arg1;
 - (void)vui_viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 

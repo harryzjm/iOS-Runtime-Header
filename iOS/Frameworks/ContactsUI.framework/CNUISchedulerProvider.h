@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNSchedulerProvider-Protocol.h>
-
 @class CNSuspendableSchedulerDecorator, NSString;
 @protocol CNScheduler, CNSchedulerProvider;
 
 __attribute__((visibility("hidden")))
-@interface CNUISchedulerProvider : NSObject <CNSchedulerProvider>
+@interface CNUISchedulerProvider : NSObject
 {
     id <CNSchedulerProvider> _schedulerProvider;
     CNSuspendableSchedulerDecorator *_suspendableBackgroundScheduler;

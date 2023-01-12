@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID;
+@class NSArray, NSUUID;
 @protocol SAWithYouDetectorClientProtocol, TAEventProtocol;
 
 @protocol SAWithYouDetectorServiceProtocol
@@ -15,7 +15,8 @@
 - (void)resumePeriodicScan;
 - (unsigned long long)statusForDeviceWithUUID:(NSUUID *)arg1;
 - (void)resetAllWithYouStatusAndScanStates;
-- (void)forceUpdateWithYouStatusWithShortScan;
+- (void)forceUpdateWithYouStatusWithShortScan:(_Bool)arg1;
+- (void)forceUpdateWithYouStatusToFindDevices:(NSArray *)arg1 withContext:(unsigned long long)arg2;
 - (void)forceUpdateWithYouStatus;
 @end
 

@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/NSCopying-Protocol.h>
-#import <HealthDaemon/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _HDSyncAnchorRangeBox : NSObject <NSSecureCoding, NSCopying>
+@interface _HDSyncAnchorRangeBox : NSObject
 {
     struct HDSyncAnchorRange _anchorRange;
 }

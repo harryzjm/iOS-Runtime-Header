@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CarKit/CARSessionRequestService-Protocol.h>
-
 @protocol CARSessionRequestHandling;
 
 __attribute__((visibility("hidden")))
-@interface CARSessionRequestHandlerProxy : NSObject <CARSessionRequestService>
+@interface CARSessionRequestHandlerProxy : NSObject
 {
     id <CARSessionRequestHandling> _requestHandler;
 }
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)service_prepareForRemovingWiFiUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)service_startAdvertisingCarPlayControlForUSBWithReply:(CDUnknownBlockType)arg1;
 - (void)service_startAdvertisingCarPlayControlForWiFiUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)service_stoppedSessionWithHostIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)service_startSessionWithHost:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end

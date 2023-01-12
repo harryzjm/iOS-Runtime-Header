@@ -7,7 +7,7 @@
 #import <UIKit/UICollectionViewLayout.h>
 
 @interface UICollectionViewLayout (Bridge)
-- (void)ts_invalidateVisibleBoundsLayout;
+- (id)ts_visibleBoundsInvalidationContext;
 - (_Bool)_accessibilitySortCollectionViewLogically;
 @property(nonatomic) _Bool ts_sortItemsLogicallyForAccessibility;
 @end

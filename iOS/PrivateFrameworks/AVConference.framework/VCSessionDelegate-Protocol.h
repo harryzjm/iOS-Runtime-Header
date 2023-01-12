@@ -20,6 +20,8 @@
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteScreenEnabledDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteVideoEnabledDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteAudioEnabledDidChange:(_Bool)arg3;
+- (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteMediaStateDidChange:(unsigned int)arg3 forMediaType:(unsigned int)arg4;
+- (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 mediaStateDidChange:(unsigned int)arg3 forMediaType:(unsigned int)arg4 didSucceed:(_Bool)arg5 error:(NSError *)arg6;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 screenEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 videoEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 audioEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEODataSessionTaskDelegate-Protocol.h>
-
 @class GEODataRequest, GEODataSession, GEODataSessionTask, NSData, NSString, NSURL;
 @protocol GEOSimpleTileRequesterOperationDelegate, OS_dispatch_queue, OS_os_activity;
 
 __attribute__((visibility("hidden")))
-@interface _GEOSimpleTileRequesterOperation : NSObject <GEODataSessionTaskDelegate>
+@interface _GEOSimpleTileRequesterOperation : NSObject
 {
     GEODataRequest *_request;
     NSData *_data;

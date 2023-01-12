@@ -7,8 +7,10 @@
 #import <Contacts/CNContact.h>
 
 @interface CNContact (EmailContactAdditions)
-+ (id)em_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2 allowInvalidEmailAddress:(_Bool)arg3;
-+ (id)em_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2;
++ (id)em_bestMatchForName:(id)arg1 fromContacts:(id)arg2 keysToCheck:(id)arg3;
++ (id)em_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2 emailAddressLabel:(id)arg3 allowInvalidEmailAddress:(_Bool)arg4;
++ (id)em_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2 emailAddressLabel:(id)arg3;
++ (id)em_contactWithPersonNameComponents:(id)arg1;
 + (id)em_contactFromEmailAddress:(id)arg1;
 @end
 

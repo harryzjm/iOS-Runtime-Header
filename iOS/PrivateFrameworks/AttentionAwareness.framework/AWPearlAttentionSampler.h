@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AttentionAwareness/BKDevicePearlDelegate-Protocol.h>
-#import <AttentionAwareness/BKFaceDetectOperationDelegate-Protocol.h>
-
 @class BKDevicePearl, BKFaceDetectOperation, NSObject, NSString;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface AWPearlAttentionSampler <BKDevicePearlDelegate, BKFaceDetectOperationDelegate>
+@interface AWPearlAttentionSampler
 {
     BKDevicePearl *_pearlDevice;
     BKFaceDetectOperation *_pendingPresenceOperation;
@@ -46,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)pearlAttentionSamplerErrorOccurred;
 - (void)updateFaceState:(int)arg1 withFaceMetadata:(struct AWFaceDetectMetadata *)arg2;
 - (void)updateFaceState:(int)arg1;
-- (void)shouldSample:(_Bool)arg1 withDeadline:(unsigned long long)arg2;
+- (void)shouldSample:(_Bool)arg1 withDeadline:(unsigned long long)arg2 withOptions:(union)arg3;
 - (void)cancelFaceDetect:(id)arg1;
 - (void)finishingFaceDetect:(id)arg1;
 - (void)faceDetectStalled:(id)arg1;

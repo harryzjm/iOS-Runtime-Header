@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/VSDeveloperServiceProtocol-Protocol.h>
-#import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
-
 @class NSString, VSPersistentContainer, VSRemoteNotifier;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VSDeveloperModeStore : NSObject <VSRemoteNotifierDelegate, VSDeveloperServiceProtocol>
+@interface VSDeveloperModeStore : NSObject
 {
     VSPersistentContainer *_persistentContainer;
     NSObject<OS_dispatch_queue> *_settingsQueue;

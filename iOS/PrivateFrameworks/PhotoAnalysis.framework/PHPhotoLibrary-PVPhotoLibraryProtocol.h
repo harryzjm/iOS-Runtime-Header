@@ -6,11 +6,9 @@
 
 #import <Photos/PHPhotoLibrary.h>
 
-#import <PhotoAnalysis/PVPhotoLibraryProtocol-Protocol.h>
-
 @class NSString;
 
-@interface PHPhotoLibrary (PVPhotoLibraryProtocol) <PVPhotoLibraryProtocol>
+@interface PHPhotoLibrary (PVPhotoLibraryProtocol)
 + (id)_defaultFacePropertySets;
 + (id)_defaultAssetPropertySets;
 + (id)_phPeopleSortDescriptors;
@@ -18,7 +16,6 @@
 - (id)pv_lastAssetDate;
 - (id)pv_fetchInvalidAssetIdentifiersForCommonComparison;
 - (float)pv_faceProcessingProgress;
-- (double)_progressFromWorkerStatesDictionary:(id)arg1;
 - (id)pv_fetchFaceGroupsForPerson:(id)arg1;
 - (id)pv_fetchFaceGroups;
 - (id)pv_fetchAssetsForFaceLocalIdentifiers:(id)arg1;

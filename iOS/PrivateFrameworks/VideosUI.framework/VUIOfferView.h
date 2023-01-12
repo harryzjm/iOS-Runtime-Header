@@ -19,16 +19,16 @@ __attribute__((visibility("hidden")))
     VUILabel *_textLabel;
     UIView *_versionsButton;
     UIView *_channelImageBackgroundView;
-    double _AXBaselineMargin;
     double _topPartAspectRatio;
+    double _secondLineBaselineMargin;
     VUISeparatorView *_separatorView;
     struct UIEdgeInsets _padding;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
+@property(nonatomic) double secondLineBaselineMargin; // @synthesize secondLineBaselineMargin=_secondLineBaselineMargin;
 @property(nonatomic) double topPartAspectRatio; // @synthesize topPartAspectRatio=_topPartAspectRatio;
-@property(nonatomic) double AXBaselineMargin; // @synthesize AXBaselineMargin=_AXBaselineMargin;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property(nonatomic) _Bool isEntitled; // @synthesize isEntitled=_isEntitled;
 @property(retain, nonatomic) UIView *channelImageBackgroundView; // @synthesize channelImageBackgroundView=_channelImageBackgroundView;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2 withAnimationCoordinator:(id)arg3;
 - (struct CGSize)computeSizeThatFits:(struct CGSize)arg1;
-- (void)layoutOfferSubviews;
+- (void)layoutOfferSubviewsWithSize:(struct CGSize)arg1;
 - (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (double)_chinHeightForSize:(struct CGSize)arg1;
 - (_Bool)_shouldDisplaySeparator;

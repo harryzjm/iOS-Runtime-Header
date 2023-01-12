@@ -6,17 +6,14 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <AppSSO/SOExtensionContext-Protocol.h>
-#import <AppSSO/SORemoteExtensionContextProtocol-Protocol.h>
-
 @class ASAuthorizationProviderExtensionAuthorizationRequest, NSString, SOExtensionServiceConnection, SOExtensionViewService;
-@protocol ASAuthorizationProviderExtensionAuthorizationRequestHandler;
+@protocol ASAuthorizationProviderExtensionAuthorizationRequestHandler, ASAuthorizationProviderExtensionAuthorizationRequestHandler><POExtensionRegistrationProtocol;
 
 __attribute__((visibility("hidden")))
-@interface SORemoteExtensionContext : NSExtensionContext <SORemoteExtensionContextProtocol, SOExtensionContext>
+@interface SORemoteExtensionContext : NSExtensionContext
 {
     SOExtensionServiceConnection *_extensionServiceConnection;
-    id <ASAuthorizationProviderExtensionAuthorizationRequestHandler> _extensionAuthorizationRequestHandler;
+    id <ASAuthorizationProviderExtensionAuthorizationRequestHandler><POExtensionRegistrationProtocol> _extensionAuthorizationRequestHandler;
     CDUnknownBlockType _finishAuthorizationCompletion;
     SOExtensionViewService *_viewService;
     ASAuthorizationProviderExtensionAuthorizationRequest *_extensionAuthorizationRequest;
@@ -28,6 +25,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) ASAuthorizationProviderExtensionAuthorizationRequest *extensionAuthorizationRequest; // @synthesize extensionAuthorizationRequest=_extensionAuthorizationRequest;
 @property __weak SOExtensionViewService *viewService; // @synthesize viewService=_viewService;
 - (void)_disableAppSSOInCFNetwork;
+- (void)registrationDidComplete;
+- (void)beginUserRegistrationUsingUserName:(id)arg1 authenticationMethod:(int)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)beginDeviceRegistrationUsingOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)canOpenURL:(id)arg1;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)completeFinishAuthorizationWithError:(id)arg1;

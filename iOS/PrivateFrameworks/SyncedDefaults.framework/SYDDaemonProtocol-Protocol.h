@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, SYDStoreConfiguration;
+@class NSArray, NSData, NSString, SYDStoreConfiguration;
 
 @protocol SYDDaemonProtocol
+- (void)allStoreIdentifiersWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)setCloudSyncUserDefaultEnabled:(_Bool)arg1 storeIdentifier:(NSString *)arg2;
+- (void)isCloudSyncUserDefaultEnabledForStoreIdentifier:(NSString *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)processAccountChangesWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)synchronizeStoresWithIdentifiers:(NSArray *)arg1 type:(long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)synchronizeStoreWithConfiguration:(SYDStoreConfiguration *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)saveChangeToken:(NSData *)arg1 forStoreWithConfiguration:(SYDStoreConfiguration *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)changeTokenForStoreWithConfiguration:(SYDStoreConfiguration *)arg1 reply:(void (^)(NSData *, NSError *))arg2;

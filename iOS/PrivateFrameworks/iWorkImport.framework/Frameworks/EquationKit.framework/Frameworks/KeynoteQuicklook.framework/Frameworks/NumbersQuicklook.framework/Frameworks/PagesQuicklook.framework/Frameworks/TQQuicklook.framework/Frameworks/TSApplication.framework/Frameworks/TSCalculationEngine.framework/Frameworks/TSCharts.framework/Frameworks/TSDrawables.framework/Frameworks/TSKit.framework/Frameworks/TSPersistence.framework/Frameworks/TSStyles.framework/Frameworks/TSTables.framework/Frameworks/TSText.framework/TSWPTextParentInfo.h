@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/TSDInfo-Protocol.h>
-
 @class NSString, TSDInfoGeometry, TSPObject;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface TSWPTextParentInfo : NSObject <TSDInfo>
+@interface TSWPTextParentInfo : NSObject
 {
 }
 

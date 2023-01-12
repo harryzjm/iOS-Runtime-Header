@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/_UIExclusiveTouchGestureRecognizerDelegate-Protocol.h>
-
 @class BKSTouchStream, FBSDisplayIdentity, NSMutableSet, NSSet, NSString, UIGestureRecognizer, _UISystemGestureWindow;
 @protocol BSInvalidatable;
 
 __attribute__((visibility("hidden")))
-@interface __UISystemGestureManager : NSObject <UIGestureRecognizerDelegate, _UIExclusiveTouchGestureRecognizerDelegate>
+@interface __UISystemGestureManager : NSObject
 {
-    FBSDisplayIdentity *_rootDisplayIdentity;
+    FBSDisplayIdentity *_displayIdentity;
     _UISystemGestureWindow *_systemGestureWindow;
     NSMutableSet *_recognizingGestures;
     NSMutableSet *_externalEdgeSwipeGestures;
@@ -66,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)_removeInternalGestures;
 - (void)_addInternalGesturesToView:(id)arg1;
-- (id)initWithRootDisplayIdentity:(id)arg1;
+- (id)initWithDisplayIdentity:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

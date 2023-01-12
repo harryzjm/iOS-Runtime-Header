@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <Accounts/NSCopying-Protocol.h>
-
 @class ACProtobufDate, ACProtobufURL, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ACProtobufCredentialItem : PBCodable <NSCopying>
+@interface ACProtobufCredentialItem : PBCodable
 {
     NSString *_accountIdentifier;
     NSMutableArray *_dirtyProperties;

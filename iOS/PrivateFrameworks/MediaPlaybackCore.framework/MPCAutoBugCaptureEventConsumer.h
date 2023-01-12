@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventConsumer-Protocol.h>
-
 @class NSString;
 @protocol MPCPlaybackEngineEventStreamSubscription;
 
 __attribute__((visibility("hidden")))
-@interface MPCAutoBugCaptureEventConsumer : NSObject <MPCPlaybackEngineEventConsumer>
+@interface MPCAutoBugCaptureEventConsumer : NSObject
 {
     id <MPCPlaybackEngineEventStreamSubscription> _subscription;
 }

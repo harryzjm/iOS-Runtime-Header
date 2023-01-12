@@ -6,17 +6,17 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDWebModuleConfiguration : PBCodable <NSCopying>
+@interface GEOPDWebModuleConfiguration : PBCodable
 {
     PBUnknownFields *_unknownFields;
     NSString *_url;
+    int _type;
     _Bool _shouldRenderBackgroundPlatter;
     struct {
+        unsigned int has_type:1;
         unsigned int has_shouldRenderBackgroundPlatter:1;
     } _flags;
 }

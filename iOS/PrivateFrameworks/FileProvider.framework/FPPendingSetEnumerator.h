@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/NSFileProviderPendingSetEnumerator-Protocol.h>
-
 @class NSFileProviderDomainVersion, NSFileProviderManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPPendingSetEnumerator : NSObject <NSFileProviderPendingSetEnumerator>
+@interface FPPendingSetEnumerator : NSObject
 {
     NSFileProviderManager *_manager;
     NSFileProviderDomainVersion *_domainVersion;
     double _refreshInterval;
+    _Bool _maximumSizeReached;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isMaximumSizeReached) _Bool maximumSizeReached; // @synthesize maximumSizeReached=_maximumSizeReached;
 @property(readonly, nonatomic) double refreshInterval; // @synthesize refreshInterval=_refreshInterval;
 @property(readonly, nonatomic) NSFileProviderDomainVersion *domainVersion; // @synthesize domainVersion=_domainVersion;
 - (void)invalidate;

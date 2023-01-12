@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKDPStreamingAssetRetrieveAssetResponse : PBCodable <NSCopying>
+@interface CKDPStreamingAssetRetrieveAssetResponse : PBCodable
 {
     long long _downloadURLExpirationTimeSeconds;
     long long _size;

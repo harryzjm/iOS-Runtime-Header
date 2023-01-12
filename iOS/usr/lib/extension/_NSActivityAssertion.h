@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     unsigned int _systemSleepAssertionID;
     NSObject<OS_voucher> *_voucher;
     NSObject<OS_voucher> *_previousVoucher;
+    _Atomic unsigned long long _signpostID;
     id <NSObject> _xpcBoost;
     id _processAssertion;
     CDUnknownBlockType _expirationHandler;
@@ -34,9 +35,10 @@ __attribute__((visibility("hidden")))
 + (id)_expirationHandlerExecutionQueue;
 + (id)_expiringTaskExecutionQueue;
 + (id)_expiringAssertionManagementQueue;
+- (_Bool)_isEnded;
 - (void)_fireExpirationHandler;
 - (void)_reactivate;
-- (void)_end;
+- (void)_endFromDealloc:(_Bool)arg1;
 - (id)debugDescription;
 - (void)dealloc;
 - (id)_initWithActivityOptions:(unsigned long long)arg1 reason:(id)arg2 expirationHandler:(CDUnknownBlockType)arg3;

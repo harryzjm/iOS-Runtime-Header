@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIBezierPath, UIColor, _UIShapeView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPlatterShadowView
+@interface _UIPlatterShadowView : UIView
 {
     _Bool _punchOut;
     _UIShapeView *_shadowMaskView;

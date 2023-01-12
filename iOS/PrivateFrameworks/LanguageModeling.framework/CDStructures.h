@@ -4,3 +4,88 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#pragma mark Named Structures
+
+struct TrialParameters {
+    struct path _field1;
+    struct map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<const std::string, std::string>>> _field2;
+};
+
+struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    char *_field1;
+                    unsigned long long _field2;
+                    unsigned long long _field3;
+                } _field1;
+                struct __short {
+                    char _field1[23];
+                    struct {
+                        unsigned char _field1;
+                    } _field2;
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+};
+
+struct function<void (const std::string &, const std::optional<LM::TrialParameters>&)> {
+    struct __value_func<void (const std::string &, const std::optional<LM::TrialParameters>&)> {
+        struct type _field1;
+        void *_field2;
+    } _field1;
+};
+
+struct map<std::string, std::string, std::less<std::string>, std::allocator<std::pair<const std::string, std::string>>> {
+    struct __tree<std::__value_type<std::string, std::string>, std::__map_value_compare<std::string, std::__value_type<std::string, std::string>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::string>>> {
+        void *_field1;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::string>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> {
+                void *_field1;
+            } _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::string>, std::less<std::string>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
+struct optional<LM::TrialParameters> {
+    union {
+        char _field1;
+        struct TrialParameters _field2;
+    } _field1;
+    _Bool _field2;
+};
+
+struct path {
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _field1;
+};
+
+struct type {
+    unsigned char _field1[24];
+};
+
+#pragma mark Typedef'd Structures
+
+// Template types
+typedef struct function<void (const std::string &, const std::optional<LM::TrialParameters>&)> {
+    struct __value_func<void (const std::string &, const std::optional<LM::TrialParameters>&)> {
+        struct type _field1;
+        void *_field2;
+    } _field1;
+} function_e94c552d;
+
+typedef struct optional<LM::TrialParameters> {
+    union {
+        char _field1;
+        struct TrialParameters _field2;
+    } _field1;
+    _Bool _field2;
+} optional_a0dbb3b7;
+

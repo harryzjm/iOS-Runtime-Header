@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
     } _stream;
     int _operation;
     int _status;
-    void *_originalDstBuffer;
     CDUnknownBlockType _dataHandler;
+    unsigned char _buffer[1024];
 }
 
 - (_Bool)processBytes:(char *)arg1 size:(unsigned long long)arg2 flags:(int)arg3;

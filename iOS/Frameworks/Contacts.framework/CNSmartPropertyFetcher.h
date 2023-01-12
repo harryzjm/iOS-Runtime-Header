@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNKeyDescriptor_Private-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNSmartPropertyFetcher : NSObject <CNKeyDescriptor_Private>
+@interface CNSmartPropertyFetcher : NSObject
 {
 }
 

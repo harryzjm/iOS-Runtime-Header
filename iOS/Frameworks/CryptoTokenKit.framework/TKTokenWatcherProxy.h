@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CryptoTokenKit/TKProtocolTokenWatcherHost-Protocol.h>
-
 @class TKTokenWatcher;
 
 __attribute__((visibility("hidden")))
-@interface TKTokenWatcherProxy : NSObject <TKProtocolTokenWatcherHost>
+@interface TKTokenWatcherProxy : NSObject
 {
     TKTokenWatcher *_watcher;
 }

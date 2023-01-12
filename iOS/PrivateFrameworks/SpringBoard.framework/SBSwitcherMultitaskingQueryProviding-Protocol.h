@@ -16,7 +16,7 @@
 - (struct CGPoint)restingOffsetForScrollOffset:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1 alignment:(long long)arg2;
 - (SBSwitcherScrollViewAttributes *)scrollViewAttributes;
-- (double)contentPageViewScaleForAppLayout:(SBAppLayout *)arg1;
+- (double)contentPageViewScaleForAppLayout:(SBAppLayout *)arg1 withScale:(double)arg2;
 - (double)snapshotScaleForAppLayout:(SBAppLayout *)arg1;
 @end
 

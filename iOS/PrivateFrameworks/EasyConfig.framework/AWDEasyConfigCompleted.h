@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <EasyConfig/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AWDEasyConfigCompleted : PBCodable <NSCopying>
+@interface AWDEasyConfigCompleted : PBCodable
 {
     unsigned long long _timestamp;
     unsigned int _channelOfDestinationAP;

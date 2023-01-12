@@ -10,7 +10,7 @@
 
 @interface _TtC10ChronoCore18ChronodPreferences : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_lock_userDefaults;
+    MISSING_TYPE *__lock_userDefaultsBackedExtensionsPendingDescriptorFetch;
     MISSING_TYPE *_lock;
 }
 

@@ -9,7 +9,6 @@
 @class NSString;
 
 @protocol RVQueryProtocol <NSObject>
-@property(readonly, nonatomic) CDUnknownBlockType queryProvider;
 @property(readonly, nonatomic) long long queryID;
 @property(readonly, nonatomic) NSString *userAgent;
 @property(readonly, nonatomic) NSString *identifier;

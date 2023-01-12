@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityDragSourceDescriptors;
+- (id)accessibilityLabel;
 
 @end
 

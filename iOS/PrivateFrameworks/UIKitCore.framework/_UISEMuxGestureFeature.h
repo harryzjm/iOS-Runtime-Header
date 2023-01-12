@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISEGestureFeatureDelegate-Protocol.h>
-
 @class NSDictionary, NSMutableDictionary, NSString;
 @protocol _UISEGestureFeatureSettings;
 
 __attribute__((visibility("hidden")))
-@interface _UISEMuxGestureFeature <_UISEGestureFeatureDelegate>
+@interface _UISEMuxGestureFeature
 {
     id <_UISEGestureFeatureSettings> _settings;
     CDUnknownBlockType _createFeatureBlock;

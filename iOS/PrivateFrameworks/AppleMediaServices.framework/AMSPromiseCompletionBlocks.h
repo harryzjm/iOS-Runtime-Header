@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSPromiseCompletionBlocks : NSObject
 {
+    struct os_unfair_lock_s _completionBlockLock;
     NSMutableArray *_completionBlocks;
     _Bool _shouldCallImmediately;
 }

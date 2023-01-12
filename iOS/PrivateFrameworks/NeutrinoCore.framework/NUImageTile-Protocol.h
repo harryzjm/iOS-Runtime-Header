@@ -7,7 +7,7 @@
 #import <NeutrinoCore/NSObject-Protocol.h>
 
 @protocol NUImageTile <NSObject>
-@property(readonly, nonatomic) CDStruct_996ac03c contentRect;
-@property(readonly, nonatomic) CDStruct_996ac03c frameRect;
+@property(readonly, nonatomic) CDStruct_0973877e contentRect;
+@property(readonly, nonatomic) CDStruct_0973877e frameRect;
 @end
 

@@ -8,17 +8,10 @@
 
 @interface CSUtils (Statistics)
 + (id)distributionDictionary:(id)arg1;
-+ (id)_contentsOfDirectoryAtURL:(id)arg1 matchingPattern:(id)arg2 includingPropertiesForKeys:(id)arg3 error:(id *)arg4;
-+ (void)_sortedURLsInDirectory:(id)arg1 matchingPattern:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)URLsInDirectory:(id)arg1 matchingPattern:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)clearLogFilesInDirectory:(id)arg1 matchingPattern:(id)arg2 exceedNumber:(unsigned long long)arg3;
-+ (void)removeLogFilesInDirectory:(id)arg1 matchingPattern:(id)arg2 beforeDays:(float)arg3;
-+ (id)_sharedDisposeLoggingQueue;
 + (id)getSiriLanguageWithEndpointId:(id)arg1 fallbackLanguage:(id)arg2;
 + (id)getSiriLanguageWithFallback:(id)arg1;
++ (_Bool)isRemoteDarwinWithDeviceId:(id)arg1;
 + (_Bool)hasRemoteBuiltInMic;
-+ (_Bool)isHeadphoneDeviceWithRecordRoute:(id)arg1 playbackRoute:(id)arg2;
-+ (_Bool)isHFPWithRecordRoute:(id)arg1;
 + (_Bool)readAudioChunksFrom:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (void)iterateBitset:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 + (unsigned int)getNumElementInBitset:(unsigned long long)arg1;
@@ -36,6 +29,7 @@
 + (_Bool)isRecordContextAutoPrompt:(id)arg1;
 + (_Bool)isRecordContextHomeButtonPress:(id)arg1;
 + (_Bool)isRecordContextRemoraVoiceTrigger:(id)arg1;
++ (_Bool)isRecordContextDarwinVoiceTrigger:(id)arg1;
 + (_Bool)isRecordContextBuiltInVoiceTrigger:(id)arg1;
 + (_Bool)isRecordContextVoiceTrigger:(id)arg1;
 @end

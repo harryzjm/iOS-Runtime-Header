@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTSiriPayloadTranslationInfo, FTSiriTranslationInfo, FTSpeechTranslationInfo, FTWebTranslationInfo, NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTTranslationRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTTranslationRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -30,6 +27,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) FTSiriPayloadTranslationInfo *siri_payload_translation_info;
 @property(readonly, nonatomic) FTSpeechTranslationInfo *speech_translation_info;
 @property(readonly, nonatomic) FTSiriTranslationInfo *siri_translation_info;
+- (void)translation_phrase_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)translation_phrase_count;
+- (id)translation_phrase_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *translation_phrase;
 @property(readonly, nonatomic) NSString *target_language;
 @property(readonly, nonatomic) NSString *source_language;

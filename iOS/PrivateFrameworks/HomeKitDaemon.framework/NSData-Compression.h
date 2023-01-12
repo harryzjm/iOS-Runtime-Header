@@ -6,12 +6,21 @@
 
 #import <Foundation/NSData.h>
 
+@class NSString;
+
 @interface NSData (Compression)
 + (id)dataWithSQLite3Column:(struct sqlite3_stmt *)arg1 column:(int)arg2;
 + (id)dataWithSQLite3ColumnNoCopy:(struct sqlite3_stmt *)arg1 column:(int)arg2;
 @property(readonly, copy) NSData *hmd_uncompressedData;
 @property(readonly, copy) NSData *hmd_compressedData;
+- (id)hm_generateSHA256;
 - (id)hm_generateSHA1;
 - (id)hm_stringInHexFormat;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

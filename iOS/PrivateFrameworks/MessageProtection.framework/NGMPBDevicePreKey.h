@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MessageProtection/NSCopying-Protocol.h>
-
 @class NGMPBP256Key, NSData;
 
 __attribute__((visibility("hidden")))
-@interface NGMPBDevicePreKey : PBCodable <NSCopying>
+@interface NGMPBDevicePreKey : PBCodable
 {
     double _timestamp;
     NGMPBP256Key *_dhKey;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Security/OS_sec_certificate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SecConcrete_sec_certificate : NSObject <OS_sec_certificate>
+@interface SecConcrete_sec_certificate : NSObject
 {
     struct __SecCertificate *certificate;
 }

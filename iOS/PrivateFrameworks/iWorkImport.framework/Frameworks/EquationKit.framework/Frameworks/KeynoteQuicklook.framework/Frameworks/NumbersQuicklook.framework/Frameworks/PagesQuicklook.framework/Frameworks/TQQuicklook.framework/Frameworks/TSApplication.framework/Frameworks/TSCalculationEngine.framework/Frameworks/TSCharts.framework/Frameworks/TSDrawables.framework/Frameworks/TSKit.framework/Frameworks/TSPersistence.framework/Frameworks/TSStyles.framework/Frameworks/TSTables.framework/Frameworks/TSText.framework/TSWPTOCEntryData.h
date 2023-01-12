@@ -6,12 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSText/TSPCopying-Protocol.h>
-#import <TSText/TSSStyleClient-Protocol.h>
-
 @class NSSet, NSString, TSWPListStyle, TSWPParagraphStyle, TSWPStorage;
 
-@interface TSWPTOCEntryData : TSPObject <TSPCopying, TSSStyleClient>
+@interface TSWPTOCEntryData : TSPObject
 {
     TSWPStorage *_storage;
     unsigned long long _paragraphIndex;

@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NumbersQuicklook/NSCopying-Protocol.h>
-#import <NumbersQuicklook/NSFastEnumeration-Protocol.h>
-#import <NumbersQuicklook/NSMutableCopying-Protocol.h>
-
 @class NSArray;
 
-@interface TNChartFormulaArgumentCollection : NSObject <NSFastEnumeration, NSCopying, NSMutableCopying>
+@interface TNChartFormulaArgumentCollection : NSObject
 {
     NSArray *_array;
     _Bool _storeBadRef;

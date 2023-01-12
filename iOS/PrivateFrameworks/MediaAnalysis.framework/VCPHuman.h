@@ -6,15 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class VNTorsoprint;
+
 __attribute__((visibility("hidden")))
 @interface VCPHuman : NSObject
 {
     float _confidence;
     unsigned long long _flags;
+    VNTorsoprint *_torsoprint;
     struct CGRect _bounds;
 }
 
 + (unsigned long long)flagsFromKeypoints:(id)arg1 withMinConfidence:(float)arg2;
+- (void).cxx_destruct;
+@property(retain) VNTorsoprint *torsoprint; // @synthesize torsoprint=_torsoprint;
 @property float confidence; // @synthesize confidence=_confidence;
 @property struct CGRect bounds; // @synthesize bounds=_bounds;
 @property unsigned long long flags; // @synthesize flags=_flags;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s15HealthRecordsUI18ConceptsDataSourceCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC15HealthRecordsUI23PinnedConceptDataSource
+@interface _TtC15HealthRecordsUI23PinnedConceptDataSource : _$s15HealthRecordsUI18ConceptsDataSourceCN
 {
     MISSING_TYPE *userConcept;
     MISSING_TYPE *listManager;

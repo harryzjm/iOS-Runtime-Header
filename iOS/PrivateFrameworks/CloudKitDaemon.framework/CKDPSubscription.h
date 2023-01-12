@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPIdentifier, CKDPRecordZoneIdentifier, CKDPSubscriptionNotification, NSMutableArray;
 
-@interface CKDPSubscription : PBCodable <NSCopying>
+@interface CKDPSubscription : PBCodable
 {
     struct {
         int *list;

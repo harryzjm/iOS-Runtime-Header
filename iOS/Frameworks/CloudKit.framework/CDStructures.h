@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -14,24 +16,4 @@ struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
-
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-#pragma mark Typedef'd Structures
-
-// Ambiguous groups
-typedef struct {
-    unsigned int contents:1;
-} CDStruct_7e0a6dcb;
-
-typedef struct {
-    unsigned int type:1;
-} CDStruct_f953fb60;
 

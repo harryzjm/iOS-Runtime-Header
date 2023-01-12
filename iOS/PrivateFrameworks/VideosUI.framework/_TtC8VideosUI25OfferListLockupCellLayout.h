@@ -14,6 +14,8 @@
     MISSING_TYPE *$__lazy_storage_$_textLayout;
     MISSING_TYPE *$__lazy_storage_$_buttonLayout;
     MISSING_TYPE *$__lazy_storage_$_textualButtonViewLayout;
+    MISSING_TYPE *$__lazy_storage_$_stackedImageViewLayout;
+    MISSING_TYPE *stackedBottomMargin;
 }
 
 @end

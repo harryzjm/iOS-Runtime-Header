@@ -24,10 +24,11 @@
     MISSING_TYPE *metricPageName;
     MISSING_TYPE *headerShelf;
     MISSING_TYPE *workoutListShelf;
+    MISSING_TYPE *summaryShelf;
     MISSING_TYPE *mediaTagStringBuilder;
     MISSING_TYPE *subtitleTags;
     MISSING_TYPE *shouldPublishPageEventWhenAvailable;
-    MISSING_TYPE *delegate;
+    MISSING_TYPE *backgroundArtworkDelegate;
 }
 
 @end

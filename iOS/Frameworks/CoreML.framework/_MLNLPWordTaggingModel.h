@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLCustomModel-Protocol.h>
-
 @class MLModelDescription;
 
 __attribute__((visibility("hidden")))
-@interface _MLNLPWordTaggingModel : NSObject <MLCustomModel>
+@interface _MLNLPWordTaggingModel : NSObject
 {
     void *_wordTaggingModel;
     MLModelDescription *_modelDescription;

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthKit/HKFeatureAvailabilityRequirementsProviding-Protocol.h>
 #import <HealthKit/NSObject-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
 @class HKFeatureAvailabilityRequirementEvaluationDataSource, NSNumber, NSString;
 
-@protocol HKFeatureAvailabilityRequirement <NSObject, NSSecureCoding>
+@protocol HKFeatureAvailabilityRequirement <NSObject, NSSecureCoding, HKFeatureAvailabilityRequirementsProviding>
 + (NSString *)requirementIdentifier;
 @property(readonly, nonatomic) NSString *requirementDescription;
 - (NSNumber *)isSatisfiedWithDataSource:(HKFeatureAvailabilityRequirementEvaluationDataSource *)arg1 error:(id *)arg2;

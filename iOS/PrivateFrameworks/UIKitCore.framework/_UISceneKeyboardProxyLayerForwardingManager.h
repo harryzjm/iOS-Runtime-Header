@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/FBSceneObserver-Protocol.h>
-
 @class FBSSceneClientSettingsDiffInspector, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneKeyboardProxyLayerForwardingManager : NSObject <FBSceneObserver>
+@interface _UISceneKeyboardProxyLayerForwardingManager : NSObject
 {
     NSMapTable *_mapSceneToKeyboardForwardingStateMachine;
     FBSSceneClientSettingsDiffInspector *_layersChangedClientSettingsDiffInspector;

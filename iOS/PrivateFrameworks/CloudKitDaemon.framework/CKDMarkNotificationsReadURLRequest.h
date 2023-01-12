@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDURLRequest.h"
+
 @class NSArray, NSMutableDictionary;
 
-@interface CKDMarkNotificationsReadURLRequest
+@interface CKDMarkNotificationsReadURLRequest : CKDURLRequest
 {
     CDUnknownBlockType _notificationMarkedReadProgressBlock;
     NSArray *_notificationIDs;

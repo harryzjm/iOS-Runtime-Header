@@ -13,5 +13,7 @@
 - (void)encodeQuat:(struct)arg1 forKey:(id)arg2;
 - (MISSING_TYPE *)decodeVector3ForKey:(id)arg1;
 - (void)encodeVector3:(id)arg1 forKey: /* Error: Ran out of types for this method. */;
+- (CDStruct_f1db2b5e)decodeMatrix4x4ForKey:(id)arg1;
+- (void)encodeMatrix4x4:(CDStruct_f1db2b5e)arg1 forKey:(id)arg2;
 @end
 

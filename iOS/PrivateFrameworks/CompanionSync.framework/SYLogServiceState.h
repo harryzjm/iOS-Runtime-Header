@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CompanionSync/NSCopying-Protocol.h>
-
 @class NSDictionary, NSMutableArray, NSString, SYLogDeviceState, SYLogEngineState, SYLogSessionState;
 
 __attribute__((visibility("hidden")))
-@interface SYLogServiceState : PBCodable <NSCopying>
+@interface SYLogServiceState : PBCodable
 {
     SYLogEngineState *_engine;
     int _enqueuedSyncType;

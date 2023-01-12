@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSPersistence/TSPDataStorageDownloadable-Protocol.h>
-#import <TSPersistence/TSPDocumentResourceDataStorageInfo-Protocol.h>
-
 @class NSDataAsset, NSString, TSPDocumentResourceInfo, TSUOnce;
 @protocol TSPDocumentResourceBundleProvider><TSUResourceRequest, TSUResourceRequest;
 
-@interface TSPDocumentResourceDataAssetStorage <TSPDataStorageDownloadable, TSPDocumentResourceDataStorageInfo>
+@interface TSPDocumentResourceDataAssetStorage
 {
     id <TSPDocumentResourceBundleProvider><TSUResourceRequest> _resourceRequest;
     TSPDocumentResourceInfo *_documentResourceInfo;
@@ -30,6 +27,7 @@
 - (struct CGSize)pixelSize;
 - (id)fallbackColor;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
+- (unsigned long long)materializedLength;
 - (unsigned long long)encodedLength;
 - (unsigned long long)length;
 - (_Bool)isReadable;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOCompletion-Protocol.h>
-
 @class GEOAutocompleteSessionData, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceSearchCompletion : NSObject <GEOCompletion>
+@interface _GEOPlaceSearchCompletion : NSObject
 {
     NSArray *_groups;
     GEOAutocompleteSessionData *_sessionData;

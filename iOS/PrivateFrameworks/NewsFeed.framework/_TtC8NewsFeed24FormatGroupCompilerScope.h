@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8NewsFeed23FormatBaseCompilerScopeCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC8NewsFeed24FormatGroupCompilerScope
+@interface _TtC8NewsFeed24FormatGroupCompilerScope : _$s8NewsFeed23FormatBaseCompilerScopeCN
 {
     MISSING_TYPE *group;
     MISSING_TYPE *slotDefinitionStates;
     MISSING_TYPE *inputSlotDefinitions;
     MISSING_TYPE *seenSlotIdentifiers;
+    MISSING_TYPE *unseenSlotIdentifiers;
 }
 
 @end

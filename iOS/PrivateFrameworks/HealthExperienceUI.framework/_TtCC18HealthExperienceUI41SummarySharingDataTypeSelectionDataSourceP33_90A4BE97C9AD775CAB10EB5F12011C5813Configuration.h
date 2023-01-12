@@ -16,6 +16,7 @@
     MISSING_TYPE *shouldOnlyFetchProminentDataTypes;
     MISSING_TYPE *selectionFlow;
     MISSING_TYPE *sectionHeader;
+    MISSING_TYPE *sectionHeaderIconConfig;
     MISSING_TYPE *hasShowAllButton;
     MISSING_TYPE *selectedDataTypesDelegate;
 }

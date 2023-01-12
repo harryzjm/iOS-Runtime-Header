@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <WebKit/WKContentControlled-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKCompositingView : UIView <WKContentControlled>
+@interface WKCompositingView : UIView
 {
 }
 

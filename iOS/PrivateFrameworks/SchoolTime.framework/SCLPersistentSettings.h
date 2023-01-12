@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SchoolTime/NSCopying-Protocol.h>
-#import <SchoolTime/NSSecureCoding-Protocol.h>
-
 @class SCLScheduleSettings;
 
 __attribute__((visibility("hidden")))
-@interface SCLPersistentSettings : NSObject <NSSecureCoding, NSCopying>
+@interface SCLPersistentSettings : NSObject
 {
     _Bool _manualSchoolModeEnabled;
     SCLScheduleSettings *_scheduleSettings;

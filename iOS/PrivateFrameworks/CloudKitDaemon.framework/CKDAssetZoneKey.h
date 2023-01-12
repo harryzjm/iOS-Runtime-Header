@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKRecordZoneID;
 
-@interface CKDAssetZoneKey : NSObject <NSCopying>
+@interface CKDAssetZoneKey : NSObject
 {
     CKRecordZoneID *_destinationZoneID;
     CKRecordZoneID *_sourceZoneID;

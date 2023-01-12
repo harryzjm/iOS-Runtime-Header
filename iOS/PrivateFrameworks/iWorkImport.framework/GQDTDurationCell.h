@@ -6,7 +6,6 @@
 
 @class GQDTComputedFormatSpec;
 
-__attribute__((visibility("hidden")))
 @interface GQDTDurationCell
 {
     double mValue;

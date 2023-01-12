@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCBackoff-Protocol.h>
-
 @class ASCExponentialBackoff, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ASCJitterBackoff : NSObject <ASCBackoff>
+@interface ASCJitterBackoff : NSObject
 {
     ASCExponentialBackoff *_exponentialBackoff;
 }

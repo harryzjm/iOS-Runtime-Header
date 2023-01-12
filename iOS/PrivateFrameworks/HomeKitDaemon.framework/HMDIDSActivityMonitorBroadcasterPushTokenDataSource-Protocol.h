@@ -6,11 +6,11 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDDevice, NSArray, NSString;
-@protocol HMDIDSActivityMonitorBroadcasterPushTokenDataSourceDelegate;
+@class HMDDevice, NSObject, NSString;
+@protocol HMDIDSActivityMonitorBroadcasterPushTokenDataSourceDelegate, OS_dispatch_queue;
 
 @protocol HMDIDSActivityMonitorBroadcasterPushTokenDataSource <NSObject>
 @property __weak id <HMDIDSActivityMonitorBroadcasterPushTokenDataSourceDelegate> delegate;
-- (NSArray *)pushTokensForDevicesObservingSubjectDevice:(HMDDevice *)arg1 subActivity:(NSString *)arg2;
+- (void)pushTokensForDevicesObservingSubjectDevice:(HMDDevice *)arg1 subActivity:(NSString *)arg2 queue:(NSObject<OS_dispatch_queue> *)arg3 completionHandler:(void (^)(NSArray *))arg4;
 @end
 

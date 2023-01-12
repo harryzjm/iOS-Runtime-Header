@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
-
 @class MPCPlaybackEngine, MPModelPlayEvent, NSOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCPlaybackHistoryController : NSObject <MPCPlaybackEngineEventObserving>
+@interface MPCPlaybackHistoryController : NSObject
 {
     MPCPlaybackEngine *_playbackEngine;
     NSOperationQueue *_operationQueue;

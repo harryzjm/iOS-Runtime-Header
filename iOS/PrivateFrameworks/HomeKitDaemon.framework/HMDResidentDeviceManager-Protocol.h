@@ -9,13 +9,15 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDBackingStoreTransactionActions, HMDHome, HMDMessageDispatcher, HMDResidentDevice, NSArray, NSDictionary, NSUUID;
+@class HMDBackingStoreTransactionActions, HMDDevice, HMDHome, HMDMessageDispatcher, HMDResidentDevice, HMFFuture, NSArray, NSDictionary, NSUUID;
 @protocol HMDDevicePreferenceDataSource, HMDResidentDeviceManagerDelegate;
 
 @protocol HMDResidentDeviceManager <NSObject, HMFLogging, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
 @property(nonatomic, getter=isResidentSupported) _Bool residentSupported;
 @property(readonly) NSUUID *primaryResidentUUID;
 @property(readonly, nonatomic) _Bool hasTrustZoneCapableResident;
+@property(readonly, nonatomic) _Bool isResidentElectionV2Enabled;
+@property(readonly, nonatomic) HMDDevice *confirmedPrimaryResidentDevice;
 @property(readonly, nonatomic, getter=isCurrentDeviceConfirmedPrimaryResident) _Bool currentDeviceConfirmedPrimaryResident;
 @property(readonly, nonatomic, getter=isCurrentDevicePrimaryResident) _Bool currentDevicePrimaryResident;
 @property(readonly, nonatomic, getter=isCurrentDeviceAvailableResident) _Bool currentDeviceAvailableResident;
@@ -27,11 +29,14 @@
 - (void)addDataSource:(id <HMDDevicePreferenceDataSource>)arg1;
 - (void)confirmWithCompletionHandler:(void (^)(NSError *))arg1;
 - (NSDictionary *)dumpState;
+- (void)invalidate;
 - (void)run;
 - (void)updatePrimaryResidentWithUUID:(NSUUID *)arg1 actions:(HMDBackingStoreTransactionActions *)arg2;
+- (HMFFuture *)foundNewPrimaryResident:(HMDDevice *)arg1;
+- (HMFFuture *)discoverPrimaryResident;
 - (void)confirmOnAvailability;
 - (void)confirmAsResident;
-- (void)electResidentDevice;
+- (void)electResidentDevice:(unsigned long long)arg1;
 - (void)notifyClientsOfUpdatedResidentDevice:(HMDResidentDevice *)arg1;
 - (void)updateResidentAvailability;
 - (void)atHomeLevelChanged:(long long)arg1;

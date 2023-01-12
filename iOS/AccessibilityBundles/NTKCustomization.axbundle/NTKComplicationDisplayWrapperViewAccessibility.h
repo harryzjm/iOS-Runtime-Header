@@ -4,21 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 @interface NTKComplicationDisplayWrapperViewAccessibility
 {
-    NSString *_accessibilityLocalizedComplicationName;
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void).cxx_destruct;
-@property(copy, nonatomic) NSString *accessibilityLocalizedComplicationName; // @synthesize accessibilityLocalizedComplicationName=_accessibilityLocalizedComplicationName;
 - (id)_viewToAddFocusLayer;
 - (_Bool)canBecomeFocused;
-- (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
 - (long long)_accessibilityFocusRingStyle;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;

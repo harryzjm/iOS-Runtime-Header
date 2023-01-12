@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(retain, nonatomic) NSArray *subcategorySpecifiers; // @synthesize subcategorySpecifiers=_subcategorySpecifiers;
 @property(nonatomic) __weak id <PSBillingPeriodSource> billingPeriodSource; // @synthesize billingPeriodSource=_billingPeriodSource;
+- (id)getLogger;
 - (id)dataUsageString;
 - (unsigned long long)dataUsage;
 - (id)initWithType:(unsigned long long)arg1 subSpecifiers:(id)arg2;

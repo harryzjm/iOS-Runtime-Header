@@ -10,9 +10,12 @@
 
 @interface _TtC10ChronoCore35WidgetSceneForegroundContentLimiter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_foregroundSceneContentAvailabilityObservers;
+    MISSING_TYPE *_foregroundScenes;
+    MISSING_TYPE *_foregroundScenesWithoutContent;
     MISSING_TYPE *_foregroundScenesWithContent;
-    MISSING_TYPE *_effectiveMaxForegroundSceneCount;
+    MISSING_TYPE *_foregroundScenesContentUsage;
+    MISSING_TYPE *_configurationService;
+    MISSING_TYPE *_maxContentArea;
     MISSING_TYPE *_reportBugAction;
 }
 

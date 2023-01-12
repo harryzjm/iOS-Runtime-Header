@@ -6,7 +6,7 @@
 
 #import <iCloudQuotaUI/NSObject-Protocol.h>
 
-@class NSError, RUIObjectModel, RUIPage;
+@class ACAccount, NSError, RUIObjectModel, RUIPage;
 @protocol PreferencesRemoteUIDelegateProtocol;
 
 @protocol DelayedPushDelegate <NSObject>
@@ -15,6 +15,7 @@
 - (void)loadStarted:(id)arg1;
 
 @optional
+- (void)remoteUIDelegate:(id <PreferencesRemoteUIDelegateProtocol>)arg1 didCreatePage:(RUIPage *)arg2 forAccount:(ACAccount *)arg3 inObjectModel:(RUIObjectModel *)arg4;
 - (void)remoteUIDelegate:(id <PreferencesRemoteUIDelegateProtocol>)arg1 didCreatePage:(RUIPage *)arg2 inObjectModel:(RUIObjectModel *)arg3;
 @end
 

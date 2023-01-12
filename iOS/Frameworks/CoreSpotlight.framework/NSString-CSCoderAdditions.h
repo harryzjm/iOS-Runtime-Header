@@ -6,9 +6,9 @@
 
 #import <Foundation/NSString.h>
 
-#import <CoreSpotlight/CSCoderEncoder-Protocol.h>
-
-@interface NSString (CSCoderAdditions) <CSCoderEncoder>
+@interface NSString (CSCoderAdditions)
 - (void)encodeWithCSCoder:(id)arg1;
+- (_Bool)cs_fuzzyPrefixMatchString:(id)arg1 locale:(id)arg2;
+- (id)cs_escapedStringForSearchQuery;
 @end
 

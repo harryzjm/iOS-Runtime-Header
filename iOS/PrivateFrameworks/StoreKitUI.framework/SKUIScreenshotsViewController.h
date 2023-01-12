@@ -6,17 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUISlideshowViewControllerDataSource-Protocol.h>
-#import <StoreKitUI/SKUISlideshowViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
-#import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
-#import <StoreKitUI/UIScrollViewDelegate-Protocol.h>
-
 @class NSArray, NSMutableArray, NSOperationQueue, NSString, SKUIClientContext, SKUIScreenshotDataConsumer, SKUIVideoImageDataConsumer, UICollectionView;
 @protocol SKUIScreenshotsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIScreenshotsViewController : UIViewController <SKUISlideshowViewControllerDataSource, SKUISlideshowViewControllerDelegate, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface SKUIScreenshotsViewController : UIViewController
 {
     SKUIClientContext *_clientContext;
     UICollectionView *_collectionView;

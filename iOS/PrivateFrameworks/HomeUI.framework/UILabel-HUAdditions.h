@@ -6,11 +6,9 @@
 
 #import <UIKit/UILabel.h>
 
-#import <HomeUI/HUActsAsLabel-Protocol.h>
-
 @class NSAttributedString, NSString;
 
-@interface UILabel (HUAdditions) <HUActsAsLabel>
+@interface UILabel (HUAdditions)
 + (id)labelWithText:(id)arg1 font:(id)arg2;
 
 // Remaining properties

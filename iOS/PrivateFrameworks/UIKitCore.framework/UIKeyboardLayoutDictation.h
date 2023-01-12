@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKeyboardLayout.h"
+
 @class UIKBBackgroundView, UIKBTree;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardLayoutDictation
+@interface UIKeyboardLayoutDictation : UIKeyboardLayout
 {
     UIKBBackgroundView *_backgroundView;
     UIKBTree *_keyplane;
@@ -16,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 + (_Bool)keyboardInputMode:(id)arg1 supportsResizingOffsetForScreenTraits:(id)arg2;
 + (id)activeInstance;
+- (void).cxx_destruct;
 - (void)_moveWithEvent:(id)arg1;
 - (struct CGRect)dragGestureRectInView:(id)arg1;
 - (_Bool)usesAutoShift;

@@ -6,17 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMFMessageReceiver-Protocol.h>
-#import <HomeKit/HMObjectMerge-Protocol.h>
-#import <HomeKit/NSSecureCoding-Protocol.h>
-
-@class HMAccessory, HMFUnfairLock, HMHome, NSArray, NSString, NSUUID, _HMContext;
+@class HMAccessory, HMHome, NSArray, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _HMAccessoryProfile : NSObject <HMObjectMerge, HMFMessageReceiver, NSSecureCoding>
+@interface _HMAccessoryProfile : NSObject
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSUUID *_uniqueIdentifier;
     NSString *_assistantIdentifier;
     _HMContext *_context;
@@ -43,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
-- (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (_Bool)_mergeWithNewObject:(id)arg1;
 - (void)handleRuntimeStateUpdate:(id)arg1;
 - (void)_registerNotificationHandlers;
 - (void)_unconfigure;

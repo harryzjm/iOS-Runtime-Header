@@ -7,6 +7,6 @@
 #import <VoiceShortcutClient/WFWorkflowDataRunDescriptor.h>
 
 @interface WFWorkflowDataRunDescriptor (Conversion)
-- (id)workflowRepresentationWithDatabase:(id)arg1 environment:(long long)arg2 error:(id *)arg3;
+- (id)workflowFileDataWithDatabase:(id)arg1 error:(id *)arg2;
 @end
 

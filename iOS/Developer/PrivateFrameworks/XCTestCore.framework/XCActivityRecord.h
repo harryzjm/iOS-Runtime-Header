@@ -51,10 +51,6 @@
 - (void)_synchronized_addAttachment:(id)arg1;
 - (void)removeAttachmentsWithName:(id)arg1;
 - (id)attachmentForName:(id)arg1;
-- (void)addLocalizableStringsData:(id)arg1;
-- (void)addSynthesizedEvent:(id)arg1;
-- (void)addSnapshot:(id)arg1;
-- (void)addScreenImageData:(id)arg1 forceKeepAlways:(_Bool)arg2;
 - (void)addMemoryGraphData:(id)arg1;
 - (void)addDiagnosticReportData:(id)arg1;
 - (void)_synchronized_removeAttachmentsWithName:(id)arg1;
@@ -64,8 +60,6 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy) NSString *name;
 - (id)init;
-- (void)attachAutomaticScreenshotForScreen:(id)arg1;
-- (void)attachAutomaticScreenshotForDevice:(id)arg1;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NetAppsUtilities/NAScheduler-Protocol.h>
-
 @class NSOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NAOperationQueueScheduler : NSObject <NAScheduler>
+@interface _NAOperationQueueScheduler : NSObject
 {
     NSOperationQueue *_queue;
 }

@@ -8,6 +8,7 @@
 
 @protocol SFTransitionCoordinating <NSObject>
 - (void)addCompletion:(void (^)(void))arg1;
+- (void)addRetargetableAnimations:(void (^)(id <SFTransitionContext>))arg1;
 - (void)addKeyframeWithRelativeStartTime:(double)arg1 relativeDuration:(double)arg2 animations:(void (^)(id <SFTransitionContext>))arg3;
 - (void)addAnimations:(void (^)(id <SFTransitionContext>))arg1;
 @end

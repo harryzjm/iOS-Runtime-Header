@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLAttributedStringJSExports-Protocol.h>
-
 @class NSAttributedString, NSMutableAttributedString, NSString;
 
-@interface TMLAttributedString : NSObject <NSCopying, TMLAttributedStringJSExports>
+@interface TMLAttributedString : NSObject
 {
     NSMutableAttributedString *_attributedString;
 }
@@ -20,6 +17,7 @@
 + (void)initializeJSContext:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
+- (struct CGRect)boundingRectWithSize:(struct CGSize)arg1 options:(long long)arg2;
 - (struct CGSize)size;
 - (void)deleteCharactersInRange:(struct _NSRange)arg1;
 - (void)appendAttributedString:(id)arg1;

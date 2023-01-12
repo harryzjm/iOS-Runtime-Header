@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <UIKitCore/UIForcePresentationController-Protocol.h>
+#import "UIPresentationController.h"
 
 @class NSLayoutConstraint, NSString, UIAlertVisualStyleUpdatableConstraints, UIGestureRecognizer, UIView, _UIKeyboardLayoutAlignmentView, _UIStatesFeedbackGenerator;
 @protocol _UIForcePresentationControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerPresentationController <UIAdaptivePresentationControllerDelegate, UIForcePresentationController>
+@interface _UIAlertControllerPresentationController : UIPresentationController
 {
     UIView *_dimmingView;
     _UIKeyboardLayoutAlignmentView *keyboardLayoutAlignmentView;

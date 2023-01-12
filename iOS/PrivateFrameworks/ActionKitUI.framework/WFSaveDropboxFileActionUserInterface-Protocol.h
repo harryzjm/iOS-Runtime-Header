@@ -10,6 +10,6 @@
 
 @protocol WFSaveDropboxFileActionUserInterface <WFActionRemoteUserInterface>
 - (void)cancel;
-- (void)showWithServiceName:(NSString *)arg1 input:(NSArray *)arg2 managedLevel:(unsigned long long)arg3 options:(unsigned long long)arg4 completionHandler:(void (^)(NSArray *, WFContentAttributionSet *, NSError *))arg5;
+- (void)showWithServiceName:(NSString *)arg1 input:(NSArray *)arg2 managedLevel:(unsigned long long)arg3 options:(unsigned long long)arg4 completionHandler:(void (^)(NSArray *, NSError *))arg5;
 @end
 

@@ -10,11 +10,11 @@
 
 @interface _TtC9SeymourUI21SessionTrackPresenter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *state;
-    MISSING_TYPE *stateChangedHandlers;
-    MISSING_TYPE *display;
-    MISSING_TYPE *artworkImageLoader;
     MISSING_TYPE *catalogWorkout;
+    MISSING_TYPE *display;
+    MISSING_TYPE *externalOverlayDisplay;
+    MISSING_TYPE *artworkImageLoader;
+    MISSING_TYPE *state;
 }
 
 @end

@@ -7,9 +7,18 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (BRAdditions)
++ (id)brc_errorCorruptedDB;
++ (id)brc_errorForRejectedDeletionOfItem:(id)arg1;
++ (id)brc_errorCollisionWithItem:(id)arg1;
++ (id)brc_errorCiconiaCannotDefer;
++ (id)brc_errorCiconiaTimedout;
++ (id)brc_errorCiconiaFailed:(id)arg1;
++ (id)brc_errorCiconiaAborted:(id)arg1;
 + (id)brc_errorCoreAnalyticsErrorCountMismatchWithExpected:(id)arg1 actual:(id)arg2;
 + (id)brc_errorItemChanged;
 + (id)brc_addPartialError:(id)arg1 forURL:(id)arg2 toError:(id)arg3;
++ (id)brc_errorItemNotPausedFromSync;
++ (id)brc_errorItemAlreadyPausedFromSyncByBundleID:(id)arg1;
 + (id)brc_errorItemIneligibleFromSyncForInode:(id)arg1;
 + (id)brc_errorItemInTrash;
 + (id)brc_errorItemNotShareable;
@@ -24,11 +33,13 @@
 + (id)brc_errorOperationCancelled;
 + (id)brc_errorDocumentWithFilename:(id)arg1 size:(long long)arg2 isTooLargeToUpload:(long long)arg3;
 + (id)brc_errorAccountMismatch;
++ (id)brc_errorDocumentEvicted;
 + (id)brc_errorDocumentIsNoLongerSharedAtURL:(id)arg1;
 + (id)brc_errorDocumentIsNotSharedAtURL:(id)arg1;
 + (id)brc_errorDocumentIsNotShared;
 + (id)brc_errorDocumentAtURL:(id)arg1 isNotExternalToAppLibrary:(id)arg2;
-+ (id)brc_errorNoDocumentAtURL:(id)arg1 underlyingPOSIXError:(int)arg2;
++ (id)brc_errorNoDocument:(id)arg1 underlyingPOSIXError:(int)arg2;
++ (id)brc_errorNoDocumentAtURL:(id)arg1 underlyingError:(id)arg2;
 + (id)brc_errorNoSuitableClientApp;
 + (id)brc_errorSyncDisabled:(id)arg1;
 + (id)brc_errorClientZoneNotFound:(id)arg1;
@@ -45,6 +56,8 @@
 + (id)brc_errorMethodNotImplemented:(SEL)arg1;
 + (id)brc_errorDaemonShouldBeLoggedOut;
 + (id)brc_errorLoggedOut;
++ (id)brc_errorNoBRItemService;
++ (id)brc_errorNotSupportedInFPFS;
 + (id)br_errorFromErrno;
 + (id)br_errorWithPOSIXCode:(int)arg1 description:(id)arg2;
 + (id)br_errorWithPOSIXCode:(int)arg1;

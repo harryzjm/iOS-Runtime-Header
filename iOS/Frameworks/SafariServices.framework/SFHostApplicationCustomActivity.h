@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_SFActivity.h"
+
 @class SFCustomActivityProxy;
 
 __attribute__((visibility("hidden")))
-@interface SFHostApplicationCustomActivity
+@interface SFHostApplicationCustomActivity : _SFActivity
 {
     SFCustomActivityProxy *_activityProxy;
 }

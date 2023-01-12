@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *accountProvider;
     MISSING_TYPE *bagConsumer;
-    MISSING_TYPE *credentialsStore;
     MISSING_TYPE *$__lazy_storage_$_amsSession;
 }
 

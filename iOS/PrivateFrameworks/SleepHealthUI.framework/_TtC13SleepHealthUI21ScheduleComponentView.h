@@ -14,11 +14,15 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *timeLabel;
     MISSING_TYPE *dayLabel;
+    MISSING_TYPE *options;
+    MISSING_TYPE *verticalBar;
+    MISSING_TYPE *stackViewLeadingConstraint;
     MISSING_TYPE *$__lazy_storage_$_stackView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)init;
 
 @end

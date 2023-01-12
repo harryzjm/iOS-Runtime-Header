@@ -14,7 +14,7 @@
     MISSING_TYPE *interactor;
     MISSING_TYPE *router;
     MISSING_TYPE *tracker;
-    MISSING_TYPE *channelUpsellManager;
+    MISSING_TYPE *upsellManager;
 }
 
 @end

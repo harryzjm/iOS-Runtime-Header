@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthKit/NSCopying-Protocol.h>
-#import <HealthKit/NSSecureCoding-Protocol.h>
-
 @class NSMapTable;
 
 __attribute__((visibility("hidden")))
-@interface _HKFactorization : NSObject <NSCopying, NSSecureCoding>
+@interface _HKFactorization : NSObject
 {
     NSMapTable *_factors;
 }

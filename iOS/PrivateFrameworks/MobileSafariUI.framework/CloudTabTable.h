@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <MobileSafariUI/CloudTabItemViewDelegate-Protocol.h>
-#import <MobileSafariUI/ViewReuseManagerDelegate-Protocol.h>
-
 @class CloudTabHeaderView, NSArray, NSString, ViewReuseManager, WBSCloudTab, WBSCloudTabDevice;
 @protocol CloudTabTableDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CloudTabTable : UIView <CloudTabItemViewDelegate, ViewReuseManagerDelegate>
+@interface CloudTabTable : UIView
 {
     long long _style;
     WBSCloudTabDevice *_device;

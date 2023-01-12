@@ -8,11 +8,11 @@
 
 @protocol PXStoryAutoEditClip
 @property(readonly, copy, nonatomic) NSDictionary *debugInfo;
-@property(readonly, nonatomic) CDStruct_3ac0dd7e moduleInfo;
-@property(readonly, nonatomic) CDStruct_195f2361 audioInfo;
-@property(readonly, nonatomic) CDStruct_618113c1 transitionInfo;
-@property(readonly, nonatomic) CDStruct_b8e7e30c motionInfo;
-@property(readonly, nonatomic) CDStruct_c8943d03 durationInfo;
+@property(readonly, nonatomic) CDStruct_fa0c26dd moduleInfo;
+@property(readonly, nonatomic) CDStruct_2f782ce9 audioInfo;
+@property(readonly, nonatomic) CDStruct_4ae65f2e transitionInfo;
+@property(readonly, nonatomic) CDStruct_412fc33d motionInfo;
+@property(readonly, nonatomic) CDStruct_d00fdffd durationInfo;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) NSArray *displayAssets;
 @end

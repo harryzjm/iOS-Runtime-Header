@@ -4,16 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, PXStoryItemPlacement;
+@class NSArray, PXPhotosViewModel, PXStoryItemPlacement;
 @protocol PXStoryDiagnosticHUDContentProvider, PXStoryViewActionPerformer;
 
 @protocol PXStoryMutableViewModel
+@property(nonatomic) _Bool isUserPerformingRemoteGesture;
+@property(nonatomic) long long highlightedRelatedIndex;
+@property(retain, nonatomic) PXPhotosViewModel *photosGridViewModel;
+@property(nonatomic) _Bool isPerformingCrossfadeTransitionToRelated;
+@property(nonatomic) double volume;
 @property(nonatomic) _Bool isInSelectMode;
 @property(nonatomic) long long diagnosticHUDType;
 @property(nonatomic) _Bool isHUDVisible;
 @property(nonatomic) _Bool shouldShowErrorIndicator;
 @property(copy, nonatomic) NSArray *relatedConfigurations;
 @property(nonatomic) __weak id <PXStoryViewActionPerformer> actionPerformer;
+@property(nonatomic) _Bool showSongInTitleWhenPaused;
 @property(nonatomic) _Bool isActionMenuOpen;
 @property(nonatomic) double styleSwitcherVisibilityFraction;
 @property(nonatomic) double swipeDownDismissalPreviewFraction;
@@ -21,11 +27,12 @@
 @property(nonatomic) _Bool swipeDownTriggeringDismissal;
 @property(retain, nonatomic) PXStoryItemPlacement *viewControllerDismissalTargetPlacement;
 @property(nonatomic) _Bool isPerformingViewControllerTransition;
-@property(nonatomic) CDStruct_14916c44 swipeDownInteractionState;
+@property(nonatomic) CDStruct_67c61e0b swipeDownInteractionState;
 @property(nonatomic) unsigned long long edgeToHighlight;
 @property(nonatomic) _Bool isScrubbing;
-@property(nonatomic) CDStruct_982265da scrubberPosition;
+@property(nonatomic) CDStruct_48d5200d scrubberPosition;
 @property(nonatomic) _Bool shouldCountDownToUpNext;
+@property(nonatomic) _Bool wantsRelatedOverlayNavigationButtonsVisible;
 @property(nonatomic) _Bool isRelatedOverlayScrolledIntoView;
 @property(nonatomic) double fadeOutOverlayVisibilityFraction;
 @property(nonatomic) double relatedOverlayVisibilityFraction;
@@ -33,6 +40,8 @@
 @property(nonatomic) double playbackEndDarkening;
 @property(nonatomic) double scrubberVisibilityFraction;
 @property(nonatomic) _Bool wantsScrubberVisible;
+@property(nonatomic) double maximumIndividualTopChromeItemVisibilityFraction;
+@property(nonatomic) double muteToggleButtonVisibilityFraction;
 @property(nonatomic) double bufferingIndicatorVisibilityFraction;
 @property(nonatomic) unsigned long long chromeItems;
 @property(nonatomic) double chromeVisibilityFraction;
@@ -41,6 +50,9 @@
 @property(nonatomic) long long desiredPlayState;
 @property(nonatomic) long long viewMode;
 @property(nonatomic) _Bool isActive;
+- (void)hideMuteToggleButtonWhenChromeIsHidden;
+- (void)temporarilyShowMuteToggleButtonWhenChromeIsHidden;
+- (void)setMuted:(_Bool)arg1 reason:(long long)arg2;
 - (void)setDiagnosticHUDContentProvider:(id <PXStoryDiagnosticHUDContentProvider>)arg1 forType:(long long)arg2;
 - (void)deselectAllGridItems;
 - (void)selectAllGridItems;

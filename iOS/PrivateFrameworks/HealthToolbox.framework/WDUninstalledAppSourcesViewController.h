@@ -6,12 +6,10 @@
 
 #import <HealthUI/HKTableViewController.h>
 
-#import <HealthToolbox/HKSourceListDataSourceObserver-Protocol.h>
-
 @class HKSourceListDataSource, NSArray, UIImage, WDProfile;
 
 __attribute__((visibility("hidden")))
-@interface WDUninstalledAppSourcesViewController : HKTableViewController <HKSourceListDataSourceObserver>
+@interface WDUninstalledAppSourcesViewController : HKTableViewController
 {
     WDProfile *_profile;
     HKSourceListDataSource *_dataSource;

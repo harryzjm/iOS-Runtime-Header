@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HDSPGoodMorningAlertStateMachineState.h"
+
 __attribute__((visibility("hidden")))
-@interface HDSPGoodMorningAlertPresentingState
+@interface HDSPGoodMorningAlertPresentingState : HDSPGoodMorningAlertStateMachineState
 {
 }
 
 - (void)sleepScheduleStateChangedToBedtime;
 - (id)stateName;
-- (id)determineNextState;
+- (void)stateDidExpireWithContext:(id)arg1;
+- (id)nextStateWithContext:(id *)arg1;
 - (void)didExitWithNextState:(id)arg1 context:(id)arg2;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
-- (id)determineExpirationDateForCurrentDate:(id)arg1;
-- (void)willEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (_Bool)schedulesExpiration;
+- (double)expirationDuration;
 
 @end
 

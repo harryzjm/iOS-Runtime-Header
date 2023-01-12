@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSArray *_junkResults;
     NSArray *_qualityResults;
     NSArray *_faceResults;
+    NSArray *_petsResults;
     NSArray *_saliencyResults;
     NSArray *_actionResults;
     NSArray *_subtleMotionResults;
@@ -25,6 +26,8 @@ __attribute__((visibility("hidden")))
     NSArray *_keyFrameResults;
     NSArray *_sceneResults;
     NSArray *_orientationResults;
+    NSArray *_mlHighlightScoreResults;
+    NSArray *_mlQualityResults;
     NSMutableArray *_expressionSegments;
     NSMutableArray *_internalResults;
     NSMutableArray *_highlightResults;
@@ -42,12 +45,17 @@ __attribute__((visibility("hidden")))
     float _maxHighlightScore;
     float _minHighlightScore;
     _Bool _isLivePhoto;
+    float _photoOffset;
     _Bool _verbose;
     _Bool _hadFlash;
     _Bool _hadZoom;
     _Bool _isTimelapse;
     CDStruct_e83c9415 _preferredTimeRange;
     AVAssetImageGenerator *_imageGenerator;
+    int _numberOfFrames;
+    array_bb4fff4b _prevMotionParamDiff;
+    array_bb4fff4b _sumMotionParam;
+    array_bb4fff4b _diffFlipCount;
     VCPColorNormalizationAnalyzer *_colorNormalizationAnalyzer;
 }
 
@@ -60,7 +68,11 @@ __attribute__((visibility("hidden")))
 - (float)voiceScoreForTimerange:(CDStruct_e83c9415)arg1;
 - (float)actionScoreForTimerange:(CDStruct_e83c9415)arg1;
 - (float)qualityScoreForTimerange:(CDStruct_e83c9415)arg1;
-- (float)analyzeOverallQuality:(CDStruct_e83c9415)arg1;
+- (float)analyzeOverallQuality:(CDStruct_e83c9415)arg1 isSettlingEffect:(_Bool)arg2;
+- (float)computeMLQualityScoreForTimerange:(CDStruct_e83c9415)arg1;
+- (float)computeMLHighlightScoreForTimerange:(CDStruct_e83c9415)arg1;
+- (int)combineMLHighlightScore;
+- (int)postProcessMLHighlightScore;
 - (float)computeVoiceScoreInTimeRange:(CDStruct_e83c9415)arg1;
 - (float)computeHumanPoseScoreInTimerange:(CDStruct_e83c9415)arg1;
 - (float)computeHumanActionScoreInTimerange:(CDStruct_e83c9415)arg1;
@@ -85,6 +97,12 @@ __attribute__((visibility("hidden")))
 - (id)highlightScoreResults;
 - (id)results;
 - (struct CGRect)computeBestPlaybackCrop:(CDStruct_e83c9415)arg1;
+- (_Bool)updateCropHeatMap:(float *)arg1 withResults:(id)arg2 timeRange:(CDStruct_e83c9415)arg3 resultsKey:(id)arg4;
+- (id)settlingEffects;
+- (int)analyzeMotionStability:(array_bb4fff4b)arg1 motionParamDiff:(array_bb4fff4b)arg2;
+- (float)settlingExposureChangeScore:(CDStruct_e83c9415)arg1;
+- (float)settlingSubjectScore:(CDStruct_e83c9415)arg1;
+- (float)settlingMotionScore:(CDStruct_e83c9415)arg1;
 - (id)movieSummary;
 - (CDStruct_e83c9415)findBestTrim:(CDStruct_e83c9415)arg1;
 - (id)findBestHighlightSegment:(CDStruct_e83c9415)arg1 targetTrim:(_Bool)arg2;
@@ -102,10 +120,10 @@ __attribute__((visibility("hidden")))
 - (id)postProcessMovieHighlight:(id)arg1;
 - (_Bool)isGoodQuality:(CDStruct_e83c9415)arg1;
 - (int)generateHighlights;
-- (int)prepareRequiredQualityResult:(id)arg1 junkDetectionResult:(id)arg2 descriptorResult:(id)arg3 faceResult:(id)arg4 saliencyResult:(id)arg5 actionResult:(id)arg6 subtleMotionResult:(id)arg7 voiceResult:(id)arg8 keyFrameResult:(id)arg9 sceneResults:(id)arg10 humanActionResults:(id)arg11 humanPoseResults:(id)arg12 cameraMotionResults:(id)arg13 orientationResults:(id)arg14 frameSize:(struct CGSize)arg15;
+- (int)prepareRequiredQualityResult:(id)arg1 junkDetectionResult:(id)arg2 descriptorResult:(id)arg3 faceResult:(id)arg4 petsResult:(id)arg5 saliencyResult:(id)arg6 actionResult:(id)arg7 subtleMotionResult:(id)arg8 voiceResult:(id)arg9 keyFrameResult:(id)arg10 sceneResults:(id)arg11 humanActionResults:(id)arg12 humanPoseResults:(id)arg13 cameraMotionResults:(id)arg14 orientationResults:(id)arg15 mlHighlightScoreResults:(id)arg16 mlQualityResults:(id)arg17 frameSize:(struct CGSize)arg18;
 - (void)setMaxHighlightDuration:(float)arg1;
 - (id)initWithPostProcessOptions:(id)arg1;
-- (id)initWithAnalysisType:(unsigned long long)arg1 isLivePhoto:(_Bool)arg2 hadFlash:(_Bool)arg3 hadZoom:(_Bool)arg4 isTimelapse:(_Bool)arg5 preferredTimeRange:(CDStruct_e83c9415)arg6 asset:(id)arg7;
+- (id)initWithAnalysisType:(unsigned long long)arg1 isLivePhoto:(_Bool)arg2 photoOffset:(float)arg3 hadFlash:(_Bool)arg4 hadZoom:(_Bool)arg5 isTimelapse:(_Bool)arg6 preferredTimeRange:(CDStruct_e83c9415)arg7 asset:(id)arg8;
 
 @end
 

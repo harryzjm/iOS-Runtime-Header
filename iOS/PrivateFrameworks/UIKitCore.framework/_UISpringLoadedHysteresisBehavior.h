@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UISpringLoadedInteractionBehavior_Private-Protocol.h>
-
 @class CADisplayLink, NSString, _UIVelocityIntegrator;
 @protocol UISpringLoadedInteractionBehaviorDelegate, UISpringLoadedInteractionContext;
 
 __attribute__((visibility("hidden")))
-@interface _UISpringLoadedHysteresisBehavior : NSObject <UISpringLoadedInteractionBehavior_Private>
+@interface _UISpringLoadedHysteresisBehavior : NSObject
 {
     id <UISpringLoadedInteractionBehaviorDelegate> delegate;
     double _beginningVelocityThreshold;

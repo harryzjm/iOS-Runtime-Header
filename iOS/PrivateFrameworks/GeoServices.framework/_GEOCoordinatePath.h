@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _GEOCoordinatePath : NSObject <NSSecureCoding>
+@interface _GEOCoordinatePath : NSObject
 {
     struct vector<GEOLocationCoordinate3D, std::allocator<GEOLocationCoordinate3D>> _basicCoordinates;
     struct vector<zilch::ControlPoint, std::allocator<zilch::ControlPoint>> _zilchPoints;
@@ -29,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)calibratePointLengths:(void *)arg1 startIndex:(unsigned long long)arg2 endIndex:(unsigned long long)arg3 rangeLength:(double)arg4;
-- (CDStruct_39925896)coordinateAt:(unsigned long long)arg1;
+- (CDStruct_071ac149)coordinateAt:(unsigned long long)arg1;
 - (void)setPointLengths:(void *)arg1;
 - (void)setBasicCoordinates:(void *)arg1;
 - (void)setZilchPoints:(void *)arg1;

@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITextSelectionRect.h"
+
 @class WebSelectionRect;
 
 __attribute__((visibility("hidden")))
-@interface UITextSelectionRectImpl
+@interface UITextSelectionRectImpl : UITextSelectionRect
 {
     WebSelectionRect *webRect;
 }
 
 + (id)rectsWithWebRects:(id)arg1;
 + (id)rectWithWebRect:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) WebSelectionRect *webRect; // @synthesize webRect;
 - (_Bool)isVertical;
 - (_Bool)containsEnd;
@@ -21,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (id)range;
 - (long long)writingDirection;
 - (struct CGRect)rect;
-- (void)dealloc;
 - (id)initWithWebRect:(id)arg1;
 
 @end

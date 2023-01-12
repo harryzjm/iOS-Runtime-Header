@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationFaceTimeSettings : PBCodable <NSCopying>
+@interface VCMediaNegotiationFaceTimeSettings : PBCodable
 {
     unsigned int _capabilities;
     unsigned int _linkProbingCapabilityVersion;

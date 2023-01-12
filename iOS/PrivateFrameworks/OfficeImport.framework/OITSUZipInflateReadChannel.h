@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/TSUStreamReadChannel-Protocol.h>
-
 @class NSString;
 @protocol TSUStreamReadChannel;
 
 __attribute__((visibility("hidden")))
-@interface OITSUZipInflateReadChannel : NSObject <TSUStreamReadChannel>
+@interface OITSUZipInflateReadChannel : NSObject
 {
     id <TSUStreamReadChannel> _readChannel;
     unsigned long long _remainingUncompressedSize;

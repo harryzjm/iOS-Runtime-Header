@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/MSVQRConnectionSessionDataSource-Protocol.h>
-
-@class IDSAccount, IDSPseudonym, IDSService, MSVTimer, NSDictionary, NSString, NSURL, NSUUID;
-@protocol MSVQRConnectionReportProtocol, OS_dispatch_queue;
+@class ICSharedListeningConnectionReport, IDSAccount, IDSPseudonym, IDSService, MSVTimer, NSDictionary, NSString, NSURL, NSUUID;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface ICLiveLinkQRConnectionDataSource : NSObject <MSVQRConnectionSessionDataSource>
+@interface ICLiveLinkQRConnectionDataSource : NSObject
 {
     IDSService *_service;
     NSUUID *_groupSessionIdentifier;
@@ -20,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSURL *_sharedListeningSessionInviteURL;
     NSString *_sharedListeningSessionIdentifier;
     NSString *_sharedSessionToken;
-    id <MSVQRConnectionReportProtocol> _report;
+    ICSharedListeningConnectionReport *_report;
     CDUnknownBlockType _dataSourceErrorHandler;
     IDSAccount *_account;
     IDSPseudonym *_pseudonym;
@@ -38,13 +36,15 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) IDSPseudonym *pseudonym; // @synthesize pseudonym=_pseudonym;
 @property(retain, nonatomic) IDSAccount *account; // @synthesize account=_account;
 @property(copy, nonatomic) CDUnknownBlockType dataSourceErrorHandler; // @synthesize dataSourceErrorHandler=_dataSourceErrorHandler;
-@property(nonatomic) __weak id <MSVQRConnectionReportProtocol> report; // @synthesize report=_report;
+@property(nonatomic) __weak ICSharedListeningConnectionReport *report; // @synthesize report=_report;
 @property(retain, nonatomic) NSString *sharedSessionToken; // @synthesize sharedSessionToken=_sharedSessionToken;
 @property(copy, nonatomic) NSString *sharedListeningSessionIdentifier; // @synthesize sharedListeningSessionIdentifier=_sharedListeningSessionIdentifier;
 @property(retain, nonatomic) NSURL *sharedListeningSessionInviteURL; // @synthesize sharedListeningSessionInviteURL=_sharedListeningSessionInviteURL;
 @property(retain, nonatomic) NSDictionary *groupSessionOptions; // @synthesize groupSessionOptions=_groupSessionOptions;
 @property(retain, nonatomic) NSUUID *groupSessionIdentifier; // @synthesize groupSessionIdentifier=_groupSessionIdentifier;
 @property(retain, nonatomic) IDSService *service; // @synthesize service=_service;
+@property(readonly, nonatomic) CDUnknownBlockType trustHandler;
+@property(readonly, nonatomic) NSString *applicationProtocol;
 @property(readonly, nonatomic) NSString *rpcPath;
 @property(readonly, nonatomic) NSString *pluginIdentifier;
 - (id)sessionURLForBag:(id)arg1 error:(id *)arg2;

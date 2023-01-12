@@ -6,12 +6,10 @@
 
 #import <System/OS_object.h>
 
-#import <AppleEXR/OS_axr_part-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OS_axr_part : OS_object <OS_axr_part>
+@interface OS_axr_part : OS_object
 {
 }
 

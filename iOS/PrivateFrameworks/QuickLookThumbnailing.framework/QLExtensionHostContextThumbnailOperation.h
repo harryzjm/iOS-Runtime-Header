@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "QLAsynchronousOperation.h"
+
 @class NSDictionary, NSFileCoordinator, NSObject, NSOperationQueue, QLThumbnailHostContext;
 @protocol OS_dispatch_semaphore, QLTExtensionThumbnailItem;
 
 __attribute__((visibility("hidden")))
-@interface QLExtensionHostContextThumbnailOperation
+@interface QLExtensionHostContextThumbnailOperation : QLAsynchronousOperation
 {
     int _iconFlavor;
     int _interpolationQuality;

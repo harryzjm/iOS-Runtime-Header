@@ -6,12 +6,10 @@
 
 #import <QuartzCore/CAEAGLLayer.h>
 
-#import <VectorKit/GGLLayer-Protocol.h>
-
 @protocol GGLLayerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface GGLOpenGLESLayer : CAEAGLLayer <GGLLayer>
+@interface GGLOpenGLESLayer : CAEAGLLayer
 {
     id <GGLLayerDelegate> _delegate;
     shared_ptr_2063da68 _device;
@@ -23,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGSize backingSize; // @synthesize backingSize=_backingSize;
-@property id <GGLLayerDelegate> renderDelegate; // @synthesize renderDelegate=_delegate;
+@property __weak id <GGLLayerDelegate> renderDelegate; // @synthesize renderDelegate=_delegate;
 - (void)didEnterBackground;
 - (void)setContentsScale:(double)arg1;
 - (void)onTimerFired:(double)arg1;

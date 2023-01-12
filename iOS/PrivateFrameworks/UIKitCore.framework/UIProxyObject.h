@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIProxyObject : NSObject <NSCoding>
+@interface UIProxyObject : NSObject
 {
     NSString *proxiedObjectIdentifier;
 }

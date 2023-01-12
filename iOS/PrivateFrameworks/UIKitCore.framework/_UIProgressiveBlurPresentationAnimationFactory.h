@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIProgressiveBlurPresentationAnimationFactory : NSObject <_UIBasicAnimationFactory>
+@interface _UIProgressiveBlurPresentationAnimationFactory : NSObject
 {
     unsigned long long _curve;
 }

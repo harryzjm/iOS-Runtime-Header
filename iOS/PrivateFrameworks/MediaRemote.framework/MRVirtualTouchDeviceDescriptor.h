@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaRemote/NSCopying-Protocol.h>
-#import <MediaRemote/NSMutableCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface MRVirtualTouchDeviceDescriptor : NSObject <NSCopying, NSMutableCopying>
+@interface MRVirtualTouchDeviceDescriptor : NSObject
 {
     _Bool _absolute;
     _Bool _integratedDisplay;

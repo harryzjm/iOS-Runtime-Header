@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class NSObject, NSOperationQueue;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPStoreLyricsRequestOperation
+@interface MPStoreLyricsRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -16,12 +18,12 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _responseHandler;
 }
 
-+ (id)_lyricsURLForURLBagDictionary:(id)arg1;
-+ (_Bool)supportsLyricsForURLBagDictionary:(id)arg1;
++ (id)_lyricsURLForURLBag:(id)arg1;
++ (_Bool)supportsLyricsForURLBag:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(nonatomic) long long songAdamID; // @synthesize songAdamID=_songAdamID;
-- (void)_enqueueOperationWithURL:(id)arg1 bagDictionary:(id)arg2 allowingAuthentication:(_Bool)arg3;
+- (void)_enqueueOperationWithURL:(id)arg1 storeURLBag:(id)arg2 allowingAuthentication:(_Bool)arg3;
 - (void)cancel;
 - (void)finishWithError:(id)arg1;
 - (void)execute;

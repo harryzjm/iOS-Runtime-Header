@@ -6,11 +6,9 @@
 
 #import <Foundation/NSURL.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSURL (ActionIdentifier) <REDonatedActionIdentifierProviding>
+@interface NSURL (ActionIdentifier)
 - (unsigned long long)re_actionIdentifierHashValue;
 
 // Remaining properties

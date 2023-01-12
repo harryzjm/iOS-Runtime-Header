@@ -9,6 +9,7 @@
 @class NSArray, NSDateInterval, NSDictionary, NSProgress, NSString;
 
 @protocol HealthPluginHost <HKHealthAppPluginHost>
+- (NSProgress *)runLaunchGenerationIfIdleWithCompletion:(void (^)(_Bool))arg1;
 - (void)commitSharedSummaryTransactionAsUrgent:(_Bool)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)updateFavoritesWithFavoriteIdentifiers:(NSArray *)arg1 isFavorite:(_Bool)arg2 replaceExistingFavorites:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
 - (void)deleteFeedWithFeedKinds:(NSArray *)arg1 completion:(void (^)(void))arg2;

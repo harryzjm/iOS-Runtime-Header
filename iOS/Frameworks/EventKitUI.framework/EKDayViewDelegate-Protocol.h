@@ -6,9 +6,11 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKDayOccurrenceView, EKDayView, EKEvent, NSArray, UIScrollView, UIView;
+@class EKCalendarDate, EKDayOccurrenceView, EKDayView, EKEvent, NSArray, UIScrollView, UIView, UIViewController;
 
 @protocol EKDayViewDelegate <NSObject>
+- (NSArray *)selectedEventsForEditMenu;
+- (UIViewController *)presentationControllerForEditMenu;
 
 @optional
 - (void)dayView:(EKDayView *)arg1 scrollViewWillBeginDragging:(UIScrollView *)arg2;
@@ -18,10 +20,12 @@
 - (void)dayView:(EKDayView *)arg1 didUpdateScrollPosition:(struct CGPoint)arg2;
 - (void)dayView:(EKDayView *)arg1 isPinchingDayViewWithScale:(double)arg2;
 - (void)dayView:(EKDayView *)arg1 didScaleDayViewWithScale:(double)arg2;
-- (void)dayView:(EKDayView *)arg1 didSelectEvent:(EKEvent *)arg2;
+- (void)dayView:(EKDayView *)arg1 didSelectEvent:(EKEvent *)arg2 userInitiated:(_Bool)arg3;
 - (void)dayView:(EKDayView *)arg1 didCreateOccurrenceViews:(NSArray *)arg2;
 - (void)dayViewDidFinishScrollingToOccurrence:(EKDayView *)arg1;
 - (void)dayView:(EKDayView *)arg1 firstVisibleSecondChanged:(unsigned long long)arg2;
+- (void)dayViewDidTapEmptySpace:(EKDayView *)arg1 onDate:(EKCalendarDate *)arg2;
+- (void)dayView:(EKDayView *)arg1 didSelectEvent:(EKEvent *)arg2;
 - (void)dayViewDidTapEmptySpace:(EKDayView *)arg1;
 @end
 

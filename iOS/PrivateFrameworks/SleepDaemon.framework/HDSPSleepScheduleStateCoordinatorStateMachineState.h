@@ -6,12 +6,10 @@
 
 #import <Sleep/HKSPPersistentStateMachineState.h>
 
-#import <SleepDaemon/HDSPSleepScheduleStateCoordinatorStateMachineEventHandler-Protocol.h>
-
 @class HDSPSleepScheduleStateCoordinatorStateMachine, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDSPSleepScheduleStateCoordinatorStateMachineState : HKSPPersistentStateMachineState <HDSPSleepScheduleStateCoordinatorStateMachineEventHandler>
+@interface HDSPSleepScheduleStateCoordinatorStateMachineState : HKSPPersistentStateMachineState
 {
     unsigned long long _scheduleState;
 }
@@ -25,14 +23,15 @@ __attribute__((visibility("hidden")))
 - (void)scheduleModelChanged:(id)arg1;
 - (void)timeZoneChange;
 - (void)significantTimeChange;
-- (id)determineNextStateFromTimeline;
+- (id)_determineNextStateFromTimeline;
 - (id)_timelineForDate:(id)arg1;
 - (_Bool)isAlarmEnabled;
 - (_Bool)isSleepScheduleDisabled;
-- (void)updateStateWithChangeReason:(unsigned long long)arg1;
-- (void)updateState;
+- (void)stateDidExpireWithContext:(id)arg1;
+- (void)_forceUpdateStateWithChangeReason:(unsigned long long)arg1;
+- (id)nextStateWithContext:(id *)arg1 forceUpdate:(_Bool)arg2;
+- (id)nextStateWithContext:(id *)arg1;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
-- (void)willEnterWithPreviousState:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

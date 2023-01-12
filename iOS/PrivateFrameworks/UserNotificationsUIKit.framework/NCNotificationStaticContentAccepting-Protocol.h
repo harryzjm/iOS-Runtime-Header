@@ -6,7 +6,7 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class MTVisualStylingProvider, NSArray, NSAttributedString, NSDate, NSString, NSTimeZone, UIImage, UIImageConfiguration, UIView;
+@class MTVisualStylingProvider, NSArray, NSAttributedString, NSDate, NSString, NSTimeZone, UIAction, UIImage, UIImageConfiguration, UIView;
 
 @protocol NCNotificationStaticContentAccepting <NSObject>
 @property(nonatomic) long long dateFormatStyle;
@@ -20,15 +20,14 @@
 @property(copy, nonatomic) UIImage *prominentIcon;
 
 @optional
-@property(nonatomic) unsigned long long maximumNumberOfSecondaryLargeTextLines;
 @property(nonatomic) unsigned long long maximumNumberOfSecondaryTextLines;
-@property(nonatomic) unsigned long long maximumNumberOfPrimaryLargeTextLines;
 @property(nonatomic) unsigned long long maximumNumberOfPrimaryTextLines;
 @property(retain, nonatomic) UIView *accessoryView;
 @property(copy, nonatomic) NSArray *menuActions;
 @property(retain, nonatomic) NSArray *interfaceActions;
 @property(copy, nonatomic) UIImage *thumbnail;
 @property(copy, nonatomic) NSString *footerText;
+@property(copy, nonatomic) UIAction *inlineAction;
 @property(retain, nonatomic) MTVisualStylingProvider *importantTextVisualStylingProvider;
 @property(readonly, copy, nonatomic) UIImageConfiguration *importantTextImageConfiguration;
 @property(copy, nonatomic) NSAttributedString *importantAttributedText;

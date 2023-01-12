@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNResourceCoordinatorProtocol-Protocol.h>
-#import <SoundAnalysis/SNResourceCoordinatorXPCProtocol-Protocol.h>
-
 @class NSString;
 @protocol SNResourceCoordinatorProtocol;
 
 __attribute__((visibility("hidden")))
-@interface SNResourceCoordinatorXPCSubscriber : NSObject <SNResourceCoordinatorProtocol, SNResourceCoordinatorXPCProtocol>
+@interface SNResourceCoordinatorXPCSubscriber : NSObject
 {
     id <SNResourceCoordinatorProtocol> _receiver;
 }
@@ -21,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)xpcCreateSystemAudioAnalyzerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)createSystemAudioAnalyzer;
-- (id)initWithReceiver:(id)arg1;
 - (id)init;
 
 // Remaining properties

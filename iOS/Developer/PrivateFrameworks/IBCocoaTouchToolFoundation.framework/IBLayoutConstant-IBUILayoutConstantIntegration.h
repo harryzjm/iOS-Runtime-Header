@@ -6,11 +6,9 @@
 
 #import <IBAutolayoutFoundation/IBLayoutConstant.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface IBLayoutConstant (IBUILayoutConstantIntegration) <IBBinaryArchiving>
+@interface IBLayoutConstant (IBUILayoutConstantIntegration)
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)transformAfterMarshalling;
 

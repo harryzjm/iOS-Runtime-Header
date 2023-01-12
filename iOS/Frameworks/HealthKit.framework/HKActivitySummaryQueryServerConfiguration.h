@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 __attribute__((visibility("hidden")))
-@interface HKActivitySummaryQueryServerConfiguration
+@interface HKActivitySummaryQueryServerConfiguration : HKQueryServerConfiguration
 {
     _Bool _shouldIncludeActivitySummaryPrivateProperties;
     _Bool _shouldIncludeActivitySummaryStatistics;

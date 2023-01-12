@@ -6,12 +6,14 @@
 
 #import <EventKit/NSObject-Protocol.h>
 
-@class EKChangeSet, EKEventStore, EKObject, EKPersistentObject, NSSet, NSString;
+@class CADGenerationStampedObjectID, EKChangeSet, EKEventStore, EKObject, EKObjectID, EKPersistentObject, NSSet, NSString;
 @protocol EKFrozenMeltedPair, EKProtocolObject;
 
 @protocol EKFrozenMeltedPair <NSObject>
 + (Class)meltedClass;
 + (Class)frozenClass;
+@property(readonly, nonatomic) CADGenerationStampedObjectID *CADObjectID;
+@property(readonly, nonatomic) EKObjectID *objectID;
 @property(readonly, nonatomic) NSString *semanticIdentifier;
 @property(readonly, nonatomic) NSString *uniqueIdentifier;
 @property(readonly, nonatomic) _Bool isPartialObject;
@@ -23,6 +25,7 @@
 - (void)setValue:(id)arg1 forKey:(NSString *)arg2;
 - (EKObject *)meltedObjectInStore:(EKEventStore *)arg1;
 - (_Bool)isPropertyUnavailable:(NSString *)arg1;
+- (EKPersistentObject *)frozenObjectInStore:(EKEventStore *)arg1;
 - (EKPersistentObject *)frozenObject;
 - (Class)frozenClass;
 - (EKObject *)existingMeltedObject;

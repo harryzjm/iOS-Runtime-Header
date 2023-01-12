@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSURLRequestEncoder.h"
+
 @class AMSPurchaseInfo, NSObject;
 @protocol AMSBagProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AMSPurchaseRequestEncoder
+@interface AMSPurchaseRequestEncoder : AMSURLRequestEncoder
 {
     id <AMSBagProtocol> _bag;
     AMSPurchaseInfo *_purchaseInfo;
@@ -16,15 +18,18 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_parametersFromPurchaseInfo:(id)arg1 error:(id *)arg2;
++ (id)bagURLFromPurchaseInfo:(id)arg1 bag:(id)arg2 error:(id *)arg3;
++ (id)_bagURLKeysFromPurchaseInfo:(id)arg1;
++ (id)_bagURLKeysForPurchaseType:(long long)arg1 withProductType:(id)arg2 prefix:(id)arg3;
++ (id)_buyProductURLKeysForProductType:(id)arg1 prefix:(id)arg2;
 + (long long)_anisetteTypeFromAccount:(id)arg1;
++ (_Bool)isRedirectBagURLOverrideEnabled;
 + (void)configureRequest:(id)arg1 purchaseInfo:(id)arg2 bag:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *purchaseRequestQueue; // @synthesize purchaseRequestQueue=_purchaseRequestQueue;
 @property(readonly, nonatomic) AMSPurchaseInfo *purchaseInfo; // @synthesize purchaseInfo=_purchaseInfo;
 - (void)setBag:(id)arg1;
 - (id)bag;
-- (id)_bagURLWithError:(id *)arg1;
-- (id)_buyProductURLWithError:(id *)arg1;
 - (id)encodeRequest;
 - (id)initWithPurchaseInfo:(id)arg1 bag:(id)arg2;
 - (id)initWithPurchaseInfo:(id)arg1;

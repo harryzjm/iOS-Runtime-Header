@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATActiveIDSServiceConnectionMessageContent-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CATActiveIDSServiceConnectionContentKeepAlive : NSObject <CATActiveIDSServiceConnectionMessageContent>
+@interface CATActiveIDSServiceConnectionContentKeepAlive : NSObject
 {
 }
 

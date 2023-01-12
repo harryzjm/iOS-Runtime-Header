@@ -10,8 +10,9 @@
 
 @interface _TtC18VisualIntelligence13SignpostEvent : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *$defaultActor;
     MISSING_TYPE *signpostID;
-    MISSING_TYPE *eventBucket;
+    MISSING_TYPE *osLog;
 }
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/AVAssetResourceLoaderDelegate-Protocol.h>
-
 @class NSString, TSPData;
 @protocol OS_dispatch_queue, TSUReadChannel;
 
-@interface TSPAVAssetResourceLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
+@interface TSPAVAssetResourceLoaderDelegate : NSObject
 {
     TSPData *_data;
     long long _dataLength;
@@ -20,6 +18,7 @@
     id <TSUReadChannel> _readChannel;
 }
 
++ (_Bool)shouldDisableEntireLengthAvailableOnDemand;
 - (void).cxx_destruct;
 - (void)_provideNextDataBlockToLoadingRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_provideDataToLoadingRequest:(id)arg1;

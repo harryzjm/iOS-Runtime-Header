@@ -9,25 +9,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (struct UIEdgeInsets)dynamicInsets;
 - (double)defaultVariantSizeThreshold;
 - (double)skinnyKeyThreshold;
-- (id)returnKeyImageName;
-- (id)tabKeyImageName;
-- (id)capslockKeyImageName;
 - (id)ZWNJKeyImageName;
 - (id)messagesWriteboardKeyImageName;
-- (id)shiftLockImageName;
-- (id)shiftOnKeyImageName;
-- (id)shiftKeyImageName;
-- (id)deleteOnKeyImageName;
-- (id)deleteKeyImageName;
-- (id)handwritingMoreKeyImageName;
 - (id)muttitapReverseKeyImageName;
 - (id)multitapCompleteKeyImageName;
-- (id)dismissKeyImageName;
-- (id)dictationKeyImageName;
-- (id)globalEmojiKeyImageName;
-- (id)globalKeyImageName;
 - (struct CGPoint)symbolImageControlKeyOffset;
 - (struct CGPoint)shiftKeyOffset;
 - (struct CGPoint)deleteKeyOffset;

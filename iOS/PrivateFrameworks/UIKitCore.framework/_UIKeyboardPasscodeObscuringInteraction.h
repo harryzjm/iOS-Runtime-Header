@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIInteraction-Protocol.h>
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
-
 @class NSString, UIPointerInteraction, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyboardPasscodeObscuringInteraction : NSObject <UIPointerInteractionDelegate, UIInteraction>
+@interface _UIKeyboardPasscodeObscuringInteraction : NSObject
 {
     UIView *_view;
     UIPointerInteraction *_pointerInteraction;

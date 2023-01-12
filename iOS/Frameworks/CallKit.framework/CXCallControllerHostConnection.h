@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <CallKit/CXCallControllerHostProtocol-Protocol.h>
-#import <CallKit/CXCallControllerVendorProtocol-Protocol.h>
-
 @class NSSet, NSString, NSURL, NSXPCConnection;
 @protocol CXCallControllerHostConnectionDelegate, CXCallControllerVendorProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CXCallControllerHostConnection : NSObject <CXCallControllerHostProtocol, CXCallControllerVendorProtocol>
+@interface CXCallControllerHostConnection : NSObject
 {
+    _Bool _hasPushToTalkBackgroundMode;
     _Bool _hasVoIPBackgroundMode;
     NSString *_applicationIdentifier;
     NSURL *_bundleURL;
@@ -27,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *capabilities; // @synthesize capabilities=_capabilities;
 @property(nonatomic) _Bool hasVoIPBackgroundMode; // @synthesize hasVoIPBackgroundMode=_hasVoIPBackgroundMode;
+@property(nonatomic) _Bool hasPushToTalkBackgroundMode; // @synthesize hasPushToTalkBackgroundMode=_hasPushToTalkBackgroundMode;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(nonatomic) __weak id <CXCallControllerHostConnectionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -37,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (oneway void)removeCall:(id)arg1;
 - (oneway void)addOrUpdateCall:(id)arg1;
 @property(readonly, nonatomic) id <CXCallControllerVendorProtocol> remoteObjectProxy;
+@property(readonly, nonatomic, getter=isChannelTransactionRequestPermitted) _Bool channelTransactionRequestPermitted;
+@property(readonly, nonatomic, getter=isCallTransactionRequestPermitted) _Bool callTransactionRequestPermitted;
 @property(readonly, nonatomic, getter=isPermittedToUsePrivateAPI) _Bool entitledForPrivateAPI;
 @property(readonly, nonatomic, getter=isPermittedToUsePublicAPI) _Bool entitledForPublicAPI;
 @property(readonly, copy) NSString *description;

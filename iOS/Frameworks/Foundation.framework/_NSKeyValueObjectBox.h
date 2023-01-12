@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _NSKeyValueObjectBox : NSObject <NSCopying>
+@interface _NSKeyValueObjectBox : NSObject
 {
     id _object;
     unsigned long long _objectPointer;

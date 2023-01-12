@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCMediaNegotiatorProtocol-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorResults, VCMediaNegotiatorResultsAudio, VCMediaNegotiatorResultsFaceTimeSettings, VCMediaNegotiatorResultsMoments, VCMediaNegotiatorResultsVideo;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiatorBase : NSObject <VCMediaNegotiatorProtocol>
+@interface VCMediaNegotiatorBase : NSObject
 {
     VCMediaNegotiatorLocalConfiguration *_localSettings;
     VCMediaNegotiatorResults *_negotiatedSettings;
@@ -23,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_negotiatedStreamGroups;
 }
 
++ (id)streamGroupIDsWithMediaBlob:(id)arg1;
 + (_Bool)initializeLocalConfiguration:(id)arg1 negotiationData:(id)arg2 deviceRole:(int)arg3 preferredAudioPayload:(int)arg4;
 @property(readonly, nonatomic) VCMediaNegotiatorResultsVideo *negotiatedScreenSettings; // @synthesize negotiatedScreenSettings=_negotiatedScreenSettings;
 @property(readonly, nonatomic) NSArray *negotiatedStreamGroups; // @synthesize negotiatedStreamGroups=_negotiatedStreamGroups;

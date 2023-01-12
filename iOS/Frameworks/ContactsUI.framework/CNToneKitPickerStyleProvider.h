@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/TKTonePickerStyleProvider-Protocol.h>
-#import <ContactsUI/TKVibrationPickerStyleProvider-Protocol.h>
-
 @class NSString, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
-@interface CNToneKitPickerStyleProvider : NSObject <TKTonePickerStyleProvider, TKVibrationPickerStyleProvider>
+@interface CNToneKitPickerStyleProvider : NSObject
 {
 }
 

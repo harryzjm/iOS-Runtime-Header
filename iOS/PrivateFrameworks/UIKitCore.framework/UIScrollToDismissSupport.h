@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIScrollViewIntersectionDelegate-Protocol.h>
-
 @class UIInputViewSetNotificationInfo, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface UIScrollToDismissSupport <UIScrollViewIntersectionDelegate>
+@interface UIScrollToDismissSupport
 {
     UIScrollView *_scrollViewForTransition;
     _Bool _scrollViewShowsHorizontalScrollIndicator;
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
     UIInputViewSetNotificationInfo *_scrollViewNotificationInfo;
 }
 
+- (void).cxx_destruct;
 - (void)_updateKeyboardLayoutGuideForInteractiveScrollWithSize:(struct CGSize)arg1;
 - (void)scrollView:(id)arg1 didFinishPanGesture:(id)arg2;
 - (void)scrollView:(id)arg1 didPanWithGesture:(id)arg2;
@@ -30,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)finishScrollViewTransition;
 - (void)hideScrollViewHorizontalScrollIndicator:(_Bool)arg1;
 - (void)updateScrollViewContentInsetBottom:(double)arg1;
-- (void)dealloc;
 
 @end
 

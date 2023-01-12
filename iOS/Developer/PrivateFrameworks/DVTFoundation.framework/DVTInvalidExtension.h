@@ -12,7 +12,6 @@
 - (_Bool)hasValueForKey:(id)arg1;
 - (id)valueForKey:(id)arg1;
 - (id)extensionElement;
-- (id)basedOnExtension;
 - (id)extensionPoint;
 - (id)plugIn;
 - (_Bool)isValid;

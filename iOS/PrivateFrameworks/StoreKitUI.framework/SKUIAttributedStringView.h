@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/SKUIReusableView-Protocol.h>
-
 @class NSArray, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, SKUIAttributedStringLayout, UIColor;
 @protocol SKUILinkHandler;
 
 __attribute__((visibility("hidden")))
-@interface SKUIAttributedStringView : UIView <SKUIReusableView>
+@interface SKUIAttributedStringView : UIView
 {
     double _calculatedTopInset;
     long long _firstLineTopInset;

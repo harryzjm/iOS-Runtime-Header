@@ -9,5 +9,6 @@
 @interface NSDictionary (AvailabilityKit)
 - (id)availabilityKit_stringForKey:(id)arg1;
 - (_Bool)availabilityKit_boolForKey:(id)arg1 defaultValue:(_Bool)arg2;
+- (id)availabilityKit_stringArrayForKey:(id)arg1 allowEmptyString:(_Bool)arg2;
 @end
 

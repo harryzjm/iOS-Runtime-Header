@@ -9,6 +9,7 @@
 @class SBTopAffordanceViewController;
 
 @protocol SBTopAffordanceViewControllerDelegate <NSObject>
-- (void)topAffordanceViewController:(SBTopAffordanceViewController *)arg1 didTapOnButtonWithTopAffordanceButtonType:(long long)arg2;
+- (void)topAffordanceViewControllerWillPresentMenu:(SBTopAffordanceViewController *)arg1;
+- (void)topAffordanceViewController:(SBTopAffordanceViewController *)arg1 handleActionType:(long long)arg2;
 @end
 

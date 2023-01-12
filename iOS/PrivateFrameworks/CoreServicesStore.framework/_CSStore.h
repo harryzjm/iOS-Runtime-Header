@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServicesStore/NSSecureCoding-Protocol.h>
-
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _CSStore : NSObject <NSSecureCoding>
+@interface _CSStore : NSObject
 {
     struct Store _store;
     NSObject<OS_dispatch_queue> *_accessQueue;

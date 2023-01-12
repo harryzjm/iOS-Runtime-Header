@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSManagedObjectContext, NSProgress, NSSet, NSString, NSURL, PLInternalResource, PLManagedAsset, PLPhotoLibraryPathManager, PLResourceDataStoreOptions, PLResourceLocalAvailabilityRequestOptions, PLUniformTypeIdentifier, PLValidatedExternalResource;
+@class NSArray, NSData, NSDictionary, NSManagedObjectContext, NSProgress, NSSet, NSString, NSURL, PLInternalResource, PLManagedAsset, PLPhotoLibraryPathManager, PLResourceDataStoreOptions, PLResourceLocalAvailabilityRequestOptions, PLUniformTypeIdentifier, PLValidatedExternalResource;
 @protocol PLAssetID, PLResource, PLResourceDataStoreKey;
 
 @protocol PLResourceDataStore <NSObject>
@@ -18,13 +18,13 @@
 - (_Bool)supportsTimeRange;
 - (void)markAsynchronousLocalRenderAsOptionalForProgress:(NSProgress *)arg1;
 - (_Bool)canMarkAsynchronousLocalRenderAsOptionalForProgress:(NSProgress *)arg1;
-- (void)requestStreamingURLForResource:(id <PLResource>)arg1 asset:(PLManagedAsset *)arg2 intent:(unsigned long long)arg3 timeRange:(CDStruct_3c1748cc)arg4 inContext:(NSManagedObjectContext *)arg5 clientBundleID:(NSString *)arg6 completion:(void (^)(NSError *, NSURL *, NSDate *))arg7;
+- (void)requestStreamingURLForResource:(id <PLResource>)arg1 asset:(PLManagedAsset *)arg2 intent:(unsigned long long)arg3 timeRange:(CDStruct_3c1748cc)arg4 streamingHints:(NSDictionary *)arg5 inContext:(NSManagedObjectContext *)arg6 clientBundleID:(NSString *)arg7 completion:(void (^)(NSURL *, NSData *, NSDate *, NSError *))arg8;
 - (_Bool)canStreamResource:(id <PLResource>)arg1;
 - (_Bool)videoResource:(id <PLResource>)arg1 matchesOrExceedsQualityLevel:(unsigned int)arg2;
 - (_Bool)dataStoreSubtypeIsDownloadable:(long long)arg1;
 - (NSProgress *)requestLocalAvailabilityChange:(short)arg1 forResource:(PLInternalResource *)arg2 options:(PLResourceLocalAvailabilityRequestOptions *)arg3 completion:(void (^)(NSError *, long long, NSURL *))arg4;
-- (_Bool)storeExternalResource:(PLValidatedExternalResource *)arg1 forAsset:(PLManagedAsset *)arg2 inContext:(NSManagedObjectContext *)arg3 options:(PLResourceDataStoreOptions *)arg4 error:(id *)arg5 resultingResource:(id *)arg6;
-- (PLUniformTypeIdentifier *)guessUTIForExternalResource:(PLValidatedExternalResource *)arg1 forAssetKind:(short)arg2 managedObjectContext:(NSManagedObjectContext *)arg3;
+- (_Bool)storeExternalResource:(PLValidatedExternalResource *)arg1 forAsset:(PLManagedAsset *)arg2 options:(PLResourceDataStoreOptions *)arg3 error:(id *)arg4 resultingResource:(id *)arg5;
+- (PLUniformTypeIdentifier *)guessUTIForExternalResource:(PLValidatedExternalResource *)arg1 forAssetKind:(short)arg2;
 - (_Bool)canStoreExternalResource:(PLValidatedExternalResource *)arg1;
 - (NSArray *)virtualResourcesForAsset:(PLManagedAsset *)arg1;
 - (NSSet *)updateDerivativeResourcesForAsset:(PLManagedAsset *)arg1 forLifecycleEvent:(unsigned int)arg2;

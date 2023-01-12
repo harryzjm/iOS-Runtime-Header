@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NotesShared/ICDeviceSupport.h>
+#import <NotesSupport/ICDeviceSupport.h>
 
 @interface ICDeviceSupport (UI)
-+ (_Bool)cameraAvailable;
++ (_Bool)isCameraAvailable;
 + (_Bool)isLargerCompactHorizontalWidthDevice;
 @end
 

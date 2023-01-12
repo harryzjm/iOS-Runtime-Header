@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor;
+@class LPSize, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface LPShadowStyle : NSObject
@@ -14,10 +14,13 @@ __attribute__((visibility("hidden")))
     double _radius;
     double _opacity;
     UIColor *_color;
+    LPSize *_offset;
 }
 
++ (id)collaborationPreviewShadow;
 + (id)cardHeadingIconShadow;
 - (void).cxx_destruct;
+@property(retain, nonatomic) LPSize *offset; // @synthesize offset=_offset;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 @property(nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property(nonatomic) double radius; // @synthesize radius=_radius;

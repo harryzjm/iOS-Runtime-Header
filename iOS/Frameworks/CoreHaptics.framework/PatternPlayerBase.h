@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreHaptics/PatternPlayerDetails-Protocol.h>
-
 @class CHHapticEngine, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PatternPlayerBase : NSObject <PatternPlayerDetails>
+@interface PatternPlayerBase : NSObject
 {
     CHHapticEngine *_engine;
     NSArray *_events;

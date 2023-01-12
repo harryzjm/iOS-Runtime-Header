@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 - (void)handleFinishedForPlayersAtTime:(double)arg1;
 - (void)handleActionForPlayer:(id)arg1 action:(long long)arg2 time:(double)arg3 isAdvanced:(_Bool)arg4;
 - (void)handleStartForPlayer:(id)arg1 time:(double)arg2 isAdvanced:(_Bool)arg3 patternID:(id)arg4;
-- (void)handleInitForPlayer:(id)arg1 events:(id)arg2 isAdvanced:(_Bool)arg3;
+- (void)handleInitForPlayer:(id)arg1 events:(id)arg2 isAdvanced:(_Bool)arg3 patternID:(id)arg4;
 - (void)handleParamCurveEncountered;
 - (void)handleEngineStop;
 - (void)handleEngineStart;

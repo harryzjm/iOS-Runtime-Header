@@ -9,6 +9,7 @@
 @class NSDate;
 
 @protocol RTPurgable <NSObject>
++ (long long)periodicPurgePolicy;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(NSDate *)arg2 completion:(void (^)(NSError *))arg3;
 @end
 

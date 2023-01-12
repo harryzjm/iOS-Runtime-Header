@@ -4,10 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUIApps/UIActivityViewControllerAirDropDelegate-Protocol.h>
-#import <PhotosUIApps/UIActivityViewControllerObjectManipulationDelegate-Protocol.h>
-
-@interface (null) (PhotosUIApps) <UIActivityViewControllerObjectManipulationDelegate, UIActivityViewControllerAirDropDelegate>
+@interface (null) (PhotosUIApps)
 - (id)_customizationGroupsForActivityViewController:(id)arg1;
 - (void)activityViewControllerDidFinishAirdropTransfer:(id)arg1;
 @end

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecordZoneIdentifier, NSData;
 
-@interface CKDPZoneRetrieveRequest : PBRequest <NSCopying>
+@interface CKDPZoneRetrieveRequest : PBRequest
 {
     NSData *_continuationMarker;
     CKDPRecordZoneIdentifier *_zoneIdentifier;

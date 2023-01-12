@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <KeychainCircle/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface OTSupportSOSMessage : PBCodable <NSCopying>
+@interface OTSupportSOSMessage : PBCodable
 {
     int _supported;
     CDStruct_495da94c _has;

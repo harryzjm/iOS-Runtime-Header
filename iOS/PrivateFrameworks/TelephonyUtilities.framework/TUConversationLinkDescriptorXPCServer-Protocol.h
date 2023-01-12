@@ -9,6 +9,10 @@
 @class NSArray, NSDate, NSPredicate, NSSet, NSString;
 
 @protocol TUConversationLinkDescriptorXPCServer <NSObject>
+- (void)stringForKey:(NSString *)arg1 reply:(void (^)(NSString *, NSError *))arg2;
+- (void)setString:(NSString *)arg1 forKey:(NSString *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
+- (void)integerForKey:(NSString *)arg1 reply:(void (^)(long long, NSError *))arg2;
+- (void)setInteger:(long long)arg1 forKey:(NSString *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)setName:(NSString *)arg1 withRevision:(long long)arg2 forConversationLinkDescriptorsWithPredicate:(NSPredicate *)arg3 reply:(void (^)(unsigned long long, NSError *))arg4;
 - (void)setInvitedHandles:(NSSet *)arg1 withRevision:(long long)arg2 forConversationLinkDescriptorsWithPredicate:(NSPredicate *)arg3 reply:(void (^)(unsigned long long, NSError *))arg4;
 - (void)setExpirationDate:(NSDate *)arg1 withRevision:(long long)arg2 forConversationLinkDescriptorsWithPredicate:(NSPredicate *)arg3 reply:(void (^)(unsigned long long, NSError *))arg4;

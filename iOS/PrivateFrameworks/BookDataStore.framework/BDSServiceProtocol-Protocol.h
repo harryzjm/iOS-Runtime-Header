@@ -13,11 +13,18 @@
 #import <BookDataStore/BCCloudReadingNowDetailManager-Protocol.h>
 #import <BookDataStore/BCCloudSecureUserDataManager-Protocol.h>
 #import <BookDataStore/BCCloudStoreAssetManager-Protocol.h>
+#import <BookDataStore/BDSBookWidgetDataService-Protocol.h>
+#import <BookDataStore/BDSBookWidgetInfoManagerService-Protocol.h>
+#import <BookDataStore/BDSBookWidgetInfoService-Protocol.h>
+#import <BookDataStore/BDSBookWidgetReadingHistoryServiceProtocol-Protocol.h>
 #import <BookDataStore/BDSCloudKitSupportSignOut-Protocol.h>
 #import <BookDataStore/BDSJaliscoDAAPClientService-Protocol.h>
 #import <BookDataStore/BDSNBPinningManagerService-Protocol.h>
+#import <BookDataStore/BDSReadingDataMigrationService-Protocol.h>
+#import <BookDataStore/BDSReadingGoalsServiceProtocol-Protocol.h>
+#import <BookDataStore/BDSReadingHistoryServiceProtocol-Protocol.h>
 
-@protocol BDSServiceProtocol <BCCloudAssetDetailManager, BCCloudReadingNowDetailManager, BCCloudAssetReviewManager, BCCloudStoreAssetManager, BCCloudCollectionDetailManager, BCCloudCollectionMemberManager, BCCloudKitSyncEnablement, BDSCloudKitSupportSignOut, BCCloudKitTransactionManagerService, BDSJaliscoDAAPClientService, BDSNBPinningManagerService, BCCloudSecureUserDataManager>
+@protocol BDSServiceProtocol <BCCloudAssetDetailManager, BCCloudReadingNowDetailManager, BCCloudAssetReviewManager, BCCloudStoreAssetManager, BCCloudCollectionDetailManager, BCCloudCollectionMemberManager, BCCloudKitSyncEnablement, BDSCloudKitSupportSignOut, BCCloudKitTransactionManagerService, BDSJaliscoDAAPClientService, BDSNBPinningManagerService, BDSReadingGoalsServiceProtocol, BDSReadingHistoryServiceProtocol, BDSBookWidgetInfoManagerService, BCCloudSecureUserDataManager, BDSReadingDataMigrationService, BDSBookWidgetDataService, BDSBookWidgetInfoService, BDSBookWidgetReadingHistoryServiceProtocol>
 - (void)audiobookStoreEnabledWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 @end
 

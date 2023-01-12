@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFQueueingStrategy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _EFBufferedQueueStrategy : NSObject <EFQueueingStrategy>
+@interface _EFBufferedQueueStrategy : NSObject
 {
     CDUnknownBlockType _batchHandler;
     unsigned long long _capacity;

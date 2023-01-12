@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/NSURLConnectionDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebCoreResourceHandleAsOperationQueueDelegate : NSObject <NSURLConnectionDelegate>
+@interface WebCoreResourceHandleAsOperationQueueDelegate : NSObject
 {
     struct Lock m_lock;
     void *m_handle;

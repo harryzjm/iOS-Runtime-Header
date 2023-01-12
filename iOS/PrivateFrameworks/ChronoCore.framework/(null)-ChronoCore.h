@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChronoCore/NSXPCListenerDelegate-Protocol.h>
-#import <ChronoCore/_TtP9WidgetKit27WidgetCenterConnection_Host_-Protocol.h>
-
-@interface (null) (ChronoCore) <NSXPCListenerDelegate, _TtP9WidgetKit27WidgetCenterConnection_Host_>
+@interface (null) (ChronoCore)
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)_reloadAllTimelines:(CDUnknownBlockType)arg1;
 - (void)_reloadTimelinesOfKind:(id)arg1 inBundle:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_reloadTimelinesOfKind:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadCurrentConfigurations:(CDUnknownBlockType)arg1;
+- (void)invalidateConfigurationRecommendationsWithCompletion:(CDUnknownBlockType)arg1;
 @end
 

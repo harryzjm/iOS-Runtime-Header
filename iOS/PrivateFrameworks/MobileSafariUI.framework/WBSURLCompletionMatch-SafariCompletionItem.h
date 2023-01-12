@@ -6,12 +6,10 @@
 
 #import <SafariSharedUI/WBSURLCompletionMatch.h>
 
-#import <MobileSafariUI/CompletionItem-Protocol.h>
-
 @class NSString, SFSearchResult, WBSQuerySuggestion;
 @protocol CompletionItemActionHandler;
 
-@interface WBSURLCompletionMatch (SafariCompletionItem) <CompletionItem>
+@interface WBSURLCompletionMatch (SafariCompletionItem)
 - (_Bool)isEquivalentTo:(id)arg1;
 - (id)reflectedStringForUserTypedString:(id)arg1;
 - (void)auditAcceptedCompletionWithRank:(unsigned long long)arg1;
@@ -20,7 +18,6 @@
 - (id)completionTableViewCellReuseIdentifier;
 - (void)acceptCompletionWithActionHandler:(id)arg1;
 - (long long)_completionIcon;
-- (id)_sectionName;
 - (void)configureCompletionTableViewCell:(id)arg1 forCompletionList:(id)arg2;
 
 // Remaining properties

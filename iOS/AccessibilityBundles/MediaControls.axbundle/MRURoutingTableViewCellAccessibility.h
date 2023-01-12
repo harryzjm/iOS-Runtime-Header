@@ -16,7 +16,6 @@
 - (struct CGPoint)accessibilityActivationPoint;
 - (_Bool)_accessibilityShowVolumeSlider;
 - (long long)_accessibilityRoutingState;
-- (id)accessibilityCustomActions;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;

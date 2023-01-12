@@ -13,13 +13,10 @@ __attribute__((visibility("hidden")))
     double _sampleRate;
 }
 
-@property(nonatomic) unsigned int channelCount; // @synthesize channelCount=_channelCount;
-@property(nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithSampleRate:(double)arg1 channelCount:(unsigned int)arg2;
 
 @end
 

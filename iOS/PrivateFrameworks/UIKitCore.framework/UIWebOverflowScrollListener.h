@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
-
 @class NSString, UIWebOverflowScrollView;
 
 __attribute__((visibility("hidden")))
-@interface UIWebOverflowScrollListener : NSObject <UIScrollViewDelegate>
+@interface UIWebOverflowScrollListener : NSObject
 {
     UIWebOverflowScrollView *_scrollView;
 }

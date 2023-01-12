@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUILabel.h"
+
 @class NSDate, NSString, NSTimer;
 @protocol VUIRentalExpirationLabelDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIRentalExpirationLabel
+@interface VUIRentalExpirationLabel : VUILabel
 {
     _Bool _contentIsAvailable;
     _Bool _forDownload;

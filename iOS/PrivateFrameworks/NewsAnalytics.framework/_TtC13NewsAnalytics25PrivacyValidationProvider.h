@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface _TtC13NewsAnalytics25PrivacyValidationProvider : NSObject
 {
     MISSING_TYPE *appConfigurationManager;
-    MISSING_TYPE *privacyValidation;
 }
 
 - (void).cxx_destruct;

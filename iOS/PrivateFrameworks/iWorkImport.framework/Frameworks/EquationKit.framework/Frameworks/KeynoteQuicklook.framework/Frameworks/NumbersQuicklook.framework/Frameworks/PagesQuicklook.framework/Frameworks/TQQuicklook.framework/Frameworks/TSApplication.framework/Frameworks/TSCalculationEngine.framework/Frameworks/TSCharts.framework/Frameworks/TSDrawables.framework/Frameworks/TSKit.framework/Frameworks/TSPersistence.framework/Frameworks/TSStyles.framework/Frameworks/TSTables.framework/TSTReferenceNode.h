@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSString, TSCECalculationEngine, TSCECategoryRef, TSKChangeNotifier, TSKDocumentRoot, TSTGroupBy, TSTReferenceColorHelper, TSTTableInfo, TSTUIDRectRef;
 
-@interface TSTReferenceNode <NSCopying>
+@interface TSTReferenceNode
 {
     NSString *_refString;
     NSString *_formulaPlainText;
@@ -52,6 +50,7 @@
 @property(readonly, nonatomic) _Bool suppressReferenceOptionsMenu;
 - (void)p_resetMenu;
 - (void)processChanges:(id)arg1 forChangeSource:(id)arg2;
+- (void)excludeSummaryAndLabelRows;
 - (_Bool)isValidReference;
 - (void)invalidate;
 - (id)exportString;

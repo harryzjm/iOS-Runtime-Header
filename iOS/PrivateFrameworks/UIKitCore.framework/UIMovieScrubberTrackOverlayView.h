@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface UIMovieScrubberTrackOverlayView
+@interface UIMovieScrubberTrackOverlayView : UIView
 {
     double _value;
     double _minimumValue;

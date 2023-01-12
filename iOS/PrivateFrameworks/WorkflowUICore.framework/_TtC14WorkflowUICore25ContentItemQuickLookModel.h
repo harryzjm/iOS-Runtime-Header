@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *item;
     MISSING_TYPE *previewItem;
+    MISSING_TYPE *updateCount;
 }
 
 @end

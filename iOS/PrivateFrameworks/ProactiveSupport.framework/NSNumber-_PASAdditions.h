@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <ProactiveSupport/_PASDistilledString-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (_PASAdditions) <_PASDistilledString>
+@interface NSNumber (_PASAdditions)
 + (id)_pas_intBackedFloatNumber:(float)arg1;
 - (float)_pas_intBackedFloatValue;
 - (id)_pas_revivedString;

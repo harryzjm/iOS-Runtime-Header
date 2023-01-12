@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDate.h>
 
-#import <TSCharts/TSCHChartGridValue-Protocol.h>
-
 @class NSString;
 
-@interface NSDate (TSCHChartGridValue) <TSCHChartGridValue>
+@interface NSDate (TSCHChartGridValue)
 - (double)doubleValue;
 @property(readonly, nonatomic) int chartGridValueType;
 

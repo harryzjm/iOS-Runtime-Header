@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <VideoSubscriberAccountUI/VSJSMessagePort-Protocol.h>
-
 @protocol VSJSMessagePortDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSJSMessagePort : IKJSObject <VSJSMessagePort>
+@interface VSJSMessagePort : IKJSObject
 {
     id <VSJSMessagePortDelegate> _delegate;
 }

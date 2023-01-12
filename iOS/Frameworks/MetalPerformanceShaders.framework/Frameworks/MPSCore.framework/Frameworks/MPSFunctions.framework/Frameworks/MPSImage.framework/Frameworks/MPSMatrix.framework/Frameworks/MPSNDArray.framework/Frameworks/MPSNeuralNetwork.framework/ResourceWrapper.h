@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <MPSNeuralNetwork/NodeWrapper-Protocol.h>
-
 @class NSString;
 
-@interface ResourceWrapper : NSObject <NodeWrapper>
+@interface ResourceWrapper : NSObject
 {
     void *_node;
 }

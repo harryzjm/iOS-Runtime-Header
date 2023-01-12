@@ -7,9 +7,10 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (MRUVisualStylingProviderAdditions)
-+ (void)mru_springAnimate:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)mru_springAnimate:(CDUnknownBlockType)arg1;
++ (void)mru_animateUsingType:(long long)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)mru_animateUsingType:(long long)arg1 animations:(CDUnknownBlockType)arg2;
 - (void)mru_applyVisualStylingWithColor:(id)arg1 alpha:(double)arg2 blendMode:(long long)arg3;
 @property(nonatomic) struct CGRect mediaControls_untransformedFrame;
+- (struct CGRect)mr_tightBoundingRectOfFirstLine;
 @end
 

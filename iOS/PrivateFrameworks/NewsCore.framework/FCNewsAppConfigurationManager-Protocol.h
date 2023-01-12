@@ -6,7 +6,7 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class NSArray, NSObject, NSString;
+@class NSArray, NSDictionary, NSObject, NSString;
 @protocol FCNewsAppConfiguration, FCNewsAppConfiguration><FCJSONEncodableObjectProviding, FCNewsAppConfigurationObserving, OS_dispatch_queue;
 
 @protocol FCNewsAppConfigurationManager <NSObject>
@@ -24,6 +24,6 @@
 @property(readonly, copy, nonatomic) NSString *feldsparID;
 @property(readonly, nonatomic) NSArray *segmentSetIDs;
 @property(readonly, nonatomic) NSArray *treatmentIDs;
-- (void)fetchAppWidgetConfigurationWithCompletion:(void (^)(id <FCNewsAppConfiguration>, NSDictionary *, NSError *))arg1;
+- (void)fetchAppWidgetConfigurationWithAdditionalFields:(NSDictionary *)arg1 completion:(void (^)(id <FCNewsAppConfiguration>, NSDictionary *, NSError *))arg2;
 @end
 

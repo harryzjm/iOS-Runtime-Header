@@ -6,19 +6,11 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOETAServiceResponseSummary;
-
 __attribute__((visibility("hidden")))
-@interface GEODirectionsResponseExtension : PBCodable <NSCopying>
+@interface GEODirectionsResponseExtension : PBCodable
 {
-    GEOETAServiceResponseSummary *_etaServiceSummary;
 }
 
-- (void).cxx_destruct;
-@property(retain, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
-@property(readonly, nonatomic) _Bool hasEtaServiceSummary;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

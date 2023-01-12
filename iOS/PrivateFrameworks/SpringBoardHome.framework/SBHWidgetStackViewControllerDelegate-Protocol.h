@@ -6,12 +6,13 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class SBHWidgetStackViewController, UIViewController;
+@class SBHWidgetStackViewController, UIView, UIViewController;
 @protocol SBLeafIconDataSource;
 
 @protocol SBHWidgetStackViewControllerDelegate <NSObject>
 
 @optional
+- (void)widgetStackViewController:(SBHWidgetStackViewController *)arg1 didFinishUsingBackgroundView:(UIView *)arg2;
 - (void)widgetStackViewControllerWidgetCountDidChange:(SBHWidgetStackViewController *)arg1;
 - (void)widgetStackViewController:(SBHWidgetStackViewController *)arg1 didRemoveViewController:(UIViewController *)arg2;
 - (void)widgetStackViewController:(SBHWidgetStackViewController *)arg1 didActivateDataSource:(id <SBLeafIconDataSource>)arg2 fromUserInteraction:(_Bool)arg3;

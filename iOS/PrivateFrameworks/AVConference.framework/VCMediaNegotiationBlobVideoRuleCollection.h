@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobVideoRuleCollection : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobVideoRuleCollection : PBCodable
 {
     unsigned int _formats;
     unsigned int _formatsExt1;

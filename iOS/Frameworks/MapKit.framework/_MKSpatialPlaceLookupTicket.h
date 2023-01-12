@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapServiceSpatialPlaceLookupTicket-Protocol.h>
-
 @class GEOMapRegion, NSError, NSString;
 @protocol GEOMapServiceSpatialPlaceLookupTicket;
 
 __attribute__((visibility("hidden")))
-@interface _MKSpatialPlaceLookupTicket : NSObject <MKMapServiceSpatialPlaceLookupTicket>
+@interface _MKSpatialPlaceLookupTicket : NSObject
 {
     id <GEOMapServiceSpatialPlaceLookupTicket> _spatialPlaceLookupTicket;
     NSError *_error;

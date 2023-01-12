@@ -6,16 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class ICLiveLink, NSUUID;
+@class ICLiveLink, NSMutableArray, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface ICLiveLinkPlaybackCoordinatorMedium : NSObject
 {
+    struct os_unfair_lock_s _fetchServerStateLock;
     ICLiveLink *_liveLink;
     NSUUID *_localParticipantUUID;
+    long long _fetchServerStateInProgressCount;
+    NSMutableArray *_fetchServerStateCompletions;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableArray *fetchServerStateCompletions; // @synthesize fetchServerStateCompletions=_fetchServerStateCompletions;
+@property(readonly, nonatomic) long long fetchServerStateInProgressCount; // @synthesize fetchServerStateInProgressCount=_fetchServerStateInProgressCount;
+@property(readonly, nonatomic) struct os_unfair_lock_s fetchServerStateLock; // @synthesize fetchServerStateLock=_fetchServerStateLock;
 @property(readonly, copy, nonatomic) NSUUID *localParticipantUUID; // @synthesize localParticipantUUID=_localParticipantUUID;
 @property(readonly, nonatomic) __weak ICLiveLink *liveLink; // @synthesize liveLink=_liveLink;
 - (void)_reloadTransportControlStateForItemWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -27,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)handleNewParticipantStateDictionary:(id)arg1;
 - (void)removeParticipant:(id)arg1;
 - (void)handlePlaybackSyncPayload:(id)arg1;
+- (_Bool)isCoordinatorSuspended;
 - (id)initWithLiveLink:(id)arg1;
 
 @end

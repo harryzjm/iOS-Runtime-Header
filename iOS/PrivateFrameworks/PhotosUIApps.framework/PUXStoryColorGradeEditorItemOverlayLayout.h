@@ -6,21 +6,21 @@
 
 #import <PhotosUICore/PXGLayout.h>
 
-#import <PhotosUIApps/PXGNamedImageSource-Protocol.h>
-#import <PhotosUIApps/PXGSolidColorSource-Protocol.h>
-#import <PhotosUIApps/PXGStringSource-Protocol.h>
-
 @class MISSING_TYPE, NSIndexSet;
 
-@interface PUXStoryColorGradeEditorItemOverlayLayout : PXGLayout <PXGStringSource, PXGNamedImageSource, PXGSolidColorSource>
+@interface PUXStoryColorGradeEditorItemOverlayLayout : PXGLayout
 {
     MISSING_TYPE *colorGradeKind;
     MISSING_TYPE *viewModel;
     MISSING_TYPE *backgroundSpriteIndex;
     MISSING_TYPE *captionSpriteIndex;
+    MISSING_TYPE *captionBackgroundSpriteIndex;
     MISSING_TYPE *selectionBadgeSpriteIndex;
     MISSING_TYPE *accessibleSpriteIndexes;
+    MISSING_TYPE *cachedCaptionSpriteFrame;
     MISSING_TYPE *updateFlags;
+    MISSING_TYPE *captionSpriteVersion;
+    MISSING_TYPE *captionBackgroundSpriteVersion;
     MISSING_TYPE *captionHeight;
 }
 
@@ -39,6 +39,7 @@
 - (id)hitTestResultForSpriteIndex:(unsigned int)arg1;
 - (unsigned int)spriteIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(id *)arg3;
 - (id)objectReferenceForSpriteIndex:(unsigned int)arg1;
+- (void)viewEnvironmentDidChange;
 - (void)screenScaleDidChange;
 - (void)referenceSizeDidChange;
 - (void)update;

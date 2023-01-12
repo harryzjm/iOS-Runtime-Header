@@ -4,29 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameController/_GCIPCIncomingConnection-Protocol.h>
+#import <GameControllerFoundation/GCIPCRemoteIncomingConnection.h>
 
-@class _GCIPCRemoteProcess;
+@class NSString, _GCIPCRemoteProcess;
 @protocol _GCIPCProcess;
 
 __attribute__((visibility("hidden")))
-@interface _GCIPCRemoteIncomingConnection <_GCIPCIncomingConnection>
+@interface _GCIPCRemoteIncomingConnection : GCIPCRemoteIncomingConnection
 {
     _GCIPCRemoteProcess *_process;
 }
 
-+ (id)sharedConnectionWorkloop;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <_GCIPCProcess> process; // @synthesize process=_process;
-- (id)synchronousRemoteProxyWithErrorHandler:(CDUnknownBlockType)arg1;
-- (id)remoteProxyWithErrorHandler:(CDUnknownBlockType)arg1;
-- (id)remoteProxy;
-- (id)valueForEntitlement:(id)arg1;
 - (id)initWithConnection:(id)arg1;
 - (id)initWithConnection:(id)arg1 fromProcess:(id)arg2;
 
 // Remaining properties
 @property(readonly, nonatomic, getter=isInvalid) _Bool invalid;
+@property(readonly) int peerAuditSessionIdentifier;
+@property(readonly) CDStruct_6ad76789 peerAuditToken;
+@property(readonly) NSString *peerBundleIdentifier;
+@property(readonly) unsigned int peerEffectiveGroupIdentifier;
+@property(readonly) unsigned int peerEffectiveUserIdentifier;
+@property(readonly) int peerProcessIdentifier;
 
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AACDependencies/AEDObservation-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface AEDUnionObservation : NSObject <AEDObservation>
+@interface AEDUnionObservation : NSObject
 {
     NSArray *_observations;
 }

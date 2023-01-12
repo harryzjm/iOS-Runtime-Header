@@ -6,12 +6,12 @@
 
 #import <CloudKit/CKOperationCallbacks-Protocol.h>
 
-@class CKRecord, CKRecordID, NSArray, NSData, NSDate, NSError, NSString;
+@class CKRecordID, CKRecordXPCMetadata, NSArray, NSData, NSError, NSString;
 
 @protocol CKModifyRecordsOperationCallbacks <CKOperationCallbacks>
 - (void)handleRecordUploadForRecordID:(CKRecordID *)arg1 recordKey:(NSString *)arg2 arrayIndex:(long long)arg3 signature:(NSData *)arg4 size:(unsigned long long)arg5 paddedFileSize:(unsigned long long)arg6 uploaded:(_Bool)arg7 uploadReceipt:(NSString *)arg8 uploadReceiptExpiration:(double)arg9 wrappedAssetKey:(NSData *)arg10 clearAssetKey:(NSData *)arg11 referenceSignature:(NSData *)arg12;
 - (void)handleDeleteForRecordID:(CKRecordID *)arg1 error:(NSError *)arg2;
-- (void)handleSaveForRecordID:(CKRecordID *)arg1 etag:(NSString *)arg2 creationDate:(NSDate *)arg3 modificationDate:(NSDate *)arg4 serverRecord:(CKRecord *)arg5 protectionData:(NSData *)arg6 pcsKeyID:(NSData *)arg7 allPCSKeyIDs:(NSArray *)arg8 zoneishKeyID:(NSData *)arg9 error:(NSError *)arg10;
+- (void)handleSaveForRecordID:(CKRecordID *)arg1 recordMetadata:(CKRecordXPCMetadata *)arg2 error:(NSError *)arg3;
 - (void)handleRecordModificationForRecordID:(CKRecordID *)arg1 didProgress:(double)arg2;
 - (void)handleRecordIDsInFlight:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;
 @end

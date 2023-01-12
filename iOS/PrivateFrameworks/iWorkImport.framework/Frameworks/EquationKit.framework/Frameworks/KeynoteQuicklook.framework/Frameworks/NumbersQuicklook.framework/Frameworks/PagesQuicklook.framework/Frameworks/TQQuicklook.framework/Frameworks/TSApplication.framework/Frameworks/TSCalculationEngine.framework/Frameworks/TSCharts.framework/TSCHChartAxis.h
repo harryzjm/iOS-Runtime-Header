@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
-#import <TSCharts/TSCHStyleOwnerCollaborationSupport-Protocol.h>
-#import <TSCharts/TSCHStyleOwning-Protocol.h>
-
 @class NSArray, NSString, TSCHChartAxisAnalysis, TSCHChartAxisID, TSCHChartAxisInterceptAnalysis, TSCHChartModel, TSUFastReadInvalidatingCache, TSULocale;
 @protocol TSCHDataFormatter, TSCHStyleActAlike;
 
-@interface TSCHChartAxis : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHStyleOwning>
+@interface TSCHChartAxis : NSObject
 {
     TSCHChartAxisID *_axisID;
     TSCHChartModel *_model;

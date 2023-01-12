@@ -13,7 +13,7 @@
 @property(copy, nonatomic) EMMailDropMetadata *mailDropMetadata;
 @property(nonatomic) long long storageByteCount;
 @property(nonatomic) long long dataTransferByteCount;
-@property(copy, nonatomic) NSString *UTType;
+@property(copy, nonatomic) NSString *uniformTypeIdentifier;
 @property(copy, nonatomic) NSString *contentID;
 @property(copy, nonatomic) NSString *displayName;
 @property(nonatomic) _Bool isAvailableLocally;

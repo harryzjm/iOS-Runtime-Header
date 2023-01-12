@@ -15,7 +15,7 @@
 + (id)fileProviderErrorForCollisionWithItem:(id)arg1;
 + (id)fp_translocatedError:(id)arg1;
 + (id)fp_invalidArgumentError:(id)arg1;
-+ (id)_fp_errorWithPOSIXCode:(int)arg1 itemURL:(id)arg2 debugDescription:(id)arg3 format:(id)arg4 arguments:(char *)arg5;
++ (id)_fp_errorWithPOSIXCode:(int)arg1 itemURL:(id)arg2 debugDescription:(id)arg3 message:(id)arg4;
 + (id)fp_errorWithPOSIXCode:(int)arg1 itemURL:(id)arg2 debugDescription:(id)arg3;
 + (id)fp_errorWithPOSIXCode:(int)arg1 description:(id)arg2;
 + (id)fp_errorWithPOSIXCode:(int)arg1;

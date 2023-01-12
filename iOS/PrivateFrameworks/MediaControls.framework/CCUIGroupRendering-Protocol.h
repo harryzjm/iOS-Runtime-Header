@@ -6,13 +6,13 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class CALayer, NSArray;
+@class NSArray;
 
 @protocol CCUIGroupRendering <NSObject>
-@property(readonly, nonatomic) NSArray *punchOutRootLayers;
+@property(readonly, nonatomic) NSArray *punchOutRenderingViews;
 @property(readonly, nonatomic, getter=isGroupRenderingRequired) _Bool groupRenderingRequired;
 
 @optional
-@property(readonly, nonatomic) CALayer *punchOutRootLayer;
+@property(readonly, nonatomic) NSArray *punchOutRootLayers;
 @end
 

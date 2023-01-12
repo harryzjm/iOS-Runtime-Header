@@ -6,28 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <ShazamKit/SHCustomCatalogStorage-Protocol.h>
-
-@class NSArray, NSError, NSMutableDictionary, NSString;
+@class NSArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SHCustomCatalogMemoryStorage : NSObject <SHCustomCatalogStorage>
+@interface SHCustomCatalogMemoryStorage : NSObject
 {
     NSArray *_referenceSignatures;
     NSMutableDictionary *_signatures;
     NSMutableDictionary *_mediaItems;
-    NSError *_error;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSMutableDictionary *mediaItems; // @synthesize mediaItems=_mediaItems;
 @property(retain, nonatomic) NSMutableDictionary *signatures; // @synthesize signatures=_signatures;
 - (void)producedSignature:(id)arg1 forID:(id)arg2;
 - (void)producedMediaItem:(id)arg1 forID:(id)arg2;
 - (id)referenceSignatureForTrackID:(unsigned long long)arg1;
 - (void)addSignature:(id)arg1 representingMediaItems:(id)arg2;
-- (id)jsonObjectRepresentation:(id *)arg1;
+- (id)jsonObjectRepresentationWithError:(id *)arg1;
 - (id)mediaItemsForReferenceSignature:(id)arg1;
 @property(readonly, nonatomic) NSArray *referenceSignatures; // @synthesize referenceSignatures=_referenceSignatures;
 - (id)init;

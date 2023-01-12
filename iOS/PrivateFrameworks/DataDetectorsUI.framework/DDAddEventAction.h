@@ -4,21 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "DDAction.h"
+
 @class DDRemoteActionViewController;
 
 __attribute__((visibility("hidden")))
-@interface DDAddEventAction
+@interface DDAddEventAction : DDAction
 {
     DDRemoteActionViewController *viewController;
 }
 
 + (_Bool)actionAvailableForEvent:(id)arg1;
 + (id)cachedEventForICSString:(id)arg1;
++ (_Bool)isAvailable;
 - (void).cxx_destruct;
 @property(retain, nonatomic) DDRemoteActionViewController *viewController; // @synthesize viewController;
 - (id)notificationURL;
 - (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;
+- (id)quickActionTitle;
 - (id)compactTitle;
 - (void)prepareViewControllerForActionController:(id)arg1;
 - (int)interactionType;

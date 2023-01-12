@@ -11,6 +11,8 @@
 @interface _TtC12NewsArticles42SaveArticleViewerFeatureVisibilityProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *readingList;
 }
 
 @end

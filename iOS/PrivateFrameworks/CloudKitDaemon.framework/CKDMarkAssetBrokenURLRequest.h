@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDURLRequest.h"
+
 @class CKUploadRequestMetadata;
 
-@interface CKDMarkAssetBrokenURLRequest
+@interface CKDMarkAssetBrokenURLRequest : CKDURLRequest
 {
     _Bool _writeRepairRecord;
     CDUnknownBlockType _assetBrokenBlock;

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSCopying-Protocol.h>
-#import <TSPersistence/TSPObjectInDocumentContaining-Protocol.h>
-
 @class NSMutableIndexSet, NSString;
 
-@interface TSPPersistedObjectUUIDMap : NSObject <NSCopying, TSPObjectInDocumentContaining>
+@interface TSPPersistedObjectUUIDMap : NSObject
 {
     void *_map;
     NSMutableIndexSet *_objectIdentifiers;

@@ -6,11 +6,12 @@
 
 #import <HearingUI/NSObject-Protocol.h>
 
-@class AXRemoteHearingAidDevice, HACCContentViewController, NSArray, UIView;
-@protocol HACCContentModule;
+@class AXRemoteHearingAidDevice, HACCContentViewController, NSArray, NSObject, UIView;
+@protocol HACCContentModule, OS_dispatch_queue;
 
 @protocol HACCContentModuleDelegate <NSObject>
 @property(readonly, nonatomic) _Bool shouldDisplayOtherDevice;
+- (NSObject<OS_dispatch_queue> *)backgroundUpdateQueue;
 - (void)viewController:(HACCContentViewController *)arg1 didExpand:(_Bool)arg2;
 - (double)preferredContentWidth;
 - (void)updateView;

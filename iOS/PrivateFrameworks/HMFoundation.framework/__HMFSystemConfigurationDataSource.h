@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HMFoundation/HMFSystemInfoNameDataSource-Protocol.h>
+#import "HMFObject.h"
 
 @class NSObject, NSString;
 @protocol HMFSystemInfoNameDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface __HMFSystemConfigurationDataSource <HMFSystemInfoNameDataSource>
+@interface __HMFSystemConfigurationDataSource : HMFObject
 {
     struct os_unfair_lock_s _lock;
     id <HMFSystemInfoNameDataSourceDelegate> _delegate;

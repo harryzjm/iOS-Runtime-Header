@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSError, NSString, RPCompanionLinkDevice, RPEndpoint, RPSession;
+@class NSDictionary, NSError, NSString, RPCompanionLinkClient, RPCompanionLinkDevice, RPEndpoint, RPSession;
 
 @protocol RPCompanionLinkXPCClientInterface
 
@@ -15,6 +15,7 @@
 - (void)xpcDiscoveryChangedEndpoint:(RPEndpoint *)arg1;
 - (void)xpcDiscoveryLostEndpoint:(RPEndpoint *)arg1;
 - (void)xpcDiscoveryFoundEndpoint:(RPEndpoint *)arg1;
+- (void)companionLinkUpdateClientState:(RPCompanionLinkClient *)arg1;
 - (void)companionLinkUpdateErrorFlags:(unsigned long long)arg1;
 - (void)companionLinkHandleDisconnect;
 - (void)companionLinkReceivedRequestID:(NSString *)arg1 request:(NSDictionary *)arg2 options:(NSDictionary *)arg3 responseHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg4;

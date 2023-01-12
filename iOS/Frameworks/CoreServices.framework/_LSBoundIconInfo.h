@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/LSIconResourceLocator-Protocol.h>
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSDictionary, NSString, NSURL, _LSLazyPropertyList;
 
 __attribute__((visibility("hidden")))
-@interface _LSBoundIconInfo : NSObject <LSIconResourceLocator, NSSecureCoding>
+@interface _LSBoundIconInfo : NSObject
 {
     _Bool _prerendered;
     _Bool _badge;

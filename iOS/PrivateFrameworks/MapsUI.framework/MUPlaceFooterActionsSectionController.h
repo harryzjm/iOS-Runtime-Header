@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKUGCCallToActionViewAppearance, MUFooterActionsSectionController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSString, UIView, UIViewController;
+@class MKUGCCallToActionViewAppearance, MUFooterActionsSectionController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUPlaceFooterActionsSectionController <MUPlaceSectionControlling>
+@interface MUPlaceFooterActionsSectionController : MUPlaceSectionController
 {
     MUFooterActionsSectionController *_underlyingSectionController;
 }
 
 - (void).cxx_destruct;
+- (_Bool)isImpressionable;
+- (id)analyticsModule;
+- (int)analyticsModuleType;
 - (void)reloadData;
 @property(readonly, nonatomic) UIView *sectionView;
 - (id)initWithMapItem:(id)arg1 actionManager:(id)arg2;
@@ -30,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

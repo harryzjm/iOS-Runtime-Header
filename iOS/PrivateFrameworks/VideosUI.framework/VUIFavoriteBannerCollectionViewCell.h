@@ -19,9 +19,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIFavoriteBannerLayout *bannerLayout; // @synthesize bannerLayout=_bannerLayout;
 @property(retain, nonatomic) VUIFavoriteBannerView *bannerView; // @synthesize bannerView=_bannerView;
 - (void)prepareForReuse;
-- (void)registerForInAppMessaging:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

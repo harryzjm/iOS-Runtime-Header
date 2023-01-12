@@ -5,10 +5,11 @@
 //
 
 #import <InstallCoordination/NSObject-Protocol.h>
+#import <InstallCoordination/STExtractorDelegate-Protocol.h>
 
 @class NSString;
 
-@protocol SZExtractorDelegate <NSObject>
+@protocol SZExtractorDelegate <NSObject, STExtractorDelegate>
 
 @optional
 - (void)extractionEnteredPassThroughMode;

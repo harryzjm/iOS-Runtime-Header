@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDistributedSync/CKXORCHelpers-Protocol.h>
+@protocol CKXORCHelpers;
 
-@interface CKXAtomORCSchema : NSObject <CKXORCHelpers>
+@interface CKXAtomORCSchema : NSObject
 {
+    id <CKXORCHelpers> _implementation;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) id <CKXORCHelpers> implementation; // @synthesize implementation=_implementation;
 - (unsigned long long)valueColumnIndexForField:(unsigned long long)arg1;
 - (unsigned long long)listColumnIndexForReference:(unsigned long long)arg1;
 - (unsigned long long)structReferenceIndexForReference:(unsigned long long)arg1;
 - (unsigned long long)topLevelIndexForStruct:(unsigned long long)arg1;
 - (void)configureColumnsWithRootColumn:(void *)arg1;
 - (id)generateSchema;
+- (id)initWithBinding:(id)arg1 formatVersion:(unsigned char)arg2;
 
 @end
 

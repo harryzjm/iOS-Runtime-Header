@@ -6,11 +6,9 @@
 
 #import <TeaFoundation/NSObject-Protocol.h>
 
-@class NSString, Protocol, TFCallbackScope, TFKey;
+@class Protocol, TFCallbackScope;
 
 @protocol TFCallbackRegistration <NSObject>
-- (void)whenUnsafeResolvingWithKey:(NSString *)arg1 scope:(TFCallbackScope *)arg2 callbackBlock:(void (^)(id, id <TFResolver>))arg3;
-- (void)whenResolvingKey:(TFKey *)arg1 scope:(TFCallbackScope *)arg2 callbackBlock:(void (^)(id, id <TFResolver>))arg3;
 - (void)whenResolvingProtocol:(Protocol *)arg1 scope:(TFCallbackScope *)arg2 callbackBlock:(void (^)(id, id <TFResolver>))arg3;
 - (void)whenResolvingClass:(Class)arg1 scope:(TFCallbackScope *)arg2 callbackBlock:(void (^)(id, id <TFResolver>))arg3;
 @end

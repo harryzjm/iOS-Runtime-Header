@@ -7,7 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (NanoPassKit)
-- (id)_matchesInStringWithType:(unsigned long long)arg1;
+- (id)matchesInStringWithType:(unsigned long long)arg1;
 - (id)npkBaseAddress;
 - (_Bool)npkIsEmailAddress;
 - (_Bool)npkIsPhoneNumber;

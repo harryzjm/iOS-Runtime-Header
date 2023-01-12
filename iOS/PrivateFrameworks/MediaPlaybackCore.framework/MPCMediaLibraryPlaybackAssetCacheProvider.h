@@ -6,23 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCModelPlaybackAssetCacheProviding-Protocol.h>
-
 @class MPMediaLibrary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCMediaLibraryPlaybackAssetCacheProvider : NSObject <MPCModelPlaybackAssetCacheProviding>
+@interface MPCMediaLibraryPlaybackAssetCacheProvider : NSObject
 {
     MPMediaLibrary *_mediaLibrary;
 }
 
++ (id)_downloadedAssetDestinationDirectoryForMediaLibrary:(id)arg1;
 + (id)_lowQualityCachedAssetDestinationDirectoryForMediaLibrary:(id)arg1;
 + (id)_highQualityCachedAssetDestinationDirectoryForMediaLibrary:(id)arg1;
 + (id)deviceLibraryProviderWithUserIdentity:(id)arg1;
 - (void).cxx_destruct;
 - (long long)_persistentIDForModelObject:(id)arg1;
+- (void)didCacheNewAssetToDestinationURL:(id)arg1;
+- (_Bool)isUnderDailyCacheAssetDownloadLimit;
 - (void)setPlaybackAssetCacheFileAsset:(id)arg1 forGenericObject:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)getPlaybackAssetCacheDestinationURL:(id *)arg1 purchaseBundleDestinationURL:(id *)arg2 forGenericObject:(id)arg3 assetQualityType:(long long)arg4 pathExtension:(id)arg5;
+- (void)getPlaybackAssetDestinationURL:(id *)arg1 sharedCacheURL:(id *)arg2 purgeable:(_Bool)arg3 purchaseBundleDestinationURL:(id *)arg4 assetQualityType:(long long)arg5 fileName:(id)arg6 pathExtension:(id)arg7;
 - (void)clearPlaybackAssetCacheFileAssetForGenericObject:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)_initWithMediaLibrary:(id)arg1;
 

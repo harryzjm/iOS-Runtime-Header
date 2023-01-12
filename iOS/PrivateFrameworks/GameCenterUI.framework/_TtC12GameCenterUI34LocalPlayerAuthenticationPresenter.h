@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameCenterUI/GKLocalPlayerAuthenticationUIPersonality-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12GameCenterUI34LocalPlayerAuthenticationPresenter : NSObject <GKLocalPlayerAuthenticationUIPersonality>
+@interface _TtC12GameCenterUI34LocalPlayerAuthenticationPresenter : NSObject
 {
     MISSING_TYPE *localPlayer;
     MISSING_TYPE *isUpdating;

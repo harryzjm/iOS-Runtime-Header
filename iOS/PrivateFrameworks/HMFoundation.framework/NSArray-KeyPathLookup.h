@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <HMFoundation/HMFObject-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (KeyPathLookup) <HMFObject>
+@interface NSArray (KeyPathLookup)
 + (id)shortDescription;
 - (id)hmf_firstObjectWithCharacteristicType:(id)arg1;
 - (id)hmf_firstObjectWithInstanceID:(id)arg1;

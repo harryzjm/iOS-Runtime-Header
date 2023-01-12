@@ -11,16 +11,17 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)passcodePromptForLoggingInWithSavedPasswordOnWebsite:(id)arg1;
-+ (id)customAuthenticationTitleForLoggingInWithSavedPasswordOnWebsite:(id)arg1;
++ (id)passcodePromptForLoggingInWithSavedAccountOnWebsite:(id)arg1;
++ (id)customAuthenticationTitleForLoggingInWithSavedAccountOnWebsite:(id)arg1;
 + (id)customAuthenticationTitleForFillingTimeBasedOneTimeCode;
 + (id)customAuthenticationTitleForFillingCreditCard;
++ (id)customAuthenticationTitleForFillingSavedPasskey;
 + (id)customAuthenticationTitleForFillingSavedPassword;
-+ (id)customAuthenticationTitleForViewingSavedPasswords;
++ (id)customAuthenticationTitleForViewingSavedAccounts;
 + (id)passcodePromptForFillingTimeBasedOneTimeCode;
 + (id)passcodePromptForFillingCreditCard;
-+ (id)passcodePromptForFillingSavedPassword;
-+ (id)passcodePromptForViewingSavedPasswords;
++ (id)passcodePromptForFillingSavedAccount;
++ (id)passcodePromptForViewingSavedAccounts;
 
 @end
 

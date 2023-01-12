@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIButton.h"
+
 @class UIColor;
 
 __attribute__((visibility("hidden")))
-@interface UIAssistantBarRoundedButtonViewButton
+@interface UIAssistantBarRoundedButtonViewButton : UIButton
 {
     UIColor *_normalBackgroundColor;
     UIColor *_highlightedBackgroundColor;

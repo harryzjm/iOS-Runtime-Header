@@ -6,11 +6,12 @@
 
 #import <SeymourServices/NSObject-Protocol.h>
 
-@class AMSPushPayload, NSString;
+@class AMSBadgeRequest, AMSPushPayload, NSString;
 
 @protocol AMSPushHandlerDelegate <NSObject>
 
 @optional
+- (void)pushPayload:(AMSPushPayload *)arg1 withBadgeRequest:(AMSBadgeRequest *)arg2;
 - (_Bool)pushPaylod:(AMSPushPayload *)arg1 shouldUpdateBadgeForBundleIdentifier:(NSString *)arg2 badgeIdentifier:(NSString *)arg3 enabled:(_Bool)arg4;
 @end
 

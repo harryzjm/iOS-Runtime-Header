@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <SafariServices/SFPrivacyReportGridItem-Protocol.h>
-
 @class NSString;
 @protocol SFPrivacyReportGridItemDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFPrivacyReportOverviewCellView : UIView <SFPrivacyReportGridItem>
+@interface SFPrivacyReportOverviewCellView : UIView
 {
     UIView *_topHairline;
     UIView *_bottomHairline;

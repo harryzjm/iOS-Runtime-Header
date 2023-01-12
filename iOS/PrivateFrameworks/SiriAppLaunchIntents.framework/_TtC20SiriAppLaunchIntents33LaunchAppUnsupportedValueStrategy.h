@@ -10,9 +10,12 @@
 
 @interface _TtC20SiriAppLaunchIntents33LaunchAppUnsupportedValueStrategy : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *appLaunchFeatureFlags;
     MISSING_TYPE *deviceState;
     MISSING_TYPE *dialogProvider;
     MISSING_TYPE *locUtil;
+    MISSING_TYPE *responseGenerator;
+    MISSING_TYPE *remoteDevice;
 }
 
 @end

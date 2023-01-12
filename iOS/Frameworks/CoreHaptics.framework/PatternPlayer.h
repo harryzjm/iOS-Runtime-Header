@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreHaptics/CHHapticPatternPlayer-Protocol.h>
-
 @class AVHapticPlayerChannel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PatternPlayer <CHHapticPatternPlayer>
+@interface PatternPlayer
 {
     AVHapticPlayerChannel *_channel;
 }
 
 - (void).cxx_destruct;
 @property _Bool isMuted;
+- (_Bool)startAtTime:(double)arg1 withImmediateParameters:(id)arg2 error:(id *)arg3;
 - (_Bool)scheduleParameterCurve:(id)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (_Bool)cancelAndReturnError:(id *)arg1;
 - (_Bool)sendParameters:(id)arg1 atTime:(double)arg2 error:(id *)arg3;
@@ -25,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (void)doSetMute:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithPlayable:(id)arg1 engine:(id)arg2 privileged:(_Bool)arg3 error:(id *)arg4;
+- (id)processImmediateParameters:(id)arg1;
+- (void)releaseExternalResources:(id)arg1 events:(id)arg2;
 - (id)init;
 
 // Remaining properties

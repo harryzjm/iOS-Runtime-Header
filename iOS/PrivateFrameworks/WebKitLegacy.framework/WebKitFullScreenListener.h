@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKitLegacy/WebKitFullScreenListener-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebKitFullScreenListener : NSObject <WebKitFullScreenListener>
+@interface WebKitFullScreenListener : NSObject
 {
     struct RefPtr<WebCore::Element, WTF::RawPtrTraits<WebCore::Element>, WTF::DefaultRefDerefTraits<WebCore::Element>> _element;
 }

@@ -11,7 +11,6 @@
 @interface _TtC13TeaFoundation20CallbackRegistration : _TtCs12_SwiftObject
 {
     MISSING_TYPE *callbackStore;
-    MISSING_TYPE *callbackRegistration;
     MISSING_TYPE *publicContainer;
     MISSING_TYPE *privateContainer;
 }

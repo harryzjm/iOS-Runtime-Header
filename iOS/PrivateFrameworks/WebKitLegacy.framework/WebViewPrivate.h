@@ -88,7 +88,7 @@ __attribute__((visibility("hidden")))
     struct RefPtr<LayerFlushController, WTF::RawPtrTraits<LayerFlushController>, WTF::DefaultRefDerefTraits<LayerFlushController>> layerFlushController;
     struct CGSize lastLayoutSize;
     struct RetainPtr<WebVideoFullscreenController> fullscreenController;
-    struct Vector<WTF::RetainPtr<WebVideoFullscreenController>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> fullscreenControllersExiting;
+    struct Vector<WTF::RetainPtr<WebVideoFullscreenController>, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc> fullscreenControllersExiting;
     struct RetainPtr<WebFullScreenController> newFullscreenController;
     struct RetainPtr<WebIndicateLayer> indicateLayer;
     id <WebGeolocationProvider> _geolocationProvider;

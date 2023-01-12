@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PreferencesUI/PSSpecifierGroup-Protocol.h>
-
 @class NSString, PSListController, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface PSUIPearlAttentionGroupController : NSObject <PSSpecifierGroup>
+@interface PSUIPearlAttentionGroupController : NSObject
 {
     NSString *_pinCode;
     PSListController *_listController;
@@ -22,6 +20,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
 @property(retain, nonatomic) NSString *pinCode; // @synthesize pinCode=_pinCode;
+- (_Bool)isPeriocularEnabled;
+- (_Bool)useAlternateFooterTextForAttention;
 - (id)specifiers;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
 

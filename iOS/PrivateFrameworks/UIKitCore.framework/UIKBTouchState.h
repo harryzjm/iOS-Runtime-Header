@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)touchesForTouchUUIDs:(id)arg1;
 + (id)touchForTouchUUID:(id)arg1;
 + (id)touchUUIDForTouch:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long tapCount; // @synthesize tapCount=_tapCount;
 @property(readonly, nonatomic) NSUUID *touchUUID; // @synthesize touchUUID=_touchUUID;
 @property(readonly, nonatomic) unsigned long long pathIndex; // @synthesize pathIndex=_pathIndex;
@@ -40,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 - (id)description;
 - (struct CGPoint)locationInView:(id)arg1;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

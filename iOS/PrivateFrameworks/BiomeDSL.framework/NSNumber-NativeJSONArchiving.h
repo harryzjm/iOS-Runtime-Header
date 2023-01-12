@@ -6,9 +6,7 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <BiomeDSL/BMDSLNativeJSONArchiving-Protocol.h>
-
-@interface NSNumber (NativeJSONArchiving) <BMDSLNativeJSONArchiving>
+@interface NSNumber (NativeJSONArchiving)
 + (void)bmdsl_nativeSupportForEncodingAsJSON;
 @end
 

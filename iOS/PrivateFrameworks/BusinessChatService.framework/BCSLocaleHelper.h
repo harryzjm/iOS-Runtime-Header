@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSLocaleHelperProtocol-Protocol.h>
-
 @class NSLocale;
 
 __attribute__((visibility("hidden")))
-@interface BCSLocaleHelper : NSObject <BCSLocaleHelperProtocol>
+@interface BCSLocaleHelper : NSObject
 {
 }
 

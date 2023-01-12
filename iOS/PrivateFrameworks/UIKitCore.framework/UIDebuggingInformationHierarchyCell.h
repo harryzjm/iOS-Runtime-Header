@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionViewCell.h"
+
 @class NSIndexPath, NSLayoutConstraint, NSString, UIButton, UILabel;
 @protocol UIDebuggingInformationHierarchyCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingInformationHierarchyCell
+@interface UIDebuggingInformationHierarchyCell : UICollectionViewCell
 {
     UIButton *_disclosureButton;
     UILabel *_mainLabel;

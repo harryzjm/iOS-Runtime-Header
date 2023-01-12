@@ -9,15 +9,14 @@
 __attribute__((visibility("hidden")))
 @interface SFBrowserPersonaAnalyticsHelper : NSObject
 {
-    unsigned long long _persona;
+    long long _persona;
     _Bool _hasReportedPresentingFromHostApp;
 }
 
 - (void)didPresentFromHostApp:(id)arg1;
 - (void)didDismissWithMethod:(int)arg1;
 - (void)didLongTapToolbarButton:(int)arg1;
-- (void)didTapToolbarButton:(int)arg1;
-- (id)initWithPersona:(unsigned long long)arg1;
+- (id)initWithPersona:(long long)arg1;
 
 @end
 

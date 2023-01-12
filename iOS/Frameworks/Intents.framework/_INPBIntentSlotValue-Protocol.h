@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBActivity, _INPBActivityList, _INPBAlarm, _INPBAlarmSearch, _INPBAnnouncement, _INPBAppIdentifier, _INPBArchivedObject, _INPBBillDetailsValue, _INPBBillPayeeValue, _INPBCallGroup, _INPBCallGroupConversation, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBContactEventTrigger, _INPBContactList, _INPBContactValue, _INPBCurrencyAmount, _INPBCustomObject, _INPBDataString, _INPBDataStringList, _INPBDateTime, _INPBDateTimeRangeList, _INPBDateTimeRangeValue, _INPBDevice, _INPBDeviceDetail, _INPBDialingContact, _INPBDistanceList, _INPBDistanceValue, _INPBDoubleList, _INPBDoubleValue, _INPBEnergyValue, _INPBEvent, _INPBEventList, _INPBFile, _INPBFileProperty, _INPBFilePropertyValue, _INPBFinancialAccountValue, _INPBGeographicalFeature, _INPBGeographicalFeatureList, _INPBGetSettingResponseData, _INPBHomeAttribute, _INPBHomeAttributeValue, _INPBHomeEntity, _INPBHomeFilter, _INPBHomeUserTask, _INPBIntegerList, _INPBIntegerValue, _INPBIntent, _INPBIntentExecutionResult, _INPBLocationList, _INPBLocationValue, _INPBLongList, _INPBLongValue, _INPBMassValue, _INPBMediaDestination, _INPBMediaItemGroup, _INPBMediaItemValue, _INPBMediaSearch, _INPBModifyNickname, _INPBModifyRelationship, _INPBNote, _INPBNoteContent, _INPBNumericSettingValue, _INPBPaymentAmountValue, _INPBPaymentMethodList, _INPBPaymentMethodValue, _INPBPlace, _INPBPlaceList, _INPBPrivateAddMediaIntentData, _INPBPrivatePlayMediaIntentData, _INPBPrivateSearchForMediaIntentData, _INPBPrivateUpdateMediaAffinityIntentData, _INPBSendMessageAttachment, _INPBSettingMetadata, _INPBShareDestination, _INPBSleepAlarmAttribute, _INPBSpatialEventTrigger, _INPBSpeedValue, _INPBStringList, _INPBStringValue, _INPBSupportedTrafficIncidentType, _INPBTask, _INPBTaskList, _INPBTemperatureList, _INPBTemperatureValue, _INPBTemporalEventTrigger, _INPBTimer, _INPBURLValue, _INPBVoiceCommandDeviceInformation, _INPBVolumeValue, _INPBWellnessMetadataPair, _INPBWellnessObjectResultValue, _INPBWellnessUnitType, _INPBWellnessValue, _INPBWorkoutAssociatedItem, _INPBWorkoutCustomization;
+@class NSArray, NSString, _INPBActivity, _INPBActivityList, _INPBAlarm, _INPBAlarmSearch, _INPBAnnouncement, _INPBAppIdentifier, _INPBArchivedObject, _INPBBillDetailsValue, _INPBBillPayeeValue, _INPBCalendarEvent, _INPBCallGroup, _INPBCallGroupConversation, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBContactEventTrigger, _INPBContactList, _INPBContactValue, _INPBCurrencyAmount, _INPBCustomObject, _INPBDataString, _INPBDataStringList, _INPBDateTime, _INPBDateTimeRangeList, _INPBDateTimeRangeValue, _INPBDevice, _INPBDeviceDetail, _INPBDialingContact, _INPBDistanceList, _INPBDistanceValue, _INPBDoubleList, _INPBDoubleValue, _INPBEnergyValue, _INPBEvent, _INPBEventList, _INPBEventParticipant, _INPBFile, _INPBFileProperty, _INPBFilePropertyValue, _INPBFinancialAccountValue, _INPBGeographicalFeature, _INPBGeographicalFeatureList, _INPBGetSettingResponseData, _INPBHomeAttribute, _INPBHomeAttributeValue, _INPBHomeEntity, _INPBHomeFilter, _INPBHomeUserTask, _INPBIntegerList, _INPBIntegerValue, _INPBIntent, _INPBIntentExecutionResult, _INPBLocationList, _INPBLocationValue, _INPBLongList, _INPBLongValue, _INPBMassValue, _INPBMediaDestination, _INPBMediaItemGroup, _INPBMediaItemValue, _INPBMediaSearch, _INPBModifyNickname, _INPBModifyRelationship, _INPBNote, _INPBNoteContent, _INPBNumericSettingValue, _INPBPaymentAmountValue, _INPBPaymentMethodList, _INPBPaymentMethodValue, _INPBPlace, _INPBPlaceList, _INPBPrivateAddMediaIntentData, _INPBPrivatePlayMediaIntentData, _INPBPrivateSearchForMediaIntentData, _INPBPrivateUpdateMediaAffinityIntentData, _INPBSendMessageAttachment, _INPBSettingMetadata, _INPBShareDestination, _INPBSleepAlarmAttribute, _INPBSpatialEventTrigger, _INPBSpeedValue, _INPBStringList, _INPBStringValue, _INPBSupportedTrafficIncidentType, _INPBTask, _INPBTaskList, _INPBTemperatureList, _INPBTemperatureValue, _INPBTemporalEventTrigger, _INPBTimer, _INPBURLValue, _INPBVoiceCommandDeviceInformation, _INPBVolumeValue, _INPBWellnessMetadataPair, _INPBWellnessObjectResultValue, _INPBWellnessUnitType, _INPBWellnessValue, _INPBWorkoutAssociatedItem, _INPBWorkoutCustomization;
 
 @protocol _INPBIntentSlotValue <NSObject>
 + (Class)payloadWorkoutCustomizationType;
@@ -72,6 +72,7 @@
 + (Class)payloadFilePropertyValueType;
 + (Class)payloadFilePropertyType;
 + (Class)payloadFileType;
++ (Class)payloadEventParticipantType;
 + (Class)payloadEventListType;
 + (Class)payloadEventType;
 + (Class)payloadEnergyValueType;
@@ -96,6 +97,7 @@
 + (Class)payloadCallRecordFilterType;
 + (Class)payloadCallGroupConversationType;
 + (Class)payloadCallGroupType;
++ (Class)payloadCalendarEventType;
 + (Class)payloadBillPayeeValueType;
 + (Class)payloadBillDetailsValueType;
 + (Class)payloadArchivedObjectType;
@@ -333,8 +335,12 @@
 @property(readonly, nonatomic) int *payloadFileEntityTypes;
 @property(readonly, nonatomic) unsigned long long payloadFilesCount;
 @property(copy, nonatomic) NSArray *payloadFiles;
+@property(readonly, nonatomic) unsigned long long payloadEventParticipantsCount;
+@property(copy, nonatomic) NSArray *payloadEventParticipants;
 @property(readonly, nonatomic) unsigned long long payloadEventListsCount;
 @property(copy, nonatomic) NSArray *payloadEventLists;
+@property(readonly, nonatomic) unsigned long long payloadEventAttributesCount;
+@property(readonly, nonatomic) int *payloadEventAttributes;
 @property(readonly, nonatomic) unsigned long long payloadEventsCount;
 @property(copy, nonatomic) NSArray *payloadEvents;
 @property(readonly, nonatomic) unsigned long long payloadEnumerationsCount;
@@ -409,6 +415,8 @@
 @property(readonly, nonatomic) int *payloadCallCapabilities;
 @property(readonly, nonatomic) unsigned long long payloadCallAudioRoutesCount;
 @property(readonly, nonatomic) int *payloadCallAudioRoutes;
+@property(readonly, nonatomic) unsigned long long payloadCalendarEventsCount;
+@property(copy, nonatomic) NSArray *payloadCalendarEvents;
 @property(readonly, nonatomic) unsigned long long payloadBoundedSettingValuesCount;
 @property(readonly, nonatomic) int *payloadBoundedSettingValues;
 @property(readonly, nonatomic) unsigned long long payloadBinarySettingValuesCount;
@@ -919,9 +927,18 @@
 - (_INPBFile *)payloadFileAtIndex:(unsigned long long)arg1;
 - (void)addPayloadFile:(_INPBFile *)arg1;
 - (void)clearPayloadFiles;
+- (_INPBEventParticipant *)payloadEventParticipantAtIndex:(unsigned long long)arg1;
+- (void)addPayloadEventParticipant:(_INPBEventParticipant *)arg1;
+- (void)clearPayloadEventParticipants;
 - (_INPBEventList *)payloadEventListAtIndex:(unsigned long long)arg1;
 - (void)addPayloadEventList:(_INPBEventList *)arg1;
 - (void)clearPayloadEventLists;
+- (int)StringAsPayloadEventAttributes:(NSString *)arg1;
+- (NSString *)payloadEventAttributesAsString:(int)arg1;
+- (void)setPayloadEventAttributes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)payloadEventAttributeAtIndex:(unsigned long long)arg1;
+- (void)addPayloadEventAttribute:(int)arg1;
+- (void)clearPayloadEventAttributes;
 - (_INPBEvent *)payloadEventAtIndex:(unsigned long long)arg1;
 - (void)addPayloadEvent:(_INPBEvent *)arg1;
 - (void)clearPayloadEvents;
@@ -1069,6 +1086,9 @@
 - (int)payloadCallAudioRouteAtIndex:(unsigned long long)arg1;
 - (void)addPayloadCallAudioRoute:(int)arg1;
 - (void)clearPayloadCallAudioRoutes;
+- (_INPBCalendarEvent *)payloadCalendarEventAtIndex:(unsigned long long)arg1;
+- (void)addPayloadCalendarEvent:(_INPBCalendarEvent *)arg1;
+- (void)clearPayloadCalendarEvents;
 - (int)StringAsPayloadBoundedSettingValues:(NSString *)arg1;
 - (NSString *)payloadBoundedSettingValuesAsString:(int)arg1;
 - (void)setPayloadBoundedSettingValues:(int *)arg1 count:(unsigned long long)arg2;

@@ -55,7 +55,7 @@
 - (_Bool)ibShouldIgnoreScrollableContentWidthAmbiguityForRepresentationOfItem:(NSObject<IBAutolayoutItem> *)arg1 inEngine:(IBAutolayoutEngine *)arg2;
 - (_Bool)ibShouldIgnoreAmbiguityAndMisplacementIssuesBecauseLayoutIsExplicitlyManaged;
 - (NSObject<IBAutolayoutItem> *)ibNextAncestorItemForFindingReferencingConstraintsInLayoutInfo:(id <IBAutolayoutInfoProvider>)arg1;
-- (_Bool)ibAllowsConstraintSpacingFromInsideEdgesForSiblings;
+- (_Bool)ibAllowsConstraintSpacingFromInsideEdgesForSiblingsForOrientation:(unsigned long long)arg1;
 - (unsigned long long)ibAllowedSiblingEdgesForGuidesToSelectedItems:(id <IBCollection>)arg1;
 - (_Bool)ibAllowsSiblingGuidesToSelectedItems:(id <IBCollection>)arg1 ofType:(long long)arg2;
 - (_Bool)ibShouldConsiderGuidesToEdgeWithAttribute:(unsigned long long)arg1 fromEdgeWithAttribute:(unsigned long long)arg2 ofSelectedItems:(id <IBCollection>)arg3;

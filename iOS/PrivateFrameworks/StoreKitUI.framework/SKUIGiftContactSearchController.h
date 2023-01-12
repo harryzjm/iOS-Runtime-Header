@@ -6,36 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/MFContactsSearchConsumer-Protocol.h>
-#import <StoreKitUI/UITableViewDataSource-Protocol.h>
-#import <StoreKitUI/UITableViewDelegate-Protocol.h>
-
-@class MFContactsSearchManager, NSArray, NSMutableArray, NSNumber, NSString, UITableView, UIView;
+@class CNAutocompleteResultsTableViewController, CNAutocompleteSearchManager, NSArray, NSMutableArray, NSNumber, NSString, UIView;
 @protocol SKUIGiftContactSearchDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftContactSearchController : NSObject <MFContactsSearchConsumer, UITableViewDataSource, UITableViewDelegate>
+@interface SKUIGiftContactSearchController : NSObject
 {
     NSMutableArray *_autocompleteSearchResults;
     id <SKUIGiftContactSearchDelegate> _delegate;
     NSArray *_results;
-    MFContactsSearchManager *_searchManager;
+    CNAutocompleteResultsTableViewController *_searchResultsViewController;
+    CNAutocompleteSearchManager *_searchManager;
     UIView *_searchResultsView;
     NSNumber *_searchTaskIdentifier;
-    UITableView *_tableView;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SKUIGiftContactSearchDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)_tableView;
 - (void)_setResults:(id)arg1;
 - (void)_finishSearchWithResults:(id)arg1;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (void)makeChildLabelsSupportDarkMode:(id)arg1;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)finishedSearchingForAutocompleteResults;
 - (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
+@property(readonly, nonatomic) CNAutocompleteResultsTableViewController *searchResultsViewController;
 @property(readonly, nonatomic) UIView *searchResultsView;
 - (void)searchForText:(id)arg1;
 - (void)resetSearch;

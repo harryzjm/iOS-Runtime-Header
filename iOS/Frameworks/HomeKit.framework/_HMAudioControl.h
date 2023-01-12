@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMFMessageReceiver-Protocol.h>
-#import <HomeKit/HMObjectMerge-Protocol.h>
-
-@class HMFUnfairLock, HMMediaSession, NSString, NSUUID, _HMContext;
+@class HMMediaSession, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue, _HMAudioControlDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _HMAudioControl : NSObject <HMFMessageReceiver, HMObjectMerge>
+@interface _HMAudioControl : NSObject
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     _Bool _muted;
     float _volume;
     NSUUID *_uniqueIdentifier;
@@ -31,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleAudioControlUpdated:(id)arg1;
 - (void)updateMuted:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateVolume:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (_Bool)_mergeWithNewObject:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 - (id)messageDestination;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;

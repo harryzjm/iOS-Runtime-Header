@@ -10,6 +10,7 @@
 
 @protocol _SFPBPerson <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(copy, nonatomic) NSString *photosIdentifier;
 @property(copy, nonatomic) NSArray *emailAddresses;
 @property(copy, nonatomic) NSArray *phoneNumbers;
 @property(copy, nonatomic) NSString *displayName;

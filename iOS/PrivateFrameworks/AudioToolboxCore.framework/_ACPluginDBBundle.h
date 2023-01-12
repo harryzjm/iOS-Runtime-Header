@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ACPluginDBBundle : NSObject <NSSecureCoding>
+@interface _ACPluginDBBundle : NSObject
 {
     NSString *mFullPath;
     double mInfoPlistModDate;

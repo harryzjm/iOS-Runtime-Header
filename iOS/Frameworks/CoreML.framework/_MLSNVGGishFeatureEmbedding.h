@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/MLCustomModel-Protocol.h>
-
 @class MLModelDescription;
 @protocol MLCustomModel;
 
 __attribute__((visibility("hidden")))
-@interface _MLSNVGGishFeatureEmbedding : NSObject <MLCustomModel>
+@interface _MLSNVGGishFeatureEmbedding : NSObject
 {
     id <MLCustomModel> _featureEmbeddingModel;
     MLModelDescription *_modelDescription;

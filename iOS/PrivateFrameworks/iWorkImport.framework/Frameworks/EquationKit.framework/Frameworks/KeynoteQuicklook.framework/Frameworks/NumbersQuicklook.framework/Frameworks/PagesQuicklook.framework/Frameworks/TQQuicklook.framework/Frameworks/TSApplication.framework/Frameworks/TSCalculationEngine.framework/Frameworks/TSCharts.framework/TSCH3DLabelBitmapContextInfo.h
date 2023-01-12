@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
-@interface TSCH3DLabelBitmapContextInfo : NSObject <NSCopying>
+@interface TSCH3DLabelBitmapContextInfo : NSObject
 {
     _Bool _isPrinting;
     _Bool _isPDF;

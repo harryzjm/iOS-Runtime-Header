@@ -11,6 +11,7 @@
 @interface _TtC24RequestDispatcherBridges24ExecutionOutputSubmitter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *requestDispatcherServiceHelper;
+    MISSING_TYPE *isMUXEnabled;
 }
 
 @end

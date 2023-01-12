@@ -4,24 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCVideoSink-Protocol.h>
-
-@class NSString;
+@class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCStreamInputCaptureSource <VCVideoSink>
+@interface VCStreamInputCaptureSource
 {
     int _captureSourceID;
     long long _streamInputID;
     struct opaqueCMFormatDescription *_formatDescription;
     id _delegate;
     struct _opaque_pthread_mutex_t _sinkMutex;
+    NSMutableDictionary *_videoSinkState;
+    unsigned int _frameRate;
 }
 
 + (_Bool)readUint32FromConfig:(id)arg1 key:(id)arg2 value:(unsigned int *)arg3;
++ (_Bool)readIntegerFromConfig:(id)arg1 key:(id)arg2 value:(long long *)arg3;
+@property(readonly, nonatomic) unsigned int frameRate; // @synthesize frameRate=_frameRate;
 @property(readonly, nonatomic) const struct opaqueCMFormatDescription *formatDescription; // @synthesize formatDescription=_formatDescription;
 @property(nonatomic) int captureSourceID; // @synthesize captureSourceID=_captureSourceID;
 @property(readonly, nonatomic) long long streamInputID; // @synthesize streamInputID=_streamInputID;
+- (void)didResumeVideoSink:(id)arg1;
+- (void)didSuspendVideoSink:(id)arg1;
+- (_Bool)allSinksSuspended;
 - (unsigned int)removeSink:(id)arg1;
 - (unsigned int)addSink:(id)arg1;
 - (void)sourceFrameRateDidChange:(unsigned int)arg1;
@@ -29,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)setDelegate:(id)arg1;
 - (_Bool)setupDataFormatWithConfiguration:(id)arg1;
 - (_Bool)setupVideoFormatWithConfiguration:(id)arg1;
+- (_Bool)setupFormatWithConfiguration:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
 - (id)initWithCaptureSourceID:(int)arg1 configuration:(id)arg2;

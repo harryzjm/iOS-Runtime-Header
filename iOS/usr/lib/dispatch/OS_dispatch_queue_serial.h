@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <dispatch/OS_dispatch_queue_serial-Protocol.h>
+#import "OS_dispatch_queue.h"
 
 @class NSString;
 
-@interface OS_dispatch_queue_serial <OS_dispatch_queue_serial>
+@interface OS_dispatch_queue_serial : OS_dispatch_queue
 {
 }
 

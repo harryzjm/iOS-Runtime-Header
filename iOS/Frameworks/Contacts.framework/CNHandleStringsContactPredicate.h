@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNPredicate.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface CNHandleStringsContactPredicate
+@interface CNHandleStringsContactPredicate : CNPredicate
 {
     NSArray *_handleStrings;
     NSArray *_containerIdentifiers;
@@ -17,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *containerIdentifiers; // @synthesize containerIdentifiers=_containerIdentifiers;
 @property(readonly, copy, nonatomic) NSArray *handleStrings; // @synthesize handleStrings=_handleStrings;
+- (void)cn_triageWithLog:(id)arg1 serialNumber:(unsigned long long)arg2;
 - (CDUnknownBlockType)cn_resultTransformWithMatchInfos:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

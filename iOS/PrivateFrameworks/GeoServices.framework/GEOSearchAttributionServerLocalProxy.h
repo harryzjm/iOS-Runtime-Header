@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
-#import <GeoServices/GEOSearchAttributionServerProxy-Protocol.h>
-
 @class GEOSearchAttributionManifest, NSMapTable, NSMutableArray, NSString, geo_isolater;
 
 __attribute__((visibility("hidden")))
-@interface GEOSearchAttributionServerLocalProxy : NSObject <GEOResourceManifestTileGroupObserver, GEOSearchAttributionServerProxy>
+@interface GEOSearchAttributionServerLocalProxy : NSObject
 {
     NSMapTable *_listeners;
     struct os_unfair_lock_s _listenersLock;

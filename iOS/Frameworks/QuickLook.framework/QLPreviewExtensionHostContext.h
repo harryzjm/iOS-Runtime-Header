@@ -6,12 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <QuickLook/QLRemotePreviewService-Protocol.h>
-
 @class NSString, QLRemoteItemViewController;
 
 __attribute__((visibility("hidden")))
-@interface QLPreviewExtensionHostContext : NSExtensionContext <QLRemotePreviewService>
+@interface QLPreviewExtensionHostContext : NSExtensionContext
 {
     QLRemoteItemViewController *_remoteItemViewController;
 }
@@ -20,6 +18,9 @@ __attribute__((visibility("hidden")))
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
 @property(nonatomic) __weak QLRemoteItemViewController *remoteItemViewController; // @synthesize remoteItemViewController=_remoteItemViewController;
+- (void)getARQLInlineProxy3WithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getARQLInlineProxy2WithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getARQLInlineProxyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)generatePreviewForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)invalidateService;
 - (void)getPrinterProxyWithCompletionHandler:(CDUnknownBlockType)arg1;

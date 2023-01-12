@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s7SwiftUI14AnyTextStorageCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC7SwiftUIP33_69EF06F9BDF62ECF39AC7E7A3D2BB90023ConcatenatedTextStorage
+@interface _TtC7SwiftUIP33_69EF06F9BDF62ECF39AC7E7A3D2BB90023ConcatenatedTextStorage : _$s7SwiftUI14AnyTextStorageCN
 {
     MISSING_TYPE *first;
     MISSING_TYPE *second;

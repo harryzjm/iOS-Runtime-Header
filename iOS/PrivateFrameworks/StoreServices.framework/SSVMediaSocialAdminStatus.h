@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreServices/NSSecureCoding-Protocol.h>
-
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface SSVMediaSocialAdminStatus : NSObject <NSSecureCoding>
+@interface SSVMediaSocialAdminStatus : NSObject
 {
     _Bool _admin;
     NSDate *_dateUpdated;

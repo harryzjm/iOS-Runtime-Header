@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/CAAnimationDelegate-Protocol.h>
-#import <VisionKitCore/UIPointerInteractionDelegate-Protocol.h>
-
-@class CALayer, NSString, UIImage, UITapGestureRecognizer, VKCLookupButton, VKCVisualSearchResultItem;
+@class CALayer, NSData, NSString, UIImage, UITapGestureRecognizer, VKCLookupButton, VKCVisualSearchResultItem;
 @protocol VKCVisualSearchResultItemViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCVisualSearchResultItemView <UIPointerInteractionDelegate, CAAnimationDelegate>
+@interface VKCVisualSearchResultItemView
 {
     _Bool _pulsing;
     _Bool _automaticallyShowVisualSearchResults;
@@ -23,6 +20,7 @@ __attribute__((visibility("hidden")))
     long long _interfaceOrientation;
     id <VKCVisualSearchResultItemViewDelegate> _delegate;
     VKCVisualSearchResultItem *_visualSearchResultItem;
+    NSData *_userReportPayload;
     UITapGestureRecognizer *_tapGestureRecognizer;
     VKCLookupButton *_lookupButton;
     CALayer *_iconInLookupButtonLayer;
@@ -50,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property(nonatomic) _Bool automaticallyShowVisualSearchResults; // @synthesize automaticallyShowVisualSearchResults=_automaticallyShowVisualSearchResults;
 @property(nonatomic) _Bool pulsing; // @synthesize pulsing=_pulsing;
+@property(retain, nonatomic) NSData *userReportPayload; // @synthesize userReportPayload=_userReportPayload;
 @property(retain, nonatomic) VKCVisualSearchResultItem *visualSearchResultItem; // @synthesize visualSearchResultItem=_visualSearchResultItem;
 @property(nonatomic) __weak id <VKCVisualSearchResultItemViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)showLookupUIPaneForResultItem;

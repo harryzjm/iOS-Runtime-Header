@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface IBPlatformToolExtension : NSObject <IBBinaryArchiving>
+@interface IBPlatformToolExtension : NSObject
 {
     NSString *_initializerClassName;
     NSString *_bundlePath;

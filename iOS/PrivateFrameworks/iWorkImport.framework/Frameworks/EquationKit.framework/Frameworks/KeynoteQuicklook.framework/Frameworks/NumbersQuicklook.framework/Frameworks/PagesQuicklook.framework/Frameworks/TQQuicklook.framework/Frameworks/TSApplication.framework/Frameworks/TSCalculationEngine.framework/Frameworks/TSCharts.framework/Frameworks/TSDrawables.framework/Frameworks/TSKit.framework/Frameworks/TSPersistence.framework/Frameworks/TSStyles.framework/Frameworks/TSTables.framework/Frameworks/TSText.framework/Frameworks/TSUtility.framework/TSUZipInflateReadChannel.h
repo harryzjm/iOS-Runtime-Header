@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/TSUStreamReadChannel-Protocol.h>
-
 @class NSString;
 @protocol TSUStreamReadChannel;
 
-@interface TSUZipInflateReadChannel : NSObject <TSUStreamReadChannel>
+@interface TSUZipInflateReadChannel : NSObject
 {
     id <TSUStreamReadChannel> _readChannel;
     unsigned long long _remainingUncompressedSize;

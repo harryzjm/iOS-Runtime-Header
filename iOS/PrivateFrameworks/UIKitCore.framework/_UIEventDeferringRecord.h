@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/BSDebugDescriptionProviding-Protocol.h>
-
 @class NSMutableSet, NSString, _UIEventDeferringDescriptor, _UIEventDeferringOwnershipToken;
 @protocol BSInvalidatable;
 
 __attribute__((visibility("hidden")))
-@interface _UIEventDeferringRecord : NSObject <BSDebugDescriptionProviding>
+@interface _UIEventDeferringRecord : NSObject
 {
     NSMutableSet *_recreationReasons;
     _UIEventDeferringDescriptor *_descriptor;

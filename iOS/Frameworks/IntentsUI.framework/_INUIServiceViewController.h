@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <IntentsUI/_INUIRemoteViewControllerServing-Protocol.h>
-
 @class INInteraction, NSString;
 @protocol INUIHostedViewControlling;
 
 __attribute__((visibility("hidden")))
-@interface _INUIServiceViewController : UIViewController <_INUIRemoteViewControllerServing>
+@interface _INUIServiceViewController : UIViewController
 {
     UIViewController<INUIHostedViewControlling> *_hostedViewController;
     INInteraction *_currentInteraction;

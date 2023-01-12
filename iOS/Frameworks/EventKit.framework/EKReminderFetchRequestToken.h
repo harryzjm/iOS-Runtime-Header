@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EventKit/EKFetchRequestToken-Protocol.h>
-#import <EventKit/NSCopying-Protocol.h>
-
 @class EKReminderStore;
 
 __attribute__((visibility("hidden")))
-@interface EKReminderFetchRequestToken : NSObject <EKFetchRequestToken, NSCopying>
+@interface EKReminderFetchRequestToken : NSObject
 {
     EKReminderStore *_reminderStore;
 }

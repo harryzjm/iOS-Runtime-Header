@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
-#import <TSCharts/TSCHStyleOwnerCollaborationSupport-Protocol.h>
-#import <TSCharts/TSCHStyleOwning-Protocol.h>
-
 @class NSString, NSUUID, TSCHChartAxis, TSCHChartAxisID, TSCHChartModel, TSCHReferenceLineNonStyle, TSCHReferenceLineStyle;
 
-@interface TSCHReferenceLine : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHStyleOwning>
+@interface TSCHReferenceLine : NSObject
 {
     TSCHChartModel *_model;
     TSCHChartAxisID *_axisID;

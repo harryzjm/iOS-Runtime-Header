@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/KNPlaybackLayerHost-Protocol.h>
-
 @class CALayer, KNAnimationScreenEnvironment, NSString;
 
-@interface KNSinglePlaybackLayerHost : NSObject <KNPlaybackLayerHost>
+@interface KNSinglePlaybackLayerHost : NSObject
 {
     CALayer *_containerLayer;
     CALayer *_rootLayer;

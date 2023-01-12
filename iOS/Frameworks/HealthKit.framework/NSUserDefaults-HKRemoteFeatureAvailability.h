@@ -10,17 +10,13 @@
 
 @interface NSUserDefaults (HKRemoteFeatureAvailability)
 + (id)hk_remoteFeatureAvailabilityUserDefaults;
-+ (id)hk_regionAvailabilityOverrideUserDefaults;
++ (id)hk_localCountrySetOverrideUserDefaults;
 + (id)hk_featureAvailabilityRequirementEvaluationOverridesUserDefaults;
 + (id)hk_heartRhythmDefaults;
 + (void)hk_deleteDomainsNamed:(id)arg1;
-- (id)_localCountrySetWithFeatureAvailabilityStore:(id)arg1 error:(id *)arg2;
-- (id)_fetchOverrideCountrySetWithFeatureIdentifier:(id)arg1;
-- (void)_saveOverrideCountrySet:(id)arg1 featureIdentifier:(id)arg2;
-- (void)removeAllRegionCodesForFeatureIdentifier:(id)arg1;
-- (_Bool)removeRegionCodes:(id)arg1 featureAvailabilityStore:(id)arg2 error:(id *)arg3;
-- (_Bool)addRegionCodes:(id)arg1 featureAvailabilityStore:(id)arg2 error:(id *)arg3;
-- (id)countrySetForFeatureIdentifier:(id)arg1;
+- (void)hk_setCountrySet:(id)arg1 forKey:(id)arg2;
+- (id)hk_countrySetForKey:(id)arg1;
+@property(nonatomic, getter=hk_electrocardiogramFirstRecordingCompleted, setter=hk_setElectrocardiogramFirstRecordingCompleted:) _Bool hk_electrocardiogramFirstRecordingCompleted;
 @property(nonatomic, getter=hk_electrocardiogramWatchAppInstallHasBeenAllowed, setter=hk_setElectrocardiogramWatchAppInstallIsAllowed:) _Bool hk_electrocardiogramWatchAppInstallIsAllowed;
 @property(readonly, nonatomic) _Bool hk_hfeModeEnabled;
 @property(retain, nonatomic, setter=hk_setDemoResultKeys:) NSArray *hk_demoResultKeys;

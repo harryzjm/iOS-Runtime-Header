@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionViewCell.h"
+
 @class UILabel, UIView, _UIFocusFastScrollingIndexBarEntry;
 
 __attribute__((visibility("hidden")))
-@interface _UIHorizontalIndexTitleBarCell
+@interface _UIHorizontalIndexTitleBarCell : UICollectionViewCell
 {
     _UIFocusFastScrollingIndexBarEntry *_entry;
     UILabel *_titleLabel;
@@ -21,11 +23,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIFocusFastScrollingIndexBarEntry *entry; // @synthesize entry=_entry;
 - (void)_updateColors;
 - (_Bool)_isAnotherIndexTitleCellFocused;
+- (double)_maxCellWidth;
 - (void)updateForEntry:(id)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)prepareForReuse;
+- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

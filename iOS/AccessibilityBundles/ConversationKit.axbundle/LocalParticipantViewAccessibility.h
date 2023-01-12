@@ -15,7 +15,6 @@
 - (id)_axConstraintsController;
 - (id)_axParticipantView;
 - (_Bool)_axIsShowingVideo;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilitySupplementaryFooterViews;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)accessibilityActivate;

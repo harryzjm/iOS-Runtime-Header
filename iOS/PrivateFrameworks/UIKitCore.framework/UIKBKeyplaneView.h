@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKBCacheableView-Protocol.h>
-
 @class NSMutableDictionary, NSString, UIKBCacheToken, UIKBKeyView, UIKBKeyViewAnimator, UIKBRenderConfig, UIKBRenderFactory, UIKBRenderingContext, UIKBScreenTraits, UIKBSplitImageView, UIKBTree, UIKeyboardEmojiKeyDisplayController, UIView;
 @protocol UIKBKeyplaneViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKBKeyplaneView <UIKBCacheableView>
+@interface UIKBKeyplaneView
 {
     UIKBTree *_keyplane;
     UIKBTree *_defaultKeyplane;
@@ -36,8 +34,9 @@ __attribute__((visibility("hidden")))
     id <UIKBKeyplaneViewDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool suppressDrawing; // @synthesize suppressDrawing=_suppressDrawing;
-@property(nonatomic) id <UIKBKeyplaneViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <UIKBKeyplaneViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIKBScreenTraits *overrideScreenTraits; // @synthesize overrideScreenTraits=_overrideScreenTraits;
 @property(retain, nonatomic) UIKeyboardEmojiKeyDisplayController *emojiKeyManager; // @synthesize emojiKeyManager=_emojiKeyManager;
 @property(retain, nonatomic) UIKBKeyViewAnimator *keyViewAnimator; // @synthesize keyViewAnimator=_keyViewAnimator;
@@ -57,10 +56,13 @@ __attribute__((visibility("hidden")))
 - (void)purgeActiveKeyViews;
 - (void)activateKeys;
 - (void)deactivateKeys;
+- (void)deactivateKey:(id)arg1 previousState:(int)arg2 keyView:(id)arg3;
 - (void)deactivateKey:(id)arg1 previousState:(int)arg2;
 - (void)retestForTouchUpSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)_existingVariantsKeyViewForKey:(id)arg1;
+- (void)orientKeyCapForKey:(id)arg1 orientation:(long long)arg2;
+- (void)hideKeyCaps:(_Bool)arg1 andControlKeysWithInteractionTypes:(id)arg2;
 - (void)hideKeyCaps:(_Bool)arg1;
 - (void)dimKeys:(id)arg1;
 - (void)deactivateAdaptiveKey:(id)arg1;

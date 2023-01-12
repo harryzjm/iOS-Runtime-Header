@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "COMeshAddOn.h"
+
 @class COCoordinationService;
 
 __attribute__((visibility("hidden")))
-@interface _COCoordinationServiceStateTrackingAddOn
+@interface _COCoordinationServiceStateTrackingAddOn : COMeshAddOn
 {
     COCoordinationService *_service;
 }

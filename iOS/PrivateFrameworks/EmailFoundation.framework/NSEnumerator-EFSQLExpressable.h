@@ -6,11 +6,9 @@
 
 #import <Foundation/NSEnumerator.h>
 
-#import <EmailFoundation/EFSQLValueCollectionExpressable-Protocol.h>
-
 @class NSString;
 
-@interface NSEnumerator (EFSQLExpressable) <EFSQLValueCollectionExpressable>
+@interface NSEnumerator (EFSQLExpressable)
 - (id)ef_SQLIsolatedExpression;
 - (void)ef_renderSQLExpressionInto:(id)arg1;
 - (void)ef_renderSQLExpressionInto:(id)arg1 conjoiner:(id)arg2;

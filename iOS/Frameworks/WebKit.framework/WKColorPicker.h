@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/UIColorPickerViewControllerDelegate-Protocol.h>
-#import <WebKit/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <WebKit/WKFormControl-Protocol.h>
-
 @class NSString, WKContentView;
 
 __attribute__((visibility("hidden")))
-@interface WKColorPicker : NSObject <WKFormControl, UIColorPickerViewControllerDelegate, UIPopoverPresentationControllerDelegate>
+@interface WKColorPicker : NSObject
 {
     WKContentView *_view;
     struct RetainPtr<UIColorPickerViewController> _colorPickerViewController;

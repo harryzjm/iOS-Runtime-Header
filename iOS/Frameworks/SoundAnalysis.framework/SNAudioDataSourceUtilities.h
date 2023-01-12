@@ -11,12 +11,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)setChannelAssignment:(unsigned int)arg1 onQueue:(struct OpaqueAudioQueue *)arg2;
-+ (id)builtInMicrophoneDeviceUID;
-+ (void)enableAlwaysOnAudioRouting:(struct OpaqueAudioQueue *)arg1;
-+ (id)audioQueueConfiguration;
-+ (id)createDefaultAudioQueueConfigurationUsingChannelNumber:(unsigned int)arg1;
-+ (id)createSiriAudioQueueConfigurationUsingChannelNumber:(unsigned int)arg1;
-
 @end
 

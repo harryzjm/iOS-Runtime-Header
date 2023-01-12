@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/NSCopying-Protocol.h>
-
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface AVPlayerItemAVKitData : NSObject <NSCopying>
+@interface AVPlayerItemAVKitData : NSObject
 {
     NSMutableDictionary *_customPropertyStorage;
+    long long _interstitialPolicyEnforcement;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long interstitialPolicyEnforcement; // @synthesize interstitialPolicyEnforcement=_interstitialPolicyEnforcement;
 @property(readonly, nonatomic) NSMutableDictionary *customPropertyStorage; // @synthesize customPropertyStorage=_customPropertyStorage;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

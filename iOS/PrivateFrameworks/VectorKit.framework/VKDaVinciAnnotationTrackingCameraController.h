@@ -18,10 +18,10 @@ __attribute__((visibility("hidden")))
 - (void)updateFramerate;
 - (struct VKEdgeInsets)_effectiveEdgeInsets;
 - (struct VKEdgeInsets)_scaledEdgeInsets:(struct VKEdgeInsets)arg1 withCanvasSize:(struct CGSize)arg2;
-- (Coordinate3D_bc242218)_centerCoordinate:(Coordinate3D_bc242218)arg1 forEdgeInsets:(struct VKEdgeInsets)arg2;
+- (Coordinate3D_332c2c3b)_centerCoordinate:(Coordinate3D_332c2c3b)arg1 forEdgeInsets:(struct VKEdgeInsets)arg2;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
 - (double)_minTrackingCameraDistance:(_Bool)arg1;
-- (double)_zoomLevelForDistance:(Unit_09325524)arg1;
+- (double)_zoomLevelForDistance:(Unit_e1574806)arg1;
 
 @end
 

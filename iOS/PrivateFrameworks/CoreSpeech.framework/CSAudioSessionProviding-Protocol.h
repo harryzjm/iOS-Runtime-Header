@@ -14,7 +14,6 @@
 - (void)enableSmartRoutingConsideration:(_Bool)arg1;
 - (void)enableMiniDucking:(_Bool)arg1;
 - (void)setDuckOthersOption:(_Bool)arg1;
-- (_Bool)duckOthersOption;
 - (_Bool)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)activateAudioSessionWithReason:(unsigned long long)arg1 dynamicAttribute:(unsigned long long)arg2 bundleID:(NSString *)arg3 error:(id *)arg4;
 - (_Bool)prewarmAudioSessionWithError:(id *)arg1;

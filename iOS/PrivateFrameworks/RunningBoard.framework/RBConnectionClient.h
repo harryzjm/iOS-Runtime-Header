@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/RBClientInheritanceManagerDelegate-Protocol.h>
-#import <RunningBoard/RBEntitlementPossessing-Protocol.h>
-#import <RunningBoard/RBStateCapturing-Protocol.h>
-
 @class NSMutableSet, NSString, RBClientInheritanceManager, RBConnectionListener, RBProcess, RBProcessMonitorObserver, RBSAssertionIdentifier, RBSProcessHandle, RBSProcessIdentifier, RBSProcessIdentity;
-@protocol OS_xpc_object, RBAssertionManaging, RBDaemonContextProviding, RBEntitlementManaging, RBEntitlementPossessing, RBProcessManaging, RBProcessMonitoring, RBStateCaptureManaging;
+@protocol OS_xpc_object, RBAssertionManaging, RBDaemonContextProviding, RBEntitlementManaging, RBEntitlementPossessing, RBProcessManaging, RBProcessMonitoring, RBRequestManaging, RBStateCaptureManaging;
 
 __attribute__((visibility("hidden")))
-@interface RBConnectionClient : NSObject <RBClientInheritanceManagerDelegate, RBEntitlementPossessing, RBStateCapturing>
+@interface RBConnectionClient : NSObject
 {
     NSObject<OS_xpc_object> *_connection;
     struct os_unfair_lock_s _lock;
@@ -24,6 +20,7 @@ __attribute__((visibility("hidden")))
     id <RBProcessMonitoring> _processMonitor;
     id <RBStateCaptureManaging> _stateCaptureManager;
     id <RBDaemonContextProviding> _daemonContext;
+    id <RBRequestManaging> _requestManager;
     RBConnectionListener *_listener;
     RBProcess *_containingProcess;
     _Bool _ready;

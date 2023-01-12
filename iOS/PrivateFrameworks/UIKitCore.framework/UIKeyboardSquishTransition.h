@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     double _previousProgress;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) double previousProgress; // @synthesize previousProgress=_previousProgress;
 @property(nonatomic) _Bool opacityAnimationDirectionForward; // @synthesize opacityAnimationDirectionForward=_opacityAnimationDirectionForward;
 @property(nonatomic) double opacityAnimationBeginTime; // @synthesize opacityAnimationBeginTime=_opacityAnimationBeginTime;

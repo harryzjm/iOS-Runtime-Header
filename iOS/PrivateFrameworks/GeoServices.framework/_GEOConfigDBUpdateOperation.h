@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/_GEOConfigDBOperation-Protocol.h>
-
 @class NSString, _GEOConfigDB;
 
 __attribute__((visibility("hidden")))
-@interface _GEOConfigDBUpdateOperation <_GEOConfigDBOperation>
+@interface _GEOConfigDBUpdateOperation
 {
     _GEOConfigDB *_configDB;
     long long _rowId;

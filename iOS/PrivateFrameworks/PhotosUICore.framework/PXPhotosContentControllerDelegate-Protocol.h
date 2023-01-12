@@ -6,16 +6,18 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSObject, PXPhotosContentController;
-@protocol PXAnonymousViewController;
+@class NSObject, NSUndoManager, PXActionPerformer, PXPhotosContentController;
+@protocol PXAnonymousViewController, UIPopoverPresentationControllerSourceItem;
 
 @protocol PXPhotosContentControllerDelegate <NSObject>
+- (NSUndoManager *)undoManagerForContentController:(PXPhotosContentController *)arg1;
 - (NSObject<PXAnonymousViewController> *)presentingViewControllerForContentController:(PXPhotosContentController *)arg1;
 - (_Bool)photosContentController:(PXPhotosContentController *)arg1 pushViewController:(NSObject<PXAnonymousViewController> *)arg2;
 - (void)dismissPresentedViewControllerForContentController:(PXPhotosContentController *)arg1;
 - (_Bool)photosContentController:(PXPhotosContentController *)arg1 presentViewController:(NSObject<PXAnonymousViewController> *)arg2;
 
 @optional
+- (id <UIPopoverPresentationControllerSourceItem>)sourceItemForActionPerformer:(PXActionPerformer *)arg1;
 - (void)needsUpdateForContentController:(PXPhotosContentController *)arg1;
 @end
 

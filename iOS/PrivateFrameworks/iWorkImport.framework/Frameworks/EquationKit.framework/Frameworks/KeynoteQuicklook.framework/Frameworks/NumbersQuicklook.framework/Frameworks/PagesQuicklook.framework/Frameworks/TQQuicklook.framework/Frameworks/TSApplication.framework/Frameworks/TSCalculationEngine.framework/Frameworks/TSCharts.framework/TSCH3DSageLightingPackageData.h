@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DSageLightingPackageData-Protocol.h>
-
 @class NSArray, NSDictionary;
 
-@interface TSCH3DSageLightingPackageData : NSObject <TSCH3DSageLightingPackageData>
+@interface TSCH3DSageLightingPackageData : NSObject
 {
     NSDictionary *_package;
     NSArray *_lights;

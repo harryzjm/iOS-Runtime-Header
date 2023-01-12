@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIMotionEffectEventConsumer-Protocol.h>
-
 @class CADisplayLink, NSArray, NSMapTable, NSMutableSet, NSString, _UIAssociationTable, _UILazyMapTable, _UIMotionEffectEvent, _UIMotionEffectEventProvider;
 
 __attribute__((visibility("hidden")))
-@interface _UIMotionEffectEngine : NSObject <_UIMotionEffectEventConsumer>
+@interface _UIMotionEffectEngine : NSObject
 {
     _UIAssociationTable *_effectViewAssociationTable;
     _UILazyMapTable *_analyzerSettingsToAnalyzers;

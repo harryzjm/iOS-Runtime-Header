@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISEGestureFeatureSettings-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UISEGestureFeatureSettings : NSObject <_UISEGestureFeatureSettings>
+@interface _UISEGestureFeatureSettings : NSObject
 {
+    double _backProjectTime;
     double _bottomEdgeAngleWindow;
     double _bottomEdgeRegionSize;
     double _cornerAngleWindow;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
     double _hysteresis;
     unsigned long long _interfaceBottomEdge;
     unsigned long long _minimumNumberOfSubfeatures;
+    double _maximumBackProjectTimeFactor;
     double _maximumSwipeDuration;
     unsigned long long _targetEdges;
     struct CGRect _bounds;
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) unsigned long long targetEdges; // @synthesize targetEdges=_targetEdges;
 @property(nonatomic) double maximumSwipeDuration; // @synthesize maximumSwipeDuration=_maximumSwipeDuration;
+@property(nonatomic) double maximumBackProjectTimeFactor; // @synthesize maximumBackProjectTimeFactor=_maximumBackProjectTimeFactor;
 @property(nonatomic) unsigned long long minimumNumberOfSubfeatures; // @synthesize minimumNumberOfSubfeatures=_minimumNumberOfSubfeatures;
 @property(nonatomic) unsigned long long interfaceBottomEdge; // @synthesize interfaceBottomEdge=_interfaceBottomEdge;
 @property(nonatomic) double hysteresis; // @synthesize hysteresis=_hysteresis;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(nonatomic) double bottomEdgeRegionSize; // @synthesize bottomEdgeRegionSize=_bottomEdgeRegionSize;
 @property(nonatomic) double bottomEdgeAngleWindow; // @synthesize bottomEdgeAngleWindow=_bottomEdgeAngleWindow;
+@property(nonatomic) double backProjectTime; // @synthesize backProjectTime=_backProjectTime;
 - (id)init;
 
 @end

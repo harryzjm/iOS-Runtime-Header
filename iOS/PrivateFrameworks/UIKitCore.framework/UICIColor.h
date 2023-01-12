@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIColor, UIColor;
+#import "UIColor.h"
+
+@class CIColor;
 
 __attribute__((visibility("hidden")))
-@interface UICIColor
+@interface UICIColor : UIColor
 {
     CIColor *_ciColor;
     UIColor *_rgbColor;

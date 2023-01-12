@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIScrollView.h"
+
 @class NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewWrapperView
+@interface UITableViewWrapperView : UIScrollView
 {
     NSMutableArray *_stuckToBackViews;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *stuckToBackViews; // @synthesize stuckToBackViews=_stuckToBackViews;
+- (unsigned long long)_focusPrimaryScrollableAxis;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)_forwardsToParentScroller;
 - (void)setBounds:(struct CGRect)arg1;

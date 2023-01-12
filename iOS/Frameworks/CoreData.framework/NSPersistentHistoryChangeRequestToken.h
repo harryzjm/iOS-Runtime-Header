@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSData, NSDate, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface NSPersistentHistoryChangeRequestToken : NSObject <NSSecureCoding>
+@interface NSPersistentHistoryChangeRequestToken : NSObject
 {
     NSData *_fetchData;
     NSDictionary *_token;

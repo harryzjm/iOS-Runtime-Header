@@ -6,16 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class Logger;
-
 __attribute__((visibility("hidden")))
 @interface PSUIDevicePasscodeState : NSObject
 {
-    Logger *_logger;
 }
 
 + (id)sharedInstance;
-- (void).cxx_destruct;
 - (id)getLogger;
 - (_Bool)isPasscodeSet;
 - (id)init;

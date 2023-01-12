@@ -6,13 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <MediaPlayer/NSCoding-Protocol.h>
-#import <MediaPlayer/NSCopying-Protocol.h>
-#import <MediaPlayer/NSObject-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (MPMediaQueryAdditions) <NSObject, NSCoding, NSCopying>
+@interface NSArray (MPMediaQueryAdditions)
 - (_Bool)MPIsEmpty;
 @property(readonly, nonatomic) NSString *itemIdentifier;
 @property(readonly, nonatomic) NSString *sectionIdentifier;

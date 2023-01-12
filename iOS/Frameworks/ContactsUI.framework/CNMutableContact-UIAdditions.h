@@ -12,8 +12,12 @@
 - (void)updateImageInfoWithType:(unsigned long long)arg1;
 - (void)removePhoto;
 @property(copy, nonatomic) NSArray *birthdays;
+- (_Bool)deleteContactFromStore:(id)arg1 request:(id)arg2;
+- (_Bool)saveContactInStore:(id)arg1 groups:(id)arg2 container:(id)arg3 request:(id)arg4;
 - (_Bool)saveContactInStore:(id)arg1 group:(id)arg2 container:(id)arg3 request:(id)arg4;
 - (_Bool)saveContactInStore:(id)arg1 group:(id)arg2 container:(id)arg3;
+- (_Bool)removeContactFromGroups:(id)arg1 inStore:(id)arg2 request:(id)arg3;
+- (_Bool)addContactToGroups:(id)arg1 inStore:(id)arg2 request:(id)arg3;
 - (void)updateContactTypeWithPolicy:(id)arg1;
 - (id)addProperties:(id)arg1 excludingProperties:(id)arg2 fromContact:(id)arg3;
 - (id)addAllPropertiesFromContact:(id)arg1;

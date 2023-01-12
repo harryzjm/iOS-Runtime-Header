@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIMultiSelectInteractionState : NSObject
 {
     unsigned long long _ignoringSelectionChangedNotificationsCounter;
+    unsigned long long _multiselectInteractionCounter;
     _Bool _selecting;
     NSIndexPath *_startIndexPath;
     NSIndexPath *_endIndexPath;
@@ -27,6 +28,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSIndexPath *endIndexPath; // @synthesize endIndexPath=_endIndexPath;
 @property(retain, nonatomic) NSIndexPath *startIndexPath; // @synthesize startIndexPath=_startIndexPath;
 @property(nonatomic) struct CGPoint startPoint; // @synthesize startPoint=_startPoint;
+- (void)endMultiselectInteraction;
+- (void)beginMultiselectInteraction;
+@property(readonly, nonatomic, getter=isInMultiselectInteraction) _Bool inMultiselectInteraction;
 - (id)pathsToDeselectForInterpolatedIndexPaths:(id)arg1 currentlySelectedIndexPaths:(id)arg2;
 - (id)pathsToSelectForInterpolatedIndexPaths:(id)arg1;
 - (void)beginSelectingWithStartingIndexPath:(id)arg1 otherSelectedIndexPaths:(id)arg2 keepCurrentSelection:(_Bool)arg3;

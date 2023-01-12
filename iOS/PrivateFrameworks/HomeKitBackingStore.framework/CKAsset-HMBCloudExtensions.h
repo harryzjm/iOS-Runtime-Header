@@ -6,11 +6,9 @@
 
 #import <CloudKit/CKAsset.h>
 
-#import <HomeKitBackingStore/HMBModelObjectStorage-Protocol.h>
-
 @class NSString;
 
-@interface CKAsset (HMBCloudExtensions) <HMBModelObjectStorage>
+@interface CKAsset (HMBCloudExtensions)
 + (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
 - (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
 

@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFOpenAppClipCommand.h>
 
 @interface SFOpenAppClipCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

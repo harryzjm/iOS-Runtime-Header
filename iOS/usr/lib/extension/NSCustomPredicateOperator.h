@@ -4,10 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSPredicateOperator.h"
+
 __attribute__((visibility("hidden")))
-@interface NSCustomPredicateOperator
+@interface NSCustomPredicateOperator : NSPredicateOperator
 {
     SEL _selector;
+    struct _operatorFlags {
+        unsigned int _usesKVC:1;
+        unsigned int _validatedSelector:1;
+        unsigned int _validatedKeys:1;
+        unsigned int _reservedOperatorFlags:29;
+    } _operatorFlags;
 }
 
 + (_Bool)supportsSecureCoding;

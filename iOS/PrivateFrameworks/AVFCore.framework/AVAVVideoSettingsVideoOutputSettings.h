@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFCore/AVReencodedVideoSettingsForFig-Protocol.h>
+#import "AVVideoOutputSettings.h"
 
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface AVAVVideoSettingsVideoOutputSettings <AVReencodedVideoSettingsForFig>
+@interface AVAVVideoSettingsVideoOutputSettings : AVVideoOutputSettings
 {
     NSDictionary *_adaptedVideoCompressionProperties;
     NSDictionary *_VTPixelAspectRatioDictionary;

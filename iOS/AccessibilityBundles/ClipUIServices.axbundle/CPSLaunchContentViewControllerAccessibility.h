@@ -17,6 +17,7 @@
 - (_Bool)accessibilityPerformEscape;
 - (id)_axBackgroundView;
 - (id)_axInformationContainerView;
+- (id)_axCloseButton;
 - (id)_axOpenButton;
 - (id)_axDescriptionLabel;
 - (id)_axNameLabel;

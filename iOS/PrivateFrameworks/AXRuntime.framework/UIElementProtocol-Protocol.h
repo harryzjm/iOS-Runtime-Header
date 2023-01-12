@@ -13,7 +13,7 @@
 @protocol UIElementProtocol <NSObject, NSCopying>
 + (NSArray *)proxiedMLElementsForApp:(id <UIElementProtocol>)arg1;
 + (id)scrollAncestorAtCoordinate:(struct CGPoint)arg1;
-+ (id)uiElementAtCoordinate:(struct CGPoint)arg1 forApplication:(struct __AXUIElement *)arg2 contextId:(unsigned int)arg3;
++ (id)uiElementAtCoordinate:(struct CGPoint)arg1 forApplication:(const struct __AXUIElement *)arg2 contextId:(unsigned int)arg3;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1;
 + (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSMutableDictionary *copyCachedAttributes;
@@ -48,15 +48,15 @@
 - (_Bool)performAXAction:(int)arg1;
 - (_Bool)canPerformAXAction:(int)arg1;
 - (int)pid;
-- (id)objectWithAXAttribute:(long long)arg1 parameter:(void *)arg2;
-- (NSArray *)uiElementsWithAttribute:(long long)arg1 parameter:(void *)arg2 fetchAttributes:(_Bool)arg3;
-- (NSArray *)uiElementsWithAttribute:(long long)arg1 parameter:(void *)arg2;
+- (id)objectWithAXAttribute:(long long)arg1 parameter:(const void *)arg2;
+- (NSArray *)uiElementsWithAttribute:(long long)arg1 parameter:(const void *)arg2 fetchAttributes:(_Bool)arg3;
+- (NSArray *)uiElementsWithAttribute:(long long)arg1 parameter:(const void *)arg2;
 - (NSArray *)uiElementsWithAttribute:(long long)arg1;
 - (id)objectWithAXAttribute:(long long)arg1;
 - (struct CGColor *)colorWithAXAttribute:(long long)arg1;
 - (struct _NSRange)rangeWithAXAttribute:(long long)arg1;
 - (struct CGPoint)pointWithAXAttribute:(long long)arg1;
-- (struct CGPath *)pathWithAXAttribute:(long long)arg1;
+- (const struct CGPath *)pathWithAXAttribute:(long long)arg1;
 - (struct CGRect)rectWithAXAttribute:(long long)arg1;
 - (NSNumber *)numberWithAXAttribute:(long long)arg1;
 - (_Bool)boolWithAXAttribute:(long long)arg1;
@@ -66,6 +66,6 @@
 - (_Bool)isValid;
 
 @optional
-@property(readonly, nonatomic) struct __AXUIElement *axElement;
+@property(readonly, nonatomic) const struct __AXUIElement *axElement;
 @end
 

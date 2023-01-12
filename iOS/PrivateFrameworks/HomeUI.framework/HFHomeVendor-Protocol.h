@@ -9,6 +9,6 @@
 @class HMHome;
 
 @protocol HFHomeVendor <NSObject>
-@property(readonly, nonatomic) HMHome *home;
+@property(nonatomic, readonly) HMHome *home;
 @end
 

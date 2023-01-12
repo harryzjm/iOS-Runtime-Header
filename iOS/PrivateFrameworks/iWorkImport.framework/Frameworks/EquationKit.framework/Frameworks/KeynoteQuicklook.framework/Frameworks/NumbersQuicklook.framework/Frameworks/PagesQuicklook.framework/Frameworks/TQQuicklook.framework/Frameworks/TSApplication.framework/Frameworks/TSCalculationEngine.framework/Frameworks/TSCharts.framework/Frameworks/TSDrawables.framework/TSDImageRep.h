@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSDrawables/CALayerDelegate-Protocol.h>
-#import <TSDrawables/TSDImageDrawingDataSource-Protocol.h>
-#import <TSDrawables/TSDMagicMoveMatching-Protocol.h>
+#import "TSDMediaRep.h"
 
-@class NSMutableArray, NSObject, NSString, TSDImageDrawingHelper, TSDImageInfo, TSDImageLayout, TSDLayoutGeometry, TSDMaskInfo, TSDMaskLayout, TSPData;
-@protocol OS_dispatch_semaphore;
+@class NSMutableArray, NSObject, NSString, TSDImageDrawingHelper, TSDImageInfo, TSDImageLayout, TSDLayoutGeometry, TSDMaskInfo, TSDMaskLayout, TSPData, TSUBezierPath;
+@protocol OS_dispatch_semaphore, TSDRepTrackerDelegate;
 
-@interface TSDImageRep <CALayerDelegate, TSDImageDrawingDataSource, TSDMagicMoveMatching>
+@interface TSDImageRep : TSDMediaRep
 {
     TSDLayoutGeometry *_lastImageGeometryInRoot;
     TSDLayoutGeometry *_lastMaskGeometryInRoot;
@@ -21,10 +19,14 @@
     TSDImageDrawingHelper *_drawingHelper;
     NSMutableArray *_updateFromLayoutBlocks;
     NSObject<OS_dispatch_semaphore> *_updateFromLayoutBlocksLock;
+    TSUBezierPath *_cachedRemoveBackgroundIAPath;
+    _Bool _backgroundRemovalUnavailable;
+    id <TSDRepTrackerDelegate> _repTrackerDelegate;
 }
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
 - (void).cxx_destruct;
+- (id)itemsToAddToEditMenu;
 - (_Bool)canDrawShadowInOneStepWithChildren:(_Bool)arg1;
 - (_Bool)p_drawsInOneStep;
 - (id)p_validatedBitmapImageProvider;

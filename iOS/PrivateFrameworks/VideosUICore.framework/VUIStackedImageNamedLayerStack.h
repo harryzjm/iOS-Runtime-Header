@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUICore/NSCopying-Protocol.h>
-#import <VideosUICore/UINamedLayerStack-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIStackedImageNamedLayerStack : NSObject <UINamedLayerStack, NSCopying>
+@interface VUIStackedImageNamedLayerStack : NSObject
 {
     struct CGImage *_flattenedImage;
     _Bool _flatImageContainsCornerRadius;

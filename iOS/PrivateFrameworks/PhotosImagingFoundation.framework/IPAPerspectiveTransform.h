@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "IPAImageTransform.h"
+
 @protocol IPAQuadGeometry;
 
 __attribute__((visibility("hidden")))
-@interface IPAPerspectiveTransform
+@interface IPAPerspectiveTransform : IPAImageTransform
 {
     struct Matrix4d _projectionTransform;
     struct Matrix4d _viewingTransform;

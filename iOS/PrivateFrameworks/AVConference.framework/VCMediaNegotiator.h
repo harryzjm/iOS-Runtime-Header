@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     long long _negotiationMode;
 }
 
++ (id)streamGroupIDsWithMediaBlob:(id)arg1;
 + (unsigned int)mappedRemoteQualityIndexForQualityIndex:(unsigned int)arg1;
 + (id)newCompressedBlob:(id)arg1;
 + (id)newDecompressedBlob:(id)arg1;
@@ -54,8 +55,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)setupVideoWithNegotiatedSettings:(id)arg1;
 - (_Bool)negotiateVideoSettings:(id)arg1;
 - (_Bool)processParameterSets:(id)arg1 videoResults:(id)arg2;
+- (_Bool)negotiateHDRMode:(id)arg1 videoResults:(id)arg2;
 - (_Bool)processPixelFormats:(id)arg1 videoResults:(id)arg2;
-- (void)negotiateTilesPerFrame:(id)arg1;
+- (void)negotiateTilesPerFrame:(id)arg1 negotiatedSettings:(id)arg2;
 - (void)negotiateRTCPFB:(id)arg1;
 - (_Bool)selectBestVideoRuleForTransport:(unsigned char)arg1 payload:(int)arg2 encodingType:(unsigned char)arg3 localVideoRuleCollection:(id)arg4 remoteVideoSettings:(id)arg5 negotiatedVideoSettings:(id)arg6 isScreen:(_Bool)arg7;
 - (id)negotiateVideoMaxResolutionWithEncodeRules:(id)arg1 decodeRules:(id)arg2 isEncoder:(_Bool)arg3;

@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSOrderedSet.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSOrderedSetReversed
+@interface __NSOrderedSetReversed : NSOrderedSet
 {
     id _orderedSet;
     unsigned long long _cnt;

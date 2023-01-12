@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Metal/MTLPipelineLibrarySPI-Protocol.h>
+#import "_MTLObjectWithLabel.h"
 
 @class NSArray, NSString;
 @protocol MTLDevice, MTLPipelineCache;
 
 __attribute__((visibility("hidden")))
-@interface _MTLPipelineLibrary <MTLPipelineLibrarySPI>
+@interface _MTLPipelineLibrary : _MTLObjectWithLabel
 {
     void *_pipelineLibraryData;
     id <MTLDevice> _device;

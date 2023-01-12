@@ -4,17 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    double givenName;
-    double familyName;
-    double initial;
-} CDStruct_08bc26a7;
-
-typedef struct {
-    CDStruct_08bc26a7 givenName;
-    CDStruct_08bc26a7 familyName;
-    double threshold;
-} CDStruct_a720a2d7;
-

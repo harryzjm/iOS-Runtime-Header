@@ -23,9 +23,11 @@
 - (id)launchImagesInfoPlistEntryForSlot:(id)arg1 withLaunchImageName:(id)arg2;
 - (struct CGSize)infoPlistPointSizeForLaunchScreenSlot:(id)arg1;
 - (id)compileBundleIconFromSelection:(id)arg1 options:(id)arg2;
+- (id)writeScaledAndLooseBundleIconReps:(id)arg1 fromSelection:(id)arg2 options:(id)arg3 populatingResult:(id)arg4;
 - (id)selectCatalogAppIconsFromCollection:(id)arg1 ignoringItems:(id)arg2 forLocation:(long long)arg3 withOptions:(id)arg4 populatingIssues:(id)arg5;
 - (_Bool)isValidOutputLocation:(long long)arg1 forBundleIconSetRep:(id)arg2 withCompilationOptions:(id)arg3 populatingIssues:(id)arg4;
 - (void)processMissingStickersIconsUsingBaseImageName:(id)arg1 baseImages:(id)arg2 options:(id)arg3 populatingResults:(id)arg4;
+- (_Bool)writePNGData:(id)arg1 forSlot:(id)arg2 ofSlottedAssetSet:(id)arg3 options:(id)arg4 populatingResults:(id)arg5;
 - (id)processSystemPNGOutputImages:(id)arg1 forClasses:(id)arg2 withImageName:(id)arg3 fromSelection:(id)arg4 options:(id)arg5 populatingResults:(id)arg6 andReturningEmptyPlaceholder:(id *)arg7;
 - (void)addErrorForEmptyPlaceholderFromSelection:(id)arg1 forSlottedAssetOfPossibleClasses:(id)arg2 name:(id)arg3 results:(id)arg4 andReturningEmptyPlaceholder:(id *)arg5;
 - (id)imageCatalogCompilerOptionsFromToolArguments:(id)arg1 forCatalogCollection:(id)arg2 populatingResults:(id)arg3;

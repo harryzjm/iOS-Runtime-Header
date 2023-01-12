@@ -9,7 +9,6 @@
 @class NSSet;
 
 @protocol HFSoftwareUpdatableItemProtocol <NSObject>
-@property(readonly, nonatomic) NSSet *availableSoftwareUpdates;
 @property(readonly, nonatomic) NSSet *accessoriesSupportingSoftwareUpdate;
 @end
 

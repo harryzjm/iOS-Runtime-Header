@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface KNAnimationAttributes : NSObject <NSCopying>
+@interface KNAnimationAttributes : NSObject
 {
     NSString *_effect;
     NSDictionary *_attributes;

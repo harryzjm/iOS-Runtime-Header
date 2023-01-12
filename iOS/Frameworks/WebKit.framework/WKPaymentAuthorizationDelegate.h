@@ -10,10 +10,10 @@ __attribute__((visibility("hidden")))
 @interface WKPaymentAuthorizationDelegate : NSObject
 {
     struct RetainPtr<PKPaymentRequest> _request;
-    struct RetainPtr<NSArray<PKPaymentSummaryItem *>> _summaryItems;
-    struct RetainPtr<NSArray<PKShippingMethod *>> _shippingMethods;
-    struct RetainPtr<NSError> _sessionError;
     struct WeakPtr<WebKit::PaymentAuthorizationPresenter, WTF::EmptyCounter> _presenter;
+    struct RetainPtr<NSArray<PKPaymentSummaryItem *>> _summaryItems;
+    struct RetainPtr<PKShippingMethods> _availableShippingMethods;
+    struct RetainPtr<NSError> _sessionError;
     struct BlockPtr<void (PKPaymentAuthorizationResult *)> _didAuthorizePaymentCompletion;
     struct BlockPtr<void (PKPaymentMerchantSession *, NSError *)> _didRequestMerchantSessionCompletion;
     struct BlockPtr<void (PKPaymentRequestPaymentMethodUpdate *)> _didSelectPaymentMethodCompletion;
@@ -28,11 +28,10 @@ __attribute__((visibility("hidden")))
 - (void)completeCouponCodeChange:(id)arg1;
 - (void)completeShippingMethodSelection:(id)arg1;
 - (void)completeShippingContactSelection:(id)arg1;
+- (void)completePaymentSession:(long long)arg1 errors:(id)arg2 orderDetails:(id)arg3;
 - (void)completePaymentSession:(long long)arg1 errors:(id)arg2;
 - (void)completePaymentMethodSelection:(id)arg1;
 - (void)completeMerchantValidation:(id)arg1 error:(id)arg2;
-- (id)shippingMethods;
-- (id)summaryItems;
 - (void)_willFinishWithError:(id)arg1;
 - (void)_getPaymentServicesMerchantURL:(CDUnknownBlockType)arg1;
 - (void)_didChangeCouponCode:(id)arg1 completion:(CDUnknownBlockType)arg2;

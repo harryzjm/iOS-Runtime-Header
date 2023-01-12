@@ -6,9 +6,7 @@
 
 #import <HealthKit/_HKCompoundFilter.h>
 
-#import <HealthDaemon/_HKFilterBuilding-Protocol.h>
-
-@interface _HKCompoundFilter (HealthDaemon) <_HKFilterBuilding>
+@interface _HKCompoundFilter (HealthDaemon)
 - (id)filterIgnoringActivityCacheIndexFilter;
 - (id)filterIgnoringPrivateMetadata;
 - (id)predicateWithProfile:(id)arg1;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICMusicSubscriptionLeaseIdentityCacheKey : NSObject <NSCopying>
+@interface _ICMusicSubscriptionLeaseIdentityCacheKey : NSObject
 {
     NSNumber *_delegatedDSID;
     NSNumber *_DSID;

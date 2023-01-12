@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 @class CADisplayLink, SCNRecursiveLock;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface SCNDisplayLink : NSObject
 {
     CADisplayLink *_caDisplayLink;
-    _Bool _supportTargetTimestamp;
+    double _lastDisplayLinkTime;
+    NSObject<OS_dispatch_source> *_coalescingSource;
     CDUnknownBlockType _block;
     CDUnknownBlockType _adaptativeFrameDuration;
     NSObject<OS_dispatch_queue> *_queue;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isInvalidated;
 - (void)setNeedsDisplay;
 - (void)invalidate;
-- (void)_cleanup;
 - (void)_caDisplayLinkCallback;
 - (void)_callbackWithTime:(double)arg1;
 - (int)queuedFrameCount;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)setPaused:(_Bool)arg1 nextFrameTimeHint:(double)arg2 lastUpdate:(double)arg3;
 @property(nonatomic, getter=isPaused) _Bool paused;
 - (void)dealloc;
-- (id)initWithQueue:(id)arg1 screen:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (id)initWithQueue:(id)arg1 screen:(id)arg2 policy:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 - (id)init;
 
 @end

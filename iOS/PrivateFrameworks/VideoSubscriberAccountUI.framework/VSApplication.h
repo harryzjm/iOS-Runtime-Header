@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccountUI/IKAppContextDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/IKApplication-Protocol.h>
-#import <VideoSubscriberAccountUI/VSStateMachineDelegate-Protocol.h>
-
 @class IKAppContext, NSError, NSHTTPCookieStorage, NSString, NSURL, VSAppDeviceConfig, VSAuditToken, VSStateMachine;
 @protocol VSApplicationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSApplication : NSObject <IKAppContextDelegate, VSStateMachineDelegate, IKApplication>
+@interface VSApplication : NSObject
 {
     _Bool _shouldAllowRemoteInspection;
     NSURL *_bootURL;

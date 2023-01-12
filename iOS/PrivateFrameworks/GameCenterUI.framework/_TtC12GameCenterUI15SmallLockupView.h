@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *artworkView;
+    MISSING_TYPE *selectedBackgroundColor;
     MISSING_TYPE *chevronView;
     MISSING_TYPE *hasChevron;
 }

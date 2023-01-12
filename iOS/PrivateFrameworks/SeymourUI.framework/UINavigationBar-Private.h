@@ -6,7 +6,10 @@
 
 #import <UIKit/UINavigationBar.h>
 
+@class NSString;
+
 @interface UINavigationBar (Private)
 - (id)smu_backgroundView;
+@property(readonly, retain, nonatomic) NSString *smu_backdropLayerGroupName;
 @end
 

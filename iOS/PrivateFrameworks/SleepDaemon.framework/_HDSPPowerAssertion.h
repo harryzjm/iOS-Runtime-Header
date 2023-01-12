@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/BSDescriptionProviding-Protocol.h>
-#import <SleepDaemon/HDSPAssertion-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HDSPPowerAssertion : NSObject <BSDescriptionProviding, HDSPAssertion>
+@interface _HDSPPowerAssertion : NSObject
 {
     struct os_unfair_lock_s _assertionLock;
     NSString *_identifier;

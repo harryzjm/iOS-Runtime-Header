@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_allowsHitTesting;
 - (_Bool)_allowsUserInteractionToCutOffEndOfAnimation;
 - (void)_sendDeferredCompletion:(id)arg1;
-- (void)_didEndBlockAnimation:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)_didEndBlockAnimation:(id)arg1 finished:(id)arg2 context:(void *)arg3;
 - (void)_willBeginBlockAnimation:(id)arg1 context:(id)arg2;
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Coordination/COCapabilityManagerClientInterface-Protocol.h>
-
 @class COCapabilityManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COCapabilityManagerClientInterfaceMediator : NSObject <COCapabilityManagerClientInterface>
+@interface COCapabilityManagerClientInterfaceMediator : NSObject
 {
     COCapabilityManager *_manager;
 }

@@ -8,7 +8,7 @@
 
 @interface TSWPAdornments : NSObject
 {
-    vector_2056c7c2 _charIndexes;
+    struct vector<unsigned long, std::allocator<unsigned long>> _charIndexes;
     struct vector<unsigned short, std::allocator<unsigned short>> _glyphs;
     struct vector<unsigned short, std::allocator<unsigned short>> _flippedGlyphs;
     struct vector<CGPoint, std::allocator<CGPoint>> _positions;

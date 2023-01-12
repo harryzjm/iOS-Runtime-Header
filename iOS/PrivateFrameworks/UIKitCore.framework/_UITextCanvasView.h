@@ -4,27 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UITextCanvas-Protocol.h>
-#import <UIKitCore/_UITextTiledLayerDelegate-Protocol.h>
+#import "UIView.h"
 
 @class NSArray, NSMutableSet, NSString, _UISceneDisplayLink, _UITextTiledLayer;
-@protocol _UITextCanvasContext;
+@protocol _UITextKit1CanvasContext;
 
 __attribute__((visibility("hidden")))
-@interface _UITextCanvasView <_UITextTiledLayerDelegate, _UITextCanvas>
+@interface _UITextCanvasView : UIView
 {
     NSMutableSet *_ghostedRanges;
     NSMutableSet *_invisibleRanges;
     NSArray *_maskedRects;
     _UISceneDisplayLink *_sceneDisplayLink;
-    id <_UITextCanvasContext> _context;
+    id <_UITextKit1CanvasContext> _context;
 }
 
 + (Class)layerClass;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <_UITextCanvasContext> context; // @synthesize context=_context;
+@property(nonatomic) __weak id <_UITextKit1CanvasContext> context; // @synthesize context=_context;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawTextInRect:(struct CGRect)arg1;
+- (void)updateContentSizeIfNeeded;
+- (void)viewportBoundsDidChange;
 - (void)setNeedsLayout;
 - (void)removeInvisibleRange:(struct _NSRange)arg1;
 - (void)addInvisibleRange:(struct _NSRange)arg1;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToWindow;
 - (void)willMoveToWindow:(id)arg1;
 - (_Bool)_enableAutoConstraining;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

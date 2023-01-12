@@ -4,29 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADCalendarItemInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 __attribute__((visibility("hidden")))
-@interface CADCalendarItemOperationGroup <CADCalendarItemInterface>
+@interface CADCalendarItemOperationGroup : CADOperationGroup
 {
 }
 
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
-- (void)CADDatabaseFetchEntitiesOfType:(int)arg1 withContactIdentifier:(id)arg2 withReply:(CDUnknownBlockType)arg3;
-- (void)CADDatabaseCountEntitiesOfType:(int)arg1 withContactIdentifier:(id)arg2 withReply:(CDUnknownBlockType)arg3;
-- (void)CADDatabaseRemoveContactIdentifier:(id)arg1 forCalendarItem:(id)arg2 withReply:(CDUnknownBlockType)arg3;
-- (void)CADDatabaseAddContactWithIdentifier:(id)arg1 forCalendarItem:(id)arg2 withReply:(CDUnknownBlockType)arg3;
-- (void)CADDatabaseGetContactIdentifierForCalendarItem:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseExportCalendarItemAsICS:(id)arg1 withOptions:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADDatabaseExportICSForCalendarItemWithID:(id)arg1 occurrenceDate:(id)arg2 options:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseiTIPImport:(id)arg1 intoCalendarID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseCancelFetchRequestWithIdentifier:(unsigned int)arg1;
-- (id)_resultsFilteredForJunkEvents:(id)arg1;
-- (id)_resultsFilteredForTCCAccess:(id)arg1;
-- (void)CADDatabaseFetchCalendarItemsWithPredicate:(id)arg1 entityType:(int)arg2 fetchIdentifier:(int)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)CADDatabaseFetchCalendarItemsWithPredicate:(id)arg1 entityType:(int)arg2 fetchIdentifier:(int)arg3 synchronous:(_Bool)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)CADDatabaseGetAlarmWithExternalID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetCalendarItemsWithUniqueIdentifier:(id)arg1 inCalendar:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADDatabaseGetCalendarItemsWithUUIDs:(id)arg1 inCalendars:(id)arg2 propertiesToLoad:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseGetCalendarItemWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end

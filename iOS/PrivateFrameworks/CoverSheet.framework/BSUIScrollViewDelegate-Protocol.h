@@ -12,7 +12,7 @@
 
 @optional
 - (void)scrollViewDidEndScrolling:(UIScrollView *)arg1;
-- (void)scrollViewDidScroll:(UIScrollView *)arg1 withContext:(CDStruct_3b09cf25)arg2;
+- (void)scrollViewDidScroll:(UIScrollView *)arg1 withContext:(CDStruct_02f813cc)arg2;
 - (void)scrollViewWillBeginScrolling:(UIScrollView *)arg1;
 @end
 

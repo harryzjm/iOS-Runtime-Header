@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI24SwitchCollectionViewItemCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC18HealthExperienceUIP33_4E9B792FD94E84699A3D0B29EB2473E845ProfileSharingWithYouNotificationSettingsItem
+@interface _TtC18HealthExperienceUIP33_4E9B792FD94E84699A3D0B29EB2473E845ProfileSharingWithYouNotificationSettingsItem : _$s18HealthExperienceUI24SwitchCollectionViewItemCN
 {
     MISSING_TYPE *notificationType;
     MISSING_TYPE *notificationSettingsManager;
     MISSING_TYPE *isOn;
+    MISSING_TYPE *areNotificationsDisabled;
 }
 
 @end

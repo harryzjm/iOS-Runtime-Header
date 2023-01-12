@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDOperation.h"
+
 @class CKShareMetadata, NSData, NSString;
 @protocol CKCompleteParticipantVettingOperationCallbacks;
 
-@interface CKDCompleteParticipantVettingOperation
+@interface CKDCompleteParticipantVettingOperation : CKDOperation
 {
     CDUnknownBlockType _verifyProgressURLReconstructedBlock;
     CDUnknownBlockType _verifyProgressShareMetadataFetchedBlock;

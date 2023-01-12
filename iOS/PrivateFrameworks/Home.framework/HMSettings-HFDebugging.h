@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMSettings.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NATreeNode, NSString;
 
-@interface HMSettings (HFDebugging) <HFStateDumpBuildable>
+@interface HMSettings (HFDebugging)
 + (id)hf_LoadSettingsAllowlist:(unsigned long long)arg1;
 + (void)hf_resetAllowlists;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;

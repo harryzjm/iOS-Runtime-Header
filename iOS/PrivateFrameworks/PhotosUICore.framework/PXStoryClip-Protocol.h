@@ -12,13 +12,13 @@
 @protocol PXStoryClip <NSObject>
 @property(readonly, nonatomic) unsigned long long hash;
 @property(readonly, nonatomic) PFStoryRecipeDisplayAssetNormalization *colorNormalization;
-@property(readonly, nonatomic) CDStruct_e83c9415 videoTimeRange;
-@property(readonly, nonatomic) CDStruct_5e045380 info;
+@property(readonly, nonatomic) CDStruct_3c1748cc videoTimeRange;
+@property(readonly, nonatomic) CDStruct_60782414 info;
 @property(readonly, nonatomic) id <PXStoryResource> resource;
 @property(readonly, nonatomic) long long identifier;
-- (id <PXStoryClip>)copyWithInfo:(CDStruct_5e045380)arg1;
+- (id <PXStoryClip>)copyWithInfo:(CDStruct_60782414)arg1;
 - (_Bool)isVisuallyEqualToClip:(id <PXStoryClip>)arg1;
 - (_Bool)isEqualToClip:(id <PXStoryClip>)arg1;
-- (CDStruct_e83c9415)playbackTimeRangeForClipDuration:(double)arg1;
+- (CDStruct_3c1748cc)playbackTimeRangeForClipDuration:(double)arg1;
 @end
 

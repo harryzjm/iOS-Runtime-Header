@@ -6,13 +6,11 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <HomeUI/HUPreloadableViewController-Protocol.h>
-#import <HomeUI/HUPresentationDelegate-Protocol.h>
-
 @class NSString;
 
-@interface UINavigationController (HUPreloadingNavigationPresentation) <HUPreloadableViewController, HUPresentationDelegate>
+@interface UINavigationController (HUPreloadingNavigationPresentation)
 - (id)hu_preloadContent;
+- (id)hu_pushPreloadableViewController:(id)arg1 animated:(_Bool)arg2 waitForPreload:(_Bool)arg3;
 - (id)hu_pushPreloadableViewController:(id)arg1 animated:(_Bool)arg2;
 - (id)hu_presentedItem;
 - (id)finishPresentation:(id)arg1 animated:(_Bool)arg2;

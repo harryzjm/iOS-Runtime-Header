@@ -4,25 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MKPhotoGalleryTransitionAnimator-Protocol.h>
-#import <MapsUI/MKPlacePhotoGalleryViewControllerDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-#import <MapsUI/MUPlaceTilesViewDelegate-Protocol.h>
-#import <MapsUI/MUScrollAnalyticActionObserving-Protocol.h>
-#import <MapsUI/UIViewControllerTransitioningDelegate-Protocol.h>
+#import "MUPlaceSectionController.h"
 
-@class MKPlacePhotoGalleryViewController, MKUGCCallToActionViewAppearance, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceTilesView, MUPunchoutViewModel, NSString, UIImageView, UIView, UIViewController;
+@class MKUGCCallToActionViewAppearance, MUPlacePhotoGalleryViewController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, MUPlaceTilesView, MUPunchoutViewModel, NSArray, NSString, UIImageView, UIView, UIViewController;
 @protocol GEOAnnotatedItemList, MUInfoCardAnalyticsDelegate, MUPlacePictureItemSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUPlacePictureItemSectionController <MUPlaceTilesViewDelegate, MKPlacePhotoGalleryViewControllerDelegate, UIViewControllerTransitioningDelegate, MKPhotoGalleryTransitionAnimator, MUScrollAnalyticActionObserving, MUPlaceSectionControlling>
+@interface MUPlacePictureItemSectionController : MUPlaceSectionController
 {
     id <GEOAnnotatedItemList> _annotatedList;
     MUPlaceSectionView *_sectionView;
     MUPlaceTilesView *_tilesView;
     UIImageView *_imageViewForTransition;
     MUPunchoutViewModel *_attributionViewModel;
-    MKPlacePhotoGalleryViewController *_photoGalleryViewController;
+    MUPlacePhotoGalleryViewController *_photoGalleryViewController;
     UIViewController *_presentingViewController;
     _Bool _active;
     MUPlaceSectionHeaderViewModel *_sectionHeaderViewModel;
@@ -34,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 - (void)performInstrumentationForScrollRight;
 - (void)performInstrumentationForScrollLeft;
+- (_Bool)isImpressionable;
 - (int)analyticsModuleType;
 - (void)_captureUserAction:(int)arg1;
 - (void)photoGalleryTransitionAnimatorDidFinishAnimation;
@@ -59,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) UIViewController *sectionViewController;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

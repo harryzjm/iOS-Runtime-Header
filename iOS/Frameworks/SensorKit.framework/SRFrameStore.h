@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/NSFastEnumeration-Protocol.h>
-
 @class NSFileHandle, NSString, SRMemoryMapping;
 
 __attribute__((visibility("hidden")))
-@interface SRFrameStore : NSObject <NSFastEnumeration>
+@interface SRFrameStore : NSObject
 {
     unsigned int _datastoreVersion;
     SRMemoryMapping *_frames;

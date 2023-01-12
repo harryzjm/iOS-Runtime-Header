@@ -6,11 +6,12 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class SHSheetAirdropTransferContext, SHSheetServiceManager, SHSheetUserDefaultsContext, UIActivity, UISUIActivityExtensionItemDataRequest;
+@class NSData, SFAirDropTransferChange, SHSheetServiceManager, SHSheetUserDefaultsContext, UIActivity, UISUIActivityExtensionItemDataRequest;
 
 @protocol SHSheetServiceManagerDelegate <NSObject>
+- (NSData *)serviceManager:(SHSheetServiceManager *)arg1 identificationResultsFromSuggestedImageData:(NSData *)arg2;
 - (void)serviceManager:(SHSheetServiceManager *)arg1 willPerformActivityInServiceForRequest:(UISUIActivityExtensionItemDataRequest *)arg2 completion:(void (^)(NSArray *, UISDActivityItemData *))arg3;
-- (void)serviceManager:(SHSheetServiceManager *)arg1 didUpdateAirdropTransferWithContext:(SHSheetAirdropTransferContext *)arg2;
+- (void)serviceManager:(SHSheetServiceManager *)arg1 didUpdateAirDropTransferWithChange:(SFAirDropTransferChange *)arg2;
 - (void)serviceManager:(SHSheetServiceManager *)arg1 performAirdropViewActivityWithNoContentView:(_Bool)arg2;
 - (void)serviceManager:(SHSheetServiceManager *)arg1 performUserDefaultsActivityWithContext:(SHSheetUserDefaultsContext *)arg2;
 - (void)serviceManager:(SHSheetServiceManager *)arg1 performActivity:(UIActivity *)arg2;

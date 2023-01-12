@@ -14,6 +14,7 @@
 - (void)sendButtonEventWithUsagePage:(unsigned int)arg1 usage:(unsigned int)arg2 down:(_Bool)arg3;
 - (void)pingWithTimeout:(double)arg1 callback:(void (^)(NSError *))arg2;
 - (void)sendCustomData:(NSData *)arg1 withName:(NSString *)arg2;
+- (void)createHostedEndpointWithOutputDeviceUIDs:(NSArray *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)modifyByAddingDeviceUIDs:(NSArray *)arg1 removingDeviceUIDs:(NSArray *)arg2 settingDeviceUIDs:(NSArray *)arg3 addingClusterDeviceUIDs:(NSArray *)arg4 removingClusterDeviceUIDs:(NSArray *)arg5 settingClusterDeviceUIDs:(NSArray *)arg6 completion:(void (^)(NSError *))arg7;
 - (void)setListeningMode:(NSString *)arg1 outputDeviceUID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)outputDeviceVolumeControlCapabilities:(NSString *)arg1 withCompletion:(void (^)(unsigned int, NSError *))arg2;

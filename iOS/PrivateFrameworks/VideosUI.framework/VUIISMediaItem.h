@@ -6,12 +6,10 @@
 
 #import <TVPlayback/TVPBaseMediaItem.h>
 
-#import <VideosUI/TVPContentKeyLoading-Protocol.h>
-
 @class NSData, NSDictionary, NSMutableArray, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface VUIISMediaItem : TVPBaseMediaItem <TVPContentKeyLoading>
+@interface VUIISMediaItem : TVPBaseMediaItem
 {
     _Bool _disableScrubbing;
     NSURL *_url;

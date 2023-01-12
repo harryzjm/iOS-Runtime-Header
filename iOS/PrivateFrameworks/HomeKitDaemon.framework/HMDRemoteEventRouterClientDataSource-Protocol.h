@@ -6,13 +6,16 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDRemoteEventRouterClient, HMFMessageDestination, NSUUID;
+@class HMDRemoteEventRouterClient, HMFMessageDestination, NSSet, NSUUID;
 
 @protocol HMDRemoteEventRouterClientDataSource <NSObject>
+- (NSSet *)client:(HMDRemoteEventRouterClient *)arg1 forwardingTopicsForTopics:(NSSet *)arg2;
+- (_Bool)routerClientShouldRestrictMessagingToLocalOnly:(HMDRemoteEventRouterClient *)arg1;
+- (_Bool)isNetworkAvailable;
 - (_Bool)isCurrentDevicePrimaryResident;
 - (_Bool)routerClientSupportsFragmentMessageForServerIdentifier:(NSUUID *)arg1;
-- (HMFMessageDestination *)routerClientPrimaryResidentMessageDestination:(HMDRemoteEventRouterClient *)arg1 serverIdentifier:(out id *)arg2;
-- (id)routerClientResidentManager:(HMDRemoteEventRouterClient *)arg1;
+- (HMFMessageDestination *)routerClientMessageDestination:(HMDRemoteEventRouterClient *)arg1 serverIdentifier:(out id *)arg2;
+- (id)primaryResidentChangeMonitorForRouterClient:(HMDRemoteEventRouterClient *)arg1;
 - (NSUUID *)routerClientPrimaryResidentDeviceIdentifier:(HMDRemoteEventRouterClient *)arg1;
 @end
 

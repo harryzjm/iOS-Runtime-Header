@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface SHShazamCatalog
+#import "SHCatalog.h"
+
+__attribute__((visibility("hidden")))
+@interface SHShazamCatalog : SHCatalog
 {
 }
 

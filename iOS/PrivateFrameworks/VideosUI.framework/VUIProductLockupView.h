@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
-
-@class NSArray, NSNumber, NSString, TVFocusableTextView, UIImage, VUIImageProxy, VUIImageView, VUILabel, VUIMediaTagsView, VUIRentalExpirationLabel, VUIRoundButton, VUISeparatorView;
+@class FocusableTextView, NSArray, NSNumber, NSString, UIImage, VUIImageProxy, VUIImageView, VUILabel, VUIMediaTagsView, VUIRentalExpirationLabel, VUIRoundButton, VUISeparatorView;
 @protocol VUILibraryProductLockupViewLayout, VUIProductLockupViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIProductLockupView : UIView <VUIRentalExpirationLabelDelegate>
+@interface VUIProductLockupView : UIView
 {
     _Bool _contentDescriptionExpanded;
     _Bool _didSetUpViews;
@@ -33,7 +31,7 @@ __attribute__((visibility("hidden")))
     VUISeparatorView *_bottomSeparatorView;
     VUIImageView *_coverArtImageView;
     VUILabel *_subtitleLabel;
-    TVFocusableTextView *_descriptionTextView;
+    FocusableTextView *_descriptionTextView;
     VUIRentalExpirationLabel *_expirationLabel;
     UIImage *_contentRatingImage;
     VUIMediaTagsView *_mediaInfoTagsView;
@@ -48,7 +46,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIRentalExpirationLabel *expirationLabel; // @synthesize expirationLabel=_expirationLabel;
 @property(nonatomic) _Bool didSetUpViews; // @synthesize didSetUpViews=_didSetUpViews;
 @property(nonatomic) _Bool contentDescriptionExpanded; // @synthesize contentDescriptionExpanded=_contentDescriptionExpanded;
-@property(retain, nonatomic) TVFocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
+@property(retain, nonatomic) FocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
 @property(retain, nonatomic) VUILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) VUIImageView *coverArtImageView; // @synthesize coverArtImageView=_coverArtImageView;
 @property(retain, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;

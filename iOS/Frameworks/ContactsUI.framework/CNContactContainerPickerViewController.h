@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/UICollectionViewDelegate-Protocol.h>
-
 @class CNAccountsAndGroupsDataSource, CNContactViewCache, NSArray, NSString, UICollectionView, UICollectionViewDiffableDataSource;
 @protocol CNContactContainerPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNContactContainerPickerViewController : UIViewController <UICollectionViewDelegate>
+@interface CNContactContainerPickerViewController : UIViewController
 {
     id <CNContactContainerPickerViewControllerDelegate> _delegate;
     NSArray *_selectedContainerIdentifiers;

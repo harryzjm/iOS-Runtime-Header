@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsArticles/NUTitleViewDelegate-Protocol.h>
-
-@interface (null) (NewsArticles) <NUTitleViewDelegate>
+@interface (null) (NewsArticles)
 - (void)titleViewDidTapOnTitleView:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

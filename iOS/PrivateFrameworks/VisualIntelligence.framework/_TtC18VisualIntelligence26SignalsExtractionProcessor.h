@@ -11,15 +11,16 @@
 @interface _TtC18VisualIntelligence26SignalsExtractionProcessor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *textDetectionModelFactory;
+    MISSING_TYPE *barcodeDetectionModelFactory;
     MISSING_TYPE *imageFingerprintRequestFactory;
-    MISSING_TYPE *knowledgeService;
+    MISSING_TYPE *domainModelRegistry;
     MISSING_TYPE *image;
     MISSING_TYPE *trialWrapper;
-    MISSING_TYPE *debugMetricsBucket;
     MISSING_TYPE *preferredMetalDevice;
     MISSING_TYPE *collectedRegionResults;
     MISSING_TYPE *collectedError;
     MISSING_TYPE *collectedTextAnnotation;
+    MISSING_TYPE *collectedBarcodeAnnotation;
     MISSING_TYPE *imageFingerprint;
 }
 

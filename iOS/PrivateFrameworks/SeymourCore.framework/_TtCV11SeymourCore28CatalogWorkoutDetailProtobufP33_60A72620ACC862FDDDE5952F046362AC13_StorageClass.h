@@ -25,6 +25,9 @@
     MISSING_TYPE *_bundleProgress;
     MISSING_TYPE *_sharingTags;
     MISSING_TYPE *_descriptionTags;
+    MISSING_TYPE *_primaryLanguageTags;
+    MISSING_TYPE *_additionalLanguagesTags;
+    MISSING_TYPE *_accessibilityTags;
 }
 
 @end

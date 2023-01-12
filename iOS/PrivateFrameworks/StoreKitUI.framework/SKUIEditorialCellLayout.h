@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIEditorialLinkViewDelegate-Protocol.h>
+#import "SKUICellLayout.h"
 
 @class NSString, SKUIEditorialLinkView, SKUITextBoxView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIEditorialCellLayout <SKUIEditorialLinkViewDelegate>
+@interface SKUIEditorialCellLayout : SKUICellLayout
 {
     struct UIEdgeInsets _contentInset;
     double _linkSpacing;

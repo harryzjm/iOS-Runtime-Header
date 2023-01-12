@@ -7,7 +7,8 @@
 #import <Foundation/NSPredicate.h>
 
 @interface NSPredicate (HKDayIndex)
-+ (id)hk_predicateForSamplesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
++ (id)hk_predicateForSamplesInDayIndexRange:(CDStruct_912cb5d2)arg1;
+- (id)hk_filterRepresentationForDataTypes:(id)arg1 isSubpredicate:(_Bool)arg2;
 - (id)hk_filterRepresentationForDataTypes:(id)arg1;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <PassKitCore/PKTransitCommutePlan.h>
 
-#import <NanoPassKit/NPKDateRange-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface PKTransitCommutePlan (NPKDateRange) <NPKDateRange>
+@interface PKTransitCommutePlan (NPKDateRange)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

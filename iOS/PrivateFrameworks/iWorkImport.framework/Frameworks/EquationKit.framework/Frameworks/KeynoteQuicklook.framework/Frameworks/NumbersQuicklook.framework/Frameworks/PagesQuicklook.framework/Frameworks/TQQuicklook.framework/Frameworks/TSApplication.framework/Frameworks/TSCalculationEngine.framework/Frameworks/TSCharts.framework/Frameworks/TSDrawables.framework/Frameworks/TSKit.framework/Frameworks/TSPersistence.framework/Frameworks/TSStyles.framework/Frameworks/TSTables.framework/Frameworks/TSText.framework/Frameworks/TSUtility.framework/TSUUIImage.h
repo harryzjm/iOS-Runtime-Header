@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSUImage.h"
+
 @class TSUUIImageAutoreleasePoolGuard, UIImage;
 
-@interface TSUUIImage
+@interface TSUUIImage : TSUImage
 {
     UIImage *mUIImage;
     TSUUIImageAutoreleasePoolGuard *mGuard;

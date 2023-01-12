@@ -11,10 +11,10 @@
 @interface _TtC10ChronoCore24MobilePlaceholderService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *cacheManager;
+    MISSING_TYPE *statefulStoreUI;
     MISSING_TYPE *environmentProvidingFactory;
     MISSING_TYPE *extensionManager;
     MISSING_TYPE *statefulStore;
-    MISSING_TYPE *statefulStoreUI;
     MISSING_TYPE *descriptorService;
     MISSING_TYPE *configurationService;
     MISSING_TYPE *logger;

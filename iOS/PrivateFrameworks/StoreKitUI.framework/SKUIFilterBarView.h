@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIItemOfferButtonDelegate-Protocol.h>
-#import <StoreKitUI/SKUIMenuPopoverDelegate-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSMapTable, NSMutableArray, NSString, SKUIDividerView, SKUIMenuPopoverController, UIControl;
 
 __attribute__((visibility("hidden")))
-@interface SKUIFilterBarView <SKUIItemOfferButtonDelegate, SKUIMenuPopoverDelegate, SKUIViewElementView>
+@interface SKUIFilterBarView
 {
     SKUIDividerView *_bottomDividerView;
     NSMutableArray *_centerElementViews;

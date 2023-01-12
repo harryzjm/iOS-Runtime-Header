@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBCocoaTouchToolFoundation/UITabBarDelegate-Protocol.h>
-
 @class NSArray, NSString, UITabBar;
 
-@interface UITabBarControllerTemplate <UITabBarDelegate>
+@interface UITabBarControllerTemplate
 {
     id _delegate;
     NSArray *_viewControllers;

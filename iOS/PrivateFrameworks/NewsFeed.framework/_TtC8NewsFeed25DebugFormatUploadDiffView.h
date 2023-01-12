@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
     MISSING_TYPE *source;
     MISSING_TYPE *titleLabel;
-    MISSING_TYPE *textView;
-    MISSING_TYPE *scrollView;
+    MISSING_TYPE *tableView;
+    MISSING_TYPE *changeSet;
 }
 
 - (void).cxx_destruct;

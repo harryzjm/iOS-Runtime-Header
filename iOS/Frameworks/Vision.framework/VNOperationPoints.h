@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSCopying-Protocol.h>
-#import <Vision/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VNOperationPoints : NSObject <NSCopying, NSSecureCoding>
+@interface VNOperationPoints : NSObject
 {
 }
 

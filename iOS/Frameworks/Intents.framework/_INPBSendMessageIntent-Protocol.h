@@ -35,6 +35,8 @@
 @property(retain, nonatomic) _INPBString *content;
 @property(readonly, nonatomic) unsigned long long attachmentsCount;
 @property(copy, nonatomic) NSArray *attachments;
+@property(readonly, nonatomic) _Bool hasAlternativeConversationIdentifier;
+@property(copy, nonatomic) NSString *alternativeConversationIdentifier;
 - (_INPBContact *)recipientAtIndex:(unsigned long long)arg1;
 - (void)addRecipient:(_INPBContact *)arg1;
 - (void)clearRecipients;

@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebPagePresenter-Protocol.h>
-#import <AppleMediaServicesUI/AMSUIWebSafariWebDelegate-Protocol.h>
-#import <AppleMediaServicesUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <AppleMediaServicesUI/WKNavigationDelegate-Protocol.h>
+#import "AMSUICommonViewController.h"
 
-@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebSafariPageModel, AMSUIWebSafariWebView, NSString, UIBarButtonItem, UIToolbar, UIViewController;
+@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebSafariPageModel, AMSUIWebSafariWebView, NSString, NSURL, UIBarButtonItem, UIToolbar, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebSafariViewController <WKNavigationDelegate, AMSUIWebSafariWebDelegate, UIAdaptivePresentationControllerDelegate, AMSUIWebPagePresenter>
+@interface AMSUIWebSafariViewController : AMSUICommonViewController
 {
     _Bool _shouldDismissOnCallback;
     _Bool _shouldSetPresentationDelegate;
@@ -56,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_startLoadingWebView;
 - (void)_refresh:(id)arg1;
 - (void)_presentPlaceholderModel:(id)arg1;
+- (void)_presentActivityViewControllerWithActivityItems:(id)arg1;
 - (void)_pop;
 - (_Bool)_callActionHandlerWithURL:(id)arg1 error:(id)arg2;
 - (void)_handleDismiss;
@@ -65,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (id)_createToolBar;
 - (void)_cancel:(id)arg1;
 - (void)_back:(id)arg1;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 stopURLSchemeTask:(id)arg2;
 - (void)webView:(id)arg1 didStartProvisionalNavigation:(id)arg2;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
@@ -78,7 +77,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)loadView;
 - (void)willPresentPageModel:(id)arg1 appearance:(id)arg2;
+- (void)receiveCallbackURL:(id)arg1;
 - (void)loadActionURL:(id)arg1 data:(id)arg2 callbackScheme:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
+@property(readonly, nonatomic) NSURL *originalURL;
 - (id)initWithContext:(id)arg1;
 
 // Remaining properties

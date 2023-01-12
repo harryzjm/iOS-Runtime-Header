@@ -13,8 +13,9 @@ __attribute__((visibility("hidden")))
     _Bool _includeiCloudTokens;
     _Bool _requiresCellularAccess;
     _Bool _usePrimaryKeychain;
-    NSString *_body;
     ACAccount *_account;
+    NSString *_body;
+    NSString *_gsTokenIdentifier;
     NSDictionary *_headers;
     NSString *_method;
     NSString *_signatureData;
@@ -30,8 +31,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool includeiCloudTokens; // @synthesize includeiCloudTokens=_includeiCloudTokens;
 @property(nonatomic) _Bool includeAuthKitTokens; // @synthesize includeAuthKitTokens=_includeAuthKitTokens;
 @property(retain, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
-@property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property(retain, nonatomic) NSString *gsTokenIdentifier; // @synthesize gsTokenIdentifier=_gsTokenIdentifier;
 @property(retain, nonatomic) NSString *body; // @synthesize body=_body;
+@property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (id)_createSession;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;

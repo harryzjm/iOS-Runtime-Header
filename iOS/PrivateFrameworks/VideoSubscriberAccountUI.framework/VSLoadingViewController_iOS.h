@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideoSubscriberAccountUI/VSLoadingViewController-Protocol.h>
-
 @class NSString, UIActivityIndicatorView;
 @protocol VSLoadingViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSLoadingViewController_iOS : UIViewController <VSLoadingViewController>
+@interface VSLoadingViewController_iOS : UIViewController
 {
     _Bool _cancellationAllowed;
     id <VSLoadingViewControllerDelegate> _delegate;

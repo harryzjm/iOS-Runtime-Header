@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     NSDictionary *_numEntriesDictionary;
     NSDictionary *_dictionariesDictionary;
     NLParameterBundle *_parameterBundle;
+    NLParameterBundle *_transformerParameterBundle;
     PRDictionary *_fallbackDictionary;
 }
 
+- (id)transformerParameterBundle;
 - (id)parameterBundle;
 - (id)fallbackDictionary;
 - (id)dictionaryAtIndex:(unsigned long long)arg1;

@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UILabelConfigurationInternal : NSObject <NSCopying, NSSecureCoding>
+@interface _UILabelConfigurationInternal : NSObject <NSCopying>
 {
     double _screenScale;
     double _lineSpacing;

@@ -6,17 +6,19 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class NSURL, WFDialogAttributions, WFDialogRequest, WFWorkflowRunningContext;
+@class NSNumber, NSURL, WFDialogAttribution, WFDialogRequest, WFWorkflowRunningContext;
 
 @protocol WFUIPresenterInterface <NSObject>
 
 @optional
-- (_Bool)showWebPage:(NSURL *)arg1 completionHandler:(void (^)(_Bool))arg2;
-- (void)returnFocusToOriginatingAppForRunningContext:(WFWorkflowRunningContext *)arg1 completionHandler:(void (^)(void))arg2;
-- (void)bringDialogsToFrontForRunningContext:(WFWorkflowRunningContext *)arg1 completionHandler:(void (^)(void))arg2;
-- (void)dismissPresentedContentForRunningContext:(WFWorkflowRunningContext *)arg1 completionHandler:(void (^)(void))arg2;
-- (void)showDialogRequest:(WFDialogRequest *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 completionHandler:(void (^)(WFDialogResponse *))arg3;
-- (void)completePersistentModeWithSuccess:(_Bool)arg1 runningContext:(WFWorkflowRunningContext *)arg2 completion:(void (^)(void))arg3;
-- (void)beginPersistentModeWithRunningContext:(WFWorkflowRunningContext *)arg1 attributions:(WFDialogAttributions *)arg2 completionHandler:(void (^)(void))arg3;
+- (void)openURL:(NSURL *)arg1 completionHandler:(void (^)(NSNumber *, NSError *))arg2;
+- (void)returnFocusToOriginatingAppForRunningContext:(WFWorkflowRunningContext *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)bringDialogsToFrontForRunningContext:(WFWorkflowRunningContext *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)resumeDialogPresentationWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)pauseDialogPresentationForDuration:(NSNumber *)arg1 withCompletionHandler:(void (^)(NSError *))arg2;
+- (void)dismissPresentedContentForRunningContext:(WFWorkflowRunningContext *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)showDialogRequest:(WFDialogRequest *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 completionHandler:(void (^)(WFDialogResponse *, NSError *))arg3;
+- (void)completePersistentModeWithSuccess:(NSNumber *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)beginPersistentModeWithRunningContext:(WFWorkflowRunningContext *)arg1 attribution:(WFDialogAttribution *)arg2 completionHandler:(void (^)(NSError *))arg3;
 @end
 

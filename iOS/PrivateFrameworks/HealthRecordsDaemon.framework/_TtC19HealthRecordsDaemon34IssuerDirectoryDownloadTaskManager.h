@@ -11,7 +11,7 @@
 @interface _TtC19HealthRecordsDaemon34IssuerDirectoryDownloadTaskManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *scheduler;
-    MISSING_TYPE *healthStore;
+    MISSING_TYPE *requestPerformer;
     MISSING_TYPE *signedClinicalDataStore;
     MISSING_TYPE *catalogDownloadTaskQueue;
 }

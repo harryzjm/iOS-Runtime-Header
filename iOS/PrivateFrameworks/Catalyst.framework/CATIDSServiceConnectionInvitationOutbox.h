@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary;
-@protocol CATIDSServiceConnectionInvitationOutboxDelegate, CATNetworkPowerPrimitives, OS_dispatch_queue;
+@protocol CATAssertionProviding, CATIDSServiceConnectionInvitationOutboxDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CATIDSServiceConnectionInvitationOutbox : NSObject
 {
-    id <CATNetworkPowerPrimitives> mNetworkPowerPrimitives;
+    id <CATAssertionProviding> mAssertionProvider;
     NSObject<OS_dispatch_queue> *mWorkQueue;
     NSMutableDictionary *mInFlightInvitationRequestsByInvitationID;
     NSMutableArray *mInvitationRequestQueue;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)suspend;
 - (void)resume;
 - (void)beginInvitationWithIdentifier:(id)arg1 appleID:(id)arg2 userInfo:(id)arg3;
-- (id)initWithNetworkPowerPrimitives:(id)arg1 workQueue:(id)arg2;
+- (id)initWithAssertionProvider:(id)arg1 workQueue:(id)arg2;
 - (void)dealloc;
 
 @end

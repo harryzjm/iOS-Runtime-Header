@@ -6,13 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/MFMessageComposeViewControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFSendMessageActionUserInterface-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFSendMessageActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFSendMessageActionUserInterface, MFMessageComposeViewControllerDelegate>
+@interface WFSendMessageActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
     NSArray *_files;

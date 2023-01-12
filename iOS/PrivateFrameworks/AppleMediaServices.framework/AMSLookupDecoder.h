@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSResponseDecoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AMSLookupDecoder : NSObject <AMSResponseDecoding>
+@interface AMSLookupDecoder : NSObject
 {
 }
 

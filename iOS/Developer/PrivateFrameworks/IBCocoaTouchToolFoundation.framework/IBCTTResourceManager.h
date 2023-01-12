@@ -11,7 +11,7 @@
 }
 
 + (id)sharedManager;
-- (id)bitmapForSystemImageNamed:(id)arg1 scale:(double)arg2 minimumSize:(struct CGSize)arg3 maximumSize:(struct CGSize)arg4 renderInset:(CDStruct_c519178c)arg5 compatibleWithTraitCollection:(id)arg6;
+- (id)bitmapForSystemImageNamed:(id)arg1 scale:(double)arg2 minimumSize:(struct CGSize)arg3 maximumSize:(struct CGSize)arg4 renderInset:(CDStruct_c519178c)arg5;
 - (struct CGSize)calculateAspectFitWithCurrentSize:(struct CGSize)arg1 desiredSize:(struct CGSize)arg2;
 
 @end

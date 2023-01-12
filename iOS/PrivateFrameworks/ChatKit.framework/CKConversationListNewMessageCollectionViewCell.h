@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKConversationListCellDelegate-Protocol.h>
+#import "CKConversationListEmbeddedCollectionViewCell.h"
 
 @class NSObject, NSString;
 @protocol CKConversationListCollectionViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKConversationListNewMessageCollectionViewCell <CKConversationListCellDelegate>
+@interface CKConversationListNewMessageCollectionViewCell : CKConversationListEmbeddedCollectionViewCell
 {
     NSObject<CKConversationListCollectionViewCellDelegate> *_delegate;
 }

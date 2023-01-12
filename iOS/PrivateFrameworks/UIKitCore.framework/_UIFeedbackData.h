@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFeedbackData-Protocol.h>
-
 @class NSString, NSURL, _UIFeedbackParameters;
 
 __attribute__((visibility("hidden")))
-@interface _UIFeedbackData : NSObject <_UIFeedbackData>
+@interface _UIFeedbackData : NSObject
 {
     _Bool _isTransientHaptic;
     _Bool _canReuseCoreHapticsPlayer;

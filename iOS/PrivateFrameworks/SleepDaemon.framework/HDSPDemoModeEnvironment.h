@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HDSPNotificationObserver-Protocol.h>
-#import <SleepDaemon/HDSPSource-Protocol.h>
+#import "HDSPEnvironment.h"
 
 @class NSString;
-@protocol HDSPSource;
 
 __attribute__((visibility("hidden")))
-@interface HDSPDemoModeEnvironment <HDSPNotificationObserver, HDSPSource>
+@interface HDSPDemoModeEnvironment : HDSPEnvironment
 {
 }
 
++ (CDUnknownBlockType)_sleepModeManagerProvider;
 @property(readonly, nonatomic) NSString *sourceIdentifier;
 - (id)demoEventRecord;
 - (id)demoSleepSchedule;
@@ -34,7 +33,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool dontSync;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) id <HDSPSource> targetSource;
 
 @end
 

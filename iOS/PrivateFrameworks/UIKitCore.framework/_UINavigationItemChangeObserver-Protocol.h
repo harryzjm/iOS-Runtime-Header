@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UINavigationBarAppearance, UINavigationItem, UISearchController, _UINavigationBarPalette;
+#import <UIKitCore/NSObject-Protocol.h>
 
-@protocol _UINavigationItemChangeObserver
+@class UINavigationBarAppearance, UINavigationItem, UISearchController, _UINavigationBarPalette;
+@protocol UIPopoverPresentationControllerSourceItem;
+
+@protocol _UINavigationItemChangeObserver <NSObject>
 - (void)navigationItemUpdatedBottomPalette:(UINavigationItem *)arg1 oldPalette:(_UINavigationBarPalette *)arg2;
 - (void)navigationItemUpdatedSearchController:(UINavigationItem *)arg1 oldSearchController:(UISearchController *)arg2;
 - (void)navigationItemUpdatedPromptContent:(UINavigationItem *)arg1;
 - (void)navigationItemUpdatedCanvasView:(UINavigationItem *)arg1;
 - (void)navigationItemUpdatedScrollEdgeProgress:(UINavigationItem *)arg1;
 - (void)navigationItemUpdatedBackgroundAppearance:(UINavigationItem *)arg1;
+- (void)navigationItemSearchControllerReadyForDeferredAutomaticShowsScopeBar:(UINavigationItem *)arg1;
 - (void)navigationItem:(UINavigationItem *)arg1 appearance:(UINavigationBarAppearance *)arg2 categoriesChanged:(long long)arg3;
 - (void)navigationItemUpdatedLargeTitleContent:(UINavigationItem *)arg1;
 - (void)navigationItemUpdatedLargeTitleDisplayMode:(UINavigationItem *)arg1;
@@ -23,5 +27,10 @@
 - (void)navigationItemUpdatedTitleContent:(UINavigationItem *)arg1 animated:(_Bool)arg2;
 - (_Bool)navigationItemIsBackItem:(UINavigationItem *)arg1;
 - (_Bool)navigationItemIsTopItem:(UINavigationItem *)arg1;
+
+@optional
+- (id <UIPopoverPresentationControllerSourceItem>)presentationSourceForContent:(long long)arg1 navigationItem:(UINavigationItem *)arg2;
+- (void)navigationItemUpdatedAdditionalOverflowItems:(UINavigationItem *)arg1;
+- (void)navigationItemUpdatedCenterBarButtonItems:(UINavigationItem *)arg1 animated:(_Bool)arg2;
 @end
 

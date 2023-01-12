@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 + (void)clearInternalCaches;
 + (struct CGContext *)imageContextWithSize:(struct CGSize)arg1 scale:(double)arg2 colorFormat:(long long)arg3 opaque:(_Bool)arg4 invert:(_Bool)arg5;
 + (id)rendererWithContext:(struct CGContext *)arg1 withSize:(struct CGSize)arg2 withScale:(double)arg3 opaque:(_Bool)arg4 renderFlags:(long long)arg5 assetIdiom:(long long)arg6;
+- (void).cxx_destruct;
 @property(nonatomic) double _layerRoundRectRadius; // @synthesize _layerRoundRectRadius=__layerRoundRectRadius;
 @property(nonatomic) struct CGRect _layerPaddedFrame; // @synthesize _layerPaddedFrame=__layerPaddedFrame;
 @property(nonatomic) _Bool disableInternalCaching; // @synthesize disableInternalCaching=_disableInternalCaching;
@@ -47,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)pathForSplitGeometry:(id)arg1;
 - (id)pathForFlickPopupGeometries:(id)arg1;
 - (id)pathForFlickGeometry:(id)arg1;
-- (id)pathForFlickWidth:(double)arg1 height:(double)arg2 handleLength:(double)arg3 keyMiddle:(struct CGPoint)arg4 angle:(double)arg5;
+- (id)pathForFlickWidth:(double)arg1 height:(double)arg2 handleLength:(double)arg3 keyMiddle:(struct CGPoint)arg4 angle:(double)arg5 radius:(double)arg6;
 - (id)watchPathForRenderGeometry:(id)arg1;
 - (id)defaultPathForRenderGeometry:(id)arg1;
 - (id)pathForRenderGeometry:(id)arg1;

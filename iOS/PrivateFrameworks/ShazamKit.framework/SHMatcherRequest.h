@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ShazamKit/NSSecureCoding-Protocol.h>
-
 @class NSDate, NSString, SHSignature;
 
 __attribute__((visibility("hidden")))
-@interface SHMatcherRequest : NSObject <NSSecureCoding>
+@interface SHMatcherRequest : NSObject
 {
     _Bool _sendNotifications;
     NSString *_installationID;
@@ -32,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) SHSignature *signature; // @synthesize signature=_signature;
 @property(readonly, nonatomic) _Bool hasHitDeadline;
 @property(readonly, nonatomic) long long type;
-@property(readonly, nonatomic) NSString *installationID; // @synthesize installationID=_installationID;
+@property(readonly, copy, nonatomic) NSString *installationID; // @synthesize installationID=_installationID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSignature:(id)arg1 deadline:(id)arg2 installationID:(id)arg3 sendNotifications:(_Bool)arg4 stopCondition:(long long)arg5;

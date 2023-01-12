@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ComplicationDisplay/CLKMonochromeComplicationView-Protocol.h>
-
-@interface (null) (ComplicationDisplay) <CLKMonochromeComplicationView>
+@interface (null) (ComplicationDisplay)
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateMonochromeColor;
 @end

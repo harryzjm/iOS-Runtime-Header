@@ -136,5 +136,8 @@ struct _xmlXPathContext {
     struct _xmlDict *_field37;
     int _field38;
     void *_field39;
+    unsigned long long _field40;
+    unsigned long long _field41;
+    int _field42;
 };
 

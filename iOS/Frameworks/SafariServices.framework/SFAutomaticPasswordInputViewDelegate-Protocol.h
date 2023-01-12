@@ -6,11 +6,12 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class SFAutomaticPasswordInputView;
+@class SFAutomaticPasswordInputView, UIMenu;
 
 @protocol SFAutomaticPasswordInputViewDelegate <NSObject>
 
 @optional
+- (UIMenu *)inputViewControllerOtherOptionsMenu:(SFAutomaticPasswordInputView *)arg1;
 - (void)inputViewControllerDidSelectUseCustomPassword:(SFAutomaticPasswordInputView *)arg1;
 - (void)inputViewControllerDidSelectUseStrongPassword:(SFAutomaticPasswordInputView *)arg1;
 @end

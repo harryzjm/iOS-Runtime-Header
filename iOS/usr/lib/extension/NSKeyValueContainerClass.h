@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
         Class _field2;
         struct __CFSet *_field3;
         struct __CFDictionary *_field4;
-        struct _opaque_pthread_mutex_t _field5;
+        struct os_unfair_recursive_lock_s _field5;
         _Bool _field6;
     } *_notifyingInfo;
 }

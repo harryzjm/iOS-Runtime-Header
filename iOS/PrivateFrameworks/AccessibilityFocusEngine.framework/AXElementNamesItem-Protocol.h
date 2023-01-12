@@ -8,6 +8,7 @@
 
 @protocol AXElementNamesItem
 @property(readonly, nonatomic) struct CGSize elementLabelContainerSize;
+@property(readonly, nonatomic) _Bool isSpacer;
 @property(readonly, nonatomic) struct CGRect elementFrame;
 @property(readonly, nonatomic) NSString *elementName;
 @end

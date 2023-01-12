@@ -20,9 +20,11 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromOverlayToModelWithPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 
 @optional
+@property(readonly, nonatomic) _Bool supportsFormFill;
 @property(readonly, copy, nonatomic) NSString *originalImageDescription;
 @property(readonly, nonatomic) _Bool supportsImageDescriptionEditing;
 - (UIView *)contentSnapshot;
+- (void)controller:(AKController *)arg1 setFormFillingEnabled:(_Bool)arg2;
 - (NSIndexSet *)characterIndexesForQuadPoints:(NSArray *)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (NSArray *)quadPointsForCharacterIndexes:(NSIndexSet *)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (void)setAllowsNativeRenderingOfHighlightableSelection:(_Bool)arg1 forAnnotationController:(AKController *)arg2;
@@ -43,6 +45,9 @@
 - (_Bool)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (_Bool)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (_Bool)controllerShouldDetectFormElements:(AKController *)arg1;
+- (_Bool)handleBackTabInTextEditorForAnnotation:(AKAnnotation *)arg1 forAnnotationController:(AKController *)arg2;
+- (_Bool)handleTabInTextEditorForAnnotation:(AKAnnotation *)arg1 forAnnotationController:(AKController *)arg2;
+- (_Bool)shouldAddTabControlsToTextEditorForAnnotation:(AKAnnotation *)arg1 forAnnotationController:(AKController *)arg2;
 - (void)positionSketchOverlay:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
 - (void)removeAuxiliaryView:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
 - (void)placeAuxiliaryView:(UIView *)arg1 forAnnotationController:(AKController *)arg2;

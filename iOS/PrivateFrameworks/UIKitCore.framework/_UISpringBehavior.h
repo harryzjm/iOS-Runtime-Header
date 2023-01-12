@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIDynamicBehavior.h"
+
 @class UIAttachmentBehavior;
 
 __attribute__((visibility("hidden")))
-@interface _UISpringBehavior
+@interface _UISpringBehavior : UIDynamicBehavior
 {
     UIAttachmentBehavior *_topLeft;
     UIAttachmentBehavior *_topRight;

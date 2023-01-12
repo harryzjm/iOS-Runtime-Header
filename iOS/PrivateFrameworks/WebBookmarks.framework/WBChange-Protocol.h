@@ -10,7 +10,6 @@
 
 @protocol WBChange <NSObject, NSSecureCoding, WBSerializable>
 @property(readonly, nonatomic) _Bool shouldSync;
-@property(readonly, nonatomic) long long objectType;
 @property(readonly, nonatomic) long long changeType;
 - (void)updateChangeAfterUpdatingInMemoryID:(int)arg1 withDatabaseID:(int)arg2;
 @end

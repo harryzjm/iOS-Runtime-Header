@@ -7,6 +7,10 @@
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
 @protocol HMDFeaturesDataSource <NSObject>
+@property(readonly, getter=isHH2MigrationDryRunEnabled) _Bool hh2MigrationDryRunEnabled;
+@property(readonly, getter=isAudioGroupingEnabled) _Bool audioGroupingEnabled;
+@property(readonly, getter=isHH2AutoMigrationEnabled) _Bool hh2AutoMigrationEnabled;
+@property(readonly, getter=isPersistentBulletinRegistrationsFeatureEnabled) _Bool persistentBulletinRegistrationsFeatureEnabled;
 @property(readonly, getter=isSignificantEventNotificationsFeatureEnabled) _Bool significantEventNotificationsFeatureEnabled;
 @property(readonly, getter=isCHIPFeatureEnabled) _Bool chipFeatureEnabled;
 @end

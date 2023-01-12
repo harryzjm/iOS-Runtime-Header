@@ -8,7 +8,7 @@
 
 @interface WFWorkflowDatabaseRunDescriptor (Conversion)
 - (void)donateRunInteractionWithDatabase:(id)arg1;
-- (id)workflowRepresentationWithDatabase:(id)arg1 environment:(long long)arg2 error:(id *)arg3;
+- (id)workflowFileDataWithDatabase:(id)arg1 error:(id *)arg2;
 - (id)workflowReferenceWithDatabase:(id)arg1 error:(id *)arg2;
 @end
 

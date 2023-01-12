@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import "VKMapViewAccessibilityElementDataSource-Protocol.h"
-
 @class AXVKExplorationVertexElement, NSArray, NSMutableArray, NSString, VKExplorationAccessibilityElement, VKMapView;
 @protocol OS_dispatch_queue, VKMapViewAccessibilityElementManagerDelegate;
 
-@interface VKMapViewAccessibilityElementManager : NSObject <VKMapViewAccessibilityElementDataSource>
+@interface VKMapViewAccessibilityElementManager : NSObject
 {
     _Bool _updating;
     float _explorationZoomLevel;

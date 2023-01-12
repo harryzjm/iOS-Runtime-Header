@@ -6,12 +6,9 @@
 
 #import <TSCharts/TSCHChartMediator.h>
 
-#import <NumbersQuicklook/TSCECalculationEngineRegistration-Protocol.h>
-#import <NumbersQuicklook/TSCEFormulaOwning-Protocol.h>
-
 @class NSCondition, NSDictionary, NSString, TNChartFormulaStorage, TNMutableChartFormulaStorage, TSCECalculationEngine, TSUIntToIntDictionary;
 
-@interface TNChartMediator : TSCHChartMediator <TSCECalculationEngineRegistration, TSCEFormulaOwning>
+@interface TNChartMediator : TSCHChartMediator
 {
     struct TSKUIDStruct _entityUID;
     TNChartFormulaStorage *_formulaStorage;
@@ -41,6 +38,7 @@
 @property(nonatomic) _Bool isEditing; // @synthesize isEditing=_isEditing;
 @property(readonly, nonatomic) _Bool hasBlittedSinceConditionVarSet; // @synthesize hasBlittedSinceConditionVarSet=_hasBlittedSinceConditionVarSet;
 @property(readonly, nonatomic) struct TSKUIDStruct entityUID; // @synthesize entityUID=_entityUID;
+- (void)p_logFormulaEditAnalytics;
 - (void)localizeFormulaLiteralsWithTemplateBundle:(id)arg1 locale:(id)arg2;
 - (id)customNegScatterXFormulas;
 - (id)customPosScatterXFormulas;
@@ -138,6 +136,7 @@
 - (unsigned long long)formulaTypeFromDataType:(int)arg1;
 - (id)commandToChangeCategoryLabelFormulas:(id)arg1;
 - (id)commandToChangeLabelFormulas:(id)arg1 forType:(unsigned long long)arg2 modelUpdateDataType:(int)arg3;
+- (_Bool)p_isValidFormulaEditForScheme:(id)arg1;
 - (id)categoryLabelFormulas;
 - (id)labelFormulasForType:(unsigned long long)arg1;
 - (id)descriptorForSummaryChart;
@@ -180,9 +179,10 @@
 - (void)setFormulaOwnerUID:(const struct TSKUIDStruct *)arg1;
 - (struct TSKUIDStruct)formulaOwnerUID;
 - (id)formulaOwner;
+- (id)nonDefaultDataFormatterForSummarySeries:(id)arg1 index:(unsigned long long)arg2 axisType:(int)arg3 documentRoot:(id)arg4;
 - (id)dataFormatterForSeries:(id)arg1 index:(unsigned long long)arg2 axisType:(int)arg3 documentRoot:(id)arg4;
 - (id)nonDefaultDataFormatterForSeries:(id)arg1 index:(unsigned long long)arg2 axisType:(int)arg3 documentRoot:(id)arg4;
-- (id)dataFormatterFromFormatStruct:(CDStruct_fef6b84f)arg1 in:(id)arg2;
+- (id)dataFormatterFromFormat:(id)arg1 in:(id)arg2;
 - (id)dataFormatterForAxis:(id)arg1 documentRoot:(id)arg2;
 
 // Remaining properties

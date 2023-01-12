@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI42CompoundDataSourceCollectionViewControllerCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI57SummarySharingOnboardingSharingConfirmationViewController
+@interface _TtC18HealthExperienceUI57SummarySharingOnboardingSharingConfirmationViewController : _$s18HealthExperienceUI42CompoundDataSourceCollectionViewControllerCN
 {
     MISSING_TYPE *healthExperienceStore;
     MISSING_TYPE *previewDataSource;

@@ -10,11 +10,11 @@
 
 @interface _TtC10CoreParsec14PARImageLoader : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *client;
-    MISSING_TYPE *urlSession;
-    MISSING_TYPE *lock;
-    MISSING_TYPE *_pendingRequests;
-    MISSING_TYPE *_imageMapPublisher;
+    MISSING_TYPE *log;
+    MISSING_TYPE *feedbackReporter;
+    MISSING_TYPE *validator;
+    MISSING_TYPE *idToURL;
+    MISSING_TYPE *loader;
 }
 
 @end

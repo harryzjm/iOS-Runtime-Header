@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSGraphSpaceToDepth2DOp
+#import "MPSGraphOperation.h"
+
+@interface MPSGraphSpaceToDepth2DOp : MPSGraphOperation
 {
     unsigned long long _blockSize;
     _Bool _pixelShuffleOrder;

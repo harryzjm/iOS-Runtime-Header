@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/IKAppDocumentDelegate-Protocol.h>
-
 @class IKAppDocument, IKViewElement, NSDictionary, NSString, VideosExtrasContext;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasTemplateViewController <IKAppDocumentDelegate>
+@interface VideosExtrasTemplateViewController
 {
     IKViewElement *_displayedTemplate;
     NSDictionary *_options;

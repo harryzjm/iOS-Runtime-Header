@@ -10,8 +10,8 @@
 
 @protocol _UIMenuLeafAlternate <NSObject>
 @property(readonly, nonatomic) NSString *title;
-- (id)_resolvedTargetFromFirstTarget:(id)arg1;
-- (void)_performWithTarget:(id)arg1;
+- (id)_resolvedTargetFromFirstTarget:(id)arg1 sender:(id)arg2;
+- (void)_performWithTarget:(id)arg1 sender:(id)arg2;
 - (long long)_leafKeyModifierFlags;
 @end
 

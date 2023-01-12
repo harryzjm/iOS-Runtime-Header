@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Osprey/NSURLSessionTaskDelegate-Protocol.h>
-
 @class AbsintheAuthenticationDurations, NSMapTable, NSString, NSURL, NSURLSession, OspreyMessageWriter;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface OspreyGRPCChannel : NSObject <NSURLSessionTaskDelegate>
+@interface OspreyGRPCChannel : NSObject
 {
     NSURLSession *_session;
     NSURL *_baseURL;

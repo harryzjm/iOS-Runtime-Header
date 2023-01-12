@@ -11,6 +11,7 @@
 @interface NSData (TelephonyUtilities)
 + (id)tu_dataForUUID:(id)arg1;
 + (id)tu_dataForURLSafeBase64EncodedString:(id)arg1;
++ (id)tu_dataForAuditToken:(CDStruct_6ad76789)arg1;
 @property(readonly, nonatomic) NSUUID *tu_UUID;
 @property(readonly, copy, nonatomic) NSString *tu_URLSafeBase64EncodedString;
 @end

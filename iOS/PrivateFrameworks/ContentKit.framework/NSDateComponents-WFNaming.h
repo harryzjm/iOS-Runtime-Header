@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDateComponents.h>
 
-#import <ContentKit/WFNaming-Protocol.h>
-
 @class NSString;
 
-@interface NSDateComponents (WFNaming) <WFNaming>
+@interface NSDateComponents (WFNaming)
 @property(readonly, copy, nonatomic) NSString *wfName;
 @end
 

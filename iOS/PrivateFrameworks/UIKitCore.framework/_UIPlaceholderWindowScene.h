@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIContextBinderContextCreationPolicyHolding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIPlaceholderWindowScene <_UIContextBinderContextCreationPolicyHolding>
+@interface _UIPlaceholderWindowScene
 {
 }
 
 + (_Bool)autoinvalidates;
 + (_Bool)shouldAllowComponents;
 + (_Bool)alwaysKeepContexts;
-- (_Bool)_permitContextCreationForBindingDescription:(CDStruct_98d137ef)arg1;
+- (_Bool)_permitContextCreationForBindingDescription:(CDStruct_b73e569c)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,13 +9,12 @@
 #import <XCTestCore/XCTMetric-Protocol.h>
 #import <XCTestCore/XCTMetric_Private-Protocol.h>
 
-@class MXMCPUMetric, NSString, XCUIApplication;
+@class MXMCPUMetric, NSString;
 
 @interface XCTCPUMetric : NSObject <XCTMetric_Private, XCTMetric>
 {
     NSString *_instrumentationName;
-    MXMCPUMetric *__underlyingMetric;
-    XCUIApplication *_targetApplication;
+    MXMCPUMetric *_underlyingMetric;
     NSString *_processDisplayName;
     NSString *_processIdentifierName;
 }
@@ -23,8 +22,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *processIdentifierName; // @synthesize processIdentifierName=_processIdentifierName;
 @property(retain, nonatomic) NSString *processDisplayName; // @synthesize processDisplayName=_processDisplayName;
-@property(retain, nonatomic) XCUIApplication *targetApplication; // @synthesize targetApplication=_targetApplication;
-@property(retain, nonatomic) MXMCPUMetric *_underlyingMetric; // @synthesize _underlyingMetric=__underlyingMetric;
+@property(readonly, nonatomic) MXMCPUMetric *underlyingMetric; // @synthesize underlyingMetric=_underlyingMetric;
 @property(readonly, nonatomic) NSString *instrumentationName; // @synthesize instrumentationName=_instrumentationName;
 - (id)reportMeasurementsFromStartTime:(id)arg1 toEndTime:(id)arg2 error:(id *)arg3;
 - (void)didStopMeasuringAtTimestamp:(id)arg1;
@@ -33,7 +31,6 @@
 - (void)prepareToMeasureWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithUnderlyingMetric:(id)arg1;
-- (id)initWithApplication:(id)arg1;
 - (id)initWithProcessName:(id)arg1;
 - (id)initWithProcessIdentifier:(int)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;

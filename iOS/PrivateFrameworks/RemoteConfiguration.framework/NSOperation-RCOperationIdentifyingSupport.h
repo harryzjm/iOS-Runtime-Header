@@ -6,11 +6,9 @@
 
 #import <Foundation/NSOperation.h>
 
-#import <RemoteConfiguration/RCOperationIdentifying-Protocol.h>
-
 @class NSString;
 
-@interface NSOperation (RCOperationIdentifyingSupport) <RCOperationIdentifying>
+@interface NSOperation (RCOperationIdentifyingSupport)
 - (id)longOperationDescription;
 - (id)shortOperationDescription;
 

@@ -6,10 +6,11 @@
 
 #import <MessageUI/NSObject-Protocol.h>
 
-@class MFPopupButton, MFPopupButtonItem;
+@class MFPopupButton, MFPopupButtonItem, UIMenu;
 @protocol UIContextMenuInteractionAnimating;
 
 @protocol MFPopupButtonDelegate <NSObject>
+- (UIMenu *)menuForPopupButton:(MFPopupButton *)arg1;
 
 @optional
 - (void)popupButtonWillDismissMenu:(MFPopupButton *)arg1 animator:(id <UIContextMenuInteractionAnimating>)arg2;

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NAFuture.h"
+
 @class NSObject;
 @protocol NAScheduler, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _NALazyFuture
+@interface _NALazyFuture : NAFuture
 {
     _Bool _started;
     CDUnknownBlockType _block;

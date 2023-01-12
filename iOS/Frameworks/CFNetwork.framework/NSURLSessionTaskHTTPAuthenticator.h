@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSCopying-Protocol.h>
-
 @class NSSet;
 
-@interface NSURLSessionTaskHTTPAuthenticator : NSObject <NSCopying>
+@interface NSURLSessionTaskHTTPAuthenticator : NSObject
 {
     NSSet *_statusCodes;
 }

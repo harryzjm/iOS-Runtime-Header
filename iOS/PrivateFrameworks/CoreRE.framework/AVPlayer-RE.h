@@ -6,11 +6,9 @@
 
 #import <AVFoundation/AVPlayer.h>
 
-#import <CoreRE/RERemoteVideoPlayer-Protocol.h>
-
 @class NSString;
 
-@interface AVPlayer (RE) <RERemoteVideoPlayer>
+@interface AVPlayer (RE)
 - (_Bool)hasMediaCharacteristicAudible;
 - (struct CGSize)videoTrackNaturalSize;
 - (void)setSTSLabel:(id)arg1;

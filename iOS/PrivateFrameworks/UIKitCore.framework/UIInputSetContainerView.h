@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIViewHost-Protocol.h>
-
 @class NSMutableDictionary, NSString, UIKBRenderConfig, UIScreen;
 
 __attribute__((visibility("hidden")))
-@interface UIInputSetContainerView <_UIViewHost>
+@interface UIInputSetContainerView
 {
     UIKBRenderConfig *_renderConfig;
     NSMutableDictionary *_hostedViews;
@@ -19,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)_notifyOnExplicitLayout;
 + (_Bool)_shouldHitTestInputViewFirst;
+- (void).cxx_destruct;
 @property(nonatomic) struct CGPoint offsetOrigin; // @synthesize offsetOrigin=_offsetOrigin;
 - (_Bool)_isTransparentFocusRegion;
 - (void)setCenter:(struct CGPoint)arg1;
@@ -29,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)didAddSubview:(id)arg1;
 - (_Bool)hasHostedViews;
 - (void)addHostedView:(id)arg1 withViewRemovalHandler:(CDUnknownBlockType)arg2;
-@property(readonly, retain) UIScreen *hostingScreen;
+@property(readonly) UIScreen *hostingScreen;
 - (void)_setAccessoryViewFrame:(struct CGRect)arg1;
 - (struct CGRect)_accessoryViewFrame;
 - (id)_inputWindowController;

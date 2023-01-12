@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/VCPBaseTracker-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCPCtrTracker : NSObject <VCPBaseTracker>
+@interface VCPCtrTracker : NSObject
 {
     struct CGPoint *P;
     struct {

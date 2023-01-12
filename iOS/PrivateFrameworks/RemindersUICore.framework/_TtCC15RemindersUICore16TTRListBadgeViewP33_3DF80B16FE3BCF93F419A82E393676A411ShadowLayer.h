@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _TtCC15RemindersUICore16TTRListBadgeViewP33_3DF80B16FE3BCF93F419A82E393676A411ShadowLayer
+#import "_$s15RemindersUICore31TTRNoDefaultImplicitActionLayerCN.h"
+
+@interface _TtCC15RemindersUICore16TTRListBadgeViewP33_3DF80B16FE3BCF93F419A82E393676A411ShadowLayer : _$s15RemindersUICore31TTRNoDefaultImplicitActionLayerCN
 {
 }
 

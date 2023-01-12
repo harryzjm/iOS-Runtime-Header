@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCoding-Protocol.h>
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSEntityDescription, NSPropertyDescription;
 
 __attribute__((visibility("hidden")))
-@interface _NSPropertyDescriptionProxy : NSObject <NSCoding, NSSecureCoding>
+@interface _NSPropertyDescriptionProxy : NSObject
 {
     id _sourceBuffer;
     NSPropertyDescription *_underlyingProperty;

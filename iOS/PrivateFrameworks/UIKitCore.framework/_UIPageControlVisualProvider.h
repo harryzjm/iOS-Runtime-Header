@@ -14,14 +14,19 @@ __attribute__((visibility("hidden")))
     UIPageControl *_pageControl;
     long long _displayedPage;
     long long _interactionState;
+    UIImage *_preferredActiveIndicatorImage;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *preferredActiveIndicatorImage; // @synthesize preferredActiveIndicatorImage=_preferredActiveIndicatorImage;
 @property(nonatomic) long long interactionState; // @synthesize interactionState=_interactionState;
+- (struct CGRect)indicatorFrameForPage:(long long)arg1;
+@property(nonatomic) double indicatorOpacity;
+- (id)customActiveIndicatorImageForPage:(long long)arg1;
 - (id)customIndicatorImageForPage:(long long)arg1;
 @property(retain, nonatomic) UIImage *preferredIndicatorImage;
+- (void)setCustomActiveIndicatorImage:(id)arg1 forPage:(long long)arg2;
 - (void)setCustomIndicatorImage:(id)arg1 forPage:(long long)arg2;
-- (void)didUpdateBackgroundEffect;
-- (void)didUpdateLayoutDirection;
 - (void)updateDisplayedPageToCurrentPage;
 - (void)traitCollectionDidChangeOnSubtree:(id)arg1;
 - (void)invalidateIndicators;
@@ -30,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeForNumberOfPages:(long long)arg1;
 - (void)didEndTrackingWithTouch:(id)arg1;
+- (void)didUpdateBackgroundEffect;
+- (void)didUpdateLayoutDirection;
 - (void)didUpdateCustomLayoutValues;
 - (void)didUpdateBackgroundStyle;
 - (void)didUpdateInteractionTypeAvailability;

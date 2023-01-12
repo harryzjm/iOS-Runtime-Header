@@ -65,6 +65,7 @@
 + (id)ts_chevronRight;
 + (id)ts_checkmarkForHUD;
 + (id)ts_checkmarkCircleOnGrayFill;
++ (id)ts_minusCircleOpaqueFillOnRed;
 + (id)ts_checkmarkCircleOpaqueFillOnPink;
 + (id)ts_checkmarkCircleTertiaryFillOnPink;
 + (id)ts_checkmarkCircleFillWhite;

@@ -6,7 +6,6 @@
 
 @class MISSING_TYPE, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _TtC20FMPrecisionFindingUI25FMPFSKPatternFragmentNode
 {
     MISSING_TYPE *experienceType;

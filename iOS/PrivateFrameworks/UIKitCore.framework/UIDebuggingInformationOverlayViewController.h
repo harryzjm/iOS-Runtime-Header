@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UISplitViewControllerDelegate-Protocol.h>
+#import "UIViewController.h"
 
 @class UIDebuggingInformationContainerView, UIDebuggingInformationRootTableViewController, UINavigationController, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingInformationOverlayViewController <UISplitViewControllerDelegate>
+@interface UIDebuggingInformationOverlayViewController : UIViewController
 {
     UIDebuggingInformationContainerView *_shadowContainer;
     UINavigationController *_navController;

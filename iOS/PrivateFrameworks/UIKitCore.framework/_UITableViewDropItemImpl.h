@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITableViewDropItem-Protocol.h>
-
 @class NSIndexPath, NSString, UIDragItem;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewDropItemImpl : NSObject <_UITableViewDropItem>
+@interface _UITableViewDropItemImpl : NSObject
 {
     UIDragItem *_dragItem;
     NSIndexPath *_sourceIndexPath;

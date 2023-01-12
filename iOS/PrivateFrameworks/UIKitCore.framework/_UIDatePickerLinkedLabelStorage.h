@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_cachedSizeForKey:(id)arg1 size:(struct CGSize *)arg2;
 - (struct CGSize)_sizeForText:(id)arg1 font:(id)arg2 height:(double)arg3 overrideAttributes:(id)arg4;
 - (unsigned long long)_currentPriority;
-- (unsigned long long)_requiresLowerPriority:(id)arg1;
+- (void)_setPriority:(long long)arg1 label:(id)arg2;
 - (void)_resetPriority;
 - (void)_notifyAllLabelsExcept:(id)arg1;
 - (void)_detachLabel:(id)arg1;

@@ -6,10 +6,12 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBFluidSwitcherItemContainer;
+@class SBFluidSwitcherItemContainer, UIWindow;
 
 @protocol SBFluidSwitcherItemContainerDelegate <NSObject>
-- (void)containerSelectionStateChanged:(SBFluidSwitcherItemContainer *)arg1 toState:(long long)arg2;
+- (_Bool)hitTestedToTopAffordance:(struct CGPoint)arg1 window:(UIWindow *)arg2 ofItemContainer:(SBFluidSwitcherItemContainer *)arg3;
+- (void)pointerIsResizingItemContainer:(SBFluidSwitcherItemContainer *)arg1;
+- (void)containerSelectionStateChanged:(SBFluidSwitcherItemContainer *)arg1 toState:(long long)arg2 hover:(_Bool)arg3;
 - (double)currentStatusBarHeightOfContainer:(SBFluidSwitcherItemContainer *)arg1;
 - (void)containerDidEndAnimatingHighlight:(SBFluidSwitcherItemContainer *)arg1 scale:(double)arg2;
 - (void)containerWillBeginAnimatingHighlight:(SBFluidSwitcherItemContainer *)arg1 scale:(double)arg2 isTracking:(_Bool)arg3;

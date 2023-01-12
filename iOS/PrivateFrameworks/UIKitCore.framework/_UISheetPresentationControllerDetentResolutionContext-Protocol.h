@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSObject-Protocol.h>
+#import <UIKitCore/UISheetPresentationControllerDetentResolutionContext-Protocol.h>
 
 @class UITraitCollection;
 
-@protocol _UISheetPresentationControllerDetentResolutionContext <NSObject>
+@protocol _UISheetPresentationControllerDetentResolutionContext <UISheetPresentationControllerDetentResolutionContext>
+@property(readonly, nonatomic) double _maximumDetentValue;
 @property(readonly, nonatomic) struct CGRect _fullHeightPresentedViewFrame;
 @property(readonly, nonatomic, getter=_isInverted) _Bool _inverted;
 @property(readonly, nonatomic, getter=_isEdgeAttached) _Bool _edgeAttached;

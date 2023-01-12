@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTPromise-Protocol.h>
-
 @class DVTFuture, NSString;
 
-@interface DVTPromise : NSObject <DVTPromise>
+@interface DVTPromise : NSObject
 {
     DVTFuture *_future;
 }

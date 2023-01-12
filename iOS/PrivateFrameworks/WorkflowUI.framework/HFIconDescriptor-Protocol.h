@@ -5,12 +5,13 @@
 //
 
 #import <WorkflowUI/NAEquatable-Protocol.h>
+#import <WorkflowUI/NAHashable-Protocol.h>
 #import <WorkflowUI/NSObject-Protocol.h>
 
 @class NSString;
 @protocol HFIconDescriptor;
 
-@protocol HFIconDescriptor <NSObject, NAEquatable>
+@protocol HFIconDescriptor <NSObject, NAEquatable, NAHashable>
 @property(readonly, nonatomic) _Bool shouldForceLTR;
 @property(readonly, nonatomic) NSString *identifier;
 

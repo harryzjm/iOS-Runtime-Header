@@ -9,7 +9,8 @@
 @interface IMTransferServicesController (IMTransferServicesController_PreviewGeneration)
 - (_Bool)failTransfersOnPreviewGenerationFailure;
 - (id)transferServicesController;
-- (void)receiveFileTransfer:(id)arg1 transferGUID:(id)arg2 topic:(id)arg3 path:(id)arg4 requestURLString:(id)arg5 ownerID:(id)arg6 signature:(id)arg7 decryptionKey:(id)arg8 fileSize:(unsigned long long)arg9 generatePreview:(_Bool)arg10 balloonBundleID:(id)arg11 progressBlock:(CDUnknownBlockType)arg12 completionBlock:(CDUnknownBlockType)arg13;
-- (void)generatePreviewForTransfer:(id)arg1 attachmentPath:(id)arg2 balloonBundleID:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)receiveFileTransfer:(id)arg1 transferGUID:(id)arg2 topic:(id)arg3 path:(id)arg4 requestURLString:(id)arg5 ownerID:(id)arg6 signature:(id)arg7 decryptionKey:(id)arg8 fileSize:(unsigned long long)arg9 generatePreview:(_Bool)arg10 balloonBundleID:(id)arg11 isFromMe:(_Bool)arg12 progressBlock:(CDUnknownBlockType)arg13 completionBlock:(CDUnknownBlockType)arg14;
+- (_Bool)_markSensitiveDefault;
+- (void)generatePreviewForTransfer:(id)arg1 attachmentPath:(id)arg2 balloonBundleID:(id)arg3 isFromMe:(_Bool)arg4 completionBlock:(CDUnknownBlockType)arg5;
 @end
 

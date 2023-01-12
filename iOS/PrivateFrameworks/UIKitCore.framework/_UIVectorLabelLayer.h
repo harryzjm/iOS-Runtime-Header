@@ -6,13 +6,10 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-#import <UIKitCore/CALayerDelegate-Protocol.h>
-
 @class NSArray, NSString, _UIVectorTextLayout;
 
 __attribute__((visibility("hidden")))
-@interface _UIVectorLabelLayer : CALayer <CALayerDelegate, CAAnimationDelegate>
+@interface _UIVectorLabelLayer : CALayer
 {
     NSArray *_currentLayers;
     _UIVectorTextLayout *_currentTextLayout;

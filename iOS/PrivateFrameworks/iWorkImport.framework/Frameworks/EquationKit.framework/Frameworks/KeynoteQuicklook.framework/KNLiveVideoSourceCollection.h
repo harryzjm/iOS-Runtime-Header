@@ -15,6 +15,7 @@
 }
 
 + (_Bool)needsObjectUUID;
++ (id)localizedDefaultSourceNameForLocale:(id)arg1;
 + (id)p_makeDefaultSourceWithContext:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) KNLiveVideoSource *defaultSource; // @synthesize defaultSource=_defaultSource;

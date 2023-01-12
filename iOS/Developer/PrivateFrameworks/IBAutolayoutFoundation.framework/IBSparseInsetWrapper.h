@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface IBSparseInsetWrapper : NSObject <IBBinaryArchiving>
+@interface IBSparseInsetWrapper : NSObject
 {
     CDStruct_c519178c _inset;
 }

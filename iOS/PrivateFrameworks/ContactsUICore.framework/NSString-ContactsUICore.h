@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <ContactsUICore/CNUIURLDestinationID-Protocol.h>
-
-@interface NSString (ContactsUICore) <CNUIURLDestinationID>
+@interface NSString (ContactsUICore)
 - (id)_cnui_URLDestinationID;
 
 // Remaining properties

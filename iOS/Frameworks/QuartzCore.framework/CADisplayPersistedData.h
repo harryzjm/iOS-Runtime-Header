@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuartzCore/NSSecureCoding-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CADisplayPersistedData : NSObject <NSSecureCoding>
+@interface CADisplayPersistedData : NSObject
 {
     NSString *_version;
     NSMutableArray *_latencies;

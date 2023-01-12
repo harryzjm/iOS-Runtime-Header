@@ -6,11 +6,9 @@
 
 #import <ContactsUICore/CNUILikenessRenderingScope.h>
 
-#import <ContactsUI/CNAvatarImageRenderingScopeInternal-Protocol.h>
-
 @class NSString;
 
-@interface CNUILikenessRenderingScope (CNAvatarImageRenderingScope) <CNAvatarImageRenderingScopeInternal>
+@interface CNUILikenessRenderingScope (CNAvatarImageRenderingScope)
 - (id)likenessRenderingScope;
 - (unsigned long long)avatarViewBackgroundStyle;
 - (unsigned long long)avatarViewStyle;

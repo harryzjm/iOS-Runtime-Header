@@ -11,6 +11,8 @@
 @protocol WBSBundleWebExtensionsControllerMessageReceiver <NSObject>
 - (void)crashWebProcess;
 - (void)notifyExtensionWithID:(NSUUID *)arg1 alarmWasFiredWithInfo:(NSDictionary *)arg2;
+- (void)notifyExtensionWithID:(NSUUID *)arg1 permissionWasRemovedWithInfo:(NSDictionary *)arg2;
+- (void)notifyExtensionWithID:(NSUUID *)arg1 permissionWasAddedWithInfo:(NSDictionary *)arg2;
 - (void)notifyContentScriptsForExtensionWithID:(NSUUID *)arg1 storageWasChangedWithChanges:(NSDictionary *)arg2 areaName:(NSString *)arg3 browsingContext:(WKBrowsingContextHandle *)arg4;
 - (void)notifyRelatedWebViewsForExtensionWithID:(NSUUID *)arg1 storageWasChangedWithChanges:(NSDictionary *)arg2 areaName:(NSString *)arg3;
 - (void)notifyExtensionWithID:(NSUUID *)arg1 commandWasPerformed:(NSString *)arg2;
@@ -38,7 +40,7 @@
 - (void)receiveConnectionRequestInBrowsingContext:(WKBrowsingContextHandle *)arg1 extensionID:(NSUUID *)arg2 portID:(NSUUID *)arg3 connectInfo:(NSDictionary *)arg4 sender:(NSDictionary *)arg5;
 - (void)receiveConnectionRequestToBackgroundPageInBrowsingContext:(WKBrowsingContextHandle *)arg1 portID:(NSUUID *)arg2 connectInfo:(NSDictionary *)arg3 sender:(NSDictionary *)arg4;
 - (void)receiveMessage:(NSString *)arg1 inBrowsingContext:(WKBrowsingContextHandle *)arg2 toPortWithID:(NSUUID *)arg3;
-- (void)receiveMessage:(NSString *)arg1 fromSender:(NSDictionary *)arg2 toExtensionWithID:(NSUUID *)arg3 inBrowsingContext:(WKBrowsingContextHandle *)arg4 replyHandler:(void (^)(NSString *))arg5;
+- (void)receiveMessage:(NSString *)arg1 fromSender:(NSDictionary *)arg2 withOptions:(NSDictionary *)arg3 toExtensionWithID:(NSUUID *)arg4 inBrowsingContext:(WKBrowsingContextHandle *)arg5 replyHandler:(void (^)(NSString *))arg6;
 - (void)receiveMessage:(NSString *)arg1 fromSender:(NSDictionary *)arg2 inBrowsingContext:(WKBrowsingContextHandle *)arg3 replyHandler:(void (^)(NSString *))arg4;
 - (void)popupWithHandle:(WKBrowsingContextHandle *)arg1 didCloseForExtensionWithID:(NSUUID *)arg2;
 - (void)popupWithHandle:(WKBrowsingContextHandle *)arg1 aboutToLoadForExtensionWithID:(NSUUID *)arg2 inWindowWithID:(NSNumber *)arg3;

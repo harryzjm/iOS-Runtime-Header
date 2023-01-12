@@ -21,6 +21,9 @@
 @property(nonatomic) _Bool accelerometerDisabled; // @synthesize accelerometerDisabled=_accelerometerDisabled;
 - (_Bool)_accessibilityEventTapCallback:(id)arg1;
 - (void)_undoContextShiftedPoints:(id)arg1;
+- (_Bool)_gaxCapture:(id)arg1;
+- (_Bool)_inspectorCapture:(id)arg1;
+- (_Bool)_assistiveTouchCapture:(id)arg1;
 - (_Bool)_screenReaderCapture:(id)arg1;
 - (_Bool)_handleItemChooserVisible:(unsigned int)arg1;
 - (void)_startPassiveResendThread;
@@ -32,8 +35,8 @@
 - (id)_iosAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1 element:(id)arg2;
-- (void)simulatePressAtPoint:(struct CGPoint)arg1 withContextId:(unsigned int)arg2 withDelay:(float)arg3 withForce:(double)arg4;
-- (void)_sendPressFingerEvent:(_Bool)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
+- (void)simulatePressAtPoint:(struct CGPoint)arg1 withContextId:(unsigned int)arg2 withDelay:(float)arg3 withForce:(double)arg4 withSecureName:(unsigned int)arg5;
+- (void)_sendPressFingerEvent:(_Bool)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5 secureName:(unsigned int)arg6;
 - (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;

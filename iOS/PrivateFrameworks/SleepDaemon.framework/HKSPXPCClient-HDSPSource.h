@@ -6,12 +6,9 @@
 
 #import <Sleep/HKSPXPCClient.h>
 
-#import <SleepDaemon/HDSPSource-Protocol.h>
-
 @class NSString;
-@protocol HDSPSource;
 
-@interface HKSPXPCClient (HDSPSource) <HDSPSource>
+@interface HKSPXPCClient (HDSPSource)
 @property(readonly, nonatomic) NSString *sourceIdentifier;
 
 // Remaining properties
@@ -21,6 +18,5 @@
 @property(readonly, nonatomic) _Bool dontSync;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) id <HDSPSource> targetSource;
 @end
 

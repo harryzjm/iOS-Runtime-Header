@@ -6,11 +6,13 @@
 
 #import <LinkPresentation/NSObject-Protocol.h>
 
-@class LPARAsset, LPAudio, LPCaptionBarPresentationProperties, LPImage, LPImagePresentationProperties, LPInlineMediaPlaybackInformation, LPVideo, NSArray, NSNumber, NSString, UIColor;
+@class LPARAsset, LPAudio, LPCaptionBarPresentationProperties, LPImage, LPImagePresentationProperties, LPInlineMediaPlaybackInformation, LPVideo, NSArray, NSNumber, NSString, NSURL, UIColor;
 
 @protocol LPLinkPresentationPropertyProvider <NSObject>
 
 @optional
+- (NSNumber *)overrideAllowOpeningSensitiveURLs;
+- (NSURL *)overrideURL;
 - (NSString *)domainNameForIndicator;
 - (LPInlineMediaPlaybackInformation *)inlinePlaybackInformation;
 - (NSNumber *)minimumHeight;

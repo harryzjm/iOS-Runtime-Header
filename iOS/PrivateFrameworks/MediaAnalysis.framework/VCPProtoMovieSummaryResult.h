@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class VCPProtoBounds, VCPProtoTimeRange, VCPProtoVideoKeyFrame;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoMovieSummaryResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoMovieSummaryResult : PBCodable
 {
     float _curationScore;
     VCPProtoVideoKeyFrame *_keyFrame;

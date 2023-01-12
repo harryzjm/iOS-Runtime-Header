@@ -6,14 +6,14 @@
 
 #import <SpringBoardHome/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSIndexPath, NSString, NSUUID, SBFolder, SBFolderIcon, SBHIconModel, SBHWidgetInsertionRippleIconAnimator, SBIcon, SBIconDragManager, SBIconListView, SBIconView, SBRootFolder, SBRootFolderController, SBWidgetIcon, UIView, UIWindow;
-@protocol SBIconDragPreview, SBIconDragPreviewContaining, SBIconViewDelegate, SBIconViewQuerying, UIDragDropSession, UIDragSession, UIDropSession;
+@class NSArray, NSDate, NSIndexPath, NSString, NSUUID, SBFolder, SBFolderIcon, SBHIconModel, SBHWidgetInsertionRippleIconAnimator, SBIcon, SBIconDragManager, SBIconListView, SBIconView, SBRootFolder, SBRootFolderController, SBWidgetIcon, UIView, UIWindow, UIWindowScene;
+@protocol SBHIconLaunchContext, SBIconDragPreview, SBIconDragPreviewContaining, SBIconViewDelegate, SBIconViewQuerying, UIDragDropSession, UIDragSession, UIDropSession;
 
 @protocol SBIconDragManagerDelegate <NSObject>
 - (SBRootFolder *)rootFolderForIconDragManager:(SBIconDragManager *)arg1;
 
 @optional
-@property(nonatomic, getter=isOverlayLibraryViewVisible) _Bool overlayLibraryViewVisible;
+@property(nonatomic, getter=isMainDisplayLibraryViewVisible) _Bool mainDisplayLibraryViewVisible;
 @property(nonatomic, getter=isOverlayTodayViewVisible) _Bool overlayTodayViewVisible;
 @property(readonly, nonatomic, getter=isIconContentPossiblyVisibleOverApplication) _Bool iconContentPossiblyVisibleOverApplication;
 @property(readonly, nonatomic, getter=isRootFolderContentVisible) _Bool rootFolderContentVisible;
@@ -28,8 +28,8 @@
 - (SBRootFolderController *)rootFolderControllerForIconDragManager:(SBIconDragManager *)arg1;
 - (_Bool)isAnimatingFolderIconTransitionForIconDragManager:(SBIconDragManager *)arg1;
 - (_Bool)allowsNestedFoldersForIconDragManager:(SBIconDragManager *)arg1;
-- (void)dismissLibraryOverlayForIconDragManager:(SBIconDragManager *)arg1;
-- (void)presentLibraryOverlayForIconDragManager:(SBIconDragManager *)arg1;
+- (void)dismissLibraryForIconDragManager:(SBIconDragManager *)arg1 windowScene:(UIWindowScene *)arg2;
+- (void)presentLibraryForIconDragManager:(SBIconDragManager *)arg1 windowScene:(UIWindowScene *)arg2;
 - (void)dismissTodayOverlayForIconDragManager:(SBIconDragManager *)arg1;
 - (void)presentTodayOverlayForIconDragManager:(SBIconDragManager *)arg1;
 - (id <SBIconViewDelegate>)iconViewDelegateForExternalDragForIconDragManager:(SBIconDragManager *)arg1;
@@ -46,14 +46,14 @@
 - (void)iconDragManager:(SBIconDragManager *)arg1 didEndIconDragWithUniqueIdentifier:(NSUUID *)arg2 numberOfDraggedItems:(unsigned long long)arg3;
 - (void)iconDragManager:(SBIconDragManager *)arg1 didAddItemsToIconDragWithUniqueIdentifier:(NSUUID *)arg2 numberOfDraggedItems:(unsigned long long)arg3;
 - (void)iconDragManager:(SBIconDragManager *)arg1 willBeginIconDragWithUniqueIdentifier:(NSUUID *)arg2 numberOfDraggedItems:(unsigned long long)arg3;
-- (UIWindow<SBIconDragPreviewContaining> *)windowForIconDragPreviewsForIconDragManager:(SBIconDragManager *)arg1;
+- (UIWindow<SBIconDragPreviewContaining> *)windowForIconDragPreviewsForIconDragManager:(SBIconDragManager *)arg1 forWindowScene:(UIWindowScene *)arg2;
 - (UIView<SBIconDragPreview> *)iconDragManager:(SBIconDragManager *)arg1 dragPreviewForIconView:(SBIconView *)arg2;
 - (void)iconDragManagerMultiItemIconDraggingDidChange:(SBIconDragManager *)arg1;
 - (void)iconDragManagerIconDraggingDidChange:(SBIconDragManager *)arg1;
 - (_Bool)iconDragManagerCanBeginIconDrags:(SBIconDragManager *)arg1;
 - (UIView *)rootViewForIconDragManager:(SBIconDragManager *)arg1;
 - (SBHWidgetInsertionRippleIconAnimator *)widgetInsertionRippleIconAnimatorForIcon:(SBWidgetIcon *)arg1 iconListView:(SBIconListView *)arg2 withReferenceIconView:(SBIconView *)arg3;
-- (void)pushExpandedIcon:(SBIcon *)arg1 location:(NSString *)arg2 animated:(_Bool)arg3 completionHandler:(void (^)(_Bool))arg4;
+- (void)pushExpandedIcon:(SBIcon *)arg1 location:(NSString *)arg2 context:(id <SBHIconLaunchContext>)arg3 animated:(_Bool)arg4 completionHandler:(void (^)(_Bool))arg5;
 - (void)addIcons:(NSArray *)arg1 intoFolderIcon:(SBFolderIcon *)arg2 openFolderOnFinish:(_Bool)arg3 completion:(void (^)(void))arg4;
 - (SBFolder *)createNewFolderFromRecipientIcon:(SBIcon *)arg1 grabbedIcon:(SBIcon *)arg2;
 - (void)layoutIconListsWithAnimationType:(long long)arg1 forceRelayout:(_Bool)arg2;

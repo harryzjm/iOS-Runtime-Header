@@ -4,19 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKUGCCallToActionViewAppearance, MUPlaceSectionView;
+@class MKUGCCallToActionViewAppearance, MUCallToActionItemCellModel, MUPlaceSectionView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface MUPassiveCallToActionSectionController
 {
     MUPlaceSectionView *_sectionView;
+    MUCallToActionItemCellModel *_addPhotoModel;
+    MUCallToActionItemCellModel *_ratingsModel;
+    UIView *_suggestionView;
     MKUGCCallToActionViewAppearance *_submissionStatus;
 }
 
 - (void).cxx_destruct;
 - (id)submissionStatus;
+- (_Bool)isImpressionable;
+- (int)analyticsModuleType;
 - (void)_instrumentUserAction:(int)arg1;
+- (void)_loadContentIfNeeded;
+- (void)_unloadContent;
+- (void)updateSuggestionView;
 - (_Bool)hasContent;
+- (void)_handleViewCurrentSubmissionTapWithPresentationOptions:(id)arg1;
+- (void)_handlePhotoItemTapWithPresentationOptions:(id)arg1 entryPoint:(long long)arg2;
+- (void)_handlePhotoItemTapWithPresentationOptions:(id)arg1;
+- (void)_handleRatingItemTapWithPresentationOptions:(id)arg1;
 - (id)sectionView;
 - (void)_updateForSubmissionStatusChangeWithPreviousStatus:(id)arg1;
 - (void)setSubmissionStatus:(id)arg1;

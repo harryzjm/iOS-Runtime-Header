@@ -7,7 +7,15 @@
 @class CNKBannerPresentationManager, NSUUID;
 
 @protocol CNKBannerPresentationDelegate
+- (void)bannerPresentationManagerShowFullscreenUI:(CNKBannerPresentationManager *)arg1;
+- (void)bannerPresentationManager:(CNKBannerPresentationManager *)arg1 avUpgradedCallUUID:(NSUUID *)arg2;
 - (void)bannerPresentationManager:(CNKBannerPresentationManager *)arg1 updatedControlsManagerCallUUID:(NSUUID *)arg2;
 - (void)bannerPresentationManager:(CNKBannerPresentationManager *)arg1 requestToPresentBanner:(void (^)(_Bool))arg2;
+@property(nonatomic, readonly) _Bool isAlertAvailable;
+@property(nonatomic, readonly) _Bool hasPresentedFullScreenCallUI;
+
+@optional
+- (void)bannerPresentationManagerShowFullscreenCallDetailsView:(CNKBannerPresentationManager *)arg1;
+- (void)bannerPresentationManager:(CNKBannerPresentationManager *)arg1 avDowngradedGroupUUID:(NSUUID *)arg2;
 @end
 

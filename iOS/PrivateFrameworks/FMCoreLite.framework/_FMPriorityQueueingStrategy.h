@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FMCoreLite/FMQueueingStrategy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _FMPriorityQueueingStrategy : NSObject <FMQueueingStrategy>
+@interface _FMPriorityQueueingStrategy : NSObject
 {
     CDUnknownBlockType _priorityComparator;
 }

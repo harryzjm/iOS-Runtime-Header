@@ -6,11 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <MediaMiningKit/CLSCurationDebugItemCluster-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (CLSNSArrayExtensions) <CLSCurationDebugItemCluster>
+@interface NSArray (CLSNSArrayExtensions)
 - (id)anyObject;
 - (id)map:(CDUnknownBlockType)arg1;
 - (id)flattenWithSeparator:(id)arg1;

@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFShareCommand.h>
 
 @interface SFShareCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

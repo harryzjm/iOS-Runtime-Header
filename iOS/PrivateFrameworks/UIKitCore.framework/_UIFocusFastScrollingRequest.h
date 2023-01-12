@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, UIPanGestureRecognizer, UIScrollView, _UIFocusEngineJoystickGestureRecognizer;
+@class NSArray, UIPanGestureRecognizer, UIScrollView, _UIFocusEngineJoystickGestureRecognizer, _UIRotaryGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusFastScrollingRequest : NSObject
@@ -14,7 +14,9 @@ __attribute__((visibility("hidden")))
     _Bool _indexBarAnimatesEmphasisOnDisplay;
     UIScrollView *_scrollView;
     UIPanGestureRecognizer *_panGesture;
+    _UIRotaryGestureRecognizer *_rotaryGesture;
     NSArray *_arrowButtonGestures;
+    NSArray *_pageButtonGestures;
     _UIFocusEngineJoystickGestureRecognizer *_joystickGesture;
     long long _scrollingType;
     unsigned long long _heading;
@@ -32,7 +34,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long heading; // @synthesize heading=_heading;
 @property(nonatomic) long long scrollingType; // @synthesize scrollingType=_scrollingType;
 @property(retain, nonatomic) _UIFocusEngineJoystickGestureRecognizer *joystickGesture; // @synthesize joystickGesture=_joystickGesture;
+@property(retain, nonatomic) NSArray *pageButtonGestures; // @synthesize pageButtonGestures=_pageButtonGestures;
 @property(retain, nonatomic) NSArray *arrowButtonGestures; // @synthesize arrowButtonGestures=_arrowButtonGestures;
+@property(retain, nonatomic) _UIRotaryGestureRecognizer *rotaryGesture; // @synthesize rotaryGesture=_rotaryGesture;
 @property(retain, nonatomic) UIPanGestureRecognizer *panGesture; // @synthesize panGesture=_panGesture;
 @property(nonatomic) struct CGPoint velocity; // @synthesize velocity=_velocity;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;

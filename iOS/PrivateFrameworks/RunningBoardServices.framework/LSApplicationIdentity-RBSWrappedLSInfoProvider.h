@@ -6,11 +6,9 @@
 
 #import <CoreServices/LSApplicationIdentity.h>
 
-#import <RunningBoardServices/RBSWrappedLSInfoProvider-Protocol.h>
-
 @class NSString;
 
-@interface LSApplicationIdentity (RBSWrappedLSInfoProvider) <RBSWrappedLSInfoProvider>
+@interface LSApplicationIdentity (RBSWrappedLSInfoProvider)
 - (id)fetchWrappedInfoWithError:(out id *)arg1;
 
 // Remaining properties

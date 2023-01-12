@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSData, NSString;
 
-@interface IBICVectorGlyphComponent : NSObject <IBBinaryArchiving>
+@interface IBICVectorGlyphComponent : NSObject
 {
     NSData *_pdfData;
     double _baseline;

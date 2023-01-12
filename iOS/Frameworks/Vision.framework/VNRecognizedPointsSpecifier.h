@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSCopying-Protocol.h>
-#import <Vision/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, VNRequestSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface VNRecognizedPointsSpecifier : NSObject <NSSecureCoding, NSCopying>
+@interface VNRecognizedPointsSpecifier : NSObject
 {
     VNRequestSpecifier *_originatingRequestSpecifier;
     NSDictionary *_allRecognizedPoints;

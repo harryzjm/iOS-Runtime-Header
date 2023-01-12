@@ -31,20 +31,15 @@ __attribute__((visibility("hidden")))
     double _extendedRampUpFrozenExitTime;
     double _stabilizationTime;
     double _rateChangeSystemTime;
-    double _lastRampDownTimeDueToFeedback;
-    double _lastRampDownTimeDueToBaseband;
     double _lastPositiveOWRDTime;
     double _lastAllowRampUpTime;
     _Bool _isRampUpSettling;
     _Bool _isStable;
-    _Bool _isFirstTimestampArrived;
     double _inVideoBitrate;
     double _outVideoBitrate;
     double _inAudioBitrate;
     double _outAudioBitrate;
     unsigned int _fastRampDownBitrateRange;
-    unsigned int _consecutiveRampDown;
-    double _lastTimeStartRampingDown;
     double _rampUpSettleDuration;
     _Bool _shouldSuppressRampDown;
     unsigned int _rampDownSuppressionBitrateThreshold;
@@ -68,6 +63,7 @@ __attribute__((visibility("hidden")))
     double _previousRoundTripTime;
     double _lastNetworkUnstableTime;
     _Bool _withBTCoex;
+    _Bool _abnormalNetworkDetected;
 }
 
 - (void)printRateControlInfoToLogDump;
@@ -75,9 +71,8 @@ __attribute__((visibility("hidden")))
 - (void)checkMediaQueueBitrates;
 - (unsigned int)getRampDownSuppressionBitrateThresholdWithRTT;
 - (_Bool)updateParametersForRampDownSuppression;
+- (void)checkAbnormalNetworkCondition;
 - (void)checkCongestionStatus;
-- (void)updateCongestionStatusWhenRampDown:(double)arg1;
-- (void)updateCongestionStatusWhenRampUp;
 - (void)calculatePacketLossWithReceivedPacketCount:(unsigned int)arg1 receivedPacketCountVideo:(unsigned int)arg2 packetBurstLoss:(unsigned short)arg3 packetLossSample:(double)arg4;
 - (void)calculateRoundTripTimeWithSample:(double)arg1;
 - (void)calculateCongestionMetricsFromOWRD:(double)arg1 time:(double)arg2;
@@ -90,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldRampDownDueToNOWRD;
 - (_Bool)shouldRampDown;
 - (_Bool)shouldRampUp;
+- (_Bool)shouldBlockRampUpDueToNetworkUnstable;
 - (_Bool)checkNetworkSaturationWithRoundTripTime:(double)arg1 minRoundTripTime:(double)arg2 packetLossRate:(double)arg3 owrd:(double)arg4;
 - (_Bool)isRoundTripTimeDecreasingOrLessThanMinEnvelope;
 - (_Bool)isNetworkSaturated;
@@ -106,17 +102,17 @@ __attribute__((visibility("hidden")))
 - (void)resetRampingStatus;
 - (void)updateVCRateControlHistory;
 - (void)updateInternalStatus;
-- (_Bool)updateInternalStatistics:(CDStruct_c0785916)arg1;
+- (_Bool)updateInternalStatistics:(CDStruct_7df19fcb)arg1;
 - (void)runRateControlStateTransition;
 - (unsigned int)worstRecentBurstLoss;
 - (double)worstRecentRoundTripTime;
 - (void)setLocalBandwidthEstimation:(unsigned int)arg1;
 - (_Bool)shouldEnableBasebandAdaptationWithBasebandStatistics:(CDStruct_f0a7dbac)arg1 previousBasebandRAT:(int)arg2;
 - (_Bool)isBasebandRATGreaterOrSameAsLTE:(int)arg1;
-- (_Bool)doRateControlWithBasebandStatistics:(CDStruct_c0785916)arg1;
-- (_Bool)doRateControlWithNWStatistics:(CDStruct_c0785916)arg1;
-- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_c0785916)arg1;
-- (_Bool)doRateControlWithStatistics:(CDStruct_c0785916)arg1;
+- (_Bool)doRateControlWithBasebandStatistics:(CDStruct_7df19fcb)arg1;
+- (_Bool)doRateControlWithNWStatistics:(CDStruct_7df19fcb)arg1;
+- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_7df19fcb)arg1;
+- (_Bool)doRateControlWithStatistics:(CDStruct_7df19fcb)arg1;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
 - (id)init;
 

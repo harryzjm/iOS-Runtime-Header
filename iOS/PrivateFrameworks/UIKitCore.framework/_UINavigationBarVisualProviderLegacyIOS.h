@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
-#import <UIKitCore/_UINavigationBarGestureHandlerDelegate-Protocol.h>
+#import "_UINavigationBarVisualProvider.h"
 
 @class NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIFocusContainerGuide, UIImageView, UILayoutGuide, UIView, _UIBarBackground, _UIBarBackgroundLayoutLegacy, _UINavBarPrompt, _UINavigationBarGestureHandler, _UINavigationBarLegacyContentView;
 @protocol UIViewControllerTransitionCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarVisualProviderLegacyIOS <_UIBasicAnimationFactory, _UINavigationBarGestureHandlerDelegate>
+@interface _UINavigationBarVisualProviderLegacyIOS : _UINavigationBarVisualProvider
 {
     _UIBarBackground *_backgroundView;
     _UIBarBackgroundLayoutLegacy *_backgroundViewLayout;
     UIView *_customBackgroundView;
-    UIView *_currentCanvasView;
     UIView *_titleView;
     NSArray *_leftViews;
     NSArray *_rightViews;
@@ -79,12 +77,8 @@ __attribute__((visibility("hidden")))
 - (void)_completeNavigationTransitionWithIncomingViews:(id)arg1 outgoingViews:(id)arg2 transitionAssistant:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_startPopAnimationFromOldBackItem:(id)arg1 oldTopItem:(id)arg2 newBackItem:(id)arg3 newTopItem:(id)arg4 withTransitionAssistant:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_startPushAnimationFromOldBackItem:(id)arg1 oldTopItem:(id)arg2 newBackItem:(id)arg3 newTopItem:(id)arg4 withTransitionAssistant:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)_completeTransitionFromCanvasView:(id)arg1 toCanvasView:(id)arg2 updateSize:(_Bool)arg3 transitionAssistant:(id)arg4;
-- (_Bool)_performCanvasViewTransitionFromItem:(id)arg1 toItem:(id)arg2;
-- (_Bool)_prepareTransitionFromItem:(id)arg1 toItem:(id)arg2;
 - (_Bool)_supportsCanvasView;
 - (struct CGRect)_contentViewFrameInBounds:(struct CGRect)arg1 style:(id)arg2;
-- (struct CGRect)_frameForCanvasView:(id)arg1 inBounds:(struct CGRect)arg2;
 - (void)_updateBackIndicatorViewTintColor;
 - (void)_updateBackIndicatorImage;
 - (id)_effectiveBackIndicatorTransitionMaskImage;

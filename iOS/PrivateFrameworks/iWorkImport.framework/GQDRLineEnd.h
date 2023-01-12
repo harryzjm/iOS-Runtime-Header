@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class GQDBezierPath, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDRLineEnd : NSObject <GQDNameMappable>
+@interface GQDRLineEnd : NSObject
 {
     GQDBezierPath *mPath;
     struct CGPoint mEndPoint;

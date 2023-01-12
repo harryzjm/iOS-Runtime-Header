@@ -10,6 +10,7 @@
 @protocol CAMMetadataObjectResult;
 
 @protocol CAMProminentObjectManagerDelegate <NSObject>
+- (void)prominentObjectManagerDidChangeIsCurrentObjectExpiring:(CAMProminentObjectManager *)arg1;
 - (void)prominentObjectManager:(CAMProminentObjectManager *)arg1 didChangeCurrentMachineReadableCodeAction:(BCSAction *)arg2;
 - (void)prominentObjectManager:(CAMProminentObjectManager *)arg1 didChangeCurrentObject:(id <CAMMetadataObjectResult>)arg2;
 - (struct CGPoint)prominentObjectManagerPointOfInterestInNormalizedDeviceSpace:(CAMProminentObjectManager *)arg1;

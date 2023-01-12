@@ -18,6 +18,7 @@
 - (void)_setPrimaryAuxiliarySwitchState:(_Bool)arg1;
 - (void)_setPrimaryAuxiliarySwitchTitle:(NSString *)arg1;
 - (void)_setOverrideTraitCollection:(UITraitCollection *)arg1;
+- (void)_setSectionTitleForAuxiliarySwitches:(NSString *)arg1;
 - (void)_setLegacyAppearance:(_Bool)arg1;
 - (void)_setParticipantDetails:(NSDictionary *)arg1;
 - (void)_setShowRootFolder:(_Bool)arg1;

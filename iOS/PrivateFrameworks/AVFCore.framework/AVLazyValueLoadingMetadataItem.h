@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVMetadataItem.h"
+
 @class AVLazyValueLoadingMetadataItemInternal;
 
 __attribute__((visibility("hidden")))
-@interface AVLazyValueLoadingMetadataItem
+@interface AVLazyValueLoadingMetadataItem : AVMetadataItem
 {
     AVLazyValueLoadingMetadataItemInternal *_lazyMetadataItem;
 }

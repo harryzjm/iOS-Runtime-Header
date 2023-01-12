@@ -4,18 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCMediaCaptureController-Protocol.h>
-#import <AVConference/VCMediaStreamDelegate-Protocol.h>
-#import <AVConference/VCMediaStreamSendSyncSourceDelegate-Protocol.h>
-#import <AVConference/VCRedundancyControllerDelegate-Protocol.h>
-#import <AVConference/VCSessionUplinkVideoStreamControllerDelegate-Protocol.h>
-#import <AVConference/VCVideoCaptureClient-Protocol.h>
-#import <AVConference/VCVideoSink-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, VCMoments, VCRedundancyControllerVideo, VCSessionUplinkVideoStreamController, VCVideoRule;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStreamSendGroup <VCMediaStreamDelegate, VCSessionUplinkVideoStreamControllerDelegate, VCRedundancyControllerDelegate, VCMediaCaptureController, VCVideoSink, VCVideoCaptureClient, VCMediaStreamSendSyncSourceDelegate>
+@interface VCVideoStreamSendGroup
 {
     int _captureSource;
     _Atomic unsigned char _videoPriority;
@@ -24,7 +16,7 @@ __attribute__((visibility("hidden")))
     long long _maxSupportedMultiwayVideoResolution;
     struct CGSize _maxScreenCaptureSize;
     int _captureFrameRate;
-    int _maxSupportedMultiwayFrameRate;
+    int _maxSupportedCaptureFrameRate;
     NSMutableSet *_videoPayloadTypes;
     VCSessionUplinkVideoStreamController *_uplinkVideoStreamController;
     struct tagVCMemoryPool *_videoRedundancyPool;
@@ -36,10 +28,18 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_pendingActiveUplinkStreams;
     NSMutableArray *_temporalStreamsIDs;
     id _clientCaptureController;
+    unsigned int _activeTemporalTierBitmap;
+    id _videoSinkDelegate;
+    _Bool _isStreamInputCaptureSource;
+    _Bool _hasPeerSubscribedStreams;
+    _Bool _allowSuspendProvisionedStreams;
+    unsigned int _totalNumFramesReceived;
+    unsigned int _totalNumFramesProcessed;
+    _Bool _initTime;
 }
 
 @property(nonatomic) int captureFrameRate; // @synthesize captureFrameRate=_captureFrameRate;
-- (void)collectAndLogChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectAndLogChannelMetrics:(CDStruct_b671a7c4 *)arg1;
 - (unsigned long long)maxStreamFrameRate;
 - (void)computeMaxScreenCaptureSize;
 - (void)updateSendSampleRTPTimestamp:(unsigned int)arg1 sampleRate:(double)arg2 systemTime:(double)arg3;
@@ -66,13 +66,14 @@ __attribute__((visibility("hidden")))
 - (_Bool)enableRedundancy:(_Bool)arg1;
 - (_Bool)shouldCompoundListIgnoreStream:(id)arg1 streamConfig:(id)arg2 activeStreamIds:(id)arg3;
 - (_Bool)shouldSubscribeToStreamID:(id)arg1 peerSubscribedStreams:(id)arg2;
-- (id)streamDescriptionForMultiwayConfig:(id)arg1;
+- (id)streamDescriptionForMediaStreamConfig:(id)arg1;
 - (void)setActiveConnection:(id)arg1 uplinkBitrateCap:(unsigned int)arg2;
 - (void)setUplinkBitrateCapWifi:(unsigned int)arg1;
 - (void)setUplinkBitrateCapCell:(unsigned int)arg1;
 - (_Bool)updateUplinkStreamsForPeerSubscribedStreams:(id)arg1;
 - (id)activeStreamKeys;
 - (void)updateActiveMediaStreamIDs:(id)arg1 withTargetBitrate:(unsigned int)arg2 mediaBitrates:(id)arg3;
+- (void)updateSuspendedState;
 - (void)deregisterForScreenCapture;
 - (id)registerForScreenCapture;
 - (unsigned int)getPixelFormat;
@@ -83,11 +84,14 @@ __attribute__((visibility("hidden")))
 - (void)processVideoEventQueue;
 - (void)processVideoPriority;
 - (void)setupVideoPriority;
+- (void)didStart;
+- (void)updateBandwidthAllocatorStreamTokenState;
 - (id)willStart;
 - (void)updateVideoStreamAndProcessFrame:(id)arg1 sampleBuffer:(struct opaqueCMSampleBuffer *)arg2 lastSentAudioHostTime:(double)arg3 lastSentAudioSampleTime:(unsigned int)arg4 frameTime:(CDStruct_1b6d18a9)arg5 attribute:(CDStruct_51555cf6)arg6;
 - (_Bool)generateKeyFrameWithStreamID:(id)arg1;
 - (_Bool)setupUplinkVideoStreamController;
 - (int)maxCaptureCameraFrameRate;
+- (int)maxCaptureFrameRate;
 - (long long)maxCaptureResolution;
 - (void)cleanupRedundancySettings;
 - (void)setupPayloadTypes;

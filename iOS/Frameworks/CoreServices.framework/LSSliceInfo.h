@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface LSSliceInfo : NSObject <NSSecureCoding>
+@interface LSSliceInfo : NSObject
 {
     int _type;
     int _subtype;

@@ -6,11 +6,12 @@
 
 #import <SeymourMedia/NSObject-Protocol.h>
 
-@class AVPlayerItem, AVPlayerPlaybackCoordinator, NSString;
+@class AVPlayerItem, AVPlayerPlaybackCoordinator, NSArray, NSString;
 
 @protocol AVPlayerPlaybackCoordinatorDelegate <NSObject>
 
 @optional
+- (NSArray *)playbackCoordinator:(AVPlayerPlaybackCoordinator *)arg1 interstitialTimeRangesForPlayerItem:(AVPlayerItem *)arg2;
 - (NSString *)playbackCoordinator:(AVPlayerPlaybackCoordinator *)arg1 identifierForPlayerItem:(AVPlayerItem *)arg2;
 @end
 

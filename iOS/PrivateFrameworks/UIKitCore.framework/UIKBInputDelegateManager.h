@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIKeyInput-Protocol.h>
-
 @class NSString, UIResponder, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextInteractionSelectableInputDelegate;
 @protocol UIKeyInput, UIKeyboardImplStateProtocol, UIKeyboardInput;
 
 __attribute__((visibility("hidden")))
-@interface UIKBInputDelegateManager : NSObject <UIKeyInput>
+@interface UIKBInputDelegateManager : NSObject
 {
-    int m_delegateConformanceType;
+    unsigned long long m_delegateConformanceType;
+    unsigned long long m_originalDelegateConformanceType;
     _Bool _forwardingInputDelegateConformsToWKInteraction;
     _Bool m_firstResponderAdoptsTextInput;
     _Bool _shouldRespectForwardingInputDelegate;
@@ -39,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)selectionIsEndOfWord;
 - (void)changedSelection;
 - (_Bool)shouldDeleteForward;
+- (_Bool)callShouldDeleteBackwardWithCount:(unsigned long long)arg1;
 - (_Bool)callShouldReplaceExtendedRange:(long long)arg1 withText:(id)arg2 includeMarkedText:(_Bool)arg3;
 - (void)handleClearWithInsertBeforeAdvance:(id)arg1;
 - (void)unmarkText:(id)arg1;
@@ -52,13 +52,14 @@ __attribute__((visibility("hidden")))
 - (unsigned int)_characterBeforeCaretSelection;
 - (id)__content;
 - (_Bool)_deleteForwardAndNotify:(_Bool)arg1;
-- (void)_deleteBackwardAndNotify:(_Bool)arg1;
+- (void)_deleteBackwardAndNotify:(_Bool)arg1 reinsertText:(_Bool)arg2;
 - (void)_moveCurrentSelection:(int)arg1;
 - (void)_setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (_Bool)_hasMarkedText;
 - (void)handleKeyWebEvent:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)handleKeyWebEvent:(id)arg1;
 - (_Bool)requiresKeyEvents;
+- (void)insertDictationResult:(id)arg1;
 - (void)insertAttributedText:(id)arg1;
 - (void)insertTextSuggestion:(id)arg1;
 - (_Bool)insertSupplementalItem:(id)arg1 candidate:(id)arg2 replacementRange:(id)arg3;
@@ -76,7 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)setSelectedTextRange:(id)arg1;
 - (id)selectedTextRange;
 - (id)markedTextRange;
-- (void)replaceRange:(id)arg1 withText:(id)arg2 forKeyboardAction:(int)arg3;
+- (void)replaceRange:(id)arg1 oldText:(id)arg2 withText:(id)arg3 forReplaceAction:(int)arg4;
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
 - (id)textInRange:(id)arg1;
 - (void)insertText:(id)arg1 alternatives:(id)arg2 style:(long long)arg3;
@@ -98,6 +99,8 @@ __attribute__((visibility("hidden")))
 - (id)delegateRespectingForwardingDelegate:(_Bool)arg1;
 - (_Bool)delegateAdoptsWebTextInputPrivate;
 - (void)storeDelegateConformance;
+@property(readonly, nonatomic) unsigned long long delegateConformanceType;
+- (void)updateRespectForwardingInputDelegateFlagInDestination;
 - (void)clearForwardingInputDelegateAndResign:(_Bool)arg1;
 - (void)clearDelegate;
 - (void)setDelegate:(id)arg1;

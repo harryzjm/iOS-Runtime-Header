@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSDictionary, NSMutableOrderedSet, NSMutableSet, NSSet, NSString, VCMediaNegotiatorAudioConfiguration, VCVideoRuleCollections;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiatorLocalConfiguration : NSObject <NSCopying>
+@interface VCMediaNegotiatorLocalConfiguration : NSObject
 {
     unsigned int _videoSSRC;
     unsigned int _screenSSRC;
@@ -42,6 +40,7 @@ __attribute__((visibility("hidden")))
     _Bool _oneToOneModeSupported;
     _Bool _ltrpEnabled;
     NSSet *_pixelFormats;
+    NSSet *_hdrModesSupported;
     unsigned char _mediaControlInfoFECFeedbackVersion;
     unsigned char _linkProbingCapabilityVersion;
     NSMutableSet *_streamGroupConfigs;
@@ -83,6 +82,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSSet *streamGroupConfigs; // @synthesize streamGroupConfigs=_streamGroupConfigs;
 @property(nonatomic) unsigned char linkProbingCapabilityVersion; // @synthesize linkProbingCapabilityVersion=_linkProbingCapabilityVersion;
 @property(nonatomic) unsigned char mediaControlInfoFECFeedbackVersion; // @synthesize mediaControlInfoFECFeedbackVersion=_mediaControlInfoFECFeedbackVersion;
+@property(retain, nonatomic) NSSet *hdrModesSupported; // @synthesize hdrModesSupported=_hdrModesSupported;
 @property(retain, nonatomic) NSSet *pixelFormats; // @synthesize pixelFormats=_pixelFormats;
 @property(nonatomic) _Bool ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
 @property(nonatomic) _Bool oneToOneModeSupported; // @synthesize oneToOneModeSupported=_oneToOneModeSupported;

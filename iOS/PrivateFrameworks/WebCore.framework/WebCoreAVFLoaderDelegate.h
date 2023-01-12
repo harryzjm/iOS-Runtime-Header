@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVAssetResourceLoaderDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebCoreAVFLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
+@interface WebCoreAVFLoaderDelegate : NSObject
 {
     struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC, WTF::EmptyCounter> m_player;
 }

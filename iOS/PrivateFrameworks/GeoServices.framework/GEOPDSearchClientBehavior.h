@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDSearchClientBehavior : PBCodable <NSCopying>
+@interface GEOPDSearchClientBehavior : PBCodable
 {
     PBUnknownFields *_unknownFields;
     _Bool _shouldEnableRedoSearch;

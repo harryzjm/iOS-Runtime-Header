@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUICore/UINamedLayerImage-Protocol.h>
-
 @class NSString, UIImage;
 @protocol UINamedLayerContentProvider;
 
 __attribute__((visibility("hidden")))
-@interface VUIStackedImageNamedLayerImage : NSObject <UINamedLayerImage>
+@interface VUIStackedImageNamedLayerImage : NSObject
 {
     _Bool _fixedFrame;
     int _blendMode;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/ASDNotificationCenterDialogObserver-Protocol.h>
-
 @class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface VUIASDDialogObserver : NSObject <ASDNotificationCenterDialogObserver>
+@interface VUIASDDialogObserver : NSObject
 {
     UIViewController *_presenterViewController;
 }

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSEnumerator.h"
+
 @class NSConstantDictionary;
 
 __attribute__((visibility("hidden")))
-@interface __NSConstantDictionaryEnumerator
+@interface __NSConstantDictionaryEnumerator : NSEnumerator
 {
     NSConstantDictionary *_underlyingDictionary;
     unsigned long long _currentIndex;

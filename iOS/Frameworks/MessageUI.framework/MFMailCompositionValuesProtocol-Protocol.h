@@ -6,9 +6,15 @@
 
 #import <MessageUI/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSMutableArray, NSString, NSURL;
+@class CKContainerSetupInfo, CKShare, NSArray, NSData, NSDate, NSMutableArray, NSString, NSURL;
 
 @protocol MFMailCompositionValuesProtocol <NSObject>
+@property(nonatomic) _Bool ckShareAllowOthersToInvite;
+@property(nonatomic) long long ckSharePermissionType;
+@property(copy, nonatomic) CKContainerSetupInfo *ckContainerSetupInfo;
+@property(copy, nonatomic) CKShare *ckShare;
+@property(nonatomic) unsigned long long sendLaterContext;
+@property(copy, nonatomic) NSDate *sendLaterDate;
 @property(retain, nonatomic) NSMutableArray *deferredAttachments;
 @property(nonatomic) long long defaultContentVariationIndex;
 @property(copy, nonatomic) NSMutableArray *contentVariations;
@@ -25,6 +31,8 @@
 @property(copy, nonatomic) NSArray *bccRecipients;
 @property(copy, nonatomic) NSArray *ccRecipients;
 @property(copy, nonatomic) NSArray *toRecipients;
+@property(copy, nonatomic) NSString *from;
+@property(copy, nonatomic) NSString *hideMyEmailFrom;
 @property(copy, nonatomic) NSString *subject;
 @property(copy, nonatomic) NSString *preferredSendingEmailAddress;
 @property(copy, nonatomic) NSData *serializedMailboxObjectID;

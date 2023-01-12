@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTServicesSessionProvider-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
-@interface _TtC13DVTFoundation31DVTServicesSessionProxyProvider : NSObject <DVTServicesSessionProvider>
+@interface _TtC13DVTFoundation31DVTServicesSessionProxyProvider : NSObject
 {
     MISSING_TYPE *userDescription;
 }

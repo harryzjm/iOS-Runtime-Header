@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIInteraction-Protocol.h>
-#import <UIKitCore/_UIClickInteractionDriverDelegate-Protocol.h>
-#import <UIKitCore/_UIGestureStudyParticipating-Protocol.h>
-
 @class NSString, UIView;
 @protocol _UIClickInteractionDriving;
 
 __attribute__((visibility("hidden")))
-@interface _UIGestureStudyClickInteraction : NSObject <_UIClickInteractionDriverDelegate, UIInteraction, _UIGestureStudyParticipating>
+@interface _UIGestureStudyClickInteraction : NSObject
 {
     _Bool _usesForce;
     UIView *_view;

@@ -4,14 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSGraphRandomUniformOp
+#import "MPSGraphOperation.h"
+
+@interface MPSGraphRandomUniformOp : MPSGraphOperation
 {
-    unsigned long long _seed2;
+    unsigned int _dataType;
+    float _maximum;
+    float _minimum;
+    unsigned long long _minInteger;
+    unsigned long long _maxInteger;
 }
 
 - (id)partialDerivativeForInputTensor:(id)arg1 incomingGradient:(id)arg2 inputIndex:(unsigned long long)arg3 name:(id)arg4;
 - (void *)makeMLIROpWithBuilder:(void *)arg1 symbolTable:(void *)arg2 inputValues:(void *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
-- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 seed:(unsigned long long)arg4 name:(id)arg5;
+- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 descriptor:(id)arg4 name:(id)arg5;
 
 @end
 

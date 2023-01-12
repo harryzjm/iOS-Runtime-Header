@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PaymentUI/PKPaymentSetupDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCV9PaymentUI32PaymentSetupNavigationController11Coordinator : NSObject <PKPaymentSetupDelegate>
+@interface _TtCV9PaymentUI32PaymentSetupNavigationController11Coordinator : NSObject
 {
     MISSING_TYPE *parent;
     MISSING_TYPE *setupFinishedAction;

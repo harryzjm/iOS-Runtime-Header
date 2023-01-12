@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPContainedObject.h>
 
-#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
-
 @class NSIndexSet, TSPObject, TSTTableHeaderStorageBucket;
 
-@interface TSTTableHeaderStorage : TSPContainedObject <TSTCompatibilityVersionProviding>
+@interface TSTTableHeaderStorage : TSPContainedObject
 {
     TSTTableHeaderStorageBucket *_buckets[16];
     unsigned long long _bucketCount;
@@ -28,7 +26,15 @@
 - (void)incrementCellCountAtIndex:(unsigned int)arg1 byAmount:(unsigned long long)arg2;
 - (void)decrementCellCountAtIndex:(unsigned int)arg1 byAmount:(unsigned long long)arg2;
 - (unsigned long long)cellCountAtIndex:(unsigned int)arg1;
+- (void)moveIndexRange:(struct _NSRange)arg1 toIndex:(unsigned int)arg2;
+- (void)swapIndex:(unsigned int)arg1 withIndex:(unsigned int)arg2;
+- (void)shiftIndexesBackAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
+- (void)shiftIndexesForwardAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
+- (void)removeIndexesAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
+- (void)updateHeaderAtIndex:(unsigned int)arg1 fromMetadata:(id)arg2;
+- (id)metadataAtIndex:(unsigned int)arg1 hidingAction:(unsigned char)arg2 defaultSize:(double)arg3 uuid:(struct TSKUIDStruct)arg4;
 - (void)updateStylesWithBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)defaultStylesAtIndex:(unsigned int)arg1 outCellStyle:(id *)arg2 outTextStyle:(id *)arg3;
 - (void)setTextStyle:(id)arg1 atIndex:(unsigned int)arg2;
 - (id)textStyleAtIndex:(unsigned int)arg1;
 - (void)setCellStyle:(id)arg1 atIndex:(unsigned int)arg2;
@@ -37,18 +43,6 @@
 - (unsigned char)hidingStateAtIndex:(unsigned int)arg1;
 - (void)setSize:(double)arg1 atIndex:(unsigned int)arg2;
 - (double)sizeAtIndex:(unsigned int)arg1;
-- (void)moveIndexRange:(struct _NSRange)arg1 toIndex:(unsigned int)arg2;
-- (void)swapIndex:(unsigned int)arg1 withIndex:(unsigned int)arg2;
-- (void)shiftIndexesBackAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
-- (void)shiftIndexesForwardAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
-- (void)removeIndexesAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
-- (void)_setHeader:(id)arg1 atIndex:(unsigned int)arg2;
-- (id)_headerAtIndex:(unsigned int)arg1;
-- (id)_mutableNoCreateHeaderAtIndex:(unsigned int)arg1;
-- (id)_mutableHeaderAtIndex:(unsigned int)arg1;
-- (void)updateHeaderAtIndex:(unsigned int)arg1 fromMetadata:(id)arg2;
-- (id)metadataAtIndex:(unsigned int)arg1 hidingAction:(unsigned char)arg2 defaultSize:(double)arg3 uuid:(struct TSKUIDStruct)arg4;
-- (void)p_allocateBuckets;
 @property(readonly, nonatomic) unsigned long long archivingCompatibilityVersion;
 - (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
 - (id)initFromArchive:(const void *)arg1 unarchiver:(id)arg2 owner:(id)arg3;

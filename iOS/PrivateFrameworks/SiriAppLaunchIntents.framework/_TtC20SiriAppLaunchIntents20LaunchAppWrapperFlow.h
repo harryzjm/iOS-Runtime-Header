@@ -15,12 +15,15 @@
     MISSING_TYPE *dialogProvider;
     MISSING_TYPE *appLaunchDialogs;
     MISSING_TYPE *flowFactory;
-    MISSING_TYPE *appLaunchFeatureFlags;
     MISSING_TYPE *deviceResolutionProvider;
     MISSING_TYPE *remembersStoreProvider;
-    MISSING_TYPE *aceServiceHelper;
+    MISSING_TYPE *aceService;
     MISSING_TYPE *analyticsService;
     MISSING_TYPE *deviceResolutionAnalytics;
+    MISSING_TYPE *appLaunchFeatureFlags;
+    MISSING_TYPE *responseGenerator;
+    MISSING_TYPE *dialogResponseUtil;
+    MISSING_TYPE *referenceResolver;
     MISSING_TYPE *state;
     MISSING_TYPE *input;
     MISSING_TYPE *executionDevice;

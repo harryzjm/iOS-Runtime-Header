@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import "UIDictationView.h"
 
-@class NSString, UIDimmingView;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationFloatingStarkView <UIGestureRecognizerDelegate>
+@interface UIDictationFloatingStarkView : UIDictationView
 {
-    UIDimmingView *_dimmingView;
 }
 
 - (void)endpointButtonPressed;
@@ -24,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (void)prepareForReturnToKeyboard;
 - (void)finishReturnToKeyboard;
 - (void)layoutSubviews;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

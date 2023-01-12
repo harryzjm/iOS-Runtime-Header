@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol HMECachedEventSource
+#import <HomeKitEventRouter/NSObject-Protocol.h>
+
+@protocol HMECachedEventSource <NSObject>
 @property(readonly, nonatomic) _Bool isCachedEventSourceCurrentProcess;
 @end
 

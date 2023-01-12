@@ -7,14 +7,17 @@
 #import <CloudKit/CKRecordZoneID.h>
 
 @interface CKRecordZoneID (HDCloudSync)
++ (id)hd_attachmentZoneIDWithSyncCircleIdentifier:(id)arg1;
 + (id)hd_sharedSummaryZoneIDWithSyncCircleIdentifier:(id)arg1 userIdentifier:(id)arg2;
 + (id)hd_individualSyncZoneIDWithSyncCircleIdentifier:(id)arg1 storeIdentifier:(id)arg2;
 + (id)hd_privateMetadataZoneIDForSyncCircleIdentifier:(id)arg1;
 + (id)hd_unifiedSyncZoneIDForSyncCircleIdentifier:(id)arg1;
 + (id)hd_masterZoneIDForSyncCircleIdentifier:(id)arg1;
+- (id)hd_withOwnerName:(id)arg1;
 - (id)hd_storeIdentifier;
 - (id)hd_syncCircleIdentifier;
 - (_Bool)hd_isSharedSummaryZoneIDForUserIdentifier:(id *)arg1 syncCircleIdentifier:(id *)arg2;
+- (_Bool)hd_isAttachmentZoneIDForSyncCircleIdentifier:(id *)arg1;
 - (_Bool)hd_isIndividualSyncZoneIDForStoreIdentifier:(id *)arg1 syncCircleIdentifier:(id *)arg2;
 - (_Bool)hd_isPrivateMetadataZoneIDForSyncCircleIdentifier:(id *)arg1;
 - (_Bool)hd_isUnifiedSyncZoneIDForSyncCircleIdentifier:(id *)arg1;

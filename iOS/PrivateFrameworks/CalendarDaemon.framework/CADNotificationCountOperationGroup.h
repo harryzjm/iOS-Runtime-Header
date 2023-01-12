@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADNotificationCountInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CADNotificationCountOperationGroup <CADNotificationCountInterface>
+@interface CADNotificationCountOperationGroup : CADOperationGroup
 {
 }
 
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
-- (void)CADDatabaseGetNotificationCount:(CDUnknownBlockType)arg1;
+- (void)CADDatabaseGetNotificationCountExcludingUncheckedCalendars:(_Bool)arg1 expanded:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-#import <StoreKitUI/UITextViewDelegate-Protocol.h>
-
 @class NSString, UIColor, UITextView;
 @protocol SKUIEditorTemplateViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIEditorTemplateView <UITextViewDelegate, SKUIViewElementView>
+@interface SKUIEditorTemplateView
 {
     UIColor *_textColor;
     UITextView *_textView;

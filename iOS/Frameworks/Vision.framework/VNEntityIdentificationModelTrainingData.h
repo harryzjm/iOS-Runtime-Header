@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNEntityIdentificationModelDataSource-Protocol.h>
-#import <Vision/VNEntityIdentificationModelTrainedModelDataProvider-Protocol.h>
-
 @class NSDate, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString, VNRequestSpecifier;
 @protocol VNEntityIdentificationModelTrainingDataDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VNEntityIdentificationModelTrainingData : NSObject <VNEntityIdentificationModelDataSource, VNEntityIdentificationModelTrainedModelDataProvider>
+@interface VNEntityIdentificationModelTrainingData : NSObject
 {
     unsigned long long _maximumEntities;
     id <VNEntityIdentificationModelTrainingDataDelegate> _delegate;

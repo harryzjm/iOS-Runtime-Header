@@ -9,6 +9,7 @@
 @class MFLoadFailedProxyContentBannerView;
 
 @protocol MFLoadFailedProxyContentBannerViewDelegate <NSObject>
+- (void)loadFailedProxyContentBannerWasDismissed:(MFLoadFailedProxyContentBannerView *)arg1;
 - (void)loadFailedProxyContentBannerDidTriggerLoad:(MFLoadFailedProxyContentBannerView *)arg1;
 @end
 

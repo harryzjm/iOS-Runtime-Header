@@ -6,11 +6,9 @@
 
 #import <Photos/PHFetchResult.h>
 
-#import <MediaAnalysis/PVFetchResultProtocol-Protocol.h>
-
 @class NSArray;
 
-@interface PHFetchResult (MediaAnalysis) <PVFetchResultProtocol>
+@interface PHFetchResult (MediaAnalysis)
 - (id)resultsAsSet;
 - (id)resultsAsArray;
 - (id)allObjects;

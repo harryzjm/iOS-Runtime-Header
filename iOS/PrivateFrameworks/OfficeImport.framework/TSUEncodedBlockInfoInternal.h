@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/TSUEncodedBlockInfo-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface TSUEncodedBlockInfoInternal : NSObject <TSUEncodedBlockInfo>
+@interface TSUEncodedBlockInfoInternal : NSObject
 {
     unsigned long long _encodedLength;
 }

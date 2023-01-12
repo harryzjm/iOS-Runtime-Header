@@ -6,9 +6,11 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSAttributedString;
+@class NSAttributedString, NSString;
 
 @protocol PXPhotosGridFloatingHeaderInfo <NSObject>
+@property(readonly, nonatomic) unsigned long long floatingButtonActionType;
+@property(readonly, nonatomic) NSString *floatingButtonTitle;
 @property(readonly, nonatomic) _Bool floatingEnableOverview;
 @property(readonly, nonatomic) NSAttributedString *floatingSummarySubtitle;
 @property(readonly, nonatomic) NSAttributedString *floatingSummaryTitle;

@@ -6,12 +6,9 @@
 
 #import <HomeKit/HMAccessorySelectionSettingItem.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface HMAccessorySelectionSettingItem (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
+@interface HMAccessorySelectionSettingItem (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 

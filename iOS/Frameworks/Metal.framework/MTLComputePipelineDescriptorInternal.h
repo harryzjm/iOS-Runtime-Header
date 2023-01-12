@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLComputePipelineDescriptor.h"
+
 __attribute__((visibility("hidden")))
-@interface MTLComputePipelineDescriptorInternal
+@interface MTLComputePipelineDescriptorInternal : MTLComputePipelineDescriptor
 {
     struct MTLComputePipelineDescriptorPrivate _private;
     struct FlatBufferBuilder _builder;
@@ -24,6 +26,8 @@ __attribute__((visibility("hidden")))
 - (id)pluginData;
 - (id)buffers;
 - (const struct MTLComputePipelineDescriptorPrivate *)_descriptorPrivate;
+- (void)setProfileControl:(id)arg1;
+- (id)profileControl;
 - (void)setNeedsCustomBorderColorSamplers:(_Bool)arg1;
 - (_Bool)needsCustomBorderColorSamplers;
 - (void)setOpenCLModeEnabled:(_Bool)arg1;
@@ -62,8 +66,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportAddingBinaryFunctions;
 - (void)setLinkedFunctions:(id)arg1;
 - (id)linkedFunctions;
-- (void)setFunctionPointerGroups:(id)arg1;
-- (id)functionPointerGroups;
 - (void)setFunctionPointers:(id)arg1;
 - (id)functionPointers;
 - (id)driverCompilerOptions;

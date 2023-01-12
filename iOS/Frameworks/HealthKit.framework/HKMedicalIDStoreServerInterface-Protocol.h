@@ -6,9 +6,11 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class _HKMedicalIDData;
+@class _HKEmergencyContact, _HKMedicalIDData;
 
 @protocol HKMedicalIDStoreServerInterface <NSObject>
+- (void)remote_removeEmergencyContact:(_HKEmergencyContact *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)remote_addEmergencyContact:(_HKEmergencyContact *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_medicalIDClinicalContactsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_medicalIDEmergencyContactsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_deleteMedicalIDDataWithLastFetchedMedicalIDData:(_HKMedicalIDData *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

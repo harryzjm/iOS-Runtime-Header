@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/FPCollectionDataSource-Protocol.h>
-#import <FileProvider/FPSpotlightCollectorObserving-Protocol.h>
-
 @class FPQueryEnumerationSettings, FPSpotlightCollectorManager, FPSpotlightQueryDescriptor, NSPredicate, NSString;
 @protocol FPSpotlightDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface FPSpotlightDataSource : NSObject <FPSpotlightCollectorObserving, FPCollectionDataSource>
+@interface FPSpotlightDataSource : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     FPSpotlightCollectorManager *_collectorManager;
@@ -36,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateWithError:(id)arg1;
 - (void)start;
 - (id)initWithQueryDescriptor:(id)arg1 predicate:(id)arg2;
-- (unsigned long long)maximumNumberOfItemsForCollector:(id)arg1;
+- (unsigned long long)maximumNumberOfItems;
 - (void)collector:(id)arg1 didEncounterError:(id)arg2;
 - (void)collector:(id)arg1 didUpdateItemsOrigin:(unsigned long long)arg2;
 - (void)collector:(id)arg1 didRemoveItemIDs:(id)arg2;

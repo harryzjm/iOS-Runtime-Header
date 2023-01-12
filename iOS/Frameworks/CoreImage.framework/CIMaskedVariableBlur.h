@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class CIImage, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CIMaskedVariableBlur
+@interface CIMaskedVariableBlur : CIFilter
 {
     CIImage *inputImage;
     CIImage *inputMask;

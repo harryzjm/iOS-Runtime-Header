@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     _Bool _controlOpacities;
     _Bool _blurBlending;
     _Bool _renderSecondarySymbolsSeparately;
+    _Bool _usesDarkAppearance;
     UIKBRenderGeometry *_geometry;
     UIKBGradient *_backgroundGradient;
     UIKBGradient *_layeredBackgroundGradient;
@@ -33,11 +34,23 @@ __attribute__((visibility("hidden")))
     NSArray *_renderFlags;
     long long _renderFlagsForAboveEffects;
     NSString *_hashString;
+    double _floatingContentViewCornerRadius;
+    double _floatingContentViewShadowVerticalOffset;
+    double _floatingContentViewShadowRadius;
+    double _floatingContentViewShadowOpacity;
+    struct CGSize _floatingContentViewFocusedIncreaseSize;
 }
 
 + (id)traitsWithSymbolStyle:(id)arg1;
 + (id)traitsWithGeometry:(id)arg1;
 + (id)emptyTraits;
+- (void).cxx_destruct;
+@property(nonatomic) double floatingContentViewShadowOpacity; // @synthesize floatingContentViewShadowOpacity=_floatingContentViewShadowOpacity;
+@property(nonatomic) double floatingContentViewShadowRadius; // @synthesize floatingContentViewShadowRadius=_floatingContentViewShadowRadius;
+@property(nonatomic) double floatingContentViewShadowVerticalOffset; // @synthesize floatingContentViewShadowVerticalOffset=_floatingContentViewShadowVerticalOffset;
+@property(nonatomic) struct CGSize floatingContentViewFocusedIncreaseSize; // @synthesize floatingContentViewFocusedIncreaseSize=_floatingContentViewFocusedIncreaseSize;
+@property(nonatomic) double floatingContentViewCornerRadius; // @synthesize floatingContentViewCornerRadius=_floatingContentViewCornerRadius;
+@property(nonatomic) _Bool usesDarkAppearance; // @synthesize usesDarkAppearance=_usesDarkAppearance;
 @property(retain, nonatomic) NSString *hashString; // @synthesize hashString=_hashString;
 @property(nonatomic) long long renderFlagsForAboveEffects; // @synthesize renderFlagsForAboveEffects=_renderFlagsForAboveEffects;
 @property(nonatomic) _Bool renderSecondarySymbolsSeparately; // @synthesize renderSecondarySymbolsSeparately=_renderSecondarySymbolsSeparately;
@@ -62,7 +75,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (void)dealloc;
 - (void)removeAllRenderEffects;
 - (void)addForegroundRenderEffect:(id)arg1;
 - (void)addRenderEffect:(id)arg1;

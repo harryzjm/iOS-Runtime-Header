@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_LSRecordEnumerator.h"
+
 @class NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _LSApplicationRecordEnumerator
+@interface _LSApplicationRecordEnumerator : _LSRecordEnumerator
 {
     NSURL *_volumeURL;
     unsigned long long _options;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI9ViewModelCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI24CollectionGroupViewModel
+@interface _TtC8VideosUI24CollectionGroupViewModel : _$s8VideosUI9ViewModelCN
 {
     MISSING_TYPE *headerViewModel;
     MISSING_TYPE *items;

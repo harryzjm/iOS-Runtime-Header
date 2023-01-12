@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIAnimation.h"
+
 @class CABasicAnimation;
 
 __attribute__((visibility("hidden")))
-@interface UIScrollViewScrollAnimation
+@interface UIScrollViewScrollAnimation : UIAnimation
 {
     struct CGPoint _originalOffset;
     struct CGPoint _targetOffset;

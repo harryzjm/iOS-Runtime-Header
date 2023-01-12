@@ -15,7 +15,7 @@
 @property(readonly, nonatomic) NSString *displayLanguage;
 - (NSString *)spokenAddressForLocale:(NSString *)arg1;
 - (NSString *)phoneticLocaleIdentifier;
-- (NSOrderedSet *)titlesForMapRect:(CDStruct_90e2a262)arg1;
+- (NSOrderedSet *)titlesForMapRect:(CDStruct_02837cd9)arg1;
 - (NSString *)locationAddress;
 - (NSString *)venueShortAddress;
 - (NSString *)venueLevel;

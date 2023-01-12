@@ -7,7 +7,8 @@
 #import <DocumentManagerCore/DOCTag.h>
 
 @interface DOCTag (Color)
-+ (id)grayTagColor;
++ (id)nonClearNoneTagColor;
++ (id)pickerAppearance;
 - (id)tagBackgroundColor;
 - (id)_tagColorWithFallback:(CDUnknownBlockType)arg1;
 - (id)tagColorIfNotClear;

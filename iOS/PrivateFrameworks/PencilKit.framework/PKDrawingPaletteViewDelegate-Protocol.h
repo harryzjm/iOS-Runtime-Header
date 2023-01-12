@@ -13,9 +13,11 @@
 @optional
 - (void)paletteViewFirstResponderDidUpdate:(PKDrawingPaletteView *)arg1;
 - (UIResponder *)paletteViewCurrentFirstResponder:(PKDrawingPaletteView *)arg1;
+- (_Bool)toggleLassoToolEditingViewColorPickerForPaletteView:(PKDrawingPaletteView *)arg1;
 - (_Bool)shouldHandlePencilInteractionWhenNotVisible:(PKDrawingPaletteView *)arg1;
 - (void)paletteView:(PKDrawingPaletteView *)arg1 didSelectTool:(PKTool *)arg2 atIndex:(unsigned long long)arg3;
 - (void)paletteViewDidToggleRuler:(PKDrawingPaletteView *)arg1;
+- (UIColor *)paletteViewCurrentSelectionColor:(PKDrawingPaletteView *)arg1;
 - (_Bool)paletteView:(PKPaletteView *)arg1 shouldChangeSelectedToolColor:(UIColor *)arg2;
 - (void)paletteView:(PKDrawingPaletteView *)arg1 didChangeColor:(UIColor *)arg2;
 - (void)paletteViewToolsDidChange:(PKDrawingPaletteView *)arg1;

@@ -6,13 +6,10 @@
 
 #import <Foundation/NSData.h>
 
-#import <CoreData/NSSecureCoding-Protocol.h>
-#import <CoreData/_NSFileBackedFuture-Protocol.h>
-
 @class NSURL, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface _NSDataFileBackedFuture : NSData <_NSFileBackedFuture, NSSecureCoding>
+@interface _NSDataFileBackedFuture : NSData
 {
     NSURL *_fileURL;
     NSURL *_originalFileURL;

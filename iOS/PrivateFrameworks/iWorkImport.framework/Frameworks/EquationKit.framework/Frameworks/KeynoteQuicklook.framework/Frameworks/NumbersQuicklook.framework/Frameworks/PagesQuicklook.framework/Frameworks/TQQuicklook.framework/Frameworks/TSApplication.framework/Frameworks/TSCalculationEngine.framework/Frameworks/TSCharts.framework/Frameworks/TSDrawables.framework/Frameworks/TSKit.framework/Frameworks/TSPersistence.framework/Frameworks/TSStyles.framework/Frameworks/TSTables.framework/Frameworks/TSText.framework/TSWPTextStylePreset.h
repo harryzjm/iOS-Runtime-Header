@@ -6,12 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSText/TSKModel-Protocol.h>
-#import <TSText/TSSPreset-Protocol.h>
-
 @class NSString, TSWPListStyle, TSWPParagraphStyle;
 
-@interface TSWPTextStylePreset : TSPObject <TSSPreset, TSKModel>
+@interface TSWPTextStylePreset : TSPObject
 {
     NSString *_presetIdentifier;
     TSWPParagraphStyle *_paragraphStyle;

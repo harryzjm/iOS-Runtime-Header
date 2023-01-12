@@ -6,15 +6,15 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UIColor;
 
 @protocol NCAuxiliaryOptionsProviding <NSObject>
-- (void)configureOptionButtons:(NSArray *)arg1;
 
 @optional
+@property(readonly, copy, nonatomic) UIColor *auxiliaryOptionsTintColor;
+@property(readonly, copy, nonatomic) UIColor *auxiliaryOptionsTextColor;
+@property(readonly, copy, nonatomic) NSArray *auxiliaryOptionActions;
+@property(readonly, copy, nonatomic) NSString *auxiliaryOptionsSummaryText;
 @property(nonatomic) _Bool auxiliaryOptionsVisible;
-@property(readonly, nonatomic) unsigned long long numberOfOptionButtons;
-@property(readonly, copy, nonatomic) NSString *optionsSummaryText;
-@property(readonly, copy, nonatomic) NSString *optionsSummaryTitle;
 @end
 

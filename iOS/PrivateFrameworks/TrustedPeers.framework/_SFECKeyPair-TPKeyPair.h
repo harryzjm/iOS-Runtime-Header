@@ -6,11 +6,9 @@
 
 #import <SecurityFoundation/_SFECKeyPair.h>
 
-#import <TrustedPeers/TPKeyPair-Protocol.h>
-
 @class NSString;
 
-@interface _SFECKeyPair (TPKeyPair) <TPKeyPair>
+@interface _SFECKeyPair (TPKeyPair)
 - (id)signatureForData:(id)arg1 withError:(id *)arg2;
 
 // Remaining properties

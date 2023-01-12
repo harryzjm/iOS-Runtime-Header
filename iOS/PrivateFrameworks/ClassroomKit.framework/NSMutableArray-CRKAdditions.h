@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (CRKAdditions)
+- (id)crk_pluckValueForNamedArgument:(id)arg1;
 - (_Bool)crk_pluckFlag:(id)arg1;
 @end
 

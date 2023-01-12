@@ -6,13 +6,11 @@
 
 #import <PhotosUICore/PXAssetActionManager.h>
 
-#import <ChatKit/CKMediaObjectAssetMenuBuilderDelegate-Protocol.h>
-
 @class CKMediaObjectAssetMenuBuilder, CKMessagePartChatItem, NSMutableDictionary, NSString, UIMenu;
 @protocol CKMediaObjectAssetActionHelper;
 
 __attribute__((visibility("hidden")))
-@interface CKMediaObjectAssetActionManager : PXAssetActionManager <CKMediaObjectAssetMenuBuilderDelegate>
+@interface CKMediaObjectAssetActionManager : PXAssetActionManager
 {
     CKMediaObjectAssetMenuBuilder *_menuBuilder;
     CKMessagePartChatItem *_chatItem;
@@ -24,6 +22,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSMutableDictionary *performerClassByType; // @synthesize performerClassByType=_performerClassByType;
 @property(readonly, nonatomic) __weak id <CKMediaObjectAssetActionHelper> chatActionHelper; // @synthesize chatActionHelper=_chatActionHelper;
 @property(readonly, nonatomic) CKMessagePartChatItem *chatItem; // @synthesize chatItem=_chatItem;
+- (void)_runDeleteActionPerformer;
+- (id)_currentlySelectedChatItemsOutCursorItem:(id *)arg1;
 - (void)_handlePreviewAction:(id)arg1 actionType:(id)arg2;
 - (id)_selectionSnapshotForPerformerClass:(Class)arg1;
 - (void)executeActionForActionType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -31,12 +31,22 @@ __attribute__((visibility("hidden")))
 - (void)_handleReplyBarButtonItem:(id)arg1;
 - (void)_handleAddToLibraryBarButtonItem:(id)arg1;
 - (SEL)_barButtonSelectorByActionType:(id)arg1;
+- (_Bool)shouldHideInteractionsForMenuBuilder:(id)arg1;
+- (void)menuBuilder:(id)arg1 deleteChatItems:(id)arg2;
 - (void)menuBuilder:(id)arg1 forwardChatItems:(id)arg2;
 - (void)menuBuilder:(id)arg1 copyChatItems:(id)arg2;
 - (void)menuBuilder:(id)arg1 replyChatItem:(id)arg2;
 - (void)menuBuilder:(id)arg1 tapbackChatItem:(id)arg2;
 - (void)menuBuilder:(id)arg1 quickLookChatItem:(id)arg2;
-- (id)_contextMenuForChatItems:(id)arg1 cursorChatItem:(id)arg2;
+- (id)contextMenuForChatItems:(id)arg1 cursorChatItem:(id)arg2 isCMM:(_Bool)arg3;
+- (void)_keyCommandCopy:(id)arg1;
+- (void)_keyCommandSelectAll:(id)arg1;
+- (void)_keyCommandTapback:(id)arg1;
+- (void)_keyCommandReply:(id)arg1;
+- (void)_keyCommandDelete:(id)arg1;
+- (void)_keyCommandQuickLook:(id)arg1;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (id)actionKeyCommands;
 - (_Bool)supportsContextMenu;
 - (id)contextMenu;
 - (id)previewActionForActionType:(id)arg1 image:(id)arg2;
@@ -45,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)actionPerformerForActionType:(id)arg1;
 - (_Bool)canPerformActionType:(id)arg1;
 - (_Bool)supportsActionType:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldHideInteractions;
 @property(readonly, nonatomic) UIMenu *actionContextMenu;
 - (id)initWithChatItem:(id)arg1 chatActionHelper:(id)arg2 selectionManager:(id)arg3;
 

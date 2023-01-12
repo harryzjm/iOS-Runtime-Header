@@ -11,13 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityIsBusinessConversation;
 - (long long)_axConversationRecipientsCount;
 - (void)_axExposeTitleViewIfNeeded;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)_handleConversationRecipientsDidChange:(id)arg1;
 - (void)setTitleView:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axExecuteBlockOnBannerCells:(CDUnknownBlockType)arg1;
 - (void)_axExecuteBlockOnAvatarCells:(CDUnknownBlockType)arg1;
 - (_Bool)_axIsPancakeMode;
 

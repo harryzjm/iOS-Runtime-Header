@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSCopying-Protocol.h>
+#import "NSURLComponents.h"
 
 __attribute__((visibility("hidden")))
-@interface __NSConcreteURLComponents <NSCopying>
+@interface __NSConcreteURLComponents : NSURLComponents
 {
     struct __CFURLComponents *_components;
 }
@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
 - (id)percentEncodedQuery;
 - (void)setPercentEncodedPath:(id)arg1;
 - (id)percentEncodedPath;
+- (void)setEncodedHost:(id)arg1;
+- (id)encodedHost;
 - (void)setPercentEncodedHost:(id)arg1;
 - (id)percentEncodedHost;
 - (void)setPercentEncodedPassword:(id)arg1;

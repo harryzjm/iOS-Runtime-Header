@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CVNLPTextDecodingPath.h"
+
 @class CVNLPLanguageResourceBundle, CVNLPLexiconCursors, NSString;
 
-@interface CVNLPCTCTextDecodingPath
+@interface CVNLPCTCTextDecodingPath : CVNLPTextDecodingPath
 {
     vector_3b74075b _tokenString;
     vector_3b74075b _histWordTokenIDs;
@@ -18,6 +20,11 @@
     struct vector<unsigned long, std::allocator<unsigned long>> _tokenCommitCharacterLengths;
     _Bool _hasContext;
     double _normalizedTotalLogProbability;
+    NSString *_latestExpandedSymbolIncludingPseudospace;
+    _Bool _hasExpanded;
+    _Bool _hasProblematicMixedScriptWords;
+    _Bool _hasCalculatedHasProblematicMixedScriptWords;
+    int _lastCodeUnitType;
     _Bool _optimizingAlignment;
     double _blankLogProbability;
     double _nonBlankLogProbability;
@@ -27,16 +34,14 @@
     CVNLPLexiconCursors *_cursors;
     struct CVNLPLanguageModelWithState *_characterLMState;
     CVNLPLanguageResourceBundle *_languageResourceBundle;
-    NSString *_latestExpandedSymbol;
     CDUnknownBlockType _scoringFunction;
 }
 
 + (id)_getQueue;
-+ (void)_applyWordLanguageModelProbabilityToPath:(id)arg1 stemmedFromPath:(id)arg2 isCommittingToken:(_Bool)arg3;
++ (void)applyWordLanguageModelProbabilityToPath:(id)arg1 stemmedFromPath:(id)arg2 isCommittingToken:(_Bool)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CDUnknownBlockType scoringFunction; // @synthesize scoringFunction=_scoringFunction;
-@property(readonly, nonatomic) NSString *latestExpandedSymbol; // @synthesize latestExpandedSymbol=_latestExpandedSymbol;
 @property(readonly, retain, nonatomic) CVNLPLanguageResourceBundle *languageResourceBundle; // @synthesize languageResourceBundle=_languageResourceBundle;
 @property(nonatomic) struct CVNLPLanguageModelWithState *characterLMState; // @synthesize characterLMState=_characterLMState;
 @property(retain, nonatomic) CVNLPLexiconCursors *cursors; // @synthesize cursors=_cursors;
@@ -59,16 +64,19 @@
 - (id)tokensWithTimestep:(long long)arg1 isFinalTimestep:(_Bool)arg2;
 - (void)commitTokenAtTimestep:(long long)arg1 currentSymbolLogProbability:(double)arg2 commitAction:(long long)arg3 string:(id)arg4 stemmingFromPath:(id)arg5;
 - (unsigned long long)_currentTokenStringLength;
+@property(readonly, nonatomic) _Bool hasExpanded;
+@property(readonly, nonatomic) NSString *latestExpandedSymbol;
+@property(readonly, nonatomic) NSString *latestExpandedSymbolIncludingPseudospace;
 @property(readonly) double normalizedActivationLogProbability;
 - (double)scoreForTokenIndex:(long long)arg1;
 @property double lastTokenBoundaryLogProbability;
+- (_Bool)hasProblematicMixedScriptWords;
 - (double)lexiconScore;
 @property(readonly) double normalizedTotalLogProbability;
 - (double)modelLogProbability;
 - (long long)tokenCount;
 - (long long)pseudoSpaceCount;
 - (long long)characterCount;
-- (void)setString:(id)arg1;
 - (void)setPseudoSpaceCount:(long long)arg1;
 - (void)setCharacterCount:(long long)arg1;
 - (void)setWordLanguageModelLogProbability:(double)arg1;

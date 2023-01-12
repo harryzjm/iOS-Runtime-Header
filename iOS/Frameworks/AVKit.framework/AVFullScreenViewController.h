@@ -24,8 +24,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak AVFullScreenViewController *associatedFullScreenViewController; // @synthesize associatedFullScreenViewController=_associatedFullScreenViewController;
 @property(nonatomic) __weak UIViewController<AVFullScreenViewControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 - (_Bool)avkit_isEffectivelyFullScreen;
-- (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (_Bool)_requiresCustomPresentationController;
 - (long long)preferredWhitePointAdaptivityStyle;
 - (_Bool)prefersHomeIndicatorAutoHidden;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

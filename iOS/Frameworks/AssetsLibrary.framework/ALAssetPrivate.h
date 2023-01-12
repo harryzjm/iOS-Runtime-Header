@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetsLibrary/ALAssetsLibraryAsset-Protocol.h>
-
 @class ALAssetsLibrary, NSString, PLManagedAsset, PLPhotoLibrary;
 
 __attribute__((visibility("hidden")))
-@interface ALAssetPrivate : NSObject <ALAssetsLibraryAsset>
+@interface ALAssetPrivate : NSObject
 {
     ALAssetsLibrary *_library;
     _Bool _isValid;

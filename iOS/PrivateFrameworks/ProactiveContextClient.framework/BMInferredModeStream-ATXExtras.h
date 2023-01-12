@@ -8,6 +8,7 @@
 
 @interface BMInferredModeStream (ATXExtras)
 - (id)inferredModeEventWithSuggestionUUID:(id)arg1;
+- (id)lastTwoInferredModeEvents;
 - (id)previousBMInferredModeEvent;
 - (id)currentBMInferredModeEvent;
 - (id)currentModeUUID;

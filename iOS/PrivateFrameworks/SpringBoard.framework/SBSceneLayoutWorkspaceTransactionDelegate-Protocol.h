@@ -6,12 +6,15 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBApplicationSceneEntity, SBApplicationSceneHandle, SBSceneLayoutWorkspaceTransaction;
+@class FBScene, SBApplicationSceneEntity, SBApplicationSceneHandle, SBSceneLayoutWorkspaceTransaction;
 
 @protocol SBSceneLayoutWorkspaceTransactionDelegate <NSObject>
 - (void)transaction:(SBSceneLayoutWorkspaceTransaction *)arg1 didEndLayoutTransitionWithContinuation:(void (^)(SBWorkspaceApplicationSceneTransitionContext *, unsigned long long))arg2;
 - (void)transaction:(SBSceneLayoutWorkspaceTransaction *)arg1 performTransitionWithCompletion:(void (^)(void))arg2;
 - (void)transactionWillBeginLayoutTransition:(SBSceneLayoutWorkspaceTransaction *)arg1;
 - (SBApplicationSceneEntity *)createSceneEntityForHandle:(SBApplicationSceneHandle *)arg1;
+
+@optional
+- (_Bool)transaction:(SBSceneLayoutWorkspaceTransaction *)arg1 shouldKeepSceneForeground:(FBScene *)arg2 withReason:(id *)arg3;
 @end
 

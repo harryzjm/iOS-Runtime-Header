@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *dialogProvider;
     MISSING_TYPE *deviceState;
+    MISSING_TYPE *featureFlagProvider;
+    MISSING_TYPE *playbackController;
 }
 
 @end

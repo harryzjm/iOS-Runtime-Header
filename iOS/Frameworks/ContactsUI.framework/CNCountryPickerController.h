@@ -6,14 +6,11 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <ContactsUI/UITableViewDataSource-Protocol.h>
-#import <ContactsUI/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSIndexPath, NSString, UILocalizedIndexedCollation, UITableViewController;
 @protocol CNCountryPickerControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNCountryPickerController : UINavigationController <UITableViewDataSource, UITableViewDelegate>
+@interface CNCountryPickerController : UINavigationController
 {
     NSString *_selectedCountryCode;
     UITableViewController *_tableViewController;

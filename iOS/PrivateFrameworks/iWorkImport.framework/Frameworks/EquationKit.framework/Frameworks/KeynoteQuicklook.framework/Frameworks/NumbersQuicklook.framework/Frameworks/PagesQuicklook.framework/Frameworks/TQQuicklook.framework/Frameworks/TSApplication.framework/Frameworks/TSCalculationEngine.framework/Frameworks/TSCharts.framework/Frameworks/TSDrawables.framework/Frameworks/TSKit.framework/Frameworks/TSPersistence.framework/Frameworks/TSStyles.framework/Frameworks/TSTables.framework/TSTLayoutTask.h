@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSMutableArray, TSTLayoutEngine;
 
-@interface TSTLayoutTask : NSObject <NSCopying>
+@interface TSTLayoutTask : NSObject
 {
     TSTLayoutEngine *_layoutEngine;
     NSMutableArray *_cellStatesToLayout;

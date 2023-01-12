@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSKit/TSKAccessControllerReadTicket-Protocol.h>
-
 @class NSString, TSKAccessController;
 
-@interface TSKAccessControllerReadTicket : NSObject <TSKAccessControllerReadTicket>
+@interface TSKAccessControllerReadTicket : NSObject
 {
     TSKAccessController *_accessController;
     _Atomic int _accessCount;

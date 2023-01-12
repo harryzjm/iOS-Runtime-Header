@@ -6,11 +6,11 @@
 
 #import <VisionKitCore/NSObject-Protocol.h>
 
-@class NSError, VKCaptureTextAnalysisRequest, VKCaptureTextDetectionResult, VKImageAnalysis;
+@class NSError, VKCImageAnalysis, VKCaptureTextAnalysisRequest, VKCaptureTextDetectionResult;
 
 @protocol VKCaptureTextAnalysisRequestDelegate <NSObject>
 - (void)requestDidCancel:(VKCaptureTextAnalysisRequest *)arg1;
-- (void)request:(VKCaptureTextAnalysisRequest *)arg1 didRecgonizeTextWithAnalysis:(VKImageAnalysis *)arg2;
+- (void)request:(VKCaptureTextAnalysisRequest *)arg1 didRecgonizeTextWithAnalysis:(VKCImageAnalysis *)arg2;
 - (void)request:(VKCaptureTextAnalysisRequest *)arg1 didDetectTextWithResult:(VKCaptureTextDetectionResult *)arg2;
 - (void)request:(VKCaptureTextAnalysisRequest *)arg1 didFailWithError:(NSError *)arg2;
 @end

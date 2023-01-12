@@ -17,6 +17,7 @@
 - (_Bool)canvasView:(PKTiledView *)arg1 shouldBeginDrawingWithTouch:(UITouch *)arg2;
 
 @optional
+- (void)_canvasViewWillCreateSnapshot:(PKTiledView *)arg1;
 - (NSArray *)tiledViewAttachmentViews;
 @end
 

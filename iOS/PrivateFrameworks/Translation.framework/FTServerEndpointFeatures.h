@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTServerEndpointFeatures : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTServerEndpointFeatures : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -25,6 +22,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *speech_id;
 @property(readonly, nonatomic) NSString *task_name;
 @property(readonly, nonatomic) double silence_posterior;
+- (void)pause_counts_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)pause_counts_count;
+- (id)pause_counts_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *pause_counts;
 @property(readonly, nonatomic) double eos_likelihood;
 @property(readonly, nonatomic) int trailing_silence_duration;

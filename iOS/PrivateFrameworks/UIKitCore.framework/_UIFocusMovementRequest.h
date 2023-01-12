@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFocusUpdateRequesting-Protocol.h>
-
 @class NSString, UIFocusAnimationCoordinator, UIFocusSystem, UIWindow, _UIFocusInputDeviceInfo, _UIFocusItemInfo, _UIFocusMovementInfo, _UIFocusSearchInfo;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusMovementRequest : NSObject <_UIFocusUpdateRequesting>
+@interface _UIFocusMovementRequest : NSObject
 {
     _Bool _shouldPerformHapticFeedback;
     UIFocusSystem *_focusSystem;
@@ -30,12 +28,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIFocusInputDeviceInfo *inputDeviceInfo; // @synthesize inputDeviceInfo=_inputDeviceInfo;
 @property(nonatomic) _Bool shouldPerformHapticFeedback; // @synthesize shouldPerformHapticFeedback=_shouldPerformHapticFeedback;
 @property(readonly, nonatomic) __weak UIFocusSystem *focusSystem; // @synthesize focusSystem=_focusSystem;
-@property(readonly, nonatomic) _Bool allowsFocusRestoration;
+@property(readonly, nonatomic) _Bool allowsOverridingPreferedFocusEnvironments;
 @property(readonly, nonatomic) _Bool allowsDeferral;
 @property(readonly, nonatomic) _Bool allowsFocusingCurrentItem;
 @property(readonly, nonatomic) _Bool requiresEnvironmentValidation;
 @property(readonly, nonatomic) _Bool requiresNextFocusedItem;
 @property(readonly, nonatomic) _Bool shouldPlayFocusSound;
+@property(readonly, nonatomic, getter=shouldScrollIfNecessary) _Bool scrollIfNecessary;
 @property(readonly, nonatomic, getter=isMovementRequest) _Bool movementRequest;
 @property(readonly, nonatomic) UIFocusAnimationCoordinator *animationCoordinator;
 @property(readonly, nonatomic) _UIFocusMovementRequest *fallbackRequest;

@@ -6,7 +6,9 @@
 
 #import <CoreCDPInternal/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol CDPDAuthListener <NSObject>
-- (void)securityLevelChanged:(_Bool)arg1;
+- (void)securityLevelChanged:(_Bool)arg1 forAltDSID:(NSString *)arg2;
 @end
 

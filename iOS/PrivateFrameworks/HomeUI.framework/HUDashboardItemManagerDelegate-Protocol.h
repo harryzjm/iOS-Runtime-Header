@@ -6,10 +6,10 @@
 
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 
-@class HUDashboardItemManager;
+@class HUDashboardContext, HUDashboardItemManager, NSSet;
 
 @protocol HUDashboardItemManagerDelegate <HFItemManagerDelegate>
-- (void)dashboardDidUpdateDashboardContext:(HUDashboardItemManager *)arg1;
-- (void)dashboardItemManagerDidUpdateWallpaper:(HUDashboardItemManager *)arg1;
+- (void)dashboardItemManager:(HUDashboardItemManager *)arg1 didUpdateHomeMenuStatusItems:(NSSet *)arg2;
+- (void)dashboardItemManager:(HUDashboardItemManager *)arg1 didUpdateContext:(HUDashboardContext *)arg2;
 @end
 

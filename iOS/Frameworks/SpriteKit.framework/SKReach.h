@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKAction.h"
+
 @class NSMutableArray, SKNode;
 
 __attribute__((visibility("hidden")))
-@interface SKReach
+@interface SKReach : SKAction
 {
     SKNode *_ikRoot;
     struct CGPoint _goalPosition;

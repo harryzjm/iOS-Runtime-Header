@@ -6,21 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class UIMenu, UIViewController;
+@class NSArray, UIAction, UIMenu, UIResponder, UIViewController;
 @protocol NSCopying;
 
 __attribute__((visibility("hidden")))
 @interface _UIFulfilledContextMenuConfiguration : NSObject
 {
     id <NSCopying> _identifier;
+    id _internalIdentifier;
     UIViewController *_previewViewController;
+    NSArray *_accessoryViews;
     UIMenu *_menu;
+    UIAction *_previewAction;
+    unsigned long long _representedItemCount;
+    unsigned long long _badgeCount;
+    UIResponder *_firstResponderTarget;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak UIResponder *firstResponderTarget; // @synthesize firstResponderTarget=_firstResponderTarget;
+@property(nonatomic) unsigned long long badgeCount; // @synthesize badgeCount=_badgeCount;
+@property(nonatomic) unsigned long long representedItemCount; // @synthesize representedItemCount=_representedItemCount;
+@property(copy, nonatomic) UIAction *previewAction; // @synthesize previewAction=_previewAction;
 @property(copy, nonatomic) UIMenu *menu; // @synthesize menu=_menu;
+@property(retain, nonatomic) NSArray *accessoryViews; // @synthesize accessoryViews=_accessoryViews;
 @property(retain, nonatomic) UIViewController *previewViewController; // @synthesize previewViewController=_previewViewController;
+@property(retain, nonatomic) id internalIdentifier; // @synthesize internalIdentifier=_internalIdentifier;
 @property(copy, nonatomic) id <NSCopying> identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) _Bool isMultiItemMenu;
 - (_Bool)isPresentable;
 
 @end

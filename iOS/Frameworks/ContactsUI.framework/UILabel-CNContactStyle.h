@@ -6,11 +6,9 @@
 
 #import <UIKit/UILabel.h>
 
-#import <ContactsUI/ABText-Protocol.h>
-
 @class NSDictionary, NSString;
 
-@interface UILabel (CNContactStyle) <ABText>
+@interface UILabel (CNContactStyle)
 - (void)_cnui_applyContactStylePlaceholder;
 - (void)_cnui_applyContactStyle;
 @property(copy, nonatomic) NSDictionary *ab_textAttributes;

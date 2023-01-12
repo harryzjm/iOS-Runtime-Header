@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFHandleInteractionDialogRequest.h>
-
-#import <WorkflowUI/WFDialogRequestViewControllerSupport-Protocol.h>
+#import <VoiceShortcutClient/WFHandleInteractionDialogRequest.h>
 
 @class NSString;
 
-@interface WFHandleInteractionDialogRequest (WFDialogRequestViewControllerSupport) <WFDialogRequestViewControllerSupport>
+@interface WFHandleInteractionDialogRequest (WFDialogRequestViewControllerSupport)
 - (Class)wf_dialogViewControllerClass;
 
 // Remaining properties

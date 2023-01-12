@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
 @class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIMediaEntityPropertyDescriptor : NSObject <NSCopying>
+@interface VUIMediaEntityPropertyDescriptor : NSObject
 {
     _Bool _allowsDefaultValue;
     _Bool _retrievesSourcePropertiesAtFetch;

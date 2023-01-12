@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class NSData, VCPProtoTime;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoMovieSceneprintResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoMovieSceneprintResult : PBCodable
 {
     NSData *_sceneprintBlob;
     VCPProtoTime *_timestamp;

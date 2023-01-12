@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineDelegate-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineDelegate-Protocol.h>
 
-@protocol HDSPWakeDetectionStateMachineDelegate <HKSPStateMachineDelegate>
-- (void)postWakeDetectionNotification;
+@protocol HDSPWakeDetectionStateMachineDelegate <HKSPPersistentStateMachineDelegate>
+- (void)postWakeDetectionNotification:(unsigned long long)arg1;
 - (void)stopWakeDetection;
-- (void)startWakeDetection;
-- (void)unscheduleWakeDetection;
-- (void)scheduleWakeDetection;
+- (void)startWakeDetection:(unsigned long long)arg1;
 @end
 

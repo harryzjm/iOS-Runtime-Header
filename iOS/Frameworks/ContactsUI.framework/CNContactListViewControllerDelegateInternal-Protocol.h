@@ -11,6 +11,7 @@
 @protocol CNContactListViewControllerDelegateInternal <CNContactListViewControllerDelegate>
 
 @optional
+- (_Bool)isAddContactButtonShowing;
 - (UIResponder *)nextResponderForContactListViewController:(CNContactListViewController *)arg1;
 @end
 

@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIPerspectiveView-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSMutableArray, NSString, SKUIVerticalLockupView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIEditorialCardCollectionViewCell <SKUIPerspectiveView, SKUIViewElementView>
+@interface SKUIEditorialCardCollectionViewCell
 {
     NSMutableArray *_allLockupViews;
     SKUIVerticalLockupView *_primaryLockupView;

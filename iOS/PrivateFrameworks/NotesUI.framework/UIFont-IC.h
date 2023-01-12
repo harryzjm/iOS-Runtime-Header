@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/UIFont.h>
+#import <UIKit/UIFont.h>
 
 @interface UIFont (IC)
 + (id)ic_preferredFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2 isForPrint:(_Bool)arg3;
@@ -42,10 +42,8 @@
 + (id)ic_listViewTitleFont;
 + (id)ic_preferredFontForStyle:(id)arg1 symbolicTraits:(unsigned int)arg2 maxContentSizeCategory:(id)arg3;
 + (id)ic_preferredFontForStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
++ (id)ic_preferredFontForStyle:(id)arg1 withFontWeight:(double)arg2 maxContentSizeCategory:(id)arg3;
 + (id)ic_preferredFontForStyle:(id)arg1 withFontWeight:(double)arg2;
-+ (double)ic_preferredAttachmentTextScale;
-+ (id)ic_preferredFontForAttachmentBoldText;
-+ (id)ic_preferredFontForAttachmentRegularText;
 + (id)ic_preferredFontForCompatibilityBannerText;
 + (id)ic_preferredFontForFixedWidthText;
 + (id)ic_preferredFontForDateTextWithZoomFactor:(double)arg1;

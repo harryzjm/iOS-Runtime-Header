@@ -4,19 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoordinationCore/COEndpointMonitorDelegate-Protocol.h>
-#import <CoordinationCore/COStateAddOnDelegate-Protocol.h>
-#import <CoordinationCore/COStateManagerServiceInterface-Protocol.h>
-
 @class COEndpointMonitor, NSArray, NSDictionary, NSString, NSUserDefaults;
 
 __attribute__((visibility("hidden")))
-@interface COStateService <COStateAddOnDelegate, COEndpointMonitorDelegate, COStateManagerServiceInterface>
+@interface COStateService
 {
     NSDictionary *_connectedClients;
     NSUserDefaults *_SoundBoardDefaults;
     NSArray *_mediaObservers;
-    NSArray *_roleObservers;
     COEndpointMonitor *_endpointMonitor;
     double _doorbellDelay;
 }
@@ -25,19 +20,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) double doorbellDelay; // @synthesize doorbellDelay=_doorbellDelay;
 @property(copy, nonatomic) COEndpointMonitor *endpointMonitor; // @synthesize endpointMonitor=_endpointMonitor;
-@property(copy, nonatomic) NSArray *roleObservers; // @synthesize roleObservers=_roleObservers;
 @property(copy, nonatomic) NSArray *mediaObservers; // @synthesize mediaObservers=_mediaObservers;
 @property(readonly, nonatomic) NSUserDefaults *SoundBoardDefaults; // @synthesize SoundBoardDefaults=_SoundBoardDefaults;
 @property(copy, nonatomic) NSDictionary *connectedClients; // @synthesize connectedClients=_connectedClients;
 - (void)endpointAvailableInHomeChanged:(_Bool)arg1;
 - (void)_cleanupDisconnectedClient:(id)arg1;
 - (void)_setIsWriting:(_Bool)arg1 forClient:(id)arg2;
-- (void)_notifyRoleObserver:(id)arg1 roleOfMember:(id)arg2 inCluster:(id)arg3 didChangeTo:(id)arg4;
-- (void)_notifyRoleObservers;
-- (id)_roleForCurrentDevice;
-- (id)_roleForMember:(id)arg1 inCluster:(id)arg2;
-- (void)unregisterForRoleChangesOfMember:(id)arg1 inCluster:(id)arg2;
-- (void)registerForRoleChangesOfMember:(id)arg1 inCluster:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)requestCompositionForCluster:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)unregisterForMediaSystemLeaderChange;
@@ -46,14 +34,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)isMediaSystemLeader;
 - (id)_stateSetByClientsForSuite:(id)arg1 cluster:(id)arg2;
 - (void)_informClientsOfUpdates:(id)arg1 removals:(id)arg2 inCluster:(id)arg3;
+- (void)_checkinClientWithSuite:(id)arg1 clusters:(id)arg2;
 - (void)doorbellDelayWithCallback:(CDUnknownBlockType)arg1;
-- (void)removeKeyPaths:(id)arg1 clusters:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
-- (void)setDictionary:(id)arg1 clusters:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
+- (void)removeKeyPaths:(id)arg1 targetClusters:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
+- (void)setDictionary:(id)arg1 suite:(id)arg2 interestClusters:(id)arg3 targetCluster:(id)arg4 withCallback:(CDUnknownBlockType)arg5;
 - (void)removeObserverWithPredicate:(id)arg1;
-- (void)addObserverWithPredicate:(id)arg1;
-- (void)checkinClientWithSuite:(id)arg1 clusters:(id)arg2 withCallback:(CDUnknownBlockType)arg3;
+- (void)addObserverWithPredicate:(id)arg1 suite:(id)arg2 interestClusters:(id)arg3;
 - (void)stateForAddOn:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)addOn:(id)arg1 receivedUpdates:(id)arg2 removals:(id)arg3;
+- (_Bool)_canRequestCreationOfCluster:(id)arg1;
 - (void)_addOnRemoved:(id)arg1;
 - (void)_addOnAdded:(id)arg1;
 - (void)_configureServiceInterfacesOnConnection:(id)arg1;

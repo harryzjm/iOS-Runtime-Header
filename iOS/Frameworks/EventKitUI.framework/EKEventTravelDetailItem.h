@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)editItemViewControllerShouldShowDetachAlert;
 - (_Bool)editItemViewControllerSave:(id)arg1;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
+- (id)generatePopupMenu;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (_Bool)_canChangeTravelTime;
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSSet;
 
-@interface TSCH3DShaderEffects : NSObject <NSCopying>
+@interface TSCH3DShaderEffects : NSObject
 {
     NSMutableDictionary *_sections;
     NSArray *_cacheList;

@@ -15,17 +15,7 @@ struct HDSyncAnchorRange {
     long long _field2;
 };
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    id _field1;
-    id _field2;
-    unsigned char _field3;
-} CDStruct_4c492439;
 
 typedef struct {
     int _field1;

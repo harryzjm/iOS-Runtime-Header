@@ -9,6 +9,7 @@
 @class CTCellularPlanCarrierItem, CTCellularPlanItem, CTCellularPlanPendingTransfer, CTDanglingPlanItem, CTUserLabel, CTXPCServiceSubscriptionContext, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @protocol CTCellularPlanClient <NSObject>
+- (void)getPlansPendingTransferForTestabilityWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)getPhoneAuthTokenWithMessage:(NSDictionary *)arg1 completion:(void (^)(NSString *, _Bool))arg2;
 - (void)getRemoteInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)setSkipEligibilityCheck:(_Bool)arg1;

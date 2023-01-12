@@ -6,12 +6,10 @@
 
 #import <UIKit/UIVideoEditorController.h>
 
-#import <ChatKit/CKAdaptivePresentedControllerProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKUIVideoEditorController : UIVideoEditorController <CKAdaptivePresentedControllerProtocol>
+@interface CKUIVideoEditorController : UIVideoEditorController
 {
     _Bool _wantsWindowedPresentation;
     _Bool _preserveModalPresentationStyle;

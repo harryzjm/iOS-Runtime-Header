@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/CXCallObserverDelegate-Protocol.h>
-
 @class CXCallObserver, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _UIDictationTelephonyMonitor : NSObject <CXCallObserverDelegate>
+@interface _UIDictationTelephonyMonitor : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     CXCallObserver *_callObserver;

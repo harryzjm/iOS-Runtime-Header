@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <JavaScriptCore/NSFileManagerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WTFWebFileManagerDelegate : NSObject <NSFileManagerDelegate>
+@interface WTFWebFileManagerDelegate : NSObject
 {
 }
 

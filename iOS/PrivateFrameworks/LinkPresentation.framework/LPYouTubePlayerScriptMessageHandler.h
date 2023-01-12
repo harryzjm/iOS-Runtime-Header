@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/WKScriptMessageHandler-Protocol.h>
-
 @class LPYouTubePlayerView, NSString;
 
 __attribute__((visibility("hidden")))
-@interface LPYouTubePlayerScriptMessageHandler : NSObject <WKScriptMessageHandler>
+@interface LPYouTubePlayerScriptMessageHandler : NSObject
 {
     LPYouTubePlayerView *_playerView;
 }

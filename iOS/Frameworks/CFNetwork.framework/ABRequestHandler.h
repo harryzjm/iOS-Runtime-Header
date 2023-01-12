@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/AuthBrokerQuery-Protocol.h>
-
-@interface ABRequestHandler : NSObject <AuthBrokerQuery>
+@interface ABRequestHandler : NSObject
 {
     void *authenticator;
 }

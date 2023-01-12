@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/HUItemTableModuleControllerHosting-Protocol.h>
+#import <HomeUI/HUItemModuleControllerHosting-Protocol.h>
 
 @class HFServiceItem, HUChildServiceItemModuleController, NAFuture;
 
-@protocol HUChildServiceModuleControllerDelegate <HUItemTableModuleControllerHosting>
+@protocol HUChildServiceModuleControllerDelegate <HUItemModuleControllerHosting>
 - (NAFuture *)childServiceEditorModuleController:(HUChildServiceItemModuleController *)arg1 didSelectItem:(HFServiceItem *)arg2;
 @end
 

@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTAudioLimitExceeded, FTClientSetupInfo, FTFinalBlazarResponse, FTFinalSpeechRecognitionResponse, FTPartialSpeechRecognitionResponse, FTRecognitionCandidate, FTRecognitionProgress, FTRequestStatsResponse, FTServerEndpointFeatures, NSData, NSMutableDictionary;
+@protocol FLTBFBufferAccessor><NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface FTMultiUserStreamingResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTMultiUserStreamingResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
     const struct MultiUserStreamingResponse *_root;
 }
 
++ (long long)content_typeForImmutableObject:(id)arg1;
++ (Class)content_immutableClassForType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_3fe3bcde)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) NSObject<FLTBFBufferAccessor><NSCopying> *content;
 @property(readonly, nonatomic) FTFinalBlazarResponse *contentAsFTFinalBlazarResponse;
 @property(readonly, nonatomic) FTAudioLimitExceeded *contentAsFTAudioLimitExceeded;
 @property(readonly, nonatomic) FTClientSetupInfo *contentAsFTClientSetupInfo;

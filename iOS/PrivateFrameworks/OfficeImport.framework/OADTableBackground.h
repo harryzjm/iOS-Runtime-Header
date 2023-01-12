@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OADEffectsParent-Protocol.h>
-
 @class NSArray, NSString, OADFill;
 
 __attribute__((visibility("hidden")))
-@interface OADTableBackground : NSObject <OADEffectsParent>
+@interface OADTableBackground : NSObject
 {
     OADFill *mFill;
     NSArray *mEffects;

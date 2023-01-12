@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GKFocusHighlightingCollectionViewCell.h"
+
 __attribute__((visibility("hidden")))
-@interface _TtC12GameCenterUI22BaseCollectionViewCell
+@interface _TtC12GameCenterUI22BaseCollectionViewCell : GKFocusHighlightingCollectionViewCell
 {
 }
 
-- (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
+- (unsigned long long)_edgesPropagatingSafeAreaInsetsToSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

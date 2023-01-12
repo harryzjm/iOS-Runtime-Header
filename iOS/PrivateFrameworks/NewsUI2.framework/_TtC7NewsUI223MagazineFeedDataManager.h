@@ -14,16 +14,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
     MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *feedService;
-    MISSING_TYPE *myMagazinesModule;
-    MISSING_TYPE *magazineSectionBarModule;
-    MISSING_TYPE *paywallModule;
+    MISSING_TYPE *feedPluginManager;
     MISSING_TYPE *accessQueue;
-    MISSING_TYPE *pluginManager;
     MISSING_TYPE *lastRefreshDate;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *_persistedConfigurationDate;
-    MISSING_TYPE *paywallFactory;
-    MISSING_TYPE *featureAvailability;
 }
 
 - (void).cxx_destruct;

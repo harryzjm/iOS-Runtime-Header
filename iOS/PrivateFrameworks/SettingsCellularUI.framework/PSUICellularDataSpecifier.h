@@ -6,12 +6,11 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class Logger, NSArray, PSListController, PSSimStatusCache, PSUICellularDataListItemsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyDataCache, PSUIDeviceWiFiState;
+@class NSArray, PSListController, PSSimStatusCache, PSUICellularDataListItemsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyDataCache, PSUIDeviceWiFiState;
 
 __attribute__((visibility("hidden")))
 @interface PSUICellularDataSpecifier : PSSpecifier
 {
-    Logger *_logger;
     PSUICellularDataListItemsController *_detailController;
     PSListController *_hostController;
     PSSimStatusCache *_simStatusCache;

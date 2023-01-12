@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)associateItem:(id)arg1 withPlaceholderID:(id)arg2;
 - (void)finishWithItem:(id)arg1 error:(id)arg2;
 - (void)finishWithItems:(id)arg1 error:(id)arg2;
+- (void)trashItems:(id)arg1;
 - (void)deleteItems:(id)arg1;
 - (void)transformItems:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)flush;

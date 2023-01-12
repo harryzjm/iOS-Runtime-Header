@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKBCacheableView-Protocol.h>
-
 @class NSObject, NSString, UIKBRenderConfig, UIKBScreenTraits, UIKBTree, UITextInputTraits;
 
 __attribute__((visibility("hidden")))
-@interface UIKBBackgroundView <UIKBCacheableView>
+@interface UIKBBackgroundView
 {
     UIKBTree *_keyplane;
     UITextInputTraits *_inputTraits;
@@ -27,6 +25,7 @@ __attribute__((visibility("hidden")))
     UIKBScreenTraits *_screenTraits;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIKBScreenTraits *screenTraits; // @synthesize screenTraits=_screenTraits;
 @property(retain, nonatomic) NSObject *geometryCacheKey; // @synthesize geometryCacheKey=_geometryCacheKey;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
@@ -40,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (void)drawContentsOfRenderers:(id)arg1;
 - (_Bool)_canDrawContent;
 - (void)refreshStyleForKeyplane:(id)arg1 inputTraits:(id)arg2;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

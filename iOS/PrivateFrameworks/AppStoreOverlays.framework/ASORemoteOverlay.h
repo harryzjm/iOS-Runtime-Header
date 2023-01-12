@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreOverlays/ASORemoteAppOverlayDelegate-Protocol.h>
-
 @class ASCSignpostSpan, ASOOverlayTransitionContext, NSString;
 @protocol ASOOverlay, ASOOverlayConfiguration, ASORemoteContextProvider;
 
 __attribute__((visibility("hidden")))
-@interface ASORemoteOverlay : NSObject <ASORemoteAppOverlayDelegate>
+@interface ASORemoteOverlay : NSObject
 {
     _Bool _isLoaded;
     _Bool _isActive;

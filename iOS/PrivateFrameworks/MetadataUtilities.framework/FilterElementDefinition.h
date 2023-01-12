@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)dump:(int)arg1;
 - (void)dumpAttributesInto:(char *)arg1 forLevel:(int)arg2;
 - (void)addRuleField:(int)arg1 value:(int)arg2 hasAuxValue:(_Bool)arg3 auxValue:(unsigned long long)arg4 inside:(_Bool)arg5 forPathComponents:(id)arg6 permitLink:(_Bool)arg7 componentIndex:(int)arg8 parentElement:(id)arg9 copyParentWildcardLink:(_Bool)arg10;
-- (CDStruct_aeabb2c7)encodeInto:(struct _MDPlistContainer *)arg1 auxArray:(id)arg2 namedRootMap:(id)arg3;
+- (CDStruct_51293ebd)encodeInto:(struct _MDPlistContainer *)arg1 auxArray:(id)arg2 namedRootMap:(id)arg3;
 - (_Bool)isBottomValue;
 - (void)dealloc;
 - (id)initAsRoot:(id)arg1;

@@ -6,12 +6,13 @@
 
 #import <SpringBoard/FBSceneObserver-Protocol.h>
 
-@class FBScene, NSError, NSSet;
+@class FBSMutableSceneSettings, FBSSceneTransitionContext, FBScene, NSError, NSSet;
 
 @protocol FBSceneDelegate <FBSceneObserver>
 
 @optional
 - (void)sceneDidDeactivate:(FBScene *)arg1 withError:(NSError *)arg2;
 - (void)scene:(FBScene *)arg1 didReceiveActions:(NSSet *)arg2;
+- (void)scene:(FBScene *)arg1 willUpdateSettings:(FBSMutableSceneSettings *)arg2 withTransitionContext:(FBSSceneTransitionContext *)arg3;
 @end
 

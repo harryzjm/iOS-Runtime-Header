@@ -6,6 +6,7 @@
 
 #import <UIKit/_UINavigationBarTitleView.h>
 
+__attribute__((visibility("hidden")))
 @interface CKNavigationBarTitleView : _UINavigationBarTitleView
 {
     _Bool _editing;

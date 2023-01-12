@@ -6,13 +6,14 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MKActivityViewController, MUShareSheetPresenter, NSString;
+@class MUActivityViewController, MUShareSheetPresenter, NSArray, NSString;
 
 @protocol MUShareSheetPresenterDelegate <NSObject>
 - (void)shareSheetPresenter:(MUShareSheetPresenter *)arg1 postCompletedActivityOfType:(NSString *)arg2 completed:(_Bool)arg3;
 - (void)shareSheetPresenter:(MUShareSheetPresenter *)arg1 preCompletedActivityOfType:(NSString *)arg2 completed:(_Bool)arg3;
 
 @optional
-- (MKActivityViewController *)shareSheetPresenterRequestsOverridenActivityViewController:(MUShareSheetPresenter *)arg1;
+- (NSArray *)footerActivitiesForShareSheetPresenter:(MUShareSheetPresenter *)arg1;
+- (MUActivityViewController *)shareSheetPresenterRequestsOverridenActivityViewController:(MUShareSheetPresenter *)arg1;
 @end
 

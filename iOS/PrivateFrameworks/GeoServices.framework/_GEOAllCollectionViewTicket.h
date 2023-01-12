@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceAllCollectionsViewTicket-Protocol.h>
+#import "GEOAbstractRequestResponseTicket.h"
 
 @class GEOMapServiceTraits, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOAllCollectionViewTicket <GEOMapServiceAllCollectionsViewTicket>
+@interface _GEOAllCollectionViewTicket : GEOAbstractRequestResponseTicket
 {
 }
 
-- (void)parseAllCollectionViewResponse:(id)arg1 usingError:(id)arg2 usingUserInfo:(id)arg3 onCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)parseAllCollectionViewResponse:(id)arg1 usingError:(id)arg2 onCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 
 // Remaining properties

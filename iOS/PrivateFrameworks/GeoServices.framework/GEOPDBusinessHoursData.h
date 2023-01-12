@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDBusinessHours, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDBusinessHoursData : PBCodable <NSCopying>
+@interface GEOPDBusinessHoursData : PBCodable
 {
     PBUnknownFields *_unknownFields;
     GEOPDBusinessHours *_businessHours;

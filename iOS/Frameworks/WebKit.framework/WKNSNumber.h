@@ -6,12 +6,10 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <WebKit/WKObject-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKNSNumber : NSNumber <WKObject>
+@interface WKNSNumber : NSNumber
 {
     int _type;
     union {

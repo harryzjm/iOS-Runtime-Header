@@ -7,7 +7,6 @@
 #import <Accounts/ACAccountStore.h>
 
 @interface ACAccountStore (DeviceManagementClient)
-+ (id)dmc_defaultStore;
 - (id)_dmc_missingAccountError;
 - (void)_dmc_removeAccounts:(id)arg1 asynchronous:(_Bool)arg2;
 - (id)_dmc_accountsWithPredicateBlock:(CDUnknownBlockType)arg1;
@@ -34,6 +33,7 @@
 - (id)dmc_iCloudAccountForRemoteManagingAccountWithAltDSID:(id)arg1;
 - (id)dmc_iCloudAccountForRemoteManagingAccount;
 - (id)dmc_primaryiCloudAccount;
+- (id)dmc_visibleSecondaryRemoteManagementAccounts;
 - (id)dmc_visibleRemoteManagementAccounts;
 - (id)dmc_RemoteManagementAccounts;
 - (id)dmc_RemoteManagementAccountType;

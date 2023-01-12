@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ReminderKit/NSCopying-Protocol.h>
-
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface TTVectorMultiTimestamp : NSObject <NSCopying>
+@interface TTVectorMultiTimestamp : NSObject
 {
     NSArray *_timestamps;
 }

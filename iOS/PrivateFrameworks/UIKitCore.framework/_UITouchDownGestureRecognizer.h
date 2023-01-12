@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 @class UIDelayedAction;
 
 __attribute__((visibility("hidden")))
-@interface _UITouchDownGestureRecognizer
+@interface _UITouchDownGestureRecognizer : UIGestureRecognizer
 {
     struct CGPoint _locationInView;
     struct CGPoint _initialLocationInScreenSpace;

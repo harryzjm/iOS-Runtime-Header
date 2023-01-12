@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegateInternal-Protocol.h>
-#import <UIKitCore/UIInteraction-Protocol.h>
-
 @class NSString, UIView, _UIPassthroughGateGestureRecognizer, _UIPassthroughScrollGestureRecognizer;
 @protocol _UIPassthroughScrollInteractionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIPassthroughScrollInteraction : NSObject <UIGestureRecognizerDelegateInternal, UIInteraction>
+@interface _UIPassthroughScrollInteraction : NSObject
 {
     _Bool _recognizeOnPrimaryButtonDown;
     _Bool _recognizeOnSecondaryButtonDown;
     _Bool _eatsTouches;
+    _Bool _configuredForInactiveInteractionEventsOnly;
     UIView *_view;
     UIView *_touchFallbackView;
     _UIPassthroughScrollGestureRecognizer *_passthroughScrollGestureRecognizer;
@@ -26,15 +24,17 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_isPassthroughGestureRecognizer:(id)arg1;
++ (_Bool)_shouldEventBePassedThrough:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool configuredForInactiveInteractionEventsOnly; // @synthesize configuredForInactiveInteractionEventsOnly=_configuredForInactiveInteractionEventsOnly;
 @property(nonatomic) _Bool eatsTouches; // @synthesize eatsTouches=_eatsTouches;
 @property(nonatomic) _Bool recognizeOnSecondaryButtonDown; // @synthesize recognizeOnSecondaryButtonDown=_recognizeOnSecondaryButtonDown;
 @property(nonatomic) _Bool recognizeOnPrimaryButtonDown; // @synthesize recognizeOnPrimaryButtonDown=_recognizeOnPrimaryButtonDown;
 @property(nonatomic) __weak id <_UIPassthroughScrollInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) __weak UIView *view; // @synthesize view=_view;
-- (_Bool)_gestureRecognizer:(id)arg1 shouldReceiveEvent:(id)arg2;
+- (_Bool)_passthroughScrollGestureRecognizerShouldRequireFailureOfGestureRecognizer:(id)arg1;
 - (void)_gestureRecognizerFailed:(id)arg1;
-- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (_Bool)_passthroughGestureRecognizer:(id)arg1 shouldInteractAtLocation:(struct CGPoint)arg2 withEvent:(id)arg3;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
@@ -52,7 +52,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _UIPassthroughScrollGestureRecognizer *_passthroughScrollGestureRecognizer; // @synthesize _passthroughScrollGestureRecognizer;
 @property(readonly, nonatomic) UIView *_touchFallbackView; // @synthesize _touchFallbackView;
 @property(readonly, copy) NSString *description;
-- (_Bool)_shouldEventBePassedThrough:(id)arg1;
 - (id)init;
 
 // Remaining properties

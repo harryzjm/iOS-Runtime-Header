@@ -10,6 +10,9 @@
 {
     MISSING_TYPE *$__lazy_storage_$_imageLayout;
     MISSING_TYPE *$__lazy_storage_$_descriptionTextLayout;
+    MISSING_TYPE *$__lazy_storage_$_blurLayerImageHeight;
+    MISSING_TYPE *$__lazy_storage_$_blurLayerImageSaturation;
+    MISSING_TYPE *$__lazy_storage_$_blurRadius;
 }
 
 @end

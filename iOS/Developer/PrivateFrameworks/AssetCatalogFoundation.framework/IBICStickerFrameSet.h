@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetCatalogFoundation/IBICCompilableSticker-Protocol.h>
-
 @class IBICManifestArchivist, NSData, NSString;
 
-@interface IBICStickerFrameSet <IBICCompilableSticker>
+@interface IBICStickerFrameSet
 {
     IBICManifestArchivist *_manifestArchivist;
     NSData *_assetData;

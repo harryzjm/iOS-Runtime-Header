@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIEventDeferringBehaviorInternal-Protocol.h>
-
 @class NSString, _UIEventDeferringManager;
 @protocol _UIEventDeferringSystemShellBehaviorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIEventDeferringBehavior_Default : NSObject <_UIEventDeferringBehaviorInternal>
+@interface _UIEventDeferringBehavior_Default : NSObject
 {
     struct {
         unsigned int systemShellManagesKeyboardFocus:1;

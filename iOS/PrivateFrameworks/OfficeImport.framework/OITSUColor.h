@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class UIColor;
 
 __attribute__((visibility("hidden")))
-@interface OITSUColor : NSObject <NSCopying>
+@interface OITSUColor : NSObject
 {
     struct CGColor *mCGColor;
     unsigned long long mColorRGBSpace;

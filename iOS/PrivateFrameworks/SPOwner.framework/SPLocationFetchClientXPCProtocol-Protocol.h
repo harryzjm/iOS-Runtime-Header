@@ -9,6 +9,6 @@
 @class SPLocationFetchResult;
 
 @protocol SPLocationFetchClientXPCProtocol <NSObject>
-- (oneway void)receivedUpdatedLocation:(SPLocationFetchResult *)arg1;
+- (void)receivedUpdatedLocation:(SPLocationFetchResult *)arg1;
 @end
 

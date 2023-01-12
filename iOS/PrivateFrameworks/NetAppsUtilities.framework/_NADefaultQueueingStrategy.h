@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NetAppsUtilities/NAQueueingStrategy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NADefaultQueueingStrategy : NSObject <NAQueueingStrategy>
+@interface _NADefaultQueueingStrategy : NSObject
 {
 }
 

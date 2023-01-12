@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <RelativeMotion/RMConnectionLifecycleDelegate-Protocol.h>
-#import <RelativeMotion/RMConnectionStreamConsumingDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, RMConnectionEndpoint;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface RMConnectionClient : NSObject <RMConnectionLifecycleDelegate, RMConnectionStreamConsumingDelegate>
+@interface RMConnectionClient : NSObject
 {
     _Bool _valid;
     RMConnectionEndpoint *_endpoint;

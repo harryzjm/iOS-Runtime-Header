@@ -6,11 +6,9 @@
 
 #import <CoreMotion/CMOdometer.h>
 
-#import <HealthDaemon/HDCoreMotionDataSource-Protocol.h>
-
 @class NSString;
 
-@interface CMOdometer (HealthDaemon) <HDCoreMotionDataSource>
+@interface CMOdometer (HealthDaemon)
 - (void)hd_stopStreaming;
 - (void)hd_beginStreamingFromDatum:(id)arg1 handler:(CDUnknownBlockType)arg2;
 

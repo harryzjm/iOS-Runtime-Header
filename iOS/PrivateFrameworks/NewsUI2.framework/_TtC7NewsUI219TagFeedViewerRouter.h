@@ -14,6 +14,7 @@
     MISSING_TYPE *resolver;
     MISSING_TYPE *navigator;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *contextBuilder;
 }
 
 @end

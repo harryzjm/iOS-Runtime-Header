@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class MSMessage, NSArray, NSData, NSDictionary, NSString, NSURL;
+@class MSMessage, NSArray, NSData, NSDictionary, NSString, NSURL, TUConversationActivity;
 
 @protocol CKSMSCompose <NSObject>
 + (_Bool)canSendPhotos:(int)arg1 videos:(int)arg2 audioClips:(int)arg3;
@@ -24,12 +24,14 @@
 - (void)setGameCenterModeWithPickerBlock:(void (^)(void))arg1;
 - (void)forceMMS;
 - (void)forceCancelComposition;
+- (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3 shouldHideClearPluginButton:(_Bool)arg4 chatGUID:(NSString *)arg5;
 - (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3 shouldHideClearPluginButton:(_Bool)arg4;
 - (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3 chatGUID:(NSString *)arg4 groupName:(NSString *)arg5;
 - (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3;
 - (void)setTextEntryContentsVisible:(_Bool)arg1;
 - (void)disableCameraAttachments;
 - (void)setNavBarTitle:(NSString *)arg1;
+- (_Bool)insertGroupActivity:(TUConversationActivity *)arg1;
 - (void)setShouldIgnoreEmailsWhenSending:(_Bool)arg1;
 - (void)setShouldDisableEntryField:(_Bool)arg1;
 - (void)setCanEditRecipients:(_Bool)arg1;

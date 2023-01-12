@@ -13,6 +13,7 @@
     MISSING_TYPE *_key;
     MISSING_TYPE *_value;
     MISSING_TYPE *_addedBy;
+    MISSING_TYPE *_partialValue;
 }
 
 @end

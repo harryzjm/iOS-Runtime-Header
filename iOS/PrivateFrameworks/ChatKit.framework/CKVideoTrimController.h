@@ -6,19 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/UINavigationControllerDelegate-Protocol.h>
-#import <ChatKit/UIVideoEditorControllerDelegatePrivate-Protocol.h>
-
 @class CKMediaObject, CKUIVideoEditorController, NSString;
 @protocol CKTrimControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKVideoTrimController : NSObject <UIVideoEditorControllerDelegatePrivate, UINavigationControllerDelegate>
+@interface CKVideoTrimController : NSObject
 {
     CKMediaObject *_originalMediaObject;
     CKMediaObject *_trimmedMediaObject;
-    CKUIVideoEditorController *_editVideoVC;
     id <CKTrimControllerDelegate> _delegate;
+    CKUIVideoEditorController *_editVideoVC;
 }
 
 - (void).cxx_destruct;

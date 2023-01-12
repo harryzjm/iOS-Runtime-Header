@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FTPronGuessResponse;
+@class FTPronGuessResponse, NSObject;
+@protocol FLTBFBufferAccessor><NSCopying;
 
 __attribute__((visibility("hidden")))
 @interface FTMutablePronGuessStreamingResponse
 {
 }
 
++ (long long)content_typeForObject:(id)arg1;
++ (long long)content_typeForMutableObject:(id)arg1;
++ (Class)content_mutableClassForType:(long long)arg1;
+@property(copy, nonatomic) NSObject<FLTBFBufferAccessor><NSCopying> *content; // @dynamic content;
 @property(copy, nonatomic) FTPronGuessResponse *contentAsFTPronGuessResponse;
 @property(nonatomic) long long content_type;
 - (id)copyWithZone:(struct _NSZone *)arg1;

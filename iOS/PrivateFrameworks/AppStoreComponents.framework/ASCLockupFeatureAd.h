@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCLockupFeature-Protocol.h>
-
 @class ASCScreenshots, ASCTrailers, NSString;
 
-@interface ASCLockupFeatureAd : NSObject <ASCLockupFeature>
+__attribute__((visibility("hidden")))
+@interface ASCLockupFeatureAd : NSObject
 {
     _Bool _isEditorsChoice;
     float _productRating;
@@ -18,10 +17,12 @@
     NSString *_productDescription;
     ASCScreenshots *_screenshots;
     ASCTrailers *_trailers;
+    NSString *_developerName;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *developerName; // @synthesize developerName=_developerName;
 @property(readonly, copy, nonatomic) ASCTrailers *trailers; // @synthesize trailers=_trailers;
 @property(readonly, copy, nonatomic) ASCScreenshots *screenshots; // @synthesize screenshots=_screenshots;
 @property(readonly, copy, nonatomic) NSString *productDescription; // @synthesize productDescription=_productDescription;
@@ -34,7 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEditorsChoice:(_Bool)arg1 productRating:(float)arg2 productRatingBadge:(id)arg3 productDescription:(id)arg4 screenshots:(id)arg5 trailers:(id)arg6;
+- (id)initWithEditorsChoice:(_Bool)arg1 productRating:(float)arg2 productRatingBadge:(id)arg3 productDescription:(id)arg4 screenshots:(id)arg5 trailers:(id)arg6 developerName:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

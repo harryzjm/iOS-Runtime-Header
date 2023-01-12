@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNVisualIdentityPickerTextEditableProviderItem-Protocol.h>
-
 @class CNAvatarImageRenderer, CNVisualIdentity, NSData, NSString, UIColor;
 @protocol CNAvatarImageRenderingScope;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerMonogramProviderItem <CNVisualIdentityPickerTextEditableProviderItem>
+@interface CNPhotoPickerMonogramProviderItem
 {
     _Bool _isContactImage;
     _Bool _hasUnknownColor;

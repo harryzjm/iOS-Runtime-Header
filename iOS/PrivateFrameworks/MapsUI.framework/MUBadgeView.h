@@ -6,20 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UILabel, UIVisualEffectView;
+@class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MUBadgeView : UIView
 {
-    UILabel *_label;
-    UIVisualEffectView *_blurView;
+    MISSING_TYPE *label;
+    MISSING_TYPE *labelVibrantView;
+    MISSING_TYPE *blurView;
 }
 
 - (void).cxx_destruct;
-- (id)attributionFont;
-@property(retain, nonatomic) NSString *badgeString;
-- (void)_setupConstraints;
-- (void)_setupSubviews;
+@property(nonatomic, copy) NSString *badgeString;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

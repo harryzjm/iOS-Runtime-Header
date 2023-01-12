@@ -6,15 +6,16 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
-@class _ICLLQueue, _ICLLRevisionHash;
+@class NSString, _ICLLPlaybackControlSettings, _ICLLQueue;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLQueueQuery : PBCodable <NSCopying>
+@interface _ICLLQueueQuery : PBCodable
 {
+    _ICLLPlaybackControlSettings *_controlSettings;
     _ICLLQueue *_queue;
-    _ICLLRevisionHash *_revisionHash;
+    NSString *_queueContext;
+    int _revision;
+    CDStruct_3e022450 _has;
 }
 
 - (void).cxx_destruct;

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SFPrivacyReportItem : NSObject <NSCopying>
+@interface SFPrivacyReportItem : NSObject
 {
     long long _type;
     id _userInfo;

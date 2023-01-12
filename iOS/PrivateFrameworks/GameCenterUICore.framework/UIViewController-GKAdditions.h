@@ -6,12 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <GameCenterUICore/GKContentRefresh-Protocol.h>
-#import <GameCenterUICore/GKURLHandling-Protocol.h>
-
 @class NSString;
 
-@interface UIViewController (GKAdditions) <GKContentRefresh, GKURLHandling>
+@interface UIViewController (GKAdditions)
 + (id)_gkKeyWindowRootViewController;
 - (void)_gkConfigureFocusGuidesForNavigationBar:(id)arg1;
 - (_Bool)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUICacheCoding-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIReview : NSObject <SKUICacheCoding>
+@interface SKUIReview : NSObject
 {
     NSString *_body;
     NSString *_dateString;

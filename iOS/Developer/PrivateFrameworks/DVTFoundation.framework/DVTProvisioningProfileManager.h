@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-#import <DVTFoundation/DVTProvisioningProfileManagerProtocol-Protocol.h>
-#import <DVTFoundation/DVTProvisioningProfileSourceDelegate-Protocol.h>
-
 @class DVTDelayedInvocation, DVTDispatchLock, DVTProvisioningProfileReaper, DVTProvisioningProfileSource, DVTStackBacktrace, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
-@interface DVTProvisioningProfileManager : NSObject <DVTInvalidation, DVTProvisioningProfileManagerProtocol, DVTProvisioningProfileSourceDelegate>
+@interface DVTProvisioningProfileManager : NSObject
 {
     NSMutableSet *_allProfiles;
     NSMutableDictionary *_uuidToProfileMap;
@@ -37,6 +33,7 @@
 - (void)uninstallProfiles:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)installProfiles:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)profileWithData:(id)arg1 platform:(id)arg2 error:(id *)arg3;
+- (id)profileWithData:(id)arg1 provider:(id)arg2 error:(id *)arg3;
 - (id)profileWithURL:(id)arg1 error:(id *)arg2;
 - (id)profileMatchingUUID:(id)arg1;
 - (id)profilesMatchingPredicate:(id)arg1;

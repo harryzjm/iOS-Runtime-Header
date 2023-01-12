@@ -6,14 +6,13 @@
 
 #import <VoiceServices/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSUUID, SATTSSpeechSynthesisStreaming, VSPresynthesizedAudioRequest, VSSpeechRequest;
+@class NSArray, NSString, NSUUID, SATTSSpeechSynthesisStreaming, VSPresynthesizedAudioRequest, VSPreviewRequest, VSSpeechRequest;
 
 @protocol VSSpeechXPCServiceProtocol <NSObject>
 - (oneway void)killDaemon;
 - (oneway void)invokeDaemon:(void (^)(int))arg1;
 - (oneway void)forwardStreamObject:(SATTSSpeechSynthesisStreaming *)arg1;
-- (oneway void)cancelDownloads:(void (^)(void))arg1;
-- (oneway void)getVoiceInfoForLanguageCode:(NSString *)arg1 name:(NSString *)arg2 footprint:(long long)arg3 gender:(long long)arg4 type:(long long)arg5 reply:(void (^)(VSVoiceAsset *))arg6;
+- (oneway void)getVoiceInfoForLanguageCode:(NSString *)arg1 name:(NSString *)arg2 footprint:(long long)arg3 gender:(long long)arg4 type:(long long)arg5 reply:(void (^)(VSVoiceAsset *, NSError *))arg6;
 - (oneway void)getVoiceResourceForLanguage:(NSString *)arg1 reply:(void (^)(VSVoiceResourceAsset *))arg2;
 - (oneway void)triggerCellularDownloadedVoiceAssets:(NSArray *)arg1 withClientID:(NSString *)arg2;
 - (oneway void)getAllVoiceSubscriptionsWithReply:(void (^)(NSArray *))arg1;
@@ -24,8 +23,9 @@
 - (oneway void)cleanUnusedAssets:(void (^)(NSError *))arg1;
 - (oneway void)endAudioPowerUpdate;
 - (oneway void)beginAudioPowerUpdateWithReply:(void (^)(AFXPCWrapper *))arg1;
+- (oneway void)startPhonemesRequest:(VSSpeechRequest *)arg1 phonemeSystem:(long long)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 - (oneway void)stopVoicePreview;
-- (oneway void)startVoicePreviewForLanguageCode:(NSString *)arg1 voiceName:(NSString *)arg2 previewType:(long long)arg3 reply:(void (^)(_Bool))arg4;
+- (oneway void)startVoicePreviewRequest:(VSPreviewRequest *)arg1 reply:(void (^)(double, _Bool))arg2;
 - (oneway void)getSpeechIsActiveForConnectionReply:(void (^)(_Bool))arg1;
 - (oneway void)getSpeechIsActiveReply:(void (^)(_Bool))arg1;
 - (oneway void)getFootprintsForVoiceName:(NSString *)arg1 languageCode:(NSString *)arg2 reply:(void (^)(NSArray *))arg3;
@@ -41,6 +41,6 @@
 - (oneway void)estimateDurationWithRequest:(VSSpeechRequest *)arg1 reply:(void (^)(double, NSError *))arg2;
 - (oneway void)queryPhaticCapabilityWithRequest:(VSSpeechRequest *)arg1 reply:(void (^)(_Bool))arg2;
 - (oneway void)prewarmIfNeededWithRequest:(VSSpeechRequest *)arg1 reply:(void (^)(NSError *))arg2;
-- (oneway void)updateWithConnectionIdentifier:(NSString *)arg1;
+- (oneway void)updateWithConnectionIdentifier:(NSString *)arg1 keepActive:(_Bool)arg2;
 @end
 

@@ -6,14 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <KeynoteQuicklook/KNInspectableAnimation-Protocol.h>
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-#import <KeynoteQuicklook/TSKModel-Protocol.h>
-#import <KeynoteQuicklook/TSKTransformableObject-Protocol.h>
-
 @class KNAbstractSlide, KNAnimationInfo, KNAnimationPluginMenu, KNBuildAttributes, KNBuildChunk, NSArray, NSMutableDictionary, NSSet, NSString, NSUUID, TSDBezierPathSource, TSDDrawableInfo, TSDEditableBezierPathSource, TSUColor;
 
-@interface KNBuild : TSPObject <NSCopying, TSKTransformableObject, KNInspectableAnimation, TSKModel>
+@interface KNBuild : TSPObject
 {
     NSUUID *_drawableId;
     NSString *_delivery;

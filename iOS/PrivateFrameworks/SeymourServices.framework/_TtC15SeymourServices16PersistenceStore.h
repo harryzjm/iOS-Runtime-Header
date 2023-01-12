@@ -15,6 +15,7 @@
     MISSING_TYPE *dataProtectionMonitor;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *subscriptionToken;
+    MISSING_TYPE *monitors;
     MISSING_TYPE *state;
 }
 

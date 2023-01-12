@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreImage/MLFeatureProvider-Protocol.h>
-
 @class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CIFeatureProviderImage : NSObject <MLFeatureProvider>
+@interface CIFeatureProviderImage : NSObject
 {
     NSString *name;
     struct __CVBuffer *buffer;

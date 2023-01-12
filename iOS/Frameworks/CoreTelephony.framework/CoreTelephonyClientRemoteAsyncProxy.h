@@ -6,13 +6,11 @@
 
 #import <Foundation/NSProxy.h>
 
-#import <CoreTelephony/CTXPCServiceInterface-Protocol.h>
-
 @class NSObject, NSString;
 @protocol CTXPCServiceInterface;
 
 __attribute__((visibility("hidden")))
-@interface CoreTelephonyClientRemoteAsyncProxy : NSProxy <CTXPCServiceInterface>
+@interface CoreTelephonyClientRemoteAsyncProxy : NSProxy
 {
     NSObject<CTXPCServiceInterface> *_target;
     struct queue _userQueue;

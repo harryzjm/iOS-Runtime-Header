@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SceneKit/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSDictionary, NSMutableArray, NSNumber, SCNProgram;
 
 __attribute__((visibility("hidden")))
-@interface SCNShadableHelper : NSObject <NSSecureCoding>
+@interface SCNShadableHelper : NSObject
 {
     id _owner;
     SCNProgram *_program;

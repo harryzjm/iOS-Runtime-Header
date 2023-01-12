@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SafariServices/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <SafariServices/UIPopoverPresentationControllerDelegate-Protocol.h>
-
 @class NSString, NSTimer, SFWebExtension, WKWebView;
 @protocol WBSWebExtensionWindow, _SFPopoverSourceInfo;
 
 __attribute__((visibility("hidden")))
-@interface _SFWebExtensionPopupViewController : UIViewController <UIAdaptivePresentationControllerDelegate, UIPopoverPresentationControllerDelegate>
+@interface _SFWebExtensionPopupViewController : UIViewController
 {
     UIViewController *_parentViewController;
     id <_SFPopoverSourceInfo> _popoverSourceInfo;

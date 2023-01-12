@@ -6,29 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/CoreTelephonyClientCapabilitiesDelegate-Protocol.h>
-
-@class CTCapability, CoreTelephonyClient, Logger, NSString, PSSimStatusCache;
-@protocol OS_dispatch_queue;
+@class CTCapability, CoreTelephonyClient, NSString, PSSimStatusCache;
 
 __attribute__((visibility("hidden")))
-@interface PSUICoreTelephonyCapabilitiesCache : NSObject <CoreTelephonyClientCapabilitiesDelegate>
+@interface PSUICoreTelephonyCapabilitiesCache : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    Logger *_logger;
     CoreTelephonyClient *_client;
     PSSimStatusCache *_simStatusCache;
     CTCapability *_volteCapability;
+    CTCapability *_vonrCapability;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain) CTCapability *vonrCapability; // @synthesize vonrCapability=_vonrCapability;
 @property(retain) CTCapability *volteCapability; // @synthesize volteCapability=_volteCapability;
 @property(retain, nonatomic) PSSimStatusCache *simStatusCache; // @synthesize simStatusCache=_simStatusCache;
 @property(retain, nonatomic) CoreTelephonyClient *client; // @synthesize client=_client;
 - (id)getLogger;
 - (void)clearCache;
 - (void)context:(id)arg1 capabilitiesChanged:(id)arg2;
+- (void)setCapabilityVoNR:(id)arg1 enabled:(_Bool)arg2;
+- (_Bool)capabilityEnabledVoNR:(id)arg1;
+- (_Bool)canSetCapabilityVoNR:(id)arg1;
 - (_Bool)fetchDeviceAndPlan5GSupport:(id)arg1;
 - (void)setCapabilityVoLTE:(id)arg1 enabled:(_Bool)arg2;
 - (_Bool)capabilityEnabledVoLTE:(id)arg1;

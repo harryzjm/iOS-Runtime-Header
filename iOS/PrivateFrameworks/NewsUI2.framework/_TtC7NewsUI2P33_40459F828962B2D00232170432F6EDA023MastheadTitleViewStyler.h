@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/NUTitleViewStyler-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI2P33_40459F828962B2D00232170432F6EDA023MastheadTitleViewStyler : NSObject <NUTitleViewStyler>
+@interface _TtC7NewsUI2P33_40459F828962B2D00232170432F6EDA023MastheadTitleViewStyler : NSObject
 {
     MISSING_TYPE *renderer;
     MISSING_TYPE *traitCollection;

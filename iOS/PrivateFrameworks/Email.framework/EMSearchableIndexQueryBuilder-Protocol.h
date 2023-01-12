@@ -10,6 +10,7 @@
 
 @protocol EMSearchableIndexQueryBuilder <NSObject>
 @property(copy, nonatomic) NSString *logIdentifier;
+@property(nonatomic) _Bool attribute;
 @property(nonatomic) _Bool counting;
 @property(nonatomic) _Bool live;
 @property(nonatomic) long long maxCount;
@@ -18,6 +19,8 @@
 @property(copy, nonatomic) NSArray *fetchAttributes;
 @property(copy, nonatomic) CDUnknownBlockType countChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType removedItemsBlock;
+@property(copy, nonatomic) CDUnknownBlockType changedAttributeResultsBlock;
+@property(copy, nonatomic) CDUnknownBlockType foundAttributeResultsBlock;
 @property(copy, nonatomic) CDUnknownBlockType changedItemsBlock;
 @property(copy, nonatomic) CDUnknownBlockType gatheredBlock;
 @property(copy, nonatomic) CDUnknownBlockType failureBlock;

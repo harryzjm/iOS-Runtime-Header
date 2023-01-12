@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *digest;
     MISSING_TYPE *maxDimensionInPixels;
-    MISSING_TYPE *actualMaxDimensionInPixels;
 }
 
 - (void).cxx_destruct;

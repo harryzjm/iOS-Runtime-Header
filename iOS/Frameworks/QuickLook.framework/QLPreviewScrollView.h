@@ -6,13 +6,11 @@
 
 #import <UIKit/UIScrollView.h>
 
-#import <QuickLook/UIScrollViewDelegate-Protocol.h>
-
 @class NSString;
 @protocol QLPreviewScrollViewZoomDelegate;
 
 __attribute__((visibility("hidden")))
-@interface QLPreviewScrollView : UIScrollView <UIScrollViewDelegate>
+@interface QLPreviewScrollView : UIScrollView
 {
     _Bool _inSizeChange;
     struct CGSize _lastUpdatedSize;

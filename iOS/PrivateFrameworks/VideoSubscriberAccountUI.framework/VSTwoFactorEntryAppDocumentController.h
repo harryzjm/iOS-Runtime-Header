@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideoSubscriberAccountUI/VSTwoFactorEntryViewModelDelegate-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSTwoFactorEntryAppDocumentController <VSTwoFactorEntryViewModelDelegate>
+@interface VSTwoFactorEntryAppDocumentController
 {
     NSMutableArray *_buttonElements;
 }

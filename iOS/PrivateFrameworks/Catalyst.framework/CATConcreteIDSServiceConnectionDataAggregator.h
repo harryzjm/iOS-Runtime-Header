@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATIDSServiceConnectionDataAggregationDelegate-Protocol.h>
-#import <Catalyst/CATIDSServiceConnectionDataAggregator-Protocol.h>
-
 @class NSMutableDictionary, NSMutableIndexSet;
 @protocol CATIDSServiceConnectionDataAggregatorDelegate, CATTimer, CATTimerSource, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CATConcreteIDSServiceConnectionDataAggregator : NSObject <CATIDSServiceConnectionDataAggregationDelegate, CATIDSServiceConnectionDataAggregator>
+@interface CATConcreteIDSServiceConnectionDataAggregator : NSObject
 {
     NSObject<OS_dispatch_queue> *mWorkQueue;
     id <CATTimerSource> mTimerSource;

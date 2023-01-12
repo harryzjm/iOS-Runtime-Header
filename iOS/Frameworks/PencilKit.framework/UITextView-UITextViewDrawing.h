@@ -12,20 +12,21 @@
 @interface UITextView (UITextViewDrawing)
 - (_Bool)_canSelectDrawing;
 - (void)_insertDrawing:(id)arg1;
-- (void)_insertDrawingWithTap:(id)arg1;
 - (_Bool)_canInsertDrawingInRange:(struct _NSRange)arg1;
 - (_Bool)_canInsertDrawing;
 - (_Bool)_canAddDrawingAtIndex:(unsigned long long)arg1;
 - (_Bool)_canAddStroke;
 - (void)_didEndStroke;
 - (void)_willBeginNewStrokeForTouch:(id)arg1;
+- (void)_canvasViewWillCreateSnapshot;
 - (void)_upgradeDrawingAtCharacterIndex:(long long)arg1 itemProviders:(id)arg2 insertionLocationInDrawing:(struct CGPoint)arg3;
 - (void)_updateDrawingBackgroundColor;
 - (void)_undoDrawingBounds:(struct CGRect)arg1 viewBounds:(struct CGRect)arg2 ofAttachmentUUID:(id)arg3;
-- (void)_growView:(id)arg1 textAttachment:(id)arg2 atCharacterIndex:(long long)arg3 step:(double)arg4 stop:(CDUnknownBlockType)arg5;
+- (_Bool)_growView:(id)arg1 textAttachment:(id)arg2 atCharacterIndex:(long long)arg3 step:(double)arg4 stop:(CDUnknownBlockType)arg5;
 - (void)_removeDrawingAttachment:(id)arg1 withView:(id)arg2 forDeletion:(_Bool)arg3;
 - (id)_insertEmptyDrawingAttachmentAtLocation:(long long)arg1;
 - (id)_textRangeFromRange:(struct _NSRange)arg1;
+- (struct CGRect)_boundsForDrawingTextAttachment:(id)arg1 characterIndex:(unsigned long long)arg2 layoutManager:(id)arg3;
 - (void)_didEndInteractiveResize;
 - (void)_willBeginInteractiveResize;
 @property(nonatomic, getter=isFingerDrawingEnabled) _Bool fingerDrawingEnabled;

@@ -6,14 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSAccountControllerDelegate-Protocol.h>
-#import <IDS/IDSConnectionDelegatePrivate-Protocol.h>
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-#import <IDS/IDSGroupContextControllerDelegate-Protocol.h>
-
 @class CUTDeferredTaskQueue, IDSAccount, IDSAccountController, IDSGroupContextController, IDSQuickSwitchAcknowledgementTracker, IDSServiceProperties, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
-@interface _IDSService : NSObject <IDSGroupContextControllerDelegate, IDSAccountControllerDelegate, IDSConnectionDelegatePrivate, IDSDaemonListenerProtocol>
+@interface _IDSService : NSObject
 {
     IDSAccountController *_accountController;
     NSMutableDictionary *_uniqueIDToConnection;
@@ -61,7 +56,7 @@
 - (void)_disableAccount:(id)arg1;
 - (void)_enableAccount:(id)arg1;
 - (id)datagramChannelForSocketDescriptor:(int)arg1 error:(id *)arg2;
-- (id)datagramChannelForSessionDestination:(id)arg1 error:(id *)arg2;
+- (id)datagramChannelForSessionDestination:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)streamConnectionForSocketDescriptor:(int)arg1 error:(id *)arg2;
 - (id)streamConnectionForSessionDestination:(id)arg1 error:(id *)arg2;
 - (id)datagramConnectionForSocketDescriptor:(int)arg1 error:(id *)arg2;
@@ -70,6 +65,7 @@
 - (void)_sendMissingMessageMetric:(id)arg1;
 - (_Bool)sendCertifiedDeliveryReceipt:(id)arg1;
 - (void)sendAckForMessageWithContext:(id)arg1;
+- (_Bool)reportSpamMessage:(id)arg1;
 - (_Bool)sendAheadGroup:(id)arg1 priority:(long long)arg2 options:(id)arg3 identifier:(id *)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)sendResourceAtURL:(id)arg1 metadata:(id)arg2 fromAccount:(id)arg3 toDestinations:(id)arg4 priority:(long long)arg5 options:(id)arg6 identifier:(id *)arg7 error:(id *)arg8;
 - (void)testCloudQRConnection;
@@ -86,6 +82,7 @@
 - (_Bool)cancelIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)sendServerMessage:(id)arg1 command:(id)arg2 fromAccount:(id)arg3;
 - (_Bool)sendData:(id)arg1 priority:(long long)arg2 options:(id)arg3 identifier:(id *)arg4 error:(id *)arg5;
+- (_Bool)setWakingPushPriority:(long long)arg1 error:(id *)arg2;
 - (_Bool)sendInvitationUpdate:(id)arg1 fromAccount:(id)arg2 toDestination:(id)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
 - (_Bool)sendInvitation:(id)arg1 fromAccount:(id)arg2 toDestination:(id)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
 - (_Bool)sendAccessoryData:(id)arg1 toAccessoryID:(id)arg2 accessToken:(id)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
@@ -109,6 +106,10 @@
 - (_Bool)updateSubServices:(id)arg1 forDevice:(id)arg2;
 - (void)finishedReportingRequestUUID:(id)arg1 withError:(id)arg2;
 - (void)reportAction:(long long)arg1 ofTempURI:(id)arg2 fromURI:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)finishedVerifyingSignedDataForRequest:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
+- (void)finishedSigningForRequest:(id)arg1 signedData:(id)arg2 error:(id)arg3;
+- (void)verifySignedData:(id)arg1 matchesExpectedData:(id)arg2 withTokenURI:(id)arg3 forAlgorithm:(long long)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)signData:(id)arg1 withAlgorithm:(long long)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)finishedRevokingPseudonymWithSuccess:(_Bool)arg1 error:(id)arg2 requestUUID:(id)arg3;
 - (void)finishedRenewingPseudonym:(id)arg1 success:(_Bool)arg2 error:(id)arg3 requestUUID:(id)arg4;
 - (void)finishedProvisioningPseudonym:(id)arg1 success:(_Bool)arg2 error:(id)arg3 forRequestUUID:(id)arg4;
@@ -130,6 +131,7 @@
 - (void)_updateLinkedDevicesWithDevicesInfo:(id)arg1;
 - (void)_loadCachedLinkedDevices;
 - (void)_reloadCachedLinkedDevices;
+@property(readonly, nonatomic) _Bool canSend;
 @property(readonly, copy, nonatomic) IDSServiceProperties *serviceProperties;
 @property(readonly, copy, nonatomic) NSArray *devices;
 @property(readonly, copy, nonatomic) NSSet *internalAccounts;
@@ -140,7 +142,7 @@
 @property(nonatomic, getter=isPretendingToBeFull) _Bool pretendingToBeFull;
 - (void)connection:(id)arg1 didSendOpportunisticDataWithIdentifier:(id)arg2 toIDs:(id)arg3;
 - (void)connection:(id)arg1 account:(id)arg2 receivedGroupSessionParticipantDataUpdate:(id)arg3;
-- (void)connection:(id)arg1 account:(id)arg2 receivedGroupSessionParticipantUpdate:(id)arg3;
+- (void)connection:(id)arg1 account:(id)arg2 receivedGroupSessionParticipantUpdate:(id)arg3 context:(id)arg4;
 - (void)connection:(id)arg1 account:(id)arg2 sessionInviteReceived:(id)arg3 fromID:(id)arg4 transportType:(id)arg5 options:(id)arg6 context:(id)arg7 messageContext:(id)arg8;
 - (void)connection:(id)arg1 didFlushCacheForRemoteURI:(id)arg2 fromURI:(id)arg3 guid:(id)arg4;
 - (void)connection:(id)arg1 identifier:(id)arg2 fromID:(id)arg3 hasBeenDeliveredWithContext:(id)arg4;

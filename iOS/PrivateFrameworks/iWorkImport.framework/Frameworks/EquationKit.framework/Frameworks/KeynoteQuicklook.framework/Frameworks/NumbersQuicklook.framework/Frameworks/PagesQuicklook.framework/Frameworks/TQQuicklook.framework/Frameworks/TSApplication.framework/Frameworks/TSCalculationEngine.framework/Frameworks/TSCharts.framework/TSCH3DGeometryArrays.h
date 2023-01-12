@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
-@interface TSCH3DGeometryArrays : NSObject <NSCopying>
+@interface TSCH3DGeometryArrays : NSObject
 {
     unsigned int _offset;
     unsigned int _count;

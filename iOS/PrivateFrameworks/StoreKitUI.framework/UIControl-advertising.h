@@ -6,11 +6,9 @@
 
 #import <UIKit/UIControl.h>
 
-#import <StoreKitUI/SKUIAdvertisingPrivacyControlProtocol-Protocol.h>
-
 @class NSString;
 
-@interface UIControl (advertising) <SKUIAdvertisingPrivacyControlProtocol>
+@interface UIControl (advertising)
 @property(retain, nonatomic) NSString *adPrivacyData; // @dynamic adPrivacyData;
 
 // Remaining properties

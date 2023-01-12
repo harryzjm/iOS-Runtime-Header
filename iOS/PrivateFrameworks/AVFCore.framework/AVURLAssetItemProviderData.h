@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, NSSecurityScopedURLWrapper, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface AVURLAssetItemProviderData : NSObject <NSSecureCoding>
+@interface AVURLAssetItemProviderData : NSObject
 {
     NSSecurityScopedURLWrapper *_securityScopedURLWrapper;
     NSDictionary *_assetInitializationOptions;

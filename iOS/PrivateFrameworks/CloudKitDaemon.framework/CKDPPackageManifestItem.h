@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface CKDPPackageManifestItem : PBCodable <NSCopying>
+@interface CKDPPackageManifestItem : PBCodable
 {
     long long _size;
     NSData *_signature;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "WDSampleListDataProvider.h"
+
 @class NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface WDSleepListDataProvider
+@interface WDSleepListDataProvider : WDSampleListDataProvider
 {
     NSMutableDictionary *_sleepData;
     NSMutableArray *_orderedKeys;

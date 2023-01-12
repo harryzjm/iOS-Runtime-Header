@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sliceWithStart:(struct CGRect)arg1 end:(struct CGRect)arg2;
+- (void).cxx_destruct;
 @property _Bool delayCrossfade; // @synthesize delayCrossfade=_delayCrossfade;
 @property int normalization; // @synthesize normalization=_normalization;
 @property(retain) UIKBCacheToken *endToken; // @synthesize endToken=_endToken;
@@ -30,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 @property(readonly) _Bool hasGeometry;
 - (void)addStartRect:(struct CGRect)arg1 end:(struct CGRect)arg2;
-- (void)dealloc;
 - (id)init;
 
 @end

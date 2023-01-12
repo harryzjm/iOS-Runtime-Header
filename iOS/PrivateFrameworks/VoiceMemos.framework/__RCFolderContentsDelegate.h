@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VoiceMemos/NSFetchedResultsControllerDelegate-Protocol.h>
-
 @class NSString, RCFoldersFetchedResultsController;
 
 __attribute__((visibility("hidden")))
-@interface __RCFolderContentsDelegate : NSObject <NSFetchedResultsControllerDelegate>
+@interface __RCFolderContentsDelegate : NSObject
 {
     RCFoldersFetchedResultsController *_foldersController;
 }

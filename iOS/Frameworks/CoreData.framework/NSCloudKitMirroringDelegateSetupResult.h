@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSCloudKitMirroringResult.h"
+
 @class CKContainer, CKDatabase;
 
 __attribute__((visibility("hidden")))
-@interface NSCloudKitMirroringDelegateSetupResult
+@interface NSCloudKitMirroringDelegateSetupResult : NSCloudKitMirroringResult
 {
     CKContainer *_container;
     CKDatabase *_database;

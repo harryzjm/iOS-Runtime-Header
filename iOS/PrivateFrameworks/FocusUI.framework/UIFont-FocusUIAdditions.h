@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/UIFont.h>
+#import <UIKit/UIFont.h>
 
 @interface UIFont (FocusUIAdditions)
 + (double)fcui_exuberatedValueForValue:(double)arg1;

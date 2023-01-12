@@ -6,10 +6,9 @@
 
 #import <PreviewsInjection/NSObject-Protocol.h>
 
-@class NSString, UVFenceHandle, UVPropertyList;
+@class NSString, NSXPCListenerEndpoint, UVPropertyList;
 
 @protocol UVAgentPreviewServiceProtocol <NSObject>
-- (oneway void)sendMessageType:(NSString *)arg1 messagePayload:(UVPropertyList *)arg2 fence:(UVFenceHandle *)arg3 reply:(void (^)(UVPropertyList *, NSError *))arg4;
-- (oneway void)sendMessageType:(NSString *)arg1 messagePayload:(UVPropertyList *)arg2 reply:(void (^)(UVPropertyList *, NSError *))arg3;
+- (oneway void)sendEndpoint:(NSXPCListenerEndpoint *)arg1 context:(UVPropertyList *)arg2 contentIdentifier:(NSString *)arg3;
 @end
 

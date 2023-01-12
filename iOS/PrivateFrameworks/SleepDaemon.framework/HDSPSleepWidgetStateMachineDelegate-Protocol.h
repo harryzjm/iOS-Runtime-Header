@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineDelegate-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineDelegate-Protocol.h>
 
-@protocol HDSPSleepWidgetStateMachineDelegate <HKSPStateMachineDelegate>
-- (void)unscheduleWidgetStateChange;
-- (void)scheduleWidgetStateChange;
+@protocol HDSPSleepWidgetStateMachineDelegate <HKSPPersistentStateMachineDelegate>
 - (void)sleepWidgetShouldReload;
 - (void)sleepWidgetStateDidChange:(long long)arg1 previousState:(long long)arg2;
 @end

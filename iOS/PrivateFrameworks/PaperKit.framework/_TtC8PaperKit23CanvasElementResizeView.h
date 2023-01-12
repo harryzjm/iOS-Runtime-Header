@@ -12,13 +12,27 @@ __attribute__((visibility("hidden")))
 @interface _TtC8PaperKit23CanvasElementResizeView : UIView
 {
     MISSING_TYPE *resizeHandles;
+    MISSING_TYPE *controlHandles;
+    MISSING_TYPE *currentActiveHandle;
+    MISSING_TYPE *moreButton;
     MISSING_TYPE *borderView;
     MISSING_TYPE *canvas;
     MISSING_TYPE *contextMenuInteraction;
+    MISSING_TYPE *resizeOriginalCoordinateSpace;
+    MISSING_TYPE *resizeOriginalFrame;
+    MISSING_TYPE *originalControlPointLocation;
+    MISSING_TYPE *dragGestureRecognizer;
+    MISSING_TYPE *rotationGestureRecognizer;
+    MISSING_TYPE *tapGestureRecognizer;
+    MISSING_TYPE *dragLocation;
+    MISSING_TYPE *draggedImage;
     MISSING_TYPE *resizingCanvasElements;
+    MISSING_TYPE *editingCanvasElements;
     MISSING_TYPE *hasContextMenuInteractionVisible;
     MISSING_TYPE *hasDraggingCanvasElement;
-    MISSING_TYPE *resizeOriginalFrame;
+    MISSING_TYPE *dragConstainedAxis;
+    MISSING_TYPE *nudgeDelta;
+    MISSING_TYPE *nudgeTimer;
 }
 
 - (void).cxx_destruct;
@@ -29,11 +43,23 @@ __attribute__((visibility("hidden")))
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)tapped:(id)arg1;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)rotateFromResizeHandle:(id)arg1;
+- (void)rotate:(id)arg1;
 - (void)dragMoved:(id)arg1;
 - (void)resizeHandleMoved:(id)arg1;
+- (void)controlHandleMoved:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
+- (void)didMoveToWindow;
+- (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
+- (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
+- (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
+- (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
+- (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 
 @end
 

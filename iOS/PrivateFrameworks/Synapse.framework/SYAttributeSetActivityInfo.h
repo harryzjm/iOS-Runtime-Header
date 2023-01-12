@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Synapse/SYUserActivityInfo-Protocol.h>
-
 @class CSSearchableItemAttributeSet, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface SYAttributeSetActivityInfo : NSObject <SYUserActivityInfo>
+@interface SYAttributeSetActivityInfo : NSObject
 {
     CSSearchableItemAttributeSet *_attributeSet;
 }

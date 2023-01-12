@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPAVQueueCoordinating-Protocol.h>
-
 @class MPAVItem, NSArray, NSString;
 @protocol MFPlaybackStackController><MFQueueManagement;
 
 __attribute__((visibility("hidden")))
-@interface MPCMediaFoundationQueueCoordinator : NSObject <MPAVQueueCoordinating>
+@interface MPCMediaFoundationQueueCoordinator : NSObject
 {
     id <MFPlaybackStackController><MFQueueManagement> _playbackStackController;
 }

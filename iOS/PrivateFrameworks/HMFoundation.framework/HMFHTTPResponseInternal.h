@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HMFoundation/NSCopying-Protocol.h>
+#import "HMFObject.h"
 
 @class HMFActivity, NSData, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface HMFHTTPResponseInternal <NSCopying>
+@interface HMFHTTPResponseInternal : HMFObject
 {
     HMFActivity *_activity;
     long long _statusCode;

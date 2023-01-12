@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccountUI/UISearchBarDelegate-Protocol.h>
-
 @class NSString, UISearchBar;
 
 __attribute__((visibility("hidden")))
-@interface VSSearchBarDelegate : NSObject <UISearchBarDelegate>
+@interface VSSearchBarDelegate : NSObject
 {
     UISearchBar *_searchBar;
     NSString *_text;

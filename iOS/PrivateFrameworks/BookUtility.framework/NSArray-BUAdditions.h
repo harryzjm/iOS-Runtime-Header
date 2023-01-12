@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (BUAdditions)
+- (id)bu_prettyDescription;
 - (id)bu_dictionaryUsingPropertyAsKey:(id)arg1;
 - (id)bu_arrayByRemovingObjectsInArray:(id)arg1;
 - (id)bu_arrayByRemovingItemsWithDuplicateValuesForKey:(id)arg1;

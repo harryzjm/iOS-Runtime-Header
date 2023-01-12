@@ -24,7 +24,6 @@
 - (id)_accessibilityLabelForPageAtIndex:(unsigned long long)arg1 forPageScrollViewController:(id)arg2;
 - (id)_accessibilityValueForPageAtIndex:(unsigned long long)arg1 forPageScrollViewController:(id)arg2;
 - (_Bool)_accessibilityShouldSwipeBetweenPagesForPageScrollViewController:(id)arg1;
-- (void)_activateAddFaceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 

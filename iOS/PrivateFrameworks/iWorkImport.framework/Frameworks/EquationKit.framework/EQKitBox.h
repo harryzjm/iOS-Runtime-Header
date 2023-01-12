@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <EquationKit/NSCopying-Protocol.h>
-
-@interface EQKitBox : NSObject <NSCopying>
+@interface EQKitBox : NSObject
 {
 }
 

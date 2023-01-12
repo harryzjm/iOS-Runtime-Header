@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCETableTranslatorProtocol-Protocol.h>
+@class NSArray, NSString, TSCECoordMapper, TSTColumnRowUIDMap, TSTGroupBy, TSTTableInfo, TSTTableModel;
 
-@class NSArray, NSString, TSCECoordMapper, TSTColumnRowUIDMap, TSTGroupBy, TSTTableGroupSortOrderUID, TSTTableInfo, TSTTableModel;
-
-@interface TSTTableTranslator : NSObject <TSCETableTranslatorProtocol>
+@interface TSTTableTranslator : NSObject
 {
     TSTTableInfo *_tableInfo;
     TSTTableModel *_baseTableModel;
@@ -19,14 +17,13 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
-@property(readonly, nonatomic) TSTTableModel *baseTableModel; // @synthesize baseTableModel=_baseTableModel;
+@property(nonatomic) TSTTableModel *baseTableModel; // @synthesize baseTableModel=_baseTableModel;
 - (void)resetViewMapAndNotify;
 - (void)resetViewMap;
 - (_Bool)areMapsStale;
 - (void)forceGroupingChangeReset;
 - (_Bool)checkMapsAndAssert:(_Bool)arg1;
 - (Class)iteratorClass;
-@property(nonatomic) TSTTableGroupSortOrderUID *groupSortOrder;
 - (_Bool)hasCommentAtCellID:(struct TSUViewCellCoord)arg1;
 - (void)didMakeGroupingChangesInRowUIDs:(id)arg1;
 - (id)cellAtGroupLevel:(unsigned char)arg1 columnUID:(const struct TSKUIDStruct *)arg2;
@@ -162,8 +159,9 @@
 - (struct TSUViewCellCoord)cellIDForCellContainingRichTextStorage:(id)arg1;
 - (id)cellValueFromCell:(id)arg1 atCellID:(struct TSUViewCellCoord)arg2;
 - (int)getValue:(out struct TSCEValue *)arg1 atCellID:(struct TSUViewCellCoord)arg2 fetchRichTextAttributesIfPlainText:(_Bool)arg3;
+- (id)cachedCommentHostingForAnnotationUUID:(id)arg1;
 - (id)commentHostingAtCellID:(struct TSUViewCellCoord)arg1;
-- (id)commentHostingAtCellID:(struct TSUViewCellCoord)arg1 forCommentStorage:(id)arg2;
+- (id)commentHostingAtCellID:(struct TSUViewCellCoord)arg1 forCommentStorage:(id)arg2 updateCommentMaps:(_Bool)arg3;
 - (void)postCommentNotificationForStorage:(id)arg1 atViewCellCoord:(struct TSUViewCellCoord)arg2 notificationKey:(id)arg3;
 - (int)removeCommentStorageAtCellUID:(const struct TSKUIDStructCoord *)arg1;
 - (int)setCommentStorage:(id)arg1 atCellUID:(const struct TSKUIDStructCoord *)arg2;
@@ -180,8 +178,8 @@
 - (int)insertColumnsAtIndex:(struct TSUViewColumnIndex)arg1 uids:(const void *)arg2 metadatas:(id)arg3 tableArea:(unsigned long long)arg4;
 - (void)setWidth:(double)arg1 ofColumnAtIndex:(struct TSUViewColumnIndex)arg2;
 - (void)setHeight:(double)arg1 ofRowAtIndex:(struct TSUViewRowIndex)arg2;
-@property(readonly, retain, nonatomic) NSArray *columnWidths;
-@property(readonly, retain, nonatomic) NSArray *rowHeights;
+@property(readonly, nonatomic) NSArray *columnWidths;
+@property(readonly, nonatomic) NSArray *rowHeights;
 - (double)widthOfColumnAtIndex:(struct TSUViewColumnIndex)arg1;
 - (double)heightOfRowAtIndex:(struct TSUViewRowIndex)arg1;
 - (double)widthOfColumnAtIndex:(struct TSUViewColumnIndex)arg1 isDefault:(out _Bool *)arg2;
@@ -204,6 +202,7 @@
 - (id)conditionalStyleSetAtCellID:(struct TSUViewCellCoord)arg1;
 - (id)textStyleAtCellUID:(const struct TSKUIDStructCoord *)arg1 isDefault:(out _Bool *)arg2;
 - (id)cellStyleAtCellUID:(const struct TSKUIDStructCoord *)arg1 isDefault:(out _Bool *)arg2;
+- (void)defaultStylesForCellID:(struct TSUViewCellCoord)arg1 useSoftDefault:(_Bool)arg2 outCellStyle:(id *)arg3 outTextStyle:(id *)arg4;
 - (id)textStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out _Bool *)arg2;
 - (id)cellStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out _Bool *)arg2;
 - (id)defaultTextStyleForTableStyleArea:(unsigned long long)arg1;

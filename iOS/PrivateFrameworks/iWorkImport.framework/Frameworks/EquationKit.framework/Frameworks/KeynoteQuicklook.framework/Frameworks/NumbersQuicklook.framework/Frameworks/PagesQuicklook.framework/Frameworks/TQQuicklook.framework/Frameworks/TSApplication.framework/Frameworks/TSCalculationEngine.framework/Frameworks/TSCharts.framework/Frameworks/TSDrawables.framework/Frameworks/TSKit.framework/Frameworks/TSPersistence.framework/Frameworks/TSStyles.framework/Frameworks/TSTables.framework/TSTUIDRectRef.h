@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSCECalculationEngine, TSCECellTractRef, TSTColumnRowUIDMapper;
 
-@interface TSTUIDRectRef : NSObject <NSCopying>
+@interface TSTUIDRectRef : NSObject
 {
     TSCECalculationEngine *_calcEngine;
     struct TSKUIDStructTract _uidRange;
@@ -64,6 +62,7 @@
 @property(readonly, nonatomic) _Bool isValid;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (void)excludeSummaryAndLabelRows;
 - (void)convertUIDRefToViewTractRef;
 - (void)convertViewTractRefToUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;

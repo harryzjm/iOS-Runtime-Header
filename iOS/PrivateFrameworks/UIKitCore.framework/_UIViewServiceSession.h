@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSXPCConnectionDelegate-Protocol.h>
-#import <UIKitCore/_UIViewServiceDeputyManagerDelegate-Protocol.h>
-#import <UIKitCore/_UIViewServiceViewControllerOperatorDelegate-Protocol.h>
-
 @class NSString, NSXPCConnection, _UIAsyncInvocation, _UIViewServiceDeputyManager, _UIViewServiceSessionManager;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceSession : NSObject <NSXPCConnectionDelegate, _UIViewServiceDeputyManagerDelegate, _UIViewServiceViewControllerOperatorDelegate>
+@interface _UIViewServiceSession : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_connection;
@@ -22,11 +18,10 @@ __attribute__((visibility("hidden")))
     _UIViewServiceDeputyManager *_deputyManager;
     _UIAsyncInvocation *_invalidationInvocation;
     CDUnknownBlockType _terminationHandler;
-    int __automatic_invalidation_retainCount;
-    _Bool __automatic_invalidation_invalidated;
 }
 
 + (id)sessionWithConnection:(id)arg1 manager:(id)arg2;
++ (void)initialize;
 @property(copy, nonatomic) CDUnknownBlockType terminationHandler; // @synthesize terminationHandler=_terminationHandler;
 @property(readonly) __weak _UIViewServiceSessionManager *manager; // @synthesize manager=_manager;
 - (id)mainStoryboardNameForViewControllerOperator:(id)arg1;
@@ -43,12 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
 - (void)deputyManager:(id)arg1 didUpdateExportedInterface:(id)arg2;
 - (void)dealloc;
-- (_Bool)_isDeallocating;
-- (_Bool)_tryRetain;
-- (unsigned long long)retainCount;
-- (oneway void)release;
-- (id)retain;
-- (int)__automatic_invalidation_logic;
+- (void)_objc_initiateDealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEORPProblemOptInResponse : PBCodable <NSCopying>
+@interface GEORPProblemOptInResponse : PBCodable
 {
     int _statusCode;
     CDStruct_ade9d5f7 _flags;

@@ -6,9 +6,9 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @protocol GEOAppleMediaServicesProtocol <NSObject>
-- (void)mediaResultWithIdentifiers:(NSArray *)arg1 bundleIdentifiers:(NSArray *)arg2 type:(long long)arg3 artworkSize:(struct CGSize)arg4 screenScale:(double)arg5 completion:(void (^)(NSArray *, NSError *))arg6;
+- (void)mediaResultWithIdentifiers:(NSArray *)arg1 bundleIdentifiers:(NSArray *)arg2 type:(long long)arg3 artworkSize:(struct CGSize)arg4 screenScale:(double)arg5 source:(NSString *)arg6 completion:(void (^)(NSArray *, NSError *))arg7;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Security/OS_sec_protocol_configuration_builder-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SecConcrete_sec_protocol_configuration_builder : NSObject <OS_sec_protocol_configuration_builder>
+@interface SecConcrete_sec_protocol_configuration_builder : NSObject
 {
     struct __CFDictionary *dictionary;
     _Bool is_apple;

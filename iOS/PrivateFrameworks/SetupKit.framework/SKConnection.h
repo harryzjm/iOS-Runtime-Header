@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SetupKit/CUActivatable-Protocol.h>
-#import <SetupKit/CUAuthenticatableClient-Protocol.h>
-#import <SetupKit/CUAuthenticatableServer-Protocol.h>
-#import <SetupKit/CULabelable-Protocol.h>
-
-@class CBConnection, CUPairingSession, CUPairingStream, NSError, NSMutableArray, NSMutableDictionary, NSString, SKDevice;
+@class CBConnection, CUPairingSession, CUPairingStream, NSData, NSError, NSMutableArray, NSMutableDictionary, NSString, SKDevice;
 @protocol CUReadWriteRequestable, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface SKConnection : NSObject <CUActivatable, CUAuthenticatableClient, CUAuthenticatableServer, CULabelable>
+@interface SKConnection : NSObject
 {
     _Bool _activateCalled;
     unsigned long long _authThrottleDeadlineTicks;
@@ -28,6 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _mainAuthTagLength;
     CUPairingStream *_mainStream;
     CUPairingSession *_pairSetupSession;
+    CUPairingSession *_pairVerifySession;
     _Bool _readRequested;
     _Bool _receivingHeader;
     NSMutableDictionary *_requests;
@@ -40,6 +36,7 @@ __attribute__((visibility("hidden")))
     unsigned int _xidLast;
     _Bool _clientMode;
     int _passwordType;
+    unsigned int _bluetoothUseCase;
     int _state;
     CDUnknownBlockType _authCompletionHandler;
     CDUnknownBlockType _authHidePasswordHandler;
@@ -51,6 +48,7 @@ __attribute__((visibility("hidden")))
     CBConnection *_bleConnection;
     SKDevice *_blePeerDevice;
     CDUnknownBlockType _errorHandler;
+    NSData *_pskData;
     CDUnknownBlockType _invalidationHandler;
     CDUnknownBlockType _receivedEventHandler;
     CDUnknownBlockType _receivedRequestHandler;
@@ -65,8 +63,10 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType receivedRequestHandler; // @synthesize receivedRequestHandler=_receivedRequestHandler;
 @property(copy, nonatomic) CDUnknownBlockType receivedEventHandler; // @synthesize receivedEventHandler=_receivedEventHandler;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property(copy, nonatomic) NSData *pskData; // @synthesize pskData=_pskData;
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property(nonatomic) _Bool clientMode; // @synthesize clientMode=_clientMode;
+@property(nonatomic) unsigned int bluetoothUseCase; // @synthesize bluetoothUseCase=_bluetoothUseCase;
 @property(retain, nonatomic) SKDevice *blePeerDevice; // @synthesize blePeerDevice=_blePeerDevice;
 @property(retain, nonatomic) CBConnection *bleConnection; // @synthesize bleConnection=_bleConnection;
 @property(nonatomic) int passwordType; // @synthesize passwordType=_passwordType;
@@ -100,15 +100,20 @@ __attribute__((visibility("hidden")))
 - (void)sendEventID:(id)arg1 data:(id)arg2 xid:(unsigned int)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendEventID:(id)arg1 event:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_serverError:(id)arg1;
+- (void)_serverPairVerifyCompleted:(id)arg1;
+- (void)_serverPairVerifyContinueWithData:(id)arg1 start:(_Bool)arg2;
 - (void)_serverPairSetupCompleted:(id)arg1;
-- (void)_serverPairSetupWithData:(id)arg1 start:(_Bool)arg2;
+- (void)_serverPairSetupContinueWithData:(id)arg1 start:(_Bool)arg2;
 - (void)_serverAcceptBLE;
 - (void)_serverAccept;
 - (void)_serverRun;
 - (void)_clientError:(id)arg1;
+- (void)_clientPairVerifyCompleted:(id)arg1;
+- (void)_clientPairVerifyWithData:(id)arg1;
+- (void)_clientPairVerifyStart;
 - (void)_clientPairSetupCompleted:(id)arg1;
-- (void)_clientPairSetupPromptWithFlags:(unsigned int)arg1 throttleSeconds:(int)arg2;
-- (void)_clientPairSetupWithData:(id)arg1;
+- (void)_clientPairSetupPromptWithFlags:(unsigned int)arg1 passwordType:(int)arg2 throttleSeconds:(int)arg3;
+- (void)_clientPairSetupContinueWithData:(id)arg1;
 - (void)_clientPairSetupStart;
 - (void)_clientConnectCompleted:(id)arg1;
 - (void)_clientConnectStartBLE;
@@ -117,7 +122,10 @@ __attribute__((visibility("hidden")))
 - (void)_updateExternalState;
 - (void)tryPassword:(id)arg1;
 - (void)_run;
+- (void)_pskPrepareClientMode:(_Bool)arg1;
+- (void)_pairVerifyInvalidate;
 - (void)_pairSetupInvalidate;
+- (id)deriveKeyWithSaltPtr:(const void *)arg1 saltLen:(unsigned long long)arg2 infoPtr:(const void *)arg3 infoLen:(unsigned long long)arg4 keyLen:(unsigned long long)arg5 error:(id *)arg6;
 - (void)_invalidated;
 - (void)_invalidateCore:(id)arg1;
 - (void)_invalidateWithError:(id)arg1;

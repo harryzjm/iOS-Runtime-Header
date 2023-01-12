@@ -4,16 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIEmbeddedMediaViewDelegate-Protocol.h>
-#import <StoreKitUI/SKUIItemStateCenterObserver-Protocol.h>
-#import <StoreKitUI/SKUIMissingItemDelegate-Protocol.h>
-#import <StoreKitUI/SKUIProductPageOverlayDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSMapTable, NSMutableDictionary, NSMutableIndexSet, NSString, SKUIClientContext, SKUIGridComponent, SKUIMissingItemLoader, SKUIProductPageOverlayController, SKUIVideoImageDataConsumer;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGridPageSection <SKUIArtworkRequestDelegate, SKUIItemStateCenterObserver, SKUIEmbeddedMediaViewDelegate, SKUIMissingItemDelegate, SKUIProductPageOverlayDelegate>
+@interface SKUIGridPageSection : SKUIStorePageSection
 {
     NSMapTable *_artworkRequests;
     SKUIClientContext *_clientContext;

@@ -18,16 +18,18 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedPropertiesMapTable;
 + (id)accessQueue;
-+ (id)_propertiesForClientIdentifier:(id)arg1 account:(id)arg2 bag:(id)arg3 URLKnownToBeTrusted:(_Bool)arg4;
++ (id)_propertiesForClientIdentifier:(id)arg1 account:(id)arg2 bag:(id)arg3 clientInfo:(id)arg4 URLKnownToBeTrusted:(_Bool)arg5;
++ (id)propertiesForUserNotificationSettingsTask:(id)arg1;
 + (id)propertiesForStorefrontsTask:(id)arg1;
 + (id)propertiesForRatingsTask:(id)arg1;
++ (id)propertiesForMercuryCacheFetchTask:(id)arg1;
 + (id)propertiesForMediaTask:(id)arg1;
 + (id)propertiesForMarketingItemTask:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <AMSMediaTokenServiceProtocol> tokenService; // @synthesize tokenService=_tokenService;
 @property(readonly, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 - (void)dealloc;
-- (id)_initWithClientIdentifier:(id)arg1 account:(id)arg2 bag:(id)arg3 URLKnownToBeTrusted:(_Bool)arg4;
+- (id)_initWithClientIdentifier:(id)arg1 account:(id)arg2 bag:(id)arg3 clientInfo:(id)arg4 URLKnownToBeTrusted:(_Bool)arg5;
 
 @end
 

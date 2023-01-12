@@ -6,7 +6,6 @@
 
 @class GQHXML;
 
-__attribute__((visibility("hidden")))
 @interface GQHLassoState
 {
     GQHXML *mNavigation;

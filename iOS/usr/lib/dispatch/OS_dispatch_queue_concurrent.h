@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <dispatch/OS_dispatch_queue_concurrent-Protocol.h>
+#import "OS_dispatch_queue.h"
 
 @class NSString;
 
-@interface OS_dispatch_queue_concurrent <OS_dispatch_queue_concurrent>
+@interface OS_dispatch_queue_concurrent : OS_dispatch_queue
 {
 }
 

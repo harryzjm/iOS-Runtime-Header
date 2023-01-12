@@ -9,7 +9,7 @@
 @protocol GGLLayer
 @property(readonly) int backingFormat;
 @property(readonly, nonatomic) struct CGSize backingSize;
-@property id <GGLLayerDelegate> renderDelegate;
+@property __weak id <GGLLayerDelegate> renderDelegate;
 - (void)didEnterBackground;
 - (void)onTimerFired:(double)arg1;
 @end

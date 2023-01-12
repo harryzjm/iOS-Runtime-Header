@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class DVTPerformanceMetric, NSString;
+@class DVTPerformanceMetric, NSMutableDictionary, NSString;
 
 @interface DVTDeviceOperation : NSObject
 {
     _Bool _operationIsUserInitiated;
+    _Bool _isNonBlocking;
     NSString *_deviceIdentifier;
     NSString *_operationDescription;
     long long _progress;
     NSString *_analyticsName;
     DVTPerformanceMetric *_performanceMetric;
     unsigned long long _startTimeMonotonicNS;
+    NSMutableDictionary *_analyticsDictionary;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isNonBlocking; // @synthesize isNonBlocking=_isNonBlocking;
+@property(readonly, nonatomic) NSMutableDictionary *analyticsDictionary; // @synthesize analyticsDictionary=_analyticsDictionary;
 @property(readonly, nonatomic) unsigned long long startTimeMonotonicNS; // @synthesize startTimeMonotonicNS=_startTimeMonotonicNS;
 @property(readonly, nonatomic) DVTPerformanceMetric *performanceMetric; // @synthesize performanceMetric=_performanceMetric;
 @property(readonly, nonatomic) NSString *analyticsName; // @synthesize analyticsName=_analyticsName;
@@ -27,7 +31,7 @@
 @property(copy) NSString *operationDescription; // @synthesize operationDescription=_operationDescription;
 @property(readonly, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property _Bool operationIsUserInitiated; // @synthesize operationIsUserInitiated=_operationIsUserInitiated;
-- (id)initWithDeviceIdentifier:(id)arg1 isUserInitiated:(_Bool)arg2 description:(id)arg3 shouldReportAnalyticsWithName:(id)arg4;
+- (id)initWithDeviceIdentifier:(id)arg1 isUserInitiated:(_Bool)arg2 description:(id)arg3 shouldReportAnalyticsWithName:(id)arg4 analyticsDictionary:(id)arg5 isNonBlocking:(_Bool)arg6;
 
 @end
 

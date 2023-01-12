@@ -8,5 +8,9 @@
 
 @protocol _NUIFlowArrangementContainer <NUIArrangementContainer>
 - (void)populateFlowArrangementCells:(void *)arg1;
+
+@optional
+- (long long)distributionForRowAtIndex:(long long)arg1 ofTotalRowCount:(long long)arg2 withCells:(const void *)arg3;
+- (struct CGSize)fittingSizeForCell:(const struct _NUIFlowArrangementCell *)arg1 withProposedSize:(struct CGSize)arg2;
 @end
 

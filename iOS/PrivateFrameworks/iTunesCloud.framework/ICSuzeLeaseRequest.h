@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class ICStoreRequestContext, NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICSuzeLeaseRequest : NSObject <NSCopying>
+@interface ICSuzeLeaseRequest : NSObject
 {
     NSData *_clientData;
     NSString *_leaseID;

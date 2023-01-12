@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSCopying-Protocol.h>
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 @class NSDictionary, NSString, NSURL, NSXPCConnection, _LSOpenConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface _LSAppLinkOpenState : NSObject <NSCopying, NSSecureCoding>
+@interface _LSAppLinkOpenState : NSObject
 {
     struct optional<audit_token_t> _auditToken;
     NSXPCConnection *_XPCConnection;

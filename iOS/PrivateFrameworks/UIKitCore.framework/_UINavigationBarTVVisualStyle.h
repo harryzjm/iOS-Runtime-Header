@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (double)interItemSpace;
 - (double)barHeight;
 - (double)buttonHeight;
-- (id)defaultTitleFont;
 - (double)buttonFontSize;
 - (double)headingFontSize;
 - (id)timingFunctionForAnimationInView:(id)arg1 withKeyPath:(id)arg2 isInteractive:(_Bool)arg3;

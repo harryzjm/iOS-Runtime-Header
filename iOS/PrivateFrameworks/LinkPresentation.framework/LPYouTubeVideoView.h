@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LinkPresentation/LPYouTubePlayerDelegate-Protocol.h>
-
 @class LPYouTubePlayerView, NSString;
 
 __attribute__((visibility("hidden")))
-@interface LPYouTubeVideoView <LPYouTubePlayerDelegate>
+@interface LPYouTubeVideoView
 {
     LPYouTubePlayerView *_platformYouTubeView;
     _Bool _allowingInteractionUntilPlaybackResumes;

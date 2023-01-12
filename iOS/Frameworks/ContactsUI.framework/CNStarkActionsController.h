@@ -6,16 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ContactsUI/CNContactQuickActionViewContainer-Protocol.h>
-#import <ContactsUI/CNContactQuickActionsControllerDelegate-Protocol.h>
-#import <ContactsUI/CNStarkActionViewDelegate-Protocol.h>
-#import <ContactsUI/UINavigationControllerDelegate-Protocol.h>
-
 @class CNContact, CNContactQuickActionsController, CNStarkActionView, NSArray, NSString, UITraitCollection;
 @protocol UINavigationControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNStarkActionsController : UIViewController <CNContactQuickActionViewContainer, CNContactQuickActionsControllerDelegate, CNStarkActionViewDelegate, UINavigationControllerDelegate>
+@interface CNStarkActionsController : UIViewController
 {
     CNContact *_contact;
     CNContactQuickActionsController *_quickActionsController;

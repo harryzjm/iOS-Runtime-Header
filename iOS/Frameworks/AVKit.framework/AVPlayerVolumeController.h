@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVVolumeController-Protocol.h>
-
 @class AVObservationController, AVPlayerController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVPlayerVolumeController : NSObject <AVVolumeController>
+@interface AVPlayerVolumeController : NSObject
 {
     _Bool _prefersSystemVolumeHUDHidden;
     _Bool _changingVolume;

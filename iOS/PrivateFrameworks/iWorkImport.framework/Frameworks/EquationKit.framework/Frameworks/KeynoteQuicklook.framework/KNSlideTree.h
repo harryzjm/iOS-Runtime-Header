@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPContainedObject.h>
 
-#import <KeynoteQuicklook/KNSlideCollection-Protocol.h>
-
 @class KNSlideNode, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSNumberFormatter, NSString;
 
-@interface KNSlideTree : TSPContainedObject <KNSlideCollection>
+@interface KNSlideTree : TSPContainedObject
 {
     NSMutableOrderedSet *_slideNodes;
     NSMutableArray *_displayedSlideNodeCache;

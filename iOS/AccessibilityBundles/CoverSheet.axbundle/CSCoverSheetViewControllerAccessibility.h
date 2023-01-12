@@ -11,6 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_axIsCapabilityRestricted:(unsigned long long)arg1;
+- (_Bool)_accessibilityShowWallpaperCollections;
+- (_Bool)_axShowSpotlight;
+- (_Bool)_axShowCameraView;
+- (_Bool)_axIsTodayViewShowing;
+- (_Bool)_axDismissTodayView;
+- (_Bool)_axShowTodayView;
+- (id)accessibilityCustomActions;
 - (void)_presentModalViewController:(id)arg1 shouldDismissOverlays:(_Bool)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;

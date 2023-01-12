@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MTLSimDriver/MTLResourceSPI-Protocol.h>
-#import <MTLSimDriver/MTLSerializerResource-Protocol.h>
-
 @class MTLSimDevice, MTLSimHeap, NSString;
 @protocol MTLDevice, MTLHeap;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimResource : NSObject <MTLResourceSPI, MTLSerializerResource>
+@interface MTLSimResource : NSObject
 {
     unsigned long long _purgeableState;
     MTLSimHeap *_heap;

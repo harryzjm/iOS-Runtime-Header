@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLRenderPipelineDescriptor.h"
+
 __attribute__((visibility("hidden")))
-@interface MTLRenderPipelineDescriptorInternal
+@interface MTLRenderPipelineDescriptorInternal : MTLRenderPipelineDescriptor
 {
     struct MTLRenderPipelineDescriptorPrivate _private;
     struct FlatBufferBuilder _builder;
@@ -14,6 +16,8 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (const void *)getPipelineScript;
+- (id)newSerializedMeshDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (id)newSerializedObjectDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)newSerializedVertexDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)newSerializedVertexDataWithFlags:(unsigned long long)arg1 error:(id *)arg2;
 - (id)serializeFragmentData;
@@ -35,6 +39,28 @@ __attribute__((visibility("hidden")))
 - (void)attachVertexDescriptor:(id)arg1;
 - (id)pipelineLibrary;
 - (void)setPipelineLibrary:(id)arg1;
+- (void)setMaxPipelineChildren:(CDStruct_da2e99ad)arg1;
+- (CDStruct_da2e99ad)maxPipelineChildren;
+- (void)setPipelineMemoryLength:(unsigned long long)arg1;
+- (unsigned long long)pipelineMemoryLength;
+- (void)setMeshThreadgroupSizeIsMultipleOfThreadExecutionWidth:(_Bool)arg1;
+- (_Bool)meshThreadgroupSizeIsMultipleOfThreadExecutionWidth;
+- (void)setObjectThreadgroupSizeIsMultipleOfThreadExecutionWidth:(_Bool)arg1;
+- (_Bool)objectThreadgroupSizeIsMultipleOfThreadExecutionWidth;
+- (void)setMaxTotalThreadsPerMeshThreadgroup:(unsigned long long)arg1;
+- (unsigned long long)maxTotalThreadsPerMeshThreadgroup;
+- (void)setMaxTotalThreadsPerObjectThreadgroup:(unsigned long long)arg1;
+- (unsigned long long)maxTotalThreadsPerObjectThreadgroup;
+- (void)setMeshThreadsPerThreadgroup:(CDStruct_da2e99ad)arg1;
+- (CDStruct_da2e99ad)meshThreadsPerThreadgroup;
+- (void)setObjectThreadsPerThreadgroup:(CDStruct_da2e99ad)arg1;
+- (CDStruct_da2e99ad)objectThreadsPerThreadgroup;
+- (id)meshBuffers;
+- (id)objectBuffers;
+- (id)meshFunction;
+- (void)setMeshFunction:(id)arg1;
+- (id)objectFunction;
+- (void)setObjectFunction:(id)arg1;
 - (id)fragmentFunction;
 - (void)setFragmentFunction:(id)arg1;
 - (id)vertexFunction;
@@ -42,8 +68,20 @@ __attribute__((visibility("hidden")))
 - (void)setLabel:(id)arg1;
 - (id)label;
 - (void)reset;
+- (void)setProfileControl:(id)arg1;
+- (id)profileControl;
+- (void)setExplicitVisibilityGroupID:(unsigned int)arg1;
+- (unsigned int)explicitVisibilityGroupID;
 - (id)fragmentBuffers;
 - (id)vertexBuffers;
+- (void)setMaxObjectCallStackDepth:(unsigned long long)arg1;
+- (unsigned long long)maxObjectCallStackDepth;
+- (void)setMaxMeshCallStackDepth:(unsigned long long)arg1;
+- (unsigned long long)maxMeshCallStackDepth;
+- (void)setSupportAddingObjectBinaryFunctions:(_Bool)arg1;
+- (_Bool)supportAddingObjectBinaryFunctions;
+- (void)setSupportAddingMeshBinaryFunctions:(_Bool)arg1;
+- (_Bool)supportAddingMeshBinaryFunctions;
 - (void)setMaxFragmentCallStackDepth:(unsigned long long)arg1;
 - (unsigned long long)maxFragmentCallStackDepth;
 - (void)setMaxVertexCallStackDepth:(unsigned long long)arg1;
@@ -52,14 +90,26 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportAddingFragmentBinaryFunctions;
 - (void)setSupportAddingVertexBinaryFunctions:(_Bool)arg1;
 - (_Bool)supportAddingVertexBinaryFunctions;
+- (void)setInsertMeshLibraries:(id)arg1;
+- (id)insertMeshLibraries;
+- (void)setInsertObjectLibraries:(id)arg1;
+- (id)insertObjectLibraries;
 - (void)setInsertFragmentLibraries:(id)arg1;
 - (id)insertFragmentLibraries;
 - (void)setInsertVertexLibraries:(id)arg1;
 - (id)insertVertexLibraries;
+- (void)setMeshPreloadedLibraries:(id)arg1;
+- (id)meshPreloadedLibraries;
+- (void)setObjectPreloadedLibraries:(id)arg1;
+- (id)objectPreloadedLibraries;
 - (void)setFragmentPreloadedLibraries:(id)arg1;
 - (id)fragmentPreloadedLibraries;
 - (void)setVertexPreloadedLibraries:(id)arg1;
 - (id)vertexPreloadedLibraries;
+- (void)setMeshLinkedFunctions:(id)arg1;
+- (id)meshLinkedFunctions;
+- (void)setObjectLinkedFunctions:(id)arg1;
+- (id)objectLinkedFunctions;
 - (void)setFragmentLinkedFunctions:(id)arg1;
 - (id)fragmentLinkedFunctions;
 - (void)setVertexLinkedFunctions:(id)arg1;

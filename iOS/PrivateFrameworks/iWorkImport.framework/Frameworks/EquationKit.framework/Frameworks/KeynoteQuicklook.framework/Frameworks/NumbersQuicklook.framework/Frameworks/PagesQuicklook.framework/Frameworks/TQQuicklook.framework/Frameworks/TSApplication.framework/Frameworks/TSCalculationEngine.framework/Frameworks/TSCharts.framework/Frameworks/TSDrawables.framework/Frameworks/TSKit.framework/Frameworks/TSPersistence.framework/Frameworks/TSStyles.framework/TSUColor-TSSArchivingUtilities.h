@@ -6,14 +6,9 @@
 
 #import <TSUtility/TSUColor.h>
 
-#import <TSStyles/TSSPreset-Protocol.h>
-#import <TSStyles/TSSPresetSource-Protocol.h>
-#import <TSStyles/TSSPropertyCommandSerializing-Protocol.h>
-#import <TSStyles/TSSPropertyValueArchiving-Protocol.h>
-
 @class NSString;
 
-@interface TSUColor (TSSArchivingUtilities) <TSSPropertyValueArchiving, TSSPropertyCommandSerializing, TSSPreset, TSSPresetSource>
+@interface TSUColor (TSSArchivingUtilities)
 + (id)instanceWithArchive:(const struct Message *)arg1 unarchiver:(id)arg2;
 + (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
 + (id)presetKinds;

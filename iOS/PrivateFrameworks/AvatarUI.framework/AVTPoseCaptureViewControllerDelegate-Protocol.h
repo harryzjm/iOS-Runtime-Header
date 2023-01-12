@@ -14,6 +14,6 @@
 - (void)poseCaptureViewController:(AVTPoseCaptureViewController *)arg1 didCapturePoseWithConfiguration:(AVTStickerConfiguration *)arg2 avatar:(id <AVTAvatarRecord>)arg3;
 
 @optional
-- (UIImage *)poseCaptureViewController:(AVTPoseCaptureViewController *)arg1 willCaptureAvatarImage:(UIImage *)arg2;
+- (void)poseCaptureViewController:(AVTPoseCaptureViewController *)arg1 willCaptureAvatarImage:(UIImage *)arg2 completion:(void (^)(UIImage *))arg3;
 @end
 

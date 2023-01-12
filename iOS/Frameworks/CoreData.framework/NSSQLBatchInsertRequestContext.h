@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSBatchInsertRequest;
-
 __attribute__((visibility("hidden")))
 @interface NSSQLBatchInsertRequestContext
 {
@@ -13,7 +11,6 @@ __attribute__((visibility("hidden")))
 
 - (_Bool)executeRequestCore:(id *)arg1;
 - (_Bool)isWritingRequest;
-@property(readonly, nonatomic) NSBatchInsertRequest *request;
 - (id)initWithRequest:(id)arg1 context:(id)arg2 sqlCore:(id)arg3;
 
 @end

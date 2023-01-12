@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUICategoryControllerDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSData, NSString, NSURL, SKUICategoryController, SKUIStorePageViewController, SSVLoadURLOperation;
 
 __attribute__((visibility("hidden")))
-@interface SKUILegacyNativeViewController <SKUICategoryControllerDelegate>
+@interface SKUILegacyNativeViewController : SKUIViewController
 {
     NSURL *_activeURL;
     SKUICategoryController *_categoryController;

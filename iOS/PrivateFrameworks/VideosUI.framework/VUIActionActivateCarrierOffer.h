@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/AMSCarrierLinkTaskDelegate-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIActionActivateCarrierOffer <AMSCarrierLinkTaskDelegate>
+@interface VUIActionActivateCarrierOffer
 {
     NSString *_linkParams;
     NSString *_productCode;

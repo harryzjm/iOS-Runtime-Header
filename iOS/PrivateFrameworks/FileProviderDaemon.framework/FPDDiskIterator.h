@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numFoldersPopped;
 - (_Bool)done;
 - (id)error;
+- (void)skipDescendants;
 - (id)nextWithError:(id *)arg1;
 - (id)initWithURL:(id)arg1 isDirectory:(_Bool)arg2;
 

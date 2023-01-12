@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSItemResolving-Protocol.h>
-
 @class NSString;
 @protocol BCSItemCacheSkipping, BCSItemCaching, BCSItemRemoteFetching, BCSMetricFactoryProtocol;
 
 __attribute__((visibility("hidden")))
-@interface BCSItemResolver : NSObject <BCSItemResolving>
+@interface BCSItemResolver : NSObject
 {
     id <BCSItemCaching> _itemCache;
     id <BCSItemCacheSkipping> _itemCacheSkipper;

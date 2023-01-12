@@ -6,9 +6,13 @@
 
 #import <DeviceCheckInternal/NSObject-Protocol.h>
 
-@class DCContext;
+@class DCContext, NSData, NSDictionary;
 
 @protocol DCCryptoProxy <NSObject>
 - (void)fetchOpaqueBlobWithContext:(DCContext *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+
+@optional
+- (void)baaSignaturesForData:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSData *, NSError *))arg2;
+- (void)baaSignatureForData:(NSData *)arg1 completion:(void (^)(NSData *, NSData *, NSError *))arg2;
 @end
 

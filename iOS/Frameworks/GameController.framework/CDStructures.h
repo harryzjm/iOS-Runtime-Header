@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSObject;
+@class NSObject;
 
 #pragma mark Blocks
 
@@ -27,25 +27,11 @@ struct CGSize {
     double height;
 };
 
-struct FixedParam {
-    unsigned int _field1;
-    float _field2;
-};
-
 struct GCQuaternion {
     double x;
     double y;
     double z;
     double w;
-};
-
-struct HapticCommand {
-    struct MessageHeader _field1;
-    unsigned int _field2;
-    double _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    union u _field6;
 };
 
 struct HapticSharedMemory {
@@ -60,40 +46,69 @@ struct HapticSharedMemory {
     NSObject *mXPCObject;
 };
 
-struct ItemList<FixedParam, 8> {
-    unsigned int _field1;
-    struct FixedParam _field2[8];
+struct LogitechWheelG29ClassicReport {
+    unsigned int dpad:4;
+    unsigned int buttonX:1;
+    unsigned int buttonSquare:1;
+    unsigned int buttonCircle:1;
+    unsigned int buttonTriangle:1;
+    unsigned int rightPaddle:1;
+    unsigned int leftPaddle:1;
+    unsigned int buttonR2:1;
+    unsigned int buttonL2:1;
+    unsigned int buttonShare:1;
+    unsigned int buttonOptions:1;
+    unsigned int buttonR3:1;
+    unsigned int buttonL3:1;
+    unsigned int shifter:7;
+    unsigned int buttonPlus:1;
+    unsigned int buttonMinus:1;
+    unsigned int dialRight:1;
+    unsigned int dialLeft:1;
+    unsigned int buttonReturn:1;
+    unsigned int buttonLogo:1;
+    unsigned int unused:3;
+    unsigned short wheel;
+    unsigned int pedalGas:8;
+    unsigned int pedalBrake:8;
+    unsigned int pedalClutch:8;
+    unsigned char vendor1[2];
+    unsigned char vendor2;
 };
 
-struct ItemList<ParamPoint, 16> {
-    unsigned int _field1;
-    struct ParamPoint _field2[16];
+struct LogitechWheelG920Report {
+    unsigned char reportID;
+    unsigned int dpad:4;
+    unsigned int buttonA:1;
+    unsigned int buttonB:1;
+    unsigned int buttonX:1;
+    unsigned int buttonY:1;
+    unsigned int rightPaddle:1;
+    unsigned int leftPaddle:1;
+    unsigned int buttonMenu:1;
+    unsigned int buttonView:1;
+    unsigned int buttonRSB:1;
+    unsigned int buttonLSB:1;
+    unsigned int buttonLogo:1;
+    unsigned int shifter:7;
+    unsigned int unused:2;
+    unsigned short wheel;
+    unsigned int pedalGas:8;
+    unsigned int pedalBrake:8;
+    unsigned int pedalClutch:8;
+    unsigned int vendor1:1;
+    unsigned int vendor2:1;
+    unsigned int vendor3:1;
+    unsigned int unused2:5;
 };
 
-struct MessageHeader {
-    unsigned short _field1;
-    unsigned short _field2;
-};
-
-struct ParamPoint {
-    float _field1;
-    float _field2;
-};
-
-struct SequenceChannelParam {
+struct ObjectStateEntry {
     unsigned long long _field1;
-    unsigned long long _field2;
-    float _field3;
+    id _field2;
 };
 
-struct SequenceParam {
-    unsigned short _field1;
-    float _field2;
-};
-
-struct TokenAndParams {
+struct PrimitiveStateEntry {
     unsigned long long _field1;
-    struct ItemList<FixedParam, 8> _field2;
 };
 
 struct UIEdgeInsets {
@@ -108,94 +123,74 @@ struct UsagePage_Usage_Pair {
     long long usage;
 };
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
+struct _GCDevicePhysicalInputAxisInputParams {
+    _Bool _field1;
+    _Bool _field2;
 };
 
-struct pair<bool, float> {
+struct _GCDevicePhysicalInputButtonInputParams {
     _Bool _field1;
     float _field2;
+};
+
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    MISSING_TYPE *vector;
-} CDStruct_0e8a9a91;
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+} CDStruct_f4b747e6;
 
 typedef struct {
-    unsigned long long mask;
-    float buttons[41];
-} CDStruct_5be5f302;
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
 
 typedef struct {
     float _field1[4];
 } CDStruct_212a8bf9;
 
 typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
-
-typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-} CDStruct_0be28830;
-
-typedef struct {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    int _field5;
-    int _field6;
-    int _field7;
-    int _field8;
-    int _field9;
-    int _field10;
-    int _field11;
-    int _field12;
-    int _field13;
-    int _field14;
-    int _field15;
-} CDStruct_6ad99454;
-
-typedef struct {
-    id _field1;
-    _Bool _field2;
-    _Bool _field3;
-    union {
-        struct {
-            int _field1;
-            _Bool _field2;
-            float _field3;
-            long long _field4;
-        } _field1;
-        struct {
-            int _field1;
-            int _field2;
-            int _field3;
-            int _field4;
-        } _field2;
-    } _field4;
-    int _field5;
-    _Bool _field6;
-    _Bool _field7;
-    _Bool _field8;
-    id _field9;
-    id _field10;
-} CDStruct_9b142b0c;
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 
 typedef struct {
     struct {
-        struct _field1;
-    } _field1[31];
-} CDStruct_d01ae07a;
-
-typedef struct {
-    CDStruct_9b142b0c _field1[16];
+        id _field1;
+        _Bool _field2;
+        _Bool _field3;
+        union {
+            struct {
+                int _field1;
+                _Bool _field2;
+                float _field3;
+                long long _field4;
+            } _field1;
+            struct {
+                int _field1;
+                int _field2;
+                int _field3;
+                int _field4;
+            } _field2;
+        } _field4;
+        int _field5;
+        _Bool _field6;
+        _Bool _field7;
+        _Bool _field8;
+        id _field9;
+        id _field10;
+    } _field1[16];
     _Bool _field2;
     _Bool _field3;
 } CDStruct_fc41fe5e;
@@ -218,20 +213,4 @@ typedef struct {
     double y;
     double z;
 } CDStruct_31142d93;
-
-typedef struct pair<bool, float> {
-    _Bool _field1;
-    float _field2;
-} pair_218a80e9;
-
-#pragma mark Named Unions
-
-union u {
-    struct TokenAndParams _field1;
-    struct SequenceChannelParam _field2;
-    struct SequenceParam _field3;
-    float _field4;
-    double _field5;
-    struct ItemList<ParamPoint, 16> _field6;
-};
 

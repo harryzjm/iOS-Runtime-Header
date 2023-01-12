@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OfficeImport/CMMapperRoot-Protocol.h>
-
 @class EDWorkbook, NSMutableArray, NSString, OIXMLDocument, OIXMLElement;
 
 __attribute__((visibility("hidden")))
-@interface EMWorkbookMapper <CMMapperRoot>
+@interface EMWorkbookMapper
 {
     unsigned long long mRealSheetCount;
     int mWidth;

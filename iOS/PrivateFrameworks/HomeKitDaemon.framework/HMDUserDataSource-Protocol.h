@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDCloudShareMessenger, HMDHome, HMDUser, HMDUserDataController, HMDUserSettingsBackingStoreController, NSObject, NSString, NSUUID;
-@protocol HMDSettingsControllerProtocol, HMDUserDataControllerDelegate, HMDUserSettingsBackingStoreControllerDelegate, OS_dispatch_queue;
+#import <HomeKitDaemon/NSObject-Protocol.h>
 
-@protocol HMDUserDataSource
+@class HMDCloudShareMessenger, HMDUser, HMDUserDataController, HMDUserSettingsBackingStoreController, NSObject, NSString, NSUUID;
+@protocol HMDSettingsControllerProtocol, HMDUserDataControllerDataSource, HMDUserDataControllerDelegate, HMDUserSettingsBackingStoreControllerDelegate, OS_dispatch_queue;
+
+@protocol HMDUserDataSource <NSObject>
 - (_Bool)isCurrentUser:(HMDUser *)arg1;
-- (HMDUserSettingsBackingStoreController *)userDataBackingStoreControllerWithDelegate:(id <HMDUserSettingsBackingStoreControllerDelegate>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2 zoneName:(NSString *)arg3 home:(HMDHome *)arg4 shareMessenger:(HMDCloudShareMessenger *)arg5;
-- (HMDUserDataController *)userDataControllerWithDelegate:(id <HMDUserDataControllerDelegate>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2 userID:(NSUUID *)arg3 homeID:(NSUUID *)arg4 sharedSettingsController:(id <HMDSettingsControllerProtocol>)arg5 privateSettingsController:(id <HMDSettingsControllerProtocol>)arg6;
+- (HMDUserSettingsBackingStoreController *)userDataBackingStoreControllerWithDelegate:(id <HMDUserSettingsBackingStoreControllerDelegate>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2 zoneName:(NSString *)arg3 shareMessenger:(HMDCloudShareMessenger *)arg4;
+- (HMDUserDataController *)userDataControllerWithDelegate:(id <HMDUserDataControllerDelegate>)arg1 dataSource:(id <HMDUserDataControllerDataSource>)arg2 queue:(NSObject<OS_dispatch_queue> *)arg3 userID:(NSUUID *)arg4 homeID:(NSUUID *)arg5 sharedSettingsController:(id <HMDSettingsControllerProtocol>)arg6 privateSettingsController:(id <HMDSettingsControllerProtocol>)arg7 isCurrentUser:(_Bool)arg8;
 @end
 

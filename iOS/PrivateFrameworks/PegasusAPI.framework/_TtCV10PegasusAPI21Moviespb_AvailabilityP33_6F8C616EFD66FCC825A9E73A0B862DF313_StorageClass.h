@@ -27,6 +27,7 @@
     MISSING_TYPE *_platformTvosState;
     MISSING_TYPE *_platformWebState;
     MISSING_TYPE *_isMccormickProvider;
+    MISSING_TYPE *_videoQuality;
 }
 
 @end

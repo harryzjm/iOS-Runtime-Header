@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCMomentsMessenger-Protocol.h>
-
 @class NSMutableSet, NSString, VCMomentsHistory, VideoAttributes;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCMoments : NSObject <VCMomentsMessenger>
+@interface VCMoments : NSObject
 {
     id _delegate;
     id _transportDelegate;
@@ -61,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)momentsDelegate;
 - (void)setTransportDelegate:(id)arg1;
 - (id)transportDelegate;
+- (void)setRetainPixelBufferEnabled:(_Bool)arg1;
 - (void)setFrameRate:(float)arg1;
 - (void)processRequest:(id)arg1 isRemote:(_Bool)arg2;
 - (_Bool)validateIncomingRequest:(id)arg1 isRemote:(_Bool)arg2;

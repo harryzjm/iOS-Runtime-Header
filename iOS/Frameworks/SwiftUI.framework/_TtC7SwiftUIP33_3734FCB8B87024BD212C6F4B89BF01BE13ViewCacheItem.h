@@ -22,6 +22,7 @@
     MISSING_TYPE *transition;
     MISSING_TYPE *transitionType;
     MISSING_TYPE *id;
+    MISSING_TYPE *reuseIdentifier;
     MISSING_TYPE *section;
     MISSING_TYPE *zIndex;
     MISSING_TYPE *insertionTransactionID;
@@ -32,7 +33,6 @@
     MISSING_TYPE *prefetchSeed;
     MISSING_TYPE *displayIndex;
     MISSING_TYPE *removedSeed;
-    MISSING_TYPE *failedSeed;
     MISSING_TYPE *placement;
     MISSING_TYPE *releaseSecondaryElements;
     MISSING_TYPE *willEnableTransitions;

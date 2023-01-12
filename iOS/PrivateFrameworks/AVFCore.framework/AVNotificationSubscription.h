@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVCancellable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVNotificationSubscription : NSObject <AVCancellable>
+@interface AVNotificationSubscription : NSObject
 {
     NSObject *_object;
     id _observerToken;

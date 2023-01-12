@@ -4,42 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
-#import <MobileSafari/UITextViewDelegate-Protocol.h>
-
-@class NSString, UIButton, UILabel, UILayoutGuide, UIVisualEffectView;
-
 __attribute__((visibility("hidden")))
-@interface SFPrivacyReportBannerCell : UICollectionViewCell <UITextViewDelegate>
+@interface SFPrivacyReportBannerCell
 {
-    UILabel *_numberOfTrackersLabel;
-    UILabel *_captionLabel;
     long long _numberOfTrackers;
-    UIVisualEffectView *_backgroundEffectView;
     unsigned long long _action;
-    UIButton *_actionButton;
-    UILayoutGuide *_textLayoutGuide;
 }
 
 + (id)reuseIdentifier;
-- (void).cxx_destruct;
 @property(nonatomic) long long numberOfTrackers; // @synthesize numberOfTrackers=_numberOfTrackers;
-- (void)_removeActionButton;
 - (void)_setAction:(unsigned long long)arg1 text:(id)arg2;
-- (void)_actionButtonTapped:(id)arg1;
 - (void)_updateState;
-- (void)setHighlighted:(_Bool)arg1;
-- (void)_updateVibrancy;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_privacyProxyAvailabilityChanged:(id)arg1;
+- (void)setModel:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

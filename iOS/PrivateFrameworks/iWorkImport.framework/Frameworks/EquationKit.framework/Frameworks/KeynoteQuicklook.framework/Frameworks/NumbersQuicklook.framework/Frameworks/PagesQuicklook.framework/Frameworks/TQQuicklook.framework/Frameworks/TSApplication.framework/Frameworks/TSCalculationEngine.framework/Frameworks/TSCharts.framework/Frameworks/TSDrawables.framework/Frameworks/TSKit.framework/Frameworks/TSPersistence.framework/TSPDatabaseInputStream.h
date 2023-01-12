@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/SFUInputStream-Protocol.h>
-#import <TSPersistence/TSUStreamReadChannel-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
-@interface TSPDatabaseInputStream : NSObject <TSUStreamReadChannel, SFUInputStream>
+@interface TSPDatabaseInputStream : NSObject
 {
     NSObject<OS_dispatch_queue> *_readQueue;
     struct sqlite3_blob *_blob;

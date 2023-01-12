@@ -7,18 +7,21 @@
 #import <objc/NSObject.h>
 
 @class AVCaptureSessionConfiguration, AVRunLoopCondition, AVWeakReference, FigCaptureSessionConfiguration, NSError, NSHashTable, NSMutableArray, NSString;
+@protocol OS_tcc_identity;
 
 __attribute__((visibility("hidden")))
 @interface AVCaptureSessionInternal : NSObject
 {
     AVWeakReference *weakReference;
     NSString *sessionPreset;
+    NSObject<OS_tcc_identity> *tccIdentity;
     int beginConfigRefCount;
     int graphRebuildFromCommitConfigRefCount;
     FigCaptureSessionConfiguration *sessionConfig;
     struct OpaqueFigCaptureSession *figCaptureSession;
     _Bool figCaptureSessionRunning;
     _Bool figCaptureSessionStarted;
+    _Bool isCameraOrDerivative;
     NSMutableArray *inputs;
     NSMutableArray *outputs;
     NSHashTable *videoPreviewLayers;
@@ -36,12 +39,14 @@ __attribute__((visibility("hidden")))
     _Bool waitingForFigCaptureSessionToStop;
     _Bool waitingForFigCaptureSessionConfigurationToBecomeLive;
     long long graphRebuildSignalCount;
-    struct OpaqueCMClock *masterClock;
+    float hardwareCost;
+    struct OpaqueCMClock *synchronizationClock;
     _Bool notifiesOnMainThread;
     NSMutableArray *devicesToResetVideoZoomFactorAndMinMaxFrameDurations;
     _Bool authorizedToUseCameraInMultipleForegroundAppLayout;
     _Bool xctestAuthorizedToStealDevice;
     struct OpaqueFigReentrantMutex *figCaptureSourceConfigChangeCacheMutex;
+    NSMutableArray *_devicesObservingVideoZoomFactor;
 }
 
 @end

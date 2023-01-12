@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCControllerComponentDescription-Protocol.h>
-
 @class GCMotionXPCProxyClientEndpoint, NSString;
 @protocol NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface GCMotionXPCProxyClientEndpointDescription : NSObject <_GCControllerComponentDescription>
+@interface GCMotionXPCProxyClientEndpointDescription : NSObject
 {
     _Bool _initialSensorsActive;
     GCMotionXPCProxyClientEndpoint *_materializedObject;

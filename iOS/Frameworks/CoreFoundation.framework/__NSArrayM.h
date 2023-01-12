@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSMutableArray.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSArrayM
+@interface __NSArrayM : NSMutableArray
 {
     _Atomic struct __cow_state_t *cow;
     CDStruct_a6934631 storage;
@@ -29,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)indexOfObjectIdenticalTo:(id)arg1;
 - (void)exchangeObjectAtIndex:(unsigned long long)arg1 withObjectAtIndex:(unsigned long long)arg2;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)addObject:(id)arg1;
 - (void)replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)removeObjectAtIndex:(unsigned long long)arg1;

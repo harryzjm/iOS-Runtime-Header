@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Synapse/SYShowBacklinkIndicatorCommandImpl-Protocol.h>
-
 @class NSString;
 @protocol SYShowBacklinkIndicatorCommandImpl;
 
 __attribute__((visibility("hidden")))
-@interface SYShowBacklinkIndicatorCommand : NSObject <SYShowBacklinkIndicatorCommandImpl>
+@interface SYShowBacklinkIndicatorCommand : NSObject
 {
     id <SYShowBacklinkIndicatorCommandImpl> __impl;
 }

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPStreamingDistributableUnarchiver-Protocol.h>
-
 @class NSString, TSPDatabase, TSPDistributableFileManager;
 
-@interface TSPDistributableReader : NSObject <TSPStreamingDistributableUnarchiver>
+@interface TSPDistributableReader : NSObject
 {
     TSPDatabase *_database;
     TSPDistributableFileManager *_fileManager;

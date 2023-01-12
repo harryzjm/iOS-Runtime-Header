@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIKBRenderEffect-Protocol.h>
-
 @class NSString, UIKBGradient;
 
 __attribute__((visibility("hidden")))
-@interface UIKBEdgeEffect : NSObject <UIKBRenderEffect>
+@interface UIKBEdgeEffect : NSObject
 {
     NSString *_colorName;
     unsigned long long _edges;
@@ -23,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 + (id)effectWithColor:(id)arg1 edges:(unsigned long long)arg2 insets:(struct UIEdgeInsets)arg3 weight:(double)arg4;
 + (id)effectWithColor:(id)arg1 edges:(unsigned long long)arg2 inset:(double)arg3 weight:(double)arg4;
+- (void).cxx_destruct;
 @property(nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property(retain, nonatomic) UIKBGradient *gradient; // @synthesize gradient=_gradient;
 @property(nonatomic) double weight; // @synthesize weight=_weight;
@@ -32,9 +31,8 @@ __attribute__((visibility("hidden")))
 - (struct CGColor *)CGColor;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (id)initWithColor:(id)arg1 edges:(unsigned long long)arg2 insets:(struct UIEdgeInsets)arg3 weight:(double)arg4;
-@property(readonly, nonatomic) SEL renderSelector;
+- (void)renderEffectWithRenderer:(id)arg1 traits:(id)arg2;
 @property(readonly, nonatomic) _Bool renderUnder;
 @property(readonly, nonatomic) _Bool usesRGBColors;
 @property(readonly, nonatomic) _Bool isValid;

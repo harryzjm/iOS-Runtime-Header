@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPIdentifier, FCCKPLocale, NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPRequestOperationHeader : PBCodable <NSCopying>
+@interface FCCKPRequestOperationHeader : PBCodable
 {
     unsigned long long _applicationConfigVersion;
     unsigned long long _deviceFlowControlBudget;

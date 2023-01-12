@@ -25,9 +25,10 @@
 - (id)_axBundleIdentifier;
 - (long long)_axAppLayoutType;
 - (id)_axDisplayItems;
+- (long long)_axDisplaySizingPolicy;
 - (id)_axDisplayName;
 - (id)_axLabelWithFirstIconTitle:(id)arg1 secondIconTitle:(id)arg2;
-- (id)initWithItemsForLayoutRoles:(id)arg1 configuration:(long long)arg2 environment:(long long)arg3;
+- (id)initWithItems:(id)arg1 centerItem:(id)arg2 floatingItem:(id)arg3 configuration:(long long)arg4 itemsToLayoutAttributes:(id)arg5 centerConfiguration:(long long)arg6 environment:(long long)arg7 hidden:(_Bool)arg8 preferredDisplayOrdinal:(long long)arg9;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 

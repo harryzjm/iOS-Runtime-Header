@@ -4,24 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface REVideoPayload
 {
     unsigned char _audioInputMode;
     float _reverbSendLevel;
-    NSString *_audioLabel;
 }
 
 + (_Bool)supportsSecureCoding;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) float reverbSendLevel; // @synthesize reverbSendLevel=_reverbSendLevel;
 @property(readonly, nonatomic) unsigned char audioInputMode; // @synthesize audioInputMode=_audioInputMode;
-@property(readonly, nonatomic) NSString *audioLabel; // @synthesize audioLabel=_audioLabel;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithAudioLabel:(id)arg1 audioInputMode:(unsigned char)arg2 reverbSendLevel:(float)arg3;
+- (id)initWithAudioInputMode:(unsigned char)arg1 reverbSendLevel:(float)arg2;
 
 @end
 

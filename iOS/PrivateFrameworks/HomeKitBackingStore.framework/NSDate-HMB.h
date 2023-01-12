@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDate.h>
 
-#import <HomeKitBackingStore/HMBQueryableModelFieldCoder-Protocol.h>
-
 @class NSString;
 
-@interface NSDate (HMB) <HMBQueryableModelFieldCoder>
+@interface NSDate (HMB)
 + (id)hmbDescriptionForEncodedQueryableVariable:(id)arg1;
 + (id)hmbDecodeQueryableParameter:(id)arg1;
 + (id)hmbEncodeQueryableParameter:(id)arg1;

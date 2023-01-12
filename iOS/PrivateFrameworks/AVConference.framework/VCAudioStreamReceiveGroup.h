@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCAudioStreamGroup-Protocol.h>
-
-@class TimingCollection, VCAudioStreamGroupCommon;
+@class TimingCollection, VCAudioCaptionsCoordinator, VCAudioStreamGroupCommon;
 @protocol VCMediaStreamSyncSource;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioStreamReceiveGroup <VCAudioStreamGroup>
+@interface VCAudioStreamReceiveGroup
 {
     VCAudioStreamGroupCommon *_common;
     struct tagVCAudioStreamGroupPriorityInfo _mediaPriorityInfo;
@@ -19,10 +17,13 @@ __attribute__((visibility("hidden")))
     _Bool _receivingEndToEndStream;
     float _averageOutputPower;
     unsigned long long _speakerProcsCalled;
+    unsigned long long _syncTargetCalled;
     TimingCollection *_perfTimers;
     _Bool _haveReportedPerfTimers;
+    VCAudioCaptionsCoordinator *_captionsCoordinator;
 }
 
+@property(retain, nonatomic) VCAudioCaptionsCoordinator *captionsCoordinator; // @synthesize captionsCoordinator=_captionsCoordinator;
 - (void)reportParticipantsPerfTimingsOnce;
 - (void)mediaStream:(id)arg1 didReceiveNewMediaKeyIndex:(id)arg2;
 - (void)vcMediaStream:(id)arg1 didReceiveFirstFrameWithTime:(CDStruct_1b6d18a9)arg2;
@@ -36,11 +37,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)removeSyncDestination:(id)arg1;
 - (_Bool)addSyncDestination:(id)arg1;
 - (void)didStop;
+- (void)didStart;
 - (id)willStart;
 - (void)setOptedInStreamID:(id)arg1;
 - (void)setActiveStreamIDs:(id)arg1;
 - (void)setReportingAgent:(struct opaqueRTCReporting *)arg1;
-- (void)collectAndLogChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectAndLogChannelMetrics:(CDStruct_b671a7c4 *)arg1;
 - (_Bool)configureStreams;
 @property(nonatomic, setter=setMuted:) _Bool isMuted;
 @property(setter=setPowerSpectrumEnabled:) _Bool isPowerSpectrumEnabled;

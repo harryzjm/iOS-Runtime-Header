@@ -7,12 +7,15 @@
 #import <Foundation/NSPredicate.h>
 
 @interface NSPredicate (MediaAnalysis)
++ (id)mad_internalPredicateNeedsProcessingForTaskID:(unsigned long long)arg1;
++ (id)mad_internalPredicateWithPriority:(unsigned long long)arg1 forTaskID:(unsigned long long)arg2;
++ (id)mad_internalPredicateForTaskID:(unsigned long long)arg1;
 + (id)mad_nonPrioritizedAssetsForFaceDetectionInternalPredicate;
 + (id)mad_prioritizedAssetsForFaceDetectionInternalPredicate;
 + (float)_peopleThreshold;
 + (id)vcp_fullAnalysisPredatesVersionInternalPredicate:(int)arg1;
 + (id)vcp_moviesPredicate:(_Bool)arg1;
-+ (id)vcp_nonPanoImagesPredicate:(_Bool)arg1;
++ (id)vcp_nonPanoPredicate:(_Bool)arg1;
 + (id)vcp_livePhotosPredicate:(_Bool)arg1;
 + (id)vcp_stillImagesPredicate:(_Bool)arg1;
 + (id)vcp_imagesPredicate:(_Bool)arg1;

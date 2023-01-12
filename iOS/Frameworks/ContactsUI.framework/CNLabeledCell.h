@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNContactCell.h"
+
 @class NSDictionary, NSString, UIImageView, UILabel, UIView;
 @protocol ABText;
 
 __attribute__((visibility("hidden")))
-@interface CNLabeledCell
+@interface CNLabeledCell : CNContactCell
 {
     NSDictionary *_labelTextAttributes;
     NSDictionary *_valueTextAttributes;

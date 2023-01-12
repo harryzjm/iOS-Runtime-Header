@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HKQueryServerConfiguration.h"
+
 @class NSDateInterval;
 
 __attribute__((visibility("hidden")))
-@interface _HKStatisticsQueryServerConfiguration
+@interface _HKStatisticsQueryServerConfiguration : HKQueryServerConfiguration
 {
     unsigned long long _options;
     unsigned long long _mergeStrategy;

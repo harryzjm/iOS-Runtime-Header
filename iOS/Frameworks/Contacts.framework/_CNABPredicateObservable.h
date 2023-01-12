@@ -6,13 +6,11 @@
 
 #import <ContactsFoundation/CNObservable.h>
 
-#import <Contacts/ABPredicateDelegate-Protocol.h>
-
 @class ABPredicate, CNCancelationToken, CNContactsEnvironment, NSString;
 @protocol CNObserver;
 
 __attribute__((visibility("hidden")))
-@interface _CNABPredicateObservable : CNObservable <ABPredicateDelegate>
+@interface _CNABPredicateObservable : CNObservable
 {
     void *_addressBook;
     unsigned int _sortOrdering;

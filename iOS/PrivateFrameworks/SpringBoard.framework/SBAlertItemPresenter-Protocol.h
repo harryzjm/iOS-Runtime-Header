@@ -6,12 +6,16 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBAlertItem;
+@class SBAlertItem, SBSharedModalAlertItemPresenter, SBWindowScene;
 
 @protocol SBAlertItemPresenter <NSObject>
 - (void)dismissAlertItem:(SBAlertItem *)arg1 animated:(_Bool)arg2 completion:(void (^)(void))arg3;
 - (void)presentAlertItem:(SBAlertItem *)arg1 animated:(_Bool)arg2 completion:(void (^)(void))arg3;
 - (_Bool)canPresentMultipleAlertItemsSimultaneously;
 - (_Bool)presentsAlertItemsModally;
+
+@optional
+- (void)windowSceneDidDisconnect:(SBWindowScene *)arg1;
+- (void)windowSceneDidConnect:(SBWindowScene *)arg1 withSharedModalAlertItemPresenter:(SBSharedModalAlertItemPresenter *)arg2;
 @end
 

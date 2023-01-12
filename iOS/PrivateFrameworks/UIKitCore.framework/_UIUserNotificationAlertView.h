@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIAlertView.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIUserNotificationAlertView
+@interface _UIUserNotificationAlertView : UIAlertView
 {
     struct __CFUserNotification *_userNotification;
     struct __CFRunLoopSource *_userNotificationRunLoopSource;

@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIView;
+
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTransitionContextPresentSearch
 {
+    UIView *_transitioningScopeBarContainer;
 }
 
+- (void).cxx_destruct;
 - (void)cancel;
 - (void)complete;
 - (void)_resetContentAndLargeTitleViewCompleted:(_Bool)arg1;

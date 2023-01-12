@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSFilePresenter-Protocol.h>
-#import <TSPersistence/TSPFileCoordinatorDelegate-Protocol.h>
-
 @class NSOperationQueue, NSRecursiveLock, NSSet, NSString, NSURL, TSPObjectContext, TSPSupportSaveOperationState;
 @protocol OS_dispatch_group;
 
-@interface TSPSupportManager : NSObject <NSFilePresenter, TSPFileCoordinatorDelegate>
+@interface TSPSupportManager : NSObject
 {
     TSPObjectContext *_context;
     NSOperationQueue *_presentedItemQueue;

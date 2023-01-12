@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString, NSXPCConnection;
+@class NSMutableArray, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
 @interface ICPrefManager : NSObject
@@ -14,8 +14,6 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_authConnection;
     struct os_unfair_lock_s _authConnectionLock;
     NSMutableArray *_authConnectionSemaphores;
-    NSString *_controlAuthStatus;
-    NSString *_contentsAuthStatus;
 }
 
 + (id)defaultAuthManager;

@@ -18,7 +18,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *imageViewContext;
     MISSING_TYPE *playbackDidStartObserver;
     MISSING_TYPE *playbackDidStopObserver;
+    MISSING_TYPE *playbackDidPlayToEndObserver;
     MISSING_TYPE *userInterfaceStyleToRestore;
+    MISSING_TYPE *waitingToShowImageWhilePaused;
+    MISSING_TYPE *ignorePlaybackStop;
 }
 
 - (void).cxx_destruct;

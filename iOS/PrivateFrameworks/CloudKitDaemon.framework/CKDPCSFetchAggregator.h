@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKDContainer, NSMutableArray, NSOperationQueue;
+@class CKCoalescer, CKDContainer, NSMutableArray, NSOperationQueue;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CKDPCSFetchAggregator : NSObject
@@ -17,14 +17,14 @@
     NSOperationQueue *_queue;
     NSMutableArray *_queuedFetches;
     NSMutableArray *_runningFetches;
-    NSObject<OS_dispatch_source> *_fetchSource;
+    CKCoalescer *_fetchCoalescer;
     NSObject<OS_dispatch_source> *_timerSource;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool skipQueuedFetchCycleDetection; // @synthesize skipQueuedFetchCycleDetection=_skipQueuedFetchCycleDetection;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *timerSource; // @synthesize timerSource=_timerSource;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *fetchSource; // @synthesize fetchSource=_fetchSource;
+@property(retain, nonatomic) CKCoalescer *fetchCoalescer; // @synthesize fetchCoalescer=_fetchCoalescer;
 @property(retain, nonatomic) NSMutableArray *runningFetches; // @synthesize runningFetches=_runningFetches;
 @property(retain, nonatomic) NSMutableArray *queuedFetches; // @synthesize queuedFetches=_queuedFetches;
 @property(retain, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;

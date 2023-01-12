@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface UIStoryboardSegueTemplate : NSObject <NSCoding>
+@interface UIStoryboardSegueTemplate : NSObject
 {
     NSString *_identifier;
     NSString *_segueClassName;

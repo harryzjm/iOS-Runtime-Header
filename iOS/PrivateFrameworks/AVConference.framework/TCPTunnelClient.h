@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VideoConferenceRealTimeChannel-Protocol.h>
-
 @class NSData, NSDictionary, NSMutableData, NSMutableDictionary, NSString, TCPBufferPool;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface TCPTunnelClient : NSObject <VideoConferenceRealTimeChannel>
+@interface TCPTunnelClient : NSObject
 {
     int _connectState;
     int _connectedFD;

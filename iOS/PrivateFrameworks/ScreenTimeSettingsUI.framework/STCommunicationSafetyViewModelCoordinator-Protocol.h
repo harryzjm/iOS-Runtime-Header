@@ -10,6 +10,7 @@
 
 @protocol STCommunicationSafetyViewModelCoordinator <NSObject>
 @property(readonly) STCommunicationSafetyViewModel *viewModel;
+- (void)saveCommunicationSafetyReceivingRestricted:(_Bool)arg1 communicationSafetySendingRestricted:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)persistCommunicationSafetySettingsWithCompletionHandler:(void (^)(NSError *))arg1;
 @end
 

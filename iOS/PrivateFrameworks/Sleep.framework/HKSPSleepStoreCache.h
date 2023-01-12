@@ -49,14 +49,17 @@ __attribute__((visibility("hidden")))
 - (void)purgeCachedSleepEventRecord;
 - (void)updateCachedSleepEventRecord:(id)arg1;
 - (id)cachedSleepEventRecordWithMissHandler:(CDUnknownBlockType)arg1;
+- (id)cachedSleepEventRecord;
 - (void)_locked_purgeCachedSleepSettings;
 - (void)purgeCachedSleepSettings;
 - (void)updateCachedSleepSettings:(id)arg1;
 - (id)cachedSleepSettingsWithMissHandler:(CDUnknownBlockType)arg1;
+- (id)cachedSleepSettings;
 - (void)_locked_purgeCachedSleepSchedule;
 - (void)purgeCachedSleepSchedule;
 - (void)updateCachedSleepSchedule:(id)arg1;
 - (id)cachedSleepScheduleWithMissHandler:(CDUnknownBlockType)arg1;
+- (id)cachedSleepSchedule;
 - (void)_withLock:(CDUnknownBlockType)arg1;
 - (id)init;
 

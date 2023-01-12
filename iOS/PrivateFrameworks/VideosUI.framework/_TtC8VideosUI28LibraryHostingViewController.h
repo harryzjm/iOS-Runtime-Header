@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI17VUIViewControllerCN.h"
+
 @class MISSING_TYPE, UINavigationItem;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI28LibraryHostingViewController
+@interface _TtC8VideosUI28LibraryHostingViewController : _$s8VideosUI17VUIViewControllerCN
 {
     MISSING_TYPE *childController;
 }

@@ -6,19 +6,18 @@
 
 #import <swiftCore/SwiftNativeNSObject.h>
 
-#import <StoreKit/ASDStoreKitPaymentProtocol-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8StoreKit23StoreKitPaymentDelegate : SwiftNativeNSObject <ASDStoreKitPaymentProtocol>
+@interface _TtC8StoreKit23StoreKitPaymentDelegate : SwiftNativeNSObject
 {
     MISSING_TYPE *$defaultActor;
     MISSING_TYPE *handler;
 }
 
-- (id)init;
+- (void)handleEngagementRequest:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;
 - (void)shouldContinueTransactionWithNewStorefront:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;
+- (id)init;
 
 @end
 

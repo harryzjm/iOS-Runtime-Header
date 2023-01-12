@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/NSFileProviderItem_Private-Protocol.h>
-
-@class CSSearchableItem, CSSearchableItemAttributeSet, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL, UTType;
+@class CSSearchableItem, CSSearchableItemAttributeSet, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL, UTType;
 
 __attribute__((visibility("hidden")))
-@interface _CSSearchableItemAdapter : NSObject <NSFileProviderItem_Private>
+@interface _CSSearchableItemAdapter : NSObject
 {
     CSSearchableItem *_item;
 }
@@ -27,10 +25,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isMostRecentVersionDownloaded) _Bool mostRecentVersionDownloaded;
 - (_Bool)isRecursivelyDownloaded;
 @property(readonly, nonatomic, getter=isDownloaded) _Bool downloaded;
+@property(readonly) _Bool isCollaborationInvitation;
 - (id)formerIdentifier;
 @property(readonly, copy) NSString *fp_parentDomainIdentifier;
 - (_Bool)isInPinnedFolder;
 - (_Bool)isPinned;
+- (id)collaborationIdentifier;
 @property(readonly, nonatomic, getter=isTopLevelSharedItem) _Bool topLevelSharedItem;
 @property(readonly, copy, nonatomic) NSString *filename;
 @property(readonly, nonatomic, getter=isUploading) _Bool uploading;
@@ -75,7 +75,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithSearchableItem:(id)arg1;
 
 // Remaining properties
+@property(readonly, copy) NSArray *conflictingVersions;
 @property(readonly, copy) NSString *containerDisplayName;
+@property(readonly, nonatomic) long long contentPolicy;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy, getter=isDownloadRequested) NSNumber *downloadRequested;
@@ -85,6 +87,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long fileSystemFlags;
 @property(readonly, copy) NSURL *fileURL;
 @property(readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
+@property(readonly) _Bool fp_isCloudDocsContainer;
 @property(readonly, copy) NSNumber *hasUnresolvedConflicts;
 @property(readonly) unsigned long long hash;
 @property(readonly, getter=isHidden) _Bool hidden;

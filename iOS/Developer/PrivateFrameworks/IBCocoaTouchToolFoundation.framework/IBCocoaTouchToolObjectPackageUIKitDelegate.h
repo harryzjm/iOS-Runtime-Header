@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBCocoaTouchToolObjectPackageDelegate-Protocol.h>
-
-@interface IBCocoaTouchToolObjectPackageUIKitDelegate : NSObject <IBCocoaTouchToolObjectPackageDelegate>
+@interface IBCocoaTouchToolObjectPackageUIKitDelegate : NSObject
 {
 }
 

@@ -17,10 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly) double historicalDataAmount; // @synthesize historicalDataAmount=_historicalDataAmount;
-@property(readonly) id <SNRequest> secondPassRequest; // @synthesize secondPassRequest=_secondPassRequest;
-@property(readonly) id <SNRequest> firstPassRequest; // @synthesize firstPassRequest=_firstPassRequest;
-- (id)initWithFirstPassRequest:(id)arg1 secondPassRequest:(id)arg2 historicalDataAmount:(double)arg3;
 
 @end
 

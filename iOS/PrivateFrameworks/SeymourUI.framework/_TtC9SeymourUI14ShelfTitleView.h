@@ -16,10 +16,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *titleButton;
-    MISSING_TYPE *bottomLayoutConstraints;
     MISSING_TYPE *alternateBottomLayoutConstraints;
+    MISSING_TYPE *bottomLayoutConstraints;
     MISSING_TYPE *layout;
     MISSING_TYPE *shelf;
+    MISSING_TYPE *titleTopConstraint;
 }
 
 - (void).cxx_destruct;

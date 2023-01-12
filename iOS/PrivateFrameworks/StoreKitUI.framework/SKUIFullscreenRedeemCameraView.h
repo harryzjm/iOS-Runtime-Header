@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
-
 @class NSString, SKUIRedeemTextField, UIImage, _UIBackdropView;
 @protocol SKUIRedeemCameraViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIFullscreenRedeemCameraView : UIView <UITextFieldDelegate>
+@interface SKUIFullscreenRedeemCameraView : UIView
 {
     id <SKUIRedeemCameraViewDelegate> _delegate;
     UIView *_overlay;

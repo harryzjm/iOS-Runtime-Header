@@ -6,11 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/LPCSSText-Protocol.h>
-#import <LinkPresentation/LPHTMLAttributeText-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface LPPointUnit : NSObject <LPCSSText, LPHTMLAttributeText>
+@interface LPPointUnit : NSObject
 {
     double _value;
 }

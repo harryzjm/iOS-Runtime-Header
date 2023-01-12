@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <StatusKitAgentCore/NSCopying-Protocol.h>
-
 @class ChannelIdentity;
 
 __attribute__((visibility("hidden")))
-@interface SharedChannelCreateResponse : PBCodable <NSCopying>
+@interface SharedChannelCreateResponse : PBCodable
 {
     ChannelIdentity *_channelIdentity;
     unsigned int _retryIntervalSeconds;

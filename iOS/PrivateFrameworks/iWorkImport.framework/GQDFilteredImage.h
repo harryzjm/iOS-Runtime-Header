@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class GQDImageBinary, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDFilteredImage : NSObject <GQDNameMappable>
+@interface GQDFilteredImage : NSObject
 {
     GQDImageBinary *mOriginalImageBinary;
     GQDImageBinary *mFilteredImageBinary;

@@ -6,13 +6,10 @@
 
 #import <Preferences/PSTableCell.h>
 
-#import <VideoSubscriberAccountUI/UIPickerViewDataSource-Protocol.h>
-#import <VideoSubscriberAccountUI/UIPickerViewDelegate-Protocol.h>
-
 @class NSString, UIPickerView;
 
 __attribute__((visibility("hidden")))
-@interface VSPSPickerTableViewCell : PSTableCell <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface VSPSPickerTableViewCell : PSTableCell
 {
     UIPickerView *_pickerView;
 }

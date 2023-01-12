@@ -9,6 +9,9 @@
 @class NSArray, NSDictionary, NSNumber, NSString, _AXSpringBoardServerInstance;
 
 @protocol AXSpringBoardServerInstanceDelegate <NSObject>
+- (void)toggleDetectionModeWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)diminishJindoWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)presentNearbyDeviceControlPickerWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (NSArray *)visibleTripleClickItemsWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)launchVoiceOverImageExplorerViewServiceWithServerInstance:(_AXSpringBoardServerInstance *)arg1 forData:(NSDictionary *)arg2;
 - (void)launchVoiceOverQuickSettingsViewServiceWithServerInstance:(_AXSpringBoardServerInstance *)arg1 data:(NSDictionary *)arg2;
@@ -20,6 +23,7 @@
 - (NSArray *)runningAppProcessesWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (id)focusedAppProcessWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isPurpleBuddyAppFrontmostWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (NSArray *)focusedOccludedAppScenesWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (NSArray *)focusedAppsWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isSettingsAppFrontmostWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isSystemAppFrontmostExcludingSiri:(_Bool)arg1 withServerInstance:(_AXSpringBoardServerInstance *)arg2;
@@ -93,7 +97,7 @@
 - (void)openVoiceControlWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)dismissSiriWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)resetDimTimerWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
-- (_Bool)isMediaPlayingWithServerInstance:(_AXSpringBoardServerInstance *)arg1 forBundleId:(NSString *)arg2;
+- (void)isMediaPlayingWithServerInstance:(_AXSpringBoardServerInstance *)arg1 forBundleId:(NSString *)arg2 completion:(void (^)(_Bool))arg3;
 - (_Bool)isPasscodeRequiredOnLockWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isMakingEmergencyCallWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (_Bool)isSystemSleepingWithServerInstance:(_AXSpringBoardServerInstance *)arg1;

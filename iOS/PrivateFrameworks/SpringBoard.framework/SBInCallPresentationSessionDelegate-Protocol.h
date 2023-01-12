@@ -10,6 +10,7 @@
 @protocol BSInvalidatable;
 
 @protocol SBInCallPresentationSessionDelegate <NSObject>
+- (struct UIEdgeInsets)inCallClientPresentationSessionResolvedPIPDodgingInsets:(SBInCallPresentationSession *)arg1;
 - (_Bool)inCallClientPresentationSession:(SBInCallPresentationSession *)arg1 canRestoreToPreviousEntity:(SBWorkspaceEntity *)arg2;
 - (id <BSInvalidatable>)inCallClientPresentationSession:(SBInCallPresentationSession *)arg1 acquireHideSharePlayContentFromClonedDisplaysAssertionForReason:(NSString *)arg2;
 - (void)inCallClientPresentationSession:(SBInCallPresentationSession *)arg1 callConnectedStatusChangedForPresentableViewController:(SBInCallBannerPresentableViewController *)arg2;

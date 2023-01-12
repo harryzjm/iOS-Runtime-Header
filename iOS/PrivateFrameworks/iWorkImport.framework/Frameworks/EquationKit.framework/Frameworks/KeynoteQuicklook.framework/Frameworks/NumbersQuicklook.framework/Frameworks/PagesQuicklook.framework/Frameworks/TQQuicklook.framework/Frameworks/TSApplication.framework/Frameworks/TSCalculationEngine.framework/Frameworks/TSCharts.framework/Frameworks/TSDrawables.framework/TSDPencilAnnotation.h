@@ -6,13 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSDrawables/TSKDocumentObject-Protocol.h>
-#import <TSDrawables/TSKPencilAnnotation-Protocol.h>
-#import <TSDrawables/TSPCopying-Protocol.h>
-
 @class NSString, TSDDrawableInfo, TSDPencilAnnotationStorage, TSKPKDrawing;
 
-@interface TSDPencilAnnotation : TSPObject <TSPCopying, TSKDocumentObject, TSKPencilAnnotation>
+@interface TSDPencilAnnotation : TSPObject
 {
     TSDPencilAnnotationStorage *_pencilAnnotationStorage;
     TSDDrawableInfo *_parent;

@@ -7,6 +7,5 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @protocol SBHSidebarProviderDelegate <NSObject>
-@property(readonly, nonatomic) double currentDockHeight;
 @end
 

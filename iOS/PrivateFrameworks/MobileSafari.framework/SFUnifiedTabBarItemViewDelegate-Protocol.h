@@ -11,6 +11,8 @@
 @protocol SFUnifiedTabBarItemViewDelegate <NSObject>
 
 @optional
+- (void)tabBarItemView:(SFUnifiedTabBarItemView *)arg1 didFinishShowingAvailabilityLabelOfType:(long long)arg2;
+- (void)tabBarItemView:(SFUnifiedTabBarItemView *)arg1 didUpdateHovering:(_Bool)arg2;
 - (_Bool)tabBarItemViewCanBecomeFocused:(SFUnifiedTabBarItemView *)arg1;
 - (void)tabBarItemView:(SFUnifiedTabBarItemView *)arg1 multipleExtensionButtonTapped:(UIButton *)arg2;
 - (void)tabBarItemView:(SFUnifiedTabBarItemView *)arg1 extensionButtonTapped:(UIButton *)arg2 extension:(WBSWebExtensionData *)arg3;

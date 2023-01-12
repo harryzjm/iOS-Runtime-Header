@@ -6,9 +6,7 @@
 
 #import <CoreServices/NSUserActivity.h>
 
-#import <CopresenceCore/NSSecureCoding-Protocol.h>
-
-@interface NSUserActivity (CPAdditions) <NSSecureCoding>
+@interface NSUserActivity (CPAdditions)
 + (_Bool)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

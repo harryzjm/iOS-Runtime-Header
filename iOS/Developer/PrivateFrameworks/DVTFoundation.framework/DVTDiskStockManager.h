@@ -15,11 +15,10 @@
     NSMutableSet *_diskStocks;
 }
 
-+ (unsigned long long)_folderSize:(id)arg1;
++ (unsigned long long)_calculateSizeOfDiskStock:(id)arg1 members:(id)arg2;
 + (id)logAspect;
 + (id)defaultDiskStockManager;
 - (void).cxx_destruct;
-- (unsigned long long)_calculateSizeOfDiskStock:(id)arg1 members:(id)arg2;
 - (void)cullAllDiskStocksOnQueue:(id)arg1 afterDelay:(double)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)cullAllDiskStocksOnQueue:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)cullDiskStockSynchronously:(id)arg1;

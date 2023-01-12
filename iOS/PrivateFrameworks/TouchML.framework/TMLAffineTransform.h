@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/TMLAffineTransformJSExports-Protocol.h>
-
-@interface TMLAffineTransform : NSObject <TMLAffineTransformJSExports>
+@interface TMLAffineTransform : NSObject
 {
     struct CGAffineTransform _transform;
 }

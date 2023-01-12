@@ -13,5 +13,7 @@
 - (_Bool)pk_hasObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_setByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_setByRemovingObject:(id)arg1;
+- (id)deepCopyWithZone:(struct _NSZone *)arg1;
+- (id)jsonString;
 @end
 

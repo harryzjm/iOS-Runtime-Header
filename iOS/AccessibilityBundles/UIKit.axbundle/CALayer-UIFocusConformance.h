@@ -6,19 +6,13 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <UIKit/UIFocusItem-Protocol.h>
-#import <UIKit/UIFocusItemContainer-Protocol.h>
-#import <UIKit/_UIFocusEnvironmentPrivate-Protocol.h>
-#import <UIKit/_UIFocusRegionContainer-Protocol.h>
-
 @class NSArray, NSString, UIFocusEffect, UIView;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
-@interface CALayer (UIFocusConformance) <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer>
+@interface CALayer (UIFocusConformance)
 - (_Bool)conformsToProtocol:(id)arg1;
 @property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
 - (id)focusItemsInRect:(struct CGRect)arg1;
-- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (id)_preferredFocusRegionCoordinateSpace;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 @property(readonly, nonatomic) _Bool canBecomeFocused;

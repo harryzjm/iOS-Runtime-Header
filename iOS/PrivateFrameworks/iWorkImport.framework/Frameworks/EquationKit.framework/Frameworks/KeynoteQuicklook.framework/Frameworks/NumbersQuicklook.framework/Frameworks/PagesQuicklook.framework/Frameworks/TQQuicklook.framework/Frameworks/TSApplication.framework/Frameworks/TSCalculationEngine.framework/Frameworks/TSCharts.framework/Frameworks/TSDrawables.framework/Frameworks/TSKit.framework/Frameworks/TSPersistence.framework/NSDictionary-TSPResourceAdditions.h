@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <TSPersistence/TSPResourceLocalStrategyProvider-Protocol.h>
-
 @class NSString;
 
-@interface NSDictionary (TSPResourceAdditions) <TSPResourceLocalStrategyProvider>
+@interface NSDictionary (TSPResourceAdditions)
 + (id)tsp_decoderResourceNameDictionaryFromMessage:(const void *)arg1;
 + (id)tsp_decoderDataInfoDictionaryFromMessage:(const void *)arg1;
 + (id)tsp_identifierToObjectUUIDDictionaryFromMessage:(const void *)arg1;

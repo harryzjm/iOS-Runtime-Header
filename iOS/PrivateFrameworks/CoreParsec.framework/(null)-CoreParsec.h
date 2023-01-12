@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreParsec/PARClientXPC-Protocol.h>
-
-@interface (null) (CoreParsec) <PARClientXPC>
-- (void)didReceiveFeedbackData:(id)arg1;
+@interface (null) (CoreParsec)
+- (void)didReceiveFeedbackData:(id)arg1 agent:(id)arg2;
 - (void)didDeleteResource:(id)arg1;
 - (void)didDownloadResource:(id)arg1;
 - (void)bagDidLoad:(id)arg1 error:(id)arg2;

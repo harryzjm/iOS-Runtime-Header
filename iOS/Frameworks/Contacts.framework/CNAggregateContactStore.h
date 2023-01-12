@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNContactStore, NSArray;
+#import "CNContactStore.h"
+
+@class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface CNAggregateContactStore
+@interface CNAggregateContactStore : CNContactStore
 {
     CNContactStore *_mainStore;
     NSArray *_contactStores;
@@ -33,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)setMeContact:(id)arg1 forContainer:(id)arg2 error:(id *)arg3;
 - (_Bool)setMeContact:(id)arg1 error:(id *)arg2;
 - (id)usedLabelsForPropertyWithKey:(id)arg1 error:(id *)arg2;
-- (id)policyForContainerWithIdentifier:(id)arg1 error:(id *)arg2;
+- (id)policyWithDescription:(id)arg1 error:(id *)arg2;
 - (id)defaultContainerIdentifier;
 - (id)serverSearchContainersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)requestAccessForEntityType:(long long)arg1;
 - (id)mainContactStore;
 @property(readonly, nonatomic) __weak CNContactStore *mainStore;
+- (_Bool)hasGroups;
 - (_Bool)hasMultipleGroupsOrAccounts;
 - (_Bool)store:(id)arg1 supportsSelector:(SEL)arg2;
 - (id)initWithContactStores:(id)arg1;

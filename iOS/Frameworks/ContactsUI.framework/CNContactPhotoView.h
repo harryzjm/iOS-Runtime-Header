@@ -6,21 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-#import <ContactsUI/CNAvatarViewDelegate-Protocol.h>
-#import <ContactsUI/CNPhotoPickerViewControllerDelegate-Protocol.h>
-#import <ContactsUI/CNPresenterDelegate-Protocol.h>
-#import <ContactsUI/CNVisualIdentityPickerPresenterDelegate-Protocol.h>
-#import <ContactsUI/QLPreviewControllerDataSource-Protocol.h>
-#import <ContactsUI/QLPreviewControllerDelegate-Protocol.h>
-#import <ContactsUI/UIDropInteractionDelegate-Protocol.h>
-#import <ContactsUI/UIImagePickerControllerDelegate-Protocol.h>
-#import <ContactsUI/UINavigationControllerDelegate-Protocol.h>
-
 @class CNAvatarView, CNMutableContact, CNPhotoPickerViewController, NSArray, NSString, PRLikeness, UIButton, UIDropInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol CNContactPhotoViewDelegate, CNPresenterDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNContactPhotoView : UIControl <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDropInteractionDelegate, QLPreviewControllerDelegate, QLPreviewControllerDataSource, CNPhotoPickerViewControllerDelegate, CNVisualIdentityPickerPresenterDelegate, CNAvatarViewDelegate, CNPresenterDelegate>
+@interface CNContactPhotoView : UIControl
 {
     _Bool _editing;
     _Bool _showEditingLabel;
@@ -88,10 +78,6 @@ __attribute__((visibility("hidden")))
 - (void)_presentFullScreenPhoto:(id)arg1;
 - (void)_zoomContactPhoto;
 - (id)previewPath;
-- (id)_createImagePickerForEditingImageData:(id)arg1 withCropRect:(struct CGRect)arg2;
-- (void)imagePickerControllerDidCancel:(id)arg1;
-- (void)saveImagePickerMediaFromInfo:(id)arg1 toContact:(id)arg2;
-- (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)visualIdentityPicker:(id)arg1 presentationControllerWillDismiss:(id)arg2;
 - (void)photoPicker:(id)arg1 didUpdatePhotoForContact:(id)arg2 withContactImage:(id)arg3;
 - (void)photoPickerDidCancel:(id)arg1;
@@ -99,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)sender:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)sender:(id)arg1 dismissViewController:(id)arg2;
 - (void)sender:(id)arg1 presentViewController:(id)arg2;
+- (void)presentPhotoPickerWithImageData:(id)arg1;
 - (void)_presentPhotoPicker;
 - (void)presentPhotoPicker;
 - (_Bool)_isUsingSilhouette;

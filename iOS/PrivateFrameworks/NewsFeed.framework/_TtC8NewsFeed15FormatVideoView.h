@@ -6,11 +6,16 @@
 
 #import <UIKit/UIView.h>
 
+@class MISSING_TYPE;
+
+__attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed15FormatVideoView : UIView
 {
+    MISSING_TYPE *identifier;
 }
 
 + (Class)layerClass;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

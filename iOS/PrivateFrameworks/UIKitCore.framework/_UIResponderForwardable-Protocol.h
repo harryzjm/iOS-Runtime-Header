@@ -7,10 +7,11 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, NSMutableArray, UIEvent, UIResponder, UIWindow;
+@protocol _UIGestureOwning;
 
 @protocol _UIResponderForwardable <NSObject>
 @property(readonly, nonatomic) UIWindow *window;
-@property(retain, nonatomic, setter=_setResponder:) UIResponder *_responder;
+@property(retain, nonatomic, setter=_setResponder:) UIResponder<_UIGestureOwning> *_responder;
 @property(nonatomic, setter=_setForwardablePhase:) long long _forwardablePhase;
 - (NSMutableArray *)_mutableForwardingRecord;
 - (void)_abandonForwardingRecord;

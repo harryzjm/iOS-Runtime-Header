@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextLoupeInteractionBehaviorDelegate-Protocol.h>
-
 @class NSString, UITextModernLoupeSession, UITextRange, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
-@interface UITextLoupeAcceleratedTouchBehavior : NSObject <UITextLoupeInteractionBehaviorDelegate>
+@interface UITextLoupeAcceleratedTouchBehavior : NSObject
 {
     UITextRange *_originalTextRange;
     _UIKeyboardTextSelectionController *_activeSelectionController;

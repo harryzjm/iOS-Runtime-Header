@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/CALayerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebCoreTextTrackRepresentationCocoaHelper : NSObject <CALayerDelegate>
+@interface WebCoreTextTrackRepresentationCocoaHelper : NSObject
 {
     void *_parent;
 }

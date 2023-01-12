@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Coordination/COClusterRoleMonitorConnectionProvider-Protocol.h>
-
 @class NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface _COClusterRoleMonitorConnectionProvider : NSObject <COClusterRoleMonitorConnectionProvider>
+@interface _COClusterRoleMonitorConnectionProvider : NSObject
 {
     NSXPCConnection *_clusterRoleMonitorServiceConnection;
 }

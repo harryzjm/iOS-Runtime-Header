@@ -27,7 +27,9 @@
 - (void)ams_addIssuingProcessHeader;
 - (void)ams_addIdentifierHeadersForAccount:(id)arg1;
 - (void)ams_addGUIDParameterUsingBag:(id)arg1;
-- (void)ams_addCookiesForAccount:(id)arg1 clientInfo:(id)arg2;
+- (void)ams_addGSTokenForAccount:(id)arg1 identifier:(id)arg2;
+- (void)ams_addCookiesForAccount:(id)arg1 clientInfo:(id)arg2 bag:(id)arg3 cleanupGlobalCookies:(_Bool)arg4;
+- (void)ams_addCookiesForAccount:(id)arg1 clientInfo:(id)arg2 bag:(id)arg3;
 - (void)ams_addContentTypeHeaderForEncoding:(long long)arg1;
 - (void)ams_addContentLengthHeaderForData:(id)arg1;
 - (void)ams_addConnectionTypeHeader;
@@ -38,10 +40,12 @@
 - (void)ams_addBiometricsHeadersForAccount:(id)arg1 options:(id)arg2;
 - (void)ams_addAuthorizationHeaderForAccount:(id)arg1;
 - (void)ams_addAuthKitHeaders;
+- (void)ams_addForwardedForHeader;
 - (void)ams_addAnisetteHeadersForAccount:(id)arg1 type:(long long)arg2 bag:(id)arg3;
 - (void)ams_addAcceptLanguageHeader;
 - (void)ams_addAbsintheHeaderRemotelyWithBuyParams:(id)arg1 bag:(id)arg2 signingService:(id)arg3;
 - (void)ams_addAbsintheHeadersWithBuyParams:(id)arg1 bag:(id)arg2;
+- (void)ams_addABPayloadHeaderForTreatmentNamespace:(id)arg1;
 - (void)ams_addHeaders:(id)arg1;
 @end
 

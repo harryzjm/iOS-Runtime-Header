@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
-
 @class AVCABackdropLayerView, AVCustomStackLayout, AVLayoutItemAttributes, NSArray, NSMutableArray, NSString, UIView, UIVisualEffectView;
 @protocol AVLayoutViewItem;
 
 __attribute__((visibility("hidden")))
-@interface AVLayoutView <AVPlaybackControlsViewItem>
+@interface AVLayoutView
 {
     _Bool _removed;
     _Bool _hasAlternateAppearance;

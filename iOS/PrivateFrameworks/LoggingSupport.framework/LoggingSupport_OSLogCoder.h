@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <LoggingSupport/OSLogCoder-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface LoggingSupport_OSLogCoder : NSObject <OSLogCoder>
+@interface LoggingSupport_OSLogCoder : NSObject
 {
     struct {
         unsigned int :4;

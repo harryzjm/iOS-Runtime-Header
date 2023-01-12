@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosPlayer/CAAnimationDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ISTransitionApplier : NSObject <CAAnimationDelegate>
+@interface ISTransitionApplier : NSObject
 {
 }
 

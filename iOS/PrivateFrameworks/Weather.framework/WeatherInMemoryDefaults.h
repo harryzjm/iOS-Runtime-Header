@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Weather/WeatherPreferencesPersistence-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WeatherInMemoryDefaults : NSObject <WeatherPreferencesPersistence>
+@interface WeatherInMemoryDefaults : NSObject
 {
     _Bool _synchronizeWasCalled;
     NSMutableDictionary *_inMemoryStore;

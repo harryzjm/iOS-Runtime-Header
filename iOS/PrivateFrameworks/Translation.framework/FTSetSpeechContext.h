@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTSetSpeechContext : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTSetSpeechContext : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,9 +19,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_68a111aa)addObjectToBuffer:(void *)arg1;
+- (void)context_with_pron_hints_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)context_with_pron_hints_count;
+- (id)context_with_pron_hints_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *context_with_pron_hints;
 @property(readonly, nonatomic) NSString *right_context;
 @property(readonly, nonatomic) NSString *left_context;
+- (void)contextual_text_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)contextual_text_count;
+- (id)contextual_text_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *contextual_text;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct SetSpeechContext *)arg2 verify:(_Bool)arg3;

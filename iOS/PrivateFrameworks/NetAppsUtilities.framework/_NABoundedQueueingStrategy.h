@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NetAppsUtilities/NAQueueingStrategy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NABoundedQueueingStrategy : NSObject <NAQueueingStrategy>
+@interface _NABoundedQueueingStrategy : NSObject
 {
     unsigned long long _capacity;
     CDUnknownBlockType _overflowHandler;

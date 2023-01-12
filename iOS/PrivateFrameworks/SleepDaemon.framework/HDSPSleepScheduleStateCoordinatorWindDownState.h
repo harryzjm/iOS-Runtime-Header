@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)determineExpirationDateForCurrentDate:(id)arg1;
+- (id)expirationDate;
 - (void)bedtimeReached;
 - (unsigned long long)scheduleState;
 - (id)stateName;

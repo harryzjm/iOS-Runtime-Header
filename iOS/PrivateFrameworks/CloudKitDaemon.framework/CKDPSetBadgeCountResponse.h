@@ -6,9 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
-@interface CKDPSetBadgeCountResponse : PBCodable <NSCopying>
+@interface CKDPSetBadgeCountResponse : PBCodable
 {
 }
 

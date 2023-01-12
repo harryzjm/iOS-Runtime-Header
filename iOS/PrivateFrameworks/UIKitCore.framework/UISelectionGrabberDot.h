@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIImageView.h"
+
 @class UISelectionGrabber;
 
 __attribute__((visibility("hidden")))
-@interface UISelectionGrabberDot
+@interface UISelectionGrabberDot : UIImageView
 {
     UISelectionGrabber *m_grabber;
 }

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/RadiosPreferencesDelegate-Protocol.h>
-
 @class RadiosPreferences;
 @protocol AMSUIAirplaneModeInquiryDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIAirplaneModeInquiry : NSObject <RadiosPreferencesDelegate>
+@interface AMSUIAirplaneModeInquiry : NSObject
 {
     id <AMSUIAirplaneModeInquiryDelegate> _delegate;
     RadiosPreferences *_radiosPreferences;

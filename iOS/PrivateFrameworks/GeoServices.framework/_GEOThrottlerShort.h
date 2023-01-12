@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/_GEOThrottler-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOThrottlerShort : NSObject <_GEOThrottler>
+@interface _GEOThrottlerShort : NSObject
 {
     NSString *_keyPath;
     struct vector<(anonymous namespace)::Timestamp, std::allocator<(anonymous namespace)::Timestamp>> _lastRequestTimes;

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSProgress.h>
 
-#import <VideoSubscriberAccount/VSAccountSerializationResult-Protocol.h>
-
 @class NSString;
 
-@interface NSProgress (VSAccountSerialization) <VSAccountSerializationResult>
+@interface NSProgress (VSAccountSerialization)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

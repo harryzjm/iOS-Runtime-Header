@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CorePDF/CPDisposable-Protocol.h>
-
 @class CPChunk, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface CPPage <CPDisposable>
+@interface CPPage
 {
     int pageNumber;
     struct CGRect pageCropBox;

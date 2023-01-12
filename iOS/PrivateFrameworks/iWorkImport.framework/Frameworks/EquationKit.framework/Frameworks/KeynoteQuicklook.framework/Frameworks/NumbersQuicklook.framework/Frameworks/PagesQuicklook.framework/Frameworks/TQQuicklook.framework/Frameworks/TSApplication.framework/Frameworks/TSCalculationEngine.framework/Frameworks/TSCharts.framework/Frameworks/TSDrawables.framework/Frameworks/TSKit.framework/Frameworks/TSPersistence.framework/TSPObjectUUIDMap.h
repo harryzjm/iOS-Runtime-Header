@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPObjectInDocumentContaining-Protocol.h>
-
 @class NSMutableDictionary, NSMutableSet, NSString, TSPPersistedObjectUUIDMap, _TtC13TSPersistence23TSPMutableIdentifierSet;
 @protocol OS_dispatch_queue, TSPObjectUUIDMapDelegate;
 
-@interface TSPObjectUUIDMap : NSObject <TSPObjectInDocumentContaining>
+@interface TSPObjectUUIDMap : NSObject
 {
     _Atomic int _assertOnReadCount;
     id <TSPObjectUUIDMapDelegate> _delegate;

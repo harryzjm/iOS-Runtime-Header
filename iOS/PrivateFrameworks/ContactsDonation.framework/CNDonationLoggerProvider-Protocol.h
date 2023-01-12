@@ -6,9 +6,10 @@
 
 #import <ContactsDonation/NSObject-Protocol.h>
 
-@protocol CNDonationAccountLogger, CNDonationAgentLogger, CNDonationAnalyticsLogger, CNDonationExtensionLogger, CNDonationPreferencesLogger, CNDonationToolLogger;
+@protocol CNDonationAccountLogger, CNDonationAgentLogger, CNDonationAnalyticsLogger, CNDonationExtensionLogger, CNDonationManagedDuplicatesLogger, CNDonationPreferencesLogger, CNDonationToolLogger;
 
 @protocol CNDonationLoggerProvider <NSObject>
+@property(readonly) id <CNDonationManagedDuplicatesLogger> duplicatesLogger;
 @property(readonly) id <CNDonationAnalyticsLogger> analyticsLogger;
 @property(readonly) id <CNDonationPreferencesLogger> preferencesLogger;
 @property(readonly) id <CNDonationAccountLogger> accountLogger;

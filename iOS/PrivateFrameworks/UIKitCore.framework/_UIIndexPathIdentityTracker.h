@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, UICollectionView, UITableView;
+@class NSMapTable, UICollectionView, UITableView;
 
 __attribute__((visibility("hidden")))
 @interface _UIIndexPathIdentityTracker : NSObject
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     UITableView *_tableView;
     UICollectionView *_collectionView;
     id _identityBasedDataSource;
-    NSMutableDictionary *_mapping;
+    NSMapTable *_mapping;
     _Bool _enforcesManualMapping;
 }
 
@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)reset;
 - (void)updateWithUpdateItems:(id)arg1;
+- (void)_manuallyUpdateWithUpdateItems:(id)arg1;
+- (void)_identifierBasedUpdateWithUpdateItems:(id)arg1;
 - (id)currentIndexPathForIdentifier:(id)arg1;
 - (id)identifierForIndexPath:(id)arg1;
 - (id)_mappingIdentifierForSanitizedIndexPath:(id)arg1;

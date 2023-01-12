@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCoding-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface IBEdgeInsetsWrapper : NSObject <NSCopying, NSCoding, IBBinaryArchiving>
+@interface IBEdgeInsetsWrapper : NSObject
 {
     double _top;
     double _left;

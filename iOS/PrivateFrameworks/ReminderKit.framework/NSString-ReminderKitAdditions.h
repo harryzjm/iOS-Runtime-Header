@@ -6,12 +6,8 @@
 
 #import <Foundation/NSString.h>
 
-#import <ReminderKit/CRCoding-Protocol.h>
-#import <ReminderKit/CRDataType-Protocol.h>
-#import <ReminderKit/CREquatable-Protocol.h>
-#import <ReminderKit/REMDAChangedIdentifierResult-Protocol.h>
-
-@interface NSString (ReminderKitAdditions) <REMDAChangedIdentifierResult, CRDataType, CREquatable, CRCoding>
+@interface NSString (ReminderKitAdditions)
++ (_Bool)rem_isFirstString:(id)arg1 equalToSecondString:(id)arg2;
 + (void)rem_registerClassAtCRCoderIfNeeded;
 - (id)rem_removingTel;
 - (id)rem_addingTel;

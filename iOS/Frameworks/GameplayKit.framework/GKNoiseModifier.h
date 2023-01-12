@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameplayKit/GKNoiseModule-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GKNoiseModifier : NSObject <GKNoiseModule>
+@interface GKNoiseModifier : NSObject
 {
     NSMutableArray *_inputModules;
 }

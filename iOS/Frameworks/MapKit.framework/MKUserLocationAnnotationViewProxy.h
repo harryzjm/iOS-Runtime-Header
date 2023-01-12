@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/VKPuckAnimatorTarget-Protocol.h>
-#import <MapKit/VKRouteMatchedAnnotationPresentation-Protocol.h>
-#import <MapKit/VKTrackableAnnotationPresentation-Protocol.h>
-
 @class GEORouteMatch, MKAnnotationView, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKUserLocationAnnotationViewProxy : NSObject <VKPuckAnimatorTarget, VKTrackableAnnotationPresentation, VKRouteMatchedAnnotationPresentation>
+@interface MKUserLocationAnnotationViewProxy : NSObject
 {
     MKAnnotationView *_annotationView;
 }

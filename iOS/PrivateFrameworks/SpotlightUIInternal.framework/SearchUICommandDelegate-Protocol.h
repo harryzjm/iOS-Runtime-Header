@@ -6,10 +6,14 @@
 
 #import <SpotlightUIInternal/NSObject-Protocol.h>
 
-@class SFCommand;
-@protocol SearchUICommandProtocol;
+@class SFCommand, SFSearchResult, UIViewController;
 
 @protocol SearchUICommandDelegate <NSObject>
-- (id <SearchUICommandProtocol>)commandExecutorForCommand:(SFCommand *)arg1;
+- (void)performCommand:(SFCommand *)arg1;
+- (_Bool)canPerformCommand:(SFCommand *)arg1;
+
+@optional
+- (UIViewController *)customViewControllerForResult:(SFSearchResult *)arg1;
+- (_Bool)hasCustomViewControllerForResult:(SFSearchResult *)arg1;
 @end
 

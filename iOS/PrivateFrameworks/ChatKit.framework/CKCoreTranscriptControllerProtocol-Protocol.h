@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKAssociatedMessageChatItem, CKBalloonTextView, CKBalloonView, CKChatItem, CKConversation, CKFullScreenEffectManager, CKImpactEffectManager, CKMessagePartChatItem, CKRaiseGesture, CKTranscriptCollectionView, IMChat, NSArray, NSIndexPath, NSIndexSet, NSObject, NSString, UICollectionViewCell, UITapGestureRecognizer, UITraitCollection, UIView;
+@class CKAssociatedMessageChatItem, CKAttachmentMessagePartChatItem, CKBalloonTextView, CKBalloonView, CKChatItem, CKConversation, CKFullScreenEffectManager, CKImpactEffectManager, CKMessagePartChatItem, CKRaiseGesture, CKTranscriptCollectionView, CKTranscriptLayoutMessageEditingContext, IMChat, NSArray, NSIndexPath, NSIndexSet, NSObject, NSString, UICollectionViewCell, UITapGestureRecognizer, UITraitCollection, UIView;
 @protocol CKGradientReferenceView, CKTranscriptCellProtocol, CKTranscriptCollectionViewControllerDelegate, OS_dispatch_group, UIDragInteractionDelegate;
 
 @protocol CKCoreTranscriptControllerProtocol <NSObject>
@@ -19,11 +19,14 @@
 @property(nonatomic, getter=isTranscriptUpdateAnimated) _Bool transcriptUpdateAnimated;
 @property(nonatomic) _Bool transitioningFromComposing;
 @property(nonatomic) _Bool transitionedFromComposing;
+@property(retain, nonatomic) CKTranscriptLayoutMessageEditingContext *messageEditingContext;
 @property(retain, nonatomic) CKFullScreenEffectManager *fullscreenEffectManager;
 @property(retain, nonatomic) CKImpactEffectManager *impactEffectManager;
 @property(nonatomic) _Bool shouldLoadDefaultConversationViewingMessageCountOnAppear;
 @property(nonatomic, getter=isInitialLoad) _Bool initialLoad;
+@property(copy, nonatomic) NSIndexSet *poppedBalloonsHiddenUntilNextChatItemUpdate;
 @property(copy, nonatomic) NSIndexSet *hiddenBalloonViews;
+@property(copy, nonatomic) NSIndexSet *hiddenAssociatedItemsForMessageEditing;
 @property(copy, nonatomic) NSIndexSet *hiddenAssociatedItems;
 @property(copy, nonatomic) NSIndexSet *hiddenItems;
 @property(readonly, nonatomic) NSObject<OS_dispatch_group> *updateAnimationGroup;
@@ -71,13 +74,17 @@
 - (_Bool)canRaiseToListen;
 - (void)stopPlayingAudio;
 - (void)setScrollAnchor:(double)arg1;
+- (void)showGridForChatItem:(CKAttachmentMessagePartChatItem *)arg1;
+- (void)deleteChatItems:(NSArray *)arg1 sender:(id)arg2;
 - (void)deleteSelectedChatItems:(id)arg1;
 - (void)setSelectedItems:(NSIndexSet *)arg1;
 - (NSIndexSet *)selectedItems;
 - (void)reloadData;
 - (void)sizeFullTranscriptIfNecessary;
-- (void)invalidateChatItemLayoutWithBalloonMaxWidth:(double)arg1 marginInsets:(struct UIEdgeInsets)arg2 traitCollection:(UITraitCollection *)arg3;
+- (void)invalidateChatItemLayoutWithNewBalloonMaxWidth:(double)arg1 marginInsets:(struct UIEdgeInsets)arg2 traitCollection:(UITraitCollection *)arg3;
+- (id)initWithConversation:(CKConversation *)arg1 delegate:(id <CKTranscriptCollectionViewControllerDelegate>)arg2 notifications:(NSArray *)arg3 balloonMaxWidth:(double)arg4 marginInsets:(struct UIEdgeInsets)arg5 collectionViewSize:(struct CGSize)arg6;
 - (id)initWithConversation:(CKConversation *)arg1 delegate:(id <CKTranscriptCollectionViewControllerDelegate>)arg2 notifications:(NSArray *)arg3 balloonMaxWidth:(double)arg4 marginInsets:(struct UIEdgeInsets)arg5;
+- (id)initWithConversation:(CKConversation *)arg1 delegate:(id <CKTranscriptCollectionViewControllerDelegate>)arg2 balloonMaxWidth:(double)arg3 marginInsets:(struct UIEdgeInsets)arg4 collectionViewSize:(struct CGSize)arg5;
 - (id)initWithConversation:(CKConversation *)arg1 delegate:(id <CKTranscriptCollectionViewControllerDelegate>)arg2 balloonMaxWidth:(double)arg3 marginInsets:(struct UIEdgeInsets)arg4;
 @end
 

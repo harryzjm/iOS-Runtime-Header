@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)confirmationRequiredWithChooseFromListItemToConfirm:(id)arg1;
 + (id)disambiguationWithChooseFromListItemsToDisambiguate:(id)arg1;
 + (id)successWithResolvedChooseFromListItem:(id)arg1;

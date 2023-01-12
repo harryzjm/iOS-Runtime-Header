@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UITargetedPreview, UIView, _UIPortalView;
+#import "UIView.h"
+
+@class UITargetedPreview, _UIMorphingPlatterBackgroundCaptureView, _UIPortalView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPlatterTransformView
+@interface _UIPlatterTransformView : UIView
 {
     _Bool _hidesSourceView;
     _Bool _forwardsHitTestingToSourceView;
@@ -17,9 +19,13 @@ __attribute__((visibility("hidden")))
     _Bool _shouldTakeOwnershipOfSourceView;
     UITargetedPreview *_sourcePreview;
     _UIPortalView *_portalView;
+    _UIPortalView *_backgroundPortalView;
+    _UIMorphingPlatterBackgroundCaptureView *_backgroundCaptureView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) _UIMorphingPlatterBackgroundCaptureView *backgroundCaptureView; // @synthesize backgroundCaptureView=_backgroundCaptureView;
+@property(retain, nonatomic) _UIPortalView *backgroundPortalView; // @synthesize backgroundPortalView=_backgroundPortalView;
 @property(nonatomic) _Bool shouldTakeOwnershipOfSourceView; // @synthesize shouldTakeOwnershipOfSourceView=_shouldTakeOwnershipOfSourceView;
 @property(retain, nonatomic) _UIPortalView *portalView; // @synthesize portalView=_portalView;
 @property(retain, nonatomic) UITargetedPreview *sourcePreview; // @synthesize sourcePreview=_sourcePreview;
@@ -32,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateMinificationFilter;
 - (void)didMoveToWindow;
 - (void)layoutSubviews;
+- (void)didTearOffForDrag;
 @property(readonly, nonatomic) UIView *sourceView;
 - (id)initWithFrame:(struct CGRect)arg1;
 

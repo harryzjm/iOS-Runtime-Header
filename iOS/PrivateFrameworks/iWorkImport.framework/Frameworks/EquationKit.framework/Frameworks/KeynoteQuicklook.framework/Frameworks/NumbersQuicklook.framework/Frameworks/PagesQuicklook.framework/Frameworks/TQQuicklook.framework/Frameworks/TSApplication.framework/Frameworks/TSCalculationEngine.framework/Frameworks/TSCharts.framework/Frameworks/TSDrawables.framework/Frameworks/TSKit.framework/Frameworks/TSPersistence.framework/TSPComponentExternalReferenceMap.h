@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSCopying-Protocol.h>
-
-@interface TSPComponentExternalReferenceMap : NSObject <NSCopying>
+@interface TSPComponentExternalReferenceMap : NSObject
 {
     void *_map;
 }

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <C2/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface C2MPDeviceInfo : PBCodable <NSCopying>
+@interface C2MPDeviceInfo : PBCodable
 {
     NSMutableArray *_internalTestConfigs;
     NSString *_processName;

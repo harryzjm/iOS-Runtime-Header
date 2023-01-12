@@ -7,6 +7,7 @@
 #import <MetalTools/MTLIndirectCommandBuffer-Protocol.h>
 
 @protocol MTLIndirectCommandBufferSPI <MTLIndirectCommandBuffer>
+@property(readonly) unsigned long long gpuHandle;
 @property(readonly) unsigned long long storageMode;
 @property(readonly) unsigned long long uniqueIdentifier;
 - (void)getHeader:(void **)arg1 headerSize:(unsigned long long *)arg2;

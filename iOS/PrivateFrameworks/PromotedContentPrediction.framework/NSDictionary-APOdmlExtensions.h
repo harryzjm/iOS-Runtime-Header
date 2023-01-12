@@ -7,9 +7,9 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (APOdmlExtensions)
-- (id)dictionaryForJSON;
-- (id)jsonStringWithPrettyPrint:(_Bool)arg1;
-- (id)jsonString;
+- (id)mlDictionaryForJSON;
+- (id)mlJSONStringWithPrettyPrint:(_Bool)arg1;
+- (id)mlJSONString;
 - (id)objectForKey:(id)arg1 ofKindOfClass:(Class)arg2;
 @end
 

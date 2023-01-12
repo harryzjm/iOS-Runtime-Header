@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NaturalLanguage/MLCustomModel-Protocol.h>
+#import "NLModel.h"
 
 @class MLModelDescription;
 
 __attribute__((visibility("hidden")))
-@interface NLPMLClassifierModel <MLCustomModel>
+@interface NLPMLClassifierModel : NLModel
 {
     MLModelDescription *_modelDescription;
 }

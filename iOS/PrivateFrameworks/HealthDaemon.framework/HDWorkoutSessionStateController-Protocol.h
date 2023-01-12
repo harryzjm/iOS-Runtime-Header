@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKWorkoutConfiguration, NSData, NSDate, NSDictionary, NSError, NSString, _HKWorkoutEvent;
+@class HKWorkoutActivity, HKWorkoutConfiguration, NSData, NSDate, NSDictionary, NSError, NSString, _HKWorkoutEvent;
 @protocol HDWorkoutDataAccumulator;
 
 @protocol HDWorkoutSessionStateController
 @property(readonly, nonatomic) id <HDWorkoutDataAccumulator> workoutDataAccumulator;
 - (_Bool)storeSessionControllerState:(NSData *)arg1 forRecoveryIdentifier:(NSString *)arg2 error:(id *)arg3;
+- (void)didDetectActivityChange:(HKWorkoutActivity *)arg1;
+- (void)didEndCurrentActivity:(HKWorkoutActivity *)arg1;
+- (void)didBeginNewActivity:(HKWorkoutActivity *)arg1;
 - (void)generateConfigurationUpdate:(HKWorkoutConfiguration *)arg1;
 - (void)generateMetadata:(NSDictionary *)arg1;
 - (void)generateError:(NSError *)arg1;

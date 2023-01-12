@@ -5,14 +5,12 @@
 //
 
 #import <MDMClientLibrary/MDMClientProtocol-Protocol.h>
+#import <MDMClientLibrary/MDMSharedXPCProtocol-Protocol.h>
 #import <MDMClientLibrary/NSObject-Protocol.h>
 
 @class NSDictionary;
 
-@protocol MDMUserXPCProtocol <NSObject, MDMClientProtocol>
+@protocol MDMUserXPCProtocol <NSObject, MDMSharedXPCProtocol, MDMClientProtocol>
 - (void)processUserRequest:(NSDictionary *)arg1 encodeResponse:(_Bool)arg2 completion:(void (^)(NSError *, NSDictionary *, NSData *))arg3;
-- (void)userPushTokenWithCompletion:(void (^)(NSData *, NSError *))arg1;
-- (void)simulatePushWithCompletion:(void (^)(NSError *))arg1;
-- (void)scheduleTokenUpdateWithCompletion:(void (^)(NSError *))arg1;
 @end
 

@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (unsigned long long)_positionForPersonalScore:(float)arg1 low:(float)arg2 lowMiddle:(float)arg3 highMiddle:(float)arg4 high:(float)arg5;
+- (long long)_positionForPersonalScore:(float)arg1 low:(float)arg2 lowMiddle:(float)arg3 highMiddle:(float)arg4 high:(float)arg5;
 - (void)updateBurnBarAccessibility:(id)arg1 personalScore:(float)arg2 low:(float)arg3 lowMiddle:(float)arg4 highMiddle:(float)arg5 high:(float)arg6;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)isAccessibilityElement;

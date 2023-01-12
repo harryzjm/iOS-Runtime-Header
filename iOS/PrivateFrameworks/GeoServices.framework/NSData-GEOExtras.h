@@ -9,7 +9,6 @@
 @interface NSData (GEOExtras)
 + (id)_geo_withXPCData:(id)arg1;
 + (id)_geo_dataForHexString:(id)arg1;
-+ (id)dataWithCPPData:(const void *)arg1 copy:(_Bool)arg2;
 - (id)_GEOCreateDispatchData;
 - (id)_geo_newXPCData;
 - (id)_geo_decompressedDataViaAlgo:(int)arg1;
@@ -18,7 +17,5 @@
 - (id)_geo_SHA256Hash;
 - (id)_geo_SHA1Hash;
 - (id)_geo_MD5Hash;
-- (basic_string_05660eb3)cppData;
-- (id)initWithCPPData:(const void *)arg1 copy:(_Bool)arg2;
 @end
 

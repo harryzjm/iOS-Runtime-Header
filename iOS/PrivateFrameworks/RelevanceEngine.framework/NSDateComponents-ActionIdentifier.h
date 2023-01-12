@@ -6,11 +6,9 @@
 
 #import <Foundation/NSDateComponents.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSDateComponents (ActionIdentifier) <REDonatedActionIdentifierProviding>
+@interface NSDateComponents (ActionIdentifier)
 - (unsigned long long)re_actionIdentifierHashValue;
 
 // Remaining properties

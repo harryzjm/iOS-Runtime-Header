@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSInvocation;
+@class NSInvocation, UIWindow;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _cancellationHandler;
     double _timeout;
     NSObject<OS_dispatch_source> *_timerSource;
+    UIWindow *_windowIgnoringEvents;
 }
 
 - (void).cxx_destruct;
+@property __weak UIWindow *windowIgnoringEvents; // @synthesize windowIgnoringEvents=_windowIgnoringEvents;
 @property(retain, nonatomic) NSInvocation *presentInvocation; // @synthesize presentInvocation=_presentInvocation;
 @property(copy, nonatomic) CDUnknownBlockType cancellationHandler; // @synthesize cancellationHandler=_cancellationHandler;
 - (long long)incrementRequestCount;

@@ -6,16 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/_SFBarRegistrationToken-Protocol.h>
-
-@class NSArray, NSMutableSet, NSSet, NSString, SFDownloadsUnifiedBarItem, SFUnifiedBar, SFUnifiedBarButton, SFUnifiedBarItem, _SFBarManager;
+@class NSArray, NSMutableSet, NSSet, NSString, SFCollaborationUnifiedBarItem, SFDownloadsUnifiedBarItem, SFUnifiedBar, SFUnifiedBarButton, SFUnifiedBarItem, UIButton, _SFBarManager, _SWCollaborationButtonView;
 
 __attribute__((visibility("hidden")))
-@interface SFUnifiedBarRegistration : NSObject <_SFBarRegistrationToken>
+@interface SFUnifiedBarRegistration : NSObject
 {
     SFUnifiedBar *_bar;
     _SFBarManager *_barManager;
-    unsigned long long _persona;
+    long long _persona;
     _Bool _needsUpdateItems;
     _Bool _nextUpdateShouldPinScrollPositionToTrailingEdge;
     NSMutableSet *_disabledBarItems;
@@ -32,6 +30,7 @@ __attribute__((visibility("hidden")))
     SFUnifiedBarItem *_tabOverviewButton;
     SFDownloadsUnifiedBarItem *_downloadsButton;
     SFUnifiedBarItem *_cancelButton;
+    SFCollaborationUnifiedBarItem *_collaborationButton;
     long long _contentMode;
     long long _state;
 }
@@ -39,10 +38,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
+@property(retain, nonatomic) _SWCollaborationButtonView *collaborationButton;
+- (void)setAttributedTitle:(id)arg1 forBarItem:(long long)arg2;
+- (void)setImage:(id)arg1 forBarItem:(long long)arg2;
 - (void)setTitle:(id)arg1 forBarItem:(long long)arg2;
 - (void)pulseBarItem:(long long)arg1;
 - (void)setProgress:(double)arg1 forBarItem:(long long)arg2;
-- (void)setMenuProvider:(CDUnknownBlockType)arg1 forBarItem:(long long)arg2;
+- (void)setBarItem:(long long)arg1 menu:(id)arg2;
 - (id)viewForBarItem:(long long)arg1;
 - (id)popoverSourceInfoForItem:(long long)arg1;
 - (_Bool)containsBarItem:(long long)arg1;
@@ -60,12 +62,13 @@ __attribute__((visibility("hidden")))
 - (void)_updateItems;
 - (void)_updateItemsIfNeeded;
 - (void)_setNeedsUpdateItems;
-- (id)initWithBar:(id)arg1 barManager:(id)arg2 persona:(unsigned long long)arg3;
+- (id)initWithBar:(id)arg1 barManager:(id)arg2 persona:(long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) UIButton *microphoneButton;
 @property(nonatomic) unsigned long long pageFormatItemState;
 @property(readonly) Class superclass;
 

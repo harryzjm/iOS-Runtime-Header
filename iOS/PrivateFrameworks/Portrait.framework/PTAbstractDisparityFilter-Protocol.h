@@ -10,7 +10,8 @@
 
 @protocol PTAbstractDisparityFilter <NSObject>
 - (void)reset;
-- (int)temporalDisparityFilter:(id <MTLCommandBuffer>)arg1 inDisplacement:(id <MTLTexture>)arg2 inDisparityFilteredPrev:(id <MTLTexture>)arg3 inDisparity:(id <MTLTexture>)arg4 outDisparityFiltered:(id <MTLTexture>)arg5 disparityBias:(float)arg6;
-- (int)computeOpticalFlow:(id <MTLCommandBuffer>)arg1 inRGBA:(id <MTLTexture>)arg2 outDisplacement:(id <MTLTexture>)arg3;
+- (int)temporalDisparityFilter:(id <MTLCommandBuffer>)arg1 inDisplacement:(id <MTLTexture>)arg2 inDisparityPrev:(id <MTLTexture>)arg3 inDisparity:(id <MTLTexture>)arg4 outDisparity:(id <MTLTexture>)arg5 disparityBias:(float)arg6;
+- (int)temporalDisparityFilter:(id <MTLCommandBuffer>)arg1 inDisplacement:(id <MTLTexture>)arg2 inStatePrev:(id <MTLTexture>)arg3 inDisparity:(id <MTLTexture>)arg4 outDisparity:(id <MTLTexture>)arg5 outState:(id <MTLTexture>)arg6;
+- (int)prepareFilter:(id <MTLCommandBuffer>)arg1 inRGBA:(id <MTLTexture>)arg2 outDisplacement:(id <MTLTexture>)arg3;
 @end
 

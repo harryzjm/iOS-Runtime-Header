@@ -17,6 +17,10 @@
 
 @optional
 - (void)insertSpecifier:(PSSpecifier *)arg1 afterSpecifierNamed:(NSString *)arg2 animated:(_Bool)arg3;
+- (NSNumber *)specifierProvider:(id <AAUISpecifierProvider>)arg1 dataclassSwitchStateForSpecifier:(PSSpecifier *)arg2;
 - (void)specifierProvider:(id <AAUISpecifierProvider>)arg1 dataclassSwitchStateDidChange:(NSNumber *)arg2 withSpecifier:(PSSpecifier *)arg3;
+- (_Bool)specifierProvider:(id <AAUISpecifierProvider>)arg1 isDataclassAvailableForSpecifier:(PSSpecifier *)arg2;
+- (void)validateDataclassAccessForProvider:(id <AAUISpecifierProvider>)arg1 specifier:(PSSpecifier *)arg2 completion:(void (^)(_Bool))arg3;
+- (void)reloadSpecifierForProvider:(id <AAUISpecifierProvider>)arg1 identifier:(NSString *)arg2;
 @end
 

@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCMediaStreamProtocol-Protocol.h>
-#import <AVConference/VCTextReceiverDelegate-Protocol.h>
-#import <AVConference/VCTextSender-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue, VCMediaStreamDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCVirtualTextDevice : NSObject <VCMediaStreamProtocol, VCTextSender, VCTextReceiverDelegate>
+@interface VCVirtualTextDevice : NSObject
 {
     int _clientPid;
     long long _state;

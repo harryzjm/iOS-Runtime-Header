@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKBKeyViewAnimator : NSObject <CAAnimationDelegate>
+@interface UIKBKeyViewAnimator : NSObject
 {
     _Bool _disabled;
 }

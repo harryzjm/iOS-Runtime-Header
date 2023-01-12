@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "RBDomainRestriction.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface RBCompoundAllDomainRestriction
+@interface RBCompoundAllDomainRestriction : RBDomainRestriction
 {
     NSArray *_restrictions;
 }

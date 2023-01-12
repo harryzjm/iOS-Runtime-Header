@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface _MPMediaLibraryEntityPropertyTranslator : NSObject
 {
     CDUnknownBlockType _sortTransformer;
+    CDUnknownBlockType _filterTransformer;
     CDUnknownBlockType _valueTransformer;
     shared_ptr_a9db792c _propertiesToFetchMap;
     shared_ptr_a9db792c _propertiesToSortMap;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType valueTransformer; // @synthesize valueTransformer=_valueTransformer;
+@property(copy, nonatomic) CDUnknownBlockType filterTransformer; // @synthesize filterTransformer=_filterTransformer;
 @property(copy, nonatomic) CDUnknownBlockType sortTransformer; // @synthesize sortTransformer=_sortTransformer;
 @property(nonatomic) shared_ptr_a9db792c propertiesToSortMap; // @synthesize propertiesToSortMap=_propertiesToSortMap;
 @property(nonatomic) shared_ptr_a9db792c propertiesToFetchMap; // @synthesize propertiesToFetchMap=_propertiesToFetchMap;

@@ -9,13 +9,18 @@
 @class NSArray, NSSet, NSString, PKCloudStoreZoneQueryConfiguration, PKPaymentTransaction;
 
 @protocol PDCloudStoreServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)performAction:(long long)arg1 inContainerWithName:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)diagnosticSnapshotForContainerWithName:(NSString *)arg1 completion:(void (^)(PKCloudStoreContainerDiagnosticSnapshot *, NSError *))arg2;
+- (void)diagnosticInfoForContainerWithName:(NSString *)arg1 completion:(void (^)(PKCloudStoreContainerDiagnostics *, NSError *))arg2;
 - (void)shareForZoneName:(NSString *)arg1 containerName:(NSString *)arg2 qualityOfService:(long long)arg3 completion:(void (^)(PKCloudRecordArray *, NSError *))arg4;
+- (void)createInvitationForRecipientHandle:(NSString *)arg1 zoneName:(NSString *)arg2 containerName:(NSString *)arg3 qualityOfService:(long long)arg4 completion:(void (^)(_Bool, NSError *))arg5;
 - (void)declineInvitationForRecipientHandle:(NSString *)arg1 zoneName:(NSString *)arg2 containerName:(NSString *)arg3 qualityOfService:(long long)arg4 completion:(void (^)(_Bool, NSError *))arg5;
 - (void)populateEvents:(NSArray *)arg1 forAccountIdentifier:(NSString *)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
 - (void)setupCloudDatabaseForContainerName:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)resetApplePayManateeViewWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)checkTLKsMissingWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)cloudStoreStatusForContainer:(NSString *)arg1 completion:(void (^)(CKAccountInfo *, _Bool, NSError *))arg2;
+- (void)createZone:(NSString *)arg1 containerName:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)deleteZone:(NSString *)arg1 containerName:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)recreateZone:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)uploadTransaction:(PKPaymentTransaction *)arg1 forTransactionSourceIdentifier:(NSString *)arg2 includeServerData:(_Bool)arg3 completion:(void (^)(PKCloudRecordArray *, NSError *))arg4;

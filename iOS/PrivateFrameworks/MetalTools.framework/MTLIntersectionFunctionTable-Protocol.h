@@ -9,6 +9,7 @@
 @protocol MTLBuffer, MTLFunctionHandle, MTLVisibleFunctionTable;
 
 @protocol MTLIntersectionFunctionTable <MTLResource>
+@property(readonly) struct MTLResourceID gpuResourceID;
 - (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)setVisibleFunctionTable:(id <MTLVisibleFunctionTable>)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setOpaqueTriangleIntersectionFunctionWithSignature:(unsigned long long)arg1 withRange:(struct _NSRange)arg2;

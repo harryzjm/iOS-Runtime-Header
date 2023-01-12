@@ -10,11 +10,11 @@
 @class NSUUID, SPPairingSession;
 
 @protocol SPPairingManagerXPCProtocol <NSObject, SPLocalPairingManagerXPCProtocol>
-- (oneway void)allPairingErrorsWithCompletion:(void (^)(NSArray *))arg1;
-- (oneway void)unpairUUID:(NSUUID *)arg1 force:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
-- (oneway void)finalizePairingUsing:(SPPairingSession *)arg1 completion:(void (^)(SPPairingSession *, NSError *))arg2;
-- (oneway void)verifyPairingInfoUsing:(SPPairingSession *)arg1 completion:(void (^)(SPPairingSession *, NSError *))arg2;
-- (oneway void)invalidatePairingSession:(SPPairingSession *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)initiatePairingSessionWithCompletion:(void (^)(SPPairingSession *, NSError *))arg1;
+- (void)allPairingErrorsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)unpairUUID:(NSUUID *)arg1 force:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
+- (void)finalizePairingUsing:(SPPairingSession *)arg1 completion:(void (^)(SPPairingSession *, NSError *))arg2;
+- (void)verifyPairingInfoUsing:(SPPairingSession *)arg1 completion:(void (^)(SPPairingSession *, NSError *))arg2;
+- (void)invalidatePairingSession:(SPPairingSession *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)initiatePairingSessionWithCompletion:(void (^)(SPPairingSession *, NSError *))arg1;
 @end
 

@@ -8,6 +8,7 @@
 
 @interface UITableView (Bridge)
 + (long long)ts_bridgedAnimationForAnimation:(unsigned long long)arg1;
+- (void)ts_reloadSectionHeaderFooters:(id)arg1 withRowAnimation:(long long)arg2;
 - (void)deferWhenTouchingWithBlock:(CDUnknownBlockType)arg1;
 @end
 

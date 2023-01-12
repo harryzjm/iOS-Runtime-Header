@@ -6,13 +6,11 @@
 
 #import <iTunesStoreUI/SUViewController.h>
 
-#import <StoreKitUI/SKUIComposeReviewViewDelegate-Protocol.h>
-
 @class NSString, SKUIComposeReviewView, SKUIReviewMetadata;
 @protocol SKUIComposeReviewFormDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIComposeReviewFormViewController : SUViewController <SKUIComposeReviewViewDelegate>
+@interface SKUIComposeReviewFormViewController : SUViewController
 {
     SKUIComposeReviewView *_composeView;
     id <SKUIComposeReviewFormDelegate> _delegate;

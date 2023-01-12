@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKPhotoBigAttributionViewSubclass-Protocol.h>
-
 @class NSString, UIImage, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MKFirstPartyPhotoBigAttributionView <MKPhotoBigAttributionViewSubclass>
+@interface MKFirstPartyPhotoBigAttributionView
 {
     UIImageView *_glyphView;
     UILabel *_titleLabel;

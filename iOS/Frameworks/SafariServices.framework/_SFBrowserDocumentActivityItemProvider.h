@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_SFActivityItemProvider.h"
+
 @protocol _SFBrowserDocument;
 
 __attribute__((visibility("hidden")))
-@interface _SFBrowserDocumentActivityItemProvider
+@interface _SFBrowserDocumentActivityItemProvider : _SFActivityItemProvider
 {
     id <_SFBrowserDocument> _browserDocument;
 }

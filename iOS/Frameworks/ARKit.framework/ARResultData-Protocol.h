@@ -11,15 +11,15 @@
 @protocol ARResultData <ARData>
 
 @optional
-- (NSArray *)externalAnchorsWithReferenceOriginTransform:(CDStruct_14d5dc5e)arg1 existingAnchors:(NSArray *)arg2;
-- (NSArray *)anchorsForCameraWithTransform:(CDStruct_14d5dc5e)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2 existingAnchors:(NSArray *)arg3 anchorsToRemove:(NSMutableArray *)arg4;
+- (NSArray *)externalAnchorsWithReferenceOriginTransform:(CDStruct_f1db2b5e)arg1 existingAnchors:(NSArray *)arg2;
+- (NSArray *)anchorsForCameraWithTransform:(CDStruct_f1db2b5e)arg1 referenceOriginTransform:(CDStruct_f1db2b5e)arg2 existingAnchors:(NSArray *)arg3 anchorsToRemove:(NSMutableArray *)arg4;
 - (struct __CVBuffer *)segmentationBuffer;
 - (ARPointCloud *)featurePoints;
 - (ARLightEstimate *)lightEstimate;
 - (unsigned long long)worldAlignmentModifiers;
-- (CDStruct_14d5dc5e)worldAlignmentTransform;
+- (CDStruct_f1db2b5e)worldAlignmentTransform;
 - (ARWorldTrackingState *)worldTrackingState;
-- (CDStruct_14d5dc5e)cameraTransform;
+- (CDStruct_f1db2b5e)cameraTransform;
 - (double)timestamp;
 @end
 

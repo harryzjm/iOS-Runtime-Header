@@ -27,6 +27,7 @@
 - (long long)tmlPreferredStatusBarStyle;
 @property(copy, nonatomic) NSArray *previewActionItems;
 - (id)tmlPreviewActionItems;
+- (void)tmlWillMoveToParentViewController:(id)arg1;
 - (void)tmlTraitCollectionDidChange:(id)arg1;
 - (void)tmlWillTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)tmlViewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

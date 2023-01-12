@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OCDDelayedNodeContext-Protocol.h>
-
 @class EXReadState, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface EXSheetContext : NSObject <OCDDelayedNodeContext>
+@interface EXSheetContext : NSObject
 {
     EXReadState *mSheetState;
     NSURL *mPackageLocation;

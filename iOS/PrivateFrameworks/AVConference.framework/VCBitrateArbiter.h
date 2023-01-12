@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     unsigned int _maxAllowedBitrateLTE;
     unsigned int _maxAllowedBitrateHighRat;
     unsigned int _maxAllowedBitrateWifi;
+    unsigned int _maxAllowedBitrateTCPRelay;
     unsigned int _maxAllowedScreenShareBitrate2G;
     unsigned int _maxAllowedScreenShareBitrate3G;
     unsigned int _maxAllowedScreenShareBitrateLTE;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 + (void)updateMaxAllowedBitratePerConnection:(unsigned int *)arg1 connectionType:(int)arg2 negotiatedSettings:(id)arg3;
 @property(readonly) unsigned int maxAllowedBitrateUSB; // @synthesize maxAllowedBitrateUSB=_maxAllowedBitrateUSB;
 @property(readonly) unsigned int maxAllowedBitrateP2P; // @synthesize maxAllowedBitrateP2P=_maxAllowedBitrateP2P;
+@property(readonly) unsigned int maxAllowedBitrateTCPRelay; // @synthesize maxAllowedBitrateTCPRelay=_maxAllowedBitrateTCPRelay;
 @property(readonly) unsigned int maxAllowedBitrateWifi; // @synthesize maxAllowedBitrateWifi=_maxAllowedBitrateWifi;
 @property(readonly) unsigned int maxAllowedBitrateHighRat; // @synthesize maxAllowedBitrateHighRat=_maxAllowedBitrateHighRat;
 @property(readonly) unsigned int maxAllowedBitrateLTE; // @synthesize maxAllowedBitrateLTE=_maxAllowedBitrateLTE;

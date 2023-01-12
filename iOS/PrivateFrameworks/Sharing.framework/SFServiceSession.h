@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SFSession.h"
+
 @class CUPairingSession, SFService;
 
 __attribute__((visibility("hidden")))
-@interface SFServiceSession
+@interface SFServiceSession : SFSession
 {
     CUPairingSession *_pairSetupSession;
     unsigned int _pairSetupXID;

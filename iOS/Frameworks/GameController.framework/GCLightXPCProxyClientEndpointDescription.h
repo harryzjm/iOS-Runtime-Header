@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCControllerComponentDescription-Protocol.h>
-
 @class GCDeviceLight, GCLightXPCProxyClientEndpoint, NSString;
 @protocol NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface GCLightXPCProxyClientEndpointDescription : NSObject <_GCControllerComponentDescription>
+@interface GCLightXPCProxyClientEndpointDescription : NSObject
 {
     GCDeviceLight *_initialLight;
     GCLightXPCProxyClientEndpoint *_materializedObject;

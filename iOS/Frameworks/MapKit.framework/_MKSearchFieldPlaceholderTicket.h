@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapServiceSearchFieldPlaceholderTicket-Protocol.h>
-
 @class GEOMapServiceTraits, NSString;
 @protocol GEOMapServiceSearchFieldPlaceholderTicket;
 
 __attribute__((visibility("hidden")))
-@interface _MKSearchFieldPlaceholderTicket : NSObject <MKMapServiceSearchFieldPlaceholderTicket>
+@interface _MKSearchFieldPlaceholderTicket : NSObject
 {
     id <GEOMapServiceSearchFieldPlaceholderTicket> _ticket;
 }

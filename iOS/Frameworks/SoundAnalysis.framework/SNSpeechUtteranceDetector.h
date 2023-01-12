@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNSpeechUtteranceDetector : NSObject <SNAnalyzing>
+@interface SNSpeechUtteranceDetector : NSObject
 {
     long long _requestType;
     shared_ptr_f6ac7592 _graph;
@@ -19,9 +17,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly) double decisionDelay;
-@property(readonly, nonatomic) _Bool hardVAD;
-- (float)softVAD;
 @property(readonly, nonatomic) void *resultsBox;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)sharedProcessorConfiguration;

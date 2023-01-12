@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/NSCopying-Protocol.h>
-#import <IDSFoundation/NSSecureCoding-Protocol.h>
-
 @class IDSCKServerChangeToken, NSArray;
 
-@interface IDSCKFetchRecordZoneChangesOptions : NSObject <NSSecureCoding, NSCopying>
+@interface IDSCKFetchRecordZoneChangesOptions : NSObject
 {
     IDSCKServerChangeToken *_previousServerChangeToken;
     unsigned long long _resultsLimit;

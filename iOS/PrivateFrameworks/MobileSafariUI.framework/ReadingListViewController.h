@@ -6,21 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MobileSafariUI/BookmarksPanelStateRestoring-Protocol.h>
-#import <MobileSafariUI/BookmarksToolbarItemProvider-Protocol.h>
-#import <MobileSafariUI/PreviewTableViewControllerDelegate-Protocol.h>
-#import <MobileSafariUI/UISearchBarDelegate-Protocol.h>
-#import <MobileSafariUI/UITableViewDataSource-Protocol.h>
-#import <MobileSafariUI/UITableViewDelegate-Protocol.h>
-#import <MobileSafariUI/UITableViewDragDelegate-Protocol.h>
-#import <MobileSafariUI/UITableViewDropDelegate-Protocol.h>
-#import <MobileSafariUI/WebBookmarksClientDelegateProtocol-Protocol.h>
-
 @class NSArray, NSMutableSet, NSString, NSTimer, PreviewTableViewController, ReadingListContentUnavailableView, ReadingListLeadImageCache, SafariFetcherServerProxy, UIBarButtonItem, UISearchBar, UITableView, WebBookmarkCollection, WebBookmarkList;
 @protocol LinkPreviewProvider, ReadingListViewControllerDelegate, TabGroupProvider, _SFNavigationIntentHandling;
 
 __attribute__((visibility("hidden")))
-@interface ReadingListViewController : UIViewController <BookmarksToolbarItemProvider, PreviewTableViewControllerDelegate, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate, WebBookmarksClientDelegateProtocol, BookmarksPanelStateRestoring, UITableViewDelegate, UITableViewDataSource>
+@interface ReadingListViewController : UIViewController
 {
     UIBarButtonItem *_cachedUnreadFilterBarButtonButton;
     UIBarButtonItem *_cachedDeleteBarButtonItem;
@@ -120,6 +110,8 @@ __attribute__((visibility("hidden")))
 - (void)_scheduleDelayedChangeNotification;
 - (void)didMarkBookmarkUnreadAtIndex:(unsigned long long)arg1;
 - (void)_didAddNewReadingListBookmark;
+- (id)_editButtonIdentifier;
+- (id)_unreadFilterButtonIdentifier;
 - (id)_unreadFilterButtonTitle;
 - (void)_updateEditingButtonsEnabled;
 - (void)_saveForOffline:(id)arg1;
@@ -130,6 +122,7 @@ __attribute__((visibility("hidden")))
 - (id)_unreadFilterBarButtonItem;
 - (void)_didChangeUnreadFilter;
 - (void)_reloadReadingListAndTable;
+- (void)_updateSearchBar;
 - (void)_reloadReadingList;
 - (void)_networkReachabilityChanged:(id)arg1;
 - (id)_bookmarkAtIndexPath:(id)arg1;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAVErrorResolver.h"
+
 @class NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface MPStorePurchaseErrorResolver
+@interface MPStorePurchaseErrorResolver : MPAVErrorResolver
 {
     NSNumber *_storeAccountIdentifier;
 }

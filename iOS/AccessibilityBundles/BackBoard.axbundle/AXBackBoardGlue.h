@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import "AXBackBoardServerInstanceDelegate-Protocol.h"
-
 @class NSString;
 
-@interface AXBackBoardGlue : NSObject <AXBackBoardServerInstanceDelegate>
+@interface AXBackBoardGlue : NSObject
 {
 }
 
@@ -19,6 +17,7 @@
 + (int)assistiveTouchPid;
 + (int)accessibilityUIServerPid;
 + (void)setLockScreenDimTimerEnabled:(_Bool)arg1;
++ (id)_authenticationMessageForLocationInCAScreenCoordinates:(struct CGPoint)arg1 eventType:(unsigned int)arg2 excludeContextIDsFromHitTest:(id)arg3 secureName:(unsigned int)arg4;
 + (id)_authenticationMessageForLocationInCAScreenCoordinates:(struct CGPoint)arg1 eventType:(unsigned int)arg2 excludeContextIDsFromHitTest:(id)arg3;
 + (void)processExternalHIDEvent:(struct __IOHIDEvent *)arg1;
 + (struct CGPoint)displayConvertToCAScreen:(struct CGPoint)arg1 withDisplayIntegerId:(unsigned int)arg2;
@@ -50,6 +49,8 @@
 - (void)setAccessibilityUIServerPid:(int)arg1;
 - (int)accessibilityFullKeyboardAccessDaemonPid;
 - (void)setFullKeyboardAccessDaemonPID:(int)arg1;
+- (int)accessibilityLiveCaptionsPid;
+- (void)setLiveCaptionsPid:(int)arg1;
 - (int)accessibilityAssistiveTouchPid;
 - (void)setAssistiveTouchPid:(int)arg1;
 

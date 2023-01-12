@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ML3AlbumGroupingIdentifier : NSObject <NSCopying>
+@interface ML3AlbumGroupingIdentifier : NSObject
 {
     _Bool _compilation;
     long long _albumArtistPersistentID;

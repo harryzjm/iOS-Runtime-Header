@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SceneKit/SCNMaterialPropertyTextureProviderHelper-Protocol.h>
+#import "SCNTextureSource.h"
 
 @class NSString;
 @protocol MTLTexture, SCNMaterialPropertyTextureProvider;
 
 __attribute__((visibility("hidden")))
-@interface SCNMaterialPropertyTextureProviderSource <SCNMaterialPropertyTextureProviderHelper>
+@interface SCNMaterialPropertyTextureProviderSource : SCNTextureSource
 {
     id <MTLTexture> _texture;
     struct __C3DEngineContext *_engineContext;
     id <SCNMaterialPropertyTextureProvider> _textureProvider;
 }
 
+- (id)cachedTextureWithURL:(id)arg1 token:(id *)arg2 didFallbackToDefaultTexture:(_Bool *)arg3;
 - (id)cachedTextureWithURL:(id)arg1 token:(id *)arg2;
 - (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
-- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
+- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3 status:(CDStruct_3d581f42 *)arg4;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)connectToProxy:(struct __C3DImageProxy *)arg1;
 @property(retain, nonatomic) id <SCNMaterialPropertyTextureProvider> textureProvider;

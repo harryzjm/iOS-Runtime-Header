@@ -9,8 +9,11 @@
 @class NSArray, NSString;
 
 @protocol RCPButtonEventStreamComposer <RCPBaseEventStreamComposer>
+- (void)sendUnicodeString:(NSString *)arg1 synthesizePerCharacterEvents:(_Bool)arg2 durationBetweenEvents:(double)arg3;
+- (void)sendUnicodeStringByCharacters:(NSArray *)arg1 durationBetweenEvents:(double)arg2;
 - (void)sendUnicodeString:(NSString *)arg1;
 - (void)knobNudge:(struct CGVector)arg1 buttonMask:(unsigned int)arg2 duration:(double)arg3;
+- (void)flipRingerSwitchToValue:(_Bool)arg1;
 - (void)endButtonPressWithPage:(unsigned long long)arg1 usage:(unsigned long long)arg2;
 - (void)beginButtonPressWithPage:(unsigned long long)arg1 usage:(unsigned long long)arg2;
 - (void)pressButtonsWithPages:(NSArray *)arg1 usages:(NSArray *)arg2 duration:(double)arg3;

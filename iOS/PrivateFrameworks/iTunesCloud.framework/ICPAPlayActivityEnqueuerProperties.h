@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ICPAPlayActivityEnqueuerProperties : PBCodable <NSCopying>
+@interface ICPAPlayActivityEnqueuerProperties : PBCodable
 {
     unsigned long long _storeAccountID;
     NSString *_buildVersion;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCRateControlAlgorithm-Protocol.h>
-
 @class NSString, VCRateControlMediaController;
 
 __attribute__((visibility("hidden")))
-@interface VCRateControlAlgorithmBase : NSObject <VCRateControlAlgorithm>
+@interface VCRateControlAlgorithmBase : NSObject
 {
     struct VCRateControlAlgorithmConfig _config;
     VCRateControlMediaController *_mediaController;
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
     int _rampDownStatus;
     int _currentTierIndex;
     int _previousTierIndex;
+    double _targetBitrateContinuous;
     unsigned int _targetBitrate;
     unsigned int _actualBitrate;
     unsigned int _rateChangeCounter;
@@ -32,6 +31,12 @@ __attribute__((visibility("hidden")))
     _Bool _isNewRateSentOut;
     _Bool _isSendBitrateLimited;
     _Bool _isFirstInitialRampUpDone;
+    _Bool _isFirstTimestampArrived;
+    unsigned int _consecutiveRampDown;
+    double _lastTimeStartRampingDown;
+    double _lastCongestionTime;
+    double _lastRampDownTimeDueToFeedback;
+    double _lastRampDownTimeDueToBaseband;
     unsigned int _remoteBandwidthEstimation;
     unsigned int _localBandwidthEstimation;
     double _lastNoOvershootBWEstimationTime;
@@ -46,30 +51,48 @@ __attribute__((visibility("hidden")))
     double _nowrdShort;
     double _nowrdAcc;
     double _lastOWRDChangeTime;
-    _Bool _lossEventBuffer[5];
-    int _lossEventBufferIndex;
+    struct {
+        double time;
+        double packetLossRate;
+        double packetLossRateVideo;
+        _Bool isLossIncreasing;
+    } _lossEventBuffer[64];
+    unsigned int _lossEventBufferIndex;
     double _lastLossEventRampDownTime;
-    int _lossEventCount;
+    double _firstLossEventRampDownTime;
+    int _packetLossRateBadTrendCount;
+    unsigned int _lossEventBandwidthLimit;
+    unsigned int _lossEventBandwidthConfidence;
     unsigned int _mostBurstLoss;
     double _packetLossRate;
     double _previousPacketLossRate;
+    double _packetLossRateThreshold;
+    double _packetLossRateAvgLong;
+    double _packetLossRateAvgLongPrevious;
+    double _packetLossRateAvgLongAtLBAStart;
+    double _packetLossRateAvgLongAtLBAExit;
     double _packetLossRateAudio;
     double _packetLossRateVideo;
     double _roundTripTime;
     double _worstRecentRoundTripTime;
     unsigned int _worstRecentBurstLoss;
     unsigned int _totalPacketReceived;
+    _Bool _shouldConsiderVideoInLossEvent;
+    unsigned int _rateSharingCount;
     void *_logDump;
     void *_logBasebandDump;
     _Bool _isPeriodicLoggingEnabled;
     _Bool _didMBLRampDown;
 }
 
+@property(nonatomic) _Bool isFirstTimestampArrived; // @synthesize isFirstTimestampArrived=_isFirstTimestampArrived;
+@property(nonatomic) unsigned int rateSharingCount; // @synthesize rateSharingCount=_rateSharingCount;
 @property(readonly, nonatomic) _Bool isFirstInitialRampUpDone; // @synthesize isFirstInitialRampUpDone=_isFirstInitialRampUpDone;
 @property(readonly, nonatomic) _Bool isSendBitrateLimited; // @synthesize isSendBitrateLimited=_isSendBitrateLimited;
 @property(nonatomic) _Bool didMBLRampDown; // @synthesize didMBLRampDown=_didMBLRampDown;
 @property(readonly, nonatomic) unsigned int actualBitrate; // @synthesize actualBitrate=_actualBitrate;
 @property(readonly, nonatomic) double owrd; // @synthesize owrd=_owrd;
+@property(readonly, nonatomic) unsigned int remoteBandwidthEstimation; // @synthesize remoteBandwidthEstimation=_remoteBandwidthEstimation;
 @property(nonatomic) unsigned int localBandwidthEstimation; // @synthesize localBandwidthEstimation=_localBandwidthEstimation;
 @property(readonly, nonatomic) _Bool isNewRateSentOut; // @synthesize isNewRateSentOut=_isNewRateSentOut;
 @property(readonly, nonatomic) unsigned int worstRecentBurstLoss; // @synthesize worstRecentBurstLoss=_worstRecentBurstLoss;
@@ -85,9 +108,21 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 @property(readonly, nonatomic) _Bool isCongested; // @synthesize isCongested=_isCongested;
 @property(readonly, nonatomic) struct VCRateControlAlgorithmConfig config; // @synthesize config=_config;
+- (void)updateCongestionStatusWhenRampDown:(double)arg1;
+- (void)updateCongestionStatusWhenRampUp;
+- (_Bool)shouldRampDownDueToLossThreshold;
+- (_Bool)shouldRampDownDueToConsecutiveLoss;
+- (_Bool)shouldRampDownDueToLossEvent;
+- (_Bool)shouldBlockRampUpDueToLossEventThreshold;
+- (_Bool)allowRampUpWithContinuousTargetBitrate;
+- (double)rampUpTargetBitrateContinuousWithBandwidthDiff:(int)arg1;
+- (void)resetLossEventBandwidthLimit;
+- (void)updateLossEventBandwidthLimit:(unsigned int)arg1;
 - (void)resetLossEventBuffer;
-- (int)lossEventCount;
-- (void)updateLossEvent:(double)arg1 time:(double)arg2;
+- (double)lossEventOverThresholdRatio;
+- (int)lossEventIncreasingCount;
+- (void)updateLossEvent;
+@property(readonly, nonatomic) _Bool isLossBasedAdaptationOn;
 - (_Bool)recentlyGoAboveRampUpBandwidth;
 - (_Bool)keepOvershootingRampDownBandwidth;
 - (void)checkBandwidthOvershootWithRemoteBandwidthEstimation:(unsigned int)arg1;
@@ -100,7 +135,7 @@ __attribute__((visibility("hidden")))
 - (void)logToDumpFilesWithString:(id)arg1;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(_Bool)arg2;
-- (_Bool)doRateControlWithStatistics:(CDStruct_c0785916)arg1;
+- (_Bool)doRateControlWithStatistics:(CDStruct_7df19fcb)arg1;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
 - (void)checkPaused;
 @property(nonatomic, getter=isPaused) _Bool paused;

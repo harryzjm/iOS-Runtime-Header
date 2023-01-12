@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, UIView;
+#import "UIView.h"
+
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _CarTitleView
+@interface _CarTitleView : UIView
 {
     _Bool _largeText;
     UIView *_view;

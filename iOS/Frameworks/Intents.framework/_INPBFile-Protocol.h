@@ -11,6 +11,8 @@
 @protocol _INPBFile <NSObject>
 @property(readonly, nonatomic) _Bool hasTypeIdentifier;
 @property(copy, nonatomic) NSString *typeIdentifier;
+@property(nonatomic) _Bool hasRemovedOnCompletion;
+@property(nonatomic) _Bool removedOnCompletion;
 @property(readonly, nonatomic) _Bool hasFilename;
 @property(copy, nonatomic) NSString *filename;
 @property(readonly, nonatomic) _Bool hasFileURL;

@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class DOCItem, NSArray, NSError, NSString, NSURL, NSUUID;
+@class DOCItemBookmark, NSArray, NSError, NSString, NSURL, NSUUID;
 @protocol DOCItemActivityPerformer, DOCServicePopoverTrackerProtocol;
 
 @protocol DOCHostDocumentBrowserViewControllerInterface
-- (void)_presentActivityViewControllerForItems:(NSArray *)arg1 withPopoverTracker:(id <DOCServicePopoverTrackerProtocol>)arg2 isContentManaged:(_Bool)arg3 additionalActivities:(NSArray *)arg4 activityProxy:(id <DOCItemActivityPerformer>)arg5;
+- (void)_documentPickerWasCancelled;
+- (void)_presentActivityViewControllerForItemBookmarks:(NSArray *)arg1 withPopoverTracker:(id <DOCServicePopoverTrackerProtocol>)arg2 isContentManaged:(_Bool)arg3 additionalActivities:(NSArray *)arg4 activityProxy:(id <DOCItemActivityPerformer>)arg5;
 - (void)_updateRemoteBarButtonFrames:(NSArray *)arg1 forUUID:(NSArray *)arg2;
 - (void)_failedToImportDocumentAtURL:(NSURL *)arg1 error:(NSError *)arg2;
-- (void)_didImportDocumentAtURL:(NSURL *)arg1 toDestinationItem:(DOCItem *)arg2;
+- (void)_didImportDocumentAtURL:(NSURL *)arg1 toDestinationItemBookmark:(DOCItemBookmark *)arg2;
 - (void)_didRequestDocumentCreationWithHandler:(void (^)(FPSandboxingURLWrapper *, unsigned long long))arg1;
-- (void)_commitDocumentURLPreview:(DOCItem *)arg1;
-- (void)_didPickItems:(NSArray *)arg1;
+- (void)_commitDocumentURLPreview:(DOCItemBookmark *)arg1;
+- (void)_didPickItemBookmarks:(NSArray *)arg1;
 - (void)_didTriggerBarButtonWithUUID:(NSUUID *)arg1;
-- (void)_didTriggerCustomActionWithIdentifier:(NSString *)arg1 onItems:(NSArray *)arg2;
+- (void)_didTriggerCustomActionWithIdentifier:(NSString *)arg1 onItemBookmarks:(NSArray *)arg2;
 @end
 

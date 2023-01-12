@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface VNImageAnalyzerBasedDetector
 {
-    struct unique_ptr<vision::mod::ImageAnalyzer, std::default_delete<vision::mod::ImageAnalyzer>> _imageAnalyzer;
+    struct shared_ptr<vision::mod::ImageAnalyzer> _imageAnalyzer;
     struct _Geometry2D_size2D_ _networkRequiredInputImageSize;
     _Bool _networkUsesAnisotropicScaling;
     NSArray *_cachedSupportedClassificationIdentifiers;
@@ -22,16 +22,18 @@ __attribute__((visibility("hidden")))
 + (id)modelNameForConfiguration:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
+- (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;
+- (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
+- (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (_Bool)supportsProcessingDevice:(id)arg1;
 - (id)segmentationLabelsFileName;
 - (_Bool)providesSegmentationLabels;
-- (id)observationsForSceneLabelsFromLastAnalysisOfImageAnalyzer:(void *)arg1 identifierAcceptingBlock:(CDUnknownBlockType)arg2 operationPointsProvider:(id)arg3 originatingRequestSpecifier:(id)arg4 error:(id *)arg5;
+- (id)observationsForSceneLabelsFromLastAnalysisOfImageAnalyzer:(void *)arg1 identifierAcceptingBlock:(CDUnknownBlockType)arg2 operationPointsProvider:(id)arg3 originatingRequestSpecifier:(id)arg4 qosClass:(unsigned int)arg5 error:(id *)arg6;
 - (id)supportedClassificationIdentifiersAcceptedByBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)sceneLabelsFileName;
 - (_Bool)providesSceneLabels;
-- (id)observationsForLastAnalysisOfImageAnalyzer:(void *)arg1 processOptions:(id)arg2 originatingRequestSpecifier:(id)arg3 error:(id *)arg4;
+- (id)observationsForLastAnalysisOfImageAnalyzer:(void *)arg1 processOptions:(id)arg2 originatingRequestSpecifier:(id)arg3 qosClass:(unsigned int)arg4 error:(id *)arg5;
 - (unsigned int)analysisTypesForProcessOptions:(id)arg1;
 - (_Bool)configureImageAnalyzerOptions:(void *)arg1 error:(id *)arg2;
 - (unsigned long long)defaultImageCropAndScaleOption;

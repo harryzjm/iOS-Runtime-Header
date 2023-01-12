@@ -14,6 +14,7 @@
 - (void)presenterRequestsVisibility:(id <BNPresenting>)arg1;
 
 @optional
+- (double)presenterMinimumPreferredTopEdgeInset:(id <BNPresenting>)arg1;
 - (struct CGPoint)presenter:(id <BNPresenting>)arg1 gestureRecognizer:(UIPanGestureRecognizer *)arg2 translationInView:(UIView *)arg3;
 - (struct CGPoint)presenter:(id <BNPresenting>)arg1 gestureRecognizer:(UIPanGestureRecognizer *)arg2 velocityInView:(UIView *)arg3;
 - (struct CGPoint)presenter:(id <BNPresenting>)arg1 gestureRecognizer:(UIGestureRecognizer *)arg2 locationForEvent:(UIEvent *)arg3 inView:(UIView *)arg4;

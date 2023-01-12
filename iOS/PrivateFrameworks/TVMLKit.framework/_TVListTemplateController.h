@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/TVAppTemplateController-Protocol.h>
-#import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
-#import <TVMLKit/_TVListViewControllerDelegate-Protocol.h>
+#import "_TVBgImageLoadingViewController.h"
 
 @class IKAudioElement, IKCollectionElement, IKImageElement, IKViewElement, NSString, UIView, UIViewController, _TVFocusCaptureView, _TVListViewController;
 
 __attribute__((visibility("hidden")))
-@interface _TVListTemplateController <_TVListViewControllerDelegate, TVAppTemplateController, TVAppTemplateImpressionable>
+@interface _TVListTemplateController : _TVBgImageLoadingViewController
 {
     IKViewElement *_templateElement;
     IKCollectionElement *_listElement;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, VCHistogram;
 
 __attribute__((visibility("hidden")))
 @interface StreamGroupStats : NSObject
 {
     _Bool _isVideoDegraded;
+    _Bool _isRTXTelemetryAvailable;
     unsigned int _videoDegradedTotalCounter;
     unsigned int _significantVideoStallCount;
     unsigned int _maxVideoStallCount;
@@ -27,6 +28,8 @@ __attribute__((visibility("hidden")))
     unsigned int _videoStreamSwitchCount;
     unsigned int _audioStreamSwitchCount;
     unsigned int _perfTimerEventCount;
+    unsigned int _accumulatedMediaQueueFlushCount;
+    unsigned int _totalMediaQueueSizeReportsCount;
     unsigned int _minVideoFrameRate;
     double _videoDegradedTotalTime;
     double _videoDegradedStartTime;
@@ -39,14 +42,51 @@ __attribute__((visibility("hidden")))
     double _averageJitterBufferDelay;
     double _maxJBTargetSizeChanges;
     double _avgJBTargetSizeChanges;
+    NSString *_firstMKIReceived;
+    NSString *_firstMediaReceived;
     NSString *_firstRemoteVideoFrameDecoded;
     NSString *_timeToSeeFirstRemoteVideoFrame;
+    unsigned long long _nacksSent;
+    unsigned long long _nacksFulfilled;
+    unsigned long long _nacksFulfilledOnTime;
+    double _accumulatedTotalMediaQueueSize;
+    double _maxMediaQueueSize;
+    VCHistogram *_nacksRTXResponseTime;
+    VCHistogram *_nacksRTXLateTime;
+    VCHistogram *_nacksRTXMediaBitRate;
+    VCHistogram *_nacksRTXRetransmittedMediaBitRate;
+    VCHistogram *_nacksPLRWithRTX;
+    VCHistogram *_nacksPLRWithoutRTX;
+    unsigned long long _uniqueNacksSent;
+    unsigned long long _lateFramesScheduledWithRTXCount;
+    unsigned long long _assembledFramesWithRTXPacketsCount;
+    unsigned long long _failedToAssembleFramesWithRTXPacketsCount;
 }
 
+@property unsigned long long failedToAssembleFramesWithRTXPacketsCount; // @synthesize failedToAssembleFramesWithRTXPacketsCount=_failedToAssembleFramesWithRTXPacketsCount;
+@property unsigned long long assembledFramesWithRTXPacketsCount; // @synthesize assembledFramesWithRTXPacketsCount=_assembledFramesWithRTXPacketsCount;
+@property unsigned long long lateFramesScheduledWithRTXCount; // @synthesize lateFramesScheduledWithRTXCount=_lateFramesScheduledWithRTXCount;
+@property unsigned long long uniqueNacksSent; // @synthesize uniqueNacksSent=_uniqueNacksSent;
+@property _Bool isRTXTelemetryAvailable; // @synthesize isRTXTelemetryAvailable=_isRTXTelemetryAvailable;
 @property unsigned int minVideoFrameRate; // @synthesize minVideoFrameRate=_minVideoFrameRate;
+@property(readonly) VCHistogram *nacksPLRWithoutRTX; // @synthesize nacksPLRWithoutRTX=_nacksPLRWithoutRTX;
+@property(readonly) VCHistogram *nacksPLRWithRTX; // @synthesize nacksPLRWithRTX=_nacksPLRWithRTX;
+@property(readonly) VCHistogram *nacksRTXRetransmittedMediaBitRate; // @synthesize nacksRTXRetransmittedMediaBitRate=_nacksRTXRetransmittedMediaBitRate;
+@property(readonly) VCHistogram *nacksRTXMediaBitRate; // @synthesize nacksRTXMediaBitRate=_nacksRTXMediaBitRate;
+@property(readonly) VCHistogram *nacksRTXLateTime; // @synthesize nacksRTXLateTime=_nacksRTXLateTime;
+@property(readonly) VCHistogram *nacksRTXResponseTime; // @synthesize nacksRTXResponseTime=_nacksRTXResponseTime;
+@property double maxMediaQueueSize; // @synthesize maxMediaQueueSize=_maxMediaQueueSize;
+@property unsigned int totalMediaQueueSizeReportsCount; // @synthesize totalMediaQueueSizeReportsCount=_totalMediaQueueSizeReportsCount;
+@property double accumulatedTotalMediaQueueSize; // @synthesize accumulatedTotalMediaQueueSize=_accumulatedTotalMediaQueueSize;
+@property unsigned int accumulatedMediaQueueFlushCount; // @synthesize accumulatedMediaQueueFlushCount=_accumulatedMediaQueueFlushCount;
+@property unsigned long long nacksFulfilledOnTime; // @synthesize nacksFulfilledOnTime=_nacksFulfilledOnTime;
+@property unsigned long long nacksFulfilled; // @synthesize nacksFulfilled=_nacksFulfilled;
+@property unsigned long long nacksSent; // @synthesize nacksSent=_nacksSent;
 @property unsigned int perfTimerEventCount; // @synthesize perfTimerEventCount=_perfTimerEventCount;
 @property(retain) NSString *timeToSeeFirstRemoteVideoFrame; // @synthesize timeToSeeFirstRemoteVideoFrame=_timeToSeeFirstRemoteVideoFrame;
 @property(retain) NSString *firstRemoteVideoFrameDecoded; // @synthesize firstRemoteVideoFrameDecoded=_firstRemoteVideoFrameDecoded;
+@property(retain) NSString *firstMediaReceived; // @synthesize firstMediaReceived=_firstMediaReceived;
+@property(retain) NSString *firstMKIReceived; // @synthesize firstMKIReceived=_firstMKIReceived;
 @property unsigned int audioStreamSwitchCount; // @synthesize audioStreamSwitchCount=_audioStreamSwitchCount;
 @property unsigned int videoStreamSwitchCount; // @synthesize videoStreamSwitchCount=_videoStreamSwitchCount;
 @property int avSyncOffsetSum; // @synthesize avSyncOffsetSum=_avSyncOffsetSum;

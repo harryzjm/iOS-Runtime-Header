@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class SKUICollectionDOMFeature;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGridViewElement
+@interface SKUIGridViewElement : SKUIViewElement
 {
     id _persistenceKey;
     _Bool _showsEditMode;

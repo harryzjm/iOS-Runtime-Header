@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreFoundation/NSCopying-Protocol.h>
-#import <CoreFoundation/NSSecureCoding-Protocol.h>
+#import "NSFileSecurity.h"
 
 __attribute__((visibility("hidden")))
-@interface __NSFileSecurity <NSCopying, NSSecureCoding>
+@interface __NSFileSecurity : NSFileSecurity
 {
     struct _filesec *_filesec;
 }

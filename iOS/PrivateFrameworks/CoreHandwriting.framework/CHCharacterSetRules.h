@@ -41,6 +41,8 @@
     NSCharacterSet *_symbolsRequiringSpaceBeforeInFrench;
     NSCharacterSet *_sentenceStartPunctuationInSpanish;
     NSCharacterSet *_commonJapaneseSymbols;
+    NSCharacterSet *_CJKPairedPunctuationsCharSet;
+    NSCharacterSet *_alphaNumericCharSet;
     NSObject<OS_dispatch_queue> *__charSetRulesQueue;
     map_aaf15588 _strokeMaxPenalties;
     map_3815c996 _signatureUniChar;
@@ -54,9 +56,11 @@
 + (id)sharedCharacterSetRules;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *_charSetRulesQueue; // @synthesize _charSetRulesQueue=__charSetRulesQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_charSetRulesQueue; // @synthesize _charSetRulesQueue=__charSetRulesQueue;
 @property(nonatomic) map_3815c996 signatureUniChar; // @synthesize signatureUniChar=_signatureUniChar;
 @property(nonatomic) map_aaf15588 strokeMaxPenalties; // @synthesize strokeMaxPenalties=_strokeMaxPenalties;
+@property(retain, nonatomic) NSCharacterSet *alphaNumericCharSet; // @synthesize alphaNumericCharSet=_alphaNumericCharSet;
+@property(retain, nonatomic) NSCharacterSet *CJKPairedPunctuationsCharSet; // @synthesize CJKPairedPunctuationsCharSet=_CJKPairedPunctuationsCharSet;
 @property(retain, nonatomic) NSCharacterSet *commonJapaneseSymbols; // @synthesize commonJapaneseSymbols=_commonJapaneseSymbols;
 @property(retain, nonatomic) NSCharacterSet *sentenceStartPunctuationInSpanish; // @synthesize sentenceStartPunctuationInSpanish=_sentenceStartPunctuationInSpanish;
 @property(retain, nonatomic) NSCharacterSet *symbolsRequiringSpaceBeforeInFrench; // @synthesize symbolsRequiringSpaceBeforeInFrench=_symbolsRequiringSpaceBeforeInFrench;
@@ -91,7 +95,6 @@
 - (unsigned long long)_characterType:(unsigned int)arg1;
 - (unsigned long long)_expectedMinStrokeCount:(unsigned int)arg1;
 - (unsigned long long)_expectedMaxStrokeCount:(unsigned int)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

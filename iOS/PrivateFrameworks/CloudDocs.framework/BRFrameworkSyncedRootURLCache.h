@@ -6,24 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudDocs/BRSyncedRootURLCache-Protocol.h>
-
 @class NSArray, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_workloop;
 
 __attribute__((visibility("hidden")))
-@interface BRFrameworkSyncedRootURLCache : NSObject <BRSyncedRootURLCache>
+@interface BRFrameworkSyncedRootURLCache : NSObject
 {
     int _syncedLocationsChangedNotificationToken;
     NSArray *_syncedRootURLs;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_notificationQueue;
+    NSObject<OS_dispatch_workloop> *_workloop;
+    NSObject<OS_dispatch_workloop> *_notificationWorkLoop;
     NSString *_personaID;
     _Bool _usingOtherPersona;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
+@property(readonly, nonatomic) _Bool cacheMightBePopulated;
 @property(readonly, nonatomic) NSArray *syncedRootURLs;
 - (void)_fetchSyncedRootURLs;
 - (void)_accountWillChange;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString, UIPanGestureRecognizer, UIView;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface CNAvatarCardTransition : NSObject <UIViewControllerAnimatedTransitioning>
+@interface CNAvatarCardTransition : NSObject
 {
     _Bool _reversed;
     _Bool _interactive;

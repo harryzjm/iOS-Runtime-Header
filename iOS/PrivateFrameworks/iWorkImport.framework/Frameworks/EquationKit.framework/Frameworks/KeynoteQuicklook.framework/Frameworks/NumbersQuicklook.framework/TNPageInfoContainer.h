@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NumbersQuicklook/TSDContainerInfo-Protocol.h>
-
 @class NSArray, NSString, TNPageController, TSDInfoGeometry, TSPObject;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface TNPageInfoContainer : NSObject <TSDContainerInfo>
+@interface TNPageInfoContainer : NSObject
 {
     TNPageController *_pageController;
     unsigned long long _pageIndex;

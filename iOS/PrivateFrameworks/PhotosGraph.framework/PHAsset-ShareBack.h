@@ -6,11 +6,9 @@
 
 #import <Photos/PHAsset.h>
 
-#import <PhotosGraph/PGShareBackSuggesterInputProtocol-Protocol.h>
-
 @class CLLocation, NSDate, NSString, NSTimeZone;
 
-@interface PHAsset (ShareBack) <PGShareBackSuggesterInputProtocol>
+@interface PHAsset (ShareBack)
 @property(readonly, nonatomic) PHAsset *asset;
 @property(readonly, nonatomic) double horizontalAccuracy;
 @property(readonly, nonatomic) NSTimeZone *timeZone;

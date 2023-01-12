@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
+#import "UIView.h"
 
-@class NSString, UIColor, UIView;
+@class NSString, UIColor;
 @protocol _UIButtonMaskAnimationViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIButtonMaskAnimationView <CAAnimationDelegate>
+@interface _UIButtonMaskAnimationView : UIView
 {
     unsigned long long _hardEdge;
     UIView *_hardEdgeLine;

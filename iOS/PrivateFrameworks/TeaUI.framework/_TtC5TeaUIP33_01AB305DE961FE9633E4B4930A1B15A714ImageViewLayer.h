@@ -14,9 +14,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithLayer:(id)arg1;
-- (id)init;
 @property(nonatomic) double shadowRadius;
 @property(nonatomic, retain) struct CGColor *shadowColor;
 @property(nonatomic) float shadowOpacity;
@@ -24,6 +21,9 @@
 @property(nonatomic, retain) const struct CGPath *shadowPath;
 @property(nonatomic) unsigned long long maskedCorners;
 @property(nonatomic) double cornerRadius;
+- (id)init;
+- (id)initWithLayer:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

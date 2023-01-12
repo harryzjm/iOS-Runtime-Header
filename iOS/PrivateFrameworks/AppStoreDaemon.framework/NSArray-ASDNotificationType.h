@@ -6,8 +6,6 @@
 
 #import <Foundation/NSArray.h>
 
-#import <AppStoreDaemon/ASDNotificationType-Protocol.h>
-
-@interface NSArray (ASDNotificationType) <ASDNotificationType>
+@interface NSArray (ASDNotificationType)
 @end
 

@@ -10,6 +10,7 @@
 @class INCallRecord, INCallRecordFilter, NSArray, NSNumber, NSString;
 
 @protocol INStartCallIntentExport <NSObject, JSExport>
+@property(nonatomic, copy) NSString *faceTimeLink;
 @property(nonatomic, copy) NSString *notificationThreadIdentifier;
 @property(nonatomic, copy) NSArray *callGroups;
 @property(nonatomic, copy) NSNumber *isGroupCall;

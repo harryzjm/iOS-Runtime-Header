@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/_GEOConfigDBOperation-Protocol.h>
-
 @class GEOConfigExpiringKey, GEOSQLiteDB, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOConfigDBUpdateExpireOperation <_GEOConfigDBOperation>
+@interface _GEOConfigDBUpdateExpireOperation
 {
     GEOSQLiteDB *_db;
     GEOConfigExpiringKey *_expire;

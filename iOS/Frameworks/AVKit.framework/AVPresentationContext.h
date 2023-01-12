@@ -42,21 +42,21 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIView *touchBlockingView; // @synthesize touchBlockingView=_touchBlockingView;
 @property(nonatomic) __weak UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(readonly, nonatomic) AVPresentationConfiguration *configuration; // @synthesize configuration=_configuration;
-- (id)dismissalToView;
-- (id)presentationFromView;
-@property(readonly, nonatomic) _Bool canBeInteractivelyDismissed;
+- (id)toView;
 @property(readonly, nonatomic) long long transitionType;
-@property(readonly, nonatomic) AVPresentationContextTransition *currentTransition;
-@property(readonly, nonatomic, getter=isPresenting) _Bool presenting;
-@property(readonly, nonatomic, getter=isDismissing) _Bool dismissing;
 @property(readonly, nonatomic) _Bool wasInitiallyInteractive;
-@property(readonly, nonatomic) _Bool hasActiveTransition;
-@property(readonly, nonatomic) __weak UIViewController *presentedViewController;
-@property(readonly, nonatomic) __weak AVPresentationContainerView *presentedView;
 @property(readonly, nonatomic) __weak AVFullScreenViewController *rotatableWindowViewController;
 @property(readonly, nonatomic) __weak UIWindow *presentationWindow;
 - (id)presentingView;
+@property(readonly, nonatomic) __weak UIViewController *presentedViewController;
+@property(readonly, nonatomic) __weak AVPresentationContainerView *presentedView;
+@property(readonly, nonatomic, getter=isPresenting) _Bool presenting;
+@property(readonly, nonatomic, getter=isDismissing) _Bool dismissing;
+@property(readonly, nonatomic) _Bool hasActiveTransition;
+- (id)fromView;
+@property(readonly, nonatomic) AVPresentationContextTransition *currentTransition;
 @property(readonly, nonatomic) __weak UIView *containerView;
+@property(readonly, nonatomic) _Bool canBeInteractivelyDismissed;
 - (id)initWithPresentationController:(id)arg1 configuration:(id)arg2;
 
 @end

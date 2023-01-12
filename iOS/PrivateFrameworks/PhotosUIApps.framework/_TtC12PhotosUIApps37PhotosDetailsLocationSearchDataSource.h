@@ -6,23 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUIApps/PXPhotosDetailsLocationSearchDataSource-Protocol.h>
-
 @class MISSING_TYPE;
 @protocol PXPhotosDetailsLocationSearchDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12PhotosUIApps37PhotosDetailsLocationSearchDataSource : NSObject <PXPhotosDetailsLocationSearchDataSource>
+@interface _TtC12PhotosUIApps37PhotosDetailsLocationSearchDataSource : NSObject
 {
     MISSING_TYPE *suggester;
     MISSING_TYPE *assets;
-    MISSING_TYPE *locationShifter;
-    MISSING_TYPE *delegate;
     MISSING_TYPE *canRemoveLocation;
+    MISSING_TYPE *searchQuery;
+    MISSING_TYPE *completion;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *undoManagerProvider;
+    MISSING_TYPE *$__lazy_storage_$_infoUpdater;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)infoUpdaterDidUpdate:(id)arg1;
+- (id)requestInfoOfKind:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 @property(nonatomic) __weak id <PXPhotosDetailsLocationSearchDelegate> delegate; // @synthesize delegate;
 
 @end

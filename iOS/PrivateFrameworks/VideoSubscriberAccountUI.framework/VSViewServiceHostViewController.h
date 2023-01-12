@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideoSubscriberAccountUI/VSViewServiceRemoteViewControllerDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString, VSOptional, VSViewControllerFactory, VSViewServiceRemoteViewController;
 @protocol VSViewServiceHostViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSViewServiceHostViewController : UIViewController <VSViewServiceRemoteViewControllerDelegate>
+@interface VSViewServiceHostViewController : UIViewController
 {
     _Bool _hasRetriedOnce;
     _Bool _hasRequestedPresentation;

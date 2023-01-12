@@ -6,11 +6,9 @@
 
 #import <HealthKit/_HKEmergencyContact.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface _HKEmergencyContact (HDMedicalIDDataMigrator) <HDCoding>
+@interface _HKEmergencyContact (HDMedicalIDDataMigrator)
 + (id)createWithCodable:(id)arg1;
 - (void)_migrateToSchemaVersion:(long long)arg1 withAddressBook:(void *)arg2;
 - (id)codableRepresentationForSync;

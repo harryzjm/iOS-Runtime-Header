@@ -6,12 +6,10 @@
 
 #import <TSDrawables/TSDStyledInfo.h>
 
-#import <KeynoteQuicklook/TSDDrawableInfoCustomUnarchivingSubclassProviding-Protocol.h>
-#import <KeynoteQuicklook/TSDMixing-Protocol.h>
+@class KNLiveVideoSource, NSObject, NSString, NSUUID, TSDFill, TSDInfoGeometry, TSDMediaStyle, TSPData, TSPObject;
+@protocol TSDInfo, TSDOwningAttachment;
 
-@class KNLiveVideoSource, NSString, NSUUID, TSDMediaStyle, TSPData;
-
-@interface KNLiveVideoInfo : TSDStyledInfo <TSDDrawableInfoCustomUnarchivingSubclassProviding, TSDMixing>
+@interface KNLiveVideoInfo : TSDStyledInfo
 {
     TSDMediaStyle *_style;
     NSUUID *_sourceId;
@@ -19,15 +17,19 @@
     struct CGPoint _normalizedOffset;
     long long _maskKind;
     double _maskCornerRadius;
+    long long _backgroundKind;
+    TSDFill *_backgroundFill;
     _Bool _isPlaceholder;
     TSPData *_archivedMoviePosterImageData;
 }
 
 + (id)i_makeArchivedMoviePosterImageDataWithContext:(id)arg1;
++ (long long)i_backgroundKindForArchivedBackgroundKind:(long long)arg1;
 + (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isPlaceholder; // @synthesize isPlaceholder=_isPlaceholder;
 @property(copy, nonatomic) NSUUID *i_sourceId; // @synthesize i_sourceId=_sourceId;
+@property(readonly, nonatomic) _Bool shouldBeIgnoredByPDFTagger;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)animationFilters;
@@ -36,6 +38,7 @@
 - (int)intValueForProperty:(int)arg1;
 - (id)objectForProperty:(int)arg1;
 - (_Bool)containsProperty:(int)arg1;
+- (id)pastedPropertyMapForStyle:(id)arg1 tailLineEndInfo:(int)arg2;
 - (Class)styleClass;
 - (id)styleIdentifierTemplateForNewPreset;
 - (id)presetKind;
@@ -52,13 +55,17 @@
 - (_Bool)canAspectRatioLockBeChangedByUser;
 - (Class)repClass;
 - (Class)layoutClass;
-- (void)p_updateSlideNodeLiveVideoSourceUUIDs;
+- (void)p_updateSlideNodeLiveVideoSourceUsage;
+@property(readonly, nonatomic) long long effectiveBackgroundKind;
+@property(nonatomic) long long backgroundKind;
 - (long long)effectiveMaskKindForGeometry:(id)arg1;
 @property(readonly, nonatomic) long long effectiveMaskKind;
 @property(nonatomic) long long maskKind;
 @property(retain, nonatomic) KNLiveVideoSource *source;
 - (id)copyWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
+@property(copy, nonatomic) TSDFill *backgroundFill;
+@property(nonatomic) long long i_archivedBackgroundKind;
 @property(nonatomic) double maskCornerRadius;
 @property(nonatomic) long long i_archivedMaskKind;
 @property(nonatomic) struct CGPoint normalizedOffset;
@@ -69,9 +76,19 @@
 - (void)loadFromUnarchiver:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic, getter=isAnchoredToText) _Bool anchoredToText;
+@property(readonly, nonatomic, getter=isAttachedToBodyText) _Bool attachedToBodyText;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic, getter=isFloatingAboveText) _Bool floatingAboveText;
+@property(copy, nonatomic) TSDInfoGeometry *geometry;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic, getter=isInlineWithText) _Bool inlineWithText;
+@property(readonly, nonatomic, getter=isInlineWithTextWithWrap) _Bool inlineWithTextWithWrap;
+@property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
+@property(nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
+@property(readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
+@property(nonatomic) NSObject<TSDInfo> *parentInfo;
 @property(readonly) Class superclass;
 
 @end

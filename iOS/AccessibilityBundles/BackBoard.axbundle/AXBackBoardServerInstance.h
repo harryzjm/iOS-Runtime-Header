@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import "AXBackBoardServerInstance-Protocol.h"
-
 @class AXIPCServer, BSProcessDeathWatcher, NSMutableArray, NSString;
 @protocol AXBackBoardServerInstanceDelegate;
 
-@interface AXBackBoardServerInstance : NSObject <AXBackBoardServerInstance>
+@interface AXBackBoardServerInstance : NSObject
 {
     AXIPCServer *_server;
     NSMutableArray *_eventListeners;
@@ -29,6 +27,7 @@
 + (id)backBoardServerInstance;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <AXBackBoardServerInstanceDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)_setDeviceOrientation:(id)arg1;
 - (id)_handleSetIsSpeakScreenHighlightVisible:(id)arg1;
 - (id)_handleGetLastSetColorFilter:(id)arg1;
 - (id)_handleToggleGuidedAccess:(id)arg1;

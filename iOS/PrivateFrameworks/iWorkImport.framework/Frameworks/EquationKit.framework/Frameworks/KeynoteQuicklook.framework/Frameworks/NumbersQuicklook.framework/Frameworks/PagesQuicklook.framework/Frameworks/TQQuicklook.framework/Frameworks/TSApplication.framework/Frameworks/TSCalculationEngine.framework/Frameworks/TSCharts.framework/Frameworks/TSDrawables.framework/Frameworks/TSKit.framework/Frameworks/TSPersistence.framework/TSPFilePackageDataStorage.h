@@ -15,6 +15,7 @@
     _Atomic unsigned long long _encodedLength;
     _Atomic _Bool _didCalculateCRC;
     _Atomic unsigned int _CRC;
+    _Atomic unsigned long long _materializedLength;
     _Atomic _Bool _isMissingData;
     _Bool _isUnmaterializedDueToPartiallyDownloadedDocument;
     id <TSPCryptoInfo> _decryptionInfo;
@@ -28,6 +29,7 @@
 - (unsigned long long)fileFormatVersion;
 - (_Bool)isInPackage:(id)arg1;
 - (unsigned int)CRC;
+- (unsigned long long)materializedLength;
 - (unsigned long long)encodedLength;
 - (_Bool)isLengthPrecise;
 - (unsigned long long)length;
@@ -43,7 +45,7 @@
 - (id)packageLocator;
 - (void)didInitializeFromDocumentURL:(id)arg1;
 - (id)init;
-- (id)initWithPath:(id)arg1 package:(id)arg2 decryptionInfo:(id)arg3;
+- (id)initWithPath:(id)arg1 package:(id)arg2 decryptionInfo:(id)arg3 materializedLength:(unsigned long long)arg4;
 
 @end
 

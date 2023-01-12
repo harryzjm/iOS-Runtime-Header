@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKPolylineGroupOverlayObserver-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface RouteRenderLayerObserverProxy : NSObject <VKPolylineGroupOverlayObserver>
+@interface RouteRenderLayerObserverProxy : NSObject
 {
     struct PolylineGroupChangeObserver *_polylineGroupObserver;
-    struct vector<geo::_retain_ptr<VKPolylineGroupOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::allocator<geo::_retain_ptr<VKPolylineGroupOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>> _retainedGroups;
+    struct vector<geo::_retain_ptr<VKPolylineGroupOverlay *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc>, std::allocator<geo::_retain_ptr<VKPolylineGroupOverlay *, geo::_retain_objc_arc, geo::_release_objc_arc, geo::_hash_objc, geo::_equal_objc>>> _retainedGroups;
     struct set<VKPolylineGroupOverlay *, std::less<VKPolylineGroupOverlay *>, std::allocator<VKPolylineGroupOverlay *>> _observedGroupsSet;
 }
 

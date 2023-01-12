@@ -31,6 +31,7 @@
 - (id)catalogForAbsolutePath:(id)arg1;
 - (id)initWithCatalogs:(id)arg1;
 - (id)catalogCollectionByAddingCatalogsAtPaths:(id)arg1 results:(id)arg2;
+- (id)catalogCollectionByAddingCatalogs:(id)arg1;
 
 @end
 

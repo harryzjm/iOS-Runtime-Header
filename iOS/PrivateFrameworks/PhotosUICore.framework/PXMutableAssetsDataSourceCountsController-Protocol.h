@@ -7,6 +7,6 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @protocol PXMutableAssetsDataSourceCountsController <NSObject>
-@property(nonatomic) CDStruct_aa0b146f counts;
+@property(nonatomic) CDStruct_14f26992 counts;
 @end
 

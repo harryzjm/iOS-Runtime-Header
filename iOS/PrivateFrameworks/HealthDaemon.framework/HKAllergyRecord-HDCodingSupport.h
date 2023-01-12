@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKAllergyRecord.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKAllergyRecord (HDCodingSupport) <HDCoding>
+@interface HKAllergyRecord (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;

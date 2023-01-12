@@ -10,7 +10,7 @@
 @protocol PXPhotosDetailsLocationSearchDelegate;
 
 @protocol PXPhotosDetailsLocationSearchViewSwiftFactory <NSObject>
-+ (UIViewController *)searchViewControllerWithAssets:(PHFetchResult *)arg1 delegate:(id <PXPhotosDetailsLocationSearchDelegate>)arg2 completion:(void (^)(void))arg3;
++ (UIViewController *)searchViewControllerWithAssets:(PHFetchResult *)arg1 delegate:(id <PXPhotosDetailsLocationSearchDelegate>)arg2 completion:(void (^)(_Bool))arg3;
 + (UIViewController *)searchViewControllerWithAssets:(PHFetchResult *)arg1 delegate:(id <PXPhotosDetailsLocationSearchDelegate>)arg2;
 @end
 

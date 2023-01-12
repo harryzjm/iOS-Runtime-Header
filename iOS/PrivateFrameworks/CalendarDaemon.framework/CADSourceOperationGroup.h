@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADSourceInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 __attribute__((visibility("hidden")))
-@interface CADSourceOperationGroup <CADSourceInterface>
+@interface CADSourceOperationGroup : CADOperationGroup
 {
 }
 
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
 - (int)_tryPerformBlockWithSourceID:(id)arg1 forAction:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (int)_tryPerformBlockWithSourceID:(id)arg1 forAction:(unsigned long long)arg2 entityType:(int)arg3 withBlock:(CDUnknownBlockType)arg4;
-- (void)CADSourceGetManagedConfigurationAccountAccess:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADSourceRemoveExchangeDelegateWithID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADSourceAddExchangeDelegateWithName:(id)arg1 emailAddress:(id)arg2 toSourceWithID:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADSourceUpdateGrantedDelegate:(id)arg1 action:(long long)arg2 sourceID:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADSourceGetGrantedDelegatesList:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADRemoveCalendarItemsOlderThanDate:(id)arg1 ofType:(int)arg2 inSource:(id)arg3 reply:(CDUnknownBlockType)arg4;

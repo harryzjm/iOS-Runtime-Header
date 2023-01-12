@@ -23,7 +23,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *offlineIssueList;
     MISSING_TYPE *offlineIssueManager;
     MISSING_TYPE *paidBundleConfigManager;
-    MISSING_TYPE *persistentStore;
+    MISSING_TYPE *configManager;
+    MISSING_TYPE *personalizationService;
+    MISSING_TYPE *personalizationData;
+    MISSING_TYPE *lazyPersistentStore;
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *$__lazy_storage_$_lazyInitializingPromise;
     MISSING_TYPE *firstFullRefresh;

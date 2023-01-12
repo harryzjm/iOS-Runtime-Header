@@ -6,16 +6,19 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLPlaybackSyncStateQuery : PBCodable <NSCopying>
+@interface _ICLLPlaybackSyncStateQuery : PBCodable
 {
     NSString *_currentItemId;
+    NSString *_initialAVSyncStartItemId;
     NSMutableArray *_participantStates;
     NSMutableArray *_transportControlStates;
+    _Bool _initialAVSyncInitiator;
+    struct {
+        unsigned int initialAVSyncInitiator:1;
+    } _has;
 }
 
 - (void).cxx_destruct;

@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
+@class NSString;
 
-@interface TSCHChartAxisID : NSObject <NSCopying>
+@interface TSCHChartAxisID : NSObject
 {
     int _type;
     unsigned long long _ordinal;
@@ -20,7 +20,7 @@
 - (void)saveToArchive:(void *)arg1;
 - (id)initWithArchive:(const void *)arg1;
 - (id)description;
-- (id)debuggingName;
+@property(readonly) NSString *debuggingName;
 - (id)displayNameWithOrdinal:(_Bool)arg1;
 - (_Bool)intersectsAxisID:(id)arg1;
 - (long long)compare:(id)arg1;

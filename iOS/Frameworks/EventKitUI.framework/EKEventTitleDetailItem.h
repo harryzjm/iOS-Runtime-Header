@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKEventDetailTitleCellDelegate-Protocol.h>
-
 @class EKEventDetailTitleCell, NSDate, NSObject, UIColor, UIView;
 @protocol EKEventTitleDetailItemDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventTitleDetailItem <EKEventDetailTitleCellDelegate>
+@interface EKEventTitleDetailItem
 {
     EKEventDetailTitleCell *_cell;
     UIColor *_color;
@@ -31,14 +29,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *proposedTime; // @synthesize proposedTime=_proposedTime;
 @property(nonatomic) _Bool hidesBottomSeparator; // @synthesize hidesBottomSeparator=_hidesBottomSeparator;
 @property(nonatomic) _Bool hidesTopSeparator; // @synthesize hidesTopSeparator=_hidesTopSeparator;
-- (void)conferenceInformationUpdated;
+- (void)refreshForHeightChange;
 - (_Bool)showsDetectedConferenceItem;
 - (id)owningViewController;
-@property(readonly, nonatomic) UIView *sourceViewForPopover;
 - (_Bool)minimalMode;
 - (void)predictionWasActedOn;
 - (_Bool)shouldShowEditButtonInline;
 - (void)editButtonPressed;
+@property(readonly, nonatomic) UIView *sourceViewForPopover;
 - (void)refreshCopiedEvents;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2 forceUpdate:(_Bool)arg3;

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSURL.h>
 
-#import <OfficeImport/TSUURLWrapper-Protocol.h>
-
 @class NSString;
 
-@interface NSURL (TSUAdditions) <TSUURLWrapper>
+@interface NSURL (TSUAdditions)
 + (id)tsu_fileURLWithPath:(id)arg1;
 + (id)URLWithPackagePart:(id)arg1;
 @property(readonly, getter=tsu_isInTrash) _Bool tsu_inTrash;

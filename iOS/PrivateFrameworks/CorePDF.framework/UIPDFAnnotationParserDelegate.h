@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/NSXMLParserDelegate-Protocol.h>
-
 @class NSMutableString, NSString, UIPDFAnnotation;
 
 __attribute__((visibility("hidden")))
-@interface UIPDFAnnotationParserDelegate : NSObject <NSXMLParserDelegate>
+@interface UIPDFAnnotationParserDelegate : NSObject
 {
     NSMutableString *_characters;
     _Bool _parseError;

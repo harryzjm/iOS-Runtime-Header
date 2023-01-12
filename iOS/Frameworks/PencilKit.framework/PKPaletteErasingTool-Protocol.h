@@ -8,5 +8,6 @@
 
 @protocol PKPaletteErasingTool <PKPaletteTool>
 @property(nonatomic, getter=isBitmapEraser) _Bool bitmapEraser;
+@property(readonly, nonatomic) double weight;
 @end
 

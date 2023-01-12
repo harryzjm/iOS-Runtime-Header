@@ -11,5 +11,6 @@
 - (unsigned long long)hashForSmartPromptPurposes;
 - (id)initWithSerializedRepresentation:(id)arg1;
 - (id)serializedRepresentation;
+- (id)_displayableAppDescriptor;
 @end
 

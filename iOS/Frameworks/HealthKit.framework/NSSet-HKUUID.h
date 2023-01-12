@@ -6,11 +6,9 @@
 
 #import <Foundation/NSSet.h>
 
-#import <HealthKit/HKUUIDCollection-Protocol.h>
-
 @class NSString;
 
-@interface NSSet (HKUUID) <HKUUIDCollection>
+@interface NSSet (HKUUID)
 + (id)hk_typesForDictionaryMapping:(Class)arg1 to:(Class)arg2;
 + (id)hk_typesForSetOf:(Class)arg1;
 + (id)hk_typesForArrayOf:(Class)arg1;
@@ -22,6 +20,7 @@
 - (id)hk_mapToDictionary:(CDUnknownBlockType)arg1;
 - (id)hk_anyObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)hk_firstSortedObjectWithComparison:(CDUnknownBlockType)arg1;
+- (id)hk_symmetricDifference:(id)arg1;
 - (id)hk_intersection:(id)arg1;
 - (id)hk_minus:(id)arg1;
 - (id)hk_filter:(CDUnknownBlockType)arg1;

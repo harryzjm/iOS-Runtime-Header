@@ -6,11 +6,9 @@
 
 #import <Sleep/HKSPSensitiveUIMonitor.h>
 
-#import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
-
 @class HDSPEnvironment, NSString;
 
-@interface HKSPSensitiveUIMonitor (Daemon) <HDSPEnvironmentAware>
+@interface HKSPSensitiveUIMonitor (Daemon)
 - (void)environmentDidBecomeReady:(id)arg1;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment;
 - (id)initWithEnvironment:(id)arg1;

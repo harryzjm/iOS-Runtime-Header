@@ -60,23 +60,6 @@ struct IKCornerRadii {
     double topRight;
 };
 
-struct ITColor {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-};
-
-struct SKUIEditorialStyle {
-    long long alignment;
-    long long bodyFontWeight;
-    float bodyFontSize;
-    float linkSpacing;
-    long long titleFontWeight;
-    float titleFontSize;
-    float titleSpacing;
-};
-
 struct SKUIIndexPathRange {
     long long _field1;
     long long _field2;
@@ -85,9 +68,9 @@ struct SKUIIndexPathRange {
 };
 
 struct SKUILockupStyle {
-    long long artworkSize;
-    long long layoutStyle;
-    unsigned long long visibleFields;
+    long long _field1;
+    long long _field2;
+    unsigned long long _field3;
 };
 
 struct SKUIPhysicalCircleConstants {
@@ -123,8 +106,8 @@ struct UIEdgeInsets {
 };
 
 struct UIOffset {
-    double horizontal;
-    double vertical;
+    double _field1;
+    double _field2;
 };
 
 struct _NSRange {
@@ -132,67 +115,12 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    double _field3;
-} CDStruct_00a825b0;
-
-typedef struct {
-    unsigned int dataSourceRespondsToCombinedEntry:1;
-    unsigned int dataSourceRespondsToNumberOfSections:1;
-    unsigned int delegateRespondsToDidSelectEntryAtIndexPath:1;
-    unsigned int delegateRespondsToDidSelectBeyondBottom:1;
-    unsigned int delegateRespondsToDidSelectBeyondTop:1;
-} CDStruct_2ba00048;
 
 typedef struct {
     double progress;
     _Bool isBouncingOffTheEdge;
 } CDStruct_19149c72;
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-    double _field7;
-    double _field8;
-    double _field9;
-} CDStruct_afa449f9;
-
-typedef struct {
-    double cellHeight;
-    double cellWidth;
-    double interItemSpacing;
-} CDStruct_0a66a153;
-
-typedef struct {
-    _Bool didUpdateAdditionalTabBarButtonsContainerPositionOffset;
-    struct UIOffset oldAdditionalTabBarButtonsContainerPositionOffset;
-    _Bool didUpdateAdditionalTabBarPalettePositionOffset;
-    struct UIOffset oldAdditionalTabBarPalettePositionOffset;
-} CDStruct_efaabef7;
-
-typedef struct {
-    struct CGSize iconSize;
-    struct CGSize newsstandSize;
-    struct CGSize newsstandSwooshSize;
-    struct CGSize videoLockupIconSize;
-    struct CGSize videoThumbnailSize;
-    double horizontalPadding;
-    double interItemSpacingMixed;
-    double interItemSpacingNewsstand;
-    double interItemSpacingVideoLockup;
-} CDStruct_df87b2ae;
 
 typedef struct {
     struct UIEdgeInsets contentInset;

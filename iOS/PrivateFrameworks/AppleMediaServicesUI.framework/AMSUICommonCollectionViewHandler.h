@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/UICollectionViewDelegate-Protocol.h>
-
 @class AMSUICommonCollectionView, NSString;
 @protocol AMSUICommonCollectionViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUICommonCollectionViewHandler : NSObject <UICollectionViewDelegate>
+@interface AMSUICommonCollectionViewHandler : NSObject
 {
     AMSUICommonCollectionView *_collectionView;
     id <AMSUICommonCollectionViewDelegate> _delegate;

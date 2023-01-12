@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADObjectInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 __attribute__((visibility("hidden")))
-@interface CADObjectOperationGroup <CADObjectInterface>
+@interface CADObjectOperationGroup : CADOperationGroup
 {
 }
 
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
 - (void)CADObjectIsManaged:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADObject:(id)arg1 getRelatedObjectsWithRelationName:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -23,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)CADObject:(id)arg1 getNumberPropertyWithName:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADObject:(id)arg1 getStringPropertyWithName:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADObject:(id)arg1 getPropertyWithName:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADObjects:(id)arg1 getPropertiesWithNames:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADObject:(id)arg1 getPropertiesWithNames:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADObjectsExist:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADObjectExists:(id)arg1 reply:(CDUnknownBlockType)arg2;

@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MobileSafariUI/ReadingListViewControllerDelegate-Protocol.h>
-
 @class NSString, ReadingListViewController;
 
 __attribute__((visibility("hidden")))
-@interface ReadingListLibraryItemController <ReadingListViewControllerDelegate>
+@interface ReadingListLibraryItemController
 {
     ReadingListViewController *_viewController;
 }
 
 - (void).cxx_destruct;
-- (_Bool)isSelected;
 - (void)performDropWithProposal:(id)arg1 session:(id)arg2;
 - (long long)dropIntentForSession:(id)arg1;
 - (unsigned long long)dropOperationForSession:(id)arg1;

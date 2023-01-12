@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
-#import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
-
 @class NSArray, NSString, SKUIColorScheme, SKUIQuicklinksView, UICollectionView;
 @protocol SKUIQuicklinksViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIQuicklinksViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SKUIQuicklinksViewController : UIViewController
 {
     UICollectionView *_collectionView;
     SKUIColorScheme *_colorScheme;

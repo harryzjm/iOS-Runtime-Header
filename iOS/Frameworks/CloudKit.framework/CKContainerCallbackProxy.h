@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKit/CKXPCContainerScopedClient-Protocol.h>
+#import "CKWeakObjectCallbackProxy.h"
 
-@interface CKContainerCallbackProxy <CKXPCContainerScopedClient>
+@interface CKContainerCallbackProxy : CKWeakObjectCallbackProxy
 {
 }
 

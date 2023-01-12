@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-@protocol BSInvalidatable, SBFOverlayDismissalDelegate, SBFOverlayObserving, UIViewControllerTransitionCoordinator;
+@protocol SBFOverlayDismissalDelegate, SBFOverlayObserving, UIViewControllerTransitionCoordinator;
 
 @protocol SBFOverlayControlling
-@property(nonatomic, getter=isOccluded) _Bool occluded;
 @property(nonatomic) __weak id <SBFOverlayDismissalDelegate> dismissalDelegate;
 @property(readonly, nonatomic, getter=isAnimatingPresentationProgress) _Bool animatingPresentationProgress;
 @property(readonly, nonatomic, getter=isPresented) _Bool presented;
 @property(nonatomic) double presentationProgress;
 @property(readonly, nonatomic) double contentWidth;
-- (id <BSInvalidatable>)acquireUseSnapshotAsBackgroundViewAssertionForReason:(NSString *)arg1;
 - (void)removeHomeScreenOverlayObserver:(id <SBFOverlayObserving>)arg1;
 - (void)addHomeScreenOverlayObserver:(id <SBFOverlayObserving>)arg1;
 - (double)finalPresentationProgressForTranslation:(double)arg1 velocity:(double)arg2 initialPresentationProgress:(double)arg3 fromLeading:(_Bool)arg4;

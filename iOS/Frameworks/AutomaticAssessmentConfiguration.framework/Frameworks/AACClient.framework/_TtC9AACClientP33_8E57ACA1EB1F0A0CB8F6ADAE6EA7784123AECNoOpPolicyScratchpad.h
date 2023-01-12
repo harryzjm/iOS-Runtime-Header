@@ -6,12 +6,7 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <AACClient/AEPersistable-Protocol.h>
-#import <AACClient/AEPolicyReadOnlyScratchpad-Protocol.h>
-#import <AACClient/AEPolicyWriteOnlyScratchpad-Protocol.h>
-#import <AACClient/AERemovable-Protocol.h>
-
-@interface _TtC9AACClientP33_8E57ACA1EB1F0A0CB8F6ADAE6EA7784123AECNoOpPolicyScratchpad : _TtCs12_SwiftObject <AEPolicyReadOnlyScratchpad, AEPolicyWriteOnlyScratchpad, AEPersistable, AERemovable>
+@interface _TtC9AACClientP33_8E57ACA1EB1F0A0CB8F6ADAE6EA7784123AECNoOpPolicyScratchpad : _TtCs12_SwiftObject
 {
 }
 

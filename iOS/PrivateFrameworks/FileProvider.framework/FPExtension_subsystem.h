@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/PKModularService-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPExtension_subsystem : NSObject <PKModularService>
+@interface FPExtension_subsystem : NSObject
 {
     _Bool _initialized;
     NSDictionary *_infoDictionary;

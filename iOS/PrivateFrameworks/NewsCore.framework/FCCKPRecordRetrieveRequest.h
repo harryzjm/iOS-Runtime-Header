@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <NewsCore/NSCopying-Protocol.h>
-
 @class FCCKPRecordIdentifier, FCCKPRequestedFields, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FCCKPRecordRetrieveRequest : PBRequest <NSCopying>
+@interface FCCKPRecordRetrieveRequest : PBRequest
 {
     NSString *_clientVersionETag;
     FCCKPRecordIdentifier *_recordIdentifier;

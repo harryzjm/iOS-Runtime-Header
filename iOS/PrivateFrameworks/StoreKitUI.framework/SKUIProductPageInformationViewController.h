@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIContentRatingArtworkLoaderObserver-Protocol.h>
-
 @class NSOperationQueue, NSString, SKUIClientContext, SKUIContentRatingArtworkResourceLoader, SKUIProductInformationView, SKUIProductPageItem, SKUIProductPageProductInfo;
 
 __attribute__((visibility("hidden")))
-@interface SKUIProductPageInformationViewController : UIViewController <SKUIContentRatingArtworkLoaderObserver>
+@interface SKUIProductPageInformationViewController : UIViewController
 {
     SKUIClientContext *_clientContext;
     SKUIContentRatingArtworkResourceLoader *_contentRatingArtworkLoader;

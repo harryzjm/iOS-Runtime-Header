@@ -9,7 +9,7 @@
 
 @protocol PXStoryStyle
 @property(readonly, nonatomic) _Bool isCustomized;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 outroDuration;
+@property(readonly, nonatomic) CDStruct_198678f7 outroDuration;
 @property(readonly, nonatomic) id <PXAudioCueSource> cueSource;
 @property(readonly, nonatomic) id <PXStorySongResource> songResource;
 @property(readonly, nonatomic) long long customColorGradeKind;

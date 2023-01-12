@@ -11,6 +11,7 @@
 @protocol SFShowAppStoreSheetCommand <SFCommand>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSString *applicationBundleIdentifier;
 @property(copy, nonatomic) NSString *storeIdentifier;
 @end
 

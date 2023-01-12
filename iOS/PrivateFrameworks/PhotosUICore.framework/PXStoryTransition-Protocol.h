@@ -10,7 +10,7 @@
 @property(copy, nonatomic) CDUnknownBlockType completionHandler;
 @property(copy, nonatomic) CDUnknownBlockType effectAlphaHandler;
 @property(readonly, nonatomic) long long event;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 duration;
+@property(readonly, nonatomic) CDStruct_198678f7 duration;
 @property(readonly, nonatomic) BOOL kind;
 @end
 

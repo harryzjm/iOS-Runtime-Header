@@ -8,6 +8,5 @@
 
 @interface COStateManager (AppleTV)
 + (id)appleTV_COStateManagerWithSuiteName:(id)arg1 clusters:(id)arg2 homeIdentifier:(id)arg3;
-- (id)tvOS_HomeMesh;
 @end
 

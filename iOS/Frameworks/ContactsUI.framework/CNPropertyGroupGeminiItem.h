@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNUIGeminiDataSourceDelegate-Protocol.h>
+#import "CNPropertyGroupItem.h"
 
 @class CNGeminiResult, CNMutableContact, NSString;
 @protocol CNUIGeminiDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyGroupGeminiItem <CNUIGeminiDataSourceDelegate>
+@interface CNPropertyGroupGeminiItem : CNPropertyGroupItem
 {
     CNGeminiResult *_geminiResult;
     id <CNUIGeminiDataSourceDelegate> _geminiUpdateDelegate;

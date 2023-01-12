@@ -18,6 +18,7 @@
 - (id)_axMainSwitcher;
 - (id)_axAppLayout;
 - (_Bool)_accessibilityIsNewWindowContainer;
+- (_Bool)_accessibilityHasMultipleWindows;
 - (_Bool)_accessibilityIsShelfItemContainer;
 - (id)_axParentAppLayout;
 - (id)_accessibilityTitleItem;

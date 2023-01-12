@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface BCSCategoryStyleAttribute : PBCodable <NSCopying>
+@interface BCSCategoryStyleAttribute : PBCodable
 {
     int _key;
     int _value;

@@ -6,11 +6,9 @@
 
 #import <Intents/INMediaItem.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface INMediaItem (ActionIdentifier) <REDonatedActionIdentifierProviding>
+@interface INMediaItem (ActionIdentifier)
 - (unsigned long long)re_actionIdentifierHashValue;
 
 // Remaining properties

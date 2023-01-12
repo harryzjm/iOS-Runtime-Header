@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATIDSServiceConnectionDataMessageQueue-Protocol.h>
-
 @class NSMutableDictionary;
 @protocol CATIDSServiceConnectionDataChunker, CATIDSServiceConnectionDataMessageQueueDelegate, CATTimer, CATTimerSource, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CATConcreteIDSServiceConnectionDataMessageQueue : NSObject <CATIDSServiceConnectionDataMessageQueue>
+@interface CATConcreteIDSServiceConnectionDataMessageQueue : NSObject
 {
     NSObject<OS_dispatch_queue> *mWorkQueue;
     id <CATIDSServiceConnectionDataChunker> mDataChunker;

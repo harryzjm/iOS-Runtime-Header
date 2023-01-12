@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PlugInKit/NSSecureCoding-Protocol.h>
-
 @protocol OS_xpc_object;
 
-@interface PKXPCObject : NSObject <NSSecureCoding>
+@interface PKXPCObject : NSObject
 {
     NSObject<OS_xpc_object> *_object;
 }

@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
 + (const CDStruct_7d93034e *)revisionAvailability;
 - (void)assignOriginalRequestsResultsFromObservations:(id)arg1 obtainedInPerformingContext:(id)arg2;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 - (id)initWithDetectorType:(id)arg1 configuration:(id)arg2;
 - (long long)dependencyProcessingOrdinality;
+- (id)applicableDetectorTypeForRevision:(unsigned long long)arg1 error:(id *)arg2;
 
 @end
 

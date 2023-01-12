@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/IKAppDocumentDelegate-Protocol.h>
-
 @class IKAppDocument, NSDictionary, NSString, VideosExtrasActivityIndicator;
 @protocol VideosExtrasLoadingViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasLoadingView : UIView <IKAppDocumentDelegate>
+@interface VideosExtrasLoadingView : UIView
 {
     IKAppDocument *_document;
     NSDictionary *_options;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *lock;
     MISSING_TYPE *cache;
+    MISSING_TYPE *bindingCache;
     MISSING_TYPE *mixinCache;
     MISSING_TYPE *service;
     MISSING_TYPE *fontManager;

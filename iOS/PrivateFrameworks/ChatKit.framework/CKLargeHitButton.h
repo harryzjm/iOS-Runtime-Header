@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface CKLargeHitButton : UIButton
 {
-    struct UIEdgeInsets _hitTestInsets;
+    struct UIEdgeInsets _ck_hitTestInsets;
 }
 
-@property(nonatomic) struct UIEdgeInsets hitTestInsets; // @synthesize hitTestInsets=_hitTestInsets;
+@property(nonatomic) struct UIEdgeInsets ck_hitTestInsets; // @synthesize ck_hitTestInsets=_ck_hitTestInsets;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end

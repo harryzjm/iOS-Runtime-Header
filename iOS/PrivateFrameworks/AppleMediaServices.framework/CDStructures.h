@@ -10,19 +10,10 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct Bag;
-
 struct ButtonKey {
     struct __CFString *_field1;
     int _field2;
 };
-
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
-struct FutureImp;
 
 struct Options {
     CDUnknownFunctionPointerType *_vptr$Options;
@@ -31,26 +22,10 @@ struct Options {
 
 struct OptionsImp;
 
-struct Promise<PromiseResult> {
-    CDUnknownFunctionPointerType *_vptr$Future;
-    struct shared_ptr<AMSCore::Future<PromiseResult>::FutureImp> mFutureImpSharedPtr;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
-
-struct __SecKey {
-    struct __CFRuntimeBase {
-        unsigned long long _field1;
-        _Atomic unsigned long long _field2;
-    } _field1;
-    struct __SecKeyDescriptor *_field2;
-    void *_field3;
-};
-
-struct __shared_weak_count;
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
@@ -59,16 +34,6 @@ struct os_unfair_lock_s {
 struct os_unfair_recursive_lock_s {
     struct os_unfair_lock_s ourl_lock;
     unsigned int ourl_count;
-};
-
-struct shared_ptr<AMSCore::Bag> {
-    struct Bag *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<AMSCore::Future<PromiseResult>::FutureImp> {
-    struct FutureImp *__ptr_;
-    struct __shared_weak_count *__cntrl_;
 };
 
 struct shared_ptr<AMSCore::Options::OptionsImp> {
@@ -83,15 +48,4 @@ typedef struct {
     id _field2;
     id _field3;
 } CDStruct_0f015c83;
-
-// Template types
-typedef struct Promise<PromiseResult> {
-    CDUnknownFunctionPointerType *_vptr$Future;
-    struct shared_ptr<AMSCore::Future<PromiseResult>::FutureImp> mFutureImpSharedPtr;
-} Promise_1e2762c9;
-
-typedef struct shared_ptr<AMSCore::Bag> {
-    struct Bag *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_f2d2fb1b;
 

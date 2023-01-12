@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/MPUStackViewDataSource-Protocol.h>
-
 @class MPUBorderConfiguration, MPUBorderDrawingCache, MPUStackView, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStackedImageView <MPUStackViewDataSource>
+@interface SKUIStackedImageView
 {
     MPUBorderConfiguration *_borderConfiguration;
     long long _stackDepth;
